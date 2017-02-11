@@ -59,6 +59,20 @@ Diremos que $X(t)$ es un campo vectorial tangente a lo largo de $\alpha$ si $X(t
 Sea X(t) un c.v.t. a lo largo de $\alpha$. Se dirá que $X(t)$ es paralelo a lo largo de $\alpha$ si $X'(t) \parallel N(t)$. El parámetro t no es esencial para la definición de campo paralelo.
 \end{defi}
 
+\begin{example}
+$\X(u)$ va a ser el plano euclídeo $OXY$ y $\alpha$ una curva contenida en él. Consideramos el campo vectorial $X(t)=(a(t),b(t),0)$ que es paralelo a lo largo de $\alpha$ si $X'(t)\parallel N=(0,0,1)$. Esto nos conduce a que $(a'(t),b'(t),0)\parallel (0,0,1)\Leftrightarrow a'(t)=b'(t)=0\Leftrightarrow X(t)=(a,b,0)$ constante. Vemos pues que el campo es paralelo en el sentido euclídeo.
+\end{example}
+
+\begin{example}
+Consideramos la esfera $S^2$ y tomamos como curva $\alpha$ el ecuador de la misma. El campo vectorial $X(t)=(0,0,1)$ es paralelo a lo largo de $\alpha$ puesto que $X'(t)=(0,0,0)\parallel N(t)$.
+\end{example}
+
+\begin{example}
+Volvamos a considerar la esfera, esta vez parametrizada como
+\[ \X(\theta,\varphi)=(\cos\theta\cos\varphi,\sen\theta\cos\varphi,\sen\varphi)\quad \theta\in(0,2\pi),\varphi\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right)\]
+Definimos entonces la curva $\alpha(\theta)=\X(\theta,\frac{\pi}{4})=(\frac{\sqrt{2}}{2}\cos\theta,\frac{\sqrt{2}}{2}\sen\theta,\frac{\sqrt{2}}{2})$, que es un meridiano. De este modo, el vector tangente es $X(t)=\X_2(\theta,\frac{\pi}{4})$. Así pues, $X'(\theta)=(\frac{\sqrt{2}}{2}\sen\theta,-\frac{\sqrt{2}}{2}\cos\theta,0)$. Basta comprobar que $X'(t)$ no es perpendicular a $\X_2$ para comprobar que no es un campo paralelo a lo largo de $\alpha$.
+\end{example}
+
 \begin{theorem}
 El c.v.t. $X(t)=\sum_{k=1}^n X^k \X_k$ a lo largo de α es campo paralelo a lo largo de α si y sólo si:
 \[ \frac{dX^k(t)}{dt} + \sum_{i,j=1}^2 Γ_{ij}^k X^i(t) \frac{du^j}{dt} = 0 \quad \forall k=1,2 \]
