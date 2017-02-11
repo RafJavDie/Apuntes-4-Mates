@@ -59,4 +59,76 @@ Diremos que $X(t)$ es un campo vectorial tangente a lo largo de $\alpha$ si $X(t
 Sea X(t) un c.v.t. a lo largo de $\alpha$. Se dirá que $X(t)$ es paralelo a lo largo de $\alpha$ si $X'(t) \parallel N(t)$. El parámetro t no es esencial para la definición de campo paralelo.
 \end{defi}
 
+\begin{theorem}
+El c.v.t. $X(t)=\sum_{k=1}^n X^k \X_k$ a lo largo de α es campo paralelo a lo largo de α si y sólo si:
+\[ \frac{dX^k(t)}{dt} + \sum_{i,j=1}^2 Γ_{ij}^k X^i(t) \frac{du^j}{dt} = 0 \quad \forall k=1,2 \]
+\end{theorem}
+\begin{dem}
+Derivando $X(t)$:
+\begin{align*} X'(t) & = \sum_{k=1}^2 \left(\frac{dX^k(t)}{dt}\X_k + \sum_{j=1}^2 X^k(t)\X_{kj}\frac{du^j}{dt}\right) \\
+ & \overset{\text{Ec. Gauss}}{=} \sum_{k=1}^2 \left(\frac{dX^k(t)}{dt}\X_k + \sum_{j=1}^2 X^k(t)\left[\sum_{i=1}^2 Γ_{kj}^i \X_i + L_{kj}N\right]\frac{du^j}{dt}\right) \\
+ & = \sum_{k=1}^2 \left[ \frac{dX^k}{dt}(t) + \sum_{i,j=1}^2 Γ_{ij}^k X^i(t) \frac{du^j}{dt}\right]\X_k + \left[\sum_{i,j=1}^2 L_{ij} X^i(t) \frac{du^j}{dt}\right]N(t)
+\end{align*}
+Llamamos al primer sumando \textbf{parte  tangente} y al segundo sumando, \textbf{parte normal}. De aquí:
+\[ X'(t) \parallel N(t) \Leftrightarrow \frac{dX^k}{dt} + \sum Γ_{ij}^k X^i(t) \frac{du^j}{dt} = 0\quad \forall k=1,2\]
+$\QED$
+\end{dem}
+
+\begin{defi}
+Llamamos \textbf{derivada covariante} de $X(t) = \sum_{k=1}^2 X^k \X_k$ a:
+\[ \frac{DX(t)}{dt} = \sum_{k=1}^2 \left[ \frac{dX^k(t)}{dt} + \sum_{i,j=1}^2 Γ_{ij}^k X^i(t) \frac{du^j}{dt}\right]\X_k\]
+\end{defi}
+
+\begin{consecuencia}
+$X(t)$ c.v.t. es paralelo a lo largo de $α$ si y sólo si $\frac{DX(t)}{dt} = 0$.
+\end{consecuencia}
+
+\begin{consecuencia}
+El concepto de \emph{paralelismo} (campo paralelo) es intrínseco de la superficie. Recuérdese que lo símbolos de Christoffel son intrínsecos a la superficie, ya que:
+\[ Γ_{ij}^k = \frac{1}{2} \sum_{h=1}^2 g^{hk} (g_{ih,j}+g_{jh,i}-g_{ij,h}) \]
+donde $g_{xy,z} = \dfrac{\partial g_{xy}}{\partial u^z}$.
+\end{consecuencia}
+
+\begin{theorem}[Existencia y unicidad de campos paralelos]
+Sea $α(t) = \X(u¹(t), u²(t))$ c.p.r. en $\X : U \to \R³$. Entonces existe un único c.v.t. $X(t)$ paralelo a lo largo de $α$ con $X(t_0)=v_0$.
+\end{theorem}
+
+\begin{dem}
+Si existe $X(t) = \sum_{k=1}^2 X^k \X_k$ c.v.t. paralelo a lo largo de $α$, $X^k(t)$ cumple que:
+\[ \frac{dX^k(t)}{dt} + \sum_{i,j=1}^2 Γ_{ij}^k(t) X^i(t) \frac{du^j}{dt} = 0 \quad k=1,2 \]
+\[ X^1(t_0) = v_0^1  \qquad X^2(t_0) = v_0^2 \]
+Estamos ante 2 problemas de Cauchy. Por el teorema de Picard, existe solución y es única.
+$\QED$
+\end{dem}
+
+\begin{defi}
+El campo $X(t)$ obtenido integrando el sistema anterior y que cumple $X(t_0) = v_0$, se llama el \textbf{transporte paralelo} de $v_0$ a lo largo de $α$.
+\end{defi}
+
+%\begin{observacion}
+%Dada $α(t)$ y $v_0$, el campo $X(t)$ paralelo es único, pero si el camino $α$ va de $p$ a $q$ de $X^k$ de $X(t)$ satisface las ecuaciones diferenciales de $(1.13)$
+%\end{observacion}
+
+\begin{observacion}
+El transporte paralelo depende del camino.
+\end{observacion}
+
+\begin{example}
+En $S^2(1)$, consideramos la curva $α(θ) = (\cos θ \cos φ_0, \sen θ \cos φ_0, \sen φ_0)$ con ${θ \in [0,2\pi]}$. Se tiene:
+\[ \X_1 = (- \sen θ \cos φ, \cos u \cos φ, 0) \]
+\[ \X_2 = (- \cos θ \sen φ, - \sen θ \sen φ, \cos φ) \]
+\[ g_{11} = \cos²φ \qquad g_{12} = 0 \qquad g_{22} = 1 \]
+\[ Γ_{12}^1 = - \tan φ \qquad Γ_{11}^2 = \cos φ \sen φ \]
+\[ u¹ = θ, u² = φ \]
+
+Para que $X(θ) = X^1(θ) \X_1(θ,φ_0) + X^2 \X_2(θ, φ_0)$ sea c.v.t. paralelo, se debe cumplir que:
+\[ \frac{dX^1}{dθ} - \tan φ_0 X^2 = 0 \]
+\[ \frac{dX^2}{dθ} + \cos φ_0 \sen φ_0 X^1 = 0 \]
+De ahí se obtiene integrando que:
+\[ X^1(θ) = \frac{1}{\cos φ_0} \sen ( θ \sen φ0) \]
+\[ X^2(θ) = \cos(θ \sen φ_0) \]
+Luego:
+\[ X(θ) = \frac{1}{\cos φ_0} \sen (θ \sen φ_0) \X_1 - \cos (θ \sen φ_0) \X_2 \]
+Sin embargo, $X(0) = \X_2(0,φ_0) \neq X(2\pi) = \frac{1}{\cos φ}\sen (2\pi \sen φ_0) \X_1 - \cos (2 \pi \sen φ_0) \X_2$. El transporte paralelo del vector $X(0)$ no va a mantener siempre constante el vector al pasar la curva por el mismo punto.
+\end{example}
 \end{document}
