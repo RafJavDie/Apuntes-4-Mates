@@ -1,0 +1,1182 @@
+\documentclass[GTS.tex]{subfiles}
+%\usepackage{amsmath,amssymb}
+%\usepackage[utf8]{inputenc}
+%\usepackage[spanish]{babel}
+%\usepackage[]{graphicx,wrapfig}
+%\usepackage{enumerate}
+%\usepackage{amsthm}
+%\usepackage{tikz-cd}
+%\usetikzlibrary{babel}
+%\usepackage{pgf,tikz}
+%\usepackage{mathrsfs}
+%\usetikzlibrary{arrows}
+%\usetikzlibrary{cd}
+%\usepackage[spanish]{babel}
+%\usepackage{fancyhdr}
+%\usepackage{titlesec}
+%\usepackage{floatrow}
+%\usepackage{makeidx}
+%\usepackage[tocflat]{tocstyle}
+%\usetocstyle{standard}
+%%\usepackage{breqn}
+%\usepackage{bm}
+%%\usepackage[sc]{mathpazo}
+%%\usepackage{blindtext}
+%\usepackage{color}   %May be necessary if you want to color links
+%\usepackage{hyperref}
+%\hypersetup{colorlinks=true,citecolor=red, linkcolor=blue}
+%
+%
+%\renewcommand{\baselinestretch}{1,4}
+%\setlength{\oddsidemargin}{0.25in}
+%\setlength{\evensidemargin}{0.25in}
+%\setlength{\textwidth}{6in}
+%\setlength{\topmargin}{0.1in}
+%\setlength{\headheight}{0.1in}
+%\setlength{\headsep}{0.1in}
+%\setlength{\textheight}{8in}
+%\setlength{\footskip}{0.75in}
+%
+%\newtheorem{teorema}{Teorema}[section]
+%\newtheorem{defi}[teorema]{Definición}
+%\newtheorem{coro}[teorema]{Corolario}
+%\newtheorem{lemma}[teorema]{Lema}
+%\newtheorem{ej}[teorema]{Ejemplo}
+%\newtheorem{ejs}[teorema]{Ejemplos}
+%\newtheorem{observacion}[teorema]{Observación}
+%\newtheorem{observaciones}[teorema]{Observaciones}
+%\newtheorem{prop}[teorema]{Proposición}
+%\newtheorem{propi}[teorema]{Propiedades}
+%\newtheorem{nota}[teorema]{Nota}
+%\newtheorem{notas}[teorema]{Notas}
+%\newtheorem*{dem}{Demostración}
+%\newtheorem{ejer}[teorema]{Ejercicio}
+%\newtheorem{consec}[teorema]{Consecuencia}
+%\newtheorem{consecs}[teorema]{Consecuencias}
+%
+%\providecommand{\abs}[1]{\lvert#1\rvert}
+%\providecommand{\norm}[1]{\lVert#1\rVert}
+%\providecommand{\ninf}[1]{\norm{#1}_\infty}
+%\providecommand{\numn}[1]{\norm{#1}_1}
+%\providecommand{\gabs}[1]{\left|{#1}\right|}
+%\newcommand{\bor}[1]{\mathcal{B}(#1)}
+%\newcommand{\R}{\mathbb{R}}
+%\newcommand{\Z}{\mathbb{Z}}
+%\newcommand{\N}{\mathbb{N}}
+%\newcommand{\Q}{\mathbb{Q}}
+%\newcommand{\C}{\mathbb{C}}
+%\newcommand{\Pro}{\mathbb{P}}
+%\newcommand{\Tau}{\mathcal{T}}
+%\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
+%\newcommand{\vertequiv}{\rotatebox{110}{$\,\equiv$}}
+%\providecommand{\lrg}{\longrightarrow}
+%\providecommand{\func}[2]{\colon{#1}\longrightarrow{#2}}
+%\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+%\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+%            \node[shape=circle,draw,inner sep=1.5pt] (char) {#1};}}
+%\newcommand*{\longhookarrow}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+%
+%\newenvironment{solucion}{\begin{trivlist}
+%\item[\hskip \labelsep {\textit{Solución}.}\hskip \labelsep]}{\end{trivlist}}
+%
+%
+%\def\quot#1#2{%
+%    \raise1ex\hbox{$#1$}\Big/\lower1ex\hbox{$#2$}%
+%}
+%
+%\makeatletter
+%\renewcommand\tableofcontents{%
+%  \null\hfill\textbf{\Large\contentsname}\hfill\null\par
+%  \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
+%  \@starttoc{toc}%
+%}
+%
+%\pagestyle{fancy}
+%\fancyhf{}
+%\rhead{Topología de Superficies (Grado en Matemáticas)}
+%\lhead{Curso 2016/2017}
+%\cfoot{\thepage}
+
+\begin{document}
+
+\renewcommand\chaptername{\Huge Tema}
+
+\titleformat{\chapter}[display]
+    {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{10pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-1cm}{10pt}
+
+
+
+%\tableofcontents
+
+
+\setcounter{chapter}{5}
+
+\chapter{Clasificación de Superficies.\\ Conclusión}
+
+\section{El grupo fundamental de una superficie de tipo I}
+Sea $S$ una superficie de tipo I. Recordemos que estas superficies vienen representadas por un modelo que tiene el código $a^{}_1b^{}_1a^{-1}_1b^{-1}_1\dots a^{}_nb^{}_na^{-1}_nb^{-1}_n$. Esto es, $S$ está representada por la identificación de los lados de un polígono regular de $4n$ lados de acuerdo con el siguiente gráfico:
+
+\definecolor{zzttqq}{rgb}{0.6,0.2,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-1.5,-0.85) rectangle (8,3.4);
+\draw (4.,3.)-- (5.5,3.);
+\draw (5.5,3.)-- (6.5,2.);
+\draw (6.5,2.)-- (6.5,0.5);
+\draw (6.5,0.5)-- (5.5,-0.5);
+\draw (4.,3.)-- (3.,2.);
+\draw (3.,2.)-- (3.,0.5);
+\draw [dash pattern=on 2pt off 2pt] (3.,0.5)-- (5.5,-0.5);
+\draw(4.8,1.4) circle (0.6027172390626455cm);
+\draw (4.405738478652503,1.8558792856097492)-- (4.,3.);
+\draw [->] (4.,3.) -- (4.8,3.);
+\draw [->] (5.5,3.) -- (6.,2.5);
+\draw [->] (6.5,0.5) -- (6.5,1.1957501053417074);
+\draw [->] (5.5,-0.5) -- (6.,0.);
+\draw [->] (4.,3.) -- (3.5,2.5);
+\draw [->] (3.,2.) -- (3.,1.2);
+\draw [dash pattern=on 2pt off 2pt] (4.8,1.4) circle (1cm);
+\draw (4.55,1.5838433463488795) node[anchor=north west] {$A$};
+\draw (3.414187200315089,0.8683484392203448) node[anchor=north west] {$B$};
+\draw (1,1.7) node[anchor=north west] {\large{$S\ \equiv$}};
+\draw (2.35,1.5) node[anchor=north west] {$a_n$};
+\draw (3.,3) node[anchor=north west] {$b_n$};
+\draw (4.7,3.35) node[anchor=north west] {$a_1$};
+\draw (6.048151968315743,2.8025434628864936) node[anchor=north west] {$b_1$};
+\draw (6.622120410297976,1.387278811423458) node[anchor=north west] {$a_2$};
+\draw (6.142502945079946,-0.04371100283361169) node[anchor=north west] {$b_2$};
+\draw (4.2,2.78681830009246) node[anchor=north west] {$\gamma$};
+\draw (5.25,1.552393020760812) node[anchor=north west] {$S^1$};
+\draw (4.4284602005302665,1.8904840208325373) node[anchor=north west] {$x_0$};
+\begin{scriptsize}
+\draw [fill=black] (4.405738478652503,1.8558792856097492) circle (2.5pt);
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.1](3,0.5)--(3.,2.) -- (4,3)--(5.5,3)--(6.5,2)-- (6.5,0.5)--(5.5,-0.5)--cycle;
+
+
+\end{scriptsize}
+\end{tikzpicture}
+
+Procedemos de manera similar a los ejemplo del capítulo anterior: descomponemos $S$ como la unión $S=A\cup B$ donde $A$ es un disco abierto, por lo que es contráctil, esto es, $\pi_1(A,x_0)=\{1\}$, y $B$ es $S$ menos un disco cerrado contenido en $A$. En particular, $B$ se retrae al siguiente grafo:
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-3,0.5) rectangle (6.393300959292774,3.2);
+\draw [rotate around={-12.485467490857165:(1.6364672736480006,2.086385207554635)}] (1.6364672736480006,2.086385207554635) ellipse (0.4955243419426075cm and 0.13041747704333986cm);
+\draw [rotate around={86.157546872085:(2.173228013337387,2.4831214064554827)}] (2.173228013337387,2.4831214064554827) ellipse (0.46750069112046705cm and 0.1344452240202966cm);
+\draw [shift={(2.2965829659368096,2.189736654327123)},dash pattern=on 2pt off 2pt]  plot[domain=-0.020405330686538825:1.4601391056210007,variable=\t]({1.*0.6535839211181232*cos(\t r)+0.*0.6535839211181232*sin(\t r)},{0.*0.6535839211181232*cos(\t r)+1.*0.6535839211181232*sin(\t r)});
+\draw [rotate around={1.1708850280784644:(2.58494704784979,1.9915168803910728)}] (2.58494704784979,1.9915168803910728) ellipse (0.4223626584291288cm and 0.07777723849776252cm);
+\draw [rotate around={-64.02560603756869:(2.3199203894015676,1.5529583855030706)}] (2.3199203894015676,1.5529583855030706) ellipse (0.4572702113179464cm and 0.14432623016288876cm);
+\draw (2.1432227545969864,1.9963694313334333)-- (1.,1.);
+\draw (1.2,2.6) node[anchor=north west] {$a_1$};
+\draw (1.6,2.9298663699236602) node[anchor=north west] {$b_1$};
+\draw (2.812673416271692,1.9430267491282782) node[anchor=north west] {$a_n$};
+\draw (2.6259740285536464,1.4829461151088095) node[anchor=north west] {$b_n$};
+\draw (1.0723684093284844,0.996194139986763) node[anchor=north west] {$x_0$};
+\draw (1.645802243033909,1.4162677623523647) node[anchor=north west] {$\gamma$};
+\draw (-0.3,2.2) node[anchor=north west] {\large{$L\equiv$}};
+\draw [->] (1.35,2.2308648946743626) -- (1.45,2.2512894804092745);
+\draw [->] (2.099185545523773,2.8155770684977686) -- (2.0664202368358655,2.6958193007182714);
+\draw [->] (2.8,1.92) -- (2.7,1.925);
+\draw [->] (2.539517043578322,1.3753231851333148) -- (2.5,1.5);
+\begin{scriptsize}
+\draw [fill=black] (2.1432227545969864,1.9963694313334333) circle (2.0pt);
+\draw [fill=black] (1.,1.) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+
+Por otro lado, $A\cap B$ se retrae con deformación fuerte a la circunferencia $S^1$. Sea $\varepsilon$  la clase de la vuelta canónica de $S^1$. Sea $k_*\func{\pi_1(L,x_0)}{\pi_1(B,x_0)}$ el isomorfismo inducido por la inclusión $k\func{L}{B}$. Sabemos que $\pi_1(L,x_0)$ es el grupo libre engendrado por las clases de los lazos $\gamma*a_i*\overline{\gamma}$ y $\gamma*b_i*\overline{\gamma}$, donde $a_i$ y $b_i$ son las vueltas canónicas indicadas de la misma manera.  Por tanto las clases, que denotamos $\alpha'_i$ y $\beta'_i$ respectivamente, de esos mismos lazos en $B$ generan $\pi_1(B,x_0)$. Tenemos el siguiente diagrama
+\[
+\begin{tikzcd}
+\pi_1(A\cap B,x_0)=\langle\varepsilon|\ \rangle \ar[r, "i_{1*}"]\arrow[d,"i_{2*}"'] & \pi_1(A,x_0)=\{1\}\arrow[d, dashed, "j_{1*}"]\\
+\pi_1(B,x_0)=\langle \alpha'_1,\beta'_1,\dots,\alpha'_n,\beta'_n| \rangle\arrow[r,dashed,"j_{2*}"'] & \pi_1(S,x_0)
+\end{tikzcd}
+\]
+Como se ha hecho repetidas veces ya, en este diagrama se comprueba que $i_{2*}(\varepsilon)=[\alpha'_1,\beta'_1]\cdots[\alpha'_n,\beta'_n]$, donde $[\alpha'_i,\beta'_i]$ indica la relación de conmutación. Además, como $i_{1*}(\varepsilon)=1$, usando el teorema de Seifert-Van Kampen, se llega a 
+\[
+\pi_1(S,x)=\langle \alpha_1,\beta_1,\dots,\alpha_n,\beta_n|[\alpha_1,\beta_1]\cdots[\alpha_n,\beta_n]\rangle,
+\]
+donde $\alpha_i=j_{2*}(\alpha'_i)$ y $\beta_i=j_{2*}(\beta'_i)$ son las clases de los lazos  $\gamma*a_i*\overline{\gamma}$ y $\gamma*b_i*\overline{\gamma}$ en $X$. Ahora, al abelianizar la relación del grupo, que es un producto de conmutadores, sevuelve trivial y nos queda el grupo abeliano libre
+\begin{gather*}
+(\pi_1(S,x))^{ab}=\langle \alpha_i, \beta_i|[\alpha_i,\beta_i],[\alpha_i,\beta_j],\ 1\leq i, j\leq n\rangle=\\
+\langle \alpha_i, \beta_i|[\alpha_i,\beta_j],\ 1\leq i, j\leq n\rangle\cong\Z\underbrace{\times\cdots\times}_{2n\ veces}\Z.
+\end{gather*}
+
+
+\section{El grupo fundamental de una superficie de tipo II}
+Una superficie $S$ de tipo II viene representada por el código $a_1 a_1 a_2 a_2\dots a_n a_n$. Esto es, $S$ es el resultado de identificar los lados de un polígono de $2n$ lados de acuerdo con el siguiente gráfico:
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-1.5,-0.85) rectangle (8,3.4);
+\draw (4.,3.)-- (5.5,3.);
+\draw (5.5,3.)-- (6.5,2.);
+\draw (6.5,2.)-- (6.5,0.5);
+\draw (6.5,0.5)-- (5.5,-0.5);
+\draw (4.,3.)-- (3.,2.);
+\draw (3.,2.)-- (3.,0.5);
+\draw [dash pattern=on 2pt off 2pt] (3.,0.5)-- (5.5,-0.5);
+\draw(4.8,1.4) circle (0.6027172390626455cm);
+\draw (4.405738478652503,1.8558792856097492)-- (4.,3.);
+\draw [->] (4.,3.) -- (4.8,3.);
+\draw [->] (5.5,3.) -- (6.,2.5);
+\draw [->] (6.5,1.5) -- (6.5,1.);
+\draw [->] (6.5,0.5) -- (6.,0.);
+\draw [->] (3.,2) -- (3.5,2.5);
+\draw [->] (3.,1.) -- (3.,1.5);
+\draw [dash pattern=on 2pt off 2pt] (4.8,1.4) circle (1cm);
+\draw (4.55,1.5838433463488795) node[anchor=north west] {$A$};
+\draw (3.414187200315089,0.8683484392203448) node[anchor=north west] {$B$};
+\draw (1,1.7) node[anchor=north west] {\large{$S\ \equiv$}};
+\draw (2.35,1.5) node[anchor=north west] {$a_n$};
+\draw (3.,3) node[anchor=north west] {$a_n$};
+\draw (4.7,3.35) node[anchor=north west] {$a_1$};
+\draw (6.048151968315743,2.8025434628864936) node[anchor=north west] {$a_1$};
+\draw (6.622120410297976,1.387278811423458) node[anchor=north west] {$a_2$};
+\draw (6.142502945079946,-0.04371100283361169) node[anchor=north west] {$a_2$};
+\draw (4.2,2.78681830009246) node[anchor=north west] {$\gamma$};
+\draw (5.25,1.552393020760812) node[anchor=north west] {$S^1$};
+\draw (4.4284602005302665,1.8904840208325373) node[anchor=north west] {$x_0$};
+\begin{scriptsize}
+\draw [fill=black] (4.405738478652503,1.8558792856097492) circle (2.5pt);
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.1](3,0.5)--(3.,2.) -- (4,3)--(5.5,3)--(6.5,2)-- (6.5,0.5)--(5.5,-0.5)--cycle;
+\end{scriptsize}
+\end{tikzpicture}
+
+Como en el caso anterior, escribimos $S=A\cup B$, donde $A$ es un disco abierto, por lo que es contráctil, esto es, $\pi_1(A,x_0)=\{1\}$, y $B$ es $S$ menos un disco cerrado contenido en $A$, por lo que $B$ se retrae al siguiente grafo:
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-3,0.5) rectangle (6.393300959292774,3.2);
+\draw [rotate around={-12.485467490857165:(1.6364672736480006,2.086385207554635)}] (1.6364672736480006,2.086385207554635) ellipse (0.4955243419426075cm and 0.13041747704333986cm);
+\draw [rotate around={86.157546872085:(2.173228013337387,2.4831214064554827)}] (2.173228013337387,2.4831214064554827) ellipse (0.46750069112046705cm and 0.1344452240202966cm);
+\draw [shift={(2.2965829659368096,2.189736654327123)},dash pattern=on 2pt off 2pt]  plot[domain=-0.020405330686538825:1.4601391056210007,variable=\t]({1.*0.6535839211181232*cos(\t r)+0.*0.6535839211181232*sin(\t r)},{0.*0.6535839211181232*cos(\t r)+1.*0.6535839211181232*sin(\t r)});
+\draw [rotate around={1.1708850280784644:(2.58494704784979,1.9915168803910728)}] (2.58494704784979,1.9915168803910728) ellipse (0.4223626584291288cm and 0.07777723849776252cm);
+\draw [rotate around={-64.02560603756869:(2.3199203894015676,1.5529583855030706)}] (2.3199203894015676,1.5529583855030706) ellipse (0.4572702113179464cm and 0.14432623016288876cm);
+\draw (2.1432227545969864,1.9963694313334333)-- (1.,1.);
+\draw (1.2,2.6) node[anchor=north west] {$a_1$};
+\draw (1.6,2.9298663699236602) node[anchor=north west] {$a_2$};
+\draw (2.812673416271692,1.9430267491282782) node[anchor=north west] {$a_{n-1}$};
+\draw (2.6259740285536464,1.4829461151088095) node[anchor=north west] {$a_n$};
+\draw (1.0723684093284844,0.996194139986763) node[anchor=north west] {$x_0$};
+\draw (1.645802243033909,1.4162677623523647) node[anchor=north west] {$\gamma$};
+\draw (-0.3,2.2) node[anchor=north west] {\large{$L\equiv$}};
+%\draw [->] (1.35,2.2308648946743626) -- (1.45,2.2512894804092745);
+%\draw [->] (2.,2.9) -- (2.1,3);
+%\draw [->] (2.8,1.92) -- (2.7,1.925);
+%\draw [->] (2.539517043578322,1.3753231851333148) -- (2.5,1.5);
+\begin{scriptsize}
+\draw [fill=black] (2.1432227545969864,1.9963694313334333) circle (2.0pt);
+\draw [fill=black] (1.,1.) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+
+Por otro lado, $A\cap B$ se retrae con deformación fuerte a la circunferencia $S^1$. Sean $\alpha'_i=\gamma_\sharp[a_i]$ las clases de los lazos $\gamma*a_i*\overline{\gamma}$ ya vistos en $B$, que al representar generadores de $\pi_1(L,x_0)$ también son representantes de generadores de $\pi_1(B,x_0)$. Tenemos el siguiente diagrama, donde $\varepsilon$ la clase de la vuelta canónica de $S^1$ en $A\cap B$,
+\[
+\begin{tikzcd}
+\pi_1(A\cap B,x_0)=\langle\varepsilon|\ \rangle \ar[r, "i_{1*}"]\arrow[d,"i_{2*}"'] & \pi_1(A,x_0)=\{1\}\arrow[d, dashed, "j_{1*}"]\\
+\pi_1(B,x_0)=\langle \alpha'_1,\dots,\alpha'_n|\ \rangle\arrow[r,dashed,"j_{2*}"'] & \pi_1(S,x_0)
+\end{tikzcd}
+\]
+Se tiene que $i_{1*}(\varepsilon)=1$ y $i_{2*}(\varepsilon)=\alpha'_1\alpha'_1\cdots\ \alpha_n'\alpha_n'={\alpha'}_1^2\cdots\ {\alpha'}_n^2$, así que sin más que aplicar el teorema de Seifert-Van Kampen obtenemos
+
+\[
+\pi_1(S,x_0)=\langle\alpha_1,\dots,\alpha_n|\alpha_1^2\cdots\ \alpha_n^2\rangle,
+\]
+donde $\alpha_i=j_{2*}(\alpha'_i)$ son las clases de los lazos $\gamma*a_i*\overline{\gamma}$ en $X$. Ahora, abelianizando
+\[
+(\pi_1(S,x))^{ab}=\langle\alpha_i|\alpha_1^2\cdots\ \alpha_n^2,\ [\alpha^{}_i,\alpha^{}_j]\ 1\leq i, j\leq n \rangle.
+\]
+Si ahora llamamos $\beta_i=\alpha_i$ para $1\leq i\leq n-1$ y $\beta_n=\alpha_1\cdots\ \alpha_n$ nos queda
+\[
+(\pi_1(S,x))^{ab}=\langle\beta_i|[\beta^{}_i,\beta^{}_j],\ \beta^2_n,\ 1, i\leq j\leq n-1\rangle\cong\Z\underbrace{\times\cdots\times}_{n-1\ veces}\Z\times\Z_2
+\]
+\section{Fin del teorema de clasificación de superficies.\\ Triangulación}
+Los grupos abelianizados de modelos diferentes no son isomorfos. Por tanto, representan modelos de superficies no homeomorfas. Para terminar la clasificación de superficies queda probar que toda superficie conexa y compacta es homeomorfa a algún modelo. Para ello, hacemos uso de la idea triangulación.
+
+\begin{defi}
+Una \textbf{triangulación} de una superficie $S$ es un conjunto de vértices, aristas y triángulos $K$  en algún $\R^n$ cumpliendo:
+\begin{enumerate}
+\item Si $\sigma\in K$, entonces todas sus caras están en $K$.
+\item Si $\sigma,\tau\in K$, entonces $\sigma\cap\tau$ es una cara común, posiblemente vacía.
+\item $|K|=\underset{\sigma\in K}{\bigcup}\sigma\subseteq\R^n$ es homeomorfo a $S$.
+\end{enumerate}
+\end{defi}
+
+\begin{ej}\label{ejem}\
+\begin{enumerate}
+\item El borde de un tetraedro triangula a $S^2$.
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-1.008,-0.8) rectangle (11.258666666666668,2.2);
+\draw (0.,0.)-- (2.,-0.6373333333333323);
+\draw (0.,0.)-- (1.584,2.008);
+\draw (2.,-0.6373333333333323)-- (3.,0.);
+\draw (1.584,2.008)-- (3.,0.);
+\draw (2.,-0.6373333333333323)-- (1.584,2.008);
+\draw [dash pattern=on 3pt off 3pt] (0.,0.)-- (3.,0.);
+\draw (3.12,1.1226666666666671) node[anchor=north west] {\large{$\cong\ S^2$}};
+\end{tikzpicture}
+
+\item Triangulación del toro.
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-1.8733333333333335,-0.5) rectangle (13.46,3.5);
+\draw (0.,0.)-- (3.,0.);
+\draw (3.,0.)-- (3.,3.);
+\draw (3.,3.)-- (0.,3.);
+\draw (0.,3.)-- (0.,0.);
+\draw (0.,2.)-- (3.,2.);
+\draw (0.,1.)-- (3.,1.);
+\draw (1.,3.)-- (1.,0.);
+\draw (2.,3.)-- (2.,0.);
+\draw (1.,3.)-- (0.,2.);
+\draw (2.,3.)-- (0.,1.);
+\draw (3.,3.)-- (0.,0.);
+\draw (3.,2.)-- (1.,0.);
+\draw (3.,1.)-- (2.,0.);
+\draw [->] (0.,0.) -- (0.,1.54);
+\draw [->] (3.,0.) -- (3.,1.46);
+\draw [->] (0.,3.) -- (1.5266666666666668,3.);
+\draw [->] (0.,0.) -- (1.5666666666666669,0.);
+\draw (-0.5,0) node[anchor=north west] {$v_0$};
+\draw (-0.6,3.2) node[anchor=north west] {$v_0$};
+\draw (2.9,0) node[anchor=north west] {$v_0$};
+\draw (3,3.2) node[anchor=north west] {$v_0$};
+\draw (0.8,0.0) node[anchor=north west] {$v_1$};
+\draw (0.8,3.4) node[anchor=north west] {$v_1$};
+\draw (1.8,0.0) node[anchor=north west] {$v_2$};
+\draw (1.8,3.4) node[anchor=north west] {$v_2$};
+\draw (-0.6,2.2) node[anchor=north west] {$v_3$};
+\draw (3,2.2) node[anchor=north west] {$v_3$};
+\draw (-0.6,1.2) node[anchor=north west] {$v_4$};
+\draw (3.,1.2) node[anchor=north west] {$v_4$};
+\draw (1.,2.) node[anchor=north west] {$v_5$};
+\draw (2.,2.) node[anchor=north west] {$v_6$};
+\draw (1.,1.) node[anchor=north west] {$v_7$};
+\draw (2.,1.) node[anchor=north west] {$v_8$};
+\draw [fill=black] (0,0) circle (2pt);
+\draw [fill=black] (0,1) circle (2pt);
+\draw [fill=black] (1,0) circle (2pt);
+\draw [fill=black] (1,1) circle (2pt);
+\draw [fill=black] (0,2) circle (2pt);
+\draw [fill=black] (2,0) circle (2pt);
+\draw [fill=black] (2,2) circle (2pt);
+\draw [fill=black] (1,2) circle (2pt);
+\draw [fill=black] (2,1) circle (2pt);
+\draw [fill=black] (0,3) circle (2pt);
+\draw [fill=black] (3,0) circle (2pt);
+\draw [fill=black] (3,3) circle (2pt);
+\draw [fill=black] (1,3) circle (2pt);
+\draw [fill=black] (3,1) circle (2pt);
+\draw [fill=black] (2,3) circle (2pt);
+\draw [fill=black] (3,2) circle (2pt);
+
+\end{tikzpicture}
+Observar que la triangulación aquí descrita no es plana pues las caras exteriores son iguales dos a dos. Al identificar tenemos una triangulación en el espacio tridimensional.
+\end{enumerate}
+\end{ej}
+
+\begin{nota}
+Se puede hablar de triangulación de espacios que no son superficies, por ejemplo, de grafos.
+\end{nota}
+
+\begin{prop}\label{534}
+Toda triangulación de una superficie tiene las dos  propiedades siguientes.
+\begin{enumerate}
+\item Toda arista de $K$ está exactamente en dos triángulos de $K$.
+\item Dado un vértice $v\in K$, la unión de todos los triángulos que contienen a $v$ es homeomorfa a un disco.
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(5.810293012772353,-0.1) rectangle (16.283165995036764,2.7);
+\fill[fill=black,fill opacity=0.09] (8.,0.) -- (9.5,0.) -- (10.25,1.299038105676658) -- (9.5,2.5980762113533165) -- (8.,2.598076211353317) -- (7.25,1.2990381056766593) -- cycle;
+\draw (8.,0.)-- (9.5,0.);
+\draw (9.5,0.)-- (10.25,1.299038105676658);
+\draw (10.25,1.299038105676658)-- (9.5,2.5980762113533165);
+\draw (9.5,2.5980762113533165)-- (8.,2.598076211353317);
+\draw (8.,2.598076211353317)-- (7.25,1.2990381056766593);
+\draw (7.25,1.2990381056766593)-- (8.,0.);
+\draw (8.75,1.2990381056766576)-- (8.,2.598076211353317);
+\draw (8.75,1.2990381056766576)-- (9.5,2.5980762113533165);
+\draw (8.75,1.2990381056766576)-- (10.25,1.299038105676658);
+\draw (8.75,1.2990381056766576)-- (9.5,0.);
+\draw (8.75,1.2990381056766576)-- (8.,0.);
+\draw (8.75,1.2990381056766576)-- (7.25,1.2990381056766593);
+\draw (8.53,1.243118639437196) node[anchor=north west] {$v$};
+\draw (10.573173508184778,1.6) node[anchor=north west] {\large{$\cong\ B^2$}};
+\begin{scriptsize}
+\draw [fill=black] (8.75,1.2990381056766576) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+
+\end{enumerate}
+\end{prop}
+
+\begin{teorema}
+Toda superficie es triangulable.
+\end{teorema}
+
+La demostración de este teorema no es sencilla. Existen varios métodos para probarlo. Una demostración puramente topológica puede encontrarse en [Moise] o [Doyle \& Moran], que usa técnicas topológicas más refinadas. Otra demostración de tipo geométrico basada en la existencia de geodésicas puede consultarse en [Bloch]. Alternativamente puede verse en [Mohar \& Thomassen] una demostración basada en la caracterización por Kuratowski de los grafos planos.
+
+Una vez que sabemos que toda superficie admite una triangulación, estamos en condiciones de completar el teorema de clasificación de las superficie con el siguiente resultado aún pendiente.
+
+\begin{teorema}
+Toda superficie conexa y compacta es homeomorfa a un modelo.
+\end{teorema}
+\begin{dem}
+Sea $K$ una triangulación de $S$. Ordenando los triángulos $t_1,\dots,t_n$ (sólo hay una cantidad finita por compacidad) de forma que $t_i$ tenga alguna arista en común con $t_j$ para algún $j<i$. Ahora se forma una región plana de la siguiente manera: empezamos con una copia de $t_1$ en $\R^2$ y le pegamos una copia de $t_2$ por una arista común. Tomamos $t_3$, que tiene una arista en común con $t_1$ o con $t_2$ y la pegamos a $t_1\cup t_2$. Si hay más de una arista común, $t_1\cup t_2\cup t_3$ es homeomorfo a $B^2$. Seguimos hasta pegar todos los triángulos (sólo por una arista cada vez). Toda la unión es un polígono en cuyo perímetro faltan por identificar las aristas. 
+
+Vamos a llegar a uno de los tipos I o II mediante una serie de operaciones. Empezamos orientando la región eligiendo un sentido de recorrido del perímetro, y como las aristas deben quedar emparejadas por la proposición \ref{534}, nos encontramos con que cada arista $a$ del perímetro aparece dos veces. (Además, el sentido de recorrido, fijado uno de los sentidos sobre $a$, pueden coincidir en las dos apariciones de $a$ o ser uno opuesto del otro). Se forma así un código de letras y, posiblemente, sus inversos. El objetivo es demostrar que este código se puede ``normalizar'' a uno de los dos tipos I y II del teorema de clasificación, de forma que los pasos que se den representen homeomorfismos.\
+Todo ello se alcanza al aplica una o varias veces cada una de las siguientes operaciones:
+\begin{enumerate}
+\item[$\circled{1}$] Simplificar grupos de letras que aparecen repetidas varias veces: $abc\cdots a^{-1}b^{-1}c^{-1}\longrightarrow x\cdots x^{-1}$.
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-1.5133333333333334,-1) rectangle (13.82,3.1);
+\fill[fill=black,fill opacity=0.09](1.,2.)-- (1.34,2.98)--(1.34,2.98)-- (3.,3.)--(3.62,2.0066666666666673)-- (3.66,0.9933333333333335)-- (3.18,0.)--(1.58,0.)--(1.,1.)-- cycle;
+\draw (1.,2.)-- (1.34,2.98);
+\draw (1.,2.)-- (1.,1.);
+\draw (1.,1.)-- (1.58,0.);
+\draw (3.,3.)-- (3.62,2.0066666666666673);
+\draw (3.62,2.0066666666666673)-- (3.66,0.9933333333333335);
+\draw (3.66,0.9933333333333335)-- (3.18,0.);
+\draw [dash pattern=on 3pt off 3pt] (1.34,2.98)-- (3.,3.);
+\draw [dash pattern=on 3pt off 3pt] (1.58,0.)-- (3.18,0.);
+\draw [->] (1.58,0.) -- (1.3132335628055474,0.459942133093884);
+\draw [->] (1.,1.) -- (1.,1.5533333333333337);
+\draw [->] (1.,2.) -- (1.1811648079306072,2.522180916976456);
+\draw [->] (3.62,2.0066666666666673)--(3.3,2.5);
+\draw [->] (3.66,0.9933333333333335) -- (3.6399896283491793,1.6);
+\draw [->] (3.18,0.) -- (3.45,0.6);
+\draw [->] (4.446666666666667,1.54) -- (5.953333333333334,1.54);
+\fill[fill=black,fill opacity=0.09](7.,3.)-- (7.,0.)--(9.,0.)-- (9.,3.)--cycle;
+\draw (7.,3.)-- (7.,0.);
+\draw (9.,3.)-- (9.,0.);
+\draw [dash pattern=on 3pt off 3pt] (7.,3.)-- (9.,3.);
+\draw [dash pattern=on 3pt off 3pt] (7.,0.)-- (9.,0.);
+\draw [->] (7.,0.) -- (7.,1.54);
+\draw [->] (9.,0.) -- (9.,1.54);
+\draw (0.8,0.5) node[anchor=north west] {$a$};
+\draw (0.5,1.7) node[anchor=north west] {$b$};
+\draw (0.8,2.886666666666667) node[anchor=north west] {$c$};
+\draw (3.3,2.806666666666667) node[anchor=north west] {$a$};
+\draw (3.7,1.726666666666667) node[anchor=north west] {$b$};
+\draw (3.5,0.6466666666666668) node[anchor=north west] {$c$};
+\draw (6.5,1.74) node[anchor=north west] {$x$};
+\draw (9.,1.66) node[anchor=north west] {$x$};
+\end{tikzpicture}
+
+\item[$\circled{2}$] Reducción, esto es, la eliminación de las apariciones de una arista con los dos sentidos de identificación distintos de manera consecutiva:
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-2.313333333333334,-0.5) rectangle (13.02,2.1);
+\draw [dash pattern=on 3pt off 3pt,fill=black,fill opacity=0.09000000357627869] (6.993333333333335,0.7866666666666661) circle (1.2133516482134203cm);
+\draw [dash pattern= on 3pt off 3pt,shift={(2.,1.)},color=black,fill=black,fill opacity=0.10000000149011612]  (0,0) --  plot[domain=-3.9269908169872414:0.7853981633974483,variable=\t]({1.*1.4142135623730951*cos(\t r)+0.*1.4142135623730951*sin(\t r)},{0.*1.4142135623730951*cos(\t r)+1.*1.4142135623730951*sin(\t r)}) -- cycle ;
+\draw (1.,2.)-- (2.,1.);
+\draw (2.,1.)-- (3.,2.);
+\draw [shift={(2.,1.)},dash pattern=on 3pt off 3pt]  plot[domain=-3.9269908169872414:0.7853981633974483,variable=\t]({1.*1.4142135623730951*cos(\t r)+0.*1.4142135623730951*sin(\t r)},{0.*1.4142135623730951*cos(\t r)+1.*1.4142135623730951*sin(\t r)});
+\draw [->] (4.013333333333333,0.92) -- (5.013333333333333,0.92);
+\draw (7.,2.)-- (6.993333333333335,0.7866666666666661);
+\draw [dash pattern=on 3pt off 3pt] (6.993333333333335,0.7866666666666661) circle (1.2133516482134203cm);
+\draw [->] (1.,2.) -- (1.59,1.41);
+\draw [->] (3.,2.) -- (2.39,1.39);
+\draw [->] (7.,2.) -- (6.995677182389938,1.2132471949685528);
+\draw (1.526666666666667,1.9066666666666663) node[anchor=north west] {$a$};
+\draw (2.26,1.8933333333333329) node[anchor=north west] {$a$};
+\draw (7.18,1.52) node[anchor=north west] {$a$};
+\end{tikzpicture}
+
+\item[$\circled{3}$] Quedarse con un solo vértice: %(copia esto de los terceros apuntes)
+
+\definecolor{ffqqqq}{rgb}{1.,0.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-0.9866666666666668,-0.4) rectangle (14.34666666666667,3.3);
+\fill[fill=black,fill opacity=0.09](0.,0.)-- (2.,0.)--(2.,2.)--(1.,3.)--(0.,2.)--cycle;
+\fill[fill=black,fill opacity=0.09](5.,0.)-- (7.,0.)--(7.,1.64)--(5.,1.64)--cycle;
+\fill[fill=black,fill opacity=0.09](5,2)--(6,3)--(7,2)--cycle;
+\fill[fill=black,fill opacity=0.09](10.,1.)-- (11.,0.)--(12,1)--(12,2.78)--(10,2.78)--cycle;
+\draw (0.,0.)-- (2.,0.);
+\draw (0.,2.)-- (1.,3.);
+\draw (1.,3.)-- (2.,2.);
+\draw [dash pattern=on 3pt off 3pt] (0.,2.)-- (0.,0.);
+\draw [dash pattern=on 3pt off 3pt] (2.,2.)-- (2.,0.);
+\draw [color=ffqqqq] (0.,2.)-- (2.,2.);
+\draw [->] (3.013333333333333,1.32) -- (4.013333333333334,1.32);
+\draw (5.,0.)-- (7.,0.);
+\draw (5.,1.64)-- (7.01333,1.64);
+\draw (5.,2.)-- (7.,2.);
+\draw (5.,2.)-- (6.,3.);
+\draw (6.,3.)-- (7.,2.);
+\draw [dash pattern=on 3pt off 3pt] (5.,1.64)-- (5.,0.);
+\draw [dash pattern=on 3pt off 3pt] (7.01333,1.64)-- (7.,0.);
+\draw [->] (8.,1.3066666666666666) -- (9.,1.3066666666666666);
+\draw (10.,1.)-- (11.,0.);
+\draw (11.,0.)-- (12.,1.);
+\draw (10.,1.)-- (12.,1.);
+\draw (9.973333333333334,2.786666666666666)-- (11.973333333333334,2.786666666666666);
+\draw [dash pattern=on 3pt off 3pt] (9.973333333333334,2.786666666666666)-- (10.,1.);
+\draw [dash pattern=on 3pt off 3pt] (11.973333333333334,2.786666666666666)-- (12.,1.);
+\draw [->] (12.,1.) -- (11.,1.);
+\draw [->] (12.,1.) -- (11.433333333333334,0.43333333333333357);
+\draw [->] (10.,1.) -- (10.653333333333334,0.3466666666666658);
+\draw [->] (9.973333333333334,2.786666666666666) -- (10.973333333333334,2.786666666666666);
+\draw [->] (6.,3.) -- (6.46,2.54);
+\draw [->] (5.,2.) -- (6.,2.);
+\draw [->] (5.,2.) -- (5.56,2.56);
+\draw [->] (7.,0.) -- (6.,0.);
+\draw [->] (5.,1.64) -- (6.,1.64);
+\draw [->] (1.,3.) -- (1.4733333333333336,2.5266666666666664);
+\draw [->] (0.,2.) -- (0.5533333333333333,2.5533333333333332);
+\draw [->] (2.,0.) -- (1.,0.);
+\draw [->,color=ffqqqq] (0.,2.) -- (1.,2.);
+\draw (0.1466666666666667,2.8666666666666663) node[anchor=north west] {$a$};
+\draw [color=ffqqqq] (0.9466666666666669,2.053333333333333) node[anchor=north west] {$c$};
+\draw (1.6,2.9333333333333327) node[anchor=north west] {$b$};
+\draw (1.08,3.306666666666666) node[anchor=north west] {$P$};
+\draw (2.0266666666666673,2.133333333333333) node[anchor=north west] {$Q$};
+\draw (-0.6,0.1333333333333333) node[anchor=north west] {$P$};
+\draw (6,3.2533333333333325) node[anchor=north west] {$P$};
+\draw (7.,2.3) node[anchor=north west] {$Q$};
+\draw (7.0133333333333345,1.8) node[anchor=north west] {$Q$};
+\draw (4.4,0.16) node[anchor=north west] {$P$};
+\draw (11.,0.16) node[anchor=north west] {$Q$};
+\draw (9.4,1.0533333333333332) node[anchor=north west] {$P$};
+\draw (11.973333333333336,2.946666666666666) node[anchor=north west] {$Q$};
+\draw (0.9466666666666669,-0.05) node[anchor=north west] {$a$};
+\draw (5.9333333333333345,2.4) node[anchor=north west] {$c$};
+\draw (5.986666666666668,1.72) node[anchor=north west] {$c$};
+\draw (10.866666666666669,3.2133333333333325) node[anchor=north west] {$c$};
+\draw (10.946666666666669,1.4) node[anchor=north west] {$a$};
+\draw (11.66666666666667,0.6133333333333332) node[anchor=north west] {$c$};
+\draw (5.12,2.84) node[anchor=north west] {$a$};
+\draw (6.586666666666668,2.88) node[anchor=north west] {$b$};
+\draw (10.1,0.5333333333333332) node[anchor=north west] {$b$};
+\draw (6.12,0.) node[anchor=north west] {$a$};
+\begin{scriptsize}
+\draw [fill=black] (0.,0.) circle (2.5pt);
+\draw [fill=black] (1.,3.) circle (2.5pt);
+\draw [fill=black] (2.,2.) circle (2.5pt);
+\draw [fill=black] (5.,0.) circle (2.5pt);
+\draw [fill=black] (7.01333,1.64) circle (2.5pt);
+\draw [fill=black] (7.,2.) circle (2.5pt);
+\draw [fill=black] (6.,3.) circle (2.5pt);
+\draw [fill=black] (10.,1.) circle (2.5pt);
+\draw [fill=black] (11.,0.) circle (2.5pt);
+\draw [fill=black] (11.973333333333334,2.786666666666666) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+
+Ahora $P$ aparece una vez menos y $Q$ una vez más. Reiteramos hasta acabar con $P$ y si queda otro vértice distinto de $Q$ se reitera este procedimiento hasta obtener un solo vértice.
+\item[$\circled{4}$] Dejar consecutivos los lados con sentidos de identificación iguales: %(copia esto de los terceros apuntes)
+
+\definecolor{ffqqqq}{rgb}{1.,0.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-0.98,-0.3) rectangle (14.353333333333335,2.4);
+\fill[fill=black,fill opacity=0.09](0.,2.)-- (2.,2.)--(2.,0.)--(0,0)--cycle;
+\fill[fill=black,fill opacity=0.09](5.,2.)-- (7.,2.)--(5,0.78)--cycle;
+\fill[fill=black,fill opacity=0.09](5,0)--(7,0)--(7,1.24)--cycle;
+\fill[fill=black,fill opacity=0.09](11,0)--(11,2)--(10,1)--cycle;
+\draw (0.,2.)-- (2.,2.);
+\draw (0.,0.)-- (2.,0.);
+\draw [dash pattern=on 3pt off 3pt] (0.,0.)-- (0.,2.);
+\draw [dash pattern=on 3pt off 3pt] (2.,2.)-- (2.,0.);
+\draw [->] (3.,1.) -- (4.,1.);
+\draw (5.,2.)-- (7.,2.);
+\draw (7.,2.)-- (4.993333333333334,0.78);
+\draw (5.,0.)-- (7.,0.);
+\draw (5.,0.)-- (7.006666666666668,1.2466666666666664);
+\draw [dash pattern=on 3pt off 3pt] (5.,2.)-- (4.993333333333334,0.78);
+\draw [dash pattern=on 3pt off 3pt] (7.,0.)-- (7.006666666666668,1.2466666666666664);
+\draw [->] (8.,1.) -- (9.,1.);
+\draw (11.,0.)-- (10.,1.);
+\draw (10.,1.)-- (11.,2.);
+\draw (10.,1.)-- (11.,1.);
+\draw [dash pattern=on 3pt off 3pt] (11.,2.)-- (11.,0.);
+\draw [color=ffqqqq] (2.,2.)-- (0.,0.);
+\draw [->,color=ffqqqq] (2.,2.) -- (1.,1.);
+\draw [->] (0.,2.) -- (1.,2.);
+\draw [->] (2.,0.) -- (1.,0.);
+\draw [->] (5.,2.) -- (6.,2.);
+\draw [->] (7.,2.) -- (5.976242619604052,1.3775827222177455);
+\draw [->] (7.006666666666668,1.2466666666666664) -- (5.987336890446233,0.6133953438984899);
+\draw [->] (7.,0.) -- (6.,0.);
+\draw [->] (11.,1.) -- (10.46,1.);
+\draw [->] (11.,2.) -- (10.44,1.44);
+\draw [->] (10.,1.) -- (10.546666666666667,0.45333333333333314);
+\draw (0.8333333333333335,2.446666666666666) node[anchor=north west] {$a$};
+\draw (0.9133333333333336,0.0066666666666666645) node[anchor=north west] {$a$};
+\draw [color=ffqqqq](1.0333333333333334,1.073333333333333) node[anchor=north west] {$b$};
+\draw (5.913333333333335,2.3933333333333326) node[anchor=north west] {$a$};
+\draw (6.153333333333334,0.0066666666666666645) node[anchor=north west] {$a$};
+\draw (5.673333333333335,1.74) node[anchor=north west] {$b$};
+\draw (6.273333333333334,0.9) node[anchor=north west] {$b$};
+\draw (10.2,1.9) node[anchor=north west] {$b$};
+\draw (10.206666666666669,0.5) node[anchor=north west] {$b$};
+\draw (10.633333333333335,1.06) node[anchor=north west] {$a$};
+\end{tikzpicture}
+
+Si todas eran parejas de símbolos iguales hemos terminado con una superficie de tipo II suponemos ahora que aparecen parejas con símbolos opuestos (digamos, $c$ y $c^{-1}$) y que todas las parejas de símbolos iguales son ya consecutivas. Afirmamos ahora que existe otra pareja de símbolos opuestos separada por las apariciones del lado $c$.
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-1.201942490267058,-0.4) rectangle (9.27093049199736,2);
+\fill[fill=black,fill opacity=0.09](0.,0.)-- (2.,0.)--(2,1.5)--(0,1.5)--cycle;
+\draw (0.,0.)-- (2.,0.);
+\draw (0.,1.5)-- (2.,1.5);
+\draw [dash pattern=on 2pt off 2pt] (0.,1.5)-- (0.,0.);
+\draw [dash pattern=on 2pt off 2pt] (2.,1.5)-- (2.,0.);
+\draw [->] (2.,1.5) -- (0.9837005669011685,1.5);
+\draw [->] (2.,0.) -- (1.0292347972588398,0.);
+\draw (-0.5,0.8511690913644328) node[anchor=north west] {$A$};
+\draw (2.,0.8147417070782956) node[anchor=north west] {$B$};
+\draw (1.0292347972588398,1.9) node[anchor=north west] {$c$};
+\draw (0.9654868747580999,0.0) node[anchor=north west] {$c$};
+\end{tikzpicture}
+
+Si esto no ocurriera, las partes $A$ y $B$ se identificarían por un vértice $P$ y ya no tendríamos una superficie en $P$. En efecto, el entorno de $P$ estará entonces formado por la unión por el punto $P$ de un disco originado al pegar las proximidades de la región alrededor de las apariciones de $P$ en $A$ (teniendo en cuenta la identificación de la parte izquierda de $c$) y el disco originado al pegar las proximidades de $P$ en la parte $B$ (y la derecha de $c$); ver el dibujo.
+
+\definecolor{qqqqff}{rgb}{0.3333333333333333,0.3333333333333333,0.3333333333333333}
+\definecolor{zzttqq}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\definecolor{yqqqqq}{rgb}{0.16470588235294117,0.16470588235294117,0.16470588235294117}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-2.5,-0.3) rectangle (9.816569431417882,3.4);
+\fill[color=yqqqqq,fill=yqqqqq,fill opacity=0.10000000149011612] (0.,0.) -- (3.,0.) -- (3.,3.) -- (0.,3.) -- cycle;
+\fill[color=qqqqff,fill=qqqqff,fill opacity=0.10000000149011612] (0.6,3.) -- (0.,3.) -- (0.,2.4) -- (0.6,2.4) -- cycle;
+\fill[color=qqqqff,fill=qqqqff,fill opacity=0.10000000149011612] (0.,0.) -- (0.6,0.) -- (0.6,0.6) -- (0.,0.6) -- cycle;
+\fill[color=qqqqff,fill=qqqqff,fill opacity=0.10000000149011612] (0.,2.) -- (0.6,2.) -- (0.6,1.) -- (0.,1.) -- cycle;
+\fill[color=qqqqff,fill=qqqqff,fill opacity=0.20000000149011612] (5.5,2.) -- (5.5,1.5) -- (6.,1.5) -- (6.,2.) -- cycle;
+\fill[color=qqqqff,fill=qqqqff,fill opacity=0.20000000149011612] (5.5,1.5) -- (5.5,1.) -- (6.,1.) -- (6.,1.5) -- cycle;
+\fill[color=qqqqff,fill=qqqqff,fill opacity=0.2] (6.,2.) -- (6.5,2.) -- (6.5,1.) -- (6.,1.) -- cycle;
+\draw [color=yqqqqq] (0.,0.)-- (3.,0.);
+\draw [color=yqqqqq] (3.,0.)-- (3.,3.);
+\draw [color=zzttqq] (3.,3.)-- (0.,3.);
+\draw [color=zzttqq] (0.,3.)-- (0.,0.);
+\draw [color=qqqqff] (0.6,3.)-- (0.,3.);
+\draw [color=qqqqff] (0.,3.)-- (0.,2.4);
+\draw [color=qqqqff] (0.,2.4)-- (0.6,2.4);
+\draw [color=qqqqff] (0.6,2.4)-- (0.6,3.);
+\draw [color=qqqqff] (0.,0.)-- (0.6,0.);
+\draw [color=qqqqff] (0.6,0.)-- (0.6,0.6);
+\draw [color=qqqqff] (0.6,0.6)-- (0.,0.6);
+\draw [color=qqqqff] (0.,0.6)-- (0.,0.);
+\draw [color=qqqqff] (0.,2.)-- (0.6,2.);
+\draw [color=qqqqff] (0.6,2.)-- (0.6,1.);
+\draw [color=qqqqff] (0.6,1.)-- (0.,1.);
+\draw [color=qqqqff] (0.,1.)-- (0.,2.);
+\draw [shift={(3.,3.)},color=qqqqff,fill=qqqqff,fill opacity=0.10000000149011612]  (0,0) --  plot[domain=3.141592653589793:4.71238898038469,variable=\t]({1.*0.6*cos(\t r)+0.*0.6*sin(\t r)},{0.*0.6*cos(\t r)+1.*0.6*sin(\t r)}) -- cycle ;
+\draw [shift={(3.,1.5)},color=qqqqff,fill=qqqqff,fill opacity=0.10000000149011612]  (0,0) --  plot[domain=1.5707963267948966:4.71238898038469,variable=\t]({1.*0.5*cos(\t r)+0.*0.5*sin(\t r)},{0.*0.5*cos(\t r)+1.*0.5*sin(\t r)}) -- cycle ;
+\draw [shift={(3.,0.)},color=qqqqff,fill=qqqqff,fill opacity=0.10000000149011612]  (0,0) --  plot[domain=1.5707963267948966:3.141592653589793,variable=\t]({1.*0.6*cos(\t r)+0.*0.6*sin(\t r)},{0.*0.6*cos(\t r)+1.*0.6*sin(\t r)}) -- cycle ;
+\draw [color=qqqqff] (5.5,2.)-- (5.5,1.5);
+\draw [color=qqqqff] (5.5,1.5)-- (6.,1.5);
+\draw [color=qqqqff] (6.,1.5)-- (6.,2.);
+\draw [color=qqqqff] (6.,2.)-- (5.5,2.);
+\draw [color=qqqqff] (5.5,1.5)-- (5.5,1.);
+\draw [color=qqqqff] (5.5,1.)-- (6.,1.);
+\draw [color=qqqqff] (6.,1.)-- (6.,1.5);
+\draw [color=qqqqff] (6.,1.5)-- (5.5,1.5);
+\draw [color=qqqqff] (6.,2.)-- (6.5,2.);
+\draw [color=qqqqff] (6.5,2.)-- (6.5,1.);
+\draw [color=qqqqff] (6.5,1.)-- (6.,1.);
+\draw [color=qqqqff] (6.,1.)-- (6.,2.);
+\draw [shift={(8.,1.5)},color=qqqqff,fill=qqqqff,fill opacity=0.20000000149011612]  (0,0) --  plot[domain=1.5707963267948966:4.71238898038469,variable=\t]({1.*0.5*cos(\t r)+0.*0.5*sin(\t r)},{0.*0.5*cos(\t r)+1.*0.5*sin(\t r)}) -- cycle ;
+\draw [shift={(8.,1.5)},color=qqqqff,fill=qqqqff,fill opacity=0.20000000149011612]  (0,0) --  plot[domain=-1.5707963267948966:0.,variable=\t]({1.*0.5*cos(\t r)+0.*0.5*sin(\t r)},{0.*0.5*cos(\t r)+1.*0.5*sin(\t r)}) -- cycle ;
+\draw [shift={(8.,1.5)},color=qqqqff,fill=qqqqff,fill opacity=0.20000000149011612]  (0,0) --  plot[domain=0.:1.5707963267948966,variable=\t]({1.*0.5*cos(\t r)+0.*0.5*sin(\t r)},{0.*0.5*cos(\t r)+1.*0.5*sin(\t r)}) -- cycle ;
+\draw [->] (0.,1.5) -- (0.,2.2);
+\draw [->] (0.,0.) -- (0.,0.8);
+\draw [->] (3.,0.) -- (1.5,0.);
+\draw [->] (3.,3.) -- (1.5,3.);
+\draw [->] (3.,0.) -- (3.,0.8);
+\draw [->] (3.,1.5) -- (3.,2.2);
+\draw (-0.5,3.332938800526409) node[anchor=north west] {$P$};
+\draw (-0.5,1.6622164846051695) node[anchor=north west] {$P$};
+\draw (-0.5,0.1) node[anchor=north west] {$P$};
+\draw (3.,3.153595727065937) node[anchor=north west] {$P$};
+\draw (3.,1.690533811993665) node[anchor=north west] {$P$};
+\draw (3.,0.10476347823791206) node[anchor=north west] {$P$};
+\draw (5.9,1.6150209389576768) node[anchor=north west] {$P$};
+\draw (7.5,1.633899157216674) node[anchor=north west] {$P$};
+\draw (1.4346405244233336,3.4650863283393885) node[anchor=north west] {$c$};
+\draw (1.5479098339773139,-0.017944940445568828) node[anchor=north west] {$c$};
+\draw (-0.5,2.247441250634078) node[anchor=north west] {$a$};
+\draw (-0.5,0.8787704268567914) node[anchor=north west] {$a$};
+\draw (3.,2.3607105601880605) node[anchor=north west] {$b$};
+\draw (3.,0.8598922085977944) node[anchor=north west] {$b$};
+\begin{scriptsize}
+\draw [fill=black] (0.,0.) circle (2.5pt);
+\draw [fill=black] (3.,0.) circle (2.5pt);
+\draw [fill=black] (3.,3.) circle (2.5pt);
+\draw [fill=black] (0.,3.) circle (2.5pt);
+\draw [fill=black] (0.,1.5) circle (2.5pt);
+\draw [fill=black] (3.,1.5) circle (2.5pt);
+\draw [fill=black] (6.,1.5) circle (2.5pt);
+\draw [fill=black] (6.,1.5) circle (2.5pt);
+\draw [fill=black] (8.,1.5) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+
+\item[$\circled{5}$] Poner juntos los grupos de cuatro lados con símbolos opuestos dos a dos.
+
+\definecolor{ffqqqq}{rgb}{1.,0.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-0.20353195864803264,-0.5) rectangle (12.441850006781989,3);
+\fill[fill=black,fill opacity=0.09] (2.,0.)-- (1.,0.)--(0.5,0.5)--(0.5,1.5)--(1,2)--(2,2)--(2.5,1.5)--(2.5,0.5)--cycle;
+\fill[fill=black,fill opacity=0.09](4,1.5)--(4,2.5)--(5.5,2.5)--(5.5,1.5)--(5.2,1)--(4.3,1)--cycle;
+\fill[fill=black,fill opacity=0.09](4,0)--(5.5,0)--(5.2,0.5)--(4.3,0.5)--cycle;
+\fill[fill=black,fill opacity=0.09](7.5,0)--(9,0)--(9,2)--(7.5,2)--cycle;
+\fill[fill=black,fill opacity=0.09](10.5,0.)-- (10.500463974611332,0.7259541276919175)--(11.5,0.7259541276919175)--(12.1,0.5)--(11.5,0)--cycle;
+\fill[fill=black,fill opacity=0.09](10.5,1.35)--(10.5,2)--(11.8,2)--(11,1.35)--cycle;
+\draw (2.,0.)-- (1.,0.);
+\draw (0.5,0.5)-- (0.4908931539284658,1.4817863078569313);
+\draw (1.,2.)-- (2.,2.);
+\draw (2.5,0.5)-- (2.5,1.5);
+\draw [dash pattern=on 3pt off 3pt] (1.,2.)-- (0.4908931539284658,1.4817863078569313);
+\draw [dash pattern=on 3pt off 3pt] (0.5,0.5)-- (1.,0.);
+\draw [dash pattern=on 3pt off 3pt] (2.,0.)-- (2.5,0.5);
+\draw [dash pattern=on 3pt off 3pt] (2.,2.)-- (2.5,1.5);
+\draw [->] (3.,1.) -- (3.5,1.);
+\draw [color=ffqqqq] (0.4908931539284658,1.4817863078569313)-- (2.5,1.5);
+\draw [->,color=ffqqqq] (2.5,1.5) -- (1.3,1.4908931539284658);
+\draw (4.,1.5)-- (4.,2.5);
+\draw (4.,2.5)-- (5.5,2.5);
+\draw (5.5,2.5)-- (5.5,1.5);
+\draw (5.5,0.)-- (4.,0.);
+\draw (4.300202627325093,0.4961887849190603)-- (5.219994080550054,0.5052956309905946);
+\draw (4.30931,1.)-- (5.22910092662159,0.9970653188534455);
+\draw [dash pattern=on 3pt off 3pt] (4.30931,1.)-- (4.,1.5);
+\draw [dash pattern=on 3pt off 3pt] (5.22910092662159,0.9970653188534455)-- (5.5,1.5);
+\draw [dash pattern=on 3pt off 3pt] (4.300202627325093,0.4961887849190603)-- (4.,0.);
+\draw [dash pattern=on 3pt off 3pt] (5.219994080550054,0.5052956309905946)-- (5.5,0.);
+\draw [->] (6.,1.) -- (7.,1.);
+\draw (7.5,0.)-- (9.,0.);
+\draw (7.5,1.)-- (7.5,2.);
+\draw (7.5,2.)-- (9.,2.);
+\draw (9.,2.)-- (9.,1.);
+\draw [dash pattern=on 3pt off 3pt] (7.5,1.)-- (7.5,0.);
+\draw [dash pattern=on 3pt off 3pt] (9.,1.)-- (9.,0.);
+\draw [->] (1.,2.) -- (1.5,2.);
+\draw [->] (0.5,0.5) -- (0.5,1.);
+\draw [->] (2.5,0.5) -- (2.5,1.);
+\draw [->] (1.,0.) -- (1.5,0.);
+\draw [->] (4.,1.5) -- (4.,2.);
+\draw [->] (5.5,2.5) -- (4.746438084830273,2.5);
+\draw [->] (5.5,1.5) -- (5.5,2.);
+\draw [->] (4.300202627325093,0.4961887849190603) -- (4.78281815850655,0.5009671565149163);
+\draw [->] (5.5,0.) -- (4.71911754661567,0.);
+\draw [->] (9.,2.) -- (8.261680668442505,2.);
+\draw [->] (7.5,1.) -- (7.5,1.5);
+\draw [->] (9.,1.) -- (9.,1.5);
+\draw [->] (9.,0.) -- (8.191304347826089,0.);
+\draw [->] (9.5,1.) -- (10.,1.);
+\draw [->] (4.30931,1.) -- (4.8284328345016485,0.9983436888198565);
+\draw (1.3455547981943938,2.4480714961213645) node[anchor=north west] {$b$};
+\draw (0.016196659343800938,1.096740495471607) node[anchor=north west] {$a$};
+\draw (2.5870214898482535,1.1626590808691561) node[anchor=north west] {$a$};
+\draw (1.3675276599935773,0.009083836412045989) node[anchor=north west] {$b$};
+\draw [color=ffqqqq] (1.4883783998890856,1.4702791460577187) node[anchor=north west] {$c$};
+\draw (4.7513483770678135,2.9) node[anchor=north west] {$c$};
+\draw (4.7513483770678135,0.009083836412045989) node[anchor=north west] {$c$};
+\draw (3.5428409781127295,2.0305871219368865) node[anchor=north west] {$a$};
+\draw (5.619276418135557,2.0086142601377035) node[anchor=north west] {$a$};
+\draw (4.718389084369039,1.4263334224593527) node[anchor=north west] {$b$};
+\draw (4.773321238866997,0.9) node[anchor=north west] {$b$};
+\draw [color=ffqqqq] (8.,1.4) node[anchor=north west] {$d$};
+\draw (8.190101248640008,2.4) node[anchor=north west] {$c$};
+\draw (8.26700626493715,0.020070267311637514) node[anchor=north west] {$c$};
+\draw (7.003566711484107,1.558170593254451) node[anchor=north west] {$a$};
+\draw (9.123947875105301,1.580143455053634) node[anchor=north west] {$a$};
+\draw (5.3,1.) node[anchor=north west] {$\text{Pegar por b}$};
+\draw [color=ffqqqq] (7.5,0.)-- (8.,1.);
+\draw [color=ffqqqq] (8.,1.)-- (7.5,2.);
+\draw [->,color=ffqqqq] (7.5,0.) -- (7.7652072945837025,0.5304145891674049);
+\draw [->,color=ffqqqq] (8.,1.) -- (7.771197777929561,1.4576044441408786);
+\draw (10.5,2.)-- (11.713790923054455,1.9891438274409148);
+\draw (11.713790923054455,1.9891438274409148)-- (11.,1.3573497176921505);
+\draw [dash pattern=on 3pt off 3pt] (10.5,2.)-- (10.5,1.3573497176921505);
+\draw [dash pattern=on 3pt off 3pt] (10.5,1.3573497176921505)-- (11.,1.3573497176921505);
+\draw (11.5,0.)-- (10.5,0.);
+\draw (10.5,0.)-- (10.500463974611332,0.7259541276919175);
+\draw (10.500463974611332,0.7259541276919175)-- (11.497719000728969,0.709333210589957);
+\draw (11.497719000728969,0.709333210589957)-- (12.137624309154452,0.49326128826447063);
+\draw [dash pattern=on 3pt off 3pt] (12.137624309154452,0.49326128826447063)-- (11.5,0.);
+\draw [->] (10.5,2.) -- (11.140192181601485,1.9942741071279777);
+\draw [->] (11.,1.3573497176921505) -- (11.454922927229768,1.760013322019753);
+\draw [->] (12.137624309154452,0.49326128826447063) -- (11.828861520668152,0.5975188532078959);
+\draw [->] (11.497719000728969,0.709333210589957) -- (11.007261169222627,0.7175075077817293);
+\draw [->] (10.5,0.) -- (10.500272757052722,0.4267671192434781);
+\draw [->] (11.5,0.) -- (11.,0.);
+\draw (10.705993924646503,2.4480714961213645) node[anchor=north west] {$a$};
+\draw (11.72773199830853,1.0) node[anchor=north west] {$a$};
+\draw (11.3,1.8) node[anchor=north west] {$d$};
+\draw (10.793885371843237,1.1077269263711984) node[anchor=north west] {$c$};
+\draw (10.013848777972227,0.5144596577932561) node[anchor=north west] {$d$};
+\draw (10.804871802742827,0.06401599091000361) node[anchor=north west] {$c$};
+\end{tikzpicture}
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-2.8597603946441175,-0.5) rectangle (10.11839323467231,3);
+\fill[fill=black,fill opacity=0.09](2.9809725158562377,1.3407892882311478)--(4.424242424242426,0.)--(6.239605355884429,0.)--(6.24,2.52)--(4.424242424242426,2.52)--cycle;
+\draw [dash pattern=on 1pt off 1pt](6.24,1.2)--(4.424242424242426,2.52);
+\draw [->,dash pattern=on 1pt off 1pt](6.24,1.2)--(5.3,1.9);
+\draw [->] (0.,1.4309936575052846) -- (1.9887244538407334,1.4309936575052846);
+\draw (2.9809725158562377,1.3407892882311478)-- (4.424242424242426,0.);
+\draw (2.9809725158562377,1.3407892882311478)-- (4.379140239605357,2.5247216349541928);
+\draw (4.424242424242426,0.)-- (6.239605355884429,0.);
+\draw (4.379140239605357,2.5247216349541928)-- (6.24,2.52);
+\draw [dash pattern=on 3pt off 3pt] (6.24,2.52)-- (6.239605355884429,0.);
+\draw [->] (6.239605355884429,0.) -- (5.1797040169133215,0.);
+\draw [->] (4.424242424242426,0.) -- (3.6347600686255266,0.7334244824949211);
+\draw [->] (2.9809725158562377,1.3407892882311478) -- (3.7566084569959526,1.9975777867768743);
+\draw [->] (6.24,2.52) -- (5.202492638270481,2.522632509514492);
+\draw (0.015503875968991615,2.0511486962649745) node[anchor=north west] {$\text{Pegar por a}$};
+\draw (5.5,2.0511486962649745) node[anchor=north west] {$a$};
+\draw (4.931642001409445,3.0095701198026776) node[anchor=north west] {$d$};
+\draw (3.341789992952785,2.4) node[anchor=north west] {$c$};
+\draw (3.3,0.8221141649048616) node[anchor=north west] {$d$};
+\draw (5.168428470754054,-0.0010007047216362877) node[anchor=north west] {$c$};
+\end{tikzpicture}
+
+Con esto llegaríamos a una superficie de Tipo I, a menos que aparezcan mezclados pares del mismo sentido de identificación con grupos de dos pares con sentidos de identificación opuestos.
+
+\item[$\circled{6}$] Si aparecen pares con el mismo símbolo ($aa$) seguidos de grupos de cuatro de la forma $bcb^{-1}c^{-1}$, pasamos todo a pares del mismo símbolo, es decir, nos lo llevamos a una superficie de tipo II.
+
+\definecolor{ffqqqq}{rgb}{1.,0.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(0,-1.9466666666666679) rectangle (16.293333333333337,3.8);
+\fill[fill=black,fill opacity=0.09](2.,3.)-- (3.,3.)--(3.64,2.0133333333333323)--(3.653333333333334,1.)--(3,0)--(2,0)--(1.413333333333334,1.0133333333333323)--cycle;
+\fill[fill=black,fill opacity=0.09](7.,3.)--(8,3)--(8.64,1.98)--(8,1)--(7,1)--cycle;
+\fill[fill=black,fill opacity=0.09](9,0)--(9,1)--(10,1)--(10,0)--cycle;
+\fill[fill=black,fill opacity=0.09](13.26666666666667,0.)-- (12.533333333333335,1.0266666666666648)--(12.6,2)--(13,3)--(14,3)--(14.39,2.)--(14.3,0)--cycle;
+\draw (2.,3.)-- (3.,3.);
+\draw (3.,3.)-- (3.64,2.0133333333333323);
+\draw (3.64,2.0133333333333323)-- (3.653333333333334,1.);
+\draw (3.653333333333334,1.)-- (3.,0.);
+\draw (3.,0.)-- (2.,0.);
+\draw (2.,0.)-- (1.413333333333334,1.0133333333333323);
+\draw [dash pattern=on 3pt off 3pt] (2.,3.)-- (1.413333333333334,1.0133333333333323);
+\draw [color=ffqqqq] (2.,0.)-- (3.64,2.0133333333333323);
+\draw [->] (4.586666666666668,1.5066666666666648) -- (5.9733333333333345,1.52);
+\draw (8.,3.)-- (7.,3.);
+\draw (7.,3.)-- (7.,1.);
+\draw (7.,1.)-- (8.,1.);
+\draw (8.,1.)-- (8.64,1.9866666666666648);
+\draw [dash pattern=on 3pt off 3pt] (8.64,1.9866666666666648)-- (8.,3.);
+\draw (9.,0.)-- (9.,1.);
+\draw (9.,1.)-- (10.,1.);
+\draw (10.,1.)-- (10.,0.);
+\draw (10.,0.)-- (9.,0.);
+\draw [->] (10.,2.) -- (11.386666666666668,1.9866666666666648);
+\draw (14.32,0.)-- (13.26666666666667,0.);
+\draw (13.26666666666667,0.)-- (12.533333333333335,1.0266666666666648);
+\draw (12.533333333333335,1.0266666666666648)-- (12.58666666666667,1.9733333333333314);
+\draw (12.58666666666667,1.9733333333333314)-- (13.,3.);
+\draw (13.,3.)-- (14.,3.);
+\draw (14.,3.)-- (14.413333333333336,1.9866666666666648);
+\draw [dash pattern=on 3pt off 3pt] (14.413333333333336,1.9866666666666648)-- (14.32,0.);
+\draw [color=ffqqqq] (13.26666666666667,0.)-- (12.58666666666667,1.9733333333333314);
+\draw [->] (2.,3.) -- (2.56,3.);
+\draw [->] (3.,3.) -- (3.335794344473009,2.482317052270777);
+\draw [->] (3.653333333333334,1.) -- (3.6464854884311353,1.5204362125670763);
+\draw [->] (3.,0.) -- (3.3072929645319378,0.4703463742835776);
+\draw [->] (3.,0.) -- (2.453333333333334,0.);
+\draw [->] (2.,0.) -- (1.696625172890734,0.5240110650069141);
+\draw [->] (7.,3.) -- (7.533333333333335,3.);
+\draw [->] (7.,3.) -- (7.,2.);
+\draw [->] (8.,1.) -- (7.573333333333335,1.);
+\draw [->] (8.64,1.9866666666666648) -- (8.285943444730076,1.440829477292201);
+\draw [->] (9.,1.) -- (9.52,1.);
+\draw [->] (9.,0.) -- (9.586666666666668,0.);
+\draw [->] (9.,0.) -- (9.,0.5733333333333317);
+\draw [->] (10.,0.) -- (10.,0.506666666666665);
+\draw [->] (14.32,0.) -- (13.813333333333336,0.);
+\draw [->] (13.26666666666667,0.) -- (12.832432432432434,0.6079279279279285);
+\draw [->] (12.58666666666667,1.9733333333333314) -- (12.552137631006527,1.3604429503658297);
+\draw [->] (12.58666666666667,1.9733333333333314) -- (12.819669085631352,2.5520812772133543);
+\draw [->] (13.,3.) -- (13.50666666666667,3.);
+\draw [->] (14.413333333333336,1.9866666666666648) -- (14.185162535253081,2.5460531393795445);
+\draw [->,color=ffqqqq] (2.,0.) -- (2.8442994990772474,1.0364977590297912);
+\draw [->,color=ffqqqq] (13.26666666666667,0.) -- (12.930343467319597,0.9759967353601313);
+\draw (2.3466666666666676,3.5466666666666646) node[anchor=north west] {$b$};
+\draw (3.48,2.8133333333333312) node[anchor=north west] {$c$};
+\draw (3.7866666666666675,1.7333333333333314) node[anchor=north west] {$b$};
+\draw (3.5066666666666673,0.6933333333333317) node[anchor=north west] {$c$};
+\draw (2.2933333333333343,0) node[anchor=north west] {$a$};
+\draw (1.36,0.5733333333333317) node[anchor=north west] {$a$};
+\draw (6.506666666666668,2.253333333333331) node[anchor=north west] {$e$};
+\draw (7.293333333333335,1.) node[anchor=north west] {$c$};
+\draw (8.52,1.6) node[anchor=north west] {$b$};
+\draw (7.333333333333335,3.5466666666666646) node[anchor=north west] {$a$};
+\draw (9.32,1.5733333333333315) node[anchor=north west] {$b$};
+\draw (9.333333333333336,0.026666666666665145) node[anchor=north west] {$a$};
+\draw (10.2,0.6533333333333317) node[anchor=north west] {$e$};
+\draw (8.533333333333335,0.68) node[anchor=north west] {$c$};
+\draw (14.2,2.9333333333333313) node[anchor=north west] {$e$};
+\draw (13.22666666666667,3.52) node[anchor=north west] {$b$};
+\draw (12.34666666666667,2.8) node[anchor=north west] {$c$};
+\draw (12.093333333333335,1.7) node[anchor=north west] {$e$};
+\draw (12.52,0.52) node[anchor=north west] {$c$};
+\draw (13.76,-0.09333333333333484) node[anchor=north west] {$b$};
+\draw [color=ffqqqq](2.5066666666666677,1.386666666666665) node[anchor=north west] {$e$};
+\draw [color=ffqqqq](13.173333333333336,1.2133333333333316) node[anchor=north west] {$f$};
+\draw (9.6,2.5) node[anchor=north west] {$\text{Pegar por } a$};
+\end{tikzpicture}
+
+%\definecolor{ffqqqq}{rgb}{1.,0.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-0.3133333333333334,-1.9133333333333322) rectangle (15.02,3.8);
+\fill[fill=black,fill opacity=0.09](4.,0.)-- (3.,0.)--(2.62,1.0066666666666673)--(2.,2.)--(3.,2.)--(3.993333333333334,2.18)--(4.98,1.78)--cycle;
+\fill[fill=black,fill opacity=0.09](9.42,0.)--(8.38,0.)--(8.,1.)--(8.,2.)--(8.4,3)--(9.433333333333335,3.02)--(10,2)--cycle;
+\draw [->] (0.,1.) -- (1.38,1.0066666666666673);
+\draw (4.,0.)-- (3.,0.);
+\draw (3.,0.)-- (2.62,1.0066666666666673);
+\draw (2.62,1.0066666666666673)-- (2.,2.);
+\draw (2.,2.)-- (3.,2.);
+\draw (3.,2.)-- (3.993333333333334,2.18);
+\draw (3.993333333333334,2.18)-- (4.98,1.78);
+\draw [dash pattern=on 3pt off 3pt] (4.98,1.78)-- (4.,0.);
+\draw [dotted] (2.62,1.0066666666666673)-- (3.,2.);
+\draw (6,1.) node[anchor=north west] {\LARGE{$=$}};
+\draw (8.,2.)-- (8.,1.);
+\draw (8.,1.)-- (8.38,0.);
+\draw (8.38,0.)-- (9.42,0.);
+\draw (8.,2.)-- (8.433333333333335,3.006666666666667);
+\draw (8.433333333333335,3.006666666666667)-- (9.433333333333335,3.02);
+\draw (9.433333333333335,3.02)-- (10.,2.);
+\draw [dash pattern=on 3pt off 3pt] (10.,2.)-- (9.42,0.);
+\draw [->] (11.,1.) -- (12.593333333333335,0.9933333333333338);
+\draw (10.8,1.5) node[anchor=north west] {$\text{cortar por }g$};
+\draw (10.8,1.) node[anchor=north west] {$\text{pegar por }b$};
+\draw [color=ffqqqq] (9.433333333333335,3.02)-- (8.38,0.);
+\draw [->,color=ffqqqq] (9.433333333333335,3.02) -- (8.831965956041762,1.2958264435880833);
+\draw [->,dotted] (2.62,1.0066666666666673) -- (2.8481194499017684,1.6029789129011138);
+\draw [->] (3.,0.) -- (2.7941435700575816,0.5453389635316701);
+\draw [->] (2.62,1.0066666666666673) -- (2.2809996758508913,1.5497962182604001);
+\draw [->] (2.,2.) -- (2.5666666666666673,2.);
+\draw [->] (3.,2.) -- (3.5603041139700546,2.101531617967728);
+\draw [->] (4.98,1.78) -- (4.504926808866585,1.9725972396486822);
+\draw [->] (4.,0.) -- (3.553333333333334,0.);
+\draw [->] (9.42,0.) -- (8.793333333333335,0.);
+\draw [->] (8.38,0.) -- (8.142162414074333,0.6258883840149126);
+\draw [->] (8.,1.) -- (8.,1.486666666666667);
+\draw [->] (8.,2.) -- (8.249465233438402,2.579526926910747);
+\draw [->] (8.433333333333335,3.006666666666667) -- (9.011382113821139,3.0143739837398376);
+\draw [->] (10.,2.) -- (9.740251572327045,2.46754716981132);
+\draw (1.9133333333333338,1.6466666666666672) node[anchor=north west] {$f$};
+\draw (2.353333333333334,0.753333333333334) node[anchor=north west] {$f$};
+\draw (2.3,2.4) node[anchor=north west] {$e$};
+\draw (3.233333333333334,2.62) node[anchor=north west] {$b$};
+\draw (4.4733333333333345,2.4) node[anchor=north west] {$e$};
+\draw (3.34,0.04666666666666742) node[anchor=north west] {$b$};
+\draw (8.873333333333335,0.03333333333333408) node[anchor=north west] {$b$};
+\draw (7.713333333333335,0.7266666666666672) node[anchor=north west] {$f$};
+\draw (7.4733333333333345,1.82) node[anchor=north west] {$f$};
+\draw (7.713333333333335,2.9) node[anchor=north west] {$e$};
+\draw (8.7,3.54) node[anchor=north west] {$b$};
+\draw (9.873333333333335,2.8333333333333335) node[anchor=north west] {$e$};
+\draw [color=ffqqqq](9.,1.62) node[anchor=north west] {$g$};
+\draw (2.8,1.6066666666666671) node[anchor=north west] {$c$};
+\end{tikzpicture}
+
+%\definecolor{ffqqqq}{rgb}{1.,0.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-0.5,-2.12) rectangle (14.38666666666667,3.5);
+\fill[fill=black,fill opacity=0.09](1,0)--(0,0)--(0,1)--(0.34666666666666673,1.9733333333333323)--(1.2533333333333336,2.9733333333333314)--(2.28,2.9733333333333314)--(2.253333333333334,1.1866666666666659)--cycle;
+\fill[fill=black,fill opacity=0.09](7.,0.)--(6,0)--(5.3066666666666675,0.9333333333333328)--(6,3)--(7,3)--(7.52,1.9733333333333323)--(7.52,1.0133333333333328)--cycle;
+\fill[fill=black,fill opacity=0.09](12.7,0)--(11.58666666666667,0.)--(11,1)--(11,2)--(12.56,3.)--(13.,2.)--(13.,1.)--cycle;
+\draw (1.,0.)-- (0.,0.);
+\draw (0.,0.)-- (0.,1.);
+\draw (0.,1.)-- (0.34666666666666673,1.9733333333333323);
+\draw [dash pattern=on 3pt off 3pt] (0.34666666666666673,1.9733333333333323)-- (1.2533333333333336,2.9733333333333314);
+\draw (1.2533333333333336,2.9733333333333314)-- (2.28,2.9733333333333314);
+\draw (2.28,2.9733333333333314)-- (2.253333333333334,1.1866666666666659);
+\draw (2.253333333333334,1.1866666666666659)-- (1.,0.);
+\draw [dotted] (0.34666666666666673,1.9733333333333323)-- (2.253333333333334,1.1866666666666659);
+\draw (3.5,1.6) node[anchor=north west] {\LARGE{$=$}};
+\draw (8.2,1.6) node[anchor=north west] {$\text{pegar por }e$};
+\draw (8.2,2.2) node[anchor=north west] {$\text{cortar por }h$};
+\draw (5.3066666666666675,0.9333333333333328)-- (6.,0.);
+\draw (6.,0.)-- (7.,0.);
+\draw (7.,0.)-- (7.52,1.0133333333333328);
+\draw (7.52,1.0133333333333328)-- (7.52,1.9733333333333323);
+\draw (7.52,1.9733333333333323)-- (7.,3.);
+\draw (7.,3.)-- (6.,3.);
+\draw [dash pattern=on 3pt off 3pt] (6.,3.)-- (5.3066666666666675,0.9333333333333328);
+\draw [color=ffqqqq] (6.,0.)-- (6.,3.);
+\draw [->] (8.44,1.6533333333333324) -- (9.946666666666669,1.64);
+\draw (11.,2.)-- (11.,1.);
+\draw (11.,1.)-- (11.58666666666667,0.);
+\draw (11.58666666666667,0.)-- (12.66666666666667,0.);
+\draw (12.66666666666667,0.)-- (13.,1.);
+\draw (13.,1.)-- (13.,2.);
+\draw (13.,2.)-- (12.56,3.);
+\draw [dash pattern=on 3pt off 3pt] (12.56,3.)-- (11.,2.);
+\draw [->] (1.2533333333333336,2.9733333333333314) -- (1.84,2.9733333333333314);
+\draw [->] (2.28,2.9733333333333314) -- (2.265072011878248,1.9731581291759455);
+\draw [->] (2.253333333333334,1.1866666666666659) -- (1.5216176324322175,0.49387201368582234);
+\draw [->] (1.,0.) -- (0.3866666666666667,0.);
+\draw [->] (0.,0.) -- (0.,0.533333333333333);
+\draw [->] (0.,1.) -- (0.1754404662781015,1.4925828476269767);
+\draw [->] (6.,0.) -- (5.6294441522005965,0.49882517972996704);
+\draw [->] (7.,0.) -- (6.493333333333335,0.);
+\draw [->] (6.,3.) -- (6.56,3.);
+\draw [->] (7.,3.) -- (7.301669798657718,2.404395525727068);
+\draw [->] (7.52,1.9733333333333323) -- (7.52,1.44);
+\draw [->] (7.52,1.0133333333333328) -- (7.206945319994518,0.4032780594764974);
+\draw [->] (12.56,3.) -- (12.801036639857015,2.4521894548704193);
+\draw [->] (13.,2.) -- (13.,1.4);
+\draw [->] (13.,1.) -- (12.785333333333336,0.356);
+\draw [->] (12.66666666666667,0.) -- (12.,0.);
+\draw [->] (11.58666666666667,0.) -- (11.298648326940882,0.4909403518053179);
+\draw [->] (11.,1.) -- (11.,1.5333333333333323);
+\draw [->,color=ffqqqq] (6.,0.) -- (6.,1.5066666666666657);
+\draw [->,dotted] (0.34666666666666673,1.9733333333333323) -- (1.2644641314946372,1.5946616520406733);
+\draw [dotted] (11.,1.)-- (12.56,3.);
+\draw [->,dotted] (11.,1.) -- (11.756657547873663,1.97007377932521);
+\draw (1.5733333333333337,3.5333333333333314) node[anchor=north west] {$e$};
+\draw (2.453333333333334,2.32) node[anchor=north west] {$g$};
+\draw (1.8933333333333338,0.7866666666666662) node[anchor=north west] {$g$};
+\draw (0.5466666666666667,0.0533333333333333) node[anchor=north west] {$f$};
+\draw (-0.4933333333333334,0.7466666666666663) node[anchor=north west] {$f$};
+\draw (-0.2666666666666667,1.8) node[anchor=north west] {$e$};
+\draw (1.,1.6666666666666656) node[anchor=north west] {$b$};
+\draw [color=ffqqqq](6.106666666666668,1.76) node[anchor=north west] {$h$};
+\draw (6.2666666666666675,3.613333333333331) node[anchor=north west] {$e$};
+\draw (5.2666666666666675,0.573333333333333) node[anchor=north west] {$e$};
+\draw (7.466666666666669,2.7333333333333316) node[anchor=north west] {$g$};
+\draw (7.693333333333335,1.64) node[anchor=north west] {$g$};
+\draw (7.413333333333335,0.64) node[anchor=north west] {$f$};
+\draw (6.32,0.) node[anchor=north west] {$f$};
+\draw (12.933333333333335,2.76) node[anchor=north west] {$g$};
+\draw (13.133333333333336,1.72) node[anchor=north west] {$g$};
+\draw (12.933333333333335,0.6266666666666663) node[anchor=north west] {$f$};
+\draw (12.053333333333336,-0.02666666666666665) node[anchor=north west] {$f$};
+\draw (10.906666666666668,0.573333333333333) node[anchor=north west] {$h$};
+\draw (10.48,1.7333333333333323) node[anchor=north west] {$h$};
+\draw (11.733333333333336,1.88) node[anchor=north west] {$e$};
+\end{tikzpicture}
+
+
+\end{enumerate}
+Esto termina la demostración. $\QED$
+\end{dem}
+
+
+%\section{El grupo fundamental y la abelianización de los modelos de superficies}
+\vspace{1cm}
+
+\section{Característica de Euler-Poincaré}
+
+\begin{defi} Sea $K$ una triangulación de una superficie, se denomina \textbf{caracterísitca de Euler-Poincaré} al número entero $\chi(K)=V-E+T$  %F
+donde $V$ es el número de vértices, $E$ el número de aristas y $T$ el número de triángulos. %F el número de caras
+\end{defi}
+
+El hecho sorprendente del número entero $\chi(K)$ es que es independiente de la triangulación $K$ y sólo depende de la topología de la superficie $S$. De hecho, tenemos los siguientes teoremas.
+
+\begin{teorema}
+Si $K$ es una triangulación de una superficie $M_n$ (Tipo I), entonces $\chi(K)=2-2n$. En particular, si $n=0$, $\chi(K)=2$, es decir, la característica de la esfera es $2$.
+\end{teorema}
+
+\begin{teorema}\label{542}
+Si $K$ es una triangulación de una superficie $N_n$ (Tipo II), entonces $\chi(K)=2-n$.
+\end{teorema}
+
+Para las esferas el resultado fue publicado por primera vez por Euler en 1752 y para las demás superficies fue Poincaré el primero en descubrir estos teoremas en la última década del siglo XIX. Se puede decir que la característica de Euler es el germen de la topología algebraica, pues su descubrimiento y la búsqueda de una demostración rigurosa de los teoremas anteriores dio lugar al nacimiento y desarrollo de la especialidad de la topología. De hecho, hubo que esperar hasta mediados de la década de 1930 para dar una demostración precisa de la invariancia topológica de la característica de Euler para triangulaciones de espacios arbitrarios.
+
+Este teorema se verá en general en 4º (Homología Simplicial), probándose que si $K$ es un complejo simplicial en $\R^n$, entonces $\chi(K)$ solo depende del tipo de homotopía del poliedro $|K|=\underset{\sigma\in K}{\bigcup}\sigma$.
+
+
+\begin{nota} De acuerdo con los teoremas anteriores, una vez conocido el tipo, la característica de Euler determina a la variedad. Además, como el tipo se corresponde con la orientabilidad, se tiene que las superficies quedan clasificadas por la orientabilidad (existencia de una banda de Möbius en la superficie) y su característica de Euler. Una demostración de la clasificación de superficies usando estos dos parámetros puede verse en [Zeeman]. Si se quiere una referencia bastante completa sobre el teorema de clasificación de superficies y su historia, se puede consultar [Gallier \& Xu].
+\end{nota}
+
+\begin{ej}\
+\begin{enumerate}
+\item \underline{Toro}. Basándonos en la triangulación del ejemplo \ref{ejem}
+\[
+\chi(K)=9-27+18=0.
+\]
+Lo cual era de esperar pues el toro es la superficie $M_1$.
+
+\item \underline{Plano proyectivo}: Tenemos la siguiente triangulación de $\Pro_2\R$.
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-0.5,-0.7996279853379787) rectangle (9.22011929968354,3.5);
+\draw (0.,0.)-- (0.,3.);
+\draw (0.,3.)-- (4.,3.);
+\draw (4.,3.)-- (4.,0.);
+\draw (4.,0.)-- (0.,0.);
+\draw (2.,3.)-- (2.,0.);
+\draw (0.,1.5)-- (4.,1.5);
+\draw (1.5,1.5)-- (0.,3.);
+\draw (0.,3.)-- (2.,2.);
+\draw (2.,2.)-- (4.,3.);
+\draw (2.5,1.5)-- (4.,3.);
+\draw (1.5,1.5)-- (0.,0.);
+\draw (0.,0.)-- (2.,1.);
+\draw (2.,1.)-- (4.,0.);
+\draw (2.5,1.5)-- (4.,0.);
+\draw (1.5,1.5)-- (2.,2.);
+\draw (1.5,1.5)-- (2.,1.);
+\draw (2.,1.)-- (2.5,1.5);
+\draw (2.5,1.5)-- (2.,2.);
+\draw (4.129392345695879,3.1982774400655742) node[anchor=north west] {$v_0$};
+\draw (1.85268082781231,3.4714828222116028) node[anchor=north west] {$v_3$};
+\draw (-0.6,3.1800637479225053) node[anchor=north west] {$v_2$};
+\draw (-0.6,1.6956478382624167) node[anchor=north west] {$v_1$};
+\draw (-0.6,0.183911390387725) node[anchor=north west] {$v_0$};
+\draw (1.9437492885276526,-0.04375976140063218) node[anchor=north west] {$v_1$};
+\draw (4.156712883910482,0.183911390387725) node[anchor=north west] {$v_2$};
+\draw (4.147606037838948,1.7138615304054852) node[anchor=north west] {$v_3$};
+\draw (2.,2.55) node[anchor=north west] {$v_4$};
+\draw (2.2,2) node[anchor=north west] {$v_5$};
+\draw (1.2,1.9688532204084452) node[anchor=north west] {$v_6$};
+\draw (2.,0.9488864603966051) node[anchor=north west] {$v_7$};
+\begin{scriptsize}
+\draw [fill=black] (0.,0.) circle (2.5pt);
+\draw [fill=black] (0.,3.) circle (2.5pt);
+\draw [fill=black] (4.,3.) circle (2.5pt);
+\draw [fill=black] (4.,0.) circle (2.5pt);
+\draw [fill=black] (2.,3.) circle (2.5pt);
+\draw [fill=black] (2.,0.) circle (2.5pt);
+\draw [fill=black] (0.,1.5) circle (2.5pt);
+\draw [fill=black] (4.,1.5) circle (2.5pt);
+\draw [fill=black] (1.5,1.5) circle (2.5pt);
+\draw [fill=black] (2.,2.) circle (2.5pt);
+\draw [fill=black] (2.5,1.5) circle (2.5pt);
+\draw [fill=black] (2.,1.) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+
+\[
+\chi(K)=8-21+14=1.
+\]
+Lo que es coherente cone el teorema \ref{542} pues $\Pro_2\R$ es la superficie $N_1$
+\end{enumerate}
+\end{ej}
+
+\begin{nota}
+La siguiente descomposición en triángulos del plano proyectivo \underline{no} sería una triangulación, pues los triángulos comparten una cara y un vértice.
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-6.753333333333334,-2.5) rectangle (10.58,2.3);
+\draw(0.,0.) circle (2.cm);
+\draw (-2.,0.)-- (2.,0.);
+\draw (0.,2.)-- (0.,-2.);
+\draw [->,dotted] (-1.2042538856578147,1.5968007323639526) -- (-1.3634511984604938,1.4632159202990662);
+\draw [->,dotted] (1.4501641830673748,1.3773248862009766) -- (1.2790646116111342,1.5375284450455082);
+\draw [->,dotted] (-1.5137959527854576,-1.3070661090129942) -- (-1.3629610692419851,-1.463672478299276);
+\draw [->,dotted] (1.3357250997541892,-1.4885692653977045) -- (1.494818637367319,-1.3287276776598402);
+\draw [fill=black] (0.,0.) circle (2.5pt);
+\draw [fill=black] (0.,2.) circle (2.5pt);
+\draw [fill=black] (2.,0.) circle (2.5pt);
+\draw [fill=black] (-2.,0.) circle (2.5pt);
+\draw [fill=black] (0.,-2.) circle (2.5pt);
+\draw (-1.833333333333333,1.773333333333333) node[anchor=north west] {$b$};
+\draw (1.7266666666666677,1.5466666666666662) node[anchor=north west] {$a$};
+\draw (1.7666666666666677,-1.2666666666666677) node[anchor=north west] {$b$};
+\draw (-1.8866666666666663,-1.2133333333333343) node[anchor=north west] {$a$};
+\draw (0,0) node[anchor=north west] {$v_0$};
+\draw (0,2) node[anchor=north west] {$v_2$};
+\draw (0,-2) node[anchor=north west] {$v_2$};
+\draw (2,0) node[anchor=north west] {$v_1$};
+\draw (-2,0) node[anchor=north west] {$v_1$};
+\end{tikzpicture}
+
+Sin embargo si se extiende de manera natural la definición de la característica de Euler a descomposiciones de triángulos $\mathcal{C}$ que se cortan en uniones de caras, seguimos teniendo $\chi(\mathcal{C})=1$. Esto permite flexibilizar la definición de triangulación en aquellas condiciones que lo requieran.
+
+\end{nota}
+
+\end{document} 
