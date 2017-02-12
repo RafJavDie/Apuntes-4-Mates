@@ -940,7 +940,7 @@ En el siguiente tema calcularemos de forma general los grupos fundamentales de l
 
 \section{Separación del plano por curvas cerradas}
 
-\begin{lemma}
+\begin{lemma}\label{1}
 Sea $A$ un espacio compacto y $g\func{A}{\R^2\setminus\{0\}}$ una aplicación continua. Si $0$ está en la componente no acotada de $\R^2\setminus g(A)$  entonces $g$ es homotópicamente trivial.
 \end{lemma}
 
@@ -959,7 +959,35 @@ Es consecuencia del lema anterior si hacemos la proyección estereográfica \[\r
 \end{dem}
 
 \begin{prop}
-Sea $f\func{S^2}{S^2}$ una aplicación continua. Entonces la imagen $\Sigma=f(S^1)$ divide a $S^2$, es decir, $S^2\setminus\Sigma$ tiene al menos dos componentes. Además, tenemos que $f\func{S^1}{\Sigma}$ es homeomorfismo.
+Sea $f\func{S^1}{S^2}$ una inyección continua. Entonces la imagen $\Sigma=f(S^1)$ divide a $S^2$, es decir, $S^2\setminus\Sigma$ tiene al menos dos componentes. Además, tenemos que $f\func{S^1}{\Sigma}$ es homeomorfismo.
 \end{prop}
+
+\begin{dem}
+Ya hemos comentado que las componentes conexas coinciden con las componentes conexas por caminos de $\R^2-\Sigma$.\\
+Vamos a suponer que $S^2-\Sigma$ es conexo por caminos y escribimos $\Sigma=\Sigma_+\cup\Sigma_-$, donde $\Sigma_\pm$ es la imagen de la semicircunferencia $E_\pm$ ($E_+=\{(x,y)\in S^1: y\geq 0\}$, $E_-=\{(x,y)\in S^1: y\leq 0\}$). Si $\Sigma_+\cap\Sigma_-=\{a,b\}$, es inmediato que $S^2\setminus\{a,b\}=(S^2\setminus\Sigma_+)\cup(S^2\setminus\Sigma_-)$. Además $(S^2\setminus\Sigma_+)\cap(S^2\setminus\Sigma_-)=S^2\setminus\Sigma$, que hemos supuesto que es conexo por caminos. Entonces podemos aplicar el teorema de Seifert-Van Kampen (\ref{SVK}) y tenemos que $\pi_1(S^2\setminus\{a,b\},x_0)$ es el producto amalgamado del diagrama de flechas continuas
+\[
+\begin{tikzcd}
+\pi_1(U\cap V,x_0)\arrow[r, "i_1*"]\arrow[d, "i_2*"'] & \pi_1(U,x_0)\arrow[d, dashed, "j_1*"]\\
+\pi_1(V,x_0)\arrow[r,dashrightarrow, "j_2*"'] &\pi_1(S^2\setminus\{a,b\},x_0)
+\end{tikzcd}
+\]
+donde $U=S^2\setminus\Sigma_+$ y $V=S^2\setminus\Sigma_-$.\\
+Veamos que los homomorfismos $i_{1*}$ y $i_{2*}$ son triviales, de donde se deducirá que $\pi_1(S^2\setminus\{a,b\},x_0)=\{1\}$ es el grupo trivial, llegando a una contradicción pues $\pi_1(S^2\setminus\{a,b\},x_0)\cong\Z$ (ya que $S^2\setminus\{a,b\}$ es homeomorfo al plano menos un punto mediante la proyección estereográfica).\\
+Para ver que $i_{1*}$ es trivial ($i_{2*}$ se hace análogamente) procedemos de la siguiente manera. Sea $[\alpha]\in\pi_1(U,x_0)$. Como $\alpha\func{[0,1]}{U}$ cumple $\alpha(0)=\alpha(1)$, $\alpha$ induce una aplicación $\tilde{\alpha}\func{S^1}{U}$ con $\tilde{\alpha}(e^{2\pi it})=\alpha(t)$. Es decir, $\tilde{\alpha}_*\func{\pi_1(S^1,(1,0))}{\pi_1(U,x_0)}$ lleva el generador $\varepsilon$ representado por la vuelva canónica de $S^1$ en $[\alpha]$. Entonces $i_{1*}[\alpha]=i_{1*}\circ\tilde{\alpha}*(\varepsilon)$.\\
+Tenemos $i_1\circ\tilde{\alpha}:S^1\longrightarrow U\longrightarrow S^2\setminus\{a,b\}$. Además $a,b\Sigma_+$ y $\Sigma_+\cap i_1\circ\tilde{\alpha}(S^1)=\emptyset$, por lo que $a$ y $b$ están en la misma componente de $S^1\setminus i_1\circ\tilde{\alpha}(S^1)$ y por el lema \ref{1} $i_1\circ\tilde{\alpha}$ es homotópicamente trivial, así que
+\[
+i_{1*}[\alpha]=i_{1*}\circ\tilde{\alpha}_*(\varepsilon)=(i\circ\tilde{\alpha})_*(\varepsilon)=1.
+\]
+Es decir, $i_{1*}$ es el homomorfismo trivial.
+
+\end{dem}
+
+El resultado anterior se puede reformular en el plan. Esto es, se tiene
+
+\begin{prop}[Teorema de Jordan I] 
+Si $f\func{S^1}{\R^2}$ es una inyección continua, su imagen divide a $R^2$.
+\end{prop}
+
+Este resultado es quivalente a la proposición anterior, pues $\R^2\subset S^2$ por medio de la proyección estereográfica. Entonces, además de la componente $C$ del punto de $S^2$ que corresponde al $\infty$ de $\R^2$, existe otra componente $C'$. Al volver a $\R^2$, la componente $C'$ está acotada, mientas que $C$ es la componente no acotada. Así pues, hay al menos dos componentes en $\R^2\setminus f(S^1)$.
 
 \end{document} 
