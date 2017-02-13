@@ -145,4 +145,54 @@ Luego:
 \[ X(θ) = \frac{1}{\cos φ_0} \sen (θ \sen φ_0) \X_1 - \cos (θ \sen φ_0) \X_2 \]
 Sin embargo, $X(0) = \X_2(0,φ_0) \neq X(2\pi) = \frac{1}{\cos φ}\sen (2\pi \sen φ_0) \X_1 - \cos (2 \pi \sen φ_0) \X_2$. El transporte paralelo del vector $X(0)$ no va a mantener siempre constante el vector al pasar la curva por el mismo punto.
 \end{example}
+\begin{prop}
+Sean $X(t),Y(t)$ c.v.t. paralelos a lo largo de una curva $α(t) = \X(u¹(t), u²(t))$. Entonces el transporte paralelo de vectores a lo largo de $\alpha$ conserva módulo y ángulos.
+\end{prop}
+\begin{dem}
+Consideraos el producto escalar $X(t)\cdot Y(t)$. Derivando respecto de t y teniendo en cuenta que $X'(t) \parallel Y'(t) \parallel N(t)$:
+\[
+(X(t)\cdot Y(t))' = X'(t)\cdot Y(t) + X(t) \cdot Y'(t) = 0
+\]
+Como el producto escalar es constante, el módulo $\sqrt{X(t)\cdot X(t)}$ también lo ha de ser. Además, para el ángulo se tiene:
+\[
+\cos{\varphi(t)}=\frac{X(t)\cdot Y(t)}{|X(t)||Y(t)|} = cte
+\]
+\end{dem}
+\begin{consecuencia}
+Si tenemos una superficie $α(t) = \X(u¹(t), u²(t))$, $P\in \alpha$ y dos $v_1,v_2$ que son base del $T(P)_{\X}$. Entonces, si trasladamos dichos vectores mediante un transporte paralelo a Q, estos mantendrán el ángulo y sus respectivos módulos. Si tomamos $v_1$ y $v_2$ ortonormales, su transporte paralelo forma también una base ortonormal en Q. Esto se denomina \textbf{conexión de la geometría de la superficie M en P y Q}.
+\end{consecuencia}
+\begin{defi} Sea $α(t) = \X(u¹(t), u²(t))$ c.p.r. en $\X : U \to \R³$. Se llama \textbf{autoparalela} si el c.v.t. $\alpha'(t)$ es un campo paralelo a lo largo de $\alpha$.
+\end{defi}
+\begin{prop}
+Una curva $\alpha(t)$ es autoparalela si y solo sí $\alpha(t)$ t es función lineal del parámetro natural y es geodésica.
+\end{prop}
+\begin{dem}
+Supongamos que $\alpha$ es autorparalela. Entonces $|\alpha'(t)| = cte = a'$, por tanto $\dfrac{ds}{dt}=a'$, luego $s = at + b$. Además:
+\[
+\alpha' = \dot{\alpha} \frac{ds}{dt} =\dot{\alpha} \frac{1}{a} \qquad
+ \alpha''  = \ddot{\alpha}\frac{1}{a^2}
+ \]
+Como $\alpha'' \parallel N$, entonces $\ddot{\alpha}=k(s)n(s)\parallel N$. Por tanto, $\alpha$ es geodésica.
+\end{dem}
+
+\begin{coro}
+Sea $X(s)$ c.v.t. paralelo a lo largo de $\alpha$. Sea $\varphi(s)=\widehat{(X(s),\dot{\alpha}(s))}$ entonces:
+\begin{align*}
+\cos{\varphi(s)}&=X(s)\alpha'(s)\\
+ -\varphi'(s)\sin\varphi(s)& =  X'(s)\dot{\alpha}(s)+ X(s)\ddot{\alpha}(s)= X(s)(K_g(s)S(s)+K_n(s)N(s))=K_g(s)X(s)S(s)\\
+  &= K_g(s)|X(s)||S(s)|cos{\varphi+\frac{\pi}{2}})=-K_g\sin{\varphi}
+\end{align*}
+Luego $K_g = \dot{\varphi}$, similar a la curvatura plana.
+\end{coro}
+\begin{example}
+Consideramos $S^2(1)$ y, sobre ella, $\alpha,\beta$ círculos máximos de polo norte (N) a polo sur (S). Por ser círculos máximos, $\alpha,\beta$ son geodésicas. Sea $X\in T_N(S^1)$ tangente a $\alpha$. Si realizamos un transporte paralelo de X hasta S por $\alpha$ usando $\dot{\alpha}$, obtenemos un vector $X_\alpha$ tangente a $\alpha$ en S. Sea $Y\in T_N(S^1)$ tangente a $\beta$ obteniendo, análogamente, $Y_\beta$. Sea $\theta=\widehat{\alpha,\beta}$. En el polo norte $\theta=\widehat{X,Y}$. Como $\dot{\beta}$ es un c.v.t. paralelo a $\beta$, podemos transportar $X$ a lo largo de $\beta$. Como $X$ y $\dot{\beta}$ mantienen sus ángulos, se tiene que $\widehat{X_\alpha,X_\beta}=2\theta$. Curiosiamente: $2\theta=A(R)$, donde R es la región esférica que delimitan $\alpha$ y $\beta$.
+\end{example}
+\begin{propi}
+Sean $X(t),Y(t)$ c.v.t. a lo largo de $\alpha(t)$. Se tiene:
+\begin{itemize}
+\item La derivada covariante es un operador lineal.
+\item $\dfrac{D(f(t)X(t))}{dt} = X(t)f'(t)+\dfrac{DX(t)}{dt}f(t)$.
+\item $(X(t)\cdot Y(t))' = X'(t)Y(t)+X(t)Y'(t) = \dfrac{DX(t)}{dt}Y(t)+X(t)\dfrac{DY(t)}{dt}$.
+\end{itemize}
+\end{propi}
 \end{document}
