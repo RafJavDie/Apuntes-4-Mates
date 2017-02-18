@@ -195,4 +195,86 @@ Sean $X(t),Y(t)$ c.v.t. a lo largo de $\alpha(t)$. Se tiene:
 \item $(X(t)\cdot Y(t))' = X'(t)Y(t)+X(t)Y'(t) = \dfrac{DX(t)}{dt}Y(t)+X(t)\dfrac{DY(t)}{dt}$.
 \end{itemize}
 \end{propi}
+
+
+\section{La curvatura geodésica de una curva en una superficie}
+
+\begin{prop}
+Dada $\X : U \to \R^3$ s.s., existe un cambio de parámetro regular de forma que las líneas paramétricas de los nuevos parámetros son ortogonales (es decir, $\overline{g}_{12}=0$).
+%Dibujo: Cambio de variable
+\end{prop}
+
+\begin{dem}
+Empezamos buscando una curva $β(σ)=\X(u¹(σ),u²(σ))$ tal que sea ortogonal a las $u²$-paramétricas. Se tiene que el vector tangente a $β$ es:
+\[ β'(σ) = \X_1 \frac{du¹}{dσ}+\X_2 \frac{du²}{dσ} \]
+Para que $β'(σ) \cdot \X_2 = 0$:
+\[ β'(σ) \cdot \X_2 = g_{12} \frac{du¹}{dσ} + g_{22} \frac{du²}{dσ} = 0 \]
+El problema se reduce a integrar la 1-forma:
+\[ g_{12} du¹ + g_{22} du² = 0 \]
+Existe un factor integrante $μ(u¹,u²)\neq 0$ tal que $μ g_{12} du¹+μ g_{22} du² = dh(u¹,u²)=h_1 du¹+h_2 du²$ para algún $h$. Necesariamente $μ g_{12} = h_1$ y $μ g_{22} = h_2$. Sea el cambio de parámetros:
+\[ f^{-1} = \begin{cases}
+	\overline{u}¹ = u¹\\
+	\overline{u}² = h(u¹,u²)
+\end{cases}\]
+El cambio de parámetros está bien definidio ya que $f^{-1} \in \mathcal{C}^\infty$ y $|J(f^{-1})| = \begin{vmatrix}1 & 0\\h1 & h_2\end{vmatrix} = h_2 = μ g_{22} \neq 0$. Luego:
+\[ \overline{g}_{ij} = \sum g_{hk} \frac{du^h}{d\overline{u}^i} \frac{du^k}{d\overline{u}^j}\]
+En particular:
+\[ \overline{g}_{12} = \sum g_{hk} \frac{du^h}{d\overline{u}^1} \frac{du^k}{d\overline{u}^2} \]
+Como $J(f^{-1}) = \begin{pmatrix}1 & 0\\h_1 & h_2\end{pmatrix} = \begin{pmatrix}1 & 0\\μ g_{12} & μ g_{22}\end{pmatrix}$, $J(f) = (J(f^{-1})^t)^{-1} = \begin{pmatrix}1 & 0 \\ -\frac{g_{12}}{g_{22}} & \frac{1}{μg_{22}}\end{pmatrix} = \begin{pmatrix}\frac{du¹}{d\overline{u}^1} & \frac{du^1}{d\overline{u}^2}\\\frac{du^2}{d\overline{u}^1} & \frac{du^2}{d\overline{u}^2}\end{pmatrix}$
+\begin{align*}
+	\overline{g}_{12} & = g_{11} \frac{du¹}{d\overline{u}¹} \frac{du¹}{d\overline{u}²} + g_{12} \frac{du¹}{d\overline{u}¹} \frac{du²}{d\overline{u}} + g_{21} \frac{du²}{d\overline{u}¹} \frac{du¹}{d\overline{u}²} + g_{22} \frac{du²}{d\overline{u}¹} \frac{du²}{d\overline{u}²} \\
+	& = g_{11} \cdot 1 \cdot 0 + g_{12} \cdot 1 \cdot \left(\frac{1}{µ g_{22}}\right) + g_{21} \cdot \left( \frac{-g_{12}}{g_{22}}\right) \cdot 0  + g_{22} \left(\frac{-g_{12}}{g_{22}}\right) \frac{1}{μ g_{12}} \\
+	& = \frac{1}{μ} - \frac{1}{μ} = 0
+\end{align*}
+
+Buscamos una fórmula para $K_g(s)$. Podemos suponer ya que las líneas paramétricas son ortogonales ($g_{12} = 0$). Sea $e_1(s) = \frac{\X_1}{|\X_1|} = \frac{\X_1}{\sqrt{g_{11}}}$ y $e_2(s) = \frac{\X_2}{|\X_2|} = \frac{\X_2}{\sqrt{g_{22}}}$ de manera que $\{e_1(s), e_2(s)\}$ es una base ortonormal sobre la curva $α(s)$. Sea $θ(s) = (\widehat{e_1(s), \dot{α}(s))}$. Luego:
+\[ \dot{α} = \cos θ e_1 + \sen θ s_2 \]
+\[ S = - \sen θ e_1 + \cos θ e_2\]
+
+Obtenemos la derivada covariante de $\dot{α}$:
+\begin{align*}
+	\frac{D\dot{α}}{ds} & = tg(\frac{d\dot{α}}{ds}) = tg(-\sen{θ} \dot{θ} e_1 + \cos{θ} \dot e_1 + \cos θ \dot{θ} e_2 + \sen θ \dot e_2) \\
+	& = - \sen θ \dot{θ} e_1 + \cos θ \frac{D e_1}{ds} + \cos θ \dot{θ} e_2 + \sen θ \frac{De_2}{ds}\\
+	\frac{de_1}{ds} & = \dot{e}_1 = \frac{d}{ds}\left(\frac{\X_1}{\sqrt{g_{11}}}\right) = = \frac{d}{ds} \frac{1}{\sqrt{g_{11}}} \X_1 + \frac{1}{\sqrt{g_{11}}} \left(\X_{11} \frac{du¹}{ds} + \X_{12} \frac{du²}{ds}\right)
+\end{align*}
+Como $e_1(s) \cdot e_2(s) = 0$, luego $\dot{e}_1 \cdot e_2 = -e_1 \cdot \dot{e}_2$. Sea $w(s) = \dot{e_1}\cdot e_2$
+\[ \frac{d}{ds} (e_i \cdot e_i) = 0 = 2 \dot{e}_i \cdot e_i \Rightarrow \dot{e}_i \perp e_i \]
+\begin{equation} \frac{de_i}{ds} \cdot e_i = 0 \Rightarrow \frac{D e_i}{ds} \cdot e_i = 0 \Rightarrow \frac{De_i}{ds} \parallel e_j \text{ con } j \neq i \end{equation}
+Por lo tanto:
+\[ \frac{De_1}{ds} \cdot e_2 = \frac{de_1}{ds} \cdot e_2 = \dot{e}_1 \cdot e_2 = w(s)\]
+Análogamente, $\frac{De_2}{ds} \cdot e_1 = -w(s)$. Usando además que (1.2.1):
+\[ \frac{De_1}{ds} = w e_2 \]
+\[ \frac{De_2}{ds} = -w e_1\]
+Finalmente:
+\begin{align*}
+	\frac{D\dot{α}}{ds} & = -\sen θ \dot{θ} e_1 + \cos θ w e_2 + \cos θ \dot{θ} e_2 + \sen θ (-w) e_1 \\
+	& = (-\dot{θ} -w) \sen θ e_1 + (\dot{θ} + w) \cos θ e_2 = (-\sen θ e_1 + \cos θ e_2) (\dot{θ}  w) = (\dot{θ} + w)\cdot S
+\end{align*}
+\end{dem}
+
+\begin{theorem}
+En las condiciones anteriores se tiene:
+\[ K_g(s) = \dot{θ}(s) + \frac{1}{2 \sqrt{g_{11}g_{22}}} \left((g_{22})_1 \dot{u}²(s) - (g_{11})_2 \dot{u}¹(s) \right)\]
+\end{theorem}
+
+\begin{dem}
+\[ \ddot{α}(s) = κ n = K_g \cdot S + K_n \cdot N \]
+Multipicando por $S$:
+\[ \ddot{α}(s) \cdot S = K_g \Rightarrow K_g = tg\left(\frac{d\dot{α}}{ds}\right) \cdot S = \frac{D\dot{α}}{ds} \cdot S = \dot{θ} + w \]
+\end{dem}
+
+Calculamos $w=\dot{e}_1 \cdot e_2$:
+\[ \dot{e}_1 = \left(\frac{\X_1}{\sqrt{g_{11}}}\right)' = \frac{d}{ds} (\frac{1}{\sqrt{g_{11}}}) \X_1 + \frac{1}{\sqrt{g_{11}}} (\X_{11} \cdot \dot{u}^1 + \X_{12} \dot{u}²) \]
+Por otro lado:
+\[ 0 = g_{12} = \X_1 \cdot \X_2 \Rightarrow 0 = \X_{11} \X_2 + \X_1 \X_{12} \Rightarrow \X_{11} \cdot \X_2 = - \X_1 \cdot \X_{12} \]
+\[ g_{11} = \X_1 \cdot \X_1 \Rightarrow 2 \X_1 \cdot \X_{12} = (g_{11})_2 \]
+Usando las dos igualdades: $\X_{11}\cdot \X_2 = \dfrac{-(g_{11})_2}{2}$. Análogamente:
+\[ g_{22} = \X_2 \cdot \X_2 \Rightarrow 2 \X_{12} \cdot \X_2 = (g_{22})_1 \]
+Luego
+\begin{align*} 
+ω(s) & = \dot{e}_1 \cdot e_2 = \left[\frac{d}{ds} (\frac{1}{\sqrt{g_{11}}}) \X_1 + \frac{1}{\sqrt{g_{11}}} (\X_{11} \cdot \dot{u}^1 + \X_{12} \dot{u}²)\right] \cdot e_2 \\
+	& = \left(\frac{1}{\sqrt{g_{11}}}\right)' \X_1 \cdot e_2 + \frac{1}{\sqrt{g_{22}}\sqrt{g_{11}}} (\X_{11} \dot{u}¹+ \X_{12} \dot{u}²) \cdot \X_2 = \frac{1}{\sqrt{g_{11} g_{22}}}
+	\left[(\X_{11} \cdot \X_2)  \dot{u}^1 + (\X_{12} \cdot \X_2) \dot{u}²\right] \\
+	& = \frac{1}{2 \sqrt{g_{11}g_{22}}} \left((g_{22})_1 \dot{u}²(s) - (g_{11})_2 \dot{u}¹(s) \right)
+\end{align*}
 \end{document}
