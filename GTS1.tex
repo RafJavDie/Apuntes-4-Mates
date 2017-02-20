@@ -40,6 +40,8 @@
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\X}{\mathbb{X}}
+\newcommand{\seaX}{\X:U\rightarrow\R^3}
+
 \newcommand{\resi}{\varepsilon_L}
 \providecommand{\conv}[1]{\overset{#1}{\longrightarrow}}
 \providecommand{\convcs}{\xrightarrow{CS}}
@@ -277,4 +279,58 @@ Luego
 	\left[(\X_{11} \cdot \X_2)  \dot{u}^1 + (\X_{12} \cdot \X_2) \dot{u}²\right] \\
 	& = \frac{1}{2 \sqrt{g_{11}g_{22}}} \left((g_{22})_1 \dot{u}²(s) - (g_{11})_2 \dot{u}¹(s) \right)
 \end{align*}
+\newpage
+\section{Curvas diferenciables por arcos en una s.s.}
+\begin{defi} 
+$\alpha:[0,L] \rightarrow \R^3$ curva en $\X:U\rightarrow \R^3$ se dice regular por arcos si existe una partición finita $0=s_1 < s_2 < \dotsc < s_n{+1} = L$ de forma que $\alpha_{|_{[s_i,s_{i+1}]}}$ es regular. Los $\alpha(s_i)$ se denominan vértices y a $\alpha([s_i,s_{i+1}])$ lado.
+\end{defi}
+\begin{defi}
+Como $\alpha$ es regular a trozos, existe el vector tangente $\alpha(s_i)$ por la izquierda $\dot{\alpha}(s_i^-)$ y por la derecha $\dot{\alpha}(s_i^+)$. Al ángulo $\varphi_i = \langle \dot{\alpha}(s_i^-),\dot{\alpha}(s_i^+)\rangle$ lo denominamos salto de la tangente en $\alpha(s_i)$.
+\end{defi}
+\begin{prop}
+Si $\alpha(s_i)$ es un punto singular entonces su salto $\phi_i$ verifica que: $0<|\varphi_i|\leq \pi$. Distinguimos los casos:
+\begin{itemize}
+\item $|\varphi_i|\neq \pi$. Tomando el sentido de giro dado por el vector normal podemos ver el signo del ángulo.
+\item $|\varphi_i| = \pi$. En principio no podemos determinar si escoger $\pi$ o $-\pi$. Para ello tomamos el vector tangente en $\dot{\alpha}(s_i\pm\varepsilon)$ y, se demuestra que, $\exists \varepsilon >0$ de forma que $(\dot{\alpha}(s_i -\varepsilon) \dot{\alpha}(s_i+\varepsilon) N)$ es independiente de $\varepsilon$. Por tanto, tomamos $\pi$ si el producto mixto es positivo y recíprocamente.
+\end{itemize}
+\end{prop}
+\begin{dem}
+La idea de la demostración es desarrollar en serie el producto mixto. Dado que:
+\begin{align*}
+\dot{\alpha}(s_i-\varepsilon) = & \dot{\alpha}(s_i^-) - \ddot{\alpha}(s_i^-)\varepsilon + \dddot{\alpha}(s_i^-)\varepsilon^2 + \dotsc\\
+\dot{\alpha}(s_i+\varepsilon) = & \dot{\alpha}(s_i^+) + \ddot{\alpha}(s_i^+)\varepsilon + \dddot{\alpha}(s_i^+)\varepsilon^2 + \dotsc
+\end{align*}
+\begin{gather*}
+(\dot{\alpha}(s_i -\varepsilon) \dot{\alpha}(s_i+\varepsilon) N) = (\dot{\alpha}(s_i^-) \dot{\alpha}(s_i^+)  N) + \varepsilon (\dot{\alpha}(s_i^-) \ddot{\alpha}(s_i^+)  N) - \varepsilon(\ddot{\alpha}(s_i^-) \dot{\alpha}(s_i^+)  N) + \frac{\varepsilon^2}{2}(\dotsc) \approx\\
+\varepsilon[(t^- \dot{t}^+N) + (t^+\dot{t}^-N)] = \varepsilon(t^-,\dot{t}^+ - \dot{t}^- , N)
+\end{gather*}
+\end{dem}
+\begin{defi}
+Sea $\X:U\rightarrow\R^3$, si $U$ es un disco abierto de $\R^2$ de la s.s. $\X$ se llama de tipo disco. Para toda s.s. alrededor de cualquier $p\in\X(U)$ existe un entorno de tipo disco.
+\end{defi}
+\begin{theorem}[Teorema de Hopf] Sea $\alpha:[0,L]\Rightarrow\R^3$ una curva cerrada, simple y regular por arcos. Entonces:
+\[
+\sum_i [\theta_i(s_{i+1}-\theta_i(s_i)] + \sum_i \varphi_i = \pm 2\pi
+\]
+\end{theorem}
+\begin{defi}
+Sea $\seaX$, s.s. tipo disco. Diremos que $R \subset \X(U)$ es una región simple si es homeomorfa a un disco cerrado y $\partial R$ es una curva cerrada simple y regular a trozos.
+\end{defi}
+\begin{defi}
+Diremos que R está bien (positivamente) orientada si el vector normal intrínseca de la curva frontera $S(s)$ apunta al interior de la región. Más formalmente, si tomamos una curva de $\X$ que pase por un punto de la frontera y tenga como vector tangente a $S(s)$, o cuyo vector tangente forme con $S(s)$ un ángulo menor que $\pi/2$, esté dentro de la superificie.
+\end{defi}
+\begin{theorem}[Teorema Gauss-Bonnet Local]
+Sea $\seaX$ s.s. tipo disco, y que sea normalizada ($g_{12} \equiv 0$). Sea $R\subset \X(U)$ una región simple y $\alpha:[0,L]\rightarrow\R^3$ el borde de la región.
+\[
+\sum_i \int_{s_i}^{s_{i+1}} K_g(s)ds + \iint_{R} KdA +  \sum_i \varphi_i  = \pm 2\pi
+\]
+\end{theorem}
+\begin{dem}
+Sabemos que:
+\begin{gather*}
+K_g = \dfrac{1}{2\sqrt{g_{11}g_{22}}}\left[(g_{22})_1\dfrac{du^2}{ds}-(g_{11})_2 \dfrac{du^1}{ds}\right]+\dfrac{d\theta_i}{ds} \qquad \theta_i = \langle\dot{\alpha}(s),\X_1\rangle \\ \\
+\sum_{i=0}^n  \int_{s_i}^{s_{i+1}} K_g(s) ds = \sum_{i=0}^n  \int_{s_i}^{s_{i+1}} \dfrac{1}{2\sqrt{g_{11}g_{22}}}\left[(g_{22})_1\dfrac{du^2}{ds}-(g_{11})_2 \dfrac{du^1}{ds}\right]ds + \sum_{i=0}^n  \int_{s_i}^{s_{i+1}} \dfrac{d\theta_i}{ds} ds \overset{Green}{=}\\
+= \iint_{\X^{-1}(R)} \left(\frac{\frac{\partial g_{11}}{\partial u^2}}{2\sqrt{g_{11}g_{22}}}\right)_2 + \left( \frac{\frac{\partial g_{22}}{\partial u^1}}{2\sqrt{g_{11}g_{22}}} \right)_1  du^1du^2 + 2\pi - \sum_i \varphi_i 
+\end{gather*}
+\end{dem}
 \end{document}
