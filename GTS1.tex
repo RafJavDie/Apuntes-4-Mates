@@ -42,7 +42,8 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\X}{\mathbb{X}}
 \newcommand{\seaX}{\X:U\rightarrow\R^3}
-
+\newcommand{\luego}{\Rightarrow}
+\newcommand{\sii}{\Leftrightarrow}
 \newcommand{\resi}{\varepsilon_L}
 \providecommand{\conv}[1]{\overset{#1}{\longrightarrow}}
 \providecommand{\convcs}{\xrightarrow{CS}}
@@ -344,4 +345,102 @@ K_g = \dfrac{1}{2\sqrt{g_{11}g_{22}}}\left[(g_{22})_1\dfrac{du^2}{ds}-(g_{11})_2
 = \iint_{\X^{-1}(R)} \left(\frac{\frac{\partial g_{11}}{\partial u^2}}{2\sqrt{g_{11}g_{22}}}\right)_2 + \left( \frac{\frac{\partial g_{22}}{\partial u^1}}{2\sqrt{g_{11}g_{22}}} \right)_1  du^1du^2 + 2\pi - \sum_i \varphi_i 
 \end{gather*}
 \end{dem}
+
+
+\begin{theorem}[Teorema Egregium de Gauss]
+$K$ es intrínseca.
+\end{theorem}
+\begin{dem}
+Dado que:
+\[ K = \frac{L_{11}L_{22} - L_{12}^2}{g_{11}g_{22} - g_{12}^2} \luego gK = L_{11}L_{22} - L_{12}^2 \]
+Recordemos que:
+\[ |\X_1 \times \X_2| = \sqrt{(\X_1 \times \X_2)(\X_1 \times \X_2)} = \sqrt{(\X_1 \X_2)(\X_2 \X_2) - (\X_1 \X_2)(\X_2 \X_1)} = \sqrt{g} \]
+Luego:
+\[ L_{ij} = \X_{ij} \cdot N = \X_{ij} \cdot \frac{\X_1 \times \X_2}{|\X_1 \times \X_2|} = \frac{1}{\sqrt{g}} (\X_{ij} \ \X_1\ \X_2) \]
+Entonces:
+\begin{align}
+K g & =  \frac{1}{g} [(\X_{11}\ \X_1\ \X_2)(\X_{22}\ \X_1\ \X_2) - (\X_{12}\ \X_1\ \X_2)(\X_{12}\ \X_1\ \X_2)]\nonumber\\
+K g^2 & = 
+\begin{vmatrix}
+	\X_{11} \X_{22} & \X_{11} \X_1 & \X_{11} \X_2\\
+	\X_1 \X_{22} & g_{11} & g_{12}\\
+	\X_2 \X_{22} & g_{21} & g_{22}
+\end{vmatrix} -
+\begin{vmatrix}
+	\X_{12} \X_{12} & \X_{12} \X_1 & \X_{12} \X_2\\
+	\X_1 \X_{12} & g_{11} & g_{12}\\
+	\X_2 \X_{12} & g_{21} & g_{22}
+\end{vmatrix}\nonumber\\
+& = (\X_{11} \X_{22}) g +
+\begin{vmatrix}
+	0 & \X_{11} \X_1 & \X_{11} \X_2\\
+	\X_1 \X_{22} & g_{11} & g_{12}\\
+	\X_2 \X_{22} & g_{21} & g_{22}
+\end{vmatrix} - (\X_{12}\X_{12})g -
+\begin{vmatrix}
+	0 & \X_{12} \X_1 & \X_{12} \X_2\\
+	\X_1 \X_{12} & g_{11} & g_{12}\\
+	\X_2 \X_{12} & g_{21} & g_{22}
+\end{vmatrix}\nonumber\\
+& = (\X_{11} \X_{22} - \X_{12} \X_{12})g + \begin{vmatrix}
+	0 & \X_{11} \X_1 & \X_{11} \X_2\\
+	\X_1 \X_{22} & g_{11} & g_{12}\\
+	\X_2 \X_{22} & g_{21} & g_{22}
+\end{vmatrix}-
+\begin{vmatrix}
+	0 & \X_{12} \X_1 & \X_{12} \X_2\\
+	\X_1 \X_{12} & g_{11} & g_{12}\\
+	\X_2 \X_{12} & g_{21} & g_{22}
+\end{vmatrix}\label{Kgecuacion}
+\end{align}
+Vemos que como $\X_i \X_i = g_{ii}$, derivando parcialmente obtenemos que $(g_{ij})_k = \X_{ik}\X_i + \X_i\X_{ik} = 2\X_{ik}\X_i$. Luego los productos de la forma $\X_{ik}\X_i$ son intrínsecos. Además, derivando $\X_1\X_2 = g_{12}$ respecto a la primera componente, tenemos que $\X_{11}\X_2 + \X_1 \X_{12} = (g_{12})_1$. Como $\X_1\X_{12}$ es intrínseco, $\X_{11}\X_2$ es intrínseco. Análogamente, $\X_{22}\X_1 + \X_1 \X_{12} = (g_{12})_2$ y $\X_{22}\X_1$ es intrínseco. Por último, derivando $\X_{12}\X_2=\frac{1}{2}(g_{22})_1$ respecto $u^1$ obtenemos que 
+\[\X_{112}\X_2 + \X_{12}\X_{12} = \frac{1}{2}(g_{22})_{11}\]
+Análogamente, derivando $\X_{11} \X_2 = (g_{12})_1 - \frac{1}{2}(g_{11})_2$ respecto a $u^2$:
+\[ \X_{112}\X_2 + \X_{11}\X_{22} = (g_{12})_{12} - \frac{1}{2}(g_{11})_{22}\]
+Restando las dos anteriores ecuaciones, obtenemos que:
+\[ \X_{11} \X_{22} - \X_{12}\X_{12} = (g_{12})_{12} - \frac{1}{2} (g_{11})_{22} - \frac{1}{2} (g_{22})_{11} \]
+Entonces todos los sumandos de $Kg^2$ en $\eqref{Kgecuacion}$ son intrínsecos, luego $K$ es intrínseco.
+\end{dem}
+
+\section{Triangulaciones de una superficie}
+Sea $M \subseteq \R^3$ una superficie regular:
+
+\begin{defi}
+Sea $R \subseteq M$. Se dirá que $R$ es una \textbf{región regular} si es compacta y $δR$ es la unión de un número finito de curvas cerradas simples regulares por arcos que no se cortan entre sí.
+\end{defi}
+
+\begin{defi}
+Una región simple con sólo 3 lados se llama un \textbf{triángulo}. Entenderemos por lado cada subarco de la curva regular por arcos $δR$.
+\end{defi}
+
+\begin{defi}
+Sea $R$ región regular en $M$. Una triangulación de $R$ es una famlia finita de triángulos:
+\[ \mathcal{T} = \{ T_1, T_2, \dots, T_n \} \]
+tal que:
+\begin{enumerate}
+	\item $R = \bigcup_{i=1}^n T_i$
+	\item Si $T_i \cap T_j \neq \emptyset$, entonces $T_i \cap T_j$ es un lado o un vértice común.
+\end{enumerate}
+Sea $R \subseteq M$ región, $\mathcal{T}$ una triangulación de $R$, y sea:
+\begin{itemize}
+	\item $F =$ nº de caras
+	\item $E =$ nº de lados
+	\item $V =$ nº de vértices
+\end{itemize}
+\end{defi}
+
+\begin{defi}
+$χ(\mathcal{T}) = F + V - E$ es la \textbf{característica de Euler-Poincaré} de $\mathcal{T}$.
+\end{defi}
+
+\begin{prop}
+Toda región regular $R \subseteq M$ admite una triangulación. Ver demostración en \textit{Topology} de James Munkres.
+\end{prop}
+
+\begin{prop} Sea $M$ orientada con un atlas de orientación. Sea $R \subseteq M$ una región regular. Existe una triangulación $\mathcal{T}$ de $R$ tal que cada triángulo de $\mathcal{T}$ está contenido en alguna carta $\X : U \to \R^3$ del atlas de $M$. Además, si la frontera de cada triángulo está orientada positivamente, triángulos adyacentes tienen direcciones opuestas en el lado común.
+\end{prop}
+
+\begin{prop} Si $R \subseteq M$ es una región regular. Toda triangulación tiene misma característica de Euler-Poincaré. En consecuencia, hablaremos de $χ(R)$. Ver demostración en Massey.
+\end{prop}
+
 \end{document}
