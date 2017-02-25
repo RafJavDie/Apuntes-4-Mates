@@ -5,6 +5,7 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{hyperref}
+\hypersetup{colorlinks=true,citecolor=red, linkcolor=blue}
 \usepackage{subfiles}
 \usepackage[]{graphicx}
 
@@ -239,7 +240,7 @@ Obtenemos la derivada covariante de $\dot{α}$:
 \begin{align*}
 	\frac{D\dot{α}}{ds} & = tg\left(\frac{d\dot{α}}{ds}\right) = tg(-\sen{θ} \dot{θ} e_1 + \cos{θ} \dot e_1 + \cos θ \dot{θ} e_2 + \sen θ \dot e_2) \\
 	& = - \sen θ \dot{θ} e_1 + \cos θ \frac{D e_1}{ds} + \cos θ \dot{θ} e_2 + \sen θ \frac{De_2}{ds}\\
-	\frac{de_1}{ds} & = \dot{e}_1 = \frac{d}{ds}\left(\frac{\X_1}{\sqrt{g_{11}}}\right) = = \frac{d}{ds} \frac{1}{\sqrt{g_{11}}} \X_1 + \frac{1}{\sqrt{g_{11}}} \left(\X_{11} \frac{du¹}{ds} + \X_{12} \frac{du²}{ds}\right)
+	\frac{de_1}{ds} & = \dot{e}_1 = \frac{d}{ds}\left(\frac{\X_1}{\sqrt{g_{11}}}\right) = \frac{d}{ds} \frac{1}{\sqrt{g_{11}}} \X_1 + \frac{1}{\sqrt{g_{11}}} \left(\X_{11} \frac{du¹}{ds} + \X_{12} \frac{du²}{ds}\right)
 \end{align*}
 Como $e_1(s) \cdot e_2(s) = 0$, luego $\dot{e}_1 \cdot e_2 = -e_1 \cdot \dot{e}_2$. Sea $w(s) = \dot{e_1}\cdot e_2$
 \[ \frac{d}{ds} (e_i \cdot e_i) = 0 = 2 \dot{e}_i \cdot e_i \Rightarrow \dot{e}_i \perp e_i \]
@@ -316,7 +317,7 @@ La idea de la demostración es desarrollar en serie el producto mixto. Dado que:
 \begin{defi}
 Sea $\X:U\rightarrow\R^3$, si $U$ es un disco abierto de $\R^2$ la s.s. $\X$ se llama de tipo disco. Para toda s.s. alrededor de cualquier $p\in\X(U)$ existe un entorno de tipo disco.
 \end{defi}
-\begin{theorem}[Teorema de Hopf] Sea $\alpha:[0,L]\Rightarrow\R^3$ una curva cerrada, simple y regular por arcos. Entonces:
+\begin{theorem}[Teorema de Hopf] Sea $\alpha:[0,L]\rightarrow\R^3$ una curva cerrada, simple y regular por arcos. Entonces:
 \[
 \sum_i [\theta_i(s_{i+1})-\theta_i(s_i)] + \sum_i \varphi_i = \pm 2\pi
 \]
@@ -406,11 +407,11 @@ Entonces todos los sumandos de $Kg^2$ en $\eqref{Kgecuacion}$ son intrínsecos, 
 Sea $M \subseteq \R^3$ una superficie regular:
 
 \begin{defi}
-Sea $R \subseteq M$. Se dirá que $R$ es una \textbf{región regular} si es compacta y $δR$ es la unión de un número finito de curvas cerradas simples regulares por arcos que no se cortan entre sí.
+Sea $R \subseteq M$. Se dirá que $R$ es una \textbf{región regular} si es compacta y $\partial R$ es la unión de un número finito de curvas cerradas simples regulares por arcos que no se cortan entre sí.
 \end{defi}
 
 \begin{defi}
-Una región simple con sólo 3 lados se llama un \textbf{triángulo}. Entenderemos por lado cada subarco de la curva regular por arcos $δR$.
+Una región simple con sólo 3 lados se llama un \textbf{triángulo}. Entenderemos por lado cada subarco de la curva regular por arcos $\partial R$.
 \end{defi}
 
 \begin{defi}
@@ -430,7 +431,7 @@ Sea $R \subseteq M$ región, $\mathcal{T}$ una triangulación de $R$, y sea:
 \end{defi}
 
 \begin{defi}
-$χ(\mathcal{T}) = F + V - E$ es la \textbf{característica de Euler-Poincaré} de $\mathcal{T}$.
+$χ(\mathcal{T}) = F -E + V $ es la \textbf{característica de Euler-Poincaré} de $\mathcal{T}$.
 \end{defi}
 
 \begin{prop}
@@ -440,7 +441,7 @@ Toda región regular $R \subseteq M$ admite una triangulación. Ver demostració
 \begin{prop} Sea $M$ orientada con un atlas de orientación. Sea $R \subseteq M$ una región regular. Existe una triangulación $\mathcal{T}$ de $R$ tal que cada triángulo de $\mathcal{T}$ está contenido en alguna carta $\X : U \to \R^3$ del atlas de $M$. Además, si la frontera de cada triángulo está orientada positivamente, triángulos adyacentes tienen direcciones opuestas en el lado común.
 \end{prop}
 
-\begin{prop} Si $R \subseteq M$ es una región regular. Toda triangulación tiene misma característica de Euler-Poincaré. En consecuencia, hablaremos de $χ(R)$. Ver demostración en Massey.
+\begin{prop} Sea $R \subseteq M$ es una región regular. Toda triangulación tiene misma característica de Euler-Poincaré. En consecuencia, hablaremos de $χ(R)$. Ver demostración en \textit{Massey}.
 \end{prop}
 
 \end{document}
