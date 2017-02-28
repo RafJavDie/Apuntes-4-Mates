@@ -4,7 +4,7 @@
 \section{Conjuntos convexos}
 
 \begin{defi}
-Un conjunto $S\subseteq\R^n$ es \textbf{convexo} si $\forall x^1,x^2\in S$ y $\forall\ \lambda\in[0,1]$ se cumple que $\lambda x^1 + (1-\lambda)x^2\in S$.
+Un conjunto $S\subseteq\R^n$ es \textbf{convexo} si $\forall x^1,x^2\in S$ y $\forall  \lambda\in[0,1]$ se cumple que $\lambda x^1 + (1-\lambda)x^2\in S$.
 \end{defi}
 
 \begin{defi}
@@ -27,11 +27,11 @@ Como queríamos demostrar. $\QED$
 Si $S_1$ y $S_2$ son convexos entonces $S_1\cap S_2$ es convexo
 \end{prop}
 \begin{dem}
-Definimos $x(\lambda)$ igual que en la demostración anterior. Dados $x^1,x^2\in S_1$ se tiene por convexidad de $S_1$ que $x(\lambda)\in S_1$. Análogamente, $x(\lambda)\in S_2$. Por lo tanto, $x(\lambda)\in S_1\cap S_2$. $\QED$
+Definimos $x(\lambda)$ igual que en la demostración anterior. Supongamos que $S_1$ y $S_2$ tienen intersección no vacía, pues en otro caso el resultado se sigue trivialmente. Dados $x^1,x^2\in S_1 \cap S_2$ se tiene por convexidad de $S_1$ que $x(\lambda)\in S_1$. Análogamente, $x(\lambda)\in S_2$. Por lo tanto, $x(\lambda)\in S_1\cap S_2$. $\QED$
 \end{dem}
 
 \begin{defi}
-Un \textbf{poliedro} es el conjunto de puntos definido por la intersección de un número finito de semiespacios. Visto matricialmente, dados $A\in\R^{m\times n}, b\in R^n$ se define el poliedro $P=\left\{x\in R^n: Ax\leq b\right\}$. Si denotameos por $a_i$ a la i-ésima fila de $A$ vemos que este conjunto se reescribe como $\left\{x\in\R^n: a_ix\leq b_i\ \forall i=1,\dots, n\right\}$, que es equivalente a la primera definición. Un poliedro acotado se llama \textbf{politopo}. 
+Un \textbf{poliedro} es el conjunto de puntos definido por la intersección de un número finito de semiespacios. Visto matricialmente, dados $A\in\R^{m\times n}, b\in \R^n$ se define el poliedro $P=\left\{x\in \R^n: Ax\leq b\right\}$. Si denotameos por $a_i$ a la i-ésima fila de $A$ vemos que este conjunto se reescribe como $\left\{x\in\R^n: a_ix\leq b_i\ \forall i=1,\dots, n\right\}$, que es equivalente a la primera definición. Un poliedro acotado se llama \textbf{politopo}. 
 \end{defi}
 
 \begin{coro}
@@ -43,7 +43,7 @@ Se define el \textbf{rayo} por un punto $x\in\R^n$ como el conjunto $\left\{y\in
 \end{defi}
 
 \begin{defi}
-Un punto $x\in S$ con $S$ convexo se dice \textbf{punto extremo} si $x=\lambda x^1 +(1-\lambda)x^2$ con $x^1,x^2\in S$ y $\lambda\in (0,1)$ implica que $x^1=x^2=x$.
+Sea S convexo y $x\in S$. El punto $x$ dice \textbf{punto extremo} si $x=\lambda x^1 +(1-\lambda)x^2$ con $x^1,x^2\in S$ y $\lambda\in (0,1)$ implica que $x^1=x^2=x$.
 \end{defi}
 \begin{nota}  En el caso de los poliedros, los puntos extremos coinciden con la idea de vértice. En una bola euclídea cerrada su frontera es de puntos extremos.
 \end{nota}
@@ -112,9 +112,9 @@ Sea $S\subseteq\R^n$. Si $x\in CO(S)$ entonces:
 con $x^i\in S, λ_i ≥ 0$ y $\sum_{i=1}^{n+1}λ_i=1$. Es decir, cualquier punto de la envoltura se puede expresar como combinación lineal convexa de a lo sumo $n+1$ puntos.
 \end{theorem}
 \begin{dem}
-Sea $r \in CO(S)$ y supongamos que:
+Sea $x \in CO(S)$ y supongamos que:
 \[ x = \sum_{i=1}^r λ_i x^i \]
-Si $r ≤ n+1$, el teorema está probado. Si $r > n+1$, consideramos los $r-1$ puntos linealmente independientes $x²-x¹, x³-x¹, \dots, x^r-x¹$. Entonces existen $μ_2,\dots,μ_r$ no todos nulos tales que:
+Si $r ≤ n+1$, el teorema está probado. Si $r > n+1$, consideramos los $r-1$ vectores linealmente dependientes $x²-x¹, x³-x¹, \dots, x^{r}-x¹$. Entonces existen $μ_2,\dots,μ_r$ no todos nulos tales que:
 \[ 0 = \sum_{i=2}^r μ_i (x^i-x¹) = \sum_{i=2}^r μ_i x^i - x^1\sum_{i=2}^r μ_i\]
 Tomamos $μ_1 := -\sum_{i=2}^r μ_i$ de manera que se tiene que:
 \[ \sum_{i=1}^r μ_i x^i = 0\]
