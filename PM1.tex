@@ -159,22 +159,22 @@ Para que sea posible esa desigualdad, necesariamente $\lambda^2||\overline{x}-x|
 \begin{defi} Sean dos conjuntos convexos $S_1,S_2\subset\R^n$ y el hiperplano $H=\{x\in\R^n: p'x=\alpha\}$. Decimos que $H$ separa $S_1$ de $S_2$ si $p'x\leq\alpha \forall x\in S_1$ y $p'x\geq\alpha \forall x\in S_2$. Se dice que $H$ separa estrictamente a $S_1$ de $S_2$ si las desigualdades son estrictas.
 \end{defi}
 
-\begin{lemma}
+\begin{lema}
 Sea $S\subset\R^n$ convexo y cerrado, sea $y\not\in S$. Existen $p\in\R^n, \alpha\in\R$ tal que $p'y<\alpha$ y $p'x\leq\alpha\ \forall x\in S$.
-\end{lemma}
+\end{lema}
 \begin{dem}
 Por el teorema de la proyección, existe $\overline{n}\in S$ tal que $(y-\overline{x})'(x-\overline{x})\leq 0\ \forall x\in S$. Tomamos $p=(y-\overline{x})$ y $\alpha=p' \overline{x}$. Luego $p'(x-\overline{x})\leq 0\equiv p'x\leq p'\overline{x}$. Además, como $y\not\in S$, $0<||y-\overline{x}||^2=(y-\overline{x})'(y-\overline{x})=p'y-\underbrace{p'\overline{x}}_\alpha \Rightarrow \alpha <p'y$. $\QED$
 \end{dem}
 
 \newpage
 
-\begin{lemma}[de Farkas]
+\begin{lema}[de Farkas]
 Sean $A\in \R^{m\times n}, b\in\R^m,x\in\R^n$. Entonces, exactamente uno de los siguientes sistemas tiene solución:
 \begin{enumerate}
 \item $Ax=b$ con $x\geq 0$ (es decir, todas las componentes de $x$ son no negativas).
 \item $u'A\leq 0, u'b>0, u\in R^m$.
 \end{enumerate}
-\end{lemma}
+\end{lema}
 
 Antes de demostrarlo vamos a interpretarlo. Sean $a_1,\dots, a_n$ las columnas de $A$. Entonces $Ax=a_1x_1+\cdots +a_nx_n$ con $x_i\geq 0\ \forall i$. Las combinaciones no negativas de los vectores $a_i$ generan un cono. Del segundo sistema $u'a_1\leq 0,\dots , u'a_n\leq 0$. Luego el ángulo que forma $u'$ con cada $a_i$ es mayor de $\frac{\pi}{2}$ y $u$ está en la intersección de todos los hiperplanos. Por otro lado $b$ tiene que formar un ángulo con $u$ menor de $\frac{\pi}{2}$ por lo que estará fuera del cono. Por tanto, si el segundo sistema tiene solución, el primero no puede tenerlo porque en el primero $b$ debe estar dentro del cono. Ver figura.
 
@@ -218,9 +218,9 @@ Ya lo tenemos expresado como el lema de Farkas. Su alternativa es
 \end{enumerate}
 \end{dem}
 
-\begin{lemma}
+\begin{lema}
 Sea $K\in\R^{n\times m}$ tal que $K'=-K$. Entonces, el sistema $Kx\geq 0, x\geq 0$ tiene una solución que verifica $Kx+x>0$.
-\end{lemma}
+\end{lema}
 \begin{dem}
 Vamos a aplicar el corolario con $b=e_i$ (el vector columna nulo salvo la componente $i$-ésima, que vale $1$), $i=1,\dots, n$.
 Consideramos el sistema $Kx\geq e_i, x\geq 0$ o su alternativa $x'K\leq 0, x\geq 0, x'e_i>0$. Sea $\overline{x}^i$ las solución de este par de sistemas en alternativa (es decir, que es solución de uno o de otro). Si $\overline{x}^i$ es solución del primero:
