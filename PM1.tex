@@ -127,4 +127,89 @@ Entonces se tiene que $γ_i \geq 0$ y:
 Sin embargo, $γ_{i*} = λ_{i*} - \frac{λ_{i*}}{μ_{i*}}μ_{i*} = 0$, luego $x$ es una combinación convexa de a lo sumo $r-1$ puntos de $S$. Podemos repetir esta construcción hasta llegar a $r = n+1$.
 $\QED$
 \end{dem}
+
+Sea $A \subset \R^{m \times n}$, $rg(A) = m$, $m ≤ n$ y $b \in \R^m$. Consideramos $P = \{ x \in \R^n : Ax=b, x ≥ 0\}$ (poliedro en forma estándar).
+
+\begin{theorem}[Teorema de caracterización de puntos extremos]\label{carac-extremos}
+$x$ es un punto extremo de $P$ si y sólo si existe $B \subset A$ con $B \in \R^{m \times m}$, $rg(B)=m$, $B^{-1}b ≥ 0$ y $x = \begin{pmatrix} B^{-1}b\\0\end{pmatrix}$
+\end{theorem}
+
+\begin{dem}
+($\Leftarrow$) Supongamos que $x =\begin{pmatrix} B^{-1}b\\0\end{pmatrix}$, $B \subset A$ con $B \in \R^{m \times m}$, $rg(B)=m$, $B^{-1}b ≥ 0$. Usaremos reducción al absurdo, supongamos que existe $x^1$, $x^2 \in P$ tal que $x = λx^1+(1-λ)x^2$ con $λ \in (0,1)$. Tenemos que $A = [B\ N]$ y $x = \begin{pmatrix}x_B\\x_N\end{pmatrix} = \begin{pmatrix} B^{-1}b\\0\end{pmatrix}$, $x^1 = \begin{pmatrix}x_B^1\\x_N^1\end{pmatrix}$ y $x^2 = \begin{pmatrix}x_B^2\\x_N^2\end{pmatrix}$ Luego:
+\[ x = \begin{pmatrix} B^{-1}b\\0\end{pmatrix} = λ\begin{pmatrix}x_B^1\\x_N^1\end{pmatrix}+(1-λ)\begin{pmatrix}x_B^2\\x_N^2\end{pmatrix} \]
+De ahí, $0 = λ x_N^1 + (1-λ) x_N^2$. Como $x_N^i ≥ 0$, se sigue que $x_N^i = 0$. De $x^i \in P$, se sigue que $Ax^i = b \equiv [B\ N]\begin{bmatrix}x_B^i\\0
+\end{bmatrix} = b \equiv Bx_B^i + N0 = b$. Por lo tanto: $x_B^i = B^{-1}b \geq 0$, luego $x^i = \begin{pmatrix}B^{-1}b\\0\end{pmatrix}=x$ para $i=1,2$.
+
+($\Rightarrow$) Supongamos que $x$ fuera un punto extremo de $P$. Se tiene que $Ax=b, X ≥ 0$. Como $rg(A) = m$ podemos suponer sin pérdida de generalidad que $x^1 =(x_1,\dots,x_k,0,\dots,0)$ con $x_i > 0$ y $k ≤ m$.
+Vamos a probar que las columnas asociadas a estas coordenadas $(a_1, a_2, \dots, a_k)$ son linealmente independientes. Si no lo fueran, existirían $λ_1,λ_2, \dots, λ_k$ tales que $\sum_{i=1}^k λ_i a_i = 0$. Denotamos or $λ' =(λ_1,\dots,λ_k,0,\dots,0)$. Entonces $Aλ=λ_1a_1 + λ_2a_2 + \cdots + λ_ka_k + 0a_{k+1}+\cdots+0a_n = 0$. Entonces podemos considerar los puntos $x^1 = x+αλ$ y $x^2 = x-αλ$ y $α > 0$. Claramente $x^1 \neq x^2$ y $x = \frac{1}{2}x^1+ \frac{1}{2}x^2$. Veamos que $x^i \in P$ para $i=1,2$.
+\[ Ax^i = A(x + αλ) = Ax + α(\underset{=0}{Aλ}) = Ax = b \]
+\[ x^i = x \pm αλ = \begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix} + α \begin{pmatrix}λ_1\\\vdots\\λ_k\\0\\\vdots\\0\end{pmatrix} \]
+Por hipótesis, $x_1,\dots,x_k \geq 0$. Tomando $α$ suficientemente pequeño, podemos asegurar que $x_i \pm αλ_i > 0$. Entonces $x^i \geq 0$ y $x^i \in P$. Esto contradice que $x$ sea un punto extremo. Podemos entonces asegurar que $(a_1,\dots,a_k)$ son linealmente independientes. Podemos completar $(a_1,\dots,a_m)$ hasta $m$ columnas linealmente independientes (podemos ya que $rg(A) = m$). Tomamos $B = (a_1,\dots,a_m)$. Entonces:
+\[ Ax =[B\ N]\begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix}_{(n)} = B \begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix}_{(m)} +N0_{(m-n)} = b \]
+Luego: \[ \begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix} = B^{-1}b \geq 0 \qquad x = \begin{pmatrix}B^{-1}b\\0\end{pmatrix} \]
+\end{dem}
+
+\begin{nota}
+El número de puntos extremos de los poliedro es finito y está acotado por el número combinatorio $\begin{pmatrix}n\\m\end{pmatrix}$.
+\end{nota}
+
+\begin{lema}
+$d$ es una dirección de $P$ si y sólo si $Ad=0$, $d ≥ 0$.
+\end{lema}
+
+\begin{dem}
+$d$ es dirección sii $\forall x \in P$, $x + λd \in P$ $\forall λ ≥ 0$. Equivalentemente, $A(x+λd)= b$ y $x+λd ≥ 0$ $\forall λ ≥ 0$. Esto se cumple sii:
+\[ \underset{=0}{Ax}+λAd = b \Leftrightarrow Ad = 0\]
+\[ x + λd ≥ 0 \forall λ ≥ 0 \Leftrightarrow d ≥ 0 \]
+\end{dem}
+
+\begin{theorem}[Teorema de caracterización de direcciones extremas]\label{carac-direcciones}
+$d$ es una dirección extrema de $P$ sii $d = \begin{pmatrix}-B^{-1}a_j\\e_j\end{pmatrix}$ donde $B \subset A$, $B \in R^{m\times m}$, $rg(B) = m$ y $a_j \notin B$ tal qe $B^{-1}a_j ≤ 0$. (Demostrado en uno de los libros de Bazaraa)
+\end{theorem}
+
+\begin{nota} El número de direcciones extremas de $P$ es finito y está acotado por $\begin{pmatrix}n\\m\end{pmatrix}(n-m)$.
+\end{nota}
+
+\begin{theorem}[Teorema de representación de poliedros de Minkowski-Weyl]
+Sea $P$ un poliedro en forma estándar y sean $x^1,x²,\dots,x^k$ sus puntos extremos y $d^1,d^2,\dots,d^l$ sus direcciones extremas. Consideramos 
+\[ S = \{x \in \R^n : x = \sum_{i=1}^k λ_i x^i + \sum_{j=1}^l μ_j d^j, \sum_{i=1}^k λ_i=1, λ_i ≥ 0, μ_j ≥ 0\ \forall i,j\} \]
+Entonces $S = P$. Es decir, podemos representar cualquier poliedro en forma estándar queda determinado por sus extremos y direcciones extremas.
+\end{theorem}
+
+\begin{dem} Lo demostraremos por doble inclusión:
+\begin{itemize}
+	\item $(S \subseteq P)$ Sea $x \in S$, $x = \sum_{i=1}^k λ_i x^i + \sum_{j=1}^l μ_j d^j$ para algún $λ$ y $μ$.
+	\[ Ax = A\left( \sum_{i=1}^k λ_i x^i + \sum_{j=1}^l μ_j d^j\right) =  \sum_{i=1}^k λ_i \underset{=b}{Ax^i} + \sum_{j=1}^l μ_j \underset{=0}{Ad^j} = \sum_{j=1}^l b = b \]
+	\[ x = \sum_{i=1}^k \underset{≥0}{λ_i} \underset{≥0}{x^i} + \sum_{j=1}^l \underset{≥0}{μ_j}\underset{≥0}{d^j} ≥ 0 \]
+	Luego $x \in P$
+	
+	\item $(P \subseteq S)$ Supongamos que existe $z \in P$ pero $z \notin S$. Como $S$ es un convexo cerrado, existe $p \in \R^n$, $α \in \R$ tales que $p'z > α$, $p'x ≤ α$ $\forall x$ (separación de $z$ y $S$). Tenemos
+	\begin{enumerate}
+		\item $p'd^j ≤ 0$ $\forall j=1,\dots,l$
+		
+		Si existiese $j$ tal que $p'd^j > 0$, consideamos el rayo $x + λd^j, λ ≥ 0$ para cualquier $x \in S$, pero entonces $p'(x+λd^j) = p'x + λp'd^j ≤ α$, pero $λp'd^j$ tiende a infinito cuando $λ$ tiende a infinito, luego $p'(x+λd^j)$ no puede estar acotado por ningún $α$.
+		\item $p'z > α ≥ p'x^i$ $\forall i=1,\dots,k$
+	\end{enumerate}
+	Sea $\overline{x}$ el punto extremo tal que $p'\overline{x} = \max_i p'x^i$. Usando el teorema \ref{carac-extremos}: existe una reordenación tal que $\overline{x} = \begin{pmatrix}B^{-1}b\\0\end{pmatrix}$, $A = [B\ N]$, $x = \begin{bmatrix}x_B\\x_n\end{bmatrix}$, $z = \begin{bmatrix}z_B\\z_n\end{bmatrix} \in P$, $Az=b$. De $[B\ N]\begin{bmatrix}z_B\\z_N\end{bmatrix} = b$ obtenemos que $z_B = B^{-1}b-B^{-1}Nz_N$. Luego usando (2):
+	\[ 0 < p'(z-\overline{x}) = (p_B'\ p_N') \left[\begin{pmatrix}B^{-1}b-B^{-1}Nz_N\\z_N\end{pmatrix}-\begin{pmatrix}B^{-1}b\\0\end{pmatrix}\right] =-p_B'B^{-1}Nz_N + p'z_N = (p_N'-p_B'B^{-1}N)z_N \]
+	Al menos una de las coordenadas de $p_N'-p_B'B^{-1}N$ debe ser positiva. Sea $j$ tal que:
+	\[ 0 < (p_N'-P_B'B^{-1}N)_j = p_j - p_B'B^{-1}a_j \]
+	Llamemos $y_j\footnote{\url{https://www.youtube.com/watch?v=q6EoRBvdVPQ}} = B^{-1}a_j$ . Veamos que $y_j > 0$. Si $y_j ≤ 0$, $d = \begin{pmatrix}-B^{-1}a_j\\e_j\end{pmatrix}$ debe ser una dirección extrema por el teorema \ref{carac-direcciones}. Entonces $p'd = (p_B'\ p_N')\begin{pmatrix}-B^{-1}a_j\\e_j\end{pmatrix}=-p_B'B^{-1}a_j + p_j > 0$, pero esto contradice (1). Luego $y_j = B^{-1}a_j > 0$. Denotemos por $\overline{b}=B^{-1}b$. Sea $d = \begin{pmatrix}-y_j\\e_j\end{pmatrix}$ y $\hat{x} = \overline{x} + λd$. Veamos que $\hat{x} \in P$ si $λ = \frac{\overline{b}_r}{y_{jr}} = \min\{\frac{\overline{b}_i}{y_{ji}} : y_{ji} > 0\}$..
+	\[ A\hat{x} = A\overline{x} + \frac{\overline{b}_r}{y_{r_j}} A d = b + \frac{\overline{b}_r}{y_{jr}} [B\ N] \begin{pmatrix}-B^{-1}a_j\\e_j\end{pmatrix} = b + \frac{\overline{b}_r}{y_{jr}}(-a_j + a_j) = b \]
+	Si $i$ es una cooredanda de $B$ con $i \neq r$:
+	\[ \hat{x}_i = (B^{-1}b)_i + \frac{\overline{b}_r}{y_{jr}}(-y_{ji}) = \overline{b}_i - \frac{\overline{b}_r}{y_{jr}}y_{ji} \]
+	Si $y_{ji} < 0 \Rightarrow \hat{x} ≥ 0$ evidentemente. Si $y_{ji} > 0$, entonces $\overline{b}_i - \frac{\overline{b}_r}{y_{jr}}y_{ji} ≥ 0$, ya que $ \frac{\overline{b}_r}{y_{ji}} ≥ \frac{\overline{b}_r}{y_{jr}}$.
+	
+	Si $i = r$, el resultado es directo, ya que $\overline{b}_r - \frac{\overline{b}_r}{y_{jr}}y_{jr} = 0 ≥ 0$.
+	
+	Si $i$ es una coordenada que está en $N$, se tiene que $i \neq j$, luego:
+	\[ \hat{x}_i = 0 +  \frac{\overline{b}_r}{y_{jr}}0 = 0 \]
+	\[ \hat{x}_j = 0 +  \frac{\overline{b}_r}{y_{jr}}1 ≥ 0 \]
+	
+	Luego $\hat{x} \in P$. Además $\hat{x}$ es un punto extremo representado por las columnas $\hat{B}= (a_1,\dots,a_m)$ y además verifica:
+	\[ p'\hat{x} = p'(\overline{x} + \frac{\overline{b}_r}{y_{jr}}d) = p'\overline{x} + \underset{>0}{\frac{\overline{b}_r}{y_{jr}}} \underset{≥0}{p'd} > p'\overline{x} \]
+	Esto contradice que $p'\overline{x}$ fuera máximo. Por reducción al absurdo, llegamos a que $z \in S$, lo que acaba la demostración.
+	$\QED$
+\end{itemize}
+\end{dem}
 \end{document}
