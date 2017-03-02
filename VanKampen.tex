@@ -244,7 +244,9 @@ el primero en $j_{1*}(\pi_1(X_1,x_0))$ y el otro en $j_{2*}(\pi_1(X_2,x_0))$.
 
 \begin{figure}[h!]
 	\includegraphics[scale=0.4]{text4180}
-\end{figure}
+\end{figure}\
+
+Para una prueba completa consultar \cite{Hatcher}.
 
 \newpage
 
@@ -940,31 +942,35 @@ En el siguiente tema calcularemos de forma general los grupos fundamentales de l
 
 \section{Separación del plano por curvas cerradas}
 
+Como una aplicación del teorema de Seifert-Van Kampen se probará que toda curva cerrada simple separa al plano. Empezamos con el siguiente lema.
+
 \begin{lemma}\label{1}
 Sea $A$ un espacio compacto y $g\func{A}{\R^2\setminus\{0\}}$ una aplicación continua. Si $0$ está en la componente no acotada de $\R^2\setminus g(A)$  entonces $g$ es homotópicamente trivial.
 \end{lemma}
 
-Antes de empezar la demostración observamos que $\R^2$ es localmente conexo por caminos y por ello también lo es $\R^2\setminus g(A)$ . Por tanto, las componentes conexas y conexas por caminos coinciden.
-
+Antes de empezar la demostración observamos que $\R^2$ es localmente conexo por caminos y por ello también lo es el abierto $\R^2\setminus g(A)$. Por tanto, las componentes conexas y conexas por caminos de $\R^2\setminus g(A)$ coinciden y son abiertos de $\R^2\setminus g(A)$ y, por tanto, de $\R^2$.
 \begin{dem}
-Por la observación anterior y la hipótesis podemos elegir un camino $\alpha\func{I}{\R^2\setminus g(A)}$ de $0$ a un punto $p$ fuera de una bola $B$ que contenga a $g(A)$. La aplicación $G\func{A\times I}{\R^2\setminus g(A)}$ dada por $G(x,t)=g(x)-\alpha(t)$ define una homotopía entre g y la aplicación $h(x)=g(x)-p$. Nótese que $G(x,t)\neq 0$ pues $\alpha(I)\cap g(A)=\emptyset$. Ahora sea $H\func{A\times I}{\R^2\setminus g(A)}$ la aplicación $H(x,t)=tg(x)-p$. Esta aplicación es una homotopía entre $h$ y la aplicación constante $-p$. Por la compatibilidad de la relación de homotopía con la composición se tiene que $g(x)-p\simeq -p$ es equivalente a $g(x)\simeq 0$ al componer con la aplicación $f(x)=x+p$. Nótese que $H(x,t)\neq 0$ pues $||tg(x)||\leq||g(x)||\leq r <||p||$ donde $r$ es el radio de la bola $B$. $\QED$
+Por la observación anterior y la hipótesis podemos elegir un camino $\alpha\func{I}{\R^2\setminus g(A)}$ de $0$ a un punto $p$ fuera de una bola $B$ que contenga a $g(A)$. La aplicación $G\func{A\times I}{\R^2\setminus g(A)}$ dada por $G(x,t)=g(x)-\alpha(t)$ define una homotopía entre g y la aplicación $h(x)=g(x)-p$. Nótese que $G(x,t)\neq 0$ pues $\alpha(I)\cap g(A)=\emptyset$. Ahora sea $H\func{A\times I}{\R^2\setminus g(A)}$ la aplicación $H(x,t)=tg(x)-p$. Así pues, $H$ define una homotopía entre $h$ y la aplicación constante $-p$. Entonces, por la propiedad transitiva de la relación de homotopía, $g$ es homotópica a una aplicación constante. Nótese que $H(x,t)\neq 0$ pues $||tg(x)||\leq||g(x)||\leq r <||p||$ donde $r$ es el radio de la bola $B$. $\QED$
 \end{dem}
 
-\begin{lemma}
+\begin{lemma}\label{2}
 Sea $A\subset S^2$ compacto y $a,b\in S^2$. Dada una aplicación continua $f\func{A}{S^1\setminus\{a,b\}}$, si $a$ y $b$ están en la misma componente de $S^2\setminus f(A)$ entonces $f$ es homotópicamente trivial. 
 \end{lemma}
 
 \begin{dem}
-Es consecuencia del lema anterior si hacemos la proyección estereográfica \[\rho\func{S^2\setminus\{a,b\}}{\R^2}\] seguida de la traslación $t\func{\R^2}{\R^2}$ que lleva $\rho(b)$ en $0$. Entonces, decir que $a$ y $b$ están en la misma componente de $S^2\setminus f(A)$ es equivalente a decir que $0$ está en la componente no acotada de $\R^2\setminus\rho(f(A))$. $\QED$
+Es consecuencia del lema anterior si tomamos la proyección estereográfica \[\rho\func{S^2\setminus\{a\}}{\R^2}\] seguida de la traslación $t\func{\R^2}{\R^2}$ que lleva $\rho(b)$ en $0$. Entonces, decir que $a$ y $b$ están en la misma componente de $S^2\setminus f(A)$ es equivalente a decir que $0$ está en la componente no acotada de $\R^2\setminus t\rho(f(A))$. $\QED$
 \end{dem}
 
 \begin{prop}
-Sea $f\func{S^1}{S^2}$ una inyección continua. Entonces la imagen $\Sigma=f(S^1)$ divide a $S^2$, es decir, $S^2\setminus\Sigma$ tiene al menos dos componentes. Además, tenemos que $f\func{S^1}{\Sigma}$ es homeomorfismo.
+Sea $f\func{S^1}{S^2}$ una inyección continua. Entonces la imagen $\Sigma=f(S^1)$ divide a $S^2$, es decir, $S^2\setminus\Sigma$ tiene al menos dos componentes.
 \end{prop}
+
+Nótese que $f\func{S^1}{\Sigma}$ es homeomorfismo.
 
 \begin{dem}
 Ya hemos comentado que las componentes conexas coinciden con las componentes conexas por caminos de $\R^2-\Sigma$.\\
-Vamos a suponer que $S^2-\Sigma$ es conexo por caminos y escribimos $\Sigma=\Sigma_+\cup\Sigma_-$, donde $\Sigma_\pm$ es la imagen de la semicircunferencia $E_\pm$ ($E_+=\{(x,y)\in S^1: y\geq 0\}$, $E_-=\{(x,y)\in S^1: y\leq 0\}$). Si $\Sigma_+\cap\Sigma_-=\{a,b\}$, es inmediato que $S^2\setminus\{a,b\}=(S^2\setminus\Sigma_+)\cup(S^2\setminus\Sigma_-)$. Además $(S^2\setminus\Sigma_+)\cap(S^2\setminus\Sigma_-)=S^2\setminus\Sigma$, que hemos supuesto que es conexo por caminos. Entonces podemos aplicar el teorema de Seifert-Van Kampen (\ref{SVK}) y tenemos que $\pi_1(S^2\setminus\{a,b\},x_0)$ es el producto amalgamado del diagrama de flechas continuas
+Vamos a suponer que $S^2-\Sigma$ es conexo por caminos y escribimos $\Sigma=\Sigma_+\cup\Sigma_-$, donde $\Sigma_\pm$ es la imagen de la semicircunferencia $E_\pm$ ($E_+=\{(x,y)\in S^1: y\geq 0\}$, $E_-=\{(x,y)\in S^1: y\leq 0\}$). Si $\Sigma_+\cap\Sigma_-=\{a,b\}$, es inmediato que $S^2\setminus\{a,b\}=(S^2\setminus\Sigma_+)\cup(S^2\setminus\Sigma_-)$. Además $(S^2\setminus\Sigma_+)\cap(S^2\setminus\Sigma_-)=S^2\setminus\Sigma$, que hemos supuesto que es conexo por caminos.\\
+Entonces podemos aplicar el teorema de Seifert-Van Kampen (\ref{SVK}) y tenemos que $\pi_1(S^2\setminus\{a,b\},x_0)$ es el producto amalgamado del diagrama de flechas continuas
 \[
 \begin{tikzcd}
 \pi_1(U\cap V,x_0)\arrow[r, "i_1*"]\arrow[d, "i_2*"'] & \pi_1(U,x_0)\arrow[d, dashed, "j_1*"]\\
@@ -972,22 +978,26 @@ Vamos a suponer que $S^2-\Sigma$ es conexo por caminos y escribimos $\Sigma=\Sig
 \end{tikzcd}
 \]
 donde $U=S^2\setminus\Sigma_+$ y $V=S^2\setminus\Sigma_-$.\\
-Veamos que los homomorfismos $i_{1*}$ y $i_{2*}$ son triviales, de donde se deducirá que $\pi_1(S^2\setminus\{a,b\},x_0)=\{1\}$ es el grupo trivial, llegando a una contradicción pues $\pi_1(S^2\setminus\{a,b\},x_0)\cong\Z$ (ya que $S^2\setminus\{a,b\}$ es homeomorfo al plano menos un punto mediante la proyección estereográfica).\\
-Para ver que $i_{1*}$ es trivial ($i_{2*}$ se hace análogamente) procedemos de la siguiente manera. Sea $[\alpha]\in\pi_1(U,x_0)$. Como $\alpha\func{[0,1]}{U}$ cumple $\alpha(0)=\alpha(1)$, $\alpha$ induce una aplicación $\tilde{\alpha}\func{S^1}{U}$ con $\tilde{\alpha}(e^{2\pi it})=\alpha(t)$. Es decir, $\tilde{\alpha}_*\func{\pi_1(S^1,(1,0))}{\pi_1(U,x_0)}$ lleva el generador $\varepsilon$ representado por la vuelva canónica de $S^1$ en $[\alpha]$. Entonces $i_{1*}[\alpha]=i_{1*}\circ\tilde{\alpha}*(\varepsilon)$.\\
-Tenemos $i_1\circ\tilde{\alpha}:S^1\longrightarrow U\longrightarrow S^2\setminus\{a,b\}$. Además $a,b\Sigma_+$ y $\Sigma_+\cap i_1\circ\tilde{\alpha}(S^1)=\emptyset$, por lo que $a$ y $b$ están en la misma componente de $S^1\setminus i_1\circ\tilde{\alpha}(S^1)$ y por el lema \ref{1} $i_1\circ\tilde{\alpha}$ es homotópicamente trivial, así que
+Veamos que los homomorfismos $j_{1*}$ y $j_{2*}$ son triviales, de donde se deducirá que $\pi_1(S^2\setminus\{a,b\},x_0)=\{1\}$ es el grupo trivial, llegando a una contradicción pues $\pi_1(S^2\setminus\{a,b\},x_0)\cong\Z$ (ya que $S^2\setminus\{a,b\}$ es homeomorfo al plano menos un punto mediante la proyección estereográfica).\\
+Para ver que $j_{1*}$ es trivial ($j_{2*}$ se hace análogamente) procedemos de la siguiente manera. Sea $[\alpha]\in\pi_1(U,x_0)$. Como $\alpha\func{[0,1]}{U}$ cumple $\alpha(0)=\alpha(1)$, $\alpha$ induce una aplicación $\tilde{\alpha}\func{S^1}{U}$ con $\tilde{\alpha}(e^{2\pi it})=\alpha(t)$ como se puede ver en la figura más abajo. Es decir, $\tilde{\alpha}_*\func{\pi_1(S^1,(1,0))}{\pi_1(U,x_0)}$ lleva el generador $\varepsilon$ representado por la vuelva canónica de $S^1$ en $[\alpha]$. Entonces $j_{1*}[\alpha]=(j_{1*}\circ\tilde{\alpha})_*(\varepsilon)$.\\
+Tenemos $j_1\circ\tilde{\alpha}:S^1\longrightarrow U\longrightarrow S^2\setminus\{a,b\}$. Además $a,b\in\Sigma_+$ y $\Sigma_+\cap j_1\circ\tilde{\alpha}(S^1)=\emptyset$, por lo que $a$ y $b$ están en la misma componente de $S^1\setminus j_1\circ\tilde{\alpha}(S^1)$ y por el lema \ref{2} $j_1\circ\tilde{\alpha}$ es homotópicamente trivial, así que
 \[
-i_{1*}[\alpha]=i_{1*}\circ\tilde{\alpha}_*(\varepsilon)=(i\circ\tilde{\alpha})_*(\varepsilon)=1.
+j_{1*}[\alpha]=j_{1*}\circ\tilde{\alpha}_*(\varepsilon)=(j\circ\tilde{\alpha})_*(\varepsilon)=1.
 \]
-Es decir, $i_{1*}$ es el homomorfismo trivial.
+Es decir, $j_{1*}$ es el homomorfismo trivial.
+
+\begin{figure}[h!]
+	\includegraphics[scale=0.4]{path6995}
+\end{figure}
 
 \end{dem}
 
-El resultado anterior se puede reformular en el plan. Esto es, se tiene
+El resultado anterior se puede reformular en el plano. Esto es, se tiene
 
-\begin{prop}[Teorema de Jordan I] 
-Si $f\func{S^1}{\R^2}$ es una inyección continua, su imagen divide a $R^2$.
+\begin{prop}[Teorema de Jordan] 
+Si $f\func{S^1}{\R^2}$ es una inyección continua, su imagen divide a $\R^2$.
 \end{prop}
 
-Este resultado es quivalente a la proposición anterior, pues $\R^2\subset S^2$ por medio de la proyección estereográfica. Entonces, además de la componente $C$ del punto de $S^2$ que corresponde al $\infty$ de $\R^2$, existe otra componente $C'$. Al volver a $\R^2$, la componente $C'$ está acotada, mientas que $C$ es la componente no acotada. Así pues, hay al menos dos componentes en $\R^2\setminus f(S^1)$.
+Este resultado es equivalente a la proposición anterior, pues podemos ver $S^2$ como $\R^2$ con el punto del infinito por medio de la proyección estereográfica. Entonces, por la proposición anterior, además de la componente $C$ del punto de $S^2$ que corresponde al $\infty$ de $\R^2$, existe otra componente $C'$. Ahora bien, como $C$ y $C'$ son abiertos de $S^2$, tenemos que la clausura $\overline{C'}\subseteq C'\cup f(S^1)$ es un compacto de $S^2$ que no contiene al $\infty$ y, por tanto, al pasar a $\R^2$, $C'$ está acotada. Por el contrario, al pasar de $C$ a $\R^2$, $C$ contiene circunferencias arbitrariamente grandes y no está acotada. Así pues, hay al menos dos componentes en $\R^2\setminus f(S^1)$.
 
 \end{document} 
