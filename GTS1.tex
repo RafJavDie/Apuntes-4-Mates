@@ -233,7 +233,8 @@ Como $J(f^{-1}) = \begin{pmatrix}1 & 0\\h_1 & h_2\end{pmatrix} = \begin{pmatrix}
 	& = g_{11} \cdot 1 \cdot 0 + g_{12} \cdot 1 \cdot \left(\frac{1}{µ g_{22}}\right) + g_{21} \cdot \left( \frac{-g_{12}}{g_{22}}\right) \cdot 0  + g_{22} \left(\frac{-g_{12}}{g_{22}}\right) \frac{1}{μ g_{12}} \\
 	& = \frac{1}{μ} - \frac{1}{μ} = 0
 \end{align*}
-
+\qed
+\end{dem}
 Buscamos una fórmula para $K_g(s)$. Podemos suponer ya que las líneas paramétricas son ortogonales ($g_{12} = 0$). Sea $e_1(s) = \frac{\X_1}{|\X_1|} = \frac{\X_1}{\sqrt{g_{11}}}$ y $e_2(s) = \frac{\X_2}{|\X_2|} = \frac{\X_2}{\sqrt{g_{22}}}$ de manera que $\{e_1(s), e_2(s)\}$ es una base ortonormal sobre la curva $α(s)$. Sea $θ(s) = (\widehat{e_1(s), \dot{α}(s))}$. Luego:
 \[ \dot{α} = \cos θ e_1 + \sen θ e_2 \]
 \[ S = - \sen θ e_1 + \cos θ e_2\]
@@ -257,7 +258,7 @@ Finalmente:
 	\frac{D\dot{α}}{ds} & = -\sen θ \dot{θ} e_1 + \cos θ w e_2 + \cos θ \dot{θ} e_2 + \sen θ (-w) e_1 \\
 	& = (-\dot{θ} -w) \sen θ e_1 + (\dot{θ} + w) \cos θ e_2 = (-\sen θ e_1 + \cos θ e_2) (\dot{θ}  w) = (\dot{θ} + w)\cdot S
 \end{align*}
-\end{dem}
+
 
 \begin{theorem}
 En las condiciones anteriores se tiene:
@@ -265,8 +266,8 @@ En las condiciones anteriores se tiene:
 \end{theorem}
 
 \begin{dem}
-\[ \ddot{α}(s) = κ n = K_g \cdot S + K_n \cdot N \]
-Multipicando por $S$:
+\[ \ddot{α}(s) = k(s)n(s) = K_g \cdot S + K_n \cdot N \]
+Multiplicando por $S$:
 \[ \ddot{α}(s) \cdot S = K_g \Rightarrow K_g = tg\left(\frac{d\dot{α}}{ds}\right) \cdot S = \frac{D\dot{α}}{ds} \cdot S = \dot{θ} + w \]
 \end{dem}
 
@@ -402,7 +403,7 @@ Análogamente, derivando $\X_{11} \X_2 = (g_{12})_1 - \frac{1}{2}(g_{11})_2$ res
 \[ \X_{112}\X_2 + \X_{11}\X_{22} = (g_{12})_{12} - \frac{1}{2}(g_{11})_{22}\]
 Restando las dos anteriores ecuaciones, obtenemos que:
 \[ \X_{11} \X_{22} - \X_{12}\X_{12} = (g_{12})_{12} - \frac{1}{2} (g_{11})_{22} - \frac{1}{2} (g_{22})_{11} \]
-Entonces todos los sumandos de $Kg^2$ en $\eqref{Kgecuacion}$ son intrínsecos, luego $K$ es intrínseco.
+Entonces todos los sumandos de $K_g^2$ en $\eqref{Kgecuacion}$ son intrínsecos, luego $K$ es intrínseco.
 \end{dem}
 
 \section{Triangulaciones de una superficie}
@@ -496,5 +497,4 @@ Por tanto, se sigue que:
 \sum_{i=1}^n \int_{C_i}K_g + \iint_R K dA + \sum \varphi_l = 2 \chi(R)
 \end{gather*}
 \end{dem}
-\includesvg{normal}
 \end{document}
