@@ -35,6 +35,7 @@
 \newtheorem{example}[theorem]{Ejemplo}
 \newtheorem{lemma}[theorem]{Lema}
 \newtheorem{nota}[theorem]{Nota}
+\newtheorem{ejer}[theorem]{Ejercicio}
 \newtheorem{prop}[theorem]{Proposición}
 \newtheorem*{dem}{Demostración}
 \newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
@@ -497,8 +498,59 @@ Por tanto, se sigue que:
 \sum_{i=1}^n \int_{C_i}K_g + \iint_R K dA + \sum \varphi_l = 2 \chi(R)
 \end{gather*}
 \end{dem}
-<<<<<<< HEAD
-%\includesvg{normal}
-=======
->>>>>>> a754bca15a451ba92be78e2938427259c9d4fec6
+
+\begin{ejer}
+Sea $M$ orientable con $K ≤ 0$. Dos geodésicas $α_1$, $α_2$ que parten de $p \in M$ no pueden encontrase de nuevo en $q \in M$ encerrando una región simple $\mathcal{R} \subset M$.
+\end{ejer}
+
+\begin{dem} Si se encontrase de nuevo, podriamos considerar el ciclo $α_1-α_2$, que encierra el área $\mathcal{R}$. $α_1-α_2$ tiene saltos en los puntos $p$ y $q$, con ángulo exterior $φ_1$ y $φ_2$ respectivamente. Por ser $\mathcal{R}$ una región simple, tiene característica de Euler $χ=1$. Por el Teorema de Gauss-Bonet:
+\[ \int_{α_1} K_g + \int_{α_2} K_g + \iint_\mathcal{R} K dA + φ_1 + φ_2 = 2 \pi 1 \]
+Como $α_1$ y $α_2$ son geodésicas, los dos primeros sumandos son 0. Luego:
+\[ \iint_\mathcal{R} K dA = 2\pi - (φ_1 + φ_2) \]
+Como $φ_1 < \pi$ y $φ_2 < \pi$, $φ_1+φ_2 < 2\pi$. Por lo tanto $2\pi - (φ_1+φ_2) > 0$. Pero esto es imposible, ya que $K \leq 0$ en $\mathcal{R}$. Hemos llegado a un absurdo. Luego $α_1$ y $α_2$ no se pueden encontrar de nuevo.
+\end{dem}
+
+\begin{ejer} Sea $T$ un triángulo geodésico en una superficie $M$. Estudiar el valor de la suma de sus ángulos internos en función del signo de $K$ de $M$.
+\end{ejer}
+
+\begin{dem} Sean $α$, $β$ y $γ$ geodésicas que delimitan el triángulo geodésico $T$. Sea $φ_i$ y $ψ_i$ los ángulos externos e internos respectivamente para $i\in \{1,2,3\}$. Usando el Teorema de Gauss-Bonet:
+\[ \int_α K_g + \int_β K_g  \int_γ K_g + \iint_T K dA + φ_1 + φ_2 + φ_3 = 2 \pi \]
+Como $α$, $β$ y $γ$ son geodésicas:
+\[ \iint_T K dA = 2\pi - (φ_1+φ_2+φ_3) = 2\pi - (π - ψ_1 + π - ψ_2 + π - ψ_3) = ψ_1 + ψ_2 + ψ_3 - π \]
+\begin{itemize}
+	\item Si $K > 0$, $\iint_T K dA > 0$, luego $ψ_1+ψ_2+ψ_3 > \pi$.
+	\item Si $K = 0$, $\iint_T K dA = 0$, luego $ψ_1+ψ_2+ψ_3 = \pi$.
+	\item Si $K < 0$, $\iint_T K dA < 0$, luego $ψ_1+ψ_2+ψ_3 < \pi$.
+\end{itemize}
+\end{dem}
+
+
+\begin{ejer} Sea $M$ compacto con $K > 0$. Si existen geodésicas geodésicas cerradas simples, entonces se cortan.
+\end{ejer}
+
+\begin{dem} El único compacto que tiene curvatura $K > 0$ en todo $M$ es la esfera, luego $M \cong S^2$. Supongamos que hubieran 2 geodésicas $α_1$ y $α_2$ que no se cortan, luego no se cortan en su imagen en $S^2$. Entonces hay una región $\mathcal{R}$ entre $α_1$ y $α_2$ que es homeomorfa a una corona circular, luego $χ(\mathcal{R}) = 0$. Por Gauss-Bonet:
+\[ \int_{α_1} K_g + \int_{α_2} K_g + \iint_\mathcal{R} K dA + \sum_i φ_i = \iint_\mathcal{R} K dA = 2 π χ(\mathcal{R}) = 0 \]
+Como $K > 0$, $\iint_\mathcal{R} K dA > 0$, con lo que hemos llegado a una contradicción.
+\end{dem}
+
+\begin{ejer} Se considera a región cilíndrica $\mathcal{R}$ comprendida entre dos paralelos $α_1$, $α_2$ y que tiene un agujero bordeado por una curva regular cerrada y simple $γ$. Aplicar Teorema de Gauss-Bonet a $\mathcal{R}$ para determinar $\int_γ K_g$.
+\end{ejer}
+
+\begin{dem}
+\[ \iint_\mathcal{R} dA + \int_{α_1} K_g + \int_{α_2} K_g + \int_γ K_g + \sum_i φ_i = 2 π χ(\mathcal{R}) \]
+(sin copiar, lo siento)
+\end{dem}
+
+\begin{ejer}
+Se cconsidera la rgión $\mathcal{R}$ del plano constituida por un círculo $α$ con un agujero $β$ romboidal y otro trianguar $γ$ disjuntos. Calcular $\int_α K_g$ aplicando el TGB.
+\end{ejer}
+
+\begin{dem} Sean $φ_1,φ_2,φ_3,φ_4$ los ángulos exteriores del romboide y  $φ'_1,φ'_2,φ'_3$ los ángulos exteriores del triánuglo. Por TGB:
+\[ \int_α K_g + \int_β K_g + \int_γ K_g + \iint_\mathcal{R} K dA + \sum φ_i + \sum φ'_i = 2 π χ(\mathcal{R}) \]
+Como $β$ y $γ$ está compuesto de segmentos, está compuestos de geodésicas y se anulan sus respectivos sumandos. Como estamos en el plano, $K = 0$. Luego:
+\[ \int_α K_g = 2 π χ(\mathcal{R}) - \sum φ_i - \sum φ'_i \]
+Por el Teorema de Hopf y como las curvas $β$ y $γ$ se recorren en el sentido contrario a $α$, que está positivamente orientado, $-\sum φ_i = -\sum φ'_i = 2π$. Triangulando la región, obtenemos que $χ(\mathcal{R})=-1$. Luego:
+\[ \int_α K_g = -2π+2π+2π = 2π \]
+\end{dem}
+
 \end{document}
