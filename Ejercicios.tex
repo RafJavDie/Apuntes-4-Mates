@@ -1,0 +1,189 @@
+\documentclass{article}
+\usepackage{amsmath,accents}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{setspace}  
+\usepackage{amsthm}
+\usepackage{nccmath}
+\usepackage[spanish]{babel}
+\usepackage{multirow}
+\theoremstyle{plain}
+
+\renewcommand{\baselinestretch}{1,4}
+\setlength{\oddsidemargin}{0.5in}
+\setlength{\evensidemargin}{0.5in}
+\setlength{\textwidth}{5.4in}
+\setlength{\topmargin}{-0.25in}
+\setlength{\headheight}{0.5in}
+\setlength{\headsep}{0.6in}
+\setlength{\textheight}{8in}
+\setlength{\footskip}{0.75in}
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{propi}[theorem]{Propiedades}
+\newtheorem{condition}{Condition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{coro}[theorem]{Corolario}
+\newtheorem{criterion}{Criterion}
+\newtheorem{defi}[theorem]{Definición}
+\newtheorem{example}[theorem]{Ejemplo}
+\newtheorem{exercise}{Ejercicio}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{nota}[theorem]{Nota}
+\newtheorem{sol}{Solución}
+\newtheorem*{sol*}{Solución}
+\newtheorem{prop}[theorem]{Proposición}
+\newtheorem{remark}{Remark}
+
+\newtheorem{dem}[theorem]{Demostración}
+
+\newtheorem{summary}{Summary}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\ninf}[1]{\norm{#1}_\infty}
+\providecommand{\numn}[1]{\norm{#1}_1}
+\providecommand{\gabs}[1]{\left|{#1}\right|}
+\newcommand{\bor}[1]{\mathcal{B}(#1)}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\X}{\chi}
+\providecommand{\Zn}[1]{\Z / \Z #1}
+\newcommand{\resi}{\varepsilon_L}
+\newcommand{\cee}{\mathbb{C}}
+\providecommand{\conv}[1]{\overset{#1}{\longrightarrow}}
+\providecommand{\gene}[1]{\langle{#1}\rangle}
+\providecommand{\convcs}{\xrightarrow{CS}}
+% xrightarrow{d}[d]
+\setcounter{exercise}{0}
+\newcommand{\cicl}{\mathcal{C}}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios semanales TCYC - Tercera entrega }
+\author{Rafael González López}
+\maketitle
+\begin{exercise} Sea $\alpha(s)$ una curva parametrizada naturalmente en una superficie $\chi : U \rightarrow \R^3$. Probar
+que la normal intrínseca S de $\alpha$ es paralela a lo largo de $\alpha$ si y solo si $\alpha$ es una geodésica.
+\end{exercise}
+\begin{sol*}
+Supongamos que $\alpha$ es geodésica. En tal caso $n(s)=\pm N(s)$. Entonces:
+\[
+b(s) = t(s)\times n(s)= \pm t(s)\times N(s) = \pm S(s) \Rightarrow S'(s) = \pm \tau(s)k(s) \Rightarrow S'(s) \parallel N(s)
+\]
+Recíprocamente, si $S'(s)||N(s)$ entonces $t(s)S'(s)$, de lo que deducimos que $t'(s)S(s)=0$, pero $t'(s) = n(s)k(s)$. Por tanto, $n(s)$ es perpendicular a $t(s)$ y $S(s)$, luego $n(s)\parallel N(s)$.
+\end{sol*}
+
+
+\newpage
+\begin{exercise}(a). Probar que una curva regular $\alpha(s)$, $s=p.n.$ con $\tau(s)\neq 0$, $\forall s\in (a,b)$ es geodésica en la superficie $\X:(a,b)\times\R \rightarrow\R^3$ dada por:
+\[
+\X(s,v)=\alpha(s)+v t(s) + v\frac{k(s)}{\tau(s)}b(s)
+\]
+Sean $X(s),Y(s)$ los campos vectoriales $\X_1$ y $\X_2$ a lo largo de $\alpha$ respectivamente. Estudiar bajo qué condiciones cada uno de estos campo es paralelo a a lo largo de $\alpha$.
+\end{exercise}
+\begin{sol*}
+\begin{itemize}
+\item[]
+\item Veamos el primer apartado:
+\begin{gather*}
+\chi_1(s,v) = t(s) +v(k(s)n(s)+v\left(\frac{k(s)}{\tau(s)}b(s)\right)' \qquad \chi_2(s,v) = t(s)+\frac{k(s)}{\tau(s)}b(s)\\
+\X_1(s,0)\times\X_2(s,0) = \left(0,-\frac{k(s)}{\tau(s)},0\right) \Rightarrow n(s) \parallel N(s)
+\end{gather*}
+\item Veamos ahora, por casos, el segundo aparatado:
+\begin{itemize}
+\item $\chi_1(s)$ es paralelo si y solo sí $X_1'(s) = t'(s) = k(s)n(s) \parallel N(s)$. Por tanto, como $\alpha$ es geodésica, se cumple siempre.
+\item $\chi_2(s)$ es paralelo si y solo sí $X_2'(s) = \left(\dfrac{k(s)}{\tau(s)}\right)'b(s)\parallel N(s)$, esto es, al ser $\alpha$ geodésica, si y solo si $\dfrac{k(s)}{\tau(s)}\equiv cte$, es decir, si y solo sí es un hélice.
+\end{itemize}
+\end{itemize}
+\end{sol*}
+
+\newpage
+\begin{exercise} Sea $\alpha(s)$ una curva regular parametrizada naturalmente sobre una superficie. Encontrar qué condición ha de verificar la función $\lambda(s)$ para que se verifique lo siguiente: ``$\alpha(s)$ es una geodésica si y sólo si $t(s) + \lambda(s)S(s)$ es paralelo a lo largo de $\alpha(s)$".
+\end{exercise}
+\begin{sol*}
+La condición es que $\lambda(s)\equiv cte$. Veámoslo.
+\begin{itemize}
+\item Supongamos que $\alpha(s)$ es geodésica. En tal caso $S(s)$ y $t(s)$ son campos paralelos a lo largo de $\alpha$. Como los campos paralelos forman un $R$-e.v. deducimos que $t(s)+\lambda S(s)$ también es un campo paralelo.
+\item Supongamos que $t(s)+\lambda S(s)$ es un campo paraleo. En tal caso:
+\begin{gather*}
+(t(s)+\lambda S(s))' = t'(s) + \lambda(N'(s)\times t(s) + N(s)\times t'(s))= \\
+K_g(s) S(s) + K_n(s)N(s)+ \lambda \tau_g(s) N(s) - \lambda K_g(s)t(s) \parallel N(s)
+\end{gather*}
+Por tanto $K_g(s) = 0$, luego es geodésica.
+\end{itemize}
+\end{sol*}
+
+\newpage
+\begin{exercise}
+Sea M una superficie, $\alpha:(a,b)\rightarrow \R^3$ una curva regular en M, y sea $X(t)$ un campo vectorial paralelo a lo largo de $\alpha$. Sea $Y(t)$ un campo vectorial a lo largo de $\alpha$ con $|Y(t)|=cte$ y $\theta(t)=\widehat{(X(t),Y(t))} = cte$. Probar que $Y(t)$ es paralelo a lo largo de $\alpha$. (b) Sean $Z(t),W(t)$ campos paralelos no colineales a lo largo de $\alpha$ y $F(t)=\lambda Z(t)+\mu(t) W(t)$ un campo arbitrario a lo largo de $\alpha$. Estudiar condiciones para que $F(t)$ sea paralelo.
+\end{exercise}
+\begin{sol*}
+\begin{itemize}
+\item[]
+\item Consideramos $Q(t)$ un campo paralelo que sea perpendicular a $X(t)$ en cada punto y que además $|X(t)|=|Q(t)|$. En tal caso, dadas las hipótesis sobre $Y(t)$, existe un escalar $a\in\R$ tal que:
+\[
+Y(t) = a(X(t)cos(\theta) + Y(t)sin(\theta))
+\]
+Por tanto, $Y(t)$ es un campo paralelo.
+\item Derivando directamente:
+\begin{gather*}
+F'(t) = (a(t)\mu(t)+b(t)\lambda(t))N(t) + \mu'(t)W(t)+\lambda'(t)Z(t) = s(t)N(t)\\
+ \mu'(t)W(t)+\lambda'(t)Z(t) = 0 \Leftrightarrow \mu'(t)=\lambda'(t)=0
+\end{gather*}
+\end{itemize}
+\end{sol*}
+
+\newpage
+\begin{exercise}
+Sea $\X:U\rightarrow \R^3$ una superficie simple, $\alpha$ una curva en $\X$ con $k\neq 0$ y $b_T$ la proyección sobre el plano tangente a $\X$. del vector binormal $b$. (a) Probar que $b_T = -\frac{k_n}{k}S$. (b) Probar que son equivalente las condiciones:
+\begin{enumerate}
+\item $b_T = b$
+\item $\alpha$ es geodésica.
+\item $b_T \neq 0$ y $b_T$ es paralelo a lo largo de $\alpha$.
+\end{enumerate}
+\end{exercise}
+\begin{sol*}
+Dado que el plano tangente tiene una base ortonormal $\{t,S\}$ y que $tb=0$, deducimos que $b_T \parallel S$. De hecho,
+\[
+b_T = (bS)S = (b N\times t)S = (N t \times b)S = -(N n)S = -\frac{k_n}{k}S
+\]
+Pasemos a demostrar las equivalencias.
+\begin{itemize}
+\item Si $b_T = b$ entonces $b\parallel S$, luego multiplicando vectorialmente por $t$ nos da la caracterización de geodésica.
+\item Si $\alpha$ es geodésica entonces $n\parallel N$, luego $b\parallel S$, dado que $b_T || b$, han de ser iguales y, en particular $b_T\neq 0$. Además, usando que $b_T'(s) = b'(s)=S'(s)=-K_g(s)t(s)+ \tau_g(s)N(s)$. Al ser $\alpha$ geodéisca, $K_g\equiv 0$. Deducimos que $b\parallel N$.
+\item Si $b_T$ es campo paralelo entonces $b_T'\parallel N$.
+\begin{gather*}
+b_T' = (b'S+bS')S+(bs)S' \perp S,t \Rightarrow 
+\begin{cases}
+b'S+bS' = 0\\
+(bS)(S't) = 0 \overset{b_T\neq 0}{\Rightarrow} S't = 0 \Rightarrow t'S = 0
+\end{cases}\\
+t'S = 0 \Rightarrow nS=0 \overset{nt=0}{\Rightarrow} n\parallel N \Rightarrow b\parallel S \Rightarrow b=b_T
+\end{gather*}
+\end{itemize} 
+\end{sol*}
+
+
+\newpage
+\begin{exercise}
+Sea $\X:U\rightarrow\R^3$ una superficie simple, $\alpha$ una curva regular en $\X$. Sean $t(s)$ y $S(s)$ los vectores tangente y normal intrínseca de $\alpha$ respectivamente, s natural de $\alpha$. Se considera un campo vectorial a lo largo de $\alpha$: $X(s)=\lambda(s)t(s)+\mu(s)S(s)$. (a): Encontrar las condiciones que deben verificar $\lambda(s)$ y $\mu(s)$ para que $X(s)$ sea paralelo a lo largo de $\alpha$. ¿Qué ocurre si $\alpha$ es geodésica? (b) Aplicar el estudio realizado en (a) al caso en que $\X$ sea un plano, comprobando que X es paralelo si y solo sí X es constante.
+\end{exercise}
+\begin{sol*}
+\end{sol*}
+\end{document}
