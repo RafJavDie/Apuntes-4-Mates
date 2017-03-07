@@ -119,7 +119,7 @@ Sea $α(t) = \X(u¹(t), u²(t))$ c.p.r. en $\X : U \to \R³$. Entonces existe un
 Si existe $X(t) = \sum_{k=1}^2 X^k \X_k$ c.v.t. paralelo a lo largo de $α$, $X^k(t)$ cumple que:
 \[ \frac{dX^k(t)}{dt} + \sum_{i,j=1}^2 Γ_{ij}^k(t) X^i(t) \frac{du^j}{dt} = 0 \quad k=1,2 \]
 \[ X^1(t_0) = v_0^1  \qquad X^2(t_0) = v_0^2 \]
-Estamos ante 2 problemas de Cauchy. Por el teorema de Picard, existe solución y es única.
+Estamos ante un problema de Cauchy. Por el teorema de Picard, existe solución y es única.
 $\QED$
 \end{dem}
 
@@ -175,10 +175,10 @@ Si tenemos una superficie $α(t) = \X(u¹(t), u²(t))$, $P\in \alpha$ y dos $v_1
 Una curva $\alpha(t)$ es autoparalela si y solo sí en $\alpha(t)$ t es función lineal del parámetro natural y es geodésica.
 \end{prop}
 \begin{dem}
-Supongamos que $\alpha$ es autorparalela. Entonces $|\alpha'(t)| = cte = a'$, por tanto $\dfrac{ds}{dt}=a'$, luego $s = at + b$. Además:
+Supongamos que $\alpha$ es autoparalela. Entonces $|\alpha'(t)| = cte = a$, por tanto $\dfrac{ds}{dt}=a$, luego $s = at + b$. Además:
 \[
-\alpha' = \dot{\alpha} \frac{ds}{dt} =\dot{\alpha} \frac{1}{a} \qquad
- \alpha''  = \ddot{\alpha}\frac{1}{a^2}
+\alpha' = \dot{\alpha} \frac{ds}{dt} =\dot{\alpha}a \qquad
+ \alpha''  = \ddot{\alpha}a^2
  \]
 Como $\alpha'' \parallel N$, entonces $\ddot{\alpha}=k(s)n(s)\parallel N$. Por tanto, $\alpha$ es geodésica.
 \end{dem}
@@ -321,14 +321,14 @@ La idea de la demostración es desarrollar en serie el producto mixto. Dado que:
 \begin{defi}
 Sea $\X:U\rightarrow\R^3$, si $U$ es un disco abierto de $\R^2$ la s.s. $\X$ se llama de tipo disco. Para toda s.s. alrededor de cualquier $p\in\X(U)$ existe un entorno de tipo disco.
 \end{defi}
-\begin{theorem}[Teorema de Hopf] Sea $\alpha:[0,L]\rightarrow\R^3$ una curva cerrada, simple y regular por arcos. Entonces:
+\begin{theorem}[Teorema del índice de Hopf] Sea $\alpha:[0,L]\rightarrow\R^3$ una curva cerrada, simple y regular por arcos. Entonces:
 \[
 \sum_i [\theta_i(s_{i+1})-\theta_i(s_i)] + \sum_i \varphi_i = \pm 2\pi
 \]
-donde $\theta_i(s) =\widehat{(\dot{\alpha}(s),\mathbb{X}_1)}$ y el signo depende del sentido de giro. 
+donde $\theta_i(s) =\widehat{(\dot{\alpha}(s),\mathbb{X}_1)}$ a lo largo del lado $\alpha([s_i,s_{i+1}])$ y el signo depende del sentido de giro. 
 \end{theorem}
 \begin{defi}
-Sea $\seaX$, s.s. tipo disco. Diremos que $R \subset \X(U)$ es una región simple si es homeomorfa a un disco cerrado y $\partial R$ es una curva cerrada simple y regular a trozos.
+Sea $\seaX$, s.s. tipo disco. Diremos que $R \subset \X(U)$ es una región \textbf{simple} si es homeomorfa a un disco cerrado y $\partial R$ es una curva cerrada simple y regular a trozos.
 \end{defi}
 \begin{defi}
 Diremos que R está bien (positivamente) orientada si el vector normal intrínseca de la curva frontera $S(s)$ apunta al interior de la región. Más formalmente, si tomamos una curva de $\X$ que pase por un punto de la frontera y tenga como vector tangente a $S(s)$, o cuyo vector tangente forme con $S(s)$ un ángulo menor que $\pi/2$, esté dentro de la superificie.
@@ -449,7 +449,7 @@ Toda región regular $R \subseteq M$ admite una triangulación. Ver demostració
 \end{prop}
 \begin{nota} Es obvio que si tenemos regiones $R$ y $\overline{R}$ son homeomorfas, la imagen por el homeomorfismo de una triangulación es también una triangulación. Por tanto, $\chi(R) = \chi(\overline{R})$.
 \end{nota}
-\begin{prop} Sea M una superficie conexa y compacta. Entonces $\chi(M)$ solo puede tomar los valores $2k$ para $k\in\Z_{\leq 1}$.
+\begin{prop} Sea M una superficie conexa, compacta y sin borde. Entonces $\chi(M)$ solo puede tomar los valores $2k$ para $k\in\Z_{\leq 1}$.
 \end{prop}
 \begin{prop} Sea $f:M\rightarrow \R$. Entonces:
 \[
@@ -457,7 +457,7 @@ Toda región regular $R \subseteq M$ admite una triangulación. Ver demostració
 \]
 no depende del atlas $\{\X_k : U_j \rightarrow \R^3\mid k\in J\}$ que elijamos para calcular la integral.
 \end{prop}
-\begin{theorem}[Gauss-Bonnet Global] Sea $\subseteq M$ una región, M orientada y sean $\partial R= C_1\cup \dotsc \cup C_n$ donde $C_i$ son curvas regulares por arcos, cerradas, simples que forman el borde de R. Si cada $C_i$ está orientada de manera positiva (inducida de la orientación de M) y $\varphi_1,\dotsc,\varphi_p$ es el conjunto de en vértices de todas las $C_i$, se tiene:
+\begin{theorem}[Gauss-Bonnet Global] Sea $R \subseteq M$ una región regular, $M$ orientada y sean $\partial R= C_1\cup \dotsc \cup C_n$ donde $C_i$ son curvas regulares por arcos, cerradas, simples que forman el borde de R. Si cada $C_i$ está orientada de manera positiva (inducida de la orientación de M) y $\varphi_1,\dotsc,\varphi_p$ es el conjunto de saltos en los vértices de todas las $C_i$, se tiene:
 \[
 \sum_{i=1}^n \int_{C_i}K_g + \iint_R KdA + \sum_{i=1}^p \varphi_i = 2\pi \chi(R)
 \]
