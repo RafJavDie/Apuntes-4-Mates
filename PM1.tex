@@ -535,7 +535,7 @@ Con lo que hemos encontrado la solución.
 \section{Algoritmo del Símplex}
 \begin{itemize}
 \item Inicialización: encontrar un punto extremo $\overline{x}$ con base $B$.
-\item Iteraciones: Calcular $c'_N-c'_B B^{-1}N\equiv c'_N-z_N\equiv \overline{c}_N$. Si este vector es no negativo, paramos(la solución $\overline{x}$ es óptima). En caso contrario, $\exists j\mid c_j-c_B B^{-1}a_j<0$ (si hubiera más de un negativo, elegir el de mayor valor absoluto). Si $y_j=B^{-1}\leq 0$ el problema no tiene mínimo (el mínimo sería $-\infty$). Si $y_{ij}\not\leq 0$ comenzar nuevamente las iteraciones tomando como punto extremo en la inicialización $\hat{x}=\overline{x}+\frac{\overline{b}_r}{y_{rj}}d_j$, siendo $\frac{\overline{b_r}}{y_{rj}}=\min\{\frac{\overline{b_i}}{y_{ij}}:y_{ij}>0\}$, $\overline{b}=B^{-1}b$, $y_j=B^{-1}a_j$, $d_j=\begin{pmatrix}
+\item Iteraciones: Calcular $c'_N-c'_B B^{-1}N\equiv c'_N-z_N\equiv \overline{c}_N$. Si este vector es no negativo, paramos(la solución $\overline{x}$ es óptima). En caso contrario, $\exists j\mid c_j-c_B B^{-1}a_j<0$ (si hubiera más de un negativo, elegir el de mayor valor absoluto). Si $y_j=B^{-1}a_j\leq 0$ el problema no tiene mínimo (el mínimo sería $-\infty$). Si $y_{ij}\not\leq 0$ comenzar nuevamente las iteraciones tomando como punto extremo en la inicialización $\hat{x}=\overline{x}+\frac{\overline{b}_r}{y_{rj}}d_j$, siendo $\frac{\overline{b_r}}{y_{rj}}=\min\{\frac{\overline{b_i}}{y_{ij}}:y_{ij}>0\}$, $\overline{b}=B^{-1}b$, $y_j=B^{-1}a_j$, $d_j=\begin{pmatrix}
 -y_j\\
 e_j
 \end{pmatrix}$,
@@ -545,12 +545,12 @@ Este algoritmo tiene el problema de determinar el extremo inicial. Para ello usa
 \subsection{Método de M-grande}
 Consiste en utilizar un problema auxiliar $(P_m)$.
 \begin{align*}
-\min &c'x+M1^t x_h\qquad \equiv &\min c'x+M\sum_{i=1}^m x_{h_i}\\
-&sa Ax+Ix_h=b              & A_1x+ x_{h_1}=b_1 \\
+ \min\ & c'x+M1^t x_h\qquad \equiv &\min c'x+M\sum_{i=1}^m x_{h_i}\\
+&sa:\ Ax+Ix_h=b              & A_1x+ x_{h_1}=b_1 \\
 & x\geq 0, x_h\in R^m_+    & \vdots \\
 &                          & A_m+ x_{h_m}=b_m
 \end{align*}
-Donde $A_i$ representa la fila $i$ de la matriz $A$ y $M$ es una constante lo bastante grande (podemos considerar $M=\infty$).  En $P_m$ hay una base obvia $B=[\text{columnas de }x_h]=I$ y $B^{-1}=I\Rightarrow B^{-1}b\geq 0$ si $b\geq 0$. Esto permite aplicar el algoritmo del simples a $P_m$ para hallar su solución óptima $x^*$. 
+Donde $A_i$ representa la fila $i$ de la matriz $A$ y $M$ es una constante lo bastante grande (podemos considerar $M=\infty$).  En $P_m$ hay una base obvia $B=[\text{columnas de }x_h]=I$ y $B^{-1}=I\Rightarrow B^{-1}b\geq 0$ si $b\geq 0$. Esto permite aplicar el algoritmo del simplex a $P_m$ para hallar su solución óptima $x^*$. 
 
 Si en $x^*$ hay alguna variable $x^*_{h_i}\neq 0$ para algún $i$, en el objetivo aparece $Mx^*_{h_i}$. Tenemos que $c'x<c'x^*$ para cualquier $x\in P$ (poliedro original), por lo que $P=\emptyset$, porque de haberlo el algoritmo habría encontrado uno más pequeño.  Si $x^*$ es tal que $x^*_h=0$, entonces $x^*$ es solución del problema original $(PL)$. 
 
@@ -642,7 +642,7 @@ A cada problema de programación lineal
      &     &             &              &         $x_3$ & libre
 \end{tabular}
 \end{center}
-al que llamaremos primal (P) y donde $x_1, x_2$ y $x_3$ son vecores de variables de decisión, le vamos a asociar otro problema de programacion lineal al que llamaremos dual (D) dado por las siguiente transformación:
+al que llamaremos primal (P) y donde $x_1, x_2$ y $x_3$ son vectores de variables de decisión, le vamos a asociar otro problema de programacion lineal al que llamaremos dual (D) dado por las siguiente transformación:
 
 \begin{center}
 \begin{tabular}{cccccc}
@@ -680,23 +680,23 @@ La transformacón que lleva (P) en (D) crea por cada restricción de (P) una var
 
 \begin{example}
 Consideramos el problema
-\begin{align}(P)
+\begin{align*}(P)
 	\min c'x\\
 	\text{sa:} Ax ≥ b\\
 	x ≥ 0
-\end{align}
+\end{align*}
 podemos transformarlo en el problema:
-\begin{align}(P')
+\begin{align*}(P')
 	\min c'x + 0x_a\\
 	\text{sa:} Ax-Ix_a = b\\
 	x, x_a ≥ 0 
-\end{align}
+\end{align*}
 y finalmente pasarlo al problema dual
-\begin{align}(D)
+\begin{align*}(D)
 	\max u'b\\
 	\text{sa:} u'A ≤ c'\\
 	u ≥ 0
-\end{align}
+\end{align*}
 \end{example}
 
 \begin{theorem}[Teorema de dualidad débil]
@@ -721,11 +721,11 @@ Por la observación anterior, sigue inmediatamente.
 \end{dem}
 
 \begin{theorem}[Teorema de dualidad fuerte]
-Si $X \neq \emptyset$ y $U \neq \emptyset$, entonces existen $x^*$ y $u^*$ soluciones óptimas e (P) y (D) respectivamente. Además, $c'x^* = (u^*)'b$.
+Si $X \neq \emptyset$ y $U \neq \emptyset$, entonces existen $x^*$ y $u^*$ soluciones óptimas de (P) y (D) respectivamente. Además, $c'x^* = (u^*)'b$.
 \end{theorem}
 
 \begin{dem}
-Como $U \neq \emptyset$, existe algún punto $\overline{u} \in U$. Entonces $\forall x \in X$, $x'c ≥ \overline{u}'b$. Po tanto (P) no puede decrecer a $-\infty$ y esto indica que debe haber una solucion en un punto extremo $x^* \in P$, determinado por una base $B$. Así que:
+Como $U \neq \emptyset$, existe algún punto $\overline{u} \in U$. Entonces $\forall x \in X$, $x'c ≥ \overline{u}'b$. Por tanto (P) no puede decrecer a $-\infty$ y esto indica que debe haber una solucion en un punto extremo $x^* \in X$, determinado por una base $B$. Así que:
 \[ x^* = \begin{pmatrix}B^{-1} b \\ 0\end{pmatrix}, \qquad B^{-1}b ≥ 0 \]
 
 Veamos ahora que $(u^*)' = c_B'B^{-1}$ es la solución óptima de (D). Es decir, hay que ver que (1) $(u^*)' \in U$ y (2) $(u^*)'b = c'x^*$. Vemos que:
@@ -735,24 +735,24 @@ Luego:
 \[ (u^*)'N ≤ c_N' \equiv c_B'B^{-1}N ≤ c_N' \equiv c_N' - c_B'B^{-1}N ≥ 0\]
 Como las ecuaciones del miembro derecho se cumplen, llegamos a que $(u^*)'A ≤ c'$, lo que demuestra (1). Por otro lado, dado que $x^*$ es solución óptimma de (P) entonces las cotas reducidas de las variables asociadas a $x_a$ en $Ax - I x_a = b$ deben ser no negativas. Para cualquier columna $a \in A$ o $-e_j \in -I$, se tiene que:
 \[ c_a - c_B' B^{-1} a ≥ 0 \]
-\[ c_{e_j} - c_B' B^{-1}(-e_j) ≥ 0 \equiv 0  c_B'B^{-1}(-e_j) ≥ 0 \equiv c_B'B^{1}e_j = (u^*)'e_j ≥ 0 \]
+\[ c_{e_j} - c_B' B^{-1}(-e_j) ≥ 0 \equiv  c_B'B^{-1}(-e_j) ≥ 0 \equiv c_B'B^{-1}e_j = (u^*)'e_j ≥ 0 \]
 para todo $j$, luego todas las columnas de $c_B'B^{-1}$ son no negativas, luego $u^* ≥ 0$. Por último:
 \[ (u^*)'b = c_B'B^{-1}b = \begin{pmatrix}c_B' & c_N'\end{pmatrix}\begin{pmatrix}B^{-1}b\\0\end{pmatrix} = c'x^* \]
 \end{dem}
 
 \begin{lema}
 El sistema
-\begin{equation}\label{sistema1}\begin{cases}
+\begin{equation*}\label{sistema1}\begin{cases}
 	Ax - tb ≥ 0\\
 	-u'A + tc' ≥ 0\\
 	u'b - c'x ≥ 0
-\end{cases}\end{equation}
+\end{cases}\end{equation*}
 admite una solucion $(x_0,u_0,t_0) ≥ 0$ y verificando
-\begin{equation}\label{sistema2}\begin{cases}
+\begin{equation*}\label{sistema2}\begin{cases}
 	Ax_0 - t_0b +u_0     > 0\\
 	-u'_0A + t_0c' + x_0  > 0\\
 	u'_0b - c'x_0 + t_0 > 0
-\end{cases}\end{equation}
+\end{cases}\end{equation*}
 \end{lema}
 
 \begin{dem}
@@ -777,7 +777,7 @@ Dados (P) y (D) entonces uno y sólo uno de los siguientes casos son ciertos:
 
 \begin{dem} Consideramos la solución $(x_0,u_0,t_0)$ del sistema del lema anterior. Distinguimos 2 casos:
 \begin{enumerate}
-	\item $t_0 > 0$. Consideramos $x^* = \frac{x_0}{t_0}$, $u^* = \frac{u_0}{t_0}$ y $t_0 = 1$. $(x^*,u^*,t^*)$ sigue siendo solucion del sistema homogéneo. Es decir:
+	\item $t_0 > 0$. Consideramos $x^* = \frac{x_0}{t_0}$, $u^* = \frac{u_0}{t_0}$ y $t^* = 1$. $(x^*,u^*,t^*)$ sigue siendo solucion del sistema homogéneo. Es decir:
 \[\begin{cases}
 	Ax^* - b ≥ 0\\
 	-(u^*)'A + c' ≥ 0\\
@@ -790,7 +790,7 @@ Por lo tanto:
 	(u^*)'b ≥ c'x^* & \Rightarrow c'x^* = (u^*)'b
 \end{cases}\]
 Es decir, $(x^*,u^*)$ es solución óptima de (P) y (D) respectivamente.
-	\item $t_0$. Se tiene:
+	\item $t_0=0$. Se tiene:
 \[\begin{cases}
 	Ax_0 ≥ 0\\
 	-(u_0)'A  ≥ 0\\
