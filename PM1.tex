@@ -833,4 +833,44 @@ Estamos en el caso 1 del teorema anterior y, por tanto, $t_0 > 0$. Consideramos 
 \[ A\overline{x} -b + \overline{u} > 0\]
 \[ -\overline{u}A + c' +\overline{x}' > 0\]
 \end{dem}
+
+\begin{theorem}[Otro teorema de holgura complementaria] Sean $x^*$, $u^*$ soluciones factiables de P y D, respectivamente. Entonces $x^*$ y $u^*$ son soluciones óptimas si y sólo si $u^*(Ax^*-b)=0$, $(u'^{*} A-c')x^*=0$.
+\end{theorem}
+\begin{dem}
+\[
+\begin{cases}
+u'^* A x^* = u'^*b \\
+u'^*A x^* = c'x^* 
+\end{cases}
+\quad c'x^* = u'^*b \Rightarrow \text{$x^*$ es óptima en P y $u^*$ en D}
+\]
+Recíprocramente, si $c'x^*=u'^*b$. Consideramos el producto, donde cada miembro es $\geq 0$.
+\[
+u'^*(Ax^*-b)\geq 0
+\]
+Veamos que $\not >$. Supongamos lo contrario. ($(u^*A) \leq c'$ por ser solución factible del dual):
+\[
+u'^*Ax^* > u'^* b \Rightarrow c'x^* \geq u'^*Ab>u'^*b
+\]
+Lo cual es un absurdo. Análogamente deducimos que $(u'^*A-c')x^* \leq 0$. Si la desigualdad fuera estricta llegaríamos al mismo absurdo que en el caso anterior usando que, como $Ax^* \geq b$.
+\end{dem}
+\section{Análisis de postoptimalidad}
+Dado un problema $(P)$ $\min c'x$, $Ax=b$, $x\geq 0$. Considero un vector $d\in\R^n$ y la familia de problemas: $P(\Delta)$: $\min c'x + \Delta d'x$, $Ax=b$, $x\geq 0$. Observemos que $P=P(0)$. Supongamos que B es una base asociada a una solución óptima de $x^*(0)$. Es decir, $x^*(0)=[B^{-1}b 0]' \geq 0$. Queremos determinar el rango de valores de $\Delta$ que mantienen a $x^*(0)$ como solución óptima de $P(\Delta)$. La condición que ertifica que B es una base óptima son:
+\begin{itemize}
+\item $B^{-1}b \geq 0$.
+\item $\overline{c_R}'(0)_N  = \overline{c}'_N = c'_N - c_N'B^{-1}N \geq 0$. 
+\end{itemize}
+Las condiciones en $P(\Delta)$. 
+\begin{itemize}
+\item $B^{-1}b \geq 0$.
+\item $\overline{c_R}'_N = (c -\Delta d)'_N- (c+\Delta d)'_B B^{-1}N = \overline{c_R}'(0)_N  + \Delta (d_N'-d'_BB^{-1}N) =  \overline{c_R}'(0)_N + \Delta \overline{d}_N\geq 0$. 
+\end{itemize}
+Para una componente genérica $j\in \mathbb{N}$ se tiene que $\overline{c}_j+\Delta d_j\geq 0$. Entonces:
+\[
+\begin{cases}
+-\frac{\overline{c}_j}{\overline{d}_j} \geq \Delta & si \quad \overline{d}_j <0\\
+-\frac{\overline{c}_j}{\overline{d}_j} \leq \Delta & si \quad \overline{d}_j >0
+\end{cases}
+\Rightarrow \max_{j:\overline{d}_j >0}-\frac{\overline{c}_j}{\overline{d}_j} \leq \Delta \leq \min_{j:\overline{d}_j <0}-\frac{\overline{c}_j}{\overline{d}_j}
+\]
 \end{document}
