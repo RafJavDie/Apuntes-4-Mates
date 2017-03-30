@@ -375,23 +375,23 @@ Dada una función $f$ que alcanza un mínimo en $S\subset\R^n$, entonces \[\min_
 Supongamos que $\overline{x}$ es un punto extremo de $P$ representado por $B\subset A, rg(B)=m, B^{-1}b\geq 0$. Es decir, $\overline{x}=\begin{pmatrix}
 B^{-1}b\\
 0
-\end{pmatrix}$. Reordenamos las columnas de la forma $A=(B N)$. Sea $x\in P$ otro punto genérico. Entonces $x\begin{pmatrix}
+\end{pmatrix}$. Reordenamos las columnas de la forma $A=(B N)$. Sea $x\in P$ otro punto genérico. Entonces $x=\begin{pmatrix}
 x_B\\
 x_N
 \end{pmatrix}$. Como $Ax=b, x\geq 0$ entonces
 \[ (B N) \begin{pmatrix}
 x_B\\
 x_N
-\end{pmatrix}= b\equiv Bx_B + Nx_N=b\].
+\end{pmatrix}= b\equiv Bx_B + Nx_N=b.\]
 Luego $x_B=B^{-1}b-B^{-1}Nx_N$, así que 
 \[ x=\begin{pmatrix}
 B^{-1}b-B^{-1}Nx_N\\
 x_N
 \end{pmatrix}\]
-Ahora bien, $c'x=(c'_B, c'_N)\begin{pmatrix}
+Ahora bien, \[c'x=(c'_B, c'_N)\begin{pmatrix}
 B^{-1}b-B^{-1}Nx_N\\
 x_N
-\end{pmatrix}=\underbrace{c'_B B^{-1}b}_{c'\overline{x}}-c'_N B^{-1}Nx_N=c'\overline{x}+(c'_N-c'_BB^{-1}N)x_N$. Si $c'_N-c'_BB^{-1}N\geq 0$, entonces $c'x\geq c'\overline{x}$, por lo que $\overline{x}$ es mínimo. Si esta condición no se cumple, existirá $j$ tal que $a_j\in N$ de forma que $c_j-c'_BB^{-1}a_j<0$. Construimos $d_j=\begin{pmatrix}
+\end{pmatrix}=\underbrace{c'_B B^{-1}b}_{c'\overline{x}}-c'_B B^{-1}Nx_N+c'_Nx_N=c'\overline{x}+(c'_N-c'_BB^{-1}N)x_N\]. Si $c'_N-c'_BB^{-1}N\geq 0$, entonces $c'x\geq c'\overline{x}$, por lo que $\overline{x}$ es mínimo. Si esta condición no se cumple, existirá $j$ tal que $a_j\in N$ de forma que $c_j-c'_BB^{-1}a_j<0$. Construimos $d_j=\begin{pmatrix}
 -B^{-1}a_j\\
 e_j
 \end{pmatrix}$ y consideramos $\overline{x}+\lambda d_j,\ \lambda\geq 0$. La evaluación de $x(\lambda)$ será 
@@ -430,14 +430,14 @@ En definitiva $x(\frac{\overline{b}_r}{y_{rj}})\in P$ y es un punto extremo con 
 
 \begin{example}
 \begin{align*}
-\min &x_1-3x_2\\
+\min\ &x_1-3x_2\\
 sa & -x_1+2x_2\leq 6\\
    & x_1+x_2\leq 5\\
    &x_1,x_2\geq 0
 \end{align*}
 Para pasarlo a forma estándar sumamos variables (inmersión de $\R^2$ en $\R^4$).
 \begin{align*}
-\min &x_1-3x_2+0x_3+0x_4\\
+\min\ &x_1-3x_2+0x_3+0x_4\\
 sa & -x_1+2x_2+x_3 \quad = 6\\
    & x_1+x_2 \qquad +x_4 = 5\\
    &x_1,x_2,x_3,x_4\geq 0
@@ -446,7 +446,7 @@ Entonces $c'=[1,-3,0,0]$, $b=\begin{bmatrix}
 6\\
 5
 \end{bmatrix}$, $A=\begin{bmatrix}
--1 & 2 & 1 0\\
+-1 & 2 & 1 & 0\\
 1 & 1 & 0 & 1
 \end{bmatrix}$. Elegimos las dos últimas columnas de $A$ para construir $B=[a_3\ a_4]$, que tiene inversa. Además cumple que $B^{-1}b=b\geq 0$. El punto es
 \[
