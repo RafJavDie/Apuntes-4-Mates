@@ -195,6 +195,10 @@ Dado un espacio topológico $X$ y un punto $x\in X$, denotemos por $\mathcal{V}(
 Un espacio topológico $X$ se dice \textbf{primero numerable} (1º N) si todo punto posee una base numerable de entornos. Se dice \textbf{segundo numerable} (2º N) si existe una base para la topología de $X$ de cardinal numerable.
 \end{defi}
 
+\begin{prop}
+Los homeomorfismos preservan los axiomas de numerabilidad. Estos axiomas son además son hereditarios.
+\end{prop}
+
 \section{Compacidad}
 \begin{defi}Sea un espacio $X$ y $A\subseteq X$. Un \textbf{recubrimiento} por abiertos de $A$ es una colección de abiertos $\{U_\alpha\}_{\alpha\in\Lambda}$ tal que $A\subseteq\underset{\alpha\in\Lambda}{\bigcup}U_\alpha$.
 \end{defi}
@@ -204,9 +208,18 @@ Un espacio topológico $X$ se dice \textbf{primero numerable} (1º N) si todo pu
 \end{defi}
 Si el espacio $X$ es compacto entonces todos sus subconjuntos cerrados son también compactos.
 \begin{prop} En todo espacio $X$ con propiedad de Hausdorff los conjuntos compactos son cerrados.
-
-
 \end{prop}
+
+\begin{prop}
+Cualquier aplicación continua de un compacto a un Hausdorff es cerrada.
+\end{prop}
+\begin{coro}
+Todo compacto en un espacio de Hausdorff es cerrado.
+\end{coro}
+
+\begin{teorema}[Tychonoff]
+El producto de compactos es compacto.
+\end{teorema}
 
 \section{Conexión}
 \begin{defi} Sea $(X,\Tau)$ un espacio topológico. Diremos que $C\subseteq X$ es \textbf{conexo} si y solo si dados $A,B\in\Tau$ cumpliendo $A\cap B\cap C=\emptyset, C\subseteq A\cup B$ se tiene que o bien $C\subseteq A$ o bien $C\subseteq B$.
@@ -361,7 +374,7 @@ Sea $\Omega$ abierto de $(X/\mathcal{R}_f,\Tau_\pi)$, por lo que $\pi^{-1}(\Omeg
 \end{defi}
 
 \begin{prop}[Propiedad universal]\label{149}
-Sea $\mathcal{R}$ una relación de equivalencia sobre el espacio topológico $X$ y sea $f\func{X}{Z}$ una aplicación continua compatible con $\mathcal{R}$. Se define $\tilde{f}\func{X/\mathcal{R}}{Z}$ como $\tilde{f}([x])=f(x)$, entonces $\tilde{f}\func{(X/\mathcal{R},\Tau_\pi)}{Z}$ es continua.
+Sea $\mathcal{R}$ una relación de equivalencia sobre el espacio topológico $X$ y sea $f\func{X}{Z}$ una aplicación continua y cerrada (o abierta) compatible con $\mathcal{R}$. Se define $\tilde{f}\func{X/\mathcal{R}}{Z}$ como $\tilde{f}([x])=f(x)$, entonces $\tilde{f}\func{(X/\mathcal{R},\Tau_\pi)}{Z}$ es continua.
 \end{prop}
 \begin{dem}
 \[
