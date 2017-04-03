@@ -125,6 +125,20 @@ Algunas de las propiedades conocidas desde el curso de Topología de 1º son:
 
 \section{Teorema de Clasificación de Superficies}
 
+\begin{defi} Una \textbf{superficie sin borde} es un espacio topológico $X$ cumpliendo el axioma de separación $T_2$ y el segundo axioma de numerabilidad, tal que todo $x\in X$ posee un entorno homeomorfo a una bola abierta de $\R^2$ con la topología euclídea.
+\end{defi}
+
+\begin{defi} Una \textbf{superficie con borde} es un espacio topológico $X$ cumpliendo el axioma de separación $T_2$ y el segundo axioma de numerabilidad, tal que todo $x\in X$ posee un entorno homeomorfo a $\R^2_+$. Los puntos que poseen un entorno de este tipo pero no poseen uno homeomorfo $B^2$ forman la \textbf{frontera} de la superficie, denotada $\partial X$.
+\end{defi}
+
+\begin{teorema}[de inmersión de Whitney] Toda superficie $M$ admite una inmersión en $\R^4$. En particular, $M$ posee topología euclídea. 
+\end{teorema}
+
+\begin{nota} Este resultado es más general; para una variedad topológica (este concepto se verá en el próximo curso) de dimensión $m$ siempre existe una inmersión en $\R^{2m}$.
+\end{nota}
+
+
+
 Ya hemos visto que la esfera y el plano proyectivo tienen los siguientes modelos dados como espacios cociente.
 
 \definecolor{qqqqff}{rgb}{0.3333333333333333,0.3333333333333333,0.3333333333333333}
@@ -165,10 +179,10 @@ Ya hemos visto que la esfera y el plano proyectivo tienen los siguientes modelos
 El siguiente teorema proporcionará modelos para todas las demás superficies.
 
 \begin{teorema}
-Una superficie compacta y conexa distinta de $S^2$ y $\Pro_2\R$ es homeomorfa a un espacio cociente de alguno de los siguientes tipos:
+Una superficie compacta y conexa distinta de $S^2$ y $\Pro_2\R$ es homeomorfa a un espacio cociente de alguno de los siguientes tipos o a una suma conexa finita de ellos (esta operación se verá más adelante):
 \begin{itemize}
 \item \textbf{Tipo I ($M_n$)}
-El resultado de identificar los lados de un polígono (llamado polígono fundamental) de $4n$ lados de acuerdo al código $a^{}_1 b^{}_1 a^{-1}_1 b^{-1}_1\dots\ a^{}_n b^{}_n a_n^{-1} b_n^{-1}$. 
+El resultado de identificar los lados de un polígono (llamado polígono fundamental) de $4n$ lados de acuerdo al código $a^{}_1 b^{}_1 a^{-1}_1 b^{-1}_1\dots\ a^{}_n b^{}_n a_n^{-1} b_n^{-1}$. A una superficie de este tipo se la llama \textbf{superficie orientable de género} $\mathbf{n}$.
 
 Recordemos que esto significa que, fijado un sentido de giro sobre el polígono, las aristas indicadas con la misma letra e índice deben identificarse de manera que, por ejemplo,  $a_i$ indica que los puntos de la arista van apareciendo en el sentido del giro, mientras que esos mismos puntos en  $a_i^{-1}$ se ven aparecer  en el sentido opuesto.
 
@@ -212,7 +226,7 @@ Recordemos que esto significa que, fijado un sentido de giro sobre el polígono,
 \end{center}
 
 \item \textbf{Tipo II ($N_n$)}
-El resultado de identificar los lados de un polígono de $2n$ lados ($n\geq 2$) por el código $a_1 a_1 \dots\ a_n a_n$.
+El resultado de identificar los lados de un polígono de $2n$ lados ($n\geq 2$) por el código $a_1 a_1 \dots\ a_n a_n$. A una superficie de este tipo se la llama \textbf{superficie no orientable de género} $\mathbf{n}$.
 \begin{center}
 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
 \clip(-2.966666666666667,0) rectangle (11.006666666666668,3.5);
@@ -380,6 +394,11 @@ Los entornos pequeños de $P$ son entonces el resultado de pegar las esquinas de
 %\end{tikzpicture}
 %\end{center}
 \end{observacion}
+
+Para que el teorema tenga sentido es necesario que todas las superficies compactas sin borde puedan ser expresadas tal como hemos definido los dos tipos. Esto es cierto también para las compactas sin borde. Por ello, tenemos el siguiente teorema.
+
+\begin{teorema} Toda superficie compacta puede obtenerse  como un espacio cociente de un polígono fundamental.
+\end{teorema}
 
 \newpage
 
@@ -779,8 +798,30 @@ Luego la botella de Klein resulta ser homeomorfa al modelo $N_2$.
 Veamos con más detalle la operación que hemos realizado para demostrar que $N_2$ es la botella de Klein.
 
 \begin{defi}
-La \textbf{suma conexa} de dos superficies $S$ y $S'$ es una nueva superficie $S\# S'$ que resulta al eliminar un disco abierto en cada una de ellas y pegarlas por las circunferencias de los bordes.
+La \textbf{suma conexa} de dos superficies compactas sin borde $S$ y $S'$ es una nueva superficie compacta sin borde $S\# S'$ que resulta al eliminar un disco abierto en cada una de ellas y pegarlas por las circunferencias de los bordes. Más formalmente, si tenemos dos discos cerrados $D\subseteq S$ y $D'\subseteq S'$, podemos considerar un homeomorfismo $f\func{\partial D}{\partial D'}$. Entonces la suma conexa es el cociente $(S\setminus \mathring{D})\sqcup_f(S'\setminus \mathring{D'})$.
 \end{defi}
+
+\begin{nota} La suma conexa no depende de qué disco se elimine ni del tipo de homeomorfismo.
+\end{nota}
+
+\begin{propi} La suma conexa cumple las siguientes propiedades:
+\begin{enumerate}
+\item Es conmutativa.
+\item Es asociativa.
+\item $S^2$ es el elemento neutro.
+\end{enumerate}
+Estas propiedades dotan al conjunto de superficies compactas sin borde de estructura de monoide abeliano.
+\end{propi}
+
+\begin{ej}
+La esfera $S^2$ actúa como elemento neutro de la suma conexa. Esto es, si $M$ una superficie, 
+$M\# S^2$ es homeomorfa a $M$ ya que $S^2$ con un agujero es homeomorfa a un disco, como vemos en el siguiente dibujo.
+\begin{figure}[h!]
+	\includegraphics[scale=0.5]{text4248}
+\end{figure}
+\end{ej}
+
+Veamos ahora cómo es la suma conexa de los tipos de superficies presentados.
 
 \subsection{Tipo I}
 
@@ -1003,12 +1044,7 @@ $N_n=N_{n-1}\#N_1=N_1\#\dots\# N_1$ ($n$ veces).
 \end{scriptsize}
 \end{tikzpicture}
 \end{flushleft}
-\begin{observacion}
-La esfera $S^2$ actúa como elemento neutro de la suma conexa. Esto es, si $M$ una superficie, 
-$M\# S^2$ es homeomorfa a $M$ ya que $S^2$ con un agujero es homeomorfa a un disco.
-\begin{figure}[h!]
-	\includegraphics[scale=0.5]{text4248}
-\end{figure}
+
 
 %\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
 %\clip(-1.1333333333333337,0) rectangle (13.053333333333338,4.5);
@@ -1026,7 +1062,7 @@ $M\# S^2$ es homeomorfa a $M$ ya que $S^2$ con un agujero es homeomorfa a un dis
 %\draw (4.04,3.1133333333333337) node[anchor=north west] {$\#$};
 %\draw (8.04,3.126666666666667) node[anchor=north west] {$\equiv M$};
 %\end{tikzpicture}
-\end{observacion}
+
 
 \section{Mezclando tipos}
 \begin{flushleft}
@@ -1209,6 +1245,8 @@ $M\# S^2$ es homeomorfa a $M$ ya que $S^2$ con un agujero es homeomorfa a un dis
 \draw [fill=black] (6.285924811285278,0.84) circle (2.5pt);
 \end{scriptsize}
 \end{tikzpicture}
+
+%\newpage
 
 \item $3^{er}$ paso:
 
@@ -1420,7 +1458,7 @@ $M\# S^2$ es homeomorfa a $M$ ya que $S^2$ con un agujero es homeomorfa a un dis
 \end{itemize}
 Tenemos así $\Pro_2\R\# T=N_1\# M_1=N_3=N_1\# N_1\# N_1=$ Botella de Klein$\#\Pro_2\R$.
 
-\newpage
+%\newpage
 
 \section{Orientabilidad. Asas y gorros cruzados.}
 \subsection{Orientabilidad en las superficies de tipo I y II}
@@ -1509,10 +1547,10 @@ Debido a la imposibilidad de sumergir $\Pro_2\R$ en $\R^3$, cualquier representa
 
 
 \draw [->] (0.,2.) -- (1.5638000269466572,2.);
-\draw [->] (0.,0.) -- (0.,1.0498216990612714);
-\draw [->] (3.,0.) -- (3.,1.0978053062867201);
+\draw [->] (0.,2.) -- (0.,0.9);
+\draw [->] (3.,2.) -- (3.,0.9);
 \draw [->] (3.,0.) -- (1.4918246161084876,0.);
-\draw [->] (4.5133333333333345,0.) -- (4.519545661146498,0.9380614997877437);
+\draw [->] (4.5133333333333345,2) -- (4.519545661146498,0.9);
 \draw [->] (5.184841512192099,1.7160912192838051) -- (5.283414600733433,1.714202865552005);
 \draw [->] (5.2772398660340025,-0.297253401817821) -- (5.1784738825715495,-0.29553424797435046);
 
@@ -1527,10 +1565,10 @@ Debido a la imposibilidad de sumergir $\Pro_2\R$ en $\R^3$, cualquier representa
 \draw (1.4220713662086775,2.4068871798994236) node[anchor=north west] {$b$};
 \draw (1.5144398101176617,0.018503130252715997) node[anchor=north west] {$b$};
 \draw (4.127147223543215,1.1665109331215755) node[anchor=north west] {$a$};
-\draw (5.2,1.5) node[anchor=north west] {$F$};
+\draw (5.2,1.5) node[anchor=north west] {$S$};
 \draw (5.169591090516037,2.156172832146454) node[anchor=north west] {$b$};
 \draw (5.1563955985290395,-0.3) node[anchor=north west] {$b$};
-\draw (5.275155026412019,0.12406706614870307) node[anchor=north west] {$S$};
+\draw (5.275155026412019,0.12406706614870307) node[anchor=north west] {$F$};
 
 \draw (3.1770718004793777,0.28241296999268367) node[anchor=north west] {$P$};
 
@@ -1548,10 +1586,10 @@ Debido a la imposibilidad de sumergir $\Pro_2\R$ en $\R^3$, cualquier representa
 %	\includegraphics[scale=0.6]{FIG124.PIC}
 %\end{figure}
 \begin{figure}[h!]
-	\includegraphics[scale=0.7]{kleinbottle}
+	\includegraphics[scale=0.8]{kleinbottle}
 \end{figure}
 
-$C$ es la intersección aparente necesaria para tener este modelo en $\R^3$.
+$C$ es la intersección aparente necesaria para tener este modelo de la botella de Klein en $\R^3$.
 
 \end{observacion}
 
