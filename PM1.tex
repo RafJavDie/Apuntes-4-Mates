@@ -1057,5 +1057,186 @@ Por lo tanto. $\frac{\partial z}{\partial\Delta}=\frac{\partial z}{\partial b_3}
 \end{example}
 
 
+\begin{theorem}
+Si $c \in Res(c_1,c_2)$ entonces $\{ c_1, c_2 \} \models c$.
+\end{theorem}
 
+\begin{dem}
+
+Sea $I \models \{ c_1, c_2\}$. Hay que demostrar que $I \models c$. Como $c \in Res(c_1,c_2)$, entonces existe $L \in c_1$ tal que $c = Res_L(c_1, c_2) = (c_1-\{ L \} \cup (c_2 - \{ L^c \}$.
+
+Consideramos dos casos:
+\begin{itemize}
+	\item Si $I(L) = 1$, entonces $I(L^C)=0$. Por otro lado, sabemos que $I$ es modelo de $c_2$, luego existe $L' \in C_2$ tal que $I(L')=1$. De $I(L^C)=0$ y $I(L')=1$, tenemos que $L^C \neq L'$. Luego $L' \in c_2 - \{ L ^C \}$. Luego $L' \in c$. Por lo tanto, $I \models c$.
+	\item $I(L) = 0$. Como $I \models c_1$, existe $L' \in c_1$ tal que $I(L') = 1$. Entonces $L' \neq L$, luego $L' \in c_1 - \{ L \}$. Entonces $L' \in c$ y $I \models c$. 
+\end{itemize}
+\end{dem}
+
+% Tema 5
+\chapter{Programación Lineal Entera}
+Consideramos el problema
+
+\begin{align*}
+(PE) & \min c'x\\
+	 & A x = b\\
+	 & x \in \mathbb{Z}_+^n\\
+	 & A \in \R^{m \times n}, b \in \R^m, c \in \R^n
+\end{align*}
+
+Denotaremos por $z_{PE}$ al valor óptimo de este problema. PE tiene asociado otro problema que denominaremos el "problema relajado lineal" y denotamos por (LP) que consiste;
+
+\begin{align*}
+(LP) & \min c'x\\
+	 & A x = b\\
+	 & x \in \mathbb{R}_+^n
+\end{align*}
+
+\begin{obser}
+Si $x$ es factible en $PE$ entonces también lo es en $LP$.
+\[ \{x \in \mathbb{Z}_+^n : Ax=b \} \subset \{x \in \mathbb{R}_+^n : Ax=b \} \]
+
+Esto implica que $z_{LP} ≤ z_{PE}$, donde $z_{LP} $ es el valor óptimo de $LP$.
+\end{obser}
+
+Un problema es de programación binaria ó $\{0,1\}$ si sus variables están restringidas a tomar valores en $\{0,1\}$.
+
+Decimos que un problema es entero-mixto $(PME)$ si:
+
+\begin{align*}
+(PME) & \min c'x+d'y\\
+	  & A_1 x + A_2 y = b\\
+	  & x \in \Z_+^{n_1}, y \in \R_+^{n_2}\\
+	  & A_1 \in \R^{m\times n_1}, A_2 \in R^{m \times n_2}, b \in \R^m, c \in \R^{n_1}, d \in \R^{n_2}
+\end{align*}
+
+\begin{example}
+Veamos que no siempre coincide $z_{PE}$ con un redondeo de $z_{LP}$.
+
+\begin{align*}
+(PME) & \min 21x_1+11x_2\\
+	  & 6x_1+4x_2 ≤ 13\\
+	  & x_1,x_2 \in \Z_+\\
+(LP) & x_1,x_2 \in \R_+
+\end{align*}
+
+La solución óptima de $LP$ es $(\frac{13}{7},0)$. El redondeo más cercano es $(2,0)$ que no es un punto factible. El redondeo por abajo es $(1,0)$, que no es la solución óptima (que es $(0,3)$).
+\end{example}
+
+\begin{obser}
+La solución óptima del $PME$ coincide con la solución del problema de optimización:
+\[
+\begin{aligned}
+& \min
+& & c'x \\
+& \text{sujeto a}
+& & x \in conv\{x \in \R^n : Ax=b, x \in x \in \Z_+^n\}
+\end{aligned}
+\]
+Sin embargo, calcular la envolvente convexa se puede volver muy costoso en dimensiones superiores.
+\end{obser}
+
+\begin{example}[Problema de la mochila]
+Un conjunto de productos numerados de $1$ a $n$. El producto $i$ ocupa un volumen $a_i$ y reporta una satisfacción $p_i$. Dada una mochila con capacidad $V$ determinar la carga que maximiza la satisfacción. Definimos las variables $x_i$ con $x_i = 1$ si decido incluir el producto $i$ y $x_i = 0$ en caso contrario. Podemos definir el problema binario:
+\[
+\begin{aligned}
+& \max
+& & \sum_{i=1}^n p_i x_i \\
+& \text{sujeto a}
+& & \sum_{i=1}^n a_i x_i ≤ V\\
+& & & x_i \in \{0,1\}\ \forall i 
+\end{aligned}
+\]
+\end{example}
+
+\begin{example}[Problema de transporte]
+Consideramos $m$ puntos de suministro y $n$ puntos de consumo. Cada punt punto de suministro $i$ dispone de una oferta $o_i$ con $i = 1,\dots,m$. Cada punto de consumo $j$ tiene una demanda $d_j$ con $j = 1,\dots,n$. Supongamos que $o_i,d_j \in \Z_+\ \forall i,j$ porque lo que distribuye son productos indivisibles. Además, $\sum_{i=1}^m o_i = \sum_{j=1}^m d_j$. El coste unitario de enviar una unidad desde $i$ a $j$ es $c_{ij}$. El problema consiste en deterinar el plan de transporte que miniiza el coste total de distribución. Definimos $x_{ij}$ como la cantidad enviada desde $i$ a $j$, de manera que el problema consiste en:
+\[
+\begin{aligned}
+& \min
+& & \sum_{i=1}^m \sum_{j=1}^n c_{ij}x_{ij} \\
+& \text{sujeto a}
+& & \sum_{j=1}^n x_{ij} = o_i \ \forall i\\
+& & & \sum_{i=1}^n x_{ij} = d_j \ \forall j\\
+& & & x_{ij} \in \Z_+ \ \forall i,j
+\end{aligned}
+\]
+\end{example}
+
+\begin{nota}
+En general, seguiremos el siguiente proceso para modelar un problema de optimización.
+\begin{enumerate}
+	\item Definir varibales.
+	\item Utilizar las variables para definir el conjunto factible mediante restricciones lineales
+	\item Utilizar las variables para la definir la función objetivo
+\end{enumerate}
+Si al final aparecen dificultades, definir más variables o restricciones.
+\end{nota}
+
+\begin{defi}
+Un poliedro $P = \{x \in \R^n : Ax≤b \}$ se denomina "entero" si todos sus puntos extremos son enteros.
+\end{defi}
+
+\begin{theorem}
+Sea $p$ un poliedro y $z_{LP}$ el valor óptimo de $\min \{c'x : x \in P\}$, $c \in \R^n$. Son equivalentes:
+\begin{enumerate}
+	\item $P$ es entero
+	\item Para cada $c \in \R^n$ tal que $LP$ tiene solución finita $(z_{LP} > \infty)$ entonces la solución óptima $x^* \in \Z^n$.
+	\item Para cada $c \in \Z^n$ tal que $z_{LP} > -\infty$, entonces $x^* \in \Z^n$.
+	\item Para cada $c \in \Z^n$ tal que $z_{LP} > -\infty$, entonces $c'x^*=z_{LP}\in \Z$.
+\end{enumerate}
+\end{theorem}
+
+\begin{dem}\mbox{}
+\begin{itemize}
+	\item[$(1 \to 2)$] Obvio por teorema fundamental de la programación lineal.
+	\item[$(2 \to 3)$] Obvio
+	\item[$(3 \to 4)$] Si $\forall c \in \Z^n \to x^* \in \Z^n$, entonces $z_{LP} = c'x^* \in \Z$.
+	\item[$(4 \to 1)$] Supongamos qu $P$ no es entero. Entonces existe una función objetivo $\tilde{c}\in \Z^n$ tal que su óptimo es el vértices $\tilde{x} \in P$ que tiene al menos una coordenada no entero. Supongamos que es $\tilde{x_i} \notin \Z$. Por $(4)$, $\tilde{c}'\tilde{x} \in \Z$. Consdero $\hat{c} = \tilde{c} + \frac{1}{q} e_i$, con $q >> 0$, de forma que $\tilde{x}$ es también óptimo para $\hat{c}$. Como $q \in \Z$, entonces $q\tilde{c}$ también optimiza en $\tilde{x}$ igualmente $q\hat{c}$ optimiza en $\tilde{x}$. Por $(4)$, $q\hat{c}'\tilde{x} \in \Z$ y $q\tilde{c}\tilde{x} \in \Z$. Así pues,
+	\[ \Z \ni q\tilde{c}'\tilde{x} - q\hat{c}\tilde{x} = q\tilde{c}\tilde{x}-q\tilde{c}\tilde{x}-\tilde{x_i} = -\tilde{x_i} \notin \Z \]
+	Por lo que llegamos a un absurdo.
+\end{itemize}
+\end{dem}
+
+\begin{defi}
+Un sistema de desigualdades $Ax ≤ b$ $x \in \R^n$ es Totalmente Dual Entero (TDE) si para cualquier $c \in \Z$ tal que $z_{LP} = \min \{ c'x : Ax≤b\} > -\infty$ entonces el problema dual $\max \{u'b : u'A = c', u ≥ 0\}$ tiene solución óptima $u^* \in \Z^m$.
+\end{defi}
+
+\begin{theorem}
+Si $P$ es un poliedro entero entonces existe $A$ y $b$ tal que $P = \{ x \in \R^n : Ax ≤ b \}$ y $Ax≤ b$ es TDE. (Demostración no incluida)
+\end{theorem}
+
+\begin{example}
+Dado un grafo, determinar el menor número de aristas necesarias para que todos los vértices tengan alguna arista incidente en él. Supongamos que el grafo es $K4$ y los vértices están etiquetados con $1,2,3,4$. Sea $x_{ij} = 1$ si la arista $(i,j)$ está en la solución y $x_{ij}=0$ en caso contrario. El problema consiste en: 
+
+\[
+\begin{aligned}
+& \min
+& & \sum_{i=1}^4 \sum_{j>i} x_{ij} \\
+& \text{sujeto a}
+& & x_{12}+x_{13}+x_{14} ≥ 1\\
+& & & x_{12} + x_{23} + x_{24} ≥ 1\\
+& & & x_{13} + x_{23} + x_{34} ≥ 1\\
+& & & x_{14} + x_{24} + x_{34} ≥ 1\\
+& & & x_{ij} \in \{0,1\}\ \forall i,j
+\end{aligned}
+\]
+
+Todos los vértices de este poliedro son enteros. Su dual es:
+\[
+\begin{aligned}
+& \max
+& & y_1+y_2+y_3+y_4 \\
+& \text{sujeto a}
+& & y_1+y_2 ≤ 1\\
+& & & y_1+y_3 ≤ 1\\
+& & & y_1 + y_4 ≤ 1\\
+& & & y_2 + y_3 ≤ 1\\
+& & & y_2 + y_3 ≤ 1\\
+& & & y_2 + y_4 ≤ 1\\
+& & & y_3 + y_4 ≤ 1
+\end{aligned}
+\]
+
+Si el sistema original fuese $TDE$ los vértices del dual serían enteros pero podemos comprobar que la solución óptima es $y_1=y_2=y_3=y_4 = 1/2$, no entera.
+\end{example}
 \end{document}
