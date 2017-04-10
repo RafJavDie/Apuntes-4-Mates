@@ -577,6 +577,7 @@ Si en $x^*$ hay alguna variable $x^*_{h_i}\neq 0$ para algún $i$, en el objetiv
  \hline
 
 \end{tabular}
+
 Apliquemos esto al ejemplo anterior.
 \begin{align*}
 \min &x_1-3x_2\\
@@ -585,30 +586,29 @@ sa & -x_1+2x_2+x_3 \quad = 6\\
    &x_1,x_2,x_3,x_4\geq 0
 \end{align*}
 \begin{tabular}{|c|c| c c| c c|c|}
+
+&             &     $c'_N$ & & $c'_B$ & & \\
 \hline
  &            & $1$ & $-3$ & $0$ & $0$ & $b$  \\
  \hline
  $x_3$ & $0$ & $-1$ & $2$ &   $1$ &   $0$ & $6$\\
   $x_4$ & $0$ & $1$ & $1$ &    $0$ &  $1$ & $5$\\
  \hline
- &            & $1$ & $\boxed{-3}$ & $0$ & $0$ & \\
+ &            & $1$ & $\boxed{-3}$ & $0$ & $0$ & Aquí se puede poner $-c_BB^{-1}b$ (objetivo)\\
  \hline
+ &             &  $c_N -c_BB^{-1}N$ & & vector $0$& &
 
 \end{tabular}
+
 Hemos señalado el elemento no positivo. \\
 
-LA EXPLICACIÓN DE CÓMO PASAR DE UNA MATRIZ A OTRA ESTÁ MAL
-
-La fila inferior se obtiene de la siguiente forma. Llamamos $B$ y $N$ respectivamente a las matrices cuadradas que se observan. Sobre cada una de ellas hay un vector, que llamaremos $c_B$ y $c_N$ en cada caso. Llamamos además $v_0$ y $v_1$ a los dos primeros vectores columna ($v_0$ representa los valores de las variables $v_1$ es la primera columna de $B$). Para conseguir el vector bajo $B$ hacemos $c_B-v_1 B$. Análogamente, para el otro vector hacemos $c_N-v_2 N$. Tenemos que $y_2$ es la segunda columna de la matriz $B$. A partir de eso calculamos $\min\{\frac{6}{2}, \frac{5}{1}\}=3$. Este mínimo corresponde a la segunda columna de $B$. Ahora nos interesa que la columna $\begin{vmatrix}
+Llamamos $N$ y $B$ respectivamente a las matrices cuadradas que se observan.  Llamamos además $y_i$ a los vectores columna ($y_0$ representa los valores de las variables y $y_1$ es la primera columna de $B$). Para conseguir el vector bajo $B$ hacemos $c_B-v_1 B$. Análogamente, para el otro vector hacemos $c_N-v_2 N$. Tenemos que el elemento negativo (en caso de haber más de uno, el más negativo) está bajo $y_2$, que es la segunda columna de la matriz $B$. A partir de eso calculamos $\min\{\frac{6}{2}, \frac{5}{1}\}=3$, es decir, calculamos el mínimo de los $\frac{b_i}{y_i}$ con $i\geq 1$ siempre que $y_i>0$. Este mínimo corresponde a la primera fila de $B$, esto es, a la variable $x_3$. Recordemos que las filas de se asocian a las variables básicas escritas a la izquierda y que las columnas se asocian a las variables colocadas en orden (esto es $y_i\rightarrow x_i$). Ahora nos interesa que la columna $\begin{vmatrix}
 1\\
 0
 \end{vmatrix}$ aparezca en el lugar de la columna $\begin{vmatrix}
 2\\
 1
-\end{vmatrix}$. Para ello, debemos realizar operaciones por filas. En este caso, basta hacer $\frac{1}{2}F_1$ y a continuación $F_2-F_1$. Además tenemos que sustituir el $x_3$ (por haber eliminado la columna $\begin{vmatrix}
-1\\
-0
-\end{vmatrix}$, que es $v_3$) por el $x_2$ (por corresponderse el mínimo con la segunda columna de $B$). Resultando la tabla siguiente
+\end{vmatrix}$, puesto que $x_2$ se ha convertido por lo anterior en variable básica sustituyendo a $x_3$, y las variables básicas conforman una matriz identidad. Para ello, debemos realizar operaciones por filas. En este caso, basta hacer $\frac{1}{2}F_1$ y a continuación $F_2-F_1$, resultando la tabla siguiente
 
 \begin{tabular}{|c|c| c c| c c|c|}
 \hline
@@ -622,7 +622,7 @@ La fila inferior se obtiene de la siguiente forma. Llamamos $B$ y $N$ respectiva
 
 \end{tabular}\
 
-Ahora operamos igual que antes tenemos que el mínimo es $\frac{4}{3}$, y deberíamos seguir así sucesivamente.
+Ahora operamos igual que antes tenemos que el mínimo es $\frac{4}{3}$, y deberíamos seguir así sucesivamente hasta que no quede ningún elemento en la fila inferior que sea negativo.
 
 
 
@@ -888,7 +888,7 @@ Si $B$ es una base asociada a la solución óptima de $z(0)$, ¿cuál es el rang
 En $z(\Delta)$, teniendo en cuenta que no cambia la función ni las columnas de $A$, esta condición es
 \[\overline{c}_N=c'_N-c'_B B^{-1}N\geq 0\] si $\overline{c}_N\geq 0$, que lo es. 
 \item Factibilidad. En $z(0)$ es $B^{-1}b=\overline{b}\geq 0$. En $z(\Delta)$ es 
-\[B^{-1}b(\Delta)=B^{-1}(b+\Delta  g)=B^{-1}b+\Delta B^{-1}g=\overline{b}+\overline{g}\geq 0\]
+\[B^{-1}b(\Delta)=B^{-1}(b+\Delta  g)=B^{-1}b+\Delta B^{-1}g=\overline{b}+\Delta\overline{g}\geq 0\]
 Tomemos un índice $i$ arbitrario.
 
 \[\overline{b}_i+\Delta\overline{g}_i\geq 0\ \forall i=1,\dots, m\Leftrightarrow -\Delta\overline{g}_i\leq\overline{b}_i\]
