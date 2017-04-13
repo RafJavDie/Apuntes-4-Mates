@@ -213,9 +213,6 @@ Si el espacio $X$ es compacto entonces todos sus subconjuntos cerrados son tambi
 \begin{prop}
 Cualquier aplicación continua de un compacto a un Hausdorff es cerrada.
 \end{prop}
-\begin{coro}
-Todo compacto en un espacio de Hausdorff es cerrado.
-\end{coro}
 
 \begin{teorema}[Tychonoff]
 El producto de compactos es compacto.
@@ -346,7 +343,7 @@ El borde del cuadrado se identifica a un punto. El área sombreada es lo que cor
 \end{defi}
 \begin{observacion}  Con $\Tau_f$, $f$ se vuelve continua por definición. En particular, la topología cociente es la topología final de la proyección canónica $\pi\func{X}{X/\mathcal{R}}$, luego es continua. De hecho, toda topología final puede verse como una topología cociente como se verá en la siguiente proposición.
 \end{observacion}
-\begin{prop}\label{146} Dada una aplicación $f\func{X}{Y}$ se define $\mathcal{R}_f$ sobre $X$ como $x\mathcal{R}_f x'\Leftrightarrow f(x)=f(x')$. Se cumple entonces que $\left(X/\mathcal{R}_f,\Tau_\pi\right)$ y $(Y,\Tau_f)$ son homeomorfos.
+\begin{prop}\label{146} Dada una aplicación sobreyectiva $f\func{X}{Y}$ se define $\mathcal{R}_f$ sobre $X$ como $x\mathcal{R}_f x'\Leftrightarrow f(x)=f(x')$. Se cumple entonces que $\left(X/\mathcal{R}_f,\Tau_\pi\right)$ y $(Y,\Tau_f)$ son homeomorfos.
 \end{prop}
 \begin{dem}
 \[
@@ -607,7 +604,7 @@ t=t'=1\\
 
 \begin{ej} Sea $X=S^1$, entonces $CS^1\cong B^2$ (círculo de radio 1). Para probarlo buscamos una aplicación $f\func{S^1\times I}{B^2}$ continua y sobreyectiva tal que $\mathcal{R}_f=\mathcal{R}$ sea la relación compatible con $f$. Escogemos $f(x,t)=(1-t)x\in\R^2$. Claramente es continua y $f(S^1\times I)=B^2$. Veamos que $\mathcal{R}_f=\mathcal{R}$:
 \begin{gather*}
-(x,t)\mathcal{R}_f(x',t')\underset{def}{\Leftrightarrow}f(x,t)=f(x',t')\Leftarrow (1-t)x=(1-t')x'\Leftrightarrow\left\{\begin{array}{c}
+(x,t)\mathcal{R}_f(x',t')\underset{def}{\Leftrightarrow}f(x,t)=f(x',t')\Leftrightarrow (1-t)x=(1-t')x'\Leftrightarrow\left\{\begin{array}{c}
 t=t'=1 \\
 \acute{o}\\
 x=x', t=t'
