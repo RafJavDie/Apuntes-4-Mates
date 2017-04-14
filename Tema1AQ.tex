@@ -158,9 +158,9 @@ Dado un espacio topológico $(X,\Tau)$, se llama \textbf{topología restricción
 A $(A,\Tau_A)$ se le llama \textbf{subespacio topológico} de $(X,\Tau)$. Nótese que si $A$ es un conjunto abierto de $X$ entonces $\Tau_A$ está formada por los abiertos de $\Tau$ que están contenidos en $A$.
 \end{defi}
 
-\begin{defi}Una aplicación $f\func{(X,\Tau)}{(X',\Tau')}$ entre dos espacios topológicos diremos que es \textbf{continua} si $\forall x$ adherente a $A$ en $(X,\Tau)$, $f(x)$ es adherente a $f(A)$ en $(X',\Tau')$.
+\begin{defi} Una aplicación $f\func{(X,\Tau)}{(X',\Tau')}$ entre dos espacios topológicos diremos que es \textbf{continua} si $\forall x$ adherente a $A$ en $(X,\Tau)$, $f(x)$ es adherente a $f(A)$ en $(X',\Tau')$.
 \end{defi}
-\begin{prop}Si $U$ en $(X',\Tau')$ es un abierto y $f$ es continua entonces $f^{-1}(U)$ es abierto en $(X,\Tau)$.
+\begin{prop} Una aplicación $f\func{(X,\Tau)}{(X',\Tau')}$ es continua si y solo si $\forall U \in \Tau'$ se tiene que $f^{-1}(U)\in\Tau$.
 \end{prop}
 
 \vspace{0.5cm}
@@ -206,7 +206,8 @@ Los homeomorfismos preservan los axiomas de numerabilidad. Estos axiomas son ade
 \end{defi}
 \begin{defi} Un espacio $X$ se dice que tiene la propiedad de separación de Hausdorff si dados $x,y\in X$ con $x\neq y$ existen abiertos $U,V$ con $x\in U$, $y\in V$ y $U\cap V=\emptyset$.
 \end{defi}
-Si el espacio $X$ es compacto entonces todos sus subconjuntos cerrados son también compactos.
+\begin{prop} Todo subconjunto cerrado de un conjuto compacto es a su vez compacto. Otra forma de decirlo es: la compacidad es hereditaria en cerrados.
+\end{prop}
 \begin{prop} En todo espacio $X$ con propiedad de Hausdorff los conjuntos compactos son cerrados.
 \end{prop}
 
@@ -221,7 +222,7 @@ El producto de compactos es compacto.
 \section{Conexión}
 \begin{defi} Sea $(X,\Tau)$ un espacio topológico. Diremos que $C\subseteq X$ es \textbf{conexo} si y solo si dados $A,B\in\Tau$ cumpliendo $A\cap B\cap C=\emptyset, C\subseteq A\cup B$ se tiene que o bien $C\subseteq A$ o bien $C\subseteq B$.
 \end{defi}
-\begin{defi} $(X,\Tau)$ será \textbf{conexo por caminos} si $\forall x,y\in X\ \exists\alpha\func{([0,1],eucl\acute{\imath}dea)}{(X,\Tau)}$ continua tal que $\alpha(0)=x$ y $\alpha(1)=y$.
+\begin{defi} $(X,\Tau)$ será \textbf{conexo por caminos} si $\forall x,y\in X\ \exists\alpha\func{([0,1],\Tau_e)}{(X,\Tau)}$ continua tal que $\alpha(0)=x$ y $\alpha(1)=y$.
 \end{defi}
 
 \begin{defi}
@@ -371,7 +372,7 @@ Sea $\Omega$ abierto de $(X/\mathcal{R}_f,\Tau_\pi)$, por lo que $\pi^{-1}(\Omeg
 \end{defi}
 
 \begin{prop}[Propiedad universal]\label{149}
-Sea $\mathcal{R}$ una relación de equivalencia sobre el espacio topológico $X$ y sea $f\func{X}{Z}$ una aplicación continua y cerrada (o abierta) compatible con $\mathcal{R}$. Se define $\tilde{f}\func{X/\mathcal{R}}{Z}$ como $\tilde{f}([x])=f(x)$, entonces $\tilde{f}\func{(X/\mathcal{R},\Tau_\pi)}{Z}$ es continua.
+Sea $\mathcal{R}$ una relación de equivalencia sobre el espacio topológico $X$ y sea $f\func{X}{Z}$ una aplicación continua compatible con $\mathcal{R}$. Se define $\tilde{f}\func{X/\mathcal{R}}{Z}$ como $\tilde{f}([x])=f(x)$, entonces $\tilde{f}\func{(X/\mathcal{R},\Tau_\pi)}{Z}$ es continua.
 \end{prop}
 \begin{dem}
 \[
@@ -383,25 +384,25 @@ X \ar[r, "f"]\arrow[d,"\pi "'] & Z\\
 Sea $W$ abierto de $Z$. Como $f$ es continua, $f^{-1}(W)$ es abierto de $X$. Además $\tilde{f}^{-1}(W)$ es abierto de $X/\mathcal{R}\Leftrightarrow\pi^{-1}(\tilde{f}^{-1}(W))$ es abierto de $X$. Como $f=\tilde{f}\circ\pi$, $\pi^{-1}(\tilde{f}^{-1}(W))=f^{-1}(W)$, que ya sabíamos que era abierto. $\QED$
 \end{dem}
 
-\vspace{0.4cm}
-
-Un caso especialmente útil de la propiedad universal es el siguiente.
-\begin{prop} Sea $f\func{X}{Y}$ continua y sobreyectiva. Sea $\mathcal{R}_f$ la relación inducida por $f$. Supongamos que $Y$ tiene la propiedad de separación de Hausdorff y supongamos además que $X$ es compacto. Entonces $\tilde{f}\func{X/\mathcal{R}_f}{Y}$ es homeomorfismo.
+\begin{prop}
+Sea $f\func{X}{Y}$ continua y sobreyectiva. Sea $\mathcal{R}_f$ la relación inducida por $f$. Supongamos que $Y$ tiene la propiedad de separación de Hausdorff y supongamos además que $X$ es compacto. Entonces $\tilde{f}\func{X/\mathcal{R}_f}{Y}$ es homeomorfismo.
 \end{prop}
-
 \begin{dem}
 Vamos a ver que $\tilde{f}$ cumple las tres propiedades para ser homeomorfismo.
 \begin{enumerate}
-\item[a)] Por la proposición \ref{125} deducimos que f es cerrada y, por la proposición anterior y el hecho de que $\mathcal{R}_f$ es compatible con $f$, deducimos que $\tilde{f}$ continua.
+\item[a)] Por la Proposición \ref{149}, dado que $\mathcal{R}_f$ es compatible con $f$, deducimos que $\tilde{f}$ continua.
 \item[b)] $\tilde{f}$ es sobreyectiva porque lo es $f$. Veamos que es inyectiva:
 \begin{equation*}
 \tilde{f}([x])=\tilde{f}([x'])\Rightarrow f(x)=f(x')\Rightarrow x'\mathcal{R}_f x\Rightarrow [x]=[x'].
 \end{equation*}
-\item[c)] Para ver que $\tilde{f}^{-1}$ es continua basta ver que $\tilde{f}$ lleva cerrados en cerrados. Sea $F$ un cerrado de $X/\mathcal{R}_f\Rightarrow\pi^{-1}(F)$ es cerrado de $X$. Por ser $X$ compacto, esto implica que $\pi^{-1}(F)$ es compacto y por ser $f$ continua $f(\pi^{-1}(F))$ es compacto. Por lo tanto, al ser $Y$ Hausdorff, $\tilde{f}(F)=f(\pi^{-1}(F))$ es cerrado. $\QED$
+\item[c)] Solo resta ver que $\tilde{f}^{-1}$ es continua, para lo cual veremos que $\tilde{f}$ es cerrada. Por las hipótesis sobre $X$ e $Y$ y la Proposición \ref{125} dudicmos que $f$ es cerrada. Sea $K$ un cerrado de $X/\mathcal{R}_f\Rightarrow\pi^{-1}(F)$ es cerrado de $X$. Por ser $f$ cerrada, $f(\pi^{-1}(K))$ es cerrado, pero precisamene $\tilde{f}(F)=f(\pi^{-1}(F))$, luego $\tilde{f}$ es cerrada y, por tanto, homeomorfismo. 
+{$\QED$}
 \end{enumerate}
 
 \end{dem}
-
+\begin{nota}
+Si la aplicación $f$ es abierta o cerrada, no necesitamos las hipótesis de compacidad y Hausdorff.
+\end{nota}
 \begin{coro}[Versión para espacios métricos] Sea $f\func{X}{Y}$ continua y sobreyectiva entre espacios métricos compactos. Entonces $\tilde{f}\func{X/\mathcal{R}_f}{Y}$ es homeomorfismo.
 \end{coro}
 
