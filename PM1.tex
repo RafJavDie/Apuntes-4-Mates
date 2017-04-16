@@ -349,14 +349,14 @@ Entonces $S = P$. Es decir, cualquier poliedro en forma estándar queda determin
 
 \section{Resolución de problemas de Programación Lineal}
 
-Sean $A\in\R^{m\times n},\ rg(A)=m,\ m\leq n,\ b\in\R^m,\ c\in\R^n$. Consideramos el poliedro en forma estándar $P=\{x\in\R^n: Ax=b\}$. El problema de programación lineal consiste en $\underset{x\in P}{\min} c'x \equiv \underset{Ax=b,x\geq 0}{\min} c'x\equiv (PL)$. 
+Sean $A\in\R^{m\times n},\ rg(A)=m,\ m\leq n,\ b\in\R^m,\ c\in\R^n$. Consideramos el poliedro en forma estándar $P=\{x\in\R^n: Ax=b\}$. El problema de programación lineal consiste en $\underset{x\in P}{\min}\ c'x \equiv \underset{Ax=b,x\geq 0}{\min} c'x\equiv (PL)$. 
 
 \begin{theorem}[Teorema fundamental de la PL] Supongamos que $x^1,\dots ,x^k$ y $d^1,\dots ,d^l$ son respectivamente los puntos extremos y direcciones extremas de $P$. Entonces, la condición necesaria y suficiente para que $(PL)$ tenga solución óptima es que $c'd^j\geq 0\ \forall j=1,\dots, l$. En este caso, una solución óptima siempre se alcanza en un vértice de $P$.
 \end{theorem}
 \begin{dem}
 Planteamos el problema de programación lineal $\underset{Ax=b,x\geq 0}{\min} c'x$. Por el teorema de Wein, si $x\in P$, podemos escribir $x=\sum_{i=1}^k\lambda_ix^i +\sum_{j=1}^l\mu_j d^j$ con $\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1$. Luego tenemos el problema siguiente
 \[\underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} c'[\sum_{i=1}^k\lambda_ix^i +\sum_{j=1}^l\mu_j d^j] \]
-Supongamos que $c'd^j\geq 0\\forall j$. Entonces continuamos la ecuación anterior con 
+Supongamos que $c'd^j\geq 0\ \forall j$. Entonces continuamos la ecuación anterior con 
 \begin{gather*}
  \underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} [\sum_{i=1}^n\lambda_ic'x^i +\sum_{j=1}^l\mu_j \underset{\geq 0}{c'd^j}]\geq\\
 \underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} [\sum_{i=1}^n\lambda_ic'x^i]\geq \\
@@ -874,7 +874,7 @@ Para una componente genérica $j\in \mathbb{N}$ se tiene que $\overline{c}_j+\De
 \Rightarrow \max_{j:\overline{d}_j >0}-\frac{\overline{c}_j}{\overline{d}_j} \leq \Delta \leq \min_{j:\overline{d}_j <0}-\frac{\overline{c}_j}{\overline{d}_j}
 \]
 
-\section{Análisis de las variaciones en términos independientes}
+\subsection{Análisis de las variaciones en términos independientes}
 
 Sea $z(0)= \min c'x$ sujeto a $Ax=b, x\geq 0$. Queremos estudiar que pasa si elegimos $g\in\R^m$ y construimos el problema
 \begin{align*}
@@ -920,7 +920,7 @@ Pongamos $g'=(0,0,1)$. La báse óptima para $x_1,x_2,x_4$ de este problema era 
 Por lo tanto $\Delta\in [-1,9]$. Esto quiere decir que $B$ es óptima para $b_3\in[20,30]$. La solución $x(\Delta)=B^{-1}b(\Delta)$ en cada caso será distinta, pero la base será la misma.
 \end{example}
 
-\section{Añadir una nueva variable $x_{n+1}$ a un problema}
+\subsection{Añadir una nueva variable $x_{n+1}$ a un problema}
 Pasamos del problema $(P)$
 \begin{align*}
 \min\ & c'x\\
@@ -949,7 +949,7 @@ que ya la teníamos, y
 
 \end{enumerate}
 
-\section{Añadir una restricción}
+\subsection{Añadir una restricción}
 Partimos de nuevo del problema $(P)$ anterior y lo llevamos al problema $(P_q)$
 \begin{align*}
 \min\ & c'x\\
@@ -1042,28 +1042,28 @@ Queremos derivar esta función. Supongamos en este problema que las bases factib
         &sa:\   Ax=b       &sa:\ & u'A\leq b\\
         &  x\geq 0         & & u\in\R^m 
 \end{align*}
-Llamamos $u_i=c'_{B_i}$. Entonces, $f(b)=\max_{1\leq i\leq r}u_i'B=u'_k b$. Ahora derivamos
-\[\frac{\partial f}{\partial u_i}=\frac{\partial }{\partial b_i}\left(\sum_{j=1}^m u_{kj}b_j\right)=u_{ki}\]
+Llamamos $u_i=c'_{B_i}$. Entonces, $f(b)=\max_{1\leq i\leq r}u_i'b=u'_k b$. Ahora derivamos
+\[\frac{\partial f}{\partial b_i}=\frac{\partial }{\partial b_i}\left(\sum_{j=1}^m u_{kj}b_j\right)=u_{ki}\]
 Hemos llegado a la solución óptima del dual en su variable $i$-ésima. 
 \begin{example}
-$g'(0,0,1)=e'_3$. Teníamos que $z(\Delta)$ al variar $b_3\in [20,30]$ mntiene la base óptima.
+$g'=(0,0,1)=e'_3$. Teníamos que $z(\Delta)$ al variar $b_3\in [20,30]$ mantiene la base óptima.
 \begin{gather*}
 f(\Delta)= z(\Delta)=c'_B B^{-1}b(\Delta)=c'_B B^{-1}(b+\Delta e_3)=\\
 c'_B B^{-1} b +\Delta c'_B B^{-1} e_3 =\frac{31}{4}-\frac{1}{4}\Delta
 \end{gather*}
 Luego $\frac{\partial z}{\partial\Delta}=-\frac{1}{4}$. Si quisiéramos utilizar el resultado anterior, tendríamos que obtener la solución óptima y multiplicar por $e_3$ (quedarnos con la tercera componente). La solución óptima del dual es
 \[(u^*)'=c'_B B^{-1}=[-2\ -1\ 0]B^{-1}=[-\frac{1}{2}\ 0\ -\frac{1}{4}]\]
-Por lo tanto. $\frac{\partial z}{\partial\Delta}=\frac{\partial z}{\partial b_3}=u^*_3=\frac{1}{4}$.
+Por lo tanto. $\frac{\partial z}{\partial\Delta}=\frac{\partial z}{\partial b_3}=u^*_3=-\frac{1}{4}$.
 \end{example}
 
-
+{\large\bf LOGIC INTERLUDE}
 \begin{theorem}
 Si $c \in Res(c_1,c_2)$ entonces $\{ c_1, c_2 \} \models c$.
 \end{theorem}
 
 \begin{dem}
 
-Sea $I \models \{ c_1, c_2\}$. Hay que demostrar que $I \models c$. Como $c \in Res(c_1,c_2)$, entonces existe $L \in c_1$ tal que $c = Res_L(c_1, c_2) = (c_1-\{ L \} \cup (c_2 - \{ L^c \}$.
+Sea $I \models \{ c_1, c_2\}$. Hay que demostrar que $I \models c$. Como $c \in Res(c_1,c_2)$, entonces existe $L \in c_1$ tal que $c = Res_L(c_1, c_2) = (c_1-\{ L \} \cup (c_2 - \{ L^c \})$.
 
 Consideramos dos casos:
 \begin{itemize}
@@ -1119,7 +1119,43 @@ Veamos que no siempre coincide $z_{PE}$ con un redondeo de $z_{LP}$.
 (LP) & x_1,x_2 \in \R_+
 \end{align*}
 
-La solución óptima de $LP$ es $(\frac{13}{7},0)$. El redondeo más cercano es $(2,0)$ que no es un punto factible. El redondeo por abajo es $(1,0)$, que no es la solución óptima (que es $(0,3)$).
+La solución óptima de $LP$ es $(\frac{13}{7},0)$. El redondeo más cercano es $(2,0)$. El redondeo por abajo es $(1,0)$. Ninguno es la solución óptima, que es $(0,3)$, como se puede comprobar evaluando la función en cada uno de los puntos de coordenadas enteras señalados en la figura.
+
+\begin{center}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{zzttqq}{rgb}{0.6,0.2,0.}
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\definecolor{cqcqcq}{rgb}{0.7529411764705882,0.7529411764705882,0.7529411764705882}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\draw [color=cqcqcq,, xstep=1.0cm,ystep=1.0cm] (-4.3,-1.3) grid (5.3,4.3);
+\draw[color=black] (-4,0.) -- (5,0.);
+\foreach \x in {-4,-3.,-2.,-1.,1.,2.,3.,4.,5.}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[color=black] (0.,-1.) -- (0.,4.752470459668063);
+\foreach \y in {-1.,1.,2.,3.,4.}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-3.969088632379392,-1.385270587163902) rectangle (8.703087676160555,4.752470459668063);
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.10000000149011612] (0.,3.25) -- (0.,0.) -- (2.1666666666666665,0.) -- cycle;
+\draw [domain=-3.969088632379392:8.703087676160555] plot(\x,{(--13.-6.*\x)/4.});
+\draw [color=zzttqq] (0.,3.25)-- (0.,0.);
+\draw [color=zzttqq] (0.,0.)-- (2.1666666666666665,0.);
+\draw [color=zzttqq] (2.1666666666666665,0.)-- (0.,3.25);
+\draw [dash pattern=on 3pt off 3pt,domain=-3.969088632379392:8.703087676160555] plot(\x,{(--46.-21.*\x)/11.});
+\begin{scriptsize}
+\draw [fill=uuuuuu] (0.,3.25) circle (1.5pt);
+\draw [fill=uuuuuu] (0.,0.) circle (1.5pt);
+\draw [fill=uuuuuu] (2.1666666666666665,0.) circle (1.5pt);
+\draw [fill=qqqqff] (0.,3.) circle (2.5pt);
+\draw [fill=qqqqff] (0.,2.) circle (2.5pt);
+\draw [fill=qqqqff] (0.,1.) circle (2.5pt);
+\draw [fill=qqqqff] (1.,0.) circle (2.5pt);
+\draw [fill=qqqqff] (2.,0.) circle (2.5pt);
+\draw [fill=qqqqff] (1.,1.) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+\end{center}
+
 \end{example}
 
 \begin{obser}
@@ -1149,7 +1185,7 @@ Un conjunto de productos numerados de $1$ a $n$. El producto $i$ ocupa un volume
 \end{example}
 
 \begin{example}[Problema de transporte]
-Consideramos $m$ puntos de suministro y $n$ puntos de consumo. Cada punt punto de suministro $i$ dispone de una oferta $o_i$ con $i = 1,\dots,m$. Cada punto de consumo $j$ tiene una demanda $d_j$ con $j = 1,\dots,n$. Supongamos que $o_i,d_j \in \Z_+\ \forall i,j$ porque lo que distribuye son productos indivisibles. Además, $\sum_{i=1}^m o_i = \sum_{j=1}^m d_j$. El coste unitario de enviar una unidad desde $i$ a $j$ es $c_{ij}$. El problema consiste en deterinar el plan de transporte que miniiza el coste total de distribución. Definimos $x_{ij}$ como la cantidad enviada desde $i$ a $j$, de manera que el problema consiste en:
+Consideramos $m$ puntos de suministro y $n$ puntos de consumo. Cada punto de suministro $i$ dispone de una oferta $o_i$ con $i = 1,\dots,m$. Cada punto de consumo $j$ tiene una demanda $d_j$ con $j = 1,\dots,n$. Supongamos que $o_i,d_j \in \Z_+\ \forall i,j$ porque lo que distribuye son productos indivisibles. Además, $\sum_{i=1}^m o_i = \sum_{j=1}^m d_j$. El coste unitario de enviar una unidad desde $i$ a $j$ es $c_{ij}$. El problema consiste en deterinar el plan de transporte que minimiza el coste total de distribución. Definimos $x_{ij}$ como la cantidad enviada desde $i$ a $j$, de manera que el problema consiste en:
 \[
 \begin{aligned}
 & \min
@@ -1173,14 +1209,14 @@ Si al final aparecen dificultades, definir más variables o restricciones.
 \end{nota}
 
 \begin{defi}
-Un poliedro $P = \{x \in \R^n : Ax≤b \}$ se denomina "entero" si todos sus puntos extremos son enteros.
+Un poliedro $P = \{x \in \R^n : Ax≤b \}$ se denomina ``entero'' si todos sus puntos extremos son enteros.
 \end{defi}
 
 \begin{theorem}
 Sea $p$ un poliedro y $z_{LP}$ el valor óptimo de $\min \{c'x : x \in P\}$, $c \in \R^n$. Son equivalentes:
 \begin{enumerate}
 	\item $P$ es entero
-	\item Para cada $c \in \R^n$ tal que $LP$ tiene solución finita $(z_{LP} > \infty)$ entonces la solución óptima $x^* \in \Z^n$.
+	\item Si para cada $c \in \R^n$ tal que $LP$ tiene solución finita $(z_{LP} > -\infty)$ entonces la solución óptima $x^* \in \Z^n$.
 	\item Para cada $c \in \Z^n$ tal que $z_{LP} > -\infty$, entonces $x^* \in \Z^n$.
 	\item Para cada $c \in \Z^n$ tal que $z_{LP} > -\infty$, entonces $c'x^*=z_{LP}\in \Z$.
 \end{enumerate}
@@ -1191,7 +1227,7 @@ Sea $p$ un poliedro y $z_{LP}$ el valor óptimo de $\min \{c'x : x \in P\}$, $c 
 	\item[$(1 \to 2)$] Obvio por teorema fundamental de la programación lineal.
 	\item[$(2 \to 3)$] Obvio
 	\item[$(3 \to 4)$] Si $\forall c \in \Z^n \to x^* \in \Z^n$, entonces $z_{LP} = c'x^* \in \Z$.
-	\item[$(4 \to 1)$] Supongamos qu $P$ no es entero. Entonces existe una función objetivo $\tilde{c}\in \Z^n$ tal que su óptimo es el vértices $\tilde{x} \in P$ que tiene al menos una coordenada no entero. Supongamos que es $\tilde{x_i} \notin \Z$. Por $(4)$, $\tilde{c}'\tilde{x} \in \Z$. Consdero $\hat{c} = \tilde{c} + \frac{1}{q} e_i$, con $q >> 0$, de forma que $\tilde{x}$ es también óptimo para $\hat{c}$. Como $q \in \Z$, entonces $q\tilde{c}$ también optimiza en $\tilde{x}$ igualmente $q\hat{c}$ optimiza en $\tilde{x}$. Por $(4)$, $q\hat{c}'\tilde{x} \in \Z$ y $q\tilde{c}\tilde{x} \in \Z$. Así pues,
+	\item[$(4 \to 1)$] Supongamos qu $P$ no es entero. Entonces existe una función objetivo $\tilde{c}\in \Z^n$ tal que su óptimo es el vértice $\tilde{x} \in P$ que tiene al menos una coordenada no entera. Supongamos que es $\tilde{x_i} \notin \Z$. Por $(4)$, $\tilde{c}'\tilde{x} \in \Z$. Consdero $\hat{c} = \tilde{c} + \frac{1}{q} e_i$, con $q >> 0$, de forma que $\tilde{x}$ es también óptimo para $\hat{c}$. Como $q \in \Z$, entonces $q\tilde{c}$ también optimiza en $\tilde{x}$. Igualmente $q\hat{c}$ optimiza en $\tilde{x}$. Por $(4)$, $q\hat{c}'\tilde{x} \in \Z$ y $q\tilde{c}\tilde{x} \in \Z$. Así pues,
 	\[ \Z \ni q\tilde{c}'\tilde{x} - q\hat{c}\tilde{x} = q\tilde{c}\tilde{x}-q\tilde{c}\tilde{x}-\tilde{x_i} = -\tilde{x_i} \notin \Z \]
 	Por lo que llegamos a un absurdo.
 \end{itemize}
