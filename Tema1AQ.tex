@@ -163,6 +163,12 @@ A $(A,\Tau_A)$ se le llama \textbf{subespacio topológico} de $(X,\Tau)$. Nótes
 \begin{prop} Una aplicación $f\func{(X,\Tau)}{(X',\Tau')}$ es continua si y solo si $\forall U \in \Tau'$ se tiene que $f^{-1}(U)\in\Tau$.
 \end{prop}
 
+\begin{defi} Una aplicación que lleva conjuntos abiertos (respectivamente cerrados) en abiertos (cerrados) se denomina \textbf{abierta} (\textbf{cerrada}).
+\end{defi}
+
+\begin{prop} Una aplicación es biyectiva, continua y abierta (o cerrada) si y solo si es homeomorfismo.
+\end{prop}
+
 \vspace{0.5cm}
 
 En espacios métricos se puede usar el criterio $\varepsilon-\delta$.\\
@@ -507,7 +513,7 @@ y=2\sen\theta\\
 z=0
 \end{array}
 \end{gather*}
-Vamos a considerar el segmento $V_\theta$  centrado en el punto de esa circunferencia de ángulo $\theta$ de longitud $2$ girado un ángulo $\frac{\theta}{2}$ respecto al eje $OY$. Al a unión $M=\underset{0\leq\theta\leq\pi}{\bigcup}V_\theta$ se le llama \textbf{banda de Möbius}. De esta forma, las ecuaciones paramétricas de nuestra banda de Möbius M son
+Vamos a considerar el segmento $V_\theta$  centrado en el punto de esa circunferencia de ángulo $\theta$ de longitud $2$ girado un ángulo $\frac{\theta}{2}$ respecto al eje $OZ$. Al a unión $M=\underset{0\leq\theta\leq\pi}{\bigcup}V_\theta$ se le llama \textbf{banda de Möbius}. De esta forma, las ecuaciones paramétricas de nuestra banda de Möbius M son
 \begin{gather*}
 \begin{array}{l}
 x=2\cos\theta +\lambda \cos\theta \sen\frac{\theta}{2}=\cos\theta(2+\lambda \sen\frac{\theta}{2})\\
@@ -595,7 +601,7 @@ t=t'=1\\
 \end{gather*}
 \end{defi}
 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
-\clip(-1.4,-0.3) rectangle (12,2.5);
+\clip(-1.4,-0.4) rectangle (12,2.5);
 \draw [rotate around={0.:(1.78,0.)}] (1.78,0.) ellipse (0.833069093729879cm and 0.29258180894909247cm);
 \draw (0.9469309062701207,0.)-- (0.95,2.);
 \draw (2.613069093729879,0.)-- (2.61333,2.);
@@ -827,7 +833,7 @@ Pero $[q]=[q']\in U\cap V$, con lo que hemos llegado a una contradicción. \qed
 
 \vspace{0.2cm}
 
-\begin{nota} Si $A\subseteq X$ y $\mathcal{R}$ es la relación $x\mathcal{R}y\Leftarrow x=y$ ó $x,y\in A$, se suele escribir $X/A$.
+\begin{nota} Si $A\subseteq X$ y $\mathcal{R}$ es la relación $x\mathcal{R}y\Leftrightarrow x=y$ ó $x,y\in A$, se suele escribir $X/A$.
 \end{nota}
 
 \begin{ejer} Probar que $\R^2/D^2$ es homeomorfo a $\R^2$, siendo $D^2$ la bola unidad cerrada. Ayuda: usar la función $f\func{\R^2}{\R^2}$ definida a trozos como $f(D^2)=0$ y $f(x)=\dfrac{||x||-1}{||x||}x\ \forall x\in\R^2\setminus D^2$.
