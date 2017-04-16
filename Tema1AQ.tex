@@ -219,6 +219,14 @@ Cualquier aplicación continua de un compacto a un Hausdorff es cerrada.
 El producto de compactos es compacto.
 \end{teorema}
 
+\begin{teorema}
+Sea $f\func{X}{Y}$ una función continua entre espacios topológicos. Si $K\subseteq X$ es compacto, entonces $f(K)$ también es compacto.
+\end{teorema}
+
+\begin{dem}
+Sea $\mathcal{U}$ un recubrimiento por abiertos de $f(K)$ en $Y$. Como $f$ es continua, se tiene que $f^{-1}(U)$ es abierto para todo $U\in\mathcal{U}$. Por tanto, el conjunto $\{f^{-1}(U):U\in\mathcal{U}\}$ es un recubrimiento por abiertos de $K$, puesto que si $x\in K$, entonces $f(x)$ pertenece a algún abierto de $\mathcal{U}$. Como $K$ es compacto, podemos hallar un subrecubrimiento finito $\{f^{-1}(U_1),\dots, f^{-1}(U_n)\}$. Del hecho de que $f(f^{-1}(U))\subseteq U$ se sigue que $\{U_1,\dots, U_n\}$ es un subrecubrimiento finito por abiertos de $f(K)$. $\QED$
+\end{dem}
+
 \section{Conexión}
 \begin{defi} Sea $(X,\Tau)$ un espacio topológico. Diremos que $C\subseteq X$ es \textbf{conexo} si y solo si dados $A,B\in\Tau$ cumpliendo $A\cap B\cap C=\emptyset, C\subseteq A\cup B$ se tiene que o bien $C\subseteq A$ o bien $C\subseteq B$.
 \end{defi}
