@@ -110,10 +110,12 @@
 \section{Homotopía}
 Vamos a introducir el concepto de deformación de curvas cerradas (``lazos"). La idea es fijar un punto y variar el lazo de manera continua sin mover el punto. Comenzamos formalizando la idea de deformar una función en otra con el tiempo. 
 
-\begin{defi} Sean $f,g\func{X}{Y}$ funciones continuas y sea $I=[0,1]$. Decimos que $f$ y $g$ son \textbf{homotópicas} ($f\simeq g$) si $\exists H\func{X\times I}{Y}$ continua tal que $H(x,0)=f(x)$ y $H(x,1)=g(x)$. A la aplicación $H$ la llamamos \textbf{homotopía} entre $f$ y $g$. Si $A\subseteq X$, decimos que $f$ y $g$ son \textbf{homotópicas relativamente} a $A$ si la homotopía $H$ cumple además $H(a,t)=f(a)=g(a)\ \forall a\in A$.
+\begin{defi} Sean $f,g\func{X}{Y}$ funciones continuas y sea $I=[0,1]$. Decimos que $f$ y $g$ son \textbf{homotópicas} ($f\simeq g$) si $\exists H\func{X\times I}{Y}$ continua tal que $H(x,0)=f(x)$ y $H(x,1)=g(x)$. A la aplicación $H$ la llamamos \textbf{homotopía} entre $f$ y $g$. Si una de las funciones es constante, decimos que la otra es \textbf{nul-homotópica}. Si $A\subseteq X$, decimos que $f$ y $g$ son \textbf{homotópicas relativamente} a $A$ si la homotopía $H$ cumple además $H(a,t)=f(a)=g(a)\ \forall a\in A$. Si $A$ es un conjunto unitario hablamos de homotopía \textbf{basada}. En contraposición a la homotopía relativa, a la homotopía que no cumple esa condición se le llama homotopía \textbf{libre}.
 \end{defi}
 
-\vspace{0.1cm}
+\begin{nota} Si tomamos $A=\emptyset$, la homotopía relativa a $A$ coincide con la homotopía libre.
+\end{nota}
+
 
 \begin{lemma} Ser homotópicas es una relación de equivalencia (también serlo relativamente).
 \end{lemma}
@@ -136,11 +138,11 @@ H(x,0)=F(x,0)=f(x)\\
 H(x,1)=G(x,1)=h(x)
 \end{array}\right.
 \end{equation*}
-Está bien definida en $t=\frac{1}{2}$ pues $F(x,1)=g(x)=G(x,0)$. Se deja como ejercicio probar la continuidad de $H$.$\QED$
+Está bien definida en $t=\frac{1}{2}$ pues $F(x,1)=g(x)=G(x,0)$. Se deja como ejercicio probar la continuidad de $H$ y adaptar la demostración al caso relativo.$\QED$
 \end{itemize}
 \end{dem}
 
-\begin{lemma} La relación de homotopía es compatible con la composición, es decir, se tienen las siguientes propiedades (que también valen para la homotopía relativa):
+\begin{lemma}\label{lema} La relación de homotopía es compatible con la composición, es decir, se tienen las siguientes propiedades (que también valen para la homotopía relativa):
 \begin{enumerate}
 \item[a)] Sean $f,g\func{X}{Y}$, $h\func{Y}{Z}$ continuas. Si $f\simeq g$ entonces $h\circ f\simeq h\circ g$.
 \item[b)] Si $h\func{Z}{X}$ y $f,g\func{X}{Y}$ continuas con $f\simeq g$, entonces $f\circ h\simeq g\circ h$.
@@ -154,7 +156,7 @@ Está bien definida en $t=\frac{1}{2}$ pues $F(x,1)=g(x)=G(x,0)$. Se deja como e
 \widetilde{H}(x,0)=h(H(x,0))=h(f(x))=(h\circ f)(x)\\
 \widetilde{H}(x,1)=h(H(x,1))=h(g(x))=(h\circ g)(x)
 \end{gather*}
-\item[b)] Sea $\widehat{H}\func{Z\times I}{Y}$ definida como $\widehat{H}\circ(h\times Id)$. Entonces
+\item[b)] Sea $\widehat{H}\func{Z\times I}{Y}$ definida como $H\circ(h\times Id)$. Entonces
 \begin{gather*}
 \widehat{H}(x,0)=H(h(x),0)=f(h(x))=(f\circ h)(x)\\
 \widehat{H}(x,1)=H(h(x),0)=g(h(x))=(g\circ h)(x)
@@ -164,7 +166,7 @@ Está bien definida en $t=\frac{1}{2}$ pues $F(x,1)=g(x)=G(x,0)$. Se deja como e
 $\QED$
 \end{dem}
 
-\begin{defi} Una aplicación $f\func{X}{Y}$ se dice \textbf{equivalencia de homotopía} si $\exists g\func{Y}{X}$ continua tal que $f\circ g\simeq Id_Y$ y $g\circ f\simeq Id_X$. $X$ e $Y$ se dicen entonces \textbf{homotópicamente equivalentes}.
+\begin{defi} Una aplicación $f\func{X}{Y}$ se dice \textbf{equivalencia de homotopía} si $\exists g\func{Y}{X}$ continua tal que $f\circ g\simeq Id_Y$ y $g\circ f\simeq Id_X$. $X$ e $Y$ se dicen entonces \textbf{homotópicamente equivalentes}. En tal caso se dice que $f$ y $g$ son \textbf{inversas homotópicas}.
 \end{defi}
 
 \begin{nota} Si $f$ es homeomorfismo, es equivalencia de homotopía, con su inversa como función $g$.
@@ -205,6 +207,22 @@ El mismo tipo de aplicación $H(x,t)=(1-t)x$ muestra que todo espacio vectorial 
 Si $[x,t]\in CX$ es la clase de $(x,t)\in X\times I$, se define $H\func{CX\times I}{CX}$ por $H([x,t],s)=[x,(1-s)t+s]$. Entonces $H([x,t],0)=[x,t]$ y $H([x,t],1)=[x,1]=v$. Queda verificar la continuidad, que se deja como ejercicio. \qed
 \end{solucion}
 
+\begin{ej}
+Cualquier convexo $X$ es contráctil, pues basta tomar la homotopía $H(x,t)=(1-t)x+x_0$, con $x_0\in X$ fijo. Esta aplicación está bien definida por ser $X$ convexo.
+\end{ej}
+
+\begin{ejer} Sean $f\func{X}{Y}$ y $g\func{Y}{Z}$ funciones continuas entre espacios topológicos, siendo $Y$ contráctil. Probar que $g\circ f$ es nul-homotópica.
+\end{ejer}
+\begin{solucion}
+De la hipótesis sobre $Y$ obtenemos que $Y\simeq cte\ y_0$. Así pues, consideremos el siguiente esquema:
+\[
+\begin{tikzcd}
+X \arrow[r,"f"]& Y \arrow[r, "Id_Y"] &  Y \arrow[r,"g"] & Z 
+\end{tikzcd}
+\]
+Por el lema \ref{lema} apartado $a)$ tenemos que $g\circ Id_Y\simeq g(y_0)=z_0$. Aplicando ahora el apartado $b)$ del mismo lema obtenemos $g\circ Id_Y\circ f\simeq z_0\circ f=z_0$. Como $g\circ Id_Y\circ f= g\circ f$, ya hemos demostrado lo que queríamos.
+\end{solucion}
+
 \begin{ej} $\R^2\setminus\{0\}$ es homotópicamente equivalente a $S^1$.
 \begin{solucion}
 Sea $i$ la inclusión $i:S^1\longhookarrow\R^2\setminus\{0\}$ y sea $r\func{\R^2\setminus\{0\}}{S^1}$ dada por $r(x)=\frac{x}{\norm{x}}$. Tenemos que probar que $r\circ i\simeq Id_{S^1}$ y que $i\circ r\simeq Id_{\R^2\setminus\{0\}}$.
@@ -241,10 +259,11 @@ La primera es trivial pues $r\circ i= Id_{S^1}$. Para la segunda definimos $H(x,
 \begin{observacion} Si $a\in S^1$, $H(a,t)=a\ \forall t\in[0,1]\Rightarrow H$ es relativa a $S^1$. Vamos a darle nombre a esta situación que nos hemos encontrado.
 \end{observacion}
 
-\begin{defi} Si $X$ es un espacio topológico y $A\subseteq X$, decimos que $A$ es un \textbf{retracto} de $X$ si existe una aplicación continua $r\func{X}{A}$ tal que $r(a)=a\ \forall a\in A$ ($r\circ i=Id_A$ con $i:A\longhookarrow X$ la inclusión). Se dice \textbf{retracto de deformación} si además $i\circ r\simeq Id_X$. Se dice \textbf{retracto de deformación fuerte} si además se puede encontrar una homotopía $i\circ r\simeq Id_X$ relativa a $A$.
+\begin{defi} Si $X$ es un espacio topológico y $A\subseteq X$, decimos que $A$ es un \textbf{retracto} de $X$ si existe una aplicación continua $r\func{X}{A}$ tal que $r(a)=a\ \forall a\in A$ ($r\circ i=Id_A$ con $i:A\longhookarrow X$ la inclusión). Se dice \textbf{retracto de deformación} si además $i\circ r\simeq Id_X$. Se dice \textbf{retracto de deformación fuerte} si además se puede encontrar una homotopía $i\circ r\simeq Id_X$ relativa a $A$. A la aplicación $r$ se le llama \textbf{retracción}.
 \end{defi}
 
-\begin{nota} A la aplicación $r$ se le llama \textbf{retracción}.
+\begin{nota} 
+Un retracto de deformación es siempre equivalencia de homotopía pues $r$ y $i_A$ son inversas homotópicas.
 \end{nota}
 
 \begin{consec} $S^1$ es retracto de deformación fuerte de $\R^2\setminus\{0\}$.
@@ -358,7 +377,7 @@ r\circ i =Id_A,\ \text{con }i: X\longhookarrow A\text{ la inclusión}
 Sea $H\func{I\times I}{X}$ una homotopía que cumpla $H(x,0)=x$ y $H(x,1)=x_0\ \forall x\in X$. Buscamos $G\func{A\times I}{A}$ cumpliendo  $G(a,0)=a$ y $G(a,1)=a_0\in A\ \forall a\in A$. Vamos a definirla como la siguiente composición:
 \[
 \begin{tikzcd}
-G: A\times I \arrow[r,"i\times Id_I"]& X\times I \arrow[r, "H"] &  X \arrow[r,"r"] & A \\
+G: A\times I \arrow[r,"i\times Id_I"]& X\times I \arrow[r, "H"] &  X \arrow[r,"r"] & A 
 \end{tikzcd}
 \]
 Así pues, dado $a\in A$,
