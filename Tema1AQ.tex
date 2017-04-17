@@ -1055,4 +1055,44 @@ Antes de comenzar con la clasificación de superficies es importante familiariza
 
 \end{ej}
 
+\section{Acciones de Grupos}
+
+Dado que buena parte de esta asignatura está dedicada a presentar la topología algebraica, es necesario introducir también el concepto de acción de un grupo sobre un espacio topológico. Antes de definirlo comencemos con un ejemplo sencillo. Consideremos $\R$ y $\Z$. Fijado $z\in\Z$ podemos construir la aplicación $x\in\R\mapsto x+z\in\R$. Si la generalizamos de modo que a cada par $(n,x)\in\Z\times\R$ se le haga corresponder $x+n\in\R$ diremos que $\Z$ \emph{actúa} sobre $\R$. Nótese que $(n,x+m)$ tiene la misma imagen que $(n+m,x)$ para todo $n,m\in\Z$ y $x\in\R$. Pasemos ya a la definición formal.
+
+\begin{defi} Sea $G$ un grupo discreto y sea $X$ un espacio topológico. Se llama \textbf{acción} de $G$ sobre $X$ a cualquier aplicacíon 
+\begin{align*}
+f&\func{G\times X}{X}\\
+&\quad (g,x)\mapsto f(g,x):=gx\ \text{(notaci\'on)}
+\end{align*}
+cumpliendo las siguientes propiedades:
+\begin{enumerate}
+\item $1x=x$, donde $1$ denota el elemento neutro de $G$.
+\item $\forall g,h\in G\ g(hx)=(gh)x$.
+\item La aplicación $f_g\func{X}{X}$ definida como $f_g(x)=gx$ es continua $\forall g\in G$. 
+\end{enumerate}
+
+\end{defi}
+
+\begin{nota}
+La noción general de acción de grupo no requiere la última propiedad, pero aquí se está exigiendo por tratarse de espacios topológicos. En cualquier caso es habitual exigirle que sea un morfismo de la categoría correspondiente.
+\end{nota}
+
+\begin{prop}
+La relación generada por $x\sim gx\ \forall x\in X, \forall g\in G$ es de equivalencia. Al cociente por esta relación se lo llama \textbf{espacio de órbitas} de la acción de $G$ en $X$, denotado como $X/G$, y las clases de equivalencia se llaman \textbf{órbitas}.
+\end{prop}
+
+\begin{defi} Dado $x\in X$, los elementos de $g\in G$ tales que $gx=x$ constituyen el \textbf{grupo de isotropía} de $x$.
+\end{defi}
+\begin{ejer} Comprobar que efectivamente el grupo de isotropía es un grupo.
+\end{ejer}
+
+\begin{defi} Si la acción de $G$ no tiene puntos fijos, esto es, $\not\exists x\in X\mid gx=x\ \forall g\in G$, se dice que es \textbf{libre}.
+\end{defi}
+
+\begin{ej} $\R/\Z\cong S^1$ y la acción es libre. El grupo de isotropía de todo elemento de $\R$ es $\{0\}$.
+\end{ej}
+
+\begin{ej} Sean $\R^2$ y $\Z_4$. Definimos la acción $ax$ como dar un giro de $a\frac{\pi}{2}$. En este caso $\R^2/\Z_4\cong CS^1$ abierto por abajo (o bien, el cono infinito).
+\end{ej}
+
 \end{document} 
