@@ -1,0 +1,229 @@
+\documentclass{article}
+\usepackage{amsmath,accents}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{amsthm}
+\usepackage{nccmath}
+\usepackage[spanish]{babel}
+\usepackage{multirow}
+\theoremstyle{plain}
+
+\renewcommand{\baselinestretch}{1,4}
+\setlength{\oddsidemargin}{0.5in}
+\setlength{\evensidemargin}{0.5in}
+\setlength{\textwidth}{5.4in}
+\setlength{\topmargin}{-0.25in}
+\setlength{\headheight}{0.5in}
+\setlength{\headsep}{0.6in}
+\setlength{\textheight}{8in}
+\setlength{\footskip}{0.75in}
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{propi}[theorem]{Propiedades}
+\newtheorem{condition}{Condition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{coro}[theorem]{Corolario}
+\newtheorem{criterion}{Criterion}
+\newtheorem{defi}[theorem]{Definición}
+\newtheorem{example}[theorem]{Ejemplo}
+\newtheorem{exercise}{Ejercicio}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{nota}[theorem]{Nota}
+\newtheorem{sol}{Solución}
+\newtheorem*{sol*}{Solución}
+\newtheorem{prop}[theorem]{Proposición}
+\newtheorem{remark}{Remark}
+
+\newtheorem{dem}[theorem]{Demostración}
+
+\newtheorem{summary}{Summary}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\ninf}[1]{\norm{#1}_\infty}
+\providecommand{\numn}[1]{\norm{#1}_1}
+\providecommand{\gabs}[1]{\left|{#1}\right|}
+\newcommand{\bor}[1]{\mathcal{B}(#1)}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\X}{\chi}
+\providecommand{\Zn}[1]{\Z / \Z #1}
+\newcommand{\resi}{\varepsilon_L}
+\newcommand{\cee}{\mathbb{C}}
+\providecommand{\conv}[1]{\overset{#1}{\longrightarrow}}
+\providecommand{\gene}[1]{\langle{#1}\rangle}
+\providecommand{\convcs}{\xrightarrow{CS}}
+% xrightarrow{d}[d]
+\setcounter{exercise}{0}
+\newcommand{\cicl}{\mathcal{C}}
+
+\newenvironment{ejercicio}[2][Estado]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries Ejercicio}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Relación 1 - Geometría y Topología de superficies }
+\maketitle
+\begin{exercise}
+En un espacio $X$ definimos la relación $x \mathcal{R} y$ si existe un subespacio conexo por caminos $C \subseteq X$ con $x,y \in C$. ¿Cuáles son las clases de equivalencia?
+\end{exercise}
+
+\newpage
+\begin{exercise}
+Probar que si $\mathcal{R}$ es una relación de equivalencia sobre un espacio $X$, las siguientes condiciones son equivalentes:
+\begin{itemize}
+	\item La aplicación $p : X \to X/\mathcal{R}$ es cerrada (abierta).
+	\item Para todo cerrado (abierto) $A \subseteq X$, la unión de todas las clases de equivalencia que cortan a $A$ es cerrado (abierto) de $X$.
+	\item Para todo abierto (cerrado) $A \subseteq X$, la unión de todas las clases de equivalencias contenidas en $A$ es abierto (cerrado) de $X$.
+\end{itemize}
+\end{exercise}
+
+\newpage
+\begin{exercise}
+Sean $A$ y $B$ subconjuntos de $X$ tales que $A$ es cerrado y $A \subseteq B$. Probar que existe una inmersión de $B/A$ en $X/A$.
+\end{exercise}
+
+
+\newpage
+\begin{exercise}
+Sea $X$ un espacio $T_2$ y $K \subseteq X$ compacto. Probar que $X/K$ es un espacio $T_2$.
+\end{exercise}
+
+
+\newpage
+\begin{exercise}
+Indíquense cuáles de los siguientes espacios son homeomorfos entre sí:
+\begin{itemize}
+	\item $\mathbb{R}/\mathbb{Z}$;
+	\item el subespacio $K \subseteq \mathbb{R}^2$ formado por la unión de las cicunferencias $C_k$ con centro $(\pm \frac{1}{k},0)$ y radio $\frac{1}{k}$ con $k \geq 1$;
+	\item $[-1,1]/A$ con $A = \{ \pm \frac{1}{k} : k \geq 1\}$
+\end{itemize}
+\end{exercise}
+
+
+\newpage
+\begin{exercise}
+Probar que $\mathbb{R}/\mathbb{Q}$ no es $T_2$ y por tanto no puede ser metrizable.
+\end{exercise}
+
+
+\newpage
+\begin{exercise}
+Indíquense subespacios de $\mathbb{R}^3$ homeomorfos a los siguientes espacios cocientes:
+\begin{itemize}
+	\item $\mathbb{R}^2/D^2$, donde $D^2$ es la bola unidad cerrada;
+	\item $\mathbb{R}^2/S^1$;
+	\item $\mathbb{R}^2/(\mathbb{R}^2-B^2)$, donde $B^2$ es la bola abierta unidad.
+\end{itemize}
+\end{exercise}
+
+
+\newpage
+\begin{exercise}
+Sean $\mathcal{R}_1$ y $\mathcal{R}_2$ dos relaciones de equivalencia sobre $X$. Si $x \mathcal{R}_1 y$ impica que $x \mathcal{R}_2 y$, probar que si $\mathcal{R}$ es la relación en $X/\mathcal{R}_1$ dada por $[x] \mathcal{R} [y]$ si $x \mathcal{R}_2 y$, entonces $(X/\mathcal{R}_1)/\mathcal{R}$ es homeomorfo a $X / \mathcal{R}_2$.
+\end{exercise}
+
+
+\newpage
+\begin{exercise}
+Sea $\mathcal{R}$ una relación de equivalencia sobre $X$ tal que para todo $x \in X$, $[x]$ está contenida en alguna compomenten conexa de $X$. Probar que las componentes conexa de $X/\mathcal{R}$ son las imágenes por la proyección canónica de las componentes conexas de $X$.
+\end{exercise}
+
+
+\newpage
+\begin{exercise} Sea $f : B^n \to S^n$ la función continua dada por:
+\[ f(x_1,\dots,x_n) = (2 \sqrt{1-\norm{x}^2}x_1, \dots, 2 \sqrt{1-\norm{x}^2}x_n, 2 \norm{x}^2-1). \]
+Sea $\mathcal{R}_f$ la relación de equivalencia genera por $x \mathcal{R}_f y$ si $f(x) = f(y)$. Probar que $B ^n/\mathcal{R}_f$ es $B^n/S^{n-1}$ y deducir que este espacio cociente es homeomorfo a $S^n$.
+\end{exercise}
+
+
+\newpage
+\begin{exercise}
+En $\mathbb{R}^2$ se define la relación $(x,y) \mathcal{R} (u,v)$ si $y+x^2 = v+u^2$. ¿A qué subespacio euclídeo es homeomorfo $\mathbb{R}^2/\mathcal{R}$?
+\end{exercise}
+
+
+\newpage
+\begin{exercise}
+Sea $\mathcal{R}$ una relación de equivalencia sobre $(X, \mathcal{T})$. Probar que si $X/\mathcal{R}$ es $T_2$, entonces $\mathcal{R}$ es cerrado en $X \times X$.
+\end{exercise}
+
+
+\newpage
+\begin{exercise}
+Sea $X = \{x \in \mathbb{R} : x \geq 0\}$. Se considera sobre $X$ la relación de equivalencia $\mathcal{R}$ definida por la partición $\left\{\left\{a, \frac{1}{a}\right\} \right\}_{a > 0} \cup \{0\}$. Demostrar que $p : X \to X/\mathcal{R}$ es abierta, pero que $\mathcal{R}$ no es abierto en $X \times X$.
+\end{exercise}
+
+
+\newpage
+\begin{exercise}
+Sea $\mathcal{R}$ una relación de equivalencia sobre $(X, \mathcal{T})$ tal que $p : X \to X/\mathcal{R}$ es abierta. Entonces $X/\mathcal{R}$ es $T_2$ si y sólo si $\mathcal{R}$ es cerrado en $X \times X$. Deducir de este resultado que el espacio proyectivo $P_2(\mathbb{R})$ es una espacio $T_2$.
+\end{exercise}
+
+
+\newpage
+\begin{exercise}
+Probar que para todo espacio topológico $X$ el cono $C X$ y la suspensión $\Sigma X$ son conexos por caminos.
+\end{exercise}
+
+
+\newpage
+\begin{exercise}
+\begin{itemize}
+	\item Probar que $C S^{n-1}$ es homeomorfo a $B^n$, con $n \geq 1$ ($B^n$ es la bola cerrada con centro el origen y radio $1$).
+	\item Dado $X \subseteq \mathbb{R}^{n-1} \times \{0\} \subseteq \mathbb{R}^n$ y $v \in \mathbb{R}^n-\mathbb{R}^{n-1} \times \{0\}$ se considera el conjunto $vX = \{ tv + (1-t)x : x \in X, t \in [0,1]\}$. Probar que si $X$ es compacto, entonces $C X$ es homeomorfo a $vX$.
+	\item Considérese $X = \mathbb{Z} \subseteq \mathbb{R}$ y demuéstrese que $C X$ no tiene en el vértice una base numerable de abiertos. Concluir que el resultado del apartado anterior no es cierto en general.
+\end{itemize}
+\end{exercise}
+
+
+\newpage
+\begin{exercise}\mbox{}
+\begin{itemize}
+	\item Probar que para todo espacio $X$ existe un inmersión cerrada de $X$ en $C X$.
+	\item Probar que la aplicación $\phi : X \to \Sigma X$ dada por $\phi(x) = [x, \frac{1}{2}]$ es una inmersión cerrada.
+	\item Probar que existen inmersiones cerradas $\phi_1, \phi_2 : C X \to \Sigma X$ cuyas imágenes son los subespacios $C_1 X = \{[x,t] \in \Sigma X : -1 \leq t \leq 0\}$, $C_2 X = \{[x,t] \in \Sigma X : 0 \leq t \leq 1\}$
+\end{itemize}
+\end{exercise}
+
+
+\newpage
+\begin{exercise}
+Probar que $\Sigma S^{n-1}$ es homeomorfo a $S^n$, $n \geq 1$. \textbf{Indicación:} Considérese la aplicación $f : S^{n-1} \times [0,1] \to S^n$ dada por:
+\[ f(x,t) = (\sqrt{1-(2t-1)^2}x, 2t-1) \]
+\end{exercise}
+
+
+\newpage
+\begin{exercise}
+Pruébese que $S^2$ es homeomorfo a ($S^1 \times S^1) / (S^1 \lor S^1)$.
+\end{exercise}
+
+
+\newpage
+\begin{exercise}
+Probar que si $X$ e $Y$ son conexos por caminos o compactos, $X \cup_f Y$ también lo es.
+\end{exercise}
+
+
+\newpage
+\begin{exercise}
+Sean $X$, $Y$ y $W$ espacios topológicos, $A \subseteq X$ cerrado y $f : A \to Y$, $g : Y \to W$ aplicaciones continuas. Probar que los espacios $(X \cup_f Y) \cup_g W$ y $X \cup _{g \circ f} W$ son homeomorfos.
+\end{exercise}
+\end{document}
