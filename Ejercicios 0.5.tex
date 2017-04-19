@@ -1,0 +1,170 @@
+\documentclass[twoside]{report}
+\usepackage{amsmath,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[]{graphicx}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{tikz-cd}
+\usetikzlibrary{babel}
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usepackage{bm}  
+\usetikzlibrary{arrows}
+\usetikzlibrary{cd}
+\usepackage[spanish]{babel}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{floatrow}
+\usepackage{makeidx}
+\usepackage[tocflat]{tocstyle}
+\usetocstyle{standard}
+\usepackage{subfiles}
+\usepackage{color}  
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,citecolor=red, linkcolor=blue}
+\theoremstyle{plain}
+
+\renewcommand{\baselinestretch}{1,4}
+\setlength{\oddsidemargin}{0.5in}
+\setlength{\evensidemargin}{0.5in}
+\setlength{\textwidth}{5.4in}
+\setlength{\topmargin}{-0.25in}
+\setlength{\headheight}{0.5in}
+\setlength{\headsep}{0.6in}
+\setlength{\textheight}{8in}
+\setlength{\footskip}{0.75in}
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{propi}[theorem]{Propiedades}
+\newtheorem{condition}{Condition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{coro}[theorem]{Corolario}
+\newtheorem{criterion}{Criterion}
+\newtheorem{defi}[theorem]{Definición}
+\newtheorem{example}[theorem]{Ejemplo}
+\newtheorem{exercise}{Ejercicio}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{nota}[theorem]{Nota}
+\newtheorem{sol}{Solución}
+\newtheorem*{sol*}{Solución}
+\newtheorem{prop}[theorem]{Proposición}
+\newtheorem{remark}{Remark}
+
+\newtheorem{dem}[theorem]{Demostración}
+
+\newtheorem{summary}{Summary}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\ninf}[1]{\norm{#1}_\infty}
+\providecommand{\numn}[1]{\norm{#1}_1}
+\providecommand{\gabs}[1]{\left|{#1}\right|}
+\newcommand{\bor}[1]{\mathcal{B}(#1)}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\X}{\chi}
+\providecommand{\Zn}[1]{\Z / \Z #1}
+\newcommand{\resi}{\varepsilon_L}
+\newcommand{\cee}{\mathbb{C}}
+\providecommand{\conv}[1]{\overset{#1}{\longrightarrow}}
+\providecommand{\gene}[1]{\langle{#1}\rangle}
+\providecommand{\convcs}{\xrightarrow{CS}}
+% xrightarrow{d}[d]
+\setcounter{exercise}{0}
+\newcommand{\cicl}{\mathcal{C}}
+
+\newenvironment{ejercicio}[2][Estado]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries Ejercicio}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios semanales TCYC - Tercera entrega }
+\author{Rafael González López}
+\maketitle
+\begin{ejercicio}{3} Probar que la curvatura integral de la esfera es $4\pi$. 
+\end{ejercicio}
+\begin{sol*}
+Como la esfera es una superficie sin borde, la curvatura integral es $2\pi\chi(S^2)$. En este caso $\chi(S^2)=2$, de donde se deduce el resultado.
+\end{sol*}
+
+\newpage
+
+\begin{ejercicio}{4} Probar que la curvatura integral del cono circular  es $4\pi$. 
+\end{ejercicio}
+\begin{sol*}
+\end{sol*}
+
+\newpage
+
+\begin{ejercicio}{10} Sea el paraboloide $z=x^2+y^2$. Se considera $\mathcal{R}$ la región de dicha superficie limitada por los planos $z=0$ y $z=a$, $a>0$. Utilizando el teorema de Gauss Bonnet, hallar $\int_{\mathcal{R}}KdA$.
+\end{ejercicio}
+\begin{sol*}
+Como la curva borde es regular, $\sum_i \varphi_i=0$. Además, es una región simple, luego $\chi(\mathcal{R})=1$. Resta ver la integral de la curvatura geodésica a lo largo del borde. Si $\X(r,s)=(r\cos(s),r\sin(s),r^2)$ es una carta local de la superficie:
+\begin{align*}
+\alpha(s)&=\X(\sqrt{a},s)=(\sqrt{a}\cos{s},\sqrt{a}\sin s,a)& k_\alpha(s)&=\frac{1}{a}\\
+t(s)&=(-\sin(s),cos(s),0) & n(s)&=(-\cos(s),-\sin(s),0)\\
+\X_1(r,s)& = (\cos(s),\sin(s),2r) & \X_2(r,s) &= (-r\sin(s),r\cos(s),0)\\
+\X_1 \times \X_2 & = (-2 r^2 \cos(s), -2 r^2 sin(s), r) & n(s)N(s) &= \frac{2\sqrt{a}}{\sqrt{4a+1}} \\
+N(s)& = \frac{1}{\sqrt{4a+1}}(-2\sqrt{a}\cos(s),-2\sqrt{a}\sin(s),1) & K_g(s) & = \frac{2}{\sqrt{4a+1}\sqrt{a}}
+\end{align*}
+\begin{gather*}
+\int_\alpha K_g(s)= 2\pi - \int_{2\pi}^0 \frac{2}{\sqrt{4a+1}\sqrt{a}} |\alpha'(s)| ds =2\pi \left(1+\frac{2}{\sqrt{4a+1}}\right)
+\end{gather*}
+\end{sol*}
+
+\newpage
+\begin{ejercicio}{11} Se considera una región cilíndrica $\mathcal{R}$ comprendida entre dos paralelos $\alpha_1$, $\alpha_2$ y que tiene un agujero bordeado por una curva regular cerrada y simple $\gamma$. Aplicar Teorema de Gauss-Bonet a $\mathcal{R}$ para determinar $\int_\gamma K_g(s)ds$.
+\end{ejercicio}
+\begin{sol*}
+Las curvas $\alpha_i$ y $\gamma$ son regulares, luego $\sum_i \varphi_i =0$. Además, las $\alpha_i$ son geodésicas, por lo que $K_g=0$ sobre ellas. El cilindro tiene $K=0$ en cada punto y $\chi(\mathcal{R})=1$, por lo que, aplicando el TGB:
+\[
+2\pi\chi(\mathcal{R}) = \int_\gamma K_g(s)ds + \int_{\alpha_1} K_g(s)ds + \int_{\alpha_2} K_g(s)ds+  \iint_{\mathcal{R}} KdA + \sum_i \varphi_i = \int_\gamma K_g(s)ds 
+\]
+\end{sol*}
+
+
+\newpage
+\begin{ejercicio}{13} Sea C el cilindro de eje OZ y radio r. Consideremos la región determinada por $\alpha$, corte de C con el plano $z=$ y $\beta$, curva de corte de C con un plano inclinado. Aplicando el teorema de Gauss-Bonnet, determinar el valor de $\oint_\beta K_g$.
+\end{ejercicio}
+\begin{sol*}
+Las curvas $\alpha_i$ y $\beta$ son regulares, luego $\sum_i \varphi_i =0$. Además, la curva $\alpha$ es geodésica, por lo que $K_g=0$ sobre ellas. El cilindro tiene $K=0$ en cada punto y $\chi(\mathcal{R})=1$, y la característica de Euler de la región es $0$, por tanto $\oint_\beta K_g = 0$.
+\end{sol*}
+
+\newpage
+\begin{ejercicio}{14} Se considera la superficie esférica de radio $S^2(R)$ de radio R y centro el origen. Un plano horizontal $\Pi$ corta en una circunferencia de radio r (paralelo de $S^2(R)$) que denotamos $\alpha$. Aplicando el TGB a la región encerrada por $\alpha$ en las dos superficies: un disco en el plano $\Pi$ y un casquete en $S^2(R)$ para obtener el valor de $\int_\alpha K_g$ en cada caso.
+\end{ejercicio}
+\begin{sol*}
+La curva $\alpha$ es regular, luego $\sum_i \varphi_i =0$. Tanto en el casquete como en el plano, la característica de Euler es 1. 
+\begin{itemize}
+\item En el plano $\Pi$, $K=0$. Por tanto, 
+\[
+\int_\alpha K_g = 2\pi
+\]
+\item En el casquete, $K=\frac{1}{R^2}$. Por tanto:
+\[
+\int_\alpha K_g = 2\pi - \iint_{\mathcal{R}}K dA = 2\pi - \frac{1}{R} 2\pi(R - (R^2-r^2)^{1/2})
+\]
+\end{itemize}
+\end{sol*}
+
+
+\newpage
+\begin{ejercicio}{20}
+Se considera la región $\mathcal{R}$ del plano constituida por un círculo $\alpha$ con un agujero $\beta$ romboidal y otro triangular $\gamma$ disjuntos. Calcular $\int_\alpha K_g$ aplicando el TGB.
+\end{ejercicio}
+\begin{sol*} Sean $\varphi_1,\varphi_2,\varphi_3,\varphi_4$ los ángulos exteriores del romboide y  $\varphi'_1,\varphi'_2,\varphi'_3$ los ángulos exteriores del triánuglo. Por TGB:
+\[ \int_\alpha K_g + \int_\beta K_g + \int_\gamma K_g + \iint_\mathcal{R} K dA + \sum \varphi_i + \sum \varphi'_i = 2 \pi \X(\mathcal{R}) \]
+Como $\beta$ y $\gamma$ está compuesto de segmentos, está compuestos de geodésicas y se anulan sus respectivos sumandos. Como estamos en el plano, $K = 0$. Luego:
+\[ \int_\alpha K_g = 2 \pi \X(\mathcal{R}) - \sum \varphi_i - \sum \varphi'_i \]
+Por el Teorema de Hopf y como las curvas $\beta$ y $\gamma$ se recorren en el sentido contrario a $\alpha$, que está positivamente orientado, $-\sum \varphi_i = -\sum \varphi'_i = 2\pi$. Triangulando la región, obtenemos que $\X(\mathcal{R})=-1$. Luego:
+\[ \int_\alpha K_g = -2\pi+2\pi+2\pi = 2\pi \]
+\end{sol*}
+\end{document}
