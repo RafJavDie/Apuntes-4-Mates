@@ -149,21 +149,21 @@ Por último probemos la caracterización. Supongamos que $\overline{x}$ verifica
 \[
 ||y-x||^2=||y-\overline{x}+\overline{x}-x||^2=||y-\overline{x}||^2+||\overline{x}-x||^2+2(y-\overline{x})'(\overline{x}-x)
 \]
-El último término es mayor o igual que $0$ por hipótesis, y como la norma es siempre no negativa deducimos que $||y-x||\leq ||y-\overline{x}||^2\ \forall x\in S$. Recíprocamente, supongamos que $\overline{x}$ es el mínimo.  Consideramos entonces para cada $x\in S$ el punto $\overline{x}+\lambda(x-\overline{x})$ con $\lambda\in (0,1)$. Entonces, 
+El último término es mayor o igual que $0$ por hipótesis, y como la norma es siempre no negativa deducimos que $||y-x||^2\leq ||y-\overline{x}||^2\ \forall x\in S$. Recíprocamente, supongamos que $\overline{x}$ es el mínimo.  Consideramos entonces para cada $x\in S$ el punto $\overline{x}+\lambda(x-\overline{x})$ con $\lambda\in (0,1)$. Entonces, 
 \[
 ||y-(\overline{x}+\lambda(x-\overline{x}))||^2=||y-\overline{x}||^2+\lambda^2||\overline{x}-x||-2\lambda(y-\overline{x})'(x-\overline{x})\geq||y-\overline{x}||.
 \]
-Para que sea posible esa desigualdad, necesariamente $\lambda^2||\overline{x}-x||-2\lambda(y-\overline{x})'(x-\overline{x})\geq 0$. Simplificamos y despejamos y tenemos que $\lambda||x-\overline{x}||\geq 2\lambda(y-\overline{x})'(x-\overline{x})$. Como vale para todo $\lambda\in (0,1)$, en particular vale para el límite ($\lambda=0$), luego $0\geq (y-\overline{x})'(x-\overline{x})$. $\QED$
+Para que sea posible esa desigualdad, necesariamente $\lambda^2||\overline{x}-x||-2\lambda(y-\overline{x})'(x-\overline{x})\geq 0$. Simplificamos usando que $\lambda$ es estrictamente positiva y despejamos y tenemos que $\lambda||x-\overline{x}||\geq 2(y-\overline{x})'(x-\overline{x})$. Como vale para todo $\lambda\in (0,1)$, tomando límite ($\lambda\rightarrow 0$) y deducimos:  $0\geq (y-\overline{x})'(x-\overline{x})$. $\QED$
 \end{dem}
 
-\begin{defi} Sean dos conjuntos convexos $S_1,S_2\subset\R^n$ y el hiperplano $H=\{x\in\R^n: p'x=\alpha\}$. Decimos que $H$ separa $S_1$ de $S_2$ si $p'x\leq\alpha \forall x\in S_1$ y $p'x\geq\alpha \forall x\in S_2$. Se dice que $H$ separa estrictamente a $S_1$ de $S_2$ si las desigualdades son estrictas.
+\begin{defi} Sean dos conjuntos convexos $S_1,S_2\subset\R^n$ y el hiperplano $H=\{x\in\R^n: p'x=\alpha\}$. Decimos que $H$ separa $S_1$ de $S_2$ si $p'x\leq\alpha$ $\forall x\in S_1$ y $p'x\geq\alpha$ $\forall x\in S_2$. Se dice que $H$ separa estrictamente a $S_1$ de $S_2$ si las desigualdades son estrictas.
 \end{defi}
 
 \begin{lema}
 Sea $S\subset\R^n$ convexo y cerrado, sea $y\not\in S$. Existen $p\in\R^n, \alpha\in\R$ tal que $p'y<\alpha$ y $p'x\leq\alpha\ \forall x\in S$.
 \end{lema}
 \begin{dem}
-Por el teorema de la proyección, existe $\overline{n}\in S$ tal que $(y-\overline{x})'(x-\overline{x})\leq 0\ \forall x\in S$. Tomamos $p=(y-\overline{x})$ y $\alpha=p' \overline{x}$. Luego $p'(x-\overline{x})\leq 0\equiv p'x\leq p'\overline{x}$. Además, como $y\not\in S$, $0<||y-\overline{x}||^2=(y-\overline{x})'(y-\overline{x})=p'y-\underbrace{p'\overline{x}}_\alpha \Rightarrow \alpha <p'y$. $\QED$
+Por el teorema de la proyección, existe $\overline{x}\in S$ tal que $(y-\overline{x})'(x-\overline{x})\leq 0\ \forall x\in S$. Tomamos $p=(y-\overline{x})$ y $\alpha=p' \overline{x}$. Luego $p'(x-\overline{x})\leq 0\equiv p'x\leq p'\overline{x}$. Además, como $y\not\in S$, $0<||y-\overline{x}||^2=(y-\overline{x})'(y-\overline{x})=p'y-\underbrace{p'\overline{x}}_\alpha \Rightarrow \alpha <p'y$. $\QED$
 \end{dem}
 
 \newpage
@@ -1274,5 +1274,186 @@ Todos los vértices de este poliedro son enteros. Su dual es:
 \]
 
 Si el sistema original fuese $TDE$ los vértices del dual serían enteros pero podemos comprobar que la solución óptima es $y_1=y_2=y_3=y_4 = 1/2$, no entera.
+\end{example}
+\begin{defi}
+A es una matriz Totalmente Unimodular si y solo si $\forall B\subset A$, B cuadrada, entonces $det(B)\in\{0,1\}$. 
+\end{defi}
+\begin{nota}
+Si A es TU entonces $a_{ij}\in\{0,\pm1\}$.
+\end{nota}
+\begin{theorem}
+Son equivalentes:
+\begin{enumerate}
+\item $A$ es TU
+\item $A'$ es TU
+\item $[A\;I]$ es TU
+\item La matriz resultante de eliminar una fila o columna de A que corresponda a la matriz identidad es TU.
+\item La matriz resultante de multiplicar una fila o columna de A por $-1$ es RU.
+\item La matriz resultante de intercambiar filas o columnas de A es TU.
+\item La matriz resultante de duplicar filas o columnas de A es TU.
+\item La matriz resultante de realizar un pivotaje sobre elementos de A es TU.
+\end{enumerate}
+\end{theorem}
+\begin{dem}
+Veamos que son equivalentes:
+\begin{itemize}
+\item [$1 \leftrightarrow 2$] Es clara la implicación (y el recíproco) usando que trasponer mantiene el valor del determinante.
+\item [$1 \leftrightarrow 3$] Es clara la implicación (y el recíproco) discutiendo los casos de submatrices posibles.
+\item [$1 \leftrightarrow 4$] Es clara la implicación (y el recíproco), pues a lo sumo cambia el signo del determinante.
+\item [$1 \leftrightarrow 5$] Es clara la implicación (y el recíproco), si esa fila no aparece en B no cambia el determinante y, si aparecen, entonces el determinante cambia de signo.
+\item [$1 \leftrightarrow 6$] Es clara la implicación (y el recíproco), pues esta operación cambia el signo de los determinantes.
+\item [$1 \leftrightarrow 7$] Es clara la implicación (y el recíproco), pues tenemos una nueva fila o columna linealmente dependiente.
+\item [$1 \leftrightarrow 8$] Supongamos que pivotamos sobre $a_{ij}\neq 0$ (en el método del simplex no se puede pivotar sobre un elemento nulo). Sea $\overline{A}$ la matriz tras el pivotaje. Entonces:
+\[
+\overline{a}_{i\cdot}=
+\begin{cases}
+a_{i\cdot} & a_{ij}=-1\\
+-a_{i\cdot} & a_{ij}=1
+\end{cases}
+\qquad
+\overline{a}_{k\cdot}=
+\begin{cases}
+{a}_{k\cdot}+\overline{a}_{i\cdot} & a_{kj}=-1\\
+{a}_{k\cdot}-\overline{a}_{i\cdot} & a_{kj}=1\\
+{a}_{k\cdot} & a_{kj}=0
+\end{cases}
+\]
+Sea $B\subset A$ distinguimos los siguientes casos:
+\begin{itemize}
+\item La fila i forma parte de B. En tal caso $|det(B)|=|det(\overline{B})|$.
+\item La columna j forma parte de B pero la fila i. En este caso $det(\overline{B})=0$.
+\item B no contine parte de la fila i ni partes de la fila j. Entonces consideramos:
+\[
+C=
+\begin{pmatrix}
+a_{ij} & \cdots\\
+\vdots & B
+\end{pmatrix} \Rightarrow \overline{C} = 
+\begin{pmatrix}
+1 & \cdots\\
+0 & \overline{B}
+\end{pmatrix} \Rightarrow |det(C)| = |det(\overline{B})|
+\]
+\end{itemize}
+\end{itemize}
+\end{dem}
+\newpage
+\begin{theorem}
+Sea A TU y $P(b)=\{x \in \R^n_+ \mid Ax\leq b\} \neq \emptyset$, $b\in \Z^n$. Entonces $P(b)$ es entero.
+\end{theorem}
+\begin{dem}Consideramos:
+\[
+Ax +Ix_h = b, \; \begin{bmatrix} A & I \end{bmatrix} \begin{bmatrix}
+x\\
+x_h
+\end{bmatrix} = b
+\]
+Sabemos que $[A I]$ es TU. Todo punto extremo corresponde a una submatriz cuadrada de $[A | I]$, B $m\times m$, $det(B)\neq 0$, $x_B=B^{-1}b\geq 0$. Como A es TU entonces $\det(B)\in\{\pm1\}$ netonces $det(B^{-1})\in\{\mp1\}$, luego $x_B$ es solución del sistema $Bx_B=b$ y aplicamos Cramer.
+\[
+x_{B_i}=\frac{\text{B completada con b}}{det(B)}=\frac{\text{Suma de productos de números entero}}{\pm1} \in \Z
+\]\QED
+\end{dem}
+\begin{coro} Sea $P(b)=\{x \in \R^n_+ \mid \overline{b}\leq Ax\leq b,\; \overline{d}\leq x \leq d\} \neq \emptyset$ con $b,d,\overline{b},\overline{d}\in\Z^n$. Entonces $P(b)$ es entero.
+\end{coro}
+\begin{dem}
+Las desigualdades que definen $P(B)$ se pueden expresar como:
+\[
+\begin{matrix}
+Ax \leq b\\
+-Ax\leq -\overline{b}\\
+x\leq d\\
+-x\leq -\overline{d}
+\end{matrix}\quad
+\equiv\quad
+\begin{bmatrix}
+A\\
+-A\\
+I\\
+-I
+\end{bmatrix}
+x\leq
+\begin{bmatrix}
+b\\
+-\overline{b}\\
+d\\
+-\overline{d}
+\end{bmatrix} = \delta \in \Z^{4n}
+\]
+La matriz columna sabemos que es TU por construcción (y el Teorema de las matrices TU) y que $\delta$ tiene coordenadas enteras, luego aplicamos el Teorema anterior.\QED
+\end{dem}
+\begin{coro}
+Si A es TU entonces $Q(c) = \{u\in\R^m_+ \mid u'A\leq c'\}\neq\emptyset$ con $c\in\Z^n$ entonces $Q(c)$ es entero.
+\end{coro}
+\begin{dem}
+$u'A \leq c' \Leftrightarrow A'u \leq c$. \QED
+\end{dem}
+\begin{theorem}
+Si $P(b)=\{x\in\R^n_+ \mid Ax\leq b\}$ es entero $\forall b\in\Z^n$ con $P(b)\neq\emptyset$ y $A$ con coordenadas enteras entonces A es TU.
+\end{theorem}
+\begin{dem}
+Sea $A_1$ submatriz cuadrada de A de tamaño $k\times k$ ($ k \leq m$) y $det(A_1)\neq 0$. Construimos la siguiente matriz:
+\[
+\overline{A}_1 = 
+\begin{bmatrix}
+A_1 & 0\\
+A_2 & I_{m-k}
+\end{bmatrix}
+\]
+De forma que $\overline{A}$ sea una matriz $m\times m$ con $A_2$ la ampliación de las columnas. Se tiene además que $det(\overline{A}_1)\neq 0$. Sea un i $(1\leq i \leq k)$ arbitrario pero fijo y sea $b\in \Z^m$ de la siguiente forma: $b=\overline{A}_1 x + e_i$, $z\in\Z^m_+$. Entonces $\overline{A}_1^{-1}b=z+\overline{A}_1^{-1}e_i$. 
+\\
+Si $z>>0$ entonces: $\overline{A}_1^{-1}b = M+\overline{A}_1^{-1}e_i \geq 0$ ($M>>0$). Como $P(b)$ es entero, entonces $\overline{A}_1^{-1}b \in \Z^m$ pues todos sus puntos extremos son enteros. Entonces $ \overline{A}_1^{-1}e_i=\overline{A}_1^{-1}b-z\in\Z^m$. Por tanto, toda las columna i-ésima de la matriz $\overline{A}_1^{-1}$ es de elementos enteros. Por tanto, sabemos que $\overline{A}_1^{-1}$ es entera y que, debido a este, $\overline{A}_1^{-1} \in \Z$. Finalmente, $1 = det(\overline{A}_1)det(\overline{A}_1^{-1})$, como ambos elementos es $1$, ambos son $\pm 1$. \QED
+\end{dem}
+\begin{theorem}
+$A\in\Z^{m\times n}$ es TI si y solo si $\forall J\subset\{1,\dotsc,n\}$ existe una partición de J en $J_1J_2$ tal que 
+\[
+\left| \sum_{j\in J_1}a_{ij}-\sum_{j\in J_2}a_{ij} \right| \leq 1 \quad \forall i=1,\dotsc,m
+\]
+\end{theorem}
+\begin{prop}
+Sea A una matriz de elementos $\{0,\pm1\}$ en la que a lo sumo hay dos elementos no nulos por cada columna. Si existe una partición de las filas de A en $F_1,F_2$ tal que en cada columna con 2 elementos no nulos se cumple:
+\begin{itemize}
+\item Si los dos tienen igual signo están en conjuntos diferentes.
+\item Si tienen distinto signo están en el mismo conjunto de la partición.
+\end{itemize}
+Entonces A es TU.
+\end{prop}
+\begin{dem}
+Aplicamos el Teorema por Filas. Fijamos una columna j, entonces es claro que:
+\[
+\left| \sum_{i\in F_1}a_{ij}-\sum_{i\in F_2}a_{ij} \right| =
+\begin{cases}
+1 & \text{j tiene un único elemento no nulo}\\
+0 & \text{j tiene dos no nulos de igual signo}\\
+0 & \text{j tiene dos no nulos de distinto signo}
+\end{cases}
+\]
+\end{dem}
+\begin{prop}
+Si A es de componentes $\{0,\pm1\}$ tal que por columnas verifica que tiene a lo sumo dos componentes no nulas y $\sum_{i=1}^m a_{ij}=0$ si la columna j es de 2 componentes no nulas, entonces A es TU.
+\end{prop}
+\begin{dem}
+Es un corolario inmediato de la proposición anterior pues puede aplicarse la descomposición del enunciado anterior.
+\end{dem}
+\begin{example}
+El problema del transporte:
+\begin{align*}
+ \min\ & \sum_{i=1}^m\sum_{j=1}^n c_{ij}x_{ij} &\\
+sa:& \sum_{j=1}^n x_{ij}= 0 \quad\forall i =1,,m & \\
+& \sum_{i=1}^m x_{ij}= D_j \quad \forall j =1,,n &   \\
+& x_{ij}\in\{0,1\} &
+\end{align*}
+Entonces $\overline{A}$ es:
+\[\left(
+\begin{array}{ccccccccccccc}
+1 & 1 & \cdots & 1 & 0 & 0 &\cdots  & 0 & \cdots & 0 & 0 &  \cdots & 0\\
+0 &	0 & \cdots & 0 & 1 & 1 & \cdots & 1 & \cdots & 0 & 0 & \cdots & 0\\
+\vdots & &\vdots & &\vdots & & &\vdots & &\vdots & & \ & \vdots\\
+0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & \cdots & 1 & 1 & \cdots & 1\\
+1 & 0 & \cdots & 0 & 1 & 0& \cdots & 0 & \cdots  & 1 & 0 & \cdots & 0 \\
+0 & 1 & \cdots & 0 & 0 & 1& \cdots & 0 & \cdots  & 0 & 1 & \cdots & 0 \\
+\vdots & &\vdots & &\vdots & & &\vdots & &\vdots &   &   & \vdots\\
+0 & 0 & \cdots & 1 & 0 & 0& \cdots & 1 & \cdots  & 0 & 0 & \cdots & 1
+\end{array}\right)
+\]
 \end{example}
 \end{document}
