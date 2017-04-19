@@ -83,6 +83,11 @@
 \begin{exercise}
 En un espacio $X$ definimos la relación $x \mathcal{R} y$ si existe un subespacio conexo por caminos $C \subseteq X$ con $x,y \in C$. ¿Cuáles son las clases de equivalencia?
 \end{exercise}
+\begin{sol*}
+La clase de equivalencia de un elemento $x \in X$ será todo $y$ tal que existe $C \subseteq X$ con $x, y \in C$, luego:
+\[ [x] = \bigcup_{\substack{C \subseteq X \\ x \in C}} C \]
+que es el mayor subconjunto conexo por caminos de $X$ que contiene a $x$. Este conjunto, por definición, es la componente conexo por camino de $x$.
+\end{sol*}
 
 \newpage
 \begin{exercise}
@@ -104,6 +109,12 @@ Sean $A$ y $B$ subconjuntos de $X$ tales que $A$ es cerrado y $A \subseteq B$. P
 \begin{exercise}
 Sea $X$ un espacio $T_2$ y $K \subseteq X$ compacto. Probar que $X/K$ es un espacio $T_2$.
 \end{exercise}
+\begin{sol*}
+Consideramos dos puntos $x, y \in X$ con $x \neq y$. Supongamos que $y\in K$. Vamos a buscar una separación por entornos de $[x],[y] \in X/K$. Para cada $k \in K$, existe un entorno abierto $V_k$ de $k$ y un entorno abierto $G^k_x$ de $x$ con $G^k_x \cap V_k = \emptyset$. Por lo tanto, definimos:
+\[ G_x = \bigcap_{k \in K} G^k_x \]
+\[ V = \bigcup_{k \in K} V_k \]
+de manera que $G_x \cap V = \emptyset$. Sea $p : X \to X/K$ la proyección a $X/K$. Como $p(G_x)$ y $p(V)$ son entornos abiertos de $[x]$ e $[y]$ respectivamente y $p(G_x) \cap p(V) = \emptyset$, $[x]$ e $[y]$ están separados. Si $x,y \notin K$, basta tomar $H_x, H_y \subset X$ que separen $x$ e $y$, usando que $X$ es $T_2$. Entonces $p(H_x \cap G_x) \cap p(H_y \cap G_y) = \emptyset$. Luego $[x]$ e $[y]$ están separados y, por lo tanto, $X/K$ es espacio $T_2$.
+\end{sol*}
 
 
 \newpage
