@@ -15,6 +15,7 @@
 \usepackage{nccmath}
 \usepackage[spanish]{babel}
 \usepackage{multirow}
+\usepackage{hyperref}
 \usepackage{tikz-cd}
 \usepackage{pgf,tikz}
 \usetikzlibrary{arrows}
@@ -84,6 +85,7 @@
 \begin{document}
 
 \title{Relación 1 - Geometría y Topología de superficies }
+\author{Javi, Rafa, Diego}
 \maketitle
 \begin{exercise}
 En un espacio $X$ definimos la relación $x \mathcal{R} y$ si existe un subespacio conexo por caminos $C \subseteq X$ con $x,y \in C$. ¿Cuáles son las clases de equivalencia?
@@ -193,7 +195,9 @@ En $\mathbb{R}^2$ se define la relación $(x,y) \mathcal{R} (u,v)$ si $y+x^2 = v
 \begin{exercise}
 Sea $\mathcal{R}$ una relación de equivalencia sobre $(X, \mathcal{T})$. Probar que si $X/\mathcal{R}$ es $T_2$, entonces $\mathcal{R}$ es cerrado en $X \times X$.
 \end{exercise}
-
+\begin{sol*}
+Probado como equivalencia (añadiendo que la proyección sea abierta) en la página 88, teorema 7.7 \url{http://im0.p.lodz.pl/~kubarski/AnalizaIV/Wyklady/L-Tu-1441973990.pdf}
+\end{sol*}
 
 \newpage
 \begin{exercise}
@@ -205,13 +209,18 @@ Sea $X = \{x \in \mathbb{R} : x \geq 0\}$. Se considera sobre $X$ la relación d
 \begin{exercise}
 Sea $\mathcal{R}$ una relación de equivalencia sobre $(X, \mathcal{T})$ tal que $p : X \to X/\mathcal{R}$ es abierta. Entonces $X/\mathcal{R}$ es $T_2$ si y sólo si $\mathcal{R}$ es cerrado en $X \times X$. Deducir de este resultado que el espacio proyectivo $P_2(\mathbb{R})$ es una espacio $T_2$.
 \end{exercise}
+\begin{sol*}
+Mirar ejercicio 12. Para ver que la proyección es abierta considerar $S^2$ y $S^2/\mathcal{R}$ con la relación antipodal. 
+\end{sol*}
 
 
 \newpage
 \begin{exercise}
 Probar que para todo espacio topológico $X$ el cono $C X$ y la suspensión $\Sigma X$ son conexos por caminos.
 \end{exercise}
-
+\begin{sol*}
+En el cono basta ver que el vértice se puede conectar con los demás puntos. En la suspensión sería análogo con el otro vértice así que no se va a escribir. Sobre el cilindro $X\times Y$ consideramos un punto $(x,t)$ y conectamos con un camino (sabemos que el cilindro es conexo por caminos) hasta $(x,1)$. Después yuxtaponemos con un camino entre $(x,1)$ y $(x',1)$. Por último, yuxtaponemos con un camino hasta $(x',t')$. Al pasar al cociente tenemos un camino que permanece constante sobre el vértice el tiempo que se produce el camino entre $(x,1)$ y $(x',1)$ pero que conecta $[x,t]$ con $[x',t']$.
+\end{sol*}
 
 \newpage
 \begin{exercise}
@@ -244,7 +253,35 @@ Probar que $\Sigma S^{n-1}$ es homeomorfo a $S^n$, $n \geq 1$. \textbf{Indicaci�
 \begin{exercise}
 Pruébese que $S^2$ es homeomorfo a ($S^1 \times S^1) / (S^1 \lor S^1)$.
 \end{exercise}
+\begin{sol*}
+Vamos a probarlo usando el polígono fundamental del toro $S^1 \times S^1$. En el borde podemos encontrar $S^1 \lor S^1$, luego basta llevar el borde a un punto. Esta operación da como resultado el mismo espacio que $D^2/S^1$, que ya hemos probado en clase que es homeomorfo a $S^2$.
 
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-1.3444444444444448,-1.6466666666666665) rectangle (11.433333333333335,4.54222222222222);
+\fill[line width=1.6pt,fill=black,fill opacity=0.10000000149011612] (0.,3.) -- (3.,3.) -- (3.,0.) -- (0.,0.) -- cycle;
+\fill[line width=0.pt,fill=black,fill opacity=0.10000000149011612] (6.,3.) -- (9.,3.) -- (9.,0.) -- (6.,0.) -- cycle;
+\draw [line width=1.6pt] (0.,3.)-- (3.,3.);
+\draw [line width=1.6pt] (3.,3.)-- (3.,0.);
+\draw [line width=1.6pt] (3.,0.)-- (0.,0.);
+\draw [line width=1.6pt] (0.,0.)-- (0.,3.);
+\draw [->] (4.,1.5) -- (5.,1.5);
+\draw [->] (0.,3.) -- (1.5,3.);
+\draw [->] (0.,0.) -- (1.5,0.);
+\draw [->] (3.,0.) -- (3.,1.5);
+\draw [->] (0.,0.) -- (0.,1.5);
+\draw (4.2,1.92) node[anchor=north west] {$\Large{\pi}$};
+\draw (8.955555555555557,3.4755555555555544) node[anchor=north west] {$\Large{P}$};
+\draw (9.222222222222223,1.72) node[anchor=north west] {$\Large{\cong{S^2}}$};
+\draw (1.2,3.63111111111111) node[anchor=north west] {$\Large{A}$};
+\draw (3.1222222222222227,1.6977777777777772) node[anchor=north west] {$\Large{B}$};
+\draw (-0.6111111111111114,1.786666666666666) node[anchor=north west] {$\Large{B}$};
+\draw (1.2,-0.04666666666666652) node[anchor=north west] {$\Large{A}$};
+\begin{scriptsize}
+\draw [fill=black] (9.,3.) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+
+\end{sol*}
 
 \newpage
 \begin{exercise}
