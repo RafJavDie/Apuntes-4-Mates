@@ -15,6 +15,11 @@
 \usepackage{nccmath}
 \usepackage[spanish]{babel}
 \usepackage{multirow}
+\usepackage{tikz-cd}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{cd}
+\usetikzlibrary{babel}
 \theoremstyle{plain}
 
 \renewcommand{\baselinestretch}{1,4}
@@ -103,7 +108,16 @@ Probar que si $\mathcal{R}$ es una relación de equivalencia sobre un espacio $X
 \begin{exercise}
 Sean $A$ y $B$ subconjuntos de $X$ tales que $A$ es cerrado y $A \subseteq B$. Probar que existe una inmersión de $B/A$ en $X/A$.
 \end{exercise}
-
+\begin{sol*}[con $B$ cerrado]
+Vamos a dar explícitamente dicha inmersión. Esta es la aplicación $i_\pi:B/A\rightarrow X/A$ definida como $i_\pi([b])=[b]$. Está bien definida puesto que la imagen de dos elementos coincide si y solo sí están relacionados. Por ello es además inyectiva. Claramente es continua, ya que si $G$ es un abierto de $X/A$, entonces $i_\pi^{-1}(G)$ es de la forma $G\cap B/A$, que por definición de la topología del subespacio, es abierto. Obsérvese que en $i_\pi([b])$ no hay más elementos que en $[b]$ puesto que si $c\in[b]$, entonces o bien $c=b$ o bien $c,b\in A\subseteq B$. Esto quiere decir que $i_\pi(C)=C\ \forall C\subseteq B$, llevando $C$ la topología del subespacio. Veamos por último que es cerrada. Sea $W$ un cerrado de $B/A$. Entonces $\pi_B^{-1}(W)$ es cerrado por la definición de topología cociente, siendo $\pi_B$ la proyección canónica de $B$ en $B/A$. Observemos el siguiente diagrama conmutativo:
+\[
+\begin{tikzcd}
+B\arrow[r,"\pi_B"]\arrow[d,"i"'] & B/A\arrow[r,"i_\pi"] & X/A\\
+X\arrow[urr,"\pi"]
+\end{tikzcd}
+\]
+Esto quiere decir que $i_\pi=\pi\circ i\circ \pi_B^{-1}$. Por lo anterior y la hipótesis añadida, $i\circ \pi_B^{-1}(W)$ es cerrado, luego resta probar que $\pi$ es cerrada. Esto se tiene por el ejercicio anterior, ya que todas las clases de equivalencia contenidas en $A$ forman un solo punto en el cociente, de modo que su unión es cerrada. 
+\end{sol*}
 
 \newpage
 \begin{exercise}
@@ -132,6 +146,11 @@ Indíquense cuáles de los siguientes espacios son homeomorfos entre sí:
 \begin{exercise}
 Probar que $\mathbb{R}/\mathbb{Q}$ no es $T_2$ y por tanto no puede ser metrizable.
 \end{exercise}
+\begin{sol*}
+Razonamos por reducción al absurdo. Supongamos que $\mathbb{R}/\mathbb{Q}$ es $T_2$. Entonces, dado $x\in\R$ existen $U,V$ abiertos de $\mathbb{R}/\mathbb{Q}$ tales que $[x]\in U, [\Q]\in V, V\cap U=\emptyset$. Consideremos la proyección canónica $\pi:\R\rightarrow\mathbb{R}/\mathbb{Q}$. Se cumple entonces
+\[\pi^{-1}(U\cap V)=\pi^{-1}(U)\cap\pi^{-1}(V)=\emptyset\]
+Pero $\Q\subseteq \pi^{-1}(V)$, así que hemos llegado a una contradicción con que $\Q$ es denso en $\R$. 
+\end{sol*}
 
 
 \newpage
