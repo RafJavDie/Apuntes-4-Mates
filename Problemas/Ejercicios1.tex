@@ -262,6 +262,20 @@ Sean $[x],[y] \in X/\mathcal{R}$ con $[x] \neq [y]$. Como $X/\mathcal{R}$ es $T_
 \begin{exercise}
 Sea $X = \{x \in \mathbb{R} : x \geq 0\}$. Se considera sobre $X$ la relación de equivalencia $\mathcal{R}$ definida por la partición $\left\{\left\{a, \frac{1}{a}\right\} \right\}_{a > 0} \cup \{0\}$. Demostrar que $p : X \to X/\mathcal{R}$ es abierta, pero que $\mathcal{R}$ no es abierto en $X \times X$.
 \end{exercise}
+\begin{sol*}
+Escribimos la proyección canónica:
+\[ p(x) = [x] = \begin{cases}
+	\{x, \frac{1}{x}\} &\text{ si } x > 0\\
+	\{0\} &\text{ si } x = 0
+\end{cases}\]
+$p$ es abierto si para todo $G$ abierto en $X$, $p(G)$ es abierto o, equivalentemente, $p^{-1}(p(G))$ es abierto.
+\[ p^{-1}(p(G)) = G \cup \{1/g : g \in G, g \neq 0\} \]
+Como la aplicación $1/x$ es un homeomorfismo al restringirnos en $(0,\infty)$, tenemos que $p^{-1}(p(G))$ es unión de dos abiertos, luego es un abierto y deducimos que $p$ es una proyección abierta.
+
+Por otro lado:
+\[ \mathcal{R} = \{(x,x) : x \in X\} \cup \{(x,1/x) : x \in X, x > 0\} \]
+Para ver que $\mathcal{R}$ no es abierto de $X \times X$, basta observar que el punto $(2,2) \in \mathcal{R}$ no es punto interior, porque para todo $\epsilon > 0$ suficientemente pequeño, $(2+\frac{\epsilon}{2},2) \in B((2,2),\epsilon)$, pero $(2+\frac{\epsilon}{2}, 2) \notin \mathcal{R}$.
+\end{sol*}
 
 
 \newpage
