@@ -212,7 +212,8 @@ Veamos que es abierta. Sea $A$ un abierto de $\R^2$, $f(A)$ su imagen por f y se
 Sea $\mathcal{R}$ una relación de equivalencia sobre $(X, \mathcal{T})$. Probar que si $X/\mathcal{R}$ es $T_2$, entonces $\mathcal{R}$ es cerrado en $X \times X$.
 \end{exercise}
 \begin{sol*}
-Probado como equivalencia (añadiendo que la proyección sea abierta) en la página 88, teorema 7.7 \url{http://im0.p.lodz.pl/~kubarski/AnalizaIV/Wyklady/L-Tu-1441973990.pdf}
+Sean $[x],[y] \in X/\mathcal{R}$ con $[x] \neq [y]$. Como $X/\mathcal{R}$ es $T_2$ existen unos abiertos $G'$, $H' \subset X/\mathcal{R}$ con $[x] \in G'$, $[y] \in H'$ y $G' \cap H' = \emptyset$. Sea $p : X \to X/\mathcal{R}$ la proyección canónica y sean $G = p^{-1}(G')$, $H = p^{-1}(H')$ abiertos de $X$. Por construcción, ningún elemento de $G$ está relacionado con algún elemento de $H$, por lo tanto $G \times H \subseteq (X \times X) \setminus \mathcal{R}$. Como $(x,y)$ está en el abierto $G \times H$, hemos llegado a que $(x,y)$ es punto interior de $(X \times X) \setminus \mathcal{R}$. Entonces $(X\times X) \setminus \mathcal{R}$ es un abierto y, finalmente, $\mathcal{R}$ es cerrado en $X \times X$.
+% Probado como equivalencia (añadiendo que la proyección sea abierta) en la página 88, teorema 7.7 \url{http://im0.p.lodz.pl/~kubarski/AnalizaIV/Wyklady/L-Tu-1441973990.pdf}
 \end{sol*}
 
 \newpage
@@ -226,7 +227,9 @@ Sea $X = \{x \in \mathbb{R} : x \geq 0\}$. Se considera sobre $X$ la relación d
 Sea $\mathcal{R}$ una relación de equivalencia sobre $(X, \mathcal{T})$ tal que $p : X \to X/\mathcal{R}$ es abierta. Entonces $X/\mathcal{R}$ es $T_2$ si y sólo si $\mathcal{R}$ es cerrado en $X \times X$. Deducir de este resultado que el espacio proyectivo $P_2(\mathbb{R})$ es una espacio $T_2$.
 \end{exercise}
 \begin{sol*}
-Mirar ejercicio 12. Para ver que la proyección es abierta considerar $S^2$ y $S^2/\mathcal{R}$ con la relación antipodal. 
+Una de las implicaciones está demostrada en el ejercicio 12. Tenemos que ver que si $\mathcal{R}$ es cerrado en $X \times X$, entonces $X / \mathcal{R}$ es $T_2$. Consideramos el par $(x,y)$ en el abierto $(X \times X) \setminus \mathcal{R}$. Como $(x,y)$ es interior, existe un entorno abierto $G \times H$ disjunto a $\mathcal{R}$. Entonces $p(G) \cap p(H) = \emptyset$. Además, al ser $p$ abierta, $p(G)$ y $p(H)$ son entornos abiertos de $[x]$ e $[y]$. Entonces $X/\mathcal{R}$ es $T_2$.  
+
+Mirar ejercicio 12. Para ver que la proyección es abierta considerar $S^2$ y $S^2/\mathcal{R}$ con la relación antipodal. (A completar)
 \end{sol*}
 
 
