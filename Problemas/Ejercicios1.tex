@@ -33,6 +33,8 @@
 \setlength{\textheight}{8in}
 \setlength{\footskip}{0.75in}
 
+\theoremstyle{definition}
+
 \newtheorem{theorem}{Teorema}[section]
 \newtheorem{acknowledgement}{Acknowledgement}
 \newtheorem{algorithm}{Algorithm}
@@ -195,6 +197,25 @@ Sea $\mathcal{R}$ una relación de equivalencia sobre $X$ tal que para todo $x \
 \[ f(x_1,\dots,x_n) = (2 \sqrt{1-\norm{x}^2}x_1, \dots, 2 \sqrt{1-\norm{x}^2}x_n, 2 \norm{x}^2-1). \]
 Sea $\mathcal{R}_f$ la relación de equivalencia genera por $x \mathcal{R}_f y$ si $f(x) = f(y)$. Probar que $B ^n/\mathcal{R}_f$ es $B^n/S^{n-1}$ y deducir que este espacio cociente es homeomorfo a $S^n$.
 \end{exercise}
+\begin{sol*}
+En primer lugar veamos que $f$ está bien definida, es decir, que $f$ toma valores en $S^n$. Para ello comprobamos que $||f(x)||=1$.
+\begin{gather*}
+||f(x)||^2=4(1-||x||^2)\sum_{i=1}^n x_i^2 +4||x||^4-4||x||^2+1=1
+\end{gather*}
+Para probar que $B ^n/\mathcal{R}_f$ es $B^n/S^{n-1}$ probaremos que $x \mathcal{R}_f y\leftrightarrow x,y\in S^{n-1}$. La implicación a la izquierda es trivial puesto que si $x,y\in S^{n-1}$ entonces $||x||=||y||=1$, por lo que $f(x)=f(y)=(0,\dots,0,1)$. Para la otra implicación supongamos que $f(x)=f(y)$ y que $x,y\not\in S^{n-1}$. Igualando la última coordenada obtenemos que $||x||=||y||$. Sustituyendo en las otras coordenadas e igualando, como por hipótesis $||x||\neq 1$, podemos eliminar $2\sqrt{1-\norm{x}^2}$ y obtener que $x_i=y_i\ \forall i=1,\dots, n$. Esto quiere decir que los elementos de fuera de $S^{n-1}$ solo están relacionados consigo mismos y hemos demostrado la primera parte del enunciado.
+Para probar la segunda parte consideramos el siguiente diagrama:
+\[
+\begin{tikzcd}
+B^n\arrow[r,"f"]\arrow[d,"\pi"'] & S^{n-1}\\
+B^n/\sim \arrow[ur, "\tilde{f}"',dashed]
+\end{tikzcd}
+\]
+donde $\tilde{f}([x])=f(x)$. Tenemos que $\tilde{f}$ es continua porque $f$ lo es. Además $f$ es cerrada porque va de un compacto en un $T_2$. Veamos entonces que es sobreyectiva. Sea $(y_1,\dots,y_n, y_{n+1})\in S^n\setminus\{(0,\dots,0,1)\}$ (eliminamos este punto porque ya sabemos que tiene preimagen). Buscamos $x$ tal que 
+\[2\sqrt{1-\norm{x}^2}x_i=y_i\ \forall i=1,\dots, n\qquad 2||x||^2-1=y_{n+1}\]
+De la última ecuación obtenemos $||x||^2=\dfrac{y_{n+1}+1}{2}<1$. Sustituimos este resultado en el resto de coordenadas y despejamos, obteniendo
+\[x_i=\frac{y_i}{2\sqrt{1-\frac{y_{n+1}+1}{2}}}.\]
+Como el denominador no se anula, los $x_i$ están bien definidos y hemos probado lo que queríamos.
+\end{sol*}
 
 
 \newpage
@@ -311,7 +332,7 @@ Probar que si $X$ e $Y$ son conexos por caminos o compactos, $X \cup_f Y$ tambi�
 \item Sean X e Y conexos por caminos, $f:A\subset X\to Y$ una aplicación continua, consideremos $X \cup_f Y$. Sean $x,y\in X \cup_f Y$, tengamos presente que $A$ y $f(A)$ son un único punto en el espacio de pegamiento y que $X\setminus A$ y $Y\setminus f(A)$ permanece constante.
 \begin{itemize}
 \item Si $x$ e $y$ se encuentran en $p(X)$ o en $p(Y)$, dado que la proyección canónica es continua, estos subespacios de $X \cup_f Y$ son conexos por caminos.
-\item Si se encuentran en distintas, supongamos sin pérdida de generalidad que $x\in p(X\setminus A)$ (si su preimagen está en A es trivial). Sea en $X$ un camino $\varphi$ que vaya $p^{-1}(x)$, que es un único punto por hipótesis, a algún punto de $A$, entonces $p(\varphi)$ es un camino de $x$ a $p(A)$ en el cociente. Haciendo una consideración análoga para $y$ y uniendo los caminos tenemos el resultado.
+\item Si se encuentran en distintas, supongamos sin pérdida de generalidad que $x\in p(X\setminus A)$ (si su preimagen está en A es trivial). Sea en $X$ un camino $\varphi$ que vaya de $p^{-1}(x)$, que es un único punto por hipótesis, a algún punto de $A$, entonces $p(\varphi)$ es un camino de $x$ a $p(A)$ en el cociente. Haciendo una consideración análoga para $y$ y uniendo los caminos tenemos el resultado.
 \end{itemize}
 \item Sean X e Y compactos, $f:A\subset X\to Y$ una aplicación continua consideremos $X \cup_f Y$. Primeramente, como X e Y son compactos, $X\sqcup Y$ es también compacto. Sea $C_i$, $i\in I$ un recubrimiento de $X \cup_f Y$, entonces $p^{-1}(C_i)$ es un recubrimiento abierto de $X\sqcup Y$. Como este es compacto, $\exists J \subset I$ con $|J|$ finito tal que $p^{-1}(C_j)$, $j\in J$ es un recubrimiento abierto finito de $X\sqcup Y$. Finalmente, $p(p^{-1}(C_j))=C_j$ (usando que $p$ es sobreyectiva), $j\in J$ es un recubrimiento abierto finito del cociente. Por tanto, este es compacto.
 \end{itemize}
