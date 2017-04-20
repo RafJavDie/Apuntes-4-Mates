@@ -306,6 +306,16 @@ Vamos a probarlo usando el polígono fundamental del toro $S^1 \times S^1$. En e
 \begin{exercise}
 Probar que si $X$ e $Y$ son conexos por caminos o compactos, $X \cup_f Y$ también lo es.
 \end{exercise}
+\begin{sol*}\mbox{}
+\begin{itemize}
+\item Sean X e Y conexos por caminos, $f:A\subset X\to Y$ una aplicación continua, consideremos $X \cup_f Y$. Sean $x,y\in X \cup_f Y$, tengamos presente que $A$ y $f(A)$ son un único punto en el espacio de pegamiento y que $X\setminus A$ y $Y\setminus f(A)$ permanece constante.
+\begin{itemize}
+\item Si $x$ e $y$ se encuentran en $p(X)$ o en $p(Y)$, dado que la proyección canónica es continua, estos subespacios de $X \cup_f Y$ son conexos por caminos.
+\item Si se encuentran en distintas, supongamos sin pérdida de generalidad que $x\in p(X\setminus A)$ (si su preimagen está en A es trivial). Sea en $X$ un camino $\varphi$ que vaya $p^{-1}(x)$, que es un único punto por hipótesis, a algún punto de $A$, entonces $p(\varphi)$ es un camino de $x$ a $p(A)$ en el cociente. Haciendo una consideración análoga para $y$ y uniendo los caminos tenemos el resultado.
+\end{itemize}
+\item Sean X e Y compactos, $f:A\subset X\to Y$ una aplicación continua consideremos $X \cup_f Y$. Primeramente, como X e Y son compactos, $X\sqcup Y$ es también compacto. Sea $C_i$, $i\in I$ un recubrimiento de $X \cup_f Y$, entonces $p^{-1}(C_i)$ es un recubrimiento abierto de $X\sqcup Y$. Como este es compacto, $\exists J \subset I$ con $|J|$ finito tal que $p^{-1}(C_j)$, $j\in J$ es un recubrimiento abierto finito de $X\sqcup Y$. Finalmente, $p(p^{-1}(C_j))=C_j$ (usando que $p$ es sobreyectiva), $j\in J$ es un recubrimiento abierto finito del cociente. Por tanto, este es compacto.
+\end{itemize}
+\end{sol*}
 
 
 \newpage
