@@ -83,7 +83,6 @@
 \item[\hskip \labelsep {\bfseries Ejercicio}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 %--------------------------------------------------------
 \begin{document}
-
 \title{Relación 1 - Geometría y Topología de superficies }
 \author{Javi, Rafa, Diego}
 \maketitle
@@ -105,6 +104,13 @@ Probar que si $\mathcal{R}$ es una relación de equivalencia sobre un espacio $X
 	\item Para todo abierto (cerrado) $A \subseteq X$, la unión de todas las clases de equivalencias contenidas en $A$ es abierto (cerrado) de $X$.
 \end{itemize}
 \end{exercise}
+\begin{sol*}
+\begin{itemize}
+\item[]
+\item Supongamos que p es cerrada y consideramos $x_i$, $i\in I$ el conjunto elementos de X tales que algún representante de su clase de equivalencia está en $A$ y, consideramos además, $C$ la unión de todas ellos. Es claro que $p(A) = p(C)$, pues en A existe, al menos, un representante de cada clase de los elementos de C ($p(C)\subset p(A)$) y, por construcción, $A\subset C$, luego $p(A)\subset p(C)$. Como A es cerrado, por la hipótesis sobre p, $p(C)$ ha de serlo. Usando que la proyección continua, sabemos que $p^{-1}(p(C))$ es cerrado, pero, esto es precisamente $p(C)$. Una de las contenciones es conocida, sea $x\in p^{-1}(p(C))$ entonces $p(x) \in p(C)$, luego $x$ pertenece a una de las clases de equivalencia que cortan a A, luego por hipótesis $x\in C$.
+\item 
+\end{itemize}
+\end{sol*}
 
 \newpage
 \begin{exercise}
@@ -180,7 +186,7 @@ Veamos que $f$ está bien definida. Sea $y \in [x]_1$, es decir, con $y \mathcal
 
 \newpage
 \begin{exercise}
-Sea $\mathcal{R}$ una relación de equivalencia sobre $X$ tal que para todo $x \in X$, $[x]$ está contenida en alguna compomenten conexa de $X$. Probar que las componentes conexa de $X/\mathcal{R}$ son las imágenes por la proyección canónica de las componentes conexas de $X$.
+Sea $\mathcal{R}$ una relación de equivalencia sobre $X$ tal que para todo $x \in X$, $[x]$ está contenida en alguna componente conexa de $X$. Probar que las componentes conexa de $X/\mathcal{R}$ son las imágenes por la proyección canónica de las componentes conexas de $X$.
 \end{exercise}
 
 
@@ -195,7 +201,11 @@ Sea $\mathcal{R}_f$ la relación de equivalencia genera por $x \mathcal{R}_f y$ 
 \begin{exercise}
 En $\mathbb{R}^2$ se define la relación $(x,y) \mathcal{R} (u,v)$ si $y+x^2 = v+u^2$. ¿A qué subespacio euclídeo es homeomorfo $\mathbb{R}^2/\mathcal{R}$?
 \end{exercise}
-
+\begin{sol*}
+Sea la función $f: \R^2 \to \R$, $f(x,y)=y+x^2$, entonces es claro que la relación inducida por f corresponde con la relación del enunciado. Basta ver que la aplicación f es continua, sobreyectiva y abierta. Que es continua es claro por ser polinómica y sobreyectiva tomando $(0,y)$ para cada $y\in\R$. 
+\newline
+Veamos que es abierta. Sea $A$ un abierto de $\R^2$, $f(A)$ su imagen por f y sea $x\in f(A)$. Sea $(u,v)\in f^{-1}(x)\cap A$. Como $A$ es abierto, $\exists B((u,v),\delta)\subset A$ para algún $\delta>0$. En tal caso, tenemos que $K=\{(u,v+\lambda \dfrac{\delta}{2}) \mid \lambda \in (-1,1)\}\subset B((u,v),\delta) \subset A$. Por tanto, tenemos que $f(K) = \{x+\lambda\frac{\delta}{2} \mid \lambda \in (-1,1)\} = B(x,1) \subset f(A)$, por lo que $x\in \mathring{A}$.
+\end{sol*}
 
 \newpage
 \begin{exercise}
