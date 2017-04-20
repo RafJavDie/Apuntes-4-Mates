@@ -168,9 +168,15 @@ Indíquense subespacios de $\mathbb{R}^3$ homeomorfos a los siguientes espacios 
 
 \newpage
 \begin{exercise}
-Sean $\mathcal{R}_1$ y $\mathcal{R}_2$ dos relaciones de equivalencia sobre $X$. Si $x \mathcal{R}_1 y$ impica que $x \mathcal{R}_2 y$, probar que si $\mathcal{R}$ es la relación en $X/\mathcal{R}_1$ dada por $[x] \mathcal{R} [y]$ si $x \mathcal{R}_2 y$, entonces $(X/\mathcal{R}_1)/\mathcal{R}$ es homeomorfo a $X / \mathcal{R}_2$.
+Sean $\mathcal{R}_1$ y $\mathcal{R}_2$ dos relaciones de equivalencia sobre $X$. Si $x \mathcal{R}_1 y$ implica que $x \mathcal{R}_2 y$, probar que si $\mathcal{R}$ es la relación en $X/\mathcal{R}_1$ dada por $[x] \mathcal{R} [y]$ si $x \mathcal{R}_2 y$, entonces $(X/\mathcal{R}_1)/\mathcal{R}$ es homeomorfo a $X / \mathcal{R}_2$.
 \end{exercise}
-
+\begin{sol*}
+Usaremos $[\cdot]_1$ y $[\cdot]_2$ para referirnos a las clases de equivalencia de $\mathcal{R}_1$ y $\mathcal{R}_2$ respectivamente. Definimos la aplicación $f : X/\mathcal{R}_1 \to X/\mathcal{R}_2$ como:
+\[ f ([x]_1) = [x]_2 \]
+Veamos que $f$ está bien definida. Sea $y \in [x]_1$, es decir, con $y \mathcal{R}_1 x$. Por hipótesis, esto implica que $y \mathcal{R}_2 x$, luego $y \in [x]_2$. Para ver que $f$ es sobreyectiva, basta observar que para todo $[x]_2 \in X/\mathcal{R}_2$, $f([x]_1) = [x]_2$ por la hipótesis. Para $x,y \in X$, 
+	\[ f([x]_1) = f([y]_1) \Leftrightarrow [x]_2 = [y]_2 \Leftrightarrow x \mathcal{R}_2 y \Leftrightarrow [x]_1 \mathcal{R} [y]_1 \]
+	Luego $\mathcal{R}$ es la relación inducida por $f$. Por la proposición 1.4.5,  $(X/\mathcal{R}_1)/\mathcal{R}$ es homeomorfo a $X/\mathcal{R}_2$.
+\end{sol*}
 
 \newpage
 \begin{exercise}
