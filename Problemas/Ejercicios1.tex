@@ -150,7 +150,28 @@ Indíquense cuáles de los siguientes espacios son homeomorfos entre sí:
 	\item $[-1,1]/A$ con $A = \{ \pm \frac{1}{k} : k \geq 1\}$
 \end{itemize}
 \end{exercise}
+\begin{sol*}
+\begin{itemize}
+Vamos a probar que los dos últimos espacios son homeomorfos entre sí, pero el primero no es homeomorfo a ellos. Para ello probaremos en primer lugar que $\mathbb{R}/\mathbb{Z}$ no es compacto, mientras que los pendientes hawaiianos (segundo espacio) sí lo son, y por último probaremos la existencia de un homeomorfismo entre los dos espacios finales.
+\item  Para ver que $\mathbb{R}/\mathbb{Z}$ no es compacto consideremos el siguiente recubrimiento de $\R$: $\{(n-\frac{3}{4}, n+\frac{3}{4})\}_{n\in\Z}$. Este recubrimiento induce otro recubriento por abiertos en el cociente que claramente no contiene ningún subrecubrimiento finito. Vamos ahora que los pendientes hawaiianos son compactos. Basta que lo probemos para uno de ellos ya que los dos pendientes son la unión por un punto de cada uno de ellos, y la unión por un punto de compactos es compactas (esto es un corolario del ejercicio 20). Por fijar ideas consideremos el derecho, es decir, la familia de circunferencias 
+\[\left(x-\frac{1}{k}\right)^2-y^2=\frac{1}{k^2}\]
+a la que llamaremos $X$. Sea $\mathcal{U}$ un recubrimiento por abiertos y sea $U_0\in\mathcal{U}$ cualquier abierto que contenga el origen. Por ser $X$ un subespacio de $\R^2$ podemos escribir $U_0=V\cap X$ para algún abierto $V\subset\R^2$ que contenga el origen. Este abierto debe contener algún conjunto de la forma $\left\{(x,y)| \left(x-\frac{1}{N}\right)^2-y^2=\frac{1}{N^2}\right\}$ para algún $N$ lo bastante grande, ya que este tipo de conjuntos forman una base de entornos del origen, y por esto último $V\subseteq U_0$ (seleccionado $V$ para que el $N$ sea el adecuado). Esto quiere decir que $U_0$ contiene todas las circunferencias salvo una cantidad finita. Por lo tanto solo queda por cubrir una cantidad finita de circunferencias y con eso hemos conseguido un subrecubrimiento finito. 
+\item Definimos $f:[-1,1]\rightarrow K$ a trozos como 
+\begin{gather*}
+f\left(\pm\frac{1}{k}\right)=0\\
+f\left(\left(-\frac{1}{k},-\frac{1}{k+1}\right)\right)=C_{-k}\\
+f\left(\left(\frac{1}{k+1},\frac{1}{k}\right)\right)=C_k.
+\end{gather*}
+Para ser más explícitos y ver claramente que la aplicación es continua, 
+\begin{align*}
+f\left(\left(-\frac{1}{k},-\frac{1}{k+1}\right)\right)=&-\frac{1}{k}+\frac{1}{k}e^{\frac{2\pi i}{t}}\ \forall t\in\left(-\frac{1}{k},-\frac{1}{k+1}\right)\\
+f\left(\left(\frac{1}{k+1},\frac{1}{k}\right)\right)=&\frac{1}{k}+\frac{1}{k}e^{\frac{\pi i}{t}}\ \forall t\in\left(\frac{1}{k+1},\frac{1}{k}\right)
+\end{align*}
+Así es más claro que los límites coinciden en los puntos $\pm\frac{1}{k}$. Por definición esta aplicación es sobreyectiva. Además es cerrada porque sobre restringida a $[-1,1]\setminus A$ es homeomorfismo sobre las $C_k$, y cualquier cerrado como mucho añadiría el origen, que es cerrado (por ser un punto), y la unión finita de cerrados es cerrado.
+Por todo ello sabemos que existe un homeomorfismo entre $[-1,1]/A$ y $K$. 
+\end{itemize} 
 
+\end{sol*}
 
 \newpage
 \begin{exercise}
