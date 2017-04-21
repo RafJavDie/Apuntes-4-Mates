@@ -308,7 +308,20 @@ En el cono basta ver que el vértice se puede conectar con los demás puntos. En
 Probar que $\Sigma S^{n-1}$ es homeomorfo a $S^n$, $n \geq 1$. \textbf{Indicación:} Considérese la aplicación $f : S^{n-1} \times [0,1] \to S^n$ dada por:
 \[ f(x,t) = (\sqrt{1-(2t-1)^2}x, 2t-1) \]
 \end{exercise}
-
+\begin{sol*}
+Veamos cuál es la relación que induce f. Sea $(x,y),(x',y')\in S^{n-1} \times [0,1]$:
+\begin{gather*}
+f(x,y) = f(x',y') \Leftrightarrow (\sqrt{1-(2y-1)^2}x, 2y-1) = (\sqrt{1-(2y'-1)^2}x', 2y'-1) \Leftrightarrow\\
+y=y' \quad \sqrt{1-(2y-1)^2}x = \sqrt{1-(2y-1)^2}x' \Leftrightarrow
+\begin{cases}
+y=y'\in\{0,1\}&\\
+y=y'\in (0,1) & x=x'
+\end{cases}
+\end{gather*}
+La relación que induce f es la de la suspensión del espacio: $S^{n-1}\times[0,1]/\mathcal{R}_f = \Sigma S^{n-1}$. Además, f es continua en su intervalo de definición: el argumento de la raíz es mayor o igual que cero. ¿Es sobreyectiva? Los polos son imagen de $S^{n-1}\times\{0,1\}$. Sea $(q,r)\in S^n$, $(q,r)$ distinto de los polos, entonces tomamos como preimagen $\left(\dfrac{q}{\sqrt{1-(2t-1)^2}},\dfrac{r+1}{2}\right)$. 
+\newline
+Resta ver que la aplicación es cerrada, pero este hecho se deduce de que $S^{n-1}\times[0,1]$ sea compacto (pues el el producto de compactos) y que $S^{n}$ es metrizable y, por tanto, $T_2$.
+\end{sol*}
 
 \newpage
 \begin{exercise}
