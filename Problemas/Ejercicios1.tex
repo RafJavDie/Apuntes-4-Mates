@@ -194,6 +194,36 @@ Indíquense subespacios de $\mathbb{R}^3$ homeomorfos a los siguientes espacios 
 \end{itemize}
 \end{exercise}
 
+\begin{sol*}
+\begin{itemize}\
+	\item Se va a probar que $\mathbb{R}^2/D^2\cong\R^2$. Para ello utilizamos la función $f:\mathbb{R}^2\to\mathbb{R}^2$ definida a trozos como 
+\[f(x)=\begin{cases}
+\frac{||x||-1}{||x||}x & |x||>1\\
+f(x)=0 & ||x||\leq 1
+\end{cases}.
+\] 
+Se ve claramente que es continua porque $$\lim_{||x||\to 1}\frac{||x||-1}{||x||}x=0.$$
+Además es sobreyectiva. Si $y=0\in\R^2$ tiene como preimagen toda la bola unidad cerrada, y si $y\neq 0$ entonces se puede comprobar que $$x=\frac{||y||+1}{||y||}y$$ es su preimagen. Tenemos que demostrar por último que $f$ es cerrada. Como hemos visto, si $||x||>1$ entonces $f$ tiene una inversa continua dada por $$f(y)=\frac{||y||+1}{||y||}y,$$ por lo que es cerrada en este dominio. Si tenemos un cerrado $C\subseteq D^2$ entonces es trivial ver que su imagen es cerrada pues se trata de un punto. Si tenemos un cerrado $C$ tal que $C\cap(\mathbb{R}^2-D^2)\neq\emptyset$ y $C\cap D^2\neq\emptyset$ podemos suponer que es conexo porque en otro caso trataríamos sus componentes conexas de forma independiente. También podemos suponer que no se trata de un solo punto porque ese caso es trivial. Sea entonces $\{y_n\}\subset f(C)$ una sucesión convergiendo a algún $y\in\R^2$. Tenemos entonces también una sucesión $\{x_n\}\subset C$ tal que $y_n=f(x_n)$. Esta sucesión debe de ser acotada pues $y_n$ es convergente. Si $y\neq 0$ entonces no hay problema porque podemos tomar un cerrado que sea entorno de $y$ y su imagen por $f^{-1}$ también es cerrado. De modo que $x_n$ tiene una subsucesión convergente a $x=f^{-1}(y)$ y por tanto $y=f(x)\in f(C)$. Si $y=0$ entonces $y\in f(C)$ porque estamos suponiendo que $C\cap D^2\neq\emptyset$.
+	\item En este caso tenemos un cociente homeomorfo a $\R^2\vee S^2$. Veámoslo definiendo la siguiente función definida a trozos $f:\R^2\to\R^2\vee S^2$ tal que
+	\[
+	f(x)=\begin{cases}
+	g(x)=\frac{||x||-1}{||x||}x & |x||>1\\
+	x_0 & ||x||=1\\
+	p(x) & ||x||<1
+	\end{cases}
+	\]
+	donde $x_0$ es el punto de unión en la \emph{wedge sum} y $p:B^2\to S^2\setminus\{x_0\}$ es la proyección estereográfica. Como la proyección es homeomorfismo el primer trozo es la aplicación del apartado anterior, esta aplicación es claramente sobreyectiva. Además es continua puesto que los límites coinciden en cada parte (entendiendo que la frontera de $B^2$ se proyectaría sobre $x_0$). Tanto el trozo de $g$ como el $p$ son homeomorfismos locales, por lo que se puede probar que es cerrada aplicando el mismo razonamiento que en el apartado anterior para los casos en que $||y||=1$ y $||y||\neq 1$. O bien, teniendo en cuenta que $D^2$ es compacto y $S^2$ es Hausdorff, para luego aplicar el razonamiento del primer apartado solo al caso en el que $||y||>1$. 
+	\item El subespacio resultante es homeomorfo a $D^2$. Para verlo nos ayudamos de la función $f:\mathbb{R}^2\to D^2$ definida en polares como
+\[
+f(r,\theta)=\begin{cases}
+(1,\theta) & r>1\\
+(r,\theta) & r\le1
+\end{cases}.
+\]
+Claramente $f$ es continua usando el criterio del límite y es sobreyectiva puesto que restringida a $D^2$ es la identidad. Además es cerrada, y se puede aplicar un razonamiento análogo al del primer apartado distinguiendo los casos $||y||=1$ y $||y||\neq 1$, utilizando que en el interior de $D^2$ la función tiene inversa continua. 
+\end{itemize}
+\end{sol*}
+
 
 \newpage
 \begin{exercise}
