@@ -1,0 +1,194 @@
+\documentclass{article}
+\usepackage{amsmath,accents}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{amsthm}
+\usepackage{nccmath}
+\usepackage[spanish]{babel}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{tikz-cd}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{cd}
+\usetikzlibrary{babel}
+\theoremstyle{plain}
+
+\renewcommand{\baselinestretch}{1,4}
+\setlength{\oddsidemargin}{0.5in}
+\setlength{\evensidemargin}{0.5in}
+\setlength{\textwidth}{5.4in}
+\setlength{\topmargin}{-0.25in}
+\setlength{\headheight}{0.5in}
+\setlength{\headsep}{0.6in}
+\setlength{\textheight}{8in}
+\setlength{\footskip}{0.75in}
+
+\theoremstyle{definition}
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{propi}[theorem]{Propiedades}
+\newtheorem{condition}{Condition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{coro}[theorem]{Corolario}
+\newtheorem{criterion}{Criterion}
+\newtheorem{defi}[theorem]{Definición}
+\newtheorem{example}[theorem]{Ejemplo}
+\newtheorem{exercise}{Ejercicio}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{nota}[theorem]{Nota}
+\newtheorem{sol}{Solución}
+\newtheorem*{sol*}{Solución}
+\newtheorem{prop}[theorem]{Proposición}
+\newtheorem{remark}{Remark}
+
+\newtheorem{dem}[theorem]{Demostración}
+
+\newtheorem{summary}{Summary}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\ninf}[1]{\norm{#1}_\infty}
+\providecommand{\numn}[1]{\norm{#1}_1}
+\providecommand{\gabs}[1]{\left|{#1}\right|}
+\newcommand{\bor}[1]{\mathcal{B}(#1)}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\X}{\chi}
+\providecommand{\Zn}[1]{\Z / \Z #1}
+\newcommand{\resi}{\varepsilon_L}
+\newcommand{\cee}{\mathbb{C}}
+\providecommand{\conv}[1]{\overset{#1}{\longrightarrow}}
+\providecommand{\gene}[1]{\langle{#1}\rangle}
+\providecommand{\convcs}{\xrightarrow{CS}}
+% xrightarrow{d}[d]
+\setcounter{exercise}{0}
+\newcommand{\cicl}{\mathcal{C}}
+
+\newenvironment{ejercicio}[2][Estado]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries Ejercicio}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%--------------------------------------------------------
+\begin{document}
+\title{Relación 3 - Geometría y Topología de superficies }
+\author{Javi, Rafa, Diego}
+\maketitle
+\begin{exercise}
+Probar que si $f:X\to S^n$ no es epiyectiva entonces es homotópica a la aplicación constante.
+\end{exercise}
+\newpage
+\begin{exercise}
+Probar que todo retracto de un espacio métrico es un subespacio cerrado.
+\end{exercise}
+\newpage
+\begin{exercise}
+Probar que A es retracto de X si y sólo si toda función contninua de A es un espacio arbitrario Z admite una extensión continua sobre X.
+\end{exercise}
+\newpage
+\begin{exercise}
+Probar que si A y B son retractos de deformación de X e Y respectivamente, entonces $A\times B$ es retracto de deformación de $X\times Y$.
+\end{exercise}
+\newpage
+\begin{exercise}
+Probar que si A y B son retractos de deformación de X e Y respectivamente, entonces $A\times B$ es retracto de deformación de $X\times Y$.
+\end{exercise}
+\newpage
+\begin{exercise}Dar un ejemplo de un espacio X y de dos subconjuntos A y B homeomorfos tales que A sea retracto de deformación de X y B no lo sea.
+\end{exercise}
+\newpage
+\begin{exercise}
+Probar que $S^{n-1}$ es retracto de deformación de $R^n-\{0\}$. Encontrar retractos de deformación (compactos) de los siguientes espacios.
+\begin{enumerate}
+\item $\R^2-\{p_1,p_2,\dotsc,p_k\}$,
+\item $S^1\times S^1-\{*\}$ (el toro menos un punto),
+\item $\R^3-OZ$, $\R^3-S^1\lor S^1$,
+\item la banda de Möbius y la banda de Möbius menos un punto,
+\item $\R^4-(OZ\bigcup S^1)$,
+\item el complementario de un disco en el plano proyectivo y
+\item el complementario en $\R^3$ de dos rectas paralelas.
+\end{enumerate}
+\end{exercise}
+\newpage
+\begin{exercise}
+Probar que si X es contractil e Y arcoconexo, dos aplicaciones cualesquiera de X en Y son homotópicas.
+\end{exercise}
+\newpage
+\begin{exercise}
+Indicar cuántos elementos tiene el conjunto de las clases de homotopía de aplicaciones continuas de $(S^1,\{1\}$ en $(X,*)$ rel. $\{1\}$, en los casos siguientes:
+\begin{enumerate}
+\item X tiene la topología discreta.
+\item X tiene la topología indiscreta.
+\end{enumerate}
+\end{exercise}
+\newpage
+\begin{exercise}
+Sea $F:X\to Y$ una aplicación continua. Sobre la unión disjunta $(X\times I)\sqcup Y$ se considera la relación de equivalencia resultante de identificar $(x,1)$ con $f(x)$. El espacio cociente obtenido se llama cilindro de la aplicación $f$, y se denotará por $M_f$. Probar que Y es retracto de deformación de $M_f$.
+\end{exercise}
+\newpage
+\begin{exercise}
+Probar que toda aplicación continua $f:Y_0\to Y_1$ da lugar a una aplicación $f_*:[X,Y_0]\to[X,Y_1]$ con las siguientes propiedades.
+\begin{itemize}
+\item Si $f':Y_0\to Y_1$ es homotópica a $f$ entonces $f_* =f'_*$.
+\item Para $id:Y\to Y$ se tiene que $id_*$ es la identidad.
+\item Si $g:Y_1\to Y_2$ es continua, entonces $(gf)_* = g_*f_*$.
+\item Si $f$ es una equivalencia de homotopía, entonces $f_*$ es biyectiva.
+\end{itemize}
+\end{exercise}
+\newpage
+\begin{exercise}
+\begin{enumerate}
+\item[]
+\item Si $F:Y_0\to Y_1$ es tal que $f_*$ es biyectiva para todo X, entonces $f$ es una equivalencia de homotopía.
+\item Si $g:X_0\to X_1$ es tal que $g^*$ es la biyectiva para todo Y, entonces g es una equivalencia de homotopía.
+\end{enumerate}
+\end{exercise}
+\newpage
+\begin{exercise}
+Probar qyue las siguientes aplicaciones son equivalencias de homotopía:
+\begin{enumerate}
+\item Toda aplicación continua que sea homotópica a una equivalencia de homotopía.
+\item Toda aplicación continua entre espacios contráctiles.
+\end{enumerate}
+\end{exercise}
+\newpage
+\begin{exercise}
+Sean $f_1,g_1:X_1\to Y_1$ y $f_2,g_2:X_2\to Y_2$ aplicaciones tales que $f_1\sim g_1$ y $f_2\sim g_2$. Probar que $f_1\times f_2\sim g_1\times g_2$. Como consecuencia, si $f_1$ y $f_2$ son equivalencias de homotopía, también lo es $f_1\times f_2$. Así pues, $X\times Y$ es contráctil si y solo sí $X$ e $Y$ lo son.
+\end{exercise}
+\newpage
+\begin{exercise}
+Se dice que el par $(X,A)$ tiene la Propiedad de Extensión de Homotpía (PEH) si para toda aplicación continua $f:X\to Y$ es un espacio arbitrario Y y toda homotopía $F:A\times I \to Y$ de aplicación $f_{|_A}$, existe homotopía $G:X\times I \to Y$ que extiende a $F\cup f$. Probar que si A es cerrado, $(X,A)$ tiene la PEH si y sólo si $(X\times 0)\bigcup A\times I$ es retracto de $X\times I$.
+\end{exercise}
+\newpage
+\begin{exercise}
+Sea $A\subset X$ cerrado y $*$ un punto de A considerado como punto base de X. Supongamos que $(X,A)$ tiene la PEH y que $\{*\}$ es un retracto de deformación fuerte de A. Entonces $p:(X,*)\to(X/A,[A])$ es una equivalencia de homotopía.
+\end{exercise}
+\newpage
+\begin{exercise}
+Sea $\Pi_0(X)$ el conjunto de las componentes conexas por caminos de X. Dada una aplicación $f:X\to Y$ sea $f_*:\Pi_0(X)\to\Pi_0(Y)$ la aplicación que lleva de componentes $C_x$ en la componente $C_{f(x)}$. Probar las siguientes propiedades:
+\begin{enumerate}
+\item $(g\circ f)_* = g_*\circ f_*$.
+\item Si $f$ es homotópica a g entonces $f_*=g_*$.
+\item Si $f$ es una equivalencai de homotopía entonces $f_*$ es una biyección. Además $C_x$ es del mismo tipo de homotopía que $C_{f(x)}$.
+\end{enumerate}
+\end{exercise}
+\newpage
+\begin{exercise}
+Probar que un retracto de un espacio contráctil es contráctil.
+\end{exercise}
+\newpage
+\end{document}
