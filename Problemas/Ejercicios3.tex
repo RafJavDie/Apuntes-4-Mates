@@ -95,6 +95,9 @@ Probar que si $f:X\to S^n$ no es epiyectiva entonces es homotópica a la aplicac
 \begin{exercise}
 Probar que todo retracto de un espacio métrico es un subespacio cerrado.
 \end{exercise}
+\begin{sol*}
+Sea $X$ un espacio métrico y $A\subseteq X$ un retracto. Por hipótesis existe una aplicación continua $r:X\to A$ tal que $r(a)=a\ \forall a\in A$. Sea $\{x_n\}\subset A$ una sucesión que converge a un punto $x\in X$. Tenemos que probar que $x\in A$. Tenemos que $r(x_n)$ converge a $r(x)$. Además, $r(x_n)=x_n\ \forall n$ por ser una sucesión de $A$. Por lo tanto, al tratarse de un espacio métrico (y por tanto Hausdorff) $r(x)=x$, y como $r(x)\in A$ por definición, se tiene el resultado. 
+\end{sol*}
 \newpage
 \begin{exercise}
 Probar que $A$ es retracto de $X$ si y sólo si toda función continua de $A$ es un espacio arbitrario $Z$ admite una extensión continua sobre $X$.
@@ -202,8 +205,12 @@ Indicar cuántos elementos tiene el conjunto de las clases de homotopía de apli
 \end{exercise}
 \newpage
 \begin{exercise}
-Sea $F:X\to Y$ una aplicación continua. Sobre la unión disjunta $(X\times I)\sqcup Y$ se considera la relación de equivalencia resultante de identificar $(x,1)$ con $f(x)$. El espacio cociente obtenido se llama cilindro de la aplicación $f$, y se denotará por $M_f$. Probar que Y es retracto de deformación de $M_f$.
+Sea $f:X\to Y$ una aplicación continua. Sobre la unión disjunta $(X\times I)\sqcup Y$ se considera la relación de equivalencia resultante de identificar $(x,1)$ con $f(x)$. El espacio cociente obtenido se llama cilindro de la aplicación $f$, y se denotará por $M_f$. Probar que Y es retracto de deformación de $M_f$.
 \end{exercise}
+\begin{sol*}
+Definimos la aplicación $r:(X\times I)\sqcup Y\to Y$ como $r(y)=y\ \forall y\in Y$ y $r(x,t)=f(x)\ \forall x\in X\times I$. Esta aplicación induce una retracción $\tilde{r}$ en el cociente de modo que $\tilde{r}([y])=[y]$ si $y\in Y$ y $\tilde{r}([x,t])=f(x)$. Esta aplicación es continua porque sobre cada componente es continua (son la identidad y una proyección) y al pasar al cociente $\tilde{r}([y])=\tilde{r}([x,t])\ \forall y\in f(X\times I)$. Hemos probado que $Y$ es retracto de $M_f$, ahora vamos a probar que es de deformación. Por ahorrar notación identidicamos $\pi(Y)$ con $Y$, donde $\pi$ es la proyección al cociente. Definimos una homotopía $H:M_f\times I \to M_f$ como $H([x,t],s)=\pi(x,t+(1-t)s)$ en los puntos de la forma $[x,t]$ y $H([y],s)=[y]$ en el resto. Se cumple que $H([x,t],0)=[x,t]$ si $(x,t)\in X\times I$ y $H([y],0)=[y]$ si $y\in Y$. Y por otro lado $H([x,t],1)=[x,1]\in Y$. Por lo tanto es un retracto con deformación. De hecho es fuerte, puesto que los elementos de $Y$ permanecen inmóviles.
+
+\end{sol*}
 \newpage
 \begin{exercise}
 Probar que toda aplicación continua $f:Y_0\to Y_1$ da lugar a una aplicación $f_*:[X,Y_0]\to[X,Y_1]$ con las siguientes propiedades.
@@ -281,6 +288,13 @@ Sea $\Pi_0(X)$ el conjunto de las componentes conexas por caminos de X. Dada una
 \item Si $f$ es una equivalencai de homotopía entonces $f_*$ es una biyección. Además $C_x$ es del mismo tipo de homotopía que $C_{f(x)}$.
 \end{enumerate}
 \end{exercise}
+\begin{sol*}
+\begin{enumerate}
+\item $(g\circ f)_*(C_x)=C_{g\circ f(x)}= g_*(C_{f(x)})=g_*\circ f_*(C_x)$.
+\item Si $f$ es homotópica a $g$, existe una homotopía $H:X\times I\to Y$ tal que $H(x,0)=f(x)$ y $H(x,1)=g(x)$, luego existe un camino $\gamma(t)=H(x,t)$ que conecta $f(x)$ con $g(x)$, de modo que están en la misma componente conexta. Así pues, $C_{f(x)}=C_{g(x)}\ \forall x\in X\Leftrightarrow f_*=g_*$.
+\item Si $f$ es equivalencia de homotopía, existe una apliación continua $g:Y\to X$ tal que $f\circ g\simeq Id_Y$ y $g\circ f\simeq Id_X$. Vamos a ver que $f_*$ es biyectiva comprobado que $g_*$ es su inversa. Como hemos visto en el primer apartado, $(g\circ f)_*(C_x)=C_{g\circ f(x)}$. Como $g\circ f\simeq Id_X$, existe un camino (dado por la homotopía) entre $g\circ f$ y $x$, por lo que  $(g\circ f)_*(C_x)=C_x$. Análogamente, deducimos que $(f\circ g)_*(C_y)=C_y$, por lo que efectivamente $g_*$ es su inversa. Corolario de este resultado es que $C_x$ es del mismo tipo de homotopía que $C_{f(x)}$, puesto que bastaría tomar $f:C_x\to C_f(x)$ y $g:C_f(x)\to C_x$. Por lo anterior $g\circ f\simeq Id_X$, luego en particular $g\circ f\simeq Id_{C_x}$. Del mismo modo $f\circ g\simeq Id_{C_f(x)}$. 
+\end{enumerate}
+\end{sol*}
 \newpage
 \begin{exercise}
 Probar que un retracto de un espacio contráctil es contráctil.
