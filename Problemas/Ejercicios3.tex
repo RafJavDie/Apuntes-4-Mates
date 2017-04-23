@@ -91,6 +91,9 @@
 \begin{exercise}
 Probar que si $f:X\to S^n$ no es epiyectiva entonces es homotópica a la aplicación constante.
 \end{exercise}
+\begin{sol*}
+Sea $y\in S^n\setminus f(X)$. Mediante la proyección estereográfica existe un homeomorfismo $p:S^n\setminus\{y\}\to\R^n$, por lo que se induce una aplicación continua $p\circ f:X\to\R^n$. Como $\R^n$ es contráctil, $p\circ f\simeq x_0\in\R^n$. Como $p$ es homeomorfismo, tiene una inversa continua $p^{-1}$, y componiendo obtenemos $p^{-1}\circ p\circ f= f\simeq p^{-1}(x_0)$. Por lo que $f$ es nul-homotópica. 
+\end{sol*}
 \newpage
 \begin{exercise}
 Probar que todo retracto de un espacio métrico es un subespacio cerrado.
@@ -102,6 +105,10 @@ Sea $X$ un espacio métrico y $A\subseteq X$ un retracto. Por hipótesis existe 
 \begin{exercise}
 Probar que $A$ es retracto de $X$ si y sólo si toda función continua de $A$ es un espacio arbitrario $Z$ admite una extensión continua sobre $X$.
 \end{exercise}
+\begin{sol*}
+$\boxed{\Rightarrow}$ Supongamos que $A$ es retracto de $X$. Sea $f:A\to Z$ una función continua y sea $r:X\to A$ una retracción. Entonces la extensión continua sobre $X$ es $r\circ f$. Efectivamente es continua por ser composición de continuas.\\
+$\boxed{\Leftarrow}$ Para el recíproco, sea $Z=A$ y sea $f=Id_A$. Entonces la extensión continua sobre $X$ es una retracción. Efectivamente, si $g$ es dicha extensión, entonces $g:X\to A$ y como $g(a)=Id_A(a)=a\ \forall a\in A$, se tiene el resultado. 
+\end{sol*}
 \newpage
 \begin{exercise}
 Probar que si $A$ y $B$ son retractos de deformación de $X$ e $Y$ respectivamente, entonces $A\times B$ es retracto de deformación de $X\times Y$.
@@ -221,13 +228,35 @@ Probar que toda aplicación continua $f:Y_0\to Y_1$ da lugar a una aplicación $
 \item Si $f$ es una equivalencia de homotopía, entonces $f_*$ es biyectiva.
 \end{itemize}
 \end{exercise}
+\begin{sol*}
+Definimos $f_*:[X,Y_0]\to[X,Y_1]$ como $f_*[\alpha]=[f\circ\alpha]$ y comprobamos que cumple las propiedades. 
+\begin{itemize}
+\item Si $f'$ es homotópica a $f$ entonces, por la compatibilidad de la homotopía con la composición 
+$$f_*[\alpha]=[f\circ\alpha]=[f'\circ\alpha]=f'_*[\alpha].$$
+\item $id_*[\alpha]=[id\circ\alpha]=[\alpha]$.
+\item $(gf)_*[\alpha]=[gf\circ\alpha]=g_*[f\circ\alpha]=g_*f_*[\alpha]$.
+\item Sea $g:Y_1\to Y_0$ su inversa homotópica. Entonces
+$$f_*g_*[\beta]=[fg\circ\beta]=[\beta]$$
+y 
+$$g_*f_*[\alpha]=[gf\circ\alpha]=[\alpha].$$
+Por lo que $g_*$ es la inversa de $f_*$. 
+\end{itemize}
+\end{sol*}
+
 \newpage
 \begin{exercise}
 \begin{enumerate}
 \item[]
 \item Si $f:Y_0\to Y_1$ es tal que $f_*$ es biyectiva para todo X, entonces $f$ es una equivalencia de homotopía.
-\item Si $g:X_0\to X_1$ es tal que $g^*$ es la biyectiva para todo Y, entonces g es una equivalencia de homotopía.
+\item Si $g:X_0\to X_1$ es tal que $g^*$ es la biyectiva para todo Y, entonces $g$ es una equivalencia de homotopía.
 \end{enumerate}
+\begin{sol*}
+\begin{enumerate}\
+\item Si $f_*$ es biyectiva, tiene una inversa $g_*$, luego $g$ es la inversa homotópica de $f$. Basta repetir el mismo razonamiento que en el último apartado del razonamiento anterior pero en sentido contrario. 
+\item Este caso, la aplicación es $g^*:[X_0,Y]\to [X_1,Y]$, y cumple las propiedades análogas al ejercicio anterior. Por tanto este apartado se prueba de forma equivalente al anterior. 
+\end{enumerate}
+\end{sol*}
+
 \end{exercise}
 \newpage
 \begin{exercise}
