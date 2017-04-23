@@ -97,19 +97,74 @@ Probar que todo retracto de un espacio métrico es un subespacio cerrado.
 \end{exercise}
 \newpage
 \begin{exercise}
-Probar que $A$ es retracto de $X$ si y sólo si toda función contninua de $A$ es un espacio arbitrario $Z$ admite una extensión continua sobre $X$.
+Probar que $A$ es retracto de $X$ si y sólo si toda función continua de $A$ es un espacio arbitrario $Z$ admite una extensión continua sobre $X$.
 \end{exercise}
 \newpage
 \begin{exercise}
 Probar que si $A$ y $B$ son retractos de deformación de $X$ e $Y$ respectivamente, entonces $A\times B$ es retracto de deformación de $X\times Y$.
 \end{exercise}
+\begin{sol*}
+Por hipótesis existen $r_1:X\to A$ y $r_2:Y\to B$ continuas tales que $r_1(a)=a\ \forall a\in A$ y $r_2(b)=b\ \forall b\in B$. Podemos construir entonces la aplicación $r:X\times Y\to A\times B$ definida como $r(x,y)=(r_1(x),r_2(y))$ que cumple claramente $r(a,b)=(a,b)\ \forall (a,b)\in A\times B$ y además es continua por ser el producto de aplicaciones continuas. Hasta ahora hemos probado que $A\times B$ es retraco de $X\times Y$, ahora tenemos que probar que es de deformación. Por hipótesis $i_1\circ r_1\simeq Id_X$ e $i_2\circ r_2\simeq Id_Y$, donde $i_1$ e $i_2$ son las respectivas inclusiones. Sean $H_1$ y $H_2$ las homotopías correspondientes. Vamos a construir una homotopía entre $i\circ r$ y $Id_{X\times Y}$, donde $i=i_1\times i_2$. Basta tomar $H:X\times Y\times I\to X\times Y$ definida como $H((x,y),t)=H_1(x,t)\times H_2(y,t)$, que es continua por ser producto de continuas y cumple por hipótesis
+\begin{gather*}
+H((x,y),0)=H_1(x,0)\times H_2(y,0)= (x,y)\\
+H((x,y),1)=H_1(x,1)\times H_2(y,0)= (i_1(r_1(x)),i_2(r_2(y)).
+\end{gather*}
+Esto finaliza el ejercicio.
+\end{sol*}
 \newpage
 \begin{exercise}
 Probar que si $A$ es retracto de deformación de $X$ y $B$ lo es de $A$, entonces $B$ lo es de $X$. 
 \end{exercise}
+\begin{sol*}
+Por hipótesis existe una función continua $H:X\times X\to X$ que cumple $H(x,0)=x$, $H(x,1)\in A$, y $H(a,t)=a\ \forall a\in A$. También existe $G:A\times A\to A$ cumpliendo $G(a,0)=a$, $G(a,1)\in B$ y $G(b,t)=b\ \forall b\in B$. La idea será retraer con deformación $X$ hasta convertirlo en $A$ y luego continuar hasta convertirlo en $B$. Sea $F:X\times I\to X$ definida como sigue
+\[
+F(x,t)=\begin{cases}
+H(x,2t) & t\in[0,\frac{1}{2}]\\
+G(H(x,1),2t-1) & t\in[\frac{1}{2},1]
+\end{cases},
+\]
+que es continua puesto que $F(\frac{1}{2},t)=G(H(x,1),0)=H(x,1)$. Comprobamos que se tiene
+\begin{gather*}
+F(x,0)=H(x,0)=x\\
+F(x,1)=G(H(x,1),1)\in B\\
+F(b,t)=H(b,t)=b\ \forall t\in [0,\frac{1}{2}]\ \forall b\in B\\
+F(b,t)=G(H(b,1),2t-1)=H(b,1)=b\ \forall t\in[\frac{1}{2},1] \ \forall b\in B.
+\end{gather*}
+Con lo que ya hemos terminado. 
+\end{sol*}
 \newpage
-\begin{exercise}Dar un ejemplo de un espacio $X$ y de dos subconjuntos $A$ y $B$ homeomorfos tales que A sea retracto de deformación de $X$ y $B$ no lo sea.
+\begin{exercise}Dar un ejemplo de un espacio $X$ y de dos subconjuntos $A$ y $B$ homeomorfos tales que $A$ sea retracto de deformación de $X$ y $B$ no lo sea.
 \end{exercise}
+\begin{sol*}
+Sea $X=X_1\cup X_2$ un compacto de $\R^2$ formado por dos componentes conexas $X_1$ y $X_2$ tal como se ve en la figura más abajo. Sea $A=\{a_1,a_2\}$ con $a_1\in X_2$ y $a_2\in X_2$. Sea $B=\{b_1,b_2\}\subset X_1$. Como cada $X_i$ es contráctil, $X_1$ puede retraerse con deformación sobre $a_1$ y lo mismo con $X_2$ sobre $a_2$. Pero $B$ no puede ser retracto de deformación, ya que ambos puntos están en una misma componente conexa. Pero $A\cong B$, pues ambos son dos puntos. 
+\definecolor{qqqqff}{rgb}{0.3333333333333333,0.3333333333333333,0.3333333333333333}
+\definecolor{zzttqq}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-8.293333333333335,-0.43333333333333324) rectangle (7.04,6.993333333333332);
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.10000000149011612] (-5.,5.) -- (-2.,5.) -- (-2.,1.) -- (-5.,1.) -- cycle;
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.10000000149011612] (-1.,5.) -- (-1.,1.) -- (2.,1.) -- (2.,5.) -- cycle;
+\draw [color=zzttqq] (-5.,5.)-- (-2.,5.);
+\draw [color=zzttqq] (-2.,5.)-- (-2.,1.);
+\draw [color=zzttqq] (-2.,1.)-- (-5.,1.);
+\draw [color=zzttqq] (-5.,1.)-- (-5.,5.);
+\draw [color=zzttqq] (-1.,5.)-- (-1.,1.);
+\draw [color=zzttqq] (-1.,1.)-- (2.,1.);
+\draw [color=zzttqq] (2.,1.)-- (2.,5.);
+\draw [color=zzttqq] (2.,5.)-- (-1.,5.);
+\draw (-4,5.91) node[anchor=north west] {$\Large{X_1}$};
+\draw (0.,5.91) node[anchor=north west] {$\Large{X_2}$};
+\draw (-3.6,2.2) node[anchor=north west] {$\Large{a_1}$};
+\draw (0.36,2.2) node[anchor=north west] {$\Large{a_2}$};
+\draw (-3.6,4.2) node[anchor=north west] {$\Large{b_1}$};
+\draw (-3.56,3.2) node[anchor=north west] {$\Large{b_2}$};
+\begin{scriptsize}
+\draw [fill=qqqqff] (-4.,4.) circle (2.5pt);
+\draw [fill=qqqqff] (-4.,3.) circle (2.5pt);
+\draw [fill=qqqqff] (-4.,2.) circle (2.5pt);
+\draw [fill=qqqqff] (0.,2.) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+\end{sol*}
 \newpage
 \begin{exercise}
 Probar que $S^{n-1}$ es retracto de deformación de $R^n-\{0\}$. Encontrar retractos de deformación (compactos) de los siguientes espacios.
@@ -125,8 +180,18 @@ Probar que $S^{n-1}$ es retracto de deformación de $R^n-\{0\}$. Encontrar retra
 \end{exercise}
 \newpage
 \begin{exercise}
-Probar que si X es contractil e Y arcoconexo, dos aplicaciones cualesquiera de X en Y son homotópicas.
+Probar que si $X$ es contráctil e $Y$ arcoconexo, dos aplicaciones cualesquiera de $X$ en $Y$ son homotópicas.
 \end{exercise}
+\begin{sol*}
+Por ser $X$ contráctil, $Id_X\simeq x_0$ mediante una homotopía $F:X\times I\to X$. Sea $f:X\to Y$ una aplicación continua y sea $f\circ F: X\times I\to Y$ la aplicación $(x,t)\mapsto f(F(x,t))$, que nos da una homotopía entre $f$ y la aplicación constante $f(x_0)$. Dado $y\in Y$ sea $\gamma: I\to Y$ un camino desde $f(x_0)$ hasta $y$. Definimos entonces la homotopía $G:X\times I\to Y$ como $G(x,t)=\gamma(t)$. Por lo tanto, dadas $f,g:X\to Y$ funciones continuas, podemos partir de $f(x_0)$ y llegar a $y=g(x_0)$ con la siguiente homotopía $H:X\times Y\to Y$,
+$$
+H(x,t)=\begin{cases}
+f(F(x,t)) & t\in[0,\frac{1}{2}]\\
+\gamma(t) & t\in[\frac{1}{2},1]
+\end{cases},
+$$
+que claramente es continua.
+\end{sol*}
 \newpage
 \begin{exercise}
 Indicar cuántos elementos tiene el conjunto de las clases de homotopía de aplicaciones continuas de $(S^1,\{1\})$ en $(X,*)$ rel. $\{1\}$, en los casos siguientes:
@@ -153,7 +218,7 @@ Probar que toda aplicación continua $f:Y_0\to Y_1$ da lugar a una aplicación $
 \begin{exercise}
 \begin{enumerate}
 \item[]
-\item Si $F:Y_0\to Y_1$ es tal que $f_*$ es biyectiva para todo X, entonces $f$ es una equivalencia de homotopía.
+\item Si $f:Y_0\to Y_1$ es tal que $f_*$ es biyectiva para todo X, entonces $f$ es una equivalencia de homotopía.
 \item Si $g:X_0\to X_1$ es tal que $g^*$ es la biyectiva para todo Y, entonces g es una equivalencia de homotopía.
 \end{enumerate}
 \end{exercise}
@@ -165,10 +230,40 @@ Probar que las siguientes aplicaciones son equivalencias de homotopía:
 \item Toda aplicación continua entre espacios contráctiles.
 \end{enumerate}
 \end{exercise}
+\begin{sol*}
+\begin{enumerate}\
+\item Sea $f:X\to Y$ una equivalencia de homotopía con $g:Y\to X$ como inversa homotópica. Sea $h:X\to Y$ equivalente a $f$. Entonces, usando las propiedades de la homotopía con la composición, 
+\[
+h\simeq f\Leftrightarrow h\circ g\simeq f\circ g\simeq Id_Y
+\]
+y
+\[
+h\simeq f\Leftrightarrow g\circ h\simeq g\circ f\simeq Id_X.
+\]
+Por transitividad, tenemos que $h$ es equivalencia de homotopía con la misma inversa que $f$. 
+\item Si $f:X\to Y$ es una aplicación continua entre espacios contráctiles, entonces $f\simeq y_0\in Y$. Sea $g:Y\to X$ una aplicación continua, que cumplirá $g\simeq x_0\in X$. 
+\[
+f\circ g\simeq y_0\circ g = y_0\simeq Id_Y
+\]
+y,
+\[
+g\circ f\simeq x_0\circ f =x_0\simeq Id_X.
+\]
+Luego cualquier función continua es inversa homotópica de cualquier otra cuando los espacios son contráctiles. 
+\end{enumerate}
+\end{sol*}
 \newpage
 \begin{exercise}
 Sean $f_1,g_1:X_1\to Y_1$ y $f_2,g_2:X_2\to Y_2$ aplicaciones tales que $f_1\simeq g_1$ y $f_2\simeq g_2$. Probar que $f_1\times f_2\simeq g_1\times g_2$. Como consecuencia, si $f_1$ y $f_2$ son equivalencias de homotopía, también lo es $f_1\times f_2$. Así pues, $X\times Y$ es contráctil si y solo sí $X$ e $Y$ lo son.
 \end{exercise}
+\begin{sol*}
+Sea $H_1$ una homotopía entre $f_1$ y $g_1$, y $H_2$ una homotopía entre $f_2$ y $g_2$. Construimos la homotopía $H:X_1\times X_2\times I\to Y_1\times Y_2$ definida como $H((x_1,x_2),t)=(H_1(x_1,t),H_2(x_2,t)$. Se tiene
+\begin{gather*}
+H((x_1,x_2),0)=(H_1(x_1,0),H_2(x_2,0))=(f_1(x_1),f_2(x_2))\\
+H((x_1,x_2),1)=(H_1(x_1,1),H_2(x_2,1))=(g_1(x_1),g_2(x_2))
+\end{gather*}
+y además es continua por ser producto de continuas. Si $f_1$ y $f_2$ son equivalencias de homotopía basta tomar $g_1$ y $g_2$ sus respectivas inversas homotópicas. En particular, si $f_1=x\in X$, $f_2=y\in Y$, $g_1=Id_X$ y $g_2=Id_Y$, $X\times Y$ es contráctil si y solo si lo son $X$ e $Y$. 
+\end{sol*}
 \newpage
 \begin{exercise}
 Se dice que el par $(X,A)$ tiene la Propiedad de Extensión de Homotpía (PEH) si para toda aplicación continua $f:X\to Y$ es un espacio arbitrario Y y toda homotopía $F:A\times I \to Y$ de aplicación $f_{|_A}$, existe homotopía $G:X\times I \to Y$ que extiende a $F\cup f$. Probar que si A es cerrado, $(X,A)$ tiene la PEH si y sólo si $(X\times 0)\bigcup A\times I$ es retracto de $X\times I$.
@@ -190,5 +285,23 @@ Sea $\Pi_0(X)$ el conjunto de las componentes conexas por caminos de X. Dada una
 \begin{exercise}
 Probar que un retracto de un espacio contráctil es contráctil.
 \end{exercise}
+\begin{sol*}
+Sabemos que $X$ es contráctil si y solo si $Id_X\simeq cte$ mediante una homotopía $H$. Sea $r:X\to A$ una retracción. Vamos a ver que $A$ es contráctil. Por ser $r$ retracción, se tiene
+\[
+r\circ i =Id_A,\ \text{con }i: X\hookrightarrow A\text{ la inclusión}
+\]
+Sea $H:I\times I\to X$ una homotopía que cumpla $H(x,0)=x$ y $H(x,1)=x_0\ \forall x\in X$. Buscamos $G:A\times I\to A$ cumpliendo  $G(a,0)=a$ y $G(a,1)=a_0\in A\ \forall a\in A$. Vamos a definirla como la siguiente composición:
+\[
+\begin{tikzcd}
+G: A\times I \arrow[r,"i\times Id_I"]& X\times I \arrow[r, "H"] &  X \arrow[r,"r"] & A 
+\end{tikzcd}
+\]
+Así pues, dado $a\in A$,
+\begin{gather*}
+G(a,0)=r\circ H\circ (i\times Id_X)(a,0)=rH(a,0)=r(a)=a\\
+G(a,1)=r\circ H\circ (i\times Id_X)(a,1)=rH(a,1)=r(x_0)=a_0\in A
+\end{gather*}
+Por lo que hemos llegado al resultado. 
+\end{sol*}
 \newpage
 \end{document}
