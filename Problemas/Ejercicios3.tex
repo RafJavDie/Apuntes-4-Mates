@@ -192,13 +192,93 @@ Probar que $S^{n-1}$ es retracto de deformación de $R^n-\{0\}$. Encontrar retra
 Sea $i$ la inclusión $i:S^{n-1}\hookrightarrow\R^n\setminus\{0\}$ y sea $r:\R^n\setminus\{0\}\to S^{n-1}$ dada por $r(x)=\frac{x}{\norm{x}}$. Tenemos que probar que $r\circ i\simeq Id_{S^{n-1}}$ y que $i\circ r\simeq Id_{\R^n\setminus\{0\}}$. La primera es trivial pues $r\circ i= Id_{S^{n-1}}$. Para la segunda definimos $H(x,t)=(1-t)x+t\frac{x}{\norm{x}}$ que cumple $H(x,0)=x=Id(x)$ y $H(x,1)=\frac{x}{\norm{x}}=i(r(x))$, la cual es claramente continua.
 \begin{enumerate}
 \item $\bigvee_{p_1}^{p_k}S^1$.
-\item $S^1$.  
-\item $S^1$ (se retrae sobre $\R^2\setminus\{0\}$ y luego a $S^1$). $S^2\vee T^2$ como se puede ver en la imagen. 
+\item $S^1\vee S^1$.
+
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-2.0933333333333337,-1) rectangle (13.24,4);
+\fill[fill=black,fill opacity=0.10000000149011612] (3.,3.) -- (0.,3.) -- (0.,0.) -- (3.,0.) -- cycle;
+\draw [color=ffffff,fill=ffffff,fill opacity=1.0] (1.4933333333333336,1.4733333333333323) circle (0.44402202147591235cm);
+\draw (3.,3.)-- (0.,3.);
+\draw (0.,3.)-- (0.,0.);
+\draw (0.,0.)-- (3.,0.);
+\draw (3.,0.)-- (3.,3.);
+\draw [->] (0.,3.) -- (1.6,3.);
+\draw [->] (0.,0.) -- (1.5866666666666671,0.);
+\draw [->] (0.,0.) -- (0.,1.66);
+\draw [->] (3.,0.) -- (3.,1.54);
+\draw [->,dash pattern=on 2pt off 2pt] (1.826666666666667,1.7666666666666655) -- (2.266666666666667,2.0733333333333324);
+\draw [->,dash pattern=on 2pt off 2pt] (1.44145324639669,1.9143140722947996) -- (1.44,2.4066666666666654);
+\draw [->,dash pattern=on 2pt off 2pt] (1.104009315179931,1.6868336013529408) -- (0.7466666666666668,2.0066666666666655);
+\draw [->,dash pattern=on 2pt off 2pt] (1.0604746885923042,1.3743942145353825) -- (0.5066666666666668,1.4066666666666656);
+\draw [->,dash pattern=on 2pt off 2pt] (1.5361033970521951,1.0313760082384311) -- (1.5333333333333337,0.5133333333333324);
+\draw [->,dash pattern=on 2pt off 2pt] (1.2387034239488126,1.109576319926874) -- (1.,0.78);
+\draw [->,dash pattern=on 2pt off 2pt] (1.9323447901837905,1.406816445931748) -- (2.4666666666666672,1.4066666666666656);
+\draw [->,dash pattern=on 2pt off 2pt] (1.8251995298851869,1.178341158620574) -- (2.306666666666667,0.74);
+\draw [->] (4.,1.46) -- (5.08,1.4466666666666657);
+\draw (6.,3.)-- (6.,0.);
+\draw (6.,0.)-- (9.,0.);
+\draw (9.,0.)-- (9.,3.);
+\draw (9.,3.)-- (6.,3.);
+\draw [->] (6.,3.) -- (7.626666666666668,3.);
+\draw [->] (9.,0.) -- (9.,1.5666666666666655);
+\draw [->] (6.,0.) -- (6.,1.5133333333333323);
+\draw [->] (6.,0.) -- (7.56,0.);
+\draw (1.32,3.7) node[anchor=north west] {$\Large{A}$};
+\draw (7.133333333333335,3.7266666666666652) node[anchor=north west] {$\Large{A}$};
+\draw (1.186666666666667,0.03333333333333257) node[anchor=north west] {$\Large{A}$};
+\draw (7.28,-0.02) node[anchor=north west] {$\Large{A}$};
+\draw (-0.7466666666666668,1.86) node[anchor=north west] {$\Large{B}$};
+\draw (3.2,1.8333333333333321) node[anchor=north west] {$\Large{B}$};
+\draw (5.44,1.7) node[anchor=north west] {$\Large{B}$};
+\draw (9.173333333333336,1.7933333333333321) node[anchor=north west] {$\Large{B}$};
+\draw (4.386666666666668,1.98) node[anchor=north west] {$\Large{r}$};
+\end{tikzpicture}  
+
+\item $S^1$ (se retrae sobre $\R^2\setminus\{0\}$ con la proyección y luego a $S^1$). $S^2\vee T^2$ como se puede ver en la imagen. 
 \begin{figure}[h!]
 \includegraphics[scale=0.6]{S2wedgeT2}
 \end{figure}  
-\item $S^1$ y $S^1\vee S^1$.
+
 \newpage
+
+\item En el primer caso $S^1$. Vamos a definir la retracción sobre la Banda de Möbius vista como su polígono fundamental. Es decir $B=I\times I/\sim$ donde $(1,t)\sim (0,1-t)$. Sea pues $r:B\to S^1$ definida como $r([x,t])\mapsto [\frac{1}{2},t]$. Esta aplicación es claramente continua y cumple que $r\circ i_{S^1}=Id_{S^1}$. Tenemos que probar entonces que $i\circ r\simeq Id_{B}$. Sea $H:B\times I\to B$ definida como $H([x,t],s)=[\frac{1}{2}+(x-\frac{1}{2})s,t]$, Es fácil comprobar que cumple lo requerido. \\
+En el segundo caso es $S^1\vee S^1$. Lo vemos gráficamente. 
+
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-2.0933333333333337,-1.) rectangle (13.026666666666669,4);
+\fill[fill=black,fill opacity=0.10000000149011612] (3.,3.) -- (0.,3.) -- (0.,0.) -- (3.,0.) -- cycle;
+\draw [color=ffffff,fill=ffffff,fill opacity=1.0] (1.4933333333333336,1.4733333333333323) circle (0.44402202147591235cm);
+%\fill(6.,3.) -- (6.,0.) -- (9.,0.) -- (9.,3.) -- cycle;
+\draw (3.,3.)-- (0.,3.);
+\draw (0.,3.)-- (0.,0.);
+\draw (0.,0.)-- (3.,0.);
+\draw (3.,0.)-- (3.,3.);
+\draw [->] (0.,3.) -- (1.6,3.);
+\draw [->] (0.,0.) -- (1.5866666666666671,0.);
+\draw [->,dash pattern=on 2pt off 2pt] (1.826666666666667,1.7666666666666655) -- (2.266666666666667,2.0733333333333324);
+\draw [->,dash pattern=on 2pt off 2pt] (1.44145324639669,1.9143140722947996) -- (1.44,2.4066666666666654);
+\draw [->,dash pattern=on 2pt off 2pt] (1.104009315179931,1.6868336013529408) -- (0.7466666666666668,2.0066666666666655);
+\draw [->,dash pattern=on 2pt off 2pt] (1.0604746885923042,1.3743942145353825) -- (0.5066666666666668,1.4066666666666656);
+\draw [->,dash pattern=on 2pt off 2pt] (1.5361033970521951,1.0313760082384311) -- (1.5333333333333337,0.5133333333333324);
+\draw [->,dash pattern=on 2pt off 2pt] (1.2387034239488126,1.109576319926874) -- (1.,0.78);
+\draw [->,dash pattern=on 2pt off 2pt] (1.9323447901837905,1.406816445931748) -- (2.4666666666666672,1.4066666666666656);
+\draw [->,dash pattern=on 2pt off 2pt] (1.8251995298851869,1.178341158620574) -- (2.306666666666667,0.74);
+\draw [->] (4.,1.46) -- (5.08,1.4466666666666657);
+\draw (6.,3.)-- (6.,0.);
+\draw (6.,0.)-- (9.,0.);
+\draw (9.,0.)-- (9.,3.);
+\draw (9.,3.)-- (6.,3.);
+\draw [->] (6.,3.) -- (7.626666666666668,3.);
+\draw [->] (6.,0.) -- (7.56,0.);
+\draw (1.32,3.7) node[anchor=north west] {$\Large{A}$};
+\draw (7.133333333333335,3.7266666666666652) node[anchor=north west] {$\Large{A}$};
+\draw (1.186666666666667,0.03333333333333182) node[anchor=north west] {$\Large{A}$};
+\draw (7.28,-0.02) node[anchor=north west] {$\Large{A}$};
+\draw (4.386666666666668,1.98) node[anchor=north west] {$\Large{r}$};
+\end{tikzpicture}
+
 \item $T^2$. Partimos de
 \begin{figure}[h!]
 \includegraphics[scale=0.7]{T2-1}
@@ -213,14 +293,14 @@ Visto en el espacio tendríamos lo siguiente
 \begin{figure}[h!]
 \includegraphics[scale=0.6]{T2-3}
 \end{figure}
-\newpage
+
 Finalmente rotamos entorno al eje $0Z$.
 
 \begin{figure}[h!]
 \includegraphics[scale=0.6]{T2-4}
 \end{figure}
 
-\item $S^1$. Podemos empujar el agujero hasta los bordes y luego pegar con las identificaciones, de modo que queda una circunferencia. 
+\item $S^1$. Podemos empujar el agujero hasta los bordes y luego pegar con las identificaciones, de modo que queda una circunferencia. La retracción, suponiendo que el agujero está en el centro, sería $r:\mathbb{P}_2\R\to S^1$ definida como $r(x)=\frac{x}{||x||}$. La homotopía para que $i\circ r\simeq Id$ es $H: \mathbb{P}_2\R\times I\to \mathbb{P}_2\R$ tal que $H(x,t)=(1-t)x+\frac{x}{||x||}t$. 
 \item $S^1\vee S^1$. Ya que podemos considerar un semiespacio por cada recta, que sería homeomorfo al primero del apartado $3$. Luego basta unirlos por un punto. 
 \end{enumerate}
 \end{sol*}
