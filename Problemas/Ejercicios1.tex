@@ -335,8 +335,18 @@ En el cono basta ver que el vértice se puede conectar con los demás puntos. En
 \begin{gather*}
 f(x,t) = f(x',t') \Leftrightarrow tv + (1-t)x = t'v + (1-t)x' \Leftrightarrow x = x' \lor t = 1
 \end{gather*}
-\item Supongamos que existe un base numerable de abierto en el vértice $\{a_1,a_2,\dotsc,a_k,\dotsc\}$. Estos abiertos $a_k$ son de la forma $a_k=w_{k1}\times w_{k2} \times \dotsc$ 
+\item Supongamos que existe un base numerable de entornos del vértice dados por
+\begin{gather*}
+V_1=\bigcup_{n\in\Z}\{n\}\times(a_{n1},1]\\
+\vdots\\
+V_m=\bigcup_{n\in\Z}\{n\}\times(a_{nm},1]\\
+\vdots
+\end{gather*}
+con $a_{nm}\in(0,1)$. Consideremos el entorno $\{1\}\times(w_1,1]$ con $w_1<a_{11}$. Este entorno no está contenido en $V_1$ por construcción. Así pues, construimos 
+\[W=\Z_-\times(0,1]\cup\bigcup_{n=1}^{\infty}\{1\}\times (w_n,1]\quad w_n<a_{nn}.\]
+Por lo que hemos comentado $W\not\subseteq V_j\ \forall j$, con lo que hemos llegado a una contradicción. 
 \end{itemize}
+
 \end{sol*}
 \end{exercise}
 
