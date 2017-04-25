@@ -109,8 +109,14 @@ Probar que si $\mathcal{R}$ es una relación de equivalencia sobre un espacio $X
 \begin{sol*}
 \begin{itemize}
 \item[]
-\item Supongamos que p es cerrada y consideramos $x_i$, $i\in I$ el conjunto elementos de X tales que algún representante de su clase de equivalencia está en $A$ y, consideramos además, $C$ la unión de todas ellos. Es claro que $p(A) = p(C)$, pues en A existe, al menos, un representante de cada clase de los elementos de C ($p(C)\subset p(A)$) y, por construcción, $A\subset C$, luego $p(A)\subset p(C)$. Como A es cerrado, por la hipótesis sobre p, $p(C)$ ha de serlo. Usando que la proyección continua, sabemos que $p^{-1}(p(C))$ es cerrado, pero, esto es precisamente $p(C)$. Una de las contenciones es conocida, sea $x\in p^{-1}(p(C))$ entonces $p(x) \in p(C)$, luego $x$ pertenece a una de las clases de equivalencia que cortan a A, luego por hipótesis $x\in C$.
-\item 
+\item Supongamos que p es cerrada y consideramos las clases de equivalencia $[x]$ tales que $A\cap[x]\neq \emptyset$ y sea $\Gamma$ la unión de todas ellos. Es claro que $p(A) = p(\Gamma)$. Como A es cerrado, por la hipótesis sobre $p$, $p(\Gamma)$ también lo es. Usando que la proyección continua, sabemos que $p^{-1}(p(\Gamma))$ es cerrado, pero, esto es precisamente $p(\Gamma)$.
+\item Usando una construcción análoga, es claro que si suponemos la segunda propiedad y sea $A \subset X$ cerrado, entonces $p(A)$ es cerrado si, por construcción de la topología del cociente, $p^{-1}(p(A))$ es cerrado, pero $p^{-1}(p(A)) = \Gamma$, que es cerrado por hipótesis.
+\item Supongamos la segunda propiedad y sea $A \subset X$ abierto. En tal caso, $A^c$ es cerrado y podemos aplicarle la hipótesis, es decir, la unión de todas las clases de equivalencia $\Gamma$ que cortan a $A^c$ es cerrado. Basta considerar que:
+\[
+\Gamma = \bigcup_{[x]\cap A^c \neq \emptyset} [x]  = \bigcup_{[x]\not\subset A} [x] \Rightarrow \Gamma^c = \bigcup_{[x]\subset A} [x]
+\]
+Por tanto, $\Gamma^c$ es la unión de todas las clases de equivalencias contenidas en $A$ y, por ser $\Gamma$ cerrado, deducimos $\Gamma^c$ es abierto.
+\item Finalmente, veamos que suponiendo la tercera propiedad tenemos la segunda. Sea $A\subset X$ cerrado, entonces $A^c$ es abierto y podemos aplicarle la hipótesis, es decir, que el conjunto $\Gamma = \bigcup_{[x]\subset A}[x]$ es abierto. Entonces $\Gamma^c = \bigcup_{[x]\cap A^c \neq \emptyset} [x]$ es cerrado, como queríamos probar.
 \end{itemize}
 \end{sol*}
 
@@ -316,10 +322,22 @@ En el cono basta ver que el vértice se puede conectar con los demás puntos. En
 \newpage
 \begin{exercise}
 \begin{itemize}
+\item[]
 	\item Probar que $C S^{n-1}$ es homeomorfo a $B^n$, con $n \geq 1$ ($B^n$ es la bola cerrada con centro el origen y radio $1$).
 	\item Dado $X \subseteq \mathbb{R}^{n-1} \times \{0\} \subseteq \mathbb{R}^n$ y $v \in \mathbb{R}^n-\mathbb{R}^{n-1} \times \{0\}$ se considera el conjunto $vX = \{ tv + (1-t)x : x \in X, t \in [0,1]\}$. Probar que si $X$ es compacto, entonces $C X$ es homeomorfo a $vX$.
 	\item Considérese $X = \mathbb{Z} \subseteq \mathbb{R}$ y demuéstrese que $C X$ no tiene en el vértice una base numerable de abiertos. Concluir que el resultado del apartado anterior no es cierto en general.
 \end{itemize}
+\begin{sol*}
+\begin{itemize}
+\item[]
+\item Sea $f:S^{n-1}\times [0,1] \to B^n$, $f(x,t) = (1-t)x$. Es claro que f es continua y sobreyectiva. Además, como $S^{n-1}\times [0,1]$ es compacto y $B^n$ es espacio métrico, en particular es $T_2$, luego $f$ es cerrada. Como la relación que induce $f$ es aquella bajo la cual el cociente del cilindro es el cono, tenemos la prueba.
+\item Sea $f:X\times [0,1] \to vX$, $f(x,t) = tv + (1-t)x$. Es claro que $f(x,1)= v$ y que $f(x,0)=x$. La aplicación $f$ es claramente continua y, además, sobreyectiva pues: $\forall x\in vC$, $x = tv + (1-t)x'$ para algún $x'\in x$, $t\in [0,1]$, así tomamos $(x',t)$ como preimagen. Por hipótesis, X es compacto, luego $X\times [0,1]$ es compacto y, como $vX$ es subconjunto de $\R^n$, es $T_2$, por lo que deducimos que $f$ es cerrada. Finalmente, veamos cuál es la relación que induce $f$. Es claro que $f(x,t)$ es inyectiva para $t=0$ pero para $t=1$ todo X va a parar a único punto. Por las hipótesis sobre $v$, sabemos que la matriz $\left(tv \mid (1-t)x\right)$, si $t\neq 0,1$ tiene rango máximo, luego cada punto de $y$ tiene una y solo una preimagen. Por tanto, la relación que induce $f$ es, como queríamos probar:
+\begin{gather*}
+f(x,t) = f(x',t') \Leftrightarrow tv + (1-t)x = t'v + (1-t)x' \Leftrightarrow x = x' \lor t = 1
+\end{gather*}
+\item Supongamos que existe un base numerable de abierto en el vértice $\{a_1,a_2,\dotsc,a_k,\dotsc\}$. Estos abiertos $a_k$ son de la forma $a_k=w_{k1}\times w_{k2} \times \dotsc$ 
+\end{itemize}
+\end{sol*}
 \end{exercise}
 
 
@@ -331,8 +349,13 @@ En el cono basta ver que el vértice se puede conectar con los demás puntos. En
 	\item Probar que existen inmersiones cerradas $\phi_1, \phi_2 : C X \to \Sigma X$ cuyas imágenes son los subespacios $C_1 X = \{[x,t] \in \Sigma X : -1 \leq t \leq 0\}$, $C_2 X = \{[x,t] \in \Sigma X : 0 \leq t \leq 1\}$
 \end{itemize}
 \end{exercise}
-
-
+\begin{sol*}
+\begin{itemize}
+\item[]
+\item Basta ver que la aplicación, $\phi(x) = [x, \frac{1}{2}]$ es una inmersión cerrada. La aplicación $\$\phi$ es inyectiva, sobreyectiva sobre su imagen. 
+\item Sea $K$ un cerrado de X y sea $\{y_k\}\subset \phi(K)$ una sucesión con límite $y$. 
+\end{itemize}
+\end{sol*}
 \newpage
 \begin{exercise}
 Probar que $\Sigma S^{n-1}$ es homeomorfo a $S^n$, $n \geq 1$. \textbf{Indicación:} Considérese la aplicación $f : S^{n-1} \times [0,1] \to S^n$ dada por:
