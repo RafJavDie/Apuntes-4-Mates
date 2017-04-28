@@ -125,14 +125,21 @@ Por tanto, $\Gamma^c$ es la unión de todas las clases de equivalencias contenid
 Sean $A$ y $B$ subconjuntos de $X$ tales que $A$ es cerrado y $A \subseteq B$. Probar que existe una inmersión de $B/A$ en $X/A$.
 \end{exercise}
 \begin{sol*}[con $B$ cerrado]
-Vamos a dar explícitamente dicha inmersión. Esta es la aplicación $i_\pi:B/A\rightarrow X/A$ definida como $i_\pi([b])=[b]$. Está bien definida puesto que la imagen de dos elementos coincide si y solo sí están relacionados. Por ello es además inyectiva. Claramente es continua, ya que si $G$ es un abierto de $X/A$, entonces $i_\pi^{-1}(G)$ es de la forma $G\cap B/A$, que por definición de la topología del subespacio, es abierto. Obsérvese que en $i_\pi([b])$ no hay más elementos que en $[b]$ puesto que si $c\in[b]$, entonces o bien $c=b$ o bien $c,b\in A\subseteq B$. Esto quiere decir que $i_\pi(C)=C\ \forall C\subseteq B$, llevando $C$ la topología del subespacio. Veamos por último que es cerrada. Sea $W$ un cerrado de $B/A$. Entonces $\pi_B^{-1}(W)$ es cerrado por la definición de topología cociente, siendo $\pi_B$ la proyección canónica de $B$ en $B/A$. Observemos el siguiente diagrama conmutativo:
-\[
-\begin{tikzcd}
-B\arrow[r,"\pi_B"]\arrow[d,"i"'] & B/A\arrow[r,"i_\pi"] & X/A\\
-X\arrow[urr,"\pi"]
-\end{tikzcd}
-\]
-Esto quiere decir que $i_\pi=\pi\circ i\circ \pi_B^{-1}$. Por lo anterior y la hipótesis añadida, $i\circ \pi_B^{-1}(W)$ es cerrado, luego resta probar que $\pi$ es cerrada. Esto se tiene por el ejercicio anterior, ya que todas las clases de equivalencia contenidas en $A$ forman un solo punto en el cociente, de modo que su unión es cerrada. 
+Vamos a dar explícitamente dicha inmersión. Esta es la aplicación $i_\pi:B/A\rightarrow X/A$ definida como $i_\pi([b])=[b]$. 
+\begin{itemize}
+\item Está bien definida puesto que la imagen de dos elementos coincide si y solo sí están relacionados. Por ello es además inyectiva. 
+\item Claramente es continua, ya que si $G$ es un abierto de $X/A$, entonces $i_\pi^{-1}(G)$ es de la forma $G\cap B/A$, que por definición de la topología del subespacio, es abierto. 
+\item Obsérvese que en $i_\pi([b])$ no hay más elementos que en $[b]$ puesto que si $c\in[b]$, entonces o bien $c=b$ o bien $c,b\in A\subseteq B$. Esto quiere decir que $i_\pi(C)=C\ \forall C\subseteq B$, llevando $C$ la topología del subespacio. 
+\item Veamos por último que es cerrada. Sea $W$ un cerrado de $B/A$, entonces $W = K \cap A$ para algún $K \subset B$ cerrado, que es a su vez $K = S \cap B$ para algún cerrado $S\subset X$ Por tanto $W=A \cap B \cap S = A \cap S$. Queremos ver que $p(W)=W$ es también cerrado en $X/A$, pero esto es sí y solo sí W es la intersección de algún cerrado de $X$ con $A$, como efectivamente se verifica.
+\end{itemize} 
+% Entonces $\pi_B^{-1}(W)$ es cerrado por la definición de topología cociente, siendo $\pi_B$ la proyección canónica de $B$ en $B/A$. Observemos el %siguiente diagrama conmutativo:
+%\[
+%\begin{tikzcd}
+%B\arrow[r,"\pi_B"]\arrow[d,"i"'] & B/A\arrow[r,"i_\pi"] & X/A\\
+%X\arrow[urr,"\pi"]
+%\end{tikzcd}
+%\]
+%Esto quiere decir que $i_\pi=\pi\circ i\circ \pi_B^{-1}$. Por lo anterior y la hipótesis añadida, $i\circ \pi_B^{-1}(W)$ es cerrado, luego resta probar que $\pi$ es cerrada. Esto se tiene por el ejercicio anterior, ya que todas las clases de equivalencia contenidas en $A$ forman un solo punto en el cociente, de modo que su unión es cerrada. 
 \end{sol*}
 
 \newpage
@@ -219,14 +226,12 @@ Además es sobreyectiva. Si $y=0\in\R^2$ tiene como preimagen toda la bola unida
 	\end{cases}
 	\]
 	donde $x_0$ es el punto de unión en la \emph{wedge sum} y $p:B^2\to S^2\setminus\{x_0\}$ es la proyección estereográfica. Como la proyección es homeomorfismo el primer trozo es la aplicación del apartado anterior, esta aplicación es claramente sobreyectiva. Además es continua puesto que los límites coinciden en cada parte (entendiendo que la frontera de $B^2$ se proyectaría sobre $x_0$). Tanto el trozo de $g$ como el $p$ son homeomorfismos locales, por lo que se puede probar que es cerrada aplicando el mismo razonamiento que en el apartado anterior para los casos en que $||y||=1$ y $||y||\neq 1$. O bien, teniendo en cuenta que $D^2$ es compacto y $S^2$ es Hausdorff, para luego aplicar el razonamiento del primer apartado solo al caso en el que $||y||>1$. 
-	\item El subespacio resultante es homeomorfo a $D^2$. Para verlo nos ayudamos de la función $f:\mathbb{R}^2\to D^2$ definida en polares como
-\[
-f(r,\theta)=\begin{cases}
-(1,\theta) & r>1\\
-(r,\theta) & r\le1
-\end{cases}.
-\]
-Claramente $f$ es continua usando el criterio del límite y es sobreyectiva puesto que restringida a $D^2$ es la identidad. Además es cerrada, y se puede aplicar un razonamiento análogo al del primer apartado distinguiendo los casos $||y||=1$ y $||y||\neq 1$, utilizando que en el interior de $D^2$ la función tiene inversa continua. 
+	\item El subespacio resultante es homeomorfo a $S^2$. Para verlo nos ayudamos de la función $f:\mathbb{R}^2\to S^2$ definida como:
+\[ f(x_1,\dots,x_n) = \begin{cases}
+(2 \sqrt{1-\norm{x}^2}x_1, \dots, 2 \sqrt{1-\norm{x}^2}x_n, 2 \norm{x}^2-1) & x\in B^n\\
+(0,0,1) & x\not \in B^n
+\end{cases} \]
+Claramente $f$ es continua y sobreyectiva. Además, es inyectiva en el interior de $B^n$ y constante en el resto, luego la relación que induce es la que deseamos. Además es cerrada, y se puede aplicar un razonamiento análogo al del primer apartado distinguiendo. 
 \end{itemize}
 \end{sol*}
 
@@ -245,7 +250,7 @@ Veamos que $f$ está bien definida. Sea $y \in [x]_1$, es decir, con $y \mathcal
 
 \newpage
 \begin{exercise}
-Sea $\mathcal{R}$ una relación de equivalencia sobre $X$ tal que para todo $x \in X$, $[x]$ está contenida en alguna componente conexa de $X$. Probar que las componentes conexa de $X/\mathcal{R}$ son las imágenes por la proyección canónica de las componentes conexas de $X$.
+Sea $\mathcal{R}$ una relación de sobre $X$ tal que para todo $x \in X$, $[x]$ está contenida en alguna componente conexa de $X$. Probar que las componentes conexa de $X/\mathcal{R}$ son las imágenes por la proyección canónica de las componentes conexas de $X$.
 \end{exercise}
 
 
@@ -298,7 +303,19 @@ Sean $[x],[y] \in X/\mathcal{R}$ con $[x] \neq [y]$. Como $X/\mathcal{R}$ es $T_
 \begin{exercise}
 Sea $X = \{x \in \mathbb{R} : x \geq 0\}$. Se considera sobre $X$ la relación de equivalencia $\mathcal{R}$ definida por la partición $\left\{\left\{a, \frac{1}{a}\right\} \right\}_{a > 0} \cup \{0\}$. Demostrar que $p : X \to X/\mathcal{R}$ es abierta, pero que $\mathcal{R}$ no es abierto en $X \times X$.
 \end{exercise}
-
+\begin{sol*}
+Es claro que $\mathcal{R}$ no puede ser abierto. Podemos considerar $X\times X$ como la restricción al primer cuadrante de $\R^2$ con la topología habitual. En este sentido, podemos ver $\mathcal{R}$ como la unión de dos grafos de funciones continuas, que son cerradas de $\R^2$, y por tanto también lo son de $X\times X$. Por ser el primer cuadrante superior conexo, deducimos $\mathcal{R}$ no puede ser abierto. 
+\newline
+Veamos que la aplicación $p$ es abierta. Sea $A$ un abierto de $\R_{\geq 0}$, entonces $A$ es la unión de, o bien, intervalos abiertos contenidos en $\R_{>0}$ o bien intervalos de la forma $[0,a)$ con $a\in\R_{>0}$. Como la unión arbitraria de abiertos es abierta, supondremos simplemente que $A=(a,b)$ o que $A=[0,a)$. En tal caso, $p(A)$ es abierto si y solo si $p^{-1}(p(A))$ es abierto, pero, ¿tenemos una expresión explícita para este conjunto? De hecho sí, dado que $a,b\in \R_{>0}$:
+\[
+p^{-1}(p(A))=
+\begin{cases}
+(a,b)\cup\left(\frac{1}{b},\frac{1}{a}\right) & A = (a,b)\\
+[0,a)\cup \left(\frac{1}{a},+\infty\right) & A = [0,a)
+\end{cases}
+\]
+Claramente estos conjuntos son abiertos en $X$.
+\end{sol*}
 
 \newpage
 \begin{exercise}
@@ -362,7 +379,13 @@ Por lo que hemos comentado $W\not\subseteq V_j\ \forall j$, con lo que hemos lle
 \begin{sol*}
 \begin{itemize}
 \item[]
-\item Basta ver que la aplicación, $\phi(x) = [x, \frac{1}{2}]$ es una inmersión cerrada. La aplicación $\$\phi$ es inyectiva, sobreyectiva sobre su imagen. 
+\item Basta ver que la aplicación, $\phi:X\to CX$, $\phi(x) = [x, \frac{1}{2}]$ es una inmersión cerrada. Sea además $\pi: X\times [0,1]\to CX$ la proyección del cilindro de X sobre su cono, entonces: 
+\begin{itemize}
+\item Que es cerrada, es decir, que la imagen de la inmersión es un cerrado del espacio de llegada, es claro, pues dicha imagen es $X\times \{\frac{1}{2}\}$, que es un producto de cerrados, por lo que es cerrado en la topología del producto y, por definición de la topología cociente, $p(X\times\{\frac{1}{2}\}) = X\times\{\frac{1}{2}\}$ es cerrado.
+\item La inyectividad es trivial. 
+\item Veamos que es continua. Sea $A\subset X\times \{\frac{1}{2}\}$ un abierto, entonces se tiene que $A =\{(x,\frac{1}{2})\mid x\in S\subset X\text{ abierto}\}$, luego $p^{-1}(A) = S$, que es abierto por definición.
+\item Que es abierta es trivial por la definición de la topología del producto.
+\end{itemize}
 \item Sea $K$ un cerrado de X y sea $\{y_k\}\subset \phi(K)$ una sucesión con límite $y$. 
 \end{itemize}
 \end{sol*}
