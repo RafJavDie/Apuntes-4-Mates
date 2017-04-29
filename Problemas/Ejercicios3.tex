@@ -368,8 +368,10 @@ Por lo que $g_*$ es la inversa de $f_*$.
 \end{enumerate}
 \begin{sol*}
 \begin{enumerate}\
-\item Si $f_*$ es biyectiva, tiene una inversa $g_*$, luego $g$ es la inversa homotópica de $f$. Basta repetir el mismo razonamiento que en el último apartado del razonamiento anterior pero en sentido contrario. 
-\item Este caso, la aplicación es $g^*:[X_0,Y]\to [X_1,Y]$, y cumple las propiedades análogas al ejercicio anterior. Por tanto este apartado se prueba de forma equivalente al anterior. 
+\item Tomando $X=Y_1$ se tiene que $f_*:[Y_1,Y_0]\rightarrow[Y_1,Y_1]$ es biyección. Como $[Id_{Y_1}]\in [Y_1,Y_1]$, existe $[g]\in [Y_1,Y_0]$ tal que $f_*([g])=[f\circ g]=[Id_{Y_1}]$, luego $f\circ g\simeq Id_{Y_1}$. Falta probar que $g\circ f\simeq Id_{Y_0}$. 
+\[ f_*([g\circ f])=f_*g_*([f])=[f\circ g\circ f]=[f]=f_*([Id_{Y_0}]).\]
+Como $f_*$ es inyectiva, deducimos que $g\circ f\simeq Id_{Y_0}$.
+\item Este caso, la aplicación es $g^*:[X_0,Y]\to [X_1,Y]$, y cumple las propiedades análogas al ejercicio anterior pero componiendo por la derecha. Por tanto este apartado se prueba de forma equivalente al anterior. 
 \end{enumerate}
 \end{sol*}
 
@@ -420,6 +422,24 @@ y además es continua por ser producto de continuas. Si $f_1$ y $f_2$ son equiva
 \begin{exercise}
 Se dice que el par $(X,A)$ tiene la Propiedad de Extensión de Homotpía (PEH) si para toda aplicación continua $f:X\to Y$ es un espacio arbitrario Y y toda homotopía $F:A\times I \to Y$ de aplicación $f_{|_A}$, existe homotopía $G:X\times I \to Y$ que extiende a $F\cup f$. Probar que si A es cerrado, $(X,A)$ tiene la PEH si y sólo si $(X\times 0)\bigcup A\times I$ es retracto de $X\times I$.
 \end{exercise}
+\begin{sol*}
+$\boxed{\Leftarrow}$ Supongamos primero que existe la retraccíon del enunciado, digamos $r$. Entonces podemos extender la homotopía con $G=r\circ(F\cup f)$ como se puede ver en el siguiente diagrama conmutativo en el que identificamos $X$ con $X\times\{0\}$:
+\[
+\begin{tikzcd}
+X\times\{0\}\cup A\times I \arrow[hookrightarrow]{r}{i}\arrow[d,"F\cup f"']\arrow[dr,"Id"]& X\times I\arrow[d, "r"]\arrow[dl,"G=r\circ(F\cup f)", bend left=130,dashed]\\
+Y & X\times\{0\}\cup A\times I\arrow[l,"F\cup f"]
+\end{tikzcd}
+\]
+Hemos usado que $A$ es cerrado para que $F\cup f$ sea continua en las intersecciones de $F$ y $f$. De esa forma, $G$ es continua\\
+$\boxed{\Rightarrow}$ Veamos ahora el recíproco.  Por la PEH existe una aplicación continua $r$ de modo que el siguiente diagrama conmuta:
+\[
+\begin{tikzcd}
+X\times I \arrow[r,"r"]& X\times\{0\}\cup A\times I\\
+X\times\{0\}\cup A\times I\arrow[hookrightarrow]{u}{i}\arrow[ur,"Id"]
+\end{tikzcd}
+\]
+Por lo tanto observamos que $r$ es la retracción que buscábamos.
+\end{sol*}
 \newpage
 \begin{exercise}
 Sea $A\subset X$ cerrado y $*$ un punto de A considerado como punto base de X. Supongamos que $(X,A)$ tiene la PEH y que $\{*\}$ es un retracto de deformación fuerte de A. Entonces $p:(X,*)\to(X/A,[A])$ es una equivalencia de homotopía.
