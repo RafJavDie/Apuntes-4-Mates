@@ -442,8 +442,25 @@ Por lo tanto observamos que $r$ es la retracción que buscábamos.
 \end{sol*}
 \newpage
 \begin{exercise}
-Sea $A\subset X$ cerrado y $*$ un punto de A considerado como punto base de X. Supongamos que $(X,A)$ tiene la PEH y que $\{*\}$ es un retracto de deformación fuerte de A. Entonces $p:(X,*)\to(X/A,[A])$ es una equivalencia de homotopía.
+Sea $A\subset X$ cerrado y $*$ un punto de A considerado como punto base de $X$. Supongamos que $(X,A)$ tiene la PEH y que $\{*\}$ es un retracto de deformación fuerte de $A$. Entonces $p:(X,*)\to(X/A,[A])$ es una equivalencia de homotopía.
 \end{exercise}
+\begin{sol*}
+Observemos que $A$ es contráctil, ya que es homtópicamente equivalente a $\{*\}$. Por lo tanto tenemos una homotopía $G:A\times I\to \{*\}$ entre la identidad de $A$ y la identidad de $\{*\}$. Como la identidad de $A$ se puede extender de manera continua a la identidad de $X$, por la PEH existe una homotopía $F:X\times I\to X$  que extiende a $G\cup Id_A$ tal que $f_0=F(x,0)=Id_X$. Siguiendo esta notación, dado que $f_t(A)\subset A\ \forall t$, la composición $pf_t:X\to X/A$ envía a $A$ a un solo punto y por lo tanto se puede descomponer como $X\overset{p}{\rightarrow} X/A\overset{\overline{f}_t}{\rightarrow}X/A$. Esta última aplicación $\overline{f}_t:X/A\to X/A$ no es más que el paso al cociente de la homotopía original, por lo que se tiene $pf_t=\overline{f}_tp$.
+\[
+\begin{tikzcd}
+X\arrow[r,"f_t"]\arrow[d,"p"'] &X\arrow[d,"p"]\\
+X/A\arrow[r,"\overline{f}_t"'] & X/A
+\end{tikzcd}
+\]
+ En $t=1$ tenemos que $f_1(A)=\{*\}$, por lo que $f_1$ induce una aplicación $g:X/A\to X$ con $gp=f_1$ como vemos en el siguiente diagrama:
+\[
+\begin{tikzcd}
+X\arrow[r,"f_1"]\arrow[d,"p"'] &X\arrow[d,"p"]\\
+X/A\arrow[ur,"g"]\arrow[r,"\overline{f}_1"'] & X/A
+\end{tikzcd}
+\]
+Se sigue que $pg=\overline{f}_1$, ya que $pg([x])=pgp(x)=pf_1(x)=\overline{f}_1p(x)=\overline{f}_1([x])$. La aplicación $g$ es la inversa homotópica de $p$ ya que $gp=f_1\simeq f_0=Id_X$ por $f_t$ y $pg=\overline{f}_1\simeq\overline{f}_0=Id_{X/A}$ por $\overline{f}_t$. 
+\end{sol*}
 \newpage
 \begin{exercise}
 Sea $\Pi_0(X)$ el conjunto de las componentes conexas por caminos de X. Dada una aplicación $f:X\to Y$ sea $f_*:\Pi_0(X)\to\Pi_0(Y)$ la aplicación que lleva de componentes $C_x$ en la componente $C_{f(x)}$. Probar las siguientes propiedades:
