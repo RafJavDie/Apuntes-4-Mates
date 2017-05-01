@@ -463,4 +463,18 @@ Probar que si $X$ e $Y$ son conexos por caminos o compactos, $X \cup_f Y$ tambi�
 \begin{exercise}
 Sean $X$, $Y$ y $W$ espacios topológicos, $A \subseteq X$ cerrado y $f : A \to Y$, $g : Y \to W$ aplicaciones continuas. Probar que los espacios $(X \cup_f Y) \cup_g W$ y $X \cup _{g \circ f} W$ son homeomorfos.
 \end{exercise}
+\begin{sol*}
+Nótese que $A$ cerrado implica que la composición de la inclusión y la proyección $j:W\to X\sqcup W\to X\cup_{gf}W$ es una inmersión sobre un subespacio cerrado. Las aplicaciones definidas como uniones a continuación también estarán bien definidas y serán continuas por esta hipótesis.\\
+En primer lugar definimos una aplicación continua $\alpha=Id_X\cup g:X\sqcup Y\to X\sqcup W$ como $\alpha(x)=x\ \forall x\in X$, $\alpha(y)=g(y)\ \forall y\in Y$. Componiendo con la proyección al cociente obtenemos $\alpha':X\sqcup Y\to X\cup_{gf} W$. Por la relación de pegamiento, esta aplicación induce otra $\alpha'':X\cup_f Y\to X\cup_{gf} W$. Entonces, la aplicación $\alpha''\cup j:(X\cup_f)\sqcup W\to X\cup_{gf}W$ induce el que será nuestro homeomorfismo $\phi:(X\cup_f Y)\cup_g W\to X\cup_{gf} W$.\\
+Para la inversa, comenzamos por la aplicación continua $i:X\to X\sqcup Y\to X\cup_f Y$, que es composición de la inclusión y la proyección. Esto nos da una aplicación $\beta=i\cup Id_W:X\sqcup W\to (X\cup_f Y)\sqcup W$. Componiendo con la proyección al cociente obtenemos $\beta':X\sqcup W\to (X\cup_f Y)\cup_g W$. De nuevo, por las relaciones de pegamientos llegamos a la aplicación inducida $\psi:X\cup_{gf} W\to (X\cup_f Y)\cup_g W$.\\
+Ahora tenemos que comprobar que $\phi$ y $\psi$ son inversas. Primero veamos como está definida $\phi$. Sea $[z]\in (X\cup_f Y)\cup_g W$. Si $z\in W$ entonces $\phi([z])=j(z)$ y si $z=[w]\in X\cup_f Y$ entonces $\phi([z])=\alpha''(z)$. Esto se reduce a $\phi([z])=\{w\}$ si $w\in X$ y $\phi([z])=\{g(w)\}$ si $w\in Y$ donde $\{w\}$ denota la clase de $w$ en $X\cup_{gf}W$. Luego, $\psi(\{z\})=[z]$ si $z\in W$ y $\psi(\{z\})=[i(z)]$ si $z\in X$. Así pues:
+\begin{itemize}
+\item Si $z\in W$, $\psi(\phi([z])) = \psi(j(z)) = \psi(\{z\}) = [z]$.
+\item Si $z=[w]$ y $w\in X$, $\psi(\phi([z])) = \psi(\{w\}) = [i(w)] = [z]$.
+\item Si $z=[w]$ y $w\in Y$, $\psi(\phi([z])) = \psi(\{g(w)\}) = [i(w)] = [z]$. 
+\item Si $z\in W$, $\phi(\psi(\{z\}) = \phi([z]) = j(z) = \{ z \}$.
+\item Si $z\in X$, $\phi(\psi(\{z\}) = \phi([i(z)]) = \{z\}$. 
+\end{itemize}
+Con esto finaliza la prueba.
+\end{sol*}
 \end{document}
