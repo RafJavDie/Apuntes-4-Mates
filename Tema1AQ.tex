@@ -163,11 +163,16 @@ A $(A,\Tau_A)$ se le llama \textbf{subespacio topológico} de $(X,\Tau)$. Nótes
 \begin{prop} Una aplicación $f\func{(X,\Tau)}{(X',\Tau')}$ es continua si y solo si $\forall U \in \Tau'$ se tiene que $f^{-1}(U)\in\Tau$.
 \end{prop}
 
+\begin{defi}Diremos que $f\func{(X,\Tau)}{(X',\Tau')}$ es \textbf{homeomorfismo} (equivalencia topológica) si f es biyectiva, continua y con inversa continua.
+\end{defi}
+
 \begin{defi} Una aplicación que lleva conjuntos abiertos (respectivamente cerrados) en abiertos (cerrados) se denomina \textbf{abierta} (\textbf{cerrada}).
 \end{defi}
 
+
 \begin{prop} Una aplicación es biyectiva, continua y abierta (o cerrada) si y solo si es homeomorfismo.
 \end{prop}
+
 
 \vspace{0.5cm}
 
@@ -178,8 +183,6 @@ Se dice que una aplicación $f\func{(X,d)}{(X',d')}$ entre espacios métricos es
 
 \vspace{0.5cm}
 
-\begin{defi}Diremos que $f\func{(X,\Tau)}{(X',\Tau')}$ es \textbf{homeomorfismo} (equivalencia topológica) si f es biyectiva, continua y con inversa continua.
-\end{defi}
 
 \begin{defi} Sea $(X,\Tau)$ un espacio topológico. Diremos que $\{x_n\}$ \textbf{converge} a $x$ si $\forall U\in\Tau$ con $x\in U$, $\exists n_0$ tal que $x_n\in U\ \forall n\geq n_0$.
 \end{defi}
@@ -202,7 +205,7 @@ Un espacio topológico $X$ se dice \textbf{primero numerable} (1º N) si todo pu
 \end{defi}
 
 \begin{prop}
-Los homeomorfismos preservan los axiomas de numerabilidad. Estos axiomas son además son hereditarios.
+Los homeomorfismos preservan los axiomas de numerabilidad. Estos axiomas son además son hereditarios, es decir, si un espacio los cumple, también lo cumplen sus subespacios.
 \end{prop}
 
 \section{Compacidad}
@@ -210,7 +213,7 @@ Los homeomorfismos preservan los axiomas de numerabilidad. Estos axiomas son ade
 \end{defi}
 \begin{defi} Si para todo recubrimiento $\{U_\alpha\}_{\alpha\in\Lambda}$ de $A$ existen $U_{\alpha_1},\dots,U_{\alpha_n}$ (subrecubrimiento finito) tal que $A\subseteq\underset{i=1}{\overset{n}{\bigcup}}U_i$ decimos que $A$ es \textbf{compacto}.
 \end{defi}
-\begin{defi} Un espacio $X$ se dice que tiene la propiedad de separación de Hausdorff si dados $x,y\in X$ con $x\neq y$ existen abiertos $U,V$ con $x\in U$, $y\in V$ y $U\cap V=\emptyset$.
+\begin{defi} Un espacio $X$ se dice que tiene la propiedad de separación de Hausdorff (o que es $T_2$) si dados $x,y\in X$ con $x\neq y$ existen abiertos $U,V$ con $x\in U$, $y\in V$ y $U\cap V=\emptyset$.
 \end{defi}
 \begin{prop} Todo subconjunto cerrado de un conjuto compacto es a su vez compacto. Otra forma de decirlo es: la compacidad es hereditaria en cerrados.
 \end{prop}
@@ -563,7 +566,7 @@ Dados dos espacios topológicos disjuntos $X$ e $Y$, sean $x_0\in X, y_0\in Y$. 
 \begin{ej} Se define en $\R$ la relación $x\sim x'\Leftrightarrow x-x'=2k\pi,k\in\mathbb{Z}$. Se cumple que $\R/\sim\cong S^1$. El modelo es una circunferencia de radio 1 centrada en el origen. Basta comprobar la compatibilidad de $f(t)=(\sen{t},\cos{t})$, que se deja como ejercicio.
 \end{ej}
 
-\begin{defi} Sean $X$ e $Y$ espacios topológicos y sea $A\subseteq X$ un supespacio. Sea $f\func{A}{Y}$ una función continua. Se define el \textbf{espacio de adjunción} $X\sqcup_f Y$ como el cociente $X\sqcup Y/\sim$ bajo la relación generada por $x\sim f(x)\ \forall x\in A$. A este espacio también se le conoce con el nombre de espacio de pegamiento.
+\begin{defi} Sean $X$ e $Y$ espacios topológicos y sea $A\subseteq X$ un supespacio. Sea $f\func{A}{Y}$ una función continua. Se define el \textbf{espacio de adjunción} $X\cup_f Y$ como el cociente $X\sqcup Y/\sim$ bajo la relación generada por $x\sim f(x)\ \forall x\in A$. A este espacio también se le conoce con el nombre de espacio de pegamiento.
 \end{defi}
 
 \section{Suspensión de espacios}
@@ -578,7 +581,7 @@ Dados dos espacios topológicos disjuntos $X$ e $Y$, sean $x_0\in X, y_0\in Y$. 
 
 
 
-\begin{defi} Llamamos \textbf{cilindro} de un espacio $X$ a $X\times I$ con la topología producto, siendo $I$ un intervalo.
+\begin{defi} Llamamos \textbf{cilindro} de un espacio $X$ a $X\times I$ con la topología producto, siendo $I$ un intervalo, generalmente el $[0,1]$.
 \end{defi}
 \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
 \clip(-2.16,-0.5) rectangle (7,2.5);
