@@ -322,10 +322,18 @@ que claramente es continua.
 \begin{exercise}
 Indicar cuántos elementos tiene el conjunto de las clases de homotopía de aplicaciones continuas de $(S^1,\{1\})$ en $(X,*)$ rel. $\{1\}$, en los casos siguientes:
 \begin{enumerate}
-\item X tiene la topología discreta.
-\item X tiene la topología indiscreta.
+\item $X$ tiene la topología discreta.
+\item $X$ tiene la topología indiscreta.
 \end{enumerate}
+
 \end{exercise}
+\begin{sol*}
+\begin{enumerate}
+\item[]
+\item Si $X$ tiene la topología discreta, las únicas funciones continuas entre $S^1$ y $X$ son las constantes. Efectivamente, sea $x\in X$ y $z\in S^1$ tal que $f(z)=x$, para alguna función continua $f:S^1\to X$. Entonces $z\in f^{-1}(\{x\})$ y como por continuidad $f^{-1}(\{x\})$ es abierto, $z$ tiene un entorno donde la función es constante igual a $x$. Este razonamiento vale para todos los puntos de $S^1$, luego todos tienen un entorno constante. Como $S^1$ es conexa esta constante es la misma en todo los entornos, de lo contrario podríamos cubrir $S^1$ por abiertos disjuntos. Por lo tanto, hay tantas funciones continuas como elementos tiene $X$. Ahora bien, no hay ninguna homotopía entre dos funciones constantes que deje fijo un elemento, por lo tanto las clases de homotopía relativa a $\{1\}$ solo tienen un elemento y el conjunto de clases tiene el mismo cardinal que $X$. 
+\item Si $X$ tiene la topología indiscreta entonces toda función de $S^1$ en $X$ es continua. Este hecho es claro porque los únicos abiertos son $X$ y $\emptyset$, por lo que o bien tenemos $f^{-1}(X)=S^1$ o bien $f^{-1}(\emptyset)=\emptyset$, que son abiertos. Este razonamiento vale para cualquier espacio de partida, en particular para el $[0,1]$, luego toda función $\gamma:[0,1]\to X$ es un camino. Es decir que dadas dos funciones $f,g:S^1\to X$ existe un camino $\gamma_x(t)$ entre $f(x)$ y $g(x)$. En el caso de $f(1)=g(1)$ sería el camino trivial de un solo punto. Por lo tanto podemos definir una homotopía $H:S^1\times I\to X$ que relacione cualesquiera dos funciones definiéndola como $H(x,t)=\gamma_x(t)$. Esta homotopía es continua de nuevo porque va a un espacio con topología indiscreta. En definitiva, solo existe una clase de homotopía en este caso.
+\end{enumerate}
+\end{sol*}
 \newpage
 \begin{exercise}
 Sea $f:X\to Y$ una aplicación continua. Sobre la unión disjunta $(X\times I)\sqcup Y$ se considera la relación de equivalencia resultante de identificar $(x,1)$ con $f(x)$. El espacio cociente obtenido se llama cilindro de la aplicación $f$, y se denotará por $M_f$. Probar que Y es retracto de deformación de $M_f$.
