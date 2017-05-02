@@ -1,4 +1,5 @@
 \documentclass[PM.tex]{subfiles}
+
 \begin{document}
 \chapter{Análisis convexo}
 \section{Conjuntos convexos}
@@ -1074,6 +1075,8 @@ Consideramos dos casos:
 
 % Tema 5
 \chapter{Programación Lineal Entera}
+
+\section{Poliedros enteros y matrices totalmente unimodulares}
 Consideramos el problema
 
 \begin{align*}
@@ -1288,7 +1291,7 @@ Son equivalentes:
 \item $A'$ es TU
 \item $[A\;I]$ es TU
 \item La matriz resultante de eliminar una fila o columna de A que corresponda a la matriz identidad es TU.
-\item La matriz resultante de multiplicar una fila o columna de A por $-1$ es RU.
+\item La matriz resultante de multiplicar una fila o columna de A por $-1$ es TU.
 \item La matriz resultante de intercambiar filas o columnas de A es TU.
 \item La matriz resultante de duplicar filas o columnas de A es TU.
 \item La matriz resultante de realizar un pivotaje sobre elementos de A es TU.
@@ -1404,12 +1407,12 @@ De forma que $\overline{A}$ sea una matriz $m\times m$ con $A_2$ la ampliación 
 Si $z>>0$ entonces: $\overline{A}_1^{-1}b = M+\overline{A}_1^{-1}e_i \geq 0$ ($M>>0$). Como $P(b)$ es entero, entonces $\overline{A}_1^{-1}b \in \Z^m$ pues todos sus puntos extremos son enteros. Entonces $ \overline{A}_1^{-1}e_i=\overline{A}_1^{-1}b-z\in\Z^m$. Por tanto, toda las columna i-ésima de la matriz $\overline{A}_1^{-1}$ es de elementos enteros. Por tanto, sabemos que $\overline{A}_1^{-1}$ es entera y que, debido a este, $\overline{A}_1^{-1} \in \Z$. Finalmente, $1 = det(\overline{A}_1)det(\overline{A}_1^{-1})$, como ambos elementos es $1$, ambos son $\pm 1$. \QED
 \end{dem}
 \begin{theorem}
-$A\in\Z^{m\times n}$ es TI si y solo si $\forall J\subset\{1,\dotsc,n\}$ existe una partición de J en $J_1J_2$ tal que 
+$A\in\Z^{m\times n}$ es TU si y solo si $\forall J\subset\{1,\dotsc,n\}$ existe una partición de J en $J_1J_2$ tal que 
 \[
 \left| \sum_{j\in J_1}a_{ij}-\sum_{j\in J_2}a_{ij} \right| \leq 1 \quad \forall i=1,\dotsc,m
 \]
 \end{theorem}
-\begin{prop}
+\begin{prop}\label{propo}
 Sea A una matriz de elementos $\{0,\pm1\}$ en la que a lo sumo hay dos elementos no nulos por cada columna. Si existe una partición de las filas de A en $F_1,F_2$ tal que en cada columna con 2 elementos no nulos se cumple:
 \begin{itemize}
 \item Si los dos tienen igual signo están en conjuntos diferentes.
@@ -1438,8 +1441,8 @@ Es un corolario inmediato de la proposición anterior pues puede aplicarse la de
 El problema del transporte:
 \begin{align*}
  \min\ & \sum_{i=1}^m\sum_{j=1}^n c_{ij}x_{ij} &\\
-sa:& \sum_{j=1}^n x_{ij}= 0 \quad\forall i =1,,m & \\
-& \sum_{i=1}^m x_{ij}= D_j \quad \forall j =1,,n &   \\
+sa:& \sum_{j=1}^n x_{ij}= O_i \quad\forall i =1,\dots, m & \\
+& \sum_{i=1}^m x_{ij}= D_j \quad \forall j =1,\dots,n &   \\
 & x_{ij}\in\{0,1\} &
 \end{align*}
 Entonces $\overline{A}$ es:
@@ -1456,4 +1459,43 @@ Entonces $\overline{A}$ es:
 \end{array}\right)
 \]
 \end{example}
+
+\begin{prop}
+$A\in\{0,1\}^{m\times n}$ tal que todos los valores no nulos de cada fila (o columna) son consecutivos entonces $A$ es T.U. 
+\end{prop}
+\begin{dem}
+Se puede hacer una partición de las columnas de $A$, $J_1=\{$columnas pares$\}$, $J_2=\{$columnas impares$\}$. Para cada $i=1,\dots,m$ $|\sum_{j\in J_1}a_{ij}-\sum_{j\in J_2}a_{ij}|\leq 1$. Por la proposición \ref{propo} se tiene el resultado. 
+\end{dem}
+
+\section{Esquemas de ramificación y acotación}
+
+En esta sección se muestra un algoritmo para hallar la solución óptima de un problema de programación entera
+\begin{align*}
+(PE)\quad z_{PE} = & \max\ c'x\\
+               & sa:\ Ax=b\\
+     		&x\in\Z_+^n.
+\end{align*}
+El algoritmo se basa en la proposición siguiente. 
+\begin{prop}
+Consideremos el problema $z=\max\{c'x:x\in X\}$, con $c\in\R^n$ y $X\subset\R^n$. Sea $X=X_1\cup X_2\cup\dots\cup X_K$ una descomposición de $X$ en conjuntos más pequeños y sea $z^k=\max\{c'x:x\in X_k\}$ para $k=1,\dots,K$. Entonces $z=\underset{k=1,\dots,K}{\max} z^k$.
+\end{prop}
+
+\begin{center}
+{\bf Algoritmo de ramificación y acotación (Branch and Bound-B\& B)}
+\end{center}
+
+\begin{tabbing}
+
+
+Paso 1: \= Obtener el valor óptimo $z_{LP}^*$ y la solución óptima $x_{LP}^*$ del problema relajado\\ \> lineal (LP) asociado al problema de programación entera. Establecer $(P_0)=(LP)$,\\ \> la solución $x^*=x^*_{LP}$ y el valor $z^*=z^*_{LP}$ como elementos del nodo raíz $n_0$.\\ \> Tomar $z_{LB}=-\infty$ (en el árbol completo) y $z_{UB}=\lfloor z^*\rfloor$ (en el árbol completo).\\
+
+Paso 2: \= 2.1) Si $x^*\in\Z_+^n$: STOP. La solución óptima del problema de programación entera es $x^*$. \\ \>
+2.2) Si $x^*\not\in\Z_*^n$: Entonces existe al menos una componente $x^*_i$ de $x^*$ tal que\\ \> $x^*_i\notin\Z_+$. Establecer dos ramas que conecten el nodo $n_0$, por un lado, con\\ \> el nodo $n_1$ constituido por el problema $(P_1)$ resultante de añadir al problema\\ \> $(P_0)$ la restricción $x_i\leq\lfloor x^*_i\rfloor$, la solución óptima $(x^1)^*$ de $(P_1)$ y el valor\\ \> óptimo $z^*_1$ de $(P_1)$, y por otro lado, con el nodo $n_2$ constituido por el problema\\ \> $(P_2)$ resultante de añadir al problema $(P)$ la restricción $x_i\geq\lceil x^*_i\rceil$, la\\ \> solución óptima $(x^2)^*$ de $(P_2)$ y el valor óptimo $z^*_2$ de $(P_2)$. \\ \>
+- Si $(P_i)$, $i=1$ ó $2$, es infacible podamos la rama que conecta $n_0$ con $n_i$.\\ \>
+- Si $z^*_i<z_{LB}$, $i=1$ ó $2$, podamos la rama que conecta $n_0$ con $n_i$.\\ \>
+- Si $(x^i)^*<z_{LB}$, $i=1$ ó $2$, tomar $z_{LB}=\lfloor z^*_i\rfloor$ (en el subárbol que se va a generar)\\ \> y repetir el Paso 2.2 tomando $n_i$ como $n_0$. \\ \>
+- Si $(x^i)*\in Z^n_+$, $i=1$ ó $2$, establecemos $n_i$ como nodo hoja. Si $z_i^*=z_{UB}$ enotonces\\ \> $(x^i)^*$ es la solución óptima del problema de programación entera.\\ \> En caso contrario y si $z<^*_i>z_{LB}$ (en el árbol completo) establecer $z_{LB}=z_i^*$.\\
+Convergencia: \=
+\end{tabbing}
+
 \end{document}
