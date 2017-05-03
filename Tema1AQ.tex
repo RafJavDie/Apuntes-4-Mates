@@ -172,27 +172,19 @@ A $(A,\Tau_A)$ se le llama \textbf{subespacio topológico} de $(X,\Tau)$. Nótes
 
 \begin{prop} Una aplicación es biyectiva, continua y abierta (o cerrada) si y solo si es homeomorfismo.
 \end{prop}
-
-
-\vspace{0.5cm}
-
-En espacios métricos se puede usar el criterio $\varepsilon-\delta$.\\
-{\large \bf Criterio $\varepsilon-\delta$ en espacios métricos}
-
-Se dice que una aplicación $f\func{(X,d)}{(X',d')}$ entre espacios métricos es continua si $\forall x\in X, \forall\varepsilon>0\ \exists\delta>0$ tal que $d(x,x')<\delta\Rightarrow d(f(x),f(x'))<\varepsilon$.
-
-\vspace{0.5cm}
-
-
+\begin{prop}
+La convergencia se hereda por aplicaciones continuas, es decir, si $\{x_n\}_{n\geq 1}$ converge a $x$ entonces $\{f(x_n)\}_{n\geq 1}$ converge a $f(x)$.
+\end{prop}
 \begin{defi} Sea $(X,\Tau)$ un espacio topológico. Diremos que $\{x_n\}$ \textbf{converge} a $x$ si $\forall U\in\Tau$ con $x\in U$, $\exists n_0$ tal que $x_n\in U\ \forall n\geq n_0$.
 \end{defi}
-
-La convergencia se hereda por aplicaciones continuas, es decir, si $\{x_n\}_{n\geq 1}$ converge a $x$ entonces $\{f(x_n)\}_{n\geq 1}$ converge a $f(x)$.
-
-Para la convergencia también hay un criterio propio de espacios métricos.\\
-{\large \bf Criterio de convergencia en espacios métricos}\\
-La sucesión $\{x_n\}$ converge en el espacio métrico $(X,d)$ a $x$ si para todo $\varepsilon>0$ existe $n_0$ tal que $d(x,x_n)<\varepsilon\ \forall n\geq n_0$.
-
+\subsection{Espacios métricos}
+\begin{prop}[Criterio $\varepsilon-\delta$]
+Una aplicación $f\func{(X,d)}{(X',d')}$ entre espacios métricos es continua si $\forall x\in X, \forall\varepsilon>0\ \exists\delta>0$ tal que $d(x,x')<\delta\Rightarrow d(f(x),f(x'))<\varepsilon$.
+\end{prop}
+\begin{prop}[Criterio de convergencia] La sucesión $\{x_n\}$ converge en el espacio métrico $(X,d)$ a $x$ si para todo $\varepsilon>0$ existe $n_0$ tal que $d(x,x_n)<\varepsilon\ \forall n\geq n_0$.
+\end{prop}
+\newpage
+\section{Numerabilidad}
 \begin{defi}
 Dado un espacio topológico $X$ y un punto $x\in X$, denotemos por $\mathcal{V}(x)$ al conjunto de entornos de $x$. Decimos entonces que un subconjunto $\mathcal{B}(x)\subseteq\mathcal{V}(x)$ es una \textbf{base de entornos} si $\forall V\in\mathcal{V}(x)\ \exists B\in\mathcal{B}(x)$ con $B\subseteq V$. 
 \end{defi}
@@ -208,14 +200,14 @@ Un espacio topológico $X$ se dice \textbf{primero numerable} (1º N) si todo pu
 Los homeomorfismos preservan los axiomas de numerabilidad. Estos axiomas son además son hereditarios, es decir, si un espacio los cumple, también lo cumplen sus subespacios.
 \end{prop}
 
-\section{Compacidad}
+\section{Compacidad y separabilidad}
 \begin{defi}Sea un espacio $X$ y $A\subseteq X$. Un \textbf{recubrimiento} por abiertos de $A$ es una colección de abiertos $\{U_\alpha\}_{\alpha\in\Lambda}$ tal que $A\subseteq\underset{\alpha\in\Lambda}{\bigcup}U_\alpha$.
 \end{defi}
 \begin{defi} Si para todo recubrimiento $\{U_\alpha\}_{\alpha\in\Lambda}$ de $A$ existen $U_{\alpha_1},\dots,U_{\alpha_n}$ (subrecubrimiento finito) tal que $A\subseteq\underset{i=1}{\overset{n}{\bigcup}}U_i$ decimos que $A$ es \textbf{compacto}.
 \end{defi}
-\begin{defi} Un espacio $X$ se dice que tiene la propiedad de separación de Hausdorff (o que es $T_2$) si dados $x,y\in X$ con $x\neq y$ existen abiertos $U,V$ con $x\in U$, $y\in V$ y $U\cap V=\emptyset$.
+\begin{defi} Un espacio $X$ se dice que tiene la propiedad de \textbf{separación de Hausdorff} (o que es $T_2$) si dados $x,y\in X$ con $x\neq y$ existen abiertos $U,V$ con $x\in U$, $y\in V$ y $U\cap V=\emptyset$.
 \end{defi}
-\begin{prop} Todo subconjunto cerrado de un conjuto compacto es a su vez compacto. Otra forma de decirlo es: la compacidad es hereditaria en cerrados.
+\begin{prop} Todo subconjunto cerrado de un conjunto compacto es a su vez compacto. Otra forma de decirlo es: la compacidad es hereditaria en cerrados.
 \end{prop}
 \begin{prop} En todo espacio $X$ con propiedad de Hausdorff los conjuntos compactos son cerrados.
 \end{prop}
@@ -239,6 +231,14 @@ Sea $\mathcal{U}$ un recubrimiento por abiertos de $f(K)$ en $Y$. Como $f$ es co
 \section{Conexión}
 \begin{defi} Sea $(X,\Tau)$ un espacio topológico. Diremos que $C\subseteq X$ es \textbf{conexo} si y solo si dados $A,B\in\Tau$ cumpliendo $A\cap B\cap C=\emptyset, C\subseteq A\cup B$ se tiene que o bien $C\subseteq A$ o bien $C\subseteq B$.
 \end{defi}
+\begin{prop}
+Sea $(X,\Tau)$ un espacio topológico. Son equivalentes:
+\begin{itemize}
+\item $X$ es conexo.
+\item $X$ no puede ser dividido en dos abiertos (cerrados) disjuntos no vacíos.
+\item Los únicos subconjuntos de $X$ que son cerrados y abiertos simultáneamente son $X$ y el vacío.
+\end{itemize}
+\end{prop}
 \begin{defi} $(X,\Tau)$ será \textbf{conexo por caminos} si $\forall x,y\in X\ \exists\alpha\func{([0,1],\Tau_e)}{(X,\Tau)}$ continua tal que $\alpha(0)=x$ y $\alpha(1)=y$.
 \end{defi}
 
@@ -263,7 +263,7 @@ Si $X$ es localmente conexo por caminos entonces la componente conexa de $x$ coi
 \section{Espacio Cociente}
 Sea $(X,\Tau)$ un espacio topológico y $\mathcal{R}$ una relación de equivalencia. En el espacio cociente $X/\mathcal{R}$ consideramos la siguiente topología: sea $\pi\func{X}{X/\mathcal{R}}$ la aplicación proyección $\pi(x)=[x]$. Se define la siguiente topología:
 \begin{equation*}
-\Tau_\pi=\left\{G\subseteq X/\mathcal{R};\pi^{-1}(G)\in\Tau\right\}
+\Tau_\pi=\left\{G\subseteq X/\mathcal{R}\mid \pi^{-1}(G)\in\Tau\right\}
 \end{equation*}
 Esta topología se llama \textbf{topología cociente} para la relación $\mathcal{R}$. Al par $\left(X/\mathcal{R},\Tau_\pi\right)$ se le llama \textbf{espacio cociente} por la relación $\mathcal{R}$.
 \begin{lemma}$\Tau_\pi$ es topología de $\left(X/\mathcal{R},\Tau_\pi\right)$
@@ -366,24 +366,22 @@ El borde del cuadrado se identifica a un punto. El área sombreada es lo que cor
 \begin{dem}
 \[
 \begin{tikzcd}
-X \ar[r, "f"]\arrow[d,"\pi "'] & \left(Y,\Tau_f\right)\arrow[dl,shift left=1ex,"\tilde{f} "]\\
-\left(X/\mathcal{R}_f,\Tau_\pi\right) \arrow[ur,"\tilde{f}^{-1} "]
+X \ar[r, "f"]\arrow[d,"\pi "'] & \left(Y,\Tau_f\right)\arrow[dl,shift left=1ex,"\tilde{f}^{-1} "]\\
+\left(X/\mathcal{R}_f,\Tau_\pi\right) \arrow[ur,"\tilde{f} "]
 \end{tikzcd}
 \]
 Sea $\tilde{f}([x])=f(x)$. Entonces $\tilde{f}$ es biyectiva pues tiene por inversa a $\tilde{f}^{-1}(y)=[z]$ con $z$ tal que $f(z)=y$.\\
 Veamos que $\tilde{f}$ es continua:
 
 Sea $W$ abierto de $(Y,\Tau_f)$, entonces $f^{-1}(W)$ es abierto de $X$. Tenemos que ver que $\tilde{f}^{-1}(W)$ es abierto de $\Tau_\pi$, lo cual es cierto si y solo si $\pi^{-1}(\tilde{f}^{-1}(W))$ es abierto de $X$. Como $\tilde{f}\circ\pi=f$, $\pi^{-1}(\tilde{f}^{-1}(W))=f^{-1}(W)$, que es abierto de $X$.\\
-Veamos que $\tilde{f}^{-1}$ es continua:
+Resta ver que $\tilde{f}$ es abierta:
 
-Sea $\Omega$ abierto de $(X/\mathcal{R}_f,\Tau_\pi)$, por lo que $\pi^{-1}(\Omega)$ es abierto de $X$. Se tiene que $(\tilde{f}^{-1})^{-1}(\Omega)=\tilde{f}(\Omega)$ es abierto de $(Y,\Tau_f)\Leftrightarrow f^{-1}(\tilde{f}(\Omega))$ es abierto de $X$. Por tanto bastará comprobar que $\pi^{-1}(\Omega)=f^{-1}(\tilde{f}(\Omega))$. Lo haremos por doble incluión.
+Sea $\Omega$ abierto de $(X/\mathcal{R}_f,\Tau_\pi)$, tenemos que ver que $\tilde{f}(\Omega)$ es abierto de $(Y,\Tau_f)$. Esto es si y solo si $f^{-1}(\tilde{f}(\Omega))$ es abierto de $X$. Basta comprobar que $\pi^{-1}(\Omega)=f^{-1}(\tilde{f}(\Omega))$, pues sabemos que $\pi^{-1}(\Omega)$. Lo haremos por doble inclusión.
 \begin{enumerate}
 \item[$\boxed{\subseteq}$] Sea $x\in\pi^{-1}(\Omega)\Rightarrow\pi(x)=[x]\in\Omega\Rightarrow\tilde{f}(\Omega)\ni\tilde{f}([x])=f(x)\in\tilde{f}(\Omega)\Rightarrow x\in f^{-1}(\tilde{f}(\Omega))$.
 \item[$\boxed{\supseteq}$] Sea $x\in f^{-1}(\tilde{f}(\Omega))\Rightarrow f(x)=\tilde{f}([x])\in\tilde{f}(\Omega)\Rightarrow\tilde{f}^{-1}(f(x))\in\Omega\Rightarrow [x]\in\Omega\Rightarrow x\in\pi^{-1}([x])\subseteq\pi^{-1}(\Omega)\Rightarrow x\in\pi^{-1}(\Omega)$. $\QED$
 \end{enumerate}
 \end{dem}
-
-\vspace{1cm}
 
 \begin{defi} A $\mathcal{R}_f$ en la proposición \ref{146} se le llama la \textbf{relación inducida por $f$}. En general, una relación $\sim$ sobre $X$ se dice \textbf{compatible} con $f$ si $x\sim y\Rightarrow f(x)=f(y)$
 \end{defi}
@@ -412,7 +410,7 @@ Vamos a ver que $\tilde{f}$ cumple las tres propiedades para ser homeomorfismo.
 \begin{equation*}
 \tilde{f}([x])=\tilde{f}([x'])\Rightarrow f(x)=f(x')\Rightarrow x'\mathcal{R}_f x\Rightarrow [x]=[x'].
 \end{equation*}
-\item[c)] Solo resta ver que $\tilde{f}^{-1}$ es continua, para lo cual veremos que $\tilde{f}$ es cerrada. Por las hipótesis sobre $X$ e $Y$ y la Proposición \ref{125} dudicmos que $f$ es cerrada. Sea $K$ un cerrado de $X/\mathcal{R}_f\Rightarrow\pi^{-1}(F)$ es cerrado de $X$. Por ser $f$ cerrada, $f(\pi^{-1}(K))$ es cerrado, pero precisamene $\tilde{f}(F)=f(\pi^{-1}(F))$, luego $\tilde{f}$ es cerrada y, por tanto, homeomorfismo. 
+\item[c)] Solo resta ver que $\tilde{f}^{-1}$ es continua, para lo cual veremos que $\tilde{f}$ es cerrada. Por las hipótesis sobre $X$ e $Y$ y la Proposición \ref{125} deducimos que $f$ es cerrada. Sea $K$ un cerrado de $X/\mathcal{R}_f\Rightarrow\pi^{-1}(F)$ es cerrado de $X$. Por ser $f$ cerrada, $f(\pi^{-1}(K))$ es cerrado, pero precisamente $\tilde{f}(F)=f(\pi^{-1}(F))$, luego $\tilde{f}$ es cerrada y, por tanto, homeomorfismo. 
 {$\QED$}
 \end{enumerate}
 
@@ -482,7 +480,7 @@ z=\sen\theta\\
 
 \end{array}
 \]
-Sea $X=[0,1]\times[0,1]$, buscamos una relacion $\mathcal{R}$ tal que $X/\mathcal{R}\cong T$. Para ello definimos
+Sea $X=[0,1]\times[0,1]$, buscamos una relación $\mathcal{R}$ tal que $X/\mathcal{R}\cong T$. Para ello definimos
 \begin{gather*}
 f\func{X}{T}\\
 f(t,s)=((2+\cos(2\pi t))\cos(2\pi s), (2+\cos(2\pi t)\sen(2\pi s), \sen(2\pi t))
@@ -563,10 +561,10 @@ Dados dos espacios topológicos disjuntos $X$ e $Y$, sean $x_0\in X, y_0\in Y$. 
 \end{tikzpicture}
 \end{ej}
 
-\begin{ej} Se define en $\R$ la relación $x\sim x'\Leftrightarrow x-x'=2k\pi,k\in\mathbb{Z}$. Se cumple que $\R/\sim\cong S^1$. El modelo es una circunferencia de radio 1 centrada en el origen. Basta comprobar la compatibilidad de $f(t)=(\sen{t},\cos{t})$, que se deja como ejercicio.
+\begin{ej} Se define en $\R$ la relación $x\sim x'\Leftrightarrow x-x'=2k\pi,k\in\mathbb{Z}$. Se cumple que $\R/\sim\,\cong S^1$. El modelo es una circunferencia de radio 1 centrada en el origen. Basta comprobar la compatibilidad de $f(t)=(\sen{t},\cos{t})$, que se deja como ejercicio.
 \end{ej}
 
-\begin{defi} Sean $X$ e $Y$ espacios topológicos y sea $A\subseteq X$ un supespacio. Sea $f\func{A}{Y}$ una función continua. Se define el \textbf{espacio de adjunción} $X\cup_f Y$ como el cociente $X\sqcup Y/\sim$ bajo la relación generada por $x\sim f(x)\ \forall x\in A$. A este espacio también se le conoce con el nombre de espacio de pegamiento.
+\begin{defi} Sean $X$ e $Y$ espacios topológicos y sea $A\subseteq X$ un subespacio. Sea $f\func{A}{Y}$ una función continua. Se define el \textbf{espacio de adjunción} $X\cup_f Y$ como el cociente $X\sqcup Y/\sim$ bajo la relación generada por $x\sim f(x)\ \forall x\in A$. A este espacio también se le conoce con el nombre de espacio de pegamiento.
 \end{defi}
 
 \section{Suspensión de espacios}
@@ -1062,7 +1060,7 @@ Antes de comenzar con la clasificación de superficies es importante familiariza
 
 Dado que buena parte de esta asignatura está dedicada a presentar la topología algebraica, es necesario introducir también el concepto de acción de un grupo sobre un espacio topológico. Antes de definirlo comencemos con un ejemplo sencillo. Consideremos $\R$ y $\Z$. Fijado $z\in\Z$ podemos construir la aplicación $x\in\R\mapsto x+z\in\R$. Si la generalizamos de modo que a cada par $(n,x)\in\Z\times\R$ se le haga corresponder $x+n\in\R$ diremos que $\Z$ \emph{actúa} sobre $\R$. Nótese que $(n,x+m)$ tiene la misma imagen que $(n+m,x)$ para todo $n,m\in\Z$ y $x\in\R$. Pasemos ya a la definición formal.
 
-\begin{defi} Sea $G$ un grupo discreto y sea $X$ un espacio topológico. Se llama \textbf{acción} de $G$ sobre $X$ a cualquier aplicacíon 
+\begin{defi} Sea $G$ un grupo discreto y sea $X$ un espacio topológico. Se llama \textbf{acción} de $G$ sobre $X$ a cualquier aplicación 
 \begin{align*}
 f&\func{G\times X}{X}\\
 &\quad (g,x)\mapsto f(g,x):=gx\ \text{(notaci\'on)}
