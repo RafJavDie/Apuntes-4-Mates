@@ -126,19 +126,19 @@ Esto finaliza el ejercicio.
 Probar que si $A$ es retracto de deformación de $X$ y $B$ lo es de $A$, entonces $B$ lo es de $X$. 
 \end{exercise}
 \begin{sol*}
-Por hipótesis existe una función continua $H:X\times X\to X$ que cumple $H(x,0)=x$, $H(x,1)\in A$, y $H(a,t)=a\ \forall a\in A$. También existe $G:A\times A\to A$ cumpliendo $G(a,0)=a$, $G(a,1)\in B$ y $G(b,t)=b\ \forall b\in B$. La idea será retraer con deformación $X$ hasta convertirlo en $A$ y luego continuar hasta convertirlo en $B$. Sea $F:X\times I\to X$ definida como sigue
+Por hipótesis existe una función continua $H:X\times I\to X$ que cumple $H(x,0)=x$, $H(x,1)\in A$, y $H(a,t)=a\ \forall a\in A$. También existe $G:A\times I\to A$ cumpliendo $G(a,0)=a$, $G(a,1)\in B$ y $G(b,t)=b\ \forall b\in B$. La idea será retraer con deformación $X$ hasta convertirlo en $A$ y luego continuar hasta convertirlo en $B$. Sea $F:X\times I\to X$ definida como sigue
 \[
 F(x,t)=\begin{cases}
-H(x,2t) & t\in[0,\frac{1}{2}]\\
-G(H(x,1),2t-1) & t\in[\frac{1}{2},1]
+H(x,2t) & t\in\left[0,\frac{1}{2}\right]\\
+G(H(x,1),2t-1) & t\in\left[\frac{1}{2},1\right]
 \end{cases},
 \]
 que es continua puesto que $F(\frac{1}{2},t)=G(H(x,1),0)=H(x,1)$. Comprobamos que se tiene
 \begin{gather*}
 F(x,0)=H(x,0)=x\\
 F(x,1)=G(H(x,1),1)\in B\\
-F(b,t)=H(b,t)=b\ \forall t\in [0,\frac{1}{2}]\ \forall b\in B\\
-F(b,t)=G(H(b,1),2t-1)=H(b,1)=b\ \forall t\in[\frac{1}{2},1] \ \forall b\in B.
+F(b,t)=H(b,t)=b\ \forall t\in \left[0,\frac{1}{2}\right]\ \forall b\in B\\
+F(b,t)=G(H(b,1),2t-1)=H(b,1)=b\ \forall t\in\left[\frac{1}{2},1\right] \ \forall b\in B.
 \end{gather*}
 Con lo que ya hemos terminado. 
 \end{sol*}
