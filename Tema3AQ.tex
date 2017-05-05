@@ -370,22 +370,11 @@ $\boxed{\Leftarrow}$ Sean $f\func{X}{\{p\}}$ (necesariamente constante igual a $
 Probar que un retracto de un espacio contráctil es contráctil.
 \end{ejer}
 \begin{solucion}
-Sabemos por el ejercicio anterior que $X$ es contráctil si y solo si $Id_X\simeq cte$ mediante una homotopía $H$. Sea $r\func{X}{A}$ una retracción. Vamos a ver que $A$ es contráctil. Por ser $r$ retracción, se tiene
+Sabemos por el ejercicio anterior que $A$ es contráctil si y solo si $Id_A\simeq cte$. Además, por hipótesis, sabemos que $Id_X \simeq cte = x_0$. Además, por propiedades del retracto es claro que $r \circ i = id_A$, donde $i$ es la inmersión de A en X. Se tiene pues que:
 \[
-r\circ i =Id_A,\ \text{con }i: X\longhookarrow A\text{ la inclusión}
+Id_X \simeq x_0 \Rightarrow r \circ Id_X \simeq r(x_0) = a_0 \Rightarrow id_A = r \circ i = r \circ Id_X \circ i \simeq a_0 
 \]
-Sea $H\func{I\times I}{X}$ una homotopía que cumpla $H(x,0)=x$ y $H(x,1)=x_0\ \forall x\in X$. Buscamos $G\func{A\times I}{A}$ cumpliendo  $G(a,0)=a$ y $G(a,1)=a_0\in A\ \forall a\in A$. Vamos a definirla como la siguiente composición:
-\[
-\begin{tikzcd}
-G: A\times I \arrow[r,"i\times Id_I"]& X\times I \arrow[r, "H"] &  X \arrow[r,"r"] & A 
-\end{tikzcd}
-\]
-Así pues, dado $a\in A$,
-\begin{gather*}
-G(a,0)=r\circ H\circ (i\times Id_X)(a,0)=rH(a,0)=r(a)=a\\
-G(a,1)=r\circ H\circ (i\times Id_X)(a,1)=rH(a,1)=r(x_0)=a_0\in A
-\end{gather*}
-Por lo que hemos llegado al resultado. \qed
+\qed
 \end{solucion}
 
 \section{Caminos y equivalencia de caminos}
