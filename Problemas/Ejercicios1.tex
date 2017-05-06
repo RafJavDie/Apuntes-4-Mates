@@ -252,7 +252,10 @@ Veamos que $f$ está bien definida. Sea $y \in [x]_1$, es decir, con $y \mathcal
 \begin{exercise}
 Sea $\mathcal{R}$ una relación de sobre $X$ tal que para todo $x \in X$, $[x]$ está contenida en alguna componente conexa de $X$. Probar que las componentes conexa de $X/\mathcal{R}$ son las imágenes por la proyección canónica de las componentes conexas de $X$.
 \end{exercise}
-
+\begin{sol*}
+Para cada $x\in X$ denotamos $C_x$ su componente conexa. Análogamente $C_{[x]}$ será la componente conexa de $[x]$ en el cociente. Sea $\pi:X\to X/\mathcal{R}$ la proyección canónica. Como $x\in [x]$ y la imagen continua de un conexo es conexa, se tiene inmediatamente que $\pi(C_x)\subseteq C_{[x]}$.
+Para la otra inclusión, supongamos que existe $[y]\in C_{[x]}$ tal que $C_y\neq C_x$. Tenemos que la imagen de cada componente conexa está contenida en una componente conexa, luego $\pi(C_y)\subset C_{[x]}$. Para la otra inclusión, supongamos que existe $[y]\in C_{[x]}$ tal 	que $y\in C_y\neq C_x$. Entonces existen $U$ y $V$ ambos clopen tales que $C_x\subset U$, $C_y\subset V$ y $U\cap V=\emptyset$. Como son clopen, son unión de componentes conexas, por lo que si $z\in U\Rightarrow [z]\subset U$ y lo mismo para $V$. Entonces $\pi(U)$ y $\pi(V)$ forman una partición clopen de $C_{[x]}$ (No me lo creo ni yo, ya me gustaría).
+\end{sol*}
 
 \newpage
 \begin{exercise} Sea $f : B^n \to S^n$ la función continua dada por:
