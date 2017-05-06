@@ -99,14 +99,14 @@ Sea $y\in S^n\setminus f(X)$. Mediante la proyección estereográfica existe un 
 Probar que todo retracto de un espacio métrico es un subespacio cerrado.
 \end{exercise}
 \begin{sol*}
-Sea $X$ un espacio métrico y $A\subseteq X$ un retracto. Por hipótesis existe una aplicación continua $r:X\to A$ tal que $r(a)=a\ \forall a\in A$. Sea $\{x_n\}\subset A$ una sucesión que converge a un punto $x\in X$. Tenemos que probar que $x\in A$. Tenemos que $r(x_n)$ converge a $r(x)$. Además, $r(x_n)=x_n\ \forall n$ por ser una sucesión de $A$. Por lo tanto, al tratarse de un espacio métrico (y por tanto Hausdorff) $r(x)=x$, y como $r(x)\in A$ por definición, se tiene el resultado. 
+Vamos a probar algo más general: todo retracto de un $T_2$ es cerrado. Sea X un espacio con la propiedad de Hausdorff y sea A un retracto suyo. Sea $x \in X\setminus A$ y $a=r(x)$. Por definición de retracto $a\neq x$, por lo que $\exists U,V\in T_X$ tales que $x\in U$, $r(x)\in V$ y $U\cap V = \emptyset$. Por tanto, $r^{-1}(A\cap V)\cap U$ es un entorno abierto de x disjunto de A y, consecuentemente, $X\setminus A$ es abierto.
 \end{sol*}
 \newpage
 \begin{exercise}
 Probar que $A$ es retracto de $X$ si y sólo si toda función continua de $A$ es un espacio arbitrario $Z$ admite una extensión continua sobre $X$.
 \end{exercise}
 \begin{sol*}
-$\boxed{\Rightarrow}$ Supongamos que $A$ es retracto de $X$. Sea $f:A\to Z$ una función continua y sea $r:X\to A$ una retracción. Entonces la extensión continua sobre $X$ es $r\circ f$. Efectivamente es continua por ser composición de continuas.\\
+$\boxed{\Rightarrow}$ Supongamos que $A$ es retracto de $X$. Sea $f:A\to Z$ una función continua y sea $r:X\to A$ una retracción. Entonces la extensión continua sobre $X$ es $f\circ r$. Efectivamente es continua por ser composición de continuas.\\
 $\boxed{\Leftarrow}$ Para el recíproco, sea $Z=A$ y sea $f=Id_A$. Entonces la extensión continua sobre $X$ es una retracción. Efectivamente, si $g$ es dicha extensión, entonces $g:X\to A$ y como $g(a)=Id_A(a)=a\ \forall a\in A$, se tiene el resultado. 
 \end{sol*}
 \newpage
@@ -177,13 +177,13 @@ Sea $X=X_1\cup X_2$ un compacto de $\R^2$ formado por dos componentes conexas $X
 \end{sol*}
 \newpage
 \begin{exercise}
-Probar que $S^{n-1}$ es retracto de deformación de $R^n-\{0\}$. Encontrar retractos de deformación (compactos) de los siguientes espacios.
+Probar que $S^{n-1}$ es retracto de deformación de $\R^n-\{0\}$. Encontrar retractos de deformación (compactos) de los siguientes espacios.
 \begin{enumerate}
 \item $\R^2-\{p_1,p_2,\dotsc,p_k\}$,
 \item $S^1\times S^1-\{*\}$ (el toro menos un punto),
 \item $\R^3-OZ$, $\R^3-S^1\lor S^1$,
 \item la banda de Möbius y la banda de Möbius menos un punto,
-\item $\R^4-(OZ\bigcup S^1)$,
+\item $\R^3-(OZ\cup S^1)$,
 \item el complementario de un disco en el plano proyectivo y
 \item el complementario en $\R^3$ de dos rectas paralelas.
 \end{enumerate}
@@ -320,7 +320,7 @@ que claramente es continua. Además, $H(x,0) = f(x)$, $H(x,1/2)=f(x_0)$ y $H(x,1
 \end{sol*}
 
 \begin{sol*}
-Esta es una demostración alternativa. Por ser $X$ contráctil sabemos que $\forall f:X\to Y$ continua se tiene que $f$ es nulhomotópica, pues $id_X \sim x_0$ (para cualquier $x_0\in X$) y componiendo con $f$, tenemos que $f \circ id_X = f \sim f(x_0)$. Sean $f,g:X\to Y$ continuas, ambas son nulhomotópicas a, respectivamentes, las constantes $f(x_0)$ y $g(x_0)$. Entonces, ¿$f(x_0)\sim g(x_0)$? Se tiene gracias a la hipótesis de $Y$ arcoconexo. Sea $\gamma:I\to Y$ un camino entre los dos puntos, tomamos la homotopía $H:X\times I \to Y$, $H(x,t)=\gamma(t)$.
+Esta es una demostración alternativa. Por ser $X$ contráctil sabemos que $\forall f:X\to Y$ continua se tiene que $f$ es nulhomotópica, pues $id_X \sim x_0$ (para cualquier $x_0\in X$) y componiendo con $f$, tenemos que $f \circ id_X = f \simeq f(x_0)$. Sean $f,g:X\to Y$ continuas, ambas son nulhomotópicas a, respectivamentes, las constantes $f(x_0)$ y $g(x_0)$. Entonces, ¿$f(x_0)\simeq g(x_0)$? Se tiene gracias a la hipótesis de $Y$ arcoconexo. Sea $\gamma:I\to Y$ un camino entre los dos puntos, tomamos la homotopía $H:X\times I \to Y$, $H(x,t)=\gamma(t)$.
 \end{sol*}
 \newpage
 \begin{exercise}
