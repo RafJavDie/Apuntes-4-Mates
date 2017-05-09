@@ -211,17 +211,6 @@ Si $[x,t]\in CX$ es la clase de $(x,t)\in X\times I$, se define $H\func{CX\times
 Cualquier convexo $X$ es contráctil, pues basta tomar la homotopía $H(x,t)=(1-t)x+x_0$, con $x_0\in X$ fijo. Esta aplicación está bien definida por ser $X$ convexo.
 \end{ej}
 
-\begin{ejer} Sean $f\func{X}{Y}$ y $g\func{Y}{Z}$ funciones continuas entre espacios topológicos, siendo $Y$ contráctil. Probar que $g\circ f$ es nul-homotópica.
-\end{ejer}
-\begin{solucion}
-De la hipótesis sobre $Y$ obtenemos que $Id_Y\simeq cte\ y_0$. Así pues, consideremos el siguiente esquema:
-\[
-\begin{tikzcd}
-X \arrow[r,"f"]& Y \arrow[r, "Id_Y"] &  Y \arrow[r,"g"] & Z 
-\end{tikzcd}
-\]
-Por el lema \ref{lema} apartado $a)$ tenemos que $g\circ Id_Y\simeq g(y_0)=z_0$. Aplicando ahora el apartado $b)$ del mismo lema obtenemos $g\circ Id_Y\circ f\simeq z_0\circ f=z_0$. Como $g\circ Id_Y\circ f= g\circ f$, ya hemos demostrado lo que queríamos.
-\end{solucion}
 
 \begin{ej} $\R^2\setminus\{0\}$ es homotópicamente equivalente a $S^1$.
 \begin{solucion}
@@ -363,8 +352,21 @@ H(x_0,2-2t) & \frac{1}{2}\leq t\leq 1
 es continua pues $F(x,\frac{1}{2})=H(x,1)=x_1=H(x_0,1)$. Además, $F(x,0)=H(x,0)=x$ y $F(x,1)=H(x_0,0)=x_0$. Esto es, $Id_X\simeq cte\ x_0$.
 %Sea además la aplicación constante $c\func{X}{\{p\}}$, es decir, $c(x)=p$. Se tiene que $f\circ c$ es la función constante igual a $x_0$, luego por hipótesis, $Id_X\simeq f\circ c$. Por otro lado, $c\circ f=Id_{\{p\}}\Rightarrow f$ es una equivalencia de homotopía $\Rightarrow X$ y $\{p\}$ son homotópicamente equivalentes.\
 
-$\boxed{\Leftarrow}$ Sean $f\func{X}{\{p\}}$ (necesariamente constante igual a $p$) y $g\func{\{p\}}{X}$ dada por $g(p)= x_0\in X$. Tenemos $f\circ g\simeq Id_{\{p\}}$ (de hecho son iguales) y $g\circ f=cte\ x_0\simeq Id_X$ por hipótesis, esto es, $Id_X$ es homotópica a la $cte\ x_0$. \qed
+$\boxed{\Leftarrow}$ Sean $f\func{X}{\{p\}}$ (necesariamente constante igual a $p$) y $g\func{\{p\}}{X}$ dada por $g(p)= x_0\in X$. Tenemos $f\circ g\simeq Id_{\{p\}}$ (de hecho son iguales) y $g\circ f=cte\ x_0\simeq Id_X$ por hipótesis. \qed
 \end{solucion}
+
+\begin{ejer} Sean $f\func{X}{Y}$ y $g\func{Y}{Z}$ funciones continuas entre espacios topológicos, siendo $Y$ contráctil. Probar que $g\circ f$ es nul-homotópica.
+\end{ejer}
+\begin{solucion}
+De la hipótesis sobre $Y$ obtenemos que $Id_Y\simeq cte\ y_0$. Así pues, consideremos el siguiente esquema:
+\[
+\begin{tikzcd}
+X \arrow[r,"f"]& Y \arrow[r, "Id_Y"] &  Y \arrow[r,"g"] & Z 
+\end{tikzcd}
+\]
+Por el lema \ref{lema} apartado $a)$ tenemos que $g\circ Id_Y\simeq g(y_0)=z_0$. Aplicando ahora el apartado $b)$ del mismo lema obtenemos $g\circ Id_Y\circ f\simeq z_0\circ f=z_0$. Como $g\circ Id_Y\circ f= g\circ f$, ya hemos demostrado lo que queríamos.
+\end{solucion}
+
 
 \begin{ejer}
 Probar que un retracto de un espacio contráctil es contráctil.
