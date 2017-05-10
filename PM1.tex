@@ -1,6 +1,7 @@
 \documentclass[PM.tex]{subfiles}
 
 \begin{document}
+\addtocounter{chapter}{1}
 \chapter{Análisis convexo}
 \section{Conjuntos convexos}
 
@@ -1498,4 +1499,134 @@ Paso 2: \= 2.1) Si $x^*\in\Z_+^n$: STOP. La solución óptima del problema de pr
 Convergencia: \=
 \end{tabbing}
 
+
+\subsection{Corte mixto de Gomory}
+
+Consideremos el problema:
+\[
+\begin{aligned}
+& \min
+& & c_1'x_1+c_2'x_2 \\
+& \text{sujeto a}
+& & A \begin{pmatrix}x_1\\x_2\end{pmatrix} = b\\
+& & & x_1 \in \Z_+^{n_1},\ x_2 \in \R_+^{n_2}
+\end{aligned}
+\]
+A las $x_i$ las llamaremos variables del grupo $i$, con $i=1,2$. Supongamos que $x^*$ es una solución óptima del relajado lineal de $(P)$. Si existe $x_k^* \in$ Grupo 1 tal que $x_k^* \in \mathbb{Q} \setminus \Z$ entonces $x^*$ no es solución de $(P)$.  Sea $B$ la base asocada a $x^*$. Entonces toda solución factible se puede expresar en términos de esta base:
+\[ x_B = B^{-1}b - B^{-1} N x_N \quad (Bx_B + Nx_n = b) \]
+Denotamos $x_N = w$, $\overline{b} = B^{-1}b$, $Y = B^{-1}N$ de manera que $x_B = \overline{b} - Y w$. Así pues, en cualquier solución factible de $(P)$, la componente $k$ es\ de la forma:
+\[ x_k = \overline{b}_k - \sum_{j \in N} y_{kj}w_j = \lfloor \overline{b}_k \rfloor + f_k - \sum_{j \in N} y_{kj}w_j \]
+Donde $f_k = \overline{b}_k-\lfloor \overline{b}_k \rfloor$. De ahí, que:
+\[ x_k - \lfloor \overline{b}_k \rfloor = f_k - \sum_{j \in N} y_{kj}w_j \]
+Como el miembro izquierdo de la ecuación es entera, el miembro derecho debe ser entero. Por lo tanto, se debe verificar una y solo una de las desigualdades siguientes:
+\begin{enumerate}
+	\item $f_k - \sum\limits_{j \in N} y_{kj} w_j ≤ 0 \Rightarrow - \sum\limits_{j \in N} y_{kj} w_j ≤ -f_k \Rightarrow - \sum\limits_{j \in N_1} y_{kj} w_j ≤ -f_k$
+	\item $f_k - \sum\limits_{j \in N} y_{kj} w_j ≥ 1 \Rightarrow - \sum\limits_{j \in N} y_{kj} w_j ≥ 1-f_k \Rightarrow - \sum\limits_{j \in N_2} y_{kj} w_j ≥ 1-f_k$
+\end{enumerate}
+donde $N_1 = \{j \in N : y_{kj} > 0\}$ y $N_2 = \{j \in N : y_{kj} ≤ 0\}$. Por lo tanto:
+\[ \frac{-f_k}{f_k-1} \sum_{j \in N_2} y_{kj} w_j ≤ -f_k \]
+Luego, como sólo se puede dar uno de los casos:
+\[ -\sum_{j \in N_1} y_{kj} w_j - \frac{f_k}{f_k -1} \sum_{j \in N_2} y_{kj} w_j ≤ -f_k \]
+Introduciendo la variable de holgura $s_k ≥ 0$, lo transformamos en la ecuación:
+\[ s_k-\sum_{j \in N_1} y_{kj} w_j - \frac{f_k}{f_k -1} \sum_{j \in N_2} y_{kj} w_j ≤ -f_k \]
+Si evaluamos $x^*$ sobre la desigualdad, podemos observar que: $w^* = x_N^* = 0$. Luego $0 ≥ s_k = -f_k < 0$. Hemos llegado a una contradicción. Por tanto $x^*$ no cumple la nueva restricción, es decir es un plano de corte para la misma. El corte mixto de Gomory "más profundo"
+\[ s_k - \sum_{j \in N} λ_j w_j - f_k \text{ con}\]
+\[ λ_j = \begin{cases}
+	y_{kj}, &\text{ si }y_{kj} ≥ 0, w_j \notin \text{Grupo 1}\\
+	\frac{f_k}{f_k-1}y_{kj}, &\text{ si }y_{kj} < 0, w_j \notin \text{Grupo 1}\\
+	f_{kj}, &\text{ si } f_{kj} ≤ f_k, w_j \in \text{Grupo 1}\\
+	\frac{1-f_{kj}}{1-f_k} ,&\text{ si } f_{kj} > f_k, w_j \in \text{Grupo 1}
+\end{cases}\]
+donde $f_{kj}$ es la parte fraccional de $y_{kj}$.
+\begin{example}
+
+\[
+\begin{aligned}
+& \min
+& & 5x_2 + 10x_4 \\
+& \text{sujeto a}
+& & x_1-\frac{5}{3}x_2 - \frac{1}{5}x_4 = \frac{5}{3}\\
+& & & -\frac{4}{3}x_2 + x_3 + \frac{11}{3} x_4 0 \frac{7}{3}\\
+& & & x_1, x_2 ≥ 0,\ x_3,x_4 \in \Z_+
+\end{aligned}
+\]
+
+
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+	$x_B$ & $c_B$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $\overline{b}$\\
+\hline
+	$x_1$ & $0$ & $1$ & $-\frac{5}{3}$ & $0$ & $-\frac{1}{3}$ & $\frac{5}{3}$\\
+	$x_3$ & $0$ & $0$ & $-\frac{4}{3}$ & $1$ & $\frac{11}{3}$ & $\frac{7}{3}$\\
+\hline
+	$c_j-z_j$ & & $0$ & $5$ & $0$ & $10$ & \\
+\hline
+\end{tabular}
+
+
+
+La solución del relajado lineal es: $x_1 = \frac{7}{3}$, $x_3 = \frac{5}{3}$. Cortamos sobre $x_3$:
+\[ \overline{b}_3 = \frac{7}{3} = 2 + \frac{1}{3} \]
+\[ y_{32} = - \frac{4}{3} = -2 + \frac{2}{3} \]
+\[ y_{34} = \frac{11}{3} = 3 + \frac{2}{3} \]
+\[ s_5 - λ_2 x_2 - λ_4 x_4 = -\frac{1}{3} \]
+Como $x_2 \notin$ Grupo 1 e $y_{32} < 0$, entonces $λ_2 = \frac{\frac{1}{3}}{\frac{1}{3}-1}\cdot\frac{-4}{3} = \frac{2}{3}$. Como $x_4 \in$ Grupo 1 y $\frac{2}{3} > \frac{1}{3}$, entonces $λ_4 = -\frac{1-\frac{2}{3}}{1-\frac{1}{3}} = \frac{1}{6}$
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+	$x_B$ & $c_B$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $s_5$ & $\overline{b}$\\
+\hline
+	$x_4$ & $0$ & $1$ & $-\frac{5}{3}$ & $0$ & $-\frac{1}{3}$ & $0$ & $\frac{5}{3}$\\
+	$x_3$ & $0$ & $0$ & $-\frac{4}{3}$ & $1$ & $\frac{11}{3}$ & $0$ & $\frac{7}{3}$\\
+	$s_5$ & $0$ & $0$ & $-\frac{2}{3}$ & $0$ & $-\frac{1}{6}$ & $1$ & $-\frac{1}{3}$\\
+\hline
+	$c_j-z_j$ & & $0$ & $5$ & $0$ & $10$ & $0$ & \\
+\hline
+\end{tabular}
+
+Pivotando dualmente:
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+	$x_B$ & $c_B$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $s_5$ & $\overline{b}$\\
+\hline
+	$x_1$ & $0$ & $1$ & $0$ & $0$ & $\frac{1}{12}$ & $0$ & $\frac{10}{3}$\\
+	$x_3$ & $0$ & $0$ & $0$ & $1$ & $\frac{11}{3}$ & $0$ & $3$\\
+	$x_2$ & $5$ & $0$ & $1$ & $0$ & $\frac{1}{4}$ & $-\frac{3}{2}$ & $\frac{1}{2}$\\
+\hline
+	$c_j-z_j$ & & $0$ & $0$ & $\frac{3}{4}$ & $\frac{15}{2}$ & $0$ & \\
+\hline
+\end{tabular}
+\end{example}
+
+
+\chapter{Programación no lineal sin restricciones}
+Consideremos una funcion $f : \R^n \to \R$ continua diferenciable en nuestro dominio factible $D$. Estamos interesados en el formalismo (es decir, suponiendo que existe $\min$):
+\[ \min_{x \in \R^n} f(x)\]
+Diremos que $x^*$ es un mínimo local de $f$ en $E(x^*)$ (entorno abierto de $x^*$) si $f(x^*) ≤ f(x)$ $\forall x \in E(x^*)$.
+Supongamos que consideramos un punto $x^*$ y desarrollamos $f$ en un entorno del mismo:
+\[ f(x) = f(x^*) +  \nabla f(x^*)'(x-x^*) + O(||{x-x^*}||) \]
+con $\lim_{x \to x^*} \frac{O(||{x-x^*}||)}{||{x-x*}||} = 0$.
+
+Si $f \in C^2$, entonces:
+\[ f(x) = f(x^*) +  \nabla f(x^*)'(x-x^*) + \nabla^2 f O(||{x-x^*}||^2) \]
+con $\lim_{x \to x^*} \frac{O(||{x-x^*}||^2)}{||{x-x*}||^2} = 0$
+
+Podemos aproximar $f(x) \approx f(x^*) + \nabla f(x^*)'(x-x^*)$. Si $x^*$ es un mínimo local, entonces $\nabla f(x^*)'(x-x^*) ≥ 0$ para todo $x$ en un entorno de $x^*$. En particular, tomando puntos opuestos en el entorno, llegamos a que  $\nabla f(x^*) = 0$. Por otro lado, aproximando $f(x)$ por el desarrollo de orden 2, obtenemos que:
+\[ 0 ≤ f(x) - f(x^*) \approx \frac{1}{2}(x-x^*) \nabla^2 f(x^*) (x-x^*) \quad \forall x \in E(x^*)  \Rightarrow \nabla^2 f(x^*)\text{ es semidefinida positiva}\]
+
+\begin{theorem} Sea $x^*$ un mínimo local de $f \in C^1$, $S$ entorno abierto de $x^*$. Entonces $\nabla f(x^*) = 0$. Si $f \in C^2(S)$, entonces $\nabla^2 f(x^*)$ semidefinida positiva.
+\end{theorem}
+
+\begin{dem} Consideremos $d \in \R^n$ arbitraria con $||d||=1$. Definimos $g : \R \to \R$, $g(α) = f(x^* + α d)$. Como $x^*$ es un mínimo local, si $α > 0$ es suficiente pequeño: $0 ≤ f(x^*+αd)-f(x^*)$.
+\[ 0 ≤ \frac{f(x^*+αd)-f(x^*)}{α} \Rightarrow 0 ≤ \lim_{α \to 0} \frac{f(x^*+αd)-f(x^*)}{α} = g'(0) \]
+Entonces $0 ≤ g'(0) = \nabla f (x^*+αd)'\cdot d |_{α = 0} = \nabla f(x^*)'\cdot d$. 
+Como $||e_i|| = ||-e_i|| = 1$, $\nabla f(x^*)'e_i ≥ 0$ y $\nabla f(x^*)'(-e_i) ≥ 0$, luego $\nabla f(x^*) = 0$. Ahora, si $f \in C^2$. Entonces:
+\begin{align*} 0 ≤ f(x^* + α d)-f(x^*) & = \nabla f(x^*)(αd) + \frac{1}{2} (αd)' \nabla^2 f(x^*)(αd) + O(||αd||^2) \\
+ & = \frac{α^2}{2}d'\nabla^2f(x^*)d + O(α^2)
+\end{align*}
+Dividiendo por $α^2$ y pasando al límite:
+\[ 0 ≤ \frac{1}{2} d' \nabla^2 f(x^*) d \]
+Luego $\nabla^2 f(x^*)$ es semidefinida positiva.
+\end{dem}
 \end{document}
