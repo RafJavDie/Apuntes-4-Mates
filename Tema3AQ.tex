@@ -675,7 +675,7 @@ $\QED$
 
 \begin{consec} Si $f\func{X}{Y}$ es homeomorfismo entonces $f_*$ es isomorfismo.
 \begin{dem}
-Sea $f^{-1}\func{Y}{X}$.
+Sea $f^{-1}\func{Y}{X}$. Se tiene el siguiente diagrama.
 \[
 \pi_1(X,x_0)\overset{f_*}{\longrightarrow}\pi_1(Y,f(x_0))\overset{(f^{-1})_*}{\longrightarrow}\pi_1(X,x_0)
 \]
@@ -728,7 +728,7 @@ Nótese que $g(f(x_0))$ no tiene por qué ser $x_0$. Tenemos entonces
 \end{tikzpicture}
 
 
-Si $H$ es una homotopía entre $Id_X$ y $g\circ f$, tenemos que $\gamma(t)=H(x_0,t)$ es un camino entre $x_0$ y $g(f(x_0))$.
+Si $H$ es una homotopía entre $Id_X$ y $g\circ f$, tenemos que $\gamma(t)=H(x_0,t)$ es un camino entre $x_0$ y $g(f(x_0))$. 
 \end{nota}
 
 \vspace{0.4cm}
@@ -775,6 +775,10 @@ Para probar que es isomorfismo veamos que $\gamma^{-1}_\sharp=\overline{\gamma}_
 \end{gather*}
 Análogamente se prueba que $\overline{\gamma}_\sharp\gamma_\sharp([\alpha])=[\alpha]$.$\QED$
 \end{dem}
+
+\begin{coro}
+Todo lazo $\gamma$ en $x_0$ induce un automorfismo de $\pi_1(X,x_0)$ dado por conjugación, es decir, a cada elemento $[\alpha]$ se le hace corresponder $[\gamma][\alpha][\gamma]^{-1}$.
+\end{coro}
 
 \begin{prop}
 Sea $H$ una homotopía $H\func{X\times I}{Y}$ entre $f,g\func{X}{Y}$. Dado $x_0\in X$, sea $\gamma\func{I}{X}$ el camino $\gamma(t)=H(x_0,t)$. Este camino va de $f(x_0)=H(x_0,0)$ a $g(x_0)=H(x_0,1)$. Tenemos el diagrama commutativo
@@ -877,7 +881,7 @@ por lo que $g_*$ inyectiva y $f_*$ sobreyectiva. En consecuencia, tanto $g_*$ co
 \end{dem}
 
 \begin{coro}
-Si $A\subseteq X$ es un retracto de deformación fuerte de $X$, entonces la inclusión $i:A\hookrightarrow X$ induce un isomorfismo $i_*\func{\pi_1(A,x_0)}{\pi_1(X,x_0)}$. En particular, los lazos que representan generadores de $\pi_1(A,x_0)$ también representan generadores de $\pi_1(X,x_0)$.
+Si $A\subseteq X$ es un retracto de deformación de $X$, entonces la inclusión $i:A\hookrightarrow X$ induce un isomorfismo $i_*\func{\pi_1(A,x_0)}{\pi_1(X,x_0)}$. En particular, los lazos que representan generadores de $\pi_1(A,x_0)$ también representan generadores de $\pi_1(X,x_0)$.
 \end{coro}
 
 \begin{dem}
@@ -892,7 +896,7 @@ son la identidad, deduciremos que $r_*$ tiene a $i_*$ como inversa y que por lo 
 \[
 r_*\circ i_*=(r\circ i)_*=Id_*=Id.
 \]
-En segundo lugar, usamos que $i\circ r\simeq Id$ relativamente a $A$
+En segundo lugar, usamos que $i\circ r\simeq Id$
 \[
 i_*\circ r_*=(i\circ r)_*=[i\circ r]=[Id]=Id_*=Id.
 \]$\QED$
@@ -902,8 +906,15 @@ i_*\circ r_*=(i\circ r)_*=[i\circ r]=[Id]=Id_*=Id.
 Si $X$ es contráctil entonces $\pi_1(X,x_0)\cong\pi_1(\{p\},p)=\{1\}$ ($X$ tiene el mismo tipo de homotopía que $\{p\}$).
 \end{coro}
 
-\begin{defi} Si $X$ es un espacio conexo por caminos y $\pi_1(X,x_0)=\{1\}$, entonces se dice que $X$ es \textbf{simplemente conexo}.
+\begin{defi} Si $X$ es un espacio conexo por caminos y $\pi_1(X,x_0)=\{1\}$, entonces se dice que $X$ es \textbf{simplemente conexo} o \textbf{1-conexo}.
 \end{defi}
+
+\begin{ejer}
+Si $r:X\to A$ es una retracción e $i:A\hookrightarrow X$ es la inclusión, entonces $i_*$ es inyectiva y $r_*$ es sobreyectiva.
+\end{ejer}
+\begin{solucion}
+Por ser $r$ una retracción se tiene que $r\circ i =Id_A$, por lo que $r_*\circ i_*=(r\circ i)_*=Id_{\pi_(A)}$. De este hecho se deducen los dos resultados. Por un lado $r_*$ es sobreyectiva por tener inversa a la derecha y por otro lado $i_*$ es inyectiva por tener inversa a la izquierda. \qed
+\end{solucion}
 
 \begin{prop} Sean $X$ e $Y$ espacios topológicos, entonces
 \[
