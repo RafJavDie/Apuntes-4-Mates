@@ -171,7 +171,7 @@ $\pi_1(S^1,(1,0))\cong\Z$
 
 \begin{dem}Consistirá en alcanzar los siguientes objetivos:
 \begin{enumerate}
-\item[$\circled{1}$] Dados un camino $\alpha\func{I}{S^1}\mid\alpha(0)=x_0$ y $\alpha(1)=x_1$, y cualquier $a\in p^{-1}(x_0)$, $\exists!$ camino $\tilde{\alpha}\func{I}{\R}\mid\tilde{\alpha}(0)=a$ y $p\circ\tilde{\alpha}=\alpha$ ($\Rightarrow \tilde{\alpha}(1)\in p^{-1}(x_1)$) llamado \underline{elevación} de $\alpha$ por $a$. En particular, si $\alpha$ es la aplicación constante $x_0$, $\tilde{\alpha}$ es la constante $a$. Por otro lado, si $\alpha$ es un lazo en $x_0=(1,0)$, entonces $\tilde{\alpha}(1)\in p^{-1}(x_0)\Rightarrow\tilde{\alpha}(1)=a+2\pi k, k\in\Z$. A $k$ se le llama grado de $\alpha$ ($grad(\alpha)=k$).
+\item[$\circled{1}$] Dados un camino $\alpha\func{I}{S^1}\mid\alpha(0)=x_0$ y $\alpha(1)=x_1$, y cualquier $a\in p^{-1}(x_0)$, $\exists!$ camino $\tilde{\alpha}\func{I}{\R}\mid\tilde{\alpha}(0)=a$ y $p\circ\tilde{\alpha}=\alpha$ ($\Rightarrow \tilde{\alpha}(1)\in p^{-1}(x_1)$) llamado \underline{elevación} de $\alpha$ por $a$. En particular, si $\alpha$ es la aplicación constante $x_0$, $\tilde{\alpha}$ es la constante $a$. Por otro lado, si $\alpha$ es un lazo en $x_0=(1,0)$, entonces $\tilde{\alpha}(1)\in p^{-1}(x_0)\Rightarrow\tilde{\alpha}(1)=a+2\pi k, k\in\Z$. A $k$ se le llama grado de $\alpha$ ($grad(\alpha)=k$), aunque por comodidad se definirá como $2\pi k$.
 
 \begin{figure}[h!]
 	\includegraphics[scale=0.5]{text4479}
@@ -409,6 +409,20 @@ Para profundizar más en esta teoría consultar \cite{Hatcher}.
 
 %\vspace{0.2cm}
 
+La homotopía $\widetilde{H}$ definida en $\circled{2}$ es un ejemplo de la siguiente propiedad.
+
+\begin{defi}
+Dada una función continua $p:E\to B$ entre espacios topológicos y un espacio $X$, se dice que el par $(X,p)$ tiene la \textbf{propiedad de levantamiento de homotopía} si para toda homotopía $H:X\times I\to B$ y para toda elevación $\tilde{\alpha}:X\to E$ de $\alpha(t)=H(t,0)$ existe una homotopía $\widetilde{H}:X\times I\to E$ elevando $H$ (esto es, $p\widetilde{H}=H$) tal que $\tilde{\alpha}(t)=\widetilde{H}(t,0)$. 
+\end{defi}
+
+En el caso particular que hemos abordado, tendríamos que $X=I$, $E=\R$ y $B=S^1$. Como $(I,p)$ posee la propiedad de levantamiento de homotopía se tiene el siguiente resultado. 
+
+\begin{coro}[Teorema de monodromía]
+Sean $\alpha$ y $\beta$ son lazos en $S^1$ basados en el $(1,0)$ tales que $\alpha\sim \beta$ y fijamos $a\in p^{-1}((1,0))$. Entonces $\tilde{\alpha}\sim\tilde{\beta}$, en donde estamos considerando elevaciones por $a$. En particular $\tilde{\alpha}(1)=\tilde{\beta}(1)$.
+\end{coro}
+\begin{dem}
+Si $\alpha\sim\beta$ mediante una homotopía $F$, por la propiedad de levantamiento de homotopía se tiene que $\tilde{\alpha}\sim\tilde{\beta}$ mediante $\widetilde{F}$. Nótese que efectivamente esta última homotopía es relativa a $\{0,1\}$, como vamos a probar. Por la definición del levantamiento de la homotopía tenemos que $\widetilde{H}(t,0)=\tilde{\alpha}(t)$ y $\widetilde{H}(t,1)=\tilde{\beta}(t)$. Como ambas elevaciones se dan por $a$, se tiene que $\widetilde{F}(0,0)=\tilde{\alpha}(0)=\tilde{\beta}(0)=a$. Además, $\tilde{F}(1,s)$ es un camino entre $\tilde{\alpha}(1)$ y $\tilde{\beta}(1)$. Por otro lado, $F(1,s)=(1,0)$, luego $\widetilde{F}(1,s)\in p^{-1}((1,0))$, que tiene la topología discreta, por lo que $\widetilde{F}(1,s)$ es constante, de lo que se deduce que $\widetilde{F}(1,s)=\tilde{\alpha}(1)=\tilde{\beta}(1)$. El mismo razonamiento es válido para $\widetilde{F}(0,s)$. 
+\end{dem}
 \section{Aplicaciones}
 
 \begin{teorema}[\textbf{Teorema de no retracción}] No existe retracción de $B^2$ sobre $S^1$.
