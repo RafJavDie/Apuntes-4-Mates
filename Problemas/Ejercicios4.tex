@@ -1,88 +1,107 @@
-\documentclass[12pt,a4paper]{amsart}
-\usepackage[spanish]{babel}
+\documentclass{article}
+\usepackage{amsmath,accents}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
 \usepackage[utf8]{inputenc}
-\usepackage{tikz-cd}  
-\usetikzlibrary{babel} 
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{amsthm}
+\usepackage{nccmath}
+\usepackage[spanish]{babel}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{tikz-cd}
 \usepackage{pgf,tikz}
-%\usepackage{mathrsfs}
 \usetikzlibrary{arrows}
-\usetikzlibrary{cd} 
-\usepackage[]{graphicx,wrapfig}
-%\usepackage[all]{xy}
-%\CompileMatrices
-%\OnlyOutlines
-%\ShowOutlines
-\usepackage{amsmath,amssymb,varioref,enumerate}
-%\usepackage{emlines2}
-%\usepackage[dvipsone]{graphicx}
-%\usepackage{epsfig}
-%\usepackage{psfrag}
-%\newdir{ >}{{}*!/-5pt/\dir{>}}
-%\externaldocument{}
-%begin numlast%\newcommand{\lga}{\longrightarrow}
-\newcommand{\lgaf}{\longleftarrow}
-\newcommand {\sub}{\subset}
-\newtheorem{dummy}{realdumb}[section]
-\newtheorem{theorem}[dummy]{Theorem}
-\newtheorem{lemma}[dummy]{Lemma}
-\newtheorem{corollary}[dummy]{Corollary}
-\newtheorem{proposition}[dummy]{Proposition}
-\newtheorem*{theoremun}{Theorem}
-\newtheorem*{corollaryun}{Corollary}
-\theoremstyle{definition}               %%Change Theoremstyle
-\newtheorem{definition}[dummy]{Definition}
-\newtheorem{conjecture}[dummy]{Conjecture}
-\newtheorem{question}[dummy]{Question}
-\newtheorem{example}[dummy]{Example}
-%\newtheorem{nothing}[dummy]{Ejercicio}
-\newtheorem{nothing}{Ejercicio}
-%\theoremstyle{remark}
-\newtheorem{remark}[dummy]{Remark}
-\newenvironment{display}{\refstepcounter{dummy} $$}%
-{\leqno{\rm ({\thedummy})} $$} \numberwithin{equation}{dummy}
+\usetikzlibrary{cd}
+\usetikzlibrary{babel}
 \theoremstyle{plain}
-%end numlast
-\DeclareMathOperator{\co}{co} \DeclareMathOperator{\Diag}{Diag}
-\DeclareMathOperator{\Ar}{Ar} \DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\coker}{coker} \DeclareMathOperator{\im}{Im}
-\DeclareMathOperator{\R}{\mathbb R}
-\DeclareMathOperator{\N}{\mathbb N}
-\newcommand{\loc}[2]{{\mathcal#1}^{-1}{\mathcal#2}}
-\newcommand{\cat}[1]{\mathcal#1}
-\newcommand{\scat}[1]{\overset{\sim}{\mathcal#1}}
-\newcommand{\ccat}[2]{{\mathcal #1}^{\wedge #2}}
-\newcommand{\complex}[1]{C({\mathcal#1})}
-\newcommand{\ccomp}[2]{C\left({\mathcal#1}^{\wedge#2}\right)}
-\newcommand{\quot}[2]{\left.{\mathcal#1}\!\right/\negmedspace{\mathcal#2}}
-\newcommand{\cquot}[2]{C\left(\left.{\mathcal#1}\!\right/\negmedspace{\mathcal#2}\right)}
-\newcommand{\ccquot}[3]{C\left(\left.
-{\mathcal#1}^{\wedge#3}\right/\negmedspace{\mathcal#2}^{\wedge#3}\right)}
-\newcommand{\qquot}[3]{{\mathcal#1}^{\wedge#3}\negmedspace
-\left.\right/\negmedspace{\mathcal#2}^{\wedge#3}}
-\newenvironment{solucion}{\begin{trivlist}
-	\item[\hskip \labelsep {\textit{Solución}.}\hskip \labelsep]}{\end{trivlist}}
-\title{Geometr\'{\i}a y Topolog\'{\i}a de Superficies 2016/17. Relaci\'on 4.}
-%\newcommand{\cat}[1]{\mathcal#1}
+
+\renewcommand{\baselinestretch}{1,4}
+\setlength{\oddsidemargin}{0.5in}
+\setlength{\evensidemargin}{0.5in}
+\setlength{\textwidth}{5.4in}
+\setlength{\topmargin}{-0.25in}
+\setlength{\headheight}{0.5in}
+\setlength{\headsep}{0.6in}
+\setlength{\textheight}{8in}
+\setlength{\footskip}{0.75in}
+
+\theoremstyle{definition}
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{propi}[theorem]{Propiedades}
+\newtheorem{condition}{Condition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{coro}[theorem]{Corolario}
+\newtheorem{criterion}{Criterion}
+\newtheorem{defi}[theorem]{Definición}
+\newtheorem{example}[theorem]{Ejemplo}
+\newtheorem{exercise}{Ejercicio}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{nota}[theorem]{Nota}
+\newtheorem{sol}{Solución}
+\newtheorem*{sol*}{Solución}
+\newtheorem{prop}[theorem]{Proposición}
+\newtheorem{remark}{Remark}
+
+\newtheorem{dem}[theorem]{Demostración}
+
+\newtheorem{summary}{Summary}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\ninf}[1]{\norm{#1}_\infty}
+\providecommand{\numn}[1]{\norm{#1}_1}
+\providecommand{\gabs}[1]{\left|{#1}\right|}
+\newcommand{\bor}[1]{\mathcal{B}(#1)}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\X}{\chi}
+\providecommand{\Zn}[1]{\Z / \Z #1}
+\newcommand{\resi}{\varepsilon_L}
+\newcommand{\cee}{\mathbb{C}}
+\providecommand{\conv}[1]{\overset{#1}{\longrightarrow}}
+\providecommand{\gene}[1]{\langle{#1}\rangle}
+\providecommand{\convcs}{\xrightarrow{CS}}
+% xrightarrow{d}[d]
+\setcounter{exercise}{0}
+\newcommand{\cicl}{\mathcal{C}}
+
+\newenvironment{ejercicio}[2][Estado]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries Ejercicio}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%--------------------------------------------------------
 \begin{document}
-
+\title{Relación 4 - Geometría y Topología de superficies }
+\author{Javi, Rafa, Diego}
 \maketitle
-
-
-
-\begin{nothing} Probar que la yuxtaposici\'on de caminos satisface la siguiente propiedad de cancelaci\'on: si $f_0*g_0 \sim f_1* g_1$ y $g_0 \sim g_1$, entonces $f_0 \sim f_1$.
-\end{nothing}
-\begin{solucion}
+\begin{exercise} Probar que la yuxtaposici\'on de caminos satisface la siguiente propiedad de cancelaci\'on: si $f_0*g_0 \sim f_1* g_1$ y $g_0 \sim g_1$, entonces $f_0 \sim f_1$.
+\end{exercise}
+\begin{sol*}
 Como $g_0 \sim g_1\Leftrightarrow \overline{g_0}\sim\overline{g_1}$, usamos la compatibilidad de la yuxtaposición con la equivalencia de caminos.
 \[
 f_0*g_0 \sim f_1* g_1\Leftrightarrow f_0*g_0*\overline{g_0}\sim f_1*g_1*\overline{g_1}\Leftrightarrow f_0\sim f_1.
 \]
-\end{solucion}
+\end{sol*}
 
 \vspace{0.1cm}
 
-\begin{nothing} \label{s1}Probar que todo lazo $\alpha$ en $x_0\in X$ define una aplicaci\'on continua $f_\alpha: S^1 \to X$ con $f_\alpha((1,0)) = x_0$ y rec\'{\i}procamente. M\'as a\'un, si $\alpha \sim \alpha'$ entonces $f_{\alpha} \simeq f_{\alpha'} \mbox{ rel. } (0,1)$.
-\end{nothing}
-\begin{solucion}
+\newpage \begin{exercise} \label{s1}Probar que todo lazo $\alpha$ en $x_0\in X$ define una aplicaci\'on continua $f_\alpha: S^1 \to X$ con $f_\alpha((1,0)) = x_0$ y rec\'{\i}procamente. M\'as a\'un, si $\alpha \sim \alpha'$ entonces $f_{\alpha} \simeq f_{\alpha'} \mbox{ rel. } (0,1)$.
+\end{exercise}
+\begin{sol*}
 Observemos que $S^1$ se puede considerar como $[0,1]/\sim$ con la relación generada por $0\sim 1$. Por tanto, si denotamos por $\pi$ a la aplicación cociente e $I=[0,1]$ obtenemos el siguiente diagrama conmutativo:
 \[
 \begin{tikzcd}
@@ -91,15 +110,15 @@ S^1\arrow[ur,"\alpha\circ\pi^{-1}"']
 \end{tikzcd}
 \]
 Por lo que $f_\alpha=\alpha\circ\pi^{-1}$. Por otro lado, como $\alpha\sim\alpha'$ implica que la homotopía es relativa al $\{0,1\}$, en el cociente esto implica que es relativa a $[0]=[1]=(0,1)$. 
-\end{solucion}
+\end{sol*}
 
 \vspace{0.1cm}
 
-\begin{nothing} Probar que para un espacio conexo por caminos $X$ las tres condiciones siguientes son equivalentes:
+\newpage \begin{exercise} Probar que para un espacio conexo por caminos $X$ las tres condiciones siguientes son equivalentes:
 (a) Toda aplicaci\'on continua $f: S^1\to X$ es homot\'opica a una constante; (b) toda aplicaci\'on continua $f: S ^1 \to X$ se extiende al disco $D^2$;
 (c) $\pi_1(X,x_0) = 0$ para todo $x_0\in X$.
-\end{nothing}
-\begin{solucion}
+\end{exercise}
+\begin{sol*}
 $\boxed{(a)\Rightarrow(b)}$ Por hipótesis existe una homotopía $H:S^1\times I\to X$ cumpliendo $H(x,0)=f(x)$ y $H(x,0)=x_0\in X$. Podemos pensar en esta homotopía como una aplicación del cilindro a $X$ en la que toda la tapa superior tiene la misma imagen. Por tanto podemos factorizar a través del cono, que sabemos que es homeomorfo mediante un homemomorfismo que llamaremos $g$ a $D^2$.
 \[
 \begin{tikzcd}
@@ -119,66 +138,66 @@ S^1\arrow[u,"i",hookrightarrow]\arrow[r,"f"]& X
 \]
 Dado un lazo, podemos extenderlo a $D^2$ y llevarlo al cono, contrayéndolo sobre el vértice. Por lo tanto el lazo es homotópico al constante. Como $X$ es conexo por caminos, esta construcción no depende del punto base y por tanto $\pi_1(X,x_0)=0$.\\
 $\boxed{(c)\Rightarrow(a)}$ Se tiene que $f:S^1\to X$ identifica a un lazo en $X$, y como $\pi_1(X,x_0)=0$ concluimos que $f\sim x_0$.
-\end{solucion}
+\end{sol*}
+\newpage 
 
-\vspace{0.1cm}
-
-\begin{nothing}
+\begin{exercise}
 Probar que $\pi_1(X,x_0) = 0$ si y s\'olo para todo $x\in X$ dos caminos cualesquiera entre $x_0$ y $x$ son equivalentes.
-\end{nothing}
-\begin{solucion}
+\end{exercise}
+\newpage 
+\begin{sol*}
 $\boxed{\Rightarrow}$ Sea $\gamma_1$ y $\gamma_2$ dos caminos entre $x_0$ y $x$. Entonces $\gamma_1*\overline{\gamma_2}$ es un lazo en $x_0$. Como $\pi_1(X,x_0)=0$ se tiene
 \[
 \gamma_1*\overline{\gamma_2}\sim c_{x_0}\Leftrightarrow \gamma_1\sim\gamma_2,
 \]
 como queríamos demostrar.\\
 $\boxed{\Leftarrow}$ Tomando $x=x_0$ tenemos que todos los lazos son equivalentes. En particular son equivalentes al lazo constante $c_{x_0}$, por lo que se deduce que $\pi_1(X,x_0)=0$.
-\end{solucion}
+\end{sol*}
 
-\vspace{0.1cm}
 
-\begin{nothing} Sea $A\subseteq X$ la componente conexa por caminos del punto $x_0\in X$. Probar que la inclusi\'on
+\newpage \begin{exercise} Sea $A\subseteq X$ la componente conexa por caminos del punto $x_0\in X$. Probar que la inclusi\'on
 $i: A\to X$ induce un isomorfismo $i_*: \pi_1(A,x_0) \to \pi_1(X,x_0)$.
-\end{nothing}
+\end{exercise}
 
+\newpage 
 
-
-\begin{nothing}
+\begin{exercise}
 Probar que si $X = A\cup B$ con $A$ y $B$ abiertos tales que $A$, $B$ y $A\cap B$ son conexos por caminos
  y $A$ y $B$ simplemente conexos entonces  $X$ es simplemente conexo. Aplicar este resultado para deducir
  que $\pi_1(S^n) = 0$ para todo $n \geq 2$.
-\end{nothing}
-
-\begin{nothing}
+\end{exercise}
+\newpage 
+\begin{exercise}
 Dar una familia infinita de espacios conexos por caminos simplemente conexos que no sean homeomorfos.
-\end{nothing}
-\begin{solucion}
+\end{exercise}
+\begin{sol*}
 La familia de hiperesferas $\{S^n\}_{n\geq 2}$, que son simplemente conexas como se prueba en el apartado anterior y por el teorema de invariancia del dominio no son homeomorfas. 
-\end{solucion}
+\end{sol*}
 
 \vspace{0.1cm}
 
-\begin{nothing} Un espacio conexo por caminos $X$ se dice que es {\it $1$-simple} si
+\newpage \begin{exercise} Un espacio conexo por caminos $X$ se dice que es {\it $1$-simple} si
 dados $x_0, x_1\in X$, dos caminos de $X$ cualesquiera entre $x_0$ y $x_1$ inducen el mismo
 isomorfismo entre $\pi_1(X,x_1)$ y $\pi_1(X,x_0)$.
 Probar que $X$ es 1-simple si y s\'olo si $\pi_1(X)$ es abeliano.
-\end{nothing}
+\end{exercise}
 
-
-\begin{nothing}
+\newpage 
+\begin{exercise}
 Sea $[S^1,X]$ el conjunto de las clases de homotop\'{\i}a (no necesariamente relativa) de aplicaciones de $S^1$ en $X$. De acuerdo con el problema \ref{s1} hay definida una aplicaci\'on $\varphi: \pi_1(X,x_0) \to [S^1,X]$, $[\alpha] \mapsto [f_{\alpha}]$. Probar que si $X$ es conexo por caminos se tiene que $\varphi$ es sobreyectiva. M\'as a\'un, si $\varphi ([\alpha]) = \varphi([\beta])$, $[\alpha]$ y $[\beta]$ son elementos conjugados en $\pi_1(X,x_0)$.
 Como consecuencia, si $X$ es conexo por caminos existe una biyecci\'on entre $[S^1,X]$ y las clases por conjugaci\'on de $\pi_1(X,x_0)$.
-\end{nothing}
+\end{exercise}
 
 
 
 
-\end{document}
 
-\begin{nothing} Consideremos el espacio $X = \{a,b,c,d\}$ con la topolog\'{\i}a $\mathcal{T} = \{\emptyset, X, \{c\},\{d\}, \{c,d\}, \{a,c,d\}, \{b,c,d\}\}$.
+
+\newpage \begin{exercise} Consideremos el espacio $X = \{a,b,c,d\}$ con la topolog\'{\i}a $\mathcal{T} = \{\emptyset, X, \{c\},\{d\}, \{c,d\}, \{a,c,d\}, \{b,c,d\}\}$.
 \par
  Veamos que $\pi_1(X,d)$ no es el grupo trivial. Para ello, sea $\alpha: [0,1]\to X$ la aplicaci\'on $\alpha(t) = d$ si $t \in [0,\frac{1}{4}) \cup (\frac{3}{4},1]$, $\alpha(t) = c$ si $t\in (\frac{1}{4},\frac{3}{4})$, $f(\frac{1}{4}) = a$ y $f(\frac{3}{4}) = b$.  Probar que $\alpha$ es un lazo en $d$ que no es equivalente al lazo constante. Para esto \'ultimo, suponer lo contrario y si $H$ es una homotop\'{\i}a, probar que $t_0 = \mbox{sup }\{t; c\in H(I\times \{t\})\}$ es un m\'aximo y llegar a la contradicci\'on de que debe ser $t_0 = 1$.
-\end{nothing} 
+\end{exercise} 
 
-\begin{nothing} Sea $H: X\times I \to X$ una homotop\'{\i}a con $H(x,0) =  H(x,1) = x$ para todo $x\in X$. Si $\gamma$ es el lazo en $x_0$ $\gamma(t) = H(x_0,t)$, probar que la clase $[\gamma]$ conmuta con todo elemento de $\pi_1(X,x_0)$.
-\end{nothing}
+\newpage \begin{exercise} Sea $H: X\times I \to X$ una homotop\'{\i}a con $H(x,0) =  H(x,1) = x$ para todo $x\in X$. Si $\gamma$ es el lazo en $x_0$ $\gamma(t) = H(x_0,t)$, probar que la clase $[\gamma]$ conmuta con todo elemento de $\pi_1(X,x_0)$.
+\end{exercise}
+\end{document}
