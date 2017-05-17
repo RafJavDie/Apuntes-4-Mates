@@ -62,7 +62,7 @@ Dados $r$ puntos $x^1,\dots, x^r\in\R^n$ llamamos \textbf{combinación convexa} 
 \end{defi}
 
 \section{Teorema de Carathéodory}
-\begin{defi} Sean $a^1,\dots, a^d\in\R^n$ afinmente independientes (esto es, que fijado un punto, los vectores diferencia de este con los demás son linealmente independientes). Se denomina \textbf{símplex $(d-1)$-dimensional} a 
+\begin{defi} Sean $a^1,\dots, a^d\in\R^n$ afínmente independientes (esto es, que fijado un punto, los vectores diferencia de este con los demás son linealmente independientes). Se denomina \textbf{símplex $(d-1)$-dimensional} a 
 \[
 S(d-1)= \left\{x\in\R^n:x=\sum_{i=1}^d\lambda_i a^i,\lambda_i\geq 0, \sum_{i=1}^d\lambda_i =1\right\}
 \]
@@ -73,7 +73,7 @@ $S(1)$ es un segmento, $S(2)$ es un triángulo relleno y $S(3)$ es un tetraedro 
 
 \begin{defi} Dado un conjunto $S\subset\R^n$, su \textbf{envolvente} (envoltura) \textbf{convexa} $CO(S)$ es
 \[
-CO(S)=\left\{x\in\R^n: x=\sum_{i=1}^d\lambda_i x^i, r<+\infty, x^i\in S^1, i=1,\dots, r, \lambda_i\geq 0, \sum_{i=1}^d\lambda_i =1\right\}
+CO(S)=\left\{x\in\R^n: x=\sum_{i=1}^d\lambda_i x^i, d<+\infty, x^i\in S, i=1,\dots, d, \lambda_i\geq 0, \sum_{i=1}^d\lambda_i =1\right\}
 \]
 $CO(S)$ es el menor convexo que contiene a $S$.
 \end{defi}
@@ -138,7 +138,7 @@ Sea $S\subset\R^n$ convexo y cerrado no vacío, y sea $y\not\in S$ . Entonces ex
 
 \end{theorem}
 \begin{dem}
-Supongamos que existe $\overline{x}$: consideramos el conjunto \[ \overline{S}=S\cap\{x\in\R^n : ||y-x||\leq ||y-x^0||\}\] para cualquier $x^0\in S$ fijo. Entonces $\inf_{x\in S}||y-x||=\inf_{x\in\overline{S}}||y-x||$. Además, $\overline{S}$ es cerrado y acotado, por tanto el teorema de Weierstrass asegura que existe el $\min_{x\in\overline{S}}||y-x||$ que será $\overline{x}$. Veamos que es único. Supongamos que existe otro $\hat{x}\in S$ tal que 
+Veamos que existe $\overline{x}$: consideramos el conjunto \[ \overline{S}=S\cap\{x\in\R^n : ||y-x||\leq ||y-x^0||\}\] para cualquier $x^0\in S$ fijo. Entonces $\inf_{x\in S}||y-x||=\inf_{x\in\overline{S}}||y-x||$. Además, $\overline{S}$ es cerrado y acotado, por tanto el teorema de Weierstrass asegura que existe el $\min_{x\in\overline{S}}||y-x||$ que será $\overline{x}$. Veamos que es único. Supongamos que existe otro $\hat{x}\in S$ tal que 
 \[
 \gamma=||y-\hat{x}||=||y-\overline{x}||=\min_{x\in\overline{S}}||y-x||
 \]
@@ -151,9 +151,9 @@ Por último probemos la caracterización. Supongamos que $\overline{x}$ verifica
 \[
 ||y-x||^2=||y-\overline{x}+\overline{x}-x||^2=||y-\overline{x}||^2+||\overline{x}-x||^2+2(y-\overline{x})'(\overline{x}-x)
 \]
-El último término es mayor o igual que $0$ por hipótesis, y como la norma es siempre no negativa deducimos que $||y-x||^2\leq ||y-\overline{x}||^2\ \forall x\in S$. Recíprocamente, supongamos que $\overline{x}$ es el mínimo.  Consideramos entonces para cada $x\in S$ el punto $\overline{x}+\lambda(x-\overline{x})$ con $\lambda\in (0,1)$. Entonces, 
+El último término es mayor o igual que $0$ por hipótesis, y como la norma es siempre no negativa deducimos que $ ||y-\overline{x}||^2 \leq ||y-x||^2$ $\forall x\in S$. Recíprocamente, supongamos que $\overline{x}$ es el mínimo.  Consideramos entonces para cada $x\in S$ el punto $\overline{x}+\lambda(x-\overline{x})$ con $\lambda\in (0,1)$. Entonces, 
 \[
-||y-(\overline{x}+\lambda(x-\overline{x}))||^2=||y-\overline{x}||^2+\lambda^2||\overline{x}-x||-2\lambda(y-\overline{x})'(x-\overline{x})\geq||y-\overline{x}||.
+||y-(\overline{x}+\lambda(x-\overline{x}))||^2=||y-\overline{x}||^2+\lambda^2||\overline{x}-x||^2-2\lambda(y-\overline{x})'(x-\overline{x})\geq||y-\overline{x}||.
 \]
 Para que sea posible esa desigualdad, necesariamente $\lambda^2||\overline{x}-x||-2\lambda(y-\overline{x})'(x-\overline{x})\geq 0$. Simplificamos usando que $\lambda$ es estrictamente positiva y despejamos y tenemos que $\lambda||x-\overline{x}||\geq 2(y-\overline{x})'(x-\overline{x})$. Como vale para todo $\lambda\in (0,1)$, tomando límite ($\lambda\rightarrow 0$) y deducimos:  $0\geq (y-\overline{x})'(x-\overline{x})$. $\QED$
 \end{dem}
@@ -183,7 +183,7 @@ Antes de demostrarlo vamos a interpretarlo. Sean $a_1,\dots, a_n$ las columnas d
 \begin{dem}\
 \begin{enumerate}
 \item Supongamos que el primer sistema tiene solución. Es decir, $\exists x^0\mid Ax^0=b, x^0\geq 0$. Por tanto $u'A\cdot x^0\leq 0\equiv u'b\leq 0$, luego no puede haber solución en el segundo.
-\item Supongamos que el primer sistema no tiene solución. El conjunto $S=\{v: v=Ax,x\geq 0\}$ es convexo y cerrado en $\R^m$ y $b\not\in S$. Aplicando el mea anterior existen $p\in\R^m,\alpha\in\R$ tal que $p'b>\alpha, p'v\leq\alpha\ \forall v\in S$. Como $0\in S$ deducimos que $p'0\leq\alpha$ luego $\alpha\geq 0$ y por tanto $p'b>\alpha\geq 0\Rightarrow p'b>0$. Ahora tenemos que probar que $p'A\leq 0$. Utilizamos que $p'v\leq\alpha\ \forall v\in S$. Entonces $p'Ax\leq\alpha\ \forall x\geq 0$. De aquí deducimos que todas las componentes de $p'A$ deben ser no positivas, porque si hubiera una componente positiva (supongamos que es la $i$-ésima) entonces $(p'A)_ix_i>0$. Tomando $x_i\rightarrow +\infty$ se tiene que $(p'A)_i\rightarrow +\infty$, por lo que será mayor que $\alpha$.
+\item Supongamos que el primer sistema no tiene solución. El conjunto $S=\{v: v=Ax,x\geq 0\}$ es convexo y cerrado en $\R^m$ y $b\not\in S$. Aplicando el lema anterior existen $p\in\R^m,\alpha\in\R$ tal que $p'b>\alpha, p'v\leq\alpha\ \forall v\in S$. Como $0\in S$ deducimos que $p'0\leq\alpha$ luego $\alpha\geq 0$ y por tanto $p'b>\alpha\geq 0\Rightarrow p'b>0$. Ahora tenemos que probar que $p'A\leq 0$. Utilizamos que $p'v\leq\alpha\ \forall v\in S$. Entonces $p'Ax\leq\alpha\ \forall x\geq 0$. De aquí deducimos que todas las componentes de $p'A$ deben ser no positivas, porque si hubiera una componente positiva (supongamos que es la $i$-ésima) entonces $(p'A)_ix_i>0$. Tomando $x_i\rightarrow +\infty$ se tiene que $(p'A)_i\rightarrow +\infty$, por lo que será mayor que $\alpha$.
 \[
 (p'Ax)=\sum_{j\neq i}(p'A)_jx_j + (p'A)_ix_i \rightarrow +\infty.
 \]
@@ -195,7 +195,7 @@ Por tanto  $p'Ax\leq\alpha$ y hemos encontrado una solución para el segundo sis
 Los siguientes sistemas son alternativos:
 \begin{enumerate}
 \item $Ax\geq b, x\geq 0$.
-\item $u'A\leq 0, u\geq 0, u'b>0$. 
+\item $u'A\leq 0, u'b>0, u\geq 0$. 
 \end{enumerate}
 \end{coro}
 \begin{dem}
@@ -1629,4 +1629,64 @@ Dividiendo por $α^2$ y pasando al límite:
 \[ 0 ≤ \frac{1}{2} d' \nabla^2 f(x^*) d \]
 Luego $\nabla^2 f(x^*)$ es semidefinida positiva.
 \end{dem}
+\begin{theorem}[C. S.] Sea $f\in \mathcal{C}^2(S)$, S abierto. Supongamos que $x^*\in S$. Supongamos que verifica:
+\begin{enumerate}
+\item $\nabla f(x^*)=0$
+\item $\nabla^2 f(x^*)$ definida positivo.
+\end{enumerate}
+Entonces $\exists \gamma>0$, $\delta>0$ tal que 
+\[
+f(x)\geq f(x^*)+\frac{\gamma}{2}||x-x^*||^2 \qquad \forall x\in S, ||x-x^2||<\delta
+\]
+\end{theorem}
+\begin{dem}
+Una propiedad de las matrices definidas positivas, sabemos que $\exists \lambda>0$ y además $\forall d\in \R^n$, $d'\nabla^2 f(x^*) d\geq \lambda ||d||^2$. Sea $d\in \R^n$ entonces:
+\begin{gather*}
+f(x^*+d)=f(x^*)+\nabla f(x^*)'d +\frac{1}{2}d'\nabla^2 f(x^*)d+O(||d||^2) \\
+f(x^*+d)-f(x) =  \frac{1}{2}d'\nabla^2 f(x^*)d+O(||d||^2) \geq  \frac{\lambda}{2}||d||^2 + O(||d||^2) = \frac{||d^2||}{2}\left(\lambda+\frac{O(||d||^2)}{||d||^2}\right)
+\end{gather*}
+Sabemos que $\forall \varepsilon>0$ ($\varepsilon < \lambda$) $\exists \delta >0$ tal que si $||d||<\delta$ entonces $\left|\dfrac{O(||d||^2)}{||d||^2}\right|<\varepsilon$, por tanto, si $||d||<\delta$ entonces
+\[
+f(x^*+d)-f(x^*)\geq  \frac{||d||^2}{2}\left(\lambda+\frac{O(||d||^2)}{||d||^2}\right) \geq  \frac{||d||^2}{2}\left(\lambda-\varepsilon\right) =  \frac{\gamma}{2}||d||^2 \qquad x \mid ||x-x^*||<\delta 
+\]
+\end{dem}
+\section{Algoritmos de tipo gradiente}
+Vamos a definir basándonos en que, dado $x$, $-\nabla f(x)$ es la dirección de decrecimiento local de $f$ en $x$. Dado $x^0$ inicial definimos $x^1 = x^0 + \alpha^0\nabla f(x^0)$. En general:
+\[
+\begin{cases}
+\text{Dado $x^0\in \R^n$}\\
+x^{k+1} = x^k - \alpha^k \nabla f(x^k)
+\end{cases}
+\]
+Se tiene que
+\[
+f(x^{k+1})=f(x^k)+\nabla f(x^k)(x^{k+1}-x^k) + O(||x^{k+1}-x^k||) \approx f(x^k)+\nabla f(x^k)\alpha^k d^k
+\]
+Con condición de parada $x^{k+1}=x^k$, es decir, $\nabla f(x^k)=0$.
+\newpage
+\subsection{Elementos de este métodos}
+\begin{enumerate}
+\item $x^0$ punto inicial.
+\item Dirección de desplazamiento
+\begin{itemize}
+\item $d^k = -\nabla f(x^k)$ (Método de máximo descenso).
+\item $d^k = -D^k \nabla f(x^k)$ con $D^k$ definida positiva. Esto permite hacer una cantidad infinita de iteraciones sin que el método se atasque.
+\item Tomar, si es definida positiva, $(\nabla^2 f(x^k))^{-1}$.
+\end{itemize}
+\item La longitud de paso $\alpha^k$.
+\begin{itemize}
+\item Serie divergente $\sum a_k$ tal que $a_k \rightarrow 0$.
+\item Tomar $\alpha^k$ tal que $\alpha^k$ minimiza $f(x^k+\alpha d^k)$ (función de una variable real).
+\end{itemize}
+\end{enumerate}
+\subsection{Método de Newton generalizado}
+Si tenemos $g:\R^{n\times n}\to \R^n$ tratamos de resolver $g(x)0$. Si $\exists F\mid \nabla F = g$ entonces buscamos $\nabla F =0$, es decir, buscamos:
+\[
+x^{k+1} =x^k - \alpha^k (\nabla^2 F(x^k))^{-1}\nabla F(x^k)
+\]
+Si g no tiene primitiva podemos reemplazar los términos y :
+\[
+x^{k+1}=x^k-\alpha^k(\nabla g(x^k))^{-1} g(x)
+\]
+Se tomará $\alpha^k =1$ $\forall k$ (si $\nabla g(x^k)$ es definida positiva),
 \end{document}
