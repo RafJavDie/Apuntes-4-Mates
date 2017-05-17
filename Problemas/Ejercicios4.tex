@@ -167,7 +167,13 @@ Probar que si $X = A\cup B$ con $A$ y $B$ abiertos tales que $A$, $B$ y $A\cap B
  y $A$ y $B$ simplemente conexos entonces  $X$ es simplemente conexo. Aplicar este resultado para deducir
  que $\pi_1(S^n) = 0$ para todo $n \geq 2$.
 \end{exercise}
+\begin{sol*}
+Dado que $X$ es conexo por caminos (y por tanto conexo) $A\cap B\neq\emptyset$. Consideremos por tanto un lazo $\alpha: I\to X$ tal que $u(0)=u(1)=x_0\in A$ (sería análogo si $x_0\in B$). Por el lema de Lebesgue existe una partición $0=a_0<a_1<\cdots <a_n=1$ del intervalo $I$ de tal modo que $\forall i=0,\dots, n$ o bien $\alpha([a_i,a_{i+1}])\subset A$ o bien $\alpha([a_i,a_{i+1}])\subset B$. De hecho podemos elegir una partición tal que si $\alpha([a_{i-1},a_{i}])\not\subset A$ entonces $\alpha([a_{i},a_{i+1}])\subset A$ (análogamente para $B$). Por ello, podemos suponer que $\alpha(a_k)\in A\cap B\ \forall k=1,\dots,n-1$. Consideremos el segmento $[a_k,a_{k+1}]$ tal que $\alpha([a_k,a_{k+1}])\subset B$. Los puntos $\alpha(a_k)$ y $\alpha(a_{k+1})$ están unidos por un camino $\gamma_k: I\to A\cap B$. Como $B$ es simplemente conexo existe una homotopía $H_k:[a_k,a_{k+1}]\to B$ entre $\alpha_{\big|[a_k,a_{k+1}]}$ y $\gamma_k$. Por tanto $\alpha$ es homotópica a un lazo $\beta:I\to A$. Como $A$ es simplemente conexo, se sigue que $\beta$ es nul-homotópico, y por tanto, $X$ es simplemente conexo.\\
+Para el caso de $S^n$ para $n\geq 2$ podemos considerar $A=S^n\setminus\{(0,\dots,0,1)\}$ y $B=S^n\setminus\{(0,\dots,0,-1)\}$. Claramente $A$ y $B$ son simplemente conexos pues son homeomorfos a $\R^n$ mediante la proyección estereográfica. Además su intersección es $S^n\setminus\{(0,\dots,0,1),(0,\dots,0,-1)\}$, que es homeomorfa a $\R^n\setminus\{0\}$ y por tanto es conexa por caminos. Aplicando el resultado anterior deducimos que $\pi_1(S^n) = 0$ para todo $n \geq 2$.  
+\end{sol*}
+
 \newpage 
+
 \begin{exercise}
 Dar una familia infinita de espacios conexos por caminos simplemente conexos que no sean homeomorfos.
 \end{exercise}
