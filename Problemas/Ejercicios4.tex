@@ -193,12 +193,19 @@ Como consecuencia, si $X$ es conexo por caminos existe una biyecci\'on entre $[S
 
 
 
-
-\newpage \begin{exercise} Consideremos el espacio $X = \{a,b,c,d\}$ con la topolog\'{\i}a $\mathcal{T} = \{\emptyset, X, \{c\},\{d\}, \{c,d\}, \{a,c,d\}, \{b,c,d\}\}$.
+\newpage \begin{exercise} Consideremos el espacio $X = \{a,b,c,d\}$ con la topología $\mathcal{T} = \{\emptyset, X$, $\{c\},\{d\}, \{c,d\}, \{a,c,d\}, \{b,c,d\}\}$.
 \par
- Veamos que $\pi_1(X,d)$ no es el grupo trivial. Para ello, sea $\alpha: [0,1]\to X$ la aplicaci\'on $\alpha(t) = d$ si $t \in [0,\frac{1}{4}) \cup (\frac{3}{4},1]$, $\alpha(t) = c$ si $t\in (\frac{1}{4},\frac{3}{4})$, $f(\frac{1}{4}) = a$ y $f(\frac{3}{4}) = b$.  Probar que $\alpha$ es un lazo en $d$ que no es equivalente al lazo constante. Para esto \'ultimo, suponer lo contrario y si $H$ es una homotop\'{\i}a, probar que $t_0 = \mbox{sup }\{t; c\in H(I\times \{t\})\}$ es un m\'aximo y llegar a la contradicci\'on de que debe ser $t_0 = 1$.
-\end{exercise} 
-
-\newpage \begin{exercise} Sea $H: X\times I \to X$ una homotop\'{\i}a con $H(x,0) =  H(x,1) = x$ para todo $x\in X$. Si $\gamma$ es el lazo en $x_0$ $\gamma(t) = H(x_0,t)$, probar que la clase $[\gamma]$ conmuta con todo elemento de $\pi_1(X,x_0)$.
+ Veamos que $\pi_1(X,d)$ no es el grupo trivial. Para ello, sea $\alpha: [0,1]\to X$ la aplicación $\alpha(t) = d$ si $t \in [0,\frac{1}{4}) \cup (\frac{3}{4},1]$, $\alpha(t) = c$ si $t\in (\frac{1}{4},\frac{3}{4})$, $f(\frac{1}{4}) = a$ y $\alpha(\frac{3}{4}) = b$.  Probar que $\alpha$ es un lazo en $d$ que no es equivalente al lazo constante. Para esto último, suponer lo contrario y si $H$ es una homotopía, probar que $t_0 = \mbox{sup }\{t; c\in H(I\times \{t\})\}$ es un máximo y llegar a la contradicción de que debe ser $t_0 = 1$.
 \end{exercise}
+\begin{sol*}
+Suponemos que $\alpha$ es nul-homotópica y consideramos la homotopía $H : I \times I \to X$  de $\alpha$ a la función constante $e(t)=d$ para $t \in I$.
+Vamos a demostrar que el conjunto $G = \{t ; c \in H(I \times \{t\}\}$ es un abierto cerrado. Para ver que es abierto, observamos que $\{(i,t) ; c \in H(i,t)\} = H^{-1}({c})$. Como $H$ es continua y $\{c\}$ es un abierto, $H^{-1}({c})$ es también abierto. Como $G$ es la proyección de $H^{-1}(c)$ sobre la segunda coordenada, $G$ es abierto. Por otro lado, existe $t_0$, ya que $G \subseteq I$. Aunque $G$ debe ser una unión de intervalos, podemos suponer sin pérdida de generalidad que es un sólo intervalo. Sea $\{(i_n,t_n)\}\subset I\times I$ una sucesión tal que $H(i_n,t_n) = c$ y $t_n \to t_0$. Por continuidad (tomando si es necesario una subsucesión de manera que $i_n$ converga en $i_0 \in I$):
+\[ H(i_0,t_0) = \lim\limits_{(i_n,t_n)\to (\infty,\infty)}H(i_n,t_n) = c \]
+Por lo tanto $t_0 \in G$. Entonces $G$ es un abierto cerrado. Basta ver, que por inspección, $X$ es conexo (no se puede expresar como la unión disjunta de dos abiertos de $\mathcal{T}$). Por lo tanto $G = X$ y $t_0 = 1$. Hemos llegado entonces a una contradicción, pues $H(I,1) \neq \{d\}$. Luego $\alpha$ no es nul-homotópica y $\pi_1(X,d)$ no es trivial.
+\end{sol*}
+
+\newpage \begin{exercise} Sea $H: X\times I \to X$ una homotopía con $H(x,0) =  H(x,1) = x$ para todo $x\in X$. Si $\gamma$ es el lazo en $x_0$ $\gamma(t) = H(x_0,t)$, probar que la clase $[\gamma]$ conmuta con todo elemento de $\pi_1(X,x_0)$.
+\end{exercise}
+\begin{sol*} Véase que $[\gamma]=[Id_X]$, ya que la homotopía.
+\end{sol*}
 \end{document}
