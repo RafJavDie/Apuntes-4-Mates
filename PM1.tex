@@ -33,7 +33,7 @@ Definimos $x(\lambda)$ igual que en la demostración anterior. Supongamos que $S
 \end{dem}
 
 \begin{defi}
-Un \textbf{poliedro} es el conjunto de puntos definido por la intersección de un número finito de semiespacios. Visto matricialmente, dados $A\in\R^{m\times n}, b\in \R^n$ se define el poliedro $P=\left\{x\in \R^n: Ax\leq b\right\}$. Si denotameos por $a_i$ a la i-ésima fila de $A$ vemos que este conjunto se reescribe como $\left\{x\in\R^n: a_ix\leq b_i\ \forall i=1,\dots, n\right\}$, que es equivalente a la primera definición. Un poliedro acotado se llama \textbf{politopo}. 
+Un \textbf{poliedro} es el conjunto de puntos definido por la intersección de un número finito de semiespacios. Visto matricialmente, dados $A\in\R^{m\times n}, b\in \R^n$ se define el poliedro $P=\left\{x\in \R^n: Ax\leq b\right\}$. Si denotamos por $a_i$ a la i-ésima fila de $A$ vemos que este conjunto se reescribe como $\left\{x\in\R^n: a_ix\leq b_i\ \forall i=1,\dots, n\right\}$, que es equivalente a la primera definición. Un poliedro acotado se llama \textbf{politopo}. 
 \end{defi}
 
 \begin{coro}
@@ -162,7 +162,7 @@ Para que sea posible esa desigualdad, necesariamente $\lambda^2||\overline{x}-x|
 \end{defi}
 
 \begin{lema}
-Sea $S\subset\R^n$ convexo y cerrado, sea $y\not\in S$. Existen $p\in\R^n, \alpha\in\R$ tal que $p'y<\alpha$ y $p'x\leq\alpha\ \forall x\in S$.
+Sea $S\subset\R^n$ convexo y cerrado no vacío, sea $y\not\in S$. Existen $p\in\R^n, \alpha\in\R$ tal que $p'y>\alpha$ y $p'x\leq\alpha\ \forall x\in S$.
 \end{lema}
 \begin{dem}
 Por el teorema de la proyección, existe $\overline{x}\in S$ tal que $(y-\overline{x})'(x-\overline{x})\leq 0\ \forall x\in S$. Tomamos $p=(y-\overline{x})$ y $\alpha=p' \overline{x}$. Luego $p'(x-\overline{x})\leq 0\equiv p'x\leq p'\overline{x}$. Además, como $y\not\in S$, $0<||y-\overline{x}||^2=(y-\overline{x})'(y-\overline{x})=p'y-\underbrace{p'\overline{x}}_\alpha \Rightarrow \alpha <p'y$. $\QED$
@@ -174,7 +174,7 @@ Por el teorema de la proyección, existe $\overline{x}\in S$ tal que $(y-\overli
 Sean $A\in \R^{m\times n}, b\in\R^m,x\in\R^n$. Entonces, exactamente uno de los siguientes sistemas tiene solución:
 \begin{enumerate}
 \item $Ax=b$ con $x\geq 0$ (es decir, todas las componentes de $x$ son no negativas).
-\item $u'A\leq 0, u'b>0, u\in R^m$.
+\item $u'A\leq 0, u'b>0, u\in \R^m$.
 \end{enumerate}
 \end{lema}
 
@@ -200,6 +200,7 @@ Los siguientes sistemas son alternativos:
 \end{coro}
 \begin{dem}
 \begin{enumerate}
+\item[]
 \item Denotamos por $A_i$ la fila $i$ de $A$ con $i\in\{1,\dots,m\}$. Entonces 
 \[
 Ax\geq b, x\geq 0 \equiv\begin{cases}
@@ -209,7 +210,7 @@ A_mx\geq b_m\equiv A_mx-y_m & y_m\geq 0\\
 x\geq 0 & 
 \end{cases}
 \]
-es decir, $Ax\geq b, x\geq 0 \equiv Ax-Iy=b, x\geq 0, y\geq 0$, o lo que es lo mismo,
+Es decir, $Ax\geq b, x\geq 0 \equiv Ax-Iy=b, x\geq 0, y\geq 0$, o lo que es lo mismo,
 \[(A| -I)\begin{pmatrix}
 x\\
 y
@@ -247,7 +248,7 @@ $\QED$
 \section{Representación de poliedros}
 
 \begin{defi}
-Diremos que un poliedro $P$ está en forma estándar si $P=\{x\in\R^n: Ax=b,x\geq 0\}$ con $A\in\R^{m\times n}, b\in\R^m, b\in\R^m, n\geq m$ y $rg(A)=m$.
+Diremos que un poliedro $P$ está en forma estándar si $P=\{x\in\R^n: Ax=b,x\geq 0\}$ con $A\in\R^{m\times n},$ $b\in\R^m$, $n\geq m$ y $rg(A)=m$.
 \end{defi} 
 \begin{nota}
 Todo poliedro se puede escribir en forma estándar pues $a'x\leq b\equiv a'x+y=b, y\geq 0$ y análogamente restando para la desigualdad contraria.
@@ -265,7 +266,7 @@ x_N
 Sea $A \subset \R^{m \times n}$, $rg(A) = m$, $m ≤ n$ y $b \in \R^m$. Consideramos $P = \{ x \in \R^n : Ax=b, x ≥ 0\}$ (poliedro en forma estándar).
 
 \begin{theorem}[Teorema de caracterización de puntos extremos]\label{carac-extremos}
-Se $P$ un poliedro en las condiciones anteriores. Entonces $x$ es un punto extremo de $P$ si y sólo si existe $B \subset A$ con $B \in \R^{m \times m}$, $rg(B)=m$, $B^{-1}b ≥ 0$ y $x = \begin{pmatrix} B^{-1}b\\0\end{pmatrix}$
+Sea $P$ un poliedro en las condiciones anteriores. Entonces $x$ es un punto extremo de $P$ si y sólo si existe $B \subset A$ con $B \in \R^{m \times m}$, $rg(B)=m$, $B^{-1}b ≥ 0$ y $x = \begin{pmatrix} B^{-1}b\\0\end{pmatrix}$
 \end{theorem}
 
 \begin{dem}
@@ -294,16 +295,18 @@ $d$ es una dirección de $P$ si y sólo si $Ad=0$, $d ≥ 0$.
 \begin{dem}
 $d$ es dirección sii $\forall x \in P$, $x + λd \in P$ $\forall λ ≥ 0$. Equivalentemente, $A(x+λd)= b$ y $x+λd ≥ 0$ $\forall λ ≥ 0$. Esto se cumple sii:
 \[ Ax+λAd = b \Leftrightarrow Ad = 0\]
-\[ x + λd ≥ 0 \forall λ ≥ 0 \Leftrightarrow d ≥ 0 \]
+\[ x + λd ≥ 0 \quad \forall λ ≥ 0 \Leftrightarrow d ≥ 0 \]
 \end{dem}
 
-\begin{theorem}[Teorema de caracterización de direcciones extremas]\label{carac-direcciones}
-$d$ es una dirección extrema de $P$ sii $d = \begin{pmatrix}-B^{-1}a_j\\e_j\end{pmatrix}$ donde $B \subset A$, $B \in R^{m\times m}$, $rg(B) = m$ y $a_j \notin B$ tal qe $B^{-1}a_j ≤ 0$. (Demostrado en uno de los libros de Bazaraa)
+\begin{theorem}[Caracterización de direcciones extremas]\label{carac-direcciones}
+$d$ es una dirección extrema de $P$ sii $d = \begin{pmatrix}-B^{-1}a_j\\e_j\end{pmatrix}$ donde $B \subset A$, $B \in \R^{m\times m}$, $rg(B) = m$ y $a_j \notin B$ tal que $B^{-1}a_j ≤ 0$. 
 \end{theorem}
-
+\begin{dem}
+La demostración puede encontrarse en el Bazaraa.
+\end{dem}
 \begin{nota} El número de direcciones extremas de $P$ es finito y está acotado por $\begin{pmatrix}n\\m\end{pmatrix}(n-m)$.
 \end{nota}
-
+\newpage
 \begin{theorem}[Teorema de representación de poliedros de Minkowski-Weyl]
 Sea $P$ un poliedro en forma estándar y sean $x^1,x²,\dots,x^k$ sus puntos extremos y $d^1,d^2,\dots,d^l$ sus direcciones extremas. Consideramos 
 \[ S = \{x \in \R^n : x = \sum_{i=1}^k λ_i x^i + \sum_{j=1}^l μ_j d^j, \sum_{i=1}^k λ_i=1, λ_i ≥ 0, μ_j ≥ 0\ \forall i,j\} \]
@@ -321,7 +324,7 @@ Entonces $S = P$. Es decir, cualquier poliedro en forma estándar queda determin
 	\begin{enumerate}
 		\item $p'd^j ≤ 0$ $\forall j=1,\dots,l$
 		
-		Si existiese $j$ tal que $p'd^j > 0$, consideamos el rayo $x + λd^j, λ ≥ 0$ para cualquier $x \in S$, pero entonces $p'(x+λd^j) = p'x + λp'd^j ≤ α$, pero $λp'd^j$ tiende a infinito cuando $λ$ tiende a infinito, luego $p'(x+λd^j)$ no puede estar acotado por ningún $α$.
+		Si existiese $j$ tal que $p'd^j > 0$, consideramos el rayo $x + λd^j, λ ≥ 0$ para cualquier $x \in S$, pero entonces $p'(x+λd^j) = p'x + λp'd^j ≤ α$, pero $λp'd^j$ tiende a infinito cuando $λ$ tiende a infinito, luego $p'(x+λd^j)$ no puede estar acotado por ningún $α$.
 		\item $p'z > α ≥ p'x^i$ $\forall i=1,\dots,k$
 	\end{enumerate}
 	Sea $\overline{x}$ el punto extremo tal que $p'\overline{x} = \max_i p'x^i$. Usando el teorema \ref{carac-extremos}: existe una reordenación tal que $\overline{x} = \begin{pmatrix}B^{-1}b\\0\end{pmatrix}$, $A = [B\ N]$, $x = \begin{bmatrix}x_B\\x_n\end{bmatrix}$, $z = \begin{bmatrix}z_B\\z_n\end{bmatrix} \in P$, $Az=b$. De $[B\ N]\begin{bmatrix}z_B\\z_N\end{bmatrix} = b$ obtenemos que $z_B = B^{-1}b-B^{-1}Nz_N$. Luego usando (2):
@@ -330,7 +333,7 @@ Entonces $S = P$. Es decir, cualquier poliedro en forma estándar queda determin
 	\[ 0 < (p_N'-P_B'B^{-1}N)_j = p_j - p_B'B^{-1}a_j \]
 	Llamemos $y_j\footnote{\url{https://www.youtube.com/watch?v=q6EoRBvdVPQ}} = B^{-1}a_j$ . Veamos que $y_j > 0$. Si $y_j ≤ 0$, $d = \begin{pmatrix}-B^{-1}a_j\\e_j\end{pmatrix}$ debe ser una dirección extrema por el teorema \ref{carac-direcciones}. Entonces $p'd = (p_B'\ p_N')\begin{pmatrix}-B^{-1}a_j\\e_j\end{pmatrix}=-p_B'B^{-1}a_j + p_j > 0$, pero esto contradice (1). Luego $y_j = B^{-1}a_j > 0$. Denotemos por $\overline{b}=B^{-1}b$. Sea $d = \begin{pmatrix}-y_j\\e_j\end{pmatrix}$ y $\hat{x} = \overline{x} + λd$. Veamos que $\hat{x} \in P$ si $λ = \frac{\overline{b}_r}{y_{jr}} = \min\{\frac{\overline{b}_i}{y_{ji}} : y_{ji} > 0\}$..
 	\[ A\hat{x} = A\overline{x} + \frac{\overline{b}_r}{y_{r_j}} A d = b + \frac{\overline{b}_r}{y_{jr}} [B\ N] \begin{pmatrix}-B^{-1}a_j\\e_j\end{pmatrix} = b + \frac{\overline{b}_r}{y_{jr}}(-a_j + a_j) = b \]
-	Si $i$ es una cooredanda de $B$ con $i \neq r$:
+	Si $i$ es una coordenada de $B$ con $i \neq r$:
 	\[ \hat{x}_i = (B^{-1}b)_i + \frac{\overline{b}_r}{y_{jr}}(-y_{ji}) = \overline{b}_i - \frac{\overline{b}_r}{y_{jr}}y_{ji} \]
 	Si $y_{ji} < 0 \Rightarrow \hat{x} ≥ 0$ evidentemente. Si $y_{ji} > 0$, entonces $\overline{b}_i - \frac{\overline{b}_r}{y_{jr}}y_{ji} ≥ 0$, ya que $ \frac{\overline{b}_r}{y_{ji}} ≥ \frac{\overline{b}_r}{y_{jr}}$.
 	
@@ -357,13 +360,11 @@ Sean $A\in\R^{m\times n},\ rg(A)=m,\ m\leq n,\ b\in\R^m,\ c\in\R^n$. Consideramo
 \end{theorem}
 \begin{dem}
 Planteamos el problema de programación lineal $\underset{Ax=b,x\geq 0}{\min} c'x$. Por el teorema de Wein, si $x\in P$, podemos escribir $x=\sum_{i=1}^k\lambda_ix^i +\sum_{j=1}^l\mu_j d^j$ con $\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1$. Luego tenemos el problema siguiente
-\[\underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} c'[\sum_{i=1}^k\lambda_ix^i +\sum_{j=1}^l\mu_j d^j] \]
+\[\underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} c'\left[\sum_{i=1}^k\lambda_ix^i +\sum_{j=1}^l\mu_j d^j\right] \]
 Supongamos que $c'd^j\geq 0\ \forall j$. Entonces continuamos la ecuación anterior con 
 \begin{gather*}
- \underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} [\sum_{i=1}^n\lambda_ic'x^i +\sum_{j=1}^l\mu_j \underset{\geq 0}{c'd^j}]\geq\\
-\underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} [\sum_{i=1}^n\lambda_ic'x^i]\geq \\
-\underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} [\sum_{i=1}^n\lambda_ic'\overline{x}]=\\
-\underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} [c'\overline{x}\sum_{i=1}^n\lambda_i]=c'\overline{x}
+ \underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[\sum_{i=1}^n\lambda_ic'x^i +\sum_{j=1}^l\mu_j \underset{\geq 0}{c'd^j}\right]\geq \underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[\sum_{i=1}^n\lambda_ic'x^i\right]\geq \\
+\underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[\sum_{i=1}^n\lambda_ic'\overline{x}\right]= \underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[c'\overline{x}\sum_{i=1}^n\lambda_i\right]=c'\overline{x}
 \end{gather*}
 donde $\overline{x}$ minimiza $c'x^i$. Como $\overline{x}$ es un punto extremo, $c'x$ es el valor mínimo, entonces $\overline{x}\in P$. Recíprocamente, si $\exists j\mid c'd^j<0$ consideramos $x\in P$ y el rayo $x+\lambda d^j\in P\ \forall\lambda\geq 0$. 
 \[ c'(x+\lambda d^j)=\underset{cte}{c'x} + \underset{<0}{\lambda c' d^j}\underset{\lambda\to\infty}{\longrightarrow} -\infty\]
@@ -644,7 +645,7 @@ A cada problema de programación lineal
      &     &             &              &         $x_3$ & libre
 \end{tabular}
 \end{center}
-al que llamaremos primal (P) y donde $x_1, x_2$ y $x_3$ son vectores de variables de decisión, le vamos a asociar otro problema de programacion lineal al que llamaremos dual (D) dado por las siguiente transformación:
+al que llamaremos primal (P) y donde $x_1, x_2$ y $x_3$ son vectores de variables de decisión, le vamos a asociar otro problema de programación lineal al que llamaremos dual (D) dado por las siguiente transformación:
 
 \begin{center}
 \begin{tabular}{cccccc}
@@ -658,14 +659,14 @@ al que llamaremos primal (P) y donde $x_1, x_2$ y $x_3$ son vectores de variable
 \end{tabular}
 \end{center}
 
-La transformacón que lleva (P) en (D) crea por cada restricción de (P) una variable de decisión en (D) y por cada variable de decisión en (P) una restricción en (D) de a forma que se indica en la siguiente tabla:
+La transformación que lleva (P) en (D) crea por cada restricción de (P) una variable de decisión en (D) y por cada variable de decisión en (P) una restricción en (D) de a forma que se indica en la siguiente tabla:
 
 \begin{center}
 \begin{tabular}{|c|c|}
 \hline
 	$\min$ & $\max$\\
 \hline
-	restriccion ≥ & variable ≥ 0\\
+	restricción ≥ & variable ≥ 0\\
 \hline
 	restricción ≤ & variable ≤ 0\\
 \hline
@@ -727,7 +728,7 @@ Si $X \neq \emptyset$ y $U \neq \emptyset$, entonces existen $x^*$ y $u^*$ soluc
 \end{theorem}
 
 \begin{dem}
-Como $U \neq \emptyset$, existe algún punto $\overline{u} \in U$. Entonces $\forall x \in X$, $x'c ≥ \overline{u}'b$. Por tanto (P) no puede decrecer a $-\infty$ y esto indica que debe haber una solucion en un punto extremo $x^* \in X$, determinado por una base $B$. Así que:
+Como $U \neq \emptyset$, existe algún punto $\overline{u} \in U$. Entonces $\forall x \in X$, $x'c ≥ \overline{u}'b$. Por tanto (P) no puede decrecer a $-\infty$ y esto indica que debe haber una solución en un punto extremo $x^* \in X$, determinado por una base $B$. Así que:
 \[ x^* = \begin{pmatrix}B^{-1} b \\ 0\end{pmatrix}, \qquad B^{-1}b ≥ 0 \]
 
 Veamos ahora que $(u^*)' = c_B'B^{-1}$ es la solución óptima de (D). Es decir, hay que ver que (1) $(u^*)' \in U$ y (2) $(u^*)'b = c'x^*$. Vemos que:
@@ -735,7 +736,7 @@ Veamos ahora que $(u^*)' = c_B'B^{-1}$ es la solución óptima de (D). Es decir,
 Luego:
 \[ (u^*)'B ≤ c_B' \equiv c_B'B^{-1}B ≤ c_B \equiv c_B' ≤ c_B'\]
 \[ (u^*)'N ≤ c_N' \equiv c_B'B^{-1}N ≤ c_N' \equiv c_N' - c_B'B^{-1}N ≥ 0\]
-Como las ecuaciones del miembro derecho se cumplen, llegamos a que $(u^*)'A ≤ c'$, lo que demuestra (1). Por otro lado, dado que $x^*$ es solución óptimma de (P) entonces las cotas reducidas de las variables asociadas a $x_a$ en $Ax - I x_a = b$ deben ser no negativas. Para cualquier columna $a \in A$ o $-e_j \in -I$, se tiene que:
+Como las ecuaciones del miembro derecho se cumplen, llegamos a que $(u^*)'A ≤ c'$, lo que demuestra (1). Por otro lado, dado que $x^*$ es solución óptima de (P) entonces las cotas reducidas de las variables asociadas a $x_a$ en $Ax - I x_a = b$ deben ser no negativas. Para cualquier columna $a \in A$ o $-e_j \in -I$, se tiene que:
 \[ c_a - c_B' B^{-1} a ≥ 0 \]
 \[ c_{e_j} - c_B' B^{-1}(-e_j) ≥ 0 \equiv  c_B'B^{-1}(-e_j) ≥ 0 \equiv c_B'B^{-1}e_j = (u^*)'e_j ≥ 0 \]
 para todo $j$, luego todas las columnas de $c_B'B^{-1}$ son no negativas, luego $u^* ≥ 0$. Por último:
@@ -749,7 +750,7 @@ El sistema
 	-u'A + tc' ≥ 0\\
 	u'b - c'x ≥ 0
 \end{cases}\end{equation*}
-admite una solucion $(x_0,u_0,t_0) ≥ 0$ y verificando
+admite una solución $(x_0,u_0,t_0) ≥ 0$ y verificando
 \begin{equation*}\label{sistema2}\begin{cases}
 	Ax_0 - t_0b +u_0     > 0\\
 	-u'_0A + t_0c' + x_0  > 0\\
