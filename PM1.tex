@@ -183,11 +183,11 @@ Antes de demostrarlo vamos a interpretarlo. Sean $a_1,\dots, a_n$ las columnas d
 \begin{dem}\
 \begin{enumerate}
 \item Supongamos que el primer sistema tiene solución. Es decir, $\exists x^0\mid Ax^0=b, x^0\geq 0$. Por tanto $u'A\cdot x^0\leq 0\equiv u'b\leq 0$, luego no puede haber solución en el segundo.
-\item Supongamos que el primer sistema no tiene solución. El conjunto $S=\{v: v=Ax,x\geq 0\}$ es convexo y cerrado en $\R^m$ y $b\not\in S$. Aplicando el lema anterior existen $p\in\R^m,\alpha\in\R$ tal que $p'b>\alpha, p'v\leq\alpha\ \forall v\in S$. Como $0\in S$ deducimos que $p'0\leq\alpha$ luego $\alpha\geq 0$ y por tanto $p'b>\alpha\geq 0\Rightarrow p'b>0$. Ahora tenemos que probar que $p'A\leq 0$. Utilizamos que $p'v\leq\alpha\ \forall v\in S$. Entonces $p'Ax\leq\alpha\ \forall x\geq 0$. De aquí deducimos que todas las componentes de $p'A$ deben ser no positivas, porque si hubiera una componente positiva (supongamos que es la $i$-ésima) entonces $(p'A)_ix_i>0$. Tomando $x_i\rightarrow +\infty$ se tiene que $(p'A)_i\rightarrow +\infty$, por lo que será mayor que $\alpha$.
+\item Supongamos que el primer sistema no tiene solución. El conjunto $S=\{v: v=Ax,x\geq 0\}$ es convexo y cerrado en $\R^m$ y $b\not\in S$. Aplicando el lema anterior existen $p\in\R^m,\alpha\in\R$ tal que $p'b>\alpha, p'v\leq\alpha\ \forall v\in S$. Como $0\in S$ deducimos que $p'0\leq\alpha$ luego $\alpha\geq 0$ y por tanto $p'b>\alpha\geq 0\Rightarrow p'b>0$. Ahora tenemos que probar que $p'A\leq 0$. Utilizamos que $p'v\leq\alpha\ \forall v\in S$. Entonces $p'Ax\leq\alpha\ \forall x\geq 0$. De aquí deducimos que todas las componentes de $p'A$ deben ser no positivas, porque si hubiera una componente positiva (supongamos que es la $i$-ésima) entonces $(p'A)_i>0$. Tomando $x_i\rightarrow +\infty$ se tiene que $(p'A)_ix_i\rightarrow +\infty$, por lo que será mayor que $\alpha$.
 \[
 (p'Ax)=\sum_{j\neq i}(p'A)_jx_j + (p'A)_ix_i \rightarrow +\infty.
 \]
-Por tanto  $p'Ax\leq\alpha$ y hemos encontrado una solución para el segundo sistema.
+Por tanto  $p'A\leq 0$ y hemos encontrado una solución para el segundo sistema.
 \end{enumerate}
 \end{dem}
 
