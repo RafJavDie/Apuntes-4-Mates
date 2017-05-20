@@ -191,12 +191,29 @@ dados $x_0, x_1\in X$, dos caminos de $X$ cualesquiera entre $x_0$ y $x_1$ induc
 isomorfismo entre $\pi_1(X,x_1)$ y $\pi_1(X,x_0)$.
 Probar que $X$ es 1-simple si y sólo si $\pi_1(X)$ es abeliano.
 \end{exercise}
+\begin{sol*}
+$\boxed{\Leftarrow}$ Supongamos que $\pi_1(X)$ es abeliano. Sean $\alpha$ y $\beta$ dos caminos entre $x_0$ y $x_1$. Sea $f$ un lazo en $x_0$. Entonces $\overline{\alpha}*f*\beta$ es un lazo en $x_1$. También lo es $\overline{\beta}*\alpha$. Así pues
+\begin{align*}
+\alpha_\sharp([f])&=[\overline{\alpha}][f][\alpha]\\
+				  &=([\overline{\alpha}][f][\beta])([\overline{\beta}][\alpha])\\
+				  &=([\overline{\beta}][\alpha])([\overline{\alpha}][f][\beta])\\
+				  &=[\overline{\beta}][f][\beta]\\
+				  &=\beta_\sharp([f]).
+\end{align*}
+$\boxed{\Rightarrow}$ Sean $f$ y $g$ dos lazos en $x_0$. Sean $\alpha$ un camino entre $x_0$ y $x_1$. Definimos el camino $\gamma=f*\alpha$ entre $x_0$ y $x_1$. Tenemos que $\overline{\gamma}=\overline{\alpha}*\overline{f}$. Por hipótesis $\alpha_\sharp([g])=\gamma_\sharp([g])$, luego 
+\[
+[\overline{\alpha}][g][\alpha]=[\overline{\alpha}][\overline{f}][g][f][\alpha]\Rightarrow [g]=[\overline{f}][g][f]\Rightarrow [f][g]=[g][f]
+\]
+\end{sol*}
 
 \newpage 
 \begin{exercise}
 Sea $[S^1,X]$ el conjunto de las clases de homotopía (no necesariamente relativa) de aplicaciones de $S^1$ en $X$. De acuerdo con el problema \ref{s1} hay definida una aplicación $\varphi: \pi_1(X,x_0) \to [S^1,X]$, $[\alpha] \mapsto [f_{\alpha}]$. Probar que si $X$ es conexo por caminos se tiene que $\varphi$ es sobreyectiva. Más aún, si $\varphi ([\alpha]) = \varphi([\beta])$, $[\alpha]$ y $[\beta]$ son elementos conjugados en $\pi_1(X,x_0)$.
 Como consecuencia, si $X$ es conexo por caminos existe una biyección entre $[S^1,X]$ y las clases por conjugación de $\pi_1(X,x_0)$.
 \end{exercise}
+\begin{sol*}
+
+\end{sol*}
 
 
 
@@ -215,6 +232,7 @@ Por lo tanto $t_0 \in G$. Entonces $G$ es un abierto cerrado. Basta ver, que por
 
 \newpage \begin{exercise} Sea $H: X\times I \to X$ una homotopía con $H(x,0) =  H(x,1) = x$ para todo $x\in X$. Si $\gamma$ es el lazo en $x_0$ $\gamma(t) = H(x_0,t)$, probar que la clase $[\gamma]$ conmuta con todo elemento de $\pi_1(X,x_0)$.
 \end{exercise}
-\begin{sol*} Véase que $[\gamma]=[Id_X]$, ya que la homotopía.
+\begin{sol*} 
+
 \end{sol*}
 \end{document}
