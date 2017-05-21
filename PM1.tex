@@ -1,5 +1,4 @@
 \documentclass[PM.tex]{subfiles}
-
 \begin{document}
 \addtocounter{chapter}{1}
 \chapter{Análisis convexo}
@@ -710,7 +709,7 @@ y finalmente pasarlo al problema dual
 \end{example}
 
 \begin{theorem}[Teorema de dualidad débil]
-Para todo $x \in X$ y $u \in U$, donde $X = \{x \in \R^n : Ax ≥ b, x ≥ 0\}$ y $U = \{ u \in \R^m  u'A ≤ c', u ≥ 0 \}$, se verifica que $c'x ≥ u'b$.
+Para todo $x \in X$ y $u \in U$, donde $X = \{x \in \R^n : Ax ≥ b, x ≥ 0\}$ y $U = \{ u \in \R^m \mid u'A ≤ c', u ≥ 0 \}$, se verifica que $c'x ≥ u'b$.
 \end{theorem}
 
 \begin{dem}
@@ -785,7 +784,7 @@ Dados (P) y (D) entonces uno y sólo uno de los siguientes casos son ciertos:
 \end{enumerate}
 \end{theorem}
 
-\begin{dem} Consideramos la solución $(x_0,u_0,t_0)$ del sistema del lema anterior. Distinguimos 2 casos:
+\begin{dem} Consideramos la solución $(x_0,u_0,t_0)\geq 0$ del sistema del lema anterior. Distinguimos 2 casos:
 \begin{enumerate}
 	\item $t_0 > 0$. Consideramos $x^* = \frac{x_0}{t_0}$, $u^* = \frac{u_0}{t_0}$ y $t^* = 1$. $(x^*,u^*,t^*)$ sigue siendo solucion del sistema homogéneo. Es decir:
 \[\begin{cases}
@@ -813,21 +812,21 @@ Es decir, $(x^*,u^*)$ es solución óptima de (P) y (D) respectivamente.
 		A\overline{x} ≥ b & \overline{x} ≥ 0\\
 		\overline{u}'A ≤ c' & \overline{u} ≥ 0
 	\end{cases}\]
-	Combinando las desigualdades, obtenemos que
-	\[ \begin{cases}Ax_0 ≥ 0\\\overline{u} ≥ 0\end{cases} \Rightarrow u'Ax_0≥0 \]
-	\[ \begin{cases}\overline{u}A ≤ c'\\x_0 ≥ u'Ax_0 ≤ c'x_0 \end{cases} \Rightarrow u'Ax_0≤c'x_0 \]
-	Luego $c'x_0 ≥ 0$. Por otro lado:
-	\[ \begin{cases}A\overline{x} ≥ b\\u_0 ≥ 0\end{cases} \Rightarrow u_0'A\overline{x}≥u_0'b \]
-	\[ \begin{cases}u'A ≤ 0\\\overline{x} ≥ 0 \end{cases} \Rightarrow 0 ≤ u_0'Ax_0 \]
-	Luego $u_0'b ≥ 0$. Pero entonces $c'x_0 ≥ 0 ≥ u_0' b$. con o que llegamos a una contradición si además tenemos en cuenta que $c'x_0 \neq u_0' b$ por la tercera ecuación del sistema.
-	
+	\begin{itemize}
+	\item Usando que $Ax_0 ≥ 0$ y $\overline{u} ≥ 0$, obtenemos que $\overline{u}'Ax_0≥0$. Si a esto lo sumamos que $\overline{u}'A ≤ c'$, tenemos que $0\leq\overline{u}'Ax_0≤c'x_0 $. En particular $c'x_0 ≥ 0$.
+	\item  Usando que $A\overline{x} ≥ b$ y que $u_0 ≥ 0$ deducimos que $u_0'A\overline{x}≥u_0'b $. Por otro lado tenemos que $u'A ≤ 0$ y que $\overline{x} ≥ 0$, luego $0\geq u'A\overline{x}$. Deducimos que $0 \geq u_0'b$.
+\end{itemize}
+ De estos dos puntos deducimos que $c'x_0  \geq u_0'b$, pero por hipótesis $u_0'b >  c'x^*$ con lo que llegamos a una contradicción.
 	\item Supongamos que $\overline{x}$ es solución de $P$ y $U = \emptyset$. Tenemos lo siguiente
-	\[ \begin{cases}A_0 > 0 \\ -u_0'A ≥ 0 \\ u_0'b-c'x_0 > 0 \\ u_0 ≥ 0, _0 ≥ 0\\ A\overline{x} ≥ b,\overline{x}≥ 0\end{cases} \]
+	\[ \begin{cases}Ax_0 \geq 0 \\ -u_0'A ≥ 0 \\ u_0'b-c'x_0 > 0 \\  A\overline{x} ≥ b,\overline{x}≥ 0\end{cases} \]
 	Vemos que:
-	\[ A(\overline{x} + λx_0) = A\overline{x} + λ A x_0 ≥ b \quad \forall λ\]
-	Como $\overline{x} + λ x_0 ≥ 0$, $\overline{x} + λ x_0 \in X$ para todo $λ > 0$. Además $c'(\overline{x} + λ x_0) = c'\overline{x} + λ c' x_0$ pero veremos que $c'x_0 < 0$ puesto que
-	\[ \begin{cases}u_0'A ≤ 0\\\overline{x} ≥ 0\end{cases} \Rightarrow \underset{≥0}{u_0'}\underset{≥b}{A\overline{x}} ≤ 0 \Rightarrow \begin{cases}u_0'b ≤ u_0'A\overline{x} ≤ 0\\u_0'b > c'x_0\end{cases} \Rightarrow c'x_0 < 0\]
-	Pero entonces $c'(\overline{x} + λ x_0) \to -\infty$ cuando $λ \to \infty$. Esto es que no puede darse solucion únicamente de un problema y, por descarte, el último caso es que ninguno tenga solución.
+	\[ A(\overline{x} + λx_0) = A\overline{x} + λ A x_0 ≥ b \quad \forall λ\geq 0\]
+	Como $\overline{x} + λ x_0 ≥ 0$, $\overline{x} + λ x_0 \in X$ para todo $λ > 0$. Además $c'(\overline{x} + λ x_0) = c'\overline{x} + λ c' x_0$ pero veremos que $c'x_0 < 0$.
+	\begin{itemize}
+	\item Por un lado tenemos que  $u_0'A ≤ 0$ y que $\overline{x} ≥ 0$. Se tiene por tanto que $u_0 A\overline{x} \leq 0$.
+	\item Por otro lado, $A \overline{x}\geq b$ y $u_0 \geq 0$, por lo que $u_0'A\overline{x} \geq u_0'b$.
+	\end{itemize}
+	De estos dos puntos se deduce que $u_0'b\leq 0$, pero de las hipótesis sabemos que $c'x_0 < u_0'b$, luego $c'x_0 <0$. Pero entonces $c'(\overline{x} + λ x_0) \to -\infty$ cuando $λ \to \infty$. Esto es que no puede darse solucion únicamente de un problema y, por descarte, el último caso es que ninguno tenga solución.
 	\end{enumerate}
 \end{enumerate}
 \end{dem}
