@@ -212,7 +212,7 @@ Sea $[S^1,X]$ el conjunto de las clases de homotopía (no necesariamente relativ
 Como consecuencia, si $X$ es conexo por caminos existe una biyección entre $[S^1,X]$ y las clases por conjugación de $\pi_1(X,x_0)$.
 \end{exercise}
 \begin{sol*}
-
+Página 4 \url{http://www.math.northwestern.edu/~pgoerss/math440/probset1.pdf}
 \end{sol*}
 
 
@@ -233,6 +233,18 @@ Por lo tanto $t_0 \in G$. Entonces $G$ es un abierto cerrado. Basta ver, que por
 \newpage \begin{exercise} Sea $H: X\times I \to X$ una homotopía con $H(x,0) =  H(x,1) = x$ para todo $x\in X$. Si $\gamma$ es el lazo en $x_0$ $\gamma(t) = H(x_0,t)$, probar que la clase $[\gamma]$ conmuta con todo elemento de $\pi_1(X,x_0)$.
 \end{exercise}
 \begin{sol*} 
-
+Para probar este resultado vamos a usar el lemma 1.19 de \emph{Algebraic Topology}, que puede ser encontrado en la página 37 del libro \url{https://www.math.cornell.edu/~hatcher/AT/AT.pdf}
+El diagrama conmutativo que aparece en el libro se convierte en el siguiente, teniendo en cuenta que $H(x,0)_*=H(x,1)_*=Id$:
+\[
+\begin{tikzcd}
+\pi_1(X,x_0)\arrow[r,"Id"]\arrow[dr,"Id"'] &\pi_1(X,x_0)\arrow[d,"\gamma_\sharp"]\\
+&\pi_1(X,x_0)
+\end{tikzcd}
+\]
+Por el lema deducimos que $\gamma_\sharp=Id$, o lo que es lo mismo, dado $[g]\in\pi_1(X,x_0)$
+\[
+[g]=\gamma_\sharp([g])=[\overline{\gamma}][g][\gamma],
+\]
+por lo que $[\gamma]$ conmuta con todos los demás elementos (esto significa que $[\gamma]$ pertenece al centro de $\pi_1(X,x_0)$.
 \end{sol*}
 \end{document}
