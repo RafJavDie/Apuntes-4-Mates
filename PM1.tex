@@ -275,19 +275,14 @@ Sea $P$ un poliedro en las condiciones anteriores. Entonces $x$ es un punto extr
 De ahí, $0 = λ x_N^1 + (1-λ) x_N^2$. Como $x_N^i ≥ 0$, se sigue que $x_N^i = 0$. De $x^i \in P$, se sigue que $Ax^i = b \equiv [B\ N]\begin{bmatrix}x_B^i\\0
 \end{bmatrix} = b \equiv Bx_B^i + N0 = b$. Por lo tanto: $x_B^i = B^{-1}b \geq 0$, luego $x^i = \begin{pmatrix}B^{-1}b\\0\end{pmatrix}=x$ para $i=1,2$.
 
-<<<<<<< HEAD
-($\Rightarrow$) Supongamos que $x$ fuera un punto extremo de $P$. Se tiene que $Ax=b, x ≥ 0$. Como $rg(A) = m$ podemos suponer sin pérdida de generalidad que $x =(x_1,\dots,x_k,0,\dots,0)$, $x_i > 0$, $k ≤ m$.
-Vamos a probar que las columnas asociadas a estas coordenadas $(a_1, a_2, \dots, a_k)$ son linealmente independientes. Si no lo fueran, existirían $λ_1,λ_2, \dots, λ_k$ tales que $\sum_{i=1}^k λ_i a_i = 0$. Sea $λ' =(λ_1,\dots,λ_k,0,\dots,0)$. Entonces $Aλ=λ_1a_1 + λ_2a_2 + \cdots + λ_ka_k + 0a_{k+1}+\cdots+0a_n = 0$. Entonces podemos considerar los puntos $x^1 = x+αλ$ y $x^2 = x-αλ$ y $α > 0$. Claramente $x^1 \neq x^2$ y $x = \frac{1}{2}x^1+ \frac{1}{2}x^2$. Veamos que $x^i \in P$ para $i=1,2$.
-\[ Ax^i = A(x \pm αλ) = Ax \pm α(\underset{=0}{Aλ}) = Ax = b \]
-\[ x^i = x \pm αλ = \begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix} \pm α \begin{pmatrix}λ_1\\\vdots\\λ_k\\0\\\vdots\\0\end{pmatrix} \]
-Por hipótesis, $x_1,\dots,x_k > 0$. Tomando $α$ suficientemente pequeño, podemos asegurar que $x_i \pm αλ_i > 0$. Entonces $x^i \geq 0$ y $x^i \in P$. Esto contradice que $x$ sea un punto extremo. Podemos entonces asegurar que $(a_1,\dots,a_k)$ son linealmente independientes. Podemos completar $(a_1,\dots,a_m)$ hasta $m$ columnas linealmente independientes (podemos ya que $rg(A) = m$). Tomamos $B = (a_1,\dots,a_m)$. Entonces:
-=======
+
 ($\Rightarrow$) Supongamos que $x$ fuera un punto extremo de $P$. Se tiene que $Ax=b, x ≥ 0$. Como $rg(A) = m$ podemos suponer sin pérdida de generalidad que $x =(x_1,\dots,x_k,0,\dots,0)$ con $x_i > 0$ y $k ≤ m$.
 Vamos a probar que las columnas asociadas a estas coordenadas $(a^1, a^2, \dots, a^k)$ son linealmente independientes. Si no lo fueran, existirían $λ_1,λ_2, \dots, λ_k$ tales que $\sum_{i=1}^k λ_i a^i = 0$. Denotamos or $λ =(λ_1,\dots,λ_k,0,\dots,0)$. Entonces $Aλ=λ_1a^1 + λ_2a^2 + \cdots + λ_ka^k + 0a^{k+1}+\cdots+0a^n = 0$. Entonces podemos considerar los puntos $x^1 = x+αλ$ y $x^2 = x-αλ$ y $α > 0$. Claramente $x^1 \neq x^2$ y $x = \frac{1}{2}x^1+ \frac{1}{2}x^2$. Veamos que $x^i \in P$ para $i=1,2$.
 \[ Ax^i = A(x \pm αλ) = Ax \pm α(\underset{=0}{Aλ}) = Ax = b \]
 \[ x^i = x \pm αλ = \begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix} \pm α \begin{pmatrix}λ_1\\\vdots\\λ_k\\0\\\vdots\\0\end{pmatrix} \]
 Por hipótesis, $x_1,\dots,x_k > 0$. Tomando $α$ suficientemente pequeño, podemos asegurar que $x_i \pm αλ_i > 0$. Entonces $x^i \geq 0$ y $x^i \in P$. Esto contradice que $x$ sea un punto extremo. Podemos entonces asegurar que $(a^1,\dots,a^k)$ son linealmente independientes. Podemos completar $(a^1,\dots,a^m)$ hasta $m$ columnas linealmente independientes (podemos ya que $rg(A) = m$). Tomamos $B = (a^1,\dots,a^m)$. Entonces:
->>>>>>> 86b3273937fbfb2725c9cce2d9bafe1050640abd
+
+
 \[ Ax =[B\ N]\begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix}_{(n)} = B \begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix}_{(m)} +N0_{(m-n)} = b \]
 Luego: \[ \begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix} = B^{-1}b \geq 0 \qquad x = \begin{pmatrix}B^{-1}b\\0\end{pmatrix} \]
 \end{dem}
@@ -324,11 +319,11 @@ Entonces $S = P$. Es decir, cualquier poliedro en forma estándar queda determin
 \begin{dem} Lo demostraremos por doble inclusión:
 \begin{itemize}
 	\item $(S \subseteq P)$ Sea $x \in S$, $x = \sum_{i=1}^k λ_i x^i + \sum_{j=1}^l μ_j d^j$ para algún $λ$ y $μ$.
-<<<<<<< HEAD
+
 	\[ Ax = A\left( \sum_{i=1}^k λ_i x^i + \sum_{j=1}^l μ_j d^j\right) =  \sum_{i=1}^k \underset{=b}{λ_i A x^i} + \sum_{j=1}^l μ_j \underset{=0}{Ad^j} = \sum_{j=1}^l b = b \]
-=======
-	\[ Ax = A\left( \sum_{i=1}^k λ_i x^i + \sum_{j=1}^l μ_j d^j\right) =  \sum_{i=1}^k \underset{=b}{λ_i Ax^i} + \sum_{j=1}^l μ_j \underset{=0}{Ad^j} = \sum_{i=1}^l\lambda_i b = b \]
->>>>>>> 86b3273937fbfb2725c9cce2d9bafe1050640abd
+
+
+
 	\[ x = \sum_{i=1}^k \underset{≥0}{λ_i} \underset{≥0}{x^i} + \sum_{j=1}^l \underset{≥0}{μ_j}\underset{≥0}{d^j} ≥ 0 \]
 	Luego $x \in P$
 	
@@ -878,7 +873,7 @@ Dado un problema $(P)$ $\min c'x$, $Ax=b$, $x\geq 0$. Considero un vector $d\in\
 Las condiciones en $P(\Delta)$. 
 \begin{itemize}
 \item $B^{-1}b \geq 0$.
-\item $\overline{c_R}'_N = (c -\Delta d)'_N- (c+\Delta d)'_B B^{-1}N = \overline{c_R}'(0)_N  + \Delta (d_N'-d'_BB^{-1}N) =  \overline{c_R}'(0)_N + \Delta \overline{d}_N\geq 0$. 
+\item $\overline{c_R}'_N = (c +\Delta d)'_N- (c+\Delta d)'_B B^{-1}N = \overline{c_R}'(0)_N  + \Delta (d_N'-d'_BB^{-1}N) =  \overline{c_R}'(0)_N + \Delta \overline{d}_N\geq 0$. 
 \end{itemize}
 Para una componente genérica $j\in \mathbb{N}$ se tiene que $\overline{c}_j+\Delta d_j\geq 0$. Entonces:
 \[
@@ -981,7 +976,7 @@ sa:\  & Ax=b\\
 \end{align*}
 Suponemos que $B$ es una base óptima en $(P)$ y queremos analizar la solución de $(P_q)$. Es decir, $x=\begin{bmatrix}
 B^{-1}b\\
-0\end{bmatrix}$, $h_q=b_q-(a_q)_B B^{-1}B$.  Evaluamos esta solución en el problema reordenando las columnas de $a_q$.
+0\end{bmatrix}$, $h_q=b_q-(a_q)_B B^{-1}b$.  Evaluamos esta solución en el problema reordenando las columnas de $a_q$.
 \[ [(a_q)_B, (a_q)_N]\begin{bmatrix}
 B^{-1}b\\
 0\end{bmatrix} +h_q=b_q.\] Hay que comprobar que $h_q\geq 0$ para que tenga sentido. La base asociada a esta solución es
@@ -1053,11 +1048,11 @@ f:\R^m\longrightarrow \R & & &\\
 \end{align*}
 Queremos derivar esta función. Supongamos en este problema que las bases factibles son $B_1,\dots, B_r$. Consideramos el problema dual que verifica
 \begin{align*}
- f(b) = & \min\ & c'x\quad  & =\max\ u'b \quad  = \max\{c'_{B_1}b,\dots, c'_{B_r}b\}\\
-        &sa:\   Ax=b       &sa:\ & u'A\leq b\\
+ f(b) = & \min\ & c'x\quad  & =\max\ u'b \quad  = \max\{c'_{B_1}B_1^{-1}b,\dots, c'_{B_r}B_r^{-1}b\}\\
+        &sa:\   Ax=b       &sa:\ & u'A\leq c\\
         &  x\geq 0         & & u\in\R^m 
 \end{align*}
-Llamamos $u_i=c'_{B_i}$. Entonces, $f(b)=\max_{1\leq i\leq r}u_i'b=u'_k b$. Ahora derivamos
+Llamamos $u_i=c'_{B_i}B_i^{-1}$. Entonces, $f(b)=\max_{1\leq i\leq r}u_i'b=u'_k b$. Ahora derivamos
 \[\frac{\partial f}{\partial b_i}=\frac{\partial }{\partial b_i}\left(\sum_{j=1}^m u_{kj}b_j\right)=u_{ki}\]
 Hemos llegado a la solución óptima del dual en su variable $i$-ésima. 
 \begin{example}
