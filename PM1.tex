@@ -375,10 +375,10 @@ Planteamos el problema de programación lineal $\underset{Ax=b,x\geq 0}{\min} c'
 \[\underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} c'\left[\sum_{i=1}^k\lambda_ix^i +\sum_{j=1}^l\mu_j d^j\right] \]
 Supongamos que $c'd^j\geq 0\ \forall j$. Entonces continuamos la ecuación anterior con 
 \begin{gather*}
- \underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[\sum_{i=1}^n\lambda_ic'x^i +\sum_{j=1}^l\mu_j \underset{\geq 0}{c'd^j}\right]\geq \underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[\sum_{i=1}^n\lambda_ic'x^i\right]\geq \\
-\underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[\sum_{i=1}^n\lambda_ic'\overline{x}\right]= \underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[c'\overline{x}\sum_{i=1}^n\lambda_i\right]=c'\overline{x}
+ \underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[\sum_{i=1}^k\lambda_ic'x^i +\sum_{j=1}^l\mu_j \underset{\geq 0}{c'd^j}\right]\geq \underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[\sum_{i=1}^k\lambda_ic'x^i\right]\geq \\
+\underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[\sum_{i=1}^k\lambda_ic'\overline{x}\right]= \underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[c'\overline{x}\sum_{i=1}^k\lambda_i\right]=c'\overline{x}
 \end{gather*}
-donde $\overline{x}$ minimiza $c'x^i$. Por tanto $c'\overline{x}$ es el valor mínimo, y $\overline{x}$ es un punto extremo. Recíprocamente, si $\exists j\mid c'd^j<0$ consideramos $x\in P$ y el rayo $x+\lambda d^j\in P\ \forall\lambda\geq 0$. 
+donde $\overline{x}$ el punto extremo que minimiza $c'x^i$. Por tanto $c'\overline{x}$ es el valor mínimo, y $\overline{x}$ es un punto extremo. Recíprocamente, si $\exists j\mid c'd^j<0$ consideramos $x\in P$ y el rayo $x+\lambda d^j\in P\ \forall\lambda\geq 0$. 
 \[ c'(x+\lambda d^j)=\underset{cte}{c'x} + \underset{<0}{\lambda c' d^j}\underset{\lambda\to\infty}{\longrightarrow} -\infty\]
 \end{dem}
 
@@ -1070,7 +1070,21 @@ Luego $\frac{\partial z}{\partial\Delta}=-\frac{1}{4}$. Si quisiéramos utilizar
 \[(u^*)'=c'_B B^{-1}=[-2\ -1\ 0]B^{-1}=[-\frac{1}{2}\ 0\ -\frac{1}{4}]\]
 Por lo tanto. $\frac{\partial z}{\partial\Delta}=\frac{\partial z}{\partial b_3}=u^*_3=-\frac{1}{4}$.
 \end{example}
-
+\newpage
+\section{Resumen}
+Condiciones para el análisis de postóptimalidad
+\begin{itemize}
+\item En la función objetivo
+\[
+\max_{j:\overline{d}_j >0}-\frac{\overline{c}_j}{\overline{d}_j} \leq \Delta \leq \min_{j:\overline{d}_j <0}-\frac{\overline{c}_j}{\overline{d}_j}
+\]
+\item En el término independiente
+\[\max_{i, g_i>0}\{\frac{-\overline{b}_i}{\overline{g}_i}\}\leq\Delta \leq \min_{i,g_i<0}\{\frac{-\overline{b}_i}{\overline{g}_i}\}\]
+\item Añadir una nueva variable
+\[c_{n+1}-c'_B B^{-1} a_{n+1}\geq 0.\]
+\item Añadir una nueva restricción
+\[-(a'_q)_B B^{-1}+b_q\geq 0\]
+\end{itemize}
 {\large\bf LOGIC INTERLUDE}
 \begin{theorem}
 Si $c \in Res(c_1,c_2)$ entonces $\{ c_1, c_2 \} \models c$.
