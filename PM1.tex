@@ -1333,8 +1333,8 @@ Veamos que son equivalentes:
 \[
 \overline{a}_{i\cdot}=
 \begin{cases}
-a_{i\cdot} & a_{ij}=-1\\
--a_{i\cdot} & a_{ij}=1
+a_{i\cdot} & a_{ij}=1\\
+-a_{i\cdot} & a_{ij}=-1
 \end{cases}
 \qquad
 \overline{a}_{k\cdot}=
@@ -1346,9 +1346,9 @@ a_{i\cdot} & a_{ij}=-1\\
 \]
 Sea $B\subset A$ distinguimos los siguientes casos:
 \begin{itemize}
-\item La fila i forma parte de B. En tal caso $|det(B)|=|det(\overline{B})|$.
-\item La columna j forma parte de B pero la fila i. En este caso $det(\overline{B})=0$.
-\item B no contine parte de la fila i ni partes de la fila j. Entonces consideramos:
+\item La fila $i$ forma parte de $B$. En tal caso $|det(B)|=|det(\overline{B})|$.
+\item La columna $j$ forma parte de $B$ pero la fila $i$ no. En este caso $det(\overline{B})=0$.
+\item B no contine partes de la fila $i$ ni partes de la fila $j$. Entonces consideramos:
 \[
 C=
 \begin{pmatrix}
@@ -1374,7 +1374,7 @@ x\\
 x_h
 \end{bmatrix} = b
 \]
-Sabemos que $[A I]$ es TU. Todo punto extremo corresponde a una submatriz cuadrada de $[A | I]$, B $m\times m$, $det(B)\neq 0$, $x_B=B^{-1}b\geq 0$. Como A es TU entonces $\det(B)\in\{\pm1\}$ netonces $det(B^{-1})\in\{\mp1\}$, luego $x_B$ es solución del sistema $Bx_B=b$ y aplicamos Cramer.
+Sabemos que $[A I]$ es TU. Todo punto extremo corresponde a una submatriz cuadrada de $[A | I]$, B $m\times m$, $det(B)\neq 0$, $x_B=B^{-1}b\geq 0$. Como A es TU entonces $\det(B)\in\{\pm1\}$ entonces $det(B^{-1})\in\{\mp1\}$, luego $x_B$ es solución del sistema $Bx_B=b$ y aplicamos Cramer.
 \[
 x_{B_i}=\frac{\text{B completada con b}}{det(B)}=\frac{\text{Suma de productos de números entero}}{\pm1} \in \Z
 \]\QED
@@ -1425,9 +1425,9 @@ A_1 & 0\\
 A_2 & I_{m-k}
 \end{bmatrix}
 \]
-De forma que $\overline{A}$ sea una matriz $m\times m$ con $A_2$ la ampliación de las columnas. Se tiene además que $det(\overline{A}_1)\neq 0$. Sea un i $(1\leq i \leq k)$ arbitrario pero fijo y sea $b\in \Z^m$ de la siguiente forma: $b=\overline{A}_1 x + e_i$, $z\in\Z^m_+$. Entonces $\overline{A}_1^{-1}b=z+\overline{A}_1^{-1}e_i$. 
+De forma que $\overline{A}$ sea una matriz $m\times m$ con $A_2$ la ampliación de las columnas. Se tiene además que $det(\overline{A}_1)\neq 0$. Sea un i $(1\leq i \leq k)$ arbitrario pero fijo y sea $b\in \Z^m$ de la siguiente forma: $b=\overline{A}_1 z + e_i$, $z\in\Z^m_+$. Entonces $\overline{A}_1^{-1}b=z+\overline{A}_1^{-1}e_i$. 
 \\
-Si $z>>0$ entonces: $\overline{A}_1^{-1}b = M+\overline{A}_1^{-1}e_i \geq 0$ ($M>>0$). Como $P(b)$ es entero, entonces $\overline{A}_1^{-1}b \in \Z^m$ pues todos sus puntos extremos son enteros. Entonces $ \overline{A}_1^{-1}e_i=\overline{A}_1^{-1}b-z\in\Z^m$. Por tanto, toda las columna i-ésima de la matriz $\overline{A}_1^{-1}$ es de elementos enteros. Por tanto, sabemos que $\overline{A}_1^{-1}$ es entera y que, debido a este, $\overline{A}_1^{-1} \in \Z$. Finalmente, $1 = det(\overline{A}_1)det(\overline{A}_1^{-1})$, como ambos elementos es $1$, ambos son $\pm 1$. \QED
+Si $z>>0$ entonces: $\overline{A}_1^{-1}b = z+\overline{A}_1^{-1}e_i \geq 0$. Como $P(b)$ es entero, entonces $\overline{A}_1^{-1}b \in \Z^m$ pues todos sus puntos extremos son enteros. Entonces $ \overline{A}_1^{-1}e_i=\overline{A}_1^{-1}b-z\in\Z^m$. Por tanto, toda las columna i-ésima de la matriz $\overline{A}_1^{-1}$ es de elementos enteros. Por tanto, sabemos que $\overline{A}_1^{-1}$ es entera y que, debido a esto, $\overline{A}_1$ es entera. Finalmente, $1 = det(\overline{A}_1)det(\overline{A}_1^{-1})$, como ambos elementos son enteros, ambos son $\pm 1$. \QED
 \end{dem}
 \begin{theorem}
 $A\in\Z^{m\times n}$ es TU si y solo si $\forall J\subset\{1,\dotsc,n\}$ existe una partición de J en $J_1J_2$ tal que 
@@ -1455,7 +1455,7 @@ Aplicamos el Teorema por Filas. Fijamos una columna j, entonces es claro que:
 \]
 \end{dem}
 \begin{prop}
-Si A es de componentes $\{0,\pm1\}$ tal que por columnas verifica que tiene a lo sumo dos componentes no nulas y $\sum_{i=1}^m a_{ij}=0$ si la columna j es de 2 componentes no nulas, entonces A es TU.
+Si A es de componentes $\{0,\pm1\}$ tal que por columnas verifica que tiene a lo sumo dos componentes no nulas y $\sum_{i=1}^m a_{ij}=0$, entonces $A$ es TU.
 \end{prop}
 \begin{dem}
 Es un corolario inmediato de la proposición anterior pues puede aplicarse la descomposición del enunciado anterior.
