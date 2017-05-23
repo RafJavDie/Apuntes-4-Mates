@@ -205,6 +205,17 @@ Sea $f:S^1\times S^1 \to S^1 \times S^1$ la aplicaci\'on (como n\'umeros complej
 w^b,z^c w^d)$ con $a,b,c,d \in \mathbb{Z}$. Dar el homomorfismo inducido
 $f_*: \pi_1(S^1\times S^1,(z_0,z_0)) \to \pi_1(S^1\times S^1,(z_0,z_0))$, donde $z_0 = 1$ es la unidad compleja.
 \end{exercise}
+\begin{sol*}
+Como $\pi_1(S^1\times S^1,(z_0,z_0))\cong\pi_1(S^1,z_0)\times\pi_1(S^1,z_0)$, para describir $f_*$ basta calcular la imagen de cada generador. Como a su vez, $\pi_1(S^1,z_0)\times\pi_1(S^1,z_0)\cong\Z\times\Z$, basta tomar un elemento que sea isomorfo al $(1,0)$ y otro que sea isomorfo al $(0,1)$, para lo cual usamos el grado. Sea $(\varepsilon_0,c_{z_0})\in\pi_1(S^1,z_0)$ un generador formado por la vuelta canónica $\varepsilon_0(t)=e^{2\pi it}$ (de grado 1) y el lazo constante igual a $1$ (de grado 0). Entonces
+\[
+f_*(([\varepsilon_0],[c_{z_0}]))=[f(\varepsilon_0,c_{z_0})]=([\varepsilon_0^a c_{z_0}^b],[\varepsilon_0^c c_{z_0}^d])=([\varepsilon_0^a],[\varepsilon_0^c])=(a[\varepsilon_0],c[\varepsilon_0]).
+\]
+De forma análoga tomamos el generador $(c_{z_0},\varepsilon_0)\in\pi_1(S^1,z_0)$.
+\[
+f_*(([c_{z_0}],[\varepsilon_0]))=[f(c_{z_0},\varepsilon_0)]=([c_{z_0}^a \varepsilon_0^b],[c_{z_0}^c\varepsilon_0^d])=([\varepsilon_0^b],[\varepsilon_0^d])=(b[\varepsilon_0],d[\varepsilon_0]).
+\]
+Por tanto, podemos definir $f_*:\Z\times\Z\to\Z\times\Z$ como $f(1,0)=(a,c)$ y $f(0,1)=(b,d)$. En general $f(n,m)=(na+mb,nc+md)$.
+\end{sol*}
 
 \newpage
 
