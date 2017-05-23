@@ -964,14 +964,14 @@ Partimos de nuevo del problema $(P)$ anterior y lo llevamos al problema $(P_q)$
 \min\ & c'x\\
 sa:\  & Ax=b\\
 & a'_q x\leq b_q\\
- & x, x_q\geq 0
+ & x, b_q\geq 0
 \end{align*}
 Lo escribimos en forma estándar
 \begin{align*}
 \min\ & c'x\\
 sa:\  & Ax=b\\
 & a'_q x+h_q= b_q\\
- & x, x_q, h_q\geq 0
+ & x, b_q, h_q\geq 0
 \end{align*}
 Suponemos que $B$ es una base óptima en $(P)$ y queremos analizar la solución de $(P_q)$. Es decir, $x=\begin{bmatrix}
 B^{-1}b\\
@@ -1108,7 +1108,7 @@ Consideramos el problema
 	 & A \in \R^{m \times n}, b \in \R^m, c \in \R^n
 \end{align*}
 
-Denotaremos por $z_{PE}$ al valor óptimo de este problema. PE tiene asociado otro problema que denominaremos el "problema relajado lineal" y denotamos por (LP) que consiste;
+Denotaremos por $z_{PE}$ al valor óptimo de este problema. PE tiene asociado otro problema que denominaremos el ``problema relajado lineal'' y denotamos por (LP) que consiste;
 
 \begin{align*}
 (LP) & \min c'x\\
@@ -1122,18 +1122,20 @@ Si $x$ es factible en $PE$ entonces también lo es en $LP$.
 
 Esto implica que $z_{LP} ≤ z_{PE}$, donde $z_{LP} $ es el valor óptimo de $LP$.
 \end{obser}
-
-Un problema es de programación binaria ó $\{0,1\}$ si sus variables están restringidas a tomar valores en $\{0,1\}$.
-
+\begin{defi}
+Un problema es de \textbf{programación binaria} ó $\{0,1\}$ si sus variables están restringidas a tomar valores en $\{0,1\}$.
+\end{defi}
+\newpage
+\begin{defi}
 Decimos que un problema es entero-mixto $(PME)$ si:
 
 \begin{align*}
 (PME) & \min c'x+d'y\\
 	  & A_1 x + A_2 y = b\\
 	  & x \in \Z_+^{n_1}, y \in \R_+^{n_2}\\
-	  & A_1 \in \R^{m\times n_1}, A_2 \in R^{m \times n_2}, b \in \R^m, c \in \R^{n_1}, d \in \R^{n_2}
+	  & A_1 \in \R^{m\times n_1}, A_2 \in \R^{m \times n_2}, b \in \R^m, c \in \R^{n_1}, d \in \R^{n_2}
 \end{align*}
-
+\end{defi}
 \begin{example}
 Veamos que no siempre coincide $z_{PE}$ con un redondeo de $z_{LP}$.
 
@@ -1301,7 +1303,7 @@ Todos los vértices de este poliedro son enteros. Su dual es:
 Si el sistema original fuese $TDE$ los vértices del dual serían enteros pero podemos comprobar que la solución óptima es $y_1=y_2=y_3=y_4 = 1/2$, no entera.
 \end{example}
 \begin{defi}
-A es una matriz Totalmente Unimodular si y solo si $\forall B\subset A$, B cuadrada, entonces $det(B)\in\{0,1\}$. 
+A es una matriz Totalmente Unimodular si y solo si $\forall B\subset A$, B cuadrada, entonces $det(B)\in\{-1,0,1\}$. 
 \end{defi}
 \begin{nota}
 Si A es TU entonces $a_{ij}\in\{0,\pm1\}$.
@@ -1424,7 +1426,7 @@ A_1 & 0\\
 A_2 & I_{m-k}
 \end{bmatrix}
 \]
-De forma que $\overline{A}$ sea una matriz $m\times m$ con $A_2$ la ampliación de las columnas. Se tiene además que $det(\overline{A}_1)\neq 0$. Sea un i $(1\leq i \leq k)$ arbitrario pero fijo y sea $b\in \Z^m$ de la siguiente forma: $b=\overline{A}_1 z + e_i$, $z\in\Z^m_+$. Entonces $\overline{A}_1^{-1}b=z+\overline{A}_1^{-1}e_i$. 
+De forma que $\overline{A}_1$ sea una matriz $m\times m$ con $A_2$ la ampliación de las columnas. Se tiene además que $det(\overline{A}_1)\neq 0$. Sea un i $(1\leq i \leq k)$ arbitrario pero fijo y sea $b\in \Z^m$ de la siguiente forma: $b=\overline{A}_1 z + e_i$, $z\in\Z^m_+$. Entonces $\overline{A}_1^{-1}b=z+\overline{A}_1^{-1}e_i$. 
 \\
 Si $z>>0$ entonces: $\overline{A}_1^{-1}b = z+\overline{A}_1^{-1}e_i \geq 0$. Como $P(b)$ es entero, entonces $\overline{A}_1^{-1}b \in \Z^m$ pues todos sus puntos extremos son enteros. Entonces $ \overline{A}_1^{-1}e_i=\overline{A}_1^{-1}b-z\in\Z^m$. Por tanto, toda las columna i-ésima de la matriz $\overline{A}_1^{-1}$ es de elementos enteros. Por tanto, sabemos que $\overline{A}_1^{-1}$ es entera y que, debido a esto, $\overline{A}_1$ es entera. Finalmente, $1 = det(\overline{A}_1)det(\overline{A}_1^{-1})$, como ambos elementos son enteros, ambos son $\pm 1$. \QED
 \end{dem}
@@ -1503,7 +1505,7 @@ Consideremos el problema $z=\max\{c'x:x\in X\}$, con $c\in\R^n$ y $X\subset\R^n$
 \end{prop}
 
 \begin{center}
-{\bf Algoritmo de ramificación y acotación (Branch and Bound-B\& B)}
+{\bf Algoritmo de ramificación y acotación (Branch and Bound-B\&B)}
 \end{center}
 
 \begin{tabbing}
