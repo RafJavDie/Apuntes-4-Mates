@@ -343,6 +343,13 @@ y $H_x= \{y\in V_x;\; x.y = 0\}$. Aqu\'{\i} $x.y$ denota el producto escalar.
 Entonces definir  $f = (f_1, f_2): S^2 \to \R^2$ por $f_i(x)= m(A_i\cap
 V_x)$, la medida de  $A_i\cap V_x$. Aplicar a $f$ el teorema de Borsuk--Ulam.
 \end{exercise}
+\begin{sol*}
+Hacemos todo lo que nos pide el enuncado y vamos directamente a aplicar Borsuk--Ulam. Tenemos que existe $x_0\in S^2$ con $f(x_0)=f(-x_0)$. Supongamos que $x_0$ no es ninguno de los polos, ya que ese caso lo trataremos aparte. Tenemos
+\[
+f(x_0)=(m(A_1\cap V_{x_0}),m(A_2\cap V_{x_0}))=(m(A_1\cap V_{-x_0}),m(A_2\cap V_{-x_0}))=f(-x_0).
+\]
+Se tiene además que $V_{-x_0}=\overline{V}_{x_0}\cup H_{x_0}$. Como $m(H_{x_0})=0$ concluimos que $m(A_i\cap V_{x_0})=m(A_i\cap\overline{V}_{x_0})$, por lo que basta tomar la recta formada por la intersección $H_{x_0}\cap\R^2\times\{1\}$ para separarlos en dos subconjuntos de igual medida. Supongamos ahora que $x_0=(0,0,1)$ (sería análogo si elegimos el otro polo). Entonces no podemos hacer la construcción anterior puesto que $H_{x_0}$ es paralelo a $\R^2\times\{1\}$. En este caso $V_{x_0}$ es el semiespacio definido como $\{(x,y,z)\in\R^2:z\geq 0\}$ y $V_{-x_0}$ es el semiespacio $\{(x,y,z)\in\R^2:z\leq 0\}$. Claramente $A_i\subset V_{x_0}$. Aplicando Borsuk--Ulam obtenemos que $m(A_i)=m(A_i\cap V_{x_0})=m(A_i\cap V_{-x_0})=0$. Como $A_i$ tienen medida nula, cualquier recta será válida para dividirlos en dos conjuntos de la misma medida.
+\end{sol*}
 
 \newpage
 
