@@ -1712,4 +1712,196 @@ Si g no tiene primitiva podemos reemplazar los términos y :
 x^{k+1}=x^k-\alpha^k(\nabla g(x^k))^{-1} g(x)
 \]
 Se tomará $\alpha^k =1$ $\forall k$ (si $\nabla g(x^k)$ es definida positiva),
+
+
+\chapter{Teoría Lagrangiana}
+\section{Condiciones para problemas con restricciones de igualdad.}
+
+Se desea resolver el problema
+\begin{equation}\label{lagrange-prob}
+\begin{aligned}
+P: & \min
+& & f(x) \\
+& \text{s. a.}
+& & h_i(x) = 0 & i = 1,2,\dots,m
+\end{aligned}
+\end{equation}
+
+donde $f : \R^n \to \R$ y $h_i : \R^n \to \R^m$ son funciones diferenciables con continuidad. Por simplicidad $h(x) = (h_1(x),\dots,h_m(x))$.
+
+A este problema (P) le asociamos una función, denominada función lagrangiana $L(x,λ) = f(x) + λ'h(x)$ que tiene la importante propiedad de que si $x^*$ es un mínimo local de (P), entonces existe un único multiplicador $λ^*$ de forma que:
+\[ \nabla f(x^*) + \nabla h(x^*) λ^* = 0 \]
+Nótese que si la intersección de las restricciones $h_i(x) = 0$ formaran un recinto convexo entonces podríamos utilizar las técnicas presentadas en el capítulo $3$ y $4$.
+
+Lo que se va a desarrollar es una herramienta alternativa a los métodos iterados del tema anterior que se permitirá identificar los mínimos locales del problema \eqref{lagrange-prob}.
+
+\begin{theorem} Sea $x^*$ un mínimo local de $f$ de $h(x) = 0$. Supongamos que las restricciones verifican $\nabla h_1(x^*),\dots,\nabla h_m(x^*)$ son linealmente independientes ($x^*$ es regular. Entonces existe un único vector
+$λ^* = (λ^*_1, \dots, λ^*_m)$ tal que:
+\[ \nabla f(x^*) + \sum_{i=1}^m λ^*_i \nabla h_i(x^*) = 0 \]
+Si $f$ y $h$ son dos veces diferenciables con continuidad se tiene:
+\[ y'(\nabla^2 f(x^*) + \sum_{i=1}^m λ^*_i \nabla^2 h_i(x^*))y ≥ 0 \quad \forall i = 1,\dots,m \quad y \in V(x^*) \]
+\[ V(x^*) = \{y : \nabla h_i(x^*)'y = 0, \forall i = 1,\dots,m\} \]
+\end{theorem}
+
+La interpretación geométrica de la condición del teorema de multipicadores es que si $x^*$ es mínimo local de $(P)$, el gradiente de la función objetivo debe pertenecer al subespacio generado por los gradientes de las restricciones en $x^*$. Esto es, $\nabla f(x^*)+\nabla h(x^*) {λ^*}' = 0$. Igualmente se puede interpretar como que el gradiente de la función objetvio en el óptimo debe ser ortogonal al espacio de variaciones factibles de primer orden $V(x^*)$. La segunda condición es que el Hessiano de la Lagrangiana respecto a $x$ sea semidefinida positiva en el espacio de variaciones factibles de primer orden $V(x^*)$.
+
+La condicion suficiente nos la da el siguiente teorema.
+\begin{theorem} Sean $f$ y $h$ dos veces diferenciables con continuidad y  sean $x^*$ y $λ^*$ tales que:
+\begin{enumerate}
+	\item[i)] $\nabla_x L(x^*,λ^*) = 0$, $\nabla_{λ} L(x^*, λ^*) = 0$
+	\item[ii)] $y'\nabla^2_{xx} L(x^*, λ^*) y > 0$, $\forall y \neq 0$, $\nabla h(x^*)'y = 0$
+\end{enumerate}
+entonces $x^*$ es un mínimo local estricto de $f$ sujeto a $h(x) = 0$. De hecho, existen $γ > 0$, $ϵ > 0$ tales que:
+	\[ f(x) ≥ f(x^*) + \frac{γ}{2} {||x-x^*||}^2 \quad \forall x, h(x) = 0 \]
+	y
+	\[ ||x-x^*|| < ϵ \]
+\end{theorem}
+
+	Los multiplicadores tienen una interpretación económica muy interesante. Se pueden entender como la tasa de cambiio del valor objetivo como función del lado derecho de las restricciones (nivel de las restricciones). Los precios sombra son el valor del multiplicador de Lagrange en el punto óptimo.
+	
+	Lo veremos en el caso de un problema con una única restricción lineal.
+	
+	\begin{equation}\label{lagrange-ejem}\begin{aligned}
+	P: & \min
+	& & f(x) \\
+	& \text{s. a.}
+	& & a'x = b
+	\end{aligned}\end{equation}
+	
+	Supongamos que $x^*$, $λ^*$ son la solución óptima y el multiplicador óptimo. Si cambiamos $b$ a $b + \triangle b$ el mínimo cambiará a $x^* + \triangle x$. $\triangle b$ y $\triangle x$ están relacionados mediante
+	\[ a'(x^* + \triangle x) = b + \triangle b \]
+	entonces como $a'x^* = b$ se tiene
+	\[ a' \triangle x = \triangle b \]
+	Usemos la condición de Lagrange $\nabla f(x^*) = -λ^* a'$
+	\begin{align*}
+	\triangle \text{coste} & = f(x^* + \triangle x) - f(x^*)\\
+		& = \nabla f(x^*)' \nabla x + o(||\triangle x||)\\
+		& = - λ^* a' \triangle x + o(||\triangle x||)\\
+		& = - λ^* \triangle b + o(||\triangle x||)
+	\end{align*}
+	por tanto
+	\[ λ^* = -\frac{\triangle \text{coste}}{\triangle b} \]
+	hasta el orden $1$.
+	
+	Este resultado es cierto en general para restricciones no necesarimente lineales, como puede verse en la proposición .
+
+	\section{Condiciones para problemas con desigualdades}
+	\[\begin{aligned}
+	& \min
+	& & f(x) \\
+	& \text{s. a.}
+	& & h_1(x) = 0,\dots,h_m(x) = 0\\
+	& & & g_1(x) ≤ 0, \dots, g_r(x) ≤ 0
+	\end{aligned}\]
+	que es equivalente al problema:
+	\begin{equation}\label{langcond-prob}\begin{aligned}
+	& \min
+	& & f(x) \\
+	& \text{s. a.}
+	& & h(x) = 0\\
+	& & & g(x) ≤ 0
+	\end{aligned}\end{equation}
+	
+	En un punto $x$, $A(x) = \{j : g_j (x) = 0\}$ es el conjunto de restricciones activas.
+	
+	Si $x^*$ es un mínimo local de \eqref{langcond-prob} es también un mínimo local del problema en el que las restricciones inactivas (no se da la igualdad) en $x^*$ se han eliminado. Por otra parte en el entorno de $x^*$ las restricciones activas (se da la igualdad) se pueden considerar como igualdades de manera que $x^*$ será un mínimo local de:
+	\begin{equation}\label{langcond-prob2}\begin{aligned}
+	& \min
+	& & f(x) \\
+	& \text{s. a.}
+	& & h(x) = 0\\
+	& & & g(x) = 0
+	\end{aligned}\end{equation}
+	
+Por tanto si $x^*$ es regular (los gradientes son l.i.) existirán  multiplicadores $λ^* = (λ^*_1,\dots,λ^*_m)$ y $μ^*_j$ $\forall j \in A(x^*)$ tales que:
+\[ \nabla f(x^*) + \sum_{i=1}^m λ^*_i \nabla h_i(x^*) + \sum_{j \in A(x^*)} μ^*_j \nabla g_j(x^*) = 0 \]
+y si ascoiamos $μ^*_j = 0$ $\forall j \notin A(x^*)$ tendríamos una definición similar a la del caso con igualdades.
+\[ \nabla f(x^*) + \sum_{i=1}^m λ^*_i \nabla h_i(x^*) + \sum_{j=1}^r μ^*_j \nabla g_j(x^*) = 0 \]
+\[ μ^*_j = 0 \ \forall j \notin A(x^*) \]
+
+Además se puede argumentar intuitivamente que los $μ^*_j$ son no negativos. En efecto, si consideramos $g_j(x) ≤ b_j$ con $b_j > 0$ el valor óptimo del problema será menor pues la región factible ha crecido. Por tanto como sabemos que $μ^*_j = \frac{-\triangle \text{ coste debido a }b_j}{b_j} > 0$ (pues $(\triangle\text{ coste debido a }b_j) ≤ 0$ y los $b_j > 0$).
+
+A continuación daremos la demostración rigurosa.
+
+\begin{theorem} Sea $x^*$ un mínimo local de \eqref{langcond-prob} y $x^*$ es regular. Entonces existen multiplicadores únicos $λ^* = (λ^*_1,\dots,λ^*_m)$, $μ^* = (μ^*_1,\dots,μ^*_r)$ tales que:
+\[ \nabla_x L(x^*,λ^*,μ^*) = 0 \]
+\[ μ^*_j ≥ 0 \ \forall j\]
+\[ μ^*_j = 0 \ \forall j \notin A(x^*) \]
+donde $A(x^*) = \{j : g_j(x^*) = 0\}$. Si además las funciones son dos veces diferencibales con continuidad se verifica que
+\[ y' \nabla^2_{xx} L(x^*, λ^*, μ^*) y ≥ 0, \ \forall y \in V(x^*) \]
+donde $V(x^*) = \{y | \nabla h_i(x^*)' y = 0\ \forall i, \nabla g_j(x^*)'y = 0\ \forall j \in A(x^*)\}$. 
+\end{theorem}
+
+\begin{prop}[Condición suficiente de segundo orden (o KKT)]
+Supongamos que $f$, $h$ y $g$ son dos veces diferenciables con continuidad, y sean $x^* \in \R^n$, $λ^* \in \R^m$ y $μ^* \in \R^r$ satisfaciendo:
+\[ \nabla_x L(x^*, λ^*, μ^*) = 0, \ h(x^*) = 0, \ g(x^*) ≤ 0 \]
+\[ μ^*_j ≥ 0, \ j=1,\dots,r \]
+\[ μ^*_j = 0, \ j \notin A(x^*) \]
+\[ y' \nabla^2_{xx} L(x^*, λ^*, μ^*) y > 0, \text{ para todo }y\neq 0\text{ con }y \in V(x^*) \]
+donde
+\[ V(x^*) = \{y | \nabla h_i(x^*)y' = 0,\ i = 1,\dots,m, \nabla g_j(x^*)'y = 0, j \in A(x^*) \]
+Asumimos también que 
+\[ μ^*_j > 0, \ \forall j \in A(x^*) \]
+Entonces $x^*$ es un mínimo local estricto de $f$ sujeto a $h(x) = 0$, $g(x) ≤ 0$.
+\end{prop}
+
+Esta última condición es conocida como la \emph{condición de complementariedad estricta}.
+\begin{example}
+Considérese el problema
+\[ \min 5x^2+5y^2-xy-11x+11y+11 \]
+\begin{itemize}
+	\item[a)] Encontrar un punto satisfaciendo las condiciones de primer orden
+	\item[b)] Probar que es un mínimo
+	\item[c)] Comenzando en $(0,0)$ hacer dos iteraciones de máximo descenso. Comparar las soluciones.
+\end{itemize}
+
+\begin{itemize}
+	\item[a)] \[\nabla f(x,y) = \begin{pmatrix}
+		10x-y-11\\
+		10y-x+11
+\end{pmatrix} = \begin{pmatrix}
+	0\\
+	0
+\end{pmatrix} \]
+Despejando $y$ de la primera ecuación y sustituyendo en la segunda obtenemos $x=1$ de donde $y=-1$.
+
+	\item[b)] Calculamos el Hessiano y comprobamos que es definido positivo, en cuyo caso todo punto que cumpla la sondición de primer orden es un mínimo
+	\[ \nabla^2 f(x,y) = \begin{pmatrix}
+		10 & -1\\
+		-1 & 10
+\end{pmatrix} \]
+	Es una matriz definida positiva ya que los dos menores principales son positivos.
+	
+	\item[c)] 
+	\[ x^0 = \begin{pmatrix}0\\0\end{pmatrix} \]
+	\[ x^1 = \begin{pmatrix}0\\0\end{pmatrix} - α^0 \nabla f(x^0) = \begin{pmatrix}0\\0\end{pmatrix} - α^0 \begin{pmatrix}-11\\11\end{pmatrix} = \begin{pmatrix}11α^0\\-11α^0\end{pmatrix} \]
+	\[ g(α^0) = f(x^1) = 5(11α^0)^2 + 5(-11α^0)^2 - (11α^0)(-11α^0)-11(11α^0)+11(-11α^0) +11  = 11^3(α^0)^2-2\cdot 11^2α^0 + 11 \]
+	Sacamos $α^0$ para que $g'(α^0)=0$:
+	\[ 2\cdot 11^3 α^0 - 2 \cdot 11^2 = 0 \Rightarrow α^0 = \frac{1}{11} \]
+	\[ x^1 = \begin{pmatrix}1\\-1\end{pmatrix} \]
+	
+	Hemos llegado al óptimo ya que $\nabla f(x^1) = \begin{pmatrix}
+		10 \cdot 1 - (-1) - 11\\
+		10 \cdot (-1) - 1 + 11
+\end{pmatrix} = \begin{pmatrix}0\\0\end{pmatrix}$.
+\[ x^2 = \begin{pmatrix}1 \\ -1\end{pmatrix} - α^1 \begin{pmatrix}0\\0\end{pmatrix} = \begin{pmatrix}1\\-1\end{pmatrix} \]
+Los resultados son idénticos, sólo hubiera sido necesaria una iteración ya que en ella se alcanza el mínimo obtenido en el apartado (a).
+\end{itemize}
+\end{example}
+
+\begin{example}
+\[ \min x_1+x_2+x_3\]
+\[ s.a. x_1^2+4x_2^2+9x_3^2 ≤ 1 \]
+\[ L(x,λ) = f(x)-λg(x) = x_1+x_2+x_3 - λ(x_1^2+4x_2^2+9x_3^2 - 1) \]
+\[ \frac{\partial L}{\partial x} = \begin{pmatrix}1-2λx_1\\18λx_2\\1-18λx_3\end{pmatrix} \]
+Por tanto $λ \neq 0$. Como $λg(x) = 0$, entonces $g(x) = 0$. Despejando:
+\[ x_1 = \frac{1}{2λ}, \quad x_2 = \frac{1}{8λ}, \quad x_3 = \frac{1}{18λ} \]
+Como se debe verificar la condición de holgura complementaria:
+\[ λg(x) = λ(x_1^2+4x_2^2+9x_3^2-1) = 0 \]
+Sustituyendo:
+\[ λg(x) = \frac{1}{2λ}^2+4 \frac{1}{8λ}^2+9\frac{1}{18λ}^2 = 1 \Rightarrow λ = \pm \frac{42}{72} = \pm \frac{7}{12} \]
+Elegimos el $λ < 0$, para minimizar $x$. Así pues, el mínimo es:
+\[ x_1 = -\frac{6}{7}, \quad x_2 = -\frac{3}{14}, \quad x_3 = -\frac{6}{63} \]
+
+\end{example}
 \end{document}
