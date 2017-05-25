@@ -331,6 +331,8 @@ S^1\arrow[r,"i",hookrightarrow]\arrow[rr,"g"', bend right=20]& S^2\arrow[r,"h'"]
 \]
 Se tiene que $g$ preserva antipodales y además es homotópicamente trivial, pues $h$ es homotópicamente trivial y podemos usarla para encontrar una composición $$S^1\to S^2\to\R^2\to S^1.$$
 $\boxed{(4) \Rightarrow (1)}$ Vamos a probar que $\{(4),\neg (1)\}\models \perp$. Supongamos que ninguno de los tres cerrados contiene puntos antipodales. Usamos la aplicación del enunciado $f: S^2\to \mathbb{R}^2$ dada por $f(x) = (d(x,A_1), d(x,A_2))$. Por hipótesis existe $x_0\in S^2$ tal que $f(x_0)=f(-x_0)$. Supongamos que $x_0\in A_3$. Entonces $-x_0\notin A_3$, por tanto $-x_0\in A_1\cup A_2$. De modo que $d(x_0,A_1)$ y $d(x_0,A_2)$ son estrictamente positivas, pero o bien $d(-x_0,A_1)=0$ o bien $d(-x_0,A_2)=0$, contradiciendo que $f(x_0)=f(-x_0)$. Si $x_0$ pertenece a otro cerrado se razona de forma análoga.
+
+Por último, para ver que son consecuencia del ejercicio \ref{grado2} basta ver que este ejercicio implica $(3)$. Por hipótesis, si $f$ preserva puntos antipodales entonces su grado es impar. En particular, su grado no es cero. Como el grado es un invariante homotópico, $f$ no puede ser homotópicamente trivial, pues el lazo constante tiene grado cero.
 \end{sol*}
 
 \newpage
@@ -374,9 +376,11 @@ v\'ertices los puntos $(1,0,0)$, $(0,1,0)$ y $(0,0,1)$ y  $\sigma: \R^3\to \R$ e
 \newpage
 
 \begin{exercise}
-Sea $f:\R^2\to \R^2$ una aplicaci\'on con $f^2= id$ (y por tanto homeomorfismo). Probar que $f$ tiene un punto fijo. Para ello sean $S^0 \subseteq S^1 \subseteq S^2$ las inclusiones de los correspondientes ecuadores y construir aplicaciones $g_0: S^0 \to \R^2$, $g_1: S^1\to \mathbb{R}^2$ y $g_2: S^2\to \mathbb{R}^2$ con $g_1=g_0$ en $S^0$ y $g_2 = g_1$ en $S^1$, cumpliendo $g_k(-x) = f(g_k(x))$. Entonces aplicar el teorema de Borsuk a $g_2$.
+Sea $f:\R^2\to \R^2$ una aplicaci\'on con $f^2= Id$ (y por tanto homeomorfismo). Probar que $f$ tiene un punto fijo. Para ello sean $S^0 \subseteq S^1 \subseteq S^2$ las inclusiones de los correspondientes ecuadores y construir aplicaciones $g_0: S^0 \to \R^2$, $g_1: S^1\to \mathbb{R}^2$ y $g_2: S^2\to \mathbb{R}^2$ con $g_1=g_0$ en $S^0$ y $g_2 = g_1$ en $S^1$, cumpliendo $g_k(-x) = f(g_k(x))$. Entonces aplicar el teorema de Borsuk a $g_2$.
 \end{exercise}
-
+\begin{sol*}
+Podemos definir las aplicaciones del enunciado gracias a que $f^2=Id$. En efecto, $g_k(-(-x))=f(g_k(-x))=f(f(g_k(x)))=g_k(x)$. Así pues, no importa cómo definamos $g_k(x)$ (siempre y cuando sea continua). Aplicamos ahora el teorema de Borsuk--Ulam a $g_2$ y obtenemos que existe $x_0\in S^2$ tal que $g_2(x_0)=g_2(-x_0)=f(g_2(x_0))$. Por tanto, $g_2(x_0)\in\R^2$ es un punto fijo de $f$.
+\end{sol*}
 
 
 
