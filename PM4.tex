@@ -1,0 +1,462 @@
+\documentclass[PM.tex]{subfiles}
+\begin{document}
+
+\chapter{Dualidad en programación lineal}
+\section{Introducción}
+A cada problema de programación lineal
+
+\begin{center}
+\begin{tabular}{cccccc}
+(P) & $\min$ & $c_1'x_1$ & $+c_2'x_2$   & $+c_3'x_3$\\
+(u') & sa: & $A_{11}x_1$ & $+A_{12}x_2$ & $+ A_{13}x_3$ & $≥ b_1$\\
+(v') &     & $A_{21}x_1$ & $+A_{22}x_2$ & $+ A_{23}x_3$ & $≤ b_2$\\
+(w') &     & $A_{31}x_1$ & $+A_{32}x_2$ & $+ A_{33}x_3$ & $= b_3$\\
+     &     &       $x_1$ &              &               & $≥ 0$\\
+     &     &             &      $x_2$   &               & $≤ 0$\\
+     &     &             &              &         $x_3$ & libre
+\end{tabular}
+\end{center}
+al que llamaremos primal (P) y donde $x_1, x_2$ y $x_3$ son vectores de variables de decisión, le vamos a asociar otro problema de programación lineal al que llamaremos dual (D) dado por las siguiente transformación:
+
+\begin{center}
+\begin{tabular}{cccccc}
+(D) & $\max$ & $u'b_1$ & $+v'x_2$ & $+w'x_3$\\
+    & sa: & $u'A_{11}$ & $+v'A_{12}$ & $+w'A_{13}$ & $≤ c_1'$\\
+    &     & $u'A_{21}$ & $+v'A_{22}$ & $+w'A_{23}$ & $≥ c_2'$\\
+    &     & $u'A_{31}$ & $+v'A_{32}$ & $+w'A_{33}$ & $= c_3'$\\
+    &     &       $u$  &             &             & $≥ 0$\\
+    &     &            &      $v$    &             & $≤ 0$\\
+    &     &            &             &      $w$    & libre
+\end{tabular}
+\end{center}
+
+La transformación que lleva (P) en (D) crea por cada restricción de (P) una variable de decisión en (D) y por cada variable de decisión en (P) una restricción en (D) de a forma que se indica en la siguiente tabla:
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+	$\min$ & $\max$\\
+\hline
+	restricción ≥ & variable ≥ 0\\
+\hline
+	restricción ≤ & variable ≤ 0\\
+\hline
+	restricción = & variable libre\\
+\hline
+	variable ≥ 0 & restricción ≤\\
+\hline
+	variable ≤ 0 & restricción ≥\\
+\hline
+	variable libre & restricción = \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{example}
+Consideramos el problema
+\begin{align*}(P)
+	\min c'x\\
+	\text{sa:} Ax ≥ b\\
+	x ≥ 0
+\end{align*}
+podemos transformarlo en el problema:
+\begin{align*}(P')
+	\min c'x + 0x_a\\
+	\text{sa:} Ax-Ix_a = b\\
+	x, x_a ≥ 0 
+\end{align*}
+y finalmente pasarlo al problema dual
+\begin{align*}(D)
+	\max u'b\\
+	\text{sa:} u'A ≤ c'\\
+	u ≥ 0
+\end{align*}
+\end{example}
+
+\begin{theorem}[Teorema de dualidad débil]
+Para todo $x \in X$ y $u \in U$, donde $X = \{x \in \R^n : Ax ≥ b, x ≥ 0\}$ y $U = \{ u \in \R^m \mid u'A ≤ c', u ≥ 0 \}$, se verifica que $c'x ≥ u'b$.
+\end{theorem}
+
+\begin{dem}
+$\forall u \in U, \forall x \in X$, se tiene que $u'A ≤ c', x ≥ 0$, luego $u'A x ≤ c'x$. Como $u≥0$ y $Ax≥b$, llegamos a que $u'b ≤ u'Ax ≤ c'x$, lo que demuestra el teorema.
+\end{dem}
+
+\begin{obser}
+En particular, también se verifica que:
+\[ \max\limits_{u \in U} u'b ≤ \min\limits_{x\in X} c'x \]
+\end{obser}
+
+\begin{coro}
+Si $x^* \in X$ y $u^* \in U$ y $c'x^* = (u^*)'b$, entonces $x^*$ y $u^*$ son soluciones óptimas de (P) y (D) respectivamente.
+\end{coro}
+
+\begin{dem}
+Por la observación anterior, sigue inmediatamente.
+\end{dem}
+
+\begin{theorem}[Teorema de dualidad fuerte]
+Si $X \neq \emptyset$ y $U \neq \emptyset$, entonces existen $x^*$ y $u^*$ soluciones óptimas de (P) y (D) respectivamente. Además, $c'x^* = (u^*)'b$.
+\end{theorem}
+
+\begin{dem}
+Como $U \neq \emptyset$, existe algún punto $\overline{u} \in U$. Entonces $\forall x \in X$, $x'c ≥ \overline{u}'b$. Por tanto (P) no puede decrecer a $-\infty$ y esto indica que debe haber una solución en un punto extremo $x^* \in X$, determinado por una base $B$. Así que:
+\[ x^* = \begin{pmatrix}B^{-1} b \\ 0\end{pmatrix}, \qquad B^{-1}b ≥ 0 \]
+
+Veamos ahora que $(u^*)' = c_B'B^{-1}$ es la solución óptima de (D). Es decir, hay que ver que (1) $(u^*)' \in U$ y (2) $(u^*)'b = c'x^*$. Vemos que:
+\[ (u^*)'A ≤ c' \equiv (u^*)' (B \ N) ≤ (c_B' \ c_N') \]
+Luego:
+\[ (u^*)'B ≤ c_B' \equiv c_B'B^{-1}B ≤ c_B' \equiv c_B' ≤ c_B'\]
+\[ (u^*)'N ≤ c_N' \equiv c_B'B^{-1}N ≤ c_N' \equiv c_N' - c_B'B^{-1}N ≥ 0\]
+Como las ecuaciones del miembro derecho se cumplen, llegamos a que $(u^*)'A ≤ c'$. Por otro lado, dado que $x^*$ es solución óptima de (P) entonces los costes reducidos de las variables asociadas a $x_a$ en $Ax - I x_a = b$ deben ser no negativas. Para cualquier columna $a \in A$ o $-e_j \in -I$, se tiene que:
+\[ c_a - c_B' B^{-1} a ≥ 0 \]
+\[ c_{e_j} - c_B' B^{-1}(-e_j) ≥ 0 \equiv  -c_B'B^{-1}(-e_j) ≥ 0 \equiv c_B'B^{-1}e_j = (u^*)'e_j ≥ 0 \]
+para todo $j$, luego $u^* ≥ 0$, lo que demuestra (1). Por último:
+\[ (u^*)'b = c_B'B^{-1}b = \begin{pmatrix}c_B' & c_N'\end{pmatrix}\begin{pmatrix}B^{-1}b\\0\end{pmatrix} = c'x^* \]
+\end{dem}
+
+\begin{lema}
+El sistema
+\begin{equation*}\label{sistema1}\begin{cases}
+	Ax - tb ≥ 0\\
+	-u'A + tc' ≥ 0\\
+	u'b - c'x ≥ 0
+\end{cases}\end{equation*}
+admite una solución $(x_0,u_0,t_0) ≥ 0$ y verificando
+\begin{equation*}\label{sistema2}\begin{cases}
+	Ax_0 - t_0b +u_0     > 0\\
+	-u'_0A + t_0c' + x_0  > 0\\
+	u'_0b - c'x_0 + t_0 > 0
+\end{cases}\end{equation*}
+\end{lema}
+
+\begin{dem}
+Basta ver que la matriz del sistema es antisimétrica:
+\[ \begin{pmatrix}
+	0  &  A  & -b\\
+	-A' &  0  & c\\
+	b'& -c'  & 0 
+\end{pmatrix}\begin{pmatrix}
+	u\\x\\t
+\end{pmatrix} ≥ 0 \]
+\end{dem}
+
+\begin{theorem}[Teorema de dualidad más fuerte de Gale]
+Dados (P) y (D) entonces uno y sólo uno de los siguientes casos son ciertos:
+\begin{enumerate}
+	\item Ambos problemas tienen soluciones óptimas y sus valores coinciden.
+	\item Un problema es infactible y el otro tiene solución ilimitada.
+	\item Los dos problemas son infactibles.
+\end{enumerate}
+\end{theorem}
+
+\begin{dem} Consideramos la solución $(x_0,u_0,t_0)\geq 0$ del sistema del lema anterior. Distinguimos 2 casos:
+\begin{enumerate}
+	\item $t_0 > 0$. Consideramos $x^* = \frac{x_0}{t_0}$, $u^* = \frac{u_0}{t_0}$ y $t^* = 1$. $(x^*,u^*,t^*)$ sigue siendo solucion del sistema homogéneo. Es decir:
+\[\begin{cases}
+	Ax^* - b ≥ 0\\
+	-(u^*)'A + c' ≥ 0\\
+	(u^*)'b - c'x^* ≥ 0
+\end{cases}\]
+Por lo tanto:
+\[\begin{cases}
+	Ax^* ≥ b & \Rightarrow x^* \in X\\
+	(u^*)'A ≤ c' & \Rightarrow u^* \in U\\
+	(u^*)'b ≥ c'x^* & \Rightarrow c'x^* = (u^*)'b
+\end{cases}\]
+Es decir, $(x^*,u^*)$ es solución óptima de (P) y (D) respectivamente.
+	\item $t_0=0$. Se tiene:
+\[\begin{cases}
+	Ax_0 ≥ 0\\
+	-(u_0)'A  ≥ 0\\
+	(u_0)'b - c'x^* > 0
+\end{cases}\]
+	Podemos poner mayor estricto en la última ecuación porque $(u_0)'b-c'x^*+t_0 > 0$.
+	\begin{enumerate}
+	\item Supongamos que existe $\overline{x} \in X$ y $\overline{u} \in U$, de manera que:
+	\[\begin{cases}
+		A\overline{x} ≥ b & \overline{x} ≥ 0\\
+		\overline{u}'A ≤ c' & \overline{u} ≥ 0
+	\end{cases}\]
+	\begin{itemize}
+	\item Usando que $Ax_0 ≥ 0$ y $\overline{u} ≥ 0$, obtenemos que $\overline{u}'Ax_0≥0$. Si a esto lo sumamos que $\overline{u}'A ≤ c'$, tenemos que $0\leq\overline{u}'Ax_0≤c'x_0 $. En particular $c'x_0 ≥ 0$.
+	\item  Usando que $A\overline{x} ≥ b$ y que $u_0 ≥ 0$ deducimos que $u_0'A\overline{x}≥u_0'b $. Por otro lado tenemos que $u'A ≤ 0$ y que $\overline{x} ≥ 0$, luego $0\geq u'A\overline{x}$. Deducimos que $0 \geq u_0'b$.
+\end{itemize}
+ De estos dos puntos deducimos que $c'x_0  \geq u_0'b$, pero por hipótesis $u_0'b >  c'x^*$ con lo que llegamos a una contradicción.
+	\item Supongamos que $\overline{x}$ es solución de $P$ y $U = \emptyset$. Tenemos lo siguiente
+	\[ \begin{cases}Ax_0 \geq 0 \\ -u_0'A ≥ 0 \\ u_0'b-c'x_0 > 0 \\  A\overline{x} ≥ b,\overline{x}≥ 0\end{cases} \]
+	Vemos que:
+	\[ A(\overline{x} + λx_0) = A\overline{x} + λ A x_0 ≥ b \quad \forall λ\geq 0\]
+	Como $\overline{x} + λ x_0 ≥ 0$, $\overline{x} + λ x_0 \in X$ para todo $λ > 0$. Además $c'(\overline{x} + λ x_0) = c'\overline{x} + λ c' x_0$ pero veremos que $c'x_0 < 0$.
+	\begin{itemize}
+	\item Por un lado tenemos que  $u_0'A ≤ 0$ y que $\overline{x} ≥ 0$. Se tiene por tanto que $u_0 A\overline{x} \leq 0$.
+	\item Por otro lado, $A \overline{x}\geq b$ y $u_0 \geq 0$, por lo que $u_0'A\overline{x} \geq u_0'b$.
+	\end{itemize}
+	De estos dos puntos se deduce que $u_0'b\leq 0$, pero de las hipótesis sabemos que $c'x_0 < u_0'b$, luego $c'x_0 <0$. Pero entonces $c'(\overline{x} + λ x_0) \to -\infty$ cuando $λ \to \infty$. Esto es que no puede darse solucion únicamente de un problema y, por descarte, el último caso es que ninguno tenga solución.
+	\end{enumerate}
+\end{enumerate}
+\end{dem}
+
+\begin{theorem}[Teorema de holgura complementaria fuerte]
+Si $X \neq \emptyset$ y $U \neq \emptyset$, existen $(\overline{x},\overline{u})$ óptimos de (P) y (D) tales que:
+\[ A\overline{x} -b + \overline{u} > 0\]
+\[ -\overline{u}A + c' +\overline{x}' > 0\]
+\end{theorem}
+
+\begin{dem}
+Estamos en el caso 1 del teorema anterior y, por tanto, $t_0 > 0$. Consideramos $\overline{x} = \frac{x_0}{t_0}$, $\overline{u}=\frac{u_0}{t_0}$ y $\overline{t} = 1$. $(\overline{x},\overline{u},\overline{t})$ es solución del sistema \eqref{sistema1} y cumple (evaluando en \eqref{sistema2}):
+\[ A\overline{x} -b + \overline{u} > 0\]
+\[ -\overline{u}A + c' +\overline{x}' > 0\]
+\end{dem}
+
+\begin{theorem}[Otro teorema de holgura complementaria] Sean $x^*$, $u^*$ soluciones factiables de P y D, respectivamente. Entonces $x^*$ y $u^*$ son soluciones óptimas si y sólo si $u^*(Ax^*-b)=0$, $(u'^{*} A-c')x^*=0$.
+\end{theorem}
+\begin{dem}
+\[
+\begin{cases}
+u'^* A x^* = u'^*b \\
+u'^*A x^* = c'x^* 
+\end{cases}
+\quad c'x^* = u'^*b \Rightarrow \text{$x^*$ es óptima en P y $u^*$ en D}
+\]
+Recíprocramente, si $c'x^*=u'^*b$. Consideramos el producto, donde cada miembro es $\geq 0$.
+\[
+u'^*(Ax^*-b)\geq 0
+\]
+Veamos que $\not >$. Supongamos lo contrario. ($(u^*A) \leq c'$ por ser solución factible del dual):
+\[
+u'^*Ax^* > u'^* b \Rightarrow c'x^* \geq u'^*Ab>u'^*b
+\]
+Lo cual es un absurdo. Análogamente deducimos que $(u'^*A-c')x^* \leq 0$. Si la desigualdad fuera estricta llegaríamos al mismo absurdo que en el caso anterior usando que, como $Ax^* \geq b$.
+\end{dem}
+\section{Análisis de postoptimalidad}
+Dado un problema $(P)$ $\min c'x$, $Ax=b$, $x\geq 0$. Considero un vector $d\in\R^n$ y la familia de problemas: $P(\Delta)$: $\min c'x + \Delta d'x$, $Ax=b$, $x\geq 0$. Observemos que $P=P(0)$. Supongamos que B es una base asociada a una solución óptima de $x^*(0)$. Es decir, $x^*(0)=[B^{-1}b | 0]' \geq 0$. Queremos determinar el rango de valores de $\Delta$ que mantienen a $x^*(0)$ como solución óptima de $P(\Delta)$. La condición que certifica que $B$ es una base óptima son:
+\begin{itemize}
+\item $B^{-1}b \geq 0$.
+\item $\overline{c_R}'(0)_N  = \overline{c}'_N = c'_N - c_B'B^{-1}N \geq 0$. 
+\end{itemize}
+Las condiciones en $P(\Delta)$. 
+\begin{itemize}
+\item $B^{-1}b \geq 0$.
+\item $\overline{c_R}'_N = (c +\Delta d)'_N- (c+\Delta d)'_B B^{-1}N = \overline{c_R}'(0)_N  + \Delta (d_N'-d'_BB^{-1}N) =  \overline{c_R}'(0)_N + \Delta \overline{d}_N\geq 0$. 
+\end{itemize}
+Para una componente genérica $j\in \mathbb{N}$ se tiene que $\overline{c}_j+\Delta d_j\geq 0$. Entonces:
+\[
+\begin{cases}
+-\frac{\overline{c}_j}{\overline{d}_j} \geq \Delta & si \quad \overline{d}_j <0\\
+-\frac{\overline{c}_j}{\overline{d}_j} \leq \Delta & si \quad \overline{d}_j >0
+\end{cases}
+\Rightarrow \max_{j:\overline{d}_j >0}-\frac{\overline{c}_j}{\overline{d}_j} \leq \Delta \leq \min_{j:\overline{d}_j <0}-\frac{\overline{c}_j}{\overline{d}_j}
+\]
+
+\subsection{Análisis de las variaciones en términos independientes}
+
+Sea $z(0)= \min c'x$ sujeto a $Ax=b, x\geq 0$. Queremos estudiar que pasa si elegimos $g\in\R^m$ y construimos el problema
+\begin{align*}
+z(\Delta)=\min c'x\\
+sa: Ax=b+\Delta g\\
+\Delta\in\R
+\end{align*}
+Si $B$ es una base asociada a la solución óptima de $z(0)$, ¿cuál es el rango de $\Delta$ que mantiene $B$ óptima? Las condiciones para que sea óptima son:
+\begin{enumerate}
+\item Condición de optimalidad. \[\overline{c}_N=c'_N-c'_B B^{-1}N\geq 0.\]
+En $z(\Delta)$, teniendo en cuenta que no cambia la función ni las columnas de $A$, esta condición es
+\[\overline{c}_N=c'_N-c'_B B^{-1}N\geq 0\] si $\overline{c}_N\geq 0$, que lo es. 
+\item Factibilidad. En $z(0)$ es $B^{-1}b=\overline{b}\geq 0$. En $z(\Delta)$ es 
+\[B^{-1}b(\Delta)=B^{-1}(b+\Delta  g)=B^{-1}b+\Delta B^{-1}g=\overline{b}+\Delta\overline{g}\geq 0\]
+Tomemos un índice $i$ arbitrario.
+
+\[\overline{b}_i+\Delta\overline{g}_i\geq 0\ \forall i=1,\dots, m\Leftrightarrow -\Delta\overline{g}_i\leq\overline{b}_i\]
+Si $g_i<0$: $\Delta\leq\frac{\overline{b}_i}{-\overline{g}_i}$.\\
+Si $g_i>0$: $\Delta\geq\frac{-\overline{b}_i}{\overline{g}_i}$.\\
+Luego
+\[\max_{i, g_i>0}\{\frac{-\overline{b}_i}{\overline{g}_i}\}\leq\Delta \leq \min_{i,g_i<0}\{\frac{-\overline{b}_i}{\overline{g}_i}\}\]
+\end{enumerate}
+\begin{example}
+\begin{align*}
+\min & -2x_1-x_2 &\\
+sa: & x_1+x_2 &\leq 5\\
+    & -x_1+x_2 & =0\\
+    & 6x_1+2x_2 & \leq 21\\
+    & x_1,x_2 & \geq 0
+\end{align*}
+Pongamos $g'=(0,0,1)$. La báse óptima para $x_1,x_2,x_4$ de este problema era $B=[a_1\ a_2\ a_4]$. Imponemos $B^{-1}(b+\Delta g)\geq 0$ y despejamos $\Delta$ Obtenemos
+\[
+\begin{pmatrix}
+\frac{11}{4}\\
+\frac{9}{4}\\
+\frac{1}{2}
+\end{pmatrix}+\Delta\begin{pmatrix}
+\frac{1}{4}\\
+\frac{-1}{4}\\
+\frac{1}{2}
+\end{pmatrix}\geq 0
+\]
+Por lo tanto $\Delta\in [-1,9]$. Esto quiere decir que $B$ es óptima para $b_3\in[20,30]$. La solución $x(\Delta)=B^{-1}b(\Delta)$ en cada caso será distinta, pero la base será la misma.
+\end{example}
+
+\subsection{Añadir una nueva variable $x_{n+1}$ a un problema}
+Pasamos del problema $(P)$
+\begin{align*}
+\min\ & c'x\\
+sa:\ & Ax=b\\
+ & x\geq 0
+\end{align*}
+al problema $(P')$
+\begin{align*}
+\min\ & c'x+c_{n+1}x_{n+1}\\
+sa:\ & [A|a_{n+1}]\begin{bmatrix}
+x\\
+x_{n+1}
+\end{bmatrix}=b\\
+ &  x,x_{n+1}\geq 0
+\end{align*}
+Dada $B$ una base óptima en $(P)$ queremos determinar una condición para que sea óptima en $(P')$. Las condiciones para $(P')$ son:
+\begin{enumerate}
+\item Factibilidad, que es la misma que en $(P)$, $B^{-1}b\geq 0$. 
+\item Optimalidad. En $(P)$ \[\overline{c}_N=c'_N-c'_B B^{-1}N\geq 0.\]
+En $(P')$
+\[\overline{c}_N(P')=(c'_N, c_{n+1})-c'_B B^{-1}[N| a_{n+1}]\geq 0\]
+Esto es equivalente a que se cumplan al mismo tiempo
+\[\overline{c}_N=c'_N-c'_B B^{-1}N\geq 0,\]
+que ya la teníamos, y 
+\[c_{n+1}-c'_B B^{-1} a_{n+1}\geq 0.\] Esta sería la condición que buscábamos.
+
+\end{enumerate}
+
+\subsection{Añadir una restricción}
+Partimos de nuevo del problema $(P)$ anterior y lo llevamos al problema $(P_q)$
+\begin{align*}
+\min\ & c'x\\
+sa:\  & Ax=b\\
+& a'_q x\leq b_q\\
+ & x, b_q\geq 0
+\end{align*}
+Lo escribimos en forma estándar
+\begin{align*}
+\min\ & c'x\\
+sa:\  & Ax=b\\
+& a'_q x+h_q= b_q\\
+ & x, b_q, h_q\geq 0
+\end{align*}
+Suponemos que $B$ es una base óptima en $(P)$ y queremos analizar la solución de $(P_q)$. Es decir, $x=\begin{bmatrix}
+B^{-1}b\\
+0\end{bmatrix}$, $h_q=b_q-(a_q)_B B^{-1}b$.  Evaluamos esta solución en el problema reordenando las columnas de $a_q$.
+\[ [(a_q)_B, (a_q)_N]\begin{bmatrix}
+B^{-1}b\\
+0\end{bmatrix} +h_q=b_q.\] Hay que comprobar que $h_q\geq 0$ para que tenga sentido. La base asociada a esta solución es
+\[ B_q=\begin{bmatrix}
+B & 0\\
+(a_q)_B & 1
+\end{bmatrix}.\] La última columna proviene de haber añadido $h_q$. Su inversa tiene la siguiente forma:
+\[ B_q^{-1}=\begin{bmatrix}
+B^{-1} & 0\\
+\alpha & 1
+\end{bmatrix},\] con $\alpha$ tal que $(a'_q)_B B^{-1} +\alpha=0$. Es decir, $\alpha=-(a'_q)_B B^{-1}$. Queda pues, finalmente así la inversa (comprobarlo)
+\[ B_q^{-1}=\begin{bmatrix}
+B^{-1} & 0\\
+-(a'_q)_B B^{-1} & 1
+\end{bmatrix}.\]
+Para que esta solución sea óptima 
+\begin{enumerate}
+\item $B_q^{-1}\begin{bmatrix}
+b\\
+b_q
+\end{bmatrix}\geq 0$. Esto es equivalente a $\begin{bmatrix}
+B^{-1} & 0\\
+-(a'_q)_B B^{-1} & 1
+\end{bmatrix}\begin{bmatrix}
+b\\
+b_q
+\end{bmatrix}=\begin{bmatrix}
+B^{-1}b\\
+-(a'_q)_B B^{-1}+b_q
+\end{bmatrix}\geq 0$. Observamos que la única condición nueva es $-(a'_q)_B B^{-1}+b_q\geq 0$.
+\item $\overline{c}_N(P_q)=c'_N-(c'_B,0)B_q^{-1}\begin{bmatrix}
+N\\
+(a'_q)_N
+\end{bmatrix}\geq 0$. Esto es equivalente a $c'_N-[c'_B B_q^{-1} N + 0]=\overline{c}_N\geq 0$.
+\end{enumerate}
+
+\begin{example}
+Añadimos al ejemplo anterior la restricción $x_1+x_2\leq 4$ y lo escribimos en forma estándar añadiendo $x_3,x_4,x_5,x_6$.
+\begin{align*}
+\min & -2x_1-x_2 &\\
+sa: & x_1+x_2 +x_3 &= 5\\
+    & -x_1+x_2 +x_4 & =0\\
+    & 6x_1+2x_2  +x_4 & = 21\\
+    & x_1+x_2 +x_6  & = 4\\
+    & x_1,x_2,x_3,x_4,x_5,x_6 & \geq 0
+\end{align*}
+Obsérvese que hemos añadido $x_4$ aunque ya teníamos una igualdad en la segunda restricción. Esto no importa porque la solución puede dar $x_4=0$. En este problema $a'_q=(1,1,0,0,0)$, $b_q=4$ y $B_6=[a_1\ a_2\ a_4\ a_6]$ (la de antes añadiendo $a_6$). Para que sea óptima $-(a'_q)_B B^{-1}+b_q\geq 0$. Si operamos nos da $-\frac{13}{4}\not\geq 0$, por lo que no es óptima. Tendríamos entonces
+\[ B_q^{-1}\begin{bmatrix}
+5\\
+0\\
+21\\
+4
+\end{bmatrix}=\begin{bmatrix}
+\frac{11}{4}\\
+\frac{9}{4}\\
+\frac{1}{2	}\\
+-\frac{13}{4}
+\end{bmatrix}\]
+Como tenemos un elemento negativo, usaríamos el método del símplex dual.
+\end{example}
+
+\section{Precios Sombra}
+Definimos 
+\begin{align*}
+f:\R^m\longrightarrow \R & & &\\
+ f(b) = & \min\ & c'x\\
+                                &sa:\  & Ax=b\\
+       							& & x\geq 0
+\end{align*}
+Queremos derivar esta función. Supongamos en este problema que las bases factibles son $B_1,\dots, B_r$. Consideramos el problema dual que verifica
+\begin{align*}
+ f(b) = & \min\ & c'x\quad  & =\max\ u'b \quad  = \max\{c'_{B_1}B_1^{-1}b,\dots, c'_{B_r}B_r^{-1}b\}\\
+        &sa:\   Ax=b       &sa:\ & u'A\leq c\\
+        &  x\geq 0         & & u\in\R^m 
+\end{align*}
+Llamamos $u_i=c'_{B_i}B_i^{-1}$. Entonces, $f(b)=\max_{1\leq i\leq r}u_i'b=u'_k b$. Ahora derivamos
+\[\frac{\partial f}{\partial b_i}=\frac{\partial }{\partial b_i}\left(\sum_{j=1}^m u_{kj}b_j\right)=u_{ki}\]
+Hemos llegado a la solución óptima del dual en su variable $i$-ésima. 
+\begin{example}
+$g'=(0,0,1)=e'_3$. Teníamos que $z(\Delta)$ al variar $b_3\in [20,30]$ mantiene la base óptima.
+\begin{gather*}
+f(\Delta)= z(\Delta)=c'_B B^{-1}b(\Delta)=c'_B B^{-1}(b+\Delta e_3)=\\
+c'_B B^{-1} b +\Delta c'_B B^{-1} e_3 =\frac{31}{4}-\frac{1}{4}\Delta
+\end{gather*}
+Luego $\frac{\partial z}{\partial\Delta}=-\frac{1}{4}$. Si quisiéramos utilizar el resultado anterior, tendríamos que obtener la solución óptima y multiplicar por $e_3$ (quedarnos con la tercera componente). La solución óptima del dual es
+\[(u^*)'=c'_B B^{-1}=[-2\ -1\ 0]B^{-1}=[-\frac{1}{2}\ 0\ -\frac{1}{4}]\]
+Por lo tanto. $\frac{\partial z}{\partial\Delta}=\frac{\partial z}{\partial b_3}=u^*_3=-\frac{1}{4}$.
+\end{example}
+\newpage
+\section{Resumen}
+Condiciones para el análisis de postóptimalidad
+\begin{itemize}
+\item En la función objetivo
+\[
+\max_{j:\overline{d}_j >0}-\frac{\overline{c}_j}{\overline{d}_j} \leq \Delta \leq \min_{j:\overline{d}_j <0}-\frac{\overline{c}_j}{\overline{d}_j}
+\]
+\item En el término independiente
+\[\max_{i, g_i>0}\{\frac{-\overline{b}_i}{\overline{g}_i}\}\leq\Delta \leq \min_{i,g_i<0}\{\frac{-\overline{b}_i}{\overline{g}_i}\}\]
+\item Añadir una nueva variable
+\[c_{n+1}-c'_B B^{-1} a_{n+1}\geq 0.\]
+\item Añadir una nueva restricción
+\[-(a'_q)_B B^{-1}+b_q\geq 0\]
+\end{itemize}
+{\large\bf LOGIC INTERLUDE}
+\begin{theorem}
+Si $c \in Res(c_1,c_2)$ entonces $\{ c_1, c_2 \} \models c$.
+\end{theorem}
+
+\begin{dem}
+
+Sea $I \models \{ c_1, c_2\}$. Hay que demostrar que $I \models c$. Como $c \in Res(c_1,c_2)$, entonces existe $L \in c_1$ tal que $c = Res_L(c_1, c_2) = (c_1-\{ L \} \cup (c_2 - \{ L^c \})$.
+
+Consideramos dos casos:
+\begin{itemize}
+	\item Si $I(L) = 1$, entonces $I(L^C)=0$. Por otro lado, sabemos que $I$ es modelo de $c_2$, luego existe $L' \in C_2$ tal que $I(L')=1$. De $I(L^C)=0$ y $I(L')=1$, tenemos que $L^C \neq L'$. Luego $L' \in c_2 - \{ L ^C \}$. Luego $L' \in c$. Por lo tanto, $I \models c$.
+	\item $I(L) = 0$. Como $I \models c_1$, existe $L' \in c_1$ tal que $I(L') = 1$. Entonces $L' \neq L$, luego $L' \in c_1 - \{ L \}$. Entonces $L' \in c$ y $I \models c$. 
+\end{itemize}
+\end{dem}
+\end{document}
