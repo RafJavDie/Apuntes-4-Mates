@@ -123,6 +123,7 @@
 \providecommand{\numn}[1]{\norm{#1}_1}
 \providecommand{\gabs}[1]{\left|{#1}\right|}
 \newcommand{\bor}[1]{\mathcal{B}(#1)}
+\providecommand{\func}[2]{\colon{#1}\longrightarrow{#2}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -149,27 +150,174 @@
 Calcula el grupo fundamental del cilindro $\mathbb{R}\times S^1$.
 
 \end{exercise}
+\begin{sol*}
+$\pi_1(\mathbb{R}\times S^1)\cong\pi_1(\R)\times\pi_1(S^1)\cong\{1\}\times\Z\cong\Z.$
+\end{sol*}
+
+\newpage
 
 
-
-\begin{exercise}
+\begin{exercise}\label{2}
 
 Calcula el grupo fundamental de la suma puntual de dos copias de $S^2$.
 
 \end{exercise}
+\begin{sol*}
+Para diferenciar cada una de las copias las llamaremos $S^2_1$ y $S^2_2$. Sea $U$ el abierto formado por $S^2_1$ y la mitad de $S^2_2$. Sea $V$ el abierto formado por $S^2_2$ y la mitad de $S^2_1$. Se tiene que $U\cup V=S^2_1\vee S^2_2$. Tenemos que tanto $U$ como $V$ y $U\cap V$ son contráctiles, por lo que usando el teorema de Seifert-Van Kampen obtenemos que $\pi_1(S^2_1\vee S^2_2)\cong\{1\}$.
+\end{sol*}
+
+\newpage
 
 \begin{exercise}
 
 Calcula el grupo fundamental de la suma puntual de dos copias de $S^1$, y generaliza el resultado al caso de $n$ copias, para un $n$ cualquiera.
 
 \end{exercise}
+\begin{sol*}\
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-4.132863999999993,-4.614538666666662) rectangle (8.133802666666664,1.326794666666668);
+\draw(-1.,0.) circle (1.cm);
+\draw(1.,0.) circle (1.cm);
+\draw(-3.,-3.) circle (1.cm);
+\draw(3.,-3.) circle (1.cm);
+\draw [shift={(-1.,-3.)}] plot[domain=1.5707963267948966:4.71238898038469,variable=\t]({1.*1.*cos(\t r)+0.*1.*sin(\t r)},{0.*1.*cos(\t r)+1.*1.*sin(\t r)});
+\draw [shift={(1.,-3.)}] plot[domain=-1.5707963267948966:1.5707963267948966,variable=\t]({1.*1.*cos(\t r)+0.*1.*sin(\t r)},{0.*1.*cos(\t r)+1.*1.*sin(\t r)});
+\draw [->] (-1.5546666666666642,-1.0653333333333301) -- (-2.,-2.);
+\draw [->] (1.592,-0.9906666666666636) -- (2.,-2.);
+\draw (-3.2,1) node[anchor=north west] {$S^1\vee S^1$};
+\draw (-4.3,-1.8092053333333302) node[anchor=north west] {$X_1$};
+\draw (3.8,-1.8518719999999969) node[anchor=north west] {$X_2$};
+\draw [shift={(6.,-3.)}] plot[domain=-1.5707963267948966:1.5707963267948966,variable=\t]({1.*1.*cos(\t r)+0.*1.*sin(\t r)},{0.*1.*cos(\t r)+1.*1.*sin(\t r)});
+\draw [shift={(8.,-3.)}] plot[domain=1.5707963267948966:4.71238898038469,variable=\t]({1.*1.*cos(\t r)+0.*1.*sin(\t r)},{0.*1.*cos(\t r)+1.*1.*sin(\t r)});
+\draw (6.3,-1.5212053333333304) node[anchor=north west] {$X_1\cap X_2$};
+\end{tikzpicture}
+
+En este caso, $X_1\cap X_2$ es contráctil, por lo que $\pi_1(X_2\cap X_2,x_0)=\{1\}$. Por otro lado, tanto $X_1$ como $X_2$ tienen a $S^1$ como retracto de deformación fuerte, por lo que las inclusiones $k_1\func{S^1}{X_1}$ y $k_1\func{S^1}{X_2}$ inducen isomorfismos $k_{1*}\func{\pi_1(S^1,x_0)}{\pi_1(X_1,x_0)}$ y $k_{2*}\func{\pi_1(S^1,x_0)}{\pi_1(X_2,x_0)}$. Por tanto, $\pi_1(X_1,x_0)=\pi_1(X_2,x_0)\cong\Z$, siendo los generadores las clases $\varepsilon_i \in \pi_1(X_i,x_0)$ de las vueltas canónicas $t\mapsto e^{2\pi it}$ de las circunferencias completas de $X_1$ y $X_2$, respectivamente. El diagrama resultante del teorema de Seifert-Van Kampen es el siguiente
+\[
+\begin{tikzcd}
+\pi_1(X_1\cap X_2,x_0)\cong\{1\} \ar[r, "i_1*"]\arrow[d,"i_2*"'] & \pi_1(X_1,x_0)=\langle\varepsilon_1|\ \rangle\arrow[d,dashed,"j_1*"]\\
+\langle\varepsilon_2|\ \rangle =\pi_1(X_2,x_0)\arrow[r,dashrightarrow,"j_2*"'] & \pi_1(S^1\vee S^1,x_0)=\langle j_{1*}(\varepsilon_1), j_{2*}(\varepsilon_2)|\ \rangle
+\end{tikzcd}
+\]
+El resultado es el grupo libre con dos generadores que son las clases en $\pi_1(S^1\vee S^1,x_0)$ de las vueltas canónicas de las dos circunferencias que componen $S^1\vee S^1$. Nótese que no es abeliano.
+
+En general $\pi_1(S^1\vee\cdots\vee S^1,x_0)\cong\Z*\cdots *\Z$, donde $S^1\vee\cdots\vee S^1$ es el resultado de unir una cantidad finita de circunferencias por un solo punto común a todas.
+\end{sol*}
+
+\newpage
 
 \begin{exercise}
 
-Calcula el grupo fundamental de la banda de Moebius, y tambi\'en el de la botella de Klein.
+Calcula el grupo fundamental de la banda de Möbius, y tambi\'en el de la botella de Klein.
 
 \end{exercise}
+\begin{sol*}
+La banda de Möbius se retrae con deformación sobre una circunferencia, por lo que su grupo fundamental es isomorfo a $\Z$. Vayamos ahora  la Botella de Klein.\\
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\definecolor{zzttqq}{rgb}{0.6,0.2,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-1.6541333333333335,-1.6) rectangle (9.140533333333332,2.6);
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.2] (0.,0.) -- (1.,0.) -- (1.,1.) -- (0.,1.) -- cycle;
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.2] (2.,-1.5) -- (3.,-1.5) -- (3.,-0.5) -- (2.,-0.5) -- cycle;
+\draw [color=ffffff,fill=ffffff,fill opacity=1.0] (2.5,-1.) circle (0.20010805969664447cm);
+\draw [line width=0.4pt,color=zzttqq,fill=zzttqq,fill opacity=0.2] (5.,0.5) circle (0.45cm);
+\draw [line width=0.4pt] (5.,0.5) circle (0.35cm);
+\draw [color=ffffff,fill=ffffff,fill opacity=1.0] (5.,0.5) circle (0.17782688210729017cm);
+\draw [line width=0.4pt,color=zzttqq,fill=zzttqq,fill opacity=0.2] (2.5,1.5) circle (0.45cm);
+\draw [color=zzttqq] (0.,0.)-- (1.,0.);
+\draw [color=zzttqq] (1.,0.)-- (1.,1.);
+\draw [color=zzttqq] (1.,1.)-- (0.,1.);
+\draw [color=zzttqq] (0.,1.)-- (0.,0.);
+\draw [->] (0.,1.) -- (0.6,1.);
+\draw [->] (1.,0.) -- (0.4,0.);
+\draw [->] (0.,0.) -- (0.,0.6);
+\draw [->] (1.,0.) -- (1.,0.6);
+\draw [->] (2.,-0.5) -- (2.6,-0.5);
+\draw [->] (3.,-1.5) -- (2.4,-1.5);
+\draw [->] (2.,-1.5) -- (2,-0.9);
+\draw [->] (3.,-1.5) -- (3,-0.9);
+\draw [->] (1.780533333333333,1.3104) -- (1.2429333333333332,0.9946666666666657);
+\draw [->] (1.8146666666666664,-0.34506666666666636) -- (1.2856,0.);
+\draw [color=zzttqq] (2.,-1.5)-- (3.,-1.5);
+\draw [color=zzttqq] (3.,-1.5)-- (3.,-0.5);
+\draw [color=zzttqq] (3.,-0.5)-- (2.,-0.5);
+\draw [color=zzttqq] (2.,-0.5)-- (2.,-1.5);
+\draw [->] (4.016266666666666,0.19253333333333317)--(3.3165333333333327,-0.2597333333333331);
+\draw [->] (3.9992,0.9008)--(3.3165333333333327,1.3274666666666655);
+\draw [->] (5.,-0.5) -- (5,0.15);
+\draw (1.8,2.5) node[anchor=north west] {$X_1=\text{disco abierto}$};
+\draw (2.2,0) node[anchor=north west] {$X_2$};
+\draw (0.1,-0.5) node[anchor=north west] {$\text{ Hacemos}$};
+\draw (0.1,-0.8) node[anchor=north west] {$\text{un agujero}$};
+\draw (5.5,0.74464) node[anchor=north west] {$X_1\cap X_2$};
+\draw (-0.5,0.6) node[anchor=north west] {$a$};
+\draw (1.1,0.6) node[anchor=north west] {$a$};
+\draw (0.4,1.4) node[anchor=north west] {$b$};
+\draw (0.4,0) node[anchor=north west] {$b$};
+\draw (1.2,1.8) node[anchor=north west] {$j_1$};
+\draw (1.5,0.3) node[anchor=north west] {$j_2$};
+\draw (3.3,0.4) node[anchor=north west] {$i_1$};
+\draw (3.5,1.6) node[anchor=north west] {$i_2$};
+\draw (4.75,-0.5) node[anchor=north west] {$S^1$};
+\end{tikzpicture}
 
+Se tiene que $X_1\cap X_2$ tiene por retracto de deformación fuerte a $S^1$, así que $\pi_1(X_1\cap X_2,x_0)=\langle\varepsilon_0|\ \rangle \cong\Z$, 
+donde $\varepsilon^0$ es la clase de la vuelta canónica $\alpha^0$ de la circunferencia $S^1$. Además, $X_1$ es contráctil, con lo que $\pi_1(X_1,x_0)=\{1\}$. Para $X_2$ concluimos que $\pi_1(X_2,x_0)=\langle \varepsilon_2^a,\varepsilon_2^b|\ \rangle$ donde $\varepsilon_2^a$ y $\varepsilon_2^b$ son las clases en $\pi_1(X_2,x_0)$ de los lazos $\gamma*\alpha^a*\overline{\gamma}$ y $\gamma*\alpha^b*\overline{\gamma}$. Aquí, $\alpha^a$ y $\alpha^b$ son las vueltas canónicas de las circunferencias $a$ y $b$. Ahora, por el teorema de Seifert-Van Kampen y teniendo en cuenta que $i_{1*}(\varepsilon_0)=1$ se llega a que $\pi_1(X,x_0)=\langle j_{2*}(\varepsilon_2^a),j_{2*}(\varepsilon_2^b)|j_{2*}(i_{2*}(\varepsilon^0))^{-1}\rangle$ . Por último, calculamos $i_{2*}(\varepsilon_0)$.
+
+\definecolor{qqffqq}{rgb}{0.,1.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-4,-0.5) rectangle (6.432288808308237,2.4209391043300577);
+
+\draw (0.,0.)-- (2.,0.);
+\draw (2.,0.)-- (2.,2.);
+\draw (2.,2.)-- (0.,2.);
+\draw (0.,2.)-- (0.,0.);
+\draw (0.,0.)-- (0.7066666666666667,0.72);
+\draw(1.,1.) circle (0.4055175020198813cm);
+\draw [->] (2.,0.) -- (0.9,0.);
+\draw [->] (2.,0.) -- (2.,1.);
+\draw [->] (0.,0.) -- (0.,1.);
+\draw [->] (0.,2.) -- (1.,2.);
+\draw [->] (1.2185957084281869,1.341555794419043) -- (1.1392101437468405,1.3808739690795742);
+\draw [line width=1.2pt,color=qqffqq] (0.7379455914298125,0.644459593784375)-- (0.21338395946064603,0.09709093433828794);
+\draw [line width=1.2pt,color=qqffqq] (0.21338395946064603,0.09709093433828794)-- (1.910226803743515,0.08796812334751983);
+\draw [line width=1.2pt,color=qqffqq] (1.910226803743515,0.08796812334751983)-- (1.9193496147342832,1.9125303215011433);
+\draw [line width=1.2pt,color=qqffqq] (1.9193496147342832,1.9125303215011433)-- (0.0674189836083562,1.9216531324919113);
+\draw [line width=1.2pt,color=qqffqq] (0.0674189836083562,1.9216531324919113)-- (0.08566460558989243,0.2020032607321213);
+\draw [line width=1.2pt,color=qqffqq] (0.08566460558989243,0.2020032607321213)-- (0.6056648320636749,0.7311262981966721);
+\draw [->,color=qqffqq] (0.7379455914298125,0.644459593784375) -- (0.4745729277044789,0.3696359446796789);
+\draw [->,color=qqffqq] (0.21338395946064603,0.09709093433828794) -- (1.0389744903683416,0.092652275569967);
+\draw [->,color=qqffqq] (1.910226803743515,0.08796812334751983) -- (1.9150849212485737,1.2);
+\draw [->,color=qqffqq] (1.9193496147342832,1.9125303215011433) -- (0.98430664841938,1.9171364444879162);
+\draw [->,color=qqffqq] (0.0674189836083562,1.9216531324919113) -- (0.0770015131620486,1.0184997220564025);
+\draw [->,color=qqffqq] (0.08566460558989243,0.2020032607321213) -- (0.38419490345889523,0.5057709322479488);
+\draw (1.3,1.1787653001727818) node[anchor=north west] {$\alpha^0$};
+\draw (0.7757231517425831,1) node[anchor=north west] {$x_0$};
+\draw (-0.5,1.138695177458031) node[anchor=north west] {$a$};
+\draw (2.1381073240441104,1.1119817623148638) node[anchor=north west] {$a$};
+\draw (0.6,0.6) node[anchor=north west] {$\gamma$};
+\draw (0.8,0.) node[anchor=north west] {$b$};
+\draw (0.8,2.5) node[anchor=north west] {$b$};
+\draw (-0.5,0) node[anchor=north west] {$x_1$};
+\draw (-0.5,2) node[anchor=north west] {$x_1$};
+\draw (2,2) node[anchor=north west] {$x_1$};
+\draw (2,0) node[anchor=north west] {$x_1$};
+\begin{scriptsize}
+\draw [fill=black] (0.7066666666666667,0.72) circle (2.5pt);
+\draw [fill=black] (0.,0.) circle (2.pt);
+\draw [fill=black] (2.,0.) circle (2.pt);
+\draw [fill=black] (2.,2.) circle (2.pt);
+\draw [fill=black] (0.,2.) circle (2.pt);
+\end{scriptsize}
+\end{tikzpicture}
+\[
+i_{2*}(\varepsilon_0)=[\gamma*\overline{\alpha^b}*\alpha^a*\overline{\alpha^b}*\overline{\alpha^a}*\overline{\gamma}]=(\varepsilon_2^{b})^{-1}\varepsilon_2^{a}(\varepsilon_2^{b})^{-1}(\varepsilon_2^a)^{-1}.
+\]
+Por ello, $\pi_1(X,x_0)=\langle\varepsilon^a,\varepsilon^b|\varepsilon^{a}\varepsilon^{b}(\varepsilon^{a})^{-1}\varepsilon^b\rangle$, donde $\varepsilon^{a}=j_{2*}(\varepsilon^{a}_2)$ y $\varepsilon^{b}=j_{2*}(\varepsilon^{b}_2)$ son las clases de $\gamma*\alpha^a*\overline{\gamma}$ y $\gamma*\alpha^b*\overline{\gamma}$ en $\pi_1(X,x_0)$. Si, como en el caso del toro, se deshace el cambio de punto base a $x_1$, tenemos $\pi_1(X,x_1)=\langle\eta^a,\eta^b|\eta^{a}\eta^{b}(\eta^{a})^{-1}\eta^b\rangle$, donde $\eta^a$ y $\eta^b$ son las clases de las vueltas canónicas de las circunferencias $a$ y $b$.
+\end{sol*}
+
+\newpage
 
 \begin{exercise}
 
@@ -177,35 +325,323 @@ Calcula el grupo fundamental del \emph{sombrero bobo} (i.e. un tri\'angulo relle
 
 \end{exercise}
 
+\begin{sol*}
+Empezamos por el plano proyectivo que es más simple y el sombrero bobo será análogo.\
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-3.9736363636363694,-2) rectangle (6.480909090909101,2);
+\draw [fill=black,fill opacity=0.13] (0.,0.) circle (1.5cm);
+\draw [fill=black,fill opacity=1.0] (0.,0.) circle (0.2700550907983698cm);
+\draw [color=black] (0.,0.) circle (0.5cm);
+\draw [color=ffffff,fill=ffffff,fill opacity=1.0] (0.,0.) circle (0.2700550907983698cm);
+\draw [dash pattern=on 2pt off 2pt] (0.,0.) circle (0.9cm);
+\draw [->] (0.07096361834016676,1.498320447992375) -- (-0.07232341452011842,1.4982554267254136);
+\draw [->] (0.,-1.5) -- (0.16255704268110133,-1.4911657211305438);
+\draw (-0.1,1.9) node[anchor=north west] {$a$};
+\draw (-0.1,-1.5) node[anchor=north west] {$a$};
+\draw (0.35,0.5) node[anchor=north west] {$S^1$};
+\begin{scriptsize}
+\draw [fill=black] (-1.5,0.) circle (1.5pt);
+\draw [fill=black] (1.5,0.) circle (1.5pt);
+
+
+\end{scriptsize}
+\end{tikzpicture}
+
+Tomamos como $X_1$ un disco abierto, que al ser contráctil cumple que $\pi_1(X,x_0)=\{1\}$. El conjunto $X_2$ será el resultado de eliminar un disco cerrado de $X$. Por tanto, $X_1\cap X_2$ tendrá como retracto de deformación fuerte a $S^1$, es decir, $\pi_1(X_1\cap X_2,x_0)=\langle\varepsilon_0|\ \rangle$, donde $\varepsilon_0$ es la clase de la vuelta canónica de $S^1$. En $X_2$ observemos lo siguiente
+
+\definecolor{ffffff}{rgb}{1.,1.,1.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-2.,-2) rectangle (13.348732398112169,2.6);
+\draw [fill=black,fill opacity=0.11] (0.,0.) circle (1.5cm);
+\draw [color=ffffff,fill=ffffff,fill opacity=1.0] (0.,0.) circle (0.2700550907983698cm);
+\draw [->] (0.07096361834016676,1.498320447992375) -- (-0.07232341452011842,1.4982554267254136);
+\draw [->] (0.,-1.5) -- (0.16255704268110133,-1.4911657211305438);
+\draw (-0.08609868635317827,1.9283962211701489) node[anchor=north west] {$a$};
+\draw (-0.16768672937624718,-1.6) node[anchor=north west] {$a$};
+\draw (-0.17039989202214118,-0.20950806396164895)-- (-0.8549582108626596,-1.232496027449387);
+\draw(0.,0.) circle (0.2700550907983698cm);
+\draw (1.6952402529838262,0.37822340373183405) node[anchor=north west] {$\text{Se retrae con }$};
+\draw(6.,0.) circle (1.5cm);
+\draw (6.,0.)-- (5.070163695513291,-1.177032050055775);
+\draw (-0.16768672937624718,-0.17929489025913883) node[anchor=north west] {$x_0$};
+\draw (0.15,0.5) node[anchor=north west] {$S^1$};
+\draw (-0.9155771237543788,-1.3) node[anchor=north west] {$x_1$};
+\draw (6.033004540376989,0.13345927466262644) node[anchor=north west] {$x_0$};
+\draw (4.836379909371979,-1.3) node[anchor=north west] {$x_1$};
+\draw (5.652260339602668,-0.42405901932834644) node[anchor=north west] {$\gamma$};
+\draw (9.5,-0.42405901932834644) node[anchor=north west] {$\gamma$};
+\draw (1.7360342744953605,-0.02971681138351197) node[anchor=north west] {$\text{deformación a}$};
+\draw [->] (6.071929341419882,1.4982743973794994) -- (5.901274342189669,1.4967475553646037);
+\draw [->] (6.,-1.5) -- (6.146625481272907,-1.4928164549741165);
+\draw (5.910622475842386,-1.5118995929692691) node[anchor=north west] {$a$};
+\draw (5.842632439989829,1.9827882498521952) node[anchor=north west] {$a$};
+\draw (7.6,0.4326154324138802) node[anchor=north west] {$\cong Y\equiv$};
+\draw (9.5,-1.5)-- (9.5,0.);
+\draw(9.5,1.) circle (1.cm);
+\draw [->] (9.58738738655073,1.9961744047463943) -- (9.5,2.);
+\draw (9.473300354516395,1.9) node[anchor=north west] {$a$};
+\draw (9.60928042622151,-1.3215274925821077) node[anchor=north west] {$x_0$};
+\draw (9.622878433392023,0.09266525315109184) node[anchor=north west] {$x_1$};
+\begin{scriptsize}
+\draw [fill=black] (1.5,0.) circle (1.5pt);
+\draw [fill=black] (-0.17039989202214118,-0.20950806396164895) circle (2.5pt);
+\draw [fill=black] (-0.8549582108626596,-1.232496027449387) circle (2.5pt);
+\draw [fill=black] (6.,0.) circle (2.5pt);
+\draw [fill=black] (4.5,0.) circle (1.5pt);
+\draw [fill=black] (5.070163695513291,-1.177032050055775) circle (2.5pt);
+\draw [fill=black] (7.5,0.) circle (1.5pt);
+\draw [fill=black] (9.5,-1.5) circle (2.5pt);
+\draw [fill=black] (9.5,0.) circle (2.5pt);
+\draw [fill=black] (-1.5,0.) circle (1.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+
+Como se puede observar, $\pi_1(Y,x_0)\cong\Z$ está generado por la clase del lazo $\gamma*\alpha^a*\overline{\gamma}$, donde $\alpha^a$ es la vuelta canónica de la circunferencia $a$. Por tanto, como la inclusión $k\func{Y}{X_2}$ induce un isomorfismo $\pi_1(Y,x_0)\cong\pi_1(X_2,x_0)$, tenemos que $\pi_1(X_2,x_0)\cong\Z$ generado por la clase $\varepsilon_2$ del lazo $\gamma*\alpha^a*\overline{\gamma}$ en $\pi_1(X_2,x_0)$. Del teorema \ref{SVK} de Seifert-Van Kampen obtenemos el siguiente diagrama
+
+\[
+\begin{tikzcd}
+\pi_1(X_1\cap X_2,x_0)=\langle \varepsilon_0|\ \rangle \ar[r, "i_1*"]\arrow[d,"i_2*"'] & \pi_1(X_1,x_0)=\{1\}=\langle\ |\ \rangle\arrow[d,dashed,"j_1*"]\\
+\pi_1(X_2,x_0)=\langle \varepsilon_2|\ \rangle\arrow[r,dashrightarrow,"j_2*"'] & \pi_1(X,x_0)
+\end{tikzcd}
+\]
+
+Como $i_{1*}(\varepsilon_0)=1$, solo tenemos que calcular $i_{2*}(\varepsilon_0)$, que nos da
+\[
+i_{2*}(\varepsilon_0)=[i_2\circ\alpha^0]=[\gamma*\alpha^a*\alpha^a*\overline{\gamma}]=[\gamma*\alpha^a*\overline{\gamma}*\gamma*\alpha^a*\overline{\gamma}]=\varepsilon_2\varepsilon_2=\varepsilon_2^2
+\]
+
+Esto quiere decir que $\pi_1(X,x_0)=\langle\varepsilon|\varepsilon^{-2}\rangle =\langle\varepsilon|\varepsilon^{2}\rangle\cong\Z_2$, donde $\varepsilon=j_{2*}(\varepsilon_2)$ es la clase de $\gamma*\alpha^a*\overline{\gamma}$ en $\pi_1(X,x_0)$. Si deshacemos el cambio de punto base, 
+tenemos  $\pi_1(X,x_1)=\langle\eta|\eta^{2}\rangle$, donde $\eta$ es la clase de $\alpha^a$, la vuelta canónica de la circunferencia $a$.
+
+Usando el mismo razonamiento que para el plano proyectivo llegaríamos a que el grupo fundamental del sombrero bobo es de la forma $\langle a\mid aa^{-1}a\rangle\cong\langle a\mid a\rangle\cong\langle\mid\rangle$.
+\end{sol*}
+
+\newpage
+
 \begin{exercise}
 
 Calcula el grupo fundamental de de cualquier superficie compacta sin borde.
 
 \end{exercise}
+\begin{sol*}
+Por el teorema de clasificación de superficies sabemos que solo existen dos tipos de superficies compactas sin borde. Dentro de las del tipo I (orientables) tratamos la esfera aparte, pues ya sabemos que $\pi_1(S^1)\cong\{1\}$. Calculemos pues el grupo fundamental de una superficie orientable arbitraria.\
+
+Sea $S$ una superficie de tipo I. Recordemos que estas superficies vienen representadas por un modelo que tiene el código $a^{}_1b^{}_1a^{-1}_1b^{-1}_1\dots a^{}_nb^{}_na^{-1}_nb^{-1}_n$. Esto es, $S$ está representada por la identificación de los lados de un polígono regular de $4n$ lados de acuerdo con el siguiente gráfico:
+
+\definecolor{zzttqq}{rgb}{0.6,0.2,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-1.5,-0.85) rectangle (8,3.4);
+\draw (4.,3.)-- (5.5,3.);
+\draw (5.5,3.)-- (6.5,2.);
+\draw (6.5,2.)-- (6.5,0.5);
+\draw (6.5,0.5)-- (5.5,-0.5);
+\draw (4.,3.)-- (3.,2.);
+\draw (3.,2.)-- (3.,0.5);
+\draw [dash pattern=on 2pt off 2pt] (3.,0.5)-- (5.5,-0.5);
+\draw(4.8,1.4) circle (0.6027172390626455cm);
+\draw (4.405738478652503,1.8558792856097492)-- (4.,3.);
+\draw [->] (4.,3.) -- (4.8,3.);
+\draw [->] (5.5,3.) -- (6.,2.5);
+\draw [->] (6.5,0.5) -- (6.5,1.1957501053417074);
+\draw [->] (5.5,-0.5) -- (6.,0.);
+\draw [->] (4.,3.) -- (3.5,2.5);
+\draw [->] (3.,2.) -- (3.,1.2);
+\draw [dash pattern=on 2pt off 2pt] (4.8,1.4) circle (1cm);
+\draw (4.55,1.5838433463488795) node[anchor=north west] {$A$};
+\draw (3.414187200315089,0.8683484392203448) node[anchor=north west] {$B$};
+\draw (1,1.7) node[anchor=north west] {\large{$S\ \equiv$}};
+\draw (2.35,1.5) node[anchor=north west] {$a_n$};
+\draw (3.,3) node[anchor=north west] {$b_n$};
+\draw (4.7,3.35) node[anchor=north west] {$a_1$};
+\draw (6.048151968315743,2.8025434628864936) node[anchor=north west] {$b_1$};
+\draw (6.622120410297976,1.387278811423458) node[anchor=north west] {$a_2$};
+\draw (6.142502945079946,-0.04371100283361169) node[anchor=north west] {$b_2$};
+\draw (4.2,2.78681830009246) node[anchor=north west] {$\gamma$};
+\draw (5.25,1.552393020760812) node[anchor=north west] {$S^1$};
+\draw (4.4284602005302665,1.8904840208325373) node[anchor=north west] {$x_0$};
+\begin{scriptsize}
+\draw [fill=black] (4.405738478652503,1.8558792856097492) circle (2.5pt);
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.1](3,0.5)--(3.,2.) -- (4,3)--(5.5,3)--(6.5,2)-- (6.5,0.5)--(5.5,-0.5)--cycle;
+
+
+\end{scriptsize}
+\end{tikzpicture}
+
+Procedemos de manera similar a los ejemplo del capítulo anterior: descomponemos $S$ como la unión $S=A\cup B$ donde $A$ es un disco abierto, por lo que es contráctil, esto es, $\pi_1(A,x_0)=\{1\}$, y $B$ es $S$ menos un disco cerrado contenido en $A$. En particular, $B$ se retrae al siguiente grafo:
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-3,0.5) rectangle (6.393300959292774,3.2);
+\draw [rotate around={-12.485467490857165:(1.6364672736480006,2.086385207554635)}] (1.6364672736480006,2.086385207554635) ellipse (0.4955243419426075cm and 0.13041747704333986cm);
+\draw [rotate around={86.157546872085:(2.173228013337387,2.4831214064554827)}] (2.173228013337387,2.4831214064554827) ellipse (0.46750069112046705cm and 0.1344452240202966cm);
+\draw [shift={(2.2965829659368096,2.189736654327123)},dash pattern=on 2pt off 2pt]  plot[domain=-0.020405330686538825:1.4601391056210007,variable=\t]({1.*0.6535839211181232*cos(\t r)+0.*0.6535839211181232*sin(\t r)},{0.*0.6535839211181232*cos(\t r)+1.*0.6535839211181232*sin(\t r)});
+\draw [rotate around={1.1708850280784644:(2.58494704784979,1.9915168803910728)}] (2.58494704784979,1.9915168803910728) ellipse (0.4223626584291288cm and 0.07777723849776252cm);
+\draw [rotate around={-64.02560603756869:(2.3199203894015676,1.5529583855030706)}] (2.3199203894015676,1.5529583855030706) ellipse (0.4572702113179464cm and 0.14432623016288876cm);
+\draw (2.1432227545969864,1.9963694313334333)-- (1.,1.);
+\draw (1.2,2.6) node[anchor=north west] {$a_1$};
+\draw (1.6,2.9298663699236602) node[anchor=north west] {$b_1$};
+\draw (2.812673416271692,1.9430267491282782) node[anchor=north west] {$a_n$};
+\draw (2.6259740285536464,1.4829461151088095) node[anchor=north west] {$b_n$};
+\draw (1.0723684093284844,0.996194139986763) node[anchor=north west] {$x_0$};
+\draw (1.645802243033909,1.4162677623523647) node[anchor=north west] {$\gamma$};
+\draw (-0.3,2.2) node[anchor=north west] {\large{$L\equiv$}};
+\draw [->] (1.35,2.2308648946743626) -- (1.45,2.2512894804092745);
+\draw [->] (2.099185545523773,2.8155770684977686) -- (2.0664202368358655,2.6958193007182714);
+\draw [->] (2.8,1.92) -- (2.7,1.925);
+\draw [->] (2.539517043578322,1.3753231851333148) -- (2.5,1.5);
+\begin{scriptsize}
+\draw [fill=black] (2.1432227545969864,1.9963694313334333) circle (2.0pt);
+\draw [fill=black] (1.,1.) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+
+Por otro lado, $A\cap B$ se retrae con deformación fuerte a la circunferencia $S^1$. Sea $\varepsilon$  la clase de la vuelta canónica de $S^1$. Sea $k_*\func{\pi_1(L,x_0)}{\pi_1(B,x_0)}$ el isomorfismo inducido por la inclusión $k\func{L}{B}$. Sabemos que $\pi_1(L,x_0)$ es el grupo libre engendrado por las clases de los lazos $\gamma*a_i*\overline{\gamma}$ y $\gamma*b_i*\overline{\gamma}$, donde $a_i$ y $b_i$ son las vueltas canónicas indicadas de la misma manera.  Por tanto las clases, que denotamos $\alpha'_i$ y $\beta'_i$ respectivamente, de esos mismos lazos en $B$ generan $\pi_1(B,x_0)$. Tenemos el siguiente diagrama
+\[
+\begin{tikzcd}
+\pi_1(A\cap B,x_0)=\langle\varepsilon|\ \rangle \ar[r, "i_{1*}"]\arrow[d,"i_{2*}"'] & \pi_1(A,x_0)=\{1\}\arrow[d, dashed, "j_{1*}"]\\
+\pi_1(B,x_0)=\langle \alpha'_1,\beta'_1,\dots,\alpha'_n,\beta'_n| \rangle\arrow[r,dashed,"j_{2*}"'] & \pi_1(S,x_0)
+\end{tikzcd}
+\]
+Como se ha hecho repetidas veces ya, en este diagrama se comprueba que $i_{2*}(\varepsilon)=[\alpha'_1,\beta'_1]\cdots[\alpha'_n,\beta'_n]$, donde $[\alpha'_i,\beta'_i]$ indica la relación de conmutación. Además, como $i_{1*}(\varepsilon)=1$, usando el teorema de Seifert-Van Kampen, se llega a 
+\[
+\pi_1(S,x)=\langle \alpha_1,\beta_1,\dots,\alpha_n,\beta_n|[\alpha_1,\beta_1]\cdots[\alpha_n,\beta_n]\rangle,
+\]
+donde $\alpha_i=j_{2*}(\alpha'_i)$ y $\beta_i=j_{2*}(\beta'_i)$ son las clases de los lazos  $\gamma*a_i*\overline{\gamma}$ y $\gamma*b_i*\overline{\gamma}$ en $X$. Ahora, al abelianizar la relación del grupo, que es un producto de conmutadores, sevuelve trivial y nos queda el grupo abeliano libre
+\begin{gather*}
+(\pi_1(S,x))^{ab}=\langle \alpha_i, \beta_i|[\alpha_i,\beta_i],[\alpha_i,\beta_j],\ 1\leq i, j\leq n\rangle=\\
+\langle \alpha_i, \beta_i|[\alpha_i,\beta_j],\ 1\leq i, j\leq n\rangle\cong\Z\underbrace{\times\cdots\times}_{2n\ veces}\Z.
+\end{gather*}
+
+Vamos ahora con el otro tipo. Una superficie $S$ de tipo II viene representada por el código $a_1 a_1 a_2 a_2\dots a_n a_n$. Esto es, $S$ es el resultado de identificar los lados de un polígono de $2n$ lados de acuerdo con el siguiente gráfico:
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-1.5,-0.85) rectangle (8,3.4);
+\draw (4.,3.)-- (5.5,3.);
+\draw (5.5,3.)-- (6.5,2.);
+\draw (6.5,2.)-- (6.5,0.5);
+\draw (6.5,0.5)-- (5.5,-0.5);
+\draw (4.,3.)-- (3.,2.);
+\draw (3.,2.)-- (3.,0.5);
+\draw [dash pattern=on 2pt off 2pt] (3.,0.5)-- (5.5,-0.5);
+\draw(4.8,1.4) circle (0.6027172390626455cm);
+\draw (4.405738478652503,1.8558792856097492)-- (4.,3.);
+\draw [->] (4.,3.) -- (4.8,3.);
+\draw [->] (5.5,3.) -- (6.,2.5);
+\draw [->] (6.5,1.5) -- (6.5,1.);
+\draw [->] (6.5,0.5) -- (6.,0.);
+\draw [->] (3.,2) -- (3.5,2.5);
+\draw [->] (3.,1.) -- (3.,1.5);
+\draw [dash pattern=on 2pt off 2pt] (4.8,1.4) circle (1cm);
+\draw (4.55,1.5838433463488795) node[anchor=north west] {$A$};
+\draw (3.414187200315089,0.8683484392203448) node[anchor=north west] {$B$};
+\draw (1,1.7) node[anchor=north west] {\large{$S\ \equiv$}};
+\draw (2.35,1.5) node[anchor=north west] {$a_n$};
+\draw (3.,3) node[anchor=north west] {$a_n$};
+\draw (4.7,3.35) node[anchor=north west] {$a_1$};
+\draw (6.048151968315743,2.8025434628864936) node[anchor=north west] {$a_1$};
+\draw (6.622120410297976,1.387278811423458) node[anchor=north west] {$a_2$};
+\draw (6.142502945079946,-0.04371100283361169) node[anchor=north west] {$a_2$};
+\draw (4.2,2.78681830009246) node[anchor=north west] {$\gamma$};
+\draw (5.25,1.552393020760812) node[anchor=north west] {$S^1$};
+\draw (4.4284602005302665,1.8904840208325373) node[anchor=north west] {$x_0$};
+\begin{scriptsize}
+\draw [fill=black] (4.405738478652503,1.8558792856097492) circle (2.5pt);
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.1](3,0.5)--(3.,2.) -- (4,3)--(5.5,3)--(6.5,2)-- (6.5,0.5)--(5.5,-0.5)--cycle;
+\end{scriptsize}
+\end{tikzpicture}
+
+Como en el caso anterior, escribimos $S=A\cup B$, donde $A$ es un disco abierto, por lo que es contráctil, esto es, $\pi_1(A,x_0)=\{1\}$, y $B$ es $S$ menos un disco cerrado contenido en $A$, por lo que $B$ se retrae al siguiente grafo:
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-3,0.5) rectangle (6.393300959292774,3.2);
+\draw [rotate around={-12.485467490857165:(1.6364672736480006,2.086385207554635)}] (1.6364672736480006,2.086385207554635) ellipse (0.4955243419426075cm and 0.13041747704333986cm);
+\draw [rotate around={86.157546872085:(2.173228013337387,2.4831214064554827)}] (2.173228013337387,2.4831214064554827) ellipse (0.46750069112046705cm and 0.1344452240202966cm);
+\draw [shift={(2.2965829659368096,2.189736654327123)},dash pattern=on 2pt off 2pt]  plot[domain=-0.020405330686538825:1.4601391056210007,variable=\t]({1.*0.6535839211181232*cos(\t r)+0.*0.6535839211181232*sin(\t r)},{0.*0.6535839211181232*cos(\t r)+1.*0.6535839211181232*sin(\t r)});
+\draw [rotate around={1.1708850280784644:(2.58494704784979,1.9915168803910728)}] (2.58494704784979,1.9915168803910728) ellipse (0.4223626584291288cm and 0.07777723849776252cm);
+\draw [rotate around={-64.02560603756869:(2.3199203894015676,1.5529583855030706)}] (2.3199203894015676,1.5529583855030706) ellipse (0.4572702113179464cm and 0.14432623016288876cm);
+\draw (2.1432227545969864,1.9963694313334333)-- (1.,1.);
+\draw (1.2,2.6) node[anchor=north west] {$a_1$};
+\draw (1.6,2.9298663699236602) node[anchor=north west] {$a_2$};
+\draw (2.812673416271692,1.9430267491282782) node[anchor=north west] {$a_{n-1}$};
+\draw (2.6259740285536464,1.4829461151088095) node[anchor=north west] {$a_n$};
+\draw (1.0723684093284844,0.996194139986763) node[anchor=north west] {$x_0$};
+\draw (1.645802243033909,1.4162677623523647) node[anchor=north west] {$\gamma$};
+\draw (-0.3,2.2) node[anchor=north west] {\large{$L\equiv$}};
+%\draw [->] (1.35,2.2308648946743626) -- (1.45,2.2512894804092745);
+%\draw [->] (2.,2.9) -- (2.1,3);
+%\draw [->] (2.8,1.92) -- (2.7,1.925);
+%\draw [->] (2.539517043578322,1.3753231851333148) -- (2.5,1.5);
+\begin{scriptsize}
+\draw [fill=black] (2.1432227545969864,1.9963694313334333) circle (2.0pt);
+\draw [fill=black] (1.,1.) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+
+Por otro lado, $A\cap B$ se retrae con deformación fuerte a la circunferencia $S^1$. Sean $\alpha'_i=\gamma_\sharp[a_i]$ las clases de los lazos $\gamma*a_i*\overline{\gamma}$ ya vistos en $B$, que al representar generadores de $\pi_1(L,x_0)$ también son representantes de generadores de $\pi_1(B,x_0)$. Tenemos el siguiente diagrama, donde $\varepsilon$ la clase de la vuelta canónica de $S^1$ en $A\cap B$,
+\[
+\begin{tikzcd}
+\pi_1(A\cap B,x_0)=\langle\varepsilon|\ \rangle \ar[r, "i_{1*}"]\arrow[d,"i_{2*}"'] & \pi_1(A,x_0)=\{1\}\arrow[d, dashed, "j_{1*}"]\\
+\pi_1(B,x_0)=\langle \alpha'_1,\dots,\alpha'_n|\ \rangle\arrow[r,dashed,"j_{2*}"'] & \pi_1(S,x_0)
+\end{tikzcd}
+\]
+Se tiene que $i_{1*}(\varepsilon)=1$ y $i_{2*}(\varepsilon)=\alpha'_1\alpha'_1\cdots\ \alpha_n'\alpha_n'={\alpha'}_1^2\cdots\ {\alpha'}_n^2$, así que sin más que aplicar el teorema de Seifert-Van Kampen obtenemos
+
+\[
+\pi_1(S,x_0)=\langle\alpha_1,\dots,\alpha_n|\alpha_1^2\cdots\ \alpha_n^2\rangle,
+\]
+donde $\alpha_i=j_{2*}(\alpha'_i)$ son las clases de los lazos $\gamma*a_i*\overline{\gamma}$ en $X$. Ahora, abelianizando
+\[
+(\pi_1(S,x))^{ab}=\langle\alpha_i|\alpha_1^2\cdots\ \alpha_n^2,\ [\alpha^{}_i,\alpha^{}_j]\ 1\leq i, j\leq n \rangle.
+\]
+Si ahora llamamos $\beta_i=\alpha_i$ para $1\leq i\leq n-1$ y $\beta_n=\alpha_1\cdots\ \alpha_n$ nos queda
+\[
+(\pi_1(S,x))^{ab}=\langle\beta_i|[\beta^{}_i,\beta^{}_j],\ \beta^2_n,\ 1, i\leq j\leq n-1\rangle\cong\Z\underbrace{\times\cdots\times}_{n-1\ veces}\Z\times\Z_2
+\]
+\end{sol*}
+
+\newpage
 
 \begin{exercise}
 
 Calcula el grupo fundamental del toro menos un disco.
 
 \end{exercise}
+\begin{sol*}
+El toro menos un disco se retrae con deformación sobre $S^1\vee S^1$, por lo que su grupo fundamental es isomorfo a $\Z*\Z$.
+\end{sol*}
+
+\newpage
 
 \begin{exercise}
 
 Calcula el grupo fundamental del toro con una membrana.
 
 \end{exercise}
+\begin{sol*}
+\end{sol*}
+
+\newpage
 
 \begin{exercise}
 
 Calcula el grupo fundamental de la esfera $S^2$ con un di\'ametro.
 
 \end{exercise}
+\begin{sol*}
+\end{sol*}
+
+\newpage
 
 \begin{exercise}
 
 Sean $A$ un conjunto finito de puntos del plano, y $B$ un conjunto finito de puntos del espacio. Calcula los grupos fundamentales de $\mathbb{R}^2\setminus A$ y $\mathbb{R}^3\setminus B$.
 
 \end{exercise}
+\begin{sol*}
+Sean $n=|A|$ y $m=|B|$ los cardinales correspondientes. Tenemos que $\mathbb{R}^2\setminus A$ se retrae sobre la suma puntual de $n$ copias de $S^1$, por lo su grupo fundamental es el producto libre de $n$ copias de $\Z$. En el segundo caso. $\mathbb{R}^3\setminus B$ se retrae sobre la suma puntual de $m$ copias de $S^2$, por lo que, generalizando el ejercicio \ref{2}, se tiene que su grupo fundamental es trivial.
+\end{sol*}
+
+\newpage
 
 \begin{exercise}
 
@@ -231,7 +667,10 @@ Calcula el grupo fundamental de los siguientes espacios:
 
 \end{exercise}
 
+\begin{sol*}
+\end{sol*}
 
+\newpage
 
 \begin{exercise}
 
@@ -241,23 +680,40 @@ Calcular el grupo fundamental de la uni\'on puntual de un toro con la uni\'on pu
 
 \end{exercise}
 
+\begin{sol*}
+\end{sol*}
+
+\newpage
 
 \begin{exercise}
 
 Dados dos toros por las identificaciones $aba^{-1}b^{-1}$ y $cdc^{-1}d^{-1}$, calcular el grupo fundamental del cociente de la uni\'on disjunta de esos toros por la identificaci\'on $a=c$.
 
 \end{exercise}
+\begin{sol*}
+\end{sol*}
+
+\newpage
 
 \begin{exercise}
 
 Consideramos el subespacio $Y$ de $\mathbb{R}^2$ dado por la uni\'on de $X=\{(x,\textrm{sen }1/x);0<x\leq 1\}$ y un arco entre $(0,-1)$ y $(1,0)$ disjunto con $X$. Calcular el grupo fundamental de $Y$.
 
 \end{exercise}
+\begin{sol*}
+En primer lugar podemos retraer el arco sobre el $(0,0)$ con deformación. Cualquier camino que empiece en el $(0,0)$ debe ser constante puesto que el espacio no es conexo por caminos. Por otra parte, $X$ es homeomorfo al intervalo $(0,+\infty)$ mediante el homeomorfismo $x\mapsto\textrm{sen }1/x$, por lo que es contráctil. Así que $\pi_1(Y)\cong\{1\}$.
+\end{sol*}
+
+\newpage
 
 \begin{exercise}
 Se sabe que las identificaciones del pr\'{\i}metro de  un pol\'{\i}gono de diez lados dadas por los c\'odigos $abcb^{-1}daec^{-1}e^{-1}d^{-1}$ y $abcbdaece^{-1}d^{-1}$ son
 superficies. Determinar sus grupos fundamentales. A partir de la abelianizaci\'on de los mismos determinar el modelo de cada superficie.
 \end{exercise}
+\begin{sol*}
+\end{sol*}
+
+\newpage
 
 \begin{exercise}
 Usar el abelianizado del grupo fundamental para determinar qu\'e superficies son las representadas por los c\'odigos
@@ -265,10 +721,15 @@ $$
 a_1a_2\dots a_n a^{-1}_1a^{-1}_2\dots a^{-1}_{n-1}a_n \mbox{ y } a_1a_2\dots a_na^{-1}_1a^{-1}_2\dots a^{-1}_{n-1}a^{-1}_n.
 $$
 \end{exercise}
+\begin{sol*}
+\end{sol*}
+
+\newpage
 
 \begin{exercise}
 Determinar con la ayuda del grupo fundamental el modelo de la superficie dada por  el c\'odigo $abcd^{-1}ad^{-1}b^{-1}c^{-1}$.
 \end{exercise}
-
+\begin{sol*}
+\end{sol*}
 
 \end{document}
