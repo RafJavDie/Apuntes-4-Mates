@@ -1,0 +1,274 @@
+%\documentclass[12pt,a4paper,spanish]{amsart}
+%\usepackage[margin=1.5cm]{geometry}
+%%\usepackage[spanish]{babel}
+%%\usepackage[all]{xy}
+%%\CompileMatrices
+%%\OnlyOutlines
+%%\ShowOutlines
+%\usepackage{amsmath,amssymb,varioref,enumerate,showkeys}
+%%\usepackage{emlines2}
+%\usepackage[dvipsone]{graphicx}
+%\usepackage{epsfig}
+%%\usepackage{psfrag}
+%%\newdir{ >}{{}*!/-5pt/\dir{>}}
+%%\externaldocument{}
+%%begin numlast
+%\newcommand{\lga}{\longrightarrow}
+%\newcommand{\lgaf}{\longleftarrow}
+%\newcommand {\sub}{\subset}
+%\newtheorem{dummy}{realdumb}[section]
+%\newtheorem{theorem}[dummy]{Theorem}
+%\newtheorem{lemma}[dummy]{Lemma}
+%\newtheorem{corollary}[dummy]{Corollary}
+%\newtheorem{proposition}[dummy]{Proposition}
+%\newtheorem*{theoremun}{Theorem}
+%\newtheorem*{corollaryun}{Corollary}
+%\theoremstyle{definition}               %%Change Theoremstyle
+%\newtheorem{definition}[dummy]{Definition}
+%\newtheorem{conjecture}[dummy]{Conjecture}
+%\newtheorem{question}[dummy]{Question}
+%\newtheorem{example}[dummy]{Example}
+%%\newtheorem{nothing}[dummy]{Ejercicio}
+%\newtheorem{nothing}{Ejercicio}
+%%\theoremstyle{remark}
+%\newtheorem{remark}[dummy]{Remark}
+%\newenvironment{display}{\refstepcounter{dummy} $$}%
+%{\leqno{\rm ({\thedummy})} $$} \numberwithin{equation}{dummy}
+%\theoremstyle{plain}
+%%end numlast
+%\DeclareMathOperator{\co}{co} \DeclareMathOperator{\Diag}{Diag}
+%\DeclareMathOperator{\Ar}{Ar} \DeclareMathOperator{\Hom}{Hom}
+%\DeclareMathOperator{\coker}{coker} \DeclareMathOperator{\im}{Im}
+%\DeclareMathOperator{\R}{\mathbb R}
+%\DeclareMathOperator{\N}{\mathbb N}
+%\newcommand{\loc}[2]{{\mathcal#1}^{-1}{\mathcal#2}}
+%\newcommand{\cat}[1]{\mathcal#1}
+%\newcommand{\scat}[1]{\overset{\sim}{\mathcal#1}}
+%\newcommand{\ccat}[2]{{\mathcal #1}^{\wedge #2}}
+%\newcommand{\complex}[1]{C({\mathcal#1})}
+%\newcommand{\ccomp}[2]{C\left({\mathcal#1}^{\wedge#2}\right)}
+%\newcommand{\quot}[2]{\left.{\mathcal#1}\!\right/\negmedspace{\mathcal#2}}
+%\newcommand{\cquot}[2]{C\left(\left.{\mathcal#1}\!\right/\negmedspace{\mathcal#2}\right)}
+%\newcommand{\ccquot}[3]{C\left(\left.
+%{\mathcal#1}^{\wedge#3}\right/\negmedspace{\mathcal#2}^{\wedge#3}\right)}
+%\newcommand{\qquot}[3]{{\mathcal#1}^{\wedge#3}\negmedspace
+%\left.\right/\negmedspace{\mathcal#2}^{\wedge#3}}
+%\title{Geometr\'{\i}a y Topolog\'{\i}a de Superficies 2016/17\\ Relaci\'on 6.}
+\documentclass{article}
+\usepackage{amsmath,accents}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{amsthm}
+\usepackage{nccmath}
+\usepackage[spanish]{babel}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{tikz-cd}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{cd}
+\usetikzlibrary{babel}
+\theoremstyle{plain}
+\hypersetup{colorlinks=true,citecolor=red, linkcolor=blue}
+
+\renewcommand{\baselinestretch}{1,4}
+\setlength{\oddsidemargin}{0.5in}
+\setlength{\evensidemargin}{0.5in}
+\setlength{\textwidth}{5.4in}
+\setlength{\topmargin}{-0.25in}
+\setlength{\headheight}{0.5in}
+\setlength{\headsep}{0.6in}
+\setlength{\textheight}{8in}
+\setlength{\footskip}{0.75in}
+
+\theoremstyle{definition}
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{propi}[theorem]{Propiedades}
+\newtheorem{condition}{Condition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{coro}[theorem]{Corolario}
+\newtheorem{criterion}{Criterion}
+\newtheorem{defi}[theorem]{Definición}
+\newtheorem{example}[theorem]{Ejemplo}
+\newtheorem{exercise}{Ejercicio}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{nota}[theorem]{Nota}
+\newtheorem{sol}{Solución}
+\newtheorem*{sol*}{Solución}
+\newtheorem{prop}[theorem]{Proposición}
+\newtheorem{remark}{Remark}
+
+\newtheorem{dem}[theorem]{Demostración}
+
+\newtheorem{summary}{Summary}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\ninf}[1]{\norm{#1}_\infty}
+\providecommand{\numn}[1]{\norm{#1}_1}
+\providecommand{\gabs}[1]{\left|{#1}\right|}
+\newcommand{\bor}[1]{\mathcal{B}(#1)}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\X}{\chi}
+\providecommand{\Zn}[1]{\Z / \Z #1}
+\newcommand{\resi}{\varepsilon_L}
+\newcommand{\cee}{\mathbb{C}}
+\providecommand{\conv}[1]{\overset{#1}{\longrightarrow}}
+\providecommand{\gene}[1]{\langle{#1}\rangle}
+\providecommand{\convcs}{\xrightarrow{CS}}
+% xrightarrow{d}[d]
+\setcounter{exercise}{0}
+\newcommand{\cicl}{\mathcal{C}}
+
+\begin{document}
+\title{Relación 6 - Geometría y Topología de superficies }
+\author{Javi, Rafa, Diego}
+\maketitle
+
+\begin{exercise}
+
+Calcula el grupo fundamental del cilindro $\mathbb{R}\times S^1$.
+
+\end{exercise}
+
+
+
+\begin{exercise}
+
+Calcula el grupo fundamental de la suma puntual de dos copias de $S^2$.
+
+\end{exercise}
+
+\begin{exercise}
+
+Calcula el grupo fundamental de la suma puntual de dos copias de $S^1$, y generaliza el resultado al caso de $n$ copias, para un $n$ cualquiera.
+
+\end{exercise}
+
+\begin{exercise}
+
+Calcula el grupo fundamental de la banda de Moebius, y tambi\'en el de la botella de Klein.
+
+\end{exercise}
+
+
+\begin{exercise}
+
+Calcula el grupo fundamental del \emph{sombrero bobo} (i.e. un tri\'angulo relleno con los lados identificados seg\'un la palabra $aa^{-1}a$), y del plano proyectivo real.
+
+\end{exercise}
+
+\begin{exercise}
+
+Calcula el grupo fundamental de de cualquier superficie compacta sin borde.
+
+\end{exercise}
+
+\begin{exercise}
+
+Calcula el grupo fundamental del toro menos un disco.
+
+\end{exercise}
+
+\begin{exercise}
+
+Calcula el grupo fundamental del toro con una membrana.
+
+\end{exercise}
+
+\begin{exercise}
+
+Calcula el grupo fundamental de la esfera $S^2$ con un di\'ametro.
+
+\end{exercise}
+
+\begin{exercise}
+
+Sean $A$ un conjunto finito de puntos del plano, y $B$ un conjunto finito de puntos del espacio. Calcula los grupos fundamentales de $\mathbb{R}^2\setminus A$ y $\mathbb{R}^3\setminus B$.
+
+\end{exercise}
+
+\begin{exercise}
+
+Calcula el grupo fundamental de los siguientes espacios:
+
+\begin{itemize}
+
+\item $\mathbb{R}^3$ menos una recta.
+
+\item $\mathbb{R}^3$ menos una circunferencia.
+
+\item $\mathbb{R}^3$ menos la uni\'on del eje OZ y la circunferencia unidad del eje $xy$.
+
+\item $\mathbb{R}^3$ menos la uni\'on puntual de dos circunferencias.
+
+\item $\mathbb{R}^3$ menos la uni\'on de dos circunferencias coplanarias disjuntas.
+
+\item $\mathbb{R}^3$ menos la uni\'on de dos circunferencias disjuntas pero engarzadas como eslabones.
+
+
+
+\end{itemize}
+
+\end{exercise}
+
+
+
+\begin{exercise}
+
+Calcular el grupo fundamental de la uni\'on puntual de un toro con la uni\'on puntual de dos circunferencias.
+
+
+
+\end{exercise}
+
+
+\begin{exercise}
+
+Dados dos toros por las identificaciones $aba^{-1}b^{-1}$ y $cdc^{-1}d^{-1}$, calcular el grupo fundamental del cociente de la uni\'on disjunta de esos toros por la identificaci\'on $a=c$.
+
+\end{exercise}
+
+\begin{exercise}
+
+Consideramos el subespacio $Y$ de $\mathbb{R}^2$ dado por la uni\'on de $X=\{(x,\textrm{sen }1/x);0<x\leq 1\}$ y un arco entre $(0,-1)$ y $(1,0)$ disjunto con $X$. Calcular el grupo fundamental de $Y$.
+
+\end{exercise}
+
+\begin{exercise}
+Se sabe que las identificaciones del pr\'{\i}metro de  un pol\'{\i}gono de diez lados dadas por los c\'odigos $abcb^{-1}daec^{-1}e^{-1}d^{-1}$ y $abcbdaece^{-1}d^{-1}$ son
+superficies. Determinar sus grupos fundamentales. A partir de la abelianizaci\'on de los mismos determinar el modelo de cada superficie.
+\end{exercise}
+
+\begin{exercise}
+Usar el abelianizado del grupo fundamental para determinar qu\'e superficies son las representadas por los c\'odigos
+$$
+a_1a_2\dots a_n a^{-1}_1a^{-1}_2\dots a^{-1}_{n-1}a_n \mbox{ y } a_1a_2\dots a_na^{-1}_1a^{-1}_2\dots a^{-1}_{n-1}a^{-1}_n.
+$$
+\end{exercise}
+
+\begin{exercise}
+Determinar con la ayuda del grupo fundamental el modelo de la superficie dada por  el c\'odigo $abcd^{-1}ad^{-1}b^{-1}c^{-1}$.
+\end{exercise}
+
+
+\end{document}
