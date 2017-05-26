@@ -730,6 +730,18 @@ Se sabe que las identificaciones del per\'{\i}metro de  un pol\'{\i}gono de diez
 superficies. Determinar sus grupos fundamentales. A partir de la abelianizaci\'on de los mismos determinar el modelo de cada superficie.
 \end{exercise}
 \begin{sol*}
+A estas alturas estamos capacitados para ver que el grupo fundamental de la primera superficie es $G=\langle a,b,c,d,e\mid abcb^{-1}daec^{-1}e^{-1}d^{-1}\rangle$ y el de la segunda $H=\langle a,b,c,d,e\mid abcbdaece^{-1}d^{-1}\rangle$. Ahora abelianizamos:
+\[
+G^{ab}=\langle a\mid a^2\rangle\cong\Z_2.
+\]
+Esto quiere decir que la primera superficie es un plano proyectivo. 
+\[
+H^{ab}=\langle a,b,c \mid (abc)^2,aba^{-1}b^{-1},aca^{-1}c^{-1},bcb^{-1}c^{-1}\rangle,
+\]
+Haciendo el cambio de generador $\gamma=abc$, obtenemos el grupo 
+\[
+H^{ab}=\langle a,b,\gamma|\gamma^2,aba^{-1}b^{-1},\gamma a\gamma^{-1}a^{-1},\gamma b\gamma^{-1}b^{-1}\rangle\cong\Z\times\Z\times\Z_2,
+\] por lo que se trata de la suma conexa de tres planos proyectivos.
 \end{sol*}
 
 \newpage
