@@ -741,16 +741,16 @@ superficies. Determinar sus grupos fundamentales. A partir de la abelianizaci\'o
 \begin{sol*}
 A estas alturas estamos capacitados para ver que el grupo fundamental de la primera superficie es $G=\langle a,b,c,d,e\mid abcb^{-1}daec^{-1}e^{-1}d^{-1}\rangle$ y el de la segunda $H=\langle a,b,c,d,e\mid abcbdaece^{-1}d^{-1}\rangle$. Ahora abelianizamos:
 \[
-G^{ab}=\langle a\mid a^2\rangle\cong\Z_2.
+G^{ab}=\langle a,b,c,d,e\mid a^2\rangle\cong\Z\times\Z\times\Z\times\Z\times\Z_2.
 \]
-Esto quiere decir que la primera superficie es un plano proyectivo. 
+Esto quiere decir que la primera superficie es la suma conexa de cinco planos proyectivos. 
 \[
-H^{ab}=\langle a,b,c \mid (abc)^2,aba^{-1}b^{-1},aca^{-1}c^{-1},bcb^{-1}c^{-1}\rangle,
+H^{ab}=\langle a,b,c,d,e \mid (abc)^2,aba^{-1}b^{-1},aca^{-1}c^{-1},bcb^{-1}c^{-1},\dots\rangle,
 \]
 Haciendo el cambio de generador $\gamma=abc$, obtenemos el grupo 
 \[
-H^{ab}=\langle a,b,\gamma|\gamma^2,aba^{-1}b^{-1},\gamma a\gamma^{-1}a^{-1},\gamma b\gamma^{-1}b^{-1}\rangle\cong\Z\times\Z\times\Z_2,
-\] por lo que se trata de la suma conexa de tres planos proyectivos.
+H^{ab}=\langle a,b,\gamma,d,e|\gamma^2,aba^{-1}b^{-1},\gamma a\gamma^{-1}a^{-1},\gamma b\gamma^{-1}b^{-1},\dots\rangle\cong\Z\times\Z\times\Z\times\Z\times Z_2,
+\] por lo que se trata también de la suma conexa de cinco planos proyectivos.
 \end{sol*}
 
 \newpage
@@ -762,7 +762,7 @@ a_1a_2\dots a_n a^{-1}_1a^{-1}_2\dots a^{-1}_{n-1}a_n \mbox{ y } a_1a_2\dots a_n
 $$
 \end{exercise}
 \begin{sol*}
-En el primer caso, además de las relaciones de abelianización, obtendríamos $a_n^2$, ya que el resto se cancelaría con su inverso, por lo que simplemente nos quedaría un grupo isomorfo a $\Z_2$. Esto quiere decir que la primera superficie es un plano proyectivo. En el segundo caso, tras abelianizar todos se cancelan, por lo que el grupo fundamental es trivial y esto significa que la superficie es una esfera.
+En el primer caso, además de las relaciones de abelianización, obtendríamos $a_n^2$, ya que el resto se cancelaría con su inverso, por lo que simplemente nos quedaría un grupo isomorfo a $\Z\times\Z\times\cdots\times\Z\times\Z_2$. Esto quiere decir que la primera superficie es la suma conexa de $n$ planos proyectivos. En el segundo caso, tras abelianizar todos se cancelan, por lo que el grupo fundamental es el grupo libre abeliano de $n$ generadores y esto significa que la superficie es una suma conexa de $n$ toros.
 \end{sol*}
 
 \newpage
@@ -771,6 +771,11 @@ En el primer caso, además de las relaciones de abelianización, obtendríamos $
 Determinar con la ayuda del grupo fundamental el modelo de la superficie dada por  el c\'odigo $abcd^{-1}ad^{-1}b^{-1}c^{-1}$.
 \end{exercise}
 \begin{sol*}
+Como se ha hecho ya varias veces, el grupo fundamental es $G=\langle a,b,c,d\mid abcd^{-1}ad^{-1}b^{-1}c^{-1}\rangle$. Vamos a abelianizarlo para reconocer la superficie. Obviaremos las relaciones de abelianización por comodidad.
+\[
+G^{ab}=\langle a,b,c,d\mid a^2(d^{-1})^2\rangle.
+\]
+La relación se puede escribir equialentemente como $a^2d^{-1}=d$, así que llamamos $\gamma= a^2d^{-1}$ y tenemos el grupo isomorfo $\langle \gamma,b,c,d\mid \gamma =d\rangle\cong\langle\gamma,b,c\mid\rangle\cong\Z\times\Z\times\Z$. Esto quiere decir que la superficie es la suma conexa de tres toros.
 \end{sol*}
 
 \end{document}
