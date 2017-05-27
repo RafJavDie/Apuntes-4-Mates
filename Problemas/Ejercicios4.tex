@@ -110,7 +110,11 @@ I\arrow[r,"\alpha"]\arrow[d,"\pi"'] & X\\
 S^1\arrow[ur,"\alpha\circ\pi^{-1}"']
 \end{tikzcd}
 \]
-Por lo que $f_\alpha=\alpha\circ\pi^{-1}$. Por otro lado, como $\alpha\sim\alpha'$ implica que la homotopía es relativa al $\{0,1\}$, en el cociente esto implica que es relativa a $[0]=[1]=(0,1)$. 
+Por lo que $f_\alpha=\alpha\circ\pi^{-1}$. Además, si vemos $\pi(x)=e^{2\pi i x}$ entonces
+\[
+f_\alpha((1,0))=\alpha\circ\pi^{-1}((1,0))=\alpha(\{0,1\})=x_0
+\]
+Por otro lado, si $\alpha\sim\alpha'$ entonces por propiedades de composición y homotopías se tiene $\alpha\circ\pi^{-1} \simeq \alpha'\circ\pi^{-1}$, luego $f_\alpha \simeq f_{\alpha'}$.
 \end{sol*}
 
 \vspace{0.1cm}
@@ -160,7 +164,7 @@ $\boxed{\Leftarrow}$ Tomando $x=x_0$ tenemos que todos los lazos son equivalente
 $i: A\to X$ induce un isomorfismo $i_*: \pi_1(A,x_0) \to \pi_1(X,x_0)$.
 \end{exercise}
 \begin{sol*}
-Sabemos por teoría que $i_*$ es homomorfismo, luego basta probar que es inyectivo y sobreyectivo. Veamos primero la sobreyectividad tomando un lazo $\alpha:I\to X$ basado en $x_0$. Como $x_0\in A$ y $A$ es la componente conexa por caminos de $x_0$ se sigue que la imagen de $\alpha$ está contenida en $A$. Por tanto denotemos $\alpha':I\to A$ a la restricción de $f$ sobre $A$. Entonces $[\alpha]=[i\circ \alpha']=i_*([\alpha'])$, por lo que $i_*$ es sobreyectiva. Para ver la inyectividad sea $[\alpha]\in \pi_1(A,x_0)$ tal que $i_*([\alpha])=1=[c_{x_0}]$. Por estar basado $\alpha$ en $x_0$ y ser $A$ su componente conexa por caminos tenemos que $\alpha\subset A$, por lo que $i_*([\alpha]=[i\circ\alpha]=[\alpha]$, así que $[\alpha]=[c_{x_0}]$ y por lo tanto $i_*$ es inyectiva, con lo que finaliza la prueba. 
+Sabemos por teoría que $i_*$ es homomorfismo, luego basta probar que es inyectivo y sobreyectivo. Veamos primero la sobreyectividad tomando un lazo $\alpha:I\to X$ basado en $x_0$. Como $x_0\in A$ y $A$ es la componente conexa por caminos de $x_0$ se sigue que la imagen de $\alpha$ está contenida en $A$. Por tanto denotemos $\alpha':I\to A$ a la restricción de $f$ sobre $A$. Entonces $[\alpha]=[i\circ \alpha']=i_*([\alpha'])$, por lo que $i_*$ es sobreyectiva. Para ver la inyectividad sea $[\alpha]\in \pi_1(A,x_0)$ tal que $i_*([\alpha])=1=[c_{x_0}]$. Por estar basado $\alpha$ en $x_0$ y ser $A$ su componente conexa por caminos tenemos que $\alpha\subset A$, por lo que $i_*([\alpha])=[i\circ\alpha]=[\alpha]$, así que $[\alpha]=[c_{x_0}]$ y por lo tanto $i_*$ es inyectiva, con lo que finaliza la prueba. 
 \end{sol*}
 
 \newpage 
@@ -181,7 +185,7 @@ Para el caso de $S^n$ para $n\geq 2$ podemos considerar $A=S^n\setminus\{(0,\dot
 Dar una familia infinita de espacios conexos por caminos simplemente conexos que no sean homeomorfos.
 \end{exercise}
 \begin{sol*}
-La familia de hiperesferas $\{S^n\}_{n\geq 2}$, que son simplemente conexas como se prueba en el apartado anterior y por el teorema de invariancia del dominio no son homeomorfas. 
+La familia $\{\R^n\}_{n\geq 1}$. Supongamos que sin pérdida de generalidad que $n>m$ y que existe un homeomorfismo $f:\R^n \to \R^m$ como $\R^m\times\{0,\dotsc,0\}$. Consideremos además la inclusión $i:\R^m \to \R^n$. Entonces $\mu :\R^n \to \R^n$ definida como $\mu = i\circ f$ es una función continua en inyectiva, luego, por el Teorema de Invarianza del Dominio sabemos que la imagen de $\mu$ debe ser un abierto de $\R^n$, que no es el caso.
 \end{sol*}
 
 \vspace{0.1cm}
