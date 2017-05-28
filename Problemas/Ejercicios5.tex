@@ -298,6 +298,20 @@ $\widetilde{h\circ \alpha_1}$, cumple, para $t\in [0,\frac{1}{2}]$, $\widetilde{
 
 \end{enumerate}
 \end{exercise}
+\begin{sol*}
+\begin{enumerate}
+\item[]
+\item Obviamente $h(-z) = e^{i\theta_0}f(-z) = -e^{i\theta_0}f(z) = -h(z)$. En particular, si $z=z(t)=e^{2\pi i t}$ y sea $t\in [0,\frac{1}{2}]$ entonces tengamos en cuenta que:
+\[
+\alpha(t) = e^{2\pi i t} = - e^{2\pi i t + \pi i} = -e^{2\pi i \left(t+\frac{1}{2}\right)}=-\alpha\left(t+\frac{1}{2}\right) 
+\]
+Por tanto, deducimos que:
+\[
+h\circ \alpha (t) = e^{i\theta_0}f(\alpha(t)) = e^{i\theta_0}f\left(-\alpha\left(t+\frac{1}{2}\right)\right) = -e^{i\theta_0}f\left(\alpha\left(t+\frac{1}{2}\right)\right)=-h\circ \alpha \left(t+\frac{1}{2}\right) 
+\]
+\item 
+\end{enumerate}
+\end{sol*}
 
 \newpage
 
@@ -315,7 +329,7 @@ Para probar  (1) $\Rightarrow$ (2) usar el recubrimiento de $S^1$ por los tres a
 (4) $\Rightarrow$ (1) usar la aplicaci\'on $f: S^2\to \mathbb{R}^2$ dada por $f(x) = (d(x,A_1), d(x,A_2))$.
 \end{exercise}
 \begin{sol*}
-$\boxed{(1) \Rightarrow (2)}$ Lo probamos por reducción al absurdo. Supongamos que $\exists f:S^1\to S^1$ tal que $f(-x)=-f(x)$. Vamos a considerar el recubrimiento indicado en el enunciado y llamamos a cada arco $B_1$, $B_2$ y $B_3$ respectivamente. Denotamos $A_i=f^{-1}(B_i)\ i=1,2,3$. Si $A_i$ contiene puntos antipodales, entonces $f(A_i)$ también, pero $B_i$ no contiene puntos antipodales, con lo que hemos llegado a contradicción.\\
+$\boxed{(1) \Rightarrow (2)}$ Por reducción al absurdo, supongamos que $\exists f:S^2\to S^1$ tal que $f(-x)=-f(x)$. Vamos a considerar el recubrimiento indicado en el enunciado y llamamos a cada arco $B_1$, $B_2$ y $B_3$ respectivamente. Denotamos $A_i=f^{-1}(B_i)\ i=1,2,3$. Si $A_i$ contiene puntos antipodales, entonces $f(A_i)$ también, pero $B_i$ no contiene puntos antipodales, con lo que hemos llegado a contradicción.\\
 $\boxed{(2) \Rightarrow (3)}$ Razonamos por reducción al absurdo. Sea $f: S^1\to S^1$ preservando puntos antipodales y supongamos que es homotópicamente trivial. Por un ejercicio de la relación anterior, $f$ se extiende de forma continua a $g:B^2 \to S^1$. Podemos identificar $B^2$ con una semiesfera, de modo que en la otra semiesfera definimos $g'(x)=-g(-x)$. Consideremos $x\in S^1$, entonces
 \[ g'(x)=-g(-x)=-f(-x)=f(x).\]
 Por lo aplicación $g\cup g' :S^2\to S^1$ preserva puntos antipodales y hemos llegado a una contradicción.\\
