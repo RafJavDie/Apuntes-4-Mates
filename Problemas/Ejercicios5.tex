@@ -185,11 +185,23 @@ Dada una aplicaci\'on $f: S^1\to S^1$, se llama \emph{grado} de $f$ al entero $g
 \item Probar que $grad(f)$ no depende de la clase de homotop\'{\i}a de $f$.
 \item Probar $grad(g\circ f) = grad(g) \ grad(f)$.
 \item Si $\widetilde{\beta}: I \to \mathbb{R}$ es la elevaci\'on del lazo en $z_0$ $\beta: I \to S^1$, entonces  $grad(\beta)$ es el
-entero que cumple $\widetilde{\beta}(1) = 2grad(\beta) \pi$; es decir el grado de $\beta$ tal y como se defini\'o en el tema sobre el c\'alculo del grupo fundamental de $S^1$.
-\item Probar que dado $0\leq \theta_0 \leq 2\pi$, la aplicaci\'on (giro de \'angulo $\theta_0$) $g: S^1\to S^1$ dada por $g(z) =  e^{i\theta_0}z$ es homot\'opica a la identidad.
+entero que cumple $\widetilde{\beta}(1) = grad(\beta)$; es decir el grado de $\beta$ tal y como se defini\'o en el tema sobre el c\'alculo del grupo fundamental de $S^1$.
+\item Probar que dado $0\leq \theta_0 < 2\pi$, la aplicaci\'on (giro de \'angulo $\theta_0$) $g: S^1\to S^1$ dada por $g(z) =  e^{i\theta_0}z$ es homot\'opica a la identidad.
     \item Usar el apartado anterior para probar que el grado de cualquier aplicaci\'on $f: S^1\to S^1$ es igual al del lazo en $z_0$ $e^{i\theta_0}f$ donde $z_0 = e^{i\theta_0} f(z_0)$.
+
 \end{enumerate}
 \end{exercise}
+\begin{sol*}
+\begin{enumerate}
+\item Si $g\sim f$, entonces $g_*(\varepsilon_0)=[g\circ\alpha_1]=[f\circ\alpha_1]=f_*(\varepsilon_0)$.
+\item Sean $n=grad(f)$ y $m=grad(g)$, entonces $$(g\circ f)_*(\varepsilon)=g_*f_*(\varepsilon_0)=g_*(n\varepsilon_0)=ng_*(\varepsilon_0)=nm=grad(f)grad(g).$$
+\item En este caso tenemos el generador $\varepsilon_{\beta(z_0)}=\varepsilon_0$. Entonces, con esta nueva definición de grado tenemos que $\beta_*(\varepsilon_0)=n\varepsilon_0=[e^{2\pi n it}]$. Componer $\beta$ con $\alpha_1$ significa que por cada vuelta de $\alpha$ se da el número de vueltas que dé $\beta$ (salvo homotopía, viéndolo como una función de la forma $z^n$). Como $\alpha_1$ solo da una vuelta, significa que $\beta$ es homotópica a dar $n$ vueltas, y por tanto el $\beta(1)=n$. Por otra parte, si consideramos el grado definido en clase, tenemos que si $grad(\beta
+)=\tilde{\beta}(1)=n$, entonces $\beta\sim e^{2\pi n it}$, por lo que $\beta(\varepsilon_0)=n\varepsilon_0$. Por lo tanto ambas definiciones son equivalentes.
+\item Para comprobarlo veremos que $grad(g)=1$. $$g_*(\varepsilon_0)=[g\circ\alpha_1]=[e^{\theta_0 i}e^{2\pi i t}]=[e^{2\pi it +\theta_0 i}]$$ 
+Como $0\leq \theta_0 < 2\pi$, esta clase es la misma que la de $\alpha_1$, y por lo tanto tiene $g$ tiene grado 1.
+\item Cualquier aplicación continua $f:S^1\to S^1$ es homotópica a una de la forma $e^{2\pi k it}$ conde $k$ es el grado de $f$. Por tanto, el apartado anterior era un caso particular en el que $k=1$, pero se puede generalizar de forma análoga.
+\end{enumerate}
+\end{sol*}
 
 \newpage
 
@@ -288,7 +300,7 @@ Pero esto es una contradicción porque $f_{n*}\neq 0$, y $cte_*$ es el homomorfi
 
 \newpage
 
-\begin{exercise} \label{grado2} Sea ·$f: S^1\to S^1$ una aplicaci\'on tal que $f(-z) = -f(z)$ para todo $z\in S^1$. Se quiere demostrar que $grad(f)$ es impar.
+\begin{exercise} \label{grado2} Sea $f: S^1\to S^1$ una aplicaci\'on tal que $f(-z) = -f(z)$ para todo $z\in S^1$. Se quiere demostrar que $grad(f)$ es impar.
 \begin{enumerate}
 \item Probar que si $z_0 = e^{i\theta_0}f(z_0)$, entonces la aplicaci\'on $h = e^{i\theta_0}f(z)$ cumple tambi\'en $h(-z) = -h(z)$. En particular, para el lazo $\alpha_1(t) = e^{2\pi i t}$  se cumple que $h\circ \alpha_1(t+\frac{1}{2}) = -h \circ \alpha_1(t)$ para todo $t\in [0,\frac{1}{2}]$.
 
