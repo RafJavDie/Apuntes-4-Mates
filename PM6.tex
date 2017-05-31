@@ -41,7 +41,7 @@ f(x)\geq f(x^*)+\frac{\gamma}{2}||x-x^*||^2 \qquad \forall x\in S, ||x-x^2||<\de
 \]
 \end{theorem}
 \begin{dem}
-Una propiedad de las matrices definidas positivas, sabemos que $\exists \lambda>0$ y además $\forall d\in \R^n$, $d'\nabla^2 f(x^*) d\geq \lambda ||d||^2$. Sea $d\in \R^n$ entonces:
+Por las propiedades de las matrices definidas positivas, sabemos que $\exists \lambda>0$ -el menor autovalor de la matriz- tal que $\forall d\in \R^n$, $d'\nabla^2 f(x^*) d\geq \lambda ||d||^2$. Sea $d\in \R^n$ entonces:
 \begin{gather*}
 f(x^*+d)=f(x^*)+\nabla f(x^*)'d +\frac{1}{2}d'\nabla^2 f(x^*)d+O(||d||^2) \\
 f(x^*+d)-f(x) =  \frac{1}{2}d'\nabla^2 f(x^*)d+O(||d||^2) \geq  \frac{\lambda}{2}||d||^2 + O(||d||^2) = \frac{||d^2||}{2}\left(\lambda+\frac{O(||d||^2)}{||d||^2}\right)
@@ -76,12 +76,21 @@ Con condición de parada $x^{k+1}=x^k$, es decir, $\nabla f(x^k)=0$.
 \end{itemize}
 \item La longitud de paso $\alpha^k$.
 \begin{itemize}
-\item Serie divergente $\sum a_k$ tal que $a_k \rightarrow 0$.
+\item Serie divergente $\sum a_k$ tal que $a_k \rightarrow 0$. Tiene sentido pues, sabemos que si:
+\begin{gather*}
+x^{m+1} = x^m - \alpha^m \nabla f(x^{m})\\
+ x^{m+2} = x^{m+1} - \alpha^{m+1} \nabla f(x^{m+1}) =  x^m - \alpha^m \nabla f(x^{m}) -\alpha^{m+1} \nabla f(x^{m+1})\\
+\end{gather*}
+Si $m$ es lo suficientemente grande entonces $\forall n>m$, $x^n \simeq x^m \simeq x^*$ y
+\[
+x^* \simeq x^* - \sum^{n-1}_{k=m} \alpha^k \nabla f(x^*) \Rightarrow 0 \simeq \nabla f(x^*)\sum_{k=m}^\infty \alpha^k
+\]
+Como la serie diverge, concluimos que $\nabla f(x^*)=0$.
 \item Tomar $\alpha^k$ tal que $\alpha^k$ minimiza $f(x^k+\alpha d^k)$ (función de una variable real).
 \end{itemize}
 \end{enumerate}
 \subsection{Método de Newton generalizado}
-Si tenemos $g:\R^{n\times n}\to \R^n$ tratamos de resolver $g(x)0$. Si $\exists F\mid \nabla F = g$ entonces buscamos $\nabla F =0$, es decir, buscamos:
+Si tenemos $g:\R^{n}\times\R^{ n}\to \R^n$, $g=(g_1,\dotsc,g_n)$ con $g_i : \R^n \to \R$. Tratamos de resolver $g(x)=0$. Si $\exists F\mid \nabla F = g$ entonces buscamos $\nabla F =0$, es decir, buscamos:
 \[
 x^{k+1} =x^k - \alpha^k (\nabla^2 F(x^k))^{-1}\nabla F(x^k)
 \]
@@ -89,8 +98,8 @@ Si g no tiene primitiva podemos reemplazar los términos y :
 \[
 x^{k+1}=x^k-\alpha^k(\nabla g(x^k))^{-1} g(x)
 \]
-Se tomará $\alpha^k =1$ $\forall k$ (si $\nabla g(x^k)$ es definida positiva),
-
+Se tomará $\alpha^k =1$ $\forall k$ (si $\nabla g(x^k)$ es definida positiva).
+\newpage
 \begin{example}
 Considérese el problema
 \[ \min 5x^2+5y^2-xy-11x+11y+11 \]
