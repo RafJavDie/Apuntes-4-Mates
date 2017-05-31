@@ -1,0 +1,136 @@
+\documentclass[PM.tex]{subfiles}
+\begin{document}
+
+\chapter{Programación no lineal sin restricciones}
+Consideremos una funcion $f : \R^n \to \R$ continua diferenciable en nuestro dominio factible $D$. Estamos interesados en el formalismo (es decir, suponiendo que existe $\min$):
+\[ \min_{x \in \R^n} f(x)\]
+Diremos que $x^*$ es un mínimo local de $f$ en $E(x^*)$ (entorno abierto de $x^*$) si $f(x^*) ≤ f(x)$ $\forall x \in E(x^*)$.
+Supongamos que consideramos un punto $x^*$ y desarrollamos $f$ en un entorno del mismo:
+\[ f(x) = f(x^*) +  \nabla f(x^*)'(x-x^*) + O(||{x-x^*}||) \]
+con $\lim_{x \to x^*} \frac{O(||{x-x^*}||)}{||{x-x*}||} = 0$.
+
+Si $f \in C^2$, entonces:
+\[ f(x) = f(x^*) +  \nabla f(x^*)'(x-x^*) + \nabla^2 f O(||{x-x^*}||^2) \]
+con $\lim_{x \to x^*} \frac{O(||{x-x^*}||^2)}{||{x-x*}||^2} = 0$
+
+Podemos aproximar $f(x) \approx f(x^*) + \nabla f(x^*)'(x-x^*)$. Si $x^*$ es un mínimo local, entonces $\nabla f(x^*)'(x-x^*) ≥ 0$ para todo $x$ en un entorno de $x^*$. En particular, tomando puntos opuestos en el entorno, llegamos a que  $\nabla f(x^*) = 0$. Por otro lado, aproximando $f(x)$ por el desarrollo de orden 2, obtenemos que:
+\[ 0 ≤ f(x) - f(x^*) \approx \frac{1}{2}(x-x^*) \nabla^2 f(x^*) (x-x^*) \quad \forall x \in E(x^*)  \Rightarrow \nabla^2 f(x^*)\text{ es semidefinida positiva}\]
+
+\begin{theorem} Sea $x^*$ un mínimo local de $f \in C^1$, $S$ entorno abierto de $x^*$. Entonces $\nabla f(x^*) = 0$. Si $f \in C^2(S)$, entonces $\nabla^2 f(x^*)$ semidefinida positiva.
+\end{theorem}
+
+\begin{dem} Consideremos $d \in \R^n$ arbitraria con $||d||=1$. Definimos $g : \R \to \R$, $g(α) = f(x^* + α d)$. Como $x^*$ es un mínimo local, si $α > 0$ es suficiente pequeño: $0 ≤ f(x^*+αd)-f(x^*)$.
+\[ 0 ≤ \frac{f(x^*+αd)-f(x^*)}{α} \Rightarrow 0 ≤ \lim_{α \to 0} \frac{f(x^*+αd)-f(x^*)}{α} = g'(0) \]
+Entonces $0 ≤ g'(0) = \nabla f (x^*+αd)'\cdot d |_{α = 0} = \nabla f(x^*)'\cdot d$. 
+Como $||e_i|| = ||-e_i|| = 1$, $\nabla f(x^*)'e_i ≥ 0$ y $\nabla f(x^*)'(-e_i) ≥ 0$, luego $\nabla f(x^*) = 0$. Ahora, si $f \in C^2$. Entonces:
+\begin{align*} 0 ≤ f(x^* + α d)-f(x^*) & = \nabla f(x^*)(αd) + \frac{1}{2} (αd)' \nabla^2 f(x^*)(αd) + O(||αd||^2) \\
+ & = \frac{α^2}{2}d'\nabla^2f(x^*)d + O(α^2)
+\end{align*}
+Dividiendo por $α^2$ y pasando al límite:
+\[ 0 ≤ \frac{1}{2} d' \nabla^2 f(x^*) d \]
+Luego $\nabla^2 f(x^*)$ es semidefinida positiva.
+\end{dem}
+\begin{theorem}[C. S.] Sea $f\in \mathcal{C}^2(S)$, S abierto. Supongamos que $x^*\in S$. Supongamos que verifica:
+\begin{enumerate}
+\item $\nabla f(x^*)=0$
+\item $\nabla^2 f(x^*)$ definida positivo.
+\end{enumerate}
+Entonces $\exists \gamma>0$, $\delta>0$ tal que 
+\[
+f(x)\geq f(x^*)+\frac{\gamma}{2}||x-x^*||^2 \qquad \forall x\in S, ||x-x^2||<\delta
+\]
+\end{theorem}
+\begin{dem}
+Una propiedad de las matrices definidas positivas, sabemos que $\exists \lambda>0$ y además $\forall d\in \R^n$, $d'\nabla^2 f(x^*) d\geq \lambda ||d||^2$. Sea $d\in \R^n$ entonces:
+\begin{gather*}
+f(x^*+d)=f(x^*)+\nabla f(x^*)'d +\frac{1}{2}d'\nabla^2 f(x^*)d+O(||d||^2) \\
+f(x^*+d)-f(x) =  \frac{1}{2}d'\nabla^2 f(x^*)d+O(||d||^2) \geq  \frac{\lambda}{2}||d||^2 + O(||d||^2) = \frac{||d^2||}{2}\left(\lambda+\frac{O(||d||^2)}{||d||^2}\right)
+\end{gather*}
+Sabemos que $\forall \varepsilon>0$ ($\varepsilon < \lambda$) $\exists \delta >0$ tal que si $||d||<\delta$ entonces $\left|\dfrac{O(||d||^2)}{||d||^2}\right|<\varepsilon$, por tanto, si $||d||<\delta$ entonces
+\[
+f(x^*+d)-f(x^*)\geq  \frac{||d||^2}{2}\left(\lambda+\frac{O(||d||^2)}{||d||^2}\right) \geq  \frac{||d||^2}{2}\left(\lambda-\varepsilon\right) =  \frac{\gamma}{2}||d||^2 \qquad x \mid ||x-x^*||<\delta 
+\]
+\end{dem}
+\section{Algoritmos de tipo gradiente}
+Vamos a definir basándonos en que, dado $x$, $-\nabla f(x)$ es la dirección de decrecimiento local de $f$ en $x$. Dado $x^0$ inicial definimos $x^1 = x^0 + \alpha^0\nabla f(x^0)$. En general:
+\[
+\begin{cases}
+\text{Dado $x^0\in \R^n$}\\
+x^{k+1} = x^k - \alpha^k \nabla f(x^k)
+\end{cases}
+\]
+Se tiene que
+\[
+f(x^{k+1})=f(x^k)+\nabla f(x^k)(x^{k+1}-x^k) + O(||x^{k+1}-x^k||) \approx f(x^k)+\nabla f(x^k)\alpha^k d^k
+\]
+Con condición de parada $x^{k+1}=x^k$, es decir, $\nabla f(x^k)=0$.
+\newpage
+\subsection{Elementos de este métodos}
+\begin{enumerate}
+\item $x^0$ punto inicial.
+\item Dirección de desplazamiento
+\begin{itemize}
+\item $d^k = -\nabla f(x^k)$ (Método de máximo descenso).
+\item $d^k = -D^k \nabla f(x^k)$ con $D^k$ definida positiva. Esto permite hacer una cantidad infinita de iteraciones sin que el método se atasque.
+\item Tomar, si es definida positiva, $(\nabla^2 f(x^k))^{-1}$.
+\end{itemize}
+\item La longitud de paso $\alpha^k$.
+\begin{itemize}
+\item Serie divergente $\sum a_k$ tal que $a_k \rightarrow 0$.
+\item Tomar $\alpha^k$ tal que $\alpha^k$ minimiza $f(x^k+\alpha d^k)$ (función de una variable real).
+\end{itemize}
+\end{enumerate}
+\subsection{Método de Newton generalizado}
+Si tenemos $g:\R^{n\times n}\to \R^n$ tratamos de resolver $g(x)0$. Si $\exists F\mid \nabla F = g$ entonces buscamos $\nabla F =0$, es decir, buscamos:
+\[
+x^{k+1} =x^k - \alpha^k (\nabla^2 F(x^k))^{-1}\nabla F(x^k)
+\]
+Si g no tiene primitiva podemos reemplazar los términos y :
+\[
+x^{k+1}=x^k-\alpha^k(\nabla g(x^k))^{-1} g(x)
+\]
+Se tomará $\alpha^k =1$ $\forall k$ (si $\nabla g(x^k)$ es definida positiva),
+
+\begin{example}
+Considérese el problema
+\[ \min 5x^2+5y^2-xy-11x+11y+11 \]
+\begin{itemize}
+	\item[a)] Encontrar un punto satisfaciendo las condiciones de primer orden
+	\item[b)] Probar que es un mínimo
+	\item[c)] Comenzando en $(0,0)$ hacer dos iteraciones de máximo descenso. Comparar las soluciones.
+\end{itemize}
+
+\begin{itemize}
+	\item[a)] \[\nabla f(x,y) = \begin{pmatrix}
+		10x-y-11\\
+		10y-x+11
+\end{pmatrix} = \begin{pmatrix}
+	0\\
+	0
+\end{pmatrix} \]
+Despejando $y$ de la primera ecuación y sustituyendo en la segunda obtenemos $x=1$ de donde $y=-1$.
+
+	\item[b)] Calculamos el Hessiano y comprobamos que es definido positivo, en cuyo caso todo punto que cumpla la sondición de primer orden es un mínimo
+	\[ \nabla^2 f(x,y) = \begin{pmatrix}
+		10 & -1\\
+		-1 & 10
+\end{pmatrix} \]
+	Es una matriz definida positiva ya que los dos menores principales son positivos.
+	
+	\item[c)] 
+	\[ x^0 = \begin{pmatrix}0\\0\end{pmatrix} \]
+	\[ x^1 = \begin{pmatrix}0\\0\end{pmatrix} - α^0 \nabla f(x^0) = \begin{pmatrix}0\\0\end{pmatrix} - α^0 \begin{pmatrix}-11\\11\end{pmatrix} = \begin{pmatrix}11α^0\\-11α^0\end{pmatrix} \]
+	\[ g(α^0) = f(x^1) = 5(11α^0)^2 + 5(-11α^0)^2 - (11α^0)(-11α^0)-11(11α^0)+11(-11α^0) +11  = 11^3(α^0)^2-2\cdot 11^2α^0 + 11 \]
+	Sacamos $α^0$ para que $g'(α^0)=0$:
+	\[ 2\cdot 11^3 α^0 - 2 \cdot 11^2 = 0 \Rightarrow α^0 = \frac{1}{11} \]
+	\[ x^1 = \begin{pmatrix}1\\-1\end{pmatrix} \]
+	
+	Hemos llegado al óptimo ya que $\nabla f(x^1) = \begin{pmatrix}
+		10 \cdot 1 - (-1) - 11\\
+		10 \cdot (-1) - 1 + 11
+\end{pmatrix} = \begin{pmatrix}0\\0\end{pmatrix}$.
+\[ x^2 = \begin{pmatrix}1 \\ -1\end{pmatrix} - α^1 \begin{pmatrix}0\\0\end{pmatrix} = \begin{pmatrix}1\\-1\end{pmatrix} \]
+Los resultados son idénticos, sólo hubiera sido necesaria una iteración ya que en ella se alcanza el mínimo obtenido en el apartado (a).
+\end{itemize}
+\end{example}
+\end{document}

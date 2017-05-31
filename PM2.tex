@@ -1,0 +1,358 @@
+\documentclass[PM.tex]{subfiles}
+\begin{document}
+
+\chapter{Análisis convexo}
+\section{Conjuntos convexos}
+
+\begin{defi}
+Un conjunto $S\subseteq\R^n$ es \textbf{convexo} si $\forall x^1,x^2\in S$ y $\forall  \lambda\in[0,1]$ se cumple que $\lambda x^1 + (1-\lambda)x^2\in S$.
+\end{defi}
+
+\begin{defi}
+Un \textbf{semiespacio} es un conjunto de la forma $H^-=\left\{x\in\R^n: a'x\leq b, a\in\R^n, b\in\R\right\}$ o de la forma $H^+=\left\{x\in\R^n: a'x\geq b, a\in\R^n\,b\in\R\right\}$.
+\end{defi}
+
+\begin{prop}
+$H^-$ es convexo.
+\end{prop}
+
+\begin{dem}
+Sea $x(\lambda)\equiv \lambda x^1 + (1-\lambda)x^2, \lambda\in[0,1]$. Se tiene lo siguiente
+\[
+a'x(\lambda)=a'(\lambda x^1 + (1-\lambda)x^2)=\lambda a'x^1 +(1-\lambda)a'x^2\leq \lambda b+(1-\lambda)b=b
+\]
+Como queríamos demostrar. $\QED$
+\end{dem}
+
+\begin{prop}
+Si $S_1$ y $S_2$ son convexos entonces $S_1\cap S_2$ es convexo
+\end{prop}
+\begin{dem}
+Definimos $x(\lambda)$ igual que en la demostración anterior. Supongamos que $S_1$ y $S_2$ tienen intersección no vacía, pues en otro caso el resultado se sigue trivialmente. Dados $x^1,x^2\in S_1 \cap S_2$ se tiene por convexidad de $S_1$ que $x(\lambda)\in S_1$. Análogamente, $x(\lambda)\in S_2$. Por lo tanto, $x(\lambda)\in S_1\cap S_2$. $\QED$
+\end{dem}
+
+\begin{defi}
+Un \textbf{poliedro} es el conjunto de puntos definido por la intersección de un número finito de semiespacios. Visto matricialmente, dados $A\in\R^{m\times n}, b\in \R^n$ se define el poliedro $P=\left\{x\in \R^n: Ax\leq b\right\}$. Si denotamos por $a_i$ a la i-ésima fila de $A$ vemos que este conjunto se reescribe como $\left\{x\in\R^n: a_ix\leq b_i\ \forall i=1,\dots, n\right\}$, que es equivalente a la primera definición. Un poliedro acotado se llama \textbf{politopo}. 
+\end{defi}
+
+\begin{coro}
+Los poliedros son convexos.
+\end{coro}
+
+\begin{defi}
+Se define el \textbf{rayo} por un punto $x\in\R^n$ como el conjunto $\left\{y\in\R^n: y=\lambda x, \lambda\geq 0\right\}$.
+\end{defi}
+
+\begin{defi}
+Sea S convexo y $x\in S$. El punto $x$ dice \textbf{punto extremo} si $x=\lambda x^1 +(1-\lambda)x^2$ con $x^1,x^2\in S$ y $\lambda\in (0,1)$ implica que $x^1=x^2=x$.
+\end{defi}
+\begin{nota}  En el caso de los poliedros, los puntos extremos coinciden con la idea de vértice. En una bola euclídea cerrada su frontera es de puntos extremos.
+\end{nota}
+
+\begin{defi}
+Diremos que $d\in\R^n$ es una \textbf{dirección} de $S\subseteq\R^n$ si $\forall x\in S$ se tiene que $x+\alpha d\in S\ \forall\alpha\geq 0$.
+\end{defi}
+
+\begin{defi} Una dirección $d$ es \textbf{extrema} si $d=\alpha^1d^1+\alpha^2d^2$, siendo $d^i$ direcciones de $S$ y $\alpha^1,\alpha^2>0$ implica que $d^1$ es proporcional a $d^2$.
+\end{defi}
+
+\begin{defi}
+Dados $r$ puntos $x^1,\dots, x^r\in\R^n$ llamamos \textbf{combinación convexa} de estos puntos a $\sum_{i=1}^r\lambda_i x^i$ si $\lambda_i\geq 0\ \forall i=1,\dots, r$ y $\sum_{i=1}^r\lambda_i=1$.
+\end{defi}
+
+\section{Teorema de Carathéodory}
+\begin{defi} Sean $a^1,\dots, a^d\in\R^n$ afínmente independientes (esto es, que fijado un punto, los vectores diferencia de este con los demás son linealmente independientes). Se denomina \textbf{símplex $(d-1)$-dimensional} a 
+\[
+S(d-1)= \left\{x\in\R^n:x=\sum_{i=1}^d\lambda_i a^i,\lambda_i\geq 0, \sum_{i=1}^d\lambda_i =1\right\}
+\]
+\end{defi}
+\begin{example}
+$S(1)$ es un segmento, $S(2)$ es un triángulo relleno y $S(3)$ es un tetraedro relleno.
+\end{example}
+
+\begin{defi} Dado un conjunto $S\subset\R^n$, su \textbf{envolvente} (envoltura) \textbf{convexa} $CO(S)$ es
+\[
+CO(S)=\left\{x\in\R^n: x=\sum_{i=1}^d\lambda_i x^i, d<+\infty, x^i\in S, i=1,\dots, d, \lambda_i\geq 0, \sum_{i=1}^d\lambda_i =1\right\}
+\]
+$CO(S)$ es el menor convexo que contiene a $S$.
+\end{defi}
+
+\begin{defi} Diremos que $C\subset\R^n$ es un cono si contiene a todos sus rayos, es decir, $\forall x\in C$ $\lambda x\in C, \lambda\geq 0$.
+\end{defi}
+\begin{example}
+Una semirrecta que pasa por el origen es un cono. No todos los conos son conjuntos convexos.
+
+\begin{center}
+\definecolor{zzttqq}{rgb}{0.6,0.2,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-3,-2.5) rectangle (3,2.5);
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.10000000149011612] (0.,0.) -- (2.,3.) -- (4.,3.) -- cycle;
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.10000000149011612] (0.,0.) -- (-4.5,-3.) -- (-2.5,-3.) -- cycle;
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.10000000149011612] (0.,0.) -- (4.5,-3.) -- (2.5,-3.) -- cycle;
+\draw [color=zzttqq] (0.,0.)-- (2.,3.);
+\draw [color=zzttqq] (2.,3.)-- (4.,3.);
+\draw [color=zzttqq] (4.,3.)-- (0.,0.);
+\draw [color=zzttqq] (0.,0.)-- (-4.5,-3.);
+\draw [color=zzttqq] (-4.5,-3.)-- (-2.5,-3.);
+\draw [color=zzttqq] (-2.5,-3.)-- (0.,0.);
+\draw [color=zzttqq] (0.,0.)-- (4.5,-3.);
+\draw [color=zzttqq] (4.5,-3.)-- (2.5,-3.);
+\draw [color=zzttqq] (2.5,-3.)-- (0.,0.);
+\draw (2.,2.)-- (2.,-2.);
+\draw (0.,-4.126140413226097) -- (0.,4.020852846215659);
+\draw [domain=-6.367650924229384:10.452891711961001] plot(\x,{(-0.-0.*\x)/2.8572768088505205});
+\begin{scriptsize}
+\draw [fill=black] (2.,2.) circle (2.5pt);
+\draw [fill=black] (2.,-2.) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+\end{center}
+\end{example}\
+
+\begin{theorem}[Teorema de Carathéodory]
+Sea $S\subseteq\R^n$. Si $x\in CO(S)$ entonces:
+\[ x = \sum_{i=1}^{n+1} λ_i x^i \]
+con $x^i\in S, λ_i ≥ 0$ y $\sum_{i=1}^{n+1}λ_i=1$. Es decir, cualquier punto de la envoltura se puede expresar como combinación lineal convexa de a lo sumo $n+1$ puntos.
+\end{theorem}
+\begin{dem}
+Sea $x \in CO(S)$. Por definición de envoltura convexa, sabemos que $\exists r<+\infty$ tal que:
+\[ x = \sum_{i=1}^r λ_i x^i \]
+Si $r ≤ n+1$, el teorema está probado. Si $r > n+1$, consideramos los $r-1$ vectores linealmente dependientes $x²-x¹, x³-x¹, \dots, x^{r}-x¹$. Entonces existen $μ_2,\dots,μ_r$ no todos nulos tales que:\[ 0 = \sum_{i=2}^r μ_i (x^i-x¹) = \sum_{i=2}^r μ_i x^i - x^1\sum_{i=2}^r μ_i\]
+Tomamos $μ_1 := -\sum_{i=2}^r μ_i$ de manera que se tiene que:
+\[ \sum_{i=1}^r μ_i x^i = 0\]
+\[ \sum_{i=1}^r μ_i = 0 \]
+Sea $α \in \R$. Consideramos:
+\[ x = x - α0 = \sum_{i=1}^r λ_i x^i - α \sum_{i=1}^r μ_i x^i = \sum_{i=1}^r (λ_i - α μ_i)x^i \]
+Definimos $γ_i = λ_i - α μ_i$ y buscamos $α$ de manera que $γ_i x^i$ sea una combinación convexa. Tomando:
+\[ α = \min_{1≤i≤r} \left\{ \frac{λ_i}{μ_i} : μ_i > 0\right\} = \frac{λ_{i*}}{μ_{i*}} \]
+Entonces se tiene que $γ_i \geq 0$ y:
+\[ \sum_{i=1}^r γ_i = \sum_{i=1}^r (λ_i -α μ_i) = \sum_{i=1}^r λ_i - α \sum_{i=1}^r μ_i = 1 - α \cdot 0 = 1\]
+Sin embargo, $γ_{i*} = λ_{i*} - \frac{λ_{i*}}{μ_{i*}}μ_{i*} = 0$, luego $x$ es una combinación convexa de a lo sumo $r-1$ puntos de $S$. Podemos repetir esta construcción hasta llegar a $r = n+1$.
+$\QED$
+\end{dem}
+
+Consideremos que $||x||$ representa la norma euclídea (se pueden probar resultados análogos con otras normas). 
+\begin{theorem}[Teorema de la proyección]
+Sea $S\subset\R^n$ convexo y cerrado no vacío, y sea $y\not\in S$ . Entonces existe un único $\overline{x}\in S$ tal que $||y-\overline{x}||=\min_{x\in S}||y-x||$. Además $\overline{x}$ está caracterizado por ser el que verifica $(y-\overline{x})'(x-\overline{x})\leq 0\ \forall x\in S$.
+
+\end{theorem}
+\begin{dem}
+Veamos que existe $\overline{x}$: consideramos el conjunto \[ \overline{S}=S\cap\{x\in\R^n : ||y-x||\leq ||y-x^0||\}\] para cualquier $x^0\in S$ fijo. Entonces $\inf_{x\in S}||y-x||=\inf_{x\in\overline{S}}||y-x||$. Además, $\overline{S}$ es cerrado y acotado, por tanto el teorema de Weierstrass asegura que existe el $\min_{x\in\overline{S}}||y-x||$ que será $\overline{x}$. Veamos que es único. Supongamos que existe otro $\hat{x}\in S$ tal que 
+\[
+\gamma=||y-\hat{x}||=||y-\overline{x}||=\min_{x\in\overline{S}}||y-x||
+\]
+Consideramos el punto medio $\dfrac{\overline{x}+\hat{x}}{2}\in S$ por ser $S$ convexo. Ahora, aplicando la desigualdad triangular
+\[
+|| y-\frac{\overline{x}+\hat{x}}{2}||=||\frac{y}{2}-\frac{\overline{x}}{2}+\frac{y}{2}-\frac{\hat{x}}{2}||\leq ||\frac{y-\overline{x}}{2}||+||\frac{y-\hat{x}}{2}||=\frac{1}{2}\left(||y-\overline{x}||+||y-\hat{x}||\right)
+\]
+Como $\gamma$ era la distancia mínima, las desigualdades en realidad son igualdades. La desigualdad triangular solo se convierte en igualdad cuando los vectores son proporcionales, luego $y-\overline{x}=\alpha(y-\hat{x})$, y como ambos tienen norma $\gamma$, necesariamente $|\alpha|=1$. Si $\alpha=-1$ entonces $y-\overline{x}=-(y-\hat{x})\Rightarrow 2y=\hat{x}+\overline{x}\Rightarrow y=\dfrac{\hat{x}+\overline{x}}{2}\in S$, lo cual no es posible porque habíamos supuesto que $y\not\in S$. Por lo tanto $\alpha=1$ y deducimos que $\overline{x}=\hat{x}$.\\
+Por último probemos la caracterización. Supongamos que $\overline{x}$ verifica $(y-\overline{x})'(x-\overline{x})\leq 0\ \forall x\in S$. Entonces $\forall x\in S$
+\[
+||y-x||^2=||y-\overline{x}+\overline{x}-x||^2=||y-\overline{x}||^2+||\overline{x}-x||^2+2(y-\overline{x})'(\overline{x}-x)
+\]
+El último término es mayor o igual que $0$ por hipótesis, y como la norma es siempre no negativa deducimos que $ ||y-\overline{x}||^2 \leq ||y-x||^2$ $\forall x\in S$. Recíprocamente, supongamos que $\overline{x}$ es el mínimo.  Consideramos entonces para cada $x\in S$ el punto $\overline{x}+\lambda(x-\overline{x})$ con $\lambda\in (0,1)$. Entonces, 
+\[
+||y-(\overline{x}+\lambda(x-\overline{x}))||^2=||y-\overline{x}||^2+\lambda^2||\overline{x}-x||^2-2\lambda(y-\overline{x})'(x-\overline{x})\geq||y-\overline{x}||.
+\]
+Restando a ambos lados no queda $\lambda^2||\overline{x}-x||-2\lambda(y-\overline{x})'(x-\overline{x})\geq 0$. Simplificamos usando que $\lambda$ es estrictamente positiva y despejamos y tenemos que $\lambda||x-\overline{x}||\geq 2(y-\overline{x})'(x-\overline{x})$. Como vale para todo $\lambda\in (0,1)$, tomando límite ($\lambda\rightarrow 0$) y deducimos:  $0\geq (y-\overline{x})'(x-\overline{x})$. $\QED$
+\end{dem}
+
+\begin{defi} Sean dos conjuntos convexos $S_1,S_2\subset\R^n$ y el hiperplano $H=\{x\in\R^n: p'x=\alpha\}$. Decimos que $H$ separa $S_1$ de $S_2$ si $p'x\leq\alpha$ $\forall x\in S_1$ y $p'x\geq\alpha$ $\forall x\in S_2$. Se dice que $H$ separa estrictamente a $S_1$ de $S_2$ si las desigualdades son estrictas.
+\end{defi}
+
+\begin{lema}
+Sea $S\subset\R^n$ convexo y cerrado no vacío, sea $y\not\in S$. Existen $p\in\R^n, \alpha\in\R$ tal que $p'y>\alpha$ y $p'x\leq\alpha\ \forall x\in S$.
+\end{lema}
+\begin{dem}
+Por el teorema de la proyección, existe $\overline{x}\in S$ tal que $(y-\overline{x})'(x-\overline{x})\leq 0\ \forall x\in S$. Tomamos $p=(y-\overline{x})$ y $\alpha=p' \overline{x}$. Luego $p'(x-\overline{x})\leq 0\equiv p'x\leq p'\overline{x}$. Además, como $y\not\in S$, $0<||y-\overline{x}||^2=(y-\overline{x})'(y-\overline{x})=p'y-\underbrace{p'\overline{x}}_\alpha \Rightarrow \alpha <p'y$. $\QED$
+\end{dem}
+
+\newpage
+
+\begin{lema}[de Farkas]
+Sean $A\in \R^{m\times n}, b\in\R^m,x\in\R^n$. Entonces, exactamente uno de los siguientes sistemas tiene solución:
+\begin{enumerate}
+\item $Ax=b$ con $x\geq 0$ (es decir, todas las componentes de $x$ son no negativas).
+\item $u'A\leq 0, u'b>0, u\in \R^m$.
+\end{enumerate}
+\end{lema}
+
+Antes de demostrarlo vamos a interpretarlo. Sean $a_1,\dots, a_n$ las columnas de $A$. Entonces $Ax=a_1x_1+\cdots +a_nx_n$ con $x_i\geq 0\ \forall i$. Las combinaciones no negativas de los vectores $a_i$ generan un cono. Del segundo sistema $u'a_1\leq 0,\dots , u'a_n\leq 0$. Luego el ángulo que forma $u'$ con cada $a_i$ es mayor de $\frac{\pi}{2}$ y $u$ está en la intersección de todos los hiperplanos. Por otro lado $b$ tiene que formar un ángulo con $u$ menor de $\frac{\pi}{2}$ por lo que estará fuera del cono. Por tanto, si el segundo sistema tiene solución, el primero no puede tenerlo porque en el primero $b$ debe estar dentro del cono. Ver figura.
+
+\begin{dem}\
+\begin{enumerate}
+\item Supongamos que el primer sistema tiene solución. Es decir, $\exists x^0\mid Ax^0=b, x^0\geq 0$. Por tanto $u'A\cdot x^0\leq 0\equiv u'b\leq 0$, luego no puede haber solución en el segundo.
+\item Supongamos que el primer sistema no tiene solución. El conjunto $S=\{v: v=Ax,x\geq 0\}$ es convexo y cerrado en $\R^m$ y $b\not\in S$. Aplicando el lema anterior existen $p\in\R^m,\alpha\in\R$ tal que $p'b>\alpha, p'v\leq\alpha\ \forall v\in S$. Como $0\in S$ deducimos que $p'0\leq\alpha$ luego $\alpha\geq 0$ y por tanto $p'b>\alpha\geq 0\Rightarrow p'b>0$. Ahora tenemos que probar que $p'A\leq 0$. Utilizamos que $p'v\leq\alpha\ \forall v\in S$. Entonces $p'Ax\leq\alpha\ \forall x\geq 0$. De aquí deducimos que todas las componentes de $p'A$ deben ser no positivas, porque si hubiera una componente positiva (supongamos que es la $i$-ésima) entonces $(p'A)_i>0$. Tomando $x_i\rightarrow +\infty$ se tiene que $(p'A)_ix_i\rightarrow +\infty$, por lo que será mayor que $\alpha$.
+\[
+(p'Ax)=\sum_{j\neq i}(p'A)_jx_j + (p'A)_ix_i \rightarrow +\infty.
+\]
+Por tanto  $p'A\leq 0$ y hemos encontrado una solución para el segundo sistema.
+\end{enumerate}
+\end{dem}
+
+\begin{coro}
+Los siguientes sistemas son alternativos:
+\begin{enumerate}
+\item $Ax\geq b, x\geq 0$.
+\item $u'A\leq 0, u'b>0, u\geq 0$. 
+\end{enumerate}
+\end{coro}
+\begin{dem}
+\begin{enumerate}
+\item[]
+\item Denotamos por $A_i$ la fila $i$ de $A$ con $i\in\{1,\dots,m\}$. Entonces 
+\[
+Ax\geq b, x\geq 0 \equiv\begin{cases}
+A_1x\geq b_1\equiv A_1x-y_1 & y_1\geq 0\\
+\vdots & \\
+A_mx\geq b_m\equiv A_mx-y_m & y_m\geq 0\\
+x\geq 0 & 
+\end{cases}
+\]
+Es decir, $Ax\geq b, x\geq 0 \equiv Ax-Iy=b, x\geq 0, y\geq 0$, o lo que es lo mismo,
+\[(A| -I)\begin{pmatrix}
+x\\
+y
+\end{pmatrix}=b\quad x,y\geq 0.
+\]
+Ya lo tenemos expresado como el lema de Farkas. Su alternativa es 
+\item $u'(A| -I)\leq 0, u'b>0$, es decir, $u'A\leq 0, u'(-I)\leq 0, u'b>0 \Leftrightarrow u'A\leq 0, u\geq 0, u'b>0$. $\QED$
+\end{enumerate}
+\end{dem}
+
+\begin{lema}
+Sea $K\in\R^{n\times m}$ tal que $K'=-K$. Entonces, el sistema $Kx\geq 0, x\geq 0$ tiene una solución que verifica $Kx+x>0$.
+\end{lema}
+\begin{dem}
+Vamos a aplicar el corolario con $b=e_i$ (el vector columna nulo salvo la componente $i$-ésima, que vale $1$), $i=1,\dots, n$.
+Consideramos el sistema $Kx\geq e_i, x\geq 0$ o su alternativa $x'K\leq 0, x\geq 0, x'e_i>0$. Sea $\overline{x}^i$ las solución de este par de sistemas en alternativa (es decir, que es solución de uno o de otro). Si $\overline{x}^i$ es solución del primero:
+\[
+\begin{cases}
+K_i\overline{x}^i\geq 1 & \\
+K_j\overline{x}^j\geq 0 & j\neq i\\
+\overline{x}^i\geq 0 &
+\end{cases}
+\]
+por lo que $K_i\overline{x}^i+\overline{x}^i>0$ y $ K_i\overline{x}^i_i + \overline{x}^i_j\geq 0\ \forall j\neq i$. Por el contrario, si $\overline{x}^i $ es solución del segundo sistema llegamos a que $K'\overline{x}^i\leq 0, \overline{x}^i\geq 0, e'_i\overline{x}^i>0$ y usando que $K$ es antisimétrica obtenemos $K\overline{x}^i\geq 0, e'_i\overline{x}^i>0$. De la última desigualdad deducimos que $\overline{x}^i_i> 0\ \forall i$. Por tanto
+\[
+K_i\overline{x}^i_i +\overline{x}^i_i>0\quad K_j\overline{x}^i_j +\overline{x}^i_j\geq 0\ \forall j\neq i.
+\]
+En ambos casos obtenemos lo mismo. Consideramos $\overline{x}=\sum_{i=1}^n\overline{x}^i$. Cumple que $K\overline{x}\geq 0, \overline{x}\geq 0$. Además, 
+\[
+K\overline{x}+\overline{x}=K(\sum_{i=1}^n\overline{x}^i)+\sum\overline{x}=\sum_{i=1}^n(K\overline{x}^i+\overline{x}^i)>0
+\]
+$\QED$
+\end{dem}
+
+\section{Representación de poliedros}
+
+\begin{defi}
+Diremos que un poliedro $P$ está en forma estándar si $P=\{x\in\R^n: Ax=b,x\geq 0\}$ con $A\in\R^{m\times n},$ $b\in\R^m$, $n\geq m$ y $rg(A)=m$.
+\end{defi} 
+\begin{nota}
+Todo poliedro se puede escribir en forma estándar pues $a'x\leq b\equiv a'x+y=b, y\geq 0$ y análogamente restando para la desigualdad contraria.
+Si $x_j\in\R$ entonces podemos escribir $x_j=x_j^+ -x_j^-$ siendo $x_j^+=\max{\{x_j,0\}}, x_j^-=-\min{\{x_j,0\}}$.
+\end{nota}
+
+Dado que $A\in\R^{m\times n}, b\in\R^m, n\geq m$ y $rg(A)=m$, existe una matriz $B$ de $m$ columas de $A$ que son linealmente independientes, es decir que $rg(B)=m$ ($\exists B^{-1}$). Escribimos entonces $A$ como $[B\ N]$ poniendo las columnas independientes al principio. Las variables del sistema $Ax=b$ también se deben reordenar de modo que 
+\[
+Ax=b\equiv [B\ N]\begin{bmatrix}
+x_B\\
+x_N
+\end{bmatrix}=b
+\]
+
+Sea $A \subset \R^{m \times n}$, $rg(A) = m$, $m ≤ n$ y $b \in \R^m$. Consideramos $P = \{ x \in \R^n : Ax=b, x ≥ 0\}$ (poliedro en forma estándar).
+
+\begin{theorem}[Teorema de caracterización de puntos extremos]\label{carac-extremos}
+Sea $P$ un poliedro en las condiciones anteriores. Entonces $x$ es un punto extremo de $P$ si y sólo si existe $B \subset A$ con $B \in \R^{m \times m}$, $rg(B)=m$, $B^{-1}b ≥ 0$ y $x = \begin{pmatrix} B^{-1}b\\0\end{pmatrix}$
+\end{theorem}
+
+\begin{dem}
+($\Leftarrow$) Supongamos que $x =\begin{pmatrix} B^{-1}b\\0\end{pmatrix}$, $B \subset A$ con $B \in \R^{m \times m}$, $rg(B)=m$, $B^{-1}b ≥ 0$. Usaremos reducción al absurdo, supongamos que existen $x^1$, $x^2 \in P$ tal que $x = λx^1+(1-λ)x^2$ con $λ \in (0,1)$. Tenemos que $A = [B\ N]$ y $x = \begin{pmatrix}x_B\\x_N\end{pmatrix} = \begin{pmatrix} B^{-1}b\\0\end{pmatrix}$, $x^1 = \begin{pmatrix}x_B^1\\x_N^1\end{pmatrix}$ y $x^2 = \begin{pmatrix}x_B^2\\x_N^2\end{pmatrix}$ Luego:
+\[ x = \begin{pmatrix} B^{-1}b\\0\end{pmatrix} = λ\begin{pmatrix}x_B^1\\x_N^1\end{pmatrix}+(1-λ)\begin{pmatrix}x_B^2\\x_N^2\end{pmatrix} \]
+De ahí, $0 = λ x_N^1 + (1-λ) x_N^2$. Como $x_N^i ≥ 0$, se sigue que $x_N^i = 0$. De $x^i \in P$, se sigue que $Ax^i = b \equiv [B\ N]\begin{bmatrix}x_B^i\\0
+\end{bmatrix} = b \equiv Bx_B^i + N0 = b$. Por lo tanto: $x_B^i = B^{-1}b \geq 0$, luego $x^i = \begin{pmatrix}B^{-1}b\\0\end{pmatrix}=x$ para $i=1,2$.
+
+
+($\Rightarrow$) Supongamos que $x$ fuera un punto extremo de $P$. Se tiene que $Ax=b, x ≥ 0$. Como $rg(A) = m$ podemos suponer sin pérdida de generalidad que $x =(x_1,\dots,x_k,0,\dots,0)$ con $x_i > 0$ y $k ≤ m$.
+Vamos a probar que las columnas asociadas a estas coordenadas $(a^1, a^2, \dots, a^k)$ son linealmente independientes. Si no lo fueran, existirían $λ_1,λ_2, \dots, λ_k$ tales que $\sum_{i=1}^k λ_i a^i = 0$. Denotamos or $λ =(λ_1,\dots,λ_k,0,\dots,0)$. Entonces $Aλ=λ_1a^1 + λ_2a^2 + \cdots + λ_ka^k + 0a^{k+1}+\cdots+0a^n = 0$. Entonces podemos considerar los puntos $x^1 = x+αλ$ y $x^2 = x-αλ$ y $α > 0$. Claramente $x^1 \neq x^2$ y $x = \frac{1}{2}x^1+ \frac{1}{2}x^2$. Veamos que $x^i \in P$ para $i=1,2$.
+\[ Ax^i = A(x \pm αλ) = Ax \pm α(\underset{=0}{Aλ}) = Ax = b \]
+\[ x^i = x \pm αλ = \begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix} \pm α \begin{pmatrix}λ_1\\\vdots\\λ_k\\0\\\vdots\\0\end{pmatrix} \]
+Por hipótesis, $x_1,\dots,x_k > 0$. Tomando $α$ suficientemente pequeño, podemos asegurar que $x_i \pm αλ_i > 0$. Entonces $x^i \geq 0$ y $x^i \in P$. Esto contradice que $x$ sea un punto extremo. Podemos entonces asegurar que $(a^1,\dots,a^k)$ son linealmente independientes. Podemos completar $(a^1,\dots,a^m)$ hasta $m$ columnas linealmente independientes (podemos ya que $rg(A) = m$). Tomamos $B = (a^1,\dots,a^m)$. Entonces:
+
+
+\[ Ax =[B\ N]\begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix}_{(n)} = B \begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix}_{(m)} +N0_{(m-n)} = b \]
+Luego: \[ \begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix} = B^{-1}b \geq 0 \qquad x = \begin{pmatrix}B^{-1}b\\0\end{pmatrix} \]
+\end{dem}
+
+\begin{nota}
+El número de puntos extremos de los poliedro es finito y está acotado por el número combinatorio $\begin{pmatrix}n\\m\end{pmatrix}$.
+\end{nota}
+
+\begin{lema}
+$d$ es una dirección de $P$ si y sólo si $Ad=0$, $d ≥ 0$.
+\end{lema}
+
+\begin{dem}
+$d$ es dirección si y solo si $\forall x \in P$, $x + λd \in P$ $\forall λ ≥ 0$. Equivalentemente, $A(x+λd)= b$ y $x+λd ≥ 0$ $\forall λ ≥ 0$. Esto se cumple si y solo si:
+\[ Ax+λAd = b \Leftrightarrow Ad = 0\]
+\[ x + λd ≥ 0 \quad \forall λ ≥ 0 \Leftrightarrow d ≥ 0 \]
+\end{dem}
+
+\begin{theorem}[Caracterización de direcciones extremas]\label{carac-direcciones}
+$d$ es una dirección extrema de $P$ si y solo si $d = \begin{pmatrix}-B^{-1}a_j\\e_j\end{pmatrix}$ donde $B \subset A$, $B \in \R^{m\times m}$, $rg(B) = m$ y $a_j \notin B$ tal que $B^{-1}a_j ≤ 0$. 
+\end{theorem}
+\begin{dem}
+La demostración puede encontrarse en el Bazaraa.
+\end{dem}
+\begin{nota} El número de direcciones extremas de $P$ es finito y está acotado por $\begin{pmatrix}n\\m\end{pmatrix}(n-m)$.
+\end{nota}
+\newpage
+\begin{theorem}[Teorema de representación de poliedros de Minkowski-Weyl]
+Sea $P$ un poliedro en forma estándar y sean $x^1,x²,\dots,x^k$ sus puntos extremos y $d^1,d^2,\dots,d^l$ sus direcciones extremas. Consideramos 
+\[ S = \{x \in \R^n : x = \sum_{i=1}^k λ_i x^i + \sum_{j=1}^l μ_j d^j, \sum_{i=1}^k λ_i=1, λ_i ≥ 0, μ_j ≥ 0\ \forall i,j\} \]
+Entonces $S = P$. Es decir, cualquier poliedro en forma estándar queda determinado por sus extremos y direcciones extremas.
+\end{theorem}
+
+\begin{dem} Lo demostraremos por doble inclusión:
+\begin{itemize}
+	\item $(S \subseteq P)$ Sea $x \in S$, $x = \sum_{i=1}^k λ_i x^i + \sum_{j=1}^l μ_j d^j$ para algún $λ$ y $μ$.
+
+	\[ Ax = A\left( \sum_{i=1}^k λ_i x^i + \sum_{j=1}^l μ_j d^j\right) =  \sum_{i=1}^k \underset{=b}{λ_i A x^i} + \sum_{j=1}^l μ_j \underset{=0}{Ad^j} = \sum_{j=1}^l b = b \]
+
+
+
+	\[ x = \sum_{i=1}^k \underset{≥0}{λ_i} \underset{≥0}{x^i} + \sum_{j=1}^l \underset{≥0}{μ_j}\underset{≥0}{d^j} ≥ 0 \]
+	Luego $x \in P$
+	
+	\item $(P \subseteq S)$ Supongamos que existe $z \in P$ pero $z \notin S$. Como $S$ es un convexo cerrado, existe $p \in \R^n$, $α \in \R$ tales que $p'z > α$, $p'x ≤ α$ $\forall x$ (separación de $z$ y $S$). Tenemos
+	\begin{enumerate}
+		\item $p'd^j ≤ 0$ $\forall j=1,\dots,l$
+		
+		Si existiese $j$ tal que $p'd^j > 0$, consideramos el rayo $x + λd^j, λ ≥ 0$ para cualquier $x \in S$, pero entonces $p'(x+λd^j) = p'x + λp'd^j ≤ α$, pero $λp'd^j$ tiende a infinito cuando $λ$ tiende a infinito, luego $p'(x+λd^j)$ no puede estar acotado por ningún $α$.
+		\item $p'z > α ≥ p'x^i$ $\forall i=1,\dots,k$
+	\end{enumerate}
+	Sea $\overline{x}$ el punto extremo tal que $p'\overline{x} = \max_i p'x^i$. Usando el teorema \ref{carac-extremos}: existe una reordenación tal que $\overline{x} = \begin{pmatrix}B^{-1}b\\0\end{pmatrix}$, $A = [B\ N]$, $x = \begin{bmatrix}x_B\\x_n\end{bmatrix}$, $z = \begin{bmatrix}z_B\\z_N\end{bmatrix} \in P$, $Az=b$. De $[B\ N]\begin{bmatrix}z_B\\z_N\end{bmatrix} = b$ obtenemos que $z_B = B^{-1}b-B^{-1}Nz_N$. Luego usando (2):
+	\[ 0 < p'(z-\overline{x}) = (p_B'\ p_N') \left[\begin{pmatrix}B^{-1}b-B^{-1}Nz_N\\z_N\end{pmatrix}-\begin{pmatrix}B^{-1}b\\0\end{pmatrix}\right] =-p_B'B^{-1}Nz_N + p'z_N = (p_N'-p_B'B^{-1}N)z_N \]
+	Al menos una de las coordenadas de $p_N'-p_B'B^{-1}N$ debe ser positiva. Sea $j$ tal que:
+	\[ 0 < (p_N'-P_B'B^{-1}N)_j = p_j - p_B'B^{-1}a_j \]
+	Llamemos $y_j = B^{-1}a_j$ . Veamos que $y_j > 0$. Si $y_j ≤ 0$, $d = \begin{pmatrix}-B^{-1}a_j\\e_j\end{pmatrix}$ debe ser una dirección extrema por el teorema \ref{carac-direcciones}. Entonces $p'd = (p_B'\ p_N')\begin{pmatrix}-B^{-1}a_j\\e_j\end{pmatrix}=-p_B'B^{-1}a_j + p_j > 0$, pero esto contradice (1). Luego $y_j = B^{-1}a_j > 0$. Denotemos por $\overline{b}=B^{-1}b$. Sea $d = \begin{pmatrix}-y_j\\e_j\end{pmatrix}$ y $\hat{x} = \overline{x} + λd$. Veamos que $\hat{x} \in P$ si $λ = \frac{\overline{b}_r}{y_{jr}} = \min\{\frac{\overline{b}_i}{y_{ji}} : y_{ji} > 0\}$..
+	\[ A\hat{x} = A\overline{x} + \frac{\overline{b}_r}{y_{r_j}} A d = b + \frac{\overline{b}_r}{y_{jr}} [B\ N] \begin{pmatrix}-B^{-1}a_j\\e_j\end{pmatrix} = b + \frac{\overline{b}_r}{y_{jr}}(-a_j + a_j) = b \]
+	Si $i$ es una coordenada de $B$ con $i \neq r$:
+	\[ \hat{x}_i = (B^{-1}b)_i + \frac{\overline{b}_r}{y_{jr}}(-y_{ji}) = \overline{b}_i - \frac{\overline{b}_r}{y_{jr}}y_{ji} \]
+	Si $y_{ji} < 0 \Rightarrow \hat{x} ≥ 0$ evidentemente. Si $y_{ji} > 0$, entonces $\overline{b}_i - \frac{\overline{b}_r}{y_{jr}}y_{ji} ≥ 0$, ya que $ \frac{\overline{b}_r}{y_{ji}} ≥ \frac{\overline{b}_r}{y_{jr}}$.
+	
+	Si $i = r$, el resultado es directo, ya que $\overline{b}_r - \frac{\overline{b}_r}{y_{jr}}y_{jr} = 0 ≥ 0$.
+	
+	Si $i$ es una coordenada que está en $N$, se tiene que $i \neq j$, luego:
+	\[ \hat{x}_i = 0 +  \frac{\overline{b}_r}{y_{jr}}0 = 0 \]
+	\[ \hat{x}_j = 0 +  \frac{\overline{b}_r}{y_{jr}}1 ≥ 0 \]
+	
+	Luego $\hat{x} \in P$. Además $\hat{x}$ es un punto extremo representado por las columnas $\hat{B}= (a_1,\dots,a_m)$ y además verifica:
+	\[ p'\hat{x} = p'(\overline{x} + \frac{\overline{b}_r}{y_{jr}}d) = p'\overline{x} + \underset{>0}{\frac{\overline{b}_r}{y_{jr}}} \underset{≥0}{p'd} > p'\overline{x} \]
+	Esto contradice que $p'\overline{x}$ fuera máximo. Por reducción al absurdo, llegamos a que $z \in S$, lo que acaba la demostración.
+	$\QED$
+\end{itemize}
+\end{dem}
+\end{document}
