@@ -32,7 +32,7 @@ Definimos $x(\lambda)$ igual que en la demostración anterior. Supongamos que $S
 \end{dem}
 
 \begin{defi}
-Un \textbf{poliedro} es el conjunto de puntos definido por la intersección de un número finito de semiespacios. Visto matricialmente, dados $A\in\R^{m\times n}, b\in \R^n$ se define el poliedro $P=\left\{x\in \R^n: Ax\leq b\right\}$. Si denotamos por $a_i$ a la i-ésima fila de $A$ vemos que este conjunto se reescribe como $\left\{x\in\R^n: a_ix\leq b_i\ \forall i=1,\dots, n\right\}$, que es equivalente a la primera definición. Un poliedro acotado se llama \textbf{politopo}. 
+Un \textbf{poliedro} es el conjunto de puntos definido por la intersección de un número finito de semiespacios. Visto matricialmente, dados $A\in\R^{m\times n}, b\in \R^m$ se define el poliedro $P=\left\{x\in \R^n: Ax\leq b\right\}$. Si denotamos por $a_i$ a la i-ésima fila de $A$ vemos que este conjunto se reescribe como $\left\{x\in\R^n: a_ix\leq b_i\ \forall i=1,\dots, n\right\}$, que es equivalente a la primera definición. Un poliedro acotado se llama \textbf{politopo}. 
 \end{defi}
 
 \begin{coro}
@@ -152,7 +152,7 @@ Por último probemos la caracterización. Supongamos que $\overline{x}$ verifica
 \]
 El último término es mayor o igual que $0$ por hipótesis, y como la norma es siempre no negativa deducimos que $ ||y-\overline{x}||^2 \leq ||y-x||^2$ $\forall x\in S$. Recíprocamente, supongamos que $\overline{x}$ es el mínimo.  Consideramos entonces para cada $x\in S$ el punto $\overline{x}+\lambda(x-\overline{x})$ con $\lambda\in (0,1)$. Entonces, 
 \[
-||y-(\overline{x}+\lambda(x-\overline{x}))||^2=||y-\overline{x}||^2+\lambda^2||\overline{x}-x||^2-2\lambda(y-\overline{x})'(x-\overline{x})\geq||y-\overline{x}||.
+||y-(\overline{x}+\lambda(x-\overline{x}))||^2=||y-\overline{x}||^2+\lambda^2||\overline{x}-x||^2-2\lambda(y-\overline{x})'(x-\overline{x})\geq||y-\overline{x}||^2.
 \]
 Restando a ambos lados no queda $\lambda^2||\overline{x}-x||-2\lambda(y-\overline{x})'(x-\overline{x})\geq 0$. Simplificamos usando que $\lambda$ es estrictamente positiva y despejamos y tenemos que $\lambda||x-\overline{x}||\geq 2(y-\overline{x})'(x-\overline{x})$. Como vale para todo $\lambda\in (0,1)$, tomando límite ($\lambda\rightarrow 0$) y deducimos:  $0\geq (y-\overline{x})'(x-\overline{x})$. $\QED$
 \end{dem}
