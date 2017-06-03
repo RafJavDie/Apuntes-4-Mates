@@ -40,7 +40,7 @@ Los poliedros son convexos.
 \end{coro}
 
 \begin{defi}
-Se define el \textbf{rayo} por un punto $x\in\R^n$ como el conjunto $\left\{y\in\R^n: y=\lambda x, \lambda\geq 0\right\}$.
+Se define el \textbf{rayo} por un $x\in\R^n$ como el conjunto $\left\{y\in\R^n: y=\lambda x, \lambda\geq 0\right\}$.
 \end{defi}
 
 \begin{defi}
@@ -77,7 +77,7 @@ CO(S)=\left\{x\in\R^n: x=\sum_{i=1}^d\lambda_i x^i, d<+\infty, x^i\in S, i=1,\do
 $CO(S)$ es el menor convexo que contiene a $S$.
 \end{defi}
 
-\begin{defi} Diremos que $C\subset\R^n$ es un cono si contiene a todos sus rayos, es decir, $\forall x\in C$ $\lambda x\in C, \lambda\geq 0$.
+\begin{defi} Diremos que $C\subset\R^n$ es un \textbf{cono} si contiene a todos sus rayos, es decir, $\forall x\in C$ $\lambda x\in C, \lambda\geq 0$.
 \end{defi}
 \begin{example}
 Una semirrecta que pasa por el origen es un cono. No todos los conos son conjuntos convexos.
@@ -143,7 +143,7 @@ Veamos que existe $\overline{x}$: consideramos el conjunto \[ \overline{S}=S\cap
 \]
 Consideramos el punto medio $\dfrac{\overline{x}+\hat{x}}{2}\in S$ por ser $S$ convexo. Ahora, aplicando la desigualdad triangular
 \[
-|| y-\frac{\overline{x}+\hat{x}}{2}||=||\frac{y}{2}-\frac{\overline{x}}{2}+\frac{y}{2}-\frac{\hat{x}}{2}||\leq ||\frac{y-\overline{x}}{2}||+||\frac{y-\hat{x}}{2}||=\frac{1}{2}\left(||y-\overline{x}||+||y-\hat{x}||\right)
+|| y-\frac{\overline{x}+\hat{x}}{2}||=||\frac{y}{2}-\frac{\overline{x}}{2}+\frac{y}{2}-\frac{\hat{x}}{2}||\leq ||\frac{y-\overline{x}}{2}||+||\frac{y-\hat{x}}{2}||=\frac{1}{2}\left(||y-\overline{x}||+||y-\hat{x}||\right)=\gamma
 \]
 Como $\gamma$ era la distancia mínima, las desigualdades en realidad son igualdades. La desigualdad triangular solo se convierte en igualdad cuando los vectores son proporcionales, luego $y-\overline{x}=\alpha(y-\hat{x})$, y como ambos tienen norma $\gamma$, necesariamente $|\alpha|=1$. Si $\alpha=-1$ entonces $y-\overline{x}=-(y-\hat{x})\Rightarrow 2y=\hat{x}+\overline{x}\Rightarrow y=\dfrac{\hat{x}+\overline{x}}{2}\in S$, lo cual no es posible porque habíamos supuesto que $y\not\in S$. Por lo tanto $\alpha=1$ y deducimos que $\overline{x}=\hat{x}$.\\
 Por último probemos la caracterización. Supongamos que $\overline{x}$ verifica $(y-\overline{x})'(x-\overline{x})\leq 0\ \forall x\in S$. Entonces $\forall x\in S$
@@ -157,7 +157,7 @@ El último término es mayor o igual que $0$ por hipótesis, y como la norma es 
 Restando a ambos lados no queda $\lambda^2||\overline{x}-x||-2\lambda(y-\overline{x})'(x-\overline{x})\geq 0$. Simplificamos usando que $\lambda$ es estrictamente positiva y despejamos y tenemos que $\lambda||x-\overline{x}||\geq 2(y-\overline{x})'(x-\overline{x})$. Como vale para todo $\lambda\in (0,1)$, tomando límite ($\lambda\rightarrow 0$) y deducimos:  $0\geq (y-\overline{x})'(x-\overline{x})$. $\QED$
 \end{dem}
 
-\begin{defi} Sean dos conjuntos convexos $S_1,S_2\subset\R^n$ y el hiperplano $H=\{x\in\R^n: p'x=\alpha\}$. Decimos que $H$ separa $S_1$ de $S_2$ si $p'x\leq\alpha$ $\forall x\in S_1$ y $p'x\geq\alpha$ $\forall x\in S_2$. Se dice que $H$ separa estrictamente a $S_1$ de $S_2$ si las desigualdades son estrictas.
+\begin{defi} Sean dos conjuntos convexos $S_1,S_2\subset\R^n$ y el hiperplano $H=\{x\in\R^n: p'x=\alpha\}$. Decimos que $H$ \textbf{separa los convexos} $S_1$ de $S_2$ y $p'x\leq\alpha$ $\forall x\in S_1$ y $p'x\geq\alpha$ $\forall x\in S_2$ o recíprocamente. Se dice que $H$ separa estrictamente a $S_1$ de $S_2$ si las desigualdades son estrictas.
 \end{defi}
 
 \begin{lema}
@@ -243,11 +243,11 @@ K\overline{x}+\overline{x}=K(\sum_{i=1}^n\overline{x}^i)+\sum\overline{x}=\sum_{
 \]
 $\QED$
 \end{dem}
-
+\newpage
 \section{Representación de poliedros}
 
 \begin{defi}
-Diremos que un poliedro $P$ está en forma estándar si $P=\{x\in\R^n: Ax=b,x\geq 0\}$ con $A\in\R^{m\times n},$ $b\in\R^m$, $n\geq m$ y $rg(A)=m$.
+Diremos que un poliedro $P$ está en forma \textbf{estándar} si $P=\{x\in\R^n: Ax=b,x\geq 0\}$ con $A\in\R^{m\times n},$ $b\in\R^m$, $n\geq m$ y $rg(A)=m$.
 \end{defi} 
 \begin{nota}
 Todo poliedro se puede escribir en forma estándar pues $a'x\leq b\equiv a'x+y=b, y\geq 0$ y análogamente restando para la desigualdad contraria.
@@ -261,29 +261,25 @@ x_B\\
 x_N
 \end{bmatrix}=b
 \]
-
-Sea $A \subset \R^{m \times n}$, $rg(A) = m$, $m ≤ n$ y $b \in \R^m$. Consideramos $P = \{ x \in \R^n : Ax=b, x ≥ 0\}$ (poliedro en forma estándar).
-
-\begin{theorem}[Teorema de caracterización de puntos extremos]\label{carac-extremos}
-Sea $P$ un poliedro en las condiciones anteriores. Entonces $x$ es un punto extremo de $P$ si y sólo si existe $B \subset A$ con $B \in \R^{m \times m}$, $rg(B)=m$, $B^{-1}b ≥ 0$ y $x = \begin{pmatrix} B^{-1}b\\0\end{pmatrix}$
+\begin{theorem}[Caracterización de puntos extremos]\label{carac-extremos}
+Sea $P$ un poliedro en forma estándar. Entonces $x$ es un punto extremo de $P$ si y sólo si existe $B \subset A$ con $B \in \R^{m \times m}$, $rg(B)=m$ y $x = \begin{pmatrix} B^{-1}b\\0\end{pmatrix}\geq 0$
 \end{theorem}
 
 \begin{dem}
-($\Leftarrow$) Supongamos que $x =\begin{pmatrix} B^{-1}b\\0\end{pmatrix}$, $B \subset A$ con $B \in \R^{m \times m}$, $rg(B)=m$, $B^{-1}b ≥ 0$. Usaremos reducción al absurdo, supongamos que existen $x^1$, $x^2 \in P$ tal que $x = λx^1+(1-λ)x^2$ con $λ \in (0,1)$. Tenemos que $A = [B\ N]$ y $x = \begin{pmatrix}x_B\\x_N\end{pmatrix} = \begin{pmatrix} B^{-1}b\\0\end{pmatrix}$, $x^1 = \begin{pmatrix}x_B^1\\x_N^1\end{pmatrix}$ y $x^2 = \begin{pmatrix}x_B^2\\x_N^2\end{pmatrix}$ Luego:
+($\Leftarrow$) Supongamos que $x =\begin{pmatrix} B^{-1}b\\0\end{pmatrix}$, $B \subset A$ con $B \in \R^{m \times m}$, $rg(B)=m$, $B^{-1}b ≥ 0$. Supongamos que existen $x^1$, $x^2 \in P$ tal que $x = λx^1+(1-λ)x^2$ con $λ \in (0,1)$. Tenemos que $A = [B\ N]$ y $x = \begin{pmatrix}x_B\\x_N\end{pmatrix} = \begin{pmatrix} B^{-1}b\\0\end{pmatrix}$, $x^1 = \begin{pmatrix}x_B^1\\x_N^1\end{pmatrix}$ y $x^2 = \begin{pmatrix}x_B^2\\x_N^2\end{pmatrix}$. Por tanto:
 \[ x = \begin{pmatrix} B^{-1}b\\0\end{pmatrix} = λ\begin{pmatrix}x_B^1\\x_N^1\end{pmatrix}+(1-λ)\begin{pmatrix}x_B^2\\x_N^2\end{pmatrix} \]
-De ahí, $0 = λ x_N^1 + (1-λ) x_N^2$. Como $x_N^i ≥ 0$, se sigue que $x_N^i = 0$. De $x^i \in P$, se sigue que $Ax^i = b \equiv [B\ N]\begin{bmatrix}x_B^i\\0
+Luego, $0 = λ x_N^1 + (1-λ) x_N^2$. Como $x_N^i ≥ 0$ y$\lambda\in(0,1)$, se sigue que $x_N^i = 0$. Finalmente, usando que $x^i \in P$, se tiene que $Ax^i = b \equiv [B\ N]\begin{bmatrix}x_B^i\\0
 \end{bmatrix} = b \equiv Bx_B^i + N0 = b$. Por lo tanto: $x_B^i = B^{-1}b \geq 0$, luego $x^i = \begin{pmatrix}B^{-1}b\\0\end{pmatrix}=x$ para $i=1,2$.
 
 
-($\Rightarrow$) Supongamos que $x$ fuera un punto extremo de $P$. Se tiene que $Ax=b, x ≥ 0$. Como $rg(A) = m$ podemos suponer sin pérdida de generalidad que $x =(x_1,\dots,x_k,0,\dots,0)$ con $x_i > 0$ y $k ≤ m$.
-Vamos a probar que las columnas asociadas a estas coordenadas $(a^1, a^2, \dots, a^k)$ son linealmente independientes. Si no lo fueran, existirían $λ_1,λ_2, \dots, λ_k$ tales que $\sum_{i=1}^k λ_i a^i = 0$. Denotamos or $λ =(λ_1,\dots,λ_k,0,\dots,0)$. Entonces $Aλ=λ_1a^1 + λ_2a^2 + \cdots + λ_ka^k + 0a^{k+1}+\cdots+0a^n = 0$. Entonces podemos considerar los puntos $x^1 = x+αλ$ y $x^2 = x-αλ$ y $α > 0$. Claramente $x^1 \neq x^2$ y $x = \frac{1}{2}x^1+ \frac{1}{2}x^2$. Veamos que $x^i \in P$ para $i=1,2$.
+($\Rightarrow$) Supongamos que $x$ es punto extremo de $P$. Entonces $Ax=b, x ≥ 0$. Como $rg(A) = m$ podemos suponer sin pérdida de generalidad que $x =(x_1,\dots,x_k,0,\dots,0)$ con $x_i > 0$ y $k ≤ m$.
+Vamos a probar que las columnas asociadas a estas coordenadas $(a^1, a^2, \dots, a^k)$ son linealmente independientes. Por reducción al absurdo, si no lo fueran $\exists λ_1,λ_2, \dots, λ_k$ tales que $\sum_{i=1}^k λ_i a^i = 0$. Denotamos por $λ =(λ_1,\dots,λ_k,0,\dots,0)'$. Entonces $Aλ=λ_1a^1 + λ_2a^2 + \cdots + λ_ka^k + 0a^{k+1}+\cdots+0a^n = 0$. Podemos pues considerar los puntos $x^1 = x+αλ$ y $x^2 = x-αλ$ y $α > 0$. Claramente $x^1 \neq x^2$ y $x = \frac{1}{2}x^1+ \frac{1}{2}x^2$. Veamos que $x^i \in P$ para $i=1,2$.
 \[ Ax^i = A(x \pm αλ) = Ax \pm α(\underset{=0}{Aλ}) = Ax = b \]
 \[ x^i = x \pm αλ = \begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix} \pm α \begin{pmatrix}λ_1\\\vdots\\λ_k\\0\\\vdots\\0\end{pmatrix} \]
 Por hipótesis, $x_1,\dots,x_k > 0$. Tomando $α$ suficientemente pequeño, podemos asegurar que $x_i \pm αλ_i > 0$. Entonces $x^i \geq 0$ y $x^i \in P$. Esto contradice que $x$ sea un punto extremo. Podemos entonces asegurar que $(a^1,\dots,a^k)$ son linealmente independientes. Podemos completar $(a^1,\dots,a^m)$ hasta $m$ columnas linealmente independientes (podemos ya que $rg(A) = m$). Tomamos $B = (a^1,\dots,a^m)$. Entonces:
 
 
-\[ Ax =[B\ N]\begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix}_{(n)} = B \begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix}_{(m)} +N0_{(m-n)} = b \]
-Luego: \[ \begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix} = B^{-1}b \geq 0 \qquad x = \begin{pmatrix}B^{-1}b\\0\end{pmatrix} \]
+\[ Ax =[B\ N]\begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix}_{(n)} = B \begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix}_{(m)} +N0_{(m-n)} = b \Rightarrow x = \begin{pmatrix}B^{-1}b\\0\end{pmatrix}, \quad \begin{pmatrix}x_1\\\vdots\\x_k\\0\\\vdots\\0\end{pmatrix} = B^{-1}b \geq 0   \]
 \end{dem}
 
 \begin{nota}
