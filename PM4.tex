@@ -72,9 +72,10 @@ y finalmente pasarlo al problema dual
 	u ≥ 0
 \end{align*}
 \end{example}
-
+\begin{nota} Denotaremos $X = \{x \in \R^n : Ax ≥ b, x ≥ 0\}$ y $U = \{ u \in \R^m \mid u'A ≤ c', u ≥ 0 \}$.
+\end{nota}
 \begin{theorem}[Teorema de dualidad débil]
-Para todo $x \in X$ y $u \in U$, donde $X = \{x \in \R^n : Ax ≥ b, x ≥ 0\}$ y $U = \{ u \in \R^m \mid u'A ≤ c', u ≥ 0 \}$, se verifica que $c'x ≥ u'b$.
+Para todo $x \in X$ y $u \in U$ se verifica que $c'x ≥ u'b$.
 \end{theorem}
 
 \begin{dem}
@@ -95,7 +96,7 @@ Por la observación anterior, sigue inmediatamente.
 \end{dem}
 
 \begin{theorem}[Teorema de dualidad fuerte]
-Si $X \neq \emptyset$ y $U \neq \emptyset$, entonces existen $x^*$ y $u^*$ soluciones óptimas de (P) y (D) respectivamente. Además, $c'x^* = (u^*)'b$.
+Si $X \neq \emptyset$ y $U \neq \emptyset$, entonces existen $x^*$ y $u^*$ soluciones óptimas de (P) y (D) respectivamente. Además, $c'x^* = {u^*}'b$.
 \end{theorem}
 
 \begin{dem}
@@ -208,7 +209,7 @@ Estamos en el caso 1 del teorema anterior y, por tanto, $t_0 > 0$. Consideramos 
 \[ -\overline{u}A + c' +\overline{x}' > 0\]
 \end{dem}
 
-\begin{theorem}[Otro teorema de holgura complementaria] Sean $x^*$, $u^*$ soluciones factiables de P y D, respectivamente. Entonces $x^*$ y $u^*$ son soluciones óptimas si y sólo si $u^*(Ax^*-b)=0$, $(u'^{*} A-c')x^*=0$.
+\begin{theorem}[Otro teorema de holgura complementaria] Sean $x^*$, $u^*$ soluciones factibles de P y D. Entonces $x^*$ y $u^*$ son soluciones óptimas si y sólo si $u^*(Ax^*-b)=0$, $(u'^{*} A-c')x^*=0$.
 \end{theorem}
 \begin{dem}
 \[
@@ -229,17 +230,18 @@ u'^*Ax^* > u'^* b \Rightarrow c'x^* \geq u'^*Ab>u'^*b
 Lo cual es un absurdo. Análogamente deducimos que $(u'^*A-c')x^* \leq 0$. Si la desigualdad fuera estricta llegaríamos al mismo absurdo que en el caso anterior usando que, como $Ax^* \geq b$.
 \end{dem}
 \section{Análisis de postoptimalidad}
+\subsection{Variaciones en la función objetivo}
 Dado un problema $(P)$ $\min c'x$, $Ax=b$, $x\geq 0$. Considero un vector $d\in\R^n$ y la familia de problemas: $P(\Delta)$: $\min c'x + \Delta d'x$, $Ax=b$, $x\geq 0$. Observemos que $P=P(0)$. Supongamos que B es una base asociada a una solución óptima de $x^*(0)$. Es decir, $x^*(0)=[B^{-1}b | 0]' \geq 0$. Queremos determinar el rango de valores de $\Delta$ que mantienen a $x^*(0)$ como solución óptima de $P(\Delta)$. La condición que certifica que $B$ es una base óptima son:
 \begin{itemize}
 \item $B^{-1}b \geq 0$.
-\item $\overline{c_R}'(0)_N  = \overline{c}'_N = c'_N - c_B'B^{-1}N \geq 0$. 
+\item $\overline{c_R(0)}'  = c'_N - c_B'B^{-1}N \geq 0$. 
 \end{itemize}
 Las condiciones en $P(\Delta)$. 
 \begin{itemize}
 \item $B^{-1}b \geq 0$.
-\item $\overline{c_R}'_N = (c +\Delta d)'_N- (c+\Delta d)'_B B^{-1}N = \overline{c_R}'(0)_N  + \Delta (d_N'-d'_BB^{-1}N) =  \overline{c_R}'(0)_N + \Delta \overline{d}_N\geq 0$. 
+\item $\overline{c_R}'(\Delta) = (c +\Delta d)'_N- (c+\Delta d)'_B B^{-1}N = \overline{c_R}'(0)  + \Delta (d_N'-d'_BB^{-1}N) =  \overline{c_R}'(0)_N + \Delta \overline{d}_N'\geq 0$. 
 \end{itemize}
-Para una componente genérica $j\in \mathbb{N}$ se tiene que $\overline{c}_j+\Delta d_j\geq 0$. Entonces:
+Para una componente genérica $j\in \mathbb{N}$ se tiene que $\overline{c}_j+\Delta \overline{d_j}\geq 0$. Entonces:
 \[
 \begin{cases}
 -\frac{\overline{c}_j}{\overline{d}_j} \geq \Delta & si \quad \overline{d}_j <0\\
@@ -248,9 +250,9 @@ Para una componente genérica $j\in \mathbb{N}$ se tiene que $\overline{c}_j+\De
 \Rightarrow \max_{j:\overline{d}_j >0}-\frac{\overline{c}_j}{\overline{d}_j} \leq \Delta \leq \min_{j:\overline{d}_j <0}-\frac{\overline{c}_j}{\overline{d}_j}
 \]
 
-\subsection{Análisis de las variaciones en términos independientes}
+\subsection{Variaciones en términos independientes}
 
-Sea $z(0)= \min c'x$ sujeto a $Ax=b, x\geq 0$. Queremos estudiar que pasa si elegimos $g\in\R^m$ y construimos el problema
+Sea $z(0)= \min c'x$ sujeto a $Ax=b, x\geq 0$. Para cada $g\in\R^m$ queremos estudiar qué le ocurre al problema:
 \begin{align*}
 z(\Delta)=\min c'x\\
 sa: Ax=b+\Delta g\\
@@ -258,18 +260,17 @@ sa: Ax=b+\Delta g\\
 \end{align*}
 Si $B$ es una base asociada a la solución óptima de $z(0)$, ¿cuál es el rango de $\Delta$ que mantiene $B$ óptima? Las condiciones para que sea óptima son:
 \begin{enumerate}
-\item Condición de optimalidad. \[\overline{c}_N=c'_N-c'_B B^{-1}N\geq 0.\]
-En $z(\Delta)$, teniendo en cuenta que no cambia la función ni las columnas de $A$, esta condición es
-\[\overline{c}_N=c'_N-c'_B B^{-1}N\geq 0\] si $\overline{c}_N\geq 0$, que lo es. 
-\item Factibilidad. En $z(0)$ es $B^{-1}b=\overline{b}\geq 0$. En $z(\Delta)$ es 
+\item Condición de optimalidad. Como nuestra solución es óptima en $\Delta =0$: \[\overline{c_R(0)}'=c'_N-c'_B B^{-1}N\geq 0.\]
+Esta condición se sigue manteniendo en el problema modificado, es decir, $\overline{c_R(\Delta)}\geq 0$ $\forall \Delta \in \R$.
+\item Factibilidad. En $z(0)$ es $B^{-1}b=\overline{b}\geq 0$. En $z(\Delta)$ es:
 \[B^{-1}b(\Delta)=B^{-1}(b+\Delta  g)=B^{-1}b+\Delta B^{-1}g=\overline{b}+\Delta\overline{g}\geq 0\]
-Tomemos un índice $i$ arbitrario.
-
-\[\overline{b}_i+\Delta\overline{g}_i\geq 0\ \forall i=1,\dots, m\Leftrightarrow -\Delta\overline{g}_i\leq\overline{b}_i\]
-Si $g_i<0$: $\Delta\leq\frac{\overline{b}_i}{-\overline{g}_i}$.\\
-Si $g_i>0$: $\Delta\geq\frac{-\overline{b}_i}{\overline{g}_i}$.\\
-Luego
-\[\max_{i, g_i>0}\{\frac{-\overline{b}_i}{\overline{g}_i}\}\leq\Delta \leq \min_{i,g_i<0}\{\frac{-\overline{b}_i}{\overline{g}_i}\}\]
+Tomemos un índice $j$ arbitrario. Entonces $\overline{b}_j+\Delta\overline{g}_j\geq 0$. Por tanto:
+\[
+\begin{cases}
+-\frac{\overline{b}_j}{\overline{g}_j} \geq \Delta & si \quad \overline{g}_j <0\\
+-\frac{\overline{b}_j}{\overline{g}_j} \leq \Delta & si \quad \overline{g}_j >0
+\end{cases}
+\Rightarrow \max_{j:\overline{g}_j >0}-\frac{\overline{b}_j}{\overline{g}_j} \leq \Delta \leq \min_{j:\overline{g}_j <0}-\frac{\overline{b}_j}{\overline{g}_j}\]
 \end{enumerate}
 \begin{example}
 \begin{align*}
@@ -279,7 +280,7 @@ sa: & x_1+x_2 &\leq 5\\
     & 6x_1+2x_2 & \leq 21\\
     & x_1,x_2 & \geq 0
 \end{align*}
-Pongamos $g'=(0,0,1)$. La báse óptima para $x_1,x_2,x_4$ de este problema era $B=[a_1\ a_2\ a_4]$. Imponemos $B^{-1}(b+\Delta g)\geq 0$ y despejamos $\Delta$ Obtenemos
+Pongamos $g'=(0,0,1)$. La base óptima para $x_1,x_2,x_4$ de este problema era $B=[a_1\ a_2\ a_4]$. Imponemos $B^{-1}(b+\Delta g)\geq 0$ y despejamos $\Delta$ Obtenemos
 \[
 \begin{pmatrix}
 \frac{11}{4}\\
@@ -295,13 +296,7 @@ Por lo tanto $\Delta\in [-1,9]$. Esto quiere decir que $B$ es óptima para $b_3\
 \end{example}
 
 \subsection{Añadir una nueva variable $x_{n+1}$ a un problema}
-Pasamos del problema $(P)$
-\begin{align*}
-\min\ & c'x\\
-sa:\ & Ax=b\\
- & x\geq 0
-\end{align*}
-al problema $(P')$
+Dado un problema $(P)$ $\min c'x$, $Ax=b$, $x\geq 0$. Queremos estudiar cuánto sigue siendo óptima una base de (P) en el problema $(P')$
 \begin{align*}
 \min\ & c'x+c_{n+1}x_{n+1}\\
 sa:\ & [A|a_{n+1}]\begin{bmatrix}
@@ -313,51 +308,44 @@ x_{n+1}
 Dada $B$ una base óptima en $(P)$ queremos determinar una condición para que sea óptima en $(P')$. Las condiciones para $(P')$ son:
 \begin{enumerate}
 \item Factibilidad, que es la misma que en $(P)$, $B^{-1}b\geq 0$. 
-\item Optimalidad. En $(P)$ \[\overline{c}_N=c'_N-c'_B B^{-1}N\geq 0.\]
-En $(P')$
+\item Optimalidad. Debe verificarse que:
 \[\overline{c}_N(P')=(c'_N, c_{n+1})-c'_B B^{-1}[N| a_{n+1}]\geq 0\]
-Esto es equivalente a que se cumplan al mismo tiempo
-\[\overline{c}_N=c'_N-c'_B B^{-1}N\geq 0,\]
-que ya la teníamos, y 
-\[c_{n+1}-c'_B B^{-1} a_{n+1}\geq 0.\] Esta sería la condición que buscábamos.
+Lo cual es equivalente a que se cumplan al mismo tiempo
+\[
+\begin{cases}c'_N-c'_B B^{-1}N\geq 0\\
+c_{n+1}-c'_B B^{-1} a_{n+1}\geq 0\end{cases}\]
+La primera se verifica trivialmente por las hipótesis. La segunda es la condición que buscábamos.
 
 \end{enumerate}
 
 \subsection{Añadir una restricción}
-Partimos de nuevo del problema $(P)$ anterior y lo llevamos al problema $(P_q)$
-\begin{align*}
-\min\ & c'x\\
-sa:\  & Ax=b\\
-& a'_q x\leq b_q\\
- & x, b_q\geq 0
-\end{align*}
-Lo escribimos en forma estándar
+Partimos de nuevo del problema $(P)$ $\min c'x$, $Ax=b$, $x\geq 0$. y le añadimos la restricción $a'_q x\leq b_q$ con $b_q \geq 0$ para formar el problema $(P_q)$. En tal caso, estandarizamos el problema añadiendo una holgura $x_q$ y nos queda:
 \begin{align*}
 \min\ & c'x\\
 sa:\  & Ax=b\\
 & a'_q x+h_q= b_q\\
  & x, b_q, h_q\geq 0
 \end{align*}
-Suponemos que $B$ es una base óptima en $(P)$ y queremos analizar la solución de $(P_q)$. Es decir, $x=\begin{bmatrix}
-B^{-1}b\\
-0\end{bmatrix}$, $h_q=b_q-(a_q)_B B^{-1}b$.  Evaluamos esta solución en el problema reordenando las columnas de $a_q$.
-\[ [(a_q)_B, (a_q)_N]\begin{bmatrix}
-B^{-1}b\\
-0\end{bmatrix} +h_q=b_q.\] Hay que comprobar que $h_q\geq 0$ para que tenga sentido. La base asociada a esta solución es
+Suponemos que $B$ es una base óptima en $(P)$. Queremos analizar la base formada por $B$, la ampliación de las columnas y la nueva holgura, es decir:
 \[ B_q=\begin{bmatrix}
 B & 0\\
 (a_q)_B & 1
-\end{bmatrix}.\] La última columna proviene de haber añadido $h_q$. Su inversa tiene la siguiente forma:
-\[ B_q^{-1}=\begin{bmatrix}
-B^{-1} & 0\\
-\alpha & 1
-\end{bmatrix},\] con $\alpha$ tal que $(a'_q)_B B^{-1} +\alpha=0$. Es decir, $\alpha=-(a'_q)_B B^{-1}$. Queda pues, finalmente así la inversa (comprobarlo)
+\end{bmatrix}.\]
+La solución asociada a esta base es $x=
+\begin{bmatrix}
+B^{-1}b & b_q-(a_q)_B B^{-1}b & 0\end{bmatrix}'$, $h_q=$. La inversa de nuestra base inversa tiene la siguiente forma:
 \[ B_q^{-1}=\begin{bmatrix}
 B^{-1} & 0\\
 -(a'_q)_B B^{-1} & 1
 \end{bmatrix}.\]
-Para que esta solución sea óptima 
+Comprobamos las condiciones de optimalidad y factibilidad:
 \begin{enumerate}
+
+\item La optimalidad se tiene siempre a partir de la optimalidad de B en (P), pues
+\[\overline{c}_N(P_q)=c'_N-(c'_B,0)B_q^{-1}\begin{bmatrix}
+N\\
+(a'_q)_N
+\end{bmatrix}\geq 0 \equiv c'_N-[c'_B B_q^{-1} N + 0]=\overline{c}_N\geq 0\]
 \item $B_q^{-1}\begin{bmatrix}
 b\\
 b_q
@@ -370,15 +358,11 @@ b_q
 \end{bmatrix}=\begin{bmatrix}
 B^{-1}b\\
 -(a'_q)_B B^{-1}+b_q
-\end{bmatrix}\geq 0$. Observamos que la única condición nueva es $-(a'_q)_B B^{-1}+b_q\geq 0$.
-\item $\overline{c}_N(P_q)=c'_N-(c'_B,0)B_q^{-1}\begin{bmatrix}
-N\\
-(a'_q)_N
-\end{bmatrix}\geq 0$. Esto es equivalente a $c'_N-[c'_B B_q^{-1} N + 0]=\overline{c}_N\geq 0$.
+\end{bmatrix}\geq 0$. La primera desigualdad se tiene trivialmente, luego llegamos a la condición es $-(a'_q)_B B^{-1}+b_q\geq 0$.
 \end{enumerate}
 
 \begin{example}
-Añadimos al ejemplo anterior la restricción $x_1+x_2\leq 4$ y lo escribimos en forma estándar añadiendo $x_3,x_4,x_5,x_6$.
+Añadimos al ejemplo anterior la restricción $x_1+x_2\leq 4$ y estandarizamos:
 \[\begin{aligned}
 \min & -2x_1-x_2 &\\
 sa: & x_1+x_2 +x_3 &= 5\\
@@ -387,19 +371,7 @@ sa: & x_1+x_2 +x_3 &= 5\\
     & x_1+x_2 +x_6  & = 4\\
     & x_1,x_2,x_3,x_4,x_5,x_6 & \geq 0
 \end{aligned}\]
-Obsérvese que hemos añadido $x_4$ aunque ya teníamos una igualdad en la segunda restricción. Esto no importa porque la solución puede dar $x_4=0$. En este problema $a'_q=(1,1,0,0,0)$, $b_q=4$ y $B_6=[a_1\ a_2\ a_4\ a_6]$ (la de antes añadiendo $a_6$). Para que sea óptima $-(a'_q)_B B^{-1}+b_q\geq 0$. Si operamos nos da $-\frac{13}{4}\not\geq 0$, por lo que no es óptima. Tendríamos entonces
-\[ B_q^{-1}\begin{bmatrix}
-5\\
-0\\
-21\\
-4
-\end{bmatrix}=\begin{bmatrix}
-\frac{11}{4}\\
-\frac{9}{4}\\
-\frac{1}{2	}\\
--\frac{13}{4}
-\end{bmatrix}\]
-Como tenemos un elemento negativo, usaríamos el método del símplex dual.
+Se deja como ejercicio ver que no se verifica la condición obtenida.
 \end{example}
 
 \section{Precios Sombra}
