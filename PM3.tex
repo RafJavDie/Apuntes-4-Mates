@@ -14,8 +14,8 @@ Planteamos el problema de programación lineal $\underset{Ax=b,x\geq 0}{\min} c'
 \[\underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} c'\left[\sum_{i=1}^k\lambda_ix^i +\sum_{j=1}^l\mu_j d^j\right] \]
 Supongamos que $c'd^j\geq 0\ \forall j$. Entonces continuamos la ecuación anterior con 
 \begin{gather*}
- \underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[\sum_{i=1}^k\lambda_ic'x^i +\sum_{j=1}^l\mu_j \underset{\geq 0}{c'd^j}\right]\geq \underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[\sum_{i=1}^k\lambda_ic'x^i\right]\geq \\
-\underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[\sum_{i=1}^k\lambda_ic'\overline{x}\right]= \underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[c'\overline{x}\sum_{i=1}^k\lambda_i\right]=c'\overline{x}
+ \underset{\lambda_i\geq 0, \mu_j\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[\sum_{i=1}^k\lambda_ic'x^i +\sum_{j=1}^l\mu_j \underset{\geq 0}{c'd^j}\right]\geq \underset{\lambda_i\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[\sum_{i=1}^k\lambda_ic'x^i\right]\geq \\
+\underset{\lambda_i\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[\sum_{i=1}^k\lambda_ic'\overline{x}\right]= \underset{\lambda_i\geq 0, \sum_{i=1}^k\lambda_i=1}{\min} \left[c'\overline{x}\sum_{i=1}^k\lambda_i\right]=c'\overline{x}
 \end{gather*}
 donde $\overline{x}$ el punto extremo que minimiza $c'x^i$. Por tanto $c'\overline{x}$ es el valor mínimo, y $\overline{x}$ es un punto extremo. Recíprocamente, si $\exists j\mid c'd^j<0$ consideramos $x\in P$ y el rayo $x+\lambda d^j\in P\ \forall\lambda\geq 0$. 
 \[ c'(x+\lambda d^j)=\underset{cte}{c'x} + \underset{<0}{\lambda c' d^j}\underset{\lambda\to\infty}{\longrightarrow} -\infty\]
@@ -25,27 +25,28 @@ donde $\overline{x}$ el punto extremo que minimiza $c'x^i$. Por tanto $c'\overli
 Dada una función $f$ que alcanza un mínimo en $S\subset\R^n$, entonces \[\min_{x\in S} f(x)= -\max_{x\in S}-f(x)\].
 \end{nota}
 
-
+\section{Consideraciones}
 Supongamos que $\overline{x}$ es un punto extremo de $P$ representado por $B\subset A, rg(B)=m, B^{-1}b\geq 0$. Es decir, $\overline{x}=\begin{pmatrix}
 B^{-1}b\\
 0
-\end{pmatrix}$. Reordenamos las columnas de la forma $A=(B N)$. Sea $x\in P$ otro punto genérico. Entonces $x=\begin{pmatrix}
+\end{pmatrix}$. Reordenamos las columnas de la forma $A=(B N)$. Sea $x \begin{pmatrix}
 x_B\\
 x_N
-\end{pmatrix}$. Como $Ax=b, x\geq 0$ entonces
+\end{pmatrix} \in P$ otro punto genérico. Como $Ax=b, x\geq 0$ podemos escribir $x$ como:
 \[ (B N) \begin{pmatrix}
 x_B\\
 x_N
-\end{pmatrix}= b\equiv Bx_B + Nx_N=b.\]
-Luego $x_B=B^{-1}b-B^{-1}Nx_N$, así que 
-\[ x=\begin{pmatrix}
+\end{pmatrix}= b\equiv Bx_B + Nx_N=b \Rightarrow x_B = B^{-1}b-B^{-1}Nx_N \]
+Por tanto, $x=\begin{pmatrix}
 B^{-1}b-B^{-1}Nx_N\\
 x_N
-\end{pmatrix}\]
-Ahora bien, \[c'x=(c'_B, c'_N)\begin{pmatrix}
-B^{-1}b-B^{-1}Nx_N\\
-x_N
-\end{pmatrix}=\underbrace{c'_B B^{-1}b}_{c'\overline{x}}-c'_B B^{-1}Nx_N+c'_Nx_N=c'\overline{x}+(c'_N-c'_BB^{-1}N)x_N\]. Si $c'_N-c'_BB^{-1}N\geq 0$, entonces $c'x\geq c'\overline{x}$, por lo que $\overline{x}$ es mínimo. Si esta condición no se cumple, existirá $j$ tal que $a_j\in N$ de forma que $c_j-c'_BB^{-1}a_j<0$. Construimos $d_j=\begin{pmatrix}
+\end{pmatrix}$. 
+
+\begin{prop} $\overline{x}$ es mínimo si y solo sí $c'x\geq c'\overline{x}$, esto es, si $c'_N-c'_BB^{-1}N\geq 0$. 
+\end{prop}
+\begin{dem}
+Si consideramos $c'x= c'\overline{x}+(c'_N-c'_BB^{-1}N)x_N$ una implicación es trivial. Recíprocamente si esta condición no se cumple, existirá $j$ tal que $a_j\in N$ de forma que $c_j-c'_BB^{-1}a_j<0$. 
+Construimos $d_j=\begin{pmatrix}
 -B^{-1}a_j\\
 e_j
 \end{pmatrix}$ y consideramos $\overline{x}+\lambda d_j,\ \lambda\geq 0$. La evaluación de $x(\lambda)$ será 
@@ -57,22 +58,18 @@ e_j
 c'\overline{x}+\lambda\underbrace{(-c'_B B^{-1}a_j +c_j)}_{<0}< c'\overline{x}, \forall\lambda >0.
 \end{gather*}
 Es decir, $c'x(\lambda)<c'\overline{x}, \forall\lambda >0$. Si $B^{-1}a_j\leq 0$, por el teorema de representación de direcciones extremas, $d_j$ será una dirección de $P$. Por ello, toda la semirrecta $x(\lambda)=\overline{x}+\lambda d_j\subset P$, es decir, $x(\lambda)\in P\forall\lambda >0$. Entonces $c'x(\lambda)\underset{\lambda\to\infty}{\longrightarrow} -\infty$, esto es, no existe mínimo.
-
 En otro caso, $B^{-1}a_j\not\leq 0$. Denotamos $y_j=B^{-1}a_j, \overline{b}=B^{-1}b$. Esto es, $\exists i\mid y_{ij}>0$. Entonces puedo considerar 
 \[
 \frac{\overline{b}_r}{y_{rj}}=\min\{\frac{\overline{b}_i}{y_{ij}}:y_{ij}>0\}
 \]
-y el punto $x(\frac{\overline{b}_r}{y_{rj}})=\overline{x}+\frac{\overline{b}_r}{y_{rj}}d_j$. Vamos a probar que $x(\frac{\overline{b}_r}{y_{rj}})\in P$.
+y el punto $x(\frac{\overline{b}_r}{y_{rj}})=\overline{x}+\frac{\overline{b}_r}{y_{rj}}d_j$. Vamos a probar que $x(\frac{\overline{b}_r}{y_{rj}})\in P$, es decir, que $Ax(\frac{\overline{b}_r}{y_{rj}})=b$ y que $x(\frac{\overline{b}_r}{y_{rj}})\geq 0$.
 \begin{itemize}
-\item $x(\frac{\overline{b}_r}{y_{rj}})\geq 0$. Sea $d_j=\begin{pmatrix}
+\item Sea $d_j=\begin{pmatrix}
 -y_j\\
 e_j
-\end{pmatrix}$ Si $i\in B, i\neq r$, $\overline{b}_i-\frac{\overline{b}_r}{y_{rj}}y_{ij}\geq 0$ si y solo si $\frac{\overline{b}_i}{y_{ij}}\geq\frac{\overline{b}_r}{y_{rj}}$ si $y_{ij}>0$, lo cual es cierto por definición. Si $y_{ij}<0$ entonces $\overline{b}_i-\frac{\overline{b}_r}{y_{rj}}y_{ij}\geq 0$.\\
-Si $r\in B$, $\overline{b}_r-\frac{\overline{b}_r}{y_{rj}}y_{rj}=0$.\\
-Si $i\in N, i\neq j$, entonces $\overline{x}_i+\frac{\overline{b}_r}{y_{rj}}d_{ij}$.\\
-Si $j\in N$, entonces $\overline{x}_j+\frac{\overline{b}_r}{y_{rj}}d_{ij}=0+\frac{\overline{b}_r}{y_{rj}}\cdot 1=\frac{\overline{b}_r}{y_{rj}}>0$.
+\end{pmatrix}$ Si $i\in B, i\neq r$, $\overline{b}_i-\frac{\overline{b}_r}{y_{rj}}y_{ij}\geq 0$ si y solo si $\frac{\overline{b}_i}{y_{ij}}\geq\frac{\overline{b}_r}{y_{rj}}$ si $y_{ij}>0$, lo cual es cierto por definición. Si $y_{ij}<0$ entonces $\overline{b}_i-\frac{\overline{b}_r}{y_{rj}}y_{ij}\geq 0$. Si $r\in B$, $\overline{b}_r-\frac{\overline{b}_r}{y_{rj}}y_{rj}=0$. Si $i\in N, i\neq j$, entonces $\overline{x}_i+\frac{\overline{b}_r}{y_{rj}}d_{ij}$. Si $j\in N$, entonces $\overline{x}_j+\frac{\overline{b}_r}{y_{rj}}d_{ij}=0+\frac{\overline{b}_r}{y_{rj}}\cdot 1=\frac{\overline{b}_r}{y_{rj}}>0$.
 
-\item $Ax(\frac{\overline{b}_r}{y_{rj}})=b$. Comprobémoslo. $Ax(\frac{\overline{b}_r}{y_{rj}})=[B N]\left[\begin{pmatrix}
+\item $Ax(\frac{\overline{b}_r}{y_{rj}})=[B N]\left[\begin{pmatrix}
 B^{-1}b\\
 0
 \end{pmatrix}+\frac{\overline{b}_r}{y_{rj}}\begin{pmatrix}
@@ -81,7 +78,7 @@ e_j
 \end{pmatrix}\right]=b+\frac{\overline{b}_r}{y_{rj}}(-a_j+a_j)=b$.
 \end{itemize}
 En definitiva $x(\frac{\overline{b}_r}{y_{rj}})\in P$ y es un punto extremo con $\hat{B}=B\setminus\{a_r\}\cup\{a_j\}$. Evitando el ciclado (dos soluciones iguales, de forma que alterna de una a otra) este algoritmo encuentra la solución en un número finito de pasos.
-
+\end{dem}
 \begin{example}
 \begin{align*}
 \min\ &x_1-3x_2\\
