@@ -1,4 +1,4 @@
-\documentclass[GTS.tex]{subfiles}
+\documentclass[GTSResumen.tex]{subfiles}
 %\usepackage{amsmath,amssymb}
 %\usepackage[utf8]{inputenc}
 %\usepackage[spanish]{babel}
@@ -157,6 +157,7 @@ Por ejemplo, si $x=(\cos(2\pi t_0),\sen(2\pi t_0))$ con $0\leq t_0 < 1$, entonce
 
 \begin{lemma}[Lema de Lebesgue] Sea $(X,d)$ un espacio métrico compacto, y $\mathcal{U}$ un recubrimiento por abiertos de $X$. Entonces existe un $\delta>0$ tal que todo subconjunto de $X$ con diámetro menor que $\delta$ está contenido en algún abierto del recubrimiento.
 \end{lemma}
+\begin{comment}
 \begin{dem}
 Como $X$ es compacto, podemos extraer un subrecubrimiento finito $\{A_1,\dots A_n\}\subseteq\mathcal{U}$. Para cada $i\in\{1,\dots n\}$ sea $C_i=X\setminus A_i$, y definimos la función $f\func{X}{\R}$ como
 \[
@@ -164,11 +165,14 @@ f(x)=\frac{1}{n}\sum_{i=1}^n d(x,C_i)
 \]
 Dado que $f$ es una función continua en un compacto, alcanza un mínimo $\delta>0$. Ahora, si $Y\subseteq X$ tiene diámetro menor que $\delta$, existe $x_0\in X$ tal que $Y\subseteq B(x_0,\delta)$. Como $f(x)\geq\delta$ debe existir al menos un $i$ de modo que $d(x_0,C_i)\geq\delta$. Pero esto significa que $B(x_0,\delta)\subseteq A_i$, y en particular, $Y\subseteq A_i$. $\QED$
 \end{dem}
-
+\end{comment}
 \begin{teorema}
-$\pi_1(S^1,(1,0))\cong\Z$
+$\pi_1(S^1,x_0)\cong\Z$
 \end{teorema}
+\begin{defi}Dados un camino $\alpha\func{I}{S^1}\mid\alpha(0)=x_0$ y $\alpha(1)=x_1$, y cualquier $a\in p^{-1}(x_0)$, $\exists!$ camino $\tilde{\alpha}\func{I}{\R}\mid\tilde{\alpha}(0)=a$ y $p\circ\tilde{\alpha}=\alpha$ ($\Rightarrow \tilde{\alpha}(1)\in p^{-1}(x_1)$) llamado \underline{elevación} de $\alpha$ por $a$. En particular, si $\alpha$ es la aplicación constante $x_0$, $\tilde{\alpha}$ es la constante $a$. Por otro lado, si $\alpha$ es un lazo en $x_0=(1,0)$, entonces $\tilde{\alpha}(1)\in p^{-1}(x_0)\Rightarrow\tilde{\alpha}(1)=a+k, k\in\Z$. A $k$ se le llama grado de $\alpha$ ($grad(\alpha)=k$).
+\end{defi}
 
+\begin{comment}
 \begin{dem}Consistirá en alcanzar los siguientes objetivos:
 \begin{enumerate}
 \item[$\circled{1}$] Dados un camino $\alpha\func{I}{S^1}\mid\alpha(0)=x_0$ y $\alpha(1)=x_1$, y cualquier $a\in p^{-1}(x_0)$, $\exists!$ camino $\tilde{\alpha}\func{I}{\R}\mid\tilde{\alpha}(0)=a$ y $p\circ\tilde{\alpha}=\alpha$ ($\Rightarrow \tilde{\alpha}(1)\in p^{-1}(x_1)$) llamado \underline{elevación} de $\alpha$ por $a$. En particular, si $\alpha$ es la aplicación constante $x_0$, $\tilde{\alpha}$ es la constante $a$. Por otro lado, si $\alpha$ es un lazo en $x_0=(1,0)$, entonces $\tilde{\alpha}(1)\in p^{-1}(x_0)\Rightarrow\tilde{\alpha}(1)=a+k, k\in\Z$. A $k$ se le llama grado de $\alpha$ ($grad(\alpha)=k$).
@@ -316,16 +320,15 @@ grad(\alpha_k)=\tilde{\alpha}_k(1)=k.
 $\Phi([\alpha])=0\Rightarrow grad(\alpha)=0$. Por tanto, $\tilde{\alpha}$ es un lazo en $0\Rightarrow [\tilde{\alpha}]=0\in\pi_1(\R,0)=\{0\}$. Así que, para $p_*\func{\pi_1(\R,0)}{\pi_1(S^1,(1,0))}$ tenemos $p_*[\tilde{\alpha}]=[p\circ\tilde{\alpha}]=[\alpha]\Rightarrow 0=[\alpha]$. $\QED$
 \end{itemize}
 \end{enumerate}
+
 \end{dem}
+\end{comment}
 
-\vspace{0.2cm}
 
-\begin{nota}
-El resultado es válido sea cual sea el punto sobre el que se calcula el grupo fundamental de $S^1$.
-\end{nota}
+
 
 %\newpage
-
+\begin{comment}
 \begin{nota}
 Hay otros muchos ejemplos de lo que hemos llamado ``hecho crucial", a partir de los cuales se desarrolla la llamada \underline{teoría de cubiertas}:
 \begin{itemize}
@@ -410,23 +413,26 @@ Para profundizar más en esta teoría consultar \cite{Hatcher}.
 %\vspace{0.2cm}
 
 La homotopía $\widetilde{H}$ definida en $\circled{2}$ es un ejemplo de la siguiente propiedad.
-
+\end{comment}
 \begin{defi}
 Dada una función continua $p:E\to B$ entre espacios topológicos y un espacio $X$, se dice que el par $(X,p)$ tiene la \textbf{propiedad de levantamiento de homotopía} si para toda homotopía $H:X\times I\to B$ y para toda elevación $\tilde{\alpha}:X\to E$ de $\alpha(t)=H(t,0)$ existe una homotopía $\widetilde{H}:X\times I\to E$ elevando $H$ (esto es, $p\widetilde{H}=H$) tal que $\tilde{\alpha}(t)=\widetilde{H}(t,0)$. 
 \end{defi}
 
-En el caso particular que hemos abordado, tendríamos que $X=I$, $E=\R$ y $B=S^1$. Como $(I,p)$ posee la propiedad de levantamiento de homotopía se tiene el siguiente resultado. 
+%En el caso particular que hemos abordado, tendríamos que $X=I$, $E=\R$ y $B=S^1$. Como $(I,p)$ posee la propiedad de levantamiento de homotopía se tiene el siguiente resultado. 
 
 \begin{coro}[Teorema de monodromía]
 Sean $\alpha$ y $\beta$ son lazos en $S^1$ basados en el $(1,0)$ tales que $\alpha\sim \beta$ y fijamos $a\in p^{-1}((1,0))$. Entonces $\tilde{\alpha}\sim\tilde{\beta}$, en donde estamos considerando elevaciones por $a$. En particular $\tilde{\alpha}(1)=\tilde{\beta}(1)$.
 \end{coro}
+\begin{comment}
 \begin{dem}
 Si $\alpha\sim\beta$ mediante una homotopía $F$, por la propiedad de levantamiento de homotopía se tiene que $\tilde{\alpha}\sim\tilde{\beta}$ mediante $\widetilde{F}$. Nótese que efectivamente esta última homotopía es relativa a $\{0,1\}$, como vamos a probar. Por la definición del levantamiento de la homotopía tenemos que $\widetilde{H}(t,0)=\tilde{\alpha}(t)$ y $\widetilde{H}(t,1)=\tilde{\beta}(t)$. Como ambas elevaciones se dan por $a$, se tiene que $\widetilde{F}(0,0)=\tilde{\alpha}(0)=\tilde{\beta}(0)=a$. Además, $\tilde{F}(1,s)$ es un camino entre $\tilde{\alpha}(1)$ y $\tilde{\beta}(1)$. Por otro lado, $F(1,s)=(1,0)$, luego $\widetilde{F}(1,s)\in p^{-1}((1,0))$, que tiene la topología discreta, por lo que $\widetilde{F}(1,s)$ es constante, de lo que se deduce que $\widetilde{F}(1,s)=\tilde{\alpha}(1)=\tilde{\beta}(1)$. El mismo razonamiento es válido para $\widetilde{F}(0,s)$. 
 \end{dem}
+\end{comment}
 \section{Aplicaciones}
 
 \begin{teorema}[\textbf{Teorema de no retracción}] No existe retracción de $B^2$ sobre $S^1$.
 \end{teorema}
+\begin{comment}
 \begin{dem}
 $\boxed{RA}$ Supongamos que $\exists\ r\func{B^2}{S^1}$ retracción $\Rightarrow r\circ i=Id_{S^1}$ con $i:S^1\longhookarrow B^2$ la inclusión. Entonces, como $B^2$ es contráctil
 
@@ -438,9 +444,10 @@ $\boxed{RA}$ Supongamos que $\exists\ r\func{B^2}{S^1}$ retracción $\Rightarrow
 
 Pero esto implica que $Id_\Z$ es el homomorfismo trivial, lo cual es una contradicción. $\QED$
 \end{dem}
-
+\end{comment}
 \begin{prop} Sea $f\func{B^2}{\R^2}$, entonces $\exists y\mid f(y)=0$ ó $z\mid f(z)=\lambda z, \lambda>0$.
 \end{prop}
+\begin{comment}
 \begin{dem}
 Sea $g\func{B^2}{\R^2}$ definida como
 
@@ -461,26 +468,27 @@ f(z)=\dfrac{||x_0||(2||x_0||-1)}{2-2||x_0||}z=\lambda z \mbox{    para } \lambda
  $\QED$
 \end{itemize}
 \end{dem}
-
+\end{comment}
 \vspace{0.2cm}
 
 \begin{prop} Sea $f\func{B^2}{\R^2}$, entonces $\exists$ punto fijo $f(x)=x$ o existe $z\in S^1 \mid f(z)=\lambda z, \lambda>1$.
 \end{prop}
+\begin{comment}
 \begin{dem}
 Supongamos que $f(x)\neq x\ \forall x$. Sea $h\func{B^2}{\R^2}\mid h(x)=f(x)-x$. Entonces $h(x)\neq 0$ y por la proposición anterior, $\exists z\in S^1\mid h(z)=\mu z$ con $\mu>0$, es decir, $f(z)-z=\mu z\Rightarrow f(z)=(1+\mu)z$. Basta tomar $\lambda=1+\mu$. $\QED$
 \end{dem}
 
-\vspace{0.2cm}
+\end{comment}
 
 \begin{teorema}[\textbf{Punto fijo de Brouwer}] Toda $f\func{B^2}{B^2}$ tiene un punto fijo.
 \end{teorema}
-\begin{dem}
+\begin{comment}
 Sea $f\func{B^2}{B^2\subseteq\R^2}$ y supongamos que no tiene ningún punto fijo. Por la proposición anterior, $\exists z\in S^1\mid f(z)=\lambda z$ con $\lambda>1$. Por lo tanto, $||f(z)||=\lambda||z||=\lambda>1$, pero $f(z)\in B^2\Rightarrow||f(z)||\leq 1$, luego hemos llegado a una contradicción. $\QED$
-\end{dem}
+\end{comment}
 
 \newpage 
 
-\begin{teorema}
+\begin{comment}
 Todo polinomio $p(z)=a_n z^n+\cdots +a_0$ en $\C$ tiene al menos una raíz.
 \end{teorema}
 \begin{dem}
@@ -515,7 +523,7 @@ Por transitividad de la relación de homotopía $cte\simeq f_n(z)$. Este resulta
 \end{tikzcd}
 \]
 Pero esto es una contradicción porque $f_{n*}\neq 0$, y $cte_*$ es el homomorfismo trivial. $\QED$
-\end{dem}
+
 
 \begin{ejer}
 Probar que si identificamos dos puntos de $S^2$, el espacio cociente $X$ tiene grupo fundamental no trivial.
@@ -555,5 +563,5 @@ De este diagrama se deduce que $(i\circ r)_*=i_*\circ r_*$ es un isomorfismo y p
 \]
 \qed
 \end{solucion}
-
+\end{comment}
 \end{document}

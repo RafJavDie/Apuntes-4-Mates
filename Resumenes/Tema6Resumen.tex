@@ -1,4 +1,4 @@
-\documentclass[GTS.tex]{subfiles}
+\documentclass[GTSResumen.tex]{subfiles}
 %\usepackage{amsmath,amssymb}
 %\usepackage[utf8]{inputenc}
 %\usepackage[spanish]{babel}
@@ -115,86 +115,11 @@
 \chapter{Clasificación de Superficies.\\ Conclusión}
 
 \section{El grupo fundamental de una superficie de tipo I}
-Sea $S$ una superficie de tipo I. Recordemos que estas superficies vienen representadas por un modelo que tiene el código $a^{}_1b^{}_1a^{-1}_1b^{-1}_1\dots a^{}_nb^{}_na^{-1}_nb^{-1}_n$. Esto es, $S$ está representada por la identificación de los lados de un polígono regular de $4n$ lados de acuerdo con el siguiente gráfico:
-
-\definecolor{zzttqq}{rgb}{0.6,0.2,0.}
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
-\clip(-1.5,-0.85) rectangle (8,3.4);
-\draw (4.,3.)-- (5.5,3.);
-\draw (5.5,3.)-- (6.5,2.);
-\draw (6.5,2.)-- (6.5,0.5);
-\draw (6.5,0.5)-- (5.5,-0.5);
-\draw (4.,3.)-- (3.,2.);
-\draw (3.,2.)-- (3.,0.5);
-\draw [dash pattern=on 2pt off 2pt] (3.,0.5)-- (5.5,-0.5);
-\draw(4.8,1.4) circle (0.6027172390626455cm);
-\draw (4.405738478652503,1.8558792856097492)-- (4.,3.);
-\draw [->] (4.,3.) -- (4.8,3.);
-\draw [->] (5.5,3.) -- (6.,2.5);
-\draw [->] (6.5,0.5) -- (6.5,1.1957501053417074);
-\draw [->] (5.5,-0.5) -- (6.,0.);
-\draw [->] (4.,3.) -- (3.5,2.5);
-\draw [->] (3.,2.) -- (3.,1.2);
-\draw [dash pattern=on 2pt off 2pt] (4.8,1.4) circle (1cm);
-\draw (4.55,1.5838433463488795) node[anchor=north west] {$A$};
-\draw (3.414187200315089,0.8683484392203448) node[anchor=north west] {$B$};
-\draw (1,1.7) node[anchor=north west] {\large{$S\ \equiv$}};
-\draw (2.35,1.5) node[anchor=north west] {$a_n$};
-\draw (3.,3) node[anchor=north west] {$b_n$};
-\draw (4.7,3.35) node[anchor=north west] {$a_1$};
-\draw (6.048151968315743,2.8025434628864936) node[anchor=north west] {$b_1$};
-\draw (6.622120410297976,1.387278811423458) node[anchor=north west] {$a_1$};
-\draw (6.142502945079946,-0.04371100283361169) node[anchor=north west] {$b_1$};
-\draw (4.2,2.78681830009246) node[anchor=north west] {$\gamma$};
-\draw (5.25,1.552393020760812) node[anchor=north west] {$S^1$};
-\draw (4.4284602005302665,1.8904840208325373) node[anchor=north west] {$x_0$};
-\begin{scriptsize}
-\draw [fill=black] (4.405738478652503,1.8558792856097492) circle (2.5pt);
-\fill[color=zzttqq,fill=zzttqq,fill opacity=0.1](3,0.5)--(3.,2.) -- (4,3)--(5.5,3)--(6.5,2)-- (6.5,0.5)--(5.5,-0.5)--cycle;
-
-
-\end{scriptsize}
-\end{tikzpicture}
-
-Procedemos de manera similar a los ejemplo del capítulo anterior: descomponemos $S$ como la unión $S=A\cup B$ donde $A$ es un disco abierto, por lo que es contráctil, esto es, $\pi_1(A,x_0)=\{1\}$, y $B$ es $S$ menos un disco cerrado contenido en $A$. En particular, $B$ se retrae al siguiente grafo:
-
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
-\clip(-3,0.5) rectangle (6.393300959292774,3.2);
-\draw [rotate around={-12.485467490857165:(1.6364672736480006,2.086385207554635)}] (1.6364672736480006,2.086385207554635) ellipse (0.4955243419426075cm and 0.13041747704333986cm);
-\draw [rotate around={86.157546872085:(2.173228013337387,2.4831214064554827)}] (2.173228013337387,2.4831214064554827) ellipse (0.46750069112046705cm and 0.1344452240202966cm);
-\draw [shift={(2.2965829659368096,2.189736654327123)},dash pattern=on 2pt off 2pt]  plot[domain=-0.020405330686538825:1.4601391056210007,variable=\t]({1.*0.6535839211181232*cos(\t r)+0.*0.6535839211181232*sin(\t r)},{0.*0.6535839211181232*cos(\t r)+1.*0.6535839211181232*sin(\t r)});
-\draw [rotate around={1.1708850280784644:(2.58494704784979,1.9915168803910728)}] (2.58494704784979,1.9915168803910728) ellipse (0.4223626584291288cm and 0.07777723849776252cm);
-\draw [rotate around={-64.02560603756869:(2.3199203894015676,1.5529583855030706)}] (2.3199203894015676,1.5529583855030706) ellipse (0.4572702113179464cm and 0.14432623016288876cm);
-\draw (2.1432227545969864,1.9963694313334333)-- (1.,1.);
-\draw (1.2,2.6) node[anchor=north west] {$a_1$};
-\draw (1.6,2.9298663699236602) node[anchor=north west] {$b_1$};
-\draw (2.812673416271692,1.9430267491282782) node[anchor=north west] {$a_n$};
-\draw (2.6259740285536464,1.4829461151088095) node[anchor=north west] {$b_n$};
-\draw (1.0723684093284844,0.996194139986763) node[anchor=north west] {$x_0$};
-\draw (1.645802243033909,1.4162677623523647) node[anchor=north west] {$\gamma$};
-\draw (-0.3,2.2) node[anchor=north west] {\large{$L\equiv$}};
-\draw [->] (1.35,2.2308648946743626) -- (1.45,2.2512894804092745);
-\draw [->] (2.099185545523773,2.8155770684977686) -- (2.0664202368358655,2.6958193007182714);
-\draw [->] (2.8,1.92) -- (2.7,1.925);
-\draw [->] (2.539517043578322,1.3753231851333148) -- (2.5,1.5);
-\begin{scriptsize}
-\draw [fill=black] (2.1432227545969864,1.9963694313334333) circle (2.0pt);
-\draw [fill=black] (1.,1.) circle (2.5pt);
-\end{scriptsize}
-\end{tikzpicture}
-
-Por otro lado, $A\cap B$ se retrae con deformación fuerte a la circunferencia $S^1$. Sea $\varepsilon$  la clase de la vuelta canónica de $S^1$. Sea $k_*\func{\pi_1(L,x_0)}{\pi_1(B,x_0)}$ el isomorfismo inducido por la inclusión $k\func{L}{B}$. Sabemos que $\pi_1(L,x_0)$ es el grupo libre engendrado por las clases de los lazos $\gamma*a_i*\overline{\gamma}$ y $\gamma*b_i*\overline{\gamma}$, donde $a_i$ y $b_i$ son las vueltas canónicas indicadas de la misma manera.  Por tanto las clases, que denotamos $\alpha'_i$ y $\beta'_i$ respectivamente, de esos mismos lazos en $B$ generan $\pi_1(B,x_0)$. Tenemos el siguiente diagrama
-\[
-\begin{tikzcd}
-\pi_1(A\cap B,x_0)=\langle\varepsilon|\ \rangle \ar[r, "i_{1*}"]\arrow[d,"i_{2*}"'] & \pi_1(A,x_0)=\{1\}\arrow[d, dashed, "j_{1*}"]\\
-\pi_1(B,x_0)=\langle \alpha'_1,\beta'_1,\dots,\alpha'_n,\beta'_n| \rangle\arrow[r,dashed,"j_{2*}"'] & \pi_1(S,x_0)
-\end{tikzcd}
-\]
-Como se ha hecho repetidas veces ya, en este diagrama se comprueba que $i_{2*}(\varepsilon)=[\alpha'_1,\beta'_1]\cdots[\alpha'_n,\beta'_n]$, donde $[\alpha'_i,\beta'_i]$ indica la relación de conmutación. Además, como $i_{1*}(\varepsilon)=1$, usando el teorema de Seifert-Van Kampen, se llega a 
+Sea $S$ una superficie de tipo I. Recordemos que estas superficies vienen representadas por un modelo que tiene el código $a^{}_1b^{}_1a^{-1}_1b^{-1}_1\dots a^{}_nb^{}_na^{-1}_nb^{-1}_n$. Usando el teorema de Seifert-Van Kampen, se llega a 
 \[
 \pi_1(S,x)=\langle \alpha_1,\beta_1,\dots,\alpha_n,\beta_n|[\alpha_1,\beta_1]\cdots[\alpha_n,\beta_n]\rangle,
 \]
-donde $\alpha_i=j_{2*}(\alpha'_i)$ y $\beta_i=j_{2*}(\beta'_i)$ son las clases de los lazos  $\gamma*a_i*\overline{\gamma}$ y $\gamma*b_i*\overline{\gamma}$ en $X$. Ahora, al abelianizar la relación del grupo, que es un producto de conmutadores, sevuelve trivial y nos queda el grupo abeliano libre
+donde $\alpha_i=j_{2*}(\alpha'_i)$ y $\beta_i=j_{2*}(\beta'_i)$ son las clases de los lazos  $\gamma*a_i*\overline{\gamma}$ y $\gamma*b_i*\overline{\gamma}$ en $X$. Al abelianizar la relación del grupo, que es un producto de conmutadores, se vuelve trivial y nos queda el grupo abeliano libre
 \begin{gather*}
 (\pi_1(S,x))^{ab}=\langle \alpha_i, \beta_i|[\alpha_i,\beta_i],[\alpha_i,\beta_j],\ 1\leq i, j\leq n\rangle=\\
 \langle \alpha_i, \beta_i|[\alpha_i,\beta_j],\ 1\leq i, j\leq n\rangle\cong\Z\underbrace{\times\cdots\times}_{2n\ veces}\Z.
@@ -202,84 +127,12 @@ donde $\alpha_i=j_{2*}(\alpha'_i)$ y $\beta_i=j_{2*}(\beta'_i)$ son las clases d
 
 
 \section{El grupo fundamental de una superficie de tipo II}
-Una superficie $S$ de tipo II viene representada por el código $a_1 a_1 a_2 a_2\dots a_n a_n$. Esto es, $S$ es el resultado de identificar los lados de un polígono de $2n$ lados de acuerdo con el siguiente gráfico:
-
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
-\clip(-1.5,-0.85) rectangle (8,3.4);
-\draw (4.,3.)-- (5.5,3.);
-\draw (5.5,3.)-- (6.5,2.);
-\draw (6.5,2.)-- (6.5,0.5);
-\draw (6.5,0.5)-- (5.5,-0.5);
-\draw (4.,3.)-- (3.,2.);
-\draw (3.,2.)-- (3.,0.5);
-\draw [dash pattern=on 2pt off 2pt] (3.,0.5)-- (5.5,-0.5);
-\draw(4.8,1.4) circle (0.6027172390626455cm);
-\draw (4.405738478652503,1.8558792856097492)-- (4.,3.);
-\draw [->] (4.,3.) -- (4.8,3.);
-\draw [->] (5.5,3.) -- (6.,2.5);
-\draw [->] (6.5,1.5) -- (6.5,1.);
-\draw [->] (6.5,0.5) -- (6.,0.);
-\draw [->] (3.,2) -- (3.5,2.5);
-\draw [->] (3.,1.) -- (3.,1.5);
-\draw [dash pattern=on 2pt off 2pt] (4.8,1.4) circle (1cm);
-\draw (4.55,1.5838433463488795) node[anchor=north west] {$A$};
-\draw (3.414187200315089,0.8683484392203448) node[anchor=north west] {$B$};
-\draw (1,1.7) node[anchor=north west] {\large{$S\ \equiv$}};
-\draw (2.35,1.5) node[anchor=north west] {$a_n$};
-\draw (3.,3) node[anchor=north west] {$a_n$};
-\draw (4.7,3.35) node[anchor=north west] {$a_1$};
-\draw (6.048151968315743,2.8025434628864936) node[anchor=north west] {$a_1$};
-\draw (6.622120410297976,1.387278811423458) node[anchor=north west] {$a_2$};
-\draw (6.142502945079946,-0.04371100283361169) node[anchor=north west] {$a_2$};
-\draw (4.2,2.78681830009246) node[anchor=north west] {$\gamma$};
-\draw (5.25,1.552393020760812) node[anchor=north west] {$S^1$};
-\draw (4.4284602005302665,1.8904840208325373) node[anchor=north west] {$x_0$};
-\begin{scriptsize}
-\draw [fill=black] (4.405738478652503,1.8558792856097492) circle (2.5pt);
-\fill[color=zzttqq,fill=zzttqq,fill opacity=0.1](3,0.5)--(3.,2.) -- (4,3)--(5.5,3)--(6.5,2)-- (6.5,0.5)--(5.5,-0.5)--cycle;
-\end{scriptsize}
-\end{tikzpicture}
-
-Como en el caso anterior, escribimos $S=A\cup B$, donde $A$ es un disco abierto, por lo que es contráctil, esto es, $\pi_1(A,x_0)=\{1\}$, y $B$ es $S$ menos un disco cerrado contenido en $A$, por lo que $B$ se retrae al siguiente grafo:
-
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
-\clip(-3,0.5) rectangle (6.393300959292774,3.2);
-\draw [rotate around={-12.485467490857165:(1.6364672736480006,2.086385207554635)}] (1.6364672736480006,2.086385207554635) ellipse (0.4955243419426075cm and 0.13041747704333986cm);
-\draw [rotate around={86.157546872085:(2.173228013337387,2.4831214064554827)}] (2.173228013337387,2.4831214064554827) ellipse (0.46750069112046705cm and 0.1344452240202966cm);
-\draw [shift={(2.2965829659368096,2.189736654327123)},dash pattern=on 2pt off 2pt]  plot[domain=-0.020405330686538825:1.4601391056210007,variable=\t]({1.*0.6535839211181232*cos(\t r)+0.*0.6535839211181232*sin(\t r)},{0.*0.6535839211181232*cos(\t r)+1.*0.6535839211181232*sin(\t r)});
-\draw [rotate around={1.1708850280784644:(2.58494704784979,1.9915168803910728)}] (2.58494704784979,1.9915168803910728) ellipse (0.4223626584291288cm and 0.07777723849776252cm);
-\draw [rotate around={-64.02560603756869:(2.3199203894015676,1.5529583855030706)}] (2.3199203894015676,1.5529583855030706) ellipse (0.4572702113179464cm and 0.14432623016288876cm);
-\draw (2.1432227545969864,1.9963694313334333)-- (1.,1.);
-\draw (1.2,2.6) node[anchor=north west] {$a_1$};
-\draw (1.6,2.9298663699236602) node[anchor=north west] {$a_2$};
-\draw (2.812673416271692,1.9430267491282782) node[anchor=north west] {$a_{n-1}$};
-\draw (2.6259740285536464,1.4829461151088095) node[anchor=north west] {$a_n$};
-\draw (1.0723684093284844,0.996194139986763) node[anchor=north west] {$x_0$};
-\draw (1.645802243033909,1.4162677623523647) node[anchor=north west] {$\gamma$};
-\draw (-0.3,2.2) node[anchor=north west] {\large{$L\equiv$}};
-%\draw [->] (1.35,2.2308648946743626) -- (1.45,2.2512894804092745);
-%\draw [->] (2.,2.9) -- (2.1,3);
-%\draw [->] (2.8,1.92) -- (2.7,1.925);
-%\draw [->] (2.539517043578322,1.3753231851333148) -- (2.5,1.5);
-\begin{scriptsize}
-\draw [fill=black] (2.1432227545969864,1.9963694313334333) circle (2.0pt);
-\draw [fill=black] (1.,1.) circle (2.5pt);
-\end{scriptsize}
-\end{tikzpicture}
-
-Por otro lado, $A\cap B$ se retrae con deformación fuerte a la circunferencia $S^1$. Sean $\alpha'_i=\gamma_\sharp[a_i]$ las clases de los lazos $\gamma*a_i*\overline{\gamma}$ ya vistos en $B$, que al representar generadores de $\pi_1(L,x_0)$ también son representantes de generadores de $\pi_1(B,x_0)$. Tenemos el siguiente diagrama, donde $\varepsilon$ la clase de la vuelta canónica de $S^1$ en $A\cap B$,
-\[
-\begin{tikzcd}
-\pi_1(A\cap B,x_0)=\langle\varepsilon|\ \rangle \ar[r, "i_{1*}"]\arrow[d,"i_{2*}"'] & \pi_1(A,x_0)=\{1\}\arrow[d, dashed, "j_{1*}"]\\
-\pi_1(B,x_0)=\langle \alpha'_1,\dots,\alpha'_n|\ \rangle\arrow[r,dashed,"j_{2*}"'] & \pi_1(S,x_0)
-\end{tikzcd}
-\]
-Se tiene que $i_{1*}(\varepsilon)=1$ y $i_{2*}(\varepsilon)=\alpha'_1\alpha'_1\cdots\ \alpha_n'\alpha_n'={\alpha'}_1^2\cdots\ {\alpha'}_n^2$, así que sin más que aplicar el teorema de Seifert-Van Kampen obtenemos
+Una superficie $S$ de tipo II viene representada por el código $a_1 a_1 a_2 a_2\dots a_n a_n$. Al aplicar el teorema de Seifert-Van Kampen obtenemos
 
 \[
 \pi_1(S,x_0)=\langle\alpha_1,\dots,\alpha_n|\alpha_1^2\cdots\ \alpha_n^2\rangle,
 \]
-donde $\alpha_i=j_{2*}(\alpha'_i)$ son las clases de los lazos $\gamma*a_i*\overline{\gamma}$ en $X$. Ahora, abelianizando
+donde $\alpha_i=j_{2*}(\alpha'_i)$ son las clases de los lazos $\gamma*a_i*\overline{\gamma}$ en $X$. Abelianizando
 \[
 (\pi_1(S,x))^{ab}=\langle\alpha_i|\alpha_1^2\cdots\ \alpha_n^2,\ [\alpha^{}_i,\alpha^{}_j]\ 1\leq i, j\leq n \rangle.
 \]
@@ -383,27 +236,6 @@ Toda triangulación de una superficie tiene las dos  propiedades siguientes.
 \item Toda arista de $K$ está exactamente en dos triángulos de $K$.
 \item Dado un vértice $v\in K$, la unión de todos los triángulos que contienen a $v$ es homeomorfa a un disco.
 
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
-\clip(5.810293012772353,-0.1) rectangle (16.283165995036764,2.7);
-\fill[fill=black,fill opacity=0.09] (8.,0.) -- (9.5,0.) -- (10.25,1.299038105676658) -- (9.5,2.5980762113533165) -- (8.,2.598076211353317) -- (7.25,1.2990381056766593) -- cycle;
-\draw (8.,0.)-- (9.5,0.);
-\draw (9.5,0.)-- (10.25,1.299038105676658);
-\draw (10.25,1.299038105676658)-- (9.5,2.5980762113533165);
-\draw (9.5,2.5980762113533165)-- (8.,2.598076211353317);
-\draw (8.,2.598076211353317)-- (7.25,1.2990381056766593);
-\draw (7.25,1.2990381056766593)-- (8.,0.);
-\draw (8.75,1.2990381056766576)-- (8.,2.598076211353317);
-\draw (8.75,1.2990381056766576)-- (9.5,2.5980762113533165);
-\draw (8.75,1.2990381056766576)-- (10.25,1.299038105676658);
-\draw (8.75,1.2990381056766576)-- (9.5,0.);
-\draw (8.75,1.2990381056766576)-- (8.,0.);
-\draw (8.75,1.2990381056766576)-- (7.25,1.2990381056766593);
-\draw (8.53,1.243118639437196) node[anchor=north west] {$v$};
-\draw (10.573173508184778,1.6) node[anchor=north west] {\large{$\cong\ B^2$}};
-\begin{scriptsize}
-\draw [fill=black] (8.75,1.2990381056766576) circle (2.5pt);
-\end{scriptsize}
-\end{tikzpicture}
 
 \end{enumerate}
 \end{prop}
@@ -412,14 +244,10 @@ Toda triangulación de una superficie tiene las dos  propiedades siguientes.
 Toda superficie es triangulable.
 \end{teorema}
 
-La demostración de este teorema no es sencilla. Existen varios métodos para probarlo. Una demostración puramente topológica puede encontrarse en \cite{Moise} o \cite{Doyle}, que usa técnicas topológicas más refinadas. Otra demostración de tipo geométrico basada en la existencia de geodésicas puede consultarse en \cite{Bloch}. Alternativamente puede verse en \cite{Mohar} una demostración basada en la caracterización por Kuratowski de los grafos planos.
-
-Una vez que sabemos que toda superficie admite una triangulación, estamos en condiciones de completar el teorema de clasificación de las superficie con el siguiente resultado aún pendiente.
-
 \begin{teorema}
 Toda superficie conexa y compacta es homeomorfa a un modelo.
 \end{teorema}
-\begin{dem}
+\begin{comment}
 Sea $K$ una triangulación de $S$. Ordenando los triángulos $t_1,\dots,t_n$ (sólo hay una cantidad finita por compacidad) de forma que $t_i$ tenga alguna arista en común con $t_j$ para algún $j<i$. Ahora se forma una región plana de la siguiente manera: empezamos con una copia de $t_1$ en $\R^2$ y le pegamos una copia de $t_2$ por una arista común. Tomamos $t_3$, que tiene una arista en común con $t_1$ o con $t_2$ y la pegamos a $t_1\cup t_2$. Si hay más de una arista común, $t_1\cup t_2\cup t_3$ es homeomorfo a $B^2$. Seguimos hasta pegar todos los triángulos (sólo por una arista cada vez). Toda la unión es un polígono en cuyo perímetro faltan por identificar las aristas. 
 
 Vamos a llegar a uno de los tipos I o II mediante una serie de operaciones. Empezamos orientando la región eligiendo un sentido de recorrido del perímetro, y como las aristas deben quedar emparejadas por la proposición \ref{534}, nos encontramos con que cada arista $a$ del perímetro aparece dos veces. (Además, el sentido de recorrido, fijado uno de los sentidos sobre $a$, pueden coincidir en las dos apariciones de $a$ o ser uno opuesto del otro). Se forma así un código de letras y, posiblemente, sus inversos. El objetivo es demostrar que este código se puede ``normalizar'' a uno de los dos tipos I y II del teorema de clasificación, de forma que los pasos que se den representen homeomorfismos.\
@@ -1052,19 +880,17 @@ Con esto llegaríamos a una superficie de Tipo I, a menos que aparezcan mezclado
 
 \end{enumerate}
 Esto termina la demostración. $\QED$
-\end{dem}
+\end{comment}
 
 
 %\section{El grupo fundamental y la abelianización de los modelos de superficies}
-\vspace{1cm}
+
 
 \section{Característica de Euler-Poincaré}
 
 \begin{defi} Sea $K$ una triangulación de una superficie, se denomina \textbf{caracterísitca de Euler-Poincaré} al número entero $\chi(K)=V-E+T$  %F
 donde $V$ es el número de vértices, $E$ el número de aristas y $T$ el número de triángulos. %F el número de caras
 \end{defi}
-
-El hecho sorprendente del número entero $\chi(K)$ es que es independiente de la triangulación $K$ y sólo depende de la topología de la superficie $S$. De hecho, tenemos los siguientes teoremas.
 
 \begin{teorema}
 Si $K$ es una triangulación de una superficie $M_n$ (Tipo I), entonces $\chi(K)=2-2n$. En particular, si $n=0$, $\chi(K)=2$, es decir, la característica de la esfera es $2$.
@@ -1074,14 +900,11 @@ Si $K$ es una triangulación de una superficie $M_n$ (Tipo I), entonces $\chi(K)
 Si $K$ es una triangulación de una superficie $N_n$ (Tipo II), entonces $\chi(K)=2-n$.
 \end{teorema}
 
-Para las esferas el resultado fue publicado por primera vez por Euler en 1752 y para las demás superficies fue Poincaré el primero en descubrir estos teoremas en la última década del siglo XIX. Se puede decir que la característica de Euler es el germen de la topología algebraica, pues su descubrimiento y la búsqueda de una demostración rigurosa de los teoremas anteriores dio lugar al nacimiento y desarrollo de la especialidad de la topología. De hecho, hubo que esperar hasta mediados de la década de 1930 para dar una demostración precisa de la invariancia topológica de la característica de Euler para triangulaciones de espacios arbitrarios.
 
-Este teorema se verá en general en 4º (Homología Simplicial), probándose que si $K$ es un complejo simplicial en $\R^n$, entonces $\chi(K)$ solo depende del tipo de homotopía del poliedro $|K|=\underset{\sigma\in K}{\bigcup}\sigma$.
-
-
-\begin{nota} De acuerdo con los teoremas anteriores, una vez conocido el tipo, la característica de Euler determina a la variedad. Además, como el tipo se corresponde con la orientabilidad, se tiene que las superficies quedan clasificadas por la orientabilidad (existencia de una banda de Möbius en la superficie) y su característica de Euler. Una demostración de la clasificación de superficies usando estos dos parámetros puede verse en \cite{Zeeman}. Si se quiere una referencia bastante completa sobre el teorema de clasificación de superficies y su historia, se puede consultar \cite{Xu}.
+\begin{nota} De acuerdo con los teoremas anteriores, una vez conocido el tipo, la característica de Euler determina a la variedad. Además, como el tipo se corresponde con la orientabilidad, se tiene que las superficies quedan clasificadas por la orientabilidad (existencia de una banda de Möbius en la superficie) y su característica de Euler. 
 \end{nota}
 
+\begin{comment}
 \begin{ej}\
 \begin{enumerate}
 \item \underline{Toro}. Basándonos en la triangulación del ejemplo \ref{ejem}
@@ -1178,5 +1001,5 @@ La siguiente descomposición en triángulos del plano proyectivo \underline{no} 
 Sin embargo si se extiende de manera natural la definición de la característica de Euler a descomposiciones de triángulos $\mathcal{C}$ que se cortan en uniones de caras, seguimos teniendo $\chi(\mathcal{C})=1$. Esto permite flexibilizar la definición de triangulación en aquellas condiciones que lo requieran.
 
 \end{nota}
-
+\end{comment}
 \end{document} 
