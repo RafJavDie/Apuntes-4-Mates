@@ -278,9 +278,9 @@ x\\
 x_h
 \end{bmatrix} = b
 \]
-Sabemos que $[A I]$ es TU. Todo punto extremo corresponde a una submatriz cuadrada de $[A | I]$, B $m\times m$, $det(B)\neq 0$, $x_B=B^{-1}b\geq 0$. Como A es TU entonces $\det(B)\in\{\pm1\}$ entonces $det(B^{-1})\in\{\mp1\}$, luego $x_B$ es solución del sistema $Bx_B=b$ y aplicamos Cramer.
+Sabemos que $[A I]$ es TU. Todo punto extremo corresponde a una submatriz cuadrada de $[A | I]$, B $m\times m$, $det(B)\neq 0$, $x_B=B^{-1}b\geq 0$. En partiular, $B x_B = b$. Como A es TU, $\det(B)\in\{\pm1\}$ por lo que $det(B^{-1})\in\{\mp1\}$. Aplicamos Cramer:
 \[
-x_{B_i}=\frac{\text{B completada con b}}{det(B)}=\frac{\text{Suma de productos de números entero}}{\pm1} \in \Z
+x_{B_i}=\frac{det(\text{B con la i-ésima columna reemplazada por b})}{det(B)}=\frac{\text{Suma de productos de números entero}}{\pm1}
 \]\QED
 \end{dem}
 \begin{coro} Sea $P(b)=\{x \in \R^n_+ \mid \overline{b}\leq Ax\leq b,\; \overline{d}\leq x \leq d\} \neq \emptyset$ con $b,d,\overline{b},\overline{d}\in\Z^n$. Entonces $P(b)$ es entero.
@@ -372,15 +372,16 @@ sa:& \sum_{j=1}^n x_{ij}= O_i \quad\forall i =1,\dots, m & \\
 \end{align*}
 Entonces $\overline{A}$ es:
 \[\left(
-\begin{array}{ccccccccccccc}
-1 & 1 & \cdots & 1 & 0 & 0 &\cdots  & 0 & \cdots & 0 & 0 &  \cdots & 0\\
-0 &	0 & \cdots & 0 & 1 & 1 & \cdots & 1 & \cdots & 0 & 0 & \cdots & 0\\
-\vdots & &\vdots & &\vdots & & &\vdots & &\vdots & & \ & \vdots\\
-0 & 0 & \cdots & 0 & 0 & 0 & \cdots & 0 & \cdots & 1 & 1 & \cdots & 1\\
-1 & 0 & \cdots & 0 & 1 & 0& \cdots & 0 & \cdots  & 1 & 0 & \cdots & 0 \\
-0 & 1 & \cdots & 0 & 0 & 1& \cdots & 0 & \cdots  & 0 & 1 & \cdots & 0 \\
-\vdots & &\vdots & &\vdots & & &\vdots & &\vdots &   &   & \vdots\\
-0 & 0 & \cdots & 1 & 0 & 0& \cdots & 1 & \cdots  & 0 & 0 & \cdots & 1
+\begin{array}{cccccccccccccccc}
+1 & 1 & \cdots & 1 & 1 & 0 & 0 &\cdots  		& 0 & 0 & \cdots & 0 & 0 &  \cdots 	& 0 	& 0\\
+0 &	0 & \cdots & 0 & 0 & 1 & 1 & \cdots 		& 1 & 1 & \cdots & 0 & 0 & \cdots 	& 0 	& 0\\
+\vdots & &\vdots & \vdots &\vdots & & &\vdots 	&   &   &\vdots & & \ 				&   	& \vdots\\
+0 & 0 & \cdots & 0 & 0 & 0 & 0 & \cdots			& 0 & 0 & \cdots & 1 & 1 & \cdots 	& 1 	& 1\\
+1 & 0 & \cdots & 0 & 0 & 1 & 0& \cdots 			& 0 & 0 & \cdots  & 1 & 0 & \cdots 	& 0 	& 0 \\
+0 & 1 & \cdots & 0 & 0 & 0 & 1& \cdots 			& 0 & 0 & \cdots  & 0 & 1 & \cdots 	& 0 	& 0 \\
+\vdots & &\vdots & \vdots &\vdots 				&   &    & &\vdots & &\vdots &   &  &    	& \vdots\\
+0 & 0 & \cdots & 1 & 0 & 0 & 0& \cdots 			& 1 & 0 & \cdots  & 0 & 0 & \cdots 	& 1 	& 0\\
+0 & 0 & \cdots & 0 & 1 & 0 & 0& \cdots 			& 0 & 1 & \cdots  & 0 & 0 & \cdots 	& 0 	& 1
 \end{array}\right)
 \]
 \end{example}
