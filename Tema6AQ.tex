@@ -197,7 +197,7 @@ Como se ha hecho repetidas veces ya, en este diagrama se comprueba que $i_{2*}(\
 donde $\alpha_i=j_{2*}(\alpha'_i)$ y $\beta_i=j_{2*}(\beta'_i)$ son las clases de los lazos  $\gamma*a_i*\overline{\gamma}$ y $\gamma*b_i*\overline{\gamma}$ en $X$. Ahora, al abelianizar la relación del grupo, que es un producto de conmutadores, sevuelve trivial y nos queda el grupo abeliano libre
 \begin{gather*}
 (\pi_1(S,x))^{ab}=\langle \alpha_i, \beta_i|[\alpha_i,\beta_i],[\alpha_i,\beta_j],\ 1\leq i, j\leq n\rangle=\\
-\langle \alpha_i, \beta_i|[\alpha_i,\beta_j],\ 1\leq i, j\leq n\rangle\cong\Z\underbrace{\times\cdots\times}_{2n\ veces}\Z.
+\langle \alpha_i, \beta_i|[\alpha_i,\beta_j],[\alpha_i,\alpha_j], [\beta_i,\beta_j],\ 1\leq i, j\leq n\rangle\cong\Z\underbrace{\times\cdots\times}_{2n\ veces}\Z.
 \end{gather*}
 
 
@@ -628,7 +628,9 @@ Si todas eran parejas de símbolos iguales hemos terminado con una superficie de
 \draw (0.9654868747580999,0.0) node[anchor=north west] {$c$};
 \end{tikzpicture}
 
-Si esto no ocurriera, las partes $A$ y $B$ se identificarían por un vértice $P$ y ya no tendríamos una superficie en $P$. En efecto, el entorno de $P$ estará entonces formado por la unión por el punto $P$ de un disco originado al pegar las proximidades de la región alrededor de las apariciones de $P$ en $A$ (teniendo en cuenta la identificación de la parte izquierda de $c$) y el disco originado al pegar las proximidades de $P$ en la parte $B$ (y la derecha de $c$); ver el dibujo.
+Si esto no ocurriera, las partes $A$ y $B$ se identificarían por un vértice $P$ y ya no tendríamos una superficie en $P$. En efecto, al identificar pequeños entornos de los vértices del polígono se forma un entorno de $P$ en el espacio cociente. Este entorno estaría formado por dos partes: una  correspondiente a las identificaciones de la parte $A$ y otra a las de $B$. Sean estas $Z$ e $Y$, respectivamente. Tenemos que $Z\cap Y$ se reduce al punto $P$ mientrar que, por ser $P$ un punto de superficie, debe existir un pequeño disco de centro $P$, $D$,  contenido en $Z\cup Y$.  Como $D-\{P\}$ es conexo debería estar contenido en $Z_\{P\}$ o en $Y-\{P\}$. En l primer caso (igualmente en el segundo) $Z$ sería entonces un entorno de $P$ en la superficie, pero esto no es posible pues  todo entorno de $P$  en la superficie contiene puntos de $B$ distintos de $P$. 
+\par
+Más precisamente $Z$ e $Y$ son discos de forma que $Z\cup Y$ resulta ser el espacio formado por dos discos pegados por sus centros, que nunca podrás un punto de superficie; ver dibujo pata un caso particular. 
 
 \definecolor{qqqqff}{rgb}{0.3333333333333333,0.3333333333333333,0.3333333333333333}
 \definecolor{zzttqq}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}

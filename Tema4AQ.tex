@@ -439,7 +439,7 @@ $\boxed{RA}$ Supongamos que $\exists\ r\func{B^2}{S^1}$ retracción $\Rightarrow
 Pero esto implica que $Id_\Z$ es el homomorfismo trivial, lo cual es una contradicción. $\QED$
 \end{dem}
 
-\begin{prop} Sea $f\func{B^2}{\R^2}$, entonces $\exists y\mid f(y)=0$ ó $z\mid f(z)=\lambda z, \lambda>0$.
+\begin{prop} Sea $f\func{B^2}{\R^2}$, entonces $\exists y\mid f(y)=0$ ó $z\in S^1\mid f(z)=\lambda z, \lambda>0$.
 \end{prop}
 \begin{dem}
 Sea $g\func{B^2}{\R^2}$ definida como
@@ -541,18 +541,10 @@ Es obvio que la proyección
 \quad r:S^1\times S^1\longrightarrow S^1\times\{y_0\}\cong S^1\\
 (x,y)\longmapsto (x,y_0)
 \end{gather*}
-es una retracción. Pero no existe una retracción con deformación $r$. Si exitiera tendríamos $r\circ i=Id_{S^1}$ y $i\circ r\overset{H}{\simeq}Id_{S^1\times S^1}$. Tomando $\gamma=H((1,0),t)$ llegaríamos al siguiente diagrama conmutativo:
-\[
-\begin{tikzcd}
-\pi_1(S^1\times\{y_0\},(x_0,y_0))\cong\Z\ar[dr, "i_*"]\\
-\Z\times\Z\cong\pi_1(S^1\times S^1,(x_0,y_0)) \ar[r, "(i\circ r)_* "]\arrow[u,"r_* "']\ar[d,"Id_*=Id"] & \pi_1(S^1\times S^1,(x_0,y_0))\cong\Z\times\Z\\
-\Z\times\Z\cong\pi_1(S^1\times S^1,(x_0,y_0))\arrow[ur,"\gamma_\sharp "',"\cong"]
-\end{tikzcd}
-\]
-De este diagrama se deduce que $(i\circ r)_*=i_*\circ r_*$ es un isomorfismo y por tanto $r_*$ sería un homomorfismo inyectivo $\varphi\func{\Z\times\Z}{\Z}$, que no puede existir. En efecto, si $\varphi(1,0)=\lambda\neq 0$ y $\varphi(0,1)=\mu\neq 0$, entonces
-\[
-\varphi(\mu,-\lambda)=\mu\varphi(1,0)-\lambda\varphi(0,1)=\mu\lambda-\lambda\mu=0. 
-\]
+es una retracción. Pero no existe una retracción con deformación $r$. Si existiera, sería una equivalencia de homotopía y por tanto induciría un isomorfismo 
+$\mathbb{Z}\times \mathbb{Z} \cong \pi_1(S^1\times S^1,(x,y)) \cong
+\pi_1(S^1, p)\cong \mathbb{Z}$, donde $p = r(x,y)$. Y no existen isomorfismos de $\mathbb{Z}$ en
+$\mathbb {Z}\times \mathbb{Z}$.  
 \qed
 \end{solucion}
 

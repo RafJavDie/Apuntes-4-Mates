@@ -725,11 +725,11 @@ Todo lazo $\gamma$ en $x_0$ induce un automorfismo de $\pi_1(X,x_0)$ dado por co
 \end{coro}
 
 \begin{prop}
-Sea $H$ una homotopía $H\func{X\times I}{Y}$ entre $f,g\func{X}{Y}$. Dado $x_0\in X$, sea $\gamma\func{I}{X}$ el camino $\gamma(t)=H(x_0,t)$. Este camino va de $f(x_0)=H(x_0,0)$ a $g(x_0)=H(x_0,1)$. Tenemos el diagrama commutativo
+Sea $H$ una homotopía $H\func{X\times I}{Y}$ entre $f,g\func{X}{Y}$. Dado $x_0\in X$, sea $\gamma\func{I}{X}$ el camino $\gamma(t)=H(x_0,t)$. Este camino va de $f(x_0)=H(x_0,0)$ a $g(x_0)=H(x_0,1)$. Tenemos el diagrama conmutativo
 \[
 \begin{tikzcd}
-\pi_1(X,x_0)\arrow[d,"g_*"] \arrow[r, "f_*"] &  \pi_1(Y,f(x_0))\arrow[dl,"\cong"',"\gamma_\sharp"] \\
-\pi_1(Y,g(x_0))\arrow[ur, dashrightarrow,"\overline{\gamma}_\sharp"', bend right=30]  %, bend right=30
+\pi_1(X,x_0)\arrow[d,"g_*"] \arrow[r, "f_*"] &  \pi_1(Y,f(x_0))\arrow[dl,"\cong"',"\overline{\gamma}_\sharp"] \\
+\pi_1(Y,g(x_0))\arrow[ur, dashrightarrow,"\gamma_\sharp"', bend right=30]  %, bend right=30
 \end{tikzcd}
 \]
 \end{prop}
@@ -848,8 +848,9 @@ i_*\circ r_*=(i\circ r)_*=[i\circ r]=[Id]=Id_*=Id.
 \]$\QED$
 \end{dem}
 \end{comment}
+Si $X$ es contráctil entonces tiene el mismo tipo de homotopía que un espacio unipuntual  $\{p\}$ y por tanto, 
 \begin{coro}
-Si $X$ es contráctil entonces $\pi_1(X,x_0)\cong\pi_1(\{p\},p)=\{1\}$ ($X$ tiene el mismo tipo de homotopía que $\{p\}$).
+Si $X$ es contractil entonces $\pi_1(X,p) \cong \pi_1(\{p\},p) = \{1\}$.  
 \end{coro}
 
 \begin{defi} Si $X$ es un espacio conexo por caminos y $\pi_1(X,x_0)=\{1\}$, entonces se dice que $X$ es \textbf{simplemente conexo} o \textbf{1-conexo}.

@@ -318,7 +318,7 @@ Obsérvese que $H\big|_{\{p\}\times I}$ no es constante, lo cual se requiere par
 De existir la homotopía $F$, $F\big|_{\{p_n\}\times I}$ es una aplicación continua de $[0,1]$ en $X$, esto es, un camino que empieza en $p_n$ y acaba en $p$. Por la conexión de $[0,1]$ necesariamente debe pasar por $I\times\{0\}$. Para cada $n$ sea $t_n\in[0,1]$ con $F(p_n,t_n)\in I\times\{0\}$. Por la compacidad de $[0,1]$ existe una subsucesión $\{t_{n_k}\}_{k\geq 1}$ convergiendo a algún $t_0\in I$. Entonces, por la continuidad de $F$ y ser $I\times\{0\}$ compacto (y por tanto cerrado) $p=F(p,t_0)\in I\times\{0\}$, lo que es una contradicción.
 \end{ej}
 
-\begin{ej}Cualquier copia de $X$, $X\times\{t\}$, en el cilindro $X\times I$ es retracto de deformación fuerte de $X\times I$. Tendríamos $H(x,t,s)=(x,(1-t)s)$ donde $t$ es la altura fijada del cilindro y $s$ el parámetro habitual de la homotopía.
+\begin{ej}Cualquier copia de $X$, $X\times\{t_0\}$, en el cilindro $X\times I$ es retracto de deformación fuerte de $X\times I$. Tendríamos $H((x,t),s)=(x,(1-s)t+st_0)$ donde $t$ es la altura fijada del cilindro y $s$ el parámetro habitual de la homotopía.
 
 \begin{center}
 \definecolor{ffxfqq}{rgb}{1.,0.4980392156862745,0.}
@@ -329,7 +329,7 @@ De existir la homotopía $F$, $F\big|_{\{p_n\}\times I}$ es una aplicación cont
 \draw [rotate around={0.8593722436446721:(2.5066666666666677,4.)}] (2.5066666666666677,4.) ellipse (1.4929292974024158cm and 0.6713122293424151cm);
 \draw (1.0143526752150511,3.99918993501637)-- (1.,0.);
 \draw (3.998937546540053,4.000062592222063)-- (3.998660270060535,0.);
-\draw (1.8,2.274182091387203) node[anchor=north west] {$X\times\{t\}$};
+\draw (1.8,2.274182091387203) node[anchor=north west] {$X\times\{t_0\}$};
 \draw (-0.12636113198096707,1.0510415955194323) node[anchor=north west] {$X\times I$};
 \draw (2.2,0.25765316576736486) node[anchor=north west] {$X$};
 \end{tikzpicture}
@@ -576,10 +576,12 @@ La relación $\alpha\sim\alpha*c_y$ se demuestra de manera análoga.
 Entonces la ecuación
 \[
 F(t,s)=\left\{\begin{array}{lcc}
-\alpha(2t(1-s)) & si & 0\leq t\leq\frac{1}{2}\\
-\alpha((2-2t)(1-s)) & si & \frac{1}{2}\leq t\leq 1
+\alpha(2t) & si & 0\leq t\leq\frac{1-s}{2}\\
+\alpha(1-s) & si & \frac{1-s}{2}\leq t\leq \frac{1+s}{2}\\
+\alpha(2-2s) & si & \frac{1+s}{2}\leq t\leq 1
 \end{array}\right.
 \]
+
 
 
 define una homotopía relativa a $\{0,1\}$ entre $\alpha*\overline{\alpha}$ y $c_x$. Análogamente se encuentra una homotopía relativa a $\{0,1\}$ entre $\overline{\alpha}*\alpha$ y $c_y$.
@@ -781,11 +783,11 @@ Todo lazo $\gamma$ en $x_0$ induce un automorfismo de $\pi_1(X,x_0)$ dado por co
 \end{coro}
 
 \begin{prop}
-Sea $H$ una homotopía $H\func{X\times I}{Y}$ entre $f,g\func{X}{Y}$. Dado $x_0\in X$, sea $\gamma\func{I}{X}$ el camino $\gamma(t)=H(x_0,t)$. Este camino va de $f(x_0)=H(x_0,0)$ a $g(x_0)=H(x_0,1)$. Tenemos el diagrama commutativo
+Sea $H$ una homotopía $H\func{X\times I}{Y}$ entre $f,g\func{X}{Y}$. Dado $x_0\in X$, sea $\gamma\func{I}{X}$ el camino $\gamma(t)=H(x_0,t)$. Este camino va de $f(x_0)=H(x_0,0)$ a $g(x_0)=H(x_0,1)$. Tenemos el diagrama conmutativo
 \[
 \begin{tikzcd}
-\pi_1(X,x_0)\arrow[d,"g_*"] \arrow[r, "f_*"] &  \pi_1(Y,f(x_0))\arrow[dl,"\cong"',"\gamma_\sharp"] \\
-\pi_1(Y,g(x_0))\arrow[ur, dashrightarrow,"\overline{\gamma}_\sharp"', bend right=30]  %, bend right=30
+\pi_1(X,x_0)\arrow[d,"g_*"] \arrow[r, "f_*"] &  \pi_1(Y,f(x_0))\arrow[dl,"\cong"',"\overline{\gamma}_\sharp"] \\
+\pi_1(Y,g(x_0))\arrow[ur, dashrightarrow,"\gamma_\sharp"', bend right=30]  %, bend right=30
 \end{tikzcd}
 \]
 \end{prop}
@@ -814,7 +816,7 @@ Se define $F\func{I\times I}{Y}$ de la siguiente forma
 \[
 F(t,s)=\left\{\begin{array}{lcc}
 \overline{\gamma}(2t) & si & 0\leq t\leq\frac{1-s}{2}\\
-G\left(\frac{4t+2s-2}{2s+1},s\right) & si & \frac{1-s}{2}\leq t\leq\frac{s+3}{4}\\
+G\left(\frac{4t+2s-2}{3s+1},s\right) & si & \frac{1-s}{2}\leq t\leq\frac{s+3}{4}\\
 \gamma(4t-3) & si & \frac{s+3}{4}\leq t\leq 1
 \end{array}\right.
 \]
@@ -901,9 +903,9 @@ En segundo lugar, usamos que $i\circ r\simeq Id$
 i_*\circ r_*=(i\circ r)_*=[i\circ r]=[Id]=Id_*=Id.
 \]$\QED$
 \end{dem}
-
+Si $X$ es contráctil entonces tiene el mismo tipo de homotopía que un espacio unipuntual  $\{p\}$ y por tanto, 
 \begin{coro}
-Si $X$ es contráctil entonces $\pi_1(X,x_0)\cong\pi_1(\{p\},p)=\{1\}$ ($X$ tiene el mismo tipo de homotopía que $\{p\}$).
+Si $X$ es contractil entonces $\pi_1(X,p) \cong \pi_1(\{p\},p) = \{1\}$.  
 \end{coro}
 
 \begin{defi} Si $X$ es un espacio conexo por caminos y $\pi_1(X,x_0)=\{1\}$, entonces se dice que $X$ es \textbf{simplemente conexo} o \textbf{1-conexo}.

@@ -124,7 +124,7 @@ En la presentación del grupo no se suelen incluir relaciones triviales como, po
 
 \begin{nota}[Importante] Obsérvese que, dado un grupo $H$, para determinar que una aplicación $f\func{G=\langle S|R\rangle}{H}$ es un homomorfismo de grupos bastará comprobar que $f(s^{-1})=f(s)^{-1}$ y $f(s_1^{\pm 1}\cdot s_2^{\pm 1})=f(s_1)^{\pm 1}\cdot f(s_2)^{\pm 1}$ para $s,s_1,s_2\in S$, y que los elementos de $R$ van todos al neutro de $H$. En efecto, cualquier $g\in G$ puede ser escrito como $g=s_1^{\pm 1}\cdots s_m^{\pm 1}$ con $s_i\in S$. Entonces $f(g)=f(s_1)^{\pm 1}\cdots f(s_m)^{\pm 1}$ no depende de la palabra de $S$ elegida para representar $g$, de pues si $g$ puede ser representado por otra palabra de $S$, las transformaciones por medio de elementos de $R$ (sus inversos y las relaciones triviales de $G$) se corresponden por $f$ con operar con el elemento neutro, por lo que las dos posibles imágenes por $f$ de las dos palabras que representan a $g$ son coincidentes.
 \end{nota}
-
+\begin{comment}
 \begin{ej} Algunos ejemplos de presentaciones son:
 \begin{enumerate}
 \item $\Z\begin{cases}
@@ -139,7 +139,7 @@ En la presentación del grupo no se suelen incluir relaciones triviales como, po
 \end{gather*}
 \end{enumerate}
 \end{ej}
-
+\end{comment}
 \begin{defi}
 Sea $G$ un grupo con presentación $\langle S|R\rangle$. Se llama \textbf{abelianización} de $G$ al grupo abeliano $G^{ab}$ con presentación $\langle S| R\cup R_{ab}\rangle$ donde $R_{ab}=\{s^{}_i s^{}_j s^{-1}_i s^{-1}_j,\ s^{}_i, s^{}_j\in S \}$. Las expresiones $s^{}_i s^{}_j s^{-1}_i s^{-1}_j$ se suelen abreviar como $[s_i,s_j]$, lo que se conoce como \textbf{conmutador} de $s_i$ y $s_j$.
 \end{defi}
@@ -147,8 +147,6 @@ Sea $G$ un grupo con presentación $\langle S|R\rangle$. Se llama \textbf{abelia
 \begin{ej}\
 $\Z=\langle a|\ \rangle\Rightarrow \Z^{ab}=\langle a| aaa^{-1}a^{-1}\rangle=\langle a|\ \rangle =\Z$. En general, si $A$ es abeliano $A^{ab}=A$. En particular $(\Z^n)^{ab}=\Z^n$.
 \end{ej}
-
-\vspace{1cm}
 
 \begin{defi}
 Sean $G_1=\langle S_1|R_1\rangle$ y $G_2=\langle S_2|R_2\rangle$ dos grupos disjuntos con elementos neutros $e_1$ y $e_2$. Se llama \textbf{producto libre} de $G_1$ y $G_2$ al grupo denotado $G_1*G_2$ con presentación
@@ -167,7 +165,7 @@ Sea $G'=G\times\{0\}$ con la operación $(g,0)\cdot(g',0)=(gg',0)$ y $H'=H\times
 \item Obsérvese que hay definidos unos homomorfismos inyectivos $k_i\func{G_i}{G_1*G_2}\quad k_i(g)=g$ para cada $g\in G_i$. Más aún, dos homomorfismos cualesquiera $h_1\func{G_1}{H}$ y $h_2\func{G_2}{H}$, llegando al mismo grupo $H$ determinan un homomorfismo $h\func{G_1*G_2}{H}$ por $h(g_i)=h_i(g_i)$ y por tanto $h_i=h\circ k_i\ (i=1,2)$.
 \end{enumerate}
 \end{nota}
-
+\begin{comment}
 \begin{ej}\
 \begin{enumerate}
 \item $\Z\underbrace{*\cdots *}_{n\ veces}\Z: \langle a_1,\dots,a_n|\ \rangle$. Grupo libre con base $a_1,\dots,a_n$.
@@ -176,7 +174,7 @@ Sea $G'=G\times\{0\}$ con la operación $(g,0)\cdot(g',0)=(gg',0)$ y $H'=H\times
 \item $(G_1*G_2)^{ab}=G_1^{ab}\times G_2^{ab}$. 
 \end{enumerate}
 \end{ej}
-
+\end{comment}
 El producto libre es un caso particular de la siguiente construccción.  
 
 \begin{defi}
