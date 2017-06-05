@@ -91,18 +91,17 @@ La solución óptima de $LP$ es $(\frac{13}{7},0)$. El redondeo más cercano es 
 \end{example}
 
 \begin{obser}
-La solución óptima del $PME$ coincide con la solución del problema de optimización:
+Sea $X=\{x \in \R^n : Ax=b, x \in x \in \Z_+^n\}$. La solución óptima del $PME$ coincide con la solución del problema de optimización:
 \[
 \begin{aligned}
 & \min
 & & c'x \\
 & \text{sujeto a}
-& & x \in conv\{x \in \R^n : Ax=b, x \in x \in \Z_+^n\}
-\end{aligned}
+& & x \in CO(X)\end{aligned}
 \]
 Sin embargo, calcular la envolvente convexa se puede volver muy costoso en dimensiones superiores.
 \end{obser}
-
+\newpage
 \begin{example}[Problema de la mochila]
 Un conjunto de productos numerados de $1$ a $n$. El producto $i$ ocupa un volumen $a_i$ y reporta una satisfacción $p_i$. Dada una mochila con capacidad $V$ determinar la carga que maximiza la satisfacción. Definimos las variables $x_i$ con $x_i = 1$ si decido incluir el producto $i$ y $x_i = 0$ en caso contrario. Podemos definir el problema binario:
 \[
@@ -159,7 +158,7 @@ Sea $p$ un poliedro y $z_{LP}$ el valor óptimo de $\min \{c'x : x \in P\}$, $c 
 	\item[$(1 \to 2)$] Obvio por teorema fundamental de la programación lineal.
 	\item[$(2 \to 3)$] Obvio
 	\item[$(3 \to 4)$] Si $\forall c \in \Z^n \to x^* \in \Z^n$, entonces $z_{LP} = c'x^* \in \Z$.
-	\item[$(4 \to 1)$] Supongamos qu $P$ no es entero. Entonces existe una función objetivo $\tilde{c}\in \Z^n$ tal que su óptimo es el vértice $\tilde{x} \in P$ que tiene al menos una coordenada no entera. Supongamos que es $\tilde{x_i} \notin \Z$. Por $(4)$, $\tilde{c}'\tilde{x} \in \Z$. Consdero $\hat{c} = \tilde{c} + \frac{1}{q} e_i$, con $q >> 0$, de forma que $\tilde{x}$ es también óptimo para $\hat{c}$. Como $q \in \Z$, entonces $q\tilde{c}$ también optimiza en $\tilde{x}$. Igualmente $q\hat{c}$ optimiza en $\tilde{x}$. Por $(4)$, $q\hat{c}'\tilde{x} \in \Z$ y $q\tilde{c}\tilde{x} \in \Z$. Así pues,
+	\item[$(4 \to 1)$] Supongamos que $P$ no es entero. Entonces existe una función objetivo $\tilde{c}\in \Z^n$ tal que su óptimo es el vértice $\tilde{x} \in P$ que tiene al menos una coordenada no entera. Supongamos que es $\tilde{x_i} \notin \Z$. Por $(4)$, $\tilde{c}'\tilde{x} \in \Z$. Consdero $\hat{c} = \tilde{c} + \frac{1}{q} e_i$, con $q >> 0$, de forma que $\tilde{x}$ es también óptimo para $\hat{c}$. Como $q \in \Z$, entonces $q\tilde{c}$ también optimiza en $\tilde{x}$. Igualmente $q\hat{c}$ optimiza en $\tilde{x}$. Por $(4)$, $q\hat{c}'\tilde{x} \in \Z$ y $q\tilde{c}\tilde{x} \in \Z$. Así pues,
 	\[ \Z \ni q\tilde{c}'\tilde{x} - q\hat{c}\tilde{x} = q\tilde{c}\tilde{x}-q\tilde{c}\tilde{x}-\tilde{x_i} = -\tilde{x_i} \notin \Z \]
 	Por lo que llegamos a un absurdo.
 \end{itemize}
@@ -269,7 +268,6 @@ a_{ij} & \cdots\\
 \end{itemize}
 \end{itemize}
 \end{dem}
-\newpage
 \begin{theorem}
 Sea A TU y $P(b)=\{x \in \R^n_+ \mid Ax\leq b\} \neq \emptyset$, $b\in \Z^n$. Entonces $P(b)$ es entero.
 \end{theorem}

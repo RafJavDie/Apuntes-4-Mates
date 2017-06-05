@@ -211,7 +211,7 @@ Estamos en el caso 1 del teorema anterior y, por tanto, $t_0 > 0$. Consideramos 
 
 \begin{theorem}[Otro teorema de holgura complementaria] Sean $x^*$, $u^*$ soluciones factibles de P y D. Entonces $x^*$ y $u^*$ son soluciones óptimas si y sólo si $u^*(Ax^*-b)=0$, $(u'^{*} A-c')x^*=0$.
 \end{theorem}
-\begin{dem}
+\begin{dem} Si se verifican las dos igualdades entonces:
 \[
 \begin{cases}
 u'^* A x^* = u'^*b \\
@@ -219,19 +219,19 @@ u'^*A x^* = c'x^*
 \end{cases}
 \quad c'x^* = u'^*b \Rightarrow \text{$x^*$ es óptima en P y $u^*$ en D}
 \]
-Recíprocramente, si $c'x^*=u'^*b$. Consideramos el producto, donde cada miembro es $\geq 0$.
+Recíprocramente, supongamos que se tiene $c'x^*=u'^*b$. Por hipótesis, $Ax^*\geq b$ y $u^* \geq 0$, luego:
 \[
 u'^*(Ax^*-b)\geq 0
 \]
-Veamos que $\not >$. Supongamos lo contrario. ($(u^*A) \leq c'$ por ser solución factible del dual):
+Si la desigualdad fuese estricta:
 \[
-u'^*Ax^* > u'^* b \Rightarrow c'x^* \geq u'^*Ab>u'^*b
+u'^*Ax^* > u'^* b \Rightarrow c'x^* \geq u'^*Ax^*>u'^*b
 \]
-Lo cual es un absurdo. Análogamente deducimos que $(u'^*A-c')x^* \leq 0$. Si la desigualdad fuera estricta llegaríamos al mismo absurdo que en el caso anterior usando que, como $Ax^* \geq b$.
+Esto es absurdo, pues por hipótesis $c'x^*=u'^*b$. Análogamente deducimos que $(u'^*A-c')x^* \leq 0$.
 \end{dem}
 \section{Análisis de postoptimalidad}
 \subsection{Variaciones en la función objetivo}
-Dado un problema $(P)$ $\min c'x$, $Ax=b$, $x\geq 0$. Considero un vector $d\in\R^n$ y la familia de problemas: $P(\Delta)$: $\min c'x + \Delta d'x$, $Ax=b$, $x\geq 0$. Observemos que $P=P(0)$. Supongamos que B es una base asociada a una solución óptima de $x^*(0)$. Es decir, $x^*(0)=[B^{-1}b | 0]' \geq 0$. Queremos determinar el rango de valores de $\Delta$ que mantienen a $x^*(0)$ como solución óptima de $P(\Delta)$. La condición que certifica que $B$ es una base óptima son:
+Dado un problema $(P)$ $\min c'x$, $Ax=b$, $x\geq 0$ consideramos un vector $d\in\R^n$ y la familia de problemas: $P(\Delta)$: $\min c'x + \Delta d'x$, $Ax=b$, $x\geq 0$. Observemos que $P=P(0)$. Supongamos que B es una base asociada a una solución óptima de $x^*(0)$. Es decir, $x^*(0)=[B^{-1}b | 0]' \geq 0$. Queremos determinar el rango de valores de $\Delta$ que mantienen a $x^*(0)$ como solución óptima de $P(\Delta)$. La condición que certifica que $B$ es una base óptima son:
 \begin{itemize}
 \item $B^{-1}b \geq 0$.
 \item $\overline{c_R(0)}'  = c'_N - c_B'B^{-1}N \geq 0$. 
@@ -333,14 +333,13 @@ B & 0\\
 \end{bmatrix}.\]
 La solución asociada a esta base es $x=
 \begin{bmatrix}
-B^{-1}b & b_q-(a_q)_B B^{-1}b & 0\end{bmatrix}'$, $h_q=$. La inversa de nuestra base inversa tiene la siguiente forma:
+B^{-1}b & b_q-(a_q)_B B^{-1}b & 0\end{bmatrix}'$. La inversa de nuestra base tiene la siguiente forma:
 \[ B_q^{-1}=\begin{bmatrix}
 B^{-1} & 0\\
 -(a'_q)_B B^{-1} & 1
 \end{bmatrix}.\]
 Comprobamos las condiciones de optimalidad y factibilidad:
 \begin{enumerate}
-
 \item La optimalidad se tiene siempre a partir de la optimalidad de B en (P), pues
 \[\overline{c}_N(P_q)=c'_N-(c'_B,0)B_q^{-1}\begin{bmatrix}
 N\\
@@ -357,8 +356,8 @@ b\\
 b_q
 \end{bmatrix}=\begin{bmatrix}
 B^{-1}b\\
--(a'_q)_B B^{-1}+b_q
-\end{bmatrix}\geq 0$. La primera desigualdad se tiene trivialmente, luego llegamos a la condición es $-(a'_q)_B B^{-1}+b_q\geq 0$.
+-(a'_q)_B B^{-1}b+b_q
+\end{bmatrix}\geq 0$. La primera desigualdad se tiene trivialmente, luego llegamos a la condición es $-(a'_q)_B B^{-1}b+b_q\geq 0$.
 \end{enumerate}
 
 \begin{example}
@@ -418,7 +417,7 @@ Condiciones para el análisis de postóptimalidad
 \item Añadir una nueva variable
 \[c_{n+1}-c'_B B^{-1} a_{n+1}\geq 0.\]
 \item Añadir una nueva restricción
-\[-(a'_q)_B B^{-1}+b_q\geq 0\]
+\[-(a'_q)_B B^{-1}b+b_q\geq 0\]
 \end{itemize}
 %{\large\bf LOGIC INTERLUDE}
 %\begin{theorem}
