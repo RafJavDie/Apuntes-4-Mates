@@ -157,7 +157,7 @@ El último término es mayor o igual que $0$ por hipótesis, y como la norma es 
 Restando a ambos lados no queda $\lambda^2||\overline{x}-x||-2\lambda(y-\overline{x})'(x-\overline{x})\geq 0$. Simplificamos usando que $\lambda$ es estrictamente positiva y despejamos y tenemos que $\lambda||x-\overline{x}||\geq 2(y-\overline{x})'(x-\overline{x})$. Como vale para todo $\lambda\in (0,1)$, tomando límite ($\lambda\rightarrow 0$) y deducimos:  $0\geq (y-\overline{x})'(x-\overline{x})$. $\QED$
 \end{dem}
 
-\begin{defi} Sean dos conjuntos convexos $S_1,S_2\subset\R^n$ y el hiperplano $H=\{x\in\R^n: p'x=\alpha\}$. Decimos que $H$ \textbf{separa los convexos} $S_1$ de $S_2$ y $p'x\leq\alpha$ $\forall x\in S_1$ y $p'x\geq\alpha$ $\forall x\in S_2$ o recíprocamente. Se dice que $H$ separa estrictamente a $S_1$ de $S_2$ si las desigualdades son estrictas.
+\begin{defi} Sean dos conjuntos convexos $S_1,S_2\subset\R^n$ y el hiperplano $H=\{x\in\R^n: p'x=\alpha\}$. Decimos que $H$ \textbf{separa los convexos} $S_1$ de $S_2$ si $p'x\leq\alpha$ $\forall x\in S_1$ y $p'x\geq\alpha$ $\forall x\in S_2$ o recíprocamente. Se dice que $H$ separa estrictamente a $S_1$ de $S_2$ si las desigualdades son estrictas.
 \end{defi}
 
 \begin{lema}
@@ -170,14 +170,14 @@ Por el teorema de la proyección, existe $\overline{x}\in S$ tal que $(y-\overli
 \newpage
 
 \begin{lema}[de Farkas]
-Sean $A\in \R^{m\times n}, b\in\R^m,x\in\R^n$. Entonces, exactamente uno de los siguientes sistemas tiene solución:
+Sean $A\in \R^{m\times n}, b\in\R^m$. Entonces, exactamente uno de los siguientes sistemas tiene solución:
 \begin{enumerate}
-\item $Ax=b$ con $x\geq 0$ (es decir, todas las componentes de $x$ son no negativas).
-\item $u'A\leq 0, u'b>0, u\in \R^m$.
+\item $Ax=b$, $x\geq 0$, $x\in\R^n$.
+\item $u'A\leq 0$, $u'b>0$, $u\in \R^m$.
 \end{enumerate}
 \end{lema}
 
-Antes de demostrarlo vamos a interpretarlo. Sean $a_1,\dots, a_n$ las columnas de $A$. Entonces $Ax=a_1x_1+\cdots +a_nx_n$ con $x_i\geq 0\ \forall i$. Las combinaciones no negativas de los vectores $a_i$ generan un cono. Del segundo sistema $u'a_1\leq 0,\dots , u'a_n\leq 0$. Luego el ángulo que forma $u'$ con cada $a_i$ es mayor de $\frac{\pi}{2}$ y $u$ está en la intersección de todos los hiperplanos. Por otro lado $b$ tiene que formar un ángulo con $u$ menor de $\frac{\pi}{2}$ por lo que estará fuera del cono. Por tanto, si el segundo sistema tiene solución, el primero no puede tenerlo porque en el primero $b$ debe estar dentro del cono. Ver figura.
+Sean $a_1,\dots, a_n$ las columnas de $A$. Entonces $Ax=a_1x_1+\cdots +a_nx_n$ con $x_i\geq 0\ \forall i$, las combinaciones no negativas de los vectores $a_i$, generan un cono. Del segundo sistema, $u'a_1\leq 0,\dots , u'a_n\leq 0$, deducimos que el ángulo que forma $u'$ con cada $a_i$ es mayor de $\frac{\pi}{2}$ y $u$ está en la intersección de todos los hiperplanos. Por otro lado, si $u'b>0$, $b$ tiene que formar un ángulo con $u$ menor de $\frac{\pi}{2}$, por lo que estará fuera del cono. Por tanto, si el segundo sistema tiene solución, el primero no puede tenerlo porque $b$ debería estar dentro del cono. 
 
 \begin{dem}\
 \begin{enumerate}
@@ -254,15 +254,18 @@ Todo poliedro se puede escribir en forma estándar pues $a'x\leq b\equiv a'x+y=b
 Si $x_j\in\R$ entonces podemos escribir $x_j=x_j^+ -x_j^-$ siendo $x_j^+=\max{\{x_j,0\}}, x_j^-=-\min{\{x_j,0\}}$.
 \end{nota}
 
-Dado que $A\in\R^{m\times n}, b\in\R^m, n\geq m$ y $rg(A)=m$, existe una matriz $B$ de $m$ columas de $A$ que son linealmente independientes, es decir que $rg(B)=m$ ($\exists B^{-1}$). Escribimos entonces $A$ como $[B\ N]$ poniendo las columnas independientes al principio. Las variables del sistema $Ax=b$ también se deben reordenar de modo que 
+\begin{defi}Dado que $A\in\R^{m\times n}, b\in\R^m, n\geq m$ y $rg(A)=m$, existe una matriz $B$ de $m$ columas de $A$ que son linealmente independientes, es decir que $rg(B)=m$ ($\exists B^{-1}$). Si $B^{-1}b\geq 0$ diremos que B es una \textbf{base}. 
+\end{defi}
+\begin{obser} Sea $B$ en las condiciones anteriores (no necesariamente base), podemos escribir $A$ como $[B\ N]$. Las variables del sistema $Ax=b$ también se pueden reordenar de modo que:
 \[
 Ax=b\equiv [B\ N]\begin{bmatrix}
 x_B\\
 x_N
 \end{bmatrix}=b
 \]
+\end{obser}
 \begin{theorem}[Caracterización de puntos extremos]\label{carac-extremos}
-Sea $P$ un poliedro en forma estándar. Entonces $x$ es un punto extremo de $P$ si y sólo si existe $B \subset A$ con $B \in \R^{m \times m}$, $rg(B)=m$ y $x = \begin{pmatrix} B^{-1}b\\0\end{pmatrix}\geq 0$
+Sea $P$ un poliedro en forma estándar. Entonces $x$ es un punto extremo de $P$ si y sólo si existe una base $B$ tal que $x = \begin{pmatrix} B^{-1}b\\0\end{pmatrix}$.
 \end{theorem}
 
 \begin{dem}
