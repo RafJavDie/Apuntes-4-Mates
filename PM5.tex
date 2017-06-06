@@ -425,6 +425,57 @@ Convergencia: \=
 \end{tabbing}
 
 
+\subsection{Corte fraccional de Gomory}
+Este método es aplicable solo si todas las variables de decisión son enteras, además
+todos los coeficientes que aparezcan en el problema deben ser enteros, es decir, solo es
+aplicable a problemas del tipo:
+\begin{center}
+\begin{tabular}{c c l l}
+$(P)$& $\min$ & $c'x$ &$c\in\Z^n$\\
+   & sa:  & $Ax=b$ & $A\in\Z^{m\times n}$\\
+   &      & $x\in\Z^n_+$ &$b\in\Z^m$
+\end{tabular}
+\end{center}
+Supongamos que resolvemos el relajado lineal de $(P)$ y obtenemos una solución
+óptima $x^*$ con alguna componente fraccional ($\exists k : x^*_k\in\Q\setminus\Z$). Sea $B$ la base asociada a
+la solución óptima $x^*$, $x^*_B = B^{-1}b = \bar{b} \geq 0, x^*_N = 0$. Dado que:
+\[
+Ax=b\equiv [B\ N]\begin{bmatrix}
+x_B\\
+x_N
+\end{bmatrix}=b\equiv Bx_B+Nx_N=b
+\]
+cualquier solución factible $x$ del problema $(P)$ se puede representar de la forma:
+\[
+x_B = B^{-1}b-\underbrace{B^{-1}N}_{Y}\underbrace{x_N}_{w}=\bar{b}-Yw.
+\]
+Entonces
+\[
+x_k=\bar{b}_k-\sum_{j\in N}y_{kj}w_j.
+\]
+Además, podemos hacer la descomposición 
+\begin{align*}
+&\bar{b}_k=\lfloor\bar{b}_k\rfloor +f_k,\ 1>f_k>0\\
+& y_{kj}=\lfloor y_{kj}\rfloor+f_{kj},\ 1>f_{kj}\geq 0
+\end{align*}
+con lo que se tendría
+\[
+x_k=\lfloor\bar{b}_k\rfloor +f_k-\sum_{j\in N}(\lfloor y_{kj}\rfloor+f_{kj})w_j=\lfloor\bar{b}_k\rfloor-\sum_{j\in N}\lfloor y_{kj}\rfloor w_j+(f_k-\sum_{j\in N}f_{kj}w_j),
+\]
+lo que implica que $$f_k-\sum_{j\in N}f_{kj}w_j\in\Z,$$ pues buscamos que $x_k\in\Z$ y sea factible, y se tiene $\lfloor\bar{b}_k\rfloor-\sum_{j\in N}\lfloor y_{kj}\rfloor w_j\in\Z$. Como $\sum_{j\in N}f_{kj}w_j\geq 0$, $f_k-\sum_{j\in N}f_{kj}w_j\leq f_k<1$, por lo tanto:
+\[
+f_k-\sum_{j\in N}f_{kj}w_j\leq 0.
+\]
+Finalmente, si añadimos una variable de holgura $s_k\in\Z_+$, podemos escribir la restricción:
+\[
+s_k-\sum_{j\in N}f_{kj}w_j=-f_k.
+\]
+Al evaluar $x^*$ sobre esta restricción tenemos que $w=x^*_N=0$, lo que implica $s_k=-f_k$, lo cual es una contradcción pues $s_k\in\Z_+$ y $f_k\in(0,1)$, luego $x^*$ no verifica la restricción. 
+
+El método consiste en reforzar el problema entero añadiendo restricciones como la
+anterior hasta que se obtiene una solución óptima en variables entera. Esto se consigue
+en un número finito de pasos.
+
 \subsection{Corte mixto de Gomory}
 
 Consideremos el problema:
