@@ -280,4 +280,6 @@ La matriz inversa básica puede ser identificada de la tabla símplex de la sigu
 El proceso de reducir la matriz básica $B$ de la tabla original a la matriz identidad en la tabla actual es equivalente a premultiplicar las filas $1$ hasta $m$ de la tabla original por $B^{-1}$ para producir la tabla actual.
 Esto convierte la matriz identidad de la tabla original en $B^{-1}$.
 Por lo tanto, $B^{-1}$ puede ser extraida como la submatriz de la tabla actual donde la matriz identidad estaba en la tabla original.
+\subsubsection{Método de las dos fases}
+En caso de haber utilizado el método de las dos fases, tenemos una tabla incial y una tabla final en cada fase. En cada pareja inicial-final aplicamos el método anterior, obteniendo así una $B_I^{-1}$ de la Fase I y una $B_{II}^{-1}$ de la Fase II. Finalmente, la matriz inversa que buscamos es $B^{-1}= B_{II}^{-1}B_I^{-1}$.
 \end{document}
