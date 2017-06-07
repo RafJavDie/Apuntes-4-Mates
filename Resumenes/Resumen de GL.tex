@@ -57,13 +57,18 @@
 \providecommand{\gabs}[1]{\left|{#1}\right|}
 \newcommand{\bor}[1]{\mathcal{B}(#1)}
 \newcommand{\erre}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
 \newcommand{\resi}{\varepsilon_L}
 \providecommand{\conv}[1]{\overset{#1}{\longrightarrow}}
 \providecommand{\convcs}{\xrightarrow{CS}}
-% xrightarrow{d}[d]
+\providecommand{\func}[2]{\colon{#1}\longrightarrow{#2}}
 \providecommand{\lrg}{\longrightarrow}
 %--------------------------------------------------------
 \begin{document}
+
+\title{Resumen de Geometría Local de Curvas y Superficies }
+\author{Rafael González López}
+\maketitle
 \section{Curvas}
 \subsection{Introducción}
 \begin{defi}
@@ -217,13 +222,14 @@ X^1 = \left.\left(\frac{d \, u^1}{d\, t}\right)\right|_{t=0} \qquad  X^2 = \left
 \end{gather*}
 Finalmente, $X = X^1 \, \chi_1 + X^2 \, \chi_2 = \sum^2_{i = 1} \, X^i \, \chi_1$.
 \end{dem}
-\subsection{Superficies de revolución}
+\subsubsection{Superficies de revolución}
 
 \begin{defi} Se denominan {\em superficies de revoluci\'on} a aquellas superficies engendradas por una curva alabeada plana regular {\bf $\alpha = \alpha(v)$} (denominada curva generatriz) al girar alrededor de una recta contenida en su plano (denominada eje de giro).
 \end{defi}
-
-\begin{defi}
-\begin{enumerate}\item[]
+\newpage
+\begin{defi} 
+\begin{enumerate}
+\item[]
 \item [a)] Se denominan {\em meridianos} (o generatrices) de una superficie de revoluci\'on a las curvas intersecci\'on de dicha superficie con planos
 que pasan por el eje. Los meridianos de una de una superficie de revoluci\'on son curvas del mismo tipo que la generatriz.
 
@@ -236,4 +242,86 @@ que pasan por el eje. Los meridianos de una de una superficie de revoluci\'on so
 \item Paralelos $\equiv$ c\'irculos de latitud $\equiv$ curvas u-param\'etricas $\equiv$ curvas {\bf $v = cte$}.
 \end{itemize} 
 \end{nota}
+
+\newpage
+
+
+\section{Geometría Intrínseca}
+Partimos de las siguientes hipótesis: Sea $\chi=\chi(u^1,u^2), \chi\func{U}{\R^3}$ una superficie simple, $P\in\chi(u)$ un punto de la misma, $T_P(\chi)$ el plano tangente a $\chi$ en $P$ con $\{\chi_1(P),\chi_2(P)\}$ una base del mismo y $X,Y \in\R^3$ dos vectores tangentes en $P$, lo cuales vienen dados por $X=\sum_{i=1}^{2}X^i\chi_i, Y=\sum_{i=1}^{2}Y^j\chi_j$.
+
+\begin{defi} En las condiciones anteriores, se denomina \textbf{coeficientes métricos} (o coeficientes de la métrica riemanniana o coeficientes de la IFF) de la SS $\chi$ en cada punto a las funciones escalares:
+\begin{gather*}
+g_{ij}\func{U}{\R}\\
+g_{ij}(u^1,u^2)=\chi_i(u^1,u^2)\cdot\chi_j(u^1,u^2) \quad i,j=1,2
+\end{gather*}
+\end{defi}
+\begin{defi} Sea $\chi$ una superficie simple y $(g_{ij})$ la matriz de coeficientes métrico. Denotamos $g^{ij}$ de $\chi$ a las funciones escalares que se corresponden con los elementos $(i,j)$ de la matriz inversa de $(g_{ij})$.
+\end{defi}
+\begin{theorem}
+Se tiene que $g^{11}=\dfrac{g_{22}}{g}$, $g^{12}=g^{21}=\dfrac{-g_{12}}{g}$ y $g^{22}=\dfrac{g_{11}}{g}$
+\end{theorem}
+
+
+\subsection{Curvatura Geodésica}
+
+\begin{defi}Se denomina \textbf{Vector Normal Intrínseca} en cada punto de la curva $\alpha$ sobre $\chi$ y se denota por $S(s)$ al vector $N(s)\wedge\textbf{t}(s)$.
+\end{defi}
+
+\begin{theorem}[Expresión de $\ddot{\alpha}$ respecto de las 2 bases anteriores]\
+\begin{enumerate}
+\item[A] Con respecto de BF: $\ddot{\alpha}(s)=k(s)\textbf{n}(s)$.
+\item[B] Con respecto a BD: $\ddot{\alpha}(s)=K_g(s)\textbf{S}(s)+K_\textbf{N}(s)\textbf{N}(s)$. 
+\end{enumerate}
+Donde $K_g(s)$ es la \textbf{curvatura geodésica} y $K_n(s)$ es la \textbf{curvatura normal} de $\alpha$
+\end{theorem}
+
+\begin{defi}[Ecuaciones de Gauss] 
+\begin{equation*}
+\chi_{ij}=\sum_{k=1}^2\Gamma_{ij}^k\chi_k+L_{ij}N\quad i,j=1,2
+\end{equation*}
+Los coeficientes $\Gamma_{ij}^k$ se denominan \textbf{símbolos de Christoffel} (de segunda especie) y los $L_{ij}$ son los coeficientes de la IFF de la superficie. Ambos tipo de coeficientes son funciones escalares definidas en el abierto $U$ de $\chi$.
+\end{defi}
+
+\begin{theorem}
+En las condiciones anteriores se verifica que:
+\[\Gamma^k_{ij} = \sum_{h=1}^2 (\chi_{ij} \chi_h ) g^{hk}\]
+\end{theorem}
+
+
+\begin{theorem}
+Sea $\alpha(s)$ una CARPN sobre una superficie $\chi$. Se verifican:
+\begin{itemize}
+\item $K_g(s) = ({\bf t}(s)\; \dot{\bf t}(s) \; \textbf{N}(s) )$.
+\item $K_g(s) = k(s)\cos{\varphi(s)}$ donde $\varphi(s)=\widehat{(\textbf{b}(s) \textbf{N}(s))}$
+\end{itemize}
+\end{theorem}
+
+\begin{theorem} Sea $\alpha(s)$ una CAR no necesariamente PN. Se tiene que:
+\[
+K_g(t)=\frac{1}{|\alpha'(t)|^3}(\alpha'(t)\; \alpha''(t)\; N(t))
+\]
+\end{theorem}
+\subsection{Geodésicas}
+
+\begin{defi}
+Sea $\chi = \chi(u^1, u^2)$ una superficie simple. Se denomina \textbf{geodésica} en $\chi$ a toda curva alabeada regular p.n. $\alpha = \alpha(s) = \chi(u^1(s), u^2(s))$ sobre $\chi$ tal que $K_g(s) = 0.$
+\end{defi}
+
+\begin{theorem} {\em Teorema de Caracterización de las Geodésicas}
+
+Sea $\chi = \chi(u^1, u^2)$ una superficie simple y $\alpha = \alpha(s) = \chi(u^1(s), u^2(s))$ una CARPN sobre $\chi.$ Entonces, $\alpha(s)$ es geodésica sobre $\chi$ si y solo si se cumple una de las siguientes condiciones, equivalentes entre sí:
+
+\begin{enumerate}
+\item[C1] \quad $({\bf t}(s) \,\, \dot{{\bf t}}(s) \,\, N(s)) = 0, \quad [\equiv \, K_g(s) = 0].$
+
+\item[C2] \quad $\ddot{u}^k + \sum_{i, j = 1}^2 \, \Gamma_{ij}^k \, \dot{u}^i \, \dot{u}^j \, = 0, \quad i,j = 1,2.$ \quad {\em [Sistema de Ec. Dif. de las geodésicas]}.
+
+\item[C3] \quad ${\bf n}(s) \, \| \, N(s)$ a lo largo de $\alpha.$
+
+\item[C4] \quad $\ddot{\alpha}(s) \, \| \, N(s),$ es decir, $\ddot{\alpha}(s)$ es un vector normal a la superficie $\chi$ a lo largo de $\alpha.$
+
+\item[C5] \quad ${\bf b}(s) \, \perp \, N(s),$ es decir, el plano osculador a $\alpha$ en cada punto es ortogonal a la superficie en ese \quad punto.
+\end{enumerate}
+\end{theorem}
+
 \end{document}
