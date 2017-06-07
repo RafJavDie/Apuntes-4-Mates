@@ -1,0 +1,239 @@
+\documentclass[twoside]{article}
+\usepackage{amsmath,accents}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{setspace}  
+\usepackage{amsmath}
+\usepackage{nccmath}
+\usepackage[spanish]{babel}
+\usepackage{multirow}
+
+\renewcommand{\baselinestretch}{1,4}
+\setlength{\oddsidemargin}{0.5in}
+\setlength{\evensidemargin}{0.5in}
+\setlength{\textwidth}{5.4in}
+\setlength{\topmargin}{-0.25in}
+\setlength{\headheight}{0.5in}
+\setlength{\headsep}{0.6in}
+\setlength{\textheight}{8in}
+\setlength{\footskip}{0.75in}
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{propi}[theorem]{Propiedades}
+\newtheorem{condition}{Condition}
+\newtheorem{consec}[theorem]{Consecuencia}
+\newtheorem{coro}[theorem]{Corolario}
+\newtheorem{criterion}{Criterion}
+\newtheorem{defi}[theorem]{Definición}
+\newtheorem{example}[theorem]{Ejemplo}
+\newtheorem{exercise}{Exercise}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{nota}[theorem]{Nota}
+\newtheorem{problem}{Problem}
+\newtheorem{prop}[theorem]{Proposición}
+\newtheorem{remark}{Remark}
+
+\newtheorem{dem}[theorem]{Demostración}
+
+\newtheorem{summary}{Summary}
+\numberwithin{equation}{section}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\ninf}[1]{\norm{#1}_\infty}
+\providecommand{\numn}[1]{\norm{#1}_1}
+\providecommand{\gabs}[1]{\left|{#1}\right|}
+\newcommand{\bor}[1]{\mathcal{B}(#1)}
+\newcommand{\erre}{\mathbb{R}}
+\newcommand{\resi}{\varepsilon_L}
+\providecommand{\conv}[1]{\overset{#1}{\longrightarrow}}
+\providecommand{\convcs}{\xrightarrow{CS}}
+% xrightarrow{d}[d]
+\providecommand{\lrg}{\longrightarrow}
+%--------------------------------------------------------
+\begin{document}
+\section{Curvas}
+\subsection{Introducción}
+\begin{defi}
+Sea $\alpha:(a,b)\longrightarrow \erre$ $\alpha=\alpha(t)$ una CAPR y $\alpha(t_0)$ un punto de la misma. Se denomina parámetro natural (o longitud de arco) de $\alpha$ respecto del punto $\alpha(t_0)$ a la función escalar:
+\begin{gather*}
+s:(a,b)\longrightarrow \erre\\
+s(t)=\int_{t_0}^t \abs{\alpha'(t)}dt
+\end{gather*}
+\end{defi}
+\begin{theorem}[Caracterización del Parámetro Natural] Sea $\alpha:(a,b)\longrightarrow \erre$, $\alpha=\alpha(t)$ una CAPR. Entonces $t$ es el p.n. de $\alpha$ (salvo constante, es decir $t=s+cte$) si y solo sí $\abs{\alpha'(t)}=1$ $\forall t\in(a,b)$.
+\end{theorem}
+\subsection{Curvatura}
+\begin{defi}
+Sea $\alpha=\alpha(s)$ una CARPN, $\alpha:(a,b)\longrightarrow \erre^3$. Se denomina \textbf{curvatura} de $\alpha$ en cada punto de $\alpha(s)$ a la función escalar:
+\begin{gather*}
+k=k(s) \quad k:(a,b)\longrightarrow \erre\\
+k(s)=\abs{\ddot{\alpha}(s)} \quad \forall s\in (a,b)
+\end{gather*}
+\end{defi}
+\newpage
+\subsection{Referencia de Frenet de curvas alabeadas}
+\begin{defi}
+Sea $\alpha(s)$ una CARPN. Se define el \textbf{vector normal principal} de $\alpha(s)$ en cada punto y se representa $N(s)$ como un vector unitario en la dirección de $\ddot{\alpha}(s)$. Es decir:
+\begin{gather*}
+N(s)=\frac{\ddot{\alpha}(s)}{\abs{\ddot{\alpha}(s)}}
+\end{gather*}
+En las condiciones anteriores se denomina binormal de $\alpha$ en cada punto y se representa por $B(s)$ al vetor:
+\begin{gather*}
+B(s)=\dot{\alpha}(s)\times\frac{\ddot{\alpha}(s)}{\abs{\ddot{\alpha}(s)}}=T(s)\times N(s)
+\end{gather*}
+\end{defi}
+\begin{theorem} Expresiones de los vectores de la base de Frenet en el caso de que nuestra CAR no esté parametrizada naturalmente.
+\begin{gather*}
+T(t)=\frac{\alpha'(t)}{\abs{\alpha'(t)}} \qquad B(t)=\frac{\alpha'(t)\times\alpha''(t)}{\abs{\alpha'(t)\times\alpha''(t)}}\\
+N(t)=\dfrac{[\alpha'(t)\times\alpha''(t)]\times\alpha'(t)}{\abs{[\alpha'(t)\times\alpha''(t)]\times\alpha'(t)}}
+\end{gather*}
+\end{theorem}
+\subsection{Torsión}
+\begin{defi}
+Se define la torsión de un CARPN como: $\boxed{\tau(s)=-\dot{B}(s)N(s)}$.
+\end{defi}
+\begin{nota} No se puede pasar de $(2)$ a $(1)$ multiplicando por $-N(s)$ porque el producto escalar no es asociativo, es decir, $(-\dot{B}(s)N(s))(-N(s))\neq -\dot{B}(s)(N(s)N(s))$. A la inversa sí lo podemos hacer porque $\tau(s)$ es un escalar.
+\end{nota}
+\subsection{Consecuencias de la definición}
+\begin{theorem}
+Sea $\alpha(s)$ una CARPN. Entonces $\alpha(s)$ es plana si y solo si $\tau(s)=0$ $\forall s$.
+\end{theorem}
+\subsection{Ecuación de Frenet-Serret}
+\begin{theorem}[Ecuaciones de Frenet-Serret] Sea $\alpha(s)$ una curva CARPN. En cada punto de la curva se tiene:
+\begin{gather*}
+\dot{T}(s)=k(s)N(s) \qquad \dot{N}(s)=-k(s)T(s)+\tau(s)B(s) \qquad \dot{B}(s)=-\tau(s)N(s)
+\end{gather*}
+\end{theorem}
+\begin{theorem}
+Normalmente calcularemos de la siguiente forma la curvatura y la torsión. 
+\begin{gather*}
+k(s)=\abs{\ddot{\alpha}(s)} \qquad k(t)=\frac{|\alpha'(t)\times\alpha''(t)|}{|\alpha'(t)|^3}\\
+\tau(s)=\frac{\dot{\alpha}(s)\cdot(\ddot{\alpha}(s)\times\dddot{\alpha}(s))}{|\ddot{\alpha}(s)|^2} \qquad \tau(t)=\frac{\alpha'(t)\cdot(\alpha''(t)\times\alpha'''(t))}{|\alpha'(t)\times\alpha''(t)|^2}
+\end{gather*}
+\end{theorem}
+\newpage
+\section{Superficies}
+\subsection{Introducción}
+\begin{defi} Se denomina {\em superficie parametrizada regular o superficie inmersa} (SPR) en $\mathbb{R}^3$ a toda aplicación $\chi : U \, (abierto) \, \subseteq \mathbb{R}^2 \mapsto \mathbb{R}^3,$ tal que verifique las dos siguientes condiciones:
+\begin{itemize}
+\item C1 (Condición de Diferenciabilidad): $\chi \in \mathcal{C}^k$, para algún $k \in \mathbb{N}$.
+\item C2 (Condición de Regularidad): $\frac{\partial \chi}{\partial u^1} \wedge \frac{\partial \chi}{\partial u^2} \neq \bar{0},$ \, para todo \, $(u^1, u^2) \in U$.
+\end{itemize}
+\end{defi}
+
+
+\begin{defi} Se denomina {\em superficie simple} (SS) a toda superficie parametrizada regular que sea además inyectiva.
+\end{defi}
+
+
+\subsection{Vector Normal y Plano Tangente}
+
+\begin{defi}
+Sea $\chi: U \mapsto \mathbb{R}^3$ una superficie simple y $ p\in \chi(U)$ un punto de la misma. Se denomina {\em plano tangente} a $\chi$ en $p$ al plano que pasa por $p$ y tiene como vector normal al $\chi_1 \wedge \chi_2$ en $p.$
+\end{defi}
+
+\begin{defi}
+Se denomina {\em vector unitario normal} a la superficie simple $\chi = \chi(u^1, u^2)$ en cada punto, y se representa por $ N(u^1, u^2),$ a un vector unitario ortogonal al plano tangente a $\chi$ en ese punto.
+\begin{equation*}
+N(u^1, u^2) = \frac{\chi_1(u^1, u^2) \wedge \chi_2(u^1, u^2)}{\mid \chi_1(u^1, u^2) \wedge \chi_2(u^1, u^2) \mid}
+\end{equation*}
+\end{defi}
+
+\subsection{Curvas en una superficie}
+
+
+\begin{defi} Sea $\chi : U \, (abierto) \subset \mathbb{R}^2 \mapsto \mathbb{R}^3,$ $\chi = \chi(u^1, u^2)$ una superficie simple. Se denomina {\em curva diferenciable} en $\chi$ a toda curva alabeada parametrizada regular, diferenciable, contenida entera\-mente en $\chi$, es decir a toda aplicación
+
+$\alpha : (a,b) \, \subset \mathbb{R} \mapsto \mathbb{R}^3,$ $\alpha =
+\alpha(t) = \chi(u^1(t), u^2(t)),$ para todo $ t \in (a,b).$
+\end{defi}
+
+
+\begin{defi} {\em Curvas paramétricas o líneas paramétricas de una superficie}
+
+Consideremos el abierto $U$ de $\mathbb{R}^2,$ de coordenadas
+$(u^1, u^2)$ y sea $\chi : U \, \mapsto \mathbb{R}^3$ una
+superficie simple. Se denominan {\em líneas paramétricas o curvas
+paramétricas} de $\chi$ a la imagen mediante la aplicación  $\chi$
+de las líneas paramétricas $u^1 = cte$ y $u^2 = cte$ de $U,$ es decir,
+las líneas paramétricas de $\chi$ son las curvas sobre la
+superficie:
+\begin{center} curvas \, $u^1$-param\'etricas: \,\, $\alpha =
+\alpha(u^1) = \chi(u^1, u^2_0),$
+
+curvas \, $u^2$-param\'etricas: \,\, $\beta = \beta(u^2) =
+\chi(u^1_0, u^2).$
+\end{center}
+\end{defi}
+
+\subsection{Vectores Tangentes en una superficie}
+
+\begin{defi} Sea $\chi : U \, (abierto) \subset \mathbb{R}^2 \mapsto \mathbb{R}^3,$ $\chi = \chi(u^1, u^2)$ una superficie simple y $P \in \chi(U)$ un punto. Se denomina {\em vector tangente} a $\chi$ en $P$ a todo vector $X \in \mathbb{R}^3$ que sea tangente a una curva alabeada regular cualquiera, contenida en $\chi$ y que pase por $P$.
+\end{defi}
+
+\begin{defi}
+Al conjunto de todos los vectores tangentes a la superficie $\chi$ en un punto $P$ de la misma lo denotaremos por $T_P(\chi),$ es decir:
+\begin{center}
+$T_P(\chi) = \{X \in \mathbb{R}^3 \,| \, X \, es \, un \, vector \, tangente \, a \, \chi \, en \, P \}$
+\end{center}
+\end{defi}
+
+\begin{theorem}
+Todo vector tangente $X$ a una superficie simple $\chi$ en un punto $P$ de la misma puede expresarse según $X = X^1 \, \chi_1 + X^2 \, \chi_2.$
+\end{theorem}
+
+\begin{dem}
+Sea $X \in T_p(\chi)$ y sea $\alpha = \alpha(t) = \chi(u^1(t), u^2(t))$ una curva en $\chi$ tal que $P = \alpha(0)$ y $X = \alpha'(0).$
+Entonces:
+\begin{gather*}
+\alpha'(t) = \frac{\partial \, \chi}{\partial \, u^1} \, \frac{d \, u^1}{d\, t} + \frac{\partial \, \chi}{\partial \, u^2} \, \frac{d \, u^2}{d\, t} = \chi_1 \, 
+\frac{d \, u^1}{d\, t} + \chi_2 \,
+\frac{d \, u^2}{d\, t}
+\end{gather*}
+Se tendrá que:
+
+\begin{gather*}
+X = \alpha'(0) = \chi_1 \, 
+\left.\left(\frac{d \, u^1}{d\, t}\right)\right|_{t=0} + \chi_2 \,
+\left.\left(\frac{d \, u^2}{d\, t}\right)\right|_{t=0}
+\end{gather*}
+Y llamando:
+
+\begin{gather*}
+X^1 = \left.\left(\frac{d \, u^1}{d\, t}\right)\right|_{t=0} \qquad  X^2 = \left.\left(\frac{d \, u^2}{d\, t}\right)\right|_{t=0}
+\end{gather*}
+Finalmente, $X = X^1 \, \chi_1 + X^2 \, \chi_2 = \sum^2_{i = 1} \, X^i \, \chi_1$.
+\end{dem}
+\subsection{Superficies de revolución}
+
+\begin{defi} Se denominan {\em superficies de revoluci\'on} a aquellas superficies engendradas por una curva alabeada plana regular {\bf $\alpha = \alpha(v)$} (denominada curva generatriz) al girar alrededor de una recta contenida en su plano (denominada eje de giro).
+\end{defi}
+
+\begin{defi}
+\begin{enumerate}\item[]
+\item [a)] Se denominan {\em meridianos} (o generatrices) de una superficie de revoluci\'on a las curvas intersecci\'on de dicha superficie con planos
+que pasan por el eje. Los meridianos de una de una superficie de revoluci\'on son curvas del mismo tipo que la generatriz.
+
+\item [b)] Se denominan {\em paralelos} (o c\'irculos de latitud) de una superficie de revoluci\'on a las curvas intersecci\'on de dicha superficie con planos perpendiculares al eje. Los paralelos de una de una superficie de revoluci\'on son siempre circunferencias (de ahí su nombre).
+\end{enumerate}
+\end{defi}
+\begin{nota} De las definiciones se siguen las siguientes equivalencias:
+\begin{itemize}
+\item Meridianos $\equiv$ generatrices $\equiv$ curvas v-param\'etricas $\equiv$ curvas {\bf $u = cte$}.
+\item Paralelos $\equiv$ c\'irculos de latitud $\equiv$ curvas u-param\'etricas $\equiv$ curvas {\bf $v = cte$}.
+\end{itemize} 
+\end{nota}
+\end{document}
