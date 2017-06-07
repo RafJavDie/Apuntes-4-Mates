@@ -561,19 +561,20 @@ Como $K > 0$, $\iint_\mathcal{R} K dA > 0$, con lo que hemos llegado a una contr
 \end{ejer}
 
 \begin{dem}
-\[ \iint_\mathcal{R} dA + \int_{α_1} K_g + \int_{α_2} K_g + \int_γ K_g + \sum_i φ_i = 2 π χ(\mathcal{R}) \]
-(sin copiar, lo siento)
+Vamos a aplicar el teorema \ref{global}:
+\[ \iint_\mathcal{R} KdA + \int_{α_1} K_g + \int_{α_2} K_g + \int_γ K_g + \sum_i φ_i = 2 π χ(\mathcal{R}) \]
+Como el cilindro es desarrollable, $K=0$. Tanto $\alpha_1$ como $\alpha2$ son geodésicas, por lo que $K_g=0$ en ambos casos. Como las curvas son regulares, $\sum_i φ_i=0$. Por otro lado, $χ(\mathcal{R})=-1$. Finalmente. $\int_γ K_g =-2\pi$. 
 \end{dem}
 
 \begin{ejer}
-Se cconsidera la rgión $\mathcal{R}$ del plano constituida por un círculo $α$ con un agujero $β$ romboidal y otro trianguar $γ$ disjuntos. Calcular $\int_α K_g$ aplicando el TGB.
+Se considera la región $\mathcal{R}$ del plano constituida por un círculo $α$ con un agujero $β$ romboidal y otro trianguar $γ$ disjuntos. Calcular $\int_α K_g$ aplicando el TGB.
 \end{ejer}
 
 \begin{dem} Sean $φ_1,φ_2,φ_3,φ_4$ los ángulos exteriores del romboide y  $φ'_1,φ'_2,φ'_3$ los ángulos exteriores del triánuglo. Por TGB:
 \[ \int_α K_g + \int_β K_g + \int_γ K_g + \iint_\mathcal{R} K dA + \sum φ_i + \sum φ'_i = 2 π χ(\mathcal{R}) \]
 Como $β$ y $γ$ está compuesto de segmentos, está compuestos de geodésicas y se anulan sus respectivos sumandos. Como estamos en el plano, $K = 0$. Luego:
 \[ \int_α K_g = 2 π χ(\mathcal{R}) - \sum φ_i - \sum φ'_i \]
-Por el Teorema de Hopf y como las curvas $β$ y $γ$ se recorren en el sentido contrario a $α$, que está positivamente orientado, $-\sum φ_i = -\sum φ'_i = 2π$. Triangulando la región, obtenemos que $χ(\mathcal{R})=-1$. Luego:
+Por el Teorema de Hopf aplicado al plano y como las curvas $β$ y $γ$ se recorren en el sentido contrario a $α$, que está positivamente orientada, $-\sum φ_i = -\sum φ'_i = 2π$. Triangulando la región, obtenemos que $χ(\mathcal{R})=-1$. Luego:
 \[ \int_α K_g = -2π+2π+2π = 2π \]
 \end{dem}
 
