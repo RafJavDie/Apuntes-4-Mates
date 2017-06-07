@@ -167,9 +167,7 @@ $\alpha : (a,b) \, \subset \mathbb{R} \mapsto \mathbb{R}^3,$ $\alpha =
 \end{defi}
 
 
-\begin{defi} {\em Curvas paramétricas o líneas paramétricas de una superficie}
-
-Consideremos el abierto $U$ de $\mathbb{R}^2,$ de coordenadas
+\begin{defi} Consideremos el abierto $U$ de $\mathbb{R}^2,$ de coordenadas
 $(u^1, u^2)$ y sea $\chi : U \, \mapsto \mathbb{R}^3$ una
 superficie simple. Se denominan {\em líneas paramétricas o curvas
 paramétricas} de $\chi$ a la imagen mediante la aplicación  $\chi$
@@ -243,9 +241,81 @@ que pasan por el eje. Los meridianos de una de una superficie de revoluci\'on so
 \end{itemize} 
 \end{nota}
 
+
+\subsection{Ejemplos de superficies de revoluci\'on consideradas como superficies simples}
+
+Sea $\alpha = \alpha(v) = (x(v), 0, z(v))$ una curva plana
+regular situada en el plano OXZ, es decir, en el plano $y = 0$. Como
+eje de giro se supondr\'a el propio eje OZ.
+
+
+$$
+\begin{array}{lll}
+{\underline {Curva \, Generatriz}} & {\underline {Sup. \, Rev.}} &
+{\underline {Parametrizaci\acute on \, Sup. Revol.}}  \\
+
+   &   &   \\
+
+	\alpha(v) = (x(v), 0, z(v)) &  & \chi(u,v) =
+(x(v) \, cos \, u, x(v)\,  sen\, u, z(v))  \\
+
+    &   &    \\
+
+\alpha(v) = (a \, cos\, v, 0, a \, sen\, v) & Esfera & \chi(u,v) =
+(a\,  cos\, v \, cos\, u, a \, cos\, v \, sen\, u, a \, sen\, v)  \\
+
+  &  &  \\
+
+\alpha(v) = (a, 0, v) & Cilindro  & \chi(u,v) =
+(a \, cos\, u, \, a \, sen\, u, v)  \\
+  & Circular &  \\
+  &  &  \\
+
+\alpha(v) = (v, 0, Kv) & Cono & \chi(u,v) =
+(v\,  cos\, u, v \, sen\, u, Kv)  \\
+  & Circular &  \\
+ & & \\
+
+\alpha(v) = (a + b \, cos\, v, 0, b \, sen\, v) & Toro & \chi =
+((a + b \, cos\, v)\,  cos\, u, (a + b\,  cos\, v)\,  sen\, u, b \, sen\, v)  \\
+
+  &  &  \\
+\end{array}$$
+\subsection{Superficies regladas y desarrollables}
+
+\begin{defi} Se denominan
+{\bf superficies
+regladas} a aquellas superficies que tienen la pro\-piedad
+de que por cada uno de sus puntos pasa una recta que est\'a contenida
+enteramente en dicha superficie. Estas superficies se componen por tanto
+de un n\'umero infinito de rectas (que se denominan {\em generatrices} de la
+superficie).
+\end{defi}
+
+\begin{theorem} Las superficies regladas est\'an {\bf engendradas por una curva}
+{\bf $\alpha = \alpha(u)$}
+(deno\-minada {\em curva directriz}) {\bf y un vector} unitario
+diferenciable {\bf $\omega = \omega(u)$} (denominado {\em campo de direcciones}), de forma que por cada punto de
+$\alpha(u)$ pase una recta cuyo vector director es $\omega(u)$ en ese punto.
+
+\vspace{0.20cm}
+
+La parametrizaci\'on de una superficie reglada viene dada por
+$$
+\chi = \chi(u,v) = \alpha(u) \, + \, v \,\, \omega(u)
+$$
+con
+$\chi: (a, b) \times \mathbb{R} \mapsto \mathbb{R}^3$, donde (a, b) es el
+dominio de la curva  $\alpha = \alpha(u)$.
+\end{theorem}
+
+\begin{defi} Una superficie reglada se dice {\em desarrollable} si el plano tangente es constante a lo largo de cada generatriz $u = cte,$ es decir, si el vector normal $N(u,v)$ a lo largo de cada generatriz $u = cte$ no depende de $v.$
+\end{defi}
+
+\begin{theorem} Una superficie reglada $\chi(u,v) = \alpha(u) + v \omega(u)$ es desarrollable si y sólo si $(\alpha'(u) \,\, \omega(u) \,\, \omega'(u)) = 0.$
+En este resultado no es necesario que $\omega(u)$ sea unitario.
+\end{theorem}
 \newpage
-
-
 \section{Geometría Intrínseca}
 Partimos de las siguientes hipótesis: Sea $\chi=\chi(u^1,u^2), \chi\func{U}{\R^3}$ una superficie simple, $P\in\chi(u)$ un punto de la misma, $T_P(\chi)$ el plano tangente a $\chi$ en $P$ con $\{\chi_1(P),\chi_2(P)\}$ una base del mismo y $X,Y \in\R^3$ dos vectores tangentes en $P$, lo cuales vienen dados por $X=\sum_{i=1}^{2}X^i\chi_i, Y=\sum_{i=1}^{2}Y^j\chi_j$.
 
@@ -282,6 +352,12 @@ Donde $K_g(s)$ es la \textbf{curvatura geodésica} y $K_n(s)$ es la \textbf{curv
 Los coeficientes $\Gamma_{ij}^k$ se denominan \textbf{símbolos de Christoffel} (de segunda especie) y los $L_{ij}$ son los coeficientes de la IFF de la superficie. Ambos tipo de coeficientes son funciones escalares definidas en el abierto $U$ de $\chi$.
 \end{defi}
 
+\begin{theorem}[Teorema de Gauss]
+Se verifica que:
+\[
+\Gamma_{ij}^k = \frac{1}{2}\sum_{h=1}^2 g^{hk}\left(\frac{\partial g_{ih}}{\partial u^j}+\frac{\partial g_{jh}}{\partial u^i}-\frac{\partial g_{ij}}{\partial u^h}\right)
+\]
+\end{theorem}
 \begin{theorem}
 En las condiciones anteriores se verifica que:
 \[\Gamma^k_{ij} = \sum_{h=1}^2 (\chi_{ij} \chi_h ) g^{hk}\]
@@ -313,15 +389,66 @@ Sea $\chi = \chi(u^1, u^2)$ una superficie simple y $\alpha = \alpha(s) = \chi(u
 
 \begin{enumerate}
 \item[C1] \quad $({\bf t}(s) \,\, \dot{{\bf t}}(s) \,\, N(s)) = 0, \quad [\equiv \, K_g(s) = 0].$
-
 \item[C2] \quad $\ddot{u}^k + \sum_{i, j = 1}^2 \, \Gamma_{ij}^k \, \dot{u}^i \, \dot{u}^j \, = 0, \quad i,j = 1,2.$ \quad {\em [Sistema de Ec. Dif. de las geodésicas]}.
-
 \item[C3] \quad ${\bf n}(s) \, \| \, N(s)$ a lo largo de $\alpha.$
-
-\item[C4] \quad $\ddot{\alpha}(s) \, \| \, N(s),$ es decir, $\ddot{\alpha}(s)$ es un vector normal a la superficie $\chi$ a lo largo de $\alpha.$
-
-\item[C5] \quad ${\bf b}(s) \, \perp \, N(s),$ es decir, el plano osculador a $\alpha$ en cada punto es ortogonal a la superficie en ese \quad punto.
+\item[C4] \quad ${\bf b}(s) \, \perp \, N(s),$ es decir, el plano osculador a $\alpha$ en cada punto es ortogonal a la superficie en ese \quad punto.
 \end{enumerate}
 \end{theorem}
 
+
+
+\begin{theorem}
+
+En toda superficie de revolución $\chi(u,v) = (f(v) \, cos u, f(v) \, sen u, \, g(v))$ se verifica que:
+\begin{enumerate}
+\item Los meridianos de la superficie (es decir, las curvas $v$-paramétricas) son siempre geodésicas.
+\item Los paralelos de la superficie (es decir, las curvas $u$-paramétricas) son geodésicas si y solo si $f'(v_0) = 0.$
+\end{enumerate}
+\end{theorem}
+\section{Geometría Extrínseca}
+
+\begin{lemma}
+
+En toda superficie simple $\chi$ se verifica que $ \mid \chi_1
+\wedge \chi_2 \mid = \sqrt{g}$ y 
+$$L_{ij}  = \chi_{ij} \, N = \chi_{ij} \,
+\frac{\chi_1 \wedge \chi_2}{\mid \chi_1 \wedge \chi_2  \mid} =
+\frac{(\chi_1 \,  \chi_2 \, \chi_{ij})}{\mid \chi_1 \wedge \chi_2
+\mid} = \frac{(\chi_1 \,  \chi_2 \, \chi_{ij})}{\sqrt{g}}$$
+\end{lemma}
+
+\subsection{Curvaturas Principales y Direcciones Principales}
+
+\begin{defi} Los valores $K_1$ y $K_2$ en los que la función $K_N(X)$ alcanza un máximo y un mínimo en $T_P^*(M)$ se denominan {\em curvaturas principales} de $M$ en $P.$
+\end{defi}
+
+\begin{defi} Las direcciones $X_{(1)}$ y $X_{(2)}$ de $T_P^*(M)$ correspondientes a las curvaturas principales $K_1$ y $K_2$ se denominan {\em direcciones principales} de $M$ en $P.$
+\end{defi}
+
+\begin{defi}
+Un punto $P$ de una superficie $M$ se dice {\textbf{umbílico}} si en él
+coinciden las dos curvaturas principales, es decir, si $K_1 = K_2$
+en $P.$
+\end{defi}
+
+\begin{defi}
+Se define la {\em curvatura Media} de $M$ y se representa por $H$
+como la media aritmética de las curvaturas principales, es decir,
+$H = \dfrac{K_1 + K_2}{2}.$
+\end{defi}
+
+\begin{defi}
+Se define la {\em curvatura de Gauss o curvatura Total} de $M$ y
+se representa por $K$ como el producto de las curvaturas
+principales, es decir,  $K = K_1 \, K_2.$
+\end{defi}
+\begin{prop}
+Se verifica que la curvatura de Gauss es:
+\begin{itemize}
+\item Es invariante por isometrías e isometrías locales.
+\item Para la esfera de radio r: $K=\frac{1}{r^2}$
+\item Para el plano: $K=0$.
+\end{itemize}
+Por la primera y la tercera, las superficies desarrollables como el cono, el cilindro, la banda de Möbius el toro tienen $K=0$.
+\end{prop}
 \end{document}
