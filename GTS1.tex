@@ -180,11 +180,17 @@ Supongamos que $\alpha$ es autoparalela. Entonces $|\alpha'(t)| = cte = a$, por 
 \alpha' = \dot{\alpha} \frac{ds}{dt} =\dot{\alpha}a \qquad
  \alpha''  = \ddot{\alpha}a^2
  \]
-Como $\alpha'' \parallel N$, entonces $\ddot{\alpha}=k(s)n(s)\parallel N$. Por tanto, $\alpha$ es geodésica.
+Como $\alpha'' \parallel N$, entonces $\ddot{\alpha}=k(s)n(s)\parallel N$. Por tanto, $\alpha$ es geodésica.\\
+Supongamos que $\alpha(t)$ es geodésica y que $t=as+b$. Entonces
+\begin{gather*}
+\alpha'(t)=\frac{d\alpha(s)}{ds}\frac{ds}{dt}=\dot{\alpha}(s)\frac{1}{a}\\
+\alpha''(t)=\ddot{\alpha}(s)\frac{1}{a^2}=k(s)n(s)\frac{1}{a^2}
+\end{gather*}
+Como $\alpha$ es geodésica, o bien $k(s)=0$ o bien $n\parallel N$, en cualquier caso, $\alpha''(t)\parallel N$, de modo que $\alpha'(t)$ es tangente y eso convierte a $\alpha$ en autoparalela.
 \end{dem}
 
 \begin{coro}
-Sea $X(s)$ c.v.t. paralelo a lo largo de $\alpha$. Sea $\varphi(s)=\widehat{(X(s),\dot{\alpha}(s))}$ entonces:
+Sea $X(s)$ c.v.t. paralelo unitario a lo largo de $\alpha$ con. Sea $\varphi(s)=\widehat{(X(s),\dot{\alpha}(s))}$ entonces:
 \begin{align*}
 \cos{\varphi(s)}&=X(s)\dot{\alpha}(s)\\
  -\dot{\varphi}(s)\sin\varphi(s)& =  X'(s)\dot{\alpha}(s)+ X(s)\ddot{\alpha}(s)= X(s)(K_g(s)S(s)+K_n(s)N(s))=K_g(s)X(s)S(s)\\
@@ -289,7 +295,7 @@ Luego
 \newpage
 \section{Curvas diferenciables por arcos en una s.s.}
 \begin{defi} 
-Sea $\alpha:[0,L] \rightarrow \R^3$ una curva en $\X:U\rightarrow \R^3$. Se dice que es regular por arcos si existe una partición finita $0=s_1 < s_2 < \dotsc < s_{n+1} = L$ de forma que $\alpha_{|_{[s_i,s_{i+1}]}}$ es regular. Los $\alpha(s_i)$ se denominan vértices y los $\alpha([s_i,s_{i+1}])$ lados.
+Sea $\alpha:[0,L] \rightarrow \R^3$ una curva en $\X:U\rightarrow \R^3$. Se dice que es regular por arcos si existe una partición finita $0=s_1 < s_2 < \dotsc < s_{n+1} = L$ de forma que $\alpha_{|_{(s_i,s_{i+1})}}$ es regular. Los $\alpha(s_i)$ se denominan vértices y los $\alpha([s_i,s_{i+1}])$ lados.
 \end{defi}
 \begin{defi}
 Como $\alpha$ es regular a trozos, existe el vector tangente $\alpha(s_i)$ por la izquierda $\dot{\alpha}(s_i^-)$ y por la derecha $\dot{\alpha}(s_i^+)$. Al ángulo $\varphi_i = \langle \dot{\alpha}(s_i^-),\dot{\alpha}(s_i^+)\rangle$ lo denominamos salto de la tangente en $\alpha(s_i)$.
@@ -319,7 +325,7 @@ La idea de la demostración es desarrollar en serie el producto mixto. Dado que:
 \end{gather*}
 \end{dem}
 \begin{defi}
-Sea $\X:U\rightarrow\R^3$, si $U$ es un disco abierto de $\R^2$ la s.s. $\X$ se llama de tipo disco. Para toda s.s. alrededor de cualquier $p\in\X(U)$ existe un entorno de tipo disco.
+Sea $\X:U\rightarrow\R^3$, si $U$ es homeomorfo a un disco abierto de $\R^2$ la s.s. $\X$ se llama de tipo disco. Para toda s.s. alrededor de cualquier $p\in\X(U)$ existe un entorno de tipo disco.
 \end{defi}
 \begin{theorem}[Teorema del índice de Hopf] Sea $\alpha:[0,L]\rightarrow\R^3$ una curva cerrada, simple y regular por arcos. Entonces:
 \[
