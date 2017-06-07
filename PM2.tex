@@ -9,7 +9,7 @@ Un conjunto $S\subseteq\R^n$ es \textbf{convexo} si $\forall x^1,x^2\in S$ y $\f
 \end{defi}
 
 \begin{defi}
-Un \textbf{semiespacio} es un conjunto de la forma $H^-=\left\{x\in\R^n: a'x\leq b, a\in\R^n, b\in\R\right\}$ o de la forma $H^+=\left\{x\in\R^n: a'x\geq b, a\in\R^n\,b\in\R\right\}$.
+Un \textbf{semiespacio} es un conjunto de la forma $H^-=\left\{x\in\R^n: a'x\leq b, a\in\R^n, b\in\R\right\}$ o de la forma $H^+=\left\{x\in\R^n: a'x\geq b, a\in\R^n,\,b\in\R\right\}$.
 \end{defi}
 
 \begin{prop}
@@ -17,7 +17,7 @@ $H^-$ es convexo.
 \end{prop}
 
 \begin{dem}
-Sea $x(\lambda)\equiv \lambda x^1 + (1-\lambda)x^2, \lambda\in[0,1]$. Se tiene lo siguiente
+Sea $x(\lambda)\equiv \lambda x^1 + (1-\lambda)x^2, \lambda\in[0,1]$. Se tiene lo siguiente:
 \[
 a'x(\lambda)=a'(\lambda x^1 + (1-\lambda)x^2)=\lambda a'x^1 +(1-\lambda)a'x^2\leq \lambda b+(1-\lambda)b=b
 \]
@@ -25,7 +25,7 @@ Como queríamos demostrar. $\QED$
 \end{dem}
 
 \begin{prop}
-Si $S_1$ y $S_2$ son convexos entonces $S_1\cap S_2$ es convexo
+Si $S_1$ y $S_2$ son convexos entonces $S_1\cap S_2$ es convexo.
 \end{prop}
 \begin{dem}
 Definimos $x(\lambda)$ igual que en la demostración anterior. Supongamos que $S_1$ y $S_2$ tienen intersección no vacía, pues en otro caso el resultado se sigue trivialmente. Dados $x^1,x^2\in S_1 \cap S_2$ se tiene por convexidad de $S_1$ que $x(\lambda)\in S_1$. Análogamente, $x(\lambda)\in S_2$. Por lo tanto, $x(\lambda)\in S_1\cap S_2$. $\QED$
@@ -61,7 +61,7 @@ Dados $r$ puntos $x^1,\dots, x^r\in\R^n$ llamamos \textbf{combinación convexa} 
 \end{defi}
 
 \section{Teorema de Carathéodory}
-\begin{defi} Sean $a^1,\dots, a^d\in\R^n$ afínmente independientes (esto es, que fijado un punto, los vectores diferencia de este con los demás son linealmente independientes). Se denomina \textbf{símplex $(d-1)$-dimensional} a 
+\begin{defi} Sean $a^1,\dots, a^d\in\R^n$ afínmente independientes (esto es, que fijado un punto, los vectores diferencia de este con los demás son linealmente independientes). Se denomina \textbf{símplex $(d-1)$-dimensional} a:
 \[
 S(d-1)= \left\{x\in\R^n:x=\sum_{i=1}^d\lambda_i a^i,\lambda_i\geq 0, \sum_{i=1}^d\lambda_i =1\right\}
 \]
@@ -70,7 +70,7 @@ S(d-1)= \left\{x\in\R^n:x=\sum_{i=1}^d\lambda_i a^i,\lambda_i\geq 0, \sum_{i=1}^
 $S(1)$ es un segmento, $S(2)$ es un triángulo relleno y $S(3)$ es un tetraedro relleno.
 \end{example}
 
-\begin{defi} Dado un conjunto $S\subset\R^n$, su \textbf{envolvente} (envoltura) \textbf{convexa} $CO(S)$ es
+\begin{defi} Dado un conjunto $S\subset\R^n$, su \textbf{envolvente} (envoltura) \textbf{convexa} $CO(S)$ es:
 \[
 CO(S)=\left\{x\in\R^n: x=\sum_{i=1}^d\lambda_i x^i, d<+\infty, x^i\in S, i=1,\dots, d, \lambda_i\geq 0, \sum_{i=1}^d\lambda_i =1\right\}
 \]
@@ -318,7 +318,7 @@ Entonces $S = P$. Es decir, cualquier poliedro en forma estándar queda determin
 \begin{itemize}
 	\item $(S \subseteq P)$ Sea $x \in S$, $x = \sum_{i=1}^k λ_i x^i + \sum_{j=1}^l μ_j d^j$ para algún $λ$ y $μ$.
 
-	\[ Ax = A\left( \sum_{i=1}^k λ_i x^i + \sum_{j=1}^l μ_j d^j\right) =  \sum_{i=1}^k \underset{=b}{λ_i A x^i} + \sum_{j=1}^l μ_j \underset{=0}{Ad^j} = \sum_{j=1}^l b = b \]
+	\[ Ax = A\left( \sum_{i=1}^k λ_i x^i + \sum_{j=1}^l μ_j d^j\right) =  \sum_{i=1}^k \underset{=b}{λ_i A x^i} + \sum_{j=1}^l μ_j \underset{=0}{Ad^j} = b\sum_{i=1}^k \lambda_k = b \]
 
 
 
