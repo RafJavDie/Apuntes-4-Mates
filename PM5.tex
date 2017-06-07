@@ -419,9 +419,9 @@ Paso 2: \= 2.1) Si $x^*\in\Z_+^n$: STOP. La solución óptima del problema de pr
 2.2) Si $x^*\not\in\Z_*^n$: Entonces existe al menos una componente $x^*_i$ de $x^*$ tal que\\ \> $x^*_i\notin\Z_+$. Establecer dos ramas que conecten el nodo $n_0$, por un lado, con\\ \> el nodo $n_1$ constituido por el problema $(P_1)$ resultante de añadir al problema\\ \> $(P_0)$ la restricción $x_i\leq\lfloor x^*_i\rfloor$, la solución óptima $(x^1)^*$ de $(P_1)$ y el valor\\ \> óptimo $z^*_1$ de $(P_1)$, y por otro lado, con el nodo $n_2$ constituido por el problema\\ \> $(P_2)$ resultante de añadir al problema $(P)$ la restricción $x_i\geq\lceil x^*_i\rceil$, la\\ \> solución óptima $(x^2)^*$ de $(P_2)$ y el valor óptimo $z^*_2$ de $(P_2)$. \\ \>
 - Si $(P_i)$, $i=1$ ó $2$, es infactible podamos la rama que conecta $n_0$ con $n_i$.\\ \>
 - Si $z^*_i<z_{LB}$, $i=1$ ó $2$, podamos la rama que conecta $n_0$ con $n_i$.\\ \>
-- Si $(x^i)^*\notin Z^n_+$, $i=1$ ó $2$, tomar $z_{UB}=\lfloor z^*_i\rfloor$ (en el subárbol que se va a generar)\\ \> y repetir el Paso 2.2 tomando $n_i$ como $n_0$. \\ \>
-- Si $(x^i)^*\in Z^n_+$, $i=1$ ó $2$, establecemos $n_i$ como nodo hoja. Si $z_i^*=z_{UB}$ entonces\\ \> $(x^i)^*$ es la solución óptima del problema de programación entera.\\ \> En caso contrario y si $z^*_i>z_{LB}$ (en el árbol completo) establecer $z_{LB}=z_i^*$.\\
-Convergencia: \=
+- Si $(x^i)^*\notin \Z^n_+$, $i=1$ ó $2$, tomar $z_{UB}=\lfloor z^*_i\rfloor$ (en el subárbol que se va a generar)\\ \> y repetir el Paso 2.2 tomando $n_i$ como $n_0$. \\ \>
+- Si $(x^i)^*\in \Z^n_+$, $i=1$ ó $2$, establecemos $n_i$ como nodo hoja. Si $z_i^*=z_{UB}$ entonces\\ \> $(x^i)^*$ es la solución óptima del problema de programación entera.\\ \> En caso contrario y si $z^*_i>z_{LB}$ (en el árbol completo) establecer $z_{LB}=z_i^*$.\\
+
 \end{tabbing}
 
 
