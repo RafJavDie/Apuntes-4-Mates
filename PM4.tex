@@ -54,23 +54,31 @@ La transformación que lleva (P) en (D) crea por cada restricción de (P) una va
 
 \begin{example}
 Consideramos el problema
-\begin{align*}(P)
-	\min c'x\\
-	\text{sa:} Ax ≥ b\\
-	x ≥ 0
-\end{align*}
-podemos transformarlo en el problema:
-\begin{align*}(P')
-	\min c'x + 0x_a\\
-	\text{sa:} Ax-Ix_a = b\\
-	x, x_a ≥ 0 
-\end{align*}
-y finalmente pasarlo al problema dual
-\begin{align*}(D)
-	\max u'b\\
-	\text{sa:} u'A ≤ c'\\
-	u ≥ 0
-\end{align*}
+\[\begin{aligned}
+	(P) & \min c'x\\
+	\text{sa:} & Ax ≥ b\\
+	& x ≥ 0
+\end{aligned}\]
+Su problema dual correspondiente es:
+\[\begin{aligned}
+	(D) & \max u'b\\
+	\text{sa:} & u'A ≤ c'\\
+	& u ≥ 0
+\end{aligned}\]
+Por otro lado, si añadimos variables de holgura en (P):
+\[\begin{aligned}
+	(P') & \min c'x\\
+	\text{sa:} & Ax - I x_h = b\\
+	& x,x_h ≥ 0
+\end{aligned}\]
+y dualizamos:
+\[\begin{aligned}
+	(D') & \max u'b\\
+	\text{sa:} & u'A ≤ c'\\
+	& u'(-I) ≤ 0\\
+	& u \text{ sin restricciones}
+\end{aligned}\]
+que es equivalente a $(D)$.
 \end{example}
 \begin{nota} Denotaremos $X = \{x \in \R^n : Ax ≥ b, x ≥ 0\}$ y $U = \{ u \in \R^m \mid u'A ≤ c', u ≥ 0 \}$.
 \end{nota}
