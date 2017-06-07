@@ -180,11 +180,17 @@ Supongamos que $\alpha$ es autoparalela. Entonces $|\alpha'(t)| = cte = a$, por 
 \alpha' = \dot{\alpha} \frac{ds}{dt} =\dot{\alpha}a \qquad
  \alpha''  = \ddot{\alpha}a^2
  \]
-Como $\alpha'' \parallel N$, entonces $\ddot{\alpha}=k(s)n(s)\parallel N$. Por tanto, $\alpha$ es geodésica.
+Como $\alpha'' \parallel N$, entonces $\ddot{\alpha}=k(s)n(s)\parallel N$. Por tanto, $\alpha$ es geodésica.\\
+Supongamos que $\alpha(t)$ es geodésica y que $t=as+b$. Entonces
+\begin{gather*}
+\alpha'(t)=\frac{d\alpha(s)}{ds}\frac{ds}{dt}=\dot{\alpha}(s)\frac{1}{a}\\
+\alpha''(t)=\ddot{\alpha}(s)\frac{1}{a^2}=k(s)n(s)\frac{1}{a^2}
+\end{gather*}
+Como $\alpha$ es geodésica, o bien $k(s)=0$ o bien $n\parallel N$, en cualquier caso, $\alpha''(t)\parallel N$, de modo que $\alpha'(t)$ es tangente y eso convierte a $\alpha$ en autoparalela.
 \end{dem}
 
 \begin{coro}
-Sea $X(s)$ c.v.t. paralelo a lo largo de $\alpha$. Sea $\varphi(s)=\widehat{(X(s),\dot{\alpha}(s))}$ entonces:
+Sea $X(s)$ c.v.t. paralelo unitario a lo largo de $\alpha$ con. Sea $\varphi(s)=\widehat{(X(s),\dot{\alpha}(s))}$ entonces:
 \begin{align*}
 \cos{\varphi(s)}&=X(s)\dot{\alpha}(s)\\
  -\dot{\varphi}(s)\sin\varphi(s)& =  X'(s)\dot{\alpha}(s)+ X(s)\ddot{\alpha}(s)= X(s)(K_g(s)S(s)+K_n(s)N(s))=K_g(s)X(s)S(s)\\
@@ -289,7 +295,7 @@ Luego
 \newpage
 \section{Curvas diferenciables por arcos en una s.s.}
 \begin{defi} 
-Sea $\alpha:[0,L] \rightarrow \R^3$ una curva en $\X:U\rightarrow \R^3$. Se dice que es regular por arcos si existe una partición finita $0=s_1 < s_2 < \dotsc < s_{n+1} = L$ de forma que $\alpha_{|_{[s_i,s_{i+1}]}}$ es regular. Los $\alpha(s_i)$ se denominan vértices y los $\alpha([s_i,s_{i+1}])$ lados.
+Sea $\alpha:[0,L] \rightarrow \R^3$ una curva en $\X:U\rightarrow \R^3$. Se dice que es regular por arcos si existe una partición finita $0=s_1 < s_2 < \dotsc < s_{n+1} = L$ de forma que $\alpha_{|_{(s_i,s_{i+1})}}$ es regular. Los $\alpha(s_i)$ se denominan vértices y los $\alpha([s_i,s_{i+1}])$ lados.
 \end{defi}
 \begin{defi}
 Como $\alpha$ es regular a trozos, existe el vector tangente $\alpha(s_i)$ por la izquierda $\dot{\alpha}(s_i^-)$ y por la derecha $\dot{\alpha}(s_i^+)$. Al ángulo $\varphi_i = \langle \dot{\alpha}(s_i^-),\dot{\alpha}(s_i^+)\rangle$ lo denominamos salto de la tangente en $\alpha(s_i)$.
@@ -319,7 +325,7 @@ La idea de la demostración es desarrollar en serie el producto mixto. Dado que:
 \end{gather*}
 \end{dem}
 \begin{defi}
-Sea $\X:U\rightarrow\R^3$, si $U$ es un disco abierto de $\R^2$ la s.s. $\X$ se llama de tipo disco. Para toda s.s. alrededor de cualquier $p\in\X(U)$ existe un entorno de tipo disco.
+Sea $\X:U\rightarrow\R^3$, si $U$ es homeomorfo a un disco abierto de $\R^2$ la s.s. $\X$ se llama de tipo disco. Para toda s.s. alrededor de cualquier $p\in\X(U)$ existe un entorno de tipo disco.
 \end{defi}
 \begin{theorem}[Teorema del índice de Hopf] Sea $\alpha:[0,L]\rightarrow\R^3$ una curva cerrada, simple y regular por arcos. Entonces:
 \[
@@ -336,7 +342,7 @@ Diremos que R está bien (positivamente) orientada si el vector normal intrínse
 
 
 
-\begin{theorem}[Teorema Gauss-Bonnet Local]
+\begin{theorem}[Teorema Gauss-Bonnet Local]\label{local}
 Sea $\seaX$ s.s. tipo disco, y que sea normalizada ($g_{12} \equiv 0$). Sea $R\subset \X(U)$ una región simple y $\alpha:[0,L]\rightarrow\R^3$ el borde de la región.
 \[
 \sum_i \int_{s_i}^{s_{i+1}} K_g(s)ds + \iint_{R} KdA +  \sum_i \varphi_i  = \pm 2\pi
@@ -457,7 +463,7 @@ Toda región regular $R \subseteq M$ admite una triangulación. Ver demostració
 \]
 no depende del atlas $\{\X_k : U_j \rightarrow \R^3\mid k\in J\}$ que elijamos para calcular la integral.
 \end{prop}
-\begin{theorem}[Gauss-Bonnet Global] Sea $R \subseteq M$ una región regular, $M$ orientada y sean $\partial R= C_1\cup \dotsc \cup C_n$ donde $C_i$ son curvas regulares por arcos, cerradas, simples que forman el borde de R. Si cada $C_i$ está orientada de manera positiva (inducida de la orientación de M) y $\varphi_1,\dotsc,\varphi_p$ es el conjunto de saltos en los vértices de todas las $C_i$, se tiene:
+\begin{theorem}[Gauss-Bonnet Global]\label{global} Sea  $M$ una superficie regular orientada, $R \subseteq M$ una región regular, y sean $\partial R= C_1\cup \dotsc \cup C_n$ donde $C_i$ son curvas regulares por arcos, cerradas, simples y disjuntas que forman el borde de $R$. Si cada $C_i$ está orientada de manera positiva (inducida de la orientación de M) y $\varphi_1,\dotsc,\varphi_p$ es el conjunto de saltos en los vértices de todas las $C_i$, se tiene:
 \[
 \sum_{i=1}^n \int_{C_i}K_g + \iint_R KdA + \sum_{i=1}^p \varphi_i = 2\pi \chi(R)
 \]
@@ -499,6 +505,24 @@ Por tanto, se sigue que:
 \end{gather*}
 \end{dem}
 
+\begin{coro}
+El teorema \ref{local} es consecuencia del teorema \ref{global}. 
+\end{coro}
+\begin{dem}
+Sea $R$ una región simple. Entonces denotamos $\partial R=\alpha$, ya que se trata de una sola curva cerrada regular por arcos con una partición $s_1,\dots, s_n$, la cual vamos a orientar positivamente. Además se cumple que $\chi(R)=1$. Por tanto, al aplicar la forma global obtenemos
+\[
+\sum_{i=1}^n\int_{s_i}^{s_{i+1}}K_g(s)ds +\iint_R KdA+\sum_{i=1}^n\varphi_i=2\pi
+\]
+que es la forma local.
+\end{dem}
+
+\begin{coro}
+Si $M$ es una superficie compacta sin borde entonces 
+\[
+\iint_M KdA=2\pi\chi(M)
+\]
+\end{coro}
+
 \begin{ejer}
 Sea $M$ orientable con $K ≤ 0$. Dos geodésicas $α_1$, $α_2$ que parten de $p \in M$ no pueden encontrase de nuevo en $q \in M$ encerrando una región simple $\mathcal{R} \subset M$.
 \end{ejer}
@@ -528,7 +552,7 @@ Como $α$, $β$ y $γ$ son geodésicas:
 \begin{ejer} Sea $M$ compacto con $K > 0$. Si existen geodésicas geodésicas cerradas simples, entonces se cortan.
 \end{ejer}
 
-\begin{dem} El único compacto que tiene curvatura $K > 0$ en todo $M$ es la esfera, luego $M \cong S^2$. Supongamos que hubieran 2 geodésicas $α_1$ y $α_2$ que no se cortan, luego no se cortan en su imagen en $S^2$. Entonces hay una región $\mathcal{R}$ entre $α_1$ y $α_2$ que es homeomorfa a una corona circular, luego $χ(\mathcal{R}) = 0$. Por Gauss-Bonet:
+\begin{dem} El único compacto que tiene curvatura $K > 0$ en todo $M$ es la esfera, luego $M \cong S^2$. Supongamos que hubieran 2 geodésicas $α_1$ y $α_2$ que no se cortan, luego no se cortan en su imagen en $S^2$. Entonces hay una región $\mathcal{R}$ entre $α_1$ y $α_2$ que es homeomorfa a una corona circular, luego $χ(\mathcal{R}) = 0$. Por Gauss-Bonet, teniendo en cuenta que no hay saltos porque las curvas no se cortan:
 \[ \int_{α_1} K_g + \int_{α_2} K_g + \iint_\mathcal{R} K dA + \sum_i φ_i = \iint_\mathcal{R} K dA = 2 π χ(\mathcal{R}) = 0 \]
 Como $K > 0$, $\iint_\mathcal{R} K dA > 0$, con lo que hemos llegado a una contradicción.
 \end{dem}
