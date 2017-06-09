@@ -172,21 +172,21 @@ Si tenemos una superficie $M$ parametrizada como $\X(u^1,u^2)$ y una curva $α(t
 \begin{defi} Sea $α(t) = \X(u¹(t), u²(t))$ c.p.r. en $\X : U \to \R³$. Se llama \textbf{autoparalela} si el c.v.t. $\alpha'(t)$ es un campo paralelo a lo largo de $\alpha$.
 \end{defi}
 \begin{prop}
-Una curva $\alpha(t)$ es autoparalela si y solo sí en $\alpha(t)$ t es función lineal del parámetro natural y es geodésica.
+Una curva $\alpha(t)$ es autoparalela si y solo si es geodésica y $t$ es función lineal del parámetro natural.
 \end{prop}
 \begin{dem}
-Supongamos que $\alpha$ es autoparalela. Entonces $|\alpha'(t)| = cte = a$, por tanto $\dfrac{ds}{dt}=a$, luego $s = at + b$. Además:
+$(\Rightarrow)$ Supongamos que $\alpha$ es autoparalela. Entonces $|\alpha'(t)| = cte = a$, por tanto $\dfrac{ds}{dt}=a$, luego $s = at + b$. Además:
 \[
 \alpha' = \dot{\alpha} \frac{ds}{dt} =\dot{\alpha}a \qquad
  \alpha''  = \ddot{\alpha}a^2
  \]
 Como $\alpha'' \parallel N$, entonces $\ddot{\alpha}=k(s)n(s)\parallel N$. Por tanto, $\alpha$ es geodésica.\\
-Supongamos que $\alpha(t)$ es geodésica y que $t=as+b$. Entonces
+$(\Leftarrow)$ Supongamos que $\alpha(t)$ es geodésica y que $t=as+b$. Entonces
 \begin{gather*}
 \alpha'(t)=\frac{d\alpha(s)}{ds}\frac{ds}{dt}=\dot{\alpha}(s)\frac{1}{a}\\
 \alpha''(t)=\ddot{\alpha}(s)\frac{1}{a^2}=k(s)n(s)\frac{1}{a^2}
 \end{gather*}
-Como $\alpha$ es geodésica, o bien $k(s)=0$ o bien $n\parallel N$, en cualquier caso, $\alpha''(t)\parallel N$, de modo que $\alpha'(t)$ es tangente y eso convierte a $\alpha$ en autoparalela.
+Como $\alpha$ es geodésica, o bien $k(s)=0$ o bien $n\parallel N$, en cualquier caso, $\alpha''(t)\parallel N$, de modo que $\alpha'(t)$ es paralelo y eso convierte a $\alpha$ en autoparalela.
 \end{dem}
 
 \begin{coro}
