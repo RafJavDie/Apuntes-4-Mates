@@ -82,7 +82,7 @@ Definimos entonces la curva $\alpha(\theta)=\X(\theta,\frac{\pi}{4})=(\frac{\sqr
 \end{example}
 
 \begin{theorem}
-El c.v.t. $X(t)=\sum_{k=1}^n X^k \X_k$ a lo largo de α es campo paralelo a lo largo de α si y sólo si:
+El c.v.t. $X(t)=\sum_{k=1}^2 X^k \X_k$ a lo largo de α es campo paralelo a lo largo de α si y sólo si:
 \[ \frac{dX^k(t)}{dt} + \sum_{i,j=1}^2 Γ_{ij}^k X^i(t) \frac{du^j}{dt} = 0 \quad \forall k=1,2 \]
 \end{theorem}
 \begin{dem}
@@ -175,7 +175,7 @@ Si tenemos una superficie $M$ parametrizada como $\X(u^1,u^2)$ y una curva $α(t
 Una curva $\alpha(t)$ es autoparalela si y solo si es geodésica y $t$ es función lineal del parámetro natural.
 \end{prop}
 \begin{dem}
-$(\Rightarrow)$ Supongamos que $\alpha$ es autoparalela. Entonces $|\alpha'(t)| = cte = a$, por tanto $\dfrac{ds}{dt}=a$, luego $s = at + b$. Además:
+$(\Rightarrow)$ Supongamos que $\alpha$ es autoparalela. Por ser c.v.t. paralelo,  $|\alpha'(t)| = cte = a$, por tanto $s=\int_{t_0}^t|\alpha'(x)|dx = at+b$. Además:
 \[
 \alpha' = \dot{\alpha} \frac{ds}{dt} =\dot{\alpha}a \qquad
  \alpha''  = \ddot{\alpha}a^2
@@ -186,7 +186,7 @@ $(\Leftarrow)$ Supongamos que $\alpha(t)$ es geodésica y que $t=as+b$. Entonces
 \alpha'(t)=\frac{d\alpha(s)}{ds}\frac{ds}{dt}=\dot{\alpha}(s)\frac{1}{a}\\
 \alpha''(t)=\ddot{\alpha}(s)\frac{1}{a^2}=k(s)n(s)\frac{1}{a^2}
 \end{gather*}
-Como $\alpha$ es geodésica, o bien $k(s)=0$ o bien $n\parallel N$, en cualquier caso, $\alpha''(t)\parallel N$, de modo que $\alpha'(t)$ es paralelo y eso convierte a $\alpha$ en autoparalela.
+Como $\alpha$ es geodésica, $n\parallel N$, luego $\alpha''(t)\parallel N$, de modo que $\alpha'(t)$ es c.v.t. paralelo y por ende $\alpha$ es autoparalela.
 \end{dem}
 
 \begin{nota}
@@ -225,12 +225,12 @@ Para que $β'(σ) \cdot \X_2 = 0$:
 \[ β'(σ) \cdot \X_2 = g_{12} \frac{du¹}{dσ} + g_{22} \frac{du²}{dσ} = 0 \]
 El problema se reduce a integrar la 1-forma:
 \[ g_{12} du¹ + g_{22} du² = 0 \]
-Existe un factor integrante $μ(u¹,u²)\neq 0$ tal que $μ g_{12} du¹+μ g_{22} du² = dh(u¹,u²)=h_1 du¹+h_2 du²$ para algún $h$. Necesariamente $μ g_{12} = h_1$ y $μ g_{22} = h_2$. Sea el cambio de parámetros:
+Existe un factor integrante $μ(u¹,u²)\neq 0$ tal que $μ g_{12} du¹+μ g_{22} du² = dh(u¹,u²)= du¹+h_2 du²$ para algún $h$. Necesariamente $μ g_{12} = h_1$ y $μ g_{22} = h_2$. Sea el cambio de parámetros:
 \[ f^{-1} = \begin{cases}
 	\overline{u}¹ = u¹\\
 	\overline{u}² = h(u¹,u²)
 \end{cases}\]
-El cambio de parámetros está bien definidio ya que $f^{-1} \in \mathcal{C}^\infty$ y $|J(f^{-1})| = \begin{vmatrix}1 & 0\\h1 & h_2\end{vmatrix} = h_2 = μ g_{22} \neq 0$. Luego:
+El cambio de parámetros está bien definido ya que $f^{-1} \in \mathcal{C}^\infty$ y $|J(f^{-1})| = \begin{vmatrix}1 & 0\\h_1 & h_2\end{vmatrix} = h_2 = μ g_{22} \neq 0$. Luego:
 \[ \overline{g}_{ij} = \sum g_{hk} \frac{du^h}{d\overline{u}^i} \frac{du^k}{d\overline{u}^j}\]
 En particular:
 \[ \overline{g}_{12} = \sum g_{hk} \frac{du^h}{d\overline{u}^1} \frac{du^k}{d\overline{u}^2} \]
@@ -268,7 +268,7 @@ Finalmente:
 
 
 \begin{theorem}
-En las condiciones anteriores se tiene:
+Se $θ(s) = (\widehat{\X_1(s), \dot{α}(s))}$. En las condiciones anteriores se tiene:
 \[ K_g(s) = \dot{θ}(s) + \frac{1}{2 \sqrt{g_{11}g_{22}}} \left((g_{22})_1 \dot{u}²(s) - (g_{11})_2 \dot{u}¹(s) \right)\]
 \end{theorem}
 
