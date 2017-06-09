@@ -189,7 +189,7 @@ $(\Leftarrow)$ Supongamos que $\alpha(t)$ es geodésica y que $t=as+b$. Entonces
 Como $\alpha$ es geodésica, o bien $k(s)=0$ o bien $n\parallel N$, en cualquier caso, $\alpha''(t)\parallel N$, de modo que $\alpha'(t)$ es paralelo y eso convierte a $\alpha$ en autoparalela.
 \end{dem}
 
-\begin{coro}
+\begin{nota}
 Sea $X(s)$ c.v.t. paralelo unitario a lo largo de $\alpha$ con. Sea $\varphi(s)=\widehat{(X(s),\dot{\alpha}(s))}$ entonces:
 \begin{align*}
 \cos{\varphi(s)}&=X(s)\dot{\alpha}(s)\\
@@ -197,7 +197,7 @@ Sea $X(s)$ c.v.t. paralelo unitario a lo largo de $\alpha$ con. Sea $\varphi(s)=
   &= K_g(s)|X(s)||S(s)|cos{(\varphi+\frac{\pi}{2})}=-K_g\sin{\varphi}
 \end{align*}
 Luego $K_g = \dot{\varphi}$, similar a la curvatura plana.
-\end{coro}
+\end{nota}
 \begin{example}
 Consideramos $S^2(1)$ y, sobre ella, $\alpha,\beta$ círculos máximos de polo norte (N) a polo sur (S). Por ser círculos máximos, $\alpha,\beta$ son geodésicas. Sea $X\in T_N(S^1)$ tangente a $\alpha$. Si realizamos un transporte paralelo de X hasta S por $\alpha$ usando $\dot{\alpha}$, obtenemos un vector $X_\alpha$ tangente a $\alpha$ en S. Sea $Y\in T_N(S^1)$ tangente a $\beta$ obteniendo, análogamente, $Y_\beta$. Sea $\theta=\widehat{\alpha,\beta}$. En el polo norte $\theta=\widehat{X,Y}$. Como $\dot{\beta}$ es un c.v.t. paralelo a $\beta$, podemos transportar $X$ a lo largo de $\beta$, obteniendo un vector $X_\beta$. Como $X$ y $\dot{\beta}$ mantienen sus ángulos, se tiene que $\widehat{X_\alpha,X_\beta}=2\theta$. Curiosiamente: $2\theta=A(R)$, donde R es la región esférica que delimitan $\alpha$ y $\beta$.
 \end{example}
@@ -524,14 +524,14 @@ Si $M$ es una superficie compacta sin borde entonces
 \end{coro}
 
 \begin{ejer}
-Sea $M$ orientable con $K ≤ 0$. Dos geodésicas $α_1$, $α_2$ que parten de $p \in M$ no pueden encontrase de nuevo en $q \in M$ encerrando una región simple $\mathcal{R} \subset M$.
+Sea $M$ orientable con $K < 0$. Dos geodésicas $α_1$, $α_2$ que parten de $p \in M$ no pueden encontrase de nuevo en $q \in M$ encerrando una región simple $\mathcal{R} \subset M$.
 \end{ejer}
 
 \begin{dem} Si se encontrase de nuevo, podriamos considerar el ciclo $α_1-α_2$, que encierra el área $\mathcal{R}$. $α_1-α_2$ tiene saltos en los puntos $p$ y $q$, con ángulo exterior $φ_1$ y $φ_2$ respectivamente. Por ser $\mathcal{R}$ una región simple, tiene característica de Euler $χ=1$. Por el Teorema de Gauss-Bonet:
 \[ \int_{α_1} K_g + \int_{α_2} K_g + \iint_\mathcal{R} K dA + φ_1 + φ_2 = 2 \pi 1 \]
-Como $α_1$ y $α_2$ son geodésicas, los dos primeros sumandos son 0. Luego:
+Como $α_1$ y $α_2$ son geodésicas, los dos primeros sumandos son $0$. Luego:
 \[ \iint_\mathcal{R} K dA = 2\pi - (φ_1 + φ_2) \]
-Como $φ_1 < \pi$ y $φ_2 < \pi$, $φ_1+φ_2 < 2\pi$. Por lo tanto $2\pi - (φ_1+φ_2) > 0$. Pero esto es imposible, ya que $K \leq 0$ en $\mathcal{R}$. Hemos llegado a un absurdo. Luego $α_1$ y $α_2$ no se pueden encontrar de nuevo.
+Como $φ_1 \leq \pi$ y $φ_2 \leq \pi$, $φ_1+φ_2 \leq 2\pi$. Por lo tanto $2\pi - (φ_1+φ_2) \geq 0$. Pero esto es imposible, ya que $K < 0$ en $\mathcal{R}$. Hemos llegado a un absurdo. Luego $α_1$ y $α_2$ no se pueden encontrar de nuevo.
 \end{dem}
 
 \begin{ejer} Sea $T$ un triángulo geodésico en una superficie $M$. Estudiar el valor de la suma de sus ángulos internos en función del signo de $K$ de $M$.
