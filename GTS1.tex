@@ -57,7 +57,7 @@
 \begin{document}
 \chapter{Geometría}
 \section{Paralelismo en superficie}
-Sean $\X:U\to\R^3$ s.s., $\alpha=\X(u(t),v(t))$ c.p.r. en $\X$.
+Sean $\X:U\to\R^3$ s.s., $\alpha=\X(u^1(t),u^2(t))$ c.p.r. en $\X$.
 
 \begin{defi}
 Diremos que $X(t)$ es un campo vectorial tangente a lo largo de $\alpha$ si $X(t) \in T_{\alpha(t)}(\X)$. Por ejemplo, $\dot{\alpha}(t)$ o $S(t)$.
@@ -147,11 +147,11 @@ Para que $X(θ) = X^1(θ) \X_1(θ,φ_0) + X^2 \X_2(θ, φ_0)$ sea c.v.t. paralel
 \[ \frac{dX^1}{dθ} - \tan φ_0 X^2 = 0 \]
 \[ \frac{dX^2}{dθ} + \cos φ_0 \sen φ_0 X^1 = 0 \]
 De ahí se obtiene integrando que:
-\[ X^1(θ) = \frac{1}{\cos φ_0} \sen ( θ \sen φ0) \]
+\[ X^1(θ) = \frac{1}{\cos φ_0} \sen ( θ \sen φ_0) \]
 \[ X^2(θ) = \cos(θ \sen φ_0) \]
 Luego:
 \[ X(θ) = \frac{1}{\cos φ_0} \sen (θ \sen φ_0) \X_1 - \cos (θ \sen φ_0) \X_2 \]
-Sin embargo, $X(0) = \X_2(0,φ_0) \neq X(2\pi) = \frac{1}{\cos φ}\sen (2\pi \sen φ_0) \X_1 - \cos (2 \pi \sen φ_0) \X_2$. El transporte paralelo del vector $X(0)$ no va a mantener siempre constante el vector al pasar la curva por el mismo punto.
+Sin embargo, $X(0) = \X_2(0,φ_0) \neq X(2\pi) = \frac{1}{\cos φ_0}\sen (2\pi \sen φ_0) \X_1 - \cos (2 \pi \sen φ_0) \X_2$. El transporte paralelo del vector $X(0)$ no va a mantener siempre constante el vector al pasar la curva por el mismo punto.
 \end{example}
 \begin{prop}
 Sean $X(t),Y(t)$ c.v.t. paralelos a lo largo de una curva $α(t) = \X(u¹(t), u²(t))$. Entonces el transporte paralelo de vectores a lo largo de $\alpha$ conserva módulos y ángulos.
@@ -167,7 +167,7 @@ Como el producto escalar es constante, el módulo $\sqrt{X(t)\cdot X(t)}$ tambi�
 \]
 \end{dem}
 \begin{consecuencia}
-Si tenemos una superficie $α(t) = \X(u¹(t), u²(t))$, $P\in \alpha$ y dos $v_1,v_2$ que son base de $T_P(\X)$. Entonces, si trasladamos dichos vectores mediante un transporte paralelo a Q, estos mantendrán el ángulo y sus respectivos módulos. Si tomamos $v_1$ y $v_2$ ortonormales, su transporte paralelo forma también una base ortonormal en Q. Esto se denomina \textbf{conexión de la geometría de la superficie M en P y Q}.
+Si tenemos una superficie $M$ parametrizada como $\X(u^1,u^2)$ y una curva $α(t) = \X(u¹(t), u²(t))$, $P\in \alpha$ y dos $v_1,v_2$ que son base de $T_P(\X)$. Entonces, si trasladamos dichos vectores mediante un transporte paralelo a Q, estos mantendrán el ángulo y sus respectivos módulos. Si tomamos $v_1$ y $v_2$ ortonormales, su transporte paralelo forma también una base ortonormal en Q. Esto se denomina \textbf{conexión de la geometría de la superficie M en P y Q}.
 \end{consecuencia}
 \begin{defi} Sea $α(t) = \X(u¹(t), u²(t))$ c.p.r. en $\X : U \to \R³$. Se llama \textbf{autoparalela} si el c.v.t. $\alpha'(t)$ es un campo paralelo a lo largo de $\alpha$.
 \end{defi}
