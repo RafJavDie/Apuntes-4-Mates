@@ -190,7 +190,7 @@ Como $\alpha$ es geodésica, $n\parallel N$, luego $\alpha''(t)\parallel N$, de 
 \end{dem}
 
 \begin{nota}
-Sea $X(s)$ c.v.t. paralelo unitario a lo largo de $\alpha$ con. Sea $\varphi(s)=\widehat{(X(s),\dot{\alpha}(s))}$ entonces:
+Sea $X(s)$ c.v.t. paralelo unitario a lo largo de $\alpha$. Sea $\varphi(s)=\widehat{(X(s),\dot{\alpha}(s))}$ entonces:
 \begin{align*}
 \cos{\varphi(s)}&=X(s)\dot{\alpha}(s)\\
  -\dot{\varphi}(s)\sin\varphi(s)& =  X'(s)\dot{\alpha}(s)+ X(s)\ddot{\alpha}(s)= X(s)(K_g(s)S(s)+K_n(s)N(s))=K_g(s)X(s)S(s)\\
@@ -404,7 +404,7 @@ K g^2 & =
 	\X_2 \X_{12} & g_{21} & g_{22}
 \end{vmatrix}\label{Kgecuacion}
 \end{align}
-Vemos que como $\X_i \X_i = g_{ii}$, derivando parcialmente obtenemos que $(g_{ij})_k = \X_{ik}\X_i + \X_i\X_{ik} = 2\X_{ik}\X_i$. Luego los productos de la forma $\X_{ik}\X_i$ son intrínsecos. Además, derivando $\X_1\X_2 = g_{12}$ respecto a la primera componente, tenemos que $\X_{11}\X_2 + \X_1 \X_{12} = (g_{12})_1$. Como $\X_1\X_{12}$ es intrínseco, $\X_{11}\X_2$ es intrínseco. Análogamente, $\X_{22}\X_1 + \X_1 \X_{12} = (g_{12})_2$ y $\X_{22}\X_1$ es intrínseco. Por último, derivando $\X_{12}\X_2=\frac{1}{2}(g_{22})_1$ respecto $u^1$ obtenemos que 
+Vemos que como $\X_i \X_i = g_{ii}$, derivando parcialmente obtenemos que $(g_{ii})_k = \X_{ik}\X_i + \X_i\X_{ik} = 2\X_{ik}\X_i$. Luego los productos de la forma $\X_{ik}\X_i$ son intrínsecos. Además, derivando $\X_1\X_2 = g_{12}$ respecto a la primera componente, tenemos que $\X_{11}\X_2 + \X_1 \X_{12} = (g_{12})_1$. Como $\X_1\X_{12}$ es intrínseco, $\X_{11}\X_2$ es intrínseco. Análogamente, $\X_{22}\X_1 + \X_1 \X_{12} = (g_{12})_2$ y $\X_{22}\X_1$ es intrínseco. Por último, derivando $\X_{12}\X_2=\frac{1}{2}(g_{22})_1$ respecto $u^1$ obtenemos que 
 \[\X_{112}\X_2 + \X_{12}\X_{12} = \frac{1}{2}(g_{22})_{11}\]
 Análogamente, derivando $\X_{11} \X_2 = (g_{12})_1 - \frac{1}{2}(g_{11})_2$ respecto a $u^2$:
 \[ \X_{112}\X_2 + \X_{11}\X_{22} = (g_{12})_{12} - \frac{1}{2}(g_{11})_{22}\]
@@ -469,11 +469,11 @@ no depende del atlas $\{\X_k : U_j \rightarrow \R^3\mid k\in J\}$ que elijamos p
 \]
 \end{theorem}
 \begin{dem}
-Consideramos una triangulación $T=\{T_1,\dotsc,T_F\}$ de forma que cada punto singular es vértice de algún triángulo, de forma que $n=F$. Aplicamos el teorema de Gauss Bonnet local a una triángulo $T_j$, obteniendo:
+Consideramos una triangulación $T=\{T_1,\dotsc,T_F\}$ de forma que cada punto singular es vértice de algún triángulo. Aplicamos el teorema de Gauss Bonnet local a una triángulo $T_j$, obteniendo:
 \[
 \sum_{i=1}^3 \int_{s_i}^{s_{i+1}} K_g(s)ds + \iint_{T_j}KdA + \sum_{k=1}^3 \varphi_{jk} = 2\pi
 \]
-Sumamos ahora en los n triángulos de la triangulación. En los lados comunes de los triángulos, por orientación, se va anular la integral de $K_g$ de forma que solo nos queda la integral sobre el borde de la superficie.
+Sumamos ahora en los $F$ triángulos de la triangulación. En los lados comunes de los triángulos, por orientación, se va anular la integral de $K_g$ de forma que solo nos queda la integral sobre el borde de la superficie.
 \[
 \sum_{i=1}^n \int_{C_i}K_g + \iint_R K dA + \sum_{j=1}^F\sum_{k=1}^3 \varphi_{jk} = 2\pi F
 \]
@@ -495,7 +495,7 @@ Volviendo a nuestra triangulación $V_e=V_{ec}+V_{et}$, donde el primer sumando 
 \end{gather*}
 Cada vértice exterior exterior de la triangulación (no puntos singulares) aportan $\pi$ grados a la triangulación. Los singulares, $\pi - \varphi_l$.
 \begin{gather*}
-\sum_{j=1}^F\sum_{k=1}^3 \varphi_{jk} =  2\pi E_i + \pi E_e - 2\pi V_i-\pi V_{et} - \sum (\pi - \varphi_l) = \\
+\sum_{j=1}^F\sum_{k=1}^3 \varphi_{jk} =  2\pi E_i + \pi E_e - 2\pi V_i-\pi V_{et} - \sum_{l\in V_{ec}} (\pi - \varphi_l) = \\
 \overbrace{ 2\pi E_i + 2\pi E_e }^{2\pi E}- \pi E_e - 2\pi V_i-\overbrace{\pi V_{et}-\pi V_{ec}}^{\pi V_e}  +\sum \varphi_l  = 2\pi E - \pi V_e - 2\pi V_i - \pi V_e + \sum \varphi_l
 \end{gather*}
 Por tanto, se sigue que:
