@@ -86,9 +86,31 @@
 %--------------------------------------------------------
 \begin{document}
 
-\title{Ejercicios semanales TCYC - Tercera entrega }
-\author{Rafael González López}
+\title{Ejercicios de Gauss Bonnet - Geometría y Topología de Superficies }
+\author{Javier Aguilar, Rafael González, Diego}
 \maketitle
+\begin{ejercicio}{1} Sea una superficies con $K\geq 0$. Probar que si en un entorno de un punto existen dos familias de geodésicas que se cortan ortogonalmente, entonces $K\equiv 0$ en ese entorno. 
+\end{ejercicio}
+\begin{sol*}
+Por las hipótesis sobre la superficie, en cada punto del entorno antedicho podemos encontrar una región simple cuya curva frontera esté formada por geodésicas que se cortan ortogonalmente. Es decir, la frontera es una especie de cuadrado. Orientando ésta positivamente y aplicando Gauss Bonnet: 
+\[
+\sum_{i=1}^4\int_{C_i}K_g(s) dC_i + \iint_R KdA + \sum_{i=1}^4 \varphi_i = 0 + \iint_R KdA + 2\pi = 2\pi
+\]
+Como $K\geq 0$, deducimos que $K\equiv 0$.
+\end{sol*}
+\newpage
+
+
+\begin{ejercicio}{2} Probar que en una superficie con curvatura de Gauss constante y no nula, el área de todo polígono geodésico de n lados que encierra una región simple está determinado por sus ángulos internos.
+\end{ejercicio}
+\begin{sol*}
+Vamos a aplicar Gauss-Bonnet sobre la superficie del polígono. Como esta es una superficie simple $\chi(R)=1$. Si $K\equiv K_0$ entonces:
+\begin{gather*}
+\sum_{i=1}^n \int_{C_i}K_g + \iint_R KdA + \sum_{i=1}^{n} \varphi_i = K_0 \cdot Area(R)+\sum_{i=1}^{n} \varphi_i = 2\pi \\
+Area(R) = \frac{1}{K_0}\left(2\pi - \sum_{i=1}^n \pi - \psi_i\right)=  \frac{1}{K_0}\left((2-n)\pi + \sum_{i=1}^n \psi_i\right) \end{gather*}
+\end{sol*}
+\newpage
+
 \begin{ejercicio}{3} Probar que la curvatura integral de la esfera es $4\pi$. 
 \end{ejercicio}
 \begin{sol*}
@@ -100,10 +122,67 @@ Como la esfera es una superficie sin borde, la curvatura integral es $2\pi\chi(S
 \begin{ejercicio}{4} Probar que la curvatura integral del cono circular  es $4\pi$. 
 \end{ejercicio}
 \begin{sol*}
-\end{sol*}
+Análogo al anterior. Si tenemos un cono circular con tapa, entonces no tiene borde y es homeomorfo a la esfera. Por tanto $\chi(R)=2$. ¿Sale también si nuestra superficie es una sección de cono? En tal caso la sección será una circunferencia y $\chi(R)=1$. Por tanto:
+\[
+\iint_R K dA = 2\pi - \int_C K_g(s)dC
+\]
+Veamos directamente cuanto vale esa integral. Sea el cono $\X(u,v) = (av\cos{u},av\sin{u},bv)$ y $\alpha(s) = \X(u,v_0)$.
+\begin{align*}
+\X_1(u,v) &= (-av\sin{u},av\cos{u},0)&\X_2(u,v) &=(a\cos{u},a\sin{u},b)\\
+\X_1\times\X_2 (u,v)&=av(b\cos{u},b\sin{u},-a) & N(u)&=\frac{1}{\sqrt{b^2+a^2}}(b\cos{u},b\sin{u},-a)\\
+\alpha'(u)&=av_0(-\sin{u},\cos{u},0) & \alpha''(u)&=-av_0(\cos{u},\sin{u},0)
+\end{align*}
+\begin{gather*}
+K_g(s) = \frac{1}{av_0 \sqrt{b^2+a^2}}
+\begin{vmatrix}
+-\sin{u} & -\cos{u} & b\cos{u}\\
+\cos{u} & -\sin{u} & b\sin{u}\\
+0		&	0		& -a
+\end{vmatrix}
+= \frac{1}{v_0 \sqrt{b^2+a^2}} 
+\begin{vmatrix}
+-\sin{u} & \cos{u}\\
+\cos{u} & \sin{u}
+\end{vmatrix}\\
+\iint_R K dA = 2\pi - \int_C K_g(s)dC =2\pi - \int_{0}^{2\pi} \frac{1}{v_0 \sqrt{b^2+a^2}} |\alpha'(t)|dt = 2\pi\left(1+\frac{a}{\sqrt{a^2+b^2}}\right)
+\end{gather*}
 
+\end{sol*}
 \newpage
 
+\begin{ejercicio}{6} Probar que una superficie compacta y orientable con curvatura de Gauss positiva verifica que toda curva cerrada divide a la superficie en dos o más regiones disjuntas.
+\end{ejercicio}
+\begin{sol*}
+
+\end{sol*}
+\newpage
+
+\begin{ejercicio}{8} Sea $\X(u,v) = (a\cos{u}\cos{v},a\cos{u}\sin{v},a\sin{u})$ la superficie esférica de centro el origen y radio a. Sea $\alpha$ el ecuador y $\beta$ el paralelo $u=u_0$. Si R es la región encerrada entre ambas curvas, calcular el área de dicha región por medio del teorema de gauss-Bonnet.
+\end{ejercicio}
+\begin{sol*}
+Tengamos en cuenta que $\alpha$ es geodésica, luego $K_g\equiv 0$ a lo largo de $\alpha$. Como la región es homeomorfa a una corona circlar, $\chi(R)=0$. Por tanto, solo nos falta ver qué ocurre en $\beta$. 
+\begin{align*}
+\X_1(u,v) &= -a(\sin{u}\cos{v},\sin{u}\sin{v},-\cos{u}) &\beta(v)' &=a\cos{u_0}(-\sin{v}, \cos{v},0)\\
+\X_2 (u,v)&=  a(-\cos{u}\sin{v}, \cos{u}\cos{v},0) & \beta(v)'' &=-a\cos{u_0}(\cos{v},\sin{v},0)\\
+N(u,v)& = -\frac{(\cos{u}^2\cos{v},-\cos{u}^2\sin{v},\cos{u}\sin{u})}{|\cos u_0|}& &
+\end{align*}
+\begin{gather*}
+K_g(v)=\frac{a^2\cos^2 u_0}{a^3\cos^4 u_0}
+\begin{vmatrix}
+-\sin v & \cos v & \cos^2 u_0 \cos v\\
+ \cos v & \sin v & -\cos^2 u_0 \sin v\\
+ 0 		& 0		 & \cos u_0 \sin u_0
+\end{vmatrix}
+=
+\frac{\tan u_0}{a}
+\end{gather*}
+Apliquemos Gauss-Bonnet. Supongamos que $u_0 \in (0,\pi/2)$.
+\begin{gather*}
+\sum_{i=1}^2 \int_{C_i}K_g + \iint_R KdA + \sum_{i=1}^p \varphi_i = \int_\beta K_g d\beta + \frac{1}{a^2}Area(R) + 0 = 2\pi \chi(R)=0\\
+Area(R) = a^2 \int_{0}^{2\pi} \frac{\tan u_0}{a} a\cos{u_0} dt = 2\pi a^2 \sin u_0
+\end{gather*}
+\end{sol*}
+\newpage
 \begin{ejercicio}{10} Sea el paraboloide $z=x^2+y^2$. Se considera $\mathcal{R}$ la región de dicha superficie limitada por los planos $z=0$ y $z=a$, $a>0$. Utilizando el teorema de Gauss Bonnet, hallar $\int_{\mathcal{R}}KdA$.
 \end{ejercicio}
 \begin{sol*}
@@ -119,7 +198,6 @@ N(s)& = \frac{1}{\sqrt{4a+1}}(-2\sqrt{a}\cos(s),-2\sqrt{a}\sin(s),1) & K_g(s) & 
 \int_\alpha K_g(s)= 2\pi - \int_{2\pi}^0 \frac{2}{\sqrt{4a+1}\sqrt{a}} |\alpha'(s)| ds =2\pi \left(1+\frac{2}{\sqrt{4a+1}}\right)
 \end{gather*}
 \end{sol*}
-
 \newpage
 \begin{ejercicio}{11} Se considera una región cilíndrica $\mathcal{R}$ comprendida entre dos paralelos $\alpha_1$, $\alpha_2$ y que tiene un agujero bordeado por una curva regular cerrada y simple $\gamma$. Aplicar Teorema de Gauss-Bonet a $\mathcal{R}$ para determinar $\int_\gamma K_g(s)ds$.
 \end{ejercicio}
@@ -129,15 +207,12 @@ Las curvas $\alpha_i$ y $\gamma$ son regulares, luego $\sum_i \varphi_i =0$. Ade
 2\pi\chi(\mathcal{R}) = \int_\gamma K_g(s)ds + \int_{\alpha_1} K_g(s)ds + \int_{\alpha_2} K_g(s)ds+  \iint_{\mathcal{R}} KdA + \sum_i \varphi_i = \int_\gamma K_g(s)ds 
 \]
 \end{sol*}
-
-
 \newpage
 \begin{ejercicio}{13} Sea C el cilindro de eje OZ y radio r. Consideremos la región determinada por $\alpha$, corte de C con el plano $z=$ y $\beta$, curva de corte de C con un plano inclinado. Aplicando el teorema de Gauss-Bonnet, determinar el valor de $\oint_\beta K_g$.
 \end{ejercicio}
 \begin{sol*}
 Las curvas $\alpha_i$ y $\beta$ son regulares, luego $\sum_i \varphi_i =0$. Además, la curva $\alpha$ es geodésica, por lo que $K_g=0$ sobre ellas. El cilindro tiene $K=0$ en cada punto y $\chi(\mathcal{R})=1$, y la característica de Euler de la región es $0$, por tanto $\oint_\beta K_g = 0$.
 \end{sol*}
-
 \newpage
 \begin{ejercicio}{14} Se considera la superficie esférica de radio $S^2(R)$ de radio R y centro el origen. Un plano horizontal $\Pi$ corta en una circunferencia de radio r (paralelo de $S^2(R)$) que denotamos $\alpha$. Aplicando el TGB a la región encerrada por $\alpha$ en las dos superficies: un disco en el plano $\Pi$ y un casquete en $S^2(R)$ para obtener el valor de $\int_\alpha K_g$ en cada caso.
 \end{ejercicio}
@@ -154,8 +229,6 @@ La curva $\alpha$ es regular, luego $\sum_i \varphi_i =0$. Tanto en el casquete 
 \]
 \end{itemize}
 \end{sol*}
-
-
 \newpage
 \begin{ejercicio}{20}
 Se considera la región $\mathcal{R}$ del plano constituida por un círculo $\alpha$ con un agujero $\beta$ romboidal y otro triangular $\gamma$ disjuntos. Calcular $\int_\alpha K_g$ aplicando el TGB.
