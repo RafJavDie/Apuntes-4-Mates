@@ -86,10 +86,11 @@ que la normal intrínseca S de $\alpha$ es paralela a lo largo de $\alpha$ si y 
 \end{exercise}
 \begin{sol*}
 Supongamos que $\alpha$ es geodésica. En tal caso $n(s)=\pm N(s)$. Entonces:
-\[
-b(s) = t(s)\times n(s)= \pm t(s)\times N(s) = \pm S(s) \Rightarrow S'(s) = \pm \tau(s)k(s) \Rightarrow S'(s) \parallel N(s)
-\]
-Recíprocamente, si $S'(s)||N(s)$ entonces $t(s)S'(s)$, de lo que deducimos que $t'(s)S(s)=0$, pero $t'(s) = n(s)k(s)$. Por tanto, $n(s)$ es perpendicular a $t(s)$ y $S(s)$, luego $n(s)\parallel N(s)$.
+\begin{gather*}
+b(s) = t(s)\times n(s)= \pm t(s)\times N(s) = \mp S(s) \Rightarrow S(s)=\mp b(s)\\
+S'(s) = \mp b'(s) = \pm \tau(s)n(s) = \tau(s) N(s) \Rightarrow S'(s) \parallel N(s)
+\end{gather*}
+Recíprocamente, si $S'(s)||N(s)$ entonces $t(s)\bot S'(s)$, de lo que deducimos que $t'(s)S(s)=0$, pero $t'(s) = n(s)k(s)$. Por tanto, $n(s)$ es perpendicular a $t(s)$ y $S(s)$, luego $n(s)\parallel N(s)$.
 \end{sol*}
 
 
@@ -105,13 +106,13 @@ Sean $X(s),Y(s)$ los campos vectoriales $\X_1$ y $\X_2$ a lo largo de $\alpha$ r
 \item[]
 \item Veamos el primer apartado:
 \begin{gather*}
-\chi_1(s,v) = t(s) +v(k(s)n(s)+v\left(\frac{k(s)}{\tau(s)}b(s)\right)' \qquad \chi_2(s,v) = t(s)+\frac{k(s)}{\tau(s)}b(s)\\
-\X_1(s,0)\times\X_2(s,0) = \left(0,-\frac{k(s)}{\tau(s)},0\right) \Rightarrow n(s) \parallel N(s)
+\chi_1(s,v) = t(s) +v\left(t(s)+\frac{k(s)}{\tau(s)}b(s)\right)' \qquad \chi_2(s,v) = t(s)+\frac{k(s)}{\tau(s)}b(s)\\
+\X_1(s,0)\times\X_2(s,0) = -\frac{k(s)}{\tau(s)}n(s) \Rightarrow n(s) \parallel N(s)
 \end{gather*}
 \item Veamos ahora, por casos, el segundo aparatado:
 \begin{itemize}
 \item $\chi_1(s)$ es paralelo si y solo sí $X_1'(s) = t'(s) = k(s)n(s) \parallel N(s)$. Por tanto, como $\alpha$ es geodésica, se cumple siempre.
-\item $\chi_2(s)$ es paralelo si y solo sí $X_2'(s) = \left(\dfrac{k(s)}{\tau(s)}\right)'b(s)\parallel N(s)$, esto es, al ser $\alpha$ geodésica, si y solo si $\dfrac{k(s)}{\tau(s)}\equiv cte$, es decir, si y solo sí es un hélice.
+\item $\chi_2(s)$ es paralelo si y solo sí $X_2'(s) = k(s)n(s)+\left(\dfrac{k(s)}{\tau(s)}\right)'b(s)\parallel N(s)$, esto es, al ser $\alpha$ geodésica, si y solo si $\dfrac{k(s)}{\tau(s)}\equiv cte$, es decir, si y solo sí es un hélice.
 \end{itemize}
 \end{itemize}
 \end{sol*}
@@ -122,8 +123,8 @@ Sean $X(s),Y(s)$ los campos vectoriales $\X_1$ y $\X_2$ a lo largo de $\alpha$ r
 \begin{sol*}
 La condición es que $\lambda(s)\equiv cte$. Veámoslo.
 \begin{itemize}
-\item Supongamos que $\alpha(s)$ es geodésica. En tal caso $S(s)$ y $t(s)$ son campos paralelos a lo largo de $\alpha$. Como los campos paralelos forman un $R$-e.v. deducimos que $t(s)+\lambda S(s)$ también es un campo paralelo.
-\item Supongamos que $t(s)+\lambda S(s)$ es un campo paraleo. En tal caso:
+\item Supongamos que $\alpha(s)$ es geodésica. En tal caso $S(s)$ y $t(s)$ son campos paralelos a lo largo de $\alpha$. Como los campos paralelos forman un $\R$-e.v. deducimos que $t(s)+\lambda S(s)$ también es un campo paralelo.
+\item Supongamos que $t(s)+\lambda S(s)$ es un campo paralelo. En tal caso:
 \begin{gather*}
 (t(s)+\lambda S(s))' = t'(s) + \lambda(N'(s)\times t(s) + N(s)\times t'(s))= \\
 K_g(s) S(s) + K_n(s)N(s)+ \lambda \tau_g(s) N(s) - \lambda K_g(s)t(s) \parallel N(s)
@@ -145,7 +146,7 @@ Sea M una superficie, $\alpha:(a,b)\rightarrow \R^3$ una curva regular en M, y s
 \item[]
 \item Consideramos $Q(t)$ un campo paralelo que sea perpendicular a $X(t)$ en cada punto y que además $|X(t)|=|Q(t)|$. En tal caso, dadas las hipótesis sobre $Y(t)$, existe un escalar $a\in\R$ tal que:
 \[
-Y(t) = a(X(t)cos(\theta) + Y(t)sin(\theta))
+Y(t) = a(X(t)cos(\theta) + Q(t)sin(\theta))
 \]
 Por tanto, $Y(t)$ es un campo paralelo.
 \item Derivando directamente:
@@ -225,7 +226,7 @@ Como en el apartado anterior, deducimos que $k(s)k'(s)=0$. Tenemos dos opciones,
 \newpage
 \begin{ejercicio}{8} Sea M una superficie y $X(t)$ un campo paralelo a lo largo de una curva $\alpha(t)$ de M. 
 \begin{itemize}
-\item Si $Y(t)$ es un campo vectorial tangente a lo largo de $\alpha$ y forma un ángulo $\theta(t) = cte$ con $X(t)$, ¿es $Y (t)$ paralelo a lo largo de$\alpha$?.
+\item Si $Y(t)$ es un campo vectorial tangente a lo largo de $\alpha$ y forma un ángulo $\theta(t) = cte$ con $X(t)$, ¿es $Y (t)$ paralelo a lo largo de $\alpha$?.
 \item Si $X(t),Y (t)$ son ambos paralelos a lo largo de $\alpha$, ¿es constante el volumen del paralelepípedo determinado por los vectores $N(t),X(t),Y (t)$?
 \item Sean $ X(t),Y (t)$ campos paralelos independientes a lo largo de $\alpha$, y sea $Z(t) = \lambda(t)X(t)+\mu (t)Y (t)$. Probar que $Z(t)$ es un campo paralelo a lo largo de $\alpha$ si y solo si $\lambda$ y $\mu$ son constantes.
 \end{itemize}
@@ -233,7 +234,7 @@ Como en el apartado anterior, deducimos que $k(s)k'(s)=0$. Tenemos dos opciones,
 \begin{sol*}
 \begin{itemize}
 \item[]
-\item No necesariamente. Por ejemplo, si $Y(t)=t^2 X(t)$, $Y(t)$ es un campo vectorial tangente a lo largo de $\alpha$ y forma un ángulo constante $theta(t)\equiv 0$. Sin embargo, sabemos que los campos paralelos tienen módulo constante, pero $|Y(t)| = t^2 c$.
+\item No necesariamente. Por ejemplo, si $Y(t)=t^2 X(t)$, $Y(t)$ es un campo vectorial tangente a lo largo de $\alpha$ y forma un ángulo constante $\theta(t)\equiv 0$. Sin embargo, sabemos que los campos paralelos tienen módulo constante, pero $|Y(t)| = t^2 c$.
 \item Dado que $X(t)$ e $Y(t)$ pertenecen al plano tangente para cada t. Si $X(t)$ e $Y(t)$ fuesen colineales, no determinarían ningún paralelogramo, luego podemos supone que no lo son. Por tanto, $X(t)\times Y(t) \parallel N(t)$. Deducimos que:
 \[
 |N(t)\cdot (X(t)\times Y(t))| = |N(t)N(t)|X(t)||Y(t)|\sin \alpha| = |X(t)||Y(t)||\sin{\alpha}|\equiv C
@@ -256,7 +257,7 @@ Sea $\X$ una superficie simple, $\alpha(s)$ una cuerva regular en $\X$ y $X(s)$ 
 \[
 (X\times N)' = X'\times N + X \times N' = X \times N' \parallel N
 \]
-\item Si $\X_1$ es un campo paralelo, podemos considerar el campo vectorial tangente $s\X_1$. Este campo no puede ser paralelo, pues $|sX_1|=|s|c$.
+\item Sabemos que $\X_1$ es un campo paralelo, luego podemos considerar el campo vectorial tangente $s\X_1$. Este campo no puede ser paralelo, pues $|s\X_1|=|s|c$.
 \item El ejemplo anterior muestra cómo no es posible.
 \end{itemize}
 \end{sol*}
@@ -272,7 +273,7 @@ Sea $\alpha(s)$ una curva contenida en una superficie simple $\X : U \Rightarrow
 \begin{itemize}
 \item[]
 \item La respuesta es no. Si $\alpha$ no es geodésica (cosa que no podemos suponer en general) entonces $t(s)$ es un c.v.t. que cumple las condiciones del enunciado, pero no es campo paralelo, puesto que $t'(s)=K_g(s)S(s)+K_n(s)N(s)$.
-\item $\X_2$ será paralelo a lo largo de cualquier meridiano si y solo si $\X_{21} \parallel N$. Por las ecuaciones de Gauss sabemos que:
+\item $\X_2$ será paralelo a lo largo de cualquier paralelo si y solo si $\X_{21} \parallel N$. Por las ecuaciones de Gauss sabemos que:
 \[
 \X_{21} = \sum_{k=1}^2 \Gamma_{21}^k \X_k+ L_{21}N = \Gamma_{21}^1\X_1 + \Gamma_{21}^2\X_2 + L_{21}N
 \]
@@ -296,7 +297,7 @@ Entonces $\Gamma_{21}^1=\Gamma_{21}^2 = 0$ si y solo si $f(u)\equiv cte$.
 
 \newpage
 \begin{ejercicio}{11}
-Sea $T^2$ el toro en $\R^3$ y sea $\X(t,v)$ una carta local del toro y. Si $\alpha(t)=\X(t,v_0)$ es un meridiano cualquiera:
+Sea $T^2$ el toro en $\R^3$ y sea $\X(t,v)$ una carta local del toro y. Si $\alpha(t)=\X(t,v_0)$ es un paralelo cualquiera:
 \begin{itemize}
 \item Estudiar si es paralelo a lo largo de $\alpha$ el campo vectorial $X(t)=\X_2(t,v_0)$.
 \item Lo mismo para $Y(t)=\X_1(t,v_0)$.
