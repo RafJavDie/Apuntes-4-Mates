@@ -160,7 +160,7 @@ K_g(s) = \frac{1}{av_0 \sqrt{b^2+a^2}}
 \begin{ejercicio}{8} Sea $\X(u,v) = (a\cos{u}\cos{v},a\cos{u}\sin{v},a\sin{u})$ la superficie esférica de centro el origen y radio a. Sea $\alpha$ el ecuador y $\beta$ el paralelo $u=u_0$. Si R es la región encerrada entre ambas curvas, calcular el área de dicha región por medio del teorema de gauss-Bonnet.
 \end{ejercicio}
 \begin{sol*}
-Tengamos en cuenta que $\alpha$ es geodésica, luego $K_g\equiv 0$ a lo largo de $\alpha$. Como la región es homeomorfa a una corona circlar, $\chi(R)=0$. Por tanto, solo nos falta ver qué ocurre en $\beta$. 
+Tengamos en cuenta que $\alpha$ es geodésica, luego $K_g\equiv 0$ a lo largo de $\alpha$. Como la región es homeomorfa a una corona circular, $\chi(R)=0$. Por tanto, solo nos falta ver qué ocurre en $\beta$. 
 \begin{align*}
 \X_1(u,v) &= -a(\sin{u}\cos{v},\sin{u}\sin{v},-\cos{u}) &\beta(v)' &=a\cos{u_0}(-\sin{v}, \cos{v},0)\\
 \X_2 (u,v)&=  a(-\cos{u}\sin{v}, \cos{u}\cos{v},0) & \beta(v)'' &=-a\cos{u_0}(\cos{v},\sin{v},0)\\
@@ -183,35 +183,60 @@ Area(R) = a^2 \int_{0}^{2\pi} \frac{\tan u_0}{a} a\cos{u_0} dt = 2\pi a^2 \sin u
 \end{gather*}
 \end{sol*}
 \newpage
+
+
+\begin{ejercicio}{9} Aplicar el Teorema de Gauss-Bonnet a una región plana rectangular con un agujero circular y otro triangular disjuntos para obtener $\int_C K_g ds = -2\pi$, donde $C$ es la circunferencia borde del agujero circular.
+\end{ejercicio}
+\begin{sol*}
+Las circunferencias bordes rectangulares y triangulares están formadas por geodésicas, luego se anula en ellas $K_g$. Además, $\chi(R)=-1$. Apliquemos Gauss-Bonnet.
+\begin{gather*}
+\sum_{i=1}^3 \int_{C_i}K_g + \iint_R KdA + \sum_{i=1}^p \varphi_i +\sum_{i=1}^p \varphi_i' + \sum_{i=1}^p \varphi_i'' = \int_C K_g(s)ds + 2\pi - 2\pi = -2\pi\\
+\int_C K_g(s)ds = -2\pi
+\end{gather*}
+\end{sol*}
+\newpage
+
+
 \begin{ejercicio}{10} Sea el paraboloide $z=x^2+y^2$. Se considera $\mathcal{R}$ la región de dicha superficie limitada por los planos $z=0$ y $z=a$, $a>0$. Utilizando el teorema de Gauss Bonnet, hallar $\int_{\mathcal{R}}KdA$.
 \end{ejercicio}
 \begin{sol*}
-Como la curva borde es regular, $\sum_i \varphi_i=0$. Además, es una región simple, luego $\chi(\mathcal{R})=1$. Resta ver la integral de la curvatura geodésica a lo largo del borde. Si $\X(r,s)=(r\cos(s),r\sin(s),r^2)$ es una carta local de la superficie:
+Como la curva borde es regular, $\sum_i \varphi_i=0$. Además, es una región simple, luego $\chi(\mathcal{R})=1$. Resta ver la integral de la curvatura geodésica a lo largo del borde. Si $\X(s,r)=(r\cos(s),r\sin(s),r^2)$ es una carta local de la superficie:
 \begin{align*}
-\alpha(s)&=\X(\sqrt{a},s)=(\sqrt{a}\cos{s},\sqrt{a}\sin s,a)& k_\alpha(s)&=\frac{1}{a}\\
-t(s)&=(-\sin(s),cos(s),0) & n(s)&=(-\cos(s),-\sin(s),0)\\
-\X_1(r,s)& = (\cos(s),\sin(s),2r) & \X_2(r,s) &= (-r\sin(s),r\cos(s),0)\\
-\X_1 \times \X_2 & = (-2 r^2 \cos(s), -2 r^2 sin(s), r) & n(s)N(s) &= \frac{2\sqrt{a}}{\sqrt{4a+1}} \\
-N(s)& = \frac{1}{\sqrt{4a+1}}(-2\sqrt{a}\cos(s),-2\sqrt{a}\sin(s),1) & K_g(s) & = \frac{2}{\sqrt{4a+1}\sqrt{a}}
+\alpha(s)&=\X(s,\sqrt{a})=(\sqrt{a}\cos{s},\sqrt{a}\sin s,a)& \alpha'(s)&=\sqrt{a}(-\sin(s),cos(s),0)\\
+t(s)&=(-\sin(s),cos(s),0) &  \alpha''(s)&=-\sqrt{a}(\cos(s),\sin(s),0)\\
+\X_1(s,r)& = (-r\sin(s),r\cos(s),0) & \X_2(s,r) &= (\cos(s),\sin(s),2r)\\
+\X_1 \times \X_2(s,r) & = (2 r^2 \cos(s), 2 r^2 sin(s),-r) & N(s,r)& = \frac{(2r\cos(s),2r\sin(s),-1)}{\sqrt{4r^2+1}} \\
+N_\alpha(s)& = \frac{(2\sqrt{a}\cos(s),2\sqrt{a}\sin(s),-1)}{\sqrt{4a+1}} & &
 \end{align*}
+Pasamos ahora a calcular la curvatura geodésica de $\alpha$.
 \begin{gather*}
-\int_\alpha K_g(s)= 2\pi - \int_{2\pi}^0 \frac{2}{\sqrt{4a+1}\sqrt{a}} |\alpha'(s)| ds =2\pi \left(1+\frac{2}{\sqrt{4a+1}}\right)
+K_g(v)=\frac{a}{\sqrt{a}^3	\sqrt{4a+1}}
+\begin{vmatrix}
+-\sin v & -\cos v & 2\sqrt{a}\cos(s)\\
+ \cos v & -\sin v & 2\sqrt{a}\sin(s)\\
+ 0 		& 0		 & -1
+\end{vmatrix}
+=
+\frac{-1}{\sqrt{a}\sqrt{4a+1}}
+\end{gather*}
+\begin{gather*}
+\iint_R K dA = 2\pi - \int_{2\pi}^0 \frac{-1}{\sqrt{4a+1}\sqrt{a}} |\alpha'(s)| ds =2\pi \left(1-\frac{1}{\sqrt{4a+1}}\right)
 \end{gather*}
 \end{sol*}
 \newpage
 \begin{ejercicio}{11} Se considera una región cilíndrica $\mathcal{R}$ comprendida entre dos paralelos $\alpha_1$, $\alpha_2$ y que tiene un agujero bordeado por una curva regular cerrada y simple $\gamma$. Aplicar Teorema de Gauss-Bonet a $\mathcal{R}$ para determinar $\int_\gamma K_g(s)ds$.
 \end{ejercicio}
 \begin{sol*}
-Las curvas $\alpha_i$ y $\gamma$ son regulares, luego $\sum_i \varphi_i =0$. Además, las $\alpha_i$ son geodésicas, por lo que $K_g=0$ sobre ellas. El cilindro tiene $K=0$ en cada punto y $\chi(\mathcal{R})=1$, por lo que, aplicando el TGB:
+Las curvas $\alpha_i$ y $\gamma$ son regulares, luego $\sum_i \varphi_i =0$. Además, las $\alpha_i$ son geodésicas, por lo que $K_g=0$ sobre ellas. El cilindro tiene $K=0$ en cada punto y $\chi(\mathcal{R})=-1$, por lo que, aplicando el TGB:
 \[
-2\pi\chi(\mathcal{R}) = \int_\gamma K_g(s)ds + \int_{\alpha_1} K_g(s)ds + \int_{\alpha_2} K_g(s)ds+  \iint_{\mathcal{R}} KdA + \sum_i \varphi_i = \int_\gamma K_g(s)ds 
+-2\pi = \int_\gamma K_g(s)ds + \int_{\alpha_1} K_g(s)ds + \int_{\alpha_2} K_g(s)ds+  \iint_{\mathcal{R}} KdA + \sum_i \varphi_i = \int_\gamma K_g(s)ds 
 \]
 \end{sol*}
 \newpage
-\begin{ejercicio}{13} Sea C el cilindro de eje OZ y radio r. Consideremos la región determinada por $\alpha$, corte de C con el plano $z=$ y $\beta$, curva de corte de C con un plano inclinado. Aplicando el teorema de Gauss-Bonnet, determinar el valor de $\oint_\beta K_g$.
+\begin{ejercicio}{13} Sea C el cilindro de eje OZ y radio r. Consideremos la región determinada por $\alpha$, corte de C con el plano $z=0$ y $\beta$, curva de corte de C con un plano inclinado. Aplicando el teorema de Gauss-Bonnet, determinar el valor de $\oint_\beta K_g$.
 \end{ejercicio}
 \begin{sol*}
-Las curvas $\alpha_i$ y $\beta$ son regulares, luego $\sum_i \varphi_i =0$. Además, la curva $\alpha$ es geodésica, por lo que $K_g=0$ sobre ellas. El cilindro tiene $K=0$ en cada punto y $\chi(\mathcal{R})=1$, y la característica de Euler de la región es $0$, por tanto $\oint_\beta K_g = 0$.
+Las curvas $\alpha_i$ y $\beta$ son regulares, luego $\sum_i \varphi_i =0$. Además, la curva $\alpha$ es geodésica, por lo que $K_g=0$ sobre ellas. El cilindro tiene $K=0$ en cada punto y $\chi(\mathcal{R})=1$, por tanto $\oint_\beta K_g = 2\pi$.
 \end{sol*}
 \newpage
 \begin{ejercicio}{14} Se considera la superficie esférica de radio $S^2(R)$ de radio R y centro el origen. Un plano horizontal $\Pi$ corta en una circunferencia de radio r (paralelo de $S^2(R)$) que denotamos $\alpha$. Aplicando el TGB a la región encerrada por $\alpha$ en las dos superficies: un disco en el plano $\Pi$ y un casquete en $S^2(R)$ para obtener el valor de $\int_\alpha K_g$ en cada caso.
