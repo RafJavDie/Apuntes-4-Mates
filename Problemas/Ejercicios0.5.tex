@@ -236,7 +236,7 @@ Las curvas $\alpha_i$ y $\gamma$ son regulares, luego $\sum_i \varphi_i =0$. Ade
 \begin{ejercicio}{13} Sea C el cilindro de eje OZ y radio r. Consideremos la región determinada por $\alpha$, corte de C con el plano $z=0$ y $\beta$, curva de corte de C con un plano inclinado. Aplicando el teorema de Gauss-Bonnet, determinar el valor de $\oint_\beta K_g$.
 \end{ejercicio}
 \begin{sol*}
-Las curvas $\alpha_i$ y $\beta$ son regulares, luego $\sum_i \varphi_i =0$. Además, la curva $\alpha$ es geodésica, por lo que $K_g=0$ sobre ellas. El cilindro tiene $K=0$ en cada punto y $\chi(\mathcal{R})=1$, por tanto $\oint_\beta K_g = 2\pi$.
+Las curvas $\alpha_i$ y $\beta$ son regulares, luego $\sum_i \varphi_i =0$. Además, la curva $\alpha$ es geodésica, por lo que $K_g=0$ sobre ellas. El cilindro tiene $K=0$ en cada punto y $\chi(\mathcal{R})=0$, por tanto $\oint_\beta K_g = 0$.
 \end{sol*}
 \newpage
 \begin{ejercicio}{14} Se considera la superficie esférica de radio $S^2(R)$ de radio R y centro el origen. Un plano horizontal $\Pi$ corta en una circunferencia de radio r (paralelo de $S^2(R)$) que denotamos $\alpha$. Aplicando el TGB a la región encerrada por $\alpha$ en las dos superficies: un disco en el plano $\Pi$ y un casquete en $S^2(R)$ para obtener el valor de $\int_\alpha K_g$ en cada caso.
@@ -253,6 +253,51 @@ La curva $\alpha$ es regular, luego $\sum_i \varphi_i =0$. Tanto en el casquete 
 \int_\alpha K_g = 2\pi - \iint_{\mathcal{R}}K dA = 2\pi - \frac{1}{R} 2\pi(R - (R^2-r^2)^{1/2})
 \]
 \end{itemize}
+\end{sol*}
+
+
+\newpage
+\begin{ejercicio}{15} Sea M una superficie regular con $K\equiv -1$ (por ejemplo, pseudoesfera), y sea $\mathcal{R}$ la región encerrada por un cuadrilátero en M cuyos cuatro lados son geodésicas. ¿Es posible que tres de los ángulos internos de este cuadrilátero sean $\pi/2$ y el cuarto $\pi/6$? ¿Y que los cuatro valgan $\pi/2$?
+\end{ejercicio}
+\begin{sol*}
+Apliamos Gauss-Bonnet:
+\begin{gather*}
+\int_{C}K_g + \iint_\mathcal{R} KdA + \sum_{i=1}^p \varphi_i = 0+ \iint_\mathcal{R} KdA + 4\pi - \frac{3\pi}{2} -\frac{\pi}{6} = 2\pi\\
+\iint_\mathcal{R} KdA = -\frac{\pi}{3}
+\end{gather*}
+En principio sería posible que formasen esos ángulos. Si los cuatro fueran $\pi/2$ entonces:
+\begin{gather*}
+\iint_\mathcal{R} KdA = 0
+\end{gather*}
+Este obviamente no puede darse.
+\end{sol*}
+\newpage
+\begin{ejercicio}{17} Sea $\X(u,v)=(\cosh(v)\cos(u),\cosh(v)\sin(u),v)$ una parametrización del catenoide obtenida al girar la catenaria $\alpha(v)=(\cosh(v),0,v)$ alrededor del eje OZ. Se considera la región $\mathcal{R}$ en dicha superficie limitada entre los planos $z=0$ y $z=a$, $a>0$. Utilizando el teorema de Gauss-Bonnet calcula $\iint_\mathcal{R} KdA$.
+\end{ejercicio}
+\begin{sol*} La curva engendrada por el corte de $z=0$ es una geodéisca, pues $\cosh'(0)=0$ (es un círculo máximo o mínimo). La región es homeomorfa a una corona, luego $X(\mathcal{R})=0$. Denotemos $\alpha$ la otra curva frontera. Como ambas curvas son circunferencias, $\sum_i \varphi_i =0$.
+\begin{gather*}
+\iint_\mathcal{R} KdA =-\int_{\alpha}K_g ds
+\end{gather*}
+Calculemos la curvatura geodésica
+\begin{align*}
+\X_1(u,v) &=  (-\cosh(v)\sin(u),\cosh(v)\cos(u),0) &\alpha(u)' &=\cosh(a)(-\sin(u),\cos(u),0)\\
+\X_2 (u,v)&=  (\sinh(v)\cos(u),\sinh(v)\sin(u),1) & \alpha(u)'' &=-\cosh(a)(\cos{u},\sin{u},0)\\
+N(u,v)& = \frac{(\cos(u),\sin(u),-\sinh(v))}{\cosh(v)}& &
+\end{align*}
+\begin{gather*}
+K_g(u)=\frac{\cosh(a)^2}{\cosh(a)^4}
+\begin{vmatrix}
+-\sin v & -\cos v & \cos(u)\\
+ \cos v & -\sin v & \sin(u)\\
+ 0 		& 0		 & -\sinh(a)
+\end{vmatrix}
+=
+-\frac{\sinh(a)}{\cosh(a)^2}
+\end{gather*}
+Por tanto, deducimos que:
+\begin{gather*}
+\iint_\mathcal{R} KdA = -\int_{\alpha}K_g ds = - \int_{2\pi}^0 -\frac{\sinh(a)}{\cosh(a)^2}\cosh(a) = -2\pi\tanh(a)
+\end{gather*}
 \end{sol*}
 \newpage
 \begin{ejercicio}{20}
