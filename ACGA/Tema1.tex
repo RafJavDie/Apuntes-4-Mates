@@ -1,129 +1,19 @@
 \documentclass[ACGA.tex]{subfiles}
-%\usepackage{amsmath,amssymb}
-%\usepackage[utf8]{inputenc}
-%\usepackage[spanish]{babel}
-%\usepackage[]{graphicx}
-%\usepackage{enumerate}
-%\usepackage{amsthm}
-%\usepackage{tikz-cd}
-%\usetikzlibrary{babel}
-%\usepackage{pgf,tikz}
-%\usepackage{mathrsfs}
-%\usetikzlibrary{arrows}
-%\usetikzlibrary{cd}
-%\usepackage[spanish]{babel}
-%\usepackage{fancyhdr}
-%\usepackage{titlesec}
-%\usepackage{floatrow}
-%\usepackage{makeidx}
-%\usepackage[tocflat]{tocstyle}
-%\usetocstyle{standard}
-%\usepackage{color}
-%\usepackage{hyperref}
-%\hypersetup{colorlinks=true,citecolor=red, linkcolor=blue}
-%%\usepackage{ntheorem}
-%
-%
-%\renewcommand{\baselinestretch}{1,4}
-%\setlength{\oddsidemargin}{0.25in}
-%\setlength{\evensidemargin}{0.25in}
-%\setlength{\textwidth}{6in}
-%\setlength{\topmargin}{0.1in}
-%\setlength{\headheight}{0.1in}
-%\setlength{\headsep}{0.1in}
-%\setlength{\textheight}{8in}
-%\setlength{\footskip}{0.75in}
-%
-%\newtheorem{teorema}{Teorema}[section]
-%\newtheorem{defi}[teorema]{Definición}
-%\newtheorem{coro}[teorema]{Corolario}
-%\newtheorem{lemma}[teorema]{Lema}
-%\newtheorem{ej}[teorema]{Ejemplo}
-%\newtheorem{ejs}[teorema]{Ejemplos}
-%\newtheorem{observacion}[teorema]{Observación}
-%\newtheorem{observaciones}[teorema]{Observaciones}
-%\newtheorem{prop}[teorema]{Proposición}
-%\newtheorem{propi}[teorema]{Propiedades}
-%\newtheorem{nota}[teorema]{Nota}
-%\newtheorem{notas}[teorema]{Notas}
-%\newtheorem*{dem}{Demostración}
-%\newtheorem{ejer}[teorema]{Ejercicio}
-%\newtheorem{consec}[teorema]{Consecuencia}
-%\newtheorem{consecs}[teorema]{Consecuencias}
-%
-%\providecommand{\abs}[1]{\lvert#1\rvert}
-%\providecommand{\sen}[1]{sen #1}
-%\providecommand{\norm}[1]{\lVert#1\rVert}
-%\providecommand{\ninf}[1]{\norm{#1}_\infty}
-%\providecommand{\numn}[1]{\norm{#1}_1}
-%\providecommand{\gabs}[1]{\left|{#1}\right|}
-%\newcommand{\bor}[1]{\mathcal{B}(#1)}
-%\newcommand{\R}{\mathbb{R}}
-%\newcommand{\N}{\mathbb{N}}
-%\newcommand{\Q}{\mathbb{Q}}
-%\newcommand{\C}{\mathbb{C}}
-%\newcommand{\Pro}{\mathbb{P}}
-%\newcommand{\Tau}{\mathcal{T}}
-%\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
-%\newcommand{\vertequiv}{\rotatebox{110}{$\,\equiv$}}
-%\providecommand{\lrg}{\longrightarrow}
-%\providecommand{\func}[2]{\colon{#1}\longrightarrow{#2}}
-%\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
-%\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-%            \node[shape=circle,draw,inner sep=1.5pt] (char) {#1};}}
-%\newcommand*{\longhookarrow}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
-%
-%\newenvironment{solucion}{\begin{trivlist}
-%\item[\hskip \labelsep {\textit{Solución}.}\hskip \labelsep]}{\end{trivlist}}
-%
-%
-%\def\quot#1#2{%
-%    \raise1ex\hbox{$#1$}\Big/\lower1ex\hbox{$#2$}%
-%}
-%\def\quott#1#2{%
-%    \hbox{$#1$}\Big/\lower1ex\hbox{$#2$}%
-%}
-%
-%\makeatletter
-%\renewcommand\tableofcontents{%
-%  \null\hfill\textbf{\Large\contentsname}\hfill\null\par
-%  \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
-%  \@starttoc{toc}%
-%}
-%
-%\pagestyle{fancy}
-%\fancyhf{}
-%\rhead{Topología de Superficies (Grado en Matemáticas)}
-%\lhead{Curso 2016/2017}
-%\cfoot{\thepage}
-
 \begin{document}
-%\title{Topología de Superficies}
-%\author{Antonio Rafael Quintero Toscano\\ Javier Aguilar Martín}
-%\date{Curso 2016/2017}
-%\maketitle
-
-\renewcommand\chaptername{\Huge Tema}
-
-\titleformat{\chapter}[display]
-    {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{10pt}{\Huge}
-\titlespacing*{\chapter}{0pt}{-1cm}{10pt}
-
-
 
 \chapter{Conjuntos algebraicos afines. Anillos de coordenadas. Topología de Zariski. Anillos locales.}
-Vamos a trabajar en el espacio afín de dimensión n $\mathbb{A}^n$ sobre un cuerpo $\mathbb{K}$ fijo. 
+Vamos a trabajar en el espacio afín de dimensión n $\A^n$ sobre un cuerpo $\K$ fijo. 
 \begin{defi}
-Un subcojunto $X\subset \mathbb{A}^n$ es un \textbf{conjunto algebraico} si existe un conjunto $S\subset \mathbb{K}[x_1,\dotsc,x_n]$ tal que $X$ es el conjunto de los ceros comunes de los polinomios de S. Es decir:
+Un subcojunto $X\subset \A^n$ es un \textbf{conjunto algebraico} si existe un conjunto $S\subset \K[x_1,\dotsc,x_n]$ tal que $X$ es el conjunto de los ceros comunes de los polinomios de S. Es decir:
 \[
-X=\{(x_1,\dotsc,x_n)\in\mathbb{A}^n\mid f(x_1,\dotsc,x_n)=0\;\forall f\in S\}=V(S)
+X=\{(x_1,\dotsc,x_n)\in\A^n\mid f(x_1,\dotsc,x_n)=0\;\forall f\in S\}=V(S)
 \]
 \end{defi}
 \begin{prop}Veamos algunas propiedades de los conjuntos algebraicos:
 \begin{itemize}
-\item En $\mathbb{A}^1$, los conjuntos algebraicos son finitos, salvo $X=\mathbb{A}^1$ ($S=\{0\}$). El recíproco también es cierto, es decir, cualquier conjunto finito es algebraico.
-\item En general $V(\{0\})=\mathbb{A}^n$ y $V(\{1\})=\emptyset$. Además, los conjuntos X unitarios siempre son algebraicos, pues tomamos $S=\{x_i-a_i\mid i=1,\dotsc,n\}$.
-\item En $\mathbb{A}^2$, por ejemplo, $X=\{(a,b)\} = V(\{x-a,y-b\})$ y en general no tiene por qué existir un conjunto S unitario tal que $V(S)=X$. Si tenemos $X=\{(a,b),(c,d)\}$ entonces $S=\{(x-a)(x-c),(y-b)(y-d), (x-a)(y-d), (y-b)(x-c)\}$. En general, podemos generalizarlo a n puntos considerando todas las combinaciones 2 a 2 obteniendo $2^n$ polinomios.
+\item En $\A^1$, los conjuntos algebraicos son finitos, salvo $X=\A^1$ ($S=\{0\}$). El recíproco también es cierto, es decir, cualquier conjunto finito es algebraico.
+\item En general $V(\{0\})=\A^n$ y $V(\{1\})=\emptyset$. Además, los conjuntos X unitarios siempre son algebraicos, pues tomamos $S=\{x_i-a_i\mid i=1,\dotsc,n\}$.
+\item En $\A^2$, por ejemplo, $X=\{(a,b)\} = V(\{x-a,y-b\})$ y en general no tiene por qué existir un conjunto S unitario tal que $V(S)=X$. Si tenemos $X=\{(a,b),(c,d)\}$ entonces $S=\{(x-a)(x-c),(y-b)(y-d), (x-a)(y-d), (y-b)(x-c)\}$. En general, podemos generalizarlo a n puntos considerando todas las combinaciones 2 a 2 obteniendo $2^n$ polinomios.
 \end{itemize}
 \end{prop}
 \begin{prop}
@@ -134,10 +24,10 @@ Todas las inclusiones son sencillas. Veamos una. Sea $x\notin X\cup Y$, entonces
 \end{dem}
 
 \begin{defi}
-Los conjuntos algebraicos de $\mathbb{A}^n$ son los cerrados de una topología llamada \textbf{Topología de Zariski}.
+Los conjuntos algebraicos de $\A^n$ son los cerrados de una topología llamada \textbf{Topología de Zariski}.
 \end{defi}
 \begin{prop}
-En general $V(S)=V(\langle S\rangle)$ $\forall S \subset  \mathbb{K}[x_1,\dotsc,x_n]$.
+En general $V(S)=V(\langle S\rangle)$ $\forall S \subset  \K[x_1,\dotsc,x_n]$.
 \end{prop}
 \begin{dem}
 Sabemos que en general si $S\subset T$ entonces $V(T)\subset V(S)$, por lo que tomando $T=\langle S \rangle$, $V(\langle S\rangle)\subset V(S)$. Además, si $x\in V(S)$ entonces $f(x)$ se anula $\forall f \in S$, por lo que cualquier combinación de la forma
@@ -160,7 +50,7 @@ Son anillos noetherianos:
 Son anillos no noetherianos:
 \begin{itemize}
 	\item $k[x_1,x_2,\dots,] = \bigcup_{n \geq 1} k[x_1,\dots,x_n]$.
-	\item El conjunto de funciones $\{f : \mathbb{R} \to \mathbb{R}\}$.
+	\item El anillo de funciones continuas $\{f \func{\R}{\R}\}$.
 \end{itemize}
 \end{nota}
 \begin{prop}\mbox{}
@@ -178,26 +68,26 @@ Son anillos no noetherianos:
 	Tomamos $I = \bigcup_{n\geq 1} I_n$. Tenemos que $I$ es un ideal, por lo tanto está finitamente generado como $I = \langle a_1, \dots, a_r \rangle$. Cada $a_i \in I_{n_i}$ para algún $n_i$. Entonces $a_i \in I_n$  $\forall i$, si $n > \max\{n_1,\dots,n_r\}$. Llegamos entonces a que $I \subseteq I_n \subseteq I$, es decir $I_n = I$. Por lo tanto $I_{n+k} = I$ $\forall k \geq 0$. 
 
 	\item[($2\Rightarrow 1$)]
-	Sea $I \subseteq A$ y $x1 \in I$. Entonces $\langle x_1 \rangle \subseteq I \subseteq A$. Si $I = \langle x_1 \rangle$, hemos acabado. Si no $x_2 \in I \setminus \langle x_1 \rangle$, tomamos $\langle x_1, x_2 \rangle \subseteq I \subseteq A$. Si $I = \langle x_1, x_2 \rangle$, hemos acabado. Si no repetimos el argumento tomando un $x_3 \in I \setminus \langle x_1,x_2 \rangle$. Como la cadena creciente debe ser estacionaria, llegamos a que en alg-ún moment
+	Sea $I \subseteq A$ y $x_1 \in I$. Entonces $\langle x_1 \rangle \subseteq I \subseteq A$. Si $I = \langle x_1 \rangle$, hemos acabado. Si no $x_2 \in I \setminus \langle x_1 \rangle$, tomamos $\langle x_1, x_2 \rangle \subseteq I \subseteq A$. Si $I = \langle x_1, x_2 \rangle$, hemos acabado. Si no, repetimos el argumento tomando un $x_3 \in I \setminus \langle x_1,x_2 \rangle$. Como la cadena creciente debe ser estacionaria, llegamos a que en algún momento, la cadena de ideales $\langle x_1,\dots,x_n\rangle$ debe estabilizarse y deducimos que $I = \langle x_1,\dots,x_n\rangle$. Por lo tanto $A$ es noetheriano.
 
 \end{itemize}
 \end{dem}
 
 \begin{teorema}[de la base de Hilbert]
-Si $A$ es un anillo Noetheriano, entonces $A[x]$ también lo es.
+Si $A$ es un anillo noetheriano, entonces $A[x]$ también lo es.
 \end{teorema}
 
-Por lo tanto, si $A$ es un anillo Noetheriano, entonces $A[x_1,\dots,x_n]$ también lo es. Llegamos además a que todo conjunto algebraico se puede definir como el conjunto de ceros de un número finito de polinomios:
+Por lo tanto, si $A$ es un anillo noetheriano, entonces $A[x_1,\dots,x_n]$ también lo es. Llegamos además a que todo conjunto algebraico se puede definir como el conjunto de ceros de un número finito de polinomios:
 
 \[ V(S) = V(\langle S \rangle) = V(\langle f_1,\dots,f_r\rangle) =  V(\{f_1,\dots,f_r\}) \]
 
 \begin{defi}
-Decimos que un cuerpo $k$ es \textbf{algebraicamente cerrado} si todo polinomio no constante en $k[x]$ tiene una raíz en $k$.
+Decimos que un cuerpo $\K$ es \textbf{algebraicamente cerrado} si todo polinomio no constante en $\K[x]$ tiene una raíz en $k$.
 \end{defi}
 
 \begin{defi}
 Definimos el \textbf{radical de un ideal} $I$ como:
-\[ \sqrt{I} = rad(I) = \{f \in k[x_1,\dots,x_n] \mid f^n \in I \text{ para algún }n \in \mathbb{N}\} \]
+\[ \sqrt{I} = \text{rad}(I) = \{f \in k[x_1,\dots,x_n] \mid f^n \in I \text{ para algún }n \in \mathbb{N}\} \]
 \end{defi}
 
 \begin{propi}\mbox{}
