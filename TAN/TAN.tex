@@ -1,0 +1,136 @@
+\documentclass[twoside]{report}
+\usepackage{amsmath,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[]{graphicx}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{tikz-cd}
+\usetikzlibrary{babel}
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usepackage{bm}  
+\usetikzlibrary{arrows}
+\usetikzlibrary{cd}
+\usepackage[spanish]{babel}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{floatrow}
+\usepackage{makeidx}
+\usepackage[tocflat]{tocstyle}
+\usetocstyle{standard}
+\usepackage{subfiles}
+\usepackage{color}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,citecolor=red, linkcolor=blue}
+
+\renewcommand{\baselinestretch}{1,4}
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\evensidemargin}{0.25in}
+\setlength{\textwidth}{6in}
+\setlength{\topmargin}{0.1in}
+\setlength{\headheight}{0.1in}
+\setlength{\headsep}{0.1in}
+\setlength{\textheight}{8in}
+\setlength{\footskip}{0.75in}
+
+\theoremstyle{definition}
+
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{defi}[teorema]{Definición}
+\newtheorem{coro}[teorema]{Corolario}
+\newtheorem{lemma}[teorema]{Lema}
+\newtheorem{ej}[teorema]{Ejemplo}
+\newtheorem{ejs}[teorema]{Ejemplos}
+\newtheorem{observacion}[teorema]{Observación}
+\newtheorem{observaciones}[teorema]{Observaciones}
+\newtheorem{prop}[teorema]{Proposición}
+\newtheorem{propi}[teorema]{Propiedades}
+\newtheorem{nota}[teorema]{Nota}
+\newtheorem{notas}[teorema]{Notas}
+\newtheorem*{dem}{Demostración}
+\newtheorem{ejer}[teorema]{Ejercicio}
+\newtheorem{consec}[teorema]{Consecuencia}
+\newtheorem{consecs}[teorema]{Consecuencias}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\sen}[1]{sen #1}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\ninf}[1]{\norm{#1}_\infty}
+\providecommand{\numn}[1]{\norm{#1}_1}
+\providecommand{\gabs}[1]{\left|{#1}\right|}
+\newcommand{\bor}[1]{\mathcal{B}(#1)}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Pro}{\mathbb{P}}
+\newcommand{\Tau}{\mathcal{T}}
+\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
+\newcommand{\vertequiv}{\rotatebox{110}{$\,\equiv$}}
+\providecommand{\lrg}{\longrightarrow}
+\providecommand{\func}[2]{\colon{#1}\longrightarrow{#2}}
+\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1.5pt] (char) {#1};}}
+\newcommand*{\longhookarrow}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+
+\newenvironment{solucion}{\begin{trivlist}
+\item[\hskip \labelsep {\textit{Solución}.}\hskip \labelsep]}{\end{trivlist}}
+
+\renewcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1.5pt] (char) {#1};}}
+\renewcommand*{\longhookarrow}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\graphicspath{{images/}}
+
+\def\quott#1#2{%
+    \hbox{$#1$}\Big/\lower1ex\hbox{$#2$}%
+}
+
+\makeatletter
+\renewcommand\tableofcontents{%
+  \null\hfill\textbf{\Large\contentsname}\hfill\null\par
+  \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
+  \@starttoc{toc}%
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Álgebra Conmutativa y Geometría Algebraica (Grado en Matemáticas)}
+\lhead{Curso 2016/2017}
+\cfoot{\thepage}
+
+\renewcommand\chaptername{\Huge Tema}
+
+\titleformat{\chapter}[display]
+    {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{10pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-1cm}{10pt}
+
+\begin{document}
+\begin{titlepage}
+	\centering
+	{\huge\bfseries Teoría Analítica de Números \par}
+	\vspace{2cm}
+	{\Large Rafa González López\par}
+	{\Large Diego Pedraza López\par}
+	\vspace{2.5cm}
+	\vfill
+	Esta obra está licenciada bajo la Licencia Creative Commons Atribución 3.0 España. Para ver una copia de esta licencia, visite \url{http://creativecommons.org/licenses/by/3.0/es/} o envíe una carta a Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+	{\large \today\par}
+\end{titlepage}
+
+\tableofcontents
+
+\subfile{Tema1}
+%\subfile{Tema2AQ}
+%\subfile{Tema3AQ}
+%\subfile{Tema4AQ}
+%\subfile{Tema5AQ}
+%\subfile{Tema6AQ}
+%\subfile{Bibliografia}
+
+\end{document}
