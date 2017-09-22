@@ -168,6 +168,11 @@ Sea $(Y,T_Y)$ un espacio topológico y $f:X\longrightarrow (Y,T_Y)$ una aplicaci
 \end{exercise}
 
 \begin{sol*}
+Sea $G\in T_X$, de modo que $f(G)\in T_Y$ y $G=f^{-1}f(G)$, por lo que basta tomar $U=f(G)$ para ver que $G$ pertenece a la topología inicial. Por otro lado, si tomamos $f^{-1}(U)$ en la topología inicial, por ser $f$ sobreyectiva se tiene que $U=f(G)$ para algún $G\subseteq X$, por lo que $f^{-1}(U)\in T_X$.
+
+Para ver que convierte a $f$ en homeomorfismo, como ya es biyectiva, necesitamos que sea continua y abierta. La continuidad se deduce del apartado anterior, pues si $U\in T_Y$ entonces $f^{-1}(U)\in T_X$. Claramente es abierta puesto que $f(G)\in T_Y$ para todo abierto $G$ de esta topología por definición. 
+
+Veamos la unicidad. Por la definición de topología inicial, esta topología es la más pequeña que hace que $f$ sea continua. Pero además no puede existir una topología mayor con la que $f$ siga siendo abierta, pues para cualquier conjunto $H\notin T_X$, $f(H)\notin T_Y$.
 \end{sol*}
 
 \begin{exercise}
