@@ -135,6 +135,11 @@ Sea $X$ un conjunto y $\Omega$ una familia de subconjuntos de $X$. Sea $\mathcal
 \end{exercise}
 
 \begin{sol*}
+En primer lugar hay que verificar que $T_\Omega$ es topología. El vacío está por definición y $X$ también por ser un elemento de $\mathcal{B}_\Omega$. Sea $\{A_i\}_{i\in\Lambda}$ una familia arbitraria de elementos de $T_\Omega$. Entonces $\bigcup_{i\in\Lambda}A_i=\bigcup_{i\in\Lambda}\bigcup_{j\in\Delta} A_{ij}$, con $A_{ij}\in B_\Omega$. Claramente el conjunto resultante de esta unión es una unión de elementos de $B_\Omega$ por lo que está en $T_\Omega$. Ahora, sean $A,B\in T_\Omega$. Entonces $A=\bigcup_{i\in\Lambda} A_i$ y $B=\bigcup_{j\in\Delta} B_j$, con $A_i,B_j\in\mathcal{B}_\Omega$. Así pues, $A\cap B=\bigcup_{i\in\Lambda} A_i\cap \bigcup_{j\in\Delta} B_j = \bigcup_{i\in\Lambda,j\in\Delta} A_i \cap B_j\in T_\Omega$.
+
+Es la topología más pequeña sobe $X$ que contiene a $\Omega$ por construcción. En primer lugar debe contener las intersecciones finitas de elementos de $\Omega$ para poder ser topología, las cuales están en $\mathcal{B}_\Omega$. Luego debe contener las uniones arbitrarias de todos los elementos de $\Omega$ entre sí, y también con las intersecciones anteriores. Como los elementos individuales se pueden considerar como intersecciones consigo mismos, esto es equivalente a decir que se requieren las uniones arbitrarias de todos los elementos de $\mathcal{B}_\Omega$. Al añadir esto ya hemos visto que es suficiente para que sea topología, luego efectivamente es la más pequeña.
+
+El hecho de que $\mathcal{B}_\Omega$ sea base se desprende inmediatamente de la definición de $T_\Omega$, puesto que sus elementos son uniones de elementos de $\mathcal{B}_\Omega$, lo cual es precisamente la definición de base de una topología.
 \end{sol*}
 
 \begin{exercise}
