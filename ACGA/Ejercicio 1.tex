@@ -1,0 +1,129 @@
+\documentclass[twoside]{article}
+\usepackage{amsmath,accents}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{setspace}  
+\usepackage{amsmath}
+\usepackage{nccmath}
+\usepackage[spanish]{babel}
+\usepackage{multirow}
+
+\newenvironment{ejercicio}[2][Estado]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries Ejercicio}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ \newenvironment{solucion}{\begin{trivlist}
+\item[\hskip \labelsep {\textit{Solución}.}\hskip \labelsep]}{\end{trivlist}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+\renewcommand{\baselinestretch}{1,4}
+\setlength{\oddsidemargin}{0.5in}
+\setlength{\evensidemargin}{0.5in}
+\setlength{\textwidth}{5.4in}
+\setlength{\topmargin}{-0.25in}
+\setlength{\headheight}{0.5in}
+\setlength{\headsep}{0.6in}
+\setlength{\textheight}{8in}
+\setlength{\footskip}{0.75in}
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{propi}[theorem]{Propiedades}
+\newtheorem{condition}{Condition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{coro}[theorem]{Corolario}
+\newtheorem{criterion}{Criterion}
+\newtheorem{defi}[theorem]{Definición}
+\newtheorem{example}[theorem]{Ejemplo}
+\newtheorem{eje}{Ejercicio}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{nota}[theorem]{Nota}
+\newtheorem{problem}{Problem}
+\newtheorem{prop}[theorem]{Proposición}
+\newtheorem{remark}{Remark}
+
+\newtheorem{dem}[theorem]{Demostración}
+
+\newtheorem{summary}{Summary}
+\numberwithin{equation}{section}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\ninf}[1]{\norm{#1}_\infty}
+\providecommand{\numn}[1]{\norm{#1}_1}
+\providecommand{\gabs}[1]{\left|{#1}\right|}
+\newcommand{\bor}[1]{\mathcal{B}(#1)}
+\newcommand{\erre}{\mathbb{R}}
+\newcommand{\resi}{\varepsilon_L}
+\newcommand{\cee}{\mathbb{C}}
+\providecommand{\conv}[1]{\overset{#1}{\longrightarrow}}
+\providecommand{\convcs}{\xrightarrow{CS}}
+% xrightarrow{d}[d]
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Algebra Conmutativa y Geometría Aplicada}
+\author{Rafael González López}
+\maketitle
+
+\begin{ejercicio}{1}
+Calcular las soluciones $(x,y,z)$ enteras de $x^2+y^2=z^2$.
+\begin{solucion}
+Si dividimos por $z^2$ obtenemos $\left(\dfrac{x}{z}\right)^2+\left(\dfrac{y}{z}\right)^2=1$. Claramente existe una correspondencia biyectiva entre las soluciones racionales de nuestra ecuación y las de $a^2+b^2=1$. Consideremos el punto $(0,1)$ y la recta $y\equiv 0$. Si escogemos un punto de coordenadas racionales sobre la recta y lo unimos mediante otra recta con el $(0,1)$ obtenemos otro punto de corte sobre la circunferencia. Es decir, consideramos la recta que pasa por el $(0,1)$ y $(r,0)$ y resolvemos:
+\[\begin{cases}
+b=-\dfrac{a}{r}+1\\
+a^2+b^2=1
+\end{cases} \quad (a,b) = \left(\dfrac{2r}{r^2+1},\frac{r^2-1}{r^2+1}\right)
+\]
+Notamos que para cada punto de coordenadas racionales de la recta existe uno en la circunferencia menos un punto y recíprocamente. Además del caso especial del $(0,1)$. Como $r=\dfrac{p}{q}$, $(a,b)=\left(\dfrac{2pq}{p^2+q^2},\dfrac{p^2-q^2}{p^2+q^2}\right)$. Para pasar al problema inicial basta multiplicar por el denominador, es decir, la solución general del problema es:
+\[(x,y,z)= \left(2pq,{p^2-q^2},{p^2+q^2}\right)\]
+Donde $p,q\in\mathbb{Z}$ y $(x,y)$ pueden intercambiar papeles.
+\end{solucion}
+\end{ejercicio}
+\newpage
+\begin{ejercicio}{2}
+Calcular las soluciones $(x,y,z)$ enteras de $x^2+y^2=2z^2$
+\begin{solucion}
+Podríamos usar un razonamiento análogo tomando el punto $(1,1)$ en la circunferencia $a^2+b^2=2$, pero lo cierto es que resulta demasiado tedioso. En su lugar observamos que las soluciones de esta ecuación verifican que:
+\[
+\left(\frac{x+y}{2}\right)^2+\left(\frac{x-y}{2}\right)^2=z^2
+\]
+Si hacemos un cambio de variable $2u=x+y$, $2v = x-y$. Resolver en $u,v$ es precisamente el ejercicio anterior, luego resta despejar $x$ e $y$:
+\begin{align*}
+x &= u + v = p^2+2pq -q^2\\
+y &= u - v = - p^2+ 2pq +q^2\\
+z &= \frac{\sqrt{x^2+y^2}}{2} =  p^2+q^2
+\end{align*}
+O, intercambiando las papeles de $u,v$: 
+\begin{align*}
+x &= u + v = p^2+2pq -q^2\\
+y &= u - v =  p^2-2pq -q^2\\
+z &= \frac{\sqrt{x^2+y^2}}{2} =  p^2+q^2
+\end{align*}
+\end{solucion}
+Además, tener en cuenta que pueden cambiar los papeles de $x$ e $y$.
+\end{ejercicio}
+\newpage
+\begin{ejercicio}{3}
+Calcular las soluciones $(x,y,z)$ enteras de $x^2+y^2=3z^2$
+\begin{solucion}
+Vamos a demostrar que no existe ninguna solución entera. Supongamos que existe una tripleta $(x,y,z)$ de enteros que verifica la ecuación. En tal caso, dividimos por el $\gcd(x,y)$, la tripleta $\left(\dfrac{x}{d},\dfrac{y}{d},\dfrac{z}{d}\right)$ también es solución, que notaremos $(a,b,c)$. Nótese que $a$ y $b$ no pueden ser simultáneamente pares. Tengamos en cuenta que cualquier cuadrado ha de ser congruente con $0$ o $1$ módulo 4, por tanto:
+\begin{align*}
+a^2+b^2 \equiv 0,1,2 \mod 4 \quad 3c^2 \equiv 0, 3 \mod 4
+\end{align*}
+Por tato $a^2+b^2 \equiv 0 \mod 4$, de donde deducimos que $a^2 \equiv b^2 \equiv 0 \mod 4$. Esto es una contradicción, pues ambos no podían ser simultáneamente pares.
+\end{solucion}
+\end{ejercicio}
+\end{document}
