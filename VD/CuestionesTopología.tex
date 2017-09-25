@@ -101,9 +101,9 @@ Sean $(X,T)$ un espacio topológico y $A,B$ dos subconjuntos de $X$ tales que $A
 \end{exercise}
 \begin{sol*}\
 \begin{itemize}
-\item[(a)] Se va a probar por doble contención. Sea $U\in (T|_B)|_A$. Por definición $U= (G\cap B)\cap A$ con $G\in T$. Como $A\subseteq B$, $U=(G\cap B)\cap A=G\cap A$, que por definición significa que $U\in T|_A$. El recíproco se consigue realizando la misma prueba en sentido inverso. 
-\item[(b)] Como $A\subseteq B$, se cumple $A=A\cap B$. Por tanto podemos expresar $A$ como intersección de un elemento de $T$ con $B$.
-\item[(c)] Como contraejemplo de que no es cierto en general podemos usar $X=\{1,2\}$ con la topología $T=\{\emptyset,X\}$. Tomando $A=B=\{1\}$, tenemos que $A \in T|_B = \{\emptyset,A\}$, pero $A \notin T$.
+\item[(a)] Se va a probar por doble contención. Sea $U\in (T|_B)|_A$. Por definición $U= (G\cap B)\cap A$ con $G\in T$. Como $A\subset B$, $U=(G\cap B)\cap A=G\cap A$, que por definición significa que $U\in T|_A$. El recíproco se consigue realizando la misma prueba en sentido inverso. 
+\item[(b)] Como $A\subset B$, se cumple $A=A\cap B$. Por tantopodemos expresar $A$ como intersección de un elemento de $T$ con $B$.
+\item[(c)] Como contraejemplo de que no es cierto en general podemos usar $X=(-1,2)$ con la topología euclídea, $B=[0,1)$. Tomando $A=[0,\frac{1}{2})$ vemos que $A=(-1,\frac{1}{2})\cap B$, por lo que es abierto de la topología relativa a $B$, pero no es abierto en $X$ puesto que el $0$ está en $A$ pero no en su interior.
 
 Si $B$ es abierto, entonces $A=G\cap B$ siendo tanto $G$ como $B$ abiertos, de modo que $A$ es un abierto de $T$ por ser intersección de dos abiertos.
 \end{itemize}
@@ -115,7 +115,7 @@ Probar que un conjunto es abierto si y solo si es entorno de todos sus puntos. U
 \end{exercise}
 
 \begin{sol*}
-Llamemos $G$ al conjunto y supongamos que es abierto. Un conjunto es entorno de un punto si y solo si existe un abierto conteniendo al punto y contenido en el conjunto. Para todos los puntos de $G$ se tiene que $G$ es un abierto que contiene al punto y además $G$ está contenido en sí mismo, por lo que se verifica que $G$ es entorno de todos sus puntos. Supongamos ahora que $G$ es entorno de todos sus puntos. Esto significa que $\forall p\in G$, $\exists U_p\subseteq G$ abierto tal que $p\in U_p$. Por tanto se tiene que $\bigcup_{p\in G} U_p\subseteq G$. Por otro lado, si $p\in G$ entonces $p\in U_p$ por definición de $U_p$. Por tanto, $p\in \bigcup_{p\in G} U_p\subseteq G$ $\forall p\in G$, es decir $\bigcup_{p\in G} U_p\supseteq G$, con lo que concluimos que $G=\bigcup_{p\in G} U_p$, que es abierto por ser unión de abiertos.
+Llamemos $G$ al conjunto y supongamos que es abierto. Un conjunto es entorno de un punto si y solo si existe un abierto conteniendo al punto y contenido en el conjunto. Para todos los puntos de $G$ se tiene que $G$ es un abierto que contiene al punto y además $G$ está contenido en sí mismo, por lo que se verifica que $G$ es entorno de todos sus puntos. Supongamos ahora ue $G$ es entorno de todos sus puntos. Esto significa que $\forall p\in G$, $\exists U_p\subseteq G$ abierto tal que $p\in U_p$. Por tanto se tiene que $\bigcup_{p\in G} U_p\subseteq G$. Por otro lado, si $p\in G$ entonces $p\in U_p$ por definición de $U_p$. Por tanto, $p\in \bigcup_{p\in G} U_p\subseteq G$ $\forall p\in G$, es decir $\bigcup_{p\in G} U_p\supseteq G$, con lo que concluimos que $G=\bigcup_{p\in G} U_p$, que es abierto por ser unión de abiertos.
 
 Para probar que $[0,1)$ no es abierto euclídeo basta ver que este conjunto no es entorno del $0$. Esto es así porque no podemos incluir ninguna bola abierta de radio positivo centrada en el $0$ dentro del intervalo.
 \end{sol*}
