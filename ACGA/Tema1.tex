@@ -100,6 +100,27 @@ Definimos el \textbf{radical de un ideal} $I$ como:
 \end{propi}
 
 \begin{nota}
-En cuerpos algebraicamente cerrado, hay una correspondencia entre los conjuntos algebraicos (en el contexto de la geometría) y los ideales radicales (en el contexto del álgebra).
+En cuerpos algebraicamente cerrado, hay una correspondencia entre los conjuntos algebraicos (en el contexto de la geometría) y los ideales radicales (en el contexto del álgebra). Nótese que $(x-a)$ y $(x-a)^n$ tienen las mismas raíces para $a\in\mathbb{K}$ y $n\in\mathbb{N}$. 
 \end{nota}
+
+\begin{ej}
+Por ejemplo, en $\mathbb{K}[x]$ y $\mathbb{A}^1$, tenemos como conjuntos algebraicos los conjuntos finitos más $\mathbb{A}$ (idea geométrica). Esto se corresponde en el álegebra con un ideal radical $I$, que se corresponde con un polinomio mónico $g$. Es decir, $I=\langle g\rangle$ e $I=\sqrt{I}$. Esto último ocurre si y solo si dado $f\in I$ cumple que  si $g\mid f^n$ para algún $n\geq 1$ entonces $g\mid f$. Esto se cumple si $g$ es irreducible (o sea, el ideal es primo). En general, si $I$ es primo entonces $I$ es radical. Más generalmente, la divisibilidad se cumple si y solo si $g$ es producto de irreducibles distintos entre sí, es decir, el ideal $I$ es primo si y solo si $g$ es producto de polinomios irreducibles distintos.\\
+Si tenemos el conjunto $A=\{\alpha_1,\dots, \alpha_r\}$, le hacemos corresponder el ideal generado por $h=(x-\alpha_1)\cdots(x-\alpha_r)$. 
+\end{ej}
+
+Nos falta ver que si $I,J$ son dos ideales radicales distintos, entonces $\mathcal{V}(I)\neq \mathcal{V}(J)$, con lo que tendríamos una biyección entre ideales radicales y conjuntos algebraicos. Dado un subconjunto $X\subseteq \mathbb{A}^n$,  definimos $\mathcal{I}(X)=\{f\in\mathbb{K}[x]\mid f(x)=0\ \forall x\in X\}$. Es trivial probar que $\mathcal{I}(X)$ es ideal. Tenemos que probar que es radical. Suponemos que $f^n\in\mathcal{I}(X)$, por lo que $f^n(x)=0\ \forall x\in X$. Como estamos en un cuerpo esto implica que $f(x)=0\ \forall x\in X$, luego $f\in\mathcal{I}(X)$. 
+
+Veamos que $\mathcal{I}$ y $\mathcal{V}$ inducen una biyección entre el cojunto de subconjuntos algebraicos de $\mathbb{A}^n$ y el conjunto de ideales radicales de $\mathbb{K}[x_1,\dots,x_n]$. Sea $X$ un conjunto algebraico y $S$ el conjunto de polinomios correspondiente, vamos a comprobar que $\mathcal{V}(\mathcal{I}(X))=X$ y que $\mathcal{I}(\mathcal{V}(S))=S$. Claramente por definición $\mathcal{V}(\mathcal{I}(X))\supseteq X$. Por otro lado, si tomamos un conjunto de polinomios $S$, por definición $S\subseteq \mathcal{I}(\mathcal{V}(S))$. Para la otra contención, si $X$ es algebraico, entonces $X=\mathcal{V}(R)$ para algún conjunto de polinomios $R$. Utilizando que $\mathcal{I}(\mathcal{V}(R))\supseteq R$, se deduce aplicando $\mathcal{V}$ a ambos lados que $\mathcal{V}(\mathcal{I}(X))\subseteq \mathcal{V}(R)=X$. Nos queda por probar una contención. Spongamos que $\mathcal{V}(I)=\emptyset=\mathcal{V}(\langle 1\rangle)$. El ideal radical correspondiente sería $I=\sqrt{I}=\langle1 \rangle$. Equivalentemente, si $I\neq\langle 1\rangle$, entonces $\mathcal{V}(I)\neq\emptyset$. A continuación se va a usar la siguiente proposición:
+\begin{prop}
+Si $k\subset K$ es una extensión de cuerpos y $K$ es finitamente generado como $k-$álgebra, entonces $K$ es una extensión finita de $k$. 
+\end{prop}
+
+\begin{ejer}
+Probar que $\Q$ no es $\Z-$álgebra finitamente generada. 
+\end{ejer}
+
+Continuando con lo anterior, vamos a suponer $I\neq\langle 1\rangle$. Sabemos que $I\subset M$ ideal maximal. Así que construimos el cuerpo $K=\mathbb{K}[x_1,\dots,x_n]/M$ que es una extensión del cuerpo $\mathbb{K}$, finitamente generada por $\overline{x}_1,\dots, \overline{x}_n$, así que es extensión finita. Como $\mathbb{K}$ es algebraicamente cerrado, su extensión algebraica es él mismo, así que $\mathbb{K}\cong K$ mediante el homomorfismo inducido por la inclusión. Recordemos que $\mathbb{A}^n=\mathbb{K}^n$. Si tomamos $f\in I$ y $(\overline{x}_1,\dots, \overline{x}_n)\in K$, etonces $f(\overline{x}_1,\dots, \overline{x}_n)=\overline{f(x_1,\dots,x_n)}=\overline{0}\in K$.
+ 
+
+
 \end{document}
