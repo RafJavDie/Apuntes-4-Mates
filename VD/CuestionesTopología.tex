@@ -146,6 +146,8 @@ Es la topología más pequeña sobe $X$ que contiene a $\Omega$ por construcció
 El hecho de que $\mathcal{B}_\Omega$ sea base se desprende inmediatamente de la definición de $T_\Omega$, puesto que sus elementos son uniones de elementos de $\mathcal{B}_\Omega$, lo cual es precisamente la definición de base de una topología.
 \end{sol*}
 
+
+\newpage
 \begin{exercise}
 Sean $(X,T_X)$, $(Y,T_Y)$ dos espacios topológicos y $f:X\rightarrow Y$ una aplicación biyectiva. Probar que son equivalentes:
 \begin{itemize}
@@ -159,12 +161,13 @@ Utilizar este resultado para caracterizar los homeomorfismos.
 \begin{sol*}\
 \begin{itemize}
 \item[(a)$\Rightarrow$(b)] Sea $G\subseteq X$ abierto. Por ser $f^{-1}$ continua, usando que $f$ es biyectiva se tiene que $(f^{-1})^{-1}(G)=f(G)$ es abierto, por lo que $f$ es abierta.
-\item[(b)$\Rightarrow$(c)] Dado $G\subseteq X$ abierto se tiene que $f(G)$ es abierto por hipótesis. Tomando el complementario, $G^c$ (que es cerrado por ser complementario de un abierto) tenemos gracias a la biyectividad de $f$ que $f(G^c)=f(G)^c$ que es cerrado por ser complementario de un abierto, como queríamos demostrar. De forma análoga se probaría (c)$\Rightarrow$ (b).
+\item[(b)$\Rightarrow$(c)] Dado $G\subseteq X$ cerrado se tiene que $G^c$ es abierto. Por tanto, usando que f es biyectiva y abierta, $f(G^c) = f(G)^c$ es abierto, de donde se deduce que $f(G)$ es cerrado. De forma análoga se probaría (c)$\Rightarrow$ (b).
 \item[(b)$\Rightarrow$(a)] Por ser $f$ abierta, si $G\subseteq X$ es abierto, entonces por biyectividad $f(G)=(f^{-1})^{-1}(G)$ es abierto. 
 \end{itemize}
 Como caracterización, $f$ es homeomorfismo si y solo si es biyectiva, continua y abierta (o cerrada). 
 \end{sol*}
 
+\newpage
 \begin{exercise}
 Sea $(X,T_X)$ un espacio topológico y $f:(X,T_X)\longrightarrow Y$ una aplicación biyectiva. Probar que $T_Y=\{f(G)\mid G\in T_X\}$ coincide con la topología final de $f$ (es decir, $\{U\subseteq Y\mid f^{-1}(U)\in T_X\}$) y es la única topología sobre $Y$ que convierte a $f$ en homeomorfismo.
 \end{exercise}
