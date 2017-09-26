@@ -1,95 +1,12 @@
 \documentclass{article}
-\usepackage{amsmath,accents}%
-\usepackage{amsfonts}%
-\usepackage{amssymb}%
-\usepackage{comment}
-\usepackage{graphicx}
-\usepackage{mathrsfs}
-\usepackage[utf8]{inputenc}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{mathrsfs}
-\usepackage{setspace}
-\usepackage{amsthm}
-\usepackage{nccmath}
-\usepackage[spanish]{babel}
-\usepackage{multirow}
-\usepackage{hyperref}
-\usepackage{tikz-cd}
-\usepackage{pgf,tikz}
-\usetikzlibrary{arrows}
-\usetikzlibrary{cd}
-\usetikzlibrary{babel}
-\theoremstyle{plain}
-\hypersetup{colorlinks=true,citecolor=red, linkcolor=blue}
-
-\renewcommand{\baselinestretch}{1,4}
-\setlength{\oddsidemargin}{0.5in}
-\setlength{\evensidemargin}{0.5in}
-\setlength{\textwidth}{5.4in}
-\setlength{\topmargin}{-0.25in}
-\setlength{\headheight}{0.5in}
-\setlength{\headsep}{0.6in}
-\setlength{\textheight}{8in}
-\setlength{\footskip}{0.75in}
-
-\theoremstyle{definition}
-
-\newtheorem{theorem}{Teorema}[section]
-\newtheorem{acknowledgement}{Acknowledgement}
-\newtheorem{algorithm}{Algorithm}
-\newtheorem{axiom}{Axiom}
-\newtheorem{case}{Case}
-\newtheorem{claim}{Claim}
-\newtheorem{propi}[theorem]{Propiedades}
-\newtheorem{condition}{Condition}
-\newtheorem{conjecture}{Conjecture}
-\newtheorem{coro}[theorem]{Corolario}
-\newtheorem{criterion}{Criterion}
-\newtheorem{defi}[theorem]{Definición}
-\newtheorem{example}[theorem]{Ejemplo}
-\newtheorem{exercise}{Ejercicio}
-\newtheorem{lemma}[theorem]{Lema}
-\newtheorem{nota}[theorem]{Nota}
-\newtheorem{sol}{Solución}
-\newtheorem*{sol*}{Solución}
-\newtheorem{prop}[theorem]{Proposición}
-\newtheorem{remark}{Remark}
-
-\newtheorem{dem}[theorem]{Demostración}
-
-\newtheorem{summary}{Summary}
-
-\providecommand{\abs}[1]{\lvert#1\rvert}
-\providecommand{\norm}[1]{\lVert#1\rVert}
-\providecommand{\ninf}[1]{\norm{#1}_\infty}
-\providecommand{\numn}[1]{\norm{#1}_1}
-\providecommand{\gabs}[1]{\left|{#1}\right|}
-\newcommand{\bor}[1]{\mathcal{B}(#1)}
-\providecommand{\func}[2]{\colon{#1}\longrightarrow{#2}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\F}{\mathbb{F}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\X}{\chi}
-\providecommand{\Zn}[1]{\Z / \Z #1}
-\newcommand{\resi}{\varepsilon_L}
-\newcommand{\cee}{\mathbb{C}}
-\providecommand{\conv}[1]{\overset{#1}{\longrightarrow}}
-\providecommand{\gene}[1]{\langle{#1}\rangle}
-\providecommand{\convcs}{\xrightarrow{CS}}
-% xrightarrow{d}[d]
-\setcounter{exercise}{0}
-\newcommand{\cicl}{\mathcal{C}}
+\usepackage{../estilo-ejercicios}
 
 \begin{document}
 \title{Cuestiones de Topología - Variedades Diferenciables}
 \author{Javi, Rafa, Diego}
 \maketitle
 
-\begin{exercise}
+\begin{ejer}
 
 Sean $(X,T)$ un espacio topológico y $A,B$ dos subconjuntos de $X$ tales que $A\subseteq B\subseteq X$. Probar:
 \begin{itemize}
@@ -98,8 +15,8 @@ Sean $(X,T)$ un espacio topológico y $A,B$ dos subconjuntos de $X$ tales que $A
 \item[(c)] El recíproco de (b) no es cierto en general, pero sí cuando $B$ es abierto (es decir, si $A\in T|_B$ y $B\in T$, entonces $A\in T$).
 \end{itemize}
 
-\end{exercise}
-\begin{sol*}\
+\end{ejer}
+\begin{sol}\
 \begin{itemize}
 \item[(a)] Veámoslo directamente:
 \begin{gather*}
@@ -112,43 +29,43 @@ Sean $(X,T)$ un espacio topológico y $A,B$ dos subconjuntos de $X$ tales que $A
 Si $B$ es abierto, entonces $A=G\cap B$ siendo tanto $G$ como $B$ abiertos, de modo que $A$ es un abierto de $T$ por ser intersección de dos abiertos.
 \end{itemize}
 
-\end{sol*}
+\end{sol}
 \newpage
-\begin{exercise}\label{2}
+\begin{ejer}\label{2}
 Probar que un conjunto es abierto si y solo si es entorno de todos sus puntos. Utilizar esta caracterización para probar que $[0,1)$ no es abierto euclídeo de $\R$.
-\end{exercise}
+\end{ejer}
 
-\begin{sol*}
+\begin{sol}
 Llamemos $G$ al conjunto y supongamos que es abierto. Un conjunto es entorno de un punto si y solo si existe un abierto conteniendo al punto y contenido en el conjunto. Para todos los puntos de $G$ se tiene que $G$ es un abierto que contiene al punto y además $G$ está contenido en sí mismo, por lo que se verifica que $G$ es entorno de todos sus puntos. Supongamos ahora ue $G$ es entorno de todos sus puntos. Esto significa que $\forall p\in G$, $\exists U_p\subseteq G$ abierto tal que $p\in U_p$. Por tanto se tiene que $\bigcup_{p\in G} U_p\subseteq G$. Por otro lado, si $p\in G$ entonces $p\in U_p$ por definición de $U_p$. Por tanto, $p\in \bigcup_{p\in G} U_p\subseteq G$ $\forall p\in G$, es decir $\bigcup_{p\in G} U_p\supseteq G$, con lo que concluimos que $G=\bigcup_{p\in G} U_p$, que es abierto por ser unión de abiertos.
 
 Para probar que $[0,1)$ no es abierto euclídeo basta ver que este conjunto no es entorno del $0$. Esto es así porque no podemos incluir ninguna bola abierta de radio positivo centrada en el $0$ dentro del intervalo.
-\end{sol*}
+\end{sol}
 
-\begin{exercise}
+\begin{ejer}
 Sean $(X,T)$ un espacio topológico y $\mathcal{B}\subseteq T$. Probar que $\mathcal{B}$ es base de $T$ si y solo si $\forall G\in T$ y $\forall p\in G$, $\exists B\in\mathcal{B}$ tal que $p\in B\subseteq G$. 
-\end{exercise}
+\end{ejer}
 
-\begin{sol*}
+\begin{sol}
 Supongamos que $\mathcal{B}$ es base. Entonces, dado $G\in T$ podemos expresar $G=\bigcup_{B\in\mathcal{B}} B$. Por tanto, si $p\in G$, entonces $p\in\bigcup_{B\in\mathcal{B}}B$, por lo que existe $B_p$ tal que $p\in B_p\subseteq G$. 
 
 Para el recíproco, tomemos un abierto cualquiera $G\in T$ y consideremos $U=\bigcup_{p\in G} B_p$. Claramente $G\subseteq U$, puesto que todos los puntos de $G$ están contenidos en $U$. Además, como por hipótesis $\forall p\ B_p\subseteq G$ se tiene la inclusión contraria, por lo que $G=U$, como queríamos demostrar.
-\end{sol*}
+\end{sol}
 
-\begin{exercise}
+\begin{ejer}
 Sea $X$ un conjunto y $\Omega$ una familia de subconjuntos de $X$. Sea $\mathcal{B}_\Omega=\{X\}\cup\{$ Intersecciones finitas de elementos de $\Omega\}$ y $T_\Omega=\{\emptyset\}\cup\{$Uniones cualesquiera de elementos de $\mathcal{B}_\Omega\}$. Probar que $T_\Omega$ es la menor topología sobre $X$ que contiene a $\Omega$. Probar también que $\mathcal{B}_\Omega$ es base de $T_\Omega$.
-\end{exercise}
+\end{ejer}
 
-\begin{sol*}
+\begin{sol}
 En primer lugar hay que verificar que $T_\Omega$ es topología. El vacío está por definición y $X$ también por ser un elemento de $\mathcal{B}_\Omega$. Sea $\{A_i\}_{i\in\Lambda}$ una familia arbitraria de elementos de $T_\Omega$. Entonces $\bigcup_{i\in\Lambda}A_i=\bigcup_{i\in\Lambda}\bigcup_{j\in\Delta} A_{ij}$, con $A_{ij}\in B_\Omega$. Claramente el conjunto resultante de esta unión es una unión de elementos de $B_\Omega$ por lo que está en $T_\Omega$. Ahora, sean $A,B\in T_\Omega$. Entonces $A=\bigcup_{i\in\Lambda} A_i$ y $B=\bigcup_{j\in\Delta} B_j$, con $A_i,B_j\in\mathcal{B}_\Omega$. Así pues, $A\cap B=\bigcup_{i\in\Lambda} A_i\cap \bigcup_{j\in\Delta} B_j = \bigcup_{i\in\Lambda,j\in\Delta} A_i \cap B_j\in T_\Omega$.
 
 Es la topología más pequeña sobe $X$ que contiene a $\Omega$ por construcción. En primer lugar debe contener las intersecciones finitas de elementos de $\Omega$ para poder ser topología, las cuales están en $\mathcal{B}_\Omega$. Luego debe contener las uniones arbitrarias de todos los elementos de $\Omega$ entre sí, y también con las intersecciones anteriores. Como los elementos individuales se pueden considerar como intersecciones consigo mismos, esto es equivalente a decir que se requieren las uniones arbitrarias de todos los elementos de $\mathcal{B}_\Omega$. Al añadir esto ya hemos visto que es suficiente para que sea topología, luego efectivamente es la más pequeña.
 
 El hecho de que $\mathcal{B}_\Omega$ sea base se desprende inmediatamente de la definición de $T_\Omega$, puesto que sus elementos son uniones de elementos de $\mathcal{B}_\Omega$, lo cual es precisamente la definición de base de una topología.
-\end{sol*}
+\end{sol}
 
 
 \newpage
-\begin{exercise}
+\begin{ejer}
 Sean $(X,T_X)$, $(Y,T_Y)$ dos espacios topológicos y $f:X\rightarrow Y$ una aplicación biyectiva. Probar que son equivalentes:
 \begin{itemize}
 \item[(a)] $f^{-1}$ es continua.
@@ -156,49 +73,49 @@ Sean $(X,T_X)$, $(Y,T_Y)$ dos espacios topológicos y $f:X\rightarrow Y$ una apl
 \item[(c)] $f$ es cerrada.
 \end{itemize}
 Utilizar este resultado para caracterizar los homeomorfismos.
-\end{exercise}
+\end{ejer}
 
-\begin{sol*}\
+\begin{sol}\
 \begin{itemize}
 \item[(a)$\Rightarrow$(b)] Sea $G\subseteq X$ abierto. Por ser $f^{-1}$ continua, usando que $f$ es biyectiva se tiene que $(f^{-1})^{-1}(G)=f(G)$ es abierto, por lo que $f$ es abierta.
 \item[(b)$\Rightarrow$(c)] Dado $G\subseteq X$ cerrado se tiene que $G^c$ es abierto. Por tanto, usando que f es biyectiva y abierta, $f(G^c) = f(G)^c$ es abierto, de donde se deduce que $f(G)$ es cerrado. De forma análoga se probaría (c)$\Rightarrow$ (b).
 \item[(b)$\Rightarrow$(a)] Por ser $f$ abierta, si $G\subseteq X$ es abierto, entonces por biyectividad $f(G)=(f^{-1})^{-1}(G)$ es abierto. 
 \end{itemize}
 Como caracterización, $f$ es homeomorfismo si y solo si es biyectiva, continua y abierta (o cerrada). 
-\end{sol*}
+\end{sol}
 
 \newpage
-\begin{exercise}
+\begin{ejer}
 Sea $(X,T_X)$ un espacio topológico y $f:(X,T_X)\longrightarrow Y$ una aplicación biyectiva. Probar que $T_Y=\{f(G)\mid G\in T_X\}$ coincide con la topología final de $f$ (es decir, $\{U\subseteq Y\mid f^{-1}(U)\in T_X\}$) y es la única topología sobre $Y$ que convierte a $f$ en homeomorfismo.
-\end{exercise}
+\end{ejer}
 
-\begin{sol*}
+\begin{sol}
 Sea $U$ en la topología final, de modo que $f^{-1}(U)\in T_X$. Se tiene que $U=ff^{-1}(U)$ por biyectividad, de modo que basta tomar $G=f^{-1}(U)$. Por otro lado, si tomamos $f(G)\in T_Y$, por la inyectividad se tiene que $G=f^{-1}f(G)$, por lo que con $U=f(G)$ se tiene la inclusión que faltaba.
 
 Vamos a ver que esta topología convierte a $f$ en homeomorfismo. Tenemos la biyectividad, por lo que resta probar que es continua y abierta. Por la definición de $T_Y$ vemos que $f$ es abierta, pues los abiertos de $T_Y$ son justamente las imágenes de abiertos de $T_X$. Finalmente, si $U\in T_Y$, $U=f(G)$ para algún $G\in T_X$, luego $f^{-1}(U)=G$ que es abierto, así que $f$ es continua.
 
 Por último probemos la unicidad de esta topología. Por la definición de topología final, esta es la topología más grande que hace que la aplicación sea continua. Pero no puede haber una topología más pequeña que haga que $f$ sea abierta, pues por la definición de $T_Y$, si se elimina algún elemento de este conjunto entonces habría algún abierto $G\in T_X$ tal que $f(G)$ no estaría en la hipotética topología. 
-\end{sol*}
+\end{sol}
 
-\begin{exercise}
+\begin{ejer}
 Sea $(Y,T_Y)$ un espacio topológico y $f:X\longrightarrow (Y,T_Y)$ una aplicación biyectiva. Probar que $T_X=\{G\subseteq X\mid f(G)\in T_Y\}$ coincide con la topología inicial de $f$ (es decir, $\{f^{-1}(U)\mid U\in T_Y\}$) y es la única topología sobre $X$ que convierte a $f$ es homeomorfismo. 
-\end{exercise}
+\end{ejer}
 
-\begin{sol*}
+\begin{sol}
 Sea $G\in T_X$, de modo que $f(G)\in T_Y$ y $G=f^{-1}f(G)$, por lo que basta tomar $U=f(G)$ para ver que $G$ pertenece a la topología inicial. Por otro lado, si tomamos $f^{-1}(U)$ en la topología inicial, por ser $f$ sobreyectiva se tiene que $U=f(G)$ para algún $G\subseteq X$, por lo que $f^{-1}(U)\in T_X$.
 
 Para ver que convierte a $f$ en homeomorfismo, como ya es biyectiva, necesitamos que sea continua y abierta. La continuidad se deduce del apartado anterior, pues si $U\in T_Y$ entonces $f^{-1}(U)\in T_X$. Claramente es abierta puesto que $f(G)\in T_Y$ para todo abierto $G$ de esta topología por definición. 
 
 Veamos la unicidad. Por la definición de topología inicial, esta topología es la más pequeña que hace que $f$ sea continua. Pero además no puede existir una topología mayor con la que $f$ siga siendo abierta, pues para cualquier conjunto $H\notin T_X$, $f(H)\notin T_Y$.
-\end{sol*}
+\end{sol}
 
-\begin{exercise}
+\begin{ejer}
 Probar que todo homeomorfismo local es una aplicación abierta.
-\end{exercise}
+\end{ejer}
 
-\begin{sol*}
+\begin{sol}
 Sea $f:X\to Y$ un homeomorfismo local. Por ser homeomorfismo local, $\forall x\in X\ \exists N_x$ tal que $N_x\cong f(N_x)$. Sea $G\subseteq X$ abierto. Entonces, por el ejercicio \ref{2} se tiene que $G=\bigcup_{x\in G} (N_x\cap G)$, por lo que $f(G)=f(\bigcup_{x\in G} (N_x\cap G))=\bigcup_{x\in G}f(N_x\cap G)\cong \bigcup_{x\in G} N_x\cap G$ que es abierto por ser una unión de abiertos.
-\end{sol*}
+\end{sol}
 
 
 \end{document}
