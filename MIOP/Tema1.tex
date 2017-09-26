@@ -88,7 +88,7 @@ $$\min_{u_1,\dots,u_n}g(u_1,\dots, u_n)\geq \min_{r_1}g_1(r_1,\min_{r_2,\dots,r_
 \end{dem}
 
 \section{Ecuaciones de un proceso de decisión.}
-Consideremos un proceso de decisión secuencial en $N$ etapas y denotemos por $s_n$ el estado en la etapa $n$. Supongamos que conocemos el estado minal del proceso $s_N^*$. Sean $c_n(s_n,d_n)$ y $t_n(s_n,d_n)$, respectivamente, las funciones de coste entre etapas. Finalmente, supongamos que $f_n(s_n)$ representa el menor coste para ``conducir'' al sistema desde la etapa $n$ en estado $s_n$ hasta $s_N^*$. Entonces, podemos escribir $f_n(s_n)=\min_{d_n}\{c_n(s_n,d_n)+f_{n+1}(t_n(s_n,d_n))\}\ n<N$. Y para $n=N$, $f_N(s_N)=\begin{cases}
+Consideremos un proceso de decisión secuencial en $N$ etapas y denotemos por $s_n$ el estado en la etapa $n$. Supongamos que conocemos el estado final del proceso $s_N^*$. Sean $c_n(s_n,d_n)$ y $t_n(s_n,d_n)$, respectivamente, las funciones de coste entre etapas. Finalmente, supongamos que $f_n(s_n)$ representa el menor coste para ``conducir'' al sistema desde la etapa $n$ en estado $s_n$ hasta $s_N^*$. Entonces, podemos escribir $f_n(s_n)=\min_{d_n}\{c_n(s_n,d_n)+f_{n+1}(t_n(s_n,d_n))\}\ n<N$. Y para $n=N$, $f_N(s_N)=\begin{cases}
 +\infty & s_N\neq s_N^*\\
 \min_{d_N}c_N(s_N^*, d_N) & s_N=s_N^*
 \end{cases}$
