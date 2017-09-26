@@ -1,7 +1,7 @@
 \documentclass[MIOP.tex]{subfiles}
 \begin{document}
 
-\chapter{Introducción a la programación dinámica.}
+\chapter{Introducción a la Programación\\ Dinámica.}
 \section{Introducción.}
 La Programación Dinámica (P.D.) son un conjunto de técnicas que permiten resolver procesos de división secuencial.
 \begin{ej}
@@ -9,7 +9,7 @@ Probabilidad de que al lanzar dos dados sucesivamente tengan antes un suceso que
 
 $P(A)=P(A/1er$ lanzamiento suma $3)P(1er$ lanzamiento suma 3$)+P(A/1er$ lanzamiento suma $7)P(1er$ lanzamiento suma $7)+P(A/1er$ lanzamiento no suma ninguno$)P(1er$ lanzamiento no suma ninguno$)$. Sustituyendo por su valor:
 $$P(A)=1\cdot\frac{2}{36}+0\cdot\frac{6}{36}+P(A)\frac{28}{36}=\frac{2}{36}+P(A)\frac{28}{36}.$$
-Podemos despejar y obtener $P(A)$. 
+Podemos despejar y obtenemos $P(A)=\dfrac{1}{4}$. 
 \end{ej}
 
 \begin{ej}
@@ -19,13 +19,38 @@ Calcular el factorial de un número recursivamente. Entonces $f(n)=n!=nf(n-1)$. 
 \begin{ej}
 (Dibujo de Rafa)
 Calcular el camino más corto para ir de $1$ hasta $7$. Para llegar al nodo $7$, necesariamente hay que pasar por uno de los $3$ a los que está conectado. Llamamos $l_{ij}$ a la longitud del arco $(i,j)$. Si definimos $f(i)=$``longitud del camino más corto desde $i$ hasta $7$''. Sabemos que $f(7)=0$. 
-
+\[
+\begin{tikzpicture}
+    \node[shape=circle,draw=black] (A) at (0,1.5) {$1$};
+    \node[shape=circle,draw=black] (C) at (2,0) {$3$};    
+    \node[shape=circle,draw=black] (B) at (2,3) {$2$};
+    \node[shape=circle,draw=black] (D) at (4,3) {$4$};
+    \node[shape=circle,draw=black] (E) at (4,0) {$6$};
+    \node[shape=circle,draw=black] (F) at (5,1.5) {$5$};
+    \node[shape=circle,draw=black] (G) at (7,1.5) {$7$};
+\tikzset{mystyle/.style={->,double=blue}} 
+\tikzset{every node/.style={fill=white}} 
+     \path [->] (A) edge node {$1.5$} (B);
+     \path [->] (A) edge [mystyle]  node {$2$} (C);
+     \path [->] (B) edge node {$2$} (C);
+     \path [->] (B) edge node {$1$} (F);
+     \path [->] (B) edge node {$2$} (E);
+     \path [->] (B) edge node {$3$} (D);
+     \path [->] (C) edge [mystyle]  node {$1$} (E);
+     \path [->] (C) edge node {$1$} (F);
+     \path [->] (D) edge node {$3$} (F);
+     \path [->] (D) edge node {$1$} (G);
+     \path [->] (E) edge [mystyle] node {$1$} (G);
+     \path [->] (F) edge node {$3$} (G);
+	 \path [->] (E) edge node {$3$} (F);
+\end{tikzpicture}
+\]
 \begin{align*}
 f(4)=&\min\{l_{47},l_{45}+f(5)\}=\min\{1,6\}=1\\
 f(5)=&\min\{l_{57}\}=3\\
-f(6)=&\min\{l_{67},f(5)+l_{56}\}=\min\{1,3+3\}=1\\
+f(6)=&\min\{l_{67},f(5)+l_{65}\}=\min\{1,3+3\}=1\\
 f(3)=&\min\{l_{35}+f(5),l_{36}+f(6)\}=\min\{1+3,1+2\}=3\\
-f(2)=&\min\{l_{24}+l_{25},l_{26}+f(6),l_{23}+f(3)\}=\min\{3+1,1+3,2+1,2+2\}=3\\
+f(2)=&\min\{l_{24}+f(4),l_{25}+f(5),l_{26}+f(6),l_{23}+f(3)\}=\min\{3+1,1+3,2+1,2+2\}=3\\
 f(1)=&\min\{l_{12}+f(2),l_{13}+f(3)\}=\min\{1.5+3,2+2\}=4
 \end{align*}
 
@@ -33,7 +58,7 @@ Tenemos que el camino más corto tiene longitud $4$ y se corresponde con el cami
 
 \end{ej}
 
-\underline{Elementos de P.D.}:
+\subsection{Elementos de P.D.}
 \begin{enumerate}
 \item El problema se puede descomponer en subproblemas (etapas) y debemos tomar una decisión en cada uno de ellos.
 \item En cada etapa hay un número finito de estados.
@@ -42,7 +67,7 @@ Tenemos que el camino más corto tiene longitud $4$ y se corresponde con el cami
 \item Debe existir un funcional $f$ que relacióna el valor de un subproblema en la etapa $k$ con el de la etapa $k+1$ (o $k-1$). 
 \end{enumerate}
 
-Denotemos por $s_k$ la variable que denota el estado en la etapa $k$. Sea $d_k$ una decisión factible en el estado $s_k$ y $c_k(s_k,d_k)$ el coste incurrido en el estado $k$ si se decide $d_k$. Asimismo, sea $t_k(s_k,d_k)$ el estado al que evoluciona el sistema en la etapa $k+1$ si en $s_k$ se decide $d_k$.
+Denotemos por $s_k$ la variable que denota el estado en la etapa $k$. Sea $d_k$ una decisión factible en el estado $s_k$ y $c_k(s_k,d_k)$ el coste incurrido en el estado $k$ si se decide $d_k$. Asimismo, sea $s_{k+1}=t_k(s_k,d_k)$ el estado al que evoluciona el sistema en la etapa $k+1$ si en $s_k$ se decide $d_k$.
 
 Usando el ejemplo anterior:
 \begin{itemize}
