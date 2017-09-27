@@ -3,6 +3,7 @@
 
 \chapter{Conjuntos algebraicos afines. Anillos de coordenadas. Topología de Zariski. Anillos locales.}
 Vamos a trabajar en el espacio afín de dimensión n $\A^n$ sobre un cuerpo $\K$ fijo. 
+\section{Conjuntos Algebraicos.}
 \begin{defi}
 Un subcojunto $X\subset \A^n$ es un \textbf{conjunto algebraico} si existe un conjunto $S\subset \K[x_1,\dotsc,x_n]$ tal que $X$ es el conjunto de los ceros comunes de los polinomios de S. Es decir:
 \[
@@ -121,22 +122,37 @@ Probar que $\Q$ no es $\Z-$álgebra finitamente generada.
 
 Continuando con lo anterior, vamos a suponer $I\neq\langle 1\rangle$. Sabemos que $I\subset M$ ideal maximal. Así que construimos el cuerpo $K=\mathbb{K}[x_1,\dots,x_n]/M$ que es una extensión del cuerpo $\mathbb{K}$, finitamente generada por $\overline{x}_1,\dots, \overline{x}_n$, así que es extensión finita. Como $\mathbb{K}$ es algebraicamente cerrado, su extensión algebraica es él mismo, así que $\mathbb{K}\cong K$ mediante el homomorfismo inducido por la inclusión. Recordemos que $\mathbb{A}^n=\mathbb{K}^n$. Si tomamos $f\in I$ y $(\overline{x}_1,\dots, \overline{x}_n)\in K$, entonces $f(\overline{x}_1,\dots, \overline{x}_n)=\overline{f(x_1,\dots,x_n)}=\overline{0}\in K$. 
 
-Sea $I\subset \mathbb{K}[x_1,\dotsc,x_n]$, $I=\langle f_1,\dotsc,f_r\rangle$, $f\in I(V(I))$. Añadimos una variables $\mathbb{K}[x_1,\dotsc,x_n,y]$ y consideramos $J=\langle f_1,\dotsc,f_r,1-y\dot f\rangle = I^e + \langle 1-yf\rangle$. Se tiene que $V(J) = V(I^e) \cap V(1-yf)=\emptyset$. Si $f(x_1,\dotsc,x_n)=0$ entonces $1-yf(x_1,\dotsc,x_n) = 1$. 
+Se tiene en general que $\mathcal{I}(\mathcal{V}(I))\supseteq\sqrt{I}$ para cualquier ideal. Vamos a probar la inclusión contraria. Sea $I\subset \mathbb{K}[x_1,\dotsc,x_n]$, $I=\langle f_1,\dotsc,f_r\rangle$, $f\in \mathcal{I}(\mathcal{V}(I))$. Añadimos una variables $\mathbb{K}[x_1,\dotsc,x_n,y]$ y consideramos $J=\langle f_1,\dotsc,f_r,1-y\dot f\rangle = I^e + \langle 1-yf\rangle$. Se tiene que $\mathcal{V}(J) = \mathcal{V}(I^e) \cap \mathcal{V}(1-yf)=\emptyset$ pues al ser $f\in \mathcal{I}(\mathcal{V}(I))$, que los $f_i(x_1,\dots, x_n)=0$ $(i=1,\dots,r)$ implica que $f(x_1,\dotsc,x_n)=0$. Entonces $1-yf(x_1,\dotsc,x_n) = 1\neq 0$, por lo que $1-yf(x_1,\dotsc,x_n)\notin\mathcal{V}(J)$. 
 
-Por tanto, $J=\mathbb{K}[x_1,\dotsc,x_n,y]=\langle 1 \rangle$. Tenemos que $1\in J$ 
-\begin{align*}
-1=h_1(x_1,\dotsc,x_n,y)f_1(x)+\dotsc h_r(x_1,\dotsc,x_n,y) f_r(x)+ h(1-yf) \mathbb{K}[x_1,\dotsc,x_n,y]\\
- 1 = h_1(x_1,\dotsc,x_n,\frac{1}{f(x)})f_1(x)+\dotsc+h_r(x_1,\dotsc,x_n,\frac{1}{f(x)})f_r(x)  \mathbb{K}(x_1,\dotsc,x_n)\\
- f(x_1,\dotsc,x_n)^s = g(x_1,\cdots,x_n) = g_1 f_1 + \cdots g_n f_n \mathbb{K}[x_1,\dotsc,x_n]
-\end{align*}
-Donde $ = \frac{g(x_1,\dotsc,x_n)}{f(x_1,\dotsc,x_n)^s}$
+Por tanto, $J=\mathbb{K}[x_1,\dotsc,x_n,y]=\langle 1 \rangle$. Tenemos que $1\in J$, así pues, 
+$$
+1=h_1(x_1,\dotsc,x_n,y)f_1(x)+\dotsc h_r(x_1,\dotsc,x_n,y) f_r(x)+ h(1-yf)\in \mathbb{K}[x_1,\dotsc,x_n,y].$$
+Realizando el cambio de variable $y=\frac{1}{f(x_1,\dots,x_n)}=\frac{1}{f(x)}$ obtenemos
+\begin{equation}
+1 = h_1(x_1,\dotsc,x_n,\frac{1}{f(x)})f_1(x)+\dotsc+h_r(x_1,\dotsc,x_n,\frac{1}{f(x)})f_r(x)\in  \mathbb{K}(x_1,\dotsc,x_n).\label{1}
+\end{equation}
+Por último, despejando,
+$$f(x_1,\dotsc,x_n)^s = g(x_1,\cdots,x_n) = g_1 f_1 + \cdots g_n f_n \in I$$
 
-\subsection{Teorema de los ceros de Hilbert (Nullstellensatz)}
+Donde $\frac{g(x_1,\dotsc,x_n)}{f(x_1,\dotsc,x_n)^s}$ es el resultado de sumar todas las fracciones de \ref{1}, puesto que todas en su denominador tienen solamente alguna potencia de $f(x_1,\dotsc,x_n)$.
+
+Esto significa que $f^s\in I$ para algún $s\geq 1$, por lo que $\mathcal{I}(\mathcal{V}(I))\subseteq\sqrt{I}$, con lo que hemos probado la igualdad. En particular, si $I$ es radical, $\mathcal{I}(\mathcal{V}(I)) = I$. Este resultado que hemos obtenido se conoce como el siguiente teorema.
+
+\begin{teorema}[\textbf{De los ceros de Hilbert (Nullstellensatz)}]
+Sea $\mathbb{K}$ un cuerpo algebraicamente cerrado y sea $I\subset\mathbb{K}[x_1,\dots,x_n]$ un ideal. Si $f\in\mathbb{K}[x_1,\dots,x_n]$ se anula en $\mathcal{V}(I)$, entonces existe un número natural $s\geq 1$ tal que $f^s\in I$. 
+
+\end{teorema}
+
+\begin{nota}
+Podemos asegurar que el cambio $y=\frac{1}{f(x)}$ está bien definido porque surge del homomorfismo $\mathbb{K}[x_1,\dots,x_n,y]\rightarrow\mathbb{K}(x_1,\dots,x_n)$ tal que $h(x_1,\dots,x_n)\mapsto h(x_1,\dots,x_n,\frac{1}{f(x)})$. Está bien definidido porque $\frac{1}{f(x)}$ es una función racional bien definida y se corre el peligro de que se anulen denominadores puesto que partimos de un anillo de polinomios. Sin embargo, este cambio no sería válido en como homomorfismo  $\mathbb{K}(x_1,\dots,x_n,y)\rightarrow\mathbb{K}(x_1,\dots,x_n)$, puesto que la imagen de $\frac{1}{yf(x)-1}$ no estaría bien definida.
+\end{nota}
+
+\section{Funciones regulares. Anillos de coordenadas.}
 Consideramos ahora el ideal $I = \langle x²z,z²y\rangle \subset \K[x,y,z]$. Se tiene que:
 \[ \mathcal{V}(I) = \begin{cases}
 	x²z = 0\\
 	z²y = 0
-\end{cases} = \{x=y=0, z=0\} \}\]
+\end{cases} \equiv \{x=y=0\}\cup\{ z=0\} \}\]
 Sea $f(x,y,z) = \sum_{i,j,k}a_{i,j,k}x^iy^jz^k \in \mathcal{I}(\mathcal{V}(I))$. Debe cumplirse que:
 \[ f(x,y,0) = \sum_{i,j}a_{i,j,0}x^iy^j = 0 \]
 Como estamos en cuerpo algebraicamente cerrado, $\K$ no puede ser finito, por lo que se deduce que $a_{ij0}=0$ $\forall i,j$.
@@ -146,27 +162,26 @@ Luego para un polinomio no trivial, $k ≥ 1$ y $i ≥ 1$ ó $j ≥ 1$. Esto se 
 \[ f(x,y,z) = z \sum_{i,j,k ≥ 1} a_{i,j,k} x^iy^jz^{k-1} = z(x\cdot g(x,y,z)+y\cdot h(x,y,z)) \in \langle zx,zy \rangle \]
 Entonces $\langle xz,zy\rangle = \sqrt{\langle x²z,z²y\rangle}$.
 
-\subsection{Funciones regulares}
+
 \begin{defi} Sea $X \subset A^n$ un conjunto algebraico.
 Una función $f : X \to \K$ es \textbf{regular} si existe un polinomio 
 $P \in \K[x_1,\dots,x_n]$ tal que $f(x) = P(x)$ $\forall x \in X$.
-Denotamos $\mathcal{A}(X)$ al conjunto de funciones regulares en $X$. Es un anillo, llamado anillo de coordenadas de $X$.
+Denotamos $\mathcal{A}(X)$ al conjunto de funciones regulares en $X$. Es un anillo, llamado \textbf{anillo de coordenadas} de $X$.
 \end{defi}
 
 Sea $φ : k[x_1,\dots,_n] \to \mathcal{A}(X)$. Por definición, $\Im(φ) = \mathcal{A}(X)$ y $\ker(φ) = \mathcal{I}(X)$. Por el teorema de isomorfía, $\mathcal{A}(X) \cong \K[x_1,\dots,x_n]/\mathcal{I}(X)$.
 
-\begin{defi}
-Un anillo es \textbf{reducido} si n tiene elementos nilpotentes distintos de $0$.
+\begin{defi}\label{definicion}
+Un anillo es \textbf{reducido} si no tiene elementos nilpotentes distintos de $0$.
 \end{defi}
-
-Supongamos ahora que $\mathcal{I}(X)$ es un ideal radical. Entonces, si $\overline{a}^r = \overline{0}$, $\overline{a}=0$. En otras palibras, $\mathcal{I}(X)$ es radical si y sólo si $\K[x_1,\dots,x_n]/\mathcal{I}(X)$ es reducido.
+Supongamos ahora que $\mathcal{I}(X)$ es un ideal radical. Entonces, si $a^r\in\mathcal{I}(X)$ tenemos que $a\in\mathcal{I}(X)$. Traducido al cociente, esto quiere decir que si $\overline{a}^r = \overline{0}$, $\overline{a}=0$. En otras palabras, $\mathcal{I}(X)$ es radical si y sólo si $\K[x_1,\dots,x_n]/\mathcal{I}(X)$ es reducido.
 
 \begin{lemma}
 Un ideal $m \subset \K[x_1,\dots,x_n]$ es maximal si y sólo si no existe un ideal radical $I$ con $m \subsetneq I \subsetneq \K[x_1,\dots,x_n]$.
 \end{lemma}
 
 \begin{dem}
-Es consecuencia directa de que $I \subset \sqrt{I}$ y de la definición de ideal maximal.
+Es consecuencia directa de que $I \subseteq \sqrt{I}$ y de la definición de ideal maximal, y de que si $\sqrt{I}$ es el total, entonces $I$ es el total.
 \end{dem}
 
 \begin{teorema}
@@ -174,11 +189,11 @@ $\mathcal{I}(X)$ es maximal si y sólo si no existe un conjunto algebraico $Y$ t
 \end{teorema}
 
 \begin{ejer}
-$m_p = \langle x_1,a_1, \dots,x_n-a_n \rangle$ es un ideal maximal de $\K[x_1,\dots,x_n]$.
+$m_p = \langle x_1-a_1, \dots,x_n-a_n \rangle$ es un ideal maximal de $\K[x_1,\dots,x_n]$.
 \end{ejer}
 
 \begin{nota}
-Recordemos de Estructura Algebraica la correspondencia entre los ideales de $A$ que contienen a un ideal $I$ y los ideales del anillo cociente $A/I$. Eso nos lleva al siguiente resultado. Para un conjunto algebraico $X \subset \A^n$, hay una correspondencia entre los puntos de $X$ y los ideales maximales de $\mathcal{A}(X)$.
+Recordemos de \emph{Estructuras Algebraicas} la correspondencia entre los ideales de $A$ que contienen a un ideal $I$ y los ideales del anillo cociente $A/I$. Esto es, si $I\subseteq J\subseteq A$, el ideal correspondiente es simplemente $J/I$. Eso nos lleva al siguiente resultado. Para un conjunto algebraico $X \subset \A^n$, hay una correspondencia entre los puntos de $X$ y los ideales maximales de $\mathcal{A}(X)$.
 \end{nota}
 
 \begin{defi}
@@ -188,8 +203,8 @@ Un conjunto algebraico es \textbf{reducible} si existen conjuntos algebraicos $Y
 \begin{ej}\mbox{}
 \begin{enumerate}
 	\item Si $P \in \A¹$, entonces $\{P\}$ es irreducible. Si $P_1,\dots,P_r \in \A^1$ son distintos, $\{P_1,\dots,P_r\}$ es reducible.
-	\item $X=\A¹$ es irreducible.
-	\item $X=\mathcal{V}(y-x²) \subset \A²$ es irreducible.
+	\item $X=\A¹$ es irreducible, puesto que los únicos conjuntos algebraicos en este espacio distintos del total son los conjuntos finitos.
+	\item $X=\mathcal{V}(y-x²) \subset \A²$ es irreducible. Se podrá probar con la siguiente proposición gracias a que $\mathcal{I}(X)$ es primo por ser $y-x^2$ irreducible.
 \end{enumerate}
 \end{ej}
 
@@ -206,11 +221,11 @@ Sea $\emptyset \neq X \subseteq \A^n$ algebraico, son equivalentes:
 \begin{itemize}
 	\item[$(1) \Rightarrow (2)$] Supongamos que $\mathcal{I}(X)$ no es primo. Entonces existen $f$ y $g$ en $\K[x_1,\dots,x_n]$ tal que $f\cdot g \in \mathcal{I}(X)$ pero $f$ y $g$ no están en $\mathcal{I}(X)$. Como $X$ es algebraico, existe $I$ con $\mathcal{V}(I)=X$. Veamos que:
 	\[ X = \mathcal{V}(I + \langle f\rangle) \cup \mathcal{V}(I+\langle g\rangle) = Y \cup Z \]
-	Está claro que $Y \cup Z \subset X$. Sea $x \in X$, como $f(x)g(x) = 0$. Entonces o bien $f(x)=0$ o bien $g(x)=0$, es decir, $x \in Y$ ó $x \in Z$. Luego $X = Y \cup Z$.
+	Está claro que $Y \cup Z \subseteq X$. Sea $x \in X$, como $f(x)g(x) = 0$. Entonces o bien $f(x)=0$ o bien $g(x)=0$, es decir, $x \in Y$ ó $x \in Z$. Luego $X = Y \cup Z$.
 	
 	\item[$(2) \Rightarrow (1)$] Supongamos que $X = Y \cup Z$ con $Y \neq X \neq Z$. De $Y \subsetneq X$, se deduce que $\mathcal{I}(X) \subsetneq \mathcal{I}(Y)$. Luego existe $f \in \mathcal{I}(Y) \setminus \mathcal{I}(X)$ y $g \in \mathcal{I}(Z) \setminus \mathcal{I}(X)$. Como $f \cdot g = 0$ en $Y$ y en $Z$, $f \cdot g = 0$ en $X$.
 	
-	\item[$(3) \Leftrightarrow (2)$] Demostrado en Estructura Algebraica.
+	\item[$(3) \Leftrightarrow (2)$] Usando que todo ideal primo es radical y el isomorfismo $\mathcal{A}(X)\cong\mathbb{K}[x_1,\dots,x_n]/\mathcal{I}(X)$ la prueba está realizada previamente, tras la definición \ref{definicion}.
 \end{itemize}
 \end{dem}
 
