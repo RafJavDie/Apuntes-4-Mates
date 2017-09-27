@@ -119,8 +119,15 @@ Si $k\subset K$ es una extensión de cuerpos y $K$ es finitamente generado como 
 Probar que $\Q$ no es $\Z-$álgebra finitamente generada. 
 \end{ejer}
 
-Continuando con lo anterior, vamos a suponer $I\neq\langle 1\rangle$. Sabemos que $I\subset M$ ideal maximal. Así que construimos el cuerpo $K=\mathbb{K}[x_1,\dots,x_n]/M$ que es una extensión del cuerpo $\mathbb{K}$, finitamente generada por $\overline{x}_1,\dots, \overline{x}_n$, así que es extensión finita. Como $\mathbb{K}$ es algebraicamente cerrado, su extensión algebraica es él mismo, así que $\mathbb{K}\cong K$ mediante el homomorfismo inducido por la inclusión. Recordemos que $\mathbb{A}^n=\mathbb{K}^n$. Si tomamos $f\in I$ y $(\overline{x}_1,\dots, \overline{x}_n)\in K$, etonces $f(\overline{x}_1,\dots, \overline{x}_n)=\overline{f(x_1,\dots,x_n)}=\overline{0}\in K$.
- 
+Continuando con lo anterior, vamos a suponer $I\neq\langle 1\rangle$. Sabemos que $I\subset M$ ideal maximal. Así que construimos el cuerpo $K=\mathbb{K}[x_1,\dots,x_n]/M$ que es una extensión del cuerpo $\mathbb{K}$, finitamente generada por $\overline{x}_1,\dots, \overline{x}_n$, así que es extensión finita. Como $\mathbb{K}$ es algebraicamente cerrado, su extensión algebraica es él mismo, así que $\mathbb{K}\cong K$ mediante el homomorfismo inducido por la inclusión. Recordemos que $\mathbb{A}^n=\mathbb{K}^n$. Si tomamos $f\in I$ y $(\overline{x}_1,\dots, \overline{x}_n)\in K$, entonces $f(\overline{x}_1,\dots, \overline{x}_n)=\overline{f(x_1,\dots,x_n)}=\overline{0}\in K$. 
 
+Sea $I\subset \mathbb{K}[x_1,\dotsc,x_n]$, $I=\langle f_1,\dotsc,f_r\rangle$, $f\in I(V(I))$. Añadimos una variables $\mathbb{K}[x_1,\dotsc,x_n,y]$ y consideramos $J=\langle f_1,\dotsc,f_r,1-y\dot f\rangle = I^e + \langle 1-yf\rangle$. Se tiene que $V(J) = V(I^e) \cap V(1-yf)=\emptyset$. Si $f(x_1,\dotsc,x_n)=0$ entonces $1-yf(x_1,\dotsc,x_n) = 1$. 
 
+Por tanto, $J=\mathbb{K}[x_1,\dotsc,x_n,y]=\langle 1 \rangle$. Tenemos que $1\in J$ 
+\begin{align*}
+1=h_1(x_1,\dotsc,x_n,y)f_1(x)+\dotsc h_r(x_1,\dotsc,x_n,y) f_r(x)+ h(1-yf) \mathbb{K}[x_1,\dotsc,x_n,y]\\
+ 1 = h_1(x_1,\dotsc,x_n,\frac{1}{f(x)})f_1(x)+\dotsc+h_r(x_1,\dotsc,x_n,\frac{1}{f(x)})f_r(x)  \mathbb{K}(x_1,\dotsc,x_n)\\
+ f(x_1,\dotsc,x_n)^s = g(x_1,\cdots,x_n) = g_1 f_1 + \cdots g_n f_n \mathbb{K}[x_1,\dotsc,x_n]
+\end{align*}
+Donde $ = \frac{g(x_1,\dotsc,x_n)}{f(x_1,\dotsc,x_n)^s}$
 \end{document}
