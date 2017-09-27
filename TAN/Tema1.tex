@@ -3,6 +3,10 @@
 
 \chapter{Funciones aritméticas}
 \section{Divisibilidad}
+Consideramos conocidos los conjuntos:
+\[ \N = \{1,2,3,4,\dots\} \text{ números naturales}\]
+\[ \Z = \{\dots,-3,-2,-1,0,1,2,3,\dots,\} \text{ números enteros}\]
+y las operaciones de suma y producto definidas en ellos con las propiedades usuales. El conjunto $\Z$, dotado con las operaciones suales es un \textbf{anilo conmutativo}. El anillo $\Z$ es un \textbf{dominio de integridad}.
 
 \section{Las funciones $d(n)$ y $σ(n)$}
 
@@ -21,6 +25,38 @@ Usando que $f$ y $g$ son multiplicativas:
 \end{prop}
 
 \section{Las funciones $φ(n)$ de Euler y $μ(n)$ de Möbius}
+\begin{prop}\mbox{}
+\begin{enumerate}[(a)]
+	\item La funcion φ es multiplicativa
+	\item $φ(n) = n \displaystyle\prod_{p|n} \left(1-\dfrac{1}{p}\right)$
+\end{enumerate}
+\end{prop}
+
+\begin{dem}
+Usando que $φ$ es multiplicativa:
+\[ φ(p^a) = p^a - p^{a-1} = p^a(1-1/p) \]
+Sea $n = p_1^{a_1}\cdots p_k^{a_k}$:
+\[ φ(n) = φ(p_1^{a_1})\cdots φ(p_k^{a_k}) = p_1^{a_1}(1-1/p_1)\cdots p_k^{a_k}(1-1/p_k) = n \prod_{p|n} \left(1-\dfrac{1}{p}\right)\]
+\end{dem}
+
+\begin{prop}
+Para todo $n \in \N$ se tiene $\displaystyle\sum_{d|n} φ(d) = n$.
+\end{prop}
+
+\begin{dem}
+Sea $f(n) = \sum_{d|n} φ(d)$ y $g(n) = n$. Sea $h(n) = 1$. Obsérvese que $f = φ * h$. Como $φ$ y $h$ son multiplicativas, $f$ es multiplicativa. Como $g$ también es mulitplicativa, para probar que $f = g$ basta ver que $f(p^a)=g(p^a)$ para un $p$ primo y $a ≥ 1$.
+
+\[ f(p^a) = \sum_{b|p^a} φ(b) = \sum_{k=0}^a φ(p^k) = 1+(p-1)+(p²-p)+\cdots+(p^a-p^{a-1}) = p^a = g(p^a) \]
+
+Luego $f = g$.
+\qed
+
+Como demostración alternativa:
+\[ n = \left|\left\{\frac{a}{n} \mid 1 ≤ a ≤ n\right\}\right|
+= \left|\bigcup_{b|n} \left\{\frac{a}{b} \mid 1≤a≤b, a \perp b\right\}\right|
+= \sum_{b|n} \left|\left\{\frac{a}{b} \mid 1 ≤ a ≤ b, a \perp b\right\}\right|
+= \sum_{b|n} φ(b) \]
+\end{dem}
 
 \section{Series de Dirichlet}
 
