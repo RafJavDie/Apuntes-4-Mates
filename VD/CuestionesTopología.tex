@@ -39,15 +39,10 @@ Probar que un conjunto es abierto si y solo si es entorno de todos sus puntos. U
 Llamemos $G$ al conjunto y supongamos que es abierto. Un conjunto es entorno de un punto si y solo si existe un abierto conteniendo al punto y contenido en el conjunto. Para todos los puntos de $G$ se tiene que $G$ es un abierto que contiene al punto y además $G$ está contenido en sí mismo, por lo que se verifica que $G$ es entorno de todos sus puntos. Supongamos ahora ue $G$ es entorno de todos sus puntos. Esto significa que $\forall p\in G$, $\exists U_p\subseteq G$ abierto tal que $p\in U_p$. Por tanto se tiene que $\bigcup_{p\in G} U_p\subseteq G$. Por otro lado, si $p\in G$ entonces $p\in U_p$ por definición de $U_p$. Por tanto, $p\in \bigcup_{p\in G} U_p\subseteq G$ $\forall p\in G$, es decir $\bigcup_{p\in G} U_p\supseteq G$, con lo que concluimos que $G=\bigcup_{p\in G} U_p$, que es abierto por ser unión de abiertos.
 
 Para probar que $[0,1)$ no es abierto euclídeo basta ver que este conjunto no es entorno del $0$. Esto es así porque no podemos incluir ninguna bola abierta de radio positivo centrada en el $0$ dentro del intervalo.
-<<<<<<< HEAD
-\end{sol*}
-\newpage
-\begin{exercise}
-=======
 \end{sol}
+\newpage
 
 \begin{ejer}
->>>>>>> 32c15789523a7318651517bc9f2e68c473dbfa55
 Sean $(X,T)$ un espacio topológico y $\mathcal{B}\subseteq T$. Probar que $\mathcal{B}$ es base de $T$ si y solo si $\forall G\in T$ y $\forall p\in G$, $\exists B\in\mathcal{B}$ tal que $p\in B\subseteq G$. 
 \end{ejer}
 
@@ -55,15 +50,10 @@ Sean $(X,T)$ un espacio topológico y $\mathcal{B}\subseteq T$. Probar que $\mat
 Supongamos que $\mathcal{B}$ es base. Entonces, dado $G\in T$ podemos expresar $G=\bigcup_{B\in\mathcal{B}} B$. Por tanto, si $p\in G$, entonces $p\in\bigcup_{B\in\mathcal{B}}B$, por lo que existe $B_p$ tal que $p\in B_p\subseteq G$. 
 
 Para el recíproco, tomemos un abierto cualquiera $G\in T$ y consideremos $U=\bigcup_{p\in G} B_p$. Claramente $G\subseteq U$, puesto que todos los puntos de $G$ están contenidos en $U$. Además, como por hipótesis $\forall p\ B_p\subseteq G$ se tiene la inclusión contraria, por lo que $G=U$, como queríamos demostrar.
-<<<<<<< HEAD
-\end{sol*}
-\newpage
-\begin{exercise}
-=======
 \end{sol}
 
+\newpage
 \begin{ejer}
->>>>>>> 32c15789523a7318651517bc9f2e68c473dbfa55
 Sea $X$ un conjunto y $\Omega$ una familia de subconjuntos de $X$. Sea $\mathcal{B}_\Omega=\{X\}\cup\{$ Intersecciones finitas de elementos de $\Omega\}$ y $T_\Omega=\{\emptyset\}\cup\{$Uniones cualesquiera de elementos de $\mathcal{B}_\Omega\}$. Probar que $T_\Omega$ es la menor topología sobre $X$ que contiene a $\Omega$. Probar también que $\mathcal{B}_\Omega$ es base de $T_\Omega$.
 \end{ejer}
 
@@ -107,15 +97,9 @@ Sea $U$ en la topología final, de modo que $f^{-1}(U)\in T_X$. Se tiene que $U=
 Vamos a ver que esta topología convierte a $f$ en homeomorfismo. Tenemos la biyectividad, por lo que resta probar que es continua y abierta. Por la definición de $T_Y$ vemos que $f$ es abierta, pues los abiertos de $T_Y$ son justamente las imágenes de abiertos de $T_X$. Finalmente, si $U\in T_Y$, $U=f(G)$ para algún $G\in T_X$, luego $f^{-1}(U)=G$ que es abierto, así que $f$ es continua.
 
 Por último probemos la unicidad de esta topología. Por la definición de topología final, esta es la topología más grande que hace que la aplicación sea continua. Pero no puede haber una topología más pequeña que haga que $f$ sea abierta, pues por la definición de $T_Y$, si se elimina algún elemento de este conjunto entonces habría algún abierto $G\in T_X$ tal que $f(G)$ no estaría en la hipotética topología. 
-<<<<<<< HEAD
-\end{sol*}
-\newpage
-\begin{exercise}
-=======
 \end{sol}
-
+\newpage
 \begin{ejer}
->>>>>>> 32c15789523a7318651517bc9f2e68c473dbfa55
 Sea $(Y,T_Y)$ un espacio topológico y $f:X\longrightarrow (Y,T_Y)$ una aplicación biyectiva. Probar que $T_X=\{G\subseteq X\mid f(G)\in T_Y\}$ coincide con la topología inicial de $f$ (es decir, $\{f^{-1}(U)\mid U\in T_Y\}$) y es la única topología sobre $X$ que convierte a $f$ es homeomorfismo. 
 \end{ejer}
 
@@ -125,15 +109,10 @@ Sea $G\in T_X$, de modo que $f(G)\in T_Y$ y $G=f^{-1}f(G)$, por lo que basta tom
 Para ver que convierte a $f$ en homeomorfismo, como ya es biyectiva, necesitamos que sea continua y abierta. La continuidad se deduce del apartado anterior, pues si $U\in T_Y$ entonces $f^{-1}(U)\in T_X$. Claramente es abierta puesto que $f(G)\in T_Y$ para todo abierto $G$ de esta topología por definición. 
 
 Veamos la unicidad. Por la definición de topología inicial, esta topología es la más pequeña que hace que $f$ sea continua. Pero además no puede existir una topología mayor con la que $f$ siga siendo abierta, pues para cualquier conjunto $H\notin T_X$, $f(H)\notin T_Y$.
-<<<<<<< HEAD
-\end{sol*}
-\newpage
-\begin{exercise}
-=======
 \end{sol}
+\newpage
 
 \begin{ejer}
->>>>>>> 32c15789523a7318651517bc9f2e68c473dbfa55
 Probar que todo homeomorfismo local es una aplicación abierta.
 \end{ejer}
 
