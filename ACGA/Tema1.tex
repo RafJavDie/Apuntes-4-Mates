@@ -130,4 +130,91 @@ Por tanto, $J=\mathbb{K}[x_1,\dotsc,x_n,y]=\langle 1 \rangle$. Tenemos que $1\in
  f(x_1,\dotsc,x_n)^s = g(x_1,\cdots,x_n) = g_1 f_1 + \cdots g_n f_n \mathbb{K}[x_1,\dotsc,x_n]
 \end{align*}
 Donde $ = \frac{g(x_1,\dotsc,x_n)}{f(x_1,\dotsc,x_n)^s}$
+
+\subsection{Teorema de los ceros de Hilbert (Nullstellensatz)}
+Consideramos ahora el ideal $I = \langle x²z,z²y\rangle \subset \K[x,y,z]$. Se tiene que:
+\[ \mathcal{V}(I) = \begin{cases}
+	x²z = 0\\
+	z²y = 0
+\end{cases} = \{x=y=0, z=0\} \}\]
+Sea $f(x,y,z) = \sum_{i,j,k}a_{i,j,k}x^iy^jz^k \in \mathcal{I}(\mathcal{V}(I))$. Debe cumplirse que:
+\[ f(x,y,0) = \sum_{i,j}a_{i,j,0}x^iy^j = 0 \]
+Como estamos en cuerpo algebraicamente cerrado, $\K$ no puede ser finito, por lo que se deduce que $a_{ij0}=0$ $\forall i,j$.
+Similarmente:
+\[ f(0,0,z) = 0 = \sum_{k}a_{0,0,k}z^k = 0 \Rightarrow a_{0,0,z} = 0 \]
+Luego para un polinomio no trivial, $k ≥ 1$ y $i ≥ 1$ ó $j ≥ 1$. Esto se traduce a que podemos sacar factor común $z$ y $x$ ó $y$:
+\[ f(x,y,z) = z \sum_{i,j,k ≥ 1} a_{i,j,k} x^iy^jz^{k-1} = z(x\cdot g(x,y,z)+y\cdot h(x,y,z)) \in \langle zx,zy \rangle \]
+Entonces $\langle xz,zy\rangle = \sqrt{\langle x²z,z²y\rangle}$.
+
+\subsection{Funciones regulares}
+\begin{defi} Sea $X \subset A^n$ un conjunto algebraico.
+Una función $f : X \to \K$ es \textbf{regular} si existe un polinomio 
+$P \in \K[x_1,\dots,x_n]$ tal que $f(x) = P(x)$ $\forall x \in X$.
+Denotamos $\mathcal{A}(X)$ al conjunto de funciones regulares en $X$. Es un anillo, llamado anillo de coordenadas de $X$.
+\end{defi}
+
+Sea $φ : k[x_1,\dots,_n] \to \mathcal{A}(X)$. Por definición, $\Im(φ) = \mathcal{A}(X)$ y $\ker(φ) = \mathcal{I}(X)$. Por el teorema de isomorfía, $\mathcal{A}(X) \cong \K[x_1,\dots,x_n]/\mathcal{I}(X)$.
+
+\begin{defi}
+Un anillo es \textbf{reducido} si n tiene elementos nilpotentes distintos de $0$.
+\end{defi}
+
+Supongamos ahora que $\mathcal{I}(X)$ es un ideal radical. Entonces, si $\overline{a}^r = \overline{0}$, $\overline{a}=0$. En otras palibras, $\mathcal{I}(X)$ es radical si y sólo si $\K[x_1,\dots,x_n]/\mathcal{I}(X)$ es reducido.
+
+\begin{lemma}
+Un ideal $m \subset \K[x_1,\dots,x_n]$ es maximal si y sólo si no existe un ideal radical $I$ con $m \subsetneq I \subsetneq \K[x_1,\dots,x_n]$.
+\end{lemma}
+
+\begin{dem}
+Es consecuencia directa de que $I \subset \sqrt{I}$ y de la definición de ideal maximal.
+\end{dem}
+
+\begin{teorema}
+$\mathcal{I}(X)$ es maximal si y sólo si no existe un conjunto algebraico $Y$ tal que $\emptyset \subsetneq Y \subsetneq X$. Por lo tanto, hay una correspondencia entre los conjuntos algebraicos con un solo punto y los ideales maximales
+\end{teorema}
+
+\begin{ejer}
+$m_p = \langle x_1,a_1, \dots,x_n-a_n \rangle$ es un ideal maximal de $\K[x_1,\dots,x_n]$.
+\end{ejer}
+
+\begin{nota}
+Recordemos de Estructura Algebraica la correspondencia entre los ideales de $A$ que contienen a un ideal $I$ y los ideales del anillo cociente $A/I$. Eso nos lleva al siguiente resultado. Para un conjunto algebraico $X \subset \A^n$, hay una correspondencia entre los puntos de $X$ y los ideales maximales de $\mathcal{A}(X)$.
+\end{nota}
+
+\begin{defi}
+Un conjunto algebraico es \textbf{reducible} si existen conjuntos algebraicos $Y$ y $Z$ distintos de $X$ tales que $X = Y \cup Z$. En caso contrario, decimos que $X$ es \textbf{irreducible}.
+\end{defi}
+
+\begin{ej}\mbox{}
+\begin{enumerate}
+	\item Si $P \in \A¹$, entonces $\{P\}$ es irreducible. Si $P_1,\dots,P_r \in \A^1$ son distintos, $\{P_1,\dots,P_r\}$ es reducible.
+	\item $X=\A¹$ es irreducible.
+	\item $X=\mathcal{V}(y-x²) \subset \A²$ es irreducible.
+\end{enumerate}
+\end{ej}
+
+\begin{prop}
+Sea $\emptyset \neq X \subseteq \A^n$ algebraico, son equivalentes:
+\begin{enumerate}
+	\item $X$ es irreducible.
+	\item $\mathcal{I}(X)$ es primo.
+	\item $\mathcal{A}(X)$ es un dominio de integridad.
+\end{enumerate}
+	Por lo tanto hay una correspondencia entre conjuntos algebraicos irreducibles y los ideales primos.
+\end{prop}
+\begin{dem}\mbox{}
+\begin{itemize}
+	\item[$(1) \Rightarrow (2)$] Supongamos que $\mathcal{I}(X)$ no es primo. Entonces existen $f$ y $g$ en $\K[x_1,\dots,x_n]$ tal que $f\cdot g \in \mathcal{I}(X)$ pero $f$ y $g$ no están en $\mathcal{I}(X)$. Como $X$ es algebraico, existe $I$ con $\mathcal{V}(I)=X$. Veamos que:
+	\[ X = \mathcal{V}(I + \langle f\rangle) \cup \mathcal{V}(I+\langle g\rangle) = Y \cup Z \]
+	Está claro que $Y \cup Z \subset X$. Sea $x \in X$, como $f(x)g(x) = 0$. Entonces o bien $f(x)=0$ o bien $g(x)=0$, es decir, $x \in Y$ ó $x \in Z$. Luego $X = Y \cup Z$.
+	
+	\item[$(2) \Rightarrow (1)$] Supongamos que $X = Y \cup Z$ con $Y \neq X \neq Z$. De $Y \subsetneq X$, se deduce que $\mathcal{I}(X) \subsetneq \mathcal{I}(Y)$. Luego existe $f \in \mathcal{I}(Y) \setminus \mathcal{I}(X)$ y $g \in \mathcal{I}(Z) \setminus \mathcal{I}(X)$. Como $f \cdot g = 0$ en $Y$ y en $Z$, $f \cdot g = 0$ en $X$.
+	
+	\item[$(3) \Leftrightarrow (2)$] Demostrado en Estructura Algebraica.
+\end{itemize}
+\end{dem}
+
+\begin{defi}
+Una \textbf{variedad algebraica} es un conjunto algebraico irreducible.
+\end{defi}
 \end{document}
