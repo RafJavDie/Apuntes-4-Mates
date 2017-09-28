@@ -1,38 +1,19 @@
-\documentclass[TAN.tex]{subfiles}
+\documentclass[GAP.tex]{subfiles}
 \begin{document}
 
-\chapter{Funciones aritméticas}
-\section{Divisibilidad}
-
-\section{Las funciones $d(n)$ y $σ(n)$}
-
-\begin{prop} Si $f$ y $g$ son multiplicativas la función $f * g$ definida por
-\[ f * g (n) = \sum_{d|n} f(d)g(n/d) \]
-es también multiplicativa
-
-\begin{dem}
-\[ f*g(nm) = \sum_{c|nm}f(c)g\left(\frac{nm}{c}\right) = \sum_{a|n,b|m}f(ab)g\left(\frac{nm}{ab}\right) \]
-Usando que $f$ y $g$ son multiplicativas:
-\begin{align*}
-	f*g(nm) & = \sum_{a|n,b|m} f(a)f(b)g(n/a)g(m/b)  = \sum_{a|n}f(a)g(n/a) \sum_{b|m}f(b)g(m/b) \\
-	& = (f*g)(m) \cdot (f*g)(n)
-\end{align*}
+\chapter{Tema 1}
+\begin{dem}[Proposición 2] Sean M una superficie una superficie regular y $f:M\to\R$ una aplicación continua, $p\in M$ y $(U,\X)$ una superficie simple tal que $p \in \X(U)$ y satisface las condiciones de la Definición 1. Sea otra superficie simple $(V,\Y)$ en las condiciones anteriores, veamos que $\X^{-1}(p)=\Y^{-1}(p)$. Como $(U,\X)$ y $(V,\Y)$ son superficies simples de una misma superficie regular, deben ser compatibles en la intersección. Es decir, podemos considerar la aplicación diferenciable $\X^{-1}\circ \Y \func{\Y^{-1}(W)}{X^{-1}(W)}$, donde $W=\X(U)\cap\X(V)$. Consideramos:
+\[
+f\circ \Y = (f \circ \X)\circ (\X^{-1}\circ \Y)
+\]
+Como todas las aplicaciones son diferenciables, deducimos que $f\circ \Y$ también lo es en $p''=\Y^{-1}(p)$.
 \end{dem}
-\end{prop}
+\begin{dem}[Proposición 3] Sea $f\func{\R^3}{\R}$ una aplicación diferenciable. Sea M una superficie regular en $\R^3$. Tenemos que $f$ es continua en $\R^3$, de donde se deduce que $f|_M$ es continua. Sea $I\subset \R$ abierto, $f^{-1}|_M(I)\cap M = f^{-1}(I)\cap M  \subset M$ abierto relativo, por lo que es continua. Sea $p\in $. Veamos que $f|_M$ es diferenciable en p. Sea $(U,\X)$ una s.s. de M en p. Entones $f|_M \circ \X = f \circ \X$, puesto que $X(U)\subset M$. Por tanto, $f\circ \X$ es diferenciable en $U$ y $p'\in U \subset \R^2$ abierto.
+\end{dem}
+\begin{dem}[Proposición 9] Es análoga a la Proposición 2. Se deja como ejercicio para Javi.
+\end{dem}
+\begin{dem}[Teorema 10] Sea $f\func{\R^3}{\R^3}$ una aplicación diferenciable, entonces, en particular, es continua. Sean M y N dos superficies regulares en $\R^4$ con $f(M)=N$. Veamos que $f|_M\func{M}{N}$ es continua. Sea $H\subset N$ abierto, $\exists J\subset \R^3$ abierto tal que $G=J\cap N$. Entonces $f|_M^{-1}(H) = f^{-1}(H)\cap M = g^{-1}(J\cap N)\cap M=f^{-1}(J)\cap f^{-1}(N)\cap M = f^{-1}(J)\cap M$ abierto relativo en M, puesto que $F^{-1}(J)\subset \R^3$ es abierto. Luego, $f|_M$ es continua.
 
-\section{Las funciones $φ(n)$ de Euler y $μ(n)$ de Möbius}
-
-\section{Series de Dirichlet}
-
-\section{Convergencia de series de Dirichlet}
-
-\section{Crecimiento de funciones multiplicativas}
-
-\section{Sumación parcial}
-
-\section{El orden medio de $d(n)$}
-
-\section{Método de exclusión-inclusión}
-
-\section{Algunas otras funciones aritméticas}
+Sea $p\in M$. Veamos que $f|_M\func{M}{N}$ es diferenciable en $p$. Sea $(U,\X)$ una s.s. de M en $p\in\X(U)$ y $(V,\Y)$ un s.s. en N con $f(p)\in\Y(V)$. Consideramos la composición en $\Y^{-1}\circ f \circ \X$, que tiene sentido en $X^{-1}(W)$, donde $W = f^{-1}(\Y(V))\cap \X(U)$. Además, se tiene que $\Y^{-1}\circ f \circ \X = \Y^{-1}\circ f|_M \circ \X$ en $\X^{-1}(W)$ y es diferenciable por ser composición de funciones diferenciable en $p'=\X^{-1}(p)$. Por tanto $f|_M$ es diferenciable.
+\end{dem}
 \end{document}
