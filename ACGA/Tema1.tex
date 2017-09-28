@@ -232,4 +232,63 @@ Sea $\emptyset \neq X \subseteq \A^n$ algebraico, son equivalentes:
 \begin{defi}
 Una \textbf{variedad algebraica} es un conjunto algebraico irreducible.
 \end{defi}
+
+\begin{prop}
+Todo conjunto algebraico puede expresarse como una unión finita de conjuntos irreducibles. Además, la descomposición es única en caso de ser minimal.
+\end{prop}
+\begin{dem}
+De no ser así, podríamos crear una sucesión decreciente infinita de conjuntos algebraicos irreducibles, que se corresponde con una sucesión creciente infinita de ideales primos. Como $\K[\xn{n}]$ es noetheriano, no existe tal sucesión.
+
+Supongamos ahora que $X=X_1\cup\cdots, \cup X_r=Y_1\cup\cdots\cup Y_s$ descomposiciones minimales, es decir, para todo $i$, $X_i$ no está contenido en la unión de los demás. 
+\begin{lemma}
+Sea $Y$ irreducible, $Y\subseteq Z_1\cup Z_2$ con $Z_1,Z_2$ algebraicos. Entonces $Y\subseteq Z_1$ o $Y\subseteq Z_2$. 
+\end{lemma}
+\begin{proof}
+$Y=Y\cap( Z_1\cup Z_2)=(Y\cap Z_1)\cup(Y\cap Z_2)$, luego por ser $Y$ irreducible, o bien $Y\cap Z_1=Y$ o bien $Y=Y\cap Z_2$, de donde se deduce el resultado. Por inducción se prueba para cualquier unión finita.
+\end{proof}
+Usando el lema anterior tenemos que, $X_1\subseteq X_1\cup X_2\cdots X_r=Y_1\cup Y_2\cdots\cup Y_s$ implica que $X_1\subseteq Y_j$ para algún $j$. Análogamente $Y_j\subseteq X_i$ para algún $i$. Como $X_1\not\subseteq X_i$ para $i\neq j$, se llega a que $X_1=Y_j$, con lo que finaliza la prueba.
+
+
+\end{dem}
+
+\begin{ej}
+$\mathcal{V}(\langle x^2z,z^2y\rangle)=\mathcal{V}(\langle xz,yz\rangle)=\mathcal{V}(z)\cup\mathcal{V}(x,y)$. El ideal generado por $z$ es primo porque está generado por un polinomio irreducible. El generado por $x,y$ también lo es pues al hacer el producto entre dos polinomios que tengan términos solo en $z$, también resultará un polinomio con términos solo en $z$, por lo que no estará en el ideal.
+\end{ej}
+
+\begin{prop}
+Si existe un homomorfismo $f:A\to B$ con $B$ dominio de integridad tal que $\ker{f}=I$, entonces $I$ es primo.
+\end{prop}
+
+\begin{dem}
+Sean $a,b\in A$ tales que $ab\in\ker{f}$, entonces $f(a)f(b)=f(ab)=0$. Como $B$ es dominio de integridad, o bien $f(a)=0$ o $f(b)=0$, por lo que o bien $a\in\ker{f}$ o bien $b\in\ker{f}$, como queríamos demostrar.
+\end{dem}
+
+\begin{ej}\label{ej}
+En el ejemplo anterior, podemos ver que $\langle x,y\rangle$ es primo probando usando la proposición.  Basta tomar el homomorfismo $\K[x,y,z]\to\K[z]$ tal que $f(x,y,z)\mapsto f(0,0,z)$. En este caso el $\ker$ es justamente $\langle x,y\rangle$.
+\end{ej}
+
+\begin{defi}
+Las \textbf{componentes irreducibles} de $X$ son los conjuntos algebraicos que aparecen en la descomposición de $X$ como unión de irreducibles. Dicho de otra forma, las componentes irreducibles de $X$ son los conjuntos algebraicos irreducibles maximales contenidos en $X$.
+\end{defi}
+Esta definición la podemos traducir al álgebra. Si tenemos una componente irreducible maximal $Y\subset X$, podemos asociar un ideal primo minimal $\mathcal{I}(Y)\supset\mathcal{I}(X)$.
+\begin{defi}
+Sea $A$ un anillo, un ideal primo \textbf{minimal} de $A$ es un ideal primo $P\subset A$ tal que no existe $Q\subsetneq P$ primo.
+\end{defi}
+\begin{defi}
+Sea $I\subset A$ un ideal. Los primos minimales de $I$ son los ideales $I\subseteq P\subseteq A$ primos tales que no existe otro primo $I\subseteq Q\subsetneq P\subseteq A$.
+\end{defi}
+
+\begin{ej}
+\begin{enumerate}
+\item En cualquier dominio de integridad, el único primo minimal es el $\{0\}$. 
+\item En $\Z/\Z_{12}$ serían primos minimales $\langle 2\rangle$ y $\langle 3\rangle$. El trivial ya no es primo por no ser dominio de integridad, el total nunca lo es, y $\langle 4\rangle,\langle 6\rangle$ están contenidos en los anteriores respectivamente. En general, en $\Z/\Z_{n}$, los ideales primos minimales son los generados por un divisor primo de $n$. 
+\item $\K[x,y]/\langle xy\rangle$. En este caso los ideales primos minimales de este anillo se corresponden con los ideales primos minimales de $\K[x,y]$ que contengan a $\langle xy\rangle$. Tenemos que $\mathcal{V}(xy)=\mathcal{V}(x)\cup\mathcal{V}(y)$. Por lo que los ideales que buscábamos son $\langle x\rangle$ y $\langle y\rangle$.
+\item $\mathcal{V}(\langle xy,x^2z-xz\rangle)\subseteq\mathbb{A}^3$. Primero resolvemos $X\equiv\begin{cases}
+xy=0\\
+x^2-xz=0.
+\end{cases}$ Concluimos que $X=\mathcal{V}(x)\cup\mathcal{V}(y,z)\cup\mathcal{V}(y,x-1)$. El primero es claramente irreducible porque el ideal es primo al ser $\langle x\rangle$ está generado por un polinomio irreducible. De forma análoga al ejemplo \ref{ej} se prueba para los otros dos conjuntos. 
+\end{enumerate}
+\end{ej}
+
+
 \end{document}
