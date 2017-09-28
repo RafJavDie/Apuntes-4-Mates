@@ -21,7 +21,7 @@ X=\{(x_1,\dotsc,x_n)\in\A^n\mid f(x_1,\dotsc,x_n)=0\;\forall f\in S\}=V(S)
 Si X e Y son algebraicos tales que $X=V(S)$ e $Y=V(T)$ entonces $X\cap Y = V(T\cup S)$. Además si $S\cdot T = \{f\cdot g \mid f \in S,\; g \in T\}$ entonces $X\cup Y = V(S\cdot T)$. 
 \end{prop}
 \begin{dem}
-Todas las inclusiones son sencillas. Veamos una. Sea $x\notin X\cup Y$, entonces $x\notin X$ y $x\notin Y$. Entonces existen $f\in S$ y $g\in T$ tal que $f(x)\neq 0$ y $g(x)\neq 0$. Se sigue $f(x)g(x)\neq 0$, luego $x\notin V(S\cdot T)$. 
+Todas las inclusiones son sencillas. Veamos una. Sea $x\notin X\cup Y$, entonces $x\notin X$ y $x\notin Y$. Entonces existen $f\in S$ y $g\in T$ tal que $f(x)\neq 0$ y $g(x)\neq 0$. Se sigue $f(x)g(x)\neq 0$, luego $x\notin V(S\cdot T)$. \QED
 \end{dem}
 
 \begin{defi}
@@ -35,7 +35,7 @@ Sabemos que en general si $S\subset T$ entonces $V(T)\subset V(S)$, por lo que t
 \[
 g_1 f_1(x)+ \dotsc + g_rf_r(x) = 0 \quad \forall f_i \in S
 \]
-Por lo que $x\in V(\langle S\rangle)$.
+Por lo que $x\in V(\langle S\rangle)$.\QED
 \end{dem}
 \begin{defi}
 Un anillo se dice \textbf{noetheriano} si todo ideal es finitamente generado.
@@ -69,7 +69,7 @@ Son anillos no noetherianos:
 	Tomamos $I = \bigcup_{n\geq 1} I_n$. Tenemos que $I$ es un ideal, por lo tanto está finitamente generado como $I = \langle a_1, \dots, a_r \rangle$. Cada $a_i \in I_{n_i}$ para algún $n_i$. Entonces $a_i \in I_n$  $\forall i$, si $n > \max\{n_1,\dots,n_r\}$. Llegamos entonces a que $I \subseteq I_n \subseteq I$, es decir $I_n = I$. Por lo tanto $I_{n+k} = I$ $\forall k \geq 0$. 
 
 	\item[($2\Rightarrow 1$)]
-	Sea $I \subseteq A$ y $x_1 \in I$. Entonces $\langle x_1 \rangle \subseteq I \subseteq A$. Si $I = \langle x_1 \rangle$, hemos acabado. Si no $x_2 \in I \setminus \langle x_1 \rangle$, tomamos $\langle x_1, x_2 \rangle \subseteq I \subseteq A$. Si $I = \langle x_1, x_2 \rangle$, hemos acabado. Si no, repetimos el argumento tomando un $x_3 \in I \setminus \langle x_1,x_2 \rangle$. Como la cadena creciente debe ser estacionaria, llegamos a que en algún momento, la cadena de ideales $\langle x_1,\dots,x_n\rangle$ debe estabilizarse y deducimos que $I = \langle x_1,\dots,x_n\rangle$. Por lo tanto $A$ es noetheriano.
+	Sea $I \subseteq A$ y $x_1 \in I$. Entonces $\langle x_1 \rangle \subseteq I \subseteq A$. Si $I = \langle x_1 \rangle$, hemos acabado. Si no $x_2 \in I \setminus \langle x_1 \rangle$, tomamos $\langle x_1, x_2 \rangle \subseteq I \subseteq A$. Si $I = \langle x_1, x_2 \rangle$, hemos acabado. Si no, repetimos el argumento tomando un $x_3 \in I \setminus \langle x_1,x_2 \rangle$. Como la cadena creciente debe ser estacionaria, llegamos a que en algún momento, la cadena de ideales $\langle x_1,\dots,x_n\rangle$ debe estabilizarse y deducimos que $I = \langle x_1,\dots,x_n\rangle$. Por lo tanto $A$ es noetheriano. \QED
 
 \end{itemize}
 \end{dem}
@@ -181,7 +181,7 @@ Un ideal $m \subset \K[x_1,\dots,x_n]$ es maximal si y sólo si no existe un ide
 \end{lemma}
 
 \begin{dem}
-Es consecuencia directa de que $I \subseteq \sqrt{I}$ y de la definición de ideal maximal, y de que si $\sqrt{I}$ es el total, entonces $I$ es el total.
+Es consecuencia directa de que $I \subseteq \sqrt{I}$ y de la definición de ideal maximal, y de que si $\sqrt{I}$ es el total, entonces $I$ es el total.\QED
 \end{dem}
 
 \begin{teorema}
@@ -225,7 +225,7 @@ Sea $\emptyset \neq X \subseteq \A^n$ algebraico, son equivalentes:
 	
 	\item[$(2) \Rightarrow (1)$] Supongamos que $X = Y \cup Z$ con $Y \neq X \neq Z$. De $Y \subsetneq X$, se deduce que $\mathcal{I}(X) \subsetneq \mathcal{I}(Y)$. Luego existe $f \in \mathcal{I}(Y) \setminus \mathcal{I}(X)$ y $g \in \mathcal{I}(Z) \setminus \mathcal{I}(X)$. Como $f \cdot g = 0$ en $Y$ y en $Z$, $f \cdot g = 0$ en $X$.
 	
-	\item[$(3) \Leftrightarrow (2)$] Usando que todo ideal primo es radical y el isomorfismo $\mathcal{A}(X)\cong\mathbb{K}[x_1,\dots,x_n]/\mathcal{I}(X)$ la prueba está realizada previamente, tras la definición \ref{definicion}.
+	\item[$(3) \Leftrightarrow (2)$] Usando que todo ideal primo es radical y el isomorfismo $\mathcal{A}(X)\cong\mathbb{K}[x_1,\dots,x_n]/\mathcal{I}(X)$ la prueba está realizada previamente, tras la definición \ref{definicion}.\QED
 \end{itemize}
 \end{dem}
 
@@ -246,7 +246,7 @@ Sea $Y$ irreducible, $Y\subseteq Z_1\cup Z_2$ con $Z_1,Z_2$ algebraicos. Entonce
 \begin{proof}
 $Y=Y\cap( Z_1\cup Z_2)=(Y\cap Z_1)\cup(Y\cap Z_2)$, luego por ser $Y$ irreducible, o bien $Y\cap Z_1=Y$ o bien $Y=Y\cap Z_2$, de donde se deduce el resultado. Por inducción se prueba para cualquier unión finita.
 \end{proof}
-Usando el lema anterior tenemos que, $X_1\subseteq X_1\cup X_2\cdots X_r=Y_1\cup Y_2\cdots\cup Y_s$ implica que $X_1\subseteq Y_j$ para algún $j$. Análogamente $Y_j\subseteq X_i$ para algún $i$. Como $X_1\not\subseteq X_i$ para $i\neq j$, se llega a que $X_1=Y_j$, con lo que finaliza la prueba.
+Usando el lema anterior tenemos que, $X_1\subseteq X_1\cup X_2\cdots X_r=Y_1\cup Y_2\cdots\cup Y_s$ implica que $X_1\subseteq Y_j$ para algún $j$. Análogamente $Y_j\subseteq X_i$ para algún $i$. Como $X_1\not\subseteq X_i$ para $i\neq j$, se llega a que $X_1=Y_j$, con lo que finaliza la prueba.\QED
 
 
 \end{dem}
@@ -260,7 +260,7 @@ Si existe un homomorfismo $f:A\to B$ con $B$ dominio de integridad tal que $\ker
 \end{prop}
 
 \begin{dem}
-Sean $a,b\in A$ tales que $ab\in\ker{f}$, entonces $f(a)f(b)=f(ab)=0$. Como $B$ es dominio de integridad, o bien $f(a)=0$ o $f(b)=0$, por lo que o bien $a\in\ker{f}$ o bien $b\in\ker{f}$, como queríamos demostrar.
+Sean $a,b\in A$ tales que $ab\in\ker{f}$, entonces $f(a)f(b)=f(ab)=0$. Como $B$ es dominio de integridad, o bien $f(a)=0$ o $f(b)=0$, por lo que o bien $a\in\ker{f}$ o bien $b\in\ker{f}$, como queríamos demostrar.\QED
 \end{dem}
 
 \begin{ej}\label{ej}

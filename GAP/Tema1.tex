@@ -2,18 +2,22 @@
 \begin{document}
 
 \chapter{Tema 1}
-\begin{dem}[Proposición 2] Sean M una superficie una superficie regular y $f:M\to\R$ una aplicación continua, $p\in M$ y $(U,\X)$ una superficie simple tal que $p \in \X(U)$ y satisface las condiciones de la Definición 1. Sea otra superficie simple $(V,\Y)$ en las condiciones anteriores, veamos que $\X^{-1}(p)=\Y^{-1}(p)$. Como $(U,\X)$ y $(V,\Y)$ son superficies simples de una misma superficie regular, deben ser compatibles en la intersección. Es decir, podemos considerar la aplicación diferenciable $\X^{-1}\circ \Y \func{\Y^{-1}(W)}{X^{-1}(W)}$, donde $W=\X(U)\cap\X(V)$. Consideramos:
+\begin{dem}[Proposición 2] Sean M una superficie una superficie regular y $f:M\to\R$ una aplicación continua, $p\in M$ y $(U,\X)$ una superficie simple tal que $p \in \X(U)$ y satisface las condiciones de la Definición 1. Sea otra superficie simple $(V,\Y)$ en las condiciones anteriores. Como $(U,\X)$ y $(V,\Y)$ son superficies simples de una misma superficie regular, deben ser compatibles en la intersección. Es decir, podemos considerar la aplicación diferenciable $\X^{-1}\circ \Y \func{\Y^{-1}(W)}{X^{-1}(W)}$, donde $W=\X(U)\cap\X(V)$. Consideramos:
 \[
 f\circ \Y = (f \circ \X)\circ (\X^{-1}\circ \Y)
 \]
 Como todas las aplicaciones son diferenciables, deducimos que $f\circ \Y$ también lo es en $p''=\Y^{-1}(p)$.
-\end{dem}
-\begin{dem}[Proposición 3] Sea $f\func{\R^3}{\R}$ una aplicación diferenciable. Sea M una superficie regular en $\R^3$. Tenemos que $f$ es continua en $\R^3$, de donde se deduce que $f|_M$ es continua. Sea $I\subset \R$ abierto, $f^{-1}|_M(I)\cap M = f^{-1}(I)\cap M  \subset M$ abierto relativo, por lo que es continua. Sea $p\in $. Veamos que $f|_M$ es diferenciable en p. Sea $(U,\X)$ una s.s. de M en p. Entones $f|_M \circ \X = f \circ \X$, puesto que $X(U)\subset M$. Por tanto, $f\circ \X$ es diferenciable en $U$ y $p'\in U \subset \R^2$ abierto.
-\end{dem}
-\begin{dem}[Proposición 9] Es análoga a la Proposición 2. Se deja como ejercicio para Javi.
-\end{dem}
-\begin{dem}[Teorema 10] Sea $f\func{\R^3}{\R^3}$ una aplicación diferenciable, entonces, en particular, es continua. Sean M y N dos superficies regulares en $\R^4$ con $f(M)=N$. Veamos que $f|_M\func{M}{N}$ es continua. Sea $H\subset N$ abierto, $\exists J\subset \R^3$ abierto tal que $G=J\cap N$. Entonces $f|_M^{-1}(H) = f^{-1}(H)\cap M = g^{-1}(J\cap N)\cap M=f^{-1}(J)\cap f^{-1}(N)\cap M = f^{-1}(J)\cap M$ abierto relativo en M, puesto que $F^{-1}(J)\subset \R^3$ es abierto. Luego, $f|_M$ es continua.
 
-Sea $p\in M$. Veamos que $f|_M\func{M}{N}$ es diferenciable en $p$. Sea $(U,\X)$ una s.s. de M en $p\in\X(U)$ y $(V,\Y)$ un s.s. en N con $f(p)\in\Y(V)$. Consideramos la composición en $\Y^{-1}\circ f \circ \X$, que tiene sentido en $X^{-1}(W)$, donde $W = f^{-1}(\Y(V))\cap \X(U)$. Además, se tiene que $\Y^{-1}\circ f \circ \X = \Y^{-1}\circ f|_M \circ \X$ en $\X^{-1}(W)$ y es diferenciable por ser composición de funciones diferenciable en $p'=\X^{-1}(p)$. Por tanto $f|_M$ es diferenciable.
+\QED
+\end{dem}
+\begin{dem}[Proposición 3] Sea $f\func{\R^3}{\R}$ una aplicación diferenciable. Sea M una superficie regular en $\R^3$. Tenemos que $f$ es continua en $\R^3$, de donde se deduce que $f|_M$ es continua. En efecto, sea $I\subset \R$ abierto, $f^{-1}|_M(I)\cap M = f^{-1}(I)\cap M  \subset M$ abierto relativo, por lo que es continua. Sea $p\in M$. Veamos que $f|_M$ es diferenciable en $p$. Sea $(U,\X)$ una s.s. de M en $p$. Entones $f|_M \circ \X = f \circ \X$, puesto que $X(U)\subset M$. Por tanto, $f\circ \X$ es diferenciable en $U$ y $p'\in U \subset \R^2$ abierto.\QED
+\end{dem}
+\begin{dem}[Proposición 9] 
+Sea $p\in M$, $(U_1,\X_1)$ tal que $p\in\X_1(U_1)$ y $(V_1,\Y_1)$ tal que $f(p)\in\Y(V_1)$ satisfaciendo las condiciones de la definición 7. Sean  $(U_2,\X_2)$ y $(V_2,\Y_2)$ cumpliendo las mismas condiciones. Como las cartas son compatibles en sus respectivas superficies, podemos considerar las aplicaciones diferenciables $\Y_2^{-1}\circ \Y_1$ y $\X_1^{-1}\circ \X_2$. Por tanto, $$\Y_2^{-1}\circ f\circ \X_2=(\Y_2^{-1}\circ \Y_1)\circ (\Y_1^{-1}\circ f\circ\X)\circ(\X_1^{-1}\circ \X_2).$$
+Así pues, $\Y_2^{-1}\circ f\circ \X_2$ es diferenciable en $p''=\X_2^{-1}(p)$ por ser composición de diferenciables.\QED
+\end{dem}
+\begin{dem}[Teorema 10] Sea $f\func{\R^3}{\R^3}$ una aplicación diferenciable, entonces, en particular, es continua. Sean M y N dos superficies regulares en $\R^3$ con $f(M)=N$. Veamos que $f|_M\func{M}{N}$ es continua. Sea $H\subset N$ abierto, $\exists J\subset \R^3$ abierto tal que $G=J\cap N$. Entonces $f|_M^{-1}(H) = f^{-1}(H)\cap M = f^{-1}(J\cap N)\cap M=f^{-1}(J)\cap f^{-1}(N)\cap M = f^{-1}(J)\cap M$ abierto relativo en M, puesto que $F^{-1}(J)\subset \R^3$ es abierto. Luego, $f|_M$ es continua.\QED
+
+Sea $p\in M$. Veamos que $f|_M\func{M}{N}$ es diferenciable en $p$. Sea $(U,\X)$ una s.s. de M en $p\in\X(U)$ y $(V,\Y)$ un s.s. en N con $f(p)\in\Y(V)$. Consideramos la composición en $\Y^{-1}\circ f \circ \X$, que tiene sentido en $\X^{-1}(W)$, donde $W = f^{-1}(\Y(V))\cap \X(U)$. Además, se tiene que $\Y^{-1}\circ f \circ \X = \Y^{-1}\circ f|_M \circ \X$ en $\X^{-1}(W)$ y es diferenciable por ser composición de funciones diferenciable en $p'=\X^{-1}(p)$. Por tanto $f|_M$ es diferenciable.\QED
 \end{dem}
 \end{document}
