@@ -1,0 +1,38 @@
+\documentclass[TAN.tex]{subfiles}
+\begin{document}
+
+\chapter{Funciones aritméticas}
+\section{Divisibilidad}
+
+\section{Las funciones $d(n)$ y $σ(n)$}
+
+\begin{prop} Si $f$ y $g$ son multiplicativas la función $f * g$ definida por
+\[ f * g (n) = \sum_{d|n} f(d)g(n/d) \]
+es también multiplicativa
+
+\begin{dem}
+\[ f*g(nm) = \sum_{c|nm}f(c)g\left(\frac{nm}{c}\right) = \sum_{a|n,b|m}f(ab)g\left(\frac{nm}{ab}\right) \]
+Usando que $f$ y $g$ son multiplicativas:
+\begin{align*}
+	f*g(nm) & = \sum_{a|n,b|m} f(a)f(b)g(n/a)g(m/b)  = \sum_{a|n}f(a)g(n/a) \sum_{b|m}f(b)g(m/b) \\
+	& = (f*g)(m) \cdot (f*g)(n)
+\end{align*}
+\end{dem}
+\end{prop}
+
+\section{Las funciones $φ(n)$ de Euler y $μ(n)$ de Möbius}
+
+\section{Series de Dirichlet}
+
+\section{Convergencia de series de Dirichlet}
+
+\section{Crecimiento de funciones multiplicativas}
+
+\section{Sumación parcial}
+
+\section{El orden medio de $d(n)$}
+
+\section{Método de exclusión-inclusión}
+
+\section{Algunas otras funciones aritméticas}
+\end{document}
