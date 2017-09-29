@@ -1,0 +1,17 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Algebra Conmutativa y Geometría Aplicada}
+\author{Rafael González López}
+\maketitle
+
+\begin{ejercicio}{1}
+Probar que en $\mathbb{A}^n_k$ con la topología de Zariski, dos abiertos no vacíos tienen intersección no vacía (todo abierto es denso).
+\begin{solucion}
+Por reducción al absurdo, supongamos que $\exists A,B$ abiertos no vacíos de $\mathbb{A}_k^n$ con la topología de Zariski, tales que $A\cap B =\emptyset$. Esto es equivalente a que $A^c \cup B^c = \mathbb{A}_k^n$. Podemos suponer que $A\neq B$, pues el otro caso es trivial. Sabemos además que existen $f,g\in k[\xn{n}]$, $f\neq g$, polinomios tales que $\V(f) = A^c$ y $\V(g)=B^c$. En tal caso $\V(f)\cup \V(g)=\V(fg) = \mathbb{A}^1_k$, pero esto solo puede ser si $fg \equiv 0$, pero como $k[\xn{n}]$ es dominio, se tiene que, o bien $f\equiv 0$, o bien $g \equiv 0$. Sin pérdida de generalidad, supongamos que es $f$. Entones $A^c = \V(f) = \mathbb{A}_k^n$, luego $A=\emptyset$, lo cual contradice las hipótesis.
+\end{solucion}
+\end{ejercicio}
+\end{document}
