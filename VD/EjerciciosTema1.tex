@@ -71,6 +71,12 @@ las variedades factores. De hecho, si $(U,\varphi)$ es una carta de $M$ y $(V,\p
 carta de $N$, se verifica que $(U \times V,\varphi\times\psi )$ es una carta sobre $M \times N$.
 \end{ejercicio}
 \begin{solucion}
+Sean $\mathcal{A}_1$ un atlas de dimensión $m$ para $M$ y $\mathcal{A}_2$ un atlas de dimensión $n$ para $N$. Para probar lo que se nos pide, construimos el atlas $\mathcal{A}=\{(U\times V,\varphi\times\psi): (U,\varphi)\in\mathcal{A}_1, (V,\psi)\in\mathcal{A}_2\}$. Veamos que sus elementos son cartas locales. En primer lugar, $U\times V$ es abierto de la topología producto y $\varphi\times\psi(U\times V)=\varphi(U)\times\psi(V)$ es un abierto de $\R^n\times\R^n=\R^{n+m}$. Además, el producto cartesiano de homeomorfismos es claramente homeomorfismo. Probemos ahora que las cartas están relacionadas dos a dos. 
+
+Sean $(U_1\times V_1,\varphi_1\times\psi_1)\in\mathcal{A}_1$ y $(U_2\times V_2,\varphi_2\times\psi_2)\in\mathcal{A}_2$. Entonces 
+$$(\varphi_1\times\psi_1)\circ(\varphi_2\times\psi_2)^{-1}=(\varphi_1\times\psi_1)\circ(\varphi_2^{-1}\times\psi_2^{-1})=(\varphi_1\circ\varphi_2^{-1},\psi_1\circ\psi_2^{-1}).$$
+Como cada componente es infinitamente diferenciable por hipótesis, el proucto también lo es. Finalmente, veamos que las cartas recubren $M\times N$,
+$$M\times N= \bigcup_{(U,\varphi)\in\mathcal{A}_1}U\times\bigcup_{(V,\psi)\in\mathcal{A}_1}V=\bigcup_{(U\times V,\varphi\times\psi)\in\mathcal{A}}U\times V.$$
 \end{solucion}
 
 \end{document}
