@@ -71,7 +71,9 @@ g(n) = \sum_{d\mid n} f(d)\mu(n/d)
 \begin{sol}
 \begin{itemize}
 \item[]
-\item Dado que $g(n) = f\ast \mu(n)$ y $\mu$ es una función multiplicativa, basta probar que $f$ también lo es para demostrar que $g$ lo es (propiedades de la convolución). PENDIENTE.
+\item Dado que $g(n) = (f\ast \mu)(n)$ y $\mu$ es una función multiplicativa, basta probar que $f$ también lo es para demostrar que $g$ lo es (propiedades de la convolución). Sean $n,m\in \N$ coprimos y $q=f(mn)$. Sabemos que podemos escribir $q=p_1^{a_1},\dotsc,p_k^{a_k}$. Sea $p_i$, como $(n,m)=1$, entonces o bien $p_i \mid n$, o bien $p_i \mid m$, pues no puede dividir a ambos. En tal caso, podemos separar los $p_i$ entre los que dividen a $n$ y los que dividen a $m$, de forma que $q=p_np_m$, de forma que $(n,p_m)=1$ y $(m,p_n)=1$. Es claro que $f(n)=p_n$ y $f(m)=p_m$, como queríamos probar.
+
+Supongamos que $f(n)>p_n$. Sabemos que $p_n^2\mid n$, luego $p_n \mid f(n)$, por lo que $f(n)=p_n k$. Ya que $k^2 \mid n$, se tiene que $k \mid n$, $(p_m,k)=1$ y $(p_n k)^2 \mid n \mid mn$. Pero esto implica que $p_n k \mid q = p_n p_m$, de donde $k \mid p_m$, por lo que $k=1$.
 \item Veamos los cálculos.
 \begin{gather*}
 g(p)=f(1)\mu(p) + f(p)\mu(1) = -1+1 = 0 \\
