@@ -56,7 +56,41 @@ Dado que las funciones $\sigma(n)$ y $\mu(n)$ son multiplicativas, su convoluci�
 Tal y como queríamos ver. Hemos usado que $\mu(p^a)=0$ $\forall a \geq 2$.
 \end{sol}
 \end{ejercicio}
+\newpage
 
+\begin{ejercicio}{9}
+Sea $f(n)$ el mayor número natural $m$ tal que $m^2\mid n$. definimos
+\[
+g(n) = \sum_{d\mid n} f(d)\mu(n/d)
+\]
+\begin{itemize}
+\item Demostrar que $g$ es una función multiplicativa.
+\item Calcular $g(p)$, $g(p^2)$ y $g(p^3)$, siendo $p$ un número primo.
+\item ¿Para qué valores de $n\in\N$ se tiene que $g(n)=0$?
+\end{itemize}
+\begin{sol}
+\begin{itemize}
+\item[]
+\item Dado que $g(n) = f\ast \mu(n)$ y $\mu$ es una función multiplicativa, basta probar que $f$ también lo es para demostrar que $g$ lo es (propiedades de la convolución). PENDIENTE.
+\item Veamos los cálculos.
+\begin{gather*}
+g(p)=f(1)\mu(p) + f(p)\mu(1) = -1+1 = 0 \\
+g(p^2) = f(1)\mu(p^2) + f(p)\mu(p) + f(p^2)\mu(1) = p-1\\
+g(p^3) = f(1)\mu(p^3) + f(p)\mu(p^2) + f(p^2)\mu(p) + f(p^3)\mu(1) = -p+p=0
+\end{gather*}
+Es claro que para $n\geq 1$ se tiene
+\begin{gather*}
+g(p^n) = f(p^{n-1})\mu(p) + f(p^n)\mu(1) = f(p^n)-f(p^{n-1})\\
+g(p^n) = 
+\begin{cases}
+p^{n/2}(p-1) & \text{si $n$ es par}\\
+0 			& \text{si $n$ es impar}
+\end{cases}
+\end{gather*}
+\item A partir del apartado anterior tenemos prácticamente la respuesta. $g(n)=0$ si $\exists p$ primo tal que $\nu_p(n)$ es impar, es decir, si y solo si $n$ no es un cuadrado perfecto.
+\end{itemize}
+\end{sol}
+\end{ejercicio}
 
 \newpage
 
@@ -78,6 +112,27 @@ Es decir, la función $\sigma(n)^2$ es multiplicativa y, por tanto, basta probar
  = \frac{{p^{a+1}}^2-2p^{a+1}+1}{(p-1)^2} =  \left(\frac{p^{a+1}-1}{p-1}\right)^2
 \end{gather*}
 Como queríamos probar.
+\end{sol}
+\end{ejercicio}
+
+
+\newpage
+
+
+\begin{ejercicio}{13}
+Probar que	
+\[
+\sum_{d\mid n} (-1)^{n/d}\varphi(d) = 
+\begin{cases}
+0 & \text{si $n$ es par}\\ 
+-n & \text{si $n$ es impar}
+\end{cases}
+\]
+\begin{sol}
+Sea $n \in \N$ impar, entonces $\forall d$ tal que $d \mid n$, $\frac{n}{d}$ también es impar, lo cual se traduce en que
+\[
+\sum_{d\mid n} (-1)^{n/d}\varphi(d) = \sum_{d\mid n} (-1)\varphi(d) = -\sum_{d\mid n}\varphi(d) = -n
+\]
 \end{sol}
 \end{ejercicio}
 \end{document}
