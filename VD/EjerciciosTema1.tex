@@ -1,5 +1,5 @@
 \documentclass[twoside]{article}
-\usepackage{estilo-ejercicios}
+\usepackage{../estilo-ejercicios}
 
 %--------------------------------------------------------
 \begin{document}
@@ -10,7 +10,7 @@
 
 
 
-\begin{ejercicio}{1}
+\begin{ejercicio}{1}\label{1}
 Sean $\mathcal{A}$ un atlas sobre $M$ y $(U,\varphi)\in\mathcal{ A }$ una carta local. Si $V\subseteq U$ es un
 abierto, probar que $(V, \varphi|_V )$ es una carta local admisible en $\mathcal{A}$.
 \end{ejercicio}
@@ -45,6 +45,8 @@ misma dimensión que $M$, llamada \textbf{Estructura de Subvariedad Abierta}
 de $G$.
 \end{ejercicio}
 \begin{solucion}
+Primero veamos que los elementos de $\mathcal{B}$ son cartas locales. Por definición son abiertos de la topología relativa, y las restricciones de homeomorfismos siguen siendo homeomorfismos. De hecho, $\varphi|_{G\cap U}(G\cap U)=\varphi(G\cap U)=\varphi(G)\cap\varphi(U)$, que es abierto del mismo $\R^m$ (conservando así la dimensión) por ser intersección finita de abiertos. Para ver que las cartas están relacionadas entre sí basta hacer un razonamiento  análogo al del ejercicio \ref{1}. Por último, para ver que recubren $G$, 
+$$G=M\cap G=(\bigcup_{(U,\varphi)\in\mathcal{A}}U)\cap G= \bigcup_{(U,\varphi)\in\mathcal{A}}(U\cap G).$$
 \end{solucion}
 
 \begin{ejercicio}{5}
