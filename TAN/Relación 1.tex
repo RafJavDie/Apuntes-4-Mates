@@ -1,0 +1,140 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Algebra Conmutativa y Geometría Aplicada}
+\author{Rafael González López}
+\maketitle
+
+\begin{ejercicio}{1}
+Encontrar todos los enteros positivos tales que $\varphi(n)$ no sea divisible por 4.
+\begin{sol}
+Sea $n\in \N$. Sabemos que $n=p_1^{a_1}\cdots p_k^{a_k}$. En tal caso, 
+\[
+\varphi(n) = (p_1-1)p_1^{a_1-1}\cdots(p_k-1)p_k^{a_k-1}
+\]
+Fijémonos en el siguiente detalle si $n$ tiene más de un divisor primo impar, es claro que se tendría que $4\mid \varphi(n)$, pues $p_j -1$ y $p_k-1$ serían dos factores pares de $\varphi(n)$. Por otra parte, si $p_i=2$, es claro que $0\leq a_i \leq 2$. 
+
+Por lo que sabemos hasta ahora, $n = 2^a p^b$ donde $a\in\{0,1,2\}$, $p$ es un primo impar y $b\geq 0$. Distingamos casos en función de $a$
+\begin{itemize}
+\item Si $a\neq 2$, $\varphi(n) = (p-1)p^{b-1}$ -no afecta que el 2 esté o no en la factorización de $n$. La condición del enunciado sí y solo sí $p \equiv 3 \mod 4$. Es decir, verifican el enunciado si $p$ es un primo de la forma $4k + 3$ y $b\geq 0$. El caso $b=0$ tenemos simplemente $n=1$ o $n=2$ (triviales).
+\item Si $a=2$, entonces $n=2^2p^b$. Si $b\geq 1$ entonces $\varphi(n)=2(p-1)p^{b-1}$, que es divisible por 4. Por tanto, $b=0$. Nos queda pues que, el único caso, es que $n=4$.
+\end{itemize}
+Tenemos entonces que las soluciones son 1, 2, 4, $p^k$ y $2p^k$ donde $p \equiv 3 \mod 4$.
+\end{sol}
+\end{ejercicio}
+
+\newpage
+
+
+\begin{ejercicio}{2}
+Probar que para todo $k\geq 0$
+\[
+\gcd \left\{\binom{2k}{k},\binom{2k+1}{k}\right\}=\binom{2k}{k}\frac{1}{k+1}, \quad \gcd \left\{\binom{2k+1}{k},\binom{2k+2}{k+1}\right\}=\binom{2k+1}{k+1}
+\]
+\begin{sol}
+\end{sol}
+\end{ejercicio}
+
+
+\newpage
+
+
+\begin{ejercicio}{3}
+Probar que para todo $n$
+\[
+\sum_{d\mid n} \sigma(d)\mu(n/d)=n 
+\]
+\begin{sol}
+Dado que las funciones $\sigma(n)$ y $\mu(n)$ son multiplicativas, su convolución también lo es. Por tanto, basta probar la igualdad para los números de la forma $p^a$ con $p$ primo y $a\geq 1$ (el caso $n=1$ es trivial). Sea pues $n=p^a$ con $p$ primo, entonces
+\begin{gather*}
+\sum_{d\mid n} \sigma(d)\mu(n/d) = \sum_{k=0}^a \sigma(p^k)\mu(p^{a-k}) = \sigma(p^{a-1})\mu(p) + \sigma(p^a)\mu(1) = \\
+=  -\frac{p^a - 1}{p-1} +\frac{p^{a+1}-1}{p-1} = \frac{p^{a+1}-p^a}{p-1} = p^a
+\end{gather*}
+Tal y como queríamos ver. Hemos usado que $\mu(p^a)=0$ $\forall a \geq 2$.
+\end{sol}
+\end{ejercicio}
+\newpage
+
+\begin{ejercicio}{9}
+Sea $f(n)$ el mayor número natural $m$ tal que $m^2\mid n$. definimos
+\[
+g(n) = \sum_{d\mid n} f(d)\mu(n/d)
+\]
+\begin{itemize}
+\item Demostrar que $g$ es una función multiplicativa.
+\item Calcular $g(p)$, $g(p^2)$ y $g(p^3)$, siendo $p$ un número primo.
+\item ¿Para qué valores de $n\in\N$ se tiene que $g(n)=0$?
+\end{itemize}
+\begin{sol}
+\begin{itemize}
+\item[]
+\item Dado que $g(n) = (f\ast \mu)(n)$ y $\mu$ es una función multiplicativa, basta probar que $f$ también lo es para demostrar que $g$ lo es (propiedades de la convolución). Sean $n,m\in \N$ coprimos y $q=f(mn)$. Sabemos que podemos escribir $q=p_1^{a_1},\dotsc,p_k^{a_k}$. Sea $p_i$, como $(n,m)=1$, entonces o bien $p_i \mid n$, o bien $p_i \mid m$, pues no puede dividir a ambos. En tal caso, podemos separar los $p_i$ entre los que dividen a $n$ y los que dividen a $m$, de forma que $q=p_np_m$, de forma que $(n,p_m)=1$ y $(m,p_n)=1$. Es claro que $f(n)=p_n$ y $f(m)=p_m$, como queríamos probar.
+
+Supongamos que $f(n)>p_n$. Sabemos que $p_n^2\mid n$, luego $p_n \mid f(n)$, por lo que $f(n)=p_n k$. Ya que $k^2 \mid n$, se tiene que $k \mid n$, $(p_m,k)=1$ y $(p_n k)^2 \mid n \mid mn$. Pero esto implica que $p_n k \mid q = p_n p_m$, de donde $k \mid p_m$, por lo que $k=1$.
+\item Veamos los cálculos.
+\begin{gather*}
+g(p)=f(1)\mu(p) + f(p)\mu(1) = -1+1 = 0 \\
+g(p^2) = f(1)\mu(p^2) + f(p)\mu(p) + f(p^2)\mu(1) = p-1\\
+g(p^3) = f(1)\mu(p^3) + f(p)\mu(p^2) + f(p^2)\mu(p) + f(p^3)\mu(1) = -p+p=0
+\end{gather*}
+Es claro que para $n\geq 1$ se tiene
+\begin{gather*}
+g(p^n) = f(p^{n-1})\mu(p) + f(p^n)\mu(1) = f(p^n)-f(p^{n-1})\\
+g(p^n) = 
+\begin{cases}
+p^{n/2}(p-1) & \text{si $n$ es par}\\
+0 			& \text{si $n$ es impar}
+\end{cases}
+\end{gather*}
+\item A partir del apartado anterior tenemos prácticamente la respuesta. $g(n)=0$ si $\exists p$ primo tal que $\nu_p(n)$ es impar, es decir, si y solo si $n$ no es un cuadrado perfecto.
+\end{itemize}
+\end{sol}
+\end{ejercicio}
+
+\newpage
+
+
+\begin{ejercicio}{11}
+Probar la siguiente identidad	
+\[
+\sigma(n)^2 = \sum_{d\mid n} \frac{n}{d}\sigma(d^2) 
+\]
+\begin{sol}
+Dado que $\sigma(n)$ es una función multiplicativa, sean $m,n$ coprimos, tenemos que
+\[
+\sigma(nm)^2 = (\sigma(n)\sigma(m))^2 = \sigma(n)^2\sigma(m)^2
+\]
+Es decir, la función $\sigma(n)^2$ es multiplicativa y, por tanto, basta probar la identidad para los números de la forma $p^a$ con $p$ primo y $a\geq 1$ (el caso $n=1$ es trivial). Sea $n=p^a$
+\begin{gather*}
+\sigma(n)^2 = \sigma(p^a)^2 = \left(\frac{p^{a+1}-1}{p-1}\right)^2\\  \sum_{d\mid n} \frac{n}{d}\sigma(d^2) = \sum_{k=0}^a \frac{p^a}{p^k}\sigma(p^{2k})= \sum_{k=0}^a p^{a-k}\frac{p^{2k+1}-1}{p-1} = \frac{p^a}{p-1} \sum_{k=0}^a p^{k+1}- p^{-k} = \\
+ = \frac{p^a}{p-1} \left(\frac{p^{a+2}-p}{p-1}-\frac{p^{-(a+1)}-1}{p^{-1}-1}\right) = \frac{p^a}{(p-1)^2}(p^{a+2}-p+ p^{-a}-p) = \\
+ = \frac{{p^{a+1}}^2-2p^{a+1}+1}{(p-1)^2} =  \left(\frac{p^{a+1}-1}{p-1}\right)^2
+\end{gather*}
+Como queríamos probar.
+\end{sol}
+\end{ejercicio}
+
+
+\newpage
+
+
+\begin{ejercicio}{13}
+Probar que	
+\[
+\sum_{d\mid n} (-1)^{n/d}\varphi(d) = 
+\begin{cases}
+0 & \text{si $n$ es par}\\ 
+-n & \text{si $n$ es impar}
+\end{cases}
+\]
+\begin{sol}
+Sea $n \in \N$ impar, entonces $\forall d$ tal que $d \mid n$, $\frac{n}{d}$ también es impar, lo cual se traduce en que
+\[
+\sum_{d\mid n} (-1)^{n/d}\varphi(d) = \sum_{d\mid n} (-1)\varphi(d) = -\sum_{d\mid n}\varphi(d) = -n
+\]
+\end{sol}
+\end{ejercicio}
+\end{document}
