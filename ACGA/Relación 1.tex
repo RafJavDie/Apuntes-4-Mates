@@ -30,4 +30,21 @@ Probar que $\I(X)$ es un ideal radical de $k[\xn{n}]$.
 Que $\I(X)$ es una ideal es claro, pues sean $f,g \in \I(X)$ entonces $f(x)+g(x)=0$ $\forall x\in X$. Además, si $f\in \I(X)$ y $g \in k[\xn{x}]$, entonces $f(x)g(x)=0$ $\forall x\in X$. El hecho de ser radical se desprende de que si $f^n\in \I(X)$ entonces $f^n(x) =0$ $\forall x \in X$, pero como estamos en un dominio, se tiene que $f(x)=0$ $\forall x\in X$, luego $f\in \I(X)$.
 \end{solucion}
 \end{ejercicio}	
+
+
+\newpage 
+\begin{ejercicio}{4}
+Sea $S\subset k[\xn{n}]$. Probar que $\sqrt{\langle{S}\rangle}\subset \I(\V(S))$.
+\begin{solucion}
+Sea $f\in \sqrt{\langle{S}\rangle}$. Entonces $\exists n \in \N$ tal que $f^n \in \gene{S}$. En particular, $\exists f_1,\dotsc,f_k\in S$, $g_1,\dotsc,g_k \in k[\xn{n}]$ tales que
+$$
+f^n = f_1 g_1 + \dotsc + f_k g_k 
+$$
+Dado que $f_i\in S$, $f_i(x)=0$ $\forall x \in \V(S)$. Por tanto, $f^n(x) = 0$ $\forall x \in \V(s)$. Por definición
+$$
+\I(\V(S)) =  \{ h \in k[\xn{n}] \mid h(x)=0 \; \forall x\in \V(S)\}
+$$
+Por tanto, $f^n \in \I(\V(S))$. Pero por el Ejercicio 3, sabemos que $\I(\V(S))$ es un ideal radical, luego $f\in \I(\V(S))$, como queríamos probar.
+\end{solucion}
+\end{ejercicio}	
 \end{document}
