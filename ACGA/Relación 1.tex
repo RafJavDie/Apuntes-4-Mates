@@ -36,7 +36,7 @@ Que $\I(X)$ es una ideal es claro, pues sean $f,g \in \I(X)$ entonces $f(x)+g(x)
 \begin{ejercicio}{4}
 Sea $S\subset k[\xn{n}]$. Probar que $\sqrt{\langle{S}\rangle}\subset \I(\V(S))$.
 \begin{solucion}
-Sea $f\in \sqrt{\langle{S}\rangle}$. Entonces $\exists n \in \N$ tal que $f^n \in \gene{S}$. En particular, $\exists f_1,\dotsc,f_k\in S$, $g_1,\dotsc,g_k \in k[\xn{n}]$ tales que
+Sea $f\in \sqrt{\langle{S}\rangle}$. Entonces $\exists n \in \N$ tal que $f^n \in \gene{S}$. En particular, sabemos que $\exists f_1,\dotsc,f_k\in S$, $g_1,\dotsc,g_k \in k[\xn{n}]$ tales que
 $$
 f^n = f_1 g_1 + \dotsc + f_k g_k 
 $$
@@ -55,21 +55,32 @@ y reducida es isomorfa al anillo de coordenadas de algún conjunto algebraico $X
 \end{solucion}
 \end{ejercicio}
 
+\newpage 
 \begin{ejercicio}{6}
 Probar que $\mathfrak{m}_a$ es un ideal maximal de $k[\xn{n}]$.
 \end{ejercicio}
 \begin{solucion}
-Tenemos que $\V(\mathfrak{m}_a)=\{(a_1,\dots,a_n)\}$. Al ser un conjunto unitario, es el conjunto algebraico no vacío más pequeño posible. Como el operador $\I$ invierte las inclusiones, se tiene que $I(\{(a_1,\dots,a_n)\})=\I(\V(\mathfrak{m}_a))=\mathfrak{m}_a$ es maximal. En efecto, si existiera $I\supsetneq\mathfrak{m}_a$, entonces $\V(I)\subsetneq \V(\mathfrak{m}_a)$, por lo que $\V(I)=\emptyset$, lo cual ocurre si y solo si $I=\mathbb{A}^n_k$. Esto prueba además que todos los ideales máximales son de esa forma, pues los ideales maximales se corresponden biunívocamente con los conjuntos unitarios.
+Sea $a\in \mathbb{A}^n_k$, $\V(\mathfrak{m}_a)=\{a\}$. Al ser un conjunto unitario, es el conjunto algebraico no vacío más pequeño posible, pues solo contiene al vacío. Como el operador $\I$ invierte las inclusiones, se tiene que $I(\{a\})=\I(\V(\mathfrak{m}_a))=\mathfrak{m}_a$ es maximal. En efecto, si existiera $I\supsetneq\mathfrak{m}_a$, entonces $\V(I)\subsetneq \V(\mathfrak{m}_a)$, por lo que $\V(I)=\emptyset$, lo cual ocurre si y solo si $I=\mathbb{A}^n_k$. Esto prueba además que todos los ideales máximales son de esa forma, pues los ideales maximales se corresponden biunívocamente con los conjuntos unitarios.
 \end{solucion}
 
+\newpage 
 \begin{ejercicio}{7}
-Sea $Z ⊆ \mathbb{A}^n_k$
- una variedad, y $X, Y ⊆ \mathbb{A}^n_k$ conjuntos algebraicos.
+Sea $Z ⊆ \mathbb{A}^n_k$ una variedad, y $X, Y ⊆ \mathbb{A}^n_k$ conjuntos algebraicos.
 Si $Z ⊆ X ∪ Y$, probar que $Z ⊆ X$ o $Z ⊆ Y$.
 \end{ejercicio}
 \begin{solucion}
-Que $Z$ sea una variedad significa en particular que es irreducible. $Z=Z\cap( X\cup Y)=(Z\cap X)\cup(Z\cap Y)$, luego por ser $Z$ irreducible, o bien $Z\cap X=Z$ o bien $Z\cap Y=Z$, de donde se deduce el resultado. Por inducción se prueba para cualquier unión finita.
+Si $Z$ es variedad, entonces es irreducible. $Z=Z\cap( X\cup Y)=(Z\cap X)\cup(Z\cap Y)$, luego por ser $Z$ irreducible, o bien $Z\cap X=Z$ o bien $Z\cap Y=Z$, de donde se deduce el resultado. Por inducción se prueba para cualquier unión finita.
 \end{solucion}
 
+\newpage
+\begin{ejercicio}{12} Sean $S_1 ⊆ S_2 ⊆ k[\xn{n}]$. Probar que $\V(S_2) ⊆ \V(S_1)$. ¿Es cierto el recíproco?
+\end{ejercicio}
+\begin{solucion}
+\begin{gather*}
+\V(S_2) = \{x\in \mathbb{A}_k^n \mid f(x) = 0 \; \forall f \in S_2\} =  \\
+\{x\in \mathbb{A}_k^n \mid f(x) = 0 \; \forall f \in S_1\}\cap  \{x\in \mathbb{A}_k^n \mid f(x) = 0 \; \forall f \in S_2\setminus S_1\} = V(S_1)\cap V(S_2\setminus S_1)
+\end{gather*}
+El recíproco es falso en general. Para ver un contraejemplo consideremos en $\mathbb{A}_k^1$ los conjuntos $S_1 = \{0\}$ y $S_2 = \{x\}$. Se tiene que $V(S_2) = \{0\} \subset \V(S_1)=\mathbb{A}_k^1$, pero $S_1 \not\subset S_2$.
+\end{solucion}
 
 \end{document}
