@@ -290,5 +290,25 @@ x^2-xz=0.
 \end{enumerate}
 \end{ej}
 
+\begin{prop}
+La dimensión de $\mathbb{A}^2$ es $2$
+\end{prop}
+\begin{dem}
+Es claro que existe una cadena ${(0,0)}\subsetneq\V(x-y)\subsetneq\mathbb{A}^2$, por lo que $dim(\mathbb{A}^2)\geq 2$. Supongamos que existe una cadena $Z\subsetneq Y\subsetneq X\subsetneq\mathbb{A}^2$ de variedades algebraicas. Entonces, $X=\V(f_1,\dots,f_n)\subseteq\V(f_1)=\V(g_1)\cup\cdots\cup\V(g_s)$, donde $f_1=g_1\cdots g_s$. Por tanto, $X\subseteq\V(g_i)$ para algún $i$. Por otro lado, $Y=(g, h_1,\dots,h_t)$. Si $g\mid h_i\forall i\Rightarrow X\subseteq Y\Rightarrow X=Y$, con lo que llegaríamos a una contradicción. Por tanto, existe algún $h_i$ que no es múltiplo de $g$, es decir, $Y\subseteq\V(g,h_i)$. Si tenemos $\V(g,h)$ donde $g$ es irreducible si $g\not\mid h$, entonces $\V(g,h)$ es finito. Probémoslo por reducción al absurdo.
+
+Supongamos que $\V(g,h)$ es infinito. Las primeras o las segundas coordenadas de esos puntos forman un conjunto infinito. Por fijar ideas, supongamos que hay infinitas coordenadas $x$. Podemos considerar $g,h\in k(x)[y]$. Usando $\gcd(g,h)=1$ (porque $g$ es irreducible y no divide a $h$), podemos utilizar Bézout (puesto que estamos en el anillo de polinomios en $y$ sobre el cuerpo de fracciones $k(x)$) para escribir $a(x,y)g(x,y)+b(x,y)h(x,y)=1$. Tanto $a$ como $b$ tienen denominadores solo en $x$.  Así que quitando denominadores obtenemos 
+$$\tilde{a}(x,y)g(x,y)+\tilde{b}(x,y)h(x,y)=P(x).$$
+Entonces, $P(x)$ se anula en todos los ceros comunes de $g$ y $f$, que son infinitos, por lo que $P(x)\equiv 0$, lo cual es contradicción con haberlo obtenido eliminado denominadores (no podía ser nulo). 
+
+Por tanto, $\V(g,h)$ es finito e $Y$ sería el último término de la cadena. 
+\end{dem}
+
+\begin{ej}\
+\begin{enumerate}
+\item Si $A$ es cuerpo, $dim_{Krull}(A)=0$.
+\item $dim_{Krull}(\Z)=1$, pues $\{0\}\subsetneq\langle p\rangle\subsetneq\Z$. En general si a $A$ es DIP la dimensión de Krull es $1$.
+\item $dim_{Krull}(k[\xn{n}])=n$
+\end{enumerate}
+\end{ej}
 
 \end{document}
