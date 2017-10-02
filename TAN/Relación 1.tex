@@ -136,5 +136,21 @@ Sea $n \in \N$ impar, entonces $\forall d$ tal que $d \mid n$, $\frac{n}{d}$ tam
 \sum_{d\mid n} (-1)^{n/d}\varphi(d) = \sum_{d\mid n} (-1)\varphi(d) = -\sum_{d\mid n}\varphi(d) = -n
 \]
 \end{sol}
+
+\newpage
+
+\begin{ejercicio}{15}
+Probar que
+\[ \prod_{d|n} d = n^{d(n)/2} \]
 \end{ejercicio}
+
+\begin{sol}
+Como $d$ es un divisor de $n$ si y sólo si $n/d$ es divisor de $n$:
+\[ \prod_{d|n} d = \prod_{d|n} n/d \]
+Luego:
+\[ \prod_{d|n} d = \sqrt{\left(\prod_{d|n} d\right)^2} = \sqrt{\prod_{d|n} d \cdot \prod_{d|n} n/d} = \sqrt{\prod_{d|n} n} = \sqrt{n^{d(n)}} = n^{d(n)/2} \]
+\end{sol}
+\end{ejercicio}
+
+
 \end{document}
