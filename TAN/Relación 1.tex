@@ -135,6 +135,15 @@ Sea $n \in \N$ impar, entonces $\forall d$ tal que $d \mid n$, $\frac{n}{d}$ tam
 \[
 \sum_{d\mid n} (-1)^{n/d}\varphi(d) = \sum_{d\mid n} (-1)\varphi(d) = -\sum_{d\mid n}\varphi(d) = -n
 \]
+Sea $n$ par, de manera que $n=2^sm$ para un $m$ impar y $s ≥ 1$. Entonces:
+\[ \sum_{d\mid n}(-1)^{n/d}φ(d) =  \sum_{2^s\mid d \mid n}(-1)^{n/d}φ(d) +  \sum_{2^s\nmid d \mid n}(-1)^{n/d}φ(d) = -\sum_{2^s\mid d \mid n}φ(d) + \sum_{2^s\nmid d \mid n}φ(d) \]
+
+Por un lado, como todo $d$ tal que $2^s\mid d \mid n$ debe ser de la forma $2^se$ con $e$ impar:
+\[ \sum_{d=2^se \mid n} φ(d) = \sum_{d=2^se \mid n} φ(2^se) = 2^{s-1}\sum_{d=2^se|n} φ(e) = 2^{s-1}m = \frac{n}{2}\]
+Por otro lado, todos los divisores $d$ de $n$ que no son divididos por $2^s$ son precisamente todos los divisores de $n/2$, luego:
+\[ \sum_{2^s\nmid d \mid n}φ(d) = \frac{n}{2} \]
+Por lo tanto:
+\[ \sum_{d|n} (-1)^{n/d}φ(d) = -\sum_{2^s\mid d\mid n}φ(d)+\sum_{2^s\nmid d\mid n}φ(d) = -\frac{n}{2}+\frac{n}{2}=0\]
 \end{sol}
 
 \newpage
