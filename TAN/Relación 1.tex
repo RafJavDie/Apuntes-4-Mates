@@ -58,6 +58,41 @@ Tal y como queríamos ver. Hemos usado que $\mu(p^a)=0$ $\forall a \geq 2$.
 \end{ejercicio}
 \newpage
 
+
+\begin{ejercicio}{5}
+\begin{itemize}
+\item[]
+\item Demostrar que 
+\[
+\sum_{d\mid n} \mu(d)^2 = 2^{\omega(n)}
+\]
+donde $\omega(n)=k$ si $n=p_1^{a_1}\cdots p_k^{a_k}$.
+\item Sabiendo que
+\[
+\frac{\zeta^2(s)}{\zeta(2s)}=\sum_{n=1}^\infty \frac{2^{\omega(n)}}{n^s}
+\]
+calcular la suma de la serie de Dirichlet
+$$
+\sum_{n=1}^\infty \frac{\mu(n)^2}{n^s}
+$$
+\end{itemize}
+\begin{sol}
+\begin{itemize}
+\item[]
+\item Primeramente, observamos que $\sum_{d\mid n} \mu(d)^2$ es la convolución de las funciones $f\equiv 1$ y $\mu^2$, ambas multiplicativas, por lo que también es multiplicativa. Por tanto, solo tenemos que probar el resultado para los números de la forma $n=p^a$, $p$ primo y $\geq 1$.
+\[
+\sum_{d\mid n} \mu(d)^2 = \sum_{n=0}^a \mu(p^n)^2 = \mu(1)^2 + \mu(p)^2 = 2^1 = 2^{\omega(n)}
+\]
+\item Basta realizar unas sencillas manipulaciones
+\begin{gather*}
+\frac{\zeta^2(s)}{\zeta(2s)}=\sum_{n=1}^\infty \frac{1}{n^s}\sum_{d\mid n} \mu(d)^2 = \left(\sum_{n=1}^\infty \frac{\mu(n)^2}{n^s}\right)\left(\sum_{n=1}^\infty \frac{1}{n^s}\right) = \zeta(s)\sum_{n=1}^\infty \frac{\mu(n)^2}{n^s}\\
+\sum_{n=1}^\infty \frac{\mu(n)^2}{n^s} = \frac{\zeta(s)}{\zeta(2s)}
+\end{gather*}
+\end{itemize}
+\end{sol}
+\end{ejercicio}
+\newpage
+
 \begin{ejercicio}{9}
 Sea $f(n)$ el mayor número natural $m$ tal que $m^2\mid n$. definimos
 \[
