@@ -121,12 +121,12 @@ Consideremos un proceso de decisión secuencial en $N$ etapas y denotemos por $s
 Estas ecuaciones se pueden extender a otras funciones $g$ siempre que sean descomponibles.
 $f_n(s_n)=\min_{d_n}\{g_1(c_n(s_n,d_n)),f_{n+1}(t_n(s_n,d_n))\}$.
 \begin{ejer}[Problema de producción e inventario]
-Consideremos un proceso de producción en $T$ etapas, $t=1,2\dots,T$. En la etapa $t$ existe una demanda $d_t$ que hay que satisfacer. En cada etapa se puede decidir producir $x$ unidades  con un coste $c_t(x)$. Además existe un coste de almacén $h_t(I_t)$, que representa el coste en el periodo $t$ por tener $I_t$ unidades al comienzo de este periodo. Suponemos que $I_1=0=I_{T+1}$.  En estado $I_t$, $f_t(I_t)$ es el mínimo coste para atender la demanda desde $t$ a $T$ si en $t$ tengo $I_t$ en inventario. Entonces $f_t(I_t)=\min_{x}\{c_t(x)+f_{t+1}(I_t+x-d_t)\}$ si $t<T+1$ y $f_{T+1}=\begin{cases}
+Consideremos un proceso de producción en $T$ etapas, $t=1,2\dots,T$. En la etapa $t$ existe una demanda $d_t$ que hay que satisfacer. En cada etapa se puede decidir producir $x$ unidades  con un coste $c_t(x)$. Además existe un coste de almacén $h_t(I_t)$, que representa el coste en el periodo $t$ por tener $I_t$ unidades al comienzo de este periodo. Suponemos que $I_1=0=I_{T+1}$.  En estado $I_t$, $f_t(I_t)$ es el mínimo coste para atender la demanda desde $t$ a $T$ si en $t$ tengo $I_t$ en inventario. Entonces $f_t(I_t)=\min_{x_t}\{c_t(I_t,x_t)+f_{t+1}(I_t+x-d_t)+h_t(I_t)\}$ si $t<T+1$ y $f_{T+1}=\begin{cases}
 +\infty & I_{T+1}>0\\
 0 & I_{T+1}=0
 \end{cases}$
 
-La solución del problema es $f_1(0)$. Resolver el problema con los siguientes datos.
+Donde $x_t$ son las unidades producidas en la etapa $t$ y $d_t$ la demanda en la etapa $t$. La solución del problema es $f_1(0)$. Resolver el problema con los siguientes datos.
 
 \begin{tabular}{|c| c c c c|}
 \hline
@@ -142,5 +142,213 @@ $I_1=I_5=0$, $h_t(I)=\frac{1}{2}I$ ($I\leq 4$), $c_t(x)=\begin{cases}
 0 & x=0
 \end{cases}$
 \end{ejer}
+\begin{solucion}
+\underline{Etapa 4:}\
+
+\begin{tabular}{|c| c| c| c |}
+\hline
+$I$ & $x$ & $f_4(I)$ & $x^* $ \\
+\hline
+$0$ & $4$ & $7$ &  \\
+\hline
+$1$ & $3$ & $\frac{1}{2}1+6$ & \\
+\hline
+$2$ & $2$ & $\frac{1}{2}2+5$ & \\
+\hline
+$3$ & $1$ & $\frac{1}{2}3+4$ &  \\
+\hline
+$4$ & $0$ & $\frac{1}{2}4+0$ & $\boxed{2}$ \\
+\hline
+\end{tabular}\
+\\
+
+\underline{Etapa 3:}\
+
+\begin{tabular}{|c| c| c| c | c| c|}
+\hline
+$I$ & $x$ & $\frac{1}{2}I+c(x)$ & $f_4(I-2+x)$ &  $f_3(I)$ & $x^* $ \\
+\hline
+$0$ & $2$ & $5$ & $7$  & $12$& $\boxed{2}$\\
+\hline
+ & $3$ & $0+6$ &$6,5$ & $12,5$ &\\
+\hline
+ & $4$ & $0+7$ & $6$ & $13$&\\
+\hline
+ & $5$ & $0+8$ & $5,5$ & $13,5$ & \\
+\hline
+\hline
+$1$ & $1$ & $\frac{1}{2}+4$ & $7$  & $11,5$& $\boxed{1}$\\
+\hline
+ & $2$ & $\frac{1}{2}+5$ &$6,5$ & $12$ &\\
+\hline
+ & $3$ & $\frac{1}{2}+6$ & $6$ & $12,5$&\\
+\hline
+ & $4$ & $\frac{1}{2}+7$ & $5,5$ & $13$ & \\
+\hline
+ & $5$ & $\frac{1}{2}+8$ & $2$ & $13,5$ & \\
+\hline
+\hline
+$2$ & $0$ & $\frac{1}{2}2+0$ & $7$  & $8$& $\boxed{0}$\\
+\hline
+ & $1$ & $\frac{1}{2}2+4$ &$6,5$ & $11,5$ &\\
+\hline
+ & $2$ & $\frac{1}{2}2+5$ &$6$ & $12$ &\\
+\hline
+ & $3$ & $\frac{1}{2}2+6$ & $5,5$ & $12,5$&\\
+\hline
+ & $4$ & $\frac{1}{2}2+7$ & $2$ & $10$ & \\
+\hline
+\hline
+$3$ & $0$ & $\frac{1}{2}3+0$ & $6,5$  & $8$ & $\boxed{0}$\\
+\hline
+ & $1$ & $\frac{1}{2}3+4$ &$6$ & $11,5$ &\\
+\hline
+ & $2$ & $\frac{1}{2}3+5$ &$5,5$ & $12$ &\\
+\hline
+ & $3$ & $\frac{1}{2}3+6$ & $2$ & $9,5$&\\
+ \hline
+ \hline
+ $4$ & $0$ & $\frac{1}{2}4+0$ & $6$  & $8$& $\boxed{0}$\\
+\hline
+ & $1$ & $\frac{1}{2}4+4$ &$5,5$ & $11,5$ &\\
+\hline
+ & $2$ & $\frac{1}{2}4+5$ &$2$ & $9$ &\\
+ \hline
+\end{tabular}\
+\newpage
+
+\underline{Etapa 2:}\
+
+\begin{tabular}{|c| c| c| c | c| c|}
+\hline
+$I$ & $x$ & $\frac{1}{2}I+c(x)$ & $f_3(I-3+x)$ &  $f_2(I)$ & $x^* $ \\
+\hline
+$0$ & $3$ & $0+6$ &  $12$  & $18$& \\
+\hline
+ & $4$ & $0+7$ &$11,5$ & $18,5$ &\\
+\hline
+ & $5$ & $0+8$ & $8$ & $16$& $\boxed{5}$\\
+\hline
+\hline
+$1$ & $2$ & $\frac{1}{2}+5$ & $12$  & $17,5$& \\
+\hline
+ & $3$ & $\frac{1}{2}+6$ &$11,5$ & $18$ &\\
+\hline
+ & $4$ & $\frac{1}{2}+7$ & $8$ & $15,5$& $\boxed{4}$\\
+\hline
+ & $5$ & $\frac{1}{2}+8$ & $8$ & $16,5$ & \\
+\hline
+\hline
+$2$ & $1$ & $\frac{1}{2}2+4$ & $12$  & $17$& \\
+\hline
+ & $2$ & $\frac{1}{2}2+5$ &$11,5$ & $17,5$ &\\
+\hline
+ & $3$ & $\frac{1}{2}2+6$ &$8$ & $15$ &$\boxed{3}$\\
+\hline
+ & $4$ & $\frac{1}{2}2+7$ & $8$ & $16$&\\
+\hline
+ & $5$ & $\frac{1}{2}2+8$ & $8$ & $17$ & \\
+\hline
+\hline
+$3$ & $0$ & $\frac{1}{2}3+0$ & $12$  & $13,5$ & $\boxed{0}$\\
+\hline
+ & $1$ & $\frac{1}{2}3+4$ &$11,5$ & $17$ &\\
+\hline
+ & $2$ & $\frac{1}{2}3+5$ &$8$ & $14,5$ &\\
+\hline
+ & $3$ & $\frac{1}{2}3+6$ & $8$ & $15,5$&\\
+ \hline
+ & $4$ & $\frac{1}{2}3+7$ & $8$ & $16,5$&\\
+ \hline
+ \hline
+ $4$ & $0$ & $\frac{1}{2}4+0$ & $13,5$  & $8$& $\boxed{0}$\\
+\hline
+ & $1$ & $\frac{1}{2}4+4$ &$8$ & $14$ &\\
+\hline
+ & $2$ & $\frac{1}{2}4+5$ &$8$ & $15$ &\\
+ \hline
+  & $3$ & $\frac{1}{2}4+6$ &$8$ & $16$ &\\
+ \hline
+\end{tabular}\
+\\
+
+\underline{Etapa 1:}\
+
+\begin{tabular}{|c| c| c| c | c| c|}
+\hline
+$I$ & $x$ & $\frac{1}{2}I+c(x)$ & $f_2(I-1+x)$ &  $f_1(I)$ & $x^* $ \\
+\hline
+$0$ & $1$ & $0+4$ &  $16$  & $20$& $\boxed{1}$ \\
+\hline
+ & $2$ & $0+5$ &$15,5$ & $20,5$ &\\
+\hline
+ & $3$ & $0+6$ & $15$ & $21$& \\
+ \hline
+ & $4$ & $0+7$ & $13,5$ & $20,5$& \\
+ \hline
+ & $5$ & $0+8$ & $13,5$ & $21,5$& \\
+\hline
+\end{tabular}\
+
+Partiendo del óptimo en la etapa $1$, construimos la solución general que es
+$$x_1=1,x_2=5,x_3=0,x_4=4.$$
+\end{solucion}
+\subsection{Una reformulación alternativa}
+Consideremos un grafo $(V,E)$ donde los nodos de $V$ son de la forma $(n,i)$, siendo $n$ la etapa del proceso, e $i$ el nivel inicial de inventario en esa etapa. Los arcos del grafo existen entre $(n,i)$ y $(n+1,i-d_n+x)$ $\forall x$ factible, y su coste cendrá dado por $h_n(i)+c_n(x)$. 
+
+\subsection{Una reformulación con estados unidimensionales}
+Estado $t\equiv$ etapa con inventario nulo en la que vamos a producir. $k$ es el número de etapas hasta la nueva producción. Por tanto, en $t$ se producirá la demanda acumulada desde $t$ hasta $t+k-1$, es decir, $\sum_{r=0}^{k-1}d_{t+r}$. El coste de producción en ese periodo es por tanto $c_t(\sum_{r=0}^{k-1}d_{t+r})\equiv c_{tk}$. El coste de inventario, al ir eliminando en cada caso una demanda,  sería 
+$$h_{tk}=h_t(0)+h_{t+1}\left(\sum_{r=1}^{k-1}d_{t+r}\right)+h_{t+2}\left(\sum_{r=2}^{k-1}d_{t+r}\right)+\cdots +h_{t+k-1}(d_{t+k-1})=h_t(0)+\sum_{r=1}^{k-1}h_{t+r}\left(\sum_{l\geq r}^{k-1}d_{t+l}\right).$$
+
+Entonces,  $f(t)=$ menor coste de producción en inventario desde etapa $t$ a $N$, si en $t$ tengo inventario vacío. La recurrencia quedaría de la siguiente forma:
+\begin{align*}
+&f(N)=h_N(0)+c_N(d_N),\\
+&f(t)=\min_{k:t+k\leq N}\{c_{tk}+h_{tk}+f(t+k)\}, t<N.
+\end{align*}
+
+\begin{ej}[Problema de asignación de recursos] 
+Qué cantidad de un recurso limitado $D$ asignar a activades $1,2,\dots, N$ de forma que se obtenga el mayor rendimiento. Denotamos por $r_i(d_i)$ al rendimiento de asignar $d_i$ unidades a la actividad $i$. El problema consiste en 
+\begin{align*}
+&\max \sum_{i=1}^N r_i(d_i)\\
+&s.a.: \sum_{i=1}^N d_i\leq D\\
+&      d_i\in\Z^+\ i=1,2,\dots,N
+\end{align*}
+Definimos $(n,d)$, donde $n$ es el índice de la primera actividad a la que no se le asignan recursos y $d$ son las unidades de recurso disponibles. La decisión $d_n$ es el número de unidades que se asigna a la actividad $n$. Como $f(n,d)$ representa el máximo rendimiento desde $n$ con $d$ unidades disponibles hasta $N$, la recursión queda definida como
+\begin{align*}
+&f(N,d)=\max_{d_N\leq d}\{r_N(d_N)\},\\
+&f(n,d)=\max_{d_n\leq d}\{r_n(d_n)+f(n+1,d-d_n)\}.
+\end{align*}
+La solución al problema sería $f(1,D)$.
+\end{ej}
+\begin{ej} $D=6$, tareas $1,2,3$.
+
+$r_1(x)=\begin{cases}
+7x+2 & x>0\\
+0 & x=0
+\end{cases}$, $r_2(x)=\begin{cases}
+3x+7 & x>0\\
+0 & x=0
+\end{cases}$, $r_3(x)=\begin{cases}
+4x+5 & x>0\\
+0 & x=0
+\end{cases}.$
+
+Hallar $f(1,6)$.
+
+
+\end{ej}
+
+\subsection{Un caso más simple}
+
+$r_n(x)=r_nx$ $\forall n=1,\dots, N$. La restricción de capacidad está dada por un consumo de $w_n$ por cada unidad aplicada a la actividad $n$. 
+\begin{align*}
+&\max \sum_{n=1}^N r_nx_n\\
+&s.a.: \sum_{i=n}^N w_nx_n\leq D\\
+&      x_n\in\Z^+\ n=1,2,\dots,N
+\end{align*}
+Estado: $d=$ cantidad disponible de recursos. La función $g(d)$ será el máximo rendimiento si dispongo de $d$ unidades de recurso. 
+\begin{align*}
+&g(d)=\max_{w_n\leq d}\{r_n+g(d-w_n)\}
+\end{align*}
 
 \end{document}
