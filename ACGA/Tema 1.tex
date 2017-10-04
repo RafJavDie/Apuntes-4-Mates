@@ -1,0 +1,627 @@
+\documentclass[ACGA.tex]{subfiles}
+
+
+
+
+
+
+
+
+\begin{document}
+
+\chapter{El espacio afín. Conjuntos algebraicos}
+
+\section{Conjuntos algebraicos en el espacio afín}
+
+ El principal objeto de estudio de la Geometría Algebraica son las llamadas variedades algebraicas. Así como, por ejemplo, las variedades diferenciales se construyen ``pegando'' objetos difeomorfos a abiertos de $\R^n$, las variedades algebraicas las construiremos pegando objetos isomorfos a subconjuntos algebraicos del espacio afín. De modo que el primer paso será definir éstos.
+
+ \begin{defi} Sea $k$ un cuerpo. El {\bf espacio afín de dimensión $n$ sobre $k$}, denotado $\A^n_k$, es el conjunto $k^n$ de $n$-uplas de elementos de $k$.
+ \end{defi}
+
+Un polinomio $f\in k[x_1,\ldots,x_n]$ define un subconjunto de $\Ank$, el conjunto de sus ceros: todas las $n$-uplas $(x_1,\ldots,x_n)$ tales que $f(x_1,\ldots,x_n)=0$. Más generalmente, para cada subconjunto $S\subseteq k[x_1,\ldots,x_n]$ tenemos el conjunto de sus ceros $\V(S)\subseteq \Ank$, formado por todas las $n$-uplas $(x_1,\ldots,x_n)$ tales que $f(x_1,\ldots,x_n)=0$ para \emph{todo} $f\in S$. Éstos seran precisamente nuestos objetos de estudio.
+
+\begin{defi} Un subconjunto $X\subseteq \Ank$ se dice {\bf algebraico} si existe un $S\subseteq k[x_1,\ldots,x_n]$ tal que $X=\V(S)$.
+ 
+\end{defi}
+
+\begin{ej}\label{ejemplo_algebraico}\emph{
+ \begin{enumerate}
+                \item El conjunto vacío y el espacio total $\Ank$ son conjuntos algebraicos, ya que $\emptyset=\V(\{1\})$ y $\Ank=\V(\{0\})$.
+\item Cualquier subconjunto finito $X=\{a_1,\ldots,a_r\}\subset \A^1_k$ es algebraico, ya que $X=\V(\{(x-a_1)(x-a_2)\cdots (x-a_r)\})$.
+\item La diagonal $\Delta\subset \Ank$ formada por las $n$-uplas de la forma $(x,x,\ldots,x)$ es algebraico: $\Delta=\V(\{x_1-x_2,x_1-x_3,\ldots,x_1-x_n\})$. Más generalmente, toda variedad lineal en $\Ank$ es un conjunto algebraico.
+               \end{enumerate}
+}
+\end{ej}
+
+\begin{ejer}\label{algebraicoa1} Describir todos los subconjuntos algebraicos de $\A^1_k$.
+ 
+\end{ejer}
+
+\begin{prop}\label{interseccion} La intersección arbitraria de subconjuntos algebraicos de $\Ank$ es un conjunto algebraico.
+ 
+\end{prop}
+
+\begin{proof}
+ Sea $\{X_i\}_{i\in I}$ una familia arbitraria de subconjuntos algebraicos de $\Ank$, con $X_i=\V(S_i)$. Veamos que $\bigcap_{i\in I}X_i=\V(\bigcup_{i\in I} S_i)$. En efecto, un punto $x=(x_1,\ldots,x_n)\in\Ank$ está en $\bigcap_{i\in I}X_i$ si y sólo si está en $X_i$ para todo $i\in I$, si y sólo si $f(x)=0$ para todo $f\in S_i$ y para todo $i\in I$, es decir, para todo $f\in \bigcup_{i\in I} S_i$.
+\end{proof}
+
+Por el contrario, la unión de conjuntos algebraicos no es necesariamente algebraico, como muestran el ejemplo \ref{ejemplo_algebraico} (2) y el ejercicio \ref{algebraicoa1}. Sin embargo:
+
+\begin{prop}\label{union} La unión finita de subconjuntos algebraicos de $\Ank$ es un conjunto algebraico.
+ 
+\end{prop}
+
+\begin{proof}
+ Obviamente basta probarlo para la unión de dos. Sean $X_1=\V(S_1)$ y $X_2=\V(S_2)$ dos subconjuntos algebraicos de $\Ank$. Veamos que $X_1\cup X_2=\V(S_1S_2)$, donde $S_1S_2:=\{fg| f\in S_1,g\in S_2\}$.
+
+Si $x\in X_1=\V(S_1)$, $f(x)=0$ para todo $f\in S_1$, luego $f(x)g(x)=0$ para todos $f\in S_1$, $g\in S_2$. Por tanto, $x\in \V(S_1S_2)$. Así que $X_1\subseteq \V(S_1S_2)$, y de la misma forma se prueba que $X_2\subseteq \V(S_1S_2)$. 
+
+Recíprocamente, sea $x\in \V(S_1S_2)$. Si $x\in X_1\subseteq X_1\cup X_2$, no hay nada que probar. De lo contrario, debe existir un $f_0\in S_1$ tal que $f_0(x)\neq 0$. Como $f_0(x)g(x)=0$ para todo $g\in S_2$, deducimos que $g(x)=0$ para todo $g\in S_2$, es decir, $x\in \V(S_2)=X_2$.
+\end{proof}
+
+El ejemplo \ref{ejemplo_algebraico} y las proposiciones \ref{interseccion} y \ref{union} implican que los subconjuntos algebraicos de $\Ank$ son los cerrados de una cierta topología.
+
+\begin{defi}
+ Se llama {\bf topología de Zariski} sobre $\Ank$ a la topología cuyos cerrados son los conjuntos algebraicos.
+\end{defi}
+
+Hay que tener cuidado de no dejarse llevar por la intuición cuando trabajamos con la topología de Zariski, pues sus propiedades (si $k=\R$ o $k=\C$) son muy diferentes a las de la topología euclídea, a la que estamos acostumbrados. Por ejemplo:
+
+\begin{ejer} Probar que en $\A^1_k$ con la topología de Zariski, dos abiertos no vacíos tienen intersección no vacía (todo abierto es denso). En particular, $\A^1_k$ no es un espacio de Hausdorff.
+ 
+\end{ejer}
+
+Por restricción se define la topología de Zariski en un conjunto algebraico $X\subseteq\Ank$ cualquiera: los subconjuntos cerrados son los conjuntos algebraicos contenidos en $X$.
+
+\section{Conjuntos algebraicos e ideales}
+
+Consideremos ahora la siguiente cuestión: ¿Es posible recuperar el conjunto $S$ conociendo $\V(S)$? Tal y como está planteada la pregunta, es fácil ver que no: por ejemplo, en $\A^1_k$ $\{0\}=\V(\{x\})=\V(\{x^2\})=\V(\{x,x(x-1)\})=\ldots$. En geneal, si a $S$ le añadimos cualquier múltiplo de un elemento de $S$, o la suma de dos elementos cualesquiera de $S$, el conjunto algebraico asociado no varía. Más concretamente:
+
+\begin{prop} Sea $S\subseteq k[x_1,\ldots,x_n]$ e $I=\langle S\rangle$ el ideal generado por $S$. Entonces $\V(I)=\V(S)$.
+ 
+\end{prop}
+
+\begin{proof}
+ Es fácil ver que $\V(I)\subseteq \V(S)$ (ejercicio \ref{contencion}). Recíprocamente, sea $x\in \V(S)$. Veamos que $f(x)=0$ para todo $f\in I$. Todo $f\in I$ puede escribirse como $f=\sum_{i=1}^r f_i g_i$ con $g_i\in S$ y $f_i\in k[x_1,\ldots,x_n]$. Como $g(x)=0$ para todo $g\in S$, concluimos que $f(x)=\sum_{i=1}^r f_i(x)g_i(x)=0$.
+\end{proof}
+
+Como el anillo $k[x_1,\ldots,x_n]$ es noetheriano, todo ideal está generado por un número finito de elementos. Por tanto, del resultado anterior se deduce:
+
+\begin{coro}
+ Todo conjunto algebraico en $\Ank$ se puede escribir como $\V(S)$ para un subconjunto \emph{finito} $S\subseteq k[x_1,\ldots,x_n]$.
+\end{coro}
+
+Ya que es imposible recuperar el conjunto $S$ a partir de $\V(S)$, rebajemos un poco nuestras expectativas: ¿será posible recuperar el \emph{ideal} $\langle S\rangle$ a partir de $\V(S)$? Veamos que en este caso la respuesta también es negativa, incluso en el caso $n=1$: en $\A^1_{\R}$, el conjunto vacío se puede escribir como $\V(\{1\})$, o también como $\V(\{x^2+1\})$. De hecho, para cualquier polinomio $f\in \R[x]$ sin raíces reales, $\V(\{f\})=\emptyset$. El hecho de que haya polinomios sin raíces reales es una obstrucción muy importante a la hora de estudiar variedades algebraicas. Para salvar esta obstrucción, es necesario extender el concepto de variedad algebraica de manera considerable. Por el momento, obviaremos este problema suponiendo a partir de ahora que nuestro cuerpo $k$ es algebraicamente cerrado (por ejemplo, $k=\C$).
+
+Aún así, todavía no es posible recuperar $\langle S\rangle$ a partir de $\V(S)$: Por ejemplo, en $\A^1_k$, $\{0\}=\V(\{x\})=\V(\{x^2\})$, pero $\langle x\rangle\neq\langle x^2\rangle$. Sin embargo, estamos un poco más cerca: aunque los ideales no son iguales, sus \emph{radicales} sí lo son. Así que modificamos una vez más la pregunta: ¿Es posible recuperar el \emph{radical} de $\langle S\rangle$ a partir de $\V(S)$? Veamos que ahora la respuesta es afirmativa.
+
+Sea $X\subseteq \Ank$ un subconjunto arbitrario. Definimos $\I(X)$ como el conjunto de $f\in k[x_1,\ldots,x_n]$ tales que $f(x)=0$ para todo $x\in X$. 
+
+\begin{defi}
+Definimos el \textbf{radical de un ideal} $I$ como:
+\[ \sqrt{I} = \text{rad}(I) = \{f \in k[x_1,\dots,x_n] \mid f^n \in I \text{ para algún }n \in \mathbb{N}\} \]
+\end{defi}
+
+\begin{propi}\mbox{}
+\begin{itemize}
+	\item $\sqrt{I}$ es un ideal (ejercicio).
+	\item $I \subset \sqrt{I}$.
+	\item $\sqrt{\sqrt{I}} = \sqrt{I}$.
+	\item $V(I) = V(\sqrt{I})$.
+\end{itemize}
+\end{propi}
+
+\begin{ejer} Probar que $\I(X)$ es un ideal radical de $k[x_1,\ldots,x_n]$.
+ \end{ejer}
+
+\begin{ejer}
+ Sea $S\subseteq k[x_1,\ldots,x_n]$. Probar que $\sqrt{\langle S\rangle}\subseteq \I(\V(S))$
+\end{ejer}
+
+El recíproco viene dado por el Nullstellensatz:
+
+\begin{teorema} {\bf (Nullstellensatz)} Sea $I\subseteq k[x_1,\ldots,x_n]$ un ideal. Entonces $\I(\V(I))=\sqrt{I}$.
+\end{teorema}
+
+En particular, si $I$ es un ideal radical, $\I(\V(I))=I$. La consecuencia más importante del teorema es la siguiente:
+
+\begin{coro} Las aplicaciones $I\mapsto \V(I)$ y $X\mapsto \I(X)$ definen una correspondencia biunívoca entre el conjunto de ideales radicales de $k[x_1,\ldots,x_n]$ y el conjunto de subconjuntos algebraicos de $\Ank$, que invierte las contenciones. 
+ \end{coro}
+
+Antes de dar la prueba del teorema veamos el siguiente lema, que tiene importancia por sí mismo:
+
+\begin{lemma}
+ Si $I\subsetneq k[x_1,\ldots,x_n]$ es un ideal propio, $\V(I)\neq\emptyset$.
+\end{lemma}
+
+\begin{proof}
+ Como $I\neq k[x_1,\ldots,x_n]$, está contenido en un ideal maximal $\m$. El cociente $K=k[x_1,\ldots,x_n]/\m$ es una extensión finita de $k$ por \cite[Teorema 4.10]{reid} o \cite[Corolario 5.24]{am}. Como $k$ es algebraicamente cerrado, deducimos que $k=K$. Por otro lado, todo polinomio $f\in\m$ (en particular todo $f\in I$) se anula en el punto $P=(\bar{x_1},\ldots,\bar{x_n})\in\A^n_K$. Así que $P\in\V(I)$ y por tanto $\V(I)\neq \emptyset$.
+\end{proof}
+
+\begin{proof}[Prueba del teorema] Sea $f\in\I(\V(I))$, veamos que $f^m\in I$ para algún $m\geq 1$. Introduzcamos una nueva variable $y$, y consideremos el polinomio $g(x_1,\ldots,x_n,y)=1-yf(x_1,\ldots,x_n)\in k[x_1,\ldots,x_n,y]$. Sea $J=I\cdot k[x_1,\ldots,x_n,y]+\langle g\rangle$. Para todo $(x_1,\ldots,x_n,y)\in\V(J)$ se tiene que $h(x_1,\ldots,x_n)=0$ para todo $h\in I$ (es decir, $(x_1,\ldots,x_n)\in \V(I)$). En particular, $f(x_1,\ldots,x_n)=0$, y entonces $g(x_1,\ldots,x_n,y)=1\neq 0$. Por tanto $\V(J)=\emptyset$, así que por el lema debe ser $J=k[x_1,\ldots,x_n,y]$. En particular, existen $g_i\in k[x_1,\ldots,x_n,y]$ ($i=0,\ldots,r$) y $h_i\in I$ ($i=1,\ldots,r$) tales que $g_0(1-yf)+g_1h_1+\cdots +g_rh_r=1$. Sustituyendo $y$ por $1/f$ y quitando denominadores obtenemos una expresión $f^m=\hat g_1h_1+\cdots+\hat g_rh_r$ para algún $m\geq 1$ con $\hat g_i\in k[x_1,\ldots,x_n]$, y por tanto $f^m\in I$. 
+\end{proof}
+
+
+\begin{ejer}
+Probar que $\Q$ no es $\Z-$álgebra finitamente generada. 
+\end{ejer}
+
+
+\section[Funciones regulares]{Funciones regulares. El anillo de coordenadas de un conjunto algebraico}
+
+\begin{defi}
+ Sea $X\subseteq \Ank$ un conjunto algebraico. Una aplicación $f:X\to k$ se llama {\bf función regular} si es la restricción a $X$ de una función $\bar f:\Ank\to k$ dada por un polinomio $\bar f \in k[x_1,\ldots,x_n]$.
+\end{defi}
+
+Con las operaciones habituales, el conjunto de funciones regulares $f:X\to k$ es un anillo, que llamaremos {\bf anillo de coordenadas} de $X$ y denotaremos $\calA(X)$. Veamos cómo describir $\calA(X)$ en función de $\I(X)$:
+
+\begin{prop}
+ El anillo $\calA(X)$ es isomorfo al cociente $k[x_1,\ldots,x_n]/\I(X)$.
+\end{prop}
+
+\begin{proof}
+ Por definición, existe una aplicación sobreyectiva $\pi:k[x_1,\ldots,x_n]\to\calA(X)$ dada por la restricción a $X$. Un polinomio $f\in k[x_1,\ldots,x_n]$ está en el núcleo si y sólo si la función que define en $X$ es $0$, es decir, si y sólo si $f(x)=0$ para todo $x\in X$. Ésta es justamente la definición de $\I(X)$, y por tanto $\ker\pi\cong\I(X)$. El primer teorema de isomorfía nos da el isomorfismo buscado.
+\end{proof}
+
+En particular, $\calA(X)$ es una $k$-álgebra finitamente generada. Además, como $\I(X)$ es un ideal radical, $\calA(X)$ es \emph{reducida} (es decir, no tiene elementos nilpotentes).
+
+\begin{ejer}\label{full}
+ Recíprocamente, probar que toda $k$-álgebra finitamente generada y reducida es isomorfa al anillo de coordenadas de algún conjunto algebraico $X\subseteq \Ank$ para algún $n$.
+\end{ejer}
+
+De hecho, el conjunto de puntos de $X$ se puede recuperar a partir de $\calA(X)$ como el conjunto de sus ideales maximales. Sea $a=(a_1,\ldots,a_n)\in X$. Como $\{(a_1,\ldots,a_n)\}=\V(\{x_1-a_1,\ldots,x_n-a_n\})$, tenemos una contención $\I(X)\subseteq \langle x_1-a_1,\ldots,x_n-a_n\rangle =:\m_a$, que es maximal, y por tanto $\m_a$ define un ideal maximal $\bar\m_a:=\m_a/\I(X)$ de $\calA(X)=k[x_1,\ldots,x_n]/\I(X)$.
+
+\begin{ejer}
+ Probar que $\m_a$ es un ideal maximal de $k[x_1,\ldots,x_n]$.
+\end{ejer}
+
+\begin{prop}\label{maximal}
+ La aplicación $a\mapsto \bar\m_a$ define una correspondencia biunívoca entre los puntos de $X$ y los ideales maximales de $\calA(X)$.
+\end{prop}
+
+\begin{proof}
+ Como $J\mapsto J/\I(X)$ es una correspondencia biunívoca entre los ideales de $k[x_1,\ldots,x_n]$ que contienen a $\I(X)$ y los ideales de $\calA(X)=k[x_1,\ldots,x_n]/\I(X)$ que preserva la maximalidad, basta probar que $a\mapsto{\mathfrak m}_a$ es una correspondencia biunívoca entre los puntos de $X$ y los ideales maximales de $k[x_1,\ldots,x_n]$ que contienen a $\I(X)$. La aplicación es claramente inyectiva, ya que podemos recuperar $a$ a partir de ${\mathfrak m}_a$: $\{a\}=\V({\mathfrak m}_a)$. Falta probar que es sobreyectiva.
+
+ Sea ${\mathfrak m}\subseteq k[x_1,\ldots,x_n]$ un ideal maximal que contenga a $\I(X)$ (en particular, es primo y por tanto radical). Como ${\mathfrak m}\neq k[x_1,\ldots,x_n]$ e $\I(\V({\mathfrak m}))=\mathfrak m$ (por el Nullstellensatz), $\V({\mathfrak m})\neq\emptyset$. Sea $a\in \V({\mathfrak m})\subseteq X$. La inclusión $\{a\}=\V({\mathfrak m}_a)\subseteq \V({\mathfrak m})$ implica que ${\mathfrak m}\subseteq{\mathfrak m}_a$. Como ${\mathfrak m}$ es maximal, deducimos que ${\mathfrak m}$ debe ser igual a ${\mathfrak m}_a$. Por tanto, todo ideal maximal proviene de algún punto de $X$.
+\end{proof}
+
+
+
+
+
+\section{Variedades algebraicas afines}
+
+En general, un conjunto algebraico se puede descomponer como unión finita de otros subconjuntos algebraicos más pequeños. Por ejemplo, en $\A^3_k$, el conjunto $\V({xz,yz})$ se descompone como unión del plano $z=0$ y la recta $x=y=0$. En $\A^1_k$, $\V(\{x^2-1\})=\{1\}\cup\{-1\}$.
+
+\begin{defi}
+ Un conjunto algebraico $X\subseteq \Ank$ se dice {\bf reducible} si existen dos subconjuntos algebraicos propios $Y\subsetneq X$ y $Z\subsetneq X$ tales que $X=Y\cup Z$. De lo contrario, $X$ se dice {\bf irreducible}.
+\end{defi}
+
+La reducibilidad de $X$ puede leerse en su anillo de coordenadas:
+
+\begin{prop}
+ Sea $X\subseteq\Ank$ algebraico. Las siguientes condiciones son equivalentes:
+\begin{enumerate}
+ \item $X$ es irreducible y no vacío
+\item $\I(X)$ es un ideal primo
+\item $\calA(X)$ es un dominio de integridad
+\end{enumerate}
+
+\end{prop}
+
+\begin{proof}
+ La equivalencia (2)$\Longleftrightarrow$(3) es un ejercicio fácil de Álgebra Conmutativa. Veamos que (1)$\Rightarrow$(2). Sea $X$ irreducible, y supongamos que $I:=\I(X)$ no fuera primo. Entonces, o bien $I=\langle 1\rangle$ (y entonces $X=\emptyset$) o bien existen $f,g\in k[x_1,\ldots,x_n]$ tales que $f,g\notin I$ y $fg\in I$. En particular, $(I+\langle f\rangle)\cdot(I+\langle g\rangle)\subseteq I$. Sean $Y=\V(I+\langle f\rangle)$ y $Z=\V(I+\langle g \rangle)$. Como $I\subseteq I+\langle f \rangle$ e $I\subseteq I+\langle g\rangle$ tenemos que $Y\subseteq X$ y $Z\subseteq X$. Por otro lado, $Y\cup Z=\V((I+\langle f\rangle)\cdot(I+\langle g\rangle))\supseteq\V(I)=X$, y por tanto $X=Y\cup Z$. Finalmente, $Y\neq X$, ya que $f\in\I(Y)$ pero $f\notin \I(X)$. De la misma forma se prueba que $Z\subsetneq X$, y esto contradice el hecho de que $X$ sea irreducible.
+
+Veamos ahora que (2)$\Rightarrow$(1). Sea $I=\I(X)$ primo. En particular no es el total, y por tanto $X\neq\emptyset$. Supongamos que $X$ fuera reducible: existen $Y\subsetneq X$ y $Z\subsetneq X$ tales que $X=Y\cup Z$. Entonces, $I\subsetneq\I(Y)$ e $I\subsetneq\I(Z)$. Elijamos $f\in \I(Y)\backslash I$ y $g\in\I(Z)\backslash I$. Para todo $x\in Y$, $f(x)=0$; y para todo $x\in Z$, $g(x)=0$. Por tanto, para todo $x\in X=Y\cup Z$ $f(x)g(x)=0$, así que $fg\in\I(X)=I$. Pero esto contradice el hecho de que $I$ sea primo.
+\end{proof}
+
+\begin{defi}
+ Una {\bf variedad algebraica afín} en $\Ank$ es un subconjunto algebraico $Z\subseteq\Ank$ irreducible.
+\end{defi}
+
+\begin{coro}
+  Las aplicaciones $I\mapsto \V(I)$ y $Z\mapsto \I(Z)$ definen una correspondencia biunívoca entre el conjunto de ideales primos de $k[x_1,\ldots,x_n]$ y el conjunto de variedades algebraicas afines no vacías en $\Ank$, que invierte las contenciones. 
+  
+\end{coro}
+
+\begin{ejer}\label{variedadcont}
+ Sea $Z\subseteq\Ank$ una variedad, y $X,Y\subseteq\Ank$ conjuntos algebraicos. Si $Z\subseteq X\cup Y$, probar que $Z\subseteq X$ o $Z\subseteq Y$.
+\end{ejer}
+
+
+\begin{prop}
+ Todo conjunto algebraico $X\subseteq \Ank$ puede descomponerse como una unión finita $X=Z_1\cup\cdots\cup Z_r$ de variedades. Si la descomposición es minimal (es decir, si ningún $Z_i$ puede eliminarse de ella sin que la unión deje de ser $X$), las variedades $Z_i$ están unívocamente determinadas.
+\end{prop}
+
+\begin{proof}
+ Por reducción al absurdo, supongamos que $X$ no tiene tal descomposición. En particular, $X$ no es irreducible. Por tanto, podemos escribir $X=X^1_1\cup X^1_2$, con $X^1_i\subsetneq X$. Como $X$ no se puede expresar como unión de variedades, lo mismo debe ser cierto para alguno de los $X^1_i$, pongamos para $X^1_1$. En particular, no es irreducible, y se puede expresar como $X^2_1\cup X^2_2$, con $X^2_i\subsetneq X^1_1$. Al menos uno de los $X^2_i$ no se pude expresar como unión de irreducibles (pongamos $X^2_1$), así que $X^2_1=X^3_1\cup X^3_2$ con $X^3_i\subsetneq X^2_1$. De esta forma construimos una sucesión estrictamente decreciente $X\supsetneq X^1_1\supsetneq X^2_1\supsetneq\cdots$ de conjuntos algebraicos. Tomando los correspondientes ideales, tenemos una sucesión estrictamente creciente $\I(X)\subsetneq \I(X^1_1)\subsetneq\I(X^2_1)\subsetneq\cdots$ de ideales en $k[x_1,\ldots,x_n]$, lo cual es imposible por ser un anillo noetheriano.
+
+Supongamos ahora que la descomposición $X=Z_1\cup\cdots\cup Z_r$ es minimal, y sea $X=W_1\cup\cdots\cup W_s$ otra descomposición minimal. Para todo $i=1,\ldots,r$, $Z_i\subseteq X=W_1\cup\cdots\cup W_s$ y por tanto (ejercicio \ref{variedadcont}) $Z_i\subseteq W_j$ para algún $j=1,\ldots,s$. De la misma forma, $W_j\subseteq Z_l$ para algún $l=1,\ldots,r$. Entonces $Z_i\subseteq W_j\subseteq Z_l$. Como la descomposición es minimal, debe ser $i=l$ (de lo contrario podríamos eliminar $Z_i$ de la descomposición y la unión seguiría siendo $X$). De modo que $Z_i=W_j$. Toda variedad que aparezca en la primera descomposición debe aparecer en la segunda, y viceversa.
+\end{proof}
+
+\begin{defi}
+ Si $X=Z_1\cup\cdots\cup Z_r$ es una descomposición minimal de $X$ como unión de variedades, las variedades $Z_i$ se llaman las {\bf componentes irreducibles} de $X$.
+\end{defi}
+
+
+\section{Dimensión de un conjunto algebraico}
+
+El concepto de dimensión es algo que tenemos claro intuitivamente, pero definirlo matemáticamente es casi siempre una cuestión delicada. En principio, parece claro que la dimensión de una variedad debe ser uno más que el máximo de las dimensiones de las variedades estrictamente contenidas en ella. Esto nos da una definición recursiva de la dimensión, que podemos expresar también de la siguiente forma:
+
+\begin{defi} Sea $X\subseteq \Ank$ un conjunto algebraico. La {\bf dimensión} de $X$ es el mayor entero $r$ tal que existe una cadena estrictamente creciente $Z_0\subsetneq Z_1\subsetneq \cdots\subsetneq Z_r\subseteq X$ de variedades algebraicas afines en $X$.
+
+\end{defi}
+
+Prácticamente de la propia definición se deduce:
+
+\begin{prop}
+La dimensión de $X\subseteq \Ank$ es igual a la dimensión de Krull de su anillo de coordenadas $\calA(X)$. 
+\end{prop}
+
+\begin{proof}
+ Las cadenas estrictamente crecientes $Z_0\subsetneq Z_1\subsetneq \cdots\subsetneq Z_r\subseteq X$ de variedades contenidas en $X$ se corresponden biunívocamente con las cadenas estrictamente decrecientes ${\mathfrak p}_0\supsetneq{\mathfrak p}_1\supsetneq\cdots\supsetneq{\mathfrak p}_r\supseteq \I(X)$ de ideales primos en $k[x_1,\ldots,x_n]$ que contienen a $\I(X)$ mediante la aplicación $Z\mapsto\I(Z)$, y éstas se corresponden biunívocamente con las cadenas estrictamente decrecientes ${\mathfrak p}_0\supsetneq{\mathfrak p}_1\supsetneq\cdots\supsetneq{\mathfrak p}_r$ de ideales primos en $\calA(X)$. La dimensión de Krull de $\calA(X)$ es por definición la máxima longitud de una tal cadena.
+\end{proof}
+
+\begin{coro}
+ La dimensión de $\Ank$ es $n$.
+\end{coro}
+
+\begin{defi}
+ Una variedad de dimensión $1$ (respectivamente $2$, $n-1$) en $\Ank$ se denomina una {\bf curva} (resp. {\bf superficie}, {\bf hipersuperficie}) afín.
+\end{defi}
+
+\begin{defi}
+ Un conjunto algebraico $X\subseteq \Ank$ se dice {\bf equidimensional} si todas sus componentes irreducibles tienen la misma dimensión.
+\end{defi}
+
+
+Las hipersuperficies afines son fáciles de clasificar:
+
+\begin{prop}\label{equi}
+ Un conjunto algebraico $X\subseteq\Ank$ es equidimensional de dimensión $n-1$ si y sólo si $\I(X)$ es un ideal principal (distinto de $0$ y el total). En particular, $X$ es una hipersuperficie si y sólo si $\I(X)$ está generado por un polinomio irreducible.
+\end{prop}
+
+\begin{defi}
+Dado un ideal $I\subseteq A$, la {\bf altura } de $I$ es el mayor $\geq 0$ tal que existe $\mathfrak{p}_1\subsetneq\mathfrak{p}_1\dots\subsetneq\mathfrak{p}_r\subsetneq I$, con $\mathfrak{p}_i$ primo. 
+\end{defi}
+
+\begin{prop}
+$A$ es DFU si y solo si todo ideal primo de altura $1$ es principal. 
+\end{prop}
+
+\begin{proof}[Prueba de la proposición \ref{equi}]
+ Basta probar la segunda afirmación, puesto que todo ideal principal (distinto de $0$ y el total) es producto de ideales principales generados por un polinomio irreducible. Supongamos que $X$ es una hipersuperficie, entonces $\I(X)$ es un ideal primo tal que $k[x_1,\ldots,x_n]/\I(X)$ tiene dimensión $n-1$. Entonces $\I(X)$ tiene altura $1$ (de lo contrario, podríamos construir una cadena creciente de primos en $k[x_1,\ldots,x_n]$ de longitud $>(n-1)+1=n$. Por \cite[Proposition 1.12A]{h} todo ideal primo de altura $1$ en $k[x_1,\ldots,x_n]$ es principal. Como es primo, el generador del ideal debe ser irreducible.
+
+Recíprocamente, supongamos que $\I(X)$ está generado por un polinomio irreducible. Entonces $\I(X)$ es primo, y por tanto $X$ es una variedad. Por el teorema de los ideales principales de Krull \cite[Corolario 11.17]{am} $\I(X)$ tiene altura $1$, y por tanto la dimensión de $\calA(X)$ (que es la de $X$) es $n-1$, ya que para todo ideal primo $\mathfrak p$ de $k[x_1,\ldots,x_n]$ se tiene que $\dim k[x_1,\ldots,x_n]/{\mathfrak p}+\mathrm{ht}({\mathfrak p})=n$.
+\end{proof}
+
+La proposición anterior no es cierta para conjuntos algebraicos arbitrarios: en general, hacen falta más de $r$ polinomios para generar el ideal de una variedad afín de dimensión $n-r$. Si $X$ tiene dimensión $n-r$ e $\I(X)$ está generado por $r$ polinomios, se dice que $X$ es {\bf intersección completa}.
+
+\begin{teorema}[de los ideales principales de Krull]
+Si $a\in A$ que no sea divisor de cero ni unidad, entonces los primos minimales de $\langle a\rangle$ tienen altura $1$. El recíproco también es cierto.
+\end{teorema}
+\begin{proof}
+Probemos primero el recíproco. $\I(X)=\langle f\rangle =\langle g_1\cdots g_r\rangle$ donde los $g_i$ son irreducibles. Los primos minimales de $\I(X)$ son los $\langle g_i\rangle$, por lo que $\langle g_i\rangle$ tiene altura $1$, es decir, $\{0\}\subsetneq \langle g_i\rangle$ y no hay más primos intermedios. Entonces tendríamos que probar que $dim k[x_1,\dots,x_n]/\langle g_i\rangle =n-1$. El siguiente paso sería completar la cadena anterior hasta una de longitud $n-1$. Esta prueba no se completa en clase.
+\end{proof}
+
+\begin{defi}
+Un anillo es {\bf catenario } si toda cadena creciente $\mathfrak{p}_0\subsetneq\mathfrak{p}_1\subsetneq\dots\subsetneq\mathfrak{p}_r$ de ideales primos se extiende a una cadena de longitud $dim_{Krull}(A)$. 
+\end{defi}
+
+\begin{teorema}
+$k[x_1,\dots,x_n]$ es catenario.
+\end{teorema}
+
+\begin{ejer}
+En $\mathbb{A}^4$, el conjunto $X=Y\cup Z$ donde $Y=\{x_1=0,x_2=0\}$ y $Z=\{x_3=0,x_4=0\}$ no se puede expresar con solo dos ecuaciones (ejemplo de que el teorema de los ideales principales de Krull no se puede generalizar a dimensiones menores). 
+\end{ejer}
+
+
+
+\begin{ejer}\label{dimensionmayor}
+ Si $I\subseteq k[x_1,\ldots,x_n]$ es un ideal generado por $r$ elementos, probar que la dimensión de cada componente irreducible de $\V(I)$ es $\geq n-r$ (\emph{Ayuda:} Usar \cite[corolario 1.16]{am}).
+\end{ejer}
+
+
+
+\section{Funciones racionales}
+
+Además de las funciones regulares, en Geometría Algebraica juegan un papel fundamental las llamadas funciones racionales. Éstas son funciones que sólo están definidas en un abierto de una variedad, no en la variedad completa. Gracias a que los abiertos de Zariski son grandes, podemos operar con funciones racionales como si se tratara de funciones regulares.
+
+\begin{defi}
+Un conjunto $S\subseteq A$ es multiplicativo si cumple
+\begin{enumerate}
+\item Si $a,b\in S$, entonces $ab\in S$.
+\item $1\in S$.
+\end{enumerate}
+\end{defi}
+
+Vamos a intentar construir un anillo de fracciones a partir de un conjunto multiplicativo. Definimos $S^{-1}A=A\times S/\sim$, donde $(a,b)\sim (b,t)\Leftrightarrow at=bs$. Veamos si esta relación es de equivalencia:
+\begin{itemize}
+\item Reflexiva: $(a,s)\sim (a,s)$ trivialmente
+\item Simétrica: $(a,s)\sim (b,t)\Rightarrow (b,t)\sim (a,s)$ por conmutatividad.
+\item Transitiva: Supongamos que $(a,s)\sim (b,t)$ y $(b,t)\sim (c,u)$, ¿$(a,s)\sim (c,u)$? Tenemos que $at=bs$ y $bu=ct$, ¿$au=cs$? Si estamos en un dominio de integridad sí se cumple. Pero esto no es suficiente. Por tanto hay que redefinir la relación.
+\end{itemize}
+
+Así pues, pues definimos $(a,s)\sim (b,t)\Leftrightarrow atv=bsv$ para algún $v\in S$. Ahora la relación sí es transitiva, pues tendríamos $vat=bsv$ y $wbu=ctw$, de donde obtenemos $uwvat=uwbsv=ctwsv$. 
+
+Definimos las siguientes operaciones en $S^{-1}A$:
+$$\frac{a}{s}+\frac{b}{t}=\frac{at+bs}{st}\quad \frac{a}{b}\frac{s}{t}=\frac{ab}{st}.$$
+
+\begin{ejer}
+Probar que estas operaciones están bien definidas y que dotan de estructura de anillo al conjunto definido.
+\end{ejer}
+
+
+Ahora tenemos un homomorfismo inducido $\varphi: A\to S^{-1}A$ tal que $a\mapsto \frac{a}{1}$. Veamos quién es el $\ker{\varphi}$. Se tiene que $a\in\ker{\varphi}=\{a\in A\mid \frac{a}{1}=\frac{0}{1}\}\Leftrightarrow \exists s\in S$ tal que $as=0$. Entonces $\varphi$ es inyectivo si y solo si $S$ no contiene divisores de cero.
+
+\begin{observaciones}
+Si $s\in S$, entonces $\frac{s}{1}\frac{1}{s}=\frac{1}{1}$, por lo que $\frac{s}{1}\in (S^{-1}A)^*$. En particular, si $S\subseteq A^*$, entonces $\varphi$ es un isomorfismo, pues es inyectivo por ser $S$ dominio de integridad y $\varphi(a s^{-1})=\frac{a}{s}$, puesto que $a s^{-1}s=a=a1$, luego es sobreyectivo.
+\end{observaciones}
+
+\begin{ej}\
+\begin{enumerate}
+\item $S=\{a\in A\mid a$ no es divisor de cero$\}$. Ojo, $0\notin S$. Si $a,b$ no son divisores de cero, entonces $ab=0$. Por tanto podemos construir $S^{-1}A$ y podemos ver $A\hookrightarrow S^{-1}A$ como un subanillo. El anillo construido se llama anillo total de fracciones de $A$.  Si $A$ es dominio, entonces $S=A-\{0\}$, y por tanto $S^{-1}A$ es el cuerpo de fracciones de $A$.
+\item Sea $\mathfrak{p}\subset A$ un ideal primo, y tomamos $S=A\setminus\mathfrak{p}$. Claramente $S$ es multiplicativo. En este caso denotamos $S^{-1}A=A_\mathfrak{p}$ y lo llamamos anillo localizado de $A$ en $p$. Por ejemplo, $A=\mathbb{Z}$, $\mathfrak{p}=\langle 2\rangle$. Entonces $A_\mathfrak{p}=\mathbb{Z}_{\langle 2\rangle}=\{\frac{a}{b}\mid b$ es impar$\}$. En este caso, los ideales son $\langle 0\rangle\subsetneq\dots\subsetneq\langle 2^{n+1}\rangle\subsetneq\langle 2^n\rangle\subsetneq\dots\subsetneq\langle 1\rangle$. El único ideal primo de esta cadena es $\langle 2\rangle$ (en particular es el único ideal maximal). En general, los ideales primos de $S^{-1}A$  se corresponden biunívocamente con los ideales primos de $A$ que no cortan a $S$. 
+\item $a\in A$, $S=\{a^n\mid n\geq 0\}$. Denotamos ahora $A_a=S^{-1}A=\{\frac{a}{2^n}\mid a\in\mathbb{Z},n\geq 0\}$.
+\end{enumerate}
+
+\end{ej}
+
+\begin{defi}
+Un anillo es {\bf local } si tiene un único ideal maximal $\mathfrak{m}$. En tal caso, el cuerpo $A/\mathfrak{m}$ se llama el {\bf cuerpo residual } de $A$. 
+\end{defi}
+
+\begin{ej}\
+\begin{enumerate}
+\item $A$ cuerpo $\Rightarrow A$ local. 
+\item $\mathbb{Z}_{\langle 2\rangle}$ es local con $\mathfrak{m}=\langle 2\rangle$ y el cuerpo residual es $A/\mathfrak{m}=\{\mathfrak{m},1+\mathfrak{m}\}\cong\mathbb{Z}/\mathbb{Z}2$.
+\item Si $\mathfrak{p}\subseteq A$ primo, entonces $A_{\mathfrak{p}}$ es local. Como ejercicio, probar que $\{\frac{a}{b}\mid a\in\mathfrak{p},b\notin\mathfrak{p}\}$ es ideal maximal. Tener en cuenta que en el ideal maximal deben estar todos los divisores de cero, pues cada uno está contenido en el ideal propio generado por sí mismo. Si $x\notin\mathfrak{m}\Rightarrow x\in A_\mathfrak{p}^*\Rightarrow \mathfrak{m}+\langle x\rangle =A_\mathfrak{p}$. Esto prueba que es maximal, porque si se añade cualquier elemento del complementario, entonces obtenemos el total.
+\item Consideremos el siguiente homomorfismo:
+\[
+\begin{tikzcd}
+& A_\p  \arrow[dr] & \\
+\psi:A \arrow[ur]\arrow{rr} & & A_\p/\m\\
+     a\arrow[rr, mapsto] & & \overline{\frac{a}{1}}
+\end{tikzcd}
+\]
+Entonces $\ker{\psi}$ está definido como $a\in A\mid \overline{\frac{a}{1}}=\overline{0}\Leftrightarrow \frac{a}{1}\in\m\Leftrightarrow\frac{a}{1}=\frac{b}{c}\ (b\in\p, c\notin\p)\Leftrightarrow acd=bd\ (d\notin p).$ Como $b\in\p$ entonces $bd\in\p$ y por tanto $acd\in\p$. Como $d\notin\p$ entonces $ac\in\p$, y como $c\notin\p$, $a\in\p$. Por tanto, $\ker{\psi}=\p$. Por tanto, existe un homomorfismo inyectivo $\overline{\psi}:A/\p\to A_\p/\m$. Es decir, podemos ver $A/\p$ (que es dominio por ser $\p$ primo) dentro del cuerpo $A_\p/\m$, que está formado pro fracciones de elementos de $A/\p$. Por tanto se trata nada más y nada menos que del cuerpo de fracciones de $A/\p$. En particular, si $A_\p$ es cuerpo, $A/\p\cong A_\p/\m$.
+\item $k[x,y]$, $\mathfrak{p}=\langle x\rangle$. $A_\mathfrak{p}=\{\frac{f(x,y)}{g(x,y)}\mid x\not\mid g(x,y)(\Leftrightarrow g(0,y)\neq 0)\}$. Entonces $\mathfrak{m}=\{\frac{xf(x,y)}{g(x,y)}\mid g(0,y)\neq 0\}$. $A_\mathfrak{p}/\mathfrak{m}=Frac(k[x,y](\langle x\rangle y)\cong k(y)$. 
+\end{enumerate}
+\end{ej}
+
+Vamos a definir 
+\begin{defi}
+ Sea $Z\subseteq\Ank$ una variedad afín. Una {\bf función racional} $f:Z\dashrightarrow k$ es un par $(U,f)$ donde $U\subseteq Z$ es un abierto de Zariski no vacío y $f:U\to k$ es una aplicación tal que existen $g,h\in \calA(Z)$ con $h(x)\neq 0$ y $f(x)=g(x)/h(x)$ para todo $x\in U$, módulo la siguiente relación de equivalencia: $(U,f)\sim(U',f')$ si $f_{|U\cap U'}=f'_{|U\cap U'}$.
+\end{defi}
+
+\begin{ejer}
+ Probar que $\sim$ es, en efecto, una relación de equivalencia.
+\end{ejer}
+
+
+Si no se especifica el abierto $U$, se sobreentiende que es el mayor abierto donde la expresión dada para $f$ tenga sentido (es decir, el abierto en el que $h\neq 0$).
+
+
+Queremos definir ahora la suma y el producto de dos funciones racionales. Aquí nos encontramos con un problema: las dos funciones que queremos sumar o multiplicar pueden tener diferentes dominios, y por tanto su suma o producto no está definido. Afortunadamente, las propiedades de la topología de Zariski nos dan la solución: como $Z$ es irreducible, dos abiertos no vacíos tienen intersección no vacía (de lo contrario, sus complementarios serían una descomposición de $Z$ como unión propia de dos variedades). Por tanto, dos funciones racionales cualesquiera pueden restringirse a un dominio común. 
+
+Sean entonces $(U,f)$ y $(V,g)$ dos funciones racionales en $Z$. Definimos su suma como la función racional $(U\cap V,f_{|U\cap V}+g_{|U\cap V})$, y su producto como la función racional $(U\cap V,f_{|U\cap V}\cdot g_{|U\cap V})$.
+
+\begin{prop}
+ Con estas definiciones, el conjunto de funciones racionales en $Z$ es un cuerpo $\K(Z)$, llamado {\bf cuerpo de funciones} de $Z$.
+\end{prop}
+
+\begin{proof}
+ Probaremos únicamente la existencia de inversos, el resto de propiedades se deja como ejercicio. Sea $f:Z\dashrightarrow k$ una función racional no nula, veamos que existe una función racional $g$ tal que $f\cdot g=1$. Sea $U\subseteq Z$ un abierto tal que $v(x)\neq 0$ y $f(x)=u(x)/v(x)$ para todo $x\in U$, con $u,v\in k[x_1,\ldots,x_n]$, y sea $V\subseteq U$ el abierto definido por $u(x)\neq 0$. Es claro que la función racional $g:Z\dashrightarrow k$ dada por $(V,v/u)$ es la inversa de $f$.  
+\end{proof}
+
+El cuerpo de funciones se puede calcular directamente conociendo el anillo de coordenadas:
+
+\begin{prop}
+ Sea $Z\subseteq \Ank$ una variedad afín. El cuerpo de funciones $\KK(Z)$ es el cuerpo de fracciones de $\calA(Z)$.
+\end{prop}
+
+\begin{proof}
+ Existe un homomorfismo de anillos evidente $\phi:\calA(Z)\to\K(Z)$, que lleva $f$ en la función racional $(Z,f/1)$. Este homomorfismo es inyectivo: si $\phi(f)=0$, debe existir un abierto no vacío $U\subseteq Z$ tal que $f_{|U}=0$, y entonces $f=0$ (ejercicio \ref{extensionfuncion}). Como $\K(Z)$ es un cuerpo, este homomorfismo tiene una extensión única $\phi:K(\calA(Z))\to\K(Z)$ al cuerpo de fracciones dada por $\phi(f/g)=\phi(f)/\phi(g)$, que automáticamente es inyectiva. Sólo hay que comprobar que es sobreyectiva, pero esto se deduce inmediatamente de la definición de $\K(Z)$.
+\end{proof}
+
+
+\section{El anillo local de una variedad en un punto}
+
+Sea $Z\subseteq\Ank$ una variedad afín y $f:Z\dashrightarrow k$ una función racional. Se dice que $f$ {\bf está definida en $x\in Z$} si existen un abierto $V\subseteq Z$ conteniendo a $x$ y $g,h\in \calA(Z)$ tales que $h(y)\neq 0$ para todo $y\in V$ y $f=(V,g/h)$. Si $f$ está definida en $x$, tiene sentido hablar del valor $f(x)$ de $f$ en $x$: es simplemente el valor $g(x)/h(x)$ para cualquier expresión de $f$ como cociente de funciones regulares en un entorno de $x$. Por la relación de equivalencia que define las funciones racionales, vemos que dos expresiones distintas de $f$ como cociente de funciones regulares deben dar el mismo valor de $f(x)$.
+
+Sin embargo, hay que tener cuidado de distinguir entre una función racional $f$ y una expresión particular de $f$ como cociente de polinomios (así como, por ejemplo, las expresiones $\sin x /(1-\cos x)$ y $(1+\cos x)/\sin x$ son distintas pero definen la ``misma'' función real). Una función racional puede estar definida en un punto sin que una expresión particular lo esté, como muestra el ejercicio siguiente:
+
+\begin{ejer}
+ Sea $Z\subseteq \A^4_\C$ la variedad $\V(\{x_1x_4-x_2x_3\})$. Probar que la función racional $f:Z\dashrightarrow \C$ dada por $x_1/x_2$ está definida en el punto $(0,0,1,1)$ y hallar su valor en dicho punto.
+\end{ejer}
+
+\begin{ejer}\label{sumaproddefinida}
+ Sea $Z\subseteq\Ank$ una variedad, $x\in Z$ y $f,g:Z\dashrightarrow k$ dos funciones racionales definidas en $x$. Probar que su suma y su producto también están definidas en $x$.
+\end{ejer}
+
+Por tanto, el conjunto $\OO_{Z,x}$ de funciones racionales definidas en $x$ es un subanillo de $\K(Z)$.
+
+\begin{defi}
+ El {\bf anillo local de $Z$ en $x$} es el anillo $\OO_{Z,x}$ de funciones racionales definidas en $x$.
+\end{defi}
+
+El siguiente resultado justifica el nombre (o más bien, justifica el por qué a un anillo con un único ideal maximal se le llama local):
+
+\begin{prop}
+ Para todo $x\in Z$, $\OO_{Z,x}$ es un anillo local.
+\end{prop}
+
+\begin{proof}
+ Sea $\m\subseteq\OO_{Z,x}$ el conjunto formado por las funciones $f$ tales que $f(x)=0$. Claramente $\m$ es un ideal. Sea $f\notin\m$, y tomemos una expresión $f=g/h$ de $f$ como cociente de funciones regulares en un abierto $U$ que contenga a $x$. Sea $V\subseteq U$ el abierto definido por $g\neq 0$. Como $f(x)\neq 0$, $x\in V$. Por tanto, la función racional $1/f=(V,h/g)$ está definida en $x$, es decir, $f$ es invertible en $\OO_{Z,x}$. Por \cite[proposición 1.6]{am} concluimos que $\OO_{Z,x}$ es local y $\m$ es su único ideal maximal.
+\end{proof}
+
+El anillo local $\OO_{Z,x}$ también se puede obtener a partir de $\calA(Z)$:
+
+\begin{prop}\label{anillolocal}
+ Sea $Z\subseteq\Ank$ una variedad afín, y $x\in Z$. El anillo $\OO_{Z,x}$ es igual al localizado $\calA(Z)_{\bar\m_x}$, donde $\bar\m_x\subseteq\calA(Z)$ es el ideal maximal correspondiente a $x$ según la proposición \ref{maximal}.
+\end{prop}
+
+\begin{proof}
+ Se deduce directamente de la definición, ya que las funciones racionales en $\OO_{Z,x}$ son las que tienen una expresión de la forma $g/h$ donde $h\in\calA(Z)$ es una función regular con $h(x)\neq 0$, es decir, con $h\not\in \bar\m_x$.
+\end{proof}
+
+
+
+
+
+ Si $U\subseteq Z$ es un abierto, se dice que $f$ {\bf está definida en $U$} (o que es {\bf regular} en $U$) si está definida en todo punto de $U$. El conjunto de puntos de $Z$ donde $f$ está definida es un abierto llamado {\bf abierto de definición} de $f$. 
+
+
+Toda función racional $f$ de $Z$ definida en $U$ define una (verdadera) aplicación $f:U\to k$. Del ejercicio \ref{sumaproddefinida} se deduce inmediatamente que la suma y el producto de funciones racionales definidas en $U$ están también definidas en $U$. Por tanto, el conjunto de funciones racionales definidas en $U$ forma un subanillo de $\K(Z)$, que denotaremos $\OO_Z(U)$.
+
+\begin{prop}
+ Sea $Z\subseteq\Ank$ una variedad afín y $f\in\calA(Z)$ no nulo. Denotemos por $U_f$ el abierto $Z\backslash \V(\{f\})$ formado por los $x\in Z$ tales que $f(x)\neq 0$. Entonces $\OO_Z(U_f)\subseteq\K(Z)$ es igual a $\calA(Z)_f$, el localizado de $\calA(Z)$ con respecto al conjunto multiplicativo de las potencias de $f$.
+\end{prop}
+
+\begin{proof}
+ La inclusión $\calA(Z)_f\subseteq\OO_Z(U_f)$ es evidente: una función racional $h$ de la forma $g/f^m$ está definida en $U_f$, y la expresión $h=g/f^m$ es válida en todo punto $x\in U_f$, ya que $f(x)\neq 0$. Recíprocamente, sea $h$ una función racional definida en $U_f$. Hay que probar que $h$ tiene una expresión de la forma $g/f^m$ con $g\in\calA(Z)$ y $m\geq 0$.
+
+Para todo punto $x\in U_f$ existe un abierto $V_x\subseteq Z$ y funciones $u_x,v_x\in\calA(Z)$ tales que $v_x(y)\neq 0$ para todo $y\in V_x$ y $h=u_x/v_x$ en $V_x$. Los abiertos $\{V_x|x\in U_f\}$ forman un recubrimiento de $U_f$. Como $U_f$ es cuasi-compacto (ejercicio \ref{cuasi-compacto}), existen un número finito de puntos $x_1,\ldots,x_r\in U_f$ tales que los abiertos $V_i:=V_{x_i}$ para $i=1,\ldots,r$ recubren $U_f$. Sean $u_i:=u_{x_i}$, $v_i:=v_{x_i}$. Todo punto $y\in U_f$ está en algún $V_i$, y en particular $v_i(y)\neq 0$. Por tanto $\V(\{v_1,\ldots,v_r\})\cap Z$ no contiene ningún punto de $U_f$ o, dicho de otra forma, está contenido en $\V(\{f\})\cap Z$. 
+
+ En particular, $f\in\I(\V(\{f\})\cap Z)\subseteq\I(\V(\{v_1,\ldots,v_r\})\cap Z)=\I(\V(\I(Z)+\langle v_1,\ldots,v_r\rangle))$. El Nullstellensatz nos dice entonces que $f^m\in\I(Z)+\langle v_1,\ldots,v_r\rangle$ para algún $m\geq 1$. Sea, por ejemplo, $f^m=a+a_1v_1+\cdots+a_rv_r$ con $a_i\in k[x_1,\ldots,x_n]$ y $a\in\I(Z)$. Multiplicando por $h$ y teniendo en cuenta que $hv_i=u_i$ en $V_i$ y $a=0$ en $Z$, obtenemos $f^mh=a_1u_1+\cdots+a_ru_r$ en $V:=V_1\cap\cdots\cap V_r$. Por tanto, $h=(V,a/f^m)$ donde $a=a_1u_1+\cdots+a_ru_r$.
+\end{proof}
+
+
+\begin{coro}\label{definidatodopunto}
+ $\OO_Z(Z)=\calA(Z)$, es decir, las únicas funciones racionales definidas en todo punto de $Z$ son las funciones regulares.
+\end{coro}
+
+\begin{proof}
+ Tomar $f=1$ en la proposición anterior.
+\end{proof}
+
+
+\section{Ejercicios adicionales}
+ 
+\begin{ejer}\label{contencion} Sean $S_1\subseteq S_2\subseteq k[x_1,\ldots,x_n]$. Probar que $\V(S_2)\subseteq \V(S_1)$. ¿Es cierto el recíproco?
+ 
+\end{ejer}
+
+\begin{ejer}\label{clausura}
+ Sea $X\subseteq \Ank$ un subconjunto. Probar que $\V(\I(X))$ es la clausura de $X$ en la topología de Zariski.
+\end{ejer}
+
+\begin{ejer}\label{productoafin}
+ Si $X\subseteq \Ank$ e $Y\subseteq \A^m_k$ son conjuntos algebraicos, probar que $X\times Y\subseteq \A^{n+m}_k$ es algebraico.
+\end{ejer}
+
+\begin{ejer}
+ Probar que la topología de Zariski en $\A^2_k$ no es el producto de las correspondientes topologías de Zariski en $\A^1_k$.
+\end{ejer}
+
+\begin{ejer}Identificando el espacio ${\mathcal M}(n,\C)$ de matrices $n\times n$ con coeficientes complejos con el espacio afín de dimensión $n^2$ de la manera obvia, ¿cuáles de los siguientes subconjuntos son algebraicos?
+ 
+\begin{enumerate}
+ \item El conjunto $\mathrm{GL}(n,\C)$ formado por las matrices regulares.
+ \item El conjunto $\mathrm{SL}(n,\C)$ formado por las matrices de determinante $1$.
+ \item El conjunto formado por las matrices simétricas.
+ \item El conjunto formado por las matrices de rango $i$ para $0\leq i\leq n$.
+ \item El conjunto formado por las matrices de rango $\leq i$ para $0\leq i\leq n$.
+ \item El conjunto $\mathrm{O}(n,\C)$ formado por las matrices ortogonales (es decir, tales que $A^t\cdot A=I_n$).
+ \item El conjunto $\mathrm{U}(n,\C)$ formado por las matrices hermíticas (es decir, tales que $A^\ast\cdot A=I_n$).
+\end{enumerate}
+
+\end{ejer}
+
+
+\begin{ejer} Sea $X\subseteq\Ank$ un conjunto algebraico, y $f\in\calA(X)$ una función regular que no se anule en ningún punto de $X$. Probar que $1/f:X\to k$ es también una función regular.
+ \end{ejer}
+
+
+\begin{ejer}
+ Un elemento $e$ de un anillo $A$ se dice \emph{idempotente} si $e^2=e$. Sea $X\subseteq\Ank$ un conjunto algebraico. Probar que $X$ es conexo con respecto a la topología de Zariski si y sólo si $\calA(X)$ no contiene elementos idempotentes distintos de $0$ y $1$.
+\end{ejer}
+
+\begin{ejer}
+ Sea $X\subseteq\Ank$ un conjunto algebraico. Dado $f\in\calA(X)$, se define $U_f=X\backslash \V(\{f\})$, es decir, el conjunto de los $x\in X$ tales que $f(x)\neq 0$. Probar que los abiertos $\{U_f|f\in \calA(X)\}$ forman una base para la topología de Zariski de $X$.
+\end{ejer}
+
+\begin{ejer}\label{cuasi-compacto}
+ Sea $Z\subseteq\Ank$ una variedad afín, y $U\subseteq Z$ un abierto. Probar que $U$ es \emph{cuasi-compacto}, es decir, para todo recubrimiento abierto $U=\bigcup_{i\in I}U_i$ existe un subrecubrimiento finito: $J\subseteq I$, $|J|<\infty$ y $U=\bigcup_{i\in J}U_i$. 
+\end{ejer}
+
+\begin{ejer}\label{maximal2}
+ Sea $Z\subseteq\Ank$ una variedad, y $a\in Z$. Probar que el ideal maximal $\bar\m_a$ asociado a a (proposición \ref{maximal}) es el conjunto de las funciones $f\in\calA(Z)$ tales que $f(a)=0$.
+\end{ejer}
+
+
+
+\begin{ejer}
+ Sea $X\subseteq\Ank$ un conjunto algebraico. Probar que existe una correspondencia biyectiva entre las componentes irreducibles de $X$ y los primos minimales de $\I(X)$ en $k[x_1,\ldots,x_n]$.
+\end{ejer}
+
+\begin{ejer}
+ Sea $X\subseteq\A^2_\C$ la curva definida por la ecuación $x^a=y^b$, donde $a,b$ son enteros positivos. Probar que $X$ es irreducible si y sólo si $a$ y $b$ son primos entre sí (\emph{Ayuda: } Probar que el homomorfismo $\C[x,y]/\langle x^a-y^b\rangle\to\C[t]$ dado por $x\mapsto t^b$, $y\mapsto t^a$ es inyectivo si $a$ y $b$ son primos entre sí).
+\end{ejer}
+
+
+\begin{ejer}
+ Hallar las componentes irreducibles de los siguientes subconjuntos algebraicos de $\A^3_{\C}$:
+\begin{enumerate}
+ \item $X=\V(\{xy,x^2z-xz\})$
+\item $X=\V(\{z,xy-y^2,x^2-y^2-x+y\})$
+\end{enumerate}
+
+\end{ejer}
+
+
+
+\begin{ejer}
+ Hallar la dimensión de los conjuntos algebraicos del ejercicio anterior, así como de cada una de sus componentes irreducibles.
+\end{ejer}
+
+
+\begin{ejer}
+ Probar que la dimensión de un subconjunto algebraico $X\subseteq k[x_1,\ldots,x_n]$ es el máximo de las dimensiones de sus componentes irreducibles.
+\end{ejer}
+
+\begin{ejer}
+ Si $V\subseteq W\subseteq\Ank$ son dos variedades de la misma dimensión, probar que $V=W$.
+\end{ejer}
+
+\begin{ejer}
+ Sea $X=\{(t,t^2,t^3)|t\in\C\}\subset\A^3_\C$. Probar que $X$ es una variedad algebraica, y hallar un conjunto de generadores de $\I(X)$.
+\end{ejer}
+
+
+\begin{ejer}
+ Sea $X\subseteq\A^3_\C$ el conjunto algebraico definido por las ecuaciones $x^4-y^3=x^5-z^3=y^5-z^4=0$. Probar que $X$ es irreducible de dimensión $1$, pero no puede definirse usando sólo dos de las ecuaciones dadas (\emph{Ayuda:} Usar la aplicación $t\mapsto(t^3,t^4,t^5)$).
+\end{ejer}
+
+
+\begin{ejer}\label{extensionfuncion}
+ Sea $Z\subseteq\Ank$ una variedad, y $f,g:Z\to k$ dos funciones regulares. Si existe un abierto no vacío $U\subseteq Z$ tal que $f_{|U}=g_{|U}$, probar que $f=g$. ¿Es cierto si $Z$ es un conjunto algebraico arbitrario?
+\end{ejer}
+
+\begin{ejer}
+ Hallar el abierto de definición de las siguientes funciones racionales:
+\begin{enumerate}
+ \item $f(x)=x_1/x_2$ en $Z=\V(\{x_1x_4-x_2x_3\})\subseteq\A^4_\C$
+\item $f(x)=(x+1)/y$ en $Z=\V(\{x^2+y^2-1\})\subseteq\A^2_\C$
+\end{enumerate}
+
+\end{ejer}
+
+\begin{ejer}
+ Sea $Z\subseteq\Ank$ una variedad afín, y $f=g/h:Z\dashrightarrow k$ una función racional, con $g,h\in\calA(Z)$. Si $x\in Z$ es un punto tal que $h(x)=0$ y $g(x)\neq 0$, probar que $f$ no está definida en $x$.
+\end{ejer}
+
+\begin{ejer}\label{a2menos0}
+ Sea $f:\A^2_\C\dashrightarrow\C$ una función racional definida en el abierto $U=\A^2_\C\backslash\{(0,0)\}$. Probar que $f$ está definida en todo $\A^2_\C$, y por tanto es una función regular.
+\end{ejer}
+
+\begin{ejer}
+ Sean $Y\subseteq X\subseteq\Ank$ dos variedades. Definimos $\K(X,Y)$ como el conjunto de funciones racionales $f\in\K(X)$ definidas en algún punto de $Y$. Probar que $\K(X,Y)$ es un anillo local con cuerpo residual $\K(Y)$.
+\end{ejer}
+
+\begin{ejer}\label{dimensionhipersuperficie}
+ Sea $Z\subseteq\Ank$ una variedad afín de dimensión $d$ y $H\subseteq\Ank$ una hipersuperficie. Probar que toda componente irreducible de $Z\cap H$ tiene dimensión $\geq d-1$.
+\end{ejer}
+
+\end{document}
