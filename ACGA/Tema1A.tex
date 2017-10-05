@@ -390,21 +390,67 @@ Entonces $\ker{\psi}$ está definido como $a\in A\mid \overline{\frac{a}{1}}=\ov
 \end{enumerate}
 \end{ej}
 
+\subsection{Aclaraciones en la topología de Zariski}
+\begin{defi} $Z\subseteq\A^n$ es denso si $Z\cap U=\emptyset$ $\forall U\subseteq\A^n$ abierto no vacío.
+\end{defi}
+
+\begin{prop} Todo abierto de $\A^n$ con la topología de Zariski es denso.
+\end{prop}
+
+\begin{prop}
+Un conjunto algebraico $X\subseteq\A^n$ es irreducible si y solo si todo abierto no vacío de $X$ es denso.
+\end{prop}
+
+\subsection{Funciones racionales}
+
 Vamos a definir 
 \begin{defi}
  Sea $Z\subseteq\Ank$ una variedad afín. Una {\bf función racional} $f:Z\dashrightarrow k$ es un par $(U,f)$ donde $U\subseteq Z$ es un abierto de Zariski no vacío y $f:U\to k$ es una aplicación tal que existen $g,h\in \calA(Z)$ con $h(x)\neq 0$ y $f(x)=g(x)/h(x)$ para todo $x\in U$, módulo la siguiente relación de equivalencia: $(U,f)\sim(U',f')$ si $f_{|U\cap U'}=f'_{|U\cap U'}$.
 \end{defi}
 
+
+La definición se puede extender a conjuntos algebraicos en general exigiendo que que $U\subseteq X$ sea un abierto denso de la siguiente forma:
+
+\begin{defi}
+Sea $X\subseteq\A^n$ un conjunto algebraico. Una función racional en $X$ es un par $(U,f)$ donde $U\subseteq X$ es un abierto denso y $f:U\to k$ es una función tal que existen $p,q\in k[\xn{n}]$ con $q(x)\neq 0\forall x\in U$ y $f(x)=\frac{p(x)}{q(x)}\forall x\in U$. 
+\end{defi}
+
+\begin{ej}
+En $\A^1_{\C}$, $f(x)=\frac{x^2+x+1}{x^3-1}$ definida en $U=\A_\C\setminus\{1,-\frac{1}{2}\pm\frac{\sqrt{-3}}{2}$. En $X=\V(x^2+y^2-1)\subseteq\A^2_\C$, $f(x,y)=\frac{x+2y}{x^2-y^2}$ definida en $U=X\setminus\{(\pm\frac{1}{\sqrt{2}},\pm\frac{1}{\sqrt{2}})\}$.
+\end{ej}
+\begin{nota}
+Se denota $f: X-\to k$, y se sobreentiende que $U$ es el mayor abierto donde $f$ está definida.
+\end{nota}
+
+
 \begin{ejer}
  Probar que $\sim$ es, en efecto, una relación de equivalencia.
 \end{ejer}
 
+\begin{solucion}
+Las dos priemras propiedades son triviales así que vamos a probar la transitividad. 
+
+$(U,f)\sim (V,g)$ y $(V,g)\sim (W,h)$. Tenemos por un lado $f|_{U\cap V}=g|_{U\cap V}$ y por otro lado $g|_{V\cap W}=h|_{V\cap W}$. Entonces se deduce directamente que $f|_{U\cap V\cap W}=h|_{U\cap V\cap W}$. Como son funciones continuas en un abierto denso, se tiene entonces que son iguales en todo el espacio, por lo tanto $f|_{U\cap V}=h|_{U\cap V}$.
+\end{solucion}
+
+\begin{ej}
+\begin{enumerate}
+\item $\V(xy-zt)\subseteq\A^4$. Definimos $f(x,y,z,t)=\frac{x}{z}$ y $g(x,y,z,t)=\frac{t}{y}$. Entonces ambas funciones son la misma función racional, pues si $z\neq 0\neq y$, de que $zy-zt=0$ se deduce que $\frac{x}{z}=\frac{t}{y}$. 
+\item $\V(x^2+y^2-1)$. Definimos $f(x,y)=\frac{x}{1+y}$ en $U=X\setminus\{(-1,0)\}$ y $g(x,y)=\frac{1-y}{x}$ en $V=X\setminus\{(0,1),(0,-1)\}$. Se puede ver despejano del polinomio que son la misma función racional.
+\end{enumerate}
+\end{ej}
 
 Si no se especifica el abierto $U$, se sobreentiende que es el mayor abierto donde la expresión dada para $f$ tenga sentido (es decir, el abierto en el que $h\neq 0$).
 
 
 Queremos definir ahora la suma y el producto de dos funciones racionales. Aquí nos encontramos con un problema: las dos funciones que queremos sumar o multiplicar pueden tener diferentes dominios, y por tanto su suma o producto no está definido. Afortunadamente, las propiedades de la topología de Zariski nos dan la solución: como $Z$ es irreducible, dos abiertos no vacíos tienen intersección no vacía (de lo contrario, sus complementarios serían una descomposición de $Z$ como unión propia de dos variedades). Por tanto, dos funciones racionales cualesquiera pueden restringirse a un dominio común. 
 
+\begin{prop}
+La intersección de dos abiertos densos es abierto denso.
+\end{prop}
+\begin{proof}
+Sean $U,V$ abiertos densos. Entonces, dado un abierto no vacío $W$, se tiene $(U\cap V)\cap W=U\cap(\underbrace{V\cap W}_{\neq\emptyset})\neq\emptyset$.
+\end{proof}
 Sean entonces $(U,f)$ y $(V,g)$ dos funciones racionales en $Z$. Definimos su suma como la función racional $(U\cap V,f_{|U\cap V}+g_{|U\cap V})$, y su producto como la función racional $(U\cap V,f_{|U\cap V}\cdot g_{|U\cap V})$.
 
 \begin{prop}
@@ -415,15 +461,31 @@ Sean entonces $(U,f)$ y $(V,g)$ dos funciones racionales en $Z$. Definimos su su
  Probaremos únicamente la existencia de inversos, el resto de propiedades se deja como ejercicio. Sea $f:Z\dashrightarrow k$ una función racional no nula, veamos que existe una función racional $g$ tal que $f\cdot g=1$. Sea $U\subseteq Z$ un abierto tal que $v(x)\neq 0$ y $f(x)=u(x)/v(x)$ para todo $x\in U$, con $u,v\in k[x_1,\ldots,x_n]$, y sea $V\subseteq U$ el abierto definido por $u(x)\neq 0$. Es claro que la función racional $g:Z\dashrightarrow k$ dada por $(V,v/u)$ es la inversa de $f$.  
 \end{proof}
 
+
 El cuerpo de funciones se puede calcular directamente conociendo el anillo de coordenadas:
 
+Si definimos $S=\{f:X\to k\mid f$ no se anula en algún abierto $U\subseteq X\}$, tenemos que $1\in S$ y $f,g\in S\Rightarrow fg\in S$, por lo que $S$ es multiplicativo. Entonces 
+\[
+\begin{tikzcd}
+S^{-1}\calA(X)\arrow[r,"\cong"] & K(X)\\
+\frac{f}{g}\arrow[r,mapsto] & x\mapsto\frac{f(x)}{g(x)}.
+\end{tikzcd}
+\]
+
+Tenemos que ver que esta aplicación está bien definida. Sean $\frac{f}{g}\sim\frac{f'}{g'}\Leftrightarrow fg'h=f'gh\Leftrightarrow (fg'-f'g)h=0$ para algún $h\in S$. En $U$ abierto denso en el que $h$ no se anula, $fg'-f'g=0$. Por tanto $\frac{f}{g}=\frac{f'}{g'}$ en $U\cap\{g\neq 0\neq g'\}$. 
+
+Supongamos que $f\in S$ y $fg=0$ con $g\in\calA(X)$. Por definición existe un abierto denso $U$ tal que $f(x)\neq 0\ \forall x\in U$, luego $g(x)=0$ en $U$, por lo que $g=0$ en $X$, es decir $f$ no es divisor de cero. Supongamos ahora que $f\notin S\Rightarrow\not\exists U\subseteq X$ abierto denso tal que $f|_U=\neq 0$. Luego para todo $U$ denso, existe $x\in U$ tal que $f(x)=0$. Sea $U=X\setminus\V(f)$, que no tiene ningún cero de $f$, por lo que no es denso. Entonces $\exists V\neq\emptyset$ tal que $U\cap V=\emptyset$. Sea $Z=X\setminus V$, entonces $X=\V(f)\cup Z$. Tomamos $g\in\I(Z)\setminus\I(X)$. Entonces $fg=0$ en $X$, es decir, $f$ es divisor de cero.
+
+Obtenemos entonces la conclusión de que $S^{-1}\calA(X)$ es el anillo total de fracciones de $\calA(X)$. Si $X$ es irreducible, $S=\calA(X)\setminus\{0\}$, luego $S^{-1}\calA(X)=$ cuerpo de fracciones de $\calA(X)$. En este caso $K(X)$ es realmente un cuerpo de funciones de $X$.
+
 \begin{prop}
- Sea $Z\subseteq \Ank$ una variedad afín. El cuerpo de funciones $\KK(Z)$ es el cuerpo de fracciones de $\calA(Z)$.
+ Sea $Z\subseteq \Ank$ una variedad afín. El cuerpo de funciones $\K(Z)$ es el cuerpo de fracciones de $\calA(Z)$.
 \end{prop}
 
 \begin{proof}
  Existe un homomorfismo de anillos evidente $\phi:\calA(Z)\to\K(Z)$, que lleva $f$ en la función racional $(Z,f/1)$. Este homomorfismo es inyectivo: si $\phi(f)=0$, debe existir un abierto no vacío $U\subseteq Z$ tal que $f_{|U}=0$, y entonces $f=0$ (ejercicio \ref{extensionfuncion}). Como $\K(Z)$ es un cuerpo, este homomorfismo tiene una extensión única $\phi:K(\calA(Z))\to\K(Z)$ al cuerpo de fracciones dada por $\phi(f/g)=\phi(f)/\phi(g)$, que automáticamente es inyectiva. Sólo hay que comprobar que es sobreyectiva, pero esto se deduce inmediatamente de la definición de $\K(Z)$.
 \end{proof}
+
 
 
 \section{El anillo local de una variedad en un punto}
