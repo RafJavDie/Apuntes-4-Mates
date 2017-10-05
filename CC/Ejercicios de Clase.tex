@@ -1,0 +1,47 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ciencias de la Computación}
+\large{Ejercicios}
+
+\author{Javier Aguilar Martín}
+\maketitle
+
+\begin{ejercicio}{6}
+Sean $f$ y $g$ computables (de aridad $1$). Probar que la función $h(x) = f(g(x))$ es
+computable.
+\end{ejercicio}
+\begin{solucion}
+Sean $f,g:\N-\to\N$ GOTO-computables. Por ser $f$ y $g$ GOTO-computables existen expansiones de las macros $W\leftarrow f(V)$ y $W\leftarrow g(V)$. Sea $P$ el programa
+\[
+\begin{cases}
+Z\leftarrow g(X)\\
+Y\leftarrow f(Z)
+\end{cases}
+\]  
+Entonces $[[P]]^{(1)}=f\circ g$. 
+\end{solucion}
+
+\begin{ejercicio}{10}
+Sea $g : \N \to \N$ biyectiva y GOTO-computable. Demostrar que $g^{-1}$ es GOTO-computable.
+\end{ejercicio}
+\begin{solucion}
+La idea será, para cada $X$, buscar por fuerza bruta el $Z$ tal que $X=g(Z)$. Como la función es total, el programa siempre termina.
+\[
+P=\begin{cases}
+[B] &Z_2\leftarrow g(Z_1)\\
+&IF\ X=Z_1 \ GOTO\ A\\
+&Z_1\leftarrow Z_1+1\\
+&GOTO\ B\\
+[A] & Y\leftarrow Z_1
+\end{cases}
+\]
+También podríamos haber ido calculando directamente $g(Y)$. En cualquier caso, $[[P]]^{(1)}=g^{-1}$. 
+\end{solucion}
+
+HACER 15 Y 16.
+
+\end{document}
