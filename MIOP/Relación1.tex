@@ -27,7 +27,55 @@ Inv. 3 & $1000$ & $4000$ & $5000$ & $8000$
 Determinar la política óptima.
 \begin{solucion}
 Hay 3 etapas. En cada etapa se decide qué cantidad se invierte. Estados $(t,k)$ donde $t$ es la etapa en la que nos encontramos y $k$ es la cantidad de dinero que todavía podemos invertir. $f(t,k)$ es la máxima ganancia esperada desde la etapa $t$ hasta el final si se dispone de $k$ u.m.
-$f(t,k)=\max_{x_t\leq k,1000|x_t}\{g(t,x_t)+f(t+1,k-x_t)\}$ y $f(3,k)=\max_{d\leq k}\{g(3,x_3)\}=k$. La función $g$ representa la ganancia, es decir, el valor de la tabla en la posición $(t,x_t)$. 
+$f(t,k)=\max_{x_t\leq k,1000|x_t}\{g(t,x_t)+f(t+1,k-x_t)\}$ y $f(3,k)=\max_{x_3\leq k}\{g(3,x_3)\}=g(3,k)$. La función $g$ representa la ganancia, es decir, el valor de la tabla en la posición $(t,x_t)$. Vamos a empezar con la tabla de la segunda etapa, pues la de la tercera es trivial.
+
+\begin{tabular}{|c| c| c| c| c|}
+\hline
+$k$ & $x$ & $g(2,x)$ & $f(3,k-x)$ & $f(2,k)$\\
+\hline
+0   &  0  & 0        &  0      &  0\\
+\hline
+\hline
+1000    &  0  & 0       &   1000 & 1000\\
+     &  10000  & 1000 & 0         & 1000\\
+     \hline
+     \hline
+2000 &  0     & 0        &  4000 & $\boxed{4000}$\\
+  &  1000     & 1000     & 1000  & 2000\\
+  &  2000     & 3000     &  0    & 3000\\
+  \hline
+  \hline
+3000 & 0	& 0	& 5000 & 5000\\
+	 & 1000 & 1000 & 4000 & 5000\\
+	 & 2000 & 3000 & 1000 & 5000\\
+	 & 3000 & 6000 & 0  & $\boxed{6000}$\\
+\hline
+\hline
+4000 & 0   & 0 & 8000 & $\boxed{8000}$\\
+	 & 1000 & 1000 & 5000 & 6000\\
+	 & 2000 & 3000 & 4000 & 7000\\
+	 & 3000 & 6000 & 1000 & 7000\\
+	 & 4000 & 7000 & 0 & 7000\\
+	 \hline
+\end{tabular}
+
+\vspace{0.5em}
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$k$ & $x$ & $g(1,x)$ & $f(2,k-x)$ &$f(1,k)$\\
+\hline
+4000 & 0   & 0       &  8000 & 8000\\
+	 & 1000 & 2000   &   6000 & 8000 \\
+	 & 2000 &  5000 &   4000 & $\boxed{9000}$\\
+	 & 3000 & 6000  &   1000 & 7000\\
+	 & 4000 & 7000 &   0     & 7000\\
+	 \hline
+\end{tabular}
+
+\vspace{0.5em}
+
+$x_1=2000, x_2=0, x_3=2000$.
 \end{solucion}
 \end{ejercicio}
 
@@ -147,7 +195,8 @@ En tal caso, para $t=4$ seguiríamos usando la función recursiva. Continuemos c
 \underline{Etapa 4}
 
 \begin{tabular}{|c| c| c|}
-I & x & $f(4,I)$\\
+\hline
+$I$ & $x$ & $f(4,I)$\\
 \hline
 0 & 2 & 19\\
 \hline
@@ -160,7 +209,8 @@ I & x & $f(4,I)$\\
 \underline{Etapa 3}
 
 \begin{tabular}{|c| c| c|c|c|}
-I & x & $c(x)+0.4(I-4+x)$ & $f(4,I-4+x)$ & $f(3,I)$\\
+\hline
+$I$ & $x$ & $c(x)+0.4(I-4+x)$ & $f(4,I-4+x)$ & $f(3,I)$\\
 \hline
 0 & 4 & 32 & 19 & 32+19\\
 \hline
@@ -188,7 +238,8 @@ I & x & $c(x)+0.4(I-4+x)$ & $f(4,I-4+x)$ & $f(3,I)$\\
 \underline{Etapa 2}
 
 \begin{tabular}{|c|c|c|c|c|}
-$I$ & $x$ & $c(x)+0.4(I-2+x)$ & $f(3,I-2+X)$ & $f(2,I)$\\
+\hline
+$I$ & $x$ & $c(x)+0.4(I-2+x)$ & $f(3,I-2+x)$ & $f(2,I)$\\
 \hline
 0 & 4 & 32+0.4$\cdot$2 & 36.8 & $\boxed{69.6}$\\
   & 3 &                &       & \\
@@ -201,6 +252,19 @@ $I$ & $x$ & $c(x)+0.4(I-2+x)$ & $f(3,I-2+X)$ & $f(2,I)$\\
   & 1 & 4 & 51 & $\boxed{51}$\\
   \hline
 \end{tabular}
+
+\underline{Etapa 1}
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$I$ & $x$ & $c(x)+0.4(I-3+x)$ & $f(2,I-3+x)$ & $f(1,0)$\\
+\hline
+0 & 4 &  & 64 & $\boxed{96.4}$\\
+  & 3 &                &       & \\
+\hline
+\end{tabular}
+
+$x_1=4, x_2=1, x_3=4, x_4=2$.
 \end{solucion}
 \end{ejercicio}	
 
