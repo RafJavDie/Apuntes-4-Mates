@@ -48,7 +48,7 @@ Probar que para todo $n$
 \sum_{d\mid n} \sigma(d)\mu(n/d)=n 
 \]
 \begin{sol}
-Dado que las funciones $\sigma(n)$ y $\mu(n)$ son multiplicativas, su convolución también lo es. Por tanto, basta probar la igualdad para los números de la forma $p^a$ con $p$ primo y $a\geq 1$ (el caso $n=1$ es trivial). Sea pues $n=p^a$ con $p$ primo, entonces
+Dado que las funciones $\sigma(n)$ y $\mu(n)$ son multiplicativas, su convolución también lo es. Por tanto, como $n\mapsto n$ también es multiplicativa, basta probar la igualdad para los números de la forma $p^a$ con $p$ primo y $a\geq 1$ (el caso $n=1$ es trivial). Sea pues $n=p^a$ con $p$ primo, entonces
 \begin{gather*}
 \sum_{d\mid n} \sigma(d)\mu(n/d) = \sum_{k=0}^a \sigma(p^k)\mu(p^{a-k}) = \sigma(p^{a-1})\mu(p) + \sigma(p^a)\mu(1) = \\
 =  -\frac{p^a - 1}{p-1} +\frac{p^{a+1}-1}{p-1} = \frac{p^{a+1}-p^a}{p-1} = p^a
@@ -79,7 +79,7 @@ $$
 \begin{sol}
 \begin{itemize}
 \item[]
-\item Primeramente, observamos que $\sum_{d\mid n} \mu(d)^2$ es la convolución de las funciones $f\equiv 1$ y $\mu^2$, ambas multiplicativas, por lo que también es multiplicativa. Por tanto, solo tenemos que probar el resultado para los números de la forma $n=p^a$, $p$ primo y $\geq 1$.
+\item Primeramente, observamos que $\sum_{d\mid n} \mu(d)^2$ es la convolución de las funciones $f\equiv 1$ y $\mu^2$, ambas multiplicativas, por lo que también es multiplicativa. Por tanto, solo tenemos que probar el resultado para los números de la forma $n=p^a$, $p$ primo y $a\geq 1$.
 \[
 \sum_{d\mid n} \mu(d)^2 = \sum_{n=0}^a \mu(p^n)^2 = \mu(1)^2 + \mu(p)^2 = 2^1 = 2^{\omega(n)}
 \]
@@ -106,7 +106,7 @@ g(n) = \sum_{d\mid n} f(d)\mu(n/d)
 \begin{sol}
 \begin{itemize}
 \item[]
-\item Dado que $g(n) = (f\ast \mu)(n)$ y $\mu$ es una función multiplicativa, basta probar que $f$ también lo es para demostrar que $g$ lo es (propiedades de la convolución). Sean $n,m\in \N$ coprimos y $q=f(mn)$. Sabemos que podemos escribir $q=p_1^{a_1},\dotsc,p_k^{a_k}$. Sea $p_i$, como $(n,m)=1$, entonces o bien $p_i \mid n$, o bien $p_i \mid m$, pues no puede dividir a ambos. En tal caso, podemos separar los $p_i$ entre los que dividen a $n$ y los que dividen a $m$, de forma que $q=p_np_m$, de forma que $(n,p_m)=1$ y $(m,p_n)=1$. Es claro que $f(n)=p_n$ y $f(m)=p_m$, como queríamos probar.
+\item Dado que $g(n) = (f\ast \mu)(n)$ y $\mu$ es una función multiplicativa, basta probar que $f$ también lo es para demostrar que $g$ lo es (propiedades de la convolución). Sean $n,m\in \N$ coprimos y $q=f(mn)$. Sabemos que podemos escribir $q=p_1^{a_1},\dotsc,p_k^{a_k}$. Sea $p_i$, como $(n,m)=1$, entonces o bien $p_i \mid n$, o bien $p_i \mid m$, pero no puede dividir a ambos. En tal caso, podemos hacer una partición entre los factores primos que dividen a $n$ y los que dividen a $m$, de forma que podemos escribir $q=p_np_m$, cumpliéndose $(n,p_m)=1$ y $(m,p_n)=1$. Resta ver que $f(n)=p_n$ y $f(m)=p_m$, como queríamos probar.
 
 Supongamos que $f(n)>p_n$. Sabemos que $p_n^2\mid n$, luego $p_n \mid f(n)$, por lo que $f(n)=p_n k$. Ya que $k^2 \mid n$, se tiene que $k \mid n$, $(p_m,k)=1$ y $(p_n k)^2 \mid n \mid mn$. Pero esto implica que $p_n k \mid q = p_n p_m$, de donde $k \mid p_m$, por lo que $k=1$.
 \item Veamos los cálculos.
@@ -142,7 +142,10 @@ Dado que $\sigma(n)$ es una función multiplicativa, sean $m,n$ coprimos, tenemo
 \[
 \sigma(nm)^2 = (\sigma(n)\sigma(m))^2 = \sigma(n)^2\sigma(m)^2
 \]
-Es decir, la función $\sigma(n)^2$ es multiplicativa y, por tanto, basta probar la identidad para los números de la forma $p^a$ con $p$ primo y $a\geq 1$ (el caso $n=1$ es trivial). Sea $n=p^a$
+Por otra parte, la otra igualdad es claramente la segunda parte de la igualdad es la convolución de las funciones $f(x)=x$ (claramente multiplicativa) y $g(x)=\sigma(x^2)$. Esta, en principio, no parece tan claro que sea multiplicativa, pero veamos que sí lo es. Sean $n,m\in\N$ coprimos. Si $(n,m)=1$, entonces es claro que $(n^2,m^2)=1$, luego
+$$
+g(nm)=\sigma((nm)^2) = \sigma(n^2 m^2)= \sigma(n^2)\sigma(m^2)=g(n)g(m)$$
+Por tanto, basta probar la identidad para los números de la forma $p^a$ con $p$ primo y $a\geq 1$ (el caso $n=1$ es trivial). Sea $n=p^a$,
 \begin{gather*}
 \sigma(n)^2 = \sigma(p^a)^2 = \left(\frac{p^{a+1}-1}{p-1}\right)^2\\  \sum_{d\mid n} \frac{n}{d}\sigma(d^2) = \sum_{k=0}^a \frac{p^a}{p^k}\sigma(p^{2k})= \sum_{k=0}^a p^{a-k}\frac{p^{2k+1}-1}{p-1} = \frac{p^a}{p-1} \sum_{k=0}^a p^{k+1}- p^{-k} = \\
  = \frac{p^a}{p-1} \left(\frac{p^{a+2}-p}{p-1}-\frac{p^{-(a+1)}-1}{p^{-1}-1}\right) = \frac{p^a}{(p-1)^2}(p^{a+2}-p+ p^{-a}-p) = \\
