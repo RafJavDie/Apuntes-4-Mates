@@ -20,4 +20,67 @@ Así pues, $\Y_2^{-1}\circ f\circ \X_2$ es diferenciable en $p''=\X_2^{-1}(p)$ p
 
 Sea $p\in M$. Veamos que $f|_M\func{M}{N}$ es diferenciable en $p$. Sea $(U,\X)$ una s.s. de M en $p\in\X(U)$ y $(V,\Y)$ un s.s. en N con $f(p)\in\Y(V)$. Consideramos la composición en $\Y^{-1}\circ f \circ \X$, que tiene sentido en $\X^{-1}(W)$, donde $W = f^{-1}(\Y(V))\cap \X(U)$. Además, se tiene que $\Y^{-1}\circ f \circ \X = \Y^{-1}\circ f|_M \circ \X$ en $\X^{-1}(W)$ y es diferenciable por ser composición de funciones diferenciable en $p'=\X^{-1}(p)$. Por tanto $f|_M$ es diferenciable.\QED
 \end{dem}
+
+\begin{dem}[Teorema 17]
+Sean $M$ y $N$ dos superficies regulares y sea $f:M\to N$ una aplicación diferenciable. Sea $p\in M$ y $\vec{v}\in T_p(M)$. Sean $(U,\X)$ y $(V,\Y)$ dos superficies simples en $M$ y $N$ respectivamente, con $p\in\X(U)$ y $f(p)\in\Y(V)$. Sea $\gamma:(-\varepsilon,\varepsilon)\to M$ una curva diferenciale en $M$ con $\gamma(0)=p$ y $\gamma'(0)=\vec{v}$. Podemos suponer WLOG que $\gamma(t)\in\X(U)\ \forall t\in(-\varepsilon,\varepsilon)$ y que $f\circ\gamma(t)\in\Y(V)\ \forall t\in(-\varepsilon,\varepsilon)$.  
+
+Como $p\in\X(U)\Rightarrow p=\X(u_0^1,u_0^2)$, donde $u^1,u^2$ son los parámetros de la superficie simple $(U,\X)$. Como $\gamma$ es una curva diferenciable en $M$ y $\gamma(t)\in\X(U)\ \forall t\in(-\varepsilon,\varepsilon)$, entonces existen aplicaciones $u^1(t),u^2(t)$ tales que $\gamma(t)=\X(u^1(t),u^2(t))\ \forall t\in(-\varepsilon,\varepsilon)$. En particular, $p=\gamma(0)=\X(u^1(0),u^2(0))$, luego por la inyectividad de $\X$ deducimos que $u^1_0=u^1(0)$ y $u^2_0=u^2(0)$.  
+
+Por otro lado $\vec{v}\in T_p(M)$ y $\{\X_1(u^1_0,u^2_0),\X_2(u^1_0, u^2_0)\}$ es una base de ese espacio, luego existen $\lambda^1,\lambda^2$ tales que 
+$$\vec{v}=\lambda^1\X_1(u^1_0,u^2_0)+\lambda^2\X_2(u^1_0,u^2_0),$$
+donde $\X_i(u^1_0,u^2_0)=\frac{\partial\X}{\partial u^i}|_{(u^1_0,u^2_0)}$. Tenemos $\vec{v}=\gamma'(0)$ y $\gamma(t)=\X(u^1(t),u^2(t))$, así que derivamos.
+$$\vec{v}=\frac{\partial\X}{\partial u^1}|_{(u^1(0),u^2(0))}\frac{du^1}{dt}|_{t=0}+\frac{\partial\X}{\partial u^2}|_{(u^1(0),u^2(0))}\frac{du^2}{dt}|_{t=0}$$
+Por tanto, como vimos antes que $u^1_0=u^1(0)$ y $u^2_0=u^2(0)$, $\lambda^i= \frac{du^i}{dt}|_{t=0}$. 
+
+Ahora, $f(p)=f(\gamma(0))=f(\X(u^1_0,u^2_0)$ y $f(p)\in\Y(V)\Rightarrow\exists v^1_0, v^2_0\mid f(p)=\Y(v^1_0,v^2_0)$. Entonces $f\circ\gamma$ es una curva diferenciable en $N$ y $(f\circ\gamma)(t)\in\Y(V)\ \forall t\in(-\varepsilon,\varepsilon)$. Luego exsten aplicaciones $v^1(t),v^2(t)$ tales que $(f\circ\gamma)(t)=\Y(v^1(t),v^2(t))\ \forall t\in(-\varepsilon,\varepsilon)$. En particular, $(f\circ\gamma)(0)=f(p)=\Y(v^1_0,v^2_0)$, por lo que $v^1(0)=v^1_0$ y $v^2(0)=v^2_0$. Entonces, aplicando la regla de la cadena y sustituyendo $t=0$
+$$f_{*p}\vec{v}=(f\circ\gamma)'(0)=\sum_{i=1}^2\frac{\partial\Y}{\partial v^i}|_{(v^1(0),v^2(0))}\frac{dv^i}{dt}|_{t=0}=\sum_{i=1}^2\Y_i(v^1_0,v^2_0)\frac{dv^i}{dt}|_{t=0}.$$
+Por tanto, $f_{*p}\vec{v}\in T_{f(p)}(N)$ y $\{\Y_1(v^1_0,v^2_0),\Y_2(v^1_0,v^2_0)\}$ es una base de dicho espacio. Por ello existen $\mu^1,\mu^2$ tales que $$f_{*p}\vec{v}=\mu^1\Y_1(v^1_0,v^2_0)+\mu^2\Y_2(v^1_0,v^2_0).$$
+Por lo anterior, sabemos que de hecho $\mu^1=\frac{dv^1}{dt}|_{t=0}$ y $\mu^2=\frac{dv^2}{dt}|_{t=0}$.
+
+Como $f$ es diferenciable en $p$, la aplicación $\Y^{-1}\circ f\circ\X$ es diferenciable en un entorno abierto $\overline{U}$ de $p'=(u^1_0,u^2_0)$. Dado $(u^1,u^2)\in\overline{U}$, $\Y^{-1}\circ f\circ\X(u^1,u^2)=(v^1,v^2)=(v^1(u^1,u^2),v^2(u^1,u^2))$, por lo que
+
+$$J_{p'}(\Y^{-1}\circ f\circ\X)=\begin{pmatrix}
+\frac{\partial v^1}{\partial u^1} & \frac{\partial v^1}{\partial u^2}\\
+\frac{\partial v^2}{\partial u^1} & \frac{\partial v^2}{\partial u^2}
+\end{pmatrix}$$
+
+Teniendo en cuenta las expresiones de $\lambda^i$ y $\mu^i$ podemos sustituir y encontrar
+$$\mu^i=\frac{fv^i}{dt}|_{t=0}=\sum_{j=1}^2\frac{\partial v^i}{\partial v^j}|_{p'}\frac{du^j}{dt}|_{t=0}=\sum_{j=1}^2\frac{\partial v^i}{\partial u^j}|_{p'}\lambda^j$$
+En conclusión, $f_{*p}$ es una aplicación lineal entre $T_p(M)$ y $T_{f(p)}(N)$, y la matriz de dicha aplicación respecto de las bases $\{\X_1(u^1_0,u^2_0),\X_2(u^1_0, u^2_0)\}$ y $\{\Y_1(v^1_0,v^2_0),\Y_2(v^1_0,v^2_0)\}$ es $J_{p'}(\Y^{-1}\circ f\circ\X)$. Además, la expresión para $f_{*p}\vec{v}$ es independiente de la curva diferenciable tomada. Con esto hemos demostrado la primera parte del teorema.
+
+Para la segunda parte basta recordar que si la matriz de la aplicación lineal es regular, entonces la aplicación es biyectiva (por tanto isomorfismo). \QED
+
+\end{dem}
+
+\begin{ej}
+Aplicación antipodal en $S^2$, es decir $f:S^2\to S^2$ definida por $f(x,y,z)=(-x,-y,-z)$. Ya vimos que $f$ es diferenciable. Sea $p\in S^2$ un punto fijado. Veamos cómo se define $f_{*p}$. Supongamos que $p$ está en el hemisferio norte de la esfera. Consideramos las superficies simples en $S^2$ siguientes:
+$$\X:U\subseteq\R^2\to\R^3\mid \X(u^1,u^2)=(u^1,u^2,\sqrt{1-(u^1)^2+(u^2)^2})\quad\quad \Y:U\subseteq\R^2\to\R^3\mid \Y(u^1,u^2)=(u^1,u^2,-\sqrt{1-(u^1)^2+(u^2)^2}$$
+Los abiertos serían $U=V=\{(x,y)\in\R^2\mid x^2+y^1<1\}$. Como ejercicio probar que efectivamente son superficies simples. Nos quedaría sin cubrir el ecuador.
+
+Tomamos $(u^1,u^2)\in U$. Entonces $$\Y^{-1}\circ f\circ \X(u^1,u^2)=\Y^{-1}\circ f(u^1,u^2,\sqrt{1-(u^1)^2+(u^2)^2})=\Y^{-1}(-u^1,-u^2,\sqrt{1-(u^1)^2+(u^2)^2})=(-u^1,-u^2).$$
+Por tanto $\Y^{-1}\circ f\circ \X:U\to V$ tal que $(u^1,u^2)\mapsto (-u^1,-u^2)=(v^1,v^2)$, por lo que su matriz jacobiana sería
+$J_{p'}(\Y^{-1}\circ f\circ \X)=\begin{pmatrix}
+\frac{\partial v^1}{u^1}	& \frac{\partial v^1}{u^2}\\
+\frac{\partial v^2}{u^1}	& \frac{\partial v^1}{u^2}
+\end{pmatrix}=\begin{pmatrix}
+-1	& 0\\
+0	& -1
+\end{pmatrix}=-Id,$ con $p'=\X^{-1}(p)$. Por tanto $f_{*p}:T_p(S^2)\to T_{-p}(S^2)$ está definida como $\vec{v}\mapsto -\vec{v}$.
+\end{ej}
+
+Cada una de las definiciones de isometría son para sustituir la parte ``$f_{*p}$ es isometría''
+\begin{defi}[Alternativa para isometría]
+Si $f_{*p}$ es isometría $\forall p\in M$, por definición $f$ conserva las longitudes de las curvas $\Leftrightarrow$ dada $\alpha:(-\varepsilon,\varepsilon)\to M$ una curva diferenciable y dados $t_0,t_1\in (-\varepsilon,\varepsilon)$ con $t_0<t_1$, se tiene que $L_{t_0}^{t_1}(\alpha)=\int_{t_0}^{t_1}||\alpha'(t)||dt$. Por tanto $ L_{t_0}^{t_1}(\alpha)=L_{t_0}^{t_1}(f\circ\alpha)\Leftrightarrow\int_{t_0}^{t_1}||\alpha'(t)||dt=\int_{t_0}^{t_1}||(f \circ\alpha)'(t)||dt\Leftrightarrow ||\alpha'(t)||=||(f\circ\alpha)'(t)||\ \forall t\in (-\varepsilon,\varepsilon)$. Recordemos que en esencia, la primera forma fundamental es el producto escalar, luego si se conserva el módulo se conserva la primera forma fundamental y recíprocamente.
+
+Vamos a ver que $2$ implica $3$. Sea $\alpha$ una curva diferenciable en $M$ y sea $t_0\in(-\varepsilon,\varepsilon)$. Sea $p=\alpha(t_0)$ y consideramos la aplicación tangente a $M$ en $p$, $f_{*p}$. Dado $\vec{v}=\alpha'(t_0)$, $f_{*p}\vec{v}=(f\circ\alpha)'(t_0)$. Por hipótesis, tenemos que $I_p(\vec{v},\vec{v})=I_{f(p)}(f_{*p}\vec{v},f_{*p}\vec{v})$. Esto es equivalente a $||\vec{v}||^2=||f_{*p}\vec{v}||^2$, luego hemos obtenido la condición $3$ tal como la habíamos descrito en el párrafo anterior.
+
+Otra posible definición sería: la aplicacón $f$ verifica $\forall p\in M$ que $||\vec{v}||=||f_{*p}\vec{v}||\ \forall\vec{v}\in T_p(M)$. Esta será la definición que más usaremos. Veamos que esta definición implica $2$.  Sean $\vec{v}_1,\vec{v}_2\in T_p(M)$. Por simetría y bilinealidad, 
+$$I_p(\vec{v}_1+\vec{v}_2,\vec{v}_1+\vec{v}_2)=I_p(\vec{v}_1,\vec{v}_1)+I_p(\vec{v}_2,\vec{v}_2)+2I_p(\vec{v}_1,\vec{v}_2)$$
+Despejando
+$$2I_p(\vec{v}_1,\vec{v}_2)=||\vec{v}_1+\vec{v}_2||^2-||\vec{v}_1||^2-||\vec{v}_2||^2$$
+y también se tiene
+$$2I_p(f_{*p}\vec{v}_1,f_{*p}\vec{v}_2)=||f_{*p}\vec{v}_1+f_{*p}\vec{v}_2||^2-||f_{*p}\vec{v}_1||^2-||f_{*p}\vec{v}_2||^2$$
+Como por hipótesis se tiene la igualdad de módulos se deduce el resultado.
+\end{defi}
+
 \end{document}

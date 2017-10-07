@@ -1,6 +1,6 @@
 	\documentclass[twoside]{article}
 \usepackage{../estilo-ejercicios}
-
+\newcommand{\A}{{\mathcal{A}}}
 %--------------------------------------------------------
 \begin{document}
 
@@ -43,23 +43,98 @@ dotan a $S^n$ de una estructura de variedad diferenciable de dimensión $n$.
 ¿Cuál es el número mínimo de proyecciones necesario para obtener un atlas?
 Construir uno concreto.
 \item Sean $U^+_i = \{(x_1, \dots, x_{n+1}) \in S^n\mid x_i > 0\}$ y $U^-_i = \{(x_1, \dots, x_{n+1}) \in S^n\mid x_i <
-0\}$ los hemisferios de $S^n (i = 1,\dots, n + 1)$ y sea la bola unidad de $\R^n$,
+0\}$ los hemisferios de $S^n$ ($i = 1,\dots, n + 1$) y sea la bola unidad de $\R^n$,
 $B_n = f\{u_1,\dots, u_n) \in \R^n\mid u^2_1
-+ \cdots + u^2_n < 1\}$. Para cada $i = 1, \dots, n + 1$ se
-%consideran las aplicaciones 'i : U+
-%i 􀀀! Bn y i : U􀀀
-%i 􀀀! Bn dadas por
-%'i(x1; : : : ; xn+1) = (x1; : : : ; xi􀀀1; xi+1; : : : ; xn+1);
-%i(x1; : : : ; xn+1) = (x1; : : : ; xi􀀀1; xi+1; : : : ; xn+1)
-%(proyecciones ortogonales de los hemisferios sobre la bola). Probar que A =
-%f(U+
-%i ; 'i); (U􀀀
-%i ; i)gi=1;:::;n+1 es un atlas de dimension n en Sn que la dota
-de una estructura diferenciable que es la misma que la del apartado anterior.
++ \cdots + u^2_n < 1\}$. Para cada $i = 1, \dots, n + 1$ se considerans las aplicaciones $φ_i : U_i^+ \to B^n$ y $ψ_i : U_i^- \to B^n$ dadas por
+\[ φ_i(x_1,\dots,x_{n+1}) = (x_1,\dots,x_{i-1},x_{i+1},\dots,x_{n+1}) \]
+\[ ψ_i(x_1,\dots,x_{n+1}) = (x_1,\dots,x_{i-1},x_{i+1},\dots,x_{n+1}) \]
+(proyecciones ortongales de los hemiferios sobre la bola). Probar que $\mathcal{A} = \{(U_i^+,φ_ii),(U_i^-,φ_i)\}_{i=1,\dots,n+1}$ es un atlas de dimensión $n$ en $S^n$ que la dota de una estructura diferenciable que es la misma que la del apartado anterior.
+\item Si $n=1$, probar que la estructura diferenciable de $S^1$ (circunferencia unidad) como curva regular es la misma que la de los apartados anteriores.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
 Sea $(U,\psi)$ una carta cualquiera de la estructura diferenciable tal que $\psi(p)=q\neq 0$, basta tomar $(U,\varphi)$ con $\varphi=\psi-q$. Se tiene que $\varphi(p)=0$ y claramente sigue siendo homeomorfismo y manteniendo las propiedades de diferenciabilidad de $\psi$, por lo que está en la estructura diferenciable.
+
+Vamos a considerar el espacio topológico $(S^n,T_e|_{S^n})$, que es $T_2+2ºN$. Sea $N=(0,\dots,0,1)$ el polo norte de $S^n$ y $S=(0,\dots,0,-1)$ el polo sur de $S^n$. Definimos el atlas de las proyecciones $\mathcal{A}_1=\{(U,φ),(V,ψ)\}$, donde $U=S^n\setminus\{N\}$ y $φ : U \to \R^n$ es la  proyecciones esteorográfica de $S^n$ desde $N$ sobre el hiperplano $x_{n+1}=0$ homeomorfo a $\R^n$:
+\[ φ (x_1,\dots,x_{n+1}) = \left(\frac{x_1}{1-x_{n+1}},\dots,\frac{x_n}{1-x_{n+1}}\right)\]
+y $V=S^n\setminus\{S\}$ y $ψ : V \to \R^n$ es la proyección estereográfica de $S^n$ desde $S$:
+\[ ψ (x_1,\dots,x_{n+1}) = \left(\frac{x_1}{1+x_{n+1}},\dots,\frac{x_n}{1+x_{n+1}}\right)\]
+Veamos que $\A$ es efectivamente un atlas de dimensión $n$.
+\begin{enumerate}[(1)]
+	\item $(U,φ)$ y $(V,ψ)$ son cartas de dimensión $n$. Lo demostramos sólo para $(U,φ)$, para $(V;ψ)$ la demostración es análoga:
+	\begin{enumerate}[(a)]
+		\item $U = S^n\setminus\{N\}$ es un abierto de $S^n$, pues $\{N\}$ es un cerrado (los puntos son cerrados en espacios topológicos de $T_1$).
+		\item $φ(U) = \mathbb{R}^n$ es un abierto de $\mathbb{R}^n$.
+		\item $φ : U \to φ(U)$ es un homeomorfismo, ya que:
+		\begin{enumerate}[(i)]
+			\item $φ$ es biyectivo, para eso basta tomar un punto $P$ en $x_{n+1}=0$, tomar la recta $r$ que une $N$ con $P$ y ver que corta a $S^n$ en $N$ y en un sólo punto. Tomando $P=(u_1,\dots,u_n,0)$, $r(λ)=(0,\dots,0,1)+λ(u_1,\dots,u_n,-1)$, que corta a $S^n$ en $N$ y el punto:
+			\[ φ^{-1}(u_1,\dots,u_n) = \left(\frac{2u_1}{1+\sum u_k^2},\dots,\frac{2u_n}{1+\sum u_k^2},\frac{-1+\sum u_k^2}{1+\sum u_k^2}\right)\]
+			Para ver que $φ^{-1}$ es realmente el inverse, basta comprobar que $φ^{-1}\circ φ = id$ y $φ \circ φ^{-1} = id$.
+
+			Para la proyección estereográfica sur se tiene que:
+			\[ ψ^{-1}(v_1,\dots,v_n) = \left(\frac{2v_1}{1+\sum v_k^2},\dots,\frac{2v_n}{1+\sum v_k^2},\frac{1-\sum v_k^2}{1+\sum v_k^2}\right) \]
+			
+			\item $φ$ es continua, pues es una transformación formada por fracciones de polinomios en la topología euclídea con denominador que no se anula.
+			\item $φ^{-1}$ es continua por la misma razón.
+		\end{enumerate}
+	\end{enumerate}
+	
+	\item $U \cup V = S^n$
+	\item $U$ está relacionada con $V$. Vemos primer que $U \cap V = S^n\setminus\{N,S\}$. Por otro lado, $φ(U\cap V)=ψ(U \cap V)=\R^n\setminus\{0\}$. 
+	\[ ψ \circ φ^{-1}(u_1,\dots,u_n) = ψ\left(\frac{2u_1}{1+\sum u_k^2},\dots,\frac{2u_n}{1+\sum u_k^2},\frac{-1+\sum u_k^2}{1+\sum u_k^2}\right) = \left(\frac{u_1}{\sum u_k^2},\dots,\frac{u_n}{\sum u_k^2}\right) \]
+	que no se anula, pues $u\neq 0$. Luego $ψ \circ φ^{-1} \in C^\infty$. Ver que $φ \circ φ^{-1}$ es análogo.
+
+	En el próximo capítulo, podremos usar el concepto de diferenciabilidad en $S^n$ para deducir directamente que como $φ$, $φ^{-1}$, $ψ$ en $ψ^{-1}$ están en $C^\infty$, $ψ \circ φ^{-1} \in C^\infty$ y $φ \circ ψ^{-1} \in C^\infty$).
+\end{enumerate}
+
+Para el siguiente apartado:
+
+\begin{enumerate}
+	\item $(U_i^+,φ_i)$ y $(U_i,ψ_i)$ son cartas de dimensión $n$.
+	\begin{enumerate}
+		\item $U_i^+$ es un aberto de $S^n$, pues $U_i^+ = \{(x_1,\dots,x_{n+1} \in \R^{n+1} : x_i > 0\} \cap S^n$.
+		\item $φ_i(U_i^+) = B^n$ que es un abierto de $R^n$.
+		\item $φ_i: U_i^+ \to B^n$ es un homeomorfismo.
+		\begin{enumerate}
+			\item Calculamos $φ_i^{-1}$ y $ψ_i^{-1}$:
+			\[ φ_i^{-1} (u_1,\dots,u_n) = (u_1,\dots,u_{i-1},\sqrt{1-\sum_k u_k^2}, u_i,\dots,u_n) \]
+			\[ ψ_i^{-1} (u_1,\dots,u_n) = (u_1,\dots,u_{i-1},-\sqrt{1-\sum_k u_k^2},u_i,\dots,u_n) \]
+			$φ_i \circ φ_i^{-1} = id$ y $φ_i^{-1} \circ φ_i = id$ trivialmente.
+
+			\item $φ_i$ es continua evidentemente.
+			\item $φ_i^{-1}$ es continua evidentemente.
+		\end{enumerate}
+	\end{enumerate}
+	\item $(\bigcup_{i=1}^{n+1} U_i^+) \cup (\bigcup_{i=1}^{n+1} U_i^-) = S^n$ trivialmente.
+	\item Para ver que las cartas están relacionadas 2 a 2. Basta ver que:
+		\[ φ_j \circ φ_i^{-1} (u_1,\dots,u_n) = (u_1,\dots,u_{i-1},\sqrt{1-\sum_k u_k^2}, u_i,\dots,u_{j-2},u_j,\dots,u_n) \in C^{∞} \]
+		El resto de los cambios de cartas queda como ejercicio.
+	\end{enumerate}
+	Tenemos que ver también que $\A_1 \sim \A$, vamos a demostrar sólo que $(U,φ)$ está relacionada con $(U_i^+,φ_i)$. Los demás casos son análogos:
+	\[ U \cap U_i^+ = \begin{cases}
+	U_i^+, &\text{ si }i \neq n+1\\
+	U_{n+1}^+ \setminus \{N\} &\text{ si }i = n+1
+\end{cases}\]
+
+Sea $ρ(u)=1+\sum u_k^2$.
+\begin{align*}
+	φ_i \circ φ^{-1} (u_1,\dots,u_n) & = φ_i\left(\frac{2u_1}{1+\sum u_k^2}, \dots, \frac{2u_n}{1+\sum u_k^2}, \frac{-1+\sum u_k^2}{1+\sum u_k^2}\right)\\
+	& = \begin{cases}
+	\frac{2}{1+\sum u_k^2}(u_1, \dots, u_{i-1},u_{i+1},\dots,u_n, -1+\sum u_k^2), &\text{ si }i \neq n+1 \\
+	\frac{2}{1+\sum u_k^2}(u_1, \dots,u_n), &\text{ si }i = n+1
+\end{cases}
+\end{align*}
+Por otro lado:
+\begin{align*}
+	φ \circ φ_i^{-1}(u_1,\dots,u_n) & = φ(u_1,\dots,u_{i-1},\sqrt{1-\sum u_k^2},u_i,\dots,u_n) =\\
+	& = \begin{cases}
+	\frac{1}{1-u_n}(u_1\dots,u_{i-1},\sqrt{1-\sum u_k^2},u_i,\dots,u_{n-1}, &\text{ si }i \neq n+1\\
+	\frac{1}{1-\sqrt{1-\sum u_k^2}}(u_1,\dots,u_n)
+\end{cases}
+\end{align*}
+
+que son $C^{∞}$, pues si $i \neq n+1$, $u_n \neq 1$ y si $i = n+1$, $\sqrt{1-\sum u_k^2} \neq 1$.
+
 \end{solucion}
 
 \begin{ejercicio}{3}

@@ -162,7 +162,7 @@ $4$ & $0$ & $\frac{1}{2}4+0$ & $\boxed{2}$ \\
 \end{tabular}\
 \\
 
-\underline{Etapa 3:}\kern 19em \underline{Etapa 2:}
+\underline{Etapa 3:}\kern 18.85em \underline{Etapa 2:}
 
 \begin{tabular}{|c| c| c| c | c| c|}
 \hline
@@ -362,7 +362,7 @@ Definimos $(n,d)$, donde $n$ es el índice de la primera actividad a la que no s
 \end{align*}
 La solución al problema sería $f(1,D)$.
 \end{ej}
-\begin{ej} $D=6$, tareas $1,2,3$.
+\begin{ejer} $D=6$, tareas $1,2,3$.
 
 $r_1(x)=\begin{cases}
 7x+2 & x>0\\
@@ -378,7 +378,96 @@ $r_1(x)=\begin{cases}
 Hallar $f(1,6)$.
 
 
-\end{ej}
+\end{ejer}
+\begin{solucion}
+Claramente hay 3 etapas, en la que se decide la cantidad $d_t$ de recurso que se asigna a la tarea de dicha etapa. Por tanto tenemos estados $(t,d)$ en los que $t$ es la etapa y $d$ es la cantidad de recurso disponible para esa etapa.
+
+\underline{Etapa 3:}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+$d$ & $d_3$ & $f_3(d_3)$\\
+\hline
+0 & 0 & 0\\
+1 & 1 & 9\\
+2 & 2 & 13\\
+3 & 3 & 17\\
+4 & 4 & 21\\
+5 & 5 & 25\\
+6 & 6 & 29\\
+\hline
+\end{tabular}
+\end{center}
+
+\underline{Etapa 2:}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$d$ & $d_2$ & $r_2(d_2)$ & $f_3(d-d_2)$ & $f_2(d_2)$\\
+\hline
+0 & 0 & 0 & 29 & $\boxed{29}$\\
+\hline
+\hline
+1 & 0 & 0 & 9 & 9\\
+ & 1 & 10 & 0 & $\boxed{10}$  \\
+\hline
+\hline
+2 & 0 & 0 & 13 & 13 \\
+ & 1 & 10 & 9 & $\boxed{19}$\\
+ & 2 & 13 & 0 & 13\\
+\hline
+\hline
+3 & 0 & 0 & 17 & 17\\
+  & 1 & 10 & 13 & $\boxed{23}$\\
+  & 2 & 13 & 9 & 22\\
+  & 3 & 16 & 0 & 16\\
+\hline
+\hline
+4 & 0 & 0 & 21 & 21\\
+  & 1 & 10 & 17 & $\boxed{27}$\\
+  & 2 & 13 & 13& 26\\
+  & 3 & 16 & 9 & 25\\
+  & 4 & 19 & 0 & 19\\
+\hline
+\hline
+5 & 0 & 0 & 25 & 25\\
+  & 1 & 10 & 21 & $\boxed{31}$\\
+  & 2 & 13 & 17 & 30\\
+  & 3 & 16 & 13 & 29\\
+  & 4 & 19 & 9 & 28\\
+  & 5 & 22 & 0 & 22\\
+\hline
+\hline
+6 & 0 & 0 & 29 & 29\\
+  & 1 & 10 & 25 & $\boxed{35}$\\
+  & 2 & 13 & 21 & 34\\
+  & 3 & 16 & 17 & 33\\
+  & 4 & 19 & 13 & 32\\
+  & 5 & 22 & 9 & 31\\
+  & 6 & 25 & 0 & 25\\
+\hline
+\end{tabular}
+\end{center}
+
+\underline{Etapa 1}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$d$ & $d_1$ & $r_1(d_1)$ & $f_2(d-d_1)$ & $f_1(d_1)$\\
+\hline
+6 & 0 & 0 & 35 & 34\\
+  & 1 & 9 & 31 & 40\\
+  & 2 & 16 & 27 & 43\\
+  & 3 & 23 & 23 & 46\\
+  & 4 & 30 & 19 & $\boxed{49}$\\
+  & 5 & 37 & 10 & 47\\
+  & 6 & 44 & 0 & 44\\
+  \hline
+\end{tabular}
+\end{center}
+
+Finalmente, vamos hacia atrás y optenemos la solución $d_1=4, d_2=1, d_3=1$. 
+\end{solucion}
 
 \subsection{Un caso más simple}
 
