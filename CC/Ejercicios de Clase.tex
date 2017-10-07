@@ -5,7 +5,6 @@
 \begin{document}
 
 \title{Ciencias de la Computación}
-\large{Ejercicios}
 
 \author{Javier Aguilar Martín}
 \maketitle
@@ -42,6 +41,48 @@ P=\begin{cases}
 También podríamos haber ido calculando directamente $g(Y)$. En cualquier caso, $[[P]]^{(1)}=g^{-1}$. 
 \end{solucion}
 
-HACER 15 Y 16.
+
+\begin{ejercicio}{15}
+En este ejercicio analizaremos los programas lineales. Los programas lineales son
+los diseñados utilizando el lenguaje $\textsc{GOTO}_l$, obtenido a partir de $\textsc{GOTO}$ eliminando la instrucción
+condicional.
+\begin{enumerate}
+\item Sea $k\in \N$. Demostrar que la función constante $C_k(x) = k$ es $\textsc{GOTO}_l$-computable.
+\item Demostrar que si $p$ es un $\textsc{GOTO}_l$-programa de longitud $k$, entonces $[[p]]^{(1)}(x) \leq k$.
+\item Probar que si $p$ es un programa que calcula $C_k$, entonces la longitud de $p$ es mayor o igual
+que $k$.
+\item Probar que la función $f(x) = x + 1$ no es $\text{GOTO}_l$-computable (luego $\textsc{GOTO}$ y $\textsc{GOTO}_l$ no son
+equivalentes).
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item Basta repetir $k$ veces la instrucción $Y\leftarrow Y+1$.
+\item La única forma de alcanzar un valor superior a $k$ es haciendo más de $k$ incrementos, pero entonces tendríamos una longitud de programa mayor que $k$. 
+\item El algoritmo del primer apartado es el más corto posible para calcular $C_k$ ya que solo involucra la variable de salida y el incremento. Por tanto, cualquier otro programa que la calcule debe ser al menos tan largo como este, que tiene longitud $k$. 
+\item Supongamos que sí lo es. Entonces habría un programa de longitud $k$ que calcula $f(x)=x+1\ \forall x\in\N$. En particular, calcula $f(k)=k+1$, pero eso contradice el apartado 2.
+\end{enumerate}
+\end{solucion}
+
+\begin{ejercicio}{16}
+Sea $\textsc{GOTO}_f$ el lenguaje que se obtiene a partir de $\textsc{GOTO}$ restringiendo el uso de la
+instrucción
+
+$I\equiv IF\ V\neq 0\ GOTO\ L$
+
+a etiquetas L para instrucciones que aparecen en el programa después de I (o son de salida).
+
+\begin{enumerate}
+\item Probar que si $f : \N- \to \N$ es $\textsc{GOTO}_f$-computable, entonces existe una partición finita
+$\{A_1,\dots,A_l\}$ de $\N$ tal que en cada $A_i$, la función es constante.
+\item Probar que $\textsc{GOTO}_f$ y $\textsc{GOTO}_l$ no son equivalentes.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item
+\item 
+\end{enumerate}
+\end{solucion}
 
 \end{document}
