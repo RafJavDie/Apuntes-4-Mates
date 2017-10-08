@@ -271,21 +271,123 @@ $x_1=4, x_2=1, x_3=4, x_4=2$.
 
 \newpage 
 \begin{ejercicio}{4}
+Un estudiante tiene siete días para preparar sus exámenes finales de cuatro asignaturas y
+quiere asignar el tiempo que tiene de la manera más eficiente posible. Necesita por lo menos un
+día para cada asignatura por lo que quiere asignar uno,dos,tres o cuatro días a cada asignatura.
+Utilizar programación dinámica para realizar estas asignaciones de forma que se maximice el total
+de puntos obtenidos en los cuatro exámenes. La siguiente tabla muestra la estimación de los puntos
+obtenidos en cada asignatura según el número de días de estudio asignados.
 
+\hskip 5em Asignaturas
+
+\begin{tabular}{c|c c c c}
+Nº días & 1 & 2 & 3 & 4\\
+\hline
+1 & 3 & 5 & 2 & 6\\
+2 & 5 & 5 & 4 & 7\\
+3 & 6 & 6 & 7 & 9\\
+4 & 7 & 9 & 8 & 9
+\end{tabular}
+
+Resolver el problema mediante programación dinámica.
+\begin{nota}
+¿Cómo se haría si quisiera aprobar todas como condición inicial?
+\end{nota}
 \begin{solucion}
+Tenemos 4 etapas, una para cada asignatura, en la que decidimos cuántos días le dedicamos. Por tanto tenemos los estados $(t,k)$, donde $t$ es la etapa en la que nos encontramos y $k$ es la cantidad de días disponible para asignar (teniendo en cuenta que ya se ha asignado un día previamente). $f(t,k)$ representaría la máxima cantidad de puntos que podemos obtener desde la etapa $t$ hasta el final si disponemos de $k$ días libres. Entonces definimos $f(t,k)=\max_{1\leq x_t\leq k}\{g(t,x_t)+f(t+1,k-x_t)\}$ y $f(4,k)=\max_{1\leq x_3\leq k}\{g(4,x_3)\}=g(4,k)$, donde $g(t,x)$ representa los puntos obtenidos, es decir, el valor de la tabla en la posición $(t,x)$. 
 
+\underline{Etapa 4}
+
+\begin{tabular}{|c|c|c|}
+\hline
+$k$ & $x$ & $f(4,k)$\\
+\hline
+1 & 1 & 6\\
+2 & 2 & 7\\
+3 & 3 & 9\\
+4 & 4 & 9\\
+\hline
+\end{tabular}
+
+\newpage
+
+\underline{Etapa 3} \hskip 14em \underline{Etapa 2}
+
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$k$ & $x$ & $g(3,x)$ & $f(4,k-x)$ & $f(3,k)$\\
+\hline
+2 & 1 & 2 & 6 & $\boxed{8}$\\
+\hline
+3 & 1 & 2 & 7 & 9\\ 
+  & 2 & 4 & 6 & $\boxed{10}$\\
+\hline
+4 & 1 & 2 & 9 & 11\\
+  & 2 & 4 & 7 & 11\\
+  & 3 & 7 & 6 & $\boxed{13}$\\
+  \hline
+5 & 1 & 2 & 9 & 11\\
+  & 2 & 4 & 9 & 13\\
+  & 3 & 7 & 7 & $\boxed{14}$\\
+  & 4 & 8 & 6 & 14\\
+  \hline
+\end{tabular}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$k$ & $x$ & $g(2,x)$ & $ f(3,k-x)$ & $f(2,k)$\\
+\hline 
+3 & 1 & 5 & 8 & $\boxed{13}$\\
+\hline
+4 & 1 & 5 & 10 & $\boxed{15}$\\
+  & 2 & 5 & 8 & 13\\
+  \hline
+5 & 1 & 5 & 13 & $\boxed{18}$\\
+  & 2 & 5 & 10 & 15\\
+  & 3 & 6 & 8 & 14\\
+  \hline
+6 & 1 & 5 & 14 & $\boxed{19}$\\
+  & 2 & 5 & 13 & 18\\
+  & 3 & 6 & 10 & 16\\
+  & 4 & 9 & 8  & 17\\
+  \hline
+\end{tabular}
+
+\underline{Etapa 1}
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$k$ & $x$ & $g(1,x)$ & $f(2,k-x)$ & $f(1,k)$\\
+\hline
+7 & 1 & 3 & 19 & 22\\
+  & 2 & 5 & 18 & $\boxed{23}$\\
+  & 3 & 6 & 15 & 21\\
+  & 4 & 7 & 13 & 20\\
+  \hline
+\end{tabular}
+
+$x_1=2, x_2=1, x_3=3, x_4=1$.
 \end{solucion}
 \end{ejercicio}
 
 \newpage 
 \begin{ejercicio}{5}
+En una empresa se estiman las necesidades de mano de obra para las cuatro estaciones del año.
+Estas son 225, 220, 240 y 200 hombres respectivamente en primavera, verano, otoño e invierno.
+Si se emplean a más hombres de los necesarios se produce un coste de 2000 u.m. por persona
+y periodo. Los costos debidos a la contratación o al despido de trabajadores entre periodos se
+estiman en 200 veces el cuadrado de la diferencia entre el número de trabajadores en uno y otro
+periodo.
+Determinar el número de empleados que deben estar en plantilla en cada estaciún del año; para
+ello asumir que la cantidad de trabajadores es continuamente divisible.
 \begin{solucion}
 \end{solucion}
 \end{ejercicio}
 
 \newpage 
 \begin{ejercicio}{6}
-
+Descomponer utilizando la programación dinámica una cantidad $C > 0$ en tres partes de forma
+que cada una de ellas sea mayor o igual que $C/4$ y que su producto sea mínimo. Definir las etapas,
+estados, decisiones y recursividad de este proceso.
 \end{ejercicio}
 \begin{solucion}
 
@@ -293,17 +395,78 @@ $x_1=4, x_2=1, x_3=4, x_4=2$.
 
 \newpage 
 \begin{ejercicio}{7}
-
+Un concurso de televisión consiste en un juego bipersonal en el que cada participante debe
+eliminar números dispuestos en una tabla. Inicialmente la tabla consta de tres filas, en la primera
+hay ocho números, en la segunda cinco y en la tercera tres. El primer participante elige una fila de
+las tres existentes y elimina uno, dos o tres números; a continuación es el turno del otro participante
+que repite la elección de fila y la cantidad de números que elimina de la misma. El juego continua
+hasta que uno de los participantes elimina el último número, en cuyo caso pierde la partida.
+Formular el sistema de ecuaciones recursivas que determina la estrategia ganadora óptima.
 \end{ejercicio}
 \begin{solucion}
 
 \end{solucion}
 
 \newpage
-\begin{ejercicio}{12} 
+\begin{ejercicio}{8} 
+Consideremos la matriz 4$\times$5 que se muestra abajo. Definimos una vez fijada la posición $(i, j)$,
+un movimiento elemental como aquel que pasa a la posición $(i + 1, j)$ o $(i, j + 1)$. Suponiendo
+que estamos en el córner inferior derecho, determinar la secuencia de movimientos que minimiza la
+suma de los valores almacenados en las posiciones recorridas desde la posición superior izquierda.
+\begin{center}
+\begin{tabular}{c c c c c}
+0 & 4 & 3 & 6 & 4\\
+7 & 8 & 6 & 8 & 8\\
+2 & 3 & 1 & 8 & 7\\
+6 & 2 & 9 & 3 & 0
+\end{tabular}
+\end{center}
 \end{ejercicio}
 \begin{solucion}
 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{9}
+Sea $p$ la probabilidad de obtener cara al lanzar una moneda. Calcular la probabilidad de
+obtener un número par de caras en $n$ lanzamientos mediante un procedimiento recursivo.
+\end{ejercicio}
+\begin{solucion}
+Consideramos los sucesos 
+
+$A_n=$ obtener un número par de caras en $n$ lanzamientos.\\
+$B_n=$ obtener un número impar de caras en $n$ lanzamientos.
+
+Tenemos que calcular $P(A_n)$ de la siguiente forma
+$$P(A_n)=P(\text{cara}|B_{n-1})P(B_{n-1})+P(\text{cruz}|A_{n-1})P(A_{n-1})=pP(B_{n-1})+(1-p)P(A_{n-1}).$$
+En primer lugar necesitamos $P(B_{n-1})$, que la calculamos de forma similar
+$$P(B_{n-1})=P(\text{cara}|A_{n-2})P(A_{n-2})+P(\text{cruz}|B_{n-2})P(B_{n-2})=pP(A_{n-2})+(1-p)P(B_{n-2}).$$
+Solo nos queda añadir las condiciones iniciales, $P(A_1)=1-p$ y $P(B_1)=p$. 
+
+En resumen, el proceso recursivo sería el siguiente:
+$$\begin{cases}
+P(B_1)=p\\
+P(A_1)=1-p\\
+P(B_{n-1})=pP(A_{n-2})+(1-p)P(B_{n-2})\\
+P(A_n)=pP(B_{n-1})+(1-p)P(A_{n-1})
+\end{cases}$$
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{10}
+Una comunidad autónoma tiene cuatro provincias. Una fracción $f_i$ de los electores viven en
+la provincia $i = 1,\dots,4$ con $f_1 = 0.25$, $f_2 = 0.2$, $f_3 = 0.4 $y $f_4 = 0.15$. La cámara autónimca consta
+de $R = 28$ escaños. Cada provincia $i$ debería obtener $D_i = Rf_i$ escaños. Sin embargo, el número
+de escaños asignados debe ser entero. Si se desea minimizar la máxima diferencia entre $D_i$ y el
+número de escaños de la provincia $i$,
+\begin{enumerate}
+\item Formular el problema como un modelo de programación dinámica.
+\item Resolver el problema.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
 \end{solucion}
 
 \end{document}

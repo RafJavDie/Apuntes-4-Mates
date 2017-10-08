@@ -59,6 +59,13 @@ Si $x\in X_1=\V(S_1)$, $f(x)=0$ para todo $f\in S_1$, luego $f(x)g(x)=0$ para to
 Recíprocamente, sea $x\in \V(S_1S_2)$. Si $x\in X_1\subseteq X_1\cup X_2$, no hay nada que probar. De lo contrario, debe existir un $f_0\in S_1$ tal que $f_0(x)\neq 0$. Como $f_0(x)g(x)=0$ para todo $g\in S_2$, deducimos que $g(x)=0$ para todo $g\in S_2$, es decir, $x\in \V(S_2)=X_2$.
 \end{proof}
 
+\begin{prop}
+Si X e Y son algebraicos tales que $X=V(S)$ e $Y=V(T)$ entonces $X\cap Y = V(T\cup S)$. Además si $S\cdot T = \{f\cdot g \mid f \in S,\; g \in T\}$ entonces $X\cup Y = V(S\cdot T)$. 
+\end{prop}
+\begin{dem}
+Todas las inclusiones son sencillas. Veamos una. Sea $x\notin X\cup Y$, entonces $x\notin X$ y $x\notin Y$. Entonces existen $f\in S$ y $g\in T$ tal que $f(x)\neq 0$ y $g(x)\neq 0$. Se sigue $f(x)g(x)\neq 0$, luego $x\notin V(S\cdot T)$. \QED
+\end{dem}
+
 El ejemplo \ref{ejemplo_algebraico} y las proposiciones \ref{interseccion} y \ref{union} implican que los subconjuntos algebraicos de $\Ank$ son los cerrados de una cierta topología.
 
 \begin{defi}
@@ -93,11 +100,60 @@ Como el anillo $k[x_1,\ldots,x_n]$ es noetheriano, todo ideal está generado por
 
 Ya que es imposible recuperar el conjunto $S$ a partir de $\V(S)$, rebajemos un poco nuestras expectativas: ¿será posible recuperar el \emph{ideal} $\langle S\rangle$ a partir de $\V(S)$? Veamos que en este caso la respuesta también es negativa, incluso en el caso $n=1$: en $\A^1_{\R}$, el conjunto vacío se puede escribir como $\V(\{1\})$, o también como $\V(\{x^2+1\})$. De hecho, para cualquier polinomio $f\in \R[x]$ sin raíces reales, $\V(\{f\})=\emptyset$. El hecho de que haya polinomios sin raíces reales es una obstrucción muy importante a la hora de estudiar variedades algebraicas. Para salvar esta obstrucción, es necesario extender el concepto de variedad algebraica de manera considerable. Por el momento, obviaremos este problema suponiendo a partir de ahora que nuestro cuerpo $k$ es algebraicamente cerrado (por ejemplo, $k=\C$).
 
-Aún así, todavía no es posible recuperar $\langle S\rangle$ a partir de $\V(S)$: Por ejemplo, en $\A^1_k$, $\{0\}=\V(\{x\})=\V(\{x^2\})$, pero $\langle x\rangle\neq\langle x^2\rangle$. Sin embargo, estamos un poco más cerca: aunque los ideales no son iguales, sus \emph{radicales} sí lo son. Así que modificamos una vez más la pregunta: ¿Es posible recuperar el \emph{radical} de $\langle S\rangle$ a partir de $\V(S)$? Veamos que ahora la respuesta es afirmativa.
+Aún así, todavía no es posible recuperar $\langle S\rangle$ a partir de $\V(S)$: Por ejemplo, en $\A^1_k$, $\{0\}=\V(\{x\})=\V(\{x^2\})$, pero $\langle x\rangle\neq\langle x^2\rangle$. Sin embargo, estamos un poco más cerca: aunque los ideales no son iguales, sus \emph{radicales}(\ref{radical}) sí lo son. Así que modificamos una vez más la pregunta: ¿Es posible recuperar el \emph{radical} de $\langle S\rangle$ a partir de $\V(S)$? Veamos que ahora la respuesta es afirmativa.
 
 Sea $X\subseteq \Ank$ un subconjunto arbitrario. Definimos $\I(X)$ como el conjunto de $f\in k[x_1,\ldots,x_n]$ tales que $f(x)=0$ para todo $x\in X$. 
 
 \begin{defi}
+Un anillo se dice \textbf{noetheriano} si todo ideal es finitamente generado.
+\end{defi}
+\begin{prop}
+Son anillos noetherianos:
+\begin{itemize}
+\item Los anillos finitos
+\item Los dominios de ideales principales (y por tanto los cuerpos).
+\end{itemize}
+\end{prop}
+\begin{nota}
+Son anillos no noetherianos:
+\begin{itemize}
+	\item $k[x_1,x_2,\dots,] = \bigcup_{n \geq 1} k[x_1,\dots,x_n]$.
+	\item El anillo de funciones continuas $\{f \func{\R}{\R}\}$.
+\end{itemize}
+\end{nota}
+\begin{prop}\mbox{}
+\begin{enumerate}
+	\item $A$ es noetheriano.
+	\item Toda cadena creciente $I_1 \subseteq I_2 \subseteq I_3 \subseteq \dots$ de ideales es estacionara, es decir, existe $r_0$ tal que $I_r = I_{r_0} \forall r \geq r_0$.
+\end{enumerate}
+\end{prop}
+
+\begin{dem}\mbox{}
+\begin{itemize}
+	\item[($1\Rightarrow 2$)]
+	Consideramos la cadena creciente de ideales:
+	\[ I_1 \subseteq I_2 \subseteq I_3 \subseteq \dots \subseteq I_r \subseteq \dots \]
+	Tomamos $I = \bigcup_{n\geq 1} I_n$. Tenemos que $I$ es un ideal, por lo tanto está finitamente generado como $I = \langle a_1, \dots, a_r \rangle$. Cada $a_i \in I_{n_i}$ para algún $n_i$. Entonces $a_i \in I_n$  $\forall i$, si $n > \max\{n_1,\dots,n_r\}$. Llegamos entonces a que $I \subseteq I_n \subseteq I$, es decir $I_n = I$. Por lo tanto $I_{n+k} = I$ $\forall k \geq 0$. 
+
+	\item[($2\Rightarrow 1$)]
+	Sea $I \subseteq A$ y $x_1 \in I$. Entonces $\langle x_1 \rangle \subseteq I \subseteq A$. Si $I = \langle x_1 \rangle$, hemos acabado. Si no $x_2 \in I \setminus \langle x_1 \rangle$, tomamos $\langle x_1, x_2 \rangle \subseteq I \subseteq A$. Si $I = \langle x_1, x_2 \rangle$, hemos acabado. Si no, repetimos el argumento tomando un $x_3 \in I \setminus \langle x_1,x_2 \rangle$. Como la cadena creciente debe ser estacionaria, llegamos a que en algún momento, la cadena de ideales $\langle x_1,\dots,x_n\rangle$ debe estabilizarse y deducimos que $I = \langle x_1,\dots,x_n\rangle$. Por lo tanto $A$ es noetheriano. \QED
+
+\end{itemize}
+\end{dem}
+
+\begin{teorema}[de la base de Hilbert]
+Si $A$ es un anillo noetheriano, entonces $A[x]$ también lo es.
+\end{teorema}
+
+Por lo tanto, si $A$ es un anillo noetheriano, entonces $A[x_1,\dots,x_n]$ también lo es. Llegamos además a que todo conjunto algebraico se puede definir como el conjunto de ceros de un número finito de polinomios:
+
+\[ V(S) = V(\langle S \rangle) = V(\langle f_1,\dots,f_r\rangle) =  V(\{f_1,\dots,f_r\}) \]
+
+\begin{defi}
+Decimos que un cuerpo $\K$ es \textbf{algebraicamente cerrado} si todo polinomio no constante en $\K[x]$ tiene una raíz en $k$.
+\end{defi}
+
+\begin{defi}\label{radical}
 Definimos el \textbf{radical de un ideal} $I$ como:
 \[ \sqrt{I} = \text{rad}(I) = \{f \in k[x_1,\dots,x_n] \mid f^n \in I \text{ para algún }n \in \mathbb{N}\} \]
 \end{defi}
@@ -120,12 +176,12 @@ Definimos el \textbf{radical de un ideal} $I$ como:
 
 El recíproco viene dado por el Nullstellensatz:
 
-\begin{teorema} {\bf (Nullstellensatz)} Sea $I\subseteq k[x_1,\ldots,x_n]$ un ideal. Entonces $\I(\V(I))=\sqrt{I}$.
+\begin{teorema}\label{Null} {\bf (Nullstellensatz)} Sea $I\subseteq k[x_1,\ldots,x_n]$ un ideal. Entonces $\I(\V(I))=\sqrt{I}$.
 \end{teorema}
 
 En particular, si $I$ es un ideal radical, $\I(\V(I))=I$. La consecuencia más importante del teorema es la siguiente:
 
-\begin{coro} Las aplicaciones $I\mapsto \V(I)$ y $X\mapsto \I(X)$ definen una correspondencia biunívoca entre el conjunto de ideales radicales de $k[x_1,\ldots,x_n]$ y el conjunto de subconjuntos algebraicos de $\Ank$, que invierte las contenciones. 
+\begin{coro}\label{correspondencia} Las aplicaciones $I\mapsto \V(I)$ y $X\mapsto \I(X)$ definen una correspondencia biunívoca entre el conjunto de ideales radicales de $k[x_1,\ldots,x_n]$ y el conjunto de subconjuntos algebraicos de $\Ank$, que invierte las contenciones. 
  \end{coro}
 
 Antes de dar la prueba del teorema veamos el siguiente lema, que tiene importancia por sí mismo:
@@ -141,11 +197,40 @@ Antes de dar la prueba del teorema veamos el siguiente lema, que tiene importanc
 \begin{proof}[Prueba del teorema] Sea $f\in\I(\V(I))$, veamos que $f^m\in I$ para algún $m\geq 1$. Introduzcamos una nueva variable $y$, y consideremos el polinomio $g(x_1,\ldots,x_n,y)=1-yf(x_1,\ldots,x_n)\in k[x_1,\ldots,x_n,y]$. Sea $J=I\cdot k[x_1,\ldots,x_n,y]+\langle g\rangle$. Para todo $(x_1,\ldots,x_n,y)\in\V(J)$ se tiene que $h(x_1,\ldots,x_n)=0$ para todo $h\in I$ (es decir, $(x_1,\ldots,x_n)\in \V(I)$). En particular, $f(x_1,\ldots,x_n)=0$, y entonces $g(x_1,\ldots,x_n,y)=1\neq 0$. Por tanto $\V(J)=\emptyset$, así que por el lema debe ser $J=k[x_1,\ldots,x_n,y]$. En particular, existen $g_i\in k[x_1,\ldots,x_n,y]$ ($i=0,\ldots,r$) y $h_i\in I$ ($i=1,\ldots,r$) tales que $g_0(1-yf)+g_1h_1+\cdots +g_rh_r=1$. Sustituyendo $y$ por $1/f$ y quitando denominadores obtenemos una expresión $f^m=\hat g_1h_1+\cdots+\hat g_rh_r$ para algún $m\geq 1$ con $\hat g_i\in k[x_1,\ldots,x_n]$, y por tanto $f^m\in I$. 
 \end{proof}
 
+Vamos a probar también el corolario \ref{correspondencia}.
+\begin{proof}[Prueba del corolario]
+Veamos que $\mathcal{I}$ y $\mathcal{V}$ inducen una biyección entre el conjunto de subconjuntos algebraicos de $\mathbb{A}^n$ y el conjunto de ideales radicales de $\mathbb{K}[x_1,\dots,x_n]$. Sea $X$ un conjunto algebraico e $I$ el ideal radical correspondiente, vamos a comprobar que $\mathcal{V}(\mathcal{I}(X))=X$ y que $\mathcal{I}(\mathcal{V}(I))=I $. La segunda igualdad se tiene directamente del teorema \ref{Null}.  Claramente por definición $\mathcal{V}(\mathcal{I}(X))\supseteq X$. Para la otra contención, si $X$ es algebraico, entonces $X=\mathcal{V}(R)$ para algún conjunto de polinomios $R$. Utilizando que $\mathcal{I}(\mathcal{V}(R))\supseteq R$, se deduce aplicando $\mathcal{V}$ a ambos lados que $\mathcal{V}(\mathcal{I}(X))\subseteq \mathcal{V}(R)=X$.
+
+
+\end{proof}
+
+\begin{prop}
+Si $k\subset K$ es una extensión de cuerpos y $K$ es finitamente generado como $k-$álgebra, entonces $K$ es una extensión finita de $k$. 
+\end{prop}
 
 \begin{ejer}
 Probar que $\Q$ no es $\Z-$álgebra finitamente generada. 
 \end{ejer}
 
+\begin{ej}
+Como ejemplo del corolario \ref{correspondencia}, en $\mathbb{K}[x]$ y $\mathbb{A}^1$, tenemos como conjuntos algebraicos los conjuntos finitos más $\mathbb{A}$ (idea geométrica). Esto se corresponde en el álegebra con un ideal radical $I$, que se corresponde con un polinomio mónico $g$. Es decir, $I=\langle g\rangle$ e $I=\sqrt{I}$. Esto último ocurre si y solo si dado $f\in I$ cumple que  si $g\mid f^n$ para algún $n\geq 1$ entonces $g\mid f$. Esto se cumple si $g$ es irreducible (o sea, el ideal es primo). En general, si $I$ es primo entonces $I$ es radical. Más generalmente, la divisibilidad se cumple si y solo si $g$ es producto de irreducibles distintos entre sí, es decir, el ideal $I$ es primo si y solo si $g$ es producto de polinomios irreducibles distintos.\\
+Si tenemos el conjunto $A=\{\alpha_1,\dots, \alpha_r\}$, le hacemos corresponder el ideal generado por $h=(x-\alpha_1)\cdots(x-\alpha_r)$. 
+\end{ej}
+
+\begin{ej} Vamos a encontrar el radical de un ideal usando los resultados anteriores. Consideramos el ideal $I = \langle x²z,z²y\rangle \subset \K[x,y,z]$. Se tiene que:
+\[ \mathcal{V}(I) = \begin{cases}
+	x²z = 0\\
+	z²y = 0
+\end{cases} \equiv \{x=y=0\}\cup\{ z=0\} \}\]
+Sea $f(x,y,z) = \sum_{i,j,k}a_{i,j,k}x^iy^jz^k \in \mathcal{I}(\mathcal{V}(I))$. Debe cumplirse que:
+\[ f(x,y,0) = \sum_{i,j}a_{i,j,0}x^iy^j = 0 \]
+Como estamos en cuerpo algebraicamente cerrado, $\K$ no puede ser finito, por lo que se deduce que $a_{ij0}=0$ $\forall i,j$.
+Similarmente:
+\[ f(0,0,z) = 0 = \sum_{k}a_{0,0,k}z^k = 0 \Rightarrow a_{0,0,z} = 0 \]
+Luego para un polinomio no trivial, $k ≥ 1$ y $i ≥ 1$ ó $j ≥ 1$. Esto se traduce a que podemos sacar factor común $z$ y $x$ ó $y$:
+\[ f(x,y,z) = z \sum_{i,j,k ≥ 1} a_{i,j,k} x^iy^jz^{k-1} = z(x\cdot g(x,y,z)+y\cdot h(x,y,z)) \in \langle zx,zy \rangle \]
+Entonces $\langle xz,zy\rangle = \sqrt{\langle x²z,z²y\rangle}$.
+\end{ej}
 
 \section[Funciones regulares]{Funciones regulares. El anillo de coordenadas de un conjunto algebraico}
 
@@ -170,6 +255,18 @@ En particular, $\calA(X)$ es una $k$-álgebra finitamente generada. Además, com
 \end{ejer}
 
 De hecho, el conjunto de puntos de $X$ se puede recuperar a partir de $\calA(X)$ como el conjunto de sus ideales maximales. Sea $a=(a_1,\ldots,a_n)\in X$. Como $\{(a_1,\ldots,a_n)\}=\V(\{x_1-a_1,\ldots,x_n-a_n\})$, tenemos una contención $\I(X)\subseteq \langle x_1-a_1,\ldots,x_n-a_n\rangle =:\m_a$, que es maximal, y por tanto $\m_a$ define un ideal maximal $\bar\m_a:=\m_a/\I(X)$ de $\calA(X)=k[x_1,\ldots,x_n]/\I(X)$.
+
+\begin{lemma}
+Un ideal $m \subset \K[x_1,\dots,x_n]$ es maximal si y sólo si no existe un ideal radical $I$ con $m \subsetneq I \subsetneq \K[x_1,\dots,x_n]$.
+\end{lemma}
+
+\begin{dem}
+Es consecuencia directa de que $I \subseteq \sqrt{I}$ y de la definición de ideal maximal, y de que si $\sqrt{I}$ es el total, entonces $I$ es el total.\QED
+\end{dem}
+
+\begin{teorema}
+$\mathcal{I}(X)$ es maximal si y sólo si no existe un conjunto algebraico $Y$ tal que $\emptyset \subsetneq Y \subsetneq X$. Por lo tanto, hay una correspondencia entre los conjuntos algebraicos con un solo punto y los ideales maximales
+\end{teorema}
 
 \begin{ejer}
  Probar que $\m_a$ es un ideal maximal de $k[x_1,\ldots,x_n]$.
@@ -239,10 +336,45 @@ Veamos ahora que (2)$\Rightarrow$(1). Sea $I=\I(X)$ primo. En particular no es e
 Supongamos ahora que la descomposición $X=Z_1\cup\cdots\cup Z_r$ es minimal, y sea $X=W_1\cup\cdots\cup W_s$ otra descomposición minimal. Para todo $i=1,\ldots,r$, $Z_i\subseteq X=W_1\cup\cdots\cup W_s$ y por tanto (ejercicio \ref{variedadcont}) $Z_i\subseteq W_j$ para algún $j=1,\ldots,s$. De la misma forma, $W_j\subseteq Z_l$ para algún $l=1,\ldots,r$. Entonces $Z_i\subseteq W_j\subseteq Z_l$. Como la descomposición es minimal, debe ser $i=l$ (de lo contrario podríamos eliminar $Z_i$ de la descomposición y la unión seguiría siendo $X$). De modo que $Z_i=W_j$. Toda variedad que aparezca en la primera descomposición debe aparecer en la segunda, y viceversa.
 \end{proof}
 
+\begin{ej}
+$\mathcal{V}(\langle x^2z,z^2y\rangle)=\mathcal{V}(\langle xz,yz\rangle)=\mathcal{V}(z)\cup\mathcal{V}(x,y)$. El ideal generado por $z$ es primo porque está generado por un polinomio irreducible. El generado por $x,y$ también lo es pues al hacer el producto entre dos polinomios que tengan términos solo en $z$, también resultará un polinomio con términos solo en $z$, por lo que no estará en el ideal.
+\end{ej}
+
+\begin{prop}
+Si existe un homomorfismo $f:A\to B$ con $B$ dominio de integridad tal que $\ker{f}=I$, entonces $I$ es primo.
+\end{prop}
+
+\begin{dem}
+Sean $a,b\in A$ tales que $ab\in\ker{f}$, entonces $f(a)f(b)=f(ab)=0$. Como $B$ es dominio de integridad, o bien $f(a)=0$ o $f(b)=0$, por lo que o bien $a\in\ker{f}$ o bien $b\in\ker{f}$, como queríamos demostrar.\QED
+\end{dem}
+
+\begin{ej}\label{ej}
+En el ejemplo anterior, podemos ver que $\langle x,y\rangle$ es primo probando usando la proposición.  Basta tomar el homomorfismo $\K[x,y,z]\to\K[z]$ tal que $f(x,y,z)\mapsto f(0,0,z)$. En este caso el $\ker$ es justamente $\langle x,y\rangle$.
+\end{ej}
+
 \begin{defi}
  Si $X=Z_1\cup\cdots\cup Z_r$ es una descomposición minimal de $X$ como unión de variedades, las variedades $Z_i$ se llaman las {\bf componentes irreducibles} de $X$.
 \end{defi}
 
+Esta definición la podemos traducir al álgebra. Si tenemos una componente irreducible maximal $Y\subset X$, podemos asociar un ideal primo minimal $\mathcal{I}(Y)\supset\mathcal{I}(X)$.
+\begin{defi}
+Sea $A$ un anillo, un ideal primo \textbf{minimal} de $A$ es un ideal primo $P\subset A$ tal que no existe $Q\subsetneq P$ primo.
+\end{defi}
+\begin{defi}
+Sea $I\subset A$ un ideal. Los primos minimales de $I$ son los ideales $I\subseteq P\subseteq A$ primos tales que no existe otro primo $I\subseteq Q\subsetneq P\subseteq A$.
+\end{defi}
+
+\begin{ej}
+\begin{enumerate}
+\item En cualquier dominio de integridad, el único primo minimal es el $\{0\}$. 
+\item En $\Z/\Z_{12}$ serían primos minimales $\langle 2\rangle$ y $\langle 3\rangle$. El trivial ya no es primo por no ser dominio de integridad, el total nunca lo es, y $\langle 4\rangle,\langle 6\rangle$ están contenidos en los anteriores respectivamente. En general, en $\Z/\Z_{n}$, los ideales primos minimales son los generados por un divisor primo de $n$. 
+\item $\K[x,y]/\langle xy\rangle$. En este caso los ideales primos minimales de este anillo se corresponden con los ideales primos minimales de $\K[x,y]$ que contengan a $\langle xy\rangle$. Tenemos que $\mathcal{V}(xy)=\mathcal{V}(x)\cup\mathcal{V}(y)$. Por lo que los ideales que buscábamos son $\langle x\rangle$ y $\langle y\rangle$.
+\item $\mathcal{V}(\langle xy,x^2z-xz\rangle)\subseteq\mathbb{A}^3$. Primero resolvemos $X\equiv\begin{cases}
+xy=0\\
+x^2-xz=0.
+\end{cases}$ Concluimos que $X=\mathcal{V}(x)\cup\mathcal{V}(y,z)\cup\mathcal{V}(y,x-1)$. El primero es claramente irreducible porque el ideal es primo al ser $\langle x\rangle$ está generado por un polinomio irreducible. De forma análoga al ejemplo \ref{ej} se prueba para los otros dos conjuntos. 
+\end{enumerate}
+\end{ej}
 
 \section{Dimensión de un conjunto algebraico}
 
@@ -265,6 +397,28 @@ La dimensión de $X\subseteq \Ank$ es igual a la dimensión de Krull de su anill
 \begin{coro}
  La dimensión de $\Ank$ es $n$.
 \end{coro}
+
+\begin{ej}
+La dimensión de $\mathbb{A}^2$ es $2$.
+
+Es claro que existe una cadena ${(0,0)}\subsetneq\V(x-y)\subsetneq\mathbb{A}^2$, por lo que $dim(\mathbb{A}^2)\geq 2$. Supongamos que existe una cadena $Z\subsetneq Y\subsetneq X\subsetneq\mathbb{A}^2$ de variedades algebraicas. Entonces, $X=\V(f_1,\dots,f_n)\subseteq\V(f_1)=\V(g_1)\cup\cdots\cup\V(g_s)$, donde $f_1=g_1\cdots g_s$. Por tanto, $X\subseteq\V(g_i)$ para algún $i$. Por otro lado, $Y=(g, h_1,\dots,h_t)$. Si $g\mid h_i\forall i\Rightarrow X\subseteq Y\Rightarrow X=Y$, con lo que llegaríamos a una contradicción. Por tanto, existe algún $h_i$ que no es múltiplo de $g$, es decir, $Y\subseteq\V(g,h_i)$. Si tenemos $\V(g,h)$ donde $g$ es irreducible si $g\not\mid h$, entonces $\V(g,h)$ es finito. Probémoslo por reducción al absurdo.
+
+Supongamos que $\V(g,h)$ es infinito. Las primeras o las segundas coordenadas de esos puntos forman un conjunto infinito. Por fijar ideas, supongamos que hay infinitas coordenadas $x$. Podemos considerar $g,h\in k(x)[y]$. Usando $\gcd(g,h)=1$ (porque $g$ es irreducible y no divide a $h$), podemos utilizar Bézout (puesto que estamos en el anillo de polinomios en $y$ sobre el cuerpo de fracciones $k(x)$) para escribir $a(x,y)g(x,y)+b(x,y)h(x,y)=1$. Tanto $a$ como $b$ tienen denominadores solo en $x$.  Así que quitando denominadores obtenemos 
+$$\tilde{a}(x,y)g(x,y)+\tilde{b}(x,y)h(x,y)=P(x).$$
+Entonces, $P(x)$ se anula en todos los ceros comunes de $g$ y $f$, que son infinitos, por lo que $P(x)\equiv 0$, lo cual es contradicción con haberlo obtenido eliminado denominadores (no podía ser nulo). 
+
+Por tanto, $\V(g,h)$ es finito e $Y$ sería el último término de la cadena. 
+
+\end{ej}
+
+
+\begin{ej}\
+\begin{enumerate}
+\item Si $A$ es cuerpo, $dim_{Krull}(A)=0$.
+\item $dim_{Krull}(\Z)=1$, pues $\{0\}\subsetneq\langle p\rangle\subsetneq\Z$. En general si a $A$ es DIP la dimensión de Krull es $1$.
+\item $dim_{Krull}(k[\xn{n}])=n$
+\end{enumerate}
+\end{ej}
 
 \begin{defi}
  Una variedad de dimensión $1$ (respectivamente $2$, $n-1$) en $\Ank$ se denomina una {\bf curva} (resp. {\bf superficie}, {\bf hipersuperficie}) afín.
