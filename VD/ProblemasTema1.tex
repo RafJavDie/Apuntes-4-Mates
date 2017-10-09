@@ -137,14 +137,23 @@ que son $C^{∞}$, pues si $i \neq n+1$, $u_n \neq 1$ y si $i = n+1$, $\sqrt{1-\
 
 \end{solucion}
 
+\newpage
+
 \begin{ejercicio}{3}
-Sea $M$ una variedad diferenciable y $\mathcal{A}$ el atlas maximal de la estructura
-diferenciable. Probar que los dominios de las cartas locales de $\mathcal{A}$ forman
-base de la topología de $M$.
+Sea
+$$E = \{ (\sen{2s}, \sen{s})\in \R^2 / s\in \R\}$$ 
+el lazo o figura ocho. Dotar a $E$ de dos estructuras de variedad diferenciable
+distintas.
 \end{ejercicio}
 \begin{solucion}
-Sea $U$ un abierto de $M$. Sea $x\in U$. Alrededor de $x$ existe un entorno abierto $C\subseteq U$ que admite un homeomorfismo $\psi_C$ con algún entorno abierto del origen en $\R^m$ (de hecho podemos suponer por el ejercicio anterior que $\psi_C(x)=0$). Sea ahora $S$ una bola abierta centrada en el origen, de modo que $0\in S\subseteq \psi_C(B)$. Así pues, $x\in\psi_C^{-1}(S)\subseteq U$. Por tanto, para cada abierto $U$ de $M$ y para todo punto $x\in U$ hemos encontrado una carta $(\psi_C^{-1}(S),\psi_C)$ tal que $x\in\psi_C^{-1}(S)\subseteq U$, lo cual significa que las cartas forman una base para la topología de $M$.
+Vamos a ver que no existe ningún atlas sobre $(E,T_e|_E)$. Supongamos que existe $\mathcal{A}$ atlas sobre $E$. Como $\mathcal{O}\in E\Rightarrow \exists(U,\varphi)\in\mathcal{A}$ tal que $\mathcal{O}\in U$. Pero $U\in T_e|_E\Rightarrow \exists G\in T_e\mid U=G\cap E\Rightarrow \mathcal{O}\in G\in T_e\Rightarrow \exists\varepsilon>0\mid B(0,\varepsilon)\subseteq G$. Podemos suponer $\varepsilon<1$. Sea $H=B(0,\varepsilon)\cap E$, que es abierto dentro de $U$. Como $(U,\varphi)$ es carta, entonces $\varphi:U\to\varphi(U)$ es homeomorfismo y la imagen es abierto de $\R^m$. Por lo tanto $\varphi|_H: H\to\varphi(H)$ es homeomorfismo, por lo que $\varphi(H)$ es abierto en $\varphi(U)$. Por tanto $\varphi|_H:U\to\varphi(H)$ es un homeomorfismo dentro de $\R^m$, lo cual es una contradicción porque esa cosa de mierda no es homeomorfa a nada de $\R^m$ (por el punto de corte de orden 4).
+
+Por tanto, vamos a dotarlo de la topología obtenida al recorrer $E$ solamente entre $(0,2\pi)$ y para obtener otra distinta llamamos $E'$ a recorrerlo entre $(-\pi,\pi)$. En el primer caso, $U=E$ y $\varphi:E\to (0,2\pi): (\sen{2s},\sen{s})\mapsto s$. En el segundo $V=E'$ y $\psi:E'\to(-\pi,\pi):(\sen{2s},\sen{s})\mapsto s$. En ambos casos tenemos aplicaciones biyectivas, luego mediante la topología inicial podemos convertir a ambas aplicaciones en homeomorfismos respectivamente, las cuales serán $T_2$ y $2ºN$ (por ser propiedades topológicas). Los dos atlas serían los atlas unitarios evidentes, de dimensión 1. 
+
+Esta variedades son distintas porque las topología son distintas (aunque como espacios topológicos sean homeomorfos). Para verlo basta ver tomar un entorno del origen en $E$ y ver que en $E'$ no es abierto. Por ejemplo $\varphi(G)=(\frac{\pi}{2},\frac{3\pi}{2})$ abierto, entonces $G\in T_E$ por serla topología inicial. Sin embargo $\psi(G)=(-\pi,-\frac{\pi}{2})\cup\{0\}\cup(\frac{\pi}{2},\pi)$, que no es abierto, por lo que $G\notin T_{E'}$. 
 \end{solucion}
+
+\newpage
 
 \begin{ejercicio}{4}
 Sea $(M,\mathcal{A})$ una variedad diferenciable y $G\subseteq M$ un abierto. Probar que,
