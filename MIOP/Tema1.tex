@@ -481,5 +481,144 @@ Estado: $d=$ cantidad disponible de recursos. La función $g(d)$ será el máxim
 \begin{align*}
 &g(d)=\max_{w_n\leq d}\{r_n+g(d-w_n)\}
 \end{align*}
+\subsection{Modelos de reemplazamiento de equipos}
+En un horizonte de planificación M, determinar el plan de renovación de equipos que minimiza el coste si:
+\begin{itemize}
+\item $M$ es el coste de compra de un equipo nuevo
+\item $m_i$ es el coste de mantener un equipo de edad $i$
+\item $T$ es la edad máxima de un equipo
+\item $S_i$ es el valor de venta de e un equipo de edad $i$.
+\end{itemize}
+En nuestro caso, los estados son duplas $(n.i)$ donde $n$ es el índice de la etapa e $i$ es la edad del equipo actual. Las decisiones posibles son mantener o reemplazar el equipo. 
+$$
+f(n,i) = \text{ mínimo coste de reemplazamiento desde la etapa n a N, si tengo un equpo de edad i}$$
+Si compro un equipo nuevo, tenemos $M+m_1-S_i$, mientras que si mantenemos, solo tenemos el coste $m_i$. Si reemplazo, paso a la etapa $n+1$ con un equpo de edad $1$, mientras que si mantenemos, paso con un equipo de edad $i+1$.
+$$
+f(n,i)=\min\{M+m_1-S_i+f(n+1,1),m_i+f(n+1,i+1)\}\quad n<N
+$$
+$$
+f(n,T) = M+m_1-S_T + f(n+1,1)
+$$
+$$f(N,i) = m_i-S_i
+$$
+Solución: Evaluar $f(1,1)$ si empezamos con un equipo nuevo. Si tiene edad $i$, $f(1,i)$. Reformulación: Estado $i$: etapa con un equipo nuevo. Definimos $c_T$ como el coste acumulado si, partiendo de una máquina nueva el próximo se produce tras $t$ periodos. 
+$$
+c_t = M - S_t + \sum_{k=1}^t m_i
+$$
+$$
+f(i) =\min_{t\leq T,\,t+i\leq N} \{c_t+f(i+t)\}\quad i<N
+$$
+\subsection{recorridos por todos los vértices de un grafo}
+Definimos las variables
+\begin{itemize}
+\item $c_{ij}$ es la longitud del enlace $(i,j)$
+\item $\Gamma_i = \{j \mid \exists (i,j) \text{ en el grafo}\}$
+\end{itemize}
+Fijamos un punto de inicio, p.e. el vértice 1. Determinar el recorrido que pasa por todos los vértices y vuelve al 1 de longitud mínima.
 
+Los estados son duplas $(S,i)$ donde $S$ es el conjunto de los vértices que ya han sido visitados e $i$ el último vértice visitado. Las decisiones son $j\in\Gamma_i$. El coste de la decisión es $c_{ij}$.
+$$
+f(S,i)= \text{long. mínima del camino de $i$ a 1 cuando he vistado S}
+$$
+$$f(S,i) = \min_{j\in\Gamma_i}\{c_{ij}+f(S\cup\{j\},j)\}
+$$
+La solución consiste en evaluar $f(1,1)$. 
+\begin{ej}
+$$
+\begin{pmatrix}
+0 & 1334 & 1559 & 809\\
+1334 & 0 & 1343 & 1329\\
+1559 & 1343 & 0 &  921\\
+809& 1329& 921 & 0
+\end{pmatrix}
+$$
+$$
+f(\{1,2,3,4\},2) = 1334 \quad f(\{1,2,3,4\},3) = 1559 \quad f(\{1,2,3,4\},4) = 809
+$$
+$$
+f(\{1,2,3\},2) = c_{24}+ f(\{1,2,3,4\},4) = 132+809=2138
+$$
+$$
+f(\{1,2,3\},3) = 1730 \quad f(\{1,2,4\},2) = 2902 \quad f(\{1,2,4\},4) = 2480
+$$
+$$
+f(\{1,3,4\},3) = 2677 \quad f(\{1,3,4\},4)
+ 2663
+ $$
+ $$
+ f(\{1,2\},2) = \min\{c_{23}+f(\{1,2,3\},3), c_{24}+f(\{1,2,4\},4)\} = 3073
+ $$
+ $$
+ f(\{1,4\},4) = 3598 \quad f(\{1,3\},3) = 3481
+ $$
+ $$
+ f(\{1\},1) = \min\{c_{12}+f(\{1,2\},2), c_{13}+f(\{1,3\},3), c_{13}+f(\{1,4\},4)\} = 4407
+ $$
+Tenemos por tanto las siguientes soluciones $1\to 2 \to 3 \to 4 \to 1$, $1\to 3 \to 2 \to 3 \to 1$ y el camino $ 1 \to 3 \to 3 \to 2 \to 1$.
+\end{ej}
+\section{Recursión con funcional no aditivo}
+Consideremos la tabla de probabilidad de venta según la zona y el número de vendedores asignado a dicha zona.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Vendedores & Zona 1 & Zona 2 & Zona 3\\
+\hline
+0 & 0.6 & 0.5 & 0.3\\
+\hline
+1 & 0.8 & 0.7 & 0.55\\
+\hline
+2 & 0.85 & 0.85 & 0.7\\
+\hline
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item $p_{tx}$ es la probabilidad de venta del producto si en zona $t$ asigno $x$ vendedores.
+\item Estado $(t,a)$, donde $t$ es el índice de la zona y $a$ es el número de vendedores.
+\item Decisión: $x$, el número de vendedores asignados a la zona actual.
+\end{itemize}
+$$f(t,a)=\text{max. prob. de venta del producto si desde la zona $t$ hasta la 3 dispongo de $a$ vendedores}.
+$$
+$$f(t,a) = \max_{x\leq a}\{p_{tx} f(t+1,a-x)\}$$
+La solución es $f(1,2)$.
+\section{Procesos de decisión secuenciales probabilísticos}
+Supongamos un proceso de decisión secuencial en N etapas con funciones de recompensa y transición, $r_n(x_n,d_n,kn)$ y $t_n(x_n,d_n,k_n)$, donde $x_n$ es el estado en la etapa $n$, $d_n$ es la decisión en el estado $x_n$ y $k_n$ es una variable aletoria discreta.
+$$
+P[k_n=k_n'] = P_n(k_n')$$
+Lo que buscamos es
+$$
+\max_{d_1,\dotsc,d_n}\sum_{n=1}^N r_n(x_n,d_nk_n)$$
+Como tenemos problemas para decidir cómo comparamos las funciones, reemplazamos por el valor esperado, es decir
+$$
+\begin{cases}
+\max_{d_1,\dotsc,d_N}E_{k_1,\dotsc,k_N}\left[\sum_{n=1}^N r_n(x_n,d_nk_n)\right]\\
+x_{n+1} = t_n(x_n,d_n,k_n) \quad n\geq 1
+\end{cases}
+$$
+$$
+r_n(x_n,d_n,k_n)= r_n(t_{n-1}(x_{n-1},d_{n-1},k_{n-1}),d_n,k_n)
+$$
+\begin{lemma}
+$$
+E_{k_1,\dotsc,k_N}\left[\sum_{n=1}^N r_n(x_n,d_nk_n)\right] = E_{k_1}\left[r_1(x_n,d_n,k_n)+E_{k_2,\dotsc,k_N}\left[\sum_{n=1}^N r_n(x_n,d_n,k_n)\right]\right]
+$$
+\end{lemma}
+\begin{gather*}
+E_{k_1,\dotsc,k_N}\left[\sum_{n=1}^N r_n\right] = \sum_{k_1,\dotsc,k_N}\left(\prod_{i=1}^N P_i(k_i)\right)\sum_{n=1}^N r_n =\\ \sum_{k_1,\dotsc,k_N}\left(\prod_{i=1}^N P_i(k_i)\right)\left[r_1+\sum_{n=2}^N r_n\right] = \sum_{k_1,\dotsc,k_N}\left(\prod_{i=1}^N P_i(k_i)\right)r_1+\sum_{k_1,\dotsc,k_N}\left(\prod_{i=1}^N P_i(k_i)\right)\sum_{n=2}^N r_n = \\
+=\sum_{k_1}P_1(k_1)r_1\sum_{k_2,\dotsc,k_N}\left(\prod_{i=2}^N P_i(k_i)\right) + \sum_{k_1}P_1(k_1) \sum_{k_2,\dotsc,k_N}\left(\prod_{i=2}^NP_i(k_i)\right)\left(\sum_{n=2}^N r_n\right) = \\
+\sum_{k_1}P_1(k_1)\left[r_1+\sum_{k_2,\dotsc,k_N}\left(\prod_{i=2}^N P_i(k_i)\right) \sum_{n=2}^N r_n\right] = E_{k_1}\left[r_1+E_{k_2,\dotsc,k_N}\left[\sum_{n=2}^N r_n\right]\right]
+\end{gather*}
+Por tanto, si denotamos por $f_n(x_n)$ a la máxima recompensa esperada si en la etapa $n$ estamos en el estado $x-n$ hasta $N$ entonces
+$$
+f_n(x_n)= \max_{d_1,\dotsc,d_N} E_{k_1,\dotsc,k_N}\left[\sum_{j=n}^Nr_j\right]
+$$
+$$x_{n+1}=t_n(x_n,d_n,k_n)
+$$
+Por el lema tenemos que 
+$$
+f_n(x_n) = \max_{d_n} E_{k_n} \left[ r_n + f_{n+1}(x_{n+1})\right]
+$$
+$$
+ x_{n+1}=t_n(x_n,d_n,k_n)
+ $$
 \end{document}
