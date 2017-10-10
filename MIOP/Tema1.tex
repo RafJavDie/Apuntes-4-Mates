@@ -482,14 +482,14 @@ Estado: $d=$ cantidad disponible de recursos. La función $g(d)$ será el máxim
 &g(d)=\max_{w_n\leq d}\{r_n+g(d-w_n)\}
 \end{align*}
 \subsection{Modelos de reemplazamiento de equipos}
-En un horizonte de planificación M, determinar el plan de renovación de equipos que minimiza el coste si:
+En un horizonte de planificación $M$, determinar el plan de renovación de equipos que minimiza el coste si:
 \begin{itemize}
 \item $M$ es el coste de compra de un equipo nuevo
 \item $m_i$ es el coste de mantener un equipo de edad $i$
 \item $T$ es la edad máxima de un equipo
 \item $S_i$ es el valor de venta de e un equipo de edad $i$.
 \end{itemize}
-En nuestro caso, los estados son duplas $(n.i)$ donde $n$ es el índice de la etapa e $i$ es la edad del equipo actual. Las decisiones posibles son mantener o reemplazar el equipo. 
+En nuestro caso, los estados son duplas $(n,i)$ donde $n$ es el índice de la etapa e $i$ es la edad del equipo actual. Las decisiones posibles son mantener o reemplazar el equipo. 
 $$
 f(n,i) = \text{ mínimo coste de reemplazamiento desde la etapa n a N, si tengo un equpo de edad i}$$
 Si compro un equipo nuevo, tenemos $M+m_1-S_i$, mientras que si mantenemos, solo tenemos el coste $m_i$. Si reemplazo, paso a la etapa $n+1$ con un equpo de edad $1$, mientras que si mantenemos, paso con un equipo de edad $i+1$.
@@ -508,7 +508,7 @@ $$
 $$
 f(i) =\min_{t\leq T,\,t+i\leq N} \{c_t+f(i+t)\}\quad i<N
 $$
-\subsection{recorridos por todos los vértices de un grafo}
+\subsection{Recorridos por todos los vértices de un grafo}
 Definimos las variables
 \begin{itemize}
 \item $c_{ij}$ es la longitud del enlace $(i,j)$
@@ -523,7 +523,7 @@ $$
 $$f(S,i) = \min_{j\in\Gamma_i}\{c_{ij}+f(S\cup\{j\},j)\}
 $$
 La solución consiste en evaluar $f(1,1)$. 
-\begin{ej}
+\begin{ej} Consideramos la siguiente matriz cuyas entradas son los $c_{ij}$.
 $$
 \begin{pmatrix}
 0 & 1334 & 1559 & 809\\
@@ -542,8 +542,7 @@ $$
 f(\{1,2,3\},3) = 1730 \quad f(\{1,2,4\},2) = 2902 \quad f(\{1,2,4\},4) = 2480
 $$
 $$
-f(\{1,3,4\},3) = 2677 \quad f(\{1,3,4\},4)
- 2663
+f(\{1,3,4\},3) = 2677 \quad f(\{1,3,4\},4)=2663
  $$
  $$
  f(\{1,2\},2) = \min\{c_{23}+f(\{1,2,3\},3), c_{24}+f(\{1,2,4\},4)\} = 3073
@@ -579,10 +578,12 @@ Vendedores & Zona 1 & Zona 2 & Zona 3\\
 \end{itemize}
 $$f(t,a)=\text{max. prob. de venta del producto si desde la zona $t$ hasta la 3 dispongo de $a$ vendedores}.
 $$
+$$f(3,a)=\max_{x\leq a} p_{3x}
+$$
 $$f(t,a) = \max_{x\leq a}\{p_{tx} f(t+1,a-x)\}$$
 La solución es $f(1,2)$.
 \section{Procesos de decisión secuenciales probabilísticos}
-Supongamos un proceso de decisión secuencial en N etapas con funciones de recompensa y transición, $r_n(x_n,d_n,kn)$ y $t_n(x_n,d_n,k_n)$, donde $x_n$ es el estado en la etapa $n$, $d_n$ es la decisión en el estado $x_n$ y $k_n$ es una variable aletoria discreta.
+Supongamos un proceso de decisión secuencial en N etapas con funciones de recompensa y transición, $r_n(x_n,d_n,k_n)$ y $t_n(x_n,d_n,k_n)$, donde $x_n$ es el estado en la etapa $n$, $d_n$ es la decisión en el estado $x_n$ y $k_n$ es una variable aletoria discreta.
 $$
 P[k_n=k_n'] = P_n(k_n')$$
 Lo que buscamos es
@@ -608,7 +609,7 @@ E_{k_1,\dotsc,k_N}\left[\sum_{n=1}^N r_n\right] = \sum_{k_1,\dotsc,k_N}\left(\pr
 =\sum_{k_1}P_1(k_1)r_1\sum_{k_2,\dotsc,k_N}\left(\prod_{i=2}^N P_i(k_i)\right) + \sum_{k_1}P_1(k_1) \sum_{k_2,\dotsc,k_N}\left(\prod_{i=2}^NP_i(k_i)\right)\left(\sum_{n=2}^N r_n\right) = \\
 \sum_{k_1}P_1(k_1)\left[r_1+\sum_{k_2,\dotsc,k_N}\left(\prod_{i=2}^N P_i(k_i)\right) \sum_{n=2}^N r_n\right] = E_{k_1}\left[r_1+E_{k_2,\dotsc,k_N}\left[\sum_{n=2}^N r_n\right]\right]
 \end{gather*}
-Por tanto, si denotamos por $f_n(x_n)$ a la máxima recompensa esperada si en la etapa $n$ estamos en el estado $x-n$ hasta $N$ entonces
+Nótese que $\sum_{k_2,\dotsc,k_N}\left(\prod_{i=2}^N P_i(k_i)\right)=1$ por ser suma de probabilidades marginales. Por tanto, si denotamos por $f_n(x_n)$ a la máxima recompensa esperada si en la etapa $n$ estamos en el estado $x-n$ hasta $N$ entonces
 $$
 f_n(x_n)= \max_{d_1,\dotsc,d_N} E_{k_1,\dotsc,k_N}\left[\sum_{j=n}^Nr_j\right]
 $$
