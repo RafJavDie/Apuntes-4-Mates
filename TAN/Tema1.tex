@@ -127,6 +127,13 @@ La serie de Dirichlet $\sum_{n=1}^\infty \frac{(-1)^n}{n^s}$ tiene una abcisa de
 
 \begin{prop} Sea $f(s) = \sum_{n=1}^\infty a_n/n^s$ una función definida por una serie de Dirichlet. La función $f(s)$ es idénticamente $0$ si y sólo si todos los coeficientes $a_n$ son nulos.
 \end{prop}
+\begin{dem}
+Sea $a_N$ el primer coeficiente distinto de 0. Se tiene entonces que:
+\[ -\frac{a_N}{N^s} = \sum_{n=N+1}^{∞} \frac{a_n}{n^s} \]
+Sea $α$ la parte real de $s$ y $σ > α+1$:
+\[ \left|-\frac{a_N}{N^σ}\right| = \left|\sum_{n=N+1}^{∞} \frac{a_n}{n^s}\right| ≤ \sum_{n=N+1}^{∞} \frac{|a_n|}{n^σ} ≤ c \sum_{n=N+1}^{∞} \frac{1}{n^{σ-α}} ≤ c \int_N^{∞} t^{α-σ} dt = c \left.\frac{t^{α-σ+1}}{α-σ+1}\right|_N^{∞} = \frac{c}{σ-α-1} \frac{1}{N^{σ-α-1}}\]
+\[ |a_N| ≤ N^σ \frac{c}{σ-α-1} \frac{1}{N^{σ-α-1}} = \frac{CN^{α+1}}{σ-α-1} \]
+\end{dem}
 
 \begin{prop} Sea $f$ multiplicativa y la serie de Dirichlet $\sum_{n=1}^\infty \frac{f(n)}{n^s}$ con abcisa de convergencia absoluta en $σ_0$. Entonces:
 \[ \sum_{n=1}^\infty \frac{f(n)}{n^s} = \lim_{x \to \infty} \prod_{p≤x} \left(1+\frac{f(p)}{p^s} + \frac{f(p^2)}{p^{2s}+\dots}\right) \]
@@ -140,7 +147,53 @@ Si $f$ es además completamente multiplicativa:
 \[ \sum_{n=1}^\infty \frac{f(n)}{n^s} = \prod_{p}\left(1-\frac{f(p)}{p^s}\right)^{-1}\]
 \end{coro}
 \section{Crecimiento de funciones multiplicativas}
+\begin{prop}
+\[ d(n) = O(n^δ) \]
+para todo $δ > 0$.
+\end{prop}
+\begin{dem}
+\[ \frac{d(n)}{n^δ} = \prod_{p|n} \frac{1+k}{p^{kδ}} = \prod_{p^δ≥2}\frac{1+k}{p^{kδ}} \prod_{p^δ<2}\frac{1+k}{p^{kδ}} ≤ \prod_{p^δ<2} \frac{1+k}{p^{kδ}}\]
+usando que:
+\[ \frac{1+k}{p^{kδ}} = \frac{1}{p^{kδ}}+\frac{k}{p^{kδ}} ≤ 1 + \frac{k}{p^{kδ}} ≤ 1 + \frac{k}{kδ\log p} = 1 + \frac{1}{δ\log p} ≤ 1 + \frac{1}{δ\log 2} ≤ \exp\left(\frac{1}{δ\log 2}\right)\]
+llegamos a que:
+\[ \frac{d(n)}{n^δ} ≤ \exp\left(\frac{|\{p : p^δ<2\}|}{δ\log2}\right) ≤ \exp\left(\frac{2^{1/δ}}{δ\log 2}\right)\]
+\end{dem}
 
+\begin{prop}
+\[ \limsup \frac{\log d(n)}{\frac{\log 2 \log n}{\log \log n}} ≤ 1\]
+\end{prop}
+\begin{dem}
+Aplicando logaritmo a la expresión $\frac{d(n)}{n^δ} ≤ \exp\left(\frac{2^{1/δ}}{δ\log 2}\right)$.
+\[
+	\log d(n) ≤ δ\log n + \frac{2^{1/δ}}{δ\log 2}
+\]
+Sea $δ = (1+ϵ)\frac{\log 2}{\log \log n}$, entonces:
+\[
+	\log d(n) ≤ (1+ϵ) \frac{\log 2 \log n}{\log \log n} + \frac{(\log n)^{1/(1+ϵ)}}{(\log 2)^2} \frac{\log \log n}{1+ϵ} =: (1+ϵ)f(n) + g(n)
+\]
+Dividiendo por $f(n)$:
+\[ 
+	\frac{\log d(n)}{f(n)} ≤ 1 + ϵ + \frac{g(n)}{f(n)}
+\]
+Se observa además que $\frac{g(n)}{f(n)} \xrightarrow{n \to ∞} 0$, luego:
+\[ 
+	\limsup \frac{\log d(n)}{f(n)} ≤ 1+ϵ
+\]
+Como esto se da para todo $ϵ$, se cumple que:
+\[ 
+	\limsup \frac{\log d(n)}{\frac{\log 2 \log n}{\log \log n}} ≤ 1
+\]
+
+Por otro lado, tomando $n = \prod_{p≤x} p$, entonces:
+\[ \log n = \sum_{p≤x} \log p =: Θ(x) ≤ \sum_{p≤x} \log x = π(x) \log x \]
+\[ d(n) = 2^{π(x)} \]
+se llega a que:
+\[ \frac{\log d(n)}{\frac{\log 2 \log n}{\log \log n}} ≥ 1 \]
+Luego:
+\[
+	\limsup \frac{\log d(n)}{\frac{\log 2 \log n}{\log \log n}} = 1 
+\]
+\end{dem}
 \section{Sumación parcial}
 
 \section{El orden medio de $d(n)$}
