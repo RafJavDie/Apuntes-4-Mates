@@ -311,4 +311,56 @@ Por tanto, $\V(g,h)$ es finito e $Y$ sería el último término de la cadena.
 \end{enumerate}
 \end{ej}
 
+\begin{defi} Sea $f : X \dashrightarrow k$ una función racional en $X$ y $x \in X$. Diremos que $f$ está definida en $x$ si eisten $p, \in k[x_1,\dots,x_n]$ con $q(x)\neq 0$ tales que $f = p/q$.
+\end{defi}
+
+\begin{ej}\mbox{}
+\begin{enumerate}
+	\item Sea $X=\V(xy-1) \subset \mathbb{A}^2_k$. Entonces $\mathcal{A}(x)=k[x,y]/\langle xy-1 \rangle \equiv k[x,x^{-1}]$ (polinomios de Laurent).
+
+\item Sea $\V(xy-zt) \subset \mathbb{A}^4$ y $f(x,y,z,t)=x/z=t/y$. Sea $P=(0,1,0,1)$ Si $f$ está definida en $P$, $f=p/q$ con $q(P)\neq 0$. Definimos $f(P)=p(P)/q(P)$. Supongamos que $f=p'/q'$ con $q'(P) \neq 0$. Entonces, como $p/q = p'/q'$, $pq'=p'q$. Luego $p(P)q'(P)=p'(P)q(P)$ y $p(P)/q(P) = p'(P)/q'(P)$.
+
+\item Sea $V(x^2+y^2-1) \subseteq \mathbb{A}^2$ en un cuerpo de característica mayor que $2$ y $f(x,y) = \frac{1-y}{x}$. Como $\frac{1-y}{x}=\frac{x}{1+y}$, $f(0,1)=0$. Para evaluar $f(0,-1)$, buscamos $P$ y $Q$ tal que:
+\[ \frac{1-y}{x} = \frac{P(x,y)}{Q(x,y)} \Rightarrow (1-y)Q(x,y) = x P(x,y) \]
+en $(x,y)=(0,-1)$, $(1-y)=-2$ y $x=0$, luego $Q(0,-1)$ debe ser $0$, por lo tanto no es posible encontrar dicho $P$ y $Q$.
+\end{enumerate}
+\end{ej}
+
+\begin{defi}
+Sea $P \in X$, $O_p(x)=\{f \in K(x) | f \text{ está definida en }P\}$ se llama el anillo local de $X$ en $P$.
+\end{defi}
+
+\begin{prop}
+$O_p(X)$ es un anillo local.
+\end{prop}
+
+\begin{dem}
+Sea $f,g \in O_P(X)$. Entonces existe $p,q,r,s \in k[x_1,\dots,x_n]$ con $q(P)$, $s(P) \neq 0$ tales que $f = p/q$ y $g=r/s$.
+Entonces $f+g = \frac{ps+qr}{qs} \in O_P(X)$ y $f\cdot g = \frac{pr}{qs} \in O_P(X)$. El resto de la demostración no es interesante.
+
+Tomando $m_P=\{f \in O_P(X) \mid f(P) = 0\}$ el ideal de $O_P(X)$ de las funciones que se anulan en $P$, veamos que $m_P$ es maximal. Sea $f \notin m_P$, entonces $f(P) \neq 0$. Luego existe $p$ y $q$ con $f=p/q$ con $p,q \in k[x_1,\dots,x_n]$ y $q(P)\neq 0$ y $p(P) \neq 0$. Pero entonces $f^{-1} = q/p \in O_P(X)$. Luego $m_P$ es el único ideal maximal de $O_P(X)$ y $O_P(X)$ es local.
+\end{dem}
+
+\begin{nota} Como $O_P(X) = \{f/g \mid f,g \in \mathcal{A}(X), g(P) \neq 0\}$, podemos ver $O_P(X)$ como el anillo localizado de $\mathcal{A}(X)$ es el ideal $m_P$.
+\end{nota}
+
+\begin{defi}
+Sea $U \subseteq X$ abierto de Zariski. Entonces $O_X(U) = \{f \in K(X) \mid f \text{ está definida en todo punto de }U\}$.
+\end{defi}
+
+\begin{prop}
+Si $f \in K(X)$, el conjunto de puntos de $X$ donde $f$ está definida es un abierto.
+\end{prop}
+
+\begin{dem}
+\[ \{\text{puntos donde está definida }f\} = \bigcup_{\text{expresiones }f=p/q} \{x \in X \mid q(x) \neq 0\} = \bigcup_{\text{expresiones }f=p/q} X \setminus \V(q) \]
+\end{dem}
+
+\begin{nota}
+A dicho conjunto lo denominaremos \textbf{abierto de definición} de $f$ y es un subanillo de $K(X)$.
+\end{nota}
+
+\begin{nota}
+En la topología de Zariski, los abiertos son de la forma $X \setminus \V(f_1,\dots,f_r) = X\setminus V(f_1) \cap \dots V(f_r)$.
+\end{nota}
 \end{document}
