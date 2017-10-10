@@ -5,7 +5,7 @@
 \begin{document}
 
 \title{Algebra Conmutativa y Geometría Aplicada}
-\author{Rafael González López}
+\author{Rafael González López, Diego Pedraza López}
 \maketitle
 
 \begin{ejercicio}{1}
@@ -15,14 +15,17 @@ Sea $n\in \N$. Sabemos que $n=p_1^{a_1}\cdots p_k^{a_k}$. En tal caso,
 \[
 \varphi(n) = (p_1-1)p_1^{a_1-1}\cdots(p_k-1)p_k^{a_k-1}
 \]
-Fijémonos en el siguiente detalle si $n$ tiene más de un divisor primo impar, es claro que se tendría que $4\mid \varphi(n)$, pues $p_j -1$ y $p_k-1$ serían dos factores pares de $\varphi(n)$. Por otra parte, si $p_i=2$, es claro que $0\leq a_i \leq 2$. 
+Obsérvese que si $n$ tiene más de un divisor primo impar, claramente se tendría que $4\mid \varphi(n)$, pues $p_j -1$ y $p_k-1$ serían dos factores pares de $\varphi(n)$. Por otra parte, si $p_i=2$, debe cumplire que $0\leq a_i \leq 2$. 
 
-Por lo que sabemos hasta ahora, $n = 2^a p^b$ donde $a\in\{0,1,2\}$, $p$ es un primo impar y $b\geq 0$. Distingamos casos en función de $a$
+Por lo que sabemos hasta ahora, $n = 2^a p^b$ donde $a\in\{0,1,2\}$, $p$ es un primo impar y $b\geq 0$. Distingamos casos en función de $a$ y $b$
 \begin{itemize}
-\item Si $a\neq 2$, $\varphi(n) = (p-1)p^{b-1}$ -no afecta que el 2 esté o no en la factorización de $n$. La condición del enunciado sí y solo sí $p \equiv 3 \mod 4$. Es decir, verifican el enunciado si $p$ es un primo de la forma $4k + 3$ y $b\geq 0$. El caso $b=0$ tenemos simplemente $n=1$ o $n=2$ (triviales).
-\item Si $a=2$, entonces $n=2^2p^b$. Si $b\geq 1$ entonces $\varphi(n)=2(p-1)p^{b-1}$, que es divisible por 4. Por tanto, $b=0$. Nos queda pues que, el único caso, es que $n=4$.
+\item Si $a \in \{0,1\}$ y $b = 0$, obtenemos $n=1$ y $n=2$, que cumplen que $4 \nmid φ(n)$.
+\item Si $a \in \{0,1\}$ y $b > 0$, $\varphi(n) = (p-1)p^{b-1}$. La condición del enunciado se cumple si y solo sí $4 \mid (p-1)$, es decir, si $p \equiv 3 \pmod 4$.
+\item Si $a=2$ y $b = 0$, obtenemos $n=4$, que cumple que $4 \nmid φ(4)$.
+\item Si $a=2$ y $b > 0$, $\varphi(n)=2(p-1)p^{b-1}$, que es siempre divisible por 4.
 \end{itemize}
-Tenemos entonces que las soluciones son 1, 2, 4, $p^k$ y $2p^k$ donde $p \equiv 3 \mod 4$.
+Tenemos entonces que las soluciones son:
+\[ \{1,2,4\} \cup \{p^k \mid p\text{ primo con } p \equiv 3 \pmod 4, k≥1\} \cup \{2p^k \mid p\text{ primo impar}, k ≥ 1\} \].
 \end{sol}
 \end{ejercicio}
 
