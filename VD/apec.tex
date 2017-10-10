@@ -1,0 +1,302 @@
+\documentclass[cursovd_portada.tex]{subfiles}
+
+\begin{document}
+
+\chapter*{Ap\'endice C.\\\'Algebra Tensorial y Exterior de un Espacio Vectorial}
+\addcontentsline{toc}{chapter}{Ap\'{e}ndice C. \'{A}lgebras Tensorial y Exterior de un Espacio Vectorial.}
+\section*{C.1 \'{A}lgebra Tensorial de un Espacio Vectorial.}
+\addcontentsline{toc}{section}{C.1\hspace{0.5 em} \'{A}lgebra Tensorial de un Espacio Vectorial.} \hs En este ap\'{e}ndice
+$V$ denotar\'{a} un espacio vectorial de dimensi\'{o}n $n$ sobre el cuerpo de los n\'{u}meros reales.
+\begin{defiap}
+Dado $r\in\N$, sea $T^0_r(V)=\{f:V^r\fl\R / f \mbox{ es r--lineal}\}$. Los elementos de $T^0_r(V)$ se llaman {\bf
+Tensores Covariantes de Tipo $(0,r)$}.
+\end{defiap}
+\par\bigskip
+Obs\'{e}rvese que $T^0_1(V)=V^*$. Adem\'{a}s, se tiene que la familia $\{T^0_r(V)/r\in\N\}$ es numerable y est\'{a} formada
+por espacios vectoriales reales, pues la suma y el producto por un escalar de aplicaciones $r$-- lineales es una
+aplicacion $r$--lineal. As\'{\i}, se puede considerar su suma directa,
+$$\sum_{r=0}^\infty T^0_r(V),$$
+que se denomina {\bf Algebra de los Tensores Covariantes} de $V$. A con\-ti\-nua\-ci\'{o}n, se va a justificar que,
+efectivamente, es un \'{a}lgebra. En efecto, en dicha suma infinita (recu\'{e}rdese que sus elementos tienen solo un
+n\'{u}mero finito de sumandos no nulos) est\'{a} definida de modo natural una suma y un producto por n\'{u}meros reales, que
+la convierten en un espacio vectorial real.
+\begin{defiap}
+Sean $\omega_r\in T^0_r(V)$, $\omega_s\in T^0_s(V)$. Se llama {\bf Producto Tensorial de $\omega_r$ y $\omega_s$},
+que se denota por $\omega_r\otimes \omega_s$ a un elemento de $T^0_{r+s}(V)$, que ser\'{a} tal que si
+$$(v_1,\dots ,v_r,v_{r+1},\dots ,v_{r+s})\in V^{r+s},$$
+entonces:
+$$(\omega_r\otimes\omega_s)(v_1,\dots ,v_r,v_{r+1},\dots ,v_{r+s})=
+\omega_r(v_1,\dots ,v_r)\omega_s(v_{r+1},\dots,v_{r+s}).$$
+\end{defiap}
+\par\bigskip
+En particular, $T_0^0(V)=\R$ y si $\a\in T^0_0(V)$, se tiene que $\a\otimes \omega_r=\a\cdot\omega_r$. Con esto,
+es posible definir el producto $\otimes$, llamado producto tensorial, en los elementos de $\sum T^0_r(V)$, como:
+$$(\sum_{r=0}^\infty\omega_r)\otimes(\sum_{s=0}^\infty\omega_s)=\sum_{r,s=0}^
+\infty\omega_r\otimes\omega_s.$$
+\begin{propoap} Se verifica que
+$$\sum_{r=0}^\infty T^0_r(V)$$
+con las operaciones $(+,\cdot,\otimes)$ es un \'{a}lgebra real, asociativa, no conmutativa y con elemento unidad.
+\end{propoap}
+{\sc Demostraci\'{o}n:} Es una comprobaci\'{o}n engorrosa, pero f\'{a}cil.\hfill$\Box$
+\par\bigskip
+El siguiente paso consiste en buscar una base para $T^0_r(V)$. Para ello, sean $\{e_1,\dots ,e_n\}$ una base de V
+y $\{\theta^1,\dots ,\theta^n\}$ su base dual (base de $V^*$ con $\theta^i(e_j)=\delta_{ij}$, $\forall i,j=1,\dots
+, n$). Sean ahora $i_1,\dots ,i_r\in \{1,\dots, n\}$. Entonces, el producto tensorial
+$\theta^{i_1}\otimes\cdots\otimes\theta^{i_r}$ es un elemento de $T^0_r(V)$, precisamente es el que cumple:
+$$(\theta^{i_1}\otimes\cdots\otimes\theta^{i_r})(v_1,\dots,v_r)
+=\theta^{i_1}(v_1)\cdots\theta^{i_r}(v_r).$$ En estas condiciones, se puede probar el siguiente resultado:
+\begin{propoap}
+La familia
+$$\{\theta^{i_1}\otimes\cdots\otimes\theta^{i_r}/i_1,\dots ,i_r\in\{1,\dots,
+n\}\}$$ es una base de $T^0_r(V)$ y, por tanto, dim$T^0_r(V)=n^r$.
+\end{propoap}
+{\sc Demostraci\'{o}n:} !`Ejercicio! \hfill$\Box$
+\par\bigskip
+Obs\'{e}rvese, entonces, que $\sum_{r=0}^{\infty}T^0_r(V)$ es de dimensi\'{o}n infinita.
+\begin{defiap}
+Sea $r\in\N$. Entonces, a los elementos de $T^r_0(V) = T^0_r(V^*)$ se le llaman {\bf Tensores Contravariantes de
+Tipo $(r,0)$} y al espacio
+$$\sum_{r=1}^\infty T^r_0(V)$$
+se denomina {\bf Algebra de los Tensores Contravariantes de $V$}.
+\end{defiap}
+\par\bigskip
+En virtud de esta definici\'{o}n, un n\'{u}mero real es un tensor covariante y \underline{no} contravariante. As\'{\i},
+$$\sum_{r=1}^{\infty} T^r_0(V)$$
+es un \'{a}lgebra asociativa, no conmutativa y \underline{sin} elemento unidad. Adem\'{a}s, $T^1_0(V) =T^0_1(V^*) =V$. Por
+tanto, se puede considerar el producto tensorial de dos vectores de $V$.
+\par
+Se obtiene una igualdad curiosa al considerar $v_1,\dots ,v_r \in V$ y $\omega^1,\dots ,\omega^r\in V^*$.
+Entonces, $v_1\otimes\cdots\otimes v_r\in T^r_0(V)$ y $\omega^1\otimes\cdots\otimes\omega^r\in T^0_r(V)$ y:
+$$(v_1\otimes\cdots\otimes v_r)(\omega^1,\dots ,\omega^r)=
+v_1(\omega^1)\dots v_r(\omega^r)=$$
+$$=\omega^1(v_1)\dots\omega^r(v_r)=(\omega^1\otimes\cdots\otimes\omega^r)(v_1,
+\dots ,v_r).$$ \hs Igual que se hizo antes, si $\{e_1, \dots e_n\}$ es una base de $V$, se tiene que
+$$\{e_{i_1}\otimes\cdots\otimes e_{i_r}/i_1,\dots ,i_r\in\{1,\dots ,n\}\}$$
+es una base de $T^r_0(V)$ y si $T\in T^r_0(V)$, su expresi\'{o}n en esa base es:
+$$T=\sum_{i_1,\dots,i_r=1}^{n}T(\theta^{i_1},\dots ,\theta^{i_r})e_{i_1}
+\otimes\cdots\otimes e_{i_r}.$$ \hs Se va a completar este estudio con la introducci\'{o}n de una nueva clase m\'{a}s
+general de tensores:
+\begin{defiap}
+Sean $r,s\in\N$. Entonces, los elementos de
+$$T^r_s(V)=\{f:V^s\times V^{*r}\fl\R /f\mbox{ }es\mbox{ }(s+r)\mbox{--}lineal
+\}$$ se llaman {\bf Tensores Mixtos de Tipo $(r,s)$}. Adem\'{a}s, al conjunto
+$$T(V)=\sum_{r,s\in\N}T^r_s(V)$$
+se le denomina {\bf Algebra Tensorial de $V$}.
+\end{defiap}
+\par\bigskip
+Se define el producto tensorial en $T(V)$ como sigue. Si $T\in T^r_s(V)$ y $S \in T^{r'}_{s'}$, entonces $T\otimes
+S\in T^{r+r'}_{s+s'}(V)$ viene dado por
+$$(T\otimes S)(v_1,\dots, v_s,v_{s+1},\dots ,v_{s+s'},\omega^1,\dots\omega^r,
+\omega^{r+1},\dots ,\omega^{r+r'})=$$
+$$=T(v_1,\dots ,v_s,\omega^1,\dots ,\omega^r)S(v_{s+1},\dots, v_{s+s'},\omega^
+{r+1},\dots ,\omega^{r+r'})$$ y se extiende a $T(V)$ por linealidad:
+$$(\sum_{r,s}T_{(r,s)})\otimes(\sum_{r',s'}S_{(r',s')})=\sum_{r,s,r',s'}T_{(
+r,s)}\otimes S_{(r',s')}.$$
+
+\newpage
+
+\begin{propoap}
+$T(V)$ es un \'{a}lgebra asociativa, no conmutativa y con elemento unidad.
+\end{propoap}
+{\sc Demostraci\'{o}n:} Es una comprobaci\'{o}n engorrosa pero f\'{a}cil.\hfill$\Box$ \par\bigskip Una base de $T^r_s(V)$
+viene dada por el conjunto de los tensores
+$$\{e_{i_1}\otimes\cdots\otimes e_{i_r}\otimes\theta^{j_1}\otimes\cdots\otimes
+\theta^{j_s}/i_1,\dots ,i_r,j_1,\dots ,j_s\in\{1,\dots,n\}\}$$ y, por tanto, dim$T^r_s(V)=n^{r+s}$. La expresi\'{o}n
+de $T\in T^r_s(V)$ en esta base es:
+$$T=\sum_{i_1,\dots ,i_r,j_1,\dots ,j_s=1}^nT(e_{j_1},\dots ,e_{j_s},\theta^
+{i_1},\dots ,\theta^{i_r})e_{i_1}\otimes\cdots\otimes e_{i_r}\otimes\theta^
+{j_1}\otimes\cdots\otimes\theta^{j_s}.$$ \hs A continuaci\'{o}n, se va a demostrar que las matrices pueden ser
+consideradas como una clase de tensores.
+\begin{propoap}
+$T^1_r(V)$ es isomorfo al espacio de todas las aplicaciones $r$--li\-nea\-les de $V^r$ en $V$, ${\cal L}(V^r,V)$.
+\end{propoap}
+{\sc Demostraci\'{o}n:} Consid\'{e}rense las aplicaciones
+$$\vp:{\cal L}(V^r,V)\fl T^1_r(V):f\mapsto\vp(f)/\vp(f)(v_1,\dots ,
+v_r,\omega)=\omega(f(v_1,\dots ,v_r))$$ y
+$$\psi:T^1_r(V)\fl{\cal L}(V^r,V):T\mapsto\psi(T)/\psi(T)(v_1,\dots ,
+v_r)=T(v_1,\dots ,v_r,\bullet)$$ donde $T(v_1,\dots ,v_r,\bullet):V^*\fl\R$ es lineal, es decir, $\psi(T)(v_1,
+\dots ,v_r)\in V^{**}=V$. Para terminar, debe probarse (!`hacerlo!) que $\vp$ y $\psi$ son inversas una de la otra
+y que $\vp$ es un homomorfismo (?`por qu\'{e} basta con \'{e}sto?). \hfill$ \Box$
+\begin{coroap}
+$$T^1_1(V)\simeq End(V).$$
+\end{coroap}
+\par\bigskip
+As\'{\i}, las matrices cuadradas de orden $n$ pueden ser consideradas como tensores de tipo $(1,1)$. En este sentido,
+los tensores son una generalizaci\'{o}n de las matrices. Por otra parte, en las matrices cuadradas se llama traza a la
+suma de los elementos de la diagonal principal. Este concepto se generaliza en los tensores como sigue. Sean
+$r,s\in\N$ y $T\in T^r_s(V)$. Entonces, para $1\leq i\leq r$, $1\leq j\leq s$, se tiene la siguiente definici\'{o}n:
+
+\newpage
+
+\begin{defiap}
+Se llama {\bf Contracci\'{o}n $(i,j)$ del tensor $T$} al tensor
+$$C^i_j(T)\in T^{r-1}_{s-1}(V),$$
+que act\'{u}a como:
+$$C^i_j(T)(v_1,\dots ,v_{s-1},\omega^1,\dots ,\omega^{r-1})=$$
+$$=\sum_{k=1}^nT(v_1,\dots ,v_{j-1},e_k,v_j,...v_{s-1},\omega^1,\dots ,\omega^
+{i-1},\theta^k,\omega^i,\dots ,\omega^{r-1}).$$
+\end{defiap}
+\par\bigskip
+Existen, por tanto, $rs$ contracciones de un tensor del tipo $(r,s)$. Sea, ahora, $A=(a_{ij})$ una matriz cuadrada
+de orden $n$. Se puede considerar $A \in T^1_1(V)$. As\'{\i}, s\'{o}lo existe una contracci\'{o}n de $A$, $C^1_1(A)\in T^0_0(V)
+=\R$,
+$$C^1_1(A)=\sum_{k=1}^nA(e_k,\theta^k)=\sum_{k=1}^n\theta ^k(Ae_k)=
+\sum_{k=1}^n\theta^k(\sum_{j=1}^na_{jk}e_j)=\sum_{k=1}^na_{kk},$$ que es, efectivamente, la traza de $A$.
+\par
+Por \'{u}ltimo, se va a introducir otro concepto que tambi\'{e}n es una ge\-ne\-ra\-li\-za\-ci\'{o}n de algo conocido. Se sabe
+que dado un homomorfismo entre dos espacios vectoriales, $f:V\fl W$, existe un homomorfismo inducido entre los
+espacios duales $f^*:W^*\fl V^*$, denominado homomorfismo dual, definido por $f^*( \omega)v=\omega(f(v))$. Como el
+dual de un espacio vectorial es el espacio vectorial de los tensores de tipo $(0,1)$, se puede escribir
+$f^*:T^0_1(W)\fl T^0_1(V)$. Esto se generaliza para cualquier $r\in\N$:
+\begin{defiap}
+Si $f\in Hom(V,W)$, entonces $f^*:T^0_r(W)\fl T^0_r(V)$, es el homomorfismo tal que a $T\in T^0_r(W)$ le asigna el
+tensor $f^*_r(T)\in T^0_r(V)$ definido como:
+$$f^*_r(T)(v_1,\dots ,v_r)=T(f(v_1),\dots ,f(v_r)).$$
+\hs La aplicaci\'{o}n $f^*_r$ se denomina {\bf Homomorfismo Inducido}. En particular, $f^*_1=f^*$.
+\end{defiap}
+\section*{C.2 \'{A}lgebra Exterior de un Espacio Vectorial.}
+\addcontentsline{toc}{section}{C.2\hspace{0.5 em} \'{A}lgebra Exterior de un Espacio Vectorial.} \hs Sean $r\in\N$ y
+${\cal S}_r$ el grupo de las permutaciones del conjunto $\{1,2,\dots ,r\}$. Si $\sigma\in{\cal S}_r$,
+$\epsilon(\sigma)$ representar\'{a} el signo de $\sigma$.
+\begin{defiap}
+Un tensor $f\in T^0_r(V)$, se dir\'{a} que es un {\bf Tensor Alternado} si se verifica
+$$f(v_1,\dots ,v_r)=\epsilon(\sigma)f(v_{\sigma (1)},\dots ,v_{\sigma (r)}),$$
+$\forall (v_1,\dots ,v_r)\in V^r$ y $\forall\sigma\in{\cal S}_r$.
+\end{defiap}
+\par\bigskip
+Los tensores alternados forman un subespacio vectorial de $T^0_r(V)$ que se denotar\'{a} por $\Lambda_r(V)$.
+Claramente, $\Lambda _0(V)=\R$. Utilizando la definici\'{o}n anterior, tambi\'{e}n es obvio que $\Lambda
+_1(V)=T^0_1(V)=V^*$, es decir, todo tensor covariante de orden uno es necesariamente alternado (?`por qu\'{e}?).
+\begin{defiap}
+Al espacio
+$$\Lambda (V)=\sum_{r=0}^\infty\Lambda_r(V)$$
+se le llama {\bf Algebra Exterior de $V$}.
+\end{defiap}
+\par\bigskip
+Evidentemente, $\Lambda (V)$ es un espacio vectorial. A continuaci\'{o}n, se va a definir en \'{e}l un producto que lo va
+a convertir en un \'{a}lgebra. Para ello, ser\'{a} necesario un nuevo concepto que se pasa a definir.
+\begin{defiap}
+Para $r\in\N$, sea la aplicaci\'{o}n $Alt_r:T^0_r(V)\fl\Lambda _r(V)$, que act\'{u}a de la siguiente manera:
+$$Alt_r(T)(v_1,\dots ,v_r)=\frac{1}{r!}\sum_{\sigma\in{\cal S}_r}\epsilon(
+\sigma)T(v_{\sigma(1)},\dots ,v_{\sigma(r)}).$$ \hs $Alt_r(T)$ se denomina {\bf Alternacion del Tensor $T$}.
+\end{defiap}
+\par\bigskip
+En estas condiciones, se tiene la siguiente proposici\'{o}n, cuya demostraci\'{o}n queda como ejercicio:
+\begin{propoap}
+\begin{enumerate}
+\item[(i)] La aplicaci\'{o}n $Alt_r$ es, $\forall r\in\N$, un homomorfismo de
+espacios vectoriales y restringido a $\Lambda_r(V)$ es la identidad.
+\item[(ii)] Si $Alt_r(T)=0$, entonces, $\forall S\in T^0_s(V)$, $Alt_{r+s}(T
+\otimes S)=0$.
+\end{enumerate}
+\end{propoap}
+\par\bigskip
+De la (i), se deduce que
+$$\Lambda_r(V)\simeq\frac{T^0_r(V)}{{\rm Ker}(Alt_r)},$$
+en virtud del Primer Teorema de Isomorf\'{\i}a de espacios vectoriales.
+\par
+A partir de ahora y salvo en caso de confusi\'{o}n, se eliminar\'{a} el sub\'{\i}ndice de la notaci\'{o}n.
+\par
+Ahora, se va a definir el {\bf Producto Exterior} de tensores covariantes alternados. Igual que en el caso del
+producto tensorial, se har\'{a} en dos etapas. En primer lugar, si $\omega\in\Lambda_r(V)$ y $\theta\in\Lambda_s(V)$,
+el producto exterior de $\omega$ por $\theta$ se denota por $\omega\wedge \theta$ y es, por definici\'{o}n, el
+elemento de $\Lambda_{r+s}(V)$, dado por:
+$$\omega\wedge\theta=\frac{(r+s)!}{r!s!}Alt(\omega\otimes\theta).$$
+\hs Utilizando la definici\'{o}n de alternaci\'{o}n, se tiene que:
+$$(\omega\wedge\theta )(v_1,\dots ,v_{r+s})=\frac{1}{r!s!}\sum_{\sigma\in{\cal
+S}_{r+s}}\epsilon(\sigma)\omega(v_{\sigma (1)},\dots ,v_{\sigma (r)})\theta(v_ {\sigma (r+1)},\dots ,v_{\sigma
+(r+s)}).$$ \hs A continuaci\'{o}n, el producto de dos elementos gen\'{e}ricos
+$$\sum_{r=0}^{\infty}\omega_r\mbox{ }\mbox{y}\mbox{ }\sum_{s=0}^{\infty}\theta_s$$
+de $\Lambda (V)$ se define a partir de lo anterior como:
+$$(\sum_{r=0}^{\infty}\omega_r)\wedge \sum_{s=0}^{\infty}\theta_s)=\sum_
+{r,s=0}^{\infty}\omega_r\wedge\theta _s.$$ \hs Es f\'{a}cil probar (?`por qu\'{e}?) que si $\omega\in\Lambda_r(V)$ y
+$\theta\in\Lambda _s(V)$, entonces $\omega\wedge\theta=(-1)^{rs}\theta\wedge\omega$. Obs\'{e}rvese que si $r$ \'{o} $s$ es
+par, entonces $\omega\wedge\theta=\theta\wedge\omega$. En cambio, si $r$ y $s$ son impares,
+$\omega\wedge\theta=-\theta\wedge\omega$. En particular, si $\omega\in\Lambda_{2r+1}$, entonces
+$\omega\wedge\omega=0$.
+\begin{propoap}
+$\Lambda (V)$ con el producto exterior es un \'{a}lgebra asociativa, no conmutativa y con elemento unidad.
+\end{propoap}
+{\sc Demostraci\'{o}n:} !`Ejercicio!.\hfill$\Box$
+\par\bigskip
+Haciendo una prueba por inducci\'{o}n, se tiene la siguiente proposici\'{o}n:
+\begin{propoap}
+Si $\omega_i\in\Lambda_{r_i}(V)$, $i=1,\dots ,k$, entonces:
+$$\omega_1\wedge\cdots\wedge\omega_k=\frac{(r_1+\cdots +r_k)!}{r_1!\dots r_k!}
+Alt(\omega_1\otimes\cdots\otimes\omega _k).$$
+\end{propoap}
+\par\bigskip
+Otras propiedades del Algebra Exterior son las siguientes:
+\begin{propoap}
+\begin{enumerate}
+\item[(i)] Si $\omega ^1,\dots ,\omega^r\in\Lambda_1(V)$ y $\sigma\in{\cal S}
+_r$, entonces:
+$$\omega^1\wedge\cdots\wedge\omega^r=\epsilon(\sigma)\omega^{
+\sigma(1)}\wedge\cdots\wedge\omega^{\sigma(r)}.$$
+\item[(ii)] Si $v_1,\dots ,v_r\in V$ y $\omega^1,\dots\omega^r\in
+\Lambda_1(V)$, entonces:
+$$(\omega^1\wedge\cdots\wedge\omega^r)(v_1,\dots ,v_r)={\rm det}(\omega^i(v_j))
+.$$
+\end{enumerate}
+\end{propoap}
+{\sc Demostraci\'{o}n:} En primer lugar, para (i):
+$$\omega^1\wedge\cdots\wedge\omega^r=-\omega^1\wedge\cdots\wedge\omega^{i-1}
+\wedge\omega^{i+1}\wedge\omega^i\wedge\omega^{i+2}\wedge\cdots\wedge\omega^r.$$ \hs Por tanto,
+$$\omega^1\wedge\cdots\wedge\omega^i\wedge\cdots\wedge\omega^j\wedge\cdots
+\wedge\omega^r=-\omega^1\wedge\cdots\wedge\omega^j\wedge\cdots\wedge\omega^i \wedge\cdots\wedge\omega^r$$ y, como
+toda permutaci\'{o}n es producto de transposiciones, se tiene (i). Para (ii), se observa que:
+$$(\omega^1\wedge\cdots\wedge\omega^r)(v_1,\dots ,v_r)=r!Alt(\omega^1\otimes
+\cdots\otimes\omega^r)(v_1,\dots ,v_r)=$$
+$$=r!\frac{1}{r!}\sum_{\sigma\in{\cal S}_r}\epsilon(\sigma)\omega^1\otimes
+\dots\otimes\omega^r(v_{\sigma (1)},\dots ,v_{\sigma(r)})=$$
+$$=\sum_{\sigma\in{\cal S}_r}\epsilon(\sigma)\omega^1(v_{\sigma (1)})\dots
+\omega^r(v_{\sigma(r)})=det(\omega^i(v_j)).\eqno{\Box}$$
+\begin{propoap}
+Sea $\{e_1,\dots ,e_n\}$ una base de $V$ y $\{\theta^1,\dots ,\theta^n\}$ su base dual. Consid\'{e}rense $i_1,\dots
+i_n$, enteros tales que $1\leq i_1<\cdots <i_r\leq n$. Entonces, los productos
+$\theta^{i_1}\wedge\cdots\wedge\theta^{ i_r}$, cuando $i_1,\dots ,i_r$ se eligen de todas las formas posibles en
+las condiciones anteriores, son una base de $\Lambda _r(V)$.
+\end{propoap}
+{\sc Demostraci\'{o}n:} En primer lugar se probar\'{a} que son generadores. Si $\omega \in\Lambda _r(V)$, entonces
+$\omega\in T^0_r(V)$ y, por tanto,
+$$\omega=\sum_{i_1,\dots ,i_r=1}^n\omega(e_{i_1},\dots ,e_{i_r})\theta^{i_1}
+\otimes\cdots\otimes\theta^{i_r},$$ lo que implica que:
+$$\omega=Alt(\omega)=\sum_{i_1,\dots ,i_r=1}^n\omega(e_{i_1},\dots ,e_{i_r})
+Alt(\theta^{i_1}\otimes\cdots\otimes\theta^{i_r})=$$
+$$=\frac{1}{r!}\sum_{i_1,\dots ,i_r=1}^n\omega(e_{i_1},\dots ,e_{i_r})\theta^
+{i_1}\wedge\cdots\wedge\theta^{i_r}=$$
+$$=\frac{1}{r!}\sum_{1\leq i_1<\cdots<i_r\leq n}a_{i_1\dots i_r}\theta^{i_1}
+\wedge\cdots\wedge\theta ^{i_r}.$$ \hs Adem\'{a}s, son independientes. En efecto, si
+$$\sum_{1\leq i_1<\cdots<i_r\leq n}\lambda_{i_1\dots i_r}\theta^{i_1}
+\wedge\cdots\wedge\theta ^{i_r}=0,$$ seg\'{u}n la proposici\'{o}n anterior se tiene que
+$$\theta^{i_1}\wedge\cdots\wedge\theta^{i_r}(e_{j_1},\dots,e_{j_r})=
+\left \{
+\begin{array}{ccc}
+0 & {\rm si} & \{i_1,\dots ,i_r\}\neq\{j_1,\dots ,j_r\},\\
+\epsilon(\sigma) & {\rm si} & \{i_1,\dots ,i_r\}=\{j_1,\dots ,j_r\},
+\end{array}
+\right.$$ donde $\sigma$ es la permutaci\'{o}n $i_k\mapsto j_k$, $k=1,\dots ,r$. Por tanto:
+$$\lambda_{j_1 \dots j_r}=0,\forall j_1,\dots ,j_r/ 1\leq j_1<\cdots<
+j_r\leq n.\eqno{\Box}$$
+
+\newpage
+
+\begin{coroap}
+Sea $r\in\N$.
+\begin{enumerate}
+\item[(i)] Si $r>n$, entonces $\Lambda_r(V)=\{0\}$.
+\item[(ii)] Si $r\leq n$, entonces dim$(\Lambda_r(V))={n\choose r}$.
+\end{enumerate}
+\end{coroap}
+{\sc Demostraci\'{o}n:} Si $r>n$, todo elemento de la base es nulo, pues en todo producto de la forma
+$\theta^{i_1}\wedge\cdots\wedge\theta^{i_r}$ hay elementos repetidos, con lo que el producto exterior es nulo. El
+caso $r\leq n$ se deduce directamente de la proposici\'{o}n anterior (?`por qu\'{e}?).\hfill$\Box$
+\par
+Como consecuencia del corolario anterior, tenemos que $\Lambda (V)$ es suma directa de un n\'{u}mero
+\underline{finito} de espacios vectoriales,
+$$\Lambda(V)=\R\oplus V^*\oplus\Lambda_2(V)\oplus\cdots\oplus\Lambda_n(V),$$
+lo que implica que:
+$${\rm dim}(\Lambda(V))={n\choose 0}+{n\choose 1}+\cdots+{n\choose n}=(1+1)^n
+=2^n.$$
+
+\end{document}
