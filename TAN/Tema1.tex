@@ -60,10 +60,85 @@ Como demostración alternativa:
 = \sum_{b|n} φ(b) \]\QED
 \end{dem}
 
+
+\begin{prop}
+\[ \sum_{a|n} μ(a) = \begin{cases}
+	1 & \text{ si } n = 1\\
+	0 & \text{ si } n > 1
+\end{cases}\]
+\end{prop}
+
+\begin{prop}
+\begin{enumerate}[(A)]
+	\item $\forall n$, $g(n) = \sum_{a|n} f(a)$
+	\item $\forall n$, $f(n) = \sum_{a|n}μ(a) g(n/a)$
+\end{enumerate}
+
+\end{prop}
+\begin{dem}\mbox{}
+\begin{itemize}
+	\item[[$(A) \Rightarrow (B)$]]
+	\[
+	\sum_{a|n} μ(a)g(n/a) = \sum_{a|n}μ(n/a)g(a) = \sum_{a|n}μ(a) \sum_{b|n/a} f(b) = \sum_{b|n}f(b)\left(\sum_{a|n/b} μ(a)\right) = f(n)
+	\]
+	\item[[$(B) \Rightarrow (A)$]]
+	\[
+	\sum_{a|n}f(a) = \sum_{a|n} \sum_{b|a} μ(b)g(a/b) = \sum_{a|n}\sum_{b|a} μ(a/b)g(b) = \sum_{b|n}g(b)\left(\sum_{b|a|n}μ(a/b)\right) = g(n)
+	\]
+\end{itemize}
+\end{dem}
 \section{Series de Dirichlet}
+\[ \sum \frac{d(n)}{n^s} = \left(\sum \frac{1}{n^s}\right) \cdot \left(\sum \frac{1}{n^s}\right) = ζ(s)^2 \]
 
+\[ \sum_{n=1}^\infty \frac{σ(n)}{n^s} = ζ(s) \sum_{n=1}^\infty \frac{n}{n^s} = ζ(s) \sum \frac{1}{n^{s-1}} = ζ(s)ζ(s-1) \]
+\[ \sum_{n=1}^\infty \frac{μ(n)}{n^s} \sum_{n=1}^\infty \frac{1}{n^s} = 1 \Rightarrow \sum_{n=1}^\infty \frac{μ(n)}{n^s} = \frac{1}{ζ(s)} \]
+
+donde $s \in \C$, $s = σ + it$. Si $σ > 1$, $ζ(s)$ converge, $1/ζ(s)$ también converge, pues:
+\[ \left|\frac{μ(n)}{n^s}\right| ≤ \frac{1}{n^σ} \]
+
+\[ \left(\sum\frac{μ(n)}{n^s}\right)\left(\sum\frac{1}{m^s}\right) = \sum_{n,m=1}^\infty \frac{μ(n)}{(n\cdot m)^s} = \sum_{N=1}^\infty \frac{1}{N^s}\left(\sum_{n|N} μ(n)\right) = 1 \]
 \section{Convergencia de series de Dirichlet}
+\begin{teorema}
+SI la serie de Dirichlet $\sum_{n=1}^\infty \frac{a_n}{n^s}$ converge en un punto $s = s_0$, entonces converge uniformemente en el ángulo $Γ_α = \{s \in \C : Re(s) > Re(s_0), |arg(s-s_0)|< α\}$ para cada $0 < α ≤ \pi/2$.
+\end{teorema}
 
+\begin{dem}
+En el caso reducido $s_0=0$, $\sum_{n=1}^\infty a_n = 0$. Definimos $s_n = \sum_{k=1}^n a_k$. Entonces, para $n>m$:
+\[ \left|\sum_{k=1}^n\frac{a_k}{k^s}-\sum_{k=1}^m\frac{a_k}{k^s}\right| = \left|\sum_{k=m+1}^n\frac{a_k}{k^s}\right| = \left|\frac{s_{m+1}-s_m}{(m+1)^s} + \frac{s_{m+2}-s_{m+1}}{(m+2)^s}+\dots+\frac{s_{n}-s_{n-1}}{n^s}\right|\]
+\[ = \left|\frac{s_n}{n^s}-\frac{s_m}{(m+1)^s}+\sum_{k=m+1}^{n-1}s_k\left(\frac{1}{k^s}-\frac{1}{(k+1)^s}\right)\right| ≤ \frac{ϵ}{n^σ} + \frac{ϵ}{(m+1)^σ} + \sum_{k=m+1}^{n-1} ϵ \left|\frac{1}{k^s}-\frac{1}{(k+1)^s}\right|\]
+
+Usando que:
+\[ \left|\frac{1}{k^s}-\frac{1}{(k+1)^s}\right| = \left|\int_k^{k+1}-st^{-s-1}dt\right| ≤ |s|\int_k^{k+1}\left|t^{-σ-1}\right|dt ≤ \frac{|s|}{σ} \left(\frac{1}{k^σ}-\frac{1}{(k+1)^σ}\right)\]
+
+y que $n^σ ≥ 1$ y $(m+1)^σ ≥ 1$:
+
+\[ \left|\sum_{k=1}^n\frac{a_k}{k^s}-\sum_{k=1}^m\frac{a_k}{k^s}\right| ≤ 2ϵ + ϵ \sum_{k=m+1}^{n-1} \frac{|s|}{σ}\left(\frac{1}{k^σ}-\frac{1}{(k+1)^σ}\right) = 2ϵ+ϵ\frac{|s|}{σ}\left(\frac{1}{(m+1)^σ}-\frac{1}{n^σ}\right) ≤ 2ϵ+ϵ\frac{|s|}{σ} \]
+Como $σ/|s| = \cos(θ)$ donde $θ = \arg(s) ≤ α$, $|s|/σ ≤ (\sin α)^{-1}$, luego:
+\[ \left|\sum_{k=1}^n\frac{a_k}{k^s}-\sum_{k=1}^m\frac{a_k}{k^s}\right| ≤ ϵ\left(2+\frac{1}{\sin α}\right) \]
+\end{dem}
+
+\begin{coro}
+Si una serie de Dirichlet converge en algún punto, existe $σ_0 \in [-\infty,\infty)$, tal que la serie de Dirichlet define una función analitica en el semiplano $Re(s) > σ_0$ y divirge para todo $Re(s) < σ_0$. Decimos que $σ_0$ es la abcisa de convergencia de la serie de Dirichlet.
+\end{coro}
+
+\begin{ej}
+La serie de Dirichlet $\sum_{n=1}^\infty \frac{(-1)^n}{n^s}$ tiene una abcisa de convergencia en $σ_0=0$. Obsérvese que no converge absolutamente en $0<σ<1$. De hecho, hay una abcisa de convergencia absoluta en $σ_0=1$.
+\end{ej}
+
+\begin{prop} Sea $f(s) = \sum_{n=1}^\infty a_n/n^s$ una función definida por una serie de Dirichlet. La función $f(s)$ es idénticamente $0$ si y sólo si todos los coeficientes $a_n$ son nulos.
+\end{prop}
+
+\begin{prop} Sea $f$ multiplicativa y la serie de Dirichlet $\sum_{n=1}^\infty \frac{f(n)}{n^s}$ con abcisa de convergencia absoluta en $σ_0$. Entonces:
+\[ \sum_{n=1}^\infty \frac{f(n)}{n^s} = \lim_{x \to \infty} \prod_{p≤x} \left(1+\frac{f(p)}{p^s} + \frac{f(p^2)}{p^{2s}+\dots}\right) \]
+La serie dentro del producto del segundo miembro converge por ser una subserie de la serie de Dirichlet donde converge absolutamente. Si $p_1,\dots,p_a$ son todos los primos menores que $x$:
+\[ \prod_{p≤x} \left(1+\frac{f(p)}{p^s} + \frac{f(p^2)}{p^{2s}}+\dots\right) = \sum_{P^+(n)≤x} \frac{f(n)}{n^s} \]
+\end{prop}
+
+\begin{coro}
+
+Si $f$ es además completamente multiplicativa:
+\[ \sum_{n=1}^\infty \frac{f(n)}{n^s} = \prod_{p}\left(1-\frac{f(p)}{p^s}\right)^{-1}\]
+\end{coro}
 \section{Crecimiento de funciones multiplicativas}
 
 \section{Sumación parcial}
