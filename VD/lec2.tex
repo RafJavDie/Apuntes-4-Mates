@@ -1,0 +1,99 @@
+\documentclass[cursovd_portada.tex]{subfiles}
+\begin{document}
+
+
+\chapter{Aplicaciones Diferenciables entre Variedades Diferenciables}
+\section{Aplicaciones Diferenciables.}
+\begin{defi}
+Sean $M$ y $N$ dos variedades diferenciables y $G\subseteq M$ un abierto. Una aplicaci\'{o}n continua $f:G\fl N$ , se
+dice {\bf Diferenciable en un punto} $p\in G$ si existe una carta local $(U,\vp)$ en $M$ entorno de $p$ y existe
+una carta local $(V,\psi)$ en $N$ entorno de $f(p)$ tales que
+$$\psi\circ f\circ\vp^{-1}:\vp(G\cap U\cap f^{-1}(V))\fl\psi f(G\cap U\cap f^{-1}(V))$$
+es diferenciable en un entorno de $\vp(p)$ contenido en $\vp(G\cap U\cap f^{-1}(V))$. La aplicaci\'{o}n $f$ se dice
+diferenciable en $G$ si es diferenciable en todos los puntos de $G$.
+\end{defi}
+\begin{prop}
+La definici\'{o}n anterior no depende de las cartas elegidas entornos de $p$ y $f(p)$, respectivamente.
+\end{prop}
+Obs\'{e}rvese que, por definici\'{o}n, toda aplicaci\'{o}n
+diferenciable es continua. Al conjunto de las aplicaciones
+continuas de $G$ en $N$ y diferenciables en $G$ se denota por
+$\esp{F}(G,N)$. En particular, si $G=M$, se tiene el conjunto
+$\esp{F}(M,N)$ de las aplicaciones diferenciables de todo $M$ en
+$N$.
+\begin{prop}
+Una aplicaci\'{o}n continua $f:M\fl N$ pertenece a $\esp{F}(M,N)$ si y s\'{o}lo si para cualesquiera cartas locales
+$(U,\vp)$ en $M$ y $(V,\psi)$ en $N$ tales que $U\cap f^{-1}(V)\neq\emptyset$ se tiene que:
+$$\psi\circ f\circ\vp^{-1}:\vp(U\cap f^{-1}(V))\fl\psi f(U\cap f^{-1}(V))$$
+es diferenciable.
+\end{prop}
+Hagamos notar c\'omo la aplicaci\'on de la proposici\'on anterior es la que ``va por debajo" en el siguiente diagrama conmutativo:
+\[
+\begin{tikzcd}
+& M  \arrow[r, "f"] & N & \\
+& (U,\varphi)\arrow[u,phantom, "\rotatebox{90}{$\subseteq$}"]\arrow[d,"\varphi"']  & (V,\psi)\arrow[d,"\psi"]\arrow[u,phantom, "\rotatebox{90}{$\subseteq$}"] &  \\
+\varphi(U\cap f^{-1}(V))\arrow[r,phantom, "{\subseteq}"] & \varphi(U) \arrow[r,"\psi\circ f\circ\varphi^{-1}"] & \psi(V)& 
+\end{tikzcd}
+\]
+
+\
+
+\begin{defi} Una aplicaci\'{o}n biyectiva $f\in\esp{F}(M,N)$ se dice que es un {\bf Difeomorfismo} si
+$f^{-1}\in\esp{F}(N,M)$. Dos variedades diferenciables se dicen
+{\bf Difeomorfas} si existe un difeomorfismo entre ambas.
+\end{defi}
+Cuando la variedad $N$ es $\R$ con su estructura eucl\'{\i}dea, las aplicaciones de $M$ en $\R$ se suelen llamar
+funciones. As\'{\i}, a una funci\'{o}n continua $f:G\fl\R$, si es diferenciable (en el sentido de la Definici\'{o}n 2.1.1) en
+un punto $p\in M$, se llama {\bf Funci\'{o}n Diferenciable en $p$} y al conjunto de tales funciones se denota por
+$\esp{F}(p)$ y si es diferenciable en todo $G$ (que podr\'{\i}a ser el propio $M$), se llama {\bf Funci\'{o}n Diferenciable
+en $G$} y el conjunto de tales funciones se denota por $\esp{F}(G)$, verific\'{a}ndose que:
+$$\esp{F}(G)=\bigcap_{p\in G}\esp{F}(p).$$
+\begin{prop}
+Dado un abierto $G\subseteq M$, una aplicaci\'{o}n continua $f:G\fl\R$ es diferenciable en $G$ si y s\'{o}lo si para toda
+carta local $(U,\vp)$ de $M$, tal que $U\cap G\neq\emptyset$, $f\circ\vp^{-1}:\vp(U\cap G)\fl\R$ es diferenciable.
+\end{prop}
+\begin{prop}
+Dado $G\subseteq M$ abierto, $\esp{F}(G)$ es un \'{a}lgebra asociativa, conmutativa y con elemento unidad para las
+operaciones suma y producto de funciones y producto por n\'{u}meros reales.
+\end{prop}
+\begin{ejs}
+{\rm Sea $(U,\vp=(x_1,\dots ,x_m))$ un s.l.c. Entonces:
+\begin{enumerate}
+\item $x_i\in\esp{F}(U)$, para todo $i=1,\dots ,m$.
+\item Sea $f\in\esp{F}(U)$. Dado cualquier $i=1,\dots ,m$ se define:
+$$\ddep{f}{x_i}:p\in U\longmapsto \left(\ddep{f}{x_i}\right)_p=\left(\ddep{(f\circ\vp^{-1})}{u_i}\right)_{\vp(p)}\in\R.$$
+\hs Se cumple que $\displaystyle{\ddep{f}{x_i}}\in\esp{F}(U)$, $i=1,\dots ,m$.
+\end{enumerate}}
+\end{ejs}
+\begin{prop}
+{\bf (Lema de Extensi\'{o}n de Funciones Diferenciables).} Sea $h\in\esp{F}(G)$, donde $G$ es un abierto conteniendo a
+$p\in M$. Entonces, existen un entorno abierto $V$ de $p$, con $\overline{V}\subseteq G$ y una funci\'{o}n
+$f\in\esp{F}(M)$ tales que $f\equiv h$ en $V$ y $f\equiv 0$ en $M-G$.
+\end{prop}
+\begin{teorema}
+Una aplicaci\'{o}n continua $f\in\esp{F}(M,N)$ si y s\'{o}lo si
+para toda funci\'{o}n $g\in\esp{F}(N)$, $g\circ f\in\esp{F}(M)$.
+\end{teorema}
+\section{Ejercicios.}
+\begin{enumerate}
+\item Sean $M$ y $N$ dos variedades diferenciables y $G\subseteq M$ un abierto.
+\begin{enumerate}
+\item Si $f\in\esp{F}(G,N)$ y $H\subseteq G$ es un abierto, probar que $f|_H\in\esp{F}(H,N)$.
+\item Si $f:G\fl N$ es una aplicaci\'{o}n y $\{G_i\}_{i\in I}$ es un recubrimiento por abiertos de $G$ (es decir,
+$G=\bigcup_{i\in I}G_i$) tal que $f|_{G_i}\in\esp{F}(G_i,N)$, para todo $i\in I$, probar que $f\in\esp{F}(G,N)$.
+\end{enumerate}
+\item Sean $M$ una variedad diferenciable y $G\subseteq M$ un
+abierto. Probar que la aplicaci\'{o}n inclusi\'{o}n
+$i:G\hookrightarrow M$ es diferenciable. \item Probar que la
+composici\'{o}n de aplicaciones diferenciables es una
+aplicaci\'{o}n diferenciable. \item Probar que la aplicaci\'{o}n
+identidad entre una variedad diferenciable y ella misma es un
+difeomorfismo. \item Sean $(M,\esp{A}_1)$ y $(M,\esp{A}_2)$ dos
+variedades diferenciables. ?`Bajo qu\'{e} condiciones es ${\rm
+Id}: (M,\esp{A}_1)\fl (M,\esp{A}_2)$ una aplicaci\'{o}n
+diferenciable? ?`Cu\'{a}ndo es un difeomorfismo? \item Probar que
+cualquier aplicaci\'{o}n constante es diferenciable. %\item Probar
+%que si dos variedades diferenciables son difeomorfas, entonces
+%tienen la misma dimensi\'{o}n.
+\end{enumerate}
+\end{document}

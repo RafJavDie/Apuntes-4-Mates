@@ -1,0 +1,484 @@
+\documentclass[cursovd_portada.tex]{subfiles}
+\begin{document}
+
+\chapter{Aplicaci\'{o}n Diferencial de una\\ Aplicaci\'{o}n
+Diferenciable}
+ \hs La definici\'{o}n de espacio tangente en cada
+punto de una variedad diferenciable y, por tanto, la idea de
+``aproximar" la variedad en el punto por un espacio vectorial,
+permite, a su vez, dada una aplicaci\'{o}n diferenciable entre dos
+variedades diferenciables, definir la noci\'{o}n de diferencial de
+tal aplicaci\'{o}n en cada punto de la variedad dominio como una
+aplicaci\'{o}n lineal entre los espacios tangentes del punto y del
+punto imagen, que generaliza a la bien conocida entre espacios
+eucl\'{\i}deos. El conocimiento de las propiedades de tales
+aplicaciones es de gran utilidad, pues est\'{a}n directamente
+relacionadas con la naturaleza diferenciable de la aplicaci\'{o}n
+de partida.
+\section{Aplicaci\'{o}n Diferencial y Aplicaci\'{o}n Co\-di\-fe\-ren\-cial de una Aplicaci\'{o}n Diferenciable.}
+\begin{defi}
+Sean $M$ y $N$ dos variedades diferenciables, $f\in\mathcal{F}(M,N)$ y $p\in M$. Se llama {\bf Diferencial} de $f$
+en $p$ a la aplicaci\'{o}n $f_{*p}:T_p(M)\fl T_{f(p)}(N)$ definida de la siguiente forma: si $u\in T_p(M)$ es
+cualquier vector tangente a $M$ en $p$ y $\a:(a,b)\fl M$ es una curva diferenciable que pasa por $p$ y cuyo vector
+tangente en $p$ es $u$ (es decir, si existe $t_0\in (a,b)$ con $\a(t_0)=p$ y $\a'(t_0)=u$), entonces
+$f_{*p}u=(f\circ\a)'(t_0)$.
+\end{defi}
+Obs\'{e}rvese que, desde luego, $f_{*p}u$ es un vector tangente a $N$ en $f(p)$, pues $f\circ\a:(a,b)\fl N$ es una
+curva diferenciable en $N$, que pasa por $f(p)$, ya que $f(\a(t_0))=f(p)$ y, por tanto, $(f\circ\a)'(t_0)\in
+T_{f(p)}(N)$. Adem\'{a}s, la definici\'{o}n anterior no depende de la curva $\a$ elegida pasando por $p$ y con vector
+tangente en $p$ igual a $u$. En efecto, si $\b:(c,d)\fl M$ es otra curva en las mismas condiciones, entonces
+existe $\tau_0\in(c,d)$ tal que $\b(\tau_0)=p$ y $\b'(\tau_0)=u$. Es claro que $f\circ\b:(c,d)\fl N$ es una curva
+diferenciable que pasa por $f(p)$, ya que $(f\circ\b)(\tau_0)=f(p)$ y su vector tangente en $f(p)$ es $f_{*p}u$,
+pues dada cualquier $g\in\mathcal{F}(f(p))$, se tiene que:
+$$(f\circ\b)'(\tau_0)g=\left.\dderi{(g\circ(f\circ\b))}{\tau}\right|_{\tau=\tau_0}=
+\left.\dderi{((g\circ f)\circ\b)}{\tau}\right|_{\tau=\tau_0}=$$
+$$=\b'(\tau_0)(g\circ f)=u(g\circ f)=\a'(t_0)(g\circ f)=$$
+$$=\left.\dderi{((g\circ f)\circ\a)}{t}\right|_{t=t_0}=\left.\dderi{(g\circ(f\circ\a))}{t}\right|_{t=t_0}=
+(f\circ\a)'(t_0)g=(f_{*p}u)g.$$
+\begin{prop}
+Si $f\in\mathcal{F}(M,N)$, $p\in M$, $u\in T_p(M)$ y $g\in\mathcal{F}(f(p))$, entonces se verifica:
+$$(f_{*p}u)g=u(g\circ f).$$
+\end{prop}
+\begin{prop}
+{\bf (Propiedades de la Diferencial).}
+\begin{enumerate}
+\item {\bf (Regla de la Cadena).} Sean $f\in\mathcal{F}(M,N)$ y $g\in\mathcal{F}(N,P)$. Entonces, para
+cualquier $p\in M$ se verifica que $(g\circ f)_{*p}=g_{*f(p)}\circ f_{*p}$.
+\item Dado $p\in M$, entonces $({\rm Id}_M)_{*p}={\rm Id}_{T_p(M)}$.
+\item Si $f,g\in\mathcal{F}(M,N)$ y $f\equiv g$ en un entorno de $p\in M$, entonces $f_{*p}=g_{*p}$.
+\end{enumerate}
+\end{prop}
+\begin{prop}
+La diferencial en cada punto de una aplicaci\'{o}n diferenciable es una aplicaci\'{o}n lineal.
+\end{prop}
+En consecuencia, cada diferencial tiene asociada una matriz. Para calcularla, sean $(U,\vp=(x_1,\dots ,x_m))$ un
+s.l.c. de $M$ entorno de $p$ y $(V,\psi=(y_1,\dots ,y_n))$ un s.l.c. de $N$ entorno de $f(p)$. Para estas cartas
+locales, las bases de $T_p(M)$ y $T_{f(p)}(N)$ son
+$$\left\{\left(\dep{x_1}\right)_p,\dots ,\left(\dep{x_m}\right)_p\right\}\mbox{ }{\rm y}\mbox{
+}\left\{\left(\dep{y_1}\right)_{f(p)},\dots ,\left(\dep{y_n}\right)_{f(p)}\right\},$$ respectivamente. Entonces,
+como
+$$f_{*p}\left(\dep{x_i}\right)_p=\sum_{j=1}^n\left[f_{*p}\left(\dep{x_i}\right)_p(y_j)\right]\left(\dep{y_j}
+\right)_{f(p)}=$$ $$=\sum_{j=1}^n\left[\left(\ddep{(y_j\circ f)}{x_i}\right)_p\right]\left(\dep{y_j}
+\right)_{f(p)},$$ la matriz de $f_{*p}$ respecto de estas bases viene dada por
+$$f_{*p}=\left[\left(\ddep{y_j\circ f}{x_i}\right)_p\right],$$
+que es la matriz jacobiana de la aplicaci\'{o}n $\psi\circ f\circ\vp^{-1}:\vp(U\cap f^{-1}(V))\fl\psi(f(U\cap
+f^{-1}(V)))$.
+\begin{defi}
+La matriz anterior se denomina {\bf Matriz Jacobiana} de $f$ en $p$ respecto de las cartas dadas. En el caso en
+que ${\rm dim}(M)={\rm dim}(N)$, el determinante de esta matriz se llama {\bf Jacobiano} de $f$ en $p$ y se denota
+por $J_p(f)$.
+\end{defi}
+\begin{prop} Si $f\in\mathcal{F}(M,N)$, siendo $M$ conexa y $f_{*p}=0$, para cual\-quier $p\in M$, entonces $f$
+es constante.
+\end{prop}
+\begin{defi}
+Una aplicaci\'{o}n $f\in\mathcal{F}(M,N)$ se dice que es {\bf No Singular} en $p\in M$ si $f_{*p}$ es inyectiva, es
+decir, si $\ker f_{*p}=0$. Al rango (dimensi\'{o}n de la imagen) de $f_{*p}$ se le denomina {\bf Rango} de $f$ en $p$.
+El punto $p$ se dice {\bf Regular} para $f$ si $f_{*p}$ es sobreyectiva. En caso contrario, $p$ se dice {\bf
+Cr\'{\i}tico}. Si $p$ es cr\'{\i}tico para $f$, el punto $q=f(p)$ se denomina {\bf Valor Cr\'{\i}tico}. De lo contrario se llama
+{\bf Valor Regular}.
+\end{defi}
+Obs\'{e}rvese que si ${\rm dim}(M)={\rm dim}(N)$, entonces $p\in M$ es regular para $f$ si y s\'{o}lo si $f_{*p}$ es un
+isomorfismo, es decir, si y s\'{o}lo si $J_p(f)\neq 0$.
+\begin{defi}
+Una aplicaci\'{o}n $f\in\mathcal{F}(M,N)$ se dice que es una {\bf Inmersi\'{o}n} si es no singular en todos los puntos de
+$M$, es decir, si su diferencial en cada punto es una aplicaci\'{o}n inyectiva y se dice que es una {\bf Sumersi\'{o}n} si
+todos los puntos de $M$ son regulares para $f$, es decir, si su diferencial en cada punto es una aplicaci\'{o}n
+sobreyectiva.
+\end{defi}
+\begin{defi}
+Sea $f\in\mathcal{F}(M,N)$ y $p\in M$. Se llama {\bf Aplicaci\'{o}n Co\-di\-fe\-ren\-cial} de $f$ en $p$ a la
+aplicaci\'{o}n dual de $f_{*p}$, denotada por $f_p^*$ y dada por
+$$f_p^*:T_{f(p)}^*(N)\fl T_p^*(M):\om\mapsto f_p^*\om$$
+tal que, para cualquier $u\in T_p(M)$, $(f_p^*\om)u=\om(f_{*p}u)$.
+\end{defi}
+\begin{prop}
+{\bf (Regla de la Cadena de la Codiferencial).} Sean $f\in\mathcal{F}(M,N)$, $g\in\mathcal{F}(N,P)$ y $p\in M$.
+Entonces, se verifica que $(g\circ f)_p^*=f_p^*\circ g_{f(p)}^*$.
+\end{prop}
+\begin{prop}
+Sean $f\in\mathcal{F}(M,N)$ y $p\in M$. Entonces, se verifican:
+\begin{enumerate}
+\item $f_{*p}$ es inyectiva si y s\'{o}lo si $f_p^*$ es sobreyectiva.
+\item $f_{*p}$ es sobreyectiva si y s\'{o}lo si $f_p^*$ es inyectiva.
+\end{enumerate}
+\end{prop}
+
+\newpage
+
+\section{Noci\'{o}n de Subvariedad.}
+\hs La mayor\'{\i}a de los ejemplos familiares de variedades
+diferenciables son subconjuntos de otras variedades (puede
+pensarse en los abiertos de una variedad diferenciable, las
+superficies re\-gu\-la\-res en $\R^3$ o la figura ocho en $\R^2$).
+Cabe preguntarse cu\'{a}ndo la estructura diferenciable del
+subconjunto viene ``inducida" de alguna manera por la de la
+variedad ambiente y cu\'{a}l es la relaci\'{o}n entre ambas
+estructuras. Esta relaci\'{o}n tiene que ver con el hecho de que
+el espacio tangente a la variedad subconjunto sea subespacio del
+espacio tangente de la variedad ambiente en cada punto. Aparece
+as\'{\i} la noci\'{o}n de subvariedad.
+\begin{defi}
+Una {\bf Subvariedad} de una variedad diferenciable $N$ es un par $(M,f)$, donde $M$ es otra variedad
+diferenciable y $f\in\mathcal{F}(M,N)$ es una inmersi\'{o}n inyectiva.
+\end{defi}
+En los ejemplos antes mencionados (subvariedades abiertas,
+superficies re\-gu\-la\-res o la figura ocho con cualquiera de las
+dos estructuras conocidas), la inmersi\'{o}n inyectiva que las
+convierte en subvariedad es la inclusi\'{o}n. Sin embargo, esto no
+siempre ocurre. Por ejemplo, consid\'{e}rese el intervalo abierto
+$(-1,1)$ dotado de la estructura diferenciable dada por la carta
+global $\vp(t)=t^3$. Se tiene que $(-1,1)$ es un subconjunto de
+$\R$ con la estructura eucl\'{\i}dea y la inclusi\'{o}n
+$i:(-1,1)\hookrightarrow\R$ no es una inmersi\'{o}n, pues ni
+siquiera es diferenciable. Con todo, el par $((-1,1),f)$, con
+$f:(-1,1)\fl\R$ la inmersi\'{o}n $f(x)=x^3$ s\'{\i} es una
+subvariedad de $\R$.
+\begin{prop}\label{prop}
+Sea $(M,f)$ una subvariedad de la variedad diferenciable $N$.
+Entonces, puede dotarse a $f(M)$ de una estructura de variedad
+diferenciable tal que $(f(M),i)$, con $i:f(M)\hookrightarrow N$ la
+inclusi\'{o}n, es una subvariedad de $N$.
+\end{prop}
+Obs\'{e}rvese que, en el resultado anterior, la topolog\'{\i}a de $f(M)$ es, en general, m\'{a}s fina que la topolog\'{\i}a relativa
+inducida por la de $N$, pues la inclusi\'{o}n, al ser diferenciable, es continua. Esto lleva a pensar que la noci\'{o}n de
+subvariedad es m\'{a}s sutil que la an\'{a}loga para espacios topol\'{o}gicos. En efecto, como ya se ha dicho, el ocho con
+cualquiera de las dos estructuras conocidas es subvariedad de $\R^2$ con la inclusi\'{o}n como inmersi\'{o}n inyectiva y,
+sin embargo, no es subespacio topol\'{o}gico de $\R^2$ en ninguno de los dos casos.
+\begin{defi}
+Se dice que una aplicaci\'{o}n $f\in\mathcal{F}(M,N)$ es una {\bf In\-crus\-ta\-ci\'{o}n} si es un homeomorfismo sobre su
+imagen, dotada \'{e}sta de la topolog\'{\i}a relativa de $N$, es decir, si $f:M\fl f(M)\subseteq N$ (dando a $f(M)$ la
+topolog\'{\i}a relativa de $N$) es una aplicaci\'{o}n biyectiva, continua y abierta o cerrada. \end{defi}
+\begin{defi}
+Una subvariedad $(M,f)$ de una variedad diferenciable $N$ se dice que es una {\bf Subvariedad Regular} si $f$ es,
+adem\'{a}s, una incrustaci\'{o}n.
+\end{defi}
+Por tanto, para subvariedades regulares, las im\'{a}genes de \'{e}stas por la inmersi\'{o}n, dotadas de la estructura dada por
+la Proposici\'{o}n \ref{prop}, son tambi\'{e}n subespacios topol\'{o}gicos de la variedad ambiente. En el caso particular de
+considerar subvariedades que sean subconjuntos con la inclusi\'{o}n, se obtiene:
+\begin{prop}
+Sean $M\subseteq N$ dos variedades diferenciables tales que, si $i:M\hookrightarrow N$ es la inclusi\'{o}n, $(M,i)$ es
+subvariedad de $N$. Entonces, $(M,i)$ es subvariedad regular de $N$ si y s\'{o}lo si $M$ tiene la topolog\'{\i}a relativa
+de $N$.
+\end{prop}
+\section{El Teorema de la Funci\'{o}n Inversa.}
+\hs Dada una subvariedad $(M,f)$ de una variedad diferenciable
+$N$, si ${\rm dim}(M)={\rm dim}(N)$, la diferencial de $f$ en cada
+punto de $M$ es un isomorfismo de espacios vectoriales. Este hecho
+ocurre, en particular, si $f$ es un difeomorfismo,
+verific\'{a}ndose que dos variedades diferenciables difeomorfas
+son, cada una de ellas, subvariedad de la otra con inmersi\'{o}n
+el difeomorfismo o su inverso, seg\'{u}n el caso.
+\par Cabe preguntarse, entonces, por el rec\'{\i}proco de este resultado: Dada una subvariedad de una variedad
+diferenciable, ambas de la misma dimensi\'{o}n, ?`son difeomorfas
+a trav\'{e}s de la inmersi\'{o}n? M\'{a}s en general, si una
+aplicaci\'{o}n diferenciable entre variedades diferenciables
+cumple que su diferencial en cada punto es un isomorfismo, ?`es un
+difeomorfismo? La respuesta es negativa, pues basta considerar una
+subvariedad abierta de una variedad diferenciable (aqu\'{\i} la
+inmersi\'{o}n es la inclusi\'{o}n, que no es un difeomorfismo, al
+no ser sobreyectiva).
+\par Sin embargo, s\'{\i} puede probarse, mediante el Teorema de la Funci\'{o}n Inversa en Variedades, que una tal aplicaci\'{o}n
+es un difeomorfismo local. De este teorema se deducen importantes
+colorarios sobre las carta locales de ambas variedades. Por otra
+parte, la condici\'{o}n adicional que debe impornerse a la
+aplicaci\'{o}n para que s\'{\i} sea un difeomorfismo es la
+biyectividad.
+\begin{teorema}
+{\bf (Teorema de la Funci\'{o}n Inversa en $\R^m$).} Sean
+$G\subseteq\R^m$ un abierto, $f:G\fl\R^m$ una aplicaci\'{o}n
+diferenciable y $p\in G$ tal que
+$$\left|\left(\ddep{(u_i\circ f)}{u_j}\right)_{p}\right|\neq 0.$$
+Entonces, existe un abierto $U$, con $p\in U\subseteq G$, tal que
+$f(U)$ es abierto de $\R^m$ y $f|_U:U\fl f(U)$ es un
+difeomorfismo.
+\end{teorema}
+\begin{teorema}
+{\bf (Teorema de la Funci\'{o}n Inversa en Variedades).} Sean
+$f\in\mathcal{F}(M,N)$ y $p\in M$ tal que $f_{*p}$ es un
+isomorfismo. Entonces, existe un abierto $U$, con $p\in U\subseteq
+M$, tal que $f(U)$ es abierto de $N$ y $f|_U:U\fl f(U)$ es un
+difeomorfismo.
+\end{teorema}
+\begin{coro}
+Si $f\in\mathcal{F}(M,N)$ verifica que $f_{*p}$ es un isomorfismo
+para todo $p\in M$, entonces $f$ es un difeomorfismo local.
+\end{coro}
+\begin{defi}
+Un conjunto de funciones $\{f_1,\dots ,f_k\}$ diferenciables en
+$p\in M$ se dice que es {\bf Independiente} en $p$ si sus
+diferenciales $(\de{f_1})_p,\dots, (\de{f_k})_p$ son linealmente
+independientes en $T_p^*(M)$.
+\end{defi}
+\begin{coro}
+Sea $\{f_1,\dots ,f_m\}$ un conjunto de funciones independiente en
+$p\in M$, con ${\rm dim}(M)=m$. Entonces, las funciones $f_1,\dots
+,f_m$ son las funciones coordenadas de un s.l.c. en un entorno de
+$p$.
+\end{coro}
+\begin{coro}
+Sea $\{f_1,\dots ,f_k\}$ un conjunto de funciones independiente en
+$p\in M$, con ${\rm dim}(M)=m>k$. Entonces, las funciones
+$f_1,\dots ,f_k$ forman parte de un s.l.c. en un entorno de $p$.
+\end{coro}
+\begin{coro}
+Sea $\{f_1,\dots ,f_k\}$ un conjunto de funciones diferenciables
+en $p\in M$, $k>{\rm dim}(M)$, tales que $(\de{f_1})_p,\dots
+,(\de{f_k})_p$ generen $T_p^*(M)$. Entonces, un subconjunto de
+tales funciones forman un s.l.c. en un entorno de $p$.
+\end{coro}
+\begin{coro}
+Sea $f\in\mathcal{F}(M,N)$ tal que $f_{*p}$ es sobreyectiva, para
+cierto $p\in M$. Sea $(y_1,\dots ,y_n)$ un s.l.c. en un entorno de
+$f(p)$. Entonces, las funciones \ $y_1\circ f,\dots ,y_n\circ f$
+forman parte de un s.l.c. en un entorno de $p$. Si $f$ es una
+sumersi\'{o}n, las parejas de cartas as\'{\i} obtenidas para cada
+punto de $M$ se denominan {\bf Cartas Adaptadas a la
+Sumersi\'{o}n}.
+\end{coro}
+\begin{coro}
+Sea $f\in\mathcal{F}(M,N)$ tal que $f_{*p}$ es inyectiva, para
+cierto $p\in M$. Sea $(y_1,\dots ,y_n)$ un s.l.c. en un entorno de
+$f(p)$. Entonces, un subconjunto de las funciones $y_1\circ
+f,\dots ,y_n\circ f$ forman un s.l.c. en un entorno de $p$, siendo
+$f$ inyectiva en este entorno. Si $f$ es una inmersi\'{o}n, las
+parejas de cartas as\'{\i} obtenidas para cada punto de $M$ se
+denominan {\bf Cartas Adaptadas a la Inmersi\'{o}n}.
+\end{coro}
+Una cuesti\'{o}n que surge de manera natural es averiguar qu\'{e}
+condiciones debe cumplir una aplicaci\'{o}n $f$ tal que su
+diferencial en cada punto es un isomorfismo para ser un
+difeomorfismo. Dicha condici\'{o}n es la biyectividad, ya que, al
+ser la diferencial de $f$ un isomorfismo en cada punto, $f$ es un
+difeomorfismo local. Como es biyectiva, $f^{-1}$ es diferenciable
+en cada punto de $N$, es decir, $f$ es un difeomorfismo. Sin
+embargo, para variedades $2^{\underline{o}}N$, la condici\'{o}n se
+puede debilitar algo. Para ello, ser\'{a}n necesarios algunos
+resultados de Teor\'{\i}a de la Medida en variedades.
+\par
+Recu\'{e}rdese que un subconjunto $A\subseteq\R^m$ se dice que
+tiene {\it Medida (de Lebesgue) Nula} si dado $\epsilon>0$, existe
+$\{Q_n\}_{n\in\N}$, familia numerable de cubos, tal que:
+$$A\subseteq\bigcup_{n\in\N}Q_i\mbox{ }y\mbox{ }\sum_{n\in\N}{\rm vol}(Q_n)<\epsilon.$$
+\hs En estas condiciones se verifican las siguientes propiedades:
+\begin{enumerate}
+\item Cualquier subconjunto de un conjunto de medida nula es, a su
+vez, de medida nula. \item La uni\'{o}n numerable de conjuntos de
+medida nula en $\R^m$ es un conjunto de medida nula. \item La
+imagen por una aplicaci\'{o}n de clase $\mathcal{C}^1$ de $\R^m$
+en $\R^m$ de un conjunto de medida nula es un conjunto de medidad
+nula. \item $\R^n\times\{x_0\}$, con $x_0\in\R^{m-n}$, es de
+medida nula en $\R^m$.
+\end{enumerate}
+\begin{defi}
+Sea $M$ una variedad diferenciable y $A\subseteq M$. Se dice que
+$A$ tiene {\bf Medida (de Lebesgue) Nula} si para toda familia de
+cartas locales $\{(U_i,\vp_i)\}_{i\in I}$ cuyos dominios recubran
+a $A$, se cumple que $\vp_i(A\cap U_i)$ es de medida nula en
+$\R^m$, para todo $i\in I$.
+\end{defi}
+\begin{prop}
+Sean $M$ y $N$ dos variedades diferenciables y
+$f\in\mathcal{F}(M,N)$. Entonces:
+\begin{enumerate}
+\item Si $A\subseteq M$ es un conjunto de medida nula en $M$, se
+cumple que $f(A)$ es un conjunto de medida nula en $N$. \item Si
+$m<n$, se cumple que $f(M)$ es un conjunto de medida nula en $N$.
+\end{enumerate}
+\end{prop}
+\hs Se puede ahora probar el resultado buscado. Debe resaltarse
+que en todo el desarrollo anterior se ha usado que $M$ verifica el
+axioma $2^{\underline{o}}N$, por lo que la si\-guien\-te
+proposici\'{o}n y su corolario s\'{o}lo son v\'{a}lidos para
+variedades diferenciables $2^{\underline{o}}N$.
+\begin{prop}
+Sea $f\in\mathcal{F}(M,N)$ una aplicaci\'{o}n sobreyectiva y sea
+$p\in M$ tal que $f_{*p}$ es inyectiva. Entonces, $f_{*p}$ es un
+isomorfismo.
+\end{prop}
+\begin{coro}
+Sea $f\in\mathcal{F}(M,N)$ una inmersi\'{o}n biyectiva. Entonces,
+$f$ es un difeomorfismo
+\end{coro}
+\section{Factorizaci\'{o}n de Aplicaciones. Unicidad de Subvariedades.}
+\hs Dada una variedad diferenciable $N$, una subvariedad de $N$ es un par $(M,f)$ donde $M$ es otra variedad
+diferenciable y $f\in\esp{F}(M,N)$ es una inmersi\'{o}n inyectiva, es decir, es una aplicaci\'{o}n diferenciable,
+inyectiva y tal que su diferencial es inyectiva en cada punto de $M$. Esto quiere decir que una misma variedad
+diferenciable tiene tantas subvariedades como inmersiones puedan establecerse a ella desde otras variedades
+diferenciables. En particular, todas las variedades difeomorfas a una dada son subvariedades de ella y debe
+recordarse que cualquier conjunto biyectivo con una variedad diferenciable puede dotarse de una estructura de
+variedad diferenciable que convierte a la biyecci\'{o}n en un difeomorfismo. Por tanto, se hace necesario ``controlar"
+de alguna forma la famila de las subvariedades de una variedad diferenciable.
+\begin{defi}
+Dos subvariedades $(M_1,f_1)$ y $(M_2,f_2)$ de una variedad $N$ se
+dice que son {\bf Equivalentes} si existe un difeomorfismo
+$f:M_1\fl M_2$ tal que $f_1=f_2\circ f$.
+\end{defi}
+$$\begin{diagram}
+\node{M_1} \arrow{e,t}{f_1} \arrow{se,b}{f} \node{N} \\
+\node[2]{M_2} \arrow{n,r}{f_2}
+\end{diagram}$$
+\hs Puede comprobarse sin dificultad que \'{e}sta es una
+relaci\'{o}n de equivalencia en la clase de todas las
+subvariedades de $N$, que permite trabajar con m\'{a}s comodidad
+con dicha clase. Por tanto, es conveniente dar condiciones para la
+existencia de tal difeomorfismo. Para ello, se plantear\'{a} un
+problema m\'{a}s general.
+
+Sea $f\in\mathcal{F}(M,N)$ una aplicaci\'{o}n diferenciable entre
+dos variedades diferenciables y sea $(P,g)$ una subvariedad de
+$N$. Como $g$ es inyectiva, si $f$ {\it factoriza a trav\'{e}s de}
+$g$, es decir si $f(M)\subseteq g(P)$, entonces se puede definir
+una \'{u}nica aplicaci\'{o}n $f_0:M\fl P$ tal que $g\circ f_0=f$.
+No siempre esta aplicaci\'{o}n es diferenciable.
+$$\begin{diagram}
+\node{M} \arrow{e,t}{f} \arrow{se,b,..}{f_0} \node{N} \\
+\node[2]{P} \arrow{n,r}{g}
+\end{diagram}$$
+\begin{teorema}
+{\bf (Lema de Factorizaci\'{o}n).} Sea $f\in\mathcal{F}(M,N)$ una
+aplicaci\'{o}n diferenciable entre dos variedades diferenciables y
+sea $(P,g)$ una subvariedad de $N$ tal que $f$ factoriza a
+trav\'{e}s de $g$. Entonces:
+\begin{enumerate}
+\item Si $f_0$ es continua, entonces es diferenciable. \item Si
+$(P,g)$ es una subvariedad regular de $N$, entonces $f_0$ es
+continua.
+\end{enumerate}
+\end{teorema}
+\begin{prop}
+Cada clase de equivalencia de subvariedades de una variedad
+diferenciable $N$ tiene un \'{u}nico representante de la forma
+$(A,i)$ donde $A$ es un subconjunto de $N$ con estructura de
+variedad diferenciable y la inclusi\'{o}n $i:A\hookrightarrow N$
+es una inmersi\'{o}n.
+\end{prop}
+\hs Es posible completar a\'{u}n m\'{a}s la proposici\'{o}n
+anterior, pues tambi\'{e}n se tiene que la estructura de la que se
+ha dotado a $f(N)$ es la \'{u}nica posible con la propiedad de que
+la subvariedad $(f(N),i)$ sea equivalente a $(N,f)$. De hecho, si
+existiesen en $f(N)$ dos estructuras diferenciables
+$\mathcal{A}_1$ y $\mathcal{A}_2$ tales que, con ambas, $(f(N),i)$
+es una subvariedad de $M$ equivalente a $(N,f)$, esto es, si
+existiesen dos difeomorfismos $g_1:N\fl(f(N),\mathcal{A}_1)$ y
+$g_2:N\fl(f(N),\mathcal{A}_2)$ tales que $f=i\circ g_1=i\circ
+g_2$, entonces $g_2\circ
+g_1^{-1}:(f(N),\mathcal{A}_1)\fl(f(N),\mathcal{A}_2)$ es un
+difeomorfismo, por composici\'{o}n de difeomorfismos y,
+adem\'{a}s, es la identidad, por su construcci\'{o}n. De aqu\'{\i}
+se deduce que las dos estructuras dadas en $f(N)$ son compatibles
+y, por tanto, la unicidad buscada.
+\par
+\hs Es habitual afirmar que existe una \'{u}nica subvariedad de
+una variedad diferenciable $N$ cumpliendo cierta propiedad. Esta
+unicidad se entender\'{a} salvo la equivalencia definida
+anteriormente. En particular, si las subvariedades de $N$ se
+consideran como subconjuntos con estructura de variedad
+diferenciable tal que la inclusi\'{o}n correspondiente es una
+inmersi\'{o}n, la unicidad significa \'{u}nico subconjunto con
+\'{u}nica topolog\'{\i}a 2$^{\underline{o}}N$ y \'{u}nica
+estructura diferenciable. En general, dado un subconjunto
+$A\subseteq N$, no existe una \'{u}nica estructura diferenciable
+sobre $A$ tal que $(A,i)$ sea una subvariedad de $N$, si es que
+existe alguna. No obstante, se tienen dos teoremas de unicidad que
+imponen condiciones a la topolog\'{\i}a de $A$ para tal
+situaci\'{o}n
+\begin{teorema}
+{\bf (Primer Teorema de Unicidad).} Sean $N$ una variedad
+diferenciable y $A\subseteq N$ un subconjunto. Fijada una
+topolog\'{\i}a sobre $A$, existe, a lo m\'{a}s, una estructura
+diferenciable en $A$ tal que $(A,i)$ es una subvariedad de $N$.
+\end{teorema}
+\begin{teorema}
+{\bf (Segundo Teorema de Unicidad).} Sean $N$ una variedad
+diferenciable y $A\subseteq N$ un subconjunto. Si con la
+topolog\'{\i}a relativa $A$ tiene una estructura diferenciable tal
+que $(A,i)$ es una subvariedad de $N$, entonces $A$ tiene
+estructura de variedad diferenciable \'{u}nica, es decir, que para
+que $A$ sea subvariedad de $N$ tiene que ser, precisamente, con la
+topolog\'{\i}a relativa y con la misma estructura diferenciable.
+\end{teorema}
+\section{Teorema de la Funci\'{o}n Impl\'{\i}cita. Teorema de Whitney.}
+\begin{teorema}
+{\bf (Teorema de la Funci\'{o}n Impl\'{\i}cita).} Sean
+$f\in\mathcal{F}(M,N)$ una aplicaci\'{o}n diferenciable entre dos
+variedades diferenciables, $q\in N$ y
+$P=f^{-1}(\{q\})\neq\emptyset$. Si $f_{*p}$ es sobreyectiva, para
+cualquier $p\in P$, entonces $P$ tiene una \'{u}nica estructura de
+variedad diferenciable tal que $(P,i)$ es una subvariedad regular
+de $M$ de dimensi\'{o}n ${\rm dim}(M)-{\rm dim}(N)$.
+\end{teorema}
+\begin{coro} Sea $f:\R^m\fl\R^n$ una aplicaci\'{o}n
+diferenciable. Si el conjunto $P=\{p\in\R^m/f(p)=0\}$ es no
+vac\'{\i}o y el rango de la matriz jacobiana de $f$ vale $n$ en
+todos los puntos de $P$, entonces $P$ es una subvariedad regular
+de $\R^m$ de dimensi\'{o}n $m-n$.
+\end{coro}
+
+\newpage
+
+El Teorema de la Funci\'on Impl\'{\i}cita puede generalizarse.
+Recordemos que, dados $f\in \mathcal{F}(M,N)$ y $p \in M$, se
+llama {\it rango} de $f$ en $p$ al rango (dimensi\'on de la
+imagen) de $f_{*p}$. As\'{\i}, se tiene:
+
+\begin{teorema}
+{\bf (Teorema del Rango o de la Subvariedad de Nivel).} Sean
+$f\in\mathcal{F}(M,N)$ una aplicaci\'{o}n diferenciable entre dos
+variedades diferenciables, $q\in N$ y
+$P=f^{-1}(\{q\})\neq\emptyset$. Si $f$ tiene rango constante $k$
+en un entorno abierto de cada $p\in P$, entonces $P$ tiene una
+\'{u}nica estructura de variedad diferenciable tal que $(P,i)$ es
+una subvariedad regular cerrada de $M$ de codimensi\'{o}n $k$.
+\end{teorema}
+
+\begin{teorema}
+Toda variedad diferenciable compacta es difeomorfa a una subvariedad cerrada de un espacio eucl\'{\i}deo de dimensi\'{o}n
+suficientemente grande, es decir, puede ser incrustada en un espacio eucl\'{\i}deo.
+\end{teorema}
+\begin{teorema}
+{\bf (Teorema de Whitney).} Toda variedad diferenciable paracompacta $m$--dimensional es difeomorfa a una
+subvariedad cerrada de un espacio af\'{\i}n $(2m+1)$--dimensional.
+\end{teorema}
+
+
+
+\section{Ejercicios.}
+\begin{enumerate}
+\item Probar que la diferencial de una aplicaci\'{o}n $f:{\bf R}^m
+\longrightarrow {\bf R}^n$, considerada como aplicaci\'{o}n entre
+variedades diferenciables, coincide con la diferencial habitual de
+${\bf R}^n$. \item Probar que si $f\in\esp{F}(M,N)$ es un
+difeomorfismo, entonces su diferencial en cada punto es un
+isomorfismo. \item Probar que el rango de la diferencial de una
+aplicaci\'{o}n diferenciable entre dos variedadades diferenciables
+no depende de las cartas tomadas. \item Probar que las
+proyecciones de un producto de variedades diferenciables en cada
+uno de los factores son sumersiones. \item Sean
+$f\in\esp{F}(M,N)$, $p\in M$ y $g\in\esp{F}(f(p))$. Probar que
+$$f_p^*((\dif g)_{f(p)})=(\dif (g\circ f))_p.$$ \item Probar que
+toda superficie regular es una subvariedad regular de $\R^3$.
+\item Probar que cualquier subvariedad abierta de una variedad
+diferenciable es subvariedad regular. \item Probar que $S^n$ es
+subvariedad regular de $\R^{n+1}$.
+\item Sea $M$ una variedad diferenciable y $p\in M$. Si
+$\{\om_1,\dots ,\om_m\}$ es una base de $T_p^*(M)$, probar que
+existe una carta local $(U,\vp=(x_1,\dots ,x_m))$ entorno de $p$
+tal que $(\de{x_i})_p=\om_i$, $i=1,\dots ,m$. \item Probar que
+no existen inmersiones de $S^1$ en $\R$. \item Sea
+$f\in\mathcal{F}(M,N)$ un difeomorfismo local inyectivo entre dos
+variedades diferenciables. Probar que $f$ es un difeomorfismo de
+$M$ en un cierto abierto de $N$. \item Sean $M$ subvariedad de
+$\bar{M}$ y $N$ subvariedad de $\bar{N}$. Sea $f: \bar{M}
+\longrightarrow \bar{N}$ una aplicaci\'{o}n diferenciable. ?`Bajo
+qu\'{e} condiciones m\'{\i}nimas se puede asegurar que $f|_M:M
+\longrightarrow N$ es diferenciable? \item Probar que la
+relaci\'{o}n ``ser equivalentes" entre subvariedades de una
+variedad diferenciable es una relaci\'{o}n de equivalencia.
+\item Sean $M\subseteq N$ tales que $(M,i)$ es subvariedad de $N$. Probar que $M$ y $N$ tienen la misma dimensi\'on si y s\'olo si $M$ es subvariedad abierta de $N$.
+\item
+?`Para qu\'{e} valores de $a\in\R$ es el conjunto
+$$M=\{(x,y,z)\in\R^3/x^2+y^2-z+2=0;z=a\}$$
+una subvariedad regular de dimensi\'{o}n 1 de $\R^3$?
+\end{enumerate}
+\end{document}

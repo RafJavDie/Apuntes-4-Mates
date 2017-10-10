@@ -1,0 +1,243 @@
+\documentclass[cursovd_portada.tex]{subfiles}
+
+\begin{document}
+
+\chapter*{Ap\'endice B.\\Teorema de la Funci\'on Impl\'{\i}cita.}
+%\newtheorem{lemaap}{Lema}
+%\newtheorem{propoap}{Proposici\'{o}n}
+\addcontentsline{toc}{chapter}{Ap\'{e}ndice B. Teorema de la Funci\'on Impl\'{\i}cita.}
+\section*{B.1 Teorema de la Funci\'{o}n Impl\'{\i}cita.}
+\addcontentsline{toc}{section}{B.1\hspace{0.5 em} Teorema de la Funci\'{o}n Impl\'{\i}cita.}
+\begin{teoap}
+Sea $f\in\mathcal{F}(M,N)$, $q\in N$ y $P=f^{-1}(\{q\})\neq\emptyset$. Si $f_{*p}$ es sobre, para todo $p\in P$,
+entonces $P$ tiene estructura \'{u}nica de variedad diferenciable de dimensi\'{o}n $m-n$, tal que $(P,i)$ es subvariedad
+regular de $M$, con $i:P\hookrightarrow M$ la inclusi\'{o}n.
+\end{teoap}
+{\sc Demostraci\'{o}n:} Sea $(V;y_1,\dots ,y_n)$ una carta de $N$ entorno de $q$. Si $p\in P$, entonces $p\in M$ y
+$f(p)=q$. Como $f_{*p}$ es sobre, por el Corolario 2.1.5 del Teorema de la Funci\'{o}n Inversa, existe
+$$(U,\vp=(y_1\circ f,\dots ,y_n\circ f,x_{n+1},\dots ,x_m))$$
+carta local en $M$ y se puede tomar $f(U)\subseteq V$.
+\par
+Consid\'{e}rese en $P$ la topolog\'{\i}a relativa de $M$,
+$$T_P=\{G\cap P/G\in T_M\}$$
+y sea el abierto de $P$, $U\cap P$. Se define:
+$$\bar{\vp}:U\cap P\fl\R^{m-n}:z\mapsto\bar{\vp}(z)=(x_{n+1}(z),\dots ,
+x_m(z)).$$ \hs Se tiene que $\bar{\vp}=\pi\circ\vp|_{U\cap P}$, donde $\pi:\R^m\fl\R^{m-n}$ es la proyecci\'{o}n dada
+por $\pi(u_1,\dots ,u_m)=(u_{n+1},\dots ,u_m)$. En estas condiciones, es f\'{a}cil probar que:
+$$\bar{\vp}(U\cap P)=\pi(\vp(U)\cap\{y_1(q),\dots ,y_n(q)\}\times\R^{m-n}).$$
+\hs Como
+$$\pi|_{\{y_1(q),\dots ,y_n(q)\}\times\R^{m-n}}:\{y_1(q),\dots ,y_n(q)\}\times
+\R^{m-n}\fl\R^{m-n}$$ es un homeomorfismo, se deduce que $\bar{\vp}(U\cap P)$ es un abierto de $\R^{m-n}$. Adem\'{a}s,
+se prueba sin dificultad que
+$$\bar{\vp}:U\cap P\fl\bar{\vp}(U\cap P)$$
+es biyectiva, continua (pues $\bar{\vp}=\pi\circ\vp$) y de inversa continua (puesto que
+$\bar{\vp}^{-1}=\vp^{-1}\circ j|_{\bar{\vp}(U\cap P)}$, donde:
+$$j:\R^{m-n}\fl\R^m:(u_{n+1},\dots ,u_m)\mapsto(y_1(q),\dots ,y_n(q),u_{n+1},
+\dots ,u_m)).$$ \hs Por tanto, $(U\cap P,\bar{\vp})$ es una carta local en P entorno de $p$ de dimensi\'{o}n $m-n$.
+Haciendo variar $p$ en $P$, se tiene la familia de cartas $\{(U_p\cap P,\bar{\vp}_p)\}_{p\in P}$, cuyos dominios
+recubren a $P$. Con esta familia, $P$ tiene estructura de variedad diferenciable de dimensi\'{o}n $m-n$. Para ello,
+basta probar que, dos a dos, estas cartas est\'{a}n relacionadas, pero eso es f\'{a}cil, ya que si $P\cap U_p\cap
+U_{p'}\neq \emptyset$, entonces
+$$\bar{\vp}_{p'}\circ{\bar{\vp}_p}^{-1}=\pi\circ\vp_{p'}\circ\vp_p\circ j|_
+{\bar{\vp}_p(U_p\cap U_{p'}\cap P)}$$ es diferenciable, por ser composici\'{o}n de diferenciables.
+\par
+Ahora, se prueba que la inclusi\'{o}n $i:P\hookrightarrow M$ es diferenciable. Adem\'{a}s, su diferencial, $i_{*p}$, es
+inyectiva, pues si $\bar{\vp}=(z_{n+1}, \dots ,z_m)$, entonces $z_k=x_k\circ i$ ($k=n+1,\dots ,m$) y
+$$i_{*p}\left(\frac{\partial}{\partial z_k}\right)_p=\sum_{j=1}^m\left(\frac{\partial
+(x_j\circ i)}{\partial z_k}\right)_p\left(\frac{\partial}{\partial x_j}\right)_p=\left(\frac{
+\partial}{\partial x_k}\right)_p,$$
+con lo que $i_{*p}$ transforma bases en vectores linealmente independientes. Por tanto, $(P,i)$ es una subvariedad
+regular de $M$ de dimensi\'{o}n $m-n$.
+\par
+Finalmente, se tiene la unicidad de la estructura, seg\'{u}n el teorema que dice que si un subconjunto de una variedad
+diferenciable tiene estructura de variedad con la topolog\'{\i}a relativa tal que con la inclusi\'{o}n es una subvariedad,
+entonces la estructura es \'{u}nica. \hfill $\Box$
+
+\
+
+La demostraci\'on del Teorema del Rango es similar. Puede
+consultarse en: J. M. Lee. {\it Manifolds and Differential
+Geometry}. Graduate Studies in Mathematics Vol. 107. American
+Mathematical Society, 2009.
+
+\section*{A.2 Teorema de Frobenius.}
+\addcontentsline{toc}{section}{A.2\hspace{0.5 em} Teorema de Frobenius.}
+\begin{lemaap} Sean $M$ una variedad diferenciable, $p\in M$ y $X\in\mathcal{X}(M)$ verificando $X_p\neq 0$. Entonces,
+existe un sistema de coordenadas $(U;x_1,\dots ,x_m)$, centrado en $p$, tal que:
+$$X|_U=\frac{\partial}{\partial x_1}.$$
+\end{lemaap}
+{\sc Demostraci\'{o}n:} Primero, se probar\'{a} que existe un s.l.c. $(V,y_1,\dots , y_m)$, centrado en $p$ tal que:
+$$X_p=\left(\frac{\partial}{\partial y_1}\right)_p.$$
+\hs En efecto, dado cualquier s.l.c. $(z_1,\dots ,z_m)$ centrado en $p$, se tiene que
+$$X_p=\sum_{i=1}^ma_i(\frac{\partial}{\partial z_i})_p,$$
+donde se puede suponer que $a_1\neq 0$ (?`por qu\'{e}?). Sea, ahora:
+$$\left .
+\begin{array}{lll}
+y_1 & = & \displaystyle{\frac{1}{a_1}}z_1;\\
+y_i & = & z_i-\displaystyle{\frac{a_i}{a_1}}z_1\mbox{ }(2\leq i\leq m).
+\end{array}
+\right \}
+$$
+\hs Es claro que $\{y_1,\dots ,y_m\}$ son funciones independientes en $p$ y, por tanto, $\tau=(y_1,\dots ,y_m)$
+constituye, en virtud del Corolario 2.1.2 del Teorema de la Funci\'{o}n Inversa, un s.l.c. centrado en $p$, con
+dominio que se denotar\'{a} por $V$, cum\-plien\-do:
+$$\left(\frac{\partial}{\partial y_1}\right)_p=\sum_{i=1}^m(\frac{\partial z_i}{\partial
+y_1})_p(\frac{\partial}{\partial z_i})_p=X_p.$$ \hs A continuaci\'{o}n, consid\'{e}rese el grupo uniparam\'{e}trico de
+transformaciones locales engendrado por $X$, $(U_p,\vp_t,\varepsilon)$, en un entorno $U_p$ de $p$, $\vert t\vert
+<\varepsilon$. Denotando por $\pi$ a la proyecci\'{o}n
+$$\pi:\R^m\fl\R^{m-1}:(u_1,\dots ,u_m)\mapsto (u_2,\dots ,u_m)$$
+y tomando $W=(-\varepsilon,\varepsilon)\times\pi(\tau(U_p\cap V))$, que es un entorno de $0\in\R^m$, se puede definir la
+aplicaci\'{o}n
+$$\sigma:W\fl M:(t,b_2,\dots ,b_m)\mapsto\vp_t(\tau^{-1}(0,b_2,\dots ,b_m)),$$
+que es diferenciable, pues $\sigma=\vp_t\circ\tau^{-1}\circ({\bf 0}\times\pi)$ (siendo ${\bf 0}$ la aplicaci\'{o}n
+constante cero). Adem\'{a}s, $\sigma_{*0}$ es un isomorfismo. En efecto, si para cada $i=1,\dots ,m$ se toma la curva
+$$t\mapsto (0,\dots ,t,\dots ,0)$$
+($t$ en el lugar $i$--\'{e}simo), que pasa por el origen para $t=0$, es claro que
+$$\left(\frac{\partial}{\partial u_i}\right)_0\in T_0(\R^m)$$
+es un vector tangente a dicha curva en el origen y, por tanto,
+$$\sigma_{*0}\left(\frac{\partial}{\partial u_i}\right)_0$$
+es tangente a la curva
+$$t\mapsto\sigma(0,\dots ,t,\dots ,0)$$
+($t$ en el lugar $i$--\'{e}simo) en $t=0$. Ahora bien, para $i=1$,
+$$\sigma(t,0,\dots ,0)=\vp_t(\tau^{-1}(0,\dots ,0))=\vp_t(p)=\vp_p(t),$$
+luego:
+$$\sigma_{*0}(\frac{\partial}{\partial u_1})_0=\vp'_p(0)=X_p=\left(\frac{\partial}
+{\partial y_1}\right)_p.$$ \hs Para $i>1$, se tiene que
+$$\sigma(0,\dots ,t,\dots ,0)=\vp_0(\tau^{-1}(0,\dots ,t,\dots ,0))=\tau^{-1}
+(0,\dots ,t,\dots ,0)$$ y, en consecuencia:
+$$\sigma_{*0}\left(\frac{\partial}{\partial u_i}\right)_0=\sum_{j=1}^m\left(\frac{\partial(y_j
+\circ\sigma)(0,\dots ,u_i,\dots ,0)}{\partial u_i})_0(\frac{\partial}{\partial y_j}\right)_p=$$
+$$=\sum_{j=1}^m\left(\frac{\partial(u_j\circ\tau\circ\tau^{-1})(0,\dots ,u_i,\dots ,
+0)}{\partial u_i}\right)_0\left(\frac{\partial}{\partial y_j}\right)_p=$$
+$$=\sum_{j=1}^m\delta_{ij}\left(\frac{\partial}{\partial y_j}\right)_p=(\frac{\partial}
+{\partial y_i})_p.$$ \hs En resumen, $\sigma_{*0}$ transforma base en base, con lo que es un isomorfismo, lo que
+quiere decir que $\sigma$ es no singular en el origen. En virtud del Corolario 2.1.2 del Teorema de la Funci\'{o}n
+Inversa, se deduce que $\vp=\sigma^{-1}$ es una aplicaci\'{o}n coordenada en un cierto entorno $U$ de $p$. Sea, pues,
+$(U,\vp)=(U;x_1,\dots ,x_m)$ dicho entorno coordenado. Entonces, consid\'{e}rese la curva imagen mediante $\sigma$ de
+la curva
+$$t\mapsto(t,b_2,\dots ,b_m)$$
+de $\R^m$ (cuyo vector tangente es
+$$\left(\frac{\partial}{\partial u_1}\right)_{(t,b_2,\dots ,b_m)})$$
+y que tiene como vector tangente a:
+$$\sigma_{*(t,b_2,\dots ,b_m)}\left(\frac{\partial}{\partial u_1}\right)_{(t,b_2,\dots ,
+b_m)}.$$ \hs Pero, por otra parte, $\sigma(t,b_2,\dots ,b_m)=\vp_t(\tau^{-1}(0,b_2,\dots , b_m))$, de donde,
+puesto que $\vp_t$ es el grupo uniparam\'{e}trico de transformaciones locales engendrado por $X$, se sigue que:
+$$\sigma_{*(t,b_2,\dots ,b_m)}\left(\frac{\partial}{\partial u_1}\right)_{(t,b_2,\dots ,
+b_m)}=X_{\sigma(t,b_2,\dots ,b_m)}.$$ \hs Ahora, como $\sigma(t,b_2,\dots ,b_m)$ recorre todos los puntos de $U$ y
+como, por otra parte. $\forall u\in\vp(U)$ se tiene que
+$$\sigma_{*u}\left(\frac{\partial}{\partial u_1}\right)_u=\sum_{j=1}^m\left(\frac{\partial(x_j
+\circ\sigma)}{\partial u_1}\right)_u\left(\frac{\partial}{\partial x_j}\right)_{\sigma(u)}=$$
+$$=\sum_{j=1}^m\left(\frac{\partial(u_j\circ\vp\circ\sigma)}{\partial u_1}\right)_u\left(\frac{
+\partial}{\partial x_j}\right)_{\sigma(u)}=\sum_{j=1}^m\delta_{j1}\left(\frac{\partial}
+{\partial x_j}\right)_{\sigma(u)}=\left(\frac{\partial}{\partial x_1}\right)_{\sigma(u)},$$ se deduce que
+$$X_{\sigma(t,b_2,\dots ,b_m)}=\left(\frac{\partial}{\partial x_1}\right)_{\sigma(t,
+b_2,\dots ,b_m)}$$ y, por consiguiente:
+$$X|_U=\frac{\partial}{\partial x_1}.\eqno\Box$$
+\par \bigskip
+\begin{teoap}
+({\bf Teorema de Frobenius).} Sea $\mathcal{D}$ una distribuci\'{o}n $n$--di\-men\-sio\-nal, diferenciable e
+involutiva en una variedad diferenciable $M$ y sea $p\in M$. Entonces, existe un sistema local de coordenadas
+centrado en $p$, $(U;x_1,\dots x_m)$, tal que la placa
+$$x_i=0,\mbox{ }i=n+1,\dots ,m,$$
+es una subvariedad integral de $\mathcal{D}$ pasando por $p$.
+\end{teoap}
+{\sc Demostraci\'{o}n:} Se probar\'{a}, por inducci\'{o}n en $n$, que para cada punto $p\in M$ existe un s.l.c. $(x_1,\dots,
+x_m)$, centrado en $p$, tal que
+$$\left\{\frac{\partial}{\partial x_1},\dots ,\frac{\partial}{\partial x_n}\right\}$$
+forman una base local de campos para ${\cal D}$ y, por tanto,
+$$x_i=0,\mbox{ }i=n+1,\dots ,m,$$
+es una subvariedad integral de ${\cal D}$ (?`por qu\'{e} se tiene el resultado con \'{e}sto?).
+\par
+Para $n=1$, el Lema 1 asegura que se verifica el teorema. Si $n\geq 2$ y el teorema es cierto para $n-1$, sea
+${\cal D}=<X_1,\dots ,X_n>$ en un entorno de $p$. Entonces, el Lema 1 implica que existe un s.l.c., centrado en
+$p$, con coordenadas $(y_1,\dots ,y_m)$, tal que:
+$$X_n=\frac{\partial}{\partial y_n}.$$
+\hs Ahora, sean:
+$$X'_i=X_i-(X_iy_n)X_n,\mbox{ }1\leq i\leq n-1.$$
+\hs Entonces, $X'_iy_n=0$, $i=1,\dots ,n-1$. Adem\'{a}s, es claro que $X_ny_n=1$. Como ${\cal D}=<X'_1,\dots
+,X'_{n-1},X_n>$ (?`por qu\'{e}?) y es involutiva, se tiene que
+$$[X'_i,X'_j]=\sum_{k=1}^{n-1}a_{ij}^kX'_k+a_{ij}X_n,\mbox{ }1\leq i,j\leq
+n-1,$$ donde es f\'{a}cil comprobar que $a_{ij}=0$ (?`por qu\'{e}?), $\forall i,j=1,\dots , n-1$. Por tanto, la
+distribuci\'{o}n ${\cal D}'=<X'_1,\dots ,X'_{n-1}>$ tambi\'{e}n es involutiva. Por la hip\'{o}tesis de inducci\'{o}n, se sigue que
+existe un s.l.c. $(z_1, \dots ,z_m)$, centrado en $p$, tal que ${\cal D}'=<Z_1,\dots ,Z_{n-1}>$, con:
+$$Z_i=\frac{\partial}{\partial z_i},\mbox{ }1\leq i\leq n-1.$$
+\hs Es evidente que $\{Z_1\dots ,Z_{n-1}\}$ difiere de $\{X'_1,\dots ,X'_{n-1} \}$ en una transformaci\'{o}n lineal no
+singular (pues representa un cambio de base para ${\cal D}'$ en un entorno de $p$). Esto implica que $Z_iy_n=0$,
+$i= 1,\dots ,n-1$ (?`por qu\'{e}?). En consecuencia, ${\cal D}=<Z_1,\dots ,Z_{n-1}, X_n>$ (?`por qu\'{e}?). En estas
+condiciones, sean:
+$$[Z_i,X_n]=\sum_{j=1}^{n-1}b_i^jZ_j+b_iX_n,\mbox{ }1\leq i\leq n-1.$$
+\hs De nuevo, es f\'{a}cil probar que $b_i=0$ (?`por qu\'{e}), $\forall i=1,\dots ,n-1$. Por tanto:
+$$[Z_i,X_n]=\sum_{j=1}^{n-1}b_i^jZ_j+b_iX_n.\eqno(1)$$
+Ahora bien, como en funci\'{o}n de las coordendas $(z_1,\dots ,z_m)$ se tiene que
+$$X_n=\sum_{a=1}^m\xi_a\frac{\partial}{\partial z_a},$$
+entonces (!`comprobar!):
+$$[Z_i,X_n]=\sum_{a=1}^m\frac{\partial\xi_a}{\partial z_i}\frac{\partial}
+{\partial z_a}.\eqno(2)$$ \hs Comparando (1) y (2), se sigue que
+$$\frac{\partial\xi_a}{\partial z_i}=0,\mbox{ }1\leq i\leq n-1,\mbox{ }n\leq a
+\leq m,$$ (?`por qu\'{e}?) lo que indica que $\xi_a$, $a=n,\dots ,m$, son funciones de $z_n, \dots ,z_m$ s\'{o}lamente. Por
+tanto, ${\cal D}=<Z_1,\dots ,Z_{n-1},X'_n>$, donde
+$$X'_n=\sum_{a=n}^m\xi_a\frac{\partial}{\partial z_a}$$
+(!`justificar ambas afirmaciones!). Este campo depende s\'{o}lo de las coordenadas $z_n,\dots ,z_m$, luego efectuando
+un cambio de coordenadas
+$$(z_n,\dots ,z_m)\mapsto (w_n,\dots ,w_m)$$
+que no afecte a $z_1,\dots ,z_{n-1}$ (?`c\'{o}mo?), se consigue que
+$$X'_n=\frac{\partial}{\partial w_n},$$
+(de nuevo, ?`c\'{o}mo?) lo que completa la demostraci\'{o}n.\hfill $\Box$
+
+\newpage
+
+\section*{A.3 Lema de Poincar\'{e}.}
+\addcontentsline{toc}{section}{A.3\hspace{0.5 em} Lema de Poincar\'{e}.}
+\begin{teoap}
+{\bf (Lema de Poincar\'{e}).} Si $U$ es una bola abierta de $\R^m$ y $\omega\in \Lambda_r(U)$, $r\geq 1$, es cerrada,
+entonces existe $\a\in\Lambda_{r-1}(U)$ tal que $\omega=\de \a$.
+\end{teoap}
+{\sc Demostraci\'{o}n:} Sup\'{o}ngase que $U$ est\'{a} centrada en el origen. Entonces, se va a definir un operador
+$$K:\Lambda_r(U)\fl\Lambda_{r-1}(U)$$
+tal que $\de K+K\de =Id$. De aqu\'{\i} que, dada $\omega$, $\de K\omega+ K\de \omega=\de K\omega=\omega$, con lo que
+bastar\'{\i}a tomar $\a=K\omega$.
+\par
+Ahora, si $\underline{x}=(x_1,\dots ,x_m)\in U$, cualquier $r$--forma $\theta$ se puede escribir como:
+$$\theta=\sum_{1\leq i_1 <\cdots <i_r\leq m}a_{i_1\dots i_r}(\underline{x})
+\de x_{i_1}\wedge\cdots\wedge\de x_{i_r}.$$ \hs Entonces, se define:
+$$K\theta=$$
+$$=\sum_{1\leq i_1 <\cdots <i_r\leq m}\left( \int_0^1 a_{i_1\dots i_r}(t\underline{x})t^{r-1}dt\right)
+\sum_{j=1}^r(-1)^ {j-1}x_{i_j}\de x_{i_1}\wedge\cdots\wedge\widehat{\de x_{i_j}}\wedge \cdots\wedge\de x_{i_r}.$$
+\par\medskip
+Es f\'{a}cil verificar que $K$ es $\R$--lineal. Como d tambi\'{e}n lo es, basta probar que $\de K\theta+K\de
+\theta=\theta$ para $\theta=a(\underline{x}) \de x_1\wedge\cdots\wedge\de x_r$. En estas condiciones:
+$$K\theta=\left( \int_0^1 a(t\underline{x})t^{r-1}dt\right) \sum_{j=1}^r(-1)^
+{j-1}x_j\de x_1\wedge\cdots\wedge\widehat{\de x_j}\wedge\cdots\wedge \de x_r.$$ \hs Por tanto:
+$$\de K\theta=\sum_{k=1}^m\dep{x_k}\left( \int_0^1 a(t\underline{x})t^{r-1}
+dt\right)\de x_k\wedge\sum_{j=1}^r(-1)^{j-1}x_j\de x_1\wedge\cdots\wedge \widehat{\de x_j}\wedge\cdots\wedge\de
+x_r+$$
+$$+\left( \int_0^1 a(t\underline{x})t^{r-1}dt\right) \de (\sum_{j=1}^r(-1)^
+{j-1}x_j\de x_1\wedge\cdots\wedge\widehat{\de x_j}\wedge\cdots \wedge\de x_r)=$$
+$$=\sum_{k=1}^m\left( \int_0^1 \ddep{a(t\underline{x})}{x_k}t^{r-1}
+dt\right)\de x_k\wedge\sum_{j=1}^r(-1)^{j-1}x_j\de x_1\wedge\cdots\wedge \widehat{\de x_j}\wedge\cdots\wedge\de
+x_r+$$
+$$+\left( \int_0^1 a(t\underline{x})t^{r-1}dt\right) r\de x_1\wedge\cdots
+\wedge\de x_r=$$
+$$=\sum_{k=1}^m\left( \int_0^1 \left[ \sum_{j=1}^r\ddep{a}{x_j}(t\underline{x})
+x_jt^r+ra(t\underline{x})t^{r-1}\right] dt\right) \de x_1\wedge\cdots\wedge \de x_r+$$
+$$+(-1)^{r-1}\sum_{k=r+1}^m\left( \int_0^1 \ddep{a}{x_k}
+(t\underline{x})t^rdt\right) \sum_{j=1}^r(-1)^{j-1}x_j\de x_1\wedge\cdots \wedge\widehat{\de
+x_j}\wedge\cdots\wedge\de x_r\wedge\de x_k. \eqno(1)$$ \hs Por otra parte,
+$$\de \theta=(-1)^r\sum_{k=r+1}^m\ddep{a}{x_k}(\underline{x})\de x_1
+\wedge\cdots\wedge\de x_r\wedge\de x_k,$$ con lo que se obtiene:
+$$K\de \theta=(-1)^r\sum_{k=r+1}^m\left( \int_0^1 \ddep{a}{x_k}(t
+\underline{x})t^rdt\right) \sum_{j=1}^r(-1)^{j-1}x_j\de x_1\wedge\cdots \wedge\widehat{\de
+x_j}\wedge\cdots\wedge\de x_r\wedge\de x_k+$$
+$$+(-1)^r\sum_{k=r+1}^m\left( \int_0^1 \ddep{a}{x_k}(t\underline{x})t^rdt
+\right) (-1)^{r+1-1}x_k\de x_1\wedge\cdots\wedge\de x_r=$$
+$$=(-1)^r\sum_{k=r+1}^m\left( \int_0^1 \ddep{a}{x_k}(t\underline{x})t^rdt
+\right) \sum_{j=1}^r(-1)^{j-1}x_j\de x_1\wedge\cdots\wedge\widehat{\de x_j}\wedge\cdots\wedge\de x_r\wedge\de
+x_k+$$
+$$+\sum_{k=r+1}^m\left( \int_0^1 \ddep{a}{x_k}(t\underline{x})t^rdt\right) x_k
+\de x_1\wedge\cdots\wedge\de x_r.\eqno(2)$$ \hs En resumen, sumando (1) y (2):
+$$\de K\theta+K\de \theta=\left(\int_0^1\left[ \sum_{k=1}^mx_k\ddep{a}
+{x_k}(t\underline{x})t^r+ra(t\underline{x})t^{r-1}\right] dt\right) \de x_1 \wedge\cdots\wedge\de x_r=$$
+$$=\left( \int_0^1\frac{d}{dt}(a(t\underline{x})t^r)dt\right) \de x_1\wedge\cdots\wedge
+\de x_r=\theta.$$ \hfill$\Box$.
+
+\end{document}

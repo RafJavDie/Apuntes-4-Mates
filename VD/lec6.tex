@@ -1,0 +1,210 @@
+\documentclass[cursovd_portada.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Campos de Tensores\\ Covariantes Diferenciables sobre una Va\-rie\-dad Diferenciable}
+\section{Campos de Tensores Covariantes Diferenciables.}
+\begin{defi}
+Dada una variedad diferenciable $M$ y un abierto $U\subseteq M$, un {\bf Campo de Tensores $r$--Covariantes
+Diferenciable} sobre $U$ es una aplicaci\'{o}n $r$--lineal del $\esp{F}(U)$--m\'{o}dulo $\esp{X}(U)$ en $\esp{F}(U)$, es
+decir, una aplicaci\'{o}n
+$$T:\esp{X}(U)\times\stackrel{r)}\cdots\times\mathcal{X}(U)\fl\mathcal{F}(U)$$
+$r$-lineal (con escalares las funciones diferenciables sobre $U$). Al conjunto de los campos de tensores
+$r$-covariantes diferenciables sobre $U$ se denota por $T_r(U)$. Se conviene que $T_0(U)=\mathcal{F}(U)$.
+\end{defi}
+\begin{prop}
+Sean $T\in T_r(U)$ y $X_1,\dots ,X_r\in\mathcal{X}(U)$. Se verifican:
+\begin{enumerate}
+\item Si $V\subseteq U$ es un abierto e $i\in\{1,\dots ,r\}$ es tal que $X_i|_V=0$, entonces $T(X_1,\dots ,X_r)=0$
+en $V$.
+\item Si $p\in U$ e $i\in\{1,\dots ,r\}$ es tal que $X_i(p)=0$, entonces $T(X_1,\dots ,X_r)(p)=0$.
+\item Si $Y_1,\dots ,Y_r\in\mathcal{X}(U)$ verifican que $Y_i(p)=X_i(p)$, para cierto $p\in U$ y para cualquier
+$i\in\{1,\dots ,r\}$, entonces $T(X_1,\dots ,X_r)(p)=T(Y_1,\dots ,Y_r)(p)$.
+\end{enumerate}
+\end{prop}
+\begin{nota}
+{\rm El nombre de campo de tensores $r$--covariantes proviene del
+hecho de que un tal objeto puede tambi\'{e}n interpretarse como
+una aplicaci\'{o}n $T$ que a cada punto $p\in U$ le hace
+corresponder un tensor $r$ veces covariante\footnote{Para obtener
+m\'{a}s informaci\'{o}n sobre tensores puede consultarse el
+Ap\'{e}ndice B del temario.} sobre $T_p(M)$, es decir, una
+aplicaci\'{o}n
+$$T_p:T_p(M)\times\stackrel{r)}\cdots\times T_p(M)\fl\R$$
+$r$ veces lineal (con escalares los n\'{u}meros reales), definida por
+$$T_p(u_1,\dots ,u_r)=T(X_1,\dots ,X_r)(p),\mbox{ }u_1,\dots u_r\in T_p(M),$$
+donde $X_1,\dots ,X_r$ son campos de vectores diferenciables sobre $U$ tales que $X_i(p)=u_i$, $i=1,\dots ,r$ (por
+la proposici\'{o}n anterior, se sabe que el valor de $T(X_1,\dots ,X_r)(p)$ no depende de la elecci\'{o}n de los campos
+$X_1,\dots ,X_r$ en las condiciones requeridas). En este sentido, puede hablarse de restricciones de campos de
+tensores covariantes diferenciables a  abiertos. En efecto, sea $T\in T_r(U)$ y $V\subseteq U$ un abierto. Se
+define $T|_V$ por
+$$T|_V(X_1,\dots X_r)(p)=T_p(X_1(p),\dots, X_r(p))=T(\overline{X}_1,\dots ,\overline{X}_r)(p),$$
+para cualquier $p\in V$ y $X_1,\dots X_r\in\mathcal{X}(V)$, siendo
+$\overline{X}_1,\dots ,\overline{X}_r$ campos de vectores
+diferenciables en $U$, tales que $\overline{X}_i=X_i$ en un cierto
+entorno de $p$ contenido en $V$, $i=1,\dots ,r$. Por otra parte,
+es inmediato observar que, dados $T,S\in T_r(U)$, $T=S$ si y
+s\'olo si $T_p=S_p$ para todo $p \in U$.}
+\end{nota}
+\begin{prop}Sea $M$ una variedad diferenciable y $U\subseteq M$ un abierto. Se verifican:
+\begin{enumerate}
+\item Si $T\in T_r(U)$ y $V\subseteq U$ es un abierto, entonces $T|_V\in T_r(V)$.
+\item Si
+$$U=\bigcup_{i\in I}U_i,$$
+con $U_i$ abierto para todo $i\in I$ y $T$ es una aplicaci\'{o}n $r$--lineal de
+$\esp{X}(U)\times\stackrel{r)}\cdots\times\mathcal{X}(U)$ en el conjunto de las funciones de $U$ en $\R$, tal que
+$T|_{U_i}\in T_r(U_i)$, para cualquier $i\in I$, entonces $T\in T_r(U)$.
+\end{enumerate}
+\end{prop}
+\begin{ej}
+{\rm Sea $f\in\mathcal{F}(U)$. Se define $\de{f}:\mathcal{X}(U)\fl\mathcal{F}(U)$ por $(\de{f})X=Xf$. Es f\'{a}cil
+comprobar que $\de{f}\in T_1(U)$ y se lee {\it diferencial de $f$}. El nombre y la notaci\'{o}n se justifican en el
+hecho de que, seg\'{u}n la nota anterior, si $p\in U$, se tiene que $(\de{f})_p$ coincide con la diferencial de la
+funci\'{o}n $f$ en $p$, pues, dado $u\in T_p(M)$, $(\de{f})_pu=((\de{f})X)(p)=(Xf)(p)=X_pf=u(f)$, para cualquier campo
+$X\in\mathcal{X}(U)$ tal que $X_p=u$, efectivamente.}
+\end{ej}
+En $T_r(U)$ se pueden definir las siguientes operaciones de modo natural: suma, producto por n\'{u}meros reales y
+producto por funciones diferenciables. Se prueba sin dificultad que, dados $T,S\in T_r(U)$, $\lambda\in\R$ y
+$f\in\mathcal{F}(U)$, se tiene que $T+S,\lambda T,fT\in T_r(U)$. Adem\'{a}s, dados $T\in T_r(U)$ y $S\in T_s(U)$, se
+define la operaci\'{o}n {\it Producto Tensorial} de $T$ y $S$, denotada por $T\otimes S$, mediante:
+$$T\otimes S:\esp{X}(U)\times\stackrel{r+s)}\cdots\times\mathcal{X}(U)\fl\mathcal{F}(U):$$
+$$(X_1,\dots ,X_{r+s})\mapsto(T\otimes S)(X_1,\dots ,X_{r+s})=T(X_1,\dots ,X_r)S(X_{r+1},\dots ,X_{r+s}).$$
+\hs Se tiene que $T\otimes S\in T_{r+s}(U)$.
+\par
+En estas condiciones, se verifica que, si $r>0$, $T_r(U)$ con la suma y el producto por n\'{u}meros reales es un
+espacio vectorial real, con la suma y el producto por funciones diferenciables es un $\mathcal{F}(U)$--m\'{o}dulo y
+que
+$$T(U)=\bigoplus_{r=0}^{\infty}T_r(U)$$
+es un \'{a}lgebra asociativa, no conmutativa y con elemento unidad, llamada {\it \'{A}lgebra Tensorial} de $U$.
+\begin{prop}
+Sea $(U,\vp=(x_1,\dots ,x_m))$ un s.l.c. en $M$. Entonces, la familia
+$$\{\de{x_{i_1}}\otimes\cdots\otimes\de{x_{i_r}}/i_1,\dots ,i_r=1,\dots ,m\}$$
+es una base de $T_r(U)$ como $\mathcal{F}(U)$--m\'{o}dulo. Adem\'{a}s, si $T\in T_r(U)$, en funci\'{o}n de esa base se tiene
+que:
+$$T=\sum_{i_1,\dots ,i_r=1}^mT\left(\dep{x_{i_1}},\dots
+,\dep{x_{i_r}}\right)\de{x_{i_1}}\otimes\cdots\otimes\de{x_{i_r}}.$$
+\end{prop}
+\begin{defi}
+Dada una variedad diferenciable $M$ y un abierto $U\subseteq M$, un {\bf Campo de Tensores $r$--Covariantes y
+1--Contravariantes Diferenciable} sobre $U$ es una aplicaci\'{o}n $r$--lineal del $\esp{F}(U)$--m\'{o}dulo $\esp{X}(U)$ en
+$\mathcal{X}(U)$, es decir, una aplicaci\'{o}n
+$$T:\esp{X}(U)\times\stackrel{r)}\cdots\times\mathcal{X}(U)\fl\mathcal{X}(U)$$
+$r$--lineal (con escalares las funciones diferenciables sobre $U$). Al conjunto de los campos de tensores
+$r$--covariantes y 1--contravariantes diferenciables sobre $U$ se denota por $T_r^1(U)$.
+\end{defi}
+\section{Formas Diferenciales.}
+\begin{defi}
+Dada una variedad diferenciable $M$ y un abierto $U\subseteq M$, una {\bf $r$--Forma Diferencial} sobre $U$ es un
+campo de tensores $r$--covariantes diferenciable y alternado sobre $U$, es decir, una aplicaci\'{o}n
+$$\om:\esp{X}(U)\times\stackrel{r)}\cdots\times\mathcal{X}(U)\fl\mathcal{F}(U)$$
+$r$--lineal (con escalares las funciones diferenciables sobre $U$) alternada, esto es, verificando que
+$$\om(X_1,\dots ,X_r)=\varepsilon(\sigma)\om(X_{\sigma(1)},\dots ,X_{\sigma(r)}),$$
+para cualquier $\sigma\in S_r$ y $X_1,\dots ,X_r\in\mathcal{X}(U)$. Al conjunto de las $r$-formas diferenciales
+sobre $U$ se denota por $\Lambda_r(U)$. Se conviene que $\Lambda_0(U)=\mathcal{F}(U)$.
+\end{defi}
+\begin{nota}
+{\rm Es f\'{a}cil comprobar que $\Lambda_r(U)$ es un subespacio vectorial y un sub\-m\'{o}\-du\-lo de $T_r(U)$. Adem\'{a}s,
+$\Lambda_1(U)=T_1(U)$. }
+\end{nota}
+\begin{defi}
+Dado $T\in T_r(U)$, se llama {\bf Alternado} de $T$ a la $r$--forma diferencial $Alt(T)$ definida mediante
+$$Alt(T)(X_1,\dots ,X_r)=\frac{1}{r!}\sum_{\sigma\in S_r}\varepsilon(\sigma)T(X_{\sigma(1)},\dots
+,X_{\sigma(r)}),$$ para cualesquiera $X_1,\dots ,X_r\in\mathcal{X}(U)$.
+\end{defi}
+\begin{ejer}
+{\rm Probar que, efectivamente, $Alt(T)\in\Lambda_r(U)$, para cualquier $T\in T_r(U)$. Probar, adem\'{a}s, que
+la aplicaci\'{o}n $Alt:T_r(U)\fl\Lambda_r(U)$ es lineal (con escalares las funciones diferenciables sobre $U$) y que
+restringido a $\Lambda_r(U)$ es la identidad.}
+\end{ejer}
+Dadas $\om\in\Lambda_r(U)$ y $\theta\in\Lambda_s(U)$, se define la operaci\'{o}n {\it Producto Exterior} de $\om$ y
+$\theta$, denotada por $\om\wedge\theta$, mediante
+$$\om\wedge\theta=\frac{(r+s)!}{r!s!}Alt(\om\otimes\theta),$$
+es decir, si $X_1,\dots ,X_{r+s}\in\mathcal{X}(U)$:
+$$(\om\wedge\theta)(X_1,\dots ,X_{r+s})=$$
+$$=\frac{1}{r!s!}\sum_{\sigma\in S_{r+s}}\varepsilon(\sigma)\om(X_{\sigma(1)},\dots
+,X_{\sigma(r)})\theta(X_{\sigma(r+1)},\dots ,X_{\sigma(r+s)}).$$ \hs Claramente,
+$\om\wedge\theta\in\Lambda_{r+s}(U)$. Adem\'{a}s, razonando por inducci\'{o}n, se tiene que si $\om_i\in\Lambda_{r_i}(U)$,
+$i=1,\dots ,k$, entonces:
+$$\om_1\wedge\cdots\wedge\om_k=\frac{(r_1+\cdots +r_k)|}{r_1!\dots r_k!}Alt(\om_1\otimes\cdots\otimes\om_k).$$
+\begin{prop}
+Sean $\om\in\Lambda_r(U)$ y $\theta\in\Lambda_s(U)$. Entonces $\om\wedge\theta=(-1)^{rs}\theta\wedge\om$. En
+consecuencia, si $r$ es impar, $\om\wedge\om=0$.
+\end{prop}
+\begin{prop}
+Sean $\om_1,\dots ,\om_r\in\Lambda_1(U)$. Entonces:
+\begin{enumerate}
+\item Para cualquier $\sigma\in S_r$, $\om_1\wedge\cdots\wedge\om_r=\varepsilon(\sigma)\om_{\sigma(1)}\wedge\cdots
+\wedge\om_{\sigma(r)}$.
+\item Dados cualesquiera $X_1,\dots ,X_r\in\mathcal{X}(U)$:
+$$(\om_1\wedge\cdots\wedge\om_r)(X_1,\dots ,X_r)={\rm det}(\om_i(X_j)).$$
+\end{enumerate}
+\end{prop}
+\begin{prop}
+Sea $(U,\vp=(x_1,\dots ,x_m))$ un s.l.c. en $M$. Entonces, la familia
+$$\{\de{x_{i_1}}\wedge\cdots\wedge\de{x_{i_r}}/1\leq i_1<\cdots <i_r\leq m\}$$
+es una base de $\Lambda_r(U)$ como $\mathcal{F}(U)$--m\'{o}dulo. Adem\'{a}s, si $\om\in\Lambda_r(U)$, en funci\'{o}n de esa
+base se tiene que:
+$$\om=\sum_{1\leq i_1 <\cdots <i_r\leq m}\om\left(\dep{x_{i_1}},\dots
+,\dep{x_{i_r}}\right)\de{x_{i_1}}\wedge\cdots\wedge\de{x_{i_r}}.$$
+\end{prop}
+\begin{coro}
+Si $r>m$, entonces $\Lambda_r(U)=\{0\}$.
+\end{coro}
+\begin{prop}
+Se verifica que
+$$\Lambda(U)=\bigoplus_{r=0}^m\Lambda_r(U)$$
+con el producto exterior es un \'{a}lgebra asociativa, no conmutativa y con elemento unidad.
+\end{prop}
+\section{Acci\'{o}n de Aplicaciones sobre los Campos de Tensores.}
+\begin{defi}
+Sean $M$ y $N$ dos variedades diferenciables y
+$f\in\mathcal{F}(M,N)$. Dado $T\in T_r(N)$, se define $f^*T\in
+T_r(M)$ por $f^*T=T\circ f$, si $r=0$ y $f^*T(X_1,\dots ,X_r)(p)=
+T(\overline{X}_1,\dots ,\overline{X}_r)(f(p))$, si $r>0$, donde
+$p$ es un punto de $M$, $X_1,\dots ,X_r\in\mathcal{X}(M)$ y
+$\overline{X}_1,\dots ,\overline{X}_r\in\mathcal{X}(N)$ son tales
+que $f_{*p}X_i(p)=\overline{X}_i(f(p))$, para todo $i=1,\dots ,r$.
+De manera equivalente, se puede definir
+$$(f^*T)_p(u_1,\dots,u_r)=T_{f(p)}(f_{*p}u_1,\dots,f_{*p}u_r),$$
+para todo $p\in M$ y todos $u_1,\dots,u_r \in T_p(M)$.
+\end{defi}
+Esta definici\'{o}n permite, al ser extendida por linealidad, obtener una aplicaci\'{o}n $f^*:T(N)\fl T(M)$, asociada a
+$f$.
+\begin{prop}
+Dada $f\in\mathcal{F}(M,N)$, se verifican las siguientes
+propiedades:
+\begin{enumerate}
+\item $f^*:T_r(N)\fl T_r(M)$ es $\R$--lineal, para todo $r\geq 0$.
+\item $f^*(gT)=(g\circ f)f^*T$, para cualquier $T\in T(N)$ y
+cualquier $g\in \mathcal{F}(N)$. \item $f^*(T\otimes
+S)=f^*T\otimes f^*S$, para cualesquiera $T,S\in T(N)$. \item
+$f^*(Alt(T))=Alt(f^*T)$, para cualquier $T\in T(N)$. \item
+$f^*(\om\wedge\theta)=f^*\om\wedge f^*\theta$, para cualesquiera
+$\om,\theta\in\Lambda(N)$. \item $f^*(\de{g})=\de{(f^*g)}$, para
+cualquier $g\in\mathcal{F}(N)$.
+\end{enumerate}
+\end{prop}
+
+\newpage
+
+\section{Ejercicios.}
+\begin{enumerate}
+\item Probar que la diferencial de cualquier funci\'{o}n constante
+es nula. \item Sea $(U,\vp=(x_1,\dots, x_m))$ un s.l.c. y
+$f\in\mathcal{F}(U)$. Probar que:
+$$\de{f}=\sum_{i=1}^m\ddep{f}{x_i}\de{x_i}.$$
+\item Dadas $\om\in\Lambda_r(U)$ y $\theta\in\Lambda_s(U)$, probar
+que $(\om\wedge\theta)_p=\omega_p\wedge\theta_p$ (para la
+definici\'on del segundo producto exterior, cons\'ultese el
+Ap\'endice C). \item Si $M$ y $N$ son dos variedades
+diferenciables, $f\in\mathcal{F}(M,N)$, $X_1,\dots
+,X_r\in\mathcal{X}(M)$, $Y_1,\dots ,Y_r\in\mathcal{X}(N)$, tales
+que $X_i\stackrel{f}\sim Y_i$ para todo $i=1,\dots ,r$ y $T\in
+T_r(N)$, probar que $(f^*T)(X_1,\dots ,X_r)=T(Y_1,\dots ,Y_r)\circ
+f$. \item Si $M$ y $N$ son dos variedades diferenciables,
+$f\in\mathcal{F}(M,N)$ y $T\in T_r(N)$, hallar la expresi\'{o}n
+local de $f^*T$. \item Sean $f\in\mathcal{F}(M,N)$ y
+$g\in\mathcal{F}(N,P)$ dos aplicaciones diferenciables. Probar que
+$(g\circ f)^*=f^*\circ g^*$.
+\end{enumerate}
+\end{document}
