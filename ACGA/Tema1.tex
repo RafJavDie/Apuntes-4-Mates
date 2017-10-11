@@ -361,6 +361,47 @@ A dicho conjunto lo denominaremos \textbf{abierto de definición} de $f$ y es un
 \end{nota}
 
 \begin{nota}
-En la topología de Zariski, los abiertos son de la forma $X \setminus \V(f_1,\dots,f_r) = X\setminus V(f_1) \cap \dots V(f_r)$.
+En la topología de Zariski, los abiertos son de la forma $Z \setminus \V(f_1,\dots,f_r) = X\setminus V(f_1) \cap \dots X\setminus \cap V(f_r)$. Es decir, $\{U_f | f \in \mathcal{A}(Z)\}$ es una base de la topología de $Z$, donde $U_f = Z \setminus \V(f)$.
 \end{nota}
+
+\begin{defi}
+Un espacio topológico $X$ es \textbf{cuasi-compacto} si todo recubrimiento de $X$ tiene un subrecubrimiento finito.
+\end{defi}
+
+\begin{prop}
+Si $U \subseteq \A_k^n$ es un abierto de Zariski, entones $U$ es cuasi-compacto.
+\end{prop}
+
+\begin{dem}
+Supongamos que $U = \bigcup_{i\in I} U_i$. Entonces $\mathcal{A} \setminus U = Z = \bigcup_{i \in I} Z_i = \bigcup_{i \in I} \V(I_i) = \V(\sum_{i\in I}I_i)$. Como $k[χ_1,\dots,x_n]$ es noetheriano, $Z = \V(I_{i_1} + \dots + I_{i_r}) = Z_1 \cap \dots \cap Z_r$.
+\end{dem}
+
+\begin{prop}
+\[ O_Z(U_f) \cong \mathcal{A}(Z)_f = \{g/f^n \mid g \in \mathcal{A}(z), n ≥ 0\} \]
+\end{prop}
+
+\begin{dem}
+Que $O_Z(U_f) \supseteq \mathcal{A}(Z)_f$ es trivial. Supongamos que $h : K \dashrightarrow k$ racional definida en todo punto de $Uf$. Entonces existe $g \in \mathcal{A}(z)$, $n≥1$ al que $h=g/f^n$. Para todo $x \in U_f$, existe $u_x$,$v_x$ $\in k[x_1,\dots,x_n]$ tal que $h = u_x/v_x$ y $V_x(X) \neq 0$ Además, $U_x=\{v_x\neq 0\}$ es un abierto de $Z$.
+
+Como $U_f = \bigcup_{x \in U_f} U_x$ y $U_f$ es cuasi-compacto, existe $x_1,\dots,x_r$ tal que:
+\[ U_f =\bigcup_{i=1}^r U_{x_i} \]
+
+En $U_i$, $h$ está definida como $u_{x_i}/v_{x_i} =: u_i/v_i$. Como
+\[ \V(v_1,\dots,v_r) \cap Z \subseteq \V(f) \]
+\[ f \in \langle f \rangle \subseteq \I(\V(f)) \subseteq \I(V(v_1,\dots,v_r) \cap Z) = \I(V(J+\langle v_1,\dots,v_r\rangle)) \]
+tomando $Z = \V(J)$.
+Por el Nullstellensatz, existe $n ≥ 0$ tal que $f^n \in J + \langle v_1,\dots,v_r\rangle$. Entonces:
+\[ f^n = a + a_1v_1 + \dots + a_rv_r \text{ en }k[x_1,\dots,x_n] \text{ con }a \in J\text{ y }a_i \in k[x_1,\dots,x_n] \]
+\[ f^n = a_1v_1 + \dots + a_rv_r \text{ en }\mathcal{A}(Z) \]
+Multiplicando por $h = u_i/v_i$ para todo $i$ en $U_i$:
+\[ h \cdot f^n = a_1v_1h + \dots + a_rv_r \text{ en }U_f \]
+\[ h \cdot f^n a_1u_1 + a_2u_2 + \dots a_ru_r \text{ en }U_1\cap U_2 \cap \dots \cap U_r\]
+Luego en $Z$:
+\[ h=\frac{g}{f^n} = \frac{a_1u_1 + \dots + a_ru_r}{f^n} \]
+\end{dem}
+
+\begin{coro}
+Si una función racional está definida en todo punto de $Z$, entonces es una función regular.
+\end{coro}
+
 \end{document}
