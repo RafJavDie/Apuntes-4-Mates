@@ -83,4 +83,88 @@ $$2I_p(f_{*p}\vec{v}_1,f_{*p}\vec{v}_2)=||f_{*p}\vec{v}_1+f_{*p}\vec{v}_2||^2-||
 Como por hipótesis se tiene la igualdad de módulos se deduce el resultado.
 \end{defi}
 
+\begin{dem}[Ejemplo 21]
+Tenemos una parametrización del catenoide $M$ dada por 
+\[ \X : U = (0,2\pi) \times (\sinh^{-1}(-1),\sinh^{-1}(1)) \to M \]
+\[ \X(u,θ) = (\cosh u \cos θ, \cosh u \sin θ, u) \]
+y la parametrización del helicoide $N$ dada por:
+\[ \Y : V = (0,2\pi) \times (-1,1) \to N \]
+\[ \Y(v,φ) = (v\cos φ, v \sin φ, φ) \]
+
+Dado $p \in M$ tomamos $U' \subset M$ y $V' \subset N$ abiertos tal que $U'=\X(U)$ y $V'=\Y(V)$. Sea $f$ definida para todo $q \in U'$ dada por $f(q)=f(\X(u,θ))=y(\sinh u, θ) \in V'$.
+Se tiene que $f$ es biyectiva y regular (compruébalo). Veamos que $f_{*q}$ es isometría para todo $q \in U'$. Veamos que, dado $q \in U'$, $f_{*q}$ conseva los módulos de los vectores de $T_q(M)$. Sea $w \in T_q(M)$, entonces existen $λ¹$ y $λ²$ tales que $w=λ¹\X_1(u_0,θ_0)+λ²\X_2(u_0,θ_0)$ donde $q=\X(u_0,θ_0)$.
+
+Tenemos que $f_{*q}(w) \in T_{f(q)}(N)$ dada por $f_{*q}(w) = μ¹\Y_1(v_0,φ_0)+μ² \Y_2(v_0,φ_0)$, donde $f(q)=\Y(v_0,φ_0)=(f\circ \X)(u_0,θ_0)$, luego $v_0 = \sinh u_0$ y $φ_0=θ_0$. Entonces:
+\[ \begin{pmatrix}μ¹\\μ²\end{pmatrix} = J_{q} (\Y^{-1} \circ f \circ \X) \begin{pmatrix}λ¹\\λ²\end{pmatrix} = \begin{pmatrix}\cosh u_0 & 0\\0 & 1\end{pmatrix} \begin{pmatrix}λ¹\\λ²\end{pmatrix} = \begin{pmatrix}λ¹ \cosh u_0\\ λ²\end{pmatrix}\]
+
+Calculamos los coeficientes métricos (se omiten los cálculos):
+. Para $M$:
+\[ g_{11} = (\sinh u)^2+1 \]
+\[ g_{12} = g_{21} = 0 \]
+\[ g_{22} = (\cosh u)^2 \]
+Para $N$:
+\[ h_{11} = 1 \]
+\[ h_{12} = h_{21} = 0 \]
+\[ h_{22} = v^2+1 \]
+
+Entonces:
+\begin{align*}
+	||w||^2 & = I_q(w,w) = (λ¹)^2g_{11}(u_0,θ_0)+(λ²)^2g_{22}(u_0,θ_0)+2λ¹λ²g_{12}(u_0,θ_0) = \\
+	& = (λ¹)^2 ((\sinh u_0)+1) + (λ²)^2(\cosh u_0)^2 = (λ¹)^2 (\cosh u_0)^2 + (λ²)^2(\cosh u_0)^2
+\end{align*}
+\begin{align*}
+	||f_{*q}(w)||^2 & = I_{f(q)} (f_{*q}(w),f_{*q}(w)) = (μ¹)^2 h_{11}(v_0,φ_0)+(μ²)^2h_{22}(v_0,φ_0) + 2μ¹μ² h_{12}(v_0,φ_0) = \\
+	& = (λ¹)^2(\cosh u_0)^2 + (λ²)^2((\sinh u_0)^2+1) = (λ¹)^2 (\cosh u_0)^2 + (λ²)^2(\cosh u_0)^2
+\end{align*}
+Luego $||f_{*q}(w)||^2 = ||w||^2$ $\forall w$ y $f$ es una isometría.
+\end{dem}
+
+\begin{figure}[!ht]
+  \centering
+    \includegraphics[width=0.5\textwidth]{HelicoidCatenoid}
+\end{figure}
+
+\begin{dem}[Teorema 22]\mbox{}
+\begin{itemize}
+	\item[$(\Rightarrow)$] Sea $p \in M$. Por hipótesis, $M$ y $N$ son localmente isométricas. Entonces existen $U' \subseteq M$ abierto y $V' \subseteq N$ abierto con $p \in U'$ y la isometría $f : U' \to V'$. Sea $(U,x)$ una superficie simple de $M$ en $p$ tal que $\X(U) \subseteq U'$. Consideremos $\Y : U \to \R^3$ dada por $\Y = f \circ \X$. Veamos que $\Y$ es superficie simple en $N$, ya que:
+	\begin{enumerate}
+	\item $\Y$ es inyectiva y diferenciable, por ser composición de funciones inyectivas y diferenciables.
+	\item $\Y_1 \times \Y_2 \neq 0$.
+\end{enumerate}
+
+Tenemos que $\X$ s una superficie simple en $M$, por tanto, $\X_1 \times \X_2 \neq 0$, o equivalentemente $\{\X_1,\X_2\}$ es base de $T_q(M)$ para todo $q \in \X(U)$. Dado $q = \X(u¹_0,u²_0)$, podemos considerar la curva paramétrica $α(u²)=\X(u¹_0,u²)$, que verifica que $α(u²_0) = q$ y $α'(u²_0)=\X_1(u¹_0,u²_0)$. Además $f_{*q}α'(u²_0)=(f \circ α)'(u²_0)$. Ya que $(f\circ α)(u²)=(f \circ \X)(u¹_0,u²)=\Y(u¹_0,u²)$, tenemos que $(f\circ α)'(u²_0) = \Y_1(u²_0)$. Luego $f_{*q} \X_1(u¹_0,u²_0) = \Y_1(u¹_0,u²_0)$. Análogamente, tenemos $f_{*q} \X_2(u¹_0,u²_0)=\Y_2(u¹_0,u²_0)$.
+
+Como $f$ es regular, $f_{*q}$ es isomorfismo. Como consecuencia, tenemos que $\{\Y_1,\Y_2\}$ son linealmente independientes o, equivalentemente, $\Y_1 \times \Y_2 \neq 0$. Luego $\Y$ es superficie simple.
+
+Dado $(u¹_0,u²_0) \in U$, consideramos $q = \X(u¹_0,u²_0)$. Ya que $f_{*q}$ es isometría:
+\begin{align*}
+	g_{ij}(u¹_0,u²_0) & = I_q(\X_i(u¹_0,u²_0),\X_j(u¹_0,u²_0)) = I_{f(q)}(f_{*q}\X_i(u¹_0,u²_0),f_{*q}\X_j(u¹_0,u²_0)) \\
+	& = I_{f(q)}(\Y_i(u¹_0,u²_0),\Y_j(u¹_0,u²_0)) = h_{ij}(u¹_0,u²_0)
+\end{align*}
+
+\item[$(\Rightarrow)$] Sea $p \in M$. Por hipótesis, existen $U \subseteq \R^2$ abierto y unas superficies simples $(U,\X)$ y $(U,\Y)$ tales que $p \in \X(U)$ y $g_{ij}(u¹,u²)=h_{ij}(u¹,u²)$ $\forall (u¹,u²)\in U$. Sean $U' = \X(U)  \subseteq M$ abierto y $V' = \Y(U) \subseteq N$ aberto. Sea $f : U' \to V'$ dada por $f = \Y \circ \X^{-1}$. Veamos que $f$ es isometría:
+\begin{enumerate}
+	\item $f$ es biyectiva y continua, por ser composición de funciones biyectivas y continuas.
+	\item $f$ es regular, es decir, $f$ es diferenciable y $J_{q'} = J_{\X^{-1}(q)}$ es regular para todo $q \in U$. Si consideamos las superficie simples $(U,\X)$ y $(U,\Y)$ tenemos que:
+	\[ \Y^{-1} \circ f \circ \X = \Y^{-1} \circ \Y \circ \X^{-1} \circ \X = id_U,\text{ que es }C^{∞} \]
+	y $J_{q'}(\Y^{-1} \circ f \circ \X) = \begin{pmatrix}1 & 0\\0 & 1\end{pmatrix}$, que es regular.
+	
+	\item $f_{*q}$ es isometría $\forall q \in U'$, es decir; $f_{*q}$ conserva los módulos. Sea $q \in U'$, $q = \X(u¹_0,u²_0)$. Sea $v \in T_q(M)$, donde $v = λ¹\X_1(u¹_0,u²_0)+λ²\X_2(u¹_0,u²_0)$, con $λ¹,λ²\in\R$.
+	\[ ||v||²=I_p(v,v)=(λ¹)^2 g_{11}(u_0)+(λ²)^2 g_{22}(u_0)+2λ¹λ² g_{12}(u_0) \]
+	Por otro lado, $f_{*q}v = μ¹ \Y_1(u_0)+μ^2 \Y_2(u_0)$, con $μ = J_{q'} λ$. Como $J_{q'}$ es la matriz identidad, $μ=λ$.
+	Por lo tanto:
+	\[ ||f_{*q}||^2 = I_{f(q)}(f_{*q} v,f_{*q} v) = (μ_1)^2 h_{11}(u_0) + (μ²)^2 h_{22}(u_0) + 2 μ¹μ² h_{12}(u_0) = ||v||^2 \]
+	Luego $f : U' \to V'$ es isometría. Como consecuencia, $M$ es localmente isométrica a $N$. Análogamente $N$ es localmente isométrica a $M$.
+	\end{enumerate}
+\end{itemize}
+\end{dem}
+
+\begin{dem}[El cilindro es estricto localmente isométrico al plano]
+Sea $\X : U \to M$, donde $U=(0,a) \times (0,2\pi)$, dado por $\X(u,θ) = (r\cos θ, r \sin θu)$ una parametrización de un ciclindro $M$ de radio $r$ y eje $OZ$. Sea $p \in M$. Consideramos las superficies simples $(U,\X)$ y $(U,\Y)$ de $M$ y $N = \R^2$ tales que $p \in \X(U)$ y $g_{ij}(u,θ)=h_{ij}(u,θ)$ $\forall (u,θ) \in U$. Para ello, tomaremos $\Y(u,θ) = (rθ,0,u)$ (está elección quedará explicada en breve). Queda como ejercicio comprobar que $(U,\X)$ y $(U,\Y)$ son superficie simples.
+Para $(U,\X)$:
+\[ g_{11} = 1, \quad g_{12} = 0 \quad g_{22}=r^2 \]
+Par $(U,\Y)$.
+\[ h_{11} = 1, \quad h_{12} = 0 \quad h_{22}=r^2 \]
+Por tanto, el clindro y el plano son localmente isométricos pero no isométricos.
+\end{dem}
 \end{document}
