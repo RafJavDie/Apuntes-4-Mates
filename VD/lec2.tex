@@ -90,6 +90,26 @@ $f\in\esp{F}(M)$ tales que $f\equiv h$ en $V$ y $f\equiv 0$ en $M-G$.
 Una aplicación continua $f\in\esp{F}(M,N)$ si y sólo si
 para toda función $g\in\esp{F}(N)$, $g\circ f\in\esp{F}(M)$.
 \end{teorema}
+\begin{dem}
+Supongamos que $f \in \esp{F}(M,N)$ y sea $g \in \esp{F}(N)$ cualquiera.Queremos probar que $g \circ f \in \esp{F}()$, es decir, que $(g \circ f) \circ φ^{-1} : φ(U) \to \R$ es diferenciable para toda carta $(U,φ)$ en $M$.
+
+Para ello, sea $(U,φ)$ en $M$ cualquiera y veamos que $(g \circ f) \circ φ^{-1}$ es diferenciable en un punto $q \in φ(U)$ cualquiera.
+
+Como $q \in φ(U)$, existe $p \in U$ tal que $q = φ(p)$. En particular, $p \in M$, con lo que $f(p) \in N$ y podemos tomar una carta $(V,ψ)$ en $N$ tal que $f(p) \in V$. Ahora bien, como $p \in U$ y $f(p) \in V$, se tiene que $U \cap f^{-1}(V) \neq \emptyset$. Así, como, por hipótesis, $f \in \esp{F}(M,N)$, podemos afirmar que $ψ \circ f \circ φ^{-1}$ es diferenciable en $φ(U \cap f^{-1}(V))$.
+
+Por otra parte, como $(V,ψ)$ es carta en $N$ y $g \in \esp{F}(N)$, sabemos que $g \circ ψ^{-1} : ψ(V) \to \R$ es diferenciable.
+
+Así, en $φ(U \cap f^{-1}(V))$, que es entorno abierto de $φ(p)=q$, podemos escribir
+\[ (g \circ f) \circ φ^{-1} = (g \circ ψ^{-1} \circ (ψ \circ f \circ φ^{-1}) \]
+que es diferenciable al obtenerse como composición de aplicaciones diferenciables. Por lo tanto, $(g \circ f) \circ φ^{-1}$ es diferenciable en $q$ y queda probada la implicación directa.
+
+Recíprocamente, supongamos que $g \circ f \in \esp{F}(;)$, para toda $g \in \esp{F}(N)$ y probemos que $f \in \esp{F}(M,N)$, es decir, consideremos dos cartas cualesquiera $(U,φ)$ en $M$ y $(V,ψ)$ en $N$ tales que $U \cap f^{-1}(V) \neq \emptyset$ y veamos que la aplicación $ψ \circ f \circ φ^{-1} : φ(U \cap f^{-1}(V)) \to \R^n$ es diferenciable. Para ello, basta probar que sus componentes $u_i \circ ψ \circ f \circ f^{-1} = y_i \circ f \circ φ^{-1}$ son diferenciables para todo $i = 1,\dots,n$ donde hemos denotado por $(y_1,\dots,y_n)$ las componentes de la carta $(V,ψ)$. Por tanto, sea $q \in φ(U \cap f^{-1}(V))$ cualquiera y veamos que cada $y_i \circ f \circ φ^{-1}$ es diferenciable en $q$.
+
+Si probamos que existen un abierto $\tilde{W}$ on $q \in \tilde{W} \subseteq φ(U \cap f^{-1}(V))$ y una función $\tilde{y}_i \in \esp{F}(N)$ taes que en $\tilde{W}$ se verifica que $y_i \circ f \circ φ^{-1} = \tilde{y}_i \circ f \circ φ^{-1}$, habremos acabado, pues, aplicando la hipótesis, se tiene que $\tilde{y}_i \circ f \in \esp{F}(M)$, con lo que $\tilde{y}_i \circ f \circ φ^{-1}$ es diferenciable. Así, $y_i \circ f \circ φ^{-1}$ es diferenciable en $q$, pues en un entorno de dicho punto coincide con la aplicación diferenciable $\tilde{y}_i \circ f \circ φ^{-1}$.
+
+Ahora bien, para probar la existencia de tales $\tilde{W}$  $\tilde{y}_i$, razonamos de la siguiente manera. Como $q \in φ(U \cap f^{-1}(V))$, existe $p \in U \cap f^{-1}(V)$ tal que $q = φ(p)$. Así, $f(p) \in V$. Además, sabemos que $V$ es abierto de $N$ y que $y_i \in \esp{F}(V)$ (pues las componentes de una carta son diferenciables en el dominio de la misma. Aplicando ahora el Lema de Extensión de Funciones Diferenciables, obtenemos que eisten un entorno abierto $W$ de $f(p)$ con $\overline{W} \subseteq V$ y una función $\tilde{}_i \in \esp{F}(N)$ tales que $\tilde{y}_i = y_i$ en $W$ e $\tilde{y}_i = 0$ en $N \setminus V$. Finalmente, bastará tomar $\tilde{W} = φ(U \cap f^{-1}(W))$.
+\qed
+\end{dem}
 \section{Ejercicios.}
 \begin{enumerate}
 \item Sean $M$ y $N$ dos variedades diferenciables y $G\subseteq M$ un abierto.
