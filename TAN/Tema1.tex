@@ -194,6 +194,42 @@ Luego:
 	\limsup \frac{\log d(n)}{\frac{\log 2 \log n}{\log \log n}} = 1 
 \]
 \end{dem}
+
+\[ \sum_{n≤x} d(n) = \sum_{n≤x}\sum_{a|n}1 = \sum_{a≤x}\lfloor \frac{x}{a}\rfloor = \sum_{ab≤x} 1 \]
+Consideramos el retículo $\mathcal{R}=\{(n,m) | n \in \N,m \in \N, nm≤x\}$. Se tiene que $\sum_{ab≤x} 1 = \#\mathcal{R}$. Si particionamos $\mathcal{R}$ en los conjuntos: $A=\{(n,m) | n \in \N,m \in \N, nm≤x, m>\sqrt{x}\}, B=\{(n,m) | n \in \N,m \in \N, nm≤x, n>\sqrt{x}\}$ y $C=\{(n,m) | n \in \N,m \in \N, nm≤\sqrt{x}\}$. Se tiene que $\#A=\#B$, luego $\#\mathcal{R}=2\#A+\#C$:
+\begin{align*}
+	\sum_{ab≤x} 1 & = 2 \# A - \lfloor \sqrt{x} \rfloor^2 = 2 \sum_{a≤\sqrt{x}} \lfloor \frac{x}{a}\rfloor - \lfloor \sqrt{x} \rfloor^2 = 2 \sum_{a≤x} \left(\frac{x}{a}-\left\{\frac{x}{a}\right\}\right) - (\sqrt{x}-\{\sqrt{x}\})^2 =\\
+	& = 2x \sum_{a ≤ \sqrt{x}} \frac{1}{a} + \mathcal{O}(\sqrt{x}) - (x-2\{\sqrt{x}\} \sqrt{x} + \{\sqrt{x}\}^2) = \\
+	& = 2x(\log\sqrt{x} + γ + \mathcal{O}(\frac{1}{x})) + \mathcal{O}(\sqrt{x}) -x+\mathcal{O}(\sqrt{x})+\mathcal{O}(1) = x \log x + (2γ-1)x+\mathcal{O}(\sqrt{x})
+\end{align*}
+Luego $\sum_{n≤x} d(n) = x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})$.
+donde $\{x\} = x-\lfloor x \rfloor$ es la parte fraccionaria de $x$.
+
+\begin{align*}
+	\sum_{n≤x} φ(n) & = \sum_{n≤x}\sum_{a|n} μ(a) \frac{n}{a} = \sum_{a≤x} \frac{μ(a)}{a}\left(\sum_{a|n,n≤x}n\right) = \frac{1}{2} \sum_{a≤x} μ(a)\left(\lfloor \frac{x}{a}\rfloor^2 + \lfloor \frac{x}{a}\rfloor \right)\\
+	& = \frac{1}{2} \sum_{a≤x} μ(a) \left(\left(\frac{x}{a} - \left\{ \frac{x}{a}\right\} \right)^2 + \frac{x}{a}-\left\{\frac{x}{a}\right\}\right)\\
+	& = \frac{1}{2} \sum_{a≤x} μ(a) \left(\frac{x^2}{a^2} - 2\left\{\frac{x}{a}\right\}\frac{x}{a} + \left\{\frac{x}{a}\right\}^2+\frac{x}{a}-\left\{\frac{x}{a}\right\}\right)\\
+	&  \frac{x^2}{2} \sum_{a≤x} \frac{μ(a)}{a^2} - \frac{x}{2} \sum_{a≤x} \frac{μ(a)}{a} - x \sum_{a≤x} \frac{μ(a)}{a}\left\{\frac{x}{a}\right\} + \mathcal{O}(x)
+\end{align*}
+Como:
+\[ \left|x\sum_{a≤x} \frac{μ(a)}{a} \left\}\frac{x}{a}\right\}\right| ≤ x \sum_{a≤x} \frac{1}{a} = x (\log x + γ + \mathcal{O}\left(\frac{1}{x}\right)) ≤ 2x \log x \]
+Luego:
+\begin{align*}
+	\sum_{n≤x} φ(n) = \frac{x^2}{2} \sum_{a≤x} \frac{μ(a)}{a^2} + \mathcal{O}(x\log x) = \frac{x^2}{2}\left(S - \sum_{a>x} \frac{μ(a)}{a^2}\right) + \mathcal{O}(x \log x)
+\end{align*}
+donde $S = \sum_a \frac{μ(a)}{a^2}$. Como
+\[ \left|\sum_{a>x} \frac{μ(a)}{a^2}\right| ≤ \sum_{a>x} \frac{1}{a^2} ≤ \frac{1}{x^2} + \int_x^\infty \frac{dt}{t^2} = \frac{1}{x}+\frac{1}{x^2} ≤ \frac{2}{x} \]
+Luego $\sum_{a>x} \frac{μ(a)}{a^2} \in \mathcal{O}(1/x)$
+\begin{align*}
+	\sum_{n≤x} φ(n) = \frac{x^2}{2}S + \mathcal{O}(x \log x)
+\end{align*}
+Por otro lado, como $ζ(s)^{-1} = \sum \frac{μ(n)}{n^s}$
+\[ \sum_a \frac{μ(a)}{a^2} ζ(2) = 1 \Rightarrow S = \frac{1}{ζ(2)} = \frac{6}{π^2}\]
+Finalmente:
+\[ \sum_{n≤x} φ(n) = \frac{6}{π}\frac{x^2}{2} + \mathcal{O}(x\log x)\]
+
+\begin{ej} Dado un entero $x$, tomamos aleatoriamente dos enteros $n,m ≤ x$, la probabilidad de que $n \perp m$ es $\dfrac{6}{π^2}+ \mathcal{O}\left(\frac{\log x}{x}\right)$.
+\end{ej}
 \section{Sumación parcial}
 
 \section{El orden medio de $d(n)$}
