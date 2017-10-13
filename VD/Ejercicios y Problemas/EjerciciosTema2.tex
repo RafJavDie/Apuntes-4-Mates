@@ -19,8 +19,15 @@ abiertos de $G$ (es decir, $G = \cup_{i\in I} G_i$) tal que $f|_{G_i} \in \calF(
 todo $i \in I$, probar que $f \in \calF(G,N)$.
 \end{itemize}
 \end{ejercicio}
-\begin{solucion}
-
+\begin{solucion}\
+\begin{itemize}
+\item[(a)]Como $f\in\calF(G,N)$, tenemos que dadas dos cartas $(U,\varphi)$ de $G$ y $(V,\psi)$ de $N$ tales que $U\cap f^{-1}(V)\neq\emptyset$ entonces
+$$\psi\circ f\circ\varphi^{-1}:\varphi(U\cap f^{-1}(V))\to\psi f(U\cap f^{-1}(V))\in\mathcal{C}^\infty$$ 
+Como $H\subseteq G$, posee estructura de subvariedad abierta, por lo que podemos tomar una carta de la forma $(U\cap H,\varphi|_H)$. Supongamos entonces que $(U\cap H)\cap f^{-1}(V)\neq\emptyset$. Tenemos que comprobar que 
+$$\psi\circ f|_H\circ\varphi|_H^{-1}:\varphi|_H((U\cap H)\cap f|_H^{-1}(V))\to\psi f|_H((U\cap H)\cap f^{-1}(V))\in\mathcal{C}^\infty$$ 
+Pero esta aplicación no es más que la restricción de la aplicación anterior al abierto $H$, por lo que efectivamente es diferenciable.
+\item[(b)]
+\end{itemize}
 \end{solucion}
 
 \newpage
