@@ -2,67 +2,67 @@
 
 \begin{document}
 \chapter{Variedades Diferenciables}
-\section{Introducci\'{o}n.}
-\hs La Geometr\'{\i}a Diferencial consiste en el estudio de aquellos problemas geo\-m\'{e}\-tri\-cos que pueden ser
-tratados usando el C\'{a}lculo Diferencial e Integral. Por tanto, los objetos b\'{a}sicos a trabajar deben ser espacios en
-los cuales nociones como la diferenciaci\'{o}n e integraci\'{o}n tengan sentido. Dichos espacios ser\'{a}n denominados {\it
-Variedades Diferenciables}. En pocas palabras, una variedad diferenciable es un espacio topol\'{o}gico localmente
-homeomorfo (en realidad, difeomorfo, pero habr\'{a} que precisar esta noci\'{o}n) a un espacio eucl\'{\i}deo. As\'{\i}, los primeros
-ejemplos de variedad diferenciable lo constituyen los propios espacios eucl\'{\i}deos. Adem\'{a}s, las curvas regulares y
-las superficies regulares son tambi\'{e}n variedades diferenciables. Recu\'{e}rdese que un subconjunto $M\subseteq\R^3$ se
+\section{Introducción.}
+\hs La Geometría Diferencial consiste en el estudio de aquellos problemas geo\-mé\-tri\-cos que pueden ser
+tratados usando el Cálculo Diferencial e Integral. Por tanto, los objetos básicos a trabajar deben ser espacios en
+los cuales nociones como la diferenciación e integración tengan sentido. Dichos espacios serán denominados {\it
+Variedades Diferenciables}. En pocas palabras, una variedad diferenciable es un espacio topológico localmente
+homeomorfo (en realidad, difeomorfo, pero habrá que precisar esta noción) a un espacio euclídeo. Así, los primeros
+ejemplos de variedad diferenciable lo constituyen los propios espacios euclídeos. Además, las curvas regulares y
+las superficies regulares son también variedades diferenciables. Recuérdese que un subconjunto $M\subseteq\R^3$ se
 dice que es una superficie regular si para cualquier punto $p\in M$ existe un entorno $V$ de $p$ en $\R^3$ y una
-aplicaci\'{o}n $\vec{x}:U\subseteq\R^2\fl V\subseteq M$ de un abierto $U$ de $\R^2$ sobre $M$, tales que (a) $\vec{x}$
+aplicación $\vec{x}:U\subseteq\R^2\fl V\subseteq M$ de un abierto $U$ de $\R^2$ sobre $M$, tales que (a) $\vec{x}$
 es un homeomorfismo diferenciable y (b) la diferencial $(D\vec{x})_q:\R^2\fl\R^3$ es inyectiva en todo punto $q\in
 U$.
 \par
-A la aplicaci\'{o}n $\vec{x}$ se le denomina parametrizaci\'{o}n de $M$ en $p$. La consecuencia m\'{a}s importante de  la
-definici\'{o}n de superficie regular es el hecho de que el cambio de par\'{a}metros es un difeomorfismo. Por consiguiente,
-una superficie regular es, intuitivamente, una reuni\'{o}n de abiertos de $\R^3$ organizados de tal forma que cuando
-dos de tales abiertos se intersectan la transici\'{o}n de uno a otro se realiza de manera diferenciable. Como
-consecuencia, tiene sentido hablar, en una superficie regular, de funciones diferenciables y aplicar los m\'{e}todos
-del C\'{a}lculo Diferencial.
+A la aplicación $\vec{x}$ se le denomina parametrización de $M$ en $p$. La consecuencia más importante de  la
+definición de superficie regular es el hecho de que el cambio de parámetros es un difeomorfismo. Por consiguiente,
+una superficie regular es, intuitivamente, una reunión de abiertos de $\R^3$ organizados de tal forma que cuando
+dos de tales abiertos se intersectan la transición de uno a otro se realiza de manera diferenciable. Como
+consecuencia, tiene sentido hablar, en una superficie regular, de funciones diferenciables y aplicar los métodos
+del Cálculo Diferencial.
 \par
-El defecto m\'{a}s importante de la definici\'{o}n de superficie regular es su depencia respecto de $\R^3$. La idea
+El defecto más importante de la definición de superficie regular es su depencia respecto de $\R^3$. La idea
 natural de superficie debiera ser la de un conjunto bidimensional (en un sentido a precisar) y al que se le pueda
-aplicar el C\'{a}lculo Diferencial de $\R^2$; la presencia innecesaria de $\R^3$ es, simplemente, una imposici\'{o}n de
-nuestra naturaleza f\'{\i}sica.
+aplicar el Cálculo Diferencial de $\R^2$; la presencia innecesaria de $\R^3$ es, simplemente, una imposición de
+nuestra naturaleza física.
 \par
 Aunque la necesidad de una idea abstracta de superficie (esto es,
-sin involucrar ning\'{u}n espacio ambiente) fue intuida por Gauss
+sin involucrar ningún espacio ambiente) fue intuida por Gauss
 en 1827 en su trabajo titulado \emph{Disquisitions generales
 circa superficies curvas}, se hizo necesario el paso de algo
-m\'{a}s de un siglo para que tal idea tuviera una forma
-definitiva, pues la formulaci\'{o}n expl\'{\i}cita del concepto de
+más de un siglo para que tal idea tuviera una forma
+definitiva, pues la formulación explícita del concepto de
 variedad diferenciable tal y como se conoce actualmente y que
-contiene como caso particular a la noci\'{o}n de superficie
-regular abstracta, no apareci\'{o} hasta 1932, en el libro de
+contiene como caso particular a la noción de superficie
+regular abstracta, no apareció hasta 1932, en el libro de
 Veblen y Whitehead titulado \emph{Foundations of Differential
 Geometry.} Una de las razones de esta demora estuvo en el hecho
-de que el papel fundamental del cambio de par\'{a}metros no fue
+de que el papel fundamental del cambio de parámetros no fue
 bien comprendido.
 \section{Cartas Locales, Atlas, Estructuras Diferenciables.}
-\hs En todo lo que sigue y salvo menci\'{o}n expl\'{\i}cita en
-contra, se supondr\'{a} que $M$ es un espacio topol\'{o}g\'{\i}co
+\hs En todo lo que sigue y salvo mención explícita en
+contra, se supondrá que $M$ es un espacio topológíco
 $T_2$ y $2^{\underline{o}}N$\footnote{En la literatura es posible
 encontrar definiciones de variedades diferenciables no $T_2$ ni
 $2^{\underline{o}}N$. Para los objetivos de este curso, dichas
-variedades se considerar\'{a}n casos patol\'{o}gicos.}.
+variedades se considerarán casos patológicos.}.
 \begin{defi}
-Una {\bf Carta Local de dimensi\'{o}n $m$} en $M$ es un par $(U,\vp)$ tal que:
+Una {\bf Carta Local de dimensión $m$} en $M$ es un par $(U,\vp)$ tal que:
 \begin{enumerate}
 \item $U$ es un abierto de $M$, denominado {\bf Dominio} de la carta.
-\item $\vp$ es un homeomorfismo de $U$ en un abierto $\vp(U)$ de $\R^m$, llamado {\bf Aplicaci\'{o}n Coordenada} de la
+\item $\vp$ es un homeomorfismo de $U$ en un abierto $\vp(U)$ de $\R^m$, llamado {\bf Aplicación Coordenada} de la
 carta.
 \end{enumerate}
 \end{defi}
 \begin{defi}
-Dada una carta local $(U,\vp)$ de $M$ de dimensi\'{o}n $m$ y dado $p\in U$, a las coordenadas $(\lambda_1,\dots
+Dada una carta local $(U,\vp)$ de $M$ de dimensión $m$ y dado $p\in U$, a las coordenadas $(\lambda_1,\dots
 ,\lambda_m)$ de $\vp(p)\in\vp(U)\subseteq\R^m$ se les llama {\bf Coordenadas Locales} de $p$ respecto de la carta
-$(U,\vp)$. Por esta raz\'{o}n, tambi\'{e}n se denomina a las cartas {\bf Sistemas Locales de Coordenadas} (s.l.c.).
+$(U,\vp)$. Por esta razón, también se denomina a las cartas {\bf Sistemas Locales de Coordenadas} (s.l.c.).
 \end{defi}
-Considerando las proyecciones can\'{o}nicas $u_i:\R^m\fl\R$,
+Considerando las proyecciones canónicas $u_i:\R^m\fl\R$,
 $i=1,\dots ,m$ (en particular, se pueden pensar con dominio en
-$\vp(U)$) y denotando por $x_i$ a la funci\'{o}n
+$\vp(U)$) y denotando por $x_i$ a la función
 $x_i=u_i\circ\vp:U\fl\R$, se tiene que $\vp(p)=(\lambda_1,\dots
 ,\lambda_m)=(x_1(p),\dots ,x_m(p))$, pues, para cualquier
 $i=1,\dots ,m$, $\lambda_i=u_i(\lambda_1,\dots
@@ -76,70 +76,70 @@ Funciones Coordenadas}) de la carta y se escribe $\vp=(x_1,\dots
 \begin{ej}
 {\rm
 \begin{enumerate}
-\item Sea $C\subset\R^3$ una curva regular alabeada (podr\'{\i}a
+\item Sea $C\subset\R^3$ una curva regular alabeada (podría
 hacerse del mismo modo con una curva plana) ``sin cruces", dotada
-de la topolog\'{\i}a inducida por la eucl\'{\i}dea y sea
-$\a:(a,b)\subseteq\R\fl C$ una parametrizaci\'{o}n local
+de la topología inducida por la euclídea y sea
+$\a:(a,b)\subseteq\R\fl C$ una parametrización local
 inyectiva. Se sabe que $\a$ es un difeomorfismo (en particular, un
 homeo\-mor\-fis\-mo) del intervalo $(a,b)$ en $\a(a,b)$, que es
-abierto de $C$. Llamando $\vp$ a la aplicaci\'{o}n $\a^{-1}$ de
+abierto de $C$. Llamando $\vp$ a la aplicación $\a^{-1}$ de
 $\a(a,b)$ en $(a,b)$, se tiene que $(\a(a,b),\vp)$ es una carta
-local de dimensi\'{o}n 1 en $C$. \item Sea $M$ una superficie
+local de dimensión 1 en $C$. \item Sea $M$ una superficie
 regular de $\R^3$ y sea $\vec{x}:U\subseteq\R^2\fl M$ una
 superficie simple de $M$. Se sabe que $\vec{x}(U)$ es un abierto
 de $M$ y que $\vec{x}$ es un difeomorfismo de $U$ en $\vec{x}(U)$.
-Llamando $\vp$ a la aplicaci\'{o}n $\vec{x}^{-1}$ de $\vec{x}(U)$
+Llamando $\vp$ a la aplicación $\vec{x}^{-1}$ de $\vec{x}(U)$
 en $U$, se tiene que $(\vec{x}(U),\vp)$ es una carta local de
-dimensi\'{o}n 2 en $M$. \item Sea $\R^m$ y $\vp={\rm
+dimensión 2 en $M$. \item Sea $\R^m$ y $\vp={\rm
 id}:\R^m\fl\R^m$. Entonces, $(\R^m,\vp)$ es una carta local de
-dimensi\'{o}n $m$ de $\R^m$, con funciones coordenadas las
-proyecciones can\'{o}nicas $u_1,\dots ,u_m$.
+dimensión $m$ de $\R^m$, con funciones coordenadas las
+proyecciones canónicas $u_1,\dots ,u_m$.
 \end{enumerate}}
 \end{ej}
-\begin{defi} Se dice que dos cartas locales de dimensi\'{o}n $m$ sobre $M$, $(U,\vp)$ y $(V,\psi)$ est\'{a}n {\bf
+\begin{defi} Se dice que dos cartas locales de dimensión $m$ sobre $M$, $(U,\vp)$ y $(V,\psi)$ están {\bf
 Relacionadas} si se verifica una de las dos condiciones siguientes:
 \begin{enumerate}
-\item $U\cap V=\emptyset$, \'{o}
-\item Si $U\cap V\neq\emptyset$, entonces las aplicaciones (llamadas {\bf Aplicaciones de Transici\'{o}n} o {\bf Aplicaciones
+\item $U\cap V=\emptyset$, ó
+\item Si $U\cap V\neq\emptyset$, entonces las aplicaciones (llamadas {\bf Aplicaciones de Transición} o {\bf Aplicaciones
 de Cambio} de las cartas),
 $$\psi\circ\vp^{-1}:\vp(U\cap V)\fl\psi(U\cap V)$$
 y
 $$\vp\circ\psi^{-1}:\psi(U\cap V)\fl\vp(U\cap V)$$
 son de clase $\esp{C}^{\infty}$.
 \end{enumerate}
-\hs Obs\'{e}rvese que tanto $\vp(U\cap V)$ como $\psi(U\cap V)$ son abiertos de $\R^m$.
+\hs Obsérvese que tanto $\vp(U\cap V)$ como $\psi(U\cap V)$ son abiertos de $\R^m$.
 \end{defi}
 \begin{ej}
 {\rm
 \begin{enumerate}
 \item Probar que dos parametrizaciones locales inyectivas de una
 misma curva regular dan lugar a dos cartas locales de dicha curva
-que est\'{a}n relacionadas. \item Probar que dos superficies
+que están relacionadas. \item Probar que dos superficies
 simples de una misma superficie regular dan lugar a dos cartas
-locales de dicha superficie que est\'{a}n relacionadas.
+locales de dicha superficie que están relacionadas.
 \end{enumerate}}
 \end{ej}
 \begin{defi}
-Un {\bf Atlas} (de dimensi\'{o}n $m$) en $M$ es una familia de cartas locales (de dimensi\'{o}n $m$) sobre $M$ tales que
-sus dominios recubren a $M$ y que dos a dos est\'{a}n relacionadas. Un atlas se dice {\bf Maximal} si no est\'{a}
+Un {\bf Atlas} (de dimensión $m$) en $M$ es una familia de cartas locales (de dimensión $m$) sobre $M$ tales que
+sus dominios recubren a $M$ y que dos a dos están relacionadas. Un atlas se dice {\bf Maximal} si no está
 propiamente contenido en otro atlas.
 \end{defi}
 \begin{ej}
 {\rm
 \begin{enumerate}
-\item Las parametrizaciones locales inyectivas de una curva regular forman un atlas de dimensi\'{o}n 1 sobre la curva y las
-superficies simples de una superficie regular forman un atlas de dimensi\'{o}n 2 sobre la superficie.
-\item $\{(\R^m,{\rm id})\}$ es un atlas de dimensi\'{o}n $m$ sobre $\R^m$.
+\item Las parametrizaciones locales inyectivas de una curva regular forman un atlas de dimensión 1 sobre la curva y las
+superficies simples de una superficie regular forman un atlas de dimensión 2 sobre la superficie.
+\item $\{(\R^m,{\rm id})\}$ es un atlas de dimensión $m$ sobre $\R^m$.
 \end{enumerate}}
 \end{ej}
 \begin{defi}
-Una carta local (de dimensi\'{o}n $m$) se dice {\bf Admisible} en un atlas (de dimensi\'{o}n $m$) si est\'{a} relacionada con
+Una carta local (de dimensión $m$) se dice {\bf Admisible} en un atlas (de dimensión $m$) si está relacionada con
 todas las cartas de dicho atlas.
 \end{defi}
-En particular, todas las cartas de un atlas son admisibles en \'{e}l. Adem\'{a}s, si $(U,\vp)$ es una carta admisible en
+En particular, todas las cartas de un atlas son admisibles en él. Además, si $(U,\vp)$ es una carta admisible en
 un atlas $\esp{A}$, entonces $\esp{A}\cup\{(U,\vp)\}$ es otro atlas.
 \begin{prop}
-Todo atlas est\'{a} contenido en un \'{u}nico atlas maximal.
+Todo atlas está contenido en un único atlas maximal.
 \end{prop}
 
 \begin{dem}
@@ -174,15 +174,15 @@ A demostrar:
 \end{dem}
 
 \begin{defi}
-Dos atlas de la misma dimensi\'{o}n sobre $M$ se dicen {\bf Compatibles} o {\bf Equivalentes} si su uni\'{o}n es otro
+Dos atlas de la misma dimensión sobre $M$ se dicen {\bf Compatibles} o {\bf Equivalentes} si su unión es otro
 atlas.
 \end{defi}
-Como consecuencia de esta definici\'{o}n se tiene que dos atlas
-son compatibles si y s\'olo si est\'{a}n contenidos en un mismo
-atlas maximal. Adem\'{a}s, las cartas de dos atlas compatibles
-est\'{a}n relacionadas todas entre s\'{\i}.
+Como consecuencia de esta definición se tiene que dos atlas
+son compatibles si y sólo si están contenidos en un mismo
+atlas maximal. Además, las cartas de dos atlas compatibles
+están relacionadas todas entre sí.
 \begin{prop}
-La relaci\'{o}n de compatibilidad entre atlas de la misma dimensi\'{o}n es una relaci\'{o}n de equivalencia.
+La relación de compatibilidad entre atlas de la misma dimensión es una relación de equivalencia.
 \end{prop}
 
 \begin{dem}\mbox{}
@@ -193,15 +193,15 @@ La relaci\'{o}n de compatibilidad entre atlas de la misma dimensi\'{o}n es una r
 \end{itemize}
 \end{dem}
 
-\begin{defi} Una {\bf Variedad Diferenciable} de dimensi\'{o}n $m$ es un par $(M,\esp{A})$ donde $M$ es un espacio
-topol\'{o}gico $T_2$ y $2^{\underline{o}}N$ y $\esp{A}$ un atlas de dimensi\'{o}n $m$ sobre $M$. A la clase de
-equivalencia por la relaci\'{o}n anterior del atlas $\esp{A}$ (o, por abuso del lenguaje, al propio atlas $\esp{A}$)
+\begin{defi} Una {\bf Variedad Diferenciable} de dimensión $m$ es un par $(M,\esp{A})$ donde $M$ es un espacio
+topológico $T_2$ y $2^{\underline{o}}N$ y $\esp{A}$ un atlas de dimensión $m$ sobre $M$. A la clase de
+equivalencia por la relación anterior del atlas $\esp{A}$ (o, por abuso del lenguaje, al propio atlas $\esp{A}$)
 se le llama {\bf Estructura Diferenciable} de la variedad.
 \end{defi}
-Cuando no haya lugar a confusi\'{o}n, se dir\'{a} que $M$ es la variedad diferenciable, omitiendo nombrar expl\'{\i}citamente
+Cuando no haya lugar a confusión, se dirá que $M$ es la variedad diferenciable, omitiendo nombrar explícitamente
 el atlas.
 \par
-Por otra parte y en virtud de la definici\'{o}n de atlas, dado un punto $p$ de una variedad diferenciable $M$, siempre
+Por otra parte y en virtud de la definición de atlas, dado un punto $p$ de una variedad diferenciable $M$, siempre
 existe una carta local $(U,\vp)$ de la estructura diferenciable tal que $p\in U$. Esta carta se denomina {\bf
 Carta Entorno de $p$}.
 
@@ -217,19 +217,19 @@ M$, existe una carta local $(U,\vp)$ de la estructura
 diferenciable centrada en $p$ (es decir, tal que $\vp(p)=0$).
 \item Sea $M$ una variedad diferenciable y $\esp{A}$ el atlas
 maximal de la estructura diferenciable. Probar que los dominios de
-las cartas locales de $\esp{A}$ forman base de la topolog\'{\i}a
+las cartas locales de $\esp{A}$ forman base de la topología
 de $M$. \item Sea $(M,\esp{A})$ una variedad diferenciable y
 $G\subseteq M$ un abierto. Probar que, dando a $G$ la
-topolog\'{\i}a relativa de la de $M$,
+topología relativa de la de $M$,
 $$\esp{B}=\{(G\cap U,\vp|_{G\cap U})\}_{(U,\vp)\in\esp{A}}$$
 es un atlas sobre $G$ que lo dota de estructura de variedad
-diferenciable de la misma dimensi\'{o}n que $M$, llamada {\bf
+diferenciable de la misma dimensión que $M$, llamada {\bf
 Estructura de Subvariedad Abierta} de $G$. \item Probar que todo
 espacio vectorial real $m$-dimensional admite una estructura
-diferenciable can\'{o}nica de dimensi\'{o}n $m$. \item Probar que
-$\C^m$ es una variedad diferenciable de dimensi\'{o}n $2m$. \item
+diferenciable canónica de dimensión $m$. \item Probar que
+$\C^m$ es una variedad diferenciable de dimensión $2m$. \item
 Probar que el producto cartesiano de dos variedades diferenciables
-$M$ y $N$ es una variedad diferenciable de dimensi\'{o}n la suma
+$M$ y $N$ es una variedad diferenciable de dimensión la suma
 de las dimensiones de las variedades factores. De hecho, si
 $(U,\vp)$ es una carta de $M$ y $(V,\psi)$ una carta de $N$, se
 verifica que $(U\times V,\vp\times\psi)$ es una carta sobre

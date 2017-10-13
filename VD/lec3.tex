@@ -3,75 +3,75 @@
 
 
 \chapter{Espacio Tangente a una Variedad Diferenciable en un Punto}
-\section{Introducci\'{o}n.}
+\section{Introducción.}
 \hs Una de las ideas fundamentales en el estudio de las variedades
-diferenciables es la de {\it aproximaci\'{o}n lineal}. Esta es un
-concepto familiar cuyo origen est\'{a} en el c\'{a}lculo
-diferencial en espacios eucl\'{\i}deos, donde, por ejemplo, una
-aplicaci\'{o}n de $\R^m$ a $\R^n$ puede ser aproximada por su
-derivada total. Tambi\'{e}n es sabido que a las curvas y a las
+diferenciables es la de {\it aproximación lineal}. Esta es un
+concepto familiar cuyo origen está en el cálculo
+diferencial en espacios euclídeos, donde, por ejemplo, una
+aplicación de $\R^m$ a $\R^n$ puede ser aproximada por su
+derivada total. También es sabido que a las curvas y a las
 superficies regulares se les asocia en cada punto un espacio
-vectorial de su misma dimensi\'{o}n, formados por sus vectores
+vectorial de su misma dimensión, formados por sus vectores
 tangentes en el punto, que son vectores de $\R^3$, es decir, que
 pueden ser pensados como ``flechas" de origen el punto y, por
-tanto, tienen una clara interpretaci\'{o}n f\'{\i}sica. En el caso
-de las variedades diferenciables y debido a su definici\'{o}n
-abstracta (es decir, no existiendo el espacio eucl\'{\i}deo
-ambiente de las curvas y superficies), la situaci\'{o}n es m\'{a}s
-compleja. As\'{\i}, para que tenga sentido hablar de
-aproximaciones lineales a una variedad diferenciable, ser\'{a}
-necesario introducir la noci\'{o}n de espacio tangente a la
-variedad en un punto, que ser\'{a} una especie de ``modelo lineal"
+tanto, tienen una clara interpretación física. En el caso
+de las variedades diferenciables y debido a su definición
+abstracta (es decir, no existiendo el espacio euclídeo
+ambiente de las curvas y superficies), la situación es más
+compleja. Así, para que tenga sentido hablar de
+aproximaciones lineales a una variedad diferenciable, será
+necesario introducir la noción de espacio tangente a la
+variedad en un punto, que será una especie de ``modelo lineal"
 para la variedad ``alrededor" del punto.
 \par
-Para comprender un poco mejor el por qu\'{e} de la definici\'{o}n  de vector tangente a una variedad en un punto que se va
-a dar en esta lecci\'{o}n, es necesario recordar dos hechos. El primero de ellos es que todo vector tangente a una
+Para comprender un poco mejor el por qué de la definición  de vector tangente a una variedad en un punto que se va
+a dar en esta lección, es necesario recordar dos hechos. El primero de ellos es que todo vector tangente a una
 superficie regular en un punto es el vector tangente a una curva contenida en la superficie que pasa por el punto.
 Aunque la idea de curva diferenciable en una variedad es bastante intuitiva, no lo es tanto la de vector tangente
-a una tal curva. Puesto que la definici\'{o}n de variedad diferenciable se construye sobre la cuesti\'{o}n  de identificar
-qu\'{e} funciones son diferenciables, la propiedad de un vector tangente geom\'{e}trico m\'{a}s f\'{a}cilmente generalizable es su
-acci\'{o}n sobre funciones diferenciables. As\'{\i}, un vector tangente en un punto a una curva diferenciable contenida en
-una variedad diferenciable puede ser considerado como la derivaci\'{o}n de las funciones diferenciables en el punto
-que toma la derivada de cada funci\'{o}n a lo largo de la curva.
+a una tal curva. Puesto que la definición de variedad diferenciable se construye sobre la cuestión  de identificar
+qué funciones son diferenciables, la propiedad de un vector tangente geométrico más fácilmente generalizable es su
+acción sobre funciones diferenciables. Así, un vector tangente en un punto a una curva diferenciable contenida en
+una variedad diferenciable puede ser considerado como la derivación de las funciones diferenciables en el punto
+que toma la derivada de cada función a lo largo de la curva.
 \par
 Por otra parte, hay que observar que en $\R^m$ un vector $\underline{v}$ en un punto $p$,
 $\underline{v}=(v_1,\dots ,v_m)$ puede interpretarse como un operador de funciones diferenciables. Esto quiere
-decir que si $f$ es una funci\'{o}n diferenciable en un entorno $U$ de $p$, $f:U\subseteq\R^m\fl\R$, entonces
-$\underline{v}$ asigna a $f$ el n\'{u}mero real $\underline{v}(f)$ que es la derivada (direccional) de $f$ en la
-direcci\'{o}n de $\underline{v}$ valorada en $p$, dada por:
+decir que si $f$ es una función diferenciable en un entorno $U$ de $p$, $f:U\subseteq\R^m\fl\R$, entonces
+$\underline{v}$ asigna a $f$ el número real $\underline{v}(f)$ que es la derivada (direccional) de $f$ en la
+dirección de $\underline{v}$ valorada en $p$, dada por:
 $$\underline{v}(f)=\sum_{i=1}^mv_i\left(\ddep{f}{u_i}\right)_p\in\R.$$
-\hs Esta operaci\'{o}n satisface las siguientes dos propiedades:
+\hs Esta operación satisface las siguientes dos propiedades:
 $$\underline{v}(\lambda f+\mu g)=\lambda\underline{v}(f)+\mu\underline{v}(g),$$
 $$\underline{v}(fg)=f(p)\underline{v}(g)+g(p)\underline{v}(f),$$
-donde $f$ y $g$ son funciones diferenciables en $p$ y $\lambda$ y $\mu$ n\'{u}meros reales. La primera propiedad dice
-que $\underline{v}$ es un operador lineal ($\R$--lineal) y la segunda que es una derivaci\'{o}n. Debe hacerse notar
-que la operaci\'{o}n de derivar depende s\'{o}lo de las propiedades locales de las funciones en entornos suficientemente
+donde $f$ y $g$ son funciones diferenciables en $p$ y $\lambda$ y $\mu$ números reales. La primera propiedad dice
+que $\underline{v}$ es un operador lineal ($\R$--lineal) y la segunda que es una derivación. Debe hacerse notar
+que la operación de derivar depende sólo de las propiedades locales de las funciones en entornos suficientemente
 peque\~{n}os del punto.
 \par
-La uni\'{o}n de estos dos hechos permite obtener una definici\'{o}n general de vector tangente a una variedad en un punto.
+La unión de estos dos hechos permite obtener una definición general de vector tangente a una variedad en un punto.
 \section{Vectores Tangentes en un Punto de una Va\-rie\-dad Diferenciable.}
 \begin{defi}
-Una {\bf Curva Diferenciable} en una variedad diferenciable $M$ es una aplicaci\'{o}n diferenciable
+Una {\bf Curva Diferenciable} en una variedad diferenciable $M$ es una aplicación diferenciable
 $\a\in\mathcal{F}((a,b),M)$, donde $(a,b)$ es un intervalo abierto (degenerado o no) de la recta real.
 \end{defi}
-Recu\'{e}rdese que $\a\in\mathcal{F}((a,b),M)$ quiere decir que para toda carta $(U,\vp)$ en $M$, tal que
-$\a^{-1}(U)\neq\emptyset$, se verifica que la aplicaci\'{o}n $\vp\circ\a:\a^{-1}(U)\fl\R^m$ es diferenciable.
+Recuérdese que $\a\in\mathcal{F}((a,b),M)$ quiere decir que para toda carta $(U,\vp)$ en $M$, tal que
+$\a^{-1}(U)\neq\emptyset$, se verifica que la aplicación $\vp\circ\a:\a^{-1}(U)\fl\R^m$ es diferenciable.
 \begin{defi}
 Sea $\a\in\mathcal{F}((a,b),M)$ una curva diferenciable en $M$ y $t_0\in (a,b)$. Se llama {\bf Vector Tangente} a
-la curva $\a$ en $\a(t_0)$ a la aplicaci\'{o}n
+la curva $\a$ en $\a(t_0)$ a la aplicación
 $$\a'(t_0):\mathcal{F}(\a(t_0))\fl\R:f\mapsto\a'(t_0)f=\left.\dderi{(f\circ\a)}{t}\right|_{t_0}.$$
 \hs Una curva diferenciable $\a:(a,b)\fl M$ en una variedad diferenciable $M$ se dice {\bf Regular} si $\a'(t)\neq
 0$, para cualquier $t\in (a,b)$.
 \end{defi}
-Debe observarse que, si $f\in\mathcal{F}(\a(t_0))$, entonces $f$ est\'{a} definida en un abierto $U\subseteq M$ tal
-que $\a(t_0)\in U$. Por tanto, $f\circ\a$ est\'{a} definida en $\a^{-1}(U)$, que es abierto de $(a,b)$ (por la
-continuidad de $\a$). Adem\'{a}s, como
+Debe observarse que, si $f\in\mathcal{F}(\a(t_0))$, entonces $f$ está definida en un abierto $U\subseteq M$ tal
+que $\a(t_0)\in U$. Por tanto, $f\circ\a$ está definida en $\a^{-1}(U)$, que es abierto de $(a,b)$ (por la
+continuidad de $\a$). Además, como
 $$\a'(t_0)f=\left.\dderi{(f\circ\a)}{t}\right|_{t_0}=\lim_{t\rightarrow t_0}\frac{f(\a(t))-f(\a(t_0))}{t-t_0},$$
-el vector tangente mide la variaci\'{o}n de la velocidad sobre la curva mediante la funci\'{o}n $f$.
+el vector tangente mide la variación de la velocidad sobre la curva mediante la función $f$.
 \par
-La siguiente proposici\'{o}n, cuya demostraci\'{o}n se sigue inmediatamente de la definici\'{o}n y de las propiedades de la
+La siguiente proposición, cuya demostración se sigue inmediatamente de la definición y de las propiedades de la
 derivada usual, permite interpretar, por similitud con lo que ocurre en $\R^m$, el vector tangente a una curva en
-un punto como una derivaci\'{o}n (direccional) en dicho punto.
+un punto como una derivación (direccional) en dicho punto.
 \begin{prop}
 Sean $\a\in\esp{F}((a,b),M)$ una curva diferenciable en $M$,
 $t_0\in (a,b)$, $f,g\in\mathcal{F}(\a(t_0))$ y $\lambda,\mu\in\R$.
@@ -100,26 +100,26 @@ $$(p_1,\dots ,p_{i-1},p_i+t,p_{i+1},\dots ,p_m)\in\vp(U),$$
 con $\vert t\vert <\epsilon$, que existe ya que $\vp(U)$ es abierto. Entonces
 $$\a_i:(-\epsilon,\epsilon)\fl M:t\mapsto\vp^{-1}((p_1,\dots ,p_{i-1},p_i+t,p_{i+1},\dots ,p_m))$$
 es una curva diferenciable en $M$, con $\a_i(0)=p$ y $\a_i'(0)$ es, por tanto, un vector tangente a $M$ en $p$,
-que se denotar\'{a} por:
+que se denotará por:
 $$\left(\dep{x_i}\right)_p.$$
-\hs Esta notaci\'{o}n est\'{a} justificada porque si $f\in\mathcal{F}(p)$, se tiene que
+\hs Esta notación está justificada porque si $f\in\mathcal{F}(p)$, se tiene que
 $$(f\circ\a_i)(t)=(f\circ\vp^{-1})((p_1,\dots ,p_{i-1},p_i+t,p_{i+1},\dots ,p_m))=(f\circ\vp^{-1}\circ h_i)(t),$$
 donde $h_i:(-\epsilon,\epsilon)\fl\vp(U):t\mapsto h_i(t)=(p_1,\dots ,p_{i-1},p_i+t,p_{i+1},\dots ,p_m)$. Ahora
-bien, $h_i(0)=\vp(p)$ y, por la Regla de la Cadena en espacios eucl\'{\i}deos:
+bien, $h_i(0)=\vp(p)$ y, por la Regla de la Cadena en espacios euclídeos:
 $$\a_i'(0)f=\left.\dderi{(f\circ\a_i)}{t}\right|_{t=0}=(\nabla(f\circ\vp^{-1}))_{h_i(0)}.h'_i(0)=$$
 $$=\left(\ddep{(f\circ\vp^{-1})}{u_i}\right)_{\vp(p)}= \left(\ddep{f}{x_i}\right)_p.$$
-\hs A partir de ahora, se denotar\'{a}:
+\hs A partir de ahora, se denotará:
 $$\left(\dep{x_i}\right)_pf=\left(\ddep{f}{x_i}\right)_p,\mbox{ }i=1,\dots ,m.$$
 \hs Por las propiedades de los vectores tangentes a curvas, se deduce que todo vector tangente a $M$ en $p$ es una
-aplicaci\'{o}n $u:\mathcal{F}(p)\fl\R$, verificando:
+aplicación $u:\mathcal{F}(p)\fl\R$, verificando:
 \begin{enumerate}
-\item $u(\lambda f+\mu g)=\lambda u(f)+\mu u(g)$, $f,g\in\esp{F}(p)$, $\lambda,\mu\in\R$ (condici\'{o}n de
+\item $u(\lambda f+\mu g)=\lambda u(f)+\mu u(g)$, $f,g\in\esp{F}(p)$, $\lambda,\mu\in\R$ (condición de
 $\R$--linealidad);
-\item $u(fg)=f(p)u(g)+g(p)u(f)$, $f,g\in\esp{F}(p)$ (Condici\'{o}n de Leibnitz);
+\item $u(fg)=f(p)u(g)+g(p)u(f)$, $f,g\in\esp{F}(p)$ (Condición de Leibnitz);
 \item $u(f)=u(g)$, si $f,g\in\mathcal{F}(p)$ coinciden en un entorno de $p$.
 \end{enumerate}
 \hs Si se denota por $T_p(M)$ al conjunto de las aplicaciones $u:\mathcal{F}(p)\fl\R$ que son $\R$--lineales y que
-satisfacen la Condici\'{o}n de Leibnitz, se puede probar que dicho conjunto es, realmente, el espacio tangente a $M$
+satisfacen la Condición de Leibnitz, se puede probar que dicho conjunto es, realmente, el espacio tangente a $M$
 en $p$.
 \begin{lemma}
 Sean $M$ una variedad diferenciable, $p\in M$, $f\in\esp{F}(p)$ y $(U,\vp=(x_1,\dots ,x_m))$ un s.l.c. entorno de
@@ -129,18 +129,18 @@ donde $f_i\in\esp{F}(p)$ y $f_i(p)=\left(\ddep{f}{x_i}\right)_p$.
 \end{lemma}
 \begin{lemma} Sean $M$ una variedad diferenciable, $p\in M$ y $u\in T_p(M)$.
 \begin{enumerate}
-\item Si ${\bf c}\in\esp{F}(M)$ es la funci\'{o}n constante dada por ${\bf c}(q)=c$ para todo $q\in M$ y $c\in\R$,
+\item Si ${\bf c}\in\esp{F}(M)$ es la función constante dada por ${\bf c}(q)=c$ para todo $q\in M$ y $c\in\R$,
 entonces, se verifica que $u({\bf c})=0$.
 \item Si $f\in\mathcal{F}(p)$ se anula en un entorno de $p$, entonces $u(f)=0$.
 \item Si $f,g\in\mathcal{F}(p)$ coinciden en un entorno de $p$, entonces $u(f)=u(g)$.
 \end{enumerate}
 \end{lemma}
-Sea ahora un s.l.c. $(U,\vp=(x_1,\dots ,x_m))$ entorno de $p$. Dados $u\in T_p(M)$ y cualquier funci\'{o}n
+Sea ahora un s.l.c. $(U,\vp=(x_1,\dots ,x_m))$ entorno de $p$. Dados $u\in T_p(M)$ y cualquier función
 $f\in\mathcal{F}(p)$, en virtud de los lemas anteriores se tiene que:
 $$u=\sum_{i=1}^mu(x_i)\left(\dep{x_i}\right)_p.$$
 \hs En particular, si $\a:(a,b)\fl M$ es una curva sobre $M$ con $\a(t_0)=p$, como $\a'(t_0)\in T_p(M)$:
 $$\a'(t_0)=\sum_{i=1}^m\a'(t_0)x_i\left(\dep{x_i}\right)_p=
-\left.\sum_{i=1}^m\dderi{(x_i\circ\a)}{t}\right|_{t_0}\left(\dep{x_i}\right)_p.$$ \hs Usando esta expresi\'{o}n, puede
+\left.\sum_{i=1}^m\dderi{(x_i\circ\a)}{t}\right|_{t_0}\left(\dep{x_i}\right)_p.$$ \hs Usando esta expresión, puede
 deducirse que, dado $u\in T_p(M)$ y considerando la curva diferenciable en $M$,
 $$\a:(-\epsilon,\epsilon)\fl M:t\mapsto \vp^{-1}((p_1+tu(x_1),\dots ,p_m+tu(x_m))),$$
 para cierto $\epsilon>0$ que existe por la continuidad de $\vp$, donde $(p_1,\dots ,p_m)=\vp(p)$, se verifica que
@@ -148,31 +148,31 @@ $\a(0)=p$ y $\a'(0)=u$.
 \begin{teorema}
 El conjunto de los vectores tangentes a una variedad diferenciable $M$ en un punto $p$ es $T_p(M)$, es decir, los
 vectores tangentes a $M$ en $p$ son las aplicaciones $\R$-lineales de dominio $\mathcal{F}(p)$ con valores reales
-que verifican la Condici\'{o}n de Leibnitz.
+que verifican la Condición de Leibnitz.
 \end{teorema}
 Ahora, en el conjunto de las curvas diferenciables en $M$ que pasan por $p$ y que se denota por $\esp{C}(p)$, se
-puede definir una relaci\'{o}n de equivalencia $\esp{R}$ por: $\a\esp{R}\b$ si y s\'{o}lo si $\a$ y $\b$ tienen el mismo
+puede definir una relación de equivalencia $\esp{R}$ por: $\a\esp{R}\b$ si y sólo si $\a$ y $\b$ tienen el mismo
 vector tangente en $p$.
 \begin{prop}
-Los conjuntos $\esp{C}(p)/\esp{R}$ y $T_p(M)$ est\'{a}n en correspondencia biyectiva.
+Los conjuntos $\esp{C}(p)/\esp{R}$ y $T_p(M)$ están en correspondencia biyectiva.
 \end{prop}
 De forma natural se definen en $T_p(M)$ la suma y producto por
-n\'{u}meros reales que lo convierten en un espacio vectorial real.
-A continuaci\'{o}n se va a encontrar una base (y, por tanto, a
-saber la dimensi\'{o}n) de este espacio vectorial. Para ello, la
-expresi\'{o}n anterior de $\a'(t_0)$ indica el camino a seguir.
+números reales que lo convierten en un espacio vectorial real.
+A continuación se va a encontrar una base (y, por tanto, a
+saber la dimensión) de este espacio vectorial. Para ello, la
+expresión anterior de $\a'(t_0)$ indica el camino a seguir.
 \begin{teorema}
 Dado un punto $p$ de una variedad diferenciable $M$ y una carta local $(U,\vp=(x_1,\dots ,x_m))$ entorno de $p$,
 los vectores tangentes
 $$\left(\dep{x_i}\right)_p,\mbox{ }i=1,\dots ,m,$$
 forman una base de $T_p(M)$, con lo que ${\rm dim}(T_p(M))=m$.
 \end{teorema}
-Como consecuencia, se obtiene que hay tantas bases de $T_p(M)$ como cartas locales entorno de $p$. Adem\'{a}s, si
+Como consecuencia, se obtiene que hay tantas bases de $T_p(M)$ como cartas locales entorno de $p$. Además, si
 $(U,\vp=(x_1,\dots ,x_m))$ y $(V,\psi=(y_1,\dots ,y_m))$ son dos de tales cartas, entonces el cambio de bases
 viene dado por:
 $$\left( \dep{y_j}\right)_p=\sum_{i=1}^m\left(\ddep{x_i}{y_j}\right)_p\left( \dep{x_i}\right)_p.$$
-\hs Debe observarse que la matriz de cambio de bases es, realmente, la matriz jacobiana de la aplicaci\'{o}n de
-transici\'{o}n $\vp\circ\psi^{-1}$ en $\psi(p)$, pues:
+\hs Debe observarse que la matriz de cambio de bases es, realmente, la matriz jacobiana de la aplicación de
+transición $\vp\circ\psi^{-1}$ en $\psi(p)$, pues:
 $$\left(\ddep{x_i}{y_j}\right)_p=\left(\ddep{(u_i\circ\vp\circ\psi^{-1})}{u_j}\right)_{\psi(p)}.$$
 \section{Espacio Cotangente.}
 \begin{defi}
@@ -180,20 +180,20 @@ Dado un punto $p$ de una variedad diferenciable $M$, se llama {\bf Espacio Cotan
 vectorial dual del espacio tangente a $M$ en $p$, que se denota por $T_p^*(M)$ y a cuyos elementos se llaman {\bf
 Covectores} en $p$.
 \end{defi}
-Recu\'{e}rdese que $T_p^*(M)=\{u^*:T_p(M)\fl\R /u^* {\rm es}\mbox{ }{\rm lineal}\}$.
+Recuérdese que $T_p^*(M)=\{u^*:T_p(M)\fl\R /u^* {\rm es}\mbox{ }{\rm lineal}\}$.
 \begin{defi}
-Sea $f\in\esp{F}(p)$. Se llama {\bf Diferencial} de $f$ en $p$ a la funci\'{o}n $(\dif f)_p:T_p(M)\fl\R$ tal que
+Sea $f\in\esp{F}(p)$. Se llama {\bf Diferencial} de $f$ en $p$ a la función $(\dif f)_p:T_p(M)\fl\R$ tal que
 $(\dif f)_pu=u(f)$, para cualquier vector $u\in T_p(M)$.
 \end{defi}
 \begin{prop}
 Dada $f\in\esp{F}(p)$, entonces $(\dif f)_p\in T_p^*(M)$.
 \end{prop}
-Dado $(U,\vp=(x_1,\dots ,x_m))$ un s.l.c. entorno de $p$, en virtud de la proposici\'{o}n anterior se tiene que
-$(\de{x_i})_p\in T_p^*(M)$, para cualquier $i=1,\dots ,m$. Adem\'{a}s, se puede comprobar f\'{a}cilmente que
+Dado $(U,\vp=(x_1,\dots ,x_m))$ un s.l.c. entorno de $p$, en virtud de la proposición anterior se tiene que
+$(\de{x_i})_p\in T_p^*(M)$, para cualquier $i=1,\dots ,m$. Además, se puede comprobar fácilmente que
 $\{(\de{x_i})_p\}_{i=1,\dots ,m}$ es una base de $T_p^*(M)$, dual de la base
 $\{\left(\dep{x_i}\right)_p\}_{i=1,\dots ,m}$ de $T_p(M)$.
 \begin{prop}
-Todo covector en $p$ es la diferencial de alguna funci\'{o}n diferenciable en $p$.
+Todo covector en $p$ es la diferencial de alguna función diferenciable en $p$.
 \end{prop}
 
 \newpage
@@ -216,13 +216,13 @@ entorno de $p$.
 \item Sean $M$ una variedad diferenciable, $p \in M$ y
 $\alpha:I\longrightarrow M$ una curva diferenciable pasando por
 $p$ (es decir, se puede suponer que $0 \in I$ y que $\alpha(0) =
-p$). Si $\alpha'(0) = 0$, probar que la aplicaci\'{o}n $$L:{\cal
+p$). Si $\alpha'(0) = 0$, probar que la aplicación $$L:{\cal
 F}(p) \longrightarrow \R:f \longmapsto L(f) = \left.
 \frac{d^2(f \circ \alpha)}{dt^2} \right |_{t=0}$$ define un vector
 tangente a $M$ en $p$. \item Sean $M$ una variedad diferenciable,
 $p\in M$ y $(U,\vp=(x_1,\dots ,x_m))$ un s.l.c. entorno de $p$.
 Dado cualquier covector $\om\in T_p^*(M)$, calcular su
-expresi\'{o}n en funci\'{o}n de la base $\{(\de x_i)_p/i=1,\dots
+expresión en función de la base $\{(\de x_i)_p/i=1,\dots
 ,m\}$.
 \end{enumerate}
 \end{document}

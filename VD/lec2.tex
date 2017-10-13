@@ -5,28 +5,45 @@
 \chapter{Aplicaciones Diferenciables entre Variedades Diferenciables}
 \section{Aplicaciones Diferenciables.}
 \begin{defi}
-Sean $M$ y $N$ dos variedades diferenciables y $G\subseteq M$ un abierto. Una aplicaci\'{o}n continua $f:G\fl N$ , se
+Sean $M$ y $N$ dos variedades diferenciables y $G\subseteq M$ un abierto. Una aplicación continua $f:G\fl N$ , se
 dice {\bf Diferenciable en un punto} $p\in G$ si existe una carta local $(U,\vp)$ en $M$ entorno de $p$ y existe
 una carta local $(V,\psi)$ en $N$ entorno de $f(p)$ tales que
 $$\psi\circ f\circ\vp^{-1}:\vp(G\cap U\cap f^{-1}(V))\fl\psi f(G\cap U\cap f^{-1}(V))$$
-es diferenciable en un entorno de $\vp(p)$ contenido en $\vp(G\cap U\cap f^{-1}(V))$. La aplicaci\'{o}n $f$ se dice
+es diferenciable en un entorno de $\vp(p)$ contenido en $\vp(G\cap U\cap f^{-1}(V))$. La aplicación $f$ se dice
 diferenciable en $G$ si es diferenciable en todos los puntos de $G$.
 \end{defi}
 \begin{prop}
-La definici\'{o}n anterior no depende de las cartas elegidas entornos de $p$ y $f(p)$, respectivamente.
+La definición anterior no depende de las cartas elegidas entornos de $p$ y $f(p)$, respectivamente.
 \end{prop}
-Obs\'{e}rvese que, por definici\'{o}n, toda aplicaci\'{o}n
+\begin{dem}
+Sean $(\tilde{U},\tilde{φ})$ y $(\tilde{V},\tilde{ψ})$ cartas locales en $M$ y $N$ respectivamente con $p \in \tilde{U}$ y $f(p) \in \tilde{V}$. Si tomamos $\tilde{W} = \tilde{φ}(φ^{-1}(W) \cap \tilde{U} \cap f^{-1}(\tilde{V}))$, donde $W$ es un entorno de $φ(P)$. En $\tilde{W}$:
+\[ \tilde{ψ} \circ f \circ \tilde{φ}^{-1} = (\tilde{ψ}\circ φ^{-1}) \circ (ψ \circ f \circ φ^{-1}) \circ (φ \circ \tilde{φ}^{-1}) \]
+Como $\tilde{ψ} \circ φ^{-1}$ y $φ \circ \tilde{φ}^{-1}$ son cambios de cartas y $ψ \circ f \circ φ^{-1}$ es diferenciable en $φ(P)$, entonces $\tilde{ψ} \circ f \circ \tilde{φ}^{-1}$ es diferenciable.
+\end{dem}
+Obsérvese que, por definición, toda aplicación
 diferenciable es continua. Al conjunto de las aplicaciones
 continuas de $G$ en $N$ y diferenciables en $G$ se denota por
 $\esp{F}(G,N)$. En particular, si $G=M$, se tiene el conjunto
 $\esp{F}(M,N)$ de las aplicaciones diferenciables de todo $M$ en
 $N$.
 \begin{prop}
-Una aplicaci\'{o}n continua $f:M\fl N$ pertenece a $\esp{F}(M,N)$ si y s\'{o}lo si para cualesquiera cartas locales
+Una aplicación continua $f:M\fl N$ pertenece a $\esp{F}(M,N)$ si y sólo si para cualesquiera cartas locales
 $(U,\vp)$ en $M$ y $(V,\psi)$ en $N$ tales que $U\cap f^{-1}(V)\neq\emptyset$ se tiene que:
 $$\psi\circ f\circ\vp^{-1}:\vp(U\cap f^{-1}(V))\fl\psi f(U\cap f^{-1}(V))$$
 es diferenciable.
 \end{prop}
+\begin{dem}\mbox{}
+\begin{itemize}
+	\item[($\Rightarrow$)] Supongamos que $f \in \esp{F}(M,N)$. Sean $(U,φ)$ y $(V,ψ)$ cartas locales de $M$ y $N$ respectivamente tal que $U \cap f^{-1}(V) \neq 0$. Sea $q \in φ(U \cap f^{-1}(V))$ cualquiera. Entones existe $p \in U \cap f^{-1}(U)$ con $φ(p)=q$. Luego $p \in U$ y $f(p) \in V$. Utilizando que la definición no depende de las cartas, $ψ \circ f \circ φ^{-1}$ es diferenciable en un entorno $W$ de $φ(p)=q$. Luego $ψ \circ f \circ φ^{-1}$ es diferenciable en $q$.
+	\item[($\Leftarrow$)] Sea $(U,φ)$ una carta en $M$ tal que $p \in U$ y $(V,ψ)$ una carta en $N$ tal que $f(p) \in V$. Como $p \in f^{-1}(V)$, entonces $p \in U \cap f^{-1}(V)$. Luego $U \cap f^{-1}(V) \neq \emptyset$. Por hipótesis, $ψ \circ f \circ φ^{-1}$ es diferenciable en $φ(U \cap f^{-1}(V))$.
+\end{itemize}
+\begin{coro} Sea $f : G \subseteq M \to N$ continua. $f \in \esp{F}(G,N)$ si y sólo si para toda carta $(U,φ)$ en $M$ y toda carta $(V,ψ)$ en $N$ tal que  $G \cap U \cap f^{-1}(V) \neq \emptyset$, $ψ \circ f \circ φ^{-1}$ es diferenciable en $φ(G \cap U \cap f^{-1}(V))$.
+\end{coro}
+\begin{coro} Sea $f : M \to \R$ continua. $f \in \esp{F}(M)$ si y sólo si para toda carta $(U,φ)$ en $M$, $f \circ φ^{-1}$ es diferenciable en $φ(U)$.
+\end{coro}
+\begin{coro} Sea $f : G \subseteq M \to \R$ continua con $G$ abierto. $f \in \esp{F}(G)$ si y sólo si para toda carta $(U,φ)$ en $M$ tal que $G \cap U \neq \emptyset$, $f \circ φ^{-1}$ es diferenciable en $φ(G \cap U)$.
+\end{coro}
+\end{dem}
 Hagamos notar c\'omo la aplicaci\'on de la proposici\'on anterior es la que ``va por debajo" en el siguiente diagrama conmutativo:
 \[
 \begin{tikzcd}
@@ -38,23 +55,19 @@ Hagamos notar c\'omo la aplicaci\'on de la proposici\'on anterior es la que ``va
 
 \
 
-\begin{defi} Una aplicaci\'{o}n biyectiva $f\in\esp{F}(M,N)$ se dice que es un {\bf Difeomorfismo} si
+\begin{defi} Una aplicación biyectiva $f\in\esp{F}(M,N)$ se dice que es un {\bf Difeomorfismo} si
 $f^{-1}\in\esp{F}(N,M)$. Dos variedades diferenciables se dicen
 {\bf Difeomorfas} si existe un difeomorfismo entre ambas.
 \end{defi}
 Cuando la variedad $N$ es $\R$ con su estructura eucl\'{\i}dea, las aplicaciones de $M$ en $\R$ se suelen llamar
-funciones. As\'{\i}, a una funci\'{o}n continua $f:G\fl\R$, si es diferenciable (en el sentido de la Definici\'{o}n 2.1.1) en
-un punto $p\in M$, se llama {\bf Funci\'{o}n Diferenciable en $p$} y al conjunto de tales funciones se denota por
-$\esp{F}(p)$ y si es diferenciable en todo $G$ (que podr\'{\i}a ser el propio $M$), se llama {\bf Funci\'{o}n Diferenciable
-en $G$} y el conjunto de tales funciones se denota por $\esp{F}(G)$, verific\'{a}ndose que:
+funciones. As\'{\i}, a una función continua $f:G\fl\R$, si es diferenciable (en el sentido de la Definición 2.1.1) en
+un punto $p\in M$, se llama {\bf Función Diferenciable en $p$} y al conjunto de tales funciones se denota por
+$\esp{F}(p)$ y si es diferenciable en todo $G$ (que podr\'{\i}a ser el propio $M$), se llama {\bf Función Diferenciable
+en $G$} y el conjunto de tales funciones se denota por $\esp{F}(G)$, verificándose que:
 $$\esp{F}(G)=\bigcap_{p\in G}\esp{F}(p).$$
 \begin{prop}
-Dado un abierto $G\subseteq M$, una aplicaci\'{o}n continua $f:G\fl\R$ es diferenciable en $G$ si y s\'{o}lo si para toda
-carta local $(U,\vp)$ de $M$, tal que $U\cap G\neq\emptyset$, $f\circ\vp^{-1}:\vp(U\cap G)\fl\R$ es diferenciable.
-\end{prop}
-\begin{prop}
-Dado $G\subseteq M$ abierto, $\esp{F}(G)$ es un \'{a}lgebra asociativa, conmutativa y con elemento unidad para las
-operaciones suma y producto de funciones y producto por n\'{u}meros reales.
+Dado $G\subseteq M$ abierto, $\esp{F}(G)$ es un álgebra asociativa, conmutativa y con elemento unidad para las
+operaciones suma y producto de funciones y producto por números reales.
 \end{prop}
 \begin{ejs}
 {\rm Sea $(U,\vp=(x_1,\dots ,x_m))$ un s.l.c. Entonces:
@@ -62,38 +75,41 @@ operaciones suma y producto de funciones y producto por n\'{u}meros reales.
 \item $x_i\in\esp{F}(U)$, para todo $i=1,\dots ,m$.
 \item Sea $f\in\esp{F}(U)$. Dado cualquier $i=1,\dots ,m$ se define:
 $$\ddep{f}{x_i}:p\in U\longmapsto \left(\ddep{f}{x_i}\right)_p=\left(\ddep{(f\circ\vp^{-1})}{u_i}\right)_{\vp(p)}\in\R.$$
-\hs Se cumple que $\displaystyle{\ddep{f}{x_i}}\in\esp{F}(U)$, $i=1,\dots ,m$.
+\hs Veamos que $\displaystyle{\ddep{f}{x_i}}\in\esp{F}(U)$, $i=1,\dots ,m$. Sea $(V,ψ)$ una carta cualquiera en $M$ tal que $U \cap V \neq \emptyset$. Basta ver que $\displaystyle{\ddep{f}{x_i}}\circ ψ^{-1}$ es diferenciable en $φ(U \cap V)$:
+\[ \ddep{f}{x_i} \circ ψ^{-1} (q) = \left(\ddep{f}{x_i}\right)_{φ^{-1}(q)} = \left.\ddep{(f \circ φ^{-1})}{u_i}\right|_{φ(ψ^{-1}(q))} \]
+Luego
+\[ \ddep{f}{x_i} \circ ψ^{-1} = \ddep{(f \circ φ^{-1})}{u_i} \circ (φ \circ ψ^{-1}) \in C^{\infty} \]
 \end{enumerate}}
 \end{ejs}
 \begin{prop}
-{\bf (Lema de Extensi\'{o}n de Funciones Diferenciables).} Sea $h\in\esp{F}(G)$, donde $G$ es un abierto conteniendo a
-$p\in M$. Entonces, existen un entorno abierto $V$ de $p$, con $\overline{V}\subseteq G$ y una funci\'{o}n
+{\bf (Lema de Extensión de Funciones Diferenciables).} Sea $h\in\esp{F}(G)$, donde $G$ es un abierto conteniendo a
+$p\in M$. Entonces, existen un entorno abierto $V$ de $p$, con $\overline{V}\subseteq G$ y una función
 $f\in\esp{F}(M)$ tales que $f\equiv h$ en $V$ y $f\equiv 0$ en $M-G$.
 \end{prop}
 \begin{teorema}
-Una aplicaci\'{o}n continua $f\in\esp{F}(M,N)$ si y s\'{o}lo si
-para toda funci\'{o}n $g\in\esp{F}(N)$, $g\circ f\in\esp{F}(M)$.
+Una aplicación continua $f\in\esp{F}(M,N)$ si y sólo si
+para toda función $g\in\esp{F}(N)$, $g\circ f\in\esp{F}(M)$.
 \end{teorema}
 \section{Ejercicios.}
 \begin{enumerate}
 \item Sean $M$ y $N$ dos variedades diferenciables y $G\subseteq M$ un abierto.
 \begin{enumerate}
 \item Si $f\in\esp{F}(G,N)$ y $H\subseteq G$ es un abierto, probar que $f|_H\in\esp{F}(H,N)$.
-\item Si $f:G\fl N$ es una aplicaci\'{o}n y $\{G_i\}_{i\in I}$ es un recubrimiento por abiertos de $G$ (es decir,
+\item Si $f:G\fl N$ es una aplicación y $\{G_i\}_{i\in I}$ es un recubrimiento por abiertos de $G$ (es decir,
 $G=\bigcup_{i\in I}G_i$) tal que $f|_{G_i}\in\esp{F}(G_i,N)$, para todo $i\in I$, probar que $f\in\esp{F}(G,N)$.
 \end{enumerate}
 \item Sean $M$ una variedad diferenciable y $G\subseteq M$ un
-abierto. Probar que la aplicaci\'{o}n inclusi\'{o}n
+abierto. Probar que la aplicación inclusión
 $i:G\hookrightarrow M$ es diferenciable. \item Probar que la
-composici\'{o}n de aplicaciones diferenciables es una
-aplicaci\'{o}n diferenciable. \item Probar que la aplicaci\'{o}n
+composición de aplicaciones diferenciables es una
+aplicación diferenciable. \item Probar que la aplicación
 identidad entre una variedad diferenciable y ella misma es un
 difeomorfismo. \item Sean $(M,\esp{A}_1)$ y $(M,\esp{A}_2)$ dos
-variedades diferenciables. ?`Bajo qu\'{e} condiciones es ${\rm
-Id}: (M,\esp{A}_1)\fl (M,\esp{A}_2)$ una aplicaci\'{o}n
-diferenciable? ?`Cu\'{a}ndo es un difeomorfismo? \item Probar que
-cualquier aplicaci\'{o}n constante es diferenciable. %\item Probar
+variedades diferenciables. ?`Bajo qué condiciones es ${\rm
+Id}: (M,\esp{A}_1)\fl (M,\esp{A}_2)$ una aplicación
+diferenciable? ?`Cuándo es un difeomorfismo? \item Probar que
+cualquier aplicación constante es diferenciable. %\item Probar
 %que si dos variedades diferenciables son difeomorfas, entonces
-%tienen la misma dimensi\'{o}n.
+%tienen la misma dimensión.
 \end{enumerate}
 \end{document}
