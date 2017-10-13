@@ -15,6 +15,11 @@ diferenciable en $G$ si es diferenciable en todos los puntos de $G$.
 \begin{prop}
 La definición anterior no depende de las cartas elegidas entornos de $p$ y $f(p)$, respectivamente.
 \end{prop}
+\begin{dem}
+Sean $(\tilde{U},\tilde{φ})$ y $(\tilde{V},\tilde{ψ})$ cartas locales en $M$ y $N$ respectivamente con $p \in \tilde{U}$ y $f(p) \in \tilde{V}$. Si tomamos $\tilde{W} = \tilde{φ}(φ^{-1}(W) \cap \tilde{U} \cap f^{-1}(\tilde{V}))$, donde $W$ es un entorno de $φ(P)$. En $\tilde{W}$:
+\[ \tilde{ψ} \circ f \circ \tilde{φ}^{-1} = (\tilde{ψ}\circ φ^{-1}) \circ (ψ \circ f \circ φ^{-1}) \circ (φ \circ \tilde{φ}^{-1}) \]
+Como $\tilde{ψ} \circ φ^{-1}$ y $φ \circ \tilde{φ}^{-1}$ son cambios de cartas y $ψ \circ f \circ φ^{-1}$ es diferenciable en $φ(P)$, entonces $\tilde{ψ} \circ f \circ \tilde{φ}^{-1}$ es diferenciable.
+\end{dem}
 Obsérvese que, por definición, toda aplicación
 diferenciable es continua. Al conjunto de las aplicaciones
 continuas de $G$ en $N$ y diferenciables en $G$ se denota por
@@ -27,6 +32,18 @@ $(U,\vp)$ en $M$ y $(V,\psi)$ en $N$ tales que $U\cap f^{-1}(V)\neq\emptyset$ se
 $$\psi\circ f\circ\vp^{-1}:\vp(U\cap f^{-1}(V))\fl\psi f(U\cap f^{-1}(V))$$
 es diferenciable.
 \end{prop}
+\begin{dem}\mbox{}
+\begin{itemize}
+	\item[($\Rightarrow$)] Supongamos que $f \in \esp{F}(M,N)$. Sean $(U,φ)$ y $(V,ψ)$ cartas locales de $M$ y $N$ respectivamente tal que $U \cap f^{-1}(V) \neq 0$. Sea $q \in φ(U \cap f^{-1}(V))$ cualquiera. Entones existe $p \in U \cap f^{-1}(U)$ con $φ(p)=q$. Luego $p \in U$ y $f(p) \in V$. Utilizando que la definición no depende de las cartas, $ψ \circ f \circ φ^{-1}$ es diferenciable en un entorno $W$ de $φ(p)=q$. Luego $ψ \circ f \circ φ^{-1}$ es diferenciable en $q$.
+	\item[($\Leftarrow$)] Sea $(U,φ)$ una carta en $M$ tal que $p \in U$ y $(V,ψ)$ una carta en $N$ tal que $f(p) \in V$. Como $p \in f^{-1}(V)$, entonces $p \in U \cap f^{-1}(V)$. Luego $U \cap f^{-1}(V) \neq \emptyset$. Por hipótesis, $ψ \circ f \circ φ^{-1}$ es diferenciable en $φ(U \cap f^{-1}(V))$.
+\end{itemize}
+\begin{coro} Sea $f : G \subseteq M \to N$ continua. $f \in \esp{F}(G,N)$ si y sólo si para toda carta $(U,φ)$ en $M$ y toda carta $(V,ψ)$ en $N$ tal que  $G \cap U \cap f^{-1}(V) \neq \emptyset$, $ψ \circ f \circ φ^{-1}$ es diferenciable en $φ(G \cap U \cap f^{-1}(V))$.
+\end{coro}
+\begin{coro} Sea $f : M \to \R$ continua. $f \in \esp{F}(M)$ si y sólo si para toda carta $(U,φ)$ en $M$, $f \circ φ^{-1}$ es diferenciable en $φ(U)$.
+\end{coro}
+\begin{coro} Sea $f : G \subseteq M \to \R$ continua con $G$ abierto. $f \in \esp{F}(G)$ si y sólo si para toda carta $(U,φ)$ en $M$ tal que $G \cap U \neq \emptyset$, $f \circ φ^{-1}$ es diferenciable en $φ(G \cap U)$.
+\end{coro}
+\end{dem}
 Hagamos notar c\'omo la aplicaci\'on de la proposici\'on anterior es la que ``va por debajo" en el siguiente diagrama conmutativo:
 \[
 \begin{tikzcd}
@@ -42,16 +59,12 @@ Hagamos notar c\'omo la aplicaci\'on de la proposici\'on anterior es la que ``va
 $f^{-1}\in\esp{F}(N,M)$. Dos variedades diferenciables se dicen
 {\bf Difeomorfas} si existe un difeomorfismo entre ambas.
 \end{defi}
-Cuando la variedad $N$ es $\R$ con su estructura euclídea, las aplicaciones de $M$ en $\R$ se suelen llamar
-funciones. Así, a una función continua $f:G\fl\R$, si es diferenciable (en el sentido de la Definición 2.1.1) en
+Cuando la variedad $N$ es $\R$ con su estructura eucl\'{\i}dea, las aplicaciones de $M$ en $\R$ se suelen llamar
+funciones. As\'{\i}, a una función continua $f:G\fl\R$, si es diferenciable (en el sentido de la Definición 2.1.1) en
 un punto $p\in M$, se llama {\bf Función Diferenciable en $p$} y al conjunto de tales funciones se denota por
-$\esp{F}(p)$ y si es diferenciable en todo $G$ (que podría ser el propio $M$), se llama {\bf Función Diferenciable
+$\esp{F}(p)$ y si es diferenciable en todo $G$ (que podr\'{\i}a ser el propio $M$), se llama {\bf Función Diferenciable
 en $G$} y el conjunto de tales funciones se denota por $\esp{F}(G)$, verificándose que:
 $$\esp{F}(G)=\bigcap_{p\in G}\esp{F}(p).$$
-\begin{prop}
-Dado un abierto $G\subseteq M$, una aplicación continua $f:G\fl\R$ es diferenciable en $G$ si y sólo si para toda
-carta local $(U,\vp)$ de $M$, tal que $U\cap G\neq\emptyset$, $f\circ\vp^{-1}:\vp(U\cap G)\fl\R$ es diferenciable.
-\end{prop}
 \begin{prop}
 Dado $G\subseteq M$ abierto, $\esp{F}(G)$ es un álgebra asociativa, conmutativa y con elemento unidad para las
 operaciones suma y producto de funciones y producto por números reales.
@@ -62,7 +75,10 @@ operaciones suma y producto de funciones y producto por números reales.
 \item $x_i\in\esp{F}(U)$, para todo $i=1,\dots ,m$.
 \item Sea $f\in\esp{F}(U)$. Dado cualquier $i=1,\dots ,m$ se define:
 $$\ddep{f}{x_i}:p\in U\longmapsto \left(\ddep{f}{x_i}\right)_p=\left(\ddep{(f\circ\vp^{-1})}{u_i}\right)_{\vp(p)}\in\R.$$
-\hs Se cumple que $\displaystyle{\ddep{f}{x_i}}\in\esp{F}(U)$, $i=1,\dots ,m$.
+\hs Veamos que $\displaystyle{\ddep{f}{x_i}}\in\esp{F}(U)$, $i=1,\dots ,m$. Sea $(V,ψ)$ una carta cualquiera en $M$ tal que $U \cap V \neq \emptyset$. Basta ver que $\displaystyle{\ddep{f}{x_i}}\circ ψ^{-1}$ es diferenciable en $φ(U \cap V)$:
+\[ \ddep{f}{x_i} \circ ψ^{-1} (q) = \left(\ddep{f}{x_i}\right)_{φ^{-1}(q)} = \left.\ddep{(f \circ φ^{-1})}{u_i}\right|_{φ(ψ^{-1}(q))} \]
+Luego
+\[ \ddep{f}{x_i} \circ ψ^{-1} = \ddep{(f \circ φ^{-1})}{u_i} \circ (φ \circ ψ^{-1}) \in C^{\infty} \]
 \end{enumerate}}
 \end{ejs}
 \begin{prop}
