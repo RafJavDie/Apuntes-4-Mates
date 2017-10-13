@@ -1,0 +1,201 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\A}{{\mathcal{A}}}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Problemas de Variedades Diferenciables - Tema 1}
+\author{Javi, Rafa, Diego}
+\maketitle
+
+
+
+\begin{ejercicio}{1}\label{1}
+En $\R^{n+1}-\{0\}$ se considera la relación de equivalencia:
+$$x\sim y\Leftrightarrow\exists\lambda\neq 0\text{ tal que } x=\lambda y.$$
+Al espacio cociente $\R^{n+1}-\{0\}/\sim$ se le denota por $\mathbb{P}^n(\R)$ y se le llama
+\emph{Espacio Proyectivo Real n-dimensional}. Dotarlo de estructura de variedad diferencial.
+\end{ejercicio}
+\begin{solucion}
+Se dota a $\mathbb{P}^n(\R)$ de la topología cociente. La aplicación cociente $\pi$ es abierta. Sea $H\subseteq\R^{n+1}-\{0\}$ abierto, entonces $\pi^{-1}(\pi(H))$ es un cono abierto que contiene a $H$. Veamos que el espacio proyectivo es $T_2$. Sean $p\neq q$ en el proyectivo. Entonces existen $x,y\in\R^{n+1}-\{0\}$ tales que $p=[x]$ y $q=[y]$, de modo que $x\not\sim y$. Sean $r\neq s$ rectas por el origen tales que $x\in r, y\in s$. Llamamos $\theta\neq 0$ al ángulo que forman las dos rectas. Construimos el cono abierto $C_1$ de eje $r$ y ángulo $\frac{\theta}{4}$ y $C_2$ de eje $s$ y el mismo ángulo. La imagen de estos conos en el cociente son abiertos disjuntos que contienen respectivamente a $p$ y $q$, y cuya preimagen es de nuevo dichos conos. 
+
+Vamos a probar ahora que es $2º$ numerable. Sea $\mathcal{B}$ una base numerable de abiertos de $\R^{n+1}-\{0\}$. Tomamos $\mathcal{B}_\pi=\{\pi(B)\mid B\in\mathcal{B}\}$ y vamos a probar que esta es una base numerable de abiertos del proyectivo. Es trivialmente numerable, ya que como mucho hay la misma cantidad de conjuntos que en $\mathcal{B}$. También es trivial que son abiertos porque $\pi$ es abierta. Sea $p\in G$ abierto proyectivo.  Entonces $p=[x]$ para algún $x\in\pi^{-1}(G)$, que es abierto. Por tanto, existe $B\in\mathcal{B}$ tal que $x\in B\subseteq\pi^{-1}(G)$. Aplicando $\pi$, $\pi(x)\in\pi(B)\subseteq\pi(\pi^{-1}(G))=G$ (por ser sobreyectiva). 
+
+Sea $\mathcal{A}=\{(U_i,\varphi_i)\}_{i=1,\dots,n+1}$ con $U_i=\{[(x_1,\dots,x_n)]\mid x_i\neq 0\}\subseteq\mathbb{P}^n(\R)$ y 
+\begin{gather*}
+\varphi_i : U_i\longrightarrow\R^n\\
+[(\xn{n})]\mapsto\frac{(\xn{n})}{x_i}\text{quitarle el i-esimo}
+\end{gather*}
+Vamos a probar que es un atlas, así que primero veamos que sus elementos son cartas. Sea $U_i$ y veamos que es abierto. $\pi^{-1}(U_i)=\{(\xn{n})\mid x_i\neq 0\}\subseteq\R^{n+1}-\{0\}$. Se tiene que $\varphi_i(U_i)=\R^n$, pues para cada todo punto real se puede dar $x_i$ tal que $(u_1,\dots,u_n)=(x_i\frac{u_1}{x_i},\dots, x_i\frac{u_n}{x_i})=\varphi([u_1,\dots, x_i,\dots,u_n])$.
+
+Nos queda probar que $\varphi_i$ es homeomorfismo. Antes de nada debemos probar que está bien definida, lo cual es trivial porque si tomamos otro representante, habrá un escalar que se cancelará al dividir. Veamos ahora que es biyectiva. Para ello definimos su inversa $\varphi^{-1}(u_1,\dots,u_n)=[u_1,\dots,1,\dots,u_n]$. Las dos composiciones son claramente la identidad correspondiente. A continuación probamos que $\varphi_i$ es continua. Sea $H\subseteq\R^n$ abierto. Si $\varphi^{-1}(H)$ es abierto en el proyectivo, también lo es en la topología relativa a $U_i$. $\pi^{-1}\varphi_i^{-1}(H)=(\varphi_i\circ\pi)^{-1}(H)$. La aplicación $\varphi\circ\pi$ es continua por su definición, luego dicho conjunto es abierto en $\pi^{-1}(U_i)$, que es abierto en $\R^{n+1}-\{0\}$, así que $(\varphi_i\circ\pi)^{-1}(H)$ es abierto en $\R^{n+1}-\{0\}$. Por último debemos probar que $\varphi_i^{-1}$ es continua, lo cual es trivial por su definición.
+
+Seguidamente, $\bigcup_{i=1}^{n+1} U_i=\mathbb{P}^n(\R)$, lo cual es bastante claro. Lo último que nos queda es probar que las cartas están relacionadas dos a dos. Sean $U_i,U_j$ no disjuntos. $\varphi_i(U_i\cap U_j)=\{(u_1,\dots,u_n)\in\R^n\mid u_{j-1}\neq 0\}$ y $\varphi_j(U_i\cap U_j)=\{(u_1,\dots,u_n)\in\R^n\mid u_{i}\neq 0\}$. Veamos las composiciones. $\varphi_j\circ\varphi^{-1}_i(u_1,\dots,u_n)=\varphi_j([u_1,\dots,u_{i-1},1,u_i,\dots,u_n)])$ que es diferenciable por su definición, ya que $u_{j-1}\neq 0$ en el dominio. De forma análoga se hace con la otra composición.
+\end{solucion}
+
+\begin{ejercicio}{2}
+Sea $S^n = \{(x_1,\dots, x_{n+1})\in \R^{n+1}\mid x^2_1
++\cdots+x^2_{n+1} = 1\}$ la esfera
+unidad de $\R^{n+1}$.\
+\begin{enumerate}
+\item Probar que las proyecciones estereográficas desde los puntos de $S^n$ a $\R^n$
+dotan a $S^n$ de una estructura de variedad diferenciable de dimensión $n$.
+¿Cuál es el número mínimo de proyecciones necesario para obtener un atlas?
+Construir uno concreto.
+\item Sean $U^+_i = \{(x_1, \dots, x_{n+1}) \in S^n\mid x_i > 0\}$ y $U^-_i = \{(x_1, \dots, x_{n+1}) \in S^n\mid x_i <
+0\}$ los hemisferios de $S^n$ ($i = 1,\dots, n + 1$) y sea la bola unidad de $\R^n$,
+$B_n = f\{u_1,\dots, u_n) \in \R^n\mid u^2_1
++ \cdots + u^2_n < 1\}$. Para cada $i = 1, \dots, n + 1$ se considerans las aplicaciones $φ_i : U_i^+ \to B^n$ y $ψ_i : U_i^- \to B^n$ dadas por
+\[ φ_i(x_1,\dots,x_{n+1}) = (x_1,\dots,x_{i-1},x_{i+1},\dots,x_{n+1}) \]
+\[ ψ_i(x_1,\dots,x_{n+1}) = (x_1,\dots,x_{i-1},x_{i+1},\dots,x_{n+1}) \]
+(proyecciones ortongales de los hemiferios sobre la bola). Probar que $\mathcal{A} = \{(U_i^+,φ_ii),(U_i^-,φ_i)\}_{i=1,\dots,n+1}$ es un atlas de dimensión $n$ en $S^n$ que la dota de una estructura diferenciable que es la misma que la del apartado anterior.
+\item Si $n=1$, probar que la estructura diferenciable de $S^1$ (circunferencia unidad) como curva regular es la misma que la de los apartados anteriores.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Sea $(U,\psi)$ una carta cualquiera de la estructura diferenciable tal que $\psi(p)=q\neq 0$, basta tomar $(U,\varphi)$ con $\varphi=\psi-q$. Se tiene que $\varphi(p)=0$ y claramente sigue siendo homeomorfismo y manteniendo las propiedades de diferenciabilidad de $\psi$, por lo que está en la estructura diferenciable.
+
+Vamos a considerar el espacio topológico $(S^n,T_e|_{S^n})$, que es $T_2+2ºN$. Sea $N=(0,\dots,0,1)$ el polo norte de $S^n$ y $S=(0,\dots,0,-1)$ el polo sur de $S^n$. Definimos el atlas de las proyecciones $\mathcal{A}_1=\{(U,φ),(V,ψ)\}$, donde $U=S^n\setminus\{N\}$ y $φ : U \to \R^n$ es la  proyecciones esteorográfica de $S^n$ desde $N$ sobre el hiperplano $x_{n+1}=0$ homeomorfo a $\R^n$:
+\[ φ (x_1,\dots,x_{n+1}) = \left(\frac{x_1}{1-x_{n+1}},\dots,\frac{x_n}{1-x_{n+1}}\right)\]
+y $V=S^n\setminus\{S\}$ y $ψ : V \to \R^n$ es la proyección estereográfica de $S^n$ desde $S$:
+\[ ψ (x_1,\dots,x_{n+1}) = \left(\frac{x_1}{1+x_{n+1}},\dots,\frac{x_n}{1+x_{n+1}}\right)\]
+Veamos que $\A$ es efectivamente un atlas de dimensión $n$.
+\begin{enumerate}[(1)]
+	\item $(U,φ)$ y $(V,ψ)$ son cartas de dimensión $n$. Lo demostramos sólo para $(U,φ)$, para $(V;ψ)$ la demostración es análoga:
+	\begin{enumerate}[(a)]
+		\item $U = S^n\setminus\{N\}$ es un abierto de $S^n$, pues $\{N\}$ es un cerrado (los puntos son cerrados en espacios topológicos de $T_1$).
+		\item $φ(U) = \mathbb{R}^n$ es un abierto de $\mathbb{R}^n$.
+		\item $φ : U \to φ(U)$ es un homeomorfismo, ya que:
+		\begin{enumerate}[(i)]
+			\item $φ$ es biyectivo, para eso basta tomar un punto $P$ en $x_{n+1}=0$, tomar la recta $r$ que une $N$ con $P$ y ver que corta a $S^n$ en $N$ y en un sólo punto. Tomando $P=(u_1,\dots,u_n,0)$, $r(λ)=(0,\dots,0,1)+λ(u_1,\dots,u_n,-1)$, que corta a $S^n$ en $N$ y el punto:
+			\[ φ^{-1}(u_1,\dots,u_n) = \left(\frac{2u_1}{1+\sum u_k^2},\dots,\frac{2u_n}{1+\sum u_k^2},\frac{-1+\sum u_k^2}{1+\sum u_k^2}\right)\]
+			Para ver que $φ^{-1}$ es realmente el inverse, basta comprobar que $φ^{-1}\circ φ = id$ y $φ \circ φ^{-1} = id$.
+
+			Para la proyección estereográfica sur se tiene que:
+			\[ ψ^{-1}(v_1,\dots,v_n) = \left(\frac{2v_1}{1+\sum v_k^2},\dots,\frac{2v_n}{1+\sum v_k^2},\frac{1-\sum v_k^2}{1+\sum v_k^2}\right) \]
+			
+			\item $φ$ es continua, pues es una transformación formada por fracciones de polinomios en la topología euclídea con denominador que no se anula.
+			\item $φ^{-1}$ es continua por la misma razón.
+		\end{enumerate}
+	\end{enumerate}
+	
+	\item $U \cup V = S^n$
+	\item $U$ está relacionada con $V$. Vemos primer que $U \cap V = S^n\setminus\{N,S\}$. Por otro lado, $φ(U\cap V)=ψ(U \cap V)=\R^n\setminus\{0\}$. 
+	\[ ψ \circ φ^{-1}(u_1,\dots,u_n) = ψ\left(\frac{2u_1}{1+\sum u_k^2},\dots,\frac{2u_n}{1+\sum u_k^2},\frac{-1+\sum u_k^2}{1+\sum u_k^2}\right) = \left(\frac{u_1}{\sum u_k^2},\dots,\frac{u_n}{\sum u_k^2}\right) \]
+	que no se anula, pues $u\neq 0$. Luego $ψ \circ φ^{-1} \in C^\infty$. Ver que $φ \circ φ^{-1}$ es análogo.
+
+	En el próximo capítulo, podremos usar el concepto de diferenciabilidad en $S^n$ para deducir directamente que como $φ$, $φ^{-1}$, $ψ$ en $ψ^{-1}$ están en $C^\infty$, $ψ \circ φ^{-1} \in C^\infty$ y $φ \circ ψ^{-1} \in C^\infty$).
+\end{enumerate}
+
+Para el siguiente apartado:
+
+\begin{enumerate}
+	\item $(U_i^+,φ_i)$ y $(U_i,ψ_i)$ son cartas de dimensión $n$.
+	\begin{enumerate}
+		\item $U_i^+$ es un aberto de $S^n$, pues $U_i^+ = \{(x_1,\dots,x_{n+1} \in \R^{n+1} : x_i > 0\} \cap S^n$.
+		\item $φ_i(U_i^+) = B^n$ que es un abierto de $R^n$.
+		\item $φ_i: U_i^+ \to B^n$ es un homeomorfismo.
+		\begin{enumerate}
+			\item Calculamos $φ_i^{-1}$ y $ψ_i^{-1}$:
+			\[ φ_i^{-1} (u_1,\dots,u_n) = (u_1,\dots,u_{i-1},\sqrt{1-\sum_k u_k^2}, u_i,\dots,u_n) \]
+			\[ ψ_i^{-1} (u_1,\dots,u_n) = (u_1,\dots,u_{i-1},-\sqrt{1-\sum_k u_k^2},u_i,\dots,u_n) \]
+			$φ_i \circ φ_i^{-1} = id$ y $φ_i^{-1} \circ φ_i = id$ trivialmente.
+
+			\item $φ_i$ es continua evidentemente.
+			\item $φ_i^{-1}$ es continua evidentemente.
+		\end{enumerate}
+	\end{enumerate}
+	\item $(\bigcup_{i=1}^{n+1} U_i^+) \cup (\bigcup_{i=1}^{n+1} U_i^-) = S^n$ trivialmente.
+	\item Para ver que las cartas están relacionadas 2 a 2. Basta ver que:
+		\[ φ_j \circ φ_i^{-1} (u_1,\dots,u_n) = (u_1,\dots,u_{i-1},\sqrt{1-\sum_k u_k^2}, u_i,\dots,u_{j-2},u_j,\dots,u_n) \in C^{∞} \]
+		El resto de los cambios de cartas queda como ejercicio.
+	\end{enumerate}
+	Tenemos que ver también que $\A_1 \sim \A$, vamos a demostrar sólo que $(U,φ)$ está relacionada con $(U_i^+,φ_i)$. Los demás casos son análogos:
+	\[ U \cap U_i^+ = \begin{cases}
+	U_i^+, &\text{ si }i \neq n+1\\
+	U_{n+1}^+ \setminus \{N\} &\text{ si }i = n+1
+\end{cases}\]
+
+Sea $ρ(u)=1+\sum u_k^2$.
+\begin{align*}
+	φ_i \circ φ^{-1} (u_1,\dots,u_n) & = φ_i\left(\frac{2u_1}{1+\sum u_k^2}, \dots, \frac{2u_n}{1+\sum u_k^2}, \frac{-1+\sum u_k^2}{1+\sum u_k^2}\right)\\
+	& = \begin{cases}
+	\frac{2}{1+\sum u_k^2}(u_1, \dots, u_{i-1},u_{i+1},\dots,u_n, -1+\sum u_k^2), &\text{ si }i \neq n+1 \\
+	\frac{2}{1+\sum u_k^2}(u_1, \dots,u_n), &\text{ si }i = n+1
+\end{cases}
+\end{align*}
+Por otro lado:
+\begin{align*}
+	φ \circ φ_i^{-1}(u_1,\dots,u_n) & = φ(u_1,\dots,u_{i-1},\sqrt{1-\sum u_k^2},u_i,\dots,u_n) =\\
+	& = \begin{cases}
+	\frac{1}{1-u_n}(u_1\dots,u_{i-1},\sqrt{1-\sum u_k^2},u_i,\dots,u_{n-1}, &\text{ si }i \neq n+1\\
+	\frac{1}{1-\sqrt{1-\sum u_k^2}}(u_1,\dots,u_n)
+\end{cases}
+\end{align*}
+
+que son $C^{∞}$, pues si $i \neq n+1$, $u_n \neq 1$ y si $i = n+1$, $\sqrt{1-\sum u_k^2} \neq 1$.
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+Sea
+$$E = \{ (\sen{2s}, \sen{s})\in \R^2 / s\in \R\}$$ 
+el lazo o figura ocho. Dotar a $E$ de dos estructuras de variedad diferenciable
+distintas.
+\end{ejercicio}
+\begin{solucion}
+Vamos a ver que no existe ningún atlas sobre $(E,T_e|_E)$. Supongamos que existe $\mathcal{A}$ atlas sobre $E$. Como $\mathcal{O}\in E\Rightarrow \exists(U,\varphi)\in\mathcal{A}$ tal que $\mathcal{O}\in U$. Pero $U\in T_e|_E\Rightarrow \exists G\in T_e\mid U=G\cap E\Rightarrow \mathcal{O}\in G\in T_e\Rightarrow \exists\varepsilon>0\mid B(0,\varepsilon)\subseteq G$. Podemos suponer $\varepsilon<1$. Sea $H=B(0,\varepsilon)\cap E$, que es abierto dentro de $U$. Como $(U,\varphi)$ es carta, entonces $\varphi:U\to\varphi(U)$ es homeomorfismo y la imagen es abierto de $\R^m$. Por lo tanto $\varphi|_H: H\to\varphi(H)$ es homeomorfismo, por lo que $\varphi(H)$ es abierto en $\varphi(U)$. Por tanto $\varphi|_H:U\to\varphi(H)$ es un homeomorfismo dentro de $\R^m$, lo cual es una contradicción porque esa cosa de mierda no es homeomorfa a nada de $\R^m$ (por el punto de corte de orden 4).
+
+Por tanto, vamos a dotarlo de la topología obtenida al recorrer $E$ solamente entre $(0,2\pi)$ y para obtener otra distinta llamamos $E'$ a recorrerlo entre $(-\pi,\pi)$. En el primer caso, $U=E$ y $\varphi:E\to (0,2\pi): (\sen{2s},\sen{s})\mapsto s$. En el segundo $V=E'$ y $\psi:E'\to(-\pi,\pi):(\sen{2s},\sen{s})\mapsto s$. En ambos casos tenemos aplicaciones biyectivas, luego mediante la topología inicial podemos convertir a ambas aplicaciones en homeomorfismos respectivamente, las cuales serán $T_2$ y $2ºN$ (por ser propiedades topológicas). Los dos atlas serían los atlas unitarios evidentes, de dimensión 1. 
+
+Esta variedades son distintas porque las topología son distintas (aunque como espacios topológicos sean homeomorfos). Para verlo basta ver tomar un entorno del origen en $E$ y ver que en $E'$ no es abierto. Por ejemplo $\varphi(G)=(\frac{\pi}{2},\frac{3\pi}{2})$ abierto, entonces $G\in T_E$ por serla topología inicial. Sin embargo $\psi(G)=(-\pi,-\frac{\pi}{2})\cup\{0\}\cup(\frac{\pi}{2},\pi)$, que no es abierto, por lo que $G\notin T_{E'}$. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4}
+Sea $(M,\mathcal{A})$ una variedad diferenciable y $G\subseteq M$ un abierto. Probar que,
+dando a $G$ la topología relativa de la de $M$,
+$$\mathcal{B} = \{(G \cap U, \varphi|_{G\cap U})\}_{(U,\varphi)\in\mathcal{A}}$$
+es un atlas sobre $G$ que lo dota de estructura de variedad diferenciable de la
+misma dimensión que $M$, llamada \textbf{Estructura de Subvariedad Abierta}
+de $G$.
+\end{ejercicio}
+\begin{solucion}
+Primero veamos que los elementos de $\mathcal{B}$ son cartas locales. Por definición son abiertos de la topología relativa, y las restricciones de homeomorfismos siguen siendo homeomorfismos. De hecho, $\varphi|_{G\cap U}(G\cap U)=\varphi(G\cap U)=\varphi(G)\cap\varphi(U)$, que es abierto del mismo $\R^m$ (conservando así la dimensión) por ser intersección finita de abiertos. Para ver que las cartas están relacionadas entre sí basta hacer un razonamiento  análogo al del ejercicio \ref{1}. Por último, para ver que recubren $G$, 
+$$G=M\cap G=(\bigcup_{(U,\varphi)\in\mathcal{A}}U)\cap G= \bigcup_{(U,\varphi)\in\mathcal{A}}(U\cap G).$$
+\end{solucion}
+
+\begin{ejercicio}{5}
+Probar que todo espacio vectorial real $m$-dimensional admite una estructura
+diferenciable canónica de dimensión $m$.
+\end{ejercicio}
+\begin{solucion}
+Sea $V$ un espacio vectorial real $m$-dimensional. Entonces, por álgebra lineal existe una aplicación lineal biyectiva (y por tanto homeomorfismo con la topología inicial) $f:V\to\R^m$. Basta tomar el atlas unitario $\mathcal{A}=\{(V,f)\}$ para dotar a $V$ de estructura diferenciable.  
+\end{solucion}
+
+\begin{ejercicio}{6}
+Probar que $\C^m$ es una variedad diferenciable de dimensión $2m$.
+\end{ejercicio}
+\begin{solucion}
+Basta notar que $\C^m$ es un $\R$-espacio vectorial de dimensión $2m$ y aplicar el ejercicio anterior.
+\end{solucion}
+
+\begin{ejercicio}{7}
+Probar que el producto cartesiano de dos variedades diferenciables $M$ y $N$
+es una variedad diferenciable de dimensión la suma de las dimensiones de
+las variedades factores. De hecho, si $(U,\varphi)$ es una carta de $M$ y $(V,\psi )$ una
+carta de $N$, se verifica que $(U \times V,\varphi\times\psi )$ es una carta sobre $M \times N$.
+\end{ejercicio}
+\begin{solucion}
+Sean $\mathcal{A}_1$ un atlas de dimensión $m$ para $M$ y $\mathcal{A}_2$ un atlas de dimensión $n$ para $N$. Para probar lo que se nos pide, construimos el atlas $\mathcal{A}=\{(U\times V,\varphi\times\psi): (U,\varphi)\in\mathcal{A}_1, (V,\psi)\in\mathcal{A}_2\}$. Veamos que sus elementos son cartas locales. En primer lugar, $U\times V$ es abierto de la topología producto y $\varphi\times\psi(U\times V)=\varphi(U)\times\psi(V)$ es un abierto de $\R^n\times\R^n=\R^{n+m}$. Además, el producto cartesiano de homeomorfismos es claramente homeomorfismo. Probemos ahora que las cartas están relacionadas dos a dos. 
+
+Sean $(U_1\times V_1,\varphi_1\times\psi_1)\in\mathcal{A}_1$ y $(U_2\times V_2,\varphi_2\times\psi_2)\in\mathcal{A}_2$. Entonces 
+$$(\varphi_1\times\psi_1)\circ(\varphi_2\times\psi_2)^{-1}=(\varphi_1\times\psi_1)\circ(\varphi_2^{-1}\times\psi_2^{-1})=(\varphi_1\circ\varphi_2^{-1},\psi_1\circ\psi_2^{-1}).$$
+Como cada componente es infinitamente diferenciable por hipótesis, el proucto también lo es. Finalmente, veamos que las cartas recubren $M\times N$,
+$$M\times N= \bigcup_{(U,\varphi)\in\mathcal{A}_1}U\times\bigcup_{(V,\psi)\in\mathcal{A}_1}V=\bigcup_{(U\times V,\varphi\times\psi)\in\mathcal{A}}U\times V.$$
+\end{solucion}
+
+\end{document}
