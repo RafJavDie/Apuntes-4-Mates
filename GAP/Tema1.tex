@@ -54,7 +54,8 @@ Para la segunda parte basta recordar que si la matriz de la aplicación lineal e
 
 \begin{ej}
 Aplicación antipodal en $S^2$, es decir $f:S^2\to S^2$ definida por $f(x,y,z)=(-x,-y,-z)$. Ya vimos que $f$ es diferenciable. Sea $p\in S^2$ un punto fijado. Veamos cómo se define $f_{*p}$. Supongamos que $p$ está en el hemisferio norte de la esfera. Consideramos las superficies simples en $S^2$ siguientes:
-$$\X:U\subseteq\R^2\to\R^3\mid \X(u^1,u^2)=(u^1,u^2,\sqrt{1-(u^1)^2+(u^2)^2})\quad\quad \Y:U\subseteq\R^2\to\R^3\mid \Y(u^1,u^2)=(u^1,u^2,-\sqrt{1-(u^1)^2+(u^2)^2}$$
+$$\X:U\subseteq\R^2\to\R^3\mid \X(u^1,u^2)=(u^1,u^2,\sqrt{1-(u^1)^2+(u^2)^2})$$ 
+$$\Y:U\subseteq\R^2\to\R^3\mid \Y(u^1,u^2)=(u^1,u^2,-\sqrt{1-(u^1)^2+(u^2)^2}$$
 Los abiertos serían $U=V=\{(x,y)\in\R^2\mid x^2+y^1<1\}$. Como ejercicio probar que efectivamente son superficies simples. Nos quedaría sin cubrir el ecuador.
 
 Tomamos $(u^1,u^2)\in U$. Entonces $$\Y^{-1}\circ f\circ \X(u^1,u^2)=\Y^{-1}\circ f(u^1,u^2,\sqrt{1-(u^1)^2+(u^2)^2})=\Y^{-1}(-u^1,-u^2,\sqrt{1-(u^1)^2+(u^2)^2})=(-u^1,-u^2).$$
@@ -91,14 +92,15 @@ y la parametrización del helicoide $N$ dada por:
 \[ \Y : V = (0,2\pi) \times (-1,1) \to N \]
 \[ \Y(v,φ) = (v\cos φ, v \sin φ, φ) \]
 
-Dado $p \in M$ tomamos $U' \subset M$ y $V' \subset N$ abiertos tal que $U'=\X(U)$ y $V'=\Y(V)$. Sea $f$ definida para todo $q \in U'$ dada por $f(q)=f(\X(u,θ))=y(\sinh u, θ) \in V'$.
+Dado $p \in M$ tomamos $U' \subset M$ y $V' \subset N$ abiertos tal que $U'=\X(U)$ y $V'=\Y(V)$. Sea $f$ definida para todo $q \in U'$ dada por $f(q)=f(\X(u,θ))=\Y(\sinh u, θ) \in V'$.
 Se tiene que $f$ es biyectiva y regular (compruébalo). Veamos que $f_{*q}$ es isometría para todo $q \in U'$. Veamos que, dado $q \in U'$, $f_{*q}$ conseva los módulos de los vectores de $T_q(M)$. Sea $w \in T_q(M)$, entonces existen $λ¹$ y $λ²$ tales que $w=λ¹\X_1(u_0,θ_0)+λ²\X_2(u_0,θ_0)$ donde $q=\X(u_0,θ_0)$.
 
 Tenemos que $f_{*q}(w) \in T_{f(q)}(N)$ dada por $f_{*q}(w) = μ¹\Y_1(v_0,φ_0)+μ² \Y_2(v_0,φ_0)$, donde $f(q)=\Y(v_0,φ_0)=(f\circ \X)(u_0,θ_0)$, luego $v_0 = \sinh u_0$ y $φ_0=θ_0$. Entonces:
 \[ \begin{pmatrix}μ¹\\μ²\end{pmatrix} = J_{q} (\Y^{-1} \circ f \circ \X) \begin{pmatrix}λ¹\\λ²\end{pmatrix} = \begin{pmatrix}\cosh u_0 & 0\\0 & 1\end{pmatrix} \begin{pmatrix}λ¹\\λ²\end{pmatrix} = \begin{pmatrix}λ¹ \cosh u_0\\ λ²\end{pmatrix}\]
 
 Calculamos los coeficientes métricos (se omiten los cálculos):
-. Para $M$:
+
+Para $M$:
 \[ g_{11} = (\sinh u)^2+1 \]
 \[ g_{12} = g_{21} = 0 \]
 \[ g_{22} = (\cosh u)^2 \]
@@ -122,17 +124,17 @@ Luego $||f_{*q}(w)||^2 = ||w||^2$ $\forall w$ y $f$ es una isometría.
 \begin{figure}[!ht]
   \centering
     \includegraphics[width=0.5\textwidth]{HelicoidCatenoid}
-\end{figure}
+\end{figure}\
 
 \begin{dem}[Teorema 22]\mbox{}
 \begin{itemize}
-	\item[$(\Rightarrow)$] Sea $p \in M$. Por hipótesis, $M$ y $N$ son localmente isométricas. Entonces existen $U' \subseteq M$ abierto y $V' \subseteq N$ abierto con $p \in U'$ y la isometría $f : U' \to V'$. Sea $(U,x)$ una superficie simple de $M$ en $p$ tal que $\X(U) \subseteq U'$. Consideremos $\Y : U \to \R^3$ dada por $\Y = f \circ \X$. Veamos que $\Y$ es superficie simple en $N$, ya que:
+	\item[$(\Rightarrow)$] Sea $p \in M$. Por hipótesis, $M$ y $N$ son localmente isométricas. Entonces existen $U' \subseteq M$ abierto y $V' \subseteq N$ abierto con $p \in U'$ y la isometría $f : U' \to V'$. Sea $(U,\X)$ una superficie simple de $M$ en $p$ tal que $\X(U) \subseteq U'$. Consideremos $\Y : U \to \R^3$ dada por $\Y = f \circ \X$. Veamos que $\Y$ es superficie simple en $N$, ya que:
 	\begin{enumerate}
 	\item $\Y$ es inyectiva y diferenciable, por ser composición de funciones inyectivas y diferenciables.
 	\item $\Y_1 \times \Y_2 \neq 0$.
 \end{enumerate}
 
-Tenemos que $\X$ s una superficie simple en $M$, por tanto, $\X_1 \times \X_2 \neq 0$, o equivalentemente $\{\X_1,\X_2\}$ es base de $T_q(M)$ para todo $q \in \X(U)$. Dado $q = \X(u¹_0,u²_0)$, podemos considerar la curva paramétrica $α(u²)=\X(u¹_0,u²)$, que verifica que $α(u²_0) = q$ y $α'(u²_0)=\X_1(u¹_0,u²_0)$. Además $f_{*q}α'(u²_0)=(f \circ α)'(u²_0)$. Ya que $(f\circ α)(u²)=(f \circ \X)(u¹_0,u²)=\Y(u¹_0,u²)$, tenemos que $(f\circ α)'(u²_0) = \Y_1(u²_0)$. Luego $f_{*q} \X_1(u¹_0,u²_0) = \Y_1(u¹_0,u²_0)$. Análogamente, tenemos $f_{*q} \X_2(u¹_0,u²_0)=\Y_2(u¹_0,u²_0)$.
+Tenemos que $\X$ es una superficie simple en $M$, por tanto, $\X_1 \times \X_2 \neq 0$, o equivalentemente $\{\X_1,\X_2\}$ es base de $T_q(M)$ para todo $q \in \X(U)$. Dado $q = \X(u¹_0,u²_0)$, podemos considerar la curva paramétrica $α(u²)=\X(u¹_0,u²)$, que verifica que $α(u²_0) = q$ y $α'(u²_0)=\X_1(u¹_0,u²_0)$. Además $f_{*q}α'(u²_0)=(f \circ α)'(u²_0)$. Ya que $(f\circ α)(u²)=(f \circ \X)(u¹_0,u²)=\Y(u¹_0,u²)$, tenemos que $(f\circ α)'(u²_0) = \Y_1(u²_0)$. Luego $f_{*q} \X_1(u¹_0,u²_0) = \Y_1(u¹_0,u²_0)$. Análogamente, tenemos $f_{*q} \X_2(u¹_0,u²_0)=\Y_2(u¹_0,u²_0)$.
 
 Como $f$ es regular, $f_{*q}$ es isomorfismo. Como consecuencia, tenemos que $\{\Y_1,\Y_2\}$ son linealmente independientes o, equivalentemente, $\Y_1 \times \Y_2 \neq 0$. Luego $\Y$ es superficie simple.
 
@@ -154,7 +156,7 @@ Dado $(u¹_0,u²_0) \in U$, consideramos $q = \X(u¹_0,u²_0)$. Ya que $f_{*q}$ 
 	Por otro lado, $f_{*q}v = μ¹ \Y_1(u_0)+μ^2 \Y_2(u_0)$, con $μ = J_{q'} λ$. Como $J_{q'}$ es la matriz identidad, $μ=λ$.
 	Por lo tanto:
 	\[ ||f_{*q}||^2 = I_{f(q)}(f_{*q} v,f_{*q} v) = (μ_1)^2 h_{11}(u_0) + (μ²)^2 h_{22}(u_0) + 2 μ¹μ² h_{12}(u_0) = ||v||^2 \]
-	Luego $f : U' \to V'$ es isometría. Como consecuencia, $M$ es localmente isométrica a $N$. Análogamente $N$ es localmente isométrica a $M$.
+	Luego $f : U' \to V'$ es isometría. Como consecuencia, $M$ es localmente isométrica a $N$. Análogamente $N$ es localmente isométrica a $M$. \QED
 	\end{enumerate}
 \end{itemize}
 \end{dem}
