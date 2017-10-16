@@ -1,0 +1,51 @@
+\documentclass[ACGA.tex]{subfiles}
+
+
+
+
+
+
+
+
+\begin{document}
+
+\chapter{Proyectivo}
+
+\section{No sé qué cojones poner aquí\\ Un saludo a FC}
+El proyectivo posee diferencias sutanciales con respecto al espacio afín. En el proyectivo se verifica que
+$$
+\dim(L_1 + L_2) + \dim(L_1 \cap L_2) = \dim(L_1) + \dim(L_2),
+$$
+a diferencia de en los espacios afines, donde hay que distinguir si se cortan o no se cortan las variedades. 
+
+Dos rectas siempre se cortan en el plano proyectivo en al menos un punto, así como una recta y una cónica se cortan en dos puntos. En general, si tenemos una curva definida por un polinomio de grado $d$ y una recta cualquiera siempre se cortan en $d$ puntos (contando multiplicidad).
+
+Algunas cosas que conviene recordar. $\PP^n = \PP^{n-1}\cup \A^n$
+
+Las raíces de un polinomio no están definidas en el proyectivo, pues $(1:1:1)$ es raíz de $x_0 + x_1^2 - 2x_0x_1$, pero no $(2:2:2)$. Consideramos entonces los polinomios homogéneos. 
+
+\begin{defi}
+Diremos que un conjunto $X\subset \Pnk$ es algebraico si existe $S\subset k[x_0,\xn{n}]$ un conjunto de polinomios homogéneos tal que $X=\{x\in\Pnk \mid f(x)=0 \; \forall f\in S\}$.
+\end{defi}
+Como siempre $\emptyset = \V(1)$ y $\Pnk = \V(0)$. $\{(a_0,\dotsc,a_n\} = \{a_ix_j - a_j x_i \mid 0\leq i \leq j \leq n\}$. Cualquier variedad proyectiva lineal es un conjunto algebraico. Las cónicas, cuádricas e hipercuádricas son conjuntos algebraicos.
+
+Si $S\subset k[x_0,\xn{n}]$ es un subcojunto arbitrario de polinomios entonces definimos $\V(S)$ como $\V(S\cap k[x_0,\xn{n}]^h)$. 
+
+\begin{prop}
+Si $S\subset k[x_0,\xn{n}]^h$, entonces $\V(S)=\V(\gene{S})$. 
+\end{prop}
+\begin{dem}
+Una inclusión es trivial. Para la otra tenemos que ver que si $f\in \gene{S}$ homogéneo, entonces $f=\sum g_i f_i$ con $f_i \in S$. Si $h_i$ es la componente homogénea de $g_i$ de grado $d-d_i$ entonces $\sum g_i f_i = \sum h_i f_i$. Si $x\in \V(S)$ entonces $f_i(x)=0$ $\forall i$, por lo que $\sum h_i (x) f_i (x) =0$. 
+\end{dem}
+\begin{defi}
+Un ideal $I\subset k[x_0,\xn{n}]$ es homogéneo si se puede generar por un conjunto de polinomios homogéneos. 
+\end{defi}
+\begin{prop}
+Todo conjunto algebraico de $\Pnk$ se puede definir mediante un conjunto finito de polinomios homogéneos. Basta tomar todas las componentes homogéneas de un conjunto de generadores.
+\end{prop}
+\begin{prop} La unión finita y la intersección arbitraria de conjuntos arbitrarios es algebraica, dando lugar a la topología de Zariski.
+\end{prop}
+¿Se sigue cumplliendo que existe una correspondencia biunívoca entre los conjuntos algebraicos de $\Pnk$ y los ideales radicales homogéneos de $k[x_0,\xn{n}]$?
+Sea $x$ es algebraico entonces 
+$$\I(X)=\gene{\{f\in k[x_0,\xn{n}]^h \mid f(x)=0\}}$$.
+\end{document}
