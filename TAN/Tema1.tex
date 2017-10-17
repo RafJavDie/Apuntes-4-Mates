@@ -195,16 +195,38 @@ Luego:
 \]
 \end{dem}
 
+\begin{ej} Dado un entero $x$, tomamos aleatoriamente dos enteros $n,m ≤ x$, la probabilidad de que $n \perp m$ es $\dfrac{6}{π^2}+ \mathcal{O}\left(\frac{\log x}{x}\right)$.
+\end{ej}
+\section{Sumación parcial}
+
+\section{El orden medio de $d(n)$}
+Como vemos, hemos tenido que pasar a $\log d(n)$ para poder determinar el orden máximo. El tomar logaritmos obviamente hace la función más manejable. Otra forma de resolver e problema es estudiar el \textbf{orden medio}, s llama así a una función $g(n)$ monótona y tal que
+\[ f(1) + f(2) + \cdots + f(n) \sim g(1) + g(2) + \cdots + g(n) \]
+\begin{teorema}[Dirichlet]
+Cuando $x$ tiende a infinito, tenemos
+\[ \sum_{n≤x} d(n) = x \log x + (2γ -1)x + \mathcal{O}(\sqrt{x}) \]
+\end{teorema}
+
+\begin{dem}
 \[ \sum_{n≤x} d(n) = \sum_{n≤x}\sum_{a|n}1 = \sum_{a≤x}\lfloor \frac{x}{a}\rfloor = \sum_{ab≤x} 1 \]
-Consideramos el retículo $\mathcal{R}=\{(n,m) | n \in \N,m \in \N, nm≤x\}$. Se tiene que $\sum_{ab≤x} 1 = \#\mathcal{R}$. Si particionamos $\mathcal{R}$ en los conjuntos: $A=\{(n,m) | n \in \N,m \in \N, nm≤x, m>\sqrt{x}\}, B=\{(n,m) | n \in \N,m \in \N, nm≤x, n>\sqrt{x}\}$ y $C=\{(n,m) | n \in \N,m \in \N, nm≤\sqrt{x}\}$. Se tiene que $\#A=\#B$, luego $\#\mathcal{R}=2\#A+\#C$:
+Consideramos el retículo $\mathcal{R}=\{(n,m) | n \in \N,m \in \N, nm≤x\}$. Se tiene que $\sum_{ab≤x} 1 = \#\mathcal{R}$. Si particionamos $\mathcal{R}$ en los conjuntos: $A=\{(n,m) \mid n \in \N,m \in \N, nm≤x, m>\sqrt{x}\}, B=\{(n,m) \mid n \in \N,m \in \N, nm≤x, n>\sqrt{x}\}$ y $C=\{(n,m) \mid n \in \N,m \in \N, nm≤\sqrt{x}\}$. Se tiene que $\#A=\#B$, luego $\#\mathcal{R}=2\#A+\#C$:
 \begin{align*}
 	\sum_{ab≤x} 1 & = 2 \# A - \lfloor \sqrt{x} \rfloor^2 = 2 \sum_{a≤\sqrt{x}} \lfloor \frac{x}{a}\rfloor - \lfloor \sqrt{x} \rfloor^2 = 2 \sum_{a≤x} \left(\frac{x}{a}-\left\{\frac{x}{a}\right\}\right) - (\sqrt{x}-\{\sqrt{x}\})^2 =\\
 	& = 2x \sum_{a ≤ \sqrt{x}} \frac{1}{a} + \mathcal{O}(\sqrt{x}) - (x-2\{\sqrt{x}\} \sqrt{x} + \{\sqrt{x}\}^2) = \\
 	& = 2x(\log\sqrt{x} + γ + \mathcal{O}(\frac{1}{x})) + \mathcal{O}(\sqrt{x}) -x+\mathcal{O}(\sqrt{x})+\mathcal{O}(1) = x \log x + (2γ-1)x+\mathcal{O}(\sqrt{x})
 \end{align*}
-Luego $\sum_{n≤x} d(n) = x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})$.
-donde $\{x\} = x-\lfloor x \rfloor$ es la parte fraccionaria de $x$.
+donde $\{x\} = x-\lfloor x \rfloor$ es la parte fraccionaria de $x$. Luego $\sum_{n≤x} d(n) = x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})$.
+\end{dem}
+La tecnica usada en la prueba se debe a Dirichlet y se denomina \textbf{método de la hipérbola}.
 
+El término de error $\mathcal{O}(\sqrt{x})$ puede mejorarse. La determinación del ínfimo de los $θ$ tales que podamos substituir $\mathcal{O}(\sqrt{x})$ por $\mathcal{O}(x^{θ})$ en el teorema anterior, constituye un problema abierto que se onoce con el nombre de \textbf{problema del divisor de Dirichlet}. En 1915 Hardy y Landau probaron que $\inf θ ≥ 1/4$.
+
+Por un método más simple podemos obtener el siguiente resultado.
+\begin{teorema}
+Para $x≥1$
+\[ Φ(x) = \sum_{n≤x} φ(n) = \frac{3x^2}{π^2} + \mathcal{O}(x\log x) \]
+\end{teorema}
+\begin{dem}
 \begin{align*}
 	\sum_{n≤x} φ(n) & = \sum_{n≤x}\sum_{a|n} μ(a) \frac{n}{a} = \sum_{a≤x} \frac{μ(a)}{a}\left(\sum_{a|n,n≤x}n\right) = \frac{1}{2} \sum_{a≤x} μ(a)\left(\lfloor \frac{x}{a}\rfloor^2 + \lfloor \frac{x}{a}\rfloor \right)\\
 	& = \frac{1}{2} \sum_{a≤x} μ(a) \left(\left(\frac{x}{a} - \left\{ \frac{x}{a}\right\} \right)^2 + \frac{x}{a}-\left\{\frac{x}{a}\right\}\right)\\
@@ -228,12 +250,7 @@ Por otro lado, como $ζ(s)^{-1} = \sum \frac{μ(n)}{n^s}$
 Finalmente:
 \[ \sum_{n≤x} φ(n) = \frac{6}{π}\frac{x^2}{2} + \mathcal{O}(x\log x)\]
 
-\begin{ej} Dado un entero $x$, tomamos aleatoriamente dos enteros $n,m ≤ x$, la probabilidad de que $n \perp m$ es $\dfrac{6}{π^2}+ \mathcal{O}\left(\frac{\log x}{x}\right)$.
-\end{ej}
-\section{Sumación parcial}
-
-\section{El orden medio de $d(n)$}
-
+\end{dem}
 \section{Método de exclusión-inclusión}
 
 \section{Algunas otras funciones aritméticas}
