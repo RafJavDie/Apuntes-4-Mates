@@ -1,4 +1,5 @@
 \documentclass[MIOP.tex]{subfiles}
+\usepackage{mathtools}
 \begin{document}
 
 \chapter{Introducción a la Programación\\ Dinámica.}
@@ -622,4 +623,133 @@ $$
 $$
  x_{n+1}=t_n(x_n,d_n,k_n)
  $$
+ 
+\begin{ej}
+Supongmos que un vendedor tiene 6 unidades de producto que debe distribuir entre 3 tiendas, cuya demanda estocástica viene dada por la siguiente tabla
+
+\begin{tabular}{c|c|c|}
+ & Demanda & Probabilidad\\
+\hline
+ 	& 1 & 0.6\\
+Tienda 1         & 2 & 0\\
+         & 3 & 0.5\\
+         \hline
+ & 1 & 0.4      \\
+ Tienda 2 & 2 & 0.1\\
+          & 3 & 0.4\\
+          \hline  
+          & 1 & 0.4\\
+  Tienda 3 & 2 & 0.3\\
+  & 3 & 0.3\\
+  \hline
+\end{tabular}\
+
+El precio de venta es 2 y de devolución es 0.5. Se debe encontrar la distribución por tiendas para maximizar el beneficio esperado.
+
+Definimos los estados $(n,x)$ donde $n$ es el índice de la tienda actual y $x$ es el número de productos disponibles. Las decisiones serán $x_n=$ número de unidades que se asignan a la tienda $n$. Cada vez que asignemos $x_n$ al estado $(n,x)$, entonces el siguiente estado sería $(n+1,x-x_n)$ independientemente de la demanda (las tiendas no se pasan demanda). Lo que sí que depende de la demanda $D$ es el beneficio esperado.
+$$f_n(x)=f(n,x)=\max_{x_n\leq x} E_D[r_n(x_n)+f(n+1,x-x_n)]$$
+La solución consiste en evaluar $f(1,6)$. Primero tenemos que evaluar $f(3,x)$ para todos los posibles valores de $x$, teniendo en cuenta que la demanda como mucho vale 3. 
+
+\begin{tabular}{|c|c|c|}
+\hline
+$x$ & $x_n$ & Beneficio\\ 
+\hline
+3 &    3    & $0.3(3\cdot 2)+0.3(2\cdot 2 + 1\cdot 0.5) +0.4(1\cdot 2 + 2\cdot 0.5) = 4.35$\\
+2 &    2    & $0.4(2+0.5)+0.3(2\cdot 2)+0.3(2\cdot 2)=3.4$\\
+1 &    1    & $0.4\cdot 2+ 0.3\cdot 2 + 0.3\cdot 2= 2$\\
+0 &    0    & 0\\
+\hline
+\end{tabular}
+
+\underline{Etapa 2}: Tengamos en cuenta que para la última etapa no deben quedar más de 3 productos ni tampoco se puede llegar a esta etapa con menos de 3.
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+$x$ & $x_n$ & Beneficio & $x_n^*$\\
+\hline
+6 & 3 & $0.5(2+0.5\cdot 2)+0.1(4+0.5)+0.4(6+0)+f(3,3)=8.7$ & 3 \\
+\hline
+5 & 3 & $7.75$& 3\\
+  &	2 & $7.6$ &  \\
+  \hline
+4 & 3 & $4.35+f(3,1)=4.35+2=6.35$& \\
+  &	2 & $3.25+f(3,2)=3.25+3.4=6.65$& 2 \\
+  & 1 & $2+f(3,3)= 2+4.35$& \\
+  \hline
+3 & 3 & $4.35+f(3,0)=4.35$ & \\
+  & 2 & $3.25+f(3,1)=3.25+2=5.25$& \\
+  & 1 & $2+f(3,2)=2+3.4=5.4$ & 2 \\
+  & 0 & $0+f(3,3)=4.35$& \\
+  \hline
+\end{tabular}
+
+\underline{Etapa 1}:
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+$x$ & $x_n$ & Beneficio & $x_n^*$ \\
+\hline
+6 & 0 & $0+f(2,6)=0+8.7=8.7$ & \\ 
+  & 1 & $2+f(2,5)+2+7.75=9.75$ & 1 o 2\\
+  & 2 & $3.1+f(2,4)=3.1+6.65=9.75 $ &\\ 
+  & 3 & $4.2+f(2,3)=4.2+5.4=9.6$ & \\
+  \hline
+\end{tabular}
+
+\end{ej}
+
+
+\subsection{Problema de inventario probabilístico}
+
+Horizonte de $T$ periodos. La demanda en $t$ es una variable aleatoria $D$, donde $P[D=d]=p_d$. El coste de producir $x$ unidades en $t$ es $c_t(x)$. Al final de cada periodo se paga $1$ unidad monetaria por unidad de producto almacenado. Al final del periodo $T$ se pueden vender las unidades sobrantes por $v$ unidades monetarias cada una.
+
+Los estdos son $(t,x_n)$, siendo $t$ el periodo y $x_n$ la cantidad de unidades en el almacén. La decisión $x$ es el número de unidades a producir en este periodo. Si tomamos una decisión $x$ en el estado $(t,x_n)$ y $D=d$, el coste total es $c_t(x)+\max\{0,x+x_n-d\}$, con la condición de que $x+x_n\geq d_{max}$ (demanda máxima) para evitar la solución trivial de no producir nada (con lo que no habría coste). Con esta condición el coste queda expresado simplemente como $c_t(x)+x+x_n-d$. Por tanto, el valor esperado del coste será
+$$\sum_d p_d\cdot(c_t(x)+x+x_n-d)$$
+Con probabilidad $p_d$ se produce una transición hacia el estado $(t+1,x+x_n-d)$. 
+$$f(t,x_n)=\min_{x:x+x_n\geq d_{max}}\left\{\sum_d p_d\cdot[c_t(x)+x+x_n-d+f(t+1,x+x_n-d)]\right\}$$
+$$f(T,x_T)=\min_{x:x+x_T\geq d_{max}}\sum_d p_d[c_T(x)+(x+x_T-d)(1-v)]$$
+La solución será evaluar $f(1,0)$.
+
+\subsection{Procesos de decisión secuencial markovianos}
+Son procesos discretos, finitos y con factor descuento. Es un proceso de decisión secuencial en el que las transiciones entre estados están regidas por una cadena de Markov. Se llaman discretos porque las etapas del proceso son numerables. Decimos que estos procesos son finitos porque en cada etapa el proceso solo se puede encontrar en un conjunto finito de estados $S=\{1,\dots, N\}$. El factor descuento será una cantidad $0<\alpha <1$, que es el factor de depreciación del dinero (ya sea por inflación o por preferencia por la liquidez), es decir, $x$ unidades monetarias en la etapa siguiente se percibirán como $\alpha x$. 
+
+Si en la etapa $n$ estamos en un estado $i\in S$ y tomamos una decisión $k\in D(i)\equiv$ conjunto de decisiones dactibles en el estado $i$, entonces se produce una recompensa $R^k_i$ y hay una transición al estado $j\in S$ en la etapa $n+1$ con una probabilidad $p_{ij}^k$ tal que 
+$$\sum_{j\in S}p_{ij}^k=1\ \forall i\in S,\ \forall k\in D(i).$$
+Fijado $k$, los $p_{ij}$ forman una matriz $P$ cuyas filas suman $1$, es decir, una matriz estocástica, llamada \textbf{matriz de la cadena de Markov}.
+
+Además de todo esto, vamos a imponer que nuestras decisiones sean estacionarias, esto es, independientemente de la etapa $n$ en el estado $i$ siempre tomaremos la misma decisión. 
+
+Entonces, definimos una \textbf{política} (estacionaria) como una regla de decisión $\delta$ tal que $\forall i\in S$, $\delta(i)=k\in D(i)$, independientemente de la etapa del proceso.
+
+El conjunto de reglas de decisión estacionarias $\Delta$ es finito, de hecho $|\Delta|\leq |\bigtimes_{i\in S} D(i)|$.  
+
+Denotemos por $v^\delta_i$ el valor esperado de la recompensa obtenida por el proceso utilizando la política $\delta$ y suponiendo que comienza en estado $i$. 
+$$v^\delta_i=R^\delta_i+\alpha\sum_{j\in S} p_{ij}^\delta R_j^\delta +\alpha^2\sum_{j\in S}p_{ij}^\delta(2)R_j^\delta+\cdots=\sum_{n=0}^\infty\alpha^n p_{ij}^\delta(n) R_j^\delta$$
+El objetivo es encontrar $\delta\in\Delta$ tal que $f_i=\max_{\delta\in\Delta}v_i^\delta$ $i\in S$. $f=(f_i)_{i\in S}$, $v^\delta=(v_i^\delta)_{i\in S}$.
+
+
+\begin{observacion}
+Ocurre que existe una polític $\delta\in\Delta$ que es óptima para todo $i\in S$, es decir, $\exists \delta^*\mid f_i=v_i^{\delta^*}\ \forall i\in S$.
+\end{observacion}
+\begin{observacion}[lema de Chapman-Kolmogorov]
+Usando el teorema de la probabilidad total podemos descomponer las probabilidades de varios pasos en probabilidades de un solo paso.
+$$p_{ij}^\delta(2)=\sum_{k\in S}p_{ik}^\delta(1)p_{kj}^\delta(1)=\sum_{k\in S}p_{ik}^\delta p_{kj}^\delta=P^\delta_{i\cdot}P^\delta_{\cdot j},$$
+luego $P(2)=P\cdot P$. En general, por inducción, la matriz de transición en $n$ pasos es $P^n$. De esta forma podemos escribir de modo más compacto
+$$v^\delta=R^\delta+ \alpha P^\delta R^\delta +\alpha^2 (P^\delta)^2+\cdots$$
+Si denotamos $Q^\delta=\alpha P^\delta$ ($(Q^\delta)^0=I$), entonces
+$$v^\delta=\sum_{n=0}^\infty (Q^\delta)^n R^\delta$$
+\end{observacion}
+
+\begin{lemma}
+$$\sum_{n=0}^\infty (Q^\delta)^n=(I-Q^\delta)^{-1}$$
+Es un análogo a que cuando $0<x<1$, $\sum_{n=0}^\infty=(1-x)^{-1}$. 
+\end{lemma}
+\begin{proof}
+Vamos a ver primero que $I-Q^\delta$ tiene inversa. Para ello consideremos el sistema $(I-Q^\delta)x=0$. Entonces
+$$Ix=Q^\delta x=(Q^\delta)^2x=\cdots=(Q^\delta)^nx\ \forall n$$
+Pero $(Q^\delta)^n=\alpha^n P^n\to 0$ cuando $n\to\infty$, por lo tanto la única solución del sistema homogéneo es la solución nula, por lo que la matriz tiene inversa. Ahora consideramos la suma parcial $\sum_{k=0}^n (Q^\delta)^k$ y la multiplicamos por $(I-Q^\delta)$. Con esto obtenemos una suma telescópica igual $I-(Q^\delta)^{n+1}$. Tomando límite
+$$\lim_{n\to\infty}(I-Q^\delta)\sum_{k=0}^n (Q^\delta)^k=\lim_{n\to\infty}I-(Q^\delta)^{n+1}=I-\lim_{n\to\infty}(Q^\delta)^{n+1}=I$$
+Por lo que la matriz $(I-Q^\delta)$ es la inversa de la suma infinita.
+\end{proof}
+
 \end{document}
