@@ -99,7 +99,7 @@ donde $s \in \C$, $s = σ + it$. Si $σ > 1$, $ζ(s)$ converge, $1/ζ(s)$ tambi�
 \[ \left(\sum\frac{μ(n)}{n^s}\right)\left(\sum\frac{1}{m^s}\right) = \sum_{n,m=1}^\infty \frac{μ(n)}{(n\cdot m)^s} = \sum_{N=1}^\infty \frac{1}{N^s}\left(\sum_{n|N} μ(n)\right) = 1 \]
 \section{Convergencia de series de Dirichlet}
 \begin{teorema}
-SI la serie de Dirichlet $\sum_{n=1}^\infty \frac{a_n}{n^s}$ converge en un punto $s = s_0$, entonces converge uniformemente en el ángulo $Γ_α = \{s \in \C : Re(s) > Re(s_0), |arg(s-s_0)|< α\}$ para cada $0 < α ≤ \pi/2$.
+Si la serie de Dirichlet $\sum_{n=1}^\infty \frac{a_n}{n^s}$ converge en un punto $s = s_0$, entonces converge uniformemente en el ángulo $Γ_α = \{s \in \C : Re(s) > Re(s_0), |arg(s-s_0)|< α\}$ para cada $0 < α ≤ \pi/2$.
 \end{teorema}
 
 \begin{dem}
@@ -147,8 +147,13 @@ Si $f$ es además completamente multiplicativa:
 \[ \sum_{n=1}^\infty \frac{f(n)}{n^s} = \prod_{p}\left(1-\frac{f(p)}{p^s}\right)^{-1}\]
 \end{coro}
 \section{Crecimiento de funciones multiplicativas}
+\begin{teorema}
+Sea $f(n)$ una función multiplicativa. Si $\lim_{p^k \to +∞} f(p^k) = 0$, entonces
+\[ \lim_{n\to +∞} f(n) = 0 \]
+(Ver Hardy Wright p.261 Nathanson p.255)
+\end{teorema}
 \begin{prop}
-\[ d(n) = O(n^δ) \]
+\[ d(n) = \mathcal{O}(n^δ) \]
 para todo $δ > 0$.
 \end{prop}
 \begin{dem}
@@ -160,9 +165,19 @@ llegamos a que:
 \end{dem}
 
 \begin{prop}
-\[ \limsup \frac{\log d(n)}{\frac{\log 2 \log n}{\log \log n}} ≤ 1\]
+Para todo $ϵ > 0$ se tiene que
+\[ \lim_{n \to +∞} φ(n)/n^{1+ϵ} =0, \quad \lim_{n \to +∞} φ(n)/n^{1-ϵ} = +∞ \]
+(Ver Nathanson p.227)
+\end{prop}
+El \textbf{orden máximo} y el \textbf{orden mínimo} de una función aritmética $f(n)$ se definen como funciones monótonas crecientes $g(n)$ tales que
+\[ \limsup_{n\to+∞} \frac{f(n)}{g(n)} = 1, \quad \text{respectivamente }\liminf_{n\to+∞}\frac{f(n)}{g(n)} = 1 \]
+\begin{prop}
+El orden mínimo de $\log d(n)$ es $\log 2$ y el orden máximo es
+\[ \frac{\log 2 \log n}{\log \log n} \]
 \end{prop}
 \begin{dem}
+Vamos a demostrar sólo el orden máximo. Para el orden mínimo ver Hardy \& Wright, p.262. Vamos a ver que
+\[ \limsup \frac{\log d(n)}{\frac{\log 2 \log n}{\log \log n}} = 1\]
 Aplicando logaritmo a la expresión $\frac{d(n)}{n^δ} ≤ \exp\left(\frac{2^{1/δ}}{δ\log 2}\right)$.
 \[
 	\log d(n) ≤ δ\log n + \frac{2^{1/δ}}{δ\log 2}
@@ -195,10 +210,32 @@ Luego:
 \]
 \end{dem}
 
-\begin{ej} Dado un entero $x$, tomamos aleatoriamente dos enteros $n,m ≤ x$, la probabilidad de que $n \perp m$ es $\dfrac{6}{π^2}+ \mathcal{O}\left(\frac{\log x}{x}\right)$.
-\end{ej}
 \section{Sumación parcial}
+La idea básica que queremos desarrollar es la aproximación de una suma por una integral, y se puede plasmar en una figura.
 
+\begin{teorema}[Comparación de una suma y una integral]
+Sea $f : (0,+\infty) \to [0,+\infty)$ una función positiva y decreciente. Existe una constante $γ(f)$ tal que para todo $x>1$ se tiene
+\[ \sum_{n≤x} f(n) = \int_1^x f(t)dt + γ(f) + \mathcal{O}(f(x)) \]
+\end{teorema}
+\begin{teorema}
+Existe una constante $γ$ tal que para todo $x>1$
+\[ \sum_{n≤x} \frac{1}{n} = \log x + γ + \mathcal{O}\left(\frac{1}{x}\right) \]
+\end{teorema}
+La constante $γ$ se denomina constante de Euler, su valor aproximado es $γ \approx 0.577215663...$ Es un problema abierto decidir si es racional o irracional.
+
+Clásicamente se llama sumación de Abel al proceso en que convertimos una suma $\sum_n a_n b_n$ mediante las sumas parciales $\sum_n a_n$. Esto es, definiendo
+\[ A_n = \sum_{j=1}^n a_j, \qquad A_0 = 0 \]
+la transformación es
+\[ \sum_{j=1}^n a_j b_j = \sum_{j=1}^n (A_j-A_{j-1})b_j = \sum_{j=1}^{n-1} A_j(b_j-b_{j+1}) + A_n b_n \]
+Este tipo de argumento es análogo al de la integración por partes. Si $A(x)=\int_a^x a(t)dt$
+\[ \int_a^x a(t)f(t) dt = \int_a^x f(t) dA(t) = \left.f(t)A(t)\right|_a^x - \int_a^x A(t) df(t) = A(x)f(x) - \int_a^x A(t) df(t) \]
+en el siguiente teorema lo exttendemos al caso en que $A$ es una funcón de salto.
+
+\begin{teorema}[Fórmula de Abel] Sea $(a_n)$ una sucesión de números complejos. Pongamos
+\[ A(x) = \sum_{n≤x} a_n \quad (x > 0) \]
+Sea $f(t)$ una función con derivada continua en $[1,x]$. Entonces tenemos
+\[ \sum_{1≤n≤x} a_nf(n) = A(x)f(x)-\int_1^x A(t)f'(t)dt \]
+\end{teorema}
 \section{El orden medio de $d(n)$}
 Como vemos, hemos tenido que pasar a $\log d(n)$ para poder determinar el orden máximo. El tomar logaritmos obviamente hace la función más manejable. Otra forma de resolver e problema es estudiar el \textbf{orden medio}, s llama así a una función $g(n)$ monótona y tal que
 \[ f(1) + f(2) + \cdots + f(n) \sim g(1) + g(2) + \cdots + g(n) \]
@@ -249,9 +286,29 @@ Por otro lado, como $ζ(s)^{-1} = \sum \frac{μ(n)}{n^s}$
 \[ \sum_a \frac{μ(a)}{a^2} ζ(2) = 1 \Rightarrow S = \frac{1}{ζ(2)} = \frac{6}{π^2}\]
 Finalmente:
 \[ \sum_{n≤x} φ(n) = \frac{6}{π}\frac{x^2}{2} + \mathcal{O}(x\log x)\]
-
 \end{dem}
-\section{Método de exclusión-inclusión}
 
+El teorema se debe a Mertens (1874). El mejor término de error que se conoce es $\mathcal{O}(x(\log x)^{2/3}(\log \log x)^{4/3})$ que se debe a Walfisz en 1963.
+
+\begin{coro} Dado un entero $x$, la probabilidad de que dos eneteros positivos $≤x$ sea relativamente primos es: $\dfrac{6}{π^2}+ \mathcal{O}\left(\frac{\log x}{x}\right)$.
+\end{coro}
+
+\begin{prop}
+El orden medio de $σ(n)$ es $π^2n/6$. Esto es
+\[ \sum_{n≤x} σ(n) = \frac{1}{12} π^2x^2 + \mathcal{O}(x\log x) \]
+\end{prop}
+El mejor término de error que se conoce es $\mathcal{O}(x(\log x)^{2/3})$ que se debe a Walfisz en 1963.
+
+\section{Método de exclusión-inclusión}
 \section{Algunas otras funciones aritméticas}
+La \textbf{función de Liouville} se define de manera parecida a la de Möbius
+\[ λ(n) = \begin{cases}
+	1 &\text{ si }n=1\\
+	(-1)^{α_1+\dots+α_r} &\text{ si }n=p_1^{α_1}\cdot p_r^{α_r}
+\end{cases} \]
+$ω(n)$ denota el número de factores primos distintos de $n$ y $Ω(n)$ el número total de factores primos:
+\[ ω(n) = \sum_{p|n} 1, \qquad Ω(n) = \sum_{p^r|n} 1 \]
+Finalmente es de uso frecuenta la función
+\[ r(n) = \text{card}\{(x,y) \in \Z^2 : x^2+y^2=n\} \]
+Para el capítulo en general son recomendables los libros de \href{https://leonettipaolo.files.wordpress.com/2012/07/ebook-english-g-h-hardy-an-introduction-to-the-theory-of-numbers.pdf}{Hardy \& Wright}, Tenenbaum o Nathanson.
 \end{document}
