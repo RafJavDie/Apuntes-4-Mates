@@ -583,6 +583,45 @@ $$f(3,a)=\max_{x\leq a} p_{3x}
 $$
 $$f(t,a) = \max_{x\leq a}\{p_{tx} f(t+1,a-x)\}$$
 La solución es $f(1,2)$.
+\newpage
+\underline{Etapa 3:}\
+
+\begin{tabular}{|c| c| c| }
+\hline
+$a$ & $f(3,a)$ & $x$ \\
+\hline
+$0$ & $0.3$ & $0$\\
+\hline
+$1$ & $0.55$ & $1$\\
+\hline
+$2$ & $0.7$ & $2$\\
+\hline
+\end{tabular}\\
+
+\underline{Etapa 2:}\
+
+\begin{tabular}{|c| c| c| }
+\hline
+$a$ & $f(2,a)$ & $x$ \\
+\hline
+$0$ & $0.55\cdot f(3,0) = 0.165$  & $0$\\
+\hline
+$1$ & $0.5\cdot f(3,1) = 0.275 $ & $0$\\
+\hline
+$2$ & $0.7\cdot f(3,1) = 0.385$ & $1$\\
+\hline
+\end{tabular}\\
+
+\underline{Etapa 1:}\
+
+\begin{tabular}{|c| c| c| }
+\hline
+$a$ & $f(1,2)$ & $x$ \\
+\hline
+$2$ & $0.85\cdot f(2,1)$ & $1$\\
+\hline
+\end{tabular}\\
+Por tanto, el óptimo se alcanza cuando colocamos $1$ vendedor en la Zona 1, $0$ vendedores en la Zona 2 y $1$ vendedor en la Zona 3.
 \section{Procesos de decisión secuenciales probabilísticos}
 Supongamos un proceso de decisión secuencial en N etapas con funciones de recompensa y transición, $r_n(x_n,d_n,k_n)$ y $t_n(x_n,d_n,k_n)$, donde $x_n$ es el estado en la etapa $n$, $d_n$ es la decisión en el estado $x_n$ y $k_n$ es una variable aletoria discreta.
 $$
