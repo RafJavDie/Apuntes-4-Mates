@@ -51,7 +51,7 @@
 \newcommand{\fracc}[2]{{\displaystyle\frac{#1}{#2}}}
 \newcommand{\ul}[1]{\underline{#1}}
 \newcommand{\bs}[1]{\boldsymbol{#1}}
-\newcommand{\colocapdefi}[2]{\quad\pdfimage width #2 {#1.pdf}}
+\newcommand{\colocapdf}[2]{\quad\pdfimage width #2 {pdfs/#1.pdf}}
 
 
 \begin{document}
@@ -2132,7 +2132,7 @@ $\alpha(t)=\left\{\begin{array}{ccc}
  & & \\
 (2t,4t^2,0) & si & t\in (0, \frac{1}{2}]
 \end{array}\right.$ & p
-% \begin{minipage}{.4\textwidth}%\colocapdf{partes}{\textwidth}\end{minipage}
+\begin{minipage}{.4\textwidth}\colocapdf{partes}{\textwidth}\end{minipage}
 \end{tabular}
 
 \vspace{0.3cm}
@@ -2251,8 +2251,8 @@ Posible soluci\'{o}n: Polinomio de Interpolación
 %Posible soluci\'{o}n: Polinomio de Interpolaci\'{o}n
 
 \begin{center}
-%\colocapdf{polinomioInterpolacion}{0.55\textwidth}
-%\colocapdf{puntos}{0.55\textwidth}
+\colocapdf{polinomioInterpolacion}{0.55\textwidth}
+\colocapdf{puntos}{0.55\textwidth}
 \end{center}
 
 El polinomio de interpolaci\'{o}n $P(x)$ que pasa por $\{(x_i,y_i)\}$ con $0\leq i \leq n,$ es de grado menor o igual que $n,$ por tanto $P(x)\in {\cal P}(x).$
@@ -2354,7 +2354,7 @@ Spline c\'{u}bico es una funci\'{o}n de clase $C^2$ constituida por polinomios d
 %DIBUJos 2.18 y 2.19
 \begin{center}
 \begin{tabular}{cc}
-%\colocapdf{2.18}{.4\textwidth} & %\colocapdf{2.19}{.4\textwidth}
+\colocapdf{2.18}{.4\textwidth} & \colocapdf{2.19}{.4\textwidth}
 \\ Polinomio de Interpolaci\'{o}n &  Spline C\'{u}bico
 \end{tabular}
 \end{center}
@@ -2372,7 +2372,7 @@ Spline c\'{u}bico es una funci\'{o}n de clase $C^2$ constituida por polinomios d
 Dados los puntos $(x_0,y_0),\ldots,(x_n,y_n)$ buscamos un polinomio $P(x)$ que adem\'{a}s de interpolar, lo haga con pendientes especificadas $y'_0,\ldots,y'_n$.
 
 \begin{center}
-%\colocapdf{hermite}{0.55\textwidth}
+\colocapdf{hermite}{0.55\textwidth}
 \end{center}
 
 Tal polinomio existe y es \'{u}nico (ver Cordero y Cort\'{e}s, {\it Curvas y Superficies para el modelado geom\'{e}trico}, Ed. Ra-Ma)
@@ -2550,7 +2550,7 @@ $$max_{t\in[0,1]}\parallel C(t)-\overline{C}(t)\parallel
 \vspace{0.3cm}
 
 \begin{center}
-%\colocapdf{3.7}{0.45\textwidth}
+\colocapdf{3.7}{0.45\textwidth}
 \end{center}
 
 Las curvas difieren a lo sumo en algo menos de la mitad de la norma de la diferencia de los puntos de control y es nula al aproximarnos a los extremos.
@@ -2612,7 +2612,7 @@ $$C(t)=(1-t)P_0^{(2)}+tP_1^{(2)}$$
 
 \begin{center}
 \begin{tabular}{lr}
-%\colocapdf{3.12(1)}{.35\textwidth} &  %\colocapdf{3.12(2)}{.35\textwidth}\\
+\colocapdf{3.12(1)}{.35\textwidth} &  \colocapdf{3.12(2)}{.35\textwidth}\\
 \end{tabular}
 \end{center}
 
@@ -2677,13 +2677,13 @@ Sean $P_0,P_1,\ldots,P_n$ y $Q_0,Q_1,\ldots,Q_m$ los puntos de control de dos cu
 Si queremos que la curva compuesta sea continua $P_n=Q_0$
 
 \begin{center}
-%\colocapdf{3.14}{.55\textwidth}
+\colocapdf{3.14}{.55\textwidth}
 \end{center}
 
 Adem\'{a}s, podemos exigir que las dos curvas se unan manteniendo una cierta suavidad. Para ello, los vectores tangentes a las dos curvas han de tener la misma direcci\'{o}n en el punto de uni\'{o}n $P_n=Q_0.$
 
 \begin{center}
-%\colocapdf{3.15}{.55\textwidth}
+\colocapdf{3.15}{.55\textwidth}
 \end{center}
 
 Es decir, los vectores tangentes $P_n-P_{n-1}$ y $Q_1-Q_0=Q_1-P_n$ han de ser proporcionales. Cuando se verifique esta condici\'{o}n, diremos que la curva compuesta tiene continuidad geom\'{e}trica o visual de clase ${\cal G}^1.$
@@ -2804,8 +2804,8 @@ $$\begin{array}{rcl} \overline{P}_{0, (i+1)}&=&P_{0, (i+1)}+h\\ \overline{P}_{n,
 
 \begin{center}
 \begin{tabular}{cc}
-%\colocapdf{3.21(1)}{.45\textwidth} &
-%\colocapdf{3.21(2)}{.45\textwidth}
+\colocapdf{3.21(1)}{.45\textwidth} &
+\colocapdf{3.21(2)}{.45\textwidth}
 \end{tabular}
 \end{center}
 
@@ -2827,8 +2827,8 @@ con lo que la partici\'{o}n $u_0<u_1<\ldots<u_{m-1}<u_m$ sigue proporcionando qu
 
 \begin{center}
 \begin{tabular}{cc}
-%\colocapdf{3.22(1)}{.45\textwidth} &
-%\colocapdf{3.22(2)}{.45\textwidth}
+\colocapdf{3.22(1)}{.45\textwidth} &
+\colocapdf{3.22(2)}{.45\textwidth}
 \end{tabular}
 \end{center}
 
@@ -2841,8 +2841,8 @@ La partici\'{o}n $u_0<u_1<\ldots<u_{m-1}<u_m$ sigue haciendo que la nueva curva 
 
 \begin{center}
 \begin{tabular}{cc}
-%\colocapdf{3.23(1)}{.45\textwidth} &
-%\colocapdf{3.23(2)}{.45\textwidth}
+\colocapdf{3.23(1)}{.45\textwidth} &
+\colocapdf{3.23(2)}{.45\textwidth}
 \end{tabular}
 \end{center}
 
@@ -2854,8 +2854,8 @@ La partici\'{o}n $u_0<u_1<\ldots<u_{m-1}<u_m$ sigue proporcionando que la nueva 
 
 \begin{center}
 \begin{tabular}{cc}
-%\colocapdf{3.24(1)}{.45\textwidth} &
-%\colocapdf{3.24(2)}{.45\textwidth}
+\colocapdf{3.24(1)}{.45\textwidth} &
+\colocapdf{3.24(2)}{.45\textwidth}
 \end{tabular}
 \end{center}
 
@@ -2901,7 +2901,7 @@ Consideremos el siguiente ejemplo para $m=4$:
 
 \vspace{0.2cm}
 
-\begin{minipage}{.4\textwidth}%\colocapdf{3.28}{\textwidth}
+\begin{minipage}{.4\textwidth}\colocapdf{3.28}{\textwidth}
 \end{minipage} \quad \quad
 \begin{minipage}{.55\textwidth}
 Los puntos $P_1$ y $P_{11}$ son libres y los $P_0,P_3,P_6,P_9,P_{12}$ fijos.
@@ -3074,7 +3074,7 @@ De esta forma los argumentos $(x_i,y_j)$ son nodos de un malla rectangular.
 Cada punto de la malla $(x_i,y_j)$ tiene asignado una altura $z_{ij}$.
 
 \begin{center}
-%\colocapdf{6.2}{0.55\textwidth}
+\colocapdf{6.2}{0.55\textwidth}
 \end{center}
 
 Buscamos un polinomio $P(x,y)$ que verifique:
@@ -3084,7 +3084,7 @@ m.$$
 
 Las alturas $z_{00},z_{10},\ldots,z_{n0},$ correspondientes a los puntos $(x_0,y_0),(x_1,y_0),\ldots,(x_n,y_0),$ pueden ser interpoladas por un polinomio de grado menor o igual que $n$ :
 
-\begin{minipage}{.35\textwidth}%\colocapdf{6.3}{\textwidth}
+\begin{minipage}{.35\textwidth}\colocapdf{6.3}{\textwidth}
 \end{minipage} \quad \quad \quad
 \begin{minipage}{.4\textwidth} $\left\{ \begin{array}{rl}
 z=P_0(x)=&\sum_{i=0}^n a_{i0} B_i(x)\\
@@ -3104,7 +3104,7 @@ P_m(x)=\sum_{i=0}^n a_{im} B_i(x) \quad \mbox{ verifica } \quad
 P_m(x_k)=z_{km}, \quad k=0,\ldots,n \\
 \end{array}$$
 \begin{center}
-%\colocapdf{6.4}{0.4\textwidth}
+\colocapdf{6.4}{0.4\textwidth}
 \end{center}
 
 Finalizada la fase de interpolaci\'{o}n en la variable $x$, comencemos con la interpolaci\'{o}n con respecto a la variable $y$. Denotemos $C_j(y)$ la base de polinomios de grado menor o igual que $m$. Consideramos
@@ -3155,7 +3155,7 @@ Una superficie bilineal es la superficie que interpola $4$ puntos $(x_0,y_0,z_{0
 \end{defi}
 
 \begin{center}
-%\colocapdf{6.5}{0.45\textwidth}
+\colocapdf{6.5}{0.45\textwidth}
 \end{center}
 
 Podemos construirla siguiendo el mismo procedimiento descrito anteriormente. Interpolamos en primer lugar con respecto a la variable $x$:
@@ -3167,7 +3167,7 @@ $$P_1(x)=\frac{x_1 z_{01}-x_0 z_{11}}{x_1-x_0}+\frac{z_{11}-z_{01}}{x_1-x_0}x=a_
 \end{itemize}
 
 \begin{center}
-%\colocapdf{6.6}{0.35\textwidth}
+\colocapdf{6.6}{0.35\textwidth}
 \end{center}
 
 A continuaci\'{o}n interpolamos con respecto a $y$:
@@ -3182,7 +3182,7 @@ $$Q_1(y)=\frac{y_1 a_{10}-y_0 a_{11}}{y_1-y_0}+\frac{a_{11}-a_{10}}{y_1-y_0}y$$
 \end{itemize}
 
 \begin{center}
-%\colocapdf{6.5}{0.35\textwidth}
+\colocapdf{6.5}{0.35\textwidth}
 \end{center}
 
 Entonces
@@ -3201,7 +3201,7 @@ $$+\frac{z_{00}-z_{01}-z_{10}+z_{11}}{(x_1-x_0)(y_1-y_0)}(x-x_0)(y-y_0).$$
 T\'{e}cnica basada en la construcci\'{o}n de una superficie recubridora de ciertas curvas planas (secciones de buques) posicionadas en $\mathbb{R}^3.$
 
 \begin{center}
-%\colocapdf{6.27}{0.45\textwidth}
+\colocapdf{6.27}{0.45\textwidth}
 \end{center}
 
 Con este procedimiento la superficie obtenida puede ser una superficie param\'{e}trica $S(u,v)=(x(u,v),y(u,v),z(u,v))$.
@@ -3420,7 +3420,7 @@ $\begin{array}{c} S(0,0)=P_{00}\\ S(0,1)=P_{0m}\\
 S(1,0)=P_{n0}\\ S(1,1)=P_{nm}
 \end{array}$
 \end{minipage} \quad
-\begin{minipage}{.3\textwidth}%\colocapdf{7.2}{\textwidth}
+\begin{minipage}{.3\textwidth}\colocapdf{7.2}{\textwidth}
 \end{minipage}
 
 \item Derivadas parciales:
@@ -3450,7 +3450,7 @@ es una curva de B\'{e}zier de grado $n$ con puntos de control $Q_i=\sum_{j=0}^m 
     y al igual que en el caso de las curvas es posible cuantificar esta deferencia en m\'{o}dulo.
 
 \begin{center}
-%\colocapdf{7.4}{0.45\textwidth}
+\colocapdf{7.4}{0.45\textwidth}
 \end{center}
 \end{itemize}
 
@@ -3473,7 +3473,7 @@ $$S_2(u,v)= \sum_{i=0}^n \sum_{j=0}^m Q_{ij} B_i^n(r) B_j^m(s)$$
 donde $r=\frac{u-u_1}{u_2-u_1}.$
 
 \begin{center}
-%\colocapdf{7.5}{0.55\textwidth}
+\colocapdf{7.5}{0.55\textwidth}
 \end{center}
 
 La superficie compuesta, definida para $u\in [u_0,u_2],$ \quad $v\in [v_0,v_1]$, es continua con clase ${\cal C}^k$ si lo es en los puntos de la curva param\'{e}trica $u=u_1$, uni\'{o}n de $S_1(u,v)$ y $S_2(u,v)$.
@@ -3496,7 +3496,7 @@ $$\frac{n}{u_1-u_0}(P_{nj}-P_{n-1,j})= \frac{n}{u_2-u_1}(Q_{1j}-Q_{0j}), \quad \
 Es decir, para cada $j=0,\ldots,m$ los puntos $P_{n-1,j}, P_{nj}=Q_{0j}, Q_{1j}$ tienen que estar alineados y a cierta distancia.
 
 \begin{center}
-%\colocapdf{7.7}{0.55\textwidth}
+\colocapdf{7.7}{0.55\textwidth}
 \end{center}
 
 Recordamos que el caso de curvas de B\'{e}zier compuestas, fijados los puntos de control, pod\'{\i}amos buscar una partici\'{o}n del intervalo global de definici\'{o}n y reparametrizar las curva simples para que la curva composici\'{o}n sea de clase ${\cal C}^1$. En el caso de superficies, fijados los puntos de control, no podemos hacer lo mismo. Los puntos de control y la partici\'{o}n de los intervalos han de ser fijados a priori para que la superficie de B\'{e}zier compuesta sea ${\cal C}^1$.
