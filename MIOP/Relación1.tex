@@ -384,13 +384,33 @@ ello asumir que la cantidad de trabajadores es continuamente divisible.
 \end{ejercicio}
 
 \newpage 
-\begin{ejercicio}{6}
+\begin{ejercicio}{6}\label{6}
 Descomponer utilizando la programación dinámica una cantidad $C > 0$ en tres partes de forma
 que cada una de ellas sea mayor o igual que $C/4$ y que su producto sea mínimo. Definir las etapas,
 estados, decisiones y recursividad de este proceso.
 \end{ejercicio}
 \begin{solucion}
+Primero vamos a plantearlo como un problema de programación lineal. Sean $x_1,x_2,x_3$ cada una de las 3 partes, las cuales cumplen $x_1+x_2+x_3=C$ y $x_1,x_2,x_3\geq\frac{C}{4}$. Con esta restricción tendríamos que calcular $\min x_1x_2x_3$. 
 
+Vamos a simplificarlo tomando $C=1$. Para programación dinámica tendríamos 3 etapas, cada una correspondiente a cada $x_i$. En los estados tenemos el índice $i$ y $d=1-\sum_{j=1}^ix_j$. La función recursiva por lo tanto sería
+\begin{align*}
+f(i,d)=&\min_{\frac{1}{4}\leq d-\frac{3-i}{4}} x_if(i+1,d-x_i)\\
+f(3,d)=&\begin{cases}
+d & d\geq\frac{1}{4}\\
++\infty & d<\frac{1}{4}
+\end{cases}
+\end{align*}
+
+Así, pues $f(2,d)=\min_{\frac{1}{4}\leq d-\frac{1}{4}}\begin{cases}
+x(d-x) & d-x\geq\frac{1}{4}\\
++\infty & d-x <\frac{1}{4}
+\end{cases}$
+Por tanto, el mínimo se alcanza en  se alcanza tanto en $\frac{1}{4}$ como en $d-\frac{1}{4}$. Elegimos por simplicidad $\frac{1}{4}$, con lo que sustituyendo nos da $f(2,d)=\frac{1}{4}(d-\frac{1}{4})$ si $d\geq\frac{1}{2}$ e infinito en caso contrario. Por último, en el primer paso tenemos la cantidad completa, por lo tanto calculamos
+$$f(1,1)=\min_{\frac{1}{4}\leq x\leq\frac{1}{2}}xf(2,1-x)=\begin{cases}
+x\frac{1}{4}(1-x-\frac{1}{4}) & 1-x\geq\frac{1}{2}\\
++\infty & cc
+\end{cases}$$
+Como $x\leq\frac{1}{2}$ era una de las condiciones, el segundo caso podemos descartarlo. El mínimo se alcanza tanto en $\frac{1}{2}$ como en $\frac{1}{4}$, cuyo resultado es $\frac{1}{32}$. Vamos a elegir la solución $x_1=\frac{1}{4}$. Habíamos obtenido también $x_2=\frac{1}{4}$, por lo que obtenemos $x_3=\frac{1}{2}$.
 \end{solucion}
 
 \newpage 
@@ -423,7 +443,44 @@ suma de los valores almacenados en las posiciones recorridas desde la posición 
 \end{center}
 \end{ejercicio}
 \begin{solucion}
+En Xpress
+\begin{verbatim}
+model hoja1ejercicio8
+uses "mmxprs"; !gain access to the Xpress-Optimizer solver
 
+!optional parameters section
+parameters
+n=4
+m=5
+end-parameters
+
+!sample declarations section
+declarations
+	c,f:array(1..n,1..m) of integer
+end-declarations
+c::[0, 4, 3, 6, 4,
+	7, 8, 6, 8, 8,
+	2, 3, 1, 6, 7,
+	6, 2, 9, 3, 0]
+writeln(c) !muestra por pantalla
+writeln("c::")
+forall(i in 1..n) do
+	forall(j in 1..m) write (c(i,j)," ")
+	writeln !Salto de linea
+end-do
+
+f(1,1):=c(1,1)
+forall(i in 2..n)f(i,1):=c(i,1)+f(i-1,1)
+forall(j in 2..m)f(1,j):=c(1,j)+f(1,j-1)
+forall(i in 2..n, j in 2..m) do
+	f(i,j):=c(i,j)+f(i-1,j)
+	if(c(i,j)+f(i,j-1)<f(i,j))then
+	f(i,j):=c(i,j)+f(i,j-1)
+	end-if
+end-do
+end-model
+
+\end{verbatim}
 \end{solucion}
 
 \newpage
@@ -467,6 +524,54 @@ número de escaños de la provincia $i$,
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+Tengamos en cuenta que $D_1=7$, $D_2=5.6$, $D_3=11.2$ y $D_4=4.2$. Los estados $(i,d)$ contienen el índice de la provincia y los escaños disponibles.
+$f(i,d)$ sería el mínimo valor de la máxima diferencia entre los escaños asignados y los que en teoría le corresponderían, desde la provincia $i$ hasta la 4, si en el momento hay disponibles $d$ escaños. 
+
+$$f(i,d)=\min_{x_i\leq d}\max\{|D_i-x_i|,f(i+1,d-x_i)\}$$
+$$f(4,d)=\begin{cases}
+0.2 & d\geq 4,x_4=4\\
+4.2-d & d<4, x_4=d
+\end{cases}$$
+
+$$f(3,d)=\min_{x_i\leq d}\max\{|11.2-x_3|,f(4,d-x_3)\}$$
+
+$f(3,0)=\min\max\{11.2,4.2\}=11.2;\quad f(3,1)=\min\begin{cases}
+\max\{11'2,3'2\}=11'2\\
+\max\{10'2,4'2\}=10'2
+\end{cases}=10'2\quad x_3=1;$
+
+$f(3,2)=\min\begin{cases}
+\max\{11'2,2'2\}=11.2 & x_3=0\\
+\max\{10'2,3'2\}=10.2 & x_3=1\\
+\max\{9'2,4'2\} & x_3=2
+\end{cases}=9'2, x_3=2$
+
+Los siguiente siguen una progresión similar, así que pasamos directamente a 
+$$f(3,8)=\min_{x_3\leq 8}\left.\begin{cases}
+11'2 & x_3=0\\
+10'2 & x_3=1\\
+\vdots & \\
+\max\{4'2,3'2\}=4'2 & x_3=7\\
+\max\{3'2,3'2\}=3'2 & x_3=8\\
+\max\{2'2,4'2\}=4'3 & x_3=9
+\end{cases}\right\}= 3.2\quad x_3=8$$
+
+La función sigue aumentando hasta llegar a 15 y se mantiene constante. La solución será 
+$$f(1,28)=\min_{x_1\leq 28}\max\{|7-x_1|,f(2,28-x_1)\}=\{0,0'4\}=0'4$$
+que se obtiene en $f(2,21)=0'4$, por lo que la solución óptima es 
+$$\boxed{x_1=7, x_2=6,x_3=11,x_4=4}$$
+
 \end{solucion}
+
+\newpage
+
+\begin{ejercicio}{extra}
+Aplicar un procedimiento de programación dinámica para resolver el problema:
+\begin{align*}
+\sum_{i=1}^N (x_i-bx_i)^2\\
+s.a. \sum_{i=1}^N x_i=C\\
+x\geq 0
+\end{align*}
+\end{ejercicio}
 
 \end{document}
