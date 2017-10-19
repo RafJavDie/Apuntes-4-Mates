@@ -48,4 +48,23 @@ Todo conjunto algebraico de $\Pnk$ se puede definir mediante un conjunto finito 
 ¿Se sigue cumplliendo que existe una correspondencia biunívoca entre los conjuntos algebraicos de $\Pnk$ y los ideales radicales homogéneos de $k[x_0,\xn{n}]$?
 Sea $x$ es algebraico entonces 
 $$\I(X)=\gene{\{f\in k[x_0,\xn{n}]^h \mid f(x)=0\}}$$.
+\begin{prop}
+Si $\V(X)=0$, entonces $\sqrt{I}=\gene{1}$ o bien $\sqrt{I}=\gene{x_0,\dotsc,x_n}$.
+\end{prop}
+\begin{dem}
+Pensemos primero en el caso afín. Si $\Va(I)\subset \A^{n+1}$ entonces $\Va(I)\subset\{(0,\dotsc,0)\}$, por lo que $\gene{x_0,\dotsc,x_n}\subset \sqrt{I}$.
+\end{dem}
+Sea $I$ homogéneo tal que $X=\Vp(I)\neq \emptyset$. Entonces, si $\pi$ es la aplicación que pasa de $\A^{n+1}$ a $\PP^n$, si tenemos un conjunto algebraico $X$ en $\PP^n$, $\{0\}\cup\pi^{-1}(X)$ es el cono afín de $X$. Tenemos que el cono afín de $X$ es precisamente $\Va(I)$.
+
+Sea $f\in \I_p(\Vp(I))$ homogéneo, entonces $f$ se anula en todo punto de $\Va(I)$ (por ser homogéneo y no constante). Por tanto, sabemos que $f\in \I_a(\Va(I))$ y, por el Teorema de los ceros en el caso afín, deducimos que $f\in \sqrt{I}$. Por tanto, $\I_p(\Vp(I))=\sqrt{I}$.
+
+Tenemos definiciones análogas de conjuntos algebraicos irreducibles y equivalencia entre irreducible e $\I(X)$ primo, descomposición de conjuntos algebraicos en irreducibles de manera única, dimensión de un conjunto algebraico, etc.
+
+\begin{ejer}
+Intentemos descomponer $\V(x_0^2-x_1x_2,x_0x_1-x_2x_3)$. Claramente $\V(x_0,x_2)$ está contenido. Quitando ese caso, podemos suponer que $x_2\neq 0$, por lo que podemos trabajar en el afín con $x_2=1$, quedando el sistema: $x_0^2-x_1=0$ y $x_0x_1-x_3=0$. Esto nos da el sistema $x_0 = t$, $x_1=t^2$, $x_3=t^3$. Por tanto, en el espacio afín esto sería $\V(x_0^2-x_1,x_0^3-x_3)$. Homogeneizando, $\V(x_0^2-x_1x_2,x_0^3-x_3x_2^2)$. 
+
+Dos polinomios de grado d y e en el plano proyectivo se cortan en de puntos.
+
+Si tienes un ideal generado por r polinomio es en P^n entonces cualquier componente irreducible tiene como mínimo n-r. 
+\end{ejer}
 \end{document}
