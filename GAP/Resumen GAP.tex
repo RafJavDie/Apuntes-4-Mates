@@ -6,7 +6,7 @@
 %\usepackage[francais]{babel}
 %\usepackage{lmodern}
 
-\usepackage{epstopdf}
+%\usepackage{epstopdefi}
 
 %\usepackage[spanish]{babel}
 %\usepackage[T1]{fontenc}
@@ -27,7 +27,7 @@
 %\newtheorem{thm}{Teorema}
 
 %\theoremstyle{definition}
-%\newtheorem{df}[thm]{Definici\'on}
+%\newtheorem{defi}[thm]{Definici\'on}
 %\newtheorem{nt}[thm]{Nota}
 %\newtheorem{obs}[thm]{Observaci\'on}
 %\newtheorem{ej}[thm]{Ejemplos}
@@ -51,7 +51,7 @@
 \newcommand{\fracc}[2]{{\displaystyle\frac{#1}{#2}}}
 \newcommand{\ul}[1]{\underline{#1}}
 \newcommand{\bs}[1]{\boldsymbol{#1}}
-\newcommand{\colocapdf}[2]{\quad\pdfimage width #2 {#1.pdf}}
+\newcommand{\colocapdefi}[2]{\quad\pdfimage width #2 {#1.pdf}}
 
 
 \begin{document}
@@ -1060,7 +1060,7 @@ el orden de este algoritmo es cuadr\'{a}tico $\bs{O(n^2)}.$
 
  \noindent\textbf{Algoritmo de ordenaci\'{o}n por inserci\'{o}n (bisecci\'{o}n)}:
     \begin{itemize}
-        \item \emph{Comparaciones}: $$\bs{\log_22+\log_23+\cdots+\log_2n\leq (n-1)\log_2n} \text{ es } \bs{O(n\log n)}$$
+%        \item \emph{Comparaciones}: $$\bs{\log_22+\log_23+\cdots+\log_2n\leq (n-1)\log_2n} \text{ es } \bs{O(n\log n)}$$
         \item \emph{Intercambios}: $\bs{O(n^2)}$ igual que en la inserci\'{o}n secuencial
     \end{itemize}
 
@@ -2052,7 +2052,7 @@ El vector $\alpha '(t)$ se de\-no\-mina vector velocidad o vector tangente de $\
 %\item Recta que pasa por  $P_0,\; P_1\in \mathbb{R}^3$:
 %\begin{center}
 %\begin{tabular}{lr}
-%\colocapdf{segmento1}{.35\textwidth} &  \colocapdf{segmento2}{.35\textwidth}\\
+%\colocapdf{segmento1}{.35\textwidth} &  %\colocapdf{segmento2}{.35\textwidth}\\
 %$\alpha'_1(t)=P_1-P_0$ &  $\alpha'_2(t)=3t^2(P_1-P_0)$
 %\end{tabular}
 %\end{center}
@@ -2060,7 +2060,7 @@ El vector $\alpha '(t)$ se de\-no\-mina vector velocidad o vector tangente de $\
 %\item Arcos de circunferencia:
 %\begin{center}
 %\begin{tabular}{lr}
-%\colocapdf{circmf1}{.35\textwidth} &  \colocapdf{circmf2}{.35\textwidth}\\
+%\colocapdf{circmf1}{.35\textwidth} &  %\colocapdf{circmf2}{.35\textwidth}\\
 %$\beta'_1(t)=(-sen(t), cos(t))$ &
 %$\beta'_2(s)=\left(\frac{-4}{(1+s^2)^2}, \frac{2(1-s^2)}{(1+s^2)^2}\right)$
 %\end{tabular}
@@ -2131,7 +2131,8 @@ $\alpha(t)=\left\{\begin{array}{ccc}
 (t,0,0) & si & t\in [-1,0]\\
  & & \\
 (2t,4t^2,0) & si & t\in (0, \frac{1}{2}]
-\end{array}\right.$ & \begin{minipage}{.4\textwidth}\colocapdf{partes}{\textwidth}\end{minipage}
+\end{array}\right.$ & p
+% \begin{minipage}{.4\textwidth}%\colocapdf{partes}{\textwidth}\end{minipage}
 \end{tabular}
 
 \vspace{0.3cm}
@@ -2164,8 +2165,8 @@ Entonces, $\mathbf{t}(t)$ es continua: $\mathbf{t}(0^{-})= \mathbf{t}(0^{+})$
 
 \vspace{0.3cm}
 
-\begin{df} Una curva continua $\alpha(t)$ para la que la direcci\'{o}n del vector tangente, es decir $\mathbf{t}(t)$, es continua se dice que posee continuidad visual o geom\'{e}trica de clase ${\cal G}^1$.
-\end{df}
+\begin{defi} Una curva continua $\alpha(t)$ para la que la direcci\'{o}n del vector tangente, es decir $\mathbf{t}(t)$, es continua se dice que posee continuidad visual o geom\'{e}trica de clase ${\cal G}^1$.
+\end{defi}
 
 \vspace{0.3cm}
 
@@ -2177,8 +2178,8 @@ Entonces, $\mathbf{t}(t)$ es continua: $\mathbf{t}(0^{-})= \mathbf{t}(0^{+})$
 
 \vspace{0.3cm}
 
-\begin{df} Una curva $\alpha(t)$ se dice que posee continuidad geom\'{e}trica de clase ${\cal G}^2$ si el vector curvatura, $V(t)=\kappa(t) \; {\bf n}(t),$ es continuo.
-\end{df}
+\begin{defi} Una curva $\alpha(t)$ se dice que posee continuidad geom\'{e}trica de clase ${\cal G}^2$ si el vector curvatura, $V(t)=\kappa(t) \; {\bf n}(t),$ es continuo.
+\end{defi}
 
 \vspace{0.5cm}
 
@@ -2227,7 +2228,7 @@ $$f(x)=a_1 B_1(x)+a_2 B_2(x)+\cdots+a_n B_n(x)$$
 %$$P(x)=a_0 \;B^n_0(x)+a_1 \;B^n_1(x)+a_2\;B^n_2(x)+\cdots+a_n \;B^n_n(x)$$
 %\end{itemize}
 %
-\subsection{Interpolaci�n Polinomial}
+\subsection{Interpolación Polinomial}
 
 Sean $(x_0,y_0), (x_1,y_1),\ldots,(x_n,y_n),$ $n+1$ puntos de $\mathbb{R}^2.$ O bien $y=f(x)$ de c\'{a}lculo costoso o complejo, entonces elegimos $n+1$ puntos $\{(x_i,f(x_i))\},$ con $0\leq i\leq n.$
 
@@ -2235,7 +2236,7 @@ Podemos considerar $x_0<x_1<\cdots <x_n$.
 
 {\bf Objetivo:} Dibujar una curva, lo m\'{a}s simple o sencilla posible, que intuitivamente siga la forma de  estos puntos.
 
-Posible soluci\'{o}n: Polinomio de Interpolaci\'{o}n
+Posible soluci\'{o}n: Polinomio de Interpolación
 
 %\begin{center}
 %\colocapdf{puntos}{0.55\textwidth}
@@ -2250,7 +2251,7 @@ Posible soluci\'{o}n: Polinomio de Interpolaci\'{o}n
 %Posible soluci\'{o}n: Polinomio de Interpolaci\'{o}n
 
 \begin{center}
-\colocapdf{polinomioInterpolacion}{0.55\textwidth}
+%\colocapdf{polinomioInterpolacion}{0.55\textwidth}
 %\colocapdf{puntos}{0.55\textwidth}
 \end{center}
 
@@ -2299,9 +2300,9 @@ No es necesario que las abscisas de los puntos a interpolar est\'{e}n en orden c
 \item $P(x):=P_n(x)$ polinomio de interpolaci\'{o}n de $(x_0,y_0),$ $(x_1,y_1),$ $\ldots,$ $(x_n,y_n)$
 \end{itemize}
 
-\begin{df}
+\begin{defi}
 $P_i(x)=P_{i-1}(x)+r_i(x) \quad 1\leq i\leq n$
-\end{df}
+\end{defi}
 
 \vspace{0.3cm}
 
@@ -2331,7 +2332,7 @@ $$c_i=\frac{y_i-P_{i-1}(x_i)}{N_i(x_i)}=\frac{y_i-P_{i-1}(x_i)}{\prod_{j=0}^{i-1
 
 %\begin{center}
 %\begin{tabular}{lr}
-%\colocapdf{polinomioInterpolacion}{.35\textwidth} &  \colocapdf{local}{.35\textwidth}\\
+%\colocapdf{polinomioInterpolacion}{.35\textwidth} &  %\colocapdf{local}{.35\textwidth}\\
 %\end{tabular}
 %\end{center}
 
@@ -2342,18 +2343,18 @@ $$P(x)-\overline{P}(x)= (a_k-\overline{a}_k) B_k(x)$$
 Para que $P(x)$ y $\overline{P}(x)$ se diferencien s\'{o}lo en un peque\~{n}o intervalo (siendo id\'{e}nticos en el resto), nos interesan bases que sean nulas en gran parte de $[x_0,x_n]$.
 \end{itemize}
 
-\subsection{Spline C�bico}
+\subsection{Spline Cúbico}
 
-\subsubsection{Minimizando Oscilaci�n:}
+\subsubsection{Minimizando Oscilación:}
 
-\begin{df}
+\begin{defi}
 Spline c\'{u}bico es una funci\'{o}n de clase $C^2$ constituida por polinomios de $3^{er}$ grado definidos en cada subintervalo $[x_i,x_{i+1}]$ y con segunda derivada nula en sus extremos.
-\end{df}
+\end{defi}
 
 %DIBUJos 2.18 y 2.19
 \begin{center}
 \begin{tabular}{cc}
-\colocapdf{2.18}{.4\textwidth} & \colocapdf{2.19}{.4\textwidth}
+%\colocapdf{2.18}{.4\textwidth} & %\colocapdf{2.19}{.4\textwidth}
 \\ Polinomio de Interpolaci\'{o}n &  Spline C\'{u}bico
 \end{tabular}
 \end{center}
@@ -2365,18 +2366,18 @@ Spline c\'{u}bico es una funci\'{o}n de clase $C^2$ constituida por polinomios d
 %\end{tabular}
 %\end{center}
 
-\subsection{Interpolaci�n De Hermite}
+\subsection{Interpolación De Hermite}
 
 %\noindent\celeste{\Large\underline{\textbf{:}}}
 Dados los puntos $(x_0,y_0),\ldots,(x_n,y_n)$ buscamos un polinomio $P(x)$ que adem\'{a}s de interpolar, lo haga con pendientes especificadas $y'_0,\ldots,y'_n$.
 
 \begin{center}
-\colocapdf{hermite}{0.55\textwidth}
+%\colocapdf{hermite}{0.55\textwidth}
 \end{center}
 
 Tal polinomio existe y es \'{u}nico (ver Cordero y Cort\'{e}s, {\it Curvas y Superficies para el modelado geom\'{e}trico}, Ed. Ra-Ma)
 
-\subsubsection{Construcci�n:}
+\subsubsection{Construcción:}
 
 $P(x)$ ha de verificar:
 $\left\{\begin{array}{cc}
@@ -2421,14 +2422,14 @@ definidos generalmente para $x\in [0,1].$
 %\begin{minipage}{.7\textwidth}
 %\begin{tabular}{cc}
 %Para $n=1:$ & $ \left\{\begin{array}{l} B_0^1(x)=1-x \\ B_1^1(x)=x
-%\end{array} \right.$ \end{tabular} \end{minipage} \begin{minipage}{.15\textwidth}\colocapdf{3.1(1)}{\textwidth}\end{minipage}
+%\end{array} \right.$ \end{tabular} \end{minipage} \begin{minipage}{.15\textwidth}%\colocapdf{3.1(1)}{\textwidth}\end{minipage}
 %
 %\begin{minipage}{.7\textwidth}
 %\begin{tabular}{cc}
 %Para $n=2:$ & $\left\{ \begin{array}{l} B_0^2(x)=(1-x)^2 \\
 %B_1^2(x)=2x(1-x) \\ B_2^2(x)=x^2 \end{array} \right.$
 %\end{tabular} \end{minipage}
-%\begin{minipage}{.15\textwidth}\colocapdf{3.1(2)}{\textwidth}\end{minipage}
+%\begin{minipage}{.15\textwidth}%\colocapdf{3.1(2)}{\textwidth}\end{minipage}
 %
 %\vspace{0.2cm}
 %
@@ -2439,7 +2440,7 @@ definidos generalmente para $x\in [0,1].$
 %\end{array} \right.$
 %\end{tabular}
 %\end{minipage}
-%\begin{minipage}{.15\textwidth}\colocapdf{3.1(3)}{\textwidth}
+%\begin{minipage}{.15\textwidth}%\colocapdf{3.1(3)}{\textwidth}
 %\end{minipage}
 %
 %\vspace{1cm}
@@ -2453,7 +2454,7 @@ definidos generalmente para $x\in [0,1].$
 %\end{array} \right.$
 %\end{tabular}
 %\end{minipage}
-%\begin{minipage}{.15\textwidth}\colocapdf{3.1(4)}{\textwidth}
+%\begin{minipage}{.15\textwidth}%\colocapdf{3.1(4)}{\textwidth}
 %\end{minipage}
 %
 \subsubsection{Propiedades:}
@@ -2486,7 +2487,7 @@ Partici\'{o}n de la Unidad
 
 \subsubsection{Curvas Simples:}
 
-\begin{df}
+\begin{defi}
 Lamamos curva de B\'{e}zier simple o de un tramo a la curva en forma param\'{e}trica donde cada coordenada es expresada como combinaci\'{o}n lineal de la base de Bernstein:
 
 $$C(t)=\sum_{k=0}^n P_k \; B_k^n(t), \quad \quad t\in [0,1]$$
@@ -2495,7 +2496,7 @@ con $P_k=(x_k,y_k)$ si es una curva en $\mathbb{R}^2$ o $P_k=(x_k,y_k,z_k)$ si e
 \vspace{0.3cm}
 
 Los coeficientes $P_k$ se denominan puntos de control de la curva de B\'{e}zier.
-\end{df}
+\end{defi}
 
 %{\bf Ejemplo:}
 %
@@ -2510,7 +2511,7 @@ Los coeficientes $P_k$ se denominan puntos de control de la curva de B\'{e}zier.
 %\item Para $n=2:$
 %$$C(t)=\sum_{k=0}^2 P_k B_k^2(t)=P_0B_0^2(t)+P_1 B_1^2(t)+P_2B_2^2(t)=$$ $$=(1-t)^2P_0+2t(1-t)P_1+t^2P_2$$
 %
-%\begin{minipage}{.35\textwidth}\colocapdf{3.3}{\textwidth}
+%\begin{minipage}{.35\textwidth}%\colocapdf{3.3}{\textwidth}
 %\end{minipage}
 %\begin{minipage}{0.55\textwidth}
 %\begin{tabular}{c} $C'(t)=-2(1-t)P_0+2(1-2t)P_1+2tP_2$ \\  \\ \\ $C'(0)=2(P_1-P_0)$ \\ $C'(1)=2(P_2-P_1)$
@@ -2522,7 +2523,7 @@ Los coeficientes $P_k$ se denominan puntos de control de la curva de B\'{e}zier.
 %B_1^3(t)+P_2B_2^3(t)+P_3B_3^3(t)=$$
 %$$=(1-t)^3P_0+3t(1-t)^2P_1+3t^2(1-t)P_2+t^3P_3$$
 %
-%\begin{minipage}{.35\textwidth}\colocapdf{3.4}{\textwidth}
+%\begin{minipage}{.35\textwidth}%\colocapdf{3.4}{\textwidth}
 %\end{minipage}
 %\begin{minipage}{0.55\textwidth}
 %\begin{tabular}{c} $C'(t)=-3(1-t)^2P_0+3(1-t)(1-3t)P_1+$ \\ $+3t(2-3t)P_2+3t^2P_3$ \\ \\ $C'(0)=3(P_1-P_0)$ \\ $C'(1)=3(P_3-P_2)$
@@ -2536,8 +2537,7 @@ $$\overline{C}(t)=(1-t)^3P_0+3t(1-t)^2\overline{P}_1+3t^2(1-t)P_2+t^3P_3$$
 Entonces:
 $$C(t)-\overline{C}(t)=3t(1-t)^2(P_1-\overline{P}_1)=B_1^3(t)(P_1-\overline{P}_1)$$
 \begin{center}
-\begin{minipage}{.2\textwidth}\colocapdf{3.6}{\textwidth}
-\end{minipage}
+%\begin{minipage}{.2\textwidth}%\colocapdf{3.6}{\textwidth}\end{minipage}
 \begin{minipage}{0.55\textwidth}
 \begin{tabular}{c} $max_{t\in[0,1]}B_1^3(t)=\frac{4}{9}$
 \end{tabular}
@@ -2550,7 +2550,7 @@ $$max_{t\in[0,1]}\parallel C(t)-\overline{C}(t)\parallel
 \vspace{0.3cm}
 
 \begin{center}
-\colocapdf{3.7}{0.45\textwidth}
+%\colocapdf{3.7}{0.45\textwidth}
 \end{center}
 
 Las curvas difieren a lo sumo en algo menos de la mitad de la norma de la diferencia de los puntos de control y es nula al aproximarnos a los extremos.
@@ -2612,7 +2612,7 @@ $$C(t)=(1-t)P_0^{(2)}+tP_1^{(2)}$$
 
 \begin{center}
 \begin{tabular}{lr}
-\colocapdf{3.12(1)}{.35\textwidth} &  \colocapdf{3.12(2)}{.35\textwidth}\\
+%\colocapdf{3.12(1)}{.35\textwidth} &  %\colocapdf{3.12(2)}{.35\textwidth}\\
 \end{tabular}
 \end{center}
 
@@ -2652,7 +2652,7 @@ Se tiene que $$C(t)=P_0^{(n)}$$
 %
 %\end{frame}
 
-\subsubsection{Reparametrizaci�n:}
+\subsubsection{Reparametrización:}
 Aunque las curvas de B\'{e}zier simples $C(t)$ est\'{a}n definidas para $t\in [0,1]$, es posible reparametrizarlas para que su intervalo de definici\'{o}n sea cualquier $[a,b]$ mediante un cambio de variable af\'{\i}n $t=\frac{s-a}{b-a}$:
 $$\displaystyle \overline{C}(s)=\sum_{k=0}^n P_k B_k^n \left(\frac{s-a}{b-a}\right),\quad \quad s\in[a,b]$$
 
@@ -2666,9 +2666,9 @@ Por tanto: $\frac{1}{b-a}C'(t_0)=\frac{1}{b-a}\sum_{k=0}^n P_k B_k^{n \prime} (t
 
 Luego, en puntos correspondientes los dos vectores tangentes son el mismo salvo contante.
 
-\begin{df}
+\begin{defi}
 Una curva de B\'{e}zier compuesta es la uni\'{o}n sucesiva de varias curvas de B\'{e}zier simples de bajo grado (2 \'{o} 3).
-\end{df}
+\end{defi}
 
 \subsubsection{Composici\'{o}n de dos curvas de B\'{e}zier simples:}
 
@@ -2677,13 +2677,13 @@ Sean $P_0,P_1,\ldots,P_n$ y $Q_0,Q_1,\ldots,Q_m$ los puntos de control de dos cu
 Si queremos que la curva compuesta sea continua $P_n=Q_0$
 
 \begin{center}
-\colocapdf{3.14}{.55\textwidth}
+%\colocapdf{3.14}{.55\textwidth}
 \end{center}
 
 Adem\'{a}s, podemos exigir que las dos curvas se unan manteniendo una cierta suavidad. Para ello, los vectores tangentes a las dos curvas han de tener la misma direcci\'{o}n en el punto de uni\'{o}n $P_n=Q_0.$
 
 \begin{center}
-\colocapdf{3.15}{.55\textwidth}
+%\colocapdf{3.15}{.55\textwidth}
 \end{center}
 
 Es decir, los vectores tangentes $P_n-P_{n-1}$ y $Q_1-Q_0=Q_1-P_n$ han de ser proporcionales. Cuando se verifique esta condici\'{o}n, diremos que la curva compuesta tiene continuidad geom\'{e}trica o visual de clase ${\cal G}^1.$
@@ -2761,7 +2761,7 @@ En caso de que las dos curvas simples sean de grado $n$, estas condiciones nos d
 
 Como vemos la composici\'{o}n de curvas simples con continuidad de clase mayor que $1$ nos proporcionar\'{a} cada vez mayor restricci\'{o}n sobre los puntos de control y por tanto p\'{e}rdida de flexibilidad. Entonces, en adelante consideraremos curvas compuestas de case ${\cal C}^1$.
 
-\subsubsection{Curvas de B�zier compuestas ${\cal C}^1$ de varios tramos:}
+\subsubsection{Curvas de Bézier compuestas ${\cal C}^1$ de varios tramos:}
 
 % \vspace{0.2cm}
 Sean $m$ curvas de B\'{e}zier simples de grado $n$,
@@ -2804,8 +2804,8 @@ $$\begin{array}{rcl} \overline{P}_{0, (i+1)}&=&P_{0, (i+1)}+h\\ \overline{P}_{n,
 
 \begin{center}
 \begin{tabular}{cc}
-\colocapdf{3.21(1)}{.45\textwidth} &
-\colocapdf{3.21(2)}{.45\textwidth}
+%\colocapdf{3.21(1)}{.45\textwidth} &
+%\colocapdf{3.21(2)}{.45\textwidth}
 \end{tabular}
 \end{center}
 
@@ -2827,8 +2827,8 @@ con lo que la partici\'{o}n $u_0<u_1<\ldots<u_{m-1}<u_m$ sigue proporcionando qu
 
 \begin{center}
 \begin{tabular}{cc}
-\colocapdf{3.22(1)}{.45\textwidth} &
-\colocapdf{3.22(2)}{.45\textwidth}
+%\colocapdf{3.22(1)}{.45\textwidth} &
+%\colocapdf{3.22(2)}{.45\textwidth}
 \end{tabular}
 \end{center}
 
@@ -2841,8 +2841,8 @@ La partici\'{o}n $u_0<u_1<\ldots<u_{m-1}<u_m$ sigue haciendo que la nueva curva 
 
 \begin{center}
 \begin{tabular}{cc}
-\colocapdf{3.23(1)}{.45\textwidth} &
-\colocapdf{3.23(2)}{.45\textwidth}
+%\colocapdf{3.23(1)}{.45\textwidth} &
+%\colocapdf{3.23(2)}{.45\textwidth}
 \end{tabular}
 \end{center}
 
@@ -2854,8 +2854,8 @@ La partici\'{o}n $u_0<u_1<\ldots<u_{m-1}<u_m$ sigue proporcionando que la nueva 
 
 \begin{center}
 \begin{tabular}{cc}
-\colocapdf{3.24(1)}{.45\textwidth} &
-\colocapdf{3.24(2)}{.45\textwidth}
+%\colocapdf{3.24(1)}{.45\textwidth} &
+%\colocapdf{3.24(2)}{.45\textwidth}
 \end{tabular}
 \end{center}
 
@@ -2901,7 +2901,7 @@ Consideremos el siguiente ejemplo para $m=4$:
 
 \vspace{0.2cm}
 
-\begin{minipage}{.4\textwidth}\colocapdf{3.28}{\textwidth}
+\begin{minipage}{.4\textwidth}%\colocapdf{3.28}{\textwidth}
 \end{minipage} \quad \quad
 \begin{minipage}{.55\textwidth}
 Los puntos $P_1$ y $P_{11}$ son libres y los $P_0,P_3,P_6,P_9,P_{12}$ fijos.
@@ -2984,7 +2984,7 @@ $$P_{3m-1}=P_{3m}-\frac{u_m-u_{m-1}}{3} C'(u_m)=Q_m-\frac{u_m-u_{m-1}}{3} D_m$$
 
 \section{Superficies de B\'{e}zier}
 
-\subsection{Introducci�n}
+\subsection{Introducción}
 
 Sean $(x_0,y_0),(x_1,y_1), \ldots,(x_n,y_n)$  \quad $n+1$ puntos en $\mathbb{R}^2$ y sean $z_0,z_1,\ldots,z_n$ los valores a interpolar. Buscamos un polinomio $P(x,y)$ tal que
 $$z_i=P(x_i,y_i), \quad \quad i=0,\ldots,n.$$
@@ -3074,7 +3074,7 @@ De esta forma los argumentos $(x_i,y_j)$ son nodos de un malla rectangular.
 Cada punto de la malla $(x_i,y_j)$ tiene asignado una altura $z_{ij}$.
 
 \begin{center}
-\colocapdf{6.2}{0.55\textwidth}
+%\colocapdf{6.2}{0.55\textwidth}
 \end{center}
 
 Buscamos un polinomio $P(x,y)$ que verifique:
@@ -3084,7 +3084,7 @@ m.$$
 
 Las alturas $z_{00},z_{10},\ldots,z_{n0},$ correspondientes a los puntos $(x_0,y_0),(x_1,y_0),\ldots,(x_n,y_0),$ pueden ser interpoladas por un polinomio de grado menor o igual que $n$ :
 
-\begin{minipage}{.35\textwidth}\colocapdf{6.3}{\textwidth}
+\begin{minipage}{.35\textwidth}%\colocapdf{6.3}{\textwidth}
 \end{minipage} \quad \quad \quad
 \begin{minipage}{.4\textwidth} $\left\{ \begin{array}{rl}
 z=P_0(x)=&\sum_{i=0}^n a_{i0} B_i(x)\\
@@ -3104,7 +3104,7 @@ P_m(x)=\sum_{i=0}^n a_{im} B_i(x) \quad \mbox{ verifica } \quad
 P_m(x_k)=z_{km}, \quad k=0,\ldots,n \\
 \end{array}$$
 \begin{center}
-\colocapdf{6.4}{0.4\textwidth}
+%\colocapdf{6.4}{0.4\textwidth}
 \end{center}
 
 Finalizada la fase de interpolaci\'{o}n en la variable $x$, comencemos con la interpolaci\'{o}n con respecto a la variable $y$. Denotemos $C_j(y)$ la base de polinomios de grado menor o igual que $m$. Consideramos
@@ -3146,16 +3146,16 @@ $$P_j(x)=\sum_{i=0}^n z_{ij} \overline{L}_i(x)$$
 entonces,
 $$P(x,y)=\sum_{j=0}^m P_j(x) L_j(y)=\sum_{j=0}^m \left( \sum_{i=0}^n z_{ij} \overline{L}_i(x)\right) L_j(x)=\sum_{i=0}^n \sum_{j=0}^m z_{ij} \overline{L}_i(x) L_j(y)$$
 
-expresi\'{o}n en la que aparece expl\'{\i}citamente los valores interpolados $z_{ij}$.
+expresi\'{o}n en la que aparece explícitamente los valores interpolados $z_{ij}$.
 
 \subsection{Superficie bilineal}
 
-\begin{df}
+\begin{defi}
 Una superficie bilineal es la superficie que interpola $4$ puntos $(x_0,y_0,z_{00})$,\;$(x_0,y_1,z_{01})$,\;$(x_1,y_0,z_{10})$,\;$(x_1,y_1,z_{11})$; es decir, una superficie producto tensorial para $n=m=1$.
-\end{df}
+\end{defi}
 
 \begin{center}
-\colocapdf{6.5}{0.45\textwidth}
+%\colocapdf{6.5}{0.45\textwidth}
 \end{center}
 
 Podemos construirla siguiendo el mismo procedimiento descrito anteriormente. Interpolamos en primer lugar con respecto a la variable $x$:
@@ -3167,7 +3167,7 @@ $$P_1(x)=\frac{x_1 z_{01}-x_0 z_{11}}{x_1-x_0}+\frac{z_{11}-z_{01}}{x_1-x_0}x=a_
 \end{itemize}
 
 \begin{center}
-\colocapdf{6.6}{0.35\textwidth}
+%\colocapdf{6.6}{0.35\textwidth}
 \end{center}
 
 A continuaci\'{o}n interpolamos con respecto a $y$:
@@ -3182,7 +3182,7 @@ $$Q_1(y)=\frac{y_1 a_{10}-y_0 a_{11}}{y_1-y_0}+\frac{a_{11}-a_{10}}{y_1-y_0}y$$
 \end{itemize}
 
 \begin{center}
-\colocapdf{6.5}{0.35\textwidth}
+%\colocapdf{6.5}{0.35\textwidth}
 \end{center}
 
 Entonces
@@ -3201,7 +3201,7 @@ $$+\frac{z_{00}-z_{01}-z_{10}+z_{11}}{(x_1-x_0)(y_1-y_0)}(x-x_0)(y-y_0).$$
 T\'{e}cnica basada en la construcci\'{o}n de una superficie recubridora de ciertas curvas planas (secciones de buques) posicionadas en $\mathbb{R}^3.$
 
 \begin{center}
-\colocapdf{6.27}{0.45\textwidth}
+%\colocapdf{6.27}{0.45\textwidth}
 \end{center}
 
 Con este procedimiento la superficie obtenida puede ser una superficie param\'{e}trica $S(u,v)=(x(u,v),y(u,v),z(u,v))$.
@@ -3365,7 +3365,7 @@ l_{n0}&l_{1n}& \cdots& l_{nn}
 %
 \subsection{Superficies de B\'{e}zier}
 
-\begin{df}
+\begin{defi}
 Dados un conjunto de puntos de control
 $\{P_{ij}=(a_{ij},b_{ij},c_{ij})\}$ con $0\leq i\leq n,\quad 0\leq j\leq m,$ definimos la superficie de B\'{e}zier generada por estos puntos como la siguiente superficie param\'{e}trica:
 
@@ -3379,7 +3379,7 @@ Esto es:
 $$S(u,v)=\sum_{i=0}^n \sum_{j=0}^m (a_{ij},b_{ij},c_{ij}) B_i^n(u)B_j^m(v)=$$
 
 $$\left( \sum_{i=0}^n \sum_{j=0}^m a_{ij} B_i^n(u) B_j^m(v),\sum_{i=0}^n \sum_{j=0}^m b_{ij} B_i^n(u) B_j^m(v), \sum_{i=0}^n \sum_{j=0}^m c_{ij} B_i^n(u) B_j^m(v) \right)$$
-\end{df}
+\end{defi}
 
 %{\bf Ejemplo:}
 %
@@ -3420,7 +3420,7 @@ $\begin{array}{c} S(0,0)=P_{00}\\ S(0,1)=P_{0m}\\
 S(1,0)=P_{n0}\\ S(1,1)=P_{nm}
 \end{array}$
 \end{minipage} \quad
-\begin{minipage}{.3\textwidth}\colocapdf{7.2}{\textwidth}
+\begin{minipage}{.3\textwidth}%\colocapdf{7.2}{\textwidth}
 \end{minipage}
 
 \item Derivadas parciales:
@@ -3450,7 +3450,7 @@ es una curva de B\'{e}zier de grado $n$ con puntos de control $Q_i=\sum_{j=0}^m 
     y al igual que en el caso de las curvas es posible cuantificar esta deferencia en m\'{o}dulo.
 
 \begin{center}
-\colocapdf{7.4}{0.45\textwidth}
+%\colocapdf{7.4}{0.45\textwidth}
 \end{center}
 \end{itemize}
 
@@ -3473,7 +3473,7 @@ $$S_2(u,v)= \sum_{i=0}^n \sum_{j=0}^m Q_{ij} B_i^n(r) B_j^m(s)$$
 donde $r=\frac{u-u_1}{u_2-u_1}.$
 
 \begin{center}
-\colocapdf{7.5}{0.55\textwidth}
+%\colocapdf{7.5}{0.55\textwidth}
 \end{center}
 
 La superficie compuesta, definida para $u\in [u_0,u_2],$ \quad $v\in [v_0,v_1]$, es continua con clase ${\cal C}^k$ si lo es en los puntos de la curva param\'{e}trica $u=u_1$, uni\'{o}n de $S_1(u,v)$ y $S_2(u,v)$.
@@ -3496,7 +3496,7 @@ $$\frac{n}{u_1-u_0}(P_{nj}-P_{n-1,j})= \frac{n}{u_2-u_1}(Q_{1j}-Q_{0j}), \quad \
 Es decir, para cada $j=0,\ldots,m$ los puntos $P_{n-1,j}, P_{nj}=Q_{0j}, Q_{1j}$ tienen que estar alineados y a cierta distancia.
 
 \begin{center}
-\colocapdf{7.7}{0.55\textwidth}
+%\colocapdf{7.7}{0.55\textwidth}
 \end{center}
 
 Recordamos que el caso de curvas de B\'{e}zier compuestas, fijados los puntos de control, pod\'{\i}amos buscar una partici\'{o}n del intervalo global de definici\'{o}n y reparametrizar las curva simples para que la curva composici\'{o}n sea de clase ${\cal C}^1$. En el caso de superficies, fijados los puntos de control, no podemos hacer lo mismo. Los puntos de control y la partici\'{o}n de los intervalos han de ser fijados a priori para que la superficie de B\'{e}zier compuesta sea ${\cal C}^1$.
