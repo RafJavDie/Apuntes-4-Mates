@@ -1,0 +1,39 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\A}{{\mathcal{A}}}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Problemas de Variedades Diferenciables - Tema 1}
+\author{Javi, Rafa, Diego}
+\maketitle
+
+
+
+\begin{ejercicio}{5}
+Sea $N$ una variedad diferenciable y $f : M \to N$ una biyección.
+Probar que se puede dotar a $M$ de una única estructura de variedad diferenciable
+que convierte a $f$ en un difeomorfismo. ¿De qué dimensión?
+\end{ejercicio}
+\begin{solucion}
+Dotamos a $M$ de la topología inicial, con la cual se convierte en homeomorfismo y por lo tanto $M$ será T2 y 2ºN. Denotemos por $\calA_N$ al atlas de $N$, el cual supondremos que es de dimensión $n$. Vamos ahora a construir el atlas de $M$. Sea $p\in M\Rightarrow f(p)\in N\Rightarrow\exists (U,\varphi)\in\calA_N\mid f(p)\in U$. Como $f$ es homeomorfismo, $f^{-1}(U)$ es abierto de $M$ tal que $p\in f^{-1}(U)$. La aplicacíón 
+$$\varphi\circ f:f^{-1}(U)\to\varphi(U)\subset\R^n$$
+es homeomorfismo por ser composición de homeomorfismos. Así pues, $(f^{-1}(U),\varphi\circ f)$ es una carta local de $M$ de dimensión $n$ , con $p\in f^{-1}(U)$. El atlas $\calA_M$ será la familia construida con estas cartas, que tiene tantas cartas como tiene $\calA_N$. Veamos que están relacionadas dos a dos. Sean $(f^{-1}(U),\varphi\circ f),(f^{-1}(V),\psi\circ f)$ donde $(U,\varphi),(V,\psi)\in\calA_N$. Supongamos que $f^{-1}(U)\cap f^{-1}(V)=f^{-1}(U\cap V)\neq\emptyset$, por lo que $U\cap V\neq\emptyset$. Como $f$ es biyectiva, el cambio de cartas
+$$(\varphi\circ )\circ(\psi\circ f)^{-1}:\psi\circ f(f^{-1}(U\cap V))\to\varphi\circ f(f^{-1}(U\cap V))$$
+es igual a
+$$\varphi\circ\psi^{-1}:\psi(U\cap V)\to\varphi(U\cap V),$$
+que es el cambio de cartas en $N$, por lo que es diferenciable. El otro cambio de cartas es análogo. 
+
+Probemos ahora que $f$ es difeomorfismo. Sea $(f^{-1}(U),\varphi\circ f)$ de $\calA_M$ y $(V,\psi)$ de $\calA_N$ tal que $f^{-1}(U)\cap f^{-1}(V)\neq\emptyset$. Tenemos que ver que es diferenciable la aplicación
+$$\psi\circ f\circ(\varphi\circ f)^{-1}:(\varphi\circ f)(f^{-1}(U\cap V))\to\psi f(\varphi\circ f)^{-1}[\varphi f(f^{-1}(U\cap V))]$$
+Simplificando, obtenemos un cambio de cartas en $N$, que es diferenciable, por lo que tenemos que $f$ lo es. Tenemos que probar lo mismo para $f^{-1}$, es decir, que dadas $(U,\psi)\in\calA_N$ y $(f^{-1}(U),\varphi\circ f)$ tales que $V\cap (f^{-1})^{-1}(f(U))=V\cap U\neq\emptyset$ se tiene la diferenciabilidad de la aplicación
+$$(\varphi\circ f)\circ f^{-1}\circ\psi^{-1}:\psi(U\cap V)\to\varphi ff^{-1}\psi^{-1}(\psi(U\cap V)).$$
+De nuevo, simplificando obtenemos un cambio de cartas en $N$. 
+
+Nos queda probar la unicidad de la estructura. Para ello, supongamos que hay otra estructura de variedad diferenciable sobre $M$ que convierte a $f$ en difeomorfismo. Llamemos $\calA=\{(O_i,\phi_i)\}_{i\in I}$ al atlas de esta estructura. Queremos ver que este atlas está relacionado con $\calA_M$. Para ello, tomamos $(O,\phi)\in\calA$ y $(f^{-1}(U),\varphi\circ f)$ tales que $O\cap f^{-1}(U)\neq\emptyset$. Entonces
+$$(\varphi\circ f)\circ\phi^{-1}:\phi(O\cap f^{-1}(U))\to\varphi f\phi^{-1}(\phi(O\cap f^{-1}(U))$$
+es diferenciable porque $\calA$ hace que $f$ sea diferenciable. La otra composición es análoga. Así, los dos atlas forman parte de la misma estructura diferencible.
+
+\end{solucion}
+
+\end{document}
