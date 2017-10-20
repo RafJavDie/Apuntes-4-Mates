@@ -573,5 +573,21 @@ s.a. \sum_{i=1}^N x_i=C\\
 x\geq 0
 \end{align*}
 \end{ejercicio}
+\begin{solucion}
+Obsérvese en primer lugar que $$\sum_{i=1}^N (x_i-bx_i)^2=\sum_{i=1}^N (1-b)^2x_i^2=(1-b)^2\sum_{i=1}^N x_i^2,$$ por lo que basta minimizar la suma de los cuadrados con las restricciones anteriores. Vamos a identificar $N$ etapas, cada una correspondiente al valor asignado a la variable $x_i$. Definimos los estados $(i,d)$, donde $i$ es el índice de la variable en la que nos encontramos y $d=C-\sum_{j=1}^i x_j$ es la cantidad que queda disponible para asignar a la variable. En nuestro modelo, $f(i,d)$ representará el valor mínimo de $\sum_{j=i}^N x_i^2$ si en la etapa $i$ hay una cantidad $d$ para asignar. La función recursiva será $f(i,d)=\min_{0\leq x_i\leq C}  x_i^2+f(i+1,d-x_i)$, teniendo en cuenta que $f(N,d)=\begin{cases}
+d^2 & d\geq 0\\
++\infty & d<0
+\end{cases}$. Comencemos el proceso recursivo.
+
+$$f(N-1,d)=\min_{0\leq x_{N-1}\leq C}x_{N-1}^2+(d-x_{N-1})^2$$
+La función obtiene su mínimo en $x_{N-1}=\frac{d}{2}$, donde vale $\frac{d^2}{2}$. 
+
+$$f(N-2,d)=\min_{0\leq x_{N-2}\leq C}x_{N-2}^2+\frac{(d-x_{N-2})^2}{2}$$
+La función alcanza su mínimo en $x_{N-2}=\frac{d}{3}$, donde vale $\frac{d^2}{3}$. 
+
+Por inducción se prueba fácilmente que $f(i,d)=\frac{d^2}{N-i+1}$ y $x_i=\frac{d}{N-i+1}$. Como la solución es $f(1,C)$, basta sustituir y obtenemos
+$f(1,C)=\frac{C^2}{N}$ y $x_i=\frac{C}{N}$. SURPRISE MOTHERFUCKER ERA JUSTO LO QUE UNO SE ESPERABA.
+\end{solucion}
+
 
 \end{document}
