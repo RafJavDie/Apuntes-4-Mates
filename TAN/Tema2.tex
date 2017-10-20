@@ -1,0 +1,55 @@
+\documentclass[TAN.tex]{subfiles}
+\begin{document}
+\chapter{Distribución de los números primos\\Métodos elemntales}
+
+\section{Funciones de Chebyshev}
+\begin{nota}
+\[ π(x)=\sum_{p≤x} 1, \quad θ(x) = \sum_{p≤x} \log p, \quad ψ(x)=\sum_{p^k≤x} \log p \]
+\end{nota}
+Observar que $ψ(x)$ es el logaritmo del mínimo común múltiplo de los $n$ primeros números naturales.
+
+\begin{prop} Se tienen las relaciones
+\end{prop}
+
+\section{Teoremas de Chebyshev}
+\begin{teorema}
+Para $x ≥ 1$ se tiene:
+\[ \prod_{p≤x} p ≤ 4^{x-1} \]
+\end{teorema}
+\begin{dem}
+\url{https://amakelov.github.io/2015/12/23/A-neat-bound-on-the-primorial-due-to-Erdos.html}
+Podemos considerar que $x$ es natural. Vamos a distinguir los casos $x$ par e impar. Supongamos primero el caso impar $x=2n+1$. Lo demostraremos por inducción. Después de comprobar unos casos base, supongamos que tengamos que la hipótesis para $2n-1$. Como $n+1≤2n$:
+\[ \prod_{p≤2n+1} p = \prod_{p≤n+1} p \prod_{n+1<p≤2n+1} p ≤ 4^n \prod_{n+1<p≤2n+1} p ≤ 4^n \cdot \binom{2n+1}{n+1}≤ 4^n\cdot 2^{2n}=4^{2n}=4^x \]
+Como $\prod_{n+1<p≤2n+1} p $
+
+Para $x=2n$:
+\[ \prod_{p≤2n} p = \prod_{p≤n} p \prod {n<p≤2n}p ≤ 4^{n-1}\]
+\end{dem}
+
+\begin{teorema}[Legendre]
+Si $n$ es un número natural y $p$ un primo, el exponente $ν_p(n!)$ de $p$ en $n!$ es igual a
+\[ ν_p(n!) = \lfloor \frac{n}{p}\rfloor + \lfloor \frac{n}{p^2}\rfloor + \lfloor \frac{n}{p^3}\rfloor + \dots \]
+\end{teorema}
+
+\begin{coro}
+Hay $\min(v_2(n!),v_5(5!))$ ceros al final de la representación decimal de $n!$.
+\end{coro}
+
+\begin{lemma}
+Sea $p$ un primo. Si $p^a$ es la mayor potencia de $p$ que divide a $\binom{n}{k}$, entonces $p^a ≤ n$.
+\end{lemma}
+\begin{dem}
+Podemos extender $v_p(a/b) = v_p(a)-v_p(b)$. Entonces:
+\[ v_p\binom{n}{k} = v_p(n!) - v_p(k!) - v_p((n-k)!) = \sum_{a=1} \left(\lfloor \frac{n}{p^a} \rfloor - \lfloor \frac{k}{p^a}\rfloor - \lfloor \frac{n-k}{p^a} \rfloor\right) \]
+Como se tiene que: $\lfloor x+y \rfloor -\lfloor x\rfloor - \lfloor y \rfloor ≤ 1$. Entonces $ν_p\binom{n}{k}$ es un entero no negativo. Además, de que $n ≥ k$, luego los términos son ceros una vez que $p^a>n$. Sea $b$ el entero que cumple que $p^b ≤ n < p^{b+1}$, entonces:
+\[ a ≤ v_p\binom{n}{k} ≤ b \]
+Entonces $p^a≤p^b≤n$.
+\end{dem}
+
+\begin{coro}
+Cada coeficiente binomial $\binom{n}{k} ≤ n^{π(n)}$.
+\end{coro}
+\begin{dem}
+\[ \binom{n}{k} = \prod_{p≤n} p^{v_p\binom{n}{k}} ≤ \prod_{p≤n} n = n^{π(n)} \]
+\end{dem}
+\end{document}
