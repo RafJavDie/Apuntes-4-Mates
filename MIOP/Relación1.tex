@@ -588,7 +588,9 @@ obtiene su mínimo en $x_{N-i}=\frac{d}{i+1}$, donde vale $\frac{d^2}{i+1}$. Ent
 $$f(N-(i+1),d)=\min_{0\leq x_{N-(i+1)}\leq C}x_{N-(i+1)}^2+\frac{(d-x_{N-(i+1)})^2}{i+1}$$
 La función es una parábola que alcanza su mínimo en $x_{N-(i+1)}=\frac{d}{i+2}$, donde vale $\frac{d^2}{i+2}$, lo que prueba nuestra tesis.
 
-Como la solución es $f(1,C)$ basta sutituir estos valores y obtenemos $f(1,C)=\frac{C^2}{N}$, para $x_1=\frac{C}{N}$. 
+Como la solución es $f(1,C)$ basta sutituir estos valores y obtenemos $f(1,C)=\frac{C^2}{N}$, para $x_1=\frac{C}{N}$. Para recuperar los demás $x_i$ probaremos por inducción que $x_i=\frac{C}{N}\ \forall i=1,\dots,N$. El caso inicial es el que acabamos de calcular. Fijemos $2\leq j\leq N$ y supongamos entonces que $x_i=\frac{C}{N}\ \forall i=1,\dots,j-1$. Tenemos que $j=N-(N-j)$ y que queda una cantidad $d=C-\sum_{i=1}^{j-1}\frac{C}{N}=\frac{N-j+1}{N}C$. Por tanto sustituimos en la fórmula obtenida en la anterior inducción y resulta
+$$x_j=\frac{\frac{N-j+1}{N}C}{N-j+1}=\frac{C}{N}$$
+como queríamos demostrar.
 \end{solucion}
 
 
