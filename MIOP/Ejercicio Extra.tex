@@ -1,0 +1,42 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Modelos de Investigación Operativa}
+\author{Rafael González López, Javier Aguilar Martín}
+\maketitle
+
+\begin{ejercicio}{Extra}
+Aplicar un procedimiento de programación dinámica para resolver el problema:
+\begin{align*}
+\max \sum_{i=1}^N (x_i-bx_i)^2\\
+s.a. \sum_{i=1}^N x_i=C\\
+x\geq 0
+\end{align*}
+\end{ejercicio}
+\begin{solucion}
+Como no tenemos ninguna restricción para $b$, supondremos que $b\in\R$. Si $b=1$, entonces cualquier $N$-upla que verifique las restricciones es una solución óptima. Si $b\neq 1$, entonces tenemos que
+$$\sum_{i=1}^N (x_i-bx_i)^2=\sum_{i=1}^N \left((1-b)x_i\right)^2=\sum_{i=1}^N(1-b)^2x_i^2=(1-b)^2\sum_{i=1}^N x_i^2,$$ 
+Como la soluciones de $\max f = \max a f$ si $a>0$ entonces el problema anterior es equivalente a
+\begin{align*}
+\max \sum_{i=1}^N x_i^2\\
+s.a. \sum_{i=1}^N x_i=C\\
+x\geq 0
+\end{align*}
+Para resolver el problema consideramos $N$ estados $(t,d)$ donde $t$ es la etapa en la que nos encontramos $0\leq t\leq N$ y $d$ es la cantidad que queda disponible para asignar al resto de variables.  Para resolver el problema definimos la función
+$$f(i,d) = \max_{0\leq x_i \leq d}x_i^2+f(i+1,d-x_i) \quad i=1,\dotsc,N-1$$
+$$f(N,d)=d^2
+$$
+Nuestro objetivo es calcular $f(1,C)$. Nótese que por construcción de la función $f$, la asignación de las $x_i$ verificará trivialmente las restricciones del problema.
+
+Por inducción sobre $i$ veamos que $f(N-i,d) = d^2$. Para $i=1$, $$f(N-1,d)= \max_{0\leq x_{N-1} \leq d} x_{N-1}^2 + (d-x_{N-1})^2$$ Esto es una parábola convexa, luego ha de alcanzar el máximo en uno de los extremos del intervalo $[0,d]$, de hecho, en ambos extremo vale $d^2$. Si el resultado es cierto para $i=k$ veamos que también los para $i=k+1$:
+\begin{align*}
+f(N-(k+1),d) &= \max_{0\leq x_{N-k-1} \leq d} x_{N-k-1} + f(N-k,d-x_{n+1}) = \\
+&=\max_{0\leq x_{N-k-1}\leq d} x_{N-k-1}+(d-x_{N-k-1})^2 = d^2
+\end{align*}
+Por tanto, $f(1,C)=C^2$ y tenemos $N$ soluciones distintas, las $N$ permutaciones cíclicas (contando la identidad) de la $N$-upla $(C,0,\dotsc,0)$.
+\end{solucion}
+
+\end{document}

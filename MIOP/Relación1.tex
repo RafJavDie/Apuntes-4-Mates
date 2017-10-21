@@ -10,11 +10,11 @@
 
 \begin{ejercicio}{1}
 Una persona desea invertir 4000 u.m. y se le presentan tres opciones. Cada opción requiere
-depósitos en cantidades de 1000 u.m.. el inversionista puede colocar todo el dinero entre las tres.
+depósitos en cantidades de 1000 u.m..z el inversionista puede colocar todo el dinero entre las tres.
 Las ganancias esperadas se presentan en la siguiente tabla:
 
  \hskip 5em Inversión\
-
+\begin{center}
 \begin{tabular}{c |c c c c}
  & $1000$ & $2000$ & $3000$ & $4000$\\
  \hline
@@ -23,12 +23,12 @@ Inv. 2 & $1000$ & $3000$ & $6000$ & $7000$\\
 Inv. 3 & $1000$ & $4000$ & $5000$ & $8000$
 
 \end{tabular}
-
+\end{center}
 Determinar la política óptima.
 \begin{solucion}
 Hay 3 etapas. En cada etapa se decide qué cantidad se invierte. Estados $(t,k)$ donde $t$ es la etapa en la que nos encontramos y $k$ es la cantidad de dinero que todavía podemos invertir. $f(t,k)$ es la máxima ganancia esperada desde la etapa $t$ hasta el final si se dispone de $k$ u.m.
 $f(t,k)=\max_{x_t\leq k,1000|x_t}\{g(t,x_t)+f(t+1,k-x_t)\}$ y $f(3,k)=\max_{x_3\leq k}\{g(3,x_3)\}=g(3,k)$. La función $g$ representa la ganancia, es decir, el valor de la tabla en la posición $(t,x_t)$. Vamos a empezar con la tabla de la segunda etapa, pues la de la tercera es trivial.
-
+\begin{center}
 \begin{tabular}{|c| c| c| c| c|}
 \hline
 $k$ & $x$ & $g(2,x)$ & $f(3,k-x)$ & $f(2,k)$\\
@@ -37,7 +37,7 @@ $k$ & $x$ & $g(2,x)$ & $f(3,k-x)$ & $f(2,k)$\\
 \hline
 \hline
 1000    &  0  & 0       &   1000 & 1000\\
-     &  10000  & 1000 & 0         & 1000\\
+     &  1000  & 1000 & 0         & 1000\\
      \hline
      \hline
 2000 &  0     & 0        &  4000 & $\boxed{4000}$\\
@@ -74,6 +74,7 @@ $k$ & $x$ & $g(1,x)$ & $f(2,k-x)$ &$f(1,k)$\\
 \end{tabular}
 
 \vspace{0.5em}
+\end{center}
 
 $x_1=2000, x_2=0, x_3=2000$.
 \end{solucion}
@@ -85,6 +86,7 @@ Un transportista posee $8$ $m^3$ de espacio disponible en un vehículo que saldr
 Un distribuidor que tiene grandes cantidades de tres artículos diferentes, todos destinados para
 esa ciudad, ha ofrecido al transportista los siguientes pagos por transportar tantos artículos como
 quepan en su vehículo:
+\begin{center}
 
 \begin{tabular}{c| c| c}
 Artículo & Pago (u.m./art.) & Volumen ($m^3$/art.)\\
@@ -94,62 +96,63 @@ II& $32$& $3$\\
 III& $58$ & $5$\\
 
 \end{tabular}
+\end{center}
 
 \begin{solucion}
-Hay $3$ etapas, en cada una decidimos cuántos artículos de cada tipo transportamos. Los estados serán del tipo $(t,k)$, donde $t$ es la etapa en la que nos encontramos y $k$ es el espacio disponible. Entonces $f_t(K)$ es la máxima ganancia que puede obtener el transportista desde la etapa $t$ hasta la etapa $3$ si dispone de $k$ $m^3$ de espacio. Llamamos $p_t$ al pago en la etapa $t$ y $v_t$ al volumen del producto en la etapa $t$. 
+Hay $3$ etapas, en cada una decidimos cuántos artículos de cada tipo transportamos. Los estados serán del tipo $(t,k)$, donde $t$ es la etapa en la que nos encontramos y $k$ es el espacio disponible. Entonces $f(t,k)$ es la máxima ganancia que puede obtener el transportista desde la etapa $t$ hasta la etapa $3$ si dispone de $k$ $m^3$ de espacio. Llamamos $p_t$ al pago en la etapa $t$ y $v_t$ al volumen del producto en la etapa $t$. 
 \begin{align*}
-f_3(k)=&\max_{x_3}\{58x_3: 5x_3\leq k\}\\
-f_t(k)=&\max_{x_t:v_tx_t\leq k}\{p_tx_t+f_{t+1}(k-v_tx_t)\}
+f(3,k)=&\max_{x_3}\{58x_3: 5x_3\leq k\}\\
+f(t,k)=&\max_{x_t:v_tx_t\leq k}\{p_tx_t+f_{t+1}(k-v_tx_t)\}
 \end{align*}
 \underline{Etapa 3:} $p_3=58$, $v_3=5$\
-
+\begin{center}
 \begin{tabular}{c| c c c c c c c c c}
 $k$ & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 0\\
 \hline
-$f_3(k)$ & $58$ & 58 & 58 & 58 & 0 & 0 & 0 & 0 & 0\\
+$f(3,k)$ & $58$ & 58 & 58 & 58 & 0 & 0 & 0 & 0 & 0\\
 $x_3$ &  $1$ & 1 & 1 & 1& 0 & 0 & 0 & 0 & 0
 \end{tabular}
-
+\end{center}
 \underline{Etapa 2}: $p_2=32$, $v_2=5$, $f_2(k)=\max\{32x_2+f_3(k-3x_2):3x_2\leq k\}$.
 
-$f(2,8)=\begin{cases}
+$$f(2,8)=\begin{cases}
 32\cdot 0+f(3,8)=58\\
 32\cdot 1+f(3,5)=90\\
 32\cdot 2+f(3,2)=64
-\end{cases}$\quad $f(2,7)=\begin{cases}
+\end{cases}\quad f(2,7)=\begin{cases}
 32\cdot 0+f(3,7)=58\\
 32\cdot 1+f(3,4)=32\\
 32\cdot 2+f(3,1)=64
-\end{cases}$
+\end{cases}$$
 
-$f(2,6)=\begin{cases}
+$$f(2,6)=\begin{cases}
 32\cdot 0+f(3,6)=58\\
 32\cdot 1+f(3,3)=32\\
 32\cdot 2+f(3,0)=64
-\end{cases}$\quad $f(2,5)=\begin{cases}
+\end{cases}\quad f(2,5)=\begin{cases}
 32\cdot 0+f(3,5)=58\\
 32\cdot 1+f(3,2)=32\\
-\end{cases}$\quad etc.
-
+\end{cases}$$
+\begin{center}
 \begin{tabular}{c| c c c c c c c c c}
 $k$ & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 0\\
 \hline
 $f_2(k)$ & 90 & 64 & 64 & 58 & 32 & 32 & 0 & 0 & 0\\
 $x_2$ &  $1$ & 2 & 2 &    1&  0 & 1 &   1 & 0 & 0
 \end{tabular}\
-
+\end{center}
 \underline{Etapa 1:}
-$f_1(8)=\max_{x_1\leq 8}\{11x_1+f_2(8-x_1)\}=\begin{cases}
-f_2(8)=90\\
-11+f_2(7)=75\\
-22+f_2(6)=86\\
-33+f_2(5)=\boxed{91}\\
-44+f_2(4)=76\\
-55+f_2(3)=87\\
-66+f_2(2)=66\\
-77+f_2(1)=77\\
-88+f_2(0)=88
-\end{cases}$
+$$f_1(8)=\max_{x_1\leq 8}\{11x_1+f_2(8-x_1)\}=\begin{cases}
+f_(2,8)=90\\
+11+f(2,7)=75\\
+22+f(2,6)=86\\
+33+f(2,5)=\boxed{91}\\
+44+f(2,4)=76\\
+55+f(2,3)=87\\
+66+f(2,2)=66\\
+77+f(2,1)=77\\
+88+f(2,0)=88
+\end{cases}$$
 
 Hemos llegado a que la ganancia óptima es $91$, con la configuración $x_1=3,x_2=0, x_3=1$.
 \end{solucion}
@@ -162,13 +165,13 @@ Una pequeña compañía puede fabricar hasta 4 ordenadores por semana y se ha co
 a entregar en cada una de las siguientes 4 semanas tres, dos, cuatro y dos ordenadores, respectivamente.
 Los costos de producción están en función del número de ordenadores fabricados y se dan
 (en miles de u.m.) como sigue
-
+\begin{center}
 \begin{tabular}{c| c c c c c}
 Unidades producidas & 0 & 1 & 2 & 3 & 4 \\
 \hline
 Costo & 4 & 13 & 19 & 27 & 32
 \end{tabular}
-
+\end{center}
 Los ordenadores pueden entregarse a los consumidores al final de la misma semana en que se
 fabrican o pueden almacenarse para su entrega futura, con un costo de 400 u.m. por semana.
 Debido a la capacidad limitada de almacenamiento, la compañía no puede almacenar más de tres
@@ -177,23 +180,21 @@ al final de la semana 4. Determinar el número de ordenadores a fabricar en cada
 cumplir la demanda a un costo mínimo total.
 \begin{solucion}
 Las demandas son $d_1=3, d_2=2, d_3=4, d_4=2$. Hay 4 etapas, en cada una de las cuales se decide el número de ordenadores que se fabrican esa semana. Los estados son $(t, I)$ donde $t$ es la etapa e $I$ es el espacio en el inventario. El coste de almacenamiento, en miles, es 0.4. $f(t,I)$ es el mínimo coste de producción y almacenamiento desde la etapa $t$ hasta el final si tenemos en inventario $I$ ordenadores.
-$f(t,I)=\min_{d_t\leq I+x, I+x-d_t\leq 3,x\leq 4}\{c(x)+0.4(I-d_t+x)+f(t+1,I-d_t+x)\}$ $t=1,2,3$ (Se podría interpretar que el inventario se paga al principio de la etapa y entonces el coste de inventario sería simplemente $0.4I$ añadiéndole esa cantidad también a la función siguiente). 
-
-$f(4,I)=\begin{cases}
+$$f(t,I)=\min_{0\leq I+x-d_t\leq 3,x\leq 4}\{c(x)+0.4(I-d_t+x)+f(t+1,I-d_t+x)\}\quad t=1,2,3$$
+Se podría interpretar que el inventario se paga al principio de la etapa y entonces el coste de inventario sería simplemente $0.4I$ añadiéndole esa cantidad también a la función siguiente. 
+$$f(4,I)=\begin{cases}
 +\infty & I>2\\
 c(d_4-I) & I\leq 2
-\end{cases}$
-
+\end{cases}$$
 Otra opción es añadir una etapa extra de forma que 
-
-$f(5,I)=\begin{cases}
+$$f(5,I)=\begin{cases}
 0 & I=0\\
 +\infty & I\neq 0
-\end{cases}$
+\end{cases}$$
 En tal caso, para $t=4$ seguiríamos usando la función recursiva. Continuemos con la resolución del problema.
-
+\newpage
 \underline{Etapa 4}
-
+\begin{center}
 \begin{tabular}{|c| c| c|}
 \hline
 $I$ & $x$ & $f(4,I)$\\
@@ -205,9 +206,9 @@ $I$ & $x$ & $f(4,I)$\\
 2 & 0 & 4\\
 \hline
 \end{tabular}
-
+\end{center}
 \underline{Etapa 3}
-
+\begin{center}
 \begin{tabular}{|c| c| c|c|c|}
 \hline
 $I$ & $x$ & $c(x)+0.4(I-4+x)$ & $f(4,I-4+x)$ & $f(3,I)$\\
@@ -234,15 +235,15 @@ $I$ & $x$ & $c(x)+0.4(I-4+x)$ & $f(4,I-4+x)$ & $f(3,I)$\\
  & 1 & 13 & 19 & 13.4+19\\
  \hline
 \end{tabular}
-
+\end{center}
 \underline{Etapa 2}
-
+\begin{center}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 $I$ & $x$ & $c(x)+0.4(I-2+x)$ & $f(3,I-2+x)$ & $f(2,I)$\\
 \hline
 0 & 4 & 32+0.4$\cdot$2 & 36.8 & $\boxed{69.6}$\\
-  & 3 &                &       & \\
+  & 3 &     27+0.4          &    45.4     &72.8 \\
   & 2 &                &        & \\
 \hline
 \hline
@@ -252,9 +253,9 @@ $I$ & $x$ & $c(x)+0.4(I-2+x)$ & $f(3,I-2+x)$ & $f(2,I)$\\
   & 1 & 4 & 51 & $\boxed{51}$\\
   \hline
 \end{tabular}
-
+\end{center}
 \underline{Etapa 1}
-
+\begin{center}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 $I$ & $x$ & $c(x)+0.4(I-3+x)$ & $f(2,I-3+x)$ & $f(1,0)$\\
@@ -263,7 +264,7 @@ $I$ & $x$ & $c(x)+0.4(I-3+x)$ & $f(2,I-3+x)$ & $f(1,0)$\\
   & 3 &                &       & \\
 \hline
 \end{tabular}
-
+\end{center}
 $x_1=4, x_2=1, x_3=4, x_4=2$.
 \end{solucion}
 \end{ejercicio}	
@@ -277,9 +278,8 @@ día para cada asignatura por lo que quiere asignar uno,dos,tres o cuatro días 
 Utilizar programación dinámica para realizar estas asignaciones de forma que se maximice el total
 de puntos obtenidos en los cuatro exámenes. La siguiente tabla muestra la estimación de los puntos
 obtenidos en cada asignatura según el número de días de estudio asignados.
-
-\hskip 5em Asignaturas
-
+\begin{center}
+5em Asignaturas\\
 \begin{tabular}{c|c c c c}
 Nº días & 1 & 2 & 3 & 4\\
 \hline
@@ -288,16 +288,16 @@ Nº días & 1 & 2 & 3 & 4\\
 3 & 6 & 6 & 7 & 9\\
 4 & 7 & 9 & 8 & 9
 \end{tabular}
-
+\end{center}
 Resolver el problema mediante programación dinámica.
 \begin{nota}
 ¿Cómo se haría si quisiera aprobar todas como condición inicial?
 \end{nota}
 \begin{solucion}
-Tenemos 4 etapas, una para cada asignatura, en la que decidimos cuántos días le dedicamos. Por tanto tenemos los estados $(t,k)$, donde $t$ es la etapa en la que nos encontramos y $k$ es la cantidad de días disponible para asignar (teniendo en cuenta que ya se ha asignado un día previamente). $f(t,k)$ representaría la máxima cantidad de puntos que podemos obtener desde la etapa $t$ hasta el final si disponemos de $k$ días libres. Entonces definimos $f(t,k)=\max_{1\leq x_t\leq k}\{g(t,x_t)+f(t+1,k-x_t)\}$ y $f(4,k)=\max_{1\leq x_3\leq k}\{g(4,x_3)\}=g(4,k)$, donde $g(t,x)$ representa los puntos obtenidos, es decir, el valor de la tabla en la posición $(t,x)$. 
-
+Tenemos 4 etapas, una para cada asignatura, en la que decidimos cuántos días le dedicamos. Por tanto tenemos los estados $(t,k)$, donde $t$ es la etapa en la que nos encontramos y $k$ es la cantidad de días disponible para asignar (teniendo en cuenta que ya se ha asignado un día previamente). $f(t,k)$ representaría la máxima cantidad de puntos que podemos obtener desde la etapa $t$ hasta el final si disponemos de $k$ días libres. Entonces definimos
+$$f(t,k)=\max_{1\leq x_t\leq k}\{g(t,x_t)+f(t+1,k-x_t)\}$$ y $f(4,k)=\max_{1\leq x_3\leq k}\{g(4,x_3)\}=g(4,k)$, donde $g(t,x)$ representa los puntos obtenidos, es decir, el valor de la tabla en la posición $(t,x)$.
 \underline{Etapa 4}
-
+\begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
 $k$ & $x$ & $f(4,k)$\\
@@ -308,11 +308,10 @@ $k$ & $x$ & $f(4,k)$\\
 4 & 4 & 9\\
 \hline
 \end{tabular}
-
+\end{center}
 \newpage
-
-\underline{Etapa 3} \hskip 14em \underline{Etapa 2}
-
+\underline{Etapa 3}
+\begin{center}
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
 $k$ & $x$ & $g(3,x)$ & $f(4,k-x)$ & $f(3,k)$\\
@@ -332,6 +331,9 @@ $k$ & $x$ & $g(3,x)$ & $f(4,k-x)$ & $f(3,k)$\\
   & 4 & 8 & 6 & 14\\
   \hline
 \end{tabular}
+\end{center}
+\underline{Etapa 2}
+\begin{center}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 $k$ & $x$ & $g(2,x)$ & $ f(3,k-x)$ & $f(2,k)$\\
@@ -351,9 +353,9 @@ $k$ & $x$ & $g(2,x)$ & $ f(3,k-x)$ & $f(2,k)$\\
   & 4 & 9 & 8  & 17\\
   \hline
 \end{tabular}
-
+\end{center}
 \underline{Etapa 1}
-
+\begin{center}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 $k$ & $x$ & $g(1,x)$ & $f(2,k-x)$ & $f(1,k)$\\
@@ -364,7 +366,7 @@ $k$ & $x$ & $g(1,x)$ & $f(2,k-x)$ & $f(1,k)$\\
   & 4 & 7 & 13 & 20\\
   \hline
 \end{tabular}
-
+\end{center}
 $x_1=2, x_2=1, x_3=3, x_4=1$.
 \end{solucion}
 \end{ejercicio}
@@ -377,7 +379,7 @@ Si se emplean a más hombres de los necesarios se produce un coste de 2000 u.m. 
 y periodo. Los costos debidos a la contratación o al despido de trabajadores entre periodos se
 estiman en 200 veces el cuadrado de la diferencia entre el número de trabajadores en uno y otro
 periodo.
-Determinar el número de empleados que deben estar en plantilla en cada estaciún del año; para
+Determinar el número de empleados que deben estar en plantilla en cada estación del año; para
 ello asumir que la cantidad de trabajadores es continuamente divisible.
 \begin{solucion}
 \end{solucion}
