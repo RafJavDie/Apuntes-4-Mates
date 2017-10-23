@@ -1,0 +1,47 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+\newcommand{\x}{{\mathbf{x}}}
+\newcommand{\y}{{\mathbf{y}}}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Geometría Aplicada}
+\author{Rafael González López, Javier Aguilar Martín, Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{1.1}
+Sea $f : M \to N$ una aplicación biyectiva, diferenciable y regular. Probar que $f$ es una isometría si y sólo si conserva las longitudes de las curvas. ¿Qué puede decirse si conserva los ángulos?
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+Veamos que $f$ es conforme si y sólo si $f$ conserva los ángulos. 
+\item[($\Rightarrow$)] Por hipótesis, tenemos que existe una aplicación diferenciable y no nula $λ$ tal que $I_p(v_1,v_2)=λ^2(p) I_{f(p)}(f_{*p}v_1,f_{*p}v_2)$. Sean $v_1, v_2 \in T_p(M)$. Sea $(U,\x)$ una superficie simple en $M$ con $p \in \x(U)$. Sean $α_1,α_2 : I \to M$ curvas diferenciables tales que $α_1(0)=α_2(0)=p$, $α_1'(0)=v_1$, $α_2'(0)=v_2$, $α_1(I) \subset \x(U)$ y $α_2(I) \subset \x(U)$. Tenemos que:
+\[ α_1'(0) \cdot α_2'(0) = ||α_1'(0)|| \cdot ||α_2'(0)|| \cos θ \]
+Consideramos las curvas diferenciables en $N$ dadas por $β_1 = f \circ α_1$ y $β_2=f\circ α_2$. Entonces:
+\[ β_1'(0)\cdot β_2'(0) = ||β_1'(0)|| \cdot ||β_2'(0)|| \cos \tilde{θ} \]
+Veamos que $θ = \tilde{θ}$.
+
+\begin{align*}
+	||α_i'(0)||^2 & = I_p(α_i'(0),α_i'(0)) = I_p(v_i,v_i) = λ^2(p) I_{f(p)} (f_{*p}v_i,f_{*p}v_i)\\
+	& = λ^2(p) I_{f(p)} (β_i'(0),β_i'(0)) = λ^2(p)||β_i'(0)||^2\\
+	I_p(v_1,v_2) & = λ^2(p)I_{f(p)} (f_{*p}v_1,f_{*p}v_2) \Rightarrow α_1'(0) \cdot α_2'(0) = λ^2(p) β_1'(0) \cdot β_2'(0)
+\end{align*}
+Luego:
+\begin{align*}
+	||α_1'(0)|| ||α_2'(0)|| \cos θ & = λ^2(p) ||β_1'(0)|| ||β_2'(0)|| \cos θ\\
+	||α_1'(0)|| ||α_2'(0)|| \cos θ & = λ^2(p) β_1'(0) β_2'(0) = λ^2(p) ||β_1'(0)|| ||β_2'(0)|| \cos \tilde{θ}
+\end{align*}
+Luego $\cos θ = \cos \tilde{θ}$. Estableciendo que el ángulo debe estar en $[0,π)$: $θ = \tilde{θ}$.
+
+\item[($\Leftarrow$)] Sea $(U,\x)$ superficie simple en $M$ con $p \in \x(U)$ y $(U,\y)$ dada por $\y = f \circ \x$. Es suficiente probar que existe $λ^2$ función diferenciable no nula tal que $||\x_i||^2 = λ^2(p) ||\y_i||$, o equivalentemente, $g_{ij}= λ^2 h_{ij}$. Si consideramos las curvas $α(t)=\x(u^1(t),u^2(t))$, $β(u^1)=\x(u^1,u_0^2)$ $γ(u^2)=\x(u_0^1,u^2)$ tal que $α(t_0)=β(u_0^1)=γ(u_0^2)=p$. Si suponemos que estas curvas están parametrizadas naturalmente y usando que $f$ es conforme:
+\begin{align*}
+	α'(t_0)\cdot β'(u_0^1) & = (f \circ α') (t_0) \cdot (f \circ β')(u_0^1)\\
+	(\x_1 \cdot (u^1)'(0) + \x_2 \cdot (u^2)'(0)) \cdot \x_1 & = (\y_1 \cdot (u^1)'(0) + \y_2 \cdot (u^2)'(0)) \cdot \y_1\\
+	g_{11} (u^1)' + g_{12}(u^2)' & = h_{11}(u^1)'+h_{12}(u^2)'\\
+	\dots ??? \dots
+\end{align*} 
+Llegamos a que $g_{ij}=λ^2(p)h_{ij}$.
+\end{itemize}
+\end{solucion}
+
+\end{document}
