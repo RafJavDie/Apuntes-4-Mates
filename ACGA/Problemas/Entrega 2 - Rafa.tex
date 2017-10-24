@@ -1,0 +1,75 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Algebra Conmutativa y Geometría Aplicada}
+\author{Rafael González López}
+\maketitle
+
+\begin{ejercicio}{6}
+\begin{enumerate}
+\item[]
+\item Sea $X=\{(t,t^2,t^3)\mid t\in\C\} \subset \mathbb{A}^3_{\C}$. Probar que $X$ es una variedad algebraica, y hallar un conjunto de generadores de $\I(X)$.
+\item Sea $X\subset \mathbb{A}^3_{\C}$ el conjunto algebraico definido por las ecuaciones $x^4-y^3=x^5-z^3= y^5 -z^4 = 0$. Probar que $X$ es irreducible y que no puede definirse usando solo dos de las ecuaciones dadas. (Ayuda: Usar la aplicación $t\mapsto (t^3,t^4,t^5)$).
+\end{enumerate} 
+\begin{solucion}
+\item[]
+\begin{enumerate}
+\item Consideremos los polinomios $f(x,y,z) = x^2-y$ y $g(x,y,z)=x^3-z$. Es claro que $X=\V(f,g)$, por lo que $X$ es algebraico. Para probar que es variedad sabemos que basta que ver que $\gene{f,g}$ es un ideal primo.
+
+Sean $p,q\in\C[x,y,z]$ tales que $pq\in \gene{g,f}$. Usando que $\C[x,y,z] \cong \C][x,y][z]$, podemos dividir $p$ y $q$ entre $f$, tomando $f$ como un monomio en la variable $z$, obteniendo un resto que no depende de $z$. 
+\begin{gather*}
+p(x,y,z)=(x^3-z)p_1(x,y,z) + r_1(x,y)\\
+q(x,y,z)=(x^3-z)q_1(x,y,z) + r_2(x,y)
+\end{gather*}
+Además, podemos hacer un razonamiento análogo con los restos en $\C[x,y]\cong \C[x][y]$ y $g$, obteniendo restos que no dependen de $y$. 
+\begin{gather*}
+p(x,y,z)=(x^3-z)p_1(x,y,z) + (x^2-y)p_2(x,y) + p_3(x)\\
+q(x,y,z)=(x^3-z)q_1(x,y,z) + (x^2-y)q_2(x,y) + q_3(x)
+\end{gather*}
+Si multiplicamos estas expresiones, tenemos que
+\[
+(p\cdot q)(x,y,z) = (x^3-z)h_1(x,y,z)+(x^2-y)h_2(x,y,z) + p_3(x)q_3(x)
+\]
+Se pueden hacer distintas agrupaciones ($h_1,h_2$ no son únicos), pero se obtienen resultados análogos. En cualquier caso, deducimos que $p_3(x)q_3(x)\in \gene{f,g}$. Sustituyendo $(x,y,z)\mapsto(t,t^2,t^3)$, deducimos que $p_3(t)q_3(t)=0$ $\forall t\in \C$. Como $\C$ es un cuerpo infinito, se tiene que $p_3(t)q_3(t)\equiv 0$. Al ser $\C[x]$ dominio, o bien $p_3 \equiv 0$, o $q_3 \equiv 0$. En cualquier caso, o bien $p$, o bien $q$ pertenecen a $\gene{f,g}$, como queríamos probar.
+\item Notemos por $f(x,y,z)=x^4-y^3$, $g(x,y,z)=x^5-z^3$ y $h(x,y,z)=y^5-z^4$. Tenemos que demostrar que $X=\V(f,g,h)$ es irreducible, pero primeramente veamos qué forma tiene $X$.
+
+Es claro que si $xyz = 0$ entonces, de las ecuaciones $f=g=h=0$ solamente dan lugar al origen. Podemos suponer, por tanto, que $xyz\neq 0$ y sea $t=\frac{y}{x}$. De $f(x,y,z)=0$, $x^4-y^3=0$, se tiene que $x=\dfrac{y^3}{x^3}=t^3$. Despejando $t=\frac{y}{x}$, tenemos que $y= tx = t^4$. De $g=0$ y $h=0$ deducimos que $z^3 = t^{15}$ y $z^4 = t^{20}$, dividiendo (ninguno de los términos es nulo), tenemos que $z=t^5$. 
+
+Por tanto, si $a\in X$ (incluido el $(0,0,0)$) entonces $a\in Y=\{(t^3,t^4,t^5)\in\mathbb{A}^3_{\C}\mid t\in \C\}$. Sin embargo, es trivial ver que el recíproco también es cierto, por lo que $X=Y$. Para ver que $X$ es irreducible, vamos a probar dos lemas.
+
+\begin{lema}
+El conjunto $\mathbb{A}^1_{\C}\subset \mathbb{A}^1_{\C}$ es irreducible.
+\end{lema}
+\begin{dem}
+Es trivial pues $\mathbb{A}^1_{\C}$ es infinito y los conjuntos algebraicos de $\mathbb{A}^1_{\C}$ son finitos (salvo $\mathbb{A}^1_{\C}$).
+\end{dem}
+
+\begin{lema}
+La aplicación $f\func{\mathbb{A}^1_{\C}}{\mathbb{A}^3_{\C}}$, $f(t)=(t^3,t^4,t^5)$ es continua (con la topología de Zariski) y lleva conjuntos irreducibles en conjuntos irreducibles.
+\end{lema}
+\begin{dem}
+Para ver que es continua, basta ver que la preimagen de un cerrado es cerrado. Sea $W \subset \mathbb{A}^3_{\C}$ un conjunto cerrado (algebraico), entonces existen ciertos polinomios $f_1,\dotsc,f_n\func{\mathbb{A}^3_{\C}}{\C}$ tales que $W=\V(f_1,\dotsc,f_n)$. Entonces los elementos de $f^{-1}(W)$ se anulan sobre $f_i \circ f$ $\forall i=1,\dotsc,n$. Efectivamente si $x\in f^{-1}(W)$, $f(x)\in W$ y, por definifición, $f_i(f(x)) = 0$. Dado que $f$ es una función polinómica, la composición también es un polinomio (trivial). Por tanto, $f^{-1}(W)$ también es cerrado.
+
+Para la segunda parte operamos por reducción al absurdo. Supongamos que ${\exists W \subset \mathbb{A}^1_{\C}}$ irreducible tal que $f(W)=Z_1 \cup Z_2$, $Z_i$ algebraico y con $Z_i\subsetneq f(W)$. Como $f^{-1}(Z_i)$ también es algebraico (por ser $f$ continua), los conjuntos ${W_i = f^{-1}(Z_i)\cap W}$ son algebraicos (la intersección de cerrados es cerrada). Tenemos además que:
+$$ W \subset f^{-1}(f(W)) = f^{-1}(Z_1\cup Z_2) = f^{-1}(Z_1)\cup f^{-1}(Z_2)$$
+$$
+W = W\cap (f^{-1}(Z_1)\cup f^{-1}(Z_2)) = (W\cap f^{-1}(Z_1))\cup(W \cap f^{-1}(Z_2)) = W_1 \cup W_2
+$$
+Como $W$ es irreducible, $W=W_1$ o $W=W_2$. Supongamos sin pérdida de generalidad que $W=W_1= f^{-1}(Z_1)\cap W$, luego $W \subset f^{-1}(Z_1)$. Se tiene pues que $f(W)\subset Z_1$, pero $Z_1 \subsetneq f(W)$, lo cual es absurdo.
+\end{dem}
+Volviendo a nuestro ejercicio, dado que $f(\mathbb{A}^1_{\C}) = X$, por los lemas anteriores deducimos que $X$ es irreducible.
+
+Ahora vamos a ver la segunda parte del ejercicio, es decir, que usando solo dos de las ecuaciones que tenemos no podemos definir el conjunto $X$. Distingamos los tres casos.
+\begin{itemize}
+\item Si tenemos el sistema $x^4-y^3=x^5-z^3= 0$. Despejando en función de $x$ tomando raíces de manera adecuada, y haciendo $x=i$, tenemos que una solución del sistema es $(i,e^{\frac{2\pi i}{3}},e^{\frac{\pi i}{6}})$. Sin embargo, $\left(e^{\frac{2\pi i}{3}}\right)^5-\left(e^{\frac{\pi i}{6}}\right)^4 = -i\sqrt{3}$, luego no verifica $y^5-z^4 =0$.
+\item Si tenemos el sistema $x^4-y^3 = y^5 - z^4=0$. De manera más sencilla que en el caso anterior, es obvio que la tripleta $(1,1,-1)$ es solución del sistema, pero que no verifica la ecuación restante $x^5-z^3=0$.
+\item Si tenemos el sistema $x^5-z^3 = y^5 - z^4=0$. Análogo al caso primero, podemos observar que la tripleta $(i,-e^{\frac{13i\pi}{15}},e^{\frac{5\pi i}{6}})$ es solución de nuestras dos ecuaciones, pero si sustituimos en $f(i,-e^{\frac{13i\pi}{15}},e^{\frac{5\pi i}{6}}) = 1+(-1)^{\frac{3}{5}}$, luego no verifica la primera ecuación.
+\end{itemize}
+Por tanto, no podemos definir $X$ excluyendo alguna de las ecuaciones, como queríamos probar.
+\end{enumerate}
+\end{solucion}
+\end{ejercicio}
+\end{document}

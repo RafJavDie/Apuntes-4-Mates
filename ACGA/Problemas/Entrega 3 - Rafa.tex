@@ -1,0 +1,51 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Algebra Conmutativa y Geometría Aplicada}
+\author{Rafael González López}
+\maketitle
+
+\begin{ejercicio}{1}
+Sea $A$ un anillo y $S\subset A$ un conjunto multiplicativa. Si $f\func{A}{B}$ es un homomorfismo de anillos tal que $f(S)\subset B^\times$, probar que existe un único homomorfismo de anillos $\tilde{f}\func{S^{-1}A}{B}$ que existe a $f$, en el sentido de que $\tilde{f}(a/1) = f(a)$.
+\begin{solucion}
+Vamos a tratar de dar una definición de $\tilde{f}$. Sea $p/q$, sabemosq que $\tilde{f}(p/1)=f(p)$. Definimos $\tilde{f}(p/q)=k$ donde $k\in B$ es tal que $kf(q)=f(p)$. Tenemos que comprobar que está bien definido y que es homomorfismo.
+\begin{itemize}
+\item Supongamos que $\exists k,k'\in B$ tales que $kf(q)=k'f(q)=f(p)$. Como $f(q)\in B^\times$, podemos multiplicar por su inversa, obteniendo que $k=k'$. Por tanto, la aplicación está bien definida. De hecho, $\tilde{f}(p/q)=f(p)f(q)^{-1}$.
+\item Para ver que es homomorfismo de anillos con unidad, comprobamos las tres propiedades de la definición. Notaremos indistamente $1$ al elemento neutro de la segunda operación tanto en $A$ como en $B$.
+\begin{itemize}
+\item Sea $1/1$ el neutro del producto en $S^{-1}A$, 
+$$\tilde{f}(1/1)=f(1)f(1)^{-1}=1$$
+\item Sean $p/q,p'/q' \in S^{-1}A$, entonces
+\begin{align*}
+\tilde{f}(p/q+p'/q') &= 	\tilde{f}\left(\frac{pq'+p'q}{qq'}\right) = f(pq'+p'q)f(qq')^{-1} = \\
+ &= f(pq'+p'q)f(q)^{-1}f(q')^{-1} =
+(f(pq')+f(p'q))f(q)^{-1}f(q')^{-1} = \\
+&= (f(p)f(q')+f(p')f(q))f(q)^{-1}f(q')^{-1}  =\\
+ &= f(p)f(q)^{-1}+f(p')f(q')^{-1} = \tilde{f}(p/q)+\tilde{f}(p'/q')
+\end{align*}
+
+\item Sean $p/q,p'/q' \in S^{-1}A$, entonces
+\begin{align*}
+\tilde{f}(p/q\cdot p'/q') &= 	\tilde{f}\left(\frac{pp'}{qq'}\right) = f(pp')f(qq')^{-1} = \\
+ &= f(p)f(p')f(q)^{-1}f(q')^{-1} = \\
+ &= f(p)f(q)^{-1}f(p')f(q')^{-1} =\\
+ &= \tilde{f}(p/q)\tilde{f}(p'/q')
+\end{align*}
+\end{itemize}
+Por tanto, hemos probado que nuestra definición de $\tilde{f}$ es un homomorfismo que extiende de anillo que extiende a $f$.
+\end{itemize}
+Vista la existencia, resta ver la unicidad. Supongamos que existe otro homomrfismo $\tilde{g}$ que extiende a $f$ además de $\tilde{f}$. En tal caso, como $\tilde{f}$ y $\tilde{g}$ extienden $f$, $\tilde{f}(a/1)=\tilde{g}(a/1)$. Por propiedades básicas de homomorfismo de anillos, basta ver que son iguales para los elementos de la forma $1/q$, con $q\in S$.
+$$
+f(q)f(q)^{-1} = \tilde{f}(q/q)= \tilde{f}(1/1) = 1 =\tilde{g}(1/1) =\tilde{g}(q/q) =\tilde{g}(q/1)\tilde{g}(1/q)=f(q)\tilde{g}(1/q)
+$$
+Usando que $f(q)\in B^\times$, obtenemos que $\tilde{g}(1/q)=f(q)^{-1}=\tilde{f}(1/q)$. Por tanto, si ${p/q\in S^{-1}A}$, entonces 
+$$
+\tilde{g}(p/q) = \tilde{g}(p/1\cdot 1/q) = \tilde{g}(p/1)\tilde{g}(1/q) = f(p)f(q)^{-1} = \tilde{f}(p/q)
+$$
+
+\end{solucion}
+\end{ejercicio}
+\end{document}
