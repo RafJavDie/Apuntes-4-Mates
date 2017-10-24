@@ -814,4 +814,98 @@ $$t(I-Q)^{-1}=t\sum_{n=0}^\infty Q^n\geq tQ^0=t\geq 0$$
 $$t(I-Q)^{-1}=[R+Qw-w](I-Q)^{-1}=[R-(I-Q)w](I-Q)^{-1}=\underbrace{(I-Q)^{-1}R-w}_{v}\geq t$$
 $$v-w\geq t\equiv v-w\geq R+Qw-w\Rightarrow v\geq R+Qw$$
 \end{proof}
+\begin{defi}[Algoritmo de evaluación de políticas]
+\begin{enumerate}
+\item[]
+\item Tomar $\delta \in \Delta$
+\item Calcular $v^\delta = (I-Q)^{-1}R^\delta$. Hacer $t_i =0$ $\forall i=1,\dotsc,N$.
+\item Calcular $t_i^k= R_i^k + \sum_{j=1}^N \alpha p_{ij}^k v_k^\delta - v_i^\delta$
+\item Si $t_i^k > t_i$ algún $i,k$; tomar $\delta(i)=k$ y $t_i = t^k_i$.
+\item Si $t_i = 0$ $\forall i$ STOP $\delta$ es la política óptima. En caso contrario volver a 2.
+\end{enumerate}
+\end{defi}
+\begin{teorema}
+La rutina de evaluación de políticas termina en un número finito de pasos y la última política $\pi$ verifica que $v^\pi = \max_{\delta \in \Delta} v^\delta$.
+\end{teorema}
+\begin{dem}
+En una iteración estamos con la política $\delta$ que no verifica la condición de parada. Llamemos $\pi$ a la política que construyo a partir de $\delta$. 
+
+Esto implica que existe al menos un $i\in\{1,\dotsc,N\}$ ta que $t_i^{\pi(i)}>0$ y los restantes $t_j^{\pi(j)}\geq 0$. En forma vectorial $R^\pi+Q^\pi v^\delta - v^\delta > 0$. Es decir, $R^\pi + Q^\pi v^\delta > v^\delta$. Aplicamos el lema anterior y deducimos que $v^\pi \geq R^\pi + Q^\pi v^\delta > v^\delta$, por lo que $v^\pi > v^\delta$.
+
+El algoritmo es finito pues en cada iteración ambio al menos una decisión (una nueva política) y $|\Delta|<+\infty$. Las políticas nunca se repiten pues se mejora un valor estrictamente.
+
+ Supongamos que el algoritmo acaba con la política $\pi$. Tratamos de calcular una nueva política $\delta$ a partir de $\pi$. Entonces $t_i^\delta \leq 0$ $\forall i$, $t^\delta = R^\delta + Q^\delta v^\pi - v^\pi\leq 0$. Aplicamos el lema anterior y obtenemos que $v^\pi \geq R^\delta+Q^\delta \geq v^\delta$. Por tanto $v^\pi \geq v^\delta$ $\forall \delta \in \Delta$. O sea, $v^\pi = \max_{\delta \in \Delta}v^\delta$.
+\end{dem}
+\begin{lemma}
+Sea $f=\max_{\delta \in \Delta}v^\delta$ entonces $f$ también es la única solución del sistema de ecuaciones 
+$$
+f_i = \max_{k\in D(i)}\{R_i^k + \sum_{j=1}^N \alpha p_{ij}^k f_k\} \quad \forall i = 1, \dotsc, N
+$$
+\end{lemma}
+\begin{dem}
+El algoritmo acaba con una política $\pi$ tal que $t_i^{\pi(i)} = \max_{k\in D(i)} t_i^k = 0$. Entonces por notación $f_i = v_i^{\pi(i)}$ y escribiendo esto con $f$ tenemos que 
+$$
+0 = \max_{k\in D(i)} R_i^k + \sum_{j=1}^N \alpha p_{ij}^k f_k - f_i \quad  \forall i$$
+De donde se llega al resultado buscado. Veamos que la solución es única. Si existe otra solución $g$ al sistema de ecuaciones
+$$
+f_i = \max_{k\in D(i)} R^k_i + \sum_{kj=1}^n \alpha p_{ij}g_j \quad \forall i$$
+$$g_i = R_i^\pi(i)+\sum_{j=1}^N \alpha p_{ij}^{\pi(i)}g_j \quad \forall i$$
+Como $g_i$ son los máximo entonces 
+$$f_i \geq R_i^{\delta(i)}+\sum_{j=1}^N \alpha p_{ij}^{\delta(i)}g_j \quad \forall i,\,\forall \delta \in \Delta$$
+Vectorialmente aplicando el lema anterior ($w=g$) tenemos que $g\geq R^\delta+Q^\delta g$ $\forall g$, $R^\delta+Q^\delta g\geq v^\delta$, por lo que $\geq v^\delta$ $\forall \delta \in \Delta$. Pero como $g$ alcanza el valor de una política $(\pi)$ entonces $g$ es único ($g=v^\pi$).
+\end{dem}
+\begin{teorema}
+Sea $f=\max_{\delta \in \Delta}v^\delta$, $f$ es también solución del problema
+\begin{align*}
+&\min \sum_{i=1}^N w_i\\
+s.a. &\quad w_i - \sum_{j=1}^N \alpha p_{ij}^k w_k \geq R^k_i\quad \forall i,\, \forall k\in D(i)\\
+&w_i \in \R \quad \forall i
+\end{align*}
+\end{teorema}
+\begin{dem}
+Cada componente de $f=(f_1,\dotsc,f_N)$ verifica que 
+$$
+f_i \geq R_i^k + \sum_{j=1}^N \alpha p_{ij}^k f_k \quad \forall k\in D(i)$$
+Pero eso es equivalente a decir que $f$ cumple las restricciones del problema (P) planteado en el enunciado. Supongamos que $\pi$ es la política tal que $f=v^\pi$. Si escribimos las restricciones de (P) para la política $\pi$ tenemos
+$$
+w-Q^\pi w \geq R^\pi \equiv w \geq T^\pi + Q^\pi w
+$$
+Aplicando el lema se obtiene
+$$
+R^\pi + Q^\pi w \geq v^\pi \quad w\geq v^\pi, \; \forall w \text{ fcatible}
+$$
+Por tanto, $\min \sum w_i = \sum_{i=1}^N v_i^{\pi(i)} = \sum_{i=1}^N f_i$.
+\end{dem}
+\begin{teorema}
+Consideremos el problema dual de $(P)$
+\begin{align*}
+&\max \sum_{i=1}^N\sum_{k\in D(i)}R^k_i x_i^k\\
+s.a. & \sum_{k\in D(i)} x_i^k - \sum_{k\in D(i)}\sum_{j=1} \alpha p_{ji} x_j^k = 1 \quad \forall i\\
+&x_i^k \geq 0 \quad \forall i
+\end{align*}
+B esuna matriz básica de (D) si y solo $B=(I-Q^\delta)$ $\forall \delta \in \Delta$.
+\end{teorema}
+\begin{dem}
+Supongamos que $\delta \in \Delta$ es una política y que $B= I-Q^\delta$. Sabemos que esta matriz tiene inversa $\sum_{n=0}^\infty Q^n$. Ahora podemos definir $x^\delta = 1^t(I-Q^\delta)^{-1}$. Entonces
+\begin{enumerate}
+\item $x^\delta \geq0 \equiv X^\delta = 1^t \sum_{n=0}^\infty Q^n \geq 1^t Q^0 = 1^t \geq 0$.
+\item $X^\delta \cdot (I-Q^\delta) = 1^t (I-Q^\delta)^{-1}(I-Q^\delta) = 1^t$
+\end{enumerate}
+Por tanto $B$ es una matríz básica de (D).
+
+Recíprocamente, supongamos que $B$ es una base de (D)., por tanto debemos tener $N$ columnas que definen exactamente $N$ variables no nulas. Observamos que para cada i
+$$
+\sum_{k\in D(i)}x^k_i - \sum_{k\in D(i)}\sum_{j=1} \alpha p_{ji} x_j^k = 1
+$$
+Como $x_j^k\geq 0$ tenemos que $\sum_{k\in D(i)} \geq 1$. Como necesitamos $N$ variables no nulas, si $\exists x_i^k, x_i^{k'}$ distintos de cero entonces debe existir un $j$ tal que $x_j^k = 0$ $\forall k$. Dado que
+$$
+\begin{cases}
+\sum_{k\in D(1)} x_1^k \geq 1\\
+\qquad\vdots\\
+\sum_{k\in D(i)} x_i^k \geq 1\\
+\sum_{k\in D(N)} x_N^k \geq 1
+\end{cases}
+$$
+Como a lo sumo hay $N$ variables no nulas en cada bloque debe haber una y solo una variables no nula. Sea $\pi(i)=k$ tal que $x_i^k\neq0$. Esta elección de variables define las columnas $I-Q^\delta$ de la matriz de restricciones de (D). 
+\end{dem}
 \end{document}
