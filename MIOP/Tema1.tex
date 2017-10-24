@@ -791,7 +791,7 @@ $$\lim_{n\to\infty}(I-Q^\delta)\sum_{k=0}^n (Q^\delta)^k=\lim_{n\to\infty}I-(Q^\
 Por lo que la matriz $(I-Q^\delta)$ es la inversa de la suma infinita.
 \end{proof}
 
-Dada una política $\delta\in\Delta$, hemos visto que el valor operado obtenido utilizando $\delta$ es
+Dada una política $\delta\in\Delta$, hemos visto que el valor esperado obtenido utilizando $\delta$ es
 $$v_i^\delta=R^\delta_i+\sum_{n=1}^\infty\sum_{j=1}^N\alpha^n p_{ij}^\delta(n) R_j^\delta$$
 o en forma vectorial
 $$v^\delta=(I-Q^\delta)^{-1}R^\delta\ (Q=\alpha P)$$
@@ -811,7 +811,7 @@ Probamos solamente a), pues b) es análogo.
 
 Sea $t=R+Qw-w\geq 0$. Entonces, como $Q\geq 0$,
 $$t(I-Q)^{-1}=t\sum_{n=0}^\infty Q^n\geq tQ^0=t\geq 0$$
-$$t(I-Q)^{-1}=[R+Qw-w](I-Q)^{-1}=[R-(I-Q)w](I-Q)^{-1}=\underbrace{(I-Q)^{-1}R-w}_{v}\geq t$$
+$$t(I-Q)^{-1}=[R+Qw-w](I-Q)^{-1}=[R-(I-Q)w](I-Q)^{-1}=\underbrace{(I-Q)^{-1}R}_{v}-w\geq t$$
 $$v-w\geq t\equiv v-w\geq R+Qw-w\Rightarrow v\geq R+Qw$$
 \end{proof}
 \begin{defi}[Algoritmo de evaluación de políticas]
@@ -820,7 +820,7 @@ $$v-w\geq t\equiv v-w\geq R+Qw-w\Rightarrow v\geq R+Qw$$
 \item Tomar $\delta \in \Delta$
 \item Calcular $v^\delta = (I-Q)^{-1}R^\delta$. Hacer $t_i =0$ $\forall i=1,\dotsc,N$.
 \item Calcular $t_i^k= R_i^k + \sum_{j=1}^N \alpha p_{ij}^k v_k^\delta - v_i^\delta$
-\item Si $t_i^k > t_i$ algún $i,k$; tomar $\delta(i)=k$ y $t_i = t^k_i$.
+\item Si $t_i^k > t_i$ para algún $i,k$; tomar $\delta(i)=k$ y $t_i = t^k_i$.
 \item Si $t_i = 0$ $\forall i$ STOP $\delta$ es la política óptima. En caso contrario volver a 2.
 \end{enumerate}
 \end{defi}
@@ -852,7 +852,7 @@ f_i = \max_{k\in D(i)} R^k_i + \sum_{kj=1}^n \alpha p_{ij}g_j \quad \forall i$$
 $$g_i = R_i^\pi(i)+\sum_{j=1}^N \alpha p_{ij}^{\pi(i)}g_j \quad \forall i$$
 Como $g_i$ son los máximo entonces 
 $$f_i \geq R_i^{\delta(i)}+\sum_{j=1}^N \alpha p_{ij}^{\delta(i)}g_j \quad \forall i,\,\forall \delta \in \Delta$$
-Vectorialmente aplicando el lema anterior ($w=g$) tenemos que $g\geq R^\delta+Q^\delta g$ $\forall g$, $R^\delta+Q^\delta g\geq v^\delta$, por lo que $\geq v^\delta$ $\forall \delta \in \Delta$. Pero como $g$ alcanza el valor de una política $(\pi)$ entonces $g$ es único ($g=v^\pi$).
+Vectorialmente aplicando el lema anterior ($w=g$) tenemos que $g\geq R^\delta+Q^\delta g$ $\forall g$, $R^\delta+Q^\delta g\geq v^\delta$, por lo que $g\geq v^\delta$ $\forall \delta \in \Delta$. Pero como $g$ alcanza el valor de una política $(\pi)$ entonces $g$ es único ($g=v^\pi$).
 \end{dem}
 \begin{teorema}
 Sea $f=\max_{\delta \in \Delta}v^\delta$, $f$ es también solución del problema
@@ -888,12 +888,12 @@ B esuna matriz básica de (D) si y solo $B=(I-Q^\delta)$ $\forall \delta \in \De
 \begin{dem}
 Supongamos que $\delta \in \Delta$ es una política y que $B= I-Q^\delta$. Sabemos que esta matriz tiene inversa $\sum_{n=0}^\infty Q^n$. Ahora podemos definir $x^\delta = 1^t(I-Q^\delta)^{-1}$. Entonces
 \begin{enumerate}
-\item $x^\delta \geq0 \equiv X^\delta = 1^t \sum_{n=0}^\infty Q^n \geq 1^t Q^0 = 1^t \geq 0$.
-\item $X^\delta \cdot (I-Q^\delta) = 1^t (I-Q^\delta)^{-1}(I-Q^\delta) = 1^t$
+\item $x^\delta \geq0 \equiv x^\delta = 1^t \sum_{n=0}^\infty Q^n \geq 1^t Q^0 = 1^t \geq 0$.
+\item $x^\delta \cdot (I-Q^\delta) = 1^t (I-Q^\delta)^{-1}(I-Q^\delta) = 1^t$
 \end{enumerate}
 Por tanto $B$ es una matríz básica de (D).
 
-Recíprocamente, supongamos que $B$ es una base de (D)., por tanto debemos tener $N$ columnas que definen exactamente $N$ variables no nulas. Observamos que para cada i
+Recíprocamente, supongamos que $B$ es una base de (D), por tanto debemos tener $N$ columnas que definen exactamente $N$ variables no nulas. Observamos que para cada i
 $$
 \sum_{k\in D(i)}x^k_i - \sum_{k\in D(i)}\sum_{j=1} \alpha p_{ji} x_j^k = 1
 $$
