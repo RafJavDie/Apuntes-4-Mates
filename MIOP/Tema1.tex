@@ -763,7 +763,7 @@ Entonces, definimos una \textbf{política} (estacionaria) como una regla de deci
 El conjunto de reglas de decisión estacionarias $\Delta$ es finito, de hecho $|\Delta|\leq |\bigtimes_{i\in S} D(i)|$.  
 
 Denotemos por $v^\delta_i$ el valor esperado de la recompensa obtenida por el proceso utilizando la política $\delta$ y suponiendo que comienza en estado $i$. 
-$$v^\delta_i=R^\delta_i+\alpha\sum_{j\in S} p_{ij}^\delta R_j^\delta +\alpha^2\sum_{j\in S}p_{ij}^\delta(2)R_j^\delta+\cdots=\sum_{n=0}^\infty\alpha^n p_{ij}^\delta(n) R_j^\delta$$
+$$v^\delta_i=R^\delta_i+\alpha\sum_{j\in S} p_{ij}^\delta R_j^\delta +\alpha^2\sum_{j\in S}p_{ij}^\delta(2)R_j^\delta+\cdots=\sum_{n=0}^\infty\sum_{j=1}^N\alpha^n p_{ij}^\delta(n) R_j^\delta$$
 El objetivo es encontrar $\delta\in\Delta$ tal que $f_i=\max_{\delta\in\Delta}v_i^\delta$ $i\in S$. $f=(f_i)_{i\in S}$, $v^\delta=(v_i^\delta)_{i\in S}$.
 
 
@@ -791,4 +791,27 @@ $$\lim_{n\to\infty}(I-Q^\delta)\sum_{k=0}^n (Q^\delta)^k=\lim_{n\to\infty}I-(Q^\
 Por lo que la matriz $(I-Q^\delta)$ es la inversa de la suma infinita.
 \end{proof}
 
+Dada una política $\delta\in\Delta$, hemos visto que el valor operado obtenido utilizando $\delta$ es
+$$v_i^\delta=R^\delta_i+\sum_{n=1}^\infty\sum_{j=1}^N\alpha^n p_{ij}^\delta(n) R_j^\delta$$
+o en forma vectorial
+$$v^\delta=(I-Q^\delta)^{-1}R^\delta\ (Q=\alpha P)$$
+o bien, como $(I-Q^\delta)v^\delta=R^\delta$,
+$$v^\delta=R^\delta+Q^\delta v^\delta$$
+Vamos a probar que existe una política que maximiza todas las componentes del vector $v^\delta$.
+
+\begin{lemma}
+Sea $v\mid v=R+Qv=(I-Q)^{-1}R$ y $w\in\R^N$. Entonces se verifican
+\begin{itemize}
+\item[a)] $R+Qw\geq w\Rightarrow v\geq R+Qw$.
+\item[b)] $R+Qw\leq w\Rightarrow v\leq R+Qw$.
+\end{itemize} 
+\end{lemma}
+\begin{proof}
+Probamos solamente a), pues b) es análogo. 
+
+Sea $t=R+Qw-w\geq 0$. Entonces, como $Q\geq 0$,
+$$t(I-Q)^{-1}=t\sum_{n=0}^\infty Q^n\geq tQ^0=t\geq 0$$
+$$t(I-Q)^{-1}=[R+Qw-w](I-Q)^{-1}=[R-(I-Q)w](I-Q)^{-1}=\underbrace{(I-Q)^{-1}R-w}_{v}\geq t$$
+$$v-w\geq t\equiv v-w\geq R+Qw-w\Rightarrow v\geq R+Qw$$
+\end{proof}
 \end{document}
