@@ -1,12 +1,62 @@
 \documentclass[twoside]{article}
-\usepackage{../estilo-ejercicios}
+\usepackage{../../estilo-ejercicios}
 
 %--------------------------------------------------------
 \begin{document}
 
 \title{Algebra Conmutativa y Geometría Aplicada}
-\author{Rafael González López}
+\author{Javier Aguilar Martín, Rafael González López}
 \maketitle
+\begin{ejercicio}{3}\
+Sea $X \subseteq \mathbb{A}^n_k$
+un conjunto algebraico. Probar que $\mathcal{A}(X)$ tiene
+dimensión finita como $k$-espacio vectorial si y solo si $X$ es un conjunto finito.
+\end{ejercicio}
+\begin{solucion}
+Probamos primero la implicación inversa. Sea $X=\{a_1,\dots,a_p\}$. Denotamos por $\mathfrak{m}_i=\mathcal{I}(\{a_i\})$, que son ideales maximales. Es claro que $\mathcal{I}(X)=\mathfrak{m}_1\cap\cdots\cap\mathfrak{m}_p$, por lo que $$\mathcal{A}(X) \cong k[x_1,\dots,x_n]/\mathfrak{m}_1\cap\cdots\cap\mathfrak{m}_p.$$ El homomorfismo canónico
+\begin{align*}
+k[x_1,\dots,x_n]&\to k[x_1,\dots,x_n]/\mm_1\times\cdots\times k[x_1,\dots,x_n]/\mm_p\\
+a&\mapsto ([a+\mm_1],\dots,[a+\mm_p])
+\end{align*}
+es sobreyectivo y su kernel es $\mm_1\cap\cdots\cap\mm_p$, así que aplicando el primer teorema de isomorfía y que  $k[x_1,\dots,x_n]/\mm_i\cong k$, 
+$$
+\calA(X)\cong k[x_1,\dots,x_n]/\mm_1\times\cdots\times k[x_1,\dots,x_n]/\mm_p\cong k\times\cdots\times k=k^p.
+$$
+Por lo que la dimensión de $\calA(X)$ como $k$-espacio vectorial es precisamente $p$, de modo que es finita.\\
+
+Vamos ahora a la implicación directa. Sabemos por teoría que la dimensión de Krull de $\calA(X)$ es igual a la dimensión de $X$, por lo que bastará probar que $\calA(X)$ tiene dimensión 0. Para ello necesitamos lo siguientes lemas.
+
+\newpage
+
+\begin{lemma}\label{lema}
+Sea $k$ un cuerpo y $A$ un $k$-espacio vectorial de dimensión finita. Entonces $A$ es artiniano.
+\end{lemma}
+\begin{proof}
+Basta observar que los ideales de $A$ son $k$-subespacios vectoriales, por lo que satisfacen la condición de cadena descendente, que es la definición de ser artiniano.
+\end{proof}
+
+
+
+\begin{lemma}
+Sea $A$ un dominio de integridad artiniano. Entonces $A$ es un cuerpo. 
+\end{lemma}
+\begin{proof}
+Sea $x\in A$ no nulo y consideremos $\langle x\rangle\supseteq\langle x^2\rangle\supseteq\cdots$, que se debe estabilizar puesto que $A$ es artiniano. Así que $\langle x^{n+1}\rangle=\langle x^n\rangle$ para algún $n>0$, por lo que podemos escribir $x^n=ax^{n+1}$ para algún $a\in A$. Dado que $A$ es un dominio de integridad y $x\neq 0$, podemos cancelar $x^n$ y obtener $1=ax$, por lo que $x$ es una unidad
+\end{proof}
+
+\begin{lemma}
+Sea $A$ un anillo artiniano. Entonces todo ideal primo es maximal.
+\end{lemma}
+\begin{proof}
+Sea $\mathfrak{p}$ un ideal primo. Entonces $A/\mathfrak{p}$ también es artiniano por la biyección entre ideales de $A$ y los de su cociente, y además es dominio de integridad. Por el lema anterior tenemos que $A/\mathfrak{p}$ es cuerpo, lo cual implica que $\mathfrak{p}$ es maximal.
+\end{proof}
+
+Vamos a probar que efectivamente ser Artiniano es condición suficiente para tener dimensión de Krull nula. En efecto, por el lema anterior, todo ideal primo es maximal, luego no puede existir una cadena de ideales primos de longitud positiva. 
+
+Ahora bien, tenemos por hipótesis que $A$ es un $k$-espacio vectorial de dimensión finita, por lo que aplicando el lema \ref{lema} deducimos que es un anillo artiniano. Hemos probado que esto implica que su dimensión de Krull es 0, y como la dimensión de Krull de $\calA(X)$ coincide con la dimensión de $X$, entonces $\dim(X)=0$, lo cual es equivalente a ser finito.
+\end{solucion}
+
+\newpage
 
 \begin{ejercicio}{6}
 Sea $Y\subset X \subset \mathbb{A}_k^n$ dos variedades. Definimos $\mathcal{K}(X,Y)$ como el conjunto de funciones racionales $f \in \mathcal{K}(X)$ que están definidas en al menos un punto de $Y$. Probar que $\mathcal{K}(X,Y)$ es un anillo local con cuerpo residual $\mathcal{K}(Y)$.
