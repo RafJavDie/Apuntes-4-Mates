@@ -1,4 +1,4 @@
-\documentclass[cursovd_portada.tex]{subfiles}
+\documentclass[Cursovd_portada.tex]{subfiles}
 \begin{document}
 
 
@@ -156,13 +156,16 @@ $\R$--linealidad);
 \hs Si se denota por $T_p(M)$ al conjunto de las aplicaciones $u:\mathcal{F}(p)\fl\R$ que son $\R$-lineales y que
 satisfacen la Condición de Leibniz, se puede probar que dicho conjunto es, realmente, el espacio tangente a $M$
 en $p$. La contención del espacio tangente en $T_p(M)$ se tiene ya por definición.
-\begin{lemma}
+\begin{lemma}\label{lema3.1}
 Sean $M$ una variedad diferenciable, $p\in M$, $f\in\esp{F}(p)$ y $(U,\vp=(x_1,\dots ,x_m))$ un s.l.c. entorno de
 $p$. Entonces, en un cierto entorno de $p$ se verifica que
 $$f=f(p)+\sum_{i=1}^mf_i.(x_i-x_i(p)),$$
 donde $f_i\in\esp{F}(p)$ y $f_i(p)=\left(\ddep{f}{x_i}\right)_p$.
 \end{lemma}
-\begin{lemma} Sean $M$ una variedad diferenciable, $p\in M$ y $u\in T_p(M)$.
+\begin{dem}
+La prueba es similar al problema 2.1.
+\end{dem}
+\begin{lemma}\label{lema3.2} Sean $M$ una variedad diferenciable, $p\in M$ y $u\in T_p(M)$.
 \begin{enumerate}
 \item Si ${\bf c}\in\esp{F}(M)$ es la función constante dada por ${\bf c}(q)=c$ para todo $q\in M$ y $c\in\R$,
 entonces, se verifica que $u({\bf c})=0$.
@@ -170,6 +173,37 @@ entonces, se verifica que $u({\bf c})=0$.
 \item Si $f,g\in\mathcal{F}(p)$ coinciden en un entorno de $p$, entonces $u(f)=u(g)$.
 \end{enumerate}
 \end{lemma}
+\begin{dem}\mbox{}
+\begin{enumerate}
+	\item Por la condicion de Leibniz: 
+	\[ u(\mathbf{1})=u(\mathbf{1}\cdot \mathbf{1}) = u(\mathbf{1}) \cdot \mathbf{1}(p) + \mathbf{1}(p) \cdot u(\mathbf{1}) = 2 u(\mathbf{1}) \]
+	Entonces obviamnete, $u(\mathbf{1})=0$. Entonces por la $\R$-linealidad, $u(\mathbf{c})=u(c\cdot\mathbf{1})=c u(\mathbf{1}) = 0$.
+	\item Como $f \in \mathcal{F}(p)$, existe un $G$ entorno abierto de $P$ tal que $f : G \to \mathcal{R}$ y existe $U\subseteq G$ entorno abierto de $p$ tal que $f=0$ en $U$. Sea $h : U \to \R$ definida como $h(q)=1$. Aplicando el lema de extensión de funciones diferenciables, existe un entorno abierto $V$ de $p$ tal que $\overline{V}\subseteq U$ y existe una función $H \in \mathcal{F}(M)$ tal que $H=1$ en $V$ y $H=0$ en $M \setminus U$. Tomando $F=1-H \in \mathcal{F}(M)$.
+
+	Hemos llegado a una que existe una función $F$ que cumple que $F=0$ en $V$ y $F=1$ en $M\setminus U$. Veamos que $f=f\cdot F|_G$. Si $q \in U$, $f(q)=f(q)\cdot F|_G(q)=0$. Si $q \in G\setminus U$, $F|_G=1$, luego se cumple la igualdad.
+	
+	Así usando la condición de Leibniz:
+	\[ u(f)=u(f \cdot F|_G)=u(f)\cdot F|_G(p)+f(p)\cdot u(F|_G) = u(f) \cdot 0 +  \cdot u(F|_G) = 0\]
+	\item Si $f=g$ en un entorno, entonces $f-g=0$ en ese entorno. Luego por la linealidad, $0=u(f-g)=u(f)-u(g)$, Entonces $u(f)=u(g)$. 
+\end{enumerate}
+\qed
+\end{dem}
+\begin{lemma}\label{lema3.3}
+Dado un punto $p$ de una variedad diferenciable $M$ y una carta local $(U,\vp=(x_1,\dots ,x_m))$ entorno de $p$,
+los vectores tangentes
+$$\left(\dep{x_i}\right)_p,\mbox{ }i=1,\dots ,m,$$
+forman un sistema generador de $T_p(M)$, con lo que ${\rm dim}(T_p(M))=m$.
+\end{lemma}
+\begin{dem}
+Sea $u \in T_p(M)$. Para cualquier función $f \in \mathcal{F}(p)$. Aplicando el lema \ref{lema3.1} y el apartado 3 del \ref{lema3.2}.
+\[ u(f) = u(f(p)+\sum_{i=1}^m f_i(x_i-x_i(p)) = u(f(p)) + \sum_{i=1}^m u(f_i(x_i-x_i(p)) \]
+Por el apartado 1 del lema \ref{lema3.2}: $u(f(p))=0$. Por la condición de Leibniz:
+\[ u(f) = \sum_{i=1}^m ( u(f_i)(x_i-x_i(p))(p) + f_i(p) u(x_i-x_i(p))) \]
+Como $(x_i-x_i(p))(p)=x_i(p)-x_i(p)=0$:
+\[ u(f) = \sum_{i=1}^m f_i(p) u(x_i) = \left(\sum_{i=1}^m u(x_i) \left(\frac{\partial}{\partial x_i}\right)_p\right)f \]
+Luego $u = \sum u(x_i) \left(\frac{\partial}{\partial x_i}\right)_p$.
+\qed
+\end{dem}
 Sea ahora un s.l.c. $(U,\vp=(x_1,\dots ,x_m))$ entorno de $p$. Dados $u\in T_p(M)$ y cualquier función
 $f\in\mathcal{F}(p)$, en virtud de los lemas anteriores se tiene que:
 $$u=\sum_{i=1}^mu(x_i)\left(\dep{x_i}\right)_p.$$
@@ -180,11 +214,29 @@ deducirse que, dado $u\in T_p(M)$ y considerando la curva diferenciable en $M$,
 $$\a:(-\epsilon,\epsilon)\fl M:t\mapsto \vp^{-1}((p_1+tu(x_1),\dots ,p_m+tu(x_m))),$$
 para cierto $\epsilon>0$ que existe por la continuidad de $\vp$, donde $(p_1,\dots ,p_m)=\vp(p)$, se verifica que
 $\a(0)=p$ y $\a'(0)=u$.
+
 \begin{teorema}
 El conjunto de los vectores tangentes a una variedad diferenciable $M$ en un punto $p$ es $T_p(M)$, es decir, los
 vectores tangentes a $M$ en $p$ son las aplicaciones $\R$-lineales de dominio $\mathcal{F}(p)$ con valores reales
 que verifican la Condición de Leibniz.
 \end{teorema}
+\begin{dem}
+\[ \{\text{conjunto de los vectores tangentes a M en }p\} = \{u : \mathcal{F}(p) \to \R \mid u\text{ es }\R\text{-lineal y verifica las condición de Leibniz}\}\]
+\begin{itemize}
+	\item[($\subseteq$)] Visto.
+	\item[($\supseteq$)] Sea $u \in T_p(M)$ cualquiera. Sea $(U,φ=(x_1,\dots,x_m))$ una carta en $M$ tal que $p \in U$. Aplicando el lema 3:
+	\[ u = \sum_{i=1}^m u(x_i) \left(\frac{\partial}{\partial x_i}\right)_p \]
+	Definimos la recta $\overline{α} : \R \to \R^m$ definida como $\overline{α}(t)=(p_1+tu(x_1),\dots,p_m+tu(x_m)$ donde $(p_1,\dots,p_m)=φ(p)$. Entonces:
+	\[ \overline{α}(0) = φ(p) \in φ(U) \subseteq \R^m \]
+	Por continuidad, existe $ϵ>0$ con $\overline{α}((-ϵ,ϵ)) \subseteq φ(U)$. Sea $α : (-ϵ,ϵ) \to M$ definida como $α = φ^{-1} \circ \overline{α}$. Tenemos que $α$ es diferenciable por ser composición de diferenciables. Además, $α(0)=φ^{-1}(\overline{α}(0))=φ^{-1}(φ(p))=p$.
+
+	Para toda $f \in \mathcal{F}(p)$:
+	\[ α'(0)f = \left.\frac{d(f\circ α)}{dt}\right|_{t=0} = \left.\frac{d(f \circ φ^{-1} \circ \overline{α})}{dt}\right|_{t=0} = \sum_{i=1}^m \left.\frac{\partial (f \circ φ^{-1})}{dt}\right|_{\overline{α}(0)} \cdot \left.\frac{d(u_i \circ \overline{α})}{dt}\right|_{t=0} \]
+	Como $\dfrac{d(u_i \circ \overline{α})}{dt}=u(x_i)$:
+	\[ α'(0)f = \sum_{i=1}^m \left.\frac{\partial (f \circ φ^{-1})}{dt}\right|_{φ(p)} u(x_i) = \left(\sum_{i=1}^mu(x_i) \left(\frac{\partial}{\partial x_i}\right)_p\right)f = u(f) \]
+\end{itemize}
+\qed
+\end{dem}
 Ahora, en el conjunto de las curvas diferenciables en $M$ que pasan por $p$ y que se denota por $\esp{C}(p)$, se
 puede definir una relación de equivalencia $\esp{R}$ por: $\a\esp{R}\b$ si y sólo si $\a$ y $\b$ tienen el mismo
 vector tangente en $p$.
@@ -202,6 +254,16 @@ los vectores tangentes
 $$\left(\dep{x_i}\right)_p,\mbox{ }i=1,\dots ,m,$$
 forman una base de $T_p(M)$, con lo que ${\rm dim}(T_p(M))=m$.
 \end{teorema}
+\begin{dem}
+Ya hemos demostrado que es un sistema generador en \ref{lema3.3}. Veamos que es linealmente independiente. Sea $λ_i \in \R$, $i=1,\dots m$ tal que:
+\[ \sum_{i=1}^m λ_i \left(\frac{\partial}{\partial x_i}\right)_p = 0\]
+Entonces:
+\[ 0 = \left(\sum_{i=1}^m λ_i \left(\frac{\partial}{\partial x_i}\right)_p\right)x_j = \sum_{i=1}^m λ_i \left(\frac{\partial x_j}{\partial x_i}\right)_p = \sum_{i=1}^m λ_i \left(\frac{\partial (x_j \circ φ^{-1})}{\partial u_i}\right)_{φ(p)} \]
+Como 
+\[ \left(\frac{\partial (x_j \circ φ^{-1})}{\partial u_i}\right)_{φ(p)} = \left(\frac{\partial (u_j \circ φ \circ φ^{-1})}{\partial u_i}\right)_{φ(p)} = δ_{ij} \]
+Entonces $0 = \sum_{i=1}^m λ_iδ_{ij} = λ_j$.
+\qed
+\end{dem}
 Como consecuencia, se obtiene que hay tantas bases de $T_p(M)$ como cartas locales entorno de $p$. Además, si
 $(U,\vp=(x_1,\dots ,x_m))$ y $(V,\psi=(y_1,\dots ,y_m))$ son dos de tales cartas, entonces el cambio de bases
 viene dado por:
@@ -221,7 +283,7 @@ Sea $f\in\esp{F}(p)$. Se llama {\bf Diferencial} de $f$ en $p$ a la función $(\
 $(\dif f)_pu=u(f)$, para cualquier vector $u\in T_p(M)$.
 \end{defi}
 \begin{prop}
-Dada $f\in\esp{F}(p)$, entonces $(\dif f)_p\in T_p^*(M)$.
+Dada $f\in\esp{F}(p)$, entonces $(\dif f)_p\in T_p^*(M)$. (Ejercicio)
 \end{prop}
 Dado $(U,\vp=(x_1,\dots ,x_m))$ un s.l.c. entorno de $p$, en virtud de la proposición anterior se tiene que
 $(\de{x_i})_p\in T_p^*(M)$, para cualquier $i=1,\dots ,m$. Además, se puede comprobar fácilmente que
@@ -230,7 +292,13 @@ $\{\left(\dep{x_i}\right)_p\}_{i=1,\dots ,m}$ de $T_p(M)$.
 \begin{prop}
 Todo covector en $p$ es la diferencial de alguna función diferenciable en $p$.
 \end{prop}
-
+\begin{dem}
+Sea $u^* \in T_p^*(M)$ un covector cualquiera. Sea $(U,φ=(x_1,\dots,x_m))$ una carta en $M$ tal que $p \in U$. Entonces existen $λ_1,\dots,λ_m$ tal que:
+\[ u^* = \sum_{i=1}^m λ_i(dx_i)_p \]
+Sea $f = \sum_{i=1}^m λ_i x_i \in \mathcal{F}(U)$. Para cualquier $u \in T_p(M)$,
+\[ (df)_pu = u(f) = u\left(\sum_{i=1} λ_i x_i\right) = \sum_{i=1}^m λ_i u(x_i)= \sum_{i=1}^m λ_i (dx_i)_p u = \left(\sum_{i=1}^m λ_i (dx_i)_p\right) u = u^*(u)\]
+Luego $(df)_p = u^*$.
+\end{dem}
 \newpage
 
 \section{Ejercicios.}
@@ -259,5 +327,8 @@ $p\in M$ y $(U,\vp=(x_1,\dots ,x_m))$ un s.l.c. entorno de $p$.
 Dado cualquier covector $\om\in T_p^*(M)$, calcular su
 expresión en función de la base $\{(\de x_i)_p/i=1,\dots
 ,m\}$.
+
+Pista :-) :
+\[ \omega = \sum_{i=1}^m \omega \left(\left(\frac{\partial}{\partial x_i}\right)_p\right) (dx_i)_p \]
 \end{enumerate}
 \end{document}
