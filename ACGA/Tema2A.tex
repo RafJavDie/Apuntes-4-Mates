@@ -121,7 +121,19 @@ Sin embargo, si $Z\subseteq\mathbb{P}^n$ es irreducible y $Z\cap\A^n\neq\emptyse
 Por tanto, tenemos una biyección entre el conjunto de variedades algebraicas afines en $\A^n$ y el conjunto de variedades proyectivas en $\mathbb{P}^n$ no contenidas en $H_\infty$. 
 
 \begin{ej}
-$X=\{(t,t^2,t^2)\}=\V(y-x^2,z-x^2)$. Homogeneizando obtenemos $\V(yt-x^2,zt-x^2)$. Los puntos afines se obtienen con $t=1$. En el resto, $t=0$, luego $x=0$. Así, obtenemos la descomposibción $\V(yt-x^2,zt-x^2)=\V(t,x)\cup\V(zy-x^2,y-z)=Z$. Para el segundo conjunto, al que llamaremos $Y$, necesitamos polinomios homogéneos, por eso no hemos cogido los originales. Tenemos $X\subseteq Y\subsetneq Z$.  
+$X=\{(t,t^2,t^2)\}=\V(y-x^2,z-x^2)$. Homogeneizando obtenemos $\V(yt-x^2,zt-x^2)$. Los puntos afines se obtienen con $t=1$. En el resto, $t=0$, luego $x=0$. Así, obtenemos la descomposibción $\V(yt-x^2,zt-x^2)=\V(t,x)\cup\V(zy-x^2,y-z)=Z$. Para el segundo conjunto, al que llamaremos $Y$, necesitamos polinomios homogéneos, por eso no hemos cogido los originales. Tenemos $X\subseteq Y\subsetneq Z$. 
+
+Tenemos que:
+\[ \V(x_0^2-x_1x_2, x_0x_1-x_2x_3) = \V(x_0,x_2) \cup Y \]
+donde $Z=\V_{af}(x_0^2-x_1,x_0x_1-x_3) = \{(t,t^2,t^3)\}$ e $Y=\overline{Z}=\V(x_0^2-x_1x_2,x_0x_1-x_3x_2,x_1^2-x_0x_3)$. Veamos que $Y$ irreducible. Como:
+\[ Y = (Y \cap U_0) \cup (Y \cap U_1) \cup (Y \cap U_2) \cup (Y \cap U_3) \]
+donde $U_i = \{x_i \neq 0\}$.
+\[ Y \cap U_0 = \V(1-x_1x_2,x_1-x_2x_3,x_1^2-x_3) = \{(t,1/t,t^2)\} \]
+Como $Y \cap U_0$ está parametrizado, es irreducible. Análogamente:
+\[ Y \cap U_1 = \V(x_0^2-x_2,x_0-x_2x_3,1-x_0x_3) = \{(t,t^2,1/t)\} \]
+\[ Y \cap U_2 = \{(t,t^2,t^3)\} \]
+\[ Y \cap U_3 = \V(x_0^2-x_1x_2, x_0x_1-x_2, x_1^2-x_0) = \{(t^2,t,t^3)\} \]
+son irreducibles. Como $Y$ es unión de irreducibles disjuntos 2 a 2, $Y$ es irreducible.
 \end{ej}
 
 \begin{nota}
