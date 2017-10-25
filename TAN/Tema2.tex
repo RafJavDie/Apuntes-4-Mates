@@ -93,4 +93,105 @@ $$
  \int_1^x\frac{\{t\}}{t}dt  \leq  \int_1^x\frac{1}{t} = \log xdt 
 $$
 \end{dem}
+
+\section{Teoremas de Mertens}
+\begin{teorema}[Primer teorema de Mertens]
+\[ \sum_{p≤x} \frac{\log p}{p} = \log x + \mathcal{O}(1) \]
+\end{teorema}
+Demostración en Tenenbaum p.14.
+
+\begin{teorema}[Mertens]
+Existe una constante $C$ tal que
+\[ \sum_{p≤x} \frac{1}{p} = \log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right) \]
+\end{teorema}
+Demostración en Tenenbaum p.152.
+
+\begin{teorema}[Segundo teorema de Mertens]
+\[ \prod_{p≤x} \left(1-\frac{1}{p}\right)^{-1} = e^γ\log x + \mathcal{O}(1) \]
+donde $γ$ denota la constante de Euler.
+\end{teorema}
+Ver Tenenbaum p.17 y Mendes France p.21.
+
+Los teoremas anteriores tienen forma más precisa:
+\[ \sum_{p≤x} \frac{\log p}{p} = \log x + E + \mathcal{O}(e^{-a\sqrt{\log x}}) \]
+con
+\[ E = -γ-\log_{p} \frac{\log p}{p^2-p} = -γ-\sum_{m=2}^{∞} μ(m) \frac{ζ'(m)}{ζ(m)} = -1.332582275733221... \]
+sus dígitos forman la sucesión \href{https://oeis.org/A083343}{A083343} en OEIS.
+\[ \sum_{p≤x} \frac{1}{p} = \log \log x + M + \mathcal{O}(e^{-a\sqrt{\log x}}) \]
+\[ M = \sum_{p} \left(\log \left(1-\frac{1}{p}\right)+\frac{1}{p}\right) = γ + \sum_{m=2}^{∞} \frac{\log ζ(m)}{m} = 0.261497212847643... \]
+sus dígitos forman la sucesión \href{https://oeis.org/A077761}{A077761} en OEIS. 
+
+\section{Equivalentes al teorema de los números primos}
+Se denomina así al teorema que afirma
+\[ \lim_{x\to+∞} \frac{π(x)\log x}{x} = 1 \]
+que fue demostrado independientemente por Hadamard y de la Vallée-Poussin.
+
+El siguiente teorema permite simplifcar la prueba del teorema de los números primos gracias a que da muchas formulaciones equivalentes.
+
+\begin{teorema}[Chebyshev]
+Existen constantes $A$ y $B$ tales que para todo $α \in (0,1)$
+\[ αAx ≤ απ(x)\log x ≤ θ(x) ≤ ψ(x) ≤ π(x)\log x ≤ Bx \]
+para todo $x ≥ x_0(α)$.
+\end{teorema}
+
+\begin{teorema}[Chebyshev]
+\[ \liminf_{x\to∞} \frac{θ(x)}{x} = \liminf_{x\to∞} \frac{ψ(x)}{x} = \liminf_{x\to∞} \frac{π(x)\log x}{x} ≥ \log 2 \]
+y
+\[ \limsup_{x\to∞} \frac{θ(x)}{x} = \limsup_{x\to∞} \frac{ψ(x)}{x} = \limsup_{x\to∞} \frac{π(x)\log x}{x} ≤ \log 4 \]
+\end{teorema}
+Demostración en Nathanson p.271.
+
+\section{Método de la criba}
+El origen del método es la criba de Eratóstenes. La criba de Eratóstenes conduce a la siguiente fórmula.
+
+\begin{teorema}[Fórmula de Legendre]
+Para todo $x > 1$ se tiene
+\[ π(x) - π(\sqrt{x}) + 1 = \sum_{n|P_x}μ(n)\lfloor\frac{x}{n}\rfloor \]
+donde $P_x$ denota el producto de los números primos menores o iguales a $x$.
+
+Esta fórmula parece poco útil a primera vista. El gran mérito de Brun es dar con técnicas que permiten hacerla útil
+
+El prblema con esta fórmula es que la diferencia $π(x)-π(\sqrt{x})$ se da en términos de una suma con demasiados sumandos, aun cuando estos sumandos se obtengan con error pequeñ al multiplicar por el número de términos se obtienen errores randes. El mérito de Brun es haber ideado un método de salvar esta dificultad.
+
+Veremos como funciona la idea de Brun, estudiando su aplicación a la cuenta de los primos gemelos. En primer lugar introducimos la función de cuenta de estos números
+\[ π_2(x) = \text{card}\{p : p \text{ y }p+2\text{ son primos y }p≤x\} \]
+La idea básica del método de Brun es una modificación del método de exclusión-inclusión: si en un conjunto finito $X$ se tienen subconjuntos $(A_j)_{j=1}^n$ entonces para todo natural $h$, tal que $2≤2h≤n$
+\[ \text{card}\left(X \setminus \bigcup_{j=1}^n A_j \right) ≤ \sum_{k=0}^{2h} \sum_{\text{card}(J)=k} (-1)^k \text{card}\left(\bigcap_{j\in J} A_j \right)\]
+\end{teorema}
+Con la ayuda de este principio se consigue probar.
+
+Este apartado puede estudiarse en Cilleruelo \& Córdoba.
+
+\begin{teorema}
+Existe una constante $C$ tal que para $x ≥ 2$
+\[ π_2(x) ≤ C \frac{x}{(\log x)^2} (\log \log x)^2 \]
+\end{teorema}
+Para ello cribamos el conjunto $A_x = \{(2n-1)(2n+1) : 1 ≤ n ≤ (1+x)/2\}$
+por los primos impares menores que un cierto $a ≤ \sqrt{x+2}$.
+
+\begin{coro}
+Si $P_2$ es el conjunto finito o infinito de los números primos $p$ tales que $p+2$ es primo se tiene
+\[ \sum_{p\in P_2} \frac{1}{p} < +∞ \]
+\end{coro}
+
+\section{El número de divisores primos de un entero}
+Nos proponemos estudiar el comportamiento de la función $ω(n)$.
+\begin{teorema}
+Para $x ≥ 2$
+\[ \sum_{n≤x} ω(n) = x\log \log x + Cx + \mathcal{O}\left(\frac{x}{\log x}\right) \]
+\end{teorema}
+\begin{teorema}
+Para $x ≥ 2$
+\[ \sum_{n≤x} ω(n)^2 = x(\log \log x)^2 + Cx + \mathcal{O}(x \log \log x) \]
+\end{teorema}
+El orden normal de $ω(n)$ es $\log \log n$ como se establece en el siguiente teorema.
+\begin{teorema}[Hardy-Ramanujan]
+Para cada $δ > 0$, el numero de enteros $n < x$ tales que
+\[ |ω(n) - \log \log n| ≥ (\log \log x)^{1/2+δ} \]
+es $ο(x)$.
+
+La prueba puede verse en Nathanson p.238-287. También es buena la exposición de M. Kac p.71-74.
+
+La misma afirmación vale si sustituimos $ω(n)$ por $Ω(n)$. El orden normal de $\log d(n)$ como consecuencia es $\log 2 \log \log n$.
+\end{teorema}
 \end{document}
