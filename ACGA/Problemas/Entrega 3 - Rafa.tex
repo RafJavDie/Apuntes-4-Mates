@@ -1,5 +1,5 @@
 \documentclass[twoside]{article}
-\usepackage{../estilo-ejercicios}
+\usepackage{../../estilo-ejercicios}
 
 %--------------------------------------------------------
 \begin{document}
@@ -10,6 +10,8 @@
 
 \begin{ejercicio}{1}
 Sea $A$ un anillo y $S\subset A$ un conjunto multiplicativa. Si $f\func{A}{B}$ es un homomorfismo de anillos tal que $f(S)\subset B^\times$, probar que existe un único homomorfismo de anillos $\tilde{f}\func{S^{-1}A}{B}$ que existe a $f$, en el sentido de que $\tilde{f}(a/1) = f(a)$.
+\newline
+Deducir que si $A$ es un dominio de integridad y $f\func{A}{L}$ un homomorfismo de anillos inyectivo, donde $L$ es un cuerpo, entonces $f$ se extiende de manera única a $K(A)$, el cuerpo de fracciones de $A$.
 \begin{solucion}
 Vamos a tratar de dar una definición de $\tilde{f}$. Sea $p/q$, sabemosq que $\tilde{f}(p/1)=f(p)$. Definimos $\tilde{f}(p/q)=k$ donde $k\in B$ es tal que $kf(q)=f(p)$. Tenemos que comprobar que está bien definido y que es homomorfismo.
 \begin{itemize}
@@ -45,7 +47,7 @@ Usando que $f(q)\in B^\times$, obtenemos que $\tilde{g}(1/q)=f(q)^{-1}=\tilde{f}
 $$
 \tilde{g}(p/q) = \tilde{g}(p/1\cdot 1/q) = \tilde{g}(p/1)\tilde{g}(1/q) = f(p)f(q)^{-1} = \tilde{f}(p/q)
 $$
-
+Para ver la segunda parte del ejercicio no tenemos que más que considerar que, al ser $f$ inyectiva, necesariamente $f(A^*)\subset L^*$, pues $L$ es cuerpo y su único elemento no unidad es el $0$. La hipótesis de que $A$ sea dominio es necesaria para definir el cuerpo de fracciones. No tenemos más que aplicar la primera parte a $S=A^{*}$, pero precisamente ${A^*}^{-1}A = K(A)$. 
 \end{solucion}
 \end{ejercicio}
 \end{document}

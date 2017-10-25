@@ -144,4 +144,60 @@ En general, dado $f\in k[x_0,\xn{n}]$, podemos obtener el polinomio \textbf{desh
 $\exists r\geq 0$ tal que $x_0^r(f^{dh})^h=f$.
 \end{ejer}
 
+\section{Funciones regulares en $\mathbb{P}^n$}
+\begin{defi}
+Sea $X \subseteq \mathbb{P}^n$ un conjunto algebraico. Una función racional es un par $(U,f)$ dond $U$ es un aberto denso y $f : U \to k$ tal que existen $P,Q \in k[x_0,\dots,x_n]$ polinomios homogéneos de mismo grado con:
+\[ f(x) = \frac{P(x)}{Q(x)} \quad \forall x \in U \]
+donde $(U,f)=(V,g)$ si $f|_{U\cap V} = g|_{U\cap V}$. 
+
+Denotamos como $K(X)$ al conjunto de funciones racionales de $X$.
+\end{defi}
+
+\begin{nota}
+Si en $U$, $f=P/Q$ y en $V$, $g=R/S$. $(U,f)=(V,g)$ si  $PS=QR$ en $U \cap V$. es decir, si $PS-QR\in I(X)$.
+\end{nota}
+
+\begin{prop}
+$K(X)$ es un anillo con las operaciones habituales.
+\end{prop}
+
+\begin{prop}
+Si $X$ es irreducible, $K(X)$ es un cuerpo, llamado el cuerpo de funciones de $X$.
+\end{prop}
+
+\begin{ej}
+En $X=\mathbb{P}^1$:
+\[ K(X) = \left\{\frac{P(x_0,x_1)}{Q(x_0,x_1)} \mid P,Q \in k[x_0,x_1] \text{ homógeneo de mismo grado y }Q(x_0,x_1)\neq 0\right\} / \sim \]
+
+Veamos que $K(X)$ es cuerpo. Sea $φ : K(X) \to k(t)$ definida como:
+\[ φ\left(\frac{P(x_0,x_1)}{Q(x_0,x_1)}\right)  = \frac{P(1,t)}{Q(1,t)} \]
+Se puede ver con facilidad que $φ$ está bien definida y es inyectiva. Para ver que es sobreyectiva basta observar que:
+\[ \frac{R(t)}{S(t)} = φ \left(\frac{R^h}{S^h} \cdot x_0^{\text{gr}(S)-\text{gr}(R)} \right)\]
+Luego $φ$ es isomorfismo y $K(X)$ es cuerpo.
+\end{ej}
+
+\begin{defi}
+Una función racional $f : X \dashrightarrow k$ está definida en $a \in X$ si existen $P,Q \in [x_0,\dots,x_n]$ homogéneos de mismo gado y $U \subseteq X$ denso con $a \in U$ tal que $f(x) = \frac{P(x)}{Q(x)}$ para todo $x \in U$.
+\end{defi}
+
+\begin{defi}
+$f$ está definida en un abierto $U \subseteq X$ si lo está en todo punto de $U$. Denotaremos como $O_{X,a}$ a todas las funciones racionales definida en $a$. Así mismo:
+\[ O_X(U) = \bigcap_{a \in U} O_{x,a} \]
+\end{defi}
+
+\begin{prop}
+Si $X$ es irreducible, $O_{X,a}$ y $O_X(U)$ son subanillos de $K(X)$. $O_{X,a}$ es un anillo local de ideal maximal $\{f \in O_{X,a} \mid f(a)=0\}$.
+\end{prop}
+
+\begin{defi}
+Una función regular $f : X \dashrightarrow k$ es una función racional que está definida en todo punto de $X$.
+\end{defi}
+
+\begin{nota}
+Recordemos que en el caso afín, toda función racional es regular.
+\end{nota}
+
+\begin{ej}
+En $\mathbb{P}^1$, veamos qué necesitamos para que $P(x_0,x_1)/Q(x_0,x_1)$ esté definida en todo punto de $\mathbb{P}^1$. Para todo $(a_0:a_1)$, existe $R,S \in k[x_0,x_1]$ homogéneos de mismo grado tal que $S(a_0,a_1)\neq 0$ y $P/Q=R/S$. Supongamos que $Q(a_0,a_1)=0$, entonces $(a_0x_1-a_1x_0) | Q(x_0,x_1)$. Por otro lado: $P(a)S(a)=R(a)Q(a)$, luego $P(a)=0$ luego $(a_0x_1-a_1x_0) | P(x_0,x_1)$. Entonces podemos eliminar dicho factor de $P$ y $Q$ para obtener $P'$ y $Q'$ que no se anula en $(a_0:a_1)$ y de un grado menor. Como todo polinomio no constante se anula, sólo acabaremos cuando $P/Q=A/B$ donde $A,B \in k$. 
+\end{ej}
 \end{document}
