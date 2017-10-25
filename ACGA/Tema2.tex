@@ -1,0 +1,203 @@
+\documentclass[ACGA.tex]{subfiles}
+
+
+
+
+
+
+
+
+\begin{document}
+
+\chapter{Proyectivo}
+
+\section{No sé qué cojones poner aquí\\ Un saludo a FC}
+El proyectivo posee diferencias sutanciales con respecto al espacio afín. En el proyectivo se verifica que
+$$
+\dim(L_1 + L_2) + \dim(L_1 \cap L_2) = \dim(L_1) + \dim(L_2),
+$$
+a diferencia de en los espacios afines, donde hay que distinguir si se cortan o no se cortan las variedades. 
+
+Dos rectas siempre se cortan en el plano proyectivo en al menos un punto, así como una recta y una cónica se cortan en dos puntos. En general, si tenemos una curva definida por un polinomio de grado $d$ y una recta cualquiera siempre se cortan en $d$ puntos (contando multiplicidad).
+
+Algunas cosas que conviene recordar. $\PP^n = \PP^{n-1}\cup \A^n$
+
+Las raíces de un polinomio no están definidas en el proyectivo, pues $(1:1:1)$ es raíz de $x_0 + x_1^2 - 2x_0x_1$, pero no $(2:2:2)$. Consideramos entonces los polinomios homogéneos. 
+
+\begin{defi}
+Diremos que un conjunto $X\subset \Pnk$ es algebraico si existe $S\subset k[x_0,\xn{n}]$ un conjunto de polinomios homogéneos tal que $X=\{x\in\Pnk \mid f(x)=0 \; \forall f\in S\}$.
+\end{defi}
+Como siempre $\emptyset = \V(1)$ y $\Pnk = \V(0)$. $\V(\{a_0,\dotsc,a_n\}) = \{a_ix_j - a_j x_i \mid 0\leq i \leq j \leq n\}$. Cualquier variedad proyectiva lineal es un conjunto algebraico. Las cónicas, cuádricas e hipercuádricas son conjuntos algebraicos.
+
+Si $S\subset k[x_0,\xn{n}]$ es un subcojunto arbitrario de polinomios entonces definimos $\V(S)$ como $\V(S\cap k[x_0,\xn{n}]^h)$. 
+
+\begin{prop}
+Si $S\subset k[x_0,\xn{n}]^h$, entonces $\V(S)=\V(\gene{S})$. 
+\end{prop}
+\begin{dem}
+Una inclusión es trivial. Para la otra tenemos que ver que si $f\in \gene{S}$ homogéneo, entonces $f=\sum g_i f_i$ con $f_i \in S$. Si $h_i$ es la componente homogénea de $g_i$ de grado $d-d_i$ entonces $\sum g_i f_i = \sum h_i f_i$. Si $x\in \V(S)$ entonces $f_i(x)=0$ $\forall i$, por lo que $\sum h_i (x) f_i (x) =0$. 
+\end{dem}
+\begin{defi}
+Un ideal $I\subset k[x_0,\xn{n}]$ es homogéneo si se puede generar por un conjunto de polinomios homogéneos. 
+\end{defi}
+\begin{prop}
+Todo conjunto algebraico de $\Pnk$ se puede definir mediante un conjunto finito de polinomios homogéneos. Basta tomar todas las componentes homogéneas de un conjunto de generadores.
+\end{prop}
+\begin{prop} La unión finita y la intersección arbitraria de conjuntos arbitrarios es algebraica, dando lugar a la topología de Zariski.
+\end{prop}
+¿Se sigue cumplliendo que existe una correspondencia biunívoca entre los conjuntos algebraicos de $\Pnk$ y los ideales radicales homogéneos de $k[x_0,\xn{n}]$?
+Sea $x$ es algebraico entonces 
+$$\I(X)=\gene{\{f\in k[x_0,\xn{n}]^h \mid f(x)=0\}}$$.
+\begin{prop}
+Si $\V(X)=0$, entonces $\sqrt{I}=\gene{1}$ o bien $\sqrt{I}=\gene{x_0,\dotsc,x_n}$.
+\end{prop}
+\begin{dem}
+Pensemos primero en el caso afín. Si $\Va(I)\subset \A^{n+1}$ entonces $\Va(I)\subset\{(0,\dotsc,0)\}$, por lo que $\gene{x_0,\dotsc,x_n}\subset \sqrt{I}$.
+\end{dem}
+Sea $I$ homogéneo tal que $X=\Vp(I)\neq \emptyset$. Entonces, si $\pi$ es la aplicación que pasa de $\A^{n+1}$ a $\PP^n$, si tenemos un conjunto algebraico $X$ en $\PP^n$, $\{0\}\cup\pi^{-1}(X)$ es el cono afín de $X$. Tenemos que el cono afín de $X$ es precisamente $\Va(I)$.
+
+Sea $f\in \I_p(\Vp(I))$ homogéneo, entonces $f$ se anula en todo punto de $\Va(I)$ (por ser homogéneo y no constante). Por tanto, sabemos que $f\in \I_a(\Va(I))$ y, por el Teorema de los ceros en el caso afín, deducimos que $f\in \sqrt{I}$. Por tanto, $\I_p(\Vp(I))=\sqrt{I}$.
+
+Tenemos definiciones análogas de conjuntos algebraicos irreducibles y equivalencia entre irreducible e $\I(X)$ primo, descomposición de conjuntos algebraicos en irreducibles de manera única, dimensión de un conjunto algebraico, etc.
+
+\begin{nota}\
+\begin{itemize}
+
+
+\item Dos polinomios de grado $d$ y $e$ en el plano proyectivo se cortan en $de$ puntos.
+
+\item Si tienes un ideal generado por $r$ polinomios en $\mathbb{P}^n$ entonces cualquier componente irreducible tiene como mínimo $n-r$.
+\end{itemize}
+\end{nota}
+
+\begin{ejer}
+Intentemos descomponer $\V(x_0^2-x_1x_2,x_0x_1-x_2x_3)$. Claramente $\V(x_0,x_2)$ está contenido. Quitando ese caso, podemos suponer que $x_2\neq 0$, por lo que podemos trabajar en el afín con $x_2=1$, quedando el sistema: $x_0^2-x_1=0$ y $x_0x_1-x_3=0$. Esto nos da el sistema $x_0 = t$, $x_1=t^2$, $x_3=t^3$. Por tanto, en el espacio afín esto sería $\V(x_0^2-x_1,x_0^3-x_3)$. Homogeneizando, $\V(x_0^2-x_1x_2,x_0^3-x_3x_2^2)$. 
+
+Como se puede observar, es bastante complicado resolver este problema en general, para abordarlo usaremos los resultados que veremos a continuación.
+
+ 
+\end{ejer}
+
+Vamos a tener en cuenta que la definición de irreducibilidad es válida para cualquier espacio topológico, y que tomando complementarios se peude exprespar como que $X$ es irreducible si y solo si para cualquier par de abiertos $U,V\subseteq X$ no vacíos, entonces $U\cap V\neq\emptyset$.
+
+\begin{defi}
+La \textbf{clausura proyectiva} $\overline{X}$ de un conjunto algebraico afín $X\subseteq\A^n$ es el menor conjunto algebraico de $\mathbb{P}^n$ tal que $X\subseteq\overline{X}$.
+\end{defi}
+
+\begin{prop}
+Supongamos que $X=\bigcup U_i$ con $U_i$ abierto irreducible, y $U_i\cap U_j\neq\emptyset$, entonces $X$ es irreducible.
+\end{prop}
+\begin{dem}
+Sean $U,V\subseteq X$ abiertos no vacíos. Entonces $\exists i\mid U\cap U_i\neq\emptyset\ \exists j\mid V\cap U_j\neq\emptyset$. Por hipótesis $V\cap U_j\neq\emptyset$ y $U_i\cap U_j\neq\emptyset$ siendo las dos interesecciones abiertas. Por tanto $U_i\cap U_j\cap V\neq\emptyset$. Por otro lado, $U_i\cap U_j\cap U\neq\emptyset$. Como $U_i$ es irreucible, $U_i\cap U_j\cap U\cap V\neq\emptyset$, por lo que en particular $U\cap V\neq\emptyset$.  \QED
+\end{dem}
+En $\Pnk$, $U_i:=\Pnk\setminus\{x_i=0\}$ es un abierto (de Zariski) en $\Pnk$ tal que $\Pnk=\bigcup_{i=0}^n U_i$. Tenemos que $U_i\cong\A^n$. Vamos a ver que la restricción de la topología de Zariski del proyectivo a $\A^n$ es la topología de Zariski en $\A^n$. 
+\begin{proof}
+Toamos $i=0$ y hacemos la identificación $U_0\cong A^n\hookrightarrow\mathbb{P}^n$ tal que $(a_1,\dots,a_n)\mapsto(1:a_1:\dots :a_n)$. Entonces $\mathbb{P}^n\setminus U_0=H_0$ hiperplano del infinito. 
+
+Los cerrados de la topología inducida en $\A^n$ por la topología de Zariski de $\mathbb{P}^n$ son los conjuntos de la forma $Z\cap\A^n$ con $Z\subseteq\mathbb{P}^n$ algebraico. Veamos que esta topología es la de Zariski en $\A^n$.
+
+Sea $X=Z\cap\A^n$, con $Z\subseteq\mathbb{P}^n$ algebraico. $Z=\V(J)$ con $J\subseteq k[x_0,\xn{n}]$ ideal homogéneo. $Z\cap\A^n=\{(a_1,\dots,a_n)\mid (1:a_1:\dots:a_n)\in Z\}$, pero $(1:a_1:\dots:a_n)\in Z\Leftrightarrow f(1,a_1,\dots,a_n)=0\ \forall f\in J$. 
+
+Sea $X\subseteq\A^n$ algebraico, vamos a probar que $X=\A^n\cap\overline{X}$. Es evidente $X\subseteq\A^n\cap\overline{X}$ por definición. Como $X$ es cerrado en $\A^n$, es igual a su clausura afín. La clausura en la restricción es la intersección de la clausura en el proyectivo con el subespacio de la restricción, que es justamente lo que tenemos. 
+
+
+\end{proof}
+
+\begin{prop}
+Dado $X=\V^{af}(I)\subseteq\A^n$ (se puede suponer $I=\I(X)$), entonces $\overline{X}=\V^{pr}(\{f^h\mid f\in I\}=I^h)$. 
+\end{prop}
+\begin{dem}
+
+Probamos la incluisión hacia la derecha. Sea $(a_1,\dots,a_n)\in X$. Visto como punto proyectivo es $(1:a_1:\dots:a_n)$. Sea $f\in I$, $f^h(1,a_1,\dots,a_n)$, $f=(f^h)^{dh}(a_1,\dots,a_n)=0$. 
+
+
+Para la otra inclusión, como $\overline{X}=\V(J)\supset\V^{pr}(I^h)$ con $J\subseteq k[x_0,\xn{n}]$ ideal homogéneo, basta probar que $J\subseteq I^h$. Sea $g\in J$ homogéneo, $g$ se anula en todo punto de $\overline{X}$. Si $(a_1,\dots,a_n)\in X$, entonces $(1:a_1:\dots:a_n)\in\overline{X}$, luego $g(1:a_1:\dots:a_n)=0$, así que $g(1,x_1,\dots,x_n)=g^{dh}$ se anula en todo punto de $X$, por lo que $g^{dh}\in\I^{af}(\V^{af}(I))=\sqrt{I}=I$, luego $(g^{dh})^h\in I^h$. Se tiene que $g=x_0^r(g^{dh})^h\in I^h$. 
+\end{dem}
+
+Por tanto, $\overline{\V^{af}(I)}=\V^{pr}(I^h)$ y $\A^n\cap\V^{pr}(J)=\V^{af}(J^{dh})$. Esta correspondencia no es una biyección. Es cierto, que si tomamos $X$, hacemos $\overline{X}$, luego $\A^n\cap\overline{X}=X$. Por tanto la correspondencia es inyectiva. Pero en sentido inverso no da lo mismo, pues si tenemos un conjunto algebraico contenido en el hiperplano del infinito, entonces no podemos expresarlo como intresección con el espacio afín. 
+
+Sin embargo, si $Z\subseteq\mathbb{P}^n$ es irreducible y $Z\cap\A^n\neq\emptyset$ entonces $Z=\overline{Z\cap\A^n}$.  La inclusión a la izquierda es evidente porque $Z$ es un cerrado que contiene al conjunto al que le hacemos la clausura. Y si la inclusión fuera estricta, entonces $Z=\overline{Z\cap\A^n}\cap (Z\cap H_\infty)$, pero como $Z$ es irreducible o bien se tiene el resultado o bien $Z\subseteq H_\infty$, lo cual sería contradicción.
+
+Por tanto, tenemos una biyección entre el conjunto de variedades algebraicas afines en $\A^n$ y el conjunto de variedades proyectivas en $\mathbb{P}^n$ no contenidas en $H_\infty$. 
+
+\begin{ej}
+$X=\{(t,t^2,t^2)\}=\V(y-x^2,z-x^2)$. Homogeneizando obtenemos $\V(yt-x^2,zt-x^2)$. Los puntos afines se obtienen con $t=1$. En el resto, $t=0$, luego $x=0$. Así, obtenemos la descomposibción $\V(yt-x^2,zt-x^2)=\V(t,x)\cup\V(zy-x^2,y-z)=Z$. Para el segundo conjunto, al que llamaremos $Y$, necesitamos polinomios homogéneos, por eso no hemos cogido los originales. Tenemos $X\subseteq Y\subsetneq Z$. 
+
+Tenemos que:
+\[ \V(x_0^2-x_1x_2, x_0x_1-x_2x_3) = \V(x_0,x_2) \cup Y \]
+donde $Z=\V_{af}(x_0^2-x_1,x_0x_1-x_3) = \{(t,t^2,t^3)\}$ e $Y=\overline{Z}=\V(x_0^2-x_1x_2,x_0x_1-x_3x_2,x_1^2-x_0x_3)$. Veamos que $Y$ irreducible. Como:
+\[ Y = (Y \cap U_0) \cup (Y \cap U_1) \cup (Y \cap U_2) \cup (Y \cap U_3) \]
+donde $U_i = \{x_i \neq 0\}$.
+\[ Y \cap U_0 = \V(1-x_1x_2,x_1-x_2x_3,x_1^2-x_3) = \{(t,1/t,t^2)\} \]
+Como $Y \cap U_0$ está parametrizado, es irreducible. Análogamente:
+\[ Y \cap U_1 = \V(x_0^2-x_2,x_0-x_2x_3,1-x_0x_3) = \{(t,t^2,1/t)\} \]
+\[ Y \cap U_2 = \{(t,t^2,t^3)\} \]
+\[ Y \cap U_3 = \V(x_0^2-x_1x_2, x_0x_1-x_2, x_1^2-x_0) = \{(t^2,t,t^3)\} \]
+son irreducibles. Como $Y$ es unión de irreducibles disjuntos 2 a 2, $Y$ es irreducible.
+\end{ej}
+
+\begin{nota}
+En general, dado $f\in k[x_0,\xn{n}]$, podemos obtener el polinomio \textbf{deshomogeneizado} $f^{dh}=f(1,x_1,\dots,x_n)\in k[\xn{n}]$. La operación ``inversa'' (realmente no es inversa porque la composición no es la identidad en ambos sentidos) sería, dado $g\in k[\xn{n}]$, entonces $g^h=x_0^{\deg{g}}g(\frac{x_1}{x_0},\dots,\frac{x_n}{x_0})\in k[x_0,\xn{n}]$. Tomando una potencia mayor de $x_0$ también se obtendría un polinomio homogéneo. 
+\end{nota}
+
+\begin{ejer}
+$\exists r\geq 0$ tal que $x_0^r(f^{dh})^h=f$.
+\end{ejer}
+
+\section{Funciones regulares en $\mathbb{P}^n$}
+\begin{defi}
+Sea $X \subseteq \mathbb{P}^n$ un conjunto algebraico. Una función racional es un par $(U,f)$ dond $U$ es un aberto denso y $f : U \to k$ tal que existen $P,Q \in k[x_0,\dots,x_n]$ polinomios homogéneos de mismo grado con:
+\[ f(x) = \frac{P(x)}{Q(x)} \quad \forall x \in U \]
+donde $(U,f)=(V,g)$ si $f|_{U\cap V} = g|_{U\cap V}$. 
+
+Denotamos como $K(X)$ al conjunto de funciones racionales de $X$.
+\end{defi}
+
+\begin{nota}
+Si en $U$, $f=P/Q$ y en $V$, $g=R/S$. $(U,f)=(V,g)$ si  $PS=QR$ en $U \cap V$. es decir, si $PS-QR\in I(X)$.
+\end{nota}
+
+\begin{prop}
+$K(X)$ es un anillo con las operaciones habituales.
+\end{prop}
+
+\begin{prop}
+Si $X$ es irreducible, $K(X)$ es un cuerpo, llamado el cuerpo de funciones de $X$.
+\end{prop}
+
+\begin{ej}
+En $X=\mathbb{P}^1$:
+\[ K(X) = \left\{\frac{P(x_0,x_1)}{Q(x_0,x_1)} \mid P,Q \in k[x_0,x_1] \text{ homógeneo de mismo grado y }Q(x_0,x_1)\neq 0\right\} / \sim \]
+
+Veamos que $K(X)$ es cuerpo. Sea $φ : K(X) \to k(t)$ definida como:
+\[ φ\left(\frac{P(x_0,x_1)}{Q(x_0,x_1)}\right)  = \frac{P(1,t)}{Q(1,t)} \]
+Se puede ver con facilidad que $φ$ está bien definida y es inyectiva. Para ver que es sobreyectiva basta observar que:
+\[ \frac{R(t)}{S(t)} = φ \left(\frac{R^h}{S^h} \cdot x_0^{\text{gr}(S)-\text{gr}(R)} \right)\]
+Luego $φ$ es isomorfismo y $K(X)$ es cuerpo.
+\end{ej}
+
+\begin{defi}
+Una función racional $f : X \dashrightarrow k$ está definida en $a \in X$ si existen $P,Q \in [x_0,\dots,x_n]$ homogéneos de mismo gado y $U \subseteq X$ denso con $a \in U$ tal que $f(x) = \frac{P(x)}{Q(x)}$ para todo $x \in U$.
+\end{defi}
+
+\begin{defi}
+$f$ está definida en un abierto $U \subseteq X$ si lo está en todo punto de $U$. Denotaremos como $O_{X,a}$ a todas las funciones racionales definida en $a$. Así mismo:
+\[ O_X(U) = \bigcap_{a \in U} O_{x,a} \]
+\end{defi}
+
+\begin{prop}
+Si $X$ es irreducible, $O_{X,a}$ y $O_X(U)$ son subanillos de $K(X)$. $O_{X,a}$ es un anillo local de ideal maximal $\{f \in O_{X,a} \mid f(a)=0\}$.
+\end{prop}
+
+\begin{defi}
+Una función regular $f : X \dashrightarrow k$ es una función racional que está definida en todo punto de $X$.
+\end{defi}
+
+\begin{nota}
+Recordemos que en el caso afín, toda función racional es regular.
+\end{nota}
+
+\begin{ej}
+En $\mathbb{P}^1$, veamos qué necesitamos para que $P(x_0,x_1)/Q(x_0,x_1)$ esté definida en todo punto de $\mathbb{P}^1$. Para todo $(a_0:a_1)$, existe $R,S \in k[x_0,x_1]$ homogéneos de mismo grado tal que $S(a_0,a_1)\neq 0$ y $P/Q=R/S$. Supongamos que $Q(a_0,a_1)=0$, entonces $(a_0x_1-a_1x_0) | Q(x_0,x_1)$. Por otro lado: $P(a)S(a)=R(a)Q(a)$, luego $P(a)=0$ luego $(a_0x_1-a_1x_0) | P(x_0,x_1)$. Entonces podemos eliminar dicho factor de $P$ y $Q$ para obtener $P'$ y $Q'$ que no se anula en $(a_0:a_1)$ y de un grado menor. Como todo polinomio no constante se anula, sólo acabaremos cuando $P/Q=A/B$ donde $A,B \in k$. 
+\end{ej}
+\end{document}
