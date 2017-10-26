@@ -52,66 +52,11 @@ Como $4s\geq f(s,1)$, también $4(s+1)\geq f(s,1)$, así que lo óptimo es no ap
 
 \newpage 
 \begin{ejercicio}{2}
-
+Cada año al propietario de un coto e caza debe determinar el número de piezas que cazará. Durante el año $t$ el precio de una pieza es $p_t$. Si al comienzo del año $t$ el coto contiene $b$ piezas, la caza de $x$ piezas tiene un costo de $c(x/b)$. Durante el periodo de veda, que es al finalizar el periodo de caza, el número de piezas del coto se ve multiplicado por un factor $D$, con $P[D=d]=q(d)$. Determinar la estrategia de caza que maximiza el beneficio esperado obtenido por el propietario del coto.
 
 
 \begin{solucion}
-Hay $3$ etapas, en cada una decidimos cuántos artículos de cada tipo transportamos. Los estados serán del tipo $(t,k)$, donde $t$ es la etapa en la que nos encontramos y $k$ es el espacio disponible. Entonces $f(t,k)$ es la máxima ganancia que puede obtener el transportista desde la etapa $t$ hasta la etapa $3$ si dispone de $k$ $m^3$ de espacio. Llamamos $p_t$ al pago en la etapa $t$ y $v_t$ al volumen del producto en la etapa $t$. 
-\begin{align*}
-f(3,k)=&\max_{x_3}\{58x_3: 5x_3\leq k\}\\
-f(t,k)=&\max_{x_t:v_tx_t\leq k}\{p_tx_t+f_{t+1}(k-v_tx_t)\}
-\end{align*}
-\underline{Etapa 3:} $p_3=58$, $v_3=5$\
-\begin{center}
-\begin{tabular}{c| c c c c c c c c c}
-$k$ & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 0\\
-\hline
-$f(3,k)$ & $58$ & 58 & 58 & 58 & 0 & 0 & 0 & 0 & 0\\
-$x_3$ &  $1$ & 1 & 1 & 1& 0 & 0 & 0 & 0 & 0
-\end{tabular}
-\end{center}
-\underline{Etapa 2}: $p_2=32$, $v_2=5$, $f_2(k)=\max\{32x_2+f_3(k-3x_2):3x_2\leq k\}$.
 
-$$f(2,8)=\begin{cases}
-32\cdot 0+f(3,8)=58\\
-32\cdot 1+f(3,5)=90\\
-32\cdot 2+f(3,2)=64
-\end{cases}\quad f(2,7)=\begin{cases}
-32\cdot 0+f(3,7)=58\\
-32\cdot 1+f(3,4)=32\\
-32\cdot 2+f(3,1)=64
-\end{cases}$$
-
-$$f(2,6)=\begin{cases}
-32\cdot 0+f(3,6)=58\\
-32\cdot 1+f(3,3)=32\\
-32\cdot 2+f(3,0)=64
-\end{cases}\quad f(2,5)=\begin{cases}
-32\cdot 0+f(3,5)=58\\
-32\cdot 1+f(3,2)=32\\
-\end{cases}$$
-\begin{center}
-\begin{tabular}{c| c c c c c c c c c}
-$k$ & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 0\\
-\hline
-$f_2(k)$ & 90 & 64 & 64 & 58 & 32 & 32 & 0 & 0 & 0\\
-$x_2$ &  $1$ & 2 & 2 &    1&  0 & 1 &   1 & 0 & 0
-\end{tabular}\
-\end{center}
-\underline{Etapa 1:}
-$$f_1(8)=\max_{x_1\leq 8}\{11x_1+f_2(8-x_1)\}=\begin{cases}
-f_(2,8)=90\\
-11+f(2,7)=75\\
-22+f(2,6)=86\\
-33+f(2,5)=\boxed{91}\\
-44+f(2,4)=76\\
-55+f(2,3)=87\\
-66+f(2,2)=66\\
-77+f(2,1)=77\\
-88+f(2,0)=88
-\end{cases}$$
-
-Hemos llegado a que la ganancia óptima es $91$, con la configuración $x_1=3,x_2=0, x_3=1$.
 \end{solucion}
 
 \end{ejercicio}
@@ -139,147 +84,33 @@ Si quisiéramos considerar que no es necesario invertir todo el dinero podemos c
 
 \newpage 
 \begin{ejercicio}{4}
-Un estudiante tiene siete días para preparar sus exámenes finales de cuatro asignaturas y
-quiere asignar el tiempo que tiene de la manera más eficiente posible. Necesita por lo menos un
-día para cada asignatura por lo que quiere asignar uno,dos,tres o cuatro días a cada asignatura.
-Utilizar programación dinámica para realizar estas asignaciones de forma que se maximice el total
-de puntos obtenidos en los cuatro exámenes. La siguiente tabla muestra la estimación de los puntos
-obtenidos en cada asignatura según el número de días de estudio asignados.
-\begin{center}
-5em Asignaturas\\
-\begin{tabular}{c|c c c c}
-Nº días & 1 & 2 & 3 & 4\\
-\hline
-1 & 3 & 5 & 2 & 6\\
-2 & 5 & 5 & 4 & 7\\
-3 & 6 & 6 & 7 & 9\\
-4 & 7 & 9 & 8 & 9
-\end{tabular}
-\end{center}
-Resolver el problema mediante programación dinámica.
-\begin{nota}
-¿Cómo se haría si quisiera aprobar todas como condición inicial?
-\end{nota}
+En un juego se puede apostar cualquier cantidad y se gana esa misma cantidad con probabilidad $2/3$. Se pierde la cantidad apostada con probabilidad $1/3$.
+
+Se desea determinar, partiendo de 3 um, la política óptima acerca del número de fichas a apostar en tres jugadas consecutivas de forma que la probabilidad de tener al menos cinco um al final sea máxima. La decisión en cada jugada debe tener en cuenta los resultados de las jugadas anteriores.
 \begin{solucion}
-Tenemos 4 etapas, una para cada asignatura, en la que decidimos cuántos días le dedicamos. Por tanto tenemos los estados $(t,k)$, donde $t$ es la etapa en la que nos encontramos y $k$ es la cantidad de días disponible para asignar (teniendo en cuenta que ya se ha asignado un día previamente). $f(t,k)$ representaría la máxima cantidad de puntos que podemos obtener desde la etapa $t$ hasta el final si disponemos de $k$ días libres. Entonces definimos
-$$f(t,k)=\max_{1\leq x_t\leq k}\{g(t,x_t)+f(t+1,k-x_t)\}$$ y $f(4,k)=\max_{1\leq x_3\leq k}\{g(4,x_3)\}=g(4,k)$, donde $g(t,x)$ representa los puntos obtenidos, es decir, el valor de la tabla en la posición $(t,x)$.
-\underline{Etapa 4}
-\begin{center}
-\begin{tabular}{|c|c|c|}
-\hline
-$k$ & $x$ & $f(4,k)$\\
-\hline
-1 & 1 & 6\\
-2 & 2 & 7\\
-3 & 3 & 9\\
-4 & 4 & 9\\
-\hline
-\end{tabular}
-\end{center}
-\newpage
-\underline{Etapa 3}
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline
-$k$ & $x$ & $g(3,x)$ & $f(4,k-x)$ & $f(3,k)$\\
-\hline
-2 & 1 & 2 & 6 & $\boxed{8}$\\
-\hline
-3 & 1 & 2 & 7 & 9\\ 
-  & 2 & 4 & 6 & $\boxed{10}$\\
-\hline
-4 & 1 & 2 & 9 & 11\\
-  & 2 & 4 & 7 & 11\\
-  & 3 & 7 & 6 & $\boxed{13}$\\
-  \hline
-5 & 1 & 2 & 9 & 11\\
-  & 2 & 4 & 9 & 13\\
-  & 3 & 7 & 7 & $\boxed{14}$\\
-  & 4 & 8 & 6 & 14\\
-  \hline
-\end{tabular}
-\end{center}
-\underline{Etapa 2}
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-$k$ & $x$ & $g(2,x)$ & $ f(3,k-x)$ & $f(2,k)$\\
-\hline 
-3 & 1 & 5 & 8 & $\boxed{13}$\\
-\hline
-4 & 1 & 5 & 10 & $\boxed{15}$\\
-  & 2 & 5 & 8 & 13\\
-  \hline
-5 & 1 & 5 & 13 & $\boxed{18}$\\
-  & 2 & 5 & 10 & 15\\
-  & 3 & 6 & 8 & 14\\
-  \hline
-6 & 1 & 5 & 14 & $\boxed{19}$\\
-  & 2 & 5 & 13 & 18\\
-  & 3 & 6 & 10 & 16\\
-  & 4 & 9 & 8  & 17\\
-  \hline
-\end{tabular}
-\end{center}
-\underline{Etapa 1}
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-$k$ & $x$ & $g(1,x)$ & $f(2,k-x)$ & $f(1,k)$\\
-\hline
-7 & 1 & 3 & 19 & 22\\
-  & 2 & 5 & 18 & $\boxed{23}$\\
-  & 3 & 6 & 15 & 21\\
-  & 4 & 7 & 13 & 20\\
-  \hline
-\end{tabular}
-\end{center}
-$x_1=2, x_2=1, x_3=3, x_4=1$.
+
 \end{solucion}
 \end{ejercicio}
 
 \newpage 
 \begin{ejercicio}{5}
-En una empresa se estiman las necesidades de mano de obra para las cuatro estaciones del año.
-Estas son 225, 220, 240 y 200 hombres respectivamente en primavera, verano, otoño e invierno.
-Si se emplean a más hombres de los necesarios se produce un coste de 2000 u.m. por persona
-y periodo. Los costos debidos a la contratación o al despido de trabajadores entre periodos se
-estiman en 200 veces el cuadrado de la diferencia entre el número de trabajadores en uno y otro
-periodo.
-Determinar el número de empleados que deben estar en plantilla en cada estación del año; para
-ello asumir que la cantidad de trabajadores es continuamente divisible.
+Un jugador puede apostar cualquier fracción de su fortuna en un juego de azar. En cada partida recibe un múltiplo de $\gamma>1$ de la cantidad apostada con probabilidad $p$ y pierde la cantidad apostada con probabilidad $q=1-p$, donde $p\gamma>1$. El jugador parte con un capita $C$, puede jugar a lo sumo $N$ partidas y desea determinar la estrategia de apuestas que maximice la esperanza del logaritmo de su capital tras las $N$ partidas.
+\begin{enumerate}
+\item Formular el problema utilizando la programación dinámica.
+\item Pruébese que la estrategia óptima consiste en apostar en cada etapa una granción $\alpha^*$ de su capital, donde
+$$\alpha^*=\frac{p(\gamma-1)-q}{\gamma-1}.$$
+Esta estrategia del juego se conoce como estrategia de Kelly.
+\end{enumerate}
 \begin{solucion}
 \end{solucion}
 \end{ejercicio}
 
 \newpage 
 \begin{ejercicio}{6}\label{6}
-Descomponer utilizando la programación dinámica una cantidad $C > 0$ en tres partes de forma
-que cada una de ellas sea mayor o igual que $C/4$ y que su producto sea mínimo. Definir las etapas,
-estados, decisiones y recursividad de este proceso.
+Un jugador va a participar en tres juegos consecutivos. En cada juego, puede apostar lo que gana; la cantidad apostada puede ascender a cualquier cantidad entre cero y la cantidad de dinero que le quede después de las apuestas en los juegos anteriores. En cada encuentro, la probabilidad de que gane el juego y, por lo tanto, la puesta, es $1/2$. Si no gana, pierde la apuesta. Comenzará con 75 um y su meta es tener 100 um al finalizar los tres juegos (exactamente 100). El jugador desea determinar su política óptima de apuesta (incluyendo todos los empates) que maximice la probabilidad de tener exactamente 100 um después de los tres juegos.
 \end{ejercicio}
 \begin{solucion}
-Primero vamos a plantearlo como un problema de programación lineal. Sean $x_1,x_2,x_3$ cada una de las 3 partes, las cuales cumplen $x_1+x_2+x_3=C$ y $x_1,x_2,x_3\geq\frac{C}{4}$. Con esta restricción tendríamos que calcular $\min x_1x_2x_3$. 
 
-Vamos a simplificarlo tomando $C=1$. Para programación dinámica tendríamos 3 etapas, cada una correspondiente a cada $x_i$. En los estados tenemos el índice $i$ y $d=1-\sum_{j=1}^ix_j$. La función recursiva por lo tanto sería
-\begin{align*}
-f(i,d)=&\min_{\frac{1}{4}\leq d-\frac{3-i}{4}} x_if(i+1,d-x_i)\\
-f(3,d)=&\begin{cases}
-d & d\geq\frac{1}{4}\\
-+\infty & d<\frac{1}{4}
-\end{cases}
-\end{align*}
-
-Así, pues $f(2,d)=\min_{\frac{1}{4}\leq d-\frac{1}{4}}\begin{cases}
-x(d-x) & d-x\geq\frac{1}{4}\\
-+\infty & d-x <\frac{1}{4}
-\end{cases}$
-Por tanto, el mínimo se alcanza en  se alcanza tanto en $\frac{1}{4}$ como en $d-\frac{1}{4}$. Elegimos por simplicidad $\frac{1}{4}$, con lo que sustituyendo nos da $f(2,d)=\frac{1}{4}(d-\frac{1}{4})$ si $d\geq\frac{1}{2}$ e infinito en caso contrario. Por último, en el primer paso tenemos la cantidad completa, por lo tanto calculamos
-$$f(1,1)=\min_{\frac{1}{4}\leq x\leq\frac{1}{2}}xf(2,1-x)=\begin{cases}
-x\frac{1}{4}(1-x-\frac{1}{4}) & 1-x\geq\frac{1}{2}\\
-+\infty & cc
-\end{cases}$$
-Como $x\leq\frac{1}{2}$ era una de las condiciones, el segundo caso podemos descartarlo. El mínimo se alcanza tanto en $\frac{1}{2}$ como en $\frac{1}{4}$, cuyo resultado es $\frac{1}{32}$. Vamos a elegir la solución $x_1=\frac{1}{4}$. Habíamos obtenido también $x_2=\frac{1}{4}$, por lo que obtenemos $x_3=\frac{1}{2}$.
 \end{solucion}
 
 \newpage 
