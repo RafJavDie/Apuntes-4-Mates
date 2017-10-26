@@ -41,6 +41,38 @@ P=\begin{cases}
 También podríamos haber ido calculando directamente $g(Y)$. En cualquier caso, $[[P]]^{(1)}=g^{-1}$. 
 \end{solucion}
 
+\newpage
+
+\begin{ejercicio}{14}
+Sea $f : \N \dashrightarrow \N$ definida por $f(0) = 0$, $f(1) = 1$ y $f(n) = f(n - 1) + f(n - 2)$ si
+$n \geq 2$. Demostrar que $f$ es computable, diseñando un programa GOTO que la calcule.
+\end{ejercicio}
+\begin{solucion}
+\begin{align*}
+ & IF\ X\neq 0\ GOTO\ A\\
+ & GOTO\ E\\
+[A] & Z_1\leftarrow X\\
+    & Z_1\leftarrow Z_1-1\\
+    & IF\ Z_1\neq 0\ GOTO\ B\\
+    & Y\leftarrow Y+1\\
+    & GOTO\ E\\
+[B] & Z_2\leftarrow Y\\
+    & Z_3\leftarrow Y+1\\
+    & Y\leftarrow Z_2+Z_3\\
+    & Z_4\leftarrow X\\
+    & Z_4\leftarrow Z_4-1\\
+    & IF\ Z_4\neq 0\ GOTO\ C\\
+    & GOTO\ E\\
+[C] & Z_2\leftarrow Z_3\\
+    & Z_3\leftarrow Y\\   
+    & Y\leftarrow Z_2+Z_3\\
+    &Z_4\leftarrow Z_4-1\\
+    & IF\ Z_4\neq 0\ GOTO\ C\\
+    & GOTO E
+\end{align*}
+\end{solucion}
+
+\newpage
 
 \begin{ejercicio}{15}
 En este ejercicio analizaremos los programas lineales. Los programas lineales son
