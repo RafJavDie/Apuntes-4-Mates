@@ -473,4 +473,48 @@ En el resultado anterior no es posible reemplazar $I$ por un conjunto finito de 
 En general, si $Z=\V(\{f_1,\ldots,f_r\})$ es una variedad afín, el conjunto algebraico proyectivo $\V(\{f_1^h,\ldots,f_r^h\})$ contiene a la clausura proyectiva de $Z$ como componente irreducible, posiblemente con otras componentes irreducibles contenidas en $H_\infty$.
 
 
+
+
+
+
+
+
+
+
+
+
+
+\begin{defi} Una variedad cuasi proyectiva es un subconjunto abierto de una variedad proyectiva. Una variedad cuasi afín es un conjunto abierto de un variedad afín.
+\end{defi}
+
+\begin{ej}
+En $\mathbb{P}^1$, veamos qué necesitamos para que $P(x_0,x_1)/Q(x_0,x_1)$ esté definida en todo punto de $\mathbb{P}^1$. Para todo $(a_0:a_1)$, existe $R,S \in k[x_0,x_1]$ homogéneos de mismo grado tal que $S(a_0,a_1)\neq 0$ y $P/Q=R/S$. Supongamos que $Q(a_0,a_1)=0$, entonces $(a_0x_1-a_1x_0) | Q(x_0,x_1)$. Por otro lado: $P(a)S(a)=R(a)Q(a)$, luego $P(a)=0$ luego $(a_0x_1-a_1x_0) | P(x_0,x_1)$. Entonces podemos eliminar dicho factor de $P$ y $Q$ para obtener $P'$ y $Q'$ que no se anula en $(a_0:a_1)$ y de un grado menor. Como todo polinomio no constante se anula, sólo acabaremos cuando $P/Q=A/B$ donde $A,B \in k$. 
+\end{ej}
+
+\begin{prop}Vamos a ver que las definiciones que hemos visto de funciones regulares no son conceptos distintos, sino que una es un caso particular de la otra.
+\end{prop}
+\begin{dem}
+\begin{lemma}
+ Las siguientes aplicaciones son homeomorfismos
+\begin{gather*} 
+\theta_i \func{\A^n}{U_i\subset \PP^n}\\
+(a_1,\dotsc,a_n) \rightarrow (a_1,a_2,\dotsc,a_{i-1},1,a_{i+1},\dotsc,a_n)
+\end{gather*}
+Para verlo, consideramos por simplificar el caso $i=0$. Sea $Z\subset U_0$ cerrado. Entonces $Z=U_0\cap \V(f_1,\dotsc,f_r)$ con $f_i \in k[x_0,\dotsc,x_n]^h$. Entonces
+$$
+\theta_0^{-1}(Z) = \{(a_1,\dotsc,a_n)\in\A^n \mid (1:a_1,\dotsc,a_n)\in Z\} = \Va(f_1^{dh},\dotsc,f_r^{dh})
+$$
+Sea $Y\subset \A^n$ cerrado. Entonces $Y=\Va(g_1,\dotsc,g_s)$. Entonces
+$$
+{\left(\theta_0^{-1}\right)}^{-1}(Y) = \{(x_0:\dotsc:x_n)\in U_0 \mid x_0^{gr(g_i)}\cdot g_i(\frac{x_1}{x_0},\dotsc,\frac{x_n}{x_0}=0\;\forall i\} = U_0 \cap \Vp(g_1^h,\dotsc,g_s^h)
+$$
+\end{lemma}
+\begin{lemma}Si $f\func{U_0}{k}$ es regular entonces $f \circ \theta_0\func{\A^n}{k}$ es regular. 
+
+Basta ver que es racional y definida en todos los puntos. $\exists P,Q\in k[x_0,\dotsc,x_n]^h$ del mismo grado tales que $f(x)=\dfrac{P(x)}{Q(x)}$ en el abierto $\{Q(x)\neq 0\}$. Entonces $f\circ \theta_0 (a_1,\dotsc,a_n)= \dfrac{P(1,a_1,\dotsc,a_n)}{Q(1,a_1,\dotsc,a_n)} = \dfrac{P^{dh}(q)}{Q^{dh}(q)}$ definida en todos los puntos. 
+\end{lemma}
+La aplicación $\Phi \func{ O_{\PP^n}(U_0)}{\mathcal{A}(\A^n)}$ tal que $\Phi(f) = f\circ \theta_0$ es un homomorfimos de $k$-álgebras. Si $g\in\mathcal{A}(\A^n)$ entonces $g(x)=R(x)$ con $R\in k[x_1,\dotsc,x_n]$. Si denotamos $\psi = \Phi^{-1}$ entonces $\psi(g) = \dfrac{R^h}{x_0^{gr(R)}}=R(\frac{x_1}{x_0},\dotsc,\frac{x_n}{x_0})$.
+
+Además $Z\subset \PP^n$ proyectivo, $Y=Z\cap U_0 \subset \A^n$ afín, entonces $\mathcal{A}(Y)\cong O_Z(Y)$.
+\end{dem}
 \end{document}
