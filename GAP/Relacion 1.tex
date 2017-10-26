@@ -12,9 +12,39 @@
 \begin{ejercicio}{1.1}
 Sea $f : M \to N$ una aplicación biyectiva, diferenciable y regular. Probar que $f$ es una isometría si y sólo si conserva las longitudes de las curvas. ¿Qué puede decirse si conserva los ángulos?
 \end{ejercicio}
+
 \begin{solucion}
+
+La implicación a la derecha está probada en teoría, así que vamos a probar la otra. Veamos que $\forall p\in M$, $f_{*p}$ es una isometría, es decir, veamos que $\forall\vec{v}\in T_p(M)$, $||\vec{v}||=||f_{*p}(\vec{v}||$. 
+
+Sea $\alpha$ una curva diferenciable en $M$ y sea $\beta=f\circ\alpha$. Sean $t_0,t_1\in I, t_0<t_1$. Por hipótesis, se tiene que $L^{t_1}_{t_0}\alpha=L^{t_1}_{t_0}\beta$, o equivalentemente
+$$\int_{t_0}^{t_1}||\alpha'(t)||dt=\int_{t_0}^{t_1}||\beta'(t)||dt.$$
+Veamos que $\forall t\in I$, se tiene que $||\alpha'(t)||=||\beta'(t)||$, por reducción al absurdo. Supongamos que $\exists \tilde{t}\in I$ tal que $||\alpha'(\tilde{t})||\neq||\beta'(\tilde{t})||$. Por fijar ideas pongamos que $||\alpha'(\tilde{t})||<||\beta'(\tilde{t})||$. Existe $\varepsilon>0$ tal que $||\alpha'(t)||<||\beta'(t)||\ \forall t\in (\tilde{t}-\varepsilon,\tilde{t}+\varepsilon)$. Entonces 
+$$L^{\tilde{t}+\varepsilon}_{\tilde{t}-\varepsilon}\alpha=\int^{\tilde{t}+\varepsilon}_{\tilde{t}-\varepsilon}||\alpha'(t)||dt<\int^{\tilde{t}+\varepsilon}_{\tilde{t}-\varepsilon}||\beta'(t)||dt=L^{\tilde{t}+\varepsilon}_{\tilde{t}-\varepsilon}\beta$$
+lo cual es una contradicción. 
+
+Consideramos la curva paramétrica $u^2=u^2_0$ dada por $\alpha(t)=\x(t,u^2_0)$, donde $p=\x(u^1_0,u^2_0)$ y $(U,\x)$ es una superficie simple en $M$. 
+Tenemos que $\alpha'(u_0^1)=\x_1(u^1_0,u^2_0)$. Tenemos $\beta=f\circ\alpha$, $\beta'(u_0^1)=\y_1(u_0^1,u_0^2)$, siendo $\y=f\circ\x$. 
+
+Se tiene que $||\alpha'(u_0^1)||=||\beta'(u_0^1)||\equiv || \x_1(u^1_0,u^2_0)||=||\y_1(u_0^1,u_0^2)||$. Ahora,
+$$g_{11}(u_0^1,u_0^2)=|| \x_1(u^1_0,u^2_0)||^2=||\y_1(u_0^1,u_0^2)||^2=h_{11}(u_0^1,u_0^2).$$
+Si consideramos la curva $u^1=u^1_0$ dada por $\tilde{\alpha}(t)=\x(u^1_0,t)$, obtenemos de forma análoga que $g_{22}(u_0^1,u_0^2)=h_{22}(u_0^1,u_0^2)$.
+
+Si tomamos $\hat{\alpha}(t)=\x(t+u_0^1,t+u_0^2)$, obtenemos una curva con $\hat{\alpha}'=\x_1+\x_2$ y $\hat{\alpha}=p$. Entonces
+
+\[
+\left.
+\begin{matrix}
+&||\hat{\alpha}'(0)||^2=g_{11}+2g_{12}+g_{22}\\
+&||\hat{\beta}'(0)||^2=h_{11}+2h_{12}+h_{22}
+\end{matrix}\right\}\Rightarrow g_{12}=j_{12}
+\]
+
+Dado $\vec{v}\in T_p(M)$ y dada una s.s. $(U,\x)$ y la s.s. $(U,\y)$ dada por $\y=f\circ\x$ se tiene que $\exists\lambda^1,\lambda^2\in\R$ tales que $\vec{v}=\lambda^1\x_1(u_0^1,u_0^2)+\lambda^2\x_2(u_0^1,u_0^2)$ donde $p=\x(u_0^1,u_0^2)$. Además, tenemos que $f_{*p}\vec{v}=\lambda^1\y_1(u_0^1,u_0^2)+\lambda^2\y_2(u_0^1,u_0^2)$. Por tanto, $||\vec{v}||^2=(\lambda^1)^2g_{11}+(\lambda^2)^2g_{22}+2\lambda^1\lambda^2g_{12}=(\lambda^1)^2h_{11}+(\lambda^2)^2h_{22}+2\lambda^1\lambda^2 h_{12}=||f_{*p}\vec{v}||^2$. \\
+
+Para la segunda parte del problema .eamos que $f$ es conforme si y sólo si $f$ conserva los ángulos. 
 \begin{itemize}
-Veamos que $f$ es conforme si y sólo si $f$ conserva los ángulos. 
+
 \item[($\Rightarrow$)] Por hipótesis, tenemos que existe una aplicación diferenciable y no nula $λ$ tal que $I_p(v_1,v_2)=λ^2(p) I_{f(p)}(f_{*p}v_1,f_{*p}v_2)$. Sean $v_1, v_2 \in T_p(M)$. Sea $(U,\x)$ una superficie simple en $M$ con $p \in \x(U)$. Sean $α_1,α_2 : I \to M$ curvas diferenciables tales que $α_1(0)=α_2(0)=p$, $α_1'(0)=v_1$, $α_2'(0)=v_2$, $α_1(I) \subset \x(U)$ y $α_2(I) \subset \x(U)$. Tenemos que:
 \[ α_1'(0) \cdot α_2'(0) = ||α_1'(0)|| \cdot ||α_2'(0)|| \cos θ \]
 Consideramos las curvas diferenciables en $N$ dadas por $β_1 = f \circ α_1$ y $β_2=f\circ α_2$. Entonces:
@@ -33,13 +63,40 @@ Luego:
 \end{align*}
 Luego $\cos θ = \cos \tilde{θ}$. Estableciendo que el ángulo debe estar en $[0,π)$: $θ = \tilde{θ}$.
 
-\item[($\Leftarrow$)] Sea $(U,\x)$ superficie simple en $M$ con $p \in \x(U)$ y $(U,\y)$ dada por $\y = f \circ \x$. Es suficiente probar que existe $λ^2$ función diferenciable no nula tal que $||\x_i||^2 = λ^2(p) ||\y_i||$, o equivalentemente, $g_{ij}= λ^2 h_{ij}$. Si consideramos las curvas $α(t)=\x(u^1(t),u^2(t))$, $β(u^1)=\x(u^1,u_0^2)$ $γ(u^2)=\x(u_0^1,u^2)$ tal que $α(t_0)=β(u_0^1)=γ(u_0^2)=p$. Si suponemos que estas curvas están parametrizadas naturalmente y usando que $f$ es conforme:
+\item[($\Leftarrow$)] Sea $(U,\x)$ superficie simple en $M$ con $p \in \x(U)$ y $(U,\y)$ dada por $\y = f \circ \x$. Es suficiente probar que existe $λ^2$ función diferenciable no nula tal que $||\x_i||^2 = λ^2(p) ||\y_i||$ (porque el vector $\vec{v}$ es combinación lineal de $\x_1,x_2$ y su imagen tiene lo mismos coeficientes), o equivalentemente, $g_{ij}= λ^2 h_{ij}$. Si consideramos las curvas diferenciables en $M$ $α(t)=\x(t,u^2_0)$, $α_2(t)=\x(u^1(t),u_0^2(t))$  tal que $α(u_0^1)=α_2(t_0)=p$. Supongamos por simplicidad que $\alpha_1'(u_0^1)\perp\alpha_2'(t_0)$, entonces $\alpha_1'(u_0^1)\alpha_2'(t_0)=0$. Además,
 \begin{align*}
-	α'(t_0)\cdot β'(u_0^1) & = (f \circ α') (t_0) \cdot (f \circ β')(u_0^1)\\
-	(\x_1 \cdot (u^1)'(0) + \x_2 \cdot (u^2)'(0)) \cdot \x_1 & = (\y_1 \cdot (u^1)'(0) + \y_2 \cdot (u^2)'(0)) \cdot \y_1\\
-	g_{11} (u^1)' + g_{12}(u^2)' & = h_{11}(u^1)'+h_{12}(u^2)'\\
-	\dots ??? \dots
-\end{align*} 
+&\alpha'_1(u_0^1)=\x_1(u_0^1,u_0^2)\\
+&\alpha_2'(t_0)=\x_1(u^1_0,u^2_0)\left.\frac{du^1}{dt}\right|_{t=t_0}+\x_2(u^1_0,u^2_0)\left.\frac{du^2}{dt}\right|_{t=t_0},
+\end{align*}
+luego $\alpha_1'(u_0^1)\alpha_2'(t_0)=g_{11}\left.\frac{du^1}{dt}\right|_{t=t_0}+g_{12}\left.\frac{du^2}{dt}\right|_{t=t_0}=0$. 
+
+Si consideramos $\beta_1=f\circ\alpha_1$ y $\beta_2=f\circ\alpha_2$, tenemos que $\beta_1(u^1_0)=\beta_2(t_0)=f(p)$ y $\beta_1'(u^1_0)\perp \beta_2'(t_0)$ dado que los ángulos se conservan. Como $\beta_2'(t)=\y_1(u^1_0,u^2_0)\left.\frac{du^1}{dt}\right|_{t=t_0}+y_2(u^1_0,u^2_0)\left.\frac{du^2}{dt}\right|_{t=t_0}$ y $\beta_1'(u^1_0)=\y_1(u^1_0,u^2_0)$
+
+$$\beta_1'(u^1_0)\beta_2'(t_0)=h_{11}\left.\frac{du^1}{dt}\right|_{t=t_0}+h_{12}\left.\frac{du^2}{dt}\right|_{t=t_0}=0.$$
+
+Por tanto $\begin{vmatrix}
+g_{11} & g_{12}\\
+h_{11} & h_{12}
+\end{vmatrix}=g_{11}h_{12}-g_{12}h_{11}=0$.
+
+Si consideramos la curva $u^1=u^1_0$ dada por $\alpha_3(t)=\x(u_0^1,t)$ y la curva $\alpha_2$ anterior, suponiendo que $\alpha_3'(u^2_0)\perp\alpha_2'(t_0)$ obtenemos $\begin{vmatrix}
+g_{12} & g_{22}\\
+h_{12} & h_{22}
+\end{vmatrix}=g_{12}h_{22}-g_{22}h_{12}=0$. De esta igualdad y la análoga anterior deducimos
+
+$\begin{cases}
+g_{12}=h_{12}\frac{g_{11}}{h_{11}}\\
+g_{12}=h_{12}\frac{g_{22}}{h_{22}}
+\end{cases}$
+
+Si $g_{12}\neq 0\neq h_{12}$ entonces $\lambda^2=\frac{g_{11}}{h_{11}}=\frac{g_{22}}{h_{22}}=\frac{g_{12}}{h_{12}}$. 
+
+Si $g_{12}=0$ tomamos $\alpha_4=\x(t+u^1_0,t+u^2_0)$ que cumple $\alpha_4'(t)=\x_1+\x_2$, y $\alpha_2$ igual que antes, suponiendo de nuevo que las derivadas son perpendiculares. Entonces obtendríamos
+$\begin{vmatrix}
+g_{11} & g_{22}\\
+h_{11} & h_{22}
+\end{vmatrix}=0\Rightarrow \lambda^2=\frac{g_{11}}{h_{11}}=\frac{g_{22}}{h_{22}}$.
+
 Llegamos a que $g_{ij}=λ^2(p)h_{ij}$.
 \end{itemize}
 \end{solucion}
