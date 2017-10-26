@@ -85,4 +85,30 @@ $\{A_1,\dots,A_l\}$ de $\N$ tal que en cada $A_i$, la función es constante.
 \end{enumerate}
 \end{solucion}
 
+\begin{ejercicio}{}
+Dar un programa GOTO que calcule las siguientes funciones.
+\begin{enumerate}
+\item $f(x)=2^x$. Pensar que $f_1(0)=1, f_!(x+1)=2f_1(x)$
+\end{enumerate}
+\end{ejercicio}
+
+\begin{solucion}
+\begin{enumerate}
+
+\item La primera línea será el caso base y cada vez que se actualice el valor de $Y$ tendremos la $h$. 
+\begin{align*}
+&Y\leftarrow Y+1\\
+[A]&IF\ X=Z(\text{macro})\ GOTO\ E\\
+&Y\leftarrow Z\cdot Y (\text{macro})\\
+&Z\leftarrow Z+1\\
+&GOTO\ A
+\end{align*}
+Alternativamente, podríamos prescindir de $Z$ e ir multiplicando por 2 usando otra macro, mientras hacemos decrecer $X$. Pero en general es preferible el anterior para mantener el valor de $X$. 
+
+\item $f_2(x)=x!$
+\end{enumerate}
+\end{solucion}
+
+Intentar el 14 de la Rel 1
+
 \end{document}
