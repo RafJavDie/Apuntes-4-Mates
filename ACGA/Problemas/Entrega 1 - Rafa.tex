@@ -1,12 +1,40 @@
 \documentclass[twoside]{article}
-\usepackage{../estilo-ejercicios}
+\usepackage{../../estilo-ejercicios}
 
 %--------------------------------------------------------
 \begin{document}
 
 \title{Algebra Conmutativa y Geometría Aplicada}
-\author{Rafael González López}
+\author{Javier Aguilar Martín, Rafael González López}
 \maketitle
+
+\begin{ejercicio}{1}\
+\begin{itemize}
+
+\item[1)] Probar el Teorema de la Base de Hilbert: si $A$ es un anillo
+noetheriano, entonces el anillo de polinomios $A[x]$ también lo es.
+
+\item[2)] Probar que el anillo $A$ formado por las funciones $f : \R \to \R$ continuas
+no es noetheriano.
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}\
+\begin{itemize}
+
+
+\item[1)]Sea $I\subseteq A[x]$ un ideal. Vamos a probar que está finitamente generado. 
+
+Sea $f_1\in I$ un elemento de grado mínimo. Para $i\geq 1$, si tenemos el ideal $\langle f_1,\dots, f_i\rangle$, elegimos $f_{i+1}$ de grado mínimo en $I\setminus\langle f_1,\dots, f_i\rangle$. Si para algún $i$, $I=\langle f_1,\dots, f_i\rangle$, ya hemos terminado. Si no, sea $a_j$ el coeficiente líder de $f_j$. El conjunto de coeficientes líderes forma un ideal en $A$, y como $A$ es noetheriano por hipótesis, el ideal $\langle a_1,a_2,\dots\rangle$ está finitamente generado por $a_1,\dots,a_m$ para algún $m\in\N$. Se va a probar que $f_1,\dots,f_m$ generan $I$.
+
+Supongamos que no. Entonces elegimos como explicamos anteriormente $f_{m+1}$, cuyo coeficiente líder es $a_{m+1}=\sum_{j=1}^m u_j a_j$ para ciertos $u_j\in A$. Dado que el grado de $f_{m+1}$ es mayor o igual que el grado de $f_j$ $\forall j=1,\dots, m$, el polinomio
+$$g=\sum_{j=1}^m u_j f_j x^{\deg{f_{m+1}}-\deg{f_j}}\in\langle f_1,\dots,f_m\rangle$$
+tiene el mismo término líder (grado y coeficiente) que $f_{m+1}$. Por tanto, la diferencia $f_{m+1}-g$ tiene grado estrictamente menor que $f_{m+1}$ a pesar de no estar en $\langle f_1,\dots,f_m\rangle$, lo cual contradice la elección de $f_{m+1}$. Con lo cual, $I=\langle f_1,\dots,f_m\rangle$ está finitamente generado.
+
+\item[2)] Denotemos por $\mathcal{C}$ al anillo de funciones continuas. Sea $I_n=\{f\in\mathcal{C}\mid f(x)=0\ \forall x\geq n\}$. Para cada $n\in\N$, $I_n$ es un ideal, pues el producto y la suma de funciones continuas que se anulan en un conjunto fijo sigue anulándose en el mismo conjunto. Sin embargo, la cadena $I_0\subset I_1\subset\cdots\subset I_n\subset\cdots$ no termina, pues $I_{n}\subsetneq I_{n+1}\ \forall n\in\N$. Por la caracterización de anillo noetheriano esto significa que el anillo de las funciones continuas no es noetheriano. 
+\end{itemize}
+\end{solucion}
+
+\newpage
 
 \begin{ejercicio}{2} Demostrar el siguiente resultado usado en la prueba del Nullstellensatz: si $k$ es un cuerpo y $k \subset K$ una extensión de cuerpos que es finitamente generada como $k$-álgebra, entonces $K$ es una extensión finita (es decir, finitamente generada como $k$-espacio vectorial) de $k$.
 \begin{solucion}

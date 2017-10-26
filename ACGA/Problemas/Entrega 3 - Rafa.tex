@@ -5,7 +5,7 @@
 \begin{document}
 
 \title{Algebra Conmutativa y Geometría Aplicada}
-\author{Rafael González López}
+\author{Javier Aguilar Martín, Rafael González López}
 \maketitle
 
 \begin{ejercicio}{1}
@@ -50,4 +50,20 @@ $$
 Para ver la segunda parte del ejercicio no tenemos que más que considerar que, al ser $f$ inyectiva, necesariamente $f(A^*)\subset L^*$, pues $L$ es cuerpo y su único elemento no unidad es el $0$. La hipótesis de que $A$ sea dominio es necesaria para definir el cuerpo de fracciones. No tenemos más que aplicar la primera parte a $S=A^{*}$, pero precisamente ${A^*}^{-1}A = K(A)$. 
 \end{solucion}
 \end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{6}\
+Si $A$ es un anillo reducido (es decir, sin elementos nilpotentes no
+nulos), probar que $S^{-1}A$ es reducido para todo conjunto multiplicativo $S \subseteq A$.
+Recíprocamente, si $A_\mathfrak{m}$ es reducido para todo ideal maximal $\mathfrak{m} \subseteq A$, probar que
+$A$ es reducido.
+\end{ejercicio}
+\begin{solucion}\
+Probamos la primera cuestión por reducción al absurdo. Supongamos que $S^{-1}A$ no es reducido. Entonces existe $\frac{a}{s}\in S^{-1}A$, $\frac{a}{s}\not\sim 0$ tal que para algún $n\in\N$ $\left(\frac{a}{s}\right)^n=\frac{a^n}{s^n}\sim 0\Leftrightarrow \exists u\in S\mid a^nu=0$. Vamos a suponer que $u\neq 0$, puesto que de lo contrario todos los elementos estarían relacionados con el cero y trivialmente no habría elementos nilpotentes.  Nótese que $a^n\neq 0$ por hipótesis. Por tanto deducimos que o bien $au\in A$ es nilpotente, pues $(au)^n=a^nu^n=a^n u u^{n-1}=0$, contradiciendo que $A$ sea reducido; o bien $au=0$. Pero si $au=0$, entonces $\frac{a}{s}\sim 0$, que también es una contradicción con lo que estábamos suponiendo.\\
+
+Pasemos ahora a la segunda cuestión. Sea $a\in A$ y supongamos que $\exists n\in\N$ tal que $a^n=0$. Entonces $\left(\frac{a}{1}\right)^n\sim 0\in A_\mathfrak{m}$ para todo ideal maximal $\mathfrak{m}$. Dado que $A_\mathfrak{m}$ es reducido, esto significa que $\frac{a}{1}\sim 0$. Entonces, para todo $\mathfrak{m}$, existe $t_\mathfrak{m}\in A\setminus\mathfrak{m}$ tal que $at_\mathfrak{m}=0$. Consideremos el conjunto $I=\{t\in A\mid at=0\}$. Claramente $I$ es un ideal, pues si $s,t\in I$ entonces $a(s+t)=as+at=0$, y si $t\in I,s\in A\setminus I$, entonces $ats=0$. Sin embargo, $I\not\subseteq \mathfrak{m}$ para todo ideal maximal $\mathfrak{m}$, ya que como hemos visto, para cada uno de estos ideales existe $t_\mathfrak{m}\in A\setminus\mathfrak{m}$ tal que $at_\mathfrak{m}=0$. Esto quiere decir que $I=A$, de donde se deduce que $a=0$, con lo que no es nilpotente. 
+
+%0=1a=a
+\end{solucion}
 \end{document}

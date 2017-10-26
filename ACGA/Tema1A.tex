@@ -515,7 +515,7 @@ Si $s\in S$, entonces $\frac{s}{1}\frac{1}{s}=\frac{1}{1}$, por lo que $\frac{s}
 
 \begin{ej}\
 \begin{enumerate}
-\item $S=\{a\in A\mid a$ no es divisor de cero$\}$. Ojo, $0\notin S$. Si $a,b$ no son divisores de cero, entonces $ab=0$. Por tanto podemos construir $S^{-1}A$ y podemos ver $A\hookrightarrow S^{-1}A$ como un subanillo. El anillo construido se llama anillo total de fracciones de $A$.  Si $A$ es dominio, entonces $S=A-\{0\}$, y por tanto $S^{-1}A$ es el cuerpo de fracciones de $A$.
+\item $S=\{a\in A\mid a$ no es divisor de cero$\}$. Ojo, $0\notin S$. Si $a,b$ no son divisores de cero, entonces $ab\neq 0$. Por tanto podemos construir $S^{-1}A$ y podemos ver $A\hookrightarrow S^{-1}A$ como un subanillo. El anillo construido se llama anillo total de fracciones de $A$.  Si $A$ es dominio, entonces $S=A-\{0\}$, y por tanto $S^{-1}A$ es el cuerpo de fracciones de $A$.
 \item Sea $\mathfrak{p}\subset A$ un ideal primo, y tomamos $S=A\setminus\mathfrak{p}$. Claramente $S$ es multiplicativo. En este caso denotamos $S^{-1}A=A_\mathfrak{p}$ y lo llamamos anillo localizado de $A$ en $p$. Por ejemplo, $A=\mathbb{Z}$, $\mathfrak{p}=\langle 2\rangle$. Entonces $A_\mathfrak{p}=\mathbb{Z}_{\langle 2\rangle}=\{\frac{a}{b}\mid b$ es impar$\}$. En este caso, los ideales son $\langle 0\rangle\subsetneq\dots\subsetneq\langle 2^{n+1}\rangle\subsetneq\langle 2^n\rangle\subsetneq\dots\subsetneq\langle 1\rangle$. El único ideal primo de esta cadena es $\langle 2\rangle$ (en particular es el único ideal maximal). En general, los ideales primos de $S^{-1}A$  se corresponden biunívocamente con los ideales primos de $A$ que no cortan a $S$. 
 \item $a\in A$, $S=\{a^n\mid n\geq 0\}$. Denotamos ahora $A_a=S^{-1}A=\{\frac{a}{2^n}\mid a\in\mathbb{Z},n\geq 0\}$.
 \end{enumerate}
@@ -633,11 +633,11 @@ Supongamos que $f\in S$ y $fg=0$ con $g\in\calA(X)$. Por definición existe un a
 Obtenemos entonces la conclusión de que $S^{-1}\calA(X)$ es el anillo total de fracciones de $\calA(X)$. Si $X$ es irreducible, $S=\calA(X)\setminus\{0\}$, luego $S^{-1}\calA(X)=$ cuerpo de fracciones de $\calA(X)$. En este caso $K(X)$ es realmente un cuerpo de funciones de $X$.
 
 \begin{prop}
- Sea $Z\subseteq \Ank$ una variedad afín. El cuerpo de funciones $\K(Z)$ es el cuerpo de fracciones de $\calA(Z)$.
+ Sea $Z\subseteq \Ank$ una variedad afín. El cuerpo de funciones $\KK(Z)$ es el cuerpo de fracciones de $\calA(Z)$.
 \end{prop}
 
 \begin{proof}
- Existe un homomorfismo de anillos evidente $\phi:\calA(Z)\to\K(Z)$, que lleva $f$ en la función racional $(Z,f/1)$. Este homomorfismo es inyectivo: si $\phi(f)=0$, debe existir un abierto no vacío $U\subseteq Z$ tal que $f_{|U}=0$, y entonces $f=0$ (ejercicio \ref{extensionfuncion}). Como $\K(Z)$ es un cuerpo, este homomorfismo tiene una extensión única $\phi:K(\calA(Z))\to\K(Z)$ al cuerpo de fracciones dada por $\phi(f/g)=\phi(f)/\phi(g)$, que automáticamente es inyectiva. Sólo hay que comprobar que es sobreyectiva, pero esto se deduce inmediatamente de la definición de $\K(Z)$.
+ Existe un homomorfismo de anillos evidente $\phi:\calA(Z)\to\KK(Z)$, que lleva $f$ en la función racional $(Z,f/1)$. Este homomorfismo es inyectivo: si $\phi(f)=0$, debe existir un abierto no vacío $U\subseteq Z$ tal que $f_{|U}=0$, y entonces $f=0$ (ejercicio \ref{extensionfuncion}). Como $\KK(Z)$ es un cuerpo, este homomorfismo tiene una extensión única $\phi:K(\calA(Z))\to\KK(Z)$ al cuerpo de fracciones dada por $\phi(f/g)=\phi(f)/\phi(g)$, que automáticamente es inyectiva. Sólo hay que comprobar que es sobreyectiva, pero esto se deduce inmediatamente de la definición de $\KK(Z)$.
 \end{proof}
 
 

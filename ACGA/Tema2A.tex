@@ -1,35 +1,103 @@
 \documentclass[ACGA.tex]{subfiles}
-
-
-
-
+%\usepackage[utf8x]{inputenc}
+%\usepackage[spanish]{babel}
+%\usepackage{amsmath, amssymb, amsthm, epsf, graphicx, amscd, amsfonts}
+%\usepackage[colorlinks]{hyperref}
+%\usepackage{xmpincl}
+%\usepackage{fancyhdr}
+%
+%
+%\pagestyle{fancy}
+%\lhead[\thepage]{\rightmark}
+%\rhead[\leftmark]{\thepage}
+%\cfoot[]{}
+%
+%\addto\captionsspanish{ \renewcommand{\chaptername}{Tema} }
+%
+%\newtheorem{thm}{Teorema}[chapter]
+%\newtheorem{cor}[thm]{Corolario}
+%\newtheorem{lem}[thm]{Lema}
+%\newtheorem{prop}[thm]{Proposición}
+%\newtheorem{defn}[thm]{Definición}
+%\newtheorem{rem}[thm]{Observaciones}
+%\newtheorem{eje}[thm]{Ejemplos}
+%
+%\newtheorem{ejercicio}{Ejercicio}[chapter]
+%
+%\newcommand{\RR}{\mathbb R}
+%\newcommand{\CC}{\mathbb C}
+%\newcommand{\AAA}{\mathbb A}
+%\newcommand{\PP}{\mathbb P}
+%\newcommand{\Ank}{\AAA^n_k}
+%\newcommand{\Pnk}{\PP^n_k}
+%\newcommand{\Pmk}{\PP^m_k}
+%\newcommand{\Amk}{\AAA^m_k}
+%\newcommand{\calA}{{\mathcal A}}
+%\newcommand{\II}{{\mathcal I}}
+%\newcommand{\VV}{{\mathcal V}}
+%\newcommand{\KK}{{\mathcal K}}
+%\newcommand{\OO}{{\mathcal O}}
+%\newcommand{\mm}{{\mathfrak m}}
+%
+%\title{Notas y ejercicios de Geometría Algebraica}
+%\author{Departamento de Álgebra \\ Universidad de Sevilla}
+%\date{Septiembre de 2017}
 
 
 
 
 \begin{document}
 
-\chapter{Proyectivo}
+%\setcounter{chapter}{1}
+%\maketitle
+%
+%\vspace*{\fill}
+%
+%\copyright{2011-17 Antonio Rojas León}
+%
+%\bigskip
+%
+%Este trabajo está publicado bajo licencia Creative Commons 3.0 España (Reconocimiento - No Comercial - Compartir bajo la misma licencia)
+%
+%\url{http://creativecommons.org/licenses/by-nc-sa/3.0/es/}
+%
+%\bigskip
+%
+%Usted es libre de:
+%\begin{itemize}
+% \item copiar, distribuir y comunicar públicamente la obra
+%\item hacer obras derivadas
+%\end{itemize}
+%
+%Bajo las condiciones siguientes:
+%\begin{itemize}
+% \item {\bf Reconocimiento:} Debe reconocer los créditos de la obra maestra especificada por el autor o el licenciador (pero no de una manera que sugiera que tiene su apoyo o apoyan el uso que hace de su obra).
+% \item {\bf No comercial:} No puede utilizar esta obra para fines comerciales.
+%\item {\bf Compartir bajo la misma licencia:} Si altera o transforma esta obra, o genera una obra derivada, sólo puede distribuir la obra generada bajo una licencia idéntica a ésta.
+%\end{itemize}
+%
+%
+%
+%
+%\newpage
 
-\section{No sé qué cojones poner aquí\\ Un saludo a FC}
-El proyectivo posee diferencias sutanciales con respecto al espacio afín. En el proyectivo se verifica que
-$$
-\dim(L_1 + L_2) + \dim(L_1 \cap L_2) = \dim(L_1) + \dim(L_2),
-$$
-a diferencia de en los espacios afines, donde hay que distinguir si se cortan o no se cortan las variedades. 
+\chapter{Variedades en el espacio proyectivo}
 
-Dos rectas siempre se cortan en el plano proyectivo en al menos un punto, así como una recta y una cónica se cortan en dos puntos. En general, si tenemos una curva definida por un polinomio de grado $d$ y una recta cualquiera siempre se cortan en $d$ puntos (contando multiplicidad).
+\section{Conjuntos algebraicos proyectivos}
 
-Algunas cosas que conviene recordar. $\PP^n = \PP^{n-1}\cup \A^n$
-
-Las raíces de un polinomio no están definidas en el proyectivo, pues $(1:1:1)$ es raíz de $x_0 + x_1^2 - 2x_0x_1$, pero no $(2:2:2)$. Consideramos entonces los polinomios homogéneos. 
+Recordemos la definición de espacio proyectivo.
 
 \begin{defi}
-Diremos que un conjunto $X\subset \Pnk$ es algebraico si existe $S\subset k[x_0,\xn{n}]$ un conjunto de polinomios homogéneos tal que $X=\{x\in\Pnk \mid f(x)=0 \; \forall f\in S\}$.
+ Sea $k$ un cuerpo. El {\bf espacio proyectivo de dimensión $n$ sobre $k$}, denotado $\Pnk$, es el conjunto de $(n+1)$-uplas no nulas $\A^{n+1}_k-\{(0,\ldots,0)\}$ módulo la relación de equivalencia siguiente: $(x_0,x_1,\ldots,x_n)\sim(y_0,y_1,\ldots,y_n)$ si existe un $\lambda\in k^\star$ tal que $y_i=\lambda x_i$ para todo $i=1,\ldots,n$. La clase de equivalencia de $(x_0,x_1,	\ldots,x_n)$ se denota $(x_0:x_1:\ldots:x_n)$.
 \end{defi}
-Como siempre $\emptyset = \V(1)$ y $\Pnk = \V(0)$. $\V(\{a_0,\dotsc,a_n\}) = \{a_ix_j - a_j x_i \mid 0\leq i \leq j \leq n\}$. Cualquier variedad proyectiva lineal es un conjunto algebraico. Las cónicas, cuádricas e hipercuádricas son conjuntos algebraicos.
 
-Si $S\subset k[x_0,\xn{n}]$ es un subcojunto arbitrario de polinomios entonces definimos $\V(S)$ como $\V(S\cap k[x_0,\xn{n}]^h)$. 
+Dado un polinomio $f\in k[x_0,x_1,\ldots,x_n]$, no está definido el valor de $f$ en un punto $x\in\Pnk$, ya que este valor será distinto dependiendo del representante que elijamos en $\A^{n+1}_k$ para $x$. Sin embargo, si $f$ es \emph{homogéneo}, la expresión $f(x)=0$ sí tiene sentido: si $x=(x_0:x_1:\ldots:x_n)=(y_0:y_1:\ldots:y_n)$, existe un $\lambda\neq 0$ tal que $y_i=\lambda x_i$, y por tanto $f(y_0,y_1,\ldots,y_n)=\lambda^df(x_0,x_1,\ldots,x_n)$, donde $d$ es el grado de $f$. En particular, $f(y_0,y_1,\ldots,y_n)=0$ si y sólo si $f(x_0,x_1,\ldots,x_n)=0$. En tal caso, decimos que $f(x)=0$.
+
+Para todo subconjunto $S\subseteq k[x_0,x_1,\ldots,x_n]$ formado por polinomios homogéneos, definimos $\V(S)\subseteq \Pnk$ como el conjunto de los $x\in\Pnk$ tales que $f(x)=0$ para todo $f\in S$. En general, para $S\subseteq k[x_0,x_1,\ldots,x_n]$ arbitrario, definimos $\V(S)\subseteq \Pnk$ como el conjunto de los $x\in\Pnk$ tales que $f(x)=0$ para todo polinomio homogéneo $f\in S$. 
+
+\begin{defi}
+ Un subconjunto $X\subseteq\Pnk$ se dice {\bf algebraico} si existe $S\subseteq k[x_1,\ldots,x_n]$ formado por polinomios homogéneos tal que $X=\V(S)$.
+\end{defi}
 
 \begin{prop}
 Si $S\subset k[x_0,\xn{n}]^h$, entonces $\V(S)=\V(\gene{S})$. 
@@ -37,28 +105,123 @@ Si $S\subset k[x_0,\xn{n}]^h$, entonces $\V(S)=\V(\gene{S})$.
 \begin{dem}
 Una inclusión es trivial. Para la otra tenemos que ver que si $f\in \gene{S}$ homogéneo, entonces $f=\sum g_i f_i$ con $f_i \in S$. Si $h_i$ es la componente homogénea de $g_i$ de grado $d-d_i$ entonces $\sum g_i f_i = \sum h_i f_i$. Si $x\in \V(S)$ entonces $f_i(x)=0$ $\forall i$, por lo que $\sum h_i (x) f_i (x) =0$. 
 \end{dem}
+
+ \begin{ejs}\emph{\begin{enumerate}
+                   \item El conjunto vacío $\emptyset=\V(\{1\})$ y el espacio total $\Pnk=\V(\{0\})$ son conjuntos algebraicos.
+\item El conjunto formado por un solo punto $a=(a_0:a_1:\ldots:a_n)$ es algebraico: $\{a\}=\V(\{a_ix_j-a_jx_i|0\leq i<j\leq n\})$.
+\item Toda subvariedad lineal de $\Pnk$ es un conjunto algebraico, puesto que está definida por una cantidad finita de ecuaciones lineales homogéneas.
+ \end{enumerate}
+}
+ \end{ejs}
+
+Exactamente igual que en el caso afín, se prueba:
+
+\begin{prop}
+  La intersección arbitraria y la unión finita de subconjuntos algebraicos de $\Pnk$ es un conjunto algebraico.
+\end{prop}
+
+Y por tanto podemos definir:
+
 \begin{defi}
-Un ideal $I\subset k[x_0,\xn{n}]$ es homogéneo si se puede generar por un conjunto de polinomios homogéneos. 
+ Se llama \emph{topología de Zariski} sobre $\Pnk$ a la topología cuyos cerrados son los conjuntos algebraicos.
 \end{defi}
-\begin{prop}
-Todo conjunto algebraico de $\Pnk$ se puede definir mediante un conjunto finito de polinomios homogéneos. Basta tomar todas las componentes homogéneas de un conjunto de generadores.
-\end{prop}
-\begin{prop} La unión finita y la intersección arbitraria de conjuntos arbitrarios es algebraica, dando lugar a la topología de Zariski.
-\end{prop}
-¿Se sigue cumplliendo que existe una correspondencia biunívoca entre los conjuntos algebraicos de $\Pnk$ y los ideales radicales homogéneos de $k[x_0,\xn{n}]$?
-Sea $x$ es algebraico entonces 
-$$\I(X)=\gene{\{f\in k[x_0,\xn{n}]^h \mid f(x)=0\}}$$.
-\begin{prop}
-Si $\V(X)=0$, entonces $\sqrt{I}=\gene{1}$ o bien $\sqrt{I}=\gene{x_0,\dotsc,x_n}$.
-\end{prop}
-\begin{dem}
-Pensemos primero en el caso afín. Si $\Va(I)\subset \A^{n+1}$ entonces $\Va(I)\subset\{(0,\dotsc,0)\}$, por lo que $\gene{x_0,\dotsc,x_n}\subset \sqrt{I}$.
-\end{dem}
-Sea $I$ homogéneo tal que $X=\Vp(I)\neq \emptyset$. Entonces, si $\pi$ es la aplicación que pasa de $\A^{n+1}$ a $\PP^n$, si tenemos un conjunto algebraico $X$ en $\PP^n$, $\{0\}\cup\pi^{-1}(X)$ es el cono afín de $X$. Tenemos que el cono afín de $X$ es precisamente $\Va(I)$.
 
-Sea $f\in \I_p(\Vp(I))$ homogéneo, entonces $f$ se anula en todo punto de $\Va(I)$ (por ser homogéneo y no constante). Por tanto, sabemos que $f\in \I_a(\Va(I))$ y, por el Teorema de los ceros en el caso afín, deducimos que $f\in \sqrt{I}$. Por tanto, $\I_p(\Vp(I))=\sqrt{I}$.
+\section{Conjuntos algebraicos proyectivos e ideales homogéneos}
 
-Tenemos definiciones análogas de conjuntos algebraicos irreducibles y equivalencia entre irreducible e $\I(X)$ primo, descomposición de conjuntos algebraicos en irreducibles de manera única, dimensión de un conjunto algebraico, etc.
+Como la suma de polinomios homogéneos no es homogéneo en general, en el caso proyectivo no tiene sentido hablar del ``ideal de polinomios que se anulan en un conjunto $X\subseteq\Pnk$''. Pero sí podemos considerar el ideal generado por ellos: dado $X\subseteq\Pnk$, definimos $\I(X)$ como el \emph{ideal} generado por todos los polinomios homogéneos $f\in k[x_0,x_1,\ldots,x_n]$ tales que $f(x)=0$ para todo $x\in X$. 
+
+\begin{defi}
+ Un ideal $I\subseteq k[x_0,x_1,\ldots,x_n]$ se dice \emph{homogéneo} si está generado por polinomios homogéneos.
+\end{defi}
+
+\begin{ejer}
+ Probar que un ideal $I\subseteq k[x_0,x_1,\ldots,x_n]$ es homogéneo si y sólo si las componentes homogéneas de todo polinomio $f\in I$ están también en $I$.
+\end{ejer}
+
+\begin{ejer}
+ Para que un ideal homogéneo $I\subseteq k[x_0,x_1,\ldots,x_n]$ sea radical es suficiente que para todo $f\in k[x_0,x_1,\ldots,x_n]$ \emph{homogéneo} tal que $f^m\in I$ para algún $m\geq 1$ se tenga que $f\in I$. 
+\end{ejer}
+
+Del ejercicio anterior se deduce en particular que $\I(X)$ es un ideal radical de $k[x_0,x_1,\ldots,x_n]$.
+
+ La correspondencia entre ideales radicales y conjuntos algebraicos es un poco más complicada en el caso proyectivo. Para empezar, veamos qué ideales $I$ verifican $\V(I)=\emptyset$.
+
+\begin{prop}\label{idealirrelevante} Sea $I\subseteq k[x_0,x_1,\ldots,x_n]$ un ideal homogéneo. Las condiciones siguientes son equivalentes:
+ \begin{enumerate}
+  \item $\V(I)=\emptyset$
+\item Para cada $0\leq i\leq n$, existe un $m_i\geq 1$ tal que $x_i^{m_i}\in I$
+\item $\sqrt{I}=\langle 1\rangle$ ó $\langle x_0,x_1,\ldots,x_n\rangle$.
+ \end{enumerate}
+
+\end{prop}
+
+\begin{proof}
+$1\Rightarrow 2)$ Sea $Z\subseteq\A^{n+1}_k$ el conjunto algebraico definido por $I$ visto como ideal corriente. Todo punto de $Z$ distinto de $(0,0,\ldots,0)$ da lugar a un punto proyectivo, que estaría en $\V(I)$. Como $\V(I)=\emptyset$, concluimos que $Z\subseteq\{(0,0,\ldots,0)\}$. Aplicando el Nullstellensatz, se tiene que $\langle x_0,x_1,\ldots,x_n\rangle\subseteq\I(Z)=\sqrt{I}$. En particular, $x_i\in\sqrt{I}$ para todo $i$, y por tanto existe un $m_i\geq 1$ tal que $x_i^{m_i}\in I$.
+
+$2\Rightarrow 3)$ Para todo $0\leq i\leq n$, $x_i\in \sqrt{I}$, así que $\langle x_0,x_1,\ldots,x_n\rangle\subseteq\sqrt{I}$. Como $\langle x_0,x_1,\ldots,x_n\rangle$ es maximal, debe ser $\sqrt{I}=\langle x_0,x_1,\ldots,x_n\rangle$ ó $\sqrt{I}=\langle 1\rangle$.
+
+$3\Rightarrow 1)$ Si $\sqrt{I}=\langle 1\rangle$, entonces $1^m=1\in I$, y por tanto $\V(I)=\emptyset$. Si $\sqrt{I}=\langle x_0,x_1,\ldots,x_n\rangle$, para cada $0\leq i\leq n$ existe un $m_i\geq 1$ tal que $x_i^{m_i}\in I$. Por tanto para todo $(a_0:a_1:\ldots:a_n)\in\V(I)$ se tiene que $a_i^{m_i}=0$, por lo que $a_0=a_1=\ldots=a_n=0$, lo cual es imposible para un punto de $\Pnk$.
+\end{proof}
+
+Para el resto de ideales, la versión proyectiva del Nullstellensatz es la siguiente:
+
+
+\begin{teorema}
+ Sea $I\subseteq k[x_0,x_1,\ldots,x_n]$ un ideal homogéneo tal que $\V(I)\neq\emptyset$. Entonces $\I(\V(I))=\sqrt{I}$.
+\end{teorema}
+
+\begin{proof}
+ La contención $\sqrt{I}\subseteq\I(\V(I))$ es trivial, ya que $\I(\V(I))$ es un ideal radical que contiene a $I$. Veamos la contención opuesta. Como $\I(\V(I))$ está generado por polinomios homogéneos, basta probar que todo polinomio homogéneo de $\I(\V(I))$ está en $\sqrt{I}$. Sea $f\in \I(\V(I))$ homogéneo no nulo. Como $\V(I)\neq \emptyset$, $f$ no es una constante. Sea $Z\subseteq\A^{n+1}_k$ el conjunto algebraico \emph{afín} definido por $I$ visto como ideal corriente. Entonces $f$ se anula en todo punto de $Z$ distinto de $(0,0,\ldots,0)$ (ya que todo punto distinto del origen corresponde a un punto del espacio proyectivo en el que $f$ se anula). Pero también se anula en $(0,0,\ldots,0)$ por ser homogéneo y no constante. Por tanto $f\in\I(Z)=\sqrt{I}$ por el Nullstellensatz afín.
+\end{proof}
+
+A partir de los dos últimos resultados obtenemos:
+
+\begin{coro}
+ Las aplicaciones $I\mapsto\V(I)$ y $X\mapsto\I(X)$ definen una correspondencia biunívoca entre el conjunto de ideales radicales homogéneos de $k[x_0,x_1,\ldots,x_n]$ distintos de $\langle x_0,x_1,\ldots,x_n\rangle$ y el conjunto de subconjuntos algebraicos de $\Pnk$, que invierte las contenciones.
+\end{coro}
+
+En particular, como $k[x_0,x_1,\ldots,x_n]$ es noetheriano, todo subconjunto algebraico de $\Pnk$ es el conjunto de ceros de una cantidad finita de polinomios homogéneos. 
+
+\section{Variedades proyectivas. Dimensión}
+
+En esta sección trasladaremos al caso proyectivo algunos conceptos que ya hemos estudiado en el caso afín. 
+
+\begin{defi}
+ Un conjunto algebraico $X\subseteq\Pnk$ se dice {\bf reducible} si existen dos subconjuntos algebraicos propios $Y\subsetneq X$ y $Z\subsetneq X$ tales que $X=Y\cup Z$. De lo contrario, $X$ se dice {\bf irreducible}. Una {\bf variedad proyectiva} es un subconjunto algebraico de $\Pnk$ irreducible.
+\end{defi}
+
+\begin{ejer}\label{primohomogeneo}
+ Sea $I\subsetneq k[x_0,x_1,\ldots,x_n]$ un ideal propio homogéneo. Probar que $I$ es primo si y sólo si para todos $f,g\in k[x_0,x_1,\ldots,x_n]$ \emph{homogéneos} tales que $fg\in I$, o bien $f\in I$ o bien $g\in I$.
+\end{ejer}
+
+ \begin{prop}
+  Un conjunto algebraico $X\subseteq\Pnk$ no vacío es irreducible si y sólo si $\I(X)$ es un ideal primo.
+ \end{prop}
+
+\begin{proof}
+ Sea $X$ irreducible y no vacío, y supongamos que $\I(X)$ no es primo. Por el ejercicio \ref{primohomogeneo}, existen $f,g\in k[x_0,x_1,\ldots,x_n]$ homogéneos tales que $fg\in\I(X)$, pero ni $f$ ni $g$ están en $\I(X)$. Definiendo $Y=\V(f)\cap X$ y $Z=\V(g)\cap Y$ se tiene entonces que $Y\subsetneq X$, $Z\subsetneq X$, e $Y\cup Z =\V(fg)\cap X=X$, contradiciendo la irreducibilidad de $X$.
+
+Recíprocamente, supongamos que $X=Y\cup Z$ con $Y\subsetneq X$ y $Z\subsetneq X$. Sean $f\in \I(Y)\backslash \I(X)$ y $g\in \I(Z)\backslash\I(X)$ homogéneos. Entonces $fg$ es homogéneo y se anula en todo punto de $Y\cup Z=X$, y por tanto $fg\in\I(X)$. De modo que $\I(X)$ no puede ser primo.
+\end{proof}
+
+\begin{coro}
+ Las aplicaciones $I\mapsto\V(I)$ y $Z\mapsto\I(Z)$ definen una correspondencia biunívoca entre el conjunto de ideales primos homogéneos de $k[x_1,\ldots,x_n]$ distintos de $\langle x_0,x_1,\ldots,x_n\rangle$ y el conjunto de variedades proyectivas no vacías en $\Pnk$, que invierte las contenciones.
+\end{coro}
+
+El siguiente resultado se traslada palabra por palabra desde el caso afín, con idéntica demostración:
+
+\begin{prop}
+ Todo conjunto algebraico $X\subseteq \Pnk$ puede descomponerse como una unión finita $X=Z_1\cup\cdots\cup Z_r$ de variedades proyectivas. Si la descomposición es minimal (es decir, si ningún $Z_i$ puede eliminarse de ella sin que la unión deje de ser $X$), las variedades $Z_i$ están unívocamente determinadas, y se denominan {\bf componentes irreducibles} de $X$.
+\end{prop}
+
+\begin{defi} La {\bf dimensión} de un conjunto algebraico $X\subseteq\Pnk$ es el mayor entero $n$ tal que existe una cadena estrictamente creciente $Z_0\subsetneq Z_1\subsetneq\cdots\subsetneq Z_n\subsetneq X$ de variedades proyectivas. Una variedad proyectiva de dimensión $1$ (respectivamente $2$, $n-1$) en $\Pnk$ se denomina una {\bf curva} (resp. {\bf superficie}, {\bf hipersuperficie}) proyectiva.
+\end{defi}
+
+El resultado siguiente, que no demostraremos, también es paralelo al correspondiente resultado afín:
+
+\begin{prop}\label{principalproy}
+ Una variedad proyectiva $Z\subseteq\Pnk$ es una hipersuperficie si y sólo si $\I(Z)$ está generado por un polinomio homogéneo irreducible. 
+\end{prop}
 
 \begin{nota}\
 \begin{itemize}
@@ -144,26 +307,21 @@ En general, dado $f\in k[x_0,\xn{n}]$, podemos obtener el polinomio \textbf{desh
 $\exists r\geq 0$ tal que $x_0^r(f^{dh})^h=f$.
 \end{ejer}
 
-\section{Funciones regulares en $\mathbb{P}^n$}
-\begin{defi}
-Sea $X \subseteq \mathbb{P}^n$ un conjunto algebraico. Una función racional es un par $(U,f)$ dond $U$ es un aberto denso y $f : U \to k$ tal que existen $P,Q \in k[x_0,\dots,x_n]$ polinomios homogéneos de mismo grado con:
-\[ f(x) = \frac{P(x)}{Q(x)} \quad \forall x \in U \]
-donde $(U,f)=(V,g)$ si $f|_{U\cap V} = g|_{U\cap V}$. 
+\section{Funciones regulares y racionales. Variedades cuasi-proyectivas}
 
-Denotamos como $K(X)$ al conjunto de funciones racionales de $X$.
+En el caso de los conjuntos algebraicos proyectivos, no podemos definir las funciones regulares $f:X\to k$ como aquéllas dadas por un polinomio, ni siquiera homogéneo, ya que el valor del polinomio en un punto dado $x=(x_0:x_1:\ldots:x_n)$ dependerá de las coordenadas elegidas para representar al punto. Si $f$ es un polinomio homogéneo de grado $d$ y multiplicamos las coordenadas de $x$ por $\lambda\neq 0$, el valor de $f(x_0,x_1,\ldots,x_n)$ quedará multiplicado por $\lambda^ d$. Sin embargo, si $g$ es otro polinomio homogéneo del mismo grado tal que $g(x)\neq 0$, el valor del cociente $f(x)/g(x)$ no depende de las coordenadas elegidas para $x$. Esto justifica la siguiente definición:
+
+\begin{defi}
+ Sea $Z\subseteq\Pnk$ una variedad proyectiva. Una {\bf función racional} $f:Z\dashrightarrow k$ es un par $(U,f)$ donde $U\subseteq Z$ es un abierto no vacío y $f:U\to k$ es una aplicación tal que existen $g,h\in k[x_0,x_1,\ldots,x_n]$ homogéneos del mismo grado con $h(x)\neq 0$ y $f(x)=g(x)/h(x)$ para todo $x\in U$, módulo la siguiente relación de equivalencia: $(U,f)\sim (U',f')$ si $f_{|U\cap U'}=f'_{|U\cap U'}$.
 \end{defi}
 
 \begin{nota}
-Si en $U$, $f=P/Q$ y en $V$, $g=R/S$. $(U,f)=(V,g)$ si  $PS=QR$ en $U \cap V$. es decir, si $PS-QR\in I(X)$.
+Si en $U$, $f=P/Q$ y en $V$, $g=R/S$. $(U,f)=(V,g)$ si  $PS=QR$ en $U \cap V$, es decir, si $PS-QR\in I(X)$.
 \end{nota}
 
-\begin{prop}
-$K(X)$ es un anillo con las operaciones habituales.
-\end{prop}
-
-\begin{prop}
-Si $X$ es irreducible, $K(X)$ es un cuerpo, llamado el cuerpo de funciones de $X$.
-\end{prop}
+\begin{ejer}
+ Definir la suma y el producto de funciones racionales en $Z$, y probar que con esas operaciones forman un cuerpo, que llamaremos el {\bf cuerpo de funciones} de $Z$ y denotaremos ${\mathcal K}(Z)$. Para un conjunto algebraico $X$ cualquiera solo podemos garantizar que $\KK(X)$ sea anillo.
+\end{ejer}
 
 \begin{ej}
 En $X=\mathbb{P}^1$:
@@ -176,22 +334,21 @@ Se puede ver con facilidad que $φ$ está bien definida y es inyectiva. Para ver
 Luego $φ$ es isomorfismo y $K(X)$ es cuerpo.
 \end{ej}
 
-\begin{defi}
-Una función racional $f : X \dashrightarrow k$ está definida en $a \in X$ si existen $P,Q \in [x_0,\dots,x_n]$ homogéneos de mismo gado y $U \subseteq X$ denso con $a \in U$ tal que $f(x) = \frac{P(x)}{Q(x)}$ para todo $x \in U$.
-\end{defi}
+Si $Z\subseteq\Pnk$ es una variedad y $f:Z\dashrightarrow k$ una función racional, se dice que $f$ {\bf está definida en} el punto $x\in Z$ si existe un abierto $U\subseteq Z$ con $x\in U$ y polinomios $g,h\in k[x_0,x_1,\ldots,x_n]$ homogéneos del mismo grado con $h(y)\neq 0$ y $f(y)=g(y)/h(y)$ para todo $y\in U$. El conjunto de puntos donde $f$ está definida es un abierto, llamado el {\bf abierto de definición} de $f$. El conjunto de funciones racionales definidas en un punto $x\in Z$ es un subanillo local del cuerpo de funciones, que llamaremos el {\bf anillo local de $Z$ en $x$}, denotado $\OO_{Z,x}$.  Así mismo:
+\[ \OO_Z(U) = \bigcap_{x \in U} \OO_{Z,x} \]
 
-\begin{defi}
-$f$ está definida en un abierto $U \subseteq X$ si lo está en todo punto de $U$. Denotaremos como $O_{X,a}$ a todas las funciones racionales definida en $a$. Así mismo:
-\[ O_X(U) = \bigcap_{a \in U} O_{X,a} \]
-\end{defi}
-\begin{defi} Una variedad cuasi proyectiva es un subconjunto abierto de una variedad proyectiva. Una variedad cuasi afín es un conjunto abierto de un variedad afín.
-\end{defi}
 \begin{prop}
 Si $X$ es irreducible, $O_{X,a}$ y $O_X(U)$ son subanillos de $K(X)$. $O_{X,a}$ es un anillo local de ideal maximal $\{f \in O_{X,a} \mid f(a)=0\}$.
 \end{prop}
 
 \begin{defi}
-Una función regular $f : X \dashrightarrow k$ es una función racional que está definida en todo punto de $X$.
+ Un subconjunto $X\subseteq\Pnk$ se denomina {\bf variedad cuasi-proyectiva} si es un abierto de Zariski de una variedad proyectiva $Z$.
+\end{defi}
+
+En ese caso, existen polinomios homogéneos $f_1,\ldots,f_r$ y $g_1,\ldots,g_s$ en $k[x_0,x_1,\ldots,x_n]$ tales que $Z$ es el conjunto de puntos $x\in\Pnk$ en los que $f_1(x),\ldots,f_r(x)$ se anulan y al menos uno de $g_1(x),\ldots,g_s(x)$ no se anula. 
+
+\begin{defi}
+ Sea $Z\subseteq\Pnk$ una variedad cuasi-proyectiva. Una función racional $f:Z\dashrightarrow k$ definida en todo punto de $Z$ se denomina {\bf función regular}. El conjunto de funciones regulares en $Z$ es un anillo, denotado $\OO(Z)$.
 \end{defi}
 
 \begin{nota}
@@ -202,30 +359,118 @@ Recordemos que en el caso afín, toda función racional es regular.
 En $\mathbb{P}^1$, veamos qué necesitamos para que $P(x_0,x_1)/Q(x_0,x_1)$ esté definida en todo punto de $\mathbb{P}^1$. Para todo $(a_0:a_1)$, existe $R,S \in k[x_0,x_1]$ homogéneos de mismo grado tal que $S(a_0,a_1)\neq 0$ y $P/Q=R/S$. Supongamos que $Q(a_0,a_1)=0$, entonces $(a_0x_1-a_1x_0) | Q(x_0,x_1)$. Por otro lado: $P(a)S(a)=R(a)Q(a)$, luego $P(a)=0$ luego $(a_0x_1-a_1x_0) | P(x_0,x_1)$. Entonces podemos eliminar dicho factor de $P$ y $Q$ para obtener $P'$ y $Q'$ que no se anula en $(a_0:a_1)$ y de un grado menor. Como todo polinomio no constante se anula, sólo acabaremos cuando $P/Q=A/B$ donde $A,B \in k$. 
 \end{ej}
 
-\begin{prop}Vamos a ver que las definiciones que hemos visto de funciones regulares no son conceptos distintos, sino que una es un caso particular de la otra.
+\section{El recubrimiento afín de una variedad proyectiva}\label{recubrimientoafin}
+
+En esta sección veremos cómo podemos reducir el estudio de las variedades proyectivas (al menos localmente) al de variedades afines, para las cuales tenemos métodos algebraicos potentes.
+
+Para cada $0\leq i\leq n$, sea $U_i\subseteq\Pnk$ el abierto definido por $x_i\neq 0$. Como todo punto del espacio proyectivo tiene al menos una coordenada no nula, los abiertos $U_i$ recubren $\Pnk$. Sea $\theta_i:\Ank\to U_i$ la aplicación dada por $\theta_i(x_1,\ldots,x_n)=(x_1:\ldots:x_{i-1}:1:x_{i+1}:\ldots:x_n)$.
+
+\begin{ejer}
+ Probar que $\theta_i$ es continua para las topologías de Zariski.
+\end{ejer}
+
+
+\begin{prop}
+ La aplicación $\theta_i$ es un homeomorfismo, y para toda $f\in\OO(U_i)$, $f\circ\theta_i$ es una función regular en $\Ank$. La aplicación $\theta_i^\star:\OO(U_i)\to\calA(\Ank)=k[x_1,\ldots,x_n]$ dada por $\theta_i^\star(f)=f\circ\theta_i$ es un isomorfismo de $k$-álgebras.
 \end{prop}
-\begin{dem}
-\begin{lemma}
- Las siguientes aplicaciones son homeomorfismos
-\begin{gather*} 
-\theta_i \func{\A^n}{U_i\subset \PP^n}\\
-(a_1,\dotsc,a_n) \rightarrow (a_1,a_2,\dotsc,a_{i-1},1,a_{i+1},\dotsc,a_n)
-\end{gather*}
-Para verlo, consideramos por simplificar el caso $i=0$. Sea $Z\subset U_0$ cerrado. Entonces $Z=U_0\cap \V(f_1,\dotsc,f_r)$ con $f_i \in k[x_0,\dotsc,x_n]^h$. Entonces
-$$
-\theta_0^{-1}(Z) = \{(a_1,\dotsc,a_n)\in\A^n \mid (1:a_1,\dotsc,a_n)\in Z\} = \Va(f_1^{dh},\dotsc,f_r^{dh})
-$$
-Sea $Y\subset \A^n$ cerrado. Entonces $Y=\Va(g_1,\dotsc,g_s)$. Entonces
-$$
-{\left(\theta_0^{-1}\right)}^{-1}(Y) = \{(x_0:\dotsc:x_n)\in U_0 \mid x_0^{gr(g_i)}\cdot g_i(\frac{x_1}{x_0},\dotsc,\frac{x_n}{x_0}=0\;\forall i\} = U_0 \cap \Vp(g_1^h,\dotsc,g_s^h)
-$$
-\end{lemma}
-\begin{lemma}Si $f\func{U_0}{k}$ es regular entonces $f \circ \theta_0\func{\A^n}{k}$ es regular. 
 
-Basta ver que es racional y definida en todos los puntos. $\exists P,Q\in k[x_0,\dotsc,x_n]^h$ del mismo grado tales que $f(x)=\dfrac{P(x)}{Q(x)}$ en el abierto $\{Q(x)\neq 0\}$. Entonces $f\circ \theta_0 (a_1,\dotsc,a_n)= \dfrac{P(1,a_1,\dotsc,a_n)}{Q(1,a_1,\dotsc,a_n)} = \dfrac{P^{dh}(q)}{Q^{dh}(q)}$ definida en todos los puntos. 
-\end{lemma}
-La aplicación $\Phi \func{ O_{\PP^n}(U_0)}{\mathcal{A}(\A^n)}$ tal que $\Phi(f) = f\circ \theta_0$ es un homomorfimos de $k$-álgebras. Si $g\in\mathcal{A}(\A^n)$ entonces $g(x)=R(x)$ con $R\in k[x_1,\dotsc,x_n]$. Si denotamos $\psi = \Phi^{-1}$ entonces $\psi(g) = \dfrac{R^h}{x_0^{gr(R)}}=R(\frac{x_1}{x_0},\dotsc,\frac{x_n}{x_0})$.
+\begin{proof}
+ Para ver que $\theta_i$ es un homeomorfismo, basta comprobar que $\psi_i:(x_0:x_1:\ldots:x_n)\mapsto (x_0/x_i,\ldots,x_{i-1}/x_i,x_{i+1}/x_i,\ldots,x_n/x_i)$ es una aplicación inversa y que es continua. Sea $Z=\V(\{h_1,\ldots,h_r\})\subseteq\Ank$ un cerrado, su imagen inversa por esta aplicación sería el conjunto de puntos $x\in U_i$ tales que $h_j(x_0/x_i,\ldots,x_{i-1}/x_i,x_{i+1}/x_i,\ldots,x_n/x_i)=0$ para todo $j$. Como $x_i\neq 0$, multiplicando por una potencia de $x_i$ obtenemos $r$ polinomios homogéneos $p_j=x_i^{d_j}h_j(x_0/x_i,\ldots,x_{i-1}/x_i,x_{i+1}/x_i,\ldots,x_n/x_i)$ tales que $\psi_i^{-1}(Z)=U_i\cap \V(\{p_1,\ldots,p_r\})$, y por tanto $\psi_i^{-1}(Z)$ es un cerrado en $U_i$.
 
-Además $Z\subset \PP^n$ proyectivo, $Y=Z\cap U_0 \subset \A^n$ afín, entonces $\mathcal{A}(Y)\conj O_Z(Y)$.
-\end{dem}
+ Sea $f\in\OO(U_i)$, veamos que $f\circ\theta_i$ es una función regular. Como es claramente una función racional, por el corolario \ref{definidatodopunto} basta ver que está definida en todo punto $a\in\Ank$. Como $f$ está definida en $\theta_i(a)\in U_i$, existen un abierto $V\subseteq U_i$ con $\theta_i(a)\in V$ y $g,h\in k[x_0,x_1,\ldots,x_n]$ homogéneos del mismo grado tales que $h(y)\neq 0$ y $f(y)=g(y)/h(y)$ para todo $y\in V$. Entonces $g\circ\theta_i$ y $h\circ\theta_i$ son polinomios en $k[x_1,\ldots,x_n]$ tales que $h\circ\theta_i(z)\neq 0$ y $f\circ\theta_i(z)=g\circ\theta_i(z)/h\circ\theta_i(z)$ para todo $z\in\theta_i^{-1}(V)$ (que es abierto por el ejercicio anterior). Por tanto $f\circ\theta_i$ está definida en $a$.
+
+La aplicación $\theta_i^\star$ preserva sumas, productos y constantes, y por tanto es un homomorfismo de $k$-álgebras. Para ver que es un isomorfismo, construyamos el homomorfismo inverso. Sea $p\in k[x_1,\ldots,x_n]$, y sea $\psi(p)(x_0,x_1,\ldots,x_n)=p(x_0/x_i,\ldots,x_{i-1}/x_i,x_{i+1}/x_i,\ldots,x_n/x_i)$. Reduciendo a denominador común, podemos escribir $\psi(p)(x_0,x_1,\ldots,x_n)=q(x_0,x_1,\ldots,x_n)/x^d_i$, donde $q$ es un polinomio homogéneo de grado $d$. Como $x^d_i$ no se anula en $U_i$, $\psi(p)$ define una función regular en $U_i$. Es un ejercicio fácil comprobar que $\theta_i^\star$ y $\psi$ son inversas la una de la otra.
+\end{proof}
+
+Supongamos ahora que $Z\subseteq\Pnk$ es una variedad proyectiva (respectivamente cuasi-proyectiva). Entonces $Z$ está recubierta por los subconjuntos abiertos $Z_i:=Z\cap U_i$, y podemos identificar cada $Z_i$ con la variedad afín (resp. cuasi-afín) $\theta_i^{-1}(Z)\subseteq\Ank$. 
+
+\begin{prop}
+ Una función $f:Z\to k$ es regular si y sólo si $f\circ\theta_i:\theta_i^{-1}(Z_i)\to k$ es regular para todo $i$. 
+\end{prop}
+
+\begin{proof}
+ $f$ es regular si y sólo si su restricción a cada abierto $Z_i$ lo es (ya que la regularidad depende sólo de un entorno de cada punto). Por otra parte, la aplicación biyectiva $\theta_i:\Ank\to U_i$ se restringe a una aplicación biyectiva $\theta_i:\theta_i^{-1}(Z_i)\to Z_i$, de tal manera que $f:Z_i\to k$ es regular si y sólo si $f\circ\theta_i:\theta_i^{-1}(Z_i)\to k$ lo es (repitiendo la prueba de la proposición anterior).
+\end{proof}
+
+\begin{ejer}
+ Sea $Z=\V(f_1,\ldots,f_r)\subseteq\Pnk$ una variedad proyectiva, con $f_1,\ldots,f_r\in k[x_0,x_1,\ldots,x_n]$ homogéneos. Probar que $\theta^{-1}_i(Z_i)=\V(\hat f_1,\ldots,\hat f_r)\subseteq\Ank$, donde $\hat f_i(x_1,\ldots,x_n)=f_i(x_1,\ldots,x_{i-1},1,x_{i+1},\ldots,x_n)$.
+\end{ejer}
+
+\section{La inmersión del espacio afín en el espacio proyectivo}
+
+Para $i=0$, la aplicación $\theta_0:\Ank\to\Pnk$ definida en la sección anterior nos da una inmersión (topológica) de $\Ank$ como el subconjunto abierto de $\Pnk$ definido por $x_0\neq 0$. Si no se especifica lo contrario, siempre que consideremos al espacio afín como subconjunto del espacio proyectivo lo haremos mediante esta inmersión. El complementario $H_\infty$ de $\Ank$ en $\Pnk$ (es decir, el hiperplano definido por $x_0=0$) se denominará {\bf hiperplano del infinito}.
+
+Sea ahora $X\subseteq \Ank$ un conjunto algebraico. Su imagen por $\theta_0$ es un subconjunto (no necesariamente algebraico) de $\Pnk$. 
+
+\begin{defi}
+ La {\bf clausura proyectiva} $\overline X$ de $X$ es la clausura de $X$ en $\Pnk$ para la topología de Zariski, es decir, el menor subconjunto algebraico de $\Pnk$ que contiene a $X$.
+\end{defi}
+
+\begin{ejs}
+ \emph{\begin{enumerate}
+       \item  Si $X$ es la recta $x_1=0$ en $\A^2_k$, su clausura proyectiva es la recta $x_1=0$ en $\PP^2_k$, que contiene a $X$ y al ``punto en el infinito'' $(0:0:1)$.
+\item Si $X$ es la curva $x_1x_2=1$ en $\A^2_k$, su clausura proyectiva es la curva $x_1x_2=x_0^2$ en $\PP^2_k$, que contiene a $X$ y a los dos ``puntos en el infinito'' $(0:1:0)$ y $(0:0:1)$.
+       \end{enumerate}
+}
+\end{ejs}
+
+ 
+Como ${\overline X}^{\Ank}={\overline X}^{\Pnk}\cap \Ank$ y $X$ es cerrado en $\Ank$, se tiene que ${\overline X}\cap\Ank=X$. En particular, la aplicación $X\mapsto\overline X$ entre conjuntos algebraicos afines y conjuntos algebraicos proyectivos es inyectiva.
+
+\begin{lemma} Si $X\subseteq\Ank$ es irreducible, también lo es su clausura proyectiva.
+ \end{lemma}
+
+\begin{proof}
+ Supongamos que $\overline X=Y\cup Z$, donde $Y,Z\subseteq\overline X$ son subconjuntos cerrados. Entonces $X={\overline X}\cap\Ank=(Y\cap\Ank)\cup(Z\cap\Ank)$. Como $Y\cap\Ank$ y $Z\cap\Ank$ son cerrados en $X$, que es irreducible, o bien $X=Y\cap\Ank$ o bien $X=Z\cap\Ank$. Supongamos que $X=Y\cap\Ank$, entonces $X\subseteq Y$. Pero $Y$ es un cerrado y $\overline X$ es el menor cerrado de $\Pnk$ que contiene a $X$, así que $Y=\overline X$.
+\end{proof}
+
+
+\begin{prop}
+ Sea $Y\subseteq\Pnk$ una variedad proyectiva tal que $Y\cap \Ank\neq\emptyset$. Entonces $Y=\overline{Y\cap\Ank}$.
+\end{prop}
+
+\begin{proof}
+ Como $\overline{Y\cap\Ank}$ es el menor cerrado de $\Pnk$ que contiene a $Y\cap\Ank$, se tiene que $\overline{Y\cap\Ank}\subseteq Y$. Supongamos que la contención fuera estricta, entonces existiría un $f\in k[x_0,x_1,\ldots,x_n]$ homogéneo que se anula en $\overline{Y\cap\Ank}$ pero no en todo $Y$. En particular, $f$ se anula en $Y\cap\Ank$. Sean $Z=\V(f)\cap Y$ e $Y_\infty=Y\cap H_\infty$. Como $Y\cap\Ank\subseteq\V(f)\cap Y$, se tiene que $Y\supseteq Z\cup Y_\infty\supseteq (Y\cap\Ank)\cup(Y\cap H_\infty)=Y$, por lo que $Y=Z\cup Y_\infty$. Por otra parte, $Z\neq Y$ (ya que $f$ se anula en todo $Z$ pero no en todo $Y$) e $Y_\infty\neq Y$ (ya que $Y\cap\Ank\neq\emptyset$ por hipótesis). Esto contradice la irreducibilidad de $Y$. 
+\end{proof}
+
+\begin{coro}
+ Las aplicaciones $Z\mapsto\overline Z$ e $Y\mapsto Y\cap\Ank$ definen una correspondencia biunívoca entre el conjunto de variedades afines no vacías en $\Ank$ y el conjunto de variedades proyectivas en $\Pnk$ no contenidas en $H_\infty$.
+\end{coro}
+
+Veamos ahora cómo describir esta correspondencia explícitamente:
+
+\begin{prop}
+ Sea $Y=\V(\{f_1,\ldots,f_r\})\subseteq\Pnk$ una variedad proyectiva, donde los $f_i\in k[x_0,x_1,\ldots,x_n]$ son polinomios homogéneos. Sea $f'_i(x_1,\ldots,x_n):=f_i(1,x_1,\ldots,x_n)\in k[x_1,\ldots,x_n]$ (el ``deshomogeneizado'' de $f_i$ con respecto a $x_0$) para todo $i=1,\ldots,r$. Entonces $Y\cap\Ank=\V(\{f'_1,\ldots,f'_r\})\subseteq\Ank$.
+\end{prop}
+
+\begin{proof}
+ Un punto $(x_1,\ldots,x_n)\in\Ank$ está en $Y$ si y sólo si el punto proyectivo correspondiente $(1:x_1:\ldots:x_n)$ está en $Y$, es decir, si y sólo si $f_i(1,x_1,\ldots,x_n)=0$ para todo $i$. Pero por la definición de $f'_i$, esto es lo mismo que decir que $f'_i(x_1,\ldots,x_n)=0$ para todo $i$.
+\end{proof}
+
+Para cada $f\in k[x_1,\ldots,x_n]$, definimos el {\bf homogeneizado de $f$ con respecto a $x_0$} como el polinomio homogéneo $f^h(x_0,x_1,\ldots,x_n):=x_0^df(x_1/x_0,\ldots,x_n/x_0)\in k[x_0,x_1,\ldots,x_n]$, donde $d$ es el grado de $f$ (es decir, multiplicamos cada monomio de $f$ por la potencia de $x_0$ necesaria para hacerlo homogéneo de grado $d$). El polinomio original $f$ se puede recuperar a partir de $f^h$, ya que $f(x_1,\ldots,x_n)=f^h(1,x_1,\ldots,x_n)$.
+
+\begin{ejer}\label{homodeshomo}
+ Si $g\in k[x_1,\ldots,x_n]$ es un polinomio cualquiera y $f\in k[x_0,x_1,\ldots,x_n]$ un polinomio homogéneo tal que $f(1,x_1,\ldots,x_n)=g(x_1,\ldots,x_n)$, probar que $f=x_0^eg^h$ para algún $e\geq 0$. 
+\end{ejer}
+
+
+\begin{prop}
+ Sea $Z=\V(I)\subseteq\Ank$ una variedad afín, donde $I\subseteq k[x_1,\ldots,x_n]$ es un ideal primo. Entonces $\overline Z=\V(I^h)$, donde $I^h\subseteq k[x_0,x_1,\ldots,x_n]$ es el ideal generado por el conjunto de los homogeneizados de los elementos de $I$ con respecto a $x_0$.
+\end{prop}
+
+\begin{proof}
+ Si $f\in I$, entonces $f(x_1,\ldots,x_n)=0$ para todo $(x_1,\ldots,x_n)\in Z$. Dicho de otra forma, $f^h(1,x_1,\ldots,x_n)=0$, y por tanto $Z\subseteq\V(I^h)$. Como $\overline Z$ es la clausura de $Z$ en $\Pnk$ y $\V(I^h)$ es cerrado concluimos que $\overline Z\subseteq\V(I^h)$. 
+
+Recíprocamente, sea $\overline Z=\V(J)$, donde $J$ es un ideal homogéneo. Para todo $g\in J$ homogéneo y para todo $(x_1,\ldots,x_n)\in Z$ se tiene entonces que $g(1,x_1,\ldots,x_n)=0$. Por tanto, $g'(x_1,\ldots,x_n):=g(1,x_1,\ldots,x_n)\in\I(Z)=I$. Por el ejercicio \ref{homodeshomo} se tiene entonces que $g=x_0^eg'^h$ para algún $e\geq 1$, y por tanto $g\in I^h$. Así que $J\subseteq I^h$, y tomando $\V$ concluimos que $\V(I^h)\subseteq\V(J)=\overline Z$.
+\end{proof}
+
+En el resultado anterior no es posible reemplazar $I$ por un conjunto finito de generadores, como muestra el ejemplo siguiente:
+
+\begin{ejs}
+ \emph{Sea $Z\subseteq\A^3_\C$ la variedad $\V(\{x_1^2-x_2,x_1^2-x_3\})$. Su clausura proyectiva $\overline Z$ {\it no es} el conjunto algebraico definido por los polinomios $x_1^2-x_2x_0$ y $x_1^2-x_3x_0$. Este conjunto algebraico tiene dos componentes irreducibles: la definida por $x_1^2-x_2x_0=x_2-x_3=0$ (la verdadera clausura proyectiva de $Z$) y la componente ``intrusa'' definida por $x_0=x_1=0$.}
+\end{ejs}
+
+En general, si $Z=\V(\{f_1,\ldots,f_r\})$ es una variedad afín, el conjunto algebraico proyectivo $\V(\{f_1^h,\ldots,f_r^h\})$ contiene a la clausura proyectiva de $Z$ como componente irreducible, posiblemente con otras componentes irreducibles contenidas en $H_\infty$.
+
+
 \end{document}

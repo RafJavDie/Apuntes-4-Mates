@@ -1,12 +1,28 @@
 \documentclass[twoside]{article}
-\usepackage{../estilo-ejercicios}
+\usepackage{../../estilo-ejercicios}
 
 %--------------------------------------------------------
 \begin{document}
 
 \title{Algebra Conmutativa y Geometría Aplicada}
-\author{Rafael González López}
+\author{Javier Aguilar Martín, Rafael González López}
 \maketitle
+
+\begin{ejercicio}{2}\
+Sea $X \subseteq \mathbb{A}^n_k$
+un conjunto algebraico, y $f \in \mathcal{A}(X)$ una función
+regular que no se anule en ningún punto de $X$. Probar que $1/f : X \to k$ es
+también una función regular.
+\end{ejercicio}
+\begin{solucion}\
+Por ser $X$ algebraico se tiene que $X=\mathcal{V}(g_1,\dots,g_m)$, para algunos polinomios $g_i\in k[x_1,\dots,x_n]\ i=1,\dots,m$. Por definición de función regular, podemos escribir $f(x)=P(x)\in k[x_1,\dots, x_n]\ \forall x\in X$. Como $P(x)\neq 0\ \forall x\in X$, tenemos que 
+$$\emptyset=\mathcal{V}(g_1,\dots,g_m)\cap\mathcal{V}(P)=\mathcal{V}(g_1,\dots,g_m,P).$$
+Esto implica que $\langle g_1,\dots,g_m,P\rangle=k[x_1,\dots, x_n]$, por lo que $1\in \langle g_1,\dots,g_m,P\rangle$. Podemos suponer que $1\notin \langle g_1,\dots,g_m\rangle$, pues de lo contrario $k[x_1,\dots, x_n]=\langle g_1,\dots,g_m\rangle$, con lo que $P(x)$ sería un polinomio constante al ser $k$ algebraicamente cerrado y por tanto $1/P=1/f:X\to k$ sería trivialmente regular. Así pues, $1= h_1g_1+\cdots h_mg_m+hP$, por lo que, evaluando este polinomio en un punto $x\in X$, $1=hP$, para algún $h\in k[x_1,\dots, x_n]$. Por tanto, $1/f(x)=1/P(x)=h(x)\ \forall x\in X$, con lo que $1/f:X\to k$ es regular. 
+
+
+\end{solucion}
+
+\newpage
 
 \begin{ejercicio}{6}
 \begin{enumerate}
