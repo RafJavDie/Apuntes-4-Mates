@@ -1,0 +1,512 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Modelos de Investigación Operativa}
+\author{Rafael González López, Javier Aguilar Martín}
+\maketitle
+
+\begin{ejercicio}{1}
+Una persona busca sitio para aparcar cerca de su casa. Se aproxima desde el oeste y su objetivo es aparcar tan cerca como le sea posible. La posición de las plazas de aparcamiento aparece representada en la siguiente figura:
+$$T\ T-1\ T-2\dots 3\ 2\ 1$$
+Cuando va conduciendo solo puede apreciar si la plaza que está a su lado está libre u ocupada. Cada vez que está al lado de la plaza $t$ libre debe decidir si aparca (y camina los $4t$ metros desde la plaza hasta su casa) o por el contrario, sigue avanzando. Sabe que una vez que una plaza se deja atrás no se puede volver a por ella. 
+
+Finalmente, si se pasa de su casa (situada junto a la plaza 0), deberá llevar su coche hasta $M$ metros.
+
+Por su experiencia estima que la probabilidad de que la plaza $t$ esté libre es $p$ independientemente de las restantes. Se desea determinar la política óptima de aparcamiento que minimiza la distancia esperada recorrida por la persona a pie hasta su casa.
+\begin{enumerate}
+\item Formule el problema mediante programación dinámica.
+\item Pruébese que si es óptimo no aparcar en la plaza $s$ libre tampoco lo es en las plazas $t$ con $t\geq s$.
+\item Resuélvase para $T=100$, $M=40$ y $p=1/2$.
+\end{enumerate}
+\begin{solucion}\
+\begin{enumerate}
+
+\item Etapas $\{1,\dots, T\}$, Etapas $(t,\alpha)$, siendo $t$ la plaza en la que nos encontramos y $\alpha$ la situación de la plaza ($\alpha=0$: ocupada; $\alpha=1$: libre). $f(t,\alpha)=$ mínima distancia esperada que recorrerá a pie hasta la casa si se encuentra en la plaza $t$ y esta está en estado $\alpha$. $f(1,0)=M$, $f(1,1)=\min\{4,M\}$. Supondremos que $M>4$ porque en caso contrario siempre sería preferible pasarse.
+
+$$f(t,\alpha)=\begin{cases}
+ pf(t-1,1)+(1-p)f(t-1,0)& \alpha=0\\
+ \min\{4t (\text{si aparca}),pf(t-1,1)+(1-p)f(t-1,0)\} & \alpha=1
+\end{cases}$$
+
+\item Consideremos que la plaza $s$ está libre y es óptimo no aparcar, entonces
+$$f(s,1)=\min\begin{cases}
+4s\\
+pf(s-1,1)+(1-p)f(s-1,0)=f(s,0)
+\end{cases}$$
+Si lo óptimo es no aparcar entonces $f(s,1)=f(s,0)$ y ocurre porque $4s\geq p(d(s-1,1)+(1-p)f(s-1,0)$, luego $4s\geq f(s,0)$. Consideremos el caso sucesor. 
+$$f(s+1,1)=\min\begin{cases}
+4(s+1)\\
+pf(s,1)+(1-p)f(s,0)=pf(s,1)+(1-p)f(s,1)=f(s,1)
+\end{cases}$$
+Como $4s\geq f(s,1)$, también $4(s+1)\geq f(s,1)$, así que lo óptimo es no aparcar en $s+1$. 
+
+\item $f(1,0)=40$, $f(1,1)=4$. $f(2,0)=\frac{1}{2}f(1,1)`\frac{1}{2}f(1,0)=22$, $f(2,1)=\min\{8, 22\}=8$ (aparcar). Seguimos haciendo cálculos aburridos y llegamos a que $f(4,0)=13'5$ y $f(4,1)=\min\{16,13'5\}$ (no aparcar). Por tanto, por el apartado anterior no hace falta seguir calculando. Es decir, la solución óptima es aparcar en cualquier plaza disponible después de la 4.
+
+
+\end{enumerate}
+\end{solucion}
+\end{ejercicio}
+
+\newpage 
+\begin{ejercicio}{2}
+
+
+
+\begin{solucion}
+Hay $3$ etapas, en cada una decidimos cuántos artículos de cada tipo transportamos. Los estados serán del tipo $(t,k)$, donde $t$ es la etapa en la que nos encontramos y $k$ es el espacio disponible. Entonces $f(t,k)$ es la máxima ganancia que puede obtener el transportista desde la etapa $t$ hasta la etapa $3$ si dispone de $k$ $m^3$ de espacio. Llamamos $p_t$ al pago en la etapa $t$ y $v_t$ al volumen del producto en la etapa $t$. 
+\begin{align*}
+f(3,k)=&\max_{x_3}\{58x_3: 5x_3\leq k\}\\
+f(t,k)=&\max_{x_t:v_tx_t\leq k}\{p_tx_t+f_{t+1}(k-v_tx_t)\}
+\end{align*}
+\underline{Etapa 3:} $p_3=58$, $v_3=5$\
+\begin{center}
+\begin{tabular}{c| c c c c c c c c c}
+$k$ & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 0\\
+\hline
+$f(3,k)$ & $58$ & 58 & 58 & 58 & 0 & 0 & 0 & 0 & 0\\
+$x_3$ &  $1$ & 1 & 1 & 1& 0 & 0 & 0 & 0 & 0
+\end{tabular}
+\end{center}
+\underline{Etapa 2}: $p_2=32$, $v_2=5$, $f_2(k)=\max\{32x_2+f_3(k-3x_2):3x_2\leq k\}$.
+
+$$f(2,8)=\begin{cases}
+32\cdot 0+f(3,8)=58\\
+32\cdot 1+f(3,5)=90\\
+32\cdot 2+f(3,2)=64
+\end{cases}\quad f(2,7)=\begin{cases}
+32\cdot 0+f(3,7)=58\\
+32\cdot 1+f(3,4)=32\\
+32\cdot 2+f(3,1)=64
+\end{cases}$$
+
+$$f(2,6)=\begin{cases}
+32\cdot 0+f(3,6)=58\\
+32\cdot 1+f(3,3)=32\\
+32\cdot 2+f(3,0)=64
+\end{cases}\quad f(2,5)=\begin{cases}
+32\cdot 0+f(3,5)=58\\
+32\cdot 1+f(3,2)=32\\
+\end{cases}$$
+\begin{center}
+\begin{tabular}{c| c c c c c c c c c}
+$k$ & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 0\\
+\hline
+$f_2(k)$ & 90 & 64 & 64 & 58 & 32 & 32 & 0 & 0 & 0\\
+$x_2$ &  $1$ & 2 & 2 &    1&  0 & 1 &   1 & 0 & 0
+\end{tabular}\
+\end{center}
+\underline{Etapa 1:}
+$$f_1(8)=\max_{x_1\leq 8}\{11x_1+f_2(8-x_1)\}=\begin{cases}
+f_(2,8)=90\\
+11+f(2,7)=75\\
+22+f(2,6)=86\\
+33+f(2,5)=\boxed{91}\\
+44+f(2,4)=76\\
+55+f(2,3)=87\\
+66+f(2,2)=66\\
+77+f(2,1)=77\\
+88+f(2,0)=88
+\end{cases}$$
+
+Hemos llegado a que la ganancia óptima es $91$, con la configuración $x_1=3,x_2=0, x_3=1$.
+\end{solucion}
+
+\end{ejercicio}
+
+\newpage 
+\begin{ejercicio}{3}
+Una compañía petrolítfera tiene $D$ um para asignar en la perforación de pozos en $T$ lugares. Si se asignan $x$ um al pozo $t$, existe una probabilidad $q_t(x)$ de encontrar petróleo. Si en la perforación del pozo $t$ se encuentra petróleo, la empresa obtiene una ganancia de $r_t$ um. Maximizar el valor esperado del petróleo encontrado en los pozo.
+\begin{solucion}
+Hay $T$ etapas, con estados $(t,c)$ formados por la etapa y las um disponibles. $f(t,c):$ máximo beneficio esperado desde $t$ hasta $T$ si se dispone de $c$ um. 
+
+$$f(t,c)=\max_{x\leq c}\{r_tq_t(x)+f(t+1,c-x)\}$$
+$$f(T,c)\max_{x\leq c}\{r_tq_t(x)\}$$
+
+Si quisiéramos considerar que no es necesario invertir todo el dinero podemos considerar una etapa $T+1$ con $f(T+1,c)=c$ en la etapa $T$ incluir $c$ en el máximo. 
+
+
+
+
+
+
+
+\end{solucion}
+\end{ejercicio}	
+
+
+\newpage 
+\begin{ejercicio}{4}
+Un estudiante tiene siete días para preparar sus exámenes finales de cuatro asignaturas y
+quiere asignar el tiempo que tiene de la manera más eficiente posible. Necesita por lo menos un
+día para cada asignatura por lo que quiere asignar uno,dos,tres o cuatro días a cada asignatura.
+Utilizar programación dinámica para realizar estas asignaciones de forma que se maximice el total
+de puntos obtenidos en los cuatro exámenes. La siguiente tabla muestra la estimación de los puntos
+obtenidos en cada asignatura según el número de días de estudio asignados.
+\begin{center}
+5em Asignaturas\\
+\begin{tabular}{c|c c c c}
+Nº días & 1 & 2 & 3 & 4\\
+\hline
+1 & 3 & 5 & 2 & 6\\
+2 & 5 & 5 & 4 & 7\\
+3 & 6 & 6 & 7 & 9\\
+4 & 7 & 9 & 8 & 9
+\end{tabular}
+\end{center}
+Resolver el problema mediante programación dinámica.
+\begin{nota}
+¿Cómo se haría si quisiera aprobar todas como condición inicial?
+\end{nota}
+\begin{solucion}
+Tenemos 4 etapas, una para cada asignatura, en la que decidimos cuántos días le dedicamos. Por tanto tenemos los estados $(t,k)$, donde $t$ es la etapa en la que nos encontramos y $k$ es la cantidad de días disponible para asignar (teniendo en cuenta que ya se ha asignado un día previamente). $f(t,k)$ representaría la máxima cantidad de puntos que podemos obtener desde la etapa $t$ hasta el final si disponemos de $k$ días libres. Entonces definimos
+$$f(t,k)=\max_{1\leq x_t\leq k}\{g(t,x_t)+f(t+1,k-x_t)\}$$ y $f(4,k)=\max_{1\leq x_3\leq k}\{g(4,x_3)\}=g(4,k)$, donde $g(t,x)$ representa los puntos obtenidos, es decir, el valor de la tabla en la posición $(t,x)$.
+\underline{Etapa 4}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+$k$ & $x$ & $f(4,k)$\\
+\hline
+1 & 1 & 6\\
+2 & 2 & 7\\
+3 & 3 & 9\\
+4 & 4 & 9\\
+\hline
+\end{tabular}
+\end{center}
+\newpage
+\underline{Etapa 3}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$k$ & $x$ & $g(3,x)$ & $f(4,k-x)$ & $f(3,k)$\\
+\hline
+2 & 1 & 2 & 6 & $\boxed{8}$\\
+\hline
+3 & 1 & 2 & 7 & 9\\ 
+  & 2 & 4 & 6 & $\boxed{10}$\\
+\hline
+4 & 1 & 2 & 9 & 11\\
+  & 2 & 4 & 7 & 11\\
+  & 3 & 7 & 6 & $\boxed{13}$\\
+  \hline
+5 & 1 & 2 & 9 & 11\\
+  & 2 & 4 & 9 & 13\\
+  & 3 & 7 & 7 & $\boxed{14}$\\
+  & 4 & 8 & 6 & 14\\
+  \hline
+\end{tabular}
+\end{center}
+\underline{Etapa 2}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$k$ & $x$ & $g(2,x)$ & $ f(3,k-x)$ & $f(2,k)$\\
+\hline 
+3 & 1 & 5 & 8 & $\boxed{13}$\\
+\hline
+4 & 1 & 5 & 10 & $\boxed{15}$\\
+  & 2 & 5 & 8 & 13\\
+  \hline
+5 & 1 & 5 & 13 & $\boxed{18}$\\
+  & 2 & 5 & 10 & 15\\
+  & 3 & 6 & 8 & 14\\
+  \hline
+6 & 1 & 5 & 14 & $\boxed{19}$\\
+  & 2 & 5 & 13 & 18\\
+  & 3 & 6 & 10 & 16\\
+  & 4 & 9 & 8  & 17\\
+  \hline
+\end{tabular}
+\end{center}
+\underline{Etapa 1}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$k$ & $x$ & $g(1,x)$ & $f(2,k-x)$ & $f(1,k)$\\
+\hline
+7 & 1 & 3 & 19 & 22\\
+  & 2 & 5 & 18 & $\boxed{23}$\\
+  & 3 & 6 & 15 & 21\\
+  & 4 & 7 & 13 & 20\\
+  \hline
+\end{tabular}
+\end{center}
+$x_1=2, x_2=1, x_3=3, x_4=1$.
+\end{solucion}
+\end{ejercicio}
+
+\newpage 
+\begin{ejercicio}{5}
+En una empresa se estiman las necesidades de mano de obra para las cuatro estaciones del año.
+Estas son 225, 220, 240 y 200 hombres respectivamente en primavera, verano, otoño e invierno.
+Si se emplean a más hombres de los necesarios se produce un coste de 2000 u.m. por persona
+y periodo. Los costos debidos a la contratación o al despido de trabajadores entre periodos se
+estiman en 200 veces el cuadrado de la diferencia entre el número de trabajadores en uno y otro
+periodo.
+Determinar el número de empleados que deben estar en plantilla en cada estación del año; para
+ello asumir que la cantidad de trabajadores es continuamente divisible.
+\begin{solucion}
+\end{solucion}
+\end{ejercicio}
+
+\newpage 
+\begin{ejercicio}{6}\label{6}
+Descomponer utilizando la programación dinámica una cantidad $C > 0$ en tres partes de forma
+que cada una de ellas sea mayor o igual que $C/4$ y que su producto sea mínimo. Definir las etapas,
+estados, decisiones y recursividad de este proceso.
+\end{ejercicio}
+\begin{solucion}
+Primero vamos a plantearlo como un problema de programación lineal. Sean $x_1,x_2,x_3$ cada una de las 3 partes, las cuales cumplen $x_1+x_2+x_3=C$ y $x_1,x_2,x_3\geq\frac{C}{4}$. Con esta restricción tendríamos que calcular $\min x_1x_2x_3$. 
+
+Vamos a simplificarlo tomando $C=1$. Para programación dinámica tendríamos 3 etapas, cada una correspondiente a cada $x_i$. En los estados tenemos el índice $i$ y $d=1-\sum_{j=1}^ix_j$. La función recursiva por lo tanto sería
+\begin{align*}
+f(i,d)=&\min_{\frac{1}{4}\leq d-\frac{3-i}{4}} x_if(i+1,d-x_i)\\
+f(3,d)=&\begin{cases}
+d & d\geq\frac{1}{4}\\
++\infty & d<\frac{1}{4}
+\end{cases}
+\end{align*}
+
+Así, pues $f(2,d)=\min_{\frac{1}{4}\leq d-\frac{1}{4}}\begin{cases}
+x(d-x) & d-x\geq\frac{1}{4}\\
++\infty & d-x <\frac{1}{4}
+\end{cases}$
+Por tanto, el mínimo se alcanza en  se alcanza tanto en $\frac{1}{4}$ como en $d-\frac{1}{4}$. Elegimos por simplicidad $\frac{1}{4}$, con lo que sustituyendo nos da $f(2,d)=\frac{1}{4}(d-\frac{1}{4})$ si $d\geq\frac{1}{2}$ e infinito en caso contrario. Por último, en el primer paso tenemos la cantidad completa, por lo tanto calculamos
+$$f(1,1)=\min_{\frac{1}{4}\leq x\leq\frac{1}{2}}xf(2,1-x)=\begin{cases}
+x\frac{1}{4}(1-x-\frac{1}{4}) & 1-x\geq\frac{1}{2}\\
++\infty & cc
+\end{cases}$$
+Como $x\leq\frac{1}{2}$ era una de las condiciones, el segundo caso podemos descartarlo. El mínimo se alcanza tanto en $\frac{1}{2}$ como en $\frac{1}{4}$, cuyo resultado es $\frac{1}{32}$. Vamos a elegir la solución $x_1=\frac{1}{4}$. Habíamos obtenido también $x_2=\frac{1}{4}$, por lo que obtenemos $x_3=\frac{1}{2}$.
+\end{solucion}
+
+\newpage 
+\begin{ejercicio}{7}
+Imagine que se tienen 5000 um para invertir y que tendrá la oportunidad de hacerlo en cualquiera de dos inversiones A o B al principio de cada uno de los próximos tres años. Existe incertidumbre respecto al rendimiento de ambas inversiones. Si se invierten en A, se puede perder todo el dinero o (con probabilidad más alta) obtener 10000 um (una ganancia de 5000 um al final del año). Las probabilidades para estos eventos son:
+\begin{tabular}{c| c c}
+\hline
+Inversión & Rendimiento & Probabilidad\\
+\hline
+A & 0 & 0.3\\
+  & 10000 &  0.7\\
+ \hline
+ B & 5000 & 0.9\\
+   & 10000 0.1\\
+   \hline
+
+\end{tabular}
+
+\vspace{0.2cm}
+
+Se puede hacer (a lo sumo) una inversión al año y solo se puede invertir 5000 um cada vez.
+\begin{enumerate}
+\item Utilice programación dinámica para encontrar la política de inversión que maximice la cantidad de dinero esperada que se tendrá después de los tres años.
+\item Utilice programación dinámica para encontrar la política óptima de inversión que maximice la probabilidad de tener por lo menos 10000 um después de tres años.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+\item 3 etapas, estados $(t,c)$ de etapa y cantidad disponible. $f(t,c)$ es la máxima ganancia esperada desde el año $t$ hasta el final si disponemos de $c$ um.
+$$f(t,c)=\begin{cases}
+\max\{0'3f(t+1,c-5000)+0'7f(t+1,c+5000),0'9f(t+1,c)+0'1f(t+1,c+5000)\} & c\geq 5000\\
+0 & c<5000
+\end{cases}
+$$
+
+$$f(3,c)=\begin{cases}
+\max\{0'3\cdot 0+0'7\cdot 10000, 0'9\cdot 5000+0'1\cdot 10000\}-5000+c=\\
+\max\{7000(A),5500(B)\}-5500+c=2000+c & c\geq 5000\\
+0 & c<5000
+\end{cases}
+$$
+
+Por tanto $x_3=A$. 
+
+En la etapa 2 se pueden dar los siguientes casos:
+$$f(2,0)=0$$
+$$f(2,5000)=\max\{0'3f(3,0)+0'7f(3,10000),0'9f(3,5000)+0'1f(3,10000)\}=\max\{8400,6100\}=8400(B)$$
+$$f(2,1000)=\max\{0'3f(3,5000)+0'7f(3,15000),0'1f(3,10000)+0'9f(3,15000)\}=\max\{14000,12500\}=14000(A)$$
+ 
+
+En la etapa 1 solo puede ocurrir lo siguiente:
+
+$$f(1,5000)=\max\begin{cases}
+0'3f(2,0)+0'7f(2,10000)=\boxed{9800}(A)\\
+0'9f(2,5000)+0'1f(2,10000)=8961
+\end{cases}$$
+
+Por tanto la decisión óptima inicial es A. Si en la segunda etapa tuviéramos 5000 entonces la decisión siguiente sería B, y si llegáramos con 1000 sería A. En cualquiera de estos dos casos la tercera decisión es A.
+
+\item Añadimos una estapa adicional para modelar la probabilidad. $f(4,c):$ máxima probabilidad de acabar despu´s de los 3 años con 10000 um o más desde la etapa $t$ si se dispone de c um. 
+$$f(4,c)=\begin{cases}
+1 & c\geq 10000\\
+0 & c<10000
+\end{cases}$$
+$$f(t,c)=\max\begin{cases}
+0'3f(t+1,c-5000)+0'7f(t+1,c+5000) & x_t=A\\
+0'9f(t+1,c)+0'1f(t+1,c+5000) & x_t=B
+\end{cases}$$
+
+Vamos a la etapa 3. $f(3,0)=0$. 
+$$f(3,5000)=\max\begin{cases}
+0'3f(4,0)+0'7f(4,10000)=0'7 & x_3=A\\
+0'9f(4,5000)+0'1f(4,10000)=0'1 & x_3=B
+\end{cases}$$
+$$f(3,10000)=\max\begin{cases}
+0'3f(4,5000)+0'7f(4,15000)=0'7 & x_3=A\\
+0'9f(4,10000)+0'1f(4,15000)=1 & x_3=B
+\end{cases}$$
+Ahora la etapa 2. $f(2,0)=0$, $f(2,1000)=1, x_2=B$
+$$f(2,5000)=\max\begin{cases}
+0'3f(3,0)+0'7f(3,10000)=0'7 & x_2=A\\
+0'9f(3,5000)+0'1f(3,10000)=0'73 & x_2=B
+\end{cases}$$
+
+Por último la etapa 1:
+$$f(1,5000)=\max\begin{cases}
+0'3f(2,0)+0'7f(2,10000)=0'7 & x_1=A\\
+0'9f(2,5000)+0'1f(2,10000)=0'757 & x_1=B
+\end{cases}$$
+
+La máxima probabilidad de acabar con al menos 10000 um es por tanto $0'757$, cuya estrategia óptima es
+\[
+\begin{tikzcd}
+&  & A\\
+A\arrow[r] & B\arrow[ur,"c=5000"]\arrow[dr,"c\geq 10000"'] & \\
+& & B
+\end{tikzcd}
+\]
+\end{enumerate}
+\end{solucion}
+
+
+\newpage
+\begin{ejercicio}{8} 
+Cuando un jugador de tenis sirve, tiene dos oportunidades para que la pelota caiga dentro de los límites. Si falla dos veces, pierde un punto (1 unidad). Si intenta un ace, tiene una probabilidad de $3/8$ de que caiga dentro del cuadro. Si saca un servicio suave, su probabilidad de hacerlo bien es $7/8$. Si el intento de ace cae dentro del cuadro, gana el punto (1 unidad) con probabilidad $2/3$, Con el servicio suave dentro del cuadro, la probabilidad de que gane el punto es $1/3$. Determinar la estrategia óptima.
+\end{ejercicio}
+\begin{solucion}
+Las etapas son los dos servicios y los estados solo dependen de en qué servicio estemos. $f(t)$ es la máxima probabilidad de ganar el punto desde $t$. 
+$$f(II)=
+\max\{\frac{3}{8}\frac{2}{3} (Ace),\frac{1}{3}\frac{7}{8}\}=\frac{7}{24}(Suave)
+$$
+
+$$f(I)=\max\begin{cases}
+\frac{3}{8}\frac{2}{3}+f(II)(1-\frac{3}{8}) & Ace\\
+\frac{7}{8}\frac{1}{3}+f(II)(1-\frac{2}{3}) & Suave
+\end{cases}=\max\{0'432,0'328\}=0'4324$$ que corresponde a intentar un ace en el primero y en caso de fallar, sacar suave en el segundo.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{9}
+Sea $p$ la probabilidad de obtener cara al lanzar una moneda. Calcular la probabilidad de
+obtener un número par de caras en $n$ lanzamientos mediante un procedimiento recursivo.
+\end{ejercicio}
+\begin{solucion}
+Consideramos los sucesos 
+
+$A_n=$ obtener un número par de caras en $n$ lanzamientos.\\
+$B_n=$ obtener un número impar de caras en $n$ lanzamientos.
+
+Tenemos que calcular $P(A_n)$ de la siguiente forma
+$$P(A_n)=P(\text{cara}|B_{n-1})P(B_{n-1})+P(\text{cruz}|A_{n-1})P(A_{n-1})=pP(B_{n-1})+(1-p)P(A_{n-1}).$$
+En primer lugar necesitamos $P(B_{n-1})$, que la calculamos de forma similar
+$$P(B_{n-1})=P(\text{cara}|A_{n-2})P(A_{n-2})+P(\text{cruz}|B_{n-2})P(B_{n-2})=pP(A_{n-2})+(1-p)P(B_{n-2}).$$
+Solo nos queda añadir las condiciones iniciales, $P(A_1)=1-p$ y $P(B_1)=p$. 
+
+En resumen, el proceso recursivo sería el siguiente:
+$$\begin{cases}
+P(B_1)=p\\
+P(A_1)=1-p\\
+P(B_{n-1})=pP(A_{n-2})+(1-p)P(B_{n-2})\\
+P(A_n)=pP(B_{n-1})+(1-p)P(A_{n-1})
+\end{cases}$$
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{10}
+Una comunidad autónoma tiene cuatro provincias. Una fracción $f_i$ de los electores viven en
+la provincia $i = 1,\dots,4$ con $f_1 = 0.25$, $f_2 = 0.2$, $f_3 = 0.4 $y $f_4 = 0.15$. La cámara autónimca consta
+de $R = 28$ escaños. Cada provincia $i$ debería obtener $D_i = Rf_i$ escaños. Sin embargo, el número
+de escaños asignados debe ser entero. Si se desea minimizar la máxima diferencia entre $D_i$ y el
+número de escaños de la provincia $i$,
+\begin{enumerate}
+\item Formular el problema como un modelo de programación dinámica.
+\item Resolver el problema.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Tengamos en cuenta que $D_1=7$, $D_2=5.6$, $D_3=11.2$ y $D_4=4.2$. Los estados $(i,d)$ contienen el índice de la provincia y los escaños disponibles.
+$f(i,d)$ sería el mínimo valor de la máxima diferencia entre los escaños asignados y los que en teoría le corresponderían, desde la provincia $i$ hasta la 4, si en el momento hay disponibles $d$ escaños. 
+
+$$f(i,d)=\min_{x_i\leq d}\max\{|D_i-x_i|,f(i+1,d-x_i)\}$$
+$$f(4,d)=\begin{cases}
+0.2 & d\geq 4,x_4=4\\
+4.2-d & d<4, x_4=d
+\end{cases}$$
+
+$$f(3,d)=\min_{x_i\leq d}\max\{|11.2-x_3|,f(4,d-x_3)\}$$
+
+$f(3,0)=\min\max\{11.2,4.2\}=11.2;\quad f(3,1)=\min\begin{cases}
+\max\{11'2,3'2\}=11'2\\
+\max\{10'2,4'2\}=10'2
+\end{cases}=10'2\quad x_3=1;$
+
+$f(3,2)=\min\begin{cases}
+\max\{11'2,2'2\}=11.2 & x_3=0\\
+\max\{10'2,3'2\}=10.2 & x_3=1\\
+\max\{9'2,4'2\} & x_3=2
+\end{cases}=9'2, x_3=2$
+
+Los siguiente siguen una progresión similar, así que pasamos directamente a 
+$$f(3,8)=\min_{x_3\leq 8}\left.\begin{cases}
+11'2 & x_3=0\\
+10'2 & x_3=1\\
+\vdots & \\
+\max\{4'2,3'2\}=4'2 & x_3=7\\
+\max\{3'2,3'2\}=3'2 & x_3=8\\
+\max\{2'2,4'2\}=4'3 & x_3=9
+\end{cases}\right\}= 3.2\quad x_3=8$$
+
+La función sigue aumentando hasta llegar a 15 y se mantiene constante. La solución será 
+$$f(1,28)=\min_{x_1\leq 28}\max\{|7-x_1|,f(2,28-x_1)\}=\{0,0'4\}=0'4$$
+que se obtiene en $f(2,21)=0'4$, por lo que la solución óptima es 
+$$\boxed{x_1=7, x_2=6,x_3=11,x_4=4}$$
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{extra}
+Aplicar un procedimiento de programación dinámica para resolver el problema:
+\begin{align*}
+\min\sum_{i=1}^N (x_i-bx_i)^2\\
+s.a. \sum_{i=1}^N x_i=C\\
+x\geq 0
+\end{align*}
+\end{ejercicio}
+\begin{solucion}
+Obsérvese en primer lugar que $$\sum_{i=1}^N (x_i-bx_i)^2=\sum_{i=1}^N (1-b)^2x_i^2=(1-b)^2\sum_{i=1}^N x_i^2,$$ por lo que basta minimizar la suma de los cuadrados con las restricciones anteriores. Vamos a identificar $N$ etapas, cada una correspondiente al valor asignado a la variable $x_i$. Definimos los estados $(i,d)$, donde $i$ es el índice de la variable en la que nos encontramos y $d=C-\sum_{j=1}^i x_j$ es la cantidad que queda disponible para asignar a la variable. En nuestro modelo, $f(i,d)$ representará el valor mínimo de $\sum_{j=i}^N x_i^2$ si en la etapa $i$ hay una cantidad $d$ para asignar. La función recursiva será $f(i,d)=\min_{0\leq x_i\leq d}  x_i^2+f(i+1,d-x_i)$, teniendo en cuenta que $f(N,d)=\begin{cases}
+C^2 & d\geq C\\
+d^2 & C\geq d\geq 0\\
++\infty & d<0
+\end{cases}$. 
+
+Vamos a probar por inducción que $f(N-i,d)=\frac{d^2}{i+1}$, alcanzando dicho valor en $x_i=\frac{d}{i+1}$, $\forall i=0,\dots, N-1$ y $0\leq d\leq C$. Tenemos como caso inicial que $f(N-0,d)=\frac{d^2}{0+1}$, valor alcanzado en $x_N=\frac{d}{0+1}$. Supongamos como hipótesis de inducción que
+
+$$f(N-i,d)=\min_{0\leq x_{N-i}\leq d}x_{N-i}^2+(d-x_{N-i})^2$$
+obtiene su mínimo en $x_{N-i}=\frac{d}{i+1}$, donde vale $\frac{d^2}{i+1}$. Entonces
+
+$$f(N-(i+1),d)=\min_{0\leq x_{N-(i+1)}\leq C}x_{N-(i+1)}^2+\frac{(d-x_{N-(i+1)})^2}{i+1}$$
+La función es una parábola que alcanza su mínimo en $x_{N-(i+1)}=\frac{d}{i+2}$, donde vale $\frac{d^2}{i+2}$, lo que prueba nuestra tesis.
+
+Como la solución es $f(1,C)$ basta sutituir estos valores y obtenemos $f(1,C)=\frac{C^2}{N}$, para $x_1=\frac{C}{N}$. Para recuperar los demás $x_i$ probaremos por inducción que $x_i=\frac{C}{N}\ \forall i=1,\dots,N$. El caso inicial es el que acabamos de calcular. Fijemos $2\leq j\leq N$ y supongamos entonces que $x_i=\frac{C}{N}\ \forall i=1,\dots,j-1$. Tenemos que $j=N-(N-j)$ y que queda una cantidad $d=C-\sum_{i=1}^{j-1}\frac{C}{N}=\frac{N-j+1}{N}C$. Por tanto sustituimos en la fórmula obtenida en la anterior inducción y resulta
+$$x_j=\frac{\frac{N-j+1}{N}C}{N-j+1}=\frac{C}{N}$$
+como queríamos demostrar.
+\end{solucion}
+
+
+\end{document}
