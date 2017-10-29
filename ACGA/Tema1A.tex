@@ -352,6 +352,15 @@ Sean $a,b\in A$ tales que $ab\in\ker{f}$, entonces $f(a)f(b)=f(ab)=0$. Como $B$ 
 En el ejemplo anterior, podemos ver que $\langle x,y\rangle$ es primo probando usando la proposición.  Basta tomar el homomorfismo $\K[x,y,z]\to\K[z]$ tal que $f(x,y,z)\mapsto f(0,0,z)$. En este caso el $\ker$ es justamente $\langle x,y\rangle$.
 \end{ej}
 
+\begin{ejer}
+ Sea $X\subseteq\A^2_\C$ la curva definida por la ecuación $x^a=y^b$, donde $a,b$ son enteros positivos. Probar que $X$ es irreducible si y sólo si $a$ y $b$ son primos entre sí (\emph{Ayuda: } Probar que el homomorfismo $\C[x,y]/\langle x^a-y^b\rangle\to\C[t]$ dado por $x\mapsto t^b$, $y\mapsto t^a$ es inyectivo si $a$ y $b$ son primos entre sí).
+\end{ejer}
+\begin{solucion}
+
+Definimos el homomorfismo $\varphi:k[x_1,...x_n]\rightarrow k(f_1(t),...,f_n(t)), x_i \mapsto f_i(t)$. Se tiene que $\ker{\varphi}=\I(X)$. Además $\Im{\varphi}$ está contenida en un cuerpo, por lo que es dominio de integridad. Como $\calA(X)=k[x_1,\dots,x_n]/\I(X) \cong \Im{\varphi}$, eso significa que $\I(X)$ es primo y por tanto $X$ es irreducible.
+
+\end{solucion}
+
 \begin{defi}
  Si $X=Z_1\cup\cdots\cup Z_r$ es una descomposición minimal de $X$ como unión de variedades, las variedades $Z_i$ se llaman las {\bf componentes irreducibles} de $X$.
 \end{defi}
