@@ -16,7 +16,7 @@
 \usetikzlibrary{arrows.meta}
 
 \newtheorem{thm}{Theorem}[section]
-\newtheorem{cor}[thm]{Collorary}
+\newtheorem{coro}[thm]{Corolario}
 \newtheorem{lemma}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{prob}[thm]{Problema}
@@ -112,22 +112,63 @@ Una consecuencia trivial de esta definición es que
 \begin{prop}
 La conjetura de Gilbreath es equivalente a que $\{p_n\}$ sea una sucesión de Gilbreath. 
 \end{prop}
-
 \subsection{Crecimiento y distribución}
 Aunque estamos particularmente interesados en estudiar las sucesiones de Gilbreath crecientes, sin embargo hemos damos una definición más relajada con el fin de agilizar su estudio mediante una serie de nuevos conceptos.
 \begin{defi}
 Sea $S=\{a_n\}_{n\in\N_k}$ una sucesión finita de Gilbreath. Definimos $\mathcal{G}_S$ como el conjunto de todos los elementos tales que si $m\in \mathcal{G}_S$ entonces la sucesión definida como $b_n = a_n$ si $n\leq k$ y $b_{k+1}=m$ sigue siendo una sucesión de Gilbreath.
 \end{defi}
 \begin{defi}
-En las condiciones de la definición anterior denotamos $\mathcal{G}^+_S$ al conjunto $\{s \in \mathcal{G}_S \mid s > a_n\}$.
+En las condiciones de la definición anterior denotamos $\mathcal{G}^+_S$ al conjunto $\{s \in \mathcal{G}_S \mid s > a_n\}$. 
 \end{defi}
-Vamos a ilustrar este concepto con algunos ejemplos. 
-\begin{ejem}
-Si $S=\{2,3\}$ entonces $\gilb{S}=\{5\}$.
+Este último concepto tendrá particular interés cuando $S$ sea además creciente. 
+\begin{ejem}Vamos a ilustrar estos conceptos con algunos ejemplos. 
+\begin{enumerate}
+\item Si $S=\{2,3\}$ entonces $\gilb{S}=\{3,5\}$. 
+\item Si $S=\{2,3,5,7\}$ entonces $\gilb{S}=\{3,5,7,9,11\}$. 
+\item Si $S=\{2,3,5,9\}$ entonces $\gilb{S}=\{3,5,7,9,11,13,15,17\}$.
+\item Si $S=\{2,3,5,7,11\}$ entonces $\gilb{S}^+ = \{13,15,17,19,21\}$.
+\end{enumerate}
 \end{ejem}
-\begin{conj} Sean $S=\{s_i\}_{i\in \N_k}$ y $K=\{k_i\}_{i\in \N_k}$ dos conjuntos Gilbreath de la misma longitud. Si $s_i \geq k_i$ $\forall i=1,\dotsc,n$, entonces $\mathcal{G}_k \subset \mathcal{G}_S$.
+\begin{defi}
+Generalizando el concepto, diremos que $\{a_n\}_{i\in I}$ es mayor que $\{b_n\}_{i\in I}$ si $a_i \geq b_i$ para todo $i\in I$.
+\end{defi}
+\begin{conj} Sean $S$ y $K$ dos sucesiones finitas de Gilbreath. Si $S\geq K$, entonces $\mathcal{G}_K\subset \mathcal{G}_S$.
 \end{conj}
 
+\begin{conj}
+Sea la sucesión $\{m_n\}_{n\in \N}$ la menor sucesión creciente de Gilbreath y $\{M_n\}_{n\in \N}$ la mayor sucesión creciente de Gilbreath. Ambas definiciones en el sentido de que, sea $\{a_n\}_{n\in \N}$ otra sucesión creciente de Gilbreath, entonces $m_n \leq a_n \leq M_n$ para todo $n \in \N$. Entonces
+\begin{itemize}
+\item $\{m_n\}_{n\in \N}$ es la sucesión $m_1 = 2$, $m_n = 2n-1$ si $n>1$.
+\item $\{M_n\}_{n\in \N}$ es la sucesión $M_1=2$, $M_n = 2^{n-1}+1$ si $n>1$.
+\end{itemize}
+\end{conj}
+
+Vamos a estudiar $\gilb{S}$.
+\begin{conj}
+Sea $S$ una sucesión finita de Gilbreath. Entonces $\exists n \in \N$ tal que 
+$$\gilb{S} = \{2k+1\mid k\in \N_n\}$$
+\end{conj}
+\begin{coro}
+Sea $S$, la sucesión finita formada por los $i$ primeros términos de la sucesión $\{M_n\}_{n\in\N}$. Entonces,
+$$
+\gilb{S}=\{2k+1\mid 1\leq k \leq 2^{i-1}\}
+$$
+\end{coro}
+\begin{defi}
+Sea $S_k=\{p_n\}_{n\in \N_k}$ la sucesión finita de los primeros $k$ primos. Definimos la sucesión $\{Q_n\}_{n\in\N}$ como $Q_1=2$, $Q_2=3$, y $Q_k=\max \gilb{S_k}$. 
+
+Los primero valores de la sucesión son 
+\begin{align*} \{Q_n\}=\{&9,11,21,21,27,27,33,41,51,55,57,53,63,67,89,85,95,105,121,\\&129,137,129,135,137,155,217,189,\dotsc\}
+\end{align*}
+\end{defi}
+\begin{coro}
+La conjetura del Gilbreath es cierta si y solo si $Q_n \geq p_n$ para todo $n\in \N$.
+\end{coro}
+¿Qué sabemos sobre $Q_n$? En principio no mucho. Si analizamos la sucesión $\{Q_n-p_n\}$ obtenemos estos primeros 30 valores:
+\begin{align*} \{Q_n-p_n\}=\{&7,8,16,14,16,14,16,22,28,26,26,16,22,24,42,32,36,44,30,\\
+&38,32,42,46,48,32,34,34,48,108,76,\dotsc\}
+\end{align*}
+Es decir, en principio, parece que el \textit{gap} no solo se mantiene constantemente positivo sino que aumenta. 
 \subsection{Estudio probabilístico}
 
 
