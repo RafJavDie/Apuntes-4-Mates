@@ -82,5 +82,40 @@ Si $Z$ es variedad, entonces es irreducible. $Z=Z\cap( X\cup Y)=(Z\cap X)\cup(Z\
 \end{gather*}
 El recíproco es falso en general. Para ver un contraejemplo consideremos en $\mathbb{A}_k^1$ los conjuntos $S_1 = \{0\}$ y $S_2 = \{x\}$. Se tiene que $V(S_2) = \{0\} \subset \V(S_1)=\mathbb{A}_k^1$, pero $S_1 \not\subset S_2$.
 \end{solucion}
+\newpage
 
+
+\begin{ejercicio}{23}
+ Sea $X\subseteq \mathbb{A}^2_\C$ la curva definida por la ecuación $x^a=y^b$, donde $a,b$ son enteros positivos. Probar que $X$ es irreducible si y sólo si $a$ y $b$ son primos entre sí (\emph{Ayuda: } Probar que el homomorfismo $\C[x,y]/\langle x^a-y^b\rangle\to\C[t]$ dado por $x\mapsto t^b$, $y\mapsto t^a$ es inyectivo si $a$ y $b$ son primos entre sí).
+\end{ejercicio}
+\begin{solucion}
+Si $(a,b)\neq 1$ entonces $\exists n,k,k'\in\N$ tales que $a=nk$, $b=nk'$ y $(k,k')=1$. Entonces claramente $X$ no es irreducible puesto que, en ese caso, $\langle x^a-y^b\rangle$ debería ser primo y 
+
+Si $(a,b)=1$, veamos que el homomorfismo del enunciado es inyectivo. Si $P(x,y)$ tal que $\phi(P(x,y)) = P(t^b,t^a) = 0$. Multiplicando por $t$
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{27}
+ Si $V\subseteq W\subseteq\mathbb{A}^n_k$ son dos variedades de la misma dimensión, probar que $V=W$.
+\end{ejercicio}
+\begin{solucion}
+Supongamos que la contención es estricta y sea una cadena creciente de variedades algebraicas de longitud $\dim(V)=\dim(W)=r$
+$$
+Z_0 \subset Z_1 \subset \dotsc \subset Z_r = V
+$$
+Como $V$ es variedad algebraica contenida estrictamente en $W$ podemos considerar
+$$
+Z_0 \subset Z_1 \subset \dotsc \subset V \subset W
+$$
+Pero entonces $\dim(W)>r$ lo cual es una contradicción con las hipótesis.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{30}
+ Sea $Z\subseteq\mathbb{A}^n_k$ una variedad, y $f,g:Z\to k$ dos funciones regulares. Si existe un abierto no vacío $U\subseteq Z$ tal que $f_{|U}=g_{|U}$, probar que $f=g$. ¿Es cierto si $Z$ es un conjunto algebraico arbitrario?
+\end{ejercicio}
+\begin{sol}
+Si $V$ no es una variedad entonces el resultado no es necesariamente cierto. Si $X=V(x^2-1)$ y $U=\{1\}$, $f(x)=(x-1)$ y $g(x)=x(x-1)$. 
+\end{sol}
 \end{document}
