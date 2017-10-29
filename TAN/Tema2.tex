@@ -148,16 +148,30 @@ El origen del método es la criba de Eratóstenes. La criba de Eratóstenes cond
 Para todo $x > 1$ se tiene
 \[ π(x) - π(\sqrt{x}) + 1 = \sum_{n|P_x}μ(n)\lfloor\frac{x}{n}\rfloor \]
 donde $P_x$ denota el producto de los números primos menores o iguales a $x$.
+\end{teorema}
+
+\begin{dem}
+Sea $X=\{n≤x\}$. Para $p≤\sqrt{x}$ primo, definimos $A_p=\{n \in X, p|n\}$.
+Tenemos que:
+Para un $n \in X$ compuesto, como $n≤x$ entonce consideramos el menor de los primos $p$ tal que $p|n$. Debe existir $m$ con $p\cdot m = n$. Como los primos que hay en $m$ son mayores o iguales que $p$: $p^2 ≤ p\cdot m = n ≤ x$, luego $p≤\sqrt{x}$. Entonces:
+\[ X \setminus \bigcup_{p≤\sqrt{x}} = \{1 \} \cup \{p : \sqrt{x} < p ≤ x\} \]
+Luego
+\[ \text{card}\left(X \setminus \bigcup_{p≤\sqrt{x}} A_p\right) = π(x) - π(\sqrt{x}) + 1 \]
+Aplicamos el método de inclusión-exclusion y observando que:
+\[ \text{card}\left(\bigcap_{j=1}^r A_{p_j}\right) =\text{card}(\{N≤x : n|N\}) = \lfloor \frac{x}{n} \rfloor\]
+donde $n = p_{j_1}\cdots p_{j_r}$, la demostración sigue sin dificultad.
+\qed
+\end{dem}
 
 Esta fórmula parece poco útil a primera vista. El gran mérito de Brun es dar con técnicas que permiten hacerla útil
 
-El prblema con esta fórmula es que la diferencia $π(x)-π(\sqrt{x})$ se da en términos de una suma con demasiados sumandos, aun cuando estos sumandos se obtengan con error pequeñ al multiplicar por el número de términos se obtienen errores randes. El mérito de Brun es haber ideado un método de salvar esta dificultad.
+El problema con esta fórmula es que la diferencia $π(x)-π(\sqrt{x})$ se da en términos de una suma con demasiados sumandos, aun cuando estos sumandos se obtengan con error pequeñ al multiplicar por el número de términos se obtienen errores randes. El mérito de Brun es haber ideado un método de salvar esta dificultad.
 
 Veremos como funciona la idea de Brun, estudiando su aplicación a la cuenta de los primos gemelos. En primer lugar introducimos la función de cuenta de estos números
 \[ π_2(x) = \text{card}\{p : p \text{ y }p+2\text{ son primos y }p≤x\} \]
 La idea básica del método de Brun es una modificación del método de exclusión-inclusión: si en un conjunto finito $X$ se tienen subconjuntos $(A_j)_{j=1}^n$ entonces para todo natural $h$, tal que $2≤2h≤n$
 \[ \text{card}\left(X \setminus \bigcup_{j=1}^n A_j \right) ≤ \sum_{k=0}^{2h} \sum_{\text{card}(J)=k} (-1)^k \text{card}\left(\bigcap_{j\in J} A_j \right)\]
-\end{teorema}
+
 Con la ayuda de este principio se consigue probar.
 
 Este apartado puede estudiarse en Cilleruelo \& Córdoba.
@@ -180,10 +194,23 @@ Nos proponemos estudiar el comportamiento de la función $ω(n)$.
 Para $x ≥ 2$
 \[ \sum_{n≤x} ω(n) = x\log \log x + Cx + \mathcal{O}\left(\frac{x}{\log x}\right) \]
 \end{teorema}
+\begin{dem}
+\begin{align*}
+	\sum_{n≤x} ω(n) & = \sum_{n≤x}\sum_{p|n≤x} 1 = \sum_{p≤x} \lfloor\frac{x}{p}\rfloor = \sum_{p≤x} \frac{x}{p}- \sum_{p≤x} \left\{\frac{x}{p}\right\} \\
+	& = x \left(\log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right)\right) + \mathcal{O}\left(\frac{x}{\log x}\right)
+\end{align*} 
+\end{dem}
 \begin{teorema}
 Para $x ≥ 2$
 \[ \sum_{n≤x} ω(n)^2 = x(\log \log x)^2 + Cx + \mathcal{O}(x \log \log x) \]
 \end{teorema}
+\begin{dem}
+Sea $f_p(n) = 1$ si $p|n$ y $f_p(n)=0$ en caso contrario. Entonces:
+\begin{align*}
+	\sum_{n≤x} ω(n)^2 & = \sum_{n≤x}\left(\sum_{p|n≤x} 1\right)^2 = \sum_{n≤x}\left(\sum_{p≤x} f_p(n)\right)^2 = \sum_{n≤x} \left(\sum_{p≤x} f_p(n)^2\right) + 2 \sum_{n≤x} \sum_{p<q≤x} f_p(n)f_q(n)\\
+	& = \sum_{n≤x} ω(n) + 2 \sum_{p<q≤x} \sum_{n≤x} f_p(n)f_q(n)
+\end{align*} 
+\end{dem}
 El orden normal de $ω(n)$ es $\log \log n$ como se establece en el siguiente teorema.
 \begin{teorema}[Hardy-Ramanujan]
 Para cada $δ > 0$, el numero de enteros $n < x$ tales que
