@@ -352,6 +352,15 @@ Sean $a,b\in A$ tales que $ab\in\ker{f}$, entonces $f(a)f(b)=f(ab)=0$. Como $B$ 
 En el ejemplo anterior, podemos ver que $\langle x,y\rangle$ es primo probando usando la proposición.  Basta tomar el homomorfismo $\K[x,y,z]\to\K[z]$ tal que $f(x,y,z)\mapsto f(0,0,z)$. En este caso el $\ker$ es justamente $\langle x,y\rangle$.
 \end{ej}
 
+\begin{ejer}
+ Sea $X\subseteq\A^2_\C$ la curva definida por la ecuación $x^a=y^b$, donde $a,b$ son enteros positivos. Probar que $X$ es irreducible si y sólo si $a$ y $b$ son primos entre sí (\emph{Ayuda: } Probar que el homomorfismo $\C[x,y]/\langle x^a-y^b\rangle\to\C[t]$ dado por $x\mapsto t^b$, $y\mapsto t^a$ es inyectivo si $a$ y $b$ son primos entre sí).
+\end{ejer}
+\begin{solucion}
+
+Definimos el homomorfismo $\varphi:k[x_1,...x_n]\rightarrow k(f_1(t),...,f_n(t)), x_i \mapsto f_i(t)$. Se tiene que $\ker{\varphi}=\I(X)$. Además $\Im{\varphi}$ está contenida en un cuerpo, por lo que es dominio de integridad. Como $\calA(X)=k[x_1,\dots,x_n]/\I(X) \cong \Im{\varphi}$, eso significa que $\I(X)$ es primo y por tanto $X$ es irreducible.
+
+\end{solucion}
+
 \begin{defi}
  Si $X=Z_1\cup\cdots\cup Z_r$ es una descomposición minimal de $X$ como unión de variedades, las variedades $Z_i$ se llaman las {\bf componentes irreducibles} de $X$.
 \end{defi}
@@ -436,7 +445,7 @@ Las hipersuperficies afines son fáciles de clasificar:
 \end{prop}
 
 \begin{defi}
-Dado un ideal $I\subseteq A$, la {\bf altura } de $I$ es el mayor $\geq 0$ tal que existe $\mathfrak{p}_1\subsetneq\mathfrak{p}_1\dots\subsetneq\mathfrak{p}_r\subsetneq I$, con $\mathfrak{p}_i$ primo. 
+Dado un ideal $I\subseteq A$, la {\bf altura } de $I$ es el mayor $\geq 0$ tal que existe $\mathfrak{p}_1\subsetneq\mathfrak{p}_1\dots\subsetneq\mathfrak{p}_r\subseteq I$, con $\mathfrak{p}_i$ primo. 
 \end{defi}
 
 \begin{prop}
@@ -628,7 +637,7 @@ S^{-1}\calA(X)\arrow[r,"\cong"] & K(X)\\
 
 Tenemos que ver que esta aplicación está bien definida. Sean $\frac{f}{g}\sim\frac{f'}{g'}\Leftrightarrow fg'h=f'gh\Leftrightarrow (fg'-f'g)h=0$ para algún $h\in S$. En $U$ abierto denso en el que $h$ no se anula, $fg'-f'g=0$. Por tanto $\frac{f}{g}=\frac{f'}{g'}$ en $U\cap\{g\neq 0\neq g'\}$. 
 
-Supongamos que $f\in S$ y $fg=0$ con $g\in\calA(X)$. Por definición existe un abierto denso $U$ tal que $f(x)\neq 0\ \forall x\in U$, luego $g(x)=0$ en $U$, por lo que $g=0$ en $X$, es decir $f$ no es divisor de cero. Supongamos ahora que $f\notin S\Rightarrow\not\exists U\subseteq X$ abierto denso tal que $f|_U=\neq 0$. Luego para todo $U$ denso, existe $x\in U$ tal que $f(x)=0$. Sea $U=X\setminus\V(f)$, que no tiene ningún cero de $f$, por lo que no es denso. Entonces $\exists V\neq\emptyset$ tal que $U\cap V=\emptyset$. Sea $Z=X\setminus V$, entonces $X=\V(f)\cup Z$. Tomamos $g\in\I(Z)\setminus\I(X)$. Entonces $fg=0$ en $X$, es decir, $f$ es divisor de cero.
+Supongamos que $f\in S$ y $fg=0$ con $g\in\calA(X)$. Por definición existe un abierto denso $U$ tal que $f(x)\neq 0\ \forall x\in U$, luego $g(x)=0$ en $U$, por lo que $g=0$ en $X$, es decir $f$ no es divisor de cero. Supongamos ahora que $f\notin S\Rightarrow\not\exists U\subseteq X$ abierto denso tal que $f|_U\neq 0$. Luego para todo $U$ denso, existe $x\in U$ tal que $f(x)=0$. Sea $U=X\setminus\V(f)$, que no tiene ningún cero de $f$, por lo que no es denso. Entonces $\exists V\neq\emptyset$ tal que $U\cap V=\emptyset$. Sea $Z=X\setminus V$, entonces $X=\V(f)\cup Z$. Tomamos $g\in\I(Z)\setminus\I(X)$. Entonces $fg=0$ en $X$, es decir, $f$ es divisor de cero.
 
 Obtenemos entonces la conclusión de que $S^{-1}\calA(X)$ es el anillo total de fracciones de $\calA(X)$. Si $X$ es irreducible, $S=\calA(X)\setminus\{0\}$, luego $S^{-1}\calA(X)=$ cuerpo de fracciones de $\calA(X)$. En este caso $K(X)$ es realmente un cuerpo de funciones de $X$.
 
