@@ -118,9 +118,18 @@ De esta última caracterización se deduce que la composición de dos morfismos 
 La proposición \ref{funtor}, junto con el ejercicio \ref{full}, muestran que:
 
 \begin{coro}\label{equivafin}
- Las aplicaciones $X\mapsto \calA(X)$, $\phi\mapsto \phi^\star$ inducen una equivalencia de categorías entre la categoría de conjuntos algebraicos afines y morfismos de conjuntos algebraicos y la categoría opuesta a la de $k$-álgebras finitamente generadas reducidas y homomorfismos de $k$-álgebras.
+ Las aplicaciones $X\mapsto \calA(X)$, $\phi\mapsto \phi^\star$ inducen una equivalencia de categorías (mediante un functor contravariante) entre la categoría de conjuntos algebraicos afines y morfismos de conjuntos algebraicos y la categoría opuesta a la de $k$-álgebras finitamente generadas reducidas y homomorfismos de $k$-álgebras. Si $A$ es una $k$-álgebra reducida finitamente generada, entonces $k[x_1,\dots,x_n]\to A$ es sobreyectivo, por lo que $A\cong k[x_1,\dots,x_n]/I$, donde $I$ es lel $\ker$ de esta aplicación, que por ser $A$ reducida es un ideal radical, así que se corresponde con algún $\I(X)$, de modo que el cociente anterior es isomorfo a $\calA(X)$.
 \end{coro}
 
+\begin{ej}
+Sea $\varphi:\A^2\to\V(xy-z^2)=Y\subset\A^3: (s,t)\mapsto(s^2,t^2,st)$. Definimos la función regular $f:Y\to k, f(x,y,z)=x^2y+yz^3+2xyz$. Entonces $\varphi^*(f):X\to k$ es la aplicación $(s,t)\mapsto s^4t^2+s^3t^5+2s^3t^3$, es decir que
+$\varphi^*:\calA(X)\to\calA(Y)$ se define como 
+\begin{align*}
+&x\mapsto s^2\\
+&y\mapsto t^2\\
+&z\mapsto st
+\end{align*}
+\end{ej}
 
 \section{Variedades cuasi-afines}
 
@@ -134,7 +143,8 @@ Por tanto, para toda variedad cuasi-afín $X$ existen polinomios $f_1,\ldots,f_r
 Como todo abierto no vacío de $Z$ es denso, $X$ determina $Y$ y $Z$: $Z$ es la clausura $\overline X$ e $Y$ es el complementario de $X$ en $Z$.
 
 \begin{defi}
- Sea $X\subseteq\Ank$ una variedad cuasi-afín. Una aplicación $f:X\to k$ se dice {\bf función regular} si existe $\bar f\in\KK(\overline X)$ definida en $X$ tal que $f=\bar f_{|X}$.
+ Sea $X\subseteq\Ank$ una variedad cuasi-afín. Una aplicación $f:X\to k$ se dice {\bf función regular} si existe $\bar f\in\KK(\overline X)$ definida en $X$ tal que $f=\bar f_{|X}$. Se denota
+$$\OO(U)=\{f\in K(X)\mid f\text{ definida en todo punto de } U\}$$
 \end{defi}
 
 Como las funciones de $\KK(\overline X)$ definidas en $\overline X$ son las funciones regulares, este definición es compatible con la anterior en el caso de que $X$ sea afín. Al igual que en el caso afín, denotaremos por $\calA(X)$ el anillo de funciones regulares en $X$.
@@ -149,6 +159,14 @@ Al igual que en el caso de morfismos entre variedades afines, tenemos:
 \end{ejer}
 
 Un morfismo $\phi:Y\to Z$ de variedades cuasi-afines induce por tanto un homomorfismo de $k$-álgebras $\phi^\star:\calA(Z)\to\calA(Y)$ entre sus anillos de funciones regulares. Sin embargo, el recíproco en este caso \emph{no} es cierto, como vemos en el ejemplo siguiente:
+
+\begin{ejs}\
+\begin{enumerate}
+\item $\varphi:\A-\{0\}\to\V(xy-1)\subset\A^2: t\mapsto (t,\frac{1}{t})$. Si tomamos por ejemplo, $f(x,y)=x^2y-2xy+3x^2$, entonces $\varphi^*(f)(t)=t-2+\frac{3}{t}$. Si $\varphi:X\to Y$ es un morfismo, entonces $\varphi^*:\OO(Y)\to\OO(X):f\mapsto f\circ\varphi$ es un homomorfismo de $k$-álgebras.
+\item No existe un isomorfismo $\varphi:\A^2-\{(0,0)\to\A^2: (x,y)\to (x,y)$. De existir, $\varphi^*:k[x,y]=\calA(\A^2)\to k[x,y]=\OO(\A^2-\{(0,0)\}$ quedaría definido como la aplicación $x\mapsto x, y\mapsto y$ por la defnición de $\varphi^*$. Pero esta aplicación es la identidad, que como el functor es fully faithfull significa que su preimagen era la identidad entre los conjuntos iniciales, la cual no es isomorfismo.
+
+\end{enumerate}
+\end{ejs}
 
 \begin{ejer}
  Sean $Y=\A^2_\C$ y $Z=Y-\{(0,0)\}$. Por el ejercicio \ref{a2menos0} $\OO_{Z}(Y)=\OO_{Z}(Z)=\C[x,y]$. Probar que no existe ningún morfismo $\phi:Y\to Z$ tal que $\phi^\star:\C[x,y]\to\C[x,y]$ sea la identidad.
@@ -173,6 +191,10 @@ Hay que tener en cuenta sin embargo que, en general, $\phi$ \emph{no} induce un 
 \end{defi}
 
 Por ejemplo, el morfismo $\V(\{xy-1\})\subseteq\A^2_k\to\A^1_k$ dado por $\phi(x,y)=x$ es dominante, puesto que su imagen es el abierto $\A^1_k-\{0\}$.
+
+\begin{nota}
+Todo morfismo sobreyectivo es dominante.
+\end{nota}
 
 \begin{prop}\label{dominanteinyectivo}
  Sea $\phi:Y\to Z$ un morfismo de variedades cuasi-afines. $\phi$ es dominante si y sólo si el homomorfismo correspondiente $\phi^\star:\calA(Z)\to\calA(Y)$ es inyectivo.
