@@ -48,9 +48,30 @@ cualquier $p\in M$ se verifica que $(g\circ f)_{*p}=g_{*f(p)}\circ f_{*p}$.
 \item Si $f,g\in\mathcal{F}(M,N)$ y $f\equiv g$ en un entorno de $p\in M$, entonces $f_{*p}=g_{*p}$.
 \end{enumerate}
 \end{prop}
+\begin{dem}
+\begin{enumerate}
+\item[]
+\item $\forall h \in G(g(f(p))$ tenemos que 
+\begin{gather*}
+((g\circ f)_{\ast p}u)h = u(h\circ(g \circ f)) = u ((h\circ g) \circ f) = (f_{\ast p}(h \circ g)) = (g_{\ast f(p)}(f_{\ast p} u))h
+\end{gather*}
+\item $\forall h \in G(p)$ $((id_M)_{\ast p}h = u(h \circ id_M) = u(h)$
+\item $\forall u \in T_p(M)$ y $\forall h\in F(f(p))$ tenemos que 
+\begin{gather*}
+(f_{\ast p}u)h = u(h\circ f)=u(h \circ g) = (g_{\ast p} u)h
+\end{gather*}
+Por tanto, $f_{\ast p}u=g_{\ast p}u$ $\forall u$.
+\end{enumerate}
+\end{dem}
 \begin{prop}
 La diferencial en cada punto de una aplicación diferenciable es una aplicación lineal.
 \end{prop}
+\begin{dem}
+Veámoslo directamente $\forall g\in F(f(p))$
+\begin{gather*}
+ f_{\ast p}(\lambda u+\mu v)g = (\lambda u+\mu v)(g\circ f)= \lambda u(g \circ f)+\mu v(g \circ f) = (\lambda f_{\ast p} u + \mu f_{\ast p})g
+\end{gather*}
+\end{dem}
 En consecuencia, cada diferencial tiene asociada una matriz. Para calcularla, sean $(U,\vp=(x_1,\dots ,x_m))$ un
 s.l.c. de $M$ entorno de $p$ y $(V,\psi=(y_1,\dots ,y_n))$ un s.l.c. de $N$ entorno de $f(p)$. Para estas cartas
 locales, las bases de $T_p(M)$ y $T_{f(p)}(N)$ son
@@ -82,7 +103,7 @@ Obsérvese que si ${\rm dim}(M)={\rm dim}(N)$, entonces $p\in M$ es regular para
 isomorfismo, es decir, si y sólo si $J_p(f)\neq 0$.
 \begin{defi}
 Una aplicación $f\in\mathcal{F}(M,N)$ se dice que es una {\bf Inmersión} si es no singular en todos los puntos de
-$M$, es decir, si su diferencial en cada punto es una aplicación inyectiva y se dice que es una {\bf Sumersión} si
+$M$, es decir, si su diferencial en cada punto es una aplicación inyectiva y se dice que es una {\bf Sumersión} sºi
 todos los puntos de $M$ son regulares para $f$, es decir, si su diferencial en cada punto es una aplicación
 sobreyectiva.
 \end{defi}
@@ -103,7 +124,6 @@ Sean $f\in\mathcal{F}(M,N)$ y $p\in M$. Entonces, se verifican:
 \item $f_{*p}$ es sobreyectiva si y sólo si $f_p^*$ es inyectiva.
 \end{enumerate}
 \end{prop}
-
 \newpage
 
 \section{Noción de Subvariedad.}
@@ -140,6 +160,10 @@ Entonces, puede dotarse a $f(M)$ de una estructura de variedad
 diferenciable tal que $(f(M),i)$, con $i:f(M)\hookrightarrow N$ la
 inclusión, es una subvariedad de $N$.
 \end{prop}
+\begin{dem}[Falta diagrama]
+Usando el problema 2.5 sabemos que $\exists!$ estructura de variedad diferenciable sobre $f(M)$ tal que $f$ es difeomorfismo. Veamos que $(f(M),i)$ es subvariedad de $N$. Primeramente, $f(M)$ es variedad diferenciable, donde $\dim f(M)=\dim M$. Además, $i$ es siempre una función inyectiva y, por composición, $i\in F((f(M),N)$, pues $ i = f \circ (\overline{f})^{-1}$. Además, $i_{\ast q} = f_{\ast (\overline{f})^{-1}(q)}\circ (\overline{f})^{-1}_{\ast q}$.
+
+\end{dem}
 Obsérvese que, en el resultado anterior, la topología de $f(M)$ es, en general, más fina que la topología relativa
 inducida por la de $N$, pues la inclusión, al ser diferenciable, es continua. Esto lleva a pensar que la noción de
 subvariedad es más sutil que la análoga para espacios topológicos. En efecto, como ya se ha dicho, el ocho con
@@ -161,6 +185,9 @@ Sean $M\subseteq N$ dos variedades diferenciables tales que, si $i:M\hookrightar
 subvariedad de $N$. Entonces, $(M,i)$ es subvariedad regular de $N$ si y sólo si $M$ tiene la topología relativa
 de $N$.
 \end{prop}
+\begin{dem}
+$id$ es homomorfimo si y solo si $T_M = T_{N}|_M$.
+\end{dem}
 \section{El Teorema de la Función Inversa.}
 \hs Dada una subvariedad $(M,f)$ de una variedad diferenciable
 $N$, si ${\rm dim}(M)={\rm dim}(N)$, la diferencial de $f$ en cada
@@ -450,8 +477,12 @@ subvariedad cerrada de un espacio afín $(2m+1)$--dimensional.
 variedades diferenciables, coincide con la diferencial habitual de
 ${\bf R}^n$. \item Probar que si $f\in\esp{F}(M,N)$ es un
 difeomorfismo, entonces su diferencial en cada punto es un
-isomorfismo. \item Probar que el rango de la diferencial de una
-aplicación diferenciable entre dos variedadades diferenciables
+isomorfismo. 
+
+
+Si $f$ es difeomorfismo, existe su inversa. Entonces $f^{-1} \circ f = id_M$ y $f \circ f^{-1} = id_N$. Sabemos que si dos aplicaciones son iguales sus diferenciales deben coincidir para todo $p \in M$. Por tanto, $(f^{-1}\circ f)_{\ast p} = (id_M)_{\ast p} = I_{T_p(M)}$ y  $(f\circ f^{-1})_{\ast f(p)} = (id_N)_{\ast f(p)} = I_{T_{f(p)}d(M)}$. Deducimos por tanto que $f_{\ast p}$ es biyectiva y $(f_{\ast p})^{-1} = (f^{-1})_{\ast f(p)}$, por lo que es un isomorfismo.
+
+\item Probar que el rango de la diferencial de una aplicación diferenciable entre dos variedadades diferenciables
 no depende de las cartas tomadas. \item Probar que las
 proyecciones de un producto de variedades diferenciables en cada
 uno de los factores son sumersiones. \item Sean
