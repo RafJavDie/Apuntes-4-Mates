@@ -1,0 +1,165 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Modelos de Investigación Operativa}
+\author{Rafael González López, Javier Aguilar Martín}
+\maketitle
+
+\begin{ejercicio}{1}
+Al principio de cada semana, una máquina se encuentra en uno de cuatro estados: excelente (E), bueno (B), regular (R) o malo (M). La ganancia semanal de una máquina en cada caso es la siguiente: excelente, 100; bueno, 80; regular, 50; malo,10, respectivamente. Después de observar la condición de una máquina al inicio de la semana, tenemos la opción de reemplazarla de forma instantánea por una máquina excelente, que cuesta 200. La máquina se deteriora con el tiempo como se ve en la siguiente tabla.
+
+\hskip2.7cm Probabilidad de que la máquina inicie
+
+\hskip3.7cm la semana próxima como
+
+\begin{tabular}{ccccc}
+\hline
+Estado actual & Excelente & Bueno & Regular & Malo\\
+\hline
+Excelente & 0.7 & 0.3 & - & -\\
+Bueno &      -  & 0.7 & 0.3 & -\\
+Regular & - & - & 0.6 & 0.4\\
+Malo & - & - & - & 1
+\end{tabular}
+
+\begin{itemize}
+\item[\textbf{a)}] Determine el espacio de estados, los conjuntos de decisión, las probabilidades de transición y las recompensas.
+\item[\textbf{b)}] Use el método de iteración de políticas para determinar la política más óptima con una tasa de depreciación $\alpha=$0.9.
+\item[\textbf{c)}] Determine el problema de P.L. asociado.
+\item[\textbf{d)}] Realice dos iteraciones de valor.
+\end{itemize}
+\begin{solucion}\
+\begin{itemize}
+\item[\textbf{a)}] $S=\{E,B,R,M\}$, $N=4$. $D(i)=\{R,NR\}$. 
+$$
+P^{NR} = 
+\begin{pmatrix}
+0.7 & 0.3 & 0 & 0\\
+0   & 0.7 & 0.3& 0\\
+0 & 0 & 0.6 & 0.4\\
+0 & 0 & 0 & 1
+\end{pmatrix} \qquad
+P^R = 
+\begin{pmatrix}
+0.7 & 0.3 & 0 & 0\\
+0.7 & 0.3 & 0 & 0\\
+0.7 & 0.3 & 0 & 0\\
+0.7 & 0.3 & 0 & 0
+\end{pmatrix}
+$$
+Por tanto $R^{NR} = (100, 80, 50, 10)$, $R^R = (-100, -100, -100, -100)$. $R^R_M = -100$.
+\item[\textbf{b)}] Si $\alpha = 0.9$ y sea $\delta = (NR,NR,R,R)$.
+$\alpha=0'9$. Comprobamos la política $\delta=(NR\ NR\ R\ R)$. 
+$$v^\delta_E=R^\delta_E+\sum_{j=1}^N\alpha p^\delta_{Ej}v^\delta_j$$
+Aplicamps esta fórmula a cada una de las componentes del vector de la política y obtenemos un sistema de ecuaciones
+\begin{align*}
+v^\delta_E=100+0'9(0'7v^\delta_E+0'3v^\delta_B)\\
+v^\delta_B=80+0'9(0'7v^\delta_B+0'3v^\delta_R)\\
+v^\delta_R=-100+0'9(0'7v^\delta_E+0'3v^\delta_B)\\
+v^\delta_E=-100+0'9(0'7v^\delta_E+0'3v^\delta_B)
+\end{align*}
+La solución es la siguiente
+\begin{align*}
+v^\delta_E=687.8125\\
+v^\delta_B=572.1875\\
+v^\delta_R=487.8125\\
+v^\delta_E=487.8125
+\end{align*}
+Además $t_E^{NR} = 0$, $t_E^R <0$; $t_B^{R}<0$, $t_B^{NR}<0$, $t^{NR}_R >0$, $t^{NR}_M <0$. Si cambiamos nuestra política a $\delta = (NR, NR, NR, R)$, que es la óptima. \begin{align*}
+v^\delta_E=690.23\\
+v^\delta_B=575.50\\
+v^\delta_R=492.35\\
+v^\delta_E=490.23
+\end{align*}
+\item[\textbf{c)}]
+\begin{align*}
+\min w_R+w_B+w_R+w_M\\
+w_E - 0.9
+\end{align*}
+\end{itemize}
+\end{solucion}
+\end{ejercicio}
+
+\newpage 
+\begin{ejercicio}{2}
+
+
+\begin{solucion}
+
+\end{solucion}
+
+\end{ejercicio}
+
+\newpage 
+
+\begin{ejercicio}{3}
+
+
+
+\begin{solucion}
+
+\end{solucion}
+\end{ejercicio}
+
+\newpage 
+
+\begin{ejercicio}{5}
+
+
+\begin{solucion}
+\end{solucion}
+\end{ejercicio}
+
+\newpage 
+
+\begin{ejercicio}{6}\label{6}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage 
+
+\begin{ejercicio}{7}
+
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{8} 
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{9}
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{10}
+
+
+\end{ejercicio}
+\begin{solucion}
+
+
+\end{solucion}
+
+\newpage
+
+\end{document}
