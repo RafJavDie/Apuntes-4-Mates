@@ -202,7 +202,7 @@ Para $x ≥ 2$
 \end{dem}
 \begin{teorema}
 Para $x ≥ 2$
-\[ \sum_{n≤x} ω(n)^2 = x(\log \log x)^2 + Cx + \mathcal{O}(x \log \log x) \]
+\[ \sum_{n≤x} ω(n)^2 = x(\log \log x)^2 + \mathcal{O}(x \log \log x) \]
 \end{teorema}
 \begin{dem}
 Sea $f_p(n) = 1$ si $p|n$ y $f_p(n)=0$ en caso contrario. Entonces:
@@ -210,15 +210,34 @@ Sea $f_p(n) = 1$ si $p|n$ y $f_p(n)=0$ en caso contrario. Entonces:
 	\sum_{n≤x} ω(n)^2 & = \sum_{n≤x}\left(\sum_{p|n≤x} 1\right)^2 = \sum_{n≤x}\left(\sum_{p≤x} f_p(n)\right)^2 = \sum_{n≤x} \left(\sum_{p≤x} f_p(n)^2\right) + 2 \sum_{n≤x} \sum_{p<q≤x} f_p(n)f_q(n)\\
 	& = \sum_{n≤x} ω(n) + 2 \sum_{p<q≤x} \sum_{n≤x} f_p(n)f_q(n)
 \end{align*} 
+Aquí dejó la demostración. Al día siguiente de clase, se continuó la demostración de una forma totalmente distinta:
+\begin{align*}
+	\sum_{n≤x} (ω(n)-\log\log x)^2 & = \sum_{n≤x} ω(n)^2 - 2\log\log x \sum_{n≤x}ω(n) + (\log\log x)^2 \sum_{n≤x} 1\\
+	& = x(\log \log x)^2+ \mathcal{O}(x\log \log x) - 2\log\log x(x\log \log x + Cx + \mathcal{O}(x/\log x))\\
+	& + \lfloor x \rfloor (\log \log x)^2 + (x-\{x\})(\log \log x)^2 =\\
+	& = \mathcal{O}(x\log \log x) - 2Cx \log \log x + \mathcal{O}(x\frac{\log \log x}{\log x}) + \mathcal{O}((\log \log x)^2)
+	= \mathcal{O}(x\log \log x)
+\end{align*}
+\qed
+\end{dem}
+\begin{coro}
+Consideramos el conjunto $A(x)=\{n ≤ x : |ω(n)-\log \log x| > f(x)\sqrt{\log \log x}\}$ para una $f≥0$ creciente con $\lim_{x\to ∞} f(x)=∞$. Veamos que $\lim_{x\to ∞}\text{card}(A(x))/x = 0$. 
+\end{coro}
+\begin{dem}
+Se tiene que:
+\[ \text{card}(A(x))f(x)\log \log  ≤ \sum_{n≤x} (ω(n) - \log \log x)^2 ≤ Cx \log \log x \]
+Entoncs:
+\[ \frac{\text{card}(A(x))}{x} ≤ C \frac{x \log \log x}{f(x) \log \log x} = C \frac{x}{f(x)} \to 0\]
+\qed
 \end{dem}
 El orden normal de $ω(n)$ es $\log \log n$ como se establece en el siguiente teorema.
 \begin{teorema}[Hardy-Ramanujan]
 Para cada $δ > 0$, el numero de enteros $n < x$ tales que
 \[ |ω(n) - \log \log n| ≥ (\log \log x)^{1/2+δ} \]
 es $ο(x)$.
-
+\end{teorema}
 La prueba puede verse en Nathanson p.238-287. También es buena la exposición de M. Kac p.71-74.
 
 La misma afirmación vale si sustituimos $ω(n)$ por $Ω(n)$. El orden normal de $\log d(n)$ como consecuencia es $\log 2 \log \log n$.
-\end{teorema}
+
 \end{document}
