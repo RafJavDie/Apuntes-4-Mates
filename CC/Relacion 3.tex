@@ -1,0 +1,62 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+\usepackage{wasysym}
+\usetikzlibrary{automata,positioning}
+\usepackage{mathdots}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ciencias de la Computación}
+
+\author{Javier Aguilar Martín}
+\maketitle
+
+\begin{ejercicio}{6}
+Probar que la función $f:\N\to\N$ dada por $$f(x)=\text{número de dígitos de }x\text{ en base }10$$ es primitiva recursiva.
+\end{ejercicio}
+\begin{solucion}
+Nótese, que al sumar 1, el cambio en el número de cifras se produce si el resultado de la suma es una potencia de 10. Por tanto, 
+\begin{align*}
+&f(0)=1\\
+&f(x+1)=\begin{cases}
+f(x)+1 & x+1\text{ es potencia de } 10\\
+f(x) & c.c.
+\end{cases}
+\end{align*}
+Definimos $h(x,f(x))=\begin{cases}
+f(x)+1 & x+1\text{ es potencia de } 10\\
+f(x) & c.c.
+\end{cases}$, por lo que $h(x,z)=\begin{cases}
+z+1 & x+1\text{ es potencia de } 10\\
+z & c.c.
+\end{cases}$
+
+Si las funciones de cada caso y las funciones características de las condiciones son primitivas recursivas entonces la función definida por casos es primitiva recursiva, por lo que $h$ lo sería y por tanto $f$ también. Vamos a ver que el predicado de la condición es primiticvo recursivo. $u$ es potencia de $10$ si y solo si existe $u=10^w$. El predicado $u=10^w$ es primitivo recursivo por ser ecuación entre funciones primitivas recursivas. Llamamos $P(u,w)\equiv u=10^w$. Bastaría comprobar si $P(u,j)=1$ para algún $j=0,\dots, u$. Entonces $u$ es una potencia de 10 si y solo si $P(u,w)=sgn(\sum_{j=0}^u P(u,j))$. Atención porque esta suma no es fija, por lo que no podemos argumentar que la suma es primitiva recursiva. Pero el índice de la suma es primitiva recursiva, por lo que la suma lo es.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7}
+Sea $f(0)=0$, $f(1)=1$, $f(2)=2^2$, $f(3)=3^{3^3}$, $f(n)= n^{n^{\iddots^n}}$. Probar que $f\in\mathcal{PR}$
+\end{ejercicio}
+\begin{solucion}
+La recurrencia será de la forma $F(x,k)=x^{x^{\iddots^x}}$ ($k$ veces) y $F(x,k+1)=x^F(x,k)$. Buscamos ver que $f(x)=F(x,x)$, probando previamente que $F$ es primitiva recursiva. Necesitamos que $F(x,0)=g(x)$ y $F(x,k+1)=h(x,k,F(x,k))$. 
+\begin{align*}
+&f(0)=F(0,0)=g(0)=0\\
+&f(1)=F(1,1)=1^F(0,0)=1^g(1)=1\\
+&f(2)=F(2,2)=2^F(2,1)=2^{2^F(2,0)}=2^{2^g(2)}
+\end{align*}
+Bata tomar $g(x)=sgn(x)=\begin{cases}
+0 & x=0\\
+1 & x\neq 0
+\end{cases}$. Tomamos como $h(x,y,z)=x^z=exp(x,z)=exp(\Pi^3_1(x,y,z),\Pi^3_3(x,y,z))$, por lo que $h=\mathcal{C}(exp; \Pi^3_1,\Pi^3_3)$. Faltaría probar por inducción que $\forall n\in\N\ f(n)=F(n,n)$, lo cual se deja como ejercicio.
+\end{solucion}
+
+\begin{ejercicio}{}
+La función de Fibonacci no es $\mathcal{PR}$.
+\end{ejercicio}
+\begin{solucion}
+Supongamos que tenemos una función $F(n)\in\mathcal{PR}$ que guarda los valores de $f(n)$ y $f(n+1)$ (lo expresaremos como un par) y que tenemos funciones $\mathcal{PR}$ $L(F(n))=f(n)$ y $R(F(n))=f(n+1)$. Entonces podríamos calcular $F(n+1)=(f(n+1),f(n+1))=(R(F(n)), L(F(n))+R(F(n)))$ y sería $\mathcal{PR}$. Definimos la función de Cantor $\langle x,y\rangle =2^x(2y+1)-1$. Si $\langle x,y\rangle =n\Rightarrow 2^x(2y+1)=n+1$, luego $x$ será el exponente de 2 en la descomposición en primos de $n+1$ y con eso podemos obtener también $y$. Así pues, $x=L(n), y=R(n)$. 
+\end{solucion}
+
+\end{document}
