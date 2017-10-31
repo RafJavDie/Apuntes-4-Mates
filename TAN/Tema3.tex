@@ -1,0 +1,43 @@
+\documentclass[TAN.tex]{subfiles}
+\begin{document}
+\chapter{Función Zeta de Riemann}
+\section{Función Gamma}
+Los libros de Funciones de Variable COmpleja suelen incluir un estudio de la función Gamma.
+\begin{defi}
+La integral
+\[ Γ(s) = \int_0^+{+∞} t^{s-1}e^{-t} dt, \quad \text{Re}(s)>0 \]
+define una función analica en el semiplano $\text{Re}(s)>0$. A la que se llama función Gamma.
+\end{defi}
+
+\begin{prop}
+La función gamma se prolonga a una función mereomorfa en todo el plano. Que tiene un polo simple en cada entero $n ≤ 0$. Estos son sus únicos polos. Esta función verifica la ecuación funcional
+\[ Γ(s+1) = sΓ(s) \]
+\end{prop}
+\begin{coro}
+Para valores enteros positivos $Γ(n+1)=n!$ y $Γ(1)=0!=1$.
+\end{coro}
+\begin{prop}
+\[ Γ(1/2)=\sqrt{π}, \quad Γ\left(n+\frac{1}{2}\right) = \frac{(2n)!\sqrt{π}}{n!2^{2n}} \]
+\end{prop}
+\begin{prop}
+\[ \int_0^1 t^{α-1}(1-t)^{β-1} dt = \frac{Γ(α)Γ(β)}{Γ(α+β)}, \quad \text{Re}(α)>0, \text{Re}(β)>0 \]
+Calculamos $Γ(α)Γ(β)$ usando el mismo truco que para calcular $Γ(1/2)$.
+\end{prop}
+\begin{prop}[Fórmula de los complementos]
+\[ Γ(s)Γ(1-s) = \frac{π}{\sin (π s)}, \quad s \notin \Z \]
+Caso particular de la proposición anterior. También es conocido como fórmula de reflexión de Euler.
+\end{prop}
+\begin{prop}[Fórmula de duplicación de Legendre]
+\[ Γ(s)γ(s+1/2) = 2^{1-2s} \sqrt{π} Γ(2s) \]
+Calculamos $\int_0^1 t^{s-1}(1-t)^{s-1} dt$ de dos maneras distintas.
+\end{prop}
+\begin{prop}[Expresión de Gauss] Uniformemente en cada compacto $K$ que no contenga polos de $Γ(s)$ se cumple
+\[ Γ(s) = \lim_{n\to+∞} \frac{n!n^s}{s(s+1)\cdots(s+n)} \]
+En consecuncia la función $Γ(s)$ no toma nunca el valor 0.
+\end{prop}
+\section{Función Zeta de Riemann}
+\section{El producto infinito de la función Zeta}
+\section{Teoremas sobre los ceros}
+\section{Relación entre la suma de los coeficientes de una serie de Dirichlet y la función dada por esta serie}
+\section{Teorema de los números primos}
+\end{document}

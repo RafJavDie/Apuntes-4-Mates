@@ -160,7 +160,13 @@ Entonces, puede dotarse a $f(M)$ de una estructura de variedad
 diferenciable tal que $(f(M),i)$, con $i:f(M)\hookrightarrow N$ la
 inclusión, es una subvariedad de $N$.
 \end{prop}
-\begin{dem}[Falta diagrama]
+\begin{dem} Observemos el siguiente diagrama
+\[
+\begin{tikzcd}
+p\in M\arrow[r,"f"]\arrow[d,"\overline{f}"'] & q\in N\\
+q=f(p)\in f(M)\arrow[ur,"i"'] 
+\end{tikzcd}
+\]
 Usando el problema 2.5 sabemos que $\exists!$ estructura de variedad diferenciable sobre $f(M)$ tal que $f$ es difeomorfismo. Veamos que $(f(M),i)$ es subvariedad de $N$. Primeramente, $f(M)$ es variedad diferenciable, donde $\dim f(M)=\dim M$. Además, $i$ es siempre una función inyectiva y, por composición, $i\in F((f(M),N)$, pues $ i = f \circ (\overline{f})^{-1}$. Además, $i_{\ast q} = f_{\ast (\overline{f})^{-1}(q)}\circ (\overline{f})^{-1}_{\ast q}$.
 
 \end{dem}
