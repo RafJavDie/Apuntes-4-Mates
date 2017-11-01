@@ -1,0 +1,30 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Algebra Conmutativa y Geometría Aplicada}
+\author{Rafael González López, Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{12}
+Suponiendo la hipótesis de Riemann puede probarse que
+$$
+\theta(x):=\sum_{p\leq x}\log p = x + \mathcal{O}(x^{1/2}\log^2x).
+$$
+Admitiendo este resultado probar que si es cierta la hipótesis de Riemann, entonces existe una constante A tal que
+$$
+\sum_{p\leq x}\frac{\log p}{p} = \log x + A + \mathcal{O}(x^{-1/2}\log^2 x)
+$$
+\begin{sol}
+\end{sol}
+\end{ejercicio}
+Sea $a_n = I_{\mathbb{P}}(n)\log p$, donde $I_{\mathbb{P}}(n)$ es la funcion indicatriz de los números primos. Entonces, suponiendo cierta la hipótesis de Riemann y el resultado anterior, además de aplicar la fórmula de sumación de Abel, obtenemos
+\begin{align*}
+\sum_{p\leq x}\frac{\log p}{p} &= \sum_{n\leq x}\frac{a_n}{n} = \frac{\theta(x)}{x} - \int_1^x \frac{-\theta(t)}{t^2}dt =\\
+&= \frac{x + \mathcal{O}(x^{1/2}\log^2x)}{x} + \int_1^x \frac{t + \mathcal{O}(t^{1/2}\log^2t)}{t^2}dt\\
+ &= 1+\mathcal{O}(x^{-1/2}\log^2 x) + \int_1^x \frac{1}{t} + \mathcal{O}(t^{-3/2}\log^2 x)dt =\\
+&=\log x + 1 + \mathcal{O}(x^{-1/2}\log^2 x)  + \int_1^x \mathcal{O}(t^{-3/2}\log^2 x)dt
+\end{align*}
+\end{document}
