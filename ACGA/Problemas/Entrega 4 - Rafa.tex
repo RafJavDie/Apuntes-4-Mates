@@ -61,9 +61,9 @@ Ahora bien, tenemos por hipótesis que $A$ es un $k$-espacio vectorial de dimens
 \begin{ejercicio}{6}
 Sea $Y\subset X \subset \mathbb{A}_k^n$ dos variedades. Definimos $\mathcal{K}(X,Y)$ como el conjunto de funciones racionales $f \in \mathcal{K}(X)$ que están definidas en al menos un punto de $Y$. Probar que $\mathcal{K}(X,Y)$ es un anillo local con cuerpo residual $\mathcal{K}(Y)$.
 \begin{solucion}
-Como $\mathcal{K}(X,Y)\subset \mathcal{K}(X)$, simplemente vamos a probar que es subanillo usando la caracterización de los mismos. Sean $(U,f),(V,g)\in \mathcal{K}(X,Y)$ entonces $\exists U'\subset U\cap Y$, $V'\subset V\cap Y$ abiertos de Zariski no vacíos y $p,p',q,q'\in\mathcal{A}(Y)$ con $q(x)\neq 0$ $\forall x \in U'$ y $q'(x)\neq 0$ $\forall x \in V'$ tales $f(x)=\dfrac{p(x)}{q(x)}$ $\forall x\in U'$ y $g(x)=\dfrac{p'(x)}{q'(x)}$ $\forall x\in V'$. 
+Como $\mathcal{K}(X,Y)\subset \mathcal{K}(X)$, simplemente vamos a probar que es subanillo usando la caracterización de los mismos. Sean $f,g\in \mathcal{K}(X,Y)$. Consideremos sin pérdida de generalidad $U,V\subset X$ los mayores abiertos donde estén definidas respectivamente $f$ y $g$. Análogamente, podemos considerar $U',V'\subset Y$ los mayores abiertos, por hipótesis no vacíos, donde $f$ y $g$ están definidas. Claramente $U'\subset U$ y $V' \subset V$. Sabemos que existen $p,p',q,q'\in\mathcal{A}(X)$ con $q(x)\neq 0$ $\forall x \in U$ y $q'(x)\neq 0$ $\forall x \in V$ tales $f(x)=\dfrac{p(x)}{q(x)}$ $\forall x\in U$ y $g(x)=\dfrac{p'(x)}{q'(x)}$ $\forall x\in V$. 
 
-Sabemos que $(U,f)\ast (V,g) = (U\cap V, f_{U\cap V}\ast g_{U\cap V})$, donde $\ast$ representa tanto $(-)$ como $(\cdot)$. Tenemos que probar que $(U,f)\ast (V,g) \in \mathcal{K}(X,Y)$. Sabemos que $U'\cap V' \neq \emptyset$, pues los abiertos de Zariski son densos, y que $U'\cap V' \subset U\cap V$. Entonces, $\forall x \in U'\cap V'$ $q(x)q'(x)\neq 0$, por lo que en todo punto de dicho abierto, la función $\dfrac{p(x)}{q(x)}\ast\dfrac{p'(x)}{q'(x)}$ está bien definida. En particular, $(U,f)\ast (V,g)$ está bien definida en algún punto de $Y$, lo que basta para ver que $\mathcal{K}(X,Y)$ es subanillo.
+Sabemos que $(U,f)\ast (V,g) = (U\cap V, f_{U\cap V}\ast g_{U\cap V})$, donde $\ast$ representa tanto $(-)$ como $(\cdot)$. Tenemos que probar que ambas operaciones son internas en $\mathcal{K}(X,Y)$. Sabemos que $U'\cap V' \neq \emptyset$, pues los abiertos de Zariski son densos, y que $U'\cap V' \subset U\cap V$. Entonces, $\forall x \in U'\cap V'$ $q(x)q'(x)\neq 0$, por lo que en todo punto de dicho abierto, la función $\dfrac{p(x)}{q(x)}\ast\dfrac{p'(x)}{q'(x)}$ está bien definida. En particular, $(U,f)\ast (V,g)$ está bien definida en algún punto de $Y$, lo que basta para ver que $\mathcal{K}(X,Y)$ es subanillo.
 
 Sea el ideal definido como
 $$
@@ -71,7 +71,7 @@ I = \{f \in \mathcal{K}(X,Y) \mid \text{$f(x)=0$ $\forall x \in Y$ donde esté d
 $$
 Claramente $I$ es un ideal, pues es trivialmente grupo con la suma y el producto de un elemento de $\mathcal{K}(X,Y)$ y un elemento de $f$ sigue perteneciendo a $Y$. 
 
-Sea $f\in \mathcal{K}(X,Y)-I$, entonces $\exists x \in Y$ tal que $f$ está definido en $Y$ y $f(x)\neq 0$. Por tanto, el abierto definido $f(x)\neq 0$ tiene intersección no vacía con $Y$, y por ende, su inversa estará bien definida en algún punto de $Y$, por lo que $f^{-1}\in \mathcal{K}(X,Y)$. Esto implica que $I$ es un ideal maximal, pues si no lo fuera, $\exists m$ ideal maximal con $I \subsetneq m$, y  $f\in \mathcal{K}(X,Y)-I$ tal que $f\in m$, pero como $f$ es unidad, $m = \mathcal{K}(X,Y)$. Además, $\mathcal{K}(X,Y)$ debe ser local, pues si existiese otro ideal maximal, debería contener algún elemento de $\mathcal{K}(X,Y)-I$.
+Sea $f\in \mathcal{K}(X,Y)-I$, entonces $\exists x \in Y$ tal que $f$ está definido en $Y$ y $f(x)\neq 0$. Por tanto, el abierto definido $f(x)\neq 0$ tiene intersección no vacía con $Y$, y por ende, su inversa estará bien definida en algún punto de $Y$, por lo que $f^{-1}\in \mathcal{K}(X,Y)$. Es decir, todo elemento que no pertenece a $I$ es unidad. Esto implica que $I$ es un ideal maximal, pues si no lo fuera, $\exists m$ ideal maximal con $I \subsetneq m$, y  $f\in \mathcal{K}(X,Y)-I$ tal que $f\in m$, pero como $f$ es unidad, $m = \mathcal{K}(X,Y)$. Además, $\mathcal{K}(X,Y)$ debe ser local, pues si existiese otro ideal maximal, debería contener algún elemento de $\mathcal{K}(X,Y)-I$.
 
 Finalmente, veamos que $\mathcal{K}(X,Y)/I \cong \mathcal{K}(Y)$. Consideremos el siguiente homeomorfismo de anillos
 \begin{gather*}
@@ -83,7 +83,7 @@ Obviamente $f(1)=1$ y
 \phi((U,f)\ast (V,g)) = \phi((U\cap V, f\ast g)) = (U\cap V \cap Y, f\ast g) = ((U\cap Y)\cap (V\cap Y), f \ast g) =\\
 (U\cap Y, f) \ast (V\cap Y, g) = \phi((U,f))\ast \phi((V,f)) 
 \end{gather*}
-Además, $(U,f)\in \ker(\phi)$ si y solo si $f(x)=0$ $\forall x \in U \cap Y$, lo cual es exactamente decir que $\ker(\phi)=I$.r
+Además, $(U,f)\in \ker(\phi)$ si y solo si $f(x)=0$ $\forall x \in U \cap Y$, lo cual es exactamente decir que $\ker(\phi)=I$.
 \end{solucion}
 \end{ejercicio}
 \end{document}
