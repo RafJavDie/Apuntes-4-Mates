@@ -1,6 +1,7 @@
 \documentclass[twoside]{article}
 \usepackage{../../estilo-ejercicios}
-
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
 %--------------------------------------------------------
 \begin{document}
 
@@ -66,4 +67,33 @@ Pasemos ahora a la segunda cuestión. Sea $a\in A$ y supongamos que $\exists n\i
 
 %0=1a=a
 \end{solucion}
+
+\newpage
+
+\begin{ejercicio}{8}
+Sea $S^{-1}A$ el anillo total de fracciones de $A$, donde $S \subseteq A$ es el conjunto de elementos que no son divisores de cero, y sea $φ : A \to S^{-1}A$ el homomorfismo canónico. Probar que $φ$ es inyectivo, y que $S$ es el mayor subconjunto multiplicativo de $A$ para el que $φ$ es inyectivo. Probar que $φ$ es un isomorfismo si y sólo si todo elemento de $A$ que no sea unidad es un divisor de cero.
+\end{ejercicio}
+
+\begin{solucion}
+Calculemos $\ker φ$. Para un $a \in A$, si $φ(a)=a/1=0/1$, entonces existe $s \in S$ tal que:
+\[ a \cdot 1 \cdot s = 0 \cdot 1 \cdot s  \Leftrightarrow a \cdot s = 0 \]
+Como $S$ no contiene divisores de cero, entonces $a \cdot s = 0 \Rightarrow a = 0$, luego $\ker φ = \{0\}$. Luego $φ$ es homomorfismo inyectivo.
+
+Sea $T \supsetneq S$ un subconjunto multiplicativo de $A$, veamos que $ψ : A \to T^{-1}A$ no es inyectivo. Si $T$ contiene el $0$, entonces $T^{-1}A=\{0/1\}$, luego si $A$ no es un anillo trivial, $ψ$ no puede ser inyectivo. Si $T$ contiene un divisor de cero $t$, entonces existe un elemento $a \in A$ no nulo tal que $a\cdot t = 0$. Por lo tanto:
+\[ a \in \ker ψ \Rightarrow \ker ψ \neq \{0\} \]
+Luego $ψ$ no es inyectivo. Entonces $S$ es el mayor subconjunto multiplicativo para el que $φ$ es inyectivo.
+
+Demostremos que:
+\[ φ \text{ es isomorfismo} \Leftrightarrow \text{Si }a \in A \text{ no es unidad, entonces }a\text{ es divisor de cero} \]
+Podemos transformar la segunda sentencia en otra equivalente más fácil de probar:
+\[ φ \text{ es isomorfismo} \Leftrightarrow \text{Si }s \in S \text{ entonces }s\text{ es unidad} \]
+\begin{itemize}
+	\item[($\Rightarrow$)] Supongamos que $φ$ es isomorfismo y sea $s \in S$. Como $S^{-1}A$ debe contener $1/s$ y $φ$ es sobreyectiva, entonces existe $a \in A$ tal que $φ(a)=1/s$. Como $1=φ(a)φ(s)=φ(as)$ y $φ$ es homomorfismo inyectivo, entonces $as=1$ y $s$ es unidad.
+	
+	\item[($\Leftarrow$)] Supongamos que todo elemento de $S$ es unidad. Sea $a/s \in S^{-1}A$. Entonces:
+	\[ \frac{a}{s} \sim \frac{as^{-1}}{1} \]
+	pues $a=as^{-1}s$. Pero $\dfrac{as^{-1}}{1}=φ(as^{-1}) \in \text{Im}(φ)$. Luego $φ$ es sobreyectiva y, en consecuencia, isomorfismo.
+\end{itemize}
+\end{solucion}
+
 \end{document}

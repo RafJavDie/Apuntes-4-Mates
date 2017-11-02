@@ -1,11 +1,12 @@
 \documentclass[twoside]{article}
 \usepackage{../../estilo-ejercicios}
-
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
 %--------------------------------------------------------
 \begin{document}
 
 \title{Algebra Conmutativa y Geometría Aplicada}
-\author{Javier Aguilar Martín, Rafael González López}
+\author{Javier Aguilar Martín, Rafael González López, Diego Pedraza López}
 \maketitle
 
 \begin{ejercicio}{2}\
@@ -56,16 +57,16 @@ Es claro que si $xyz = 0$ entonces, de las ecuaciones $f=g=h=0$ solamente dan lu
 
 Por tanto, si $a\in X$ (incluido el $(0,0,0)$) entonces $a\in Y=\{(t^3,t^4,t^5)\in\mathbb{A}^3_{\C}\mid t\in \C\}$. Sin embargo, es trivial ver que el recíproco también es cierto, por lo que $X=Y$. Para ver que $X$ es irreducible, vamos a probar dos lemas.
 
-\begin{lema}
+\begin{lemma}
 El conjunto $\mathbb{A}^1_{\C}\subset \mathbb{A}^1_{\C}$ es irreducible.
-\end{lema}
+\end{lemma}
 \begin{dem}
 Es trivial pues $\mathbb{A}^1_{\C}$ es infinito y los conjuntos algebraicos de $\mathbb{A}^1_{\C}$ son finitos (salvo $\mathbb{A}^1_{\C}$).
 \end{dem}
 
-\begin{lema}
+\begin{lemma}
 La aplicación $f\func{\mathbb{A}^1_{\C}}{\mathbb{A}^3_{\C}}$, $f(t)=(t^3,t^4,t^5)$ es continua (con la topología de Zariski) y lleva conjuntos irreducibles en conjuntos irreducibles.
-\end{lema}
+\end{lemma}
 \begin{dem}
 Para ver que es continua, basta ver que la preimagen de un cerrado es cerrado. Sea $W \subset \mathbb{A}^3_{\C}$ un conjunto cerrado (algebraico), entonces existen ciertos polinomios $f_1,\dotsc,f_n\func{\mathbb{A}^3_{\C}}{\C}$ tales que $W=\V(f_1,\dotsc,f_n)$. Entonces los elementos de $f^{-1}(W)$ se anulan sobre $f_i \circ f$ $\forall i=1,\dotsc,n$. Efectivamente si $x\in f^{-1}(W)$, $f(x)\in W$ y, por definifición, $f_i(f(x)) = 0$. Dado que $f$ es una función polinómica, la composición también es un polinomio (trivial). Por tanto, $f^{-1}(W)$ también es cerrado.
 
@@ -88,4 +89,24 @@ Por tanto, no podemos definir $X$ excluyendo alguna de las ecuaciones, como quer
 \end{enumerate}
 \end{solucion}
 \end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{8}
+Sea $A$ un DFU, e $I = \langle p \rangle \subseteq A$ un ideal principal primo. Probar que no existe ningún ideal primo no nulo estrictamente contenido en $I$. Deducir que, si $X \subset \mathbb{A}_k^n$ es una hipersuperficie (es decir, un conjunto algebraico definido por una sola ecuación), entonces no existe ningún otro conjunto algebraico irreducible $Y$ distinto del total que contenga a $X$. ¿Es cierto si no suponemos que $Y$ sea irreducible?
+\end{ejercicio}
+
+\begin{solucion}
+Supongamos que existe un ideal $J$ primo no nulo contenido $\langle p \rangle$. Sea $a \in J$, como $A$ es un DFU, entonces hay elementos primos $q_1,\dots, q_r$ en $A$ con $a=q_1\cdot \cdots \cdot q_r$. Como $a \in J$ e $J$ es primo, al menos un factor $q \in \{q_1,\dots,q_r\}$ debe estar en $J$. Como $q \in J \subseteq \langle p\rangle$, entonces $q=pr$ para algún $r \in A$.
+\begin{itemize}
+	\item Si $r$ es unidad, entonces $q\cdot r^{-1} = p$, luego $\langle p \rangle \subseteq J$ y, en consecuencia, $J = \langle p \rangle$.
+	\item Si $r$ no fuera unidad, entonces $q$ sería reducible. Sin embargo, $A$ es un dominio de integridad, luego sus elementos primos son irreducibles. Por lo tanto, este caso no se puede dar.
+\end{itemize}
+Entonces si $J$ es un ideal primo contenido en $I$, necesariamente $I = J$.
+
+Sea $X \subset \mathcal{A}_k^n$ una hipersuperficie. Como $k$ es un cuerpo, en particular es dominio de factorización única, luego $k[x_1,\dots,x_n]$ es un dominio de factorización única. Como $X$ es una hipersuperficie, $\I(X)$ está generado por un polinomio irreducible (proposición 1.26). Como estamos en un DFU, $\I(X)$ es un ideal principal primo. Sea $Y$ un conjunto algebraico irreducible $Y$ distinto del total y supongamos que $Y \supseteq X$. Entonces $\I(Y) \subseteq \I(X)$. Como $Y$ es irreducible, $\I(Y)$ es primo. Por lo demostrado anteriormente, entonces $\I(Y) = \I(X)$. Por la correspondencía biunívoca entre ideales primos y conjuntos algebraicos irreducibles (corolario 1.18), entonces $X=Y$.
+
+Si $Y$ no es irreducible, basta tomar $Y = X \cup \{P\}$, donde $P \in \mathbb{A}_k^n$ es un punto que no está en $X$. Aquí estamos suponiendo que $X$ es distinto del total.
+\end{solucion}
+
 \end{document}

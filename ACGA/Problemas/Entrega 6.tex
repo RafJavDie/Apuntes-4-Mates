@@ -1,0 +1,32 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Algebra Conmutativa y Geometría Aplicada}
+\author{Javier Aguilar Martín, Rafael González López}
+\maketitle
+\begin{ejercicio}{5}\
+Probar que todo automorfismo de $\A^1_k$ es de la forma $\varphi(t) = at+b$
+para algunos $a, b \in k$. Dar un ejemplo de un automorfismo de $\A^2_k$ que no sea
+una aplicación lineal afín.
+\end{ejercicio}
+\begin{solucion}
+Dado $\varphi\in Aut(\A^1_k)$, se induce un automorfismo $\varphi^*\in Aut(\calA(\A^1_k))$. Como $\calA(\A^1_k)\cong k[x]$, tenemos que $\varphi^*\in Aut(k[x])$. Así pues, $\varphi^*(x)=a_0+a_1x+\cdots+a_dx^d$  y $(\varphi^*)^{-1}(x)=b_0+b_1x+\cdots+b_ex^e$. Por tanto,
+\begin{gather*}
+x=(\varphi^*)^{-1}(\varphi^*(x))=(\varphi^*)^{-1}(a_0+a_1x+\cdots+a_dx^d)=a_0+a_1(\varphi^*)^{-1}(x)+\cdots+a_d(\varphi^*)^{-1}(x)^d=\\
+a_0+a_1(b_0+b_1x+\cdots+b_ex^e)+\cdots+a_d(b_0+b_1x+\cdots+b_ex^e)^d.
+\end{gather*}
+Este es un polinomio de grado $de$, por lo que $d=e=1$. De esta forma $\varphi^*(x)=a_0+a_1x$. Como $\varphi^*(x)=x\circ \varphi=Id\circ\varphi=\varphi$, basta renombrar $a_0=b, a_1=a$ para obtener que $\varphi(t)=at+b$ con $a,b\in k$, como queríamos demostrar.\\
+
+En $\A^2_k$ podemos definir el morfismo $\psi(x,y)=(x,y+x^2)$, que no es lineal. Claramente es un morfismo puesto que sus componentes son polinomios y es endomorfismo porque su imagen está en $\A^2_k$. Además es isomorfismo dado que podemos considerar el morfismo $\phi(x,y)=(x,y-x^2)$ y componerlo de tal modo que
+\begin{align*}
+\psi\circ\phi(x,y)=\psi(x,y-x^2)=(x,y-x^2+x^2)=(x,y)\\
+\phi\circ\psi(x,y)=\psi(x,y+x^2)=(x,y+x^2-x^2)=(x,y)
+\end{align*}
+que en ambos casos es la identidad, por lo que $\phi=\psi^{-1}$. 
+
+
+\end{solucion}
+\end{document}
