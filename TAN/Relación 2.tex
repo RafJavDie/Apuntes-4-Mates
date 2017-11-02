@@ -1,10 +1,10 @@
 \documentclass[twoside]{article}
 \usepackage{../estilo-ejercicios}
-
+\providecommand{\bo}[1]{\mathcal{O}\left(#1\right)}
 %--------------------------------------------------------
 \begin{document}
 
-\title{Algebra Conmutativa y Geometría Aplicada}
+\title{Teoría Analítica de Números}
 \author{Rafael González López}
 \maketitle
 
@@ -24,7 +24,24 @@ Sea $a_n = I_{\mathbb{P}}(n)\log n$, donde $I_{\mathbb{P}}(n)$ es la funcion ind
 \begin{align*}
 \sum_{p\leq x}\frac{\log p}{p} &= \sum_{n\leq x}\frac{a_n}{n} = \frac{\theta(x)}{x} - \int_1^x \frac{-\theta(t)}{t^2}dt =\\
 &= \frac{x + \mathcal{O}(x^{1/2}\log^2x)}{x} + \int_1^x \frac{t + \mathcal{O}(t^{1/2}\log^2t)}{t^2}dt\\
- &= 1+\mathcal{O}(x^{-1/2}\log^2 x) + \int_1^x \frac{1}{t} + \mathcal{O}(t^{-3/2}\log^2 x)dt =\\
-&=\log x + 1 + \mathcal{O}(x^{-1/2}\log^2 x)  + \int_1^x \mathcal{O}(t^{-3/2}\log^2 x)dt
+ &= 1+\mathcal{O}(x^{-1/2}\log^2 x) + \int_1^x \frac{1}{t} + \frac{\mathcal{O}(t^{1/2}\log^2 t)}{t^2}dt =\\
+&=\log x + 1 + \mathcal{O}(x^{-1/2}\log^2 t)  + \int_1^x \frac{\mathcal{O}(t^{1/2}\log^2 t)}{t^2}dt
 \end{align*}
+Estamos muy cerca del resultado que buscamos, pero todavía nos falta trabajo. Tenemos que analizar el último término integral. Primeramente, $\mathcal{O}(t^{1/2}\log^2 t)$ es una función $U(t)$ de la que sabemos existen $t_0 \in \R$ y $C\in\R_{>0}$ tales que $|U(t)|\leq Ct^{1/2}\log^2 t$ $\forall t>t_0$. De hecho, $U(t)=\theta(t)-t$. Consideremos entonces
+\begin{gather*}
+\int_1^x \frac{\mathcal{O}(t^{1/2}\log^2 t)}{t^2}dt = \int_1^x \frac{U(t)}{t^2}dt = \int_1^\infty \frac{U(t)}{t^2}dt - \int_x^\infty \frac{U(t)}{t^2}dt
+\end{gather*}
+De hecho
+$$
+\gabs{\int_1^\infty \frac{U(t)}{t^2}dt} \leq \int_1^\infty \frac{\gabs{U(t)}}{t^2}dt \leq \int_1^\infty \frac{U(t)}{t^2}dt =\int_1^\infty  Ct^{-3/2}\log^2 t dt =16C<\infty
+$$ Si tomamos $A = 1 + \int_1^\infty \frac{U(t)}{t^2}dt$ llegamos a que
+$$
+\sum_{p\leq x}\frac{\log p}{p} = \log x + A + \mathcal{O}(x^{-1/2}\log^2 t) - \int_x^\infty \frac{U(t)}{t^2}dt
+$$
+Entonces tenemos qué ver el orden del último sumando, pero
+\begin{gather*}
+S(x)= \int_x^\infty \frac{U(t)}{t^2}dt = \int_x^\infty \frac{\mathcal{O}(t^{1/2}\log^2 t)}{t^2}dt = \bo{\int_x^\infty  {t^{-3/2}\log^2 t}dt}=\\
+=\bo{\left[-\frac{2(\log^2 t+4\log t + 8}{t^{1/2}}\right]_x^\infty }= \bo{\frac{2(\log^2 x+4\log x + 8)}{x^{1/2}}} = \mathcal{O}(t^{-1/2}\log^2 t)
+\end{gather*}
+Como queríamos probar. 
 \end{document}
