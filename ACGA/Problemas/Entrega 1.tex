@@ -5,7 +5,7 @@
 \begin{document}
 
 \title{Algebra Conmutativa y Geometría Aplicada}
-\author{Javier Aguilar Martín, Rafael González López}
+\author{Javier Aguilar Martín, Rafael González López, Diego Pedraza López}
 \maketitle
 
 \begin{ejercicio}{1}\
@@ -39,24 +39,24 @@ tiene el mismo término líder (grado y coeficiente) que $f_{m+1}$. Por tanto, l
 \begin{ejercicio}{2} Demostrar el siguiente resultado usado en la prueba del Nullstellensatz: si $k$ es un cuerpo y $k \subset K$ una extensión de cuerpos que es finitamente generada como $k$-álgebra, entonces $K$ es una extensión finita (es decir, finitamente generada como $k$-espacio vectorial) de $k$.
 \begin{solucion}
 Sea $K$ en las condiciones del enunciado, entonces $\exists a_1,\dotsc,a_n \in K$ de forma que $K=k[a_1,\dotsc,a_n]$, es decir, es finitamente generado como $k$-álgebra. 
-\begin{lema} Si $K=k[a_1,\dotsc,a_n]$ es una extensión algebraica de $k$, entonces es una extensión finita de $k$.
-\end{lema}
+\begin{lemma} Si $K=k[a_1,\dotsc,a_n]$ es una extensión algebraica de $k$, entonces es una extensión finita de $k$.
+\end{lemma}
 \begin{dem}
 Podemos verlo fácilmente por inducción. El caso $K=k[a_1]$ es trivial, pues si $K$ es algebraico, $a_1$ lo es en particular, por lo que existe $f\in k[X]$ tal que $f(a_1)=0$. Si $f$ tiene grado $d$, es sencillo ver que $\{1,a_1,\dotsc,a_1^{d-1}\}$ genera $k[a_1]$. Ahora basta aplicar la hipótesis de inducción teniendo en cuenta que $k[a_1,\dotsc,a_n]=k[a_1,\dotsc,a_{n-1}][a_n]$ y que si $a_i$ es algebraico entonces $k[a_i]$ es cuerpo.
 \end{dem}
 
 Vamos a probar que $K$ es necesariamente una extensión algebraica. Por reducción al absurdo, supongamos que $K$ no es una extensión algebraica de $k$, es decir, existen elementos trascentendes sobre $k$. Obviamente, al menos uno de los generadores de $K$ ha de ser trascentente sobre $k$ (supongamos que es $a_1$), entonces el anillo $k[a_1]$ puede verse como un anillo de polinomios sobre un cuerpo, por lo que es además DFU.
 
-\begin{lema}El anillo $k[a_1]$ contiene infinitos elementos primos.
-\end{lema}
+\begin{lemma}El anillo $k[a_1]$ contiene infinitos elementos primos.
+\end{lemma}
 \begin{dem}
 Basta usar el argumetno de Euclides. Sabemos que el conjunto de los primos de $k[a_1]$ es no vacío, pues $t$ siempre primo. Si este conjunto fuese finito $\{p_1,\dotsc,p_r\}$, entonces consideramos $p=p_1\cdots p_r +1$. Entonces, o bien $p$ es primo o bien ha de existir algún primo que lo divida, pero ninguno de los primos $p_i$ lo hace. En cualquier caso, nuestro conjunto no está completo, lo que es un absurdo.
 
 Notemos que hemos usado que $k[a_1]$ es infinito, lo cual siempre es cierto aunque $k$ no lo sea.
 \end{dem}
 Podemos considerar ahora $k(a_1)$ el cuerpo de fracciones como extensión de $k$. Claramente $k\subset k(a_1)\subset K$. Además, sabemos que $k(a_1)$ no puede ser finitamente generado como $k$-álgebra, pues basta usar el Lema 2 y un argumento similar al de la prueba de que $\Q$ no es finitamente generado como $\Z$-álgebra. La contradicción buscada se tiene a través del siguiente lema.
-\begin{lema} Sean $k \subset L \subset K$ cuerpos. Si $K$ es finitamente generado como $k$-álgebra, entonces $L$ también lo es.
-\end{lema}
+\begin{lemma} Sean $k \subset L \subset K$ cuerpos. Si $K$ es finitamente generado como $k$-álgebra, entonces $L$ también lo es.
+\end{lemma}
 
 %Veámoslo por inducción sobre la dimensión de $K$ como $k$-álgebra. Para $m=1$ tenemos que $K=k[a_1]$ con $a_1 \in K\setminus k$ (otro caso es trivial). En tal caso, $\forall p \in K$, $\exists s\in \N\cup\{0\}$, $\exists b_0,\dotsc,b_s \in k$ tales que $p = \sum_{k=0}^{s} b_k a_1^k$. Como estamos en un cuerpo, podemos considerar $p=a_1^{-1}$. Multiplicando $a_1$ obtenemos
 %$$\sum_{k=0}^s b_k a_1^{k+1}  = 1$$
