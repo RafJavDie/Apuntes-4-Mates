@@ -92,6 +92,14 @@ por $J_p(f)$.
 \begin{prop} Si $f\in\mathcal{F}(M,N)$, siendo $M$ conexa y $f_{*p}=0$, para cual\-quier $p\in M$, entonces $f$
 es constante.
 \end{prop}
+\begin{dem}
+Sean $p\in M$ y $q=f(p)\in N$. Entonces $A=f^{-1}(\{q\})\neq\emptyset$. Además, $A$ es cerrado por continuidad de $f$ en un espacio T1. Veamos que $A$ es abierto para probar que $A=M$. Sea $\overline{p}\in A$ arbitrario tal que $f(\overline{p})=q$. Sean $(U,\varphi=(x_1,\dots,x_n))$ carta en $M$ tal que $\overline{p}\in U$ y $(V,\psi=(y_1,\dots,y_n))$ en $N$ tal que $q\in V$. Podemos suponer que $U$ es conexo pues en caso contrario bastaría tomar una de sus componentes conextas, y $f(U)\subseteq V$. Así, $\forall \tilde{p}\in U,\ \forall i=1,\dots, m$ $f_*\left(\frac{\partial}{\partial x_i}\right)_{\tilde{p}}=0\in T_{f(\tilde{p})}(N)$. En particular, $f_*\left(\frac{\partial}{\partial x_i}\right)_{\tilde{p}}y_j=0\ \forall j=1,\dots, n$, es decir, 
+$$\left.\frac{\partial(y_j\circ f)}{\partial x_i}\right|_{\tilde{p}}=\left.\frac{\partial(u_j\circ\psi\circ f\circ\varphi^{-1})}{\partial u_i}\right|_{\varphi(\tilde{p})}$$
+Al ser $\varphi(U)$ conexo, exto implica que $\psi\circ f\varphi^{-1}$ es constante, luego en particular, $\forall \tilde{p}\in U$, 
+$$\psi(f(\tilde{p}))=\psi\circ f\varphi^{-1}(\varphi(\tilde{p}))=\psi\circ\varphi^{-1}(\varphi(\overline{p}))=\psi(f\overline{p}))=\psi(q)$$
+Por la inyectividad de $\psi$, $f(\tilde{p})=q$, luego $U\subseteq f^{-1}(\{q\})=A$. Esto implica que todo punto de $A$ es interior y por tanto $A$ es abierto, como queríamos demostrar. $\QED$
+\end{dem}
+
 \begin{defi}
 Una aplicación $f\in\mathcal{F}(M,N)$ se dice que es {\bf No Singular} en $p\in M$ si $f_{*p}$ es inyectiva, es
 decir, si $\ker f_{*p}=0$. Al rango (dimensión de la imagen) de $f_{*p}$ se le denomina {\bf Rango} de $f$ en $p$.
@@ -117,6 +125,15 @@ tal que, para cualquier $u\in T_p(M)$, $(f_p^*\om)u=\om(f_{*p}u)$.
 {\bf (Regla de la Cadena de la Codiferencial).} Sean $f\in\mathcal{F}(M,N)$, $g\in\mathcal{F}(N,P)$ y $p\in M$.
 Entonces, se verifica que $(g\circ f)_p^*=f_p^*\circ g_{f(p)}^*$.
 \end{prop}
+
+\subsubsection{Recordatorio Álgebra Lineal}
+
+Dada $F:V\to W$ lineal, con bases en cada espacio $B_1=\{v_1,\dots,v_m\}$ y $B_2=\{w_1,\dots,w_m\}$, y matriz $M_{B_1,B_2}(F)=A=(a_{ij})$, entonces $Fv_i=\sum_{j=1}^m a_{ij}w_j$. Tomando la aplicación dual obtenemos $F^*:W^*\to V^*$, $B_2^*=\{w^*_1,\dots,w^*_m\}$, $B_1^*=\{v^*_1,\dots,v^*_m\}$ tales que $w^*_i(w_j)=\delta_{ij}$ y $v^*_i(v_j)=\delta_{ij}$, con $M_{B^*_1,B^*_2}(F^*)=B=(b_{ij})$, de modo que $F^*w^*_j=\sum_{j=1}^m b_{ji}v_i^*$.
+
+$$F^*w^*_j)v_k=\sum_i b_{ji}v^*i(v_k)=b_{jk}$$
+$$w^*_j(Fv_k)=w^*_j(\sum_{j=1}^ma_{ki}w_i)=\sum_i a_{ki}w^*_j(w_i)=a_{kj}$$
+Luego $B=A^t$. 
+
 \begin{prop}
 Sean $f\in\mathcal{F}(M,N)$ y $p\in M$. Entonces, se verifican:
 \begin{enumerate}
