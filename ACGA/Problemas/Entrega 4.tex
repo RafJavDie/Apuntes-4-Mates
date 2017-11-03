@@ -5,8 +5,28 @@
 \begin{document}
 
 \title{Algebra Conmutativa y Geometría Aplicada}
-\author{Javier Aguilar Martín, Rafael González López}
+\author{Javier Aguilar Martín, Rafael González López, Diego Pedraza López}
 \maketitle
+\begin{ejercicio}{1}
+Sea $L \subseteq \A_k^n$ una variedad lineal (es decir, definida por un conjuntos de polinomios de grado $1$). Probar que $L$ es un conjunto algebraico irreducible. Si $L$ tiene dimensión $d$, probar que el anillo de coordenadas es de $L$ es isomorfo a $k[x_1,\dots,x_d]$.
+\end{ejercicio}
+
+\begin{sol}
+Como $L$ está definida como los ceros de un conjunto de polinomios, $L$ es un conjunto algebraico. Sean $p_1,\dots,p_r$ en $k[x_1,\dots,x_n]$ dichos polinomios de grado $1$, de manera que $L=\V(p_1,\dots,p_r)$. Como $L=\V(\langle p_1,\dots,p_r\rangle)$, para ver que $L$ es irreducible basta ver que $I=\langle p_1,\dots,p_r\rangle$ es un ideal primo. Esto es equivalente a ver que $k[x_1,\dots,x_n]/I$ es dominio integral. Por Álgebra Lineal I, sabemos que aplicando eliminación gaussianas a $I$, obtenemos el mismo conjunto algebraico $L$, por lo que podemos suponer que los polinomios $p_1,\dots,p_r$ están reducidos a:
+\[ x_j + a_0^j + \sum_{i\notin J}a_i^j x_i \quad \forall j \in J \]
+es decir, que al hacer $k[x_1,\dots,x_n]/I$, todas las variables $x_j$ con $j\in J$ se pueden escribir como combinación lineal de las variables $x_i$ con $i \notin J$. Veamos que este cociente es isomorfo a $k[x_{i_1},\dots,x_{i_s}]$ donde $\{i_1,\dots,i_s\}=\{1,\dots,n\}\setminus J$. Sea $φ$ el homomorfismo:
+\[ φ : k[x_1,\dots,x_n]/I \to k[x_{i_1},\dots,x_{i_s}] \]
+que consiste aplicar las sustituciones que define $I$ para $x_j$ con $j \in J$. $φ$ es inyectivo, pues $φ(p) = 0$ si y sólo si $p \in I$. También se tiene que $φ(x_{i_k}+I)=x_{i_k} \ \forall k$, porque si se aplicase alguna sustitución, no sería cierto que $i_k \notin J$. Entonces $φ$ es sobreyectiva.
+
+Por lo tanto $k[x_1,\dots,x_n]/I \cong k[x_{i_1},\dots,x_{i_s}]$, que es dominio de integridad, luego $I$ es ideal primo.
+
+Si $L$ es de dimensión $d$, entonces una vez aplicada la reducción de Gauss-Jordan, nos quedan $n-d$ variables líderes. Luego $J$ tiene $n-d$ elementos y $s = d$. Como:
+\[ k[x_{i_1},\dots,x_{i_s}] \cong k[x_1,\dots,x_d] \]
+se tiene que $\mathcal{A}(L) \cong k[x_1,\dots,x_d]$.
+\end{sol}
+
+\newpage
+
 \begin{ejercicio}{3}\
 Sea $X \subseteq \mathbb{A}^n_k$
 un conjunto algebraico. Probar que $\mathcal{A}(X)$ tiene
