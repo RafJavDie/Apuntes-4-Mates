@@ -14,6 +14,8 @@
 \usepackage{tikz-cd}
 \usetikzlibrary{graphs}
 \usetikzlibrary{arrows.meta}
+\usepackage{listings}
+
 
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{coro}[thm]{Corolario}
@@ -46,7 +48,6 @@
 
 \begin{center} {\large \bf Estudio de la Conjetura de Gilbreath}
 \end{center}
-
 
 \begin{center}
 {\bf Eleazar Duarte Aponte, Rafael González López,\\
@@ -95,7 +96,169 @@ d^k_n = \abs{d_{n+1}^{k-1}-d_{n}^{k-1}}
 
 
 \section{Estudio computacional de la conjetura de Gilbreath}
+Utilizando una idea semejante a la que proporciona Odlyzko en \cite{odly}, programamos en C++ un algoritmo que nos permita comprobar experimentalmente la conjetura. El algoritmo es realmente eficiente, pues en un simple ordenador portatil permite comprobar la conjetura hasta $10^9$
 
+\lstset{language=C++,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{green}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+#include <primesieve.hpp>
+#include <iostream>
+#include <vector>
+
+// Comprueba la conjetura de Gilbreath hasta 10^9
+// usando ideas de Odlyzko
+int main () {
+	// Diagonal 645:
+	std::vector<uint64_t> nums 
+	{4703,12,0,6,4,2,0,2,0,0,2,2,0,4,2,0,0,2,2,
+	2,0,0,0,2,0,0,0,2,0,2,2,2,2,2,0,0,0,2,0,0,
+	0,2,0,2,2,2,2,0,0,2,2,0,0,0,0,0,0,2,2,2,2,
+	2,0,0,2,2,0,0,2,0,0,2,2,2,0,0,2,0,0,0,2,2,
+	2,2,0,0,2,0,2,0,0,0,0,2,0,0,2,0,0,0,2,2,2,
+	2,0,2,2,2,2,0,2,2,2,0,2,2,2,2,2,2,2,0,0,2,
+	2,2,2,0,0,2,2,2,2,2,2,2,0,0,0,2,2,0,2,0,2,
+	2,2,0,2,0,2,0,0,2,0,0,0,2,0,0,2,2,2,2,2,0,
+	0,0,0,2,2,0,0,2,0,2,0,2,2,2,2,0,2,0,2,0,0,
+	0,2,0,2,2,0,0,0,0,2,2,2,0,2,0,2,2,2,2,0,0,
+	2,0,2,0,0,2,0,0,0,0,0,0,2,0,2,2,2,2,2,2,2,
+	2,0,2,2,0,0,0,2,2,0,0,2,0,0,2,0,2,0,0,0,0,
+	2,0,2,2,0,0,2,0,2,2,0,0,2,2,2,0,2,0,2,2,0,
+	2,2,0,2,2,2,2,2,2,0,0,2,2,2,0,0,0,2,0,2,0,
+	0,2,2,2,2,0,0,2,2,2,0,0,2,2,0,0,0,2,2,2,0,
+	0,0,2,0,2,2,2,0,2,0,0,2,0,0,2,0,0,2,0,0,0,
+	2,0,0,2,0,2,0,0,2,0,0,0,2,0,0,0,2,2,2,2,0,
+	0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,2,0,2,2,2,2,
+	2,0,2,0,0,2,0,0,0,0,2,0,0,2,0,0,0,2,2,2,2,
+	2,2,0,2,0,0,0,0,0,2,2,0,2,2,0,2,2,0,2,0,0,
+	2,0,0,0,2,2,2,2,0,2,0,0,0,2,2,2,2,2,2,0,2,
+	2,2,2,2,2,0,2,2,0,2,2,0,0,0,2,2,0,0,2,0,2,
+	2,0,0,0,0,2,2,0,0,0,2,0,0,2,2,0,0,2,0,2,2,
+	0,2,0,0,0,0,0,2,0,2,0,0,0,2,0,2,0,2,0,2,0,
+	2,2,2,0,0,2,0,0,0,0,2,0,0,0,0,0,2,0,2,0,0,
+	0,0,0,2,2,2,0,2,0,0,2,2,0,2,0,0,0,0,0,0,0,
+	0,2,2,2,2,2,2,2,2,0,0,0,2,2,2,0,2,2,0,0,0,
+	2,0,2,2,0,2,2,0,2,2,0,2,0,0,2,2,2,2,0,0,0,
+	0,2,0,0,0,2,2,0,2,0,0,0,2,0,2,2,2,2,0,2,2,
+	0,2,0,0,0,0,0,0,0,2,2,2,2,0,0,0,2,2,0,2,2,
+	0,2,2,0,0,0,1};
+
+uint64_t nexto;
+primesieve::iterator it;
+it.skipto(4704);
+uint64_t tempo;
+for (long p = 0; p < 2*pow(10,8); ++p) {
+	nexto = it.next_prime();
+	
+	for (int i = 0; i < 635; ++i) {
+		tempo = abs(nexto-nums[i]);
+		nums[i] = nexto;
+		nexto = tempo;
+	}
+	
+	// Con un poco de loop unrolling 
+	//es más eficiente
+	for (int i = 0; i < 634; ++i) {
+		tempo = abs(nexto-nums[i]);
+		nums[i] = nexto;
+		nexto = tempo;
+		tempo = abs(nexto-nums[++i]);
+		nums[i] = nexto;
+		nexto = tempo;
+		tempo = abs(nexto-nums[++i]);
+		nums[i] = nexto;
+		nexto = tempo;
+		tempo = abs(nexto-nums[++i]);
+		nums[i] = nexto;
+		nexto = tempo;
+		tempo = abs(nexto-nums[++i]);
+		nums[i] = nexto;
+		nexto = tempo;	}
+		
+	if (nums[634] != 0 && nums[634] != 2) {
+		std::cout << "Contraejemplo en Paso"
+		<< p << ":" << nums[634] << std::endl;
+		return 0;
+	}
+}
+std::cout<<"CIERTO"<<std::endl;
+}
+\end{lstlisting}
+
+Para tener una representación gráfica del triángulo que se forma al calcular los sucesivos $d_n$, hemos implementado el siguiente código en Haskell 
+
+\lstset{
+  frame=none,
+  xleftmargin=2pt,
+  stepnumber=1,
+  numbers=left,
+  numbersep=4pt,
+  numberstyle=\ttfamily\tiny\color[gray]{0.2},
+  belowcaptionskip=\bigskipamount,
+  captionpos=b,
+  escapeinside={*'}{'*},
+  language=haskell,
+  tabsize=1,
+  emphstyle={\bf},
+  commentstyle=\it,
+  stringstyle=\mdseries\rmfamily,
+  showspaces=false,
+  keywordstyle=\bfseries\rmfamily,
+  columns=flexible,
+  basicstyle=\small\sffamily,
+  showstringspaces=false,
+  morecomment=[l]\%,
+}
+\small{
+\begin{lstlisting}
+import Data.Numbers.Primes
+import Data.List
+
+-- Introducimos una lista de n números que nos sirve como sucesión numérica.
+-- En este caso, vamos a tomar la lista de los 10^24 primeros primos
+suc :: [Int]
+suc = take (10^24) primes
+
+-- Construimos la función que nos dé la lista en la siguiente etapa
+fun :: [Int] -> [Int]
+fun xs = zipWith (\x y -> abs (x-y)) xs (tail xs)
+
+-- Lista infinita de listas infinitas de la pirámide de Gilbreath
+gilbreath_seq :: [[Int]]
+gilbreath_seq = iterate fun primes
+
+-- Comprueba la conjetura de Gilbreath para hasta n primos
+conjetura :: Int -> Bool
+conjetura n = all (==1) . take n . tail . map head $ gilbreath_seq
+
+triangulo :: Int -> [[Int]]
+triangulo n = [take (n-i) xs | (i,xs) <- zip [0..] (take n gilbreath_seq)]
+
+dibujaTriangulo :: Int -> IO ()
+dibujaTriangulo n = mapM_ putStrLn $ map (unwords . map show) a
+	where a = take n (triangulo n)
+\end{lstlisting}}
+Mostramos una salida del código para hacernos una idea de cómo funciona el código
+
+\begin{lstlisting}
+*Main> dibujaTriangulo 12
+2 3 5 7 11 13 17 19 23 29 31 37
+1 2 2 4 2 4 2 4 6 2 6
+1 0 2 2 2 2 2 2 4 4
+1 2 0 0 0 0 0 2 0
+1 2 0 0 0 0 2 2
+1 2 0 0 0 2 0
+1 2 0 0 2 2
+1 2 0 2 0
+1 2 2 2
+1 0 0
+1 0
+1
+\end{lstlisting}
 
 \section{Árbol de Gilbreath}
 
@@ -182,8 +345,10 @@ Es decir, en principio, parece que el \textit{gap} no solo se mantiene constante
 
 \begin{thebibliography}{99}
 
-
 \bibitem{odly}  Odlyzko, A. (1993). Iterated Absolute Values of Differences of Consecutive Primes. Mathematics of Computation, 61(203), 373-380. doi:10.2307/2152962
+
+\bibitem{rguy}  Kenneth Guy, R. (1993). Iterated Absolute Values of Differences of Consecutive Primes. Mathematics of Computation, 61(203), 373-380. doi:10.2307/2152962
+
 \end{thebibliography}
 
 \end{document}
