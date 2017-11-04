@@ -85,8 +85,50 @@ w_E - 0.9
 
 \newpage 
 \begin{ejercicio}{2}
+Cada año, al comenzar la estación para trabajar los jardines, un jardinero usa una prueba
+química para determinar el estado del suelo. Dependiendo de los resultados de las pruebas, la
+productividad para la nueva estación cae en uno de los tres estados: 1) bueno, 2) regular, 3) malo.
+A través de los años el jardinero observó que las condiciones meteorológicas prevalecientes durante
+el invierno (antes de empezar a trabajar los jardines) juegan un papel importante en la determinaci
+ón de la condición del suelo, dejándolo igual o empeorándolo, pero nunca mejorándolo. En
+este respecto, el estado del suelo en el año anterior es un factor importante para la productividad
+del presente año. Usando los datos de las pruebas hechas por el jardinero, las probabilidades de
+transición durante un periodo de un año, de un estado de productividad a otro, se representa con:
+\[
+\begin{pmatrix}
+0. 2 & 0. 5 & 0. 3\\
+0 & 0.5 & 0.5\\
+0 & 0 & 1
+\end{pmatrix}
+\]
+El jardinero puede alterar las probabilidades de transición aplicando fertilizante para mejorar las
+condiciones del suelo, y se produce entonces la siguiente matriz de transición:
+\[
+\begin{pmatrix}
+0.3 & 0.6 & 0.1\\
+0.1 & 0.6 & 0.3\\
+0.05 & 0.4 & 0.55
+\end{pmatrix}
+\]
+Las ganancias que el jardinero obtiene en cada uno de los dos casos vienen dadas en las siguientes
+matrices:
 
+Beneficios si no utiliza fertilizantes: \hskip3cm Beneficios si utiliza fertilizantes:
 
+\[
+\begin{pmatrix}
+7 & 6 & 3\\
+0 & 5 & 1\\
+0 & 0 & -1
+\end{pmatrix}\hskip5.5cm
+\begin{pmatrix}
+6 & 5 & -1\\
+7 & 4 & 0\\
+6 & 3 & -2
+\end{pmatrix}
+\]
+Use el método de iteración de políticas para determinar una la política óptima si hay un factor de
+descuento $\alpha = 0,6$, determine el problema de P.L. asociado y realice dos iteraciones de valor.
 \begin{solucion}
 
 \end{solucion}
@@ -97,78 +139,48 @@ w_E - 0.9
 
 \begin{ejercicio}{3}
 
-
+Cada año, una persona tiene la oportunidad de invertir en dos mutualidades diferentes, A y B.
+Al final de cada a~no, liquida su inversión, recoge sus ganancias y reinvierte. Las ganancias anuales
+de los fondos de mutualidad dependen de la reacción del mercado. En los últimos años el mercado
+ha oscilado alrededor de los 2500 puntos, de acuerdo a las probabilidades que se dan en la siguiente
+matriz:
+\[
+\begin{array}{cc}
+  \begin{matrix}
+ 
+\end{matrix} & \begin{matrix}
+~~2400 & ~2500 & 2600~  & \\ 
+\end{matrix} \\
+\begin{matrix}
+2400 \\
+2500 \\
+2600 \\
+\end{matrix}
+ & \begin{pmatrix}
+0.3 & 0.5 & 0.2 \\
+0.1 & .5 & 0.4 \\
+0.4 & 0.2 & 0.4
+\end{pmatrix}
+\end{array}
+\]
+Cada año en que el mercado sube (o baja) 100 puntos, la inversión A tiene ganancias (o pérdidas)
+de 20 u.m., mientras que la inversión B tiene ganancias (o pérdidas) de 10 u.m. Si el mercado sube
+(o baja) 200 puntos en un año, las ganancias (o pérdidas) pasan a ser de 50 u.m. y 20 u.m. para A
+y B respectivamente. Si el mercado no cambia, ninguno de los fondos tiene ganancias o pérdidas.
+\begin{itemize}
+\item[\textbf{a)}] Determine el espacio de estados, los conjuntos de decisión, las probabilidades de transición y
+las recompensas.
+\item[\textbf{b)}] Use el método de iteración de políticas para determinar una la política óptima con una tasa de
+depreciación $\alpha = 0.9$.
+\item[\textbf{c)}] Determine el problema de P.L. asociado.
+\item[\textbf{d)}] Realice dos iteraciones de valor.
+\end{itemize}
 
 \begin{solucion}
 
 \end{solucion}
 \end{ejercicio}
 
-\begin{ejercicio}{4}
 
-
-
-\begin{solucion}
-
-\end{solucion}
-\end{ejercicio}
-
-\newpage 
-
-\begin{ejercicio}{5}
-
-
-\begin{solucion}
-\end{solucion}
-\end{ejercicio}
-
-\newpage 
-
-\begin{ejercicio}{6}\label{6}
-
-\end{ejercicio}
-\begin{solucion}
-
-\end{solucion}
-
-\newpage 
-
-\begin{ejercicio}{7}
-
-
-\end{ejercicio}
-\begin{solucion}
-
-\end{solucion}
-
-
-\newpage
-
-\begin{ejercicio}{8} 
-\end{ejercicio}
-\begin{solucion}
-
-\end{solucion}
-
-\newpage
-
-\begin{ejercicio}{9}
-\end{ejercicio}
-\begin{solucion}
-
-\end{solucion}
-
-\newpage
-
-\begin{ejercicio}{10}
-
-
-\end{ejercicio}
-\begin{solucion}
-
-
-\end{solucion}
-
-\newpage
 
 \end{document}
