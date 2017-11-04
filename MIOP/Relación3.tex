@@ -51,15 +51,15 @@ P^R =
 \end{pmatrix}
 $$
 Por tanto $R^{NR} = (100, 80, 50, 10)$, $R^R = (-100, -100, -100, -100)$. $R^R_M = -100$.
-\item[\textbf{b)}] Si $\alpha = 0.9$ y sea $\delta = (NR,NR,R,R)$.
-$\alpha=0'9$. Comprobamos la política $\delta=(NR\ NR\ R\ R)$. 
+\item[\textbf{b)}] Si $\alpha = 0.9$ y sea $\delta = (NR,\ NR,\ R,\ R)$.
+$\alpha=0'9$. Comprobamos la política $\delta=(NR,\ NR,\ R,\ R)$. 
 $$v^\delta_E=R^\delta_E+\sum_{j=1}^N\alpha p^\delta_{Ej}v^\delta_j$$
-Aplicamps esta fórmula a cada una de las componentes del vector de la política y obtenemos un sistema de ecuaciones
+Aplicamos esta fórmula a cada una de las componentes del vector de la política y obtenemos un sistema de ecuaciones
 \begin{align*}
 v^\delta_E=100+0'9(0'7v^\delta_E+0'3v^\delta_B)\\
 v^\delta_B=80+0'9(0'7v^\delta_B+0'3v^\delta_R)\\
 v^\delta_R=-100+0'9(0'7v^\delta_E+0'3v^\delta_B)\\
-v^\delta_E=-100+0'9(0'7v^\delta_E+0'3v^\delta_B)
+v^\delta_M=-100+0'9(0'7v^\delta_E+0'3v^\delta_B)
 \end{align*}
 La solución es la siguiente
 \begin{align*}
@@ -68,7 +68,7 @@ v^\delta_B=572.1875\\
 v^\delta_R=487.8125\\
 v^\delta_E=487.8125
 \end{align*}
-Además $t_E^{NR} = 0$, $t_E^R <0$; $t_B^{R}<0$, $t_B^{NR}<0$, $t^{NR}_R >0$, $t^{NR}_M <0$. Si cambiamos nuestra política a $\delta = (NR, NR, NR, R)$, que es la óptima. \begin{align*}
+Además, teniendo en cuenta que $t_i^k= R_i^k + \sum_{j=1}^N \alpha p_{ij}^k v_k^\delta - v_i^\delta$, resulta $t_E^{NR} = 0$, $t_E^R <0$; $t_B^{R}<0$, $t_B^{NR}<0$, $t^{NR}_R >0$, $t^{NR}_M <0$. Si cambiamos nuestra política a $\delta = (NR, NR, NR, R)$, que es la óptima. \begin{align*}
 v^\delta_E=690.23\\
 v^\delta_B=575.50\\
 v^\delta_R=492.35\\
