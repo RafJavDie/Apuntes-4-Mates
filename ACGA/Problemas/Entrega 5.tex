@@ -61,20 +61,18 @@ k[x_0, x_1,\dots, x_n]$ \textbf{homogéneos} tales que $fg \in I$ se tiene que $
 \begin{solucion}\
 \begin{enumerate}
 \item Supongamos que $I$ es homogéneo, es decir, (dado que estamos en un anillo noetheriano), $I=\langle f_1,\dots, f_m\rangle$ con $f_i$ son homogéneos. Sea $f\in I$, sabemos que $f=\sum_{i=1}^mf_ig_i$ con $g_i\in k[x_0,x_1,\dots,x_n]$. Sea $g_{ij}$ la componente homogénea de grado $j$ de $g_i$, donde $d=\max_{i} deg(g_i)$. Entonces
-$$f=\sum_{i=1}^m f_i g_i= \sum_{i=1}^m\sum_{j=1}^d f_ig_{ij}.$$
-Obviamente, $f_i g_{ij}$ es un polinomio homogéneo, por ser producto de homogéneos. Agrupando, tenemos que cada componente homogénea de $f$ es la forma $ \sum_{h,k} f_hg_{hk} = \sum_{h}f_h\sum_{k}^d g_{hk}= \sum_{h}f_h q_h$, luego pertenecen a $I$.
+$$f=\sum_{i=1}^m f_i g_i= \sum_{i=1}^m\sum_{j=0}^d f_ig_{ij}.$$
+Obviamente, $f_i g_{ij}$ es un polinomio homogéneo, por ser producto de homogéneos. Agrupando, tenemos que cada componente homogénea de $f$ es la forma $ \sum_{h,k} f_hg_{hk} = \sum_{h}f_h\sum_{k} g_{hk}= \sum_{h}f_h q_h$, luego pertenecen a $I$.
 
- Supongamos que las componentes homogéneas de $f$ están en $I$ $\forall f \in I$. Como $k[x_0,x_1,\dotsc,x_n]$ es noetheriano, sabemos que $I=\langle f_1,\dots, f_m\rangle$. Sea $f_{ij}$ la componente homogénea de grado $j$ de $f_i$, tomando índice hasta $d=\max_{i} deg(f_i)$. Si $S=\{f_{ij} \mid i=1,\dotsc m,\,j=1,\dotsc d\}$ entonces, como $S\subset I$ por hipótesis, $\gene{S} \subset I$. La inclusión recíproca es trivial, pues con los elementos de $S$ podemos escribir los $f_i$. Por tanto $I=\gene{S}$, es decir, está generado por polinomios homogéneos.
+ Supongamos que las componentes homogéneas de $f$ están en $I$ $\forall f \in I$. Como $k[x_0,x_1,\dotsc,x_n]$ es noetheriano, sabemos que $I=\langle f_1,\dots, f_m\rangle$. Sea $f_{ij}$ la componente homogénea de grado $j$ de $f_i$, tomando índice hasta $d=\max_{i} deg(f_i)$. Si $S=\{f_{ij} \mid i=1,\dotsc m,\,j=0,\dotsc d\}$ entonces, como $S\subset I$ por hipótesis, $\gene{S} \subset I$. La inclusión recíproca es trivial, pues con los elementos de $S$ podemos escribir los $f_i$. Por tanto $I=\gene{S}$, es decir, está generado por polinomios homogéneos.
 
 \item Supongamos que $I$ es radical, entonces en $I$ se cumple la condición para todo $f\in k[x_0,x_1,\dots,x_n]$. En particular, se cumple para los polinomios homogéneos.
 
-Supongamos que se verifica que para todo $f \in k[x_0, x_1,\dots, x_n]$ \textbf{homogéneo} tal que $f^n \in I$ para algún $n \geq 1$ se tiene que $f \in I$. Para ver que es radical, sea $f \in k[x_0, x_1,\dots, x_n]$ tal que $f^n \in I$.
+Supongamos que se verifica que para todo $f \in k[x_0, x_1,\dots, x_n]$ \textbf{homogéneo} tal que $f^n \in I$ para algún $n \geq 1$ se tiene que $f \in I$. Para ver que es radical, sea $f \in k[x_0, x_1,\dots, x_n]$ tal que $f^n \in I$. Si escribimos $f = \sum_{i=1}^d f_i$ donde $f_i$ es la componente homogénea de grado $i$ de $f$ y $d=\deg{f}$.
+
+Vamos a probar el resultado por inducción sobre $n$. Si $n=1$, no hay nada que probar. Supuesto cierto para $n=k$, veamos para $n=k+1$.
 
 \item Análogo a la primera parte del segundo apartado.
-
-$\boxed{\Leftarrow}$ Sean $f,g\in k[x_0,x_1,\dots,x_n]$ tales que $fg\in I$. Vamos a probar por reducción al absurdo que o bien $f\in I$ o bien $g\in I$. Supongamos que $f,g\notin I$ y escribamos las descomposiciones en componentes homogéneas $f=\sum_{i=1}^m \alpha_i$, $g=\sum_{j=1}^l\beta_j$. Como $f,g\notin I$, hay alguna componente homogénea en cada polinomio que tampoco está en $I$. Supongamos sin pérdida de generalidad que $\alpha_1,\beta_1\notin I$. 
-
-Como $fg\in I$, con $I$ homogéneo, por el primer apartado tenemos que todas las componentes homogéneas de $fg$ están en $I$. La primera componente de $fg$ es $\alpha_1\beta_1\in I$, que por hipótesis esto implica que o bien $\alpha_1\in I$ o bien $\beta_1\in I$. Sin embargo, esto entra en contradicción con la elección de $\alpha_1$ y $\beta_1$, por lo que hemos llegado a un absurdo.
 
 
 \end{enumerate}
