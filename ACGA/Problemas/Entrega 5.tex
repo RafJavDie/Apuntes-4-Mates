@@ -1,12 +1,13 @@
 \documentclass[twoside]{article}
 \usepackage{../../estilo-ejercicios}
-
+\usepackage{comment}
 %--------------------------------------------------------
 \begin{document}
 
 \title{Algebra Conmutativa y Geometría Aplicada}
 \author{Javier Aguilar Martín, Rafael González López}
 \maketitle
+
 \begin{ejercicio}{1}\
 Sea $I \subseteq k[x_0, x_1,\dots, x_n]$ un ideal.
 \begin{enumerate}
@@ -58,24 +59,36 @@ homogéneas de $f$ también están en $I$.
 k[x_0, x_1,\dots, x_n]$ \textbf{homogéneos} tales que $fg \in I$ se tiene que $f \in I$ o $g \in I$.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}\
+\begin{solucion}
 \begin{enumerate}
-\item Supongamos que $I$ es homogéneo, es decir, (dado que estamos en un anillo noetheriano), $I=\langle f_1,\dots, f_m\rangle$ con $f_i$ son homogéneos. Sea $f\in I$, sabemos que $f=\sum_{i=1}^mf_ig_i$ con $g_i\in k[x_0,x_1,\dots,x_n]$. Sea $g_{ij}$ la componente homogénea de grado $j$ de $g_i$, donde $d=\max_{i} deg(g_i)$. Entonces
+\item[]
+\item Supongamos que $I$ es homogéneo, es decir, (dado que estamos en un anillo noetheriano), $I=\langle f_1,\dots, f_m\rangle$ con $f_i$ son homogéneos. Sea $f\in I$, sabemos que $f=\sum_{i=1}^mf_ig_i$ con $g_i\in k[x_0,x_1,\dots,x_n]$. Sea $g_{ij}$ la componente homogénea de grado $j$ de $g_i$, donde $d=\max_{i} \deg{g_i}$. Entonces
 $$f=\sum_{i=1}^m f_i g_i= \sum_{i=1}^m\sum_{j=0}^d f_ig_{ij}.$$
 Obviamente, $f_i g_{ij}$ es un polinomio homogéneo, por ser producto de homogéneos. Agrupando, tenemos que cada componente homogénea de $f$ es la forma $ \sum_{h,k} f_hg_{hk} = \sum_{h}f_h\sum_{k} g_{hk}= \sum_{h}f_h q_h$, luego pertenecen a $I$.
 
- Supongamos que las componentes homogéneas de $f$ están en $I$ $\forall f \in I$. Como $k[x_0,x_1,\dotsc,x_n]$ es noetheriano, sabemos que $I=\langle f_1,\dots, f_m\rangle$. Sea $f_{ij}$ la componente homogénea de grado $j$ de $f_i$, tomando índice hasta $d=\max_{i} deg(f_i)$. Si $S=\{f_{ij} \mid i=1,\dotsc m,\,j=0,\dotsc d\}$ entonces, como $S\subset I$ por hipótesis, $\gene{S} \subset I$. La inclusión recíproca es trivial, pues con los elementos de $S$ podemos escribir los $f_i$. Por tanto $I=\gene{S}$, es decir, está generado por polinomios homogéneos.
+Recíprocamente, supongamos que las componentes homogéneas de $f$ están en $I$ $\forall f \in I$. Como $k[x_0,x_1,\dotsc,x_n]$ es noetheriano, sabemos que $I=\langle f_1,\dots, f_m\rangle$. Sea $f_{ij}$ la componente homogénea de grado $j$ de $f_i$, tomando índice hasta $d=\max_{i} \deg{f_i}$. Si $S=\{f_{ij} \mid i=1,\dotsc m,\,j=0,\dotsc d\}$ entonces, como $S\subset I$ por hipótesis, $\gene{S} \subset I$. La inclusión recíproca es trivial, pues con los elementos de $S$ podemos escribir los $f_i$. Por tanto $I=\gene{S}$, es decir, está generado por polinomios homogéneos.
 
 \item Supongamos que $I$ es radical, entonces en $I$ se cumple la condición para todo $f\in k[x_0,x_1,\dots,x_n]$. En particular, se cumple para los polinomios homogéneos.
 
-Supongamos que se verifica que para todo $f \in k[x_0, x_1,\dots, x_n]$ \textbf{homogéneo} tal que $f^n \in I$ para algún $n \geq 1$ se tiene que $f \in I$. Para ver que es radical, sea $f \in k[x_0, x_1,\dots, x_n]$ tal que $f^n \in I$. Si escribimos $f = \sum_{i=1}^d f_i$ donde $f_i$ es la componente homogénea de grado $i$ de $f$ y $d=\deg{f}$.
+Recíprocamente, supongamos que se verifica que para todo $f \in k[x_0, x_1,\dots, x_n]$ \textbf{homogéneo} tal que $f^n \in I$ para algún $n \geq 1$ se tiene que $f \in I$. Para ver que es radical, sea $f \in k[x_0, x_1,\dots, x_n]$ tal que $f^n \in I$. Por reducción al absurdo, supongamos que $\exists f$ tal que $f^n \in I$ para algún $n\geq 1$ pero $f\notin I$. Podemos escribir $f = \sum_{i=1}^{\deg{f}} f_i$ donde $f_i$ es la componente homogénea de grado $i$ de $f$. 
 
-Vamos a probar el resultado por inducción sobre $n$. Si $n=1$, no hay nada que probar. Supuesto cierto para $n=k$, veamos para $n=k+1$.
+Como $f \notin I$, en particular alguna de sus componentes homogéneas debe no pertenecer a $I$. Sea $e=\max{\{i\mid f_i \notin I\}}$. Consideremos ahora la componente homogénea de $f$ de grado $n\cdot e$. Esto es una suma en $n$ índices
+$$
+(f^n)_{n\cdot e} = \underset{i_1+\dotsc+i_n=ne}{\sum_{i_1,\dotsc,i_n =1}^d} f_{i_1}\cdots f_{i_n}
+$$
+Por hipótesis, si $i>e$ entonces $f_i \in I$. Por el Principio del Palomar, en cada sumando salvo $f_e^n$, debe existir un $i_j >e$. Por tanto, todos los sumandos pertenecen a $I$ salvo, a priori, $f_e^n$. Como $f^n \in I$, por el primer apartado sus componentes homogéneas también, luego $(f^n)_{n\cdot e}\in I$ y, por tanto, $f_e^n \in I$. Pero por hipótesis, esto implica que $f_e\in I$, lo cuál es una contradicción.
+\item Supongamos que $I$ es primo, entonces en $I$ se cumple la condición para todo $f\in k[x_0,x_1,\dots,x_n]$. En particular, se cumple para los polinomios homogéneos.
 
-\item Análogo a la primera parte del segundo apartado.
-
-
+Recíprocamente, supongamos que para todos $f, g \in
+k[x_0, x_1,\dots, x_n]$ \textbf{homogéneos} tales que $fg \in I$ se tiene que $f \in I$ o $g \in I$. Por reducción al absurdo, supongamos que $\exists f,g \notin I$ tales que $fg\in I$. Razonando como en los apartados anteriores, descomponemos $f$ y $g$ en sus componentes homogéneas
+$$
+f =\sum_{i=0}^{\deg f} f_i \qquad g =\sum_{j=0}^{\deg g}g_j
+$$
+Como $f,g\notin I$, en particular alguna de sus componentes homogéneas debe no pertenecer a $I$. Sean $e=\max{\{i\mid f_i\notin I\}}$ y $s=\max{\{j\mid g_i\notin I\}}$, la componente homogénea de $fg$ de grado $s+e$ es 
+$$
+(fg)_{s+e} = f_0g_{s+e}+f_1g_{s+e-1}+\dotsc + f_{s+e-1}g_1 + f_{s+e}g_0 
+$$
+Por hipótesis sobre $e$ y $s$, $\forall i >e$ y $\forall j>s$, $f_i,g_j\in I$. En particular, podemos asegurar que todos los sumandos de la expresión anterior están en $I$ salvo a priori $f_eg_s$. Utilizando el primera apartado, tenemos que $(fg)_{s+e}\in I$ (puesto que $fg\in I$), por lo que usando lo anterior, tenemos que $f_eg_s\in I$. Como $f_e,g_s$ son homogéneos, por hipótesis, tenemos que $f_e,g_s\in I$, lo cuál es una contradicción. 
 \end{enumerate}
-
 \end{solucion}
 \end{document}
