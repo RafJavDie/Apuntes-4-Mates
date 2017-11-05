@@ -1,5 +1,6 @@
 \documentclass[twoside]{article}
 \usepackage{../../estilo-ejercicios}
+\DeclareMathOperator{\Ima}{Im}
 
 %--------------------------------------------------------
 \begin{document}
@@ -7,6 +8,35 @@
 \title{Algebra Conmutativa y Geometría Aplicada}
 \author{Javier Aguilar Martín, Rafael González López}
 \maketitle
+\begin{ejercicio}{4} Sean $X\subset \A_k^n$ e $Y\subset \A_k^m$ dos conjuntos algebraicos, y $\varphi\func{X}{Y}$ un morfismo. El grafo de $\varphi$ es el subconjunto $\Gamma_\varphi$ de $\A_k^{n+m}$ formado por los puntos de la forma $(x,\varphi(x))$ con $x\in X$.
+\begin{enumerate}
+\item Probar que $\Gamma_\varphi$ es un conjunto algebraico isomorfo a $X$.
+\item Si $Z\subset \A_k^n$ es otro conjunto algebraico, probar que $X\cap Z$ es isomorfo a $(X\times Z)\cap \Delta \subset \A^{2n}_k$ donde $\Delta =\{(x,x)\mid x \in \A_k^n\}$ es la diagonal.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+\item[]
+\item Como $\varphi$ es un morfismo, sabemos que existen $m$ funciones regulares $f_1,\dotsc, f_m \in \mathcal{A}(X)$ tales que $\varphi = (f_1,\dotsc,f_m)$. Tengamos en cuenta que $\Gamma_\varphi$ puede verse como la preimagen de la aplicación $\varphi\times Id \func{X\times Y}{Y\times Y}$ de la diagonal $\{(y,y)\mid y\in Y\}$. La aplicación $\phi \times Id$ es claramente continua por ser producto de aplicaciones continua, por lo que si la diagonal es algebraica en $Y\times Y$, tendremos que $\Gamma_\varphi$ es algebraico. Para ver esto último, basta considerar que
+$$
+\Delta(Y) = \V(x_1-y_1,\dotsc,x_n-y_n)
+$$
+Donde $(x_1,\dotsc,x_n,y_1,\dotsc,y_n)$ son las coordenadas de $Y\times Y$
+
+
+
+Veamos que $X$ y $\Gamma_\varphi$ son isomorfos. Consideremos la aplicación $\gamma\func{X}{\Gamma_\varphi}$ dada por $x\to (x,\varphi(x))$. Obviamente, $\gamma$ es un morfismo entre ambos conjuntos algebraicos, pues $\gamma = (\pi_1,\dotsc,\pi_n,f_1,\dotsc,f_m)$, donde $\pi_i(x_1,\dotsc,x_n)=x_i$ (todas funciones regulares). Es trivial ver que $\delta\func{\Gamma_\varphi}{X}$ dada por $\delta = (\pi_1,\dotsc,\pi_n)$ es regular y $\gamma \circ \delta = id_X$, $\delta \circ \gamma = id_{\Gamma_\varphi}$. Por tanto, $\gamma$ es un isomorfismo, como queríamos probar.
+\item Tengamos en cuenta que 
+$$
+(X\times Z)\cap \Delta = \{(x,z)\mid x\in X, z\in Z, x=z\} = \{(y,y)\mid y\in X\cap Z\} 
+$$
+
+Naturalmente este conjunto es algebraico, basta usar el apartado anterior tomando como dominio e imagen $X\cap Z$ y como $\varphi$ la identidad. Entonces $\Gamma_\varphi = (X\times Z)\cap \Delta$. Basta comprobar trivialmente que la aplicación $\delta\func{X\cap Z}{(X\times Z)\cap \Delta}$ dada por $\delta = (\pi_1,\dotsc,\pi_n)$ es un isomorfismo cuya inversa $\delta^{-1}\func{(X\times Z)\cap \Delta}{X\cap Z}$ está dada por $\delta^{-1}=(\pi_1,\dotsc,\pi_n,\pi_1,\dotsc,\pi_n)$.
+\end{enumerate}
+
+\end{solucion}
+\newpage 
+
 \begin{ejercicio}{5}\
 Probar que todo automorfismo de $\A^1_k$ es de la forma $\varphi(t) = at+b$
 para algunos $a, b \in k$. Dar un ejemplo de un automorfismo de $\A^2_k$ que no sea
@@ -20,12 +50,12 @@ a_0+a_1(b_0+b_1x+\cdots+b_ex^e)+\cdots+a_d(b_0+b_1x+\cdots+b_ex^e)^d.
 \end{gather*}
 Este es un polinomio de grado $de$, por lo que $d=e=1$. De esta forma $\varphi^*(x)=a_0+a_1x$. Como $\varphi^*(x)=x\circ \varphi=Id\circ\varphi=\varphi$, basta renombrar $a_0=b, a_1=a$ para obtener que $\varphi(t)=at+b$ con $a,b\in k$, como queríamos demostrar.\\
 
-En $\A^2_k$ podemos definir el morfismo $\psi(x,y)=(x,y+x^2)$, que no es lineal. Claramente es un morfismo puesto que sus componentes son polinomios y es endomorfismo porque su imagen está en $\A^2_k$. Además es isomorfismo dado que podemos considerar el morfismo $\phi(x,y)=(x,y-x^2)$ y componerlo de tal modo que
+En $\A^2_k$ podemos definir el morfismo $\psi(x,y)=(x,y+x^2)$, que no es lineal. Claramente es un morfismo puesto que sus componentes son polinomios y es endomorfismo porque su imagen está en $\A^2_k$. Además es isomorfismo dado que podemos considerar el morfismo $\varphi(x,y)=(x,y-x^2)$ y componerlo de tal modo que
 \begin{align*}
-\psi\circ\phi(x,y)=\psi(x,y-x^2)=(x,y-x^2+x^2)=(x,y)\\
-\phi\circ\psi(x,y)=\psi(x,y+x^2)=(x,y+x^2-x^2)=(x,y)
+\psi\circ\varphi(x,y)=\psi(x,y-x^2)=(x,y-x^2+x^2)=(x,y)\\
+\varphi\circ\psi(x,y)=\psi(x,y+x^2)=(x,y+x^2-x^2)=(x,y)
 \end{align*}
-que en ambos casos es la identidad, por lo que $\phi=\psi^{-1}$. 
+que en ambos casos es la identidad, por lo que $\varphi=\psi^{-1}$. 
 
 
 \end{solucion}
