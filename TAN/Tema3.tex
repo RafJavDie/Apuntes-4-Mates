@@ -2,10 +2,10 @@
 \begin{document}
 \chapter{Función Zeta de Riemann}
 \section{Función Gamma}
-Los libros de Funciones de Variable COmpleja suelen incluir un estudio de la función Gamma.
+Los libros de Funciones de Variable Compleja suelen incluir un estudio de la función Gamma.
 \begin{defi}
 La integral
-\[ Γ(s) = \int_0^+{+∞} t^{s-1}e^{-t} dt, \quad \text{Re}(s)>0 \]
+\[ Γ(s) = \int_0^{+∞} t^{s-1}e^{-t} dt, \quad \text{Re}(s)>0 \]
 define una función analica en el semiplano $\text{Re}(s)>0$. A la que se llama función Gamma.
 \end{defi}
 
@@ -35,9 +35,291 @@ Calculamos $\int_0^1 t^{s-1}(1-t)^{s-1} dt$ de dos maneras distintas.
 \[ Γ(s) = \lim_{n\to+∞} \frac{n!n^s}{s(s+1)\cdots(s+n)} \]
 En consecuncia la función $Γ(s)$ no toma nunca el valor 0.
 \end{prop}
+\begin{prop}
+\[ \frac{1}{Γ(s)} = s e^{γs} \prod_{n=1}^{∞} \left(1 + \frac{s}{n}\right) e^{-s/n} \]
+\end{prop}
+\begin{prop}
+\[ Γ'(1) = \int_0^{∞} (\log t) e^{-t} dt = -γ \]
+\end{prop}
+Aunque no veremos la prueba quiero incluir aquí el conocido desarrolo de Stirling. Puede versa la demostración en el libro de Edwards.
+\begin{prop}
+Dado $s$ número complejo no negativo, designemos por $θ$ el argumento de $s$ tal que $|θ| < π$, se tiene entonces
+\[ \log Γ(s) = \left(s - \frac{1}{2}\right) \log s - s + \log \sqrt{2π} + \frac{B_2}{2s} + \frac{B_4}{4\cdot 3 \cdot s^3} + \dots + \frac{B_{2n}}{2n(2n-1)s^{2n-1}} + J_n(s) \]
+donde
+\[ |J_n(s)| ≤ \frac{|B_{2n+2}|}{(2n+1)(2n+2)} \frac{1}{\cos^{2n+2}\frac{1}{2}θ} \frac{1}{|s|^{2n+1}} \]
+Los $B_n$ son los números de Bernoulli ($B_0=1$, $B_2 = 1/6$, $B_4=-1/30$, $B_6 = 1/42$, $B_8 = -1/30$, \dots).
+\end{prop}
+
 \section{Función Zeta de Riemann}
+El libro de Karatsuba es una buena referencia (salvo por la traducción y la prueba de la fórmula de Poisson). Muchos libros de Teoría de números hacen una exposición de las propiedade de la función $ζ(s)$.
+\begin{defi}
+La serie
+\[ ζ(s) = \sum_{n=1}^{∞} \frac{1}{n^s}, \quad \Re(s) > 1 \]
+define una función analítica en el semiplano $\Re(s) > 1$. A la que se llama función zeta de Riemann.
+\end{defi}
+Riemann probó que esta función se extiende a una función meromorfa en todo el plano, con un único polo en el punto $s = 1$. Naturalmente se llama función zeta de Riemann a esta prolongación única.
+\begin{teorema}[Producto de Euler]
+Para $\Re(s)>1$ el producto siguiente es convergente y se da la igualdad
+\[ ζ(s) = \prod_p \left(1-\frac{1}{p^s}\right)^{-1}, \quad \Re(s) > 1 \]
+\end{teorema}
+\begin{coro}
+La función $ζ(s)$ no se anula en el semiplano $\Re(s)>1$.
+\end{coro}
+\begin{teorema}
+La función $ζ(s)$ se prolonga a una función meromorfa en el semiplano $\Re(s) > 0$. Para $\Re(s) > 0$ y todo número real $x > 0$ se tiene
+\[ ζ(s) = \sum_{n ≤ x} \frac{1}{n^s} + \frac{x^{1-s}}{s-1} + \frac{\{x\}-\frac{1}{2}}{x^s} + s \int_x^{+∞} \frac{1/2-\{u\}}{u^{s+1}} du \]
+\end{teorema}
+\begin{coro}
+La función $ζ(s)$ es analítica en el semiplano $\Re(s) > 0$ salvo en el punto $s = 1$. En el punto $s = 1$ la función $ζ(s)$ posee un polo simple de residuo igual a $1$.
+\end{coro}
+Pasamos ahora a probar la ecuación funcional de la funcion $ζ(s)$. Riemann dio tres emostraciones y posteriormente se han visto numerosas más. La más instructiva es la segunda d Riemann. Esta prueba depende de una propiedad de la función $θ$ definida por
+\[ θ(x) = \sum_{n \in \Z} e^{-πn^2x}, \quad x > 0 \]
+\begin{teorema}[Fórmula de Poisson]
+\[ θ\left(\frac{1}{x}\right) = \sqrt{x} θ(x), \quad x > 0 \]
+\end{teorema}
+Un primer paso intermedio es relacionar la función $ζ(s)$ y la función $θ(x)$.
+\begin{prop}
+\[ π^{-s/2} Γ\left(\frac{s}{2}\right) ζ(s) = \int_0^{+∞} x^{s/2} \frac{θ(x)-1}{2} \frac{dx}{x}, \quad \Re(s) > 1 \]
+\end{prop}
+\begin{prop}
+La función $ζ(s)$ se extiende a una función meromorfa en todo el plano.
+Además para $s \notin \{0,1\}$, se tiene
+\[ π^{-s/2} Γ\left(\frac{s}{2}\right) ζ(s) = \frac{1}{s(s-1)} + \int_1^{+∞} (x^{s/2}+x^{(1-s)/2}\frac{θ(x)-1}{2} \frac{dx}{x} \]
+\end{prop}
+\begin{teorema}[Ecuación funcional] La función $π^{-s/2} Γ(s/2) ζ(s)$ queda invariante al cambiar $s$ po $1-s$, es decir
+\[ π^{-s/2} Γ(s/2) ζ(s) = π^{(s-1)/2} Γ\left(\frac{1-s}{2}\right) ζ(1-s) \]
+\end{teorema}
+\begin{coro}
+La función $ζ(s)$ es meromorfa en todo el plano, tiene un único polo en $s = 1$, no se anula en $\Re(s) > 1$. Tiene cereos simples en los puntos $-2, -4, \dots, -2n, \dots$ y estos son sus únicos ceros en $\Re(s) < 0$. Son los llamados ceros triviales. Los únicos ceros no triviales posibles se encuentra en la banda crítica $0 ≤ \Re(s) ≤ 1$.
+\end{coro}
+
+Riemann probó que existían infinitos ceros no triviales, y afirmó que era muy probable que todos los ceros no triviales se encontraran en la recta $\Re(s)=1/2$. Esta afirmación, que de ser cierta tendría numerosas consecuencias, no ha podido ser probada hasta hoy; es la que se conoce como \textbf{Hipótesis de Riemann}.
+
+Dadas las propiedades de la función $Γ(s)$ podemos escribir la ecuación funcional en varias formas equivalentes
+\[ ζ(s) = χ(s)ζ(1-s), \qquad χ(s) = π^{s-1/2} \frac{Γ((1-s)/2)}{Γ(s/2)} = \frac{(2π)^s}{2Γ(s) \cos(πs/2)} \]
+\[ χ(s)χ(1-s) = 1, \qquad ζ(s) = 2^sπ^{s-1} \sin \frac{πs}{2} Γ(1-s)ζ(1-s) \]
+La ecuación funcional induce a definir las funciones enteras
+\[ ξ(s) = \frac{1}{2} s(s-1)π^{-s/2}Γ(s/2) ζ(s), \quad Ξ(t)=ξ(\frac{1}{2}+it) \]
+Mediante ellas la ecuación funcional es equivalente a cualquiera de estas dos
+\[ ξ(s) = ξ(1-s), \qquad Ξ(t)=Ξ(-t) \]
 \section{El producto infinito de la función Zeta}
+La existencia de una expresión de la función $Ξ(t)$ como producto infinito fuue anunciada por Riemann. Posteriormente Hadamard consguió probar teoremas generales sobre funciones enteras del cual se desprendía este hecho. Este fué un paso esencial en la prueba del teorema de los números primos, de hecho, esta fué la motivación de Hadamard para probar estos teoremas.
+
+Dado que no todos los alumnos han visto la demostración de estos teoremas, daremos aquí la prueba siguiendo en gran parte el camino que esbozó Riemann en su trabajo.
+
+\begin{prop}[Principio del argumento]
+Sea $f : Ω \to \C$ una función analítica. $P \subset Ω$ un polígono cerrado y convexo, $\partial P$ la frontera orientada en el sentido contario a las agujas del relo. Si $f$ no se anula en la frontera de $P$ tendremos
+\[ \frac{1}{2 π i} \int_{\partial P} \frac{f'(z)}{f(z)} dz = N(P) \]
+donde $N(P)$ es el número de ceros de $f$ en $P$ contados cada uno según su multiplicidad
+\end{prop}
+
+\begin{teorema}
+Existe una constante $C < +∞$ tal que para $R > e$ y $|z| < R$ se tiene
+\[ |Ξ(z)|≤ e^{C R \log R} \]
+\end{teorema}
+
+\begin{prop}
+Sea $f$ analítica y acotada en el disco de centro $0$ y radio $R$. Sea $M$ la cota de $f$ en dicho disco y $a$ un punto tal que $0 < |a| < R$. Si $f$ no se anula en el segmento $[0,a]$,
+\[ \left|\Re\left(\frac{1}{2πi} \int_0^a \frac{f'(z)}{f(z)} dz\right)\right| ≤ \frac{1}{2} + \frac{1}{2}\left(\log \frac{M}{|f(0)|}\right)\left(\log \frac{R}{|a|}\right)^{-1} \]
+\end{prop}
+
+\begin{teorema}
+Sea $N(R)$ el número de ceros de $Ξ(z)$ en el disco de centro $0$ y radio $R$, se tiene que
+\[ N(R) ≤ CR\log R, \quad R > e \]
+para cierta constante $C$.
+\end{teorema}
+
+Indicaremos por $α$ una variable que recorre los ceros de $Ξ(t)=0$ cada uno con su multiplicidad. Pero dado qu si $Ξ(α)=0$ entonces $Ξ(-α)=0$, vamos a tomar siempre aquellos ceros con $\Re α > 0$. (No hay ningún cero con $\Re α = 0$).
+
+\begin{prop}
+\[ \sum_{\Re α > x} \frac{1}{|α|^2} = \mathcal{O}\left(\frac{\log x}{x} \right) \]
+donde la suma se extiende a ls ceros $α$ de $Ξ(z)$ con $\Re α > x$, contado cada uno tantas veces como indique su multiplicidad. En particular, la serie $\sum_α |α|^{-2}$ es convergente.
+\end{prop}
+
+Más adelante veremos que la suma anterior tiene infinitos términos, es decir, que $Ξ(z)$ tiene infinitos ceros, pero en el teorema anterior no se presupone esto.
+
+En lo que sigue denotaremos por $\log $ aquella rama del logaritmo definida por
+\[ \log z = \log |z| + i \arg(z), \quad \text{con }-π < \arg (z) < π \]
+en todo el plano menos el eje real negativo. También llamaremos $Ω_0$ la región del plano definida por
+\[ Ω_0 = \C \setminus \bigcup_α \{xα : x \in \R, |x| ≥ 1\} \]
+Este es un abierto estrellado respecto del origen, es decir, para cada punto $z \in Ω_0$ el segmento cerrado que une $z$ y $0$ está contenido en $Ω_0$. Por tanto, $Ω$ es simplemente conexo.
+
+\begin{prop}
+La serie
+\[ f(t) = \sum_{\Re α > 0} \log \left(1- \frac{t^2}{α^2}\right) \]
+define una función analítica en $Ω_0$.
+\end{prop}
+
+\begin{prop}
+Sea $f$ la función definida en la proposición anterior, existe una constante $C$ tal que
+\[ |\text{Im} f(z)| ≤ C |z| \log |z|, \quad z \in Ω_0, |z| > e \]
+\end{prop}
+
+\begin{prop}
+Existe una constante $C$ tal que
+\[ |\text{Im} \log Ξ(z)| ≤ C |z| \log |z|, \quad z \in Ω_0, |z| > e \]
+\end{prop}
+
+\begin{prop}
+Sea $f$ una función analítica definida en el disco unidad $D$ tal que $f(0)=0$. Suponemos que $\Re f(z) ≤ A$ para todo $z \in D$, entonces si $0 < r < 1$, se tiene
+\[ |f(z)| ≤ \frac{2r}{1-r}A, \quad \text{cuando }|z| ≤ r \]
+\end{prop}
+
+\begin{teorema}
+En $Ω_0$ se tiene la igualdad
+\[ \sum_{\Re α > 0} \log\left(1-\frac{t^2}{α^2}\right) + \log Ξ(0) = \log Ξ(t) \]
+\end{teorema}
+
+\begin{coro}
+Para todo $t \in \C$
+\[ Ξ(t) = Ξ(0) \prod_{\Re α > 0} \left(1-\frac{t^2}{α^2}\right) \]
+\end{coro}
+
+\begin{teorema}
+Para todo $s \in \C$
+\[ ζ(s) = Ξ(0)\frac{π^{s/2}}{(s-1)Γ(1+s/2)} \prod_{\Re α > 0} \left(1 + \frac{(s-1/2)^2}{α^2}\right) \]
+\end{teorema}
+
+\begin{teorema}
+Para todo $s \in \C$ se tiene
+\[ ζ(s) = \frac{1}{2}\frac{π^{s/2}}{(s-1)Γ(1+s/2)} \prod_{\text{Im} ρ > 0} \left\{\left(1-\frac{s}{ρ}\right)\left(1 - \frac{(1}{1-ρ}\right)\right\} \]
+En consecuencia, la función $ζ(s)$ tiene infinitos ceros no triviales.
+\end{teorema}
+
+Designaremos por $(ρ_n)_{n=1}^{∞}$ la sucesión formada por los ceros no triviales de la función $ζ(s)$ ordenados según el orden creciente del valor absoluto de sus partes imaginarias, y cuando sean iguales las magnitudes absolutas de sus partes imaginarias en orden arbitrario.
+
+\begin{coro}
+Para cierta consante $A$ se tiene
+\[ \frac{ξ'(s)}{ξ(s)} = A + \sum_n \left(\frac{1}{s-ρ_n} + \frac{1}{ρ_n}\right)\]
+
+Por consiguiente
+\[ \frac{ζ'(s)}{ζ(s)} = - \frac{1}{s-1} + \sum_n \left(\frac{1}{s-ρ_n} + \frac{1}{ρ_n}\right) + \sum_{n=1}^{∞} \left(\frac{1}{s+2n}-\frac{1}{2n}\right) - 1 + \log 2π\]
+\end{coro}
+
 \section{Teoremas sobre los ceros}
+\begin{lemma}
+Para $|s|≥1$ y $σ ≥ -1$ se cumple la acotacion
+\[ \left|\sum_{n=1}^{∞} \left(\frac{1}{s+2n}-\frac{1}{2n}\right)\right| ≤ \frac{1}{2} \log |s| + 4 \]
+\end{lemma}
+
+\begin{teorema}
+Sean $ρ_n = β_n +i γ_n$, $n=1,2,\dots,$ los ceros no triviales de la función zeta. Si $T≥2$ se tiene
+\[ \sum_{n=1}^{∞} \frac{1}{1+(T-γ_n)^2} ≤ c \log T \]
+\end{teorema}
+
+En la composición en fracciones simples de $ζ'(s)/ζ(s)$ poner $s = 2 + iT$ y separa la parte real.
+
+\begin{coro}
+El número de ceros $ρ_n$ de la función zeta para los cuales $T ≤ \text{Im}(ρ_n) ≤ T + 1$ no sobrepasa a $c_4 \log T$.
+\end{coro}
+
+\begin{coro}
+Para $T≥2$ se tiene
+\[ \sum_{|T-γ_n|>1} \frac{1}{|T-γ_n|^2} = \mathcal{O}(\log T) \]
+\end{coro}
+
+\begin{coro}
+Sea $s = σ + it$, donde $-1≤σ≤2$ y $|t|≥2$, entonces
+\[ \frac{ζ'(s)}{ζ(s)} = \sum_{|t-γ_n|≤1} \frac{1}{s-ρ_n} + \mathcal{O}(\log |t|) \]
+donde la suma se extiende a todos los ceros $ρ_n$ de la función $ζ(s)$ que satisface $|t-\text{Im}(ρ_n)|≤1$.
+\end{coro}
+
+Usar la expresión en fracciones simples de $ζ'(s)/ζ(s)$, acotar los términos usando los corolarios. Eliminar los términos $1/ρ_n$ restando la misma expresión en $s = 2 + it$.
+
+Esencial para obtener el teorema de los números primos, es demostrar que la función $ζ(s)$ no se anula en la recta $\Re(s)=1$. En lo que sigue demostramos más, que existe una estrecha banda alrededor de dicha línea donde no hay ceros. Este tipo de teoremas, como veremos, son esenciales para obtener cotas del error en el teorema de los números primos.
+
+\begin{teorema}
+Para $σ > 1$ y todo $t$ se verifica la desiguladad
+\[ |ζ(σ)^3 ζ(σ+it)^4 ζ(σ+2it)| ≥ 1 \]
+Como consecuencia $ζ(1+it) \neq 0$ para $t$ real.
+\end{teorema}
+
+\begin{teorema}[de la Vallée-Puissin]
+Existe una constante absoluta $c > 0$ tal que no hay ceros de la función zeta en el dominio
+\[ \Re(s) = σ ≥ 1 - \frac{c}{\log(t+e)} \]
+\end{teorema}
+
+La prueba se basa fuertemente en el hecho de que
+\[ 3\left\{-\frac{ζ'(σ)}{ζ(σ)}\right\} + 4 \left\{-\Re\frac{ζ'(σ+it)}{ζ(σ+it)}\right\} + \left\{-\Re\frac{ζ'(σ+2it)}{ζ(σ+2it)}\right\} ≥ 0 \]
+
+Suponiendo que $β+iγ$ es un cero de $ζ(s)$ se obtienen las cotas $-\dfrac{ζ'(s)}{ζ(s)} < \dfrac{1}{σ-1}+B_1$,
+\[ -\Re\frac{ζ'(σ+iγ)}{ζ(σ+iγ)} < 2 \log |γ| - \frac{1}{σ-β}+B_2, \quad -\Re\frac{ζ'(σ+2iγ)}{ζ(σ+2iγ)} < 2 \log |γ| + B_3 \]
+
+\begin{teorema}
+Existe una consante $α > 0$ tal que en la región
+\[ B_α = \left\{ σ+it \in \C : 1 - \frac{α}{\log(t+2)} ≤ σ ≤ 2 \right\} \]
+nose anula la función $ζ(s)$ y además para $s = σ+it$
+\[ \left|\frac{ζ'(s)}{ζ(s)}\right| ≤ A (\log t)^2, \quad t > e, s\in B_α \]
+\end{teorema}
+
 \section{Relación entre la suma de los coeficientes de una serie de Dirichlet y la función dada por esta serie}
+El tema está bien desarrollado en el libro de Karatsuba y el de Davenport.
+
+En este apartado consideramos una serie de Dirichlet $f(s)$ y la función $S(x)$
+\[ f(s) = \sum_{n=1}^{∞} \frac{a_n}{n^s}; \quad S(x) = \sum_{n≤x} a_n \]
+
+Este es el camino natural de probar el teorema de los números primos y muchos más otros resultado de carácter análogo. El método empleado se denomina \textbf{método de integración compleja}.
+
+En primer lugar necesitamos un lema técnico.
+
+\begin{lemma}
+Sea $x > 0$, $b > 0$ y $T > 0$ números reales. Se tiene entonces para $x \neq 1$
+\[ \frac{1}{2πi} \int_{b-iT}^{b+iT} x^s \frac{ds}{s} = \begin{cases}
+	1+\mathcal{O}\left(\dfrac{x^b}{T|\log x|}\right), &\text{ si }x>1\\
+	\mathcal{O}\left(\dfrac{x^b}{T|\log x|}\right), &\text{ si }0<x<1	
+\end{cases} \]
+\end{lemma}
+
+\begin{teorema}
+Supongamos que la serie (1) para $f(s)$ converge absolutamente para $\Re(s) = σ > 1$, y que $|a_n| ≤ A(n)$, donde $A(x)$ es una función monótona creciente. Supongamos que además cuando $σ \to 1^+$
+\[ \sum_{n=1}^{∞} \frac{|a_n|}{n^σ} = \mathcal{O}\left(\frac{1}{(σ-1)^α}\right), \quad α > 0\]
+Entonces para cualesquiera $b_0>b>1$, $T≥1$ y $x=N+1/2$ se tiene
+\[ S(x) = \sum_{n≤x} a_n = \frac{1}{2πi} \int_{b-iT}^{b+iT} f(s) \frac{x^s}{s} ds ++ \mathcal{O}\left(\frac{x^b}{T(b-1)^α}\right) + \mathcal{O}\left(\frac{xA(2x)\log x}{T}\right)\]
+donde las constantes en los símbolos $\mathcal{O}$ dependen sólo de $b_0$.
+\end{teorema}
+
 \section{Teorema de los números primos}
+El tema está bien desearrollado en el libro de Karatsuba y el de Davenport.
+
+\begin{teorema}[de la Valleé Poussin]
+Existe una constante absoluta $c > 0$, tal que
+\[ ψ(x) = \sum_{n≤x} Λ(n) = x + \mathcal{O}\left(xe^{-c\sqrt{\log x}}\right) \]
+\end{teorema}
+
+\begin{teorema}
+\[ π(x) = \sum_{p≤x} 1 = \int_2^x \frac{du}{\log u} + \mathcal{O}\left(xe^{-\frac{c}{2} \sqrt{\log x}}\right) \]
+\end{teorema}
+
+\begin{prop}
+Para todo $n \in \N$, para $x \to +∞$ se tiene
+\[ \int_2^x \frac{dt}{\log t} = \frac{x}{\log x} + \frac{x}{\log^2 x} + \frac{2!x}{\log^3 x} + \cdots + \frac{(n-1)!x}{\log^n x} + \mathcal{O}\left(\frac{x}{\log^{n+1}x}\right) \]
+\end{prop}
+
+\begin{coro}
+\[ π(x) - \frac{x}{\log x} \sim \frac{x}{\log^2 x} \]
+\[ π(x) - \frac{x}{\log x - A} \sim \begin{cases}
+	(1-A)\dfrac{x}{\log^2 x} &\text{ si }A \neq 1\\
+	\dfrac{x}{\log^3 x} &\text{ si }A=1
+\end{cases}\]
+\end{coro}
+
+Como otras veces la notación $f(x) \sim g(x)$ quiere decir que $\lim\limits_{x \to +∞} \dfrac{f(x)}{g(x)} = 1$.
+
+\begin{teorema}
+Sea $2 ≤ T ≤ x$. Entonces
+\[ ψ(x) = \sum_{n≤x} Λ(n) = x - \sum_{\text{Im}(ρ)≤T} \frac{x^ρ}{ρ} + \mathcal{O}\left(\frac{x\log^2 x}{T}\right) \]
+donde $ρ$ recorre los ceros de la función zeta contenidos en la banda crítica.
+\end{teorema}
+
+\begin{lemma}
+Sea $1<a<b$ con $b-a>2$, existe un valor $a<T<b$ de forma que
+\[ \left|\frac{ζ'(σ+iT)}{ζ(σ+iT)}\right| ≤ C \log^2 T, \quad -1≤σ≤2 \]
+\end{lemma}
+
+\begin{teorema}
+Sea $R(x)$ definido por la igualdad
+\[ ψ(x) = x + R(x) \]
+Existe una constante absoluta $C$, de tal manera que si vale la hipótesis de Riemann hasta la altura $T_0$ y $x < T_0^2$, entonces
+\[ |R(x)| ≤ C \sqrt{x} (\log^3 x) \]
+\end{teorema}
 \end{document}
