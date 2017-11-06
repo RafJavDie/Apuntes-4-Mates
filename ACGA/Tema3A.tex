@@ -208,13 +208,37 @@ Recíprocamente, supongamos que $\phi^\star$ es inyectivo. Sea $f\in\calA(Z)$ un
 
 Por tanto, un morfismo dominante $\phi:Y\to Z$ de variedades cuasi-afines induce un homomorfismo (necesariamente inyectivo) $\phi^\star:\KK(Z)\hookrightarrow\KK(Y)$ de cuerpos.
 
+\begin{ejs}
+\begin{enumerate}
+
+
+\item $\varphi: \V(xy-1)\subseteq\A^2\to\A^1: (x,y)\mapsto x$. $\varphi(X)=\A^1-\{0\}$, luego $\varphi$ es dominante. Entonces $\varphi^*:k[t]\to k[x,y]/\langle xy-1\rangle\cong k[x,1/x]: t\mapsto x$, luego $f(t)\mapsto f(x)$, que claramente es inyectivo. 
+
+\item La imagen de un morfismo no tiene por qué ser abierto ni cerrado, como en el caso de $\varphi:\A^2\to\A^2: (x,y)\mapsto (x,xy)$, pero sí es dominante.
+\end{enumerate}
+\end{ejs}
 
 \section{Isomorfismos}
 
 \begin{defi} Un morfismo $\phi:Y\to Z$ entre variedades cuasi-afines se dice un {\bf isomorfismo} si existe un morfismo $\psi:Z\to Y$ tal que $\phi\circ \psi:Z\to Z$ y $\psi\circ \phi:Y\to Y$ son el morfismo identidad. En ese caso, $\psi$ se denomina el {\bf inverso} de $\phi$, y se denota por $\phi^{-1}$. Dos variedades cuasi-afines se dicen {\bf isomorfas} si existe un isomorfismo entre ellas.
  \end{defi}
+ 
+\begin{ej}\
+\begin{enumerate}
+\item $X=\A^1$, $Y=\V(y-x^2)$. Podemos dar el isomorfismo $t\mapsto (t,t^2)$ con inversa $(x,y)\mapsto x$. En general este razonamiento vale para cualquier curva de la forma $\V(y-f(t))$, sustituyendo el isomorfismo anterior por $t\mapsto (t,f(t))$. 
+\item $X=\A^1-\{0\}$, $Y=\V(xy-1)\subseteq\A^2$. $t\mapsto (t,1/t)$ con inversa $(x,y)\mapsto x$.
+\item $X=\A^1$, $Y=\V(y^2-y^3)$. Damos el morfismo $t\mapsto(t^2,t^3)$ con inversa definida a trozos como $(x,y)\mapsto y/x$ si $x\neq 0$ y 0 en caso contrario. La pregunta es si realmente esta función definida a trozos es un morfismo, para ello debería existir un polinomio $f(x,y)$ tal que $f(x,y)=\frac{x}{y}\ \forall (x,y)\in Y\Rightarrow xf(x,y)-y=0\ \forall (x,y)\in Y\Rightarrow xf(x,y)-y\in\I(Y)=\langle y^2-x^3\rangle$. Pero no es posible que un múltiplo del polinomio que genera el ideal sea de esa forma porque no tienen términos en $y$. Este es un ejemplo de morfismo biyectivo que no es isomorfismo.
 
- Por el corolario \ref{equivafin}, $\phi$ es un isomorfismo de variedades \emph{afines} si y sólo si $\phi^\star$ es un isomorfismo de $k$-álgebras, y dos variedades \emph{afines} son isomorfas si y sólo si sus anillos de coordenadas lo son. Esto no es cierto en general si las variedades son sólo cuasi-afines, como muestra el primer ejemplo siguiente:
+De existir dicho isomorfismo, entonces $k[t]\cong k[x,y]/\langle y^2-x^3\rangle$. Como $k[t]$ es DIP, $k[x,y]/\langle y^2-x^3\rangle$ también debe serlo, por lo que $I=\langle \overline{x},\overline{y}\rangle$ debe ser principal, de la forma $\langle \overline{h}(x,y)\rangle$. En $k[x,y]$ esto equivalen a decir que $\langle x,y\rangle=\langle h(x,y),y^2-x^3\rangle$. O sea, que podemos escribir 
+\begin{align*}
+&x=a(x,y)h(x,y)+b(x,y)(y^2-x^3)\\
+&y=c(x,y)h(x,y)+d(x,y)(y^^2x^3)
+\end{align*}
+Esto es imposible observando las derivadas (tiene que ver con el punto singular de la curva).
+\end{enumerate}
+\end{ej}
+
+ Por el corolario \ref{equivafin}, $\phi$ es un isomorfismo de variedades \emph{afines} si y sólo si $\phi^\star$ es un isomorfismo de $k$-álgebras, y dos variedades \emph{afines} son isomorfas si y sólo si sus anillos de coordenadas lo son. Esto no es cierto en general (la implicación directa sí lo es) si las variedades son sólo cuasi-afines, como muestra el primer ejemplo siguiente:
 
 \begin{ejs}
  \emph{
