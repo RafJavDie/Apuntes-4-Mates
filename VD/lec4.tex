@@ -111,7 +111,7 @@ Obsérvese que si ${\rm dim}(M)={\rm dim}(N)$, entonces $p\in M$ es regular para
 isomorfismo, es decir, si y sólo si $J_p(f)\neq 0$.
 \begin{defi}
 Una aplicación $f\in\mathcal{F}(M,N)$ se dice que es una {\bf Inmersión} si es no singular en todos los puntos de
-$M$, es decir, si su diferencial en cada punto es una aplicación inyectiva y se dice que es una {\bf Sumersión} sºi
+$M$, es decir, si su diferencial en cada punto es una aplicación inyectiva y se dice que es una {\bf Sumersión} si
 todos los puntos de $M$ son regulares para $f$, es decir, si su diferencial en cada punto es una aplicación
 sobreyectiva.
 \end{defi}
@@ -125,12 +125,15 @@ tal que, para cualquier $u\in T_p(M)$, $(f_p^*\om)u=\om(f_{*p}u)$.
 {\bf (Regla de la Cadena de la Codiferencial).} Sean $f\in\mathcal{F}(M,N)$, $g\in\mathcal{F}(N,P)$ y $p\in M$.
 Entonces, se verifica que $(g\circ f)_p^*=f_p^*\circ g_{f(p)}^*$.
 \end{prop}
+\begin{dem}
+Sea $u^*\in T^*_{g(f(p))}(P)$ y $v\in T_p(M)$.  $$((g\circ f)^*_p u^*)v=u^*((g\circ f)_{*p}v)=u^*(g_{*f(p)}\circ (f_{*p}v))=(g^*_{f(p)}u^*)(f_{*p}v)=(f^*_p(g^*_{f(p)}u^*))v$$ $\QED$
+\end{dem}
 
 \subsubsection{Recordatorio Álgebra Lineal}
 
-Dada $F:V\to W$ lineal, con bases en cada espacio $B_1=\{v_1,\dots,v_m\}$ y $B_2=\{w_1,\dots,w_m\}$, y matriz $M_{B_1,B_2}(F)=A=(a_{ij})$, entonces $Fv_i=\sum_{j=1}^m a_{ij}w_j$. Tomando la aplicación dual obtenemos $F^*:W^*\to V^*$, $B_2^*=\{w^*_1,\dots,w^*_m\}$, $B_1^*=\{v^*_1,\dots,v^*_m\}$ tales que $w^*_i(w_j)=\delta_{ij}$ y $v^*_i(v_j)=\delta_{ij}$, con $M_{B^*_1,B^*_2}(F^*)=B=(b_{ij})$, de modo que $F^*w^*_j=\sum_{j=1}^m b_{ji}v_i^*$.
+Dada $F:V\to W$ lineal, con bases en cada espacio $B_1=\{v_1,\dots,v_m\}$ y $B_2=\{w_1,\dots,w_m\}$, y matriz $M_{B_1,B_2}(F)=A=(a_{ij})$, entonces $Fv_i=\sum_{j=1}^m a_{ij}w_j$. Tomando la aplicación dual obtenemos $F^*:W^*\to V^*$, $B_2^*=\{w^*_1,\dots,w^*_m\}$, $B_1^*=\{v^*_1,\dots,v^*_m\}$ tales que $w^*_i(w_j)=\delta_{ij}$ y $v^*_i(v_j)=\delta_{ij}$, con $M_{B^*_1,B^*_2}(F^*)=B=(b_{ij})$, de modo que $F^*w^*_j=\sum_{j=1}^m b_{ji}v_i^*$. Como $(F^*w^*)v=w^*(Fv)$
 
-$$F^*w^*_j)v_k=\sum_i b_{ji}v^*i(v_k)=b_{jk}$$
+$$(F^*w^*_j)v_k=\sum_i b_{ji}v^*i(v_k)=b_{jk}$$
 $$w^*_j(Fv_k)=w^*_j(\sum_{j=1}^ma_{ki}w_i)=\sum_i a_{ki}w^*_j(w_i)=a_{kj}$$
 Luego $B=A^t$. 
 
@@ -141,6 +144,10 @@ Sean $f\in\mathcal{F}(M,N)$ y $p\in M$. Entonces, se verifican:
 \item $f_{*p}$ es sobreyectiva si y sólo si $f_p^*$ es inyectiva.
 \end{enumerate}
 \end{prop}
+
+\begin{dem}
+La inyectividad y la sobreyectividad dependen de que el rango de la matriz de la transformación tenga rango máximo. Como el functor es contravariante, las dimensión del espacio de llegada se intercambia con la del de salida y recíprocamente, y de ahí el resultado. $\QED$
+\end{dem}
 \newpage
 
 \section{Noción de Subvariedad.}
