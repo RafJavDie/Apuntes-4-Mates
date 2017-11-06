@@ -8,6 +8,112 @@
 \author{Rafael González López}
 \maketitle
 
+\begin{ejercicio}{1}
+Demostrar que
+\[ \sum_{n≤x} \frac{1}{\sqrt{n}} =  2 \sqrt{x} + A + \mathcal{O}(x^{-1/2}) \]
+\end{ejercicio}
+\begin{sol}
+Basta de aplicar la fórmula:
+\[ \sum_{n≤x} \frac{1}{\sqrt{n}} = \int_1^x \frac{1}{\sqrt{t}}dt + A + \mathcal{O}\left(\frac{1}{\sqrt{n}}\right) = 2 \sqrt{x}-2+A + \mathcal{O}(x^{-1/2}) \]
+\end{sol}
+
+
+\begin{ejercicio}{2}\mbox{}
+\begin{enumerate}[(a)]
+	\item Demostrar que para $x > 2$ se tiene
+	\[ \sum_{n≤x} \frac{\log n}{n} = \frac{(\log x)^2}{2} + \mathcal{O}(1) \]
+	\item Probar que podemos mejorar (a) y probar
+	\[ \sum_{n≤x} \frac{\log n}{n} = \frac{(\log x)^2}{2} + A + \mathcal{O}\left(\frac{\log x}{x}\right) \]
+\end{enumerate}
+\end{ejercicio}
+\begin{sol}
+Aplicando la Fórmula de Abel con $a_n=1/n$ y usando que $\sum_{n≤x} a_n = \log x + γ + \mathcal{O}(1/x)$:
+\begin{align*}
+	\sum_{n≤x} \frac{\log n}{n} & = \log x (\log x + γ + \mathcal{O}(1/x)) - \int_1^x \frac{1}{t}(\log t + γ + \mathcal{O}(1/t))\\
+	& = (\log x)^2 + γ\log x + \mathcal{O}\left(\frac{\log x}{x}\right) - \frac{(\log x)^2}{2} - γ\log x + \mathcal{O}\left(\frac{1}{x}\right) + A\\
+	& = \frac{(\log x)^2}{2} + A + \mathcal{O}\left(\frac{\log x}{x}\right)
+\end{align*}
+donde $A$ se corresponde con el término $-\int \mathcal{O}(1/t^2)$ en $t=1$.
+\end{sol}
+
+\begin{ejercicio}{3}
+Demostrar que para $x ≥ 2$
+\[ \sum_{n≤x} (\log n)^2 = x(\log x)^2 - 2x \log x + 2x + \mathcal{O}((\log x)^2) \]
+\end{ejercicio}
+
+
+\begin{ejercicio}{4}
+Demostrar que
+\[ \sum_{n≤x} \left\{ \frac{x}{n} \right\} = (1-γ)x + \mathcal{O}(x^{1/2}) \]
+donde $\{x\}=x-\lfloor x \rfloor$ denota la parte fraccionaria de $x$.
+\end{ejercicio}
+\begin{sol}
+Recordemos que $\sum_{n≤x} \lfloor x/n \rfloor = \sum_{n≤x} d(n)$ donde $d(n)$ es el número de divisores de $n$\footnote{\url{https://math.stackexchange.com/questions/338432/how-to-prove-the-relation-between-the-floor-function-and-the-number-of-divisors}}.
+\begin{align*}
+	\sum_{n≤x} \left\{ \frac{x}{n} \right\} & = x\sum_{n≤x} \frac{1}{n} - \sum_{n≤x} \lfloor \frac{x}{n}\rfloor = x(\log x + γ + \mathcal{O}(1/x))- \sum_{n≤x} d(n)\\
+	& = x(\log x + γ + \mathcal{O}(1/x))- (x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})\\
+	& = (1-γ)x + \mathcal{O}(\sqrt{x})
+\end{align*}
+\end{sol}
+
+\begin{ejercicio}{5}
+Demostrar que
+\[ \sum_{n≤x} \frac{d(n)}{n} = \frac{1}{2} (\log x)^2 + 2γ\log x + B + \mathcal{O}(x^{-1/2}) \]
+\end{ejercicio}
+\begin{sol}
+Aplicando la fórmula de Abel con $a_n=d(n)$ aplicando el teorema 1.8.1:
+\begin{align*}
+	\sum_{n≤x} \frac{d(n)}{n} & = \frac{x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})}{x} + \int_1^t \frac{x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})}{x^2}\\
+	& = \log x + (2γ-1) + \mathcal{O}(x^{-1/2}) + \frac{(\log x)^2}{2} + (2γ-1)\log x - \mathcal{O}(x^{-1/2}) + A\\
+	& = \frac{(\log x)^2}{2} + 2γ\log x + (2γ-1 + A) + \mathcal{O}(x^{-1/2})
+\end{align*}
+\end{sol}
+
+\begin{ejercicio}{6}
+Demostrar que para todo $x ≥ 1$ se tiene
+\[ \sum_{n≤x} μ(n) \lfloor \frac{x}{n} \rfloor = 1 \]
+\end{ejercicio}
+\begin{sol}
+\end{sol}
+
+\begin{ejercicio}{7}
+Probar que para todo $x ≥ 1$ se tiene
+\[ \left|\sum_{n≤x} \frac{μ(n)}{n}\right| ≤ 1 \]
+\end{ejercicio}
+\begin{sol}
+\end{sol}
+
+\begin{ejercicio}{8}
+Demostrar que
+\[ \sum_{n≤x} \frac{σ(n)}{n} = \frac{π^2}{6} x + \mathcal{O}(\log^2 x) \]
+\end{ejercicio}
+\begin{sol}
+Aplicando la fórmula de Abel con $a_n = σ(n)$:
+\begin{align*}
+	\sum_{n≤x} \frac{σ(n)}{n} & = \frac{1}{x}\left(\frac{1}{12}π^2x^2 + \mathcal{O}(x \log x)\right) + \int_1^x \frac{1}{t^2}\left(\frac{1}{12}π^2t^2 + \mathcal{O}(t \log t)\right)dt\\
+	& = \frac{1}{12}π^2x + \mathcal{O}(\log x) + \frac{1}{12}π^2x + \mathcal{O}(\log^2 x) = \frac{π^2}{6}x + \mathcal{O}(\log^2 x)
+\end{align*}
+\end{sol}
+
+\begin{ejercicio}{9}
+Demostrar que existen constantes positivas $A$ y $B$ tales que para todo $x$ suficientemente grande
+\[ A\sqrt{x} ≤ \sum_{p≤x} \frac{\log p}{\sqrt{p}} ≤ B \sqrt{x}\]
+\end{ejercicio}
+\begin{sol}
+\end{sol}
+
+\begin{ejercicio}{10}
+Demostrar que
+\[ \sum_{n≤x} r(n) = πx + \mathcal{O}(\sqrt{x}) \]
+\end{ejercicio}
+
+\begin{ejercicio}{11}
+Demostar que para todo número natural $k$ y todo $x > 0$ se tiene
+\[ \frac{π(x)}{x} ≤ \frac{φ(k)}{k} + \frac{2k}{x} \]
+Deducir de lo anterior y del teorema de Chebyshe que existe una constante $C > 0$ tal que
+\[ φ(k) ≥ \frac{Ck}{\log k} \quad \forall k≥2 \]
+\end{ejercicio}
+
 \begin{ejercicio}{12}
 Suponiendo la hipótesis de Riemann puede probarse que
 $$
@@ -18,8 +124,6 @@ $$
 \sum_{p\leq x}\frac{\log p}{p} = \log x + A + \mathcal{O}(x^{-1/2}\log^2 x)
 $$
 \begin{sol}
-\end{sol}
-\end{ejercicio}
 Sea $a_n = I_{\mathbb{P}}(n)\log n$, donde $I_{\mathbb{P}}(n)$ es la funcion indicatriz de los números primos. Entonces, suponiendo cierta la hipótesis de Riemann y el resultado anterior, además de aplicar la fórmula de sumación de Abel, obtenemos
 \begin{align*}
 \sum_{p\leq x}\frac{\log p}{p} &= \sum_{n\leq x}\frac{a_n}{n} = \frac{\theta(x)}{x} - \int_1^x \frac{-\theta(t)}{t^2}dt =\\
@@ -43,5 +147,16 @@ Entonces tenemos qué ver el orden del último sumando, pero
 S(x)= \int_x^\infty \frac{U(t)}{t^2}dt = \int_x^\infty \frac{\mathcal{O}(t^{1/2}\log^2 t)}{t^2}dt = \bo{\int_x^\infty  {t^{-3/2}\log^2 t}dt}=\\
 =\bo{\left[-\frac{2(\log^2 t+4\log t + 8}{t^{1/2}}\right]_x^\infty }= \bo{\frac{2(\log^2 x+4\log x + 8)}{x^{1/2}}} = \mathcal{O}(t^{-1/2}\log^2 t)
 \end{gather*}
-Como queríamos probar. 
+Como queríamos probar.
+\end{sol}
+\end{ejercicio}
+
+\begin{ejercicio}{13}
+Suponiendo la hipótesis de Riemann puede probarse que $θ(x) = x + \mathcal{O}(\sqrt{x} \log^2x)$. Admitiendo la hipótesis de Riemann, probar que:
+\[ \sum_{p≤x} \sqrt{p}\log p = \frac{2}{3} x^{3/2} + \mathcal{O}(x\log^2 x) \]
+\end{ejercicio}
+
+\begin{ejercicio}{14}
+¿Para qué valores de $α$ y $β$ $\in \R$ es convergente la serie $\sum\limits_p \dfrac{1}{p^α(\log p)^β}$?
+\end{ejercicio}
 \end{document}
