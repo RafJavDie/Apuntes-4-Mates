@@ -17,6 +17,7 @@ Basta de aplicar la fórmula:
 \[ \sum_{n≤x} \frac{1}{\sqrt{n}} = \int_1^x \frac{1}{\sqrt{t}}dt + A + \mathcal{O}\left(\frac{1}{\sqrt{n}}\right) = 2 \sqrt{x}-2+A + \mathcal{O}(x^{-1/2}) \]
 \end{sol}
 
+\newpage
 
 \begin{ejercicio}{2}\mbox{}
 \begin{enumerate}[(a)]
@@ -36,11 +37,19 @@ Aplicando la Fórmula de Abel con $a_n=1/n$ y usando que $\sum_{n≤x} a_n = \lo
 donde $A$ se corresponde con el término $-\int \mathcal{O}(1/t^2)$ en $t=1$.
 \end{sol}
 
+\newpage
+
 \begin{ejercicio}{3}
 Demostrar que para $x ≥ 2$
 \[ \sum_{n≤x} (\log n)^2 = x(\log x)^2 - 2x \log x + 2x + \mathcal{O}((\log x)^2) \]
 \end{ejercicio}
+\begin{sol}
+\begin{align*}
+	\sum_{n≤x} (\log n)^2 = \int_1^x \log^2 t d[t] = \int_1^x \log^2 t dt - \int_1^x \log^2 t d\{t\}
+\end{align*}
+\end{sol}
 
+\newpage
 
 \begin{ejercicio}{4}
 Demostrar que
@@ -56,6 +65,8 @@ Recordemos que $\sum_{n≤x} \lfloor x/n \rfloor = \sum_{n≤x} d(n)$ donde $d(n
 \end{align*}
 \end{sol}
 
+\newpage
+
 \begin{ejercicio}{5}
 Demostrar que
 \[ \sum_{n≤x} \frac{d(n)}{n} = \frac{1}{2} (\log x)^2 + 2γ\log x + B + \mathcal{O}(x^{-1/2}) \]
@@ -69,6 +80,8 @@ Aplicando la fórmula de Abel con $a_n=d(n)$ aplicando el teorema 1.8.1:
 \end{align*}
 \end{sol}
 
+\newpage
+
 \begin{ejercicio}{6}
 Demostrar que para todo $x ≥ 1$ se tiene
 \[ \sum_{n≤x} μ(n) \lfloor \frac{x}{n} \rfloor = 1 \]
@@ -80,12 +93,18 @@ Como $\sum_{d|n} μ(d) = 0$ si $n > 1$ y $\sum_{d|n} μ(d) = 1$ si $n = 1$:
 \[ \sum_{n≤x} μ(n) \left\lfloor \frac{x}{n} \right\rfloor = 1 \]
 \end{sol}
 
+\newpage
+
 \begin{ejercicio}{7}
 Probar que para todo $x ≥ 1$ se tiene
 \[ \left|\sum_{n≤x} \frac{μ(n)}{n}\right| ≤ 1 \]
 \end{ejercicio}
 \begin{sol}
+Por el ejecicio anterior:
+\[ 1 = \sum_{n≤x} μ(n) \left\lfloor \frac{x}{n} \right\rfloor = x\sum_{n≤x} μ(n) \frac{1}{n} - \sum_{n≤x} μ(n) \left\{ \frac{x}{n} \right\}  \]
 \end{sol}
+
+\newpage
 
 \begin{ejercicio}{8}
 Demostrar que
@@ -99,6 +118,8 @@ Aplicando la fórmula de Abel con $a_n = σ(n)$:
 \end{align*}
 \end{sol}
 
+\newpage
+
 \begin{ejercicio}{9}
 Demostrar que existen constantes positivas $A$ y $B$ tales que para todo $x$ suficientemente grande
 \[ A\sqrt{x} ≤ \sum_{p≤x} \frac{\log p}{\sqrt{p}} ≤ B \sqrt{x}\]
@@ -106,10 +127,14 @@ Demostrar que existen constantes positivas $A$ y $B$ tales que para todo $x$ suf
 \begin{sol}
 \end{sol}
 
+\newpage
+
 \begin{ejercicio}{10}
 Demostrar que
 \[ \sum_{n≤x} r(n) = πx + \mathcal{O}(\sqrt{x}) \]
 \end{ejercicio}
+
+\newpage
 
 \begin{ejercicio}{11}
 Demostar que para todo número natural $k$ y todo $x > 0$ se tiene
@@ -117,6 +142,8 @@ Demostar que para todo número natural $k$ y todo $x > 0$ se tiene
 Deducir de lo anterior y del teorema de Chebyshe que existe una constante $C > 0$ tal que
 \[ φ(k) ≥ \frac{Ck}{\log k} \quad \forall k≥2 \]
 \end{ejercicio}
+
+\newpage
 
 \begin{ejercicio}{12}
 Suponiendo la hipótesis de Riemann puede probarse que
@@ -155,10 +182,14 @@ Como queríamos probar.
 \end{sol}
 \end{ejercicio}
 
+\newpage
+
 \begin{ejercicio}{13}
 Suponiendo la hipótesis de Riemann puede probarse que $θ(x) = x + \mathcal{O}(\sqrt{x} \log^2x)$. Admitiendo la hipótesis de Riemann, probar que:
 \[ \sum_{p≤x} \sqrt{p}\log p = \frac{2}{3} x^{3/2} + \mathcal{O}(x\log^2 x) \]
 \end{ejercicio}
+
+\newpage
 
 \begin{ejercicio}{14}
 ¿Para qué valores de $α$ y $β$ $\in \R$ es convergente la serie $\sum\limits_p \dfrac{1}{p^α(\log p)^β}$?
