@@ -130,7 +130,89 @@ Beneficios si no utiliza fertilizantes: \hskip3cm Beneficios si utiliza fertiliz
 Use el método de iteración de políticas para determinar una la política óptima si hay un factor de
 descuento $\alpha = 0,6$, determine el problema de P.L. asociado y realice dos iteraciones de valor.
 \begin{solucion}
+Etapas: 1,2,3,...
+Estados: $S=\{1=Bueno,2=Regular,3=Malo\}$
+$D(s)=\{F,NF\}, s\in S$. $\alpha=0.6$. Llamamos $P^{NF}$ y $P^F$ a las matrices de probabilidad de no usar fertilizante y de usarlo respectivamente. De igual modo llamamos $R^{NF}$ y $R^F$ a las de recompensas. Como las recompensas tenemos que darlas en forma de vector, calcularemos la esperanza de recompensa de cada estado, $R^F_i=\sum_{j=1}^r R_{ij}^Fp^F_{ij}$. La tabla de recompensas queda como sigue
+\begin{tabular}{c|ccc}
+$S\setminus s$ & 1 & 2 & 3\\
+\hline
+F & 4.7 & 3.1 & 0.4\\
+NF & 5.3 & 3 & -1
+\end{tabular}
+%\begin{tabular}{|l|c|c|}\hline
+%\diaghead{\theadfont Diag ColumnmnHead II}%
+%  {Diag\\Column Head I}{Diag Column\\Head II}&
+%\thead{Second\\column}&\thead{Third\\column}\\ \hline
+%& foo & bar \\    \hline
+%\end{tabular}
 
+Ahora comenzamos con el algoritmo de evaluación de políticas. 
+\begin{itemize}
+\item Tenemos que elegir una política inicial, que la escogeremos basándonos en la recompensa esperada: $\delta=\{NF, F, F\}$.
+\item  A continuación resolvemos la ecuación de evaluación en forma matricial $v^\delta=R^\delta+\alpha P^\delta v^\delta$ o vectorial $v^\delta_i=R^\delta_i+\alpha\sum_{j\in S}p_{ij}^\delta v_j^\delta$. $v_i^{\delta}$ es el beneficio o recompensa esperado siguiendo la política $\delta$ en el estado $i$.
+\begin{align*}
+&v^{NF}_1=5.3+0.6(0.2v_i^{NF}+0.5v_2^{F}+0.3V^F_3\\
+&v_2^F=3.1+0.6(0.1v_1^{NF}+0.6v_2^F+0.3v_3^F\\
+&v_3^F=0.4+0.6(0.05v_1^{NF}+0.4v_2^F+0.55V_3^F
+\end{align*}
+La solución de este sistema es
+\[
+v_1^{NF}=8.98\quad v_2^F=6.63\quad v_3^F=3.38
+\]
+Ahora fijamos $t_1=t_2=t_3=0$.
+\item $t_i=\max\{R_i^k+\alpha\sum_{j\in S}p_{ij}^kv_j^\delta-v_i^\delta, k\in D(i)\}$
+Cuando elegimos como $k$ la decisión que habíamos tomado saldrá 0, así que basta calcular cada $t_i$ para las decisiones que no hemos tomado y comparemos. En caso de que salga menor o igual que cero no cambiamos de política (si fuera igual a cero podríamos cambiar pero no ganaríamos nada) y si es mayor que cero la cambiamos.
+\begin{align*}
+&t_1=\max\{4.7+0.6(0.3\cdot 8.98+0.6\cdot 6.63+0.1\cdot 3.38)-8.98<0,\ 0\}=0 \\
+&t_2=\max\{0,\ 3+0.6(0.5\cdot 6.63+0.5\cdot 3.38)-6.63=-0.6\}=0\\
+&t_3=\max\{0, smth<0\}=0
+\end{align*}
+\item No actualizamos ninguna política porque todos han dado 0. Por tanto la política que hemos determinado es óptima.
+\end{itemize}
+
+De forma general, el PL es
+\begin{align*}
+\min & \sum_{i=1}^N w_i\\
+sa:  & w_i-\alpha\sum_{j=1}p_{ij}^kw_j\geq R_i^k, \forall i=1,\dots, N,\forall k\in D(i)
+\end{align*}
+cuya solución es el vector de beneficios esperado, y el dual
+\begin{align*}
+\max & \sum_{i=1}^N\sum_{k\in D(i)}R^k_ix_i^k\\
+sa: & \sum_{k\in D(i)}x_i^k-\sum_{j=1}\sum_{k\in D(i)}\alpha p_{ij}^kx_j^k=1, \forall i=1,\dots, N\\
+    & x^k_i\geq 0
+\end{align*}
+
+Sustituyendo los valores del problema obtenemos el PL
+\begin{align*}
+\min\ & w_1+w_2+w_3\\
+sa: & w_1-0.6(0.3w_1+0.6w_2+0.1w_3)\geq 4.7 (F)\\
+    & w_1-0.6(0.2w_1+0.5w_2+0.3w_3)\geq 5.3 (NF)\\
+    & w_2-0.6(0.1w_1+0.6w_2+0.3w_3)\geq 3.1 (F)\\
+    & w_2-0.6(0.5w_2+0.5w_3)\geq 3 (NF)\\
+    & 0.4w_3\geq -1(F)\\
+    & -0.03w_1-0.24w_2+0.63w_3\geq 0.4
+\end{align*}
+Dualizando después de simplificar obtenemos
+\begin{align*}
+\max\ & 5.3x_1^{NF}+4.7x_1^F+3x_2^{NF}+3.1x_2^F-x_3^{NF}+0.4x_3^F\\
+sa:  & 0.88x_1^{NF}+0.82x_1^F-0.06x_2^F-0.03x_3^F=1\\
+     & -0.3x_1^{NF}-0.36x_1^F+0.7x_2^{NF}+0.64x_2^F-0.24x_3^F=1\\
+     & -0.18x_1^{NF}-0.06x_1^F-0.3x_2^{NF}-0.18x_2^F+0.4x_3^{NF}+0.63x_3^F=1\\
+     & x_i^k\geq 0
+\end{align*}
+
+Para el último apartado, definimos para $n\geq 1$ $$v_i^n=\max_{k\in D(i)} R_i^k+\alpha\sum_{j=1}^N p_{ij}^k v_j^{n-1}, i=1,\dots, N$$
+con $v_i^0$ arbitrario. Para simplificar los cálculos escogemos $v_i^0=0, i=1,2,3$. 
+\begin{align*}
+& v_1^1=\max\{4.7+0.6(0.3\cdot 0+0.6\cdot0+0.1\cdot 0)=4.7(F), 0.3+0.6\cdot0=5.3(NF)\}=5.3(NF)\\
+& v_2^1=\max\{3,3.1\}=3.1(F)\\
+& v_2^1=\max\{0.4,-1\}=0.4(NF)
+\end{align*}
+\begin{align*}
+& v_1^2=\max\{4.7+0.6(0.3\cdot 5.3+0.6\cdot 3.1+0.\cdot 0.4)(F),5.3+0.6(0.2\cdot 5.3+0.5\cdot 3.1+0.3\cdot0.4 (NF)\}=6.93(NF)\\
+& v_2^2=\max\{4.606(F),4.5(NF)\}\}=4.606(F)\\
+& _3^2=\max\{1.435(F),-0.76(NF)\}=1.435(F)
+\end{align*}
 \end{solucion}
 
 \end{ejercicio}
@@ -176,8 +258,30 @@ depreciación $\alpha = 0.9$.
 \item[\textbf{d)}] Realice dos iteraciones de valor.
 \end{itemize}
 
-\begin{solucion}
+\begin{solucion}\
+\begin{itemize}
+\item[a)] Etapas: 1,2,3,... Estados $S=\{2400,2500,2600\}$. $P^A=P^B=$ la matriz del enunciado. Las tabla de ganancias y pérdidas son las siguientes
 
+\begin{tabular}{c|ccc}
+A & 2400 & 2500 & 2600\\
+\hline
+2400 & 0 & 20 & 50\\
+2500 & -20 & 0 & 20\\
+2600 & -50 & -20 & 0
+\end{tabular}\quad
+\begin{tabular}{c|ccc}
+B & 2400 & 2500 & 2600\\
+\hline
+2400 & 0 & 10 & 20\\
+2500 & -10 & 0 & 10\\
+2600 & -20 & 10 & 0
+\end{tabular}
+
+Tenemos las recompensas  $R^A=(20,6,-18), R^B=(9,3,-8)$. Estas recompensas se otienen multpilicando el beneficio por su probabilidad, por ejemplo $20=0\cdot 0.03+20\cdot 0.5+50\cdot 0.2$
+\item[b)]
+\item[c)]
+\item[d)]
+\end{itemize}
 \end{solucion}
 \end{ejercicio}
 
