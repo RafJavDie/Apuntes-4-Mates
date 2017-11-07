@@ -44,8 +44,9 @@ Demostrar que para $x ≥ 2$
 \[ \sum_{n≤x} (\log n)^2 = x(\log x)^2 - 2x \log x + 2x + \mathcal{O}((\log x)^2) \]
 \end{ejercicio}
 \begin{sol}
+Tomando $f(n)=\log^2 n$ y $a_n=1$ tenemos que 
 \begin{align*}
-	\sum_{n≤x} (\log n)^2 = \int_1^x \log^2 t d[t] = \int_1^x \log^2 t dt - \int_1^x \log^2 t d\{t\}
+	\sum_{n≤x} (\log n)^2 = x\log^2 x - \int_1^x \frac{2\log t}{t}tdt = x\log^2 x - 2x\log x +2x -2
 \end{align*}
 \end{sol}
 
@@ -83,30 +84,32 @@ Aplicando la fórmula de Abel con $a_n=d(n)$ aplicando el teorema 1.8.1:
 \newpage
 
 \begin{ejercicio}{6}
-Demostrar que para todo $x ≥ 1$ se tiene
-\[ \sum_{n≤x} μ(n) \lfloor \frac{x}{n} \rfloor = 1 \]
+\begin{itemize}
+\item[]
+\item Demostrar que para todo $x ≥ 1$ se tiene
+\[ \sum_{n≤x} μ(n) \left\lfloor \frac{x}{n} \right\rfloor = 1 \]
+\item Probar que para todo $x ≥ 1$ se tiene
+\[ \left|\sum_{n≤x} \frac{μ(n)}{n}\right| ≤ 1 \]
+
+\end{itemize}
+
 \end{ejercicio}
 \begin{sol}
-Por el mismo argumento del ejercicio 4:
+\begin{itemize}
+\item Por el mismo argumento del ejercicio 4:
 \[ \sum_{n≤x} \sum_{d|n} μ(d) = \sum_{n≤x} μ(n) \left\lfloor \frac{x}{n} \right\rfloor \]
 Como $\sum_{d|n} μ(d) = 0$ si $n > 1$ y $\sum_{d|n} μ(d) = 1$ si $n = 1$:
 \[ \sum_{n≤x} μ(n) \left\lfloor \frac{x}{n} \right\rfloor = 1 \]
-\end{sol}
 
-\newpage
-
-\begin{ejercicio}{7}
-Probar que para todo $x ≥ 1$ se tiene
-\[ \left|\sum_{n≤x} \frac{μ(n)}{n}\right| ≤ 1 \]
-\end{ejercicio}
-\begin{sol}
-Por el ejecicio anterior:
+\item Por el ejecicio anterior:
 \[ 1 = \sum_{n≤x} μ(n) \left\lfloor \frac{x}{n} \right\rfloor = x\sum_{n≤x} μ(n) \frac{1}{n} - \sum_{n≤x} μ(n) \left\{ \frac{x}{n} \right\}  \]
 Luego:
 \[ \gabs{\sum_{n≤x} \frac{μ(n)}{n}} = \gabs{\frac{1}{x} \left(1+\sum_{n≤x}μ(n)\left\{\frac{x}{n}\right\}\right)}
 ≤ \frac{1}{x} \left(1+\sum_{n≤x}\gabs{μ(n)\left\{\frac{x}{n}\right\}}\right) \]
 Como para $n=x$, $\{x/n\}=0$, podemos prescindir del último término:
-\[ \left|\sum_{n≤x} \frac{μ(n)}{n}\right| ≤ \frac{1}{x} \left(1+\sum_{n≤x-1}\gabs{μ(n)\left\{\frac{x}{n}\right\}}\right) ≤ \frac{1}{x} \left(1+\sum_{n≤x-1}1\right) ≤ \frac{1}{x} \left(1+\lfloor x \rfloor-1\right) = \frac{\lfloor x \rfloor}{x} ≤ 1\]
+\[ \left|\sum_{n≤x} \frac{μ(n)}{n}\right| ≤ \frac{1}{x} \left(1+\sum_{n≤x-1}\gabs{μ(n)\left\{\frac{x}{n}\right\}}\right) ≤ \frac{1}{x} \left(1+\sum_{n≤x-1}1\right) ≤ \]
+\[\leq \frac{1}{x} \left(1+\lfloor x \rfloor-1\right) = \frac{\lfloor x \rfloor}{x} ≤ 1\]
+\end{itemize}
 \end{sol}
 \newpage
 
