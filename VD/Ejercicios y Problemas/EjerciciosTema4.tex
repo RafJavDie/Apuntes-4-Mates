@@ -14,6 +14,8 @@ como aplicación entre variedades diferenciables, coincide con la diferencial
 habitual de $\R^n$.
 \end{ejercicio}
 \begin{solucion}
+Tenemos que $T_p(\R^n)\cong \R^n$, luego podemos pensar que la diferencial actúa sobre vectores de $\R^n$. Así, dados $v\in\R^m$, y $\alpha(t)=a+tv, a\in\R^m$. 
+$$(f_*v)=(f\circ \alpha)'(p)=(f(a+tv))'(p)=\nabla f(p)\cdot v=df(p)(v)$$
 \end{solucion}
 
 \newpage
@@ -23,7 +25,9 @@ Probar que si $f \in \calF(M,N)$ es un difeomorfismo, entonces su diferencial en
 cada punto es un isomorfismo.
 \end{ejercicio}
 \begin{solucion}
+Sea $f^{-1}$ la inversa de $f$. Entonces $f^{-1}_*=(f_*)^{-1}$. Probarlo es inmediato usando que $(f\circ g)_*=f_*\circ g_*$ y que $(Id_M)_*=Id_{T_p(M)}$.
 \end{solucion}
+
 
 \newpage
 
@@ -32,6 +36,7 @@ Probar que el rango de la diferencial de una aplicación diferenciable entre
 dos variedadades diferenciables no depende de las cartas tomadas.
 \end{ejercicio}
 \begin{solucion}
+Dada una aplicación diferenciable $f:M\to N$, $p\in M$, el rango de su diferencial $f_*:T_p(M)\to T_p(N)$ es la dimensión de $f(M)$, que es el rango de la matriz jacobiana respecto de las cartas escogidas. Sean $(U,\varphi), (U',\varphi')$, $p\in U\cap U'$ cartas de $M$ y $(V,\psi),(V',\psi'),f(p)\in V\cap V'$ cartas de $N$. Sea $A$ la matriz con respecto a $(U,\varphi)$ y $(V,\psi)$, $B$ respecto de $(U',\varphi'),(V',\psi')$, y $C$ la matriz de cambio de base. Entonces $B=CA$. Como $C$ es regular por ser una matriz de cambio de base, $rg(B)=rg(A)$ como queríamos demostrar.
 \end{solucion}
 
 \newpage
