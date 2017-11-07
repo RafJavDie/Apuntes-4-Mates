@@ -76,7 +76,7 @@ propiedades:
 Sea $X$ un conjunto y $\esp{F}$ una familia de subconjuntos de $X$ que verifican las mismas propiedades que una
 familia de conjuntos cerrados, recogidas en la proposición anterior. Entonces, existe una única topología sobre
 $X$, definida por
-$$T=\{G\subseteq X/X-G\in\esp{F}\},$$
+$$T=\{G\subseteq X\mid X-G\in\esp{F}\},$$
 para la que $\esp{F}$ es la familia de cerrados.
 \end{teorema}
 A continuación, se van a presentar un resultado que permite construir una topología sobre un conjunto $X$ a partir
@@ -139,7 +139,7 @@ si coincide con su interior.
 \begin{defi}
 Sea $(X,T)$ un espacio topológico y $A\subseteq X$. Se llama {\bf To\-po\-lo\-gía Relativa} o {\bf Topología
 Inducida} de $X$ a $A$ a:
-$$T_A=\{G\cap A/G\in T\}.$$
+$$T_A=\{G\cap A\mid G\in T\}.$$
 \hs Al par $(A,T_A)$ se le llama {\bf Subespacio Topológico} de $(X,T)$. Una propiedad se dice que es {\bf
 Hereditaria} para una clase de subconjuntos de $X$ si la verica el espacio topológico $(X,T)$ y cualquier
 subespacio $(A,T_A)$, con $A$ perteneciendo a la clase especificada.
@@ -147,7 +147,7 @@ subespacio $(A,T_A)$, con $A$ perteneciendo a la clase especificada.
 \begin{ejer}
 {\rm Probar que, efectivamente, $T_A$ es una topología sobre $A$.}
 \end{ejer}
-\section{Aplicaciones entre Espacios Topológicos. Ho\-meo\-mor\-fis\-mos.}
+\section{Aplicaciones entre Espacios Topológicos.\\ Homeomorfismos.}
 \begin{defi}
 Una aplicación entre dos espacios topológicos $f:(X,T_X)\fl (Y,T_Y)$ se dice {\bf Continua en un punto $x\in X$}
 si para cualquier abierto $G\in T_Y$ entorno de $f(x)$, se tiene que $f^{-1}(G)$ es entorno de $x$ y se dice {\bf
@@ -189,17 +189,17 @@ un homeomorfismo.
 \begin{prop}
 Todo homeomorfismo local es una aplicación abierta.
 \end{prop}
-\section{Construcción de Topologías mediante aplicaciones. Topologías Producto y Cociente.}
+\section{Construcción de Topologías mediante aplicaciones.\\ Topologías Producto y Cociente.}
 \begin{prop}
-Sean $X$ un conjunto, $\{(Y_i,T_i)\}_{i\in I}$ una familia de espacios topológicos y $\{f_i:X\fl Y_i/i\in I\}$ una
+Sean $X$ un conjunto, $\{(Y_i,T_i)\}_{i\in I}$ una familia de espacios topológicos y $\{f_i:X\fl Y_i\mid i\in I\}$ una
 familia de aplicaciones. Entonces, existe la menor topología $T$ sobre $X$ que hace continuas a todas las
 aplicaciones $f_i$, llamada {\bf Topología Inicial} de las $f_i$ y que es la generada, siguiendo el proceso
 descrito en el Teorema \ref{teorema}, por la familia $\esp{A}$ de subconjuntos de $X$:
-$$\esp{A}=\bigcup_{i\in I}\{f_i^{-1}(G)/G\in T_i\}.$$
+$$\esp{A}=\bigcup_{i\in I}\{f_i^{-1}(G)\mid G\in T_i\}.$$
 \end{prop}
 \begin{coro}
 Sean $X$ un conjunto, $(Y,T_Y)$ un espacio topológico y $f:X\fl (Y,T_Y)$ una aplicación. Entonces,
-$T=\{f^{-1}(G)/G\in T_Y\}$ es la menor topología sobre $X$ que hace continua a la aplicación $f$ y se llama {\bf
+$T=\{f^{-1}(G)\mid G\in T_Y\}$ es la menor topología sobre $X$ que hace continua a la aplicación $f$ y se llama {\bf
 Topología Inicial} de $f$. Además, si $f$ es biyectiva, la topología inicial la convierte en un homeomorfismo.
 \end{coro}
 \begin{defi}
@@ -219,13 +219,13 @@ dotado de la topología producto. Dado otro espacio topológico $(Y,T_Y)$, una a
 (X,T_{\prod})$ es continua si y sólo si $\pi_i\circ f:(Y,T_Y)\fl (X_i,T_i)$ es continua, para todo $i=1,\dots ,m$.
 \end{prop}
 \begin{prop}
-Sean $X$ un conjunto, $\{(Y_i,T_i)\}_{i\in I}$ una familia de espacios topológicos y $\{f_i:Y_i\fl X/i\in I\}$ una
+Sean $X$ un conjunto, $\{(Y_i,T_i)\}_{i\in I}$ una familia de espacios topológicos y $\{f_i:Y_i\fl X\mid i\in I\}$ una
 familia de aplicaciones. Entonces, existe la mayor topología $T$ sobre $X$ que hace continuas a todas las
 aplicaciones $f_i$, llamada {\bf Topología Final} de las $f_i$.
 \end{prop}
 \begin{coro}
 Sean $X$ un conjunto, $(Y,T_Y)$ un espacio topológico y $f:(Y,T_Y)\fl X$ una aplicación. Entonces, $T=\{G\subseteq
-X/ f^{-1}(G)\in T_Y\}$ es la mayor topología sobre $X$ que hace continua a la aplicación $f$ y se llama {\bf
+X\mid  f^{-1}(G)\in T_Y\}$ es la mayor topología sobre $X$ que hace continua a la aplicación $f$ y se llama {\bf
 Topología Final} de $f$. Además, si $f$ es biyectiva, la topología final la convierte en un homeomorfismo.
 \end{coro}
 \begin{defi}
@@ -385,6 +385,7 @@ de $X$, existe un arco en $X$ desde uno de los puntos hasta el otro.
 \end{defi}
 \begin{prop}
 \begin{enumerate}
+\item[]
 \item La conexión por arcos es una propiedad topológica.
 \item Todo espacio topológico conexo por arcos es conexo.
 \end{enumerate}
