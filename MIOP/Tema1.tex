@@ -77,7 +77,6 @@ Usando el ejemplo anterior:
 \end{itemize}
 
 \textbf{Diagrama de cajas}
-(dibujo de Rafa)
 Etapa $k$:
 $\overset{d_k}{\longrightarrow}\boxed{s_k}\rightarrow c_k(s_k,d_k)$\\
 Etapa $k$:
@@ -105,7 +104,13 @@ $$\min_{r_1,r_2,\dots,r_n} g(r_1,r_2,\dots,r_n)=\min_{r_1} g_1(r_1,\min_{r_2,\do
 
 \end{teorema}
 \begin{dem}
-Dado que $\forall u_1,\dots, u_n$ $g(u_1,\dots, u_n)=g_1(u_1,g_2(u_2,\dots, u_n))$. Entonces $$\min_{r_1,\dots,r_n}g(r_1,\dots,r_n)\leq g_1(u_1,g_2(u_2,\dots, u_n))\forall u_1,u_2,\dots,u_n.$$ Por tanto, $$\min_{r_1,\dots,r_n}g(r_1,\dots,r_n)\leq g_1(u_1,\min_{u_2,\dots,u_n}g_2(u_2,\dots, u_n))\forall u_1.$$ Luego $$\min_{r_1,\dots,r_n}g(r_1,\dots,r_n)\leq \min_{u_1}g_1(u_1,\min_{u_2,\dots,u_n}g_2(u_2,\dots, u_n)).$$
+Dado que $\forall u_1,\dots, u_n$ $g(u_1,\dots, u_n)=g_1(u_1,g_2(u_2,\dots, u_n))$. Entonces 
+$$\min_{r_1,\dots,r_n}g(r_1,\dots,r_n)\leq g_1(u_1,g_2(u_2,\dots, u_n))\;\forall u_1,u_2,\dots,u_n.
+$$ 
+Por tanto, 
+$$\min_{r_1,\dots,r_n}g(r_1,\dots,r_n)\leq g_1(u_1,\min_{u_2,\dots,u_n}g_2(u_2,\dots, u_n))\forall u_1.$$ 
+Luego 
+$$\min_{r_1,\dots,r_n}g(r_1,\dots,r_n)\leq \min_{u_1}g_1(u_1,\min_{u_2,\dots,u_n}g_2(u_2,\dots, u_n))$$
 Análogamente, usando que $g_1$ es no creciente en $g_2$, $$g(u_1,\dots, u_n)\geq g_1(u_1,\min_{r_2,\dots,r_n}g_2(r_2,\dots,r_n))\forall u_1.$$ Por consiguiente, 
 $$g(u_1,\dots, u_n)\geq \min_{r_1}g_1(r_1,\min_{r_2,\dots,r_n}g_2(r_2,\dots,r_n)).$$ Finalmente,
 $$\min_{u_1,\dots,u_n}g(u_1,\dots, u_n)\geq \min_{r_1}g_1(r_1,\min_{r_2,\dots,r_n}g_2(r_2,\dots,r_n)).$$\QED
@@ -847,7 +852,8 @@ $$
 De donde se llega al resultado buscado. Veamos que la solución es única. Si existe otra solución $g$ al sistema de ecuaciones
 $$
 f_i = \max_{k\in D(i)} R^k_i + \sum_{kj=1}^n \alpha p_{ij}g_j \quad \forall i$$
-$$g_i = R_i^\pi(i)+\sum_{j=1}^N \alpha p_{ij}^{\pi(i)}g_j \quad \forall i$$
+
+$$g_i = R_i^{\pi(i)}+\sum_{j=1}^N \alpha p_{ij}^{\pi(i)}g_j \quad \forall i$$
 Como $g_i$ son los máximo entonces 
 $$f_i \geq R_i^{\delta(i)}+\sum_{j=1}^N \alpha p_{ij}^{\delta(i)}g_j \quad \forall i,\,\forall \delta \in \Delta$$
 Vectorialmente aplicando el lema anterior ($w=g$) tenemos que $g\geq R^\delta+Q^\delta g$ $\forall g$, $R^\delta+Q^\delta g\geq v^\delta$, por lo que $g\geq v^\delta$ $\forall \delta \in \Delta$. Pero como $g$ alcanza el valor de una política $(\pi)$ entonces $g$ es único ($g=v^\pi$).
@@ -863,7 +869,7 @@ s.a. &\quad w_i - \sum_{j=1}^N \alpha p_{ij}^k w_k \geq R^k_i\quad \forall i,\, 
 \begin{dem}
 Cada componente de $f=(f_1,\dotsc,f_N)$ verifica que 
 $$
-f_i \geq R_i^k + \sum_{j=1}^N \alpha p_{ij}^k f_k \quad \forall k\in D(i)$$
+f_i \geq R_i^k + \sum_{j=1}^N \alpha p_{ij}^k f_j \quad \forall k\in D(i)$$
 Pero eso es equivalente a decir que $f$ cumple las restricciones del problema (P) planteado en el enunciado. Supongamos que $\pi$ es la política tal que $f=v^\pi$. Si escribimos las restricciones de (P) para la política $\pi$ tenemos
 $$
 w-Q^\pi w \geq R^\pi \equiv w \geq T^\pi + Q^\pi w

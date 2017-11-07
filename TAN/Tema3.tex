@@ -6,11 +6,11 @@ Los libros de Funciones de Variable Compleja suelen incluir un estudio de la fun
 \begin{defi}
 La integral
 \[ Γ(s) = \int_0^{+∞} t^{s-1}e^{-t} dt, \quad \text{Re}(s)>0 \]
-define una función analica en el semiplano $\text{Re}(s)>0$. A la que se llama función Gamma.
+define una función analítica en el semiplano $\text{Re}(s)>0$. A la que se llama función Gamma.
 \end{defi}
 
 \begin{prop}
-La función gamma se prolonga a una función mereomorfa en todo el plano. Que tiene un polo simple en cada entero $n ≤ 0$. Estos son sus únicos polos. Esta función verifica la ecuación funcional
+La función gamma se prolonga a una función meromorfa en todo el plano. Que tiene un polo simple en cada entero $n ≤ 0$. Estos son sus únicos polos. Esta función verifica la ecuación funcional
 \[ Γ(s+1) = sΓ(s) \]
 \end{prop}
 \begin{coro}
@@ -41,7 +41,7 @@ En consecuncia la función $Γ(s)$ no toma nunca el valor 0.
 \begin{prop}
 \[ Γ'(1) = \int_0^{∞} (\log t) e^{-t} dt = -γ \]
 \end{prop}
-Aunque no veremos la prueba quiero incluir aquí el conocido desarrolo de Stirling. Puede versa la demostración en el libro de Edwards.
+Aunque no veremos la prueba quiero incluir aquí el conocido desarrollo de Stirling. Puede versa la demostración en el libro de Edwards.
 \begin{prop}
 Dado $s$ número complejo no negativo, designemos por $θ$ el argumento de $s$ tal que $|θ| < π$, se tiene entonces
 \[ \log Γ(s) = \left(s - \frac{1}{2}\right) \log s - s + \log \sqrt{2π} + \frac{B_2}{2s} + \frac{B_4}{4\cdot 3 \cdot s^3} + \dots + \frac{B_{2n}}{2n(2n-1)s^{2n-1}} + J_n(s) \]
@@ -51,7 +51,7 @@ Los $B_n$ son los números de Bernoulli ($B_0=1$, $B_2 = 1/6$, $B_4=-1/30$, $B_6
 \end{prop}
 
 \section{Función Zeta de Riemann}
-El libro de Karatsuba es una buena referencia (salvo por la traducción y la prueba de la fórmula de Poisson). Muchos libros de Teoría de números hacen una exposición de las propiedade de la función $ζ(s)$.
+El libro de Karatsuba es una buena referencia (salvo por la traducción y la prueba de la fórmula de Poisson). Muchos libros de Teoría de números hacen una exposición de las propiedades de la función $ζ(s)$.
 \begin{defi}
 La serie
 \[ ζ(s) = \sum_{n=1}^{∞} \frac{1}{n^s}, \quad \Re(s) > 1 \]
@@ -72,7 +72,7 @@ La función $ζ(s)$ se prolonga a una función meromorfa en el semiplano $\Re(s)
 \begin{coro}
 La función $ζ(s)$ es analítica en el semiplano $\Re(s) > 0$ salvo en el punto $s = 1$. En el punto $s = 1$ la función $ζ(s)$ posee un polo simple de residuo igual a $1$.
 \end{coro}
-Pasamos ahora a probar la ecuación funcional de la funcion $ζ(s)$. Riemann dio tres emostraciones y posteriormente se han visto numerosas más. La más instructiva es la segunda d Riemann. Esta prueba depende de una propiedad de la función $θ$ definida por
+Pasamos ahora a probar la ecuación funcional de la función $ζ(s)$. Riemann dio tres demostraciones y posteriormente se han visto numerosas más. La más instructiva es la segunda d Riemann. Esta prueba depende de una propiedad de la función $θ$ definida por
 \[ θ(x) = \sum_{n \in \Z} e^{-πn^2x}, \quad x > 0 \]
 \begin{teorema}[Fórmula de Poisson]
 \[ θ\left(\frac{1}{x}\right) = \sqrt{x} θ(x), \quad x > 0 \]
@@ -90,7 +90,7 @@ Además para $s \notin \{0,1\}$, se tiene
 \[ π^{-s/2} Γ(s/2) ζ(s) = π^{(s-1)/2} Γ\left(\frac{1-s}{2}\right) ζ(1-s) \]
 \end{teorema}
 \begin{coro}
-La función $ζ(s)$ es meromorfa en todo el plano, tiene un único polo en $s = 1$, no se anula en $\Re(s) > 1$. Tiene cereos simples en los puntos $-2, -4, \dots, -2n, \dots$ y estos son sus únicos ceros en $\Re(s) < 0$. Son los llamados ceros triviales. Los únicos ceros no triviales posibles se encuentra en la banda crítica $0 ≤ \Re(s) ≤ 1$.
+La función $ζ(s)$ es meromorfa en todo el plano, tiene un único polo en $s = 1$, no se anula en $\Re(s) > 1$. Tiene ceros simples en los puntos $-2, -4, \dots, -2n, \dots$ y estos son sus únicos ceros en $\Re(s) < 0$. Son los llamados ceros triviales. Los únicos ceros no triviales posibles se encuentra en la banda crítica $0 ≤ \Re(s) ≤ 1$.
 \end{coro}
 
 Riemann probó que existían infinitos ceros no triviales, y afirmó que era muy probable que todos los ceros no triviales se encontraran en la recta $\Re(s)=1/2$. Esta afirmación, que de ser cierta tendría numerosas consecuencias, no ha podido ser probada hasta hoy; es la que se conoce como \textbf{Hipótesis de Riemann}.
@@ -103,12 +103,12 @@ La ecuación funcional induce a definir las funciones enteras
 Mediante ellas la ecuación funcional es equivalente a cualquiera de estas dos
 \[ ξ(s) = ξ(1-s), \qquad Ξ(t)=Ξ(-t) \]
 \section{El producto infinito de la función Zeta}
-La existencia de una expresión de la función $Ξ(t)$ como producto infinito fuue anunciada por Riemann. Posteriormente Hadamard consguió probar teoremas generales sobre funciones enteras del cual se desprendía este hecho. Este fué un paso esencial en la prueba del teorema de los números primos, de hecho, esta fué la motivación de Hadamard para probar estos teoremas.
+La existencia de una expresión de la función $Ξ(t)$ como producto infinito fue anunciada por Riemann. Posteriormente Hadamard consiguió probar teoremas generales sobre funciones enteras del cual se desprendía este hecho. Este fue un paso esencial en la prueba del teorema de los números primos, de hecho, esta fue la motivación de Hadamard para probar estos teoremas.
 
 Dado que no todos los alumnos han visto la demostración de estos teoremas, daremos aquí la prueba siguiendo en gran parte el camino que esbozó Riemann en su trabajo.
 
 \begin{prop}[Principio del argumento]
-Sea $f : Ω \to \C$ una función analítica. $P \subset Ω$ un polígono cerrado y convexo, $\partial P$ la frontera orientada en el sentido contario a las agujas del relo. Si $f$ no se anula en la frontera de $P$ tendremos
+Sea $f : Ω \to \C$ una función analítica. $P \subset Ω$ un polígono cerrado y convexo, $\partial P$ la frontera orientada en el sentido contrario a las agujas del reloj. Si $f$ no se anula en la frontera de $P$ tendremos
 \[ \frac{1}{2 π i} \int_{\partial P} \frac{f'(z)}{f(z)} dz = N(P) \]
 donde $N(P)$ es el número de ceros de $f$ en $P$ contados cada uno según su multiplicidad
 \end{prop}
@@ -198,7 +198,7 @@ Por consiguiente
 
 \section{Teoremas sobre los ceros}
 \begin{lemma}
-Para $|s|≥1$ y $σ ≥ -1$ se cumple la acotacion
+Para $|s|≥1$ y $σ ≥ -1$ se cumple la acotación
 \[ \left|\sum_{n=1}^{∞} \left(\frac{1}{s+2n}-\frac{1}{2n}\right)\right| ≤ \frac{1}{2} \log |s| + 4 \]
 \end{lemma}
 
@@ -229,7 +229,7 @@ Usar la expresión en fracciones simples de $ζ'(s)/ζ(s)$, acotar los términos
 Esencial para obtener el teorema de los números primos, es demostrar que la función $ζ(s)$ no se anula en la recta $\Re(s)=1$. En lo que sigue demostramos más, que existe una estrecha banda alrededor de dicha línea donde no hay ceros. Este tipo de teoremas, como veremos, son esenciales para obtener cotas del error en el teorema de los números primos.
 
 \begin{teorema}
-Para $σ > 1$ y todo $t$ se verifica la desiguladad
+Para $σ > 1$ y todo $t$ se verifica la desigualdad
 \[ |ζ(σ)^3 ζ(σ+it)^4 ζ(σ+2it)| ≥ 1 \]
 Como consecuencia $ζ(1+it) \neq 0$ para $t$ real.
 \end{teorema}
@@ -279,7 +279,7 @@ donde las constantes en los símbolos $\mathcal{O}$ dependen sólo de $b_0$.
 \end{teorema}
 
 \section{Teorema de los números primos}
-El tema está bien desearrollado en el libro de Karatsuba y el de Davenport.
+El tema está bien desarrollado en el libro de Karatsuba y el de Davenport.
 
 \begin{teorema}[de la Valleé Poussin]
 Existe una constante absoluta $c > 0$, tal que
