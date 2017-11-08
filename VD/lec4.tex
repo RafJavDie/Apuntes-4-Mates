@@ -1,4 +1,4 @@
-\documentclass[cursovd_portada.tex]{subfiles}
+\documentclass[Cursovd_portada.tex]{subfiles}
 \begin{document}
 
 \chapter{Aplicación Diferencial de una\\ Aplicación
@@ -127,6 +127,14 @@ Entonces, se verifica que $(g\circ f)_p^*=f_p^*\circ g_{f(p)}^*$.
 \end{prop}
 \begin{dem}
 Sea $u^*\in T^*_{g(f(p))}(P)$ y $v\in T_p(M)$.  $$((g\circ f)^*_p u^*)v=u^*((g\circ f)_{*p}v)=u^*(g_{*f(p)}\circ (f_{*p}v))=(g^*_{f(p)}u^*)(f_{*p}v)=(f^*_p(g^*_{f(p)}u^*))v$$ $\QED$
+\end{dem}
+
+\begin{dem}
+Para todo $u^* \in T^*_{g(f(p))}$ y todo $v \in T_p(M)$:
+\[ ((g \circ f)^*_p u^*)v = u^*((g \circ f)_{*p} v) \]
+Aplicando la regla de la cadena:
+\[ ((g \circ f)^*_p u^*)v = u^*( g_{*f(p)} (f_{*p}(v))) = (g_{f(p)}^*u^*) (f_{*p} v) = (f_p^*(g_{f(p)}^*u^*))v\]
+Luego $(g \circ f)^*_p  = f_p^* \circ g_{f(p)}^*$.
 \end{dem}
 
 \subsubsection{Recordatorio Álgebra Lineal}
@@ -371,10 +379,10 @@ Dos subvariedades $(M_1,f_1)$ y $(M_2,f_2)$ de una variedad $N$ se
 dice que son {\bf Equivalentes} si existe un difeomorfismo
 $f:M_1\fl M_2$ tal que $f_1=f_2\circ f$.
 \end{defi}
-$$\begin{diagram}
-\node{M_1} \arrow{e,t}{f_1} \arrow{se,b}{f} \node{N} \\
-\node[2]{M_2} \arrow{n,r}{f_2}
-\end{diagram}$$
+%$$\begin{diagram}
+%\node{M_1} \arrow{e,t}{f_1} \arrow{se,b}{f} \node{N} \\
+%\node[2]{M_2} \arrow{n,r}{f_2}
+%\end{diagram}$$
 \hs Puede comprobarse sin dificultad que ésta es una
 relación de equivalencia en la clase de todas las
 subvariedades de $N$, que permite trabajar con más comodidad
@@ -388,10 +396,10 @@ $N$. Como $g$ es inyectiva, si $f$ {\it factoriza a través de}
 $g$, es decir si $f(M)\subseteq g(P)$, entonces se puede definir
 una única aplicación $f_0:M\fl P$ tal que $g\circ f_0=f$.
 No siempre esta aplicación es diferenciable.
-$$\begin{diagram}
-\node{M} \arrow{e,t}{f} \arrow{se,b,..}{f_0} \node{N} \\
-\node[2]{P} \arrow{n,r}{g}
-\end{diagram}$$
+%$$\begin{diagram}
+%\node{M} \arrow{e,t}{f} \arrow{se,b,..}{f_0} \node{N} \\
+%\node[2]{P} \arrow{n,r}{g}
+%\end{diagram}$$
 \begin{teorema}
 {\bf (Lema de Factorización).} Sea $f\in\mathcal{F}(M,N)$ una
 aplicación diferenciable entre dos variedades diferenciables y
@@ -505,10 +513,11 @@ subvariedad cerrada de un espacio afín $(2m+1)$--dimensional.
 \item Probar que la diferencial de una aplicación $f:{\bf R}^m
 \longrightarrow {\bf R}^n$, considerada como aplicación entre
 variedades diferenciables, coincide con la diferencial habitual de
-${\bf R}^n$. \item Probar que si $f\in\esp{F}(M,N)$ es un
+${\bf R}^n$.
+
+\item Probar que si $f\in\esp{F}(M,N)$ es un
 difeomorfismo, entonces su diferencial en cada punto es un
 isomorfismo. 
-
 
 Si $f$ es difeomorfismo, existe su inversa. Entonces $f^{-1} \circ f = id_M$ y $f \circ f^{-1} = id_N$. Sabemos que si dos aplicaciones son iguales sus diferenciales deben coincidir para todo $p \in M$. Por tanto, $(f^{-1}\circ f)_{\ast p} = (id_M)_{\ast p} = I_{T_p(M)}$ y  $(f\circ f^{-1})_{\ast f(p)} = (id_N)_{\ast f(p)} = I_{T_{f(p)}d(M)}$. Deducimos por tanto que $f_{\ast p}$ es biyectiva y $(f_{\ast p})^{-1} = (f^{-1})_{\ast f(p)}$, por lo que es un isomorfismo.
 
@@ -517,17 +526,41 @@ no depende de las cartas tomadas. \item Probar que las
 proyecciones de un producto de variedades diferenciables en cada
 uno de los factores son sumersiones. \item Sean
 $f\in\esp{F}(M,N)$, $p\in M$ y $g\in\esp{F}(f(p))$. Probar que
-$$f_p^*((\dif g)_{f(p)})=(\dif (g\circ f))_p.$$ \item Probar que
-toda superficie regular es una subvariedad regular de $\R^3$.
+$$f_p^*((\dif g)_{f(p)})=(\dif (g\circ f))_p.$$
+
+\item Probar que toda superficie regular es una subvariedad regular de $\R^3$.
+
 \item Probar que cualquier subvariedad abierta de una variedad
-diferenciable es subvariedad regular. \item Probar que $S^n$ es
-subvariedad regular de $\R^{n+1}$.
+diferenciable es subvariedad regular.
+
+\item Probar que $S^n$ es subvariedad regular de $\R^{n+1}$.
+
+\begin{dem}
+Sea $S \subseteq \R^3$ una superficie regular. Veamos que $(S,i)$ es subvariedad regular donde $i : S \to \R^3$ es la inclusión.
+
+$S$ una variedad diferenciables (ejemplo 2 del tema 1) con $dim(S)=2$.
+
+Por otro lado, veamos que $i : S \to \R^3$ es una inmersión inyectiva. La inyectividad es consecuencia de ser una inclusión. Para ver que $i$ es inmersión, comprobaremos que $i \in \mathcal{F}(S,\R^3)$ y $i_{*p}$ es inyectivo. $i$ es continuo, pues para todo abierto $G$ de $\R^3$, $i^{-1}(G) = G \cap S$, que es un abierto de la topología euclídea relativa a $S$.
+
+Sea $p \in S$ cualquiera y $(\X,U)$ tal que $p \in \X(U)$.
+%   S     to \R^3
+%  \X(U)      |
+%   |\X^{-1}  | id
+%   v         v
+%   U ------>\R^3
+%     id \circ i \circ (\X^{-1})^{-1}
+Se tiene que $id \circ i \circ (\X^{-1})^{-1} = \X$ es diferenciable, pues $\X : U \to \R^3$ es superficie simple, luego $i \in \mathcal{F}(S,\R^3)$.
+
+La matriz de $i_{*p}$ es la matriz jacobiana en $\X^{-1}(p)$ de $(id \circ i \circ \X)$, que es $(\X_1, \X_2)^t$. Es de rango $2$, pues los vectores $\X_1$ y $\X_2$ son independientes (por ser superficie simple). Como la matriz es $2\times 3$, es de rango máximo. Además, como $\dim(S) < \dim(\R^3)$, $i_{*p}$ es inyectiva. Por la proposición 4.2.2, como $S$ tiene la topología relativa de $\R^3$, $S$ es regular.
+\end{dem}
+
 \item Sea $M$ una variedad diferenciable y $p\in M$. Si
 $\{\om_1,\dots ,\om_m\}$ es una base de $T_p^*(M)$, probar que
 existe una carta local $(U,\vp=(x_1,\dots ,x_m))$ entorno de $p$
 tal que $(\de{x_i})_p=\om_i$, $i=1,\dots ,m$. \item Probar que
-no existen inmersiones de $S^1$ en $\R$. \item Sea
-$f\in\mathcal{F}(M,N)$ un difeomorfismo local inyectivo entre dos
+no existen inmersiones de $S^1$ en $\R$.
+
+\item Sea $f\in\mathcal{F}(M,N)$ un difeomorfismo local inyectivo entre dos
 variedades diferenciables. Probar que $f$ es un difeomorfismo de
 $M$ en un cierto abierto de $N$. \item Sean $M$ subvariedad de
 $\bar{M}$ y $N$ subvariedad de $\bar{N}$. Sea $f: \bar{M}
