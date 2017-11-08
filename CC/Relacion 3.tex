@@ -11,6 +11,26 @@
 \author{Javier Aguilar Martín}
 \maketitle
 
+\begin{ejercicio}{4}
+Dada $f : \N \to \N$ definimos $it_f : \N^2 \to \N$ como
+$$\forall (n, x) \in \N^2, it_f (n, x) = f^n(x) = f(f(\overset{n}{\cdots}f(x)))$$
+Probar que si $f \in \mathcal{PR}$ entonces $it_f \in \mathcal{PR}$.
+
+\end{ejercicio}
+\begin{solucion}
+Adoptamos por convenio que $f^0(x)=x$. Es claro que $f^{n+1}(x)=ff^n(x)$.
+Entonces
+\[
+\begin{cases}
+it_f(x,0)=x\\
+it_f(n+1,x)=f(it_f(n,x))
+\end{cases}
+\]
+Entonces $it_f=\mathcal{R}(g,h)$, donde $g(x)=x$, que es $\mathcal{PR}$ y $h(n,x,z)=f(z)\Rightarrow h=\mathcal{C}(f,\Pi^3_3)$ que también es $\mathcal{PR}$
+\end{solucion}
+
+\newpage
+
 \begin{ejercicio}{6}
 Probar que la función $f:\N\to\N$ dada por $$f(x)=\text{número de dígitos de }x\text{ en base }10$$ es primitiva recursiva.
 \end{ejercicio}
@@ -32,6 +52,9 @@ z & c.c.
 \end{cases}$
 
 Si las funciones de cada caso y las funciones características de las condiciones son primitivas recursivas entonces la función definida por casos es primitiva recursiva, por lo que $h$ lo sería y por tanto $f$ también. Vamos a ver que el predicado de la condición es primiticvo recursivo. $u$ es potencia de $10$ si y solo si existe $u=10^w$. El predicado $u=10^w$ es primitivo recursivo por ser ecuación entre funciones primitivas recursivas. Llamamos $P(u,w)\equiv u=10^w$. Bastaría comprobar si $P(u,j)=1$ para algún $j=0,\dots, u$. Entonces $u$ es una potencia de 10 si y solo si $P(u,w)=sgn(\sum_{j=0}^u P(u,j))$. Atención porque esta suma no es fija, por lo que no podemos argumentar que la suma es primitiva recursiva. Pero el índice de la suma es primitiva recursiva, por lo que la suma lo es.
+
+
+También podemos definir $f(x)=(\mu t)_{\leq x+1}(t>0\land 10^t> x)$ 
 \end{solucion}
 
 \newpage
@@ -51,6 +74,48 @@ Bata tomar $g(x)=sgn(x)=\begin{cases}
 1 & x\neq 0
 \end{cases}$. Tomamos como $h(x,y,z)=x^z=exp(x,z)=exp(\Pi^3_1(x,y,z),\Pi^3_3(x,y,z))$, por lo que $h=\mathcal{C}(exp; \Pi^3_1,\Pi^3_3)$. Faltaría probar por inducción que $\forall n\in\N\ f(n)=F(n,n)$, lo cual se deja como ejercicio.
 \end{solucion}
+
+\newpage
+
+\begin{ejercicio}{8}
+Probar que las siguientes funciones de $\N$ en $\N$ son primitivas recursivas:
+\begin{enumerate}
+\item $\begin{cases}
+f(0)=0\\
+f(x) =\text{la suma de los divisores de } x & x\neq 0
+\end{cases}$
+\item $g(x)=$ el número de primeros menores o iguales que $x$.
+\item $h(x)=$ el único $n$ tal que $n\leq\sqrt{2}x<n+1$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+\item Es una definición por casos con predicados $\mathcal{PR}$. La función 0 es primitiva reursiva. Solo tenemos que convertir la suma en una suma acotada. 
+$$\sum_{d|x}d=\sum_{j=0}^xP(j,x)j$$
+donde $P(x,j)=j|x$. Entonces $g(x,z)=\sum_{j\leq z}P(x,j)j\in\mathcal{PR}$. Entonces $h(x)=g(x,x)\in\mathcal{PR}$. Así que definimos finalmente
+$$f(x)=\begin{cases}
+0(x) & x=0\\
+h(x) & x\neq 0
+\end{cases}$$
+\item $g(x)=\sum_{j\leq x}Primo(j)$
+\item Sabiendo que es único, el menor será el único. Así que solo hay que verificar que la condición se cumple. Como $n\leq\sqrt{2}x$, también $n\leq 2x^2$ (valdría cualquier cota superior a la que tenemos).
+$$h(x)=(\mu n)_{\leq 2x^2}(n^2\leq 2x^2\land 2x^2\leq (n+1)^2)$$
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{9}
+Sea $f : \N \to \N$ la función cuyos valores sucesivos son
+$$1, 1, 2, 1, 2, 3, 1, 2, 3, 4, 1, 2, 3, 4, 5, \dots$$
+Probar que $f \in \mathcal{PR}$.
+\end{ejercicio}
+\begin{solucion}
+Consideramos $\frac{k(k+1)}{1}\leq x < \frac{(k+1)(k+1)}{2}$, esto significaría que $x$ estaría en el $k-$ésimo bloque. Es decir, buscamos el primer número triángular tal que el siguiente se pase de $x$. Por ejemplo, $x=17$ está entre el quinto bloque y el sexto. El número con el que acaba el bloque anterior es 14, por lo que basta contar hasta llegar, o lo que es lo mismo $f(x)=17-14=3$.
+ESCRIBIR EXPLÍCITAMENTE LA DEFINICIÓN DE $f(x)$ (recordar que se puede dividir porque le cociente es PR así que podemos usar los cocientes de antes)
+\end{solucion}
+
+\newpage
 
 \begin{ejercicio}{}
 La función de Fibonacci no es $\mathcal{PR}$.
