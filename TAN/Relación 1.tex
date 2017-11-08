@@ -204,5 +204,21 @@ Luego:
 \end{sol}
 \end{ejercicio}
 
-
+\[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx} - e^{-nx}} = 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx}} \frac{1}{1-e^{-2nx}} = 2 \sum_{n=1}^{∞} μ(n) e^{-nx}(1+e^{-2nx}+e^{-4nx}+\dots) \]
+\[ = 2 \sum_{n=1}^{∞} μ(n) \sum_{k=1}^{∞} e^{-(2k-1)nx} = 2 \sum_{n=1}^{∞} \sum_{k=1}^{∞} μ(n) e^{-(2k-1)nx}\]
+ya que estas series son absolutamente convergente (compruébalo):
+\[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2 \sum_{N=1}^{∞} e^{-Nx} \left(\sum_{n|N \text{ y }N/n\text{ es impar}} μ(n) \right)\]
+Tenemos que si $N$ es impar:
+\[ \sum_{\substack{n|N \\ N/n\text{ es impar}}} μ(n) = \begin{cases}
+	1, &\text{ si }N = 1\\
+	0, &\text{ si }N > 1
+\end{cases}\]
+Si $N$ es par y $N=2^am$:
+\[ \sum_{2^ak|2^am} μ(n) = \sum_{k|m} μ(2^a k) = \sum_{k|m} μ(2^a) μ(k) = \begin{cases}
+	0, &\text{ si }a ≥ 2\\
+	-1 &\text{ si }m=1\\
+	0 &\text{ c.c.}
+\end{cases}\]
+Luego:
+\[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2(e^{-x}-e^{-2x})\]
 \end{document}

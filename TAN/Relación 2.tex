@@ -5,7 +5,7 @@
 \begin{document}
 
 \title{Teoría Analítica de Números}
-\author{Rafael González López}
+\author{Rafael González López\\Diego Pedraza López}
 \maketitle
 
 \begin{ejercicio}{1}
@@ -31,10 +31,11 @@ Basta de aplicar la fórmula:
 Aplicando la Fórmula de Abel con $a_n=1/n$ y usando que $\sum_{n≤x} a_n = \log x + γ + \mathcal{O}(1/x)$:
 \begin{align*}
 	\sum_{n≤x} \frac{\log n}{n} & = \log x (\log x + γ + \mathcal{O}(1/x)) - \int_1^x \frac{1}{t}(\log t + γ + \mathcal{O}(1/t))\\
-	& = (\log x)^2 + γ\log x + \mathcal{O}\left(\frac{\log x}{x}\right) - \frac{(\log x)^2}{2} - γ\log x + \mathcal{O}\left(\frac{1}{x}\right) + A\\
+	& = \left((\log x)^2 + γ\log x + \mathcal{O}\left(\frac{\log x}{x}\right)\right) - \left(\frac{(\log x)^2}{2} + γ\log x - A - \mathcal{O}\left(\frac{1}{x}\right)\right)\\
 	& = \frac{(\log x)^2}{2} + A + \mathcal{O}\left(\frac{\log x}{x}\right)
 \end{align*}
-donde $A$ se corresponde con el término $-\int \mathcal{O}(1/t^2)$ en $t=1$.
+donde $A$ se corresponde con el término $-\int \mathcal{O}(1/t^2)$ en $t=1$. De esta forma demostramos (b). Para demostrar (a) basta con tomar una forma más debil de la expresión:
+\[ \sum_{n≤x} \frac{\log n}{n} = \frac{(\log x)^2}{x} + A + \mathcal{O}(1) = \frac{(\log x)^2}{x} + \mathcal{O}(1) \]
 \end{sol}
 
 \newpage
@@ -110,6 +111,23 @@ Como para $n=x$, $\{x/n\}=0$, podemos prescindir del último término:
 \[ \left|\sum_{n≤x} \frac{μ(n)}{n}\right| ≤ \frac{1}{x} \left(1+\sum_{n≤x-1}\gabs{μ(n)\left\{\frac{x}{n}\right\}}\right) ≤ \frac{1}{x} \left(1+\sum_{n≤x-1}1\right) ≤ \]
 \[\leq \frac{1}{x} \left(1+\lfloor x \rfloor-1\right) = \frac{\lfloor x \rfloor}{x} ≤ 1\]
 \end{itemize}
+
+\newpage
+
+\begin{ejercicio}{7}
+Probar que para $n ≥ 2$ se tiene
+\[ \sum_{n≤x} Λ(n) \log n = ψ(x) \log x + \mathcal{O}(x) \]
+\end{ejercicio}
+\begin{sol}
+Aplicamos la fórmula de Abel con $a_n=Λ(n)$ recordando que, por definición, $ψ(x) = \sum_{n≤x} Λ(n)$:
+\[ \sum_{n≤x} Λ(n) \log n = ψ(x)\log x + \int_1^x \frac{ψ(t)}{t}dt \]
+Por el teorema de la Valleé Poussin, existe una constante absoluta $c > 0$ tal que:
+\[ ψ(x) = x + \mathcal{O}(xe^{-c\sqrt{\log x}}) \]
+Tomando la expresión más débil $x + \mathcal{O}(x)$:
+\[ \int_1^x \frac{ψ(t)}{t}dt = \int_1^x (1 + \mathcal{O}(1)) dt = x + A + \mathcal{O}(x) = \mathcal{O}(x) \]
+Luego:
+\[ \sum_{n≤x} Λ(n) \log n = ψ(x)\log x + \mathcal{O}(x) \]
+
 \end{sol}
 \newpage
 
