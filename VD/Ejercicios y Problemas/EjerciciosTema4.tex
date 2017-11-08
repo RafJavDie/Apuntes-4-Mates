@@ -1,6 +1,6 @@
 	\documentclass[twoside]{article}
 \usepackage{../../estilo-ejercicios}
-
+\newcounter{ejercicio}
 %--------------------------------------------------------
 \begin{document}
 
@@ -45,6 +45,9 @@ Probar que las proyecciones de un producto de variedades diferenciables en
 cada uno de los factores son sumersiones.
 \end{ejercicio}
 \begin{solucion}
+Tenemos por los problemas propuestos que las proyecciones son aplicaciones diferenciables, así que basta ver que la diferencial es sobreyectiva. Sean $M,N$ variedades diferenciables y consideremos la proyección $\pi_1:M\times N\to M$. Sean $(U,\varphi=(x_1,\dots, x_m))$ y $(V,\psi=(y_1,\dots,y_n))$ cartas locales de $M$ y $N$ respectivamente. Fijamos $t=(p,q)\in U\times V$. Entonces consideramos $\pi_{1*}:T_t(M\times N)\to T_p(M)$. Es fácil ver que $T_t(M\times N)\cong T_p(M)\times T_q(N)$\footnote{\url{https://math.stackexchange.com/questions/413766/tangent-space-of-product-manifold}}. Así pues, sea $u\in T_q(M)$. Basta tomar un vector cualquiera de la forma $(u,v)\in T_p(M)\times T_q(N)$ para que tenga a $u$ por imagen. En efecto, sean $\alpha,\beta
+$ curvas diferenciables sobre $M$ y $N$ respectivamente, que tengan cada una a $u$ y a $v$ como vector tangente, entonces
+$$\pi_{1*}(u,v)=(\pi_1(\alpha,\beta))'=\alpha'=u$$
 \end{solucion}
 
 \newpage
@@ -59,7 +62,7 @@ $$f^*_p((dg)_{f(p)})v=(dg)_{f(p)}(f_{*p}v)=(f_{*p}v)g=v(g\circ f)=(d(g\circ f))_
 
 \newpage
 
-\begin{ejercicio}{6}\label{6}
+\begin{ejercicio}{6}
 Probar que toda superficie regular es una subvariedad regular de $\R^3$.
 \end{ejercicio}
 \begin{solucion}
@@ -73,6 +76,9 @@ Probar que cualquier subvariedad abierta de una variedad diferenciable es
 subvariedad regular.
 \end{ejercicio}
 \begin{solucion}
+Sea $M$ una variedad diferenciable y $G\subseteq M$ un abierto al que se dota de estructura de subvariedad abierta de $M$. Entonces, por la proposición 4.2.5 basta ver que $(G,i)$ con $i:G\hookrightarrow M$ es subvariedad de $M$. Para ello, tenemos que probar que $i$ es una inmersión inyectiva. Que es inyectiva es evidente, así que tenemos que probar que es inmersión, es decir, que dado $p\in G$, $i_*:T_p(G)\to T_p(M)$ es inyectiva. Sea $v\in T_p(G)$ tal que $i_*v=0$. Entonces $\forall f\in\calF(G,M)$, 
+$$0=(i_*v)f =v(i\circ f)=v(f)$$
+con lo que necesariamente $v=0$ como aplicación lineal, es decir, que debe ser el vector nulo, con lo que se tiene el resultado.
 \end{solucion}
 
 \newpage
@@ -81,7 +87,7 @@ subvariedad regular.
 Probar que $S^n$ es subvariedad regular de $\R^{n+1}$.
 \end{ejercicio}
 \begin{solucion}
-Es un caso particular del ejercicio \ref{6}.
+Es un caso particular del ejercicio 6.
 \end{solucion}
 
 \newpage
@@ -92,6 +98,7 @@ $T^*_p (M)$, probar que existe una carta local $(U, \varphi = (x_1, \dots, x_m))
 $p$ tal que $(dx_i)_p = \omega_i, i = 1, \dots,m$.
 \end{ejercicio}
 \begin{solucion}
+Dado que todo covector es la diferencial de alguna función diferenciable en $p$, tenemos que $\omega_i=(df_i)_p, i=1,\dots, m$, por lo que basta tomar $\varphi=(f_1,\dots,f_m)$ y como $U$ la intersección de los dominios donde las $f_i$ son diferenciables, que es abierto no vacío porque hay una cantidad finita y en todos ellos está $p$.
 \end{solucion}
 
 \newpage
@@ -100,6 +107,7 @@ $p$ tal que $(dx_i)_p = \omega_i, i = 1, \dots,m$.
 Probar que no existen inmersiones de $S^1$ en $\R$.
 \end{ejercicio}
 \begin{solucion}
+Sea $f\in\calF(S^1,\R)$. En particular, $f$ es continua, por lo que $f(S^1)$ es compacto. Por tanto, $f$ alcanza un máximo en algún punto $p\in S^1$ y un mínimo en algún otro punto $q\in S^1$. Podemos tomar un entorno de $p$ que sea homeomorfo a $\R$, de modo que aplicando el ejercicio 1, la diferencial de $f$ es la diferencial habitual de $\R$ en $\R$. Por tanto $df(p)=df(q)=0$. Si $p\neq q$, claramente $df$ no es inyectiva, y si $p=q$, por ser máximo y mínimo, esto implica que la imagen de $f$ solo contiene un punto, es decir, $f$ es constante, de modo que $df=0$ y seguiría sin ser inyectiva.
 \end{solucion}
 
 \newpage
