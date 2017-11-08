@@ -1,0 +1,83 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Problemas de Variedades Diferenciables - Tema 1}
+\author{Javi, Rafa, Diego}
+\maketitle
+
+
+
+\begin{ejercicio}{1}\label{1}
+Sean $\calA$ un atlas sobre $M$ y $(U,\varphi) \in \calA$ una carta local. Si $V \subseteq U$ es un abierto, probar que
+$(V, \varphi|_V )$ es una carta local admisible en $\calA$.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Sea $M$ una variedad diferenciable. Probar que, dado cualquier $p \in M$, existe una carta local
+$(U, \varphi)$ de la estructura diferenciable centrada en $p$ (es decir, tal que $\varphi(p) = 0$).
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+Sea $M$ una variedad diferenciable y $\calA$ el atlas maximal de la estructura diferenciable. Probar
+que los dominios de las cartas locales de $\calA$ forman base de la topología de $M$.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4}
+Sea $(M,\mathcal{A})$ una variedad diferenciable y $G\subseteq M$ un abierto. Probar que,
+dando a $G$ la topología relativa de la de $M$,
+$$\mathcal{B} = \{(G \cap U, \varphi|_{G\cap U})\}_{(U,\varphi)\in\mathcal{A}}$$
+es un atlas sobre $G$ que lo dota de estructura de variedad diferenciable de la
+misma dimensión que $M$, llamada \textbf{Estructura de Subvariedad Abierta}
+de $G$.
+\end{ejercicio}
+\begin{solucion}
+Primero veamos que los elementos de $\mathcal{B}$ son cartas locales. Por definición son abiertos de la topología relativa, y las restricciones de homeomorfismos siguen siendo homeomorfismos. De hecho, $\varphi|_{G\cap U}(G\cap U)=\varphi(G\cap U)=\varphi(G)\cap\varphi(U)$, que es abierto del mismo $\R^m$ (conservando así la dimensión) por ser intersección finita de abiertos. Para ver que las cartas están relacionadas entre sí basta hacer un razonamiento  análogo al del ejercicio \ref{1}. Por último, para ver que recubren $G$, 
+$$G=M\cap G=(\bigcup_{(U,\varphi)\in\mathcal{A}}U)\cap G= \bigcup_{(U,\varphi)\in\mathcal{A}}(U\cap G).$$
+\end{solucion}
+
+\begin{ejercicio}{5}
+Probar que todo espacio vectorial real $m$-dimensional admite una estructura
+diferenciable canónica de dimensión $m$.
+\end{ejercicio}
+\begin{solucion}
+Sea $V$ un espacio vectorial real $m$-dimensional. Entonces, por álgebra lineal existe una aplicación lineal biyectiva (y por tanto homeomorfismo con la topología inicial) $f:V\to\R^m$. Basta tomar el atlas unitario $\mathcal{A}=\{(V,f)\}$ para dotar a $V$ de estructura diferenciable.  
+\end{solucion}
+
+\begin{ejercicio}{6}
+Probar que $\C^m$ es una variedad diferenciable de dimensión $2m$.
+\end{ejercicio}
+\begin{solucion}
+Basta notar que $\C^m$ es un $\R$-espacio vectorial de dimensión $2m$ y aplicar el ejercicio anterior.
+\end{solucion}
+
+\begin{ejercicio}{7}
+Probar que el producto cartesiano de dos variedades diferenciables $M$ y $N$
+es una variedad diferenciable de dimensión la suma de las dimensiones de
+las variedades factores. De hecho, si $(U,\varphi)$ es una carta de $M$ y $(V,\psi )$ una
+carta de $N$, se verifica que $(U \times V,\varphi\times\psi )$ es una carta sobre $M \times N$.
+\end{ejercicio}
+\begin{solucion}
+Sean $\mathcal{A}_1$ un atlas de dimensión $m$ para $M$ y $\mathcal{A}_2$ un atlas de dimensión $n$ para $N$. Para probar lo que se nos pide, construimos el atlas $\mathcal{A}=\{(U\times V,\varphi\times\psi): (U,\varphi)\in\mathcal{A}_1, (V,\psi)\in\mathcal{A}_2\}$. Veamos que sus elementos son cartas locales. En primer lugar, $U\times V$ es abierto de la topología producto y $\varphi\times\psi(U\times V)=\varphi(U)\times\psi(V)$ es un abierto de $\R^n\times\R^n=\R^{n+m}$. Además, el producto cartesiano de homeomorfismos es claramente homeomorfismo. Probemos ahora que las cartas están relacionadas dos a dos. 
+
+Sean $(U_1\times V_1,\varphi_1\times\psi_1)\in\mathcal{A}_1$ y $(U_2\times V_2,\varphi_2\times\psi_2)\in\mathcal{A}_2$. Entonces 
+$$(\varphi_1\times\psi_1)\circ(\varphi_2\times\psi_2)^{-1}=(\varphi_1\times\psi_1)\circ(\varphi_2^{-1}\times\psi_2^{-1})=(\varphi_1\circ\varphi_2^{-1},\psi_1\circ\psi_2^{-1}).$$
+Como cada componente es infinitamente diferenciable por hipótesis, el proucto también lo es. Finalmente, veamos que las cartas recubren $M\times N$,
+$$M\times N= \bigcup_{(U,\varphi)\in\mathcal{A}_1}U\times\bigcup_{(V,\psi)\in\mathcal{A}_1}V=\bigcup_{(U\times V,\varphi\times\psi)\in\mathcal{A}}U\times V.$$
+\end{solucion}
+
+\end{document}
