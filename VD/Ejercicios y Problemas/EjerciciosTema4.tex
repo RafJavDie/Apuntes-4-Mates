@@ -1,6 +1,6 @@
 	\documentclass[twoside]{article}
 \usepackage{../../estilo-ejercicios}
-
+\newcounter{ejercicio}
 %--------------------------------------------------------
 \begin{document}
 
@@ -45,6 +45,9 @@ Probar que las proyecciones de un producto de variedades diferenciables en
 cada uno de los factores son sumersiones.
 \end{ejercicio}
 \begin{solucion}
+Tenemos por los problemas propuestos que las proyecciones son aplicaciones diferenciables, así que basta ver que la diferencial es sobreyectiva. Sean $M,N$ variedades diferenciables y consideremos la proyección $\pi_1:M\times N\to M$. Sean $(U,\varphi=(x_1,\dots, x_m))$ y $(V,\psi=(y_1,\dots,y_n))$ cartas locales de $M$ y $N$ respectivamente. Fijamos $t=(p,q)\in U\times V$. Entonces consideramos $\pi_{1*}:T_t(M\times N)\to T_p(M)$. Es fácil ver que $T_t(M\times N)\cong T_p(M)\times T_q(N)$\footnote{\url{https://math.stackexchange.com/questions/413766/tangent-space-of-product-manifold}}. Así pues, sea $u\in T_q(M)$. Basta tomar un vector cualquiera de la forma $(u,v)\in T_p(M)\times T_q(N)$ para que tenga a $u$ por imagen. En efecto, sean $\alpha,\beta
+$ curvas diferenciables sobre $M$ y $N$ respectivamente, que tengan cada una a $u$ y a $v$ como vector tangente, entonces
+$$\pi_{1*}(u,v)=(\pi_1(\alpha,\beta))'=\alpha'=u$$
 \end{solucion}
 
 \newpage
@@ -59,7 +62,7 @@ $$f^*_p((dg)_{f(p)})v=(dg)_{f(p)}(f_{*p}v)=(f_{*p}v)g=v(g\circ f)=(d(g\circ f))_
 
 \newpage
 
-\begin{ejercicio}{6}\label{6}
+\begin{ejercicio}{6}
 Probar que toda superficie regular es una subvariedad regular de $\R^3$.
 \end{ejercicio}
 \begin{solucion}
@@ -73,6 +76,9 @@ Probar que cualquier subvariedad abierta de una variedad diferenciable es
 subvariedad regular.
 \end{ejercicio}
 \begin{solucion}
+Sea $M$ una variedad diferenciable y $G\subseteq M$ un abierto al que se dota de estructura de subvariedad abierta de $M$. Entonces, por la proposición 4.2.5 basta ver que $(G,i)$ con $i:G\hookrightarrow M$ es subvariedad de $M$. Para ello, tenemos que probar que $i$ es una inmersión inyectiva. Que es inyectiva es evidente, así que tenemos que probar que es inmersión, es decir, que dado $p\in G$, $i_*:T_p(G)\to T_p(M)$ es inyectiva. Sea $v\in T_p(G)$ tal que $i_*v=0$. Entonces $\forall f\in\calF(G,M)$, 
+$$0=(i_*v)f =v(i\circ f)=v(f)$$
+con lo que necesariamente $v=0$ como aplicación lineal, es decir, que debe ser el vector nulo, con lo que se tiene el resultado.
 \end{solucion}
 
 \newpage
@@ -81,7 +87,7 @@ subvariedad regular.
 Probar que $S^n$ es subvariedad regular de $\R^{n+1}$.
 \end{ejercicio}
 \begin{solucion}
-Es un caso particular del ejercicio \ref{6}.
+Es un caso particular del ejercicio 6.
 \end{solucion}
 
 \newpage
