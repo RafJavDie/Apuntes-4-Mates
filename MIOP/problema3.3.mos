@@ -1,0 +1,42 @@
+!@encoding CP1252
+model problema3
+uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+
+parameters
+	N=3
+end-parameters
+
+
+declarations
+	w: array(1..N) of mpvar 
+	v,vv: array(1..N) of real
+end-declarations
+
+w(1)-0.9*(0.3*w(1)+0.5*w(2)+0.2*w(3))>=20
+w(2)-0.9*(0.1*w(1)+0.5*w(2)+0.4*w(3))>=6
+w(3)-0.9*(0.2*w(1)+0.4*w(2)+0.4*w(3))>=-8
+
+forall(i in 1..N) w(i) is_free !para decir que las variables son irrestringidas
+
+minimize(w(1)+w(2)+w(3))
+!implementar dual y ver que solo dan distintas de 0 las variables correspondientes a la política óptima
+
+
+
+!implementar el método de iteraciones sucesivas. Definimos dos vectores para que en cada iteración se tenga el antiguo y el actualizado
+
+v(1):=0
+v(2):=0
+v(3):=0
+vv(1):=0
+vv(2):=0
+vv(3):=0
+
+forall(r in 0..100)do
+	forall(i in 1..N)writeln('v(',i,')^',r,'=',v(i))
+	v(1):=0.9*(0.3*vv(1)+0.5*vv(2)+0.2*vv(3))+20
+	v(2):=0.9*(0.1*vv(1)+0.5*vv(2)+0.4*vv(3))+6
+	v(3):=0.9*(0.2*vv(1)+0.4*vv(2)+0.4*vv(3))-8
+	forall(i in 1..N) vv(i):=v(i)
+	end-do
+end-model
