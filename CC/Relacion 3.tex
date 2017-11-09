@@ -111,8 +111,9 @@ $$1, 1, 2, 1, 2, 3, 1, 2, 3, 4, 1, 2, 3, 4, 5, \dots$$
 Probar que $f \in \mathcal{PR}$.
 \end{ejercicio}
 \begin{solucion}
-Consideramos $\frac{k(k+1)}{1}\leq x < \frac{(k+1)(k+1)}{2}$, esto significaría que $x$ estaría en el $k-$ésimo bloque. Es decir, buscamos el primer número triángular tal que el siguiente se pase de $x$. Por ejemplo, $x=17$ está entre el quinto bloque y el sexto. El número con el que acaba el bloque anterior es 14, por lo que basta contar hasta llegar, o lo que es lo mismo $f(x)=17-14=3$.
-ESCRIBIR EXPLÍCITAMENTE LA DEFINICIÓN DE $f(x)$ (recordar que se puede dividir porque le cociente es PR así que podemos usar los cocientes de antes)
+Consideramos $\frac{k(k+1)}{2}\leq x < \frac{(k+1)(k+2)}{2}$, esto significaría que $x$ estaría en el $k-$ésimo bloque. Es decir, buscamos el primer número triángular tal que el siguiente se pase de $x$. Por ejemplo, $x=17$ está entre el quinto bloque y el sexto. La posición en la que acaba el bloque anterior (empezando por 0) es 14, por lo que basta contar hasta llegar, o lo que es lo mismo $f(x)=17-14=3$.
+$$f(x)=x-\frac{r(r+1)}{2}$$
+donde $r=(\mu t)_{\leq x}\left(\frac{(t+1)(t+2)}{2}>x\right)$. 
 \end{solucion}
 
 \newpage
