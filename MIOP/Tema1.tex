@@ -433,6 +433,10 @@ $d$ & $d_2$ & $r_2(d_2)$ & $f_3(d-d_2)$ & $f_2(d_2)$\\
   & 3 & 16 & 9 & 25\\
   & 4 & 19 & 0 & 19\\
 \hline
+\end{tabular}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$d$ & $d_2$ & $r_2(d_2)$ & $f_3(d-d_2)$ & $f_2(d_2)$\\
 \hline
 5 & 0 & 0 & 25 & 25\\
   & 1 & 10 & 21 & $\boxed{31}$\\
@@ -450,6 +454,7 @@ $d$ & $d_2$ & $r_2(d_2)$ & $f_3(d-d_2)$ & $f_2(d_2)$\\
   & 5 & 22 & 9 & 31\\
   & 6 & 25 & 0 & 25\\
 \hline
+
 \end{tabular}
 \end{center}
 
@@ -467,6 +472,7 @@ $d$ & $d_1$ & $r_1(d_1)$ & $f_2(d-d_1)$ & $f_1(d_1)$\\
   & 5 & 37 & 10 & 47\\
   & 6 & 44 & 0 & 44\\
   \hline
+  
 \end{tabular}
 \end{center}
 
@@ -501,9 +507,7 @@ $$
 f(n,i)=\min\{M+m_1-S_i+f(n+1,1),m_i+f(n+1,i+1)\}\quad n<N
 $$
 $$
-f(n,T) = M+m_1-S_T + f(n+1,1)
-$$
-$$f(N,i) = m_i-S_i
+f(n,T) = M+m_1-S_T + f(n+1,1) \qquad f(N,i) = m_i-S_i
 $$
 Solución: Evaluar $f(1,1)$ si empezamos con un equipo nuevo. Si tiene edad $i$, $f(1,i)$. Reformulación: Estado $i$: etapa con un equipo nuevo. Definimos $c_T$ como el coste acumulado si, partiendo de una máquina nueva el próximo se produce tras $t$ periodos. 
 $$
@@ -586,7 +590,7 @@ $$f(3,a)=\max_{x\leq a} p_{3x}
 $$
 $$f(t,a) = \max_{x\leq a}\{p_{tx} f(t+1,a-x)\}$$
 La solución es $f(1,2)$.
-\newpage
+
 \underline{Etapa 3:}\
 
 \begin{tabular}{|c| c| c| }
@@ -600,28 +604,34 @@ $1$ & $0.55$ & $1$\\
 $2$ & $0.7$ & $2$\\
 \hline
 \end{tabular}\\
-
+\newpage
 \underline{Etapa 2:}\
 
-\begin{tabular}{|c| c| c| }
+\begin{tabular}{|c| c| c|c| }
 \hline
-$a$ & $f(2,a)$ & $x$ \\
+$a$ &  $x$	 &$f(3,a-x)$		&  $f(2,a)$\\
+\hline    
+$0$ & 	 $0$ & $0.3$ 	&  $0.15$	\\
+\hline    
+\hline    
+$1$ & 	 $0$ & $0.55 $ 	& 	$\boxed{0.275}$\\
+ & 		 $1$&  $0.3 $	& 	$0.21$\\
+\hline    
 \hline
-$0$ & $0.55\cdot f(3,0) = 0.165$  & $0$\\
-\hline
-$1$ & $0.5\cdot f(3,1) = 0.275 $ & $0$\\
-\hline
-$2$ & $0.7\cdot f(3,1) = 0.385$ & $1$\\
+$2$ & 	 $0$ & $0.7$ 	& $0.35$	\\
+ & 	 $1$ & $0.55$ 	& 	$\boxed{0.385}$\\
+ & 	 $2$ & $0.3$ 	&   $0.255$\\
 \hline
 \end{tabular}\\
-
-\underline{Etapa 1:}\
-
-\begin{tabular}{|c| c| c| }
+\underline{Etapa 1:}
+\newline
+\begin{tabular}{|c| c| c|c| }
 \hline
-$a$ & $f(1,2)$ & $x$ \\
-\hline
-$2$ & $0.85\cdot f(2,1)$ & $1$\\
+$a$ &  $x$	 &$f(2,a-x)$		&  $f(1,a)$\\
+\hline    
+$2$ & 	 $0$ & $0.385$ 	&  $0.231$			\\
+   & 	 $1$ & $0.275$ 	&  \boxed{$0.22$}			\\
+   & 	 $2$ & $0.15$ 	&  $0.12$			\\
 \hline
 \end{tabular}\\
 Por tanto, el óptimo se alcanza cuando colocamos $1$ vendedor en la Zona 1, $0$ vendedores en la Zona 2 y $1$ vendedor en la Zona 3.
