@@ -128,6 +128,7 @@ aplicación diferenciable. ¿Bajo qué condiciones mínimas se puede asegurar
 que $f|_M : M \to N$ es diferenciable?
 \end{ejercicio}
 \begin{solucion}
+Como ser diferenciable es una propiedad local y $f|_M=f$ en $M$, dotanto a $M$ y a $N$ de las topologías relativas correspondientes basta que $f(M)\subseteq N$.
 \end{solucion}
 
 \newpage
@@ -146,6 +147,23 @@ Sean $M \subseteq N$ tales que $(M, i)$ es subvariedad de $N$. Probar que $M$ y 
 tienen la misma dimensión si y solo si $M$ es subvariedad abierta de $N$.
 \end{ejercicio}
 \begin{solucion}
+$\boxed{\Rightarrow}$ Sea $n$ la dimensión de $N$ y $M$. Se prueba\footnote{\url{https://math.stackexchange.com/questions/84577/open-subsets-in-a-manifold-as-submanifold-of-the-same-dimension}} que $M$ es abierto de $N$. Por el problema 2.5 sabemos que para $i:M\to i(M)$ existe una única estructura diferenciable que convierte a $i$ en difeomorfismo. En particular la convierte en homeomorfismo. Como $i(M)$ tiene la topología relativa a $M$ esto implica que $M$ también la tiene. Entonces sabemos que $i$ es homeomorfismo sobre su imagen. Sea entonces $(U\cap M,\psi)$ una carta de $M$. Vamos a probar que $\psi$ es la restricción a $U\cap M$ de alguna carta local de $N$. Podemos suponer que $U\cap M$ es conexo, pues de lo contrario nos restringiríamos a sus componentes conexas. Además también podemos suponer que es un entorno básico. Sea $(U\cap M,\varphi)$ una carta de $N$ y $f$ un homeomorfismo entre $\varphi(U\cap M)\cong\psi(U\cap M)$ que existe porque ambos son entornos básicos de $\R^n$. Consideremos el siguiente diagrama conmutativo
+\[
+\begin{tikzcd}
+U\cap M\subseteq N\arrow[r,"\varphi"] & \varphi(U\cap M)\arrow[d,"f"]\arrow[d,"\cong"']\\
+U\cap M\subseteq M\arrow[u,hookrightarrow, "i"']\arrow[r,"\psi"]& \psi(U\cap M)
+\end{tikzcd}
+\]
+Tenemos pues que $\psi=f\circ\varphi\circ i: U\cap M\subseteq M\to\varphi(U\cap M)$. Pero esta aplicación es igual a $f\circ\varphi|_{U\cap M}:U\cap M\subset N\to\psi(U\cap M)$. Como $f\circ\varphi$ es homeomorfismo, $(U\cap M,f\circ\varphi)$ es una carta de $N$ y además $(U\cap M,\psi)=(U\cap M,f\circ\varphi|_{U\cap M})$, por lo que tenemos lo que queríamos probar.
+
+$\boxed{\Leftarrow}$ Supongamos que $M$ es subvariedad abierta de $N$. En particular $M$ es abierto en $N$. Por lo tanto existe alguna carta en la estructura diferenciable de $N$ de la forma $(M, \varphi)$, tal que $\varphi(M)\subseteq\R^n$. Además, por el ejercicio 7, $M$, es una subvariedad regular, es decir, que $i:M\hookrightarrow i(M)=M$ es homeomorfismo. Tomemos una carta de la estructura diferenciable de $M$ como subvariedad abieta $(M\cap U,\psi|_{M\cap U})$, donde $(U,\psi)$ es una carta de $N$. Supongamos que $M$ tiene una cierta dimensión $m$ y observemos el siguiente diagrama conmutativo.
+\[
+\begin{tikzcd}
+U\cap M\subseteq M\arrow[r,"\psi|_{M\cap U}"]\arrow[d,hookrightarrow, "i"'] & \psi|_{M\cap U}(M\cap U)\subseteq \R^m\\
+U\cap M\subseteq N\arrow[r,"\varphi|_{M\cap U}"] & \varphi|_{M\cap U}(M\cap U)\subseteq\R^n\arrow[u, "\psi|_{M\cap U}\circ i\circ\varphi^{-1}|_{M\cap U}"']
+\end{tikzcd}
+\]
+La aplicación $\psi|_{M\cap U}\circ i\circ\varphi^{-1}|_{M\cap U}$ es homeomorfismo por ser composición de homeomorfismos y obtenemos $m=n$ por el teorema de invariancia de dominio.
 \end{solucion}
 
 \newpage
