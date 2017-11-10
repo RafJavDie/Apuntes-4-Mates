@@ -4,7 +4,7 @@
 
 \chapter{Introducción a la Programación\\ Dinámica.}
 \section{Introducción.}
-La Programación Dinámica (P.D.) son un conjunto de técnicas que permiten resolver procesos de división secuencial.
+La Programación Dinámica (P.D.) es un conjunto de técnicas que permiten resolver procesos de división secuencial.
 \begin{ej}
 Probabilidad de que al lanzar dos dados sucesivamente tengan antes un suceso que sume 3 a uno que sume 7. Llamemos $A=$``obtener un suceso que sume 3 antes que uno que suma 7''. Tratamos de expresar la probabilidad recursivamente. 
 
@@ -79,7 +79,7 @@ Usando el ejemplo anterior:
 \textbf{Diagrama de cajas}
 Etapa $k$:
 $\overset{d_k}{\longrightarrow}\boxed{s_k}\rightarrow c_k(s_k,d_k)$\\
-Etapa $k$:
+Etapa $k+1$:
 $\overset{d_k}{\longrightarrow}\boxed{t_k(s_k,d_k)}\rightarrow c_k(s_{k+1},d_{k+1})$
 
 \begin{defi}
@@ -87,7 +87,7 @@ Sea $g:\R^n\to\R$. Decimos que $g$ es \textbf{separable} si $\exists g_1:\R^2\to
 \end{defi}
 
 \begin{defi}
-$g:\R^n\to\R$ es descomponible si
+$g:\R^n\to\R$ es \textbf{descomponible} si
 \begin{enumerate}
 \item Es separable con $g_1,g_2$ y
 \item $g_1$ es monótona no creciente como función de $g_2$ (en proceso de minimización, no decreciente si es maximización). 
@@ -99,7 +99,7 @@ Suma, producto de números positivos, máximo...
 \end{ej}
 
 \begin{teorema}[Mitten] 
-Sea $g:\R^n\to\R$ una función descomponible con $g_1,g_2$. Asumimos que nos movemos en dominios compactos y las funciones son continuas, de modo que se alcanzan los mínimos. Entonces se verifica:
+Sea $g:\R^n\to\R$ una función descomponible en $g_1,g_2$. Asumimos que nos movemos en dominios compactos y las funciones son continuas, de modo que se alcanzan los mínimos. Entonces se verifica:
 $$\min_{r_1,r_2,\dots,r_n} g(r_1,r_2,\dots,r_n)=\min_{r_1} g_1(r_1,\min_{r_2,\dots,r_n}g_2(r_2,\dots,r_n))$$
 
 \end{teorema}
@@ -117,7 +117,7 @@ $$\min_{u_1,\dots,u_n}g(u_1,\dots, u_n)\geq \min_{r_1}g_1(r_1,\min_{r_2,\dots,r_
 \end{dem}
 
 \section{Ecuaciones de un proceso de decisión.}
-Consideremos un proceso de decisión secuencial en $N$ etapas y denotemos por $s_n$ el estado en la etapa $n$. Supongamos que conocemos el estado final del proceso $s_N^*$. Sean $c_n(s_n,d_n)$ y $t_n(s_n,d_n)$, respectivamente, las funciones de coste entre etapas. Finalmente, supongamos que $f_n(s_n)$ representa el menor coste para ``conducir'' al sistema desde la etapa $n$ en estado $s_n$ hasta $s_N^*$. Entonces, podemos escribir $f_n(s_n)=\min_{d_n}\{c_n(s_n,d_n)+f_{n+1}(t_n(s_n,d_n))\}\ n<N$. Y para $n=N$, $f_N(s_N)=\begin{cases}
+Consideremos un proceso de decisión secuencial en $N$ etapas y denotemos por $s_n$ el estado en la etapa $n$. Supongamos que conocemos el estado final del proceso $s_N^*$. Sean $c_n(s_n,d_n)$ y $t_n(s_n,d_n)$, respectivamente, las funciones de coste y transición entre etapas. Finalmente, supongamos que $f_n(s_n)$ representa el menor coste para ``conducir'' al sistema desde la etapa $n$ en estado $s_n$ hasta $s_N^*$. Entonces, podemos escribir $f_n(s_n)=\min_{d_n}\{c_n(s_n,d_n)+f_{n+1}(t_n(s_n,d_n))\}$ para $n<N$. Y para $n=N$, $f_N(s_N)=\begin{cases}
 +\infty & s_N\neq s_N^*\\
 \min_{d_N}c_N(s_N^*, d_N) & s_N=s_N^*
 \end{cases}$
@@ -151,17 +151,17 @@ $I_1=I_5=0$, $h_t(I)=\frac{1}{2}I$ ($I\leq 4$), $c_t(x)=\begin{cases}
 
 \begin{tabular}{|c| c| c| c |}
 \hline
-$I$ & $x$ & $f_4(I)$ & $x^* $ \\
+$I$ & $x$ & $f_4(I)$ \\
 \hline
-$0$ & $4$ & $7$ &  \\
+$0$ & $4$ & $7$   \\
 \hline
-$1$ & $3$ & $\frac{1}{2}1+6$ & \\
+$1$ & $3$ & $\frac{1}{2}1+6$  \\
 \hline
-$2$ & $2$ & $\frac{1}{2}2+5$ & \\
+$2$ & $2$ & $\frac{1}{2}2+5$  \\
 \hline
-$3$ & $1$ & $\frac{1}{2}3+4$ &  \\
+$3$ & $1$ & $\frac{1}{2}3+4$   \\
 \hline
-$4$ & $0$ & $\frac{1}{2}4+0$ & $\boxed{2}$ \\
+$4$ & $0$ & $\frac{1}{2}4+0$ \\
 \hline
 \end{tabular}\
 \\
