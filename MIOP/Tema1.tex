@@ -492,16 +492,16 @@ Estado: $d=$ cantidad disponible de recursos. La función $g(d)$ será el máxim
 &g(d)=\max_{w_n\leq d}\{r_n+g(d-w_n)\}
 \end{align*}
 \subsection{Modelos de reemplazamiento de equipos}
-En un horizonte de planificación $M$, determinar el plan de renovación de equipos que minimiza el coste si:
+En un horizonte de planificación $N$, determinar el plan de renovación de equipos que minimiza el coste si:
 \begin{itemize}
 \item $M$ es el coste de compra de un equipo nuevo
 \item $m_i$ es el coste de mantener un equipo de edad $i$
 \item $T$ es la edad máxima de un equipo
-\item $S_i$ es el valor de venta de e un equipo de edad $i$.
+\item $S_i$ es el valor de venta de un equipo de edad $i$.
 \end{itemize}
 En nuestro caso, los estados son duplas $(n,i)$ donde $n$ es el índice de la etapa e $i$ es la edad del equipo actual. Las decisiones posibles son mantener o reemplazar el equipo. 
 $$
-f(n,i) = \text{ mínimo coste de reemplazamiento desde la etapa n a N, si tengo un equpo de edad i}$$
+f(n,i) = \text{ mínimo coste de reemplazamiento desde la etapa }n\text{ a }N,\text{ si tengo un equipo de edad }i$$
 Si compro un equipo nuevo, tenemos $M+m_1-S_i$, mientras que si mantenemos, solo tenemos el coste $m_i$. Si reemplazo, paso a la etapa $n+1$ con un equpo de edad $1$, mientras que si mantenemos, paso con un equipo de edad $i+1$.
 $$
 f(n,i)=\min\{M+m_1-S_i+f(n+1,1),m_i+f(n+1,i+1)\}\quad n<N
@@ -509,7 +509,9 @@ $$
 $$
 f(n,T) = M+m_1-S_T + f(n+1,1) \qquad f(N,i) = m_i-S_i
 $$
-Solución: Evaluar $f(1,1)$ si empezamos con un equipo nuevo. Si tiene edad $i$, $f(1,i)$. Reformulación: Estado $i$: etapa con un equipo nuevo. Definimos $c_T$ como el coste acumulado si, partiendo de una máquina nueva el próximo se produce tras $t$ periodos. 
+Solución: Evaluar $f(1,1)$ si empezamos con un equipo nuevo. Si tiene edad $i$, $f(1,i)$. 
+
+{\bf Reformulación:} Estado $i$: etapa con un equipo nuevo. Definimos $c_t$ como el coste acumulado si, partiendo de una máquina nueva el próximo se produce tras $t$ periodos. 
 $$
 c_t = M - S_t + \sum_{k=1}^t m_i
 $$
@@ -530,7 +532,7 @@ f(S,i)= \text{long. mínima del camino de $i$ a 1 cuando he vistado S}
 $$
 $$f(S,i) = \min_{j\in\Gamma_i}\{c_{ij}+f(S\cup\{j\},j)\}
 $$
-La solución consiste en evaluar $f(1,1)$. 
+La solución consiste en evaluar $f(\{1\},1)$. 
 \begin{ej} Consideramos la siguiente matriz cuyas entradas son los $c_{ij}$.
 $$
 \begin{pmatrix}
@@ -561,7 +563,7 @@ f(\{1,3,4\},3) = 2677 \quad f(\{1,3,4\},4)=2663
  $$
  f(\{1\},1) = \min\{c_{12}+f(\{1,2\},2), c_{13}+f(\{1,3\},3), c_{13}+f(\{1,4\},4)\} = 4407
  $$
-Tenemos por tanto las siguientes soluciones $1\to 2 \to 3 \to 4 \to 1$, $1\to 3 \to 2 \to 3 \to 1$ y el camino $ 1 \to 3 \to 3 \to 2 \to 1$.
+Tenemos por tanto las siguientes soluciones $1\to 2 \to 3 \to 4 \to 1$, $1\to 3 \to 2 \to 4 \to 1$ y el camino $ 1 \to 3 \to 4 \to 2 \to 1$.
 \end{ej}
 \section{Recursión con funcional no aditivo}
 Consideremos la tabla de probabilidad de venta según la zona y el número de vendedores asignado a dicha zona.
