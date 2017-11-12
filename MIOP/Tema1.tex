@@ -1,8 +1,11 @@
 \documentclass[MIOP.tex]{subfiles}
 \usepackage{mathtools}
+\usepackage{sagetex}
 \begin{document}
 
 \chapter{Introducción a la Programación\\ Dinámica.}
+
+
 \section{Introducción.}
 La Programación Dinámica (P.D.) es un conjunto de técnicas que permiten resolver procesos de división secuencial.
 \begin{ej}
@@ -656,14 +659,16 @@ r_n(x_n,d_n,k_n)= r_n(t_{n-1}(x_{n-1},d_{n-1},k_{n-1}),d_n,k_n)
 $$
 \begin{lemma}
 $$
-E_{k_1,\dotsc,k_N}\left[\sum_{n=1}^N r_n(x_n,d_nk_n)\right] = E_{k_1}\left[r_1(x_n,d_n,k_n)+E_{k_2,\dotsc,k_N}\left[\sum_{n=1}^N r_n(x_n,d_n,k_n)\right]\right]
+E_{k_1,\dotsc,k_N}\left[\sum_{n=1}^N r_n(x_n,d_nk_n)\right] = E_{k_1}\left[r_1(x_n,d_n,k_n)+E_{k_2,\dotsc,k_N}\left[\sum_{n=2}^N r_n(x_n,d_n,k_n)\right]\right]
 $$
 \end{lemma}
+\begin{proof}
 \begin{gather*}
 E_{k_1,\dotsc,k_N}\left[\sum_{n=1}^N r_n\right] = \sum_{k_1,\dotsc,k_N}\left(\prod_{i=1}^N P_i(k_i)\right)\sum_{n=1}^N r_n =\\ \sum_{k_1,\dotsc,k_N}\left(\prod_{i=1}^N P_i(k_i)\right)\left[r_1+\sum_{n=2}^N r_n\right] = \sum_{k_1,\dotsc,k_N}\left(\prod_{i=1}^N P_i(k_i)\right)r_1+\sum_{k_1,\dotsc,k_N}\left(\prod_{i=1}^N P_i(k_i)\right)\sum_{n=2}^N r_n = \\
 =\sum_{k_1}P_1(k_1)r_1\sum_{k_2,\dotsc,k_N}\left(\prod_{i=2}^N P_i(k_i)\right) + \sum_{k_1}P_1(k_1) \sum_{k_2,\dotsc,k_N}\left(\prod_{i=2}^NP_i(k_i)\right)\left(\sum_{n=2}^N r_n\right) = \\
 \sum_{k_1}P_1(k_1)\left[r_1+\sum_{k_2,\dotsc,k_N}\left(\prod_{i=2}^N P_i(k_i)\right) \sum_{n=2}^N r_n\right] = E_{k_1}\left[r_1+E_{k_2,\dotsc,k_N}\left[\sum_{n=2}^N r_n\right]\right]
 \end{gather*}
+\end{proof}
 Nótese que $\sum_{k_2,\dotsc,k_N}\left(\prod_{i=2}^N P_i(k_i)\right)=1$ por ser suma de probabilidades marginales. Por tanto, si denotamos por $f_n(x_n)$ a la máxima recompensa esperada si en la etapa $n$ estamos en el estado $x-n$ hasta $N$ entonces
 $$
 f_n(x_n)= \max_{d_1,\dotsc,d_N} E_{k_1,\dotsc,k_N}\left[\sum_{j=n}^Nr_j\right]
@@ -679,7 +684,7 @@ $$
  $$
  
 \begin{ej}
-Supongmos que un vendedor tiene 6 unidades de producto que debe distribuir entre 3 tiendas, cuya demanda estocástica viene dada por la siguiente tabla
+Supongamos que un vendedor tiene 6 unidades de producto que debe distribuir entre 3 tiendas, cuya demanda estocástica viene dada por la siguiente tabla
 
 \begin{tabular}{c|c|c|}
  & Demanda & Probabilidad\\
@@ -706,10 +711,10 @@ La solución consiste en evaluar $f(1,6)$. Primero tenemos que evaluar $f(3,x)$ 
 
 \begin{tabular}{|c|c|c|}
 \hline
-$x$ & $x_n$ & Beneficio\\ 
+$x$ & $x_n$ & Beneficio esperado\\ 
 \hline
-3 &    3    & $0.3(3\cdot 2)+0.3(2\cdot 2 + 1\cdot 0.5) +0.4(1\cdot 2 + 2\cdot 0.5) = 4.35$\\
-2 &    2    & $0.4(2+0.5)+0.3(2\cdot 2)+0.3(2\cdot 2)=3.4$\\
+3 &    3    & $0.3(3\cdot 2)+0.3(2\cdot 2 + 1\cdot 0.5) +0.4(1\cdot 2 + 2\cdot 0.5) = 4.35$ \\
+2 &    2    & $0.4(2-0.5)+0.3(2\cdot 2)+0.3(2\cdot 2)=3.4$\\
 1 &    1    & $0.4\cdot 2+ 0.3\cdot 2 + 0.3\cdot 2= 2$\\
 0 &    0    & 0\\
 \hline
@@ -719,9 +724,9 @@ $x$ & $x_n$ & Beneficio\\
 
 \begin{tabular}{|c|c|c|c|}
 \hline
-$x$ & $x_n$ & Beneficio & $x_n^*$\\
+$x$ & $x_n$ & Beneficio esperado & $x_n^*$\\
 \hline
-6 & 3 & $0.5(2+0.5\cdot 2)+0.1(4+0.5)+0.4(6+0)+f(3,3)=8.7$ & 3 \\
+6 & 3 & $0.5(2-0.5\cdot 2)+0.1(4-0.5)+0.4(6+0)+f(3,3)=8.7$ & 3 \\
 \hline
 5 & 3 & $7.75$& 3\\
   &	2 & $7.6$ &  \\
@@ -757,14 +762,14 @@ $x$ & $x_n$ & Beneficio & $x_n^*$ \\
 
 Horizonte de $T$ periodos. La demanda en $t$ es una variable aleatoria $D$, donde $P[D=d]=p_d$. El coste de producir $x$ unidades en $t$ es $c_t(x)$. Al final de cada periodo se paga $1$ unidad monetaria por unidad de producto almacenado. Al final del periodo $T$ se pueden vender las unidades sobrantes por $v$ unidades monetarias cada una.
 
-Los estdos son $(t,x_n)$, siendo $t$ el periodo y $x_n$ la cantidad de unidades en el almacén. La decisión $x$ es el número de unidades a producir en este periodo. Si tomamos una decisión $x$ en el estado $(t,x_n)$ y $D=d$, el coste total es $c_t(x)+\max\{0,x+x_n-d\}$, con la condición de que $x+x_n\geq d_{max}$ (demanda máxima) para evitar la solución trivial de no producir nada (con lo que no habría coste). Con esta condición el coste queda expresado simplemente como $c_t(x)+x+x_n-d$. Por tanto, el valor esperado del coste será
+Los estados son $(t,x_n)$, siendo $t$ el periodo y $x_n$ la cantidad de unidades en el almacén. La decisión $x$ es el número de unidades a producir en este periodo. Si tomamos una decisión $x$ en el estado $(t,x_n)$ y $D=d$, el coste total es $c_t(x)+\max\{0,x+x_n-d\}$, con la condición de que $x+x_n\geq d_{max}$ (demanda máxima) para evitar la solución trivial de no producir nada (con lo que no habría coste). Con esta condición el coste queda expresado simplemente como $c_t(x)+x+x_n-d$. Por tanto, el valor esperado del coste será
 $$\sum_d p_d\cdot(c_t(x)+x+x_n-d)$$
 Con probabilidad $p_d$ se produce una transición hacia el estado $(t+1,x+x_n-d)$. 
 $$f(t,x_n)=\min_{x:x+x_n\geq d_{max}}\left\{\sum_d p_d\cdot[c_t(x)+x+x_n-d+f(t+1,x+x_n-d)]\right\}$$
 $$f(T,x_T)=\min_{x:x+x_T\geq d_{max}}\sum_d p_d[c_T(x)+(x+x_T-d)(1-v)]$$
 La solución será evaluar $f(1,0)$.
 
-\subsection{Procesos de decisión secuencial markovianos}
+\section{Procesos de decisión secuencial markovianos}
 Son procesos discretos, finitos y con factor descuento. Es un proceso de decisión secuencial en el que las transiciones entre estados están regidas por una cadena de Markov. Se llaman discretos porque las etapas del proceso son numerables. Decimos que estos procesos son finitos porque en cada etapa el proceso solo se puede encontrar en un conjunto finito de estados $S=\{1,\dots, N\}$. El factor descuento será una cantidad $0<\alpha <1$, que es el factor de depreciación del dinero (ya sea por inflación o por preferencia por la liquidez), es decir, $x$ unidades monetarias en la etapa siguiente se percibirán como $\alpha x$. 
 
 Si en la etapa $n$ estamos en un estado $i\in S$ y tomamos una decisión $k\in D(i)\equiv$ conjunto de decisiones dactibles en el estado $i$, entonces se produce una recompensa $R^k_i$ y hay una transición al estado $j\in S$ en la etapa $n+1$ con una probabilidad $p_{ij}^k$ tal que 
