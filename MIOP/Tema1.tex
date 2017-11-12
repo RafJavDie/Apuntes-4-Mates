@@ -772,7 +772,7 @@ La solución será evaluar $f(1,0)$.
 \section{Procesos de decisión secuencial markovianos}
 Son procesos discretos, finitos y con factor descuento. Es un proceso de decisión secuencial en el que las transiciones entre estados están regidas por una cadena de Markov. Se llaman discretos porque las etapas del proceso son numerables. Decimos que estos procesos son finitos porque en cada etapa el proceso solo se puede encontrar en un conjunto finito de estados $S=\{1,\dots, N\}$. El factor descuento será una cantidad $0<\alpha <1$, que es el factor de depreciación del dinero (ya sea por inflación o por preferencia por la liquidez), es decir, $x$ unidades monetarias en la etapa siguiente se percibirán como $\alpha x$. 
 
-Si en la etapa $n$ estamos en un estado $i\in S$ y tomamos una decisión $k\in D(i)\equiv$ conjunto de decisiones dactibles en el estado $i$, entonces se produce una recompensa $R^k_i$ y hay una transición al estado $j\in S$ en la etapa $n+1$ con una probabilidad $p_{ij}^k$ tal que 
+Si en la etapa $n$ estamos en un estado $i\in S$ y tomamos una decisión $k\in D(i)\equiv$ conjunto de decisiones factibles en el estado $i$, entonces se produce una recompensa $R^k_i$ y hay una transición al estado $j\in S$ en la etapa $n+1$ con una probabilidad $p_{ij}^k$ tal que 
 $$\sum_{j\in S}p_{ij}^k=1\ \forall i\in S,\ \forall k\in D(i).$$
 Fijado $k$, los $p_{ij}$ forman una matriz $P$ cuyas filas suman $1$, es decir, una matriz estocástica, llamada \textbf{matriz de la cadena de Markov}.
 
@@ -801,7 +801,7 @@ $$v^\delta=\sum_{n=0}^\infty (Q^\delta)^n R^\delta$$
 
 \begin{lemma}
 $$\sum_{n=0}^\infty (Q^\delta)^n=(I-Q^\delta)^{-1}$$
-Es un análogo a que cuando $0<x<1$, $\sum_{n=0}^\infty=(1-x)^{-1}$. 
+Es un análogo a que cuando $0<x<1$, $\sum_{n=0}^\infty x^n=(1-x)^{-1}$. 
 \end{lemma}
 \begin{proof}
 Vamos a ver primero que $I-Q^\delta$ tiene inversa. Para ello consideremos el sistema $(I-Q^\delta)x=0$. Entonces
