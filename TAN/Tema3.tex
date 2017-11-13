@@ -33,13 +33,43 @@ $$
 $$
 \end{dem}
 \begin{prop}[Fórmula de duplicación de Legendre]
-\[ Γ(s)γ(s+1/2) = 2^{1-2s} \sqrt{π} Γ(2s) \]
+\[ Γ(s)Γ(s+1/2) = 2^{1-2s} \sqrt{π} Γ(2s) \]
 Calculamos $\int_0^1 t^{s-1}(1-t)^{s-1} dt$ de dos maneras distintas.
 \end{prop}
+\begin{dem}
+\[ B(s,s) = \frac{Γ(s)Γ(s)}{Γ(2s)} = \int_0^1 t^{s-1}(1-t)^{s-1} dt = \int_0 1 (t(1-t))^{s-1} = 2 \int_0^{1/2} (t(1-t))^{s-1}dt \]
+Hacemos el cambio de variable $x=4t(1-t)$, equivalente a $t = \frac{1-\sqrt{1-x}}{2}$:
+\[ B(s,s) = 2\int_0^1 \frac{x}{4}^{s-1} \left(-\frac{-1}{4\sqrt{1-x}}\right) dx = \frac{1}{2} 2^{-2s+2} \int_0^1 x^{s-1}(1-x)^{-1/2} = 2^{-2s+1}B(s,1/2) \]
+
+Simplificando:
+\[ \frac{Γ(s)^2}{Γ(2s)} = 2^{1-2s} \frac{Γ(s)Γ(1/2)}{Γ(s+1/2)} \Rightarrow Γ(s)Γ(s+1/2) = 2^{1-2s} \sqrt{π} Γ(2s) \]
+\end{dem}
+
 \begin{prop}[Expresión de Gauss] Uniformemente en cada compacto $K$ que no contenga polos de $Γ(s)$ se cumple
 \[ Γ(s) = \lim_{n\to+∞} \frac{n!n^s}{s(s+1)\cdots(s+n)} \]
 En consecuncia la función $Γ(s)$ no toma nunca el valor 0.
 \end{prop}
+\begin{dem}
+Por las propiedades de las funciones uniforme en compactos, basta ver que la $\frac{s(s+1)\cdots(s+n)}{n!n^s}$ converge uniformemente.
+\[ \frac{s(s+1)\cdots(s+n)}{n!n^s} = e^{-s \log n} s \left(s + \frac{s}{1}\right)\left(s + \frac{s}{2}\right)\cdots \left(s + \frac{s}{n}\right)\]
+\[ = e^{s(1+\frac{1}{2}+\cdots+\frac{1}{n}-\log n)}s\prod_{k=1}^n\left(1+\frac{s}{1}\right)e^{-s/k}\]
+Por un lado:
+\[ e^{s(1+\frac{1}{2}+\cdots+\frac{1}{n}-\log n)}s \xrightarrow{n\to∞} se^{γs} \quad \text{uniformemente} \]
+Tomando $R$ tal que $|s|≤R$ para todo $s \in K$:
+\[\prod_{k=1}^n\left(1+\frac{s}{1}\right)e^{-s/k} = \prod_{k≤2R} \left(1+\frac{s}{k}\right)e^{-s/k} \cdot \prod_{k=2R+1}^n \left(1+s/k\right)e^{-s/k} \]
+Su convergencia viene dada por la convergencia de tomar logaritmo del segundo término. Se puede ver fácilmente que $|\log(1+x)-x ≤ |x|^2(1-|x|)$ (toma la serie de Taylor centrada en $0$ de $\log(1+x)$).
+\[ \sum_{k=2R+1}^n \left|\left(\log(1+\frac{s}{k})-\frac{s}{k}\right)\right| ≤ \sum_{k=2R+1} \left|\frac{s}{k}\right|^2\left(1-\left|\frac{s}{k}\right|\right) \]
+Para $R$ suficientemente grande, $s/k ≤ R/2R ≤ 1/2$:
+\[ \left|\sum_{k=2R+1}^n \left(\log(1+\frac{s}{k}) - \frac{s}{k}\right)\right| ≤ \sum_{k=2R+1} 2\left|\frac{s}{k}\right|^2 ≤ \sum_{k=2R+1}^n 2 \frac{R^2}{k^2} \]
+que converge cuando $n \to ∞$, luego por el criterio M de Weierstrass, el producto de funciones converge uniformemente.
+
+Observemos que:
+\[ Γ(x) = \int_0^{∞} t^{x-1} e^{-t} dt =  \int_0^{∞} \lim_{n\to ∞} t^{x-1}\left(1-\frac{t}{n}\right)^n dt \]
+Usando el Teorema de Convergencia Dominada se puede demostrar que podemos sacar la integral fuera:
+\[ \int_0^n t^{x-1}\left(1-\frac{t}{n}\right)^n dt = \int_0^n (un)^{x-1}(1-u)^n ndu = n^x B(x,n+1) \]
+El resto consiste en escribir $B$ en función de $Γ$ y usar que $Γ(n+1)=n!$.
+\end{dem}
+
 \begin{prop}
 \[ \frac{1}{Γ(s)} = s e^{γs} \prod_{n=1}^{∞} \left(1 + \frac{s}{n}\right) e^{-s/n} \]
 \end{prop}
@@ -74,9 +104,33 @@ La función $ζ(s)$ no se anula en el semiplano $\Re(s)>1$.
 La función $ζ(s)$ se prolonga a una función meromorfa en el semiplano $\Re(s) > 0$. Para $\Re(s) > 0$ y todo número real $x > 0$ se tiene
 \[ ζ(s) = \sum_{n ≤ x} \frac{1}{n^s} + \frac{x^{1-s}}{s-1} + \frac{\{x\}-\frac{1}{2}}{x^s} + s \int_x^{+∞} \frac{1/2-\{u\}}{u^{s+1}} du \]
 \end{teorema}
+\begin{dem}
+Usando la fórmula de Abel con $a_n=1$:
+\[ \sum_{n≤x} \frac{1}{n^s} = \frac{\lfloor x \rfloor}{x^s} + s\int_1^x \lfloor u \rfloor\frac{du}{u^{s+1}} = \frac{x-\{x\}}{x^s} + s \int_1^x (u-\{u\}) \frac{du}{u^{s+1}} \]
+Como:
+\[ s\int_1 u \frac{du}{u^{s+1}} = s \left.\frac{u^{-s+1}}{-s+1}\right|_1^x = \frac{s}{1-s}(x^{-s+1}-1) \]
+Entonces:
+\[ \sum_{n≤x} \frac{1}{n^s} = \frac{x}{x^s}-\frac{\{x\}}{x^s} + \frac{s}{1-s}(x^{1-s}-1)- s\int_1^x \{u\} \frac{du}{u^{s+1}} = \frac{x^{1-s}}{1-s}  \frac{\{x\}}{x^s} - s \int_1^x \frac{\{u\}}{u^{s+1}}du - \frac{s}{1-s} \]
+
+Obsérvese que:
+\[ \sum_{n≤y}\frac{1}{n^s} - \sum_{n≤x} \frac{1}{n^s} = \frac{y^{1-s}}{1-s} -\frac{x^{1-s}}{1-s}- \frac{\{y\}}{y^s} + \frac{\{x\}}{x^s} -s\int_x^y \frac{\{u\}}{u^{s+1}} du \xrightarrow{y \to ∞}ζ(s)-\int_{n≤x} \frac{1}{n^s} = \]
+\[ = \frac{x^{1-s}}{s-1}+ \frac{\{x\}}{x^s} -s\int_x^{∞} \frac{\{u\}}{u^{s+1}}du \]
+Sabemos que la integral converge porque $Re(s)>0$. Ahora bien,
+\[ -s\int_x^∞ \frac{\{u\}}{u^{s+1}} du = -s\int_x^{∞} \frac{\{u\}-1/2}{u^{s+1}} du - s\int_x^{∞} \frac{1/2}{u^{s+1}} du \]
+Integrando por partes y sustituyendo en la expresión, nos da la forma final.
+\end{dem}
 \begin{coro}
 La función $ζ(s)$ es analítica en el semiplano $\Re(s) > 0$ salvo en el punto $s = 1$. En el punto $s = 1$ la función $ζ(s)$ posee un polo simple de residuo igual a $1$.
 \end{coro}
+\begin{dem}
+Tenemos que $x^{1-s}/(s-1)$ es analítica excepto por un polo simple en $s=1$. Tenemos que ver que el término integral, que llamamos $F(s)$, es analítica. Se tiene que $F(s)=\int f(u,s)du$ es analítica si $u\mapsto f(u,s)$ es medible, $s \mapsto f(u,s)$ es analítica y $|f(u,s)|≤g(u)$ con $g$ integrable.
+Las dos primeras condiciones son triviales. Como
+\[ \gabs{\frac{\{u\}-1/2}{u^{s+1}}} ≤ \frac{1}{2} u^{-σ-1} ≤ \begin{cases}
+	\frac{1}{2}u^{-σ_0-1} &\text{ si }u>1\\
+	\frac{1}{2}u^{-σ_1-1} &\text{ si }0<u<1
+\end{cases}\]
+donde $σ_0<σ<σ_1$.
+\end{dem}
 Pasamos ahora a probar la ecuación funcional de la función $ζ(s)$. Riemann dio tres demostraciones y posteriormente se han visto numerosas más. La más instructiva es la segunda d Riemann. Esta prueba depende de una propiedad de la función $θ$ definida por
 \[ θ(x) = \sum_{n \in \Z} e^{-πn^2x}, \quad x > 0 \]
 \begin{teorema}[Fórmula de Poisson]

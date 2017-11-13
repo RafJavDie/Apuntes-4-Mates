@@ -1,8 +1,11 @@
 \documentclass[MIOP.tex]{subfiles}
 \usepackage{mathtools}
+\usepackage{sagetex}
 \begin{document}
 
 \chapter{Introducción a la Programación\\ Dinámica.}
+
+
 \section{Introducción.}
 La Programación Dinámica (P.D.) es un conjunto de técnicas que permiten resolver procesos de división secuencial.
 \begin{ej}
@@ -492,16 +495,16 @@ Estado: $d=$ cantidad disponible de recursos. La función $g(d)$ será el máxim
 &g(d)=\max_{w_n\leq d}\{r_n+g(d-w_n)\}
 \end{align*}
 \subsection{Modelos de reemplazamiento de equipos}
-En un horizonte de planificación $M$, determinar el plan de renovación de equipos que minimiza el coste si:
+En un horizonte de planificación $N$, determinar el plan de renovación de equipos que minimiza el coste si:
 \begin{itemize}
 \item $M$ es el coste de compra de un equipo nuevo
 \item $m_i$ es el coste de mantener un equipo de edad $i$
 \item $T$ es la edad máxima de un equipo
-\item $S_i$ es el valor de venta de e un equipo de edad $i$.
+\item $S_i$ es el valor de venta de un equipo de edad $i$.
 \end{itemize}
 En nuestro caso, los estados son duplas $(n,i)$ donde $n$ es el índice de la etapa e $i$ es la edad del equipo actual. Las decisiones posibles son mantener o reemplazar el equipo. 
 $$
-f(n,i) = \text{ mínimo coste de reemplazamiento desde la etapa n a N, si tengo un equpo de edad i}$$
+f(n,i) = \text{ mínimo coste de reemplazamiento desde la etapa }n\text{ a }N,\text{ si tengo un equipo de edad }i$$
 Si compro un equipo nuevo, tenemos $M+m_1-S_i$, mientras que si mantenemos, solo tenemos el coste $m_i$. Si reemplazo, paso a la etapa $n+1$ con un equpo de edad $1$, mientras que si mantenemos, paso con un equipo de edad $i+1$.
 $$
 f(n,i)=\min\{M+m_1-S_i+f(n+1,1),m_i+f(n+1,i+1)\}\quad n<N
@@ -509,7 +512,9 @@ $$
 $$
 f(n,T) = M+m_1-S_T + f(n+1,1) \qquad f(N,i) = m_i-S_i
 $$
-Solución: Evaluar $f(1,1)$ si empezamos con un equipo nuevo. Si tiene edad $i$, $f(1,i)$. Reformulación: Estado $i$: etapa con un equipo nuevo. Definimos $c_T$ como el coste acumulado si, partiendo de una máquina nueva el próximo se produce tras $t$ periodos. 
+Solución: Evaluar $f(1,1)$ si empezamos con un equipo nuevo. Si tiene edad $i$, $f(1,i)$. 
+
+{\bf Reformulación:} Estado $i$: etapa con un equipo nuevo. Definimos $c_t$ como el coste acumulado si, partiendo de una máquina nueva el próximo se produce tras $t$ periodos. 
 $$
 c_t = M - S_t + \sum_{k=1}^t m_i
 $$
@@ -530,7 +535,7 @@ f(S,i)= \text{long. mínima del camino de $i$ a 1 cuando he vistado S}
 $$
 $$f(S,i) = \min_{j\in\Gamma_i}\{c_{ij}+f(S\cup\{j\},j)\}
 $$
-La solución consiste en evaluar $f(1,1)$. 
+La solución consiste en evaluar $f(\{1\},1)$. 
 \begin{ej} Consideramos la siguiente matriz cuyas entradas son los $c_{ij}$.
 $$
 \begin{pmatrix}
@@ -561,7 +566,7 @@ f(\{1,3,4\},3) = 2677 \quad f(\{1,3,4\},4)=2663
  $$
  f(\{1\},1) = \min\{c_{12}+f(\{1,2\},2), c_{13}+f(\{1,3\},3), c_{13}+f(\{1,4\},4)\} = 4407
  $$
-Tenemos por tanto las siguientes soluciones $1\to 2 \to 3 \to 4 \to 1$, $1\to 3 \to 2 \to 3 \to 1$ y el camino $ 1 \to 3 \to 3 \to 2 \to 1$.
+Tenemos por tanto las siguientes soluciones $1\to 2 \to 3 \to 4 \to 1$, $1\to 3 \to 2 \to 4 \to 1$ y el camino $ 1 \to 3 \to 4 \to 2 \to 1$.
 \end{ej}
 \section{Recursión con funcional no aditivo}
 Consideremos la tabla de probabilidad de venta según la zona y el número de vendedores asignado a dicha zona.
@@ -654,14 +659,16 @@ r_n(x_n,d_n,k_n)= r_n(t_{n-1}(x_{n-1},d_{n-1},k_{n-1}),d_n,k_n)
 $$
 \begin{lemma}
 $$
-E_{k_1,\dotsc,k_N}\left[\sum_{n=1}^N r_n(x_n,d_nk_n)\right] = E_{k_1}\left[r_1(x_n,d_n,k_n)+E_{k_2,\dotsc,k_N}\left[\sum_{n=1}^N r_n(x_n,d_n,k_n)\right]\right]
+E_{k_1,\dotsc,k_N}\left[\sum_{n=1}^N r_n(x_n,d_nk_n)\right] = E_{k_1}\left[r_1(x_n,d_n,k_n)+E_{k_2,\dotsc,k_N}\left[\sum_{n=2}^N r_n(x_n,d_n,k_n)\right]\right]
 $$
 \end{lemma}
+\begin{proof}
 \begin{gather*}
 E_{k_1,\dotsc,k_N}\left[\sum_{n=1}^N r_n\right] = \sum_{k_1,\dotsc,k_N}\left(\prod_{i=1}^N P_i(k_i)\right)\sum_{n=1}^N r_n =\\ \sum_{k_1,\dotsc,k_N}\left(\prod_{i=1}^N P_i(k_i)\right)\left[r_1+\sum_{n=2}^N r_n\right] = \sum_{k_1,\dotsc,k_N}\left(\prod_{i=1}^N P_i(k_i)\right)r_1+\sum_{k_1,\dotsc,k_N}\left(\prod_{i=1}^N P_i(k_i)\right)\sum_{n=2}^N r_n = \\
 =\sum_{k_1}P_1(k_1)r_1\sum_{k_2,\dotsc,k_N}\left(\prod_{i=2}^N P_i(k_i)\right) + \sum_{k_1}P_1(k_1) \sum_{k_2,\dotsc,k_N}\left(\prod_{i=2}^NP_i(k_i)\right)\left(\sum_{n=2}^N r_n\right) = \\
 \sum_{k_1}P_1(k_1)\left[r_1+\sum_{k_2,\dotsc,k_N}\left(\prod_{i=2}^N P_i(k_i)\right) \sum_{n=2}^N r_n\right] = E_{k_1}\left[r_1+E_{k_2,\dotsc,k_N}\left[\sum_{n=2}^N r_n\right]\right]
 \end{gather*}
+\end{proof}
 Nótese que $\sum_{k_2,\dotsc,k_N}\left(\prod_{i=2}^N P_i(k_i)\right)=1$ por ser suma de probabilidades marginales. Por tanto, si denotamos por $f_n(x_n)$ a la máxima recompensa esperada si en la etapa $n$ estamos en el estado $x-n$ hasta $N$ entonces
 $$
 f_n(x_n)= \max_{d_1,\dotsc,d_N} E_{k_1,\dotsc,k_N}\left[\sum_{j=n}^Nr_j\right]
@@ -677,7 +684,7 @@ $$
  $$
  
 \begin{ej}
-Supongmos que un vendedor tiene 6 unidades de producto que debe distribuir entre 3 tiendas, cuya demanda estocástica viene dada por la siguiente tabla
+Supongamos que un vendedor tiene 6 unidades de producto que debe distribuir entre 3 tiendas, cuya demanda estocástica viene dada por la siguiente tabla
 
 \begin{tabular}{c|c|c|}
  & Demanda & Probabilidad\\
@@ -704,10 +711,10 @@ La solución consiste en evaluar $f(1,6)$. Primero tenemos que evaluar $f(3,x)$ 
 
 \begin{tabular}{|c|c|c|}
 \hline
-$x$ & $x_n$ & Beneficio\\ 
+$x$ & $x_n$ & Beneficio esperado\\ 
 \hline
-3 &    3    & $0.3(3\cdot 2)+0.3(2\cdot 2 + 1\cdot 0.5) +0.4(1\cdot 2 + 2\cdot 0.5) = 4.35$\\
-2 &    2    & $0.4(2+0.5)+0.3(2\cdot 2)+0.3(2\cdot 2)=3.4$\\
+3 &    3    & $0.3(3\cdot 2)+0.3(2\cdot 2 + 1\cdot 0.5) +0.4(1\cdot 2 + 2\cdot 0.5) = 4.35$ \\
+2 &    2    & $0.4(2-0.5)+0.3(2\cdot 2)+0.3(2\cdot 2)=3.4$\\
 1 &    1    & $0.4\cdot 2+ 0.3\cdot 2 + 0.3\cdot 2= 2$\\
 0 &    0    & 0\\
 \hline
@@ -717,9 +724,9 @@ $x$ & $x_n$ & Beneficio\\
 
 \begin{tabular}{|c|c|c|c|}
 \hline
-$x$ & $x_n$ & Beneficio & $x_n^*$\\
+$x$ & $x_n$ & Beneficio esperado & $x_n^*$\\
 \hline
-6 & 3 & $0.5(2+0.5\cdot 2)+0.1(4+0.5)+0.4(6+0)+f(3,3)=8.7$ & 3 \\
+6 & 3 & $0.5(2-0.5\cdot 2)+0.1(4-0.5)+0.4(6+0)+f(3,3)=8.7$ & 3 \\
 \hline
 5 & 3 & $7.75$& 3\\
   &	2 & $7.6$ &  \\
@@ -755,17 +762,17 @@ $x$ & $x_n$ & Beneficio & $x_n^*$ \\
 
 Horizonte de $T$ periodos. La demanda en $t$ es una variable aleatoria $D$, donde $P[D=d]=p_d$. El coste de producir $x$ unidades en $t$ es $c_t(x)$. Al final de cada periodo se paga $1$ unidad monetaria por unidad de producto almacenado. Al final del periodo $T$ se pueden vender las unidades sobrantes por $v$ unidades monetarias cada una.
 
-Los estdos son $(t,x_n)$, siendo $t$ el periodo y $x_n$ la cantidad de unidades en el almacén. La decisión $x$ es el número de unidades a producir en este periodo. Si tomamos una decisión $x$ en el estado $(t,x_n)$ y $D=d$, el coste total es $c_t(x)+\max\{0,x+x_n-d\}$, con la condición de que $x+x_n\geq d_{max}$ (demanda máxima) para evitar la solución trivial de no producir nada (con lo que no habría coste). Con esta condición el coste queda expresado simplemente como $c_t(x)+x+x_n-d$. Por tanto, el valor esperado del coste será
+Los estados son $(t,x_n)$, siendo $t$ el periodo y $x_n$ la cantidad de unidades en el almacén. La decisión $x$ es el número de unidades a producir en este periodo. Si tomamos una decisión $x$ en el estado $(t,x_n)$ y $D=d$, el coste total es $c_t(x)+\max\{0,x+x_n-d\}$, con la condición de que $x+x_n\geq d_{max}$ (demanda máxima) para evitar la solución trivial de no producir nada (con lo que no habría coste). Con esta condición el coste queda expresado simplemente como $c_t(x)+x+x_n-d$. Por tanto, el valor esperado del coste será
 $$\sum_d p_d\cdot(c_t(x)+x+x_n-d)$$
 Con probabilidad $p_d$ se produce una transición hacia el estado $(t+1,x+x_n-d)$. 
 $$f(t,x_n)=\min_{x:x+x_n\geq d_{max}}\left\{\sum_d p_d\cdot[c_t(x)+x+x_n-d+f(t+1,x+x_n-d)]\right\}$$
 $$f(T,x_T)=\min_{x:x+x_T\geq d_{max}}\sum_d p_d[c_T(x)+(x+x_T-d)(1-v)]$$
 La solución será evaluar $f(1,0)$.
 
-\subsection{Procesos de decisión secuencial markovianos}
+\section{Procesos de decisión secuencial markovianos}
 Son procesos discretos, finitos y con factor descuento. Es un proceso de decisión secuencial en el que las transiciones entre estados están regidas por una cadena de Markov. Se llaman discretos porque las etapas del proceso son numerables. Decimos que estos procesos son finitos porque en cada etapa el proceso solo se puede encontrar en un conjunto finito de estados $S=\{1,\dots, N\}$. El factor descuento será una cantidad $0<\alpha <1$, que es el factor de depreciación del dinero (ya sea por inflación o por preferencia por la liquidez), es decir, $x$ unidades monetarias en la etapa siguiente se percibirán como $\alpha x$. 
 
-Si en la etapa $n$ estamos en un estado $i\in S$ y tomamos una decisión $k\in D(i)\equiv$ conjunto de decisiones dactibles en el estado $i$, entonces se produce una recompensa $R^k_i$ y hay una transición al estado $j\in S$ en la etapa $n+1$ con una probabilidad $p_{ij}^k$ tal que 
+Si en la etapa $n$ estamos en un estado $i\in S$ y tomamos una decisión $k\in D(i)\equiv$ conjunto de decisiones factibles en el estado $i$, entonces se produce una recompensa $R^k_i$ y hay una transición al estado $j\in S$ en la etapa $n+1$ con una probabilidad $p_{ij}^k$ tal que 
 $$\sum_{j\in S}p_{ij}^k=1\ \forall i\in S,\ \forall k\in D(i).$$
 Fijado $k$, los $p_{ij}$ forman una matriz $P$ cuyas filas suman $1$, es decir, una matriz estocástica, llamada \textbf{matriz de la cadena de Markov}.
 
@@ -794,7 +801,7 @@ $$v^\delta=\sum_{n=0}^\infty (Q^\delta)^n R^\delta$$
 
 \begin{lemma}
 $$\sum_{n=0}^\infty (Q^\delta)^n=(I-Q^\delta)^{-1}$$
-Es un análogo a que cuando $0<x<1$, $\sum_{n=0}^\infty=(1-x)^{-1}$. 
+Es un análogo a que cuando $0<x<1$, $\sum_{n=0}^\infty x^n=(1-x)^{-1}$. 
 \end{lemma}
 \begin{proof}
 Vamos a ver primero que $I-Q^\delta$ tiene inversa. Para ello consideremos el sistema $(I-Q^\delta)x=0$. Entonces
