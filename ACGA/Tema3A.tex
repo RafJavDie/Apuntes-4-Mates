@@ -349,12 +349,21 @@ Sea $Z\subseteq\A^3_\C$ definido por $z^2=xy$, es decir $Z=\V(z^2-xy)$. Queremos
 \end{coro}
 
 \begin{coro}\label{behipersuperficie}
- Toda variedad afín $Z$ de dimensión $d$ es birracionalmente equivalente a una hipersuperficie en $\A^{d+1}_k$
+ Toda variedad cuasi-afín $Z$ de dimensión $d$ es birracionalmente equivalente a una hipersuperficie en $\A^{d+1}_k$
 \end{coro}
 
-\begin{proof} Por el teorema de estructura de los cuerpos finitamente generados, $\KK(Z)$ se pude expresar como una extensión finita (y por tanto algebraica) de $k(x_1,\ldots,x_d)$. Es decir, existe un polinomio $f\in k(x_1,\ldots,x_d)[y]$ tal que $\KK(Z)=k(x_1,\ldots,x_d)[y]/\langle f\rangle$. Quitando denominadores, podemos escribir $f=g/h$, con $g,h$ sin factores comunes y $g\in k[x_1,\ldots,x_d,y]$. La hipersuperficie definida por $g$ en $\A^{d+1}_k$ es entonces birracionalmente equivalente a $Z$, ya que su cuerpo de funciones es el cuerpo de fracciones de $k[x_1,\ldots,x_d,y]/\langle g\rangle$, que es isomorfo a $\KK(Z)$.
+\begin{proof} Por el teorema de estructura de los cuerpos finitamente generados, $\KK(Z)$ se pude expresar como una extensión finita (y por tanto algebraica) de $k(x_1,\ldots,x_d)$, con $x_1,\dots,x_d$ algebraicamente independientes.
+
+Además, como $k$ es algebraicamente cerado, se pueden tomar $x_1,\dots,x_r$ tales que $k(x_1,\dots,x_r) \subset K$ es separable (esta clase de cuerpos se llaman cuerpos perfectos). Por el teorema del elemento primitiva, existe un $α \in K$ tal que $K = k(x_1,\dots,x_r)[α]$. Además, $K \cong k(x_1,\dots,x_r)[x_{r+1}]/\langle f(\underline{x})\rangle$, donde $f$ es el polinomio mínimo de $α$ sobre $k(x_1,\dots,x_r)$. 
+
+Quitando denominadores, podemos escribir $f=g/h$, con $g,h$ sin factores comunes y $g\in k[x_1,\ldots,x_d,y]$. La hipersuperficie definida por $g$ en $\A^{d+1}_k$ es entonces birracionalmente equivalente a $Z$, ya que su cuerpo de funciones es el cuerpo de fracciones de $k[x_1,\ldots,x_d,y]/\langle g\rangle$, que es isomorfo a $\KK(Z)$.
 \end{proof}
 
+\begin{nota}
+% TODO: Incorporar en la demostración anterior
+Podemos tomar un representante de $\langle f(\underline{x}) \rangle$ en $k[x_1,\dots,x_r,x_{r+1}]$ multiplicando por un polinomio en $x_1,\dots,x_r$, luego podemos suponer que $f$ está en el anillo polinómico. Así obtenemos que:
+\[ K \cong k(x_1,\dots,x_r)[x_{r+1}]/\langle f(\underline{x}) \rangle \cong \text{Frac}\left( k[x_1,\dots,x_r,x_{r+1} / \langle f(\underline{x})\rangle \right) = K(V(f)) \]
+\end{nota}
 
 
 
@@ -391,7 +400,7 @@ En la práctica, para construir morfismos entre variedades cuasi-proyectivas usa
 Es importante notar que, aunque el valor de $f_i(x_0,\ldots,x_n)$ no está determinado por el punto $x=(x_0:x_1:\ldots:x_n)$ (ya que si elegimos otras coordenadas para $x$ cambiará el valor de $f_i$), el \emph{punto proyectivo} $(f_0(x_0,\ldots,x_n):f_1(x_0,\ldots,x_n):\ldots:f_m(x_0,\ldots,x_n))$ sí lo está: si elegimos otras coordenadas $(y_0:y_1:\ldots:y_n)$ para $x$, existirá un $\lambda\neq 0$ tal que $y_i=\lambda x_i$ para todo $i$. Como los $f_i$ son homogéneos del mismo grado $d$, se tendrá entonces que $f_i(y_0,\ldots,y_n)=\lambda^d f_i(x_0,\ldots,x_n)$ para todo $i$, y por tanto $(f_0(x_0,\ldots,x_n):f_1(x_0,\ldots,x_n):\ldots:f_m(x_0,\ldots,x_n))=(f_0(y_0,\ldots,y_n):f_1(y_0,\ldots,y_n):\ldots:f_m(y_0,\ldots,y_n))$.
 
 \begin{proof}
- Sea $\phi:X\to Y$ un morfismo. Los abiertos $V_i:=\phi^{-1}(U_i)$ recubren $X$, construiremos las funciones $f_0,f_1,\ldots,f_m$ localmente en cada $V_i$. Sea por ejemplo $i=0$ (la construcción es similar para todo $i$). Como $\phi:V_0\to U_0$ es un morfismo, para todo $z\in V_0$ existe un entorno $z\in V\subseteq V_0$ tal que para todo $x\in V$ $\phi(x)$ (visto como elemento de $U_0\subseteq\Pmk$) viene dado por $(1:g_1(x)/h_1(x):\ldots:g_m(x)/h_m(x))$, donde para cada $j=1,\ldots,m$ $g_j$ y $h_j$ son polinomios homogéneos del mismo grado y $h_j$ no se anula en $V$. Multiplicando todas las coordenadas por el producto de los denominadores (que no se anula en $V$) obtenemos que $\phi(x)=(f_0(x):f_1(x):\ldots:f_m(x))$, donde $f_0=h_1\cdots h_m$ y $f_j=g_jh_1\cdots h_m/h_j$ para $j=1,\ldots,m$ son polinomios homogéneos del mismo grado y $f_0$ no se anula en $V$.
+ Sea $\phi:X\to Y$ un morfismo. Los abiertos $V_i:=\phi^{-1}(U_i)$ recubren $X$, construiremos las funciones $f_0,f_1,\ldots,f_m$ localmente en cada $V_i$. Sea por ejemplo $i=0$ (la construcción es similar para todo $i$). Como $\phi:V_0\to U_0$ es un morfismo, para todo $z\in V_0$ existe un entorno $z\in V\subseteq V_0$ tal que para todo $x\in V$ $\phi(x)$ (visto como elemento de $U_0\subseteq\Pmk$) viene dado por $(1:g_1(x)/h_1(x):\ldots:g_m(x)/h_m(x))$\footnote{Recuérdese que una función regular en un cuasi-proyectivo es una función racional definida en todo punto}, donde para cada $j=1,\ldots,m$ $g_j$ y $h_j$ son polinomios homogéneos del mismo grado y $h_j$ no se anula en $V$. Multiplicando todas las coordenadas por el producto de los denominadores (que no se anula en $V$) obtenemos que $\phi(x)=(f_0(x):f_1(x):\ldots:f_m(x))$, donde $f_0=h_1\cdots h_m$ y $f_j=g_jh_1\cdots h_m/h_j$ para $j=1,\ldots,m$ son polinomios homogéneos del mismo grado y $f_0$ no se anula en $V$.
 
 Recíprocamente, supongamos que se cumple la condición del enunciado. En primer lugar, $\phi$ debe ser continua, ya que la continuidad es una propiedad local y $\phi$ es continua en cada abierto $U$ en el que pueda escribirse como $(f_0:f_1:\ldots:f_m)$ (ejercicio). Veamos que $\phi:V_0\to U_0$ es un morfismo. Sea $z\in V_0$, por hipótesis existe un entorno $V\subseteq V_0$ de $z$ y $m+1$ polinomios homogéneos $f_0,f_1,\ldots,f_m\in k[x_0,x_1,\ldots,x_n]$ del mismo grado tales que $\phi(x)=(f_0(x):f_1(x):\ldots:f_m(x))$ para todo $x\in V$. Como $\phi(x)\in U_0$ que, por definición, es el abierto en el que $x_0\neq 0$, se tiene que $f_0$ no se anula en $V$. Por tanto podemos escribir $\phi(x)=(1:f_1(x)/f_0(x):\ldots:f_m(x)/f_0(x))$. Visto como punto afín, $\phi(x)$ viene entonces dado por $(f_1(x)/f_0(x),\ldots,f_m(x)/f_0(x))$. Cada coordenada viene dada por el cociente de dos polinomios homogéneos del mismo grado, y por tanto $\phi$ es un morfismo en $V$.
 
@@ -401,8 +410,15 @@ De la misma forma se prueba que $\phi:V_j\to U_j$ es un morfismo para todo $j=1,
 Al definir un morfismo $\phi:X\to Y$ de esta forma, hay que tener cuidado de que la definición sea compatible: si $\phi=(f_0:f_1:\ldots:f_m)$ en un abierto $U$ y $\phi=(g_0:g_1:\ldots:g_m)$ en otro abierto $V$, se tiene que cumplir que $(f_0:f_1:\ldots:f_m)=(g_0:g_1:\ldots:g_m)$ en $U\cap V$, es decir, que $f_ig_j=f_jg_i$ para todos $0\leq i<j\leq m$ en todo punto de $U\cap V$. 
 
 \begin{ejs}
- \emph{Sea $X\subseteq\PP^3_k$ la variedad definida por $x_0x_1-x_2x_3=0$. Las aplicaciones $(x_0:x_1:x_2:x_3)\mapsto (x_0:x_3)$ y $(x_0:x_1:x_2:x_3)\mapsto (x_2:x_1)$ definen morfismos $X\cap (U_0\cup U_3)\to\PP^1_k$ y $X\cap (U_1\cup U_2)\to\PP^1_k$, que se ``pegan'' para dar como resultado un morfismo $\phi:X\to\PP^1_k$, ya que en la intersección de los dominos se tiene que $x_0x_1=x_2x_3$, y por tanto $(x_0:x_3)=(x_1:x_2)$.
-}
+\begin{itemize}
+	\item Sea $X\subseteq\PP^3_k$ la variedad definida por $x_0x_1-x_2x_3=0$. Las aplicaciones $(x_0:x_1:x_2:x_3)\mapsto (x_0:x_3)$ y $(x_0:x_1:x_2:x_3)\mapsto (x_2:x_1)$ definen morfismos $X\cap (U_0\cup U_3)\to\PP^1_k$ y $X\cap (U_1\cup U_2)\to\PP^1_k$, que se ``pegan'' para dar como resultado un morfismo $\phi:X\to\PP^1_k$, ya que en la intersección de los dominos se tiene que $x_0x_1=x_2x_3$, y por tanto $(x_0:x_3)=(x_1:x_2)$.
+	\item Sea $X = \V(x^2+y* 2-z^2) \subseteq \PP^2_k$. Sea $φ : X \to \PP^1_k$ definida como:
+	\[ φ(x:y:z) = \begin{cases}
+	(z-y:x) &\text{ en }X \setminus\{(0:1:1)\}\\
+	(0:1) & \text{ en }(0:1:1)
+\end{cases}\]
+	En el abierto $X \setminus\{(0:1:1)\}$, $φ$ está definida por polinomios homogéneos de mismo grado. En el abierto $X \setminus \{(0:1:-1)\} \ni (0:1:1)$, $φ$ está definida como $(x:z+y)$.
+\end{itemize}
 \end{ejs}
 
 \begin{ejer}
