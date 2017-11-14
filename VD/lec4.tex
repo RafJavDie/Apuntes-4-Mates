@@ -265,22 +265,48 @@ isomorfismo. Entonces, existe un abierto $U$, con $p\in U\subseteq
 M$, tal que $f(U)$ es abierto de $N$ y $f|_U:U\fl f(U)$ es un
 difeomorfismo.
 \end{teorema}
+\begin{dem}
+\begin{figure}[htp]
+\centering
+\includegraphics[width=200px]{images/funcioninversa1.jpg}
+\caption{}
+\label{}
+\end{figure}
+Llamaos $G = φ(W \cap f^{-1}(V))$. Como $f \in F(M,N)$, entonces $ψ \circ f \circ φ^{-1} : G \to \R^m$ es de $C^{∞}$. Se $g = ψ \circ f \circ φ^{-1}$. Como $f_{*p}$ es isomorfismo, la determinante jacobiano en $φ(p)$ de $g$ es no nulo. Aplicando el teorema de la función inversa en $\R^m$ existe un entorno $H$ de $q$ en $G$ tal que $g(H)$ es abierto en $\R^m$ y $g|_H : H \to g(H)$ es un difeomorfismo.
+
+Sea $U = φ^{-1}(H) \subseteq W \subseteq M$, tenemos que $U$ es un abierto de $M$. Como $q = φ(p) \in H$, $p \in U$. Además $f(U) = f(φ^{-1}(H)) = ψ^{-1}(ψ \circ f \circ φ^{-1}(H))$, que es un abierto de $V$, que como es a su vez un abierto de $N$, $f(U)$ es abierto de $N$.
+
+$f|_U = ψ^{-1} \circ (ψ \circ f \circ φ^{-1}) \circ φ|_U$ es composición de difeomorfismos (ver problema 2.2), luego $f|_U : U \to f(U)$ es difeomorfismo.
+\end{dem}
+
 \begin{coro}
 Si $f\in\mathcal{F}(M,N)$ verifica que $f_{*p}$ es un isomorfismo
 para todo $p\in M$, entonces $f$ es un difeomorfismo local.
 \end{coro}
+
 \begin{defi}
 Un conjunto de funciones $\{f_1,\dots ,f_k\}$ diferenciables en
 $p\in M$ se dice que es {\bf Independiente} en $p$ si sus
 diferenciales $(\de{f_1})_p,\dots, (\de{f_k})_p$ son linealmente
 independientes en $T_p^*(M)$.
 \end{defi}
+
 \begin{coro}
 Sea $\{f_1,\dots ,f_m\}$ un conjunto de funciones independiente en
 $p\in M$, con ${\rm dim}(M)=m$. Entonces, las funciones $f_1,\dots
 ,f_m$ son las funciones coordenadas de un s.l.c. en un entorno de
 $p$.
 \end{coro}
+\begin{dem}
+Sea $V$ un entorno abierto en $M$ de $p$ tal que $f_i \in \mathcal{F}(V)$ para todo $i=1,\dots,m$. Sea $ψ : V \to \R^m$ dado por $ψ(q) = (f_1(q),\dots,f_m(q))$. Veamos que $ψ \in \mathcal{F}(V,\R^m)$ y $ψ_{*p}$ es isomorfismo.
+
+Por el problema 2.9, $ψ \in \mathcal{F}(V,\R^m)$ si y sólo si cada componente $f_i \in \mathcal{F}(V,\R)$, que se da por hipótesis. Por otro lado, $ψ_{*p}$ es isomorfismo si y sólo si $ψ_p^*$ es isomorfismo. Tomamos la base $\langle (du_i)_{ψ(p)}\rangle_{i=1,\dots,m}$ de $T_{ψ(p)}^*(\R^m)$. La imagen de esta base es:
+\[ \langle ψ_p^*((du_i)_{ψ(p)})\rangle = \langle (d(u_i \circ ψ))_p \rangle = \langle (df_i)_p \rangle\]
+Como $(df_i)_p$ son $m$ elementos linealmente independientes, son una base. Luego $ψ_p^*$ es una aplicación lineal que transforma base en base, luego es isomorfismo.
+
+Una vez visto eso, aplicando el teorema de la unción invesa, existe $U$ entorno abierto en $M$ de $p$ tal que $ψ(U)$ es un abierto en $\R^m$ y $ψ|_U$ es difeomorfismo, luego $(U,φ=(f_1|_U,\dots,f_m|_U))$ es uuna carta admisible en $M$.
+\end{dem}
+
 \begin{coro}
 Sea $\{f_1,\dots ,f_k\}$ un conjunto de funciones independiente en
 $p\in M$, con ${\rm dim}(M)=m>k$. Entonces, las funciones
