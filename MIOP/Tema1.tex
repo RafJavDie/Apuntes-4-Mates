@@ -850,29 +850,29 @@ La rutina de evaluación de políticas termina en un número finito de pasos y l
 \begin{dem}
 En una iteración estamos con la política $\delta$ que no verifica la condición de parada. Llamemos $\pi$ a la política que construyo a partir de $\delta$. 
 
-Esto implica que existe al menos un $i\in\{1,\dotsc,N\}$ ta que $t_i^{\pi(i)}>0$ y los restantes $t_j^{\pi(j)}\geq 0$. En forma vectorial $R^\pi+Q^\pi v^\delta - v^\delta > 0$. Es decir, $R^\pi + Q^\pi v^\delta > v^\delta$. Aplicamos el lema anterior y deducimos que $v^\pi \geq R^\pi + Q^\pi v^\delta > v^\delta$, por lo que $v^\pi > v^\delta$.
+Esto implica que existe al menos un $i\in\{1,\dotsc,N\}$ tal que $t_i^{\pi(i)}>0$ y los restantes $t_j^{\pi(j)}\geq 0$. En forma vectorial $R^\pi+Q^\pi v^\delta - v^\delta > 0$. Es decir, $R^\pi + Q^\pi v^\delta > v^\delta$. Aplicamos el lema anterior y deducimos que $v^\pi \geq R^\pi + Q^\pi v^\delta > v^\delta$, por lo que $v^\pi > v^\delta$.
 
-El algoritmo es finito pues en cada iteración ambio al menos una decisión (una nueva política) y $|\Delta|<+\infty$. Las políticas nunca se repiten pues se mejora un valor estrictamente.
+El algoritmo es finito pues en cada iteración cambio al menos una decisión (una nueva política) y $|\Delta|<+\infty$. Las políticas nunca se repiten pues se mejora un valor estrictamente.
 
- Supongamos que el algoritmo acaba con la política $\pi$. Tratamos de calcular una nueva política $\delta$ a partir de $\pi$. Entonces $t_i^\delta \leq 0$ $\forall i$, $t^\delta = R^\delta + Q^\delta v^\pi - v^\pi\leq 0$. Aplicamos el lema anterior y obtenemos que $v^\pi \geq R^\delta+Q^\delta \geq v^\delta$. Por tanto $v^\pi \geq v^\delta$ $\forall \delta \in \Delta$. O sea, $v^\pi = \max_{\delta \in \Delta}v^\delta$.
+ Supongamos que el algoritmo acaba con la política $\pi$. Tratamos de calcular una nueva política $\delta$ a partir de $\pi$. Entonces $t_i^\delta \leq 0$ $\forall i$, $t^\delta = R^\delta + Q^\delta v^\pi - v^\pi\leq 0$. Aplicamos el lema anterior y obtenemos que $v^\pi \geq R^\delta+Q^\delta v^\pi \geq v^\delta$. Por tanto $v^\pi \geq v^\delta$ $\forall \delta \in \Delta$. O sea, $v^\pi = \max_{\delta \in \Delta}v^\delta$.
 \end{dem}
 \begin{lemma}
 Sea $f=\max_{\delta \in \Delta}v^\delta$ entonces $f$ también es la única solución del sistema de ecuaciones 
 $$
-f_i = \max_{k\in D(i)}\{R_i^k + \sum_{j=1}^N \alpha p_{ij}^k f_k\} \quad \forall i = 1, \dotsc, N
+f_i = \max_{k\in D(i)}\{R_i^k + \sum_{j=1}^N \alpha p_{ij}^k f_j\} \quad \forall i = 1, \dotsc, N
 $$
 \end{lemma}
 \begin{dem}
 El algoritmo acaba con una política $\pi$ tal que $t_i^{\pi(i)} = \max_{k\in D(i)} t_i^k = 0$. Entonces por notación $f_i = v_i^{\pi(i)}$ y escribiendo esto con $f$ tenemos que 
 $$
-0 = \max_{k\in D(i)} R_i^k + \sum_{j=1}^N \alpha p_{ij}^k f_k - f_i \quad  \forall i$$
+0 = \max_{k\in D(i)} R_i^k + \sum_{j=1}^N \alpha p_{ij}^k f_j - f_i \quad  \forall i$$
 De donde se llega al resultado buscado. Veamos que la solución es única. Si existe otra solución $g$ al sistema de ecuaciones
 $$
-f_i = \max_{k\in D(i)} R^k_i + \sum_{kj=1}^n \alpha p_{ij}g_j \quad \forall i$$
+g_i = \max_{k\in D(i)} R^k_i + \sum_{kj=1}^n \alpha p_{ij}^k g_j \quad \forall i$$
 
 $$g_i = R_i^{\pi(i)}+\sum_{j=1}^N \alpha p_{ij}^{\pi(i)}g_j \quad \forall i$$
 Como $g_i$ son los máximo entonces 
-$$f_i \geq R_i^{\delta(i)}+\sum_{j=1}^N \alpha p_{ij}^{\delta(i)}g_j \quad \forall i,\,\forall \delta \in \Delta$$
+$$g_i \geq R_i^{\delta(i)}+\sum_{j=1}^N \alpha p_{ij}^{\delta(i)}g_j \quad \forall i,\,\forall \delta \in \Delta$$
 Vectorialmente aplicando el lema anterior ($w=g$) tenemos que $g\geq R^\delta+Q^\delta g$ $\forall g$, $R^\delta+Q^\delta g\geq v^\delta$, por lo que $g\geq v^\delta$ $\forall \delta \in \Delta$. Pero como $g$ alcanza el valor de una política $(\pi)$ entonces $g$ es único ($g=v^\pi$).
 \end{dem}
 \begin{teorema}
