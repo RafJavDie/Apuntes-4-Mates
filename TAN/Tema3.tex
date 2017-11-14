@@ -136,6 +136,23 @@ Pasamos ahora a probar la ecuación funcional de la función $ζ(s)$. Riemann di
 \begin{teorema}[Fórmula de Poisson]
 \[ θ\left(\frac{1}{x}\right) = \sqrt{x} θ(x), \quad x > 0 \]
 \end{teorema}
+\begin{dem}
+Veamos que $f(t)=\sum_{n\in\Z} e^{-π(n+t)^2a}$ converge en tdo rectángulo $[-R,R]\times[-i,i]$. Sea $t=x+iy$, entonces:
+\begin{align*}
+	\gabs{\exp(-π(n+x+iy)^2a)} & = \gabs{\exp(-πa((n+x)^2+2(n+x)iy-y^2)} = \exp(-πa(n+x)^2+πay^2) \\
+	& ≤ \exp(πa)\exp(-π(n+x)^2)
+\end{align*}
+Como $π(n+x)^2 ≥ π|n+x|^2 ≥ π(|n|-|x|)^2 ≥ π(|n|-R)^2$. Haciendo este cambio en la anterior expresión y aplicando el teorema de serie paramétrica analítica tenemos que $f$ es analítica en el rectángulo. Como $f(t+1)=f(t)$, se tiene que es convergente y analítica en todo $\C$.
+
+Aplicamos la transformada de Fourier:
+\[ \int_0^1 f(t) e^{-2πikt}dt = \sum_{n\in\Z} \int_0^1 e^{-π(n+t)^2a-2πikt}dt = \sum_{n\in\Z} \int_n^{n+1} e^{-πx^2a-2πik(x-n)}dx \]
+Como $e^{2πin}=1$, esta integral es igual a:
+\[ \sum_{n\in\Z} \int_n^{n+1} e^{-πx^2a-2πikx}dx = \frac{1}{\sqrt{a}}\int_{-∞}^{∞} e^{-πy^2-2πiky/\sqrt{a}}dy = \frac{1}{\sqrt{a}} e^{-πk^2/a}\]
+Por lo tanto, evaluando en $0$ la serie de Fourier de $f(t)$:
+\[ θ(a) = f(0) = \frac{1}{\sqrt{a}}\sum_k e^{-πk^2/a} = \frac{1}{\sqrt{α}}θ\left(\frac{1}{a}\right) \]
+\qed
+\end{dem}
+
 Un primer paso intermedio es relacionar la función $ζ(s)$ y la función $θ(x)$.
 \begin{prop}
 \[ π^{-s/2} Γ\left(\frac{s}{2}\right) ζ(s) = \int_0^{+∞} x^{s/2} \frac{θ(x)-1}{2} \frac{dx}{x}, \quad \Re(s) > 1 \]
@@ -143,8 +160,9 @@ Un primer paso intermedio es relacionar la función $ζ(s)$ y la función $θ(x)
 \begin{prop}
 La función $ζ(s)$ se extiende a una función meromorfa en todo el plano.
 Además para $s \notin \{0,1\}$, se tiene
-\[ π^{-s/2} Γ\left(\frac{s}{2}\right) ζ(s) = \frac{1}{s(s-1)} + \int_1^{+∞} (x^{s/2}+x^{(1-s)/2}\frac{θ(x)-1}{2} \frac{dx}{x} \]
+\[ π^{-s/2} Γ\left(\frac{s}{2}\right) ζ(s) = \frac{1}{s(s-1)} + \int_1^{+∞} (x^{s/2}+x^{(1-s)/2})\frac{θ(x)-1}{2} \frac{dx}{x} \]
 \end{prop}
+
 \begin{teorema}[Ecuación funcional] La función $π^{-s/2} Γ(s/2) ζ(s)$ queda invariante al cambiar $s$ po $1-s$, es decir
 \[ π^{-s/2} Γ(s/2) ζ(s) = π^{(s-1)/2} Γ\left(\frac{1-s}{2}\right) ζ(1-s) \]
 \end{teorema}
