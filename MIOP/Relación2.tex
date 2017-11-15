@@ -66,14 +66,14 @@ Como en el aparcamiento número $4$ no es óptimo aparcar, tampoco lo será en n
 
 \newpage 
 \begin{ejercicio}{2}
-Cada año al propietario de un coto e caza debe determinar el número de piezas que cazará. Durante el año $t$ el precio de una pieza es $p_t$. Si al comienzo del año $t$ el coto contiene $b$ piezas, la caza de $x$ piezas tiene un costo de $c(x/b)$. Durante el periodo de veda, que es al finalizar el periodo de caza, el número de piezas del coto se ve multiplicado por un factor $D$, con $P[D=d]=q(d)$. Determinar la estrategia de caza que maximiza el beneficio esperado obtenido por el propietario del coto.
+Cada año al propietario de un coto de caza debe determinar el número de piezas que cazará. Durante el año $t$ el precio de una pieza es $p_t$. Si al comienzo del año $t$ el coto contiene $b$ piezas, la caza de $x$ piezas tiene un costo de $c(x/b)$. Durante el periodo de veda, que es al finalizar el periodo de caza, el número de piezas del coto se ve multiplicado por un factor $D$, con $P[D=d]=q(d)$. Determinar la estrategia de caza que maximiza el beneficio esperado obtenido por el propietario del coto.
 
 
 \begin{solucion}
 Etapas $\{1,\dots, T\}$, estados $(t,b)$ con etapa y número de piezas disponibles al principio del año.
 $f(t,b)=$ máximo beneficio esperado obtenido por el propietario desde $t$ hasta $T$ con $b$ piezas al principio del año $t$.
 $$f(T,b)=\max_{0\leq x\leq b}\{p_tx-c(x/b)\}$$
-$$f(t,b)=\max{0\leq x\leq b}\{p_tc-c(x/b)+\sum_d f(t+1,(b-x)d\}$$
+$$f(t,b)=\max_{0\leq x\leq b}\{p_tx-c(x/b)+\sum_d q(d)f(t+1,(b-x)d)\}$$
 donde $d$ son los posibles valores de la variable $D$. 
 \end{solucion}
 
@@ -81,12 +81,12 @@ donde $d$ son los posibles valores de la variable $D$.
 
 \newpage 
 \begin{ejercicio}{3}
-Una compañía petrolítfera tiene $D$ um para asignar en la perforación de pozos en $T$ lugares. Si se asignan $x$ um al pozo $t$, existe una probabilidad $q_t(x)$ de encontrar petróleo. Si en la perforación del pozo $t$ se encuentra petróleo, la empresa obtiene una ganancia de $r_t$ um. Maximizar el valor esperado del petróleo encontrado en los pozo.
+Una compañía petrolítfera tiene $D$ u.m. para asignar en la perforación de pozos en $T$ lugares. Si se asignan $x$ u.m. al pozo $t$, existe una probabilidad $q_t(x)$ de encontrar petróleo. Si en la perforación del pozo $t$ se encuentra petróleo, la empresa obtiene una ganancia de $r_t$ u.m. Maximizar el valor esperado del petróleo encontrado en los pozo.
 \begin{solucion}
-Hay $T$ etapas, con estados $(t,c)$ formados por la etapa y las um disponibles. $f(t,c):$ máximo beneficio esperado desde $t$ hasta $T$ si se dispone de $c$ um. 
+Hay $T$ etapas, con estados $(t,c)$ formados por la etapa y las u.m. disponibles. $f(t,c):$ máximo beneficio esperado desde $t$ hasta $T$ si se dispone de $c$ u.m.  
 
 $$f(t,c)=\max_{x\leq c}\{r_tq_t(x)+f(t+1,c-x)\}$$
-$$f(T,c)\max_{x\leq c}\{r_tq_t(x)\}$$
+$$f(T,c)=\max_{x\leq c}\{r_tq_t(x)\}$$
 
 Si quisiéramos considerar que no es necesario invertir todo el dinero podemos considerar una etapa $T+1$ con $f(T+1,c)=c$ en la etapa $T$ incluir $c$ en el máximo. 
 
@@ -104,23 +104,41 @@ Si quisiéramos considerar que no es necesario invertir todo el dinero podemos c
 \begin{ejercicio}{4}
 En un juego se puede apostar cualquier cantidad y se gana esa misma cantidad con probabilidad $2/3$. Se pierde la cantidad apostada con probabilidad $1/3$.
 
-Se desea determinar, partiendo de 3 um, la política óptima acerca del número de fichas a apostar en tres jugadas consecutivas de forma que la probabilidad de tener al menos cinco um al final sea máxima. La decisión en cada jugada debe tener en cuenta los resultados de las jugadas anteriores.
+Se desea determinar, partiendo de 3 u.m., la política óptima acerca del número de fichas a apostar en tres jugadas consecutivas de forma que la probabilidad de tener al menos cinco u.m. al final sea máxima. La decisión en cada jugada debe tener en cuenta los resultados de las jugadas anteriores.
 \begin{solucion}
-Etapas $\{1,2,3,4\}$, añadimos una etapa adicional. Estados $(t,c)=($etapa, fichas disponibles$)$. $f(t,c)=$ máxima probabilidad de acabar con al menos 5 fichas desde la etapa t si se dispone de c fichas. 
+Etapas $\{1,2,3,4\}$, añadimos una etapa adicional. Estados $(t,c)=($etapa, fichas disponibles$)$. $f(t,c)=$ máxima probabilidad de acabar con al menos 5 fichas desde la etapa t si se dispone de c fichas.  
 $$f(4,c)=\begin{cases}
 1 & c\geq 5\\
-0 & c<5
+0 & c\leq 4
 \end{cases}$$
-$$f(t,c)=\max_{0\leq x\leq x}\{\frac{2}{3}f(n+1,c+x)+\frac{1}{3}f(n+1,c-x)\}$$
-Haciendo un montón de cuentas
-$f(1,3)=\frac{20}{27}$, con la estrategia (hay más) $x_1=1$, $x_2=2$, y en la última etapa: si llego con 5 $x_3=0$, si llego con 3 $x_3=2$ y si llego con 1 no hay nada que hacer.
-
+$$f(t,c)=\maxi{0\leq x\leq c}{\frac{2}{3}f(t+1,c+x)+\frac{1}{3}f(t+1,c-x)}$$
+Si hacemos algunos cálculos tenemos que
+\begin{equation*}
+  \begin{split}
+f(3,c)=\left\{\begin{array}{lll}
+1 & c\geq 5 & x_3 \in [0,c-5]\\
+\frac{2}{3} & 3\leq c\leq 4 & x_3 \in [2,c]\\
+0 & c\leq 2 & x_3 \in [0,c]
+\end{array}\right.
+  \end{split}
+\quad\quad
+  \begin{split}
+f(2,c)=\left\{\begin{array}{lll}
+1 & c\geq 5 & x_2 \in [0,c-5]\\
+\frac{8}{9} & c=4 & x_2 =1\\
+\frac{2}{3}& c = 3 & x_2 =0,2,3\\
+\frac{4}{9}& c = 2 & x_2 = 1,2\\
+0 & c\leq 1 & x_2\in [0,c]
+\end{array}\right.
+  \end{split}
+\end{equation*} 
+$f(1,3)=\maxi{}{\frac{2}{3},\frac{20}{27},\frac{2}{3},\frac{2}{3}}=\frac{20}{27}$. Por tanto, la estrategia óptima es $x_1=1$, si ganas, $x_2=1$ y $x_3=0$. Si pierdes la segunda, $x_3 = 2,3$. Si pierdes la primera, $x_2=1,2$ y, si ganas esta, $x_3 = 2,3$ o $4$ si tomaste $x_2=2$. Si también pierdes la segunda no hay nada que hacer.
 \end{solucion}
 \end{ejercicio}
 
 \newpage 
 \begin{ejercicio}{5}
-Un jugador puede apostar cualquier fracción de su fortuna en un juego de azar. En cada partida recibe un múltiplo de $\gamma>1$ de la cantidad apostada con probabilidad $p$ y pierde la cantidad apostada con probabilidad $q=1-p$, donde $p\gamma>1$. El jugador parte con un capita $C$, puede jugar a lo sumo $N$ partidas y desea determinar la estrategia de apuestas que maximice la esperanza del logaritmo de su capital tras las $N$ partidas.
+Un jugador puede apostar cualquier fracción de su fortuna en un juego de azar. En cada partida recibe un múltiplo de $\gamma>1$ de la cantidad apostada con probabilidad $p$ y pierde la cantidad apostada con probabilidad $q=1-p$, donde $p\gamma>1$. El jugador parte con un capital $C$, puede jugar a lo sumo $N$ partidas y desea determinar la estrategia de apuestas que maximice la esperanza del logaritmo de su capital tras las $N$ partidas.
 \begin{enumerate}
 \item Formular el problema utilizando la programación dinámica.
 \item Pruébese que la estrategia óptima consiste en apostar en cada etapa una fracción $\alpha^*$ de su capital, donde
@@ -135,7 +153,7 @@ $$f(N+1,c)=\begin{cases}
 \log{c} & c>0\\
 0 & cc
 \end{cases}$$
-$$f(t,c)=\max_{0\leq x\ c}\{pf(t+1,c+x(\gamma-1))+qf(t+1,c-x)\}$$ 
+$$f(t,c)=\max_{0\leq x\leq c}\{pf(t+1,c+x(\gamma-1))+qf(t+1,c-x)\}$$ 
 
 $f(N,c)=\max p\log(c+x(\gamma-1))+q\log(c-x)$. Calculamos su máximo igualando la derivada a 0 y obtenemos $x=\frac{1-p\gamma}{1-\gamma}=\frac{p(\gamma-1)-1}{\gamma-1}c=\alpha^* c$, que sustituyendo nos da que $f(N,c)=\log((1+\alpha^*)(\gamma-1)^p(1-\alpha^*)^qc^pc^q)=\log(k^*c)$. Vamos a suponer que $f(t+1,x)=\log(k^*x)$ y veamos que también es cierto para $t$.
 
@@ -147,29 +165,39 @@ derivando e igualando a 0 deducimos que esta función alcanza su máximo en $x=\
 
 \newpage 
 \begin{ejercicio}{6}\label{6}
-Un jugador va a participar en tres juegos consecutivos. En cada juego, puede apostar lo que gana; la cantidad apostada puede ascender a cualquier cantidad entre cero y la cantidad de dinero que le quede después de las apuestas en los juegos anteriores. En cada encuentro, la probabilidad de que gane el juego y, por lo tanto, la puesta, es $1/2$. Si no gana, pierde la apuesta. Comenzará con 75 um y su meta es tener 100 um al finalizar los tres juegos (exactamente 100). El jugador desea determinar su política óptima de apuesta (incluyendo todos los empates) que maximice la probabilidad de tener exactamente 100 um después de los tres juegos.
+Un jugador va a participar en tres juegos consecutivos. En cada juego, puede apostar lo que gana; la cantidad apostada puede ascender a cualquier cantidad entre cero y la cantidad de dinero que le quede después de las apuestas en los juegos anteriores. En cada encuentro, la probabilidad de que gane el juego y, por lo tanto, la puesta, es $1/2$. Si no gana, pierde la apuesta. Comenzará con 75 u.m. y su meta es tener 100 u.m. al finalizar los tres juegos (exactamente 100). El jugador desea determinar su política óptima de apuesta (incluyendo todos los empates) que maximice la probabilidad de tener exactamente 100 u.m. después de los tres juegos.
 \end{ejercicio}
 \begin{solucion}
 Etapas $\{1,2,3,4\}$. Estados $(t,c)$: etapa, cantidad disponible.
-$f(t,c)=$ máxima probabilidad de obtener 100 um dsde $t$ hasta que termine el juego.
+$f(t,c)=$ máxima probabilidad de obtener 100 u.m. desde $t$ hasta que termine el juego.
 $$f(4,c)=\begin{cases}
 1 & c=100\\
 0 & cc
 \end{cases}$$
-$$f(t,c)=\max_{0\leq x\leq c}\{\frac{1}{2}f(t+1,c+x)+\frac{1}{2}f(t+1,c-x)\}$$
-\begin{tabular}{c|cccc}
-& menos de 50 & 50 & 51 & etc\\
+$$f(t,c)= \frac{1}{2}\maxi{0\leq x\leq c}{f(t+1,c+x)+f(t+1,c-x)}$$
+\begin{equation*}
+\begin{tabular}{c|cccccc}
+		& $<50$	& 50 	& 51 & $\cdots$	& 99 & 100\\
 \hline
-$f(3,c)$ & 0 & 1/2 & 1/2 & etc\\
-$x_3$    &   & 50 & 49 & etc
+f(3,c)  & 0 			& $1/2$ 	& $1/2$ &$\cdots$& $1/2$ &  1\\
+$x_3$     &   			& 50 	& 49 &	$\cdots$ & $1$  &  0\\ 
 \end{tabular}
-
-
+\end{equation*}
+\begin{equation*}
+\begin{tabular}{c|cccccccccccc}
+		& $<25$	& 25 	& 26 & 		$\cdots$	& 50 & $\cdots$ & 74 & 75 & $\cdots$ & 99 & 100\\
+\hline
+f(2,c)  & 0 & $1/4$	& $1/4$ & $\cdots$& $1/2$ &$\cdots$& $1/2$ & $3/4$ &$\cdots$  & $3/4$ &1\\
+$x_2$     &  & 25 & 24 &	$\cdots$ & $0,50$  & $\cdots$  &$[0,26]\setminus\{25\}$ & $25$ & $\cdots$ & $1$ &0\\ 
+\end{tabular}
+\end{equation*}
+Finalmente, calculamos $f(1,75)=\dfrac{1}{2}\maxi{0\leq x\leq 75}{f(2,75+x)+f(2,75-x)}=3/4$. Si $x=0$ o $x=25$. 
 \end{solucion}
 
 \newpage 
 \begin{ejercicio}{7}
-Imagine que se tienen 5000 um para invertir y que tendrá la oportunidad de hacerlo en cualquiera de dos inversiones A o B al principio de cada uno de los próximos tres años. Existe incertidumbre respecto al rendimiento de ambas inversiones. Si se invierten en A, se puede perder todo el dinero o (con probabilidad más alta) obtener 10000 um (una ganancia de 5000 um al final del año). Las probabilidades para estos eventos son:
+Imagine que se tienen 5000 u.m. para invertir y que tendrá la oportunidad de hacerlo en cualquiera de dos inversiones A o B al principio de cada uno de los próximos tres años. Existe incertidumbre respecto al rendimiento de ambas inversiones. Si se invierten en A, se puede perder todo el dinero o (con probabilidad más alta) obtener 10000 u.m. (una ganancia de 5000 u.m. al final del año). Las probabilidades para estos eventos son:
+\begin{center}
 \begin{tabular}{c| c c}
 \hline
 Inversión & Rendimiento & Probabilidad\\
@@ -178,31 +206,32 @@ A & 0 & 0.3\\
   & 10000 &  0.7\\
  \hline
  B & 5000 & 0.9\\
-   & 10000 0.1\\
+   & 10000 & 0.1\\
    \hline
-
 \end{tabular}
-
-\vspace{0.2cm}
-
-Se puede hacer (a lo sumo) una inversión al año y solo se puede invertir 5000 um cada vez.
+\end{center}
+Se puede hacer (a lo sumo) una inversión al año y solo se puede invertir 5000 u.m. cada vez.
 \begin{enumerate}
 \item Utilice programación dinámica para encontrar la política de inversión que maximice la cantidad de dinero esperada que se tendrá después de los tres años.
-\item Utilice programación dinámica para encontrar la política óptima de inversión que maximice la probabilidad de tener por lo menos 10000 um después de tres años.
+\item Utilice programación dinámica para encontrar la política óptima de inversión que maximice la probabilidad de tener por lo menos 10000 u.m. después de tres años.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}
-\item 3 etapas, estados $(t,c)$ de etapa y cantidad disponible. $f(t,c)$ es la máxima ganancia esperada desde el año $t$ hasta el final si disponemos de $c$ um.
+\item[]
+\item 3 etapas, estados $(t,c)$ de etapa y cantidad disponible. $f(t,c)$ es la máxima ganancia esperada desde el año $t$ hasta el final si disponemos de $c$ u.m..
 $$f(t,c)=\begin{cases}
-\max\{0'3f(t+1,c-5000)+0'7f(t+1,c+5000),0'9f(t+1,c)+0'1f(t+1,c+5000)\} & c\geq 5000\\
+\max\begin{cases}
+0'3f(t+1,c-5000)+0'7f(t+1,c+5000)\\
+0'9f(t+1,c)+0'1f(t+1,c+5000)
+\end{cases}& c\geq 5000\\
 0 & c<5000
 \end{cases}
 $$
-
-$$f(3,c)=\begin{cases}
-\max\{0'3\cdot 0+0'7\cdot 10000, 0'9\cdot 5000+0'1\cdot 10000\}-5000+c=\\
-\max\{7000(A),5500(B)\}-5500+c=2000+c & c\geq 5000\\
+Dado que $\maxi{}{0'3\cdot 0+0'7\cdot 10000, 0'9\cdot 5000+0'1\cdot 10000} = 7000$, que se da para la inversión $A$, podemos decir que
+$$f(3,c) = 
+\begin{cases}
+2000+c & c\geq 5000\\
 0 & c<5000
 \end{cases}
 $$
@@ -210,9 +239,13 @@ $$
 Por tanto $x_3=A$. 
 
 En la etapa 2 se pueden dar los siguientes casos:
-$$f(2,0)=0$$
-$$f(2,5000)=\max\{0'3f(3,0)+0'7f(3,10000),0'9f(3,5000)+0'1f(3,10000)\}=\max\{8400,6100\}=8400(B)$$
-$$f(2,1000)=\max\{0'3f(3,5000)+0'7f(3,15000),0'1f(3,10000)+0'9f(3,15000)\}=\max\{14000,12500\}=14000(A)$$
+\begin{align*}
+f(2,0)&=0\\
+f(2,5000)&=\max\{0'3f(3,0)+0'7f(3,10000),0'9f(3,5000)+0'1f(3,10000)\}\\
+&=\max\{8400,7500\}=8400(B)\\
+f(2,10000)&=\max\{0'3f(3,5000)+0'7f(3,15000),0'9f(3,10000)+0'1f(3,15000)\}\\
+&=\max\{14000,12500\}=14000(A)
+\end{align*}
  
 
 En la etapa 1 solo puede ocurrir lo siguiente:
@@ -222,9 +255,9 @@ $$f(1,5000)=\max\begin{cases}
 0'9f(2,5000)+0'1f(2,10000)=8961
 \end{cases}$$
 
-Por tanto la decisión óptima inicial es A. Si en la segunda etapa tuviéramos 5000 entonces la decisión siguiente sería B, y si llegáramos con 1000 sería A. En cualquiera de estos dos casos la tercera decisión es A.
+Por tanto la decisión óptima inicial es A. Si en la segunda etapa tuviéramos 5000 entonces la decisión siguiente sería B, y si llegáramos con 10000 sería A. En cualquiera de estos dos casos la tercera decisión es A.
 
-\item Añadimos una estapa adicional para modelar la probabilidad. $f(4,c):$ máxima probabilidad de acabar despu´s de los 3 años con 10000 um o más desde la etapa $t$ si se dispone de c um. 
+\item Añadimos una etapa adicional para modelar la probabilidad. $f(4,c):$ máxima probabilidad de acabar después de los 3 años con 10000 u.m. o más desde la etapa $t$ si se dispone de c u.m.  
 $$f(4,c)=\begin{cases}
 1 & c\geq 10000\\
 0 & c<10000
@@ -234,31 +267,41 @@ $$f(t,c)=\max\begin{cases}
 0'9f(t+1,c)+0'1f(t+1,c+5000) & x_t=B
 \end{cases}$$
 
-Vamos a la etapa 3. $f(3,0)=0$. 
-$$f(3,5000)=\max\begin{cases}
+Vamos a la etapa 3. 
+\begin{align*}
+f(3,0)&=0\\
+f(3,5000)&=\max\begin{cases}
 0'3f(4,0)+0'7f(4,10000)=0'7 & x_3=A\\
 0'9f(4,5000)+0'1f(4,10000)=0'1 & x_3=B
-\end{cases}$$
-$$f(3,10000)=\max\begin{cases}
+\end{cases} = 0'7(A)\\
+f(3,10000)&=\max\begin{cases}
 0'3f(4,5000)+0'7f(4,15000)=0'7 & x_3=A\\
 0'9f(4,10000)+0'1f(4,15000)=1 & x_3=B
-\end{cases}$$
-Ahora la etapa 2. $f(2,0)=0$, $f(2,1000)=1, x_2=B$
-$$f(2,5000)=\max\begin{cases}
+\end{cases} = 1(B)\\
+f(3,15000) &= 1(A||B)
+\end{align*}
+Ahora la etapa 2: 
+\begin{align*}
+f(2,0)&=0\\
+f(2,5000)&=\max\begin{cases}
 0'3f(3,0)+0'7f(3,10000)=0'7 & x_2=A\\
 0'9f(3,5000)+0'1f(3,10000)=0'73 & x_2=B
-\end{cases}$$
-
+\end{cases}=0'73(B)\\
+f(2,10000)&=\max\begin{cases}
+0'3f(3,5000)+0'7f(3,15000)=0'7 & x_2=A\\
+0'9f(3,10000)+0'1f(3,15000)=1 & x_2=B
+\end{cases} = 1(B)
+\end{align*}
 Por último la etapa 1:
 $$f(1,5000)=\max\begin{cases}
 0'3f(2,0)+0'7f(2,10000)=0'7 & x_1=A\\
 0'9f(2,5000)+0'1f(2,10000)=0'757 & x_1=B
-\end{cases}$$
+\end{cases} = 0.757(B)$$
 
-La máxima probabilidad de acabar con al menos 10000 um es por tanto $0'757$, cuya estrategia óptima es
+La máxima probabilidad de acabar con al menos 10000 u.m. es por tanto $0'757$, cuya estrategia óptima es
 \[
 \begin{tikzcd}
-&  & A\\
+&  & B\\
 A\arrow[r] & B\arrow[ur,"c=5000"]\arrow[dr,"c\geq 10000"'] & \\
 & & B
 \end{tikzcd}
@@ -274,12 +317,12 @@ Cuando un jugador de tenis sirve, tiene dos oportunidades para que la pelota cai
 \begin{solucion}
 Las etapas son los dos servicios y los estados solo dependen de en qué servicio estemos. $f(t)$ es la máxima probabilidad de ganar el punto desde $t$. 
 $$f(II)=
-\max\{\frac{3}{8}\frac{2}{3} (Ace),\frac{1}{3}\frac{7}{8}\}=\frac{7}{24}(Suave)
+\maxi{}{\frac{3}{8}\frac{2}{3} (Ace),\frac{1}{3}\frac{7}{8}(Suave)}=\frac{7}{24}(Suave)
 $$
 
 $$f(I)=\max\begin{cases}
-\frac{3}{8}\frac{2}{3}+f(II)(1-\frac{3}{8}) & Ace\\
-\frac{7}{8}\frac{1}{3}+f(II)(1-\frac{2}{3}) & Suave
+\dfrac{3}{8}\dfrac{2}{3}+f(II)\left(1-\dfrac{3}{8}\right) & Ace\\
+\dfrac{7}{8}\dfrac{1}{3}+f(II)\left(1-\dfrac{2}{3}\right) & Suave
 \end{cases}=\max\{0'432,0'328\}=0'4324$$ que corresponde a intentar un ace en el primero y en caso de fallar, sacar suave en el segundo.
 \end{solucion}
 
