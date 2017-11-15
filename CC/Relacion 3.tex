@@ -118,6 +118,101 @@ donde $r=(\mu t)_{\leq x}\left(\frac{(t+1)(t+2)}{2}>x\right)$.
 
 \newpage
 
+\begin{ejercicio}{12}
+Sea $k \in \N$ un número fijo y $f, g : \N \to \N$ tales que $\forall x \in N, f(x + 1) < x + 1$.
+Probar que si $f, g \in \mathcal{PR}$ entonces la función $h : \N \to \N$ definida por
+\begin{align*}
+&h(0) = k
+&h(x + 1) = g(h(f(x + 1)))
+\end{align*}
+es primitiva recursiva (utilícese la \textbf{función recorrido}).
+\end{ejercicio}
+\begin{solucion}
+Por indución en $n$ podemos ver que $h(n)$ está definida para todo $n$, pues si está definida para todo número menor que $n+1$, entonces también está definida para $n+1$ puesto que $f(n+1)<n+1$. 
+
+La función recorrido guarda los valores de $h$ en una lista codificada: $\hat{h}(0)=[h(0)],\hat{h}(x)=[h(0),\dots,h(x)]$. Si $\hat{h}\in\mathcal{PR}$, entonces $h\in\mathcal{PR}$, pues $h(x)=(\hat{h}(x))_{x+1}$ (la componente $x+1$-ésima). Probemos entonces que $\hat{h}\in\mathcal{PR}$. $\hat{h}(0)=[k]=2^k$, $\hat{h}(n+1)=[h(0),\dots,h(n),h(n+1)]=\underbrace{p_1^{h(0)}\cdots p_{n+1}^{h(n)}}_{\hat{h}(n)}p_{n+2}^{h(n+1)}=\hat{h}(n)p_{n+1}^{h(n+1)}$. Tenemos que eliminar $h$ de la definición y para eso utilizamos la ecuación de recurrencia. $\hat{h}(n+1)=\hat{h}(n)p_{n+1}^{g(h(f(n+1)))}$. Como $f(n+1)<n+1$, $h(f(n+1))$ está condificado en la lista, luego $h(f(n+1))=(\hat{h}(n))_{f(n+1)+1}$. Finalmente
+$$\hat{h}(n+1)=\hat{h}(n)p_{n+1}^{g(\hat{h}(n))_{f(n+1)+1})}$$
+Así pues $\hat{h}=\mathcal{R}(2^k, H)$, donde $H(n,z)=zp_{n+2}^{g(z)_{f(n+1)+1}}$, que es PR. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{14}
+Consideremos las funciones totales $f, g : \N \to \N$ caracterizadas por las relaciones
+siguientes:
+\[
+\begin{cases}
+f(0) = 0\\
+f(n + 1) = 1 + g(n)
+\end{cases}\begin{cases}
+g(0) = 0\\
+g(n + 1) = 2 + f(n)
+\end{cases}
+\]
+Probar que las funciones $f$ y $g$ son primitivas recursivas. (Indicación: Considérese la función
+$h : \N \to \N$ definida por $h(n) = [f(n), g(n)]$.
+\end{ejercicio}
+\begin{solucion}
+El corchete es la codificación que se ha visto en clase. $h(0)=\langle 0,0\rangle =2^0(2\cdot 0+1)-1=1-1=0$. $h(n+1)=\langle f(n+1),g(n+1)\rangle=\langle 1+g(n),2+f(n)\rangle=\langle 1+r(h(n)),2+l(h(n))\rangle$. Entonces $h=\mathcal{R}(0,H)$, donde $h(0)=0, h(n+1)=H(n,h(n))$, siendo $H(n,z)=\langle 1+r(z),2+l(z)\rangle$. Como la función par (la del corchete) es PR, y cada lado es una proyección, $H$ es PR, con lo que $h\in\mathcal{PR}$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{15}
+Dada una función parcial $f : \N \dashrightarrow \N$ definimos la función parcial $v_f : \N\dashrightarrow \N$
+como sigue:
+\[ v_f (x) = |\{y \in \N : y < x \land f(y) = 0\}|\]
+Probar que si $f$ es primitiva recursiva, entonces la función $v_f$ también lo es.
+
+\end{ejercicio}
+\begin{solucion}
+$v_f(0)=0, v_f(x+1)=v_f(x)+\overline{sg}(f(x))$. Otra posibilidad es observar $v_f(x)=\sum_{t< x}\overline{sg}(f(x))$. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{16}
+Dado un predicado primitivo recursivo $R(x, y)$, definamos
+\[g(x, z) = \max_{y\leq z}R(x, y)\]
+como el mayor $y \leq z$ tal que $R(x, y)$, si existe, y 0 si no existe ningún elemento $y \leq z$ tal que
+$R(x, y)$. Probar que $g \in \mathcal{PR}$.
+\end{ejercicio}
+\begin{solucion}
+$(x,z)$ es el elemento $y\leq z\land R(x,y)\land \forall u\leq z(u>y\rightarrow \neg R(x,u))$, que es un predicado $\mathcal{PR}$ al que llamaremos $P(x,y,z)$. Entonces $g(x,z)=(\mu y)_{\leq z} P(x,y,z)$. Hemos definido esta función en los apuntes de modo que si no existe tal mínimo en predicados entonces devuelve 0, pero si no fuera así, podría definirse por casos.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{19}
+Probar que las siguientes funciones son primitivas recursivas
+\begin{enumerate}
+\item $\begin{cases}
+h(0) = 3\\
+h(x + 1) =\sum_{t=0}^x h(t)
+\end{cases}$
+
+\item $\begin{cases}
+f(0) = 1, f(1) = 4, f(2) = 6\\
+f(x + 3) = f(x) + f(x + 1)^2 + f(x + 2)^3
+\end{cases}$
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item Usamos la función recorrido. $\hat{h}(0)=[3]=2^3=8$, $\hat{h}(x+1)=\hat{h}(x)p_{x+2}^{\sum_{t=0}^xh(t)}=\hat{h}(x)p_{x+2}^{\hat{h}(x)_{t+1}}$. Podemos escribir $\hat{h}(x+1)=H(x,\hat{h}(x))$, donde $H(x,z)=zp_{x+2}^{\sum_{t\leq x} (z)_{t+1}}=zp_{x+2}^{s(x,z)}$. La suma acotada es PR, así que todo lo demás es PR.
+\item Podemos usar $F(0)=[1,4,6]=2\cdot 3^4\cdot 5^6$, $F(x)=[f(x),f(x+1),f(x+2)]$. Entonces $F(x+1)=[f(x+1),f(x+2),f(x+3)]=[(F(x))_2,(F(x))_3,(F(x))_1+(F(x))_2^2+(F(x))_3^3]$. 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{22}
+\end{ejercicio}
+\begin{solucion}
+Usar la función recorrido fijando el parámetro u.
+\end{solucion}
+\newpage
+
 \begin{ejercicio}{}
 La función de Fibonacci no es $\mathcal{PR}$.
 \end{ejercicio}
