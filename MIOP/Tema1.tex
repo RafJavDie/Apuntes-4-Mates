@@ -66,7 +66,7 @@ Tenemos que el camino más corto tiene longitud $4$ y se corresponde con el cami
 \item En cada etapa hay un número finito de estados.
 \item La decisión que se realiza en un estado determina la transición al estado en la etapa siguiente.
 \item En un estado, la decisión óptima de los problemas en etapas futuras no depende de las decisiones anteriores. 
-\item Debe existir un funcional $f$ que relacióna el valor de un subproblema en la etapa $k$ con el de la etapa $k+1$ (o $k-1$). 
+\item Debe existir un funcional $f$ que relaciona el valor de un subproblema en la etapa $k$ con el de la etapa $k+1$ (o $k-1$). 
 \end{enumerate}
 
 Denotemos por $s_k$ la variable que denota el estado en la etapa $k$. Sea $d_k$ una decisión factible en el estado $s_k$ y $c_k(s_k,d_k)$ el coste incurrido en el estado $k$ si se decide $d_k$. Asimismo, sea $t_k(s_k,d_k)$ el estado al que evoluciona el sistema en la etapa $k+1$ si en $s_k$ se decide $d_k$.
@@ -107,14 +107,15 @@ $$\min_{r_1,r_2,\dots,r_n} g(r_1,r_2,\dots,r_n)=\min_{r_1} g_1(r_1,\min_{r_2,\do
 
 \end{teorema}
 \begin{dem}
-Dado que $\forall u_1,\dots, u_n$ $g(u_1,\dots, u_n)=g_1(u_1,g_2(u_2,\dots, u_n))$. Entonces 
-$$\min_{r_1,\dots,r_n}g(r_1,\dots,r_n)\leq g_1(u_1,g_2(u_2,\dots, u_n))\;\forall u_1,u_2,\dots,u_n.
+Dado que $\forall u_1,\dots, u_n$ $g(u_1,\dots, u_n)=g_1(u_1,g_2(u_2,\dots, u_n))$. Entonces $\forall u_1,\dots,u_n$.
+$$\min_{r_1,\dots,r_n}g(r_1,\dots,r_n)\leq g_1(u_1,g_2(u_2,\dots, u_n))
 $$ 
-Por tanto, 
-$$\min_{r_1,\dots,r_n}g(r_1,\dots,r_n)\leq g_1(u_1,\min_{u_2,\dots,u_n}g_2(u_2,\dots, u_n))\forall u_1.$$ 
+Por tanto, $\forall u_1$
+$$\min_{r_1,\dots,r_n}g(r_1,\dots,r_n)\leq g_1(u_1,\min_{u_2,\dots,u_n}g_2(u_2,\dots, u_n))$$ 
 Luego 
 $$\min_{r_1,\dots,r_n}g(r_1,\dots,r_n)\leq \min_{u_1}g_1(u_1,\min_{u_2,\dots,u_n}g_2(u_2,\dots, u_n))$$
-Análogamente, usando que $g_1$ es no creciente en $g_2$, $$g(u_1,\dots, u_n)\geq g_1(u_1,\min_{r_2,\dots,r_n}g_2(r_2,\dots,r_n))\forall u_1.$$ Por consiguiente, 
+Análogamente, usando que $g_1$ es no creciente en $g_2$, $\forall u_1,u_2,\dots,u_n$
+$$g(u_1,\dots, u_n)\geq g_1(u_1,\min_{r_2,\dots,r_n}g_2(r_2,\dots,r_n))$$ Por consiguiente, $\forall u_1,u_2,\dots,u_n$
 $$g(u_1,\dots, u_n)\geq \min_{r_1}g_1(r_1,\min_{r_2,\dots,r_n}g_2(r_2,\dots,r_n)).$$ Finalmente,
 $$\min_{u_1,\dots,u_n}g(u_1,\dots, u_n)\geq \min_{r_1}g_1(r_1,\min_{r_2,\dots,r_n}g_2(r_2,\dots,r_n)).$$\QED
 \end{dem}
