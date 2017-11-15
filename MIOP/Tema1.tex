@@ -952,13 +952,13 @@ $\QED$
 \end{dem}
 Consideramos $\Pi_1^*, \dotsc, \Pi^*_n$ las políticas que escogemos en cada aproximación, $$\Delta^* = \{\delta \in \Delta \mid \delta(i)\in D^*(i)\}$$
 Notamos además $f_i = \max_{k\in D(i)} \{R_i^k + \sum_{j=1}^N\alpha p_{ij}^k f_i\}$ para todo $i=1,\dotsc, N$,
-$$ D^*(i)=\{ k\mid S_i^k = f_i - R_i^k - \sum \alpha p_{ij}^kf_j\}$$
-y $c=\min_i \{S_i^k \mid s_i^k >0\}$.
+$$ D^*(i)=\{ k\mid s_i^k = f_i - R_i^k - \sum \alpha p_{ij}^kf_j\}$$
+y $c=\min_i \{s_i^k \mid s_i^k >0\}$.
 \begin{teorema}
 Si $v^0 =0$ entonces la política $\Pi_n^* = \Delta^*$ para todo $n>n_0$ con $n_0 = \frac{\log c - \log ||2f||}{\log \alpha}$.
 \end{teorema}
 \begin{dem}
-Se supone que al menos un $s_i^k>0$, pues en otro caso $\Delta = \Delta^*$ y el teorema es cierto para todo $n\in\N$. Tomamos $k=\Pi^*_n(i)$. Entonces $S_i^k = f_i - R^k_i - \sum_{j=1}^N \alpha p_{ij}f_j$, $v_i^n = R^k_i + \sum_j \alpha p_{ij}^kv_j^{n-1}$. Por tanto, sumando
+Se supone que al menos un $s_i^k>0$, pues en otro caso $\Delta = \Delta^*$ y el teorema es cierto para todo $n\in\N$. Tomamos $k=\Pi^*_n(i)$. Entonces $s_i^k = f_i - R^k_i - \sum_{j=1}^N \alpha p_{ij}f_j$, $v_i^n = R^k_i + \sum_j \alpha p_{ij}^kv_j^{n-1}$. Por tanto, sumando
 \begin{gather*}
 s_i^k = f_i-v_i^n + \sum_j \alpha p_{ij}^k(v_j^{n-1}-f_j) \leq |f_i - v_i^n|+\sum_j \alpha p_{ij}^k|v_j^{n-1}-f_j| \leq \\
 ||f-v^n|| + \sum_j \alpha p_{ij}^k
