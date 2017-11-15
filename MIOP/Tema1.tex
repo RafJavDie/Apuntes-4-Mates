@@ -890,11 +890,11 @@ $$
 f_i \geq R_i^k + \sum_{j=1}^N \alpha p_{ij}^k f_j \quad \forall k\in D(i)$$
 Pero eso es equivalente a decir que $f$ cumple las restricciones del problema (P) planteado en el enunciado. Supongamos que $\pi$ es la política tal que $f=v^\pi$. Si escribimos las restricciones de (P) para la política $\pi$ tenemos
 $$
-w-Q^\pi w \geq R^\pi \equiv w \geq T^\pi + Q^\pi w
+w-Q^\pi w \geq R^\pi \equiv w \geq R^\pi + Q^\pi w
 $$
 Aplicando el lema se obtiene
 $$
-R^\pi + Q^\pi w \geq v^\pi \quad w\geq v^\pi, \; \forall w \text{ fcatible}
+R^\pi + Q^\pi w \geq v^\pi \quad w\geq v^\pi, \; \forall w \text{ factible}
 $$
 Por tanto, $\min \sum w_i = \sum_{i=1}^N v_i^{\pi(i)} = \sum_{i=1}^N f_i$.
 \end{dem}
@@ -902,10 +902,10 @@ Por tanto, $\min \sum w_i = \sum_{i=1}^N v_i^{\pi(i)} = \sum_{i=1}^N f_i$.
 Consideremos el problema dual de $(P)$
 \begin{align*}
 &\max \sum_{i=1}^N\sum_{k\in D(i)}R^k_i x_i^k\\
-s.a. & \sum_{k\in D(i)} x_i^k - \sum_{k\in D(i)}\sum_{j=1} \alpha p_{ji} x_j^k = 1 \quad \forall i\\
+s.a. & \sum_{k\in D(i)} x_i^k - \sum_{k\in D(i)}\sum_{j=1}^N \alpha p_{ji} x_j^k = 1 \quad \forall i\\
 &x_i^k \geq 0 \quad \forall i
 \end{align*}
-B esuna matriz básica de (D) si y solo $B=(I-Q^\delta)$ $\forall \delta \in \Delta$.
+$B$ es una matriz básica de (D) si y solo $B=(I-Q^\delta)$ $\forall \delta \in \Delta$.
 \end{teorema}
 \begin{dem}
 Supongamos que $\delta \in \Delta$ es una política y que $B= I-Q^\delta$. Sabemos que esta matriz tiene inversa $\sum_{n=0}^\infty Q^n$. Ahora podemos definir $x^\delta = 1^t(I-Q^\delta)^{-1}$. Entonces
@@ -915,11 +915,11 @@ Supongamos que $\delta \in \Delta$ es una política y que $B= I-Q^\delta$. Sabem
 \end{enumerate}
 Por tanto $B$ es una matríz básica de (D).
 
-Recíprocamente, supongamos que $B$ es una base de (D), por tanto debemos tener $N$ columnas que definen exactamente $N$ variables no nulas. Observamos que para cada i
+Recíprocamente, supongamos que $B$ es una base de (D), por tanto debemos tener $N$ columnas que definen exactamente $N$ variables no nulas. Observamos que para cada $i$
 $$
 \sum_{k\in D(i)}x^k_i - \sum_{k\in D(i)}\sum_{j=1} \alpha p_{ji} x_j^k = 1
 $$
-Como $x_j^k\geq 0$ tenemos que $\sum_{k\in D(i)} \geq 1$. Como necesitamos $N$ variables no nulas, si $\exists x_i^k, x_i^{k'}$ distintos de cero entonces debe existir un $j$ tal que $x_j^k = 0$ $\forall k$. Dado que
+Como $x_i^k\geq 0$ tenemos que $\sum_{k\in D(i)}x_i^k \geq 1$. Como necesitamos $N$ variables no nulas, si $\exists x_i^k, x_i^{k'}$ distintos de cero entonces debe existir un $j$ tal que $x_j^k = 0$ $\forall k$. Dado que
 $$
 \begin{cases}
 \sum_{k\in D(1)} x_1^k \geq 1\\
