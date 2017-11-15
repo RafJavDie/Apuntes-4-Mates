@@ -1,0 +1,127 @@
+\documentclass[MIOP.tex]{subfiles}
+\usepackage{mathtools}
+%\usepackage{sagetex}
+\begin{document}
+
+\chapter{Programación no lineal.}
+
+\section{Introducción.}
+
+El objetivo de la programación no lineal es resolver problemas de la siguiente naturaleza: dada $f:\R^n\to\R$, encontrar $x^*$ tal que $f(x^*)=\min_{x\in\R^n}f(x)$. Puede que el problema no esté bien definido, es decir, que no exista tal mínimo, por ejemplo $f(x)=-\frac{1}{x}$. Las condiciones suficientes para la existencia de solución a este problema son:
+\begin{enumerate}
+\item $f$ es continua.
+\item $f$ es coerciva, i.e., $\lim_{||x||\to\infty} f(x)=+\infty$. Gracias a esto, $\exists M\mid ||x||\leq M\Rightarrow f(x)\leq f(y)\ \forall ||y||>M\Rightarrow \min_{x\in\R^n}f(x)=\min_{||x||\leq M}f(x)$.
+\end{enumerate}
+Supongamos que $f$ es continuamente diferenciable y supongamos que $x^*$ es un mínimo local de $f$, es decir, $\exists E(x^*)$ tal que $f(x^*)\leq f(x)\ \forall x\in E(x^*)$. Podemos hallar el desarrollo en serie de Taylor en el punto $x^*$, dados $d\in\R^n,\alpha\in\R$
+$$f(x^*+\alpha d)=f(x^*)+\underbrace{\alpha d'}_{x^*+\alpha d-x^*}\nabla f(x^*)+\mathcal{O}(||\alpha d||)$$
+Tomando $\alpha>0$ tenemos
+$$f(x^*+\alpha d)-f(x^*)\approx \alpha d'\nabla f(x^*)\geq 0\Rightarrow d'\nabla f(x^*)\geq 0.$$
+Esto se cumple para toda dirección, en particular para $-d$, pero si $-d\nabla f(x^*)=0$, entonces $\nabla f(x^*)=0$. 
+
+Si desarrollamos hasta segundo orden
+$$f(x^*+\alpha d)=f(x^*)+\alpha d'\nabla f(x^*)+\frac{\alpha^2}{2}d'\nabla^2 f(x^*)d+\mathcal{O}(||\alpha d||^2)$$
+análogamente deduciríamos, aplicando que $\nabla f(x^*)=0$, 
+$$f(x^*+\alpha d)-f(x^*)\approx \frac{\alpha^2}{2}d'\nabla^2 f(x^*)d\geq 0\ \forall d.$$
+Esto significa que la matriz $\nabla^2 f(x^*)$ es semidefinida positiva.
+
+Vamos a probar rigurosamente estos resultados en el siguiente teorema.
+
+\begin{teorema}
+Sea $x^*$ mínimo local de $f$ continuamente diferenciable en un entorno abierto $S$ de $x^*$. Entonces $\nabla f(x^*)=0$. Si además $f$ es de clase $\mathcal{C}^2(S)$, entonces $\nabla^2 f(x^*)$ es semidefinida positiva.
+\end{teorema}
+\begin{dem}
+ Consideremos $d \in \R^n$ arbitraria con $||d||=1$. Definimos:
+\begin{align*}
+g &: \R \to \R\\
+g(α) &= f(x^* + α d)
+\end{align*}
+Como $x^*$ es un mínimo local, si $α > 0$ es suficiente pequeño: $0 ≤ f(x^*+αd)-f(x^*)$.
+\[ 0 ≤ \frac{f(x^*+αd)-f(x^*)}{α} \Rightarrow 0 ≤ \lim_{α \to 0} \frac{f(x^*+αd)-f(x^*)}{α} = g'(0) \]
+Entonces $0 ≤ g'(0) = d'\nabla f (x^*+αd) |_{α = 0} = d'\nabla f(x^*)$. 
+Como $||e_i|| = ||-e_i|| = 1$, $\nabla f(x^*)'e_i ≥ 0$ y $\nabla f(x^*)'(-e_i) ≥ 0$, luego $\nabla f(x^*) = 0$. Ahora, si $f \in \mathcal{C}^2$. Entonces:
+\begin{align*} 0 ≤ f(x^* + α d)-f(x^*) & = \nabla f(x^*)(αd) + \frac{1}{2} (αd)' \nabla^2 f(x^*)(αd) + O(||αd||^2) \\
+ & = \frac{α^2}{2}d'\nabla^2f(x^*)d + O(α^2)
+\end{align*}
+Dividiendo por $α^2$ y pasando al límite:
+\[ 0 ≤ \frac{1}{2} d' \nabla^2 f(x^*) d \]
+Luego $\nabla^2 f(x^*)$ es semidefinida positiva. $\QED$
+\end{dem}
+
+\begin{teorema}[C. S.] Sea $f\in \mathcal{C}^2(S)$, S abierto. Supongamos que $x^*\in S$. Supongamos que verifica:
+\begin{enumerate}
+\item $\nabla f(x^*)=0$
+\item $\nabla^2 f(x^*)$ definida positiva.
+\end{enumerate}
+Entonces $\exists \gamma>0$, $\delta>0$ tal que 
+\[
+f(x)\geq f(x^*)+\frac{\gamma}{2}||x-x^*||^2 \qquad \forall x\in S,\; ||x-x^*||<\delta
+\]
+\end{teorema}
+\begin{dem}
+Por las propiedades de las matrices definidas positivas, sabemos que $\exists \lambda>0$ -el menor autovalor de la matriz- tal que $\forall d\in \R^n$, $d'\nabla^2 f(x^*) d\geq \lambda ||d||^2$. Sea $d\in \R^n$ tal que $x^*+d \in S$, entonces:
+\begin{gather*}
+f(x^*+d)=f(x^*)+\nabla f(x^*)'d +\frac{1}{2}d'\nabla^2 f(x^*)d+O(||d||^2) \\
+f(x^*+d)-f(x^*) =  \frac{1}{2}d'\nabla^2 f(x^*)d+O(||d||^2) \geq  \frac{\lambda}{2}||d||^2 + O(||d||^2) = \frac{||d^2||}{2}\left(\lambda+\frac{O(||d||^2)}{||d||^2}\right)
+\end{gather*}
+Sabemos que $\forall \varepsilon>0$ ($\varepsilon < \lambda$) $\exists \delta >0$ tal que si $||d||<\delta$ entonces $\left|\dfrac{O(||d||^2)}{||d||^2}\right|<\varepsilon$, por tanto, si $||d||<\delta$ entonces
+\[
+f(x^*+d)-f(x^*)\geq  \frac{||d||^2}{2}\left(\lambda+\frac{O(||d||^2)}{||d||^2}\right) \geq  \frac{||d||^2}{2}\left(\lambda-\varepsilon\right) =  \frac{\gamma}{2}||d||^2 \]
+
+Basta tomar $d=x-x^*$ $\QED$ 
+\end{dem}
+
+\begin{defi}
+Diremos que $x^*$ es un \textbf{punto estacionario} de $f$ si $\nabla f(x^*)=0$. 
+\end{defi}
+
+\section{Algoritmos de tipo gradiente}
+Sea $d^k \in\R^n$ la dirección desplazamiento y $a^k \in \R$ la longitud de paso, nuestros métodos serán de la forma:
+\[
+\begin{cases}
+\text{Dado $x^0\in \R^n$}\\
+x^{k+1} = x^k - \alpha^k d^k
+\end{cases}
+\]
+con $d^k\mid {d^k}'\nabla f(x^k)<0, \alpha^k>0\ \forall k$. En particular, si $d^k=-\nabla f(x)$ es la dirección de máximo decrecimiento local de $f$ en $x$ obtenemos el llamado \textbf{Método de máximo descenso}:
+\[
+\begin{cases}
+\text{Dado $x^0\in \R^n$}\\
+x^{k+1} = x^k - \alpha^k \nabla f(x^k)
+\end{cases}
+\]
+Para este caso particular se tiene que:
+\[
+f(x^{k+1})=f(x^k)+\nabla f(x^k)(x^{k+1}-x^k) + O(||x^{k+1}-x^k||) \approx f(x^k)-\nabla f(x^k)\alpha^k d^k
+\]
+Con esto conseguimos que $f(x^{k+1})\leq f(x^k)$ (podemos conseguirlo con cualquier dirección $d^k$ de las anteriores). Luego la condición de parada será $x^{k+1}=x^k$, es decir, $\nabla f(x^k)=0$. 
+
+
+\subsection{Elementos de este método}
+\begin{enumerate}
+\item $x^0$ punto inicial.
+\item Dirección de desplazamiento
+\begin{itemize}
+\item $d^k = -\nabla f(x^k)$ (Método de máximo descenso).
+\item $d^k = -D^k \nabla f(x^k)$ con $D^k$ definida positiva. Esto permite hacer una cantidad infinita de iteraciones sin que el método se atasque.
+\begin{itemize}
+\item Tomar, si es definida positiva, $D^k = (\nabla^2 f(x^k))^{-1}$. En este caso obtenemos el método de Newton.
+\item Para $D^k=I$ tenemos el método de máximo ascenso.
+\end{itemize}
+\end{itemize}
+\item La longitud de paso $\alpha^k$.
+\begin{itemize}
+\item Elementos de una serie divergente $\sum \alpha_k$ tal que $\alpha_k \rightarrow 0$. Tiene sentido pues:
+\begin{gather*}
+x^{m+1} = x^m - \alpha^m \nabla f(x^{m})\\
+ x^{m+2} = x^{m+1} - \alpha^{m+1} \nabla f(x^{m+1}) =  x^m - \alpha^m \nabla f(x^{m}) -\alpha^{m+1} \nabla f(x^{m+1})
+\end{gather*}
+Si $m$ es lo suficientemente grande entonces $\forall n>m$, $x^n \simeq x^m \simeq x^*$ y
+\[
+x^* \simeq x^* - \sum^{n-1}_{k=m} \alpha^k \nabla f(x^*) \Rightarrow 0 \simeq \nabla f(x^*)\sum_{k=m}^\infty \alpha^k
+\]
+Como la serie diverge, concluimos que $\nabla f(x^*)=0$.
+\item Tomar $\alpha^k$ tal que $\alpha^k$ minimiza $f(x^k+\alpha d^k)$ (función de una variable real).
+\end{itemize}
+\end{enumerate}
+
+\end{document}
