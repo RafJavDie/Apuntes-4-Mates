@@ -783,7 +783,7 @@ Además de todo esto, vamos a imponer que nuestras decisiones sean estacionarias
 
 Entonces, definimos una \textbf{política} (estacionaria) como una regla de decisión $\delta$ tal que $\forall i\in S$, $\delta(i)=k\in D(i)$, independientemente de la etapa del proceso.
 
-El conjunto de reglas de decisión estacionarias $\Delta$ es finito, de hecho $|\Delta|\leq |\bigtimes_{i\in S} D(i)|$.  
+El conjunto de reglas de decisión estacionarias $\Delta$ es finito, pues $|\Delta|\leq |\bigtimes_{i\in S} D(i)|= \prod_{i=1}^N |D(i)|$.  
 
 Denotemos por $v^\delta_i$ el valor esperado de la recompensa obtenida por el proceso utilizando la política $\delta$ y suponiendo que comienza en estado $i$. 
 $$v^\delta_i=R^\delta_i+\alpha\sum_{j\in S} p_{ij}^\delta R_j^\delta +\alpha^2\sum_{j\in S}p_{ij}^\delta(2)R_j^\delta+\cdots=\sum_{n=0}^\infty\sum_{j=1}^N\alpha^n p_{ij}^\delta(n) R_j^\delta$$
@@ -791,9 +791,9 @@ El objetivo es encontrar $\delta\in\Delta$ tal que $f_i=\max_{\delta\in\Delta}v_
 
 
 \begin{observacion}
-Ocurre que existe una polític $\delta\in\Delta$ que es óptima para todo $i\in S$, es decir, $\exists \delta^*\mid f_i=v_i^{\delta^*}\ \forall i\in S$.
+Ocurre que existe una política $\delta\in\Delta$ que es óptima para todo $i\in S$, es decir, $\exists \delta^*\mid f_i=v_i^{\delta^*}\ \forall i\in S$.
 \end{observacion}
-\begin{observacion}[lema de Chapman-Kolmogorov]
+\begin{observacion}[Lema de Chapman-Kolmogorov]
 Usando el teorema de la probabilidad total podemos descomponer las probabilidades de varios pasos en probabilidades de un solo paso.
 $$p_{ij}^\delta(2)=\sum_{k\in S}p_{ik}^\delta(1)p_{kj}^\delta(1)=\sum_{k\in S}p_{ik}^\delta p_{kj}^\delta=P^\delta_{i\cdot}P^\delta_{\cdot j},$$
 luego $P(2)=P\cdot P$. En general, por inducción, la matriz de transición en $n$ pasos es $P^n$. De esta forma podemos escribir de modo más compacto
@@ -809,7 +809,7 @@ Es un análogo a que cuando $0<x<1$, $\sum_{n=0}^\infty x^n=(1-x)^{-1}$.
 \begin{proof}
 Vamos a ver primero que $I-Q^\delta$ tiene inversa. Para ello consideremos el sistema $(I-Q^\delta)x=0$. Entonces
 $$Ix=Q^\delta x=(Q^\delta)^2x=\cdots=(Q^\delta)^nx\ \forall n$$
-Pero $(Q^\delta)^n=\alpha^n P^n\to 0$ cuando $n\to\infty$, por lo tanto la única solución del sistema homogéneo es la solución nula, por lo que la matriz tiene inversa. Ahora consideramos la suma parcial $\sum_{k=0}^n (Q^\delta)^k$ y la multiplicamos por $(I-Q^\delta)$. Con esto obtenemos una suma telescópica igual $I-(Q^\delta)^{n+1}$. Tomando límite
+Pero $(Q^\delta)^n=\alpha^n ({P^\delta})^n\to 0$ cuando $n\to\infty$, por lo tanto la única solución del sistema homogéneo es la solución nula, por lo que la matriz tiene inversa. Ahora consideramos la suma parcial $\sum_{k=0}^n (Q^\delta)^k$ y la multiplicamos por $(I-Q^\delta)$. Con esto obtenemos una suma telescópica igual $I-(Q^\delta)^{n+1}$. Tomando límite
 $$\lim_{n\to\infty}(I-Q^\delta)\sum_{k=0}^n (Q^\delta)^k=\lim_{n\to\infty}I-(Q^\delta)^{n+1}=I-\lim_{n\to\infty}(Q^\delta)^{n+1}=I$$
 Por lo que la matriz $(I-Q^\delta)$ es la inversa de la suma infinita.
 \end{proof}
