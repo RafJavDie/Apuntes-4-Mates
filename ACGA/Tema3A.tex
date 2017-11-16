@@ -431,7 +431,26 @@ Al definir un morfismo $\phi:X\to Y$ de esta forma, hay que tener cuidado de que
 \end{defi}
 
 \begin{ejs}
- \emph{Sea $X\subseteq\PP^2_k$ la variedad definida por $x_1^2+x_2^2-x_0^2=0$ (la clausura proyectiva de la cónica $x^2+y^2-1=0$). Definimos $\phi(x_0:x_1)=(x_1^2+x_0^2:x_1^2-x_0^2:2x_0x_1)$. Como $x_1^2+x_0^2$ y $x_1^2-x_0^2$ no se anulan simultáneamente, $\phi$ define un morfismo $\PP^1_k\to X$. El morfismo $\psi:X\to\PP^1_k$ dado por $\psi(x_0:x_1:x_2)=(x_0-x_1:x_2)$ en $X-\{(1:1:0)\}$ y por $\psi(x_0:x_1:x_2)=(x_2:x_0+x_1)$ en $X-\{(1:-1:0)\}$ es inverso de $\phi$, y por tanto $X$ es isomorfa a $\PP^1_k$.}
+ Sea $X\subseteq\PP^2_k$ la variedad definida por $x_1^2+x_2^2-x_0^2=0$ (la clausura proyectiva de la cónica $x^2+y^2-1=0$). Sea $O=(1;1;0)$ y $r=\{x_0=0\}$. Dado $p=(a_0;a_1;a_2)\in X$, definimos $s_p=(1;1;0)+(a_0 ;a_1;a_2)$, que tiene por ecuación $\begin{vmatrix}
+ 1 & a_0 & x_0\\
+ 1 & a_1 & x_1\\
+ 0 & a_2 & x_2
+ \end{vmatrix}=0$. 
+ 
+ Entonces $s_p\cap r=\begin{vmatrix}
+ 1 & a_0 & 0\\
+ 1 & a_1 & x_1\\
+ 0 & a_2 & x_2
+ \end{vmatrix}=-a_3x_1+(a_1-a_0)x_2=0$, de donde obtenemos el punto de corte $(0;a_1-a_0;a_2)$. 
+ 
+ Ahora, dado $Q=(0;u;v)$, $O+Q=\begin{vmatrix}
+ 1 & 0 & x_0\\
+ 1 & u & x_1\\
+ 0 & v & x_2
+ \end{vmatrix}=vx_0-vx_1+ux_2=0$. Después buscamos la intersección de esta cónica con $X$ (separando casos $v\neq 0$ y $v=0$). Con lo que se obtiene podemos hacer lo siguiente. 
+
+ Definimos $\phi(x_0:x_1)=(x_1^2+x_0^2:x_1^2-x_0^2:2x_0x_1)$.
+ Como $x_1^2+x_0^2$ y $x_1^2-x_0^2$ no se anulan simultáneamente, $\phi$ define un morfismo $\PP^1_k\to X$. El morfismo $\psi:X\to\PP^1_k$ dado por $\psi(x_0:x_1:x_2)=(x_0-x_1:x_2)$ en $X-\{(1:1:0)\}$ y por $\psi(x_0:x_1:x_2)=(x_2:x_0+x_1)$ en $X-\{(1:-1:0)\}$ es inverso de $\phi$, y por tanto $X$ es isomorfa a $\PP^1_k$.
 \end{ejs}
 
 \section{Aplicaciones racionales entre variedades cuasi-proyectivas}
@@ -445,7 +464,7 @@ La definición de aplicación racional para variedades cuasi-proyectivas es la m
 Como $(U,\phi)\sim (U',\phi_{|U'})$ para todo abierto no vacío $U'\subseteq U$, podemos suponer que $\phi(U)\subseteq Z_i$ para algún $i$ (donde $Z_i=Z\cap U_i$ según la notación de la sección \ref{recubrimientoafin}). Por tanto, una función racional $\psi$ viene dada por un abierto $U\subseteq X$ y $m$ funciones regulares $f_1/g_1,\ldots,f_m/g_m$ en $U$ (donde para cada $j$, $f_j$ y $g_j$ son polinomios homogéneos del mismo grado) mediante la fórmula $\psi(x)=(1:f_1(x)/g_1(x):\ldots:f_m(x)/g_m(x))$ (en el caso $i=0$, en general el $1$ iría en la posición $i$-ésima). Multiplicando por el producto de los $g_j$, obtenemos $\psi(x)=(g(x):g(x)f_1(x)/g_1(x):\ldots:g(x)f_m(x)/g_m(x))$, donde $g$ y cada $gf_j/g_j$ son polinomios homogéneos del mismo grado. En resumen:
 
 \begin{prop}
- Una aplicación racional $\psi:X\dashrightarrow Y$ viene dada por $m+1$ polinomios $f_0,f_1,\ldots,f_m\in k[x_0,x_1,\ldots,x_n]$ homogéneos del mismo grado tales que $\langle f_0,f_1,\ldots,f_m\rangle\not\subseteq\I(X)$, mediante la fórmula $\psi(x_0:\ldots:x_n)=(f_0(x_0,\ldots,x_n):\ldots:f_m(x_0,\ldots,x_n))$. La aplicación $\psi$ está definida en el conjunto $X\backslash\V(\{f_0,\ldots,f_m\})$ de puntos $x\in X$ en los que algún $f_j$ no se anula. Otro conjunto de polinomios $g_0,g_1,\ldots,g_m$ homogéneos del mismo grado define la misma función racional si y sólo si $f_ig_j-f_jg_i=0$ en $X$ para todos $0\leq i<j\leq m$. 
+ Una aplicación racional $\psi:X\dashrightarrow Y$ ($X$ irreducible) viene dada por $m+1$ polinomios $f_0,f_1,\ldots,f_m\in k[x_0,x_1,\ldots,x_n]$ homogéneos del mismo grado tales que $\langle f_0,f_1,\ldots,f_m\rangle\not\subseteq\I(X)$, mediante la fórmula $\psi(x_0:\ldots:x_n)=(f_0(x_0,\ldots,x_n):\ldots:f_m(x_0,\ldots,x_n))$. La aplicación $\psi$ está definida en el conjunto $X\backslash\V(\{f_0,\ldots,f_m\})$ de puntos $x\in X$ en los que algún $f_j$ no se anula. Otro conjunto de polinomios $g_0,g_1,\ldots,g_m$ homogéneos del mismo grado define la misma función racional si y sólo si $f_ig_j-f_jg_i=0$ en $X$ para todos $0\leq i<j\leq m$. 
 \end{prop}
 
 \begin{proof}
@@ -459,6 +478,20 @@ Terminamos repitiendo las siguientes definiciones y resultados del tema anterior
 \begin{defi}
  Sean $X$ e $Y$ variedades cuasi-proyectivas. Una aplicación racional $\psi:X\dashrightarrow Y$ se dice {\bf birracional} si existe una aplicación racional $\psi':Y\dashrightarrow X$ tal que $\psi'\circ\psi:X\dashrightarrow X$ y $\psi\circ\psi':Y\dashrightarrow Y$ son la identidad (como aplicaciones racionales). En tal caso, las variedades $X$ e $Y$ se dicen {\bf birracionalmente equivalentes}. Una variedad cuasi-proyectiva $X$ se dice {\bf racional} si es birracionalmente equivalente a $\Ank$ (o lo que es lo mismo, a $\Pnk$) para algún $n$.
 \end{defi}
+\begin{nota}
+Es lo mismo que sea para $\Ank$ (o cualquier abierto) que para $\Pnk$ por la proposición \ref{birracproy}, ya que si $\exists U\subseteq X, V\subseteq\Pnk$ tales que $\varphi U\cong V$, basta tomar $V'=V\cap\Ank, U'=\varphi^{-1}(V')$, entonces $U'\cong V'$.
+\end{nota}
+
+\begin{ej}
+\begin{enumerate}
+
+
+\item $\PP^2\to\PP^2: (x_0;x_1;x_2)\mapsto (x_1x_2;x_0x_2;x_0x_1)$. Para que esté bien definida, dos de las 3 coordenadas del punto inicial deben ser no nulas, luego hay 3 puntos donde no está definido.  Si componemos este morfismo consigo mismo obtenemos $(x_0^2x_1x_2;x_0x_1x_2;x_0x_1x_2)=(x_0;x_1;x_2)$ en los puntos en los que está definido. Claramente no es isomorfismo porque todos los puntos de cada recta $x_i=0$ van al mismo punto respectivamente. En el complementario de las 3 rectas sí induce un isomorfismo. Al quitar $x_0=0$ estamos en el afín, donde quitamos $x=0$ e $y=0$. Por tanto el isomorfismo no es más que $(x,y)\mapsto(1/x,1/y)$. Se puede ver dividiendo en el punto proyectivo por $x_0x_1x_2$.
+\item Las hipercuádricas son racionales.
+\item $x^n+y^n=z^n, n\geq 3$ no es racional, porque de serlo, existirían $P,Q,R$ racionales tales que $P(t)^n+Q(t)^n=R(t)^n$. Quitando denominadores obtendríamos un contraejemplo del teorema de Fermat, lo cual sería una contradicción. 
+\item Cualquier curva racional es isomorfa a $\PP^1$. 
+\end{enumerate}
+\end{ej}
 
 \begin{prop}\label{birracproy}
  Sean $X$ e $Y$ variedades cuasi-proyectivas. Las siguientes condiciones son equivalentes:
