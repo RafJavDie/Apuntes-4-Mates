@@ -8,6 +8,35 @@
 \title{Algebra Conmutativa y Geometría Aplicada}
 \author{Javier Aguilar Martín, Rafael González López}
 \maketitle
+
+\begin{ejercicio}{1}\
+Sean $X, Y,Z$ variedades cuasi-proyectivas, y $\phi : X \dashrightarrow Y$ y $\psi : Y \dashrightarrow Z$ aplicaciones racionales.
+\begin{enumerate}
+\item Probar que si $(U, \tilde{\phi})$ y $(V, \tilde{\phi}')$ (donde $U, V \subseteq X$ son abiertos densos) son
+dos representaciones de $\phi$, entonces $\tilde{\phi}$ es dominante si y solo si $\tilde{\phi}'$ lo es, y
+que por tanto la definición de aplicación racional dominante tiene sentido.
+\item Probar que si $\phi$ y $\psi$ son dominantes, la composición  $\psi\circ\phi$ está bien definida
+(en el sentido de que existen representaciones de $\phi$ y $\psi$ que se pueden
+componer, y la composición no depende de las representaciones elegidas)
+y que la composición es también dominante.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item Para probar este apartado se usará el siguiente resultado de topología general.
+\begin{lemma} 
+Dada una aplicación continua $f:X\to Y$, para cualquier subconjunto $A\subseteq X$, $\overline{f(\overline{A})}=\overline{f(A)}$. 
+\end{lemma}
+\begin{proof}
+Por monotonía de la clausura se tiene $f(\overline{A})\subseteq\overline{f(\overline{A})}$. Para la otra inclusión, recordemos que dado $A\subseteq X$, $f$ es continua si y solo si $f(\overline{A})\subseteq\overline{f(A)}$, por lo que basta volver a tomar clausura para obtener $\overline{f(\overline{A})}\subseteq\overline{f(A)}$.
+\end{proof}
+ Por la definición de función racional tenemos que $\tilde{\phi}|_{U\cap V}=\tilde{\phi}'|_{U\cap V}$. Supongamos que $\tilde{\phi}$ es dominante. Entonces $\overline{\tilde{\phi}'(U\cap V)}=\overline{\tilde{\phi}(U\cap V)}=\overline{\tilde{\phi}(\overline{U\cap V})}$, ya que los morfismos son continuos en la topología de Zariski y por tanto podemos aplicar el lema. Usando ahora que los abiertos no vacíos de Zariski son densos y la intersección de dos cualesquiera de ellos también es denso, obtenemos $\overline{\tilde{\phi}(\overline{U\cap V})}=\overline{\tilde{\phi}(X)}=Y,$ por ser $\tilde{\phi}$ dominante. En definitiva, $\overline{\tilde{\phi}'(U\cap V)}=Y$, por lo que claramente $\tilde{\phi}'$ es dominante, ya que $\overline{\tilde{\phi}'(V)}\supseteq\overline{\tilde{\phi}'(U\cap V)}=Y$. El recíproco es análogo.
+\item 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
 \begin{ejercicio}{2} Sea $X\subset \A^3_\C$ la cuádrica definida por la ecuación $x^2 + yz =1$. Construir una aplicación birracional entre $X$ y $\A^2_\C$, probando que $X$ es racional. Determinar dos abiertos $U\subset X$ y $V\subset \A^2_\C$ tales que la aplicación birracional definida anteriormente induzca un isomorfismo entre ellos.
 \end{ejercicio}
 \begin{solucion}
