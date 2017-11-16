@@ -405,7 +405,7 @@ f(3,d)&=\begin{cases}
 d & d\geq\frac{1}{4}\\
 +\infty & d<\frac{1}{4}
 \end{cases}\\
-f(2,d)&=\min_{\frac{1}{2}\leq d}\begin{cases}
+f(2,d)&=\min_{\frac{1}{2}\leq d<< <<<<<<<<<<<<<<   <M, <,}\begin{cases}
 x(d-x) & d-x\geq\frac{1}{4}\\
 +\infty & d-x <\frac{1}{4}
 \end{cases}
@@ -429,9 +429,39 @@ hasta que uno de los participantes elimina el último número, en cuyo caso pier
 Formular el sistema de ecuaciones recursivas que determina la estrategia ganadora óptima.
 \end{ejercicio}
 \begin{solucion}
-
+Distinguimos a priori 3 etapas, según la fila en la que estamos. Nuestros estados serán $(t,n)$ donde $t$ es la fila en la que estamos y $n$ es la cantidad de fichas disponibles en esa fila. $f(t,n)$ será el número de fichas que tenemos que levantar para ganar el juego. Entonces si estamos en la etapa 3, 
+$$
+f(3,n)=
+\begin{cases}
+2 & n=3\\
+1 & n=2\\
+LOSE & n=1
+\end{cases}
+\qquad
+f(2,n)=
+\begin{cases}
+LOSE & n=1\\
+1 & n=2\\
+2 & n=3\\
+3 & n=4\\
+LOSE & n=5
+\end{cases}
+$$
+$$
+f(1,n)=
+\begin{cases}
+1 & n=1\\
+2 & n=2\\
+3 & n=3\\
+LOSE & n=4\\
+1 & n=5\\
+2 & n=6\\
+3 & n=7\\
+LOSE & n=8
+\end{cases}
+$$
+Gana quien empieza la tercera ronda, para asegurar esto, hay que no empezar la segunda ronda. Si empiezas, pierdes por cojones.
 \end{solucion}
-
 \newpage
 \begin{ejercicio}{8} 
 Consideremos la matriz 4$\times$5 que se muestra abajo. Definimos una vez fijada la posición $(i, j)$,
