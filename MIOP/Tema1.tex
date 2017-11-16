@@ -686,8 +686,9 @@ $$
  
 \begin{ej}
 Supongamos que un vendedor tiene 6 unidades de producto que debe distribuir entre 3 tiendas, cuya demanda estocástica viene dada por la siguiente tabla
-
-\begin{tabular}{c|c|c|}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
  & Demanda & Probabilidad\\
 \hline
  	& 1 & 0.6\\
@@ -702,32 +703,33 @@ Tienda 1         & 2 & 0\\
   Tienda 3 & 2 & 0.3\\
   & 3 & 0.3\\
   \hline
-\end{tabular}\
+\end{tabular}
+\end{center}
 
 El precio de venta es 2 y de devolución es 0.5. Se debe encontrar la distribución por tiendas para maximizar el beneficio esperado.
 
 Definimos los estados $(n,x)$ donde $n$ es el índice de la tienda actual y $x$ es el número de productos disponibles. Las decisiones serán $x_n=$ número de unidades que se asignan a la tienda $n$. Cada vez que asignemos $x_n$ al estado $(n,x)$, entonces el siguiente estado sería $(n+1,x-x_n)$ independientemente de la demanda (las tiendas no se pasan demanda). Lo que sí que depende de la demanda $D$ es el beneficio esperado.
 $$f_n(x)=f(n,x)=\max_{x_n\leq x} E_D[r_n(x_n)+f(n+1,x-x_n)]$$
 La solución consiste en evaluar $f(1,6)$. Primero tenemos que evaluar $f(3,x)$ para todos los posibles valores de $x$, teniendo en cuenta que la demanda como mucho vale 3. 
-
+\begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
 $x$ & $x_n$ & Beneficio esperado\\ 
 \hline
-3 &    3    & $0.3(3\cdot 2)+0.3(2\cdot 2 + 1\cdot 0.5) +0.4(1\cdot 2 + 2\cdot 0.5) = 4.35$ \\
+3 &    3    & $0.3(3\cdot 2)+0.3(2\cdot 2 - 1\cdot 0.5) +0.4(1\cdot 2 - 2\cdot 0.5) = 4.35$ \\
 2 &    2    & $0.4(2-0.5)+0.3(2\cdot 2)+0.3(2\cdot 2)=3.4$\\
 1 &    1    & $0.4\cdot 2+ 0.3\cdot 2 + 0.3\cdot 2= 2$\\
 0 &    0    & 0\\
 \hline
 \end{tabular}
-
-\underline{Etapa 2}: Tengamos en cuenta que para la última etapa no deben quedar más de 3 productos ni tampoco se puede llegar a esta etapa con menos de 3.
-
+\end{center}
+\underline{Etapa 2}: En la última etapa no deben quedar más de 3 productos ni se puede llegar con menos de 3.
+\begin{center}
 \begin{tabular}{|c|c|c|c|}
 \hline
 $x$ & $x_n$ & Beneficio esperado & $x_n^*$\\
 \hline
-6 & 3 & $0.5(2-0.5\cdot 2)+0.1(4-0.5)+0.4(6+0)+f(3,3)=8.7$ & 3 \\
+6 & 3 & $0.5(2-0.5\cdot 2)+0.1(4-0.5)+0.4(6-0)+f(3,3)=8.7$ & 3 \\
 \hline
 5 & 3 & $7.75$& 3\\
   &	2 & $7.6$ &  \\
@@ -742,9 +744,9 @@ $x$ & $x_n$ & Beneficio esperado & $x_n^*$\\
   & 0 & $0+f(3,3)=4.35$& \\
   \hline
 \end{tabular}
-
+\end{center}
 \underline{Etapa 1}:
-
+\begin{center}
 \begin{tabular}{|c|c|c|c|}
 \hline
 $x$ & $x_n$ & Beneficio & $x_n^*$ \\
@@ -755,7 +757,7 @@ $x$ & $x_n$ & Beneficio & $x_n^*$ \\
   & 3 & $4.2+f(2,3)=4.2+5.4=9.6$ & \\
   \hline
 \end{tabular}
-
+\end{center}
 \end{ej}
 
 
