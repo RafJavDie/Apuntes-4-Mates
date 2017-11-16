@@ -110,7 +110,7 @@ Con esto conseguimos que $f(x^{k+1})\leq f(x^k)$ (podemos conseguirlo con cualqu
 \end{itemize}
 \item La longitud de paso $\alpha^k$.
 \begin{itemize}
-\item Elementos de una serie divergente $\sum \alpha_k$ tal que $\alpha_k \rightarrow 0$. Tiene sentido pues:
+\item Elementos de una serie divergente $\sum \alpha_k$ tal que $\alpha_k \rightarrow 0$. A este método se lo conoce como \textbf{método de la serie divergente} Tiene sentido pues:
 \begin{gather*}
 x^{m+1} = x^m - \alpha^m \nabla f(x^{m})\\
  x^{m+2} = x^{m+1} - \alpha^{m+1} \nabla f(x^{m+1}) =  x^m - \alpha^m \nabla f(x^{m}) -\alpha^{m+1} \nabla f(x^{m+1})
@@ -120,8 +120,92 @@ Si $m$ es lo suficientemente grande entonces $\forall n>m$, $x^n \simeq x^m \sim
 x^* \simeq x^* - \sum^{n-1}_{k=m} \alpha^k \nabla f(x^*) \Rightarrow 0 \simeq \nabla f(x^*)\sum_{k=m}^\infty \alpha^k
 \]
 Como la serie diverge, concluimos que $\nabla f(x^*)=0$.
-\item Tomar $\alpha^k$ tal que $\alpha^k$ minimiza $f(x^k+\alpha d^k)$ (función de una variable real).
+\item \textbf{Método o regla de minimización}: tomar una dirección $d^k$ y $\alpha^k$ tal que $\alpha^k$ minimiza $f(x^k+\alpha d^k)$ para $\alpha>0$ (función de una variable real).
+\item \textbf{Regla de Armijo}: elegimos $s,\beta,\sigma\in (0,1)$. Entonces definimos $\alpha^k=s\beta^{m_k}$, siendo $m_k$ el menor entero que verifica
+$$f(x^k)-f(x^{k+1})=-\sigma s\beta^{m_k}\nabla f(x^k)d^k.$$
 \end{itemize}
 \end{enumerate}
+
+\begin{ej}
+$f(x_1,x_2)=(x_1-3)^2+(x_2-2)^2$. Fijamos $x^0=\begin{pmatrix}
+1\\
+1
+\end{pmatrix}$. Entonces $x^1=x^0-\alpha^0\nabla f(x^0)$, donde $\nabla f(x_1,x_2)=\begin{pmatrix}
+2(x_1-3)\\
+2(x_2-2)
+\end{pmatrix}$, por lo que $x^1=\begin{pmatrix}
+1+\alpha^0 4\\
+1+\alpha^0 2
+\end{pmatrix}$. Utilizamos la regla de minimización para determinar $\alpha^0$ con la dirección que nos marca $x^1$. Es decir, buscamos
+$$\min_{\alpha>0}f(1+4\alpha,1+2\alpha)=(-2+4\alpha)^2+(-1+2\alpha)^2$$
+que se obtiene en $\alpha=\frac{1}{2}$, por lo que $x^1=\begin{pmatrix}
+3\\
+2
+\end{pmatrix}$. De la misma forma calcularíamos $x^2$, pero resulta que $\nabla f(x^1)=0$, por lo que $x^2=x^1$ y hemos terminado. Era precedible pues la función es siempre mayor o igual que cero y en el $(3,2)$ se anula.
+\end{ej}
+
+\begin{defi}
+La sucesión $\{d^k\}$ se denomina de \textbf{tipo gradiente} si verifica que cualquier subsucesión que converge a un punto estacionario cumple: 
+\begin{enumerate}
+\item La subsucesión está acotada, i.e., $\exists M>0\mid ||d^k||<M\ \forall k$. 
+\item $\lim\sup_{k\in K}\nabla f(x^k)'d^k<0$. \label{gradiente}
+\end{enumerate}
+\end{defi}
+
+\begin{teorema}
+Sea $\{x^k\}$ una sucesión generada con el algoritmo $x^{k+1}=x^k+\alpha^kd^k$, siendo $\{d^k\}$ una sucesión de direcciones de tipo gradiente y $\{\alpha^k\}$ generada mediante la regla de Armijo. Entonces todo punto de acumulación de $\{x^n\}$ es estacionario.
+\end{teorema}
+\begin{dem}
+Supongamos que $\{x^n\}$ tiene un punto de acumulación $\overline{x}$ que no es estacionario. Nos restringimos a la subsucesión que converge a $\overline{x}$, que denominamos igual. Dado que $x^n\to \overline{x}$ y $f$ es continuamente diferenciable, entonces $f(x^n)\to f(\overline{x})$. Por tanto $f(x^n)-f(x^{n+1})\to f(\overline{x})-f(\overline{x})=0$. 
+
+Por elección de los $\alpha^k$ según Armijo, 
+\begin{equation}\label{armijo}
+f(x^k)-f(x^k+s\beta^{m_k}d^k)\geq -\sigma\alpha^k\nabla f(x^k)'d^k.
+\end{equation}
+ Como $m_k$ es el menor entero para el que se verifica esa desigualdad, entonces 
+$$f(x^k)-f(x^k+\underbrace{s\beta^{m_k-1}}_{\frac{\alpha^k}{\beta}}d^k)<\sigma\frac{\alpha^k}{\beta}\nabla f(x^k)'d^k.$$ 
+Denotamos $\rho^k=\frac{d^k}{||d^k||},\overline{\alpha}^k=\frac{\alpha^k||d||^k}{\beta}$, de modo que la desigualdad se convierte en 
+$$ f(x^k)-f(x^k+\overline{\alpha}^k\rho^k)< -\sigma\overline{\alpha}^k\nabla f(x^k)'\rho^k.$$
+Utilizando ahora el teorema del valor medio, es decir, $f(y)=f(x)+\nabla f(x)(y-x)$ para $z\in[x,y]$, deducimos
+$$-\nabla f(x^k+\tilde{\alpha}^k\rho^k)\overline{\alpha}^k\rho^k <-\sigma\overline{\alpha}^k\nabla f(x^k)'\rho^k\quad \tilde{\alpha}^k\in[0,\overline{\alpha}^k]$$
+Podemos simplificar eliminando los $\overline{\alpha}^k$
+\begin{equation}\label{simply}
+\nabla f(x^k+\tilde{\alpha}^k\rho^k)\rho^k <-\sigma\nabla f(x^k)'\rho^k\quad \tilde{\alpha}^k\in[0,\overline{\alpha}^k]
+\end{equation}
+Observemos que $\alpha^k\to 0$. Según \ref{armijo}
+$f(x^k)-f(\underbrace{x^k+\alpha^kd^k}_{x^{k+1}})\geq -\sigma\alpha^k\nabla f(x^k)'d^k\ \forall k$. Como la diferencia de la izquierda tiende a 0 cuando $k$ tiende a infinito y $-\sigma\nabla f(x^k)'d^k>0$, necesariamene $\alpha^k$ tiende a 0. Como $||d^k||$ está acotada, tenemos que también $\overline{\alpha}^k\to 0$. La sucesión $\{\rho^k\}$ está contenida en un compacto (la bola unidad), así que tiene un a subsucesión convergente que denominaremos de la misma forma, así que denotamos $\rho^k\to\overline{\rho}$. 
+
+Volvemos a \ref{simply} y tomamos límite. Entonces
+$$-\nabla f(\overline{x}+0\overline{\rho})'\overline{\rho}<\sigma\nabla f(\overline{x})'\overline{\rho}$$
+que podemos reescribirlo como
+$$(1-\sigma)\nabla f(\overline{x})'\overline{rho}>0$$
+por lo que $\nabla f(\overline{x})'\overline{\rho}>0$. Sin embargo, esto contradice punto \ref{gradiente} de la definición anterior. 
+$\QED$
+\end{dem}
+
+\begin{nota}
+Si en lugar de la regla de Armijo se usa la de minimización, el resultado sigue siendo válido. Si denotamos $x^{k+1}_A$ y $x^{k+1}_m$ a los sucesores construido con cada una de las reglas, entonces se verifica $f(x^{k+1}_A)\geq f(x^{k+1}_m)$, por lo que la desigualdad \ref{armijo} sigue siendo válida.
+\end{nota}
+
+\begin{teorema}[de captura]
+Sea $f\in\mathcal{C}^1$ y $\{x^k\}$ tal que $x^{k+1}=x^k+\alpha^k d^k$ verificando que $f(x^k)>f(x^{k+1})\ \forall k$ y tal que todo punto de acumulación es estacionario. Supongamos que existen $s>0,c>0$ de forma que
+$$\alpha^k\leq s, ||d^k||\leq c||\nabla f(x^k)||\ \forall k.$$
+Sea $x^*$ mínimo local de $f$ que es el único punto estacionario en un entorno de $x^*$. Entonces existe $S\ni x^*$ tal que si $x^{\overline{k}}\in S$ para algún $\overline{k}$, $x^k\in S\ \forall k>\overline{k}$ y $x^k\to x^*$. Además, dado $\varepsilon>0$, $S$ se puede elegir para que $||x-x^*||<\varepsilon \ \forall x\in S$.
+\end{teorema}
+\begin{dem}
+Elegimos $\rho>0$ tal que $\forall x\neq x^*\mid ||x-x^*||<\rho$, entonces $f(x)>f(x^*)$. Definismo $\phi
+(t)=\min_{0\leq t\leq ||x-x^*||} (f(x)-f(x^*))$. $\phi$ es no decreciente, porque cuando $t$ disminuye, la corona circular se hace más gruesa hacia dentro, por lo que hay más puntos donde encontrar el mínimo, y si $t$ aumenta, la corona se hace más fina por lo que hay menos puntos donde encontrar el mínimo.
+
+Utilizamos la continuidad de de la norma y $\nabla f$ para decir que $\forall \varepsilon>0\ \exists r>0\mid ||x-x^*||<r\Rightarrow |g(x)-g(x^*)|<\varepsilon$, donde $g(x)=||x-x^*||+sc||\nabla f(x)||$. Se tiene que $g(x^*)=0$. Luego
+\begin{equation}\label{estrella}
+||x-x^*||+sc||\nabla f(x)||<\varepsilon 
+\end{equation}
+Entonces definimos $S:=\{x\mid ||x-x^*||<\varepsilon, f(x)< f(x^*)+\phi(r)\}$. Supongamos que $x^k\in S$, entonces para $t=||x^*-x^k||$, $\phi(t)\leq f(x^k)-f(x^*)<\phi(r)$. Como $\phi$ es monótona, $||x^k-x^*||<r$, por lo que podemos aplicarle \ref{estrella} a $x^k$. Veamos que $x^{k+1}\in S$. Tenemos que probar dos desigualdades.
+\begin{itemize}
+\item $||x^{k+1}-x^k||=||x^k+\alpha^kd^k-x^*||=||x^k-x^*+\alpha^kd^k||\leq ||x^k-x^*||+\alpha^k||d^k||\leq\\ ||x^k-x^*||+sc||\nabla f(x^k)||<\varepsilon$
+\item $f(x^{k+1})<f(x^k)<f(x^*)$
+\end{itemize}
+Por lo que $x^{k+1}\in S$. Además $S$ está contenido en un compacto (una bola cerrada de radio $\varepsilon$), por lo que toda sucesión contiene una subsucesión convergente, esto es, $\{x^l\}_{l>k}$ contiene una subsucesión convergente. Y como $x^*$ es el único punto estacionario, la sucesión debe converger hacia dicho punto $x^*$. $\QED$
+\end{dem}
 
 \end{document}
