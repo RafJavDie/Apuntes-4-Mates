@@ -220,4 +220,37 @@ La función de Fibonacci no es $\mathcal{PR}$.
 Supongamos que tenemos una función $F(n)\in\mathcal{PR}$ que guarda los valores de $f(n)$ y $f(n+1)$ (lo expresaremos como un par) y que tenemos funciones $\mathcal{PR}$ $L(F(n))=f(n)$ y $R(F(n))=f(n+1)$. Entonces podríamos calcular $F(n+1)=(f(n+1),f(n+1))=(R(F(n)), L(F(n))+R(F(n)))$ y sería $\mathcal{PR}$. Definimos la función de Cantor $\langle x,y\rangle =2^x(2y+1)-1$. Si $\langle x,y\rangle =n\Rightarrow 2^x(2y+1)=n+1$, luego $x$ será el exponente de 2 en la descomposición en primos de $n+1$ y con eso podemos obtener también $y$. Así pues, $x=L(n), y=R(n)$. 
 \end{solucion}
 
+\newpage
+\begin{ejercicio}{30}
+Dadas $H : \N^{n+1} \to \N$, $g : \N^n \to \N$ y $h : \N^{n+2} \to \N$, diremos que $f$ se define por \textbf{recursión limitada} mediante $g$, $h$ y $H$, (se notará por $f = R_l(g,h;H)$) si
+\[ f = R(g,h) \text{ y } \forall \vec{x} \forall y [f(x,y) ≤ H(x,y)] \]
+
+Se define $\mathcal{E}^0$ como el menor conjunto de funciones tal que contiene a la función constante e igual a $0$, la función siguiente y las proyecciones, y es cerrado bajo composición y recursión limitada.
+
+Probar por inducción en la cllase $\mathcal{E}^0$ que para tod función $f : \N^n \to \N$, de dicha clase, existen $k$ y $j ≤ n$ tales que para toda $n$-upla $\vec{x}$:
+\[ f(\vec{x}) ≤ x_j + k \]
+\end{ejercicio}
+\begin{sol}
+Lo demostramos por inducción en la definición de $f \in \mathcal{E}^0$. En el caso base:
+\begin{itemize}
+	\item Si $f = 0$, $f(x) ≤ x_1+0$.
+	\item Si $f = S$, $f(x) ≤ x+1$.
+	\item Si $f = Π_i^n$, $f(\vec{x}) ≤ x_i+0$.
+\end{itemize}
+Aplicamos el paso de inducción. Supongamos que $f = \C(g;h_1,\dots,h_n)$ siendo $g : \N^n \to N$ y $h_1,\dots,h_n : \N^m \to \N$ tales que por hipótesis de inducción, existen $k_0,k_1,\dots,k_n \in \N$, $j_0 : 1 ≤ j_0≤n$, y para cada $1≤i≤m$, $1≤j_i≤m$ verificando:
+\[ g(x_1,\dots,x_n) ≤ x_{j_0}+k_0 \]
+\[ h_i(x_1,\dots,x_m) ≤ x_{j_i} + k_i \quad \forall 1≤i≤n\]
+Entonces:
+\[ f(x_1,\dots,x_m) = g(h_1(x_1,\dots,x_m),\dots,h_n(x_1,\dots,x_m)) ≤ h_{j_0}(x_1,\dots,x_m) + k_0 ≤ x_{j_{j_0}} + (k_{j_0} + k_0) \]
+
+Supongamos ahora que $f = R_l(g,h;H)$, $f : \N^{n+1} \to \N$, $g : \N^n \to \N$, $h : \N^{n+2} \to \N$, $H : \N^{n+1}\to\N$ y verifican que:
+\begin{enumerate}
+	\item Para ciertos $1≤i≤n$, $k \in \N$, $g(\vec{x})≤x_i+k$.
+	\item Para ciertos $1≤j≤n+2$, $k' \in \N$, $h(x_1,\dots,x_{n+2})≤x_j+k'$.
+	\item  Para cierto $1≤l≤n+1$, existe $k'' \in \N$ con $H(x_1,\dots,x_{n+1}) ≤ x_l + k''$.
+\end{enumerate}
+Entonces, puesto que $f = R_l(g,h;H)$, $\forall (\vec{x},y) \in \N^{n+1}$
+\[ f(\vec{x},x_{n+1}) ≤ H(\vec{x},x_{n+1}) ≤ x_l + k'' \]
+\end{sol}
+
 \end{document}
