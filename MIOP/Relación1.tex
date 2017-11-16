@@ -27,7 +27,8 @@ Inv. 3 & $1000$ & $4000$ & $5000$ & $8000$
 Determinar la política óptima.
 \begin{solucion}
 Hay 3 etapas. En cada etapa se decide qué cantidad se invierte. Estados $(t,k)$ donde $t$ es la etapa en la que nos encontramos y $k$ es la cantidad de dinero que todavía podemos invertir. $f(t,k)$ es la máxima ganancia esperada desde la etapa $t$ hasta el final si se dispone de $k$ u.m.
-$f(t,k)=\max_{x_t\leq k,1000|x_t}\{g(t,x_t)+f(t+1,k-x_t)\}$ y $f(3,k)=\max_{x_3\leq k}\{g(3,x_3)\}=g(3,k)$. La función $g$ representa la ganancia, es decir, el valor de la tabla en la posición $(t,x_t)$. Vamos a empezar con la tabla de la segunda etapa, pues la de la tercera es trivial.
+$$f(t,k)=\max_{x_t\leq k,1000|x_t}\{g(t,x_t)+f(t+1,k-x_t)\}$$ $$f(3,k)=\max_{x_3\leq k}\{g(3,x_3)\}=g(3,k)$$ Donde la función $g$ representa la ganancia, es decir, el valor de la tabla en la posición $(t,x_t)$. Vamos a empezar con la tabla de la segunda etapa, pues la de la tercera es trivial.
+
 \begin{center}
 \begin{tabular}{|c| c| c| c| c|}
 \hline
@@ -101,8 +102,8 @@ III& $58$ & $5$\\
 \begin{solucion}
 Hay $3$ etapas, en cada una decidimos cuántos artículos de cada tipo transportamos. Los estados serán del tipo $(t,k)$, donde $t$ es la etapa en la que nos encontramos y $k$ es el espacio disponible. Entonces $f(t,k)$ es la máxima ganancia que puede obtener el transportista desde la etapa $t$ hasta la etapa $3$ si dispone de $k$ $m^3$ de espacio. Llamamos $p_t$ al pago en la etapa $t$ y $v_t$ al volumen del producto en la etapa $t$. 
 \begin{align*}
-f(3,k)=&\max_{x_3}\{58x_3: 5x_3\leq k\}\\
-f(t,k)=&\max_{x_t:v_tx_t\leq k}\{p_tx_t+f_{t+1}(k-v_tx_t)\}
+f(3,k)=&\max_{5x_3\leq k}\{58x_3\}=58\suelo{\frac{k}{5}}\\
+f(t,k)=&\max_{v_tx_t\leq k}\{p_tx_t+f(t+1,k-v_tx_t)\}
 \end{align*}
 \underline{Etapa 3:} $p_3=58$, $v_3=5$\
 \begin{center}
@@ -113,8 +114,10 @@ $f(3,k)$ & $58$ & 58 & 58 & 58 & 0 & 0 & 0 & 0 & 0\\
 $x_3$ &  $1$ & 1 & 1 & 1& 0 & 0 & 0 & 0 & 0
 \end{tabular}
 \end{center}
-\underline{Etapa 2}: $p_2=32$, $v_2=5$, $f_2(k)=\max\{32x_2+f_3(k-3x_2):3x_2\leq k\}$.
-
+\underline{Etapa 2}: $p_2=32$, $v_2=5$,.
+\begin{align*}
+f(2,k)&=\maxi{3x_2\leq k}{32x_2+f(3,k-3x_2)} = \maxi{3x_2\leq k}{32x_2+58\suelo{\frac{k-3x_2}{5}}}
+\end{align*}
 $$f(2,8)=\begin{cases}
 32\cdot 0+f(3,8)=58\\
 32\cdot 1+f(3,5)=90\\
@@ -137,12 +140,12 @@ $$f(2,6)=\begin{cases}
 \begin{tabular}{c| c c c c c c c c c}
 $k$ & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 0\\
 \hline
-$f_2(k)$ & 90 & 64 & 64 & 58 & 32 & 32 & 0 & 0 & 0\\
-$x_2$ &  $1$ & 2 & 2 &    1&  0 & 1 &   1 & 0 & 0
+$f(2,k)$	& 90 	& 64 	& 64	& 58& 32 & 32 & 0 & 0 & 0\\
+$x_2$ 	& $1$ 	& 2 	& 2	& 0&  1 & 1 &   0 & 0 & 0
 \end{tabular}\
 \end{center}
 \underline{Etapa 1:}
-$$f_1(8)=\max_{x_1\leq 8}\{11x_1+f_2(8-x_1)\}=\begin{cases}
+$$f(1,8)=\max_{x_1\leq 8}\{11x_1+f_2(8-x_1)\}=\begin{cases}
 f(2,8)=90\\
 11+f(2,7)=75\\
 22+f(2,6)=86\\
@@ -180,7 +183,7 @@ al final de la semana 4. Determinar el número de ordenadores a fabricar en cada
 cumplir la demanda a un costo mínimo total.
 \begin{solucion}
 Las demandas son $d_1=3, d_2=2, d_3=4, d_4=2$. Hay 4 etapas, en cada una de las cuales se decide el número de ordenadores que se fabrican esa semana. Los estados son $(t, I)$ donde $t$ es la etapa e $I$ es el espacio en el inventario. El coste de almacenamiento, en miles, es 0.4. $f(t,I)$ es el mínimo coste de producción y almacenamiento desde la etapa $t$ hasta el final si tenemos en inventario $I$ ordenadores.
-$$f(t,I)=\min_{0\leq I+x-d_t\leq 3,x\leq 4}\{c(x)+0.4(I-d_t+x)+f(t+1,I-d_t+x)\}\quad t=1,2,3$$
+$$f(t,I)=\mini{\substack{x\leq 4\\ 0\leq I+x-d_t\leq 3}}{c(x)+0.4(I-d_t+x)+f(t+1,I-d_t+x)}\quad t=1,2,3$$
 Se podría interpretar que el inventario se paga al principio de la etapa y entonces el coste de inventario sería simplemente $0.4I$ añadiéndole esa cantidad también a la función siguiente. 
 $$f(4,I)=\begin{cases}
 +\infty & I>2\\
@@ -296,6 +299,7 @@ Resolver el problema mediante programación dinámica.
 \begin{solucion}
 Tenemos 4 etapas, una para cada asignatura, en la que decidimos cuántos días le dedicamos. Por tanto tenemos los estados $(t,k)$, donde $t$ es la etapa en la que nos encontramos y $k$ es la cantidad de días disponible para asignar (teniendo en cuenta que ya se ha asignado un día previamente). $f(t,k)$ representaría la máxima cantidad de puntos que podemos obtener desde la etapa $t$ hasta el final si disponemos de $k$ días libres. Entonces definimos
 $$f(t,k)=\max_{1\leq x_t\leq k}\{g(t,x_t)+f(t+1,k-x_t)\}$$ y $f(4,k)=\max_{1\leq x_3\leq k}\{g(4,x_3)\}=g(4,k)$, donde $g(t,x)$ representa los puntos obtenidos, es decir, el valor de la tabla en la posición $(t,x)$.
+
 \underline{Etapa 4}
 \begin{center}
 \begin{tabular}{|c|c|c|}
@@ -396,17 +400,16 @@ Primero vamos a plantearlo como un problema de programación lineal. Sean $x_1,x
 
 Vamos a simplificarlo tomando $C=1$. Para programación dinámica tendríamos 3 etapas, cada una correspondiente a cada $x_i$. En los estados tenemos el índice $i$ y $d=1-\sum_{j=1}^ix_j$. La función recursiva por lo tanto sería
 \begin{align*}
-f(i,d)=&\min_{\frac{1}{4}\leq d-\frac{3-i}{4}} x_if(i+1,d-x_i)\\
-f(3,d)=&\begin{cases}
+f(i,d)&=\min_{1-\frac{i}{4}\leq d} x_if(i+1,d-x_i) \\
+f(3,d)&=\begin{cases}
 d & d\geq\frac{1}{4}\\
 +\infty & d<\frac{1}{4}
-\end{cases}
-\end{align*}
-
-Así, pues $f(2,d)=\min_{\frac{1}{4}\leq d-\frac{1}{4}}\begin{cases}
+\end{cases}\\
+f(2,d)&=\min_{\frac{1}{2}\leq d}\begin{cases}
 x(d-x) & d-x\geq\frac{1}{4}\\
 +\infty & d-x <\frac{1}{4}
-\end{cases}$
+\end{cases}
+\end{align*}
 Por tanto, el mínimo se alcanza en  se alcanza tanto en $\frac{1}{4}$ como en $d-\frac{1}{4}$. Elegimos por simplicidad $\frac{1}{4}$, con lo que sustituyendo nos da $f(2,d)=\frac{1}{4}(d-\frac{1}{4})$ si $d\geq\frac{1}{2}$ e infinito en caso contrario. Por último, en el primer paso tenemos la cantidad completa, por lo tanto calculamos
 $$f(1,1)=\min_{\frac{1}{4}\leq x\leq\frac{1}{2}}xf(2,1-x)=\begin{cases}
 x\frac{1}{4}(1-x-\frac{1}{4}) & 1-x\geq\frac{1}{2}\\
