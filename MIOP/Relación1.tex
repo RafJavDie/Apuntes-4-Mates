@@ -400,21 +400,16 @@ Primero vamos a plantearlo como un problema de programación lineal. Sean $x_1,x
 
 Vamos a simplificarlo tomando $C=1$. Para programación dinámica tendríamos 3 etapas, cada una correspondiente a cada $x_i$. En los estados tenemos el índice $i$ y $d=1-\sum_{j=1}^ix_j$. La función recursiva por lo tanto sería
 \begin{align*}
-f(i,d)&=\min_{1-\frac{i}{4}\leq d} x_if(i+1,d-x_i) \\
+f(i,d)&=\min_{\frac{3-i}{4}\leq d-x_i} x_if(i+1,d-x_i) \\
 f(3,d)&=\begin{cases}
 d & d\geq\frac{1}{4}\\
 +\infty & d<\frac{1}{4}
 \end{cases}\\
-f(2,d)&=\min_{\frac{1}{2}\leq d<< <<<<<<<<<<<<<<   <M, <,}\begin{cases}
-x(d-x) & d-x\geq\frac{1}{4}\\
-+\infty & d-x <\frac{1}{4}
-\end{cases}
+f(2,d)&=\min_{\frac{1}{4}\leq d-x_2} x_2(d-x_2) 
 \end{align*}
 Por tanto, el mínimo se alcanza en  se alcanza tanto en $\frac{1}{4}$ como en $d-\frac{1}{4}$. Elegimos por simplicidad $\frac{1}{4}$, con lo que sustituyendo nos da $f(2,d)=\frac{1}{4}(d-\frac{1}{4})$ si $d\geq\frac{1}{2}$ e infinito en caso contrario. Por último, en el primer paso tenemos la cantidad completa, por lo tanto calculamos
-$$f(1,1)=\min_{\frac{1}{4}\leq x\leq\frac{1}{2}}xf(2,1-x)=\begin{cases}
-x\frac{1}{4}(1-x-\frac{1}{4}) & 1-x\geq\frac{1}{2}\\
-+\infty & cc
-\end{cases}$$
+$$f(1,1)=\min_{\frac{1}{4}\leq x_1\leq\frac{1}{2}}x_1f(2,1-x_1)=\min_{\frac{1}{4}\leq x_1\leq\frac{1}{2}} x_1\frac{1}{4}(1-x_1-\frac{1}{4})$$
+
 Como $x\leq\frac{1}{2}$ era una de las condiciones, el segundo caso podemos descartarlo. El mínimo se alcanza tanto en $\frac{1}{2}$ como en $\frac{1}{4}$, cuyo resultado es $\frac{1}{32}$. Vamos a elegir la solución $x_1=\frac{1}{4}$. Habíamos obtenido también $x_2=\frac{1}{4}$, por lo que obtenemos $x_3=\frac{1}{2}$.
 \end{solucion}
 

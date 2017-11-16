@@ -52,7 +52,7 @@ Como $4s\geq f(s,1)$, también $4(s+1)\geq f(s,1)$. Es claro que, por inducción
 \quad\quad
   \begin{split}
     f(3,0)&=\frac{1}{2}f(2,1)+\frac{1}{2}f(2,0) = 15\\
-    f(3,1)&\min\{12,15\}=12\\
+    f(3,1)&=\min\{12,15\}=12\\
     f(4,0)& = \frac{1}{2}f(3,1)+\frac{1}{2}f(3,0)=13.5\\
     f(4,1)&= \min\{16,13.5\} = 13.5
   \end{split}
@@ -88,7 +88,7 @@ Hay $T$ etapas, con estados $(t,c)$ formados por la etapa y las u.m. disponibles
 $$f(t,c)=\max_{x\leq c}\{r_tq_t(x)+f(t+1,c-x)\}$$
 $$f(T,c)=\max_{x\leq c}\{r_tq_t(x)\}$$
 
-Si quisiéramos considerar que no es necesario invertir todo el dinero podemos considerar una etapa $T+1$ con $f(T+1,c)=c$ en la etapa $T$ incluir $c$ en el máximo. 
+Si quisiéramos considerar que no es necesario invertir todo el dinero podemos considerar una etapa $T+1$ con $f(T+1,c)=c$ y en la etapa $T$ maximizar $r_tq_t(c-x)$. 
 
 
 
@@ -165,7 +165,7 @@ derivando e igualando a 0 deducimos que esta función alcanza su máximo en $x=\
 
 \newpage 
 \begin{ejercicio}{6}\label{6}
-Un jugador va a participar en tres juegos consecutivos. En cada juego, puede apostar lo que gana; la cantidad apostada puede ascender a cualquier cantidad entre cero y la cantidad de dinero que le quede después de las apuestas en los juegos anteriores. En cada encuentro, la probabilidad de que gane el juego y, por lo tanto, la puesta, es $1/2$. Si no gana, pierde la apuesta. Comenzará con 75 u.m. y su meta es tener 100 u.m. al finalizar los tres juegos (exactamente 100). El jugador desea determinar su política óptima de apuesta (incluyendo todos los empates) que maximice la probabilidad de tener exactamente 100 u.m. después de los tres juegos.
+Un jugador va a participar en tres juegos consecutivos. En cada juego, puede apostar lo que gana; la cantidad apostada puede ascender a cualquier cantidad entre cero y la cantidad de dinero que le quede después de las apuestas en los juegos anteriores. En cada encuentro, la probabilidad de que gane el juego y, por lo tanto, la apuesta, es $1/2$. Si no gana, pierde la apuesta. Comenzará con 75 u.m. y su meta es tener 100 u.m. al finalizar los tres juegos (exactamente 100). El jugador desea determinar su política óptima de apuesta (incluyendo todos los empates) que maximice la probabilidad de tener exactamente 100 u.m. después de los tres juegos.
 \end{ejercicio}
 \begin{solucion}
 Etapas $\{1,2,3,4\}$. Estados $(t,c)$: etapa, cantidad disponible.
@@ -175,22 +175,24 @@ $$f(4,c)=\begin{cases}
 0 & cc
 \end{cases}$$
 $$f(t,c)= \frac{1}{2}\maxi{0\leq x\leq c}{f(t+1,c+x)+f(t+1,c-x)}$$
-\begin{equation*}
+\begin{center}
 \begin{tabular}{c|cccccc}
 		& $<50$	& 50 	& 51 & $\cdots$	& 99 & 100\\
 \hline
-f(3,c)  & 0 			& $1/2$ 	& $1/2$ &$\cdots$& $1/2$ &  1\\
+$f(3,c)$  & 0 			& $1/2$ 	& $1/2$ &$\cdots$& $1/2$ &  1\\
 $x_3$     &   			& 50 	& 49 &	$\cdots$ & $1$  &  0\\ 
 \end{tabular}
-\end{equation*}
-\begin{equation*}
-\begin{tabular}{c|cccccccccccc}
-		& $<25$	& 25 	& 26 & 		$\cdots$	& 50 & $\cdots$ & 74 & 75 & $\cdots$ & 99 & 100\\
+\end{center}
+
+%\begin{equation*}
+\begin{tabular}{c|ccccccccccccc}
+		& $<25$	& 25 	& 26 & 		$\cdots$ & 49	& 50 & $\cdots$ & 74 & 75 & $\cdots$ & 99 & 100\\
 \hline
-f(2,c)  & 0 & $1/4$	& $1/4$ & $\cdots$& $1/2$ &$\cdots$& $1/2$ & $3/4$ &$\cdots$  & $3/4$ &1\\
-$x_2$     &  & 25 & 24 &	$\cdots$ & $0,50$  & $\cdots$  &$[0,26]\setminus\{25\}$ & $25$ & $\cdots$ & $1$ &0\\ 
+$f(2,c)$  & 0 & $1/4$	& $1/4$ & $\cdots$& $1/4$ & $1/2$ &$\cdots$& $1/2$ & $3/4$ &$\cdots$  & $3/4$ &1\\
+$x_2$     &  & 25 & 24 &	$\cdots$ & 0 & 50   & $\cdots$  &$26$ & $25$ & $\cdots$ & $1$ &0\\ 
 \end{tabular}
-\end{equation*}
+%\end{equation*}
+
 Finalmente, calculamos $f(1,75)=\dfrac{1}{2}\maxi{0\leq x\leq 75}{f(2,75+x)+f(2,75-x)}=3/4$. Si $x=0$ o $x=25$. 
 \end{solucion}
 
