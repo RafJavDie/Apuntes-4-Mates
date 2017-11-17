@@ -15,6 +15,11 @@ Sean $\calA$ un atlas sobre $M$ y $(U,\varphi) \in \calA$ una carta local. Si $V
 $(V, \varphi|_V )$ es una carta local admisible en $\calA$.
 \end{ejercicio}
 \begin{solucion}
+Veamos que es carta. Por hipótesis $V$ es abierto de $U$, luego también es abierto de $M$. Además, sabemos que la restricción de un homeomorfismo es un homeomorfismo, lo que prueba que es carta. Para ver que es admisible en $\calA$, consideremos $(S,\psi)\in \calA$ tal que $S\cap V \neq \emptyset$ (otro caso sería trivial). En tal caso $\forall x \in \varphi|_V (S\cap V)$
+$$
+\psi \circ \varphi|_V^{-1}\equiv \psi \circ \varphi^{-1} \in \mathcal{C}^\infty \qquad \varphi|_V \circ \psi^{-1}\equiv \varphi \circ \psi \in \mathcal{C}^\infty
+$$
+
 \end{solucion}
 
 \newpage
@@ -24,6 +29,8 @@ Sea $M$ una variedad diferenciable. Probar que, dado cualquier $p \in M$, existe
 $(U, \varphi)$ de la estructura diferenciable centrada en $p$ (es decir, tal que $\varphi(p) = 0$).
 \end{ejercicio}
 \begin{solucion}
+
+Sea $(U,\psi)$ una carta cualquiera de la estructura diferenciable tal que $\psi(p)=q\neq 0$, basta tomar $(U,\varphi)$ con $\varphi=\psi-q$. Se tiene que $\varphi(p)=0$ y claramente sigue siendo homeomorfismo y manteniendo las propiedades de diferenciabilidad de $\psi$, por lo que está en la estructura diferenciable.
 \end{solucion}
 
 \newpage
