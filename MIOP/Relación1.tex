@@ -386,6 +386,23 @@ periodo.
 Determinar el número de empleados que deben estar en plantilla en cada estación del año; para
 ello asumir que la cantidad de trabajadores es continuamente divisible.
 \begin{solucion}
+Vamos a suponer que el proceso se repite cada año. Para ello modelamos el problema con 5 etapas, empezando y acabando en otoño, que es el mes en el que más trabajadores se requieren. Los estados serán $(t,c)=($estación, cantidad de trabajadores disponible$)$. $f(t,c)$ será el mínimo coste de contratación desde la estación $t$ hasta el final si se dispone de $x$ trabajadores. Llamemos $d_t$ a la cantidad de trabajadores que se necesitan en la etapa $t$, es decir, $d_{O_1}=d_{O_2}=d_O=240, d_I=200, d_V=225, d_P=220$. Llamaremos $x$ a la cantidad de trabajadores que se contratan (o se despiden).  
+\begin{align*}
+&f(t,c)=\min_{x\geq d_t-c,c\geq 0}\{2000(c+x-d_t)+200x^2+f(t+1,c+x)\}\\
+&f(O_2,c)=\min_{x\geq 240-c,c\geq 0}\{2000(c+x-240)+200x^2\}=\begin{cases}
+1000(2c-485),x=-5 & c\geq 245\\
+200(c-240)^2, x=240-c & 0\leq c< 245
+\end{cases}
+\end{align*}
+Vamos a ir haciendo la recursión.
+\begin{gather*}
+f(V,c)=\min_{x\geq 225-c}\{2000(c+x-225)+200x^2+f(O_2,c+x)\}=\\
+\min_{x\geq 225-c}\begin{cases}
+2000(c+x-225)+200x^2+1000(2c-485) &x\geq 245-c\\
+2000(c+x-225)+200x^2+200(c-240)^2 &0\leq c+x< 245\\
+\end{cases}
+\end{gather*}
+ILLOOOOO QUÉ PEREZAAAAAAAAAAAAAA
 \end{solucion}
 \end{ejercicio}
 
