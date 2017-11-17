@@ -158,7 +158,7 @@ Esta variedades son distintas porque las topología son distintas (aunque como e
 \newpage
 
 
-\begin{ejercicio}{1.6}
+\begin{ejercicio}{6}
 Sea $S=(0,1)\times (0,1)$. Para cada $s\in(0,1)$, se considera
 \[
 V_s=\{s\}\times(0,1)
@@ -172,4 +172,31 @@ y
 Vamos a demostrar que no existe ninguna topología que consiga este resultado. Por reducción al absurdo, supongamos que sí existe una topología $\mathcal{T}$ que verifica las condiciones del enunciado. Por hipótesis se tiene que los $V_s \in \T$. Obviamente, si $s\neq t$ entonces $V_s \cap V_t =\emptyset$. Sea $\mathcal{B}$ una base numerable de la topología $\T$. Como los $V_s$ son disjuntos entre sí y $\mathcal{B}$ es una base, $\forall s\in (0,1)$ $\exists B_s \in \mathcal{B}$ tal que $B_s\subset V_s$. Pero esto es una contradicción con el hecho de que $\mathcal{B}$ sea numerable.
 \end{sol}
 \end{ejercicio}
+\newpage
+\begin{ejercicio}{1.9}
+Sea $\alpha : (a, b)\subset \R\to \R^3 : u \mapsto (f(u), 0, g(u))$ una curva
+simple, diferenciable, regular, contenida en el plano $OXZ$ y que no corta al eje
+$O$Z. Sea $S$ el conjunto de puntos de $\R^3$ obtenido al girar la curva $\alpha$ alrededor
+del eje $OZ$. Probar que, dado cualquier intervalo abierto $(c, d) \subset \R$ de longitud
+$2\pi$, la aplicación
+$$\vec{x} : (a, b) \times (c, d) \to S : (u, v) \mapsto (f(u) \cos( v), f(u) \sen( v), g(u))$$
+define una carta local en $S$, de la que debe darse explícitamente su dominio
+de definición. Además, probar que dos cualesquiera de tales cartas están relacionadas, con lo que el atlas maximal definido por ellas proporciona una estructura de variedad diferenciable sobre $S$. ¿De qué dimensión es esta estructura?
+\end{ejercicio}
+\begin{solucion}
+Sabemos por la asignatura \emph{ Geometría Local de Curvas y Superficies} que $\vec{x}$ es una superficie de revolución y por tanto superficie simple, es decir, que $\vec{x}$ es homeomorfismo sobre su imagen y por tanto $\varphi=\vec{x}^{-1}$ también lo será, que es la carta local que buscamos. 
+
+Si denotamos $U=(a,b)\times(c,d)$, entonces el dominio de $\varphi$ es $\vec{x}(U)$, que es abierto pues se trata de la superficie menos un meridiano (que es cerrado). La imagen de la carta local es por tanto $(a,b)\times(c,d)$, que es claramente un abierto de $\R^2$, con lo que la dimensión de la carta es $2$. 
+
+
+Cada una de las cartas se diferencia simplemente en el ángulo en el que se encuentra la curva que dejan fuera de su dominio, por tanto, si tenemos dos cartas de este tipo, $\varphi=\vec{x}^{-1}$ y $\psi=\vec{y}^{-1}$, entonces
+$$\psi\circ\varphi^{-1}(u,v)=\vec{y}^{-1}(\vec{x}^{-1})^{-1}(u,v)=\vec{y}^{-1}\vec{x}(u,v)=(u,v-\theta),$$
+$$\varphi\circ\psi^{-1}(u,v)=\vec{x}^{-1}(\vec{y}^{-1})^{-1}(u,v)=\vec{x}^{-1}\vec{y}(u,v)=(u,v+\theta),$$   
+donde $\theta$ es el ángulo de desfase entre cada una. Claramente estas aplicaciones son $\mathcal{C}^\infty$. 
+
+Con esto hemos probado que el atlas maximal en el que se encuentran estas cartas proporciona una estructura de variedad diferenciable a la superficie de dimensión $2$ (por tener las cartas esta dimensión).
+
+
+\end{solucion}
+
 \end{document}

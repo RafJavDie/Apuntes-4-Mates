@@ -1,6 +1,6 @@
 	\documentclass[twoside]{article}
 \usepackage{../../estilo-ejercicios}
-\newcommand{\A}{{\mathcal{A}}}
+%\newcommand{\A}{{\mathcal{A}}}
 %--------------------------------------------------------
 \begin{document}
 
@@ -33,6 +33,28 @@ De nuevo, simplificando obtenemos un cambio de cartas en $N$.
 Nos queda probar la unicidad de la estructura. Para ello, supongamos que hay otra estructura de variedad diferenciable sobre $M$ que convierte a $f$ en difeomorfismo. Llamemos $\calA=\{(O_i,\phi_i)\}_{i\in I}$ al atlas de esta estructura. Queremos ver que este atlas está relacionado con $\calA_M$. Para ello, tomamos $(O,\phi)\in\calA$ y $(f^{-1}(U),\varphi\circ f)$ tales que $O\cap f^{-1}(U)\neq\emptyset$. Entonces
 $$(\varphi\circ f)\circ\phi^{-1}:\phi(O\cap f^{-1}(U))\to\varphi f\phi^{-1}(\phi(O\cap f^{-1}(U))$$
 es diferenciable porque $\calA$ hace que $f$ sea diferenciable. La otra composición es análoga. Así, los dos atlas forman parte de la misma estructura diferencible.
+
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{8}
+Sea $M$ una variedad diferenciable. Probar que la aplicación
+$$\Delta : M \to M \times M : x \mapsto (x, x)$$
+es diferenciable.
+\end{ejercicio}
+\begin{solucion}
+Sea $(U,\varphi)$ una carta local de $M$. Sabemos por un ejercicio del tema anterior que las cartas locales de $M\times M$ son de la forma $(V\times W, \phi\times\psi)$, donde $(V,\phi)$ y $(W,\psi)$ son cartas locales de $M$. Por tanto, para que $U\cap\Delta^{-1}(V\times W)\neq\emptyset$, debe ser $V\times W=U\times U$. Además, como $(U\times U,\phi\times\psi)$ debe ser producto de cartas locales, necesariamente $\phi$ y $\psi$ deben estar relacionadas con $\varphi$. 
+
+Apliquemos pues, la definición de aplicación diferenciable a este contexto. Tenemos que probar que la siguiente aplicación es diferenciable
+$$(\phi\times\psi)\circ\Delta\circ\varphi^{-1}: \varphi(U)\to (\phi\times\psi)\circ\Delta(U).$$
+Para verlo más claramente vamos a seguir el diagrama a continuación que descompone la aplicación en cada paso
+\[
+\begin{tikzcd}
+y\in\varphi(U)\arrow[r, "\varphi^{-1}"]\arrow[drr, "(\phi\times\psi)\circ\Delta\circ\varphi^{-1}"'] & \varphi^{-1}(y)\in U\arrow[r,"\Delta"] & (\varphi^{-1}(y), \varphi^{-1}(y)))\in \Delta(U)\arrow[d,"\phi\times\psi"]\\
+& &  (\phi\circ\varphi^{-1}(y),\psi\circ\varphi^{-1}(y))\in (\phi\times\psi)\circ\Delta(U)
+\end{tikzcd}
+\]
+Cada una de las componentes, $\phi\circ\varphi^{-1}$ y $\psi\circ\varphi^{-1}$, son diferenciables por las observaciones del primer párrafo. Valiéndonos del ejercicio 2.7, esto implica que la aplicación completa es diferenciable, como queríamos demostrar.
 
 \end{solucion}
 
