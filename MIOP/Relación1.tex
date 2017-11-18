@@ -293,9 +293,7 @@ Nº días & 1 & 2 & 3 & 4\\
 \end{tabular}
 \end{center}
 Resolver el problema mediante programación dinámica.
-\begin{nota}
-¿Cómo se haría si quisiera aprobar todas como condición inicial?
-\end{nota}
+
 \begin{solucion}
 Tenemos 4 etapas, una para cada asignatura, en la que decidimos cuántos días le dedicamos. Por tanto tenemos los estados $(t,k)$, donde $t$ es la etapa en la que nos encontramos y $k$ es la cantidad de días disponible para asignar (teniendo en cuenta que ya se ha asignado un día previamente). $f(t,k)$ representaría la máxima cantidad de puntos que podemos obtener desde la etapa $t$ hasta el final si disponemos de $k$ días libres. Entonces definimos
 $$f(t,k)=\max_{1\leq x_t\leq k}\{g(t,x_t)+f(t+1,k-x_t)\}$$ y $f(4,k)=\max_{1\leq x_3\leq k}\{g(4,x_3)\}=g(4,k)$, donde $g(t,x)$ representa los puntos obtenidos, es decir, el valor de la tabla en la posición $(t,x)$.
