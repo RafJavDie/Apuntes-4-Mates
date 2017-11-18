@@ -68,7 +68,7 @@ v^\delta_B=572.1875\\
 v^\delta_R=487.8125\\
 v^\delta_E=487.8125
 \end{align*}
-Además, teniendo en cuenta que $t_i^k= R_i^k + \sum_{j=1}^N \alpha p_{ij}^k v_k^\delta - v_i^\delta$, resulta $t_E^{NR} = 0$, $t_E^R <0$; $t_B^{R}<0$, $t_B^{NR}<0$, $t^{NR}_R >0$, $t^{NR}_M <0$. Si cambiamos nuestra política a $\delta = (NR, NR, NR, R)$, que es la óptima. \begin{align*}
+Además, teniendo en cuenta que $t_i^k= R_i^k + \sum_{j=1}^N \alpha p_{ij}^k v_j^\delta - v_i^\delta$, resulta $t_E^{NR} = 0$, $t_E^R <0$; $t_B^{R}<0$, $t_B^{NR}<0$, $t^{NR}_R >0$, $t^{NR}_M <0$. Si cambiamos nuestra política a $\delta = (NR, NR, NR, R)$, que es la óptima. \begin{align*}
 v^\delta_E=690.23\\
 v^\delta_B=575.50\\
 v^\delta_R=492.35\\
@@ -76,8 +76,15 @@ v^\delta_E=490.23
 \end{align*}
 \item[\textbf{c)}]
 \begin{align*}
-\min w_R+w_B+w_R+w_M\\
-w_E - 0.9
+\min\ & w_R+w_B+w_R+w_M\\
+s.a.:\ & w_E - 0.9(0.7w_E+0.3w_B)\geq 100\\
+&w_B-0.9(0.7w_B+0.3w_R)\geq 80\\
+&w_B-0.9(0.7w_E+0.3w_B)\geq -100\\
+&w_R-0.9(0.6w_R+0.4w_M)\geq 50\\
+&w_R-0.9(0.7w_E+0.3w_B)\geq -100\\
+&0.1w_M\geq 10\\
+&w_M-0.9(0.7w_E+0.3w_B)\geq -100\\
+&w_E,w_B,w_R,w_M\geq 0
 \end{align*}
 \end{itemize}
 \end{solucion}
@@ -151,9 +158,9 @@ Ahora comenzamos con el algoritmo de evaluación de políticas.
 \item Tenemos que elegir una política inicial, que la escogeremos basándonos en la recompensa esperada: $\delta=\{NF, F, F\}$.
 \item  A continuación resolvemos la ecuación de evaluación en forma matricial $v^\delta=R^\delta+\alpha P^\delta v^\delta$ o vectorial $v^\delta_i=R^\delta_i+\alpha\sum_{j\in S}p_{ij}^\delta v_j^\delta$. $v_i^{\delta}$ es el beneficio o recompensa esperado siguiendo la política $\delta$ en el estado $i$.
 \begin{align*}
-&v^{NF}_1=5.3+0.6(0.2v_i^{NF}+0.5v_2^{F}+0.3V^F_3\\
-&v_2^F=3.1+0.6(0.1v_1^{NF}+0.6v_2^F+0.3v_3^F\\
-&v_3^F=0.4+0.6(0.05v_1^{NF}+0.4v_2^F+0.55V_3^F
+&v^{NF}_1=5.3+0.6(0.2v_1^{NF}+0.5v_2^{F}+0.3v^F_3)\\
+&v_2^F=3.1+0.6(0.1v_1^{NF}+0.6v_2^F+0.3v_3^F)\\
+&v_3^F=0.4+0.6(0.05v_1^{NF}+0.4v_2^F+0.55v_3^F)
 \end{align*}
 La solución de este sistema es
 \[
@@ -222,7 +229,7 @@ con $v_i^0$ arbitrario. Para simplificar los cálculos escogemos $v_i^0=0, i=1,2
 \begin{ejercicio}{3}
 
 Cada año, una persona tiene la oportunidad de invertir en dos mutualidades diferentes, A y B.
-Al final de cada a~no, liquida su inversión, recoge sus ganancias y reinvierte. Las ganancias anuales
+Al final de cada año, liquida su inversión, recoge sus ganancias y reinvierte. Las ganancias anuales
 de los fondos de mutualidad dependen de la reacción del mercado. En los últimos años el mercado
 ha oscilado alrededor de los 2500 puntos, de acuerdo a las probabilidades que se dan en la siguiente
 matriz:
@@ -240,8 +247,8 @@ matriz:
 \end{matrix}
  & \begin{pmatrix}
 0.3 & 0.5 & 0.2 \\
-0.1 & .5 & 0.4 \\
-0.4 & 0.2 & 0.4
+0.1 & 0.5 & 0.4 \\
+0.2 & 0.4 & 0.4
 \end{pmatrix}
 \end{array}
 \]
@@ -260,7 +267,7 @@ depreciación $\alpha = 0.9$.
 
 \begin{solucion}\
 \begin{itemize}
-\item[a)] Etapas: 1,2,3,... Estados $S=\{2400,2500,2600\}$. $P^A=P^B=$ la matriz del enunciado. Las tabla de ganancias y pérdidas son las siguientes
+\item[\textbf{a)}] Etapas: 1,2,3,... Estados $S=\{2400,2500,2600\}$. $P^A=P^B=$ la matriz del enunciado. Las tabla de ganancias y pérdidas son las siguientes
 
 \begin{tabular}{c|ccc}
 A & 2400 & 2500 & 2600\\
@@ -274,14 +281,109 @@ B & 2400 & 2500 & 2600\\
 \hline
 2400 & 0 & 10 & 20\\
 2500 & -10 & 0 & 10\\
-2600 & -20 & 10 & 0
+2600 & -20 & -10 & 0
 \end{tabular}
 
 Tenemos las recompensas  $R^A=(20,6,-18), R^B=(9,3,-8)$. Estas recompensas se otienen multpilicando el beneficio por su probabilidad, por ejemplo $20=0\cdot 0.03+20\cdot 0.5+50\cdot 0.2$
-\item[b)]
-\item[c)]
-\item[d)]
+\item[\textbf{b)}] Vamos a comenzar con la política $\delta=(A,A,B)$. Tenemos que resolver el sistema
+\begin{align*}
+&v^A_1=20+0.9(0.3v^A_1+0.5v^A_2+0.2v^B_3)\\
+&v^A_2=6+0.9(0.1v^A_1+0.5v^A_2+0.4v^B_3)\\
+&v^B_3=-8+0.9(0.2v^A_1+0.4v^A_2+0.4v^B_3)
+\end{align*}
+cuya solución es 
+
+$$v^A_1=53.5374\qquad v^A_2=33.7814\qquad v^B_3=21.5594$$
+
+Ahora calculamos los $t_i^k, k\neq\delta(i)$ por si tenemos que modificar la política. 
+\begin{align*}
+&t_1^B=9+0.9(0.3\cdot 53.5374 +0.5\cdot 33.7814+0.2\cdot 21.5594)-53.5374<0\\
+&t_2^B=3+0.9(0.1\cdot 53.5374+0.5\cdot  33.7814+0.4\cdot 21.5594)-33.7814<0\\
+&t_3^A=-18+0.9(0.2\cdot 53.5374+ 0.4\cdot 33.7814+ 0.4\cdot 21.5594)-21.5594<0
+\end{align*}
+Por lo que la política que hemos elegido es óptima.
+\item[\textbf{c)}]
+\begin{align*}
+\min\ & w_1+w_2+w_3\\
+s.a.:\ & w_1-0.9(0.3w_1+0.5w_2+0.2w_3)\geq 20\\
+       & w_2-0.9(0.1w_1+0.5w_2+0.4w_3)\geq 6\\
+       & w_3-0.9(0.2w_1+0.4w_2+0.4w_3)\geq -8\\
+       & w_1,w_2,w_3\geq 0
+\end{align*}
+\item[\textbf{d)}] Tomamos $v^0=(0,0,0)$.
+\begin{align*}
+&v^1_1=20+0.9(0.3v^0_1+0.5v^0_2+0.2v^0_3)=20\\
+&  v^1_2=6+0.9(0.1v^0_1+0.5v^0_2+0.4v^0_3)=6\\
+&  v^1_3=-8+0.9(0.2v^0_1+0.4v^0_2+0.4v^0_3)=-8
+\end{align*} 
+\begin{align*}
+&v^2_1=20+0.9(0.3v^1_1+0.5v^1_2+0.2v^1_3)=26.66\\
+&  v^2_2=6+0.9(0.1v^1_1+0.5v^1_2+0.4v^1_3)=7.62\\
+&  v^2_3=-8+0.9(0.2v^1_1+0.4v^1_2+0.4v^1_3)=-5.12
+\end{align*}
 \end{itemize}
+
+Resolución en Xpress:
+\begin{verbatim}
+model ModelName
+uses "mmxprs"; 
+
+!optional parameters section
+parameters
+ N=3
+end-parameters
+
+!sample declarations section
+declarations
+	w:array(1..N) of mpvar
+	x:array(1..N,1..2) of mpvar
+	v,vv:array(1..N) of real
+end-declarations
+
+
+!Problema de Programación Lineal asociado al PDM
+forall(i in 1..N) w(i) is_free
+
+w(1)-0.9*(0.3*w(1)+0.5*w(2)+0.2*w(3))>=20
+w(2)-0.9*(0.1*w(1)+0.5*w(2)+0.4*w(3))>=6
+w(3)-0.9*(0.2*w(1)+0.4*w(2)+0.4*w(3))>=-8
+minimize(sum(i in 1..N)w(i))
+
+
+(!
+!Problema Dual
+forall(i in 1..N,k in 1..2)x(i,k)>=0
+
+x(1,1)+x(1,2)-0.9*(0.3*(x(1,1)+x(1,2))+0.1*(x(2,1)+x(2,2))+0.2*(x(3,1)+x(3,2)))=1
+x(2,1)+x(2,2)-0.9*(0.5*(x(1,1)+x(1,2))+0.5*(x(2,1)+x(2,2))+0.4*(x(3,1)+x(3,2)))=1
+x(3,1)+x(3,2)-0.9*(0.2*(x(1,1)+x(1,2))+0.4*(x(2,1)+x(2,2))+0.4*(x(3,1)+x(3,2)))=1
+maximize(20*x(1,1)+9*x(1,2)+6*x(2,1)+3*x(2,2)-18*x(3,1)-8*x(3,2))
+!)
+
+
+
+
+!Método de iteraciones sucesivas
+v(1):=0
+v(2):=0
+v(3):=0
+vv(1):=0
+vv(2):=0
+vv(3):=0
+
+!Puede cambiar el número de iteraciones, por defecto hemos puesto 100
+forall(r in 0..100)do
+  forall(i in 1..N)writeln("v(",i,")^",r," = ",v(i))
+  v(1):=20+0.9*(0.3*vv(1)+0.5*vv(2)+0.2*vv(3))
+  v(2):=6+0.9*(0.1*vv(1)+0.5*vv(2)+0.4*vv(3))
+  v(3):=-8+0.9*(0.2*vv(1)+0.4*vv(2)+0.4*vv(3))
+  forall(i in 1..N)vv(i):=v(i)
+end-do
+
+
+end-model
+\end{verbatim}
+
 \end{solucion}
 \end{ejercicio}
 
