@@ -16,21 +16,9 @@ Sean $M$ una variedad diferenciable, $p \in M$ y $(U, \varphi = (x_1, \dots , x_
 \frac{\partial}{\partial x_1}\right)_p = \left(\frac{\partial}{\partial y_1}\right)_p$?
 \end{ejercicio}
 \begin{solucion}
-Por ser $(U,\varphi)$ s.l.c. entorno de $p$, $\varphi(p)=(p_1,\dots,p_m)\in\varphi(U)$, por lo que $\exists \varepsilon_1>0$ tal que $(p_1+t,\dots,p_m)\in\varphi(U)$ $\forall |t|<\varepsilon_1$ y $\alpha_1:(-\varepsilon_1,\varepsilon_1)\to M: t\mapsto \varphi^{-1}(p_1+t,p_2,\dots,p_m)$ es una curva diferenciable en $M$ que pasa por $p$. 
-
-Análogamente, teniendo en cuenta que $x_1=y_1$, si denotamos $\psi(p)=(p_1,q2,\dots,q_m)$, $\exists\varepsilon_2>0$ tal que $(p_1+t,q_2,\dots,q_m)\in\psi(V)$ y podemos definir la curva diferenciable en $M$, $\beta_1:(-\varepsilon_2,\varepsilon_2)\to M: t\mapsto\psi^{-1}(p_1+t,q_2,\dots,q_m)$ pasando por $p$. 
-
-Sea $\varepsilon=\min\{\varepsilon_1,\varepsilon_2\}$ y consideremos $\alpha_1$ y $\beta
-_1$ tan solo en el intervalo $(-\varepsilon,\varepsilon)$. Sean $g_1:(-\varepsilon,\varepsilon)\to\varphi(U):t\mapsto (p_1+t,p_2,\dots,p_m)$ y $h_1:(-\varepsilon,\varepsilon)\to\psi(V): t\mapsto(p_1+t,q_2,\dots,q_m)$. Usando estas aplicaciones podemos notar que, dada $f\in\calF(p)$, $(f\circ\alpha_1)(t)=(f\circ\varphi^{-1}\circ g_1)(t)$ y $(f\circ\beta_1)(t)=(f\circ\psi^{-1}\circ h_1)(t)$. Aplicamos la regla de la cadena en el primer caso
-$$
-\alpha'_1(0)f=\left.\frac{d(f\circ\alpha_1)}{dt}\right|_{t=0}=\nabla(f\circ\varphi^{-1})_{g_1(0)}g_1'(0)=
-\left(\frac{\partial (f\circ\varphi^{-1})}{\partial u_1}\right)_{\varphi(p)}=\left(\frac{\partial f}{\partial x_1}\right)_p.
-$$
-Para el segundo caso, hay que tener en cuenta que la primera coordenada de $h_1$ es igual a la primera coordenada de $g_1$, por lo que
-$$
-\beta'_1(0)f=\left.\frac{d(f\circ\beta_1)}{dt}\right|_{t=0}=\nabla(f\circ\psi^{-1})_{h_1(0)}h_1'(0)=
-\left(\frac{\partial (f\circ\psi^{-1})}{\partial u_1}\right)_{\psi(p)}=\left(\frac{\partial f}{\partial x_1}\right)_p.
-$$
+No, basta tomar $M=U=V=\R^2$ y $φ(u,v)=(u,u+v)$, $ψ(u,v)=(u,v)$.
+Por la fórmula del cambio de base:
+\[ \left(\frac{\partial}{\partial y_1}\right)_p = \left(\frac{\partial x_1}{\partial y_1}\right)_p \left(\frac{\partial}{\partial x_1}\right)_p +  \left(\frac{\partial x_2}{\partial y_1}\right)_p  \left(\frac{\partial}{\partial x_2}\right)_p = \left(\frac{\partial}{\partial x_1}\right)_p + \left(\frac{\partial}{\partial x_2}\right)_p\]
 \end{solucion}
 \newpage
 
