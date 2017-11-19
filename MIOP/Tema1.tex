@@ -823,24 +823,26 @@ $$v^\delta=R^\delta+Q^\delta v^\delta$$
 Vamos a probar que existe una política que maximiza todas las componentes del vector $v^\delta$.
 \newpage
 \begin{lemma}
-Sea $v\mid v=R+Qv=(I-Q)^{-1}R$ y $w\in\R^N$. Entonces se verifican
+Sea $v=R+Qv=(I-Q)^{-1}R$ y $w\in\R^N$. Entonces se verifican
 \begin{itemize}
 \item[a)] $R+Qw\geq w\Rightarrow v\geq R+Qw$.
 \item[b)] $R+Qw\leq w\Rightarrow v\leq R+Qw$.
 \end{itemize} 
 \end{lemma}
 \begin{proof}
-Probamos solamente a), pues b) es análogo. 
-
-Sea $t=R+Qw-w\geq 0$. Entonces, como $Q\geq 0$,
-$$t(I-Q)^{-1}=t\sum_{n=0}^\infty Q^n\geq tQ^0=t\geq 0$$
-$$t(I-Q)^{-1}=[R+Qw-w](I-Q)^{-1}=[R-(I-Q)w](I-Q)^{-1}=\underbrace{(I-Q)^{-1}R}_{v}-w\geq t$$
-$$v-w\geq t\equiv v-w\geq R+Qw-w\Rightarrow v\geq R+Qw$$
+\begin{enumerate}
+\item[]
+\item[a)] Sea $t=R+Qw-w\geq 0$. Entonces, como $Q\geq 0$,
+$$(I-Q)^{-1}t=\left(\sum_{n=0}^\infty Q^n\right)t\geq Q^0t = t\geq 0$$
+$$(I-Q)^{-1}t=(I-Q)^{-1}[R+Qw-w]=(I-Q)^{-1}[R-(I-Q)w]=\underbrace{(I-Q)^{-1}R}_{v}-w\geq t$$
+$$v-w\geq t\equiv v-w\geq R+Qw-w\equiv v\geq R+Qw$$
+\item[b)] Este caso es totalmente análogo cambiando de signo las desigualdades.%
+\end{enumerate}
 \end{proof}
 \begin{defi}[Algoritmo de evaluación de políticas]
 \begin{enumerate}
 \item[]
-\item Tomar $\delta \in \Delta$
+\item Tomar $\delta \in \Delta$.
 \item Calcular $v^\delta = (I-Q)^{-1}R^\delta$. Hacer $t_i =0$ $\forall i=1,\dotsc,N$.
 \item Calcular $\forall k\in D(i)$, $t_i^k= R_i^k + \sum_{j=1}^N \alpha p_{ij}^k v^\delta_j - v_i^\delta$. 
 \item Si $t_i^k > t_i$ para algún $i,k$; tomar $\delta(i)=k$ y $t_i = t^k_i$.
@@ -882,7 +884,7 @@ Vectorialmente aplicando el lema anterior ($w=g$) tenemos que $g\geq R^\delta+Q^
 Sea $f=\max_{\delta \in \Delta}v^\delta$, $f$ es también solución del problema
 \begin{align*}
 &\min \sum_{i=1}^N w_i\\
-s.a. &\quad w_i - \sum_{j=1}^N \alpha p_{ij}^k w_k \geq R^k_i\quad \forall i,\, \forall k\in D(i)\\
+s.a. &\quad w_i - \sum_{j=1}^N \alpha p_{ij}^k w_j \geq R^k_i\quad \forall i,\, \forall k\in D(i)\\
 &w_i \in \R \quad \forall i
 \end{align*}
 \end{teorema}
