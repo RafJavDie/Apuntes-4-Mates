@@ -673,7 +673,7 @@ E_{k_1,\dotsc,k_N}\left[\sum_{n=1}^N r_n\right] = \sum_{k_1,\dotsc,k_N}\left(\pr
 \end{proof}
 Nótese que $\sum_{k_2,\dotsc,k_N}\left(\prod_{i=2}^N P_i(k_i)\right)=1$ por ser suma de probabilidades marginales. Por tanto, si denotamos por $f_n(x_n)$ a la máxima recompensa esperada si en la etapa $n$ estamos en el estado $x-n$ hasta $N$ entonces
 $$
-f_n(x_n)= \max_{d_1,\dotsc,d_N} E_{k_1,\dotsc,k_N}\left[\sum_{j=n}^Nr_j\right]
+f_n(x_n)= \max_{d_n,\dotsc,d_N} E_{k_n,\dotsc,k_N}\left[\sum_{j=n}^Nr_j\right]
 $$
 $$x_{n+1}=t_n(x_n,d_n,k_n)
 $$
@@ -797,7 +797,7 @@ Ocurre que existe una política $\delta\in\Delta$ que es óptima para todo $i\in
 Usando el teorema de la probabilidad total podemos descomponer las probabilidades de varios pasos en probabilidades de un solo paso.
 $$p_{ij}^\delta(2)=\sum_{k\in S}p_{ik}^\delta(1)p_{kj}^\delta(1)=\sum_{k\in S}p_{ik}^\delta p_{kj}^\delta=P^\delta_{i\cdot}P^\delta_{\cdot j},$$
 luego $P(2)=P\cdot P$. En general, por inducción, la matriz de transición en $n$ pasos es $P^n$. De esta forma podemos escribir de modo más compacto
-$$v^\delta=R^\delta+ \alpha P^\delta R^\delta +\alpha^2 (P^\delta)^2+\cdots$$
+$$v^\delta=R^\delta+ \alpha P^\delta R^\delta +\alpha^2 (P^\delta)^2R^\delta+\cdots$$
 Si denotamos $Q^\delta=\alpha P^\delta$ ($(Q^\delta)^0=I$), entonces
 $$v^\delta=\sum_{n=0}^\infty (Q^\delta)^n R^\delta$$
 \end{observacion}

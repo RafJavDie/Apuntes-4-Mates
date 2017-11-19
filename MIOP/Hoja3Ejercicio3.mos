@@ -1,0 +1,58 @@
+!@encoding CP1252
+model ModelName
+uses "mmxprs"; 
+
+!optional parameters section
+parameters
+ N=3
+end-parameters
+
+!sample declarations section
+declarations
+	w:array(1..N) of mpvar
+	x:array(1..N,1..2) of mpvar
+	v,vv:array(1..N) of real
+end-declarations
+
+
+!Problema de Programación Lineal asociado al PDM
+forall(i in 1..N) w(i) is_free
+
+w(1)-0.9*(0.3*w(1)+0.5*w(2)+0.2*w(3))>=20
+w(2)-0.9*(0.1*w(1)+0.5*w(2)+0.4*w(3))>=6
+w(3)-0.9*(0.2*w(1)+0.4*w(2)+0.4*w(3))>=-8
+minimize(sum(i in 1..N)w(i))
+
+
+(!
+!Problema Dual
+forall(i in 1..N,k in 1..2)x(i,k)>=0
+
+x(1,1)+x(1,2)-0.9*(0.3*(x(1,1)+x(1,2))+0.1*(x(2,1)+x(2,2))+0.2*(x(3,1)+x(3,2)))=1
+x(2,1)+x(2,2)-0.9*(0.5*(x(1,1)+x(1,2))+0.5*(x(2,1)+x(2,2))+0.4*(x(3,1)+x(3,2)))=1
+x(3,1)+x(3,2)-0.9*(0.2*(x(1,1)+x(1,2))+0.4*(x(2,1)+x(2,2))+0.4*(x(3,1)+x(3,2)))=1
+maximize(20*x(1,1)+9*x(1,2)+6*x(2,1)+3*x(2,2)-18*x(3,1)-8*x(3,2))
+!)
+
+
+
+
+!Método de iteraciones sucesivas
+v(1):=0
+v(2):=0
+v(3):=0
+vv(1):=0
+vv(2):=0
+vv(3):=0
+
+!Puede cambiar el número de iteraciones, por defecto hemos puesto 100
+forall(r in 0..100)do
+  forall(i in 1..N)writeln("v(",i,")^",r," = ",v(i))
+  v(1):=20+0.9*(0.3*vv(1)+0.5*vv(2)+0.2*vv(3))
+  v(2):=6+0.9*(0.1*vv(1)+0.5*vv(2)+0.4*vv(3))
+  v(3):=-8+0.9*(0.2*vv(1)+0.4*vv(2)+0.4*vv(3))
+  forall(i in 1..N)vv(i):=v(i)
+end-do
+
+
+end-model
