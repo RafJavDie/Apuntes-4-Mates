@@ -437,6 +437,27 @@ $(P,g)$ es una subvariedad regular de $N$, entonces $f_0$ es
 continua.
 \end{enumerate}
 \end{teorema}
+
+\begin{dem}\
+\begin{itemize}
+\item[a)] Supongamos que $f_0$ es continua. Fijemos $m,n,r$ las dimensiones de $M,N,P$ respectivamente. Sea $p\in M$ cualquiera, entonces $f(p)\in N, f_0(p)\in P$. Tomamos cartas adaptadas a la inmersión $g$, es decir, $(U,\varphi=(x_1,\dots,x_r))$ carta en $P$ tal que $f_0(p)\in U$, $(V,\psi=(y_1,\dots,y_n))$ carta en $N$ tal que $f(p)\in V$, cumpliendo que $x_i=y_i\circ g\ i=1,\dots, r$ y $g(U)\subseteq V$. Como $f_0(p)\in U\subseteq P$ y $f_0$ es continua, $p\in f_0^{-1}(U)\subset M$ abierto al que denotaremos por $G$. $\forall q\in G$, $$\varphi\circ f_0(q)=(x_1(f_0(q)),\dots,x_r(f_0(q)))= (y_1(g(f_0(q))),\dots,y_r(g(f_0(q))))=(y_1(f(q)),\dots,y_r(f(q)))=\pi\circ\psi\circ f(q)$$ donde $\pi:\R^n\to\R^r: (u_1,\dots, u_r)\mapsto (u_1,\dots,u_r)$. Luego en $G$, $\varphi\circ f_0=\pi\circ\psi\circ f$ es diferenciable, luego comoponiendo con $\varphi^{-1}$, $f_0$ es diferenciable.
+\item[b)] Supongamos que $(P,g)$ es subvariedad regular, por lo que $g:P\to g(P)\subset N$ es homeomorfismo, donde la imagen tiene la topología relativa. Recordemos que $f_0$ es continua si y solo si $\forall p\in M,\forall G\subseteq P$ tal que $f_0(p)\in G,\exists U\subset M$ abierto con $p\in U$ tal que $f_0(U)\subseteq G$. Sean $p\in M$, $G\subseteq P$ abierto tal que $f_0(p)\in G$. Como $g$ es homeomorfismo, $g(G)$ es abierto en $g(P)$, por lo que $\exists V$ abierto en $N$, tal que $g(G)=V\cap g(P)$. Así, $U=f^{-1}(V)$ es abierto en $M$. Como $f_0(p)\in G$, entonces $g(f_0(p))\in g(G)$, luego en particular, $f(p)=g(f_0(p))\in V\Rightarrow p\in f^{-1}(V)=U$. Por último, $\forall q\in U, f(q)=g(f_0(q))\in V\cap g(P)=g(G)$. Por ser $g$ inyectiva, $f_0(q)\in G$, como queríamos demostrar.   $\QED$
+\end{itemize}
+
+\end{dem}
+
+\begin{ej}
+$F:S^2\to S^3:(x,y,z)\mapsto (x,y,z,0)$. $F$ es claramente inyectiva. Sea $f:\R^3\to\R^4:(x,y,z)\mapsto (x,y,z,0)$
+\[
+\begin{tikzcd}
+S^2\arrow[r, hookrightarrow, "i"]\arrow[rrd, dashed, "\exists! f_0=F"] & \R^3\arrow[r,"f"] & \R^4\\
+& & S^3\arrow[u, hookrightarrow, "j"]
+\end{tikzcd}
+\]
+
+Tanto $(S^2,i)$ como $(S^3,j)$ son subvariedades regulares de $\R^3$ y $\R^4$ respectivamente. $f\circ i(S^2)\subseteq  S^3$ y además $f\circ i\in\calF(S^2,\R^4)$. Por tanto, la continuidad de $f_0$ implica $f_0\in\calF(S^2,S^3)$.  Veamos que $F_{*p}$ es inyectiva $\forall p\in S^2$. $(f\circ i)_*=(j\circ F)_{*p}\Rightarrow f_{*p}\circ i_{*p}=j_{*p}\circ F_{*p}$, como las dos de la derecha son inyectivas, la composición es inyectiva, luego la $F_{*p}$ debe ser inyectiva.
+\end{ej}
+
 \begin{prop}
 Cada clase de equivalencia de subvariedades de una variedad
 diferenciable $N$ tiene un único representante de la forma
