@@ -198,5 +198,16 @@ Con esto hemos probado que el atlas maximal en el que se encuentran estas cartas
 
 
 \end{solucion}
+\newpage
 
+\begin{ejercicio}{8}\label{1}
+Probar que una variedad diferenciable M es conexa si y solo si es conexa por caminos.
+\end{ejercicio}
+\begin{solucion}
+Naturalmente una de las implicaciones es trivial. Supongamos que $M$ es conexa y sea $\A = \{(U_i,\varphi_i)\}_{i\in I}$ el atlas de $M$. Podemos considerar que los $U_i$ son conexos pues, en caso contrario, derivaríamos una carta por cada componente conexa de $U_i$. Sabemos que $\varphi(U_i)\subset \R^n$ es un abierto conexo por ser $\varphi$ homeomorfismo. También sabemos que todo abierto conexo de $\R^n$ es conexo por caminos, en particular $\varphi_i(U_i)$. Nuevamente, usando que $\varphi_i$ es homeomorfismo, deducimos que $U_i$ es conexo por caminos.
+
+Como $M$ es conexo y $\bigcup_{i\in I} U_i = M$, sea $k\in I$ arbitrario pero fijo, $\exists j \in I$, $k\neq j$, $U_k \cap U_j \neq \emptyset$. Por tanto, $S = U_k \cup U_j$ es un abierto conexo por caminos. Podemos volver a considerar el mismo razonamiento sobre
+$$ M = S\cup \bigcup_{\substack{i\in I\\ i\neq j,k}} U_i$$
+Obteniendo finalmente que $M$ es conexo por caminos.
+\end{solucion}
 \end{document}
