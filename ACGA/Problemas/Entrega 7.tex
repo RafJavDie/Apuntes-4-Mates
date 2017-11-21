@@ -40,7 +40,66 @@ Por monotonía de la clausura se tiene $f(\overline{A})\subseteq\overline{f(\ove
 \begin{ejercicio}{2} Sea $X\subset \A^3_\C$ la cuádrica definida por la ecuación $x^2 + yz =1$. Construir una aplicación birracional entre $X$ y $\A^2_\C$, probando que $X$ es racional. Determinar dos abiertos $U\subset X$ y $V\subset \A^2_\C$ tales que la aplicación birracional definida anteriormente induzca un isomorfismo entre ellos.
 \end{ejercicio}
 \begin{solucion}
-\end{solucion}
-\newpage 
+Sabemos que la variedad $X$ se dice racional si es birracionalmente equivalente a $\A_\C^n$ para algún $n$. Nosotros vamos a ver que se da para $n=2$. 
 
+Primeramente, consideremos la proyección a través del punto $P=(0,1,1)\in X$ al hiperplano $H\equiv x=1$. Sea $(x,y,z)$ otro punto de la cuádrica distinto de $P$. Consideremos la recta que pasar por este punto y por $P$.
+$$
+r(\lambda)= (0,1,1)+\lambda (x,y-1,z-1) = (\lambda x,\lambda (y-1),\lambda (z-1))
+$$
+Si lo intersecamos con nuestro hiperplano $x=1$ tenemos que $\lambda x= 1$. Si consideramos el abierto $Q$ por $x\neq 0$, en cada punto de $X\cap Q$ podemos definir la aplicación que a cada $(x,y,z)\in X$ le asigna $(1,\frac{y-1}{x},\frac{z-1}{x})$.
+$$
+\tilde{f}\colon  X \dashrightarrow H \qquad f(x,y,z) = \left(1,\frac{y-1}{x},\frac{z-1}{x}\right)
+$$
+Nuestra aplicación $\tilde{f}$ es claramente una aplicación racional cuyo mayor abierto de definición es $X\cap Q$. Si componemos con el isomorfismo $\pi\func{H}{\A^2_\C}$, $\pi (1,y,z) = (y,z)$ podemos considerar la aplicación racional
+$$
+f\colon X\dashrightarrow \A^2_\C \qquad f(x,y,z) =\left(\frac{y-1}{x},\frac{z-1}{x}\right)
+$$
+Solo nos queda probar, pues, que $f$ tiene una inversa. Consideremos ahora la recta que pasa por un punto cualquiera de $(1,y,z)$ y por el punto $P$. Es decir,
+$$
+s(\lambda) = (0,1,1)+\lambda(1,y,z)=(\lambda, 1+\lambda y, 1+ \lambda z)
+$$
+Tenemos que ver la intersección de $s$ con $X$. Imponiendo la ecuación de la cuádrica tenemos que
+$$\lambda^2 + (\lambda y+1)(\lambda z + 1) = \lambda^2 (1+yz)+\lambda(y+z)+1 = 1 \Leftrightarrow \lambda(\lambda(1+yz)+(y+z))$$
+Naturalmente el caso $\lambda =0$ nos da el propio punto $P$, luego consideramos $\lambda = -\dfrac{y+z}{1+yz}$. Componiendo con la inversa de $\pi$, podemos definir directamente la aplicación
+$$
+g\colon  \A_\C^2 \dashrightarrow X \qquad f(y,z) =\left(-\dfrac{y+z}{1+yz},\dfrac{1-y^2}{1+yz},\dfrac{1-z^2}{1+yz}\right) 
+$$
+Esta aplicación es racional, pues las funciones componentes son funciones regulares definidas en $A^2_\C \setminus \V(yz+1)$. Vamos a ver que la $f$ y $g$ son inversas allí donde estén correctamente definidas.
+\begin{align*}
+(f\circ g)(y,z) &= f\left(-\dfrac{y+z}{1+yz},\dfrac{1-y^2}{1+yz},\dfrac{1-z^2}{1+yz}\right) = \left( \frac{\dfrac{1-y^2}{1+yz}-1}{-\dfrac{y+z}{1+yz}},\frac{\dfrac{1-z^2}{1+yz}-1}{-\dfrac{y+z}{1+yz}}\right) \\
+&=  \left( \frac{{y^2}+yz}{y+z},\frac{{z^2}+yz}{y+z}\right) =   \left( y\frac{{y}+z}{y+z},z\frac{{z}+y}{y+z}\right)\\
+&= (y,z)\\ \\
+(g\circ f)(x,y,z)& = g\left(\frac{y-1}{x},\frac{z-1}{x}\right) =\left(-\dfrac{\frac{z-1}{x}+\frac{y-1}{x}}{1+\frac{y-1}{x}\frac{z-1}{x}},\dfrac{1-\left(\frac{y-1}{x}\right)^2}{1+\frac{y-1}{x}\frac{z-1}{x}},\dfrac{1-\left(\frac{z-1}{x}\right)^2}{1+\frac{y-1}{x}\frac{z-1}{x}}\right) \\
+&= \left(-x\frac{y+z-2}{x^2+(y-1)(z-1)},\frac{x^2-(y-1)^2}{x^2+(y-1)(z-1)},\frac{x^2-(z-1)^2}{x^2+(y-1)(z-1)}\right)\\
+&=\left(-x\frac{y+z-2}{2 -y-z},\frac{x^2-(y-1)^2}{2 -y-z},\frac{x^2-(z-1)^2}{2 -y-z}\right)\\
+&= \left(x,\frac{(1-yz)-(y^2+1-2y)}{2 -y-z},\frac{(1-yz)-(z^2+1-2z)}{2 -y-z}\right)\\
+&= \left(x,\frac{-yz-y^2+2y}{2 -y-z},\frac{-yz-z^2+2z)}{2 -y-z}\right)=(x,y,z)
+\end{align*}
+Las composiciones están correctamente definidas respectivamente en los anteriores abiertos $V=\A^2_\C\setminus \V((yz+1)(y+z))$ y $U=X\setminus\V(x(2-y-z))$ abiertos no vacíos de $\A^2_\C$ y $X$. Claramente $(1,0,0)\in X\setminus\V(x(2-y-z))$, luego es no vacío. 
+
+Vamos a ver que $f$ establece un isomorfismo entre los abiertos anteriores
+\begin{itemize}
+\item Sabemos que $f$ tiene una imagen en todo $x\in U$, pero tenemos que ver que $f(x)\in V$. Para ello, veamos que $f(x)$ no está en $\V((yz+1)(y+z))$.
+$$
+\frac{y-1}{x}\frac{z-1}{x} + 1 = 0 \equiv x^2 + (y-1)(z-1) = 0 \equiv 2-y-z = 0
+$$
+$$
+\frac{y-1}{x}+\frac{z-1}{x} = \frac{y+x-2}{x} = 0 \equiv 2-y-x = 0
+$$
+Por tanto, $f(x)\in V$. Por tanto, $f$ es un morfismo de $U$ en $V$, pues es una aplicación bien definida tales que sus componentes son funciones regulares. 
+\item Resta ver que $g$ definido de $V$ en $U$ es también un morfismo, pues sabemos que en ese caso cualquiera de las composiciones será la identidad. Para ello, procedemos análogamente al caso anterior. Sea $x\in V$ veamos que $g(x)$ no está en $\V(x(2-y-z))$
+$$
+-\frac{y+z}{1+yz} = 0 \equiv y+z = 0
+$$
+$$
+2-\frac{1-y^2}{1+yz}-\frac{1-z^2}{1+yz} = 2 + \frac{y^2+z^2-2}{1+yz} =0 \equiv 2(1+yz) +y^2 +z^2 -2 = (y+z)^2 = 0 
+$$
+\end{itemize}
+Esto es, $g(x)\in \V(x(2-y-z))$ si $x\in \V(y+z)$, lo cual no puede ser por definición de $V$. Por tanto, $g$ está correctamente definida, es un morfismo y las composiciones con $f$ nos dan la identidad. 
+
+\end{solucion}
+
+\begin{nota}
+¿Si una aplicación racional entre variedades cuasiafines tiene inversa [correctamente definida en un abierto] entonces es obviamente dominante? ¿Y si la composición recíproca también lo está?
+\end{nota}
 \end{document}
