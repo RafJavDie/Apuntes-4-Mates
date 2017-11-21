@@ -1,0 +1,36 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+\usepackage{wasysym}
+\usetikzlibrary{automata,positioning}
+\usepackage{mathdots}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ciencias de la Computación}
+
+\author{Javier Aguilar Martín}
+\maketitle
+
+\begin{ejercicio}{5}
+Calcúlese:
+\begin{enumerate}
+\item $\mathcal{U}_1(2,575)$.
+\item $\mathcal{U}_1(x,q^2-1)$, donde $q$ es un número primo.
+\item $\mathcal{U}_2(1,1,3^m-1)$ donde $m$ tal que $m+1$ es potencia de 2.
+\item $\mathcal{U}_2(1,1,\#(U_1))$ 
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item  $\mathcal{U}_1(2,575)=[[U_1]]^{(2)}(2,575)=[[p]]^{(1)}(2)$, siendo $\#(P)=575$. $\#(P)+1=576=2^6 3^2=[6,2]$ (el programa tiene 2 instrucciones). Sabemos que $\#(I_1)=6,\#(I_2)=2$.$\#(I_1)=\langle a,\langle b,c\rangle\rangle=\langle a,d\rangle=2^a(2d+1)-1$, de donde deducimos que $a=0,d=3=\langle b,c\rangle=2^b(2c+1)-1$, lo que significa que $b=2,c=2$. Análogamente calculamos $\#(I_2)=\langle 0, \langle 1,0\rangle\rangle$. Por tanto $I_1=Y\leftarrow Y-1, I_2=Y\leftarrow Y+1$. Así pues, $[[p]]^{(1)}(2)=1$. 
+\item  Buscamos $\#(Q)=q^-1$. Sea $k$ tal que $q=p_k$. $\#(Q)+1=q^2=p_k^2=[0,\dots,0,2]$, de longitud $k$. Las $k-1$ primeras instrucciones son $Y\leftarrow Y$, y la última es $Y\leftarrow Y+1$. 
+\item  Buscamos $[[p]]^{(2)}(1,1)$ siendo $\#(P)=3^m-1$. Tenemos que $\#(P)+1=3^m=[0,m]$, luego la primera instrucción es $Y\leftarrow Y$, y la segunda cumple $\#(I)=m=\langle a,\langle b,c\rangle\rangle$, de donde deducimos que $m+1=2^a(2d+1)$. Como $m+1$ es potencia de 2, $d=0\Rightarrow b=c=0$. Por lo que la instrucción es $\langle a\langle 0,0\rangle\rangle$, que es de la forma $[L] Y\leftarrow Y$, con $\#(L)=a$. El valor del programa es siempre 0.
+\item $\mathcal{U}_2(1,1,\#(U_1))=[[U_1]]^{(2)}(1,1)=[[p]]^{(1)}(1)$, siendo $\#(P)=1$, con lo que $\#(P)+1=2=[1]$. Es decir, que el programa consiste en la instrucción $[A_1] Y\leftarrow Y$, que vale 0.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+HACER 3, 6 y 18
+
+\end{document}

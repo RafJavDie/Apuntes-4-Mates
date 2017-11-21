@@ -24,14 +24,32 @@ y que la composición es también dominante.
 \begin{solucion}\
 \begin{enumerate}
 \item Para probar este apartado se usará el siguiente resultado de topología general.
-\begin{lemma} 
+\begin{lemma} \label{lema1}
 Dada una aplicación continua $f:X\to Y$, para cualquier subconjunto $A\subseteq X$, $\overline{f(\overline{A})}=\overline{f(A)}$. 
 \end{lemma}
 \begin{proof}
-Por monotonía de la clausura se tiene $f(\overline{A})\subseteq\overline{f(\overline{A})}$. Para la otra inclusión, recordemos que dado $A\subseteq X$, $f$ es continua si y solo si $f(\overline{A})\subseteq\overline{f(A)}$, por lo que basta volver a tomar clausura para obtener $\overline{f(\overline{A})}\subseteq\overline{f(A)}$.
+Por monotonía de la clausura se tiene $\overline{f(A)}\subseteq\overline{f(\overline{A})}$. Para la otra inclusión, recordemos que dado $A\subseteq X$, $f$ es continua si y solo si $f(\overline{A})\subseteq\overline{f(A)}$, por lo que basta volver a tomar clausura para obtener $\overline{f(\overline{A})}\subseteq\overline{f(A)}$.
 \end{proof}
- Por la definición de función racional tenemos que $\tilde{\phi}|_{U\cap V}=\tilde{\phi}'|_{U\cap V}$. Supongamos que $\tilde{\phi}$ es dominante. Entonces $\overline{\tilde{\phi}'(U\cap V)}=\overline{\tilde{\phi}(U\cap V)}=\overline{\tilde{\phi}(\overline{U\cap V})}$, ya que los morfismos son continuos en la topología de Zariski y por tanto podemos aplicar el lema. Usando ahora que los abiertos no vacíos de Zariski son densos y la intersección de dos cualesquiera de ellos también es denso, obtenemos $\overline{\tilde{\phi}(\overline{U\cap V})}=\overline{\tilde{\phi}(X)}=Y,$ por ser $\tilde{\phi}$ dominante. En definitiva, $\overline{\tilde{\phi}'(U\cap V)}=Y$, por lo que claramente $\tilde{\phi}'$ es dominante, ya que $\overline{\tilde{\phi}'(V)}\supseteq\overline{\tilde{\phi}'(U\cap V)}=Y$. El recíproco es análogo.
-\item 
+ Por la definición de función racional tenemos que $\tilde{\phi}|_{U\cap V}=\tilde{\phi}'|_{U\cap V}$. Supongamos que $\tilde{\phi}$ es dominante. Entonces $\overline{\tilde{\phi}'(U\cap V)}=\overline{\tilde{\phi}(U\cap V)}=\overline{\tilde{\phi}(\overline{U\cap V})}$, ya que los morfismos son continuos en la topología de Zariski y por tanto podemos aplicar el lema \ref{lema1}. Usando ahora que los abiertos no vacíos de Zariski son densos y la intersección de dos cualesquiera de ellos también es denso, obtenemos $\overline{\tilde{\phi}(\overline{U\cap V})}=\overline{\tilde{\phi}(X)}=Y,$ por ser $\tilde{\phi}$ dominante. En definitiva, $\overline{\tilde{\phi}'(U\cap V)}=Y$, por lo que claramente $\tilde{\phi}'$ es dominante, ya que $\overline{\tilde{\phi}'(V)}\supseteq\overline{\tilde{\phi}'(U\cap V)}=Y$. El recíproco es análogo.
+ \newpage
+\item Sean $(U,\tilde{\phi}),(V,\tilde{\psi})$ representaciones de $\phi$ y $\psi$ respectivamente. Claramente la composición $\tilde{\psi}\circ\tilde{\phi}$ está bien definida en el abierto denso $W=U\cap\tilde{\phi}^{-1}(V)$ (lo es por ser intersección de abiertos densos, gracias a la continuidad de $\tilde{\phi}$), luego basta tomar las representaciones $(W,\tilde{\phi}|_W),(V,\tilde{\psi})$. Nótese que la composición está bien definida pues $\tilde{\phi}(W)\subseteq \tilde{\phi}(\tilde{\phi}^{-1}( V))\subseteq V$.
+
+Veamos que la composición no depende de las representaciones elegidas. Sean $(U,\tilde{\psi}\circ\tilde{\phi}),(V,\hat{\psi}\circ\hat{\phi})$ dos representaciones de la composición. Tenemos, por ser $\phi$ racional, que $\tilde{\phi}|_{U\cap V}=\hat{\phi}|_{U\cap V}$. En particular esto implica que $\tilde{\phi}(U\cap V)= \hat{\phi}(U\cap V)$. Sean $\tilde{W}$ y $\hat{W}$ dominios abiertos de $\tilde{\psi}$ y $\hat{\psi}$ respectivamente tales que $\tilde{\phi}(U\cap V)\subseteq\tilde{W},\hat{\phi}(U\cap V)\subseteq\hat{W}$. Dichos abiertos existen puesto que ambos morfismos deben estar definidos en abiertos no vacíos, los cuales deben contener a $\tilde{\phi}(U\cap V)=\hat{\phi}(U\cap V)$ puesto que la composición está bien definida.  Entonces, por ser $\psi$ racional, $\tilde{\psi}|_{\tilde{W}\cap\hat{W}}=\hat{\psi}|_{\tilde{W}\cap\hat{W}}$, luego en particular $\tilde{\psi}|_{\tilde{\phi}(U\cap V)}=\hat{\psi}|_{\hat{\phi}(U\cap V)}$, es decir, $$\tilde{\psi}\circ\tilde{\phi}|_{U\cap V}=\hat{\psi}\circ\hat{\phi}|_{U\cap V}$$ como queríamos demostrar.
+
+Para ver que la composición es dominante, sea $(W,\tilde{\psi}\circ\tilde{\phi})$ un representación de $\psi\circ\phi$. Veamos primero el siguiente resultado.
+
+\begin{lemma}\label{lema2}
+Un morfismo $g:X\dashrightarrow Y$ es dominante si y solo si $g^{-1}(U)\neq\emptyset\ \forall U\subseteq Y$ abierto denso.
+\end{lemma}
+\begin{proof}
+Supongamos que $g$ es dominante y sea $U$ un abierto denso. Por reducción al absurdo, supongamos que $g^{-1}(U)=\emptyset$. Entonces $\Im{g}\subseteq Y\setminus U$, que es cerrado por ser complementario de un abierto, luego es igual a su clausura, que no es el total.
+
+Recíprocamente, supongamos que $g^{-1}(U)\neq\emptyset\ \forall U\subseteq Y$. Si, $g$ no fuera dominante, entonces existiría un abierto no vacío $V\subseteq Y$ tal que $\Im{g}\subseteq Y\setminus V$, pero entonces $g^{-1}(V)=\emptyset$, lo cual contradice la hipótesis.
+
+\end{proof}
+
+ Sea $U\subseteq Z$ un abierto denso, entonces aplicando el lema \ref{lema2}, $V=\tilde{\psi}^{-1}(U)\neq\emptyset$ por ser $\tilde{\psi}$ dominante y abierto por ser continua.  Por el mismo motivo, $\tilde{\phi}^{-1}(V)$ es un abierto no vacío. En definitiva, $(\tilde{\psi}\circ\tilde{\phi})^{-1}(U)\neq\emptyset$, por lo que la aplicación es dominante utilizando el lema \ref{lema2}.
+
 \end{enumerate}
 \end{solucion}
 
