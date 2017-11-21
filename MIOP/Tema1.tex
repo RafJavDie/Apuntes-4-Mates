@@ -86,7 +86,7 @@ Etapa $k+1$:
 $\overset{d_k}{\longrightarrow}\boxed{t_k(s_k,d_k)}\rightarrow c_k(s_{k+1},d_{k+1})$
 
 \begin{defi}
-Sea $g:\R^n\to\R$. Decimos que $g$ es \textbf{separable} si $\exists g_1:\R^2\to\R,g_2:\R^{n-1}\to\R$ tales que $g(u_1,u_2,\dots,u_n)=g_1(u_1,g_2(u_2,\dots,u_n))$. 
+Sea $g:\R^n\to\R$. Decimos que $g$ es \textbf{separable} si $\exists g_1:\R^2\to\R,g_2:\R^{n-1}\to\R$ tales que $g(u_1,u_2,\dots,u_n)=g_1(u_1,g_2(u_2,\dots,u_n))$.
 \end{defi}
 
 \begin{defi}
@@ -879,7 +879,7 @@ g_i = \max_{k\in D(i)} R^k_i + \sum_{kj=1}^n \alpha p_{ij}^k g_j \quad \forall i
 $$g_i = R_i^{\pi(i)}+\sum_{j=1}^N \alpha p_{ij}^{\pi(i)}g_j \quad \forall i$$
 Como $g_i$ son los máximo entonces 
 $$g_i \geq R_i^{\delta(i)}+\sum_{j=1}^N \alpha p_{ij}^{\delta(i)}g_j \quad \forall i,\,\forall \delta \in \Delta$$
-Vectorialmente aplicando el lema anterior ($w=g$) tenemos que $g\geq R^\delta+Q^\delta g$ $\forall g$, $R^\delta+Q^\delta g\geq v^\delta$, por lo que $g\geq v^\delta$ $\forall \delta \in \Delta$. Pero como $g$ alcanza el valor de una política $(\pi)$ entonces $g$ es único ($g=v^\pi$).
+Vectorialmente aplicando el lema anterior ($w=g$), teniendo en cuenta que $g\geq R^\delta+Q^\delta g$ $\forall \delta$, se sigue $R^\delta+Q^\delta g\geq v^\delta$, por lo que $g\geq v^\delta$ $\forall \delta \in \Delta$. Pero como $g$ alcanza el valor de una política $(\pi)$ entonces $g$ es único ($g=v^\pi$).
 \end{dem}
 \begin{teorema}
 Sea $f=\max_{\delta \in \Delta}v^\delta$, $f$ es también solución del problema
@@ -935,7 +935,7 @@ $$
 $$
 Como a lo sumo hay $N$ variables no nulas en cada bloque debe haber una y solo una variables no nula. Sea $\pi(i)=k$ tal que $x_i^k\neq0$. Esta elección de variables define las columnas $I-Q^\delta$ de la matriz de restricciones de (D). 
 \end{dem}
-Rutina de evalucación de valores
+\subsection{Rutina de evalucación de valores}
 Sea $v^0\in \R^n$ y $v_i^n = \max_{k\in D(i)}  \{R_i^k + \sum_{j=1}^N \alpha p_{ij}^k v_i^{n-1}\}$.
 \begin{teorema}
 Para cada $n\in\N$, $||v^n-f||\leq \alpha||v^{n-1}-f||$.  
@@ -955,10 +955,10 @@ $$
 $$
 $\QED$
 \end{dem}
-Consideramos $\Pi_1^*, \dotsc, \Pi^*_n$ las políticas que escogemos en cada aproximación, $$\Delta^* = \{\delta \in \Delta \mid \delta(i)\in D^*(i)\}$$
-Notamos además $f_i = \max_{k\in D(i)} \{R_i^k + \sum_{j=1}^N\alpha p_{ij}^k f_i\}$ para todo $i=1,\dotsc, N$,
+Consideramos $\Pi_1^*, \dotsc, \Pi^*_n$ las políticas que escogemos en cada aproximación. Sean
 $$ D^*(i)=\{ k\mid s_i^k = f_i - R_i^k - \sum \alpha p_{ij}^kf_j\}$$
-y $c=\min_i \{s_i^k \mid s_i^k >0\}$.
+ $$\Delta^* = \{\delta \in \Delta \mid \delta(i)\in D^*(i)\}$$
+Notamos además $f_i = \max_{k\in D(i)} \{R_i^k + \sum_{j=1}^N\alpha p_{ij}^k f_i\}$ para todo $i=1,\dotsc, N$ y $c=\min_i \{s_i^k \mid s_i^k >0\}$.
 \begin{teorema}
 Si $v^0 =0$ entonces la política $\Pi_n^* = \Delta^*$ para todo $n>n_0$ con $n_0 = \frac{\log c - \log ||2f||}{\log \alpha}$.
 \end{teorema}
