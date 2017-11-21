@@ -194,12 +194,41 @@ donde $N(P)$ es el número de ceros de $f$ en $P$ contados cada uno según su mu
 Existe una constante $C < +∞$ tal que para $R > e$ y $|z| < R$ se tiene
 \[ |Ξ(z)|≤ e^{C R \log R} \]
 \end{teorema}
+\begin{dem}
+Sea $s = 1/2+iz$:
+\[ |Ξ(z)| = |ξ(s)| = \left|\frac{1}{2}+\frac{s(s-1)}{2}\int_1^{∞} (x^{s/2}+x^{(1-s)/s})\frac{θ(x)-1}{2}\frac{dx}{x} \right| \]
+
+Tenemos que:
+\[ \frac{s(s-1)}{2} = -\frac{(1/2+iz)(1/2-iz)}{2}=-\frac{1/4+z^2}{2} \]
+Luego:
+\[ \gabs{\frac{s(s-1)}{2}} ≤ \frac{1}{8}+\frac{1}{2}R^2 ≤ R^2 \]
+Por otro lado:
+\[ \gabs{x^{s/2}} = \gabs{e^{2/s\log x}} ≤ e^{\gabs{s}/2\log x} ≤ x^{1/4+|t|/2}≤x^{1/4+R/2} \]
+\[ \frac{θ(x)-1}{2} = \sum_{n=1}^{∞} e^{-πn^2x} ≤ \sum_{n=1}^{∞} e^{-πnx} = \frac{e^{-πx}}{1-e^{-πx}} ≤ 2e^{-πx} \]
+
+Por lo tanto:
+\begin{align*}
+	|Ξ(z)| & ≤ \frac{1}{2}+R^2 \int_1^{∞}2x^{1/4+R/2}2e^{-πx}\frac{dx}{x}\\
+	& ≤ \frac{1}{2} + 4R^2 \int_{π}^{∞} \left(\frac{y}{π}\right)^{1/4+R/2}e^{-y} \frac{dy}{y}\\
+	& ≤ \frac{1}{2} +\frac{4R^2}{π^{1/4+R/2}} \int_0^{∞} y^{1/4+R/2} e^{-y}\frac{dy}{y} ≤ \frac{1}{2} + \frac{4R^2}{π^{1/4+R/2}} Γ(n+1)
+\end{align*} 
+donde $n ≤ \frac{1}{4}+\frac{R}{2} < n+1 \in \N$. Como $Γ(n+1)=n!≤n^n=e^{n\log n} ≤ e^{(1/4+R/2)\log R}$:
+\[ |Ξ(z)| ≤ \frac{1}{2} + \frac{4R^2}{π^{1/4+R/2}} e^{(1/4+R/2)\log R} ≤\frac{1}{2} + \frac{1}{2}e^{\frac{R}{2} \log R} ≤ e^{\frac{R}{2} \log R}\]
+\qed
+\end{dem}
 
 \begin{prop}
 Sea $f$ analítica y acotada en el disco de centro $0$ y radio $R$. Sea $M$ la cota de $f$ en dicho disco y $a$ un punto tal que $0 < |a| < R$. Si $f$ no se anula en el segmento $[0,a]$,
 \[ \left|\Re\left(\frac{1}{2πi} \int_0^a \frac{f'(z)}{f(z)} dz\right)\right| ≤ \frac{1}{2} + \frac{1}{2}\left(\log \frac{M}{|f(0)|}\right)\left(\log \frac{R}{|a|}\right)^{-1} \]
 \end{prop}
 
+\begin{coro}
+Sea $f$ analítica y acotada en el disco de centro $a$ y radio $R$. Sea $M$ la cota de $f$ en dicho disco y $b$ un punto tal que $0 < |b-a| < R$. Si $f$ no se anula en el segmento $[a,b]$,
+\[ \left|\Re\left(\frac{1}{2πi} \int_0^a \frac{f'(z)}{f(z)} dz\right)\right| ≤ \frac{1}{2} + \frac{1}{2}\left(\log \frac{M}{|f(a)|}\right)\left(\log \frac{R}{|b-a|}\right)^{-1} \]
+\end{coro}
+\begin{dem}
+Basta tomar $g(z)=f\left(R\frac{b-a}{|b-a|}z+a\right)$  y estamos en las condiciones de la proposición anterior.
+\end{dem}
 \begin{teorema}
 Sea $N(R)$ el número de ceros de $Ξ(z)$ en el disco de centro $0$ y radio $R$, se tiene que
 \[ N(R) ≤ CR\log R, \quad R > e \]
