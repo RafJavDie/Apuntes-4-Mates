@@ -221,6 +221,13 @@ donde $n ≤ \frac{1}{4}+\frac{R}{2} < n+1 \in \N$. Como $Γ(n+1)=n!≤n^n=e^{n\
 Sea $f$ analítica y acotada en el disco de centro $0$ y radio $R$. Sea $M$ la cota de $f$ en dicho disco y $a$ un punto tal que $0 < |a| < R$. Si $f$ no se anula en el segmento $[0,a]$,
 \[ \left|\Re\left(\frac{1}{2πi} \int_0^a \frac{f'(z)}{f(z)} dz\right)\right| ≤ \frac{1}{2} + \frac{1}{2}\left(\log \frac{M}{|f(0)|}\right)\left(\log \frac{R}{|a|}\right)^{-1} \]
 \end{prop}
+\begin{dem}
+Podemos definir una rama continua del logaritmo en $(0,b)$ de manera que $\int_0^b f'(z)/f(z) = \log f(b) - \log f(0)$. Entonces suponiendo que $\arg f(b) ≥ \arg f(0)$:
+\[ \gabs{\Re\left(\frac{1}{2πi} \int_0^a \frac{f'(z)}{f(z)} dz\right)} = \frac{\arg f(b) - \arg f(0)}{2π}\]
+Definimos la función analítica $g(z)=\frac{f(z)+\overline{f(\overline{z})}}{2}$. Se tiene que $g(0)=f(0)$ y que para los valores reales $0<x<1$, $g(x)=\Re(f(x))$. En particular, los ceros de $g$ en $(0,1)$ se corresponden con puntos donde $\Re(f(z))=0$. Siendo $0<x_1<\cdots<x_n<b$ los ceros con $g$, tenemos entonces:
+\[ \frac{\arg f(b) - \arg f(0)}{2π} ≤ \frac{(n+1)π}{2π} = \frac{n+1}{2} \]
+El resto de la demostración consiste en acotar $n$ con un argumento muy confuso (parece relacionado con las fórmulas de Jensen). 
+\end{dem}
 
 \begin{coro}
 Sea $f$ analítica y acotada en el disco de centro $a$ y radio $R$. Sea $M$ la cota de $f$ en dicho disco y $b$ un punto tal que $0 < |b-a| < R$. Si $f$ no se anula en el segmento $[a,b]$,
@@ -234,6 +241,11 @@ Sea $N(R)$ el número de ceros de $Ξ(z)$ en el disco de centro $0$ y radio $R$,
 \[ N(R) ≤ CR\log R, \quad R > e \]
 para cierta constante $C$.
 \end{teorema}
+\begin{dem}
+Sin pérdida de generalidad, suponemos que $f$ no se anula en el borde del disco $D$ de centro $0$ y radio $R$ (en otro caso, sólo aumentamos $R$ un poco). Se tiene que:
+\[ 2 N(R) ≤ \Re\left(\frac{1}{2πi} \int_{δD} \frac{Ξ'(t)}{Ξ(t)} dt \right) ≤ \frac{1}{2} + \frac{1}{2} \frac{\log \frac{Ae^{(1/2)\cdot 3 R \log 3R}}{|Ξ(0)|}}{\log \frac{3R-1}{|2R-i|}}  ≤ CR \log R\]
+\qed
+\end{dem}
 
 Indicaremos por $α$ una variable que recorre los ceros de $Ξ(t)=0$ cada uno con su multiplicidad. Pero dado qu si $Ξ(α)=0$ entonces $Ξ(-α)=0$, vamos a tomar siempre aquellos ceros con $\Re α > 0$. (No hay ningún cero con $\Re α = 0$).
 
