@@ -51,12 +51,16 @@ cualquier $p\in M$ se verifica que $(g\circ f)_{*p}=g_{*f(p)}\circ f_{*p}$.
 \begin{dem}
 \begin{enumerate}
 \item[]
-\item $\forall h \in G(g(f(p))$ tenemos que 
+\item $\forall h \in \mathcal{F}(g(f(p))$ tenemos que 
 \begin{gather*}
-((g\circ f)_{\ast p}u)h = u(h\circ(g \circ f)) = u ((h\circ g) \circ f) = (f_{\ast p}(h \circ g)) = (g_{\ast f(p)}(f_{\ast p} u))h
+((g\circ f)_{\ast p}u)h = u(h\circ(g \circ f)) = u ((h\circ g) \circ f) = (f_{\ast p}u(h \circ g)) = (g_{\ast f(p)}(f_{\ast p} u))h
 \end{gather*}
-\item $\forall h \in G(p)$ $((id_M)_{\ast p}h = u(h \circ id_M) = u(h)$
-\item $\forall u \in T_p(M)$ y $\forall h\in F(f(p))$ tenemos que 
+\item $\forall u$ y $\forall h \in \mathcal{F}(p)$ $((id_M)_{\ast p}u)h = u(h \circ id_M) = u(h)=(Id_{T_p(M)}(u))h$
+\item[2$'$] $\forall u \in T_p(M)$ $\exists \alpha\in \mathcal{F}((a,b),M)$ tal que $\alpha(0)=p$ y $\alpha'(0)=u$. Entonces
+$$
+(id_M)_{\ast p}u = ((id_M)\circ \alpha)'(0) = \alpha'(0) = u = Id_{T_p(M)}(u)
+$$
+\item $\forall u \in T_p(M)$ y $\forall h\in \mathcal{F}(f(p))$ tenemos que 
 \begin{gather*}
 (f_{\ast p}u)h = u(h\circ f)=u(h \circ g) = (g_{\ast p} u)h
 \end{gather*}
@@ -67,9 +71,9 @@ Por tanto, $f_{\ast p}u=g_{\ast p}u$ $\forall u$.
 La diferencial en cada punto de una aplicación diferenciable es una aplicación lineal.
 \end{prop}
 \begin{dem}
-Veámoslo directamente $\forall g\in F(f(p))$
+Veámoslo directamente $\forall g\in \mathcal{F}(f(p))$
 \begin{gather*}
- f_{\ast p}(\lambda u+\mu v)g = (\lambda u+\mu v)(g\circ f)= \lambda u(g \circ f)+\mu v(g \circ f) = (\lambda f_{\ast p} u + \mu f_{\ast p})g
+ f_{\ast p}(\lambda u+\mu v)g = (\lambda u+\mu v)(g\circ f)= \lambda u(g \circ f)+\mu v(g \circ f) = (\lambda f_{\ast p} u + \mu f_{\ast p}v)g
 \end{gather*}
 \end{dem}
 En consecuencia, cada diferencial tiene asociada una matriz. Para calcularla, sean $(U,\vp=(x_1,\dots ,x_m))$ un
@@ -199,7 +203,7 @@ p\in M\arrow[r,"f"]\arrow[d,"\overline{f}"'] & q\in N\\
 q=f(p)\in f(M)\arrow[ur,"i"'] 
 \end{tikzcd}
 \]
-Usando el problema 2.5 sabemos que $\exists!$ estructura de variedad diferenciable sobre $f(M)$ tal que $f$ es difeomorfismo. Veamos que $(f(M),i)$ es subvariedad de $N$. Primeramente, $f(M)$ es variedad diferenciable, donde $\dim f(M)=\dim M$. Además, $i$ es siempre una función inyectiva y, por composición, $i\in F((f(M),N)$, pues $ i = f \circ (\overline{f})^{-1}$. Además, $i_{\ast q} = f_{\ast (\overline{f})^{-1}(q)}\circ (\overline{f})^{-1}_{\ast q}$.
+Usando el problema 2.5 sabemos que $\exists!$ estructura de variedad diferenciable sobre $f(M)$ tal que $f$ es difeomorfismo. Veamos que $(f(M),i)$ es subvariedad de $N$. Primeramente, $f(M)$ es variedad diferenciable, donde $\dim f(M)=\dim M$. Además, $i$ es siempre una función inyectiva y, por composición, $i\in \mathcal{F}((f(M),N)$, pues $ i = f \circ (\overline{f})^{-1}$. Además, $i_{\ast q} = f_{\ast (\overline{f})^{-1}(q)}\circ (\overline{f})^{-1}_{\ast q}$.
 
 \end{dem}
 Obsérvese que, en el resultado anterior, la topología de $f(M)$ es, en general, más fina que la topología relativa
@@ -272,7 +276,7 @@ difeomorfismo.
 \caption{}
 \label{}
 \end{figure}
-Llamaos $G = φ(W \cap f^{-1}(V))$. Como $f \in F(M,N)$, entonces $ψ \circ f \circ φ^{-1} : G \to \R^m$ es de $C^{∞}$. Se $g = ψ \circ f \circ φ^{-1}$. Como $f_{*p}$ es isomorfismo, la determinante jacobiano en $φ(p)$ de $g$ es no nulo. Aplicando el teorema de la función inversa en $\R^m$ existe un entorno $H$ de $q$ en $G$ tal que $g(H)$ es abierto en $\R^m$ y $g|_H : H \to g(H)$ es un difeomorfismo.
+Llamaos $G = φ(W \cap f^{-1}(V))$. Como $f \in \mathcal{F}(M,N)$, entonces $ψ \circ f \circ φ^{-1} : G \to \R^m$ es de $C^{∞}$. Se $g = ψ \circ f \circ φ^{-1}$. Como $f_{*p}$ es isomorfismo, la determinante jacobiano en $φ(p)$ de $g$ es no nulo. Aplicando el teorema de la función inversa en $\R^m$ existe un entorno $H$ de $q$ en $G$ tal que $g(H)$ es abierto en $\R^m$ y $g|_H : H \to g(H)$ es un difeomorfismo.
 
 Sea $U = φ^{-1}(H) \subseteq W \subseteq M$, tenemos que $U$ es un abierto de $M$. Como $q = φ(p) \in H$, $p \in U$. Además $f(U) = f(φ^{-1}(H)) = ψ^{-1}(ψ \circ f \circ φ^{-1}(H))$, que es un abierto de $V$, que como es a su vez un abierto de $N$, $f(U)$ es abierto de $N$.
 
