@@ -102,7 +102,7 @@ $\alpha'(t_0)f=(f\circ\alpha)'(t_0)\overset{(1)}{=}(g\circ\alpha)'(t_0)=\alpha'(
 \begin{ejs}\
 \begin{enumerate}
 \item La curva constante $\alpha:\R\to M$, $t\mapsto p\in M$ es diferenciable y $\forall t_0\in\R\ \alpha'(t_0)=0$. Efectivamente $\alpha'(t_0)f=(f\circ\alpha)'(t_0)=(f(p))'(t_0)=0$, ya que $f(p)$ es una constante.
-\item Sea $M$ una variedad diferenciable, $p\in M$, $(U,\varphi=(\xn{m})$ carta de $M$ con $p\in U$. Vamos a coger las curvas paramétricas en $\varphi(U)$. Denotamos $\overline{\alpha}_i:\R\to\R^m$, $$\overline{\alpha}_i(t)=(p_1,\dots,p_{i-1},t+p_i,p_{i+1},\dots,p_m)$$ a la recta coordenada $i$-ésima, donde $(p_1,\dots,p_m)=\varphi(p)$, tal que $\overline{\alpha}_i(0)=\varphi(p)$. Tomamos un entorno $(-\varepsilon,\varepsilon)$ tal que $\overline{\alpha}_i((-\varepsilon,\varepsilon))\subseteq\varphi(U)$. Ahora podemos definir $\alpha_i:(-\varepsilon,\varepsilon)\to M$, $t\mapsto (\varphi^{-1}\circ\overline{\alpha}_i)(t)$. A esta curva se le llama \textbf{curva paramétrica i-ésima en la carta}. Obviamente, $\alpha_i\in\mathcal{F}((-\varepsilon,\varepsilon),M)$ por composición de diferenciables (las cartas son difeomorfismos), y $\alpha_i(0)=p$.
+\item Sea $M$ una variedad diferenciable, $p\in M$, $(U,\varphi=(\xn{m}))$ carta de $M$ con $p\in U$. Vamos a coger las curvas paramétricas en $\varphi(U)$. Denotamos $\overline{\alpha}_i:\R\to\R^m$, $$\overline{\alpha}_i(t)=(p_1,\dots,p_{i-1},t+p_i,p_{i+1},\dots,p_m)$$ a la recta coordenada $i$-ésima, donde $(p_1,\dots,p_m)=\varphi(p)$, tal que $\overline{\alpha}_i(0)=\varphi(p)$. Tomamos un entorno $(-\varepsilon,\varepsilon)$ tal que $\overline{\alpha}_i((-\varepsilon,\varepsilon))\subseteq\varphi(U)$. Ahora podemos definir $\alpha_i:(-\varepsilon,\varepsilon)\to M$, $t\mapsto (\varphi^{-1}\circ\overline{\alpha}_i)(t)$. A esta curva se le llama \textbf{curva paramétrica i-ésima en la carta}. Obviamente, $\alpha_i\in\mathcal{F}((-\varepsilon,\varepsilon),M)$ por composición de diferenciables (las cartas son difeomorfismos), y $\alpha_i(0)=p$.
 
 Ahora que tenemos la curva paramétrica, veamos su vector tangente $\alpha'_i(0):\calF(p)\to\R$, $f\mapsto \alpha'_i(0)f=(f\circ\alpha_i)'(0)$. Ahora bien, $\forall f\in\calF(p)$, 
 $$(f\circ\alpha_i)'(0)=((f\circ\varphi^{-1})\circ\overline{\alpha}_i)'(0)=\sum_{j=1}^m \left.\frac{\partial (f\circ\varphi^{-1})}{\partial u_j}\right|_{\overline{\alpha}_i(0)}\left.\frac{d(u_j\circ\overline{\alpha}_i)}{dt}\right|_{t=0}$$
@@ -196,7 +196,7 @@ forman un sistema generador de $T_p(M)$, con lo que ${\rm dim}(T_p(M))=m$.
 \end{lemma}
 \begin{dem}
 Sea $u \in T_p(M)$. Para cualquier función $f \in \mathcal{F}(p)$. Aplicando el lema \ref{lema3.1} y el apartado 3 del \ref{lema3.2}.
-\[ u(f) = u(f(p))+\sum_{i=1}^m f_i(x_i-x_i(p)) = u(f(p)) + \sum_{i=1}^m u(f_i(x_i-x_i(p))) \]
+\[ u(f) = u(f(p)+\sum_{i=1}^m f_i(x_i-x_i(p))) = u(f(p)) + \sum_{i=1}^m u(f_i(x_i-x_i(p))) \]
 Por el apartado 1 del lema \ref{lema3.2}: $u(f(p))=0$. Por la condición de Leibniz:
 \[ u(f) = \sum_{i=1}^m ( u(f_i)(x_i-x_i(p))(p) + f_i(p) u(x_i-x_i(p))) \]
 Como $(x_i-x_i(p))(p)=x_i(p)-x_i(p)=0$:
