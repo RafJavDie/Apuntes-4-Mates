@@ -120,7 +120,17 @@ Veamos que, recíprocamente, todo punto de $Z$ está en la imagen de $\varphi$. 
 \begin{ejercicio}\label{productoporpunto}
  Si $X$ es un conjunto algebraico e $Y=\{y\}\subseteq\Pmk$ contiene un solo punto, probar que el producto $X\times Y$ es un conjunto algebraico isomorfo a $X$.
 \end{ejercicio}
+{\large\bf COSAS QUE NO SÉ DONDE VAN}
+\begin{prop}
+Si $g_l(\underline{x},\underline{y})$ son polinomios homogéneos en $\underline{x}$ e $\underline{y}$ pro separado, entonces $\VV(\{g_l\})$ es un conjunto algebraico en $\mathbb{P}^n\times\mathbb{P}^m$. 
+\end{prop}
+\begin{proof}
+Hay que probar que si $g$ es homogéneo en $x$ e $y$ por separado, $V(g)=V(g_1,\dots,g_s)$ con $g_l$ e la forma $h_l(x_iy_j)$. Si $\deg_x(g)=\deg_y(g)$, entonces $g(x,y)=h(\phi(x,y))=h(x_iy_j)$ ($h_l(x_iy_j)$ coge el polinomio en $z$ de la imagen del producto mediante $\phi$ y lo evalúa en $x_iy_j$). Si $\deg_x(g)<\deg_y(x)$, entonces $V(g)=V(x_0^dg_1,\dots, x_n^dg), d=\deg_y(x)-\deg_x(g)$
+\end{proof}
 
+Los conjuntos algebraicos en $\mathbb{P}^n\times\mathbb{A}^m$ son de la forma $\VV(h_1,\dots,h_r)$ con $h_l(x,y)\in k[x_0,\dots, x_n,y_1,\dots, y_m]$ homogéneos en las $x$. 
+
+{\large\bf HASTA AQUÍ}
 
 \begin{prop}\label{productoirreducible}
  Sean $X\subseteq\Pnk$ e $Y\subseteq\Pmk$ conjuntos algebraicos (respectivamente variedades cuasi-proyectivas). El producto $X\times Y$ es un conjunto algebraico (resp. una variedad cuasi-proyectiva) en $\PP^{nm+n+m}_k$.
@@ -188,6 +198,9 @@ Veamos ahora qué pasa si el grado de $f_k$ en las $x$ y en las $y$ es distinto.
  \begin{enumerate}
   \item Si $X$ e $Y$ son variedades afines y $\psi:X\to Y$ es un morfismo, la aplicación grafo $X\to X\times Y$ dada por $x\mapsto (x,\psi(x))$ es una inmersión cerrada por el ejercicio \ref{grafo}.
   \item Si $X=\VV(xy-1)\subseteq\AAA^2_k$, el morfismo $X\to\AAA^2_k$ dado por $(x,y)\mapsto (x,0)$ es una inmersión que no es abierta ni cerrada. 
+  \item $\varphi:\mathbb{A}^1\to\mathbb{A}^2:t\mapsto(t^2,t^3)$ es un morfismo inyectivo con imagen abierta que no es inmersión abierta. $\varphi(\mathbb{A}^1)=\VV(y^2-x^3)=X$. 
+  \item Si $X\subseteq\mathbb{A}^1$ es algebraico entonces la inclusión es cerrada. Si es abierto, la inclusión es abierta.
+  \item $\varphi:\VV(xy-z)\to\mathbb{A}^1:(x,y)\mapsto y$ es inmersión abierta.
  \end{enumerate}
 \end{eje}
 
@@ -219,6 +232,7 @@ La propiedad fundamental de los morfismos proyectivos es la siguiente:
 
 Usando el recubrimiento afín de $\Pmk$, podemos escribir $Y=\bigcup_{i=0}^m Y_i$, con $Y_i$ abierto en $Y$ y cuasi-afín. Además, $\pi:\Pnk\times Y\to Y$ es cerrado si y sólo si $\pi:\Pnk\times Y_i\to Y_i$ es cerrado para todo $i$. Por tanto podemos suponer que $Y$ es cuasi-afín. Por el ejercicio \ref{proyectivoporafin}, un cerrado de $\Pnk\times Y$ será el conjunto de ceros de una cantidad finita de polinomios $f_1,\ldots,f_r\in k[x_0,\ldots,x_n,y_1,\ldots,y_m]$ homogéneos en las $x$. Su imagen por $\pi$ será el conjunto de $(b_1,\ldots,b_m)\in Y$ tales que los polinomios en $k[x_0,\ldots,x_n]$ obtenidos al sustituir para todo $j$ $y_j$ por $b_j$ en $f_1,\ldots,f_r$ tienen una solución común en $\Pnk$. Por tanto la proposición es una consecuencia del teorema siguiente.
 \end{proof}
+
 
 \begin{thm} \label{eliminacion} {\bf (Teorema fundamental de eliminación)}. Sean $f_1,\ldots,f_r\in k[x_0,\ldots,x_n,y_1,\ldots,y_m]$ polinomios homogéneos en las $x$. Entonces existen polinomios $g_1,\ldots,g_s\in k[y_1,\ldots,y_m]$ tales que: dados $b_1,\ldots,b_m\in k$, los polinomios en $k[x_0,\ldots,x_n]$ obtenidos al sustituir los $y_j$ por los $b_j$ en $f_1,\ldots,f_r$ tienen una solución común en $\Pnk$ si y sólo si $g_1,\ldots,g_s$ se anulan en $(b_1,\ldots,b_m)$.
  \end{thm}
