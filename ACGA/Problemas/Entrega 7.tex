@@ -6,7 +6,7 @@
 \begin{document}
 
 \title{Algebra Conmutativa y Geometría Aplicada}
-\author{Javier Aguilar Martín, Rafael González López}
+\author{Javier Aguilar Martín, Rafael González López, Diego Pedraza López}
 \maketitle
 
 \begin{ejercicio}{1}\
@@ -126,4 +126,29 @@ $$P^{n-1}P'R+Q^{n-1}Q'R=P^nR'+Q^nR'$$
 $$P^{n-1}(P'R-PR')=Q^{n-1}(QR'-Q'R)$$
 Por lo que $P^{n-1}|QR'-Q'R$ y $Q^{n-1}|P'R-PR'$, lo cual no es posible observando los grados.
 \end{solucion}
+
+\newpage
+
+\begin{ejercicio}{5}\
+Sean $a$ y $b$ enteros positivos, y $X = \V(x^b-y^a) \subseteq \A_\C^2$. Probar que la aplicación $φ : \A_\C^1 \to X$ dada por $φ(t) = (t^a,t^b)$ es birracional si y sólo si $a$ y $b$ son primos entre sí, y es un isomorfismo si y sólo si $a=1$ ó $b=1$.
+\end{ejercicio}
+
+\begin{sol}
+Supongamos primero que $φ$ es birracional. Esto sólo tiene sentido si $X$ es irreducible. Entonces $\langle x^b-y^a \rangle$ es un ideal primo, es decir, $x^b-y^a$ es un polinomio irreducible. Sea $\text{mcd}(a,b)=c$. Tomamos $z=x^{b/c}$ y $w=y^{a/c}$. Entonces el polinomio $x^b-y^a$ es equivalente a $z^c-w^c$. Como $z^c-w^c=(z-w)\cdot(z^{c-1}+z^{c-2}w^1+\cdots+z^1w^{c-2}+w^{c-1})$, tenemos que $x^{b/c}-y^{a/c}$ divide a $x^b-y^a$. Como $x^b-y^a$ es irreducible, debe cumplirse que $c=1$. Es decir, $a$ y $b$ deben ser primos entre sí.
+
+Supongamos ahora que $a$ y $b$ son primos, entonces por la identidad de Bezout existen $c$ y $d$ tal que $ac+bd=1$. Sea $ψ : X \dashrightarrow \A_C^1$ dada por:
+\[ ψ(x,y) = x^cy^d \]
+Ya que si $c<0$ ó $d<0$, $ψ$ no está definida en los puntos $x=0$ y $y=0$. Como en $X$ se tiene que $x=0$ si y sólo si $y=0$, el único punto de $X$ donde $ψ$ no está definida es $(0,0)$. Como $ψ$ está definida al menos en el abierto $X\setminus(0,0)$ y además:
+\[ (ψ \circ φ)(t) = ψ(t^a,t^b) = t^{ac}t^{bd}=t^{ac+bd}=t \]
+Por otro lado, usando que en $X$, $x^b=y^a$:
+\[ (φ \circ ψ)(x,y) = φ(x^cy^d) = ((x^cy^d)^a,(x^cy^d)^b) = (x^{ac}y^{ad},x^{bc}y^{bd}) = (x^{ac}x^{bd},y^{ac}y^{bd}) = (x,y) \]
+Luego $φ$ es birracional.
+
+Para que $φ$ sea isomorfismo, basta asegurar que $ψ$ esté definida en todo punto de $X$.
+\begin{itemize}
+	\item Si $a=1$ ó $b=1$: Supongamos sin pérdida de generalidad que $a=1$, entonces $c=1$ y $d=0$. En este caso definimos $ψ(x,y)=x$, que está definida en todo punto. Entonces $φ$ es isomorfismo.
+	\item Si $a>1$ y $b>1$: En este caso, para que se pueda cumplir la fórmula de Bezout, $c<0$ ó $d<0$. En este caso $ψ$ no está definida en $(0,0)$ y $φ$ no es isomorfismo.
+\end{itemize}
+Por lo tanto, $φ$ es isomorfismo si y sólo si $a=1$ ó $b=1$.
+\end{sol}
 \end{document}
