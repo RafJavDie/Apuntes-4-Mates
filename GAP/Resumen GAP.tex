@@ -2066,8 +2066,14 @@ semirrectas de $Vor(S)$ se llaman \textbf{vértices} y \textbf{aristas de Vorono
 
 \end{itemize}
 
-\begin{teorema} Cada vértice del diagrama de Voronoi es la intersección de tres aristas del diagrama.
+\begin{teorema} Cada vértice del diagrama de Voronoi es la intersección de tres (y solo tres) aristas del diagrama.
 \end{teorema}
+\begin{dem}(Hacer dibujos para cuando se lo mande a mcgarcia)
+
+Sea $v$ un vértice y supongamos que es la intersección de $k\geq 4$ aristas. Las aristas están sobre las mediatrices, luego $v\in m_{12}\cap m_{23}\cap\cdots\cap m_{k1}$. Eso significa que $d(v,p_1)=d(v,p_2)=\cdots =d(v,p_k)$. Pero entonces $v$ es el centro de una circunferencia que pasa por todos esos puntos, y no hay más puntos de la nube dentro del círculo que delimita, lo cual contradice la asunción de que no puede haber 4 puntos no sean cocirculares.
+
+Supongamos ahora que $k=2$, entonces solamente hay dos regiones, pero entonces solo habría una mediatriz (una por cada región, ya que en cada punto hay una región), luego no es posible que haya dos aristas. $\QED$
+\end{dem}
 
 \begin{nota} Los vértices de Voronoi son los centros de
 circunferencias definidas por tres puntos de $S$.
@@ -2078,14 +2084,30 @@ circunferencias definidas por tres puntos de $S$.
 circunferencia correspondiente no contiene a ningún otro punto de
 $S$.
 \end{teorema}
+\begin{dem}
+Si hubiera otro punto $p_k$, entonces $d(v,p_k)<d(v,p_1)=d(v,p_2)=d(v,p_3)$. Por tanto su célula intersecaría a otra o estaría en una arista. $\QED$
+\end{dem}
 
 \begin{teorema} Para cada $p_i \in S$, cada vecino más
 próximo a $p_i$ define una arista en el polígono $Vor(p_i)$.
 \end{teorema}
+\begin{dem} (Hacer dibujos para cuando se lo mande a mcgarcia)
+
+Llamamos $p_j$ a uno de los vecinos de $p_i$ más próximos. Supongamos que ninguna arista de $Vor(p_i)$ está sobre la mediatriz $m_{ij}$. Sea $v$ el punto medio de $\overline{p_ip_j}$. Por hipóteis, $v$ no está en ninguna arista. Sea $u$ la interesección de $\overline{p_ip_j}$ con el borde de $Vor(p_i)$. Entonces $u$ está sobre alguna arista de $Vor(p_i)$. Esa arista separa dos regiones de Voronoi de 2 generadores $p_i$ y $p_k$. Entonces $d(p_i,p_k)\leq 2d(p_i,u)<2(p_i,v)=d(p_i,p_j)$, por lo que entonces $p_j$ no es uno de los vecinos más próximos. 
+
+Además, si $v$ estuviera dentro de $Vor(p_i)$, entonces $d(v,p_i)<d(v,p_j)$, lo cual es una contradicción. $\QED$
+\end{dem}
+
 
 \begin{teorema} El polígono $Vor(p_i)$ es no acotado si y
 sólo si $p_i$ es un punto de la envolvente convexa de $S$.
 \end{teorema}
+\begin{dem} (Hacer dibujos para mcgarcia)
+
+$\boxed{\Rightarrow}$ Supongamos que $p_i$ no está en la envolvente convexa. Vamos a probar que $Vor(p_i)$ es acotada. Sean $p_1,p_2,p_3\in S$ tales que $p_i$ está en el interior del triángulo delimitado por los 3 vértices anteriores. Llamamos $c_{kj}$ a la circunferencia que pasa por $p_i,p_j,p_k,\ j,k=1,2,3,\ j\neq k$. Tomamos una recta $C$ que pase por $p_i$ y un punto $x$ exterior a las circunferencias. Entonces esa recta corta a alguna circunferencia en (al menos) un punto. $d(x,p_i)<d(x_i,p_2)$
+
+$\boxed{\Leftarrow}$ Supongamos que $Vor(p_i)$ es acotado. Entonces por el dibujo (dibujar p, un polígono alrededor y puntos fuera), $p_i$ no está sobre la envolvente convexa. $\QED$
+\end{dem}
 
 \begin{coro} Las semirrectas de $Vor(S)$ corresponden a
 pares de puntos adyacentes de la envolvente convexa de $S$.
