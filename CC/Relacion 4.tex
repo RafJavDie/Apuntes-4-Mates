@@ -30,7 +30,75 @@ Calcúlese:
 \end{solucion}
 
 \newpage
+\begin{ejercicio}{6}
+Probar que son recursivos:
+\begin{enumerate}
+\item 
+\item
+\item
+\item
+\item
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item Podemos escribir este conjunto como $\{e\in\N: e$ es el número de Gödel de un programa sin variables auxiliares$\}$. Sea $long(e+1)$ la longitud del programa que tiene ese código y $(e+1)_i$ la $i$-ésima instrucción de dicho programa. $e\in A\Leftrightarrow(\forall j)_{\leq long(e+1)}[j\geq 1\rightarrow (r(r((e+1)_j))=1\lor 2r(r((e+1)_j)))]$ que es primitivo recursivo.
+\item $e\in B\Leftrightarrow long(e+1)\leq 7 \land (\exists i)_{\leq long(e+1)}(l(r((e+1)_i))=2$. Primitivo recursivo. Si el existencial no estuviera acotado seguiría sirviendo porque sería recursivo.
+\item
+\item
+\item
+\end{enumerate}
+\end{solucion}
+\newpage
 
-HACER 3, 6 y 18
+\begin{ejercicio}{8}
+Encontrar $f : \N \to \N$ primitiva recursiva e inyectiva tal que para todo $n$, $φ_{f(n)} = \mathcal{O}$.
+\end{ejercicio}
+\begin{solucion}
+La estrategia que usaremos será hacer corresponde $f(n)$ con el programa que tiene $n$ ordenes de la forma $Y \leftarrow Y-1$. Como $\#(Y \leftarrow Y-1) = \langle 0, \langle 2,0\rangle \rangle = 4$, podemos definir
+\[\begin{cases}
+	f(0) = 2^4-1 \\
+	f(n+1) = (f(n)+1)\cdot p_{n+2}-1
+\end{cases}\]
+\end{solucion}
+que es claramente primitiva recursiva, inyectiva y $φ_{f(n)} = \mathcal{O}$.
+\newpage
+\begin{ejercicio}{9}
+Probar que la función total $f : \N \to \N$ definida por
+\[ f(x) = \begin{cases}
+	φ_x(x)+1 &\text{ si }φ_x(x) \downarrow\\
+	0 & \text{ en otro caso}
+\end{cases}\]
+no es recursiva (Indiciación: Si fuese recursiva, tomar $e$ tal que $φ_e = f$).
+\end{ejercicio}
+\begin{solucion}
+Usaremos reducción al absurdo. Supongamos que $f \in \mathcal{P}$. En este caso, existiría $e \in \N$ tal que $f = φ_e$. Como $f$ es total, está definida en $f(e)$, luego $φ_e(e)\downarrow$. Pero entonces $φ_e(e) = f(e) = φ_e(e)+1$. Esto es absurdo.
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{11}
+Sea $p \in \textsc{goto}_p$. Probar que es recursiva la función.
+\[ g(x) = \begin{cases}
+	\text{núm. de Gödel de la sucesión de valores que toma }Y\text{ en la ejecución de }p\text{ sobre }x &\text{ si }[\![p]\!](x)\downarrow\\
+	\uparrow & \text{c.c}
+\end{cases} \]
+\end{ejercicio}
+\begin{solucion}
+Sea $f(x,t)=\left(r(di^{(1)}(x,\#(p),t)\right)_1$. Tenemos que $f : \N^2 \to \N$ es primitiva recursiva. Entonces la función recorrido $\hat{f}(x,t) = [f(x,0),\dots,f(x,t)]$ es primitiva recursiva. Sea $h(x) = (μt) (\textsc{step}^{(1)} (x,\#(p),t))$, que es recursiva (en particular es $μ$-recursión). Como $g(x) = \hat{f}(x,h(x))$, $g$ es recursiva.
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{12}
+Probar que la siguiente función es recursiva: $h(x,y) = \max\{φ_0(y),\dots,φ_x(y)\}$.
+\end{ejercicio}
+\begin{solucion}
+Se tiene que:
+\[ \begin{cases}
+	h(0,y) = U_1(y,0)\\
+	h(x+1,y) = \max(h(x,y),U_1(y,x+1))
+\end{cases}\]
+Es decir, $h = R(g',h')$ donde $g'(y) = U_1(y,0)$ y $h'(x,y,z)=\max(z,U_1(y,x+1))$. Como $g'$ y $h'$ son recursiva, $h$ es recursiva.
+\end{solucion}
+HACER 3 y 18
 
 \end{document}
