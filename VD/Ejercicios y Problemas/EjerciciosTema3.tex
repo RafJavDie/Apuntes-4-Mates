@@ -39,9 +39,9 @@ constante en un entorno de $p$.
 \begin{itemize}
 \item[(a)] Sea $(W,\varphi=(x_1,\dots,x_n))$ un s.l.c. Dado $q\in W$ usamos la expresión $u = \sum u(x_i) \left(\dfrac{\partial}{\partial x_i}\right)_q$. Así pues, 
 \[
-0=u(f) = \left(\sum u(x_i) \left(\dfrac{\partial}{\partial x_i}\right)_q\right)f=\sum u(x_i) \left(\frac{\partial f}{\partial x_i}\right)_q = u(x)\cdot\nabla f(q)
+0=u(f) = \left(\sum u(x_i) \left(\dfrac{\partial}{\partial x_i}\right)_q\right)f=\sum u(x_i) \left(\frac{\partial f}{\partial x_i}\right)_q = u(x)\cdot\nabla(f\circ\varphi^{-1})(\varphi(q))
 \]
-Como $u$ y $q$ son arbitrarios, esto implica que $\nabla f=0$, por lo que $f$ es constante en $W$, que es un entorno de $p$. 
+Como $u$ y $q$ son arbitrarios, esto implica que $\nabla f\circ\varphi^{-1}=0$, por lo que $f \circ \varphi^{-1}$ es constante en $\R^m$, en un entorno de $\varphi(p)$, pero como $\varphi$ es difeomorfismo, no puede ser constante (salvo el caso trivial), luego $f$ ha de ser constante. 
 \item[(b)] $u(f) = u(g)\Rightarrow u(f)-u(g)=0$, Por linealidad, $u(f-g)=0$, que por el apartado anterior implica que $f-g$ es constante.
 \end{itemize}
 \end{solucion}
@@ -65,7 +65,7 @@ L(fg)=\left.\frac{d^2[(f\circ\alpha)(g\circ\alpha)]}{dt^2}\right|_{t=0}=\left.\f
 \left.\frac{d^2(f\circ\alpha)}{dt^2}g(\alpha)\right|_{t=0}+\frac{d(f\circ\alpha)}{dt}g'(\alpha)\alpha(0)+\left.\frac{d^2(g\circ\alpha)}{dt^2}f(\alpha)\right|_{t=0}+\frac{d(g\circ\alpha)}{dt}f'(\alpha)\alpha(0)\overset{\alpha'(0)=0}{=}\\
 \left.\frac{d^2(f\circ\alpha)}{dt^2}g(\alpha)\right|_{t=0}+\left.\frac{d^2(g\circ\alpha)}{dt^2}f(\alpha)\right|_{t=0}=L(f)g(p)+L(g)f(p)
 \end{gather*}
-\item que $L(f)=L(g)$ si $f,g\in\calF(M)$ coinciden en un entorno de $p$ se tiene trivialmente.
+\item Que $L(f)=L(g)$ si $f,g\in\calF(M)$ coinciden en un entorno de $p$ se tiene trivialmente.
 \end{enumerate}
 \end{solucion}
 
