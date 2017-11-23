@@ -221,6 +221,22 @@ Supongamos que tenemos una función $F(n)\in\mathcal{PR}$ que guarda los valores
 \end{solucion}
 
 \newpage
+\begin{ejercicio}{24}
+Sea $f(x,y) = (μz)[\text{Primo}(z) \land x = z \cdot y]$.
+\begin{itemize}
+	\item Determínense el dominio y el rango de $f$. ¿Es $f$ inyectiva?
+	\item ¿Es $f$ recursiva?
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}
+Claramente $(x,y) \in \text{dom}(f)$ si y sólo si $(\exists z)(\text{Primo}(z) \land x = z\cdot y)$. Esto es equivalente a que $\text{Primo}(qt(x,y))$.
+
+Se tiene $z \in \text{rango}(f)$ sii $(\exists x)(\exists y) (f(x,y)=z)$ sii $(\exists x)(\exists y) (x=z\cdot y \land \text{Primo}(z))$ sii $\text{Primo}(z)$.
+
+Todas las funciones involucradas son recursivas, luego $f$ es recursiva.
+\end{solucion}
+
+\newpage
 \begin{ejercicio}{30}
 Dadas $H : \N^{n+1} \to \N$, $g : \N^n \to \N$ y $h : \N^{n+2} \to \N$, diremos que $f$ se define por \textbf{recursión limitada} mediante $g$, $h$ y $H$, (se notará por $f = R_l(g,h;H)$) si
 \[ f = R(g,h) \text{ y } \forall \vec{x} \forall y [f(x,y) ≤ H(x,y)] \]
@@ -253,4 +269,5 @@ Entonces, puesto que $f = R_l(g,h;H)$, $\forall (\vec{x},y) \in \N^{n+1}$
 \[ f(\vec{x},x_{n+1}) ≤ H(\vec{x},x_{n+1}) ≤ x_l + k'' \]
 \end{sol}
 
+HACER 26, 27, 28, 29
 \end{document}
