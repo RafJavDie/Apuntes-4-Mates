@@ -15,7 +15,18 @@ Un consumidor tiene una función de satisfacción $f(x_1,x_2)=10-(x_1-1)^2-(x_2-
 \item ¿Cuál sería la decisión si los precios unitarios de los productos fuesen 2 y 1 respectivamente y el dinero disponible por el consumidor $m=4$ um?
 \end{enumerate}
 \begin{solucion}\
-Si estás en 4º de carrera y no sabes hacerlo deberías replantearte la vida.
+\begin{enumerate}
+\item $\nabla f(x_1,x_2)=\begin{pmatrix}
+-2(x_1-1)\\
+-2(x_2-2)
+\end{pmatrix}=0\Rightarrow x_1=1, x_2=2$. 
+
+$\nabla^2f(x_1,x_2)=\begin{pmatrix}
+-2 & 0\\
+0  & -2
+\end{pmatrix}$. El menor de orden 2 es positivo y el de orden 1 es negativo, por lo que el punto crítico es un mínimo. Como la matriz es definida negativa tenemos un máximo local. Además, la función es claramente decreciente en todas las direcciones pues es un paraboloide, por lo que el máximo es global. 
+\item Tendríamos que maximizar la función sujeta a la restricción $2x_1+x_2\leq 4$. Como el $(1,2)$ verifica la restricción, sigue siendo óptimo.
+\end{enumerate}
 \end{solucion}
 \end{ejercicio}
 
@@ -38,10 +49,29 @@ utilizando el método de gradiente partiendo del punto $x^0=(0,0,0)'$.
 Sea $f:\R^n\to\R$ una función diferenciable que verifica que $x^*$ es un mínimo local de $f$ a lo largo de cada línea que pasa por $x^*$. Probar que 
 \begin{enumerate}
 \item $\nabla f(x^*)=0$
-\item Considerar la función $f(x,y)=(z-py^2)(z-qy^2)$, donde $0<p<q$. Probar que $(0,0)$ es un mínimo en toda recta, pero no es un mínimo local de $f$.
+\item Considerar la función $f(y,z)=(z-py^2)(z-qy^2)$, donde $0<p<q$. Probar que $(0,0)$ es un mínimo en toda recta, pero no es un mínimo local de $f$.
 \end{enumerate}
 
 \begin{solucion}\
+\begin{enumerate}
+\item Que $x^*$ sea mínimo local a lo largo de cada línea que pasa por $x^*$ es equivalente a decir que las derivadas direccionales de $f$ se anulan en $x^*$ para toda dirección. En particular se anulan en las direcciones de la base canónica, por lo que $\nabla f(x^*)=0$. 
+\item Consideremos aparte las rectas $y=0$ y $z=0$. $f(0,z)=z^2$, $f(y,0)=pqy^4$ luego el resultado es trivial en ambos casos. Consideremos ahora la recta $z=my, m\in\R^*$. Entonces $f(y)=(my-py^2)(my-qy^2)= pqy^4-m(q+p)y^3 +m^2y^2$. $f'(y)=4pqy^3-3m(q+p)y^2+2m^2y$, claramente $y=0$ es un punto crítico. $f''(y)=12pqy^2-6m(q+p)y+2m^2$, por lo que $f''(0)>0$, así que $y=0$ es un mínimo. 
+
+Para ver que $(0,0)$ no es mínimo local de $f$ calcularemos la matriz hessiana. Ya sabemos por el apartado anterior que $\nabla f(0,0)=0$, por lo que no hace falta comprobarlo. $\nabla f(y,z)=\begin{pmatrix}
+4pqy^3-2(p+q)yz\\
+-(p+q)y^2+2z
+\end{pmatrix}\Rightarrow\nabla^2 f(y,z)=\begin{pmatrix}
+12pqy^2-2(p+q)z & -2(p+q)y\\
+-2(p+q)y & 2
+\end{pmatrix}$
+
+$$\nabla^2 f(0,0)=\begin{pmatrix}
+0 & 0\\
+-2(p+q)y & 2
+\end{pmatrix}$$
+
+La matriz no es definida positiva por lo que $(0,0)$ no es mínimo local de $f$.
+\end{enumerate}
 \end{solucion}
 \end{ejercicio}
 
@@ -65,6 +95,20 @@ Por tanto, como $||x^*||-||a_{i_0}||\leq ||x^*-a_{i_x}||\leq ||a_{i_0}||$, $||x^
 Para cada valor de $\beta$ buscar el conjunto de puntos estacionarios de la función: $$f(x,y)=x^2+y^2+\beta xy+x+2y.$$
 ¿Cuáles son mínimos globales y cuáles locales?
 \begin{solucion}\
+Iremos tratando el caso $\beta=0$ sobre la marcha. $\nabla f(x,y)=\begin{pmatrix}
+2x+\beta y +1\\
+2y+\beta x+2
+\end{pmatrix}=0$. Para el caso $\beta=0$ tenemos la solución $x=-\frac{1}{2},y=-1$. En ese caso $\nabla^2 f(x,y)=\begin{pmatrix}
+2 & 0\\
+0 & 2
+\end{pmatrix}$, con lo que el punto es un mínimo local.  Además es mínimo global, que no sé si vosotros lo veis pero yo lo veo (es un paraboloide).
+
+Si $\beta=\pm 2$ entonces no hay puntos críticos puesto que el sistema no tiene solución. En otro caso, la solución es 
+$$x=-\frac{2(b-1)}{b^2-4}, y=\frac{4-b}{b^2-4}$$
+$\nabla^2 f(x,y)=\begin{pmatrix}
+2 & \beta\\
+\beta & 2
+\end{pmatrix}$, cuyos menores son $4-\beta^2$ y $2$. Para $\beta\in (-2,2)$ tenemos un mínimo local y para el resto de casos no hay mínimos locales. Para los casos en los que hay mínimo local es global por lo mismo de antes. 
 \end{solucion}
 \end{ejercicio}
 
@@ -112,14 +156,54 @@ Probar las siguientes cuestiones:
 \end{enumerate}
 
 \begin{solucion}\
+\begin{enumerate}
+\item Calculamos los puntos estacionarios.
+$$\nabla f(x,y)=\begin{pmatrix}
+2(x^2-4)2x\\
+2y
+\end{pmatrix}=0\Rightarrow (0,0),(2,0),(-2,0).$$
+$$\nabla^2 f(x,y)=\begin{pmatrix}
+12x^2-8 & 0
+0 & 2
+\end{pmatrix}$$
+Observamos al sustituir que $(0,0)$ es punto de silla y los otros dos punto son mínimos locales. En los mínimos la función vale 0, y por su definición es siempre no negativa, por lo que son mínimos globales.
+\item Veamos qué puntos son estacionarios.
+$$\nabla f(x,y)=\begin{pmatrix}
+-4x(y-x^2)\\
+2(y-x^2)
+\end{pmatrix}=0\Rightarrow x=y=0, y=x^2.$$
+$$\nabla^2 f(x,y)=\begin{pmatrix}
+12x^2-4y & -4x\\
+-4x & 2
+\end{pmatrix}$$
+Es claro que $(0,0)$ no es ni mínimo ni máximo. 
+\item Calculamos el gradiente. $$\nabla f(x,y)=\begin{pmatrix}
+\frac{1}{2}+\cos{y}\\
+-x\sen{y}
+\end{pmatrix}=0\Rightarrow (0,\arccos{1/2})$$
+No hay más puntos estacionarios, así que veamos si este es mínimo local.
+$$\nabla^2 f(x,y)=\begin{pmatrix}
+0 & -\sen{y}\\
+-\sen{y} & -x\cos{y}
+\end{pmatrix}\Rightarrow \nabla^2f(0,0)=\begin{pmatrix}
+0 & -\sen{\arccos{1/2}}\\
+-\sen{\arccos{1/2}} & 0
+\end{pmatrix}$$
+Así que no es mínimo local. Eso quiere decir que la función no tiene mínimos locales. 
+\end{enumerate}
 \end{solucion}
 \end{ejercicio}
 
 \newpage 
 
 \begin{ejercicio}{9}
-La han liado y han puesto el mismo que el 2
+Resolver el siguiente sistema de ecuaciones
+\[
+2x_1-x_2+x_3=-1,\ x_1+2x_2=0,\ 3x_1+x_2+2x_3=3
+\]
+utilizando el método de gradiente partiendo del punto $x^0=(0,0,0)'$.
 \begin{solucion}\
+
 \end{solucion}
 \end{ejercicio}
 
