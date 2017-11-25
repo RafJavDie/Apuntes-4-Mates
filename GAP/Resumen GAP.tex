@@ -2068,9 +2068,34 @@ semirrectas de $Vor(S)$ se llaman \textbf{vértices} y \textbf{aristas de Vorono
 
 \begin{teorema} Cada vértice del diagrama de Voronoi es la intersección de tres (y solo tres) aristas del diagrama.
 \end{teorema}
-\begin{dem}(Hacer dibujos para cuando se lo mande a mcgarcia)
+\begin{dem}
 
 Sea $v$ un vértice y supongamos que es la intersección de $k\geq 4$ aristas. Las aristas están sobre las mediatrices, luego $v\in m_{12}\cap m_{23}\cap\cdots\cap m_{k1}$. Eso significa que $d(v,p_1)=d(v,p_2)=\cdots =d(v,p_k)$. Pero entonces $v$ es el centro de una circunferencia que pasa por todos esos puntos, y no hay más puntos de la nube dentro del círculo que delimita, lo cual contradice la asunción de que no puede haber 4 puntos no sean cocirculares.
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-6.4,-1.7) rectangle (6.33,1.5);
+\draw [line width=0.8pt,] (0.,0.)-- (-1.39,1.39);
+\draw [line width=0.8pt,] (0.,0.)-- (-1.36,-1.4);
+\draw [line width=0.8pt,] (0.,0.)-- (1.78,-1.38);
+\draw [line width=0.8pt,] (0.,0.)-- (1.78,0.8);
+\draw [line width=0.8pt] (0.,0.) circle (1.3874076545846215cm);
+\draw (0.01,0.36) node[anchor=north west] {$v$};
+\draw (0.94,1.3) node[anchor=north west] {$p_1$};
+\draw (1.39,0.06) node[anchor=north west] {$p_2$};
+\draw (0.15,-1.35) node[anchor=north west] {$p_3$};
+\draw (-1.9,-0.14) node[anchor=north west] {$p_4$};
+\draw (-2.2,1.49) node[anchor=north west] {$m_{14}$};
+\draw (1.44,0.78) node[anchor=north west] {$m_{12}$};
+\draw (1.47,-0.84) node[anchor=north west] {$m_{23}$};
+\draw (-1.31,-1.34) node[anchor=north west] {$m_{34}$};
+\begin{scriptsize}
+\draw [fill=black] (0.,0.) circle (2.0pt);
+\draw [fill=black] (-1.35,-0.32) circle (2.0pt);
+\draw [fill=black] (0.817279437876457,1.1211397417023192) circle (2.0pt);
+\draw [fill=black] (1.3860189350138712,-0.0620605493289793) circle (2.0pt);
+\draw [fill=black] (0.14337450595247617,-1.3799796197925835) circle (2.0pt);
+\end{scriptsize}
+\end{tikzpicture}
 
 Supongamos ahora que $k=2$, entonces solamente hay dos regiones, pero entonces solo habría una mediatriz (una por cada región, ya que en cada punto hay una región), luego no es posible que haya dos aristas. $\QED$
 \end{dem}
@@ -2091,9 +2116,29 @@ Si hubiera otro punto $p_k$, entonces $d(v,p_k)<d(v,p_1)=d(v,p_2)=d(v,p_3)$. Por
 \begin{teorema} Para cada $p_i \in S$, cada vecino más
 próximo a $p_i$ define una arista en el polígono $Vor(p_i)$.
 \end{teorema}
-\begin{dem} (Hacer dibujos para cuando se lo mande a mcgarcia)
+\begin{dem} 
 
 Llamamos $p_j$ a uno de los vecinos de $p_i$ más próximos. Supongamos que ninguna arista de $Vor(p_i)$ está sobre la mediatriz $m_{ij}$. Sea $v$ el punto medio de $\overline{p_ip_j}$. Por hipóteis, $v$ no está en ninguna arista. Sea $u$ la interesección de $\overline{p_ip_j}$ con el borde de $Vor(p_i)$. Entonces $u$ está sobre alguna arista de $Vor(p_i)$. Esa arista separa dos regiones de Voronoi de 2 generadores $p_i$ y $p_k$. Entonces $d(p_i,p_k)\leq 2d(p_i,u)<2(p_i,v)=d(p_i,p_j)$, por lo que entonces $p_j$ no es uno de los vecinos más próximos. 
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-8.2,-1) rectangle (5.3,1.4);
+\draw [line width=1.pt] (-1.5,-2.04) -- (-1.5,3.53);
+\draw [line width=1.pt,dash pattern=on 2pt off 2pt] (-3.,0.)-- (0.,0.);
+\draw [line width=1.pt,] (-1.04,0.7)-- (0.,1.81);
+\draw [line width=1.pt,] (-1.04,-0.3)-- (0.,-1.);
+\draw [line width=1.pt,] (-1.04,0.7)-- (-1.04,-0.3);
+\draw (-2.2,0.6) node[anchor=north west] {$m_{ij}$};
+\draw (0.09,0.19) node[anchor=north west] {$p_i$};
+\draw (-3.55,0.19) node[anchor=north west] {$p_j$};
+\draw (-1.9,0.05) node[anchor=north west] {$v$};
+\draw (-1.,0.32) node[anchor=north west] {$u$};
+\begin{scriptsize}
+\draw [fill=black] (0.,0.) circle (2.0pt);
+\draw [fill=black] (-3.,0.) circle (2.0pt);
+\draw [fill=black] (-1.5,0.) circle (2.0pt);
+\draw [fill=black] (-1.04,0.) circle (2.0pt);
+\end{scriptsize}
+\end{tikzpicture}
 
 Además, si $v$ estuviera dentro de $Vor(p_i)$, entonces $d(v,p_i)<d(v,p_j)$, lo cual es una contradicción. $\QED$
 \end{dem}
@@ -2102,11 +2147,57 @@ Además, si $v$ estuviera dentro de $Vor(p_i)$, entonces $d(v,p_i)<d(v,p_j)$, lo
 \begin{teorema} El polígono $Vor(p_i)$ es no acotado si y
 sólo si $p_i$ es un punto de la envolvente convexa de $S$.
 \end{teorema}
-\begin{dem} (Hacer dibujos para mcgarcia)
+\begin{dem} 
+$\boxed{\Rightarrow}$ Supongamos que $p_i$ no está en la envolvente convexa. Vamos a probar que $Vor(p_i)$ es acotada. Sean $p_1,p_2,p_3\in S$ tales que $p_i$ está en el interior del triángulo delimitado por los 3 vértices anteriores. Llamamos $c_{kj}$ a la circunferencia que pasa por $p_i,p_j,p_k,\ j,k=1,2,3,\ j\neq k$. Tomamos una circunferencia $C$ que contenga a las otras 3 en su interior. Si trazamos una recta que pase por $p_i$ y un punto $x$ exterior a $C$, entonces esa recta corta a alguna circunferencia interior en (al menos) un punto. Supongamos que corta a $c_{23}$. Entonces $d(x,p_i)>d(x_i,p_2)$ o $d(x,p_i)>d(x_i,p_3)$, luego $x\notin Vor(p_i)$. Así que si $x\in Vor(p_i)$, eso significa que $x$ está dentro de o sobre $C$. Eso significa que $Vor(p_i)$ está acotado por $C$
 
-$\boxed{\Rightarrow}$ Supongamos que $p_i$ no está en la envolvente convexa. Vamos a probar que $Vor(p_i)$ es acotada. Sean $p_1,p_2,p_3\in S$ tales que $p_i$ está en el interior del triángulo delimitado por los 3 vértices anteriores. Llamamos $c_{kj}$ a la circunferencia que pasa por $p_i,p_j,p_k,\ j,k=1,2,3,\ j\neq k$. Tomamos una recta $C$ que pase por $p_i$ y un punto $x$ exterior a las circunferencias. Entonces esa recta corta a alguna circunferencia en (al menos) un punto. $d(x,p_i)<d(x_i,p_2)$
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-7.,-2.62) rectangle (5,2.95);
+\draw [line width=1.pt] (0.295,0.43450819672131147) circle (0.5251879406631552cm);
+\draw [line width=1.pt] (0.295,-0.63) circle (0.6956471806886017cm);
+\draw [line width=1.pt] (-0.7753571428571429,0.08357142857142857) circle (0.7798479868878685cm);
+\draw [line width=1.pt] (0.,0.) circle (1.8cm);
+\draw [line width=1.pt] (0.,0.)-- (2.,-1.);
+\draw (1.3,1.69) node[anchor=north west] {$C$};
+\draw (-0.1,-0.05) node[anchor=north west] {$p_i$};
+\draw (-0.5,1.22) node[anchor=north west] {$p_1$};
+\draw (0.72,0.21) node[anchor=north west] {$p_2$};
+\draw (-0.85,-0.6) node[anchor=north west] {$p_3$};
+\draw (2.,-0.88) node[anchor=north west] {$x$};
+\draw (0.7,0.9) node[anchor=north west] {$c_{12}$};
+\draw (0.6,-1.05) node[anchor=north west] {$c_{23}$};
+\draw (-1.45,-0.56) node[anchor=north west] {$c_{13}$};
+\begin{scriptsize}
+\draw [fill=black] (0.,0.) circle (2.0pt);
+\draw [fill=black] (-0.4,-0.6) circle (2.0pt);
+\draw [fill=black] (-0.2,0.61) circle (2.0pt);
+\draw [fill=black] (0.59,0.) circle (2.0pt);
+\draw [fill=black] (2.,-1.) circle (2.0pt);
+\end{scriptsize}
+\end{tikzpicture}
 
-$\boxed{\Leftarrow}$ Supongamos que $Vor(p_i)$ es acotado. Entonces por el dibujo (dibujar p, un polígono alrededor y puntos fuera), $p_i$ no está sobre la envolvente convexa. $\QED$
+$\boxed{\Leftarrow}$ Supongamos que $Vor(p_i)$ es acotado. Entonces por el dibujo, $p_i$ no está sobre la envolvente convexa. 
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-5.25,-1.5) rectangle (6.25,1.5);
+\draw[line width=0.5pt] (-0.48,0.86) -- (0.6,0.76) -- (1.,0.) -- (0.,-0.69) -- (-1.,0.) -- cycle;
+\draw [line width=0.5pt] (-0.48,0.86)-- (0.6,0.76);
+\draw [line width=0.5pt] (0.6,0.76)-- (1.,0.);
+\draw [line width=0.5pt] (1.,0.)-- (0.,-0.69);
+\draw [line width=0.5pt] (0.,-0.69)-- (-1.,0.);
+\draw [line width=0.5pt] (-1.,0.)-- (-0.48,0.86);
+\draw (0.05,0.19) node[anchor=north west] {$p_i$};
+\begin{scriptsize}
+\draw [fill=black] (0.,0.) circle (2.0pt);
+\draw [fill=black] (0.,1.39) circle (2.0pt);
+\draw [fill=black] (-1.25,0.74) circle (2.0pt);
+\draw [fill=black] (-0.78,-0.79) circle (2.0pt);
+\draw [fill=black] (0.97,-1.17) circle (2.0pt);
+\draw [fill=black] (1.35,0.32) circle (2.0pt);
+\draw [fill=black] (1.,1.) circle (2.0pt);
+\end{scriptsize}
+\end{tikzpicture}
+
+$\QED$
 \end{dem}
 
 \begin{coro} Las semirrectas de $Vor(S)$ corresponden a
