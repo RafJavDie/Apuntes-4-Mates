@@ -32,7 +32,91 @@ tiene rango 1.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}\
+Recordemos que la inmersión de Veronese para $n=1$ es $\phi_{1,d}[x_0:x_1]=[x^{\alpha^0}:\dots:x^{\alpha^d}]$, donde $x^{\alpha^i}=x_0^{\alpha^i_0}x_1^{\alpha^i_1}$ y $\alpha^i$ es la $i$-ésima tupla de $S(1,d)$, es decir, la $i$-ésima tupla de enteros negativos que cumple $\alpha_0+\alpha_1=d$. El orden que vamos a establecer va a ser el siguiente: $$(d,0),(d-1,1),\dots, (0,d).$$
+Por tanto $x^{\alpha^i}=x_0^{d-i}x_1^i$. Así, $\phi_{1,d}[x_0:x_1]=[x_0^d:x_0^{d-1}x_1:\dots:x_1^d]$
+\begin{enumerate}
+\item A partir de las aclaraciones anteriores, observamos que $$X_d\subseteq\V(x_0x_2-x_1^2,x_0x_3-x_1x_2,\dots, x_0x_d-x_1x_{d-1},x_1x_3-x_2^2,x_1x_4-x_2x_3,\dots, x_{d-2}x_d-x_{d-1}^2)=X$$
+Es decir, verifican las ecuaciones
+\begin{align*}
+x_ix_{i+2}=x_{i+1}^2\ &\forall i=0,\dots,d-1\\
+x_ix_j=x_{i+1}x_{j-1}\ &\forall 0\leq i< j\leq d, j-i>2
+\end{align*}
+En efecto, $\forall i=0,\dots,d$, $x_i=y_0^{d-i}y_1^i$, luego $$x_ix_{i+2}=y_0^{d-i}y_1^iy_0^{d-i-2}y_1^{i+2}=y_0^{2(d-i-1)}y_1^{2(i+1)}=x_{i+1}^2.$$ Si tomamos $0\leq i<j\leq d$ tales que $j-i>2$, entonces, $$x_ix_{j}=y_0^{d-i}y_1^iy_0^{d-j}y_1^{j}=y_0^{d-i-1}y_1^{i+1}y_0^{d-j+1}y_1^{j-1}=x_{i+1}x_{j-1}.$$
+Esos polinomios son precisamente los menores de la matriz del enunciado, que al ser nulos significa que la matriz tiene rango 1.
 
+Recíprocamente, tomemos un punto que haga que la matriz tenga rango 1. Entonces pueden darse dos casos, o que las dos filas de la matriz sean proporcionales siendo todos sus elementos no nulos, o que solo haya un elemento distinto de 0, que debe ser o bien $x_0$ o bien $x_d$ por cómo está construida la matriz. En el primer casos tendríamos $x_1=kx_0, x_2=kx_1=k^2x_0$, etc. para $k\neq 0$. En definitiva, el punto sería de la forma $[x_0:kx_0:k^2x_0:\dots:k^dx_0]$. Como en este caso estamos suponiendo que $x_0\neq 0$, este punto es el mismo que $[1:k:\dots:k^d]=\phi_{1,d}[1:k]$. En el segundo caso, obtendríamos o bien el punto $[1:0:\dots:0]=\phi_{1,d}[1:0]$ o bien $[0:\dots:0:1]=\phi_{1,d}[0:1].$
+
+Esto de hecho prueba la otra inclusión, pues tener rango 1 es equivalente a que sus menores sean 0, por lo que $X_d=X$.
+
+\item En primer lugar observemos que $\Ima{\phi_{1,d}}\cap\A^1=\phi_{1,d}(1:x_1)=[1:x_1:x_1^2:\dots:x_1^d]=\Ima{\varphi}$ vista en como subconjunto proyectivo, por lo que $\overline{\Ima{\varphi}}\subseteq \Ima{\phi_{1,d}}=X_d$. 
+
+Por otra parte, podemos ver que $\Ima\varphi=\V(y_2-y_1^2, y_3-y_1^3,\dots, y_d-y_1^d)=\V(f_1,\dots,f_d)$. La inclusión $\Ima\varphi\subseteq \V(f_1,\dots,f_d)$ es trivial. Sea entonces $\beta=(\beta_1,\dots,\beta_d)\in\V(f_1,\dots,f_d)$. De aquí obtenemos $\beta_i=\beta_1^i\ \forall i=1,\dots, d$, luego $\beta\in\Ima\varphi$.
+Además, $\I(\V(f_1,\dots,f_d))=\langle f_1,\dots,f_d\rangle=I$, pues $k[y_1,\dots,y_d]/I\cong k[y_1]$, lo cual implica que $I$ es primo, por lo que $I=\sqrt{I}$. 
+
+Llamemos $$J=\langle x_ix_{i+2}=x_{i+1}^2,\ x_kx_j=x_{k+1}x_{j-1}\ \forall i=0,\dots,d-1\ \ \forall 0\leq k< j\leq d, j-i>2 \rangle.$$ %Entonces $J=\sqrt{J}$ pues $k[x_0,x_1,\dots,x_d]/J\cong k[x_0,x_1]$, que es dominio de integridad. 
+Recordemos que $\V(J)=\{[1:t:\dots:t^d], t\in k\}\cup\{[0:\dots:0:1]\}=X_d$ por ser los puntos de la imagen de $\phi_{1,d}$. Vamos a probar que $\V(J)=\overline{\Ima\varphi}$. Supongamos que $f\in k[x_0,x_1,\dots, x_n]$ es homogéneo de grado $n$ que se anula en $\Ima\varphi$. Entonces el polinomio $g(t)=f(1,t,\dots,t^d)$ debe ser el polinomio 0. Si $f(0,\dots,0,1)\neq 0$, entonces $f$ debe contener un término de la forma $ax_d^n$, con $a\neq 0$. Pero entonces $g(t)=at^{dn}+h(t)$ con $\deg h<dn$, lo cual quiere decir que $g$ no puede ser el polinomio 0, con lo que tenemos una contradicción. 
+
+Como $\overline{\Ima\varphi}=\V^{pr}(\{f^h\mid f\in I\})\supseteq\V(J)=X_d$, hemos probado el resultado.
+
+\item Se va a probar un resultado más general, y es que $d+1$ puntos distintos de $X_d$ son siempre linealmente independientes, en particular, 3 de ellos no pueden estar en la misma recta. Sea $\{[a_{i,0}^d:a_{i,0}^{d-1}a_{i,1}:\dots:a_{i,1}^d]\mid i=0,\dots, d\}\subset X_d$ un conjunto de $d+1$ puntos distintos de $X_d$. Que sean linealmente independientes es equivalente a que el determinante
+\[
+\begin{vmatrix}
+a_{0,0}^d&a_{0,0}^{d-1}a_{0,1}&\dots&a_{0,1}^d\\
+a_{1,0}^d&a_{1,0}^{d-1}a_{1,1}&\dots&a_{1,1}^d\\
+\vdots   &\vdots               &\ddots& \vdots\\
+a_{d,0}^d&a_{d,0}^{d-1}a_{d,1}&\dots&a_{d,1}^d        
+\end{vmatrix}\neq 0
+\]
+Puede pasar que alguno de los $a_{i,0}=0$ o que ninguno lo sea. En caso de que ninguno lo sea, como no nos importa el valor numérico del determinante sino simplemente si es cero o no, podemos pasar a considerar el determinante
+\[
+\begin{vmatrix}
+1&\frac{a_{0,1}}{a_{0,0}}&\dots& \left(\frac{a_{0,1}}{a_{0,0}}\right)^d\\
+1&\frac{a_{1,1}}{a_{1,0}}&\dots& \left(\frac{a_{1,1}}{a_{1,0}}\right)^d\\
+\vdots   &\vdots               &\ddots& \vdots\\
+1&\frac{a_{d,1}}{a_{d,0}}&\dots& \left(\frac{a_{d,1}}{a_{d,0}}\right)^d       
+\end{vmatrix}
+\]
+En el caso de que alguno de los $a_{i,0}=0$, su fila será proporcional a $(0,0,\dots,0,1)$, por lo que podemos desarrollar por esa fila y obtener un determinante análogo al anterior de orden uno menos. Es decir, en cualquier caso obtenemos un determinante de la forma
+\[
+|V|=\begin{vmatrix}
+1&\alpha_1&\dots& \alpha_1^{n-1}\\
+1&\alpha_2&\dots& \alpha_1^{n-1}\\
+\vdots   &\vdots               &\ddots& \vdots\\
+1&\alpha_n&\dots& \alpha_n^{n-1}       
+\end{vmatrix}
+\] 
+con $n=d$ o $n=d+1$ según el caso. Sea como fuere, vamos a probar que  $$|V|=\prod_{1\leq i<j\leq n}(\alpha_j-\alpha_i).$$ En particular, cuando los $\alpha_i$ son distintos entre sí, $|V|\neq 0$. Para el caso $n=2$ es fácil ver que $|V|=\alpha_2-\alpha_1=\prod_{1\le i<j\le 2} (\alpha_j-\alpha_i)$. Vamos al caso general $n\times n$. En este caso hacemos la operación elemental $C_j\rightarrow C_j-(\alpha_1 C_{j-1})\ \forall j=2,\dots, n$, cuyo resultado es
+\[
+|V|=\begin{vmatrix}
+1 & 0 & 0 & \dots & 0\\
+1 & \alpha_2-\alpha_1 & \alpha_2(\alpha_2-\alpha_1) & \dots & \alpha_2^{n-2}(\alpha_2-\alpha_1)\\
+1 & \alpha_3-\alpha_1 & \alpha_3(\alpha_3-\alpha_1) & \dots & \alpha_3^{n-2}(\alpha_3-\alpha_1)\\
+\vdots & \vdots & \vdots & \ddots &\vdots \\
+1 & \alpha_n-\alpha_1 & \alpha_n(\alpha_n-\alpha_1) & \dots & \alpha_n^{n-2}(\alpha_n-\alpha_1)\\
+\end{vmatrix}
+\]
+Desarrollando por la primera fila obtenemos el determinante $(n-1)\times(n-1)$
+\[
+\begin{vmatrix} V \end{vmatrix}=
+(\alpha_2-\alpha_1)(\alpha_3-\alpha_1)\cdots(\alpha_n-\alpha_1)
+\begin{vmatrix}
+1 & \alpha_2 & \alpha_2^2 & \dots & \alpha_2^{n-2}\\
+1 & \alpha_3 & \alpha_3^2 & \dots & \alpha_3^{n-2}\\
+\vdots & \vdots & \vdots &\ddots &\vdots \\
+1 & \alpha_n & \alpha_n^2 & \dots & \alpha_n^{n-2}\\
+\end{vmatrix}
+\]
+Volvemos a hacer el mismo proceso en ese determinante, esta vez $C_j\rightarrow C_j-(\alpha_2 C_{j-1})\ \forall j=2,\dots, n-1$, de donde obtendríamos
+\[
+|V|=(\alpha_2-\alpha_1)\cdots(\alpha_n-\alpha_1)\begin{vmatrix}
+1 & 0 & 0 & \dots & 0\\
+1 & \alpha_3-\alpha_2 & \alpha_3(\alpha_3-\alpha_2)& \dots & \alpha_3^{n-3}(\alpha_3-\alpha_2)\\
+\vdots & \vdots & \vdots & \ddots&\vdots \\
+1 & \alpha_n-\alpha_2 & \alpha_n(\alpha_n-\alpha_2) & \dots & \alpha_n^{n-3}(\alpha_n-\alpha_2)\\
+\end{vmatrix}
+\]
+Continuando este proceso hasta llegar al caso $2\times 2$ se prueba el resultado.
+\end{enumerate}
 \end{solucion}
 \newpage 
 
