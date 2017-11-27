@@ -505,6 +505,18 @@ diferenciable y $A\subseteq N$ un subconjunto. Fijada una
 topología sobre $A$, existe, a lo más, una estructura
 diferenciable en $A$ tal que $(A,i)$ es una subvariedad de $N$.
 \end{teorema}
+\begin{dem}
+Fijemos una topología sobre $A$ y supongamos que existen dos estructuras diferenciables tal que $(A,i)$ es subvariedad de $N$. Sean $\calA_1$ y $\calA_2$ un atlas de cada estructura y vamos a ver que están relacionados. Tenemos que $i\in\calF(A,N)$. La identidad hace conmutativo el siguiente diagrama
+\[
+\begin{tikzcd}
+A (T,\calA_1)\arrow[r, hookrightarrow,  "i"]\arrow[dr, dashrightarrow, "Id"] & N\\
+ & A (T,\calA_2)\arrow[u,hookrightarrow, "i"]
+\end{tikzcd}
+\]
+Como la topología es la misma en los dos casos, la identidad es homeomorfismo, en particular continua. Luego $Id\in\calF(A,A)$ para cualquiera de los atlas en cada caso, así que $Id:A\to A$ es difeomorfismo. Eso implica que los atlas están relacionados. $\QED$
+\end{dem}
+
+
 \begin{teorema}
 {\bf (Segundo Teorema de Unicidad).} Sean $N$ una variedad
 diferenciable y $A\subseteq N$ un subconjunto. Si con la
@@ -514,6 +526,18 @@ estructura de variedad diferenciable única, es decir, que para
 que $A$ sea subvariedad de $N$ tiene que ser, precisamente, con la
 topología relativa y con la misma estructura diferenciable.
 \end{teorema}
+\begin{dem}
+Supongamos que $(A,T|_A)$ tiene estructura de variedad diferenciable tal que $(A,i)$ es subvariedad de $N$. Sea $\mathcal{T}$ una topología sobre $A$ con la que $(A,i)$ también es subvariedad de $N$.  Vamos a ver que $\calA_1\sim\calA_2$ y que las dos topologías son la misma. Tenemos el siguiente diagrama conmutativo
+\[
+\begin{tikzcd}
+(A,\mathcal{T}) (\calA_2)\arrow[r,hookrightarrow, "i_2"]\arrow[dr,dashrightarrow, "Id"] & N\\
+& (A,T|_A) (\calA_1)
+\end{tikzcd}
+\]
+Tenemos que $i_2\in\calF((A,\mathcal{T}), N)$. aDEMÁS, $((A,T|_A),i_1)$ es subvariedad regular (lema de factorización) de $N$, $i_2(A)=A=i_1(A)$. Por tanto, $Id:(A,\mathcal{T})\to(A,T|_A)$ es continua, así que por el lema de factorización $Id\in\calF((A,\mathcal{T}),(A,T|_A))$. 
+
+Como $i_2=i_1\circ Id\Rightarrow i_{2*}=(i_1\circ Id)_*=i_{1*}\circ Id_*$ en todo punto de $A$, po lo que $Id_*$ es inyectiva. Como $Id$ es biyectiva, por un corolario se tiene que $Id$ es difeomorfismo, lo cual quiere decir que los atlas son compatibles. Por ser difeomorfismo, en particular es homeomorfismo, por lo que también se tiene la igualdad de topologías. $\QED$
+\end{dem}
 \section{Teorema de la Función Implícita. Teorema de Whitney.}
 \begin{teorema}
 {\bf (Teorema de la Función Implícita).} Sean
@@ -524,6 +548,14 @@ cualquier $p\in P$, entonces $P$ tiene una única estructura de
 variedad diferenciable tal que $(P,i)$ es una subvariedad regular
 de $M$ de dimensión ${\rm dim}(M)-{\rm dim}(N)$.
 \end{teorema}
+\begin{dem}
+En el apéndice. $\QED$
+\end{dem}
+
+\begin{ej}
+$f:\R^3\to\R:(x,y,z)\mapsto x^2+y^2+z^2-1$. $f\in\calF(\R^3,\R), 0\in\R, P=f^{-1}(\{0\})=S^2\neq\emptyset$. La matriz de $f_{*p}$ es $J_p(f)$, que tiene rango máximo porque $(0,0,0)\notin S^2$, por lo que $f_{*p}$ es sobreyectiva. Por el teorema de la función implícita, existe una única estructura diferenciable sobre $S^2$ tal que $(S^2,i)$ es subvariedad regular de $\R^3$ de dimensión $dim\R^3-dim\R=2$, que es la de superficie regular.
+\end{ej}
+
 \begin{coro} Sea $f:\R^m\fl\R^n$ una aplicación
 diferenciable. Si el conjunto $P=\{p\in\R^m/f(p)=0\}$ es no
 vacío y el rango de la matriz jacobiana de $f$ vale $n$ en
