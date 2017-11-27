@@ -11,10 +11,11 @@
 \begin{ejercicio}{2} Sea $X \subset \mathbb{P}^n_k$ una variedad proyectiva, $U\subset \mathbb{P}^1_k$ un abierto no vacío y $\phi\colon U\rightarrow X$ un morfismo. Probar que $\phi$ se extiende de manera única a un morfismo $\overline{\phi}\colon \mathbb{P}^1_k\rightarrow X$. Probar que no es cierto el caso en el que $X$ es afín.
 \end{ejercicio}
 \begin{solucion}
-Como $U\subset \PP^1_k$ es un abierto contenido en una variedad (la propia recta poryectiva), es un variedad cuasiproyectiva, por lo que tiene sentido considerar el morfismo entre $U$ y $X$. Además, sabemos que existen $f_1,\dotsc,f_n$ polinomios homogéneos del mismo grado tales que $\phi = (f_1 : \dotsc : f_n)$. Si los $f_i$ no se anulan simultáneamente en ningún punto de $\PP^n_k $, entonces podemos tomar como $\overline{\phi}=\phi$. En caso contrario, sabemos que se puede anular simultáneamente en, a lo sumo, una cantidad finita $s_1,\dotsc,s_k$ de puntos proyectivos. Supongamos que $s_i = (a_i:b_i)$. En tal caso, podemos escribir $f_i = \left(\prod_{i=1}^k (b_ix_0-a_ix_1)\right)\cdot f_i'$ para cualesquiera representantes de $s_i$ fijos, y con $f_i'$ polinomios homogéneos del mismo grado. En tal caso podemos tomar como $\overline{\phi}=(f_1',\dotsc,f_n')$, pues no se anula en $\PP^1_k $ y coincide con $\phi$ en $U$. 
+Si existe una función $\overline{\phi}$ que extiende a $\varphi$, dado que $\overline{\phi}$ es continua si y solo si para todo $A$ se tiene que $\overline{\phi}(\overline{A})\subset \overline{\overline{\phi}(A)}$, entonces $$\overline{\phi}(\PP^1_k)=\overline{\phi}(\overline{U})\subset \overline{\overline{\phi}(U)}\subset \overline{X} = X$$
 
-En ambos casos, como $\phi$ es continua si y solo si para todo $A$ se tiene que $\phi(\overline{A})\subset \overline{\phi(A)}$, entonces $$\phi(\PP^1_k)=\phi(\overline{U})\subset \overline{\phi(U)}\subset \overline{X} = X$$
-Luego las $\overline{\phi}$ propuestas encajan con las requeridas en el enunciado. 
+Dado que $\phi$ es un morfismo con dominio $U\subset \PP^1_k$, entonces $\phi$, tenemos que ver que $\phi$ puede extenderse sobre $\{z_1,\dotsc,z_m\}=\PP_k^1\setminus U$.  $\phi = (f_1 : \dotsc : f_n)$. Si los $f_i$ no se anulan simultáneamente en ningún punto de $\PP^n_k $, entonces podemos tomar como $\overline{\phi}=\phi$. En caso contrario, sabemos que se puede anular simultáneamente en, a lo sumo, una cantidad finita $s_1,\dotsc,s_k$ de puntos proyectivos. Supongamos que $s_i = (a_i:b_i)$. En tal caso, podemos escribir $f_i = \left(\prod_{i=1}^k (b_ix_0-a_ix_1)\right)\cdot f_i'$ para cualesquiera representantes de $s_i$ fijos, y con $f_i'$ polinomios homogéneos del mismo grado. En tal caso podemos tomar como $\overline{\phi}=(f_1',\dotsc,f_n')$, pues no se anula en $\PP^1_k $ y coincide con $\phi$ en $U$. 
+
+En ambos casos, 
 
 Para ver que el resultado no es cierto si $X$ es afín, consideremos 
 \end{solucion}
