@@ -61,7 +61,7 @@ Probar que son recursivos:
 \begin{enumerate}
 \item Podemos escribir este conjunto como $\{e\in\N: e$ es el número de Gödel de un programa sin variables auxiliares$\}$. Sea $long(e+1)$ la longitud del programa que tiene ese código y $(e+1)_i$ la $i$-ésima instrucción de dicho programa. $e\in A\Leftrightarrow(\forall j)_{\leq long(e+1)}[j\geq 1\rightarrow (l(r((e+1)_j))=1\lor 2r(r((e+1)_j)))]$ que es primitivo recursivo.
 \item $e\in B\Leftrightarrow long(e+1)\leq 7 \land (\exists i)_{\leq long(e+1)}(l(r((e+1)_i))=2$. Primitivo recursivo. Si el existencial no estuviera acotado seguiría sirviendo porque sería recursivo.
-\item $e\in C\Leftrightarrow long(e+1)>5\land e+1=p_{long(e+1)}^{\#(L)+2}k, k\in\N$, donde $L$ es la etiqueta a la que dirije el condicional. Ahora bien, $\#(L)=l(r((e+1)_{long(e+1)}))-2$, por lo que todo es primitivo recursivo.
+\item $e\in C\Leftrightarrow long(e+1)>5\land r(r((e+1)_{long(e+1)})=2$.
 \item $x\in D\Leftrightarrow \texttt{STEP}(x,x^2,x)=1\land \texttt{STEP}(x,x^2,x-1)=0$. 
 \item $x\in E\Leftrightarrow (l(\texttt{di}(0,x,100)))_1=32$
 \end{enumerate}

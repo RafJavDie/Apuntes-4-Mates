@@ -1,0 +1,112 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+\usepackage{wasysym}
+\usetikzlibrary{automata,positioning}
+\usepackage{mathdots}
+\newcommand{\sii}{{\Leftrightarrow}}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ciencias de la Computación}
+
+\author{Javier Aguilar Martín, Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{1}
+Sea $P(\vec{x},y_1,\dots,y_n)$ un predicado recursivo. Probar que el conjunto
+\[ A = \{\vec{x} : (\exists y_1)\cdots(\exists y_n) P(\vec{x},y_1,\dots,y_n)\} \]
+es recursivamente enumerable.
+\end{ejercicio}
+\begin{solucion}
+Tenemos que:
+\begin{align*}
+	\vec{x} \in A & \sii (\exists y_1)\dots(\exists y_n) P(\vec{x},y_1,\dots,y_n)\\
+	& \sii (\exists z) P(\vec{x},(z)_1,\dots,(z)_n)
+\end{align*}
+Como $P(\vec{x},(z)_1,\dots,(z)_n)$ es recursivo, $A$ es recursivo enumerable.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Sea $P(x,y,u)$ un predicado recursivo. Probar que el conjunto
+\[ A = \{(x,z) : (\forall y)_{≤z} (\exists u) P(x,y,u)\} \]
+es recursivamente enumerable.
+\end{ejercicio}
+\begin{solucion}
+Como hay una cantidad finita de $y≤z$, también hay una cantidad finita de $u$. Es decir podemos acotar el existencical.
+\begin{align*}
+	(x,z) \in A & \sii (\forall y)_{≤z} (\exists u) P(x,y,u)\\
+	& \sii (\exists v)(\forall y)_{≤z} (\exists u)_{≤v} P(x,y,u)
+\end{align*}
+ que es recursivamente enumerable, luego $A$ es recursivamente enumerable.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+Sea $P(x,y,u)$ un predicado r.e. Probar que el conjunto
+\[ A = \{(x,z) : (\forall y)_{≤z} (\exists u) P(x,y,u)\} \]
+es recursivamente enumerable.
+\end{ejercicio}
+\begin{solucion}
+Sea $R(x,y,u,v)$ recursivo tal que $P(x,y,u) \sii (\exists v) R(x,y,u,v)$ (existe por el teorema de la proyección.
+\begin{align*}
+	(x,z) \in A & \sii (\forall y)_{≤z} (\exists u) P(x,y,u)\\
+	& \sii (\forall y)_{≤z} (\exists u) (\exists v) R(x,y,u,v)\\
+	& \sii (\forall y_{≤z}) (\exists w) R(x,y,l(w),r(w))
+\end{align*}
+Por el ejercicio \ref{ejer:2}, este último predicado es recursivo enumerable. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4}
+Sea $f \in \mathcal{P}^{(1)}$. Probar que:
+\begin{enumerate}
+	\item $A \subseteq \N \land A$ r.e. $\Rightarrow f(A)$ r.e. y $f^{-1}(A)$ r.e.
+	\item $f$ total $\land\ A \subseteq \N \land A$ recursivo $\Rightarrow f^{-1}(A)$ recursivo.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{5}
+Sea $A \subseteq \N$. Probar que son equivalentes:
+\begin{enumerate}
+	\item $A$ es r.e.
+	\item Existe $f \in \mathcal{P}$ (posiblemente parcial) tal que $\text{rang}(f) = A$.
+	\item Existe $f \in \mathcal{P}\mathcal{R}$ tal que $\text{rang}(f)=A$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{itemize}
+	\item[$(1\Rightarrow 3)$] Teorema de enumeración.
+	\item[$(3\Rightarrow 2)$] Trivial.
+	\item[$(2\Rightarrow 1)$] Teorema del rango.
+	
+	Sea $f \in \mathcal{P}$: Por el teorema de la forma normal. $f(x)\!\downarrow \Leftrightarrow \exists z \mathcal{T}_n(x,e,z)$ y $f(x) = l((μz)\mathcal{T}_n(x,e,z))$.
+	Entonces:
+	\begin{align*}
+	y \in \text{rang}(f) & \Leftrightarrow (\exists x) (f(x)=y)\\
+	& \Leftrightarrow (\exists x)(\exists z) (T_n(x,e,z) \land l(z) = y)\\
+	& \Leftrightarrow (\exists x) (\exists t) (\texttt{STEP}(x,e,t)) \land ((di(x,e,t))_1 = y)\\
+	& \Leftrightarrow (\exists z) (\texttt{STEP}(l(z),e,r(z))) \land ((di(l(z),e,r(z))_1 = y)
+\end{align*}
+\end{itemize}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{6}
+Sea $A \subseteq \N$ tal que $A \neq \emptyset$. probar que son equivalentes:
+\begin{enumerate}
+	\item $A$ es recursivo.
+	\item Existe $f \in \mathcal{R}^{(1)}$ tal que $\forall x \in \N$ $(f(x) ≤ f(x+1)) \land A = \text{rang}(f)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+\end{document}
