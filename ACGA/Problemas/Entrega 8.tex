@@ -11,20 +11,24 @@
 \begin{ejercicio}{2} Sea $X \subset \mathbb{P}^n_k$ una variedad proyectiva, $U\subset \mathbb{P}^1_k$ un abierto no vacío y $\phi\colon U\rightarrow X$ un morfismo. Probar que $\phi$ se extiende de manera única a un morfismo $\overline{\phi}\colon \mathbb{P}^1_k\rightarrow X$. Probar que no es cierto el caso en el que $X$ es afín.
 \end{ejercicio}
 \begin{solucion} 
- Sean $x,y\in U$, con $x$ fijo e $y$ arbitrario, entonces $\exists U_x,U_y \subset U$ abiertos tales que $x\in U_x$ e $y\in U_y$, $\exists f_0,f_1$ y $g_0,g_1$ polinomios homogéneos con $\deg(f_i)=n$ $\forall i$ y $\deg(g_i)=m$ $\forall i$, tales que tanto los $f_i$ y los $g_i$ no se anulan simultáneamente en sus respectivos abiertos, teniéndose finalmente que 
+Sean $x,y\in U$, con $x$ fijo e $y$ arbitrario, entonces $\exists U_x,U_y \subset U$ abiertos tales que $x\in U_x$ e $y\in U_y$, $\exists f_0,f_1$ y $g_0,g_1$ polinomios homogéneos con $\deg(f_i)=n$ $\forall i$ y $\deg(g_i)=m$ $\forall i$, tales que tanto los $f_i$ y los $g_i$ no se anulan simultáneamente en sus respectivos abiertos, teniéndose finalmente que 
 $$\phi =(f_0(x_0:x_1):f_1(x_0:x_1)) \quad \forall (x_0:x_1) \in U_x$$ 
 $$\phi = (g_0(x_0:x_1):g_1(x_0:x_1)) \quad \forall (x_0:x_1) \in U_y$$
 Podemos definir los morfismos $\phi_x$ y $\phi_y$ en $U_x$ y $U_y$ tomando  los propios dominios como abiertos de definición en cada punto y como polinomios los propios $f_i$ y $g_i$ correspondientemente. 
 
-Podemos suponer que los $f_0,f_1$ y los $g_0,g_1$ no se anulan simultáneamente en ningún punto de $\A^2_k$. Veamos el caso de las $f_i$, el otro es análogo. Sabemos que se puede anular simultáneamente en, a lo sumo, una cantidad finita $s_1,\dotsc,s_k$ de puntos proyectivos. Supongamos que $s_i = (a_i:b_i)$. En tal caso, podemos escribir $f_i = \left(\prod_{i=1}^k (b_ix_0-a_ix_1)\right)\cdot f_i'$ para cualesquiera representantes de $s_i$ fijos, y con $f_i'$ polinomios homogéneos del mismo grado. En tal caso podemos tomar los polinomios $(f_1',\dotsc,f_n')$, pues no se anulan simultáneamente en $U$ y coinciden con $\phi_x$ en $U$. 
+Podemos suponer que los $f_0,f_1$ y los $g_0,g_1$ no se anulan simultáneamente en ningún punto de $\A^2_k$. Veamos el caso de las $f_i$, el otro es análogo. Sabemos que se puede anular simultáneamente en, a lo sumo, una cantidad finita $s_1,\dotsc,s_k$ de puntos proyectivos. Supongamos que $s_i = (a_i:b_i)$. En tal caso, podemos escribir $f_i = \left(\prod_{i=1}^k (b_ix_0-a_ix_1)\right)\cdot f_i'$ para cualesquiera representantes de $s_i$ fijos, y con $f_i'$ polinomios homogéneos del mismo grado. En tal caso podemos tomar los polinomios $(f_0':f_1')$, pues no se anulan simultáneamente en $\PP^1_k$ y coinciden con $(f_0:f_1)$ en $U$. 
 
-Por lo anterior, podemos extender las definiciones de $\phi_x$ y $\phi_y$ a todo $\PP^1_k$. Vamos a ver que de hecho son el mismo morfismo. Como $\phi_x$ coincide con $\phi_y$ en $U_x\cap U_y$, en este dominio $h(z)=f_0g_1(z)$ y $p(z)=f_1g_0(z)$ coinciden. En particular, lo hacen en un número inifnito de puntos afines $(1:a)$, luego $p^{dh}$ coincide con $h^{dh}$ en un número infinito de puntos, lo que prueba que son iguales en todo $\A^1_k$. Por esto mismo, $p\equiv h$ en todo $\A_k^2$. Utilizando un procedimiento análogo al de la demostración de la Proposición 1.7.2, podemos deducir que $\phi_x$ y $\phi_y$ también coinciden en $\PP^1_k$. 
+Por lo anterior, podemos extender las definiciones de $\phi_x$ y $\phi_y$ a todo $\PP^1_k$. Vamos a ver que de hecho son el mismo morfismo. Como $\phi_x$ coincide con $\phi_y$ en $U_x\cap U_y$, en este dominio $h(z)=f_0g_1(z)$ y $p(z)=f_1g_0(z)$ coinciden. En particular, lo hacen en un número inifnito de puntos afines $(1:a)$, luego $p^{dh}$ y $h^{dh}$ -polinomios en una varaible- coinciden en un número infinito de puntos, lo que prueba que son iguales en todo $\A^1_k$. Por esto mismo, $p \equiv x_0^qh$, pero como $\deg{p}=\deg{h} =n\cdot m$ deducimos que $q=0$, luego coinciden en todo $\A_k^2$. Utilizando un procedimiento análogo al de la demostración de la Proposición 1.7.2, podemos deducir que $\phi_x$ y $\phi_y$ también coinciden en $\PP^1_k$. 
 
-En particular $\phi_x(y)=\phi_y(y)=\phi(y)$. Como $y$ era arbitrario, deducimos que $\phi_x(z)=\phi(z)$ $\forall z \in U$. Es decir, hemos encontrado un morfismo $\phi_x$ de $\PP^1_k$ que coincide con $\phi$ en $U$.
-
-Idea para la unicidad, ver que si un morfismo coincide en un abierto con $\phi_x$ entonces coincide en todos los puntos.
-
-El caso afín se me antoja imposible. 	
+En particular $\phi_x(y)=\phi_y(y)=\phi(y)$. Como $y$ era arbitrario, deducimos que $\phi_x(z)=\phi(z)$ $\forall z \in U$. Como los morfismos proyectivos son continuos, entonces para todo $A$, $\phi(\overline{A})\subset \overline{\phi(A)}$. Aplicándolo a $\phi_x$ con $A=U$, tenemos que
+$$
+\phi_x(\PP^1_k)=\phi_x(\overline{U}) \subset \overline{\phi_x({U})} \subset \overline{X} =X
+$$
+Es decir, hemos encontrado un morfismo $\phi_x$ de $\PP^1_k$ en $X$ que coincide con $\phi$ en $U$. Vamos a ver que es único. Supongamos que existe otro morfismo $\psi$ que extiende a $\phi$. En tal caso $\phi_x$ coincide con $\psi$ en todo $U$. Tenemos que ver que coinciden en $\PP^1_k\setminus U$ (una cantidad finita de puntos). Sea $z \in \PP^1_k\setminus U$, entonces $\exists U_z \subset \PP^1_k$ tales que $z\in U_z$ y existen $g_0,g_1$ homogéneos del mismo grado que no se anulan simultáneamente en $\PP^1_k$ tales que
+$$
+\psi(x_0:x_1) = (g_0(x_0:x_1):g_1(x_0:x_1)) \quad \forall (x_0:x_1)\in U_z
+$$
+De manera análoga a la prueba de que $\phi_x$ y $\phi_y$ coinciden en $\PP^1_k$, podemos ver que $\phi$  y $\phi_x$ coinciden en $U_z$, (viendo que si $f_0g_1 = f_1g_0$ coinciden en $U\cap U_z$ entonces coinciden en $\PP^1_k$, en particular en $U_z$ donde $\phi = (g_0:g_1)$), lo que prueba que son iguales en todo $\PP^1_k$ (pues $z$ era arbitrario en el complementario de $U$).
 \end{solucion}
 \newpage 
 \begin{ejercicio}{5}\
