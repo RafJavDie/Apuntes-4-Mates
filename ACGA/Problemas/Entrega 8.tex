@@ -59,7 +59,7 @@ Por tanto $x^{\alpha^i}=x_0^{d-i}x_1^i$. Así, $\phi_{1,d}[x_0:x_1]=[x_0^d:x_0^{
 \item A partir de las aclaraciones anteriores, observamos que $$X_d\subseteq\V(x_0x_2-x_1^2,x_0x_3-x_1x_2,\dots, x_0x_d-x_1x_{d-1},x_1x_3-x_2^2,x_1x_4-x_2x_3,\dots, x_{d-2}x_d-x_{d-1}^2)=X$$
 Es decir, verifican las ecuaciones
 \begin{align*}
-x_ix_{i+2}=x_{i+1}^2\ &\forall i=0,\dots,d-1\\
+x_ix_{i+2}=x_{i+1}^2\ &\forall i=0,\dots,d-2\\
 x_ix_j=x_{i+1}x_{j-1}\ &\forall 0\leq i< j\leq d, j-i>2
 \end{align*}
 En efecto, $\forall i=0,\dots,d$, $x_i=y_0^{d-i}y_1^i$, luego $$x_ix_{i+2}=y_0^{d-i}y_1^iy_0^{d-i-2}y_1^{i+2}=y_0^{2(d-i-1)}y_1^{2(i+1)}=x_{i+1}^2.$$ Si tomamos $0\leq i<j\leq d$ tales que $j-i>2$, entonces, $$x_ix_{j}=y_0^{d-i}y_1^iy_0^{d-j}y_1^{j}=y_0^{d-i-1}y_1^{i+1}y_0^{d-j+1}y_1^{j-1}=x_{i+1}x_{j-1}.$$
@@ -74,7 +74,7 @@ Esto de hecho prueba la otra inclusión, pues tener rango 1 es equivalente a que
 Por otra parte, podemos ver que $\Ima\varphi=\V(y_2-y_1^2, y_3-y_1^3,\dots, y_d-y_1^d)=\V(f_1,\dots,f_d)$. La inclusión $\Ima\varphi\subseteq \V(f_1,\dots,f_d)$ es trivial. Sea entonces $\beta=(\beta_1,\dots,\beta_d)\in\V(f_1,\dots,f_d)$. De aquí obtenemos $\beta_i=\beta_1^i\ \forall i=1,\dots, d$, luego $\beta\in\Ima\varphi$.
 Además, $\I(\V(f_1,\dots,f_d))=\langle f_1,\dots,f_d\rangle=I$, pues $k[y_1,\dots,y_d]/I\cong k[y_1]$, lo cual implica que $I$ es primo, por lo que $I=\sqrt{I}$. 
 
-Llamemos $$J=\langle x_ix_{i+2}=x_{i+1}^2,\ x_kx_j=x_{k+1}x_{j-1}\ \forall i=0,\dots,d-1\ \ \forall 0\leq k< j\leq d, j-i>2 \rangle.$$ %Entonces $J=\sqrt{J}$ pues $k[x_0,x_1,\dots,x_d]/J\cong k[x_0,x_1]$, que es dominio de integridad. 
+Llamemos $$J=\langle x_ix_{i+2}=x_{i+1}^2,\ x_kx_j=x_{k+1}x_{j-1}\ \forall i=0,\dots,d-2\ \ \forall 0\leq k< j\leq d, j-i>2 \rangle.$$ %Entonces $J=\sqrt{J}$ pues $k[x_0,x_1,\dots,x_d]/J\cong k[x_0,x_1]$, que es dominio de integridad. 
 Recordemos que $\V(J)=\{[1:t:\dots:t^d], t\in k\}\cup\{[0:\dots:0:1]\}=X_d$ por ser los puntos de la imagen de $\phi_{1,d}$. Vamos a probar que $\V(J)=\overline{\Ima\varphi}$. Supongamos que $f\in k[x_0,x_1,\dots, x_n]$ es homogéneo de grado $n$ que se anula en $\Ima\varphi$. Entonces el polinomio $g(t)=f(1,t,\dots,t^d)$ debe ser el polinomio 0. Si $f(0,\dots,0,1)\neq 0$, entonces $f$ debe contener un término de la forma $ax_d^n$, con $a\neq 0$. Pero entonces $g(t)=at^{dn}+h(t)$ con $\deg h<dn$, lo cual quiere decir que $g$ no puede ser el polinomio 0, con lo que tenemos una contradicción. 
 
 Como $\overline{\Ima\varphi}=\V^{pr}(\{f^h\mid f\in I\})\supseteq\V(J)=X_d$, hemos probado el resultado.
@@ -101,7 +101,7 @@ En el caso de que alguno de los $a_{i,0}=0$, su fila será proporcional a $(0,0,
 \[
 |V|=\begin{vmatrix}
 1&\alpha_1&\dots& \alpha_1^{n-1}\\
-1&\alpha_2&\dots& \alpha_1^{n-1}\\
+1&\alpha_2&\dots& \alpha_2^{n-1}\\
 \vdots   &\vdots               &\ddots& \vdots\\
 1&\alpha_n&\dots& \alpha_n^{n-1}       
 \end{vmatrix}
