@@ -1,0 +1,76 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+\providecommand{\bo}[1]{\mathcal{O}\left(#1\right)}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Teoría Analítica de Números}
+\author{Rafael González López\\Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{4}
+\begin{itemize}
+\item[]
+\item[a)] Demostrar que
+$$
+-\frac{\Gamma'(1+s)}{\Gamma(1+s)} = \gamma + \sum_{n=1}^\infty (-1)^n\zeta(n+1)s^n
+$$
+\item[b)] Deducir que
+$$
+x\cot x = 1 - 2\sum_{n=1}^\infty\zeta(2n)\left(\frac{x}{\pi}\right)^{2n}
+$$
+\end{itemize}
+\end{ejercicio}
+\begin{sol}
+\begin{itemize}
+\item[]
+\item[a)] Sabemos por teoría que podemos expresar $\gamma$ es una función meromorfa definida en todo el plano complejo salvo los enteros no positivos, sin ceros y que verifica en este dominio la expresión:
+\[ \frac{1}{Γ(s)} = s e^{γs} \prod_{n=1}^{∞} \left(1 + \frac{s}{n}\right) e^{-s/n} \]
+Cambiando de parámetro $s=z+1$ y renombrando $z$ como $s$, por lo anterior podemos considerar la siguiente derivada logarítica en todo el plano complejo salvo los enteros negativos
+\begin{align*}
+\frac{d}{ds}\left(-\log \Gamma(s+1)\right) &=  \frac{d}{ds}\log\left((s+1) e^{γ(s+1)} \prod_{n=1}^{∞} \left(1 + \frac{(s+1)}{n}\right) e^{-(s+1)/n}\right)\\
+&= \frac{d}{ds}\left( \log(s+1)+\gamma(s+1)+\sum_{n=1}^\infty \log\left(1+\frac{s+1}{n}\right)-\frac{s+1}{n}\right)\\
+&= \frac{1}{s+1} +\gamma + \sum_{n=1}^\infty \left(\frac{1}{n+s+1}-\frac{1}{n}\right) = -\frac{\Gamma'(s+1)}{\Gamma(s+1)}
+\end{align*}
+Pasamos a denotar $\psi(s) = \dfrac{\Gamma'(s)}{\Gamma(s)}$. Por tanto, hemos llegado a la expresiones
+\begin{align*}
+-\psi(s+1) &= \gamma+\frac{1}{s+1} + \sum_{n=1}^\infty \left(\frac{1}{n+s+1}-\frac{1}{n}\right)\\
+& = \gamma -\sum_{n=1}^\infty \left(\frac{1}{n} - \frac{1}{n+s}\right) = \gamma -\sum_{n=1}^\infty \left(\frac{s}{n(n+s)}\right) 
+\end{align*}
+Donde $h(s)=\sum_{n=1}^\infty \left(\frac{s}{n(n+s)}\right)$ define una función meromorfa definida en todo $\C$ salvo los enteros negativos, ya que la serie converge trivialmente en ese dominio. Vamos a estudiar la serie de Taylor de $h(s)$.
+\begin{align*}
+h'(s) & = \sum_{n=1}^\infty\frac{1}{(n+s)^2} & h''(s)&=  -2\sum_{n=1}^\infty\frac{1}{(n+s)^3}\\
+h'''(s) &= 2 \cdot 3 \, \sum_{n=1}^\infty\frac{1}{(n+s)^4} &  h^{4)}(s) &= -2 \cdot 3 \cdot 4 \,\sum_{n=1}^\infty\frac{1}{(n+s)^5}
+\end{align*}
+Continuando podemos probar por inducción de manera trivial que
+$$h^{n)}(s) = (-1)^{n+1}n!\,\sum_{k=1}^\infty\frac{1}{(k+s)^{n+1}}$$
+Por tanto, como $h$ es analítica en $0$ y $h(0)=0$, podemos escribir
+$$
+h(s)=\sum_{n=0}^\infty \frac{h^{n)}(0)}{n!}s^n = \sum_{n=1}^\infty\sum_{k=1}^\infty\frac{(-1)^{n+1}}{k^{n+1}}  s^n = \sum_{n=1}^\infty(-1)^{n+1}\sum_{k=1}^\infty\frac{1}{k^{n+1}}  s^n 
+$$
+Utilizando lo que hemos visto anteriormente tenemos en $|s|<1$ la siguiente expresión
+$$
+-\psi(s+1) = \gamma -  \sum_{n=1}^\infty(-1)^{n+1}\sum_{k=1}^\infty\frac{1}{k^{n+1}}  s^n = \gamma + \sum_{n=1}^\infty(-1)^{n}\zeta(n+1) s^n
+$$
+Como queríamos demostrar.
+\newpage
+\item[b)] Sabemos por teoría que 
+$$\Gamma(s)\Gamma(1-s)=\frac{\pi}{\sin(\pi s)}
+$$
+Utilizando la derivada logarítmica vamos a deducir lo siguiente:
+\begin{align*}
+(\log{\Gamma(s)\Gamma(1-s))}' & = \frac{\Gamma'(s)}{\Gamma(s)} - \frac{\Gamma'(1-s)}{\Gamma(1-s)} = \psi(s)-\psi(1-s) = \\
+&=\left(\log\frac{\pi}{\sin(\pi s)}\right)'  = -\pi\cot(\pi s)
+\end{align*}
+$$
+\psi(1-s)-\psi(s) = \pi\cot(\pi s) \Longrightarrow s\psi(1-s)-s\psi(s) = s\pi\cot(\pi s)
+$$
+Vamos a analizar la función $q(s) = s\psi(1-s)-s\psi(s)$. Obviamente es una función meromorfa definida en el plano complejo salvo en los enteros. Además, por igualdad anterior, deducimos que $q(s)$ es impar, luego en sus series de Taylor tiene los coeficientes impares nulos.
+\begin{align*}
+s\psi(1-s)-s\psi(s) & = \gamma + sh(-s) -\gamma - sh(s-1)\\
+&=s\sum_{n=1}^\infty(-1)^{n}\zeta(n+1) (-s)^n - s\sum_{n=1}^\infty(-1)^{n}\zeta(n+1) (s-1)^n
+\end{align*}
+\end{itemize}
+\end{sol}
+\newpage
+\end{document}
