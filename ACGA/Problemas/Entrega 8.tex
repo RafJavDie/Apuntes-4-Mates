@@ -10,14 +10,21 @@
 \maketitle
 \begin{ejercicio}{2} Sea $X \subset \mathbb{P}^n_k$ una variedad proyectiva, $U\subset \mathbb{P}^1_k$ un abierto no vacío y $\phi\colon U\rightarrow X$ un morfismo. Probar que $\phi$ se extiende de manera única a un morfismo $\overline{\phi}\colon \mathbb{P}^1_k\rightarrow X$. Probar que no es cierto el caso en el que $X$ es afín.
 \end{ejercicio}
-\begin{solucion}
-Si existe una función $\overline{\phi}$ que extiende a $\varphi$, dado que $\overline{\phi}$ es continua si y solo si para todo $A$ se tiene que $\overline{\phi}(\overline{A})\subset \overline{\overline{\phi}(A)}$, entonces $$\overline{\phi}(\PP^1_k)=\overline{\phi}(\overline{U})\subset \overline{\overline{\phi}(U)}\subset \overline{X} = X$$
+\begin{solucion} 
+ Sean $x,y\in U$, con $x$ fijo e $y$ arbitrario, entonces $\exists U_x,U_y \subset U$ abiertos tales que $x\in U_x$ e $y\in U_y$, $\exists f_0,f_1$ y $g_0,g_1$ polinomios homogéneos con $\deg(f_i)=n$ $\forall i$ y $\deg(g_i)=m$ $\forall i$, tales que tanto los $f_i$ y los $g_i$ no se anulan simultáneamente en sus respectivos abiertos, teniéndose finalmente que 
+$$\phi =(f_0(x_0:x_1):f_1(x_0:x_1)) \quad \forall (x_0:x_1) \in U_x$$ 
+$$\phi = (g_0(x_0:x_1):g_1(x_0:x_1)) \quad \forall (x_0:x_1) \in U_y$$
+Podemos definir los morfismos $\phi_x$ y $\phi_y$ en $U_x$ y $U_y$ tomando  los propios dominios como abiertos de definición en cada punto y como polinomios los propios $f_i$ y $g_i$ correspondientemente. 
 
-Dado que $\phi$ es un morfismo con dominio $U\subset \PP^1_k$, entonces $\phi$, tenemos que ver que $\phi$ puede extenderse sobre $\{z_1,\dotsc,z_m\}=\PP_k^1\setminus U$.  $\phi = (f_1 : \dotsc : f_n)$. Si los $f_i$ no se anulan simultáneamente en ningún punto de $\PP^n_k $, entonces podemos tomar como $\overline{\phi}=\phi$. En caso contrario, sabemos que se puede anular simultáneamente en, a lo sumo, una cantidad finita $s_1,\dotsc,s_k$ de puntos proyectivos. Supongamos que $s_i = (a_i:b_i)$. En tal caso, podemos escribir $f_i = \left(\prod_{i=1}^k (b_ix_0-a_ix_1)\right)\cdot f_i'$ para cualesquiera representantes de $s_i$ fijos, y con $f_i'$ polinomios homogéneos del mismo grado. En tal caso podemos tomar como $\overline{\phi}=(f_1',\dotsc,f_n')$, pues no se anula en $\PP^1_k $ y coincide con $\phi$ en $U$. 
+Podemos suponer que los $f_0,f_1$ y los $g_0,g_1$ no se anulan simultáneamente en ningún punto de $\A^2_k$. Veamos el caso de las $f_i$, el otro es análogo. Sabemos que se puede anular simultáneamente en, a lo sumo, una cantidad finita $s_1,\dotsc,s_k$ de puntos proyectivos. Supongamos que $s_i = (a_i:b_i)$. En tal caso, podemos escribir $f_i = \left(\prod_{i=1}^k (b_ix_0-a_ix_1)\right)\cdot f_i'$ para cualesquiera representantes de $s_i$ fijos, y con $f_i'$ polinomios homogéneos del mismo grado. En tal caso podemos tomar los polinomios $(f_1',\dotsc,f_n')$, pues no se anulan simultáneamente en $U$ y coinciden con $\phi_x$ en $U$. 
 
-En ambos casos, 
+Por lo anterior, podemos extender las definiciones de $\phi_x$ y $\phi_y$ a todo $\PP^1_k$. Vamos a ver que de hecho son el mismo morfismo. Como $\phi_x$ coincide con $\phi_y$ en $U_x\cap U_y$, en este dominio $h(z)=f_0g_1(z)$ y $p(z)=f_1g_0(z)$ coinciden. En particular, lo hacen en un número inifnito de puntos afines $(1:a)$, luego $p^{dh}$ coincide con $h^{dh}$ en un número infinito de puntos, lo que prueba que son iguales en todo $\A^1_k$. Por esto mismo, $p\equiv h$ en todo $\A_k^2$. Utilizando un procedimiento análogo al de la demostración de la Proposición 1.7.2, podemos deducir que $\phi_x$ y $\phi_y$ también coinciden en $\PP^1_k$. 
 
-Para ver que el resultado no es cierto si $X$ es afín, consideremos 
+En particular $\phi_x(y)=\phi_y(y)=\phi(y)$. Como $y$ era arbitrario, deducimos que $\phi_x(z)=\phi(z)$ $\forall z \in U$. Es decir, hemos encontrado un morfismo $\phi_x$ de $\PP^1_k$ que coincide con $\phi$ en $U$.
+
+Idea para la unicidad, ver que si un morfismo coincide en un abierto con $\phi_x$ entonces coincide en todos los puntos.
+
+El caso afín se me antoja imposible. 	
 \end{solucion}
 \newpage 
 \begin{ejercicio}{5}\
