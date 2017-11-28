@@ -19,11 +19,35 @@ Sea $0 \to N \to M \to P \to 0$ una sucesión exacta de $A-$módulos.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}\
+Vamos a utilizar la siguiente notación para los morfismos de la sucesión exacta $$0\to N  \overset{\psi}{\to} M  \overset{\phi}{\to} P \to 0$$ De la exactitud de la sucesión obtenemos de modo inmediato que $\psi$ es inyectiva y que $\phi$ es sobreyectiva. 
 \begin{enumerate}
-\item
-\item
-\item
-\item
+\item Supongamos que $N$ tiene generadores $n_1,\dots, n_r$ y $P$ tiene generadores $p_1,\dots, p_l$. Nótese que $\Ima\psi$ está de forma trivial finitamente generado, pues basta tomar las imágenes de sus generadores. Entonces podemos tomar $p_i=\phi(m_i), i=1,\dots, l$ para ciertos elementos $m_i\in M$. Sea $m\in M$, entonces existen $b_1,\dots, b_m\in A$ tales que $\phi(m)=\sum_{i=1}^lb_ip_i=\phi\left(\sum_{i=1}^lb_im_i\right)$, luego $m-\sum_{i=1}^lb_im_i\in\ker\phi=\Ima\psi$. Por lo que $m-\sum_{i=1}^lb_im_i=\sum_{j=1}^r a_j\psi(n_j)$ para ciertos $a_1,\dots,a_r\in A$. Por tanto basta despejar para obtejer que $m=\sum_{j=1}^r a_r\psi(n_r)+\sum_{i=1}^lb_im_i$, por lo que $M$ está finitamente generado por $\psi(n_1),\dots, \psi(n_r)$ y $m_1,\dots, m_l$.
+
+\item Sea $A$ un anillo. Entonces $A$ es un $A$-módulo finitamente generado por su elemento unidad. En este caso, los submódulos coinciden con los ideales por definición. Luego basta dar un ejemplo de anillo con ideales no finitamente generados, pues si $A$ es un anillo y $B$ es un ideal, con la inclusión y la aplicación cociente tenemos de forma inmediata la sucesión exacta
+$$0\to B \overset{i}{\hookrightarrow} A\overset{\pi}{\to} A/B\to 0$$
+Tomemos entonces $A=\Z[x_1,x_2,\dots]$. Sea entonces $B=\langle x_1,x_2,\dots  \rangle$ el ideal generado por todas la variables. Evidentemente no puede ser generado por una cantidad finita de variables, pues cualquiera que excluyamos no podrá ser generada por el resto. 
+
+Si $M$ es finitamente generado, entonces $P$ también lo es, pues podemos tomar un conjunto finito de generadores $\langle m_1,\dots, m_r\rangle = M$, de modo que $\langle \phi(m_1),\dots, \phi(m_r)\rangle =\phi(M)=P$, por lo que tenemos un conjunto finito de generadores de $P$.
+
+\item Sea $M_0\subseteq M_1\subseteq\cdots$ una cadena ascendente de submódulos de $M$. Esta cadena induce sendas cadenas ascendentes $\psi^{-1}(M_0)\subseteq\psi^{-1}(M_1)\subseteq\cdots$ en $N$ y $\phi(M_0)\subseteq\phi(M_1)\subseteq\cdots$ en $P$. Por hipótesis ambas cadenas son estacionarias. 
+
+Dados $n_1,n_2\in\N$ tales que $\psi^{-1}(M_{n_1})=\psi^{-1}(M_{n_1+1})=\cdots$ y $\phi(M_{n_2})=\phi(M_{n_2+1})=\cdots$, tomamos $n=\max\{n_1,n_2\}$. Consideramos entonces el siguiente diagrama conmutativo
+\[
+\begin{tikzcd}
+0\arrow[r] & \psi^{-1}(M_{n})\arrow[r,"\psi"]\arrow[d, "Id"] & M_n\arrow[r,"\phi"]\arrow[d, hookrightarrow, "i"] & \phi(M_{n})\arrow[d,"Id"]\arrow[r] & 0\\
+0\arrow[r] & \psi^{-1}(M_{n+1})\arrow[r,"\psi"]& M_{n+1}\arrow[r,"\phi"] & \phi(M_{n+1})\arrow[r] & 0
+\end{tikzcd}
+\]
+Se tiene claramente que las filas son sucesiones exactas. 
+
+Vamos a probar que $i:M_n\hookrightarrow M_{n+1}$ es sobreyectiva, lo cual implicará que en realidad es la identidad y por tanto la cadena será estacionaria (para un $n_0>n$ se podría hacer el mismo razonamiento y encontraríamos que efectivamente todos los módulos a partir de $n$ coinciden).
+
+Sea $b'\in M_{n+1}$, entonces $\exists c=\phi(b')\in\phi(M_{n+1})=\phi(M_n)$. A su vez, $\exists b\in M_n$ tal que $\phi(b)=c=\phi(b')$, por lo que $b-b'\in\ker\phi=\Ima\psi$ por exactitud. Por tanto, $\exists a\in\psi^{-1}(M_{n+1})=\psi^{-1}(M_n)$ tal que $\psi(a)=b-b'$, luego $b'=b-\psi(a)=i(b-\psi(a))$, como queríamos demostrar.
+ 
+  
+\item Sea $N_0\subseteq N_1\subseteq\cdots$ una cadena ascendente de submódulos de $N$. Entonces, mediante $\psi$ da lugar a una cadena ascendente en $M$, $\psi(N_0)\subseteq \psi(N_1)\subseteq\cdots$, que debe ser estacionaria, es decir, $\exists n\in\N$ tal que $\psi(N_n)=\psi(N_{n+1})=\cdots$. Por la inyectividad de $\psi$ esto implica que $N_n=N_{n+1}=\cdots$, por lo que es estacionaria. 
+
+Sea $P_0\subseteq P_1\subseteq\cdots$ una cadena ascendente de submódulos de $P$. Entonces, por la sobreyectividad de $\phi$ tenemos que esa cadena es igual a $\phi(M_0)\subseteq\phi(M_1)\cdots$ para alguna cadena creciente de submódulos en $M$. Por tanto, $\exists n\in\N$ tal que $M_n=M_{n+1}=\cdots$, con lo que $\phi(M_n)=\phi(M_{n+1})=\cdots$, lo cual significa que la cadena original era estacionaria. 
 \end{enumerate}
 \end{solucion}
 
