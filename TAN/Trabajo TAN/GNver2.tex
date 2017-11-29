@@ -31,7 +31,7 @@
 \newcommand{\Pri}{\mathbb{P}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
-\newtheorem{demo}[thm]{Proof}
+\newtheorem{demo}[thm]{Demostración}
 \providecommand{\gabs}[1]{\left|{#1}\right|}
 \begin{document}
 
@@ -262,7 +262,7 @@ Mostramos una salida del código para hacernos una idea de cómo funciona el códig
 
 \section{Árbol de Gilbreath}
 
-Consideremos todas las sucesiones $\{a_n\}_{n\in I}$ tales que $a_1=2$, $a_2=3$, $a_n$ es impar y mayor que $3$ para todo $n$. Si no hay confusión sobre la sucesión de la que estamos hablando, notaremos 
+Consideremos todas las sucesiones crecientes $\{a_n\}_{n\in I}$ tales que $a_1=2$, $a_2=3$, $a_n$ es impar y mayor que $3$ para todo $n$. Si no hay confusión sobre la sucesión de la que estamos hablando, notaremos 
 \begin{gather*}
 d^1_n = a_{n+1}-a_n\\
 d^k_n = \abs{d_{n+1}^{k-1}-d_{n}^{k-1}}
@@ -276,71 +276,83 @@ Una consecuencia trivial de esta definición es que
 La conjetura de Gilbreath es equivalente a que $\{p_n\}$ sea una sucesión de Gilbreath. 
 \end{prop}
 \subsection{Crecimiento y distribución}
-Aunque estamos particularmente interesados en estudiar las sucesiones de Gilbreath crecientes, sin embargo hemos damos una definición más relajada con el fin de agilizar su estudio mediante una serie de nuevos conceptos.
 \begin{defi}
 Sea $S=\{a_n\}_{n\in\N_k}$ una sucesión finita de Gilbreath. Definimos $\mathcal{G}_S$ como el conjunto de todos los elementos tales que si $m\in \mathcal{G}_S$ entonces la sucesión definida como $b_n = a_n$ si $n\leq k$ y $b_{k+1}=m$ sigue siendo una sucesión de Gilbreath.
 \end{defi}
-\begin{defi}
-En las condiciones de la definición anterior denotamos $\mathcal{G}^+_S$ al conjunto $\{s \in \mathcal{G}_S \mid s > a_n\}$. 
-\end{defi}
-Este último concepto tendrá particular interés cuando $S$ sea además creciente. 
 \begin{ejem}Vamos a ilustrar estos conceptos con algunos ejemplos. 
 \begin{enumerate}
-\item Si $S=\{2,3\}$ entonces $\gilb{S}=\{3,5\}$. 
-\item Si $S=\{2,3,5,7\}$ entonces $\gilb{S}=\{3,5,7,9,11\}$. 
-\item Si $S=\{2,3,5,9\}$ entonces $\gilb{S}=\{3,5,7,9,11,13,15,17\}$.
-\item Si $S=\{2,3,5,7,11\}$ entonces $\gilb{S}^+ = \{13,15,17,19,21\}$.
+\item Si $S=\{2,3\}$ entonces $\gilb{S}=\{5\}$. 
+\item Si $S=\{2,3,5,7\}$ entonces $\gilb{S}=\{9,11\}$. 
+\item Si $S=\{2,3,5,9\}$ entonces $\gilb{S}=\{11,13,15,17\}$.
+\item Si $S=\{2,3,5,7,11\}$ entonces $\gilb{S} = \{13,15,17,19,21\}$.
 \end{enumerate}
 \end{ejem}
 \begin{defi}
 Generalizando el concepto, diremos que $\{a_n\}_{i\in I}$ es mayor que $\{b_n\}_{i\in I}$ si $a_i \geq b_i$ para todo $i\in I$.
 \end{defi}
-\begin{conj} Sean $S$ y $K$ dos sucesiones finitas de Gilbreath. Si $S\geq K$, entonces $\mathcal{G}_K\subset \mathcal{G}_S$.
-\end{conj}
-
-\begin{conj}
-Sea la sucesión $\{m_n\}_{n\in \N}$ la menor sucesión creciente de Gilbreath y $\{M_n\}_{n\in \N}$ la mayor sucesión creciente de Gilbreath. Ambas definiciones en el sentido de que, sea $\{a_n\}_{n\in \N}$ otra sucesión creciente de Gilbreath, entonces $m_n \leq a_n \leq M_n$ para todo $n \in \N$. Entonces
+\begin{prop}
+El conjunto de las sucesioens de Gilbreath con el orden anterior tiene un mínimo y un máximo. De hecho,  la sucesión $\{m_n\}_{n\in \N}$ la menor sucesión de Gilbreath y $\{M_n\}_{n\in \N}$ la mayor sucesión de Gilbreate, entonces
 \begin{itemize}
-\item $\{m_n\}_{n\in \N}$ es la sucesión $m_1 = 2$, $m_n = 2n-1$ si $n>1$.
-\item $\{M_n\}_{n\in \N}$ es la sucesión $M_1=2$, $M_n = 2^{n-1}+1$ si $n>1$.
+\item $\{m_n\}_{n\in \N}$ es la sucesión $m_1 = 2$, $m_n = 2n-1$  $\forall n\geq 2$.
+\item $\{M_n\}_{n\in \N}$ es la sucesión $M_n = 2^{n-1}+1$ $\forall  n\geq 1$.
 \end{itemize}
-\end{conj}
+\end{prop}
+\newpage
+\begin{demo}
+Como las sucesiones de Gilbreath están formadas por impares para $n\geq 2$ y son crecientes, si $\{m_n\}$ es una sucesión de Gilbreath, entonces ha de ser forzosamente la menor. Pero esto es evidente pues $d^1_1 = 1$ y $d_n^1 = 2$ $\forall n \geq 2$, por tanto $d^2_1 = 1$ y $d^2_n = 0$ $\forall n \geq 2$, de donde se tiene trivialmente que $d^k_1 = 1$ $\forall k \geq 1$.
 
-Vamos a estudiar $\gilb{S}$.
+Veamos primero que $\{M_n\}$ es una sucesión de Gilbreath. Claramente 
+\begin{align*}
+d_1^1 &= a_2 - a_1 = 3-2 =1 = 2^0\\
+d_n^1 &= 2^n+1-2^{n-1}-1 = 2^{n-1}(2-1) = 2^{n-1} \quad n\geq 2\\
+d_n^2 &= 2^n - 2^{n-1} = 2^{n-1}
+\end{align*}
+Por inducción se tiene que, $\forall n,k$ $d_n^k = 2^{n-1}$. Por tanto, $d_1^k = 1$ $\forall k\geq 1$. Vamos a probar que es la mayor por reducción al absurdo. Supongamos que existe otra sucesión $\{\zeta_n\}$ que es mayor que $\{M_n\}$ haciéndose esa desigualdad estricta por primera vez en el $p$-ésimo término. En tal caso, $\zeta_p = 2^{p-1}+1+s$ con $s\geq 2$ par. Entonces
+\begin{align*}
+d_n^1 &= 2^{n-1} \quad n\leq p-2\\
+d_{p-1}^1 &= 2^n+1+s-2^{n-1}-1 = 2^{n-1}(2-1) = 2^{n-1}+s 
+\end{align*}
+Por inducción llegamos a que $d^k_{p-k} = 2^{p-k-1}+s$, por lo que $d^{p-1}_1 = 2^0 +s = 1+s >1$.
+\end{demo}
+\begin{prop}
+Sea $S$ una sucesión finita de Gilbreath con índice hasta $m$. Entonces
+$$ s_m + 2 \in \mathcal{G}_S $$
+\end{prop}
+\begin{demo}
+Es evidente, pues $d^k_{m-k} = 0$.
+\end{demo}
 \begin{conj}
-Sea $S$ una sucesión finita de Gilbreath. Entonces $\exists n \in \N$ tal que 
-$$\gilb{S} = \{2k+1\mid k\in \N_n\}$$
+Sea $S$ una sucesión finita de Gilbreath con 3 o más términos y sea $2n+1$ su último término. Entonces $\exists m \in \N$, $m\geq n+1$ tal que 
+$$\gilb{S} = \{2s+1\mid s \in \N,\; n+1\leq s \leq m\}$$
 \end{conj}
-\begin{coro}
-Sea $S$, la sucesión finita formada por los $i$ primeros términos de la sucesión $\{M_n\}_{n\in\N}$. Entonces,
-$$
-\gilb{S}=\{2k+1\mid 1\leq k \leq 2^{i-1}\}
-$$
-\end{coro}
 \begin{defi}
 Sea $S_k=\{p_n\}_{n\in \N_k}$ la sucesión finita de los primeros $k$ primos. Definimos la sucesión $\{Q_n\}_{n\in\N}$ como $Q_1=2$, $Q_2=3$, y $Q_k=\max \gilb{S_k}$. 
-
 Los primero valores de la sucesión son 
-\begin{align*} \{Q_n\}=\{&9,11,21,21,27,27,33,41,51,55,57,53,63,67,89,85,95,105,121,\\&129,137,129,135,137,155,217,189,\dotsc\}
+\begin{align*} \{Q_n\}=\{&2,3,5,9,11,21,21,27,27,33,41,51,55,57,53,63,67,89,85,95,105,97,\\
+&109,105,121,129,137,129,135,137,155,\dotsc\}
 \end{align*}
 \end{defi}
 \begin{coro}
-La conjetura del Gilbreath es cierta si y solo si $Q_n \geq p_n$ para todo $n\in \N$.
+Si la Conjetura 3.10 es cierta entonces la conjetura del Gilbreath es equivalente a que $Q_n \geq p_n$ para todo $n\in \N$.
 \end{coro}
-¿Qué sabemos sobre $Q_n$? En principio no mucho. Si analizamos la sucesión $\{Q_n-p_n\}$ obtenemos estos primeros 30 valores:
-\begin{align*} \{Q_n-p_n\}=\{&7,8,16,14,16,14,16,22,28,26,26,16,22,24,42,32,36,44,30,\\
-&38,32,42,46,48,32,34,34,48,108,76,\dotsc\}
+\begin{demo}
+Si la conjetura de Gilbreath es cierta entonces se sigue trivialmente el resultado. Recíprocamente, supongamos que $Q_n \geq p_n$. Como $p_{n+1} \geq p_n+2$ entonces usando la Conjetura 3.10 tenemos que $p_{n+1} \in \mathcal{G}_{S_k}$ $\forall n$, luego $\{p_n\}$ es una sucesión de Gilbreath.
+\end{demo}
+Si analizamos la sucesión ${\{Q_n-p_n\}}$ obtenemos estos primeros 30 valores:
+\begin{align*} \{Q_n-p_n\}=\{&0,0,0,2,0,8,4,8,4,4,10,14,14,14,6,10,8,28,18,24,32,18,26,16,\\
+&24,28,34,22,26,24,\dotsc\}
 \end{align*}
-Es decir, en principio, parece que el \textit{gap} no solo se mantiene constantemente positivo sino que aumenta. 
+Es decir, en principio, parece que el \textit{gap} no solo se mantiene constantemente positivo sino que aumenta. Además, de un estudio premilinar conjeturamos lo siguiente
+\begin{conj}
+Sea $p_n$ un primo tal que $p_{n-1}=p_n-2$. Entonces existen infinitos $n$ tales que, si $p_n$ es de esa forma, $Q_{n+1}\leq Q_n$.  
+\end{conj}
+\begin{nota}
+Hemos comprobado computacionalmente el resultado hasta $n=100$ y solo no se verifica en con dos primos gemelos. Además, $Q_n$ también decrece en otros valores no relacionados con los primos gemelos.
+\end{nota}
 \subsection{Estudio probabilístico}
 
 
-
 \newpage
-
-
-
-
 
 
 \begin{thebibliography}{99}
