@@ -10,7 +10,7 @@
 \maketitle
 
 \begin{ejercicio}{2}
-Sean $N,P$ submódulos de un $A$-módulo $M$, y $$(N:P) = \{a\in A\mid am\in \N \;\forall m \in P\}$$
+Sean $N,P$ submódulos de un $A$-módulo $M$, y $$(N:P) = \{a\in A\mid am\in N \;\forall m \in P\}$$
 \begin{enumerate}
 \item Probar que $(N:P)$ es un ideal de $A$.
 \item Si $N=\{0\}$, $(N:M)$ se llama el anulador de M y se denota por $an(M)$. Probar que $M$ tiene una estructura natural de $(A/an(M))$-módulo.
@@ -19,6 +19,40 @@ Sean $N,P$ submódulos de un $A$-módulo $M$, y $$(N:P) = \{a\in A\mid am\in \N 
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}\
+\begin{enumerate}
+\item[]
+\item Se sigue de estas dos consideraciones:
+\begin{itemize}
+\item Veamos que es subgrupo con la suma. Sean $p,s\in (N:P)$ entonces $pm,sm\in N$ $\forall m \in P$. Como $N$ es submódulo, en particular es grupo abeliano, luego es cerrado para su operación. Se tiene entonces que $(p-s)m=pm-sm \in N$ $\forall m\in P$. 
+\item Veamos que es cerrado para el producto con $A$. Sea $p\in (N:P)$, $s\in A$, entonces $pm\in N$ $\forall m\in P$. Por definición de módulo, si $s\in A$ y $p\in N$ entonces $sp\in N$, por lo que $(sp)m=s(pm)\in N$ $\forall m \in P$.
+\end{itemize}
+\newpage
+\item Sabemos por el apartado anterior que $an(M)$ es un ideal de $A$, luego tiene sentido considerar el anillo cociente $A/an(M)$. Recordemos que:
+$$
+an(M) = \{a \in A\mid am = 0 \; \forall m\in M\}
+$$
+Si $M$ como $A$-módulo era el par $(M,\mu)$, entonces el $A/(an(M))$-módulo como el $(M,\sigma)$ donde $\sigma([a],x)=\mu(a,x)$. Vamos a ver que $\mu$ está bien definido y satisface los axiomas:
+\begin{itemize}
+\item Sean $a,b\in A$ tales que $[a]=[b]$ entonces $[a-b]=[0]$, luego $(a-b
+)m=0$ $\forall m \in M$, de donde $am=bm$ $\forall m\in M$. Por tanto, $\sigma$ está bien definida.
+\item Como $\mu$ satisface los axiomas de la definición de módulo, $\sigma$ los satisface trivialmente.
+\end{itemize}
+\item Directamente de la definición se tiene:
+\begin{align*}
+an(M+N) &= \{a \in A\mid as = 0 \; \forall s\in M+N\} \\
+&= \{a \in A\mid a(n+m) = 0 \; \forall n\in N,\; \forall m\in M\}\\
+&= \{a \in A\mid an= 0 \; \forall n\in N\}\cap \{a \in A\mid am = 0 \; \forall m\in M\}\\
+&=an(M)\cap an(N)
+\end{align*}
+Si hubiera alguna duda en la penúltima igualdad, tengamos en cuenta que la contención hacia atrás es trivial, mientras que si $a(m+n)$, tomando $m=0$ con $n$ cualquiera y $n=0$ con $m$ cualquiera tenemos la conteción contraria.
+\item Recordemos las definiciones:
+\begin{align*}
+(N:P) &= \{a\in A\mid am\in N \;\forall m \in P\}\\
+an((N+P)/N)&= \{a \in A\mid a[m] = 0 \; \forall [m]\in (N+P)/N\}
+\end{align*}
+
+\end{enumerate}
+
 \end{solucion}
 \newpage
 \begin{ejercicio}{3}\
