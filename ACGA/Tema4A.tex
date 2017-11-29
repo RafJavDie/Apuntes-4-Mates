@@ -279,6 +279,23 @@ Por \cite[Proposición 5.1]{am}, esto es equivalente a decir que todo elemento d
 \end{eje}
 
 \begin{prop}
+Si $Y$ es cuasi-proyectiva, entonces $Y=\bigcup Y_i$ unión de abiertos afines abiertos. 
+\end{prop}
+\begin{proof}
+Si $Z$ es cuasi-afin, entonces $Z=\overline{Z}\setminus Z_0$, siendo todos estos conjuntos afines y $Z_0$ cerrado. Por tanto $Z=\overline{Z}\cap \bigcup_{i=1}^r(\overline{Z}\cap U(f_i))$. En particular, $U_0=\mathbb{A}^n\setminus Z_0=\bigcup_{i=1}^rU(f_i)=\mathbb{A}^n\setminus \VV(f_i)$. 
+
+Recordemos que $U(f_i)\cong \VV(yf(x_1,\dots x_n)-1)\subseteq\mathcal{A}^{n+1}$, lo lo que $\overline{Z}\cap U(f_i)$ es cerrado en $\mathbb{A}^{n+1}$. 
+\end{proof}
+
+\begin{defn}
+$\varphi:X\to Y$ es finito si para $Y=\bigcup Y_i$ unión de abiertos afines, $\varphi^{-1}(Y_i)$ es afín y $\varphi_i\varphi^{-1}(Y_i)\to Y_i$ es finito
+\end{defn}
+
+\begin{prop}
+Sea $A\subseteq B$ una extensión. Si $B$ es una $A$-álgebra finitamente engenerada, entonces $B$ es entera sobre $A$ si y solo si $B$ es $A$-módulo finitamente generado. La implicación inversa es cierta en general.
+\end{prop}
+
+\begin{prop}
  Sea $\phi:X\to Y$ un morfismo finito entre variedades afines. Entonces, la imagen inversa $\phi^{-1}(\{y\})$ de todo punto $y\in Y$ es un conjunto finito.
 \end{prop}
 
@@ -288,6 +305,16 @@ Por \cite[Proposición 5.1]{am}, esto es equivalente a decir que todo elemento d
 
 El recíproco no es cierto, como muestra el segundo ejemplo anterior.
 
+\begin{eje}
+\begin{enumerate}
+\item $\varphi:\mathbb{A}^2\to\mathbb{A}^2:(x,y)\mapsto(x,xy)$ no es finito porque $\varphi^{-1}(0,0)=\{x=0\}$.
+\item $\varphi:\mathbb{A}\to\mathbb{A}:t\mapsto t^2$ es finito. $\varphi^*:k[t]\to k[t^2]:f(t)\mapsto f(t^2)$. $k[t]$ es entero sobre $k[t^2]$ si y solo si $t$ es entero sobre $k[t^2]$, lo cual es cierto porque podemos tomar el polinomio mónico $x^2-t^2$ que tiene coeficientes en $k[t^2]$. En general, podemos sustituir $t^2$ por cualquier polinomio no constante. En ese caso el polinomio sería $\frac{g(x)-g(t)}{c}$, donde $c$ es el coeficiente líder de $g$. 
+\item Si $\varphi:X\to Y$ es una inmersión cerrada, entonces es finita. Tenemos la descomposición $X\overset{\cong}{\to}\varphi(X)\hookrightarrow Y$, que se traduce en $\mathcal{A}(Y)\to\mathcal{A}(\varphi(X))\overset{\cong}{\to}\mathcal{A}(X)$. Llamamos $Z=\varphi(X)$, entonces $Z\subseteq Y\subseteq\mathbb{A}^n$ cerrado. Basta ver que $\mathcal{A}(Y)\to\mathcal{A}(Z)$ es entero (que el segundo sobre el primero es entero como módulo), que es lo mismo que $k[x]/\mathcal{I}(Y)\to k[x]/\mathcal{I}(Z)$. Como $\mathcal{I}(Y)\subseteq\mathcal{I}(Z)$, $Im =\mathcal{A}(Z)$, por lo que claramente es entera sobre sí mismo.
+\item Inmersión abierta $\varphi:U\hookrightarrow Y$, con $U=Y\setminus\VV(f)$, $\varphi^*:\mathcal{A}(X)\to\mathcal{A}(U)=\mathcal{A}(Y)_f=\mathcal{A}(Y)[f^{-1}]$. $f^{-1}$ es entero sobre $A=\mathcal{A}(Y)$ si existe $(f^{-1})^d +a_{d-1}(f^{-1})^{d-1}+\dots+a_1f^{d-2} + a_0f^{d-1}=0$. Multiplicando por $f^{d-1}$ obtenemos $(f^{-1})+(a_{d-1}+a_{d-2}f^{d-2}+a_0f^{d-1})=0$, pero los dos términos están en $A$. Las inmersiones abiertas no son finitas.
+
+Utilizando la proposición posterior se puede probar simplemente viendo que son dominantes pero no sobreyectivas.
+\end{enumerate}
+\end{eje}
 \begin{prop}
  Todo morfismo finito y dominante entre variedades afines es sobreyectivo.
 \end{prop}
@@ -299,6 +326,10 @@ El recíproco no es cierto, como muestra el segundo ejemplo anterior.
  Por la prueba de la proposición \ref{funtor}, tenemos que probar que para todo ideal maximal de $\calA(Y)$ (necesariamente de la forma $\bar\mm_y$ para algún $y\in Y$), existe un ideal maximal de $\calA(X)$ (necesariamente de la forma $\bar\mm_x$ para algún $x\in X$) tal que $\bar\mm_x\cap \calA(Y)=\bar\mm_y$. Pero esto es una consecuencia inmediata de los teoremas 5.8 y 5.10 de \cite{am} por ser $\calA(X)$ una extensión entera de $\calA(Y)$. 
 \end{proof}
 
+\begin{lem}[de normalización de Noether] Toda $k$-álgebra finitamente generada reducida es extensión entera de $k[x_1,\dots,x_d]$. 
+\end{lem}
+
+Este lema es la versión para anillos de el teorema de extensión de cuerpos que dice que si $k\subseteq K$ es una extensión finitamente generada, entonces $k\subseteq k(x_1,\dots,x_n)\subseteq K$, donde la primera es trascendente pura y la segunda es finita.
 El lema de normalización de Noether admite la siguiente interpretación geométrica:
 
 \begin{prop}
