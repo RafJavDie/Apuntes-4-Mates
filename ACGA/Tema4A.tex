@@ -349,6 +349,26 @@ Para variedades cuasi-proyectivas en general, definimos los morfismos finitos lo
 
 Como la propiedad de ser finito es local, basta probarlo para los abiertos de un recubrimiento finito afín de $Y$, que siempre existe (primero tomando el recubrimiento cuasi-afín estándar de una variedad proyectiva, y después expresando cada trozo cuasi-afín como unión de abiertos básicos del tipo $\Ank-\VV(f)$, que son isomorfos a una variedad afín). 
 
+\begin{defn}
+$A$ es integramente cerrado en $B$ si dado $b \in B$ entero sobre $A$, entonces $b \in A$.
+\end{defn}
+
+\begin{defn}
+La \textbf{clausura íntgra} de $A$ en $B$ es el subanillo $\overline{A} \subseteq B$ formado por los elementos enteros sobre $A$.
+
+Si $\overline{A} = A$, decimos que $A$ es \textbf{íntegramente cerrado} en $B$.
+\end{defn}
+\begin{defn}
+Un D.I. $A$ es íntegramente cerrado si es int.cerrado en $Frac(A)$.
+\end{defn}
+
+\begin{eje}\mbox{}
+\begin{enumerate}
+	\item $\mathbb{Z}$ es íntegramente cerrado.
+	\item Cualquier DFU es íntegramente cerrado, ya que si $a/b \in Frac(A)$ es entero sobre $A$, existe $f(x) = x^d+a{d-1}x^{d-1}+dots a_1x+a_0 \in A[x]$ con $f(a/b) = 0$. Entonces $a^d+a_{d-1}a^{d-1}b+\dots+a_1ab^{d-1}+a_0b^d = 0$, luego $b | a^d$, luego $b=1$.
+	\item $\mathbb{Z}[\sqrt{5}] $ no es íntegramente cerrado, ya que su cuerpo de fracciones es $\mathbb{Q}(\sqrt{5})$, el elemento $\varphi = (1+\sqrt{5})/2$ es raíz del polinomio mónico $x^2-x-1$, pero no está en $\mathbb{Z}[\sqrt{5}]$.
+\end{enumerate}
+\end{eje}
  
 \section{Normalización}
 
@@ -371,6 +391,7 @@ Como la normalidad es una propiedad local, para comprobar si una variedad es nor
 \emph{ \begin{enumerate}
   \item Un dominio de factorización única es íntegramente cerrado. En particular, $\Ank$ es normal, ya que $k[x_1,\ldots,x_n]$ es un DFU. 
   \item El espacio proyectivo $\Pnk$ es normal, ya que está recubierto por abiertos afines isomorfos al espacio afín $\Ank$, que es normal por el ejemplo anterior. 
+   \item La curva $Z=\VV(y^2-x^3-x^2)\subseteq\AAA^2_\CC$ no es normal en el punto $a = (0,0)$. Tenemos que $\mathcal{O}_{X,a} = A_{\langle x,y \rangle} = \{f/g \in Frac(A) : g(a) \neq 0\}$. Sea $\alpha = y/x \in Frac(O_{X,a})$. $\alpha$ es raíz del polinomio mónico $x^2-x-1$. Si $\alpha \in \mathcal{O}_{X,a}$, existiría $p$ y $q \neq 0$ en $A$ con $\alpha = p/q$, entonces $xp-yq = 0$ en $X$, pero $xp-yq \notin \langle y^2-x^3-x^2 \rangle$.
   \item La curva $Z=\VV(y^2-x^3)\subseteq\AAA^2_\CC$ no es normal: su anillo de coordenadas es $\calA(Z)=k[x,y]/\langle y^2-x^3\rangle$, el elemento $\xi=y/x\in{\mathcal K}(Z)$ es entero sobre $\calA(Z)$, ya que es raíz de la ecuación mónica $\xi^2-x=0$, pero no está en $\calA(Z)$: si estuviera, $y/x$ sería regular en $Z$, es decir, existiría $f\in k[x,y]$ tal que $y/x=f(x,y)$ para todo $(x,y)\in Z$. Entonces $y-xf(x,y)$ estaría en el ideal $\langle y^2-x^3\rangle$, lo cual es imposible (un múltiplo de $y^2-x^3$ no puede tener términos de grado $1$).
  \end{enumerate} }
 \end{eje}
