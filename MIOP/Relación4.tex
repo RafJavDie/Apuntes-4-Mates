@@ -221,8 +221,26 @@ Resolver el siguiente sistema de ecuaciones
 \]
 utilizando el método de gradiente partiendo del punto $x^0=(0,0,0)'$.
 \begin{solucion}\
-Por no hacerlo igual que el \ref{ejer:2} aplicamos el método de Newton. Tenemos que $(\nabla^2 f(x^k))^{-1}=\begin{pmatrix}
-\end{pmatrix}$
+Por no hacerlo igual que el \ref{ejer:2} aplicamos el método de Newton. Tenemos que
+$$(\nabla^2 F(x^k))^{-1}=\begin{pmatrix}
+4/5 & 3/5 & -2/5\\
+-2/5 & 1/5 & 1/5\\
+ -1 & -1 & 1
+\end{pmatrix}\qquad 
+\nabla F(x^k) = \begin{pmatrix}
+2x_1-x_2+x_3+1\\
+x_1+2x_2\\
+3x_1+x_2+2x_3-3
+\end{pmatrix}
+$$
+Iteramos hasta que obtengamos un $x^k$ que anule el gradiente.
+$$
+x^{k+1}=x^k - (\nabla^2 F(x^k))^{-1}\nabla F(x^k) \qquad x^1 = \begin{pmatrix}
+-2\\
+1\\
+4
+\end{pmatrix} \qquad \nabla F(x^1) = 0
+$$
 \end{solucion}
 \end{ejercicio}
 

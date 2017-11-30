@@ -1,0 +1,45 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Modelos de Investigación Operativa\\ Relación 5}
+\author{Rafael González López, Javier Aguilar Martín}
+\date{}
+\maketitle
+
+\begin{ejercicio}{1}Considerar el modelo $Y=a+bx+c^2+\varepsilon$, donde $z$ es la variable independiente, $y$ es la variable dependiente, $a,b$ y $c$ con parámetros desconocidos y $\varepsilon$ es el error experimental. La tabla siguiente da los valores de $x,y$:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+x & 0 &1 & 2 	& 3 	& 4 	& 5\\
+\hline
+y & 2 &2 	& -12 	& -27 & -60 &-90\\
+\hline
+\end{tabular}
+\end{center}
+Hallar los mejores valores para $a,b$ y $c$ minimizando
+\begin{enumerate}
+\item La suma de los errores al cuadrado.
+\item La suma de los valores absolutos de los errores.
+\item El máximo valor absoluto de los errores.
+\end{enumerate}
+\begin{solucion}
+\begin{enumerate}
+Buscamos 
+$$
+\min \sum_{i=1}^6 \varepsilon_i^2 = \min \sum_{i=0}^5(y_i -a-bx_i-c x_i)^2 = \psi(a,b,c)
+$$
+\begin{align*}
+\frac{\partial \psi}{\partial a} &= -2\left(\sum_i y_i - 6a - \sum_i b x_i - \sum_i cx_i^2\right) = 0\\
+\frac{\partial \psi}{\partial b} &= -2\sum_i x_i\left(\sum_i y_i - 6a - \sum_i b x_i - \sum_i cx_i^2\right) = 0\\
+\frac{\partial \psi}{\partial c} &= -2\sum_i x_i^2\left(\sum_i y_i - 6a - \sum_i b x_i - \sum_i cx_i^2\right) = 0
+\end{align*}
+Resolviendo el sistema obtenemos $a=2,928$, $b=1,292$ y $c=-4,035$.
+\end{enumerate}
+\end{solucion}
+\end{ejercicio}
+
+\newpage 
+\end{document}
