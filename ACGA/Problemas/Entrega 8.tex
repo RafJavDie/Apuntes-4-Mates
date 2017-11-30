@@ -6,8 +6,64 @@
 \begin{document}
 
 \title{Algebra Conmutativa y Geometría Aplicada}
-\author{Javier Aguilar Martín, Rafael González López}
+\author{Javier Aguilar Martín, Rafael González López, Diego Pedraza López}
 \maketitle
+
+\begin{ejercicio}{1}\mbox{}
+\begin{itemize}
+	\item Sea $A \in \mathcal{M}_{n+1}(k)$ una matriz $(n+1)\times(n+1)$ invertible con coeficientes en $k$. Probar que la aplicación $φ : \PP_k^n \to \PP_k^n$ dada por $φ(x_0:x_1:\dots:x_n) = (y_0:y_1:\dots:y_n)$ con
+	\[ \begin{pmatrix}y_0\\y_1\\\vdots\\y_n\end{pmatrix} = A\begin{pmatrix}x_0\\x_1\\\vdots\\x_n\end{pmatrix}\]
+	es un automorfismo de $\PP_k^n$. Diremos que $φ$ viene dado por la multiplicación por la matriz $A$.
+
+	\item Probar que para todos $a,b\in\PP_k^1$ existe un automorfismo $φ : \PP_k^1 \to \PP_k^1$ tal que $φ(a)=b$.
+
+	\item Probar que todo automorfismo de $\PP_k^1$ viene dado por la multiplicación por una matriz $A \in \mathcal{M}_2(k)$ (Ayuda: Considerar primero el caso en el que el punto del infinito es fijo, y usar el ejercicio 5 de la relación 6. Reducir el caso general a éste usando el apartado anterior).
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{itemize}
+\item Desarrollando la multiplicación por la matriz $A$, podemos escribir la aplicación $φ$ como:
+\[ \begin{pmatrix}y_0\\y_1\\\vdots\\y_n\end{pmatrix} = \begin{pmatrix}\sum_{j=0}^n a_{0j}x_j\\\sum_{j=0}^n a_{1j}x_j\\\vdots\\\sum_{j=0}^n a_{nj}x_i\end{pmatrix} \]
+donde $A = (a_{ij})_{i,j=0,\dots,n}$. Cada componente es un polinomio homogéneo de mismo grado. Además no se anulan simultáneamente en ningún punto de $\PP_k^n$, pues sabemos que el núcleo de una matriz invertible es $\{0\}$, que no está presente en $\PP_k^n$. Por lo tanto, $φ$ es un morfismo. Así mismo, la multiplicación de $A^{-1}$ define también un morfismo $ψ : \PP_k^n \to \PP_k^n$, pues $A^{-1}$ también es invertible. Finalmente, tenemos que $φ \circ ψ = ψ \circ φ = id$, pues $A^{-1}\cdot A = A \cdot A^{-1} = I$ y la multiplicación por $I$ describe el morfismo identidad.
+
+\item Sea $a=(a_0:a_1) \in \PP_k^1$ y $b=(b_0:b_1) \in \PP_k^1$. Separemos los casos:
+\begin{itemize}
+	\item Si $a=(1:0)$. Entonces:
+	\begin{itemize}
+		\item Si $b = (1:b_1)$, definimos $φ$ por la multiplicación de la matriz:
+		\[ A = \begin{pmatrix}1 & 0\\b_1 & 1\end{pmatrix} \]
+		\item Si $b = (0:1)$, definimos $φ$ por la multiplicación de la matriz:
+		\[ A = \begin{pmatrix}0 & 1\\1 & 0\end{pmatrix} \]
+	\end{itemize}
+	\item Si $a=(1:a_1)$ con $a_1 \neq 0$. Entonces:
+	\begin{itemize}
+		\item Si $b = (1:0)$, definimos $φ$ por la multiplicación de la matriz:
+		\[ A = \begin{pmatrix}1 & 0\\1 & -1/a_1\end{pmatrix} \]
+		\item Si $b = (1:b_1)$ con $b_1 \neq 0$, definimos $φ$ por la multiplicación de la matriz:
+		\[ A = \begin{pmatrix}1 & 0\\0 & b_1/a_1\end{pmatrix} \]
+		\item Si $b = (0:1)$, definimos $φ$ por la multiplicación de la matriz:
+		\[ A = \begin{pmatrix}1 & -1/a_1\\1 & 0\end{pmatrix} \]
+	\end{itemize}
+	\item Si $a=(0:1)$. Entonces:
+	\begin{itemize}
+		\item Si $b = (1:b_1)$, definimos $φ$ por la multiplicación de la matriz:
+		\[ A = \begin{pmatrix}0 & 1\\1 & b_1\end{pmatrix} \]
+		\item Si $b = (0:1)$, definimos $φ$ por la multiplicación de la matriz:
+		\[ A = \begin{pmatrix}1 & 0\\0 & 1\end{pmatrix} \]
+	\end{itemize}
+\end{itemize}
+En cada caso tenemos que $φ(a) = b$ y $φ$ está definida por una multiplicación por una matriz invertible, luego $φ$ es un automorfismo.
+
+\item Supongamos primero que tenemos un automorfismo $φ : \PP_k^1 \to \PP_k^1$ que fija el punto del infinito, es decir, $φ(0:1)=(0:1)$. 
+Por biyectividad, $φ$ induce un automorfismo de $\mathbb{A}_k^1$ dado por $\tilde{φ}(x)=φ(1:x)$ visto como punto de $\mathbb{A}_k^1$. Por el ejercicio 5 de la relación 6, podemos escribir $\tilde{φ}(x)=cx+d$ para ciertos $c,d\in k$ con $c \neq 0$. Por lo tanto, podemos escribir $φ$ como la multiplicación por la matriz invertible:
+\[ B = \begin{pmatrix}1 & 0\\d & c\end{pmatrix} \]
+
+En el caso general, para un automorfismo $φ$ cualquiera, sea $φ(0:1)=p$. Sabemos, por el apartado anterior, que existe un automorfismo $ψ$ que envía $p$ a $(0:1)$ y que está dado por la multiplicación una matriz $A$. Por otro lado, $ψ \circ φ = χ$ es un automorfismo que fija el punto del infinito, luego lo podemos escribir como la matriz $B$ dada anteriormente. Entonces, componiendo  tenemos que $φ = ψ^{-1} \circ χ$. Ya que $ψ^{-1}$ y $χ$ están dadas por multiplicación de matrices invertibles, tenemos que $φ$ está definida por la multiplicación de la matriz invertible $A^{-1}B$.
+\end{itemize}
+\end{solucion}
+
+\newpage
+
 \begin{ejercicio}{2} Sea $X \subset \mathbb{P}^n_k$ una variedad proyectiva, $U\subset \mathbb{P}^1_k$ un abierto no vacío y $\phi\colon U\rightarrow X$ un morfismo. Probar que $\phi$ se extiende de manera única a un morfismo $\overline{\phi}\colon \mathbb{P}^1_k\rightarrow X$. Probar que no es cierto el caso en el que $X$ es afín.
 \end{ejercicio}
 \begin{solucion} 
