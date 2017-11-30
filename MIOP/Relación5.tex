@@ -27,16 +27,39 @@ Hallar los mejores valores para $a,b$ y $c$ minimizando
 \end{enumerate}
 \begin{solucion}
 \begin{enumerate}
-Buscamos 
+\item[]
+\item Buscamos 
 $$
-\min \sum_{i=1}^6 \varepsilon_i^2 = \min \sum_{i=0}^5(y_i -a-bx_i-c x_i)^2 = \psi(a,b,c)
+\min \sum_{i=1}^6 \varepsilon_i^2 = \min \sum_{i=0}^5(y_i -a-bx_i-c x_i^2)^2 = \psi(a,b,c)
 $$
+Derivamos e igualamos a cero las parciales
 \begin{align*}
 \frac{\partial \psi}{\partial a} &= -2\left(\sum_i y_i - 6a - \sum_i b x_i - \sum_i cx_i^2\right) = 0\\
 \frac{\partial \psi}{\partial b} &= -2\sum_i x_i\left(\sum_i y_i - 6a - \sum_i b x_i - \sum_i cx_i^2\right) = 0\\
 \frac{\partial \psi}{\partial c} &= -2\sum_i x_i^2\left(\sum_i y_i - 6a - \sum_i b x_i - \sum_i cx_i^2\right) = 0
 \end{align*}
 Resolviendo el sistema obtenemos $a=2,928$, $b=1,292$ y $c=-4,035$.
+\item Buscamos
+$$
+\min \sum_{i=1}^6 |\varepsilon_i|= \min \sum_{i=0}^5|y_i -a-bx_i-c x_i^2| 
+$$
+Para resolverlo consideramos el siguiente problema de programación lineal
+\begin{gather*}
+\min \sum_i z_i\\
+z_i\geq y_i -a-bx_i-c x_i^2 \quad \forall i \\
+z_i\geq -y_i +a+bx_i+c x_i^2 \quad \forall i\\
+z_i \in \R \quad \forall i
+\end{gather*}
+\item Buscamos
+$$
+\min \max_i |\varepsilon_i| = \min \max_i |y_i -a-bx_i-c x_i^2|
+$$
+Definimos una nueva variable $z$ y resolvemos
+\begin{gather*}
+\min \sum z\\
+z\geq |y_i -a-bx_i-c x_i^2| \quad \forall i\\
+z_i \in \R \quad \forall i
+\end{gather*}
 \end{enumerate}
 \end{solucion}
 \end{ejercicio}
