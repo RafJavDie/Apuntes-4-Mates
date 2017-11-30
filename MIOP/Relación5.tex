@@ -9,7 +9,7 @@
 \date{}
 \maketitle
 
-\begin{ejercicio}{1}Considerar el modelo $Y=a+bx+c^2+\varepsilon$, donde $z$ es la variable independiente, $y$ es la variable dependiente, $a,b$ y $c$ con parámetros desconocidos y $\varepsilon$ es el error experimental. La tabla siguiente da los valores de $x,y$:
+\begin{ejercicio}{1}Considerar el modelo $y=a+bx+c^2+\varepsilon$, donde $z$ es la variable independiente, $y$ es la variable dependiente, $a,b$ y $c$ con parámetros desconocidos y $\varepsilon$ es el error experimental. La tabla siguiente da los valores de $x,y$:
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
@@ -65,4 +65,70 @@ z_i \in \R \quad \forall i
 \end{ejercicio}
 
 \newpage 
+
+\begin{ejercicio}{2}
+Supongamos que $x_{k+1}$ y $x_k$ son dos puntos consecutivos generados por el método del descenso máximo con la regla de minimización. Probar que $\nabla f(x_{k})'\nabla f(x_{k+1})=0$.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+Sea $f:\R^n\to\R$. Considerar el problema $\min_{\lambda\in\R}f(x+\lambda d)$. Probar que una condición necesaria para que $\overline{\lambda}$ sea un mínimo es que $\nabla f(y)'d=0$, donde $y=x+\overline{\lambda}d$. ¿Cuándo es esa condición suficiente?
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{4}
+Considerar el problema:
+$$\min f(x,y)=100(y-x^2)^2+(1-x)^2.$$
+Aplique algún método de gradiente y el método de Newton con $x_0=(-1,1)$.
+\end{ejercicio}
+\begin{solucion}
+
+\newpage
+\begin{ejercicio}{5}
+Considere el problema irrestringido siguiente:
+$$\min f(x,y)=3x^2-2xy+y^2+3e^{-x}.$$
+¿Es esta función cóncava o convexa? Aplique el método de gradiente con $x^0=(0,0)$ y longitud inicial de paso $\alpha^0=2$. Calcule el mínimo aplicando el método de Newton. 
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{6}
+Considerar el problema $\min f(x,y)=3x^2+y^4$.
+\begin{enumerate}
+\item Aplicar una iteración del método de descenso máximo con $x^0=(1,-2)$ y longitud de paso dada por la regla de Armijo con $s=1,\sigma=0.1$ y $\beta=0.5$. 
+\item Repetir con $s=1,\sigma=0.1$ y $\beta=0.1$. Comparar los resultados.
+\item Aplicar una iteración del método de Newton con el mismo punto de partida.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7}
+Considerar la función $f:\R^n\to\R$ dada por $f(x)=||x||^{3/2}$, y el método de descenso máximo con longitud de paso constante en cada iteración. Probar que la condicción $||\nabla f(x)-\nabla f(y)||\leq L||x-y||$ para todo $x,y$ no se verifica para ningún $L$. Además probar que este algoritmo converge a la solución óptima en un número finito de pasos o no converge a él, en este problema.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{8}
+Sea $f$ dos veces diferenciable con continuidad. Supongamos que $x^*$ es un mínimo local tal que para toda bola abierta $S$ centrada en $x^*$ se verifica para algún $m>0$,
+$$m||d||^2\leq d'\nabla^2f(x)d,\ \forall d\in\R^n.$$
+Probar que para todo $x\in S$:
+$$||x-x^*||\leq\frac{||\nabla f(x)||}{m},\quad f(x)-f(x^*)\leq\frac{||\nabla f(x)||^2}{m}.$$
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\end{solucion}
+
+
+
 \end{document}
