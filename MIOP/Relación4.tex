@@ -4,8 +4,9 @@
 %--------------------------------------------------------
 \begin{document}
 
-\title{Modelos de Investigación Operativa}
+\title{Modelos de Investigación Operativa\\ Relación 4}
 \author{Rafael González López, Javier Aguilar Martín}
+\date{}
 \maketitle
 
 \begin{ejercicio}{1}
@@ -31,14 +32,31 @@ $\nabla^2f(x_1,x_2)=\begin{pmatrix}
 \end{ejercicio}
 
 \newpage 
-\begin{ejercicio}{2}
+\begin{ejercicio}{2}%\label{2}
 Resolver el siguiente sistema de ecuaciones
 \[
 2x_1-x_2+x_3=-1,\ x_1+2x_2=0,\ 3x_1+x_2+2x_3=3
 \]
 utilizando el método de gradiente partiendo del punto $x^0=(0,0,0)'$.
 \begin{solucion}
-
+Sea $g(x_1,x_2,x_3)=\begin{pmatrix}
+2x_1-x_2+x_3+1\\
+ x_1+2x_2\\
+ 3x_1+x_2+2x_3-3
+\end{pmatrix}$ y pensamos que es el gradiente de alguna función $F$. Aplicamos el método de la suma divergente para elegir la distanciad de paso. Entonces $\alpha^k=\frac{1}{k+1}$. Calculamos iteraciones hasta que damos con un punto que verifique el sistema.
+\begin{align*}
+x^1&=0-\nabla g(x^0)=\begin{pmatrix}
+-1\\
+0\\
+3
+\end{pmatrix}\\
+x^2&=x^1-\frac{1}{2}g(x^1)=\begin{pmatrix}
+-2\\
+\frac{1}{2}\\
+3
+\end{pmatrix}\\
+&\vdots
+\end{align*}
 \end{solucion}
 
 \end{ejercicio}
@@ -203,7 +221,8 @@ Resolver el siguiente sistema de ecuaciones
 \]
 utilizando el método de gradiente partiendo del punto $x^0=(0,0,0)'$.
 \begin{solucion}\
-
+Por no hacerlo igual que el \ref{ejer:2} aplicamos el método de Newton. Tenemos que $(\nabla^2 f(x^k))^{-1}=\begin{pmatrix}
+\end{pmatrix}$
 \end{solucion}
 \end{ejercicio}
 
