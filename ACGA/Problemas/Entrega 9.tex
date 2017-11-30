@@ -98,4 +98,56 @@ Sea $P_0\subseteq P_1\subseteq\cdots$ una cadena ascendente de submódulos de $P
 \end{solucion}
 
 \newpage
+
+\begin{ejercicio}{4}
+Sea $S \subseteq A$ un subconjunto multiplicativo de un anillo y $M, N, P$ tres $A$-módulos.
+\begin{enumerate}
+	\item Si $0 \to M \to N \to P \to 0$ es una sucesión exacta, probar que la sucesión inducida $0 \to S^{-1}M \to S^{-1}N \to S^{-1}P \to 0$ también lo es.
+	\item Si $N$, $P$ son submódulos de $M$, probar que $S^{-1}(N+P) = S^{-1}N+S^{-1}P$ y $S^{-1}(N \cap P) = S^{-1}N \cap S^{-1}P$.
+	\item Si $N$ es un submódulo de $M$, probar que $S^{-1}(M/N) \cong (S^{-1}M)/(S^{-1}N)$:
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{enumerate}
+	\item Sea $φ$ y $ψ$ tal que $0 \to M \xrightarrow{φ} N \xrightarrow{ψ} P \to 0$. Esto es equivalente a decir que $φ : M \to N$ es inyectiva y $ψ : N \to P$ es sobreyectiva con $\text{Im}(φ) = \ker(ψ)$. Sea $\tilde{φ}$ y $\tilde{ψ}$ sus respectivos homomorfismos inducidos en $0 \to M \xrightarrow{\tilde{φ}} N \xrightarrow{\tilde{ψ}} P \to 0$. Veamos que esta sucesión también es exacta.
+	\begin{itemize}
+	\item $\tilde{φ}$ es inyectiva, pues:
+	\[ \tilde{φ}(x/s) = 0 \Leftrightarrow φ(x)/s = 0 \Leftrightarrow φ(x) = 0 \Leftrightarrow x = 0 \]
+	porque $φ$ es inyectivo.
+
+	\item $\tilde{ψ}$ es sobreyectiva, pues:
+	\[ \forall y/s \in S^{-1}P\ \exists x\text{ con }ψ(x)=y \Rightarrow ψ(x/s) = ψ(x)/s = y/s \]
+
+	\item $\text{Im}(\tilde{φ}) = \ker(\tilde{ψ})$, ya que:
+	\begin{align*}
+		\ker(\tilde{ψ}) & = \{y/s \in S^{-1}N : \tilde{ψ}(y/s) = 0\} = \{y/s \in S^{-1}N : ψ(y) = 0\}\\
+		& = \{y/s \in S^{-1}N : y \in \text{Im}(φ)\} = \{y/s \in S^{-1}N : y/s \in \text{Im}(\tilde{φ})\} = \text{Im}(\tilde{φ})
+	\end{align*}
+\end{itemize}
+
+	\item Veamos que $S^{-1}(N+P) = S^{-1}N + S^{-1}P$ por doble inclusión:
+	\begin{itemize}
+	\item Sea $x/s \in S^{-1}(N+P)$, entonces $x \in N+P$, es decir, existe $n \in N$ y $p \in P$ con $x=n+p$. Tenemos que:
+	\[ \frac{n+p}{s} = \frac{ns+ps}{s^2} = \frac{n}{s}+\frac{p}{s} \in S^{-1}N+S^{-1}P \]
+	Por lo que $S^{-1}(N+P) \subseteq S^{-1}N+S^{-1}P$.
+
+	\item Ahora, tomemos un punto $n/s+p/t \in S^{-1}N+S^{-1}P$, entonces:
+	\[ \frac{n}{s}+\frac{p}{t} = \frac{tn+sp}{st} \]
+	como $tn \in N$ y $sp \in P$, llegamos a que $n/s+p/t \in S^{-1}(N+P)$.
+	\end{itemize}
+	Luego $S^{-1}(N+P) = S^{-1}N+S^{-1}P$. Veamos que $S^{-1}(N \cap P) = S^{-1}N \cap S^{-1}P$ por doble inclusión.
+	\begin{itemize}
+		\item Sea $x/s \in S^{-1}(N \cap P)$. Como $x \in N \cap P$, tenemos que $x \in N$, luego $x/s \in S^{-1}N$. Análogamente, $x/s \in S^{-1}P$. Entonces $x/s \in S^{-1}N \cap S^{-1}P$. Deducimos que $S^{-1}(N \cap P) \subseteq S^{-1}N \cap S^{-1}P$.
+
+		\item Sea $x/s \in S^{-1}N \cap S^{-1}P$. Entonces $x/s \in S^{-1}N$, luego $x \in N$. Análogamente, $x \in P$. Entonces $x/s \in S^{-1}(N \cap P)$.
+	\end{itemize}
+	Llegamos entonces a que $S^{-1}(N \cap P) = S^{-1}N \cap S^{-1}P$.
+
+	\item Tenemos que $0 \to N \xrightarrow{i} M \xrightarrow{π} M/N \to 0$ es secuencia exacta donde $i$ es la inclusión y $π$ es la proyección. Entonces $0 \to S^{-1}N \xrightarrow{\tilde{i}} S^{-1}M \xrightarrow{\tilde{π}} S^{-1}(M/N) \to 0$ es secuencia exacta por el apartado (1). Entonces, por el primer teorema de isomorfía:
+	\[ S^{-1}M/\ker \tilde{π} \cong \text{Im}(\tilde{π}) \]
+	Como $\text{Im}(\tilde{π}) = S^{-1}(M/N)$, $\ker(\tilde{π}) = \text{Im}(\tilde{i}) = S^{-1}N$. Entonces:
+	\[ (S^{-1}M)/(S^{-1}N) \cong S^{-1}(M/N) \]
+\end{enumerate}
+\end{solucion}
+
 \end{document}
