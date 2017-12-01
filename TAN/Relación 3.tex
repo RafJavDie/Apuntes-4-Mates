@@ -30,7 +30,7 @@ Cambiando de parámetro $s=z+1$ y renombrando $z$ como $s$, por lo anterior pode
 \begin{align*}
 \frac{d}{ds}\left(-\log \Gamma(s+1)\right) &=  \frac{d}{ds}\log\left((s+1) e^{γ(s+1)} \prod_{n=1}^{∞} \left(1 + \frac{(s+1)}{n}\right) e^{-(s+1)/n}\right)\\
 &= \frac{d}{ds}\left( \log(s+1)+\gamma(s+1)+\sum_{n=1}^\infty \log\left(1+\frac{s+1}{n}\right)-\frac{s+1}{n}\right)\\
-&= \frac{1}{s+1} +\gamma + \sum_{n=1}^\infty \left(\frac{1}{n+s+1}-\frac{1}{n}\right) = -\frac{\Gamma'(s+1)}{\Gamma(s+1)}
+&= \frac{1}{s+1} +\gamma + \sum_{n=1}^\infty \left(\frac{1}{n+s+1}-\frac{1}{n}\right)= -\frac{\Gamma'(s+1)}{\Gamma(s+1)}
 \end{align*}
 Pasamos a denotar $\psi(s) = \dfrac{\Gamma'(s)}{\Gamma(s)}$. Por tanto, hemos llegado a la expresiones
 \begin{align*}
@@ -54,22 +54,30 @@ $$
 $$
 Como queríamos demostrar.
 \newpage
-\item[b)] Sabemos por teoría que 
-$$\Gamma(s)\Gamma(1-s)=\frac{\pi}{\sin(\pi s)}
+\item[b)] Sabemos por teoría que si $s\notin \Z$
+$$\Gamma(1+s)=s\Gamma(s)  \qquad \frac{1}{s}\Gamma(1+s)\Gamma(1-s)= 	\Gamma(s)\Gamma(1-s)=\frac{\pi}{\sin(\pi s)} \qquad 
 $$
-Utilizando la derivada logarítmica vamos a deducir lo siguiente:
+Utilizando la derivada logarítmica aplicando a $s/\pi$ vamos a deducir lo siguiente:
 \begin{align*}
-(\log{\Gamma(s)\Gamma(1-s))}' & = \frac{\Gamma'(s)}{\Gamma(s)} - \frac{\Gamma'(1-s)}{\Gamma(1-s)} = \psi(s)-\psi(1-s) = \\
-&=\left(\log\frac{\pi}{\sin(\pi s)}\right)'  = -\pi\cot(\pi s)
+\left(\frac{\pi}{s}\Gamma\left(1+\frac{s}{\pi}\right)\Gamma\left(1-\frac{s}{\pi}\right)\right)' & = \frac{1}{\pi}\frac{\Gamma'\left(1+\frac{s}{\pi}\right)}{\Gamma\left(1+\frac{s}{\pi}\right)} - \frac{1}{\pi}\frac{\Gamma'(1-\frac{1}{\pi})}{\Gamma(1-\frac{1}{\pi})} - \frac{1}{s}\\
+ &= \frac{1}{\pi}\psi(1+s/\pi)-\frac{1}{\pi}\psi(1-s/\pi) - \frac{1}{s}\\
+&=\left(\log\frac{\pi}{\sin(s)}\right)'  = -\cot(s)
 \end{align*}
-$$
-\psi(1-s)-\psi(s) = \pi\cot(\pi s) \Longrightarrow s\psi(1-s)-s\psi(s) = s\pi\cot(\pi s)
-$$
-Vamos a analizar la función $q(s) = s\psi(1-s)-s\psi(s)$. Obviamente es una función meromorfa definida en el plano complejo salvo en los enteros. Además, por igualdad anterior, deducimos que $q(s)$ es impar, luego en sus series de Taylor tiene los coeficientes impares nulos.
+Si $0<|s|<1$ podemos utilizar la expresión obtenida en el apartado anterior
 \begin{align*}
-s\psi(1-s)-s\psi(s) & = \gamma + sh(-s) -\gamma - sh(s-1)\\
-&=s\sum_{n=1}^\infty(-1)^{n}\zeta(n+1) (-s)^n - s\sum_{n=1}^\infty(-1)^{n}\zeta(n+1) (s-1)^n
+\frac{1}{\pi}\left(\psi(1+s/\pi)-\psi(1-s/\pi)\right) &=  -\frac{1}{\pi}\left(\gamma \sum_{n=1}^\infty(-1)^{n}\zeta(n+1) \left(\frac{s}{\pi}\right)^n -  \gamma - \sum_{n=1}^\infty\zeta(n+1) \left(\frac{s}{\pi}\right)^n\right)\\
+&=2\sum_{n=1}^\infty \zeta(2n)\frac{s^{2n-1}}{\pi^{2n}}\\
+&=-\cot(s)+\frac{1}{s}
 \end{align*}
+Si ahora multiplicamos por $s$ a ambos lados
+\begin{gather*}
+2\sum_{n=1}^\infty \zeta(2n)\left(\frac{s}{\pi}\right)^{2n}=-s\cot(s)+1 
+\end{gather*}
+De donde basta una simple manipulación algebraica para obtener
+$$
+1-2\sum_{n=1}^\infty \zeta(2n)\left(\frac{s}{\pi}\right)^{2n}=s\cot(s)
+$$
+Una fórmula que puede extenderse a todo $|s|<1$, pues $s\cot(s)\to 1$ cuando $s\to 0$.
 \end{itemize}
 \end{sol}
 \newpage
