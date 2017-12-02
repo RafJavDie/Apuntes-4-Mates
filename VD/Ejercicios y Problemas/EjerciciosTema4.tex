@@ -89,7 +89,7 @@ con lo que necesariamente $v=0$ como aplicación lineal, es decir, que debe ser 
 Probar que $S^n$ es subvariedad regular de $\R^{n+1}$.
 \end{ejercicio}
 \begin{solucion}
-Es un caso particular del ejercicio 6.
+Es un caso particular del ejercicio \ref{ejer:6}.
 \end{solucion}
 
 \newpage
@@ -120,6 +120,7 @@ diferenciables. Probar que $f$ es un difeomorfismo de $M$ en un cierto abierto
 de $N$.
 \end{ejercicio}
 \begin{solucion}
+Sea $U\subseteq M$ un abierto donde $f$ sea difeomorfismo. Por inyectividad, $f^{-1}(f(U))=U$, por lo que basta tomar $f(U)$, que es abierto porque en $U$ se tiene un difeomorfismo (en particular, homeomorfismo). 
 \end{solucion}
 
 \newpage
@@ -140,6 +141,14 @@ Probar que la relación ``ser equivalentes'' entre subvariedades de una variedad
 diferenciable es una relación de equivalencia.
 \end{ejercicio}
 \begin{solucion}
+Dos subvariedades $(M_1, f_1)$ y $(M_2, f_2)$ de una variedad $N$ se
+dice que son equivalentes si existe un difeomorfismo $f : M_1 \to M_2$ tal que
+$f_1 = f_2 \circ f$.
+\begin{itemize}
+\item Reflexiva: Basta tomar $f=Id$. 
+\item Simétrica: Basta tomar $f^{-1}$.
+\item Transitiva: Si llamamos $g$ al difeomorfismo del segundo par relacionado, basta tomar $g\circ f$.
+\end{itemize}
 \end{solucion}
 
 \newpage
@@ -176,6 +185,7 @@ $$M = \{(x, y, z) \in \R^3\mid x^2 + y^2 - z + 2 = 0; z = a\}$$
 una subvariedad regular de dimensión 1 de $\R^3$?
 \end{ejercicio}
 \begin{solucion}
+Para $z<2$ $M=\emptyset$, por lo que no puede ser variedad. Para $z=2$, $M=\{(0,0,2)\}$, que no puede ser de dimensión 1 porque es un conjunto finito de puntos. Para $z>2$, $M$ es una circunferencia de radio $\sqrt{a-2}$. Esta circunferencia tiene una estructura de variedad diferenciable de dimensión 1 análoga a la de $S^1$ (por ejemplo, alguna del Problema 2.1). Como $M$ tiene la topología euclídea por ser intersección de espacios euclídeos, $(M,i)$ con la inclusión es subvariedad regular por la proposición 4.2.2.
 \end{solucion}
 
 \end{document}
