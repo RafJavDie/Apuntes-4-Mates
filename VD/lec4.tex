@@ -618,25 +618,6 @@ diferenciable es subvariedad regular.
 
 \item Probar que $S^n$ es subvariedad regular de $\R^{n+1}$.
 
-\begin{dem}
-Sea $S \subseteq \R^3$ una superficie regular. Veamos que $(S,i)$ es subvariedad regular donde $i : S \to \R^3$ es la inclusión.
-
-$S$ una variedad diferenciables (ejemplo 2 del tema 1) con $dim(S)=2$.
-
-Por otro lado, veamos que $i : S \to \R^3$ es una inmersión inyectiva. La inyectividad es consecuencia de ser una inclusión. Para ver que $i$ es inmersión, comprobaremos que $i \in \mathcal{F}(S,\R^3)$ y $i_{*p}$ es inyectivo. $i$ es continuo, pues para todo abierto $G$ de $\R^3$, $i^{-1}(G) = G \cap S$, que es un abierto de la topología euclídea relativa a $S$.
-
-Sea $p \in S$ cualquiera y $(\X,U)$ tal que $p \in \X(U)$.
-%   S     to \R^3
-%  \X(U)      |
-%   |\X^{-1}  | id
-%   v         v
-%   U ------>\R^3
-%     id \circ i \circ (\X^{-1})^{-1}
-Se tiene que $id \circ i \circ (\X^{-1})^{-1} = \X$ es diferenciable, pues $\X : U \to \R^3$ es superficie simple, luego $i \in \mathcal{F}(S,\R^3)$.
-
-La matriz de $i_{*p}$ es la matriz jacobiana en $\X^{-1}(p)$ de $(id \circ i \circ \X)$, que es $(\X_1, \X_2)^t$. Es de rango $2$, pues los vectores $\X_1$ y $\X_2$ son independientes (por ser superficie simple). Como la matriz es $2\times 3$, es de rango máximo. Además, como $\dim(S) < \dim(\R^3)$, $i_{*p}$ es inyectiva. Por la proposición 4.2.2, como $S$ tiene la topología relativa de $\R^3$, $S$ es regular.
-\end{dem}
-
 \item Sea $M$ una variedad diferenciable y $p\in M$. Si
 $\{\om_1,\dots ,\om_m\}$ es una base de $T_p^*(M)$, probar que
 existe una carta local $(U,\vp=(x_1,\dots ,x_m))$ entorno de $p$
