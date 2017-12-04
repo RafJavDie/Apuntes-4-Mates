@@ -412,6 +412,14 @@ Si $a>0$, sea $h\in\mm_x^{a-1}$. Entonces $h\mm_x\subseteq\mm_x^a\subseteq J$, e
 
 La hipótesis de que $Z$ tenga dimensión $\geq 2$ es fundamental, como muestra el ejemplo $Z=\AAA^1_k$, $x=0$, $f(t)=1/t$.
 
+\begin{thm}
+Si $A$ es una $k$-álgebra finitamente generada y $B$ la clasurua íntegra de $A$, entonces
+\begin{enumerate}
+\item $B$ es una $k$-álgebra finitamente generada.
+\item $B$ es un $A$-módulo finitamente generado.
+\end{enumerate}
+\end{thm}
+
 \begin{prop}
  Sea $X\subseteq\Ank$ una variedad afín. Existe una única (salvo isomorfismo) variedad normal afín $\tilde X$ y un morfismo finito $\phi:\tilde X\to X$ con la siguiente propiedad universal: Dada una variedad normal afín $Y$ y un morfismo dominante $\psi:Y\to X$, existe un único morfismo $\tilde\psi:Y\to\tilde X$ tal que $\psi=\phi\circ\tilde\psi$. La variedad $\tilde X$ se denomina {\bf normalización} de $X$.
 \end{prop}
@@ -423,7 +431,34 @@ La hipótesis de que $Z$ tenga dimensión $\geq 2$ es fundamental, como muestra 
 En primer lugar, $\tilde A$ es un dominio de integridad por estar contenido en un cuerpo, y es íntegramente cerrado por transitividad \cite[Corolario 5.4]{am}. Es una $k$-álgebra finitamente generada y un $A$-módulo finitamente generado por \cite[Theorem 3.9A]{h}. Finalmente, sea $\psi':A\to B$ un homomorfismo inyectivo, donde $B$ es un dominio de integridad finitamente generado sobre $k$ e íntegramente cerrado. $\psi'$ se extiende de manera única a homomorfismo de cuerpos $\psi':K(A)\to K(B)$, en particular se extiende a $\tilde A\subseteq K(A)$. Dado $a\in\tilde A$, $a$ es entero sobre $A$, y por tanto $\psi'(a)$ es entero sobre $\psi'(A)\subseteq B$. Como $B$ es íntegramente cerrado, $\psi'(a)$ tiene que estar en $B$. Por tanto $\psi'$ se extiende a $\psi':\tilde A\to B$ de manera única.  
 \end{proof}
 
+\begin{eje}
+Vimos que $X\equiv y^2=x^3+x^2$ no era normal, pues teníamos un elemento $t=y/x\in A=k[x,y]/\langle y^2-x^3-x^2\rangle$ tal que $t^2=x+1$, y $t$ era entero sobre $A$, pero $t\notin A$. Sin embargo teníamos un isomorfismo entre $X$ y $\mathbb{A}$ $(x,y)\mapsto y/x$ y $t\mapsto (t^2-1,t(t^2-1))$. Entonces tenemos un isomorfismo $k(y/x)=K=Frac(A)\cong k(t)$.  Veamos que $k[t]$ es la clasurua íntegra de $A$ en $K$. $k[t]$ es DFU, luego es íntegramente cerrado. Como $A\subseteq k[t]\subseteq =K$, y $y/x\in k[t]$, la clausura íntegra tiene que contener a $k[t]$, pero ya es íntegramente cerrado, así que listo.
+
+Así que $Y=\mathbb{A}$. $\varphi: Y\to X: t\mapsto (t^2-1,t(t^2-1))$ se corresponde a $A\hookrightarrow k[t]: x\mapsto t^2-1, y\mapsto t(t^2-1)$. 
+
+Obsérvese que $\mathbb{A}\setminus\{1,-1\}\cong X\setminus\{0\}$, luego la normalización separa el punto singular en los dos del afín. 
+
+Se puede hacer de forma análoga para $y^2=x^3$ aunque en esta ocasión el punto singular no es doble.
+\end{eje}
+
 Es posible extender esta construcción a variedades cuasi-proyectivas mediante pegamiento, pero nos restringiremos en estas notas al caso afín.
 
+\begin{prop}
+Sea $X$ una variedad cuasi-proyectiva. Si $x\in Z$ es no singular, entonces es normal. En curvas el recíproco es cierto.
+\end{prop}
+
+El recíproco no es cierto en general, como podemos ver en el siguiente ejemplo.
+
+\begin{eje}
+$X\equiv z^2=x^2+y^2$ es un cono, por lo que tiene un punto singular en $(0,0,0)$, pero sin embargo es normal (por lo tanto todo el cono es normal). Sea $A=\mathcal{A}(X)=k[x,y,z]/\langle z^2-x^2-y^2\rangle$. Por la forma que tiene la ecuación, observamos que $A$ es un $k[x,y]-$módulo finitamente generado por $\overline{1},\overline{z}$ (de hecho es un módulo libre porque estos generadores son una base). Entonces el cuerpo de fracciones $K(X)=k(x,y)[z]/\langle z^2-x^2-y^2\rangle$, que es una extensión finita de $k(x,y)$ de grado 2.  
+
+Tomamos un elemento de $K(X)$, $P(x,y,z)=f(x,y)+zg(x,y)$ con $f,g\in k(x,y)$, Si $g=0$ entonces $P(x,y,z)\in k(x,y)$, que por ser $k[x,y]$ DFU, si $P$ es entero, entonces $P\in k[x,y]$.  En general, cualquier elemento entero sobre $A$, entonces lo es sobre $k[x,y]$ por ser $A$ entero sobre $k[x,y]$ al ser un módulo finitamente generado. Por tanto $P$ es entero sobre $k[x,y]$ y por ser integramente cerrado, $P\in k[x,y]$, luego $P\in A$. Por tanto suponemos que $g\neq 0$, por lo que $P\notin k(x,y)$. Por lo tanto $g$ tiene grado 2 sobre $k(x,y)$. El único automorfismo no trivial $K(X)$ es el conjugado ($z\mapsto -z$), por lo que el polinomio mínimo de $P$ sobre $k(x,y)$ es
+$$(T-f(x,y)-zg(x,y))(T-f(x,y)+zg(x,y))=T^2-2f(x,y)T+(f(x,y)^2-(x^2+y^2)g(x,y)^2).$$
+Observemos que este polinomio es mónico. Si $a\in A$ es entero, entonces existe $f$ mónico con coeficientes en $A$ tal que $f(a)=0$. Como $P$ es entero sobre $k[x,y]$, existe $R\in k[x,y][T]$ mónico tal que $R(P)=0$. En particular, $R$ tiene que ser múltiplo del anterior, y como es mónico y con coeficientes en $k[x,y]$, entonces también los del polinomio anterior.
+
+Es decir, si $a$ es entero sobre $A$ íntegramente cerrado y $f\in K[x]$ con $K=Frac(A)$ mónico tal que $f(a)=0$, entonces $f\in A[x]$. 
+
+Así, $2f(x,y)\in k[x,y]\Rightarrow f(x,y)\in k[x,y]$, $f(x,y)^2-(x^2+y^2)g(x,y)^2\in k[x,y]\Rightarrow (x^2+y^2)g(x,y)^2=(x+y)(x-y)g(x,y)^2\in k[x,y]$, luego $g(x,y)^2\in k[x,y]$ porque si no los denominadores estarían al cuadrado y no se podrían cancelar (porque estamos en DFU), así que $g(x,y)\in k[x,y]$. Por tanto el polinomio original $P(x,y,z)\in A$. 
+\end{eje}
 
 \end{document}
