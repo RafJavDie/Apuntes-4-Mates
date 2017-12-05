@@ -295,5 +295,151 @@ $$f(x^*+\varepsilon(x'-x^*))=f(x^*)+\nabla \varepsilon \underbrace{f(x^*+s\varep
 Entonces $f(x^*+\varepsilon(x'-x^*))< f(x^*)$, lo cual contradice que $x^*$ sea mínimo local. $\QED$
 \end{dem}
 
+\subsection{Métodos de direcciones factibles}
+Parten de $x^0\in X$ y generan $x^{k+1}=x^k+\alpha d^k,\ \alpha^k>0$, siendo $d^k$ una dirección factible en $x^k$. Esto quiere decir que $\exists\mu >0$ tal que $x^{k+1}+\mu d^k\in X$. Toda dirección factible $d$ en $\overline{x}\in X$ se puede expresar como $x=x-\overline{x}$ con $x\in X$. Por tanto, podemos reescribir el método de direcciones factibles como $x^{k+1}=x^k+\alpha (x-\overline{x}),\ \alpha^k>0,\ \overline{x}^k\in X$. Si $x^k\in X$ y$\alpha^k\leq 1$, entonces $x^{k+1}\in X$. En efecto, $x^{k+1}=\alpha^k\overline{x}^k+(1-\alpha^k)x^k\in X$ por ser $X$ convexo. 
+
+\subsection{Elección del punto inicial $x^0$}
+Se puede hacer uso de un problema auxiliar. Tomemos $C>>0$ suficientemente grande y consideramos el problema $P:\min f(x)$ sujeto a $x\in X$. Supongamos que $X=\{x\in\R^n: g_j(x)\leq 0, j\in J\}$. 
+\begin{align*}
+P_C:&\min\ f(x)+Cy\\
+ & sa:g_j(x)-y\leq 0\\
+ & x\in\R^n, y\geq 0
+\end{align*}
+En este problema es más fácil encontrar soluciones factibles, pues para cada $\hat{x}\in\R^n$, si $g_j(\hat{x})\leq 0\ \forall j\Rightarrow (\hat{x},0)$ es factible en $P_C$ y $\hat{x}\in X$, por lo que se puede tomar como $x^0$. Si $\exists j'\in J \mid g_{j'}(\hat{x})>0\Rightarrow \hat{y}=\max_{j\in J} g_j(\hat{x})$ hace que $(\hat{x},\hat{y})$ sea factible en $P_C$. Podemos aplicar el método de direcciones factibles en este punto hasta encontrar una solución de $P_C$, digamos $(\overline{x},\overline{y})$. Si $\overline{y}=0$ (bastaría que fuera 0 en alguna iteración) entonces $\overline{x}$ es factible en $P$. Si $\overline{y}\neq 0\Rightarrow\nexists x\in X$, pues $f(\overline{x})+C\overline{y}>f(x)$, dado que $C$ es muy grande.
+
+\subsection{Elección de la dirección}
+En cada punto $x^k$ queremos elegir una dirección de descenso. Esto es, que verifique $\nabla f(x^k)'(\overline{x}^k-x^k)<0$. Observemos que si $x^k$ no es estacionario entonces existe tal $x\in X$. La forma de buscarlos es a través del siguiente problema. 
+\begin{align*}
+P_A: &\min\ \nabla f(x^k)'(x-x^k) \equiv & \min \nabla f(x^k)'x\\
+ & x\in X								& x\in X
+\end{align*}
+Pongamos que sabemos resolver $P_A$ y obtenemos $\overline{x}^k$. Entonces si $$0\leq\nabla f(x^k)(\overline{x}^k-x^k)\leq \nabla  f(x^k)(x^k-x^k),$$ por lo que $x^k$ es estacionario. En caso contrario $d^k=\overline{x}^k-x^k$ es una dirección factible y de descenso. A estas direcciones se las denomina de \textbf{gradiente condicionado}.
+
+\begin{ej}
+$X=\{x\in\R^n:\sum_{j=1}^n=r, x_i\geq 0\}$ donde $r>0$. Entonces  el problema que tenemos que resolver es
+\begin{align*}
+&\min\  \sum_{j=1}^n\frac{\partial f(x^k)}{\partial x_i}(x_i-x^k_i)\\
+&\sum_{j=1}^nx_i=r, x_i\geq 0\ \forall i								
+\end{align*}
+Supongamos que $\frac{\partial f(x^k)}{\partial x_j}\leq\frac{\partial f(x^k)}{\partial x_i}$, entonces $x^*_j=r, x^*_i=0\ \forall i\neq j$.
+
+Asi pues $d^k=(0,0,\dots, \overbrace{r}^j, 0,\dots, 0)'-x^k$. 
+\end{ej}
+
+\begin{teorema}\label{teorema}
+Los métodos de direcciones factibles con gradiente condicionado y longitud de paso dada por Armijo o minimización restringida $(0<\alpha^k\leq 1)$ tienen la propiedad de que todo punto de acumulación es estacionario. 
+\end{teorema}
+
+Para probarlo nos basaremos en el siguiente teorema. 
+
+\begin{teorema}[base]\label{base}
+Sea $\{x^k\}$ una sucesión generada por el método de direcciones factibles con longitud de paso mediante Armijo o minimización restringida ($0<\alpha^k\leq 1$) y tales que las direcciones $d^k=\overline{x}^k-x^k$ verifican:
+\begin{enumerate}
+\item\label{1} $\limsup||\overline{x}^k-x^k||<+\infty$.
+\item\label{2} $\limsup \nabla f(x^k)(\overline{x}^k-x^k)$.
+\end{enumerate}
+Entonces todo punto de acumulación es estacionario.
+\end{teorema}
+\begin{dem}[del teorema \ref{teorema}] 
+Supongamos que $\overline{x}$ es un punto de acumulación no estacionario. En primer lugar, dado que $\overline{x}^k\in X\ \forall k$ y $x^k\in X\ \forall k$ se tiene
+$$||\overline{x}^k-x^k||\leq ||\overline{x}^k||+||x^k||<M \forall k$$
+por compacidad de $X$, con lo que se verifica \ref{1}. En segundo lugar, dado que $d^k$ es de gradiente condicionado entonces
+\begin{gather*}
+\nabla f(x^k)'(\overline{x}^k-x^k)\leq \nabla f(x^k)'(x-x^k), \forall x\in X\\
+\limsup \nabla f(x^k)'(\overline{x}^k-x^k)\leq \limsup\nabla f(x^k)'(x-x^k)\\
+\limsup \nabla f(x^k)'(\overline{x}^k-x^k)\leq\nabla f(\overline{x})'(x-\overline{x}) \forall x\in X
+\end{gather*}
+Como $\overline{x}$ no es estacionario, debe existir $\hat{x}\mid \nabla f(\overline{x})'(\hat{x}-\overline{x})<0$. Por tanto $\limsup \nabla f(x^k)'(\overline{x}^k-x^k)<0$, con lo que tenemos \ref{2}. Por el teorema \ref{base}, esto contradice que $\overline{x}$ no sea estacionario. $\QED$
+\end{dem}
+
+\begin{ej}
+\begin{align*}
+&\min\ f(x_1,x_2)=x_1^2+x_2^2-4x_1-4x_2+8\\
+& x_1+2x_2-4\leq 0\\
+& x_i\geq 0
+\end{align*}
+(Hacer el dibujito del semiplano y de la circunferencia)
+$x^0=\begin{pmatrix}
+0\\
+0
+\end{pmatrix}, \nabla f(x)=\begin{pmatrix}
+2x_1-4\\
+2x_2-4
+\end{pmatrix}\Rightarrow \nabla f(x^0)=\begin{pmatrix}
+-4\\
+-4
+\end{pmatrix}\Rightarrow x^1=x^0-\alpha\nabla f(x^0)$. Elegimos $\alpha$ mediante minimización:
+\[x^1(\alpha)=\begin{pmatrix}
+4\alpha\\
+4\alpha
+\end{pmatrix}
+\]
+$g(\alpha)=f(x^1(\alpha))=(4\alpha)^2+(4\alpha)^2-4(4\alpha)-4(4\alpha)+8$. Al calcular el mínimo sin restricciones obtenemos $\alpha=\frac{1}{2}$, lo cual nos saca del conjunto factible. Por tanto, tenemos que buscar el punto de intersección de la recta en la dirección que estábamos tomando y la frontera del conjunto factible. Obtendríamos $x^1=\begin{pmatrix}
+\frac{4}{3}\\
+\frac{4}{3}
+\end{pmatrix}$. Ahora calculamos $x^2=x^1+\alpha d^1$ utilizando el método de gradiente condicionado. $\nabla f(x^1)=\begin{pmatrix}
+-\frac{4}{3}\\
+-\frac{4}{3}
+\end{pmatrix}$, luego minimizamos $(-\frac{4}{3},-\frac{4}{3})\begin{pmatrix}
+x_1-\frac{4}{3}\\
+x_2-\frac{4}{3}
+\end{pmatrix}$ con las restricciones de que $x_1+2x_2-4\leq 0$ y $x_i\geq 0$. Como tiene que ser uno de los puntos extremos del poliedro, evaluamos y resulta que $x^*=\begin{pmatrix}
+4\\
+0
+\end{pmatrix} $. Este es el punto extremo de la dirrección que tenemos que tomar. Entonces $d^1=\overline{x}^1-x^1=\begin{pmatrix}
+\frac{8}{3}\\
+-\frac{4}{3}
+\end{pmatrix}$ y $x^2(\alpha)=x^1+\alpha d^1=\begin{pmatrix}
+\frac{4}{3}+\frac{8}{3}\alpha\\
+\frac{4}{3}-\frac{4}{3}\alpha
+\end{pmatrix}$. $\min f(\alpha)=f(x^2(\alpha))\Rightarrow x^2=\begin{pmatrix}
+\frac{8}{5}\\
+\frac{6}{5}
+\end{pmatrix}$.
+\end{ej}
+
+\subsection{Métodos de gradiente proyectado}
+Son métodos de direcciones factibles en los que las iteraciones son de la forma $x^{k+1}=x^k+\alpha^k(\overline{x}^k-x^k)$ y $x^k=proy_X(x^k-s\nabla f(x^k)):=[x^k-s\nabla f(x^k)], s>0$. 
+
+Supongamos que $\overline{x}$ es estacionario. Multiplicando la condición de ser estacionario por $-s$ obtenemos $-s\nabla f(\overline{x})'(x-\overline{x})\leq 0\ \forall x\in X$. Sumamos y restamos $\overline{x}$, $(\overline{x}-s\nabla f(\overline{x})-\overline{x})'(x-\overline{x})\leq 0\ \forall x\in X$. Esto es equivalente a que $\overline{x}-s\nabla f(\overline{x})$ verifica la condición del teorema de la proyección, si y solo si $\overline{x}=[\overline{x}-s\nabla f(\overline{x})]$. 
+
+\begin{teorema}
+Sea $\{x^k\}$ una sucesión generada mediante el método de gradiente proyectado con $\alpha^k$ elegido mediante Armijo o minimización restringida. Entonces todo punto de acumulación es estacionario.
+\end{teorema}
+\begin{dem}
+Supongamos que $\overline{x}$ es de acumulación no estacionario. Comprobamos \ref{1} y \ref{2} para llegar a contradicción.
+\begin{enumerate}
+\item Igual que antes, pues $\overline{x}^k, x^k\in X$ y $X$ es compacto.
+\item Como $\overline{x}^k$ es proyección está caracterizada por 
+$$(x^k-s\nabla f(x^k)-\overline{x}^k)'(x-\overline{x}^k)\leq 0, \forall x\in X.$$
+En particular esto se verifica para $x=x^k$, de donde obtenemos haciendo el producto
+$$||x^k-\overline{x}^k||-s\nabla f(x^k)'(x^k-\overline{x}^k)\leq 0$$
+Despejando
+$$\nabla f(x^k)'(x^k-\overline{x}^k)\leq -\frac{1}{s}||x^k-\overline{x}^k||^2$$
+Ahora podemos tomar límite superior
+$$\limsup \nabla f(x^k)'(x^k-\overline{x}^k)\leq \limsup-\frac{1}{s}||x^k-\overline{x}^k||^2=\limsup-\frac{1}{s}||x^k-[x^k-s\nabla f(x^k)]||^2$$
+La proyección ortogonal y todas las demás funciones que aparecen son continuas, por lo que podemos intercambiar el límite con ellas
+$$\limsup \nabla f(x^k)'(x^k-\overline{x}^k)\leq -\frac{1}{s}||\overline{x}-[\overline{x}-s\nabla f(\overline{x})]||^2$$
+Pero por no ser estacionario, $\overline{x}-[\overline{x}-s\nabla f(\overline{x})]\neq 0$. Por tanto $\limsup \nabla f(x^k)'(x^k-\overline{x}^k)<0$, lo que prueba el resultado. $\QED$
+\end{enumerate}
+\end{dem}
+
+\begin{ej}
+\begin{align*}
+&\min\ f(x_1,x_2)=x_1^2+x_2^2-4x_1-4x_2+8\\
+& x_1^2+2x_2^2-1\leq 0\\
+\end{align*}
+(Hacer dibujito de esta mierda maybe) 
+Queremos usar el método del gradiente proyectado partiendo de $x^0=(1,0)', s=\frac{1}{2}, \alpha^k =1\ \forall k$. $x^1=x^0+(\overline{x}^0-x^0)$, donde $\overline{x}^0=[x^0-\frac{1}{2}\nabla f(x^0)]=\begin{bmatrix}
+\begin{pmatrix}
+2\\
+2
+\end{pmatrix}
+\end{bmatrix}$
+Podemos hacerlo geométricamente y da $\overline{x}^0=\begin{pmatrix}
+\frac{\sqrt{2}}{2}\\
+\frac{\sqrt{2}}{2}
+\end{pmatrix}=x^1$. Cuando calculamos $\overline{x}^1$ obtenemos el mismo punto $x^1$, por lo que es estacionario. 
+\end{ej}
 
 \end{document}
