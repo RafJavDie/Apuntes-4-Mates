@@ -1,4 +1,4 @@
-\documentclass[cursovd_portada.tex]{subfiles}
+\documentclass[Cursovd_portada.tex]{subfiles}
 
 \begin{document}
 
@@ -8,11 +8,13 @@
 Un {\bf Campo de Vectores} $X$ en un abierto $U\subseteq M$ de una variedad diferenciables es una ley que a cada
 punto $p\in U$ le asigna un vector tangente $X_p\in T_p(M)$.
 \end{defi}
+
 \begin{ej}
 {\rm Sea $(U,\vp=(x_1,\dots ,x_m))$ un s.l.c. en $M$. Entonces, para cualquier $i=1,\dots ,m$,
 $$\dep{x_i}:p\in U\mapsto\left(\dep{x_i}\right)_p$$
 es un campo de vectores en $U$.}
 \end{ej}
+
 Un campo de vectores $X$ en $U$ también puede interpretarse como una aplicación que envía funciones diferenciables
 en $U$ en funciones de $U$, de la siguiente forma: si $f\in\mathcal{F}(U)$, se define $Xf:U\fl\R$ por
 $(Xf)(p)=X_pf$.
@@ -30,13 +32,15 @@ $X:\mathcal{F}(U)\fl\mathcal{F}(U)$. Esta aplicación verifica las dos siguiente
 \hs Por esta razón, se dice que los campos diferenciables de vectores son derivaciones sobre el conjunto de las
 funciones diferenciables.
 \par
-Por otra parte, si $(U,\vp=(x_1,\dots ,x_m))$ es un s.l.c. en $M$, entonces, dado un campo de vectores $X$ en $U$,
+\begin{lemma}
+Si $(U,\vp=(x_1,\dots ,x_m))$ es un s.l.c. en $M$, entonces, dado un campo de vectores $X$ en $U$,
 para cualquier $p\in U$ se puede escribir
 $$X_p=\sum_{i=1}^m(X_p(x_i))\left(\dep{x_i}\right)_p,$$
 es decir,
 $$X=\sum_{i=1}^mf_i\dep{x_i},$$
 para cierta funciones $f_i:U\fl\R$, donde $f_i=Xx_i$, para todo
 $i=1,\dots ,m$.
+\end{lemma}
 \begin{prop}
 Sea $X$ un campo de vectores en $U$. Las condiciones siguientes son equivalentes:
 \begin{enumerate}
@@ -51,8 +55,23 @@ donde $X|_Vx_i\in\mathcal{F}(V)$, para todo $i=1,\dots ,m$.
 \end{enumerate}
 \end{prop}
 
+\begin{dem}\mbox{}
+\begin{enumerate}
+\item[$(1 \Rightarrow 2)$] Basta probar que $X|_V \in \mathcal{X}(V)$ y aplicar el lema anterior. Veamos que para todo $p \in V$ existe $W$ abierto tal que $X|_V f$ es diferenciable en $W$. Por el lema de extensión de funciones, existe $W$ abierto tal que $\overline{W} \subseteq V$ y existe $h \in \mathcal{F}(M)$ tal que $h = f$ en $W$. Entonces $X h|_U \in \mathcal{F}(U)$, luego $(X h|_U)|_W \in \mathcal{F}(W)$. Finalmente, veamos que $(X|_V f)|_W = (X h |_U)_W$. En efecto, para cualquier $q \in W$:
+\[ (X|_V f)|_W(q) = (X|_V f)_q = (X|_V)_q f = X_q f \]
+\[ (X h|_U)|_W(q) = (X h|_U)_q = X_q h|_U \]
+Como $f = h|_U$ en $W$, $(X|_V f)|_W(q) = (X h|_U)|_W(q)$ para todo punto $q \in W$, luego $(X|_V f)|_W = (X h|_U)|_W \in \mathcal{F}(W)$.
+\item[$(2 \Rightarrow 3)$] Trivial.
+\item[$(3 \Rightarrow 1)$] Sea $f \in \mathcal{F}(U)$. Sea $p \in U$ cuaquiera. Por hipótesis, existe $(V,φ)$ carta en $M$ tal que $p \in V \subseteq U$ y $X|_V = \sum_{i=1}^m f_i \frac{\partial}{\partial x_i} \in \mathcal{X}(V)$. Como $f \in \mathcal{F}(U)$ y $V \subseteq U$, $f|_V \in \mathcal{F}(V)$. Luego $X|_V f|_V \in \mathcal{F}(V)$. Para cualquier punto $q \in V$:
+\[ (X f)|_V (q) = (X f)_q = X_q f \]
+\[ (X|_V f|_V) (q) = (X|_V)_q f|_V = X_q f|_V \]
+Como $f = f|_V$ en $V$, $(X f)|_V = X|_V f|_V \in \mathcal{F}(V)$. Por la localidad de la diferenciabilidad, $X f \in \mathcal{F}(U)$ y $X \in \mathcal{X}(U)$.
+\end{enumerate}
+\end{dem}
+
 \
 
+\begin{prop}
 En $\mathcal{X}(U)$ se pueden definir las siguientes operaciones:
 \begin{enumerate}
 \item Suma: si $X,Y\in\mathcal{X}(U)$, $(X+Y)_p=X_p+Y_p$, para todo $p\in U$. Se tiene que $X+Y\in\mathcal{X}(U)$.
@@ -61,6 +80,14 @@ $p\in U$. Se tiene que $\lambda X\in\mathcal{X}(U)$.
 \item Producto por funciones diferenciables: si $X\in\mathcal{X}(U)$ y $f\in\mathcal{F}(U)$, $(fX)_p=f(p)X_p$, para todo
 $p\in U$. Se tiene que $fX\in\mathcal{X}(U)$.
 \end{enumerate}
+\end{prop}
+\begin{dem}\mbox{}
+\begin{enumerate}
+\item $\forall g \in \mathcal{F}(U)$, $((X+Y)g)_p = (X+Y)_pg = (X_p+Y_p)g = X_p+Y_pg = (Xg)_p+(Yg)_p = (Xg+Yg)_p$, luego $(X+Y)g = Xg+Yg \in \mathcal{F}(U)$.
+\item[3.] $((fX)g)_p = (fX)_pg = f(p)X_pg = (fXg)_p$, luego $(fX)g = f(Xg) \in \mathcal{U}$.
+\item[2.] Tómese $g$ la función constante $λ$.
+\end{enumerate}
+\end{dem}
 \begin{prop} $\mathcal{X}(U)$ es un espacio vectorial real con la suma y el producto de números reales y un
 $\mathcal{F}(U)$--módulo con la suma y el producto por funciones diferenciables.
 \end{prop}
@@ -89,6 +116,11 @@ particulares de funciones diferenciables, las funciones constantes) y producto c
 Entonces, dado cualquier $p\in U$, existen $\overline{X}\in\mathcal{X}(V)$ y $W$ abierto con $p\in W\subseteq U$
 tales que $\overline{X}_q=X_q$, para todo $q\in W$ y $\overline{X}=0$ en $V-U$.
 \end{teorema}
+
+\begin{nota}[Una visión alternativa] Dada una variedad $M$ de dimensión $m$ se puede definir $TM = \coprod_{p \in M} T_p(M)$ llamado el fibrado tangente. Se puede dotar a $TM$ de estructura de V.D. de dimensión $2m$. Para cada $(U, φ=(x_1,\dots,x_m))$ cara en $M$ se define una carta $(\tilde{U},\tilde{φ})$ en $TM$: $\forall (p,v) \in \tilde{U} \subseteq TM$, $\tilde{φ}((p,v)) = (x_1(p),\dots,x_m(p),v(x_1),\dots,v(x_m)) \in \R^{2m}$. La proyección $π: TM \to M$ que asocia $(p,v) \in TM$ a $p$ está en $\mathcal{F}(TM,M)$.
+
+En este contexto, podemos definir $X$ en $M$ como una aplicación $X : M \to TM$ tal que $π \circ X = id_M$. Es decir, $X$ es una sección\footnote{\url{https://en.wikipedia.org/wiki/Section_(fiber_bundle)}} del fibrado $TM$. Se puede probar que $X \in \mathcal{X}(M)$ si y sólo si $X \in \mathcal{F}(M,TM)$.
+\end{nota}
 \section{Campos $f$-relacionados}
 \hs Sean $M$ y $N$ dos variedades diferenciables, $f\in\mathcal{F}(M,N)$ y $U\subseteq M$ un abierto. Se podría
 pensar en definir un campo de vectores $Y$, imagen de $X$ por $f$, escribiendo $Y_{f(p)}=f_{*p}X_p\in
