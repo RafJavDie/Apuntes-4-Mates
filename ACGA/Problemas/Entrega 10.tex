@@ -13,26 +13,74 @@
 Sea $A \subseteq B$ una extensión entera de dominios de integridad.
  
 \begin{enumerate}
-\item Si
+\item\label{1} Si
 $$\mathfrak{p}_0 \subsetneq \mathfrak{p}_1 \subsetneq \dots \subsetneq \mathfrak{p}_r$$
 es una cadena creciente de ideales primos en $A$, probar que existe una
 cadena creciente
 $$\mathfrak{q}_0 \subsetneq \mathfrak{q}_1 \subsetneq \dots \subsetneq \mathfrak{q}_r$$
 de ideales primos en $B$ tales que $\mathfrak{p}_i = A \cap \mathfrak{q}_i$.
-\item Si $\mathfrak{p} \subseteq A$ es un ideal primo y $\mathfrak{q}_1 \subseteq \mathfrak{q}_2 \subseteq B$ dos ideales primos de $B$ tales
+\item\label{2} Si $\mathfrak{p} \subseteq A$ es un ideal primo y $\mathfrak{q}_1 \subseteq \mathfrak{q}_2 \subseteq B$ dos ideales primos de $B$ tales
 que $\mathfrak{q}_1 \cap A = \mathfrak{q}_2 \cap A = \mathfrak{p}$, probar que $\mathfrak{q}_1 = \mathfrak{q}_2$.
 \item Deducir de los apartados anteriores que si $f : X \to Y$ es un morfismo
 finito y dominante entre variedades afines, entonces $\dim(Y ) = \dim(X)$.
 
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}\
+\begin{solucion}
+Empezamos con algunos resultados que serán útiles en la prueba del ejercicio.
+\begin{lemma}\label{lema}
+Sean $A\subseteq B$ anillos, con $B$ entero sobre $A$. Si $\mathfrak{b}$ es un ideal maximal de $B$ y $\mathfrak{a}=\mathfrak{b}\cap A$, entonces $B/\mathfrak{b}$ es entero sobre $A/\mathfrak{a}$.
+\end{lemma}
+\begin{proof}
+Si $x\in B$, entonces existe un polinomio mónico $x^n+a_{n-1}x^{n-1}+\dots+a_0=0$ con $a_i\in A,\ i=0,\dots,n-1$. Basta reducir esta ecuación módulo $\mathfrak{b}$, pues la clase de $x$ está en $B/\mathfrak{b}$. Además, los coeficientes pasarían al cociente como elementos del subanillo $(A+\mathfrak{b})/\mathfrak{b}\subseteq B/\mathfrak{b}$. Pero usando el segundo teorema de isomorfía para anillos tenemos que, como $\mathfrak{a}=\mathfrak{b}\cap A$, entonces $(A+\mathfrak{b})/\mathfrak{b}\cong A/\mathfrak{a}$, luego podemos ver los coeficientes en dicho anillo.
+\end{proof}
+
+\newpage
+
+\begin{coro}\label{coro}
+Sean $A\subseteq B$ anillos, $B$ entero sobre $A$. Sea $\qq$ un ideal primo de $B$ y sea $\pp=A\cap \qq$. Entonces $\qq$ es maximal si y solo si $\pp$ es maximal.
+\end{coro}
+\begin{proof}
+Por el lema \ref{lema}, $B/\qq$ es entero sobre $A/\pp$, y ambos son dominios de integridad. Ahora, como $B/\qq$ es cuerpo si y solo si $A/\pp$ es cuerpo, se tiene el resultado.
+%asegurarme de que hemos dado la equivalencia de ser cuerpo
+\end{proof}
+
+Pasamos a probar los apartados del ejercicio.
 
 \begin{enumerate}
-\item
-\item
-\item
+\item Veamos que para todo ideal primo $\pp\subseteq A$ se tiene que existe un ideal primo $\qq\subseteq B$ tal que $\qq=\pp\cap A$. Esto será suficiente pues la cadena resultante es claramente creciente. 
+
+Por el apartado 3 del ejercicio 1 de esta misma relación, $B_\pp$ es entero sobre $A_\pp$ y el diagrama
+\[
+\begin{tikzcd}
+A\arrow[r, hookrightarrow]\arrow[d,"\alpha"']& B\arrow[d,"\beta"]\\
+A_\pp\arrow[r, hookrightarrow]& B_\pp
+\end{tikzcd}
+\]
+donde $\alpha$ y $\beta$ son los homomorfismos inducidos, es conmutativo. Sea $\mathfrak{n}$ el ideal maximal de $B_\pp$, entonces $\mm=\mathfrak{n}\cap A_\pp$ es el ideal maximal de $A_\pp$ por el corolario \ref{coro}. Si tomamos $\qq=\beta^{-1}(\mathfrak{n})$, entonces $\qq$ es primo por ser preimagen de un primo, y tenemos que $\qq\cap A=\alpha^{-1}(\mm)=\pp$ por la correspondecia entre ideales de $A$ que no cortan a $A\setminus\pp$ y los de $A_\pp$.
+
+\item  Usando el apartado 3 del ejercicio 1 de esta relación, $B_\pp$ es entero sobre $A_\pp$. Sea $\mm$ el ideal extendido de $\pp$ en $A_\pp$ y sean $\mathfrak{n},\mathfrak{n}'$ los ideales extendidos de $\qq_1$ y $\qq_2$ en $B_\pp$. Entonces $\mm$ es el ideal maximal de $A_\pp$ por la correspondecia entre ideales. Por otro lado, $\mathfrak{n}\subseteq\mathfrak{n}'$ y por hipótesis $\mathfrak{n}\cap A_\pp=\mathfrak{n}'\cap A_\pp=\mm$. Por el corolario \ref{coro} se sigue que $\mathfrak{n},\mathfrak{n}'$ son maximales, por lo que $\mathfrak{n}=\mathfrak{n}'$, ya que solo hay un ideal maximal. De aquí se deduce que $\qq_1=\qq_2$, ya que al estar trabajando en dominios de integridad, el homomorfismo inducido hacia el anillo localizado es inyectivo.
+
+
+\item Por ser $f$ finito tenemos que $\calA(X)$ es entero sobre $f^*(\calA(Y))$, que son ambos dominios de integridad al ser $\calA(X)$ isomorfo a un cociente por un ideal primo y porque $f^*(\calA(Y))\subseteq\calA(X)$. También tenemos que por ser $f$ dominante, $f^*$ es inyectiva. Sea 
+$$\mathfrak{p}_0 \subsetneq \mathfrak{p}_1 \subsetneq \dots \subsetneq \mathfrak{p}_r$$ 
+una cadena creciente de ideales primos de $f^*(\calA(Y))$ de longitud igual a la dimensión de dicho anillo. Entonces, por el apartado \ref{1} existe una cadena creciente
+$$\mathfrak{q}_0 \subsetneq \mathfrak{q}_1 \subsetneq \dots \subsetneq \mathfrak{q}_r$$ 
+de ideales primos en $\calA(X)$ tales que $\mathfrak{p}_i = f^*(\calA(Y)) \cap \mathfrak{q}_i$. Además, esta es la dimensión de Krull de $\calA(X)$, pues si tuviéramos una cadena $\qq'_0\subseteq\dots\subseteq \qq'_d$ con $d>r$, entonces 
+$$\qq'_0\cap f^*(\calA(Y))\subseteq \qq'_1\cap f^*(\calA(Y))\subseteq\dots\subseteq \qq'_d\cap f^*(\calA(Y))$$ 
+es una cadena creciente de ideales primos en $f^*(\calA(Y))$, luego por ser $r$ su dimensión, deben existir algunos $\qq'_i\cap f^*(\calA(Y))=\qq'_{i+1}\cap f^*(\calA(Y))$, lo cual implica por el apartado \ref{2} que $\qq'_i=\qq'_{i+1}$, luego la cadena solo podrá tener como mucho longitud $r$ para ser estrictamente creciente. 
+
+Falta probar que también $\dim(Y)=r$. Tomando la misma cadena que antes en $f^*(\calA(Y))$, obtenemos por la inyectividad de $f^*$ la siguiente cadena creciente de ideales primos
+$$(f^*)^{-1}(\pp_0)\subsetneq (f^*)^{-1}(\pp_1)\subsetneq\dots\subsetneq (f^*)^{-1}(\pp_r),$$
+por lo que $\dim(Y)=\dim_{Krull}(\calA(Y))\geq\dim_{Krull}(f^*(\calA(Y))=r$. Recíprocamente, si tenemos una cadena creciente de ideales en $\calA(Y)$
+$$\mathfrak{p}'_0 \subsetneq \mathfrak{p}'_1 \subsetneq \dots \subsetneq \mathfrak{p}'_d.$$
+Entonces, como $f^*$ es isomorfismo sobre su imagen, tenemos en $f^*(\calA(Y))$ la cadena creciente de ideales primos
+$$f^*(\mathfrak{p}'_0) \subsetneq f^*(\mathfrak{p}'_1) \subsetneq \dots \subsetneq f^*(\mathfrak{p}'_d).$$
+Como $\dim_{Krull}(f^*(\calA(Y)))=r$, esto implica que $d\leq r$, por lo que $\dim_{Krull}(\calA(Y))\leq r$, con lo que finalmente tenemos la igualdad, como queríamos demostrar.
+
 \end{enumerate}
 \end{solucion}
+
+\newpage
 
 \end{document}
