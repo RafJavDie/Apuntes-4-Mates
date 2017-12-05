@@ -3,6 +3,8 @@
 \usepackage{wasysym}
 \usetikzlibrary{automata,positioning}
 \usepackage{mathdots}
+\usepackage{listings}
+
 %--------------------------------------------------------
 \begin{document}
 
@@ -10,6 +12,34 @@
 
 \author{Javier Aguilar Martín}
 \maketitle
+
+\begin{ejercicio}{1}
+Calcúlese $\#(p)$ donde $p$ el siguiente programa:
+\begin{lstlisting}[mathescape=true]
+    IF X $\neq$ 0 GOTO A
+[B] X $\leftarrow$ X + 1
+    IF X $\neq$ 0 GOTO B
+[A] Y $\leftarrow$ Y + 1
+\end{lstlisting}
+\end{ejercicio}
+\begin{solucion}
+	\[ \#(I_1) = \langle 0, \langle 3, 1\rangle \rangle = 2^0(2\langle 3,1\rangle+1)-1 = 2(2^3(2\cdot 1+1)-1) = 46 \]
+	\[ \#(I_2) = \langle 2, \langle 1, 1\rangle \rangle = 2^2(2\langle1,1\rangle+1)-1 = 4(2(2^1(2\cdot1+1)-1)+1)-1 = 43 \]
+	\[ \#(I_3) = \langle 0, \langle 4, 1\rangle \rangle = 94 \]
+	\[ \#(I_4) = \langle 1, \langle 1, 0\rangle \rangle = 5 \]
+	\[ \#(p) = [\#(I_1),\#(I_2),\#(I_3),\#(I_4)]-1 = 2^{46}3^{43}5^{94}7^5-1 \]
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Sea $n ≥ 1$. Probar que para cada $f \in \mathcal{P}^{(n)}$ existen infinitos índices $e \in \mathbb{N}$ tales que $φ_e^{(n)} = f$.
+\end{ejercicio}
+\begin{solucion}
+Por teoría sabemos que si existe al menos un $e \in \mathbb{N}$ tal que $f = φ_e^{(n)}$. Supongamos ahora que para un $e$ cualquiera tal que $f = φ_e^{(n)}$, veamos que $e'=(e+1) \cdot \langle 0,0,1 \rangle \cdot-1$ también cumple que $f = φ_e^{(n)}$. Este código se corresponde con un programa que hace lo mismo que el programa con número $e$ con un SKIP trivial a la primera variable de entrada. No afecta al valor de $Y$ final, luego $φ_{e'}^{(n)} = f$. Además $e'\neq e$. Entonces, por inducción, tenemos que hay infinitos $e \in \mathbb{N}$ tales que $φ_e^{(n)} = f$. 
+\end{solucion}
+
+\newpage
 
 \begin{ejercicio}{3}
 Sean $\texttt{GOTO}_l$ y $\texttt{GOTO}_f$ los modelos introducidos en la primera relación de problemas.
