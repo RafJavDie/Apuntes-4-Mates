@@ -1,0 +1,148 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+\usepackage{wasysym}
+\usetikzlibrary{automata,positioning}
+\usepackage{mathdots}
+\newcommand{\sii}{{\Leftrightarrow}}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ciencias de la Computación}
+
+\author{Javier Aguilar Martín, Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{1}
+Sea $f : \N \to \N$ la función definida por
+$$f(0) = 1,\quad f(n) = f(\lfloor\frac{n}{2}\rfloor) + n,\ \text{si }n \geq 1.$$
+\begin{enumerate}
+\item Diseñar un programa \texttt{GOTO} que calcule $f$.
+
+(Solo podrán utilizarse las macros: \texttt{GOTO L}, $\texttt{W}\leftarrow \texttt{V}$ y $\texttt{W}\leftarrow   \lfloor\frac{\texttt{V}}{2}\rfloor$, siendo $\texttt{V}$ y $\texttt{W}$ variables
+distintas. El programa tendrá 12 líneas como máximo).
+\item 
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+\item Observemos que $f(\lfloor n/2\rfloor)=f(\lfloor\lfloor n/2\rfloor/2\rfloor)+\lfloor n/2\rfloor+n$. Con esto en mente podemos hacer el programa que se pide.
+\begin{align*}
+& Y\leftarrow Y+1\\
+&Z_1\leftarrow X\\
+& IF\ Z_1\neq 0\ GOTO\ A\\
+& GOTO\ E\\
+[A]& Y\leftarrow Y+1\\
+&Z_2\leftarrow Z_1\\
+&Z_2\leftarrow Z_2-1\\
+&IF\ Z_2\neq 0\ GOTO\ A\\
+&GOTO\ B\\
+[B]&Z_1\leftarrow \left\lfloor\frac{Z_1}{2}\right\rfloor\\
+& IF\ Z_1\neq 0\ GOTO\ A\\
+& GOTO\ E
+\end{align*}
+
+
+\item
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Sea $P(x,y,u)$ un predicado recursivo. Probar que el conjunto
+\[ A = \{(x,z) : (\forall y)_{≤z} (\exists u) P(x,y,u)\} \]
+es recursivamente enumerable.
+\end{ejercicio}
+\begin{solucion}
+Como hay una cantidad finita de $y≤z$, también hay una cantidad finita de $u$. Es decir podemos acotar el existencical.
+\begin{align*}
+	(x,z) \in A & \sii (\forall y)_{≤z} (\exists u) P(x,y,u)\\
+	& \sii (\exists v)(\forall y)_{≤z} (\exists u)_{≤v} P(x,y,u)
+\end{align*}
+ que es recursivamente enumerable, luego $A$ es recursivamente enumerable.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+Sea $P(x,y,u)$ un predicado r.e. Probar que el conjunto
+\[ A = \{(x,z) : (\forall y)_{≤z} (\exists u) P(x,y,u)\} \]
+es recursivamente enumerable.
+\end{ejercicio}
+\begin{solucion}
+Sea $R(x,y,u,v)$ recursivo tal que $P(x,y,u) \sii (\exists v) R(x,y,u,v)$ (existe por el teorema de la proyección.
+\begin{align*}
+	(x,z) \in A & \sii (\forall y)_{≤z} (\exists u) P(x,y,u)\\
+	& \sii (\forall y)_{≤z} (\exists u) (\exists v) R(x,y,u,v)\\
+	& \sii (\forall y_{≤z}) (\exists w) R(x,y,l(w),r(w))
+\end{align*}
+Por el ejercicio \ref{ejer:2}, este último predicado es recursivo enumerable. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4}
+Sea $f \in \mathcal{P}^{(1)}$. Probar que:
+\begin{enumerate}
+	\item $A \subseteq \N \land A$ r.e. $\Rightarrow f(A)$ r.e. y $f^{-1}(A)$ r.e.
+	\item $f$ total $\land\ A \subseteq \N \land A$ recursivo $\Rightarrow f^{-1}(A)$ recursivo.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item $x\in f(A)\sii (\exists u) (u\in A\land f(u)=x)$. Como $f$ es recursiva $f(u)=x$ es recursivamente enumerable. Como también $u\in A$ es r.e, y añadir existenciales también, el resultado lo es. 
+
+$x\in f^{-1}(A)\sii f(x)\in A\sii (\exists y) (f(x)=y\land y\in A)$. Por lo mismo de antes se tiene el resultado. 
+
+\item Si $f\in\mathcal{R}$ y $A$ es recursivo, $x\in f^{-1}(A)\sii f(x)\in A\sii \mathcal{C}_A(f(x))=1$, que es composición de recursivas totales y ecuación entre funciones totales, por lo que es recursivo.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{5}
+Sea $A \subseteq \N$. Probar que son equivalentes:
+\begin{enumerate}
+	\item $A$ es r.e.
+	\item Existe $f \in \mathcal{P}$ (posiblemente parcial) tal que $\text{rang}(f) = A$.
+	\item Existe $f \in \mathcal{P}\mathcal{R}$ tal que $\text{rang}(f)=A$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{itemize}
+	\item[$(1\Rightarrow 3)$] Teorema de enumeración.
+	\item[$(3\Rightarrow 2)$] Trivial.
+	\item[$(2\Rightarrow 1)$] Teorema del rango.
+	
+	Sea $f \in \mathcal{P}$: Por el teorema de la forma normal. $f(x)\!\downarrow \Leftrightarrow \exists z \mathcal{T}_n(x,e,z)$ y $f(x) = l((μz)\mathcal{T}_n(x,e,z))$.
+	Entonces:
+	\begin{align*}
+	y \in \text{rang}(f) & \Leftrightarrow (\exists x) (f(x)=y)\\
+	& \Leftrightarrow (\exists x)(\exists z) (\mathcal{T}_n(x,e,z) \land l(z) = y)\\
+	& \Leftrightarrow (\exists x) (\exists t) (\texttt{STEP}(x,e,t)) \land ((di(x,e,t))_1 = y)\\
+	& \Leftrightarrow (\exists z) (\texttt{STEP}(l(z),e,r(z))) \land ((di(l(z),e,r(z))_1 = y)
+\end{align*}
+\end{itemize}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{6}
+Sea $A \subseteq \N$ tal que $A \neq \emptyset$. probar que son equivalentes:
+\begin{enumerate}
+	\item $A$ es recursivo.
+	\item Existe $f \in \mathcal{R}^{(1)}$ tal que $\forall x \in \N$ $(f(x) ≤ f(x+1)) \land A = \text{rang}(f)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{itemize}
+\item[$(2\Rightarrow 1)$] Teorema del rango.
+\item[$(1\Rightarrow 2)$] Sea $A$ r.e. infinito. Entonces existe $g\in\mathcal{R}$ tal que $A=rang(g)$. Definimos
+\begin{align*}
+&f'(0)=[g(0)]\\
+&f'(x+1)=f'(x)*[g((\mu u)((\forall i)_{\leq x} ((f'(x))_i)\neq g(u))]
+\end{align*}
+Está claro que $f'\in\mathcal{R}$. Definimos $f(x)=(f'(x))_x$. Entonces $f\in\mathcal{R}$ y $rang(f)=A$. Es obvio que $rang(f)\subseteq rang(g)$. Y si $x\in rang(g)\Rightarrow(\exists u)(g(u)=x)\Rightarrow (\exists u)(g(u)\in f'(u))\Rightarrow (\exists u)(\exists i)_{\leq u} (x=f(i))$. 
+\end{itemize}
+\end{solucion}
+\end{document}

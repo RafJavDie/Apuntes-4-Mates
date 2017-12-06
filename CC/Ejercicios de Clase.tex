@@ -9,6 +9,50 @@
 \author{Javier Aguilar Martín}
 \maketitle
 
+\begin{ejercicio}{3}
+Diseñar un programa \texttt{GOTO} que calcule la función $f(x) = \max\{n : n^2 \leq x\}$.
+\end{ejercicio}
+\begin{solucion}
+\begin{align*}
+& Z_1\leftarrow X\\
+&IF\ X\neq 0\ GOTO\ A\\
+&GOTO\ E\\
+[A] & Z_2\leftarrow Z_2+1\\
+& IF\ Z_2\cdot Z_2 \leq Z_1\ GOTO\ A\\
+& Z_2\leftarrow Z_2-1\\
+& Y\leftarrow Z_2
+\end{align*}
+Desarrollo del producto, que se guardará en la variable auxiliar $Z_5$. Cuando se escriba $GOTO\ L$ entiéndase que se va a la etiqueta correspondiente del programa global.
+\begin{align*}
+&Z_3\leftarrow Z_2\\
+&Z_4\leftarrow Z_2\\
+[B_1] & IF\ Z_4\neq 0\ GOTO\ A_1\\
+& Z_5\leftarrow Z_5\\
+& GOTO\ L\\
+[A_1] & IF\ Z_3\neq 0\ GOTO\ C_1\\
+& Z_5\leftarrow Z_5\\
+& GOTO\ L\\
+[C_1] & Z_4\leftarrow Z_4-1\\
+& Z_3\leftarrow Z_3+Z_3\\
+&Z_5\leftarrow Z_3\\
+& GOTO\ B_1
+\end{align*}
+Desarrollo del predicado $Z_5\leq Z_1$, cuyo valor se guardará en la variable auxiliar $Z_6$. Sobre $GOTO\ L$ lo mismo que antes.
+\begin{align*}
+[C_2]& IF\ Z_5\neq 0\ GOTO\ A_2\\
+& Z_6\leftarrow Z_6+1\\
+[A_2] & IF\ Z_1\neq 0\ GOTO\ B_2\\
+& Z_6\leftarrow Z_6\\
+&GOTO\ L\\
+[B_2] & Z_5\leftarrow Z_5- 1\\
+& Z_1\leftarrow Z_1-1\\
+&GOTO\ C_2
+\end{align*}
+Así, en el programa con macros, la instrucción $IF\ Z_2\cdot Z_2 \leq Z_1\ GOTO\ A$ se convertiría en $IF\ Z_6\neq 0\ GOTO\ A$
+\end{solucion}
+
+\newpage
+
 \begin{ejercicio}{6}
 Sean $f$ y $g$ computables (de aridad $1$). Probar que la función $h(x) = f(g(x))$ es
 computable.
