@@ -20,12 +20,13 @@ $$f(0) = 1,\quad f(n) = f(\lfloor\frac{n}{2}\rfloor) + n,\ \text{si }n \geq 1.$$
 
 (Solo podrán utilizarse las macros: \texttt{GOTO L}, $\texttt{W}\leftarrow \texttt{V}$ y $\texttt{W}\leftarrow   \lfloor\frac{\texttt{V}}{2}\rfloor$, siendo $\texttt{V}$ y $\texttt{W}$ variables
 distintas. El programa tendrá 12 líneas como máximo).
-\item 
+\item Pruébese (utilizando la función recorrido de $f$) que $f$ es primitiva recursiva.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}
-\item Observemos que $f(\lfloor n/2\rfloor)=f(\lfloor\lfloor n/2\rfloor/2\rfloor)+\lfloor n/2\rfloor+n$. Con esto en mente podemos hacer el programa que se pide.
+\item Observemos que $f(\lfloor n/2\rfloor)=f(\lfloor\lfloor n/2\rfloor/2\rfloor)+\lfloor n/2\rfloor$. Con esto en mente podemos hacer el programa que se pide.
+
 \begin{align*}
 & Y\leftarrow Y+1\\
 &Z_1\leftarrow X\\
@@ -43,6 +44,57 @@ distintas. El programa tendrá 12 líneas como máximo).
 
 \item
 \end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Se pide:
+\begin{enumerate}
+\item Probar que la siguiente función $F : \N^2\dashrightarrow \N$ es \texttt{GOTO}-computable, siendo
+\[
+F(x,e)=\begin{cases}
+1 & \text{si la computación del programa de código }e\text{ sobre }x\text{ tiene longitud impar}.\\
+2 & \text{si la computación del programa de código }e\text{ sobre }x\text{ tiene longitud par}.\\
+\uparrow & en otro caso.
+\end{cases}
+\]
+(\textbf{Indicación}: Utilícese el predicado \texttt{STEP}).
+\item Probar que existe una función primitiva recursiva $g : \N^2 \to \N$ tal que para todo
+$e_1, e_2 \in \N$ y todo $x \in \N$ se tiene:
+$$\varphi_{g(e_1,e_2)}^{(1)}=\varphi_{e_1}^{(1)}+\varphi_{e_2}^{(1)}.$$
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+\end{ejercicio}\
+\begin{enumerate}
+\item Sea $\texttt{GOTO}^*$ el conjunto de los programas \texttt{GOTO} que solo contienen instrucciones condicionales
+del tipo \texttt{IF V} $\neq 0$ \texttt{GOTO L} (etiquetadas o no) cuando \texttt{V} no es una variable de
+entrada. Pruébese que el conjunto $S = \{\#(\texttt{P}) : \texttt{P} \in \texttt{GOTO}^*\}$ es primitivo recursivo.
+
+\item Sea $\texttt{GOTO}_A$ el modelo de computación definido como \texttt{GOTO}, pero sin instrucciones de
+decremento y añadiendo instrucciones de asignación del tipo $\texttt{V}\leftarrow \texttt{W}$ (con o sin etiquetas)
+y condicionales del tipo \texttt{IF V} $=$ \texttt{W GOTO L}, para cada par de variables distintas \texttt{V} y \texttt{W}.
+Probar que \texttt{GOTO} y $\texttt{GOTO}_A$ son equivalentes.
+\end{enumerate}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4}
+Sea $g : \N^2 \to \N$ definida por $g(n, x) = p^x_n - 1$. Se pide:
+\begin{enumerate}
+\item Calcular $\mathcal{U}_1(2, g(1000, 2))$.
+\item Dado $n \in \N$. ¿se verifica $\texttt{STEP}^{(1)}(2, g(1000, n), 1000)$? Razónese la respuesta.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
 \end{solucion}
 
 \newpage
