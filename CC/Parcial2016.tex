@@ -23,7 +23,7 @@ distintas. El programa tendrá 12 líneas como máximo).
 \item Pruébese (utilizando la función recorrido de $f$) que $f$ es primitiva recursiva.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion}\
 \begin{enumerate}
 \item Observemos que $f(\lfloor n/2\rfloor)=f(\lfloor\lfloor n/2\rfloor/2\rfloor)+\lfloor n/2\rfloor$. Con esto en mente podemos hacer el programa que se pide.
 
@@ -42,7 +42,17 @@ distintas. El programa tendrá 12 líneas como máximo).
 \end{align*}
 
 
-\item
+\item Denotamos la función recorrido por $\hat{f}$. Sabemos que si $\hat{f}\in\mathcal{PR}$, entonces $f\in\mathcal{PR}$. $\hat{f}(0)=[f(0)]=2^1=2$, $$\hat{f}(n)=[1,f(1),f(2),\dots, f(n)]=\prod_{i=1}^{n} p_i^{f(i-1)}=\hat{f}(n-1)p_{n+1}^{f(n)}$$
+Ahora, como $f(n)=f(\lfloor\frac{n}{2}\rfloor) + n$, y $f(\lfloor\frac{n}{2}\rfloor)$ está guardado en la función recorrido, 
+$$p_{n+1}^{f(n)}=p_{n+1}^{f(\lfloor\frac{n}{2}\rfloor) + n}=p_{n+1}^{(\hat{f}(n-1))_{\lfloor\frac{n}{2}\rfloor+1}+n}$$
+Luego la definición recursiva de $\hat{f}$ es la siguiente
+\[
+\begin{cases}
+\hat{f}(0)=0 \\
+\hat{f}(n)=h(n-1,\hat{f}(n-1)) & n\geq 1
+\end{cases}
+\]
+Donde $h(x,y)=p_{x+2}^{((y)_{\lfloor\frac{x+1}{2}\rfloor+1}+x+1)}$.
 \end{enumerate}
 \end{solucion}
 
