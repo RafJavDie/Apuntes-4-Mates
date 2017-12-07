@@ -13,9 +13,9 @@
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
-x & 0 &1 & 2 	& 3 	& 4 	& 5\\
+$x$ & 0 &1 & 2 	& 3 	& 4 	& 5\\
 \hline
-y & 2 &2 	& -12 	& -27 & -60 &-90\\
+$y$ & 2 &2 	& -12 	& -27 & -60 &-90\\
 \hline
 \end{tabular}
 \end{center}
@@ -67,9 +67,10 @@ z_i \in \R \quad \forall i
 \newpage 
 
 \begin{ejercicio}{2}
-Supongamos que $x_{k+1}$ y $x_k$ son dos puntos consecutivos generados por el método del descenso máximo con la regla de minimización. Probar que $\nabla f(x_{k})'\nabla f(x_{k+1})=0$.
+Supongamos que $x^{k+1}$ y $x^k$ son dos puntos consecutivos generados por el método del descenso máximo con la regla de minimización. Probar que $\nabla f(x^{k})'\nabla f(x^{k+1})=0$.
 \end{ejercicio}
 \begin{solucion}
+$x^{k+1}=x^k-\alpha^k\nabla f(x^k)$ donde $\alpha^k$ tal que $g'(\alpha^k)=0$, pero $$g'(\alpha^k)=\nabla f(x^k-\alpha^k\nabla f(x^k))(-\nabla f(x^k))=\nabla f(x^{k})'\nabla f(x^{k+1})=0.$$
 \end{solucion}
 
 \newpage
@@ -86,6 +87,39 @@ $$\min f(x,y)=100(y-x^2)^2+(1-x)^2.$$
 Aplique algún método de gradiente y el método de Newton con $x_0=(-1,1)$.
 \end{ejercicio}
 \begin{solucion}
+Utilizamos el algoritmo de descenso máximo con regla de minimización partiendo del punto $x_0=(-1,1)$. $x^1=x^0-\alpha^0\nabla f(x^k)$ con $\alpha^0$ minimizando $f(x^0-\alpha^0\nabla f(x^0))$. Calculamos el gradiente. 
+\[
+\nabla f(x,y)=\begin{pmatrix}
+-400(y-x^2)x-2(1-x)\\
+200(y-x^2)
+\end{pmatrix}\Rightarrow\nabla f(-1,1)=\begin{pmatrix}
+-4\\
+0
+\end{pmatrix}
+\]
+Entonces $x^0-\alpha^0\nabla f(x^0)=\begin{pmatrix}
+-1+4\alpha\\
+1
+\end{pmatrix}$, luego $f(x^0-\alpha^0\nabla f(x^0))=100(-16\alpha^2+8\alpha)^2+(2-4\alpha)^2=g(\alpha)$. Derivando y to eso, tenemos que el mínimo se alcanza en $\alpha^0=\frac{1}{2}$. Resulta que $x^1$ es estacionario, así que es un mínimo local, y por ser siempre positiva es mínimo global.
+
+Aplicamos ahora el método de Newton. La hessiana sale
+\[
+\nabla^2 f(x,y)=\begin{pmatrix}
+400(3x^2-y)+2 & -400x\\
+-400x & 200
+\end{pmatrix}\Rightarrow\nabla^2f(-1,1)=\begin{pmatrix}
+802 & 400\\
+400 & 200
+\end{pmatrix}\Rightarrow(\nabla^2f(-1,1))^{-1})=\begin{pmatrix}
+\frac{1}{2} & -1\\
+-1 &\frac{401}{200}
+\end{pmatrix}
+\]
+Entonces $x^1=\begin{pmatrix}
+1\\
+-3
+\end{pmatrix}$, que no es estacionario porque el gradiente no se anula en él. Hacemos una iteración más y sale que el $(1,1)$ es mínimo.
+\end{solucion}
 
 \newpage
 \begin{ejercicio}{5}
@@ -105,7 +139,24 @@ Considerar el problema $\min f(x,y)=3x^2+y^4$.
 \item Aplicar una iteración del método de Newton con el mismo punto de partida.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion}\
+\begin{enumerate}
+\item $x^1=x^0-\alpha^0\nabla f(x^0)$. $\nabla f(x,y)=\begin{pmatrix}
+6x\\
+4y^3
+\end{pmatrix}\Rightarrow \nabla f(1,-2)=\begin{pmatrix}
+6\\
+-32
+\end{pmatrix}\Rightarrow x^1=\begin{pmatrix}
+1-6\alpha^0\\
+-2+32\alpha^0
+\end{pmatrix}$. Por la regla de Armijo, $\alpha^0=1\cdot 0.5^{m_0}$ donde $m_0$ es el menor entero tal que ``algo que me da pereza copiar y está en los apuntes''. Podemos encontrarlo por fuerza bruta y nos da 4. Así, $x^1=\begin{pmatrix}
+0.625\\
+0
+\end{pmatrix}$ y el gradiente en el punto no se anula así que hay que seguir.
+\item
+\item 
+\end{enumerate}
 \end{solucion}
 
 \newpage
@@ -114,6 +165,20 @@ Considerar el problema $\min f(x,y)=3x^2+y^4$.
 Considerar la función $f:\R^n\to\R$ dada por $f(x)=||x||^{3/2}$, y el método de descenso máximo con longitud de paso constante en cada iteración. Probar que la condicción $||\nabla f(x)-\nabla f(y)||\leq L||x-y||$ para todo $x,y$ no se verifica para ningún $L$. Además probar que este algoritmo converge a la solución óptima en un número finito de pasos o no converge a él, en este problema.
 \end{ejercicio}
 \begin{solucion}
+$$\nabla f(x)=\frac{3}{2}||x||^{1/2}\frac{x}{||x||^{1/2}}=\frac{3}{2}\frac{x}{||x||^{1/2}}$$
+$$||\nabla f(x)-\nabla f(y)||=\frac{3}{2}||\frac{x}{||x||^{1/2}}-\frac{y}{||y||^{1/2}}||$$
+Consideramos $y=-x$ y vamos a ver que para este par de puntos no existe $L$ que valga para todos los puntos.
+$$3||\frac{x}{||x||^{1/2}}||=3||x||^{1/2}\leq 2L||x||$$
+Despejamos y $L\geq\frac{3}{2}||x||^{-1/2}\to +\infty$ cuando $x\to 0$.
+
+Para la segunda parte, $x^{k+1}=x^k-\alpha\nabla f(x^k)=x^k\left(1-\frac{3\alpha}{2||x^k||^{1/2}}\right)$. Como el mínimo se alcanza en 0, busquemos un $x^{k+1}=0$. Para ello, $1-\frac{3\alpha}{2||x^k||^{1/2}}=0\Rightarrow \alpha=\frac{2}{3}||x^k||^{-1/2}$. 
+Por otra parte, si converge en infinitos pasos, debe de existir $\overline{k}$ tal que $\forall k>\overline{k}$, $||x^{k+1}||<||x^k||$. En este caso, pueden pasar dos cosas, según si el paréntesis es positivo o negativo.
+\begin{enumerate}
+\item Si es positivo, entonces $||x^k||>(3\alpha/2)^2$, luego no converge. 
+\item Si es negativo, entonces se quedan dentro de la bola $||x^k||<(3\alpha/2)^2$, pero veremos que no los puntos no decrecen en norma, pues si 
+$$||x^k||||\left(1-\frac{3\alpha}{2||x^k||^{1/2}}\right)||<||x^k||\Rightarrow ||x^k||>(3\alpha/4)^2$$
+Con lo cual se quedan fuera de de esa nueva bola.
+\end{enumerate}
 \end{solucion}
 
 \newpage
@@ -127,7 +192,6 @@ $$||x-x^*||\leq\frac{||\nabla f(x)||}{m},\quad f(x)-f(x^*)\leq\frac{||\nabla f(x
 \begin{solucion}
 \end{solucion}
 
-\end{solucion}
 
 
 
