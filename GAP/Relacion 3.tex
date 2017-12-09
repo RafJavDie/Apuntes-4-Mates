@@ -1,0 +1,71 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+\newcommand{\x}{{\mathbf{x}}}
+\newcommand{\y}{{\mathbf{y}}}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Geometría Aplicada}
+\author{Rafael González López, Javier Aguilar Martín, Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{3.1}
+Hallar los coeficientes del polinomio $p(t)= 1-t+2t^2+t^3$ en las bases de Bernstein $\{B_i^3(t)\}_{i=0}^3$ y $\{B_i^4(t)\}_{i=0}^4$.
+\end{ejercicio}
+\begin{solucion}
+Tomamos coordenadas de los $B_i^k(t)$ respecto de la base $\beta_1 =\{1,t,t^2,t^3\}$ y la base $\beta_2 = \{1,t,t^2,t^3,t^4\}$.
+\begin{align*}
+B_0^3(t) &= 1 - 3t +3t^2 -t^3 & B_0^4(t) &= 1 -4t+6t^2-4t^3+t^4\\
+B_1^3(t) & = 3t-6t^2+3t^3 & B_1^4(t) &= 4t-12t^2+12t^3-4t^4\\
+B_2^3(t) &= 3t^2 -3t^3 & B_2^4(t) &= 6t^2-12t^3+6t^4\\
+B_3^3(t) &= t^3 & B_3^4(t) &=4t^3-4t^4\\
+ & & B_4^4(t) &= t^4
+\end{align*}
+Lo que nos deja las siguientes matrices de cambio de base con respecto a las bases canónicas
+$$
+M_1 = 
+\begin{pmatrix}
+1 & 0 & 0 & 0\\
+-3 & 3 & 0 &0\\
+3 & -6 & 3 & 0\\
+-1 & 3 & -3 & 1
+\end{pmatrix} \qquad \qquad  M_2 = 
+\begin{pmatrix}
+1  & 0   & 0   & 0  & 0\\
+-4 & 4   & 0   & 0  & 0\\
+6  & -12 & 6   & 0  & 0\\
+-4 & 12  & -12 & 4  & 0\\
+1  & -4  & 6   & -4 & 1
+\end{pmatrix}
+$$ 
+Pasamos a calcular directamente las coeficientes
+\begin{gather*}
+M_1^{-1}\begin{pmatrix}
+1\\
+-1\\
+2\\
+1
+\end{pmatrix}
+= 
+\begin{pmatrix}
+1\\
+2/3\\
+1\\
+1
+\end{pmatrix} \qquad \qquad M_2^{-1}  \begin{pmatrix}
+1\\
+-1\\
+2\\
+1\\
+0
+\end{pmatrix} = 
+ \begin{pmatrix}
+1\\
+3/4\\
+5/6\\
+3/2\\
+3
+\end{pmatrix} 
+\end{gather*}
+\end{solucion}
+\end{document}
