@@ -112,6 +112,8 @@ Sea $h : \N \to \N$ recursiva, total y estríctamente creciente. Probar que
 \[ l((μ z) \mathcal{T}_n(\vec{x},e,z)) = l((μ z) \mathcal{T}_n (\vec{x},e, \langle l(z),h(r(z))\rangle ))\]
 \end{ejercicio}
 \begin{solucion}
+Sea \texttt{p} tal que $\#(\texttt{p})=e$. Tenemos que $l((μ z) \mathcal{T}_n(\vec{x},e,z))=[\![\texttt{p}]\!]^{(n)}(\vec{x})$ y denotemos por $m$ a dicho mínimo. 
+La función par es estrictamente creciente en ambos argumentos, luego  $\langle l(z),h(r(z))\rangle> \langle l(z),r(z)\rangle=z$. Además, $l(z)$ es el valor de $y$ en el paso $r(z)$. Como $l(m)=[\![\texttt{p}]\!]^{(n)}(\vec{x})$, tras un número mayor de pasos el programa ya ha parado y el valor de $y$ no aumenta, por lo que $l((μ z) \mathcal{T}_n(\vec{x},e,z)) = l((μ z) \mathcal{T}_n (\vec{x},e, \langle l(z),h(r(z))\rangle ))$.
 \end{solucion}
 
 \newpage
@@ -148,6 +150,7 @@ Sea $f : \N^n \to \N$ una función total \texttt{GOTO}-computable y $p$ un \text
 Probar que la función $f$ es primitiva recursiva.
 \end{ejercicio}
 \begin{solucion}
+$f(x)=(r(\texttt{di}^{(n)}(x_1,\dots,x_n,\#(\texttt{p}),g(x_1,\dots,x_n))))_1$, composición de primitivas recursivas.
 \end{solucion}
 \newpage
 \begin{ejercicio}{11}
