@@ -4,6 +4,7 @@
 \usetikzlibrary{automata,positioning}
 \usepackage{mathdots}
 \newcommand{\sii}{{\Leftrightarrow}}
+\usepackage{listings}
 %--------------------------------------------------------
 \begin{document}
 
@@ -75,7 +76,20 @@ $e_1, e_2 \in \N$ y todo $x \in \N$ se tiene:
 $$\varphi_{g(e_1,e_2)}^{(1)}=\varphi_{e_1}^{(1)}+\varphi_{e_2}^{(1)}.$$
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion}\
+\begin{enumerate}
+\item La computación del programa de código $e$ sobre $x$ tiene longitud impar$\Leftrightarrow (\exists t)_{\leq r}(\texttt{STEP}(x,e,t)\land 2\not| t\land\neg \texttt{STEP}(x,e,t-1))$, donde $r=(\mu s)(\texttt{STEP}(x,e,s))$, que es recursivo. Análogamente, la segunda condición equivale a $(\exists t)_{\leq r}(\texttt{STEP}(x,e,t)\land 2| t\land\neg \texttt{STEP}(x,e,t-1))$. Obsérvese que en caso de que el programa no pare nunca, ambos predicados no paran, por lo que $f$ no para, que es lo que deseamos.
+\item Sea $\texttt{p}_1$ el programa de código $e_1$ y $\texttt{p}_2$ el programa de código $e_2.$ Entonces la suma vendrá dada por el siguiente programa
+\begin{lstlisting}[mathescape=true]
+                     $\texttt{p}_1$
+                     $Z_1\leftarrow$ Y
+                     Y$\leftarrow$ 0
+                     $\texttt{p}_2$
+                     $Z_2\leftarrow$ Y
+                     Y$\leftarrow Z_1+Z_2$
+\end{lstlisting}
+Con lo que basata calcular el código de este programa. Al calcularlo estaremos usando las mismas funciones que se usan para calcular cualquier código, que son todas primitivas recursivas.
+\end{enumerate}
 \end{solucion}
 
 \newpage
@@ -92,7 +106,22 @@ decremento y añadiendo instrucciones de asignación del tipo $\texttt{V}\leftar
 y condicionales del tipo \texttt{IF V} $=$ \texttt{W GOTO L}, para cada par de variables distintas \texttt{V} y \texttt{W}.
 Probar que \texttt{GOTO} y $\texttt{GOTO}_A$ son equivalentes.
 \end{enumerate}
-\begin{solucion}
+\begin{solucion}\
+\begin{enumerate}
+\item $e\in S\Leftrightarrow (\forall j)_{\leq long(e+1)}(l(r((e+1)_j))\leq 2 impar(\lor r(r((e+1)_j)+1))$. El predicado $impar(x)$ es primitivo recursivo ya que $impar(x)\Leftrightarrow 2\not| x\Leftrightarrow \neg (\exists t)_{\leq x}(2t=x)\Leftrightarrow (\forall t)_{\leq x}(2t\neq x)$. 
+\item Sabemos que las intrucciones de $\texttt{GOTO}_A$ son \texttt{GOTO}-computables ya que son macros definidas en teoría. Por tanto, tenemos que ver que podemos generar un decremento con las instrucciones de $\texttt{GOTO}_A$. El siguiente programa calcula la función decremento.
+\begin{lstlisting}[mathescape=true]
+                     $Z_1\leftarrow$Y
+                     IF $Z_1\neq 0$ GOTO A
+                     GOTO E
+                 [A] $Z_3\leftarrow Z_2+1$
+                     IF $Z_3=Z_1$ GOTO B
+                     $Z_2\leftarrow Z_2+1$
+                     GOTO A
+                 [B] Y$\leftarrow Z_2$  
+\end{lstlisting}
+
+\end{enumerate}
 \end{solucion}
 
 \newpage
