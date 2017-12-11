@@ -65,7 +65,7 @@ Como $f = h|_U$ en $W$, $(X|_V f)|_W(q) = (X h|_U)|_W(q)$ para todo punto $q \in
 \item[$(3 \Rightarrow 1)$] Sea $f \in \mathcal{F}(U)$. Sea $p \in U$ cuaquiera. Por hipótesis, existe $(V,φ)$ carta en $M$ tal que $p \in V \subseteq U$ y $X|_V = \sum_{i=1}^m f_i \frac{\partial}{\partial x_i} \in \mathcal{X}(V)$. Como $f \in \mathcal{F}(U)$ y $V \subseteq U$, $f|_V \in \mathcal{F}(V)$. Luego $X|_V f|_V \in \mathcal{F}(V)$. Para cualquier punto $q \in V$:
 \[ (X f)|_V (q) = (X f)_q = X_q f \]
 \[ (X|_V f|_V) (q) = (X|_V)_q f|_V = X_q f|_V \]
-Como $f = f|_V$ en $V$, $(X f)|_V = X|_V f|_V \in \mathcal{F}(V)$. Por la localidad de la diferenciabilidad, $X f \in \mathcal{F}(U)$ y $X \in \mathcal{X}(U)$.
+Como $f = f|_V$ en $V$, $(X f)|_V = X|_V f|_V \in \mathcal{F}(V)$. Por la localidad de la diferenciabilidad, $X f \in \mathcal{F}(U)$ y $X \in \mathcal{X}(U)$. $\QED$
 \end{enumerate}
 \end{dem}
 
@@ -85,7 +85,7 @@ $p\in U$. Se tiene que $fX\in\mathcal{X}(U)$.
 \begin{enumerate}
 \item $\forall g \in \mathcal{F}(U)$, $((X+Y)g)_p = (X+Y)_pg = (X_p+Y_p)g = X_p+Y_pg = (Xg)_p+(Yg)_p = (Xg+Yg)_p$, luego $(X+Y)g = Xg+Yg \in \mathcal{F}(U)$.
 \item[3.] $((fX)g)_p = (fX)_pg = f(p)X_pg = (fXg)_p$, luego $(fX)g = f(Xg) \in \mathcal{U}$.
-\item[2.] Tómese $g$ la función constante $λ$.
+\item[2.] Tómese $g$ la función constante $λ$. $\QED$
 \end{enumerate}
 \end{dem}
 \begin{prop} $\mathcal{X}(U)$ es un espacio vectorial real con la suma y el producto de números reales y un
@@ -106,16 +106,49 @@ Dados $X,Y,Z\in\mathcal{X}(U)$ y $f,g\in\mathcal{F}(U)$, se verifica que:
 \item $[X,Y]=-[Y,X]$ (anticonmutatividad).
 \item $[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$ (Identidad de Jacobi).
 \item $[fX,gY]=fg[X,Y]+f(Xg)Y-g(Yf)X$.
+\item Si $(U,\varphi=(x_1,\dots,x_n)$ es ua carta en $M$.  $\left[\dfrac{\partial}{\partial x_i},\dfrac{\partial}{\partial x_j}\right]=0\ \forall i,j=1,\dot, n$. 
 \end{enumerate}
 \end{prop}
+\begin{dem}\
+\begin{enumerate}
+\item Ejercicio trivial
+\item Trivial. 
+\item Ejercicio.
+\item Con números reales se tiene la linealidad porque un campo sobre una constante es 0. 
+
+$\forall p\in U,\forall h\in\calF(p)$
+\begin{gather*}
+[fX,gY]_ph=(fX)_p((gY)h)-(gY)_p((fX)h)=f(p)(X_pg\cdot(Yh)_p+g(p)\cdot X_p(Yh))-g(p)(Y_pf\cdot(Xh)=\\
+f(p)g(p)(X_p(Yh)-Y_p(Xh))+f(p)(X_pg)Y_ph-g(p)(Y_pf)X_ph=\\
+f(p)g(p)[X,Y]_p+f(p)(X_p g)Y_p-g(p)(Y_pf)X_p
+\end{gather*}
+$\QED$
+
+
+\item Es una cuestión.
+\end{enumerate}
+\end{dem}
 \begin{coro}
 $\mathcal{X}(U)$ con las operaciones suma, producto por escalares (nú\-me\-ros reales, que realmente son casos
 particulares de funciones diferenciables, las funciones constantes) y producto corchete es un álgebra de Lie real.
 \end{coro}
+
+\begin{prop}
+El corchete es un campo diferenciable.
+\end{prop}
+\begin{dem}
+Se deja como ejercicio comprobar que es campo de vectores comprobando que su imagen es un vector tangente viendo que cumple las propiedades de los vectores tangentes. Probemos la diferenciabilidad.
+
+$\forall p\in U\ [X,Y]f(p)=[X,Y]_pf=X_p(Yf)-Y_p(Xf)=(X(YF)-Y(Xf))_p\Rightarrow [X,Y]f=X(Yf)-Y(Xf)$. Como ambos términos son diferenciables, el corchete es diferenciable. $\QED$
+\end{dem}
+
 \begin{teorema} {\bf (Lema de Extensión de Campos Diferenciables).} Sea $X\in\mathcal{X}(U)$ y $V\supseteq U$ otro abierto.
 Entonces, dado cualquier $p\in U$, existen $\overline{X}\in\mathcal{X}(V)$ y $W$ abierto con $p\in W\subseteq U$
 tales que $\overline{X}_q=X_q$, para todo $q\in W$ y $\overline{X}=0$ en $V-U$.
 \end{teorema}
+\begin{dem}
+Apéndice. $\QED$
+\end{dem}
 
 \begin{nota}[Una visión alternativa] Dada una variedad $M$ de dimensión $m$ se puede definir $TM = \coprod_{p \in M} T_p(M)$ llamado el fibrado tangente. Se puede dotar a $TM$ de estructura de V.D. de dimensión $2m$. Para cada $(U, φ=(x_1,\dots,x_m))$ cara en $M$ se define una carta $(\tilde{U},\tilde{φ})$ en $TM$: $\forall (p,v) \in \tilde{U} \subseteq TM$, $\tilde{φ}((p,v)) = (x_1(p),\dots,x_m(p),v(x_1),\dots,v(x_m)) \in \R^{2m}$. La proyección $π: TM \to M$ que asocia $(p,v) \in TM$ a $p$ está en $\mathcal{F}(TM,M)$.
 
@@ -150,6 +183,13 @@ $\lambda X_1+\mu X_2\stackrel{f}\sim \lambda Y_1+\mu Y_2$.
 \item Si $X_1\stackrel{f}\sim Y_1$, entonces $(g\circ f)X_1\stackrel{f}\sim gY_1$.
 \end{enumerate}
 \end{prop}
+\begin{dem}\
+\begin{enumerate}
+\item $\forall p\in M\ f_{*p}(\lambda X_2+\mu X_2)_p=f_{*p}(\lambda X_{1p}+\mu X_{2p})=\lambda f_{*p}X_{1p}+\mu f_{*p}X_{2p}=(\lambda Y_1 +\mu Y_2)_{f(p)}$.
+\item $\forall p\in M,\forall h\in\calF(p)\ f_{*p}[X_1,x_2]_ph=[X_1,X_2]_p(h\circ f)=X_{1p}(X_2(h\circ f))-X_{2p}(X(h\circ f))$. Para cualquier $q$ del dominio, $(X_2(h\circ f))_q=X_{2q}(h\circ f)=(f_{*q}X_{21})h=Y_{2f(q)}h=(Y_2h)_{f(q)}=(Y_2h\circ f)_q$. Luego la expresión anterior la podemos reemplazar por $X_{1p}(Y_2h\circ f)-X_{2p}(Y_1h\circ f)=(f_{*p}X_{1p})(Y_2h)-(f_{*p}X_{2p}(Y_1h)=Y_{1f(p)}(Y_2h)-Y_{2f(p)}(Y_1h)=[Y_1,Y_2]_{f(p)}h.$
+\item $\forall p\in M\ f_{*p}((g\circ g)X_1)_p=f_{*p}(g(f(p))X_{1p})=g(f(p))f_{*p}X_{1p}=g(f(p))Y_{1f(p)}=(gY_1)_{f(p)}$. $\QED$
+\end{enumerate}
+\end{dem}
 \begin{coro}
 Dada $f\in\mathcal{F}(M,N)$, el conjunto de los campos diferenciables en $N$ que están $f$--relacionados con algún
 campo diferenciable de $M$ es un subálgebra de Lie de $\mathcal{X}(N)$.
@@ -164,8 +204,25 @@ en $M$. De hecho, $(f_*X)g=X(g\circ f)\circ f^{-1}$, para toda
 $g\in \mathcal{F}(N)$. Además, $f_*X$ es el único campo de
 $N$ que est\'a $f$--relacionado con el campo $X$ de $M$.
 \begin{prop}
-Si $f\in\mathcal{F}(M,N)$ es un difeomorfismo, entonces $f_*$ es un isomorfismo de álgebras de Lie.
+Si $f\in\mathcal{F}(M,N)$ es un difeomorfismo, entonces 
+\begin{enumerate}
+\item $f_*$ está bien definida.
+\item $f_*$ es un isomorfismo de álgebras de Lie (lineal y se mete en los dos argumentos del corchete).
+\item $\forall X\in\mathcal{X}(M)$, $f_*X$ es el único campo de $\mathcal{X}(M)$ tal que $X\overset{f}{\sim} f_*X$.
+\end{enumerate}
 \end{prop}
+\begin{dem}\
+\begin{enumerate}
+\item $\forall X\in\mathcal{X}(M),\forall q\in N$ vamos a probar que $f_*X\in\mathcal{X}(N)$. $(f_*X)_q=f_{*f^{-1}(q)}X_{f^{-1}(q)}$. El primero está en $T_q(N)$ y el segundo en $T_{f^{-1}(q)}(M)$, por lo que es campo. Ahora veamos que es diferenciable.
+$\forall g\in\calF(N),\forall q\in N$ $((f_*X)g)_q=(f_*X)_qg=(f_{*f^{-1}(q)}X_{f^{-1}(q)})g=X_{f^{-1}(q)}(g\circ f)=(X(g\circ f))_{f^{-1}(q)}=(X(g\circ f)\circ f^{-1})_q$.
+
+La fórmula $(f_*X)g=X(g\circ f)\circ f^{-1}$ es útil.
+\item Ejercicio. Utilizando el apartado 3 y la proposición anterior es trivial.
+\item $(f_*X)_{f(p)}=f_{*f^{-1}(f(p))}X_{f^{-1}(f(p))}=f_{*p}X_p$. Probemos la unicidad. 
+
+Sea $Y\in\mathcal{X}(N)$ tal que $X\overset{f}{\sim}$. Entonces $f_{*p}X_p=Y_{f(p)}\forall p\in M$. Por otra parte, $\forall q\in N, Y_q=Y_{f(f^{-1}(q))}$, que por lo anterior es igual a $f_{*f^{-1}(q)}X_{f^{-1}(q)}=(f_*X)_q\Rightarrow Y=f_*X$. $\QED$
+\end{enumerate}
+\end{dem}
 \begin{nota}
 {\rm Cabe preguntarse si todo automorfismo de $\mathcal{X}(M)$ proviene, mediante el proceso anterior, de una
 transformación (difeomorfismo) de $M$. Este es un problema abierto.}
