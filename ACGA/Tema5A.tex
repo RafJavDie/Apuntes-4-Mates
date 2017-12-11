@@ -1,0 +1,283 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage[utf8x]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsthm, epsf, graphicx, amscd, amsfonts}
+\usepackage[colorlinks]{hyperref}
+\usepackage{xmpincl}
+\usepackage{fancyhdr}
+
+
+\pagestyle{fancy}
+\lhead[\thepage]{\rightmark}
+\rhead[\leftmark]{\thepage}
+\cfoot[]{}
+
+\addto\captionsspanish{ \renewcommand{\chaptername}{Tema} }
+
+\newtheorem{thm}{Teorema}[chapter]
+\newtheorem{cor}[thm]{Corolario}
+\newtheorem{lem}[thm]{Lema}
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{defn}[thm]{Definición}
+\newtheorem{rem}[thm]{Observaciones}
+\newtheorem{eje}[thm]{Ejemplos}
+
+\newtheorem{ejercicio}{Ejercicio}[chapter]
+
+\newcommand{\RR}{\mathbb R}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\AAA}{\mathbb A}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\Ank}{\AAA^n_k}
+\newcommand{\Pnk}{\PP^n_k}
+\newcommand{\Pmk}{\PP^m_k}
+\newcommand{\Amk}{\AAA^m_k}
+\newcommand{\calA}{{\mathcal A}}
+\newcommand{\II}{{\mathcal I}}
+\newcommand{\VV}{{\mathcal V}}
+\newcommand{\KK}{{\mathcal K}}
+\newcommand{\OO}{{\mathcal O}}
+\newcommand{\mm}{{\mathfrak m}}
+
+\title{Notas y ejercicios de Geometría Algebraica}
+\author{Departamento de Álgebra \\ Universidad de Sevilla}
+\date{Septiembre de 2017}
+
+
+
+
+\begin{document}
+
+\setcounter{chapter}{4}
+\maketitle
+
+\vspace*{\fill}
+
+\copyright{2011-17 Antonio Rojas León}
+
+\bigskip
+
+Este trabajo está publicado bajo licencia Creative Commons 3.0 España (Reconocimiento - No Comercial - Compartir bajo la misma licencia)
+
+\url{http://creativecommons.org/licenses/by-nc-sa/3.0/es/}
+
+\bigskip
+
+Usted es libre de:
+\begin{itemize}
+ \item copiar, distribuir y comunicar públicamente la obra
+\item hacer obras derivadas
+\end{itemize}
+
+Bajo las condiciones siguientes:
+\begin{itemize}
+ \item {\bf Reconocimiento:} Debe reconocer los créditos de la obra maestra especificada por el autor o el licenciador (pero no de una manera que sugiera que tiene su apoyo o apoyan el uso que hace de su obra).
+ \item {\bf No comercial:} No puede utilizar esta obra para fines comerciales.
+\item {\bf Compartir bajo la misma licencia:} Si altera o transforma esta obra, o genera una obra derivada, sólo puede distribuir la obra generada bajo una licencia idéntica a ésta.
+\end{itemize}
+
+
+
+
+\newpage
+
+
+\chapter{Singularidades}
+
+\section{El espacio tangente a una variedad en un punto}
+
+Sea $X\subseteq\Ank$ una variedad afín con $\II(X)=\langle f_1,\ldots,f_r\rangle$, y $a=(a_1,\ldots,a_n)$ un punto de $X$. Una recta $r$ que pase por $a$ viene dada, en ecuaciones paramétricas, por $x_1=a_1+tv_1,\ldots,x_n=a_n+tv_n$, donde $\overrightarrow v=(v_1,\ldots,v_n)$ es un vector de dirección de la recta. Si sustituimos estos valores de $x_1,\ldots,x_n$ en las ecuaciones de $X$, obtenemos $r$ polinomios en la variable $t$: $\hat f_1(t)=f_1(a+t\overrightarrow v),\ldots,\hat f_r(t)=f_r(a+t\overrightarrow v)$, que se anulan para $t=0$. 
+
+\begin{defn}
+ La {\bf multiplicidad de intersección} de $X$ y $r$ en $a$ es el mínimo de las multiplicidades de $\hat f_1,\ldots,\hat f_r$ en $t=0$. La recta $r$ se dice {\bf tangente a $X$ en $a$} si la multiplicidad de intersección es $\geq 2$. 
+\end{defn}
+
+\begin{ejercicio}
+ Probar que la multiplicidad de intersección no depende de los generadores $f_1,\ldots,f_r$, sólo del ideal $\langle f_1,\ldots,f_r\rangle$.
+\end{ejercicio}
+
+Si $\overrightarrow w=(w_1,\ldots,w_n)$ es otro vector de dirección y $r'=a+t\overrightarrow w$ la recta correspondiente, la multiplicidad de intersección de $X$ y la recta $r''=a+t(\overrightarrow v +\overrightarrow w)$ es mayor o igual que el mínimo de las multiplicidades de intersección de $X$ con $r$ y $r'$. En efecto, si todo término de $\hat f_i(a+t\overrightarrow v)$ y todo término de $\hat f_i(a+t\overrightarrow w)$ tienen grado $\geq m$, entonces todo término de $\hat f_i(a+t(\overrightarrow{v+w}))=\hat f_i(\frac{1}{2}(a+2t\overrightarrow v+a+2t\overrightarrow w))$ tendrá también grado $\geq m$.
+
+En particular, el conjunto de vectores $\overrightarrow v\neq\overrightarrow 0$ tales que la recta $a+t\overrightarrow v$ es tangente a $X$ en $a$ junto con el vector $\overrightarrow 0$ forman un subespacio vectorial de $k^n$.
+
+\begin{defn}
+ El {\bf espacio tangente a $X$ en $a$} es el subespacio $T_{X,a}$ de $k^n$ formado por los vectores $\overrightarrow v$ tales que la recta $a+t\overrightarrow v$ es tangente a $X$ en $a$, junto con el vector $\overrightarrow 0$.
+\end{defn}
+ 
+
+\begin{eje}\emph{
+ \begin{enumerate}
+  \item Sea $X\subseteq\AAA^3_\CC$ la hipersuperficie dada por $z-xy=0$, y $a=(0,0,0)$. Dado un vector $\overrightarrow v=(v_1,v_2,v_3)$, la recta parametrizada por $t(v_1,v_2,v_3)$ es tangente a $X$ en $a$ si y sólo si el polinomio $v_3t-v_1v_2t^2$ tiene multiplicidad $\geq 2$ en $t=0$, es decir, si y sólo si $v_3=0$. En este caso, el espacio tangente a $X$ en $a$ es el subespacio $\langle(1,0,0),(0,1,0)\rangle\subseteq\CC^3$.
+ \item Sea $X\subseteq\AAA^3_\CC$ la hipersuperficie dada por $z^2-xy=0$, y $a=(0,0,0)$. Dado un vector $\overrightarrow v=(v_1,v_2,v_3)$, la recta parametrizada por $t(v_1,v_2,v_3)$ es tangente a $X$ en $a$ si y sólo si el polinomio $v_3t^2-v_1v_2t^2$ tiene multiplicidad $\geq 2$ en $t=0$, lo cual es siempre cierto. En este caso, el espacio tangente a $X$ en $a$ es todo $\CC^3$.
+ \end{enumerate}}
+
+\end{eje}
+
+Sea $\overrightarrow v$ un vector del espacio tangente a $X$ en el punto $a$, y sea $f=u/v\in{\cal O}_{X,a}$ una función racional en $X$ definida en $a$, dada por el cociente de dos polinomios en $k[x_1,\ldots,x_n]$ tal que el denominador no se anula en $a$. Consideramos la función racional $\hat f(t)=f(a+t\overrightarrow v)$ en $k(t)$, y denotamos por $\partial_{\overrightarrow v}f$ la derivada de $\hat f(t)$ en $t=0$. Es fácil ver que se tienen las siguientes propiedades:
+\begin{itemize}
+ \item $\partial_{\overrightarrow v}(f+g)=\partial_{\overrightarrow v}f+\partial_{\overrightarrow v}g$
+\item $\partial_{\overrightarrow v}(fg)=g(a)\partial_{\overrightarrow v}f+f(a)\partial_{\overrightarrow v}g$
+\item Si $f$ es una constante, $\partial_{\overrightarrow v}f=0$.
+\end{itemize}
+
+Además, si $f=0$ como función racional en $X$, es decir, si $f=\sum_{i=1}^r g_i f_i\in\II(X){\cal O}_{X,a}$ (donde $g_i(x)\in{\cal O}_{X,a}$ para $i=1,\ldots,r$), se tiene que $\partial_{\overrightarrow v}f=\partial_{\overrightarrow v}(\sum_{i=1}^r g_if_i)=\sum_{i=1}^r f_i(a)\partial_{\overrightarrow v}g_i+g_i(a)\partial_{\overrightarrow v}f_i=\sum_{i=1}^r g_i(a)\partial_{\overrightarrow v}f_i=0$, ya que $\partial_{\overrightarrow v}f_i=0$ por ser el vector $\overrightarrow v$ tangente a $X$ en $a$.
+
+Por tanto, $\partial_{\overrightarrow v}$ define una aplicación $k$-lineal ${\cal O}_{X,a}\to k$, que está completamente determinada por sus valores en el ideal maximal $\bar\mm_a:=\mm_a{\cal O}_{X,a}$ (ya que cualquier función racional definida en $a$ se puede expresar como suma de una constante y una función racional que se anula en $a$: $f=f(a)+(f-f(a))$). Además, $\partial_{\overrightarrow v}$ se anula en las funciones de $\bar\mm_a^2$ por la segunda propiedad. Por tanto, podemos ver $\partial_{\overrightarrow v}$ de forma natural como una aplicación $k$-lineal de $\bar\mm_a/\bar\mm_a^2$ en $k$. 	
+
+\begin{prop}
+ La aplicación $\overrightarrow v \mapsto\partial_{\overrightarrow v}$ es un isomorfismo de $k$-espacios vectoriales entre el espacio tangente a $X$ en $a$ y el espacio dual de $\bar\mm_a/\bar\mm_a^2$.
+\end{prop}
+
+\begin{proof}
+ Dada una forma lineal $\theta:\bar\mm_a/\bar\mm_a^2\to k$, sea ${\overrightarrow v}_\theta$ el vector $(\theta(x_1-a_1),\ldots,\theta(x_n-a_n))$. Está claro que $\theta\mapsto{\overrightarrow v}_\theta$ es $k$-lineal, veamos que es el inverso del homomorfismo $\overrightarrow v \mapsto\partial_{\overrightarrow v}$.
+
+En primer lugar, veamos que ${\overrightarrow v}_\theta$ es un vector tangente a $X$ en $a$. Sea $f\in\II(X)$, hay que probar que el polinomio $g(t)=f(a+t{\overrightarrow v}_\theta)$ tiene un cero de multiplicidad $\geq 2$ en $t=0$. Claramente $g(0)=f(a)=0$. Derivando con respecto a $t$, obtenemos $g'(t)=\sum_{i=1}^n \partial_if(a+t{\overrightarrow v}_\theta)\theta(x_i-a_i)$, así que $g'(0)=\sum_{i=1}^n \partial_if(a)\theta(x_i-a_i)=\theta(\sum_{i=1}^n\partial_i f(a)(x_i-a_i))=\theta(f)=0$, ya que $\sum_{i=1}^n\partial_i f(a)(x_i-a_i)$ es justamente la componente de grado $1$ de $f$, y por tanto la diferencia $f-\sum_{i=1}^n\partial_i f(a)(x_i-a_i)$ está en $\bar\mm_a^2$.
+
+Si aplicamos $\partial_{\overrightarrow v}$ a $x_i-a_i$, obtenemos la derivada en $t=0$ de $(a_i+tv_i)-a_i=tv_i$, que es $v_i$. Por tanto componiendo las aplicaciones $\overrightarrow v \mapsto\partial_{\overrightarrow v}$ y $\theta\mapsto{\overrightarrow v}_\theta$ obtenemos la identidad. 
+
+Veamos la composición en el otro sentido: dada $\theta$, hay que probar que $\partial_{\overrightarrow v_\theta}=\theta$. Como $x_1-a_1,\ldots,x_n-a_n$ generan $\bar\mm_a/\bar\mm_a^2$ como $k$-espacio vectorial, basta probar que sus valores coinciden en estos elementos. Como hemos visto antes, $\partial_{\overrightarrow v}(x_i-a_i)$ es la $i$-ésima coordenada de $\overrightarrow v$ para todo $\overrightarrow v$. Por tanto, $\partial_{\overrightarrow v_\theta}(x_i-a_i)$ es la $i$-ésima coordenada de $v_\theta$, que por definición es $\theta(x_i-a_i)$. 
+\end{proof}
+
+\begin{cor}\label{espaciotangenteinvariante}
+ El espacio tangente a una variedad en un punto es un invariante local: si ${\cal O}_{X,a}\cong{\cal O}_{Y,b}$ para dos variedades afines $X,Y$ y dos puntos $a\in X$ y $b\in Y$, entonces los espacios tangentes a $X$ en $a$ y a $Y$ en $b$ son isomorfos. 
+\end{cor}
+
+Esto nos permite definir el espacio tangente a cualquier variedad cuasi-proyectiva $X$ en un punto $a$: basta tomar un abierto afín $Z\subseteq X$ que contenga a $a$, y definir el espacio tangente a $X$ en $a$ como el espacio tangente a $Z$ en $a$. 
+
+\begin{prop}
+ Sea $X$ una variedad cuasi-proyectiva y $a\in X$. Entonces $\dim_k T_{X,a}\geq \dim X$. 
+\end{prop}
+
+\begin{proof}
+ Sea $Z\subseteq X$ un abierto afín que contenga al punto $a$. Como ${\cal O}_{X,a}$ es el localizado de $\calA(Z)$ en un ideal maximal, se tiene que $\dim{\cal O}_{X,a}=\dim\calA(Z)=\dim Z=\dim X$. El resultado se deduce entonces de \cite[corolario 11.15]{am}. 
+\end{proof}
+
+
+
+\section{Puntos singulares}
+
+\begin{defn}
+ Sea $X$ una variedad cuasi-proyectiva y $a\in X$. Se dice que $a$ es un punto {\bf regular} de $X$ (o que $X$ es regular en $a$) si $\dim_k T_{X,a}=\dim X$. En caso contrario, se dice que $a$ es un punto {\bf singular} de $X$ (o que $X$ es singular en $a$).
+\end{defn}
+
+En otras palabras, el punto $a\in X$ es regular si y sólo si el anillo local ${\cal O}_{X,a}$ es regular \cite[Capítulo 11]{am}.
+
+Sea $X\subseteq\Ank$ una variedad afín con $\II(X)=\langle f_1,\ldots,f_r\rangle$, y $a=(a_1,\ldots,a_n)\in X$. Un vector $\overrightarrow v=(v_1,\ldots,v_n)$ es tangente a $X$ en $a$ si y sólo si los polinomios $f_1(a+t\overrightarrow v),\ldots,f_r(a+t\overrightarrow v)$ tienen un cero doble en $t=0$. Es decir, sus derivadas se anulan para $t=0$. Derivando por la regla de la cadena y sustituyendo $t=0$, obtenemos que $(v_1,\ldots,v_n)$ es tangente a $X$ en $a$ si y sólo si se verifican las ecuaciones:
+$$
+\begin{array}{rcl}
+\partial_1f_1(a)v_1+\ldots+\partial_nf_1(a)v_n & = & 0 \\
+ & \vdots & \\
+\partial_nf_r(a)v_1+\ldots+\partial_nf_r(a)v_n & = & 0
+\end{array}
+$$
+La dimensión del espacio tangente será entonces la dimensión de el espacio de soluciones de dicho sistema, es decir, $n$ menos el rango de la matriz
+\begin{equation}\label{matrizjacobiana}
+\left(\begin{array}{ccc}
+       \partial_1f_1(a) & \cdots & \partial_nf_1(a) \\
+\vdots & \ddots & \vdots \\
+\partial_1f_r(a) & \cdots & \partial_nf_r(a)
+      \end{array}
+\right)
+\end{equation}
+
+El conjunto de puntos singulares de $X$ es el conjunto de puntos de $X$ en los que esta matriz tiene rango $<n-\dim(X)$. En particular, si $X=\VV(f)$ es una hipersuperficie, el conjunto de puntos singulares de $X$ viene dado por las ecuaciones $f(x)=\partial_1f(x)=\cdots=\partial_nf(x)=0$.
+
+\begin{prop}
+ Para todo entero $m$, el conjunto $Z_m$ de puntos $a\in X$ tales que $\dim_k T_{X,a}\geq m$ es un cerrado.
+\end{prop}
+
+\begin{proof}
+ Como toda variedad cuasi-proyectiva tiene un recubrimiento abierto afín y la propiedad de ser cerrado es local, podemos suponer que $X$ es afín. Entonces el conjunto de puntos $a\in X$ en los que $\dim_k T_{X,a}\geq m$ es el conjunto de puntos en los que el rango de la matriz \ref{matrizjacobiana} es $\leq n-m$. Es decir, el conjunto de puntos en los que todos los menores de la matriz de orden $>n-m$ se anulan. Esto nos da un conjunto de polinomios que definen $Z_m$.
+\end{proof}
+
+\begin{cor}
+ El conjunto de puntos regulares de una variedad cuasi-proyectiva es abierto.
+\end{cor}
+
+\begin{proof}
+ Su complementario es el cerrado $Z_{d+1}$, donde $d=\dim X$.
+\end{proof}
+
+\begin{prop}
+ El conjunto de puntos regulares de una variedad cuasi-proyectiva $X$ es no vacío.
+\end{prop}
+
+\begin{proof}
+ De nuevo podemos suponer que $X$ es afín. Consideremos primero el caso en que $X=\VV(f)\subseteq\Ank$ es una hipersuperficie (de dimensión $n-1$), donde $f\in k[x_1,\ldots,x_n]$ es un polinomio irreducible. El conjunto de puntos singulares es entonces $\VV(f,\partial_1f,\ldots,\partial_nf)$. Si fuera el total, tendríamos entonces que cada $\partial_if$ sería múltiplo de $f$. Como el grado de $\partial_i f$ es menor que el de $f$, eso sólo es posible si $\partial_if=0$ para todo $i$. En característica $0$ esto significa que $f$ es constante. En característica $p>0$, sólo puede pasar si cada variable aparece elevada a $p$ en $f$. Entonces $f$ sería una potencia $p$-ésima, y por tanto no sería irreducible.
+
+En el caso general, $X$ es birracionalmente equivalente a una hipersuperficie por el corolario \ref{behipersuperficie}. En particular, tienen abiertos isomorfos, que podemos suponer afines. Por el caso anterior, el conjunto de puntos regulares en la hipersuperficie es un abierto no vacío, y entonces lo puntos correspondientes de $X$ son también regulares.  
+\end{proof}
+
+Se puede probar que un anillo local regular es íntegramente cerrado. Por tanto, todo punto regular en una variedad es normal. El recíproco no es cierto en general (ejercicio \ref{normalnosingular}). En particular, en toda variedad existe un abierto denso de puntos normales.
+
+\section{Explosiones}
+
+\begin{defn}
+ La {\bf explosión de $\Ank$ con centro $O=(0,\ldots,0)$} es el morfismo $\phi:X\to \Ank$, donde $X\subseteq \Ank\times{\PP^{n-1}_k}$ es el conjunto algebraico definido por las ecuaciones (con coordenadas $x_1,\ldots,x_n$ para $\Ank$ e $y_1,\ldots,y_n$ para $\PP^{n-1}_k$) $x_iy_j-x_jy_i=0$ para $1\leq i,j\leq n$, y $\phi:X\to\Ank$ es la restricción a $X$ de la proyección $\Ank\times{\PP^{n-1}_k}\to\Ank$.
+\end{defn}
+
+Es decir, $X$ es el conjunto de pares $((x_1,\ldots,x_n),(y_1:\ldots:y_n))$ tales que existe un $\lambda\in k$ (que puede ser $0$) tal que $x_i=\lambda y_i$ para todo $i$. Veamos la estructura de $\phi$ con más detalle.
+
+\begin{prop}
+ La explosión $\phi:X\to\Ank$ de $\Ank$ con centro $O=(0,\ldots,0)$ es un morfismo proyectivo sobreyectivo, e induce un isomorfismo $\phi:\phi^{-1}(U)\to U$, donde $U=\Ank-\{O\}$. La imagen inversa de $O$ es $\{O\}\times\PP^{n-1}_k$.
+\end{prop}
+
+\begin{proof}
+ La última afirmación es evidente, ya que $\{O\}\times\PP^{n-1}_k\subseteq X$. Veamos que $\phi:\phi^{-1}(U)\to U$ es un isomorfismo, construyendo su inversa: dado $x=(x_1,\ldots,x_n)\in U$, sea $\psi(x)=((x_1,\ldots,x_n),(x_1:\ldots:x_n))$. $\psi(x)$ está bien definido, porque $x\neq O$, y está en $X$. 
+ Como $\phi$ es la proyección sobre $\Ank$, está claro que $\phi\circ\psi$ es la identidad. Por otro lado, dado $z=((x_1,\ldots,x_n),(y_1:\ldots:y_n))\in X$ se tiene que $(\psi\circ\phi)(z)=((x_1,\ldots,x_n),(x_1:\ldots:x_n))=z$, ya que $(x_1:\ldots:x_n)=(y_1:\ldots:y_n)$ por definición de $X$.
+
+El morfismo $\phi$ es proyectivo por definición, ya que es composición de una inmersión cerrada seguida de la proyección $\Ank\times\PP^{n-1}_k\to\Ank$. Por tanto es cerrado por la proposición \ref{proyectivocerrado}. Como su imagen es un cerrado que contiene al abierto denso $U$, debe ser el total. 
+\end{proof}
+
+Podemos considerar que la explosión ``separa'' las direcciones de rectas que pasan por $O$: por cada dirección (correspondiente a un punto del espacio proyectivo $\PP^{n-1}_k$) obtenemos un punto en la imagen inversa de $O$ en $X$.
+
+Sea ahora $Z\subseteq\Ank$ un conjunto algebraico tal que $O\in Z$, y $\phi:X\to\Ank$ la explosión de $\Ank$ con centro $O$. La imagen inversa de $Z$ por $\phi$ es la unión de, por un lado, $\phi^{-1}(Z-\{O\})$, que por la proposición anterior es isomorfo a $Z-\{O\}$, y por otro lado $E:=\phi^{-1}(O)=\{O\}\times\PP^{n-1}_k$. 
+
+\begin{defn}
+ La {\bf explosión de $Z$ con centro $O$} es el morfismo $\phi:Y\to Z$, donde $Y$ es el cerrado $\overline{\phi^{-1}(Z-\{O\})}\subseteq X$ y $\phi$ es la restricción de $\phi:X\to\Ank$.
+\end{defn}
+
+Es decir, $Y$ es la unión de las componentes irreducibles de $\phi^{-1}(Z)$ no contenidas en $E$. 
+
+\begin{prop}
+ Sea $Z\subseteq\Ank$ una variedad afín con $O\in Z$. La explosión de $Z$ en $O$ es un morfismo birracional.
+\end{prop}
+
+\begin{proof}
+ $\phi:Y\to Z$ induce un isomorfismo entre los abiertos $\phi^{-1}(Z-\{O\})$ de $Y$ y $Z-\{O\}$ de $Z$, y por tanto es birracional por la proposición \ref{birracproy}.
+\end{proof}
+
+Si $P\in Z$ es ahora un punto arbitrario, se define la explosión de $Z$ en $P$ como $\phi=\tau\circ\phi_0:Y\to Z$, donde $\tau:\Ank\to\Ank$ es la traslación de vector $\overrightarrow{OP}$ y $\phi_0:Y\to\tau^{-1}(Z)$ es la explosión de $\tau^{-1}(Z)$ en $O$.
+
+\section{Resolución de singularidades}
+
+A partir de ahora nos centraremos en el caso de las curvas en $\AAA^2_k$. Sea $Z=\VV(f)\subseteq\AAA^2_k$ una curva que pase por $O=(0,0)$, donde $f\in k[x,y]$ es un polinomio reducido sin término independiente. Sea $\phi:Y\to Z$ la explosión de $Z$ en $O$. 
+
+Llamaremos $x,y$ a las coordenadas en $\AAA^2_k$ y $u,v$ a las coordenadas en $\PP^1_k$. La explosión $X$ de $\AAA^2$ en $O$ está definida en $\AAA^2_k\times\PP^1_k$ por la ecuación $xv-yu=0$. La imagen inversa de $Z$ está entonces definida por las ecuaciones $xv-yu=f(x,y)=0$. Como $\PP^1_k$ se descompone como unión de las rectas afines $U=\{v\neq 0\}\cong\AAA^1_k$ y $V=\{u\neq 0\}\cong\AAA^1_k$, $\phi^{-1}(Z)$ se descompone como unión de dos abiertos afines. En $U$ podemos suponer $v=1$, y entonces $\phi^{-1}(Z)$ está definida por las ecuaciones $x=yu$, $f(x,y)=0$ en $\AAA^2_k\times U\cong\AAA^3_k$. Eliminando la variable $x$, este conjunto es isomorfo al definido en $\AAA^2_k$ (con coordenadas $y,u$) por la ecuación $f(yu,y)=0$. Tiene a la recta $y=0$ como componente irreducible, que está contenida en $\phi^{-1}(O)$ (ya que $x=yu=0$ también). La parte que nos interesa es la unión de las otras componentes irreducibles, es decir, el conjunto de ceros del polinomio $g(y,u)$ obtenido al dividir $f(y,yu)$ por la mayor potencia posible de $y$.
+ En el abierto $V$ podemos poner $u=1$, y entonces $y=xu$. En este abierto $\phi^{-1}(Z)$ está definida en $\AAA^2_k$ (con coordenadas $x,v$) por la ecuación $f(x,xv)=0$, y para eliminar la componente $x=0$ debemos dividir $f(x,xv)$ por la mayor potencia posible de $x$. 
+
+\begin{prop}
+ Supongamos que $O\in Z$ es un punto regular. Entonces $\phi:Y\to Z$ es un isomorfismo.
+\end{prop}
+
+\begin{proof}
+ Sabemos que $\phi:\phi^{-1}(Z-\{O\})\to Z-\{O\}$ es siempre un isomorfismo. Basta ver entonces que $\phi$ induce un isomorfismo $\phi^{-1}(W)\to W$, donde $W\subseteq Z$ es un entorno de $O$. 
+
+Como $O$ es un punto regular, el polinomio $f(x,y)$ tiene término lineal no nulo. Supongamos que el coeficiente de $x$ es $\neq 0$ (el caso en el que el coeficiente de $y$ es $\neq 0$ es similar). Sea $\psi:Z\dashrightarrow U$ la aplicación racional dada por $\psi(x,y)=(x/y,y)$. Como la explosión $\phi$ está definida en $U$ como $\phi(u,y)=(uy,y)$, está claro que $\psi$ es inversa de $\phi$ como aplicación racional. Veamos que $\psi$ está definida en un entorno de $O$, y por tanto será una inversa de $\phi$ como morfismo.
+
+Como el coeficiente de $x$ en $f(x,y)$ es no nulo, podemos escribir $f(x,y)=xg(x)+yh(x,y)$, donde $g(x)$ es un polinomio con término constante no nulo. Entonces en $Z$ tenemos que $xg(x)+yh(x,y)=0$, y por tanto $x/y=-h(x,y)/g(x)$, que está definida en un entorno de $O$ en $Z$ por ser $g(O)\neq 0$.
+\end{proof}  
+
+\begin{thm} {\bf (Resolución de singularidades).} Sea $Z\subseteq\AAA^2_k$ una curva. Entonces existe una sucesión finita $Z_n\to Z_{n-1}\to \cdots\to Z_1\to Z$ de explosiones con centros en puntos singulares tal que $Z_n$ no tiene puntos singulares. 
+ \end{thm}
+
+\begin{eje}
+\emph{ Sea $Z=\VV(y^2-x^3-x^2)$. La curva $Z$ tiene un único punto singular en $O=(0,0)$. Tomando la explosión con centro en $O$, obtenemos una curva $Z_1\to Z$. Calculemos los puntos singulares de $Z_1$. Como hemos visto antes, $Z_1$ tiene un recubrimiento compuesto de dos abiertos afines. En el primero, la ecuación de $Z_1$ (con cordenadas $(u,y)$) se obtiene haciendo el cambio de variable $(x,y)\mapsto (uy,y)$ y eliminando los factores $y$. Haciendo el cambio de variable obtenemos $y^2-u^3y^3-u^2y^2=0$, y dividiendo por $y^2$, $1-yu^3-u^2=0$. Vemos que la imagen inversa de $(0,0)$ contiene dos puntos: $(1,0)$ y $(-1,0)$ (correspondiendo a las dos rectas tangentes a $Z$ en $(0,0)$). Se comprueba fácilmente que en este abierto $Z_1$ no tiene puntos singulares.}
+
+\emph{En el otro abierto debemos hacer el cambio de variable $(x,y)\mapsto (x,vx)$, y obtenemos $x^2v^2-x^3-x^2=0$. Dividiendo por $x^2$, la ecuación de $Z_1$ es $v^2-x-1=0$. De nuevo obtenemos dos puntos cuya imagen es $(0,0)$, que se corresponden con los dos puntos obtenidos en el otro abierto. En este abierto tampoco hay puntos singulares, como se ve fácilmente tomando la derivada con respecto a $x$.}
+
+\emph{Por tanto, con una única explosión conseguimos desingularizar la curva $Z$.}
+\end{eje}
+
+
+\end{document}
