@@ -76,7 +76,7 @@ Demostrar que
 \begin{sol}
 Aplicando la fórmula de Abel con $a_n=d(n)$ aplicando el teorema 1.8.1:
 \begin{align*}
-	\sum_{n≤x} \frac{d(n)}{n} & = \frac{x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})}{x} + \int_1^t \frac{x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})}{x^2}\\
+	\sum_{n≤x} \frac{d(n)}{n} & = \frac{x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})}{x} + \int_1^x \frac{t \log t + (2γ-1)t + \mathcal{O}(\sqrt{t})}{t^2}dt\\
 	& = \log x + (2γ-1) + \mathcal{O}(x^{-1/2}) + \frac{(\log x)^2}{2} + (2γ-1)\log x - \mathcal{O}(x^{-1/2}) + A\\
 	& = \frac{(\log x)^2}{2} + 2γ\log x + (2γ-1 + A) + \mathcal{O}(x^{-1/2})
 \end{align*}
@@ -122,10 +122,8 @@ Probar que para $n ≥ 2$ se tiene
 \begin{sol}
 Aplicamos la fórmula de Abel con $a_n=Λ(n)$ recordando que, por definición, $ψ(x) = \sum_{n≤x} Λ(n)$:
 \[ \sum_{n≤x} Λ(n) \log n = ψ(x)\log x + \int_1^x \frac{ψ(t)}{t}dt \]
-Por el teorema de la Valleé Poussin, existe una constante absoluta $c > 0$ tal que:
-\[ ψ(x) = x + \mathcal{O}(xe^{-c\sqrt{\log x}}) \]
-Tomando la expresión más débil $x + \mathcal{O}(x)$:
-\[ \int_1^x \frac{ψ(t)}{t}dt = \int_1^x (1 + \mathcal{O}(1)) dt = x + A + \mathcal{O}(x) = \mathcal{O}(x) \]
+Por el Teorema de Chebyshev, existe $B$ tal que $ψ(x) ≤ B x$, entonces:
+\[ \left|\int_1^x \frac{ψ(t)}{t}dt\right| ≤ B\int_1^x dt = Bx \Rightarrow \int_1^x \frac{ψ(t)}{t}dt = \mathcal{O}(x)\]
 Luego:
 \[ \sum_{n≤x} Λ(n) \log n = ψ(x)\log x + \mathcal{O}(x) \]
 
@@ -151,6 +149,16 @@ Demostrar que existen constantes positivas $A$ y $B$ tales que para todo $x$ suf
 \[ A\sqrt{x} ≤ \sum_{p≤x} \frac{\log p}{\sqrt{p}} ≤ B \sqrt{x}\]
 \end{ejercicio}
 \begin{sol}
+Sea:
+\[ a_n = \begin{cases}
+	\log p &\text{ si }n = p\\
+	0 & \text{ c.c.}
+\end{cases}\]
+Entonces, como $θ(x) = \sum_{p≤x} \log p$:
+\[ \sum_{p≤x} \frac{\log p}{\sqrt{p}}  = \sum_{n≤x} a_n f(n) = θ(x) \frac{1}{\sqrt{x}} + \frac{1}{2} \int_1^x θ(t) t^{-3/2} dt \]
+Por el teorema de Chebyshev, existe $A$ y $B$ con $Ax ≤ θ(x) ≤ Bx$. Entonces:
+\[ θ(x) \frac{1}{\sqrt{x}} + \frac{1}{2} \int_1^x θ(t) t^{-3/2} dt ≥ θ(x) \frac{1}{\sqrt{x}} ≥ \frac{Ax}{\sqrt{x}} = A\sqrt{x}\]
+\[ θ(x) \frac{1}{\sqrt{x}} + \frac{1}{2} \int_1^x θ(t) t^{-3/2} dt ≤ B\sqrt{x} + \frac{1}{2} \int_1^x Bt^{-1/2} ≤ B\sqrt{x}+B(\sqrt{x}-1) ≤ 2B \sqrt{x} \]
 \end{sol}
 
 \newpage
