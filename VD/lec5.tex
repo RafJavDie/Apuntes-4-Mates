@@ -83,8 +83,8 @@ $p\in U$. Se tiene que $fX\in\mathcal{X}(U)$.
 \end{prop}
 \begin{dem}\mbox{}
 \begin{enumerate}
-\item $\forall g \in \mathcal{F}(U)$, $((X+Y)g)_p = (X+Y)_pg = (X_p+Y_p)g = X_p+Y_pg = (Xg)_p+(Yg)_p = (Xg+Yg)_p$, luego $(X+Y)g = Xg+Yg \in \mathcal{F}(U)$.
-\item[3.] $((fX)g)_p = (fX)_pg = f(p)X_pg = (fXg)_p$, luego $(fX)g = f(Xg) \in \mathcal{U}$.
+\item $\forall g \in \mathcal{F}(U),\forall p\in U$, $((X+Y)g)_p = (X+Y)_pg = (X_p+Y_p)g = X_pg+Y_pg = (Xg)_p+(Yg)_p = (Xg+Yg)_p$, luego $(X+Y)g = Xg+Yg \in \mathcal{F}(U)$.
+\item[3.] $((fX)g)_p = (fX)_pg = f(p)X_pg = (fXg)_p$, luego $(fX)g = f(Xg) \in \mathcal{F}(U)$.
 \item[2.] Tómese $g$ la función constante $λ$. $\QED$
 \end{enumerate}
 \end{dem}
@@ -111,9 +111,20 @@ Dados $X,Y,Z\in\mathcal{X}(U)$ y $f,g\in\mathcal{F}(U)$, se verifica que:
 \end{prop}
 \begin{dem}\
 \begin{enumerate}
-\item Ejercicio trivial
+\item $\forall f\in\calF{U}$
+\begin{gather*}
+[X+Y,Z]f=(X+Y)(Zf)-Z((X+Y)f)=X(Zf)+Y(Zf)-Z(Xf+Yf)=\\
+X(Zf)+Y(Zf)-Z(Xf)-Z(Yf)=[X,Z]f+[Y,Z]f
+\end{gather*}
+La otra análoga.
 \item Trivial. 
-\item Ejercicio.
+\item $\forall f\in\calF{U}$
+\begin{gather*}
+[X,[Y,Z]]f=X([Y,Z]f)-[Y,Z](Xf)=X(Y(Zf)-Z(Yf))-Y(Z(Xf))+Z(Y(Xf))\\
+[Y,[Z,X]]f=Y([Z,X]f)-[Z,X](Yf)=Y(Z(Xf)-X(Zf))-Z(X(Yf))+X(Z(Yf))\\
+[Z,[X,Y]]f=Z([X,Y]f)-[X,Y](Zf)=Z(X(Yf)-Y(Xf))-X(Y(Zf))+Y(X(Zf))
+\end{gather*}
+Se comprueba que al sumar sale 0.
 \item Con números reales se tiene la linealidad porque un campo sobre una constante es 0. 
 
 $\forall p\in U,\forall h\in\calF(p)$
@@ -122,10 +133,9 @@ $\forall p\in U,\forall h\in\calF(p)$
 f(p)g(p)(X_p(Yh)-Y_p(Xh))+f(p)(X_pg)Y_ph-g(p)(Y_pf)X_ph=\\
 f(p)g(p)[X,Y]_p+f(p)(X_p g)Y_p-g(p)(Y_pf)X_p
 \end{gather*}
-$\QED$
 
 
-\item Es una cuestión.
+\item Es una cuestión. $\QED$
 \end{enumerate}
 \end{dem}
 \begin{coro}

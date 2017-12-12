@@ -13,7 +13,24 @@ Sean $\R^3$, $X \in \mathcal{X}(\R^3)$ dado por $X = x\frac{\partial}{\partial x
 \R^3 \to \R^3 : (x, y, z) \mapsto (x + y, y, 7)$. ¿Está $X$ $f-$relacionado con $X$?
 \end{ejercicio}
 \begin{solucion}
-
+Sea $p=(x,y,z)\in\R^3$, entonces $f(p)=(x+y,y,7)$. Por tanto, $$X_{f(p)}=(x+y)\frac{\partial}{\partial x} + e^7\frac{\partial}{\partial y}.$$ 
+Como la estructura diferencial de $\R^3$ es la usual, la matriz de $f_{*p}$ viene dada por la jacobiana de $f$, es decir, 
+\[f_{*p}X_p=\begin{pmatrix}
+1 & 1 & 0\\
+0 & 1 & 0\\
+0 & 0 & 0
+\end{pmatrix}\begin{pmatrix}
+x\\
+e^z\\
+0
+\end{pmatrix}=\begin{pmatrix}
+x+e^z\\
+e^z\\
+0
+\end{pmatrix}\]
+Reescribiendo este vector con la base de $T_p(\R^3)$, tenemos que 
+$$f_{*p}X_p=(x+e^z)\frac{\partial}{\partial x} + e^z\frac{\partial}{\partial y}\neq Y_{f(p)},$$
+por lo que $X$ no está $f-$relacionado con $X$.
 \end{solucion}
 \newpage
 \begin{ejercicio}{7}
