@@ -1,0 +1,57 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Problemas de Variedades Diferenciables - Tema 5}
+\author{Javi, Rafa, Diego}
+\maketitle
+
+\begin{ejercicio}{3}
+Sea $\R^2$. Se consideran los campos:
+\[
+X=x\frac{\partial}{\partial x}+y\frac{\partial}{\partial y},\quad Y=-y\frac{\partial}{\partial x}+x\frac{\partial}{\partial y}.
+\]
+Calcular $[X,Y]$.
+\end{ejercicio}
+\begin{solucion}
+\begin{gather*}
+[X,Y]=\left[x\frac{\partial}{\partial x}+y\frac{\partial}{\partial y}, -y\frac{\partial}{\partial x}+x\frac{\partial}{\partial y}\right]=\\
+\left[x\frac{\partial}{\partial x},-y\frac{\partial}{\partial x}\right]+\left[x\frac{\partial}{\partial x},x\frac{\partial}{\partial x}\right]+\left[y\frac{\partial}{\partial y},-y\frac{\partial}{\partial x}\right]+\left[y\frac{\partial}{\partial y},x\frac{\partial}{\partial y}\right]
+\end{gather*}
+Desarrollamos cada uno de los corchetes.
+\[
+\left[x\frac{\partial}{\partial x},-y\frac{\partial}{\partial x}\right]=-xy\left[\frac{\partial}{\partial x},\frac{\partial}{\partial x}\right]+x\frac{
+\partial (-y)}{\partial x}\frac{\partial}{\partial x}+y\frac{\partial x}{\partial x}\frac{\partial}{\partial x}=y\frac{\partial}{\partial x}
+\]
+Análogamente calculamos los demás y al sumar da 0.
+\end{solucion}
+
+\begin{ejercicio}{6}
+Sean $\R^3$, $X \in \mathcal{X}(\R^3)$ dado por $X = x\frac{\partial}{\partial x} + e^z\frac{\partial}{\partial y}$ y sea $f :
+\R^3 \to \R^3 : (x, y, z) \mapsto (x + y, y, 7)$. ¿Está $X$ $f-$relacionado con $X$?
+\end{ejercicio}
+\begin{solucion}
+Sea $p=(x,y,z)\in\R^3$, entonces $f(p)=(x+y,y,7)$. Por tanto, $$X_{f(p)}=(x+y)\frac{\partial}{\partial x} + e^7\frac{\partial}{\partial y}.$$ %Como $f_{*p}$ es homomorfismo de espacios vectoriales, 
+%$$f_{*p}X_p=xf_{*p}\left(\frac{\partial}{\partial x}\right) + e^zf_{*p}\left(\frac{\partial}{\partial y}\right).$$
+Como la estructura diferencial de $\R^3$ es la usual, la matriz de $f_{*p}$ viene dada por la jacobiana de $f$, es decir, 
+\[f_{*p}X_p=\begin{pmatrix}
+1 & 1 & 0\\
+0 & 1 & 0\\
+0 & 0 & 0
+\end{pmatrix}\begin{pmatrix}
+x\\
+e^z\\
+0
+\end{pmatrix}=\begin{pmatrix}
+x+e^z\\
+e^z\\
+0
+\end{pmatrix}\]
+Reescribiendo este vector con la base de $T_p(\R^3)$, tenemos que 
+$$f_{*p}X_p=(x+e^z)\frac{\partial}{\partial x} + e^z\frac{\partial}{\partial y}\neq Y_{f(p)},$$
+por lo que $X$ no está $f-$relacionado con $X$.
+\end{solucion}
+
+\end{document}
