@@ -153,7 +153,50 @@ Esto nos permite definir el espacio tangente a cualquier variedad cuasi-proyecti
  Sea $Z\subseteq X$ un abierto afín que contenga al punto $a$. Como ${\cal O}_{X,a}$ es el localizado de $\calA(Z)$ en un ideal maximal, se tiene que $\dim{\cal O}_{X,a}=\dim\calA(Z)=\dim Z=\dim X$. El resultado se deduce entonces de \cite[corolario 11.15]{am}. 
 \end{proof}
 
+\begin{defn}
+Sea $I \subseteq A$ un ideal de un anillo. Decimos que $I$ es \textbf{primario} si $\forall a,b \in A$ tales que $ab \in I$ entonces $a \in I$ ó $b^n \in I$ para algún $n ≥ 1$.
 
+Equivalentemente, $I$ es primario sii en $A/I$ todo divisor de cero es nilpotente.
+\end{defn}
+
+\begin{prop}
+Si $I$ es primario, $\sqrt{I}$ es primo. Si $\mathfrak{p} = \sqrt{I}$, entonces decimos que $I$ es $\mathfrak{p}$-primario. Si $\sqrt{i}=\mathfrak{m}$ es maximal, entonces $I$ es $\mathfrak{m}$-primario.
+\end{prop}
+
+\begin{prop}
+Sea $A$ un anillo local noetheriano, $r = \dim A$ y $\mathfrak{m}$ es el ideal maximal de $A$. Entonces $r$ es el mínimo número de generadores de un ideal $\mathfrak{m}$-primario de $A$.
+\end{prop}
+
+\begin{lem}[Lema de Nakayama]
+Sea $A$ un anillo local con $\mathfrak{m}$ ideal maximal, $M$ un $A$-módulo finitamente generado. Entonces, si $\mathfrak{m} M = M$, $M = 0$.
+\end{lem}
+
+\begin{proof}
+Sea $\langle m_1,\dots,m_r\rangle$ un sistema generador de $M$. Como $M = \mathfrak{m} M$, tenemos que:
+\[ m_i = \sum_{j=1}^r a_{ij} m_ij \quad \text{ con } a_{ij} \in \mathfrak{m} \]
+Entonces:
+\[ \sum_{j=1}^r (\delta_{ij} - a_{ij}) m_j = 0 \ \forall i \]
+Sea $B = (\delta_{ij}-a_{ij})_{i,j}$ una matriz y $m=(m_1,\dots,m_r)$. La ecuación anterior es equivalente a $B m = 0$. Mutliplicando por la matriz adjunta transpuesta de $B$, tenemos que $det(B) m_i = 0$ $\forall i$. Tomando $b = det(B)$, tenemos entonces que $b M = 0$. Como $B \in 1 + \mathfrak{m}$, $b$ es unidad, luego $M = 0$.
+\end{proof}
+
+\begin{thm}
+Para una variedad $X$, $\dim_x T_{X,a} ≥ dim X$.
+
+Tenemos que $\dim_k T_{X,a} = \dim_k (\mathfrak{m}_{X,a} / \mathfrak{m}^2_{X,a})^* = \dim_k (\mathfrak{m}_{X,a} / \mathfrak{m}^2_{X,a})$. Por otro lado, $\dim X = \dim \mathcal{O}_{X,a}$.
+
+Por lo tanto, la formulación algebraica equivalente de este teorema es: Si $A$ es un anillo local noetheriano, entonces $\dim A ≤ \dim_k (\mathfrak{m} / \mathfrak{m}^2)$.
+\end{thm}
+
+\begin{proof}
+Sean $\{\overline{m}_1,\dots,\overline{m}_r\}$ una base de $\mathfrak{m}/\mathfrak{m}^2$ como $k$-espacio vectorial. Veamos que $\mathfrak{m}=\langle m_1,\dots,m_r\rangle$. Sea $M = \mathfrak{m} / \langle m_1,\dots,m_r \rangle$ un $A$-módulo. Veamos que $\mathfrak{m} M = M$ por doble contención. Sea $n \in M$, entonces $\overline{n} \in \mathfrak{m}/\langle m_1,\dots,m_r \rangle$. Como $ \overline{m}_1,\dots,\overline{m}_r$ son base de $\mathfrak{m}/\mathfrak{m}^2$, existen $\overline{a}_1,\dots,\overline{a}_r \in k$ tales que:
+\[ n \equiv a_1m_1+\dots+a_rm_r \mod{\mathfrak{m}^2}\]
+Entonces:
+\[ n-a_1m_1-\dots-a_rm_r \in \mathfrak{m}^2 \]
+Haciendo módulo $\langle m_1,\dots,m_r\rangle$ y usando que $\overline{a_1m_1+\dots+a_rm_r} = \overline{0}$. Luego $\overline{n} \in \mathfrak{m} M$. La otra contención es trivial. Por el lema de Nakayama, $M = 0$, es decir $\langle m_1,\dots,m_r\rangle = \mathfrak{m}$.
+
+Entonces hay un generador de $r$ elementos de $\mathfrak{m}$. Luego $\dim A ≤ r$.
+\end{proof}
+%Para un ideal $\mathfrak{p} \subseteq A$ y $S = A \setminus \mathfrak{p}$, vemos que hay una correspondencia entre los ideales primos de $A_S$ y los ideales primos de $A$ contenidos en $\mathfrak{p}$.
 
 \section{Puntos singulares}
 
