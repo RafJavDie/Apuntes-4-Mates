@@ -167,15 +167,29 @@ Por el teorema de Chebyshev, existe $A$ y $B$ con $Ax ≤ θ(x) ≤ Bx$. Entonce
 Demostrar que
 \[ \sum_{n≤x} r(n) = πx + \mathcal{O}(\sqrt{x}) \]
 \end{ejercicio}
+\begin{solucion}
+Sea $Q_{(u,v)}=[u-1/2,u+1/2)\times[v-1/2,v+1/2)$ un cuadrado de radio $1$ centrado en $(u,v)$. Se tiene que:
+\[ \sum_{n≤x} r(n) = area \bigcup_{u^2+v^2≤x} Q_{(u,v)} := area \mathcal{Q} \]
+Por otro lado, obsérvese que
+\[ \mathcal{Q} \subset D(0,\sqrt{x}+\sqrt{2}) \]
+Entonces $\sum_{n≤x} r(n) ≤ π(\sqrt{x}+\sqrt{2})^2 = π(x+2+2π\sqrt{2x}) = πx + \mathcal{O}(\sqrt{x})$
+\end{solucion}
 
 \newpage
 
 \begin{ejercicio}{11}
 Demostar que para todo número natural $k$ y todo $x > 0$ se tiene
 \[ \frac{π(x)}{x} ≤ \frac{φ(k)}{k} + \frac{2k}{x} \]
-Deducir de lo anterior y del teorema de Chebyshe que existe una constante $C > 0$ tal que
+Deducir de lo anterior y del teorema de Chebyshev que existe una constante $C > 0$ tal que
 \[ φ(k) ≥ \frac{Ck}{\log k} \quad \forall k≥2 \]
 \end{ejercicio}
+\begin{sol}
+Dividimos los números de $1$ a $x$ en grupos de $k$ elementos. Como puede que $k$ no divida a $x$, el último grupo puede tener menos de $k$ elementos. Tendremos entonces $\lfloor x/k \rfloor$ grupos de $k$ elementos. Obsérvese que entre $nk+1$ y $(n+1)k$ hay $φ(k)$ primos siempre y cuando $n ≥ 1$. Acotamos la cantidad de primos entre $1$ y $k$ y en el último grupo por $2k$ (como si todos fueran primos). Entonces:
+\[ π(x) ≤ φ(k) \left\lfloor \frac{x}{k} \right\rfloor+2k ≤ φ(k) \frac{x}{k} + 2k \]
+
+Usando que $π(x) ≥ A \frac{x}{\log x}$.
+\[ φ(x) ≤ \frac{k}{x} π(x) - \frac{2k^2}{x} ≥ \frac{Ak}{\log x}-\frac{2k^2}{x} = \frac{A k}{2\log k} -2  ≥ \frac{A k}{2\log k} - \frac{A k}{4 \log k} = \frac{C k}{\log k}\]
+\end{sol}
 
 \newpage
 
