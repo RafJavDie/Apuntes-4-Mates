@@ -1,0 +1,118 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Modelos de Investigación Operativa\\ Relación 6}
+\author{Rafael González López, Javier Aguilar Martín}
+\date{}
+\maketitle
+
+\begin{ejercicio}{1}
+Suponga que está interesado en elegir entre un conjunto de inversiones $I=\{1,\dots,7\}$ mediante variables binarias. Modele las siguientes restricciones:
+\begin{enumerate}
+\item No se puede invertir en todas.
+\item Existe la obligación de invertir al menos en una de ellas.
+\item La inversión 1 no puede ser escogida si la inversión 3 ha sido escogida.
+\item La inversión 4 puede ser escogida solamente en el caso de que la inversión 2 también lo sea.
+\item En cuanto a las inversiones 1 y 5, bien pueden ser escogidas conjuntamente o bien no se puede escoger ninguna de ellas.
+\item Se debería escoger al menos una de las inversiones 1,2,3 o al menos dos entre las inversiones 2,4,5,6.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item $\sum_{i=1}^7x_i\leq 6$. 
+\item $\sum_{i=1}^7\geq 1$.
+\item $x_1+x_3\leq 1$.
+\item $x_2\geq x_4$. 
+\item $x_1-x_5=0$.
+\item Usamos una variable auxiliar $z\in\{0,1\}$. Entonces $x_1+x_2+x_3\geq z$ y $x_2+x_4+x_5+x_6\geq 2(1-z)$. 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Supongamos que se está en invitar al máximo número de amigos de entre $\{A,B,C,D\}$ a una fiesta. Modele las siguientes restricciones utilizando variables binarias:
+\begin{enumerate}
+\item El anfitrión no hace la fiesta si van menos de 2.
+\item A va si va D.
+\item Si va A a la fiesta, no van ni B ni C.
+\item Si van A y B, C no va.
+\item Si A y B van, C no va a menos que vaya D.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item $x_A+x_B+x_C+x_D\geq 2$. 
+\item $x_A\geq x_D$.
+\item $x_A+ x_B\leq 1$ y $x_A+ x_C\leq 1$.  
+\item $x_A+x_B+x_C\leq 2$. 
+\item $x_C\leq 2-x_A-x_B+x_D$.  
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+Modele las siguientes situaciones:
+\begin{enumerate}
+\item $z\leq\min\{x,y\}, x,y,z\in\{0,1\}$.
+\item $z\geq\max\{x,y\}, x,y,z\in\{0,1\}$.
+\item $z\geq\min\{x,y\}, x,y,z\in\{0,1\}$.
+\item $z\leq\max\{x,y\},x,y,z\in\{0,1\}$.
+\item $z=\max\{x,y\}, x,y,z\in\{0,1\}$.
+\item $z=\min\{x,y\}, x,y,z\in\{0,1\}$.
+\item $z=|x-y|, x,y,z\in\{0,1\}$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item $z\leq x,z\leq y$. 
+\item $z\geq x,z\geq y$.
+\item $z\geq x+y-1$.
+\item $z\leq x+y$
+\item Apartados 2 y 4.
+\item Apartados 1 y 3.
+\item 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{6}
+Considere el siguiente problema de dos variables
+\begin{align*}
+\min\ & 13x_1+8x_2\\
+s.a.\   & x_1+2x_2\leq 10\\
+       & 5x_1+2x_2\leq 20\\
+       & x_1,x_2\in\Z^+
+\end{align*}
+Resolver el problema por ramificación y acotación.
+\end{ejercicio}
+\begin{solucion}
+Resuelto en la hoja. Hacer gráficamente.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7}
+Considere el siguiente árbol de ramificación para un problema de minimizar:
+
+DIBUJO DE GRAFO
+
+Determine las cotas globales del problema en esta situación y determine los nodos para los cuales la ramificación ha finalizado explicando los motivos.
+\end{ejercicio}
+\begin{solucion}\
+
+\begin{tabular}{l l}
+Cota inferior: & 25 (solución del problema relajado) \\
+Cota superior: & 31 (única solución entera encontrada) \\
+Nodos cerrados & 7 (solución entera), 8 (infactible) y 6 (la cota superior es menor)
+\end{tabular}
+\end{solucion}
+
+
+
+\end{document}
