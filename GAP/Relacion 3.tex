@@ -95,4 +95,19 @@ M_1^{-1}\begin{pmatrix}
 \end{pmatrix} 
 \end{gather*}
 \end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3.2}
+Si denotamos por $\{x_0,\dots,x_n\}$ los coeficientes de un polinomio en la base de Bernstein $\{B^n_i(t)\}_{i=0}^n$, demostrar que $\sum_{i=0}^nx_iB_i^n(t)$ es un polinomio de grado $n-1$ si y solo si $\sum_{i=0}^n(-1)^i\binom{n}{i}x_i=0$.
+\end{ejercicio}
+\begin{solucion}
+Por definición, 
+\begin{gather*}
+\sum_{i=0}^nx_iB_i^n(t)=\sum_{i=0}^nx_i\binom{n}{i}(1-t)^{n-i}=\sum_{i=0}^nx_i\binom{n}{i}\sum_{j=0}^{n-i}\binom{n-i}{j}1^j(-t)^{n-i-j}=\\
+\sum_{i=0}^nx_i\binom{n}{i}\sum_{j=0}^{n-i}\binom{n-i}{j}(-1)^{n-i-j}(-t)^{n-j}
+\end{gather*}
+El coeficiente de $t^n$ será $\sum_{i=0}^nx_i\binom{n}{i}(-1)^{n-i}=0\Leftrightarrow\sum_{i=0}^n(-1)^i\binom{n}{i}x_i=0$.
+\end{solucion}
+
 \end{document}

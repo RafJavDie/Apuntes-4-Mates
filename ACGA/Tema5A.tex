@@ -153,11 +153,11 @@ Esto nos permite definir el espacio tangente a cualquier variedad cuasi-proyecti
  Sea $Z\subseteq X$ un abierto afín que contenga al punto $a$. Como ${\cal O}_{X,a}$ es el localizado de $\calA(Z)$ en un ideal maximal, se tiene que $\dim{\cal O}_{X,a}=\dim\calA(Z)=\dim Z=\dim X$. El resultado se deduce entonces de \cite[corolario 11.15]{am}. 
 \end{proof}
 
-\begin{defn}
+\begin{defi}
 Sea $I \subseteq A$ un ideal de un anillo. Decimos que $I$ es \textbf{primario} si $\forall a,b \in A$ tales que $ab \in I$ entonces $a \in I$ ó $b^n \in I$ para algún $n ≥ 1$.
 
 Equivalentemente, $I$ es primario sii en $A/I$ todo divisor de cero es nilpotente.
-\end{defn}
+\end{defi}
 
 \begin{prop}
 Si $I$ es primario, $\sqrt{I}$ es primo. Si $\mathfrak{p} = \sqrt{I}$, entonces decimos que $I$ es $\mathfrak{p}$-primario. Si $\sqrt{i}=\mathfrak{m}$ es maximal, entonces $I$ es $\mathfrak{m}$-primario.
@@ -167,9 +167,9 @@ Si $I$ es primario, $\sqrt{I}$ es primo. Si $\mathfrak{p} = \sqrt{I}$, entonces 
 Sea $A$ un anillo local noetheriano, $r = \dim A$ y $\mathfrak{m}$ es el ideal maximal de $A$. Entonces $r$ es el mínimo número de generadores de un ideal $\mathfrak{m}$-primario de $A$.
 \end{prop}
 
-\begin{lem}[Lema de Nakayama]
+\begin{lemma}[Lema de Nakayama]
 Sea $A$ un anillo local con $\mathfrak{m}$ ideal maximal, $M$ un $A$-módulo finitamente generado. Entonces, si $\mathfrak{m} M = M$, $M = 0$.
-\end{lem}
+\end{lemma}
 
 \begin{proof}
 Sea $\langle m_1,\dots,m_r\rangle$ un sistema generador de $M$. Como $M = \mathfrak{m} M$, tenemos que:
@@ -179,13 +179,13 @@ Entonces:
 Sea $B = (\delta_{ij}-a_{ij})_{i,j}$ una matriz y $m=(m_1,\dots,m_r)$. La ecuación anterior es equivalente a $B m = 0$. Mutliplicando por la matriz adjunta transpuesta de $B$, tenemos que $det(B) m_i = 0$ $\forall i$. Tomando $b = det(B)$, tenemos entonces que $b M = 0$. Como $B \in 1 + \mathfrak{m}$, $b$ es unidad, luego $M = 0$.
 \end{proof}
 
-\begin{thm}
+\begin{teorema}
 Para una variedad $X$, $\dim_x T_{X,a} ≥ dim X$.
 
 Tenemos que $\dim_k T_{X,a} = \dim_k (\mathfrak{m}_{X,a} / \mathfrak{m}^2_{X,a})^* = \dim_k (\mathfrak{m}_{X,a} / \mathfrak{m}^2_{X,a})$. Por otro lado, $\dim X = \dim \mathcal{O}_{X,a}$.
 
 Por lo tanto, la formulación algebraica equivalente de este teorema es: Si $A$ es un anillo local noetheriano, entonces $\dim A ≤ \dim_k (\mathfrak{m} / \mathfrak{m}^2)$.
-\end{thm}
+\end{teorema}
 
 \begin{proof}
 Sean $\{\overline{m}_1,\dots,\overline{m}_r\}$ una base de $\mathfrak{m}/\mathfrak{m}^2$ como $k$-espacio vectorial. Veamos que $\mathfrak{m}=\langle m_1,\dots,m_r\rangle$. Sea $M = \mathfrak{m} / \langle m_1,\dots,m_r \rangle$ un $A$-módulo. Veamos que $\mathfrak{m} M = M$ por doble contención. Sea $n \in M$, entonces $\overline{n} \in \mathfrak{m}/\langle m_1,\dots,m_r \rangle$. Como $ \overline{m}_1,\dots,\overline{m}_r$ son base de $\mathfrak{m}/\mathfrak{m}^2$, existen $\overline{a}_1,\dots,\overline{a}_r \in k$ tales que:
@@ -225,6 +225,23 @@ La dimensión del espacio tangente será entonces la dimensión de el espacio de
 \end{equation}
 
 El conjunto de puntos singulares de $X$ es el conjunto de puntos de $X$ en los que esta matriz tiene rango $<n-\dim(X)$. En particular, si $X=\V(f)$ es una hipersuperficie, el conjunto de puntos singulares de $X$ viene dado por las ecuaciones $f(x)=\partial_1f(x)=\cdots=\partial_nf(x)=0$.
+
+
+\begin{ejs}
+\begin{enumerate}
+\item Consideramos la curva $y^2-x^3-x^2=0$. Entonces su jacobiana es $(-3x^2-2x, 2y)$. El rango es $\begin{cases}
+1 & x\neq 0\lor y\neq 0\\
+0 & x,y=0
+\end{cases}$. Nótese que si $x=-\frac{2}{3}$ entonces $y\neq 0$ porque el punto tiene que estar en la curva.  Por tanto $\dim T_{x,a}=\begin{cases}
+1 & a\neq(0,0)\\
+2 & a=(0,0)
+\end{cases}$.
+\item Sea la curva $X$ definida por $t\mapsto (t^3,t^4,t^5)\subseteq\A^3$. Entonces $\I(X)=\langle y^3-x^4,z^3-x^5,z^4-y^5\rangle$. Se comprueba que $\dim T_{x,a}=4$ si $a=(0,0,0)$ y el resto de puntos son regulares.
+\item $x_1^2x_2^2+x_0^2x_2^2+x_0^2x_1^2-x_0x_1x_2x_3\subseteq\PP^3$. En el abierto $U_0$ $x_1^2x_2^2+x_2^2+x_1^2-x_1x_2x_3=0$. Los puntos singulares en $U_0$ serán aquellos donde se anulen todas las derivadas del polinomio, lo cual lo cumple cualquier punto con $x_1=x_2=0$. Para el resto de abiertos afines se hace análogamente, po rlo que en $U_1$ los puntos singulares son los de la recta $x_0=x_2=0$ y en $U_2$ los de $x_0=x_1=0$, que además se pueden sacar directamente por simetría del polinomio en estas variables. No así en $U_3$ donde tenemos que realizar todo el proceso, aunque como los abiertos anteriores cubren todos los puntos salvo 1, basta ver que el punto $[0:0:0:1]$ es singular. 
+
+En definitiva, $Sing(X)=\V(x_1,x_2)\cap\V(x_0,x_2)\cap\V(x_0,x_1)$. 
+\end{enumerate}
+\end{ejs}
 
 \begin{prop}
  Para todo entero $m$, el conjunto $Z_m$ de puntos $a\in X$ tales que $\dim_k T_{X,a}\geq m$ es un cerrado.
@@ -294,6 +311,15 @@ Es decir, $Y$ es la unión de las componentes irreducibles de $\phi^{-1}(Z)$ no 
 Si $P\in Z$ es ahora un punto arbitrario, se define la explosión de $Z$ en $P$ como $\phi=\tau\circ\phi_0:Y\to Z$, donde $\tau:\Ank\to\Ank$ es la traslación de vector $\overrightarrow{OP}$ y $\phi_0:Y\to\tau^{-1}(Z)$ es la explosión de $\tau^{-1}(Z)$ en $O$.
 
 \section{Resolución de singularidades}
+
+Buscamos $Y$ con $\varphi:Y\to X$ tal que 
+\begin{enumerate}
+\item $Y$ no tenga puntos singulares
+\item $Y$ es birracional y propia (si el morfismo es finito es propio, la preimagen de un cerrado proyectivo sea cerrada)
+\item Si $Z=Sing(X)$, $\varphi:Y\setminus\varphi^{-1}(Z)\to X\setminus Z$ es isomorfismo
+\end{enumerate}
+$Y$ se llama \textbf{resolución de singularidades} de $X$.
+
 
 A partir de ahora nos centraremos en el caso de las curvas en $\A^2_k$. Sea $Z=\V(f)\subseteq\A^2_k$ una curva que pase por $O=(0,0)$, donde $f\in k[x,y]$ es un polinomio reducido sin término independiente. Sea $\phi:Y\to Z$ la explosión de $Z$ en $O$. 
 
