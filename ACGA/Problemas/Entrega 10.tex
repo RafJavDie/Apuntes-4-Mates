@@ -6,8 +6,37 @@
 \begin{document}
 
 \title{Algebra Conmutativa y Geometría Aplicada}
-\author{Javier Aguilar Martín, Rafael González López}
+\author{Javier Aguilar Martín, Rafael González López, Diego Pedraza López}
 \maketitle
+
+\begin{ejercicio}{2}
+Sea $K = \Q(\sqrt{d})$, donde $d \in \Z\setminus\{0,1\}$ es un entero libre de cuadrados. Sea $A$ la clausura íntegra de $\Z$ en $K$.
+\begin{enumerate}
+	\item Si $d \equiv 2$ ó $3 \pmod 4$, probar que
+	\[ A = \Z[\sqrt{d}] = \{a + b \sqrt{d} \mid a,b \in \Z\} \]
+	
+	\item Si $d \equiv 1 \pmod 4$, probar que
+	\[ A = \Z \left[\frac{1+\sqrt{d}}{2}\right] = \left[\frac{a+b\sqrt{d}}{2} \mid a,b \in \Z; a \equiv b \pmod 2\right]\]
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Como $\sqrt{d}$ es raíz del polinomio mónico $x^2-d$, $\sqrt{d} \in A$. Luego $\Z[\sqrt{d}] \subseteq A$. Como $\sqrt{d}$ es algebraico en $\Q$, tenemos que $\Q(\sqrt{d})=\Q[\sqrt{d}]$. $A$ será un subanillo de $\Q[\sqrt{d}]$. Sea $α=a+b\sqrt{d} \in A$, con $a$ y $b$ en $\Q$. Tenemos que su polinomio mínimo será $p(x)=(x-α)(x-\overline{α})=x^2-2ax+a^2-db^2$. Tenemos que, como $α$ es entero sobre $\Z$ y $p$ es un polinomio mónico, $p \in \Z[x]$. Por lo tanto $2a \in \Z$ y $a^2-db^2 \in \Z$.
+
+De $2a \in \Z$, deducimos que $a \in \Z$ ó $a = n/2$ para algún $n \in \Z$. Por otro lado:
+\begin{equation} a^2-db^2 \in \Z \Rightarrow 4a^2-4db^2=(2a)^2-d(2b)^2 \in 4\Z \end{equation}
+Como $(2a)^2 \in \Z$, tenemos que $d(2b)^2 \in \Z$. Sea $2b=\frac{m}{n}$ en fracción reducida. Entonces $d(2b)^2=d\frac{m^2}{n^2} \in \Z$. Como $n^2 \nmid m^2$, tenemos que $n^2 \mid d$, pero $d$ es libre de cuadrados, luego $n=1$ y deducimos que $2b \in \Z$. Sea $r=2a$ y $s=2b$. Entonces de (1) tenemos:
+\[ r^2 \equiv d s^2 \mod 4 \]
+Véase también que $r^2$ y $s^2$ sólo pueden tener los valores $0$ y $1$ módulo 4.
+\begin{enumerate}
+	\item Si $d \equiv 2$ ó $3 \pmod 4$, necesariamente $s^2 \equiv r^2 \equiv 0 \pmod 4$, luego $4\mid s^2$ y $4\mid r^2$, lo que implica que $2\mid s$ y $2\mid r$. Entonces $a=r/2 \in \Z$ y $b=r/2 \in \Z$. Luego $A = \Z[\sqrt{d}]$.
+	
+	\item Si $d \equiv 1 \pmod 4$, entonces $r^2 \equiv s^2 \pmod 4$, que implica que $r \equiv s \pmod 2$ y $α = \dfrac{r+s\sqrt{d}}{2}$. Como $2 \mid (r-s)$:
+	\[ \frac{r+s\sqrt{d}}{2} = \frac{r-s}{2}+s\frac{1+\sqrt{d}}{2} \in \Z\left[\frac{1+\sqrt{d}}{2}\right] \]
+	Luego $A \subseteq \Z\left[\frac{1+\sqrt{d}}{2}\right]$. Como además $\Z\left[\frac{1+\sqrt{d}}{2}\right] \subseteq A$ para el caso $r=s=1$, tenemos que $\Z\left[\frac{1+\sqrt{d}}{2}\right] = A$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
 
 \begin{ejercicio}{3}\
 Sea $A \subseteq B$ una extensión entera de dominios de integridad.
