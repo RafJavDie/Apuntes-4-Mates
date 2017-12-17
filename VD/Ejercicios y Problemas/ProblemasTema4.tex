@@ -39,10 +39,32 @@ Sea $f\func{M}{N}$ una aplicación diferenciable. Probar:
 \begin{enumerate}
 \item Si $f$ es sobreyectiva, entonces, $\forall X \in \mathcal{X}(M)$ fijo, existe a lo más un campo de vectores $Y\in \mathcal{X}(N)$ tal que $X$ está $f$-relacionado con $Y$. 
 \item Si $f$ es una inmersión, entonces, $\forall Y \in \mathcal{X}(N)$, existe a lo más un campo de vectores $X\in \mathcal{X}(M)$ tal que $X$ está $f$-relacionado con $Y$. 
-\item Si $f$ es una inmersión, entonces, dado $\forall Y \in \mathcal{X}(N)$, existe $X\in \mathcal{X}(M)$, $f$-relacionado con $Y$ si y solo si $\forall p \in M$, $Y_{f(p)}\in f_{\ast p}(T_p(M))$.
+\item Si $f$ es una inmersión, entonces, dado $Y \in \mathcal{X}(N)$, existe $X\in \mathcal{X}(M)$, $f$-relacionado con $Y$ si y solo si $\forall p \in M$, $Y_{f(p)}\in f_{\ast p}(T_p(M))$.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}
+\item[]
+\item Tenemos que probar que, dada la existencia, debe haber unicidad. Sea $X\in\mathcal{X}(M)$ fijo y supongamos que existen dos campos de vectores $Y,Y'\in \mathcal{X}(N)$ tales que $X$ está $f$-relacionados con $Y$ e $Y'$, es decir
+$$f_{\ast p}X_p = Y_{f(p)} \quad \forall p\in M \qquad
+f_{\ast q}X_q = Y'_{f(q)} \quad \forall q\in M $$ 
+Sea $w\in N$, como $f$ es sobreyectiva, entonces $\exists p \in M$ tal que $w=f(p)$. Se sigue trivialmente que
+$$
+Y_w = f_{\ast p}X_p = Y'_w
+$$
+Como son iguales para todo $w\in N$, entonces $Y=Y'$.
+\item Análogamente al apartado anterior, sea $Y\in\mathcal{X}(N)$ fijo y supongamos que existen dos campos de vectores $X,X'\in \mathcal{X}(N)$ tales que $X,X'$ está $f$-relacionados con $Y$ e $Y'$, es decir
+$$f_{\ast p}X_p = Y_{f(p)} \quad \forall p\in M \qquad
+f_{\ast q}X'_q = Y_{f(q)} \quad \forall q\in M $$ 
+Por la propia definición de inmersión, es decir, que $f_{\ast}$ sea inyectiva en cada punto, tenemos que, como $f_{\ast p}X_p = Y_{f(p)} = f_{\ast p}X'_p$ $\forall p\in M$ entonces $ X_p = X'_p$ $\forall p\in M$, es decir, $X=X'$.
+\item Sea $f$ una inmersión y sea $Y \in \mathcal{X}(N)$.
+\begin{itemize}
+\item Supongamos que $\exists X \in \mathcal{X}(M)$ tal que $X$ está $f$-relacionado con $Y$. Entonces por definición $\forall p\in M$ $Y_{f(p)}=f_{\ast p}X_p$. Como $X_p\in T_p(M)$ entonces $f_{\ast p}(T_p(M))$.
+\item Recíprocamente, supongamos que $\forall p \in M$, $Y_{f(p)}\in f_{\ast p}(T_p(M))$. Como $f_{\ast p}$ es una imersión, es inyectiva. En particular, es un isormofismo sobre su imagen, luego $\forall p\in M$ podemos considerar $X_p = f_{\ast p}^{-1}(Y_{f(p)})\in T_p(M)$, lo cual está correctamente definido por la hipótesis. Obviamente $X$ es un campo de vectores y verifica que
+$$f_{\ast p} X_p = f_{\ast p} f_{\ast p}^{-1} Y_p = Y_p \quad \forall p \in M$$
+Por lo que $X$ está $f$-relacionado con $Y$.
+\end{itemize} 
+\end{enumerate}
 \end{solucion}
 
 \end{document}
