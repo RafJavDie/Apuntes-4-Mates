@@ -1,0 +1,94 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\Char}{char}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Algebra Conmutativa y Geometría Algebraica}
+\author{Javier Aguilar Martín, Rafael González López, Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{6}\
+ 
+\begin{enumerate}
+\item\label{1} Sea $X \subseteq \PP^2_k$ una cónica (es decir, $\I(X$) está generado por
+un polinomio de grado 2). Probar que, si $X$ tiene algún punto singular,
+es la unión de dos rectas.
+
+\item\label{2} Sea $X \subseteq \PP^2_k$ una cúbica (es decir, $\I(X)$ está generado por un polinomio
+de grado 3). Probar que, si $X$ tiene dos puntos singulares distintos, es la
+unión de una recta y una cónica (Ayuda: Reducir al caso en el que la recta
+que une los dos puntos singulares es $x_0 = 0$).
+
+\end{enumerate}
+\end{ejercicio}
+
+\begin{solucion}\
+\begin{enumerate}
+\item Sea $\langle c_{0,0}x_0^2+c_{1,1}x_1^2+c_{2,2}x_2^2+c_{0,1}x_0x_1+c_{0,2}x_0x_2+c_{1,2}x_1x_2\rangle=\I(X)$ y supongamos que $\Char(k)\neq 2$. A este polinomio le podemos asociar la matriz  
+$$C=\begin{pmatrix}
+c_{0,0} & \frac{c_{0,1}}{2} &\frac{c_{0,2}}{2}\\
+\frac{c_{0,1}}{2}       & c_{1,1} & \frac{c_{1,2}}{2} \\
+\frac{c_{0,2}}{2}        &  \frac{c_{1,2}}{2}       & c_{2,2}
+\end{pmatrix}.$$
+
+Por la asignatura \emph{Álgebra Lineal y Geometría II}, $X$ es unión de dos rectas distintas si y solo si $rg(C)=2$. Por tanto, vamos a probar que si tiene algún punto singular, entonces $rg(C)= 2$. Si $X$ tiene algún punto singular, entonces $\exists a=(a_0:a_1:a_2)\in X$ tal que la matriz de sus derivadas parciales
+$$\begin{pmatrix}
+2c_{0,0}a_0 +c_{0,1}a_1+c_{0,2}a_2 & 2c_{1,1}a_1 +c_{0,1}a_0+c_{1,2}a_2 & 2c_{0,0}a_2+c_{0,2}a_0+c_{1,2}a_1
+\end{pmatrix}=(0\ 0\ 0).$$
+Esto equivale a 
+$$rg\begin{pmatrix}
+2c_{0,0} & c_{0,1} &c_{0,2}\\
+c_{0,1}       & 2c_{1,1} & c_{1,2} \\
+c_{0,2}        &  c_{1,2}       & 2c_{2,2}
+\end{pmatrix}\leq 2\Leftrightarrow rg\begin{pmatrix}
+c_{0,0} & \frac{c_{0,1}}{2} &\frac{c_{0,2}}{2}\\
+\frac{c_{0,1}}{2}       & c_{1,1} & \frac{c_{1,2}}{2} \\
+\frac{c_{0,2}}{2}        &  \frac{c_{1,2}}{2}       & c_{2,2}
+\end{pmatrix}\leq 2.$$
+
+Además, el rango no puede ser 1, pues por la misma asignatura, tendríamos que la cónica es una recta doble. Pero $\I(X)$ no puede estar generado por un polinomio de grado 1 elevado al cuadrado, ya que entonces no sería radical. Por lo tanto es exactamente igual a 2, como queríamos probar.
+
+En el caso $\Char(k)=2$ tendremos al derivar que 
+$$\begin{pmatrix}
+c_{0,1}a_1+c_{0,2}a_2 & c_{0,1}a_0+c_{1,2}a_2 & c_{0,2}a_0+c_{1,2}a_1
+\end{pmatrix}=(0\ 0\ 0),$$
+o lo que es lo mismo 
+$$rg\begin{pmatrix}
+0 & c_{0,1} &c_{0,2}\\
+c_{0,1}       & 0 & c_{1,2} \\
+c_{0,2}        &  c_{1,2}       & 0
+\end{pmatrix}\leq 2.$$
+Pero en $\Char(k)=2$, esto ocurre siempre puesto que su determinante es $2c_{0,1}c_{1,2}c_{0,2}=0$, por lo que todo punto es singular. Esto implica que $X$ no es variedad, por lo que se descompone como unión de variedades. Como el polinomio que lo genera es de grado 2, esto quiere decir que es reducible en 2 polinomios de grado 1, por lo que $X$ es unión de dos rectas.
+
+\item Aplicando un cambio proyectivo de coordenadas podemos suponer que los puntos singulares son $P=(0:1:0)$ y $Q=(0:0:1)$. Vamos a probar que la recta que los une, $x_0=0$, está contenida en la cúbica, y por tanto es reducible a una recta y una cónica (ya que el polinomio factoriza al menos en un término de grado 1 y otro de grado 2).
+
+Sea $\langle f\rangle= \I(X)$ de modo que $f(x_0,x_1,x_2)$ es el siguiente polinomio 
+\begin{gather*}
+c_{0,0,0}x_0^3+c_{1,1,1}x_1^3+c_{2,2,2}x_2^3+c_{0,0,1}x_0^2x_1+c_{0,0,2}x_0^2x_2+c_{1,1,2}x_1^2x_2+c_{0,1,1}x_1^2x_0\\
++c_{0,2,2}x_2^2x_0+c_{1,2,2}x_2^2x_1+c_{0,1,2}x_0x_1x_2
+\end{gather*}
+En primer lugar, como los puntos pertenecen a la cúbica, podemos sustituir en el polinomio y obtenemos $c_{1,1,1}=c_{2,2,2}=0$. Por lo tanto nos queda que
+$$f(x_0,x_1,x_2)=c_{0,0,0}x_0^3+c_{0,0,1}x_0^2x_1+c_{0,0,2}x_0^2x_2+c_{1,1,2}x_1^2x_2+c_{0,1,1}x_1^2x_0
++c_{0,2,2}x_2^2x_0+c_{1,2,2}x_2^2x_1+c_{0,1,2}x_0x_1x_2$$
+Calculamos sus derivadas evaluadas en los puntos singulares y deducimos
+$$\begin{pmatrix}
+c_{0,1,1} & 0 & c_{1,1,2}
+\end{pmatrix}=\begin{pmatrix}
+0 & 0 & 0
+\end{pmatrix}$$
+$$\begin{pmatrix}
+c_{0,2,2} & c_{1,2,2} & 0
+\end{pmatrix}=\begin{pmatrix}
+0 & 0 & 0
+\end{pmatrix}$$
+Por lo que
+$$f(x_0,x_1,x_2)=c_{0,0,0}x_0^3+c_{0,0,2}x_0^2x_2+c_{0,1,1}x_1^2x_0
++c_{0,1,2}x_0x_1x_2=x_0(c_{0,0,0}x_0^2+c_{0,0,2}x_0x_2+c_{0,1,1}x_1^2
++c_{0,1,2}x_1x_2)$$
+Así que hemos descompuesto la cúbica como una recta ($x_0=0$) y una cónica ($c_{0,0,0}x_0^2+c_{0,0,2}x_0x_2+c_{0,1,1}x_1^2
++c_{0,1,2}x_1x_2=0$).
+\end{enumerate}
+\end{solucion}
+\end{document}
