@@ -277,7 +277,7 @@ Se puede probar que un anillo local regular es íntegramente cerrado. Por tanto,
  La {\bf explosión de $\Ank$ con centro $O=(0,\ldots,0)$} es el morfismo $\phi:X\to \Ank$, donde $X\subseteq \Ank\times{\PP^{n-1}_k}$ es el conjunto algebraico definido por las ecuaciones (con coordenadas $x_1,\ldots,x_n$ para $\Ank$ e $y_1,\ldots,y_n$ para $\PP^{n-1}_k$) $x_iy_j-x_jy_i=0$ para $1\leq i,j\leq n$, y $\phi:X\to\Ank$ es la restricción a $X$ de la proyección $\Ank\times{\PP^{n-1}_k}\to\Ank$.
 \end{defi}
 
-Es decir, $X$ es el conjunto de pares $((x_1,\ldots,x_n),(y_1:\ldots:y_n))$ tales que existe un $\lambda\in k$ (que puede ser $0$) tal que $x_i=\lambda y_i$ para todo $i$. Veamos la estructura de $\phi$ con más detalle.
+Es decir, $X$ es el conjunto de pares $((x_1,\ldots,x_n),(y_1:\ldots:y_n))$ tales que existe un $\lambda\in k$ (que puede ser $0$) tal que $x_i=\lambda y_i$ para todo $i$ (las ecuaciones implican que $x$ e $y$ son linealmente dependientes). Se tiene por definición que $\phi$ es proyectivo. Obsérvese que $\phi^{-1}(0)=\{(x_1,\dots, x_n);(y_1:\dots:y_n)\mid (x_1,\dots,x_n)=0\}\cong\PP^{n-1}$ (a este conjunto se le llama \emph{divisor excepcional}. Tomando otro punto cualquiera, como cualquier múltiplo de un punto define un solo punto proyectivo, $\phi^{-1}(a_1,\dots,a_n)=\{(a_1,\dots,a_n);(a_1:\dots:a_n)\}$. Por tanto, si quitamos el origen, $\phi$ es isomorfismo. Veamos la estructura de $\phi$ con más detalle.
 
 \begin{prop}
  La explosión $\phi:X\to\Ank$ de $\Ank$ con centro $O=(0,\ldots,0)$ es un morfismo proyectivo sobreyectivo, e induce un isomorfismo $\phi:\phi^{-1}(U)\to U$, donde $U=\Ank-\{O\}$. La imagen inversa de $O$ es $\{O\}\times\PP^{n-1}_k$.
@@ -295,7 +295,7 @@ Podemos considerar que la explosión ``separa'' las direcciones de rectas que pa
 Sea ahora $Z\subseteq\Ank$ un conjunto algebraico tal que $O\in Z$, y $\phi:X\to\Ank$ la explosión de $\Ank$ con centro $O$. La imagen inversa de $Z$ por $\phi$ es la unión de, por un lado, $\phi^{-1}(Z-\{O\})$, que por la proposición anterior es isomorfo a $Z-\{O\}$, y por otro lado $E:=\phi^{-1}(O)=\{O\}\times\PP^{n-1}_k$. 
 
 \begin{defi}
- La {\bf explosión de $Z$ con centro $O$} es el morfismo $\phi:Y\to Z$, donde $Y$ es el cerrado $\overline{\phi^{-1}(Z-\{O\})}\subseteq X$ y $\phi$ es la restricción de $\phi:X\to\Ank$.
+ La {\bf explosión de $Z$ con centro $O$} es el morfismo $\phi:Y\to Z$, donde $Y$ es el cerrado $\overline{\phi^{-1}(Z-\{O\})}\subseteq X$ (llamada transformada estricta de $X$) y $\phi$ es la restricción de $\phi:X\to\Ank$. Todas las explosiones tienen centro $O$ salvo traslación.
 \end{defi}
 
 Es decir, $Y$ es la unión de las componentes irreducibles de $\phi^{-1}(Z)$ no contenidas en $E$. 
@@ -310,12 +310,18 @@ Es decir, $Y$ es la unión de las componentes irreducibles de $\phi^{-1}(Z)$ no 
 
 Si $P\in Z$ es ahora un punto arbitrario, se define la explosión de $Z$ en $P$ como $\phi=\tau\circ\phi_0:Y\to Z$, donde $\tau:\Ank\to\Ank$ es la traslación de vector $\overrightarrow{OP}$ y $\phi_0:Y\to\tau^{-1}(Z)$ es la explosión de $\tau^{-1}(Z)$ en $O$.
 
+\begin{ej}
+$Z=\{x_2^2=x_1^3+x_1^2\}\subseteq\A^2$, entonces $X=\V(x_1y_2=x_2y_1,x_2^2=x_1^3+x_1^2)$. $\A^2\times\PP^1=(\A^1\times U_1)\cup(\A^1\times U_2)\cong \A^3\times\A^3$. Vemos $\A^3$ con coordenadas $(x_1,x_2,y_2)$. $X|_{U_1}=\V(x_1y_2=x_2,x_2^2=x_1^3+x_1^2)\subseteq\A^3$. $\V(x_1y_2=x_2)\cong\A^2$ con coordenadas $x_1,y_2$ (es el grafo de $(x_1,x_2,y_2)\mapsto x_1y_2$). Así que podemos quitar $x_2$. Por lo que $X|_{U_1}\cong \V(x_1^2y_2^2=x_1^3+x_1^3)=\V(x_1)\cup \V(y_2^2=x_1+1)$, que son respectivamente el divisor excepcional y la transformada estricta. Además la trasnformada estricta no tienen puntos singulares. La intersección cumple $y_2^2=1$, luego es $\{(0,1),(0,-1)\}$, que son los puntos donde el proyectivo corta a la curva al hacer la explosión.
+
+$X|_{U_2}=\V(x_1=x_2y_1,x_2^2=x_1^3+x_1^2)\subseteq\A^2$, que igual que antes podemos convertirlo en $\V(x_2^2=x_2^3y_1^3+x_2^2y_1^2)\subseteq\A^2$, que a su vez es isomorfo a $\V(x_2)\cap\V(1=x_2y_1^3+y_1^2)$, que de nuevo son el divisor excepcional y la transformada estricta.
+\end{ej}
+
 \section{Resolución de singularidades}
 
 Buscamos $Y$ con $\varphi:Y\to X$ tal que 
 \begin{enumerate}
 \item $Y$ no tenga puntos singulares
-\item $Y$ es birracional y propia (si el morfismo es finito es propio, la preimagen de un cerrado proyectivo sea cerrada)
+\item $Y$ es birracional y propia (si el morfismo es finito es propio, la preimagen de un cerrado proyectivo sea cerrada. En la práctica, proyectivo.)
 \item Si $Z=Sing(X)$, $\varphi:Y\setminus\varphi^{-1}(Z)\to X\setminus Z$ es isomorfismo
 \end{enumerate}
 $Y$ se llama \textbf{resolución de singularidades} de $X$.
