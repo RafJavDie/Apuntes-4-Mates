@@ -9,6 +9,43 @@
 \author{Javier Aguilar Martín, Rafael González López, Diego Pedraza López}
 \maketitle
 
+\begin{ejercicio}{4}\
+ 
+\begin{enumerate}
+\item Sea $X = \V(f)\subset \PP^n_k$ una hipersuperficie proyectiva, donde $f\in k[x_0,\dotsc,x_n]$ es un polinomio homogéneo irreducible. Probar que en el punto $a\in X$ es singular si y solo si $\partial_i f(a) = 0$ para todo $i=0,\dotsc,n$. 
+\item Sea $V\subset \PP^n_k$ una variedad proyectiva irreducible, y sea $I(V )= \gene{F_1,\dotsc,F_n}$ con $F_1,\dotsc,F_n \in k[x_0,\dotsc,x_n]$ homogéneos. Probar que los puntos singulares de $V$ son aquellos en los que el rango de la matriz 
+$$
+\left(
+\frac{\partial F_i}{\partial_j}\right)_{1\leq i \leq r, 0\leq j \leq n}
+$$
+es menor $n-\dim(V)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Notemos que si $f$ es homogéneo de grado $d$ entonces es claro que $\partial_i f$ sigue siendo un polinomio homogéneo, o bien de grado $d-1$, o bien de grado $0$. Por tanto, si $\partial_i f$ se anula en $a\in \A^n_k$ entonces también se anula en cualquier representante de $[a]\in \PP^n_k$. 
+\begin{enumerate}
+\item Supongamos que $\partial_i f(a)=0$ para todo $i=0,\dotsc,n$. Si $a=(a_0:\dotsc:a_n)$, sabemos que existe $a_i \neq 0$. Por simplicidad consideramos $i=0$. Si tomamos la carta afín $U_0$ podemos considerar $U_0 \cap X$ abierto de afín de $X$ y calcular ahí el espacio tangente, considerando el representante de $a=(1,a_1/a_0 \dotsc, a_n/a_0)$ (al aplicarlo sobre $f$ tendríamos $f$ deshomogeneizado). Por teoría, sabemos que un punto es singular si 
+$$
+rg
+\begin{pmatrix}
+\partial_1 f(a) & \dotsc & \partial_n f(a)
+\end{pmatrix} < n-\dim(X) \Leftrightarrow 
+rg
+\begin{pmatrix}
+\partial_1 f(a) & \dotsc & \partial_n f(a)
+\end{pmatrix} = 0
+$$
+Esto es si y solo si $\partial_i f(a) = 0$ para todo $i=1,\dotsc,n$, lo cual se tiene por hipótesis.
+
+Supongamos que $a$ es un punto singular de $X$. Supongamos que $a=[e_i]$, siendo $e_i = (0,\dotsc,1,\dotsc,0)$. Como para cada $i$ es análogo, supongamos que $i=0$. Es decir, supongamos que $a=(1:0:\dotsc:0)$ es singular en $X$. Tomando la carta afín $U_0$ y procediendo como en el apartado anterior, junto con la consideración inicial, obtenemos que $\partial_i f(a) = 0$ para todo $i=1,\dotsc,n$. Veamos qué ocurre con $\partial_0 f(a)$. Como es homogéneo, para que no se anulase en $a$ tendría que existir un monomio úicamente $x_0$ (o ser constante no nulo), pero entonces $f$ también tendría un monomio en $x_0$ y no se anularía en $a$, lo cuál sabemos que ocurre. Por tanto, el resultado está probado para los elementos de esta forma.
+
+Quitando estos casos, podemos suponer que en $a=(a_0:\dotsc,a_n)$ existen 2 índices distintos $i,j$ tales que $a_i,a_j \neq 0$. Aplicando el procedimiento anterior para las cartas $U_i$ y $U_j$ cubrimos todos los índices, obteniendo que $\partial_i f(a)=0$ para todo $i=0,\dotsc,n$.
+\item 
+\end{enumerate}
+\end{solucion}
+
+
+\newpage
 \begin{ejercicio}{6}\
  
 \begin{enumerate}
@@ -91,4 +128,5 @@ Así que hemos descompuesto la cúbica como una recta ($x_0=0$) y una cónica ($
 +c_{0,1,2}x_1x_2=0$).
 \end{enumerate}
 \end{solucion}
+
 \end{document}
