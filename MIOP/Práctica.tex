@@ -1,0 +1,83 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Modelos de Investigación Operativa\\ Práctica Obligatoria}
+\author{Javier Aguilar Martín}
+\maketitle
+
+
+
+\begin{ejercicio}{1}
+Una compañía desea introducir un nuevo producto al mercado y planea su estrategia de comercialización. Se ha tomado la decisión de introducir el producto en tres fases. La fase 1 incluye ofertas especiales para atraer a los compradores por primera vez. La fase 2 es una campaña para persuadir a estos compradores de primera vez a que continúen comprando el producto a precio normal. La fase 3 incluye una campaña para evitar que los clientes regulares cambien a una competencia que se sabe que se introducirá en el mercado.
+
+Se cuenta con un presupuesto de 4 millones de euros para la camaña. El problema consiste en determinar cómo asignar este dinero de la manera más eficaza las tres fases. Sea $f_1$ la proporción de mercado inicial que se logra en la fase 1, $f_2$ la fracción de este mercado que se retiene en la fase 2, y $f_3$ la fracción del porcentaje de mercado que se retiene en la fase 3. Con los datos de la siguiente tabla, aplique programación dinámica para determinar la asignación de 4 millones para maximizar el porcentaje final del mercado para el nuevo producto, es decir, maximizar $f_1f_2f_3$. 
+\begin{itemize}
+\item[\textbf{a)}] Suponga que el dinero se debe gastar en cantidades enteras múltiplos de 1 millón en cada fase y que el mínimo permisible es 1 para la fase 1, y 0 para las fases 2 y 3.
+\begin{center}
+\begin{tabular}{c|lcc}
+ & \multicolumn{3}{c}{\textbf{Efecto sobre el}}\\
+\textbf{Millones de } & \multicolumn{3}{c}{\textbf{procentaje de mercado}} \\\cline{2-4}
+\textbf{euros gastados} & $f_1\qquad$ & $f_2$ & $f_3$\\
+\hline
+0 & - & 0.2 & 0.3\\
+1 & 0.2 & 0.4 & 0.5\\
+2 & 0.3 & 0.5 & 0.6\\
+3 & 0.4 & 0.6 & 0.7\\
+4 & 0.5 & - & -
+\end{tabular}
+\end{center}
+
+\item[\textbf{b)}] Suponga que se pueden gastar cualquier cantidad de presupuesto en cada fase, y que el efecto estimado al gastar una cantidad $x_i$ (en unidades de millones de dólares) en la fase $i$ ($i=1,2,3$) es:
+
+\begin{tabular}{l}
+$f_1=0.1x_1-0.01x2$\\
+$f_2=0.4+0.1x_2$\\
+$f_3=0.6+0.07x_3$
+\end{tabular}
+
+[\emph{Sugerencia}: después de obtener en forma analítica las funciones $f_2^*(s)$ y $f_3^*(s)$, obtenga $x_1^*$ de manera gráfica]
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}
+
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Consideremos el problema: $\min_{x\in[a_1,b_1]}f(x)$, donde $f$ es una función de $\R$ en $\R$ estrictamente convexa diferenciable. Fijar $n$ (número de iteraciones). Hacer $k=1$ y apliquemos el siguiente algoritmo:
+\begin{enumerate}
+\item Hacer $x_k=1/2(a_k+b_k)$ Si $f'(x_k)=0$ STOP.
+\item Si $f'(x_k)>0$ hacer $a_{k+1}=a_k$ y $b_{k+1}=x_k$. Ir a 4.
+\item Si $f'(x_k)<0$ hacer $a_{k+1}=x_k$ y $b_{k+1}=b_k$. Ir a 4. 
+\item Hacer $k\leftarrow k+1$. Ir a 1 mientras no se alcance el número $n$ de iteraciones.
+\end{enumerate}
+\begin{itemize}
+\item Probar que en cada iteración se reduce la longitud del intervalo que contiene la solución.
+\item Probar que la solución óptima está en el intervalo $[a_n,b_n]$. 
+\item ¿Cuál debe ser el número de iteraciones para asegurar una precisión de $\delta$?
+\item Aplicar al problema $\min_{x\in[-3,5]}x^2+2x$ haciendo 5 iteraciones.
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}
+
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+La compañía $C$ debe servir a diez clientes cuyas respectivas demandas son $d_j, j=1,\dots,10$. Se dispone de cuatro camiones con capacidad $L_k$ y coste de operación $c_k,k=1,\dots,4$. Un camión no puede atender en un mismo día a más de cinco clientes, y no puee servir en el mismo día a los pares de clientes $(1,7),(2,6)$ y $(2,9)$. Formule el problema de minimizar el coste diario de atender a todos los clientes con los cuatro camiones disponibles. Resuélvalo utilizando Xpress.
+\end{ejercicio}
+\begin{solucion}
+
+
+\end{solucion}
+
+
+
+\end{document}
