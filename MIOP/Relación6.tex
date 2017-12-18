@@ -1,6 +1,7 @@
 \documentclass[twoside]{article}
 \usepackage{../estilo-ejercicios}
 
+\usepackage{colortbl}
 %--------------------------------------------------------
 \begin{document}
 
@@ -81,6 +82,29 @@ Modele las siguientes situaciones:
 
 \newpage
 
+\begin{ejercicio}{4}
+Dada una matriz $C_{n\times m}$ de número reales no negativos, queremos conocer la fila que tiene el mayor más pequeño.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{5}
+Considere el siguiente problema de dos variables.
+\begin{align*}
+\min\ & 15x_1+10x_2\\
+s.a.\   & 3x_1+1x_2\geq 6\\
+       & x_1+x_2\geq 3\\
+       & x_1,x_2\in\Z^+
+\end{align*}
+Resolver el problema por ramificación y acotación.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
 \begin{ejercicio}{6}
 Considere el siguiente problema de dos variables
 \begin{align*}
@@ -113,6 +137,108 @@ Nodos cerrados & 7 (solución entera), 8 (infactible) y 6 (la cota superior es m
 \end{tabular}
 \end{solucion}
 
+\newpage
 
+\begin{ejercicio}{8}
+Considere el siguiente problema de dos variables
+\begin{align*}
+\min\ & 9x_1+5x_2\\
+s.a.\   & 4x_1+9x_2\leq 35\\
+       & x_1\qquad\leq 6\\
+       & x_1-3x_2\geq 1\\
+       & 3x_1+2x_2\leq 19\\
+       & x_1,x_2\in\Z^+
+\end{align*}
+Resolver el problema por ramificación y acotación.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{9}
+Algunos problemas de programación entera, aún siendo pequeños, no son sencillos de resolver por ramificación y acotación. Intente encontrar una solución factible del problema $\{x\in\Z^+: 1228x_1+36679x_2+48908x_4+61139x_5+73365x_6=89716837\}$.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{10}
+En el diagrama de la figura siguiente se consiera que la zona $A$ es visible a una cámara de la zona $B$ si se puede trazar un segmento desde \textbf{cualquier punto} de $A$ hasta \textbf{cualquier punto} de $B$ sin atravesar ninguna zona negra. Determinar el mínimo número de cámaras a instalar y zonas donde deben ser instaladas para que todas las zonas sean visibles a las cámaras.
+
+ %https://tex.stackexchange.com/questions/50349/color-only-a-cell-of-a-table
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+1 & \cellcolor{black} & 2 & 3\\
+\hline
+4 & 5 & \cellcolor{black} & 6\\
+\hline
+7 & 8 & 9 & 10\\
+\hline
+\cellcolor{black} & \cellcolor{black}& 11 & 12\\
+ \hline
+ \cellcolor{black}& 13 & 14 & \cellcolor{black} \\
+ \hline
+\end{tabular}
+\end{center}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{11}
+Una empresa necesita tener presentes en las oficinas, como mínimo, los siguientes empleados:
+\begin{center}
+\begin{tabular}{r r}
+\hline
+Hora & Trabajadores\\
+\hline
+\hline
+De 0:00 a 6:00 & 2\\
+De 6:00 a 10:00 & 8\\
+De 10:00 a 12:00 & 4\\
+De 12:00 a 16:00 & 3\\
+De 16:00 a 18:00 & 6\\
+De 18:00 a 20:00 & 5\\
+De 20:00 a 00:00 & 3\\
+\hline
+\end{tabular}
+\end{center}
+Cada trabajador trabaja 4 horas, tiene una hora de descanso y a continuación trabaja otras 4 horas. Y solamente hace un turno diario. Los turnos de trabajo pueden comenzar en cualquier hora (en punto) del día. Formule y resuelva el problema de encontrar el número mínimo de trabajadores que necesita la empresa.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\newpage
+
+\begin{ejercicio}{12}
+La compaía $QED$ tiene que diseñar un programa de producción para las próximas $n$ semanas. Las tareas duran varias semanas y una vez comenzadas han de llevarse a cabo sin interrupciones. Durante cada semana se requiere un cierto número de trabajadores a tiempo completo en la tarea. Por tanto, la tarea $i$ se realiza en $p_i$ semanas y $l_{iu}$ trabajadores son requeridos para la semana $u$ ($u=1,\dots,p_i)$. El número total de trabajadores disponibles en la semana $t$ es $L_t$. Con objeto de clarificar la información, se muestran los datos para cinco tareas $(i,p_i,l_{i1},\dots,l_{ip_{i}})$.
+\begin{center}
+\begin{tabular}{c|c|cccc}
+\hline
+& & & Trabajadores & &\\
+Tarea & Duración & Semana 1 & Semana 2 & Semana 3 & Semana 4\\
+\hline
+\hline
+1 & 3 & 2 & 3 & 1 & -\\
+2 & 2 & 4 & 5 & - & -\\
+3 & 4 & 2 & 4& 1 & 5\\
+4 &4 & 3 & 4 & 2 & 2\\
+5 & 3& 9 & 2 & 3 & -\\
+\hline
+\end{tabular}
+\end{center}
+\begin{enumerate}
+\item Defina las restricciones que nos definen una solución factible.
+\item Formule el problema que minimiza el máximo número de trabajadores para cualquiera de las semanas.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
 
 \end{document}
