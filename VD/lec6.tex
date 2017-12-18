@@ -84,6 +84,16 @@ que:
 $$T=\sum_{i_1,\dots ,i_r=1}^mT\left(\dep{x_{i_1}},\dots
 ,\dep{x_{i_r}}\right)\de{x_{i_1}}\otimes\cdots\otimes\de{x_{i_r}}.$$
 \end{prop}
+\begin{dem}
+Veamos que es sistema generador. Sean $X_1,\dots, X_r\in\mathcal{X}(U)$ cualesquiera. Tenemos $X_j=\sum_{i_j=1}^mX_jx_{i_j}\frac{\partial}{\partial x_{i_j}}\ \forall j=1,\dots,r$. Así
+$$T(X_1,\dots,X_r)=T(\sum_{i_1=1}^mX_jx_{i_1}\frac{\partial}{\partial x_{i_1}},\dots,\sum_{i_r=1}^mX_jx_{i_r}\frac{\partial}{\partial x_{i_r}})=$$
+$$\sum_{i_1,\dots i_r=1}^m(X_1x_{i_1})\dots(X_rx_{i_r})T(\frac{\partial}{\partial x_{i_1}},\dots,\frac{\partial}{\partial x_{i_r}})=\sum_{i_1,\dots i_r=1}^mdx_{i_1}(X_1)\dots dx_{i_r}(X_r)=T(\frac{\partial}{\partial x_{i_1}},\dots,\frac{\partial}{\partial x_{i_r}})=$$
+$$\sum_{i_1,\dots i_r=1}^mdx_{i_1}\otimes\dots\otimes dx_{i_r}T(\frac{\partial}{\partial x_{i_1}},\dots,\frac{\partial}{\partial x_{i_r}})(X_1,\dots,X_r)$$
+Ahora la independencia lineal. Sea $\sum_{i_1,\dots,i_r=0}^m f_{i_1,\dots, i_r}dx_{i_1}\otimes\dots\otimes dx_{i_r}=0$. Entonces 
+$$\sum_{i_1,\dots,i_r=0}^m f_{i_1,\dots, i_r}dx_{i_1}\otimes\dots\otimes dx_{i_r}(\frac{\partial}{\partial x_{j_1}},\dots,\frac{\partial}{\partial x_{j_r}})=0$$
+Pero $dx_{i_1}(\frac{\partial }{\partial x_{j_1}}=\delta_{i,j_1}$ y así. Entonces solo queda $f_{j_1,\dots,j_r}=0$ para cada caso en el que todos valgan 1, por lo que todos los coeficientes son 0. $\QED$. 
+\end{dem}
+
 \begin{defi}
 Dada una variedad diferenciable $M$ y un abierto $U\subseteq M$, un {\bf Campo de Tensores $r$--Covariantes y
 1--Contravariantes Diferenciable} sobre $U$ es una aplicación $r$--lineal del $\esp{F}(U)$--módulo $\esp{X}(U)$ en
