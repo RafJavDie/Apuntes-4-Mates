@@ -6,17 +6,17 @@
 \begin{document}
 
 \title{Algebra Conmutativa y Geometría Algebraica}
-\author{Javier Aguilar Martín, Rafael González López, Diego Pedraza López}
+\author{Rafael González López,Javier Aguilar Martín,  Diego Pedraza López}
 \maketitle
 
 \begin{ejercicio}{4}\
  
 \begin{enumerate}
 \item Sea $X = \V(f)\subset \PP^n_k$ una hipersuperficie proyectiva, donde $f\in k[x_0,\dotsc,x_n]$ es un polinomio homogéneo irreducible. Probar que en el punto $a\in X$ es singular si y solo si $\partial_i f(a) = 0$ para todo $i=0,\dotsc,n$. 
-\item Sea $V\subset \PP^n_k$ una variedad proyectiva irreducible, y sea $I(V )= \gene{F_1,\dotsc,F_n}$ con $F_1,\dotsc,F_n \in k[x_0,\dotsc,x_n]$ homogéneos. Probar que los puntos singulares de $V$ son aquellos en los que el rango de la matriz 
+\item Sea $V\subset \PP^n_k$ una variedad proyectiva irreducible, y sea $I(V )= \gene{F_1,\dotsc,F_k}$ con $F_1,\dotsc,F_k \in k[x_0,\dotsc,x_n]$ homogéneos. Probar que los puntos singulares de $V$ son aquellos en los que el rango de la matriz 
 $$
 \left(
-\frac{\partial F_i}{\partial_j}\right)_{1\leq i \leq r, 0\leq j \leq n}
+\frac{\partial F_i}{\partial_j}\right)_{1\leq i \leq k, 0\leq j \leq r}
 $$
 es menor $n-\dim(V)$.
 \end{enumerate}
@@ -37,10 +37,48 @@ rg
 $$
 Esto es si y solo si $\partial_i f(a) = 0$ para todo $i=1,\dotsc,n$, lo cual se tiene por hipótesis.
 
-Supongamos que $a$ es un punto singular de $X$. Supongamos que $a=[e_i]$, siendo $e_i = (0,\dotsc,1,\dotsc,0)$. Como para cada $i$ es análogo, supongamos que $i=0$. Es decir, supongamos que $a=(1:0:\dotsc:0)$ es singular en $X$. Tomando la carta afín $U_0$ y procediendo como en el apartado anterior, junto con la consideración inicial, obtenemos que $\partial_i f(a) = 0$ para todo $i=1,\dotsc,n$. Veamos qué ocurre con $\partial_0 f(a)$. Como es homogéneo, para que no se anulase en $a$ tendría que existir un monomio úicamente $x_0$ (o ser constante no nulo), pero entonces $f$ también tendría un monomio en $x_0$ y no se anularía en $a$, lo cuál sabemos que ocurre. Por tanto, el resultado está probado para los elementos de esta forma.
+Supongamos que $a=(a_0:\dotsc:a_n)$ es un punto singular de $X$. Sabemos que algún $a_i\neq 0$, supondremos por comodidad que es $a_0$ y análogamente a lo anterior obtenemos que $\partial_i f(a) = 0$ para todo $i=1,\dotsc,n$. Tenemos que ver que $\partial_0 f(a)=0$, para lo cuál usaremos que para todo polinomio homogéneo de grado $d$ se tiene que
+$$
+\sum_{i=0}^n x_i \frac{\partial f}{\partial x_i}=df
+$$
+Aplicando en $a$, como $f(a)=0$, entonces
+$$
+\sum_{i=0}^n a_i \frac{\partial f}{\partial x_i}(a) = a_0 \frac{\partial f}{\partial x_0}(a) = d F(a) = 0
+$$
+Como $a_0\neq 0$, tenemos el resultado.
+\item Sea $a=(a_0:\dotsc:a_n)\in X$ y supongamos sin pérdida de generalidad que $a_0\neq 0$. Procediendo como en el apartado anterior sabemos que $a$ es singular en $X$ si y solo si 
+$$
+rg
+\begin{pmatrix}
+\frac{\partial F_1^{dh}}{\partial_1}(a) & \cdots & \frac{\partial F_1^{dh}}{\partial_n}(a)\\
+\vdots & \ddots& \vdots\\
+\frac{\partial F_k^{dh}}{\partial_1}(a) & \cdots & \frac{\partial F_1^{dh}}{\partial_n}(a)
+\end{pmatrix} =  rg
+\begin{pmatrix}
+\frac{\partial F_1}{\partial_1}(a) & \cdots & \frac{\partial F_1}{\partial_n}(a)\\
+\vdots & \ddots& \vdots\\
+\frac{\partial F_k}{\partial_1}(a) & \cdots & \frac{\partial F_1}{\partial_n}(a)
+\end{pmatrix} < n-\dim(V)
+$$
+Tomando en la segunda matriz el representante $(1,a_1/a_0,\dotsc,a_n/a_0)$. Como el rango de una matriz no varía tras multiplicarla por un escalar no nulo, deducimos que en realidad es independiente del representante de $a$. 
 
-Quitando estos casos, podemos suponer que en $a=(a_0:\dotsc,a_n)$ existen 2 índices distintos $i,j$ tales que $a_i,a_j \neq 0$. Aplicando el procedimiento anterior para las cartas $U_i$ y $U_j$ cubrimos todos los índices, obteniendo que $\partial_i f(a)=0$ para todo $i=0,\dotsc,n$.
-\item 
+Para tener el resultado vamos a probar que la columna que falta es linealmente dependiente del resto de las columnas. De la fórmula anterior para polinomios homogéneos (supongamos de grado $d$) tenemos que, usando que $a_0\neq0$,
+$$
+\sum_{j=0}^n a_j \frac{\partial F_i}{\partial x_j}=dF(a) = 0 \quad \Longrightarrow \quad \frac{\partial F_i}{\partial x_0} = -\sum_{j=1}^n \frac{a_j}{a_0} \frac{\partial F_i}{\partial x_j}
+$$
+Por lo que
+$$
+\begin{pmatrix}
+ \frac{\partial F_1}{\partial x_0}\\
+ \vdots\\
+  \frac{\partial F_k}{\partial x_0}
+\end{pmatrix} = -\sum_{i=1}^n  \frac{a_j}{a_0} \begin{pmatrix}
+ \frac{\partial F_1}{\partial x_j}\\
+ \vdots\\
+  \frac{\partial F_k}{\partial x_j}
+\end{pmatrix}
+$$
+Por tanto el rango de la matriz no varía al ampliar con dicha columna.
 \end{enumerate}
 \end{solucion}
 

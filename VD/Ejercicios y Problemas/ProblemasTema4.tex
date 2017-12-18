@@ -59,10 +59,14 @@ f_{\ast q}X'_q = Y_{f(q)} \quad \forall q\in M $$
 Por la propia definición de inmersión, es decir, que $f_{\ast}$ sea inyectiva en cada punto, tenemos que, como $f_{\ast p}X_p = Y_{f(p)} = f_{\ast p}X'_p$ $\forall p\in M$ entonces $ X_p = X'_p$ $\forall p\in M$, es decir, $X=X'$.
 \item Sea $f$ una inmersión y sea $Y \in \mathcal{X}(N)$.
 \begin{itemize}
-\item Supongamos que $\exists X \in \mathcal{X}(M)$ tal que $X$ está $f$-relacionado con $Y$. Entonces por definición $\forall p\in M$ $Y_{f(p)}=f_{\ast p}X_p$. Como $X_p\in T_p(M)$ entonces $f_{\ast p}(T_p(M))$.
-\item Recíprocamente, supongamos que $\forall p \in M$, $Y_{f(p)}\in f_{\ast p}(T_p(M))$. Como $f_{\ast p}$ es una imersión, es inyectiva. En particular, es un isormofismo sobre su imagen, luego $\forall p\in M$ podemos considerar $X_p = f_{\ast p}^{-1}(Y_{f(p)})\in T_p(M)$, lo cual está correctamente definido por la hipótesis. Obviamente $X$ es un campo de vectores y verifica que
+\item Supongamos que $\exists X \in \mathcal{X}(M)$ tal que $X$ está $f$-relacionado con $Y$. Por definición $\forall p\in M$ $Y_{f(p)}=f_{\ast p}X_p$. Como $X_p\in T_p(M)$ entonces ${Y_{f(p)}\in f_{\ast p}(T_p(M))}$.
+\item Recíprocamente, supongamos que $\forall p \in M$, $Y_{f(p)}\in f_{\ast p}(T_p(M))$. Como $f_{\ast p}$ es una inmersión, es inyectiva. En particular, es un isomorfismo sobre su imagen, luego $\forall p\in M$ podemos considerar $X_p = f_{\ast p}^{-1}(Y_{f(p)})\in T_p(M)$, lo cual está correctamente definido por la hipótesis. Obviamente $X$ es un campo de vectores y verifica que
 $$f_{\ast p} X_p = f_{\ast p} f_{\ast p}^{-1} Y_p = Y_p \quad \forall p \in M$$
-Por lo que $X$ está $f$-relacionado con $Y$.
+Por lo que $X$ está $f$-relacionado con $Y$. Resta probar que $X$ es un campo diferenciable. Sea $g \in \mathcal{F}(M)$, entonces 
+$$
+X g \func{M}{\R} \qquad (Xf)(p) = X_p g = (f_{\ast p}^{-1} Y_{f(p)})f = Y_{f(p)}(g \circ f^{-1})
+$$
+Como $g$ y $f^{-1}$ son diferenciables, la composición también lo es y al ser $Y$ campo diferenciable, tenemos que $Y(g\circ f^{-1})$ también es diferenciable, por lo que $Xf$ también lo es.
 \end{itemize} 
 \end{enumerate}
 \end{solucion}
