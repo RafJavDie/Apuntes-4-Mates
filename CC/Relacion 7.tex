@@ -1,0 +1,53 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+\usepackage{wasysym}
+\usetikzlibrary{automata,positioning}
+\usepackage{mathdots}
+\usepackage{listings}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ciencias de la Computación}
+
+\author{Javier Aguilar Martín}
+\maketitle
+
+\begin{ejercicio}{1}
+Para cada uno de los siguientes lenguajes sobre el alfabeto $\Sigma=\{a,b\}$, construye un autómata finito determinista que lo acepte. 
+\begin{enumerate}
+\item $L_1=\{w\in\Sigma^*:$ cada $a$ en $w$ está seguida o precedida por una $b\}$.
+\item $L_2=\{W\in\Sigma^*:$
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Describe el lenguaje aceptado por cada uno de los siguientes autómatas
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item $M_1$  acepta lo mismo que si quitamos la parte de abajo. Acepta el lenguaje $L(a(ba)^*)$.
+\item Como tiene dos estados finales, el lenguaje aceptado es la únión de los lenguajes aceptados por los autómatas que solo tienen uno de los estados finales. Empecemos por $M_{2,1}$ que solo tiene $q_2$ como estado final. Nos podemos quedar con las palabras aceptadas por la parte superior del diagrama. $L(M_{2,1})=L(ab^*a)$. En $M_{2,2}$, pasa lo mismo, así que $L(M_{2,2})=L(b)=\underline{b}$. Por tanto, $L(M_1)=L(a(ba)^*)+\underline{b}=L(a(ba)^*+b)$.
+\item Podemos eliminar cualquier cosa que vaya a $q_3$. $L(M_3)=L(a(ab)^*b)$. 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+¿Cuáles de las siguientes palabras son aceptadas por el siguiente $\varepsilon$-AFND?
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item No.
+\item Sí, $q_0,q_1,q_4,q_5,q_0$.
+\item No, si llegas a $q_0$ con $b$, $\hat{\delta}(q_0,b)=\varepsilon-cl(\emptyset)=\emptyset$, así que no cuenta porque no tiene salida. De hecho no puedes leer la letra y te quedas bloqueado.
+\item Sí, $q_0,q_1,q_4,q_0,q_1,q_4$.
+\end{enumerate}
+\end{solucion}
+
+\end{document}
