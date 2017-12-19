@@ -236,10 +236,29 @@ Como queríamos probar.
 Suponiendo la hipótesis de Riemann puede probarse que $θ(x) = x + \mathcal{O}(\sqrt{x} \log^2x)$. Admitiendo la hipótesis de Riemann, probar que:
 \[ \sum_{p≤x} \sqrt{p}\log p = \frac{2}{3} x^{3/2} + \mathcal{O}(x\log^2 x) \]
 \end{ejercicio}
+\begin{sol}
+Sea $a_n = \log p$ si $n=p$ para un $p$ primo, $a_n = 0$ en caso contrario. Entonces:
+\[ \sum_{p≤x} \sqrt{p}\log p = \sum_{n≤x} \sqrt{n}a_n = θ(x)\sqrt{x} - \int_1^x θ(t)\frac{1}{2\sqrt{t}}dt = \int_2^x θ(t)\frac{1}{2\sqrt{t}}dt \]
+(el cambio del rango de la integral a $2$ será evidente más adelante). Usando el ejercicio anterior, $θ(t)=t+U(t)$, con $|U(t)| ≤ C (x^{1/2}\log^2x)$ para algún $C$:
+\[ \sum_{p≤x} \sqrt{p}\log p = θ(x) \sqrt{x} - \frac{1}{2} \int_2^x \sqrt{t} dt - \frac{1}{2} \int_2^x \frac{U(t)}{\sqrt{t}} \]
+Como $int_1^x \frac{U(t)}{\sqrt{t}}≤C\int_2^x \log^2 t dt ≤ C x \log^2 x$ para $x ≥ 2$:
+\[ \sum_{p≤x} \sqrt{p}\log p = (x+\mathcal{O}(\sqrt{x}\log^2x))\sqrt{x}-\frac{1}{3}x^{3/2}+\frac{1}{3}2^{3/2}+\mathcal{O}(x\log^2 x) = \frac{2}{3} x^{3/2} + \mathcal{O}(x\log^2 x) \]
+\end{sol}
 
 \newpage
 
 \begin{ejercicio}{14}
 ¿Para qué valores de $α$ y $β$ $\in \R$ es convergente la serie $\sum\limits_p \dfrac{1}{p^α(\log p)^β}$?
 \end{ejercicio}
+\begin{sol}
+Veamos que para $α > 1$ es convergente. Tenemos que $p_n ≥ A n \log n \Rightarrow p_n^{α} ≥ A^{α}n^{α}\log^{α} n$, luego:
+\[ \frac{1}{p_n^{α} (\log p_n)^β} ≤ \frac{1}{A^{α}n^{α}\log^{α}} \]
+que es convergente.
+Para $0 ≤ α < 1$, veamos que es divergente. Como $p_n ≤ B n \log n$, se tiene que $\log p_n ≤ \log B + \log n + \log \log n ≤ C \log n$. Entonces:
+\[ \frac{1}{p_n^α(\log p_n)^β} ≥ \frac{1}{B^αn^α(\log n)^α C^β(\log n)^β}\]
+que es divergente.
+Para $α=1$, tenemos que:
+\[ \frac{1}{p_n(\log p_n)^β} \sim \frac{1}{n \log n (\log n)^β} = \frac{1}{n (\log n)^{β+1}} \]
+que converge si y sólo si $β+1 > 1$, es decir, cuando $β > 0$.
+\end{sol}
 \end{document}

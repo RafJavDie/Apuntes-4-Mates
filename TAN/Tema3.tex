@@ -363,7 +363,7 @@ La prueba se basa fuertemente en el hecho de que
 Suponiendo que $β+iγ$ es un cero de $ζ(s)$ se obtienen las cotas $-\dfrac{ζ'(s)}{ζ(s)} < \dfrac{1}{σ-1}+B_1$,
 \[ -\Re\frac{ζ'(σ+iγ)}{ζ(σ+iγ)} < 2 \log |γ| - \frac{1}{σ-β}+B_2, \quad -\Re\frac{ζ'(σ+2iγ)}{ζ(σ+2iγ)} < 2 \log |γ| + B_3 \]
 
-\begin{teorema}
+\begin{teorema}\label{teorema-zeta1}
 Existe una consante $α > 0$ tal que en la región
 \[ B_α = \left\{ σ+it \in \C : 1 - \frac{α}{\log(t+2)} ≤ σ ≤ 2 \right\} \]
 nose anula la función $ζ(s)$ y además para $s = σ+it$
@@ -403,6 +403,19 @@ El tema está bien desarrollado en el libro de Karatsuba y el de Davenport.
 Existe una constante absoluta $c > 0$, tal que
 \[ ψ(x) = \sum_{n≤x} Λ(n) = x + \mathcal{O}\left(xe^{-c\sqrt{\log x}}\right) \]
 \end{teorema}
+\begin{dem}
+Aplicamos el anterior teorema a $-\frac{ζ'(s)}{ζ(s)}$:
+\[ ψ(x) = \sum_{n≤x} Λ(n) = \frac{1}{2πi} \int_{b-iT}^{b+iT}\left(-\frac{ζ'(s)}{ζ(s)}\right)\frac{x^s}{s} ds + \mathcal{O}\left(\frac{x^b}{T(b-1)}\right) + \mathcal{O}\left(\frac{xA(2x)\log x}{T}\right) \]
+Truco: tomamos $b = 1+\frac{1}{\log x}$, entonces $x^b = ex$ (compruébalo). Tomamos $A(x)=\log x$. Suponiendo que $x ≥ 2$: $A(2x)=\log 2 + \log x ≤ 2\log x$. Entonces:
+\[ ψ(x) = \sum_{n≤x} Λ(n) = \frac{1}{2πi} \int_{b-iT}^{b+iT}\left(-\frac{ζ'(s)}{ζ(s)}\right)\frac{x^s}{s} ds + \mathcal{O}\left(\frac{x}{\log^2x}\right) \]
+Por \ref{teorema-zeta1}, tenemos que:
+\[ \left|\frac{ζ'(s)}{ζ(s)}\right| ≤ C \log^2 t\]
+para $s=ο+it$ con $|t|>e$.
+
+Tenemos un único polo en el integrando en $s=1$, un polo simple de $ζ'(s)/ζ(s)$. Entonces:
+\[ Res_{s=1} \left(-\frac{ζ'(s)}{ζ(s)}\right)\frac{x^s}{s} = \lim_{s\to1} (1-s)\frac{ζ'(s)}{ζ(s)} \frac{x^s}{s} = x\]
+Luego, con un 
+\end{dem}
 
 \begin{teorema}
 \[ π(x) = \sum_{p≤x} 1 = \int_2^x \frac{du}{\log u} + \mathcal{O}\left(xe^{-\frac{c}{2} \sqrt{\log x}}\right) \]
