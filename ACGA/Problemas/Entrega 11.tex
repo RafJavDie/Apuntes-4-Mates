@@ -9,6 +9,42 @@
 \author{Rafael González López,Javier Aguilar Martín,  Diego Pedraza López}
 \maketitle
 
+\begin{ejercicio}{1}
+Si $f \in k[x_1,\dots,x_n]$ es un polinomio, definimos su \textit{forma inicial} $f^{in}$ como su componente homogénea de menor grado. Sea $X \subseteq \A_k^n$ un conjunto algebraico que contenga al origen. Se define el \textit{cono tangente} $C_O(X)$ de $X$ en el origen como el conjunto algebraico definido por
+\[ \V(\{f^{in} \mid f \in \mathcal{I}(X)\}) \]
+\begin{enumerate}
+	\item Si $\mathcal{I}(X) = \langle f_1,\dots,f_r \rangle$, probar que $C_O(X) = \mathcal{V}(\{f_1^{in},\dots,f_r^{in}\})$, o dar un contraejemplo. ¿Qué ocurre si $\mathcal{I}(X) = \langle f \rangle$?
+	\item Probar que $C_O(X)$ está contenido en la variedad lineal afín $O + T_{X,O}$, y que si el origen es un punto regular de $X$ se tiene la igualdad.
+	\item Calcular el cono tangente y el espacio tangente en el origen de los conjuntos $\V(x^2-x^4-y^4) \subset \A^2$, $\V(xy-x^6-y^6) \subset \A^2$, $\V(z^2-x^2-y^2) \subset \A^3$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{enumerate}
+	\item Consideramos el contraejemplo $\mathcal{I}(X) = \langle x^2+x,y^2-x\rangle$. Tenemos que $x^2+y^2=(x^2+x)+(y^2-x)\in\mathcal{I}(X)$. Como es homogéneo, se tiene entonces que $C_O(X) \subseteq \V(\{x^2+y^2\})$. Sin embargo, tomando las formas iniciales de los generadores de $\mathcal{I}(X)$, obtenemos el conjunto algebraico $\V(\{x,-x\})=\V(\{x\})$, la recta $x=0$. Como $\V(\{x\}) \not\subseteq \V(\{x^2+y^2\})$, deducimos que $\V(\{x\}) \neq C_O(X)$.
+
+	Supongamos ahora que $\I(X)=\langle f \rangle$. Podemos expandir $f$ por sus componentes homogéneas $f=f_r+f_{r+1}+\dots+f_n$, donde $f_i$ es un componente homogénea de grado $i$ y $f^{in}=f_r$. Cualquier polinomio en $\I(X)$ será de la forma $p\cdot f$, con $p \in k[x_1,\dots,x_n]$. Descomponiendo $p=p_s+p_{s+1}+\dots+p_m$ en sus componentes homogéneas. Entonces:
+	\[ p\cdot f = \sum_{i=r,j=s}^{n,m} p_j \cdot f_i \]
+	Cada término de la suma será homogéneo y de grado $i+j$. Por lo tanto, $(p \cdot f)^{in} = p_s \cdot f_r \in \langle f^{in} \rangle$. Luego $C_O(X) \subseteq \V(\{f^{in}\})$. La otra contención es trivial, pues $f \in I(X)$. Por lo tanto, $C_O(X) = \V(\{f^{in}\})$.
+
+	\item Sea $\mathcal{I}(X)=\langle f_1,\dots,f_r \rangle$. Supongamos primero que $C_O(X)$ es vacío. Esto se da si y sólo si algún $f^{in} \in k \setminus \{0\}$, es decir, si hay $f \in \mathcal{I}(X)$ con término independiente no nulo. Pero en este caso $f(O) \neq 0$, luego $T_{X,O} = \emptyset = C_O(X)$.
+
+	Supongams ahora que $C_O(X)$ es no vacío. Tenemos entonces que $f^{in}$ es no constante para todo $f \in \mathcal{I}(X)$. En particular, los generadores $f_1,\dots,f_n$ no tienen término independiente. Sea $(a_1,\dots,a_n) \in C_O(X)$. Para ver que $(a_1,\dots,a_n) \in O + T_{X,O}$ basta ver que $f_i(a_1t,\dots,a_nt)$ tiene multiplicidad $≥2$ en $t=0$. Ya hemos visto que es de multiplicidad $≥1$. Obsérvse que:
+	\[ f_i^{in}(a_1t,\dots,a_nt) = f_i^{in}(a_1t,\dots,a_nt) = t^{d_i} f_i^{in}(a_1,\dots,a_n) = 0 \]
+
+	donde $d_i$ es el grado del polinomio $f_i^{in}$, que es necesariamente mayor que $0$ porque $f_i^{in}$ es no constante. Entonces $f_i(a_1t,\dots,a_nt)$ es un polinomio con monomios de al menos grado $d_i + 1$. Al derivar, nos queda un polinomio con monomios de la menos grado $d_i > 0$, que por lo tanto se anulan en $t=0$, lo que implica la multiplicidad $≥2$. Aplicando esto a cada $i=1,\dots,r$, llegamos a que $(a_1,\dots,a_n) \in T_{X,O}$.
+
+	Nos preguntamos en qué condiciones es el origen un punto regular de $X$. Una condición necesaria es que todas las filas de la matriz jacobiana tengan al menos un elemento no nulo. Esto se traduce a que cada función del sistema generador reducido debe tener una componente lineal, es decir, su forma inicial sea lineal. 
+
+	Sea $a=(a_1,\dots,a_n)$ tal que $a \notin C_O(X)$ y $a$ como vector fuera tangente a $X$ en $O$. Si $a \notin C_O(X)$, entonces existe un $f \in \mathcal{I}(X)$ tal que $f^{in}(a) \neq 0$. Podemos suponer sin pérdida de generalidad que $f$ está en el sistema generador. Supongamos que $X$ fuera regular en el origen. Demostraremos por reducción al absurdo que esto no es posible. Por lo que hemos dicho antes, $f^{in}$ debe ser lineal. Como $a$ es tangente a $X$ en $O$, $f(ta)$ tiene multiplicidad $t ≥ 2$ en $t=0$. Sin embargo, $f^{in}$ es lineal, por lo que $f^{in}(ta)=tf^{in}(a)$. Al derivar, obtenemos una componente $f^{in}(a)$. Las demás componentes homogéneas están siendo multiplicadas por alguna potencia de $t$, luego se anulan cuando $t=0$ y queda que $\left.\frac{d}{dt}f(ta)\right|_{t=0}=f^{in}(a)$. Como $f^{in}(a) \neq 0$, llegamos a que $a$ no es tangente a $X$ en $O$. Hemos llegado a un absurdo.
+
+	\item Sea $X_1=\V(x^2-x^4-y^4)$, $X_2=\V(xy-x^6-y^6)$ y $X_3=\V(z^2-x^2-y^2)$. Tenemos que estos 3 polinomios son irreducibles y, en consecuencia, los ideales que generan son radicales. Entonces $\I(X_i)$ es principal y coincide con los polinomios anteriores para cada $i=1,\dots,3$. Por lo tanto, como ya hemos visto en el primer apartado, basta tomar el conjunto algebraico generado por la forma inicial de sus respectos polinomios generadores:
+	\[ C_O(X_1) = \V(x^2) = \V(x), \text{ la recta }x=0. \]
+	\[ C_O(X_2) = \V(xy), \text{ las rectas }x=0\text{ e }y=0. \]
+	\[ C_O(X_3) = \V(z^2-x^2-y^2), \text{ el propio cono}.\]
+\end{enumerate}
+\end{solucion}
+
+\newpage
 \begin{ejercicio}{4}\
  
 \begin{enumerate}
