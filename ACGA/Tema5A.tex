@@ -390,5 +390,30 @@ Como el coeficiente de $x$ en $f(x,y)$ es no nulo, podemos escribir $f(x,y)=xg(x
 \emph{Por tanto, con una única explosión conseguimos desingularizar la curva $Z$.}
 \end{ejs}
 
+Sea $X=\V(f)$ con $f(x,y) = f_e(x,y)+f_{e+1}(x,y)+\dots+f_d(x,y)$ en componentes homogéneas. Donde $d$ es el grado de $X$ y $e$ es la multiplicidad de $X$ en $(0,0)$. $O$ será un punt de $X$, si $μ_X(0) ≥ 1$ y $O$ será un punto singular de $X$, si $μ_X() ≥ 2$. Tenemos que:
+\[ f_e(x,y) = \prod_{i=1}^e (β_i x - α_i y) \]
+Entonces llamamos al conjunto $\{(α_i,β_i)\}_{i=1}^e$ las direcciones tangentes a $X$ en $O$.
 
+Explotamos en $O$. En $U_0$:
+\begin{align*}
+	f(x,xy) & = f_e(x,xy) + f_{e+1}(x,xy) + \dots + f_d(x,xy) \\
+	& = x^e f_e(1,y) + x^{e+1}f_{e+1}(1,y) + \dots x^d f_d(1,y) \\
+	& = x^e \left[f_e(1,y)+xf_{e+1} + \dots + f^{d-e}f_d(1,y) \right]
+\end{align*}
+El divisor excepcional se corresponde con $x^e$ y la transformada estricta con el otro término. La transformada estricta cortará al divisor excepcional en los $y$ tales que $f_e(1,y)=0$.
+
+Consideramos ahora el caso particular $f(x,y) = y^2-x^3$. En $U_0$ obtenemos $x^2(y^2-x) = 0$. En $U_1$, $y^2(x^3y-1) = 0$. En $U_0$ vemos que la transformada estricta es una parábola que interesca al divisor excepcional con multiplicidad $2$.
+
+\begin{defi}
+Dado $f(x,y) = k[x,y]$, el conjunto $\mathcal{V}(f)$ tiene \textbf{divisor con cruzamientos normales} si:
+\begin{enumerate}
+	\item Las componentes irreducibles de $X$ son no singulares.
+	\item En cada punto se cortan, a lo más, dos componentes irreducibles de $X$ de forma transversal (es decir, con distintas direcciones tangetes).
+\end{enumerate}
+\end{defi}
+
+Podeos explotar el conjunto algebraico tantas veces como sea necesario hasta obtener un conjunto algebraico que tenga divisor con cruzamientos normales (strong desingularization \footnote{\url{https://en.wikipedia.org/wiki/Resolution_of_singularities}}).
+\begin{ej}
+Explotando $(x-y^2)x$ obtenemos $(uy-y^2)uy=uy^2(u-y)$ en $U_0$ y $(x-x^2v^2)x=x^2(1-xv^2)$ en $U_1$. En $U_0$ aún tenemos un divisor con cruzamiento no normal. Explotamos de nuevo el conjunto dado por $uy^2(u-y)$, basta explotar $uy(u-y)$. Obtenemos $y^2s(ys-y)=y^3s(s-1)$ en $U_0$ y $u^2t(u-ut)=u^3t(1-t)$ en $U_1$. Aquí ya tenemos que el divisor es de cruzamientos normales.
+\end{ej}
 \end{document}
