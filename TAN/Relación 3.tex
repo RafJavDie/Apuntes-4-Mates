@@ -8,6 +8,33 @@
 \author{Rafael González López\\Diego Pedraza López}
 \maketitle
 
+\begin{ejercicio}{1}
+\begin{enumerate}
+	\item Demostrar que para $\Re s > 1$
+	\[ -\frac{ζ'(s)}{ζ(s)} = s \int_1^{+∞} \frac{ψ(x)}{x^{s+1}} dx \]
+	\item Probar que para $\Re s > 1$ se tiene
+	\[ -\frac{ζ'(s)}{ζ(s)} = \frac{s}{s-1} + s \int_1^{+∞} \frac{ψ(x)-x}{x^{s+1}}dx \]
+	\item Demostrar que si $ψ(x) = x + \mathcal{O}(x^a)$ con $a > 1/2$, entonces $ζ(s)$ no se anula en $\Re s > a$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+	\item Para $s=σ+it$ con $σ>1$, tenemos que:
+\[ - \frac{ζ'(s)}{ζ(s)} = \int_{n=1}^{∞} \frac{Λ(n)}{n^s} \]
+Por la fórmula de Abel:
+\[ \sum_{n≤x} \frac{Λ(n)}{n^s} = \frac{ψ(x)}{x^s} + s \int_1^{x} \frac{ψ(u)}{u^{s+1}} du \]
+Tomando el límite cuando $x\to∞$ se da la fórmula que buscabamos si $\frac{ψ(x)}{x^s}$ tiende a $0$.
+\[ \lim_{x \to ∞} \left|\frac{ψ(x)}{x^s}\right| ≤ \lim_{x \to ∞} \frac{Ax}{x^σ} = 0\]
+	\item Sumando y restando $s\int_1^{+∞} \frac{x}{x^{s+1}}dx$ en el resultado anterior:
+	\[ -\frac{ζ'(s)}{ζ(s)} = s\int_1^{+∞} \frac{x}{x^{s+1}} + s \int_1^{+∞} \frac{ψ(x)-x}{x^{s+1}} dx = \frac{s}{1-s} + s \int_1^{+∞} \frac{ψ(x)-x}{x^{s+1}} dx \]
+	\item Sea $f(s) = \int_1^{+∞} \frac{ψ(x)-x}{x^{s+1}} dx$. Veamos que $f$ es analítica aplicando el teorema de convergencia dominada. Tenemos que usando que $ψ(x) = x+\mathcal{O}(x^a)$:
+	\[ \left|\frac{ψ(x)-x}{x^{s+1}}\right| ≤ \frac{cx^a}{x^{σ+1}} ≤ \frac{cx^a}{x^{a'+1}} = \frac{c}{x^{a'-a+1}} \]
+	con $σ > a' > a$. Como $a'-a+1 > 1$, esta fración es integrable en $[1,∞)$. Las otras condiciones del teorema de convergencia dominada son claras, luego $f(s)$ es analítica. En consecuencia, $-\frac{-ζ'(s)}{ζ(s)} = \frac{s}{s-1}+f(s)$ es meromorfa con un polo en $1$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
 \begin{ejercicio}{4}
 \begin{itemize}
 \item[]
