@@ -24,7 +24,7 @@ Suponga que está interesado en elegir entre un conjunto de inversiones $I=\{1,\
 \begin{solucion}\
 \begin{enumerate}
 \item $\sum_{i=1}^7x_i\leq 6$. 
-\item $\sum_{i=1}^7\geq 1$.
+\item $\sum_{i=1}^7x_i\geq 1$.
 \item $x_1+x_3\leq 1$.
 \item $x_2\geq x_4$. 
 \item $x_1-x_5=0$.
@@ -152,6 +152,29 @@ s.a.\   & 4x_1+9x_2\leq 35\\
 Resolver el problema por ramificación y acotación.
 \end{ejercicio}
 \begin{solucion}
+\begin{verbatim}
+model Ejercicio8
+uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+
+!sample declarations section
+declarations
+x:array(1..2) of mpvar
+end-declarations
+
+4*x(1)+9*x(2)<=35
+x(1)<=6
+x(1)-3*x(2)>=1
+3*x(1)+2*x(2)<=19
+!x(2)>=1 obj: 56, x(1)=5.6666, x(2)=1
+x(2)<=0 !obj: 54, x(1)=6, x(2)=0 *
+!x(1)>=6 infeasible*
+!x(1)<=5 !obj: 51.6 <54*
+!forall(i in 1..2) x(i) is_integer
+
+maximize(9*x(1)+5*x(2))
+
+end-model
+\end{verbatim}
 \end{solucion}
 
 \newpage
@@ -160,6 +183,29 @@ Resolver el problema por ramificación y acotación.
 Algunos problemas de programación entera, aún siendo pequeños, no son sencillos de resolver por ramificación y acotación. Intente encontrar una solución factible del problema $\{x\in\Z^+: 1228x_1+36679x_2+48908x_4+61139x_5+73365x_6=89716837\}$.
 \end{ejercicio}
 \begin{solucion}
+\begin{verbatim}
+model Ejercicio9
+uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+
+
+!sample declarations section
+declarations
+x:array(1..6) of mpvar
+end-declarations
+
+1228*x(1)+36679*x(2)+48908*x(4)+61139*x(5)+73365*x(6)=89716837
+!forall(i in 1..6) x(i) is_integer
+!posible solución x(1)=36566, x(2)=x(3)=x(4)=0, x(5)=1,x(6)=610
+x(4)<=1834
+x(2)<=0
+x(5)<=0
+x(6)<=0
+!x(1)<=15 infeseable
+x(1)>=16 !x(1)=16, x(2)=x(3)=0, x(4)=1834, x(5)=x(6)=0
+maximize(1)
+
+end-model
+\end{verbatim}
 \end{solucion}
 
 \newpage
@@ -185,6 +231,17 @@ En el diagrama de la figura siguiente se consiera que la zona $A$ es visible a u
 \end{center}
 \end{ejercicio}
 \begin{solucion}
+Definimos las variables $x_i\in\{0,1\}, i=1,\dots, 14$, que representará si se instala cámara o no en la celda $i$.
+\begin{align*}
+\min\ & \sum_{i=1}^{14} x_i\\
+sa:\ & x_1+x_4+x_7\geq 1\\
+& x_1 + x_4 +x_5 +x_7\geq 1\\
+&\dots\\
+&x_i\in\{0,1\}
+\end{align*}
+Algunas posiblemente sean redundantes.
+
+INTENTAR HACERLO MODELÁNDOLO POR SEGMENTOS Y SUS INTERSECCIONES
 \end{solucion}
 
 \newpage
@@ -210,6 +267,14 @@ De 20:00 a 00:00 & 3\\
 Cada trabajador trabaja 4 horas, tiene una hora de descanso y a continuación trabaja otras 4 horas. Y solamente hace un turno diario. Los turnos de trabajo pueden comenzar en cualquier hora (en punto) del día. Formule y resuelva el problema de encontrar el número mínimo de trabajadores que necesita la empresa.
 \end{ejercicio}
 \begin{solucion}
+Definimos variables $x_i\in\Z^+$ representando el número de trabajadores que empiezan su turno en la hora $i=0,\dots, 23$.
+\begin{align*}
+\min\ &\sum_{i=0}^{23} x_i\\
+sa:\ & x_{16}+x_{17}+\dots +x_{19}+x_{21}+\dots +x_{23}+x_0\geq 2\ (\text{Trabajan de 0:00 a 1:00})\\
+ & x_{17}+\dots +x_{20}+x_{22} +\dots +x_{1}\geq 0\ (\text{Trabajan de 0:00 a 1:00})\\
+ & \dots \\
+ x_i\in\Z^+
+\end{align*}
 \end{solucion}
 
 \newpage
@@ -221,7 +286,7 @@ La compaía $QED$ tiene que diseñar un programa de producción para las próxim
 \begin{center}
 \begin{tabular}{c|c|cccc}
 \hline
-& & & Trabajadores & &\\
+& & & \multicolumn{2}{c}{Trabajadores}  &\\
 Tarea & Duración & Semana 1 & Semana 2 & Semana 3 & Semana 4\\
 \hline
 \hline
@@ -239,6 +304,30 @@ Tarea & Duración & Semana 1 & Semana 2 & Semana 3 & Semana 4\\
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+$n$ semanas. En la semana $t$, $L_t$ trabajadores disponibles. La tarea $i$ se realiza en $p_i$ semanas, y se requieren $l_{iu}$ trabajadores para la semana $u$, $u=1,\dots,p_i$.
+\begin{enumerate}
+\item Tenemos tomar las siguientes decisiones:
+\begin{itemize}
+\item El número de trabajadores en la semana $t$, por tanto definimos $x_t$ como el número de trabajadores necesarios en la semana $t$, $t=1,\dots, n$. 
+\item En qué semana empieza cada tarea. Definimos $y_i\in\{0,1\}$ para decidir si la tarea $i$ empieza en la semana $t$, con $t=1,\dots, n-p_i+1$. 
+\end{itemize}
+Ahora, vamos a las restricciones:
+\begin{itemize}
+\item Todas las tareas deben ser realizadas, por lo que $\sum_{t=1}^{n-p_i+1}=1\ \forall i$. 
+\item También añadiríamos la restricción $y_i\in\{0,1\}$.
+\item No se pueden usar más trabajadores de los que hay. Por ello $x_t\leq L_t, t=1,\dots, n$.
+\item Los trabajadores en la etapa $t$ deben ser suficientes para realizar las tareas que se están ejecutando. Por ejemplo, fijada la tarea $i$, en $t=j$, necesitamos $l_{i1}y_{i1}$, es decir, necesitaremos $l_{i1}$ trabajadores si hemos empezado la tarea en la primera semana. Para $t=2$, tendríamos $l_{i2}y_{i1}+l_{i1}+y_{i2}$, puesto que la tarea ha podido empezarse en la semana 1 o en la 2. En general
+$$ \underset{u\geq t+p_i-n}{\underset{u\leq t}{\sum_{j=1}^{p_i}}}l_{ij}y_{i,t-u+1}\leq x_t\ \forall i,t $$
+\item $x_t\in\Z^+\ \forall t$.
+\end{itemize}
+
+\item Buscamos minimizar el máximo de las $x_t$, por lo que el problema es
+\begin{align*}
+\min\ & s\\
+ & s\geq x_t\ \forall t\\
+ &\text{demás restricciones}
+\end{align*}
+\end{enumerate}
 \end{solucion}
 
 \end{document}
