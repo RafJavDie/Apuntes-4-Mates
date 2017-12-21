@@ -310,11 +310,46 @@ Es decir, $Y$ es la unión de las componentes irreducibles de $\phi^{-1}(Z)$ no 
 
 Si $P\in Z$ es ahora un punto arbitrario, se define la explosión de $Z$ en $P$ como $\phi=\tau\circ\phi_0:Y\to Z$, donde $\tau:\Ank\to\Ank$ es la traslación de vector $\overrightarrow{OP}$ y $\phi_0:Y\to\tau^{-1}(Z)$ es la explosión de $\tau^{-1}(Z)$ en $O$.
 
-\begin{ej}
-$Z=\{x_2^2=x_1^3+x_1^2\}\subseteq\A^2$, entonces $X=\V(x_1y_2=x_2y_1,x_2^2=x_1^3+x_1^2)$. $\A^2\times\PP^1=(\A^1\times U_1)\cup(\A^1\times U_2)\cong \A^3\times\A^3$. Vemos $\A^3$ con coordenadas $(x_1,x_2,y_2)$. $X|_{U_1}=\V(x_1y_2=x_2,x_2^2=x_1^3+x_1^2)\subseteq\A^3$. $\V(x_1y_2=x_2)\cong\A^2$ con coordenadas $x_1,y_2$ (es el grafo de $(x_1,x_2,y_2)\mapsto x_1y_2$). Así que podemos quitar $x_2$. Por lo que $X|_{U_1}\cong \V(x_1^2y_2^2=x_1^3+x_1^3)=\V(x_1)\cup \V(y_2^2=x_1+1)$, que son respectivamente el divisor excepcional y la transformada estricta. Además la trasnformada estricta no tienen puntos singulares. La intersección cumple $y_2^2=1$, luego es $\{(0,1),(0,-1)\}$, que son los puntos donde el proyectivo corta a la curva al hacer la explosión.
+\begin{ejs}
+\begin{enumerate}
+\item $Z=\{x_2^2=x_1^3+x_1^2\}\subseteq\A^2$, entonces $X=\V(x_1y_2=x_2y_1,x_2^2=x_1^3+x_1^2)$. $\A^2\times\PP^1=(\A^1\times U_1)\cup(\A^1\times U_2)\cong \A^3\times\A^3$. Vemos $\A^3$ con coordenadas $(x_1,x_2,y_2)$. $X|_{U_1}=\V(x_1y_2=x_2,x_2^2=x_1^3+x_1^2)\subseteq\A^3$. $\V(x_1y_2=x_2)\cong\A^2$ con coordenadas $x_1,y_2$ (es el grafo de $(x_1,x_2,y_2)\mapsto x_1y_2$). Así que podemos quitar $x_2$. Por lo que $X|_{U_1}\cong \V(x_1^2y_2^2=x_1^3+x_1^3)=\V(x_1)\cup \V(y_2^2=x_1+1)$, que son respectivamente el divisor excepcional y la transformada estricta. Además la trasnformada estricta no tienen puntos singulares. La intersección cumple $y_2^2=1$, luego es $\{(0,1),(0,-1)\}$, que son los puntos donde el proyectivo corta a la curva al hacer la explosión.
 
 $X|_{U_2}=\V(x_1=x_2y_1,x_2^2=x_1^3+x_1^2)\subseteq\A^2$, que igual que antes podemos convertirlo en $\V(x_2^2=x_2^3y_1^3+x_2^2y_1^2)\subseteq\A^2$, que a su vez es isomorfo a $\V(x_2)\cap\V(1=x_2y_1^3+y_1^2)$, que de nuevo son el divisor excepcional y la transformada estricta.
-\end{ej}
+
+\item Sea $Z$ definida por $z^2=x^2+y^2$ en $\A^3$. Entonces $X=\V(x^2+y^2-z^2, xt-ys, xu-zs,yu-zt)$. $U_2$: $(u=1)$, $\A^3\times\A^2$. Queda entonces eliminando ecuaciones redundantes $\V(z^2s^2+z^2t^2-z^2)\subseteq\A^3(s,t,z)$ que se puede expresar como $\V(z)\cup\V(s^2+t^2-1)$. 
+
+$U_0$ y $U_1$ son análogos. Hacemos $s=1$. $\A^3\times\A^2(x,y,z,t,u)$. Tenemos isomorfismo con $\V(x^2+x^2t^2-x^2u^2)\subseteq\A^3(x,t,u)$, $\V(x)\cup\V(t+t^ 2-u^2)$.
+
+\end{enumerate}
+\end{ejs}
+
+
+\subsubsection{Procedimiento general para explosiones}
+
+$Z=\V(f_1,\dots,f_r)\subseteq\A^n, f_i\in k[x_1,\dots,x_n]$. $X=V(f_1,\dots,f_r,x_iy_j-x_jy_i)\hookrightarrow\A^n\times\PP^{n-1}$. Consideramos $U_0,\dots,U_{n-1}\subseteq\PP^{n-1}$. En $\A^n\times U_i\cong \A^n\times\A^{n-1}$ (proyectivo quitando $y_i$), $V(f_1,\dots,f_r,x_j=x_iy_j)\cong\V(f_1(y_1x_i,y_2x_1,\dots, x_i,\dots, y_nx_n),\dot,f_r(y_1x_i,y_2x_1,\dots, x_i,\dots, y_nx_n))\subseteq\A^n$.
+
+\begin{prop}
+Supongamos que $O\in\Z\subseteq\A^2$ ($Z$ es una curva) es un punto no singular. La explosión en $O$ es un isomorfismo. Si no es una curva en general no lo es. 
+\end{prop}
+
+\begin{prop}
+Si $X$ es una curva, $a\in X$ no singular y $\varphi:X\setminus\{a\}\to Z$ morgismo proyectivo. Entonces $\varphi$ se extiende de manera única a $\tilde{\varphi}:X\to Z$. 
+\end{prop}
+
+\begin{ejs}
+\begin{enumerate}
+\item $\varphi:\A^1\setminus\{0\}\to \A^1\subseteq\PP^1:t\mapsto 1/t$. Quedándonos solo con el morfismo afín no se extiende, pero si mandamos el 0 al punto del infinito podemos extenderlo al proyectivo. 
+\item $\A^1\to\V(y^2-x^3): t\mapsto (t^2,t^3)$ con inversa $(x,y)\mapsto y/x$. No puede extenderse al 0 porque entonces sería isomorfismo, pero el 0 es singular en la imagen y no la partida.
+\end{enumerate}
+\end{ejs}
+
+\begin{prop}
+Si dos curvas proyectivas no singulares son birracionalmente equivalentes, entonces son isomorfas.
+\end{prop}
+
+El resultado no es cierto pra superficies, por ejemplo, $\P^2$ es birracionalmente equivalente a $\P^1\times\P^1$ (tienen abiertos isomorfos $\A^2\cong\A^1\times\A^1$), pero es isomorfo.
+
+
 
 \section{Resolución de singularidades}
 
