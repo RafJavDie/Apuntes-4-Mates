@@ -24,14 +24,30 @@ S=x^3ydx+\cos{z}dy+ydz
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}
+\item[]
 \item $S(X)=x^3yxe^z+\cos{z}(1+xyz)+yz\in\calF(\R^3)$. 
 
 $T(X,Y)=x^3e^z+e^x(1+xyz)2z+y(1+xyz)+xz\cos{y}+z$
 
 $T\otimes S(X,Y,X)=T(X,Y)S(X)$
-\item
-\item
+\item $\theta=Alt(S)=S$ por ser $1$-forma. 
+
+$w= Alt(T)=f_1dx\land dy+f_2 dx\land dz + f_3 dy\land dz$.
+\begin{align*}
+f_1 &= Alt(T)\left(\frac{\partial}{\partial x},\frac{\partial}{\partial y}\right)=\frac{1}{2}\left(T\left(\frac{\partial}{\partial x},\frac{\partial}{\partial y}\right)-T\left(\frac{\partial}{\partial y},\frac{\partial}{\partial x}\right)\right)=-\frac{e^x}{2}\\
+f_2 &= Alt(T)\left(\frac{\partial}{\partial x},\frac{\partial}{\partial z}\right)=\frac{1}{2}\left(T\left(\frac{\partial}{\partial x},\frac{\partial}{\partial z}\right)-T\left(\frac{\partial}{\partial z},\frac{\partial}{\partial x}\right)\right)=\frac{1}{2}\\
+f_3 &= Alt(T)\left(\frac{\partial}{\partial y},\frac{\partial}{\partial z}\right)=\frac{1}{2}\left(T\left(\frac{\partial}{\partial y},\frac{\partial}{\partial z}\right)-T\left(\frac{\partial}{\partial z},\frac{\partial}{\partial y}\right)\right)=\frac{y-x}{2}
+\end{align*}
+\item 
+\begin{align*}
+w\land \theta &= -\frac{e^x}{2}y  dx\land dy \land dz +\frac{\cos(z)}{2}dx\land dz \land dy + \frac{y-x}{2}x^3 y dy\land dz \land dx\\
+&=\left(-\frac{e^x}{2}y  -\frac{\cos(z)}{2} +  \frac{y-x}{2}x^3 y \right)dx\land dy \land dz\\
+\theta(X)&=Alt(S)(X)=S(X)\\
+w(X,Y)&= -\frac{e^x}{2}dx\land dy (X,Y) + \frac{1}{2} dx\land dz (X,Y) + \frac{y-x}{2} dy\land dz(X,Y)\\
+(w\land \theta)(X,Y,X) & = -(w\land \theta)(X,Y,X) = 0
+\end{align*}
 \end{enumerate}
+Nota: Álgebra Tensorial $T(U)=\bigoplus_{r\geq 0}T_r(U)$. Álgebra Exterior $\Lambda(U)=\bigoplus_{r\geq 0} \Lambda_r(U)$.
 \end{solucion}
 
 \newpage
