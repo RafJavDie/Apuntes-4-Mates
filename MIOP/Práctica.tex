@@ -13,7 +13,7 @@
 \begin{ejercicio}{1}
 Una compañía desea introducir un nuevo producto al mercado y planea su estrategia de comercialización. Se ha tomado la decisión de introducir el producto en tres fases. La fase 1 incluye ofertas especiales para atraer a los compradores por primera vez. La fase 2 es una campaña para persuadir a estos compradores de primera vez a que continúen comprando el producto a precio normal. La fase 3 incluye una campaña para evitar que los clientes regulares cambien a una competencia que se sabe que se introducirá en el mercado.
 
-Se cuenta con un presupuesto de 4 millones de euros para la camaña. El problema consiste en determinar cómo asignar este dinero de la manera más eficaza las tres fases. Sea $f_1$ la proporción de mercado inicial que se logra en la fase 1, $f_2$ la fracción de este mercado que se retiene en la fase 2, y $f_3$ la fracción del porcentaje de mercado que se retiene en la fase 3. Con los datos de la siguiente tabla, aplique programación dinámica para determinar la asignación de 4 millones para maximizar el porcentaje final del mercado para el nuevo producto, es decir, maximizar $f_1f_2f_3$. 
+Se cuenta con un presupuesto de 4 millones de euros para la campaña. El problema consiste en determinar cómo asignar este dinero de la manera más eficaza las tres fases. Sea $f_1$ la proporción de mercado inicial que se logra en la fase 1, $f_2$ la fracción de este mercado que se retiene en la fase 2, y $f_3$ la fracción del porcentaje de mercado que se retiene en la fase 3. Con los datos de la siguiente tabla, aplique programación dinámica para determinar la asignación de 4 millones para maximizar el porcentaje final del mercado para el nuevo producto, es decir, maximizar $f_1f_2f_3$. 
 \begin{itemize}
 \item[\textbf{a)}] Suponga que el dinero se debe gastar en cantidades enteras múltiplos de 1 millón en cada fase y que el mínimo permisible es 1 para la fase 1, y 0 para las fases 2 y 3.
 \begin{center}
@@ -64,14 +64,56 @@ Consideremos el problema: $\min_{x\in[a_1,b_1]}f(x)$, donde $f$ es una función 
 \end{itemize}
 \end{ejercicio}
 \begin{solucion}
+\begin{itemize}
+\item[]
+\item Que el intervalo se reduce es claro, pues
+$$\mu([a_{k+1},b_{k+1}]) = \begin{cases}
+\mu([a_k,1/2(a_k+b_k)])\\
+\mu([1/2(a_k+b_k),b_k])
+\end{cases}
+= \begin{cases}
+1/2(a_k+b_k)-a_k\\
+b_k - 1/2(a_k+b_k)
+\end{cases} = \frac{b_k-a_k}{2}
+$$
+Como $b_k-a_k = \mu([a_k,b_k])$, por inducción llegamos a que
+$$
+\mu([a_{k+1},b_{k+1}]) = \frac{b_1-a_1}{2^k}
+$$
+\begin{lemma}
+Existe una única solución del problema.
 
+\begin{proof}
+Como el intervalo $[a_1,b_1]$ es compacto (sea degenerado o no), tenemos la existencia por el Teorema de Weierstrass. La unicidad la tendremos a partir de que tanto el dominio como la función son convexos. Sea $x$ el mínimo global que nos asegura Weierstrass y sea $y$ otra mínimo global. Entonces $f(x)=f(y)$. Por ser estrictamente convexa, $f(\lambda x+(1-\lambda)y) < \lambda f(x)+(1-\lambda)f(y)=f(y)$, como el dominio es convexo, $\lambda x+(1-\lambda)y \in [a_1,b_1]$, luego $y$ no puede ser mínimo.
+\end{proof}
+
+\end{lemma}
+
+Resta probar que en cada intervalo la única solución está dentro del intervalo. Veámoslo por inducción sobre la etapa fijado $n$. Para $k=1$ tenemos el propio intervalo, luego forzosamente ha de estar. Supongamos que la solución está en cada intervalo hasta la etapa $k\leq n-1$ y veamos que está en la etapa $k+1$. Distingamos casos
+\begin{itemize}
+\item Si $f'(x_k)>0$ entonces
+\end{itemize}
+\item Si el método no se ha detenido antes, sabemos por el apartado anterior que la solución óptima está en $[a_k,b_k]$ para todo $k\leq n$. En particular, también para $k=n$.
+\item Sea $\delta>0$, $M=b_1-a_1>0$ y $x$ la solución óptima, entonces tras hacer $k$ iteraciones 
+$$
+|x-x_k|\leq b_{k+1}-a_{k+1} = \frac{b_1-a_1}{2^k}=\frac{M}{2^k}\leq\delta\\
+$$
+$$\frac{M}{2^k}\leq\delta \Leftrightarrow 2^k \geq \frac{M}{\delta} \Leftrightarrow k \geq \log_2  \frac{M}{\delta}
+$$
+Podemos asegurarlo a partir de $k=\ceil{\log_2  \frac{M}{\delta}}$.
+\item Aplicamos las cinco iteraciones del método. $f'(x)=2x+2$.
+\begin{enumerate}
+\item $[a_1,b_1]=[-3,5]$, $x_1 = 1/2(5-3)= 1$, $f'(1)>0$. Hacemos $a_2=a_1$, $b_2=x_1$.
+\item $[a_2,b_2]=[-3,1]$, $x_1 = 1/2(1-3)= 4-1$, $f'(-1)=0$. STOP. El mínimo se alcanza para $x_2 =1$.
+\end{enumerate}
+\end{itemize}
 
 \end{solucion}
 
 \newpage
 
 \begin{ejercicio}{3}
-La compañía $C$ debe servir a diez clientes cuyas respectivas demandas son $d_j, j=1,\dots,10$. Se dispone de cuatro camiones con capacidad $L_k$ y coste de operación $c_k,k=1,\dots,4$. Un camión no puede atender en un mismo día a más de cinco clientes, y no puee servir en el mismo día a los pares de clientes $(1,7),(2,6)$ y $(2,9)$. Formule el problema de minimizar el coste diario de atender a todos los clientes con los cuatro camiones disponibles. Resuélvalo utilizando Xpress.
+La compañía $C$ debe servir a diez clientes cuyas respectivas demandas son $d_j, j=1,\dots,10$. Se dispone de cuatro camiones con capacidad $L_k$ y coste de operación $c_k,k=1,\dots,4$. Un camión no puede atender en un mismo día a más de cinco clientes, y no pues servir en el mismo día a los pares de clientes $(1,7),(2,6)$ y $(2,9)$. Formule el problema de minimizar el coste diario de atender a todos los clientes con los cuatro camiones disponibles. Resuélvalo utilizando Xpress.
 \end{ejercicio}
 \begin{solucion}
 
