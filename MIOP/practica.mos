@@ -1,0 +1,51 @@
+!Javier Aguilar Martín
+model practica
+uses "mmxprs"; 
+parameters
+K=4
+J=10
+end-parameters
+
+declarations
+x:array(1..K,1..J) of mpvar
+y:array(1..K,1..J) of mpvar
+d: array(1..J) of integer 
+L,c: array(1..K) of integer
+end-declarations
+
+d::[7,4,8,2,6,2,5,6,4,6]
+L::[30,20,10,10]
+c::[40,20,10,30]
+
+forall(j in 1..J) do
+sum(k in 1..K)x(k,j)=d(j)
+end-do
+
+forall(k in 1..K,j in 1..J) do
+x(k,j)<=L(k)
+end-do
+
+forall(k in 1..K) do
+sum(j in 1..J)y(k,j)<=5
+end-do
+
+forall(k in 1..K) do
+y(k,1)+y(k,7)<=1
+y(k,2)+y(k,6)<=1
+y(k,2)+y(k,9)<=1
+end-do
+
+forall(k in 1..K,j in 1..J) do
+y(k,j)<=x(k,j)
+x(k,j)<=L(k)*y(k,j)
+end-do
+
+forall(k in 1..K, j in 1..J) x(k,j) is_integer
+forall(k in 1..K, j in 1..J) y(k,j) is_binary
+
+minimize(sum(k in 1..K, j in 1..J)c(k)*y(k,j))
+
+writeln('objetivo:',getobjval)
+
+
+end-model

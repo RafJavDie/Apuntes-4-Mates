@@ -100,7 +100,7 @@ $$
 $$
 $$\frac{M}{2^k}\leq\delta \Leftrightarrow 2^k \geq \frac{M}{\delta} \Leftrightarrow k \geq \log_2  \frac{M}{\delta}
 $$
-Podemos asegurarlo a partir de $k=\ceil{\log_2  \frac{M}{\delta}}$.
+Podemos asegurarlo a partir de $k=\lceil\log_2  \frac{M}{\delta}\rceil$.
 \item Aplicamos las cinco iteraciones del método. $f'(x)=2x+2$.
 \begin{enumerate}
 \item $[a_1,b_1]=[-3,5]$, $x_1 = 1/2(5-3)= 1$, $f'(1)>0$. Hacemos $a_2=a_1$, $b_2=x_1$.
@@ -113,10 +113,62 @@ Podemos asegurarlo a partir de $k=\ceil{\log_2  \frac{M}{\delta}}$.
 \newpage
 
 \begin{ejercicio}{3}
-La compañía $C$ debe servir a diez clientes cuyas respectivas demandas son $d_j, j=1,\dots,10$. Se dispone de cuatro camiones con capacidad $L_k$ y coste de operación $c_k,k=1,\dots,4$. Un camión no puede atender en un mismo día a más de cinco clientes, y no pues servir en el mismo día a los pares de clientes $(1,7),(2,6)$ y $(2,9)$. Formule el problema de minimizar el coste diario de atender a todos los clientes con los cuatro camiones disponibles. Resuélvalo utilizando Xpress.
+La compañía $C$ debe servir a diez clientes cuyas respectivas demandas son $d_j, j=1,\dots,10$. Se dispone de cuatro camiones con capacidad $L_k$ y coste por día de operación $c_k,k=1,\dots,4$. Un camión no puede atender en un mismo día a más de cinco clientes, y no puede servir en el mismo día a los pares de clientes $(1,7),(2,6)$ y $(2,9)$. Formule el problema de minimizar el coste diario de atender a todos los clientes con los cuatro camiones disponibles.
+
+Resuelva el problema, indicando la solución óptima, para los siguientes datos:
+\begin{align*}
+&d=(7,4,8,2,6,2,5,6,4,6),\\
+&L=(30,20,10,10)\\
+&c=(40,20,10,30)
+\end{align*}
+Resuélvalo utilizando Xpress.
 \end{ejercicio}
 \begin{solucion}
+Definimos las variables de decisión $x_{kj}=$ cantidad de producto que el camión $k$ lleva al cliente $j$, para todo $k=1,\dots, 4$ y para todo $j=1,\dots, 10$. Vamos a definir también unas variables auxiliares que nos ayudarán a modelar el problema
+\[
+y_{kj}=\begin{cases}
+1 & \text{si }x_{kj}\geq 1\\
+0 & c.c.
+\end{cases}
+\]
 
+Por tanto, tenemos que resolver el problema $\min \sum_{k=1}^4\sum_{j=1}^{10}c_ky_{kj}$ sujeto a las restricciones siguientes:
+\begin{itemize}
+\item Hay que suplir la demanda: $\sum_{k=1}^4 x_{kj}=d_j\ \forall j=1,\dots, 10$.
+\item Límite de capacidad de los camiones: $x_{kj}\leq L_k\ \forall k=1,\dots, 4, \forall j=1,\dots, 10$. 
+\item Límite de 5 servicios diarios: $\sum_{j=1}^{10} y_{kj}\leq 5\ \forall k=1,\dots, 4$.
+\item Restricciones de parejas de clientes: $\forall k=1,\dots, 4$
+\begin{align*}
+&y_{k1}+y_{k7}\leq 1\\
+&y_{k2}+y_{k6}\leq 1\\
+&y_{k2}+y_{k9}\leq 1\\
+\end{align*}
+\item Restricciones adicionales para que $y_{kj}$ alcance los valores correctos: $\forall k=1,\dots, 4, \forall j=1,\dots, 10$
+\begin{align*}
+&y_{kj}\leq x_{kj}\\
+&x_{kj}\leq L_k y_{kj}
+\end{align*}
+\item Restricciones de dominio: $\forall k=1,\dots, 4, \forall j=1,\dots, 10$
+\begin{align*}
+&x_{kj}\in\Z^+
+&y_{kj}\in\{0,1\}
+\end{align*}
+\end{itemize}
+
+En definitiva, el problema es el siguiente
+\begin{align*}
+\min\ & \sum_{k=1}^4\sum_{j=1}^{10}c_kx_{kj}\\
+s.a.: & \sum_{k=1}^4 x_{kj}=d_j\\
+      & x_{kj}\leq L_k\\
+      &\sum_{j=1}^{10} y_{kj}\leq 5\\
+      &y_{k1}+y_{k7}\leq 1\\
+	  &y_{k2}+y_{k6}\leq 1\\
+	  &y_{k2}+y_{k9}\leq 1\\
+	  &y_{kj}\leq x_{kj}\\
+	  &x_{kj}\leq L_k y_{kj}\\
+	  &x_{kj}\in\Z^+\\
+      &y_{kj}\in\{0,1\}
+\end{align*}
 
 \end{solucion}
 
