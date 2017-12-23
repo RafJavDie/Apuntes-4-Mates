@@ -63,9 +63,37 @@ Consideremos el problema: $\min_{x\in[a_1,b_1]}f(x)$, donde $f$ es una función 
 \item Aplicar al problema $\min_{x\in[-3,5]}x^2+2x$ haciendo 5 iteraciones.
 \end{itemize}
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion} Supondremos que el intervalo no es degenerado. Vamos a probar algunos lemas que podemos necesitar
+\begin{lemma}
+En las condiciones del enunciado, el problema tiene solución única.
+\begin{proof}
+Como el intervalo $[a_1,b_1]$ es compacto (sea degenerado o no), tenemos la existencia por el Teorema de Weierstrass. La unicidad la tendremos a partir de que tanto el dominio como la función son convexos. Sea $x$ el mínimo global que nos asegura Weierstrass y sea $y$ otro mínimo, que habrá de ser global también. Entonces $f(x)=f(y)$. Por ser estrictamente convexa y $x\neq y$, 
+$$f(\lambda x+(1-\lambda)y) < \lambda f(x)+(1-\lambda)f(y)$$
+Por tanto, $f(\lambda x+(1-\lambda)y) < f(y)$. Como el dominio es convexo, se sigue que $\forall \lambda \in[0,1]$ $\lambda x+(1-\lambda)y \in [a_1,b_1]$, luego $y$ no puede ser mínimo global. 
+\end{proof}
+\end{lemma}
+\begin{lemma}
+En las condiciones del enunciado, se tiene $\forall x,y\in[a_1,b_1]$
+$$
+(x-y)f'(y)\leq f(x)-f(y)
+$$
+\begin{proof}
+Como $f$ es convexa $\forall t \in [0,1]$, $\forall x,y\in [a_1,b_1]$
+\begin{gather*}
+f(tx+(1-t)y)\leq tf(x)+(1-t)f(y)
+\end{gather*} 
+Si denotamos por $p(t)$ al miembro izquierdo y $s(t)$ al derecho entonces, entonces ambas son funciones diferenciables en $\R$ (por composición) tales que $p(0)=s(0)$, luego
+$$
+p'(0)=\lim_{h\downarrow 0}\frac{p(h)-p(0)}{h} = \lim_{h\downarrow 0}\frac{p(h)-s(0)}{h} \leq \lim_{h\downarrow 0}\frac{s(h)-s(0)}{h} = s'(0)
+$$
+Luego $\forall x,y\in [a_1,b_1]$
+$$
+(x-y)f'(y)\leq f(x)-f(y)
+$$
+\end{proof}
+\end{lemma}
+Nótese que por el resultado anterior si $f'(x)=0$ entonces el mínimo se alcanzará en $x$. Pasamos a resolver las cuestiones.
 \begin{itemize}
-Supondremos que el intervalo no es degenerado.
 \item Que el intervalo se reduce es claro, pues
 $$\mu([a_{k+1},b_{k+1}]) = \begin{cases}
 \mu([a_k,1/2(a_k+b_k)])\\
@@ -80,24 +108,13 @@ Como $b_k-a_k = \mu([a_k,b_k])$, por inducción llegamos a que
 $$
 \mu([a_{k+1},b_{k+1}]) = \frac{b_1-a_1}{2^k}
 $$
-\begin{lemma}
-Existe una única solución del problema.
-
-\begin{proof}
-Como el intervalo $[a_1,b_1]$ es compacto (sea degenerado o no), tenemos la existencia por el Teorema de Weierstrass. La unicidad la tendremos a partir de que tanto el dominio como la función son convexos. Sea $x$ el mínimo global que nos asegura Weierstrass y sea $y$ otro mínimo, que habrá de ser global también. Entonces $f(x)=f(y)$. Por ser estrictamente convexa, $f(\lambda x+(1-\lambda)y) < \lambda f(x)+(1-\lambda)f(y)$, por lo anterior, $f(\lambda x+(1-\lambda)y) < f(y)$. Como el dominio es convexo, $\forall \lambda \in[0,1]$ $\lambda x+(1-\lambda)y \in [a_1,b_1]$, luego $y$ no puede ser mínimo global. 
-\end{proof}
-
-\end{lemma}
-
-Resta probar que en cada intervalo la única solución está dentro del intervalo. Veámoslo por inducción sobre la etapa fijado $n$. Para $k=1$ tenemos el propio intervalo, luego forzosamente ha de estar. Supongamos que la solución está en cada intervalo, sin alcanzarse, hasta la iteración $k-1\leq n-1$ y veamos que está en la etapa $k$. Como $f$ es convexa y diferenciable $\forall t \in [0,1]$
-\begin{gather*}
-(x-y)f'(tx+(1-t)y) \leq f(x)-f(y) \qquad f'(ta_1+(1-t)b_1) \leq \frac{f(b_1)-f(a_1)}{b_1-a_1}
-\end{gather*} 
+Resta probar la única solución $x^*$ está dentro de cada intervalo. Supongamos que la solución está en $(a_k,b_k)$ y que $f(x_k)\neq0$.
 \begin{itemize}
-\item Supongamos que el mínimo se alcanza en $b_1$. Tenemos que ver que $f'(x_k)<0$. Si $f'(x_k)>0$ entonces
-$$0<f'(x_k) \leq \frac{f(b_1)-f(a_1)}{b_1-a_1} \qquad f(b_1) > f(a_1)$$
-Lo cual contradice el hecho de que $f(b_1)$ sea mínimo.
-\item 
+\item Si $f'(x_k)>0$, tenemos que ver que $x^*\in [a_k,x_k]$. Por reducción al absurdo, supongamos que $x^*\in [x_k,b_k]$. Como $x^*-x_k>0$ entonces $(x^*-x_k)f'(x_k)>0$. Tomando $x=x^*$, $y=x_k$ tenemos
+\begin{gather*}0<(x^*-x_k)f'(x_k)\leq {f(x^*)-f(x_k)} \qquad f(x^*) > f(x_k)
+\end{gather*}
+Lo cuál es una contradicción con el hecho de que $x^*$ sea mínimo.
+\item Si $f'(x_k)<0$, se sigue análogo al anterior teniendo en cuenta que si $x^*\in[a_k,x_k]$ entonces $x^*-x_k<0$, luego $(x^*-x_k)f'(x_k)>0$. 
 \end{itemize}
 \item Si el método no se ha detenido antes, sabemos por el apartado anterior que la solución óptima está en $[a_k,b_k]$ para todo $k\leq n$. En particular, también para $k=n$.
 \item Sea $\delta>0$, $M=b_1-a_1>0$ y $x$ la solución óptima, entonces tras hacer $k$ iteraciones  
