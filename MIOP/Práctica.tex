@@ -13,7 +13,7 @@
 \begin{ejercicio}{1}
 Una compañía desea introducir un nuevo producto al mercado y planea su estrategia de comercialización. Se ha tomado la decisión de introducir el producto en tres fases. La fase 1 incluye ofertas especiales para atraer a los compradores por primera vez. La fase 2 es una campaña para persuadir a estos compradores de primera vez a que continúen comprando el producto a precio normal. La fase 3 incluye una campaña para evitar que los clientes regulares cambien a una competencia que se sabe que se introducirá en el mercado.
 
-Se cuenta con un presupuesto de 4 millones de euros para la campaña. El problema consiste en determinar cómo asignar este dinero de la manera más eficaza las tres fases. Sea $f_1$ la proporción de mercado inicial que se logra en la fase 1, $f_2$ la fracción de este mercado que se retiene en la fase 2, y $f_3$ la fracción del porcentaje de mercado que se retiene en la fase 3. Con los datos de la siguiente tabla, aplique programación dinámica para determinar la asignación de 4 millones para maximizar el porcentaje final del mercado para el nuevo producto, es decir, maximizar $f_1f_2f_3$. 
+Se cuenta con un presupuesto de 4 millones de euros para la campaña. El problema consiste en determinar cómo asignar este dinero de la manera más eficaza las tres fases. Sea $f_1$ la fracción de mercado inicial que se logra en la fase 1, $f_2$ la fracción de este mercado que se retiene en la fase 2, y $f_3$ la fracción del porcentaje de mercado que se retiene en la fase 3. Con los datos de la siguiente tabla, aplique programación dinámica para determinar la asignación de 4 millones para maximizar el porcentaje final del mercado para el nuevo producto, es decir, maximizar $f_1f_2f_3$. 
 \begin{itemize}
 \item[\textbf{a)}] Suponga que el dinero se debe gastar en cantidades enteras múltiplos de 1 millón en cada fase y que el mínimo permisible es 1 para la fase 1, y 0 para las fases 2 y 3.
 \begin{center}
@@ -33,7 +33,7 @@ Se cuenta con un presupuesto de 4 millones de euros para la campaña. El problem
 \item[\textbf{b)}] Suponga que se pueden gastar cualquier cantidad de presupuesto en cada fase, y que el efecto estimado al gastar una cantidad $x_i$ (en unidades de millones de dólares) en la fase $i$ ($i=1,2,3$) es:
 
 \begin{tabular}{l}
-$f_1=0.1x_1-0.01x2$\\
+$f_1=0.1x_1-0.01x_2$\\
 $f_2=0.4+0.1x_2$\\
 $f_3=0.6+0.07x_3$
 \end{tabular}
@@ -45,16 +45,16 @@ $f_3=0.6+0.07x_3$
 \
 \begin{itemize}
 \item[\textbf{a)}] 
-Resolvemos el problema de programación dinámica. Distinguimos $3$ etapas con estados $(m,t)$ donde $m$ es la cantidad de dinero disponible y $t$ la etapa en la que nos encontramos. Nuestra función $f(m,t)$ nos devuelve el máximo de $\prod_{i=t}^3 f_i$ sabiendo que contamos con $m$ millones de euros. El objetivo será calcular $f(1,4)$. Si $g(x,t)$ nos da el efecto sobre el porcentaje de mercado en la fase $t$ sabiendo que invertimos $x$ millones de euros, entonces
+Resolvemos el problema de programación dinámica. Distinguimos $3$ etapas con estados $(m,t)$ donde $m$ es la cantidad de dinero disponible y $t$ la etapa en la que nos encontramos. Nuestra función $f(m,t)$ nos devuelve el máximo de $\prod_{i=t}^3 f_i$ sabiendo que contamos con $m$ millones de euros en la etapa $t$. El objetivo será calcular $f(4,1)$. Si $g(x,t)$ nos da el efecto sobre el porcentaje de mercado en la fase $t$ sabiendo que invertimos $x$ millones de euros
 $$
-f(m,3) = g(m,3) \qquad f(m,t) = \max_{x\in\N,\;x\geq (2-t)} g(x,t)f(m-x,t+1) \quad t=1,2
+f(m,3) = g(m,3) \qquad f(m,t) = \max_{x_t\in\N,\;x_t\geq (2-t)} g(x_t,t)f(m-x_t,t+1) \quad t=1,2
 $$
 
 \underline{Etapa 3:} Como hay que gastar $1$ en la primera etapa, a lo sumo llegamos con $3$.
 \begin{center}
 \begin{tabular}{|c| c| c| c |}
 \hline
-$m$ & $x$ & $f(3,m)$ \\
+$m$ & $x_3$ & $f(3,m)$ \\
 \hline
 $0$ & $0$ & 0.3   \\
 \hline         
@@ -71,7 +71,7 @@ $3$ & $3$  & 0.7   \\
 \begin{center}
 \begin{tabular}{|c| c| c| c | c| c|}
 \hline
-$m$ & $x$ & $g(x,2)$ & $f(m-x,3)$ &  $f(m,2)$ & $x^* $ \\
+$m$ & $x_2$ & $g(x,2)$ & $f(m-x,3)$ &  $f(m,2)$ & $x^* $ \\
 \hline
 $0$ & $0$ & $0.2$ & $0.3$  & $0.06$& $\boxed{0}$\\
 \hline
@@ -83,7 +83,7 @@ $1$ & $0$ & $0.2$ & $0.5$  & $0.1$& \\
 \end{tabular} \qquad
 \begin{tabular}{|c| c| c| c | c| c|}
 \hline
-$m$ & $x$ & $g(x,2)$ & $f(m-x,3)$ &  $f(m,2)$ & $x^* $ \\
+$m$ & $x_2$ & $g(x,2)$ & $f(m-x,3)$ &  $f(m,2)$ & $x^* $ \\
 \hline
 $2$ & $0$ & $0.2$ & $0.6$  & $0.12$& \\
 \hline
@@ -94,7 +94,7 @@ $2$ & $0$ & $0.2$ & $0.6$  & $0.12$& \\
 \hline
 $3$ & $0$ & $0.2$  & $0.7$  & $0.14$ & \\
 \hline            
- & $1$    & $0.4$  &$0.6$ & $0.22$ &\\
+ & $1$    & $0.4$  &$0.6$ & $0.24ue$ &\\
 \hline            
  & $2$    & $0.5$  &$0.5$ & $0.25$ &$\boxed{2}$\\
 \hline
@@ -108,20 +108,36 @@ $3$ & $0$ & $0.2$  & $0.7$  & $0.14$ & \\
 
 \begin{tabular}{|c| c| c| c | c| c|}
 \hline
-$m$ & $x$ & $g(x,1)$ & $f(m-x,2)$ &  $f(m,1)$ & $x^* $ \\
+$m$ & $x_1$ & $g(x,1)$ & $f(m-x,2)$ &  $f(m,1)$ & $x^* $ \\
 \hline
 $4$ & $1$ & $0.2$  & $0.25$  & $0.05$ & \\
 \hline            
- & $2$    & $0.3$  &$0.2$ & $0.06$ &\\
+ & $2$    & $0.3$  &$0.2$ & $0.06$ &$\boxed{2}$\\
 \hline            
- & $3$    & $0.4$  &$0.12$ & $0.072$ &$\boxed{3}$\\
+ & $3$    & $0.4$  &$0.12$ & $0.048$ &\\
 \hline
  & $4$ & $0.5$     & $0.06$ & $0.03$&\\
  \hline
 \end{tabular}
 \end{center}
-La solución óptima se alcanza invirtiendo $3$ millones en la Etapa 1, $1$ millón en la Etapa 2 y $0$ millones en la Etapa 3.
-\item[\textbf{b)}]
+La solución óptima se alcanza invirtiendo $2$ millones en la Etapa 1, $1$ millón en la Etapa 2 y $1$ millón en la Etapa 3.
+\item[\textbf{b)}] Resolvemos el problema de programación dinámica. Distinguimos $3$ etapas con estados $(m,t)$ donde $m$ es la cantidad de dinero disponible y $t$ la etapa en la que nos encontramos. Nuestra función $f(m,t)$ nos devuelve el máximo de $\prod_{i=t}^3 f_i$ sabiendo que contamos con $m$ millones de euros en la etapa $t$. El objetivo será calcular $f(4,1)$. Si $g(x,t)$ nos da el efecto sobre el porcentaje de mercado en la fase $t$ sabiendo que invertimos $x$ millones de euros	
+$$
+f(m,3) = g(m,3) \qquad f(m,t)=\max_{0\leq x_t\leq m}g(x_t,t)f(m-x_t,t+1) \quad t=1,2
+$$
+Vamos a intentar dar una expresión clara del funcional en cada etapa
+\begin{align*}
+f(m,3)  &= \max_{0\leq x_3\leq m}0.06+0.07x_3 = 0.06+0.07m \\
+f(m,2)  &= \max_{0\leq x_2\leq m}g(x_2,2)f(m-x_2,3)\\
+		&= \max_{0\leq x_2\leq m}(0.4+0.1x_2)(0.06+0.07(m-x_2))\\
+		&= \max_{0\leq x_2\leq m} 0.007 m x + 0.028 m - 0.007 x^2 - 0.022 x + 0.024
+\end{align*}
+
+\begin{align*}
+f(m,1)  &=  \max_{0\leq x_1\leq m}g(x_1,1)f(m-x_1,2)\\
+		&= \max_{0\leq x_1\leq m}(0.1x_1-0.01x_1^2)f(m-x_1,2)
+\end{align*}
+
 \end{itemize}
 \end{solucion}
 
