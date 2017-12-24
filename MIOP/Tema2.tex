@@ -1,4 +1,4 @@
-\documentclass[MIOP.tex]{subfiles}
+ \documentclass[MIOP.tex]{subfiles}
 \usepackage{mathtools}
 %\usepackage{sagetex}
 \begin{document}
@@ -39,7 +39,7 @@ Como $x^*$ es un mínimo local, si $α > 0$ es suficiente pequeño: $0 ≤ f(x^*
 \[ 0 ≤ \frac{f(x^*+αd)-f(x^*)}{α} \Rightarrow 0 ≤ \lim_{α \to 0} \frac{f(x^*+αd)-f(x^*)}{α} = g'(0) \]
 Entonces $0 ≤ g'(0) = d'\nabla f (x^*+αd) |_{α = 0} = d'\nabla f(x^*)$. 
 Como $||e_i|| = ||-e_i|| = 1$, $\nabla f(x^*)'e_i ≥ 0$ y $\nabla f(x^*)'(-e_i) ≥ 0$, luego $\nabla f(x^*) = 0$. Ahora, si $f \in \mathcal{C}^2$. Entonces:
-\begin{align*} 0 ≤ f(x^* + α d)-f(x^*) & = \nabla f(x^*)(αd) + \frac{1}{2} (αd)' \nabla^2 f(x^*)(αd) + O(||αd||^2) \\
+\begin{align*} 0 ≤ f(x^* + α d)-f(x^*) & = (αd)'\nabla f(x^*) + \frac{1}{2} (αd)' \nabla^2 f(x^*)(αd) + O(||αd||^2) \\
  & = \frac{α^2}{2}d'\nabla^2f(x^*)d + O(α^2)
 \end{align*}
 Dividiendo por $α^2$ y pasando al límite:
@@ -60,7 +60,7 @@ f(x)\geq f(x^*)+\frac{\gamma}{2}||x-x^*||^2 \qquad \forall x\in S,\; ||x-x^*||<\
 \begin{dem}
 Por las propiedades de las matrices definidas positivas, sabemos que $\exists \lambda>0$ -el menor autovalor de la matriz- tal que $\forall d\in \R^n$, $d'\nabla^2 f(x^*) d\geq \lambda ||d||^2$. Sea $d\in \R^n$ tal que $x^*+d \in S$, entonces:
 \begin{gather*}
-f(x^*+d)=f(x^*)+\nabla f(x^*)'d +\frac{1}{2}d'\nabla^2 f(x^*)d+O(||d||^2) \\
+f(x^*+d)=f(x^*)+d'\nabla f(x^*) +\frac{1}{2}d'\nabla^2 f(x^*)d+O(||d||^2) \\
 f(x^*+d)-f(x^*) =  \frac{1}{2}d'\nabla^2 f(x^*)d+O(||d||^2) \geq  \frac{\lambda}{2}||d||^2 + O(||d||^2) = \frac{||d^2||}{2}\left(\lambda+\frac{O(||d||^2)}{||d||^2}\right)
 \end{gather*}
 Sabemos que $\forall \varepsilon>0$ ($\varepsilon < \lambda$) $\exists \delta >0$ tal que si $||d||<\delta$ entonces $\left|\dfrac{O(||d||^2)}{||d||^2}\right|<\varepsilon$, por tanto, si $||d||<\delta$ entonces
@@ -105,12 +105,11 @@ Con esto conseguimos que $f(x^{k+1})\leq f(x^k)$ (podemos conseguirlo con cualqu
 \item $d^k = -D^k \nabla f(x^k)$ con $D^k$ definida positiva. Esto permite hacer una cantidad infinita de iteraciones sin que el método se atasque.
 \begin{itemize}
 \item Tomar, si es definida positiva, $D^k = (\nabla^2 f(x^k))^{-1}$. En este caso obtenemos el método de Newton.
-\item Para $D^k=I$ tenemos el método de máximo ascenso.
 \end{itemize}
 \end{itemize}
 \item La longitud de paso $\alpha^k$.
 \begin{itemize}
-\item Elementos de una serie divergente $\sum \alpha_k$ tal que $\alpha_k \rightarrow 0$. A este método se lo conoce como \textbf{método de la serie divergente} Tiene sentido pues:
+\item \textbf{Método de la serie divergente}: tomamos elementos de una serie divergente $\sum \alpha_k$ tal que $\alpha_k \rightarrow 0$. Tiene sentido pues:
 \begin{gather*}
 x^{m+1} = x^m - \alpha^m \nabla f(x^{m})\\
  x^{m+2} = x^{m+1} - \alpha^{m+1} \nabla f(x^{m+1}) =  x^m - \alpha^m \nabla f(x^{m}) -\alpha^{m+1} \nabla f(x^{m+1})
@@ -122,7 +121,7 @@ x^* \simeq x^* - \sum^{n-1}_{k=m} \alpha^k \nabla f(x^*) \Rightarrow 0 \simeq \n
 Como la serie diverge, concluimos que $\nabla f(x^*)=0$.
 \item \textbf{Método o regla de minimización}: tomar una dirección $d^k$ y $\alpha^k$ tal que $\alpha^k$ minimiza $f(x^k+\alpha d^k)$ para $\alpha>0$ (función de una variable real).
 \item \textbf{Regla de Armijo}: elegimos $s,\beta,\sigma\in (0,1)$. Entonces definimos $\alpha^k=s\beta^{m_k}$, siendo $m_k$ el menor entero que verifica
-$$f(x^k)-f(x^{k+1})=-\sigma s\beta^{m_k}\nabla f(x^k)d^k.$$
+$$f(x^k)-f(x^{k+1})\geq -\sigma s\beta^{m_k}\nabla f(x^k)d^k.$$
 \end{itemize}
 \end{enumerate}
 
@@ -163,23 +162,21 @@ Por elección de los $\alpha^k$ según Armijo,
 f(x^k)-f(x^k+s\beta^{m_k}d^k)\geq -\sigma\alpha^k\nabla f(x^k)'d^k.
 \end{equation}
  Como $m_k$ es el menor entero para el que se verifica esa desigualdad, entonces 
-$$f(x^k)-f(x^k+\underbrace{s\beta^{m_k-1}}_{\frac{\alpha^k}{\beta}}d^k)<\sigma\frac{\alpha^k}{\beta}\nabla f(x^k)'d^k.$$ 
+$$f(x^k)-f(x^k+{s\beta^{m_k-1}}d^k)=f(x^k)-f(x^k+\frac{\alpha^k}{\beta}d^k)<-\sigma\frac{\alpha^k}{\beta}\nabla f(x^k)'d^k.$$ 
 Denotamos $\rho^k=\frac{d^k}{||d^k||},\overline{\alpha}^k=\frac{\alpha^k||d||^k}{\beta}$, de modo que la desigualdad se convierte en 
 $$ f(x^k)-f(x^k+\overline{\alpha}^k\rho^k)< -\sigma\overline{\alpha}^k\nabla f(x^k)'\rho^k.$$
-Utilizando ahora el teorema del valor medio, es decir, $f(y)=f(x)+\nabla f(x)(y-x)$ para $z\in[x,y]$, deducimos
-$$-\nabla f(x^k+\tilde{\alpha}^k\rho^k)\overline{\alpha}^k\rho^k <-\sigma\overline{\alpha}^k\nabla f(x^k)'\rho^k\quad \tilde{\alpha}^k\in[0,\overline{\alpha}^k]$$
+Utilizando ahora el teorema del valor medio, es decir, $f(y)=f(x)+\nabla f(x)'(y-x)$ para $z\in[x,y]$, deducimos
+$$-\nabla f(x^k+\tilde{\alpha}^k\rho^k)'(\overline{\alpha}^k\rho^k) <-\sigma\overline{\alpha}^k\nabla f(x^k)'\rho^k\quad \tilde{\alpha}^k\in[0,\overline{\alpha}^k]$$
 Podemos simplificar eliminando los $\overline{\alpha}^k$
 \begin{equation}\label{simply}
-\nabla f(x^k+\tilde{\alpha}^k\rho^k)\rho^k <-\sigma\nabla f(x^k)'\rho^k\quad \tilde{\alpha}^k\in[0,\overline{\alpha}^k]
+-\nabla f(x^k+\tilde{\alpha}^k\rho^k)'\rho^k <-\sigma\nabla f(x^k)'\rho^k\quad \tilde{\alpha}^k\in[0,\overline{\alpha}^k]
 \end{equation}
 Observemos que $\alpha^k\to 0$. Según \ref{armijo}
-$f(x^k)-f(\underbrace{x^k+\alpha^kd^k}_{x^{k+1}})\geq -\sigma\alpha^k\nabla f(x^k)'d^k\ \forall k$. Como la diferencia de la izquierda tiende a 0 cuando $k$ tiende a infinito y $-\sigma\nabla f(x^k)'d^k>0$, necesariamene $\alpha^k$ tiende a 0. Como $||d^k||$ está acotada, tenemos que también $\overline{\alpha}^k\to 0$. La sucesión $\{\rho^k\}$ está contenida en un compacto (la bola unidad), así que tiene un a subsucesión convergente que denominaremos de la misma forma, así que denotamos $\rho^k\to\overline{\rho}$. 
+$f(x^k)-f(\underbrace{x^k+\alpha^kd^k}_{x^{k+1}})\geq -\sigma\alpha^k\nabla f(x^k)'d^k\ \forall k$. Como la diferencia de la izquierda tiende a 0 cuando $k$ tiende a infinito y $-\sigma\nabla f(x^k)'d^k>0$, necesariamene $\alpha^k$ tiende a 0. Como $||d^k||$ está acotada, tenemos que también $\overline{\alpha}^k\to 0$, por lo que $\tilde{\alpha}^k\to 0$. La sucesión $\{\rho^k\}$ está contenida en un compacto (la bola unidad), así que tiene un a subsucesión convergente que denominaremos de la misma forma, así que denotamos $\rho^k\to\overline{\rho}$. 
 
 Volvemos a \ref{simply} y tomamos límite. Entonces
-$$-\nabla f(\overline{x}+0\overline{\rho})'\overline{\rho}<\sigma\nabla f(\overline{x})'\overline{\rho}$$
-que podemos reescribirlo como
-$$(1-\sigma)\nabla f(\overline{x})'\overline{rho}>0$$
-por lo que $\nabla f(\overline{x})'\overline{\rho}>0$. Sin embargo, esto contradice punto \ref{gradiente} de la definición anterior. 
+$$-\nabla f(\overline{x}+0\overline{\rho})'\overline{\rho}\leq-\sigma\nabla f(\overline{x})'\overline{\rho} \Longleftrightarrow \nabla f(\overline{x})'\overline{\rho}\geq\sigma\nabla f(\overline{x})'\overline{\rho} \Longleftrightarrow (1-\sigma)\nabla f(\overline{x})'\overline{\rho}\geq 0$$
+Por lo que $\nabla f(\overline{x})'\overline{\rho}>0$. Sin embargo, esto contradice punto \ref{gradiente} de la definición anterior. 
 $\QED$
 \end{dem}
 
@@ -248,7 +245,7 @@ Se tomará $\alpha^k =1$ $\forall k$ (si $\nabla g(x^k)$ es definida positiva), 
 \begin{teorema}
 Sea $g:\R^n\to\R^n$ y $x^*$ tal que $g(x^*)=0$. Sea $S_\delta=\{x\in\R^n:||x-x^*||\leq\delta\}$. Supongamos que $g\in\mathcal{C}^1(S_\delta)$ y $\nabla g(x^*)$ es invertible. Entonces
 \begin{itemize}
-\item[a)] Existe $\delta>0$ tal que si $x^0\in\S_\delta$, la sucesión $x^k$ está bien definida y converge a $x^*$. Además, la convergencia es súper lineal, es decir,
+\item[a)] Existe $\delta>0$ tal que si $x^0\in S_\delta$, la sucesión $x^k$ está bien definida y converge a $x^*$. Además, la convergencia es súper lineal, es decir,
 $$\lim_{k\to\infty}\frac{||x^{k+1}-x^*||}{||x^k-x^*||}=0.$$
 \item[b)] Si para algún $L>0,M>0$, $x,y\in S_\delta\Rightarrow ||\nabla g(x)-\nabla g(y)||\leq L||x-y||$ (si $\nabla g$ es lipschitziana), entonces si $x^0\in S_\delta$ se verifica $||x^{k+1}-x^*||\leq LM/2||x^k-x^*||^2\forall k$ (tiene convergencia cuadrática).
 \end{itemize}
