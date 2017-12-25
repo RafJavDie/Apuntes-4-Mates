@@ -70,13 +70,20 @@ z_i \in \R \quad \forall i
 Supongamos que $x^{k+1}$ y $x^k$ son dos puntos consecutivos generados por el método del descenso máximo con la regla de minimización. Probar que $\nabla f(x^{k})'\nabla f(x^{k+1})=0$.
 \end{ejercicio}
 \begin{solucion}
-$x^{k+1}=x^k-\alpha^k\nabla f(x^k)$ donde $\alpha^k$ tal que $g'(\alpha^k)=0$, pero $$g'(\alpha^k)=\nabla f(x^k-\alpha^k\nabla f(x^k))(-\nabla f(x^k))=\nabla f(x^{k})'\nabla f(x^{k+1})=0.$$
+$x^{k+1}=x^k-\alpha^k\nabla f(x^k)$ donde $\alpha^k$ tal que $g'(\alpha^k)=0$, pero $$g'(\alpha^k)=\nabla f(x^k-\alpha^k\nabla f(x^k))'(-\nabla f(x^k))=\nabla f(x^{k})'\nabla f(x^{k+1})=0.$$
 \end{solucion}
 
 \newpage
 
 \begin{ejercicio}{3}
 Sea $f:\R^n\to\R$. Considerar el problema $\min_{\lambda\in\R}f(x+\lambda d)$. Probar que una condición necesaria para que $\overline{\lambda}$ sea un mínimo es que $\nabla f(y)'d=0$, donde $y=x+\overline{\lambda}d$. ¿Cuándo es esa condición suficiente?
+\begin{solucion}
+El problema consiste en minimizar la función $g\func{\R}{\R}$ dada por $g(\lambda) = f(x+\lambda d)$, para ciertos $x,d\in\R^n$ fijos. Sabemos que una condición necesaria de mínimo es que el gradiente se anula, es decir, que
+$$
+g'(\lambda) = f(x+\lambda d)' = \nabla f(x+\lambda d)'d = 0
+$$
+La condición es sufciente cuando la función $g$ es estrictamente convexa.
+\end{solucion}
 \end{ejercicio}
 
 \newpage
