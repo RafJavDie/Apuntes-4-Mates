@@ -185,12 +185,12 @@ Si en lugar de la regla de Armijo se usa la de minimización, el resultado sigue
 \end{nota}
 
 \begin{teorema}[de captura]
-Sea $f\in\mathcal{C}^1$ y $\{x^k\}$ tal que $x^{k+1}=x^k+\alpha^k d^k$ verificando que $f(x^k)>f(x^{k+1})\ \forall k$ y tal que todo punto de acumulación es estacionario. Supongamos que existen $s>0,c>0$ de forma que
-$$\alpha^k\leq s, ||d^k||\leq c||\nabla f(x^k)||\ \forall k.$$
-Sea $x^*$ mínimo local de $f$ que es el único punto estacionario en un entorno de $x^*$. Entonces existe $S\ni x^*$ tal que si $x^{\overline{k}}\in S$ para algún $\overline{k}$, $x^k\in S\ \forall k>\overline{k}$ y $x^k\to x^*$. Además, dado $\varepsilon>0$, $S$ se puede elegir para que $||x-x^*||<\varepsilon \ \forall x\in S$.
+Sea $f\in\mathcal{C}^1(S)$ y $\{x^k\}$ tal que $x^{k+1}=x^k+\alpha^k d^k$ verificando que $f(x^k)>f(x^{k+1})\ \forall k$ y tal que todo punto de acumulación es estacionario. Supongamos que $\exists s,c>0$ de forma que $\alpha^k\leq s$ y $||d^k||\leq c||\nabla f(x^k)||$ $\forall k.$
+
+Sea $x^*$ mínimo local de $f$ que es el único punto estacionario en un entorno de $x^*$. Entonces existe $x^*\in S$ tal que si $x^{\overline{k}}\in S$ para algún $\overline{k}$, $x^k\in S\ \forall k>\overline{k}$ y $x^k\to x^*$. Además, dado $\varepsilon>0$, $S$ se puede elegir para que $||x-x^*||<\varepsilon \ \forall x\in S$.
 \end{teorema}
 \begin{dem}
-Elegimos $\rho>0$ tal que $\forall x\neq x^*\mid ||x-x^*||<\rho$, entonces $f(x)>f(x^*)$. Definismo $\phi
+Elegimos $\rho>0$ tal que $\forall x\neq x^*\mid ||x-x^*||<\rho$, entonces $f(x)>f(x^*)$. Definimos $\phi
 (t)=\min_{0\leq t\leq ||x-x^*||} (f(x)-f(x^*))$. $\phi$ es no decreciente, porque cuando $t$ disminuye, la corona circular se hace más gruesa hacia dentro, por lo que hay más puntos donde encontrar el mínimo, y si $t$ aumenta, la corona se hace más fina por lo que hay menos puntos donde encontrar el mínimo.
 
 Utilizamos la continuidad de de la norma y $\nabla f$ para decir que $\forall \varepsilon>0\ \exists r>0\mid ||x-x^*||<r\Rightarrow |g(x)-g(x^*)|<\varepsilon$, donde $g(x)=||x-x^*||+sc||\nabla f(x)||$. Se tiene que $g(x^*)=0$. Luego
@@ -216,18 +216,18 @@ $$f(x^{k+1})\leq \left(\frac{M-m}{M+m}\right)^2f(x^k).$$
 \begin{dem}
 Por la definición de $f$, $\nabla f(x)=Qx$. En la iteración $k$, $f(x^k)=\frac{1}{2}x^{k'}Qx^k$, luego $\nabla f(x^k)=Qx^k:=g^k$. Podemos escribir $f(x^k)=\frac{1}{2}x^{k'}QQ^{-1}Qx^k=\frac{1}{2}g^{k'}Q^{-1}g^k$. 
 
-$\alpha^k$ mediante minimización, $g(\alpha)=f(x^k-\alpha\nabla f(x^k)), \min_{\alpha>0}g(\alpha)$. 
-\begin{gather*}
-g'(\alpha)=\frac{dg(\alpha)}{d\alpha}=-\nabla f(x^k)'\nabla f(x^k-\nabla f(x^k))=0\\
-=-g^{k'}Q[x^k-\alpha g^k]=g^{k'}Qx^k-\alpha g^{k'}Qg^k=0\\
-\alpha=\frac{g^{k'}g^k}{g^{k'}Qg^k}\Rightarrow \alpha^k=\frac{g^{k'}g^k}{g^{k'}Qg^k}
-\end{gather*}
-\begin{gather*}
-f(x^{k+1})=\frac{1}{2}[x^k-\frac{g^{k'}g^k}{g^{k'}Qg^k}g^k]'Q[x^k-\frac{g^{k'}g^k}{g^{k'}Qg^k}g^k]=\frac{1}{2}[x^{k'}Qx^k-\frac{(g^{k'}g^k)^2}{g^{k'}Qg^k}]=\\
-\frac{1}{2}x^{k'}Qx^k-\frac{1}{2}\frac{(g^{k'}g^k)^2}{g^{k'}Qg^k}=\frac{1}{2}g^{k'}Q^{-1}g^k-\frac{1}{2}\frac{(g^{k'}g^k)^2}{g^{k'}Qg^k}=\\
-\frac{1}{2}g^{k'}Q^{-1}g^k[1-\frac{1}{2}\frac{(g^{k'}g^k)^2}{(g^{k'}Qg^k)(g^{k'}Q^{-1}g^k)}\leq\frac{1}{2}g^{k'}Q^{-1}g^k[1-\frac{4Mm}{(M+m)^2}]=\\
-\frac{1}{2}g^{k'}Q^{-1}g^k\left(\frac{M-m}{M+m}\right)^2=f(x^k)\left(\frac{M-m}{M+m}\right)^2
-\end{gather*}
+Calculamos $\alpha^k$ mediante minimización, $g(\alpha)=f(x^k-\alpha\nabla f(x^k))$, buscamos $\min_{\alpha>0}g(\alpha)$. 
+\begin{align*}
+g'(\alpha)&=\frac{dg(\alpha)}{d\alpha}=-\nabla f(x^k)'\nabla f(x^k-\nabla f(x^k))\\
+&=-g^{k'}Q[x^k-\alpha g^k]=g^{k'}Qx^k-\alpha g^{k'}Qg^k=0\\
+\alpha&=\frac{g^{k'}g^k}{g^{k'}Qg^k}\Rightarrow \alpha^k=\frac{g^{k'}g^k}{g^{k'}Qg^k}
+\\ \\
+f(x^{k+1})&=\frac{1}{2}\left[x^k-\frac{g^{k'}g^k}{g^{k'}Qg^k}g^k\right]'Q\left[x^k-\frac{g^{k'}g^k}{g^{k'}Qg^k}g^k\right]=\frac{1}{2}\left[x^{k'}Qx^k-\frac{(g^{k'}g^k)^2}{g^{k'}Qg^k}\right]\\
+&=\frac{1}{2}x^{k'}Qx^k-\frac{1}{2}\frac{(g^{k'}g^k)^2}{g^{k'}Qg^k}=\frac{1}{2}g^{k'}Q^{-1}g^k-\frac{1}{2}\frac{(g^{k'}g^k)^2}{g^{k'}Qg^k}\\ 
+&=\frac{1}{2}g^{k'}Q^{-1}g^k\left[1-\frac{1}{2}\frac{(g^{k'}g^k)^2}{(g^{k'}Qg^k)(g^{k'}Q^{-1}g^k)}\right]\\
+&\leq\frac{1}{2}g^{k'}Q^{-1}g^k\left[1-\frac{4Mm}{(M+m)^2}\right]\\
+&=\frac{1}{2}g^{k'}Q^{-1}g^k\left(\frac{M-m}{M+m}\right)^2=f(x^k)\left(\frac{M-m}{M+m}\right)^2
+\end{align*}
 $\QED$
 \end{dem}
 
@@ -254,14 +254,14 @@ $$\lim_{k\to\infty}\frac{||x^{k+1}-x^*||}{||x^k-x^*||}=0.$$
 $\nabla g(x^*)$ es invertible si y solo si $\det(\nabla g(x^*))\neq 0\Rightarrow\det(\nabla g(x))\neq 0$ en $S_\delta$ para algún $\delta>0$. Por tanto $\exists M>0$ tal que $||\nabla g(x)^{-1}||<M\ \forall x\in S_\delta$. 
 \begin{itemize}
 \item[a)] Supongamos que $x^k\in S_\delta$ y consideremos $x^{k+1}$. Entonces
-$$||x^{k+1}-x^k||=||x^k-(\nabla g(x^k)')^{-1}g(x^k)-x^*||=||(\nabla g(x^k)')^{-1}[-g(x^k)+\nabla g(x^k)'(x^k-x^*)||.$$
+$$||x^{k+1}-x^k||=||x^k-(\nabla g(x^k)')^{-1}g(x^k)-x^*||=||(\nabla g(x^k)')^{-1}[-g(x^k)+\nabla g(x^k)'(x^k-x^*)]||.$$
 Usamos la fórmula del valor intermedio del cálculo integral
 $$g(x^k)=g(x^*)+\int_0^1\nabla g(x^*+t(x^k-x^*))'dt\cdot(x^k-x^*)$$
 que aplicada a la ecuación anterior, como $g(x^*)=0$  da lugar a
-\begin{gather*}
-||(\nabla g(x^k)')^{-1}[-g(x^*)-\int_0^1\nabla g(x^*+t(x^k-x^*))'dt\cdot(x^k-x^*)+\nabla g(x^k)'(x^k-x^*)]||=\\
-||(\nabla g(x^k)')^{-1}\int_0^1(\nabla g(x^*)'-\nabla g(x^*+t(x^k-x^*))')dt\cdot(x^k-x^*)]||\leq\\
-\end{gather*}
+\begin{align*}
+||x^{k+1}-x^k||&=||(\nabla g(x^k)')^{-1}\left[-\int_0^1\nabla g(x^*+t(x^k-x^*))'dt\cdot(x^k-x^*)+\nabla g(x^k)'(x^k-x^*)\right]||\\
+&=||(\nabla g(x^k)')^{-1}\int_0^1(\nabla g(x^*)'-\nabla g(x^*+t(x^k-x^*))')dt\cdot(x^k-x^*)]||
+\end{align*}
 Aplicando desigualdades de produtos e integrales matriciales
 \begin{equation}\label{estrella}
 \leq||(\nabla g(x^k)')^{-1}||\int_0^1||(\nabla g(x^*)'-\nabla g(x^*+t(x^k-x^*))')||dt||x^k-x^*||
@@ -278,7 +278,6 @@ lo que prueba que $ ||x^{k+1}-x^*||=ML/2||x^k-x^*||^2$. $\QED$
 En Newton, $d^k=-(\nabla^2 f(x^k))^{-1})\nabla f(x^k)$, que es equivalente a encontrar la solución del sistema $\nabla^2 f(x^k))d^k=-\nabla g(x^k)$.  Podríamos tener que $\nabla^2 f(x)$ no sea definido positivo o que no sea invertible. Entonces consideramos el sistema $(\nabla^2 f(x^k)-\Delta^k)d^k=-\nabla g(x^k)$, con $\Delta^k$ diagonal con entradas positivas de modo que al sumar cada una con el autovalor correspondiente de $\nabla^2 f(x^k)$ salga positivo. Entonces la matriz resultante sí es definida positiva, por lo que admite una descomposición de Cholesky con una matriz $L^k$ triangular
 $$\nabla^2 f(x^k)+\Delta^k=L^{k'}L^k\Rightarrow L^{k'}\underbrace{L^kd^k}_{y^k}=-\nabla f(x^k)\equiv L^{k'}y^k=-\nabla f(x^k).$$
 Por lo que $y^k=-(L^{k'})^{-1}\nabla f(x^k)$, de donde $d^k=(L^k)^{-1}y^k$.
-
 \section{Optimización con restricciones convexas}
 Supongamos que existe $S\subset\R^n$ convexo cerrado y $f:\R^n\to\R, f\in\mathcal{C}^1(S)$. Se considera el problema $(P)\min_{x\in S} f(x)$. En el interior de $S$ sigue siendo condición necesaria que $\nabla f(x)=0$, pero en la frontera no podemos hacer esto, porque no podemos considerar las direcciones opuestas. Sí que podemos pedir que $\nabla f(x^*)(x-x^*)\geq 0\ \forall x\in S$. 
 \begin{teorema}
