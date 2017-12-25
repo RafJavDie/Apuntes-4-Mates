@@ -148,7 +148,14 @@ aplicación diferenciable. ¿Bajo qué condiciones mínimas se puede asegurar
 que $f|_M : M \to N$ es diferenciable?
 \end{ejercicio}
 \begin{solucion}
-Como ser diferenciable es una propiedad local y $f|_M=f$ en $M$, dotanto a $M$ y a $N$ de las topologías relativas correspondientes basta que $f(M)\subseteq N$.
+Vamos a aplicar el lema de factorización para ver es suficiente que $f(M)\subseteq N$ y que $N$ sea subvariedad regular de $\overline{N}$. Supongamos que $M$ es suvariedad con una aplicación $\iota$ y $N$ lo es con $g$. Imponiendo la condición anterior obtenemos el siguiente diagrama
+\[
+\begin{tikzcd}
+M\arrow[r,"\iota"]\arrow[drr, dashed, "f|_M"']& \overline{M}\arrow[r,"f"] &\overline{N}\\
+& & N\arrow[u, "g"']
+\end{tikzcd}
+\]
+Aplicando primero 2 y después 1 del Lema de Factorización obtenemos el resultado.
 \end{solucion}
 
 \newpage
