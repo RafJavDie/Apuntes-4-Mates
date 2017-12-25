@@ -107,7 +107,11 @@ Utilizamos el algoritmo de descenso máximo con regla de minimización partiendo
 Entonces $x^0-\alpha^0\nabla f(x^0)=\begin{pmatrix}
 -1+4\alpha\\
 1
-\end{pmatrix}$, luego $f(x^0-\alpha^0\nabla f(x^0))=100(-16\alpha^2+8\alpha)^2+(2-4\alpha)^2=g(\alpha)$. Derivando y to eso, tenemos que el mínimo se alcanza en $\alpha^0=\frac{1}{2}$. Resulta que $x^1$ es estacionario, así que es un mínimo local, y por ser siempre positiva es mínimo global.
+\end{pmatrix}$, luego $g(\alpha)=100(-16\alpha^2+8\alpha)^2+(2-4\alpha)^2$. Analíticamente vemos que el mínimo se alcanza en $\alpha^0=\frac{1}{2}$. Resulta que $x^1 = \begin{pmatrix}
+1\\
+1
+\end{pmatrix}$ es estacionario, así que es un mínimo local, y por ser siempre positiva es mínimo global.
+
 
 Aplicamos ahora el método de Newton. La hessiana sale
 \[
@@ -117,7 +121,8 @@ Aplicamos ahora el método de Newton. La hessiana sale
 \end{pmatrix}\Rightarrow\nabla^2f(-1,1)=\begin{pmatrix}
 802 & 400\\
 400 & 200
-\end{pmatrix}\Rightarrow(\nabla^2f(-1,1))^{-1})=\begin{pmatrix}
+\end{pmatrix}$$
+$$(\nabla^2f(-1,1))^{-1}=\begin{pmatrix}
 \frac{1}{2} & -1\\
 -1 &\frac{401}{200}
 \end{pmatrix}
@@ -135,6 +140,33 @@ $$\min f(x,y)=3x^2-2xy+y^2+3e^{-x}.$$
 ¿Es esta función cóncava o convexa? Aplique el método de gradiente con $x^0=(0,0)$ y longitud inicial de paso $\alpha^0=2$. Calcule el mínimo aplicando el método de Newton. 
 \end{ejercicio}
 \begin{solucion}
+Calculamos la hessiana
+$$
+\nabla f(x,y)' = \begin{pmatrix}
+6x-2y -3e^{-x} & -2x+2y
+\end{pmatrix} 
+$$
+$$
+\nabla^2 f(x,y) = \begin{pmatrix}
+6 +3e^{-x} & -2\\
+-2 & 2
+\end{pmatrix} 
+$$
+Como $6+3e^{-x}>0$ $\forall x$ y $|\nabla^2f(x,y)|=6e^{-x}+8>0$ $\forall x$, la matriz hessiana es definida positiva, luego la función es convexa.
+\begin{itemize}
+\item Utilicemos el método del gradiente.
+\begin{enumerate}
+\item $x^1 = x^0 - 2\nabla f(x^0) = \begin{pmatrix}
+6 & 0
+\end{pmatrix}' $.
+\item $x^2=x^1-2\nabla f(x^1) =  
+\begin{pmatrix}
+-66 +3e^{-6} & 24
+\end{pmatrix}' $
+\item Tras algunas iteraciones en Matlab vemos que el método no converge.
+\end{enumerate}
+\item Calculamos la inversa de la hessiana, multiplicamos por el gradiente y utilizamos el método de Newton.
+\end{itemize}
 \end{solucion}
 
 \newpage
@@ -157,12 +189,17 @@ Considerar el problema $\min f(x,y)=3x^2+y^4$.
 \end{pmatrix}\Rightarrow x^1=\begin{pmatrix}
 1-6\alpha^0\\
 -2+32\alpha^0
-\end{pmatrix}$. Por la regla de Armijo, $\alpha^0=1\cdot 0.5^{m_0}$ donde $m_0$ es el menor entero tal que ``algo que me da pereza copiar y está en los apuntes''. Podemos encontrarlo por fuerza bruta y nos da 4. Así, $x^1=\begin{pmatrix}
+\end{pmatrix}$. Por la regla de Armijo, $\alpha^0=1\cdot 0.5^{m_0}$ donde $m_0$ es el menor entero tal que
+\begin{gather*}
+f(x^k)-f(x^{k+1})\geq -\sigma s\beta^{m_k}\nabla f(x^k)d^k =0.1\cdot 1 \cdot 0.5^{m_0}(36+32^2)=126.1\cdot0.5^{m_0}\\
+28 - 3(1-6\cdot 0.5^{m_0})^2-(-2+32\cdot 0.5^{m_0})^4 \geq  126.1\cdot0.5^{m_0}
+\end{gather*}
+Podemos encontrarlo por fuerza bruta y nos da 4. Así, $x^1=\begin{pmatrix}
 0.625\\
 0
 \end{pmatrix}$ y el gradiente en el punto no se anula así que hay que seguir.
-\item
-\item 
+\item Que lo 
+\item haga Perry.
 \end{enumerate}
 \end{solucion}
 
@@ -196,7 +233,7 @@ $$m||d||^2\leq d'\nabla^2f(x)d,\ \forall d\in\R^n.$$
 Probar que para todo $x\in S$:
 $$||x-x^*||\leq\frac{||\nabla f(x)||}{m},\quad f(x)-f(x^*)\leq\frac{||\nabla f(x)||^2}{m}.$$
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion} En particular $d'\nabla^2f(x)d >0$ $\forall d\neq 0$, luego $f$ es convexa en $S$. 
 \end{solucion}
 
 
