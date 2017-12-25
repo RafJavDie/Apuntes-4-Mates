@@ -43,6 +43,11 @@ $$X=\sum_{i=1}^mX^i\parcial{}{x_i},\mbox{ }Y=\sum_{j=1}^mY^j\parcial{}{x_j},$$
 calcular $[X,Y]$ en función de la base $\left\{\parcial{}{x_1},\dots ,\parcial{}{x_m}\right\}$.
 \end{ejercicio}
 \begin{solucion}
+\begin{gather*}
+[X,Y]=\left[\sum_{i=1}^mX^i\parcial{}{x_i},\sum_{j=1}^mY^j\parcial{}{x_j}\right]=\sum_{i=1}^m\left[X^i\parcial{}{x_i},\sum_{j=1}^mY^j\parcial{}{x_j}\right]=\sum_{j=1}^m\sum_{i=1}^m\left[X^i\parcial{}{x_i},Y^j\parcial{}{x_j}\right]=\\
+\sum_{i,j=1}^m\left[X^i\parcial{}{x_i},Y^j\parcial{}{x_j}\right]=\sum_{i,j=1}^m \left(X^iY^j\left[\parcial{}{x_i},\parcial{}{x_j}\right]+X^i\left(\parcial{Y^j}{x_i}\right)\parcial{}{x_j}-Y^j\left(\parcial{X^i}{x_j}\right)\parcial{}{x_i}\right)=\\
+\sum_{i,j=1}^m \left(X^i\left(\parcial{Y^j}{x_i}\right)\parcial{}{x_j}-Y^j\left(\parcial{X^i}{x_j}\right)\parcial{}{x_i}\right)
+\end{gather*}
 \end{solucion}
 
 \end{document}
