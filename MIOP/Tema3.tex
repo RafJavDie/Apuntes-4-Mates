@@ -236,4 +236,29 @@ b\\
 \end{pmatrix}
 $$
 \end{dem}
+
+\begin{ej}
+\begin{align*}
+\max\ & 12x_1+14x_2+7x_3+12x_4\\
+sa\ & 4x_1+5x_2+3x_3+6x_4\leq 8\\
+& x_i\in\{0,1\}
+\end{align*}
+La solución de la relajación lineal (i.e. $x_i\in[0,1]$) es $x^*=(1, 0.8, 0, 0)$. Elegimos $x_2$: $\Pi x\leq \Pi_0$, $\Pi x^*-\Pi_0>0$. 
+\begin{align*}
+\max\ & \Pi_1x^*_1+\Pi_2x^*_2+\Pi_3x^*_3+\Pi_4x^*_4-\Pi_0\\
+sa\ & \Pi_1\leq 4u^0+v_1^0+w^0\cdot 0\\
+& \Pi_2\leq 5u^0+v_2^0+w^0\cdot 1\ (\text{porque estamos ramificando en }x_2)\\
+& \Pi_3\leq 3u^0+v_3^0+w^0\cdot 0\\
+&\Pi_4\leq 6u^0+v_4^0+w^0\cdot 0\\
+\\
+& \Pi_1\leq 4u^1+v_1^1-w^1\cdot 0\\
+& \Pi_2\leq 5u^1+v_2^1-w^1\cdot 1\\
+& \Pi_3\leq 3u^1+v_3^1-w^1\cdot 0\\
+&\Pi_4\leq 6u^1+v_4^1-w^1\cdot 0\\
+\\
+&\Pi_0\geq 8u^0+v_1^0+v_2^0+v_3^0+v_4^0\\
+\\
+&\Pi_0\geq 8u^1+v_1^1+v_2^1+v_3^1+v_4^1-w^1
+\end{align*}
+\end{ej}
 \end{document}
