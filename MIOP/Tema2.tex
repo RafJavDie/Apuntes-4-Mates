@@ -247,52 +247,52 @@ Sea $g:\R^n\to\R^n$ y $x^*$ tal que $g(x^*)=0$. Sea $S_\delta=\{x\in\R^n:||x-x^*
 \begin{itemize}
 \item[a)] Existe $\delta>0$ tal que si $x^0\in S_\delta$, la sucesión $x^k$ está bien definida y converge a $x^*$. Además, la convergencia es súper lineal, es decir,
 $$\lim_{k\to\infty}\frac{||x^{k+1}-x^*||}{||x^k-x^*||}=0.$$
-\item[b)] Si para algún $L>0,M>0$, $x,y\in S_\delta\Rightarrow ||\nabla g(x)-\nabla g(y)||\leq L||x-y||$ (si $\nabla g$ es lipschitziana), entonces si $x^0\in S_\delta$ se verifica $||x^{k+1}-x^*||\leq LM/2||x^k-x^*||^2\forall k$ (tiene convergencia cuadrática).
+\item[b)] Si para algún $L>0,M>0$, $x,y\in S_\delta\Rightarrow ||\nabla g(x)-\nabla g(y)||\leq L||x-y||$ (si $\nabla g$ es lipschitziana), entonces si $x^0\in S_\delta$ se verifica $||x^{k+1}-x^*||\leq LM/2||x^k-x^*||^2$ $\forall k$ (tiene convergencia cuadrática).
 \end{itemize}
 \end{teorema}
 \begin{dem}
 $\nabla g(x^*)$ es invertible si y solo si $\det(\nabla g(x^*))\neq 0\Rightarrow\det(\nabla g(x))\neq 0$ en $S_\delta$ para algún $\delta>0$. Por tanto $\exists M>0$ tal que $||\nabla g(x)^{-1}||<M\ \forall x\in S_\delta$. 
 \begin{itemize}
 \item[a)] Supongamos que $x^k\in S_\delta$ y consideremos $x^{k+1}$. Entonces
-$$||x^{k+1}-x^k||=||x^k-(\nabla g(x^k)')^{-1}g(x^k)-x^*||=||(\nabla g(x^k)')^{-1}[-g(x^k)+\nabla g(x^k)'(x^k-x^*)]||.$$
+$$||x^{k+1}-x^*||=||x^k-(\nabla g(x^k)')^{-1}g(x^k)-x^*||=||(\nabla g(x^k)')^{-1}[-g(x^k)+\nabla g(x^k)'(x^k-x^*)]||.$$
 Usamos la fórmula del valor intermedio del cálculo integral
 $$g(x^k)=g(x^*)+\int_0^1\nabla g(x^*+t(x^k-x^*))'dt\cdot(x^k-x^*)$$
 que aplicada a la ecuación anterior, como $g(x^*)=0$  da lugar a
 \begin{align*}
-||x^{k+1}-x^k||&=||(\nabla g(x^k)')^{-1}\left[-\int_0^1\nabla g(x^*+t(x^k-x^*))'dt\cdot(x^k-x^*)+\nabla g(x^k)'(x^k-x^*)\right]||\\
-&=||(\nabla g(x^k)')^{-1}\int_0^1(\nabla g(x^*)'-\nabla g(x^*+t(x^k-x^*))')dt\cdot(x^k-x^*)]||
+||x^{k+1}-x^*||&=||(\nabla g(x^k)')^{-1}\left[-\int_0^1\nabla g(x^*+t(x^k-x^*))'dt\cdot(x^k-x^*)+\nabla g(x^k)'(x^k-x^*)\right]||\\
+&=||(\nabla g(x^k)')^{-1}\left[\int_0^1(\nabla g(x^*)'-\nabla g(x^*+t(x^k-x^*))')dt\cdot(x^k-x^*)\right]||
 \end{align*}
 Aplicando desigualdades de produtos e integrales matriciales
 \begin{equation}\label{estrella}
-\leq||(\nabla g(x^k)')^{-1}||\int_0^1||(\nabla g(x^*)'-\nabla g(x^*+t(x^k-x^*))')||dt||x^k-x^*||
+||x^{k+1}-x^*||\leq||(\nabla g(x^k)')^{-1}||\int_0^1||(\nabla g(x^*)'-\nabla g(x^*+t(x^k-x^*))')||dt||x^k-x^*||
 \end{equation}
-Por continuidad de $\nabla g, \forall\varepsilon/M>0\ \exists\delta'\leq\delta$ tal que si $||x^k-x^*||<\delta'\Rightarrow ||\nabla g(x^*)-\nabla g(x^*+t(x^k-x^*))')||<\varepsilon/M$. Por tanto, el término anterior queda mayorado por
-$$M\int_0^1\varepsilon/M dt ||x^k-x^*||=\varepsilon ||x^k-x^*||.$$
+Por continuidad de $\nabla g, \forall\varepsilon/M>0\ \exists\delta'\leq\delta$ tal que si $||x^k-x^*||<\delta'$ entonces se tiene $ ||\nabla g(x^*)-\nabla g(x^*+t(x^k-x^*))')||<\varepsilon/M$. Por tanto, el término anterior queda mayorado por
+$$||x^{k+1}-x^*|| \leq M\int_0^1\frac{\varepsilon}{M} dt ||x^k-x^*||=\varepsilon ||x^k-x^*||.$$
 En definitiva, $\forall\varepsilon>0, ||x^{k+1}-x^*||\leq\varepsilon||x^k-x^*||$, lo que significa que $$\lim_{k\to\infty}\frac{||x^{k+1}-x^*||}{||x^k-x^*||}=0.$$
 \item[b)] En \ref{estrella} aplicamos que $\nabla g$ es lipschitziana, entonces ese término está acotado por
 $$||(\nabla g(x^k)')^{-1}||\int_0^1||x^*-x^*-t(x^l-x^*)||dt||x^k-x^*||\leq ML\int_0^1 t||x^k-x^*||^2=ML/2||x^k-x^*||^2$$
-lo que prueba que $ ||x^{k+1}-x^*||=ML/2||x^k-x^*||^2$. $\QED$
+lo que prueba que $ ||x^{k+1}-x^*||\leq ML/2||x^k-x^*||^2$. $\QED$
 \end{itemize}
 \end{dem}
 \subsection{Método Quasi-Newton}
-En Newton, $d^k=-(\nabla^2 f(x^k))^{-1})\nabla f(x^k)$, que es equivalente a encontrar la solución del sistema $\nabla^2 f(x^k))d^k=-\nabla g(x^k)$.  Podríamos tener que $\nabla^2 f(x)$ no sea definido positivo o que no sea invertible. Entonces consideramos el sistema $(\nabla^2 f(x^k)-\Delta^k)d^k=-\nabla g(x^k)$, con $\Delta^k$ diagonal con entradas positivas de modo que al sumar cada una con el autovalor correspondiente de $\nabla^2 f(x^k)$ salga positivo. Entonces la matriz resultante sí es definida positiva, por lo que admite una descomposición de Cholesky con una matriz $L^k$ triangular
+En Newton, $d^k=-(\nabla^2 f(x^k))^{-1})\nabla f(x^k)$, que es equivalente a encontrar la solución del sistema $\nabla^2 f(x^k))d^k=-\nabla f(x^k)$.  Podríamos tener que $\nabla^2 f(x)$ no sea definido positivo o que no sea invertible. Entonces consideramos el sistema $(\nabla^2 f(x^k)-\Delta^k)d^k=-\nabla g(x^k)$, con $\Delta^k$ diagonal con entradas positivas de modo que al sumar cada una con el autovalor correspondiente de $\nabla^2 f(x^k)$ salga positivo. Entonces la matriz resultante sí es definida positiva, por lo que admite una descomposición de Cholesky con una matriz $L^k$ triangular
 $$\nabla^2 f(x^k)+\Delta^k=L^{k'}L^k\Rightarrow L^{k'}\underbrace{L^kd^k}_{y^k}=-\nabla f(x^k)\equiv L^{k'}y^k=-\nabla f(x^k).$$
 Por lo que $y^k=-(L^{k'})^{-1}\nabla f(x^k)$, de donde $d^k=(L^k)^{-1}y^k$.
 \section{Optimización con restricciones convexas}
 Supongamos que existe $S\subset\R^n$ convexo cerrado y $f:\R^n\to\R, f\in\mathcal{C}^1(S)$. Se considera el problema $(P)\min_{x\in S} f(x)$. En el interior de $S$ sigue siendo condición necesaria que $\nabla f(x)=0$, pero en la frontera no podemos hacer esto, porque no podemos considerar las direcciones opuestas. Sí que podemos pedir que $\nabla f(x^*)(x-x^*)\geq 0\ \forall x\in S$. 
 \begin{teorema}
-Si $x^*$ mínimo local de $(P)$, entonces  $\nabla f(x^*)(x-x^*)\geq 0\ \forall x\in S$.
+Si $x^*$ mínimo local de $(P)$, entonces  $\nabla f(x^*)'(x-x^*)\geq 0\ \forall x\in S$.
 \end{teorema}
 \begin{dem}
 Sea $1>\varepsilon>0$ suficientemente pequeño. Por el teorema del valor medio podemos expresar para algún $s\in[0,1]$
 $$f(x^*+\varepsilon(x-x^*))=f(x^*)+\nabla f(x^*+s\varepsilon (x-x^*))'[x^*+\varepsilon(x-x^*)-x^*]=f(x^*)+\nabla f(x^*+s\varepsilon (x-x^*))'\varepsilon(x-x^*)$$
-Supongamos que la condición del teorema no es cierta. Entonces $\exists x'\mid \nabla f(x^*)(x-x^*)<0$. Por continuidad se tendrá la desigualdad en un entorno de $x'$. Para ese $x'$ utilizamos el desarrollo anterior. 
+Supongamos que la condición del teorema no es cierta. Entonces $\exists x'\mid \nabla f(x^*)(x'-x^*)<0$. Por continuidad se tendrá la desigualdad en un entorno de $x'$. Para ese $x'$ utilizamos el desarrollo anterior. 
 $$f(x^*+\varepsilon(x'-x^*))=f(x^*)+\nabla \varepsilon \underbrace{f(x^*+s\varepsilon (x'-x^*))'(x'-x^*)}_{<0}$$
 Entonces $f(x^*+\varepsilon(x'-x^*))< f(x^*)$, lo cual contradice que $x^*$ sea mínimo local. $\QED$
 \end{dem}
 
 \subsection{Métodos de direcciones factibles}
-Parten de $x^0\in X$ y generan $x^{k+1}=x^k+\alpha d^k,\ \alpha^k>0$, siendo $d^k$ una dirección factible en $x^k$. Esto quiere decir que $\exists\mu >0$ tal que $x^{k+1}+\mu d^k\in X$. Toda dirección factible $d$ en $\overline{x}\in X$ se puede expresar como $x=x-\overline{x}$ con $x\in X$. Por tanto, podemos reescribir el método de direcciones factibles como $x^{k+1}=x^k+\alpha (x-\overline{x}),\ \alpha^k>0,\ \overline{x}^k\in X$. Si $x^k\in X$ y$\alpha^k\leq 1$, entonces $x^{k+1}\in X$. En efecto, $x^{k+1}=\alpha^k\overline{x}^k+(1-\alpha^k)x^k\in X$ por ser $X$ convexo. 
+Parten de $x^0\in X$ y generan $x^{k+1}=x^k+\alpha d^k,\ \alpha^k>0$, siendo $d^k$ una dirección factible en $x^k$. Esto quiere decir que $\exists\mu >0$ tal que $x^{k+1}+\mu d^k\in X$. Toda dirección factible $d$ en $\overline{x}\in X$ se puede expresar como $x=x-\overline{x}$ con $x\in X$. Por tanto, podemos reescribir el método de direcciones factibles como $x^{k+1}=x^k+\alpha (x-\overline{x}),\ \alpha^k>0,\ \overline{x}^k\in X$. Si $x^k\in X$ y $\alpha^k\leq 1$, entonces $x^{k+1}\in X$. En efecto, $x^{k+1}=\alpha^k\overline{x}^k+(1-\alpha^k)x^k\in X$ por ser $X$ convexo. 
 
 \subsection{Elección del punto inicial $x^0$}
 Se puede hacer uso de un problema auxiliar. Tomemos $C>>0$ suficientemente grande y consideramos el problema $P:\min f(x)$ sujeto a $x\in X$. Supongamos que $X=\{x\in\R^n: g_j(x)\leq 0, j\in J\}$. 
