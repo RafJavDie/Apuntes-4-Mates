@@ -165,7 +165,7 @@ f(x^k)-f(x^k+s\beta^{m_k}d^k)\geq -\sigma\alpha^k\nabla f(x^k)'d^k.
 $$f(x^k)-f(x^k+{s\beta^{m_k-1}}d^k)=f(x^k)-f(x^k+\frac{\alpha^k}{\beta}d^k)<-\sigma\frac{\alpha^k}{\beta}\nabla f(x^k)'d^k.$$ 
 Denotamos $\rho^k=\frac{d^k}{||d^k||},\overline{\alpha}^k=\frac{\alpha^k||d||^k}{\beta}$, de modo que la desigualdad se convierte en 
 $$ f(x^k)-f(x^k+\overline{\alpha}^k\rho^k)< -\sigma\overline{\alpha}^k\nabla f(x^k)'\rho^k.$$
-Utilizando ahora el teorema del valor medio, es decir, $f(y)=f(x)+\nabla f(x)'(y-x)$ para $z\in[x,y]$, deducimos
+Utilizando ahora el teorema del valor medio, es decir, $f(y)=f(x)+\nabla f(z)'(y-x)$ para $z\in[x,y]$, deducimos
 $$-\nabla f(x^k+\tilde{\alpha}^k\rho^k)'(\overline{\alpha}^k\rho^k) <-\sigma\overline{\alpha}^k\nabla f(x^k)'\rho^k\quad \tilde{\alpha}^k\in[0,\overline{\alpha}^k]$$
 Podemos simplificar eliminando los $\overline{\alpha}^k$
 \begin{equation}\label{simply}
@@ -187,17 +187,17 @@ Si en lugar de la regla de Armijo se usa la de minimización, el resultado sigue
 \begin{teorema}[de captura]
 Sea $f\in\mathcal{C}^1(S)$ y $\{x^k\}$ tal que $x^{k+1}=x^k+\alpha^k d^k$ verificando que $f(x^k)>f(x^{k+1})\ \forall k$ y tal que todo punto de acumulación es estacionario. Supongamos que $\exists s,c>0$ de forma que $\alpha^k\leq s$ y $||d^k||\leq c||\nabla f(x^k)||$ $\forall k.$
 
-Sea $x^*$ mínimo local de $f$ que es el único punto estacionario en un entorno de $x^*$. Entonces existe $x^*\in S$ tal que si $x^{\overline{k}}\in S$ para algún $\overline{k}$, $x^k\in S\ \forall k>\overline{k}$ y $x^k\to x^*$. Además, dado $\varepsilon>0$, $S$ se puede elegir para que $||x-x^*||<\varepsilon \ \forall x\in S$.
+Sea $x^*$ mínimo local de $f$ que es el único punto estacionario en un entorno de $x^*$. Entonces el punto $x^*\in S$ es tal que si $x^{\overline{k}}\in S$ para algún $\overline{k}$, $x^k\in S\ \forall k>\overline{k}$ y $x^k\to x^*$. Además, dado $\varepsilon>0$, $S$ se puede elegir para que $||x-x^*||<\varepsilon \ \forall x\in S$.
 \end{teorema}
 \begin{dem}
 Elegimos $\rho>0$ tal que $\forall x\neq x^*\mid ||x-x^*||<\rho$, entonces $f(x)>f(x^*)$. Definimos $\phi
 (t)=\min_{0\leq t\leq ||x-x^*||} (f(x)-f(x^*))$. $\phi$ es no decreciente, porque cuando $t$ disminuye, la corona circular se hace más gruesa hacia dentro, por lo que hay más puntos donde encontrar el mínimo, y si $t$ aumenta, la corona se hace más fina por lo que hay menos puntos donde encontrar el mínimo.
 
 Utilizamos la continuidad de de la norma y $\nabla f$ para decir que $\forall \varepsilon>0\ \exists r>0\mid ||x-x^*||<r\Rightarrow |g(x)-g(x^*)|<\varepsilon$, donde $g(x)=||x-x^*||+sc||\nabla f(x)||$. Se tiene que $g(x^*)=0$. Luego
-\begin{equation}\label{estrella}
+\begin{equation}\label{estrellita}
 ||x-x^*||+sc||\nabla f(x)||<\varepsilon 
 \end{equation}
-Entonces definimos $S:=\{x\mid ||x-x^*||<\varepsilon, f(x)< f(x^*)+\phi(r)\}$. Supongamos que $x^k\in S$, entonces para $t=||x^*-x^k||$, $\phi(t)\leq f(x^k)-f(x^*)<\phi(r)$. Como $\phi$ es monótona, $||x^k-x^*||<r$, por lo que podemos aplicarle \ref{estrella} a $x^k$. Veamos que $x^{k+1}\in S$. Tenemos que probar dos desigualdades.
+Entonces definimos $S:=\{x\mid ||x-x^*||<\varepsilon, f(x)< f(x^*)+\phi(r)\}$. Supongamos que $x^k\in S$, entonces para $t=||x^*-x^k||$, $\phi(t)\leq f(x^k)-f(x^*)<\phi(r)$. Como $\phi$ es monótona, $||x^k-x^*||<r$, por lo que podemos aplicarle \ref{estrellita} a $x^k$. Veamos que $x^{k+1}\in S$. Tenemos que probar dos desigualdades.
 \begin{itemize}
 \item $||x^{k+1}-x^k||=||x^k+\alpha^kd^k-x^*||=||x^k-x^*+\alpha^kd^k||\leq ||x^k-x^*||+\alpha^k||d^k||\leq\\ ||x^k-x^*||+sc||\nabla f(x^k)||<\varepsilon$
 \item $f(x^{k+1})<f(x^k)<f(x^*)$
@@ -218,7 +218,7 @@ Por la definición de $f$, $\nabla f(x)=Qx$. En la iteración $k$, $f(x^k)=\frac
 
 Calculamos $\alpha^k$ mediante minimización, $g(\alpha)=f(x^k-\alpha\nabla f(x^k))$, buscamos $\min_{\alpha>0}g(\alpha)$. 
 \begin{align*}
-g'(\alpha)&=\frac{dg(\alpha)}{d\alpha}=-\nabla f(x^k)'\nabla f(x^k-\nabla f(x^k))\\
+g'(\alpha)&=\frac{dg(\alpha)}{d\alpha}=-\nabla f(x^k)'\nabla f(x^k-\alpha\nabla f(x^k))\\
 &=-g^{k'}Q[x^k-\alpha g^k]=g^{k'}Qx^k-\alpha g^{k'}Qg^k=0\\
 \alpha&=\frac{g^{k'}g^k}{g^{k'}Qg^k}\Rightarrow \alpha^k=\frac{g^{k'}g^k}{g^{k'}Qg^k}
 \\ \\
@@ -247,7 +247,7 @@ Sea $g:\R^n\to\R^n$ y $x^*$ tal que $g(x^*)=0$. Sea $S_\delta=\{x\in\R^n:||x-x^*
 \begin{itemize}
 \item[a)] Existe $\delta>0$ tal que si $x^0\in S_\delta$, la sucesión $x^k$ está bien definida y converge a $x^*$. Además, la convergencia es súper lineal, es decir,
 $$\lim_{k\to\infty}\frac{||x^{k+1}-x^*||}{||x^k-x^*||}=0.$$
-\item[b)] Si para algún $L>0,M>0$, $x,y\in S_\delta\Rightarrow ||\nabla g(x)-\nabla g(y)||\leq L||x-y||$ (si $\nabla g$ es lipschitziana), entonces si $x^0\in S_\delta$ se verifica $||x^{k+1}-x^*||\leq LM/2||x^k-x^*||^2$ $\forall k$ (tiene convergencia cuadrática).
+\item[b)] Si para algún $L>0$, $\forall x,y\in S_\delta\Rightarrow ||\nabla g(x)-\nabla g(y)||\leq L||x-y||$ (si $\nabla g$ es lipschitziana), entonces si $x^0\in S_\delta$ se verifica $\exists M>0:||x^{k+1}-x^*||\leq LM/2||x^k-x^*||^2$ $\forall k$ (tiene convergencia cuadrática).
 \end{itemize}
 \end{teorema}
 \begin{dem}
@@ -270,7 +270,7 @@ Por continuidad de $\nabla g, \forall\varepsilon/M>0\ \exists\delta'\leq\delta$ 
 $$||x^{k+1}-x^*|| \leq M\int_0^1\frac{\varepsilon}{M} dt ||x^k-x^*||=\varepsilon ||x^k-x^*||.$$
 En definitiva, $\forall\varepsilon>0, ||x^{k+1}-x^*||\leq\varepsilon||x^k-x^*||$, lo que significa que $$\lim_{k\to\infty}\frac{||x^{k+1}-x^*||}{||x^k-x^*||}=0.$$
 \item[b)] En \ref{estrella} aplicamos que $\nabla g$ es lipschitziana, entonces ese término está acotado por
-$$||(\nabla g(x^k)')^{-1}||\int_0^1||x^*-x^*-t(x^l-x^*)||dt||x^k-x^*||\leq ML\int_0^1 t||x^k-x^*||^2=ML/2||x^k-x^*||^2$$
+$$||(\nabla g(x^k)')^{-1}||\int_0^1||\nabla(x^*)-\nabla(x^*-t(x^l-x^*))||dt||x^k-x^*||\leq ML\int_0^1 t||x^k-x^*||^2=ML/2||x^k-x^*||^2$$
 lo que prueba que $ ||x^{k+1}-x^*||\leq ML/2||x^k-x^*||^2$. $\QED$
 \end{itemize}
 \end{dem}
@@ -292,7 +292,7 @@ Entonces $f(x^*+\varepsilon(x'-x^*))< f(x^*)$, lo cual contradice que $x^*$ sea 
 \end{dem}
 
 \subsection{Métodos de direcciones factibles}
-Parten de $x^0\in X$ y generan $x^{k+1}=x^k+\alpha d^k,\ \alpha^k>0$, siendo $d^k$ una dirección factible en $x^k$. Esto quiere decir que $\exists\mu >0$ tal que $x^{k+1}+\mu d^k\in X$. Toda dirección factible $d$ en $\overline{x}\in X$ se puede expresar como $x=x-\overline{x}$ con $x\in X$. Por tanto, podemos reescribir el método de direcciones factibles como $x^{k+1}=x^k+\alpha (x-\overline{x}),\ \alpha^k>0,\ \overline{x}^k\in X$. Si $x^k\in X$ y $\alpha^k\leq 1$, entonces $x^{k+1}\in X$. En efecto, $x^{k+1}=\alpha^k\overline{x}^k+(1-\alpha^k)x^k\in X$ por ser $X$ convexo. 
+Parten de $x^0\in X$ y generan $x^{k+1}=x^k+\alpha d^k,\ \alpha^k>0$, siendo $d^k$ una dirección factible en $x^k$. Esto quiere decir que $\exists\mu >0$ tal que $x^{k+1}+\mu d^k\in X$. Toda dirección factible $d$ en $\overline{x}\in X$ se puede expresar como $x=x-\overline{x}$ con $x\in X$. Por tanto, podemos reescribir el método de direcciones factibles como $x^{k+1}=x^k+\alpha (x-\overline{x}^k),\ \alpha^k>0,\ \overline{x}^k\in X$. Si $x^k\in X$ y $\alpha^k\leq 1$, entonces $x^{k+1}\in X$. En efecto, $x^{k+1}=\alpha^k\overline{x}^k+(1-\alpha^k)x^k\in X$ por ser $X$ convexo. 
 
 \subsection{Elección del punto inicial $x^0$}
 Se puede hacer uso de un problema auxiliar. Tomemos $C>>0$ suficientemente grande y consideramos el problema $P:\min f(x)$ sujeto a $x\in X$. Supongamos que $X=\{x\in\R^n: g_j(x)\leq 0, j\in J\}$. 
@@ -309,7 +309,7 @@ En cada punto $x^k$ queremos elegir una dirección de descenso. Esto es, que ver
 P_A: &\min\ \nabla f(x^k)'(x-x^k) \equiv & \min \nabla f(x^k)'x\\
  & x\in X								& x\in X
 \end{align*}
-Pongamos que sabemos resolver $P_A$ y obtenemos $\overline{x}^k$. Entonces si $$0\leq\nabla f(x^k)(\overline{x}^k-x^k)\leq \nabla  f(x^k)(x^k-x^k),$$ por lo que $x^k$ es estacionario. En caso contrario $d^k=\overline{x}^k-x^k$ es una dirección factible y de descenso. A estas direcciones se las denomina de \textbf{gradiente condicionado}.
+Pongamos que sabemos resolver $P_A$ y obtenemos $\overline{x}^k$. Entonces si $$0\leq\nabla f(x^k)(\overline{x}^k-x^k)\leq \nabla  f(x^k)(x^k-x^k),$$ se deduce que $x^k$ es estacionario. En caso contrario $d^k=\overline{x}^k-x^k$ es una dirección factible y de descenso. A estas direcciones se las denomina de \textbf{gradiente condicionado}.
 
 \begin{ej}
 $X=\{x\in\R^n:\sum_{j=1}^n=r, x_i\geq 0\}$ donde $r>0$. Entonces  el problema que tenemos que resolver es
@@ -332,7 +332,7 @@ Para probarlo nos basaremos en el siguiente teorema.
 Sea $\{x^k\}$ una sucesión generada por el método de direcciones factibles con longitud de paso mediante Armijo o minimización restringida ($0<\alpha^k\leq 1$) y tales que las direcciones $d^k=\overline{x}^k-x^k$ verifican:
 \begin{enumerate}
 \item\label{1} $\limsup||\overline{x}^k-x^k||<+\infty$.
-\item\label{2} $\limsup \nabla f(x^k)(\overline{x}^k-x^k)$.
+\item\label{2} $\limsup \nabla f(x^k)(\overline{x}^k-x^k)<0$.
 \end{enumerate}
 Entonces todo punto de acumulación es estacionario.
 \end{teorema}
@@ -354,7 +354,7 @@ Como $\overline{x}$ no es estacionario, debe existir $\hat{x}\mid \nabla f(\over
 & x_1+2x_2-4\leq 0\\
 & x_i\geq 0
 \end{align*}
-(Hacer el dibujito del semiplano y de la circunferencia)
+
 $x^0=\begin{pmatrix}
 0\\
 0
@@ -382,13 +382,13 @@ x_2-\frac{4}{3}
 \end{pmatrix}$ con las restricciones de que $x_1+2x_2-4\leq 0$ y $x_i\geq 0$. Como tiene que ser uno de los puntos extremos del poliedro, evaluamos y resulta que $x^*=\begin{pmatrix}
 4\\
 0
-\end{pmatrix} $. Este es el punto extremo de la dirrección que tenemos que tomar. Entonces $d^1=\overline{x}^1-x^1=\begin{pmatrix}
+\end{pmatrix}=\overline{x}^1 $. Este es el punto extremo de la dirección que tenemos que tomar. Entonces $d^1=\overline{x}^1-x^1=\begin{pmatrix}
 \frac{8}{3}\\
 -\frac{4}{3}
 \end{pmatrix}$ y $x^2(\alpha)=x^1+\alpha d^1=\begin{pmatrix}
 \frac{4}{3}+\frac{8}{3}\alpha\\
 \frac{4}{3}-\frac{4}{3}\alpha
-\end{pmatrix}$. $\min f(\alpha)=f(x^2(\alpha))\Rightarrow x^2=\begin{pmatrix}
+\end{pmatrix}$. $\min g(\alpha)=\min f(x^2(\alpha))\Rightarrow x^2=\begin{pmatrix}
 \frac{8}{5}\\
 \frac{6}{5}
 \end{pmatrix}$.
