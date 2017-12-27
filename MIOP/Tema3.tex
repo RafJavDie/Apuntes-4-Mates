@@ -45,7 +45,7 @@ La recta definida por $(10,1)$ y $(14,2)$ define una desigualdad válida para $X
 \end{scriptsize}
 \end{tikzpicture}
 
-\item En el problema de emparejamiento, sea $G=(V,F)$. Si $i\in V$ se define $\delta(i)=\{e\in E:i\in e\}$. Un emparejamiento (\emph{matching}) es un conjunto de arista que no tiene vértices comunes. El politopo del matching viene descrito por $\sum_{e\in\delta(i)}x_e\leq 1\ \forall i\in V, x_e\in\{0,1\}$. $x_e=1$ si y solo si $e\in E$ está en el matching.  
+\item En el problema de emparejamiento, sea $G=(V,E)$. Si $i\in V$ se define $\delta(i)=\{e\in E:i\in e\}$. Un emparejamiento (\emph{matching}) es un conjunto de arista que no tiene vértices comunes. El politopo del matching viene descrito por $\sum_{e\in\delta(i)}x_e\leq 1\ \forall i\in V, x_e\in\{0,1\}$. $x_e=1$ si y solo si $e\in E$ está en el matching.  
 
 Sea $T$ un conjunto de vértices $T\subseteq V$ de cardinalidad impar mayor o igual que 3. Entonces en cualquier solución de emparejamiento el conjunto de las aristas que tiene ambos vértices en $T$, $E(T)$, debe verificar que $\sum_{e\in E(T)}x_e\leq\lfloor |T|/2\rfloor$, es decir solo se pueden elegir $\frac{|T|-1}{2}$ aristas en el emparejamiento.
 \item $X=P\cap\Z^4, P=\{x\in\R^4_+:13x_1+20x_2+11x_3+6x_4\geq 72\}$. Si dividimos la inecuación por 11 se sigue verificando. Y como buscamos enteros no negativos podemos tomar las partes enteras superiores de los coeficientes, dando lugar a 
@@ -95,7 +95,7 @@ Hacemos una combinación lineal de las ecuaciones con coeficientes $(2/7,27/36, 
 \end{ej}
 
 \subsection{Procedimiento de Chvatal-Gomory}
-Es aplicable a problemas enteros con $X=P\cap\Z^n$ con $P=\{x\in\R^n:Ax\leq b,x\geq 0\}$, siendo $A=[a_1,\dots,a_m]\in\R^{m\times n}$ y $u\in\R^m_+$. 
+Es aplicable a problemas enteros de la forma $X=P\cap\Z^n$ con $P=\{x\in\R^n:Ax\leq b,x\geq 0\}$, siendo $A=[a_1,\dots,a_m]\in\R^{m\times n}$ y $u\in\R^m_+$. 
 \begin{enumerate}
 \item La desigualdad $\sum_{j=1}^nu'a_jx_j\leq u'b$ es válida para $P$.
 \item La desigualdad $\sum_{j=1}^n\lfloor u'a_j\rfloor x_j\leq \lfloor u'b\rfloor$ es válida para $X$.
@@ -122,13 +122,12 @@ Luego tenemos que $\sum_{e\in E(T)}\leq\frac{|T|}{2}$, que redondeando se convie
 
 
 
-Lo que hay en la pizarra desde las 9:31
 
 
 \section{Desigualdades válidas para poliedros enteros}
-\begin{propi}
-Propiedad. Sea $X^{\geq}=\{(x,y)\in\R_+\times \Z \mid x+y \geq b\}$ y $f= b-\suelo{b}>0$. Entonces la desigualdad $x\geq f(\ceil{b}-y)$ o $\frac{x}{f}+y\geq \ceil{b}$ es válida.
-\end{propi}
+\begin{prop}
+ Sea $X^{\geq}=\{(x,y)\in\R_+\times \Z \mid x+y \geq b\}$ y $f= b-\suelo{b}>0$. Entonces la desigualdad $x\geq f(\ceil{b}-y)$ o $\frac{x}{f}+y\geq \ceil{b}$ es válida.
+\end{prop}
 
 \begin{dem}\
 \begin{enumerate}
@@ -142,21 +141,21 @@ $\QED$
 Para el caso $X^\leq =\{(x,y\in\R_+\times \Z \mid y\leq b+x\}$ con $f=b-\suelo{b}>0$ entonces $y\leq \suelo{b}+\frac{x}{1-f}$ es válida para $X^\leq$.
 \end{coro}
 \begin{dem}
-$x+y\geq y \equiv x-y\geq -b$. La desigualdad válida es 
+$x+b\geq y \equiv x-y\geq -b$. La desigualdad válida es 
 $$
 \frac{x}{f(-b)}-y\geq \ceil{b}=-\suelo{b} \equiv \frac{x}{1-f}-y \geq -\suelo{b}
 $$
 \end{dem}
 \begin{propi}
-Sea $X^{MIR}=\{(x,y\in\R_+\times \Z_+^2 \mid a_1y_2+a_2y_2\leq b+x\}$, $a_1,a_2,b\in\R$, $b\notin \Z$. Supongamos que $f=b-\suelo{b}$, $f_i = a_i -\suelo{a_i}$, $i=1,2$ y $f_1\leq f\leq f_2$. Entonces 
+Sea $X^{MIR}=\{(x,y)\in\R_+\times \Z_+^2 \mid a_1y_2+a_2y_2\leq b+x\}$, $a_1,a_2,b\in\R$, $b\notin \Z$. Supongamos que $f=b-\suelo{b}$, $f_i = a_i -\suelo{a_i}$, $i=1,2$ y $f_1\leq f\leq f_2$. Entonces 
 $$
-\suelo{a_1}y+\left(\suelo{a_s}+\frac{f_2-f}{1-f}\right)y_2\leq \suelo{b}+\frac{x}{1-f}$$
+\suelo{a_1}y_1+\left(\suelo{a_s}+\frac{f_2-f}{1-f}\right)y_2\leq \suelo{b}+\frac{x}{1-f}$$
 es válida para $X^{MIR}$.
 \end{propi}
 \begin{dem}
-Observamos que $\suelo{a_1}\leq a_1$ y $a_2=\ceil{a_2}-(1-f_2)$ $(\suelo{a_2}+f_2)$ [este paréntesis no lo entiendo]. Entonces
+Observamos que $\suelo{a_1}\leq a_1$ y $a_2=\ceil{a_2}-(1-f_2)=\suelo{a_2}+f_2$. Entonces
 $$
-\suelo{a_1}y_1+(\ceil{a_2}-(1-f_2)y_2 \leq a_2y_1 + a_2y_2\leq b+x
+\suelo{a_1}y_1+(\ceil{a_2}-(1-f_2))y_2 \leq a_1y_1 + a_2y_2\leq b+x
 $$
 $$\suelo{a_1}y_1+(\ceil{a_2}-(1-f_2))y_2 \leq b+x+(1-f_2)y_2$$
 Por el Corolario
@@ -164,14 +163,14 @@ $$
 \suelo{a_1}y_1+\ceil{a_2}y_2 \leq \suelo{b}+\frac{x+(1-f_2)y_2}{1-f}
 $$
 $$
-\suelo{a_1}y_1+(\ceil{a_2}-\frac{1-f_2}{1-f})y_2 \leq \suelo{b}+\frac{x}{1-f}
+\suelo{a_1}y_1+\left(\ceil{a_2}-\frac{1-f_2}{1-f}\right)y_2 \leq \suelo{b}+\frac{x}{1-f}
 $$
 $$
-\suelo{a_1}y_1+(\suelo{a_2}+\frac{1-f-1+f_2}{1-f})y_2\leq \suelo{b}+\frac{x}{1-f}
+\suelo{a_1}y_1+\left(\suelo{a_2}+\frac{1-f-1+f_2}{1-f}\right)y_2\leq \suelo{b}+\frac{x}{1-f}
 $$
 \end{dem}
 \begin{prop}
-$X=X_1\cup X_2$ se denomina disyunción si sus elementos están en $X_1$ o $X_2$, $X_i\subset \R^n_+$. Supongamos que $\pi^ix\leq \pi^i_0$ es válida para $X^i$, $i=1,2$. Entonces $\pi x\leq \pi_0$ tal que $\pi_j=\min\{\pi^1,_j,\pi^2_j\}$, $\pi_0 =\max\{\pi^1_0,\pi^2_0\}$ es válida para $X$.
+$X=X_1\cup X_2$ se denomina disyunción si sus elementos están en $X_1$ o $X_2$, $X_i\subset \R^n_+$. Supongamos que $\pi^ix\leq \pi^i_0$ es válida para $X^i$, $i=1,2$. Entonces $\pi_j x\leq \pi_0$ tal que $\pi_j=\min\{\pi^1_j,\pi^2_j\}$, $\pi_0 =\max\{\pi^1_0,\pi^2_0\}$ es válida para $X$.
 \end{prop}
 \begin{dem}
 Sea $x\in X$. Evaluamos
@@ -187,7 +186,7 @@ $$
 Si $P^i = \{x\in\R^n_+\mid A^i x \leq b^i\}$, $i=1,2$ son poliedros no vacíos entonces $\pi x\leq \Pi_0$ es una desigualdad válida para $Co(P^1\cup P^2)$ sii $\exists u^1,u^2$ tales que $u^1A^1\geq \Pi$, $u^2A^2 \geq \Pi$, $u^1 b^1 \leq \Pi_0$, $u^2b^2\leq \Pi_0$
 \end{prop}
 \begin{dem}
-Supongamos que $\Pi x \leq \Pi_0$ es válida para $ Co(P^1\cup P^2)$. Sea $xx \in Co(P^1\cup P^2)$ entonces $\Pi x \leq Pi_0$. En particular si $x\in P^1 \subset Co(P^1\cup P^2)$ también es válida para $P^1$ sii $\exists i^1\mid u^1 A^1 \geq \Pi$, $u^1 b^1 \leq \Pi_0$. Análogo para $x\in P^2$.
+Supongamos que $\Pi x \leq \Pi_0$ es válida para $ Co(P^1\cup P^2)$. Sea $x \in Co(P^1\cup P^2)$ entonces $\Pi x \leq \Pi_0$. En particular si $x\in P^1 \subset Co(P^1\cup P^2)$ también es válida para $P^1$ sii $\exists i^1\mid u^1 A^1 \geq \Pi$, $u^1 b^1 \leq \Pi_0$. Análogo para $x\in P^2$.
 
 Recíprocamente supongamos que $\Pi x \leq \Pi_0$ verifica que existen los $u^i$ del enunciado. Sea $x\in Co(P^1\cup P^2)$, $x=\lambda x^1 +(1-\lambda)x^2$, $\lambda \in [0,1]$, $x^i\in P^i$. Entonces 
 $$
