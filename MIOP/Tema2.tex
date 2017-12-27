@@ -395,7 +395,7 @@ x_2-\frac{4}{3}
 \end{ej}
 
 \subsection{Métodos de gradiente proyectado}
-Son métodos de direcciones factibles en los que las iteraciones son de la forma $x^{k+1}=x^k+\alpha^k(\overline{x}^k-x^k)$ y $x^k=proy_X(x^k-s\nabla f(x^k)):=[x^k-s\nabla f(x^k)], s>0$. 
+Son métodos de direcciones factibles en los que las iteraciones son de la forma $x^{k+1}=x^k+\alpha^k(\overline{x}^k-x^k)$ y $\overline{x}^k=proy_X(x^k-s\nabla f(x^k)):=[x^k-s\nabla f(x^k)], s>0$. 
 
 Supongamos que $\overline{x}$ es estacionario. Multiplicando la condición de ser estacionario por $-s$ obtenemos $-s\nabla f(\overline{x})'(x-\overline{x})\leq 0\ \forall x\in X$. Sumamos y restamos $\overline{x}$, $(\overline{x}-s\nabla f(\overline{x})-\overline{x})'(x-\overline{x})\leq 0\ \forall x\in X$. Esto es equivalente a que $\overline{x}-s\nabla f(\overline{x})$ verifica la condición del teorema de la proyección, si y solo si $\overline{x}=[\overline{x}-s\nabla f(\overline{x})]$. 
 
@@ -423,9 +423,8 @@ Pero por no ser estacionario, $\overline{x}-[\overline{x}-s\nabla f(\overline{x}
 \begin{ej}
 \begin{align*}
 &\min\ f(x_1,x_2)=x_1^2+x_2^2-4x_1-4x_2+8\\
-& x_1^2+2x_2^2-1\leq 0\\
-\end{align*}
-(Hacer dibujito de esta mierda maybe) 
+& x_1^2+x_2^2-1\leq 0\\
+\end{align*} 
 Queremos usar el método del gradiente proyectado partiendo de $x^0=(1,0)', s=\frac{1}{2}, \alpha^k =1\ \forall k$. $x^1=x^0+(\overline{x}^0-x^0)$, donde $\overline{x}^0=[x^0-\frac{1}{2}\nabla f(x^0)]=\begin{bmatrix}
 \begin{pmatrix}
 2\\

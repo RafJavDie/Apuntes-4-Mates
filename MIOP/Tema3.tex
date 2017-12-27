@@ -7,7 +7,7 @@
 
 \section{Desigualdades válidas.}
 
-Dado un poliedro $P=\{x\in\R^n:Ax\leq b,x\geq 0\}$. La desigualdad $\Pi'x\leq\Pi_0$ es válida para $P$ si $\forall x\in P$ se verifica la desigualdad. Por ejemplo, todas las desigualdades de $Ax\leq b$ son válidas para $P$. La definición se extiende a cualquier conjunto que no sea un poliedro. Por ejemplo a $P_E=P\cap\Z^n$. En ese caso $conv(P)=\{x\in\R^n:\overline{A}x\leq\overline{b},x\geq 0\}$ y se tiene
+Dado un poliedro $P=\{x\in\R^n:Ax\leq b,x\geq 0\}$. La desigualdad $\Pi'x\leq\Pi_0$ es válida para $P$ si $\forall x\in P$ se verifica la desigualdad. Por ejemplo, todas las desigualdades de $Ax\leq b$ son válidas para $P$. La definición se extiende a cualquier conjunto que no sea un poliedro. Por ejemplo a $P_E=P\cap\Z^n$. En ese caso $conv(P_E)=\{x\in\R^n:\overline{A}x\leq\overline{b},x\geq 0\}$ y se tiene
 \begin{enumerate}
 \item $Ax\leq b$ son desigualdades válidas para $P_E$.
 \item $\overline{A}x\leq\overline{b}$ son desigualdades válidas de $P_E$. 
@@ -16,8 +16,35 @@ Dado un poliedro $P=\{x\in\R^n:Ax\leq b,x\geq 0\}$. La desigualdad $\Pi'x\leq\Pi
 \begin{enumerate}
 \item $X=\{x\in\{0,1\}^5: 3x_1-4x_2+2x_3-3x_4+x_5\leq-2\}$. Si $x_2=x_4=0\Rightarrow 3x_1+2x_3+x_5\leq -2$, pero todas las variables son no negativas, luego no se puede conseguir la igualdad. Así que los puntos de la forma $(x_1,0,x_3,0,x_5)\notin X$, es decir, $x_2+x_4\geq 1$, que es una desigualdad válida.
 \item $X=\{(x,y):0\leq x\leq 5, x\leq 9999y,y\in\{0,1\}\}$. Entonces $x\leq\min\{5,9999y\}=\min\{5,9999\}\Rightarrow x\leq 5$ es una desigualdad válida. Como además $y\in\{0,1\}$ y $x\in[0,5]$, se tiene que $x\leq 5y$.
-\item $X:\{(x,y): x\leq 10y, 0\leq x\leq 14, y\in\Z^+\}$. (Hacer dibujo)
-La recta definida por $(10,1)$ y $(14,2)$ define una desigualdad válida para $X$, $x\leq 6+4y$. En general, si $X=\{(x,y):x\leq Cy, 0\leq x\leq b,y\in\Z^+\}$, si $C$ no divide a $b$ entonces estamos en la misma situación anterior. La desigualdad válida estará definida por $(C,1),(b,\lceil C/b\rceil)$.
+\item $X:\{(x,y): x\leq 10y, 0\leq x\leq 14, y\in\Z^+\}$.
+La recta definida por $(10,1)$ y $(14,2)$ define una desigualdad válida para $X$, $x\leq 6+4y$. En general, si $X=\{(x,y):x\leq Cy, 0\leq x\leq b,y\in\Z^+\}$, si $C$ no divide a $b$ entonces estamos en la misma situación anterior. La desigualdad válida estará definida por $(C,1),(b,\lceil C/b\rceil)$. En la gráfica a continuación se puede ver el ejemplo.
+
+\definecolor{ffqqqq}{rgb}{1.,0.,0.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\draw[color=black] (-0.4,0.) -- (14.933333333333337,0.);
+\foreach \x in {,1.,2.,3.,4.,5.,6.,7.,8.,9.,10.,11.,12.,13.,14.}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[color=black] (0.,-1.0266666666666635) -- (0.,6.4);
+\foreach \y in {-1.,1.,2.,3.,4.,5.,6.}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-0.4,-1.0266666666666635) rectangle (14.933333333333337,6.4);
+\draw [line width=2.pt,domain=-0.4:14.933333333333337] plot(\x,{(-0.-1.*\x)/-10.});
+\draw [line width=2.pt,color=qqqqff] (0.,1.)-- (10.,1.);
+\draw [line width=2.pt,color=qqqqff] (0.,2.)-- (14.,2.);
+\draw [line width=2.pt,color=qqqqff] (0.,3.)-- (14.,3.);
+\draw [line width=2.pt,color=qqqqff] (0.,4.)-- (14.,4.);
+\draw [line width=2.pt,color=qqqqff] (0.,5.)-- (14.,5.);
+\draw [line width=2.pt,color=ffqqqq,domain=-0.4:14.933333333333337] plot(\x,{(-6.--1.*\x)/4.});
+\draw [line width=2.pt,color=qqqqff] (0.,6.)-- (14.,6.);
+\begin{scriptsize}
+\draw [fill=qqqqff] (0.,0.) circle (2.0pt);
+\draw [fill=ffqqqq] (10.,1.) circle (2.5pt);
+\draw [fill=ffqqqq] (14.,2.) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+
 \item En el problema de emparejamiento, sea $G=(V,F)$. Si $i\in V$ se define $\delta(i)=\{e\in E:i\in e\}$. Un emparejamiento (\emph{matching}) es un conjunto de arista que no tiene vértices comunes. El politopo del matching viene descrito por $\sum_{e\in\delta(i)}x_e\leq 1\ \forall i\in V, x_e\in\{0,1\}$. $x_e=1$ si y solo si $e\in E$ está en el matching.  
 
 Sea $T$ un conjunto de vértices $T\subseteq V$ de cardinalidad impar mayor o igual que 3. Entonces en cualquier solución de emparejamiento el conjunto de las aristas que tiene ambos vértices en $T$, $E(T)$, debe verificar que $\sum_{e\in E(T)}x_e\leq\lfloor |T|/2\rfloor$, es decir solo se pueden elegir $\frac{|T|-1}{2}$ aristas en el emparejamiento.
