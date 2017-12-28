@@ -22,6 +22,7 @@ Decidir si los siguientes predicados son 1-extensionales o no:
 	\item $P_4(p) \equiv$ La función $[[p]]^{(1)}$ es total, pero $[[p]]^{(2)}$ no lo es. ¿Es 2-extensional?
 	\item $P_5(p) \equiv$ La función $[[p]]^{(1)}$ es constante.
 	\item $P_6(p) \equiv$ La ejecución de $p$ siempre para en $100$ pasos.
+	\item $P_7(p) \equiv$ La función $[[p]]^{(1)}$ está acotada. ¿Es 2-extensional?
 \end{itemize}
 \end{ejercicio}
 \begin{solucion}
@@ -37,6 +38,7 @@ Decidir si los siguientes predicados son 1-extensionales o no:
 	Por tanto, $[[q]]^{(1)} = [[p]]^{(1)}$ es total y $[[q]]^{(2)}$ no lo es, luego $P_4(q) = 1$ y $P_4$ es 2-extensional.
 	\item Si ambos programas calculan la misma función entonces ambos son constantes, así que el predicado es 1-extensional.
 	\item No es extensional, pues podemos añadir al final del programa instrucciones del tipo \texttt{SKIP} que no alteran el valor de la función y prolongan la ejecución. 
+	\item Claramente es 1-extensional. No es dos extensional podemos considerar la función $[[p]]^{(2)}(x,y)=0$ y por otro lado $[[q]]^{(2)}(x,y)=y$.
 \end{enumerate}
 
 \newpage
@@ -98,6 +100,30 @@ Luego $A$ es recursivamente enumerable.
 	
 	\item Sea $\mathcal{F} = \{f \in \mathcal{P}^{(1)} : dom(f) \neq \emptyset\}$. Tenemos que $\mathcal{F} \neq \emptyset$, pues $\mathcal{O} \in \mathcal{F}$. Además, $\mathcal{F} \neq \mathcal{P}^{(1)}$,
 	 ya que para $f$ dada por \texttt{X $\leftarrow$ X+1; [A] IF X $\neq$ 0 GOTO A}, $f \notin \mathcal{F}$. Por el teorema de Rice, $I_{\mathcal{F}} = A$ no es recursivo.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{5}
+Sea $P(x)$ el predicado $P(x) \equiv$ La función $\varphi^{(1)}_x$ es una función constante. Probar
+que:
+\begin{enumerate}
+\item El predicado $P(x)$ es extensional.
+\item El predicado $P(x)$ \textbf{no} es recursivo.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+\item Trivial
+\item Supongamos que es recursivo y sea $C$ una constante. Definimos entonces
+\[
+f(e,x)=\begin{cases}
+x & P(e)\\
+C & \neg P(e)
+\end{cases}
+\]
+Por hipótesis esta función sería recursiva, así que por el teorema de recursión existe $\hat{e}$ tal que $\varphi_{\hat{e}}(x)=f(\hat{e},x)$. Si $P(\hat{e})$ entonces $C=\varphi_{\hat{e}}(x)=x$, lo cual es una contradicción. Si $\neg P(\hat{e})$, entonces $x=\varphi_{\hat{e}}(x)=C$, que también es una contradicción.
 \end{enumerate}
 \end{solucion}
 
