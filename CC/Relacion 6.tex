@@ -73,9 +73,9 @@ Usando el teorema de Rice, decidir la recursividad de los siguientes conjuntos:
 	
 	\item Tenemos que $IMP = \N$, pues sabemos que existe $p$ tal que $[[p]]=φ_e$. Basta añadir una instrucción trivial al final del programa $p$ si es necesario para hacer $|p|$ impar. Luego $IMP$ es recursivamente enumerable.
 	
-	\item $MON$ no es recursivo. Para aplicar el teorema de Rice sea $\Gamma=\{f: f$ es total y $(\forall x)[f(x)\leq f(x+1)]\}$, claramente $MON=I_\Gamma$. Además $Id\in MON$ y $g(x)=x\dot{-}1\notin MON$. Pero sí es r.e. por ser intersección de r.e.
+	\item $MON$ no es recursivo. Para aplicar el teorema de Rice sea $\Gamma=\{f: f$ es total y $(\forall x)[f(x)\leq f(x+1)]\}$, claramente $MON=I_\Gamma$. Además $Id\in MON$ y $g(x)=x\dot{-}1\notin MON$. Tampoco es recursivamente enumerable. Podemos reducir este conjunto al conjunto de índices de funciones totales de forma que como este último no es recursivamente enumerable, entonces tampoco lo es el original. Para ello basta con convertir una función $f\in\mathcal{P}$ en otra función $\hat{f}\in\mathcal{P}$ de modo que la $f$ es total si y solo si $\hat{f}$ es total y creciente. Para ello basta usar la función recorrido de $f$. 
 	\item El conjunto es vacío porque $\N\setminus\mathcal{K}$ no es r.e., de modo que una función definida a trozos entre $\mathcal{K}$ y su complementario no puede ser recursiva. Es decir el conjunto es trivialmente recursivo.
-	\item Trivialmente no recursivo por el teorema de Rice. Además es recursivamente enumerable pues es el conjunto de funciones totales cuyo rango es $\{0,1\}$. 
+	\item Trivialmente no recursivo por el teorema de Rice. Tampoco es recursivamente enumerable porque el problema de decidir si un función es total se puede reducir a este problema. Podemos convertir una función $f\in\mathcal{P}$ en otra $\hat{f}(x)\in\mathcal{P}$ tal que $f$ es total si y solo si $\hat{f}$ es total y su rango es $\{0,1\}$. Esto lo hacemos con la función signo.
 \end{itemize}
 \end{solucion}
 
