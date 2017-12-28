@@ -50,7 +50,7 @@ Sea $P(x,y,u)$ un predicado r.e. Probar que el conjunto
 es recursivamente enumerable.
 \end{ejercicio}
 \begin{solucion}
-Sea $R(x,y,u,v)$ recursivo tal que $P(x,y,u) \sii (\exists v) R(x,y,u,v)$ (existe por el teorema de la proyección.
+Sea $R(x,y,u,v)$ recursivo tal que $P(x,y,u) \sii (\exists v) R(x,y,u,v)$ (existe por el teorema de la proyección).
 \begin{align*}
 	(x,z) \in A & \sii (\forall y)_{≤z} (\exists u) P(x,y,u)\\
 	& \sii (\forall y)_{≤z} (\exists u) (\exists v) R(x,y,u,v)\\
@@ -116,13 +116,38 @@ Sea $A \subseteq \N$ tal que $A \neq \emptyset$. probar que son equivalentes:
 \end{ejercicio}
 \begin{solucion}\
 \begin{itemize}
-\item[$(2\Rightarrow 1)$] Teorema del rango.
+\item[$(2\Rightarrow 1)$]
+$x\in A\sii x\in\text{rang}(f)\Leftrightarrow (\exists y)_{ \leq f(x+1)}(f(x)=y)$, que es recursivo. 
+\item[$(1\Rightarrow 2)$]Sea $A$ recursivo no vacío. Entonces existe $g\in\mathcal{R}$ tal que $A=rang(g)$. Sea $r=(\mu y)(y\in A)$ y sea $s=(\mu y)(f(y)=r)$. Definimos
+\begin{align*}
+&f'(0)=[g(s)]\\
+&f'(x+1)=f'(x)*[g((\mu u)((f'(x))_{Lt(f'(x))}< g(u))]
+\end{align*}
+Está claro que $f'\in\mathcal{R}$. Definimos $f(x)=(f'(x))_x$. Entonces $f\in\mathcal{R}$ y $rang(f)=A$. Es obvio que $rang(f)\subseteq rang(g)$. Y si $x\in rang(g)\Rightarrow(\exists u)(g(u)=x)\Rightarrow (\exists u)(g(u)\in f'(u))\Rightarrow (\exists u)(\exists i)_{\leq u} (x=f(i))$. 
+\end{itemize}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7}
+Sea $A\subseteq\N$ infinito. Probar que son equivalentes:
+\begin{enumerate}
+\item $A$ es r.e.,
+\item Existe $f\in\mathcal{R}^{(1)}$ tal que $f$ es inyectiva y $A=\text{rang}(f)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item[$(2\Rightarrow 1)$]
+$x\in A\sii x\in\text{rang}(f)\Leftrightarrow (\exists y)(f(x)=y)$, que es recursivamente enumerable. 
 \item[$(1\Rightarrow 2)$] Sea $A$ r.e. infinito. Entonces existe $g\in\mathcal{R}$ tal que $A=rang(g)$. Definimos
 \begin{align*}
 &f'(0)=[g(0)]\\
 &f'(x+1)=f'(x)*[g((\mu u)((\forall i)_{\leq x} ((f'(x))_i)\neq g(u))]
 \end{align*}
 Está claro que $f'\in\mathcal{R}$. Definimos $f(x)=(f'(x))_x$. Entonces $f\in\mathcal{R}$ y $rang(f)=A$. Es obvio que $rang(f)\subseteq rang(g)$. Y si $x\in rang(g)\Rightarrow(\exists u)(g(u)=x)\Rightarrow (\exists u)(g(u)\in f'(u))\Rightarrow (\exists u)(\exists i)_{\leq u} (x=f(i))$. 
-\end{itemize}
+
+\end{enumerate}
 \end{solucion}
+
 \end{document}
