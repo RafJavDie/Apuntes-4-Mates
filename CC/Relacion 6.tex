@@ -31,10 +31,12 @@ Decidir si los siguientes predicados son 1-extensionales o no:
 	
 	\item Tomamos $p : Y \leftarrow Y+1$. $p$ es lineal. Sea $q$ el programa $Y \leftarrow Y+1; IF X \neq 0 GOTO E$. $q$ no es lineal y $[[p]]^{(1)} = [[q]]^{(1)}$. Por tanto el preicado $P_2$ no es 1-extensional.
 	
-	\item
+	\item Por definición, si $[[p]]=[[q]]=f$, ambos programas calculan una función polinómica, luego es 1-extensional.
 	\item $P_4(p) = [[p]]^{(1)}$ es total pero $[[p]]^{(2)}$ no lo es. Supongammos que $P_4(p) = 1$ y $[[p]]^{(2)} = [[q]]^{(2)}$. Como:
 	\[ [[q]]^{(1)}(x) = [[q]]^{(2)}(x,0) = [[p]]^{(2)}(x,0) = [[p]]^{(1)}(x) \]
 	Por tanto, $[[q]]^{(1)} = [[p]]^{(1)}$ es total y $[[q]]^{(2)}$ no lo es, luego $P_4(q) = 1$ y $P_4$ es 2-extensional.
+	\item Si ambos programas calculan la misma función entonces ambos son constantes, así que el predicado es 1-extensional.
+	\item No es extensional, pues podemos añadir al final del programa instrucciones del tipo \texttt{SKIP} que no alteran el valor de la función y prolongan la ejecución. 
 \end{enumerate}
 
 \newpage
@@ -51,23 +53,27 @@ Usando el teorema de Rice, decidir la recursividad de los siguientes conjuntos:
 \end{ejercicio}
 \begin{solucion}\mbox{}
 \begin{itemize}
-	\item $INF = \{\#(p) : p$ para sobre un conjunto infinito de datos$\} = \{e \in \N: dom(φ_e)$ es infinito$\} ? I_\mathcal{F}$, donde $\mathcal{F} = \{ f \in \mathcal{P}^{(1)} : dom(f)$ es infinito$\}$. Aplicamos el teorema de Rice. Primero vemos que $\mathcal{F}$ no es trivial.
+	\item $INF = \{\#(p) : p$ para sobre un conjunto infinito de datos$\} = \{e \in \N: dom(φ_e)$ es infinito$\}$ . $I_\mathcal{F}$, donde $\mathcal{F} = \{ f \in \mathcal{P}^{(1)} : dom(f)$ es infinito$\}$. Aplicamos el teorema de Rice. Primero vemos que $\mathcal{F}$ no es trivial.
 	\[ \mathcal{F} \neq \emptyset \Leftarrow Π_1^1 \in \mathcal{F} \]
 	\[ \mathcal{F} \neq \mathcal{P}^{(1)} \]
 	pues para $f \in \mathcal{P}^{(1)}$ calculada por el programa \texttt{[A] if x $\neq$ 0 GOTO A}. Entonces $dom(f) = \{0\}$ es finito y por tanto $f \notin \mathcal{F}$. Por el teorema de Rice $INF = I_\mathcal{F}$ no es recursivo.
 	
 	Por otro lado, $FIN = \{e \in \N: dom(φ_e)$ es finito$\} = I_G$ donde $G = \{f \in \mathcal{P}^{(1)} : dom(f)$ es finito$\} = \mathcal{P}^{(1)} - \mathcal{F}$. Como $G \neq \emptyset$ y $G \neq \mathcal{P}^{(1)}$, por el teorema de Rice $I_G$ no es recursivo, luego $FIN$ no es recursivo.
 	
-	Nos preguntamos ahora si $FIN$ es recursivamente enumerable. Tomamos:
+	Nos preguntamos ahora si $FIN$ es recursivamente enumerable. Supongamos que lo es. Tomamos:
 	\[ f(e,x) = \begin{cases}
 	x, &\text{ si }e \in FIN\\
 	\uparrow & \text{ c.c.}
 	\end{cases}\]
-	Entonces $f(e,x) = y \Leftrightarrow e \in FIN \land x = y$. Como tanto $e \in FIN$ y $x = y$ son recursivamente enumerable, $f(e,x) = y$ es recursivo por el teorema del grafo. Por el teorema de recursión, existe $\hat{e} \in \N$ tal que $f(\hat{e},x) = φ_{\hat{e}}(x)$. Si $\hat{e} \in FIN$, entonce $dom(φ_{\hat{e}}) = dom(Id) = \N$, que es infinito. Si $\hat{e} \notin FIN$, $dom(φ_{\hat{e}}) = \emptyset$, que es finito. Llegamos en todo caso a un absurdo, luego $FIN$ no es recursivamente enumerable.
+	Entonces $f(e,x) = y \Leftrightarrow e \in FIN \land x = y$. Como tanto $e \in FIN$ y $x = y$ son recursivamente enumerable, $f(e,x) = y$ es recursivo por el teorema del grafo. Por el teorema de recursión, existe $\hat{e} \in \N$ tal que $f(\hat{e},x) = φ_{\hat{e}}(x)$. Si $\hat{e} \in FIN$, entonces $dom(φ_{\hat{e}}) = dom(Id) = \N$, que es infinito. Si $\hat{e} \notin FIN$, $dom(φ_{\hat{e}}) = \emptyset$, que es finito. Llegamos en todo caso a un absurdo, luego $FIN$ no es recursivamente enumerable.
 	
 	Queda como ejercicio ver que $INF$ tampoco es recursivamente enumerable.
 	
 	\item Tenemos que $IMP = \N$, pues sabemos que existe $p$ tal que $[[p]]=φ_e$. Basta añadir una instrucción trivial al final del programa $p$ si es necesario para hacer $|p|$ impar. Luego $IMP$ es recursivamente enumerable.
+	
+	\item $MON$ no es recursivo. Para aplicar el teorema de Rice sea $\Gamma=\{f: f$ es total y $(\forall x)[f(x)\leq f(x+1)]\}$, claramente $MON=I_\Gamma$. Además $Id\in MON$ y $g(x)=x\dot{-}1\notin MON$. Pero sí es r.e. por ser intersección de r.e.
+	\item El conjunto es vacío porque $\N\setminus\mathcal{K}$ no es r.e., de modo que una función definida a trozos entre $\mathcal{K}$ y su complementario no puede ser recursiva. Es decir el conjunto es trivialmente recursivo.
+	\item Trivialmente no recursivo por el teorema de Rice. Además es recursivamente enumerable pues es el conjunto de funciones totales cuyo rango es $\{0,1\}$. 
 \end{itemize}
 \end{solucion}
 
