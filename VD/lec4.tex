@@ -446,7 +446,12 @@ continua.
 
 \begin{dem}\
 \begin{itemize}
-\item[a)] Supongamos que $f_0$ es continua. Fijemos $m,n,r$ las dimensiones de $M,N,P$ respectivamente. Sea $p\in M$ cualquiera, entonces $f(p)\in N, f_0(p)\in P$. Tomamos cartas adaptadas a la inmersión $g$, es decir, $(U,\varphi=(x_1,\dots,x_r))$ carta en $P$ tal que $f_0(p)\in U$, $(V,\psi=(y_1,\dots,y_n))$ carta en $N$ tal que $f(p)\in V$, cumpliendo que $x_i=y_i\circ g\ i=1,\dots, r$ y $g(U)\subseteq V$. Como $f_0(p)\in U\subseteq P$ y $f_0$ es continua, $p\in f_0^{-1}(U)\subset M$ abierto al que denotaremos por $G$. $\forall q\in G$, $$\varphi\circ f_0(q)=(x_1(f_0(q)),\dots,x_r(f_0(q)))= (y_1(g(f_0(q))),\dots,y_r(g(f_0(q))))=(y_1(f(q)),\dots,y_r(f(q)))=\pi\circ\psi\circ f(q)$$ donde $\pi:\R^n\to\R^r: (u_1,\dots, u_r)\mapsto (u_1,\dots,u_r)$. Luego en $G$, $\varphi\circ f_0=\pi\circ\psi\circ f$ es diferenciable, luego comoponiendo con $\varphi^{-1}$, $f_0$ es diferenciable.
+\item[a)] Supongamos que $f_0$ es continua. Fijemos $m,n,r$ las dimensiones de $M,N,P$ respectivamente. Sea $p\in M$ cualquiera, entonces $f(p)\in N, f_0(p)\in P$. Tomamos cartas adaptadas a la inmersión $g$, es decir, $(U,\varphi=(x_1,\dots,x_r))$ carta en $P$ tal que $f_0(p)\in U$, $(V,\psi=(y_1,\dots,y_n))$ carta en $N$ tal que $f(p)\in V$, cumpliendo que $x_i=y_i\circ g\ i=1,\dots, r$ y $g(U)\subseteq V$. Como $f_0(p)\in U\subseteq P$ y $f_0$ es continua, $p\in f_0^{-1}(U)\subset M$ abierto al que denotaremos por $G$. $\forall q\in G$, 
+\begin{align*}
+\varphi \circ f_0(q)&=(x_1(f_0(q)),\dots,x_r(f_0(q)))= (y_1(g(f_0(q))),\dots,y_r(g(f_0(q))))\\
+&=(y_1(f(q)),\dots,y_r(f(q)))=\pi\circ\psi\circ f(q)
+\end{align*}
+donde $\pi:\R^n\to\R^r: (u_1,\dots, u_n)\mapsto (u_1,\dots,u_r)$. Luego en $G$, $\varphi\circ f_0=\pi\circ\psi\circ f$ es diferenciable, luego comoponiendo con $\varphi^{-1}$, $f_0$ es diferenciable.
 \item[b)] Supongamos que $(P,g)$ es subvariedad regular, por lo que $g:P\to g(P)\subset N$ es homeomorfismo, donde la imagen tiene la topología relativa. Recordemos que $f_0$ es continua si y solo si $\forall p\in M,\forall G\subseteq P$ tal que $f_0(p)\in G,\exists U\subset M$ abierto con $p\in U$ tal que $f_0(U)\subseteq G$. Sean $p\in M$, $G\subseteq P$ abierto tal que $f_0(p)\in G$. Como $g$ es homeomorfismo, $g(G)$ es abierto en $g(P)$, por lo que $\exists V$ abierto en $N$, tal que $g(G)=V\cap g(P)$. Así, $U=f^{-1}(V)$ es abierto en $M$. Como $f_0(p)\in G$, entonces $g(f_0(p))\in g(G)$, luego en particular, $f(p)=g(f_0(p))\in V\Rightarrow p\in f^{-1}(V)=U$. Por último, $\forall q\in U, f(q)=g(f_0(q))\in V\cap g(P)=g(G)$. Por ser $g$ inyectiva, $f_0(q)\in G$, como queríamos demostrar.   $\QED$
 \end{itemize}
 
@@ -533,10 +538,10 @@ Supongamos que $(A,T|_A)$ tiene estructura de variedad diferenciable tal que $(A
 \[
 \begin{tikzcd}
 (A,\mathcal{T}) (\calA_2)\arrow[r,hookrightarrow, "i_2"]\arrow[dr,dashrightarrow, "Id"] & N\\
-& (A,T|_A) (\calA_1)
+& \arrow[u,hookrightarrow, "i_1"] (A,T|_A) (\calA_1)
 \end{tikzcd}
 \]
-Tenemos que $i_2\in\calF((A,\mathcal{T}), N)$. aDEMÁS, $((A,T|_A),i_1)$ es subvariedad regular (lema de factorización) de $N$, $i_2(A)=A=i_1(A)$. Por tanto, $Id:(A,\mathcal{T})\to(A,T|_A)$ es continua, así que por el lema de factorización $Id\in\calF((A,\mathcal{T}),(A,T|_A))$. 
+Tenemos que $i_2\in\calF((A,\mathcal{T}), N)$. Además, $((A,T|_A),i_1)$ es subvariedad regular (lema de factorización) de $N$, $i_2(A)=A=i_1(A)$. Por tanto, $Id:(A,\mathcal{T})\to(A,T|_A)$ es continua, así que por el lema de factorización $Id\in\calF((A,\mathcal{T}),(A,T|_A))$. 
 
 Como $i_2=i_1\circ Id\Rightarrow i_{2*}=(i_1\circ Id)_*=i_{1*}\circ Id_*$ en todo punto de $A$, po lo que $Id_*$ es inyectiva. Como $Id$ es biyectiva, por un corolario se tiene que $Id$ es difeomorfismo, lo cual quiere decir que los atlas son compatibles. Por ser difeomorfismo, en particular es homeomorfismo, por lo que también se tiene la igualdad de topologías. $\QED$
 \end{dem}
