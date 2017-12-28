@@ -70,22 +70,24 @@ Probar que toda superficie regular es una subvariedad regular de $\R^3$.
 \begin{solucion}
 Sea $S \subseteq \R^3$ una superficie regular. Veamos que $(S,i)$ es subvariedad regular donde $i : S \to \R^3$ es la inclusión.
 
-$S$ es una variedad diferenciables (ejemplo 2 del tema 1) con $dim(S)=2$.
-
-Por otro lado, veamos que $i : S \to \R^3$ es una inmersión inyectiva. La inyectividad es consecuencia de ser una inclusión. Para ver que $i$ es inmersión, comprobaremos que $i \in \mathcal{F}(S,\R^3)$ y $i_{*p}$ es inyectivo. $i$ es continuo, pues para todo abierto $G$ de $\R^3$, $i^{-1}(G) = G \cap S$, que es un abierto de la topología euclídea relativa a $S$.
-
+\begin{itemize}
+\item $S$ es una variedad diferenciables (Ejemplo 2 del Tema 1) con $dim(S)=2$.
+\item Veamos que $i : S \to \R^3$ es una inmersión inyectiva.
+\begin{itemize}
+\item La inyectividad es consecuencia de ser una inclusión. Para ver que $i$ es inmersión.
+\item Comprobemos que $i \in \mathcal{F}(S,\R^3)$. Como $i$ es continuo, pues para todo abierto $G$ de $\R^3$, $i^{-1}(G) = G \cap S$, que es un abierto de la topología euclídea relativa a $S$. 
 Sea $p \in S$ cualquiera y $(\X,U)$ tal que $p \in \X(U)$.
-
 \[
 \begin{tikzcd}
 	{\X(U)} \ar[d,"\X^{-1}"] \ar[rr,"i"] & \ & {\R^3} \ar[d,"id"] \\
 	U \ar[rr,dashrightarrow, "id\circ i \circ (\X^{-1})^{-1}"] & \ & {\R^3}
 \end{tikzcd}
 \]
-
 Se tiene que $id \circ i \circ (\X^{-1})^{-1} = \X$ es diferenciable, pues $\X : U \to \R^3$ es superficie simple, luego $i \in \mathcal{F}(S,\R^3)$.
-
-La matriz de $i_{*p}$ es la matriz jacobiana en $\X^{-1}(p)$ de $(id \circ i \circ \X)$, que es $(\X_1, \X_2)^t$. Es de rango $2$, pues los vectores $\X_1$ y $\X_2$ son independientes (por ser superficie simple). Como la matriz es $2\times 3$, es de rango máximo. Además, como $\dim(S) < \dim(\R^3)$, $i_{*p}$ es inyectiva. Por la proposición 4.2.2, como $S$ tiene la topología relativa de $\R^3$, $S$ es regular.
+\item 
+La matriz de $i_{*p}$ es la jacobiana en $\X^{-1}(p)$ de $(id \circ i \circ \X)$, que es $(\X_1, \X_2)^t$. Es de rango $2$, pues los vectores $\X_1$ y $\X_2$ son independientes (por ser superficie simple). Como la matriz es $2\times 3$, es de rango máximo. Además, como $\dim(S) < \dim(\R^3)$, $i_{*p}$ es inyectiva. Por la Proposición 4.2.2, como $S$ tiene la topología relativa de $\R^3$, $S$ es regular.
+\end{itemize}
+\end{itemize}
 \end{solucion}
 
 \newpage
@@ -95,9 +97,14 @@ Probar que cualquier subvariedad abierta de una variedad diferenciable es
 subvariedad regular.
 \end{ejercicio}
 \begin{solucion}
-Sea $M$ una variedad diferenciable y $G\subseteq M$ un abierto al que se dota de estructura de subvariedad abierta de $M$. Entonces, por la proposición 4.2.5 basta ver que $(G,i)$ con $i:G\hookrightarrow M$ es subvariedad de $M$. Para ello, tenemos que probar que $i$ es una inmersión inyectiva. Que es inyectiva es evidente, así que tenemos que probar que es inmersión, es decir, que dado $p\in G$, $i_*:T_p(G)\to T_p(M)$ es inyectiva. Sea $v\in T_p(G)$ tal que $i_*v=0$. Entonces $\forall f\in\calF(G,M)$, 
+Sea $M$ una variedad diferenciable y $G\subseteq M$ un abierto al que se dota de estructura de subvariedad abierta de $M$. Entonces, por la Proposición 4.2.5 basta ver que $(G,i)$ con $i:G\hookrightarrow M$ es subvariedad de $M$. Para ello, tenemos que probar que $i$ es una inmersión inyectiva. 
+\begin{itemize}
+\item Por el Ejerci%cio 2.2 la inclusión es diferenciable. 
+\item La inclusión siempre es inyectiva.
+\item Dado $p\in G$, veamos que $i_*:T_p(G)\to T_p(M)$ es inyectiva. Sea $v\in T_p(G)$ tal que $i_*v=0$. Entonces $\forall f\in\calF(G,M)$, 
 $$0=(i_*v)f =v(i\circ f)=v(f)$$
 con lo que necesariamente $v=0$ como aplicación lineal, es decir, que debe ser el vector nulo, con lo que se tiene el resultado.
+\end{itemize}
 \end{solucion}
 
 \newpage
@@ -126,7 +133,9 @@ Dado que todo covector es la diferencial de alguna función diferenciable en $p$
 Probar que no existen inmersiones de $S^1$ en $\R$.
 \end{ejercicio}
 \begin{solucion}
-Sea $f\in\calF(S^1,\R)$. En particular, $f$ es continua, por lo que $f(S^1)$ es compacto. Por tanto, $f$ alcanza un máximo en algún punto $p\in S^1$ y un mínimo en algún otro punto $q\in S^1$. Podemos tomar un entorno de $p$ que sea difeomorfo a $\R$, de modo que aplicando el ejercicio 1, la diferencial de $f$ es la diferencial habitual de $\R$ en $\R$. Por tanto $df(p)=df(q)=0$. Si $p\neq q$, claramente $df$ no es inyectiva, y si $p=q$, por ser máximo y mínimo, esto implica que la imagen de $f$ solo contiene un punto, es decir, $f$ es constante, de modo que $df=0$ y seguiría sin ser inyectiva.
+Sea $f\in\calF(S^1,\R)$. En particular, $f$ es continua, por lo que $f(S^1)$ es compacto. Por tanto, $f$ alcanza un máximo en algún punto $p\in S^1$. Veamos que $f_{\ast p}$ no es inyectiva. Tomamos un entorno de $p$ que sea difeomorfo a $\R$ mediante $g$. Aplicando el Ejercicio 1, la diferencial de $f\circ g$ es la diferencial habitual de $\R$ en $\R$. Como en $g^{-1}(p)$ tenemos un máximo local, 
+$$0 = df(f\circ g)(g^{-1}(p))=(f\circ g)_{\ast g^{-1}(p)} = f_{\ast p}\circ g_{\ast g^{-1}(p)}$$
+Como $g$ es difeomorfismo, la diferencial es un isomorfismo en cada punto, luego componiendo a derecha con la inversa tenemos el resultado.
 \end{solucion}
 
 \newpage
@@ -137,7 +146,7 @@ diferenciables. Probar que $f$ es un difeomorfismo de $M$ en un cierto abierto
 de $N$.
 \end{ejercicio}
 \begin{solucion}
-Sea $U\subseteq M$ un abierto donde $f$ sea difeomorfismo. Por inyectividad, $f^{-1}(f(U))=U$, por lo que basta tomar $f(U)$, que es abierto porque en $U$ se tiene un difeomorfismo (en particular, homeomorfismo). 
+Por definición de difeomorifsmo, $f$ establece un difeomorfismo sobre su imagen al ser una diferomorfismo local biyectivo sobre esta. Que $f(M)$ es abierto se sigue de que $f$ es difeormorfismo local, en particular, un homeomorfismo local, luego es una aplicación abierta. 
 \end{solucion}
 
 \newpage
@@ -148,14 +157,14 @@ aplicación diferenciable. ¿Bajo qué condiciones mínimas se puede asegurar
 que $f|_M : M \to N$ es diferenciable?
 \end{ejercicio}
 \begin{solucion}
-Vamos a aplicar el lema de factorización para ver es suficiente que $f(M)\subseteq N$ y que $N$ sea subvariedad regular de $\overline{N}$. Supongamos que $M$ es suvariedad con una aplicación $\iota$ y $N$ lo es con $g$. Imponiendo la condición anterior obtenemos el siguiente diagrama
+Vamos a aplicar el lema de factorización para ver es suficiente que $f(M)\subseteq N$. Supongamos que $M$ es subvariedad con una aplicación $\iota$ y $N$ lo es con $g$. Sea $(\iota(M),i)$ tal que el representante de Imponiendo la condición anterior obtenemos el siguiente diagrama, donde $f|_M$ es la única aplicación que lo cierra
 \[
 \begin{tikzcd}
 M\arrow[r,"\iota"]\arrow[drr, dashed, "f|_M"']& \overline{M}\arrow[r,"f"] &\overline{N}\\
 & & N\arrow[u, "g"']
 \end{tikzcd}
 \]
-Aplicando primero 2 y después 1 del Lema de Factorización obtenemos el resultado.
+Como $f$ es continua (por ser diferenciable), $f|_M$ también, luego aplicando el 1 del Lema de Factorización obtenemos el resultado.
 \end{solucion}
 
 \newpage
@@ -205,11 +214,11 @@ La aplicación $\psi|_{M\cap U}\circ i\circ\varphi^{-1}|_{M\cap U}$ es homeomorf
 
 \begin{ejercicio}{15}
 ¿Para qué valores de $a \in R$ es el conjunto
-$$M = \{(x, y, z) \in \R^3\mid x^2 + y^2 - z + 2 = 0; z = a\}$$
+$$M = \{(x, y, z) \in \R^3\mid x^2 + y^2 - z + 2 = 0; z = a\} =  \{(x, y, a) \in \R^3\mid x^2 + y^2 - a + 2 = 0\} $$
 una subvariedad regular de dimensión 1 de $\R^3$?
 \end{ejercicio}
 \begin{solucion}
-Para $z<2$ $M=\emptyset$, por lo que no puede ser variedad. Para $z=2$, $M=\{(0,0,2)\}$, que no puede ser de dimensión 1 porque es un conjunto finito de puntos. Para $z>2$, $M$ es una circunferencia de radio $\sqrt{a-2}$. Esta circunferencia tiene una estructura de variedad diferenciable de dimensión 1 análoga a la de $S^1$ (por ejemplo, alguna del Problema 2.1). Como $M$ tiene la topología euclídea por ser intersección de espacios euclídeos, $(M,i)$ con la inclusión es subvariedad regular por la proposición 4.2.2.
+Para $z<2$ $M=\emptyset$, por lo que no puede ser variedad. Para $z=2$, $M$ es el conjunto unitario $\{(0,0,2)\}$, que no puede ser de dimensión 1. Para $z>2$, $M$ es una circunferencia de radio $\sqrt{a-2}$. Por el Problema 2.1, la circunferencia tiene una estructura de variedad diferenciable de dimensión 1 análoga a la de $S^1$ con la topología euclídea, luego $(M,i)$ con la inclusión es subvariedad regular por la Proposición 4.2.2.
 \end{solucion}
 
 \end{document}
