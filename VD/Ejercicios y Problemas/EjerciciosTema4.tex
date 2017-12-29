@@ -99,7 +99,7 @@ subvariedad regular.
 \begin{solucion}
 Sea $M$ una variedad diferenciable y $G\subseteq M$ un abierto al que se dota de estructura de subvariedad abierta de $M$. Entonces, por la Proposición 4.2.5 basta ver que $(G,i)$ con $i:G\hookrightarrow M$ es subvariedad de $M$. Para ello, tenemos que probar que $i$ es una inmersión inyectiva. 
 \begin{itemize}
-\item Por el Ejerci%cio 2.2 la inclusión es diferenciable. 
+\item Por el Ejercicio 2.2 la inclusión es diferenciable. 
 \item La inclusión siempre es inyectiva.
 \item Dado $p\in G$, veamos que $i_*:T_p(G)\to T_p(M)$ es inyectiva. Sea $v\in T_p(G)$ tal que $i_*v=0$. Entonces $\forall f\in\calF(G,M)$, 
 $$0=(i_*v)f =v(i\circ f)=v(f)$$
@@ -113,7 +113,7 @@ con lo que necesariamente $v=0$ como aplicación lineal, es decir, que debe ser 
 Probar que $S^n$ es subvariedad regular de $\R^{n+1}$.
 \end{ejercicio}
 \begin{solucion}
-Es un caso particular del ejercicio \ref{ejer:6}.
+Es un caso particular del Ejercicio \ref{ejer:6}.
 \end{solucion}
 
 \newpage
@@ -157,14 +157,14 @@ aplicación diferenciable. ¿Bajo qué condiciones mínimas se puede asegurar
 que $f|_M : M \to N$ es diferenciable?
 \end{ejercicio}
 \begin{solucion}
-Vamos a aplicar el lema de factorización para ver es suficiente que $f(M)\subseteq N$. Supongamos que $M$ es subvariedad con una aplicación $\iota$ y $N$ lo es con $g$. Sea $(\iota(M),i)$ tal que el representante de Imponiendo la condición anterior obtenemos el siguiente diagrama, donde $f|_M$ es la única aplicación que lo cierra
+Vamos a aplicar el lema de factorización para ver es suficiente que $f(M)\subseteq g(N)$ y que $N$ sea subvariedad regular. Supongamos que $M$ es subvariedad con una aplicación $ h$ y $N$ lo es con $g$. Imponiendo la condición anterior obtenemos el siguiente diagrama, donde $f|_M$ es la única aplicación que lo cierra
 \[
 \begin{tikzcd}
-M\arrow[r,"\iota"]\arrow[drr, dashed, "f|_M"']& \overline{M}\arrow[r,"f"] &\overline{N}\\
+M\arrow[r," h"]\arrow[drr, dashed, "f|_M"']& \overline{M}\arrow[r,"f"] &\overline{N}\\
 & & N\arrow[u, "g"']
 \end{tikzcd}
 \]
-Como $f$ es continua (por ser diferenciable), $f|_M$ también, luego aplicando el 1 del Lema de Factorización obtenemos el resultado.
+Es decir, tal que $f\circ  h = f|_M \circ g$. Por el segundo apartado del Lema de Factorización, al ser $N$ subvariedad regular $f|_M$ es continua y, aplicando el primer apartado de dicho lema, obtenemos el resultado.
 \end{solucion}
 
 \newpage
