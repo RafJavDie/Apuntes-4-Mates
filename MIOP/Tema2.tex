@@ -79,7 +79,7 @@ Sea $d^k \in\R^n$ la dirección desplazamiento y $a^k \in \R$ la longitud de pas
 \[
 \begin{cases}
 \text{Dado $x^0\in \R^n$}\\
-x^{k+1} = x^k - \alpha^k d^k
+x^{k+1} = x^k + \alpha^k d^k
 \end{cases}
 \]
 con $d^k\mid {d^k}'\nabla f(x^k)<0, \alpha^k>0\ \forall k$. En particular, si $d^k=-\nabla f(x)$ es la dirección de máximo decrecimiento local de $f$ en $x$ obtenemos el llamado \textbf{Método de máximo descenso}:
@@ -144,7 +144,7 @@ que se obtiene en $\alpha=\frac{1}{2}$, por lo que $x^1=\begin{pmatrix}
 \end{ej}
 
 \begin{defi}
-La sucesión $\{d^k\}$ se denomina de \textbf{tipo gradiente} si verifica que cualquier subsucesión que converge a un punto estacionario cumple: 
+La sucesión $\{d^k\}$ se denomina de \textbf{tipo gradiente} si verifica que cualquier subsucesión cuyo método que converge a un punto estacionario cumple: 
 \begin{enumerate}
 \item La subsucesión está acotada, i.e., $\exists M>0\mid ||d^k||<M\ \forall k$. 
 \item $\lim\sup_{k\in K}\nabla f(x^k)'d^k<0$. \label{gradiente}
@@ -176,7 +176,7 @@ $f(x^k)-f(\underbrace{x^k+\alpha^kd^k}_{x^{k+1}})\geq -\sigma\alpha^k\nabla f(x^
 
 Volvemos a \ref{simply} y tomamos límite. Entonces
 $$-\nabla f(\overline{x}+0\overline{\rho})'\overline{\rho}\leq-\sigma\nabla f(\overline{x})'\overline{\rho} \Longleftrightarrow \nabla f(\overline{x})'\overline{\rho}\geq\sigma\nabla f(\overline{x})'\overline{\rho} \Longleftrightarrow (1-\sigma)\nabla f(\overline{x})'\overline{\rho}\geq 0$$
-Por lo que $\nabla f(\overline{x})'\overline{\rho}>0$. Sin embargo, esto contradice punto \ref{gradiente} de la definición anterior. 
+Por lo que $\nabla f(\overline{x})'\overline{\rho}\geq 0$. Sin embargo, esto contradice punto \ref{gradiente} de la definición anterior. 
 $\QED$
 \end{dem}
 
