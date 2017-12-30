@@ -25,11 +25,21 @@ S=x^3ydx+\cos{z}dy+ydz
 \begin{solucion}
 \begin{enumerate}
 \item[]
+
 \item $S(X)=x^3yxe^z+\cos{z}(1+xyz)+yz\in\calF(\R^3)$. 
 
 $T(X,Y)=x^3e^z+e^x(1+xyz)2z+y(1+xyz)+xz\cos{y}+z$
 
 $T\otimes S(X,Y,X)=T(X,Y)S(X)$
+
+\begin{align*}
+T\otimes S &= \sum_{i,j,k=1}^3T\left(\parcial{}{x_i},\parcial{}{x_j}\right)S\left(\parcial{}{x_k}\right) dx_i\otimes dx_j\otimes dx_k \\
+&=
+x^5y dx\otimes dx \otimes dx + x^2\cos{z}dx\otimes dx\otimes dy + x^3y dx\otimes dx \otimes dx \otimes dz +\\
+&+ x^3dx\otimes dz \otimes dx + \cos{z}dx\otimes dz \otimes dy + ydx\otimes dz \otimes dz+\\
+&+ e^xyx^3 dy\otimes dx \otimes dx + e^x\cos{z}dy\otimes dx \otimes dy + e^xy dy\otimes dx \otimes dz \\
+&+ \dotsc
+\end{align*}
 \item $\theta=Alt(S)=S$ por ser $1$-forma. 
 
 $w= Alt(T)=f_1dx\land dy+f_2 dx\land dz + f_3 dy\land dz$.
@@ -109,7 +119,7 @@ Probar que la suma de tensores y el producto tensorial de tensores son tensores.
 \newpage
 
 \begin{ejercicio}{}
-$X=\frac{\partial}{\partial x} +y \frac{\partial}{\partial y}$. $Y=y\frac{\partial}{\partial x}$. $f(x,y)=(e^x,x+y)$. Entonces $f_\ast[X,Y}=[f_\ast X,f_\ast Y]$ donde $f$ sea diferenciable $(f_\ast X)g = X(g\circ f)\circ f^{-1}$.
+$X=\frac{\partial}{\partial x} +y \frac{\partial}{\partial y}$. $Y=y\frac{\partial}{\partial x}$. $f(x,y)=(e^x,x+y)$. Entonces $f_\ast[X,Y]	=[f_\ast X,f_\ast Y]$ donde $f$ sea diferenciable $(f_\ast X)g = X(g\circ f)\circ f^{-1}$.
 \end{ejercicio}
 \begin{solucion}
 \end{solucion}
