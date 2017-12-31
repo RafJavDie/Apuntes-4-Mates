@@ -34,6 +34,44 @@ Tomando el límite cuando $x\to∞$ se da la fórmula que buscabamos si $\frac{�
 \end{solucion}
 
 \newpage
+\begin{ejercicio}{2}
+\begin{enumerate}[(a)]
+	\item Probar que para todo $x > 0$ y todo $s$ con $\Re s > 0$ se tiene
+	\[ ζ(s) - \frac{1}{s-1} = \sum_{n≤x} \frac{1}{n^s} + \frac{x^{1-s}-1}{s-1} + \frac{\{x\}-\frac{1}{2}}{x^s} - s \int_x^{+∞} \frac{\{u\}-\frac{1}{2}}{u^{s+1}} du \]
+	\item Demostrar que existe y calcular el límite
+	\[ \lim_{s \to 1} \left(\sum_{n≤x} \frac{1}{n^s} + \frac{x^{1-s}-1}{s-1} + \frac{\{x\}-\frac{1}{2}}{x^s} - s \int_x^{+∞} \frac{\{u\}-\frac{1}{2}}{u^{s+1}} du\right) \]
+	\item Demostrar que
+	\[ ζ(s) = \frac{1}{s-1} + γ + \sum_{n=1}^{∞} \frac{(-1)^n}{n!} γ_n (s-1)^n \]
+	donde la serie de potencias tiene radio infinito, y $γ$ es la constante de Euler.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+	\item Consecuencia directa de los apuntes.
+	\item Veamos que ocurre en cada término:
+	\[ \lim_{s \to 1} \sum_{n≤x} \frac{1}{n^s} = \sum_{n≤x} \frac{1}{n} \]
+	\[ \lim_{s \to 1} \frac{x^{1-s}-1}{s-1} = - \log x \]
+	\[ \lim_{s \to 1} \frac{\{x\}-\frac{1}{2}}{x^s} = \frac{\{x\}-\frac{1}{2}}{x} \]
+	\[ \lim_{s \to 1} s \int_x^{∞} \frac{\{u\}-\frac{1}{2}}{u^{s+1}} du = \int_x^{∞} \frac{\{u\}-\frac{1}{2}}{u^2} du \]
+	Por lo tanto el límite es:
+	\[ \sum_{n≤x}\frac{1}{n} - \log x + \frac{\{x\}-\frac{1}{2}}{x} - \int_x^{∞} \frac{\{u\}-\frac{1}{2}}{u^2} du \]
+	\item Se tiene que $ζ(s)-\frac{1}{s-1}$ es analítica en todo el plano complejo. Tomamos como su desarrollo en serie con centro en $1$. $a_n=\frac{(-1)^n}{n!} γ_n$ para $n ≥ 1$. El valor de $a_0$ será igual al resultado del anterior apartado. Como no depende de $x$, podemos límite cuando $x$ tiende a infinito y obtenemos:
+	\[ ζ(s) - \frac{1}{s-1} = γ + \sum_{n=1}^{∞} \frac{(-1)^n}{n!} γ_n (s-1)^n \]
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{3}
+\begin{enumerate}
+	\item Demostrar que para $x > 1$ $\sum_{n=1}^{∞} e^{-πn^2 x} ≤ \frac{21}{20} e^{-πx}$.
+	\item Demostrar que para $0 < σ < 1$ se tiene $π^{-\frac{σ}{2}}Γ(σ/2) ζ(ο) ≤ -1.9$.
+	\item Deducir que $ζ(σ) < 0$ para $0 < σ < 1$.
+	\item La función zeta no se anula en el segmento $[0,1]$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+\newpage
 
 \begin{ejercicio}{4}
 \begin{itemize}
