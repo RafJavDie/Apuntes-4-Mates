@@ -53,9 +53,9 @@ cualquier $p\in M$ se verifica que $(g\circ f)_{*p}=g_{*f(p)}\circ f_{*p}$.
 \item[]
 \item $\forall h \in \mathcal{F}(g(f(p))$ tenemos que 
 \begin{gather*}
-((g\circ f)_{\ast p}u)h = u(h\circ(g \circ f)) = u ((h\circ g) \circ f) = (f_{\ast p}u(h \circ g)) = (g_{\ast f(p)}(f_{\ast p} u))h
+((g\circ f)_{\ast p}u)h = u(h\circ(g \circ f)) = u ((h\circ g) \circ f) = (f_{\ast p}u)(h \circ g) = (g_{\ast f(p)}(f_{\ast p} u))h
 \end{gather*}
-\item $\forall u$ y $\forall h \in \mathcal{F}(p)$ $((id_M)_{\ast p}u)h = u(h \circ id_M) = u(h)=(Id_{T_p(M)}(u))h$
+\item $\forall u$ y $\forall h \in \mathcal{F}(p)$ $((Id_M)_{\ast p}u)h = u(h \circ Id_M) = u(h)=(Id_{T_p(M)}(u))h$
 \item[2$'$] $\forall u \in T_p(M)$ $\exists \alpha\in \mathcal{F}((a,b),M)$ tal que $\alpha(0)=p$ y $\alpha'(0)=u$. Entonces
 $$
 (id_M)_{\ast p}u = ((id_M)\circ \alpha)'(0) = \alpha'(0) = u = Id_{T_p(M)}(u)
@@ -76,12 +76,11 @@ Veámoslo directamente $\forall g\in \mathcal{F}(f(p))$
  f_{\ast p}(\lambda u+\mu v)g = (\lambda u+\mu v)(g\circ f)= \lambda u(g \circ f)+\mu v(g \circ f) = (\lambda f_{\ast p} u + \mu f_{\ast p}v)g
 \end{gather*}
 \end{dem}
-En consecuencia, cada diferencial tiene asociada una matriz. Para calcularla, sean $(U,\vp=(x_1,\dots ,x_m))$ un
-s.l.c. de $M$ entorno de $p$ y $(V,\psi=(y_1,\dots ,y_n))$ un s.l.c. de $N$ entorno de $f(p)$. Para estas cartas
+En consecuencia, cada diferencial tiene asociada una matriz. Para calcularla consideramos un s.l.c. $(U,\vp=(x_1,\dots ,x_m))$  de $M$ entorno de $p$ y $(V,\psi=(y_1,\dots ,y_n))$ un s.l.c. de $N$ entorno de $f(p)$. Para estas cartas
 locales, las bases de $T_p(M)$ y $T_{f(p)}(N)$ son
 $$\left\{\left(\dep{x_1}\right)_p,\dots ,\left(\dep{x_m}\right)_p\right\}\mbox{ }{\rm y}\mbox{
-}\left\{\left(\dep{y_1}\right)_{f(p)},\dots ,\left(\dep{y_n}\right)_{f(p)}\right\},$$ respectivamente. Entonces,
-como
+}\left\{\left(\dep{y_1}\right)_{f(p)},\dots ,\left(\dep{y_n}\right)_{f(p)}\right\},$$
+Entonces, como
 $$f_{*p}\left(\dep{x_i}\right)_p=\sum_{j=1}^n\left[f_{*p}\left(\dep{x_i}\right)_p(y_j)\right]\left(\dep{y_j}
 \right)_{f(p)}=$$ $$=\sum_{j=1}^n\left[\left(\ddep{(y_j\circ f)}{x_i}\right)_p\right]\left(\dep{y_j}
 \right)_{f(p)},$$ la matriz de $f_{*p}$ respecto de estas bases viene dada por
@@ -97,7 +96,7 @@ por $J_p(f)$.
 es constante.
 \end{prop}
 \begin{dem}
-Sean $p\in M$ y $q=f(p)\in N$. Entonces $A=f^{-1}(\{q\})\neq\emptyset$. Además, $A$ es cerrado por continuidad de $f$ en un espacio T1. Veamos que $A$ es abierto para probar que $A=M$. Sea $\overline{p}\in A$ arbitrario tal que $f(\overline{p})=q$. Sean $(U,\varphi=(x_1,\dots,x_n))$ carta en $M$ tal que $\overline{p}\in U$ y $(V,\psi=(y_1,\dots,y_n))$ en $N$ tal que $q\in V$. Podemos suponer que $U$ es conexo pues en caso contrario bastaría tomar una de sus componentes conextas, y $f(U)\subseteq V$. Así, $\forall \tilde{p}\in U,\ \forall i=1,\dots, m$ $f_*\left(\frac{\partial}{\partial x_i}\right)_{\tilde{p}}=0\in T_{f(\tilde{p})}(N)$. En particular, $f_*\left(\frac{\partial}{\partial x_i}\right)_{\tilde{p}}y_j=0\ \forall j=1,\dots, n$, es decir, 
+Sean $p\in M$ y $q=f(p)\in N$. Entonces $A=f^{-1}(\{q\})\neq\emptyset$. Como estamos en espacios $T_1$, $\{q\}$ es cerrado, luego $A$ también lo es por continuidad. Veamos que $A$ es abierto para probar que $A=M$. Sea $\overline{p}\in A$ arbitrario tal que $f(\overline{p})=q$. Sean $(U,\varphi=(x_1,\dots,x_n))$ carta en $M$ tal que $\overline{p}\in U$ y $(V,\psi=(y_1,\dots,y_n))$ en $N$ tal que $q\in V$. Podemos suponer que $U$ es conexo pues en caso contrario bastaría tomar una de sus componentes conextas, y $f(U)\subseteq V$. Así, $\forall \tilde{p}\in U,\ \forall i=1,\dots, m$ $f_*\left(\frac{\partial}{\partial x_i}\right)_{\tilde{p}}=0\in T_{f(\tilde{p})}(N)$. En particular, $f_*\left(\frac{\partial}{\partial x_i}\right)_{\tilde{p}}y_j=0\ \forall j=1,\dots, n$, es decir, 
 $$\left.\frac{\partial(y_j\circ f)}{\partial x_i}\right|_{\tilde{p}}=\left.\frac{\partial(u_j\circ\psi\circ f\circ\varphi^{-1})}{\partial u_i}\right|_{\varphi(\tilde{p})}$$
 Al ser $\varphi(U)$ conexo, exto implica que $\psi\circ f\varphi^{-1}$ es constante, luego en particular, $\forall \tilde{p}\in U$, 
 $$\psi(f(\tilde{p}))=\psi\circ f\varphi^{-1}(\varphi(\tilde{p}))=\psi\circ\varphi^{-1}(\varphi(\overline{p}))=\psi(f\overline{p}))=\psi(q)$$
@@ -228,7 +227,7 @@ subvariedad de $N$. Entonces, $(M,i)$ es subvariedad regular de $N$ si y sólo s
 de $N$.
 \end{prop}
 \begin{dem}
-$id$ es homomorfimo si y solo si $T_M = T_{N}|_M$.
+$Id$ es homeomorfimo si y solo si $T_M = T_{N}|_M$.
 \end{dem}
 \section{El Teorema de la Función Inversa.}
 \hs Dada una subvariedad $(M,f)$ de una variedad diferenciable
@@ -304,11 +303,11 @@ $p$.
 \begin{dem}
 Sea $V$ un entorno abierto en $M$ de $p$ tal que $f_i \in \mathcal{F}(V)$ para todo $i=1,\dots,m$. Sea $ψ : V \to \R^m$ dado por $ψ(q) = (f_1(q),\dots,f_m(q))$. Veamos que $ψ \in \mathcal{F}(V,\R^m)$ y $ψ_{*p}$ es isomorfismo.
 
-Por el problema 2.9, $ψ \in \mathcal{F}(V,\R^m)$ si y sólo si cada componente $f_i \in \mathcal{F}(V,\R)$, que se da por hipótesis. Por otro lado, $ψ_{*p}$ es isomorfismo si y sólo si $ψ_p^*$ es isomorfismo. Tomamos la base $\langle (du_i)_{ψ(p)}\rangle_{i=1,\dots,m}$ de $T_{ψ(p)}^*(\R^m)$. La imagen de esta base es:
+Por el Problema 2.9, $ψ \in \mathcal{F}(V,\R^m)$ si y sólo si cada componente $f_i \in \mathcal{F}(V,\R)$, que se da por hipótesis. Por otro lado, $ψ_{*p}$ es isomorfismo si y sólo si $ψ_p^*$ es isomorfismo. Tomamos la base $\langle (du_i)_{ψ(p)}\rangle_{i=1,\dots,m}$ de $T_{ψ(p)}^*(\R^m)$. La imagen de esta base es:
 \[ \langle ψ_p^*((du_i)_{ψ(p)})\rangle = \langle (d(u_i \circ ψ))_p \rangle = \langle (df_i)_p \rangle\]
 Como $(df_i)_p$ son $m$ elementos linealmente independientes, son una base. Luego $ψ_p^*$ es una aplicación lineal que transforma base en base, luego es isomorfismo.
 
-Una vez visto eso, aplicando el teorema de la unción invesa, existe $U$ entorno abierto en $M$ de $p$ tal que $ψ(U)$ es un abierto en $\R^m$ y $ψ|_U$ es difeomorfismo, luego $(U,φ=(f_1|_U,\dots,f_m|_U))$ es uuna carta admisible en $M$.
+Una vez visto eso, aplicando el teorema de la función inversa, existe $U$ entorno abierto en $M$ de $p$ tal que $ψ(U)$ es un abierto en $\R^m$ y $ψ|_U$ es difeomorfismo, luego $(U,φ=(f_1|_U,\dots,f_m|_U))$ es una carta admisible en $M$.
 \end{dem}
 
 \begin{coro}
@@ -429,7 +428,7 @@ No siempre esta aplicación es diferenciable.
 \[
 \begin{tikzcd}
 M\arrow[r, rightarrow,  "f"]\arrow[dr, dashrightarrow, "f_0"'] & N\\
- & G \arrow[u, rightarrow, "g"']
+ & P \arrow[u, rightarrow, "g"']
 \end{tikzcd}
 \]
 \begin{teorema}
