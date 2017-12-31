@@ -382,7 +382,15 @@ Probar que los siguientes lenguajes sobre el alfabeto $Σ = \{0, 1\}$ no son reg
 \item $L = \{0^n1^m : 0 < n ≤ m\}$.
 \end{itemize}
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion}\mbox{}
+\begin{itemize}
+	\item Supongamos que $L$ fuera regular. Sea $M$ una AFD tal que $L(M)=L$ y $n$ el número de estados en $M$. Sea $x \in L$ tal que $x=0\dots01\dots1$ de longitud $2n$. Por el lema del bombeo, existen $u$, $v$ y $w$ en $\{0,1\}^*$ tal que $x=uvw$, $v \neq ϵ$, $|uv|≤n$ y $uv^kw \in L$ para todo $k \in \N$. Como $|uv|≤n$, $v$ tiene $m$ $0$'s con $m ≤ n$. Tomando $k=n$, tenemos que $uv^nw \in L$. Sin embargo, $v^n$ tiene $n\cdot m$ $0$'s, mientras $w$ tiene como mucho $n$ $1$'s. Contradicción.
+	\item Supongamos que $L$ fuera regular. Sea $M$ una AFD tal que $L(M)=L$ y $n$ el número de estados en $M$. Sea $x=0\dots0\in L$ de longitud $p$ con $p > n+1$. Aplicamos el lema del bombeo para descomponer $x=uvw$. Como $|uv| ≤ n < p$, $|w|≥2$. Tenemos que $uv^kw \in L$ para todo $k \in \N$. Sin embargo, $|uv^{|uw|}w|=|uw|+|v||uw|$, que es divisible por $|uw|>1$, luego no es primo. Contradicción.
+	\item Véase el apartado anterior.
+	\item Supongamos que $L$ fuera regular. Sea $M$ una AFD tal que $L(M)=L$ y $n$ el número de estados en $M$. Sea $x=0^n1^{n+n!}\in L$. Aplicamos el lema del bombeo para descomponer $x=uvw$. Como $|uv|≤n$, $v=0^m$ con $m≤n$. Sea $w=0^a1^b$. Consideramos la palabra $uv^{1+n!/m}w$. Su número de $0$'s es $n+\frac{n!}{m}\cdot m=n+n!$, que es el mismo su número de $1$'s, luego $uv^{n!/m}w \notin L$. Contradicción.
+	\item Supongamos que $L$ fuera regular. Sea $M$ una AFD tal que $L(M)=L$ y $n$ el número de estados en $M$. Tomamos $x=0^{n!}1^{2n!}$. Aplicamos el lema del bombeo para descomponer $x=uvw$. Como $|uv|≤n$, $v=0^m$ con $m≤n$. Consideramos la palabra $uv^{1+n!/m}w$. Su número de $0$'s es $n!+\frac{n!}{m}\cdot m=2n!$, que es el mismo su número de $1$'s, luego $uv^{n!/m}w \notin L$. Contradicción.
+	\item Supongamos que $L$ fuera regular. Sea $M$ una AFD tal que $L(M)=L$ y $n$ el número de estados en $M$. Tomamos $x=0^n1^n$. Aplicamos el lema del bombeo para descomponer $x=uvw$. Como $|uv|≤n$, $v=0^m$ con $1≤m≤n$. Basta observar entonces que $uv^2w$ tiene $n+m$ $0$'s y $n$ $1$'s, luego $uv^2w \notin L$. Contradicción.
+\end{itemize}
 \end{solucion}
 
 \newpage
