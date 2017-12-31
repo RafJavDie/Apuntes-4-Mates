@@ -415,6 +415,9 @@ $$L = \{a^pb^m : p \text{ es primo y }m > 0\} + \{a^n
 no es regular.
 \end{ejercicio}
 \begin{solucion}
+Supongamos que el lenguaje es regular y su autómata tiene $n$ estados. Como el lenguaje de la derecha es regular, vamos a probar que el de la izquierda no lo es, pues de lo contrario la suma de regulares daría un lenguaje regular. 
+
+Sea $x=a^pb^m$ con $p\geq n$ y $m\geq 1$. Entonces por el lema del bombeo (qué feo suena en español) tenemos una descomposición $x=uvw$ con $v\neq\varepsilon$ y $|uv|\leq n$. Entonces $v=a^s$ para algún $1\leq s\leq n\leq p$. Así que $u=a^l$ para algún $0\leq l\leq n-s$. Además, $w=a^tb^m$ con $t=n-s-l$. Entonces, por el lema tendríamos que $uv^kw\in L\ \forall k\in\N$, lo cual es equivalente a decir que $a^la^{ks}a^tb^m\in L\ \forall k\in\N$. Entonces basta elegir $k$ de modo que $l+ks+t$ no sea primo para llegar a una contradicción.
 \end{solucion}
 
 
