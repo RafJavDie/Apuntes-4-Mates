@@ -4,7 +4,6 @@
 \usetikzlibrary{automata,positioning}
 \usepackage{mathdots}
 \usepackage{listings}
-
 %--------------------------------------------------------
 \begin{document}
 
@@ -287,11 +286,43 @@ $$
 
 \begin{ejercicio}{15}
 Sea $G$ la gramática regular que tiene como producciones:
-$$\{S \rightarrow abA, S \rightarrow B, S \rightarrow baB, S \rightarrow \varepsilon, A \rightarrow b, B \rightarrow aS, A \rightarrow b\}$$
+$$\{S \rightarrow abA, S \rightarrow B, S \rightarrow baB, S \rightarrow \varepsilon, A \rightarrow bS, B \rightarrow aS, A \rightarrow b\}$$
 siendo $S$ el símbolo inicial, $a, b$ terminales y $A,B$ variables. Construir un $\varepsilon$-AFND que acepte el
 lenguaje generado por $G$.
 \end{ejercicio}
 \begin{solucion}
+Desarrollemos un poco el árbol de derivación de $G$:
+\[
+\begin{tikzpicture}
+  \node {S}
+    child { node {abA} 
+      child { node {abbS} } 
+      child { node {abb} } }
+    child { node {B} 
+      child { node {aS} } }
+    child { node {baB} 
+      child { node {baaS} } }
+    child { node {ϵ} };
+\end{tikzpicture}
+\]
+Entonces $G$ genera el lenguage $(a+abb+baa)^*$. Construimos un $ϵ$-AFND que acepte este lenguaje:
+\[
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
+   \node[state,initial,accepting] (q_0)   {$q_0$}; 
+   \node[state] (q_1) [above right=of q_0] {$q_1$};
+   \node[state] (q_2) [below right=of q_0] {$q_2$};
+   \node[state] (q_3) [right=of q_1] {$q_3$};
+   \node[state] (q_4) [right=of q_2] {$q_4$};
+    \path[->] 
+    (q_0) edge node [below] {a} (q_1)
+          edge node [below left] {b} (q_2)
+    (q_1) edge [bend right] node [above] {ϵ} (q_0)
+          edge node {b} (q_3)
+    (q_3) edge node {b} (q_0)
+    (q_2) edge node [below] {a} (q_4)
+    (q_4) edge node [above] {a} (q_0);
+\end{tikzpicture}
+\]
 \end{solucion}
 
 \newpage
