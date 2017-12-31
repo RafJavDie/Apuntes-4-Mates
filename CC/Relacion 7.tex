@@ -254,7 +254,7 @@ donde $S$ es el símbolo inicial, $\{x, y, z\}$ son terminales y $\{S,N,M\}$ var
 \end{figure}\
 \end{solucion}
 
-\newpage
+%\newpage
 
 \begin{ejercicio}{14}
 La siguiente gramática genera el lenguaje $\underline{0}^*\underline{1}(\underline{0} + \underline{1})^*$:
@@ -330,9 +330,83 @@ Entonces $G$ genera el lenguage $(a+abb+baa)^*$. Construimos un $ϵ$-AFND que ac
 \begin{ejercicio}{16}
 Describir una gramática regular que genere el lenguaje aceptado por el siguiente
 autómata:
+\[
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
+   \node[state,initial] (q_0)   {$q_0$}; 
+   \node[state] (q_4) [right=of q_0] {$q_4$};
+   \node[state] (q_1) [below =of q_4] {$q_1$};
+   \node[state, accepting] (q_3) [right=of q_4] {$q_3$};
+   \node[state, accepting] (q_2) [below=of q_3] {$q_2$};
+    \path[->] 
+    (q_0) edge node [above] {b} (q_1)
+          edge node [above] {a,b} (q_4)
+    (q_1) edge node [above] {b} (q_2)
+    	  edge [bend right] node [left] {a} (q_4)
+    (q_3) edge node {a} (q_2)
+    	  edge [bend right] node [above right] {b} (q_0)
+    (q_2) edge node [below] {a} (q_4)
+    	  edge [loop right] node {a,b} (q_2)
+    (q_4) edge node [above] {$\varepsilon$} (q_3)
+          edge [loop above] node {a} (q_4)
+     	  edge [bend right] node [right] {a} (q_1);
+\end{tikzpicture}
+\]
+\end{ejercicio}
+\begin{solucion}
+Definimos el conjunto de variables $\{S, V_1, V_2, V_3,V_4\}$ y los terminales $\{a,b\}$.
+Entonces la gramática queda determinada por las siguientes reglas de producción:
+\begin{align*}
+&S\to aV_4 & S\to b V_4 & & S\to b V_1\\
+&V_1\to aV_4 & V_1\to b V_2 \\
+&V_2\to aV_2 & V_2\to bV_2 & & V_2\to aV_4\\
+& V_3\to bS & V_3\to aV_2\\
+& V_4\to V_3 & V_4\to aV_1 & &V_4\to a V_4
+\end{align*}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{17}
+Probar que los siguientes lenguajes sobre el alfabeto $Σ = \{0, 1\}$ no son regulares:
+\begin{itemize}
+\item $L = \{x ∈ Σ^*
+: x$ contiene el mismo número de 0’s y de 1’s$\}$.
+
+\item $L = \{x ∈ Σ^*
+: |x|$ es primo$\}$.
+\item $L = \{0^p
+: p$ primo$\}$.
+\item $L = \{0^n1^m : n \neq m\}$.
+\item $L = \{0^n1^{2n}
+: n \neq 0\}$.
+\item $L = \{0^n1^m : 0 < n ≤ m\}$.
+\end{itemize}
 \end{ejercicio}
 \begin{solucion}
 \end{solucion}
 
-INTENTAR HACER LOS DEL PUMPING LEMMA (17,18,19)
+\newpage
+
+\begin{ejercicio}{18}
+Sean $L_1$ y $L_2$ dos lenguajes sobre un alfabeto $Σ$. Definimos el cociente por la derecha
+de $L_1$ y $L_2$ como el lenguaje:
+$$L_1/L_2 = \{x ∈ Σ^*
+: \text{ existe } y ∈ L_2\text{ tal que }xy ∈ L_1\}.$$
+Probar que si $L_1$ y $L_2$ son regulares entonces $L_1/L_2$ también es regular.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{19}
+Probar que el lenguaje sobre el alfabeto $Σ = \{a, b\}$,
+$$L = \{a^pb^m : p \text{ es primo y }m > 0\} + \{a^n
+: n ≥ 0\}$$
+no es regular.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+
 \end{document}
