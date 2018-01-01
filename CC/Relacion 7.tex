@@ -337,17 +337,76 @@ donde $S$ es el símbolo inicial, $\{x, y, z\}$ son terminales y $\{S,N,M\}$ var
 \item Encontrar una expresión regular que genere el lenguaje generado por $\Gamma$.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}\
+\begin{solucion}
+Tenemos que la siguiente $ϵ$-AFND acepta el lenguaje generado por $Γ$:
+\[ \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+   \node[state,initial] (S)  {$S$};
+   \node[state] (N) [right=of S] {$N$};
+   \node[state] (M) [right=of N] {$M$};
+   \node[state,accepting] (f) [below=of N] {$f$};
+    \path[->]
+    (S) edge node {x} (N)
+        edge node {x} (f)
+    (N) edge [bend left] node {y} (M)
+        edge node {y} (f)
+    (M) edge [bend left] node {z} (N)
+        edge node {z} (f);
+\end{tikzpicture} \]
 
-\begin{figure}[h!]
-\includegraphics[scale=0.1]{Automatas/13-1}
-\end{figure}
-\begin{figure}[h!]
-\includegraphics[scale=0.12]{Automatas/13-2}
-\end{figure}\
+Para encontrar la expresión regular del lenguaje, tomemos primero el AFNDG que acepta el lenguaje:
+
+\[ \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+   \node[state,initial] (q_I)  {$q_I$};
+   \node[state] (S) [right=of q_I] {$S$};
+   \node[state] (N) [right=of S] {$N$};
+   \node[state] (M) [right=of N] {$M$};
+   \node[state] (f) [below=of N] {$f$};
+   \node[state,accepting] (q_A) [right=of f] {$q_A$};
+    \path[->]
+    (q_I) edge node {ϵ} (S)
+    (S) edge node {x} (N)
+        edge node {x} (f)
+    (N) edge [bend left] node {y} (M)
+        edge node {y} (f)
+    (M) edge [bend left] node {z} (N)
+        edge node {z} (f)
+    (f) edge node {ϵ} (q_A);
+\end{tikzpicture} \]
+y vamos eliminando estados:
+\[ \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+   \node[state,initial] (q_I)  {$q_I$};
+   \node[state] (S) [right=of q_I] {$S$};
+   \node[state] (N) [right=of S] {$N$};
+   \node[state] (f) [below=of N] {$f$};
+   \node[state,accepting] (q_A) [right=of f] {$q_A$};
+    \path[->]
+    (q_I) edge node {ϵ} (S)
+    (S) edge node {x} (N)
+        edge [bend right] node [below] {x} (f)
+    (N) edge node {yz+y} (f)
+        edge [loop right] node {yz} ()
+    (f) edge node {ϵ} (q_A);
+\end{tikzpicture} \]
+\[ \begin{tikzpicture}[shorten >=1pt,node distance=4cm,on grid,auto]
+   \node[state,initial] (q_I)  {$q_I$};
+   \node[state] (S) [right=of q_I] {$S$};
+   \node[state] (f) [right=of S] {$f$};
+   \node[state,accepting] (q_A) [right=of f] {$q_A$};
+    \path[->]
+    (q_I) edge node {$ϵ$} (S)
+    (S) edge node {$x(yz)^*(yz+y)+x$} (f)
+    (f) edge node {$ϵ$} (q_A);
+\end{tikzpicture} \]
+\[ \begin{tikzpicture}[shorten >=1pt,node distance=4cm,on grid,auto]
+   \node[state,initial] (q_I)  {$q_I$};
+   \node[state,accepting] (q_A) [right=of q_I] {$q_A$};
+    \path[->]
+    (q_I) edge node {$x(yz)^*(yz+y)+x$} (q_A);
+\end{tikzpicture} \]
+Al final obtenemos la expresión regular $x(yz)^*(yz+y)+x$.
 \end{solucion}
 
-%\newpage
+\newpage
 
 \begin{ejercicio}{14}
 La siguiente gramática genera el lenguaje $\underline{0}^*\underline{1}(\underline{0} + \underline{1})^*$:
