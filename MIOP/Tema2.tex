@@ -199,7 +199,7 @@ Utilizamos la continuidad de de la norma y $\nabla f$ para decir que $\forall \v
 \end{equation}
 Entonces definimos $S:=\{x\mid ||x-x^*||<\varepsilon, f(x)< f(x^*)+\phi(r)\}$. Supongamos que $x^k\in S$, entonces para $t=||x^*-x^k||$, $\phi(t)\leq f(x^k)-f(x^*)<\phi(r)$. Como $\phi$ es monótona, $||x^k-x^*||<r$, por lo que podemos aplicarle \ref{estrellita} a $x^k$. Veamos que $x^{k+1}\in S$. Tenemos que probar dos desigualdades.
 \begin{itemize}
-\item $||x^{k+1}-x^k||=||x^k+\alpha^kd^k-x^*||=||x^k-x^*+\alpha^kd^k||\leq ||x^k-x^*||+\alpha^k||d^k||\leq\\ ||x^k-x^*||+sc||\nabla f(x^k)||<\varepsilon$
+\item $||x^{k+1}-x^*||=||x^k+\alpha^kd^k-x^*||=||x^k-x^*+\alpha^kd^k||\leq ||x^k-x^*||+\alpha^k||d^k||\leq\\ ||x^k-x^*||+sc||\nabla f(x^k)||<\varepsilon$
 \item $f(x^{k+1})<f(x^k)<f(x^*)$
 \end{itemize}
 Por lo que $x^{k+1}\in S$. Además $S$ está contenido en un compacto (una bola cerrada de radio $\varepsilon$), por lo que toda sucesión contiene una subsucesión convergente, esto es, $\{x^l\}_{l>k}$ contiene una subsucesión convergente. Y como $x^*$ es el único punto estacionario, la sucesión debe converger hacia dicho punto $x^*$. $\QED$
