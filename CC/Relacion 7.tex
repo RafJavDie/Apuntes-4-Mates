@@ -9,7 +9,7 @@
 
 \title{Ciencias de la Computación}
 
-\author{Javier Aguilar Martín}
+\author{Javier Aguilar Martín, Diego Pedraza López4}
 \maketitle
 
 \begin{ejercicio}{1}
@@ -403,7 +403,15 @@ $$L_1/L_2 = \{x ∈ Σ^*
 Probar que si $L_1$ y $L_2$ son regulares entonces $L_1/L_2$ también es regular.
 \end{ejercicio}
 \begin{solucion}
-Basta comprobar después de hacer el tonto un rato que $L_1/L_2=(\Sigma^*\cdot L_2)\cap L_1$. Como la concatenación y la intersección de lenguajes regulares es regular, el cociente por la derecha es regular.
+Consideramos el AFD $M=(Q,Σ,δ,q_0,F)$ tal que $L(M)=L_1$. Definimos una AFD $M'=(Q,Σ,δ,q_0,F')$, idéntica a $M$ excepto por los estados finales $F'$ que definimos como:
+\[ F' = \{q \in Q \mid \exists y \in L_2 \text{ tal que }\hat{δ}(q,y) \in F \}\]
+El lenguaje aceptado por $M'$ es:
+\begin{align*}
+	L(M') & = \{x \in Σ^* : \hat{δ}(q_0,x) \in F'\} = \{x \in Σ^* : \exists y \in L_2 \text{ tal que } \hat{δ}(\hat{δ}(q_0,x),y) \in F\} =\\
+	& = \{x \in Σ^* : \exists y \in L_2 \text{ tal que } \hat{δ}(q_0,xy) \in F\} = \{x \in Σ^* : \exists y \in L_2 \text{ tal que } xy \in L_1\}=\\
+	& = L_1/L_2
+\end{align*}
+Obsérvese que no ha sido necesaria la hipótesis de que $L_2$ sea regular.
 \end{solucion}
 
 \newpage
