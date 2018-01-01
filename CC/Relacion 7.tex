@@ -55,6 +55,75 @@ Para cada uno de los siguientes lenguajes sobre el alfabeto $\Sigma=\{a,b\}$, co
 
 \begin{ejercicio}{2}
 Describe el lenguaje aceptado por cada uno de los siguientes autómatas
+
+\begin{enumerate}
+	\item[$M_1$:]
+	\[
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
+   \node[state,initial] (q_0)   {$q_0$}; 
+   \node[state,accepting] (q_1) [right=of q_0] {$q_1$};
+   \node[state] (q_2) [below=of q_1] {$q_2$};
+   \node[state] (q_3) [below=of q_0] {$q_3$};
+    \path[->] 
+    (q_0) edge [bend left] node {a} (q_1)
+          edge node {b} (q_3)
+    (q_1) edge [bend left] node {b} (q_0)
+          edge node {a} (q_2)
+    (q_2) edge node {a,b} (q_3)
+    (q_3) edge [loop below] node {a,b} ();
+\end{tikzpicture}
+\]
+
+	\item[$M_2$:] 
+	\[ \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
+   \node[state,initial] (q_0)  {$q_0$}; 
+   \node[state] (q_1) [right=of q_0] {$q_1$};
+   \node[state,accepting] (q_2) [right=of q_1] {$q_2$};
+   \node[state] (q_3) [below=of q_2] {$q_3$};
+   \node[state,accepting] (q_4) [below=of q_1] {$q_1$};
+    \path[->] 
+    (q_0) edge node {a} (q_1)
+          edge node {b} (q_4)
+    (q_1) edge node {a} (q_2)
+          edge [loop above] node {b} ()
+    (q_2) edge node {a,b} (q_3)
+    (q_3) edge [loop right] node {a,b} ()
+    (q_4) edge node {a,b} (q_3);
+\end{tikzpicture} \]
+
+	\item[$M_3$:]
+	\[ \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
+   \node[state,initial,accepting] (q_0)  {$q_0$}; 
+   \node[state] (q_1) [right=of q_0] {$q_1$};
+   \node[state] (q_2) [right=of q_1] {$q_2$};
+   \node[state] (q_3) [below=of q_1] {$q_3$};
+    \path[->] 
+    (q_0) edge [bend left] node {a} (q_1)
+          edge [bend right] node {b} (q_3)
+    (q_1) edge [bend left] node {b} (q_0)
+          edge [bend left] node {a} (q_2)
+    (q_2) edge [bend left] node {b} (q_1)
+          edge [bend left] node {a} (q_3)
+    (q_3) edge [loop below] node {a,b} ();
+\end{tikzpicture} \]
+
+	\item[$M_4$:]
+	\[ \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
+   \node[state,initial,accepting] (q_0)  {$q_0$}; 
+   \node[state] (q_1) [above=of q_0] {$q_1$};
+   \node[state] (q_2) [below=of q_0] {$q_2$};
+   \node[state] (q_3) [right=of q_0] {$q_3$};
+    \path[->] 
+    (q_0) edge [bend right] node {b} (q_1)
+          edge [bend left] node {a} (q_2)
+    (q_1) edge [bend right] node {a} (q_0)
+          edge [bend left] node {b} (q_3)
+    (q_2) edge [bend left] node {b} (q_0)
+          edge [bend right] node {a} (q_3)
+    (q_3) edge [loop right] node {a,b} ();
+\end{tikzpicture} \]
+\end{enumerate}
+
 \end{ejercicio}
 \begin{solucion}\
 \begin{enumerate}
@@ -73,6 +142,30 @@ Vamos a resolverlo también aplicando el método de la diapositiva 26.
 
 \begin{ejercicio}{3}
 ¿Cuáles de las siguientes palabras son aceptadas por el siguiente $\varepsilon$-AFND?
+\[ \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
+   \node[state,initial,accepting] (q_0)  {$q_0$}; 
+   \node[state] (q_1) [right=of q_0] {$q_1$};
+   \node[state] (q_2) [right=of q_1] {$q_2$};
+   \node[state] (q_3) [right=of q_2] {$q_3$};
+   \node[state] (q_4) [below=of q_1] {$q_4$};
+   \node[state] (q_5) [left=of q_4] {$q_5$};
+    \path[->] 
+    (q_0) edge node {a} (q_1)
+    (q_1) edge node {b} (q_2)
+          edge node {ϵ} (q_4)
+    (q_2) edge node {a} (q_3)
+          edge [bend left] node {b} (q_4)
+    (q_4) edge node {b} (q_0)
+          edge node {b} (q_5)
+    (q_5) edge node {a} (q_0);
+\end{tikzpicture} \]
+
+\begin{enumerate}
+	\item $aa$.
+	\item $aba$.
+	\item $abb$.
+	\item $abab$.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}\
 \begin{enumerate}
