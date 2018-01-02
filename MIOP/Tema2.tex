@@ -411,12 +411,12 @@ $$(x^k-s\nabla f(x^k)-\overline{x}^k)'(x-\overline{x}^k)\leq 0, \forall x\in X.$
 En particular esto se verifica para $x=x^k$, de donde obtenemos haciendo el producto
 $$||x^k-\overline{x}^k||-s\nabla f(x^k)'(x^k-\overline{x}^k)\leq 0$$
 Despejando
-$$\nabla f(x^k)'(x^k-\overline{x}^k)\leq -\frac{1}{s}||x^k-\overline{x}^k||^2$$
+$$\nabla f(x^k)'(\overline{x}^k-x^k)\leq -\frac{1}{s}||x^k-\overline{x}^k||^2$$
 Ahora podemos tomar límite superior
-$$\limsup \nabla f(x^k)'(x^k-\overline{x}^k)\leq \limsup-\frac{1}{s}||x^k-\overline{x}^k||^2=\limsup-\frac{1}{s}||x^k-[x^k-s\nabla f(x^k)]||^2$$
+$$\limsup \nabla f(x^k)'(\overline{x}^k-x^k)\leq \limsup-\frac{1}{s}||x^k-\overline{x}^k||^2=\limsup-\frac{1}{s}||x^k-[x^k-s\nabla f(x^k)]||^2$$
 La proyección ortogonal y todas las demás funciones que aparecen son continuas, por lo que podemos intercambiar el límite con ellas
-$$\limsup \nabla f(x^k)'(x^k-\overline{x}^k)\leq -\frac{1}{s}||\overline{x}-[\overline{x}-s\nabla f(\overline{x})]||^2$$
-Pero por no ser estacionario, $\overline{x}-[\overline{x}-s\nabla f(\overline{x})]\neq 0$. Por tanto $\limsup \nabla f(x^k)'(x^k-\overline{x}^k)<0$, lo que prueba el resultado. $\QED$
+$$\limsup \nabla f(x^k)'(\overline{x}^k-x^k)\leq -\frac{1}{s}||\overline{x}-[\overline{x}-s\nabla f(\overline{x})]||^2$$
+Pero por no ser estacionario, $\overline{x}-[\overline{x}-s\nabla f(\overline{x})]\neq 0$. Por tanto $\limsup \nabla f(x^k)'(\overline{x}^k-x^k)<0$, lo que prueba el resultado. $\QED$
 \end{enumerate}
 \end{dem}
 
