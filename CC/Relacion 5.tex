@@ -99,8 +99,8 @@ Sea $A \subseteq \N$. Probar que son equivalentes:
 	\begin{align*}
 	y \in \text{rang}(f) & \Leftrightarrow (\exists x) (f(x)=y)\\
 	& \Leftrightarrow (\exists x)(\exists z) (\mathcal{T}_n(x,e,z) \land l(z) = y)\\
-	& \Leftrightarrow (\exists x) (\exists t) (\texttt{STEP}(x,e,t)) \land ((di(x,e,t))_1 = y)\\
-	& \Leftrightarrow (\exists z) (\texttt{STEP}(l(z),e,r(z))) \land ((di(l(z),e,r(z))_1 = y)
+	& \Leftrightarrow (\exists x) (\exists t) (\texttt{STEP}(x,e,t)) \land ((r(\texttt{di}(x,e,t)))_1 = y)\\
+	& \Leftrightarrow (\exists z) (\texttt{STEP}(l(z),e,r(z))) \land ((r(\texttt{di}(l(z),e,r(z)))_1 = y)
 \end{align*}
 \end{itemize}
 \end{solucion}
@@ -148,6 +148,30 @@ $x\in A\sii x\in\text{rang}(f)\Leftrightarrow (\exists y)(f(x)=y)$, que es recur
 Está claro que $f'\in\mathcal{R}$. Definimos $f(x)=(f'(x))_x$. Entonces $f\in\mathcal{R}$ y $rang(f)=A$. Es obvio que $rang(f)\subseteq rang(g)$. Y si $x\in rang(g)\Rightarrow(\exists u)(g(u)=x)\Rightarrow (\exists u)(g(u)\in f'(u))\Rightarrow (\exists u)(\exists i)_{\leq u} (x=f(i))$. 
 
 \end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{8}
+Sea $A \subseteq \N$ infinito y r.e. Probar que existe $B \subseteq A$ recursivo e infinito.
+\end{ejercicio}
+\begin{solucion}
+Por el teorema de la enumeración existe $f\in\mathcal{P}$ tal que $A=\{f(0),f(1),\dots\}=rang(f)$. Sea $i\in\mathcal{R}$ definida como sigue
+\begin{align*}
+&i(0)=0\\
+&i(n)=(\mu n)(f(n)> f(i(n-1)))
+\end{align*}
+Efectivamente $i\in\mathcal{R}$. Si definimos ahora $g(x)=f(i(x))$, entonces $g\in\mathcal{R}$ por composición y es creciente, por lo que aplicando el ejercicio \ref{ejer:6}, $rang(g)$ es recursivo. Claramente $rang(g)$ es un conjunto infinito y además $rang(g)\subseteq A$, por lo que hemos probado el resultado.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{11}
+¿Es cierto que toda función total $f : \N^n \to \N$ cuyo rango sea un conjunto finito es
+recursiva?
+\end{ejercicio}
+\begin{solucion}
+Basta considerar la función característica de cualquier conjunto recursivamente enumerable no recursivo. 
 \end{solucion}
 
 \end{document}
