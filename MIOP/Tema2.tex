@@ -270,7 +270,10 @@ Por continuidad de $\nabla g, \forall\varepsilon/M>0\ \exists\delta'\leq\delta$ 
 $$||x^{k+1}-x^*|| \leq M\int_0^1\frac{\varepsilon}{M} dt ||x^k-x^*||=\varepsilon ||x^k-x^*||.$$
 En definitiva, $\forall\varepsilon>0, ||x^{k+1}-x^*||\leq\varepsilon||x^k-x^*||$, lo que significa que $$\lim_{k\to\infty}\frac{||x^{k+1}-x^*||}{||x^k-x^*||}=0.$$
 \item[b)] En \ref{estrella} aplicamos que $\nabla g$ es lipschitziana, entonces ese término está acotado por
-$$||(\nabla g(x^k)')^{-1}||\int_0^1||\nabla g(x^k)-\nabla g(x^*-t(x^k-x^*))||dt||x^k-x^*||\leq ML\int_0^1 (1-t)||x^k-x^*||^2=ML/2||x^k-x^*||^2$$
+\begin{gather*}
+||(\nabla g(x^k)')^{-1}||\int_0^1||\nabla g(x^k)-\nabla g(x^*-t(x^k-x^*))||dt||x^k-x^*||\leq\\
+ ML\int_0^1 (1-t)||x^k-x^*||^2dt=ML/2||x^k-x^*||^2
+\end{gather*}
 lo que prueba que $ ||x^{k+1}-x^*||\leq ML/2||x^k-x^*||^2$. $\QED$
 \end{itemize}
 \end{dem}
