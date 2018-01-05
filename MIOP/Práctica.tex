@@ -4,8 +4,8 @@
 %--------------------------------------------------------
 \begin{document}
 
-\title{Modelos de Investigación Operativa\\ Práctica Obligatoria}
-\author{Javier Aguilar Martín}
+\title{Modelos de Investigación Operativa\\ Práctica Navideña}
+\author{Rafael González López}
 \maketitle
 
 
@@ -155,7 +155,7 @@ h(x_1) &= \left\{\begin{array}{ll}
 \frac{1}{25000}(6 + 7 (4 - x_1)) (10 x_1 - x_1^2) & \dfrac{6}{7} \leq x_1 \leq 4
 \end{array}\right.
 \end{align*}
-Calculamos los máximos por separado de manera analítica derivando que los maximos (ayudándonos de la gráfica de la función). Obtenemos que el máximo se alcanza en $x_1=\dfrac{104-2\sqrt{919}}{21}\approx 2.06524$ con un valor de $\dfrac{2(\sqrt{919^3}-1378)}{4134375}\approx0.0128$.
+Calculamos los máximos por separado de manera analítica (ayudándonos de la gráfica de la función). Obtenemos que el máximo se alcanza en $x_1=\dfrac{104-2\sqrt{919}}{21}\approx 2.06524$ con un valor de $\dfrac{2(\sqrt{919^3}-1378)}{4134375}\approx0.0128$.
 \end{itemize}
 \end{solucion}
 
@@ -180,8 +180,8 @@ Consideremos el problema: $\min_{x\in[a_1,b_1]}f(x)$, donde $f$ es una función 
 \begin{lemma}
 En las condiciones del enunciado, el problema tiene solución única.
 \begin{proof}
-Como el intervalo $[a_1,b_1]$ es compacto (sea degenerado o no), tenemos la existencia por el Teorema de Weierstrass. La unicidad la tendremos a partir de que tanto el dominio como la función son convexos. Sea $x$ el mínimo global que nos asegura Weierstrass y sea $y$ otro mínimo, que habrá de ser global también. Entonces $f(x)=f(y)$. Por ser estrictamente convexa y $x\neq y$, 
-$$f(\lambda x+(1-\lambda)y) < \lambda f(x)+(1-\lambda)f(y)$$
+Como el intervalo $[a_1,b_1]$ es compacto (sea degenerado o no), tenemos la existencia por el Teorema de Weierstrass. La unicidad la tendremos a partir de que tanto el dominio como la función son convexos. Sea $x$ el mínimo global que nos asegura Weierstrass y sea $y$ otro mínimo, que habrá de ser global también. Entonces $f(x)=f(y)$. Por ser estrictamente convexa y $x\neq y$, $\forall \lambda \in (0,1)$
+$$f(\lambda x+(1-\lambda)y) < \lambda f(x)+(1-\lambda)f(y) = \lambda f(y)+(1-\lambda)f(y) = f(y) $$
 Por tanto, $f(\lambda x+(1-\lambda)y) < f(y)$. Como el dominio es convexo, se sigue que $\forall \lambda \in[0,1]$ $\lambda x+(1-\lambda)y \in [a_1,b_1]$, luego $y$ no puede ser mínimo global. 
 \end{proof}
 \end{lemma}
@@ -240,7 +240,7 @@ Podemos asegurarlo a partir de $k=\lceil\log_2  \frac{M}{\delta}\rceil$.
 \item Aplicamos las cinco iteraciones del método. $f'(x)=2x+2$.
 \begin{enumerate} 
 \item $[a_1,b_1]=[-3,5]$, $x_1 = 1/2(5-3)= 1$, $f'(1)>0$. Hacemos $a_2=a_1$, $b_2=x_1$.
-\item $[a_2,b_2]=[-3,1]$, $x_1 = 1/2(1-3)= 4-1$, $f'(-1)=0$. STOP. El mínimo se alcanza para $x_2 =1$.
+\item $[a_2,b_2]=[-3,1]$, $x_1 = 1/2(1-3)= -1$, $f'(-1)=0$. STOP. El mínimo se alcanza para $x_2 =-1$.
 \end{enumerate}
 \end{itemize}
 
