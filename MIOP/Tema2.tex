@@ -295,7 +295,7 @@ Entonces $f(x^*+\varepsilon(x'-x^*))< f(x^*)$, lo cual contradice que $x^*$ sea 
 \end{dem}
 
 \subsection{Métodos de direcciones factibles}
-Parten de $x^0\in X$ y generan $x^{k+1}=x^k+\alpha d^k,\ \alpha^k>0$, siendo $d^k$ una dirección factible en $x^k$. Esto quiere decir que $\exists\mu >0$ tal que $x^{k+1}+\mu d^k\in X$. Toda dirección factible $d$ en $\overline{x}\in X$ se puede expresar como $x=x-\overline{x}$ con $x\in X$. Por tanto, podemos reescribir el método de direcciones factibles como $x^{k+1}=x^k+\alpha (x-\overline{x}^k),\ \alpha^k>0,\ \overline{x}^k\in X$. Si $x^k\in X$ y $\alpha^k\leq 1$, entonces $x^{k+1}\in X$. En efecto, $x^{k+1}=\alpha^k\overline{x}^k+(1-\alpha^k)x^k\in X$ por ser $X$ convexo. 
+Parten de $x^0\in X$ y generan $x^{k+1}=x^k+\alpha d^k,\ \alpha^k>0$, siendo $d^k$ una dirección factible en $x^k$. Esto quiere decir que $\exists\mu >0$ tal que $x^{k+1}+\mu d^k\in X$. Toda dirección factible $d$ en $\overline{x}\in X$ se puede expresar como $d=\overline{x}-x$ con $x\in X$. Por tanto, podemos reescribir el método de direcciones factibles como $x^{k+1}=x^k+\alpha(\overline{x}^k-x^k),\ \alpha^k>0,\ \overline{x}^k\in X$. Si $x^k\in X$ y $\alpha^k\leq 1$, entonces $x^{k+1}\in X$. En efecto, $x^{k+1}=\alpha^k\overline{x}^k+(1-\alpha^k)x^k\in X$ por ser $X$ convexo. 
 
 \subsection{Elección del punto inicial $x^0$}
 Se puede hacer uso de un problema auxiliar. Tomemos $C>>0$ suficientemente grande y consideramos el problema $P:\min f(x)$ sujeto a $x\in X$. Supongamos que $X=\{x\in\R^n: g_j(x)\leq 0, j\in J\}$. 
@@ -320,13 +320,13 @@ $X=\{x\in\R^n:\sum_{j=1}^n=r, x_i\geq 0\}$ donde $r>0$. Entonces  el problema qu
 &\min\  \sum_{j=1}^n\frac{\partial f(x^k)}{\partial x_i}(x_i-x^k_i)\\
 &\sum_{j=1}^nx_i=r, x_i\geq 0\ \forall i								
 \end{align*}
-Supongamos que $\frac{\partial f(x^k)}{\partial x_j}\leq\frac{\partial f(x^k)}{\partial x_i}$, entonces $x^*_j=r, x^*_i=0\ \forall i\neq j$.
+Supongamos que $\frac{\partial f(x^k)}{\partial x_j}\leq\frac{\partial f(x^k)}{\partial x_i}\ \forall i$, entonces $x^*_j=r, x^*_i=0\ \forall i\neq j$.
 
 Asi pues $d^k=(0,0,\dots, \overbrace{r}^j, 0,\dots, 0)'-x^k$. 
 \end{ej}
 
 \begin{teorema}\label{teorema}
-Los métodos de direcciones factibles con gradiente condicionado y longitud de paso dada por Armijo o minimización restringida $(0<\alpha^k\leq 1)$ tienen la propiedad de que todo punto de acumulación es estacionario. 
+Los métodos de direcciones factibles con gradiente condicionado y longitud de paso dada por Armijo o minimización restringida $(0<\alpha^k\leq 1)$ sobre compactos tienen la propiedad de que todo punto de acumulación es estacionario. 
 \end{teorema}
 
 Para probarlo nos basaremos en el siguiente teorema. 
@@ -341,7 +341,7 @@ Entonces todo punto de acumulación es estacionario.
 \end{teorema}
 \begin{dem}[del teorema \ref{teorema}] 
 Supongamos que $\overline{x}$ es un punto de acumulación no estacionario. En primer lugar, dado que $\overline{x}^k\in X\ \forall k$ y $x^k\in X\ \forall k$ se tiene
-$$||\overline{x}^k-x^k||\leq ||\overline{x}^k||+||x^k||<M \forall k$$
+$$||\overline{x}^k-x^k||\leq ||\overline{x}^k||+||x^k||<M\ \forall k$$
 por compacidad de $X$, con lo que se verifica \ref{1}. En segundo lugar, dado que $d^k$ es de gradiente condicionado entonces
 \begin{gather*}
 \nabla f(x^k)'(\overline{x}^k-x^k)\leq \nabla f(x^k)'(x-x^k), \forall x\in X\\
@@ -403,7 +403,7 @@ Son métodos de direcciones factibles en los que las iteraciones son de la forma
 Supongamos que $\overline{x}$ es estacionario. Multiplicando la condición de ser estacionario por $-s$ obtenemos $-s\nabla f(\overline{x})'(x-\overline{x})\leq 0\ \forall x\in X$. Sumamos y restamos $\overline{x}$, $(\overline{x}-s\nabla f(\overline{x})-\overline{x})'(x-\overline{x})\leq 0\ \forall x\in X$. Esto es equivalente a que $\overline{x}-s\nabla f(\overline{x})$ verifica la condición del teorema de la proyección, si y solo si $\overline{x}=[\overline{x}-s\nabla f(\overline{x})]$. 
 
 \begin{teorema}
-Sea $\{x^k\}$ una sucesión generada mediante el método de gradiente proyectado con $\alpha^k$ elegido mediante Armijo o minimización restringida. Entonces todo punto de acumulación es estacionario.
+Sea $\{x^k\}$ una sucesión generada mediante el método de gradiente proyectado con $\alpha^k$ elegido mediante Armijo o minimización restringida sobre un compacto. Entonces todo punto de acumulación es estacionario.
 \end{teorema}
 \begin{dem}
 Supongamos que $\overline{x}$ es de acumulación no estacionario. Comprobamos \ref{1} y \ref{2} para llegar a contradicción.
@@ -412,7 +412,7 @@ Supongamos que $\overline{x}$ es de acumulación no estacionario. Comprobamos \r
 \item Como $\overline{x}^k$ es proyección está caracterizada por 
 $$(x^k-s\nabla f(x^k)-\overline{x}^k)'(x-\overline{x}^k)\leq 0, \forall x\in X.$$
 En particular esto se verifica para $x=x^k$, de donde obtenemos haciendo el producto
-$$||x^k-\overline{x}^k||-s\nabla f(x^k)'(x^k-\overline{x}^k)\leq 0$$
+$$||x^k-\overline{x}^k||^2-s\nabla f(x^k)'(x^k-\overline{x}^k)\leq 0$$
 Despejando
 $$\nabla f(x^k)'(\overline{x}^k-x^k)\leq -\frac{1}{s}||x^k-\overline{x}^k||^2$$
 Ahora podemos tomar límite superior
