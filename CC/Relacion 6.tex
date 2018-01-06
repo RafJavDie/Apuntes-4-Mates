@@ -129,6 +129,52 @@ Por hipótesis esta función sería recursiva, así que por el teorema de recurs
 
 \newpage
 
+\begin{ejercicio}{10}
+Consideremos el siguiente problema:
+
+
+`` Dados \texttt{p}, $\texttt{q} \in \texttt{GOTO}_{\texttt{P}}$, decidir si existe $x \in \N$ tal que $[\![p]\!](x) \downarrow$ y $[\![q]\!](x) \downarrow$''
+
+Con conjunto asociado $A = \{(x, y) : dom(\varphi^{(1)}_x ) \cap dom(\varphi_y^{(1)}) \neq\emptyset\}$. Se pide:
+\begin{enumerate}
+\item Probar que el predicado asociado es r.e.
+\item Probar que $\N^2\setminus A$ no es recursivo (Indicación: Prefijar \texttt{p} tal que $[\![p]\!]^{(1)}$ sea total).
+\item  Demostrar que el problema es indecidible.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item Por definición, $dom(\varphi^{(1)}_x )$ y $dom(\varphi_y^{(1)})$ son r.e., luego su intersección también lo es, es decir, existe $e\in\N$ tal que $dom(\varphi^{(1)}_x ) \cap dom(\varphi_y^{(1)})=W_e^{(1)}$. Por tanto, $A\leq B=\{z\in\N: W_z\neq\emptyset\}$ gracias a la función par. Por el ejercicio \ref{ejer:4} sabemos que $B$ es r.e., luego $A$ también lo es por reducibilidad.
+\item Utilizando el criterio de reducibilidad tendríamos que $C=\N^2\setminus A\leq \{z\in\N: W_z=\emptyset\}=\N\setminus B$, que no puede ser recursivo, porque entonces $B$ sería recursivo, y utilizando de nuevo el ejercicio \ref{ejer:4} sabemos que no lo es. 
+
+Haciendo uso de la indicación, si fijamos $x_0$ tal que $\varphi_{x_0}$ es total, entonces $(x_0,y)\in C\Leftrightarrow \varphi_y$ es vacía, predicado que no es recursivo (se puede probar fácilmente utilizando el teorema de Rice). 
+
+\item Como $A$ es r.e. no recursivo, $C$ no puede ser r.e., así que el problema es indecidible. 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{12}
+Dado $\texttt{p} \in \texttt{GOTO}_\texttt{P}$, denotaremos por $\texttt{p}^*$ el programa que resulta de eliminar de \texttt{p} todas
+las etiquetas de las instrucciones etiquetadas. Decidir razonadamente si los siguientes conjuntos
+son recursivos:
+\begin{enumerate}
+\item $A = \{\#(\texttt{p}) : [\![p]\!] = [\![p^*]\!]\}$
+\item  $B = \{\#(\texttt{p}) : [\![p]\!] \neq [\![p^*]\!]\}$
+\item $C = \{\#(\texttt{p}) : \texttt{p} = \texttt{p}^*\}$
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item Es el problema de la equivalencia, luego no es recursivo. 
+\item Pues no tengo ni idea.
+\item Basta examinar si el programa tiene etiquetas, lo cual se puede hacer de forma primitiva recursiva a partir de la codificación.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
 \begin{ejercicio}{15}
 Sea $f : \N \to \N$ recursiva. Probar que
 \begin{enumerate}
