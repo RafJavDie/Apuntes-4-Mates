@@ -126,25 +126,27 @@ Luego tenemos que $\sum_{e\in E(T)}\leq\frac{|T|}{2}$, que redondeando se convie
 
 \section{Desigualdades válidas para poliedros enteros}
 \begin{prop}
- Sea $X^{\geq}=\{(x,y)\in\R_+\times \Z \mid x+y \geq b\}$ y $f= b-\suelo{b}>0$. Entonces la desigualdad $x\geq f(\ceil{b}-y)$ o $\frac{x}{f}+y\geq \ceil{b}$ es válida.
+ Sea $X^{\geq}=\{(x,y)\in\R_+\times \Z \mid x+y \geq b\}$ y $f= b-\suelo{b}>0$. Entonces la desigualdad $x\geq f(\ceil{b}-y)$ es válida o lo es $\frac{x}{f}+y\geq \ceil{b}$.
 \end{prop}
 
 \begin{dem}\
 \begin{enumerate}
-\item Si $y\geq\lceil b\rceil$, como $0<f<1$ entonces $x\geq 0\geq \lceil b\rceil-y$ y $0\geq f(\lceil b\rceil-y)$, luego $x\geq f(\lceil b\rceil-y)$
-\item Si $y<\lceil b\rceil$, entonces $x\geq b-y=\lfloor b\rfloor+f-y\geq f+f(\lfloor b\rfloor-y)$
+\item Si $y\geq\lceil b\rceil$, como $0<f<1$ entonces $x\geq 0\geq \lceil b\rceil-y$ y $0\geq f(\lceil b\rceil-y)$, luego $x\geq f(\lceil b\rceil-y).$
+\item Si $y<\lceil b\rceil$, entonces $x\geq b-y=\lfloor b\rfloor+f-y\geq f+f(\lfloor b\rfloor-y)\Rightarrow \frac{x}{f}\geq 1+\lfloor b\rfloor-y=\ceil{b}-y.$
 \end{enumerate}
+Nótese que la última es válida siempre.
 $\QED$
 \end{dem}
 
 \begin{coro}
-Para el caso $X^\leq =\{(x,y\in\R_+\times \Z \mid y\leq b+x\}$ con $f=b-\suelo{b}>0$ entonces $y\leq \suelo{b}+\frac{x}{1-f}$ es válida para $X^\leq$.
+Para el caso $X^\leq =\{(x,y)\in\R_+\times \Z \mid y\leq b+x\}$ con $f=b-\suelo{b}>0$ entonces $y\leq \suelo{b}+\frac{x}{1-f}$ es válida para $X^\leq$.
 \end{coro}
 \begin{dem}
-$x+b\geq y \equiv x-y\geq -b$. La desigualdad válida es 
+$x+b\geq y \equiv x-y\geq -b$. Denotamos $f'=-b-\suelo{-b}$. La desigualdad válida es 
 $$
-\frac{x}{f(-b)}-y\geq \ceil{b}=-\suelo{b} \equiv \frac{x}{1-f}-y \geq -\suelo{b}
+\frac{x}{f'}-y\geq \ceil{-b}=-\suelo{b} \equiv \frac{x}{1-f}-y \geq -\suelo{b}
 $$
+$\QED$
 \end{dem}
 \begin{propi}
 Sea $X^{MIR}=\{(x,y)\in\R_+\times \Z_+^2 \mid a_1y_2+a_2y_2\leq b+x\}$, $a_1,a_2,b\in\R$, $b\notin \Z$. Supongamos que $f=b-\suelo{b}$, $f_i = a_i -\suelo{a_i}$, $i=1,2$ y $f_1\leq f\leq f_2$. Entonces 
@@ -168,6 +170,7 @@ $$
 $$
 \suelo{a_1}y_1+\left(\suelo{a_2}+\frac{1-f-1+f_2}{1-f}\right)y_2\leq \suelo{b}+\frac{x}{1-f}
 $$
+$\QED$
 \end{dem}
 \begin{prop}
 $X=X_1\cup X_2$ se denomina disyunción si sus elementos están en $X_1$ o $X_2$, $X_i\subset \R^n_+$. Supongamos que $\pi^ix\leq \pi^i_0$ es válida para $X^i$, $i=1,2$. Entonces $\pi_j x\leq \pi_0$ tal que $\pi_j=\min\{\pi^1_j,\pi^2_j\}$, $\pi_0 =\max\{\pi^1_0,\pi^2_0\}$ es válida para $X$.
@@ -181,6 +184,7 @@ Si $x\in X_i$ entonces $\Pi^ix \leq \pi^i x \leq \pi^i \leq \pi^0$. Por tanto
 $$
 \sum_{j=1}^n \pi_j  x_j \leq \pi_0
 $$
+$\QED$
 \end{dem}
 \begin{prop}
 Si $P^i = \{x\in\R^n_+\mid A^i x \leq b^i\}$, $i=1,2$ son poliedros no vacíos entonces $\pi x\leq \Pi_0$ es una desigualdad válida para $Co(P^1\cup P^2)$ sii $\exists u^1,u^2$ tales que $u^1A^1\geq \Pi$, $u^2A^2 \geq \Pi$, $u^1 b^1 \leq \Pi_0$, $u^2b^2\leq \Pi_0$
@@ -192,7 +196,7 @@ Recíprocamente supongamos que $\Pi x \leq \Pi_0$ verifica que existen los $u^i$
 $$
 \pi x = \Pi (\lambda x^1 +(1-\lambda)x^2) = \lambda \Pi x^1 +(1-\lambda)\Pi x^2
 $$
-Como se cumple $i^1 A^i \geq \Pi$, $u^i b^i \leq \Pi_0$ es equivalente a que la igualdad se cumpla para cada poliedro, de donde se deduce el resultado aplicando la desigualdad sobre lo anterior.
+Como se cumple $i^1 A^i \geq \Pi$, $u^i b^i \leq \Pi_0$ es equivalente a que la igualdad se cumpla para cada poliedro, de donde se deduce el resultado aplicando la desigualdad sobre lo anterior. $\QED$
 \end{dem}
 
 \begin{ej}
@@ -261,6 +265,7 @@ b\\
 -e_j
 \end{pmatrix}
 $$
+$\QED$
 \end{dem}
 
 \begin{ej}
