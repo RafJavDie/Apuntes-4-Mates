@@ -121,7 +121,7 @@ x^* \simeq x^* - \sum^{n-1}_{k=m} \alpha^k \nabla f(x^*) \Rightarrow 0 \simeq \n
 Como la serie diverge, concluimos que $\nabla f(x^*)=0$.
 \item \textbf{Método o regla de minimización}: tomar una dirección $d^k$ y $\alpha^k$ tal que $\alpha^k$ minimiza $f(x^k+\alpha d^k)$ para $\alpha>0$ (función de una variable real).
 \item \textbf{Regla de Armijo}: elegimos $s,\beta,\sigma\in (0,1)$. Entonces definimos $\alpha^k=s\beta^{m_k}$, siendo $m_k$ el menor entero que verifica
-$$f(x^k)-f(x^{k+1})\geq -\sigma s \beta^{m_k}\nabla f(x^k)d^k.$$
+$$f(x^k)-f(x^{k+1})\geq -\sigma s\beta^{m_k}\nabla f(x^k)d^k.$$
 \end{itemize}
 \end{enumerate}
 
@@ -185,21 +185,15 @@ Si en lugar de la regla de Armijo se usa la de minimización, el resultado sigue
 \end{nota}
 
 \begin{teorema}[de captura]
-Sea $f\in\mathcal{C}^1$ y $\{x^k\}$ tal que $x^{k+1}=x^k+\alpha^k d^k$ verificando que $f(x^k)>f(x^{k+1})\ \forall k$ y tal que todo punto de acumulación es estacionario. Supongamos que $\exists s,c>0$ de forma que $\alpha^k\leq s$ y $||d^k||\leq c||\nabla f(x^k)||$ $\forall k.$
+Sea $f\in\mathcal{C}^1(S)$ y $\{x^k\}$ tal que $x^{k+1}=x^k+\alpha^k d^k$ verificando que $f(x^k)>f(x^{k+1})\ \forall k$ y tal que todo punto de acumulación es estacionario. Supongamos que $\exists s,c>0$ de forma que $\alpha^k\leq s$ y $||d^k||\leq c||\nabla f(x^k)||$ $\forall k.$
 
-Sea $x^*$ mínimo local de $f$, siendo el único punto estacionario en un entorno de $x^*$. Entonces el punto $x^*$ verifica que 
-\begin{itemize}
-\item $\exists S$ entorno de $x^*$ tal que si $\exists \overline{k}$ con $x^{\overline{k}}\in S$, entonces $x^k\in S\ \forall k>\overline{k}$ y $x^k\to x^*$.
-\item Dado $\varepsilon>0$, $S$ se puede elegir para que $||x-x^*||<\varepsilon \ \forall x\in S$.
-\end{itemize}
+Sea $x^*$ mínimo local de $f$ que es el único punto estacionario en un entorno de $x^*$. Entonces el punto $x^*\in S$ es tal que si $x^{\overline{k}}\in S$ para algún $\overline{k}$, $x^k\in S\ \forall k>\overline{k}$ y $x^k\to x^*$. Además, dado $\varepsilon>0$, $S$ se puede elegir para que $||x-x^*||<\varepsilon \ \forall x\in S$.
 \end{teorema}
 \begin{dem}
-Como $x^*$ es mínimo local y tiene un entorno donde no hay otro punto estacionario de $f$, podemos tomar $\rho>0$ tal que $\forall x$ $0< ||x-x^*||<\rho$ tenemos $f(x)>f(x^*)$. Definimos la función
-$$\phi
-(t)=\min_{0\leq t\leq ||x-x^*||\leq\rho} (f(x)-f(x^*))$$
-$\phi$ \textbf{es no decreciente}, pues si $t$ disminuye, la corona circular se hace más gruesa hacia dentro, por lo que hay más puntos donde encontrar el mínimo, y si $t$ aumenta, la corona se hace más fina por lo que hay menos puntos donde encontrar el mínimo.
+Elegimos $\rho>0$ tal que $\forall x\neq x^*\mid ||x-x^*||<\rho$, entonces $f(x)>f(x^*)$. Definimos $\phi
+(t)=\min_{0\leq t\leq ||x-x^*||} (f(x)-f(x^*))$. $\phi$ es no decreciente, porque cuando $t$ disminuye, la corona circular se hace más gruesa hacia dentro, por lo que hay más puntos donde encontrar el mínimo, y si $t$ aumenta, la corona se hace más fina por lo que hay menos puntos donde encontrar el mínimo.
 
-Por la continuidad de de la norma y $\nabla f$, sabemos que $\forall \varepsilon>0\ \exists r>0\mid ||x-x^*||<r$ tal que $|g(x)-g(x^*)|<\varepsilon$, donde $g(x)=||x-x^*||+sc||\nabla f(x)||$. Se tiene que $g(x^*)=0$. Luego
+Utilizamos la continuidad de de la norma y $\nabla f$ para decir que $\forall \varepsilon>0\ \exists r>0\mid ||x-x^*||<r\Rightarrow |g(x)-g(x^*)|<\varepsilon$, donde $g(x)=||x-x^*||+sc||\nabla f(x)||$. Se tiene que $g(x^*)=0$. Luego
 \begin{equation}\label{estrellita}
 ||x-x^*||+sc||\nabla f(x)||<\varepsilon 
 \end{equation}
@@ -208,7 +202,7 @@ Entonces definimos $S:=\{x\mid ||x-x^*||<\varepsilon, f(x)< f(x^*)+\phi(r)\}$. S
 \item $||x^{k+1}-x^*||=||x^k+\alpha^kd^k-x^*||=||x^k-x^*+\alpha^kd^k||\leq ||x^k-x^*||+\alpha^k||d^k||\leq\\ ||x^k-x^*||+sc||\nabla f(x^k)||<\varepsilon$
 \item $f(x^{k+1})<f(x^k)<f(x^*)$
 \end{itemize}
-Por lo que $x^{k+1}\in S$. Además $S$ está contenido en un compacto (una bola cerrada de radio $\varepsilon$), por lo que toda sucesión contiene una subsucesión convergente, esto es, $\{x^l\}_{l>k}$ contiene una subsucesión convergente. Y como $x^*$ es el único punto estacionario, la sucesión debe converger hacia dicho punto.\newline $\QED$
+Por lo que $x^{k+1}\in S$. Además $S$ está contenido en un compacto (una bola cerrada de radio $\varepsilon$), por lo que toda sucesión contiene una subsucesión convergente, esto es, $\{x^l\}_{l>k}$ contiene una subsucesión convergente. Y como $x^*$ es el único punto estacionario, la sucesión debe converger hacia dicho punto $x^*$. $\QED$
 \end{dem}
 
 \subsection{Tasa de convergencia del método de descenso máximo para funciones cuadráticas}
@@ -220,9 +214,9 @@ Sea $f(x)=\frac{1}{2}x'Qx, Q\in\R^{n\times n}$ simétrica y definida positiva. E
 $$f(x^{k+1})\leq \left(\frac{M-m}{M+m}\right)^2f(x^k).$$
 \end{teorema}
 \begin{dem}
-Por la definición de $f$, $\nabla f(x)=Qx$. En la iteración $k$, $f(x^k)=\frac{1}{2}x^{k'}Qx^k$, luego $\nabla f(x^k)=Qx^k:=g^k$. Podemos escribir $f(x^k)=\frac{1}{2}x^{k'}QQ^{-1}Qx^k=\frac{1}{2}g^{k'}Q^{-1}g^k$. Notemos que si $g^k = 0$ si y solo si $x^k=0$, y siendo $Q$ definida positiva, esto es si y solo si $x^0=0$. Podemos por tanto obviar este caso.
+Por la definición de $f$, $\nabla f(x)=Qx$. En la iteración $k$, $f(x^k)=\frac{1}{2}x^{k'}Qx^k$, luego $\nabla f(x^k)=Qx^k:=g^k$. Podemos escribir $f(x^k)=\frac{1}{2}x^{k'}QQ^{-1}Qx^k=\frac{1}{2}g^{k'}Q^{-1}g^k$. 
 
-Calculamos $\alpha^k$ mediante minimización, $g(\alpha)=f(x^k-\alpha\nabla f(x^k))$, buscamos $\min_{\alpha>0}g(\alpha)$.
+Calculamos $\alpha^k$ mediante minimización, $g(\alpha)=f(x^k-\alpha\nabla f(x^k))$, buscamos $\min_{\alpha>0}g(\alpha)$. 
 \begin{align*}
 g'(\alpha)&=\frac{dg(\alpha)}{d\alpha}=-\nabla f(x^k)'\nabla f(x^k-\alpha\nabla f(x^k))\\
 &=-g^{k'}Q[x^k-\alpha g^k]=g^{k'}Qx^k-\alpha g^{k'}Qg^k=0\\
@@ -272,9 +266,9 @@ Aplicando desigualdades de produtos e integrales matriciales
 \begin{equation}\label{estrella}
 ||x^{k+1}-x^*||\leq||(\nabla g(x^k)')^{-1}||\int_0^1||(\nabla g(x^k)'-\nabla g(x^*+t(x^k-x^*))')||dt||x^k-x^*||
 \end{equation}
-Por continuidad de $\nabla g, \forall\varepsilon/M>0\ \exists\delta'\leq\delta$ tal que si $||x^k-x^*||<\delta'$ entonces se tiene $ ||\nabla g(x^k)'-\nabla g(x^*+t(x^k-x^*))')||<\varepsilon/M$. Por tanto, el término anterior queda mayorado por
+Por continuidad de $\nabla g, \forall\varepsilon/M>0\ \exists\delta'\leq\delta$ tal que si $||x^k-x^*||<\delta'$ entonces se tiene $ ||\nabla g(x^k)-\nabla g(x^*+t(x^k-x^*))')||<\varepsilon/M$. Por tanto, el término anterior queda mayorado por
 $$||x^{k+1}-x^*|| \leq M\int_0^1\frac{\varepsilon}{M} dt ||x^k-x^*||=\varepsilon ||x^k-x^*||.$$
-En definitiva, $\forall\varepsilon>0, ||x^{k+1}-x^*||\leq\varepsilon||x^k-x^*||$, lo que significa $$\lim_{k\to\infty}\frac{||x^{k+1}-x^*||}{||x^k-x^*||}=0.$$
+En definitiva, $\forall\varepsilon>0, ||x^{k+1}-x^*||\leq\varepsilon||x^k-x^*||$, lo que significa que $$\lim_{k\to\infty}\frac{||x^{k+1}-x^*||}{||x^k-x^*||}=0.$$
 \item[b)] En \ref{estrella} aplicamos que $\nabla g$ es lipschitziana, entonces ese término está acotado por
 \begin{gather*}
 ||(\nabla g(x^k)')^{-1}||\int_0^1||\nabla g(x^k)-\nabla g(x^*-t(x^k-x^*))||dt||x^k-x^*||\leq\\
