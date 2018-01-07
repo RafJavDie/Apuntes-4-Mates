@@ -121,41 +121,31 @@ $4$ & $1$ & $0.2$  & $0.25$  & $0.05$ & \\
 \end{tabular}
 \end{center}
 La solución óptima se alcanza invirtiendo $2$ millones en la Etapa 1, $1$ millón en la Etapa 2 y $1$ millón en la Etapa 3.
-\item[\textbf{b)}] Resolvemos el problema de programación dinámica. Distinguimos $3$ etapas con estados $(m,t)$ donde $m$ es la cantidad de dinero disponible y $t$ la etapa en la que nos encontramos. Nuestra función $f(m,t)$ nos devuelve el máximo de $\prod_{i=t}^3 f_i$ sabiendo que contamos con $m$ millones de euros en la etapa $t$. El objetivo será calcular $f(4,1)$. Si $g(x,t)$ nos da el efecto sobre el porcentaje de mercado en la fase $t$ sabiendo que invertimos $x$ millones de euros	
+\item[\textbf{b)}] Resolvemos el problema de programación dinámica análogo al anterior. Distinguimos $3$ etapas con estados $(m,t)$ donde $m$ es la cantidad de dinero disponible y $t$ la etapa en la que nos encontramos. La función $f(m,t)$ devuelve el máximo de $\prod_{i=t}^3 f_i$ sabiendo que contamos con $m$ millones de euros en la etapa $t$. El objetivo será calcular $f(4,1)$. Si $g(x,t)$ nos da el efecto sobre el porcentaje de mercado en la fase $t$ sabiendo que invertimos $x$ millones de euros	
 $$
 f(m,3) = g(m,3) \qquad f(m,t)=\max_{0\leq x_t\leq m}g(x_t,t)f(m-x_t,t+1) \quad t=1,2
 $$
 Vamos a intentar dar una expresión clara del funcional en cada etapa
 \begin{align*}
-f(m,3)  &= \max_{0\leq x_3\leq m}0.06+0.07x_3 = 0.06+0.07m \\
+f(m,3)  &= \max_{0\leq x_3\leq m}0.6+0.07x_3 = 0.6+0.07m \\
 f(m,2)  &= \max_{0\leq x_2\leq m}g(x_2,2)f(m-x_2,3)\\
-		&= \max_{0\leq x_2\leq m}(0.4+0.1x_2)(0.06+0.07(m-x_2))\\
-		&= \max_{0\leq x_2\leq m} 0.007 m x + 0.028 m - 0.007 x^2 - 0.022 x + 0.024
+		&= \max_{0\leq x_2\leq m}(0.4+0.1x_2)(0.6+0.07(m-x_2))\\
+		&= \max_{0\leq x_2\leq m} - 0.007 x_2^2+ 0.007 m x_2 + 0.032 x_2 + 0.028 m   + 0.24
 \end{align*}
-Tenemos una parábola cóncava con vértice en $x=m/2 -11/7$ y ceros en $x=-4$ y $x=m+6/7$. Si $m\geq 22/7$, el vértice está dentro de nuestro intervalo considerado. En caso contrario, el máximo se alcanza en el extremo izquierdo del intervalo $(x=0)$. Por tanto
+Tenemos una parábola cóncava con vértice en $x_2=m/2 -16/7$ y ceros en $x_2=-4$ y $x_2=m+60/7$. Si $m\geq 32/7$, el vértice está dentro del intervalo considerado. En caso contrario, el máximo se alcanza en el extremo izquierdo del intervalo $(x_2=0)$. Por tanto
 $$
 f(m,2) = 
 \begin{cases}
-\dfrac{6+7m}{250} & 0\leq m \leq \dfrac{22}{7}\\
-\dfrac{(7m+34)^2}{28000}& \dfrac{22}{7} \leq m \leq 4
+\dfrac{3(m+4)}{50} & 0\leq m \leq \dfrac{32}{7}\\
+\dfrac{(7m+88)^2}{28000}& \dfrac{32}{7} \leq m\leq 4
 \end{cases}
 $$
-Vamos a calcular la función que tenemos que maximizar en $f(4,1)$.
+Como $ \dfrac{32}{7} > 4$, la última condición podemos eliminarla. Vamos ahora a calcular la función que tenemos que maximizar en $f(4,1)$, a la que llamaremos $h(x_1)$, teniendo en cuenta que $x_1\geq 0$.
 \begin{align*}
-h(x_1) &= \left\{\begin{array}{ll}
-(0.1x_1-0.01x_1^2)\dfrac{6+7(4-x_1)}{250} & 0\leq 4-x_1 \leq \dfrac{22}{7}\\
-\dfrac{1}{28000}(0.1x_1-0.01x_1^2){(7(4-x_1)+34)^2}& \dfrac{22}{7} \leq 4-x_1 \leq 4
-\end{array}\right.\\
-&=\left\{\begin{array}{ll}
-\dfrac{1}{28000}(0.1x_1-0.01x_1^2)(7(4-x_1)+34)^2& 0 \leq x_1 \leq \dfrac{6}{7}\\
-(0.1x_1-0.01x_1^2)\dfrac{6+7(4-x_1)}{250} & \dfrac{6}{7} \leq x_1 \leq 4
-\end{array}\right.\\
-&=\left\{\begin{array}{ll}
--\frac{1}{2800000}x_1 (x_1 - 10) (62 - 7 x_1)^2& 0 \leq x_1 \leq \dfrac{6}{7}\\
-\frac{1}{25000}(6 + 7 (4 - x_1)) (10 x_1 - x_1^2) & \dfrac{6}{7} \leq x_1 \leq 4
-\end{array}\right.
+h(x_1) &= (0.1x_1-0.01x_1^2)\dfrac{3(8-x_1)}{50} & 0\leq 4-x_1 \leq \dfrac{32}{7}\\
+&=(0.1x_1-0.01x_1^2)\dfrac{24-3x_1}{50} & 0 \leq x_1 \leq 4\\
 \end{align*}
-Calculamos los máximos por separado de manera analítica (ayudándonos de la gráfica de la función). Obtenemos que el máximo se alcanza en $x_1=\dfrac{104-2\sqrt{919}}{21}\approx 2.06524$ con un valor de $\dfrac{2(\sqrt{919^3}-1378)}{4134375}\approx0.0128$.
+Por la gráfica de la función sabemos que el máximo se alcanza en el interior del intervalo. Analíticamente obtenemos que el máximo se alcanza en $x_1=6-2\sqrt{\frac{7}{3}}\approx 2.9449$ con un valor de $\dfrac{2(27+7\sqrt{21})}{1875}\approx0.063017$.
 \end{itemize}
 \end{solucion}
 
