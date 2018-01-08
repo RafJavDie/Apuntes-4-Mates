@@ -201,7 +201,7 @@ Utilizamos la continuidad de de la norma y $\nabla f$ para decir que $\forall \v
 Entonces definimos $S:=\{x\mid ||x-x^*||<\varepsilon, f(x)< f(x^*)+\phi(r)\}$. Supongamos que $x^k\in S$, entonces para $t=||x^*-x^k||$, $\phi(t)\leq f(x^k)-f(x^*)<\phi(r)$. Como $\phi$ es monótona, $||x^k-x^*||<r$, por lo que podemos aplicarle \ref{estrellita} a $x^k$. Veamos que $x^{k+1}\in S$. Tenemos que probar dos desigualdades.
 \begin{itemize}
 \item $||x^{k+1}-x^*||=||x^k+\alpha^kd^k-x^*||=||x^k-x^*+\alpha^kd^k||\leq ||x^k-x^*||+\alpha^k||d^k||\leq\\ ||x^k-x^*||+sc||\nabla f(x^k)||<\varepsilon$
-\item $f(x^{k+1})<f(x^k)<f(x^*)$
+\item $f(x^{k+1})<f(x^k)<f(x^*)+\phi(r)$
 \end{itemize}
 Por lo que $x^{k+1}\in S$. Además $S$ está contenido en un compacto (una bola cerrada de radio $\varepsilon$), por lo que toda sucesión contiene una subsucesión convergente, esto es, $\{x^l\}_{l>k}$ contiene una subsucesión convergente. Y como $x^*$ es el único punto estacionario, la sucesión debe converger hacia dicho punto $x^*$. $\QED$
 \end{dem}
@@ -321,9 +321,7 @@ $X=\{x\in\R^n:\sum_{j=1}^n=r, x_i\geq 0\}$ donde $r>0$. Entonces  el problema qu
 &\min\  \sum_{j=1}^n\frac{\partial f(x^k)}{\partial x_i}(x_i-x^k_i)\\
 &\sum_{j=1}^nx_i=r, x_i\geq 0\ \forall i								
 \end{align*}
-Supongamos que $\frac{\partial f(x^k)}{\partial x_j}\leq\frac{\partial f(x^k)}{\partial x_i}\ \forall i$, entonces $x^*_j=r, x^*_i=0\ \forall i\neq j$.
-
-Asi pues $d^k=(0,0,\dots, \overbrace{r}^j, 0,\dots, 0)'-x^k$. 
+Supongamos que $\frac{\partial f(x^k)}{\partial x_j}\leq\frac{\partial f(x^k)}{\partial x_i}$ $\forall i$, entonces $x^* = r\cdot e_j$ es solución del problema. 
 \end{ej}
 
 \begin{teorema}\label{teorema}
@@ -345,9 +343,9 @@ Supongamos que $\overline{x}$ es un punto de acumulación no estacionario. En pr
 $$||\overline{x}^k-x^k||\leq ||\overline{x}^k||+||x^k||<M\ \forall k$$
 por compacidad de $X$, con lo que se verifica \ref{1}. En segundo lugar, dado que $d^k$ es de gradiente condicionado entonces
 \begin{gather*}
-\nabla f(x^k)'(\overline{x}^k-x^k)\leq \nabla f(x^k)'(x-x^k), \forall x\in X\\
-\limsup \nabla f(x^k)'(\overline{x}^k-x^k)\leq \limsup\nabla f(x^k)'(x-x^k)\\
-\limsup \nabla f(x^k)'(\overline{x}^k-x^k)\leq\nabla f(\overline{x})'(x-\overline{x}) \forall x\in X
+\nabla f(x^k)'(\overline{x}^k-x^k)\leq \nabla f(x^k)'(x-x^k)\quad \forall x\in X\\
+\limsup \nabla f(x^k)'(\overline{x}^k-x^k)\leq \limsup\nabla f(x^k)'(x-x^k) \quad \forall x\in X\\
+\limsup \nabla f(x^k)'(\overline{x}^k-x^k)\leq\nabla f(\overline{x})'(x-\overline{x}) \quad \forall x\in X
 \end{gather*}
 Como $\overline{x}$ no es estacionario, debe existir $\hat{x}\mid \nabla f(\overline{x})'(\hat{x}-\overline{x})<0$. Por tanto $\limsup \nabla f(x^k)'(\overline{x}^k-x^k)<0$, con lo que tenemos \ref{2}. Por el teorema \ref{base}, esto contradice que $\overline{x}$ no sea estacionario. $\QED$
 \end{dem}
