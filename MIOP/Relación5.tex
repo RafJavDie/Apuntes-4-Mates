@@ -70,7 +70,9 @@ z_i \in \R \quad \forall i
 Supongamos que $x^{k+1}$ y $x^k$ son dos puntos consecutivos generados por el método del descenso máximo con la regla de minimización. Probar que $\nabla f(x^{k})'\nabla f(x^{k+1})=0$.
 \end{ejercicio}
 \begin{solucion}
-$x^{k+1}=x^k-\alpha^k\nabla f(x^k)$ donde $\alpha^k$ tal que $g'(\alpha^k)=0$, pero $$g'(\alpha^k)=\nabla f(x^k-\alpha^k\nabla f(x^k))'(-\nabla f(x^k))=\nabla f(x^{k})'\nabla f(x^{k+1})=0.$$
+$x^{k+1}=x^k-\alpha^k\nabla f(x^k)$ donde $\alpha^k$ tal que $g'(\alpha^k)=0$, pero $$g'(\alpha^k)=\nabla f(x^k-\alpha^k\nabla f(x^k))'(-\nabla f(x^k))=-\nabla f(x^{k+1})'\nabla f(x^{k})=0.$$
+$$ -\nabla f(x^{k+1})'\nabla f(x^{k})=0 \Leftrightarrow \nabla f(x^{k+1})'\nabla f(x^{k})=0 \Leftrightarrow \nabla f(x^{k})'\nabla f(x^{k+1})=0
+$$
 \end{solucion}
 
 \newpage
@@ -249,7 +251,7 @@ Al hacer una iteración obtenemos el punto $x^1=\begin{pmatrix}
 Considerar la función $f:\R^n\to\R$ dada por $f(x)=||x||^{3/2}$, y el método de descenso máximo con longitud de paso constante en cada iteración. Probar que la condicción $||\nabla f(x)-\nabla f(y)||\leq L||x-y||$ para todo $x,y$ no se verifica para ningún $L$. Además probar que este algoritmo converge a la solución óptima en un número finito de pasos o no converge a él, en este problema.
 \end{ejercicio}
 \begin{solucion}
-$$\nabla f(x)=\frac{3}{2}||x||^{1/2}\frac{x}{||x||^{1/2}}=\frac{3}{2}\frac{x}{||x||^{1/2}}$$
+$$\nabla f(x)=\frac{3}{2}\frac{x}{||x||^{1/2}}=\frac{3}{2}\frac{x}{||x||^{1/2}}$$
 $$||\nabla f(x)-\nabla f(y)||=\frac{3}{2}||\frac{x}{||x||^{1/2}}-\frac{y}{||y||^{1/2}}||$$
 Consideramos $y=-x$ y vamos a ver que para este par de puntos no existe $L$ que valga para todos los puntos.
 $$3||\frac{x}{||x||^{1/2}}||=3||x||^{1/2}\leq 2L||x||$$

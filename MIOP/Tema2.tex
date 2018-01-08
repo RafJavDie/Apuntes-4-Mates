@@ -185,13 +185,14 @@ Si en lugar de la regla de Armijo se usa la de minimización, el resultado sigue
 \end{nota}
 
 \begin{teorema}[de captura]
-Sea $f\in\mathcal{C}^1(S)$ y $\{x^k\}$ tal que $x^{k+1}=x^k+\alpha^k d^k$ verificando que $f(x^k)>f(x^{k+1})\ \forall k$ y tal que todo punto de acumulación es estacionario. Supongamos que $\exists s,c>0$ de forma que $\alpha^k\leq s$ y $||d^k||\leq c||\nabla f(x^k)||$ $\forall k.$
+Sea $f\in\mathcal{C}^1$ y $\{x^k\}$ tal que $x^{k+1}=x^k+\alpha^k d^k$ verificando que $f(x^k)>f(x^{k+1})\ \forall k$ y tal que todo punto de acumulación es estacionario. Supongamos que $\exists s,c>0$ de forma que $\alpha^k\leq s$ y $||d^k||\leq c||\nabla f(x^k)||$ $\forall k.$
 
-Sea $x^*$ mínimo local de $f$ que es el único punto estacionario en un entorno de $x^*$. Entonces el punto $x^*\in S$ es tal que si $x^{\overline{k}}\in S$ para algún $\overline{k}$, $x^k\in S\ \forall k>\overline{k}$ y $x^k\to x^*$. Además, dado $\varepsilon>0$, $S$ se puede elegir para que $||x-x^*||<\varepsilon \ \forall x\in S$.
+Sea $x^*$ mínimo local de $f$ que es el único punto estacionario en un entorno suyo. Entonces $\exists S$ entorno de $x^*$ tal que, si $\exists \overline{k}$ con $x^{\overline{k}}\in S$, entonces $x^k\in S\ \forall k>\overline{k}$ y $x^k\to x^*$. Además, dado $\varepsilon>0$, $S$ se puede elegir para que $||x-x^*||<\varepsilon \ \forall x\in S$.
 \end{teorema}
 \begin{dem}
-Elegimos $\rho>0$ tal que $\forall x\neq x^*\mid ||x-x^*||<\rho$, entonces $f(x)>f(x^*)$. Definimos $\phi
-(t)=\min_{0\leq t\leq ||x-x^*||} (f(x)-f(x^*))$. $\phi$ es no decreciente, porque cuando $t$ disminuye, la corona circular se hace más gruesa hacia dentro, por lo que hay más puntos donde encontrar el mínimo, y si $t$ aumenta, la corona se hace más fina por lo que hay menos puntos donde encontrar el mínimo.
+Como $x^*$ es mínimo local y el único punto estacionario en un entorno suyo, podemos tomar $\rho>0$ tal que $\forall \mid 0<||x-x^*||<\rho$, entonces $f(x)>f(x^*)$. Definimos la función $$\phi
+(t)=\min_{0\leq t\leq ||x-x^*||\leq\rho} (f(x)-f(x^*)$$
+ $\phi$ es no decreciente, porque cuando $t$ disminuye, la corona circular se hace más gruesa hacia dentro, por lo que hay más puntos donde encontrar el mínimo, y si $t$ aumenta, la corona se hace más fina por lo que hay menos puntos donde encontrar el mínimo.
 
 Utilizamos la continuidad de de la norma y $\nabla f$ para decir que $\forall \varepsilon>0\ \exists r>0\mid ||x-x^*||<r\Rightarrow |g(x)-g(x^*)|<\varepsilon$, donde $g(x)=||x-x^*||+sc||\nabla f(x)||$. Se tiene que $g(x^*)=0$. Luego
 \begin{equation}\label{estrellita}
@@ -204,7 +205,7 @@ Entonces definimos $S:=\{x\mid ||x-x^*||<\varepsilon, f(x)< f(x^*)+\phi(r)\}$. S
 \end{itemize}
 Por lo que $x^{k+1}\in S$. Además $S$ está contenido en un compacto (una bola cerrada de radio $\varepsilon$), por lo que toda sucesión contiene una subsucesión convergente, esto es, $\{x^l\}_{l>k}$ contiene una subsucesión convergente. Y como $x^*$ es el único punto estacionario, la sucesión debe converger hacia dicho punto $x^*$. $\QED$
 \end{dem}
-
+\newpage
 \subsection{Tasa de convergencia del método de descenso máximo para funciones cuadráticas}
 Supongamos que $Q\in\R^{n\times n}$ simétrica definida positica. Sean $m,M$ los autovalores mínimo y máximo de $Q$, entonces $\forall y\neq 0, y\in\R^n$ se tiene la \emph{desigualdad de Kantorovich}
 $$\frac{(y'y)^2}{(y'Qy)(y'Q^{-1}y)}\geq\frac{4Mm}{(M+m)^2}$$
@@ -282,7 +283,7 @@ En Newton, $d^k=-(\nabla^2 f(x^k))^{-1})\nabla f(x^k)$, que es equivalente a enc
 $$\nabla^2 f(x^k)+\Delta^k=L^{k'}L^k\Rightarrow L^{k'}\underbrace{L^kd^k}_{y^k}=-\nabla f(x^k)\equiv L^{k'}y^k=-\nabla f(x^k).$$
 Por lo que $y^k=-(L^{k'})^{-1}\nabla f(x^k)$, de donde $d^k=(L^k)^{-1}y^k$.
 \section{Optimización con restricciones convexas}
-Supongamos que existe $S\subset\R^n$ convexo cerrado y $f:\R^n\to\R, f\in\mathcal{C}^1(S)$. Se considera el problema $(P)\min_{x\in S} f(x)$. En el interior de $S$ sigue siendo condición necesaria que $\nabla f(x)=0$, pero en la frontera no podemos hacer esto, porque no podemos considerar las direcciones opuestas. Sí que podemos pedir que $\nabla f(x^*)(x-x^*)\geq 0\ \forall x\in S$. 
+Supongamos que existe $S\subset\R^n$ convexo cerrado y $f:\R^n\to\R$, $f\in\mathcal{C}^1(S)$. Se considera el problema $(P)$ $\min_{x\in S} f(x)$. En el interior de $S$ sigue siendo condición necesaria que $\nabla f(x)=0$, pero en la frontera no podemos hacer esto, porque no podemos considerar las direcciones opuestas. Sí que podemos pedir que $\nabla f(x^*)(x-x^*)\geq 0\ \forall x\in S$. 
 \begin{teorema}
 Si $x^*$ mínimo local de $(P)$, entonces  $\nabla f(x^*)'(x-x^*)\geq 0\ \forall x\in S$.
 \end{teorema}
