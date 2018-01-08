@@ -27,7 +27,7 @@ Esto significa que la matriz $\nabla^2 f(x^*)$ es semidefinida positiva.
 Vamos a probar rigurosamente estos resultados en el siguiente teorema.
 
 \begin{teorema}
-Sea $x^*$ mínimo local de $f$ continuamente diferenciable en un entorno abierto $S$ de $x^*$. Entonces $\nabla f(x^*)=0$. Si además $f$ es de clase $\mathcal{C}^2(S)$, entonces $\nabla^2 f(x^*)$ es semidefinida positiva.
+Sea $x^*$ mínimo local de $f\in\mathcal{C}(S)^1$ siendo $S$ entorno abierto de $x^*$. Entonces $\nabla f(x^*)=0$. Si además $f$ es de clase $\mathcal{C}^2(S)$, entonces $\nabla^2 f(x^*)$ es semidefinida positiva.
 \end{teorema}
 \begin{dem}
  Consideremos $d \in \R^n$ arbitraria con $||d||=1$. Definimos:
@@ -166,7 +166,7 @@ $$f(x^k)-f(x^k+{s\beta^{m_k-1}}d^k)=f(x^k)-f(x^k+\frac{\alpha^k}{\beta}d^k)<-\si
 Denotamos $\rho^k=\frac{d^k}{||d^k||},\overline{\alpha}^k=\frac{\alpha^k||d^k||}{\beta}$, de modo que la desigualdad se convierte en 
 $$ f(x^k)-f(x^k+\overline{\alpha}^k\rho^k)< -\sigma\overline{\alpha}^k\nabla f(x^k)'\rho^k.$$
 Utilizando ahora el teorema del valor medio, es decir, $f(y)=f(x)+\nabla f(z)'(y-x)$ para $z\in[x,y]$, deducimos
-$$-\nabla f(x^k+\tilde{\alpha}^k\rho^k)'(\overline{\alpha}^k\rho^k) <-\sigma\overline{\alpha}^k\nabla f(x^k)'\rho^k\quad \tilde{\alpha}^k\in[0,\overline{\alpha}^k]$$
+$$\nabla f(x^k+\tilde{\alpha}^k\rho^k)'(-\overline{\alpha}^k\rho^k) <-\sigma\overline{\alpha}^k\nabla f(x^k)'\rho^k\quad \tilde{\alpha}^k\in[0,\overline{\alpha}^k]$$
 Podemos simplificar eliminando los $\overline{\alpha}^k$
 \begin{equation}\label{simply}
 -\nabla f(x^k+\tilde{\alpha}^k\rho^k)'\rho^k <-\sigma\nabla f(x^k)'\rho^k\quad \tilde{\alpha}^k\in[0,\overline{\alpha}^k]
@@ -190,8 +190,8 @@ Sea $f\in\mathcal{C}^1$ y $\{x^k\}$ tal que $x^{k+1}=x^k+\alpha^k d^k$ verifican
 Sea $x^*$ mínimo local de $f$ que es el único punto estacionario en un entorno suyo. Entonces $\exists S$ entorno de $x^*$ tal que, si $\exists \overline{k}$ con $x^{\overline{k}}\in S$, entonces $x^k\in S\ \forall k>\overline{k}$ y $x^k\to x^*$. Además, dado $\varepsilon>0$, $S$ se puede elegir para que $||x-x^*||<\varepsilon \ \forall x\in S$.
 \end{teorema}
 \begin{dem}
-Como $x^*$ es mínimo local y el único punto estacionario en un entorno suyo, podemos tomar $\rho>0$ tal que $\forall \mid 0<||x-x^*||<\rho$, entonces $f(x)>f(x^*)$. Definimos la función $$\phi
-(t)=\min_{0\leq t\leq ||x-x^*||\leq\rho} (f(x)-f(x^*)$$
+Como $x^*$ es mínimo local y el único punto estacionario en un entorno suyo, podemos tomar $\rho>0$ tal que $\forall \mid 0<||x-x^*||\leq\rho$, entonces $f(x)>f(x^*)$. Definimos la función $$\phi
+(t)=\min_{0\leq t\leq ||x-x^*||\leq\rho} f(x)-f(x^*)$$
  $\phi$ es no decreciente, porque cuando $t$ disminuye, la corona circular se hace más gruesa hacia dentro, por lo que hay más puntos donde encontrar el mínimo, y si $t$ aumenta, la corona se hace más fina por lo que hay menos puntos donde encontrar el mínimo.
 
 Utilizamos la continuidad de de la norma y $\nabla f$ para decir que $\forall \varepsilon>0\ \exists r>0\mid ||x-x^*||<r\Rightarrow |g(x)-g(x^*)|<\varepsilon$, donde $g(x)=||x-x^*||+sc||\nabla f(x)||$. Se tiene que $g(x^*)=0$. Luego
@@ -225,7 +225,7 @@ g'(\alpha)&=\frac{dg(\alpha)}{d\alpha}=-\nabla f(x^k)'\nabla f(x^k-\alpha\nabla 
 \\ \\
 f(x^{k+1})&=\frac{1}{2}\left[x^k-\frac{g^{k'}g^k}{g^{k'}Qg^k}g^k\right]'Q\left[x^k-\frac{g^{k'}g^k}{g^{k'}Qg^k}g^k\right]=\frac{1}{2}\left[x^{k'}Qx^k-\frac{(g^{k'}g^k)^2}{g^{k'}Qg^k}\right]\\
 &=\frac{1}{2}x^{k'}Qx^k-\frac{1}{2}\frac{(g^{k'}g^k)^2}{g^{k'}Qg^k}=\frac{1}{2}g^{k'}Q^{-1}g^k-\frac{1}{2}\frac{(g^{k'}g^k)^2}{g^{k'}Qg^k}\\ 
-&=\frac{1}{2}g^{k'}Q^{-1}g^k\left[1-\frac{1}{2}\frac{(g^{k'}g^k)^2}{(g^{k'}Qg^k)(g^{k'}Q^{-1}g^k)}\right]\\
+&=\frac{1}{2}g^{k'}Q^{-1}g^k\left[1-\frac{(g^{k'}g^k)^2}{(g^{k'}Qg^k)(g^{k'}Q^{-1}g^k)}\right]\\
 &\leq\frac{1}{2}g^{k'}Q^{-1}g^k\left[1-\frac{4Mm}{(M+m)^2}\right]\\
 &=\frac{1}{2}g^{k'}Q^{-1}g^k\left(\frac{M-m}{M+m}\right)^2=f(x^k)\left(\frac{M-m}{M+m}\right)^2
 \end{align*}
@@ -252,7 +252,7 @@ $$\lim_{k\to\infty}\frac{||x^{k+1}-x^*||}{||x^k-x^*||}=0.$$
 \end{itemize}
 \end{teorema}
 \begin{dem}
-$\nabla g(x^*)$ es invertible si y solo si $\det(\nabla g(x^*))\neq 0\Rightarrow\det(\nabla g(x))\neq 0$ en $S_\delta$ para algún $\delta>0$. Por tanto $\exists M>0$ tal que $||\nabla g(x)^{-1}||<M\ \forall x\in S_\delta$. 
+$\nabla g(x^*)$ es invertible si y solo si $\det(\nabla g(x^*))\neq 0$. Como $g \in \mathcal{C}^1$, $\det(\nabla g(x))\neq 0$ en $S_\delta$ para algún $\delta>0$. Por tanto $\exists M>0$ tal que $||\nabla g(x)^{-1}||<M\ \forall x\in S_\delta$. 
 \begin{itemize}
 \item[a)] Supongamos que $x^k\in S_\delta$ y consideremos $x^{k+1}$. Entonces
 $$||x^{k+1}-x^*||=||x^k-(\nabla g(x^k)')^{-1}g(x^k)-x^*||=||(\nabla g(x^k)')^{-1}[-g(x^k)+\nabla g(x^k)'(x^k-x^*)]||.$$
@@ -269,7 +269,7 @@ Aplicando desigualdades de produtos e integrales matriciales
 \end{equation}
 Por continuidad de $\nabla g, \forall\varepsilon/M>0\ \exists\delta'\leq\delta$ tal que si $||x^k-x^*||<\delta'$ entonces se tiene $ ||\nabla g(x^k)-\nabla g(x^*+t(x^k-x^*))')||<\varepsilon/M$. Por tanto, el término anterior queda mayorado por
 $$||x^{k+1}-x^*|| \leq M\int_0^1\frac{\varepsilon}{M} dt ||x^k-x^*||=\varepsilon ||x^k-x^*||.$$
-En definitiva, $\forall\varepsilon>0, ||x^{k+1}-x^*||\leq\varepsilon||x^k-x^*||$, lo que significa que $$\lim_{k\to\infty}\frac{||x^{k+1}-x^*||}{||x^k-x^*||}=0.$$
+En definitiva, $\forall\varepsilon>0$ $\exists \delta>0$ tal que si $||x^k-x^*||<\delta$ entonces $ ||x^{k+1}-x^*||\leq\varepsilon||x^k-x^*||$, lo que significa que $$\lim_{k\to\infty}\frac{||x^{k+1}-x^*||}{||x^k-x^*||}=0.$$
 \item[b)] En \ref{estrella} aplicamos que $\nabla g$ es lipschitziana, entonces ese término está acotado por
 \begin{gather*}
 ||(\nabla g(x^k)')^{-1}||\int_0^1||\nabla g(x^k)-\nabla g(x^*-t(x^k-x^*))||dt||x^k-x^*||\leq\\
@@ -279,7 +279,7 @@ lo que prueba que $ ||x^{k+1}-x^*||\leq ML/2||x^k-x^*||^2$. $\QED$
 \end{itemize}
 \end{dem}
 \subsection{Método Quasi-Newton}
-En Newton, $d^k=-(\nabla^2 f(x^k))^{-1})\nabla f(x^k)$, que es equivalente a encontrar la solución del sistema $(\nabla^2 f(x^k))d^k=-\nabla f(x^k)$.  Podríamos tener que $\nabla^2 f(x)$ no sea definido positivo o que no sea invertible. Entonces consideramos el sistema $(\nabla^2 f(x^k)-\Delta^k)d^k=-\nabla f(x^k)$, con $\Delta^k$ diagonal con entradas positivas de modo que al sumar cada una con el autovalor correspondiente de $\nabla^2 f(x^k)$ salga positivo. Entonces la matriz resultante sí es definida positiva, por lo que admite una descomposición de Cholesky con una matriz $L^k$ triangular
+En Newton, $d^k=-(\nabla^2 f(x^k))^{-1})\nabla f(x^k)$, que es equivalente a encontrar la solución del sistema $(\nabla^2 f(x^k))d^k=-\nabla f(x^k)$.  Podríamos tener que $\nabla^2 f(x)$ no sea definido positivo o que no sea invertible. Entonces consideramos el sistema $(\nabla^2 f(x^k)+\Delta^k)d^k=-\nabla f(x^k)$, con $\Delta^k$ diagonal con entradas positivas de modo que al sumar cada una con el autovalor correspondiente de $\nabla^2 f(x^k)$ salga positivo. Entonces la matriz resultante sí es definida positiva, por lo que admite una descomposición de Cholesky con una matriz $L^k$ triangular
 $$\nabla^2 f(x^k)+\Delta^k=L^{k'}L^k\Rightarrow L^{k'}\underbrace{L^kd^k}_{y^k}=-\nabla f(x^k)\equiv L^{k'}y^k=-\nabla f(x^k).$$
 Por lo que $y^k=-(L^{k'})^{-1}\nabla f(x^k)$, de donde $d^k=(L^k)^{-1}y^k$.
 \section{Optimización con restricciones convexas}
