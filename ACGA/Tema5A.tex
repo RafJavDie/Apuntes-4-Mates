@@ -453,7 +453,7 @@ Sea $M$ un $A$-módulo graduado, $N \subseteq M$ un $A$-\textbf{submódulo gradu
 Veamos
 \[ M/N \cong \bigoplus_{i≥0} M_i / N_i \]
 donde $N_i = M_i \cap N$. Primero observamos que $M_i/N_i \xrightarrow{ψ} M/N$ definido como $m + N_i \to m+N$. Si $ψ$ es isomorfismo, éste induce un isomorfismo $\bigoplus (M_i/N_i) \cong M/N$. Veamos que $ψ$ es isomorfismo. Supongamos que:
-\[ ψ\left(\sum m_i + N_i\right) = 0 \Rightarrow  \left(\sum m_i + N\right) = 0 \Rightarrow  \left(\sum m_i\right) + N = 0\]
+\[ ψ\left(\sum m_i + N_i\right) = 0 \Rightarrow  \sum \left(m_i + N\right) = 0 \Rightarrow  \left(\sum m_i\right) + N = 0\]
 Entonces:
 \[ \sum m_i \in N = \bigoplus N_i \]
 Luego existen $n_i \in N_i$ tal que:
@@ -477,15 +477,17 @@ Dígamos que $g_i$ es de grado $d_i$ para todo $i=1,\dots,s$.
 
 Sea $g \in M_r$, entonces $g = \sum_{i=1}^s a_i g_i$ con $a_i \in A$. Descomponiendo $a_i$ en sus componentes homogénas, y sabiendo que todas las componentes homogéneas de grado distinto de $r$ deben anularse para quedar en $M_r$ quiere decir que podemos tomar $b_i$ como la componentes de homogéneas de $\sum a_i$ de grado $r-d_i$ tal que $g = \sum_{i=1}^s b_i g_i$. Entonces:
 hay un homomorfismo de $k$-espacio vectoriales sobreyectivo:
-\[ \bigoplus A_{r-d_i} \to M_r \]
+\[ \bigoplus_{i≥0} A_{r-d_i} \longrightarrow M_r \]
 \[ (a_1,\dots,a_s) \mapsto \sum_{i=1}^s a_i g_i\]
 Como $\bigoplus A_{r-d_i}$ es de dimensión finita, $M_r$ es de dimensión finita.
 \end{dem}
 
 \begin{defi}
 Sea $M$ un $k[x_0,\dots,x_n]$-módulo graduado y finitamente generado. La \textbf{función de Hilbert} de $M$ es
-\[ φ_M : \N \to \N \]
-\[ r \mapsto \dim_k (M_r) \] 
+\begin{align*}
+	φ_M : & \N \longrightarrow \N \\
+	& r \mapsto \dim_k (M_r)
+\end{align*}
 \end{defi}
 
 \begin{ej}
