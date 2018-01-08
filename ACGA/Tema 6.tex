@@ -1,0 +1,276 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage[utf8x]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsthm, epsf, graphicx, amscd, amsfonts}
+\usepackage[colorlinks]{hyperref}
+\usepackage{xmpincl}
+\usepackage{fancyhdr}
+
+
+\pagestyle{fancy}
+\lhead[\thepage]{\rightmark}
+\rhead[\leftmark]{\thepage}
+\cfoot[]{}
+
+\addto\captionsspanish{ \renewcommand{\chaptername}{Tema} }
+
+\newtheorem{thm}{Teorema}[chapter]
+\newtheorem{cor}[thm]{Corolario}
+\newtheorem{lem}[thm]{Lema}
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{defn}[thm]{Definición}
+\newtheorem{rem}[thm]{Observaciones}
+\newtheorem{eje}[thm]{Ejemplos}
+
+\newtheorem{ejercicio}{Ejercicio}[chapter]
+
+\newcommand{\RR}{\mathbb R}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\AAA}{\mathbb A}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\Ank}{\AAA^n_k}
+\newcommand{\Pnk}{\PP^n_k}
+\newcommand{\Pmk}{\PP^m_k}
+\newcommand{\Amk}{\AAA^m_k}
+\newcommand{\calA}{{\mathcal A}}
+\newcommand{\II}{{\mathcal I}}
+\newcommand{\VV}{{\mathcal V}}
+\newcommand{\KK}{{\mathcal K}}
+\newcommand{\OO}{{\mathcal O}}
+\newcommand{\mm}{{\mathfrak m}}
+
+\title{Notas y ejercicios de Geometría Algebraica}
+\author{Departamento de Álgebra \\ Universidad de Sevilla}
+\date{Septiembre de 2017}
+
+
+
+
+\begin{document}
+
+\setcounter{chapter}{5}
+\maketitle
+
+\vspace*{\fill}
+
+\copyright{2011-17 Antonio Rojas León}
+
+\bigskip
+
+Este trabajo está publicado bajo licencia Creative Commons 3.0 España (Reconocimiento - No Comercial - Compartir bajo la misma licencia)
+
+\url{http://creativecommons.org/licenses/by-nc-sa/3.0/es/}
+
+\bigskip
+
+Usted es libre de:
+\begin{itemize}
+ \item copiar, distribuir y comunicar públicamente la obra
+\item hacer obras derivadas
+\end{itemize}
+
+Bajo las condiciones siguientes:
+\begin{itemize}
+ \item {\bf Reconocimiento:} Debe reconocer los créditos de la obra maestra especificada por el autor o el licenciador (pero no de una manera que sugiera que tiene su apoyo o apoyan el uso que hace de su obra).
+ \item {\bf No comercial:} No puede utilizar esta obra para fines comerciales.
+\item {\bf Compartir bajo la misma licencia:} Si altera o transforma esta obra, o genera una obra derivada, sólo puede distribuir la obra generada bajo una licencia idéntica a ésta.
+\end{itemize}
+
+
+
+
+\newpage
+
+
+\chapter{Multiplicidad y grado}
+
+\section[El polinomio de Hilbert]{El polinomio de Hilbert de una variedad proyectiva}
+
+Empezamos definiendo el análogo al anillo de coordenadas para una variedad proyectiva.
+
+\begin{defn}
+ Sea $X\subseteq\Pnk$ un conjunto algebraico proyectivo. El {\bf anillo de coordenadas homogéneo} de $X$ es el anillo cociente ${\mathcal S}(X):=k[x_0,x_1,\ldots,x_n]/\II(X)$.
+\end{defn}
+
+Como $\II(X)$ es un ideal homogéneo, la graduación natural de $k[x_0,x_1,\ldots,x_n]$ como suma directa de los subespacios $k[x_0,x_1,\ldots,x_n]_r$ formados por los polinomios homogéneos de grado $r$ para todo $r\geq 0$ induce una descomposición $\II(X)=\bigoplus_r\II(X)_r$ (donde $\II(X)_r=\II(X)\cap k[x_0,x_1,\ldots,x_n]_r$) y por tanto una graduación en ${\mathcal S}(X)$:
+$$
+{\mathcal S}(X)=\bigoplus_{r=0}^{\infty}{\mathcal S}_r(X)
+$$
+donde ${\mathcal S}_r(X)=k[x_0,x_1,\ldots,x_n]_r/\II(X)_r$ como $k$-espacio vectorial.
+
+\begin{ejercicio}
+ Probar que se tiene dicha descomposición para ${\mathcal S}(X)$.
+\end{ejercicio}
+
+Para todo $r\geq 0$, ${\mathcal S}_r(X)$ es un espacio vectorial de dimensión finita, por ser un cociente de $k[x_0,x_1,\ldots,x_n]_r$, que tiene dimensión ${{n+r}\choose n}$.
+
+\begin{defn}
+ Sea $X\subseteq\Pnk$ un conjunto algebraico proyectivo. La {\bf función de Hilbert} de $X$ es la función $\varphi_X:{\mathbb N}\to{\mathbb N}$ dada por
+$$
+\varphi_X(r)=\dim_k{\mathcal S}_r(X).
+$$
+\end{defn}
+
+\begin{eje}\label{hilbert}
+ \emph{\begin{enumerate}
+        \item La función de Hilbert de $\Pnk$ viene dada por $$\varphi_{\Pnk}(r)={{r+n}\choose n}=\frac{1}{n!}(r+1)(r+2)\cdots(r+n)$$.
+\item Sea $X\subseteq\PP^1_k$ un conjunto finito formado por $d$ puntos. Entonces $\II(X)$ está generado por un polinomio homogéneo reducido $f(x_0,x_1)$ de grado $d$. Para cada $r\geq 0$, $\II(X)_r$ sólo contiene al $0$ si $r<d$, y tiene dimensión $r-d+1$ si $r\geq d$ (ya que la aplicación lineal $k[x_0,x_1]_{r-d}\to\II(X)_r$ dada por $g\mapsto fg$ es un isomorfismo de espacios vectoriales). Por tanto ${\mathcal S}(X)_r$ tiene dimensión $r+1$ si $r<d$ y $r+1-(r-d+1)=d$ si $r\geq d$:
+$$
+\varphi_X(r)=\left\{\begin{array}{ll}
+                     r+1 & \text{si }r<d \\
+                     d & \text{si }r\geq d.
+                    \end{array}\right.
+$$
+       \end{enumerate}
+}
+\end{eje}
+
+Nuestro próximo objetivo es probar que la función de Hilbert coincide con un polinomio para valores grandes de la variable.
+
+\begin{prop}\label{existepolinomio}
+Sea $X\subseteq\Pnk$ un conjunto algebraico proyectivo no vacío. Existen un entero $r_0$ y un polinomio $P_X\in {\mathbb Q}[t]$ tal que $\varphi_X(r)=P_X(r)$ para todo $r\geq r_0$. Además, el grado de $P_X$ es la dimensión de $X$.
+\end{prop}
+
+\begin{proof}
+Sea $I=\II(X)$, es un ideal homogéneo propio de $A:=k[x_0,x_1,\ldots,x_n]$. Hay que probar que la función $\varphi_{\II(X)}(r)=\varphi_X(r)=\dim_k A_r/I_r$ coincide con un polinomio de grado $\dim X=\dim\VV(I)$ para $r\geq r_0$. Lo probaremos en general para un ideal homogéneo arbitrario $I\subseteq A$ tal que $\VV(I)\neq\emptyset$ (es decir, tal que $\langle x_0,x_1,\ldots,x_n\rangle\not\subseteq \sqrt{I}$).
+
+ La prueba se hará por inducción en $n$. Para $n=0$, $I$ debe ser el ideal $\{0\}$. Entonces $k[x_0]/I=k[x_0]$, y $k[x_0]_r$ está generado por $x_0^r$ como espacio vectorial. La función de Hilbert en este caso es la constante $1$, y coincide con el polinomio $1$ de grado $0=\dim(X)$ para $r\geq 0$.
+
+Supongámoslo probado para $n-1$ variables, con $n\geq 1$. Elijamos un polinomio lineal $H(x_0,x_1,\ldots,x_n)\in A_1$ que no esté en ningún primo asociado a $I$ (ver \cite[Capítulo 4]{am}. Si $I=\II(X)$, esto significa simplemente que ninguna componente irreducible de $X$ está contenida en el hiperplano definido por $H$). Mediante un cambio lineal de variables, podemos suponer que $H=x_n$. La multiplicación por $x_n$ es un homomorfismo inyectivo $A/I\to A/I$ por \cite[Proposición 4.7]{am}, ya que $x_n$ no está en la unión de los primos asociados a $I$. El conúcleo es $(A/I)/x_n\cdot(A/I)=A/(\langle x_n\rangle +I)\cong B/J$, donde $B=k[x_0,\ldots,x_{n-1}]$ y $J=(\langle x_n\rangle +I)\cap B$. Obtenemos así una sucesión exacta
+$$
+0\to A/I\stackrel{x_n\cdot}{\to} A/I \to B/J\to 0.
+$$
+Tomando las componentes homogéneas de grado $r$ y teniendo en cuenta que multiplicar por $x_n$ aumenta en $1$ el grado, deducimos que $\varphi_I(r)-\varphi_I(r-1)=\varphi_J(r)$ para todo $r$.
+
+Supongamos en primer lugar que $\langle x_0,x_1,\ldots,x_{n-1}\rangle_B\subseteq \sqrt{J}$. Entonces $J$ (y por consiguiente $\langle x_n\rangle +I$) contiene una potencia de $x_i$ para todo $i=0,\ldots,n-1$, así que $\langle x_0,x_1,\ldots,x_{n-1}\rangle_A\subseteq \sqrt{\langle x_n\rangle +I}$. Equivalentemente, $\VV(\langle x_n\rangle +I)=\VV(x_n)\cap\VV(I)\subseteq\VV(x_0,x_1,\ldots,x_{n-1})$. Como un punto de $\Pnk$ no puede tener todas sus coordenadas nulas, concluimos que $\VV(x_n)\cap\VV(I)=\emptyset$. Una variedad proyectiva de dimensión $>0$ corta a cualquier hiperplano (de lo contrario, sería isomorfa a una variedad afín, en contradicción con el corolario \ref{proyectivanoafin}). Por tanto toda componente irreducible de $\VV(I)$ debe tener dimensión $0$.
+
+Por otra parte, $B/J$ es un $k[x_0,x_1,\ldots,x_{n-1}]$-módulo finitamente generado que es anulado por una potencia de $x_i$ para todo $i=0,\ldots,n-1$. En particular es un $k$-espacio vectorial de dimensión finita, y por tanto $\varphi_J(r)$ sólo puede ser positivo para un número finito de $r$. Existe entonces un $r_0$ tal que $\varphi_J(r)=0$ para $r\geq r_0$, y por tanto $\varphi_I(r)-\varphi_I(r-1)=0$ para $r\geq r_0$. Así que $\varphi_I(r)$ es constante para $r\geq r_0$, y coincide con un polinomio de grado $0=\dim\VV(I)$.
+
+Supongamos ahora que $\langle x_0,x_1,\ldots,x_{n-1}\rangle_B\not\subseteq \sqrt{J}$. Por hipótesis de inducción, $\varphi_J(r)$ coincide con un polinomio $P_J\in{\mathbb Q}[t]$ para todo $r$ suficientemente grande. Además, el grado de $P_J$ es la dimensión de $\VV(J)$ en $\PP^{n-1}_k$ o, equivalentemente, la dimensión de $\VV(\langle x_n\rangle +I)=\VV(x_n)\cap\VV(I)$ en $\Pnk$. Por hipótesis, ninguna componente irreducible de $\VV(I)$ está contenida en la hipersuperficie $x_n=0$, así que $\dim(\VV(x_n)\cap\VV(I))=\dim\VV(I)-1$ por el ejercicio \ref{dimensionbaja1}. Por tanto el grado de $P_J$ es $\dim\VV(I)-1$. Concluimos por el lema siguiente y su corolario.
+\end{proof}
+
+\begin{lem}
+ Sea $P\in{\mathbb Q}[t]$ un polinomio de grado $d$ tal que $P(r)\in{\mathbb Z}$ para todo $r\in{\mathbb Z}$ mayor o igual que un $r_0$ fijo. Entonces existen enteros $a_0,\ldots,a_d\in{\mathbb Z}$ tales que
+$$
+P(r)=a_d{r\choose d}+a_{d-1}{r\choose{d-1}}+\cdots+a_1{r\choose 1}+a_0.
+$$
+\end{lem}
+
+\begin{proof}
+ Por inducción en $d$. Para $d=0$ es resultado es evidente. Supongámoslo probado para $d-1\geq 0$, y sea $P\in{\mathbb Q}[t]$ de grado $d$ cumpliendo la hipótesis. Entonces $Q(t):=P(t+1)-P(t)$ también verifica la hipótesis y tiene grado $d-1$, por tanto existen $b_0,\ldots,b_{d-1}\in{\mathbb Z}$ tales que 
+$$
+P(r+1)-P(r)=b_{d-1}{r\choose{d-1}}+\cdots+b_1{r\choose 1}+b_0.
+$$
+Sea
+$$
+R(r)=b_{d-1}{r\choose{d}}+\cdots+b_1{r\choose 2}+b_0{r\choose 1},
+$$
+entonces $R(j+1)-R(j)=P(j+1)-P(j)$ para todo $j$. Sumando desde $j=0$ hasta $r-1$, obtenemos $R(r)-R(0)=P(r)-P(0)$, es decir, $P(r)=R(r)+(P(0)-R(0))$. Basta entonces tomar $a_j=b_{j-1}$ para $j=1,\ldots,d$ y $a_0=P(0)-R(0)$.
+\end{proof}
+
+
+
+\begin{cor}\label{polinomiodiff}
+ Sea $f:{\mathbb N}\to{\mathbb N}$ una función tal que existen un entero $r_0$ y un polinomio $Q\in{\mathbb Q}[t]$ de grado $d-1\geq 0$ con $f(r)-f(r-1)=Q(r)$ para todo $r\geq r_0$. Entonces existe un polinomio $P\in{\mathbb Q}[t]$ de grado $d$ tal que $f(r)=P(r)$ para $r> r_0$.
+\end{cor}
+
+\begin{proof} Por el lema, existen $c_0,\ldots,c_{d-1}\in{\mathbb Z}$ tales que
+$$
+f(r)-f(r-1)=c_{d-1}{r\choose{d-1}}+\cdots+c_1{r\choose 1}+c_0
+$$
+para $r\geq r_0$. Sea $R(r)=c_{d-1}{r\choose{d}}+\cdots+c_1{r\choose 2}+c_0{r\choose 1}$, entonces $R(j)-R(j-1)=f(j)-f(j-1)$ para $j\geq r_0$. Sumando desde $j=r_0+1$ hasta $r$, obtenemos $R(r)-R(r_0)=f(r)-f(r_0)$ para $r>r_0$. Es decir, $f(r)$ coincide con el polinomio $P(r):=R(r)+(f(r_0)-P(r_0))$ para $r>r_0$.
+\end{proof}
+
+\begin{defn}
+ Sea $X\subseteq\Pnk$ un conjunto algebraico. El {\bf polinomio de Hilbert} de $X$ es el único polinomio $P_X\in{\mathbb Q}[t]$ tal que $\varphi_X(r)=P_X(r)$ para todo $r$ mayor o igual que un cierto $r_0$. Más generalmente, dado un ideal homogéneo $I\subseteq k[x_0,x_1,\ldots,x_n]$ tal que $\VV(I)\neq\emptyset$, su {\bf polinomio de Hilbert} es el único polinomio $P_I\in{\mathbb Q}[t]$ tal que $\varphi_I(r)=P_I(r)$ para todo $r$ mayor o igual que un cierto $r_0$.
+\end{defn}
+
+\section{El grado de una variedad proyectiva}
+
+\begin{defn}
+ Sea $X\subseteq\Pnk$ un conjunto algebraico de dimensión $d$, y $P_X$ su polinomio de Hilbert. El {\bf grado} de $X$ es $d!$ multiplicado por el coeficiente del término de mayor grado de $P_X$.
+\end{defn}
+
+\begin{eje}
+ \emph{\begin{enumerate}
+        \item Sea $X=\Pnk$. Por \ref{hilbert}, el polinomio de Hilbert de $X$ es $\frac{1}{n!}(r+1)(r+2)\cdots(r+n)$. Su término de mayor grado es $\frac{r^n}{n!}$, y por tanto su grado es $\frac{n!}{n!}=1$.
+\item Sea $X\subseteq\PP^1_k$ un conjunto finito formado por $d$ puntos. Por \ref{hilbert}, su polinomio de Hilbert es la constante $d$. Por tanto, su grado es $0!d=d$.
+       \end{enumerate}
+}
+\end{eje}
+
+\begin{prop}\label{gradointerseccion}
+ Sea $X\subseteq\Pnk$ un conjunto algebraico proyectivo de grado $d$ y $H=\VV(f)\subseteq\Pnk$ una hipersuperficie definida por un polinomio homogéneo de grado $e$ que no contenga a ninguna componente irreducible de $X$. Supongamos que el ideal $\II(X)+\langle f\rangle$ es radical. Entonces el grado de $X\cap H$ es igual a $de$.
+\end{prop}
+
+\begin{proof}
+ Como $\II(X)+\langle f\rangle$ es radical, $\II(X\cap H)=\II(\VV(\II(X)+\langle f\rangle))=\II(X)+\langle f\rangle$. Al igual que en la prueba de la proposición \ref{existepolinomio}, como $H$ no contiene ninguna componente irreducible de $X$ la multiplicación por $f$ es un homomorfismo inyectivo $A/\II(X)\to A/\II(X)$ por \cite[Proposición 4.7]{am}. Obtenemos así una sucesión exacta
+$$
+0\to A/\II(X)\stackrel{f \cdot}{\to} A/\II(X) \to A/(\II(X)+\langle f\rangle)=A/\II(X\cap H)\to 0.
+$$
+Comparando las componentes homogéneas de grado $r$ y teniendo en cuenta que la multiplicación por $f$ aumenta el grado en $e$, concluimos que $\varphi_{X\cap H}(r)=\varphi_X(r)-\varphi_X(r-e)$ para $r\geq e$. Por tanto $P_{X\cap H}(r)=P_X(r)-P_X(r-e)$. Si $m=\dim(X)$, el término de mayor grado de $P_X(r)$ es $d\frac{r^m}{m!}$, así que el término de mayor grado de $P_{X\cap H}(r)=P_X(r)-P_X(r-e)$ es $\frac{dmr^{m-1}e}{m!}=de\frac{r^{m-1}}{(m-1)!}$. El grado de $X\cap H$ es entonces $de$ por definición. 
+\end{proof}
+
+\begin{eje}
+ \emph{La hipótesis de que $\II(X)+\langle f\rangle$ sea radical es fundamental: sea $X=\VV(x_0x_1-x_2^2)\subseteq\PP^2_\CC$, y $H=\VV(x_0)$. Entonces $X$ tiene grado $2$ (ejercicio \ref{gradohipersuperficie}) pero $X\cap H=\{(0:1:0)\}$ tiene grado $1$. En este caso, $\II(X)+\langle x_0\rangle=\langle x_0,x_2^2\rangle$ no es radical.}
+
+\emph{En general, es necesario considerar no sólo el grado de $X\cap H$, sino también la \emph{multiplicidad} de cada una de sus componentes irreducibles. En estas notas nos limitaremos al caso de multiplicidad $1$ (es decir, $\II(X)+\langle f\rangle$ radical).}
+\end{eje}
+
+El conjunto de hiperplanos en $\Pnk$ puede dotarse de una estructura de espacio proyectivo (el espacio dual de $\Pnk$). Se puede probar que, si $X$ es una variedad, el conjunto de hiperplanos $H=\VV(f)$ tales que $X\not\subseteq H$, $\II(X)+\langle f\rangle$ es radical y (si $m\geq 2$) $X\cap H$ es irreducible contiene un abierto denso en dicho espacio proyectivo. Supongamos que $X$ tiene dimensión $m$ y grado $d$. Repitiendo el proceso $m$ veces, deducimos que para la ``mayoría'' (en un cierto sentido que no definiremos aquí) de subvariedades lineales $L=\langle f_1,\ldots,f_m\rangle$ de $\Pnk$ de dimensión $n-m$, $X\cap L$ tiene dimensión $0$ (es decir, es un conjunto finito de puntos) y ideal $\II(X)+\langle f_1,\ldots,f_m\rangle$ es radical. Por la proposición \ref{gradointerseccion} tenemos entonces que el grado de $X\cap L$ es $d$, y por tanto es un conjunto de $d$ puntos (ejercicio \ref{gradoconjuntofinito}).
+
+Vemos así que el grado de una variedad $X\subseteq\Pnk$ de dimensión $m$ es el número de puntos de intersección de $X$ con una subvariedad lineal de $\Pnk$ de dimensión $n-m$ suficientemente general. 
+
+\section[Multiplicidad de intersección]{Multiplicidad de intersección. El teorema de Bézout}
+
+                                                                                                                                                                                                                                                                                                                                                                                        Sean $X=\VV(f)$ e $Y=\VV(g)$ dos curvas en $\PP^2_k$, donde $f,g\in k[x_0,x_1,x_2]$ son polinomios homogéneos irreducibles. Por el ejercicio \ref{interseccionnovacia}, su intersección $X\cap Y$ es no vacía. 
+
+\begin{defn}
+ Se dice que $X$ e $Y$ están en {\bf posición general} si su intersección tiene dimensión $0$ (es decir, es un conjunto finito de puntos).
+\end{defn}
+
+\begin{ejercicio}
+ Probar que dos curvas están en posición general si y sólo si no tienen ninguna componente irreducible en común.
+\end{ejercicio}
+
+Sea $a\in X\cap Y$. Si el grado de $f$ es $d$, dado cualquier $h\in k[x_0,x_1,x_2]$ homogéneo de grado $d$ que no se anule en $a$ la función racional $f/h$ está definida en $a$, y por tanto pertenece a ${\mathcal O}_{\PP^2_k,a}$. Además, el ideal generado por $f/h$ en ${\mathcal O}_{\PP^2_k,x}$ sólo depende de $f$, ya que si elegimos otro $h'$ homogéneo de grado $d$ que no se anule en $a$, las funciones ${f}/{h}$ y ${f}/{h'}$ difieren en una unidad. Por abuso de lenguaje, lo llamaremos simplemente el ideal de ${\mathcal O}_{\PP^2_k,a}$ generado por $f$. El anillo local de $X\cap Y$ en $a$ es entonces ${\mathcal O}_{\PP^2_k,a}/\langle f,g\rangle$. Como tiene dimensión $0$, su ideal maximal es nilpotente \cite[Proposición 8.6]{am} y por tanto es un $k$-espacio vectorial de dimensión finita. 
+
+\begin{defn}
+ Sean $X,Y\subseteq\PP^2_k$ dos curvas en posición general y $a\in X\cap Y$. La {\bf multiplicidad de intersección} de $X$ e $Y$ en $a$ es la dimensión de ${\mathcal O}_{X\cap Y,a}$ como espacio vectorial sobre $k$.
+\end{defn}
+ 
+\begin{prop}
+ Sean $X=\VV(f)$ e $Y=\VV(g)\subseteq\PP^2_k$ dos curvas en posición general, con $X\cap Y=\{P_1,\ldots,P_r\}$. Sea $\mu_i$ la multiplicidad de intersección de $X$ e $Y$ en $P_i$ para $i=1,\ldots,r$. El polinomio de Hilbert del ideal $I=\langle f,g\rangle$ (que es constante, ya que $\dim\VV(I)=0$) es $\mu_1+\cdots+\mu_r$. 
+\end{prop}
+
+\begin{proof}
+ Sea $H$ una recta que no contenga a ninguno de los puntos $P_1,\ldots,P_r$. Mediante un cambio lineal de variables, podemos suponer que $H$ es la recta $x_0=0$. Entonces todos los $P_i$ están en $\AAA^2_k\subseteq\PP^2_k$. Es decir, el ideal $\langle x_0,f,g \rangle$ define el conjunto vacío y por tanto su radical es $\langle x_0,x_1,x_2\rangle$. En particular, este ideal contiene a todo polinomio homogéneo de grado mayor o igual que un cierto $d_0$ o, dicho de otra forma, $I_d+x_0\cdot A_{d-1}=A_d$ para todo $d\geq d_0$, donde $A_d=k[x_0,x_1,x_2]_d$. Entonces el homomorfismo de espacios vectoriales $A_{d}/I_{d}\to A_{d+1}/I_{d+1}$ dado por la multiplicación por $x_0$ es sobreyectivo para $d\geq d_0$.
+
+Por otra parte, sabemos que la dimensión de $A_d/I_d$ es constante para $d$ mayor o igual a un cierto $d_1$, ya que el polinomio de Hilbert tiene grado $0$. Por tanto, la multiplicación por $x_0$ induce un isomorfismo $A_{d}/I_{d}\to A_{d+1}/I_{d+1}$ para $d\geq\sup\{d_0,d_1\}$, y más generalmente la multiplicación por $x_0^e$ induce un isomorfismo $A_d/I_d\to A_{d+e}/I_{d+e}$ para $e\geq 0$.
+
+Sea $d\geq\sup\{d_0,d_1\}$, y sea $\phi:k[x_0,x_1,x_2]_d\to k[x_1,x_2]$ el homomorfismo de deshomogeneización que lleva un polinomio $f(x_0,x_1,x_2)$ homogéneo de grado $d$ en $f(1,x_1,x_2)$. Como $\phi(I_d)\subseteq J$ (donde $J$ es el deshomogeneizado de $I$), obtenemos un homomorfismo de $k$-espacios vectoriales
+$$
+\phi:A_d/I_d\to k[x_1,x_2]/J.
+$$
+Veamos que $\phi$ es inyectivo: dado $F\in A_d$ tal que su deshomogeneizado esté en $J$, debe existir un $e\geq 0$ tal que $x_0^eF\in I_{d+e}$ (por el ejercicio \ref{homodeshomo}). Pero sabemos que la multiplicación por $x_0^e$ induce un isomorfismo $A_d/I_d\to A_{d+e}/I_{d+e}$, en particular $F$ debe estar en $I_d$.
+
+Veamos ahora que $\phi$ es sobreyectivo para $d$ suficientemente grande. Como $k[x_1,x_2]/J$ tiene dimensión finita, está generado como $k$-espacio vectorial por un número finito de polinomios. Si $d$ es mayor que todos sus grados, cada uno de ellos será el deshomogeneizado de un polinomio homogéneo de grado $d$ (multiplicando sus homogeneizados por la potencia conveniente de $x_0$). Por tanto $\phi$ es sobreyectiva para dicho $d$. Concluimos que la dimensión de $A_d/I_d$ para $d$ suficientemente grande (y en particular el polinomio de Hilbert de $I_d$) coincide con la dimensión de $k[x_1,x_2]/J$.
+
+El cociente $k[x_1,x_2]/J$ es un anillo artiniano, y por tanto es suma directa de sus localizados en los ideales maximales \cite[Teorema 8.7]{am}. En particular, su dimensión es la suma de las dimensiones, para cada $i=1,\ldots,r$, del localizado de $k[x_1,x_2]/J$ en $P_i$, es decir, del anillo local de $X\cap Y$ en $P_i$. Pero esta es la multiplicidad de intersección de $X$ e $Y$ en $P_i$ por definición.\end{proof}
+
+\begin{thm}[\bf de Bézout]
+Sean $X$ e $Y\subseteq\PP^2_k$ dos curvas en posición general de grados $d$ y $e$ respectivamente. Entonces la suma de las multiplicidades de los puntos de intersección de $X$ e $Y$ es $de$.
+\end{thm}
+
+\begin{proof}
+ Sean $A=k[x_0,x_1,x_2]$, y $f$ y $g$ generadores de $\II(X)$ e $\II(Y)$ respectivamente (son ideales principales por la proposición \ref{principalproy} aplicada a sus componentes irreducibles). La multiplicación por $g$ induce un homomorfismo inyectivo $A/\langle f\rangle\to A/\langle f\rangle$, ya que $f$ y $g$ no tienen factores comunes (de lo contrario $X$ e $Y$ tendrían una componente irreducible en común y no estarían en posición general). Obtenemos así una sucesión exacta
+$$
+0\to A/\langle f\rangle\stackrel{g\cdot}{\to} A/\langle f\rangle\to A/\langle f,g\rangle\to 0.
+$$
+Comparando las componentes homogéneas de grado $r$, deducimos que el polinomio de Hilbert de $\langle f,g\rangle$ es $P_X(r)-P_X(r-e)$, ya que multiplicar por $g$ aumenta el grado en $e$. Como $P_X$ tiene grado $1$ y su término de mayor grado es $dr$, concluimos que $P_{\langle f,g\rangle}(r)=de$. Comparando con el resultado obtenido en la proposición anterior se obtiene que $de$ es la suma de las multiplicidades de los puntos de intersección de $X$ e $Y$. 
+\end{proof}
+
+El resultado es válido más generalmente en dimensión $n$, si consideramos $n$ hipersuperficies $X_1,\ldots,X_n$ en posición general (es decir, tales que su intersección tenga dimensión $0$).
+
+
+\end{document}
