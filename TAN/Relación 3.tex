@@ -151,17 +151,97 @@ Una fórmula que puede extenderse a todo $|s|<1$, pues $s\cot(s)\to 1$ cuando $s
 \end{sol}
 \newpage
 
-\begin{ejercicio}{7}
-\begin{itemize}
-\item[]
-\item[a)] Sea $0<\theta<1$. Demostrar que existe una constante $A$ tal que para $t>1$ u $\sigma>\theta$ se tiene
-$$
-|\zeta(\sigma +it)|\leq A\frac{t^{1-\theta}}{\theta(1-\theta)}
-$$
-\item[b)] Demostrar que existe una constante positiva $B$ tal que para $t>e$ se tiene
-$$
-|\zeta(1+it)|\leq B\log t
-$$
-\end{itemize}
+\begin{ejercicio}{5}
+Deducir los otro tres desarrollos en serie a partir del primero de ellos
+
+\begin{gather*}
+	x \cot x = 1-2 \sum_{n=1}^{∞} ζ(2n) \left(\frac{x}{2π}\right)^{2n}, \quad \frac{x}{e^x-1}-1+\frac{x}{2}=2\sum_{n=1}^{∞}(-1)^{n-1}ζ(2n)\left(\frac{x}{2π}\right)^{2n}\\
+\end{gather*}
 \end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{itemize}
+	\item Nos centramos en la serie:
+	\[ \sum_{n=1}^{∞} 4(2^{2n-1}-1)ζ(2n)\left(\frac{x}{2π}\right)^{2n} = 2 \sum_{n=1}^{∞} ζ(2n)\left(\frac{x}{π}\right)^{2n}-4\sum_{n=1}^{∞}ζ(2n)\left(\frac{x}{π}\right)^{2n} \]
+	Usando el primer desarrollo, esto es igual a:
+	\[ 1-x\cot x - 2\left(1-\frac{x}{2}\cot \frac{x}{2}\right) = -1+x\left(\frac{\cos x/2}{\sin x/2} - \frac{\cos x}{\sin x}\right)= -1+x\left(\frac{2\cos^2 x/2}{2(\sin x/2)(\cos x/2)} - \frac{\cos x}{\sin x}\right) \]
+	\[ = -1 + x \left(\frac{2\cos^2(x/2) - \cos x}{\sin x}\right) = -1 + \frac{x}{\sin x}\]
+	que demuestra el desarrollo.
+	
+	\item
+\end{itemize}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{6}
+\begin{enumerate}[(a)]
+	\item Se definen los números de Bernoulli mediante el desarrollo
+	\[ \frac{x}{e^x-1} = \sum_{n=0}^{∞} \frac{B_n}{n!}x^n \]
+	Demostrar que cada $B_n$ es un número racional.
+	\item Deducir que $B_0 = 1$, $B_1 = -1/2$, $B_{2k+1} = 0$ para cada $k=1,2,\dots,$ y que
+	\[ ζ(2n) = 1 + \frac{1}{2^{2n}} + \frac{1}{3^{2n}} + \dots = (-1)^{n-1} \frac{2^{2n-1}π^{2n}B_{2n}}{(2n)!} \]
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{enumerate}[(a)]
+	\item Por el ejercicio anterior, sabemos que la serie converge si $|x|<2π$. Vemos que:
+	\[ x = (e^x-1)\left(\frac{x}{e^x-1}\right) = \left(\sum_{n=1}^{∞} \frac{x^n}{n!}\right)\left(\sum_{n=0}^{∞} \frac{B_n}{n!}x^n\right)\]
+
+Luego desarrollando el producto de la serie en potencias de $x$ tenemos que:
+\[ 1 = \frac{B_0}{0!}\frac{1}{1!} \]
+\[ 0 = \sum_{k=0}^{n-1} \frac{B_k}{k!} \frac{1}{(n-k)!} \quad \forall n≥1\]
+De aquí, claramente $B_n$ es racional para todo $n$ por inducción.
+
+	\item Del desarrollo del ejercicio anterior:
+	\[ \frac{x}{e^x-1} = \sum_{n=0}^{∞} \frac{B_n}{n!} x^n = 1-\frac{x}{2} + 2 \sum_{n=1}^{∞} (-1)^{n-1} ζ(2n) \left(\frac{x}{2π}\right)^{2n}\]
+	Entonces:
+	\[ \frac{B_{2n}}{(2n)!} = 2(-1)^{n-1} \frac{ζ(2n)}{(2π)^{2n}} \]
+	Despejando $ζ(2n)$ obtenemos la fórmula anterior.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{7}\mbox{}
+\begin{enumerate}[(a)]
+\item Sea $0<θ<1$. Demostrar que existe una constante $A$ tal que para $t>1$ u $σ>θ$ se tiene
+$$
+|ζ(σ +it)|\leq A\frac{t^{1-\theta}}{\theta(1-\theta)}
+$$
+\item Demostrar que existe una constante positiva $B$ tal que para $t>e$ se tiene
+$$
+|ζ(1+it)|≤ B\log t
+$$
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Tenemos que:
+\[ ζ(s) = \sum_{n≤x} \frac{1}{n^s} + \frac{x^{1-s}}{s-1} + \frac{\{x\}-1/2}{x^s}+s \int_x^{∞} \frac{\{u\}}{u^{s+1}} du \]
+Tomamos $x=t$. Entonces:
+\[ |ζ(σ+it)| ≤ \sum_{n≤t} \frac{1}{n^θ} + \frac{t^{1-θ}}{t} + \frac{1}{2} \frac{1}{t^θ} + (σ+t)\frac{1}{2} \int_t^{∞} \frac{du}{u^{θ+1}} \]
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{8}
+Demostrar que $ζ(0) = -1/2$ y para todo $n≥1$ se tiene
+\[ ζ(-n) = (-1)^n \frac{B_{n+1}}{n+1} \]
+donde $B_n$ son los números de Bernoulli.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{9}
+\begin{enumerate}[(a)]
+	\item Demostrar que existe una constante $A$ tal que para $n \to +∞$
+	\[ \log n! = \left(n+\frac{1}{2}\right)\log n - n + A + \mathcal{O}\left(\frac{1}{n}\right)\]
+	
+	\item Usando la fórmula de Gauss demostrar la fórmula de Wallis
+	\[ \sqrt{π} = Γ(1/2) = \lim_{n\to∞} \frac{2^{2n}(n!)^2}{(2n)!\sqrt{n}} \]
+	
+	\item Probar que $A = \log {2π}$.
+	\item Deducir la fórmua de Stirling
+	\[ n! = \sqrt{2πn} \left(\frac{n}{e}\right)^n (1 + \mathcal{O}(1/n)) \]
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
 \end{document}
