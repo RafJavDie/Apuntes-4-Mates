@@ -47,12 +47,16 @@ Tomando el límite cuando $x\to∞$ se da la fórmula que buscabamos si $\frac{�
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[(a)]
-	\item Consecuencia directa de los apuntes.
+\item[]
+\item En este caso basta con usar el teorema 3.2.4 que nos dice que 
+$$\zeta(s)=\sum\limits_{n\leq x}\dfrac{1}{n^s}+\dfrac{x^{1-s}}{s-1}+\dfrac{\{x\}-\frac{1}{2}}{x^s}-s\int_x^{+\infty}\frac{\{u\}-\frac{1}{2}}{u^{s+1}}du$$
+Entonces añadiendo un término de $1-1$
+$$\zeta(s)=\sum\limits_{n\leq x}\dfrac{1}{n^s}+\dfrac{x^{1-s}+1-1}{s-1}+\dfrac{\{x\}-\frac{1}{2}}{x^s}-s\int_x^{+\infty}\frac{\{u\}-\frac{1}{2}}{u^{s+1}}du$$
+$$\displaystyle{\zeta(s)-\frac{1}{s-1}=\sum\limits_{n\leq x}\frac{1}{n^s}+\frac{x^{1-s}-1}{s-1}+\frac{\{x\}-\frac{1}{2}}{x^s}-s\int_x^{+\infty}\frac{\{u\}-\frac{1}{2}}{u^{s+1}}du}.$$
 	\item Veamos que ocurre en cada término:
-	\[ \lim_{s \to 1} \sum_{n≤x} \frac{1}{n^s} = \sum_{n≤x} \frac{1}{n} \]
-	\[ \lim_{s \to 1} \frac{x^{1-s}-1}{s-1} = - \log x \]
-	\[ \lim_{s \to 1} \frac{\{x\}-\frac{1}{2}}{x^s} = \frac{\{x\}-\frac{1}{2}}{x} \]
-	\[ \lim_{s \to 1} s \int_x^{∞} \frac{\{u\}-\frac{1}{2}}{u^{s+1}} du = \int_x^{∞} \frac{\{u\}-\frac{1}{2}}{u^2} du \]
+	\[ \lim_{s \to 1} \sum_{n≤x} \frac{1}{n^s} = \sum_{n≤x} \frac{1}{n} 
+	\qquad \lim_{s \to 1} \frac{x^{1-s}-1}{s-1} = - \log x \]
+	\[ \lim_{s \to 1} \frac{\{x\}-\frac{1}{2}}{x^s} = \frac{\{x\}-\frac{1}{2}}{x} \qquad \lim_{s \to 1} s \int_x^{∞} \frac{\{u\}-\frac{1}{2}}{u^{s+1}} du = \int_x^{∞} \frac{\{u\}-\frac{1}{2}}{u^2} du \]
 	Por lo tanto el límite es:
 	\[ \sum_{n≤x}\frac{1}{n} - \log x + \frac{\{x\}-\frac{1}{2}}{x} - \int_x^{∞} \frac{\{u\}-\frac{1}{2}}{u^2} du \]
 	\item Se tiene que $ζ(s)-\frac{1}{s-1}$ es analítica en todo el plano complejo. Tomamos como su desarrollo en serie con centro en $1$. $a_n=\frac{(-1)^n}{n!} γ_n$ para $n ≥ 1$. El valor de $a_0$ será igual al resultado del anterior apartado. Como no depende de $x$, podemos límite cuando $x$ tiende a infinito y obtenemos:
@@ -130,7 +134,7 @@ Utilizando la derivada logarítmica aplicando a $s/\pi$ vamos a deducir lo sigui
 \end{align*}
 Si $0<|s|<1$ podemos utilizar la expresión obtenida en el apartado anterior
 \begin{align*}
-\frac{1}{\pi}\left(\psi(1+s/\pi)-\psi(1-s/\pi)\right) &=  -\frac{1}{\pi}\left(\gamma \sum_{n=1}^\infty(-1)^{n}\zeta(n+1) \left(\frac{s}{\pi}\right)^n -  \gamma - \sum_{n=1}^\infty\zeta(n+1) \left(\frac{s}{\pi}\right)^n\right)\\
+\frac{1}{\pi}\left(\psi(1+s/\pi)-\psi(1-s/\pi)\right) &=  -\frac{1}{\pi}\left(\gamma+ \sum_{n=1}^\infty(-1)^{n}\zeta(n+1) \left(\frac{s}{\pi}\right)^n -  \gamma - \sum_{n=1}^\infty\zeta(n+1) \left(\frac{s}{\pi}\right)^n\right)\\
 &=2\sum_{n=1}^\infty \zeta(2n)\frac{s^{2n-1}}{\pi^{2n}}\\
 &=-\cot(s)+\frac{1}{s}
 \end{align*}
