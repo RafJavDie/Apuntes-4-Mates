@@ -51,6 +51,16 @@ $$A_3 = \{e \in \N : (\forall x) [\varphi_e(x + e)\uparrow\lor \varphi_e(x)\upar
 	
 	\item Sea $\Gamma=\{ \varphi_e\in\mathcal{P}: \varphi_e(e)\in$Prim$\}$. Podemos usar las mismas funciones del apartado anterior, ya que al ser constantes sobre sus códigos dan los mismos resultados para probar por el teorema de Rice que $I_{\Gamma}=A_2$ no es recursivo.
 	
+	Respuesta alternativa para evitar el problema de que $\varphi$ pueda reconocer su código o no:
+	Supongamos que es recursivo y sea la función 
+	\[
+	g(e,x)=\begin{cases}
+	0 & e\in A_2\\
+	2 & e\notin A_2
+	\end{cases}
+	\]
+	Por la hipótesis que hemos supuesto $g(e,x)$ es recursiva, por lo que existe $\hat{e}$ tal que $g(\hat{e},x)=\varphi_{\hat{e}}(x)\ \forall x$. Si $\hat{e}\in A_2$ entonces $g(\hat{e},x)=\varphi_{\hat{e}}(x)=0\ \forall x$, en particular para $x=\hat{e}$, con lo que se llega a contradicción porque 0 no es primo. En caso contrario, $g(\hat{e},\hat{e})=\varphi_{\hat{e}}(\hat{e})=2$, que es primo, luego volvemos a tener contradicción.
+	
 	Para ver que es recursivamente enumerable vamos a ver que $\mathcal{K}$ es reducible a $A_2$. Sea $\mathcal{C}_3$ la función constantemente 3. Entonces $e\in\mathcal{K}\Leftrightarrow \mathcal{C}_3(e)\in A_2$. Como sabemos que $\mathcal{K}$ es r.e., entonces también lo es $A_2$. 
 	
 	\item Consideremos el complementario $\overline{A}_3$. Se va a probar que es r.e. y no recursivo, de modo que por el teorema del complemento, $A_3$ no puede ser r.e. Así pues, 
@@ -64,6 +74,9 @@ Sea ahora $g(u,v)=\mathcal{U}(v,u)$ recursiva, por el teorema de recursión exis
 
 \newpage
 \begin{ejercicio}{3}
+Se pide:
+\begin{enumerate}
+\item Dar una expresión regular que genere el lenguaje aceptado por el siguiente autómata finito:
 \[ 
 \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
    \node[state,initial] (q_0)   {$q_0$}; 
@@ -82,6 +95,11 @@ Sea ahora $g(u,v)=\mathcal{U}(v,u)$ recursiva, por el teorema de recursión exis
     (q_4) edge [bend left] node {b} (q_3)
           edge [bend left] node {a} (q_2);
 \end{tikzpicture} \]
+
+\item Construir un $\varepsilon$-AFND sobre el alfabeto $\{a, b, c\}$ que acepte el lenguaje generado por la
+expresión regular $(ab^*c(ba)^* + (a + b)^*)^*$. ¿Acepta dicho autómata la palabra $bba$? ¿Y la
+palabra $acb$? Razónense las respuestas.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
 
@@ -99,10 +117,10 @@ Sea ahora $g(u,v)=\mathcal{U}(v,u)$ recursiva, por el teorema de recursión exis
     (q_1) edge node {a+b} (q_2)
     (q_2) edge [bend left] node {a} (q_4)
           edge [loop right] node {b} ()
-          edge [bend left] node {ϵ} (q_A)
+          edge [bend left] node {$\varepsilon$} (q_A)
     (q_3) edge [bend left] node {a} (q_4)
           edge node {b} (q_1)
-          edge [bend right] node {ϵ} (q_A)
+          edge [bend right] node {$\varepsilon$} (q_A)
     (q_4) edge [bend left] node {b} (q_3)
           edge [bend left] node {a} (q_2);
 \end{tikzpicture} \]
@@ -118,10 +136,10 @@ Sea ahora $g(u,v)=\mathcal{U}(v,u)$ recursiva, por el teorema de recursión exis
           edge [bend right] node {b} (q_3)
     (q_2) edge [bend left] node {a} (q_4)
           edge [loop right] node {b} ()
-          edge [bend left] node {ϵ} (q_A)
+          edge [bend left] node {$\varepsilon$} (q_A)
     (q_3) edge [bend left] node {a} (q_4)
           edge [bend left] node {b(a+b)} (q_2)
-          edge [bend right] node {ϵ} (q_A)
+          edge [bend right] node {$\varepsilon$} (q_A)
     (q_4) edge [bend left] node {b} (q_3)
           edge [bend left] node {a} (q_2);
 \end{tikzpicture} \]
@@ -136,7 +154,7 @@ Sea ahora $g(u,v)=\mathcal{U}(v,u)$ recursiva, por el teorema de recursión exis
           edge [bend right] node {b} (q_3)
           edge [bend left] node {$a(a+b)b^*a$} (q_4)
     (q_3) edge node [pos=0.1,sloped] {$a+b(a+b)b^*a$} (q_4)
-          edge node [sloped] {$ϵ+b(a+b)b^*$} (q_A)
+          edge node [sloped] {$\varepsilon+b(a+b)b^*$} (q_A)
     (q_4) edge [bend left] node {b} (q_3)
           edge [loop below] node {$ab^*a$} ()
           edge [bend right] node [below=0.3] {$ab^*$} (q_A);
@@ -148,14 +166,38 @@ Sea ahora $g(u,v)=\mathcal{U}(v,u)$ recursiva, por el teorema de recursión exis
    \node[state] (q_4) [below right=of q_0] {$q_4$};
    \node[state,accepting] (q_A) [above right=of q_4] {$q_A$};
     \path[->] 
-    (q_0) edge node {$a(a+b)b^*+b(ϵ+b(a+b)b^*)$} (q_A)
+    (q_0) edge node {$a(a+b)b^*+b(\varepsilon+b(a+b)b^*)$} (q_A)
           edge [bend right] node [left] {$a(a+b)b^*a+b(a+b(a+b)b^*a)$} (q_4)
     (q_4) edge [loop below] node {$ab^*a$} ()
-          edge [bend right] node [right] {$ab^*+b(ϵ+b(a+b)b^*$} (q_A);
+          edge [bend right] node [right] {$ab^*+b(\varepsilon+b(a+b)b^*$} (q_A);
 \end{tikzpicture} \]
 Expresión regular:
-\[ a(a+b)b^*+b(ϵ+b(a+b)b^*)+(a(a+b)b^*a+b(a+b(a+b)b^*a)(ab^*a)^*(ab^*+b(ϵ+b(a+b)b^*)\]
-Quitando las $ϵ$:
+\[ a(a+b)b^*+b(\varepsilon+b(a+b)b^*)+(a(a+b)b^*a+b(a+b(a+b)b^*a)(ab^*a)^*(ab^*+b(\varepsilon+b(a+b)b^*)\]
+Quitando las $\varepsilon$:
 \[ a(a+b)b^*+b+bb(a+b)b^*+(a(a+b)b^*a+b(a+b(a+b)b^*a)(ab^*a)^*(ab^*+b+bb(a+b)b^*)\]
+
+\item 
+\[ 
+\begin{tikzpicture}[shorten >=1pt,node distance=4.5cm,on grid,auto] 
+   \node[state,initial,accepting] (q_0)   {$q_0$};
+   \node[state] (q_2) [right=of q_0] {$q_2$};
+   \node[state, accepting] (q_1) [below right=of q_0] {$q_1$};
+   \node[state] (q_3) [right=of q_2] {$q_3$};
+   \node[state, accepting] (q_4) [right=of q_3] {$q_4$};
+   \node[state] (q_5) [below=of q_4] {$q_5$};
+    \path[->] 
+    (q_0) edge node {$\varepsilon$} (q_2)
+          edge [bend right] node  [left] {$\varepsilon$} (q_1)
+    (q_1) edge [loop below] node {$a,b$} ()
+          edge  node {$\varepsilon$} (q_0)
+    (q_2)  edge  node {$a$} (q_3)
+    (q_3) edge [loop below] node {$b$} ()
+    	  edge node {c} (q_4)
+    (q_4) edge [bend right] node {b} (q_5)
+          edge [bend left] node {$\varepsilon$} (q_0)
+     (q_5) edge [bend right] node {a} (q_4);
+\end{tikzpicture} \]
+
+Aceptará ambas palabras por forman parte del lenguaje aceptado anterior.
 \end{solucion}
 \end{document}
