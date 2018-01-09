@@ -30,7 +30,7 @@ Decidir si los siguientes predicados son 1-extensionales o no:
 \begin{enumerate}
 	\item $P_1(p)  \forall x ( [[p]](x) = [[p]](x+25)$. Si $[[p]]=[[q]]$ y $P_1(p) = 1$, entonces $P_1(q) = 1$, luego $P_1$ es 1-extensional.
 	
-	\item Tomamos $p : Y \leftarrow Y+1$. $p$ es lineal. Sea $q$ el programa $Y \leftarrow Y+1; IF X \neq 0 GOTO E$. $q$ no es lineal y $[[p]]^{(1)} = [[q]]^{(1)}$. Por tanto el preicado $P_2$ no es 1-extensional.
+	\item Tomamos $p : Y \leftarrow Y+1$. $p$ es lineal. Sea $q$ el programa $Y \leftarrow Y+1; IF X \neq 0 GOTO E$. $q$ no es lineal y $[[p]]^{(1)} = [[q]]^{(1)}$. Por tanto el predicado $P_2$ no es 1-extensional.
 	
 	\item Por definición, si $[[p]]=[[q]]=f$, ambos programas calculan una función polinómica, luego es 1-extensional.
 	\item $P_4(p) = [[p]]^{(1)}$ es total pero $[[p]]^{(2)}$ no lo es. Supongammos que $P_4(p) = 1$ y $[[p]]^{(2)} = [[q]]^{(2)}$. Como:
@@ -205,7 +205,7 @@ Sea $f : \N \to \N$ recursiva. Probar que
 \end{ejercicio}
 \begin{solucion}\mbox{}
 \begin{enumerate}
-	\item Sea $\mathcal{F} = \{g \in \mathcal{P}^{(1)} : \exists k (\forall n \in \N) [φ_e(n) = f(n)^k]\}$ de manera que $I_\mathcal{F} = A$. $\mathcal{F} \neq 0$, pues $f \in \mathcal{F}$. $\mathcal{F} \neq \mathcal{P}^{(1)}$, pues cualquier función recursiva no total no está en $\mathcal{F}$. Luego por el teorema de Rice, $A = I_{\mathcal{F}}$ no es recursiva.
+	\item Sea $\mathcal{F} = \{g \in \mathcal{P}^{(1)} : \exists k (\forall n \in \N) [g(n) = f(n)^k]\}$ de manera que $I_\mathcal{F} = A$. $\mathcal{F} \neq 0$, pues $f \in \mathcal{F}$. $\mathcal{F} \neq \mathcal{P}^{(1)}$, pues cualquier función recursiva no total no está en $\mathcal{F}$. Luego por el teorema de Rice, $A = I_{\mathcal{F}}$ no es recursiva.
 	\item Sea $g(e,n) = f(n)^e$, entonces $g \in \mathcal{R}$. Por el teorema de recursión, existe $\hat{e} \in \N$ tal que $φ_{\hat{e}}(n) = g(\hat{e},n) = f(n)^{\hat{e}}$ para todo $n \in N$.
 	\item Sabemos que hay al menos un programa que cumple el predicado por el apartado anterior. Sea $p$ un programa tal que $(\forall x) [[p]]^{(1)}(x) = x^{\#(p)}$ y $q$ el programa \texttt{P; X $\leftarrow$ X}. Entonces $\#(q)\neq\#(p)$ y $P(q) = 0$, pero $[[p]]=[[q]]$, luego $P$ no es 1-extensional.
 	\item Supongamos que $A$ es recursivo. Definimos
