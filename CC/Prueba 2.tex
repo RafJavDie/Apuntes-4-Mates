@@ -1,0 +1,38 @@
+\documentclass[11pt]{article}
+\usepackage{../estilo-ejercicios}
+\usepackage{wasysym}
+\usetikzlibrary{automata,positioning}
+\usepackage{mathdots}
+\usepackage{listings}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+\newcommand\tq{{\ \ /\ \ }}
+\let \sii \Leftrightarrow
+\let \luego \Rightarrow
+
+\begin{document}
+\begin{ejercicio}{1}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+	\item 
+	\item \[ A = \{ e \in \N : \exists x : F(x,e,t) = x \} \]
+entonces:
+\[ e \in A \sii \exists x \exists t : F(x,e,t) = x \]
+Tomando $R(e,x) \sii F(x,e,t) = x$. Como $F$ es recursivo, $R$ es recursivo. Por el ejercicio 5.1 (consecuencia del teorema de proyección), $A$ es r.e.
+\end{enumerate}
+\end{solucion}
+
+\begin{ejercicio}{2}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+	\item Sea
+	\[  Γ = \{g \in \mathcal{P}^{(1)} : rang(g) \subseteq Prim\} \]
+	Vemos que $Γ \neq \emptyset$ con el programa constante $2$ y vemos que $Γ \neq \mathcal{P}^{(1)}$ con el programa constante $1$. Entonces $A_1 = I_Γ$ es no recursivo por el teorema de Rice.
+	
+	\item % ¿Se puede hacer por teorema de Rice o hay que hacerlo por argumento diagonal?
+\end{enumerate}
+\end{solucion}
+\end{document}
