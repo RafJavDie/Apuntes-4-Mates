@@ -13,10 +13,17 @@
 
 \begin{document}
 \begin{ejercicio}{1}
-\end{ejercicio}
-\begin{solucion}
+Definamos $F : \N^3\to \N$ por
+$$F(x, e, t) = \text{valor de la variable }Y\text{ tras ejecutar el programa }e\text{ sobre }x\text{ durante }t\text{ pasos.}$$
+Decimos que $x$ es un $F$-punto de $\varphi_e$ si $x \neq 0$ y para algún $t \in \N$, $F(x, e, t) = x$. Probar que:
 \begin{enumerate}
-	\item 
+\item $F$ es recursiva.
+\item El conjunto $A = \{e \in \N : \varphi_e$ tiene un $F$-punto$\}$ es r.e.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+	\item $F(x,e,t)=(r(\texttt{di}(x,e,t))_1$, por lo que es primitiva recursiva.
 	\item \[ A = \{ e \in \N : \exists x : F(x,e,t) = x \} \]
 entonces:
 \[ e \in A \sii \exists x \exists t : F(x,e,t) = x \]
@@ -24,15 +31,34 @@ Tomando $R(e,x) \sii F(x,e,t) = x$. Como $F$ es recursivo, $R$ es recursivo. Por
 \end{enumerate}
 \end{solucion}
 
+\newpage
+
 \begin{ejercicio}{2}
+Sea Prim $\subseteq \N$ el conjunto de los números primos. Pruébese que
+\begin{enumerate}
+\item El conjunto $A_1 = \{\#(P) : P$ es un programa $GOTO$ y rang$([\![P]\!]^{(1)})\subseteq$Prim$\}$ NO es un conjunto recursivo.
+\item El conjunto $A_2 = \{e \in \N : \varphi_e(e)\in$Prim$\}$ es r.e. pero NO es recursivo.
+\item El siguiente conjunto NO es r.e.
+$$A_3 = \{e \in \N : (\forall x) [\varphi_e(x + e)\uparrow\lor \varphi_e(x)\uparrow \lor(\varphi_e(x + e)\downarrow \land \varphi_e(x)\downarrow \land \varphi_e(x + e) \neq \varphi_e(x))]\}$$
+(Indicación: Utilícese el teorema del complemento y el teorema de recursión).
+\end{enumerate}
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion}\
 \begin{enumerate}
 	\item Sea
-	\[  Γ = \{g \in \mathcal{P}^{(1)} : rang(g) \subseteq Prim\} \]
+	\[  Γ = \{g \in \mathcal{P}^{(1)} : rang(g) \subseteq \text{Prim}\} \]
 	Vemos que $Γ \neq \emptyset$ con el programa constante $2$ y vemos que $Γ \neq \mathcal{P}^{(1)}$ con el programa constante $1$. Entonces $A_1 = I_Γ$ es no recursivo por el teorema de Rice.
 	
-	\item % ¿Se puede hacer por teorema de Rice o hay que hacerlo por argumento diagonal?
+	\item Sea $\Gamma=\{ \varphi_e\in\mathcal{P}: \varphi_e(e)\in$Prim$\}$. Podemos usar las mismas funciones del apartado anterior, ya que al ser constantes sobre sus códigos dan los mismos resultados para probar por el teorema de Rice que $I_{\Gamma}=A_2$ no es recursivo.
+	
+	Para ver que es recursivamente enumerable vamos a ver que $\mathcal{K}$ es reducible a $A_2$. Sea $\mathcal{C}_3$ la función constantemente 3. Entonces $e\in\mathcal{K}\Leftrightarrow \mathcal{C}_3(e)\in A_2$. Como sabemos que $\mathcal{K}$ es r.e., entonces también lo es $A_2$. 
+	
+	\item Consideremos el complementario $\overline{A}_3$. Se va a probar que es r.e. y no recursivo, de modo que por el teorema del complemento, $A_3$ no puede ser r.e. Así pues, 
+\begin{gather*}
+e\in\overline{A}_2\sii (\exists x)[\varphi_e(x+e)\downarrow\land\varphi_e(x)\downarrow\land(\varphi_e(x+e)\uparrow\lor\varphi_e(x)\uparrow\lor \varphi_e(x+e)=\varphi_e(x))]\sii\\
+\sii (\exists x)[\varphi_e(x+e)\downarrow\land\varphi_e(x)\downarrow\land\varphi_e(x+e)=\varphi_e(x))]
+\end{gather*}
+Sea ahora $g(u,v)=\mathcal{U}(v,u)$ recursiva, por el teorema de recursión existe $e$ tal que $\varphi_e(x)=g(e,x)=\mathcal{U}(x,e)$. En particular también $\varphi_e(x+e)=g(e,x+e)=\mathcal{U}(x+e,e)$. Sustituyendo esto en el predicado anterior deducimos que es recursivamente enumerable por ser un existencial sobre conjunciones de predicados r.e., y no recursivo (pues interviene el problema de la parada).
 \end{enumerate}
 \end{solucion}
 \end{document}
