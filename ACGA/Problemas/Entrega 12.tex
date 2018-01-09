@@ -1,0 +1,40 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\Char}{char}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Algebra Conmutativa y Geometría Algebraica}
+\author{Rafael González López,Javier Aguilar Martín,  Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{1}
+Sea $A = \bigoplus_{n≥0} A_n$ un anillo graduado.
+\begin{enumerate}
+	\item Probar que $A^{+k} := \bigoplus_{n≥k} A_n$ es un ideal de $A$ para todo $k ≥ 1$.
+	\item Probar que $A$ es noetheriano si y sólo si $A_0$ es noetheriano y $A$ es una $A_0$-álgebra finitamente generada.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{enumerate}
+	\item Sean $a,b \in A^{+k}$. Existen $a_i \in A_i$ con $i=k,\dots,m$ tal que $a = \sum_{i=k}^{m} a_i$. También existen $b_j \in A_j$ con $j=k,\dots,n$ tal que $b = \sum_{j=k}^n b_j$. Sin pérdida de generalidad, podemos suponer que $m≥n$. Para todo $j$ tal que $n≥j>m$, podemos tomar $b_j = 0 \in A_j$. Entonces podemos escribir $b = \sum_{i=k}^m b_i$. Finalmente, como $A_i$ es subgrupo aditivo, $a_i+b_i \in A_i$ para todo $i$, luego:
+	\[ a + b = \sum_{i=1}^m (a_i + b_i) \in A^{+k}\]
+	Sea $a \in A^{+k}$ y $b \in A$. Existen $a_i \in A_i$ con $i=k,\dots,m$ tal que $a = \sum_{i=k}^{m} a_i$. Además existen $b_j \in A_j$ con $j=0,\dots,n$ tal que $b = \sum_{j=0}^{n} b_j$. Como $A_i \cdot A_j \subseteq A_{i+j}$, tenemos que $a_i \cdot b_j \in A_{i+j}$. Tenemos que $i+j ≥ k$ para todo $i≥k$ y $j≥0$, luego $a_i \cdot b_j \in A^{+k}$. Entonces:
+	\[ ab = \sum_{i=k}^{m} \sum_{j=0}^{n} a_i b_j \in A^{+k} \]
+
+	Luego $A^{+k}$ es ideal de $A$ para todo $k≥0$.
+
+	\item Supongamos primero que $A$ es noetheriano. Tenemos entonces que $A_0 \cong A/A^{+1}$. Como $A$ es noetheriano y $A^{+1}$ es ideal, $A/A^{+1}$ es noetheriano. Cogemos un sistema generador finito de elementos homogéneos de $A^{+1}=\langle a_1,\dots,a_n \rangle$ de grados $d_1,\dots,d_n$ respectivamente. Sea $\tilde{A}=A_0[a_1,\dots,a_n]$ un $A_0$-álgebra. Veamos que $\tilde{A}=A$. Claramente $\tilde{A} \subseteq A$.
+
+	Demostraremos por inducción que $A_n \subseteq \tilde{A}$ para todo $n ≥ 0$, lo que implica que $A = \bigoplus_{i≥0} A_n \subseteq \tilde{A}$. 
+	Para $n=0$ está clara la inclusión. Para $n≥1$, supuesta la hipótesis como cierta para $0,\dots,n-1$, tomamos un $x \in A_n$. Como $x \in A^{+1}$, existen $x_i \in A$ tal que $x = \sum x_i a_i$.
+	Como $x$ es elemento homogéneo de grado $n$, tenemos que todas las componentes homogéneas de grado distinto de $n$ se anulan, luego podemos quedarnos con la componente homogénea $\tilde{x}_i$ de $x_i$ de grado $\max(n-d_i,0)$. Entonces $\tilde{x}_i \in M_{\max(n-d_i,0)}$. Como $d_i > 0$ podemos usar la hipótesis de inducción de manera que $x_i \in \tilde{A}$, luego $x=\sum x_ia_i \in \tilde{A}$.
+
+	Luego $A=\tilde{A}$ y, en consecuencia, $A$ es un $A_0$-álgebra finitamente generada.
+
+	Supongamos ahora que $A_0$ es noetheriano y $A$ es una $A_0$-álgebra finitamente generada. Entonces $A=A_0[a_1,\dots,a_n]$ para $a_1,\dots,a_n \in A$. Como $A_0$ es noetheriano, por el teorema de la base de Hilbert, $A$ es noetheriano.
+\end{enumerate}
+\end{solucion}
+
+\end{document}
