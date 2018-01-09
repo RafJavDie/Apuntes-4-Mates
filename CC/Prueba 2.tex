@@ -200,4 +200,42 @@ Quitando las $\varepsilon$:
 
 Aceptará ambas palabras por forman parte del lenguaje aceptado anterior.
 \end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4}
+Consideremos el alfabeto $\Sigma=\{ a, b, c\}$. Se pide:
+\begin{enumerate}
+\item Probar, utilizando el lema del bombeo, que el siguiente lenguaje sobre $\Sigma$ no es regular:
+$$L_1 = \{a^ib^jc^k : i, j, k \in \N, i + j = k\}$$
+\item Probar que si $L\subseteq\Sigma^*$ es regular, el complementario de $L$, $\overline{L} = \{x \in \Sigma^* : x \notin L\}$ también
+es regular.
+\item Sea $L_2$ el lenguaje sobre $\Sigma$ generado por la expresión regular $a^*+b^*$. Construir un AFD que
+acepte el complementario de $L_2$.
+
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item Supongamos que $L_1$ es regular. Sea $n$ como en el lema del bombeo y sea $x=a^nb^jc^k$ con $j,k\in\N$ fijos Por hipótesis $n+j=k$. Entonces, por el lema del bombeo, $x=uvw$ con $|uv|\leq n$, $v\neq\varepsilon$ y $uv^rw\in L_1\ \forall r\in\N$. Como $v$ no es vacía y $|uv|\leq n$, se tiene que $v=a^m$ para cierto $m>0$. Entonces, tomando $r=0$ resulta que $uw\in L$, pero esto no es posible porque ha variado el número de $a$'s sin variar el resto de letras, por lo que no se cumple la igualdad $i+j=k$, donde $i$ sería el nuevo número de $a$'s. 
+\item Sea $M=\langle Q,\Sigma, \delta, q_0,F\rangle$ un AFD que acepte el lenguaje $L$. Vamos a diseñar $\overline{M}=\langle Q,\Sigma,\overline{\delta},q_0, \overline{F}\rangle$ un AFD que acepte $\overline{L}$. Como hemos indicado, vamos a cambiar solo la función de transición y el conjunto de estados finales. 
+
+En primer lugar, $\overline{F}=(Q\setminus F)\cup\{f\}$ con $f\notin Q$. Tengamos que en cuenta que como $L$ es regular, estará generado por una expresión regular $r$ que podrá contener o no todos los símbolos de $\Sigma$. Ahora definimos $\overline{\delta}$ como sigue
+\[
+\overline{\delta}(q,a)=\begin{cases}
+\delta(q,a) & a\in r\land q\in Q\\
+ f & a\notin r\land q\in Q\\
+ f   & a\in r\land q=f\\
+ f & a\notin r\land q=f
+\end{cases}
+\]
+
+Comprobemos su corrección. Si $w\in\Sigma^*$ contiene símbolos que no están en $r$, claramente $w\notin L$, y además por la definición de $\overline{\delta}$ se tiene que $\hat{\overline{\delta}}(q_0,w)=f\in\overline{F}$, con lo que $w\in L(\overline{M})$. Si todos sus símbolos están en $r$, entonces $w\in L(\overline{M})\Leftrightarrow\hat{\overline{\delta}}(q_0,w)=\hat{\delta}(q_0,w)\in \overline{F}\Leftrightarrow \hat{\delta}(q_0,w)\notin F\Leftrightarrow w\notin L(M)=L\Leftrightarrow w\in\overline{L}$.
+
+Obsérvese que el razonamiento es válido para la palabara vacía, pues $M$ acepta $\varepsilon$ si y solo si $q_0$ es final en $M$, si y solo si no lo es en $\overline{M}$.
+
+\item
+\end{enumerate}
+\end{solucion}
+
 \end{document}
