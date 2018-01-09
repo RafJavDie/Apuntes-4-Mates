@@ -60,7 +60,23 @@ Tal y como queríamos ver. Hemos usado que $\mu(p^a)=0$ $\forall a \geq 2$.
 \end{sol}
 \end{ejercicio}
 \newpage
+\begin{ejercicio}{4}
+Definamos $$c(n)=\sum\limits_{k\perp n} e^{2k\pi i/n},$$ donde la suma se extiende a los restos de módulo $n$, es decir, la suma de las raíces primitivas $n-$ésimas de la unidad.
 
+\begin{enumerate}[a)]
+\item Probar que $c$ es una función aritmética multiplicativa.
+\item Probar que $c(n)=\mu (n)$.
+\end{enumerate}
+
+\begin{sol}
+Vamos a hacer ambos apartados a la vez, ya que si $c(n)=\mu(n)$ resulta que $c(n)$ es multiplicativa.\\
+Usamos la misma función $\mu(n)$ para definir $c(n)$ ya que $\sum\limits_{d\mid n}\mu(d)=\left\lbrace\begin{array}{ll}
+1 & \text{Si } n=1\\
+0 & \text{Si } n>1
+\end{array}\right.$\\ Tenemos pues:$$c(n)=\sum\limits_{k\perp n} e^{2k\pi i/n}=\sum\limits_{k=1}^n e^{2k\pi i/n}\sum\limits_{d\mid gcd(k,n)}\mu(d)$$ Reordenando la suma $$\sum\limits_{k=1}^n e^{2k\pi i/n}\sum\limits_{d\mid gcd(k,n}\mu(d)=\sum\limits_{d\mid n} \mu(d)\sum\limits_{d\mid k,k\leq n}e^{2k\pi i/n}=\sum\limits_{d\mid n} \mu(d)\sum\limits_{k=1}^{n/d}e^{2kd\pi i/n}$$ Ahora bien, la segunda suma es geométrica y por tanto $$\sum\limits_{k=1}^{n/d}e^{2kd\pi i/n}=\frac{1-e^{(2d\pi i/n)(n/d+1)}}{1-e^{2d\pi i/n}}-1=\frac{1-e^{2d\pi i/n}}{1-e^{2d\pi i/n}}-1=0\text{ si }n/d>1$$ Es decir, si y sólo si $d=n$ la suma se hará 1, por tanto $$c(n)=\sum\limits_{d\mid n} \mu(d)\sum\limits_{k=1}^{n/d}e^{2kd\pi i/n}=\mu(n)\qed$$
+\end{sol}
+\end{ejercicio}
+\newpage
 
 \begin{ejercicio}{5}
 \begin{itemize}
@@ -82,7 +98,7 @@ $$
 \begin{sol}
 \begin{itemize}
 \item[]
-\item Primeramente, observamos que $\sum_{d\mid n} \mu(d)^2$ es la convolución de las funciones $f\equiv 1$ y $\mu^2$, ambas multiplicativas, por lo que también es multiplicativa. Por tanto, solo tenemos que probar el resultado para los números de la forma $n=p^a$, $p$ primo y $a\geq 1$.
+\item Primeramente, observamos que $\sum_{d\mid n} \mu(d)^2$ es la convolución de las funciones $f\equiv 1$ y $\mu^2$, ambas multiplicativas, por lo que también es multiplicativa. Además, $2^{\omega(n)}$ es claramente multiplicativa. Por tanto, solo tenemos que probar el resultado para los números de la forma $n=p^a$, $p$ primo y $a\geq 1$.
 \[
 \sum_{d\mid n} \mu(d)^2 = \sum_{n=0}^a \mu(p^n)^2 = \mu(1)^2 + \mu(p)^2 = 2^1 = 2^{\omega(n)}
 \]
