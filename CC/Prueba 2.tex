@@ -61,4 +61,101 @@ e\in\overline{A}_2\sii (\exists x)[\varphi_e(x+e)\downarrow\land\varphi_e(x)\dow
 Sea ahora $g(u,v)=\mathcal{U}(v,u)$ recursiva, por el teorema de recursión existe $e$ tal que $\varphi_e(x)=g(e,x)=\mathcal{U}(x,e)$. En particular también $\varphi_e(x+e)=g(e,x+e)=\mathcal{U}(x+e,e)$. Sustituyendo esto en el predicado anterior deducimos que es recursivamente enumerable por ser un existencial sobre conjunciones de predicados r.e., y no recursivo (pues interviene el problema de la parada).
 \end{enumerate}
 \end{solucion}
+
+\newpage
+\begin{ejercicio}{3}
+\[ 
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
+   \node[state,initial] (q_0)   {$q_0$}; 
+   \node[state] (q_1) [right=of q_0] {$q_1$};
+   \node[state,accepting] (q_2) [right=of q_1] {$q_2$};
+   \node[state,accepting] (q_3) [below=of q_1] {$q_3$};
+   \node[state] (q_4) [right=of q_3] {$q_4$};
+    \path[->] 
+    (q_0) edge [bend left] node {a} (q_1)
+          edge [bend right] node {b} (q_3)
+    (q_1) edge node {a,b} (q_2)
+    (q_2) edge [bend left] node {a} (q_4)
+          edge [loop right] node {b} ()
+    (q_3) edge [bend left] node {a} (q_4)
+          edge node {b} (q_1)
+    (q_4) edge [bend left] node {b} (q_3)
+          edge [bend left] node {a} (q_2);
+\end{tikzpicture} \]
+\end{ejercicio}
+\begin{solucion}
+
+\[ 
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
+   \node[state,initial] (q_0)   {$q_0$}; 
+   \node[state] (q_1) [right=of q_0] {$q_1$};
+   \node[state] (q_2) [right=of q_1] {$q_2$};
+   \node[state] (q_3) [below=of q_1] {$q_3$};
+   \node[state] (q_4) [right=of q_3] {$q_4$};
+   \node[state,accepting] (q_A) [below right=of q_4] {$q_A$};
+    \path[->] 
+    (q_0) edge [bend left] node {a} (q_1)
+          edge [bend right] node {b} (q_3)
+    (q_1) edge node {a+b} (q_2)
+    (q_2) edge [bend left] node {a} (q_4)
+          edge [loop right] node {b} ()
+          edge [bend left] node {ϵ} (q_A)
+    (q_3) edge [bend left] node {a} (q_4)
+          edge node {b} (q_1)
+          edge [bend right] node {ϵ} (q_A)
+    (q_4) edge [bend left] node {b} (q_3)
+          edge [bend left] node {a} (q_2);
+\end{tikzpicture} \]
+\[ 
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
+   \node[state,initial] (q_0)   {$q_0$};
+   \node[state] (q_2) [right=of q_1] {$q_2$};
+   \node[state] (q_3) [below=of q_1] {$q_3$};
+   \node[state] (q_4) [right=of q_3] {$q_4$};
+   \node[state,accepting] (q_A) [below right=of q_4] {$q_A$};
+    \path[->] 
+    (q_0) edge [bend left] node {a(a+b)} (q_2)
+          edge [bend right] node {b} (q_3)
+    (q_2) edge [bend left] node {a} (q_4)
+          edge [loop right] node {b} ()
+          edge [bend left] node {ϵ} (q_A)
+    (q_3) edge [bend left] node {a} (q_4)
+          edge [bend left] node {b(a+b)} (q_2)
+          edge [bend right] node {ϵ} (q_A)
+    (q_4) edge [bend left] node {b} (q_3)
+          edge [bend left] node {a} (q_2);
+\end{tikzpicture} \]
+\[ 
+\begin{tikzpicture}[shorten >=1pt,node distance=4cm,on grid,auto] 
+   \node[state,initial] (q_0)   {$q_0$};
+   \node[state] (q_3) [below left=of q_0] {$q_3$};
+   \node[state] (q_4) [below right=of q_3] {$q_4$};
+   \node[state,accepting] (q_A) [right=of q_0] {$q_A$};
+    \path[->] 
+    (q_0) edge node {$a(a+b)(b)^*$} (q_A)
+          edge [bend right] node {b} (q_3)
+          edge [bend left] node {$a(a+b)b^*a$} (q_4)
+    (q_3) edge node [pos=0.1,sloped] {$a+b(a+b)b^*a$} (q_4)
+          edge node [sloped] {$ϵ+b(a+b)b^*$} (q_A)
+    (q_4) edge [bend left] node {b} (q_3)
+          edge [loop below] node {$ab^*a$} ()
+          edge [bend right] node [below=0.3] {$ab^*$} (q_A);
+\end{tikzpicture} \]
+
+\[ 
+\begin{tikzpicture}[shorten >=1pt,node distance=4.5cm,on grid,auto] 
+   \node[state,initial] (q_0)   {$q_0$};
+   \node[state] (q_4) [below right=of q_0] {$q_4$};
+   \node[state,accepting] (q_A) [above right=of q_4] {$q_A$};
+    \path[->] 
+    (q_0) edge node {$a(a+b)b^*+b(ϵ+b(a+b)b^*)$} (q_A)
+          edge [bend right] node [left] {$a(a+b)b^*a+b(a+b(a+b)b^*a)$} (q_4)
+    (q_4) edge [loop below] node {$ab^*a$} ()
+          edge [bend right] node [right] {$ab^*+b(ϵ+b(a+b)b^*$} (q_A);
+\end{tikzpicture} \]
+Expresión regular:
+\[ a(a+b)b^*+b(ϵ+b(a+b)b^*)+(a(a+b)b^*a+b(a+b(a+b)b^*a)(ab^*a)^*(ab^*+b(ϵ+b(a+b)b^*)\]
+Quitando las $ϵ$:
+\[ a(a+b)b^*+b+bb(a+b)b^*+(a(a+b)b^*a+b(a+b(a+b)b^*a)(ab^*a)^*(ab^*+b+bb(a+b)b^*)\]
+\end{solucion}
 \end{document}
