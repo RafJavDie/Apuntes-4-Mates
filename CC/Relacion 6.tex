@@ -175,6 +175,24 @@ son recursivos:
 
 \newpage
 
+\begin{ejercicio}{14}
+probar que los siguientes conjuntos son recursivamente enumerables:
+\begin{itemize}
+	\item Dado $q \in \texttt{GCOMP}$, el conjunto: $A = \{ x : q \text{ para en n número impar de pasos sobre }x\}$.
+	\item $B = \{\langle \#(p),x\rangle  [[p]](x)$ es par$\}$.
+	\item $C = \{\#(p) : $ El prograa $p$ devueve $0$ para algún dato de entrada$\}$.
+	\item $D = \{\langle\#(p),\#(q)\rangle : [[p]](0)\downarrow $ y $[[p]](0)=[[q]](0)\}$.
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{itemize}
+	\item $e \in C \Leftrightarrow (\exists x) (φ_e(x) = 0) \Leftrightarrow (\exists x)(U_1(x,e) = 0)$.
+	Esto es recursivamente enumerable.
+\end{itemize}
+\end{solucion}
+
+\newpage
+
 \begin{ejercicio}{15}
 Sea $f : \N \to \N$ recursiva. Probar que
 \begin{enumerate}
@@ -223,6 +241,17 @@ Vemos entonces que $g$ es recursiva. Por el teorema de recursión, existe $\hat{
 \end{solucion}
 \newpage
 
+\begin{ejercicio}{20}
+Probar que existen dos programas $p$ y $q$, con códigos consecutivos, tal que
+\[ \forall x \in \N [ [\![p]\!](x) \downarrow \Rightarrow [\![p]\!](x) = [\![q]\!](x)]\]
+\end{ejercicio}
+\begin{solucion}
+Esto es equivalente a ver que existe $e$ tal que para todo $x \in \N$:
+\[ φ_e(x) \downarrow \Rightarrow φ_e(x)=φ_{e+1}(x) \]
+Cogemos $f(x)=x+1$. Tenemos que $f \in \mathcal{R}^{(1)}$. Por el teorema del punto fijo de Kleene, existe $e$ tal que $φ_e = φ_{f(e)} = φ_{e+1}$.
+\end{solucion}
+
+\newpage
 \begin{ejercicio}{(EXTRA)}
 Demostración alternativa del teorema de Rice.
 \end{ejercicio}
