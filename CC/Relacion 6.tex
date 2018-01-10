@@ -30,7 +30,7 @@ Decidir si los siguientes predicados son 1-extensionales o no:
 \begin{enumerate}
 	\item $P_1(p)  \forall x ( [[p]](x) = [[p]](x+25)$. Si $[[p]]=[[q]]$ y $P_1(p) = 1$, entonces $P_1(q) = 1$, luego $P_1$ es 1-extensional.
 	
-	\item Tomamos $p : Y \leftarrow Y+1$. $p$ es lineal. Sea $q$ el programa $Y \leftarrow Y+1; IF X \neq 0 GOTO E$. $q$ no es lineal y $[[p]]^{(1)} = [[q]]^{(1)}$. Por tanto el predicado $P_2$ no es 1-extensional.
+	\item Tomamos $p : Y \leftarrow Y+1$. $p$ es lineal. Sea $q$ el programa $$Y \leftarrow Y+1; IF\ X \neq 0\ GOTO\ E.$$ $q$ no es lineal y $[[p]]^{(1)} = [[q]]^{(1)}$. Por tanto el predicado $P_2$ no es 1-extensional.
 	
 	\item Por definición, si $[[p]]=[[q]]=f$, ambos programas calculan una función polinómica, luego es 1-extensional.
 	\item $P_4(p) = [[p]]^{(1)}$ es total pero $[[p]]^{(2)}$ no lo es. Supongammos que $P_4(p) = 1$ y $[[p]]^{(2)} = [[q]]^{(2)}$. Como:
@@ -58,7 +58,7 @@ Usando el teorema de Rice, decidir la recursividad de los siguientes conjuntos:
 	\item $INF = \{\#(p) : p$ para sobre un conjunto infinito de datos$\} = \{e \in \N: dom(φ_e)$ es infinito$\}$ . $I_\mathcal{F}$, donde $\mathcal{F} = \{ f \in \mathcal{P}^{(1)} : dom(f)$ es infinito$\}$. Aplicamos el teorema de Rice. Primero vemos que $\mathcal{F}$ no es trivial.
 	\[ \mathcal{F} \neq \emptyset \Leftarrow Π_1^1 \in \mathcal{F} \]
 	\[ \mathcal{F} \neq \mathcal{P}^{(1)} \]
-	pues para $f \in \mathcal{P}^{(1)}$ calculada por el programa \texttt{[A] if x $\neq$ 0 GOTO A}. Entonces $dom(f) = \{0\}$ es finito y por tanto $f \notin \mathcal{F}$. Por el teorema de Rice $INF = I_\mathcal{F}$ no es recursivo.
+	pues para $f \in \mathcal{P}^{(1)}$ calculada por el programa \texttt{[A] IF X $\neq$ 0 GOTO A}. Entonces $dom(f) = \{0\}$ es finito y por tanto $f \notin \mathcal{F}$. Por el teorema de Rice $INF = I_\mathcal{F}$ no es recursivo.
 	
 	Por otro lado, $FIN = \{e \in \N: dom(φ_e)$ es finito$\} = I_G$ donde $G = \{f \in \mathcal{P}^{(1)} : dom(f)$ es finito$\} = \mathcal{P}^{(1)} - \mathcal{F}$. Como $G \neq \emptyset$ y $G \neq \mathcal{P}^{(1)}$, por el teorema de Rice $I_G$ no es recursivo, luego $FIN$ no es recursivo.
 	
@@ -170,7 +170,14 @@ son recursivos:
 \begin{solucion}\
 \begin{enumerate}
 \item Es el problema de la equivalencia, luego no es recursivo. 
-\item Pues no tengo ni idea.
+\item Obsérvese que los programas $p^*$ siempre paran puesto que no pueden entrar en un bucle. Además obtenerlo a partir de $p$ es p.r. puesto que basta transformar los códigos. Supongamos que $B$ es recursivo y definamos
+\[
+f(\#(p),x)=\begin{cases}
+[\![p^*]\!] & [\![p]\!] \neq [\![p^*]\!]\\
+\uparrow & c.c.
+\end{cases}
+\]
+Es recursiva por hipótesis (por ejemplo usando el teorema del grafo). Por el teorema de recursión sea $\varphi_{\#(p)}(x)$. Si se cumple el predicado, entonces $[\![p]\!](x)=\varphi_{\#(p)}(x)=[\![p^*]\!](x)$, lo cual es una contradicción. Y en caso contrario tendríamos que un programa de la forma $p^*$ no para, lo cual es también contradicción.
 \item Basta examinar si el programa tiene etiquetas, lo cual se puede hacer de forma primitiva recursiva a partir de la codificación.
 \end{enumerate}
 \end{solucion}
@@ -181,15 +188,17 @@ son recursivos:
 probar que los siguientes conjuntos son recursivamente enumerables:
 \begin{itemize}
 	\item Dado $q \in \texttt{GCOMP}$, el conjunto: $A = \{ x : q \text{ para en n número impar de pasos sobre }x\}$.
-	\item $B = \{\langle \#(p),x\rangle  [[p]](x)$ es par$\}$.
-	\item $C = \{\#(p) : $ El prograa $p$ devueve $0$ para algún dato de entrada$\}$.
+	\item $B = \{\langle \#(p),x\rangle : [[p]](x)$ es par$\}$.
+	\item $C = \{\#(p) : $ El programa $p$ devuelve $0$ para algún dato de entrada$\}$.
 	\item $D = \{\langle\#(p),\#(q)\rangle : [[p]](0)\downarrow $ y $[[p]](0)=[[q]](0)\}$.
 \end{itemize}
 \end{ejercicio}
 \begin{solucion}\mbox{}
 \begin{itemize}
+	\item $x\in A\Leftrightarrow \exists t (\texttt{STEP}(x, \#(q),t)\land \neg\texttt{STEP}(x, \#(q),t\dot{-}1)\land impar(t))$.
+	\item $z\in B\Leftrightarrow \exists t (\mathcal{T}(r(z),l(z),r(t))\land par(l(t)))$.
 	\item $e \in C \Leftrightarrow (\exists x) (φ_e(x) = 0) \Leftrightarrow (\exists x)(U_1(x,e) = 0)$.
-	Esto es recursivamente enumerable.
+	\item Problema de la parada y de la equivalencia.
 \end{itemize}
 \end{solucion}
 
@@ -237,7 +246,7 @@ Sea $g : \N^3 \dashrightarrow \N$ definida como:
 Entonces:
 \[ g(e,x,y) = \begin{cases}
 	1 &\text{ si }x = 0 \lor y = 0\\
-	U_2(x-1,U_2(x\dot{-}y,y,e),e) & \text{ si }x \neq 0
+	\mathcal{U}_2(x-1,\mathcal{U}_2(x\dot{-}y,y,e),e) & \text{ si }x \neq 0
 \end{cases}\]
 Vemos entonces que $g$ es recursiva. Por el teorema de recursión, existe $\hat{e} \in \N$ tal que $φ_{\hat{e}} (x,y) = g(\hat{e},x,y)$. Tomando $f = φ_{\hat{e}}$, tenemos la función que buscabamos. Tenemos que ver además que $f$ es total. Sea $f_x(y) = f(x,y)$. Por inducción en $x$, es fácil ver que $f_x : \N \to \N$ es total.
 \end{solucion}
