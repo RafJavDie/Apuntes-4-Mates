@@ -125,7 +125,7 @@ $$\min_{x\in\R^2}\sum_{i=1}^nw_i||x-a_i||$$
 donde $w_1,\dots,w_n$ son escalares positivos. Probar que existe un mínimo global para este problema. 
 \begin{solucion}\
 Sea $f(x)=\sum_{i=1}^nw_i||x-a_i||$ continua. Si encontramos un conjunto compacto que contenga a todos los puntos podremos asegurar que existe ese mínimo. Si existe $x^*$ mínimo, debería verificar que $\forall x\in\R^2, \exists i_x\mid ||x^*-a_{i_x}||\leq ||x-a_{i_x}||$, en particular $$||x^*-a_{i_x}||\leq ||a_{i_0}||$$
-Por tanto, como $||x^*||-||a_{i_0}||\leq ||x^*-a_{i_x}||\leq ||a_{i_0}||$, $||x^*||\leq 2||a_{i_0}||\leq 2\max_i{||a_i||}$. Así, basta minimizar en la bola de centro 0 y radio $2\max_i{||a_i||}$. Ya hemos dado con el compacto, ahora te vas a chuparla.
+Por tanto, como $||x^*||-||a_{i_0}||\leq ||x^*-a_{i_x}||\leq ||a_{i_0}||$, $||x^*||\leq 2||a_{i_0}||\leq 2\max_i{||a_i||}$. Así, basta minimizar en la bola de centro 0 y radio $2\max_i{||a_i||}$. Ya hemos dado con el compacto.
 \end{solucion}
 \end{ejercicio}
 
@@ -142,7 +142,7 @@ Iremos tratando el caso $\beta=0$ sobre la marcha. $\nabla f(x,y)=\begin{pmatrix
 \end{pmatrix}=0$. Para el caso $\beta=0$ tenemos la solución $x=-\frac{1}{2},y=-1$. En ese caso $\nabla^2 f(x,y)=\begin{pmatrix}
 2 & 0\\
 0 & 2
-\end{pmatrix}$, con lo que el punto es un mínimo local.  Además es mínimo global, que no sé si vosotros lo veis pero yo lo veo (es un paraboloide).
+\end{pmatrix}$, con lo que el punto es un mínimo local.  Además es mínimo global, pues es un paraboloide.
 
 Si $\beta=\pm 2$ entonces no hay puntos críticos puesto que el sistema no tiene solución. En otro caso, la solución es 
 $$x=-\frac{2(b-1)}{b^2-4}, y=\frac{4-b}{b^2-4}$$
