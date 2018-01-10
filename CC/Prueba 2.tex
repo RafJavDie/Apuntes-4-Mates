@@ -61,11 +61,16 @@ $$A_3 = \{e \in \N : (\forall x) [\varphi_e(x + e)\uparrow\lor \varphi_e(x)\upar
 	\]
 	Por la hipótesis que hemos supuesto $g(e,x)$ es recursiva, por lo que existe $\hat{e}$ tal que $g(\hat{e},x)=\varphi_{\hat{e}}(x)\ \forall x$. Si $\hat{e}\in A_2$ entonces $g(\hat{e},x)=\varphi_{\hat{e}}(x)=0\ \forall x$, en particular para $x=\hat{e}$, con lo que se llega a contradicción porque 0 no es primo. En caso contrario, $g(\hat{e},\hat{e})=\varphi_{\hat{e}}(\hat{e})=2$, que es primo, luego volvemos a tener contradicción.
 	
-	Para ver que es recursivamente enumerable vamos a ver que $\mathcal{K}$ es reducible a $A_2$. Sea $\mathcal{C}_3$ la función constantemente 3. Entonces $e\in\mathcal{K}\Leftrightarrow \mathcal{C}_3(e)\in A_2$. Como sabemos que $\mathcal{K}$ es r.e., entonces también lo es $A_2$. 
-	
+	Para ver que es recursivamente enumerable, recordemos que basta recordar que el predicado $Primo(x)$ es primitiva recursiva. Tomamos la función $f$ recursiva definida por el siguiente programa:
+	\begin{align*}
+& Z \leftarrow U^{(1)}(e,e)\\
+[A] & IF\ Primo(Z)\ GOTO\ A
+\end{align*}
+	entonces $dom(f) = A_2$.
+
 	\item Consideremos el complementario $\overline{A}_3$. Se va a probar que es r.e. y no recursivo, de modo que por el teorema del complemento, $A_3$ no puede ser r.e. Así pues, 
 \begin{gather*}
-e\in\overline{A}_2\sii (\exists x)[\varphi_e(x+e)\downarrow\land\varphi_e(x)\downarrow\land(\varphi_e(x+e)\uparrow\lor\varphi_e(x)\uparrow\lor \varphi_e(x+e)=\varphi_e(x))]\sii\\
+e\in\overline{A}_3\sii (\exists x)[\varphi_e(x+e)\downarrow\land\varphi_e(x)\downarrow\land(\varphi_e(x+e)\uparrow\lor\varphi_e(x)\uparrow\lor \varphi_e(x+e)=\varphi_e(x))]\sii\\
 \sii (\exists x)[\varphi_e(x+e)\downarrow\land\varphi_e(x)\downarrow\land\varphi_e(x+e)=\varphi_e(x))]
 \end{gather*}
 Sea ahora $g(u,v)=\mathcal{U}(v,u)$ recursiva, por el teorema de recursión existe $e$ tal que $\varphi_e(x)=g(e,x)=\mathcal{U}(x,e)$. En particular también $\varphi_e(x+e)=g(e,x+e)=\mathcal{U}(x+e,e)$. Sustituyendo esto en el predicado anterior deducimos que es recursivamente enumerable por ser un existencial sobre conjunciones de predicados r.e., y no recursivo (pues interviene el problema de la parada).
