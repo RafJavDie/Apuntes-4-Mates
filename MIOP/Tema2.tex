@@ -190,7 +190,7 @@ Sea $f\in\mathcal{C}^1$ y $\{x^k\}$ tal que $x^{k+1}=x^k+\alpha^k d^k$ verifican
 Sea $x^*$ mínimo local de $f$ que es el único punto estacionario en un entorno suyo. Entonces $\exists S$ entorno de $x^*$ tal que, si $\exists \overline{k}$ con $x^{\overline{k}}\in S$, entonces $x^k\in S\ \forall k>\overline{k}$ y $x^k\to x^*$. Además, dado $\varepsilon>0$, $S$ se puede elegir para que $||x-x^*||<\varepsilon \ \forall x\in S$.
 \end{teorema}
 \begin{dem}
-Como $x^*$ es mínimo local y el único punto estacionario en un entorno suyo, podemos tomar $\rho>0$ tal que $\forall \mid 0<||x-x^*||\leq\rho$, entonces $f(x)>f(x^*)$. Definimos la función $$\phi
+Como $x^*$ es mínimo local y el único punto estacionario en un entorno suyo, podemos tomar $\rho>0$ tal que $\forall x \mid 0<||x-x^*||\leq\rho$, entonces $f(x)>f(x^*)$. Definimos la función $$\phi
 (t)=\min_{0\leq t\leq ||x-x^*||\leq\rho} f(x)-f(x^*)$$
  $\phi$ es no decreciente, porque cuando $t$ disminuye, la corona circular se hace más gruesa hacia dentro, por lo que hay más puntos donde encontrar el mínimo, y si $t$ aumenta, la corona se hace más fina por lo que hay menos puntos donde encontrar el mínimo.
 
@@ -321,7 +321,7 @@ $X=\{x\in\R^n:\sum_{j=1}^n=r, x_i\geq 0\}$ donde $r>0$. Entonces  el problema qu
 &\min\  \sum_{j=1}^n\frac{\partial f(x^k)}{\partial x_i}(x_i-x^k_i)\\
 &\sum_{j=1}^nx_i=r, x_i\geq 0\ \forall i								
 \end{align*}
-Supongamos que $\frac{\partial f(x^k)}{\partial x_j}\leq\frac{\partial f(x^k)}{\partial x_i}$ $\forall i$, entonces $x^* = r\cdot e_j$ es una solución válida. 
+Supongamos que $\frac{\partial f(x^k)}{\partial x_j}\leq\frac{\partial f(x^k)}{\partial x_i}$ $\forall i$, entonces $x^* = r\cdot e_j$ es una solución válida, con lo que $d=x^*-x^k$ será una dirección factible.
 \end{ej}
 
 \begin{teorema}\label{teorema}
