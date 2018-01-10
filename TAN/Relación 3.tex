@@ -216,9 +216,18 @@ $$
 Tenemos que:
 \[ ζ(s) = \sum_{n≤x} \frac{1}{n^s} + \frac{x^{1-s}}{s-1} + \frac{\{x\}-1/2}{x^s}+s \int_x^{∞} \frac{\{u\}}{u^{s+1}} du \]
 Tomamos $x=t$. Entonces:
-\[ |ζ(σ+it)| ≤ \sum_{n≤t} \frac{1}{n^θ} + \frac{t^{1-θ}}{t} + \frac{1}{2} \frac{1}{t^θ} + (σ+t)\frac{1}{2} \int_t^{∞} \frac{du}{u^{θ+1}} \]
+\begin{align*}
+ |ζ(σ+it)| &≤ \sum_{n≤t} \frac{1}{n^θ} + \frac{t^{1-θ}}{t} + \frac{1}{2} \frac{1}{t^θ} + (σ+t)\frac{1}{2} \int_t^{∞} \frac{du}{u^{θ+1}} \\
+ &\leq 1 + \frac{3}{2}t^{-\theta} + (σ+t)\frac{1}{2} 
+\end{align*}
+Para el siguiente apartado consideramos
+\[|\zeta(1+it)| \leq A\frac{t^{1-\theta}}{\theta(1-\theta)}\]
+Derivando con respecto a $\theta$ el miembro derecho obtenemos que el máximo se alcanza en $\theta=1-\frac{1}{\log t}$ (que no se anula pues $t>e$), de donde se tiene si $t>e^2$
+$$
+|\zeta(1+it)| \leq A \frac{t^{1/\log t}}{(1-\frac{1}{\log t})\frac{1}{\log t}}\leq 2A \frac{e}{1/\log t}
+$$
+Si estamos en $e\leq t\leq e^2$, estamos en un compacto y podemos acotar por una constante.
 \end{solucion}
-
 \newpage
 \begin{ejercicio}{8}
 Demostrar que $ζ(0) = -1/2$ y para todo $n≥1$ se tiene
@@ -226,6 +235,28 @@ Demostrar que $ζ(0) = -1/2$ y para todo $n≥1$ se tiene
 donde $B_n$ son los números de Bernoulli.
 \end{ejercicio}
 \begin{solucion}
+A partir de la ecuación funcional
+$$\pi^{-s/2}\Gamma(s/2)\zeta(s)=\pi^{-(1-s)/2}\Gamma((1-s)/2)\zeta(1-s)$$
+Sabemos que $\zeta(s)$ tiene un polo en $1$ tal que $(s-1)\zeta(s)\to 1$ cuando $s\to 1$. O de forma equivalente, $-s\zeta(1-s)\to1$ si $t\to0$. Multiplicamos por $s$ en la ecuación funcional y tenemos que 
+$$
+s\pi^{-s/2}\Gamma(s/2)\zeta(s) = 2 \pi^{-s/2}\Gamma(1+s/2)\zeta(s) = s\pi^{-(1-s)/2}\Gamma((1-s)/2)\zeta(1-s)
+$$
+Tomando límite cuando $s\to 0$ nos queda
+$$
+2\Gamma(1)\zeta(0)=\pi^{-1/2}\Gamma(1/2)(-1) \qquad \zeta(0) = -\frac{1}{2}
+$$
+Para el siguiente apartado, consideramos 
+$$
+\zeta(s)=\frac{\pi^{-(1-s)/2}\Gamma((1-s)/2)\zeta(1-s)}{\pi^{-s/2}\Gamma(s/2)} \quad 
+\zeta(-n) =\frac{\pi^{-(1+n)/2}\Gamma((1+n)/2)\zeta(1+n)}{\pi^{n/2}\Gamma(-n/2)}
+$$
+Como $\Gamma(-2n)=\infty$, $\zeta(-2n)=0$ con $n>0$, luego podemos considerar el caso de los impares negativos
+\begin{align*}
+\zeta(-1-2k) & =\frac{\pi^{-2k-3/2}\Gamma(k+1)\zeta(2k+2)}{\Gamma(-1/2-k)}\\
+&=\frac{\pi^{-2k-3/2}k!\zeta(2k+2)}{(-1)^{k+1}\pi}\\
+&=(-1)^{k+1}\pi^{-2k-5/2}k!\frac{(2k+2)!\sqrt{\pi}}{(k+1)!2^{2k+2}}(-1)^k\frac{2^{k+1}\pi^{2k+2}B_{2kk+1}}{(2k+2)!}\\
+&=(-1)^{2k+1}\frac{B_{2k+2}}{2k+2  3}
+\end{align*}
 \end{solucion}
 
 \newpage
