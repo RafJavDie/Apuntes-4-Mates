@@ -263,6 +263,11 @@ Sea $a\in X\cap Y$. Si el grado de $f$ es $d$, dado cualquier $h\in k[x_0,x_1,x_
 \begin{defn}
  Sean $X,Y\subseteq\PP^2_k$ dos curvas en posición general y $a\in X\cap Y$. La {\bf multiplicidad de intersección} de $X$ e $Y$ en $a$ es la dimensión de ${\mathcal O}_{\PP^2_k,a}/\langle f,g\rangle$ como espacio vectorial sobre $k$.
 \end{defn}
+
+\begin{rem}
+
+La dimensión siempre es finita porque $\VV(f)\cap\VV(g)$ tiene dimensión finita (por un ejercicio).
+\end{rem}
  
 \begin{prop}
  Sean $X=\VV(f)$ e $Y=\VV(g)\subseteq\PP^2_k$ dos curvas en posición general, con $X\cap Y=\{P_1,\ldots,P_r\}$. Sea $\mu_i$ la multiplicidad de intersección de $X$ e $Y$ en $P_i$ para $i=1,\ldots,r$. El polinomio de Hilbert del ideal $I=\langle f,g\rangle$ (que es constante, ya que $\dim\VV(I)=0$) es $\mu_1+\cdots+\mu_r$. 
@@ -287,16 +292,16 @@ $$
 $$
 Como localizar conmuta con tomar cocientes, la dimensión como $k$-espacio vectorial de $A_i$ es justamente $\mu_i$. Por tanto, basta probar que $\Psi$ es un isomorfismo.
 
-Elijamos un entero $s$ tal que $({\mathfrak m}_i^s)A_i=0$ para todo $i$ (que debe existir por estar $f$ y $g$ en posición general). Notemos que $({\mathfrak m}_1^s\cap\cdots\cap{\mathfrak m}_r^s=0$ en $A$ (ya que se anula al localizar en todos los ideales maximales) y que estos ideales son coprimos entre sí, por lo que se tiene un isomorfismo $A\cong\oplus_{i=1}^r A/{\mathfrak m}_i^s$.
+Elijamos un entero $s$ tal que $({\mathfrak m}_i^s)A_i=0$ para todo $i$ (que debe existir por estar $f$ y $g$ en posición general, $\sqrt{\langle f,g\rangle} \cdot k[x,y]_{m_i}=m_ik_[x,y]_{m_i}$ aplicando el Nullstellensatz). Notemos que $({\mathfrak m}_1^s\cap\cdots\cap{\mathfrak m}_r^s=0$ en $A$, ya que se anula al localizar en todos los ideales maximales) y que estos ideales son coprimos entre sí($m_i+m_j=B$ -el total- si $i\neq j$, podemos escribir el 1 como suma de elementos de cada ideal, ya que sabemos que se puede escoger una función regular que valga 1 en el punto $P_i$ y que se anule en los demás. De todas formas todos los ideales maximales son primos entre sí) ,  por lo que se tiene un isomorfismo $A\cong\oplus_{i=1}^r A/{\mathfrak m}_i^s$.
 
-Como $A_i/{\mathfrak m}_j^s=0$ para $i\neq j$, el resultado entonces se reduce a probar que el homomorfismo natural
+Como $A_i/{\mathfrak m}_j^s=0$ para $i\neq j$ (porque si existe una función que se anula en uno y es unidad en otro, pero si es unidad en el de abajo, el cociente es trivial), el resultado entonces se reduce a probar que el homomorfismo natural
 $$
 \Psi:A/{\mathfrak m}_i^s\to A_i/{\mathfrak m}_i^s
 $$
 es un isomorfismo para todo $i=1,\ldots,r$. Para ello, notemos que todo elemento de $A/{\mathfrak m}_i^s$ que no esté en ${\mathfrak m}_i$ es una unidad (por ser suma de una unidad (constante no nula) y un nilpotente), por lo que la localización en ${\mathfrak m}_i$ es un isomorfismo.
 \end{proof}
 \begin{thm}[\bf de Bézout]
-Sean $X$ e $Y\subseteq\PP^2_k$ dos curvas en posición general de grados $d$ y $e$ respectivamente. Entonces la suma de las multiplicidades de los puntos de intersección de $X$ e $Y$ es $de$.
+Sean $X$ e $Y\subseteq\PP^2_k$ dos curvas en posición general (no tienen ninguna componente irreducible en común, es decir, su intersección es un conjunto finito de puntos) de grados $d$ y $e$ respectivamente. Entonces la suma de las multiplicidades de los puntos de intersección de $X$ e $Y$ es $de$.
 \end{thm}
 
 \begin{proof}
@@ -309,5 +314,13 @@ Comparando las componentes homogéneas de grado $r$, deducimos que el polinomio 
 
 El resultado es válido más generalmente en dimensión $n$, si consideramos $n$ hipersuperficies $X_1,\ldots,X_n$ en posición general (es decir, tales que su intersección tenga dimensión $0$).
 
+\begin{rem}
+Si una de las curvas es $y=0$, entonces el teorema de Bézout es el teorema fundamental del álgebra.
+
+Localizar conmuta con tomar cociente.
+
+Si dos ideales son coprimos, cualquier potencia de uno es coprimo a cualquier potencia de otro (si se puede escribir el 1 como suma, es cuestión de elevar)
+
+\end{rem}
 
 \end{document}
