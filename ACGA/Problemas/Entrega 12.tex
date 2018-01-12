@@ -47,50 +47,44 @@ que $\dim(X ∩Y ) < d$. Probar que el grado de $X ∪Y$ es la suma de los grado
 $X$ e $Y$ . Deducir que el grado de un conjunto finito formado por $d$ puntos es $d$.
 \end{ejercicio}
 
-\begin{solucion}
-\end{solucion}
-
-\newpage
-
-\begin{ejercicio}{2}
- Sea $A=k[x_0,\dotsc,x_n]$, visto como anillo graduado.
-\begin{enumerate}
-\item Sea $0\to M\to N\to P \to 0$ una sucesión exacta de $A$-módulos graduados finitamente generados. Probar que $\phi_N(t)=\phi_M(t)+\phi_P(t)$.
-\item Si $N=M_1\oplus\cdots\oplus M_r$, probar que $\phi_N(t)=\sum_{i=1}^r\phi_{M_i}(t)$.
-\end{enumerate}
-\end{ejercicio}
-
-\begin{solucion}Vamos a utilizar el siguiente resultado demostrado en Teoría.
-\begin{lemma}
-Sea $A = k[x_0,\dots,x_n]$ y $M$ un $A$-módulo graduado finitamente generado con $M = \bigoplus_{r≥0} M_r$. Entonces para todo $r$, $M_r$ es un $k$-espacio vectorial de dimensión finita.
-\end{lemma}
-\begin{enumerate}
-\item  Como todos son $A$-módulos graduados, podemos considerar sus graduaciones
-$$
-M=\bigoplus_{t\geq 0} M_t \qquad N=\bigoplus_{t\geq 0} N_t \qquad M=\bigoplus_{t\geq 0} P_t $$
-Además, existe un monomorfismo $f\func{M}{N}$ y un epimorfismo $g\func{N}{P}$ de $A$-módulos graduados tales que
-$$
-f(M_t) \subset N_t \qquad g(N_t) \subset P_t
-$$
-Por tanto, podemos consdierar la siguiente sucesión exacta de $k$-e.v. 
-$$0\to M_t\overset{f}{\to} N_t\overset{g}{\to} P_t \to 0$$
-Pues $f,g$ son homomorfismos de $k$-e.v. bien definidos por ser homomorfismos de $A$-módulos graduados finitamente generados, $P_t,N_t$ y $M_t$ son $k$-e.v. de dimensión finita por el Lema 1, $f$ es inyectiva por hipótesis y $g$ es sobreyectiva. Por tanto, se tiene que $P_t \cong N_t/f(M_t)$, luego 
- $$
-\dim_k(P_t) = \dim_k(N_t)-\dim_k(f(M_t)) \overset{\text{f inyectiva}}{=} \dim_k(N_t)-\dim_k(M_t)
-$$
-$$\phi_P(t) = \phi_N(t)-\phi_M(t) \Rightarrow \phi_N(t)=\phi_M(t)+\phi_P(t)$$
-\item Podemos probarlo por inducción sobre $r$. 
+\begin{solucion}\
 \begin{itemize}
-\item Para $r=1$ es trivial, no hay nada que probar. 
-\item Para el caso $k=2$ se deduce del apartado anterior si demostramos que 
-$$
-0\to M_1 \to N \to M_2 \to 0$$
-es una secuencia exacta de $A$-módulos graduados finitamente generados. Tomamos $f\func{M_1}{N}$, $f(x)=x$, claramente un monomorfismo de $A$-módulos graduados (suponemos que la graduación de $M_i$ es la inducida por $N$). Como $N=M_1\oplus M_2$ entonces $N/M_1\cong M_2$ con isomorfismo $h([x])=x$ y sea $\pi$ la aplicación que pasa al cociente. Entonces sea $g=h \circ \pi$, por definición $\pi$ es sobreyectiva, luego $g$ también lo será (pues $h$ es biyectiva). Es claro, por tanto, que $g(N_t)\subset P_t$ y que $Im(f)=M_1 = \ker(g)$, como queríamos probar.
-\item Si suponemos cierto para $r=k$, veámoslo para $r=k+1$. Sabemos que
-$$N=M_1 \oplus \cdots \oplus M_k \oplus M_{k+1} = (M_1 \oplus \cdots \oplus M_k) \oplus M_{k+1} = M' \oplus M_{k+1}$$
-Por hipótesis de inducción tenemos que $\phi_N(t)=\phi_{M'}(t)+\phi_{M_{k+1}}(t)$. Pero también podemos aplicar la hipótesis de inducción a $M'$, de donde $\phi_{M'}(t)=\sum_{i=1}^k \phi_{M_i}(t)$. Por tanto $\phi_N(t)=\sum_{i=1}^{k+1}\phi_{M_i}(t)$, como queríamos probar.
+\item Vamos a tratar primero el caso en el que $X$ e $Y$ sean irreducibles. Sea $I_1=\I(X),  I_2=\I(Y), I=\I(X\cup Y)$. Entonces, como $I_1\cap I_2=I$ y la dimensión de la intersección es menor que la de los conjuntos por separado, tenemos las siguiente sucesión exacta
+\[
+0\to R/I\to R/I_1\oplus R/I_2\to R/(I_1+I_2)\to 0
+\]
+
+Por el primer apartado del ejercicio 4 de esta relación tenemos que $\varphi_{R/I}+\varphi_{R/(I_1+I_2)}=\varphi_{R/I_1\oplus R/I_2}$ y por el segundo apartado de dicho ejercicio $\varphi_{R/I_1\otimes R/I_2}=\varphi_{R/I_1} + \varphi_{R/I_2}$, o lo que es lo mismo,
+\[
+\varphi_{X\cup Y}+\varphi_{X\cap Y}=\varphi_{X} + \varphi_{Y}
+\]
+Como $\dim(X)=\dim(Y)$, los dos polinomios del lado derecho tienen el mismo grado, por lo que el término líder de la suma es $\deg(X)/d!+\deg(Y)/d!$. Por otro lado, como la intersección tiene dimensión menor, entonces el coeficiente líder del polinomio de la izquierda es del de $\varphi_{X\cup Y}$, que es simplemente $\deg(X\cup Y)/d!$, por lo que tenemos la igualdad $\deg(X\cup Y)=\deg(X)+\deg(Y)$.
+
+
+Supongamos ahora que $X$ se descompone en componentes irreducibles como $X_1\cup\dots\cup X_r$, y supongamos que $X_1,\dots, X_i$ con $i\leq r$ son de dimensión máxima $d$. Análogamente $Y=Y_1\cup\dots\cup Y_s$ con $Y_1,\dots, Y_k$, $k\leq s$, de dimensión $d$. Sean $I=\I(X\cup Y)$, $I_j=\I(X_j)$ y $J_j=\I(Y_j)$. Aplicamos un razonamiento análogo anterior para tener la sucesión exacta 
+
+\[
+0\to R/I\to \bigoplus_{j=1}^r R/I_j \oplus \bigoplus_{j=1}^s R/J_j\to R/(\sum_{j=1}^r I_j+\sum_{j=1}^s J_j)\to 0
+\]
+
+Tendríamos entonces que $\varphi_{R/I}+\varphi_{R/(\sum I_j+\sum J_j)}=\varphi_{ \bigoplus R/I_j \oplus \bigoplus R/J_j}=\sum_{j=1}^r\varphi_{R/I_j}+\sum_{j=1}^s \varphi_{R/J_j}$, por lo que 
+\[
+\varphi_{X\cup Y}+\varphi_{\bigcap X_j\cap \bigcap Y_j}=\sum_{j=1}^r\varphi_{X_j}+\sum_{j=1}^s \varphi_{Y_j}
+\]
+En el lado derecho, el coeficiente líder vendrá dado por las componentes de máxima dimension, es decir, $\frac{1}{d!}(\sum_{j=1}^i\deg(X_j)+\sum_{j=1}^k\deg(Y_j))$. En en lazo izquierdo, $\bigcap_{j=1}^r X_j\cap \bigcap_{j=1}^s Y_j=X\cap Y$, que tiene dimensión estrictamente menor que $d$, luego no afecta al grado del polinomio, así que obtenemos que $\frac{1}{d!}\deg(X\cup Y)=\frac{1}{d!}(\sum_{j=1}^i\deg(X_j)+\sum_{j=1}^k\deg(Y_j))$, es decir, que $\deg(X\cup Y)=\sum_{j=1}^i\deg(X_j)+\sum_{j=1}^k\deg(Y_j)$. Ahora, bien, como los $X_j$ y los $Y_j$ son irreducibles, $\sum_{j=1}^i\deg(X_j)=\deg (\bigcup_{j=1}^i X_j)$ y $\sum_{j=1}^k\deg(Y_j)=\deg (\bigcup_{j=1}^k Y_j)$. 
+
+Como hemos visto, las componentes de menor dimensión no alteran el grado, luego $\deg (\bigcup_{j=1}^i X_j)=\deg (\bigcup_{j=1}^r X_j)=\deg(X)$ y de igual modo $\deg (\bigcup_{j=1}^k Y_j)=\deg (\bigcup_{j=1}^s Y_j)=\deg(Y)$. En efecto, si tenemos una variedad $H$ y otra variedad $L$ de dimensión estrictamente menor que $H$, realizando el mismo argumento de la sucesión exacta obtendríamos que
+
+\[
+\varphi_{H\cup L}+\varphi_{H\cap L}=\varphi_{H}+ \varphi_{L}
+\]
+Como $\dim(H\cap L)\leq\dim(L)<\dim(H)$, tendríamos que $\deg(H\cup L)=\deg(H)$, con lo que finalmente hemos obtenido que $\deg(X\cup Y)=\deg(X)+\deg(Y)$, como queríamos demostrar.
+
+
+\item Dado $X=\{x_1,\dots, x_d\}$ un conjunto finito de $d$ puntos, podemos descomponerlo en conjuntos de la forma $X_i=\{x_i\}\ \forall i=1,\dots, d$. Entonces, $\dim((X\setminus X_d)\cap X_d)=\dim(\emptyset)<0$, luego el grado de $X$ es el grado de $X\setminus X_d$ más el grado de $X_d$. Sucesivamente podemos repetir este proceso hasta encontrar que el grado de $X$ es igual a la suma de los grados de los $X_i$. Como $\dim(X_i)=0$, el grado de $X_i$ será el número de puntos de corte de $X_i$ con una variedad lineal genérica de dimensión $n$, que como estamos en $\mathbb{P}^n_k$ será necesariamente 1 punto. Así que como cada conjunto unitario tiene grado 1, en virtud del resultado anterior, $X$ tiene grado $d$. Lo cual además está respaldado por un argumento de intersección similar al anterior, puesto que $\dim(X)=0$ e intersecará con $\PP^n_k$ en precisamente $d$ puntos. 
+
+
 \end{itemize}
-\end{enumerate}
 \end{solucion}
 
 \end{document}
