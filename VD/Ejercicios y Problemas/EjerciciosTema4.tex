@@ -1,4 +1,4 @@
- 	\documentclass[twoside]{article}
+\documentclass[twoside]{article}
 \usepackage{../../estilo-ejercicios}
 \newcounter{ejercicio}
 %--------------------------------------------------------
@@ -64,7 +64,7 @@ $$f^*_p((dg)_{f(p)})v=(dg)_{f(p)}(f_{*p}v)=(f_{*p}v)g=v(g\circ f)=(d(g\circ f))_
 
 \newpage
 
-\begin{ejercicio}{6}
+\begin{ejercicio}{6}\label{ejer:6}
 Probar que toda superficie regular es una subvariedad regular de $\R^3$.
 \end{ejercicio}
 \begin{solucion}
@@ -126,7 +126,6 @@ $p$ tal que $(dx_i)_p = \omega_i, i = 1, \dots,m$.
 \begin{solucion}
 Dado que todo covector es la diferencial de alguna función diferenciable en $p$, tenemos que $\omega_i=(df_i)_p, i=1,\dots, m$, por lo que basta tomar $\varphi=(f_1,\dots,f_m)$ y como $U$ la intersección de los dominios donde las $f_i$ son diferenciables, que es abierto no vacío porque hay una cantidad finita y en todos ellos está $p$.
 \end{solucion}
-
 \newpage
 
 \begin{ejercicio}{10}
@@ -138,6 +137,10 @@ $$0 = df(f\circ g)(g^{-1}(p))=(f\circ g)_{\ast g^{-1}(p)} = f_{\ast p}\circ g_{\
 Como $g$ es difeomorfismo, la diferencial es un isomorfismo en cada punto, luego componiendo a derecha con la inversa tenemos el resultado.
 \end{solucion}
 
+
+\begin{solucion}
+Supongamos que existe $f\func{S^1}{\R}$ inmersión. Entonces $f_{p\ast}$ es biyectiva, pues $\dim \R = \dim S^1$ y, por tanto, isomorfismo. Por el Teorema de la Función Inversa, $f$ es un difeomorfismo local, en particular una aplicación abierta. Como $S^1$ es compacto y $f$ es continua, entonces $f(S^1)$ es compacto, por lo que es cerrado. Por tanto $f(S^1)=\R$, lo que implica que $f$ es un homeomorfismo entre $S^1$ y $\R$, lo cuál no es posible.
+\end{solucion}
 \newpage
 
 \begin{ejercicio}{11}
@@ -148,7 +151,6 @@ de $N$.
 \begin{solucion}
 Por definición de difeomorifsmo, $f$ establece un difeomorfismo sobre su imagen al ser una diferomorfismo local biyectivo sobre esta. Que $f(M)$ es abierto se sigue de que $f$ es difeormorfismo local, en particular, un homeomorfismo local, luego es una aplicación abierta. 
 \end{solucion}
-
 \newpage
 
 \begin{ejercicio}{12}
@@ -191,6 +193,13 @@ Sean $M \subseteq N$ tales que $(M, i)$ es subvariedad de $N$. Probar que $M$ y 
 tienen la misma dimensión si y solo si $M$ es subvariedad abierta de $N$.
 \end{ejercicio}
 \begin{solucion}
+Sea $(M,i)$ subvariedad con $i$ inmersión inyectiva. Si $\dim N=\dim M$ entonces $i_{\ast p}$ es un isomorfismo $\forall p\in M$, luego $i$ es un difeomorfismo local, por tanto aplicación abierta. Es decir, $i(M)\subset N$ es abierto. 
+
+
+El recíproco se tiene a partir del Ejercicio 1.4.
+\end{solucion}
+\begin{comment}
+\begin{solucion}
 $\boxed{\Rightarrow}$ Sea $n$ la dimensión de $N$ y $M$. Se prueba\footnote{\url{https://math.stackexchange.com/questions/84577/open-subsets-in-a-manifold-as-submanifold-of-the-same-dimension}} que $M$ es abierto de $N$. Por el problema 2.5 sabemos que para $i:M\to i(M)$ existe una única estructura diferenciable que convierte a $i$ en difeomorfismo. En particular la convierte en homeomorfismo. Como $i(M)$ tiene la topología relativa a $M$ esto implica que $M$ también la tiene. Entonces sabemos que $i$ es homeomorfismo sobre su imagen. Sea entonces $(U\cap M,\psi)$ una carta de $M$. Vamos a probar que $\psi$ es la restricción a $U\cap M$ de alguna carta local de $N$. Podemos suponer que $U\cap M$ es conexo, pues de lo contrario nos restringiríamos a sus componentes conexas. Además también podemos suponer que es un entorno básico. Sea $(U\cap M,\varphi)$ una carta de $N$ y $f$ un homeomorfismo entre $\varphi(U\cap M)\cong\psi(U\cap M)$ que existe porque ambos son entornos básicos de $\R^n$. Consideremos el siguiente diagrama conmutativo
 \[
 \begin{tikzcd}
@@ -209,7 +218,7 @@ U\cap M\subseteq N\arrow[r,"\varphi|_{M\cap U}"] & \varphi|_{M\cap U}(M\cap U)\s
 \]
 La aplicación $\psi|_{M\cap U}\circ i\circ\varphi^{-1}|_{M\cap U}$ es homeomorfismo por ser composición de homeomorfismos y obtenemos $m=n$ por el teorema de invariancia de dominio.
 \end{solucion}
-
+\end{comment}
 \newpage
 
 \begin{ejercicio}{15}
@@ -218,7 +227,7 @@ $$M = \{(x, y, z) \in \R^3\mid x^2 + y^2 - z + 2 = 0; z = a\} =  \{(x, y, a) \in
 una subvariedad regular de dimensión 1 de $\R^3$?
 \end{ejercicio}
 \begin{solucion}
-Para $z<2$ $M=\emptyset$, por lo que no puede ser variedad. Para $z=2$, $M$ es el conjunto unitario $\{(0,0,2)\}$, que no puede ser de dimensión 1. Para $z>2$, $M$ es una circunferencia de radio $\sqrt{a-2}$. Por el Problema 2.1, la circunferencia tiene una estructura de variedad diferenciable de dimensión 1 análoga a la de $S^1$ con la topología euclídea, luego $(M,i)$ con la inclusión es subvariedad regular por la Proposición 4.2.2.
+Para $a<2$ $M=\emptyset$, por lo que no puede ser variedad. Para $a=2$, $M$ es el conjunto unitario $\{(0,0,2)\}$, que no puede ser de dimensión 1. Para $a>2$, $M$ es una circunferencia de radio $\sqrt{a-2}$ en el plano $z=a$. Por el Problema 2.1, la circunferencia tiene una estructura de variedad diferenciable de dimensión 1 análoga a la de $S^1$ con la topología euclídea, luego $(M,i)$ con la inclusión es subvariedad regular por la Proposición 4.2.2.
 \end{solucion}
 
 \end{document}
