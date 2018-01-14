@@ -108,7 +108,7 @@ Probar que \texttt{GOTO} y $\texttt{GOTO}_A$ son equivalentes.
 \end{enumerate}
 \begin{solucion}\
 \begin{enumerate}
-\item $e\in S\Leftrightarrow (\forall j)_{\leq long(e+1)}(l(r((e+1)_j))\leq 2 impar(\lor r(r((e+1)_j)+1))$. El predicado $impar(x)$ es primitivo recursivo ya que $impar(x)\Leftrightarrow 2\not| x\Leftrightarrow \neg (\exists t)_{\leq x}(2t=x)\Leftrightarrow (\forall t)_{\leq x}(2t\neq x)$. 
+\item $e\in S\Leftrightarrow (\forall j)_{\leq long(e+1)}(l(r((e+1)_j))\leq impar(r(r((e+1)_j)+1))$. El predicado $impar(x)$ es primitivo recursivo ya que $impar(x)\Leftrightarrow 2\not| x\Leftrightarrow \neg (\exists t)_{\leq x}(2t=x)\Leftrightarrow (\forall t)_{\leq x}(2t\neq x)$. 
 \item Sabemos que las intrucciones de $\texttt{GOTO}_A$ son \texttt{GOTO}-computables ya que son macros definidas en teoría. Por tanto, tenemos que ver que podemos generar un decremento con las instrucciones de $\texttt{GOTO}_A$. El siguiente programa calcula la función decremento.
 \begin{lstlisting}[mathescape=true]
                      $Z_1\leftarrow$Y
