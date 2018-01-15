@@ -89,7 +89,10 @@ Para todo $t\geq 0$ se tiene que
 $$g(N_t)=P_t$$
 \end{lemma}
 \begin{proof}
-Como $g$ es sobreyectiva $\forall p\in P_t$ $\exists s\in M$ tal que $g(s)=P_t$. Sea $p\neq 0$, por reducción al absurdo, supongamos que $g^{-1}(p)\cap N_t = \emptyset$. Entonces $\exists q\neq t$ tal que $s\in N_q$. Por hipótesis, $g(s)\in P_q$, pero $P_t\cap P_q = \{0\}$ por estar en suma directa, luego $p=0$.
+Como $g$ es sobreyectiva $\forall p\in P_t$ $\exists s\in M$ tal que $g(s)= p \in P_t$. Sea $p\in P_t$, $\exists x_{i_1},\dotsc,x_{i_m}$, distintos entre sí, con $x_{i_k}\in M_{i_k}$ tales que $s =\sum_{k=1}^m x_{i_k}$ y 
+$$
+g(s)=g\left(\sum_{k=1}^m x_{i_k}\right) = \sum_{k=1}^m g(x_{i_k}) = p \in P_t
+$$ Por hipótesis, $g(x_{i_k})\in P_{i_k}$, luego la única manera de que esa suma resulte un término de $P_t$ es que todos sean $0$ salvo, a lo sumo, un término tal que $i_q = t$ (auqnue también podría ser que $x_{i_q}=0$). Por tanto $x_{i_q}$ es una preimagen de $s$. 
 \end{proof}
 \begin{lemma}\label{lemma:3} La sucesión
 $$0\to M_t\overset{f|_{M_t}}{\to} N_t\overset{g|_{N_t}}{\to} P_t \to 0$$
@@ -115,16 +118,14 @@ $$\phi_P(t) = \phi_N(t)-\phi_M(t) \Rightarrow \phi_N(t)=\phi_M(t)+\phi_P(t)$$
 \item Podemos probarlo por inducción sobre $r$. 
 \begin{itemize}
 \item Para $r=1$ es trivial, no hay nada que probar. 
-\item Para $k=2$, veamos que se deduce del apartado anterior si demostramos que 
+\item Para $r=2$, veamos que se deduce del apartado anterior si demostramos que 
 $$
-0\to M_1 \to N \to M_2 \to 0$$
-es una secuencia exacta de $A$-módulos graduados finitamente generados. Suponemos que la graduación de $M_i$ es la inducida por $N$.
+0\to M_1 \to M_1 \oplus M_2 \to M_2 \to 0$$
+es una secuencia exacta de $A$-módulos graduados finitamente generados. Suponemos que la graduación de $M_i$ es la inducida por $N$. Sabemos que podemos identificar $N = \{(u,v)\mid u\in M_1,\;v\in M_2\}$ luego consideramos $M=\bigoplus_{t\geq 0} S_t$, $M_i = \bigoplus_{t\geq 0} M_i \cap S_t$.
 \begin{itemize}
-\item Tomamos $f\func{M_1}{N}$, $f(x)=x$, claramente un monomorfismo de $A$-módulos graduados. 
-\item Como $N=M_1\oplus M_2$ entonces $N/M_1\cong M_2$ con isomorfismo $h([x])=x$ y sea $\pi$ la aplicación que pasa al cociente. Entonces sea $g=h \circ \pi$, por definición $\pi$ es sobreyectiva, luego $g$ también lo será (pues $h$ es biyectiva). Es claro, por tanto, que $g(N_t)\subset P_t$. 
-
-
-\item $\Ima(f)=M_1$. Como $h$ es isomorfismo y $\ker \pi = M_1$ entonces $\ker g = M_1$.
+\item Tomamos $f\func{M_1}{N}$, $f(u,0)=(u,0)$, claramente un monomorfismo de $A$-módulos graduados. 
+\item Ahora consideramos $g\func{N}{M_2}$, $g(u,v)=(0,v)$. Claramente es un epimorfismo de $A$-módulos graduados. 
+\item Es claro que $\Ima(f)=M_1 = \ker g$.
 \end{itemize}
 \item Si suponemos cierto para $r=k$, veámoslo para $r=k+1$. Sabemos que
 $$N=M_1 \oplus \cdots \oplus M_k \oplus M_{k+1} = (M_1 \oplus \cdots \oplus M_k) \oplus M_{k+1} = M' \oplus M_{k+1}$$
