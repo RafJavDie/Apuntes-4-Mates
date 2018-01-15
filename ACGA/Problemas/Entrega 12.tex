@@ -59,7 +59,17 @@ Por el primer apartado del ejercicio 4 de esta relación tenemos que $\varphi_{R
 \varphi_{X\cup Y}+\varphi_{X\cap Y}=\varphi_{X} + \varphi_{Y}
 \]
 Como $\dim(X)=\dim(Y)$, los dos polinomios del lado derecho tienen el mismo grado, por lo que el término líder de la suma es $\deg(X)/d!+\deg(Y)/d!$. Por otro lado, como la intersección tiene dimensión menor, entonces el coeficiente líder del polinomio de la izquierda es del de $\varphi_{X\cup Y}$, que es simplemente $\deg(X\cup Y)/d!$, por lo que tenemos la igualdad $\deg(X\cup Y)=\deg(X)+\deg(Y)$.
+\end{itemize}
+\end{solucion}
+\newpage
 
+\begin{ejercicio}{4}
+ Sea $A=k[x_0,\dotsc,x_n]$, visto como anillo graduado.
+\begin{enumerate}
+\item Sea $0\to M\to N\to P \to 0$ una sucesión exacta de $A$-módulos graduados finitamente generados. Probar que $\phi_N(t)=\phi_M(t)+\phi_P(t)$.
+\item Si $N=M_1\oplus\cdots\oplus M_r$, probar que $\phi_N(t)=\sum_{i=1}^r\phi_{M_i}(t)$.
+\end{enumerate}
+\end{ejercicio}
 
 \begin{solucion}Vamos a utilizar el siguiente resultado demostrado en Teoría.
 \begin{lemma}\label{lemma:1}
@@ -120,6 +130,7 @@ es una secuencia exacta de $A$-módulos graduados finitamente generados. Suponem
 $$N=M_1 \oplus \cdots \oplus M_k \oplus M_{k+1} = (M_1 \oplus \cdots \oplus M_k) \oplus M_{k+1} = M' \oplus M_{k+1}$$
 Como hemos demostrado el caso $k=2$, sabemos que $\phi_N(t)=\phi_{M'}(t)+\phi_{M_{k+1}}(t)$. Aplicando la hipótesis de inducción a $M'$ tenemos $\phi_{M'}(t)=\sum_{i=1}^k \phi_{M_i}(t)$. Por tanto $\phi_N(t)=\sum_{i=1}^{k+1}\phi_{M_i}(t)$, como queríamos probar.
 \end{itemize}
+\end{enumerate}
 \end{solucion}
 
 \end{document}
