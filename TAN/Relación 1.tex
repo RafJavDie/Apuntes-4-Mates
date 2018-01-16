@@ -168,9 +168,18 @@ Se sabe que una función aritmética $f(n)$ cumple $\sum_{d|n} f(d) = n^2$.
 Demostrar que para todo $x > 0$ se tiene
 \[ 2(e^x-1)e^{-2x} = \sum_{n=1}^{∞} \frac{μ(n)}{\senh nx} \]
 \end{ejercicio}
+<<<<<<< HEAD
 \begin{solucion}
 \[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx} - e^{-nx}} = 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx}} \frac{1}{1-e^{-2nx}} = 2 \sum_{n=1}^{∞} μ(n) e^{-nx}(1+e^{-2nx}+e^{-4nx}+\dots) \]
 \[ = 2 \sum_{n=1}^{∞} μ(n) \sum_{k=1}^{∞} e^{-(2k-1)nx} = 2 \sum_{n=1}^{∞} \sum_{k=1}^{∞} μ(n) e^{-(2k-1)nx}\]
+=======
+\begin{solucion} Hagamos la siguiente consideración
+\begin{align*}
+\sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} &= 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx} - e^{-nx}} = 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx}} \frac{1}{1-e^{-2nx}}\\
+&= 2 \sum_{n=1}^{∞} μ(n) e^{-nx}(1+e^{-2nx}+e^{-4nx}+\dots)\\
+& = 2 \sum_{n=1}^{∞} μ(n) \sum_{k=1}^{∞} e^{-(2k-1)nx}= 2 \sum_{n=1}^{∞} \sum_{k=1}^{∞} μ(n) e^{-(2k-1)nx}
+\end{align*}
+>>>>>>> 4fcc691... Algunas consideraciones en 10 y 12, pero sin acabar ambos.
 ya que estas series son absolutamente convergente (compruébalo):
 \[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2 \sum_{N=1}^{∞} e^{-Nx} \left(\sum_{n|N \text{ y }N/n\text{ es impar}} μ(n) \right)\]
 Tenemos que si $N$ es impar:
@@ -235,6 +244,11 @@ Demostrar que $R(x)$ está bien definida y que
 \[ f(x) = μ(1)R\left(\frac{x}{1}\right) - μ(3)R\left(\frac{x}{3}\right) + μ(5)R\left(\frac{x}{5}\right) - μ(7)R\left(\frac{x}{7}\right) + μ(9)R\left(\frac{x}{9}\right) - \cdots\]
 \end{ejercicio}
 \begin{solucion}
+Podemos escribir
+$$
+R(x)=\sum_{n=1}^\infty (-1)^{n+1} f\left(\frac{x}{2n-1}\right)
+$$
+Sabemos que $\forall x >0$ $\exists n>0$ tal que $\frac{x}{2n-1}<\varepsilon$. Por tanto, sabemos que $\forall x\in[0,+\infty)$, $R(x)$ se puede escribir como una suma finita, por lo que está bien definida. Aplicamos ahora la segunda fórmula de inversión
 \end{solucion}
 
 \newpage
@@ -268,6 +282,17 @@ Demostrar que para $|x| < 1$ se tiene
 \[ \sum_{n=1}^{∞} \frac{φ(n) x^n}{1-x^n} = \frac{x}{(1-x)^2} \]
 \end{ejercicio}
 \begin{solucion}
+Si $|x|<1$ podemos escribir
+$$
+\sum_{n=1}^{∞} φ(n)\frac{ x^n}{1-x^n} = \sum_{n=1}^{∞} φ(n)\sum_{k=1}^\infty x^{kn} \overset{(1)}{=} \sum_{m=1}^\infty x^m\sum_{d \mid m}\varphi(d) \sum_{m=1}^\infty m x^m \overset{(2)}{=}\frac{x}{(1-x)^2}
+$$
+Vamos a ver más claramente las ecuaciones señaladas. Para $(1)$, tengamos en cuenta que 
+
+La igualdad $(2)$ sale a partir de la siguiente consideración. 
+\begin{align*}
+\frac{x}{1-x} = \sum_{m=1}^\infty x^m
+\end{align*}
+Como es una serie de potencias, podemos derivar término a término en $|x|<1$, obteniendo así directamente el resultado.
 \end{solucion}
 
 \newpage
@@ -332,4 +357,8 @@ Luego:
 \[ \prod_{d|n} d = \sqrt{\left(\prod_{d|n} d\right)^2} = \sqrt{\prod_{d|n} d \cdot \prod_{d|n} n/d} = \sqrt{\prod_{d|n} n} = \sqrt{n^{d(n)}} = n^{d(n)/2} \]
 \end{sol}
 \end{ejercicio}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4fcc691... Algunas consideraciones en 10 y 12, pero sin acabar ambos.
 \end{document}
