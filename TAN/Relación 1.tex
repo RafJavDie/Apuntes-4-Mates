@@ -146,34 +146,8 @@ Pasemos a la demostración.
 $$ \Omega(mn) = \Omega(n)+\Omega(m) $$ $$ \lambda(mn) = (-1)^{\Omega(mn)}=(-1)^{ \Omega(n)+\Omega(m)} = (-1)^{\Omega(n)}(-1)^{\Omega(m)} = \lambda(n)\lambda(m)
 $$
 Por lo que $\lambda$ es completamente multiplicativa.
-\item El miembro izquierdo de la igualdad es la convolución $\lambda(n)$ y $g(n)=1$, ambas multiplicativas, luego la convolución también lo será. Sea $h(n)$ la función descrita en el miembro derecho, entonces sean $n,m\in \N$ coprimos. Entonces $mn$ es un cuadrado si y solo si $m,n$ son cuadrados. Por tanto,
-$$
-h(nm)=\begin{cases}
-		1 &\text{ si }mn\text{ es un cuadrado}\\
-		0 &\text{ en otro caso}
-	\end{cases}
-$$
-$$h(n)h(m)=\begin{cases}
-		1 &\text{ si $m$ y $n$ son cuadrados}\\
-		0 &\text{ en otro caso}
-	\end{cases}
-	=\begin{cases}
-		1 &\text{ si $mn$ es un cuadrado}\\
-		0 &\text{ en otro caso}
-	\end{cases}
-$$
-\newpage
-Como $h$ es multiplicativa, basta que probemos la igualdad para $n=p^a$ con $p$ primo y $a\geq 0$, aunque $a=0$ es trivial. 
-$$h(p^a) = \begin{cases}
-		1 &\text{ si $a$ es par}\\
-		0 &\text{ en otro caso}
-	\end{cases}	$$
-	$$
-	\sum_{d\mid n}\lambda(d) = \sum_{n=0}^a \lambda(p^n) = \sum_{n=0} (-1)^a = \begin{cases}
-		1 &\text{ si $a$ es par}\\
-		0 &\text{ en otro caso}
-	\end{cases}	$$
-	\end{enumerate}
+\item 
+\end{enumerate}
 \end{solucion}
 \newpage
 
@@ -183,31 +157,10 @@ Se sabe que una función aritmética $f(n)$ cumple $\sum_{d|n} f(d) = n^2$.
 \item Demostrar que $f$ es multiplicativa.
 \item Demostrar que
 \[ f(n) = n^2 \prod_{p|n} \left(1-\frac{1}{p^2}\right)\]
-\item Expresar $\sum_{n=1}^{∞} \frac{f(n)}{n^s}$ en términos de la función $ζ(s)$.
+\item Expresar $\sum_{n=1}^{∞} \frac{f(n)}{n^s}$ en términos de la función $ζ(s)$
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion} Pasemos a demostrar cada uno de los apartados.
-\begin{enumerate}[(a)]
-\item Vamos aplicar la primera fórmula de inversión de Möbius.
-$$
-f(n)=\sum_{d\mid n}\mu(n/d)d^2
-$$
-Por tanto, $f$ es la convolución de $h(n)=n^2$ y $\mu(n)$, ambas claramente multiplicativas, por lo que también lo será $f$.
-\item Sea $t(n) = n^2 \prod_{p|n} \left(1-\frac{1}{p^2}\right)$ entonces si $m$ y $n$ son coprimos, un primo $p$ divide o bien a uno o bien a otro, luego es claro que
-$$
-t(nm) = (nm)^2\prod_{p|nm} \left(1-\frac{1}{p^2}\right) = n^2m^2\prod_{p|m} \left(1-\frac{1}{p^2}\right)\prod_{p|n} \left(1-\frac{1}{p^2}\right)=t(n)t(m)
-$$
-Por tanto, $t(n)$ es multiplicativa. Para ver la igualdad basta probarla para los elementos de la forma $p^a$ con $p$ primo y $a\geq 0$, aunque el caso $a=0$ es trivial.
-\begin{align*}
-f(p^a)&= \sum_{d\mid n}\mu(n/d)d^2 = \sum_{k=0}^a\mu(p^k)(p^{a-k})^2 = \mu(1)p^{2a} + \mu(p)p^{2(a-1)}\\
-&=p^{2a}-p^{2a-2}\\
-t(p^a)&= p^a \left(1-\frac{1}{p^2}\right) = p^a - p^{2a-2}
-\end{align*}
-\item Consideremos
-$$
-\sum_{n=1}^{∞} \frac{f(n)}{n^s} = \sum_{n=1}^{∞} \frac{1}{n^s} \sum_{d\mid n}\mu(n/d)d^2 = \left( \sum_{n=1}^{∞} \frac{n^2}{n^s} \right)\left( \sum_{n=1}^{∞} \frac{\mu(n)}{n^s} \right) = \zeta(s-2)\zeta(s)^{-1} = \frac{\zeta(s-2)}{\zeta(s)}
-$$
-\end{enumerate}
+\begin{solucion}
 \end{solucion}
 \newpage
 
@@ -216,6 +169,23 @@ Demostrar que para todo $x > 0$ se tiene
 \[ 2(e^x-1)e^{-2x} = \sum_{n=1}^{∞} \frac{μ(n)}{\senh nx} \]
 \end{ejercicio}
 \begin{solucion}
+\[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx} - e^{-nx}} = 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx}} \frac{1}{1-e^{-2nx}} = 2 \sum_{n=1}^{∞} μ(n) e^{-nx}(1+e^{-2nx}+e^{-4nx}+\dots) \]
+\[ = 2 \sum_{n=1}^{∞} μ(n) \sum_{k=1}^{∞} e^{-(2k-1)nx} = 2 \sum_{n=1}^{∞} \sum_{k=1}^{∞} μ(n) e^{-(2k-1)nx}\]
+ya que estas series son absolutamente convergente (compruébalo):
+\[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2 \sum_{N=1}^{∞} e^{-Nx} \left(\sum_{n|N \text{ y }N/n\text{ es impar}} μ(n) \right)\]
+Tenemos que si $N$ es impar:
+\[ \sum_{\substack{n|N \\ N/n\text{ es impar}}} μ(n) = \begin{cases}
+	1, &\text{ si }N = 1\\
+	0, &\text{ si }N > 1
+\end{cases}\]
+Si $N$ es par y $N=2^am$:
+\[ \sum_{2^ak|2^am} μ(n) = \sum_{k|m} μ(2^a k) = \sum_{k|m} μ(2^a) μ(k) = \begin{cases}
+	0, &\text{ si }a ≥ 2\\
+	-1 &\text{ si }m=1\\
+	0 &\text{ c.c.}
+\end{cases}\]
+Luego:
+\[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2(e^{-x}-e^{-2x})\]
 \end{solucion}
 \newpage
 
@@ -362,22 +332,4 @@ Luego:
 \[ \prod_{d|n} d = \sqrt{\left(\prod_{d|n} d\right)^2} = \sqrt{\prod_{d|n} d \cdot \prod_{d|n} n/d} = \sqrt{\prod_{d|n} n} = \sqrt{n^{d(n)}} = n^{d(n)/2} \]
 \end{sol}
 \end{ejercicio}
-
-\[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx} - e^{-nx}} = 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx}} \frac{1}{1-e^{-2nx}} = 2 \sum_{n=1}^{∞} μ(n) e^{-nx}(1+e^{-2nx}+e^{-4nx}+\dots) \]
-\[ = 2 \sum_{n=1}^{∞} μ(n) \sum_{k=1}^{∞} e^{-(2k-1)nx} = 2 \sum_{n=1}^{∞} \sum_{k=1}^{∞} μ(n) e^{-(2k-1)nx}\]
-ya que estas series son absolutamente convergente (compruébalo):
-\[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2 \sum_{N=1}^{∞} e^{-Nx} \left(\sum_{n|N \text{ y }N/n\text{ es impar}} μ(n) \right)\]
-Tenemos que si $N$ es impar:
-\[ \sum_{\substack{n|N \\ N/n\text{ es impar}}} μ(n) = \begin{cases}
-	1, &\text{ si }N = 1\\
-	0, &\text{ si }N > 1
-\end{cases}\]
-Si $N$ es par y $N=2^am$:
-\[ \sum_{2^ak|2^am} μ(n) = \sum_{k|m} μ(2^a k) = \sum_{k|m} μ(2^a) μ(k) = \begin{cases}
-	0, &\text{ si }a ≥ 2\\
-	-1 &\text{ si }m=1\\
-	0 &\text{ c.c.}
-\end{cases}\]
-Luego:
-\[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2(e^{-x}-e^{-2x})\]
 \end{document}
