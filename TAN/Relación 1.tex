@@ -168,18 +168,12 @@ Se sabe que una función aritmética $f(n)$ cumple $\sum_{d|n} f(d) = n^2$.
 Demostrar que para todo $x > 0$ se tiene
 \[ 2(e^x-1)e^{-2x} = \sum_{n=1}^{∞} \frac{μ(n)}{\senh nx} \]
 \end{ejercicio}
-<<<<<<< HEAD
-\begin{solucion}
-\[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx} - e^{-nx}} = 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx}} \frac{1}{1-e^{-2nx}} = 2 \sum_{n=1}^{∞} μ(n) e^{-nx}(1+e^{-2nx}+e^{-4nx}+\dots) \]
-\[ = 2 \sum_{n=1}^{∞} μ(n) \sum_{k=1}^{∞} e^{-(2k-1)nx} = 2 \sum_{n=1}^{∞} \sum_{k=1}^{∞} μ(n) e^{-(2k-1)nx}\]
-=======
 \begin{solucion} Hagamos la siguiente consideración
 \begin{align*}
 \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} &= 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx} - e^{-nx}} = 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx}} \frac{1}{1-e^{-2nx}}\\
 &= 2 \sum_{n=1}^{∞} μ(n) e^{-nx}(1+e^{-2nx}+e^{-4nx}+\dots)\\
 & = 2 \sum_{n=1}^{∞} μ(n) \sum_{k=1}^{∞} e^{-(2k-1)nx}= 2 \sum_{n=1}^{∞} \sum_{k=1}^{∞} μ(n) e^{-(2k-1)nx}
 \end{align*}
->>>>>>> 4fcc691... Algunas consideraciones en 10 y 12, pero sin acabar ambos.
 ya que estas series son absolutamente convergente (compruébalo):
 \[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2 \sum_{N=1}^{∞} e^{-Nx} \left(\sum_{n|N \text{ y }N/n\text{ es impar}} μ(n) \right)\]
 Tenemos que si $N$ es impar:
@@ -332,7 +326,6 @@ donde $ω(n)$ denota el número de factores primos distintos de $n$.
 \begin{solucion}
 El resultado se da trivialmente para $n=1$. De aquí en adelante suponemos que $n>1$.
 Supongamos que $n=p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$. Tomamos $N=p_1p_2\cdots p_k$. Tenemos entonces que:
-<<<<<<< HEAD
 \[ \sum_{d|n} μ(d) σ(d) = \sum_{d|N} μ(d) σ(d) \]
 y
 \[ (-1)^{ω(n)} R(n) = (-1)^k N \]
@@ -342,17 +335,6 @@ Observamos además que:
 Como $μ$ y $σ$ son multiplicativas, la convolución $μ * σ$ es multiplicativa. Podemos quitar $(-1)^{k}$ de ambos lados de la ecuación a demostrar. Basta comprobar la igualdad para $N=p$ (pues ya tenemos que $N$ es libre de cuadrados).
 \[ \sum_{d|p} μ(p/d) σ(d) = -1+(1+p) = p \]
 Lo que demuestra la fórmula.
-=======
- \[ \sum_{d|n} μ(d) σ(d) = \sum_{d|N} μ(d) σ(d) \]
- y
- \[ (-1)^{ω(n)} R(n) = (-1)^k N \]
- pues $μ(d)=0$ para todo $d$ divisible por un cuadrado.
- Observamos además que:
- \[ \sum_{d|N} μ(d) σ(d) = (-1)^k\sum_{d|N} μ(N/d) σ(d) \]
- Como $μ$ y $σ$ son multiplicativas, la convolución $μ * σ$ es multiplicativa. Podemos quitar $(-1)^{k}$ de ambos lados de la ecuación a demostrar. Basta comprobar la igualdad para $N=p$ (pues ya tenemos que $N$ es libre de cuadrados).
- \[ \sum_{d|p} μ(p/d) σ(d) = 1+(1+p) = p \]
- Lo que demuestra la fórmula.
->>>>>>> 90af629... Creo que he resuelto bien todos los conflictos pero Diego, comprueba si echas algo de menos
 \end{solucion}
 
 \newpage
@@ -369,8 +351,4 @@ Luego:
 \[ \prod_{d|n} d = \sqrt{\left(\prod_{d|n} d\right)^2} = \sqrt{\prod_{d|n} d \cdot \prod_{d|n} n/d} = \sqrt{\prod_{d|n} n} = \sqrt{n^{d(n)}} = n^{d(n)/2} \]
 \end{sol}
 \end{ejercicio}
-<<<<<<< HEAD
-=======
-
->>>>>>> 4fcc691... Algunas consideraciones en 10 y 12, pero sin acabar ambos.
 \end{document}
