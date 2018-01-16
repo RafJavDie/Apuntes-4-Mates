@@ -146,8 +146,35 @@ Pasemos a la demostración.
 $$ \Omega(mn) = \Omega(n)+\Omega(m) $$ $$ \lambda(mn) = (-1)^{\Omega(mn)}=(-1)^{ \Omega(n)+\Omega(m)} = (-1)^{\Omega(n)}(-1)^{\Omega(m)} = \lambda(n)\lambda(m)
 $$
 Por lo que $\lambda$ es completamente multiplicativa.
-\item 
-\end{enumerate}
+\item  El miembro izquierdo de la igualdad es la convolución $\lambda(n)$ y $g(n)=1$, ambas multiplicativas, luego la convolución también lo será. Sea $h(n)$ la función descrita en el miembro derecho, entonces sean $n,m\in \N$ coprimos. Entonces $mn$ es un cuadrado si y solo si $m,n$ son cuadrados. Por tanto,
+ $$
+ h(nm)=\begin{cases}
+ 		1 &\text{ si }mn\text{ es un cuadrado}\\
+ 		0 &\text{ en otro caso}
+ 	\end{cases}
+ $$
+ $$h(n)h(m)=\begin{cases}
+ 		1 &\text{ si $m$ y $n$ son cuadrados}\\
+ 		0 &\text{ en otro caso}
+ 	\end{cases}
+ 	=\begin{cases}
+ 		1 &\text{ si $mn$ es un cuadrado}\\
+ 		0 &\text{ en otro caso}
+	\end{cases}
+ $$
+ \newpage
+ Como $h$ es multiplicativa, basta que probemos la igualdad para $n=p^a$ con $p$ primo y $a\geq 0$, aunque $a=0$ es trivial. 
+ $$h(p^a) = \begin{cases}
+ 		1 &\text{ si $a$ es par}\\
+ 		0 &\text{ en otro caso}
+ 	\end{cases}	$$
+ 	$$
+ 	\sum_{d\mid n}\lambda(d) = \sum_{n=0}^a \lambda(p^n) = \sum_{n=0} (-1)^a = \begin{cases}
+ 		1 &\text{ si $a$ es par}\\
+ 		0 &\text{ en otro caso}
+ 	\end{cases}	$$
+ 	\end{enumerate}
+
 \end{solucion}
 \newpage
 
