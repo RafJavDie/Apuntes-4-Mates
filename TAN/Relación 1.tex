@@ -326,15 +326,18 @@ Demostrar que para $|x| < 1$ se tiene
 \begin{solucion}
 Si $|x|<1$ podemos escribir
 $$
-\sum_{n=1}^{∞} φ(n)\frac{ x^n}{1-x^n} = \sum_{n=1}^{∞} φ(n)\sum_{k=1}^\infty x^{kn} \overset{(1)}{=} \sum_{m=1}^\infty x^m\sum_{d \mid m}\varphi(d) \sum_{m=1}^\infty m x^m \overset{(2)}{=}\frac{x}{(1-x)^2}
+\sum_{n=1}^{∞} φ(n)\frac{ x^n}{1-x^n} = \sum_{n=1}^{∞} \left(φ(n)\sum_{k=1}^\infty x^{kn} \right) \overset{(1)}{=} \sum_{m=1}^\infty \left(x^m\sum_{n \mid m}\varphi(n)\right) = \sum_{m=1}^\infty m x^m \overset{(2)}{=}\frac{x}{(1-x)^2}
 $$
-Vamos a ver más claramente las ecuaciones señaladas. Para $(1)$, tengamos en cuenta que 
+Vamos a ver más claramente las ecuaciones señaladas.
+Para $(1)$, basta fijar el exponente de $x$ y tomar todos los $n$ tales que existe una $k$ tal que $nk=m$, es decir, que $n \mid m$.
 
 La igualdad $(2)$ sale a partir de la siguiente consideración. 
 \begin{align*}
 \frac{x}{1-x} = \sum_{m=1}^\infty x^m
 \end{align*}
-Como es una serie de potencias, podemos derivar término a término en $|x|<1$, obteniendo así directamente el resultado.
+Como es una serie de potencias, podemos derivar término a término en $|x|<1$, obteniendo así:
+\[ \frac{1}{(1-x)^2} = \sum_{m=1}^\infty mx^{m-1} \]
+Multiplicando por $x$ en ambos lados obtenemos el resultado.
 \end{solucion}
 
 \newpage
