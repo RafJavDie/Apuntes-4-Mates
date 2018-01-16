@@ -6,13 +6,111 @@
 Consideramos conocidos los conjuntos:
 \[ \N = \{1,2,3,4,\dots\} \text{ números naturales}\]
 \[ \Z = \{\dots,-3,-2,-1,0,1,2,3,\dots,\} \text{ números enteros}\]
-y las operaciones de suma y producto definidas en ellos con las propiedades usuales. El conjunto $\Z$, dotado con las operaciones usuales es un \textbf{anillo conmutativo}. El anillo $\Z$ es un \textbf{dominio de integridad}.
+y las operaciones de suma y producto definidas en ellos con las propiedades usuales. El conjunto $\Z$, dotado con las operaciones usuales es un \textbf{anillo conmutativo}. El anillo $\Z$ es un \textbf{dominio de integridad}, es decir, se cumple que si $ac=bc$ siendo $c \neq 0$ entonces $a=b$.
+
+En $\Z$ tenemos definida una \textbf{relación de orden} $<$ tal que para todo $a$, $b$ y $c$ en $\Z$ se tiene
+\begin{enumerate}
+	\item $a < b \Rightarrow a+c < b+c$,
+	\item Si $c > 0$ y $a < b \Rightarrow ac < bc$,
+	\item O bien $a < b$ ó $b < a$ ó $a = b$.
+\end{enumerate}
+La relación de orden satisface la siguiente \textbf{propiedad de buen orden}: 
+Si $A \subset \Z$ es no vacío y acotado inferiormente entonces existe $a \in A$ es es un mínimo de $A$.
+
+A partir de estas hipótesis podemos desarrollar todas las propiedades que necesitamos.
+En primer lugar definimos el conjunto de los números natural $\N = \{n \in \Z, n > 0\}$, los elementos positivos de $\Z$ de forma que
+\[ \N = \{1,2,3,4,\dots\} \]
+
+Supondremos deducidas las propiedades más simples.
+Por ejemplo, $1 \in \N$, $\N$ es cerrado para la suma y el producto.
+Si $a \in \Z$ es no nulo entonces $a$ ó $-a$ es un número natural.
+Para todo $a \in \N$ el conjunto $\{x \in \N, x ≤ a\}$ es finito.
+
+\begin{prop}[División]
+Dados $a \in \Z$ y $b \in \N$ existen $q$ y $r$ tales que
+\[ a = qb+r, \ 0 ≤ r < b \]
+Los números $q$ y $r$ son únicos.
+\end{prop}
+
+\begin{nota}[Algoritmo de Euclides]
+Para obtener el máximo común divisor de dos números naturales.
+\end{nota}
+
+\begin{defi}
+Decimos que $a$ \textbf{divide a} $b$ si existe $q \in \Z$ tal que $qa=b$.
+\end{defi}.
+Escribimos entonces $a \mid b$ y en caso contrario $a \nmid b$.
+
+\begin{prop}
+Dados $a$ y $b$ en $\N$ existe el máximo común divisor de $a$ y $b$.
+\end{prop}
+
+Denotamos el máximo común divisor divisor de $a$ y $b$ por $(a,b)$.
+Si $(a,b) = 1$ se deice que $a$ y $b$ son primos entre sí.
+Escribiremos $a \perp b$ para denotar que $a$ y $b$ son primos entre sí.
+
+\begin{prop}
+Si $c \mid ab$ y $c$ es primos con $a$, entonces $c \mid b$.
+\end{prop}
+
+\begin{defi}
+Un entero $p > 1$ se dice \textbf{primo} cuando no hhay divisores $d$ de $p$ que cumplan $1 < d < p$.
+Si un entero $a > 1$ no es primo se dice que es \textbf{compuesto}.
+\end{defi}
+
+\begin{teorema}[Factorización única]
+Cada número natural mayor que uno puede expresarse como el producto de numeros primos.
+Esta expresión es única cuando los números primos que la forman se ordenan de menos a mayor.
+\end{teorema}
+
+Se le llama a veces Teorema fundamental de la Aritmética.
+
 
 \section{Las funciones $d(n)$ y $σ(n)$}
+
+\begin{defi}
+Para cada número natural $n$ denotamos por $d(n)$ el número de los divisores de $n$ y por $σ(n)$ la suma de estos divisores.
+
+Junto a éstas definimos para cada número real $α$ la función $σ_α$
+\[ d(n) = \sum_{d\mid n} 1, \quad σ(n) = \sum_{d\mid n} d, \quad σ_α(n) = \sum_{d\mid n} d^α \]
+\end{defi}
+
+\begin{nota}
+El exponente al que aparece elevada el número primo $p$ en la descomposición de $n$ se denota por $ν_p(n)$ (incluyendo el caso $ν_p(n)=0$ si el factor primo $p$ no aparece en la descomposición) de forma que para todo número natural $n$ se tiene
+\[ n = \prod_p p^{ν_p(n)} \]
+\end{nota}
+
+\begin{prop}
+Para todo $n = p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$ se tiene
+\[ d(n) = \prod_{j=1}^k (1+a_j) = \prod_p (1+ν_p(n)) \]
+\end{prop}
+
+\begin{coro}
+Si $n \perp m$, entonces $d(mn) = d(m)d(n)$.
+\end{coro}
+
+Tenemos de este modo el primer ejemplo de un concepto importante.
+
+\begin{defi}
+Una función $f : \N \to \C$ es \textbf{multiplicativa} si $f(mn) = f(m)=f(n)$ siempre que $n$ y $m$ sean primos entre sí.
+
+Una función tal que $f(mn)=f(m)f(n)$ para todo $m$ y $n$ se dice que es \textbf{completamente multiplicativa}.
+Este concepto tiene menos importancia pues hay muchas funciones interesantes que son multiplicativas y pocas que lo sean completamente multiplicativas.
+\end{defi}
+
+\begin{prop}
+Si $n \perp m$ la aplicación
+\begin{align*}
+	\{ u \in \N : u \mid n\} \times \{v \in \N : v \mid m\} & \rightarrow \{ w \in \N : w \mid nm \}\\
+	(u,v) & \mapsto uv
+\end{align*}
+es una biyección.
+\end{prop}
 
 \begin{prop} Si $f$ y $g$ son multiplicativas la función $f * g$ definida por
 \[ f * g (n) = \sum_{d|n} f(d)g(n/d) \]
 es también multiplicativa
+\end{prop}
 
 \begin{dem}
 \[ f*g(nm) = \sum_{c|nm}f(c)g\left(\frac{nm}{c}\right) = \sum_{a|n,b|m}f(ab)g\left(\frac{nm}{ab}\right) \]
@@ -23,9 +121,37 @@ Usando que $f$ y $g$ son multiplicativas:
 \end{align*}
 \QED
 \end{dem}
+
+La función $f * g$ se llama la \textbf{convolución} (de Dirichlet) de $f$ y $g$.
+Aunque ahora mismo su definición pueda parecer extraña, veremos su justificación al estduiar las series de Dirichlet.
+A continuación veremos varias consecuencias interesantes de la proposición anterior.
+
+\begin{ejs}
+$d$, $σ$ y $σ_α$ son multiplicativas.
+\end{ejs}
+
+\begin{prop}
+Si $n = p_1^{a_1} \cdot p_n^{a_n}$, entonces
+\[ σ(n) = \prod_{j=1}^r \frac{p_j^{a_j+1}-1}{p_j-1} = \prod_p \frac{p^{ν_p(n)+1}-1}{p-1} \]
 \end{prop}
 
+\begin{defi}
+Se dice que un número natural $n$ es perfecto si es la suma de sus divisores propios, estos es, si $σ(n)=2n$.
+\end{defi}
+
+\begin{teorema}[Euclides, Euler]
+Los números perfectos pares son los números de la forma $2^{p-1}(2^p-1)$, donde $p$ recorre los números primos tales que $(2^p-1$ sea también primo.
+\end{teorema}
+
+No se conoce si existen infinitos números perfectos, ni tampoco si existe alguno impar.
+
+
 \section{Las funciones $φ(n)$ de Euler y $μ(n)$ de Möbius}
+\begin{defi}
+Se denota por $φ(n)$ el cardinal del conjunto de números primos con $n$ y menores que $n$.
+\[ φ(n) = \text{card}\{k \perp n : 1 ≤ k ≤ n\} \]
+\end{defi}
+
 \begin{prop}\mbox{}
 \begin{enumerate}[(a)]
 	\item La funcion φ es multiplicativa
@@ -40,6 +166,10 @@ Sea $n = p_1^{a_1}\cdots p_k^{a_k}$:
 \[ φ(n) = φ(p_1^{a_1})\cdots φ(p_k^{a_k}) = p_1^{a_1}(1-1/p_1)\cdots p_k^{a_k}(1-1/p_k) = n \prod_{p|n} \left(1-\dfrac{1}{p}\right)\]
 \QED
 \end{dem}
+
+\begin{teorema}[Teorema de Euler]
+Si $a \perp n$ entonces $a^{φ(n)} \equiv 1 \pmod n$.
+\end{teorema}
 
 \begin{prop}
 Para todo $n \in \N$ se tiene $\displaystyle\sum_{d|n} φ(d) = n$.
@@ -60,34 +190,88 @@ Como demostración alternativa:
 = \sum_{b|n} φ(b) \]\QED
 \end{dem}
 
+A continuación definimos la función de Möbius. Jugará un papel destacado en el curso y seguro que Möbius la consideraba tan importante como su famosa banda.
+
+\begin{defi}
+Se define la función de Möbius $μ(n)$ del siguiente modo
+\[ μ(n) = \begin{cases}
+	1 &\text{ si }n=1\\
+	(-1)^k &\text{ si }n\text{ es producto de }k\text{ primos diferentes},\\
+	0 &\text{ si }n\text{ es divisible por un cuadrado }>1
+\end{cases}\]
+\end{defi}
 
 \begin{prop}
+\begin{enumerate}[(a)]
+\item La función de Möbius $μ$ es multiplicativa.
+\item Para todo $n$
 \[ \sum_{a|n} μ(a) = \begin{cases}
 	1 & \text{ si } n = 1\\
 	0 & \text{ si } n > 1
 \end{cases}\]
+\end{enumerate}
 \end{prop}
 
-\begin{prop}
-\begin{enumerate}[(A)]
+Finalmente un resultado importante son las dos fórmulas de inversión de Möbius.
+En la primera se usa una técnica interesante para cambiar variables en sumas respecto de divisores.
+
+\begin{prop}[Primera fórmula de inversión de Möbius]
+Sean $f$ y $g$ dos funciones aritméticas, son equivalentes:
+\begin{enumerate}[(a)]
 	\item $\forall n$, $g(n) = \sum_{a|n} f(a)$
 	\item $\forall n$, $f(n) = \sum_{a|n}μ(a) g(n/a)$
 \end{enumerate}
-
 \end{prop}
 \begin{dem}\mbox{}
 \begin{itemize}
-	\item[[$(A) \Rightarrow (B)$]]
+	\item[[$(a) \Rightarrow (b)$]]
 	\[
 	\sum_{a|n} μ(a)g(n/a) = \sum_{a|n}μ(n/a)g(a) = \sum_{a|n}μ(a) \sum_{b|n/a} f(b) = \sum_{b|n}f(b)\left(\sum_{a|n/b} μ(a)\right) = f(n)
 	\]
-	\item[[$(B) \Rightarrow (A)$]]
+	\item[[$(b) \Rightarrow (a)$]]
 	\[
 	\sum_{a|n}f(a) = \sum_{a|n} \sum_{b|a} μ(b)g(a/b) = \sum_{a|n}\sum_{b|a} μ(a/b)g(b) = \sum_{b|n}g(b)\left(\sum_{b|a|n}μ(a/b)\right) = g(n)
 	\]
 \end{itemize}
 \end{dem}
+
+\begin{prop}[Segunda fórmula de inversión de Möbius]
+Sean $F$ y $G$ funciones definidas en $(0,+∞)$ tales que $F((0,ϵ))=0$, para cierto $ϵ > 0$. Son equivalentes:
+\begin{enumerate}[(a)]
+\item $F(x) = \sum_{n=1}^{∞} G(x/n)$.
+\item $G(x) = \sum_{n=1}^{∞} μ(n) F(x/n)$.
+\end{enumerate}
+\end{prop}
+
+
 \section{Series de Dirichlet}
+
+Observemos como se comportan los monomiso $x^n$ y $\dfrac{1}{n^s}$ al multiplicarlos
+\[ x^n \cdot x^m = x^{n+m}, \qquad \frac{1}{n^s} \cdot \frac{1}{m^s} = \frac{1}{(mn)^s} \]
+Los primeros generan las series de potencias, los segundos las series de Dirichet.
+\[ \sum_{n=0}^{8} a_n x^n, \qquad \sum_{n=1}^{∞} \frac{a_n}{n^s} \]
+Ahora sólo nos interesamos en su comportamiento formal.
+
+A cada función aritmética $f(n)$ le podemos asociar, independientemente de su convergencia o no, una serie de Dirichlet
+\[ \sum_{n=1}^{∞} \frac{f(n)}{n^s} \]
+Lo que nos interesa sobre todo es como se multiplican estas series
+\[ \left(\sum_{n=1}^{∞} \frac{f(n)}{n^s}\right)\left(\sum_{n=1}^{∞} \frac{g(n)}{n^s}\right) = \sum_{n=1}^{∞}\left(\sum_{d\mid n} f(d) g(n/d)\right) \frac{1}{n^s}\]
+
+\begin{prop}
+Dotado con el producto anterior y la suma usual, las series de Dirichlet forman un anillo.
+\end{prop}
+
+\begin{prop}
+Las series de Dirichlet
+\[ ζ(s) = \sum_{n=1}^{∞} \frac{1}{n^s}, \text{ y } ζ(s^{-1}=\sum_{n=1}^{∞} \frac{μ(n)}{n^s} \]
+son inversas en el anillo de las series de Dirichlet.
+\end{prop}
+
+\begin{prop}
+Se tienen las relaciones en el anillo de las series de Dirichlet
+\[ ζ(s)^2 = \sum_{n=1}^{∞} \frac{d(n)}{n^s},\ ζ(s)ζ(s-1)=\sum_{n=1}^{∞} \frac{σ(n)}{n^s},\ \frac{ζ(s-1)}{ζ(s)} = \sum_{n=1}^{∞} \frac{φ(n)}{n^s} \]
+\end{prop}
+\begin{dem}
 \[ \sum \frac{d(n)}{n^s} = \left(\sum \frac{1}{n^s}\right) \cdot \left(\sum \frac{1}{n^s}\right) = ζ(s)^2 \]
 
 \[ \sum_{n=1}^\infty \frac{σ(n)}{n^s} = ζ(s) \sum_{n=1}^\infty \frac{n}{n^s} = ζ(s) \sum \frac{1}{n^{s-1}} = ζ(s)ζ(s-1) \]
@@ -97,6 +281,8 @@ donde $s \in \C$, $s = σ + it$. Si $σ > 1$, $ζ(s)$ converge, $1/ζ(s)$ tambi�
 \[ \left|\frac{μ(n)}{n^s}\right| ≤ \frac{1}{n^σ} \]
 
 \[ \left(\sum\frac{μ(n)}{n^s}\right)\left(\sum\frac{1}{m^s}\right) = \sum_{n,m=1}^\infty \frac{μ(n)}{(n\cdot m)^s} = \sum_{N=1}^\infty \frac{1}{N^s}\left(\sum_{n|N} μ(n)\right) = 1 \]
+\end{dem}
+
 \section{Convergencia de series de Dirichlet}
 \begin{teorema}
 Si la serie de Dirichlet $\sum_{n=1}^\infty \frac{a_n}{n^s}$ converge en un punto $s = s_0$, entonces converge uniformemente en el ángulo $Γ_α = \{s \in \C : Re(s) > Re(s_0), |arg(s-s_0)|< α\}$ para cada $0 < α ≤ \pi/2$.
@@ -300,6 +486,24 @@ El orden medio de $σ(n)$ es $π^2n/6$. Esto es
 El mejor término de error que se conoce es $\mathcal{O}(x(\log x)^{2/3})$ que se debe a Walfisz en 1963.
 
 \section{Método de exclusión-inclusión}
+Supongamos que tenemos un conjunto $X$ y varios subconjuntos $(A_j)_{j=1}^n$. Para contar los elementos de $X \setminus \bigcup_j A_j$ comenzamos por
+\[ \text{card}(X) - \sum_{j=1}^n \text{card}(A_j) \]
+Esta sería la cuenta si los conjuntos $A_j$ fuesen disjuntos pero posiblemente hemos restado varias veces el mismo elemento. Una mejor aproximación es
+\[ \text{card}(X) - \sum_{j=1}^n \text{card}(A_j) + \sum_{j,k} \text{card}(A_j \cap A_k) \]
+De este modo podemos llegar la fórmula correcta
+\[ \text{card}(X) + \sum_J (-1)^{\text{card}(J)} \text{card}\left(\bigcap_{j\in J} A_j\right) \]
+La suma extendida a todos los subconjuntos $J$ no vacíos de $\{1,2,\dots,n\}$.
+
+\begin{prop}
+\[ \frac{φ(n)}{n} = \sum_{d|n} \frac{μ(d)}{d} \]
+\end{prop}
+
+Se dice que $n \in \N$ es \textbf{libre de cuadrados} si no es divisible por ningún cuadrado $> 1$.
+
+\begin{teorema}
+Sea $Q(x)$ el número de números libres de cuadrados $≤x$. Tenemos:
+\[ Q(x) = \sum_{n≤x} |μ(n)| = \frac{6x}{π^2} + \mathcal{O}(\sqrt{x}) \]
+\end{teorema}
 \section{Algunas otras funciones aritméticas}
 La \textbf{función de Liouville} se define de manera parecida a la de Möbius
 \[ λ(n) = \begin{cases}

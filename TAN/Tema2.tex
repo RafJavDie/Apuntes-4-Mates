@@ -69,8 +69,13 @@ Si $x\geq 3$, $n=\lfloor x \rfloor$, $n\leq x < n+1$. Entonces
 x \log 2 \leq 2\log 2 + (\pi(x)+1)\log x\\
  \pi(x) \geq \log 2 \frac{x}{\log x} -1 -\frac{\log 4}{\log x} = \frac{1}{2}\frac{x}{\log x} +  (\log 2 - \frac{1}{2})\frac{x}{\log x} -1 - \frac{\log4}{\log x} \geq \frac{x}{2\log{x}}
 	\end{gather*}
-	
-Esto ya es otro resultado. Vamos a ver que $p_n \sim n \log n$. Si aplicamos la desigualdad anterior $x=p_n$ entonces:
+
+\begin{coro}
+Existen constantes $0<c<C<+∞$ tal que
+\[ c n \log n < p_n < C n \log n \]
+\end{coro}
+\begin{dem}
+Vamos a ver que $p_n \sim n \log n$. Si aplicamos la desigualdad anterior $x=p_n$ entonces:
 $$
 A\frac{p_n}{\log p_n} \leq \pi(p_n) = n \Rightarrow p_n \leq \frac{1}{A}n\log p_n 
 $$
@@ -81,8 +86,9 @@ $$
 p_n \leq \frac{1}{A}\frac{1}{1-\delta}n \log n$$
 Por otra parte, $n = \pi(p_n) \leq B \dfrac{p_n}{\log p_n}$.
 $$p_n \geq \frac{1}{B}n\log p_n \geq \frac{1}{B}n \log n$$
+\end{dem}
 
-\begin{dem}[Teorema de Martens]
+\begin{dem}[Demostración de algún teorema]
 Sabemos que $n! = \prod_{p\leq n} p^{\nu_p(n!)}$. Si $x\geq 1$ y $\lfloor x \rfloor = n$
 \begin{gather*}
 \log n! = \sum_{k\leq x} \log k = \sum_{k \leq x} 1 \cdot \log k = \lfloor x \rfloor\log x - \int_1^x \lfloor t \rfloor \frac{dt}{t} = \\ =
