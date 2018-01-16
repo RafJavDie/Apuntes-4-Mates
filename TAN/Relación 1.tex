@@ -1,6 +1,7 @@
 \documentclass[twoside]{article}
 \usepackage{../estilo-ejercicios}
 
+\usepackage{enumerate}
 %--------------------------------------------------------
 \begin{document}
 
@@ -15,7 +16,7 @@ Sea $n\in \N$. Sabemos que $n=p_1^{a_1}\cdots p_k^{a_k}$. En tal caso,
 \[
 \varphi(n) = (p_1-1)p_1^{a_1-1}\cdots(p_k-1)p_k^{a_k-1}
 \]
-Obsérvese que si $n$ tiene más de un divisor primo impar, claramente se tendría que $4\mid \varphi(n)$, pues $p_j -1$ y $p_k-1$ serían dos factores pares de $\varphi(n)$. Por otra parte, si $p_i=2$, debe cumplire que $0\leq a_i \leq 2$. 
+Obsérvese que si $n$ tiene más de un divisor primo impar, claramente se tendría que $4\mid \varphi(n)$, pues $p_j -1$ y $p_k-1$ serían dos factores pares de $\varphi(n)$. Por otra parte, si $p_i=2$, debe cumplir que $0\leq a_i \leq 2$. 
 
 Por lo que sabemos hasta ahora, $n = 2^a p^b$ donde $a\in\{0,1,2\}$, $p$ es un primo impar y $b\geq 0$. Distingamos casos en función de $a$ y $b$
 \begin{itemize}
@@ -38,6 +39,17 @@ Probar que para todo $k\geq 0$
 \gcd \left\{\binom{2k}{k},\binom{2k+1}{k}\right\}=\binom{2k}{k}\frac{1}{k+1}, \quad \gcd \left\{\binom{2k+1}{k},\binom{2k+2}{k+1}\right\}=\binom{2k+1}{k+1}
 \]
 \begin{sol}
+Vamos a ver que si dividimos los elementos el candidato a máximo común divisor nos quedan elementos claramente coprimos.
+\begin{align*}
+\frac{\binom{2k}{k}}{\binom{2k}{k}\frac{1}{k+1}}&=k+1\\
+\dfrac{\binom{2k+1}{k}}{\binom{2k}{k}\frac{1}{k+1}}&=\frac{\frac{(2k+1)!}{k!(k+1)!}(k+1)}{\frac{(2k)!}{k!k!}} = \frac{(2k+1)!k!^2(k+1)}{k!(k+1)!(2k)!}=2k+1
+\end{align*}
+Claramente $k+1$ y $2k+1$ son coprimos, pues si $\exists s$ que divide a ambos, entonces se tiene que $s\mid (2k+1)-(k+1) = k$, por lo que $s \mid (k+1)-k =1$. Análogamente para el segundo caso
+\begin{align*}
+\frac{\binom{2k+1}{k}}{\binom{2k+1}{k+1}}&=\frac{\frac{(2k+1)!}{k!(k+1)!}}{\frac{(2k+1)!}{(k+1)!k!}}=1\\
+\dfrac{\binom{2k+2}{k+1}}{\binom{2k+1}{k+1}}&=\frac{\frac{(2k+2)!}{(k+1)!(k+1)!}}{\frac{(2k+1)!}{(k+1)!k!}} = \frac{(2k+2)!k!(k+1)!}{(k+1)!^2(2k+1)!}=\frac{2k+2}{k+1}=2
+\end{align*}
+Claramente coprimos.
 \end{sol}
 \end{ejercicio}
 
