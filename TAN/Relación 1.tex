@@ -157,10 +157,31 @@ Se sabe que una función aritmética $f(n)$ cumple $\sum_{d|n} f(d) = n^2$.
 \item Demostrar que $f$ es multiplicativa.
 \item Demostrar que
 \[ f(n) = n^2 \prod_{p|n} \left(1-\frac{1}{p^2}\right)\]
-\item Expresar $\sum_{n=1}^{∞} \frac{f(n)}{n^s}$ en términos de la función $ζ(s)$
+\item Expresar $\sum_{n=1}^{∞} \frac{f(n)}{n^s}$ en términos de la función $ζ(s)$.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion} Pasemos a demostrar cada uno de los apartados.
+\begin{enumerate}[(a)]
+\item Vamos aplicar la primera fórmula de inversión de Möbius.
+$$
+f(n)=\sum_{d\mid n}\mu(n/d)d^2
+$$
+Por tanto, $f$ es la convolución de $h(n)=n^2$ y $\mu(n)$, ambas claramente multiplicativas, por lo que también lo será $f$.
+\item Sea $t(n) = n^2 \prod_{p|n} \left(1-\frac{1}{p^2}\right)$ entonces si $m$ y $n$ son coprimos, un primo $p$ divide o bien a uno o bien a otro, luego es claro que
+$$
+t(nm) = (nm)^2\prod_{p|nm} \left(1-\frac{1}{p^2}\right) = n^2m^2\prod_{p|m} \left(1-\frac{1}{p^2}\right)\prod_{p|n} \left(1-\frac{1}{p^2}\right)=t(n)t(m)
+$$
+Por tanto, $t(n)$ es multiplicativa. Para ver la igualdad basta probarla para los elementos de la forma $p^a$ con $p$ primo y $a\geq 0$, aunque el caso $a=0$ es trivial.
+\begin{align*}
+f(p^a)&= \sum_{d\mid n}\mu(n/d)d^2 = \sum_{k=0}^a\mu(p^k)(p^{a-k})^2 = \mu(1)p^{2a} + \mu(p)p^{2(a-1)}\\
+&=p^{2a}-p^{2a-2}\\
+t(p^a)&= p^a \left(1-\frac{1}{p^2}\right) = p^a - p^{2a-2}
+\end{align*}
+\item Consideremos
+$$
+\sum_{n=1}^{∞} \frac{f(n)}{n^s} = \sum_{n=1}^{∞} \frac{1}{n^s} \sum_{d\mid n}\mu(n/d)d^2 = \left( \sum_{n=1}^{∞} \frac{n^2}{n^s} \right)\left( \sum_{n=1}^{∞} \frac{\mu(n)}{n^s} \right) = \zeta(s-2)\zeta(s)^{-1} = \frac{\zeta(s-2)}{\zeta(s)}
+$$
+\end{enumerate}
 \end{solucion}
 \newpage
 
