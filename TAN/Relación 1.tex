@@ -279,7 +279,7 @@ p^{n/2}(p-1) & \text{si $n$ es par}\\
 \newpage
 
 \begin{ejercicio}{10}
-Sea $f : [0,+∞) \to \C$ una función nula para $0 ≤ x < \varepsilon$, para cirto $\varepsilon > 0$.
+Sea $f : [0,+∞) \to \C$ una función nula para $0 ≤ x < \varepsilon$, para cierto $\varepsilon > 0$.
 Sea
 \[ R(x) = f\left(\frac{x}{1}\right) - f\left(\frac{x}{3}\right) + f\left(\frac{x}{5}\right) - f\left(\frac{x}{7}\right) + f\left(\frac{x}{9}\right) - \cdots \]
 Demostrar que $R(x)$ está bien definida y que
@@ -290,7 +290,29 @@ Podemos escribir
 $$
 R(x)=\sum_{n=1}^\infty (-1)^{n+1} f\left(\frac{x}{2n-1}\right)
 $$
-Sabemos que $\forall x >0$ $\exists n>0$ tal que $\frac{x}{2n-1}<\varepsilon$. Por tanto, sabemos que $\forall x\in[0,+\infty)$, $R(x)$ se puede escribir como una suma finita, por lo que está bien definida. Aplicamos ahora la segunda fórmula de inversión
+Sabemos que $\forall x >0$ $\exists n>0$ tal que $\frac{x}{2n-1}<\varepsilon$. Por tanto, sabemos que $\forall x\in[0,+\infty)$, $R(x)$ se puede escribir como una suma finita, por lo que está bien definida.
+
+Definimos:
+\[ u(n) = \begin{cases}
+	1 &\text{ si }n \equiv 1 \mod 4\\
+	0 &\text{ si }n \equiv 0 \text{ ó }2 \mod 4\\
+	-1 &\text{ si }n \equiv 3 \mod 4
+\end{cases}\]
+Véase que $u$ es completamente multiplicativa, pues $u(n)u(m)=u(nm)$, \textit{pura casualidad}.
+Además, tenemos que:
+$$
+R(x)=\sum_{n=1}^\infty u(n) f\left(\frac{x}{n}\right)
+$$
+Además:
+\begin{align*}
+	\sum_{n=1}^{∞} μ(n) u(n) R\left(\frac{x}{n}\right) & = 
+	\sum_{n=1}^{∞} μ(n) u(n) \left(\sum_{m=1}^\infty u(m) f\left(\frac{x}{mn}\right)\right) = \sum_{mn=1}^{∞} μ(n) u(mn) f\left(\frac{x}{mn}\right)\\
+	& = \sum_{r=1}^{∞} \left(\sum_{n|r} μ(n)\right) u(r)f\left(\frac{x}{r}\right)
+\end{align*}
+Como $\sum_{n|r} μ(n)$ se anula excepto cuando $r=1$, tenemos que:
+$$
+\sum_{n=1}^{∞} μ(n) u(n) R\left(\frac{x}{n}\right) = u(1) f\left(\frac{x}{1}\right) = f(x)
+$$
 \end{solucion}
 
 \newpage
