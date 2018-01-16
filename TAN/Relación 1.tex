@@ -335,6 +335,17 @@ Definimos el radical de un número natural $R(n)$ como $R(1) = 1$ y para $n > 1$
 donde $ω(n)$ denota el número de factores primos distintos de $n$.
 \end{ejercicio}
 \begin{solucion}
+El resultado se da trivialmente para $n=1$. De aquí en adelante suponemos que $n>1$.
+Supongamos que $n=p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$. Tomamos $N=p_1p_2\cdots p_k$. Tenemos entonces que:
+\[ \sum_{d|n} μ(d) σ(d) = \sum_{d|N} μ(d) σ(d) \]
+y
+\[ (-1)^{ω(n)} R(n) = (-1)^k N \]
+pues $μ(d)=0$ para todo $d$ divisible por un cuadrado.
+Observamos además que:
+\[ \sum_{d|N} μ(d) σ(d) = (-1)^k\sum_{d|N} μ(N/d) σ(d) \]
+Como $μ$ y $σ$ son multiplicativas, la convolución $μ * σ$ es multiplicativa. Podemos quitar $(-1)^{k}$ de ambos lados de la ecuación a demostrar. Basta comprobar la igualdad para $N=p$ (pues ya tenemos que $N$ es libre de cuadrados).
+\[ \sum_{d|p} μ(p/d) σ(d) = 1-(1+p) = p \]
+Lo que demuestra la fórmula.
 \end{solucion}
 
 \newpage
