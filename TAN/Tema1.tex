@@ -84,7 +84,9 @@ El exponente al que aparece elevada el número primo $p$ en la descomposición d
 Para todo $n = p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$ se tiene
 \[ d(n) = \prod_{j=1}^k (1+a_j) = \prod_p (1+ν_p(n)) \]
 \end{prop}
-
+\begin{dem}
+La segunda igualdad es inmediata. Por otro lado, el número de factores que divide a $n = p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$  partir de su descomposición los obtenemos por combinatoria. Cada $p_i$ podemos tomar lo de $a_i+1$ formas (según el exponente $0,1,\dotsc,a_i$ que tomemos).
+\end{dem}
 \begin{coro}
 Si $n \perp m$, entonces $d(mn) = d(m)d(n)$.
 \end{coro}
@@ -106,17 +108,31 @@ Si $n \perp m$ la aplicación
 \end{align*}
 es una biyección.
 \end{prop}
-
+\begin{dem}
+Denotemos por $f$ dicha biyección. 
+\begin{itemize} 
+\item Veamos la inyectividad. Sean $(a,b),(a',b')$ tales que $f(a,b)=f(a',b')$ entonces tenemos que $a\mid n$, $b'\mid m$, $ab=a'b'$. Se tiene que $a\perp b'$, pues
+$$
+1=xm+ym = x\alpha a + y\beta b' = k_1 a + k_2 b'
+$$
+Por tanto, $a\mid a'b' \Rightarrow a\mid a'$. Análogamente tenemos que $a'\mid a$, por lo que son iguales, de donde se prueba que $b=b'$. 
+\item Veamos la sobreyectividad. Es inmediato ver que si $n=\prod_{i=1}^k p_i ^{a_i}$, $\m=\prod_{j=1}^r q_j^{b_j}$, con $p_i \neq q_j$ por ser coprimos, entonces cualquier divisor de $mn$ debe ser de la forma
+$$
+c = \prod_{i=1}^k p_i ^{a_i'}\prod_{j=1}^r q_j^{b_j'} \qquad a_i' \in \{0,\dotsc,a_i\} \quad b_j' \in \{0,\dotsc,b_j\}
+$$
+Luego tomamos como preimagen el par $(a,b) = (\prod_{i=1}^k p_i ^{a_i'},\prod_{j=1}^r q_j^{b_j'})$. Es claro que $(a,b) \in D(n)\times D(m)$.
+\end{itemize}
+\end{dem}
 \begin{prop} Si $f$ y $g$ son multiplicativas la función $f * g$ definida por
 \[ f * g (n) = \sum_{d|n} f(d)g(n/d) \]
 es también multiplicativa
 \end{prop}
 
 \begin{dem}
-\[ f*g(nm) = \sum_{c|nm}f(c)g\left(\frac{nm}{c}\right) = \sum_{a|n,b|m}f(ab)g\left(\frac{nm}{ab}\right) \]
+\[ (f*g)(nm) = \sum_{c|nm}f(c)g\left(\frac{nm}{c}\right) = \sum_{a|n,b|m}f(ab)g\left(\frac{nm}{ab}\right) \]
 Usando que $f$ y $g$ son multiplicativas:
 \begin{align*}
-	f*g(nm) & = \sum_{a|n,b|m} f(a)f(b)g(n/a)g(m/b)  = \sum_{a|n}f(a)g(n/a) \sum_{b|m}f(b)g(m/b) \\
+	(f*g)(nm) & = \sum_{a|n,b|m} f(a)f(b)g(n/a)g(m/b)  = \sum_{a|n}f(a)g(n/a) \sum_{b|m}f(b)g(m/b) \\
 	& = (f*g)(m) \cdot (f*g)(n)
 \end{align*}
 \QED
@@ -140,7 +156,7 @@ Se dice que un número natural $n$ es perfecto si es la suma de sus divisores pr
 \end{defi}
 
 \begin{teorema}[Euclides, Euler]
-Los números perfectos pares son los números de la forma $2^{p-1}(2^p-1)$, donde $p$ recorre los números primos tales que $(2^p-1$ sea también primo.
+Los números perfectos pares son los números de la forma $2^{p-1}(2^p-1)$, donde $p$ recorre los números primos tales que $(2^p-1)$ sea también primo.
 \end{teorema}
 
 No se conoce si existen infinitos números perfectos, ni tampoco si existe alguno impar.
