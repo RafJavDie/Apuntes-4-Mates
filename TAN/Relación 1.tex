@@ -11,7 +11,7 @@
 
 \begin{ejercicio}{1}
 Encontrar todos los enteros positivos tales que $\varphi(n)$ no sea divisible por 4.
-\begin{sol}
+\begin{solucion}
 Sea $n\in \N$. Sabemos que $n=p_1^{a_1}\cdots p_k^{a_k}$. En tal caso, 
 \[
 \varphi(n) = (p_1-1)p_1^{a_1-1}\cdots(p_k-1)p_k^{a_k-1}
@@ -27,7 +27,7 @@ Por lo que sabemos hasta ahora, $n = 2^a p^b$ donde $a\in\{0,1,2\}$, $p$ es un p
 \end{itemize}
 Tenemos entonces que las soluciones son:
 \[ \{1,2,4\} \cup \{p^k \mid p\text{ primo con } p \equiv 3 \pmod 4, k≥1\} \cup \{2p^k \mid p\text{ primo impar}, k ≥ 1\} \].
-\end{sol}
+\end{solucion}
 \end{ejercicio}
 
 \newpage
@@ -38,7 +38,7 @@ Probar que para todo $k\geq 0$
 \[
 \gcd \left\{\binom{2k}{k},\binom{2k+1}{k}\right\}=\binom{2k}{k}\frac{1}{k+1}, \quad \gcd \left\{\binom{2k+1}{k},\binom{2k+2}{k+1}\right\}=\binom{2k+1}{k+1}
 \]
-\begin{sol}
+\begin{solucion}
 Vamos a ver que si dividimos los elementos el candidato a máximo común divisor nos quedan elementos claramente coprimos.
 \begin{align*}
 \frac{\binom{2k}{k}}{\binom{2k}{k}\frac{1}{k+1}}&=k+1\\
@@ -50,7 +50,7 @@ Claramente $k+1$ y $2k+1$ son coprimos, pues si $\exists s$ que divide a ambos, 
 \dfrac{\binom{2k+2}{k+1}}{\binom{2k+1}{k+1}}&=\frac{\frac{(2k+2)!}{(k+1)!(k+1)!}}{\frac{(2k+1)!}{(k+1)!k!}} = \frac{(2k+2)!k!(k+1)!}{(k+1)!^2(2k+1)!}=\frac{2k+2}{k+1}=2
 \end{align*}
 Claramente coprimos.
-\end{sol}
+\end{solucion}
 \end{ejercicio}
 
 
@@ -62,14 +62,14 @@ Probar que para todo $n$
 \[
 \sum_{d\mid n} \sigma(d)\mu(n/d)=n 
 \]
-\begin{sol}
+\begin{solucion}
 Dado que las funciones $\sigma(n)$ y $\mu(n)$ son multiplicativas, su convolución también lo es. Por tanto, como $n\mapsto n$ también es multiplicativa, basta probar la igualdad para los números de la forma $p^a$ con $p$ primo y $a\geq 1$ (el caso $n=1$ es trivial). Sea pues $n=p^a$ con $p$ primo, entonces
 \begin{gather*}
 \sum_{d\mid n} \sigma(d)\mu(n/d) = \sum_{k=0}^a \sigma(p^k)\mu(p^{a-k}) = \sigma(p^{a-1})\mu(p) + \sigma(p^a)\mu(1) = \\
 =  -\frac{p^a - 1}{p-1} +\frac{p^{a+1}-1}{p-1} = \frac{p^{a+1}-p^a}{p-1} = p^a
 \end{gather*}
 Tal y como queríamos ver. Hemos usado que $\mu(p^a)=0$ $\forall a \geq 2$.
-\end{sol}
+\end{solucion}
 \end{ejercicio}
 \newpage
 \begin{ejercicio}{4}
@@ -80,13 +80,13 @@ Definamos $$c(n)=\sum\limits_{k\perp n} e^{2k\pi i/n},$$ donde la suma se extien
 \item Probar que $c(n)=\mu (n)$.
 \end{enumerate}
 
-\begin{sol}
+\begin{solucion}
 Vamos a hacer ambos apartados a la vez, ya que si $c(n)=\mu(n)$ resulta que $c(n)$ es multiplicativa.\\
 Usamos la misma función $\mu(n)$ para definir $c(n)$ ya que $\sum\limits_{d\mid n}\mu(d)=\left\lbrace\begin{array}{ll}
 1 & \text{Si } n=1\\
 0 & \text{Si } n>1
 \end{array}\right.$\\ Tenemos pues:$$c(n)=\sum\limits_{k\perp n} e^{2k\pi i/n}=\sum\limits_{k=1}^n e^{2k\pi i/n}\sum\limits_{d\mid gcd(k,n)}\mu(d)$$ Reordenando la suma $$\sum\limits_{k=1}^n e^{2k\pi i/n}\sum\limits_{d\mid gcd(k,n}\mu(d)=\sum\limits_{d\mid n} \mu(d)\sum\limits_{d\mid k,k\leq n}e^{2k\pi i/n}=\sum\limits_{d\mid n} \mu(d)\sum\limits_{k=1}^{n/d}e^{2kd\pi i/n}$$ Ahora bien, la segunda suma es geométrica y por tanto $$\sum\limits_{k=1}^{n/d}e^{2kd\pi i/n}=\frac{1-e^{(2d\pi i/n)(n/d+1)}}{1-e^{2d\pi i/n}}-1=\frac{1-e^{2d\pi i/n}}{1-e^{2d\pi i/n}}-1=0\text{ si }n/d>1$$ Es decir, si y sólo si $d=n$ la suma se hará 1, por tanto $$c(n)=\sum\limits_{d\mid n} \mu(d)\sum\limits_{k=1}^{n/d}e^{2kd\pi i/n}=\mu(n)\qed$$
-\end{sol}
+\end{solucion}
 \end{ejercicio}
 \newpage
 
@@ -107,7 +107,7 @@ $$
 \sum_{n=1}^\infty \frac{\mu(n)^2}{n^s}
 $$
 \end{itemize}
-\begin{sol}
+\begin{solucion}
 \begin{itemize}
 \item[]
 \item Primeramente, observamos que $\sum_{d\mid n} \mu(d)^2$ es la convolución de las funciones $f\equiv 1$ y $\mu^2$, ambas multiplicativas, por lo que también es multiplicativa. Además, $2^{\omega(n)}$ es claramente multiplicativa. Por tanto, solo tenemos que probar el resultado para los números de la forma $n=p^a$, $p$ primo y $a\geq 1$.
@@ -122,7 +122,7 @@ $$
 Alternativamente:
 \[ \frac{ζ(s)}{ζ(2s)} = \prod_p \frac{1-1/p^{2s}}{1-1/p^s} = \prod_p \frac{(1-1/p^s)(1+1/p^s)}{1-1/p^s} = \prod_p (1+1/p^s) = \sum_{n=1}^{∞} \frac{μ(n)^2}{n^s} \]
 \end{itemize}
-\end{sol}
+\end{solucion}
 \end{ejercicio}
 \newpage
 
@@ -169,7 +169,7 @@ Por lo que $\lambda$ es completamente multiplicativa.
  		0 &\text{ en otro caso}
  	\end{cases}	$$
  	$$
- 	\sum_{d\mid n}\lambda(d) = \sum_{n=0}^a \lambda(p^n) = \sum_{n=0} (-1)^a = \begin{cases}
+ 	\sum_{d\mid n}\lambda(d) = \sum_{n=0}^a \lambda(p^n) = \sum_{n=0}^a (-1)^n = a+1 \mod 2 = \begin{cases}
  		1 &\text{ si $a$ es par}\\
  		0 &\text{ en otro caso}
  	\end{cases}	$$
@@ -194,7 +194,7 @@ Se sabe que una función aritmética $f(n)$ cumple $\sum_{d|n} f(d) = n^2$.
  f(n)=\sum_{d\mid n}\mu(n/d)d^2
  $$
  Por tanto, $f$ es la convolución de $h(n)=n^2$ y $\mu(n)$, ambas claramente multiplicativas, por lo que también lo será $f$.
- +\item Sea $t(n) = n^2 \prod_{p|n} \left(1-\frac{1}{p^2}\right)$ entonces si $m$ y $n$ son coprimos, un primo $p$ divide o bien a uno o bien a otro, luego es claro que
+ \item Sea $t(n) = n^2 \prod_{p|n} \left(1-\frac{1}{p^2}\right)$ entonces si $m$ y $n$ son coprimos, un primo $p$ divide o bien a uno o bien a otro, luego es claro que
  $$
  t(nm) = (nm)^2\prod_{p|nm} \left(1-\frac{1}{p^2}\right) = n^2m^2\prod_{p|m} \left(1-\frac{1}{p^2}\right)\prod_{p|n} \left(1-\frac{1}{p^2}\right)=t(n)t(m)
  $$
@@ -250,7 +250,7 @@ g(n) = \sum_{d\mid n} f(d)\mu(n/d)
 \item Calcular $g(p)$, $g(p^2)$ y $g(p^3)$, siendo $p$ un número primo.
 \item ¿Para qué valores de $n\in\N$ se tiene que $g(n)=0$?
 \end{itemize}
-\begin{sol}
+\begin{solucion}
 \begin{itemize}
 \item[]
 \item Dado que $g(n) = (f\ast \mu)(n)$ y $\mu$ es una función multiplicativa, basta probar que $f$ también lo es para demostrar que $g$ lo es (propiedades de la convolución). Sean $n,m\in \N$ coprimos y $q=f(mn)$. Sabemos que podemos escribir $q=p_1^{a_1},\dotsc,p_k^{a_k}$. Sea $p_i$, como $(n,m)=1$, entonces o bien $p_i \mid n$, o bien $p_i \mid m$, pero no puede dividir a ambos. En tal caso, podemos hacer una partición entre los factores primos que dividen a $n$ y los que dividen a $m$, de forma que podemos escribir $q=p_np_m$, cumpliéndose $(n,p_m)=1$ y $(m,p_n)=1$. Resta ver que $f(n)=p_n$ y $f(m)=p_m$, como queríamos probar.
@@ -267,13 +267,17 @@ Es claro que para $n\geq 1$ se tiene
 g(p^n) = f(p^{n-1})\mu(p) + f(p^n)\mu(1) = f(p^n)-f(p^{n-1})\\
 g(p^n) = 
 \begin{cases}
-p^{n/2}(p-1) & \text{si $n$ es par}\\
-0 			& \text{si $n$ es impar}
+p^{n/2}-p^{(n-2)/2} & \text{si $n$ es par}\\
+p^{(n-1)/2}-p^{(n-1)/2}	& \text{si $n$ es impar}
+\end{cases} =
+\begin{cases}
+p^{-1+n/2}(p-1) & \text{si $n$ es par}\\
+0	& \text{si $n$ es impar}
 \end{cases}
 \end{gather*}
 \item A partir del apartado anterior tenemos prácticamente la respuesta. $g(n)=0$ si $\exists p$ primo tal que $\nu_p(n)$ es impar, es decir, si y solo si $n$ no es un cuadrado perfecto.
 \end{itemize}
-\end{sol}
+\end{solucion}
 \end{ejercicio}
 
 \newpage
@@ -321,7 +325,7 @@ Probar la siguiente identidad
 \[
 \sigma(n)^2 = \sum_{d\mid n} \frac{n}{d}\sigma(d^2) 
 \]
-\begin{sol}
+\begin{solucion}
 Dado que $\sigma(n)$ es una función multiplicativa, sean $m,n$ coprimos, tenemos que
 \[
 \sigma(nm)^2 = (\sigma(n)\sigma(m))^2 = \sigma(n)^2\sigma(m)^2
@@ -336,7 +340,7 @@ Por tanto, basta probar la identidad para los números de la forma $p^a$ con $p$
  = \frac{{p^{a+1}}^2-2p^{a+1}+1}{(p-1)^2} =  \left(\frac{p^{a+1}-1}{p-1}\right)^2
 \end{gather*}
 Como queríamos probar.
-\end{sol}
+\end{solucion}
 \end{ejercicio}
 
 \newpage
@@ -373,7 +377,7 @@ Probar que
 -n & \text{si $n$ es impar}
 \end{cases}
 \]
-\begin{sol}
+\begin{solucion}
 Sea $n \in \N$ impar, entonces $\forall d$ tal que $d \mid n$, $\frac{n}{d}$ también es impar, lo cual se traduce en que
 \[
 \sum_{d\mid n} (-1)^{n/d}\varphi(d) = \sum_{d\mid n} (-1)\varphi(d) = -\sum_{d\mid n}\varphi(d) = -n
@@ -387,7 +391,7 @@ Por otro lado, todos los divisores $d$ de $n$ que no son divididos por $2^s$ son
 \[ \sum_{2^s\nmid d \mid n}φ(d) = \frac{n}{2} \]
 Por lo tanto:
 \[ \sum_{d|n} (-1)^{n/d}φ(d) = -\sum_{2^s\mid d\mid n}φ(d)+\sum_{2^s\nmid d\mid n}φ(d) = -\frac{n}{2}+\frac{n}{2}=0\]
-\end{sol}
+\end{solucion}
 
 \newpage
 
@@ -410,6 +414,13 @@ Como $μ$ y $σ$ son multiplicativas, la convolución $μ * σ$ es multiplicativ
 Lo que demuestra la fórmula.
 \end{solucion}
 
+\begin{solucion}
+El miembro izquierdo de la igualdad es la convolución de las funciones $g(n)=\sigma(n)\mu(n)$ y la función $f(n)=1$, por lo que es multiplicativo. El miembro derecho es el producto de la función $(-1)^{\omega(n)}$ y $R(n)$ ambas claramente multiplicativas. Por tanto, basta probar la igualdad para los elementos de la forma $p^a$ con $p$ primo y $a\geq 0$, aunque $a=0$ es trivial. En otro caso:
+$$
+\sum_{d\mid p^a} g(d)f(p^a/d) = \sum_{n=0}^a \mu(p^n)\sigma(p^n) = \mu(1)\sigma(1)+\mu(p)\sigma(p) = 1 - (p+1) = -p 
+$$
+$$ (-1)^{\omega(p^a)}R(p^a) = (-1)^1p = -p$$
+\end{solucion}
 \newpage
 
 \begin{ejercicio}{15}
@@ -417,11 +428,11 @@ Probar que
 \[ \prod_{d|n} d = n^{d(n)/2} \]
 \end{ejercicio}
 
-\begin{sol}
+\begin{solucion}
 Como $d$ es un divisor de $n$ si y sólo si $n/d$ es divisor de $n$:
 \[ \prod_{d|n} d = \prod_{d|n} n/d \]
 Luego:
 \[ \prod_{d|n} d = \sqrt{\left(\prod_{d|n} d\right)^2} = \sqrt{\prod_{d|n} d \cdot \prod_{d|n} n/d} = \sqrt{\prod_{d|n} n} = \sqrt{n^{d(n)}} = n^{d(n)/2} \]
-\end{sol}
+\end{solucion}
 \end{ejercicio}
 \end{document}
