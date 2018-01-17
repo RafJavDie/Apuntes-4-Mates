@@ -216,6 +216,16 @@ Se sabe que una función aritmética $f(n)$ cumple $\sum_{d|n} f(d) = n^2$.
 Demostrar que para todo $x > 0$ se tiene
 \[ 2(e^x-1)e^{-2x} = \sum_{n=1}^{∞} \frac{μ(n)}{\senh nx} \]
 \end{ejercicio}
+\begin{solucion}
+Sea $f(x)=2(e^x-1)e^{-2x}= 2(e^{-x}-e^{-2x})$, entonces
+$$
+\sum_{n=1}^\infty f(nx) = 2\sum_{n=1}^\infty e^{-nx}-e^{-2x} = 2\left(\frac{1}{e^x-1}-\frac{1}{e^{2x}-1}\right) = \frac{2e^x}{e^{2x}-1} = \frac{1}{\sinh{x}}
+$$
+Se sigue entonces que
+$$
+\sum_{n=1}^\infty  \frac{μ(n)}{\senh nx} = \sum_{n=1}^\infty \mu(n) \sum_{m=1}^\infty f(nmx) 
+$$
+\end{solucion}
 \begin{solucion} Hagamos la siguiente consideración
 \begin{align*}
 \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} &= 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx} - e^{-nx}} = 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx}} \frac{1}{1-e^{-2nx}}\\

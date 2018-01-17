@@ -143,14 +143,22 @@ Aunque ahora mismo su definición pueda parecer extraña, veremos su justificaci
 A continuación veremos varias consecuencias interesantes de la proposición anterior.
 
 \begin{ejs}
-$d$, $σ$ y $σ_α$ son multiplicativas.
+Las funciones $d$, $σ$ y $σ_α$ son multiplicativas pues son convoluciones de funciones multiplicativas
+\begin{enumerate}
+\item $d(n) =\sum_{d\mid n} 1 = 1 \ast 1 (n)$
+\item $\sigma(n)= \sum_{d\mid n} d = 1 \ast f (n)$, con $f(n)=n$.
+\item $\sigma_\alpha (n) = \sum_{d\mid n} d^\alpha = 1 \ast f (n)$, con $f(n)=n^\alpha$.
+\end{enumerate}
 \end{ejs}
 
 \begin{prop}
 Si $n = p_1^{a_1} \cdot p_n^{a_n}$, entonces
 \[ σ(n) = \prod_{j=1}^r \frac{p_j^{a_j+1}-1}{p_j-1} = \prod_p \frac{p^{ν_p(n)+1}-1}{p-1} \]
 \end{prop}
-
+\begin{dem}
+Basta aplicar la fórmula de la suma geométrica y tener en cuenta que si $n=p_1^{a_1}\cdots p_k^{a_k}$ entonces
+$$\sigma(n) = \sum_{d\mid n} d = \prod_{i=1}^k \sum_{j=0}^{a_i} p^j$$
+\end{dem}
 \begin{defi}
 Se dice que un número natural $n$ es perfecto si es la suma de sus divisores propios, estos es, si $σ(n)=2n$.
 \end{defi}
@@ -158,7 +166,27 @@ Se dice que un número natural $n$ es perfecto si es la suma de sus divisores pr
 \begin{teorema}[Euclides, Euler]
 Los números perfectos pares son los números de la forma $2^{p-1}(2^p-1)$, donde $p$ recorre los números primos tales que $(2^p-1)$ sea también primo.
 \end{teorema}
-
+\newpage
+\begin{dem}
+Supongamos que $2^p -1$ es primo, entonces
+$$
+\sigma(n) =\sigma (2^{p-1}(2^p-1)) = \sigma(2^{p-1})\sigma(2^p -1) = \frac{2^{p-1+1}-1}{2-1}(2^p-1+1) =2^p(2^p-1)
+$$
+Por lo que $n$ es perfecto. Recíprocamente, supongamos que $n$ es par y perfecto, por lo que $n=2^am$ con $a\geq 1$ con $m$ impar. Tenemos que
+$$
+\sigma(n)=\sigma(2^am) = \sigma(2^a)\sigma(m) =\frac{2^{a+1}-1}{2-1}\sigma(m)=(2^{a+1}-1)\sigma(m)
+$$
+Por ser perfecto, $(2^{a+1}-1)\sigma(m) = 2^{a+1}m$, luego
+$$
+\sigma(m)=\frac{[(2^{a+1}-1)+1]m}{2^{a+1}-1} = \frac{m + m(2^{a+1}-1)}{2^{a+1}-1} = m + \frac{m}{2^{a+1}-1}
+$$
+Por lo que $m$ tiene solo dos divisores, $1$ y $m$ y $\frac{m}{2^{a+1}-1}=1$, $m=2^{a+1}-1$. Finalmente, veamos que si $2^p -1$ es primo entonces $p$ es primo. Si no lo fuera, entonces $p=mn$ y 
+$$
+2^{mn}-1 = (2^n)^m - 1 = (2^n-1)(1+2^n + \dotsc + 2^{(m-1)n})
+$$
+Lo cuál es una contradicción con el hecho de que $2^a-1$ sea primo.
+\QED
+\end{dem}
 No se conoce si existen infinitos números perfectos, ni tampoco si existe alguno impar.
 
 
@@ -167,7 +195,15 @@ No se conoce si existen infinitos números perfectos, ni tampoco si existe algun
 Se denota por $φ(n)$ el cardinal del conjunto de números primos con $n$ y menores que $n$.
 \[ φ(n) = \text{card}\{k \perp n : 1 ≤ k ≤ n\} \]
 \end{defi}
-
+\begin{prop}
+Para todo $n\in \N$, $n>1$ se tiene que 
+$$
+\varphi(n)=\abs{\left(\Z/\Z n\right)^\ast}
+$$
+\begin{dem}
+Sea $n\in \N$ fijo 
+\end{dem}
+\end{prop}
 \begin{prop}\mbox{}
 \begin{enumerate}[(a)]
 	\item La funcion φ es multiplicativa
