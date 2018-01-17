@@ -200,29 +200,46 @@ Para todo $n\in \N$, $n>1$ se tiene que
 $$
 \varphi(n)=\abs{\left(\Z/\Z n\right)^\ast}
 $$
-\begin{dem}
-Sea $n\in \N$ fijo 
-\end{dem}
 \end{prop}
+\begin{dem}
+Sea $n\in \N$ fijo. Sea $1\leq a \leq n$ con $a\perp n$, por , $\exists x,y \in \Z$ tales que $1=xa+yn$. Tomando clases en $\Z/\Z n$, $[a][x]+[n][y]=[1]$, pero $[n]=0$, por lo que $[a]$ es unidad.
+
+Recíprocamente, sea $[a]\in\left(\Z/\Z n\right)^*$, entonces $\exists  [b]\in\left(\Z/\Z n\right)^*$ tal que $[a][b]=[ab]=1$ Por tanto, $n\mid ab-1$, es decir, $\exists c$ tal que $1 = ab-nc$, por lo que $a\perp c$. Por tanto
+$$
+\varphi(n)= \text{card}\{k \perp n : 1 ≤ k ≤ n\} = \abs{\left(\Z/\Z n\right)^\ast}$$
+\end{dem}
+\newpage
 \begin{prop}\mbox{}
 \begin{enumerate}[(a)]
-	\item La funcion φ es multiplicativa
+	\item La función φ es multiplicativa
 	\item $φ(n) = n \displaystyle\prod_{p|n} \left(1-\dfrac{1}{p}\right)$
 \end{enumerate}
 \end{prop}
 
 \begin{dem}
-Usando que $φ$ es multiplicativa:
+\begin{enumerate}[(a)]
+\item Sean $m,n$ coprimos, entonces sabemos que 
+$$
+\Z/\Z nm \cong \Z/\Z n \times \Z/\Z m \Rightarrow \varphi(mn)= |\Z/\Z nm| = |\Z/\Z n||\Z/\Z m| = \varphi(n)\varphi(m)
+$$
+
+\item Usando que $φ$ es multiplicativa:
 \[ φ(p^a) = p^a - p^{a-1} = p^a(1-1/p) \]
 Sea $n = p_1^{a_1}\cdots p_k^{a_k}$:
 \[ φ(n) = φ(p_1^{a_1})\cdots φ(p_k^{a_k}) = p_1^{a_1}(1-1/p_1)\cdots p_k^{a_k}(1-1/p_k) = n \prod_{p|n} \left(1-\dfrac{1}{p}\right)\]
+\end{enumerate}
 \QED
 \end{dem}
 
 \begin{teorema}[Teorema de Euler]
 Si $a \perp n$ entonces $a^{φ(n)} \equiv 1 \pmod n$.
 \end{teorema}
-
+\begin{dem}
+Sea $[a]\in {\left(\Z/\Z n\right)^\ast}$, Entonces ${\left(\Z/\Z n\right)^\ast} = [a]{\left(\Z/\Z n\right)^\ast}$, luego el producto de todos los elementos de cada conjunto debe coincidir
+$$
+[a][x_1]\cdots[a][x_{\varphi(n)}] = [a]^{\varphi(n)}\prod_{i=1}^{\varphi(n)} [x_i] = \prod_{i=1}^{\varphi(n)} [x_i] \Rightarrow [a]^{\varphi(n)} = 1
+$$
+\end{dem}
 \begin{prop}
 Para todo $n \in \N$ se tiene $\displaystyle\sum_{d|n} φ(d) = n$.
 \end{prop}
@@ -231,15 +248,15 @@ Para todo $n \in \N$ se tiene $\displaystyle\sum_{d|n} φ(d) = n$.
 Sea $f(n) = \sum_{d|n} φ(d)$ y $g(n) = n$. Sea $h(n) = 1$. Obsérvese que $f = φ * h$. Como $φ$ y $h$ son multiplicativas, $f$ es multiplicativa. Como $g$ también es mulitplicativa, para probar que $f = g$ basta ver que $f(p^a)=g(p^a)$ para un $p$ primo y $a ≥ 1$.
 
 \[ f(p^a) = \sum_{b|p^a} φ(b) = \sum_{k=0}^a φ(p^k) = 1+(p-1)+(p²-p)+\cdots+(p^a-p^{a-1}) = p^a = g(p^a) \]
-
-Luego $f = g$.
 \qed
 
 Como demostración alternativa:
-\[ n = \left|\left\{\frac{a}{n} \mid 1 ≤ a ≤ n\right\}\right|
-= \left|\bigcup_{b|n} \left\{\frac{a}{b} \mid 1≤a≤b, a \perp b\right\}\right|
-= \sum_{b|n} \left|\left\{\frac{a}{b} \mid 1 ≤ a ≤ b, a \perp b\right\}\right|
-= \sum_{b|n} φ(b) \]\QED
+\begin{align*}
+n&= \left|\left\{\frac{a}{n} \mid 1 ≤ a ≤ n\right\}\right|
+= \left|\bigcup_{b|n} \left\{\frac{a}{b} \mid 1≤a≤b, a \perp b\right\}\right|\\
+&=\sum_{b|n} \left|\left\{\frac{a}{b} \mid 1 ≤ a ≤ b, a \perp b\right\}\right|
+= \sum_{b|n} φ(b) 
+\end{align*} \QED
 \end{dem}
 
 A continuación definimos la función de Möbius. Jugará un papel destacado en el curso y seguro que Möbius la consideraba tan importante como su famosa banda.
@@ -253,7 +270,7 @@ Se define la función de Möbius $μ(n)$ del siguiente modo
 \end{cases}\]
 \end{defi}
 
-\begin{prop}
+\begin{prop} Se tienen las siguientes propiedades para la función de Möbius
 \begin{enumerate}[(a)]
 \item La función de Möbius $μ$ es multiplicativa.
 \item Para todo $n$
@@ -261,7 +278,16 @@ Se define la función de Möbius $μ(n)$ del siguiente modo
 	1 & \text{ si } n = 1\\
 	0 & \text{ si } n > 1
 \end{cases}\]
+\end{enumerate} 
+\begin{dem}Pasemos a probar las propiedades.
+\begin{enumerate}[(a)]
+\item Sean $n=p_1^{a_1}\cdots p_k^{a_k}$ y $m=q_1^{b_1}\cdots q_s^{a_s}$ coprimos, entonces es claro que $$\mu(mn)=(-1)^{k+s}=(-1)^k(-1)^s=\mu(n)\mu(s)$$ pues un primo $p$ que divida a $mn$ divide o bien a $n$ o bien a $m$.
+\item Dado $\mu(n)$, el miembro izquierdo de la ecuación $\mu \ast 1$, también es multiplicativo. El miembro derecho también es una función multiplicativa (obvio), basta probarlo para los números de la forma $p^a$ con $p$ primo y $a\geq 0$. El caso $a=0$ es trivial, en otro caso
+$$
+\sum_{d \mid p^a} \mu (d) = \sum_{n=0}^a \mu(p^n) = \mu(1)+\mu(p)=0
+$$
 \end{enumerate}
+\end{dem}
 \end{prop}
 
 Finalmente un resultado importante son las dos fórmulas de inversión de Möbius.
@@ -274,15 +300,27 @@ Sean $f$ y $g$ dos funciones aritméticas, son equivalentes:
 	\item $\forall n$, $f(n) = \sum_{a|n}μ(a) g(n/a)$
 \end{enumerate}
 \end{prop}
+\newpage
 \begin{dem}\mbox{}
 \begin{itemize}
-	\item[[$(a) \Rightarrow (b)$]]
+	\item Veamos que $(a) \Rightarrow (b)$
 	\[
 	\sum_{a|n} μ(a)g(n/a) = \sum_{a|n}μ(n/a)g(a) = \sum_{a|n}μ(a) \sum_{b|n/a} f(b) = \sum_{b|n}f(b)\left(\sum_{a|n/b} μ(a)\right) = f(n)
 	\]
-	\item[[$(b) \Rightarrow (a)$]]
+	\item Recíprocamente, veamos que  $(b) \Rightarrow (a)$
 	\[
 	\sum_{a|n}f(a) = \sum_{a|n} \sum_{b|a} μ(b)g(a/b) = \sum_{a|n}\sum_{b|a} μ(a/b)g(b) = \sum_{b|n}g(b)\left(\sum_{b|a|n}μ(a/b)\right) = g(n)
+	\]
+\end{itemize}
+Veamos una demostración alternativa usando que $(1\ast \mu)$ es el elemento neutro de la convolución.
+\begin{itemize}
+\item Veamos que $(a) \Rightarrow (b)$
+	$$
+	\mu \ast g = \mu \ast (1 \ast f) = (\mu \ast 1)\ast f= f
+	$$
+	\item Recíprocamente, veamos que  $(b) \Rightarrow (a)$
+	\[
+	f \ast 1 = (\mu \ast g) \ast 1 = (g\ast \mu) \ast 1 = g \ast (\mu \ast 1) = g
 	\]
 \end{itemize}
 \end{dem}

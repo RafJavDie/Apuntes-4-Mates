@@ -223,7 +223,7 @@ $$
 $$
 Se sigue entonces que
 $$
-\sum_{n=1}^\infty  \frac{μ(n)}{\senh nx} = \sum_{n=1}^\infty \mu(n) \sum_{m=1}^\infty f(nmx) 
+\sum_{n=1}^\infty  \frac{μ(n)}{\senh nx} = \sum_{n=1}^\infty \mu(n) \sum_{m=1}^\infty f(nmx) =  \sum_{r=1}^\infty f(rx) \sum_{n\mid r} \mu(n) = f(x)
 $$
 \end{solucion}
 \begin{solucion} Hagamos la siguiente consideración
@@ -320,8 +320,9 @@ $$
 Además:
 \begin{align*}
 	\sum_{n=1}^{∞} μ(n) u(n) R\left(\frac{x}{n}\right) & = 
-	\sum_{n=1}^{∞} μ(n) u(n) \left(\sum_{m=1}^\infty u(m) f\left(\frac{x}{mn}\right)\right) = \sum_{mn=1}^{∞} μ(n) u(mn) f\left(\frac{x}{mn}\right)\\
-	& = \sum_{r=1}^{∞} \left(\sum_{n|r} μ(n)\right) u(r)f\left(\frac{x}{r}\right)
+	\sum_{n=1}^{∞} μ(n) u(n) \left(\sum_{m=1}^\infty u(m) f\left(\frac{x}{mn}\right)\right)\\
+	&= \sum_{n=1}^{∞} μ(n)  \left(\sum_{m=1}^\infty u(n)u(m) f\left(\frac{x}{mn}\right)\right) = \sum_{n=1}^{∞} μ(n)  \left(\sum_{m=1}^\infty u(nm) f\left(\frac{x}{mn}\right)\right)\\
+	&= \sum_{r=1}^{∞} \left(\sum_{n|r} μ(n)\right) u(r)f\left(\frac{x}{r}\right)
 \end{align*}
 Como $\sum_{n|r} μ(n)$ se anula excepto cuando $r=1$, tenemos que:
 $$
@@ -362,7 +363,7 @@ Demostrar que para $|x| < 1$ se tiene
 \begin{solucion}
 Si $|x|<1$ podemos escribir
 $$
-\sum_{n=1}^{∞} φ(n)\frac{ x^n}{1-x^n} = \sum_{n=1}^{∞} \left(φ(n)\sum_{k=1}^\infty x^{kn} \right) \overset{(1)}{=} \sum_{m=1}^\infty \left(x^m\sum_{n \mid m}\varphi(n)\right) = \sum_{m=1}^\infty m x^m \overset{(2)}{=}\frac{x}{(1-x)^2}
+\sum_{n=1}^{∞} φ(n)\frac{ x^n}{1-x^n} = \sum_{n=1}^{∞} \left(φ(n)\sum_{k=1}^\infty x^{kn} \right) \overset{(1)}{=} \sum_{r=1}^\infty x^r\left(\sum_{n \mid r}\varphi(n)\right) = \sum_{m=1}^\infty m x^m \overset{(2)}{=}\frac{x}{(1-x)^2}
 $$
 Vamos a ver más claramente las ecuaciones señaladas.
 Para $(1)$, basta fijar el exponente de $x$ y tomar todos los $n$ tales que existe una $k$ tal que $nk=m$, es decir, que $n \mid m$.
@@ -410,6 +411,14 @@ Definimos el radical de un número natural $R(n)$ como $R(1) = 1$ y para $n > 1$
 \[ \sum_{d|n} μ(d) σ(d) = (-1)^{ω(n)} R(n) \]
 donde $ω(n)$ denota el número de factores primos distintos de $n$.
 \end{ejercicio}
+
+\begin{solucion}
+El miembro izquierdo de la igualdad es la convolución de las funciones $g(n)=\sigma(n)\mu(n)$ y la función $f(n)=1$, por lo que es multiplicativo. El miembro derecho es el producto de la función $(-1)^{\omega(n)}$ y $R(n)$ ambas claramente multiplicativas. Por tanto, basta probar la igualdad para los elementos de la forma $p^a$ con $p$ primo y $a\geq 0$, aunque $a=0$ es trivial. En otro caso:
+$$
+\sum_{d\mid p^a} g(d)f(p^a/d) = \sum_{n=0}^a \mu(p^n)\sigma(p^n) = \mu(1)\sigma(1)+\mu(p)\sigma(p) = 1 - (p+1) = -p 
+$$
+$$ (-1)^{\omega(p^a)}R(p^a) = (-1)^1p = -p$$
+\end{solucion}
 \begin{solucion}
 El resultado se da trivialmente para $n=1$. De aquí en adelante suponemos que $n>1$.
 Supongamos que $n=p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$. Tomamos $N=p_1p_2\cdots p_k$. Tenemos entonces que:
@@ -424,13 +433,6 @@ Como $μ$ y $σ$ son multiplicativas, la convolución $μ * σ$ es multiplicativ
 Lo que demuestra la fórmula.
 \end{solucion}
 
-\begin{solucion}
-El miembro izquierdo de la igualdad es la convolución de las funciones $g(n)=\sigma(n)\mu(n)$ y la función $f(n)=1$, por lo que es multiplicativo. El miembro derecho es el producto de la función $(-1)^{\omega(n)}$ y $R(n)$ ambas claramente multiplicativas. Por tanto, basta probar la igualdad para los elementos de la forma $p^a$ con $p$ primo y $a\geq 0$, aunque $a=0$ es trivial. En otro caso:
-$$
-\sum_{d\mid p^a} g(d)f(p^a/d) = \sum_{n=0}^a \mu(p^n)\sigma(p^n) = \mu(1)\sigma(1)+\mu(p)\sigma(p) = 1 - (p+1) = -p 
-$$
-$$ (-1)^{\omega(p^a)}R(p^a) = (-1)^1p = -p$$
-\end{solucion}
 \newpage
 
 \begin{ejercicio}{15}
