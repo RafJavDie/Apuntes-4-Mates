@@ -326,14 +326,32 @@ Veamos una demostración alternativa usando que $(1\ast \mu)$ es el elemento neu
 \end{dem}
 
 \begin{prop}[Segunda fórmula de inversión de Möbius]
-Sean $F$ y $G$ funciones definidas en $(0,+∞)$ tales que $F((0,ϵ))=0$, para cierto $ϵ > 0$. Son equivalentes:
+Sean $F$ y $G$ funciones definidas en $(0,+∞)$ tales que $F((0,\varepsilon))=0$, para cierto $\varepsilon > 0$. Son equivalentes:
 \begin{enumerate}[(a)]
 \item $F(x) = \sum_{n=1}^{∞} G(x/n)$.
 \item $G(x) = \sum_{n=1}^{∞} μ(n) F(x/n)$.
 \end{enumerate}
+\begin{dem}
+Vamos a probar que $(a)$ implica $(b)$, pues la otra es análoga.
+$$
+\sum_{n=1}^{∞} μ(n) F(x/n) = \sum_{n=1}^{∞} μ(n) \sum_{m=1}^{∞} G(x/nm) = \sum_{r=1}^{∞} G(x/r) \sum_{d\mid r} \mu(d) = G(x)
+$$
+\end{dem}
 \end{prop}
 
-
+\begin{prop}[Segunda fórmula de inversión de Möbius]
+Sean $F$ y $G$ funciones definidas en $[1,+∞)$. Son equivalentes:
+\begin{enumerate}[(a)]
+\item $F(x) = \sum_{n\leq x}^{∞} G(x/n)$.
+\item $G(x) = \sum_{n\leq x}^{∞} μ(n) F(x/n)$.
+\end{enumerate}
+\begin{dem}
+Vamos a probar que $(a)$ implica $(b)$, pues la otra es análoga.
+$$
+\sum_{n\leq x} μ(n) F(x/n) = \sum_{n\leq x} μ(n) \sum_{m\leq x/n} G(x/nm) = \sum_{r\leq x} G(x/r) \sum_{d\mid r} \mu(d) = G(x)
+$$
+\end{dem}
+\end{prop}
 \section{Series de Dirichlet}
 
 Observemos como se comportan los monomiso $x^n$ y $\dfrac{1}{n^s}$ al multiplicarlos
@@ -350,7 +368,15 @@ Lo que nos interesa sobre todo es como se multiplican estas series
 \begin{prop}
 Dotado con el producto anterior y la suma usual, las series de Dirichlet forman un anillo.
 \end{prop}
-
+\begin{dem}
+Las propiedades de anillo son triviales, pero hacemos la consideración de que cada serie de Dirichlet 
+$$\sum_{n=1}^{∞} \frac{a_n}{n^s} \qquad s = \sigma + ri
+$$
+$|a_n|$ puede acotarse por
+$$
+|a_n| \leq C|n^s|=C|e^{s\log n}|= C|e^{\sigma \log n}| = Cn^\sigma
+$$
+\end{dem}
 \begin{prop}
 Las series de Dirichlet
 \[ ζ(s) = \sum_{n=1}^{∞} \frac{1}{n^s}, \text{ y } ζ(s^{-1}=\sum_{n=1}^{∞} \frac{μ(n)}{n^s} \]
@@ -367,10 +393,6 @@ Se tienen las relaciones en el anillo de las series de Dirichlet
 \[ \sum_{n=1}^\infty \frac{σ(n)}{n^s} = ζ(s) \sum_{n=1}^\infty \frac{n}{n^s} = ζ(s) \sum \frac{1}{n^{s-1}} = ζ(s)ζ(s-1) \]
 \[ \sum_{n=1}^\infty \frac{μ(n)}{n^s} \sum_{n=1}^\infty \frac{1}{n^s} = 1 \Rightarrow \sum_{n=1}^\infty \frac{μ(n)}{n^s} = \frac{1}{ζ(s)} \]
 
-donde $s \in \C$, $s = σ + it$. Si $σ > 1$, $ζ(s)$ converge, $1/ζ(s)$ también converge, pues:
-\[ \left|\frac{μ(n)}{n^s}\right| ≤ \frac{1}{n^σ} \]
-
-\[ \left(\sum\frac{μ(n)}{n^s}\right)\left(\sum\frac{1}{m^s}\right) = \sum_{n,m=1}^\infty \frac{μ(n)}{(n\cdot m)^s} = \sum_{N=1}^\infty \frac{1}{N^s}\left(\sum_{n|N} μ(n)\right) = 1 \]
 \end{dem}
 
 \section{Convergencia de series de Dirichlet}
@@ -381,22 +403,29 @@ Si la serie de Dirichlet $\sum_{n=1}^\infty \frac{a_n}{n^s}$ converge en un punt
 \begin{dem}
 En el caso reducido $s_0=0$, $\sum_{n=1}^\infty a_n = 0$. Definimos $s_n = \sum_{k=1}^n a_k$. Entonces, para $n>m$:
 \[ \left|\sum_{k=1}^n\frac{a_k}{k^s}-\sum_{k=1}^m\frac{a_k}{k^s}\right| = \left|\sum_{k=m+1}^n\frac{a_k}{k^s}\right| = \left|\frac{s_{m+1}-s_m}{(m+1)^s} + \frac{s_{m+2}-s_{m+1}}{(m+2)^s}+\dots+\frac{s_{n}-s_{n-1}}{n^s}\right|\]
-\[ = \left|\frac{s_n}{n^s}-\frac{s_m}{(m+1)^s}+\sum_{k=m+1}^{n-1}s_k\left(\frac{1}{k^s}-\frac{1}{(k+1)^s}\right)\right| ≤ \frac{ϵ}{n^σ} + \frac{ϵ}{(m+1)^σ} + \sum_{k=m+1}^{n-1} ϵ \left|\frac{1}{k^s}-\frac{1}{(k+1)^s}\right|\]
+\[ = \left|\frac{s_n}{n^s}-\frac{s_m}{(m+1)^s}+\sum_{k=m+1}^{n-1}s_k\left(\frac{1}{k^s}-\frac{1}{(k+1)^s}\right)\right| ≤ \frac{\varepsilon}{n^σ} + \frac{\varepsilon}{(m+1)^σ} + \sum_{k=m+1}^{n-1} \varepsilon \left|\frac{1}{k^s}-\frac{1}{(k+1)^s}\right|\]
 
 Usando que:
 \[ \left|\frac{1}{k^s}-\frac{1}{(k+1)^s}\right| = \left|\int_k^{k+1}-st^{-s-1}dt\right| ≤ |s|\int_k^{k+1}\left|t^{-σ-1}\right|dt ≤ \frac{|s|}{σ} \left(\frac{1}{k^σ}-\frac{1}{(k+1)^σ}\right)\]
 
 y que $n^σ ≥ 1$ y $(m+1)^σ ≥ 1$:
 
-\[ \left|\sum_{k=1}^n\frac{a_k}{k^s}-\sum_{k=1}^m\frac{a_k}{k^s}\right| ≤ 2ϵ + ϵ \sum_{k=m+1}^{n-1} \frac{|s|}{σ}\left(\frac{1}{k^σ}-\frac{1}{(k+1)^σ}\right) = 2ϵ+ϵ\frac{|s|}{σ}\left(\frac{1}{(m+1)^σ}-\frac{1}{n^σ}\right) ≤ 2ϵ+ϵ\frac{|s|}{σ} \]
+\[ \left|\sum_{k=1}^n\frac{a_k}{k^s}-\sum_{k=1}^m\frac{a_k}{k^s}\right| ≤ 2\varepsilon + \varepsilon \sum_{k=m+1}^{n-1} \frac{|s|}{σ}\left(\frac{1}{k^σ}-\frac{1}{(k+1)^σ}\right) = 2\varepsilon+\varepsilon\frac{|s|}{σ}\left(\frac{1}{(m+1)^σ}-\frac{1}{n^σ}\right) ≤ 2\varepsilon+\varepsilon\frac{|s|}{σ} \]
 Como $σ/|s| = \cos(θ)$ donde $θ = \arg(s) ≤ α$, $|s|/σ ≤ (\sin α)^{-1}$, luego:
-\[ \left|\sum_{k=1}^n\frac{a_k}{k^s}-\sum_{k=1}^m\frac{a_k}{k^s}\right| ≤ ϵ\left(2+\frac{1}{\sin α}\right) \]
+\[ \left|\sum_{k=1}^n\frac{a_k}{k^s}-\sum_{k=1}^m\frac{a_k}{k^s}\right| ≤ \varepsilon\left(2+\frac{1}{\sin α}\right) \]
+Por tanto, la serie converge uniformemente.
 \end{dem}
 
 \begin{coro}
 Si una serie de Dirichlet converge en algún punto, existe $σ_0 \in [-\infty,\infty)$, tal que la serie de Dirichlet define una función analitica en el semiplano $Re(s) > σ_0$ y divirge para todo $Re(s) < σ_0$. Decimos que $σ_0$ es la abcisa de convergencia de la serie de Dirichlet.
 \end{coro}
-
+\begin{dem}
+La prueba es inmediata. Si $\sum_{n=1}\frac{a_n}{n^s}$ converge en $s_0$, $\exists \sigma_0\in[-\infty,\infty)$ tal que $\sum_{n=1}\frac{a_n}{n^s}$ converge uniformemente en $\Gamma_\alpha$. Concretamente, $\sigma_0 = \Re(s_0)$. Por otro lado
+$$
+\sum_{k=1} \frac{a_k}{k^s} = \sum_{k=1}a_ke^{-s\log k}
+$$
+donde $a_ke^{-s\log k}\in \mathcal{C}^w$. Por tanto, $\sum_{k=1}a_ke^{-s\log k} = f(s)$ con $f\in \mathcal{C}^w$.
+\end{dem}
 \begin{ej}
 La serie de Dirichlet $\sum_{n=1}^\infty \frac{(-1)^n}{n^s}$ tiene una abcisa de convergencia en $σ_0=0$. Obsérvese que no converge absolutamente en $0<σ<1$. De hecho, hay una abcisa de convergencia absoluta en $σ_0=1$.
 \end{ej}
@@ -407,21 +436,42 @@ La serie de Dirichlet $\sum_{n=1}^\infty \frac{(-1)^n}{n^s}$ tiene una abcisa de
 Sea $a_N$ el primer coeficiente distinto de 0. Se tiene entonces que:
 \[ -\frac{a_N}{N^s} = \sum_{n=N+1}^{∞} \frac{a_n}{n^s} \]
 Sea $α$ la parte real de $s$ y $σ > α+1$:
-\[ \left|-\frac{a_N}{N^σ}\right| = \left|\sum_{n=N+1}^{∞} \frac{a_n}{n^s}\right| ≤ \sum_{n=N+1}^{∞} \frac{|a_n|}{n^σ} ≤ c \sum_{n=N+1}^{∞} \frac{1}{n^{σ-α}} ≤ c \int_N^{∞} t^{α-σ} dt = c \left.\frac{t^{α-σ+1}}{α-σ+1}\right|_N^{∞} = \frac{c}{σ-α-1} \frac{1}{N^{σ-α-1}}\]
-\[ |a_N| ≤ N^σ \frac{c}{σ-α-1} \frac{1}{N^{σ-α-1}} = \frac{CN^{α+1}}{σ-α-1} \]
+\begin{align*}
+ \left|-\frac{a_N}{N^σ}\right| &= \left|\sum_{n=N+1}^{∞} \frac{a_n}{n^s}\right| ≤ \sum_{n=N+1}^{∞} \frac{|a_n|}{n^σ}≤ c \sum_{n=N+1}^{∞} \frac{1}{n^{σ-α}} \\
+ &≤ c \int_N^{∞} t^{α-σ} dt = c \left.\frac{t^{α-σ+1}}{α-σ+1}\right|_N^{∞} = \frac{c}{σ-α-1} \frac{1}{N^{σ-α-1}}
+\end{align*}
+De donde se deduce que
+\[ |a_N| ≤ N^σ \frac{c}{σ-α-1} \frac{1}{N^{σ-α-1}} = \frac{CN^{α+1}}{σ-α-1} \underset{\sigma\to \infty}{\longrightarrow} 0\]
 \end{dem}
 
 \begin{prop} Sea $f$ multiplicativa y la serie de Dirichlet $\sum_{n=1}^\infty \frac{f(n)}{n^s}$ con abcisa de convergencia absoluta en $σ_0$. Entonces:
-\[ \sum_{n=1}^\infty \frac{f(n)}{n^s} = \lim_{x \to \infty} \prod_{p≤x} \left(1+\frac{f(p)}{p^s} + \frac{f(p^2)}{p^{2s}+\dots}\right) \]
-La serie dentro del producto del segundo miembro converge por ser una subserie de la serie de Dirichlet donde converge absolutamente. Si $p_1,\dots,p_a$ son todos los primos menores que $x$:
-\[ \prod_{p≤x} \left(1+\frac{f(p)}{p^s} + \frac{f(p^2)}{p^{2s}}+\dots\right) = \sum_{P^+(n)≤x} \frac{f(n)}{n^s} \]
+\[ \sum_{n=1}^\infty \frac{f(n)}{n^s} = \lim_{x \to \infty} \prod_{p≤x} \left(1+\frac{f(p)}{p^s} + \frac{f(p^2)}{p^{2s}}+\cdots\right) = \prod_{p} \left(1+\frac{f(p)}{p^s} + \frac{f(p^2)}{p^{2s}}+\cdots\right) \]
+La serie dentro del producto del segundo miembro converge por ser una subserie de la serie de Dirichlet donde converge absolutamente. 
 \end{prop}
 
+\begin{dem}
+En primer lugar, tenemos convergencia absoluta pues
+$$
+\abs{\sum_{n=1}^\infty \frac{f(n)}{n^s}} \leq \sum_{n=1}^\infty \frac{|f(n)|}{n^\sigma}<\infty
+$$
+Por otra lado, usando que $f$ es multiplicativa
+$$
+\prod_{p\leq x}\left(1-\frac{f(p)}{p^s}\right)^{-1} =  \sum_{P^+(n)≤x} \frac{f(n)}{n^s} 
+$$
+Estudiamos ahora 
+\begin{align*}
+\abs{\sum_{n=1}\frac{f(n)}{n^s}- \sum_{P^+(n)≤x} \frac{f(n)}{n^s}}&= \abs{ \sum_{P^+(n)>x} \frac{f(n)}{n^s} } \leq \sum_{P^+(n)>x} \frac{|f(n)|}{n^\sigma} \leq \sum_{n>x} \frac{f(n)}{n^s}  \underset{x\to \infty}{\longrightarrow} 0
+\end{align*}
+Por ser el resto de una serie uniformemente convergente. Basta ahora hacer $x\to \infty$.
+\end{dem}
 \begin{coro}
 
-Si $f$ es además completamente multiplicativa:
-\[ \sum_{n=1}^\infty \frac{f(n)}{n^s} = \prod_{p}\left(1-\frac{f(p)}{p^s}\right)^{-1}\]
+Si $f$ es además completamente multiplicativa y $p_1,\dots,p_a$ son todos los primos menores que $x$:
+\[ \sum_{n=1}^\infty \frac{f(n)}{n^s} = \prod_{p}\left(1-\frac{f(p)}{p^s}\right)^{-1} \]
 \end{coro}
+\begin{dem}
+ Ahora, usando que $f$ es completamente multiplicativa $f(p^k)=f(p)^k$. Sumamos la serie geométrica y obtenemos los resultados trivialmente.
+\end{dem}
 \section{Crecimiento de funciones multiplicativas}
 \begin{teorema}
 Sea $f(n)$ una función multiplicativa. Si $\lim_{p^k \to +∞} f(p^k) = 0$, entonces
@@ -441,10 +491,16 @@ llegamos a que:
 \end{dem}
 
 \begin{prop}
-Para todo $ϵ > 0$ se tiene que
-\[ \lim_{n \to +∞} φ(n)/n^{1+ϵ} =0, \quad \lim_{n \to +∞} φ(n)/n^{1-ϵ} = +∞ \]
-(Ver Nathanson p.227)
+Para todo $\varepsilon > 0$ se tiene que
+\[ \lim_{n \to +∞} φ(n)/n^{1+\varepsilon} =0, \quad \lim_{n \to +∞} φ(n)/n^{1-\varepsilon} = +∞ \]
 \end{prop}
+\begin{dem}
+Usaremos el Teorema 1.6.1 y probaremos el primero, pues el otro es análogo.
+
+$$
+\frac{\varphi(p^k)}{p^{k(1+\varepsilon)}} = \frac{p^k(1-\frac{1}{p})}{p^{k(1+\varepsilon)}} = \frac{1-\frac{1}{p}}{p^{k\varepsilon}} \leq \frac{1}{p^{k\varepsilon}} \underset{p^k\to \infty}{\longrightarrow} 0
+$$
+\end{dem}
 El \textbf{orden máximo} y el \textbf{orden mínimo} de una función aritmética $f(n)$ se definen como funciones monótonas crecientes $g(n)$ tales que
 \[ \limsup_{n\to+∞} \frac{f(n)}{g(n)} = 1, \quad \text{respectivamente }\liminf_{n\to+∞}\frac{f(n)}{g(n)} = 1 \]
 \begin{prop}
@@ -452,25 +508,25 @@ El orden mínimo de $\log d(n)$ es $\log 2$ y el orden máximo es
 \[ \frac{\log 2 \log n}{\log \log n} \]
 \end{prop}
 \begin{dem}
-Vamos a demostrar sólo el orden máximo. Para el orden mínimo ver Hardy \& Wright, p.262. Vamos a ver que
+El orden mínimo es claro, pues $d(n)\geq 2$. Vamos a demostrar el orden máximo. Vamos a ver que
 \[ \limsup \frac{\log d(n)}{\frac{\log 2 \log n}{\log \log n}} = 1\]
 Aplicando logaritmo a la expresión $\frac{d(n)}{n^δ} ≤ \exp\left(\frac{2^{1/δ}}{δ\log 2}\right)$.
 \[
 	\log d(n) ≤ δ\log n + \frac{2^{1/δ}}{δ\log 2}
 \]
-Sea $δ = (1+ϵ)\frac{\log 2}{\log \log n}$, entonces:
+Sea $δ = (1+\varepsilon)\frac{\log 2}{\log \log n}$, entonces:
 \[
-	\log d(n) ≤ (1+ϵ) \frac{\log 2 \log n}{\log \log n} + \frac{(\log n)^{1/(1+ϵ)}}{(\log 2)^2} \frac{\log \log n}{1+ϵ} =: (1+ϵ)f(n) + g(n)
+	\log d(n) ≤ (1+\varepsilon) \frac{\log 2 \log n}{\log \log n} + \frac{(\log n)^{1/(1+\varepsilon)}}{(\log 2)^2} \frac{\log \log n}{1+\varepsilon} =: (1+\varepsilon)f(n) + g(n)
 \]
 Dividiendo por $f(n)$:
 \[ 
-	\frac{\log d(n)}{f(n)} ≤ 1 + ϵ + \frac{g(n)}{f(n)}
+	\frac{\log d(n)}{f(n)} ≤ 1 + \varepsilon + \frac{g(n)}{f(n)}
 \]
 Se observa además que $\frac{g(n)}{f(n)} \xrightarrow{n \to ∞} 0$, luego:
 \[ 
-	\limsup \frac{\log d(n)}{f(n)} ≤ 1+ϵ
+	\limsup \frac{\log d(n)}{f(n)} ≤ 1+\varepsilon
 \]
-Como esto se da para todo $ϵ$, se cumple que:
+Como esto se da para todo $\varepsilon$, se cumple que:
 \[ 
 	\limsup \frac{\log d(n)}{\frac{\log 2 \log n}{\log \log n}} ≤ 1
 \]
@@ -493,6 +549,23 @@ La idea básica que queremos desarrollar es la aproximación de una suma por una
 Sea $f : (0,+\infty) \to [0,+\infty)$ una función positiva y decreciente. Existe una constante $γ(f)$ tal que para todo $x>1$ se tiene
 \[ \sum_{n≤x} f(n) = \int_1^x f(t)dt + γ(f) + \mathcal{O}(f(x)) \]
 \end{teorema}
+\begin{dem}
+Tenemos $f$ positiva y decreciente. Vamos a estudiar la suma
+$$
+\sum_{n\leq x}f(n) = \sum_{n=1}^N f(n) \qquad N=\suelo{x}= S
+$$
+Se observa que la suma se aproxima al área bajo la curva $S\sim I = \int_1^x f(t)dt$. La diferencia $S-I$ es igual a 
+$$S-I = \sum_{k=1} a_k < \infty$$ pues se observa que la suma de todos está contenido en un rectángulo de base $1$ y altura $f(1)$. Por tanto
+$$
+\gamma(f) = \sum_{k=1} a_k \leq f(1) \qquad S - I \sim \gamma(f) 
+$$
+Por tanto
+$$
+\sum_{n\leq x} f(n) = \int_1^x f(t)dt + \gamma(f) + O(f(x))
+$$
+\QED
+\end{dem}
+
 \begin{teorema}
 Existe una constante $γ$ tal que para todo $x>1$
 \[ \sum_{n≤x} \frac{1}{n} = \log x + γ + \mathcal{O}\left(\frac{1}{x}\right) \]
@@ -512,6 +585,7 @@ en el siguiente teorema lo exttendemos al caso en que $A$ es una funcón de salt
 Sea $f(t)$ una función con derivada continua en $[1,x]$. Entonces tenemos
 \[ \sum_{1≤n≤x} a_nf(n) = A(x)f(x)-\int_1^x A(t)f'(t)dt \]
 \end{teorema}
+\newpage
 \section{El orden medio de $d(n)$}
 Como vemos, hemos tenido que pasar a $\log d(n)$ para poder determinar el orden máximo. El tomar logaritmos obviamente hace la función más manejable. Otra forma de resolver e problema es estudiar el \textbf{orden medio}, s llama así a una función $g(n)$ monótona y tal que
 \[ f(1) + f(2) + \cdots + f(n) \sim g(1) + g(2) + \cdots + g(n) \]
@@ -521,16 +595,21 @@ Cuando $x$ tiende a infinito, tenemos
 \end{teorema}
 
 \begin{dem}
-\[ \sum_{n≤x} d(n) = \sum_{n≤x}\sum_{a|n}1 = \sum_{a≤x}\lfloor \frac{x}{a}\rfloor = \sum_{ab≤x} 1 \]
-Consideramos el retículo $\mathcal{R}=\{(n,m) | n \in \N,m \in \N, nm≤x\}$. Se tiene que $\sum_{ab≤x} 1 = \#\mathcal{R}$. Si particionamos $\mathcal{R}$ en los conjuntos: $A=\{(n,m) \mid n \in \N,m \in \N, nm≤x, m>\sqrt{x}\}, B=\{(n,m) \mid n \in \N,m \in \N, nm≤x, n>\sqrt{x}\}$ y $C=\{(n,m) \mid n \in \N,m \in \N, nm≤\sqrt{x}\}$. Se tiene que $\#A=\#B$, luego $\#\mathcal{R}=2\#A+\#C$:
+\[ \sum_{n≤x} d(n) = \sum_{n≤x}\sum_{a|n}1 =\sum_{a\leq x} m = \sum_{a≤x}\suelo{ \frac{x}{a}} = \sum_{ab≤x} 1 \]
+Donde $m$ son el número de múltiplos de $a$ que son menores o iguales que $x$. Consideramos el retículo $\mathcal{R}=\{(n,m) | n \in \N,m \in \N, nm≤x\}$. Se tiene que $\sum_{ab≤x} 1 = \#\mathcal{R}$. Si particionamos $\mathcal{R}$ en los conjuntos: $A=\{(n,m) \mid n \in \N,m \in \N, nm≤x, m>\sqrt{x}\}, B=\{(n,m) \mid n \in \N,m \in \N, nm≤x, n>\sqrt{x}\}$ y $C=\{(n,m) \mid n \in \N,m \in \N, nm≤\sqrt{x}\}$. Se tiene que $\#A=\#B$, luego $\#\mathcal{R}=2\#A+\#C$. Además, pues que $C$ es un cuadrado de lado $\sqrt{x}$, $|C|=\suelo{\sqrt{x}}^2$.
 \begin{align*}
-	\sum_{ab≤x} 1 & = 2 \# A - \lfloor \sqrt{x} \rfloor^2 = 2 \sum_{a≤\sqrt{x}} \lfloor \frac{x}{a}\rfloor - \lfloor \sqrt{x} \rfloor^2 = 2 \sum_{a≤x} \left(\frac{x}{a}-\left\{\frac{x}{a}\right\}\right) - (\sqrt{x}-\{\sqrt{x}\})^2 =\\
-	& = 2x \sum_{a ≤ \sqrt{x}} \frac{1}{a} + \mathcal{O}(\sqrt{x}) - (x-2\{\sqrt{x}\} \sqrt{x} + \{\sqrt{x}\}^2) = \\
-	& = 2x(\log\sqrt{x} + γ + \mathcal{O}(\frac{1}{x})) + \mathcal{O}(\sqrt{x}) -x+\mathcal{O}(\sqrt{x})+\mathcal{O}(1) = x \log x + (2γ-1)x+\mathcal{O}(\sqrt{x})
+	\sum_{ab≤x} 1 & = 2 \# A - \suelo{ \sqrt{x} }^2 = 2 \sum_{a≤\sqrt{x}} \suelo{ \frac{x}{a}} - \suelo{ \sqrt{x} }^2\\
+	&= 2 \sum_{a≤x} \left(\frac{x}{a}-\left\{\frac{x}{a}\right\}\right) - (\sqrt{x}-\{\sqrt{x}\})^2 \\
+	& = 2x \sum_{a ≤ \sqrt{x}} \frac{1}{a} + \mathcal{O}(\sqrt{x}) - (x-2\{\sqrt{x}\} \sqrt{x} + \{\sqrt{x}\}^2)  \\
+	& = 2x(\log\sqrt{x} + γ + \mathcal{O}\left(\frac{1}{x}\right)) + \mathcal{O}(\sqrt{x}) -x+\mathcal{O}(\sqrt{x})+\mathcal{O}(1)\\
+	&= x \log x + (2γ-1)x+\mathcal{O}(\sqrt{x})
 \end{align*}
-donde $\{x\} = x-\lfloor x \rfloor$ es la parte fraccionaria de $x$. Luego $\sum_{n≤x} d(n) = x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})$.
+donde $\{x\} = x-\suelo{ x }$ y hemos usado que $-\sum_{a\leq x} \left\{\frac{x}{a}\right\} \leq \sqrt{x}$ es la parte fraccionaria de $x$. Luego $\sum_{n≤x} d(n) = x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})$.
+\qed
 \end{dem}
-La tecnica usada en la prueba se debe a Dirichlet y se denomina \textbf{método de la hipérbola}.
+
+
+La técnica usada en la prueba se debe a Dirichlet y se denomina \textbf{método de la hipérbola}.
 
 El término de error $\mathcal{O}(\sqrt{x})$ puede mejorarse. La determinación del ínfimo de los $θ$ tales que podamos substituir $\mathcal{O}(\sqrt{x})$ por $\mathcal{O}(x^{θ})$ en el teorema anterior, constituye un problema abierto que se onoce con el nombre de \textbf{problema del divisor de Dirichlet}. En 1915 Hardy y Landau probaron que $\inf θ ≥ 1/4$.
 
@@ -541,13 +620,13 @@ Para $x≥1$
 \end{teorema}
 \begin{dem}
 \begin{align*}
-	\sum_{n≤x} φ(n) & = \sum_{n≤x}\sum_{a|n} μ(a) \frac{n}{a} = \sum_{a≤x} \frac{μ(a)}{a}\left(\sum_{a|n,n≤x}n\right) = \frac{1}{2} \sum_{a≤x} μ(a)\left(\lfloor \frac{x}{a}\rfloor^2 + \lfloor \frac{x}{a}\rfloor \right)\\
+	\sum_{n≤x} φ(n) & = \sum_{n≤x}\sum_{a|n} μ(a) \frac{n}{a} = \sum_{a≤x} \frac{μ(a)}{a}\left(\sum_{a|n,n≤x}n\right) = \frac{1}{2} \sum_{a≤x} μ(a)\left(\suelo{ \frac{x}{a}}^2 + \suelo{ \frac{x}{a}} \right)\\
 	& = \frac{1}{2} \sum_{a≤x} μ(a) \left(\left(\frac{x}{a} - \left\{ \frac{x}{a}\right\} \right)^2 + \frac{x}{a}-\left\{\frac{x}{a}\right\}\right)\\
 	& = \frac{1}{2} \sum_{a≤x} μ(a) \left(\frac{x^2}{a^2} - 2\left\{\frac{x}{a}\right\}\frac{x}{a} + \left\{\frac{x}{a}\right\}^2+\frac{x}{a}-\left\{\frac{x}{a}\right\}\right)\\
 	&  \frac{x^2}{2} \sum_{a≤x} \frac{μ(a)}{a^2} - \frac{x}{2} \sum_{a≤x} \frac{μ(a)}{a} - x \sum_{a≤x} \frac{μ(a)}{a}\left\{\frac{x}{a}\right\} + \mathcal{O}(x)
 \end{align*}
 Como:
-\[ \left|x\sum_{a≤x} \frac{μ(a)}{a} \left\}\frac{x}{a}\right\}\right| ≤ x \sum_{a≤x} \frac{1}{a} = x (\log x + γ + \mathcal{O}\left(\frac{1}{x}\right)) ≤ 2x \log x \]
+\[ \left|x\sum_{a≤x} \frac{μ(a)}{a} \left\{\frac{x}{a}\right\}\right| ≤ x \sum_{a≤x} \frac{1}{a} = x (\log x + γ + \mathcal{O}\left(\frac{1}{x}\right)) ≤ 2x \log x \]
 Luego:
 \begin{align*}
 	\sum_{n≤x} φ(n) = \frac{x^2}{2} \sum_{a≤x} \frac{μ(a)}{a^2} + \mathcal{O}(x\log x) = \frac{x^2}{2}\left(S - \sum_{a>x} \frac{μ(a)}{a^2}\right) + \mathcal{O}(x \log x)
@@ -564,15 +643,48 @@ Finalmente:
 \[ \sum_{n≤x} φ(n) = \frac{6}{π}\frac{x^2}{2} + \mathcal{O}(x\log x)\]
 \end{dem}
 
-El teorema se debe a Mertens (1874). El mejor término de error que se conoce es $\mathcal{O}(x(\log x)^{2/3}(\log \log x)^{4/3})$ que se debe a Walfisz en 1963.
+El teorema se debe a Mertens (1874). El mejor error que se conoce es $\mathcal{O}(x(\log x)^{2/3}(\log \log x)^{4/3})$ que se debe a Walfisz en 1963.
 
 \begin{coro} Dado un entero $x$, la probabilidad de que dos eneteros positivos $≤x$ sea relativamente primos es: $\dfrac{6}{π^2}+ \mathcal{O}\left(\frac{\log x}{x}\right)$.
 \end{coro}
-
+\begin{dem}
+Los casos totales son $x^2$ y los favorables $2\sum_{n\leq x} \varphi(n) -x$, luego
+$$
+\frac{1}{x^2}\left(2\sum_{n\leq x} \varphi(n) -x\right) =\frac{1}{x^2}\left( \frac{6}{π}\frac{x^2}{2} + \mathcal{O}(x\log x)\right) - \frac{1}{x} = \frac{6}{\pi^2} + O\left(\frac{\log x}{x}\right)-\frac{1}{x}
+$$
+\end{dem}
 \begin{prop}
 El orden medio de $σ(n)$ es $π^2n/6$. Esto es
 \[ \sum_{n≤x} σ(n) = \frac{1}{12} π^2x^2 + \mathcal{O}(x\log x) \]
 \end{prop}
+\begin{dem}
+Para $x>1$ se tiene
+\begin{align*}
+\sum_{n\leq x} \sigma(n)&=\sum_{n\leq x}\sum_{a\mid n} a = \sum_{n\leq x}\sum_{a\mid n} \frac{n}{a} = \sum_{a\leq x} \frac{1}{a}\sum_{a\mid n,\; n\leq x} n \\
+&= \sum_{a\leq x}\frac{1}{a}\left(a+2a+\dotsc+\suelo{\frac{x}{a}}\right) =\frac{1}{2}\sum_{a\leq x}\left(\suelo{\frac{x}{a}}^2+\suelo{\frac{x}{a}}\right)\\
+&=\frac{1}{2}\sum_{a\leq x}\left(\left(\frac{x}{a} - \deci{\frac{x}{a}}\right)^2+\left(\frac{x}{a} - \deci{\frac{x}{a}}\right)\right)\\
+&=\frac{1}{2}\sum_{a\leq x}\left(\frac{x^2}{a^2} - 2\frac{x}{a}\deci{\frac{x}{a}} +\deci{\frac{x}{a}}^2 +\frac{x}{a}-\deci{\frac{x}{a}}\right)
+\end{align*}
+Ahora bien, tengamos en cuenta que
+\begin{align*}
+\abs{\sum_{a\leq x}\frac{x}{a}\deci{\frac{x}{a}}}&\leq x\sum_{a\leq x}\frac{1}{a} = x\log x + \gamma x + O(1)  &
+\sum_{a\leq x}\frac{x}{a}\deci{\frac{x}{a}} &= O(x\log x)\\
+\abs{\frac{1}{2}\sum_{a\leq x}\deci{\frac{x}{a}}^2}&\leq\frac{x}{2} & \frac{1}{2}\sum_{a\leq x}\deci{\frac{x}{a}}^2 &= O(x)
+\end{align*}
+$$
+\sum_{a\leq x}\frac{x}{a} = O(x\log x) \qquad
+\sum_{a\leq x}\deci{\frac{x}{a}} = O(x)
+$$
+\begin{align*}
+\sum_{a\leq x}\frac{1}{a^2}& =\sum_{a=1}^\infty \frac{1}{a^2}- \sum_{a> x}\frac{1}{a^2} = \frac{\pi^2}{6}- \sum_{a> x}\frac{1}{a^2} \\
+&=\frac{\pi^2}{6}- \left(\frac{1}{\ceil{x}^2}+\int_x^\infty \frac{dt}{t^2}\right) = \frac{\pi^2}{6}-\left(\frac{1}{\ceil{x}^2}+\frac{1}{x}\right) = \frac{\pi^2}{6} + O\left(\frac{1}{x}\right)
+\end{align*}
+
+Por tanto,
+$$
+\sum_{n\leq x} \sigma(n) = \frac{x^2}{2}\sum_{a\leq x}\frac{1}{a^2}+O(x\log x) = \frac{\pi^2}{12}x^2+O(x\log x )
+$$
+\end{dem}
 El mejor término de error que se conoce es $\mathcal{O}(x(\log x)^{2/3})$ que se debe a Walfisz en 1963.
 
 \section{Método de exclusión-inclusión}
