@@ -1,0 +1,34 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+\providecommand{\bo}[1]{\mathcal{O}\left(#1\right)}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Teoría Analítica de Números\\Examen, 5 de septiembre de 2003}
+\author{Rafael González López\\Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{1}
+\begin{enumerate}[(a)]
+	\item Partiendo de $Γ(1/2)=\sqrt{π}$ demuestra la fórmula de $Γ(n+1/2)$.
+	\item ¿Qué se quiere decir cuando hablamos de que la probabilidad de que dos números naturales sean primos entre sí es $6/π^2$? ¿Podrían servir los primeros premios de la loteria para calcular una aproximación de $π$?
+	\item ¿Qué relación tiene el teorema de Chebyshev con la estimación $p_n = \mathcal{O}(n \log n)$?
+	\item ¿Qué relación puedes establecer entre la función de Möbius y la función $1/ζ(s)$?
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+	\item Tenemos que $Γ(s)=sΓ(s-1)$, luego para todo $n \in \N$:
+	\[ Γ\left(\frac{1}{2}+n\right) = \left(\frac{1}{2}+n\right) Γ\left(\frac{1}{2}+n-1\right) = \dots = Γ\left(\frac{1}{2}\right)\prod_{i=0}^{n-1}\left(\frac{1}{2}+i\right) = \sqrt{π}\frac{1}{2^n}\prod_{i=0}^{n-1}\left(1+2i\right)\]
+	\[ = \frac{\sqrt{π}}{2^n}(1 \cdot 3 \cdot 5 \cdots 2n) = \frac{\sqrt{π}}{2^n}\frac{(2n)!}{2 \cdot 4 \cdot 6 \cdots \cdot 2n} = \frac{\sqrt{π}}{2^n}\frac{(2n)!}{2^n n!}  = \frac{(2n)!}{n!2^{2n}}\sqrt{π} \]
+	
+	\item Tenemos que dados dos números enteros menor que $x$, la probabilidad de que sean coprimos es $6/π^2+\bo{\log x/x}$.
+	Para $x$ suficientemente grande, esto se aproxima a $6/π^2$.
+	
+Para aproximar $π$ por los primeros premios de la lotería, bastaría ir comprobando dos a dos si son coprimos.
+Si hemos comprobado todos los pares de $n$ números y $m$ de ellos son coprimos, tenemos que $m/\binom{n}{2} \approx 6/π^2$.
+Luego podemos aproximar $π$ usando que $π \approx \sqrt{6\binom{n}{2}/m}$.
+Por ejemplo, con los números ganadores de la lotería diaría de la ONCE en 2017 tendríamos que $π \approx 3.07$ ($\Rightarrow$ tongo).
+\end{enumerate}
+\end{solucion}
+\end{document}
