@@ -18,17 +18,95 @@
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[(a)]
-	\item Tenemos que $Γ(s)=sΓ(s-1)$, luego para todo $n \in \N$:
+\item Tenemos que $Γ(s)=sΓ(s-1)$, luego para todo $n \in \N$:
 	\[ Γ\left(\frac{1}{2}+n\right) = \left(\frac{1}{2}+n\right) Γ\left(\frac{1}{2}+n-1\right) = \dots = Γ\left(\frac{1}{2}\right)\prod_{i=0}^{n-1}\left(\frac{1}{2}+i\right) = \sqrt{π}\frac{1}{2^n}\prod_{i=0}^{n-1}\left(1+2i\right)\]
 	\[ = \frac{\sqrt{π}}{2^n}(1 \cdot 3 \cdot 5 \cdots 2n) = \frac{\sqrt{π}}{2^n}\frac{(2n)!}{2 \cdot 4 \cdot 6 \cdots \cdot 2n} = \frac{\sqrt{π}}{2^n}\frac{(2n)!}{2^n n!}  = \frac{(2n)!}{n!2^{2n}}\sqrt{π} \]
 	
-	\item Tenemos que dados dos números enteros menor que $x$, la probabilidad de que sean coprimos es $6/π^2+\bo{\log x/x}$.
+\item Tenemos que dados dos números enteros menor que $x$, la probabilidad de que sean coprimos es $6/π^2+\bo{\log x/x}$.
 	Para $x$ suficientemente grande, esto se aproxima a $6/π^2$.
 	
 Para aproximar $π$ por los primeros premios de la lotería, bastaría ir comprobando dos a dos si son coprimos.
 Si hemos comprobado todos los pares de $n$ números y $m$ de ellos son coprimos, tenemos que $m/\binom{n}{2} \approx 6/π^2$.
 Luego podemos aproximar $π$ usando que $π \approx \sqrt{6\binom{n}{2}/m}$.
 Por ejemplo, con los números ganadores de la lotería diaría de la ONCE en 2017 tendríamos que $π \approx 3.07$ ($\Rightarrow$ tongo).
+
+\item Recordemos que por el teorema de Chebyshev, para $x ≥ 3$:
+\[ \frac{1}{2} \frac{x}{\log x} ≤ π(x) ≤ (1 + \log 4)\frac{x}{\log x} \]
+Tomando $x = p_n$, de manera que $π(p_n)=n$:
+\[ A \frac{p_n}{\log p_n} ≤ n ≤ B \frac{p_n}{\log p_n}\]
+Tenemos que $p_n ≤ \frac{1}{A} n \log p_n$. Como existe $δ > 0$ tal que $\log x ≤ δ \sqrt{x}$ para $x≥1$, tenemos que $\frac{δ\sqrt{p_n}}{\log p_n} ≥ 1$. Luego:
+\[ p_n ≤ \frac{1}{A} n \log p_n ≤ \frac{δ}{A}n\sqrt{p_n} \Rightarrow \sqrt{p_n} ≤ \frac{δ}{A}n \]
+Sacando logaritmo a esta inecuación:
+\[ \frac{1}{2} \log p_n ≤ \log \frac{δ}{A} + \log n\]
+Luego:
+\[ p_n ≤ \frac{1}{A} n \log p_n ≤ \frac{1}{A}n(\log \frac{δ}{A} + \log n) = \mathcal{O}(n\log n) \]
+
+\item Como:
+\[ \left(\sum_{n=1}^{∞} \frac{μ(n)}{n^s}\right) \left(\sum_{n=1}^{∞} \frac{1}{n^s}\right) = \sum_{n=1}^{∞} \left(\sum_{d\mid n} μ(d) \right)\frac{1}{n^s} = \frac{1}{1^s} = 1 \]
+Entonces $\sum μ(n)/n^s = 1/ζ(s)$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Sean $f$ y $g$ las funciones aritméticas tales que
+\[ f(n) = 2^{ν_2(n)} \quad g(n) = 3^{ν_3(n)} \]
+es decir $f(n)$ es la mayor potencia de $2$ que divide a $n$, y $g(n)$ la mayor potencia de $3$.
+\begin{enumerate}[(a)]
+\item Demostrar que $f$ y $g$ son multiplicativas.
+\item Sea
+\[ h(n) = \sum_{d \mid n} f(d) g(n/d) \]
+¿Cuánto vale $h(p^α)$ si $p$ es un número primo?
+\item Calcular $h(10!)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item Veamos que son completamente multiplicativas (que implica que son multiplicativas). Sean $n$ y $m$ naturales.
+Entonces por el teorema fundamental de la aritmética: $n = \prod_p p^{ν_p(n)}$ y $m = \prod_p p^{ν_p(m)}$. Luego:
+\[ nm = \prod_p p^{ν_p(n)+ν_p(m)}\]
+Entonces $f(nm)=2^{ν_2(n)+ν_2(m)}=2^{ν_2(n)}\cdot 2^{ν_2(m)} = f(n)\cdot f(m)$. La demostración para $g$ es equivalente.
+\item
+\[ h(p^α) = \sum_{d \mid p^α} f(d) g(n/d) = \sum_{d=0}^{α} f(p^d) g(p^{α-d}) \]
+Si $p=2$:
+\[ h(2^α) = \sum_{d=0}^α f(2^d)\cdot 1 = \sum_{d=0}^α 2^d = 2^{α+1}-1 \]
+Si $p=3$:
+\[ h(3^α) = \sum_{d=0}^α g(3^d)\cdot 1 = \sum_{d=0}^α 3^d = \frac{1}{2}(3^{α+1}-1)\]
+Para otro $p$:
+\[ h(p^α) = \sum_{d=0}^α 1\cdot 1 = α+1\]
+
+\item Como $h$ está definida como la convolución de dos funciones multiplicativas, $h$ es multiplicativa.
+Todos los factores primos de $10!$ son $2$, $3$, $5$ y $7$, luego:
+\[ h(10!) = h(2^{ν_2(10!)})\cdot h(3^{ν_3(10!)}) \cdot h(5^{ν_5(10!)}) \cdot h(7^{ν_7(10!)}) = \]
+\[ = (2^{ν_2(10!)+1}-1)\left(\frac{1}{2}\left(3^{ν_3(10!)+1}-1\right)\right)(ν_5(10!)+1)(ν_7(10!)+1) \]
+Por el teorema de Legendre:
+\[ ν_2(10!) = \left\lfloor \frac{10}{2}\right\rfloor + \left\lfloor \frac{10}{4}\right\rfloor + \left\lfloor \frac{10}{8}\right\rfloor = 4+2+1=7 \]
+\[ ν_3(10!) = \left\lfloor \frac{10}{3}\right\rfloor + \left\lfloor \frac{10}{9}\right\rfloor = 3+1 = 4 \]
+\[ ν_5(10!) = \left\lfloor \frac{10}{5}\right\rfloor = 2 \]
+\[ ν_7(10!) = \left\lfloor \frac{10}{7}\right\rfloor = 1 \]
+Luego:
+\[ h(10!) = (2^8-1)\cdot (3^5-1)\cdot 3 \cdot 2 \]
+
+\newpage
+
+\begin{ejercicio}{3}
+Demostrar la relación asintótica
+\[ \sum_{n≤x} \left(\log \frac{x}{n}\right)^2 = 2x + \bo{\log^2 x} \]
+válida para $x ≥ 2$.
+\end{ejercicio}
+\begin{solucion}
+\[ \sum_{n≤x} \left(\log \frac{x}{n}\right)^2 = \sum_{n≤x} \left(\log x - \log n\right)^2 = \sum_{n≤x} \left(\log^2 x + \log^2 n-2 \log x \log n\right)\]
+\[ = x \log^2 x + \sum_{n≤x} \log^2 n - 2 \log x \sum_{n≤x} \log n\]
+Por un lado: $\sum_{n≤x} \log n = x \log x - x + \mathcal{O}(\log x)$. Por otro lado, usando la fórmula de Abel con $a_n=1$ y $f(n)=\log^2 x$:
+\[ \sum_{n≤x} \log^2 n = [x]\log^2 x - \int_1^x [t] 2 \log t \frac{dt}{t} = [x] \log^2 x - 2 (x \log x - x) + 2\int_1^x \{t\}\log t \frac{dt}{t} = \]
+\[ = x \log^2 x -2x \log x +2x + \bo{\log^2 x} \]
+Hemos usado que $[x]=x-\{x\}$ y que $\{x\}=\bo{1}$. Finalmente:
+\begin{align*}
+	\sum_{n≤x} \left(\log \frac{x}{n}\right)^2 & = x \log^2 x + ( x \log^2 x -2x \log x +2x) - 2 \log x (x \log x - x) + \bo{\log^2 x} =\\
+	& = 2x + \bo{\log^2 x}
+\end{align*}
+\end{solucion}
 \end{enumerate}
 \end{solucion}
 \end{document}
