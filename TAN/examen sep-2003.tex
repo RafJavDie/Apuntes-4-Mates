@@ -33,13 +33,13 @@ Por ejemplo, con los números ganadores de la lotería diaría de la ONCE en 201
 \item Recordemos que por el teorema de Chebyshev, para $x ≥ 3$:
 \[ \frac{1}{2} \frac{x}{\log x} ≤ π(x) ≤ (1 + \log 4)\frac{x}{\log x} \]
 Tomando $x = p_n$, de manera que $π(p_n)=n$:
-\[ A \frac{p_n}{\log p_n} ≤ n ≤ B \frac{p_n}{\log p_n}\]
-Tenemos que $p_n ≤ \frac{1}{A} n \log p_n$. Como existe $δ > 0$ tal que $\log x ≤ δ \sqrt{x}$ para $x≥1$, tenemos que $\frac{δ\sqrt{p_n}}{\log p_n} ≥ 1$. Luego:
-\[ p_n ≤ \frac{1}{A} n \log p_n ≤ \frac{δ}{A}n\sqrt{p_n} \Rightarrow \sqrt{p_n} ≤ \frac{δ}{A}n \]
+\[ \frac{1}{2} \frac{p_n}{\log p_n} ≤ n ≤ (1 + \log 4) \frac{p_n}{\log p_n}\]
+Tenemos que $p_n ≤ 2 n \log p_n$. Como existe $δ > 0$ tal que $\log x ≤ δ \sqrt{x}$ para $x≥1$, tenemos que $\log p_n ≤ δ\sqrt{p_n}$. Luego:
+\[ p_n ≤ 2 n \log p_n ≤ \frac{δ}{A}n\sqrt{p_n} \Rightarrow \sqrt{p_n} ≤ 2δn \]
 Sacando logaritmo a esta inecuación:
-\[ \frac{1}{2} \log p_n ≤ \log \frac{δ}{A} + \log n\]
+\[ \frac{1}{2} \log p_n ≤ \log 2δ + \log n\]
 Luego:
-\[ p_n ≤ \frac{1}{A} n \log p_n ≤ \frac{1}{A}n(\log \frac{δ}{A} + \log n) = \mathcal{O}(n\log n) \]
+\[ p_n ≤ 2 n \log p_n ≤ 2n(\log 2δ + \log n) = \mathcal{O}(n\log n) \]
 
 \item Como:
 \[ \left(\sum_{n=1}^{∞} \frac{μ(n)}{n^s}\right) \left(\sum_{n=1}^{∞} \frac{1}{n^s}\right) = \sum_{n=1}^{∞} \left(\sum_{d\mid n} μ(d) \right)\frac{1}{n^s} = \frac{1}{1^s} = 1 \]
@@ -87,6 +87,8 @@ Por el teorema de Legendre:
 \[ ν_7(10!) = \left\lfloor \frac{10}{7}\right\rfloor = 1 \]
 Luego:
 \[ h(10!) = (2^8-1)\cdot (3^5-1)\cdot 3 \cdot 2 \]
+\end{enumerate}
+\end{solucion}
 
 \newpage
 
@@ -107,6 +109,39 @@ Hemos usado que $[x]=x-\{x\}$ y que $\{x\}=\bo{1}$. Finalmente:
 	& = 2x + \bo{\log^2 x}
 \end{align*}
 \end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4}
+\begin{enumerate}[(a)]
+\item Demostrar que $Ξ(t)$ es real para $t$ real.
+\item Sea
+\[ θ(t) = -\frac{t}{2} \log π + \text{Im} \log Γ\left(\frac{1}{4}+\frac{it}{2}\right)\]
+Demostrar que la función de Hardy, definida por
+\[ Z(t) = e^{iθ(t)} ζ(1/2+it) \]
+es real para $t$ real.
+\item Explicar como puede usarse este resultado para demostrar que existe un cero de $ζ(s)$ con parte real \textbf{exactamente} igual a $1/2$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item Por la ecuación funcional:
+\[ ξ(s) = \frac{1}{2}s(s-1)π^{-s/2}Γ(s/2)ζ(s) \]
+Observamos por un lado que para $s$ real, $ξ(s)$ es real por ser product de números reales. Entonces $\overline{ξ(\overline{s})}=ξ(s)$ es una igualdad de funciones analíticas en la recta real, luego la igualdad se da en todo $\C$. Por otro lado, tenemos que para $s=1/2+it$ con $t$ real: 
+\[ ξ(s)=ξ(1/2+it)=ξ(1-(1/2+it))=ξ(1/2-it) = ξ(\overline{s}) = \overline{ξ(s)} \]
+Como $Ξ(t)$ coincide con su conjugado, deducimos que $Ξ(t)$ es real para $t$ real.
+\item Obsérvese que:
+\begin{align*}
+ξ\left(\frac{1}{2}+it\right) & = \frac{1}{2}s(s-1)π^{-s/2}Γ(s/2)ζ(s) =
+\exp\left(\log Γ(s/2)\right) \frac{-t^2-1/4}{2}π^{-s/2}ζ(s)\\
+& = \exp\left(\text{Re}(\log Γ(s/2)\right))\exp\left(i\ \text{Im}(\log Γ(s/2))\right)\frac{-t^2-1/4}{2}π^{-1/4-it/2}ζ(s)\\
+& = \exp\left(\text{Re}(\log Γ(s/2)\right))\exp\left(i\ \left(\text{Im}(\log Γ(s/2))-\frac{t}{2}\log π\right)\right)\frac{-t^2-1/4}{2}π^{-1/4}ζ(s)\\
+& = \left[\exp(\text{Re}(\log Γ(s/2))) \frac{-t^2-1/4}{2} π^{-1/4}\right] Z(t)
+\end{align*}
+
+Como $ξ(1/2+it)$ y la expresión entre corchetes son reales, $Z(t)$ debe ser real.
+
+\item Como $e^{i θ(t)}$ no se anula, $Z(t)$ se anula si y sólo si $ζ(1/2+it)$ se anula. Pero tenemos que $Z(t)$ es real, luego basta encontrar un par de valores $α$ y $β$ tal que $Z(α)$ y $Z(β)$ tengan signo contrario, de donde se deduce que habría un cero para algún $t_0 \in [α,β]$.
 \end{enumerate}
 \end{solucion}
 \end{document}
