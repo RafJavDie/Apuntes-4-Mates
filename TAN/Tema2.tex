@@ -184,8 +184,11 @@ $$
 \sum_{p\leq x}\deci{\frac{x}{p}}\log p \leq \sum_{p\leq x}\log p = \log \prod_{p\leq x} p \leq \log 4^{x-1} =(x-1)\log 4 = O(x)
 $$
 \begin{align*}
-\sum_{p\leq x}\suelo{\frac{x}{p}}\log p = \sum_{p\leq x}{\frac{x}{p}}\log p + O(x) \qquad \sum_{p\leq x}\left(\sum_{k=1}\suelo{\frac{x}{p^k}}\right)\log p = x\sum_{p\leq x}\frac{1}{p}\log p+O(x)
+\sum_{p\leq x}\suelo{\frac{x}{p}}\log p = \sum_{p\leq x}\left(\frac{x}{p}-\deci{\frac{x}{p}}\right)\log p = \sum_{p\leq x}{\frac{x}{p}}\log p + O(x) 
 \end{align*}
+$$
+\sum_{p\leq x}\left(\sum_{k=1}\suelo{\frac{x}{p^k}}\right)\log p = x\sum_{p\leq x}\frac{1}{p}\log p+O(x)
+$$
 \begin{gather*}
 \sum_{n\leq x}\log n = x\log x -x+ \mathcal{O}(\log x)  = x\sum_{p\leq x}\frac{1}{p}\log p+O(x)\\
  \log x -1+ \orden{\frac{\log x}{x}}  = \sum_{p\leq x}\frac{1}{p}\log p+O(1)\\
@@ -196,7 +199,30 @@ $$
 Existe una constante $C$ tal que
 \[ \sum_{p≤x} \frac{1}{p} = \log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right) \]
 \end{teorema}
-
+\begin{dem}
+Tenemos
+$$
+\sum_{p≤x} \frac{1}{p} = \sum_{p≤x} \frac{\log p}{p}\frac{1}{\log p} = \sum_{n≤x} a_n f(n)
+$$
+Con $f(n)=\log^{-1}(n)$ y $a_n = I_{\mathbb{P}}(n)\dfrac{\log n}{n}$. Notemos que $f(1)a_1$ está bien definido. Aplicando la Fórmula de Sumación de Abel teniendo en cuenta que $S(x)=\sum_{n\leq x}a_n = \sum_{p\leq x}\dfrac{\log}{p}$ y que, por tanto $\int_1^2S(t)f'(t)dt = 0$.
+\begin{align*}
+\sum_{p\leq x}\frac{1}{p}&= \sum_{p\leq x}\dfrac{\log}{p}f(x)-\int_2^x S(t)f'(t)dt = \frac{S(x)}{\log x} +\int_2^x \frac{S(t)}{t\log^2t}dt \\
+&=\frac{\log x + \mathcal{O}(1)}{\log x} +\int_2^x \frac{\log t + \mathcal{O}(1)}{t\log^2t}dt = 1 + \orden{\frac{1}{\log x}}+\int_2^x\frac{dt}{t\log t}+\int_2^x\frac{O(1)}{t\log^2 t}dt\\
+&=\log\log x - \log\log 2 +1 + \int_2^x\frac{U(t)}{t\log^2 t}dt+ \orden{\frac{1}{\log x}}
+\end{align*}
+Estudiemos 
+\begin{align*}
+\abs{\int_2^x\frac{U(t)}{t\log^2 t}dt}&\leq \int_2^x\frac{\abs{U(t)}}{t\log^2 t}dt \leq \int_2^x\frac{K}{t\log^2 t}dt = K\left(\frac{1}{\log 2}-\frac{1}{\log x} \right)\\
+\abs{\int_x^\infty \frac{U(t)}{t\log^2 t}dt}&\leq K\int_x^{\infty}\frac{dt}{t\log^2t} = K\frac{1}{\log x}
+\end{align*}
+Por tanto, nos queda
+\begin{align*}
+\sum_{p\leq x}\frac{1}{p} &=  \log\log x - \log\log 2 +1 + \int_2^x\frac{U(t)}{t\log^2 t}dt+ \orden{\frac{1}{\log x}}\\
+&=\log\log x - \log\log 2 +1 + \int_2^\infty\frac{U(t)}{t\log^2 t}dt- \int_x^\infty\frac{U(t)}{t\log^2 t}dt+\orden{\frac{1}{\log x}}\\
+&=\log\log x - \log\log 2 +1 + \frac{K}{\log 2} + \orden{\frac{1}{\log x}}\\
+&=\log\log x +C+ \orden{\frac{1}{\log x}}
+\end{align*}
+\end{dem}
 \begin{teorema}[Segundo teorema de Mertens]
 \[ \prod_{p≤x} \left(1-\frac{1}{p}\right)^{-1} = e^γ\log x + \mathcal{O}(1) \]
 donde $γ$ denota la constante de Euler.
