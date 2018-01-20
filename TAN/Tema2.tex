@@ -137,7 +137,7 @@ $$n=\pi(p_n) \leq B \dfrac{p_n}{\log p_n} \qquad p_n \geq \frac{1}{B}n\log p_n \
 
 \section{Teoremas de Mertens}
 \begin{teorema} Para todo $x\geq 1$ tenemos que
-\[ \sum_{p≤x} {\log p} = x\log x -x+ \mathcal{O}(\log x) \]
+\[ \sum_{k≤x} {\log k} = x\log x -x+ \mathcal{O}(\log x) \]
 \end{teorema}
 
 \begin{dem}
@@ -151,6 +151,7 @@ Ya que
 $$
  \int_1^x\frac{\{t\}}{t}dt  \leq  \int_1^x\frac{dt}{t} = \log x 
 $$
+
 \end{dem}
 \begin{lemma}
 Sea $x\in\R$ y $n\in\N$, entonces
@@ -167,7 +168,7 @@ Sea $a=\suelo{x}\leq x < a+1$. Si $a=x$ no hay nada que probar. Tenemos que $\df
 \begin{dem}
 Sea $n=\suelo{x}$. Tenemos
 $$
-\log n! = \sum_{n\leq x} \log k = \sum_{p\leq n}\nu_p(n!)\log p = \sum_{p\leq n}\left(\sum_{k=1}\suelo{\frac{n}{p^k}}\right)\log p
+\log n! = \sum_{k\leq x} \log k = \sum_{p\leq n}\nu_p(n!)\log p = \sum_{p\leq n}\left(\sum_{k=1}\suelo{\frac{n}{p^k}}\right)\log p
 =  \sum_{p\leq n}\left(\sum_{k=1}\suelo{\frac{x}{p^k}}\right)\log p$$
 Separamos la suma para $k=1$ y $k=2$, pero antes veamos que este último está acotado
 \begin{align*}
@@ -176,8 +177,20 @@ Separamos la suma para $k=1$ y $k=2$, pero antes veamos que este último está a
 \end{align*}
 Por tanto,
 $$
-\sum_{p\leq x}\left(\sum_{k=2}\suelo{\frac{x}{p^k}}\right)\log p = \sum_{p\leq x}\suelo{\frac{x}{p}}\log p+O(x) 
+\sum_{p\leq x}\left(\sum_{k=1}\suelo{\frac{x}{p^k}}\right)\log p = \sum_{p\leq x}\suelo{\frac{x}{p}}\log p+O(x)
 $$
+Analicemos el término que resta.
+$$
+\sum_{p\leq x}\deci{\frac{x}{p}}\log p \leq \sum_{p\leq x}\log p = \log \prod_{p\leq x} p \leq \log 4^{x-1} =(x-1)\log 4 = O(x)
+$$
+\begin{align*}
+\sum_{p\leq x}\suelo{\frac{x}{p}}\log p = \sum_{p\leq x}{\frac{x}{p}}\log p + O(x) \qquad \sum_{p\leq x}\left(\sum_{k=1}\suelo{\frac{x}{p^k}}\right)\log p = x\sum_{p\leq x}\frac{1}{p}\log p+O(x)
+\end{align*}
+\begin{gather*}
+\sum_{n\leq x}\log n = x\log x -x+ \mathcal{O}(\log x)  = x\sum_{p\leq x}\frac{1}{p}\log p+O(x)\\
+ \log x -1+ \orden{\frac{\log x}{x}}  = \sum_{p\leq x}\frac{1}{p}\log p+O(1)\\
+ \sum_{p\leq x}\frac{1}{p} = \log x + \orden{1}
+\end{gather*}
 \end{dem}
 \begin{teorema}[Mertens]
 Existe una constante $C$ tal que
