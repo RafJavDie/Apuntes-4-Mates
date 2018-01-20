@@ -152,14 +152,37 @@ $$
  \int_1^x\frac{\{t\}}{t}dt  \leq  \int_1^x\frac{dt}{t} = \log x 
 $$
 \end{dem}
+\begin{lemma}
+Sea $x\in\R$ y $n\in\N$, entonces
+$$
+\suelo{\frac{x}{n}} = \suelo{\frac{\suelo{x}}{n}}
+$$
+\end{lemma}
+\begin{dem}
+Sea $a=\suelo{x}\leq x < a+1$. Si $a=x$ no hay nada que probar. Tenemos que $\dfrac{a}{n}<\dfrac{x}{n}<\dfrac{a+1}{n}$. Por reducción al absurdo, si la tesis es falsa, $\dfrac{a}{n}<\suelo{\dfrac{x}{n}}\leq \dfrac{x}{n}$. Entonces $a<n\suelo{\dfrac{x}{n}}\leq x$. Pero $a=\suelo{x}$, por lo que no puede haber un entero que cumpla esas desigualdades.
+\end{dem}
 \begin{teorema}[Primer teorema de Mertens]
 \[ \sum_{p≤x} \frac{\log p}{p} = \log x + \mathcal{O}(1) \]
 \end{teorema}
+\begin{dem}
+Sea $n=\suelo{x}$. Tenemos
+$$
+\log n! = \sum_{n\leq x} \log k = \sum_{p\leq n}\nu_p(n!)\log p = \sum_{p\leq n}\left(\sum_{k=1}\suelo{\frac{n}{p^k}}\right)\log p
+=  \sum_{p\leq n}\left(\sum_{k=1}\suelo{\frac{x}{p^k}}\right)\log p$$
+Separamos la suma para $k=1$ y $k=2$, pero antes veamos que este último está acotado
+\begin{align*}
+\sum_{p\leq x}\left(\sum_{k=2}\suelo{\frac{x}{p^k}}\right)\log p &\leq \sum_{p\leq x}\left(\sum_{k=2}\frac{x}{p^k}\right)\log p = x\sum_{p\leq n}\log p\left(\sum_{k=2}\frac{1}{p^k}\right)\\
+&= x\sum_{p\leq x} \frac{\log p }{p(p-1)} \leq x\sum_{n=2} \frac{\log n}{n(n-1)}\leq x \sum_{n=2}\frac{1}{n^{3/2}}<\infty
+\end{align*}
+Por tanto,
+$$
+\sum_{p\leq x}\left(\sum_{k=2}\suelo{\frac{x}{p^k}}\right)\log p = \sum_{p\leq x}\suelo{\frac{x}{p}}\log p+O(x) 
+$$
+\end{dem}
 \begin{teorema}[Mertens]
 Existe una constante $C$ tal que
 \[ \sum_{p≤x} \frac{1}{p} = \log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right) \]
 \end{teorema}
-Demostración en Tenenbaum p.152.
 
 \begin{teorema}[Segundo teorema de Mertens]
 \[ \prod_{p≤x} \left(1-\frac{1}{p}\right)^{-1} = e^γ\log x + \mathcal{O}(1) \]
