@@ -1,0 +1,63 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+\providecommand{\bo}[1]{\mathcal{O}\left(#1\right)}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Teoría Analítica de Números\\Examen, 1 de julio de 2003}
+\author{Rafael González López\\Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{1}
+\begin{enumerate}[(a)]
+\item ¿Cómo se prueba que $θ(x) ≤ π(x) \log x$?
+\item ¿Cómo sabemos que $ζ(s)$ no se anula para $\text{Re}(s) > 1$? ¿Qué diferencia la prueba de que $ζ(s)$ no se anula en $\text{Re}(s) > 1$, de la prueba de que no se anula en $\text{Re}(s)=1$?
+\item Para obtener la aproximación de $\sum_{n≤x} d(n)$ usamos un truco para reducir el error hasta $\bo{\sqrt{x}}$. ¿Puedes describirlo en pocas palabras?
+\item ¿Cómo podríamos calcular el valor de $ζ(-9+i10)$? ¿Sabes algún método practicable de hacerlo?
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item Fácil:
+\[ θ(x) = \sum_{p≤x} \log p ≤ \sum_{p≤x} \log x = π(x) \log x \]
+Donde $\sum_{p≤x}$ recorre los primos menores o iguales que $x$.
+
+\item Para $σ=\Re(s)>1$:
+\[ ζ(s) = \prod_p \left(1-\frac{1}{p^s}\right)^{-1}\]
+Como
+\[ \left|\left(1-\frac{1}{p^s}\right)^{-1}\right| = \left|1+\frac{1}{p^s}+\frac{1}{p^{2s}} + \dots\right| ≥ \left|1+\frac{1}{p^σp^{it}}+\frac{1}{p^{2σ}p^{2it}} + \dots\right| ≥ \left|1-\frac{1}{p^σ}-\frac{1}{p^{2σ}} - \dots\right|\] 
+porque $p^{ix}=e^{i(x\log p)}≥-1$ y $p^σ > 0$.
+Además:
+\[ \frac{1}{p^σ}+\frac{1}{p^{2s}} + \dots = \frac{1/p^{σ}}{1-1/p^σ} = \frac{1}{p^σ-1} \]
+Luego:
+\[ \left|\left(1-\frac{1}{p^s}\right)^{-1}\right| ≥ \left|1-\frac{1}{p^σ-1}\right| ≥ \left|1-\frac{1}{2^σ-1}\right| > 0 \]
+Deducimos que $ζ(s)$ no se anula para $σ>1$.
+
+\item Vemos que $\sum_{n≤x} d(n) = \sum_{nm≤x} 1$. Consideramos un retículo $R = \{(n,m) \in \N^2 : nm≤x\}$. Este retículo se corresponde con una hipérbola truncada por $x$. Usando que $\sum_{nm≤x} 1 = \#(R)$ y que el cuadrado $\{(n,m) : n,m≤\sqrt{x}\}$ está completamente contenido en $R$, podemos reducir el error de $\sum_{n≤x} d(n)$ a $\bo{\sqrt{x}}$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+\[ \sum_{n=1}^{∞} d(n)x^n = \frac{x}{1-x} + \frac{x^2}{1-x^2} + \frac{x^3}{1-x^3} + \dots \]
+\end{ejercicio}
+\begin{solucion}
+Para los valores de $x$ donde las series convergen:
+\[ \sum_{n=1}^{∞} \frac{x^n}{1-x^n} = \sum_{n=1}^{∞} \sum_{m=1}^{∞} (x^n)^m = \sum_{n,m=1}^{∞} x^{nm} = \sum_{r=1}^{∞} \sum_{n\mid r} x^r = \sum_{r=1}^{∞} d(r)x^r\]
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+Sea $f(n)$ una función arirmética tal que
+\[ F(x) = \sum_{n≤x} f(n) = \mathcal{O}(x) \]
+Probar que entonces
+\[ \sum_{n≤x} \frac{f(n)}{n} = \bo{\log x} \]
+¿Conoces alguna función interesante que cumpla la hipótesis?
+\end{ejercicio}
+\begin{solucion}
+Por la fórmula de Abel:
+\[ \sum_{n≤x} \frac{f(n)}{n} = \frac{F(x)}{x} - \int_1^x F(x)\left(-x^{-2}\right) = \bo{1} + \int_1^x \bo{1/x} = \bo{\log x} \]
+\end{solucion}
+\end{document}
