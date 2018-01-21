@@ -206,7 +206,7 @@ Las dos primeras condiciones son triviales. Como
 donde $σ_0<σ<σ_1$.
 \qed
 \end{dem}
-Pasamos ahora a probar la ecuación funcional de la función $ζ(s)$. Riemann dio tres demostraciones y posteriormente se han visto numerosas más. La más instructiva es la segunda d Riemann. Esta prueba depende de una propiedad de la función $θ$ definida por
+Pasamos ahora a probar la ecuación funcional de la función $ζ(s)$. Riemann dio tres demostraciones y posteriormente se han visto numerosas más. La más instructiva es la segunda d Riemann. Esta prueba depende de una propiedad de la función $θ$\footnote{Esta $θ$ no tiene nada que ver con la función $θ$ definida en temas anteriores} definida por
 \[ θ(x) = \sum_{n \in \Z} e^{-πn^2x}, \quad x > 0 \]
 \begin{teorema}[Fórmula de Poisson]
 \[ θ\left(\frac{1}{x}\right) = \sqrt{x} θ(x), \quad x > 0 \]
@@ -246,10 +246,27 @@ La función $ζ(s)$ se extiende a una función meromorfa en todo el plano.
 Además para $s \notin \{0,1\}$, se tiene
 \[ π^{-s/2} Γ\left(\frac{s}{2}\right) ζ(s) = \frac{1}{s(s-1)} + \int_1^{+∞} (x^{s/2}+x^{(1-s)/2})\frac{θ(x)-1}{2} \frac{dx}{x} \]
 \end{prop}
+\begin{dem}
+Usando que $θ(1/y)=\sqrt{y}θ(y)$:
+\begin{align*}
+	π^{-s/2}Γ(s/2)ζ(s) & = \int_0^1 x^{s/2}\frac{θ(x)-1}{2} \frac{dx}{x} +  \int_1^{∞} x^{s/2}\frac{θ(x)-1}{2} \frac{dx}{x}\\
+	& = \int_1^{∞} y^{-s/2}\frac{θ(y)\sqrt{y}-1}{2} \frac{dy}{y} +  \int_1^{∞} x^{s/2}\frac{θ(x)-1}{2} \frac{dx}{x}\\
+	& = \int_1^{∞} y^{-s/2}\left[\frac{θ(y)-1}{2}\sqrt{y}+\frac{\sqrt{y}}{2}-\frac{1}{2}\right] \frac{dy}{y} +  \int_1^{∞} x^{s/2}\frac{θ(x)-1}{2} \frac{dx}{x}\\
+	& = \int_1^{∞} (x^{(1-s)/2}+x^{s/2})\frac{θ(x)-1}{2} \frac{dx}{x} + \int_1^{∞} \frac{x^{(1-s)/2}-x^{-s/2}}{2} \frac{dx}{x}\\
+	& = \int_1^{∞} (x^{(1-s)/2}+x^{s/2})\frac{θ(x)-1}{2} \frac{dx}{x} + \frac{1}{s(s-1)}
+\end{align*}
 
-\begin{teorema}[Ecuación funcional] La función $π^{-s/2} Γ(s/2) ζ(s)$ queda invariante al cambiar $s$ po $1-s$, es decir
+\qed
+\end{dem}
+
+\begin{teorema}[Ecuación funcional] La función $π^{-s/2} Γ(s/2) ζ(s)$ queda invariante al cambiar $s$ por $1-s$, es decir
 \[ π^{-s/2} Γ(s/2) ζ(s) = π^{(s-1)/2} Γ\left(\frac{1-s}{2}\right) ζ(1-s) \]
 \end{teorema}
+\begin{dem}
+Basta ver que la parte derecha de la ecuación anterior es invariante al cambiar $s$ por $s$.
+\qed
+\end{dem}
+
 \begin{coro}
 La función $ζ(s)$ es meromorfa en todo el plano, tiene un único polo en $s = 1$, no se anula en $\Re(s) > 1$. Tiene ceros simples en los puntos $-2, -4, \dots, -2n, \dots$ y estos son sus únicos ceros en $\Re(s) < 0$. Son los llamados ceros triviales. Los únicos ceros no triviales posibles se encuentra en la banda crítica $0 ≤ \Re(s) ≤ 1$.
 \end{coro}
@@ -509,6 +526,15 @@ Luego, con un
 Para todo $n \in \N$, para $x \to +∞$ se tiene
 \[ \int_2^x \frac{dt}{\log t} = \frac{x}{\log x} + \frac{x}{\log^2 x} + \frac{2!x}{\log^3 x} + \cdots + \frac{(n-1)!x}{\log^n x} + \mathcal{O}\left(\frac{x}{\log^{n+1}x}\right) \]
 \end{prop}
+\begin{dem}
+Basta aplicar inducción integrando reiteradamente, observando que la $n$-ésima integral $\int_2^y \frac{dt}{\log^{n+1} t}$ tiene el siguiente orden
+\begin{align*}
+\int_2^x \frac{dt}{\log^{n+1} t} & = \int_2^{\sqrt{x}} \frac{dt}{\log^{n+1} t} + \int_{\sqrt{x}}^x \frac{dt}{\log^{n+1} t} ≤ \frac{1}{\log^{n+1}2}(\sqrt{x}-2)+\frac{1}{\log^{n+1}\sqrt{x}}(x-\sqrt{x})\\
+ & ≤ \frac{\sqrt{x}}{\log^{n+1}2}+\frac{2^{n+1}x}{\log^{n+1}x} ≤ c \frac{x}{\log^{n+1}x}
+\end{align*}
+para $x$ suficientemente grande.
+\qed
+\end{dem}
 
 \begin{coro}
 \[ π(x) - \frac{x}{\log x} \sim \frac{x}{\log^2 x} \]
