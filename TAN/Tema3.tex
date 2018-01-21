@@ -8,21 +8,85 @@ La integral
 \[ Γ(s) = \int_0^{+∞} t^{s-1}e^{-t} dt, \quad \text{Re}(s)>0 \]
 define una función analítica en el semiplano $\text{Re}(s)>0$. A la que se llama función Gamma.
 \end{defi}
+\begin{dem}
+Veamos que efectivamente $Γ$ es analítica. Tenemos que:
+\begin{enumerate}
+\item $t\mapsto t^{s-1}e^{-t}$ es medible por ser continua en $t$.
+\item $s\mapsto t^{s-1}e^{-t}$ es analítica porque $t^{s-1}$ es analítica y $e^{-t}$ es constante en $s$.
+\item 
+\[ |t^{s-1}e^{-t}| = |e^{(σ+iu-1)\log t}e^{-t} = e^{(σ-1)\log t}e^{-t} = t^{σ-1}e^{-t} ≤ \begin{cases}
+	t^{b-1}e^{-t} &\text{ si }t>1\\
+	t^{a-1}e^{-t} &\text{ si }0<t<1
+\end{cases}\] 
+para $s \in K := \{s : 0 < a < \text{Re}(s) < b\}$. Como $t^{b-1}e^{-t/2} ≤ M$ para cierta $M$:
+\[ \int_1^{∞}t^{b-1}e^{-t}dt = \int_1^{∞}(t^{b-1}e^{-t/2)}e^{-t/2}dt ≤ M \int_1^{∞} e^{-t/2}dt < ∞ \]
+\[ \int_0^1 t^{a-1}e^{-t} dt < ∞ \]
+\end{enumerate}
+Luego, $Γ(s)$ es analítica en todo abierto $K=\{s : 0 < a < \text{Re}(s) < b\}$ por el teorema de analiticidad de integral paramétrica.
+Entonces es analítica en $\text{Re}(s) > 0$.
+\qed
+\end{dem}
 
 \begin{prop}
 La función gamma se prolonga a una función meromorfa en todo el plano. Que tiene un polo simple en cada entero $n ≤ 0$. Estos son sus únicos polos. Esta función verifica la ecuación funcional
 \[ Γ(s+1) = sΓ(s) \]
 \end{prop}
+
+\begin{dem}
+\[
+Γ(s+1) = \int_0^{∞} t^s e^{-t} dt = \left.-e^{-t}t^s\right|_0^{∞} + s\int_0^{∞}e^{-t}t^{s-1}dt = s\int_0^{∞}t^{s-1}e^{-t}dt = s Γ(s)
+\]
+
+En cuanto a la extensión, como $Γ(s)=Γ(s+1)/s$ y $Γ(s+1)/s$ es meromorfa en $\text{Re}(s)>-1$, entonces $Γ(s)$ es meromorfa en $\text{Re}(s)>-2$. Por inducción, $Γ(s)$ es meromorfa en todo el plano de manera que:
+\[ Γ(s) = \frac{Γ(s+n+1)}{s(s+1)\dots(s+n)}\]
+luego $Γ$ tiene polos en cada entero $≤0$.
+\qed
+\end{dem}
+
 \begin{coro}
 Para valores enteros positivos $Γ(n+1)=n!$ y $Γ(1)=0!=1$.
 \end{coro}
+\begin{dem}
+\[ Γ(1) = \int_0^{∞} e^{-t} dt = 1 = 0!\]
+Supongamos que $Γ(n)=(n-1)!$. Entonces:
+\[ Γ(n+1) = nΓ(n)=n(n-1)!=n! \]
+Luego, por inducción: $Γ(n+1)=n!$ para todo $n$ natural.
+\qed
+\end{dem}
+
 \begin{prop}
 \[ Γ(1/2)=\sqrt{π}, \quad Γ\left(n+\frac{1}{2}\right) = \frac{(2n)!\sqrt{π}}{n!2^{2n}} \]
 \end{prop}
+\begin{dem}Haciendo el cambio de variable $t=u^2$ y $t=v^2$ en las dos integrales:
+\begin{align*}
+	Γ^2(1/2) & = \left(\int_0^{∞}t^{-1/2}e^{-t}dt\right)^2 = 4 \int_0^{∞}\int_0^{∞} e^{-(u^2+v^2)} dudv\\
+	& = 4 \int_0^{π/2}\int_0^{∞} e^{-r^2}r dr dφ = 4 \frac{1}{2} \frac{π}{2} \int_0^{∞} e^{-x} dx = π
+\end{align*}
+Luego $Γ(1/2)=\sqrt{π}$. Por otro lado, supongamos que
+\[ Γ(n+1/2) = \frac{(2n)!\sqrt{π}}{n!2^{2n}}\]
+Tenemos entonces que:
+\begin{align*}
+	Γ(n+1+1/2) & = (n+1/2)Γ(n+1/2) = (n+1/2) \frac{(2n)!\sqrt{π}}{n!2^{2n}}\\
+	& = \frac{(2n+1)(2n)!\sqrt{π}}{n!2^{2n+1}} \cdot \frac{2n+2}{2(n+1)}= \frac{(2(n+1))!\sqrt{π}}{(n+1)!2^{2(n+1)}} 
+\end{align*}
+\qed
+\end{dem}
+
 \begin{prop}
-\[ \int_0^1 t^{α-1}(1-t)^{β-1} dt = \frac{Γ(α)Γ(β)}{Γ(α+β)}, \quad \text{Re}(α)>0, \text{Re}(β)>0 \]
-Calculamos $Γ(α)Γ(β)$ usando el mismo truco que para calcular $Γ(1/2)$.
+\[ Β(α,β):=\int_0^1 t^{α-1}(1-t)^{β-1} dt = \frac{Γ(α)Γ(β)}{Γ(α+β)}, \quad \text{Re}(α)>0, \text{Re}(β)>0 \]
 \end{prop}
+\begin{dem}
+Calculamos $Γ(α)Γ(β)$ usando el mismo truco que para calcular $Γ(1/2)$.
+\begin{align*}
+	Γ(α)Γ(β) & = \int_0^∞ u^{α-1}e^{-u}du \int_0^{∞}v^{β-1}e^{-v} dv = 4 \int_0^{∞}\int_0^{∞} x^{2α-1}y^{2β-1}e^{-(x^2+y^2)}dxdy\\
+	& =4 \int_0^{π/2} \int_0^{∞} (r \sen(φ))^{2α-1} (r\cos(φ))^{2β-1}e^{-r^2}rdrdφ \\
+	& = 4 \int_0^{∞} r^{2α+2β-1}e^{-r^2}dr \int_0^{π/2} (\sin φ)^{2α-1}(\cos φ)^{2β-1} dφ \\
+	& = 4 \frac{1}{2}Γ(α+β) \int_0^{π/2} (\sin φ)^{2α-1}(\cos φ)^{2β-1} dφ \\
+	& = 2 Γ(α+β) \int_0^1 t^{α-1/2}(1-t)^{β-1/2} \frac{dt}{2\sqrt{t}\sqrt{1-t}} = 2 Γ(α+β) \frac{Β(α,β)}{2} = Γ(α+β) Β(α,β)
+\end{align*}
+\qed
+\end{dem}
+
 \begin{prop}[Fórmula de los complementos]
 \[ Γ(s)Γ(1-s) = \frac{π}{\sin (π s)}, \quad s \notin \Z \]
 Caso particular de la proposición anterior. También es conocido como fórmula de reflexión de Euler.
@@ -31,6 +95,7 @@ Caso particular de la proposición anterior. También es conocido como fórmula 
 $$
 \frac{\Gamma(s)\Gamma(1-s)}{\Gamma(1)} = \beta(1-s,1) = \int_0^1 t^{s-1}(1-t)^{-s}dt = \int_0^1\left(\frac{t}{1-t}\right)^s \frac{dt}{t} \overset{t=x-xt}{=} \int_0^\infty x^s \frac{dx}{x(1+x)} = \frac{\pi}{\sen\pi s} 
 $$
+\qed
 \end{dem}
 \begin{prop}[Fórmula de duplicación de Legendre]
 \[ Γ(s)Γ(s+1/2) = 2^{1-2s} \sqrt{π} Γ(2s) \]
@@ -43,6 +108,7 @@ Hacemos el cambio de variable $x=4t(1-t)$, equivalente a $t = \frac{1-\sqrt{1-x}
 
 Simplificando:
 \[ \frac{Γ(s)^2}{Γ(2s)} = 2^{1-2s} \frac{Γ(s)Γ(1/2)}{Γ(s+1/2)} \Rightarrow Γ(s)Γ(s+1/2) = 2^{1-2s} \sqrt{π} Γ(2s) \]
+\qed
 \end{dem}
 
 \begin{prop}[Expresión de Gauss] Uniformemente en cada compacto $K$ que no contenga polos de $Γ(s)$ se cumple
@@ -68,6 +134,7 @@ Observemos que:
 Usando el Teorema de Convergencia Dominada se puede demostrar que podemos sacar la integral fuera:
 \[ \int_0^n t^{x-1}\left(1-\frac{t}{n}\right)^n dt = \int_0^n (un)^{x-1}(1-u)^n ndu = n^x B(x,n+1) \]
 El resto consiste en escribir $B$ en función de $Γ$ y usar que $Γ(n+1)=n!$.
+\qed
 \end{dem}
 
 \begin{prop}
@@ -76,6 +143,11 @@ El resto consiste en escribir $B$ en función de $Γ$ y usar que $Γ(n+1)=n!$.
 \begin{prop}
 \[ Γ'(1) = \int_0^{∞} (\log t) e^{-t} dt = -γ \]
 \end{prop}
+\begin{dem}
+El teorema de extensión analítica nos da un resultado acerca de la derivación paramétrica bajo signo integral.
+\[ Γ'(1) = \int_0^{∞} \left.\frac{\partial}{\partial s} (t^{s-1}e^{-t})\right|_{s=1} dt = \int_0^{∞}\log t\ e^{-t} dt = -γ \]
+\qed
+\end{dem}
 Aunque no veremos la prueba quiero incluir aquí el conocido desarrollo de Stirling. Puede versa la demostración en el libro de Edwards.
 \begin{prop}
 Dado $s$ número complejo no negativo, designemos por $θ$ el argumento de $s$ tal que $|θ| < π$, se tiene entonces
@@ -118,7 +190,9 @@ Obsérvese que:
 Sabemos que la integral converge porque $Re(s)>0$. Ahora bien,
 \[ -s\int_x^∞ \frac{\{u\}}{u^{s+1}} du = -s\int_x^{∞} \frac{\{u\}-1/2}{u^{s+1}} du - s\int_x^{∞} \frac{1/2}{u^{s+1}} du \]
 Integrando por partes y sustituyendo en la expresión, nos da la forma final.
+\qed
 \end{dem}
+
 \begin{coro}
 La función $ζ(s)$ es analítica en el semiplano $\Re(s) > 0$ salvo en el punto $s = 1$. En el punto $s = 1$ la función $ζ(s)$ posee un polo simple de residuo igual a $1$.
 \end{coro}
@@ -130,6 +204,7 @@ Las dos primeras condiciones son triviales. Como
 	\frac{1}{2}u^{-σ_1-1} &\text{ si }0<u<1
 \end{cases}\]
 donde $σ_0<σ<σ_1$.
+\qed
 \end{dem}
 Pasamos ahora a probar la ecuación funcional de la función $ζ(s)$. Riemann dio tres demostraciones y posteriormente se han visto numerosas más. La más instructiva es la segunda d Riemann. Esta prueba depende de una propiedad de la función $θ$ definida por
 \[ θ(x) = \sum_{n \in \Z} e^{-πn^2x}, \quad x > 0 \]
@@ -157,6 +232,15 @@ Un primer paso intermedio es relacionar la función $ζ(s)$ y la función $θ(x)
 \begin{prop}
 \[ π^{-s/2} Γ\left(\frac{s}{2}\right) ζ(s) = \int_0^{+∞} x^{s/2} \frac{θ(x)-1}{2} \frac{dx}{x}, \quad \Re(s) > 1 \]
 \end{prop}
+\begin{dem}
+Tenemos que
+\[ Γ(s/2) = \int_0^{∞} t^{s/2}e^{-t} \frac{dt}{t} = \int_0^{∞}(πn^2x)^{s/2}e^{πn^2x} \frac{dx}{x}\]
+Luego para $σ>0$:
+\[ π^{-s/2}Γ(s/2)\frac{1}{n^s} = \int_0^{∞}x^{s/2}e^{πn^2x}\frac{dx}{x}\]
+Sumaremos sobre $n$. Para intercambiar suma por integral basta ver que la serie converge absolutamente a una función integrable. Entonces:
+\[ π^{-s/2}Γ(s/2)ζ(s) = \int_0^{∞}x^{s/2}\frac{θ(x)-1}{2} \frac{dx}{x}\]
+\qed
+\end{dem}
 \begin{prop}
 La función $ζ(s)$ se extiende a una función meromorfa en todo el plano.
 Además para $s \notin \{0,1\}$, se tiene
