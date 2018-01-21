@@ -227,7 +227,48 @@ Por tanto, nos queda
 \[ \prod_{p≤x} \left(1-\frac{1}{p}\right)^{-1} = e^γ\log x + \mathcal{O}(1) \]
 donde $γ$ denota la constante de Euler.
 \end{teorema}
-Ver Tenenbaum p.17 y Mendes France p.21.
+\begin{dem}
+Si $|x|<1$ entonces
+$$
+\log(x-1)^{-1}=\sum_{k=1}^\infty \frac{x^k}{k}
+$$
+Tomando $x=1/p$ tenemos
+\begin{align*}
+\log \prod_{p≤x} \left(1-\frac{1}{p}\right)^{-1} &= \sum_{p\leq x}\log \left(1-\frac{1}{p}\right)^{-1} = \sum_{p\leq x}\sum_{k=1}^\infty \frac{1}{kp^k}\\
+&=\sum_{p\leq x}\frac{1}{p}+\sum_{p\leq x}\sum_{k=2}^\infty \frac{1}{kp^k} \\
+&=\sum_{p\leq x}\frac{1}{p}+\sum_{p}\sum_{k=2}^\infty \frac{1}{kp^k}-\sum_{p\geq x}\sum_{k=2}^\infty \frac{1}{kp^k} 
+\end{align*}
+Analicemos los términos
+\begin{align*}
+\abs{\sum_{p}\sum_{k=2}^\infty \frac{1}{kp^k}}\leq \sum_{p}\sum_{k=2}^\infty \frac{1}{p^k} = \sum_{p}\frac{1}{p(p-1)}\leq \sum_{n=1}^\infty \frac{1}{n(n-1)} = 1
+\end{align*}
+\begin{align*}
+\abs{\sum_{p>x}\sum_{k=2}^\infty \frac{1}{kp^k}}\leq \sum_{p>x}\sum_{k=2}^\infty \frac{1}{p^k} = \sum_{p>x}\frac{1}{p(p-1)} \leq \sum_{n>x}^\infty \frac{1}{n(n-1)} \leq \frac{2}{x}
+\end{align*}
+Como $\sum_{p≤x} \frac{1}{p} = \log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right)$ tenemos entonces
+$$
+\log \prod_{p≤x} \left(1-\frac{1}{p}\right)^{-1} = \log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right) + O(1) + \orden{\frac{1}{x}} = \log \log{x} + E + \mathcal{O}\left(\frac{1}{\log x}\right) 
+$$
+Por tanto, exponenciando
+$$
+\prod_{p≤x} \left(1-\frac{1}{p}\right)^{-1} = \log{x} e^E e^{\mathcal{O}\left(\frac{1}{\log x}\right) }
+$$
+Estudiemos el error. Sea $U(t)$ la función del error, $|U(t)|\leq \dfrac{C}{\log x}$ $\forall x\geq x_0$. Tenemos que $\forall |x|<1/2$
+\begin{align*}
+e^x = \sum_{k=0}^\infty \frac{x^k}{k!} \qquad |e^x-1| = \abs{\sum_{k=1}^\infty \frac{x^k}{k!}} \leq |x|\sum_{k=1}^\infty \frac{|x|^{k-1}}{k!} \leq C'x
+\end{align*}
+Además $|U(t)|\leq\dfrac{C}{\log 2}$ $\forall x \geq x_1$. Sea $x_2 = \max{x_0,x_1}$, si $x\geq x_2$ 
+$$
+V(x)=|e^{U(x)}-1|\leq C'|U(x)|\leq \frac{CC'}{\log x} \Rightarrow V(x) = \orden{\frac{1}{\log x}}
+$$
+Luego
+\begin{align*}
+\prod_{p≤x} \left(1-\frac{1}{p}\right)^{-1} &= \log{x} e^E e^{\mathcal{O}\left(\frac{1}{\log x}\right) } = \log x e^E \left(1+V(x)\right)\\
+ &= \log x e^E + e^E \log x V(x) = \log x e^E + e^E O(1)\\
+ &= \log x e^E + O(1)
+\end{align*}
+
+\end{dem}
 
 Los teoremas anteriores tienen forma más precisa:
 \[ \sum_{p≤x} \frac{\log p}{p} = \log x + E + \mathcal{O}(e^{-a\sqrt{\log x}}) \]
