@@ -87,7 +87,7 @@ Cada coeficiente binomial $\binom{n}{k} ≤ n^{π(n)}$.
 \begin{dem}
 \[ \binom{n}{k} = \prod_{p≤n} p^{\nu_p\binom{n}{k}} ≤ \prod_{p≤n} n = n^{π(n)} \]
 \end{dem}
-\begin{teorema}[Chebyshev] Para $x\geq 3$ se tiene
+\begin{teorema}\label{th:1.2.6}[Chebyshev] Para $x\geq 3$ se tiene
 $$
 \frac{1}{2}\frac{x}{\log x}\leq \pi(x)\leq (1+\log 4)\frac{x}{\log x}
 $$
@@ -288,42 +288,119 @@ El siguiente teorema permite simplifcar la prueba del teorema de los números pr
 
 \begin{teorema}[Chebyshev]
 Existen constantes $A$ y $B$ tales que para todo $α \in (0,1)$
-\[ αAx ≤ απ(x)\log x ≤ θ(x) ≤ ψ(x) ≤ π(x)\log x ≤ Bx \]
+\[ αAx \overset{(1)}{\leq} απ(x)\log x \overset{(2)}{\leq}  θ(x) \overset{(3)}{\leq}  ψ(x) \overset{(4)}{\leq}  π(x)\log x \overset{(5)}{\leq}  Bx \]
 para todo $x ≥ x_0(α)$.
 \end{teorema}
-
+\begin{dem}
+La primera y la quinta desigualdad están probadas en el Teorema \ref{th:1.2.6}. La desigualdad central es trivial, pues
+$$
+\theta(x) = \sum_{p\leq x}\log p \leq \sum_{p^k\leq x} \log p = \psi(x)
+$$
+Probemos la cuarta desigualdad
+$$
+\psi(x)=\sum_{p^k\leq x} \log p = \sum_{p\leq x} \log p \suelo{\frac{\log x}{\log p}} \leq \sum_{p\leq x} \log x = \pi(x)\log x
+$$
+Finalmente, probemos la segunda desigualdad.
+\begin{align*}
+\theta(x)&=\sum_{p\leq x}\log p \geq \sum_{x^{\alpha'}<p\leq x}\log p \geq \alpha'\sum_{x^{\alpha'}<p\leq x}\log x \\
+&= \alpha'\log x (\pi(x)-\pi(x^{\alpha'}))\geq \alpha'\pi(x)\log x \left[1-\frac{\pi(x^{\alpha'})}{\pi(x)}\right]
+\end{align*}
+$$
+\abs{\frac{\pi(x^{\alpha'})}{\pi(x)}}\leq \frac{B\frac{x^{\alpha'}}{\log x^{\alpha'}}}{A\frac{x}{\log x}} = \frac{B}{A\alpha'}\frac{1}{x^{1-\alpha'}}<\varepsilon \qquad \forall x\geq x_0(\varepsilon) 
+$$
+Por tanto
+$$
+\alpha'\pi(x)\log x \left[1-\frac{\pi(x^{\alpha'})}{\pi(x)}\right] \geq \alpha\pi(x)\log x \qquad 0<\alpha<\alpha'<1
+$$
+\end{dem}
 \begin{teorema}[Chebyshev]
 \[ \liminf_{x\to∞} \frac{θ(x)}{x} = \liminf_{x\to∞} \frac{ψ(x)}{x} = \liminf_{x\to∞} \frac{π(x)\log x}{x} ≥ \log 2 \]
 y
 \[ \limsup_{x\to∞} \frac{θ(x)}{x} = \limsup_{x\to∞} \frac{ψ(x)}{x} = \limsup_{x\to∞} \frac{π(x)\log x}{x} ≤ \log 4 \]
 \end{teorema}
-Demostración en Nathanson p.271.
-
+\begin{dem}
+Primero tenemos que
+$$
+\prod_{p\leq x}p\leq 4^{x-1} \qquad \sum_{p\leq x}\log p (x-1)\log 4 <  x \log 4 \qquad \frac{\theta(x)}{x} \leq \log 4 \qquad \limsup_{x\to\infty} \frac{\theta(x)}{x} \leq 4
+$$
+Consideremos 
+$$
+\binom{2n}{n} =  \frac{(2n)!}{n!^2} = \prod_{p\leq 2n} p^{\nu_p(2n!)-\nu_p(n!^2)} = \prod_{p\leq 2n} p^{\nu_p(2n!)-2\nu_p(n!)}
+$$
+Ahora bien, $\forall x,y \in \R$ $\suelo{x+y}-\suelo{x}-\suelo{y}=0,1$. Si $x=y=t$ entonces $\suelo{2t}-2\suelo{t}=1,0$. Luego tenemos que $\exists b$ tal que
+$$
+\nu_p(2n!)-2\nu_p(n!) = \sum_{k=1}^\infty \suelo{\frac{2n}{p^k}}-2\suelo{\frac{n}{p^k}}  \leq b
+$$
+Ahora bien 
+$$
+2^{2n}=\sum_{k=0}^{2n} \binom{2n}{k} = 2 + \sum_{k=1}^{2n-1} \binom{2n}{k} \geq \sum_{k=1}^{2n-1} \binom{2n}{n} = (2n-1)\binom{2n}{n} \leq 2n\binom{2n}{n} 
+$$
+$$
+ \frac{2^{2n}}{2n} \leq \binom{2n}{n} =  \prod_{p\leq 2n} p^{\nu_p(2n!)-2\nu_p(n!)} \leq \prod_{p\leq 2n} p^b $$
+ $$
+  2n\log 2 -\log 2n \leq \sum_{p\leq 2n}\log p^b \leq \sum_{p^k\leq 2n}\log p= \psi(2n)
+$$
+Tomando $n=\suelo{x/2}\geq 2$. Entonces $2n\leq x < 2n+2$.
+\begin{align*}
+\psi(x)&\geq \psi(2n) \geq 2n\log 2-\log 2n \geq (x-2)\log 2-\log (x-2)\\
+&\geq (x-2)\log 2 - \log x
+\end{align*}
+Por tanto
+$$
+\liminf_{x\to\infty} \frac{\psi(x)}{x}\geq \log 2
+$$
+Sea ahora $0<\delta < 1$. Tenemos
+\begin{align*}
+\theta(x)&=\sum_{p\leq x}\log p\geq\sum_{x^{1-\delta}\leq p\leq x} \log p \geq \sum_{x^{1-\delta}\leq p\leq x}\log x^{1-\delta}  = (1-\delta)\log x(\pi(x)-\pi(x^{1-\delta}))\\
+&=(1-\delta)\log x\pi(x)-(1-\delta)\log x \pi(x^{1-\delta}) \geq (1-\delta)\log x \pi(x)- x^{1-\delta}\log x
+\end{align*}
+De donde deducimos que
+$$
+\frac{\theta(x)}{x} \geq \frac{(1-\delta)\log x \pi(x)}{x}-\frac{\log x}{x^{\delta}}
+$$
+Tomando $\liminf_{x\to\infty}$ y después $\lim_{\delta \to 0}$ obtenemos
+$$
+\liminf_{x\to\infty}\frac{\theta(x)}{x}\geq \liminf_{x\to\infty}\frac{\pi(x)\log x)}{x}
+$$
+Análogamente podríamos ver que
+$$
+\limsup_{x\to\infty}\frac{\theta(x)}{x}\geq \limsup_{x\to\infty}\frac{\pi(x)\log x)}{x}
+$$
+A partir de la desigualdad
+$$
+\theta(x)\leq \psi(x) \leq \pi(x)\log x 
+$$
+Obtenemos las siguientes cadenas desigualdades de donde se deduce el resultado utilizando los razonamiento anteriores.
+\begin{gather*}
+\liminf{x\to\infty} \frac{\theta(x)}{x} \leq \liminf{x\to\infty} \frac{\psi(x)}{x} \leq \liminf{x\to\infty}\frac{\pi(x)\log x}{x}\\
+\limsup_{x\to\infty} \frac{\theta(x)}{x} \leq \limsup_{x\to\infty} \frac{\psi(x)}{x} \leq \limsup_{x\to\infty}\frac{\pi(x)\log x}{x}
+\end{gather*}
+\end{dem}
+\newpage
 \section{Método de la criba}
 El origen del método es la criba de Eratóstenes. La criba de Eratóstenes conduce a la siguiente fórmula.
 
 \begin{teorema}[Fórmula de Legendre]
 Para todo $x > 1$ se tiene
-\[ π(x) - π(\sqrt{x}) + 1 = \sum_{n|P_x}μ(n)\suelo{\frac{x}{n}} \]
+\[ π(x) - π(\sqrt{x}) + 1 = \sum_{n\leq P_x}μ(n)\suelo{\frac{x}{n}} \]
 donde $P_x$ denota el producto de los números primos menores o iguales a $x$.
 \end{teorema}
 
 \begin{dem}
-Sea $X=\{n≤x\}$. Para $p≤\sqrt{x}$ primo, definimos $A_p=\{n \in X, p|n\}$.
-Tenemos que:
-Para un $n \in X$ compuesto, como $n≤x$ entonce consideramos el menor de los primos $p$ tal que $p|n$. Debe existir $m$ con $p\cdot m = n$. Como los primos que hay en $m$ son mayores o iguales que $p$: $p^2 ≤ p\cdot m = n ≤ x$, luego $p≤\sqrt{x}$. Entonces:
+Sea $X=\{n≤x\}$. Para $p≤\sqrt{x}$ primo, definimos $A_p=\{n \in X, p\leq n\}$.
+Para un $n \in X$ compuesto, como $n≤x$ entonce consideramos el menor de los primos $p$ tal que $p\leq n$. Debe existir $m$ con $p\cdot m = n$. Como los primos que hay en $m$ son mayores o iguales que $p$: $p^2 ≤ p\cdot m = n ≤ x$, luego $p≤\sqrt{x}$. Entonces:
 \[ X \setminus \bigcup_{p≤\sqrt{x}} = \{1 \} \cup \{p : \sqrt{x} < p ≤ x\} \]
 Luego
 \[ \text{card}\left(X \setminus \bigcup_{p≤\sqrt{x}} A_p\right) = π(x) - π(\sqrt{x}) + 1 \]
-Aplicamos el método de inclusión-exclusion y observando que:
-\[ \text{card}\left(\bigcap_{j=1}^r A_{p_j}\right) =\text{card}(\{N≤x : n|N\}) = \suelo{ \frac{x}{n} }\]
+Aplicamos el método de inclusión-exclusión y observando que:
+\[ \text{card}\left(\bigcap_{j=1}^r A_{p_j}\right) =\text{card}(\{N≤x : n\leq N\}) = \suelo{ \frac{x}{n} }\]
 donde $n = p_{j_1}\cdots p_{j_r}$, la demostración sigue sin dificultad.
 \qed
 \end{dem}
 
 Esta fórmula parece poco útil a primera vista. El gran mérito de Brun es dar con técnicas que permiten hacerla útil
 
-El problema con esta fórmula es que la diferencia $π(x)-π(\sqrt{x})$ se da en términos de una suma con demasiados sumandos, aun cuando estos sumandos se obtengan con error pequeñ al multiplicar por el número de términos se obtienen errores randes. El mérito de Brun es haber ideado un método de salvar esta dificultad.
+El problema con esta fórmula es que la diferencia $π(x)-π(\sqrt{x})$ se da en términos de una suma con demasiados sumandos, aun cuando estos sumandos se obtengan con error pequeño al multiplicar por el número de términos se obtienen errores grandes. El mérito de Brun es haber ideado un método de salvar esta dificultad.
 
 Veremos como funciona la idea de Brun, estudiando su aplicación a la cuenta de los primos gemelos. En primer lugar introducimos la función de cuenta de estos números
 \[ π_2(x) = \text{card}\{p : p \text{ y }p+2\text{ son primos y }p≤x\} \]
@@ -354,7 +431,7 @@ Para $x ≥ 2$
 \end{teorema}
 \begin{dem}
 \begin{align*}
-	\sum_{n≤x} ω(n) & = \sum_{n≤x}\sum_{p|n≤x} 1 = \sum_{p≤x} \suelo{\frac{x}{p}} = \sum_{p≤x} \frac{x}{p}- \sum_{p≤x} \left\{\frac{x}{p}\right\} \\
+	\sum_{n≤x} ω(n) & = \sum_{n≤x}\sum_{p\mid n} 1 =\sum_{n≤x}\sum_{p\mid n≤x} 1 = \sum_{p≤x} \suelo{\frac{x}{p}} = \sum_{p≤x} \frac{x}{p}- \sum_{p≤x} \left\{\frac{x}{p}\right\} \\
 	& = x \left(\log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right)\right) + \mathcal{O}\left(\frac{x}{\log x}\right)
 \end{align*} 
 \end{dem}
@@ -363,9 +440,9 @@ Para $x ≥ 2$
 \[ \sum_{n≤x} ω(n)^2 = x(\log \log x)^2 + \mathcal{O}(x \log \log x) \]
 \end{teorema}
 \begin{dem}
-Sea $f_p(n) = 1$ si $p|n$ y $f_p(n)=0$ en caso contrario. Entonces:
+Sea $f_p(n) = 1$ si $p\leq n$ y $f_p(n)=0$ en caso contrario. Entonces:
 \begin{align*}
-	\sum_{n≤x} ω(n)^2 & = \sum_{n≤x}\left(\sum_{p|n≤x} 1\right)^2 = \sum_{n≤x}\left(\sum_{p≤x} f_p(n)\right)^2 = \sum_{n≤x} \left(\sum_{p≤x} f_p(n)^2\right) + 2 \sum_{n≤x} \sum_{p<q≤x} f_p(n)f_q(n)\\
+	\sum_{n≤x} ω(n)^2 & = \sum_{n≤x}\left(\sum_{p\leq n≤x} 1\right)^2 = \sum_{n≤x}\left(\sum_{p≤x} f_p(n)\right)^2 = \sum_{n≤x} \left(\sum_{p≤x} f_p(n)^2\right) + 2 \sum_{n≤x} \sum_{p<q≤x} f_p(n)f_q(n)\\
 	& = \sum_{n≤x} ω(n) + 2 \sum_{p<q≤x} \sum_{n≤x} f_p(n)f_q(n)
 \end{align*} 
 Aquí dejó la demostración. Al día siguiente de clase, se continuó la demostración de una forma totalmente distinta:
