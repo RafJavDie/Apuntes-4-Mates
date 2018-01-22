@@ -699,13 +699,50 @@ La suma extendida a todos los subconjuntos $J$ no vacíos de $\{1,2,\dots,n\}$.
 \begin{prop}
 \[ \frac{φ(n)}{n} = \sum_{d|n} \frac{μ(d)}{d} \]
 \end{prop}
-
-Se dice que $n \in \N$ es \textbf{libre de cuadrados} si no es divisible por ningún cuadrado $> 1$.
+\begin{dem}
+Sea $X=\{1,\dotsc,n\}$. Para cada $p$ primo tal que $p\mid n$ consideramos $A_p =\{k\in X\mid p\mid k\}$. Por tanto, 
+$$k\in X \setminus \bigcup_{p\mid n} A_p \Leftrightarrow \text{$k$ es coprimo con $n$} \Rightarrow \card{ X \setminus \bigcup_{p\mid n} A_p} = \varphi(n)
+$$
+Sea $J\subset \{p_1,\dotsc,p_r\}$ siendo este el conjunto de los primos que dividen a $n$, entonces definimos
+$$
+A_J = \bigcap_{p_i \in J}A_{p_i} \Rightarrow k \in A_J \Leftrightarrow \prod_{p_i\in J} p_i \mid k
+$$
+La fórmula de inclusión-exclusión nos dice que
+\begin{align*}
+\varphi(n) &= \card{ X \setminus \bigcup_{p\mid n} A_p} =  \text{card}(X) + \sum_J (-1)^{\text{card}(J)} \text{card}\left(\bigcap_{j\in J} A_j\right)\\
+&= n + \sum_{i\mid p_1\cdots p_r} (-1)^{\omega(i)} \card{A_i} = n + \sum_{i\mid p_1 \cdots p_r} \mu(i)\frac{n}{i}
+\end{align*}
+Donde $\omega(i)$ es el número de divisores primos de $i$.
+$$
+\frac{\varphi(n)}{n} = 1 + \sum_{i\mid p_1 \cdots p_r} \mu(i)\frac{1}{i} = 1 + \sum_{1<a\mid n}\frac{\mu(a)}{a} = \sum_{a\mid n} \frac{\mu(a)}{a}
+$$
+\qed
+\end{dem}
+Se dice que $n \in \N$ es \textbf{libre de cuadrados} si no es divisible por ningún cuadrado $> 1$, esto es, si y solo si $\abs{\mu(n)}=1$.
 
 \begin{teorema}
 Sea $Q(x)$ el número de números libres de cuadrados $≤x$. Tenemos:
 \[ Q(x) = \sum_{n≤x} |μ(n)| = \frac{6x}{π^2} + \mathcal{O}(\sqrt{x}) \]
 \end{teorema}
+\begin{dem}
+\begin{align*}
+Q(x)&=\sum_{n\leq x}\abs{\mu(n)} = \sum_{n=1}\mu(n)\suelo{\frac{x}{n^2}} = \sum_{n\leq \sqrt{x}}\mu(n)\suelo{\frac{x}{n^2}} = \sum_{n\leq \sqrt{x}}\mu(n){\frac{x}{n^2}}  - \sum_{n\leq \sqrt{x}}\mu(n)\deci{\frac{x}{n^2}} 
+\end{align*}
+Pero 
+$$
+\abs{\sum_{n\leq \sqrt{x}}\mu(n)\deci{\frac{x}{n^2}}  }\leq \sum_{n\leq \sqrt{x}}1 \leq \sqrt{x}
+$$
+Y además
+\begin{align*}
+\sum_{n\leq \sqrt{x}}\mu(n){\frac{x}{n^2}}  &= \sum_{n=1}\mu(n){\frac{x}{n^2}}  - \sum_{n>\sqrt{x}}\mu(n){\frac{x}{n^2}} = x\zeta(2)^{-1} - \sum_{n>\sqrt{x}}\mu(n){\frac{x}{n^2}}\\
+&=\frac{6x}{\pi^2} - \sum_{n>\sqrt{x}}\mu(n){\frac{x}{n^2}}\\
+\abs{\sum_{n>\sqrt{x}}\mu(n){\frac{x}{n^2}}}&\leq \sum_{n>\sqrt{x}}{\frac{x}{n^2}} \leq \frac{x}{\ceil{\sqrt{x}}^2}+x\int_{\sqrt{x}}^\infty \frac{dt}{t} \leq 2\sqrt{x}
+\end{align*}
+Por tanto
+$$
+Q(x) = x\zeta(2)^{-1} + O(\sqrt{x}) 
+$$
+\end{dem}
 \section{Algunas otras funciones aritméticas}
 La \textbf{función de Liouville} se define de manera parecida a la de Möbius
 \[ λ(n) = \begin{cases}
