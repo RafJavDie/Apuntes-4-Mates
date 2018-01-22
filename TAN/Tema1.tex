@@ -94,7 +94,7 @@ Si $n \perp m$, entonces $d(mn) = d(m)d(n)$.
 Tenemos de este modo el primer ejemplo de un concepto importante.
 
 \begin{defi}
-Una función $f : \N \to \C$ es \textbf{multiplicativa} si $f(mn) = f(m)=f(n)$ siempre que $n$ y $m$ sean primos entre sí.
+Una función $f : \N \to \C$ es \textbf{multiplicativa} si $f(mn) = f(m)f(n)$ siempre que $n$ y $m$ sean primos entre sí.
 
 Una función tal que $f(mn)=f(m)f(n)$ para todo $m$ y $n$ se dice que es \textbf{completamente multiplicativa}.
 Este concepto tiene menos importancia pues hay muchas funciones interesantes que son multiplicativas y pocas que lo sean completamente multiplicativas.
@@ -220,7 +220,7 @@ $$
 \begin{enumerate}[(a)]
 \item Sean $m,n$ coprimos, entonces sabemos que 
 $$
-\Z/\Z nm \cong \Z/\Z n \times \Z/\Z m \Rightarrow \varphi(mn)= |\Z/\Z nm| = |\Z/\Z n||\Z/\Z m| = \varphi(n)\varphi(m)
+\Z/\Z nm \cong \Z/\Z n \times \Z/\Z m \Rightarrow \varphi(mn)= |(\Z/\Z nm)^*| = |(\Z/\Z n)^*||(\Z/\Z m)^*| = \varphi(n)\varphi(m)
 $$
 
 \item Usando que $φ$ es multiplicativa:
@@ -354,7 +354,7 @@ $$
 \end{prop}
 \section{Series de Dirichlet}
 
-Observemos como se comportan los monomiso $x^n$ y $\dfrac{1}{n^s}$ al multiplicarlos
+Observemos como se comportan los monomios $x^n$ y $\dfrac{1}{n^s}$ al multiplicarlos
 \[ x^n \cdot x^m = x^{n+m}, \qquad \frac{1}{n^s} \cdot \frac{1}{m^s} = \frac{1}{(mn)^s} \]
 Los primeros generan las series de potencias, los segundos las series de Dirichet.
 \[ \sum_{n=0}^{8} a_n x^n, \qquad \sum_{n=1}^{∞} \frac{a_n}{n^s} \]
@@ -379,7 +379,7 @@ $$
 \end{dem}
 \begin{prop}
 Las series de Dirichlet
-\[ ζ(s) = \sum_{n=1}^{∞} \frac{1}{n^s}, \text{ y } ζ(s^{-1}=\sum_{n=1}^{∞} \frac{μ(n)}{n^s} \]
+\[ ζ(s) = \sum_{n=1}^{∞} \frac{1}{n^s}, \text{ y } ζ(s)^{-1}=\sum_{n=1}^{∞} \frac{μ(n)}{n^s} \]
 son inversas en el anillo de las series de Dirichlet.
 \end{prop}
 
@@ -391,7 +391,7 @@ Se tienen las relaciones en el anillo de las series de Dirichlet
 \[ \sum \frac{d(n)}{n^s} = \left(\sum \frac{1}{n^s}\right) \cdot \left(\sum \frac{1}{n^s}\right) = ζ(s)^2 \]
 
 \[ \sum_{n=1}^\infty \frac{σ(n)}{n^s} = ζ(s) \sum_{n=1}^\infty \frac{n}{n^s} = ζ(s) \sum \frac{1}{n^{s-1}} = ζ(s)ζ(s-1) \]
-\[ \sum_{n=1}^\infty \frac{μ(n)}{n^s} \sum_{n=1}^\infty \frac{1}{n^s} = 1 \Rightarrow \sum_{n=1}^\infty \frac{μ(n)}{n^s} = \frac{1}{ζ(s)} \]
+\[ \sum_{n=1}^\infty \frac{\varphi(n)}{n^s} = \sum_{n=1}^\infty \frac{μ(n)}{n^s} \sum_{n=1}^\infty \frac{n}{n^s} = \frac{\zeta(s-1)}{\zeta(s)} \]
 
 \end{dem}
 
@@ -401,9 +401,12 @@ Si la serie de Dirichlet $\sum_{n=1}^\infty \frac{a_n}{n^s}$ converge en un punt
 \end{teorema}
 
 \begin{dem}
-En el caso reducido $s_0=0$, $\sum_{n=1}^\infty a_n = 0$. Definimos $s_n = \sum_{k=1}^n a_k$. Entonces, para $n>m$:
-\[ \left|\sum_{k=1}^n\frac{a_k}{k^s}-\sum_{k=1}^m\frac{a_k}{k^s}\right| = \left|\sum_{k=m+1}^n\frac{a_k}{k^s}\right| = \left|\frac{s_{m+1}-s_m}{(m+1)^s} + \frac{s_{m+2}-s_{m+1}}{(m+2)^s}+\dots+\frac{s_{n}-s_{n-1}}{n^s}\right|\]
-\[ = \left|\frac{s_n}{n^s}-\frac{s_m}{(m+1)^s}+\sum_{k=m+1}^{n-1}s_k\left(\frac{1}{k^s}-\frac{1}{(k+1)^s}\right)\right| ≤ \frac{\varepsilon}{n^σ} + \frac{\varepsilon}{(m+1)^σ} + \sum_{k=m+1}^{n-1} \varepsilon \left|\frac{1}{k^s}-\frac{1}{(k+1)^s}\right|\]
+Por traslación podemos suponer que $s_0=0$. Además, podemos redefinir la serie de forma que $\sum_{n=1}^\infty a_n n^{-s} = 0$, pero esto implica que $\sum_{n=1}^\infty a_n = 0$. Definimos $s_n = \sum_{k=1}^n a_k$. Entonces, para $n>m$:
+\begin{align*}
+\left|\sum_{k=1}^n\frac{a_k}{k^s}-\sum_{k=1}^m\frac{a_k}{k^s}\right| &= \left|\sum_{k=m+1}^n\frac{a_k}{k^s}\right| = \left|\frac{s_{m+1}-s_m}{(m+1)^s} + \frac{s_{m+2}-s_{m+1}}{(m+2)^s}+\dots+\frac{s_{n}-s_{n-1}}{n^s}\right|\\
+&= \left|\frac{s_n}{n^s}-\frac{s_m}{(m+1)^s}+\sum_{k=m+1}^{n-1}s_k\left(\frac{1}{k^s}-\frac{1}{(k+1)^s}\right)\right|\\
+& ≤ \frac{\varepsilon}{n^σ} + \frac{\varepsilon}{(m+1)^σ} + \sum_{k=m+1}^{n-1} \varepsilon \left|\frac{1}{k^s}-\frac{1}{(k+1)^s}\right|
+\end{align*}
 
 Usando que:
 \[ \left|\frac{1}{k^s}-\frac{1}{(k+1)^s}\right| = \left|\int_k^{k+1}-st^{-s-1}dt\right| ≤ |s|\int_k^{k+1}\left|t^{-σ-1}\right|dt ≤ \frac{|s|}{σ} \left(\frac{1}{k^σ}-\frac{1}{(k+1)^σ}\right)\]
@@ -435,10 +438,10 @@ La serie de Dirichlet $\sum_{n=1}^\infty \frac{(-1)^n}{n^s}$ tiene una abcisa de
 \begin{dem}
 Sea $a_N$ el primer coeficiente distinto de 0. Se tiene entonces que:
 \[ -\frac{a_N}{N^s} = \sum_{n=N+1}^{∞} \frac{a_n}{n^s} \]
-Sea $α$ la parte real de $s$ y $σ > α+1$:
+ Sabemos que $\exists \alpha$ tal que la $f(\alpha)$ converge uniformmente, por lo que $\exists C$ de forma que $\abs{a_n}\leq C n^{\alpha}$. Sea ahora $\sigma >\alpha+1$
 \begin{align*}
- \left|-\frac{a_N}{N^σ}\right| &= \left|\sum_{n=N+1}^{∞} \frac{a_n}{n^s}\right| ≤ \sum_{n=N+1}^{∞} \frac{|a_n|}{n^σ}≤ c \sum_{n=N+1}^{∞} \frac{1}{n^{σ-α}} \\
- &≤ c \int_N^{∞} t^{α-σ} dt = c \left.\frac{t^{α-σ+1}}{α-σ+1}\right|_N^{∞} = \frac{c}{σ-α-1} \frac{1}{N^{σ-α-1}}
+ \left|-\frac{a_N}{N^σ}\right| &= \left|\sum_{n=N+1}^{∞} \frac{a_n}{n^σ}\right| ≤ \sum_{n=N+1}^{∞} \frac{|a_n|}{n^σ}≤ C \sum_{n=N+1}^{∞} \frac{1}{n^{σ-α}} \\
+ &≤ C \int_N^{∞} t^{α-σ} dt = C \left.\frac{t^{α-σ+1}}{α-σ+1}\right|_N^{∞} = \frac{C}{σ-α-1} \frac{1}{N^{σ-α-1}}
 \end{align*}
 De donde se deduce que
 \[ |a_N| ≤ N^σ \frac{c}{σ-α-1} \frac{1}{N^{σ-α-1}} = \frac{CN^{α+1}}{σ-α-1} \underset{\sigma\to \infty}{\longrightarrow} 0\]
@@ -456,7 +459,7 @@ $$
 $$
 Por otra lado, usando que $f$ es multiplicativa
 $$
-\prod_{p\leq x}\left(1-\frac{f(p)}{p^s}\right)^{-1} =  \sum_{P^+(n)≤x} \frac{f(n)}{n^s} 
+\prod_{p\leq x}\left(1+\frac{f(p)}{p^s}+\frac{f(p^2)}{p^{2s}}+\cdots\right)=  \sum  \frac{f(p_1^{b_1})\cdots f(p_a^{b_a})}{p^{b_1s}\cdot p_a^{b_a s}}=\sum_{P^+(n)≤x} \frac{f(n)}{n^s} 
 $$
 Estudiamos ahora 
 \begin{align*}
@@ -483,11 +486,8 @@ Sea $f(n)$ una función multiplicativa. Si $\lim_{p^k \to +∞} f(p^k) = 0$, ent
 para todo $δ > 0$.
 \end{prop}
 \begin{dem}
-\[ \frac{d(n)}{n^δ} = \prod_{p|n} \frac{1+k}{p^{kδ}} = \prod_{p^δ≥2}\frac{1+k}{p^{kδ}} \prod_{p^δ<2}\frac{1+k}{p^{kδ}} ≤ \prod_{p^δ<2} \frac{1+k}{p^{kδ}}\]
-usando que:
-\[ \frac{1+k}{p^{kδ}} = \frac{1}{p^{kδ}}+\frac{k}{p^{kδ}} ≤ 1 + \frac{k}{p^{kδ}} ≤ 1 + \frac{k}{kδ\log p} = 1 + \frac{1}{δ\log p} ≤ 1 + \frac{1}{δ\log 2} ≤ \exp\left(\frac{1}{δ\log 2}\right)\]
-llegamos a que:
-\[ \frac{d(n)}{n^δ} ≤ \exp\left(\frac{|\{p : p^δ<2\}|}{δ\log2}\right) ≤ \exp\left(\frac{2^{1/δ}}{δ\log 2}\right)\]
+\[ \frac{d(p^k)}{p^{kδ}} =  \frac{1+k}{p^{kδ}} = \frac{1+\frac{\log p^k}{\log p}}{p^{kδ}} \leq \frac{1+\frac{\log p^k}{\log 2}}{p^{k\delta}}\overset{p^k \to \infty}{\longrightarrow}0\]
+Deducimos el resultado del Teorema anterior.
 \end{dem}
 
 \begin{prop}
@@ -508,7 +508,7 @@ El orden mínimo de $\log d(n)$ es $\log 2$ y el orden máximo es
 \[ \frac{\log 2 \log n}{\log \log n} \]
 \end{prop}
 \begin{dem}
-El orden mínimo es claro, pues $d(n)\geq 2$. Vamos a demostrar el orden máximo. Vamos a ver que
+El orden mínimo es claro, pues $d(n)\geq 2$ y se repite a lo largo de los infinitos primos. Vamos a demostrar el orden máximo. Vamos a ver que
 \[ \limsup \frac{\log d(n)}{\frac{\log 2 \log n}{\log \log n}} = 1\]
 Aplicando logaritmo a la expresión $\frac{d(n)}{n^δ} ≤ \exp\left(\frac{2^{1/δ}}{δ\log 2}\right)$.
 \[
