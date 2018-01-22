@@ -1,6 +1,6 @@
 \documentclass[TAN.tex]{subfiles}
 \begin{document}
-\chapter{Distribución de los números primos\\Métodos elemntales}
+\chapter{Distribución de los números primos\\Métodos elementales}
 
 \section{Funciones de Chebyshev}
 \begin{nota}
@@ -372,7 +372,7 @@ $$
 $$
 Obtenemos las siguientes cadenas desigualdades de donde se deduce el resultado utilizando los razonamiento anteriores.
 \begin{gather*}
-\liminf{x\to\infty} \frac{\theta(x)}{x} \leq \liminf{x\to\infty} \frac{\psi(x)}{x} \leq \liminf{x\to\infty}\frac{\pi(x)\log x}{x}\\
+\liminf_{x\to\infty} \frac{\theta(x)}{x} \leq \liminf_{x\to\infty} \frac{\psi(x)}{x} \leq \liminf_{x\to\infty}\frac{\pi(x)\log x}{x}\\
 \limsup_{x\to\infty} \frac{\theta(x)}{x} \leq \limsup_{x\to\infty} \frac{\psi(x)}{x} \leq \limsup_{x\to\infty}\frac{\pi(x)\log x}{x}
 \end{gather*}
 \end{dem}
@@ -431,28 +431,69 @@ Para $x ≥ 2$
 \end{teorema}
 \begin{dem}
 \begin{align*}
-	\sum_{n≤x} ω(n) & = \sum_{n≤x}\sum_{p\mid n} 1 =\sum_{n≤x}\sum_{p\mid n≤x} 1 = \sum_{p≤x} \suelo{\frac{x}{p}} = \sum_{p≤x} \frac{x}{p}- \sum_{p≤x} \left\{\frac{x}{p}\right\} \\
-	& = x \left(\log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right)\right) + \mathcal{O}\left(\frac{x}{\log x}\right)
+	\sum_{n≤x} ω(n) & = \sum_{n≤x}\sum_{p\mid n} 1 =\sum_{n≤x}\sum_{p\mid n≤x} 1 = \sum_{p≤x} \suelo{\frac{x}{p}}\\
+	& = \sum_{p≤x} \frac{x}{p}- \sum_{p≤x} \left\{\frac{x}{p}\right\} \\
+	& = x \left(\log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right)\right) + \mathcal{O}\left(x\right)
 \end{align*} 
 \end{dem}
+\newpage
 \begin{teorema}
 Para $x ≥ 2$
 \[ \sum_{n≤x} ω(n)^2 = x(\log \log x)^2 + \mathcal{O}(x \log \log x) \]
 \end{teorema}
 \begin{dem}
-Sea $f_p(n) = 1$ si $p\leq n$ y $f_p(n)=0$ en caso contrario. Entonces:
+Sea $f_p(n) = 1$ si $p\mid n$ y $f_p(n)=0$ en caso contrario. Entonces:
 \begin{align*}
-	\sum_{n≤x} ω(n)^2 & = \sum_{n≤x}\left(\sum_{p\leq n≤x} 1\right)^2 = \sum_{n≤x}\left(\sum_{p≤x} f_p(n)\right)^2 = \sum_{n≤x} \left(\sum_{p≤x} f_p(n)^2\right) + 2 \sum_{n≤x} \sum_{p<q≤x} f_p(n)f_q(n)\\
-	& = \sum_{n≤x} ω(n) + 2 \sum_{p<q≤x} \sum_{n≤x} f_p(n)f_q(n)
-\end{align*} 
-Aquí dejó la demostración. Al día siguiente de clase, se continuó la demostración de una forma totalmente distinta:
+	\sum_{n≤x} ω(n)^2 & = \sum_{n≤x}\left(\sum_{p\mid n} 1\right)^2
+	 \sum_{n≤x}\left(\sum_{p≤x} f_p(n)\right)^2 = \sum_{n≤x} \left(\sum_{p≤x} f_p(n)^2\right) + 2 \sum_{n≤x} \sum_{p<q≤x} f_p(n)f_q(n)\\
+	 &= \sum_{n≤x} \left(\sum_{p≤x} f_p(n)\right) + 2 \sum_{n≤x} \sum_{p<q≤x} f_p(n)f_q(n) = \sum_{n≤x} ω(n) + 2 \sum_{p<q≤x} \sum_{n≤x} f_p(n)f_q(n)
+\end{align*}
+Analicemos los términos
+\begin{gather*}
+ 2 \sum_{p<q≤x} \sum_{n≤x} f_p(n)f_q(n)= 2 \sum_{p<q≤x}  \suelo{\frac{x}{pq}}\\
+ =2x \sum_{\underset{pq\leq x}{p<q\leq x}} \frac{1}{pq} -  2 \sum_{\underset{pq\leq x}{p<q\leq x}} \deci{\frac{x}{pq}} =2x \sum_{\underset{pq\leq x}{p<q\leq x}} \frac{1}{pq}+ O(x)
+\end{gather*}
+Además, si $T=2x \sum_{\underset{pq\leq x}{p<q\leq x}} \frac{1}{pq}$.  Entonces
+\begin{gather*}
+O(x)+x\left(\sum_{p\leq\sqrt{x}}\frac{1}{p}\right)^2 \leq T \leq x \left(\sum_{p\leq x}\frac{1}{p}\right)^2\\
+O(x)+x(\log\log\sqrt{x}+O(1))^2\leq T \leq x(\log\log x + O(1))^2
+\end{gather*}
+\begin{align*}
+O(x)+x(\log\log\sqrt{x}+O(1))^2 &=  O(x)+x(\log\log{x}+O(1))^2\\
+&=x(\log\log x)^2 + O(2x\log \log x) + O(x) + O(x)\\
+&=x(\log\log x)^2 + O(x\log \log x)
+\end{align*}
+Se tiene entonces
+\begin{gather*}
+x(\log\log x)^2 + O(x\log \log x)\leq T \leq x(\log\log x)^2 + O(x\log \log x)\\
+\abs{T-x(\log\log x)^2} = O(x\log \log x)\\
+T=x(\log\log x)^2 + O(x\log \log x)
+\end{gather*}
+Finalmente
+\begin{gather*}
+\sum_{n≤x} ω(n)^2 = x(\log\log x)^2 + O(x\log \log x) + O(x) + x\log \log x + Cx + \mathcal{O}\left(\frac{x}{\log x}\right)\\
+= x(\log\log x)^2 + O(x\log \log x)
+\end{gather*}
+\end{dem}
+\begin{prop}
+Para $x>1$ se tiene que 
+$$
+\sum_{n\leq x}(\omega(n)-\log\log x)^2 = O(x\log \log x)
+$$
+\end{prop}
+\begin{dem}
 \begin{align*}
 	\sum_{n≤x} (ω(n)-\log\log x)^2 & = \sum_{n≤x} ω(n)^2 - 2\log\log x \sum_{n≤x}ω(n) + (\log\log x)^2 \sum_{n≤x} 1\\
 	& = x(\log \log x)^2+ \mathcal{O}(x\log \log x) - 2\log\log x(x\log \log x + Cx + \mathcal{O}(x/\log x))\\
-	& + \suelo{ x } (\log \log x)^2 + (x-\{x\})(\log \log x)^2 =\\
-	& = \mathcal{O}(x\log \log x) - 2Cx \log \log x + \mathcal{O}(x\frac{\log \log x}{\log x}) + \mathcal{O}((\log \log x)^2)
-	= \mathcal{O}(x\log \log x)
+	& + \suelo{ x } (\log \log x)^2 \\
+	& = -x(\log \log x)^2 -2Cx\log \log x + \suelo{x}(\log\log x)^2+\orden{x\log\log x}\\&+\orden{\frac{x\log\log x}{\log x}}
+	\\
+	&=((\suelo{x}-x)\log \log x -2Cx)\log\log x + \mathcal{O}(x\log \log x)\\
+	&= (O(1)\log\log x - 2Cx)\log\log x + \mathcal{O}(x\log \log x)\\
+	&= \mathcal{O}((\log \log x)^2) - 2Cx\log\log x+  \mathcal{O}(x\log \log x)\\
+	&= \mathcal{O}(x\log \log x)
 \end{align*}
+
 \qed
 \end{dem}
 \begin{coro}
@@ -466,12 +507,22 @@ Entoncs:
 \qed
 \end{dem}
 El orden normal de $ω(n)$ es $\log \log n$ como se establece en el siguiente teorema.
+\newpage
 \begin{teorema}[Hardy-Ramanujan]
 Para cada $δ > 0$, el numero de enteros $n < x$ tales que
 \[ |ω(n) - \log \log n| ≥ (\log \log x)^{1/2+δ} \]
 es $ο(x)$.
 \end{teorema}
-La prueba puede verse en Nathanson p.238-287. También es buena la exposición de M. Kac p.71-74.
+\begin{dem}
+Sea $S=\{n\in \N\mid n\leq x\}$ y sea $T>0$. Entonces si
+$$
+T\leq \abs{ω(n) - \log \log x}  \Rightarrow 1 \leq \frac{(ω(n) - \log \log n)^2}{T^2}
+$$
+Además, sea $S_T = \{n\in S\mid \abs{ω(n) - \log \log x}\geq T\}$.
+$$
+\card{S_T} = \sum_{n\in S_T}1 \leq \sum_{n\in S_T} \frac{(ω(n) - \log \log n)^2}{T^2} \leq \frac{1}{T^2}\sum_{n\in S}(ω(n) - \log \log n)^2 \leq \sum_{n\leq x} (ω(n) - \log \log n)^2
+$$
+\end{dem}
 
 La misma afirmación vale si sustituimos $ω(n)$ por $Ω(n)$. El orden normal de $\log d(n)$ como consecuencia es $\log 2 \log \log n$.
 
