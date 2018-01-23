@@ -247,7 +247,7 @@ Analicemos los términos
 \end{align*}
 Como $\sum_{p≤x} \frac{1}{p} = \log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right)$ tenemos entonces
 $$
-\log \prod_{p≤x} \left(1-\frac{1}{p}\right)^{-1} = \log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right) + O(1) + \orden{\frac{1}{x}} = \log \log{x} + E + \mathcal{O}\left(\frac{1}{\log x}\right) 
+\log \prod_{p≤x} \left(1-\frac{1}{p}\right)^{-1} = \log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right) + C' + \orden{\frac{1}{x}} = \log \log{x} + E + \mathcal{O}\left(\frac{1}{\log x}\right) 
 $$
 Por tanto, exponenciando
 $$
@@ -521,7 +521,7 @@ $$
 Además, sea $S_T = \{n\in S\mid \abs{ω(n) - \log \log x}\geq T\}$.
 \begin{align*}
 \card{S_T} &= \sum_{n\in S_T}1 \leq \sum_{n\in S_T} \frac{(ω(n) - \log \log n)^2}{T^2} \leq \frac{1}{T^2}\sum_{n\in S}(ω(n) - \log \log n)^2 \\
-&\leq \frac{1}{T^2}\sum_{n\leq x} (ω(n) - \log \log n)^2 = O(x\log\log x)
+&\leq \frac{1}{T^2}\sum_{n\leq x} (ω(n) - \log \log n)^2 =\frac{1}{T^2} O(x\log\log x)
 \end{align*}
 Sea $\delta>0$ y $T=(\log\log x)^{\delta + 1/2}-1$, entonces
 \begin{align*}
@@ -530,7 +530,7 @@ T^2 = ((\log\log x)^{\delta + 1/2}-1)^2  > (\log\log x)^{2\delta + 1}-2(\log\log
 La última desigualdad es cierta para $x$ suficientemente grande.
 
 \begin{align*}
-|S_T| < \frac{x\log \log x}{T^2} < \frac{x\log\log x}{(\log\log x)^{1+\delta}} = O(x)
+|S_T| < \frac{O(x\log \log x)}{T^2} < C\frac{x\log\log x}{(\log\log x)^{1+\delta}} = O(x)
 \end{align*}
 Sea $x>e^e$, si $x^{1/e}\leq n\leq x$ entonces
 $$

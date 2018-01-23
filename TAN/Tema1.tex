@@ -124,15 +124,15 @@ Luego tomamos como preimagen el par $(a,b) = (\prod_{i=1}^k p_i ^{a_i'},\prod_{j
 \end{itemize}
 \end{dem}
 \begin{prop} Si $f$ y $g$ son multiplicativas la función $f * g$ definida por
-\[ f * g (n) = \sum_{d|n} f(d)g(n/d) \]
+\[ f * g (n) = \sum_{d\mid n} f(d)g(n/d) \]
 es también multiplicativa
 \end{prop}
 
 \begin{dem}
-\[ (f*g)(nm) = \sum_{c|nm}f(c)g\left(\frac{nm}{c}\right) = \sum_{a|n,b|m}f(ab)g\left(\frac{nm}{ab}\right) \]
+\[ (f*g)(nm) = \sum_{c\mid nm}f(c)g\left(\frac{nm}{c}\right) = \sum_{a\mid n,b\mid m}f(ab)g\left(\frac{nm}{ab}\right) \]
 Usando que $f$ y $g$ son multiplicativas:
 \begin{align*}
-	(f*g)(nm) & = \sum_{a|n,b|m} f(a)f(b)g(n/a)g(m/b)  = \sum_{a|n}f(a)g(n/a) \sum_{b|m}f(b)g(m/b) \\
+	(f*g)(nm) & = \sum_{a\mid n,b\mid m} f(a)f(b)g(n/a)g(m/b)  = \sum_{a\mid n}f(a)g(n/a) \sum_{b\mid m}f(b)g(m/b) \\
 	& = (f*g)(m) \cdot (f*g)(n)
 \end{align*}
 \QED
@@ -212,7 +212,7 @@ $$
 \begin{prop}\mbox{}
 \begin{enumerate}[(a)]
 	\item La función φ es multiplicativa
-	\item $φ(n) = n \displaystyle\prod_{p|n} \left(1-\dfrac{1}{p}\right)$
+	\item $φ(n) = n \displaystyle\prod_{p\mid n} \left(1-\dfrac{1}{p}\right)$
 \end{enumerate}
 \end{prop}
 
@@ -226,7 +226,7 @@ $$
 \item Usando que $φ$ es multiplicativa:
 \[ φ(p^a) = p^a - p^{a-1} = p^a(1-1/p) \]
 Sea $n = p_1^{a_1}\cdots p_k^{a_k}$:
-\[ φ(n) = φ(p_1^{a_1})\cdots φ(p_k^{a_k}) = p_1^{a_1}(1-1/p_1)\cdots p_k^{a_k}(1-1/p_k) = n \prod_{p|n} \left(1-\dfrac{1}{p}\right)\]
+\[ φ(n) = φ(p_1^{a_1})\cdots φ(p_k^{a_k}) = p_1^{a_1}(1-1/p_1)\cdots p_k^{a_k}(1-1/p_k) = n \prod_{p\mid n} \left(1-\dfrac{1}{p}\right)\]
 \end{enumerate}
 \QED
 \end{dem}
@@ -241,21 +241,21 @@ $$
 $$
 \end{dem}
 \begin{prop}
-Para todo $n \in \N$ se tiene $\displaystyle\sum_{d|n} φ(d) = n$.
+Para todo $n \in \N$ se tiene $\displaystyle\sum_{d\mid n} φ(d) = n$.
 \end{prop}
 
 \begin{dem}
-Sea $f(n) = \sum_{d|n} φ(d)$ y $g(n) = n$. Sea $h(n) = 1$. Obsérvese que $f = φ * h$. Como $φ$ y $h$ son multiplicativas, $f$ es multiplicativa. Como $g$ también es mulitplicativa, para probar que $f = g$ basta ver que $f(p^a)=g(p^a)$ para un $p$ primo y $a ≥ 1$.
+Sea $f(n) = \sum_{d\mid n} φ(d)$ y $g(n) = n$. Sea $h(n) = 1$. Obsérvese que $f = φ * h$. Como $φ$ y $h$ son multiplicativas, $f$ es multiplicativa. Como $g$ también es mulitplicativa, para probar que $f = g$ basta ver que $f(p^a)=g(p^a)$ para un $p$ primo y $a ≥ 1$.
 
-\[ f(p^a) = \sum_{b|p^a} φ(b) = \sum_{k=0}^a φ(p^k) = 1+(p-1)+(p²-p)+\cdots+(p^a-p^{a-1}) = p^a = g(p^a) \]
+\[ f(p^a) = \sum_{b\mid p^a} φ(b) = \sum_{k=0}^a φ(p^k) = 1+(p-1)+(p²-p)+\cdots+(p^a-p^{a-1}) = p^a = g(p^a) \]
 \qed
 
 Como demostración alternativa:
 \begin{align*}
 n&= \left|\left\{\frac{a}{n} \mid 1 ≤ a ≤ n\right\}\right|
-= \left|\bigcup_{b|n} \left\{\frac{a}{b} \mid 1≤a≤b, a \perp b\right\}\right|\\
-&=\sum_{b|n} \left|\left\{\frac{a}{b} \mid 1 ≤ a ≤ b, a \perp b\right\}\right|
-= \sum_{b|n} φ(b) 
+= \left|\bigcup_{b\mid n} \left\{\frac{a}{b} \mid 1≤a≤b, a \perp b\right\}\right|\\
+&=\sum_{b\mid n} \left|\left\{\frac{a}{b} \mid 1 ≤ a ≤ b, a \perp b\right\}\right|
+= \sum_{b\mid n} φ(b) 
 \end{align*} \QED
 \end{dem}
 
@@ -274,7 +274,7 @@ Se define la función de Möbius $μ(n)$ del siguiente modo
 \begin{enumerate}[(a)]
 \item La función de Möbius $μ$ es multiplicativa.
 \item Para todo $n$
-\[ \sum_{a|n} μ(a) = \begin{cases}
+\[ \sum_{a\mid n} μ(a) = \begin{cases}
 	1 & \text{ si } n = 1\\
 	0 & \text{ si } n > 1
 \end{cases}\]
@@ -296,8 +296,8 @@ En la primera se usa una técnica interesante para cambiar variables en sumas re
 \begin{prop}[Primera fórmula de inversión de Möbius]
 Sean $f$ y $g$ dos funciones aritméticas, son equivalentes:
 \begin{enumerate}[(a)]
-	\item $\forall n$, $g(n) = \sum_{a|n} f(a)$
-	\item $\forall n$, $f(n) = \sum_{a|n}μ(a) g(n/a)$
+	\item $\forall n$, $g(n) = \sum_{a\mid n} f(a)$
+	\item $\forall n$, $f(n) = \sum_{a\mid n}μ(a) g(n/a)$
 \end{enumerate}
 \end{prop}
 \newpage
@@ -305,11 +305,11 @@ Sean $f$ y $g$ dos funciones aritméticas, son equivalentes:
 \begin{itemize}
 	\item Veamos que $(a) \Rightarrow (b)$
 	\[
-	\sum_{a|n} μ(a)g(n/a) = \sum_{a|n}μ(n/a)g(a) = \sum_{a|n}μ(a) \sum_{b|n/a} f(b) = \sum_{b|n}f(b)\left(\sum_{a|n/b} μ(a)\right) = f(n)
+	\sum_{a\mid n} μ(a)g(n/a) = \sum_{a\mid n}μ(n/a)g(a) = \sum_{a\mid n}μ(a) \sum_{b\mid n/a} f(b) = \sum_{b\mid n}f(b)\left(\sum_{a\mid n/b} μ(a)\right) = f(n)
 	\]
 	\item Recíprocamente, veamos que  $(b) \Rightarrow (a)$
 	\[
-	\sum_{a|n}f(a) = \sum_{a|n} \sum_{b|a} μ(b)g(a/b) = \sum_{a|n}\sum_{b|a} μ(a/b)g(b) = \sum_{b|n}g(b)\left(\sum_{b|a|n}μ(a/b)\right) = g(n)
+	\sum_{a\mid n}f(a) = \sum_{a\mid n} \sum_{b\mid a} μ(b)g(a/b) = \sum_{a\mid n}\sum_{b\mid a} μ(a/b)g(b) = \sum_{b\mid n}g(b)\left(\sum_{b\mid a\mid n}μ(a/b)\right) = g(n)
 	\]
 \end{itemize}
 Veamos una demostración alternativa usando que $(1\ast \mu)$ es el elemento neutro de la convolución.
@@ -369,7 +369,7 @@ Lo que nos interesa sobre todo es como se multiplican estas series
 Dotado con el producto anterior y la suma usual, las series de Dirichlet forman un anillo.
 \end{prop}
 \begin{dem}
-Las propiedades de anillo son triviales, pero hacemos la consideración de que cada serie de Dirichlet 
+Las propiedades de anillo son triviales, pero hacemos la consideración de que cada serie de Dirichlet que converge en un punto $s$ verifica que
 $$\sum_{n=1}^{∞} \frac{a_n}{n^s} \qquad s = \sigma + ri
 $$
 $|a_n|$ puede acotarse por
@@ -427,7 +427,7 @@ La prueba es inmediata. Si $\sum_{n=1}\frac{a_n}{n^s}$ converge en $s_0$, $\exis
 $$
 \sum_{k=1} \frac{a_k}{k^s} = \sum_{k=1}a_ke^{-s\log k}
 $$
-donde $a_ke^{-s\log k}\in \mathcal{C}^w$. Por tanto, $\sum_{k=1}a_ke^{-s\log k} = f(s)$ con $f\in \mathcal{C}^w$.
+donde $a_ke^{-s\log k}$ es analítica. Por tanto, $\sum_{k=1}a_ke^{-s\log k} = f(s)$ es una función analítica por ser una suma de analíticas que conforme uniformemente.
 \end{dem}
 \begin{ej}
 La serie de Dirichlet $\sum_{n=1}^\infty \frac{(-1)^n}{n^s}$ tiene una abcisa de convergencia en $σ_0=0$. Obsérvese que no converge absolutamente en $0<σ<1$. De hecho, hay una abcisa de convergencia absoluta en $σ_0=1$.
@@ -479,8 +479,17 @@ Si $f$ es además completamente multiplicativa y $p_1,\dots,p_a$ son todos los p
 \begin{teorema}
 Sea $f(n)$ una función multiplicativa. Si $\lim_{p^k \to +∞} f(p^k) = 0$, entonces
 \[ \lim_{n\to +∞} f(n) = 0 \]
-(Ver Hardy Wright p.261 Nathanson p.255)
 \end{teorema}
+\begin{dem}
+Sabemos que, por hipótesis, $A=\{p^k\mid \abs{f(p^k)}\geq 1\}$ es finito. Sea $M=\prod_{p^k\in A} \abs{f(p^k)}$. Sea $\varepsilon > 0$ definimos $B_\varepsilon=\{p^k\mid \abs{f(p^k)}\geq \varepsilon/M\}$, también finito. Sea $N_\varepsilon = \prod_{p^k\in B_\varepsilon}p^k$. Sabemos que $n>N_\varepsilon$ es de la forma $p_1^{k_1}\cdots p_r^{k_r}$. Por otro lado, si $\{p_1^{k_1},\dotsc, p_r^{k_r}\} \subset B_\varepsilon$ entonces
+$$
+n = \prod_{i=1}^rp_i^{k_i} \leq \prod_{p^k\in B_\varepsilon}p^k = N_\varepsilon
+$$
+Luego $\exists p^k \in B_\varepsilon$ en la factorización de $n$. Tenemos por tanto
+$$
+\abs{f(n)}=\abs{\prod_{i=1}^r f(p_i^{k_i})} = \abs{f(p^k)} \prod_{p_i^{k_i}\in A} \abs{f(p_i^{k_i})}\prod_{p_i^{k_i}\notin A} \abs{f(p_i^{k_i})} \leq \frac{\varepsilon}{M}\cdot M \cdot 1 = \varepsilon
+$$
+\end{dem}
 \begin{prop}
 \[ d(n) = \mathcal{O}(n^δ) \]
 para todo $δ > 0$.
@@ -595,8 +604,8 @@ Cuando $x$ tiende a infinito, tenemos
 \end{teorema}
 
 \begin{dem}
-\[ \sum_{n≤x} d(n) = \sum_{n≤x}\sum_{a|n}1 =\sum_{a\leq x} m = \sum_{a≤x}\suelo{ \frac{x}{a}} = \sum_{ab≤x} 1 \]
-Donde $m$ son el número de múltiplos de $a$ que son menores o iguales que $x$. Consideramos el retículo $\mathcal{R}=\{(n,m) | n \in \N,m \in \N, nm≤x\}$. Se tiene que $\sum_{ab≤x} 1 = \#\mathcal{R}$. Si particionamos $\mathcal{R}$ en los conjuntos: $A=\{(n,m) \mid n \in \N,m \in \N, nm≤x, m>\sqrt{x}\}, B=\{(n,m) \mid n \in \N,m \in \N, nm≤x, n>\sqrt{x}\}$ y $C=\{(n,m) \mid n \in \N,m \in \N, nm≤\sqrt{x}\}$. Se tiene que $\#A=\#B$, luego $\#\mathcal{R}=2\#A+\#C$. Además, pues que $C$ es un cuadrado de lado $\sqrt{x}$, $|C|=\suelo{\sqrt{x}}^2$.
+\[ \sum_{n≤x} d(n) = \sum_{n≤x}\sum_{a\mid n}1 =\sum_{a\leq x} m = \sum_{a≤x}\suelo{ \frac{x}{a}} = \sum_{ab≤x} 1 \]
+Donde $m$ son el número de múltiplos de $a$ que son menores o iguales que $x$. Consideramos el retículo $\mathcal{R}=\{(n,m) \mid  n \in \N,m \in \N, nm≤x\}$. Se tiene que $\sum_{ab≤x} 1 = \#\mathcal{R}$. Si particionamos $\mathcal{R}$ en los conjuntos: $A=\{(n,m) \mid n \in \N,m \in \N, nm≤x, m>\sqrt{x}\}, B=\{(n,m) \mid n \in \N,m \in \N, nm≤x, n>\sqrt{x}\}$ y $C=\{(n,m) \mid n \in \N,m \in \N, nm≤\sqrt{x}\}$. Se tiene que $\#A=\#B$, luego $\#\mathcal{R}=2\#A+\#C$. Además, pues que $C$ es un cuadrado de lado $\sqrt{x}$, $|C|=\suelo{\sqrt{x}}^2$.
 \begin{align*}
 	\sum_{ab≤x} 1 & = 2 \# A - \suelo{ \sqrt{x} }^2 = 2 \sum_{a≤\sqrt{x}} \suelo{ \frac{x}{a}} - \suelo{ \sqrt{x} }^2\\
 	&= 2 \sum_{a≤x} \left(\frac{x}{a}-\left\{\frac{x}{a}\right\}\right) - (\sqrt{x}-\{\sqrt{x}\})^2 \\
@@ -620,7 +629,7 @@ Para $x≥1$
 \end{teorema}
 \begin{dem}
 \begin{align*}
-	\sum_{n≤x} φ(n) & = \sum_{n≤x}\sum_{a|n} μ(a) \frac{n}{a} = \sum_{a≤x} \frac{μ(a)}{a}\left(\sum_{a|n,n≤x}n\right) = \frac{1}{2} \sum_{a≤x} μ(a)\left(\suelo{ \frac{x}{a}}^2 + \suelo{ \frac{x}{a}} \right)\\
+	\sum_{n≤x} φ(n) & = \sum_{n≤x}\sum_{a\mid n} μ(a) \frac{n}{a} = \sum_{a≤x} \frac{μ(a)}{a}\left(\sum_{a\mid n,n≤x}n\right) = \frac{1}{2} \sum_{a≤x} μ(a)\left(\suelo{ \frac{x}{a}}^2 + \suelo{ \frac{x}{a}} \right)\\
 	& = \frac{1}{2} \sum_{a≤x} μ(a) \left(\left(\frac{x}{a} - \left\{ \frac{x}{a}\right\} \right)^2 + \frac{x}{a}-\left\{\frac{x}{a}\right\}\right)\\
 	& = \frac{1}{2} \sum_{a≤x} μ(a) \left(\frac{x^2}{a^2} - 2\left\{\frac{x}{a}\right\}\frac{x}{a} + \left\{\frac{x}{a}\right\}^2+\frac{x}{a}-\left\{\frac{x}{a}\right\}\right)\\
 	&  \frac{x^2}{2} \sum_{a≤x} \frac{μ(a)}{a^2} - \frac{x}{2} \sum_{a≤x} \frac{μ(a)}{a} - x \sum_{a≤x} \frac{μ(a)}{a}\left\{\frac{x}{a}\right\} + \mathcal{O}(x)
@@ -650,7 +659,7 @@ El teorema se debe a Mertens (1874). El mejor error que se conoce es $\mathcal{O
 \begin{dem}
 Los casos totales son $x^2$ y los favorables $2\sum_{n\leq x} \varphi(n) -x$, luego
 $$
-\frac{1}{x^2}\left(2\sum_{n\leq x} \varphi(n) -x\right) =\frac{1}{x^2}\left( \frac{6}{π}\frac{x^2}{2} + \mathcal{O}(x\log x)\right) - \frac{1}{x} = \frac{6}{\pi^2} + O\left(\frac{\log x}{x}\right)-\frac{1}{x}
+\frac{1}{x^2}\left(2\sum_{n\leq x} \varphi(n) -x\right) =\frac{1}{x^2}\left( \frac{6}{π}x^2 + \mathcal{O}(x\log x)\right) - \frac{1}{x} = \frac{6}{\pi^2} + O\left(\frac{\log x}{x}\right)-\frac{1}{x}
 $$
 \end{dem}
 \begin{prop}
@@ -697,7 +706,7 @@ De este modo podemos llegar la fórmula correcta
 La suma extendida a todos los subconjuntos $J$ no vacíos de $\{1,2,\dots,n\}$.
 
 \begin{prop}
-\[ \frac{φ(n)}{n} = \sum_{d|n} \frac{μ(d)}{d} \]
+\[ \frac{φ(n)}{n} = \sum_{d\mid n} \frac{μ(d)}{d} \]
 \end{prop}
 \begin{dem}
 Sea $X=\{1,\dotsc,n\}$. Para cada $p$ primo tal que $p\mid n$ consideramos $A_p =\{k\in X\mid p\mid k\}$. Por tanto, 
@@ -750,7 +759,7 @@ La \textbf{función de Liouville} se define de manera parecida a la de Möbius
 	(-1)^{α_1+\dots+α_r} &\text{ si }n=p_1^{α_1}\cdot p_r^{α_r}
 \end{cases} \]
 $ω(n)$ denota el número de factores primos distintos de $n$ y $Ω(n)$ el número total de factores primos:
-\[ ω(n) = \sum_{p|n} 1, \qquad Ω(n) = \sum_{p^r|n} 1 \]
+\[ ω(n) = \sum_{p\mid n} 1, \qquad Ω(n) = \sum_{p^r\mid n} 1 \]
 Finalmente es de uso frecuenta la función
 \[ r(n) = \text{card}\{(x,y) \in \Z^2 : x^2+y^2=n\} \]
 Para el capítulo en general son recomendables los libros de \href{https://leonettipaolo.files.wordpress.com/2012/07/ebook-english-g-h-hardy-an-introduction-to-the-theory-of-numbers.pdf}{Hardy \& Wright}, Tenenbaum o Nathanson.
