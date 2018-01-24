@@ -409,7 +409,7 @@ Por traslación podemos suponer que $s_0=0$. Además, podemos redefinir la serie
 \end{align*}
 
 Usando que:
-\[ \left|\frac{1}{k^s}-\frac{1}{(k+1)^s}\right| = \left|\int_k^{k+1}-st^{-s-1}dt\right| ≤ |s|\int_k^{k+1}\left|t^{-σ-1}\right|dt ≤ \frac{|s|}{σ} \left(\frac{1}{k^σ}-\frac{1}{(k+1)^σ}\right)\]
+\[ \left|\frac{1}{k^s}-\frac{1}{(k+1)^s}\right| = \left|\int_k^{k+1}-st^{-s-1}dt\right|≤ \int_k^{k+1}\left|st^{-s-1}\right|dt ≤ |s|\int_k^{k+1}t^{-σ-1}dt ≤ \frac{|s|}{σ} \left(\frac{1}{k^σ}-\frac{1}{(k+1)^σ}\right)\]
 
 y que $n^σ ≥ 1$ y $(m+1)^σ ≥ 1$:
 
@@ -485,7 +485,7 @@ Sabemos que, por hipótesis, $A=\{p^k\mid \abs{f(p^k)}\geq 1\}$ es finito. Sea $
 $$
 n = \prod_{i=1}^rp_i^{k_i} \leq \prod_{p^k\in B_\varepsilon}p^k = N_\varepsilon
 $$
-Luego $\exists p^k \in B_\varepsilon$ en la factorización de $n$. Tenemos por tanto
+Luego $\exists p^k \notin B_\varepsilon$ en la factorización de $n$. Tenemos por tanto
 $$
 \abs{f(n)}=\abs{\prod_{i=1}^r f(p_i^{k_i})} = \abs{f(p^k)} \prod_{p_i^{k_i}\in A} \abs{f(p_i^{k_i})}\prod_{p_i^{k_i}\notin A} \abs{f(p_i^{k_i})} \leq \frac{\varepsilon}{M}\cdot M \cdot 1 = \varepsilon
 $$
@@ -629,10 +629,11 @@ Para $x≥1$
 \end{teorema}
 \begin{dem}
 \begin{align*}
-	\sum_{n≤x} φ(n) & = \sum_{n≤x}\sum_{a\mid n} μ(a) \frac{n}{a} = \sum_{a≤x} \frac{μ(a)}{a}\left(\sum_{a\mid n,n≤x}n\right) = \frac{1}{2} \sum_{a≤x} μ(a)\left(\suelo{ \frac{x}{a}}^2 + \suelo{ \frac{x}{a}} \right)\\
+	\sum_{n≤x} φ(n) & = \sum_{n≤x}\sum_{a\mid n} μ(a) \frac{n}{a} = \sum_{a≤x} \frac{μ(a)}{a}\left(\sum_{a\mid n,n≤x}n\right) =\sum_{a≤x} \frac{μ(a)}{a}\sum_{k=1}^{\suelo{x/a}} k\\
+	&= \frac{1}{2} \sum_{a≤x} μ(a)\left(\suelo{ \frac{x}{a}}^2 + \suelo{ \frac{x}{a}} \right)\\
 	& = \frac{1}{2} \sum_{a≤x} μ(a) \left(\left(\frac{x}{a} - \left\{ \frac{x}{a}\right\} \right)^2 + \frac{x}{a}-\left\{\frac{x}{a}\right\}\right)\\
 	& = \frac{1}{2} \sum_{a≤x} μ(a) \left(\frac{x^2}{a^2} - 2\left\{\frac{x}{a}\right\}\frac{x}{a} + \left\{\frac{x}{a}\right\}^2+\frac{x}{a}-\left\{\frac{x}{a}\right\}\right)\\
-	&  \frac{x^2}{2} \sum_{a≤x} \frac{μ(a)}{a^2} - \frac{x}{2} \sum_{a≤x} \frac{μ(a)}{a} - x \sum_{a≤x} \frac{μ(a)}{a}\left\{\frac{x}{a}\right\} + \mathcal{O}(x)
+	&  = \frac{x^2}{2} \sum_{a≤x} \frac{μ(a)}{a^2} - \frac{x}{2} \sum_{a≤x} \frac{μ(a)}{a} - x \sum_{a≤x} \frac{μ(a)}{a}\left\{\frac{x}{a}\right\} + \mathcal{O}(x)
 \end{align*}
 Como:
 \[ \left|x\sum_{a≤x} \frac{μ(a)}{a} \left\{\frac{x}{a}\right\}\right| ≤ x \sum_{a≤x} \frac{1}{a} = x (\log x + γ + \mathcal{O}\left(\frac{1}{x}\right)) ≤ 2x \log x \]
@@ -675,18 +676,18 @@ Para $x>1$ se tiene
 &=\frac{1}{2}\sum_{a\leq x}\left(\frac{x^2}{a^2} - 2\frac{x}{a}\deci{\frac{x}{a}} +\deci{\frac{x}{a}}^2 +\frac{x}{a}-\deci{\frac{x}{a}}\right)
 \end{align*}
 Ahora bien, tengamos en cuenta que
-\begin{align*}
-\abs{\sum_{a\leq x}\frac{x}{a}\deci{\frac{x}{a}}}&\leq x\sum_{a\leq x}\frac{1}{a} = x\log x + \gamma x + O(1)  &
-\sum_{a\leq x}\frac{x}{a}\deci{\frac{x}{a}} &= O(x\log x)\\
-\abs{\frac{1}{2}\sum_{a\leq x}\deci{\frac{x}{a}}^2}&\leq\frac{x}{2} & \frac{1}{2}\sum_{a\leq x}\deci{\frac{x}{a}}^2 &= O(x)
-\end{align*}
+\begin{gather*}
+\abs{\sum_{a\leq x}\frac{x}{a}\deci{\frac{x}{a}}}\leq x\sum_{a\leq x}\frac{1}{a} = x\log x + \gamma x + O(1)  \qquad
+\sum_{a\leq x}\frac{x}{a}\deci{\frac{x}{a}} = O(x\log x)\\
+\abs{\frac{1}{2}\sum_{a\leq x}\deci{\frac{x}{a}}^2}\leq\frac{x}{2} \qquad\frac{1}{2}\sum_{a\leq x}\deci{\frac{x}{a}}^2 = O(x)
+\end{gather*}
 $$
 \sum_{a\leq x}\frac{x}{a} = O(x\log x) \qquad
 \sum_{a\leq x}\deci{\frac{x}{a}} = O(x)
 $$
 \begin{align*}
-\sum_{a\leq x}\frac{1}{a^2}& =\sum_{a=1}^\infty \frac{1}{a^2}- \sum_{a> x}\frac{1}{a^2} = \frac{\pi^2}{6}- \sum_{a> x}\frac{1}{a^2} \\
-&=\frac{\pi^2}{6}- \left(\frac{1}{\ceil{x}^2}+\int_x^\infty \frac{dt}{t^2}\right) = \frac{\pi^2}{6}-\left(\frac{1}{\ceil{x}^2}+\frac{1}{x}\right) = \frac{\pi^2}{6} + O\left(\frac{1}{x}\right)
+\sum_{a\leq x}\frac{1}{a^2}& =\sum_{a=1}^\infty \frac{1}{a^2}- \sum_{a> x}\frac{1}{a^2} = \frac{\pi^2}{6}- \sum_{a> x}\frac{1}{a^2} =\frac{\pi^2}{6}- \left(\frac{1}{\ceil{x}^2}+\int_x^\infty \frac{dt}{t^2}\right) \\
+&= \frac{\pi^2}{6}-\left(\frac{1}{\ceil{x}^2}+\frac{1}{x}\right) = \frac{\pi^2}{6} + O\left(\frac{1}{x}\right)
 \end{align*}
 
 Por tanto,

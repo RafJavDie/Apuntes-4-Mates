@@ -94,7 +94,7 @@ $$
 \end{teorema}
 \begin{dem}
 Si $x\geq 1$ entonces 
-$$\prod_{p\leq x}\leq 4^{x-1} \Rightarrow \sum_{p\leq x} \log p \leq (x-1) \log 4$$
+$$\prod_{p\leq x}p\leq 4^{x-1} \Rightarrow \sum_{p\leq x} \log p \leq (x-1) \log 4$$
 Si definimos $a_n=I_{\mathbb{P}}(n)$ la función indicatriz de los primos, entonces aplicando la Fórmula de Sumación de Abel
 $$\sum_{p\leq x} \log p = \sum_{n\leq x}a_n \log n = \pi(x)\log(x)-\int_1^x \pi(t)\frac{dt}{t}$$
 $$\pi(x)\log(x) \leq \int_1^x \pi(t)\frac{dt}{t} + (x-1)\log 4
@@ -131,7 +131,7 @@ $$
 Podemos tomar $\delta >0$ tal que
 $$
 (1-\delta)\log p_n \leq \log n \qquad p_n \leq \frac{1}{A}n\log p_n\leq \frac{1}{A}\frac{1}{1-\delta}n \log n\equiv C n \log n$$
-Por otra parte, aplicando la otra desigualdad a $x=\pi_n$, entonces
+Por otra parte, aplicando la otra desigualdad a $x=p_n$, entonces
 $$n=\pi(p_n) \leq B \dfrac{p_n}{\log p_n} \qquad p_n \geq \frac{1}{B}n\log p_n \geq \frac{1}{B}n \log n\equiv c\,n\log n$$
 \end{dem}
 
@@ -190,9 +190,9 @@ $$
 \sum_{p\leq x}\left(\sum_{k=1}\suelo{\frac{x}{p^k}}\right)\log p = x\sum_{p\leq x}\frac{1}{p}\log p+O(x)
 $$
 \begin{gather*}
-\sum_{n\leq x}\log n = x\log x -x+ \mathcal{O}(\log x)  = x\sum_{p\leq x}\frac{1}{p}\log p+O(x)\\
+\sum_{k\leq x}\log k = x\log x -x+ \mathcal{O}(\log x)  = x\sum_{p\leq x}\frac{1}{p}\log p+O(x)\\
  \log x -1+ \orden{\frac{\log x}{x}}  = \sum_{p\leq x}\frac{1}{p}\log p+O(1)\\
- \sum_{p\leq x}\frac{1}{p} = \log x + \orden{1}
+ \sum_{p\leq x}\frac{\log p}{p} = \log x + \orden{1}
 \end{gather*}
 \end{dem}
 \begin{teorema}[Mertens]
@@ -204,7 +204,7 @@ Tenemos
 $$
 \sum_{p≤x} \frac{1}{p} = \sum_{p≤x} \frac{\log p}{p}\frac{1}{\log p} = \sum_{n≤x} a_n f(n)
 $$
-Con $f(n)=\log^{-1}(n)$ y $a_n = I_{\mathbb{P}}(n)\dfrac{\log n}{n}$. Notemos que $f(1)a_1$ está bien definido. Aplicando la Fórmula de Sumación de Abel teniendo en cuenta que $S(x)=\sum_{n\leq x}a_n = \sum_{p\leq x}\dfrac{\log}{p}$ y que, por tanto $\int_1^2S(t)f'(t)dt = 0$.
+Con $f(n)=\log^{-1}(n)$ y $a_n = I_{\mathbb{P}}(n)\dfrac{\log n}{n}$. Notemos que $f(1)a_1$ está bien definido. Aplicando la Fórmula de Sumación de Abel teniendo en cuenta que $S(x)=\sum_{n\leq x}a_n = \sum_{p\leq x}\dfrac{\log p}{p}$ y que, por tanto $\int_1^2S(t)f'(t)dt = 0$.
 \begin{align*}
 \sum_{p\leq x}\frac{1}{p}&= \sum_{p\leq x}\dfrac{\log}{p}f(x)-\int_2^x S(t)f'(t)dt = \frac{S(x)}{\log x} +\int_2^x \frac{S(t)}{t\log^2t}dt \\
 &=\frac{\log x + \mathcal{O}(1)}{\log x} +\int_2^x \frac{\log t + \mathcal{O}(1)}{t\log^2t}dt = 1 + \orden{\frac{1}{\log x}}+\int_2^x\frac{dt}{t\log t}+\int_2^x\frac{O(1)}{t\log^2 t}dt\\
@@ -333,7 +333,7 @@ $$
 $$
 Ahora bien 
 $$
-2^{2n}=\sum_{k=0}^{2n} \binom{2n}{k} = 2 + \sum_{k=1}^{2n-1} \binom{2n}{k} \geq \sum_{k=1}^{2n-1} \binom{2n}{n} = (2n-1)\binom{2n}{n} \leq 2n\binom{2n}{n} 
+2^{2n}=\sum_{k=0}^{2n} \binom{2n}{k} = 2 + \sum_{k=1}^{2n-1} \binom{2n}{k} \leq \sum_{k=1}^{2n-1} \binom{2n}{n} = (2n-1)\binom{2n}{n} \leq 2n\binom{2n}{n} 
 $$
 $$
  \frac{2^{2n}}{2n} \leq \binom{2n}{n} =  \prod_{p\leq 2n} p^{\nu_p(2n!)-2\nu_p(n!)} \leq \prod_{p\leq 2n} p^b $$
@@ -360,11 +360,11 @@ $$
 $$
 Tomando $\liminf_{x\to\infty}$ y después $\lim_{\delta \to 0}$ obtenemos
 $$
-\liminf_{x\to\infty}\frac{\theta(x)}{x}\geq \liminf_{x\to\infty}\frac{\pi(x)\log x)}{x}
+\liminf_{x\to\infty}\frac{\theta(x)}{x}\geq \liminf_{x\to\infty}\frac{\pi(x)\log x}{x}
 $$
 Análogamente podríamos ver que
 $$
-\limsup_{x\to\infty}\frac{\theta(x)}{x}\geq \limsup_{x\to\infty}\frac{\pi(x)\log x)}{x}
+\limsup_{x\to\infty}\frac{\theta(x)}{x}\geq \limsup_{x\to\infty}\frac{\pi(x)\log x}{x}
 $$
 A partir de la desigualdad
 $$
@@ -387,12 +387,15 @@ donde $P_x$ denota el producto de los números primos menores o iguales a $x$.
 \end{teorema}
 
 \begin{dem}
-Sea $X=\{n≤x\}$. Para $p≤\sqrt{x}$ primo, definimos $A_p=\{n \in X, p\leq n\}$.
+Sean los conjuntos $X=\{n≤x\}$ y $A_p=\{n \in X, p\mid n\}$. 
 Para un $n \in X$ compuesto, como $n≤x$ entonce consideramos el menor de los primos $p$ tal que $p\leq n$. Debe existir $m$ con $p\cdot m = n$. Como los primos que hay en $m$ son mayores o iguales que $p$: $p^2 ≤ p\cdot m = n ≤ x$, luego $p≤\sqrt{x}$. Entonces:
+$$
+\bigcup_{p\leq x} A_p = \{n\leq x\mid \exists p \leq\sqrt{x} \text{ tal que }p \mid n\}
+$$
 \[ X \setminus \bigcup_{p≤\sqrt{x}} = \{1 \} \cup \{p : \sqrt{x} < p ≤ x\} \]
 Luego
 \[ \text{card}\left(X \setminus \bigcup_{p≤\sqrt{x}} A_p\right) = π(x) - π(\sqrt{x}) + 1 \]
-Aplicamos el método de inclusión-exclusión y observando que:
+Aplicamos el método de inclusión-exclusión, donde $J\subset \{p \leq \sqrt{x}\}$. :
 \[ \text{card}\left(\bigcap_{j=1}^r A_{p_j}\right) =\text{card}(\{N≤x : n\leq N\}) = \suelo{ \frac{x}{n} }\]
 donde $n = p_{j_1}\cdots p_{j_r}$, la demostración sigue sin dificultad.
 \qed
@@ -431,10 +434,14 @@ Para $x ≥ 2$
 \end{teorema}
 \begin{dem}
 \begin{align*}
-	\sum_{n≤x} ω(n) & = \sum_{n≤x}\sum_{p\mid n} 1 =\sum_{n≤x}\sum_{p\mid n≤x} 1 = \sum_{p≤x} \suelo{\frac{x}{p}}\\
+	\sum_{n≤x} ω(n) & = \sum_{n≤x}\sum_{p\mid n} 1 =\sum_{p≤x}\sum_{p\mid n≤x} 1 = \sum_{p≤x} \suelo{\frac{x}{p}}\\
 	& = \sum_{p≤x} \frac{x}{p}- \sum_{p≤x} \left\{\frac{x}{p}\right\} \\
-	& = x \left(\log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right)\right) + \mathcal{O}\left(x\right)
+	& = x \left(\log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right)\right) + \orden{\frac{x}{\log x}}
 \end{align*} 
+Usando que 
+$$
+\sum_{p\leq x}\deci{\frac{x}{p}} \leq \sum_{p\leq x} 1 = \pi(x) = \orden{\frac{x}{\log x}}
+$$
 \end{dem}
 \newpage
 \begin{teorema}
@@ -511,7 +518,7 @@ El orden normal de $ω(n)$ es $\log \log n$ como se establece en el siguiente te
 \begin{teorema}[Hardy-Ramanujan]
 Para cada $δ > 0$, el numero de enteros $n < x$ tales que
 \[ |ω(n) - \log \log n| ≥ (\log \log x)^{1/2+δ} \]
-es $ο(x)$.
+es $O(x)$.
 \end{teorema}
 \begin{dem}
 Sea $S=\{n\in \N\mid n\leq x\}$ y sea $T>0$. Entonces si

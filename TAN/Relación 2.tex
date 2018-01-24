@@ -56,12 +56,12 @@ Tomando $f(n)=\log^2 n$ y $a_n=1$ tenemos que
 \begin{ejercicio}{4}
 Demostrar que
 \[ \sum_{n≤x} \left\{ \frac{x}{n} \right\} = (1-γ)x + \mathcal{O}(x^{1/2}) \]
-donde $\{x\}=x-\lfloor x \rfloor$ denota la parte fraccionaria de $x$.
+donde $\{x\}=x-\suelo{ x }$ denota la parte fraccionaria de $x$.
 \end{ejercicio}
 \begin{sol}
-Recordemos que $\sum_{n≤x} \lfloor x/n \rfloor = \sum_{n≤x} d(n)$ donde $d(n)$ es el número de divisores de $n$\footnote{\url{https://math.stackexchange.com/questions/338432/how-to-prove-the-relation-between-the-floor-function-and-the-number-of-divisors}}.
+Recordemos que $\sum_{n≤x} \suelo{ x/n } = \sum_{n≤x} d(n)$ donde $d(n)$ es el número de divisores de $n$\footnote{\url{https://math.stackexchange.com/questions/338432/how-to-prove-the-relation-between-the-floor-function-and-the-number-of-divisors}}.
 \begin{align*}
-	\sum_{n≤x} \left\{ \frac{x}{n} \right\} & = x\sum_{n≤x} \frac{1}{n} - \sum_{n≤x} \lfloor \frac{x}{n}\rfloor = x(\log x + γ + \mathcal{O}(1/x))- \sum_{n≤x} d(n)\\
+	\sum_{n≤x} \left\{ \frac{x}{n} \right\} & =  x\sum_{n≤x} \frac{1}{n} - \sum_{n≤x} \suelo{ \frac{x}{n}} = x(\log x + γ + \mathcal{O}(1/x))- \sum_{n≤x} d(n)\\
 	& = x(\log x + γ + \mathcal{O}(1/x))- (x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})\\
 	& = (1-γ)x + \mathcal{O}(\sqrt{x})
 \end{align*}
@@ -88,7 +88,7 @@ Aplicando la fórmula de Abel con $a_n=d(n)$ aplicando el teorema 1.8.1:
 \begin{itemize}
 \item[]
 \item Demostrar que para todo $x ≥ 1$ se tiene
-\[ \sum_{n≤x} μ(n) \left\lfloor \frac{x}{n} \right\rfloor = 1 \]
+\[ \sum_{n≤x} μ(n) \suelo{ \frac{x}{n} } = 1 \]
 \item Probar que para todo $x ≥ 1$ se tiene
 \[ \left|\sum_{n≤x} \frac{μ(n)}{n}\right| ≤ 1 \]
 
@@ -98,18 +98,18 @@ Aplicando la fórmula de Abel con $a_n=d(n)$ aplicando el teorema 1.8.1:
 \begin{sol}
 \begin{itemize}
 \item Por el mismo argumento del ejercicio 4:
-\[ \sum_{n≤x} \sum_{d|n} μ(d) = \sum_{n≤x} μ(n) \left\lfloor \frac{x}{n} \right\rfloor \]
+\[ \sum_{n≤x} \sum_{d|n} μ(d) = \sum_{n≤x} \mu(n)\sum_{n\mid m\leq x}1= \sum_{n≤x} \mu(n)\suelo{ \frac{x}{n} }	\]
 Como $\sum_{d|n} μ(d) = 0$ si $n > 1$ y $\sum_{d|n} μ(d) = 1$ si $n = 1$:
-\[ \sum_{n≤x} μ(n) \left\lfloor \frac{x}{n} \right\rfloor = 1 \]
+\[ \sum_{n≤x} μ(n) \suelo{ \frac{x}{n} } = 1 \]
 
-\item Por el ejecicio anterior:
-\[ 1 = \sum_{n≤x} μ(n) \left\lfloor \frac{x}{n} \right\rfloor = x\sum_{n≤x} μ(n) \frac{1}{n} - \sum_{n≤x} μ(n) \left\{ \frac{x}{n} \right\}  \]
+\item Por el ejercicio anterior:
+\[ 1 = \sum_{n≤x} μ(n) \suelo{ \frac{x}{n} } = x\sum_{n≤x} μ(n) \frac{1}{n} - \sum_{n≤x} μ(n) \left\{ \frac{x}{n} \right\}  \]
 Luego:
 \[ \gabs{\sum_{n≤x} \frac{μ(n)}{n}} = \gabs{\frac{1}{x} \left(1+\sum_{n≤x}μ(n)\left\{\frac{x}{n}\right\}\right)}
 ≤ \frac{1}{x} \left(1+\sum_{n≤x}\gabs{μ(n)\left\{\frac{x}{n}\right\}}\right) \]
 Como para $n=x$, $\{x/n\}=0$, podemos prescindir del último término:
 \[ \left|\sum_{n≤x} \frac{μ(n)}{n}\right| ≤ \frac{1}{x} \left(1+\sum_{n≤x-1}\gabs{μ(n)\left\{\frac{x}{n}\right\}}\right) ≤ \frac{1}{x} \left(1+\sum_{n≤x-1}1\right) ≤ \]
-\[\leq \frac{1}{x} \left(1+\lfloor x \rfloor-1\right) = \frac{\lfloor x \rfloor}{x} ≤ 1\]
+\[\leq \frac{1}{x} \left(1+\suelo{ x }-1\right) = \frac{\suelo{ x }}{x} ≤ 1\]
 \end{itemize}
 \end{sol}
 
@@ -184,8 +184,11 @@ Deducir de lo anterior y del teorema de Chebyshev que existe una constante $C > 
 \[ φ(k) ≥ \frac{Ck}{\log k} \quad \forall k≥2 \]
 \end{ejercicio}
 \begin{sol}
-Dividimos los números de $1$ a $x$ en grupos de $k$ elementos. Como puede que $k$ no divida a $x$, el último grupo puede tener menos de $k$ elementos. Tendremos entonces $\lfloor x/k \rfloor$ grupos de $k$ elementos. Obsérvese que entre $nk+1$ y $(n+1)k$ hay $φ(k)$ primos siempre y cuando $n ≥ 1$. Acotamos la cantidad de primos entre $1$ y $k$ y en el último grupo por $2k$ (como si todos fueran primos). Entonces:
-\[ π(x) ≤ φ(k) \left\lfloor \frac{x}{k} \right\rfloor+2k ≤ φ(k) \frac{x}{k} + 2k \]
+El problema es equivalente a probar que $\pi(x) \leq \dfrac{x}{k}\varphi(k) + 2k$.
+\end{sol}
+\begin{sol}
+Dividimos los números de $1$ a $x$ en grupos de $k$ elementos. Como puede que $k$ no divida a $x$, el último grupo puede tener menos de $k$ elementos. Tendremos entonces $\suelo{ x/k }$ grupos de $k$ elementos. Obsérvese que entre $nk+1$ y $(n+1)k$ hay $φ(k)$ primos siempre y cuando $n ≥ 1$. Acotamos la cantidad de primos entre $1$ y $k$ y en el último grupo por $2k$ (como si todos fueran primos). Entonces:
+\[ π(x) ≤ φ(k) \suelo{ \frac{x}{k} }+2k ≤ φ(k) \frac{x}{k} + 2k \]
 
 Usando que $π(x) ≥ A \frac{x}{\log x}$.
 \[ φ(x) ≤ \frac{k}{x} π(x) - \frac{2k^2}{x} ≥ \frac{Ak}{\log x}-\frac{2k^2}{x} = \frac{A k}{2\log k} -2  ≥ \frac{A k}{2\log k} - \frac{A k}{4 \log k} = \frac{C k}{\log k}\]
@@ -238,11 +241,14 @@ Suponiendo la hipótesis de Riemann puede probarse que $θ(x) = x + \mathcal{O}(
 \end{ejercicio}
 \begin{sol}
 Sea $a_n = \log p$ si $n=p$ para un $p$ primo, $a_n = 0$ en caso contrario. Entonces:
-\[ \sum_{p≤x} \sqrt{p}\log p = \sum_{n≤x} \sqrt{n}a_n = θ(x)\sqrt{x} - \int_1^x θ(t)\frac{1}{2\sqrt{t}}dt = \int_2^x θ(t)\frac{1}{2\sqrt{t}}dt \]
-(el cambio del rango de la integral a $2$ será evidente más adelante). Usando el ejercicio anterior, $θ(t)=t+U(t)$, con $|U(t)| ≤ C (x^{1/2}\log^2x)$ para algún $C$:
-\[ \sum_{p≤x} \sqrt{p}\log p = θ(x) \sqrt{x} - \frac{1}{2} \int_2^x \sqrt{t} dt - \frac{1}{2} \int_2^x \frac{U(t)}{\sqrt{t}} \]
-Como $int_1^x \frac{U(t)}{\sqrt{t}}≤C\int_2^x \log^2 t dt ≤ C x \log^2 x$ para $x ≥ 2$:
-\[ \sum_{p≤x} \sqrt{p}\log p = (x+\mathcal{O}(\sqrt{x}\log^2x))\sqrt{x}-\frac{1}{3}x^{3/2}+\frac{1}{3}2^{3/2}+\mathcal{O}(x\log^2 x) = \frac{2}{3} x^{3/2} + \mathcal{O}(x\log^2 x) \]
+\[ \sum_{p≤x} \sqrt{p}\log p = \sum_{n≤x} \sqrt{n}a_n = θ(x)\sqrt{x} - \int_1^x θ(t)\frac{1}{2\sqrt{t}}dt = θ(x)\sqrt{x} -\int_2^x θ(t)\frac{1}{2\sqrt{t}}dt \]
+Usando la ayuda del enunciado, sustituimos $\theta(x)=x+O(\sqrt{x}\log^2 x)$.
+\begin{align*}
+\sum_{p≤x} \sqrt{p}\log p &=(x+O(\sqrt{x}\log^2 x)\sqrt{x} -\int_2^x \frac{t+O(\sqrt{t}\log^2 t)}{2\sqrt{t}}dt\\
+&= x^{3/2}+O(x\log^2 x) - \frac{1}{2}\int_2^x \sqrt{t}+O(\log^2 t)dt\\
+&= x^{3/2}+O(x\log^2 x) - \frac{1}{2}\left(x^{3/2}\frac{2}{3}+\orden{\int_2^x\log^2 tdt}\right)\\
+&=\frac{2}{3}x^{3/2}+\orden{x\log^2 x}
+\end{align*}
 \end{sol}
 
 \newpage

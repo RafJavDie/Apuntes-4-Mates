@@ -87,6 +87,22 @@ Usamos la misma función $\mu(n)$ para definir $c(n)$ ya que $\sum\limits_{d\mid
 0 & \text{Si } n>1
 \end{array}\right.$\\ Tenemos pues:$$c(n)=\sum\limits_{k\perp n} e^{2k\pi i/n}=\sum\limits_{k=1}^n e^{2k\pi i/n}\sum\limits_{d\mid gcd(k,n)}\mu(d)$$ Reordenando la suma $$\sum\limits_{k=1}^n e^{2k\pi i/n}\sum\limits_{d\mid gcd(k,n}\mu(d)=\sum\limits_{d\mid n} \mu(d)\sum\limits_{d\mid k,k\leq n}e^{2k\pi i/n}=\sum\limits_{d\mid n} \mu(d)\sum\limits_{k=1}^{n/d}e^{2kd\pi i/n}$$ Ahora bien, la segunda suma es geométrica y por tanto $$\sum\limits_{k=1}^{n/d}e^{2kd\pi i/n}=\frac{1-e^{(2d\pi i/n)(n/d+1)}}{1-e^{2d\pi i/n}}-1=\frac{1-e^{2d\pi i/n}}{1-e^{2d\pi i/n}}-1=0\text{ si }n/d>1$$ Es decir, si y sólo si $d=n$ la suma se hará 1, por tanto $$c(n)=\sum\limits_{d\mid n} \mu(d)\sum\limits_{k=1}^{n/d}e^{2kd\pi i/n}=\mu(n)\qed$$
 \end{solucion}
+\newpage
+\begin{solucion}
+Dado que ambas funciones son multiplicativas basta probar la igualdad para los números de la forma $p^a$ con $p$ primo y $a\geq 0$, aunque en caso de la igualdad es trivial.
+$$
+\mu(p^a) = \begin{cases}
+1 & a=0\\
+-1 & a=1\\
+0 & \text{otro caso}
+\end{cases}$$
+$$c(p^a) = \sum_{k\perp p^a} e^{2\pi ki/n} = \sum_{k=1}^{p^a} e^{2\pi k i/p^a}-\sum_{p\mid k, k=1}^{p^a} e^{2\pi i  k/ p^a} = 0-\sum_{k=1}^{p^a-1} e^{2\pi i  k/ {p^a-1}}  
+$$
+Tomando $g(n) = e^{2\pi i n}$ utilizamos la inversión de Mobius
+$$
+l
+$$
+\end{solucion}
 \end{ejercicio}
 \newpage
 

@@ -14,7 +14,7 @@ Veamos que efectivamente $Γ$ es analítica. Tenemos que:
 \item $t\mapsto t^{s-1}e^{-t}$ es medible por ser continua en $t$.
 \item $s\mapsto t^{s-1}e^{-t}$ es analítica porque $t^{s-1}$ es analítica y $e^{-t}$ es constante en $s$.
 \item 
-\[ |t^{s-1}e^{-t}| = |e^{(σ+iu-1)\log t}e^{-t} = e^{(σ-1)\log t}e^{-t} = t^{σ-1}e^{-t} ≤ \begin{cases}
+\[ |t^{s-1}e^{-t}| = |e^{(σ+iu-1)\log t}e^{-t}| = e^{(σ-1)\log t}e^{-t} = t^{σ-1}e^{-t} ≤ \begin{cases}
 	t^{b-1}e^{-t} &\text{ si }t>1\\
 	t^{a-1}e^{-t} &\text{ si }0<t<1
 \end{cases}\] 
@@ -62,9 +62,9 @@ Luego, por inducción: $Γ(n+1)=n!$ para todo $n$ natural.
 	Γ^2(1/2) & = \left(\int_0^{∞}t^{-1/2}e^{-t}dt\right)^2 = 4 \int_0^{∞}\int_0^{∞} e^{-(u^2+v^2)} dudv\\
 	& = 4 \int_0^{π/2}\int_0^{∞} e^{-r^2}r dr dφ = 4 \frac{1}{2} \frac{π}{2} \int_0^{∞} e^{-x} dx = π
 \end{align*}
-Luego $Γ(1/2)=\sqrt{π}$. Por otro lado, supongamos que
+Luego $Γ(1/2)=\sqrt{π}$. La otra igualdad la veremos por inducción. El caso $n=0$ es el que acabamos de tratar. La hipótesis de inducción es
 \[ Γ(n+1/2) = \frac{(2n)!\sqrt{π}}{n!2^{2n}}\]
-Tenemos entonces que:
+Por tanto
 \begin{align*}
 	Γ(n+1+1/2) & = (n+1/2)Γ(n+1/2) = (n+1/2) \frac{(2n)!\sqrt{π}}{n!2^{2n}}\\
 	& = \frac{(2n+1)(2n)!\sqrt{π}}{n!2^{2n+1}} \cdot \frac{2n+2}{2(n+1)}= \frac{(2(n+1))!\sqrt{π}}{(n+1)!2^{2(n+1)}} 
@@ -92,9 +92,10 @@ Calculamos $Γ(α)Γ(β)$ usando el mismo truco que para calcular $Γ(1/2)$.
 Caso particular de la proposición anterior. También es conocido como fórmula de reflexión de Euler.
 \end{prop}
 \begin{dem}Supongamos que $0<s<1$.
-$$
-\frac{\Gamma(s)\Gamma(1-s)}{\Gamma(1)} = \beta(1-s,1) = \int_0^1 t^{s-1}(1-t)^{-s}dt = \int_0^1\left(\frac{t}{1-t}\right)^s \frac{dt}{t} \overset{t=x-xt}{=} \int_0^\infty x^s \frac{dx}{x(1+x)} = \frac{\pi}{\sen\pi s} 
-$$
+\begin{align*}
+\frac{\Gamma(s)\Gamma(1-s)}{\Gamma(1)} &= \beta(1-s,1) = \int_0^1 t^{s-1}(1-t)^{-s}dt  = \int_0^1\left(\frac{t}{1-t}\right)^s \frac{dt}{t}\\
+& \overset{t=x-xt}{=} \int_0^\infty  \frac{x^s}{x(1+x)}dx = \frac{\pi}{\sen\pi s} 
+\end{align*}
 \qed
 \end{dem}
 \begin{prop}[Fórmula de duplicación de Legendre]
