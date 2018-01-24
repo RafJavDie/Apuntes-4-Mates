@@ -20,7 +20,7 @@
 \begin{solucion}
 \begin{enumerate}
 	\item Para $s=σ+it$ con $σ>1$, tenemos que:
-\[ - \frac{ζ'(s)}{ζ(s)} = \int_{n=1}^{∞} \frac{Λ(n)}{n^s} \]
+\[ - \frac{ζ'(s)}{ζ(s)} = \sum_{n=1}^{∞} \frac{Λ(n)}{n^s} \]
 Por la fórmula de Abel:
 \[ \sum_{n≤x} \frac{Λ(n)}{n^s} = \frac{ψ(x)}{x^s} + s \int_1^{x} \frac{ψ(u)}{u^{s+1}} du \]
 Tomando el límite cuando $x\to∞$ se da la fórmula que buscabamos si $\frac{ψ(x)}{x^s}$ tiende a $0$.
@@ -254,8 +254,8 @@ Como $\Gamma(-2n)=\infty$, $\zeta(-2n)=0$ con $n>0$, luego podemos considerar el
 \begin{align*}
 \zeta(-1-2k) & =\frac{\pi^{-2k-3/2}\Gamma(k+1)\zeta(2k+2)}{\Gamma(-1/2-k)}\\
 &=\frac{\pi^{-2k-3/2}k!\zeta(2k+2)}{(-1)^{k+1}\pi}\\
-&=(-1)^{k+1}\pi^{-2k-5/2}k!\frac{(2k+2)!\sqrt{\pi}}{(k+1)!2^{2k+2}}(-1)^k\frac{2^{k+1}\pi^{2k+2}B_{2kk+1}}{(2k+2)!}\\
-&=(-1)^{2k+1}\frac{B_{2k+2}}{2k+2  3}
+&=(-1)^{k+1}\pi^{-2k-5/2}k!\frac{(2k+2)!\sqrt{\pi}}{(k+1)!2^{2k+2}}(-1)^k\frac{2^{k+1}\pi^{2k+2}B_{2k+1}}{(2k+2)!}\\
+&=(-1)^{2k+1}\frac{B_{2k+2}}{2k+2}
 \end{align*}
 \end{solucion}
 
