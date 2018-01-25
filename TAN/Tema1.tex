@@ -605,7 +605,7 @@ Cuando $x$ tiende a infinito, tenemos
 
 \begin{dem}
 \[ \sum_{n≤x} d(n) = \sum_{n≤x}\sum_{a\mid n}1 =\sum_{a\leq x} m = \sum_{a≤x}\suelo{ \frac{x}{a}} = \sum_{ab≤x} 1 \]
-Donde $m$ son el número de múltiplos de $a$ que son menores o iguales que $x$. Consideramos el retículo $\mathcal{R}=\{(n,m) \mid  n \in \N,m \in \N, nm≤x\}$. Se tiene que $\sum_{ab≤x} 1 = \#\mathcal{R}$. Si particionamos $\mathcal{R}$ en los conjuntos: $A=\{(n,m) \mid n \in \N,m \in \N, nm≤x, m>\sqrt{x}\}, B=\{(n,m) \mid n \in \N,m \in \N, nm≤x, n>\sqrt{x}\}$ y $C=\{(n,m) \mid n \in \N,m \in \N, nm≤\sqrt{x}\}$. Se tiene que $\#A=\#B$, luego $\#\mathcal{R}=2\#A+\#C$. Además, pues que $C$ es un cuadrado de lado $\sqrt{x}$, $|C|=\suelo{\sqrt{x}}^2$.
+Donde $m$ son el número de múltiplos de $a$ que son menores o iguales que $x$. Consideramos el retículo $\mathcal{R}=\{(n,m) \mid  n \in \N,m \in \N, nm≤x\}$. Se tiene que $\sum_{ab≤x} 1 = \#\mathcal{R}$. Si particionamos $\mathcal{R}$ en los conjuntos: $A=\{(n,m) \mid n \in \N,m \in \N, nm≤x, m>\sqrt{x}\}, B=\{(n,m) \mid n \in \N,m \in \N, nm≤x, n>\sqrt{x}\}$ y $C=\{(n,m) \mid n \in \N,m \in \N, nm≤\sqrt{x}\}$. Se tiene que $\#A=\#B$, luego $\#\mathcal{R}=2\#A-\#C$. Además, pues que $C$ es un cuadrado de lado $\sqrt{x}$, $|C|=\suelo{\sqrt{x}}^2$.
 \begin{align*}
 	\sum_{ab≤x} 1 & = 2 \# A - \suelo{ \sqrt{x} }^2 = 2 \sum_{a≤\sqrt{x}} \suelo{ \frac{x}{a}} - \suelo{ \sqrt{x} }^2\\
 	&= 2 \sum_{a≤x} \left(\frac{x}{a}-\left\{\frac{x}{a}\right\}\right) - (\sqrt{x}-\{\sqrt{x}\})^2 \\
@@ -671,7 +671,7 @@ El orden medio de $σ(n)$ es $π^2n/6$. Esto es
 Para $x>1$ se tiene
 \begin{align*}
 \sum_{n\leq x} \sigma(n)&=\sum_{n\leq x}\sum_{a\mid n} a = \sum_{n\leq x}\sum_{a\mid n} \frac{n}{a} = \sum_{a\leq x} \frac{1}{a}\sum_{a\mid n,\; n\leq x} n \\
-&= \sum_{a\leq x}\frac{1}{a}\left(a+2a+\dotsc+\suelo{\frac{x}{a}}\right) =\frac{1}{2}\sum_{a\leq x}\left(\suelo{\frac{x}{a}}^2+\suelo{\frac{x}{a}}\right)\\
+&= \sum_{a\leq x}\frac{1}{a}\left(a+2a+\dotsc+a\suelo{\frac{x}{a}}\right) =\frac{1}{2}\sum_{a\leq x}\left(\suelo{\frac{x}{a}}^2+\suelo{\frac{x}{a}}\right)\\
 &=\frac{1}{2}\sum_{a\leq x}\left(\left(\frac{x}{a} - \deci{\frac{x}{a}}\right)^2+\left(\frac{x}{a} - \deci{\frac{x}{a}}\right)\right)\\
 &=\frac{1}{2}\sum_{a\leq x}\left(\frac{x^2}{a^2} - 2\frac{x}{a}\deci{\frac{x}{a}} +\deci{\frac{x}{a}}^2 +\frac{x}{a}-\deci{\frac{x}{a}}\right)
 \end{align*}
@@ -724,7 +724,7 @@ La fórmula de inclusión-exclusión nos dice que
 \end{align*}
 Donde $\omega(i)$ es el número de divisores primos de $i$.
 $$
-\frac{\varphi(n)}{n} = 1 + \sum_{i\mid p_1 \cdots p_r} \mu(i)\frac{1}{i} = 1 + \sum_{1<a\mid n}\frac{\mu(a)}{a} = \sum_{a\mid n} \frac{\mu(a)}{a}
+\frac{\varphi(n)}{n} = 1 + \sum_{1<i\mid p_1 \cdots p_r} \mu(i)\frac{1}{i} = 1 + \sum_{1<a\mid n}\frac{\mu(a)}{a} = \sum_{a\mid n} \frac{\mu(a)}{a}
 $$
 \qed
 \end{dem}
@@ -746,7 +746,7 @@ Y además
 \begin{align*}
 \sum_{n\leq \sqrt{x}}\mu(n){\frac{x}{n^2}}  &= \sum_{n=1}\mu(n){\frac{x}{n^2}}  - \sum_{n>\sqrt{x}}\mu(n){\frac{x}{n^2}} = x\zeta(2)^{-1} - \sum_{n>\sqrt{x}}\mu(n){\frac{x}{n^2}}\\
 &=\frac{6x}{\pi^2} - \sum_{n>\sqrt{x}}\mu(n){\frac{x}{n^2}}\\
-\abs{\sum_{n>\sqrt{x}}\mu(n){\frac{x}{n^2}}}&\leq \sum_{n>\sqrt{x}}{\frac{x}{n^2}} \leq \frac{x}{\ceil{\sqrt{x}}^2}+x\int_{\sqrt{x}}^\infty \frac{dt}{t} \leq 2\sqrt{x}
+\abs{\sum_{n>\sqrt{x}}\mu(n){\frac{x}{n^2}}}&\leq \sum_{n>\sqrt{x}}{\frac{x}{n^2}} \leq \frac{x}{\ceil{\sqrt{x}}^2}+x\int_{\sqrt{x}}^\infty \frac{dt}{t^2} \leq 2\sqrt{x}
 \end{align*}
 Por tanto
 $$
