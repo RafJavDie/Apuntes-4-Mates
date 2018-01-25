@@ -98,12 +98,25 @@ d^k_n = \abs{d_{n+1}^{k-1}-d_{n}^{k-1}}
 \section{Estudio computacional de la conjetura de Gilbreath}
 Utilizando una idea semejante a la que proporciona Odlyzko en \cite{odly}, programamos en C++ un algoritmo que nos permita comprobar experimentalmente la conjetura. El algoritmo es realmente eficiente, pues en un simple ordenador portatil permite comprobar la conjetura hasta $10^9$
 
-\lstset{language=C++,
-                basicstyle=\ttfamily,
-                keywordstyle=\color{blue}\ttfamily,
-                stringstyle=\color{red}\ttfamily,
-                commentstyle=\color{green}\ttfamily,
-                morecomment=[l][\color{magenta}]{\#}
+\lstset{
+	language=C++,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    commentstyle=\color{green}\ttfamily,
+    morecomment=[l][\color{magenta}]{\#}
+    numberstyle=\ttfamily\tiny\color[gray]{0.2},
+    numbers=left,
+    backgroundcolor=\color{gray!10},
+    frame=single,
+    tabsize=2,
+    rulecolor=\color{black!30},
+    title=\lstname,
+    escapeinside={\%*}{*)},
+    breaklines=true,
+    breakatwhitespace=true,
+    framextopmargin=2pt,
+    framexbottommargin=2pt
 }
 \begin{lstlisting}
 #include <primesieve.hpp>
