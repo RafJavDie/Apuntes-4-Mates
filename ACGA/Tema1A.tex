@@ -52,7 +52,7 @@ Por el contrario, la unión de conjuntos algebraicos no es necesariamente algebr
 \end{prop}
 
 \begin{proof}
- Obviamente basta probarlo para la unión de dos. Sean $X_1=\V(S_1)$ y $X_2=\V(S_2)$ dos subconjuntos algebraicos de $\Ank$. Veamos que $X_1\cup X_2=\V(S_1S_2)$, donde $S_1S_2:=\{fg| f\in S_1,g\in S_2\}$.
+ Obviamente basta probarlo para la unión de dos. Sean $X_1=\V(S_1)$ y $X_2=\V(S_2)$ subconjuntos algebraicos de $\Ank$. Veamos que $X_1\cup X_2=\V(S_1S_2)$, donde $S_1S_2:=\{fg \mid f\in S_1,g\in S_2\}$.
 
 Si $x\in X_1=\V(S_1)$, $f(x)=0$ para todo $f\in S_1$, luego $f(x)g(x)=0$ para todos $f\in S_1$, $g\in S_2$. Por tanto, $x\in \V(S_1S_2)$. Así que $X_1\subseteq \V(S_1S_2)$, y de la misma forma se prueba que $X_2\subseteq \V(S_1S_2)$. 
 
@@ -60,10 +60,10 @@ Recíprocamente, sea $x\in \V(S_1S_2)$. Si $x\in X_1\subseteq X_1\cup X_2$, no h
 \end{proof}
 
 \begin{prop}
-Si X e Y son algebraicos tales que $X=V(S)$ e $Y=V(T)$ entonces $X\cap Y = V(T\cup S)$. Además si $S\cdot T = \{f\cdot g \mid f \in S,\; g \in T\}$ entonces $X\cup Y = V(S\cdot T)$. 
+Si X e Y son algebraicos tales que $X=\V(S)$ e $Y=\V(T)$ entonces $X\cap Y = \V(T\cup S)$. Además si $S\cdot T = \{f\cdot g \mid f \in S,\; g \in T\}$ entonces $X\cup Y = \V(S\cdot T)$. 
 \end{prop}
 \begin{dem}
-Todas las inclusiones son sencillas. Veamos una. Sea $x\notin X\cup Y$, entonces $x\notin X$ y $x\notin Y$. Entonces existen $f\in S$ y $g\in T$ tal que $f(x)\neq 0$ y $g(x)\neq 0$. Se sigue $f(x)g(x)\neq 0$, luego $x\notin V(S\cdot T)$. \QED
+Todas las inclusiones son sencillas. Veamos una. Sea $x\notin X\cup Y$, entonces $x\notin X$ y $x\notin Y$. Entonces existen $f\in S$ y $g\in T$ tal que $f(x)\neq 0$ y $g(x)\neq 0$. Se sigue $f(x)g(x)\neq 0$, luego $x\notin \V(S\cdot T)$. \QED
 \end{dem}
 
 El ejemplo \ref{ejemplo_algebraico} y las proposiciones \ref{interseccion} y \ref{union} implican que los subconjuntos algebraicos de $\Ank$ son los cerrados de una cierta topología.
@@ -147,7 +147,7 @@ Si $A$ es un anillo noetheriano, entonces $A[x]$ también lo es.
 
 Por lo tanto, si $A$ es un anillo noetheriano, entonces $A[x_1,\dots,x_n]$ también lo es. Llegamos además a que todo conjunto algebraico se puede definir como el conjunto de ceros de un número finito de polinomios:
 
-\[ V(S) = V(\langle S \rangle) = V(\langle f_1,\dots,f_r\rangle) =  V(\{f_1,\dots,f_r\}) \]
+\[ \V(S) = \V(\langle S \rangle) = \V(\langle f_1,\dots,f_r\rangle) =  \V(\{f_1,\dots,f_r\}) \]
 
 \begin{defi}
 Decimos que un cuerpo $\K$ es \textbf{algebraicamente cerrado} si todo polinomio no constante en $\K[x]$ tiene una raíz en $k$.
@@ -163,7 +163,7 @@ Definimos el \textbf{radical de un ideal} $I$ como:
 	\item $\sqrt{I}$ es un ideal (ejercicio).
 	\item $I \subset \sqrt{I}$.
 	\item $\sqrt{\sqrt{I}} = \sqrt{I}$.
-	\item $V(I) = V(\sqrt{I})$.
+	\item $\V(I) = \V(\sqrt{I})$.
 \end{itemize}
 \end{propi}
 
@@ -186,7 +186,7 @@ En particular, si $I$ es un ideal radical, $\I(\V(I))=I$. La consecuencia más i
 
 Antes de dar la prueba del teorema veamos el siguiente lema, que tiene importancia por sí mismo:
 
-\begin{lemma}
+\begin{lemma}[Weak Nullstellensatz]
  Si $I\subsetneq k[x_1,\ldots,x_n]$ es un ideal propio, $\V(I)\neq\emptyset$.
 \end{lemma}
 
@@ -568,7 +568,7 @@ Un conjunto algebraico $X\subseteq\A^n$ es irreducible si y solo si todo abierto
 
 Vamos a definir 
 \begin{defi}
- Sea $Z\subseteq\Ank$ una variedad afín. Una {\bf función racional} $f:Z\dashrightarrow k$ es un par $(U,f)$ donde $U\subseteq Z$ es un abierto de Zariski no vacío y $f:U\to k$ es una aplicación tal que existen $g,h\in \calA(Z)$ con $h(x)\neq 0$ y $f(x)=g(x)/h(x)$ para todo $x\in U$, módulo la siguiente relación de equivalencia: $(U,f)\sim(U',f')$ si $f_{|U\cap U'}=f'_{|U\cap U'}$.
+ Sea $Z\subseteq\Ank$ una variedad afín. Una {\bf función racional} $f:Z\dashrightarrow k$ es un par $(U,f)$ donde $U\subseteq Z$ es un abierto de Zariski no vacío y $f:U\to k$ es una aplicación tal que existen $g,h\in \calA(Z)$ con $h(x)\neq 0$ y $f(x)=g(x)/h(x)$ para todo $x\in U$, módulo la siguiente relación de equivalencia: $(U,f)\sim(U',f')$ si $f_{\mid U\cap U'}=f'_{|U\cap U'}$.
 \end{defi}
 
 
@@ -621,7 +621,7 @@ Sean entonces $(U,f)$ y $(V,g)$ dos funciones racionales en $Z$. Definimos su su
 \end{prop}
 
 \begin{proof}
- Probaremos únicamente la existencia de inversos, el resto de propiedades se deja como ejercicio. Sea $f:Z\dashrightarrow k$ una función racional no nula, veamos que existe una función racional $g$ tal que $f\cdot g=1$. Sea $U\subseteq Z$ un abierto tal que $v(x)\neq 0$ y $f(x)=u(x)/v(x)$ para todo $x\in U$, con $u,v\in k[x_1,\ldots,x_n]$, y sea $V\subseteq U$ el abierto definido por $u(x)\neq 0$. Es claro que la función racional $g:Z\dashrightarrow k$ dada por $(V,v/u)$ es la inversa de $f$.  
+ Probaremos únicamente la existencia de inversos, el resto de propiedades se deja como ejercicio. Sea $f:Z\dashrightarrow k$ una función racional no nula, veamos que existe una función racional $g$ tal que $f\cdot g=1$. Sea $U\subseteq Z$ un abierto tal que $\V(x)\neq 0$ y $f(x)=u(x)/\V(x)$ para todo $x\in U$, con $u,v\in k[x_1,\ldots,x_n]$, y sea $V\subseteq U$ el abierto definido por $u(x)\neq 0$. Es claro que la función racional $g:Z\dashrightarrow k$ dada por $(V,v/u)$ es la inversa de $f$.  
 \end{proof}
 
 
