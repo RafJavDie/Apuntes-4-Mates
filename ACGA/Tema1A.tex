@@ -194,7 +194,15 @@ Antes de dar la prueba del teorema veamos el siguiente lema, que tiene importanc
  Como $I\neq k[x_1,\ldots,x_n]$, está contenido en un ideal maximal $\m$. El cociente $K=k[x_1,\ldots,x_n]/\m$ es una extensión finita de $k$ por \cite[Teorema 4.10]{reid} o \cite[Corolario 5.24]{am}. Como $k$ es algebraicamente cerrado, deducimos que $k=K$. Por otro lado, todo polinomio $f\in\m$ (en particular todo $f\in I$) se anula en el punto $P=(\bar{x_1},\ldots,\bar{x_n})\in\A^n_K$. Así que $P\in\V(I)$ y por tanto $\V(I)\neq \emptyset$.
 \end{proof}
 
-\begin{proof}[Prueba del teorema] Sea $f\in\I(\V(I))$, veamos que $f^m\in I$ para algún $m\geq 1$. Introduzcamos una nueva variable $y$, y consideremos el polinomio $g(x_1,\ldots,x_n,y)=1-yf(x_1,\ldots,x_n)\in k[x_1,\ldots,x_n,y]$. Sea $J=I\cdot k[x_1,\ldots,x_n,y]+\langle g\rangle$. Para todo $(x_1,\ldots,x_n,y)\in\V(J)$ se tiene que $h(x_1,\ldots,x_n)=0$ para todo $h\in I$ (es decir, $(x_1,\ldots,x_n)\in \V(I)$). En particular, $f(x_1,\ldots,x_n)=0$, y entonces $g(x_1,\ldots,x_n,y)=1\neq 0$. Por tanto $\V(J)=\emptyset$, así que por el lema debe ser $J=k[x_1,\ldots,x_n,y]$. En particular, existen $g_i\in k[x_1,\ldots,x_n,y]$ ($i=0,\ldots,r$) y $h_i\in I$ ($i=1,\ldots,r$) tales que $g_0(1-yf)+g_1h_1+\cdots +g_rh_r=1$. Sustituyendo $y$ por $1/f$ y quitando denominadores obtenemos una expresión $f^m=\hat g_1h_1+\cdots+\hat g_rh_r$ para algún $m\geq 1$ con $\hat g_i\in k[x_1,\ldots,x_n]$, y por tanto $f^m\in I$. 
+\begin{proof}[Prueba del teorema] Sea $f\in\I(\V(I))$. Sabemos que $I=\gene{f_1,\dotsc,f_m}$. Entonces es claro que que si $g=1-yf$, el conjunto $\{f_1,\dotsc,f_m,g\}$ no tiene ceros en común, donde $y$ es una nueva variable. Por el Lema anterior, el ideal $\gene{f_1,\dotsc,f_m,g}$ debe ser el total, luego $\exists g_1,\dotsc,g_m,g_y \in k[x_1,\dotsc,x_n,y]$ tales que
+$$
+1 = g_y(x_1,\dotsc,x_n,y) (1-yf_i(x_1,\dotsc,x_n)) + \sum_{i=1}^m g_i(x_1,\dotsc,x_n,y) f_i(x_1,\dotsc,x_n)
+$$
+En particular esta igualdad se mantiene si $y=1/f$ como una igualdad en $k(x_1,\dotsc,x_n)$. 
+$$
+1 = \sum_{i=1}^m g_i(x_1,\dotsc,x_n,1/f) f_i(x_1,\dotsc,x_n) = \frac{\sum_{i=1}^m h_i(x_1,\dotsc,x_n)f_i(x_1,\dotsc,x_n)}{f(x_1,\dotsc,x_n)^r}
+$$
+De donde se deduce que $f^r\in I$.
 \end{proof}
 
 Vamos a probar también el corolario \ref{correspondencia}.
