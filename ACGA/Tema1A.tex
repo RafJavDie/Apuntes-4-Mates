@@ -45,7 +45,7 @@ Un polinomio $f\in k[x_1,\ldots,x_n]$ define un subconjunto de $\Ank$, el conjun
  Sea $\{X_i\}_{i\in I}$ una familia arbitraria de subconjuntos algebraicos de $\Ank$, con $X_i=\V(S_i)$. Veamos que $\bigcap_{i\in I}X_i=\V(\bigcup_{i\in I} S_i)$. En efecto, un punto $x=(x_1,\ldots,x_n)\in\Ank$ está en $\bigcap_{i\in I}X_i$ si y sólo si está en $X_i$ para todo $i\in I$, si y sólo si $f(x)=0$ para todo $f\in S_i$ y para todo $i\in I$, es decir, para todo $f\in \bigcup_{i\in I} S_i$.
 \end{proof}
 
-Por el contrario, la unión de conjuntos algebraicos no es necesariamente algebraico, como muestran el ejemplo \ref{ejemplo_algebraico} (2) y el ejercicio \ref{algebraicoa1}. Sin embargo:
+Por el contrario, la unión de conjuntos algebraicos no es necesariamente algebraico, como muestra el ejercicio \ref{algebraicoa1}. Sin embargo:
 
 \begin{prop}\label{union} La unión finita de subconjuntos algebraicos de $\Ank$ es un conjunto algebraico.
  
@@ -82,7 +82,7 @@ Por restricción se define la topología de Zariski en un conjunto algebraico $X
 
 \section{Conjuntos algebraicos e ideales}
 
-Consideremos ahora la siguiente cuestión: ¿Es posible recuperar el conjunto $S$ conociendo $\V(S)$? Tal y como está planteada la pregunta, es fácil ver que no: por ejemplo, en $\A^1_k$ $\{0\}=\V(\{x\})=\V(\{x^2\})=\V(\{x,x(x-1)\})=\ldots$. En geneal, si a $S$ le añadimos cualquier múltiplo de un elemento de $S$, o la suma de dos elementos cualesquiera de $S$, el conjunto algebraico asociado no varía. Más concretamente:
+Consideremos ahora la siguiente cuestión: ¿Es posible recuperar el conjunto $S$ conociendo $\V(S)$? Tal y como está planteada la pregunta, es fácil ver que no: por ejemplo, en $\A^1_k$ $\{0\}=\V(\{x\})=\V(\{x^2\})=\V(\{x,x(x-1)\})=\ldots$. En general, si a $S$ le añadimos cualquier múltiplo de un elemento de $S$, o la suma de dos elementos cualesquiera de $S$, el conjunto algebraico asociado no varía. Más concretamente:
 
 \begin{prop} Sea $S\subseteq k[x_1,\ldots,x_n]$ e $I=\langle S\rangle$ el ideal generado por $S$. Entonces $\V(I)=\V(S)$.
  
@@ -100,7 +100,7 @@ Como el anillo $k[x_1,\ldots,x_n]$ es noetheriano, todo ideal está generado por
 
 Ya que es imposible recuperar el conjunto $S$ a partir de $\V(S)$, rebajemos un poco nuestras expectativas: ¿será posible recuperar el \emph{ideal} $\langle S\rangle$ a partir de $\V(S)$? Veamos que en este caso la respuesta también es negativa, incluso en el caso $n=1$: en $\A^1_{\R}$, el conjunto vacío se puede escribir como $\V(\{1\})$, o también como $\V(\{x^2+1\})$. De hecho, para cualquier polinomio $f\in \R[x]$ sin raíces reales, $\V(\{f\})=\emptyset$. El hecho de que haya polinomios sin raíces reales es una obstrucción muy importante a la hora de estudiar variedades algebraicas. Para salvar esta obstrucción, es necesario extender el concepto de variedad algebraica de manera considerable. Por el momento, obviaremos este problema suponiendo a partir de ahora que nuestro cuerpo $k$ es algebraicamente cerrado (por ejemplo, $k=\C$).
 
-Aún así, todavía no es posible recuperar $\langle S\rangle$ a partir de $\V(S)$: Por ejemplo, en $\A^1_k$, $\{0\}=\V(\{x\})=\V(\{x^2\})$, pero $\langle x\rangle\neq\langle x^2\rangle$. Sin embargo, estamos un poco más cerca: aunque los ideales no son iguales, sus \emph{radicales}(\ref{radical}) sí lo son. Así que modificamos una vez más la pregunta: ¿Es posible recuperar el \emph{radical} de $\langle S\rangle$ a partir de $\V(S)$? Veamos que ahora la respuesta es afirmativa.
+Aún así, todavía no es posible recuperar $\langle S\rangle$ a partir de $\V(S)$: Por ejemplo, en $\A^1_k$, $\{0\}=\V(\{x\})=\V(\{x^2\})$, pero $\langle x\rangle\neq\langle x^2\rangle$. Sin embargo, estamos un poco más cerca: aunque los ideales no son iguales, sus \emph{radicales} (\ref{radical}) sí lo son. Así que modificamos una vez más la pregunta: ¿Es posible recuperar el \emph{radical} de $\langle S\rangle$ a partir de $\V(S)$? Veamos que ahora la respuesta es afirmativa.
 
 Sea $X\subseteq \Ank$ un subconjunto arbitrario. Definimos $\I(X)$ como el conjunto de $f\in k[x_1,\ldots,x_n]$ tales que $f(x)=0$ para todo $x\in X$. 
 
@@ -150,7 +150,7 @@ Por lo tanto, si $A$ es un anillo noetheriano, entonces $A[x_1,\dots,x_n]$ tambi
 \[ \V(S) = \V(\langle S \rangle) = \V(\langle f_1,\dots,f_r\rangle) =  \V(\{f_1,\dots,f_r\}) \]
 
 \begin{defi}
-Decimos que un cuerpo $\K$ es \textbf{algebraicamente cerrado} si todo polinomio no constante en $\K[x]$ tiene una raíz en $k$.
+Decimos que un cuerpo $k$ es \textbf{algebraicamente cerrado} si todo polinomio no constante en $k[x]$ tiene una raíz en $k$.
 \end{defi}
 
 \begin{defi}\label{radical}
@@ -191,7 +191,7 @@ Antes de dar la prueba del teorema veamos el siguiente lema, que tiene importanc
 \end{lemma}
 
 \begin{proof}
- Como $I\neq k[x_1,\ldots,x_n]$, está contenido en un ideal maximal $\m$. El cociente $K=k[x_1,\ldots,x_n]/\m$ es una extensión finita de $k$ por \cite[Teorema 4.10]{reid} o \cite[Corolario 5.24]{am}. Como $k$ es algebraicamente cerrado, deducimos que $k=K$. Por otro lado, todo polinomio $f\in\m$ (en particular todo $f\in I$) se anula en el punto $P=(\bar{x_1},\ldots,\bar{x_n})\in\A^n_K$. Así que $P\in\V(I)$ y por tanto $\V(I)\neq \emptyset$.
+ Como $I\neq k[x_1,\ldots,x_n]$, está contenido en un ideal maximal $\m$. El cociente $K=k[x_1,\ldots,x_n]/\m$ es una extensión finita de $k$ por \cite[Teorema 4.10]{reid} o \cite[Corolario 5.24]{am}. Como $k$ es algebraicamente cerrado, deducimos que $k=K$. Por otro lado, todo polinomio $f\in\m$ (en particular todo $f\in I$) se anula en el punto $P=(\bar{x}_1,\ldots,\bar{x}_n)\in\A^n_K$. Así que $P\in\V(I)$ y por tanto $\V(I)\neq \emptyset$.
 \end{proof}
 
 \begin{proof}[Prueba del teorema] Sea $f\in\I(\V(I))$. Sabemos que $I=\gene{f_1,\dotsc,f_m}$. Entonces es claro que que si $g=1-yf$, el conjunto $\{f_1,\dotsc,f_m,g\}$ no tiene ceros en común, donde $y$ es una nueva variable. Por el Lema anterior, el ideal $\gene{f_1,\dotsc,f_m,g}$ debe ser el total, luego $\exists g_1,\dotsc,g_m,g_y \in k[x_1,\dotsc,x_n,y]$ tales que
@@ -207,7 +207,7 @@ De donde se deduce que $f^r\in I$.
 
 Vamos a probar también el corolario \ref{correspondencia}.
 \begin{proof}[Prueba del corolario]
-Veamos que $\mathcal{I}$ y $\mathcal{V}$ inducen una biyección entre el conjunto de subconjuntos algebraicos de $\mathbb{A}^n$ y el conjunto de ideales radicales de $\mathbb{K}[x_1,\dots,x_n]$. Sea $X$ un conjunto algebraico e $I$ el ideal radical correspondiente, vamos a comprobar que $\mathcal{V}(\mathcal{I}(X))=X$ y que $\mathcal{I}(\mathcal{V}(I))=I $. La segunda igualdad se tiene directamente del teorema \ref{Null}.  Claramente por definición $\mathcal{V}(\mathcal{I}(X))\supseteq X$. Para la otra contención, si $X$ es algebraico, entonces $X=\mathcal{V}(R)$ para algún conjunto de polinomios $R$. Utilizando que $\mathcal{I}(\mathcal{V}(R))\supseteq R$, se deduce aplicando $\mathcal{V}$ a ambos lados que $\mathcal{V}(\mathcal{I}(X))\subseteq \mathcal{V}(R)=X$.
+Veamos que $\mathcal{I}$ y $\mathcal{V}$ inducen una biyección entre el conjunto de subconjuntos algebraicos de $\mathbb{A}^n$ y el conjunto de ideales radicales de $k[x_1,\dots,x_n]$. Sea $X$ un conjunto algebraico e $I$ el ideal radical correspondiente, vamos a comprobar que $\mathcal{V}(\mathcal{I}(X))=X$ y que $\mathcal{I}(\mathcal{V}(I))=I $. La segunda igualdad se tiene directamente del teorema \ref{Null}.  Claramente por definición $\mathcal{V}(\mathcal{I}(X))\supseteq X$. Para la otra contención, si $X$ es algebraico, entonces $X=\mathcal{V}(R)$ para algún conjunto de polinomios $R$. Utilizando que $\mathcal{I}(\mathcal{V}(R))\supseteq R$, se deduce aplicando $\mathcal{V}$ a ambos lados que $\mathcal{V}(\mathcal{I}(X))\subseteq \mathcal{V}(R)=X$.
 
 
 \end{proof}
@@ -234,7 +234,7 @@ Sea $f(x,y,z) = \sum_{i,j,k}a_{i,j,k}x^iy^jz^k \in \mathcal{I}(\mathcal{V}(I))$.
 \[ f(x,y,0) = \sum_{i,j}a_{i,j,0}x^iy^j = 0 \]
 Como estamos en cuerpo algebraicamente cerrado, $\K$ no puede ser finito, por lo que se deduce que $a_{ij0}=0$ $\forall i,j$.
 Similarmente:
-\[ f(0,0,z) = 0 = \sum_{k}a_{0,0,k}z^k = 0 \Rightarrow a_{0,0,z} = 0 \]
+\[ f(0,0,z) = 0 = \sum_{k}a_{0,0,k}z^k = 0 \Rightarrow a_{0,0,k} = 0 \]
 Luego para un polinomio no trivial, $k ≥ 1$ y $i ≥ 1$ ó $j ≥ 1$. Esto se traduce a que podemos sacar factor común $z$ y $x$ ó $y$:
 \[ f(x,y,z) = z \sum_{i,j,k ≥ 1} a_{i,j,k} x^iy^jz^{k-1} = z(x\cdot g(x,y,z)+y\cdot h(x,y,z)) \in \langle zx,zy \rangle \]
 Entonces $\langle xz,zy\rangle = \sqrt{\langle x²z,z²y\rangle}$.
@@ -472,7 +472,7 @@ La proposición anterior no es cierta para conjuntos algebraicos arbitrarios: en
 Si $a\in A$ que no sea divisor de cero ni unidad, entonces los primos minimales de $\langle a\rangle$ tienen altura $1$. El recíproco también es cierto.
 \end{teorema}
 \begin{proof}
-Probemos primero el recíproco. $\I(X)=\langle f\rangle =\langle g_1\cdots g_r\rangle$ donde los $g_i$ son irreducibles. Los primos minimales de $\I(X)$ son los $\langle g_i\rangle$, por lo que $\langle g_i\rangle$ tiene altura $1$, es decir, $\{0\}\subsetneq \langle g_i\rangle$ y no hay más primos intermedios. Entonces tendríamos que probar que $dim k[x_1,\dots,x_n]/\langle g_i\rangle =n-1$. El siguiente paso sería completar la cadena anterior hasta una de longitud $n-1$. Esta prueba no se completa en clase.
+Probemos primero el recíproco. $\I(X)=\langle f\rangle =\langle g_1\cdots g_r\rangle$ donde los $g_i$ son irreducibles. Los primos minimales de $\I(X)$ son los $\langle g_i\rangle$, por lo que $\langle g_i\rangle$ tiene altura $1$, es decir, $\{0\}\subsetneq \langle g_i\rangle$ y no hay más primos intermedios. Entonces tendríamos que probar que $\dim k[x_1,\dots,x_n]/\langle g_i\rangle =n-1$. El siguiente paso sería completar la cadena anterior hasta una de longitud $n-1$. Esta prueba no se completa en clase.
 \end{proof}
 
 \begin{defi}
@@ -495,9 +495,7 @@ En $\mathbb{A}^4$, el conjunto $X=Y\cup Z$ donde $Y=\{x_1=0,x_2=0\}$ y $Z=\{x_3=
 
 
 
-\section{Funciones racionales}
-
-Además de las funciones regulares, en Geometría Algebraica juegan un papel fundamental las llamadas funciones racionales. Éstas son funciones que sólo están definidas en un abierto de una variedad, no en la variedad completa. Gracias a que los abiertos de Zariski son grandes, podemos operar con funciones racionales como si se tratara de funciones regulares.
+\section{Conjuntos multiplicativos}
 
 \begin{defi}
 Un conjunto $S\subseteq A$ es multiplicativo si cumple
@@ -524,7 +522,7 @@ Probar que estas operaciones están bien definidas y que dotan de estructura de 
 \end{ejer}
 
 
-Ahora tenemos un homomorfismo inducido $\varphi: A\to S^{-1}A$ tal que $a\mapsto \frac{a}{1}$. Veamos quién es el $\ker{\varphi}$. Se tiene que $a\in\ker{\varphi}=\{a\in A\mid \frac{a}{1}=\frac{0}{1}\}\Leftrightarrow \exists s\in S$ tal que $as=0$. Entonces $\varphi$ es inyectivo si y solo si $S$ no contiene divisores de cero.
+Ahora tenemos un homomorfismo inducido $\varphi: A\to S^{-1}A$ tal que $a\mapsto \frac{a}{1}$. Veamos quién es el $\ker{\varphi}$. Se tiene que $a\in\ker{\varphi}=\{a\in A\mid \frac{a}{1}=\frac{0}{1}\}\Leftrightarrow \exists s\in S$ tal que $as=0$. Entonces $\varphi$ es inyectivo si y solo si $S$ no contiene divisores de cero (incluido el 0).
 
 \begin{observaciones}
 Si $s\in S$, entonces $\frac{s}{1}\frac{1}{s}=\frac{1}{1}$, por lo que $\frac{s}{1}\in (S^{-1}A)^*$. En particular, si $S\subseteq A^*$, entonces $\varphi$ es un isomorfismo, pues es inyectivo por ser $S$ dominio de integridad y $\varphi(a s^{-1})=\frac{a}{s}$, puesto que $a s^{-1}s=a=a1$, luego es sobreyectivo.
@@ -556,8 +554,8 @@ Un anillo es {\bf local } si tiene un único ideal maximal $\mathfrak{m}$. En ta
      a\arrow[rr, mapsto] & & \overline{\frac{a}{1}}
 \end{tikzcd}
 \]
-Entonces $\ker{\psi}$ está definido como $a\in A\mid \overline{\frac{a}{1}}=\overline{0}\Leftrightarrow \frac{a}{1}\in\m\Leftrightarrow\frac{a}{1}=\frac{b}{c}\ (b\in\p, c\notin\p)\Leftrightarrow acd=bd\ (d\notin p).$ Como $b\in\p$ entonces $bd\in\p$ y por tanto $acd\in\p$. Como $d\notin\p$ entonces $ac\in\p$, y como $c\notin\p$, $a\in\p$. Por tanto, $\ker{\psi}=\p$. Por tanto, existe un homomorfismo inyectivo $\overline{\psi}:A/\p\to A_\p/\m$. Es decir, podemos ver $A/\p$ (que es dominio por ser $\p$ primo) dentro del cuerpo $A_\p/\m$, que está formado pro fracciones de elementos de $A/\p$. Por tanto se trata nada más y nada menos que del cuerpo de fracciones de $A/\p$. En particular, si $A_\p$ es cuerpo, $A/\p\cong A_\p/\m$.
-\item $k[x,y]$, $\mathfrak{p}=\langle x\rangle$. $A_\mathfrak{p}=\{\frac{f(x,y)}{g(x,y)}\mid x\not\mid g(x,y)(\Leftrightarrow g(0,y)\neq 0)\}$. Entonces $\mathfrak{m}=\{\frac{xf(x,y)}{g(x,y)}\mid g(0,y)\neq 0\}$. $A_\mathfrak{p}/\mathfrak{m}=Frac(k[x,y](\langle x\rangle y)\cong k(y)$. 
+Entonces $\ker{\psi}$ está definido como $a\in A\mid \overline{\frac{a}{1}}=\overline{0}\Leftrightarrow \frac{a}{1}\in\m\Leftrightarrow\frac{a}{1}=\frac{b}{c}\ (b\in\p, c\notin\p)\Leftrightarrow acd=bd\ (d\notin \p).$ Como $b\in\p$ entonces $bd\in\p$ y por tanto $acd\in\p$. Como $d\notin\p$ entonces $ac\in\p$, y como $c\notin\p$, $a\in\p$. Por tanto, $\ker{\psi}=\p$. Por tanto, existe un homomorfismo inyectivo $\overline{\psi}:A/\p\to A_\p/\m$. Es decir, podemos ver $A/\p$ (que es dominio por ser $\p$ primo) dentro del cuerpo $A_\p/\m$, que está formado pro fracciones de elementos de $A/\p$. Por tanto se trata nada más y nada menos que del cuerpo de fracciones de $A/\p$. En particular, si $A_\p$ es cuerpo, $A/\p\cong A_\p/\m$.
+\item $k[x,y]$, $\mathfrak{p}=\langle x\rangle$. $A_\mathfrak{p}=\{\frac{f(x,y)}{g(x,y)}\mid x\not\mid g(x,y)(\Leftrightarrow g(0,y)\neq 0)\}$. Entonces $\mathfrak{m}=\{\frac{xf(x,y)}{g(x,y)}\mid g(0,y)\neq 0\}$. $A_\mathfrak{p}/\mathfrak{m}=Frac(k[x,y]/\langle x\rangle) \cong k(y)$. 
 \end{enumerate}
 \end{ej}
 
@@ -572,7 +570,8 @@ Entonces $\ker{\psi}$ está definido como $a\in A\mid \overline{\frac{a}{1}}=\ov
 Un conjunto algebraico $X\subseteq\A^n$ es irreducible si y solo si todo abierto no vacío de $X$ es denso.
 \end{prop}
 
-\subsection{Funciones racionales}
+\section{Funciones racionales}
+Además de las funciones regulares, en Geometría Algebraica juegan un papel fundamental las llamadas funciones racionales. Éstas son funciones que sólo están definidas en un abierto de una variedad, no en la variedad completa. Gracias a que los abiertos de Zariski son grandes, podemos operar con funciones racionales como si se tratara de funciones regulares.
 
 Vamos a definir 
 \begin{defi}
@@ -590,7 +589,7 @@ Sea $X\subseteq\A^n$ un conjunto algebraico. Una función racional en $X$ es un 
 En $\A^1_{\C}$, $f(x)=\frac{x^2+x+1}{x^3-1}$ definida en $U=\A_\C\setminus\{1,-\frac{1}{2}\pm\frac{\sqrt{-3}}{2}$. En $X=\V(x^2+y^2-1)\subseteq\A^2_\C$, $f(x,y)=\frac{x+2y}{x^2-y^2}$ definida en $U=X\setminus\{(\pm\frac{1}{\sqrt{2}},\pm\frac{1}{\sqrt{2}})\}$.
 \end{ej}
 \begin{nota}
-Se denota $f: X-\to k$, y se sobreentiende que $U$ es el mayor abierto donde $f$ está definida.
+Se denota $f: X\dashrightarrow k$, y se sobreentiende que $U$ es el mayor abierto donde $f$ está definida.
 \end{nota}
 
 
@@ -599,7 +598,7 @@ Se denota $f: X-\to k$, y se sobreentiende que $U$ es el mayor abierto donde $f$
 \end{ejer}
 
 \begin{solucion}
-Las dos priemras propiedades son triviales así que vamos a probar la transitividad. 
+Las dos primeras propiedades son triviales así que vamos a probar la transitividad. 
 
 $(U,f)\sim (V,g)$ y $(V,g)\sim (W,h)$. Tenemos por un lado $f|_{U\cap V}=g|_{U\cap V}$ y por otro lado $g|_{V\cap W}=h|_{V\cap W}$. Entonces se deduce directamente que $f|_{U\cap V\cap W}=h|_{U\cap V\cap W}$. Como son funciones continuas en un abierto denso, se tiene entonces que son iguales en todo el espacio, por lo tanto $f|_{U\cap V}=h|_{U\cap V}$.
 \end{solucion}
@@ -625,11 +624,11 @@ Sean $U,V$ abiertos densos. Entonces, dado un abierto no vacío $W$, se tiene $(
 Sean entonces $(U,f)$ y $(V,g)$ dos funciones racionales en $Z$. Definimos su suma como la función racional $(U\cap V,f_{|U\cap V}+g_{|U\cap V})$, y su producto como la función racional $(U\cap V,f_{|U\cap V}\cdot g_{|U\cap V})$.
 
 \begin{prop}
- Con estas definiciones, el conjunto de funciones racionales en $Z$ es un cuerpo $\K(Z)$, llamado {\bf cuerpo de funciones} de $Z$.
+ Con estas definiciones, el conjunto de funciones racionales en $Z$ es un cuerpo $\KK(Z)$, llamado {\bf cuerpo de funciones} de $Z$.
 \end{prop}
 
 \begin{proof}
- Probaremos únicamente la existencia de inversos, el resto de propiedades se deja como ejercicio. Sea $f:Z\dashrightarrow k$ una función racional no nula, veamos que existe una función racional $g$ tal que $f\cdot g=1$. Sea $U\subseteq Z$ un abierto tal que $\V(x)\neq 0$ y $f(x)=u(x)/\V(x)$ para todo $x\in U$, con $u,v\in k[x_1,\ldots,x_n]$, y sea $V\subseteq U$ el abierto definido por $u(x)\neq 0$. Es claro que la función racional $g:Z\dashrightarrow k$ dada por $(V,v/u)$ es la inversa de $f$.  
+ Probaremos únicamente la existencia de inversos, el resto de propiedades se deja como ejercicio. Sea $f:Z\dashrightarrow k$ una función racional no nula, veamos que existe una función racional $g$ tal que $f\cdot g=1$. Sea $U\subseteq Z$ un abierto tal que $v(x)\neq 0$ y $f(x)=u(x)/v(x)$ para todo $x\in U$, con $u,v\in k[x_1,\ldots,x_n]$, y sea $V\subseteq U$ el abierto definido por $u(x)\neq 0$. Es claro que la función racional $g:Z\dashrightarrow k$ dada por $(V,v/u)$ es la inversa de $f$.  
 \end{proof}
 
 
@@ -638,7 +637,7 @@ El cuerpo de funciones se puede calcular directamente conociendo el anillo de co
 Si definimos $S=\{f:X\to k\mid f$ no se anula en algún abierto $U\subseteq X\}$, tenemos que $1\in S$ y $f,g\in S\Rightarrow fg\in S$, por lo que $S$ es multiplicativo. Entonces 
 \[
 \begin{tikzcd}
-S^{-1}\calA(X)\arrow[r,"\cong"] & K(X)\\
+S^{-1}\calA(X)\arrow[r,"\cong"] & \KK(X)\\
 \frac{f}{g}\arrow[r,mapsto] & x\mapsto\frac{f(x)}{g(x)}.
 \end{tikzcd}
 \]
@@ -673,7 +672,7 @@ Sin embargo, hay que tener cuidado de distinguir entre una función racional $f$
  Sea $Z\subseteq\Ank$ una variedad, $x\in Z$ y $f,g:Z\dashrightarrow k$ dos funciones racionales definidas en $x$. Probar que su suma y su producto también están definidas en $x$.
 \end{ejer}
 
-Por tanto, el conjunto $\OO_{Z,x}$ de funciones racionales definidas en $x$ es un subanillo de $\K(Z)$.
+Por tanto, el conjunto $\OO_{Z,x}$ de funciones racionales definidas en $x$ es un subanillo de $\KK(Z)$.
 
 \begin{defi}
  El {\bf anillo local de $Z$ en $x$} es el anillo $\OO_{Z,x}$ de funciones racionales definidas en $x$.
@@ -706,10 +705,10 @@ El anillo local $\OO_{Z,x}$ también se puede obtener a partir de $\calA(Z)$:
  Si $U\subseteq Z$ es un abierto, se dice que $f$ {\bf está definida en $U$} (o que es {\bf regular} en $U$) si está definida en todo punto de $U$. El conjunto de puntos de $Z$ donde $f$ está definida es un abierto llamado {\bf abierto de definición} de $f$. 
 
 
-Toda función racional $f$ de $Z$ definida en $U$ define una (verdadera) aplicación $f:U\to k$. Del ejercicio \ref{sumaproddefinida} se deduce inmediatamente que la suma y el producto de funciones racionales definidas en $U$ están también definidas en $U$. Por tanto, el conjunto de funciones racionales definidas en $U$ forma un subanillo de $\K(Z)$, que denotaremos $\OO_Z(U)$.
+Toda función racional $f$ de $Z$ definida en $U$ define una (verdadera) aplicación $f:U\to k$. Del ejercicio \ref{sumaproddefinida} se deduce inmediatamente que la suma y el producto de funciones racionales definidas en $U$ están también definidas en $U$. Por tanto, el conjunto de funciones racionales definidas en $U$ forma un subanillo de $\KK(Z)$, que denotaremos $\OO_Z(U)$.
 
 \begin{prop}
- Sea $Z\subseteq\Ank$ una variedad afín y $f\in\calA(Z)$ no nulo. Denotemos por $U_f$ el abierto $Z\backslash \V(\{f\})$ formado por los $x\in Z$ tales que $f(x)\neq 0$. Entonces $\OO_Z(U_f)\subseteq\K(Z)$ es igual a $\calA(Z)_f$, el localizado de $\calA(Z)$ con respecto al conjunto multiplicativo de las potencias de $f$.
+ Sea $Z\subseteq\Ank$ una variedad afín y $f\in\calA(Z)$ no nulo. Denotemos por $U_f$ el abierto $Z\backslash \V(\{f\})$ formado por los $x\in Z$ tales que $f(x)\neq 0$. Entonces $\OO_Z(U_f)\subseteq\KK(Z)$ es igual a $\calA(Z)_f$, el localizado de $\calA(Z)$ con respecto al conjunto multiplicativo de las potencias de $f$.
 \end{prop}
 
 \begin{proof}
