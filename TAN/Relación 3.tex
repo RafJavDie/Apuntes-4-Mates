@@ -74,6 +74,26 @@ $$\displaystyle{\zeta(s)-\frac{1}{s-1}=\sum\limits_{n\leq x}\frac{1}{n^s}+\frac{
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{itemize}
+\item[(a)] Sea $x>1$. Observe que $e^{-\pi n^2x}\leq e^{-\pi nx}$, para todo $n\in\N$. Se deduce por tanto
+\[\sum_{n=1}^{\infty}e^{-\pi n^2x}\le\sum_{n=1}^{\infty}e^{-\pi nx}=\frac{1}{e^{\pi x}-1}.\]
+Verifiquemos que $\frac{1}{e^{\pi x}-1}\le\frac{21}{20}e^{-\pi x}$. Es fácil obtener que 
+\[\frac{1}{e^{\pi x}-1}\le\frac{21}{20}e^{-\pi x}\quad\Leftrightarrow\quad e^{\pi x}\ge 21.\]
+Dado que $e^{\pi}\approx 23.1406$ obtenemos el resultado.
+\item[(b)] Sea $\sigma\in(0,1)$. Por la \emph{Proposición 3.2.8} se verifica
+\[\pi^{-\frac{\sigma}{2}}\Gamma(\sigma/2)\zeta(\sigma)=\frac{1}{\sigma(\sigma-1)}+\int_{1}^{\infty}(x^{\frac{\sigma}{2}}+x^{\frac{1-\sigma}{2}})\frac{\theta(x)-1}{2x}dx.\]
+Acotemos los dos sumandos:
+\[\frac{1}{\sigma(\sigma-1)}\le\frac{1}{\frac{1}{2}(\frac{1}{2}-1)}=-4;\]
+\[\int_{1}^{\infty}(x^{\frac{\sigma}{2}}+x^{\frac{1-\sigma}{2}})\frac{\theta(x)-1}{2x}dx\le\int_{1}^{\infty}(\theta(x)-1)dx\]
+\[\int_{1}^{\infty}\theta(x)-1dx\le^{(a)}\frac{21}{10}\int_{1}^{\infty}e^{-\pi x}dx=\frac{21}{10\pi e^{\pi}}\approx 0.0288.\]
+Por tanto 
+\[\pi^{-\frac{\sigma}{2}}\Gamma(\sigma/2)\zeta(\sigma)<1.9.\]
+\item[(c)] Sea $\sigma\in(0,1)$. En el apartado anterior hemos probado 
+\[\pi^{-\frac{\sigma}{2}}\Gamma(\sigma/2)\zeta(\sigma)\le -1.9\textrm{.}\] 
+Dado que se verifica $\Gamma(\sigma/2)=\int_{0}^{\infty}t^{(\frac{\sigma}{2}-1)}e^{-t}dt>0$, obtenemos 
+\[\zeta(\sigma)\le \frac{-1.9}{\pi^{-\frac{\sigma}{2}}\Gamma(\sigma/2)}<0\textrm{.}\]
+\item[(d)] Acabamos de probar que $\zeta(\sigma)<0$, para todo $\sigma\in(0,1)$. Además se verifica que $\zeta(0)=\frac{-1}{2}$, y $\zeta(1)=\infty$. Concluimos por lo tanto que la función $\zeta$ no se anula en el segmento $[0,1]$.
+\end{itemize} 
 \end{solucion}
 \newpage
 
