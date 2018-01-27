@@ -121,17 +121,17 @@ Veamos que, recíprocamente, todo punto de $Z$ está en la imagen de $\varphi$. 
 \begin{ejer}\label{productoporpunto}
  Si $X$ es un conjunto algebraico e $Y=\{y\}\subseteq\Pmk$ contiene un solo punto, probar que el producto $X\times Y$ es un conjunto algebraico isomorfo a $X$.
 \end{ejer}
-{\large\bf COSAS QUE NO SÉ DONDE VAN}
+
 \begin{prop}
-Si $g_l(\underline{x},\underline{y})$ son polinomios homogéneos en $\underline{x}$ e $\underline{y}$ pro separado, entonces $\V(\{g_l\})$ es un conjunto algebraico en $\mathbb{P}^n\times\mathbb{P}^m$. 
+Si $g_l(\underline{x},\underline{y})$ son polinomios homogéneos en $\underline{x}$ e $\underline{y}$ por separado, entonces $\V(\{g_l\})$ es un conjunto algebraico en $\mathbb{P}^n\times\mathbb{P}^m$. 
 \end{prop}
 \begin{proof}
-Hay que probar que si $g$ es homogéneo en $x$ e $y$ por separado, $V(g)=V(g_1,\dots,g_s)$ con $g_l$ e la forma $h_l(x_iy_j)$. Si $\deg_x(g)=\deg_y(g)$, entonces $g(x,y)=h(\phi(x,y))=h(x_iy_j)$ ($h_l(x_iy_j)$ coge el polinomio en $z$ de la imagen del producto mediante $\phi$ y lo evalúa en $x_iy_j$). Si $\deg_x(g)<\deg_y(x)$, entonces $V(g)=V(x_0^dg_1,\dots, x_n^dg), d=\deg_y(x)-\deg_x(g)$
+Hay que probar que si $g$ es homogéneo en $x$ e $y$ por separado, $V(g)=V(g_1,\dots,g_s)$ con $g_l$ de la forma $h_l(x_iy_j)$. Si $\deg_x(g)=\deg_y(g)$, entonces $g_l(x,y)=h_l(\phi(x,y))=h_l(x_iy_j)$ ($h_l(x_iy_j)$ coge el polinomio en $z$ de la imagen del producto mediante $\phi$ y lo evalúa en $x_iy_j$). Si $\deg_x(g)<\deg_y(x)$, entonces $V(g)=V(x_0^dg_1,\dots, x_n^dg), d=\deg_y(g)-\deg_x(g)$
 \end{proof}
 
 Los conjuntos algebraicos en $\mathbb{P}^n\times\mathbb{A}^m$ son de la forma $\V(h_1,\dots,h_r)$ con $h_l(x,y)\in k[x_0,\dots, x_n,y_1,\dots, y_m]$ homogéneos en las $x$. 
 
-{\large\bf HASTA AQUÍ}
+
 
 \begin{prop}\label{productoirreducible}
  Sean $X\subseteq\Pnk$ e $Y\subseteq\Pmk$ conjuntos algebraicos (respectivamente variedades cuasi-proyectivas). El producto $X\times Y$ es un conjunto algebraico (resp. una variedad cuasi-proyectiva) en $\PP^{nm+n+m}_k$.
@@ -199,7 +199,7 @@ Veamos ahora qué pasa si el grado de $f_k$ en las $x$ y en las $y$ es distinto.
  \begin{enumerate}
   \item Si $X$ e $Y$ son variedades afines y $\psi:X\to Y$ es un morfismo, la aplicación grafo $X\to X\times Y$ dada por $x\mapsto (x,\psi(x))$ es una inmersión cerrada por el ejercicio \ref{grafo}.
   \item Si $X=\V(xy-1)\subseteq\A^2_k$, el morfismo $X\to\A^2_k$ dado por $(x,y)\mapsto (x,0)$ es una inmersión que no es abierta ni cerrada. 
-  \item $\varphi:\mathbb{A}^1\to\mathbb{A}^2:t\mapsto(t^2,t^3)$ es un morfismo inyectivo con imagen abierta que no es inmersión abierta. $\varphi(\mathbb{A}^1)=\V(y^2-x^3)=X$. 
+  \item $\varphi:\mathbb{A}^1\to\mathbb{A}^2:t\mapsto(t^2,t^3)$ es un morfismo inyectivo con imagen cerrada que no es inmersión cerrada. $\varphi(\mathbb{A}^1)=\V(y^2-x^3)=X$. 
   \item Si $X\subseteq\mathbb{A}^1$ es algebraico entonces la inclusión es cerrada. Si es abierto, la inclusión es abierta.
   \item $\varphi:\V(xy-z)\to\mathbb{A}^1:(x,y)\mapsto y$ es inmersión abierta.
  \end{enumerate}
@@ -219,7 +219,7 @@ Veamos ahora qué pasa si el grado de $f_k$ en las $x$ y en las $y$ es distinto.
 \end{prop}
 
 \begin{proof}
- Sea $j:X\hookrightarrow\Pnk$ la inclusión. Como $X$ es proyectiva, $j$ es una inmersión cerrada. La aplicación $\iota:X\to \Pnk\times Y$ dada por $\iota(x)=(x,\psi(x))$ es entonces también una inmersión cerrada (es  la composición del grafo de $\psi$ $X\to X\times Y$, que ya hemos visto que es una inmersión cerrada, con la inmersión $X\times Y\to\Pnk\times Y$). Como $\psi=\pi\circ\iota$, concluimos que $\psi$ es proyectivo. 
+ Sea $j:X\hookrightarrow\Pnk$ la inclusión. Como $X$ es proyectiva, $j$ es una inmersión cerrada. La aplicación $\iota:X\to \Pnk\times Y$ dada por $\iota(x)=(x,\psi(x))$ es entonces también una inmersión cerrada (es  la composición del grafo de $\psi$, $X\to X\times Y$, que ya hemos visto que es una inmersión cerrada, con la inmersión $X\times Y\to\Pnk\times Y$). Como $\psi=\pi\circ\iota$, concluimos que $\psi$ es proyectivo. 
 \end{proof}
 
 La propiedad fundamental de los morfismos proyectivos es la siguiente:
@@ -266,7 +266,7 @@ No daremos aquí la prueba, que puede encontrarse en \cite[I.5.2]{sha}.
  Sea $\phi:X\to Y$ un morfismo de variedades afines, y $\phi^\star:\calA(Y)\to\calA(X)$ el homomorfismo de $k$-álgebras correspondiente. El morfismo $\phi$ se dice {\bf finito} si $\calA(X)$ es un $\phi^\star(\calA(Y))$-módulo finitamente generado.
 \end{defi}
 
-Por \cite[Proposición 5.1]{am}, esto es equivalente a decir que todo elemento de $\calA(X)$ es entero sobre $\phi^\star(\calA(Y))$, es decir, satisface un polinomio mónico con coeficientes en $\calA(Y)$.
+Por \cite[Proposición 5.1]{am}, esto es equivalente a decir que todo elemento de $\calA(X)$ es entero sobre $\phi^\star(\calA(Y))$, es decir, satisface un polinomio mónico con coeficientes en $\phi^\star(\calA(Y))$.
 
 \begin{ejs}\emph{
  \begin{enumerate}
@@ -285,7 +285,7 @@ Si $Y$ es cuasi-proyectiva, entonces $Y=\bigcup Y_i$ unión de abiertos afines a
 \begin{proof}
 Si $Z$ es cuasi-afin, entonces $Z=\overline{Z}\setminus Z_0$, siendo todos estos conjuntos afines y $Z_0$ cerrado. Por tanto $Z=\overline{Z}\cap \bigcup_{i=1}^r(\overline{Z}\cap U(f_i))$. En particular, $U_0=\mathbb{A}^n\setminus Z_0=\bigcup_{i=1}^rU(f_i)=\mathbb{A}^n\setminus \V(f_i)$. 
 
-Recordemos que $U(f_i)\cong \V(yf(x_1,\dots x_n)-1)\subseteq\mathcal{A}^{n+1}$, lo lo que $\overline{Z}\cap U(f_i)$ es cerrado en $\mathbb{A}^{n+1}$. 
+Recordemos que $U(f_i)\cong \V(yf(x_1,\dots x_n)-1)\subseteq\mathbb{A}^{n+1}$, lo lo que $\overline{Z}\cap U(f_i)$ es cerrado en $\mathbb{A}^{n+1}$. 
 \end{proof}
 
 \begin{defi}
@@ -293,7 +293,7 @@ $\varphi:X\to Y$ es finito si para $Y=\bigcup Y_i$ unión de abiertos afines, $\
 \end{defi}
 
 \begin{prop}
-Sea $A\subseteq B$ una extensión. Si $B$ es una $A$-álgebra finitamente engenerada, entonces $B$ es entera sobre $A$ si y solo si $B$ es $A$-módulo finitamente generado. La implicación inversa es cierta en general.
+Sea $A\subseteq B$ una extensión. Si $B$ es una $A$-álgebra finitamente generada, entonces $B$ es entera sobre $A$ si y solo si $B$ es $A$-módulo finitamente generado. La implicación inversa es cierta en general.
 \end{prop}
 
 \begin{prop}
@@ -366,7 +366,7 @@ Un D.I. $A$ es íntegramente cerrado si es int.cerrado en $Frac(A)$.
 \begin{ejs}\mbox{}
 \begin{enumerate}
 	\item $\mathbb{Z}$ es íntegramente cerrado.
-	\item Cualquier DFU es íntegramente cerrado, ya que si $a/b \in Frac(A)$ es entero sobre $A$, existe $f(x) = x^d+a{d-1}x^{d-1}+dots a_1x+a_0 \in A[x]$ con $f(a/b) = 0$. Entonces $a^d+a_{d-1}a^{d-1}b+\dots+a_1ab^{d-1}+a_0b^d = 0$, luego $b | a^d$, luego $b=1$.
+	\item Cualquier DFU es íntegramente cerrado, ya que si $a/b \in Frac(A)$ es entero sobre $A$, existe $f(x) = x^d+a{d-1}x^{d-1}+\dots +a_1x+a_0 \in A[x]$ con $f(a/b) = 0$. Entonces $a^d+a_{d-1}a^{d-1}b+\dots+a_1ab^{d-1}+a_0b^d = 0$, luego $b | a^d$, luego $b=1$.
 	\item $\mathbb{Z}[\sqrt{5}] $ no es íntegramente cerrado, ya que su cuerpo de fracciones es $\mathbb{Q}(\sqrt{5})$, el elemento $\varphi = (1+\sqrt{5})/2$ es raíz del polinomio mónico $x^2-x-1$, pero no está en $\mathbb{Z}[\sqrt{5}]$.
 \end{enumerate}
 \end{ejs}
@@ -414,7 +414,7 @@ Si $a>0$, sea $h\in\m_x^{a-1}$. Entonces $h\m_x\subseteq\m_x^a\subseteq J$, es d
 La hipótesis de que $Z$ tenga dimensión $\geq 2$ es fundamental, como muestra el ejemplo $Z=\A^1_k$, $x=0$, $f(t)=1/t$.
 
 \begin{teorema}
-Si $A$ es una $k$-álgebra finitamente generada y $B$ la clasurua íntegra de $A$, entonces
+Si $A$ es una $k$-álgebra finitamente generada y $B$ la clausura íntegra de $A$, entonces
 \begin{enumerate}
 \item $B$ es una $k$-álgebra finitamente generada.
 \item $B$ es un $A$-módulo finitamente generado.
@@ -433,7 +433,7 @@ En primer lugar, $\tilde A$ es un dominio de integridad por estar contenido en u
 \end{proof}
 
 \begin{ejs}
-Vimos que $X\equiv y^2=x^3+x^2$ no era normal, pues teníamos un elemento $t=y/x\in A=k[x,y]/\langle y^2-x^3-x^2\rangle$ tal que $t^2=x+1$, y $t$ era entero sobre $A$, pero $t\notin A$. Sin embargo teníamos un isomorfismo entre $X$ y $\mathbb{A}$ $(x,y)\mapsto y/x$ y $t\mapsto (t^2-1,t(t^2-1))$. Entonces tenemos un isomorfismo $k(y/x)=K=Frac(A)\cong k(t)$.  Veamos que $k[t]$ es la clasurua íntegra de $A$ en $K$. $k[t]$ es DFU, luego es íntegramente cerrado. Como $A\subseteq k[t]\subseteq =K$, y $y/x\in k[t]$, la clausura íntegra tiene que contener a $k[t]$, pero ya es íntegramente cerrado, así que listo.
+Vimos que $X\equiv y^2=x^3+x^2$ no era normal, pues teníamos un elemento $t=y/x\in A=k[x,y]/\langle y^2-x^3-x^2\rangle$ tal que $t^2=x+1$, y $t$ era entero sobre $A$, pero $t\notin A$. Sin embargo teníamos un isomorfismo entre $X$ y $\mathbb{A}$ $(x,y)\mapsto y/x$ y $t\mapsto (t^2-1,t(t^2-1))$. Entonces tenemos un isomorfismo $k(y/x)=K=Frac(A)\cong k(t)$.  Veamos que $k[t]$ es la clasurua íntegra de $A$ en $K$. $k[t]$ es DFU, luego es íntegramente cerrado. Como $A\subseteq k[t]\subseteq K$, y $y/x\in k[t]$, la clausura íntegra tiene que contener a $k[t]$, pero ya es íntegramente cerrado, así que listo.
 
 Así que $Y=\mathbb{A}$. $\varphi: Y\to X: t\mapsto (t^2-1,t(t^2-1))$ se corresponde a $A\hookrightarrow k[t]: x\mapsto t^2-1, y\mapsto t(t^2-1)$. 
 
@@ -453,7 +453,7 @@ El recíproco no es cierto en general, como podemos ver en el siguiente ejemplo.
 \begin{ejs}
 $X\equiv z^2=x^2+y^2$ es un cono, por lo que tiene un punto singular en $(0,0,0)$, pero sin embargo es normal (por lo tanto todo el cono es normal). Sea $A=\mathcal{A}(X)=k[x,y,z]/\langle z^2-x^2-y^2\rangle$. Por la forma que tiene la ecuación, observamos que $A$ es un $k[x,y]-$módulo finitamente generado por $\overline{1},\overline{z}$ (de hecho es un módulo libre porque estos generadores son una base). Entonces el cuerpo de fracciones $K(X)=k(x,y)[z]/\langle z^2-x^2-y^2\rangle$, que es una extensión finita de $k(x,y)$ de grado 2.  
 
-Tomamos un elemento de $K(X)$, $P(x,y,z)=f(x,y)+zg(x,y)$ con $f,g\in k(x,y)$, Si $g=0$ entonces $P(x,y,z)\in k(x,y)$, que por ser $k[x,y]$ DFU, si $P$ es entero, entonces $P\in k[x,y]$.  En general, cualquier elemento entero sobre $A$, entonces lo es sobre $k[x,y]$ por ser $A$ entero sobre $k[x,y]$ al ser un módulo finitamente generado. Por tanto $P$ es entero sobre $k[x,y]$ y por ser integramente cerrado, $P\in k[x,y]$, luego $P\in A$. Por tanto suponemos que $g\neq 0$, por lo que $P\notin k(x,y)$. Por lo tanto $g$ tiene grado 2 sobre $k(x,y)$. El único automorfismo no trivial $K(X)$ es el conjugado ($z\mapsto -z$), por lo que el polinomio mínimo de $P$ sobre $k(x,y)$ es
+Tomamos un elemento de $K(X)$, $P(x,y,z)=f(x,y)+zg(x,y)$ con $f,g\in k(x,y)$. Si $g=0$ entonces $P(x,y,z)\in k(x,y)$, que por ser $k[x,y]$ DFU, si $P$ es entero, entonces $P\in k[x,y]$.  En general, cualquier elemento entero sobre $A$, entonces lo es sobre $k[x,y]$ por ser $A$ entero sobre $k[x,y]$ al ser un módulo finitamente generado. Por tanto $P$ es entero sobre $k[x,y]$ y por ser integramente cerrado, $P\in k[x,y]$, luego $P\in A$. Por tanto suponemos que $g\neq 0$, por lo que $P\notin k(x,y)$. Por lo tanto $g$ tiene grado 2 sobre $k(x,y)$. El único automorfismo no trivial $K(X)$ es el conjugado ($z\mapsto -z$), por lo que el polinomio mínimo de $P$ sobre $k(x,y)$ es
 $$(T-f(x,y)-zg(x,y))(T-f(x,y)+zg(x,y))=T^2-2f(x,y)T+(f(x,y)^2-(x^2+y^2)g(x,y)^2).$$
 Observemos que este polinomio es mónico. Si $a\in A$ es entero, entonces existe $f$ mónico con coeficientes en $A$ tal que $f(a)=0$. Como $P$ es entero sobre $k[x,y]$, existe $R\in k[x,y][T]$ mónico tal que $R(P)=0$. En particular, $R$ tiene que ser múltiplo del anterior, y como es mónico y con coeficientes en $k[x,y]$, entonces también los del polinomio anterior.
 
