@@ -92,11 +92,24 @@ Si denotamos $d^k_n$ al $n$-ésimo elemento de la $k$-ésima fila, entonces tenemo
 d^1_n = p_{n+1}-p_n\\
 d^k_n = \abs{d_{n+1}^{k-1}-d_{n}^{k-1}}
 \end{gather*}
+Gilbreath observó que la primera columna de la tabla era siempre el número uno, o en otra palabras, $d^k_1 = 1$ $\forall k \geq 1$. Aunque nunca ha llegado a demostrarse, Andrew Odlyzko comprobó la conjetura hasta $k=10^{13}$ en 1993 \cite{odly}.
 \section{Preliminares}
 
 
 \section{Estudio computacional de la conjetura de Gilbreath}
-Utilizando una idea semejante a la que proporciona Odlyzko en \cite{odly}, programamos en C++ un algoritmo que nos permita comprobar experimentalmente la conjetura. El algoritmo es realmente eficiente, pues en un simple ordenador portatil permite comprobar la conjetura hasta $10^9$
+Utilizando una idea semejante a la que proporciona Odlyzko en \cite{odly}, programamos en C++ un algoritmo que nos permita comprobar experimentalmente la conjetura.
+
+La idea se basa en la siguiente observación.
+\begin{lemma}
+Para todo $k$ tal que $d^k_1=1$ y existe $m$ tal que $d^k_n \in \{0,2\}$ para todo $1<n \leq m$, entonces $d^{k+j}_1=1$ para todo $1<j \leq m$.
+\end{lemma}
+\begin{demo}
+Basta observar que $d^{k+1}_1=1$ y $d^{k+1}_n \in \{0,2\}$ para todo $1<n \leq m-1$, pues cada $d^{k+1}_n$ es el valor absoluto de la diferencia de números en $\{0,2\}$. Aplicando esto $m$ veces se demuestra el lema.
+\end{demo}
+
+Por lo tanto, podemos comprobar la conjetura eficientemente buscando filas que, tras el primer $1$, estén formadas por $0$ y $2$. Nuestra comprobación se basa en que la fila $645$ de la tabla tiene esta propiedad hasta una cantidad que aún no hemos encontrado. Este método tiene además la ventaja de que se puede implementar con uso de memoria constante, pues sólo necesitamos guardar en cada paso $645$ números y deshechar los $645$ números del paso anterior. Estos números se corresponden a la diagonal $d^{k+i}_{645-i}$ con $i=0,\dots,644$. Por simplifación, hemos computado previamente la primera diagonal que necesitamos.
+
+Para generar los números primos, hemos usado la librería primesieve \cite{primesieve}. El algoritmo es realmente eficiente, pues en un simple ordenador portátil permite comprobar la conjetura hasta $10^9$. Creemos que con un ordenador más potente podría superarse en poco tiempo la comprobación que Odlyzko hizo en $1993$, especialmente si tuviera una tarjeta gráfica de última generación y adaptando el código para CUDASieve \cite{cudasieve} en lugar de primesieve.
 
 \lstset{
 	language=C++,
@@ -123,48 +136,46 @@ Utilizando una idea semejante a la que proporciona Odlyzko en \cite{odly}, progr
 #include <iostream>
 #include <vector>
 
+// Número de pasos máximo
+static const long P = pow(10,9);
+
 // Comprueba la conjetura de Gilbreath hasta 10^9
 // usando ideas de Odlyzko
 int main () {
 	// Diagonal 645:
 	std::vector<uint64_t> nums 
-	{4703,12,0,6,4,2,0,2,0,0,2,2,0,4,2,0,0,2,2,
-	2,0,0,0,2,0,0,0,2,0,2,2,2,2,2,0,0,0,2,0,0,
-	0,2,0,2,2,2,2,0,0,2,2,0,0,0,0,0,0,2,2,2,2,
-	2,0,0,2,2,0,0,2,0,0,2,2,2,0,0,2,0,0,0,2,2,
-	2,2,0,0,2,0,2,0,0,0,0,2,0,0,2,0,0,0,2,2,2,
-	2,0,2,2,2,2,0,2,2,2,0,2,2,2,2,2,2,2,0,0,2,
-	2,2,2,0,0,2,2,2,2,2,2,2,0,0,0,2,2,0,2,0,2,
-	2,2,0,2,0,2,0,0,2,0,0,0,2,0,0,2,2,2,2,2,0,
-	0,0,0,2,2,0,0,2,0,2,0,2,2,2,2,0,2,0,2,0,0,
-	0,2,0,2,2,0,0,0,0,2,2,2,0,2,0,2,2,2,2,0,0,
-	2,0,2,0,0,2,0,0,0,0,0,0,2,0,2,2,2,2,2,2,2,
-	2,0,2,2,0,0,0,2,2,0,0,2,0,0,2,0,2,0,0,0,0,
-	2,0,2,2,0,0,2,0,2,2,0,0,2,2,2,0,2,0,2,2,0,
-	2,2,0,2,2,2,2,2,2,0,0,2,2,2,0,0,0,2,0,2,0,
-	0,2,2,2,2,0,0,2,2,2,0,0,2,2,0,0,0,2,2,2,0,
-	0,0,2,0,2,2,2,0,2,0,0,2,0,0,2,0,0,2,0,0,0,
-	2,0,0,2,0,2,0,0,2,0,0,0,2,0,0,0,2,2,2,2,0,
-	0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,2,0,2,2,2,2,
-	2,0,2,0,0,2,0,0,0,0,2,0,0,2,0,0,0,2,2,2,2,
-	2,2,0,2,0,0,0,0,0,2,2,0,2,2,0,2,2,0,2,0,0,
-	2,0,0,0,2,2,2,2,0,2,0,0,0,2,2,2,2,2,2,0,2,
-	2,2,2,2,2,0,2,2,0,2,2,0,0,0,2,2,0,0,2,0,2,
-	2,0,0,0,0,2,2,0,0,0,2,0,0,2,2,0,0,2,0,2,2,
-	0,2,0,0,0,0,0,2,0,2,0,0,0,2,0,2,0,2,0,2,0,
-	2,2,2,0,0,2,0,0,0,0,2,0,0,0,0,0,2,0,2,0,0,
-	0,0,0,2,2,2,0,2,0,0,2,2,0,2,0,0,0,0,0,0,0,
-	0,2,2,2,2,2,2,2,2,0,0,0,2,2,2,0,2,2,0,0,0,
-	2,0,2,2,0,2,2,0,2,2,0,2,0,0,2,2,2,2,0,0,0,
-	0,2,0,0,0,2,2,0,2,0,0,0,2,0,2,2,2,2,0,2,2,
-	0,2,0,0,0,0,0,0,0,2,2,2,2,0,0,0,2,2,0,2,2,
-	0,2,2,0,0,0,1};
+	{4703,12,0,6,4,2,0,2,0,0,2,2,0,4,2,0,0,2,2,2,0,0,
+	0,2,0,0,0,2,0,2,2,2,2,2,0,0,0,2,0,0,0,2,0,2,2,2,2,
+	0,0,2,2,0,0,0,0,0,0,2,2,2,2,2,0,0,2,2,0,0,2,0,0,2,
+	2,2,0,0,2,0,0,0,2,2,2,2,0,0,2,0,2,0,0,0,0,2,0,0,2,
+	0,0,0,2,2,2,2,0,2,2,2,2,0,2,2,2,0,2,2,2,2,2,2,2,0,
+	0,2,2,2,2,0,0,2,2,2,2,2,2,2,0,0,0,2,2,0,2,0,2,2,2,
+	0,2,0,2,0,0,2,0,0,0,2,0,0,2,2,2,2,2,0,0,0,0,2,2,0,
+	0,2,0,2,0,2,2,2,2,0,2,0,2,0,0,0,2,0,2,2,0,0,0,0,2,
+	2,2,0,2,0,2,2,2,2,0,0,2,0,2,0,0,2,0,0,0,0,0,0,2,0,
+	2,2,2,2,2,2,2,2,0,2,2,0,0,0,2,2,0,0,2,0,0,2,0,2,0,
+	0,0,0,2,0,2,2,0,0,2,0,2,2,0,0,2,2,2,0,2,0,2,2,0,2,
+	2,0,2,2,2,2,2,2,0,0,2,2,2,0,0,0,2,0,2,0,0,2,2,2,2,
+	0,0,2,2,2,0,0,2,2,0,0,0,2,2,2,0,0,0,2,0,2,2,2,0,2,
+	0,0,2,0,0,2,0,0,2,0,0,0,2,0,0,2,0,2,0,0,2,0,0,0,2,
+	0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,2,0,
+	2,2,2,2,2,0,2,0,0,2,0,0,0,0,2,0,0,2,0,0,0,2,2,2,2,
+	2,2,0,2,0,0,0,0,0,2,2,0,2,2,0,2,2,0,2,0,0,2,0,0,0,
+	2,2,2,2,0,2,0,0,0,2,2,2,2,2,2,0,2,2,2,2,2,2,0,2,2,
+	0,2,2,0,0,0,2,2,0,0,2,0,2,2,0,0,0,0,2,2,0,0,0,2,0,
+	0,2,2,0,0,2,0,2,2,0,2,0,0,0,0,0,2,0,2,0,0,0,2,0,2,
+	0,2,0,2,0,2,2,2,0,0,2,0,0,0,0,2,0,0,0,0,0,2,0,2,0,
+	0,0,0,0,2,2,2,0,2,0,0,2,2,0,2,0,0,0,0,0,0,0,0,2,2,
+	2,2,2,2,2,2,0,0,0,2,2,2,0,2,2,0,0,0,2,0,2,2,0,2,2,
+	0,2,2,0,2,0,0,2,2,2,2,0,0,0,0,2,0,0,0,2,2,0,2,0,0,
+	0,2,0,2,2,2,2,0,2,2,0,2,0,0,0,0,0,0,0,2,2,2,2,0,0,
+	0,2,2,0,2,2,0,2,2,0,0,0,1};
 
 uint64_t nexto;
 primesieve::iterator it;
 it.skipto(4704);
 uint64_t tempo;
-for (long p = 0; p < 2*pow(10,8); ++p) {
+for (long p = 0; p < P; ++p) {
 	nexto = it.next_prime();
 	
 	for (int i = 0; i < 635; ++i) {
@@ -179,18 +190,7 @@ for (long p = 0; p < 2*pow(10,8); ++p) {
 		tempo = abs(nexto-nums[i]);
 		nums[i] = nexto;
 		nexto = tempo;
-		tempo = abs(nexto-nums[++i]);
-		nums[i] = nexto;
-		nexto = tempo;
-		tempo = abs(nexto-nums[++i]);
-		nums[i] = nexto;
-		nexto = tempo;
-		tempo = abs(nexto-nums[++i]);
-		nums[i] = nexto;
-		nexto = tempo;
-		tempo = abs(nexto-nums[++i]);
-		nums[i] = nexto;
-		nexto = tempo;	}
+	}
 		
 	if (nums[634] != 0 && nums[634] != 2) {
 		std::cout << "Contraejemplo en Paso"
@@ -198,7 +198,7 @@ for (long p = 0; p < 2*pow(10,8); ++p) {
 		return 0;
 	}
 }
-std::cout<<"CIERTO"<<std::endl;
+std::cout << "Conjetura cierta hasta " << P << '.' << std::endl;
 }
 \end{lstlisting}
 
@@ -369,6 +369,10 @@ Hemos comprobado computacionalmente el resultado hasta $n=100$ y solo no se veri
 
 
 \begin{thebibliography}{99}
+
+\bibitem{primesieve} Walisch, K. (2010-2018). Primesieve (Versión 6.4). Disponible en \url{http://primesieve.org/}
+
+\bibitem{cudasieve} Seizert, C. (2016). CUDASieve. Disponible en \url{https://github.com/curtisseizert/CUDASieve/}
 
 \bibitem{odly}  Odlyzko, A. (1993). Iterated Absolute Values of Differences of Consecutive Primes. Mathematics of Computation, 61(203), 373-380. doi:10.2307/2152962
 
