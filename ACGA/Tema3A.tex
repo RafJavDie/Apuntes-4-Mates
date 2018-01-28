@@ -118,7 +118,7 @@ De esta última caracterización se deduce que la composición de dos morfismos 
 La proposición \ref{funtor}, junto con el ejercicio \ref{full}, muestran que:
 
 \begin{coro}\label{equivafin}
- Las aplicaciones $X\mapsto \calA(X)$, $\phi\mapsto \phi^\star$ inducen una equivalencia de categorías (mediante un functor contravariante) entre la categoría de conjuntos algebraicos afines y morfismos de conjuntos algebraicos y la categoría opuesta a la de $k$-álgebras finitamente generadas reducidas y homomorfismos de $k$-álgebras. Si $A$ es una $k$-álgebra reducida finitamente generada, entonces $k[x_1,\dots,x_n]\to A$ es sobreyectivo, por lo que $A\cong k[x_1,\dots,x_n]/I$, donde $I$ es el $\ker$ de esta aplicación, que por ser $A$ reducida es un ideal radical, así que se corresponde con algún $\I(X)$, de modo que el cociente anterior es isomorfo a $\calA(X)$.
+ Las aplicaciones $X\mapsto \calA(X)$, $\phi\mapsto \phi^\star$ inducen una equivalencia de categorías (mediante un functor contravariante) entre la categoría de conjuntos algebraicos afines y morfismos de conjuntos algebraicos y la categoría opuesta a la de $k$-álgebras finitamente generadas reducidas y homomorfismos de $k$-álgebras. Si $A$ es una $k$-álgebra reducida finitamente generada, entonces $k[x_1,\dots,x_n]\to A$ es sobreyectivo, por lo que $A\cong k[x_1,\dots,x_n]/I$, donde $I$ es lel $\ker$ de esta aplicación, que por ser $A$ reducida es un ideal radical, así que se corresponde con algún $\I(X)$, de modo que el cociente anterior es isomorfo a $\calA(X)$.
 \end{coro}
 
 \begin{ej}
@@ -144,7 +144,7 @@ Como todo abierto no vacío de $Z$ es denso, $X$ determina $Y$ y $Z$: $Z$ es la 
 
 \begin{defi}
  Sea $X\subseteq\Ank$ una variedad cuasi-afín. Una aplicación $f:X\to k$ se dice {\bf función regular} si existe $\bar f\in\KK(\overline X)$ definida en $X$ tal que $f=\bar f_{|X}$. Se denota
-$$\OO(U)=\{f\in \KK(X)\mid f\text{ definida en todo punto de } U\}$$
+$$\OO(U)=\{f\in K(X)\mid f\text{ definida en todo punto de } U\}$$
 \end{defi}
 
 Como las funciones de $\KK(\overline X)$ definidas en $\overline X$ son las funciones regulares, este definición es compatible con la anterior en el caso de que $X$ sea afín. Al igual que en el caso afín, denotaremos por $\calA(X)$ el anillo de funciones regulares en $X$.
@@ -169,7 +169,7 @@ Un morfismo $\phi:Y\to Z$ de variedades cuasi-afines induce por tanto un homomor
 \end{ejs}
 
 \begin{ejer}
- Sean $Y=\A^2_\C$ y $Z=Y-\{(0,0)\}$. Por el ejercicio \ref{a2menos0} $\OO_{Z}(Y)=\OO_{Z}(Z)=\C[x,y]$. Probar que no existe ningún morfismo $\phi:Y\to Z$ tal que $\phi^\star:\C[x,y]\to\C[x,y]$ sea la identidad.
+ Sean $Y=\A^2_\C$ y $Z=Y-\{(0,0)\}$. Por el ejercicio \ref{a2menos0} $\OO_{Y}(Y)=\OO_{Z}(Z)=\C[x,y]$. Probar que no existe ningún morfismo $\phi:Y\to Z$ tal que $\phi^\star:\C[x,y]\to\C[x,y]$ sea la identidad.
 \end{ejer}
 
 
@@ -182,7 +182,7 @@ Un morfismo $\phi:Y\to Z$ de variedades cuasi-afines induce por tanto un homomor
 }
 \end{ejs}
 
-Sea $\phi:Y\to Z$ un morfismo de variedades cuasi-afines, $y\in Y$ y $z=\phi(y)\in Z$. Dada una función racional definida en $z$,  $f\in\OO_{Z,z}:=\OO_{\overline Z,z}$, se obtiene una función racional $\phi^\star f=f\circ\phi$ en $Y$ definida en $y$. En efecto, supongamos que $f=g/h$ en un entorno $U$ de $z$, con $g,h\in k[x_1,\ldots,x_m]$. Entonces $\phi^\star f=(g\circ \phi)/(h\circ\phi)$ está definida en un entorno $\phi^{-1}(U)$ de $y$. Por tanto, $\phi$ induce un homomorfismo de $k$-álgebras locales $\phi^\star:\OO_{Z,z}\to\OO_{Y,y}$.
+Sea $\phi:Y\to Z$ un morfismo de variedades cuasi-afines, $y\in Y$ y $z=\phi(y)\in Z$. Dada una función racional definida en $z$  $f\in\OO_{Z,z}:=\OO_{\overline Z,z}$, se obtiene una función racional $\phi^\star f=f\circ\phi$ en $Y$ definida en $y$. En efecto, supongamos que $f=g/h$ en un entorno $U$ de $z$, con $g,h\in k[x_1,\ldots,x_m]$. Entonces $\phi^\star f=(g\circ \phi)/(h\circ\phi)$ está definida en un entorno $\phi^{-1}(U)$ de $y$. Por tanto, $\phi$ induce un homomorfismo de $k$-álgebras locales $\phi^\star:\OO_{Z,z}\to\OO_{Y,y}$.
 
 Hay que tener en cuenta sin embargo que, en general, $\phi$ \emph{no} induce un homomorfismo $\phi^\star:\KK(Z)\to\KK(Y)$. Esto se debe a que dada $f=g/h:Z\dashrightarrow k$ es posible que $h\circ\phi$ sea idénticamente nula. Por ejemplo, si $\phi:\A^1_k\to\A^2_k$ viene dada por $\phi(t)=(t,0)$ no tiene sentido hablar de $\phi^\star f$, donde $f(x,y)=1/y$. El homomorfismo $\phi^\star:\calA(Z)\to\calA(Y)$ se podrá extender a los cuerpos de fracciones si y sólo si es inyectivo.
 
@@ -287,7 +287,7 @@ Toda aplicación racional dominante $\psi:Y\dashrightarrow Z$ induce un homomorf
 \begin{proof}
  Toda aplicación racional dominante $\psi:Y\dashrightarrow Z$ es también una aplicación racional dominante $\psi:\overline Y\dashrightarrow\overline Z$ y viceversa (por restricción a $Y\cap\psi^{-1}(Z)$), así que podemos suponer que $Y$ y $Z$ son afines. Para cada $i=1,\ldots,m$, sea $f_i=\xi(x_i)\in\KK(Y)$, y sea $U_i\subseteq Y$ un abierto donde $f_i$ esté definida. Veamos que $\psi=(U,\phi)$ es la aplicación racional buscada, donde $U=U_1\cap\cdots\cap U_m$ y $\phi=(f_1,\ldots,f_m): U\to\Ank$. Por construcción, $\psi^\star(x_i)=f_i=\xi(x_i)$, y por tanto $\psi^\star=\xi$, ya que los $x_i$ generan $\KK(Z)$ como cuerpo sobre $k$.
 
- Veamos que la imagen de $\phi$ está contenida y es densa en $Z$. Para ellos vamos a probar que $\overline{\phi(U)}=Z$, que es equivalente a probar $\V(\I(\phi(U))=\V(\I(Z))$, con lo que basta probar que $\I(\phi(U))=\I(Z)$. Sea $g\in\I(Z)$, entonces $g=0$ en $\KK(Z)$, y por tanto $\xi(g)=0$, es decir $g\circ\psi=0$ como función racional en $Y$. En particular $g\circ\phi=0$ en un abierto no vacío de $U$, y por tanto en todo $U$ (ejercicio \ref{extensionfuncion}). Recíprocamente, si $g\in\I(\phi(U))$, $g\circ\phi(y)=0$ para todo $y\in U$, y por tanto $\xi(g)=g\circ\psi=0$ como función racional. Como $\xi$ es inyectiva, concluimos que $g=0$ en $\KK(Z)$, y por tanto en $\calA(Z)$ (de nuevo por el ejercicio \ref{extensionfuncion}).
+ Veamos que la imagen de $\phi$ está contenida y es densa en $Z$. Para ellos vamos a probar que $\overline{phi}(U)=Z$, que es equivalente a probar $\V(\I(\phi(U))=\V(\I(Z))$, con lo que basta probar que $\I(\phi(U))=\I(Z)$. Sea $g\in\I(Z)$, entonces $g=0$ en $\KK(Z)$, y por tanto $\xi(g)=0$, es decir $g\circ\psi=0$ como función racional en $Y$. En particular $g\circ\phi=0$ en un abierto no vacío de $U$, y por tanto en todo $U$ (ejercicio \ref{extensionfuncion}). Recíprocamente, si $g\in\I(\phi(U))$, $g\circ\phi(y)=0$ para todo $y\in U$, y por tanto $\xi(g)=g\circ\psi=0$ como función racional. Como $\xi$ es inyectiva, concluimos que $g=0$ en $\KK(Z)$, y por tanto en $\calA(Z)$ (de nuevo por el ejercicio \ref{extensionfuncion}).
 \end{proof}
 
 En general, la composición de dos aplicaciones racionales $\psi:Y\dashrightarrow Z$ y $\psi':X\dashrightarrow Y$ no está definida, ya que $\psi$ puede no estar definida en ningún punto de la imagen de $\psi'$: por ejemplo, si $\psi:\A^2_\C\dashrightarrow\A^2_\C$ viene dada por $\psi(x,y)=(x/y,0)$ la composición $\psi\circ \psi$  no está definida. Sin embargo, si $\psi'$ es dominante sí es posible definir la composición (ejercicio \ref{composicion_racional}). Además, con las notaciones anteriores, $(\psi\circ\psi')^\star=\psi'^\star\circ\psi^\star$. La proposición anterior nos dice que:
@@ -297,7 +297,7 @@ En general, la composición de dos aplicaciones racionales $\psi:Y\dashrightarro
 \end{prop}
 
 \begin{proof}
- Lo único que falta probar es que todo cuerpo $K$ finitamente generado sobre $k$ es el cuerpo de funciones de alguna variedad afín. Sean $x_1,\ldots,x_n$ generadores de $K$ sobre $k$. La $k$-álgebra $k[x_1,\ldots,x_n]= K$ es el anillo de coordenadas de algún conjunto algebraico (ejercicio \ref{full}) que necesariamente ha de ser una variedad $X$, porque todo subanillo de un cuerpo es un dominio de integridad. Por tanto, $K=K(\calA(X))=\KK(X)$.
+ Lo único que falta probar es que todo cuerpo $K$ finitamente generado sobre $k$ es el cuerpo de funciones de alguna variedad afín. Sean $x_1,\ldots,x_n$ generadores de $K$ sobre $k$. La $k$-álgebra $k[x_1,\ldots,x_n]\subseteq K$ es el anillo de coordenadas de algún conjunto algebraico (ejercicio \ref{full}) que necesariamente ha de ser una variedad $X$, porque todo subanillo de un cuerpo es un dominio de integridad. Por tanto, $K=K(\calA(X))=\KK(X)$.
 \end{proof}
 
 
@@ -354,7 +354,7 @@ Sea $Z\subseteq\A^3_\C$ definido por $z^2=xy$, es decir $Z=\V(z^2-xy)$. Queremos
 
 \begin{proof} Por el teorema de estructura de los cuerpos finitamente generados, $\KK(Z)$ se pude expresar como una extensión finita (y por tanto algebraica) de $k(x_1,\ldots,x_d)$, con $x_1,\dots,x_d$ algebraicamente independientes.
 
-Además, como $k$ es algebraicamente cerrado, se pueden tomar $x_1,\dots,x_r$ tales que $k(x_1,\dots,x_r) \subset K$ es separable (esta clase de cuerpos se llaman cuerpos perfectos). Por el teorema del elemento primitiva, existe un $α \in K$ tal que $K = k(x_1,\dots,x_r)[α]$. Además, $K \cong k(x_1,\dots,x_r)[x_{r+1}]/\langle f(\underline{x})\rangle$, donde $f$ es el polinomio mínimo de $α$ sobre $k(x_1,\dots,x_r)$. 
+Además, como $k$ es algebraicamente cerado, se pueden tomar $x_1,\dots,x_r$ tales que $k(x_1,\dots,x_r) \subset K$ es separable (esta clase de cuerpos se llaman cuerpos perfectos). Por el teorema del elemento primitiva, existe un $α \in K$ tal que $K = k(x_1,\dots,x_r)[α]$. Además, $K \cong k(x_1,\dots,x_r)[x_{r+1}]/\langle f(\underline{x})\rangle$, donde $f$ es el polinomio mínimo de $α$ sobre $k(x_1,\dots,x_r)$. 
 
 Quitando denominadores, podemos escribir $f=g/h$, con $g,h$ sin factores comunes y $g\in k[x_1,\ldots,x_d,y]$. La hipersuperficie definida por $g$ en $\A^{d+1}_k$ es entonces birracionalmente equivalente a $Z$, ya que su cuerpo de funciones es el cuerpo de fracciones de $k[x_1,\ldots,x_d,y]/\langle g\rangle$, que es isomorfo a $\KK(Z)$.
 \end{proof}
@@ -362,7 +362,7 @@ Quitando denominadores, podemos escribir $f=g/h$, con $g,h$ sin factores comunes
 \begin{nota}
 % TODO: Incorporar en la demostración anterior
 Podemos tomar un representante de $\langle f(\underline{x}) \rangle$ en $k[x_1,\dots,x_r,x_{r+1}]$ multiplicando por un polinomio en $x_1,\dots,x_r$, luego podemos suponer que $f$ está en el anillo polinómico. Así obtenemos que:
-\[ K \cong k(x_1,\dots,x_r)[x_{r+1}]/\langle f(\underline{x}) \rangle \cong \text{Frac}\left( k[x_1,\dots,x_r,x_{r+1}] / \langle f(\underline{x})\rangle \right) = K(V(f)) \]
+\[ K \cong k(x_1,\dots,x_r)[x_{r+1}]/\langle f(\underline{x}) \rangle \cong \text{Frac}\left( k[x_1,\dots,x_r,x_{r+1} / \langle f(\underline{x})\rangle \right) = K(V(f)) \]
 \end{nota}
 
 
@@ -412,7 +412,7 @@ Al definir un morfismo $\phi:X\to Y$ de esta forma, hay que tener cuidado de que
 \begin{ejs}
 \begin{itemize}
 	\item Sea $X\subseteq\PP^3_k$ la variedad definida por $x_0x_1-x_2x_3=0$. Las aplicaciones $(x_0:x_1:x_2:x_3)\mapsto (x_0:x_3)$ y $(x_0:x_1:x_2:x_3)\mapsto (x_2:x_1)$ definen morfismos $X\cap (U_0\cup U_3)\to\PP^1_k$ y $X\cap (U_1\cup U_2)\to\PP^1_k$, que se ``pegan'' para dar como resultado un morfismo $\phi:X\to\PP^1_k$, ya que en la intersección de los dominos se tiene que $x_0x_1=x_2x_3$, y por tanto $(x_0:x_3)=(x_1:x_2)$.
-	\item Sea $X = \V(x^2+y^2-z^2) \subseteq \PP^2_k$. Sea $φ : X \to \PP^1_k$ definida como:
+	\item Sea $X = \V(x^2+y* 2-z^2) \subseteq \PP^2_k$. Sea $φ : X \to \PP^1_k$ definida como:
 	\[ φ(x:y:z) = \begin{cases}
 	(z-y:x) &\text{ en }X \setminus\{(0:1:1)\}\\
 	(0:1) & \text{ en }(0:1:1)
@@ -479,7 +479,7 @@ Terminamos repitiendo las siguientes definiciones y resultados del tema anterior
  Sean $X$ e $Y$ variedades cuasi-proyectivas. Una aplicación racional $\psi:X\dashrightarrow Y$ se dice {\bf birracional} si existe una aplicación racional $\psi':Y\dashrightarrow X$ tal que $\psi'\circ\psi:X\dashrightarrow X$ y $\psi\circ\psi':Y\dashrightarrow Y$ son la identidad (como aplicaciones racionales). En tal caso, las variedades $X$ e $Y$ se dicen {\bf birracionalmente equivalentes}. Una variedad cuasi-proyectiva $X$ se dice {\bf racional} si es birracionalmente equivalente a $\Ank$ (o lo que es lo mismo, a $\Pnk$) para algún $n$.
 \end{defi}
 \begin{nota}
-Es lo mismo que sea para $\Ank$ (o cualquier abierto) que para $\Pnk$ por la proposición \ref{birracproy}, ya que si $\exists U\subseteq X, V\subseteq\Pnk$ tales que $\varphi (U)\cong V$, basta tomar $V'=V\cap\Ank, U'=\varphi^{-1}(V')$, entonces $U'\cong V'$.
+Es lo mismo que sea para $\Ank$ (o cualquier abierto) que para $\Pnk$ por la proposición \ref{birracproy}, ya que si $\exists U\subseteq X, V\subseteq\Pnk$ tales que $\varphi U\cong V$, basta tomar $V'=V\cap\Ank, U'=\varphi^{-1}(V')$, entonces $U'\cong V'$.
 \end{nota}
 
 \begin{ej}
