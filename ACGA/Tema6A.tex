@@ -39,52 +39,129 @@
 %\newcommand{\OO}{{\mathcal O}}
 %\newcommand{\mm}{{\mathfrak m}}
 
-\title{Notas y ejercicios de Geometría Algebraica}
-\author{Departamento de Álgebra \\ Universidad de Sevilla}
-\date{Septiembre de 2017}
-
-
-
-
+%\title{Notas y ejercicios de Geometría Algebraica}
+%\author{Departamento de Álgebra \\ Universidad de Sevilla}
+%\date{Septiembre de 2017}
+%
+%
+%
+%
 \begin{document}
-
-\setcounter{chapter}{5}
-\maketitle
-
-\vspace*{\fill}
-
-\copyright{2011-17 Antonio Rojas León}
-
-\bigskip
-
-Este trabajo está publicado bajo licencia Creative Commons 3.0 España (Reconocimiento - No Comercial - Compartir bajo la misma licencia)
-
-\url{http://creativecommons.org/licenses/by-nc-sa/3.0/es/}
-
-\bigskip
-
-Usted es libre de:
-\begin{itemize}
- \item copiar, distribuir y comunicar públicamente la obra
-\item hacer obras derivadas
-\end{itemize}
-
-Bajo las condiciones siguientes:
-\begin{itemize}
- \item {\bf Reconocimiento:} Debe reconocer los créditos de la obra maestra especificada por el autor o el licenciador (pero no de una manera que sugiera que tiene su apoyo o apoyan el uso que hace de su obra).
- \item {\bf No comercial:} No puede utilizar esta obra para fines comerciales.
-\item {\bf Compartir bajo la misma licencia:} Si altera o transforma esta obra, o genera una obra derivada, sólo puede distribuir la obra generada bajo una licencia idéntica a ésta.
-\end{itemize}
-
-
-
-
-\newpage
+%
+%\setcounter{chapter}{5}
+%\maketitle
+%
+%\vspace*{\fill}
+%
+%\copyright{2011-17 Antonio Rojas León}
+%
+%\bigskip
+%
+%Este trabajo está publicado bajo licencia Creative Commons 3.0 España (Reconocimiento - No Comercial - Compartir bajo la misma licencia)
+%
+%\url{http://creativecommons.org/licenses/by-nc-sa/3.0/es/}
+%
+%\bigskip
+%
+%Usted es libre de:
+%\begin{itemize}
+% \item copiar, distribuir y comunicar públicamente la obra
+%\item hacer obras derivadas
+%\end{itemize}
+%
+%Bajo las condiciones siguientes:
+%\begin{itemize}
+% \item {\bf Reconocimiento:} Debe reconocer los créditos de la obra maestra especificada por el autor o el licenciador (pero no de una manera que sugiera que tiene su apoyo o apoyan el uso que hace de su obra).
+% \item {\bf No comercial:} No puede utilizar esta obra para fines comerciales.
+%\item {\bf Compartir bajo la misma licencia:} Si altera o transforma esta obra, o genera una obra derivada, sólo puede distribuir la obra generada bajo una licencia idéntica a ésta.
+%\end{itemize}
+%
+%
+%
+%
+%\newpage
 
 
 \chapter{Multiplicidad y grado}
 
-\section[El polinomio de Hilbert]{El polinomio de Hilbert de una variedad proyectiva}
+\section{Anillos Graduados}
+\begin{defi}
+Un \textbf{anillo graduado} es un anillo $A$ con una descomposición 
+\[ A = \bigoplus_{n=0}^{∞} A_n \]
+como suma directa de subgrupos aditivos tal que:
+\[ A_m \cdot A_n \subseteq A_{m+n} \]
+Los elementos de $A_n$ se llaman homogéneos de grado $n$. De la definición se deduce que $A_0$ es un subanillo de $A$.
+\end{defi}
+
+\begin{ej}
+$A = k[x_0,\dots,x_d]$ con $A_n = \{\text{polinomios de grado }n\}$.
+\end{ej}
+
+\begin{defi}
+Si $A$ es un anillo graduado, un $A$-\textbf{módulo graduado} es un $A$-módulo $M$ dotado de una descomposición
+\[ M = \bigoplus_{n≥0} M_n \]
+tal que $A_m \cdot M_n \subseteq M_{m+n}$.
+\end{defi}
+
+\begin{defi}
+Si $M$, $N$ son dos $A$-módulos gruadados, un homomorfismo $φ : M \to N$ de $A$-ḿodulos gruduados es un homomorfismo de $A$-módulos tal que
+\[ φ(M_n) \subset N_n \quad \forall n ≥ 0 \]
+\end{defi}
+
+\begin{defi}
+Sea $M$ un $A$-módulo graduado, $N \subseteq M$ es un $A$-\textbf{submódulo graduado} si
+\[ N = \bigoplus_{n≥0} (M_i \cap N) \]
+\end{defi}
+
+\begin{teorema}
+Sea $M$ un $A$-módulo graduado, $N \subseteq M$ un $A$-\textbf{submódulo graduado}. Entonces $M/N$ es un $A$-módulo grduado. 
+\end{teorema}
+\begin{dem}
+Veamos
+\[ M/N \cong \bigoplus_{i≥0} M_i / N_i \]
+donde $N_i = M_i \cap N$. Primero observamos que $M_i/N_i \xrightarrow{ψ} M/N$ definido como $m + N_i \to m+N$. Si $ψ$ es isomorfismo, éste induce un isomorfismo $\bigoplus (M_i/N_i) \cong M/N$. Veamos que $ψ$ es isomorfismo. Supongamos que:
+\[ ψ\left(\sum m_i + N_i\right) = 0 \Rightarrow  \sum \left(m_i + N\right) = 0 \Rightarrow  \left(\sum m_i\right) + N = 0\]
+Entonces:
+\[ \sum m_i \in N = \bigoplus N_i \]
+Luego existen $n_i \in N_i$ tal que:
+\[ \sum m_i = \sum n_i\]
+Pero como $M = \bigoplus_{i≥0} M_i$, llegamos a que $m_i = n_i$, es decir $m_i \in N_i$, luego $m_i + N_i = 0$ para todo $i$. Esto implica la inyectividad.
+
+Para ver la sobreyectividad tomamos $m+N \in M/N$ con $m \in M$. Entonces $m = \sum m_i$ con $m_i \in M_i$. Enonces $m+N = ψ\left(\sum m_i + N_i\right)$.
+\end{dem}
+
+\begin{ej}
+Sea $A = k[x_0,\dots,x_n]$. Si $I \subseteq A$ es un ideal homogéneo, $I = \bigoplus_{r≥0} \left(I \cap A_r\right)$. luego $A/I$ es un $A$-módulo graduado.
+\end{ej}
+
+\begin{teorema}
+Sea $A = k[x_0,\dots,x_n]$ y $M$ un $A$-módulo graduado finitamente generado con $M = \bigoplus_{r≥0} M_r$. Entonces para todo $r$, $M_r$ es un $k$-espacio vectorial de dimensión finita.
+\end{teorema}
+\begin{dem}
+Como $M$ es finitamente generado, existen $g_1,\dots,g_s$ con $M = \langle g_1, \dots, g_s\rangle$.
+Podemos suponer que $g_1,\dots,g_s$ son homogéneos, pues en caso contrario podemos obtener un nuevo sistema generador con sus componentes homogéneas. 
+Dígamos que $g_i$ es de grado $d_i$ para todo $i=1,\dots,s$.
+
+Sea $g \in M_r$, entonces $g = \sum_{i=1}^s a_i g_i$ con $a_i \in A$. Descomponiendo $a_i$ en sus componentes homogénas, y sabiendo que todas las componentes homogéneas de grado distinto de $r$ deben anularse para quedar en $M_r$ quiere decir que podemos tomar $b_i$ como la componentes de homogéneas de $\sum a_i$ de grado $r-d_i$ tal que $g = \sum_{i=1}^s b_i g_i$. Entonces:
+hay un homomorfismo de $k$-espacio vectoriales sobreyectivo:
+\[ \bigoplus_{i≥0} A_{r-d_i} \longrightarrow M_r \]
+\[ (a_1,\dots,a_s) \mapsto \sum_{i=1}^s a_i g_i\]
+Como $\bigoplus A_{r-d_i}$ es de dimensión finita, $M_r$ es de dimensión finita.
+\end{dem}
+
+\begin{defi}
+Sea $M$ un $k[x_0,\dots,x_n]$-módulo graduado y finitamente generado. La \textbf{función de Hilbert} de $M$ es
+\begin{align*}
+	φ_M : & \N \longrightarrow \N \\
+	& r \mapsto \dim_k (M_r)
+\end{align*}
+\end{defi}
+
+\begin{ej}
+Sea $M = k[x_0,\dots,x_n]$. Entonces $φ_M(r) = \dim_k k[x_0,\dots,x_n]_r = {{r+n} \choose n}$. Obsérvese que ${{r+n} \choose n}$ es un polinomio de grado $n$ en $r$ con coeficiente líder $r^n/n!$.
+\end{ej}
+
+\section{El polinomio de Hilbert de una variedad proyectiva}
 
 Empezamos definiendo el análogo al anillo de coordenadas para una variedad proyectiva.
 
