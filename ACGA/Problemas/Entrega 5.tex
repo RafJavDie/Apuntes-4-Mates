@@ -8,45 +8,45 @@
 \author{Javier Aguilar Martín, Rafael González López}
 \maketitle
 
-\begin{ejercicio}{1}\
-Sea $I \subseteq k[x_0, x_1,\dots, x_n]$ un ideal.
-\begin{enumerate}
-\item Probar que $I$ es homogéneo si y solo si para todo $f \in I$, las
-componentes
-homogéneas de $f$ también están en $I$.
-\item  Si $I$ es homogéneo, probar que $I$ es radical si y solo si para todo $f \in k[x_0, x_1,\dots, x_n]$
-\textbf{homogéneo} tal que $f^n \in I$ para algún $n \geq 1$ se tiene que $f \in I$.
-\item Si $I$ es homogéneo, probar que $I$ es primo si y solo si para todos $f, g \in
-k[x_0, x_1,\dots, x_n]$ \textbf{homogéneos} tales que $fg \in I$ se tiene que $f \in I$ o $g \in I$.
-\end{enumerate}
-\end{ejercicio}
-\begin{solucion}\
-\begin{enumerate}
-\item $\boxed{\Rightarrow}$ Supongamos que $I=\langle f_1,\dots, f_m\rangle$ donde los $f_i$ son homogéneos. Entonces, dado $f\in I$, podemos escribir $f=\sum_{i=1}^mf_ig_i$ para ciertos polinomios $g_i\in k[x_0,x_1,\dots,x_n]$. Sea $g_i=\sum_j g_{ij}$ la descomposición en componentes homogéneas de cada $g_i$. Entonces obtenemos 
-$$f=\sum_{i=1}^m\sum_j f_ig_{ij}.$$
-Como el producto de polinomios homogéneos es homogéneo, hemos obtenido una descomposición de $f$ en sus componentes homogéneas, las cuales están en $I$ porque son de la forma $f_ig_{ij}$. 
-
-$\boxed{\Leftarrow}$ Si para todo polinomio $f\in I$ sus componentes homogéneas están en $I$, basta tomar el conjunto de todas las componentes homogéneas de polinomios de $I$, que claramente generan el ideal. Como $k[x_0,x_1,\dots,x_n]$ es noetheriano sabemos que podremos seleccionar una cantidad finita de componentes homogéneas que generen $I$, por lo que $I$ es homogéneo.
-
-\newpage
-
-\item $\boxed{\Rightarrow}$ Si $I$ es radical, la condición se cumple para todo polinomio, en particular para los homogéneos.
-
-$\boxed{\Leftarrow}$ Sea $f\in k[x_0,x_1,\dots,x_n]$ un polinomio tal que $\exists n\geq 2$ de forma que $f^n\in I$. Tenemos que probar que $f\in I$. Sea $f=\sum_i h_i$ la descomposición de $f$ en sus componentes homogéneas. Tenemos que $\left(\sum_i h_i\right)^n\in I$. Al desarrollarlo, obtenemos una suma de productos de las componentes homogéneas de $f$, y como $f^n\in I$, cada uno de estos productos está en $I$, en particular, $h_i^n\in I\ \forall i$. Por hipótesis, al ser $h_i$ homogéneos, esto implica que $h_i\in I\ \forall i$. Por tanto, $f\in I$, como queríamos demostrar.
-
-\item $\boxed{\Rightarrow}$ Si $I$ es primo, la condición se cumple para todo polinomio, en particular para los homogéneos.
-
-$\boxed{\Leftarrow}$ Sean $f,g\in k[x_0,x_1,\dots,x_n]$ tales que $fg\in I$. Vamos a probar por reducción al absurdo que o bien $f\in I$ o bien $g\in I$. Supongamos que $f,g\notin I$ y escribamos las descomposiciones en componentes homogéneas $f=\sum_{i=1}^m \alpha_i$, $g=\sum_{j=1}^l\beta_j$. Como $f,g\notin I$, hay alguna componente homogénea en cada polinomio que tampoco está en $I$. Supongamos sin pérdida de generalidad que $\alpha_1,\beta_1\notin I$. 
-
-Como $fg\in I$, con $I$ homogéneo, por el primer apartado tenemos que todas las componentes homogéneas de $fg$ están en $I$. La primera componente de $fg$ es $\alpha_1\beta_1\in I$, que por hipótesis esto implica que o bien $\alpha_1\in I$ o bien $\beta_1\in I$. Sin embargo, esto entra en contradicción con la elección de $\alpha_1$ y $\beta_1$, por lo que hemos llegado a un absurdo.
-
-
-\end{enumerate}
-
-\end{solucion}
-
-
-\newpage
+%\begin{ejercicio}{1}\
+%Sea $I \subseteq k[x_0, x_1,\dots, x_n]$ un ideal.
+%\begin{enumerate}
+%\item Probar que $I$ es homogéneo si y solo si para todo $f \in I$, las
+%componentes
+%homogéneas de $f$ también están en $I$.
+%\item  Si $I$ es homogéneo, probar que $I$ es radical si y solo si para todo $f \in k[x_0, x_1,\dots, x_n]$
+%\textbf{homogéneo} tal que $f^n \in I$ para algún $n \geq 1$ se tiene que $f \in I$.
+%\item Si $I$ es homogéneo, probar que $I$ es primo si y solo si para todos $f, g \in
+%k[x_0, x_1,\dots, x_n]$ \textbf{homogéneos} tales que $fg \in I$ se tiene que $f \in I$ o $g \in I$.
+%\end{enumerate}
+%\end{ejercicio}
+%\begin{solucion}\
+%\begin{enumerate}
+%\item $\boxed{\Rightarrow}$ Supongamos que $I=\langle f_1,\dots, f_m\rangle$ donde los $f_i$ son homogéneos. Entonces, dado $f\in I$, podemos escribir $f=\sum_{i=1}^mf_ig_i$ para ciertos polinomios $g_i\in k[x_0,x_1,\dots,x_n]$. Sea $g_i=\sum_j g_{ij}$ la descomposición en componentes homogéneas de cada $g_i$. Entonces obtenemos 
+%$$f=\sum_{i=1}^m\sum_j f_ig_{ij}.$$
+%Como el producto de polinomios homogéneos es homogéneo, hemos obtenido una descomposición de $f$ en sus componentes homogéneas, las cuales están en $I$ porque son de la forma $f_ig_{ij}$. 
+%
+%$\boxed{\Leftarrow}$ Si para todo polinomio $f\in I$ sus componentes homogéneas están en $I$, basta tomar el conjunto de todas las componentes homogéneas de polinomios de $I$, que claramente generan el ideal. Como $k[x_0,x_1,\dots,x_n]$ es noetheriano sabemos que podremos seleccionar una cantidad finita de componentes homogéneas que generen $I$, por lo que $I$ es homogéneo.
+%
+%\newpage
+%
+%\item $\boxed{\Rightarrow}$ Si $I$ es radical, la condición se cumple para todo polinomio, en particular para los homogéneos.
+%
+%$\boxed{\Leftarrow}$ Sea $f\in k[x_0,x_1,\dots,x_n]$ un polinomio tal que $\exists n\geq 2$ de forma que $f^n\in I$. Tenemos que probar que $f\in I$. Sea $f=\sum_i h_i$ la descomposición de $f$ en sus componentes homogéneas. Tenemos que $\left(\sum_i h_i\right)^n\in I$. Al desarrollarlo, obtenemos una suma de productos de las componentes homogéneas de $f$, y como $f^n\in I$, cada uno de estos productos está en $I$, en particular, $h_i^n\in I\ \forall i$. Por hipótesis, al ser $h_i$ homogéneos, esto implica que $h_i\in I\ \forall i$. Por tanto, $f\in I$, como queríamos demostrar.
+%
+%\item $\boxed{\Rightarrow}$ Si $I$ es primo, la condición se cumple para todo polinomio, en particular para los homogéneos.
+%
+%$\boxed{\Leftarrow}$ Sean $f,g\in k[x_0,x_1,\dots,x_n]$ tales que $fg\in I$. Vamos a probar por reducción al absurdo que o bien $f\in I$ o bien $g\in I$. Supongamos que $f,g\notin I$ y escribamos las descomposiciones en componentes homogéneas $f=\sum_{i=1}^m \alpha_i$, $g=\sum_{j=1}^l\beta_j$. Como $f,g\notin I$, hay alguna componente homogénea en cada polinomio que tampoco está en $I$. Supongamos sin pérdida de generalidad que $\alpha_1,\beta_1\notin I$. 
+%
+%Como $fg\in I$, con $I$ homogéneo, por el primer apartado tenemos que todas las componentes homogéneas de $fg$ están en $I$. La primera componente de $fg$ es $\alpha_1\beta_1\in I$, que por hipótesis esto implica que o bien $\alpha_1\in I$ o bien $\beta_1\in I$. Sin embargo, esto entra en contradicción con la elección de $\alpha_1$ y $\beta_1$, por lo que hemos llegado a un absurdo.
+%
+%
+%\end{enumerate}
+%
+%\end{solucion}
+%
+%
+%\newpage
 \begin{ejercicio}{1}\
 Sea $I \subseteq k[x_0, x_1,\dots, x_n]$ un ideal.
 \begin{enumerate}
