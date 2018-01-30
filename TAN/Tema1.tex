@@ -577,7 +577,7 @@ $$S-I = \sum_{k=1} a_k < \infty$$ pues se observa que la suma de todos está con
 $$
 \gamma(f) = \sum_{k=1} a_k \leq f(1) \qquad S - I \sim \gamma(f) 
 $$
-Por tanto
+La aproximación se da con un error $R(x)$ tal que $|R(x)|\leq f(x)$, por lo que
 $$
 \sum_{n\leq x} f(n) = \int_1^x f(t)dt + \gamma(f) + O(f(x))
 $$
@@ -590,20 +590,19 @@ Existe una constante $γ$ tal que para todo $x>1$
 \end{teorema}
 La constante $γ$ se denomina constante de Euler, su valor aproximado es $γ \approx 0.577215663...$ Es un problema abierto decidir si es racional o irracional.
 
-Clásicamente se llama sumación de Abel al proceso en que convertimos una suma $\sum_n a_n b_n$ mediante las sumas parciales $\sum_n a_n$. Esto es, definiendo
-\[ A_n = \sum_{j=1}^n a_j, \qquad A_0 = 0 \]
+Clásicamente se llama sumación de Abel al proceso en que convertimos una suma $\sum_n a_n b_n$ mediante las sumas parciales $\sum_n a_n$. Esto es, definiendo $A_n = \sum_{j=1}^n a_j$ $ A_0 = 0$
 la transformación es
 \[ \sum_{j=1}^n a_j b_j = \sum_{j=1}^n (A_j-A_{j-1})b_j = \sum_{j=1}^{n-1} A_j(b_j-b_{j+1}) + A_n b_n \]
 Este tipo de argumento es análogo al de la integración por partes. Si $A(x)=\int_a^x a(t)dt$
 \[ \int_a^x a(t)f(t) dt = \int_a^x f(t) dA(t) = \left.f(t)A(t)\right|_a^x - \int_a^x A(t) df(t) = A(x)f(x) - \int_a^x A(t) df(t) \]
-en el siguiente teorema lo exttendemos al caso en que $A$ es una funcón de salto.
+en el siguiente teorema lo extendemos al caso en que $A$ es una función de salto.
 
 \begin{teorema}[Fórmula de Abel] Sea $(a_n)$ una sucesión de números complejos. Pongamos
 \[ A(x) = \sum_{n≤x} a_n \quad (x > 0) \]
 Sea $f(t)$ una función con derivada continua en $[1,x]$. Entonces tenemos
 \[ \sum_{1≤n≤x} a_nf(n) = A(x)f(x)-\int_1^x A(t)f'(t)dt \]
 \end{teorema}
-\newpage
+
 \section{El orden medio de $d(n)$}
 Como vemos, hemos tenido que pasar a $\log d(n)$ para poder determinar el orden máximo. El tomar logaritmos obviamente hace la función más manejable. Otra forma de resolver e problema es estudiar el \textbf{orden medio}, s llama así a una función $g(n)$ monótona y tal que
 \[ f(1) + f(2) + \cdots + f(n) \sim g(1) + g(2) + \cdots + g(n) \]
@@ -614,7 +613,12 @@ Cuando $x$ tiende a infinito, tenemos
 
 \begin{dem}
 \[ \sum_{n≤x} d(n) = \sum_{n≤x}\sum_{a\mid n}1 =\sum_{a\leq x} m = \sum_{a≤x}\suelo{ \frac{x}{a}} = \sum_{ab≤x} 1 \]
-Donde $m$ son el número de múltiplos de $a$ que son menores o iguales que $x$. Consideramos el retículo $\mathcal{R}=\{(n,m) \mid  n \in \N,m \in \N, nm≤x\}$. Se tiene que $\sum_{ab≤x} 1 = \#\mathcal{R}$. Si particionamos $\mathcal{R}$ en los conjuntos: $A=\{(n,m) \mid n \in \N,m \in \N, nm≤x, m>\sqrt{x}\}, B=\{(n,m) \mid n \in \N,m \in \N, nm≤x, n>\sqrt{x}\}$ y $C=\{(n,m) \mid n \in \N,m \in \N, nm≤\sqrt{x}\}$. Se tiene que $\#A=\#B$, luego $\#\mathcal{R}=2\#A-\#C$. Además, pues que $C$ es un cuadrado de lado $\sqrt{x}$, $|C|=\suelo{\sqrt{x}}^2$.
+Donde $m$ son el número de múltiplos de $a$ que son menores o iguales que $x$. Consideramos el retículo $\mathcal{R}=\{(n,m) \mid  n \in \N,m \in \N, nm≤x\}$. Se tiene que $\sum_{ab≤x} 1 = \#\mathcal{R}$. Si particioneros $\mathcal{R}$ en los conjuntos: 
+$$A=\{(n,m) \mid n \in \N,m \in \N, nm≤x, m>\sqrt{x}\}$$
+$$ B=\{(n,m) \mid n \in \N,m \in \N, nm≤x, n>\sqrt{x}\}$$
+ $$C=\{(n,m) \mid n \in \N,m \in \N, nm≤\sqrt{x}\}$$
+ Se tiene que $\#A=\#B$, luego $\#\mathcal{R}=2\#A-\#C$. Además, pues que $C$ es un cuadrado de lado $\sqrt{x}$, $|C|=\suelo{\sqrt{x}}^2$.
+
 \begin{align*}
 	\sum_{ab≤x} 1 & = 2 \# A - \suelo{ \sqrt{x} }^2 = 2 \sum_{a≤\sqrt{x}} \suelo{ \frac{x}{a}} - \suelo{ \sqrt{x} }^2\\
 	&= 2 \sum_{a≤x} \left(\frac{x}{a}-\left\{\frac{x}{a}\right\}\right) - (\sqrt{x}-\{\sqrt{x}\})^2 \\
