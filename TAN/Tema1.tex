@@ -614,10 +614,18 @@ Cuando $x$ tiende a infinito, tenemos
 \begin{dem}
 \[ \sum_{n≤x} d(n) = \sum_{n≤x}\sum_{a\mid n}1 =\sum_{a\leq x} m = \sum_{a≤x}\suelo{ \frac{x}{a}} = \sum_{ab≤x} 1 \]
 Donde $m$ son el número de múltiplos de $a$ que son menores o iguales que $x$. Consideramos el retículo $\mathcal{R}=\{(n,m) \mid  n \in \N,m \in \N, nm≤x\}$. Se tiene que $\sum_{ab≤x} 1 = \#\mathcal{R}$. Si particioneros $\mathcal{R}$ en los conjuntos: 
-$$A=\{(n,m) \mid n \in \N,m \in \N, nm≤x, m>\sqrt{x}\}$$
-$$ B=\{(n,m) \mid n \in \N,m \in \N, nm≤x, n>\sqrt{x}\}$$
- $$C=\{(n,m) \mid n \in \N,m \in \N, nm≤\sqrt{x}\}$$
- Se tiene que $\#A=\#B$, luego $\#\mathcal{R}=2\#A-\#C$. Además, pues que $C$ es un cuadrado de lado $\sqrt{x}$, $|C|=\suelo{\sqrt{x}}^2$.
+$$A=\{(n,m) \mid n \in \N,m \in \N, nm≤x, m≤\sqrt{x}\}$$
+$$B=\{(n,m) \mid n \in \N,m \in \N, nm≤x, m>\sqrt{x}\}$$
+$$C=\{(n,m) \mid n \in \N,m \in \N, n,m≤\sqrt{x}\}$$
+
+\begin{figure}[htp!]
+\centering
+\includegraphics[width=260px]{hiperbola}
+\end{figure}
+
+Véase que $\#(A-C)=\#(B)$, luego $\#(R)=\#(A)+\#(B)-\#(C)=2\#(A)-\#(C)$.
+Además, pues que $C$ es un cuadrado de lado $\sqrt{x}$, $\#(C)=\suelo{\sqrt{x}}^2$.
+Se tiene que $\#A=\#B$, luego $\#\mathcal{R}=2\#A-\#C$. Además, pues que $C$ es un cuadrado de lado $\sqrt{x}$, $\#C=\suelo{\sqrt{x}}^2$.
 
 \begin{align*}
 	\sum_{ab≤x} 1 & = 2 \# A - \suelo{ \sqrt{x} }^2 = 2 \sum_{a≤\sqrt{x}} \suelo{ \frac{x}{a}} - \suelo{ \sqrt{x} }^2\\
