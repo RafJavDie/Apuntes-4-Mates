@@ -187,14 +187,11 @@ Deducir de lo anterior y del teorema de Chebyshev que existe una constante $C > 
 \[ φ(k) ≥ \frac{Ck}{\log k} \quad \forall k≥2 \]
 \end{ejercicio}
 \begin{sol}
-El problema es equivalente a probar que $\pi(x) \leq \dfrac{x}{k}\varphi(k) + 2k$.
-\end{sol}
-\begin{sol}
 Dividimos los números de $1$ a $x$ en grupos de $k$ elementos. Como puede que $k$ no divida a $x$, el último grupo puede tener menos de $k$ elementos. Tendremos entonces $\suelo{ x/k }$ grupos de $k$ elementos. Obsérvese que entre $nk+1$ y $(n+1)k$ hay $φ(k)$ primos siempre y cuando $n ≥ 1$. Acotamos la cantidad de primos entre $1$ y $k$ y en el último grupo por $2k$ (como si todos fueran primos). Entonces:
 \[ π(x) ≤ φ(k) \suelo{ \frac{x}{k} }+2k ≤ φ(k) \frac{x}{k} + 2k \]
 
 Usando que $π(x) ≥ A \frac{x}{\log x}$.
-\[ φ(x) ≤ \frac{k}{x} π(x) - \frac{2k^2}{x} ≥ \frac{Ak}{\log x}-\frac{2k^2}{x} = \frac{A k}{2\log k} -2  ≥ \frac{A k}{2\log k} - \frac{A k}{4 \log k} = \frac{C k}{\log k}\]
+\[ φ(x) \geq  \frac{k}{x} π(x) - \frac{2k^2}{x} ≥ \frac{Ak}{\log x}-\frac{2k^2}{x} \geq %\frac{A k}{2\log k} -2  ≥ \frac{A k}{2\log k} - \frac{A k}{4 \log k} = \frac{C k}{\log k}\]
 \end{sol}
 
 \newpage
