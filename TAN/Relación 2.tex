@@ -47,7 +47,10 @@ Demostrar que para $x ≥ 2$
 \begin{sol}
 Tomando $f(n)=\log^2 n$ y $a_n=1$ tenemos que 
 \begin{align*}
-	\sum_{n≤x} (\log n)^2 = x\log^2 x - \int_1^x \frac{2\log t}{t}tdt = x\log^2 x - 2x\log x +2x -2
+	\sum_{n≤x} (\log n)^2 &= \suelo{x}\log^2 x - \int_1^x \frac{2\log t}{t}\suelo{t}dt \\
+	&= x(\log x)^2 + \deci{x}(\log x)^2 - 2\left(\int_1^x{\log t}+ \frac{\log t \deci{t}}{t}dt \right)\\
+	&=x(\log x)^2 + O((\log x)^2) - 2\left( x\log x - x +1 + \int_1^x \orden{\frac{\log t}{t}}\right) \\
+	&= x(\log x)^2 -2x\log x + 2x - 2 + \orden{(\log x)^2}
 \end{align*}
 \end{sol}
 
@@ -62,7 +65,7 @@ donde $\{x\}=x-\suelo{ x }$ denota la parte fraccionaria de $x$.
 Recordemos que $\sum_{n≤x} \suelo{ x/n } = \sum_{n≤x} d(n)$ donde $d(n)$ es el número de divisores de $n$\footnote{\url{https://math.stackexchange.com/questions/338432/how-to-prove-the-relation-between-the-floor-function-and-the-number-of-divisors}}.
 \begin{align*}
 	\sum_{n≤x} \left\{ \frac{x}{n} \right\} & =  x\sum_{n≤x} \frac{1}{n} - \sum_{n≤x} \suelo{ \frac{x}{n}} = x(\log x + γ + \mathcal{O}(1/x))- \sum_{n≤x} d(n)\\
-	& = x(\log x + γ + \mathcal{O}(1/x))- (x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})\\
+	& = x(\log x + γ + \mathcal{O}(1/x))- (x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x}))%\\
 	& = (1-γ)x + \mathcal{O}(\sqrt{x})
 \end{align*}
 \end{sol}
