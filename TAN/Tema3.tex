@@ -118,12 +118,12 @@ En consecuncia la función $Γ(s)$ no toma nunca el valor 0.
 \end{prop}
 \begin{dem}
 Por las propiedades de las funciones uniforme en compactos, basta ver que la $\frac{s(s+1)\cdots(s+n)}{n!n^s}$ converge uniformemente.
-\[ \frac{s(s+1)\cdots(s+n)}{n!n^s} = e^{-s \log n} s \left(s + \frac{s}{1}\right)\left(s + \frac{s}{2}\right)\cdots \left(s + \frac{s}{n}\right)\]
-\[ = e^{s(1+\frac{1}{2}+\cdots+\frac{1}{n}-\log n)}s\prod_{k=1}^n\left(1+\frac{s}{1}\right)e^{-s/k}\]
+\[ \frac{s(s+1)\cdots(s+n)}{n!n^s} = e^{-s \log n} s \left(1 + \frac{s}{1}\right)\left(1 + \frac{s}{2}\right)\cdots \left(1 + \frac{s}{n}\right)\]
+\[ = e^{s(1+\frac{1}{2}+\cdots+\frac{1}{n}-\log n)}s\prod_{k=1}^n\left(1+\frac{s}{k}\right)e^{-s/k}\]
 Por un lado:
 \[ e^{s(1+\frac{1}{2}+\cdots+\frac{1}{n}-\log n)}s \xrightarrow{n\to∞} se^{γs} \quad \text{uniformemente} \]
 Tomando $R$ tal que $|s|≤R$ para todo $s \in K$:
-\[\prod_{k=1}^n\left(1+\frac{s}{1}\right)e^{-s/k} = \prod_{k≤2R} \left(1+\frac{s}{k}\right)e^{-s/k} \cdot \prod_{k=2R+1}^n \left(1+s/k\right)e^{-s/k} \]
+\[\prod_{k=1}^n\left(1+\frac{s}{k}\right)e^{-s/k} = \prod_{k≤2R} \left(1+\frac{s}{k}\right)e^{-s/k} \cdot \prod_{k=2R+1}^n \left(1+\frac{s}{k}\right)e^{-s/k} \]
 Su convergencia viene dada por la convergencia de tomar logaritmo del segundo término. Se puede ver fácilmente que $|\log(1+x)-x ≤ |x|^2(1-|x|)$ (toma la serie de Taylor centrada en $0$ de $\log(1+x)$).
 \[ \sum_{k=2R+1}^n \left|\left(\log(1+\frac{s}{k})-\frac{s}{k}\right)\right| ≤ \sum_{k=2R+1} \left|\frac{s}{k}\right|^2\left(1-\left|\frac{s}{k}\right|\right) \]
 Para $R$ suficientemente grande, $s/k ≤ R/2R ≤ 1/2$:

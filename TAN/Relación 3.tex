@@ -15,7 +15,7 @@
 	\item Probar que para $\Re s > 1$ se tiene
 	\[ -\frac{ζ'(s)}{ζ(s)} = \frac{s}{s-1} + s \int_1^{+∞} \frac{ψ(x)-x}{x^{s+1}}dx \]
 	\item Demostrar que si $ψ(x) = x + \mathcal{O}(x^a)$ con $a > 1/2$, entonces $ζ(s)$ no se anula en $\Re s > a$.
-\end{enumerate}97
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}
@@ -149,7 +149,7 @@ $$\Gamma(1+s)=s\Gamma(s)  \qquad \frac{1}{s}\Gamma(1+s)\Gamma(1-s)= 	\Gamma(s)\G
 $$
 Utilizando la derivada logarítmica aplicando a $s/\pi$ vamos a deducir lo siguiente:
 \begin{align*}
-\left(\frac{\pi}{s}\Gamma\left(1+\frac{s}{\pi}\right)\Gamma\left(1-\frac{s}{\pi}\right)\right)' & = \frac{1}{\pi}\frac{\Gamma'\left(1+\frac{s}{\pi}\right)}{\Gamma\left(1+\frac{s}{\pi}\right)} - \frac{1}{\pi}\frac{\Gamma'(1-\frac{1}{\pi})}{\Gamma(1-\frac{1}{\pi})} - \frac{1}{s}\\
+\left(\log\left(\frac{\pi}{s}\Gamma\left(1+\frac{s}{\pi}\right)\Gamma\left(1-\frac{s}{\pi}\right)\right)\right)' & = \frac{1}{\pi}\frac{\Gamma'\left(1+\frac{s}{\pi}\right)}{\Gamma\left(1+\frac{s}{\pi}\right)} - \frac{1}{\pi}\frac{\Gamma'(1-\frac{1}{\pi})}{\Gamma(1-\frac{1}{\pi})} - \frac{1}{s}\\
  &= \frac{1}{\pi}\psi(1+s/\pi)-\frac{1}{\pi}\psi(1-s/\pi) - \frac{1}{s}\\
 &=\left(\log\frac{\pi}{\sin(s)}\right)'  = -\cot(s)
 \end{align*}
@@ -236,11 +236,28 @@ $$
 \begin{solucion}
 Tenemos que:
 \[ ζ(s) = \sum_{n≤x} \frac{1}{n^s} + \frac{x^{1-s}}{s-1} + \frac{\{x\}-1/2}{x^s}+s \int_x^{∞} \frac{\{u\}}{u^{s+1}} du \]
-Tomamos $x=t$. Entonces:
+Tomamos $x=t$. Sabemos que $0<\theta<1<t$ y $\theta<\sigma$. Si $s=\sigma + it$ entonces $\abs{\sigma + it}> \sigma > \theta$, luego $n^{\abs{\sigma+it}}>n^{\theta}$.
 \begin{align*}
- |ζ(σ+it)| &≤ \sum_{n≤t} \frac{1}{n^θ} + \frac{t^{1-θ}}{t} + \frac{1}{2} \frac{1}{t^θ} + (σ+t)\frac{1}{2} \int_t^{∞} \frac{du}{u^{θ+1}} \\
- &\leq 1 + \frac{3}{2}t^{-\theta} + (σ+t)\frac{1}{2} 
-\end{align*}
+ |ζ(σ+it)| &=\abs{ \sum_{n≤t} \frac{1}{n^s} + \frac{t^{1-s}}{s-1} + \frac{\{t\}-1/2}{t^s}+s \int_x^{∞} \frac{\{u\}}{u^{s+1}} du }\\
+ &\leq \sum_{n≤t} \frac{1}{\abs{n^s}} + \abs{\frac{t^{1-s}}{s-1}} + \abs{\frac{\{t\}-1/2}{t^s}}+\abs{s \int_t^{∞} \frac{\{u\}}{u^{s+1}} du }
+ \end{align*}
+Vamos analizar los términos
+
+\begin{gather*}
+ \sum_{n≤t} \frac{1}{\abs{n^s}} \leq  \sum_{n≤t} \frac{1}{n^{\abs{s}}} \leq  \sum_{n≤t} \frac{1}{n^\theta} \\
+ \abs{\frac{t^{1-s}}{s-1}} = \frac{\abs{t^{1-s}}}{\abs{\sigma-1 + it}}\leq  \frac{1}{t\abs{t^{s-1}}}= \frac{1}{\abs{t^s}} \leq \frac{1}{t^\theta}\\
+ \abs{\frac{\{t\}-1/2}{t^s}} \leq \abs{\frac{\{t\}}{t^s}}+\abs{\frac{1/2}{t^s}}\leq \frac{1}{t^\theta} + \frac{1}{2t^{\theta}} \leq \frac{3}{2t^{\theta}}\\
+ \abs{s \int_t^{∞} \frac{\{u\}}{u^{s+1}} du } \leq (\sigma+t){ \int_t^{∞} \frac{1}{u^{\theta+1}} du } = (\sigma+t)\frac{t^{-\theta}}{\theta}
+ \end{gather*}
+ Por tanto tenemos, usando que $t^{-\theta} \leq t^{1-\theta}$.
+ \begin{align*}
+ |ζ(σ+it)|&\leq \sum_{n≤t} \frac{1}{n^θ} +\frac{1}{t^\theta}\left(\frac{5}{2}+\frac{1}{\theta}\right)\leq   \sum_{n≤t} \frac{1}{n^θ} +\frac{1}{t^\theta}\frac{5\theta+2}{2\theta}\leq 1 + \int_1^t \frac{1}{u^\theta}du + \frac{7t^{1-\theta}}{2\theta}  \\
+& \leq 1+ \frac{t^{1-\theta}-1}{(1-\theta)}+ A\frac{t^{1-\theta}}{\theta} 1+ \frac{t^{1-\theta}}{(1-\theta)}+ A\frac{t^{1-\theta}}{\theta}\leq 1+ t^{1-\theta}\frac{\theta  + A(1-\theta)}{\theta(1-\theta)}\\
+&\leq 1+ t^{1-\theta}\frac{1  + A}{\theta(1-\theta)}\leq 1+\frac{A't^{1-\theta}}{\theta(1-\theta)} \leq \frac{A't^{1-\theta}+\theta(1-\theta)}{\theta(1-\theta)} \\
+&\leq  \frac{A't^{1-\theta+}+1/4}{\theta(1-\theta)} \leq  \frac{A't^{1-\theta}+t^{1-\theta}}{\theta(1-\theta)} \leq\frac{A''t^{1-\theta}}{\theta(1-\theta)}
+ \end{align*}
+Donde hemos usado que $1/4 < 1 < t$ y $1> 1-\theta >0$, luego $1/4 < (1/4)^{1-\theta}< t^{1-\theta}$.
+
 Para el siguiente apartado consideramos
 \[|\zeta(1+it)| \leq A\frac{t^{1-\theta}}{\theta(1-\theta)}\]
 Derivando con respecto a $\theta$ el miembro derecho obtenemos que el máximo se alcanza en $\theta=1-\frac{1}{\log t}$ (que no se anula pues $t>e$), de donde se tiene si $t>e^2$
@@ -279,7 +296,6 @@ Como $\Gamma(-2n)=\infty$, $\zeta(-2n)=0$ con $n>0$, luego podemos considerar el
 &=(-1)^{2k+1}\frac{B_{2k+2}}{2k+2}
 \end{align*}
 \end{solucion}
-
 \newpage
 \begin{ejercicio}{9}
 \begin{enumerate}[(a)]
