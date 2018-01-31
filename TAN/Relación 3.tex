@@ -56,7 +56,7 @@ $$\zeta(s)=\sum\limits_{n\leq x}\dfrac{1}{n^s}+\dfrac{x^{1-s}+1-1}{s-1}+\dfrac{\
 $$\displaystyle{\zeta(s)-\frac{1}{s-1}=\sum\limits_{n\leq x}\frac{1}{n^s}+\frac{x^{1-s}-1}{s-1}+\frac{\{x\}-\frac{1}{2}}{x^s}-s\int_x^{+\infty}\frac{\{u\}-\frac{1}{2}}{u^{s+1}}du}.$$
 	\item Veamos que ocurre en cada término:
 	\[ \lim_{s \to 1} \sum_{n≤x} \frac{1}{n^s} = \sum_{n≤x} \frac{1}{n} 
-	\qquad \lim_{s \to 1} \frac{x^{1-s}-1}{s-1} = - \log x \]
+	\qquad \lim_{s \to 1} \frac{x^{1-s}-1}{s-1} \stackrel{L'H}{=} \lim_{s \to 1} \frac{-x^{1-s}\log x}{1} = - \log x \]
 	\[ \lim_{s \to 1} \frac{\{x\}-\frac{1}{2}}{x^s} = \frac{\{x\}-\frac{1}{2}}{x} \qquad \lim_{s \to 1} s \int_x^{∞} \frac{\{u\}-\frac{1}{2}}{u^{s+1}} du = \int_x^{∞} \frac{\{u\}-\frac{1}{2}}{u^2} du \]
 	Por lo tanto el límite es:
 	\[ \sum_{n≤x}\frac{1}{n} - \log x + \frac{\{x\}-\frac{1}{2}}{x} - \int_x^{∞} \frac{\{u\}-\frac{1}{2}}{u^2} du \]
@@ -114,7 +114,7 @@ $$
 \begin{sol}
 \begin{itemize}
 \item[]
-\item[a)] Sabemos por teoría que podemos expresar $\gamma$ es una función meromorfa definida en todo el plano complejo salvo los enteros no positivos, sin ceros y que verifica en este dominio la expresión:
+\item[a)] Sabemos por teoría que podemos extender $Γ$ a una función meromorfa definida en todo el plano complejo salvo los enteros no positivos, sin ceros y que verifica en este dominio la expresión:
 \[ \frac{1}{Γ(s)} = s e^{γs} \prod_{n=1}^{∞} \left(1 + \frac{s}{n}\right) e^{-s/n} \]
 Cambiando de parámetro $s=z+1$ y renombrando $z$ como $s$, por lo anterior podemos considerar la siguiente derivada logarítica en todo el plano complejo salvo los enteros negativos
 \begin{align*}
