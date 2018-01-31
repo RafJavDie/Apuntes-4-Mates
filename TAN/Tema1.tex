@@ -530,7 +530,7 @@ Dado $\delta>0$, aplicando logaritmo a la expresión $\frac{d(n)}{n^δ} ≤ \exp
 \[
 	\log d(n) ≤ δ\log n + \frac{2^{1/δ}}{δ\log 2}
 \]
-Sea $δ = (1+\varepsilon)\frac{\log 2}{\log \log n}$, entonces:
+Sea $δ = (1+\varepsilon)\dfrac{\log 2}{\log \log n}$, entonces:
 \[
 	\log d(n) ≤ (1+\varepsilon) \frac{\log 2 \log n}{\log \log n} + \frac{(\log n)^{1/(1+\varepsilon)}}{(\log 2)^2} \frac{\log \log n}{1+\varepsilon} =: (1+\varepsilon)f(n) + g(n)
 \]
@@ -547,7 +547,7 @@ Como esto se da para todo $\varepsilon$, se cumple que:
 	\limsup \frac{\log d(n)}{\frac{\log 2 \log n}{\log \log n}} ≤ 1
 \]
 Por otro lado, tomando $n(x) = \prod_{p≤x} p$, entonces:
-\[ \log n = \sum_{p≤x} \log p ≤ \sum_{p≤x} \log x = π(x) \log x \]
+\[ \log n = \sum_{p≤x} \log p = \theta(x) ≤ \sum_{p≤x} \log x = π(x) \log x \]
 \[ d(n) = 2^{π(x)} \]
 se llega a que:
 \begin{align*}
@@ -612,8 +612,8 @@ Cuando $x$ tiende a infinito, tenemos
 \end{teorema}
 
 \begin{dem}
-\[ \sum_{n≤x} d(n) = \sum_{n≤x}\sum_{a\mid n}1 =\sum_{a\leq x} m = \sum_{a≤x}\suelo{ \frac{x}{a}} = \sum_{ab≤x} 1 \]
-Donde $m$ son el número de múltiplos de $a$ que son menores o iguales que $x$. Consideramos el retículo $\mathcal{R}=\{(n,m) \mid  n \in \N,m \in \N, nm≤x\}$. Se tiene que $\sum_{ab≤x} 1 = \#\mathcal{R}$. Si particioneros $\mathcal{R}$ en los conjuntos: 
+\[ \sum_{n≤x} d(n) = \sum_{n≤x}\sum_{a\mid n}1 =\sum_{a\leq x}\sum_{a\mid n \leq x} 1 = \sum_{a≤x}\suelo{ \frac{x}{a}} = \sum_{ab≤x} 1 \]
+Consideramos el retículo $\mathcal{R}=\{(n,m) \mid  n \in \N,m \in \N, nm≤x\}$. Se tiene que $\sum_{ab≤x} 1 = \#\mathcal{R}$. Si particioneros $\mathcal{R}$ en los conjuntos: 
 $$A=\{(n,m) \mid n \in \N,m \in \N, nm≤x, m≤\sqrt{x}\}$$
 $$B=\{(n,m) \mid n \in \N,m \in \N, nm≤x, m>\sqrt{x}\}$$
 $$C=\{(n,m) \mid n \in \N,m \in \N, n,m≤\sqrt{x}\}$$
@@ -650,7 +650,7 @@ Para $x≥1$
 \end{teorema}
 \begin{dem}
 \begin{align*}
-	\sum_{n≤x} φ(n) & = \sum_{n≤x}\sum_{a\mid n} μ(a) \frac{n}{a} = \sum_{a≤x} \frac{μ(a)}{a}\left(\sum_{a\mid n,n≤x}n\right) =\sum_{a≤x} \frac{μ(a)}{a}\sum_{k=1}^{\suelo{x/a}} k\\
+	\sum_{n≤x} φ(n) & = \sum_{n≤x}\sum_{a\mid n} μ(a) \frac{n}{a} = \sum_{a≤x} \frac{μ(a)}{a}\left(\sum_{a\mid n≤x}n\right) =\sum_{a≤x} \frac{μ(a)}{a}\sum_{k=1}^{\suelo{x/a}} ka\\
 	&= \frac{1}{2} \sum_{a≤x} μ(a)\left(\suelo{ \frac{x}{a}}^2 + \suelo{ \frac{x}{a}} \right)\\
 	& = \frac{1}{2} \sum_{a≤x} μ(a) \left(\left(\frac{x}{a} - \left\{ \frac{x}{a}\right\} \right)^2 + \frac{x}{a}-\left\{\frac{x}{a}\right\}\right)\\
 	& = \frac{1}{2} \sum_{a≤x} μ(a) \left(\frac{x^2}{a^2} - 2\left\{\frac{x}{a}\right\}\frac{x}{a} + \left\{\frac{x}{a}\right\}^2+\frac{x}{a}-\left\{\frac{x}{a}\right\}\right)\\
