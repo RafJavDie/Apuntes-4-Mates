@@ -68,7 +68,7 @@ Diego Pedraza López, María de los Remedio Boza Ruíz}
 \end{center}
 
 \begin{quotation}
-\noindent En este trabajo vamos a TAL TAL TAL
+\noindent En este trabajo presentamos la conjetura de Gilbreath sobre las diferencias en valor absoluto de primos consecutivo. Ofrecemos un algoritmo eficiente para comprobar la conjetura. Introducimos una generalización de la conjetura reemplazando la sucesión de primos por una sucesión cualquiera. Ofrecemos un estudio teórico y computacional de la generalización de la conjetura en estas sucesiones.
 \end{quotation}
 
 \vspace{0.1cm}
@@ -110,6 +110,8 @@ Basta observar que $d^{k+1}_1=1$ y $d^{k+1}_n \in \{0,2\}$ para todo $1<n \leq m
 Por lo tanto, podemos comprobar la conjetura eficientemente buscando filas que, tras el primer $1$, estén formadas por $0$ y $2$. Nuestra comprobación se basa en que la fila $645$ de la tabla tiene esta propiedad hasta una cantidad que aún no hemos encontrado. Este método tiene además la ventaja de que se puede implementar con uso de memoria constante, pues sólo necesitamos guardar en cada paso $645$ números y deshechar los $645$ números del paso anterior. Estos números se corresponden a la diagonal $d^{k+i}_{645-i}$ con $i=0,\dots,644$. Por simplifación, hemos computado previamente la primera diagonal que necesitamos.
 
 Para generar los números primos, hemos usado la librería primesieve \cite{primesieve}. El algoritmo es realmente eficiente, pues en un simple ordenador portátil permite comprobar la conjetura hasta $10^9$. Creemos que con un ordenador más potente podría superarse en poco tiempo la comprobación que Odlyzko hizo en $1993$, especialmente si tuviera una tarjeta gráfica de última generación y adaptando el código para CUDASieve \cite{cudasieve} en lugar de primesieve.
+
+Compilamos el siguiente programa usando `g++ gilbreath.cpp -lprimesieve -o gilbreath'.
 
 \lstset{
 	language=C++,
