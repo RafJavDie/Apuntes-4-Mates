@@ -382,8 +382,74 @@ Hemos comprobado computacionalmente el resultado hasta $n=100$ y solo no se veri
 Esta propiedad no parece ser algo intrínseco a los primos gemelos. En los casos estudiados, definiendo análogamente la sucesión $Q_n$ para una sucesión de Gilbreath cualquiera, parecen tener un comportamiento similar cuando $a_n = a_{n-1}+2$ suele decrecer igual que ocurre con los primos gemelos.
 \end{nota}
 \subsection{Estudio probabilístico}
+En esta sección vamos a interesarnos por secuencias $a_n$ de longitud $N$ grande cuya distribución de saltos $a_{n+1}-a_n$ se asemeja a la distribución de saltos de $p_{n+1}-p_n$.
+Para ello, tomamos $a_1=2$ y $a_2=3$ y para cada $a_n$ con $n\geq 3$, elegimos un salto $s$ aleatorio entre primos de una lista de $N$ primos y asignamos $a_n=a_{n-1}+s$.
 
+\lstset{
+	language=C++,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    commentstyle=\color{green}\ttfamily,
+    morecomment=[l][\color{magenta}]{\#}
+    numberstyle=\ttfamily\tiny\color[gray]{0.2},
+    numbers=left,
+    backgroundcolor=\color{gray!10},
+    frame=single,
+    tabsize=2,
+    rulecolor=\color{black!30},
+    title=\lstname,
+    escapeinside={\%*}{*)},
+    breaklines=true,
+    breakatwhitespace=true,
+    framextopmargin=2pt,
+    framexbottommargin=2pt
+}
+\begin{lstlisting}
+#include <iostream>
+#include <random>
+#include <map>
+#include <primesieve.hpp>
 
+const int N = 1500-2; // tamaño de listas
+const int Nexperimentos = 10000;   // Número de experimentos
+bool es_gilbreath(std::vector<int> seq);
+
+int main() {
+	std::vector<int> primos;
+	primos.reserve(N);
+	primesieve::generate_n_primes(N, 0, &primos);
+	std::default_random_engine generator;
+	std::uniform_int_distribution<int> distribution(1,N-1);
+	int exitos = 0;
+	for (int k=0; k < Nexperimentos; ++k) {
+		std::vector<int> seq = {2,3};
+		seq.reserve(N+seq.size());
+		for (int i=0; i<N; ++i) {
+			int n = distribution(generator);
+			int salto = primos[n]-primos[n-1];
+			seq.push_back(seq.back()+salto);
+		}
+		if (es_gilbreath(seq))
+			++exitos;
+	}
+
+	std::cout<< exitos << '/' << Nexperimentos << std::endl;
+	return 0;
+}
+
+bool es_gilbreath(std::vector<int> seq) {
+	for (int i = 0; i < N; ++i) {
+		for (int j = 0; j < N-i-1; ++j)
+			seq[j] = abs(seq[j]-seq[j+1]);
+		if (seq[0] != 1)
+			return false;
+	}
+	return true;
+}
+\end{lstlisting}
+
+Ejecutando el anterior programa obtenemos que la probabilidad de obtener una sucesón de Gilbreath que sigue la misma distribución de saltos que la sucesión de primos es $0.23$\%. Si en lugar de partir de $\{2,3\}$ partimos de $\{2,3,5\}$ la probabilidad aumenta a $1.39$\%. Si tomamos los primeros $4$ primos, la probabilidad se vuelve $2.07$\%. Resulta destacable que los saltos de los primeros números primos son a la vez improbables en su distribución y necesarios para que la sucesión sea de Gilbreath. 
 \newpage
 
 
