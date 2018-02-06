@@ -10,10 +10,10 @@
 \begin{defi}
 Sea $V$ un $\R$-e.v. Deremos que $f:\underbrace{V\times\dots\times V}_{r}\to\R$ es \textbf{multilineal} o $r$-lineal si lineal en cada una de sus coordenadas.
 
-Una aplicación $r$-lineal $w:\V^r\to\R$ se dirá \textbf{alternada} si $w(v_1,\dots, v_r)=0$ si $v_i=v_j$ para cualesquiera $i,j$. 
+Una aplicación $r$-lineal $w:\V^r\to\R$ se dirá \textbf{alternada} si $w(v_1,\dots, v_r)=0$ cuando $v_i=v_j$ para algunos $i\neq j$. 
 \end{defi}
 
-El conjunto de aplicaciones multiplineales es un $\R$-e.v., $Alt^r(V)=\{w:V^r\to\R: w$ es multilineal y alternado$\}$. 
+El conjunto de aplicaciones multilineales es un $\R$-e.v., $Alt^r(V)=\{w:V^r\to\R: w$ es multilineal y alternado$\}$. 
 \begin{ej}
 $Alt^0(V)\cong\R$, $Alt^1(V)=V^*$.
 \end{ej}
@@ -24,28 +24,30 @@ Sea $V$ tal que $\dim(V)=n$ y consideramos $Alt^r(V)$ con $r>n$. Sea $w\in Alt^r
 \begin{proof}
 Sea $B=\{e_1,\dots, e_n\}$ base de $V$. Entonces $v_i=\sum_{j=1}^n\lambda_{ij}e_j$. Entonces
 $$
-w(v_1,\dots, v_r)=w(\sum_{j=1}^n\lambda_{1j}e_j,\dots,\sum_{j=1}^n\lambda_{rj}e_j).$$
-Desarrollando, obtenemos combinaciones lineales de $w(e_1,\dots, e_r)$. Como $r>n$, entonces habrá dos iguales, por lo que se tiene el resultado.
+w(v_1,\dots, v_r)=w\left(\sum_{j=1}^n\lambda_{1j}e_j,\dots,\sum_{j=1}^n\lambda_{rj}e_j\right)=\sum\lambda_Jw(e_{j_1},\dots, e_{j_r}),$$
+donde $\lambda_J=\lambda_{j_1,1}\cdots\lambda_{j_r,r}$. Como $r>n$, entonces habrá alguna repetición entre los $e_{j_1},\dots, e_{j_r}$, por lo que se tiene el resultado.
 \end{proof}
 
-El grupo de permutaciones del conjunto $\{1,\dots, r\}$ se denotará por $S(r)$. Recordemos que toda permutación se puede escribir como composición de trasposiciones $(i,j)$. Podemos definir entonces el siguiente isomorfismo:
+El grupo de permutaciones del conjunto $\{1,\dots, r\}$ se denotará por $S(r)$. Recordemos que toda permutación se puede escribir como composición de trasposiciones $(i,j)$. Podemos definir entonces el siguiente homomorfismo:
 \begin{align*}
 sgn: & S(r)\to \{1,-1\}\\
 & \sigma\to sign(\sigma)
 \end{align*}
-tal que $sgn((i,j))=-1$. 
+tal que $sgn((i,j))=-1$, que se extiende de forma natural al resto de permutaciones.
 \begin{lemma}
 Si $w\in Alt^r(V), \sigma\in S(r)$, entonces
 $$w(v_{\sigma(1)},\dots, v_{\sigma(r)})=sgn(\sigma)w(v_1,\dots, v_r).$$
 \end{lemma}
 \begin{proof}
-Es suficiente demostrarlo para $\sigma=(i,j)$. Fijamos $(v_1,\dots, v_r)$ y definimos $w_{i,j}(v,v')=(v_1,\dots,v_{i-1},v,v_{i+1},\dots, v_{j-1},v',v_{j+1},\dots, v_r)$. Se tiene que $w_{i,j}\in Alt^2(V)$. Ahora, $w_{i,j}(v_i+v_j,v_i+v_j)=0$. Desarrollando
+Es suficiente demostrarlo para $\sigma=(i,j)$. Fijamos $(v_1,\dots, v_r)$ y definimos 
+$$w_{i,j}(v,v')=(v_1,\dots,v_{i-1},v,v_{i+1},\dots, v_{j-1},v',v_{j+1},\dots, v_r).$$ 
+Se tiene que $w_{i,j}\in Alt^2(V)$, de donde $w_{i,j}(v_i+v_j,v_i+v_j)=0$. Desarrollando
 $$
 0=w_{i,j}(v_i,v_i)+w_{i,j}(v_i,v_j)+w_{i,j}(v_j,v_i)+w_{i,j}(v_j,v_j)=w_{i,j}(v_i,v_j)+w_{i,j}(v_j,v_i).$$
 De donde se deduce el resultado.
 \end{proof}
 \begin{ej}
-Sea $V=\R^r$ y $r$ vectores $v_i=(v_{i,1},\dots, v_{i,r})$. Entonces $w(v_1,\dots, v_r)=\det(v_{i,j})$. 
+Sea $V=\R^r$ y $r$ vectores $v_i=(v_{i,1},\dots, v_{i,r})$. Entonces $w(v_1,\dots, v_r)=\det(v_{i,j})$ es alternado. 
 \end{ej}
 
 \begin{defi}\label{ext}
@@ -54,17 +56,18 @@ $$\land:Alt(V)\times Alt(V)\to Alt^2(V)$$
 dada por $w_1\land w_2(v_1,v_2)=w_1(v_1)w_2(v_2)-w_1(v_2)w_2(v_1)$. A continuación definiremos para espacios alternados de dimensión mayor.
 \end{defi}
 \begin{defi}
-Dentro de $S(p+q)$, llamaremos $(p+q)$-\textbf{barajas} a las permutaciones de $S(p+q)$ (al conjunto de tales permutaciones lo denotaremos $S(p,q)$) que verifican para $\sigma\in S(p,q)\subseteq S(p+q)$
-\begin{align*}
-\sigma(1)<\sigma(2)<\dots<\sigma(p)\\
-\sigma(p+1)<\sigma(p+2)<\dots<\sigma(q)
-\end{align*}
-$\sigma\in S(p,q)$ queda totalmente determinada por $\{\sigma(1),\dots, \sigma(p)\}$ (o por los otros). Además $Card(S(p,q))=\binom{p+1}{p}=\binom{p+q}{q}$.
+Dentro de $S(p+q)$, llamaremos $(p+q)$-\textbf{barajas} a las permutaciones de $S(p+q)$ que verifican
+\begin{gather*}
+\sigma(1)<\sigma(2)<\cdots<\sigma(p)\\
+\sigma(p+1)<\sigma(p+2)<\cdots<\sigma(q)
+\end{gather*}
+Al conjunto de tales permutaciones lo denotaremos $S(p,q)$. Una $(p,q)$-baraja queda totalmente determinada por $\{\sigma(1),\dots, \sigma(p)\}$ (o por los otros). Por tanto, $Card(S(p,q))=\binom{p+1}{p}=\binom{p+q}{q}$.
 \end{defi}
+\begin{defi}[Producto exterior]
 Dados $w_1\in Alt^p(V),w_2\in Alt^q(V)$
 $$
-(w_1\land w_2)(v_1,\dots, v_{p+q})=\sum_{\sigma S(p,q)} sgn(\sigma)w_1(v_{\sigma(1)},\dots, v_{\sigma(p)})w_2(v_{\sigma(p+1},\dots, v_{\sigma(p+q}).$$
-
+(w_1\land w_2)(v_1,\dots, v_{p+q})=\sum_{\sigma\in S(p,q)} sgn(\sigma)w_1(v_{\sigma(1)},\dots, v_{\sigma(p)})w_2(v_{\sigma(p+1)},\dots, v_{\sigma(p+q)}).$$
+\end{defi}
 Faltaría probar que $w_1\land w_2\in Alt^{p+q}(V)$, pero antes:
 \begin{nota}\
 \begin{enumerate}
@@ -74,7 +77,7 @@ Faltaría probar que $w_1\land w_2\in Alt^{p+q}(V)$, pero antes:
 Probamos ahora el resultado. 
 
 \begin{lemma}
-Sea $w_1\land w_2\in Alt^{p+q}(V)$. Entonces
+Sean $w_1\in Alt^p,w_2\in Alt^{q}(V)$. Entonces, $w_1\land w_2\in Alt^{p+q}$, es decir,
 \begin{enumerate}
 \item $w_1\land w_2$ es $(p+q)$-lineal.
 \item $w_1\land w_2$ es alternado.
@@ -89,17 +92,15 @@ Sea $w_1\land w_2\in Alt^{p+q}(V)$. Entonces
 \item $S_{21}=\{\sigma\in S(p,q)\mid \sigma(1)=2,\sigma(p+1)=1\}$.
 \item $S_0=S(p,q)-(S_{12}\cup S_{21})$.
 \end{itemize}
-Si $\sigma\in S_0$, entonces o bien $w_1(v_{\sigma(1)},\dots, v_{\sigma(p)})=0$ o bien $w_2(v_{\sigma(p+1)},\dots, v_{\sigma(p+q)})=0$, pues tanto $\sigma(1)$ como $\sigma(p+1)$ estarán en la misma forma alternada.
-
+Si $\sigma\in S_0$, entonces o bien $w_1(v_{\sigma(1)},\dots, v_{\sigma(p)})=0$ o bien $w_2(v_{\sigma(p+1)},\dots, v_{\sigma(p+q)})=0$, pues o bien $v_{\sigma(1)}=v_{\sigma(2)}$ o bien $v_{\sigma(p+1)}=v_{\sigma(p+2)}$.
 Observamos que existe una biyección $S_{12}\to S_{21}$ dada por composición por la izquierda con $\tau=(1,2)$. Por lo comentado antes, tenemos que
-
-%\begin{gather*}
-%w_1\land w_2(v_1,\dots, v_{p+1})=\sum_{\sigma\in S_{12}}sgn(\sigma)w_1(v_{\sigma(1)},\dots, v_{\sigma(p)})w_2(v_{\sigma(p+1}},\dots,v_{\sigma(p+q}})+\\
-%\sum_{\sigma\in S_{21}}sgn(\sigma)w_1(v_{\sigma(1)},\dots, v_{\sigma(p)})w_2(v_{\sigma(p+1}},\dots,v_{\sigma(p+q})=\\
-%\sum_{\sigma\in S_{12}}sgn(\sigma)w_1(v_{\sigma(1)},\dots, v_{\sigma(p)})w_2(v_{\sigma(p+1}},\dots,v_{\sigma(p+q})-\\
-%\sum_{\tau\sigma\in S_{12}}sgn(\sigma)w_1(v_{\tau\sigma(1)},\dots, v_{\tau\sigma(p)})w_2(v_{\tau\sigma(p+1}},\dots,v_{\tau\sigma(p+q})=0
-%\end{gather*}
-Ya que si $\sigma\in S_{12}$, $\sigma(1)=1$, $\sigma(p+1)=2$, $\tau\sigma(1)=2$, $\tau\sigma(p+1)=1$, $\tau\sigma(i)=\sigma(i)\ \forall i\neq 1,p+1$. Como $v_1=v_2$, entonces $w_1(v_{\sigma(1)},\dots,v_{\sigma(p)})w_2(v_{\sigma(p+1)},\dots, v_{\sigma(p+1)}=w_1(v_{\tau\sigma(1)},\dots, v_{\tau\sigma(p)}w_2(v_{\tau\sigma(p+1)},\dots, v_{\tau\sigma(p+q)})$.
+\begin{gather*}
+w_1\land w_2(v_1,\dots, v_{p+1})=\sum_{\sigma\in S_{12}}sgn(\sigma)w_1(v_{\sigma(1)},\dots, v_{\sigma(p)})w_2(v_{\sigma(p+1)},\dots,v_{\sigma(p+q)})+\\
+\sum_{\sigma\in S_{21}}sgn(\sigma)w_1(v_{\sigma(1)},\dots, v_{\sigma(p)})w_2(v_{\sigma(p+1)},\dots,v_{\sigma(p+q)})=\\
+\sum_{\sigma\in S_{12}}sgn(\sigma)w_1(v_{\sigma(1)},\dots, v_{\sigma(p)})w_2(v_{\sigma(p+1)},\dots,v_{\sigma(p+q)})-\\
+\sum_{\tau\sigma\in S_{12}}sgn(\sigma)w_1(v_{\tau\sigma(1)},\dots, v_{\tau\sigma(p)})w_2(v_{\tau\sigma(p+1)},\dots,v_{\tau\sigma(p+q)})=0
+\end{gather*}
+Pues si $\sigma\in S_{12}$, entonces $\sigma(1)=1$, $\sigma(p+1)=2$, $\tau\sigma(1)=2$, $\tau\sigma(p+1)=1$, $\tau\sigma(i)=\sigma(i)\ \forall i\neq 1,p+1$. Como $v_1=v_2$, entonces $$w_1(v_{\sigma(1)},\dots,v_{\sigma(p)})w_2(v_{\sigma(p+1)},\dots, v_{\sigma(p+1)})=w_1(v_{\tau\sigma(1)},\dots, v_{\tau\sigma(p)})w_2(v_{\tau\sigma(p+1)},\dots, v_{\tau\sigma(p+q)}).$$
 \end{enumerate}
 \end{proof}
 \end{nota}
