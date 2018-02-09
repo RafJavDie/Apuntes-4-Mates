@@ -1,0 +1,111 @@
+\documentclass[HS.tex]{subfiles}
+
+\begin{document}
+
+
+%\hyphenation{equi-va-len-cia}\hyphenation{pro-pie-dad}\hyphenation{res-pec-ti-va-men-te}\hyphenation{sub-es-pa-cio}
+
+\chapter{Complejos simpliciales}
+
+\section{Definiciones básicas}
+
+\begin{defi}
+Dados los puntos $a_0,\dots, a_n\in\R^n$ afínmente independientes, se define el \emph{$n$-símplice} generado por ellos 
+$$\sigma=(a_0,\dots, a_n):=\{x\in\R^n\mid x=\sum_{i=0}^n\lambda_ia_i, \sum_{i=0}^n\lambda_i=1,\lambda_i\geq 0\}.$$
+Al número $n$ se le llama \emph{dimensión} del símplice.
+\end{defi}
+
+\begin{ej}\
+\begin{enumerate}
+\item $n=0$: punto, 0-símplice o vértice $(a_0)$.
+\item $n=1$: segmento, 1-símplice o arista $(a_0a_1)$.
+\item $n=2$: triángulo o 2-símplice   $(a_0a_1a_2)$.
+\item $n=3$: tetraedro o 3-símplice $(a_0a_1a_2a_3)$.
+\end{enumerate}
+\end{ej}
+
+\begin{nota}
+Todo $n$-símplice es convexo, pues es la envolvente convexa de los puntos que lo generan. Además es compacto de $\R^n$.
+\end{nota}
+
+\begin{defi}
+Dado un $n$-símplice $\sigma=(a_0,\dots,a_n)$, se llama \emph{cara} de $\sigma$, y se denota $\tau\leq \sigma$, a cualquier $k$-símplice ($k\leq n$) generado por $k+1$ vértices de $\sigma$. En el caso de que $k<n$ se dirá que $\tau$ es \emph{cara propia} de $\sigma$ y se denotará por $\tau<\sigma$.
+\end{defi}
+
+\begin{defi}
+Dado el $n$-símplice $\sigma=(a_0,\dots, a_n)$, se define el interior de $\sigma$, denotado por $\mathring{\sigma}$, como
+$$\mathring{\sigma}=\{x\in\sigma\mid \lambda_i>0\}.$$
+\end{defi}
+
+\begin{ej}\
+\begin{enumerate}
+\item Para $n=0$, $\sigma=(a_0)$, $\mathring{\sigma}=\sigma$.
+\item Para $n=1$, $\sigma=(a_0a_1)$, $\mathring{\sigma}=\sigma-\{a_0,a_1\}$. 
+\item Para $n=2$, $\sigma=(a_0a_1a_2)$, $\mathring{\sigma}=\sigma-\{(a_0a_1),(a_1,a_2),(a_0a_2)\}$.
+\item Para $n=3$, $\sigma=(a_0a_1a_2a_3)$, $\mathring{\sigma}=\sigma-\{(a_0a_1a_2),(a_0a_1a_3),(a_0a_2a_3),(a_1,a_2a_3)\}$.
+\end{enumerate}
+\end{ej}
+
+\begin{defi}
+Dado un $n$-símplice generado por $\sigma=(a_0,\dots, a_n)$, se define el \emph{borde} de $\sigma$, denotado por $\partial\sigma$, como 
+$$\partial\sigma=\bigcup_{\tau<\sigma}\tau.$$
+\end{defi}
+
+\begin{prop}
+Dado un $n$-símplice $\sigma=(a_0,\dots, a_n)$, se verifica que:
+\begin{enumerate}
+\item $\sigma=\mathring{\sigma}\sqcup\partial\sigma$.
+\item $\mathring{\sigma}=\sigma-\partial\sigma$.
+\item $\partial\sigma=\sigma-\mathring{\sigma}$.
+\end{enumerate}
+\end{prop}
+
+\begin{defi}
+Dado $\sigma$ un $n$-símplice, se llama \emph{cara abierta} de $\sigma$ al interior de cualquiera de sus caras.
+\end{defi}
+\begin{prop}
+Todo símplice es unión disjunta de sus caras abiertas.
+\end{prop}
+\begin{dem}
+Sea $x\in\sigma=(a_0,\dots,a_n)\Rightarrow x=\sum_{i=0}^n\lambda_ia_i$ con $\lambda_i\geq 0$ y $\sum_{i=0}^n\lambda_i=1$. Consideramos la cara de $\sigma$ generada por aquellos vértices con $\lambda_i>0$, a cuyo conjunto de índices denotaremos $I=\{i_0,\dots, i_k\}$. Entonce $x=\sum_{i\in I}\lambda_ia_i$, luego $(a_{i_0},\dots,a_{i_k})\leq\sigma$ y contiene a $x$ en su interior. 
+
+Dado que la expresión de $x$ respecto a un sistema de coordenadas es única, esto implica que $(a_{i_0},\dots,a_{i_k})$ es la única cara cuyo interior contiene a $x$.
+$\QED$
+\end{dem}
+
+\begin{defi}
+Un complejo simplicial $K$ en $\R^n$ es una familia de símplices, tales que:
+\begin{enumerate}
+\item Si $\sigma\in K$ y $\tau\leq\sigma$, $\tau\in K$.
+\item Si $\sigma,\sigma'\in K$ tales que $\sigma\cap\sigma'\neq\emptyset$, entonces $\sigma\cap\sigma'\in K$.
+\end{enumerate}
+\end{defi}
+
+\begin{ej}
+\begin{enumerate}
+\item Todo $n$-símplice tiene de modo natural estructura de complejo simplicial.
+\item Cualquier grafo es un complejo simplicial formado por vértices y aristas.
+\item $K=\{(a_0),(a_1),(a_2),(a_0a_1),(a_0a_2),(a_2a_1)\}$.
+\item Las triangulaciones de superficies son complejos simpliciales. 
+\item Dos aristas que se corten en el interior no lo serían.
+\item Un triángulo en el que no estamos incluyendo un vértice dentro de $K$, no lo sería.
+\end{enumerate}
+\end{ej}\
+
+\begin{defi}
+Dado un complejo simpilicial $K$, se define la \emph{realización geométrica} o \emph{poliedro subyacente} de $K$ como el espacio topológico $(|K|,\Tau_e|_{|K|})$ donde $|K|=\underset{\sigma\in K}{\bigcup}\sigma$.
+\end{defi}
+
+\begin{defi}
+Dado un complejo simplicial $K$ y dado $L\subset K$. Si $L$ tiene estructura de complejo simplicial, entonces se dice que $L$ es subcomplejo de $K$.
+\end{defi}
+\begin{ej}\
+\begin{enumerate}
+\item Dado un símplice $\sigma$, al considerar todas sus caras propias tenemos un subcomplejo cuya realización es $\partial\sigma$.
+\item \underline{El \emph{$p$-esqueleto} de un complejo simplicial $K$}. Se define $\dim(K)=\max\{\dim(\sigma)\mid\sigma\in K\}$. Si $\dim(K)=n$, el $p$-esqueleto de $K$ es el subcomplejo de $K$ dado por
+$$K^{(p)}=\{\sigma\in K\mid \dim(\sigma)\leq p\}$$
+para $0\leq p\leq n$. Los $p$-esqueletos forman una \emph{filtración}\footnote{\url{https://en.wikipedia.org/wiki/Filtration_(mathematics)}} de $K$. Se deja como ejercicio probar que el $p$-esqueleto es un subcomplejo para todo $0\leq p\leq n$.
+\end{enumerate}
+\end{ej}
+
+\end{document}
