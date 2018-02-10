@@ -1,0 +1,114 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Cálculo en Variedades - Tema 1}
+\author{Javier Aguilar Martín}
+\maketitle
+
+
+\begin{ejercicio}{2}
+Econtrar $w\in Alt^2(\R^4)$ tal que $w\land w\neq 0$.
+\end{ejercicio}
+\begin{solucion}
+Sea $w=dx^1\land dx^2 +dx^3\land dx^4$. Entonces
+$$w\land w= dx^1\land dx^2\land dx^3\land dx^4 +dx^3\land dx^4\land dx^1\land dx^2=2dx^1\land dx^2\land dx^3\land dx^4 \neq 0.$$
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+Demostrar que existen isomorfismos
+\begin{align*}
+&\R^3\overset{i}{\to} Alt^1(\R^3), &\R^3\overset{j}{\to} Alt^2(\R^3)
+\end{align*}
+dados por
+\begin{align*}
+& i(v)(w)=v\cdot w, & j(v)(w_1,w_2)=\det(v,w_1,w_2).
+\end{align*}
+Demostrar que para $v_1,v_2\in\R^3$ se tiene
+$$i(v_1)\land i(v_2)=j(v_1\times v_2).$$
+\end{ejercicio}
+\begin{solucion}
+Por las propiedades del producto escalar y del determinante respectivamente, tanto $i$ como $j$ son homomorfismos de espacios vectoriales. Como $\dim(\R^3)=\dim(Alt^1(\R^3))=\dim(Alt^2(\R^3))=3$, basta probar que $i$ y $j$ son inyectivas o sobreyectivas para tener que son isomorfismos.
+
+\underline{$i$ es inyectiva}:
+Sean $v_1,v_2\in\R^3$ tales que $i(v_1)=i(v_2)$. Esto quiere decir que para cualquier $w\in\R^3$, $i(v_1)(w)=i(v_2)(w)$. En particular tomando $w_i=e_i$ tenemos que $v_1=v_2$. 
+
+
+\underline{$j$ es inyectiva}:
+Sean $v_1,v_2\in\R^3$ tales que $j(v_1)=j(v_2)$. Esto quiere decir que para cualesquiera $w_1,w_2\in\R^3$, $j(v_1)(w_1,w_2)=j(v_2)(w1,w_2)$. Tomando las parejas $(e_1,e_2)$, $(e_1,e_3)$ y $(e_2,e_3)$ se obtiene que $v_1=v_2$. 
+
+Por último, sean $w_1,w_2\in\R^3$. Veamos que se tiene la última igualdad.
+$$(i(v_1)\land i(v_2))(w_1,w_2)=\begin{vmatrix}
+i(v_1)(w_1) & i(v_1)(w_2)\\
+i(v_2)(w_1) & i(v_2)(w_2)
+\end{vmatrix}=\begin{vmatrix}
+v_1\cdot w_1 & v_1\cdot w_2\\
+v_2\cdot w_1 & v_2\cdot w_2
+\end{vmatrix}=(v_1\cdot w_1)(v_2\cdot w_2)-(v_1\cdot w_2)(v_2\cdot w_1).$$
+$$j(v_1\times v_2)(w_1,w_2)=\begin{vmatrix}
+v_1\times v_2\\
+w_1\\
+w_2
+\end{vmatrix}=(v_1\times v_2)\cdot (w_1\times w_2)=(v_1\cdot w_1)(v_2\cdot w_2)-(v_1\cdot w_2)(v_2\cdot w_1).$$
+Por lo que se tiene la igualdad. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4}
+Sea $V$ un $\R$-espacio vectorial de dimensión finita con producto escalar y sea 
+$$i:V\to V^*=Alt^1(V)$$
+la aplicación $\R$-lineal dada por 
+$$i(v)(w)=v\cdot w.$$
+Probar que si $\{b_1,\dots, b_n\}$ es una base ortonormal de $V$, entonces
+$$i(b_k)=b_k^*,$$
+donde $\{b_1^*,\dots, b_n^*\}$ es la base dual. Concluir que $i$ es un isomorfismo.
+\end{ejercicio}
+\begin{solucion}
+Basta probar que $i(b_k)(b_j)=\delta_{kj}$. 
+\begin{gather*}
+i(b_k)(b_k)=b_kb_k=|b_k|^2=1\\
+i(b_k)(b_j)=b_kb_j=0, \forall j\neq k.
+\end{gather*}
+Como $i$ transforma bases en bases, es un isomorfismo.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{5}
+Con las mismas hipótesis que en el ejercicio anterior, probar la existencia de un producto escalar $\langle,\rangle$ en $Alt^p(V)$ tal que
+$$\langle w_1\land\dots\land w_p,\tau_1\land\dots\land\tau_p\rangle=\det(\langle w_i,\tau_j\rangle)$$
+para cualesquiera $w_i,\tau_j\in Alt^1(V)$, y 
+$$\langle w,\tau\rangle=i^{-1}(w)\cdot i^{-1}(\tau).$$
+Sea $\{b_1,\dots, b_n\}$ una base ortonormal de $V$ y sean $\beta_j=i(b_j)$. Probar que
+$$\{\beta_{\sigma(1)}\land\dots\land\beta_{\sigma(p)}\mid \sigma\in S(p,n-p)\}$$
+es una base ortonormal de $Alt^p(V)$.
+\end{ejercicio}
+\begin{solucion}
+Vamos a probar que la expresión del enunciado determina un producto escalar comprobando que verifica los axiomas.
+\begin{enumerate}
+\item Semidefinida positiva y 0 si y solo si el vector es 0. Esto no me creo que lo sea.
+\item Los escalares salen fuera del argumento derecho. $\langle w_1\land\dots\land w_p,\alpha(\tau_1\land\dots\land\tau_p)\rangle=\langle w_1\land\dots\land w_p,(\alpha\tau_1)\land\dots\land\tau_p\rangle$, por lo que quedaría una fila o una columna enteramente multiplicada por $\alpha$ de donde se deduce la propiedad.
+\item Lineal en el argumento derecho. Como $i$ es isomorfismo, $i^{-1}(\tau_1+\tau_2)=i^{-1}(\tau_1)+i^{-1}(\tau_2)$. En verdad a ver cómo está definido esto para una suma.
+\item Simétrica. Se tiene porque el determinante de una matriz coincide con el de su traspuesta.
+\end{enumerate}
+
+Para la segunda parte, probaremos que con el producto escalar anterior, el conjunto es ortonormal. Esto implica independencia lineal. Como el cardinal es justamente la dimensión de $Alt^p(V)$, será suficiente. Es evidente que el producto escalar de un elemento por sí mismo da 1. Tomemos entonces dos permutaciones distintas $\sigma,\tau\in S(p,n-p)$. Si existe $i$ tal que $\sigma(i)\neq\tau(j)$ para todo $j$, entonces el resultado es claro porque tendríamos una fila o columna de ceros. En caso contrario, sea supongamos que $\sigma(i)=\tau(j)$ para algunos $i,j$. En ese caso, tenemos que el elemento $(i,j)$ es 1, mientras que todo el resto de la fila $i$ y todo el resto de la fila $j$ es 0. Así que desarrollamos por ahí. Si para el resto de índices las permutaciones difieren completamente estamos en el caso en el que sabemos que es 0. Si siguen teniendo algún elemento común, volvemos a realizar el mismo razonamiento. Como las permutaciones son distintas, el proceso parará en algún momento en el que el determinante vale 0.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{6}
+Supongamos que $w\in Alt^p(V)$. Let $v_1,\dots, v_p$ vectores de $V$ y sea $A=(a_{ij})$ una matriz $p\times p$. Probar que para $w_i=\sum_{j=1}^pa_{ij}v_j$ ($1\leq i\leq p$) se tiene
+$$w(w_1,\dots, w_p)=\det(A)w(v_1,\dots, v_p).$$
+\end{ejercicio}
+\begin{solucion}
+Aplicar la multilinealidad junto con la definición de alternado, incluyendo que cambia el signo al trasponer.
+\end{solucion}
+
+\newpage
+\end{document}
