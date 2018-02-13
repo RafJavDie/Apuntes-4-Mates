@@ -237,7 +237,85 @@ Vamos a probar \ref{generador}. Sea $(v_1,\dots, v_p)\in V^p$, entonces $v_i=\su
 w(v_1,\dots, v_p)=w(\sum_{r=1}^n\lambda_{1,r}e_r,\dots, \sum_{r=1}^n\lambda_{p,r}e_r)=\\
 \sum_K\prod_{j=1}^n\lambda_{j,r(j)}w(e_{r(1)},\dots, e_{r(p)})
 \end{gather*}
-donde $K=\{(r(1),\dots, r(p)):1\leq r(j)\leq n, r(i)\neq r(j)\ \forall i\neq j\}$. Probemos que hay una biyección entre $K$ y $S(p,n-p)$, con lo cual tendremos el resultado.
+donde $K=\{(r(1),\dots, r(p)):1\leq r(j)\leq n, r(i)\neq r(j)\ \forall i\neq j\}$. Probemos que hay una biyección entre $K$ y $S(p,n-p)$, con lo cual tendremos el resultado. La diferencia entre $K$ y $S(p,n-p)$, es que las uplas del primer conjunto no están ordenadas, pero podemos cambiar el orden de la siguiente forma. $(r(1),\dots, r(j)\Rightarrow\exists!\sigma\in S(p,n-p)$ tal que $\{\sigma(1),\dots, \sigma(j)\}=\{r(1),\dots, r(p)\}$. Luego $\exists!\tau\in S(p)$ tal que $\sigma\tau(1)=r(1),\dots, \sigma\tau(p)=r(p)$. Podemos interpretar $\tau$ en $S(n)$ simplemente fijando los elementos que faltan cuando sea necesario, pues $S(p,n-p)\subset S(n)$. De esta forma tenemos una biyección. 
+
+Entonces podemos reescribir
+\begin{gather*}
+\sum_K\prod_{j=1}^n\lambda_{j,r(j)}w(e_{r(1)},\dots, e_{r(p)})=\sum_{\sigma\in S(p,n-p)}\sum_{\tau\in S(p)}\prod_{j=1}^n\land_{j,\sigma\tau(j)}w(e_{\sigma\tau(1)},\dots, e_{\sigma\tau(p)})=\\
+\sum_{\sigma\in S(p,n-p)}\sum_{\tau\in S(p)}\prod_{j=1}^p\lambda_{j,\sigma\tau(j)}w(e_{\sigma(1)},\dots, e_{\sigma(p)})
+\end{gather*}
+Obsérvese que si llamamos $\alpha=\sigma\tau^{-1}\sigma^{-1}$, entonces $sgn(\alpha)=sgn(\tau^{-1})=sgn(\tau)$. Así, 
+\begin{gather*}
+w(e_{\sigma\tau(1)},\dots, e_{\sigma\tau(p)})=sgn(\alpha)w(e_{\alpha\sigma\tau(1)},\dots, e_{\alpha\sigma\tau(p)})=sgn(\tau)w(e_{\sigma(1)},\dots,e_{\sigma(p)})
+\end{gather*}
+Entonces,
+\begin{gather*}
+\sum_{\sigma\in S(p,n-p)}\sum_{\tau\in S(p)}\prod_{j=1}^p\lambda_{j,\sigma\tau(j)}w(e_{\sigma(1)},\dots, e_{\sigma(p)})=\sum_{\sigma\in S(p,n-p)}\sum_{\tau
+\in S(p)}sgn(\tau)\prod_{j=1}^p\lambda_{j,r(j)}w(e_{\sigma(1)},\dots, e_{\sigma(p)})=\\
+\sum_{\sigma\in S(p,n-p)}w(e_{\sigma(1)},\dots, e_{\sigma(p)})\left(\sum_{\tau\in S(p)}sgn(\tau)\prod_{j=1}^p\lambda_{j,\sigma\tau(j)}\right)=\\
+\sum_{\sigma\in S(p,n-p)}w(e_{\sigma(1)},\dots, e_{\sigma(p)})\det\begin{pmatrix}
+\lambda_1\sigma(1) & \dots & \lambda_1\sigma(p)\\
+\vdots & & \vdots\\
+\lambda_p\sigma(1) & \dots & \lambda_p\sigma(p)
+\end{pmatrix}=\\
+\sum_{\sigma\in S(p,n-p)}w(e_{\sigma(1)},\dots, e_{\sigma(p)}\det\begin{pmatrix}
+\varepsilon_{\sigma(1)}(v_1) & \cdots & \varepsilon_{\sigma(p)}(v_1)\\
+\vdots & & \vdots\\
+\varepsilon_{\sigma(1)}(v_1) & \cdots & \varepsilon_{\sigma(p)}(v_p)
+\end{pmatrix}
+\end{gather*}
+donde $\varepsilon_j$ es el dual de $e_j$. Recordar que $\varepsilon_j(v_i)=\varepsilon_j(\sum\lambda_{i,k}e_k)=\lambda_{i,j}\varepsilon_j(e_j)$.
+
+Sea $f:V\to W$ un $\R$-homomorfismo de e.v. Entonces, para $p\in\N$, 
+\begin{align*}
+Alt^p(f): Alt^p(W)\to Alt^p(V)
+\end{align*}
+se define como la aplicación $Alt^p(f)(w)(v_1,\dots, v_p)=w(f(v_1),\dots, f(v_p))$.
+
+\begin{propi}
+Se verifican:
+\begin{enumerate}
+\item $Alt^p(f)$ es $\R$-homomorfismo.
+\item $Alt^p(g\circ f)=Alt^p(f)\circ Alt^p(g)$.
+\item $Alt^p(Id_V)=Id_{Alt^p(V)}$
+\item $Alt^{p+q}(f)(w_1\land w_2)=Alt^p(f)(w_1)\land Alt^p(f)(w_2)$. 
+\end{enumerate}
+\end{propi}
+\begin{dem}
+Probamos la última porque las anteriores son triviales.
+\begin{gather*}
+Alt^{p+q}(f)(w_1\land w_2)(v_1,\dots, v_{p+q})=w_1\land w_2(f(v_1),\dots, f(v_{p+q})=\\
+\sum_{\sigma}sgn(\sigma)w_1(f(v_{\sigma(1)}),\dots, f(v_{\sigma(p)}))w_2(f(v_{\sigma(p+1)}),f(v_{\sigma(p+q}))=\\
+\sum_{\sigma}sgn(\sigma) Alt^p(f)(w_1)(v_{\sigma(1)},\dots, v_{\sigma(p)})Alt^q(f)(w_2)(v_{\sigma(p+1)},\dots, v_{\sigma(p+q)})=\\
+Alt^p(f)(w_1)\land Alt^q(f)(w_2)(v_1,\dots, v_{p+1})
+\end{gather*}
+\QED
+\end{dem}
+
+Tenemos entonces un functor contravariante $Alt^*$ entre $\R$-espacios vectoriales y $\R$-álgebras graduadas, conexas y anticonmutativas.
+
+Sea $f:V\to V$ homomorfismo con $\dim(V)=n$. Entonces $Alt^n(f):Alt^n(V)\to Alt^n(V)$, $\dim(Alt^n(V))=1$ con base $\{\varepsilon_1\land\dots\land\varepsilon_n\}$. Llamamos $d=\det(f)$. Entonces deberá ser $Alt^n(f)(\varepsilon_1\land\dots\land\varepsilon_n)=d(\varepsilon_1\land\dots\land\varepsilon_n)$. Comprobémoslo.
+\begin{gather*}
+Alt^n(f)(\varepsilon_1\land\dots\land\varepsilon_n)=\varepsilon_1\land\dots\land \varepsilon_n(f(v_1),\dots, f(v_n))=\\
+\det\begin{pmatrix}
+\varepsilon_1(f(v_1)) & \dots & \varepsilon_1(f(v_n))\\
+\vdots & & \vdots\\
+\varepsilon_n(f(v_1)) & \dots & \varepsilon_n(f(v_n))
+\end{pmatrix}=\det\begin{pmatrix}
+f(v_1)_1 & \dots & f(v_n)_1\\
+\vdots & & \vdots\\
+f(v_1)_n & \dots & f(v_n)_n
+\end{pmatrix}=\det(f)\det\begin{pmatrix}
+(v_1)_1 & \dots & (v_n)_1\\
+\vdots & & \vdots\\
+(v_n)_1 & \dots & (v_n)_n
+\end{pmatrix}=\\d\det\begin{pmatrix}
+\varepsilon_1(v_1) & \dots &\varepsilon_1(v_n)\\
+\vdots & &\vdots \\
+\varepsilon_n(v_1) & \cdots & \varepsilon_n(v_n)
+\end{pmatrix}=d (\varepsilon_1\land\dots\land\varepsilon_n)(v_1,\dots, v_n)
+\end{gather*}
+
 
 \end{dem}
 \end{document}
