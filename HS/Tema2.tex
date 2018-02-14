@@ -58,16 +58,19 @@ Sea el diagrama conmutativo:
 donde las filas son exactas, $ψ_2$ y $ψ_4$ son isomorfismos, $ψ_1$ es epimorfismos y $ψ_5$ es monomorfismo. Entonces $ψ_3$ es isomorfismo.
 \end{lemma}
 \begin{dem}
-Lo demostramos por diagram-chasing\footnote{Es más fácil hacerlo que explicarlo}.
+Lo demostramos por diagram-chasing\footnote{Es más fácil hacerlo que explicarlo}. En primer lugar la inyectividad.
 
 Sea $m_3 \in M_3$ tal que $ψ_3(m_3) = 0$, luego $0=φ_3ψ_3(m)=ψ_4θ_3(m_3)$.
 Como $ψ_4$ es isomorfismo, $θ_3(m_3)=0$.
 Por exactitud, existe $m_2 \in M_2$ tal que $θ_2(m_2)=m_3$. Sea $n_2 = ψ_2(m_2)$.
-Como $0=ψ_3θ_2(n)=φ_2ψ_2(n)$, por exactitud existe $n_1 \in N_1$ tal que $φ_1(n_1) = n_2$.
+Como $0=ψ_3θ_2(m_2)=φ_2ψ_2(m_2)$, por exactitud existe $n_1 \in N_1$ tal que $φ_1(n_1) = n_2$.
 Como $ψ_1$ es sobreyectivo, existe $m_1 \in M_1$ tal que $ψ_1(m_1)=n_1$. 
 Ahora bien, $ψ_2(θ_1(m_1))=φ_1(ψ_1(m_1))=ψ_2(m_2)$.
 Como $ψ_2$ es inyectiva, esto quiere decir que $m_2 = θ_1(m_1)$
 Luego $m_3 = θ_2(m_2)=θ_2(θ_1(m_1))=0$ por exactitud y $ψ_3$ es inyectiva.
+
+Ahora la sobreyectividad.
+Sea $n_3\in N_3$. Llamamos $n_4=\varphi_3(n_3)$. Como $\psi_4$ es sobreyectiva, existe $m_4$ tal que $\psi_4(m_4)=n_4$. Ahora, por la conmutatividad del diagrama, $\psi_5(\theta_4(m_4))=\varphi_4(\psi_4(m_4))=\varphi_4(n_4)=\varphi_4(\varphi_3(m_3))=0$, por exactitud. Luego, por inyectividad de $\psi_5$, tenemos que $\theta(m_4)=0$, que por exactitud significa que existe $m_3\in M_3$ tal que $m_4=\theta(m_3)$. Por conmutatividad del diagrama, tenemos que $\varphi_3(n_3)=\psi_4(\theta_3(m_3))=\varphi_3(\psi_3(m_3))$, luego $n_3-\psi_3(m_3)\in\ker{\varphi_3}$. Por exactitud, esto es equivalente a que exista $n_2\in N_2$ tal que $\varphi_2(n_2)=n_3-\psi_3(m_3)$. Como $\psi_2$, es sobreyectiva, existe $m_2\in M_2$ tal que $n_2=\psi_2(m_2)$. Por conmutatividad, $n_3-\psi(m_3)=\varphi_2(\psi_2(m_2))=\psi_3(\theta_2(m_2))$, luego $n_3=\psi(m_3+\theta_2(m_2))$, con lo que hemos encontrado su preimagen. \QED
 \end{dem}
 
 \begin{defi}
@@ -94,8 +97,16 @@ Sean $\mathcal{C}_1=\{(C_n^1,δ_n^1)\}$ y $\mathcal{C}_2=\{(C_n^2,δ_n^2)\}$ dos
 \end{defi}
 
 \begin{prop}
-Si $f : \mathcal{C}^1 \to \mathcal{C}$ un homomorfismo de complejo de cadenas, entonces $f$ induce para cada $n \in \Z$ un homomorfismo:
+Si $f : \mathcal{C}_1 \to \mathcal{C}_2$ un homomorfismo de complejos de cadenas, entonces $f$ induce para cada $n \in \Z$ un homomorfismo:
 \[ f_* : H_n(\mathcal{C}_1) \to H_n(\mathcal{C}_2) \]
 \[ f_* ([z]) = [f_n(z)] \]
 \end{prop}
+\begin{dem}
+En primer lugar tenemos que ver que la aplicación está bién definida. Sean $z,z'\in Z_n$ tales que $[z]=[z']$, es decir, $z-z'\in B^1_n=\Ima δ^1_{n+1}$. Nos preguntamos si $f_*([z])=f_*([z'])\in B^2_n$ sii $[f_n(z)]=[f_n(z')]\in B^2_n$ sii $f_n(z)-f_n(z')\in B^2_n=\Ima δ^2_{n+1}$. Como $z-z'\in\Ima δ^1_{n+1}$, existe $c\in C^1_{n+1}$ tal que $z-z'=δ^1_{n+1}(c)$, por lo que $f_n(z)-f_n(z')=f_n(z-z')=f_n(δ^1_{n+1}(c))$. Aplicando la definición de homomorfismo de cadenas, $f_n(δ^1_{n+1}(c))=δ^2_{n+1}(f_{n+1}(c))$. Por lo que claramente se tiene el resultado.
+
+Probemos que $f_*$ es homomorfismo de complejos de cadenas. Sean $\alpha,\beta\in\R$ y $z_1,z_2\in Z_n$. Usamos las propiedades del cociente de espacios vectoriales y que $f_n$ es homomorfismo.
+\[f_*(\alpha[z_1]+\beta[z_2])=f_*([\alpha z_1+\beta z_2])=[f_n(\alpha z_1+\beta z_2)]=[\alpha f_n(z_1)+\beta f_n(z_2)]=\]
+\[=\alpha[f_n(z_1)]+\beta[f_n(z_2)]=\alpha f_*([z_1])+\beta f_*([z_2])]\]
+\QED
+\end{dem}
 \end{document}
