@@ -2,14 +2,14 @@
 \begin{document}
 \chapter{Homología simplicial}
 \section{Álgebra homológica}
-Nuestros objetos serán $\R$-espacio vectoriales de dimensión finita (ó $R$ módulos con $R$ dominio de ideales principales).
+Nuestros objetos serán $\R$-espacio vectoriales de dimensión finita (o $R$-módulos con $R$ dominio de ideales principales).
 
 \begin{defi}
 Dado un diagrama de $\R$-e.v. y homomorfismos:
 \[ M_{i-1} \xrightarrow{f_{i-1}} M_i \xrightarrow{f_i} M_{i+1} \]
-se dice que la sucesión es exacta en $M_i$ si $\ker f_i = \Ima f_{i-1}$. Si
+se dice que la sucesión es \emph{exacta} en $M_i$ si $\ker f_i = \Ima f_{i-1}$. Si
 \[ \cdots \rightarrow M_{i-2} \xrightarrow{f_{i-2}} \rightarrow M_{i-1} \xrightarrow{f_{i-1}} M_i \xrightarrow{f_i} M_{i+1} \xrightarrow{f_{i+1}} M_{i+2} \rightarrow \cdots \]
-es exacto para todo $i \in \Z$, entonces diremos que es una sucesión exacta larga.
+es exacto para todo $i \in \Z$, entonces diremos que es una \emph{sucesión exacta larga}.
 \end{defi}
 
 \begin{lemma}
@@ -17,14 +17,14 @@ Se verifica
 \begin{enumerate}[a)]
 \item $0 \rightarrow M_1 \xrightarrow{f_1} M_2$ es exacta sii $f_1$ es inyectiva.
 \item $M_2 \xrightarrow{f_2} M_3 \rightarrow 0$ es exacto sii $f_2$ es sobreyectivo.
-\item $0 \rightarrow M_1 \xrightarrow{f_1} M_2 \xrightarrow{f_2} M_3 \rightarrow 0$ es exacto sii $f_1$ es inyectiva, $f_2$ es sobreyectiva y $f_2$ induce un isomorfismo entre $\coker f_1$ y $M_3$. Este tipo de sucesiones es conocido como \textbf{sucesión exacta corta}.
+\item $0 \rightarrow M_1 \xrightarrow{f_1} M_2 \xrightarrow{f_2} M_3 \rightarrow 0$ es exacto sii $f_1$ es inyectiva, $f_2$ es sobreyectiva y $f_2$ induce un isomorfismo entre $\coker f_1$ y $M_3$. Este tipo de sucesiones es conocido como \emph{sucesión exacta corta}.
 \end{enumerate}
 \end{lemma}
 \begin{dem}
 \begin{enumerate}[a)]
 \item $0 \rightarrow M_1 \xrightarrow{f_1} M_2$ es exacta sii $\ker f_1 = \{0\}$ sii $f_1$ es inyectiva.
 \item $M_2 \xrightarrow{f_2} M_3 \rightarrow 0$ es exacto sii $\Ima f_2 = M_3$ sii $f_2$ es sobreyectivo.
-\item $0 \rightarrow M_1 \xrightarrow{f_1} M_2 \xrightarrow{f_2} M_3 \rightarrow 0$ es exacto sii $f_1$ es inyectiva (apartado (a)), $f_2$ es sobreyectiva (apartado (b)) y $\ker f_2 = \Ima f_1$, es decir $\coker f_1 = M_2/\Ima f_1 = M_2/\ker f_2 \cong \Ima f_2 = M_3$ (por el primer teorema de isomorfismo).
+\item $0 \rightarrow M_1 \xrightarrow{f_1} M_2 \xrightarrow{f_2} M_3 \rightarrow 0$ es exacto sii $f_1$ es inyectiva (apartado (a)), $f_2$ es sobreyectiva (apartado (b)) y $\ker f_2 = \Ima f_1$, es decir $\coker f_1 = M_2/\Ima f_1 = M_2/\ker f_2 \cong \Ima f_2 = M_3$ (por el primer teorema de isomorfía).
 \end{enumerate}
 \end{dem}
 
@@ -39,9 +39,9 @@ Sea $\{b_1,\dots,b_r\}$ una base de $V_1$ ($\dim V_1 = r$). Entonces $\{f(b_1), 
 \end{itemize}
 \end{dem}
 
-Véase que hemos probado con toda sucesión exacta corta de espacios vectoriales \textbf{escinde}. Usaremos este lema (demuéstrese como ejercicio):
+Véase que hemos probado con toda sucesión exacta corta de espacios vectoriales \emph{escinde}. Usaremos este lema (demuéstrese como ejercicio):
 \begin{lemma}[Splitting Lemma]
-Se dice que $0 \rightarrow V_1 \xrightarrow{f} V_2 \xrightarrow{g} V_3 \rightarrow 0$ \textbf{escinde} si se cumple uno de las siguientes condiciones equivalentes:
+Se dice que $0 \rightarrow V_1 \xrightarrow{f} V_2 \xrightarrow{g} V_3 \rightarrow 0$ \emph{escinde} si se cumple uno de las siguientes condiciones equivalentes:
 \begin{enumerate}
 \item $V_2 \cong V_1 \oplus V_3$.
 \item $\exists r : V_3 \to V_2$ tal que $g \circ r = id_{V_3}$.
@@ -50,7 +50,7 @@ Se dice que $0 \rightarrow V_1 \xrightarrow{f} V_2 \xrightarrow{g} V_3 \rightarr
 \end{lemma}
 
 \begin{lemma}[Lema de los cinco]
-Sea el diagram conmutativo:
+Sea el diagrama conmutativo:
 \[\begin{tikzcd}
 	M_1 \arrow[r,"θ_1"] \arrow[d,two heads,"ψ_1"] & M_2 \arrow[r,"θ_2"] \arrow[d,"ψ_2","\cong"'] & M_3 \arrow[r,"θ_3"] \arrow[d,"ψ_3"] & M_4 \arrow[r,"θ_4"] \arrow[d,"ψ_4","\cong"'] & M_5 \arrow[d,hook,"ψ_5"]\\
 	N_1 \arrow[r,"φ_1"] & N_2 \arrow[r,"φ_2"] & N_3 \arrow[r,"φ_3"] & N_4 \arrow[r,"φ_4"] & N_5
@@ -60,8 +60,8 @@ donde las filas son exactas, $ψ_2$ y $ψ_4$ son isomorfismos, $ψ_1$ es epimorf
 \begin{dem}
 Lo demostramos por diagram-chasing\footnote{Es más fácil hacerlo que explicarlo}.
 
-Sea $m_3 \in M_3$ tal que $ψ_3(m_3) = 0$, luego $0=φ_3ψ_3(m)=φ_4θ_3(m_3)$.
-Como $φ_4$ es isomorfismo, $θ_3(m_3)=0$.
+Sea $m_3 \in M_3$ tal que $ψ_3(m_3) = 0$, luego $0=φ_3ψ_3(m)=ψ_4θ_3(m_3)$.
+Como $ψ_4$ es isomorfismo, $θ_3(m_3)=0$.
 Por exactitud, existe $m_2 \in M_2$ tal que $θ_2(m_2)=m_3$. Sea $n_2 = ψ_2(m_2)$.
 Como $0=ψ_3θ_2(n)=φ_2ψ_2(n)$, por exactitud existe $n_1 \in N_1$ tal que $φ_1(n_1) = n_2$.
 Como $ψ_1$ es sobreyectivo, existe $m_1 \in M_1$ tal que $ψ_1(m_1)=n_1$. 
@@ -73,12 +73,12 @@ Luego $m_3 = θ_2(m_2)=θ_2(θ_1(m_1))=0$ por exactitud y $ψ_3$ es inyectiva.
 \begin{defi}
 Un complejo de cadenas $\mathcal{C}$ es un diagrama del tipo siguiente:
 \[ \cdots \rightarrow C_{n+1} \xrightarrow{δ_{n+1}} C_n \xrightarrow{δ_n} C_{n-1} \xrightarrow{δ_{n-1}} \cdots \]
-donde $C_i$ son $\R$-e.v. llamados \textbf{$n$-cadenas}, $δ_i$ son homomorfismos de $\R$-e.v. llamados \textbf{operadores borde}, tal que $δ_n \circ δ_{n+1} = 0$ para todo $n \in \Z$. En particular, decimos que $\mathcal{C}_* = \{(C_n,δ_n)\}_{n \in \Z}$.
+donde $C_i$ son $\R$-e.v. llamados \emph{$n$-cadenas}, $δ_i$ son homomorfismos de $\R$-e.v. llamados \emph{operadores borde}, tal que $δ_n \circ δ_{n+1} = 0$ para todo $n \in \Z$. Habitualmente, denotamos $\mathcal{C}_* = \{(C_n,δ_n)\}_{n \in \Z}$.
 
-Para todo $n \in \Z_+$, denotamos $Z_n := \ker δ_n \subseteq C_n$. A los elementos de $Z_n$ los llamamos \textbf{$n$-ciclos}.
-Definimos $B_n := \Ima δ_{n+1} \subseteq C_n$, cuyos elementos se llaman \textbf{$n$-bordes}.
+Para todo $n \in \Z_+$, denotamos $Z_n := \ker δ_n \subseteq C_n$. A los elementos de $Z_n$ los llamamos \emph{$n$-ciclos}.
+Definimos $B_n := \Ima δ_{n+1} \subseteq C_n$, cuyos elementos se llaman \emph{$n$-bordes}.
 Como $δ_n \circ δ_{n+1} = 0$, tenemos que $B_n \subseteq Z_n$.
-De esta manera, definimos $H_n(\mathcal{C}) = Z_n / B_n$ como el \textbf{$n$-ésimo $\R$-e.v. de homología} del complejo de cadenas $\mathcal{C}$.
+De esta manera, definimos $H_n(\mathcal{C}) = Z_n / B_n$ como el \emph{$n$-ésimo $\R$-e.v. de homología} del complejo de cadenas $\mathcal{C}$.
 \end{defi}
 
 \begin{defi}
