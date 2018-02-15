@@ -70,7 +70,7 @@ Sketch the following affine varieties in $\R^3$.
 \item Cilindro con eje en el eje $z$ de radio $1$.
 \item Punto $(-2,1.5,0)$.
 \item Unión de plano $x=0$ y cilindro parabólico $y=z^2$.
-\item Unión del plano $x=0$ y la curva $(t^3,t^3,t)$.
+\item Unión del plano $x=0$ y la curva $(t,t^2,t^3)$.
 \item Circunferencia intersección de dos esferas.
 \end{enumerate}
 \end{solucion}
@@ -106,7 +106,7 @@ Como los puntos son variedades afines y la unión de variedades afines es varied
 
 \begin{ejercicio}{1.2.7}
 One of the pretties examples from polar coordinates is the four-leaved rose.
-This curve is defined by the poar equation $r = \sin(2θ)$. We will show that this curve is an affine variety.
+This curve is defined by the polar equation $r = \sin(2θ)$. We will show that this curve is an affine variety.
 \begin{enumerate}[a.]
 \item Using $r^2=x^2+y^2$, $x=r \cos θ$ and $y = r \sin θ$, show that the four-leaved rose is contained in the affine variety $\V((x^2+y^2)^3-4x^2y^2)$.
 \item Now argue carefully that $\V((x^2+y^2)^3-4x^2y^2)$ is contained in the four-leaved rose.
@@ -120,7 +120,15 @@ Combining parts $(a)$ and $(b)$, we have proved that the four-leaved rose is the
 \[ (x^2+y^2)^3-4x^2y^2=r^6-4(r\cosθ)^2(r\sinθ)^2=r^6-4r^4\cos^2θ\sin^2θ \]
 Como $\sin(2θ)=2\sinθ\cosθ$:
 \[ r^6-4r^4\cos^2θ\sin^2θ = r^6-r^4 (\sin2θ)^2 = r^6 - r^4 r^2 = 0 \]
-Luego la rosa de cuatro hojas está contenida en $\V((x^2+y^2)^3-4x^2y^2)$.
+Luego la rosa de cuatro hojas está contenida en $\V((x^2+y^2)^3-4x^2y^2)$. Recíprocamente, sea $(x,y)\in \V((x^2+y^2)^3-4x^2y^2)$. Vamos a tomar las coordenadas polares de este punto
+$$
+r=\sqrt{x^2+y^2} \qquad \theta = \tan^{-1}(y/x)
+$$
+Como $(x^2+y^2)=(2xy)^{2/3}$ entonces $r=(2xy)^{1/3}$. Además, sabemos que $$\sin(2\tan^{-1}(x)) = \frac{2x}{{x^2+1}}$$
+De esto, deducimos que
+$$
+\sin(2\theta) = \sin(2\tan^{-1}(y/x)) = \frac{2xy}{y^2+x^2} = \frac{2xy}{(2xy)^{2/3}} = (2xy)^{1/3} = r  
+$$
 \end{enumerate}
 \end{solucion}
 
@@ -129,7 +137,7 @@ Luego la rosa de cuatro hojas está contenida en $\V((x^2+y^2)^3-4x^2y^2)$.
 \begin{ejercicio}{1.2.8}
 It can take some work to show that something is not an affine variety. For example,
 consider the set
-$$X = {(x, x) | x ∈ \R, x \neq 1} ⊆ \R^2,$$
+$$X = \{(x, x) | x ∈ \R, x \neq 1\} ⊆ \R^2,$$
 which is the straight line $x = y$ with the point $(1, 1)$ removed. To show that $X$ is not
 an affine variety, suppose that $X = \V( f_1,\dots, f_s)$. Then each $f_i$ vanishes on $X$, and if
 we can show that $f_i$ also vanishes at $(1, 1)$, we will get the desired contradiction. Thus,
