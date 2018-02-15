@@ -44,38 +44,66 @@ Trivialérrimo. $x=t$ y $y=f(t)$.
 
 \newpage
 
-\begin{ejercicio}{1.2.4}
-Sketch the following affine varieties in $\R^3$.
-\begin{enumerate}[a.]
-\item $\V(x^2+y^2+z^2-1)$.
-\item $\V(x^2+y^2-1)$.
-\item $\V(x+2,y-1.5,z)$.
-\item $\V(xz^2-xy)$.
-\item $\V(x^4-zx,x^3-yx)$.
-\item $\V(x^2+y^2+z^2-1, x^2+y^2+(z-1)^2-1)$.
+\begin{ejercicio}{1.3.4}
+Consider parametric representation
+\begin{align*}
+x&=\frac{t}{1+t}\\
+y&=1-\frac{1}{t^2}
+\end{align*}
+\begin{enumerate}[a)]
+\item Find the equation of the affine variety determined by the above parametric equations.
+\item Show that the above equations parametrize all points of the variety found in part
+(a) except for the point $(1, 1)$.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-\begin{enumerate}[a.]
-\item Esfera centrada en el origen de radio $1$.
-\item Cilindro con eje en el eje $z$ de radio $1$.
-\item Punto $(-2,1.5,0)$.
-\item Unión de plano $x=0$ y cilindro parabólico $y=z^2$.
-\item Unión del plano $x=0$ y la curva $(t,t^2,t^3)$.
-\item Circunferencia intersección de dos esferas.
+\begin{enumerate}[a)]
+\item[]
+\item Lo que pega es hacer 
+$$
+x=\frac{t}{1+t} = \frac{1+t}{1+t}-\frac{1}{1+t} = 1 -\frac{1}{1+t}\qquad 1+t= \frac{1}{1-x} \qquad
+t = \frac{x}{1-x}
+$$
+$$
+y = 1-\frac{1}{t^2} = 1 - \frac{(1-x)^2}{x^2} = \frac{2x-1}{x^2}
+$$
+Luego tenemos $\V(x^2y-2x+1)$. Efectivamente es fácil ver que la parametrización está contenida en $\V(x^2y-2x+1)$. \item Si $x=1$ entonces $y-2+1=0$, luego $y=1$. Si $x\neq 1$ entonces podemos escribir 
+$t=x(1-x)^{-1}$ y procedemos inversamente al apartado anterior para ver que verifican la parametrización. Para ver que la parametrizació no cubre al $(1,1)$, vemos que no hay soluciones si impones que
+$$
+1=y=1-\frac{1}{t^2} \qquad 0 = \frac{1}{t^2}
+$$
 \end{enumerate}
 \end{solucion}
 
 \newpage
 
 
-\begin{ejercicio}{1.2.5}
-Use the proof of Lemma 2 to sketch $\V((x-2)(x^2-y),y(x^2-y),(z+1)(x^2-y))$ in $\R^3$.
+\begin{ejercicio}{1.3.5}
+This problem will be concerned with the hyperbola $x^2 − y^2 = 1$.
+\begin{enumerate}[a)]
+\item Just as trigonometric functions are used to parametrize the circle, hyperbolic functions are used to parametrize the hyperbola. Show that the point
+\begin{align*}
+x&=\cosh(t)\\
+y&=\sinh(t)
+\end{align*}
+always lies on $x^2 − y^2 = 1$. What portion of the hyperbola is covered?
+\item Show that a straight line meets a hyperbola in $0$, $1$, or $2$ points, and illustrate your
+answer with a picture. Hint: Consider the cases $x = a$ and $y = mx + b$ separately.
+\item Adapt the argument given at the end of the section to derive a parametrization of the hyperbola. Hint: Consider nonvertical lines through the point $(−1, 0)$ on the hyperbola.
+\item The parametrization you found in part (c) is undefined for two values of t. Explain how this relates to the asymptotes of the hyperbola.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-Tenemos que:
-\[ \V((x-2)(x^2-y),y(x^2-y),(z+1)(x^2-y)) = \V(x^2-y) \cup \V(x-2,y,z+1) \]
-Luego tenemos un cilindro parabólico $y=x^2$ y el punto $(2,0,-1)$.
+Veamos la solución
+\begin{enumerate}[a)]
+\item Es inmediato a partir de la igualdad $\cosh^2(t)
+-\sinh^2(t)=1$. De hecho, la cubre completamente.
+\item Si $x=a$ entonces tenemos los casos donde $a\in(-1,1)$ donde corta en 0 puntos, los casos $a=-1,1$, donde corta en un punto, y el resto de casos donde se cortan en dos puntos. Si $y=mx+b$ entonces $(1-m^2)x^2-2mbx-(b^2+1)=0$. El discriminante es $4m^2b^2+4(1-m^2)(b^2+1) = 4(b^2-m^2+1)$. 
+\begin{itemize}
+\item Si el discriminante es negativo no tenemos ninguna solución.
+\item Si el discriminante es nulo, obtenemos una única solución para la variable $x$, que será $x=\frac{mb}{1-m^2}$. Como $b^2-m^2 =1$ entonces $x= \frac{m}{b}$.
+\end{itemize}
+\end{enumerate}
 \end{solucion}
 
 \newpage
