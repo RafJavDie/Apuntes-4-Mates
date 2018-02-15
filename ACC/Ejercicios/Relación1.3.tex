@@ -1,0 +1,222 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{1.3.1}
+Parametrize all solutions of linear equations
+\begin{align*}
+x+2y-2z+w=-1\\
+x+y+z-w=2
+\end{align*}
+\end{ejercicio}
+\begin{solucion}
+Simplemente consideramos $(t,u,v,-1-t-2u+2v)$ y $(t,u,v,-2+t+u+v)$
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.3.2}
+Use a trigonometric identity to show that
+\begin{align*}
+x&=\cos(t)\\
+y&=\cos(2t)
+\end{align*}
+parametrizes a portion of a parabola. Indicate exactly what portion of the parabola is covered.
+\end{ejercicio}
+\begin{solucion}
+Sabemos que $\cos(2t)=\cos^2(t)-\sin^2(t) = 2\cos^2(t)-1$. Por tanto, es claro que se parametriza la parábola $y=x^2$ en el intervalo $[-1,1]$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.3.3}
+Given $f\in k[x]$, find a parametrization of $\V(y-f(x))$.
+\end{ejercicio}
+\begin{solucion}
+Trivialérrimo. $x=t$ y $y=f(t)$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.2.4}
+Sketch the following affine varieties in $\R^3$.
+\begin{enumerate}[a.]
+\item $\V(x^2+y^2+z^2-1)$.
+\item $\V(x^2+y^2-1)$.
+\item $\V(x+2,y-1.5,z)$.
+\item $\V(xz^2-xy)$.
+\item $\V(x^4-zx,x^3-yx)$.
+\item $\V(x^2+y^2+z^2-1, x^2+y^2+(z-1)^2-1)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item Esfera centrada en el origen de radio $1$.
+\item Cilindro con eje en el eje $z$ de radio $1$.
+\item Punto $(-2,1.5,0)$.
+\item Unión de plano $x=0$ y cilindro parabólico $y=z^2$.
+\item Unión del plano $x=0$ y la curva $(t,t^2,t^3)$.
+\item Circunferencia intersección de dos esferas.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+
+\begin{ejercicio}{1.2.5}
+Use the proof of Lemma 2 to sketch $\V((x-2)(x^2-y),y(x^2-y),(z+1)(x^2-y))$ in $\R^3$.
+\end{ejercicio}
+\begin{solucion}
+Tenemos que:
+\[ \V((x-2)(x^2-y),y(x^2-y),(z+1)(x^2-y)) = \V(x^2-y) \cup \V(x-2,y,z+1) \]
+Luego tenemos un cilindro parabólico $y=x^2$ y el punto $(2,0,-1)$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.2.6}
+Let us show that all finite subsets of $k^n$ are affine varieties.
+\begin{enumerate}[a.]
+\item Prove that a single point $(a_1,\dots,a_n) \in k^n$ is an affine variety.
+\item Prove that every finite subset of $k^n$ is an affine variety.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Tenemos que $\{(a_1,\dots,a_n)\} = \V(x_1-a_1,x_2-a_2,\dots,x_n-a_n)$, luego todo punto es una variedad afín.
+Todo subconjunto finito de $k^n$ es unión de puntos.
+Como los puntos son variedades afines y la unión de variedades afines es variedad afín, todo subconjunto finito de $k^n$ es variedad afín.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.2.7}
+One of the pretties examples from polar coordinates is the four-leaved rose.
+This curve is defined by the polar equation $r = \sin(2θ)$. We will show that this curve is an affine variety.
+\begin{enumerate}[a.]
+\item Using $r^2=x^2+y^2$, $x=r \cos θ$ and $y = r \sin θ$, show that the four-leaved rose is contained in the affine variety $\V((x^2+y^2)^3-4x^2y^2)$.
+\item Now argue carefully that $\V((x^2+y^2)^3-4x^2y^2)$ is contained in the four-leaved rose.
+This is trickier that it seems since $r$ can be negative in $r = \sin(2θ)$.
+\end{enumerate}
+Combining parts $(a)$ and $(b)$, we have proved that the four-leaved rose is the affine variety $\V((x^2+y^2)^3-4x^2y^2)$.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item Tenemos que
+\[ (x^2+y^2)^3-4x^2y^2=r^6-4(r\cosθ)^2(r\sinθ)^2=r^6-4r^4\cos^2θ\sin^2θ \]
+Como $\sin(2θ)=2\sinθ\cosθ$:
+\[ r^6-4r^4\cos^2θ\sin^2θ = r^6-r^4 (\sin2θ)^2 = r^6 - r^4 r^2 = 0 \]
+Luego la rosa de cuatro hojas está contenida en $\V((x^2+y^2)^3-4x^2y^2)$. Recíprocamente, sea $(x,y)\in \V((x^2+y^2)^3-4x^2y^2)$. Vamos a tomar las coordenadas polares de este punto
+$$
+r=\sqrt{x^2+y^2} \qquad \theta = \tan^{-1}(y/x)
+$$
+Como $(x^2+y^2)=(2xy)^{2/3}$ entonces $r=(2xy)^{1/3}$. Además, sabemos que $$\sin(2\tan^{-1}(x)) = \frac{2x}{{x^2+1}}$$
+De esto, deducimos que
+$$
+\sin(2\theta) = \sin(2\tan^{-1}(y/x)) = \frac{2xy}{y^2+x^2} = \frac{2xy}{(2xy)^{2/3}} = (2xy)^{1/3} = r  
+$$
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.2.8}
+It can take some work to show that something is not an affine variety. For example,
+consider the set
+$$X = \{(x, x) \mid x ∈ \R, x \neq 1\} ⊆ \R^2,$$
+which is the straight line $x = y$ with the point $(1, 1)$ removed. To show that $X$ is not
+an affine variety, suppose that $X = \V( f_1,\dots, f_s)$. Then each $f_i$ vanishes on $X$, and if
+we can show that $f_i$ also vanishes at $(1, 1)$, we will get the desired contradiction. Thus,
+here is what you are to prove: if $f ∈ \R[x, y]$ vanishes on $X$, then $f (1, 1) = 0$. Hint: Let
+$g(t) = f (t, t)$, which is a polynomial $\R[t]$. Now apply the proof of Proposition 5 of §1.
+\end{ejercicio}
+\begin{solucion}
+Con lo que nos dice el enunciado, tenemos que $g(t)$ es un polinomio en $\R[t]$ que se anula en infinitos puntos, luego es el polinomio idénticamente 0, por lo que $f(1,1)=g(1)=0$. Esto, aplicado a los polinomios que generarían $X$, da lugar a la contradicción de que $(1,1)\in X$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.2.9}
+Let $R = \{(x, y) ∈ \R^2 \mid  y > 0\}$ be the upper half plane. Prove that $R$ is not an affine
+variety.
+\end{ejercicio}
+\begin{solucion}
+Supongamos que $R=\V(f_1,\dots, f_s)$. Sea $M$ la mayor potencia de $x$ o de $y$ que aparece en los polinomios. Entonces $f_1,\dots, f_s$ se anulan en todo el plano superior, en particular en el lattice $\Z^2_{M+1}$. Así que por el Ejercicio 1.1.6, los polinomios se anulan en todo el plano (de hecho en todo $\C^2$). 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.2.10}
+Let $\Z^n ⊆ \C^n$ consist of those points with integer coordinates. Prove that $\Z^n$ is not an
+affine variety. Hint: See Exercise 6 from §1.
+\end{ejercicio}
+\begin{solucion}
+Por el ejercicio 1.1.6 tenemos que si $\V(f_1,\dots, f_s)=\Z^n$, al ser $f_1=\dots=f_s=0$ en $\Z^n$, estos polinomios se anulan en todo $\C^n$, luego $\V(f_1,\dots, f_s)=\C^n$. Contradicción. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.2.11}
+So far, we have discussed varieties over $\R$ or $\C$. It is also possible to consider varieties
+over the field $\Q$, although the questions here tend to be much harder. For example, let n
+be a positive integer, and consider the variety $F_n ⊆ \Q^2$ defined by
+$$x^n + y^n = 1.$$
+Notice that there are some obvious solutions when $x$ or $y$ is zero. We call these \emph{trivial
+solutions}. An interesting question is whether or not there are any nontrivial solutions.
+\begin{itemize}
+\item[a.] Show that $F_n$ has two trivial solutions if $n$ is odd and four trivial solutions if $n$ is even.
+\item[b.] Show that $F_n$ has a nontrivial solution for some $n ≥ 3$ if and only if Fermat’s Last
+Theorem were false.
+Fermat’s Last Theorem states that, for $n ≥ 3$, the equation
+$$x^n + y^n = z^n$$
+has no solutions where $x$, $y$, and $z$ are nonzero integers. The general case of this conjecture
+was proved by Andrew Wiles in 1994 using some very sophisticated number theory. The
+proof is extremely difficult.
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[a.] Las soluciones triviales vienen dadas por $y^n=1$ y $x^n=1$. Para $n$ impar tenemos las soluciones $y=1$ por un lado y $x=1$ por otro. En el caso de $n$ impar añadimos en la primera $y=-1$ y en la segunda $x=-1$.
+\item[b.] Si $F_n$ tiene una solución no trivial, entonces, eliminando denominadores, tendríamos una solución para el teorema de Fermat. Por otro lado, si el teorema de Fermat fuera falso, podríamos dividir por $z^n$ y nos daría una una solución de la forma $(x,y,1)$ con $(x,y)\in\Q^2$.
+\end{itemize}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.2.15}
+In Lemma 2, we showed that if $V$ and $W$ are affine varieties, then so are their union $V∪W$
+and intersection $V ∩W$. In this exercise we will study how other set-theoretic operations
+affect affine varieties.
+\begin{itemize}
+\item[a.] Prove that finite unions and intersections of affine varieties are again affine varieties.
+Hint: Induction.
+\item[b.] Give an example to show that an infinite union of affine varieties need not be an
+affine variety. Hint: By Exercises 8–10, we know some subsets of kn that are not
+affine varieties. Surprisingly, an infinite intersection of affine varieties is still an affine
+variety. This is a consequence of the Hilbert Basis Theorem, which will be discussed
+in Chapters 2 and 4.
+\item[c.] Give an example to show that the set-theoretic difference $V \ W$ of two affine varieties
+need not be an affine variety.
+\item[d.] Let $V ⊆ k^n$ and $W ⊆ k^m$ be two affine varieties, and let
+$$V × W = \{(x_1,\dots , x_n, y_1,\dots , y_m) ∈ k^{n+m} \mid  (x_1, . . . , x_n) ∈ V, (y_1, . . . , y_m) ∈ W\}$$
+be their Cartesian product. Prove that $V ×W$ is an affine variety in $k^{n+m}$. Hint: If $V$ is
+defined by $f_1,\dots , f_s ∈ k[x_1,\dots , x_n]$, then we can regard $f_1,\dots, f_s$ as polynomials in
+$k[x_1,\dots , x_n, y_1,\dots, y_m]$, and similarly for $W$. Show that this gives defining equations
+for the Cartesian product.
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[a.] Trivial.
+\item[b.] $\{y>0\}=\cup_{c>0}\{y=c\}$. Por el ejercicio \ref{ejer:1.2.9} el conjunto no es una variedad afín, pero cada recta sí lo es. 
+\item[c.] $\{y=x\}\setminus \{(1,1)\}$. Por el ejercicio \ref{ejer:1.2.8} no es variedad afín, aunque la recta y el punto sí lo son.
+\item[d.] Sean $V=\V(f_1,\dots, f_r)$ con $f_1,\dots, f_r\in k[x_1,\dots, x_n]$ y $W=\V(g_1,\dots, g_s)$ con $g_1,\dots, g_s\in k[y_1,\dots, y_m]$. Entonces $V\times W=\{(x_1,\dots, x_n,y_1,\dots, y_m)\in k^{n+m}\mid f_i(x_1,\dots, x_n)=0, g_j(y_1,\dots, y_m)=0, 1\leq i\leq n, 1\leq j\leq m\}$, luego por definción es una variedad afín.
+\end{itemize}
+\end{solucion}
+
+\end{document}
