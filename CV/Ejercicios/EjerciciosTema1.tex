@@ -9,7 +9,7 @@
 \maketitle
 
 
-\begin{ejercicio}{2}
+\begin{ejercicio}{2.2}
 Econtrar $w\in Alt^2(\R^4)$ tal que $w\land w\neq 0$.
 \end{ejercicio}
 \begin{solucion}
@@ -19,7 +19,7 @@ $$w\land w= dx^1\land dx^2\land dx^3\land dx^4 +dx^3\land dx^4\land dx^1\land dx
 
 \newpage
 
-\begin{ejercicio}{3}
+\begin{ejercicio}{2.3}
 Demostrar que existen isomorfismos
 \begin{align*}
 &\R^3\overset{i}{\to} Alt^1(\R^3), &\R^3\overset{j}{\to} Alt^2(\R^3)
@@ -59,7 +59,7 @@ Por lo que se tiene la igualdad.
 
 \newpage
 
-\begin{ejercicio}{4}
+\begin{ejercicio}{2.4}
 Sea $V$ un $\R$-espacio vectorial de dimensión finita con producto escalar y sea 
 $$i:V\to V^*=Alt^1(V)$$
 la aplicación $\R$-lineal dada por 
@@ -79,7 +79,7 @@ Como $i$ transforma bases en bases, es un isomorfismo.
 
 \newpage
 
-\begin{ejercicio}{5}
+\begin{ejercicio}{2.5}
 Con las mismas hipótesis que en el ejercicio anterior, probar la existencia de un producto escalar $\langle,\rangle$ en $Alt^p(V)$ tal que
 $$\langle w_1\land\dots\land w_p,\tau_1\land\dots\land\tau_p\rangle=\det(\langle w_i,\tau_j\rangle)$$
 para cualesquiera $w_i,\tau_j\in Alt^1(V)$, y 
@@ -89,26 +89,61 @@ $$\{\beta_{\sigma(1)}\land\dots\land\beta_{\sigma(p)}\mid \sigma\in S(p,n-p)\}$$
 es una base ortonormal de $Alt^p(V)$.
 \end{ejercicio}
 \begin{solucion}
-Vamos a probar que la expresión del enunciado determina un producto escalar comprobando que verifica los axiomas.
-\begin{enumerate}
-\item Semidefinida positiva y 0 si y solo si el vector es 0. Esto no me creo que lo sea.
-\item Los escalares salen fuera del argumento derecho. $\langle w_1\land\dots\land w_p,\alpha(\tau_1\land\dots\land\tau_p)\rangle=\langle w_1\land\dots\land w_p,(\alpha\tau_1)\land\dots\land\tau_p\rangle$, por lo que quedaría una fila o una columna enteramente multiplicada por $\alpha$ de donde se deduce la propiedad.
-\item Lineal en el argumento derecho. Como $i$ es isomorfismo, $i^{-1}(\tau_1+\tau_2)=i^{-1}(\tau_1)+i^{-1}(\tau_2)$. En verdad a ver cómo está definido esto para una suma.
-\item Simétrica. Se tiene porque el determinante de una matriz coincide con el de su traspuesta.
-\end{enumerate}
+Vamos a probar que la expresión del enunciado determina un producto escalar comprobando que verifica los axiomas. Tengamos en cuenta que por la definición de $i$ y del producto escalar del ejercicio anterior, $i^{-1}(w)\cdot i^{-1}(\tau)=i(i^{-1}(w))(i^{-1}(\tau))=w(i^{-1}(\tau))=\tau(i^{-1}(w))$ por simetría del producto escalar. Entonces, $\det(w_i(i^{-1}(\tau_j))=w_1\land\dots\land w_p(i^{-1}(\tau_1),\dots, i^{-1}(\tau_p))$ o también $\det(\tau_j(i^{-1}(w_i))=\tau_1\land\dots\land\tau_p(i^{-1}(w_1),\dots, i^{-1}(w_p))$. Así, $\langle w+w',v\rangle$ sería simplemente evaluar $w+w'$ sobre los $i^{-1}(v_i)$, por lo que claramente es multilineal. 
 
-Para la segunda parte, probaremos que con el producto escalar anterior, el conjunto es ortonormal. Esto implica independencia lineal. Como el cardinal es justamente la dimensión de $Alt^p(V)$, será suficiente. Es evidente que el producto escalar de un elemento por sí mismo da 1. Tomemos entonces dos permutaciones distintas $\sigma,\tau\in S(p,n-p)$. Si existe $i$ tal que $\sigma(i)\neq\tau(j)$ para todo $j$, entonces el resultado es claro porque tendríamos una fila o columna de ceros. En caso contrario, sea supongamos que $\sigma(i)=\tau(j)$ para algunos $i,j$. En ese caso, tenemos que el elemento $(i,j)$ es 1, mientras que todo el resto de la fila $i$ y todo el resto de la fila $j$ es 0. Así que desarrollamos por ahí. Si para el resto de índices las permutaciones difieren completamente estamos en el caso en el que sabemos que es 0. Si siguen teniendo algún elemento común, volvemos a realizar el mismo razonamiento. Como las permutaciones son distintas, el proceso parará en algún momento en el que el determinante vale 0.
+Dado $w\in Alt^`p$, $w=\sum_{\sigma\in S(p,n-p)}w_{\sigma}\varepsilon_{\sigma}$. Veamos que la aplicación es semidefinida positiva. Usamos la notación $e_i$ y $\varepsilon_i$ para la base ortonormal y su dual respectivamente. Sean $\sigma,\sigma'\in S(p,n-p)$.
+\begin{gather*}
+\langle \varepsilon_{\sigma}, \varepsilon_{\sigma'}\rangle=\langle \varepsilon_{\sigma(1)}\land\dots\varepsilon_{\sigma(p)},\varepsilon_{\sigma'(1)}\land\dots\varepsilon_{\sigma'(p)}\rangle=\\
+\varepsilon_{\sigma(1)}\land\dots\varepsilon_{\sigma(p)}(i^{-1}(\varepsilon_{\sigma'(1)}),\dots, i^{-1}(\varepsilon_{\sigma'(p)}))=\\
+\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)}(e_{\sigma'(1)}, \dots, e_{\sigma'(p)})
+\end{gather*}
+Esto vale 0 si $\sigma\neq\sigma'$ y 1 si $\sigma=\sigma'$, por lo que se tiene el resultado. 
+Además es simétrica porque el determinante de una matriz coincide con el de su traspuesta.
+
+
 \end{solucion}
 
 \newpage
 
-\begin{ejercicio}{6}
+\begin{ejercicio}{2.6}
 Supongamos que $w\in Alt^p(V)$. Let $v_1,\dots, v_p$ vectores de $V$ y sea $A=(a_{ij})$ una matriz $p\times p$. Probar que para $w_i=\sum_{j=1}^pa_{ij}v_j$ ($1\leq i\leq p$) se tiene
 $$w(w_1,\dots, w_p)=\det(A)w(v_1,\dots, v_p).$$
 \end{ejercicio}
 \begin{solucion}
 Aplicar la multilinealidad junto con la definición de alternado, incluyendo que cambia el signo al trasponer.
+\[
+w=\sum_{\sigma\in S(p,n-p)} w_{\sigma}\varepsilon_{\sigma}\Rightarrow w(w_1,\dots, w_p)=\sum_{\sigma}\varepsilon_{\sigma}(w_1,\dots, w_p)=\det A\sum_{\sigma}(v_1,\dots, v_p). 
+\]
+Veámoslo.
+\[
+\varepsilon_{\sigma}(w_1,\dots, w_p)=\sum_{\tau\in S(p)}\prod_{k=1}^p a_{k,\tau(k)} \varepsilon_{\sigma}(v_{\tau(1)},\dots, v_{\tau(p}))=\sum_{\tau\in S(p)}sgn(\tau)\prod_{k=1}^p a_{k,\tau(k)} \varepsilon_{\sigma} (v_{1},\dots, v_{p}))=
+\]
+\[
+\det(A)\varepsilon_{\sigma}(v_1,\dots, v_p)
+\]
 \end{solucion}
 
 \newpage
+
+\begin{ejercicio}{2.7}
+Probar para $f:V\to W$ que
+
+$$Alt^{p+q}(f)(w_1\land w_2)=Alt^p(f)(w_1)\land Alt^q(f)(w_2),$$
+donde $w_1\in Alt^p(W)$ y $w_2\in Alt^q(W)$.
+\end{ejercicio}
+\begin{solucion}
+Sean $v_1,\dots, v_{p+q}\in W$. 
+\begin{gather*}
+Alt^{p+q}(f)(w_1\land w_2)(v_1,\dots, v_{p+q})=w_1\land w_2(f(v_1),\dots, f(v_{p+q})=\\
+\sum_{\sigma}sgn(\sigma)w_1(f(v_{\sigma(1)}),\dots, f(v_{\sigma(p)}))w_2(f(v_{\sigma(p+1)}),f(v_{\sigma(p+q}))=\\
+\sum_{\sigma}sgn(\sigma) Alt^p(f)(w_1)(v_{\sigma(1)},\dots, v_{\sigma(p)})Alt^q(f)(w_2)(v_{\sigma(p+1)},\dots, v_{\sigma(p+q)})=\\
+Alt^p(f)(w_1)\land Alt^q(f)(w_2)(v_1,\dots, v_{p+1})
+\end{gather*}
+\end{solucion}
+
+\begin{ejercicio}{2.9}
+\end{ejercicio}
+\begin{solucion}
+PROBAR QUE EXISTE VOLUMEN Y VER SI ES ÚNICO Y CÓMO VARÍA AL CAMBIAR DE BASE ORTONORMAL
+\end{solucion}
 \end{document}
