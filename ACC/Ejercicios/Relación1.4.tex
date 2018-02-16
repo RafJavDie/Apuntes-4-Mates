@@ -57,7 +57,7 @@ Use the previous exercise to prove the following equalities of ideals in $\Q[x,y
 \item $\gene{x+xy, y+xy, x^2, y^2} = \gene{x, y}$.
 \item $\gene{2x^2+3y^2-11, x^2-y^2-3} = \gene{x^2-4, y^2-1}$.
 \end{enumerate}
-This illustrates that the same ideal cna have many different bases and that different bases ay have different numbers of elements.
+This illustrates that the same ideal can have many different bases and that different bases may have different numbers of elements.
 \end{ejercicio}
 \begin{solucion}\mbox{}
 \begin{enumerate}[a.]
@@ -100,7 +100,7 @@ Este hecho unido con el ejercicio \ref{ejer:1.4.4} demuestra el resultado.
 \newpage
 
 \begin{ejercicio}{1.4.6}
-The word ``basis'' is used in vaious ways in mathematicas.
+The word ``basis'' is used in various ways in mathematicas.
 In this exercise, we will see that ``a basis of an ideal'', as defined in this section, is quite different from ``a basis of a subspace'', which is studied in linear algebra.
 \begin{enumerate}[a.]
 \item Firrst, consider the ideal $I = \gene{x} \subseteq k[x]$.
@@ -159,7 +159,7 @@ Radicals ideals will play an important role in Chapter 4. In particular, the Nul
 \begin{solucion}
 \begin{enumerate}[a.]
 \item Sea $f^m \in \I(V)$ con $f \in k[1,\dots,x_n]$ y $m$ entero positivo.
-Supongamos que $V$ es no nulo.
+Supongamos que $V$ es no vacío.
 Sea $p \in V$, entonces $f^m(p)=0$.
 Como el ideal $\gene{0}$ es primo en $k$, tenemos que $f(p)=0$.
 Como $p$ era un punto arbitrario, $f$ se anula en todo $V$, luego $f \in \I(V)$.
@@ -227,20 +227,82 @@ In Exercise 1.1.2, we showed that $x^2y+y^2x$ vanishes at all points of $\F_2^2$
 + bx + cy + d$, where $A, B ∈ \F_2[x, y]$ and $a, b, c, d ∈ \F_2$. Hint: Write f in the form $\sum_i p_i(x)y^i$ and use the division algorithm (Proposition 2 of §5) to divide each $p_i$ by $x^2 − x$. From this, you can write $f = A(x^2 − x) + q_1(y)x + q_2(y)$. Now divide $q_1$ and $q_2$ by $y^2 − y$. Again, this argument will become vastly simpler once we know the division algorithm from Chapter 2.
 \item Show that $axy + bx + cy + d ∈ I$ if and only if $a = b = c = d = 0$.
 \item Using parts (b) and (c), complete the proof that $I =\gene{x^2-x,y^2-y}$.
-\item Express $x^2y + y^2x$ as a conbiation of $x^2-x$ and $y^2-y$.
+\item Express $x^2y + y^2x$ as a combination of $x^2-x$ and $y^2-y$.
 \end{enumerate}
 \begin{solucion}
 \begin{enumerate}[a.]
 \item[]
 \item Es claro que si $f(x,y) = h_1(x^2-x)+h_2(y^2-y)$ entonces $f(0,0)=f(1,0)=f(0,1)=f(1,1)=0$. Por tanto $f\in I$, luego $\gene{x^2-x,y^2-y}\subset I$
 \item
-\item Sea $f(x,y) = axy+bx+cy+d$. Si $f\in I$ entonces se anula en cada puno. Como $f(0,0)=d$, $d=0$. Dado que $f(1,0)=b$ y $f(0,1)=c$ entonces $b=c=0$. Finalmente, $f(1,1)=a$ por lo que $a=0$. El recíproco es trivial.
+\item Sea $f(x,y) = axy+bx+cy+d$. Si $f\in I$ entonces se anula en cada punto. Como $f(0,0)=d$, $d=0$. Dado que $f(1,0)=b$ y $f(0,1)=c$ entonces $b=c=0$. Finalmente, $f(1,1)=a$ por lo que $a=0$. El recíproco es trivial.
 \item Sea $f\in I$ cualquiera, entonces podemos escriber $f$ según la fórmula obtenida en el apartado $(b)$, pero utilizando $(c)$, tenemos que puede escribirse simplemente como $A(x^2-x)+B(y^2-y)$. Pues si alguno de las otras constantes no fueran nulas, como $g = A(x^2-x)+B(y^2-y)\in \gene{x^2-x,y^2-y} \subset I$, tendríamos que $f-g\in I$, pero por la forma de $f-g$, por el apartado $(c)$, $f-g=0$. Por tanto, $f\in \gene{x^2-x,y^2-y}$.
-\item 
+\item $x^2y + y^2x=y(x^2-x)+x(y^2-y)$ (recordemos que el cuerpo es $\F_2$)
 \end{enumerate}
 \end{solucion} 
 \end{ejercicio}
 \newpage
+
+\begin{ejercicio}{1.4.15}
+In the text, we defined $\I(V)$ for a variety $V ⊆ k^n$. We can generalize this as follows: if
+$S ⊆ k^n$ is any subset, then we set
+$$\I(S) = \{f ∈ k[x_1,\dots, x_n] | f (a_1,\dots, a_n) = 0\ \forall (a_1,\dots, a_n) ∈ S\}.$$
+\begin{itemize}
+\item[a.] Prove that $\I(S)$ is an ideal.
+\item[b.] Let $X = \{(a, a) ∈ \R^2 | a \neq 1\}$. By Exercise 8 of §2, we know that $X$ is not an affine
+variety. Determine $\I(X)$. Hint: What you proved in Exercise 8 of §2 will be useful.
+See also Exercise 10 of this section.
+\item[c.] Let $\Z^n$ be the points of $\C^n$ with integer coordinates. Determine $\I(Z^n)$. Hint: See Exercise
+6 of §1.
+\end{itemize}
+\begin{solucion}
+\begin{itemize}
+\item[a.] Análogo a cuando es una variedad.
+\item[b.] $\I(X)=\I((t,t))=\langle x-y\rangle$.
+\item[c.] $\I(\Z^n)=\I(\C^n)=\{0\}$. 
+\end{itemize}
+\end{solucion}
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.4.16}
+Here is more practice with ideals. Let $I$ be an ideal in $k[x_1,\dots , x_n]$.
+\item[a.] Prove that $1 ∈ I$ if and only if $I = k[x_1,\dots , x_n]$.
+\item[b.] More generally, prove that $I$ contains a nonzero constant if and only if $I = k[x_1,\dots, x_n]$.
+\item[c.] Suppose $f , g ∈ k[x_1,\dots , x_n]$ satisfy $f^2, g^2 ∈ I$. Prove that $(f + g)^3 ∈ I$. Hint: Expand
+$(f + g)^3$ using the Binomial Theorem.
+\item[d.] Now suppose $f , g ∈ k[x_1,\dots , x_n]$ satisfy $f^r$ , $g^s ∈ I$. Prove that $(f + g)^{r+s−1} ∈ I$.
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[a.] Si $1\in I$, por ser ideal, $f\cdot 1\in I$ para todo $f\in k[x_1,\dots , x_n]$. La otra inclusión es trivial.
+\item[b.] Como $k$ es cuerpo, dada una constanta $a$, podemos generar $1=aa^{-1}$, por lo que podemos aplicar el apartado anterior.
+\item[c.] $(f+g)^3=f^3+3f^2g+3fg^2+g^3=ff^2+3f^2g+3fg^2+gg^2\in I$. 
+\item[d.] Basta hacer lo mismo que hemos hecho antes con el desarrollo general. 
+\end{itemize}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.17}
+In the proof of Lemma 7, we showed that $x \not∈ 
+\langle x^2, y^2\rangle$ in $k[x, y]$.
+\begin{itemize}
+\item[a.] Prove that $xy \not∈ 
+\langle x^2, y^2\rangle$.
+\item[b.] Prove that 1, $x$, $y$, $xy$ are the only monomials not contained in 
+$\langle x^2, y^2\rangle$.
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[a.] Cualquier polinomio de $\langle x^2, y^2\rangle$ tendrá un término en $x^2$ o en $y^2$, cosa que $xy$ no tiene. 
+\item[b.] Por el mismo razonamiento, esos monomios no están contenidos. Además, cualquier otro de $k[x,y]$ tiene algún término en $x^2$ o en $y^2$, luego está en el ideal. 
+\end{itemize}
+\end{solucion}
+
+\newpage
+
 \begin{ejercicio}{1.4.18}
 In the text, we showed $\I(\{(0,0)\}) = \gene{x,y}$ in $k[x,y]$. 
 \begin{enumerate}[a.]
@@ -252,7 +314,7 @@ In the text, we showed $\I(\{(0,0)\}) = \gene{x,y}$ in $k[x,y]$.
 \begin{enumerate}[a.]
 \item[]
 \item Una contención es trivial, pues si $f= \sum g_i x_i$ entonces  $f(0)=0$, por lo que $f\in \I(\{0\})$. Como $I(S)$ es un ideal propio, basta probar que $\gene{x_1,\dotsc,x_n}$ es maximal, pero esto es claro pues $\gene{x_1,\dotsc,x_n} = k[x_1,\dotsc,x_n]\setminus k$. Luego si existiera otro ideal que lo contiene, este ha de tener necesariamente alguna unidad y por tanto sería el total.
-\item ¿Que siempre se anulan en el 0? ¿Que conforman el ideal $\gene{x_1,\dotsc,x_n}$? 
+\item Que siempre se anulan en el 0, o equivalentemente, que conforman el ideal $\gene{x_1,\dotsc,x_n}$.
 
 \end{enumerate}
 \end{solucion}
