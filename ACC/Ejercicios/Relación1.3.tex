@@ -101,54 +101,41 @@ Veamos la solución
 \item Si $x=a$ entonces tenemos los casos donde $a\in(-1,1)$ donde corta en 0 puntos, los casos $a=-1,1$, donde corta en un punto, y el resto de casos donde se cortan en dos puntos. Si $y=mx+b$ entonces $(1-m^2)x^2-2mbx-(b^2+1)=0$. El discriminante es $4m^2b^2+4(1-m^2)(b^2+1) = 4(b^2-m^2+1)$. 
 \begin{itemize}
 \item Si el discriminante es negativo no tenemos ninguna solución.
-\item Si el discriminante es nulo, obtenemos una única solución para la variable $x$, que será $x=\frac{mb}{1-m^2}$. Como $b^2-m^2 =1$ entonces $x= \frac{m}{b}$.
+\item Si el discriminante es nulo, obtenemos una única solución para la variable $x$, que será $x=\frac{mb}{1-m^2}$. Como $b^2-m^2 =1$ entonces $x= \frac{m}{b}$. En este caso $-y^2 = 1 + \frac{m}{b}$. Luego tendremos a lo sumo dos soluciones.
+\item Si tenemos dos soluciones para $x$.  
 \end{itemize}
 \end{enumerate}
 \end{solucion}
 
 \newpage
-
-\begin{ejercicio}{1.2.6}
-Let us show that all finite subsets of $k^n$ are affine varieties.
-\begin{enumerate}[a.]
-\item Prove that a single point $(a_1,\dots,a_n) \in k^n$ is an affine variety.
-\item Prove that every finite subset of $k^n$ is an affine variety.
+\begin{ejercicio}{1.3.6}
+The goal of this problem is to show that the sphere $x^2 + y^2 + z^2 = 1$ in $3$-dimensional space can be parametrized by
+\begin{align*}
+x&=\frac{2u}{u^2+v^2+1}\\
+y&=\frac{2v}{u^2+v^2+1}\\
+z&=\frac{u^2+v^2-1}{u^2+v^2+1}
+\end{align*}
+The idea is to adapt the argument given at the end of the section to 3-dimensional space.
+\begin{enumerate}[a)]
+\item Given a point $(u, v, 0)$ in the $(x, y)$-plane, draw the line from this point to the “north pole” $(0, 0, 1)$ of the sphere, and let $(x, y, z)$ be the other point where the line meets the sphere. Draw a picture to illustrate this, and argue geometrically that mapping
+$(u, v)$ to $(x, y, z)$ gives a parametrization of the sphere minus the north pole.
+\item Show that the line connecting $(0, 0, 1)$ to $(u, v, 0)$ is parametrized by $(tu, tv, 1 − t)$,
+where $t$ is a parameter that moves along the line.
+\item Substitute $x = tu$, $y = tv$ and $z = 1−t$ into the equation for the sphere $x^2+y^2+z^2 = 1$.
+Use this to derive the formulas given at the beginning of the problem.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-Tenemos que $\{(a_1,\dots,a_n)\} = \V(x_1-a_1,x_2-a_2,\dots,x_n-a_n)$, luego todo punto es una variedad afín.
-Todo subconjunto finito de $k^n$ es unión de puntos.
-Como los puntos son variedades afines y la unión de variedades afines es variedad afín, todo subconjunto finito de $k^n$ es variedad afín.
+Es trivial, pues es la proyección estereográfica.
 \end{solucion}
 
 \newpage
 
-\begin{ejercicio}{1.2.7}
-One of the pretties examples from polar coordinates is the four-leaved rose.
-This curve is defined by the polar equation $r = \sin(2θ)$. We will show that this curve is an affine variety.
-\begin{enumerate}[a.]
-\item Using $r^2=x^2+y^2$, $x=r \cos θ$ and $y = r \sin θ$, show that the four-leaved rose is contained in the affine variety $\V((x^2+y^2)^3-4x^2y^2)$.
-\item Now argue carefully that $\V((x^2+y^2)^3-4x^2y^2)$ is contained in the four-leaved rose.
-This is trickier that it seems since $r$ can be negative in $r = \sin(2θ)$.
-\end{enumerate}
-Combining parts $(a)$ and $(b)$, we have proved that the four-leaved rose is the affine variety $\V((x^2+y^2)^3-4x^2y^2)$.
+\begin{ejercicio}{1.3.7} Adapt the argument of the previous exercise to parametrize the “sphere” $x^2_1
++\cdots+x^{2}_n = 1$ in n-dimensional affine space. Hint: There will be n − 1 parameters.
 \end{ejercicio}
 \begin{solucion}
-\begin{enumerate}[a.]
-\item Tenemos que
-\[ (x^2+y^2)^3-4x^2y^2=r^6-4(r\cosθ)^2(r\sinθ)^2=r^6-4r^4\cos^2θ\sin^2θ \]
-Como $\sin(2θ)=2\sinθ\cosθ$:
-\[ r^6-4r^4\cos^2θ\sin^2θ = r^6-r^4 (\sin2θ)^2 = r^6 - r^4 r^2 = 0 \]
-Luego la rosa de cuatro hojas está contenida en $\V((x^2+y^2)^3-4x^2y^2)$. Recíprocamente, sea $(x,y)\in \V((x^2+y^2)^3-4x^2y^2)$. Vamos a tomar las coordenadas polares de este punto
-$$
-r=\sqrt{x^2+y^2} \qquad \theta = \tan^{-1}(y/x)
-$$
-Como $(x^2+y^2)=(2xy)^{2/3}$ entonces $r=(2xy)^{1/3}$. Además, sabemos que $$\sin(2\tan^{-1}(x)) = \frac{2x}{{x^2+1}}$$
-De esto, deducimos que
-$$
-\sin(2\theta) = \sin(2\tan^{-1}(y/x)) = \frac{2xy}{y^2+x^2} = \frac{2xy}{(2xy)^{2/3}} = (2xy)^{1/3} = r  
-$$
-\end{enumerate}
+Análogo al anterior.
 \end{solucion}
 
 \newpage
