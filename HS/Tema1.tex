@@ -108,4 +108,86 @@ para $0\leq p\leq n$. Los $p$-esqueletos forman una \emph{filtración}\footnote{
 \end{enumerate}
 \end{ej}
 
+\begin{prop}
+Sea $K$ un complejo simplicial finito y $|K|$ su realización geométrica. Entonces $|K|$ es un compacto.
+\end{prop}
+\begin{dem}
+Como todo símplice es compacto, y $|K|$ es unión finita de todos sus símplices, entonces $|K|$ es compacto. \QED
+\end{dem}
+
+\begin{lemma}
+Sea $K$ un complejo simplicial finito, se verifica que $|K|$ es unión disjunta de los interiores de todos sus símplices, es decir, $|K|=\underset{\sigma\in K}\bigsqcup\mathring{\sigma}$.
+\end{lemma}
+\begin{dem}
+$\boxed{\subseteq}$ Dado $x\in |K|$, es claro que existe $\sigma\in K$ tal que $x\in\sigma=(v_0,\dots, v_n)$, pues $|K|=\bigcup_{\sigma\in K}|\sigma|$.  Entonces $x=\sum\lambda_i v_i$. Nos quedamos con los $v_i$ tales que $\lambda_i>0$. De este modo, el símplice $\tau$ generado por dichos vértices es el único de $K$ que contiene a $x$ en su interior. A este símplice lo llamamos \emph{símplice soporte} de $x$. Entonces $x\in\mathring{\tau}\leq \sigma\in K$. Por lo que $x\in \underset{\sigma\in K}\bigsqcup\mathring{\sigma}$.
+
+$\boxed{\supseteq}$ Sea $x\in \underset{\sigma\in K}\bigsqcup\mathring{\sigma}$, entonces existe un único $\sigma\in K$ tal que $x\in\mathring{\sigma}$, luego $x\in |K|$.
+\end{dem} 
+
+\begin{defi} Sea $K$ un complejo simplicial y sea $x\in |K|$. Se define la \emph{estrella} de $x$ en $K$ como 
+\[
+st(x;K)=\{\sigma\in K\mid \exists \tau (\sigma\leq \tau\land x\in\tau)\}.
+\]
+Esto es, la estrella de $x$ en $K$ la forman todos los símplices de $K$ que contienen a $x$ y todas sus caras.
+\end{defi}
+
+\begin{nota}
+$st(x;K)$ es un subcomplejo de $K$. Efectivamente, COMPROBARLO
+\end{nota}
+
+\begin{defi}
+Dado $K$ complejo simplicial y $x\in |K|$, se define el \emph{link} de $x$ en $K$ como
+\[
+lk(x;K)=\{\sigma\in st(x;K)\mid x\notin\sigma\}.
+\]
+\end{defi}
+
+\begin{nota}
+Análogamente, se tiene que $lk(x;K)$ es subcomplejo tanto de $K$ como de $st(x;K)$. COMPROBARLO
+\end{nota}
+
+\begin{defi}
+Sea $K$ un complejo simplicial y sea $\sigma\in K$, se define la \emph{estrella} de $\sigma$ en $K$
+\[
+st(\sigma;K)=\{\tau\in K\mid \exists\eta\in K (\tau\leq\eta\land \sigma\leq\eta)\}.
+\]
+
+Esto es, $st(\sigma;K)$ la forman los símplices que contienen a $\sigma$ como cara y además las caras de dichos símplices.
+\end{defi}
+
+\begin{nota}
+Se comprueba que cuando $\sigma$ es un vértice, la definición coincide con la estrella del vértice. Además, $st(\sigma;K)$ es subcomplejo de $K$. 
+\end{nota}
+
+\begin{defi}
+Dado $K$ complejo simplicial y $\sigma\in K$, se define el \emph{link} de $\sigma$ en $K$ como
+\[
+lk(\sigma;K)=\{\tau\in st(\sigma;k)\mid \sigma\not\leq \tau\}.
+\]
+También se puede definir equivalentemente como 
+\[
+lk(\sigma;K)=\{\tau\in st(\sigma;k)\mid \sigma\cap \tau=\emptyset\}.
+\]
+Se tiene que $lk(\sigma;K)$ es subcomplejo de $K$ y de $st(\sigma;K)$.
+\end{defi}
+
+\begin{defi}
+Sea $K$ un complejo simplicial y sea $x\in|K|$, se define la \emph{estrella abierta} de $x$ en $|K|$ como
+\[
+\mathring{st}(x;K)=\bigcup_{x\in\sigma}\mathring{\sigma}
+\]
+\end{defi}
+
+\begin{prop}
+Sea $K$ complejo simplicial y $x\in|K|$, se tiene que
+\[
+|\mathring{st}(x;K)|=|st(x;K)|-|lk(x;K)|.
+\]
+\end{prop}
+\begin{dem}
+Vamos a eliminar las barras por ahorrar notación. Sea $y\in \mathring{st}(x;K)$. Entonces existe $\sigma\in K$ tal que $y\in\mathring{\sigma}$, en particular $y\in\sigma$. Como $\sigma\leq\sigma$ y $y\in\sigma$, $y\in st(x;K)$. Además, por definición $lk(x;K)$ no tiene ningún punto de $\mathring{st}(x;K)$, luego $y\notin\mathring{st}(x;K)$.
+
+Sea $y\in st(x;K)-lk(x;K)$. Por definición de la estrella, $\exists\eta\in K$ tal que $x\in\eta$ y $y\in\eta$. Además, como $y$ no está en el link, $\exists \tau\in K$ tal que $y\in\tau$ con $\tau\in st(x;K)$ y $x\in\tau$. INTENTAR TERMINARLOS CORTANDO CARAS, Y SI A LA PRIMERA NO VALE SERVIRÁ UNA DE SUS CARAS (SOPORTOE)  \QED
+\end{dem}
+
 \end{document}
