@@ -81,4 +81,162 @@ This will prove equation (4) in the text.
 \begin{solucion}
 Evidente, pues $f-qg \in \gene{f,g}$ y $f = (f-qg)+qg \in \gene{f-qg,g}$.
 \end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.5.6}
+Given $f_1,\dots , f_s ∈ k[x]$, let $h = \gcd( f_2,\dots , f_s)$. Then use the equality 
+$\langle h\rangle = 
+ \langle f_2,\dots , f_s\rangle$
+to show that 
+ $\langle f1, h\rangle = 
+ \langle f_1, f_2,\dots, f_s\rangle$.
+\end{ejercicio}
+\begin{solucion}
+Como $h=g_1f_2+\dots+g_nf_n$ para ciertos $g_1,\dots, g_n\in k[x]$, se tiene inmediatamente la igualdad. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.5.7}
+If you are allowed to compute the gcd of only two polynomials at a time (which is true
+for some computer algebra systems), give pseudocode for an algorithm that computes
+the gcd of polynomials $f_1,\dots, f_s ∈ k[x]$, where $s > 2$. Prove that your algorithm works.
+\end{ejercicio}
+\begin{solucion}
+Input: $f_1,\dots, f_s$.
+
+Output: $\gcd(f_1,\dots, f_s)$.
+
+$d=\gcd(f_1,f_2)$
+
+FOR $i=3,\dots, s$
+
+$d=\gcd(d,f_i)$\\
+
+El algoritmo funciona porque siempre puede calcular el gcd de dos polinomios. Además para porque hay un número finito de pasos. Por otro lado, claramente $d |\gcd(f_1,\dots, f_s)$ pues lo divide a todos por separado. Asímismo, $\gcd(f_1,\dots, f_s)|d$ aplicando Bézout en cada paso del bucle, ya que podremos dividir siempre por el máximo común divisor. 
+
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.5.8}
+Use a computer algebra system to compute the following gcd’s:
+\begin{itemize}
+\item[a.] $\gcd(x^4 + x^2 + 1, x^4 − x^2 − 2^x − 1, x^3 − 1)$.
+\item[b.] $\gcd(x^3 + 2x^2 − x − 2, x^3 − 2x^2 − x + 2, x^3 − x^2 − 4x + 4)$.
+\end{itemize}
+\end{ejercicio}
+
+\begin{solucion}
+En wolfram
+\begin{itemize}
+\item[a.] 1
+\item[b.]$x-1$
+\end{itemize}
+Además se puede comprobar que el algoritmo descrito en el ejercicio anterior da la solución correcta.
+\end{solucion}
+\newpage
+\begin{ejercicio}{1.5.9}
+Use the method described in the text to decide whether $x^2 − 4$ is an element of the ideal
+$\langle x^3 + x^2 − 4x − 4, x^3 − x^2 − 4x + 4, x^3 − 2x^2 − x + 2\rangle$.
+\end{ejercicio}
+\begin{solucion}
+En primer lugar calculamos el gcd de los generadores, que es $x-2$. Como $x^2-4=(x-2)(x+2)$, tenemos que $x^2-4\in \langle x-2\rangle$, lo cual es equivalente a que pertenezca al ideal original
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.5.11}
+In this exercise we will study the one-variable case of the consistency problem from §2.
+Given $f_1,\dots , f_s ∈ k[x]$, this asks if there is an algorithm to decide whether $\V( f_1,\dots, f_s)$
+is nonempty. We will see that the answer is yes when $k = \C$.
+\begin{itemize}
+\item[a.] Let $f ∈ \C[x]$ be a nonzero polynomial. Then use Theorem 7 of §1 to show that
+$\V( f) = ∅$ if and only if $f$ is a non-zero constant.
+\item[b.] If $f_1,\dots, f_s ∈ \C[x]$, prove $\V( f_1,\dots, f_s) = ∅$ if and only if $\gcd( f_1, . . . , f_s) = 1$.
+\item[c.] Describe (in words, not pseudocode) an algorithm for determining whether or not
+$\V( f_1,\dots , f_s)$ is nonempty.
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[a.] Se sigue de que todo polinomio no constante tiene al menos una raíz en $\C$ y de que un polinomio consante no nulo no tiene raíces.
+\item[b.] La implicación a la izquierda es clara pues el ideal generado por dichos polinomios será todo $\C[x]$. Para la otra, $\V( f_1,\dots, f_s) = ∅$ es equivalente a que $\I(\V( f_1,\dots, f_s)) =\C[x]$, lo cual es equivalente a que $\langle 1\rangle= \I(\V( f_1,\dots, f_s))$, de donde se deduce el resultado. Hemos usado que $\sqrt{I}=\C[x]$ si y solo si $I=\C[x]$.
+\item[c.] Basta calcular el gcd y comprobar si es constante o no.
+\end{itemize}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.5.12}
+Since we are working over the complex numbers, we know by Exercise 1 that $f$
+factors completely, i.e.,
+$$f = c(x − a_1)^{r_1}\cdots(x − a_l)^{r_l} ,$$
+where $a_1,\dots, a_l ∈ \C$ are distinct and $c ∈ \C \ \{0\}$.
+Define the polynomial
+$$f_{red} = c(x − a_1)\cdots (x − a_l).$$
+The polynomials $f$ and $f_red$ have the same roots, but their multiplicities may differ. In
+particular, all roots of $f_{red}$ have multiplicity one. We call fred the reduced or square-free
+part of $f$ . The latter name recognizes that $f_{red}$ is the square-free factor of $f$ of largest
+degree.
+\begin{itemize}
+\item[a.] Show that $\V(f) = \{a_1,\dots, a_l\}$.
+\item[b.] Show that $\I(\V( f )) = 
+ \langle f_{red}\rangle$.
+ \end{itemize}
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[a.] Se tiene por definición.
+\item[b.] Como $\V(f)=\V(f_{red})$, basta probar que $I=\langle f_{red}\rangle$ es radical. Pero esto es claro, pues si $g^r\in I$, como $f_{red}$ solo tiene factores lineales, esto significa que $g^r=cf^r$, luego $g=f/c\in I$. 
+\end{itemize}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.5.15}
+Consider the square-free part $f_{red}$ of a polynomial $f ∈ \C[x]$ defined in Exercise 12.
+\begin{itemize}
+\item[a.] Use Exercise 14 to prove that fred is given by the formula
+$$f_{red} =
+\frac{f}{
+\gcd( f , f')}
+.$$
+The virtue of this formula is that it allows us to find the square-free part without
+factoring $f $. This allows for much quicker computations.
+\item[b.] Use a computer algebra system to find the square-free part of the polynomial
+$x^{11} − x^{10} + 2x^8 − 4x^7 + 3x^5 − 3x^4 + x^3 + 3x^2 − x − 1$.
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[a.] Se tiene inmediatamente al hacer la división.
+\item[b.] Llamamos $f=x^{11} − x^{10} + 2x^8 − 4x^7 + 3x^5 − 3x^4 + x^3 + 3x^2 − x − 1$. Entonces $f'=11x^{10}-10x^9+16x^7-28x^6+15x^4-12x^3+3x^2+6x-1$, $\gcd(f,f')=x^6 - x^5 + x^3 - 2 x^2 + 1$, $f_{red}=x^5+x^2-x-1=(x-1)(x+1)(x^3+x+1)$ (el último se descompone como facotres complejos un poco feos). 
+\end{itemize}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.5.16}
+Use Exercises 12 and 15 to describe (in words, not pseudocode) an algorithm whose
+input consists of polynomials $f_1,\dots, f_s ∈ \C[x]$ and whose output consists of a basis of
+$\I(\V( f_1,\dots, f_s))$. It is more difficult to construct such an algorithm when dealing with
+polynomials of more than one variable.
+\end{ejercicio}
+\begin{solucion}
+En primer lugar calcularíamos el gcd de los polinomios y luego al resultado le calculamos la forma reducida. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.5.17}
+Find a basis for the ideal $\I(\V(x^5 − 2x^4 + 2x^2 − x, x^5 − x^4 − 2x^3 + 2x^2 + x − 1))$.
+\end{ejercicio}
+\begin{solucion}
+Aplicando el algoritmo anterior
+$$\I(\V(x^5 − 2x^4 + 2x^2 − x, x^5 − x^4 − 2x^3 + 2x^2 + x − 1))=\I(\V(x^4 - 2 x^3 + 2 x - 1))=\langle (x+1)(x-1)\rangle.$$
+\end{solucion}
+
 \end{document}
