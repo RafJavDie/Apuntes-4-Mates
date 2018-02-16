@@ -197,6 +197,53 @@ proof is extremely difficult.
 
 \newpage
 
+\begin{ejercicio}{1.2.13}
+Consider a robot arm in $\R^2$ that consists of three arms of length $3$, $2$ and $1$, respectively.
+The arm of length $3$ is anchored at the origin, the arm of length $2$ is attached to the free end of the arm of length $3$, and the arm of length $1$ is attached to the free end of the arm of length $2$.
+The ``hand'' of the robot arm is attached to the end of the arm of length $1$.
+\begin{enumerate}[a.]
+\item Draw a picture of the robot arm.
+\item How many variables does it take to determine the ``state'' of the robot arm?
+\item Give the equations for the variety of possible states.
+\item Using the intuitive notion of dimension discussed in this section, guess what the dimension of the variety of states should be.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Sean $(x,y), (z,w)$ y $(u,v)$ las coordenadas de las posición del final de los tres brazos robóticos.
+Es decir, el estado del brazo robótico viene dado por $(x,y,z,w,u,v) \in \R^6$.
+Los estados posibles son los que obedecen la siguientes ecuaciones:
+\begin{align*}
+x^2 + y^2 & = 3^2\\
+(z-x)^2 + (w-y)^2 & = 2^2\\
+(u-z)^2 + (v-w)^2 & = 1^2
+\end{align*}
+Ingenuamente diríamos que la variedad de estados, como está definida por $3$ ecuaciones en $\R^6$, tiene dimensión $6-3=3$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.2.14}
+This exercise will study the possible ``hand'' positions of the robot arm described in Exercise \ref{ejer:1.2.13}.
+\begin{enumerate}[a.]
+\item If $(u,v)$ is the position of the hand, explain why $u^2+v^2≤36$.
+\item Suppose we ``lock'' the joint between the length $3$ and length $2$ arms to form a straight angle, but allow the other joint to move freely. Draw a picture to show that in these configurations, (u,v) can be any point of the annulus $16≤u^2+v^2≤36$.
+\item Draw a picture to show that $(u,v)$ can be any point in the disk $u^2+v^2 ≤ 36$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{enumerate}[a.]
+\item 
+\begin{align*}
+ \norm{(u,v)} & = \norm{(u,v)-(z,w) + (z,w)} ≤ \norm{(u,v)-(z,w)} + \norm{(z,w)} = 1 + \norm{(z,w)}\\
+ & = 1 + \norm{(z,w)-(x,y)+(x,y)} ≤ 1 + \norm{(z,w)-(x,y)} + \norm{(x,y)} = 1 + 2 + 3 = 6
+\end{align*}
+Luego $u^2+v^2 = \norm{(u,v)}^2 ≤ 36$.
+\item Si imponemos que los dos primeros brazos formen un ángulo llano, tenemos que $\norm{(z,w)} = 5$. Es decir, el tercer brazo tiene base en la circunferencia de radio $5$. Todo punto en la corona circuar de radios $4$ y $6$ está a distancia $1$ de algún punto de esta circunferencia, entonces $(u,v)$ puede ser cualquier punto de la corona circular.
+\item Basta hacer el mismo argumento imponiendo que los dos primeros brazos formen un ángulo recto para recubrir la corona circular de radios $2$ y $4$ y ángulo nulo, para recubrir el círculo de radio $2$. Entonces $(u,v)$ cubre cualquier solución de $u^2+v^2 ≤ 6^2$.
+\end{enumerate}
+\end{solucion}
+\newpage
+
 \begin{ejercicio}{1.2.15}
 In Lemma 2, we showed that if $V$ and $W$ are affine varieties, then so are their union $V∪W$
 and intersection $V ∩W$. In this exercise we will study how other set-theoretic operations
