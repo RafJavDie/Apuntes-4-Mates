@@ -104,6 +104,22 @@ Veamos la solución
 \item Si el discriminante es nulo, obtenemos una única solución para la variable $x$, que será $x=\frac{mb}{1-m^2}$. Como $b^2-m^2 =1$ entonces $x= \frac{m}{b}$. En este caso $-y^2 = 1 + \frac{m}{b}$. Luego tendremos a lo sumo dos soluciones.
 \item Si tenemos dos soluciones para $x$.  
 \end{itemize}
+\item Observemos que cada recta no vertical partiendo del $(-1,0)$ corta al eje $OY$ en un punto $(0,t)$ para $t\in(-\infty,+\infty)$. Cuando la recta sea paralela a alguna de las asíntotas no habrá punto de corte distinto de $(-1,0)$. Veremos que para $t\in(1,+\infty)$, la recta corta a la hipérbola por la parte inferior izquierda, para $t\in(0,1)$ corta en la parte superior derecha, para $t\in (-1,0)$ corta en la parte inferior derecha (para $t=0$ corta claramente en $(1,0)$) y para $t\in (-\infty,-1)$ corta en la parte superior izquierda.
+
+Sea entonces la recta $r\equiv (-1,0)+\lambda (1,t)$. Tenemos que imponer que esta recta corte a $x^2-y^22=1$, luego sustituimos y obtenemos
+\[
+(-1+\lambda)^2-\lambda^2t^2=1\Rightarrow (1-t^2)\lambda^2-2\lambda=0.
+\]
+Como vemos, para $t=\pm 1$ la única solución sería $\lambda=0$, lo que nos da solo el punto $(-1,0)$. En otro caso podemos eliminar esta solución y llegar a 
+\[
+(1-t^2)\lambda-2=0\Rightarrow \lambda= \frac{2}{1-t^2}.
+\]
+Sustituyendo ahora en $r$ esto nos da el punto $(-1+\frac{2}{1-t^2}, \frac{2t}{1-t^2})$, lo cual agrupando nos proporciona la parametrización
+\begin{align*}
+&x=\frac{1+t^2}{1-t^2}\\
+&y= \frac{2t}{1-t^2}
+\end{align*}
+\item Los valores $t=1$ y $t=-1$ hacen que la recta sea paralela respectivamente a alguna de las asíntotas y ocurre lo que hemos explicado al principio del anterior apartado.
 \end{enumerate}
 \end{solucion}
 
@@ -140,98 +156,85 @@ Análogo al anterior.
 
 \newpage
 
-\begin{ejercicio}{1.2.8}
-It can take some work to show that something is not an affine variety. For example,
-consider the set
-$$X = \{(x, x) \mid x ∈ \R, x \neq 1\} ⊆ \R^2,$$
-which is the straight line $x = y$ with the point $(1, 1)$ removed. To show that $X$ is not
-an affine variety, suppose that $X = \V( f_1,\dots, f_s)$. Then each $f_i$ vanishes on $X$, and if
-we can show that $f_i$ also vanishes at $(1, 1)$, we will get the desired contradiction. Thus,
-here is what you are to prove: if $f ∈ \R[x, y]$ vanishes on $X$, then $f (1, 1) = 0$. Hint: Let
-$g(t) = f (t, t)$, which is a polynomial $\R[t]$. Now apply the proof of Proposition 5 of §1.
+\begin{ejercicio}{1.3.8}
+Consider the curve defined by $y^2 = cx^2 −x^3$, where $c$ is some constant.
 \end{ejercicio}
-\begin{solucion}
-Con lo que nos dice el enunciado, tenemos que $g(t)$ es un polinomio en $\R[t]$ que se anula en infinitos puntos, luego es el polinomio idénticamente 0, por lo que $f(1,1)=g(1)=0$. Esto, aplicado a los polinomios que generarían $X$, da lugar a la contradicción de que $(1,1)\in X$.
-\end{solucion}
 
-\newpage
-
-\begin{ejercicio}{1.2.9}
-Let $R = \{(x, y) ∈ \R^2 \mid  y > 0\}$ be the upper half plane. Prove that $R$ is not an affine
-variety.
-\end{ejercicio}
-\begin{solucion}
-Supongamos que $R=\V(f_1,\dots, f_s)$. Sea $M$ la mayor potencia de $x$ o de $y$ que aparece en los polinomios. Entonces $f_1,\dots, f_s$ se anulan en todo el plano superior, en particular en el lattice $\Z^2_{M+1}$. Así que por el Ejercicio 1.1.6, los polinomios se anulan en todo el plano (de hecho en todo $\C^2$). 
-\end{solucion}
-
-\newpage
-
-\begin{ejercicio}{1.2.10}
-Let $\Z^n ⊆ \C^n$ consist of those points with integer coordinates. Prove that $\Z^n$ is not an
-affine variety. Hint: See Exercise 6 from §1.
-\end{ejercicio}
-\begin{solucion}
-Por el ejercicio 1.1.6 tenemos que si $\V(f_1,\dots, f_s)=\Z^n$, al ser $f_1=\dots=f_s=0$ en $\Z^n$, estos polinomios se anulan en todo $\C^n$, luego $\V(f_1,\dots, f_s)=\C^n$. Contradicción. 
-\end{solucion}
-
-\newpage
-
-\begin{ejercicio}{1.2.11}
-So far, we have discussed varieties over $\R$ or $\C$. It is also possible to consider varieties
-over the field $\Q$, although the questions here tend to be much harder. For example, let n
-be a positive integer, and consider the variety $F_n ⊆ \Q^2$ defined by
-$$x^n + y^n = 1.$$
-Notice that there are some obvious solutions when $x$ or $y$ is zero. We call these \emph{trivial
-solutions}. An interesting question is whether or not there are any nontrivial solutions.
+Our goal is to parametrize this curve.
 \begin{itemize}
-\item[a.] Show that $F_n$ has two trivial solutions if $n$ is odd and four trivial solutions if $n$ is even.
-\item[b.] Show that $F_n$ has a nontrivial solution for some $n ≥ 3$ if and only if Fermat’s Last
-Theorem were false.
-Fermat’s Last Theorem states that, for $n ≥ 3$, the equation
-$$x^n + y^n = z^n$$
-has no solutions where $x$, $y$, and $z$ are nonzero integers. The general case of this conjecture
-was proved by Andrew Wiles in 1994 using some very sophisticated number theory. The
-proof is extremely difficult.
+\item[a.] Show that a line will meet this curve at either 0, 1, 2, or 3 points. Illustrate your answer
+with a picture. Hint: Let the equation of the line be either $x = a$ or $y = mx + b$.
+\item[b.] Show that a nonvertical line through the origin meets the curve at exactly one other
+point when $m^2 \neq c$. Draw a picture to illustrate this, and see if you can come up with
+an intuitive explanation as to why this happens.
+\item[c.] Now draw the vertical line $x = 1$. Given a point $(1, t)$ on this line, draw the line
+connecting $(1, t)$ to the origin. This will intersect the curve in a point $(x, y)$. Draw a
+picture to illustrate this, and argue geometrically that this gives a parametrization of
+the entire curve.
+\item[d.] Show that the geometric description from part (c) leads to the parametrization
+\begin{align*}
+&x = c − t^2,
+&y = t(c − t^2).
+\end{align*}
 \end{itemize}
-\end{ejercicio}
 \begin{solucion}
+Vamos a pasar por alto los dibujos. 
 \begin{itemize}
-\item[a.] Las soluciones triviales vienen dadas por $y^n=1$ y $x^n=1$. Para $n$ impar tenemos las soluciones $y=1$ por un lado y $x=1$ por otro. En el caso de $n$ impar añadimos en la primera $y=-1$ y en la segunda $x=-1$.
-\item[b.] Si $F_n$ tiene una solución no trivial, entonces, eliminando denominadores, tendríamos una solución para el teorema de Fermat. Por otro lado, si el teorema de Fermat fuera falso, podríamos dividir por $z^n$ y nos daría una una solución de la forma $(x,y,1)$ con $(x,y)\in\Q^2$.
+\item[a.] Si consideramos la recta $x=a$, cortará en los puntos que verifiquen $y^2=ca^2-a^3$. Que, dependiendo del signo de $ca^2-a^3$, serán 0, 1 o 2 puntos.  Si consideramos la recta $y=mx+b$, cortará en los puntos que verifiquen $(mx+b)^2=cx^2-x^3$. Es una ecuación de tercer grado, luego como mucho tendrá 3 soluciones.
+\item Una recta no vertical que pase por el origen es de la forma $y=mx$. Sustituyendo obtenemos $m^2x^2=cx^2-x^3=(m^2-c)x^2=x^3$. Si $m^2\neq c$ podemos eliminar la solución $x=0$, luego nos queda $m^2-c^2=x$. Luego efectivamente tenemos una única solución adicional. La explicación es que para $m^2=c$ sale una recta tangente en 0 y en cualquier otro caso es secante, luego da otra solución. 
+\item Vamos a construir la parametrización descrita. La recta que conecta el origen con $(1,t)$ es $r\equiv (\lambda, \lambda t)$. Sustituyendo en la ecuación de la curva elíptica
+\[
+\lambda^2t^2=c\lambda^2-\lambda^3\Rightarrow \lambda^2(t^2-c+\lambda)=0
+\]
+Para $\lambda=0$ obtenemos el origen, así que descartamos esta solución y nos quedamos con
+\[
+\lambda=c-t^2
+\]
+Lo cual da lugar a la parametrización buscada
+\begin{align*}
+&x= c-t^2\\
+&y=t(c-t^2)
+\end{align*}
+Esta parametrización cubre todos los puntos salvo el origen porque $t$ toma todos los valores reales, lo cual es equivalente a obtener todas las rectas no verticales posibles, que como hemos visto en el segundo apartado, siempre dan un punto de corte salvo para cuando salen rectas tangentes al origen. Además cualquier punto de la curva elíptica distinto del origen definen una recta que pasa por un punto de la forma $(1,t)$ y por el $(0,0)$. 
+\item Ya está resuelto antes.
 \end{itemize}
 \end{solucion}
 
 \newpage
 
-\begin{ejercicio}{1.2.15}
-In Lemma 2, we showed that if $V$ and $W$ are affine varieties, then so are their union $V∪W$
-and intersection $V ∩W$. In this exercise we will study how other set-theoretic operations
-affect affine varieties.
-\begin{itemize}
-\item[a.] Prove that finite unions and intersections of affine varieties are again affine varieties.
-Hint: Induction.
-\item[b.] Give an example to show that an infinite union of affine varieties need not be an
-affine variety. Hint: By Exercises 8–10, we know some subsets of kn that are not
-affine varieties. Surprisingly, an infinite intersection of affine varieties is still an affine
-variety. This is a consequence of the Hilbert Basis Theorem, which will be discussed
-in Chapters 2 and 4.
-\item[c.] Give an example to show that the set-theoretic difference $V \ W$ of two affine varieties
-need not be an affine variety.
-\item[d.] Let $V ⊆ k^n$ and $W ⊆ k^m$ be two affine varieties, and let
-$$V × W = \{(x_1,\dots , x_n, y_1,\dots , y_m) ∈ k^{n+m} \mid  (x_1, . . . , x_n) ∈ V, (y_1, . . . , y_m) ∈ W\}$$
-be their Cartesian product. Prove that $V ×W$ is an affine variety in $k^{n+m}$. Hint: If $V$ is
-defined by $f_1,\dots , f_s ∈ k[x_1,\dots , x_n]$, then we can regard $f_1,\dots, f_s$ as polynomials in
-$k[x_1,\dots , x_n, y_1,\dots, y_m]$, and similarly for $W$. Show that this gives defining equations
-for the Cartesian product.
-\end{itemize}
+\begin{ejercicio}{1.3.9}
+
 \end{ejercicio}
 \begin{solucion}
-\begin{itemize}
-\item[a.] Trivial.
-\item[b.] $\{y>0\}=\cup_{c>0}\{y=c\}$. Por el ejercicio \ref{ejer:1.2.9} el conjunto no es una variedad afín, pero cada recta sí lo es. 
-\item[c.] $\{y=x\}\setminus \{(1,1)\}$. Por el ejercicio \ref{ejer:1.2.8} no es variedad afín, aunque la recta y el punto sí lo son.
-\item[d.] Sean $V=\V(f_1,\dots, f_r)$ con $f_1,\dots, f_r\in k[x_1,\dots, x_n]$ y $W=\V(g_1,\dots, g_s)$ con $g_1,\dots, g_s\in k[y_1,\dots, y_m]$. Entonces $V\times W=\{(x_1,\dots, x_n,y_1,\dots, y_m)\in k^{n+m}\mid f_i(x_1,\dots, x_n)=0, g_j(y_1,\dots, y_m)=0, 1\leq i\leq n, 1\leq j\leq m\}$, luego por definción es una variedad afín.
-\end{itemize}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.3.10}
+
+\end{ejercicio}
+\begin{solucion}
+ 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.3.11}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.3.15}
+
+\end{ejercicio}
+\begin{solucion}
+
+
 \end{solucion}
 
 \end{document}
