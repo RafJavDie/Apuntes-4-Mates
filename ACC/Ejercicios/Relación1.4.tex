@@ -11,7 +11,7 @@
 \begin{ejercicio}{1.4.1}
 Consider the equations
 \begin{align*}
-x^2 + y^2 -1 & = 0,
+x^2 + y^2 -1 & = 0\\
 xy - 1 & = 0
 \end{align*}
 which describe the intersection of a circle and a hyperbola.
@@ -112,7 +112,7 @@ The reason is that once we allow polynomial coefficients, no independence is pos
 To see this, consider the ideal $\gene{x,y} \subseteq k[x,y]$.
 Show that zero can be be written as a linear combination of $y$ and $x$ with nonzero polynomial coefficients.
 \item More generally, suppose that $f_1,\dots,f_s$ is the basis of an ideal $I \subseteq k[x_1,\dots,x_n]$.
-If $s ≥ 2$ and $f_i \neq 0$ for all $i$, then show that for any $i$ and $J$, zero can be rewritten as a linear combination of $f_i$ and $f_j$ with nonzero polynomial coefficients.
+If $s ≥ 2$ and $f_i \neq 0$ for all $i$, then show that for any $i$ and $j$, zero can be rewritten as a linear combination of $f_i$ and $f_j$ with nonzero polynomial coefficients.
 \item As a consequence of the lack of independence is that when we write an element $f \in \gene{f_1,\dots,f_s}$ as $f = \sum_{i=1}^s h_i f_i$, the coefficients $h_i$ are not unique.
 As an example, consider $f = x^2 + xy + y^2 \in \gene{x,y}$.
 Express $f$ as a linear combination of $x$ and $y$ in two different ways.
@@ -142,8 +142,7 @@ Esto lo diferencia con el caso de álgebra lineal.
 Show that $\I(\V(x^n,y^m))=\langle x,y \rangle$, for any positive integers $n$ and $m$.
 \end{ejercicio}
 \begin{solucion}
-Como $x^n$ e $y^m$ se anulan si y sólo si $x=y=0$, tenemos que $\V(x^n,y^m)$ es el punto $(0,0)$.
-Ya sabemos que $\I(\{(0,0)\}) = \gene{x,y}$.
+Como $x^n$ e $y^m$ se anulan si y sólo si $x=y=0$, tenemos que $\V(x^n,y^m)= \{(0,0)\}$. Ya sabemos que $\I(\{(0,0)\}) = \gene{x,y}$, de donde se tiene el resultado.
 \end{solucion}
 
 \newpage
@@ -162,9 +161,99 @@ Radicals ideals will play an important role in Chapter 4. In particular, the Nul
 \item Sea $f^m \in \I(V)$ con $f \in k[1,\dots,x_n]$ y $m$ entero positivo.
 Supongamos que $V$ es no nulo.
 Sea $p \in V$, entonces $f^m(p)=0$.
-Como el ideal $\gen{0}$ es primo en $k$, tenemos que $f(p)=0$.
+Como el ideal $\gene{0}$ es primo en $k$, tenemos que $f(p)=0$.
 Como $p$ era un punto arbitrario, $f$ se anula en todo $V$, luego $f \in \I(V)$.
 Esto demuestra que $\I(V)$ es radical.
-\item Claramente $x \not in \gene{x^2,y^2}$, pero $x^2 \in \gene{x^2,y^2}$, luego $\gene{x^2,y^2}$ no es ideal radical.
+\item Claramente $x \notin \gene{x^2,y^2}$, pero $x^2 \in \gene{x^2,y^2}$, luego $\gene{x^2,y^2}$ no es ideal radical.
+\end{enumerate}
+\end{solucion}
+\newpage
+\begin{ejercicio}{1.4.9}
+Let $V = \V(y − x^2, z − x^3)$ be the twisted cubic. In the text, we showed that $\I(V) = \gene{y − x^2, z − x^3}$.
+\begin{enumerate}
+\item Use the parametrization of the twisted cubic to show that $y^2 − xz \in \I(V)$.
+\item Use the argument given in the text to express $y^2 − xz$ as a combination of $y − x^2$ and $z − x^3$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+\item[]
+\item Sustituyendo $x\to t$, $y\to t^2$ y $z\to t^3$ es claro que $y^2-xz = t^4-tt^3 = 0$, luego se anula en todos los puntos de la curva.
+\item $(y+x^2)(y-x^2)-x(z-x^3) = y^2-xz$. 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{1.4.10}
+Use the argument given in the discussion of the twisted cubic to show that $\I(\V(x−y)) = \gene{x-y}$. Your argument should be valid for any infinite field k.
+\begin{solucion}
+Sabemos que $\V(x-y) = \{(t,t)\mid t\in k\}$. Sea $f\func{k[x,y]}{k[t]}$ de manera que $x\to t$, $y\to t$. Es claro que $\ker f = \gene{x-y}$. Como $k[t]$ es dominio de integridad, $\ker f$ es un ideal primo, luego en particular es una ideal radical. 
+\end{solucion}
+\end{ejercicio}
+
+\newpage
+\begin{ejercicio}{1.4.11}
+Let $V ⊆ \R^3$ be the curve parametrized by $(t, t^3, t^4)$.
+\begin{enumerate}[a.]
+\item Prove that V is an affine variety.
+\item Adapt the method used in the case of the twisted cubic to determine $\I(V)$.
+\end{enumerate}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Vamos a ver la curva es precisamente $S=\V(x^3-y,x^4-z)$. Obviamente $V\subset S$. Recíprocamente, sea $(x,y,z)\in S$. Escribiendo $x=t$ entonces $y=x^3=t^3$ y $z=t^4$. Por tanto, $V$ es una variedad afín.
+\item Con un procedimiento análogo al que se realiza en la página 33 del libro, podemos ver que todo polinomio $f \in \R[x,y,z]$ puede escribirse como
+$$
+f = h_1(x^3-y)+h_2(x^4-z)+r
+$$
+donde $r\in \R[x]$. Es claro que $\gene{x^3-y,x^4-z}\subset I(S)$. Recíprocamente, veamos que si $f\in I(S)$, $r=0$. Como $f\in I(S)$ entonces $f(t,t^3,t^4)=0$, luego
+$$
+f(t,t^3,t^4)= h_1(t,t^3,t^4)(t^3-t^3)+h_2(t,t^3,t^4)(t^4-t^4)+r(t) = r(t) = 0$$
+Como $r(t)=0$ $\forall t \in \R$ entonces $r=0$. Lo que prueba la igualdad.
+\end{enumerate}
+\end{solucion}
+\end{ejercicio}
+
+\newpage
+\begin{ejercicio}{1.4.12}
+\end{ejercicio}
+
+\newpage
+\begin{ejercicio}{1.4.13}
+In Exercise 1.1.2, we showed that $x^2y+y^2x$ vanishes at all points of $\F_2^2$. More generally, let $I ⊆ \F_2[x, y]$ be the ideal of all polynomials that vanish at all points of $\F_2^2$. The goal of this exercise is to show that $I = \gene{x^2-x,y^2-y}$
+\begin{enumerate}[a.]
+\item Show that $\gene{x^2-x,y^2-y}\subset I$.
+\item Show that every $f ∈ \F_2[x, y]$ can be written as $f = A(x^2 − x) + B(y^2 − y) + axy
++ bx + cy + d$, where $A, B ∈ \F_2[x, y]$ and $a, b, c, d ∈ \F_2$. Hint: Write f in the form $\sum_i p_i(x)y^i$ and use the division algorithm (Proposition 2 of §5) to divide each $p_i$ by $x^2 − x$. From this, you can write $f = A(x^2 − x) + q_1(y)x + q_2(y)$. Now divide $q_1$ and $q_2$ by $y^2 − y$. Again, this argument will become vastly simpler once we know the division algorithm from Chapter 2.
+\item Show that $axy + bx + cy + d ∈ I$ if and only if $a = b = c = d = 0$.
+\item Using parts (b) and (c), complete the proof that $I =\gene{x^2-x,y^2-y}$.
+\item Express $x^2y + y^2x$ as a conbiation of $x^2-x$ and $y^2-y$.
+\end{enumerate}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Es claro que si $f(x,y) = h_1(x^2-x)+h_2(y^2-y)$ entonces $f(0,0)=f(1,0)=f(0,1)=f(1,1)=0$. Por tanto $f\in I$, luego $\gene{x^2-x,y^2-y}\subset I$
+\item
+\item Sea $f(x,y) = axy+bx+cy+d$. Si $f\in I$ entonces se anula en cada puno. Como $f(0,0)=d$, $d=0$. Dado que $f(1,0)=b$ y $f(0,1)=c$ entonces $b=c=0$. Finalmente, $f(1,1)=a$ por lo que $a=0$. El recíproco es trivial.
+\item Sea $f\in I$ cualquiera, entonces podemos escriber $f$ según la fórmula obtenida en el apartado $(b)$, pero utilizando $(c)$, tenemos que puede escribirse simplemente como $A(x^2-x)+B(y^2-y)$. Pues si alguno de las otras constantes no fueran nulas, como $g = A(x^2-x)+B(y^2-y)\in \gene{x^2-x,y^2-y} \subset I$, tendríamos que $f-g\in I$, pero por la forma de $f-g$, por el apartado $(c)$, $f-g=0$. Por tanto, $f\in \gene{x^2-x,y^2-y}$.
+\item 
+\end{enumerate}
+\end{solucion} 
+\end{ejercicio}
+\newpage
+\begin{ejercicio}{1.4.18}
+In the text, we showed $\I(\{(0,0)\}) = \gene{x,y}$ in $k[x,y]$. 
+\begin{enumerate}[a.]
+\item Generalize this by proving that the origin $0\in k^n$ has the property that $\I(\{0\}) = \gene{x_1,\dotsc,x_n}$ in $k[x_1,\dotsc,x_n]$.
+\item What does part (a) say about polynomials in $k[x_1,\dotsc,x_n]$ with zero constant term?
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Una contención es trivial, pues si $f= \sum g_i x_i$ entonces  $f(0)=0$, por lo que $f\in \I(\{0\})$. Como $I(S)$ es un ideal propio, basta probar que $\gene{x_1,\dotsc,x_n}$ es maximal, pero esto es claro pues $\gene{x_1,\dotsc,x_n} = k[x_1,\dotsc,x_n]\setminus k$. Luego si existiera otro ideal que lo contiene, este ha de tener necesariamente alguna unidad y por tanto sería el total.
+\item ¿Que siempre se anulan en el 0? ¿Que conforman el ideal $\gene{x_1,\dotsc,x_n}$? 
+
+\end{enumerate}
 \end{solucion}
 \end{document}
