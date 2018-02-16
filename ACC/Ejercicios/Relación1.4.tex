@@ -1,0 +1,170 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{1.4.1}
+Consider the equations
+\begin{align*}
+x^2 + y^2 -1 & = 0,
+xy - 1 & = 0
+\end{align*}
+which describe the intersection of a circle and a hyperbola.
+\begin{enumerate}[a.]
+\item Use algebra to eliminate $y$ from the above equations.
+\item Show how the polynomial found in part (a) lies in $\gene{x^2+y^2-1, xy-1}$.
+\end{enumerate}
+\end{ejercicio}
+
+\begin{solucion}
+Multiplicando la segunda ecuación por $xy+1$ obtenemos $x^2y^2-1=0$, luego $y^2 = 1/x^2$.
+Desde aquí eliminamos $y$ de la primer ecuación: $x^2+1/x^2-1=0$, que es equivalente a $x^4-x^2+1=0$.
+De como hemos obtenido este polinomio, deducimos que: $x^4-x^2+1 = (x^2)(x^2+y^2-1)-(xy+1)(xy-1) \in \gene{x^2+y^2-1, xy-1}$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.2}
+Let $I \subseteq k[x_1,\dots,x_n]$ be an ideal, and let $f_1,\dots,f_s \in k[x_1,\dots,x_n]$. Prove that the following statements are equivalent:
+\begin{enumerate}[(i)]
+\item $f_1,\dots,f_s \in I$
+\item $\langle f_1,\dots,f_s\rangle \in I$
+\end{enumerate}
+This fact is useful when you want to show that one ideal is contained in another.
+\end{ejercicio}
+
+\begin{solucion}
+La implicación $(ii)\Rightarrow(i)$ es evidente, pues $f_1,\dots,f_s \in \gene{f_1,\dots, f_s}$.
+
+Véamos la otra implicación.
+Sea $f \in \gene{f_1,\dots,f_s}$.
+Entonces existen $g_1,\dots,g_n \in k[x_1,\dots,x_n]$ tal que:
+\[ f = g_1 f_1 + g_2 f_2 + \dots + g_n f_n \]
+Por las propiedades de los ideales: como $f_i \in I$, $g_i f_i \in I$, luego $g_1 f_1 + g_2 f_2 + \dots + g_n f_n \in I$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.3}
+Use the previous exercise to prove the following equalities of ideals in $\Q[x,y]$:
+\begin{enumerate}[a.]
+\item $\gene{x+y,x-y} = \gene{x,y}$.
+\item $\gene{x+xy, y+xy, x^2, y^2} = \gene{x, y}$.
+\item $\gene{2x^2+3y^2-11, x^2-y^2-3} = \gene{x^2-4, y^2-1}$.
+\end{enumerate}
+This illustrates that the same ideal cna have many different bases and that different bases ay have different numbers of elements.
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{enumerate}[a.]
+\item $x+y \in \gene{x,y}$ y $x-y \in \gene{x,y}$, luego $\gene{x+y,x-y} \subseteq \gene{x,y}$.
+$x = \frac{1}{2} (x+y) + \frac{1}{2}  (x-y) \in \gene{x+y,x-y}$ e $y = \frac{1}{2} (x+y) - \frac{1}{2} (x-y) \in \gene{x+y, x-y}$, luego $\gene{x,y} \subseteq \gene{x+y,x-y}$.
+\item $\gene{x+xy, y+xy, x^2, y^2} \subseteq \gene{x, y}$ es evidente.
+\[ x = (1+x)(x + xy) - x(y+xy) - x^2 \in \gene{x+xy, y+xy, x^2, y^2} \]
+\[ y = (1+y)(y + xy) - y(x+xy) - y^2 \in \gene{x+xy, y+xy, x^2, y^2} \]
+Luego $\gene{x,y} \subseteq \gene{x+xy, y+xy, x^2, y^2}$.
+\item 
+\[ 2x^2+3y^2 - 11 = 2(x^2-4)+3(y^2-1) \in \gene{x^2-4, y^2-1} \]
+\[ x^2-y^2-3 = (x^2-4) - (y^2-1) \in \gene{x^2-4, y^2-1} \]
+Luego $\gene{2x^2+3y^2-11, x^2-y^2-3} \subseteq \gene{x^2-4, y^2-1}$.
+Podemos usar estas ecuaciones para despejar la otra base:
+\[ x^2-4 = \frac{1}{5} (2x^2+3y^2-11) - \frac{3}{5} (x^2-y^2-3) \]
+\[ y^2-1 = \frac{1}{5}(2x^2+3y^2-11) - \frac{2}{5}(x^2-y^2-3) \]
+Luego $\gene{2x^2+3y^2-11, x^2-y^2-3} \supseteq \gene{x^2-4, y^2-1}$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.4}
+Prove Proposition 4: If $f_1,\dots,f_s$ and $g_1,\dots,g_t$ are bases of the same ideal in $k[x_1,\dots,x_n]$, so that $\langle f_1,\dots,f_s\rangle = \langle g_1,\dots,g_t\rangle$, then we have $\V(f_1,\dots,f_s) = \V(g_1,\dots,g_t)$.
+\end{ejercicio}
+\begin{solucion}
+Evidente cuando recordamos que $\V(f_1,\dots,f_s) = \V(\gene{f_1,\dots,f_s})$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.5}
+Show that $\V(x+xy,y+xy,x^2,y^2) = \V(x,y)$.
+\end{ejercicio}
+\begin{solucion}
+Hemos visto en el ejercicio \ref{ejer:1.4.3} que $\gene{x+xy,y+xy,x^2,y^2} = \gene{x,y}$.
+Este hecho unido con el ejercicio \ref{ejer:1.4.4} demuestra el resultado.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.6}
+The word ``basis'' is used in vaious ways in mathematicas.
+In this exercise, we will see that ``a basis of an ideal'', as defined in this section, is quite different from ``a basis of a subspace'', which is studied in linear algebra.
+\begin{enumerate}[a.]
+\item Firrst, consider the ideal $I = \gene{x} \subseteq k[x]$.
+As an ideal, $I$ has a basis consisting of the one element $x$.
+But $I$ can be regarded as a subspace of $k[x]$, which is a vector space of $k$.
+Prove that any vector space basis of $I$ over $k$ is infinite.
+\item In linear algebra, a basis must span and be linearly independent over $k$, whereas for an ideal, a basis is concerned only with spanning -- there is no mention of any sort of independence.
+The reason is that once we allow polynomial coefficients, no independence is possible.
+To see this, consider the ideal $\gene{x,y} \subseteq k[x,y]$.
+Show that zero can be be written as a linear combination of $y$ and $x$ with nonzero polynomial coefficients.
+\item More generally, suppose that $f_1,\dots,f_s$ is the basis of an ideal $I \subseteq k[x_1,\dots,x_n]$.
+If $s ≥ 2$ and $f_i \neq 0$ for all $i$, then show that for any $i$ and $J$, zero can be rewritten as a linear combination of $f_i$ and $f_j$ with nonzero polynomial coefficients.
+\item As a consequence of the lack of independence is that when we write an element $f \in \gene{f_1,\dots,f_s}$ as $f = \sum_{i=1}^s h_i f_i$, the coefficients $h_i$ are not unique.
+As an example, consider $f = x^2 + xy + y^2 \in \gene{x,y}$.
+Express $f$ as a linear combination of $x$ and $y$ in two different ways.
+\item A basis $f_1,\dots,f_s$ of an ideal $I$ is said to be \emph{minimal} if no proper subset of $f_1,\dots,f_s$ is a basis of $I$. For example, $x$ $x^2$ is a basis of an ideal, but not a minimal basis since $x$ generates the same ideal.
+Unfortunately, an ideal can have mminimal bases consisting of different numbers of elements.
+To see this, show that $x$ and $x+x^2,x^2$ are minimal bases of the same ideal $k[x]$. Explain how this contrasts with the situation in linear algebra.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item Como los escalares de $I$ como espacio vectorial son $k$, una base de $I$ sería $1,x,x^2,\dots$.
+Es una base infinita, luego $I$ tiene dimensión infinita como espacio vectorial.
+\item $xy-yx = 0$.
+\item $f_i f_j - f_j f_i = 0$. Aquí usamos que $f_i \neq 0$ para todo $i$.
+\item $x^2+xy+y^2 = (x+y)x+yy = xx+(x+y)y$.
+\item Claramente $x$ es una base mínima.
+Como ni $x+x^2$ ni $x^2$ genera el mismo ideal que $x+x^2,x^2$, este es mínimo.
+Es fácil ver además que $\gene{x}=\gene{x+x^2,x^2}$.
+Tenemos aquí un ejemplo de que las bases de ideales no tienen necesariamente la misma cantidad de elementos.
+Esto lo diferencia con el caso de álgebra lineal.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.7}
+Show that $\I(\V(x^n,y^m))=\langle x,y \rangle$, for any positive integers $n$ and $m$.
+\end{ejercicio}
+\begin{solucion}
+Como $x^n$ e $y^m$ se anulan si y sólo si $x=y=0$, tenemos que $\V(x^n,y^m)$ es el punto $(0,0)$.
+Ya sabemos que $\I(\{(0,0)\}) = \gene{x,y}$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.8}
+The ideal $\I(V)$ of a variety has a special property not shared by all ideals. Specifically, we define an ideal $I$ to be \emph{radical} if whenever a power $f^m$ of a polynomial $f$ is in $I$, then $f$ itself is in $I$. More succinctly, $I$ is radical when $f \in I$ if and only if $f^m \in I$ for some positive integer $m$.
+\begin{enumerate}[a.]
+\item Prove that $\I(V)$ is always a radical ideal.
+\item Prove that $\gene{x^2,y^2}$ is not a radical ideal.
+This implies that $\gene{x^2,y^2} \neq \I(V)$ for any variety $V \subseteq k^2$.
+\end{enumerate}
+Radicals ideals will play an important role in Chapter 4. In particular, the Nullstellensatz will imply that there is a one-to-one correspondence between varieties in $\C^n$ and radical ideals in $\C[x_1,\dots,x_n]$.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item Sea $f^m \in \I(V)$ con $f \in k[1,\dots,x_n]$ y $m$ entero positivo.
+Supongamos que $V$ es no nulo.
+Sea $p \in V$, entonces $f^m(p)=0$.
+Como el ideal $\gen{0}$ es primo en $k$, tenemos que $f(p)=0$.
+Como $p$ era un punto arbitrario, $f$ se anula en todo $V$, luego $f \in \I(V)$.
+Esto demuestra que $\I(V)$ es radical.
+\item Claramente $x \not in \gene{x^2,y^2}$, pero $x^2 \in \gene{x^2,y^2}$, luego $\gene{x^2,y^2}$ no es ideal radical.
+\end{solucion}
+\end{document}
