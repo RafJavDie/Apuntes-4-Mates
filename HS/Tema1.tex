@@ -97,7 +97,7 @@ Dado un complejo simpilicial $K$, se define la \emph{realización geométrica} o
 \end{defi}
 
 \begin{defi}
-Dado un complejo simplicial $K$ y dado $L\subset K$. Si $L$ tiene estructura de complejo simplicial, entonces se dice que $L$ es subcomplejo de $K$.
+Dado un complejo simplicial $K$ y dado $L\subset K$, si $L$ tiene estructura de complejo simplicial, entonces se dice que $L$ es subcomplejo de $K$.
 \end{defi}
 \begin{ej}\
 \begin{enumerate}
@@ -112,7 +112,7 @@ para $0\leq p\leq n$. Los $p$-esqueletos forman una \emph{filtración}\footnote{
 Sea $K$ un complejo simplicial finito y $|K|$ su realización geométrica. Entonces $|K|$ es un compacto.
 \end{prop}
 \begin{dem}
-Como todo símplice es compacto, y $|K|$ es unión finita de todos sus símplices, entonces $|K|$ es compacto. \QED
+Como todo símplice es compacto y $|K|$ es unión finita de todos sus símplices, entonces $|K|$ es compacto. \QED
 \end{dem}
 
 \begin{lemma}
@@ -132,7 +132,7 @@ Esto es, la estrella de $x$ en $K$ la forman todos los símplices de $K$ que con
 \end{defi}
 
 \begin{nota}
-$st(x;K)$ es un subcomplejo de $K$. Efectivamente, COMPROBARLO
+$st(x;K)$ es un subcomplejo de $K$. Efectivamente, si $\sigma\in st(x;K)$ entonces $\exists \tau$ tal que $\sigma\leq\tau$ y $x\in\tau$. Si $\eta\leq\sigma$, entonces $\eta\leq\tau$, por lo que el mismo $\tau$ para que $\eta\in st(x;K)$. Por otra parte, si $\sigma_1,\sigma_2\in st(x;K)$ y $\sigma_1\cap\sigma_2\neq\emptyset$, entonces $\sigma_1\cap\sigma_2\in K$. Por otra parte, existen $\tau_1,\tau_2\in K$ tales que $x\in\tau_1\cap\tau_2$, y como $\tau_1\cap\tau_2\in K$ y $\sigma_1\cap\sigma_2\leq \tau_1\cap\tau_2$, se tiene que $\sigma_1\cap\sigma_2\in st(x;K)$.
 \end{nota}
 
 \begin{defi}
@@ -143,7 +143,7 @@ lk(x;K)=\{\sigma\in st(x;K)\mid x\notin\sigma\}.
 \end{defi}
 
 \begin{nota}
-Análogamente, se tiene que $lk(x;K)$ es subcomplejo tanto de $K$ como de $st(x;K)$. COMPROBARLO
+Análogamente, se tiene que $lk(x;K)$ es subcomplejo tanto de $K$ como de $st(x;K)$. En efecto, si $\sigma\in lk(x;K)$ y $\tau\leq\sigma$ entonces $\tau\in st(x;K)$ y $x\notin \tau$. Además, si $\sigma,\tau\in lk(x;K)$ con $\sigma\cap\tau\neq\emptyset$, entonces $\sigma\cap\tau\in st(x;K)$ y $x\notin\sigma\cap\tau$. 
 \end{nota}
 
 \begin{defi}
@@ -185,9 +185,9 @@ Sea $K$ complejo simplicial y $x\in|K|$, se tiene que
 \]
 \end{prop}
 \begin{dem}
-Vamos a eliminar las barras por ahorrar notación. Sea $y\in \mathring{st}(x;K)$. Entonces existe $\sigma\in K$ tal que $y\in\mathring{\sigma}$, en particular $y\in\sigma$. Como $\sigma\leq\sigma$ y $y\in\sigma$, $y\in st(x;K)$. Además, por definición $lk(x;K)$ no tiene ningún punto de $\mathring{st}(x;K)$, luego $y\notin\mathring{st}(x;K)$.
+$\boxed{\subseteq}$ Sea $y\in |\mathring{st}(x;K)|$. Entonces existe $\sigma\in |K|$ tal que $y\in|\mathring{\sigma}|$, en particular $y\in\sigma$. Como $\sigma\leq\sigma$ y $y\in\sigma$, $y\in |st(x;K)|$. Además, por definición $|lk(x;K)|$ no tiene ningún punto de $|\mathring{st}(x;K)|$, luego $y\notin|\mathring{st}(x;K)|$.
 
-Sea $y\in st(x;K)-lk(x;K)$. Por definición de la estrella, $\exists\eta\in K$ tal que $x\in\eta$ y $y\in\eta$. Además, como $y$ no está en el link, $\exists \tau\in K$ tal que $y\in\tau$ con $\tau\in st(x;K)$ y $x\in\tau$. INTENTAR TERMINARLOS CORTANDO CARAS, Y SI A LA PRIMERA NO VALE SERVIRÁ UNA DE SUS CARAS (SOPORTOE)  \QED
+$\boxed{\supseteq}$ Sea $y\in |st(x;K)|-|lk(x;K)|$. Por definición de la estrella, $\exists\eta\in |K|$ tal que $x\in\eta$ y $y\in\eta$. Además, como $y$ no está en el link, $\exists \tau\in |K|$ tal que $y\in\tau$ con $\tau\in |st(x;K)|$ y $x\in\tau$. Consideramos entonces $y\in\tau\cap\eta\in |st(x;K)|$ Como $\tau\cap\eta$ es unión disjunta de sus caras abiertas, entonces, o bien $\tau\cap\eta$ contiene a $y$ en su interior o bien lo contiene alguna de sus caras propias en su interior. En cualquier caso, $y\in |\mathring{st}(x;K)|$.  \QED
 \end{dem}
 
 \end{document}
