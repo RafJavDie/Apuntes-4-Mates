@@ -1,0 +1,54 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+\usepackage{enumerate}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Variable Compleja - Relación 1}
+\author{Rafael González López}
+\maketitle
+
+\begin{ejercicio}{1}
+Demostrar que la ecuación diferencial
+$$
+zu''(z)=u(z)$$
+admite una única solución analítica en el entorno de $z=0$ tal que $u(0)=0$, $u'(0)=1$.
+¿Cuál es la serie de potencias de $u(z)$ en el entorno del origen? ¿Para qué valores de $z$ se satisface la ecuación diferencial?
+Demostrar que para todo $z\in \C$ 
+$$
+e^z = 1 +  \int_0^\infty u(zt)e^{-t}\frac{dt}{t}
+$$
+\begin{solucion}
+\begin{itemize}
+\item[]
+\item Si existe tal función analítica sabemos por teoría que su serie de potencias habrá de verificar la ecuación diferencial, es decir,
+$$
+z\sum_{n=2}^\infty n(n-1) a_n z^{n-2}= \sum_{n=2}^\infty n(n-1 )a_{n} z^{n-1} =  \sum_{n=1}^\infty (n+1)na_{n+1} z^{n} = \sum_{n=0}^\infty a_n z^n
+$$
+Por la igualdad de los coeficientes, $a_{n+1}=\dfrac{a_n}{n(n+1)}$ para $n\geq 1$ con $a_0 = 0$ y $a_1=1$. Por tanto, podemos escribir para todo $n\geq 0$ $a_n = \dfrac{1}{\Gamma(n)\Gamma(n+1)}$. Calculemos el radio de convergencia. Podemos suponer que $n>>0$ y aplicar la fórmula de Stirling
+\begin{gather*}
+\limsup_n |a_n|^{1/n} = \lim_n \sqrt[n]{\dfrac{1}{\Gamma(n)\Gamma(n+1)}} = \lim_n {\dfrac{1}{\sqrt[n]{n!(n-1)!}}} = \lim_n \frac{e^2}{n^2} = 0
+\end{gather*}
+Esto es claro, pues $\sqrt[n]{n!}\sim n/e$. Luego $R=\infty$, es decir, la serie converge en todo $\C$. 
+
+Notemos que hemos probado que existe una función analítica que verifica la ecuación diferencial (la serie definida por los coeficientes anteriormente calculados), sabemos que es única donde converja por el Teorema de Unicidad de Funciones Analíticas y de hecho converge en todo $\C$ (luego la ecuación diferencial se satisface para todo $z\in \C$). 
+\item Pasemos a probar la última igualdad integral. Para ello intercambiaremos suma por integral, por lo que vamos a probar antes que estamos en las hipóteis del teorema de convergencia dominada. Sea $X=(0,\infty)$.
+\begin{gather*}
+\int_0^\infty u(zt)e^{-t}\frac{dt}{t} = \int_0^\infty \sum_{k=1}^\infty a_k (zt)^k e^{-t}\frac{dt}{t}\\
+f(t)=\sum_{k=1}^\infty a_kz^kt^{k-1}e^{-t}  \qquad f_n(t) = \sum_{k=1}^n a_kz^kt^{k-1}e^{-t} \quad \forall z\in \C
+\end{gather*}
+Tenemos que $f_n \to f$, $f_n$ es medible por ser suma finita de funciones continuas en $X$. Finalmente escogemos la siguiente $g$. Ante la falta de información sobre nuestra función $u$ no puedo encontrar una $g$ que valga para toda $z$. Supongamos que $|z|<M$. Entonces $\exists n_0$ tal que $\forall k>n_0$ $2^{k-1} M^k<k!$, de donde
+\begin{align*}
+\sum_{k=1}^\infty \abs{a_kz^kt^{k-1}e^{-t}} &= \sum_{k=1}^\infty  \frac{|z|^kt^{k}e^{-t}}{k!(k-1)!t} = e^{-t}\sum_{k=1}^{n_0} \frac{(Mt)^k}{k!(k-1)!t} + e^{-t}\sum_{n=n_0+1}^\infty \frac{(Mt)^k}{k!(k-1)!t}\\
+&\leq e^{-t}P(t) + e^{-t}\sum_{n=1}^\infty \frac{t^{k-1}}{(k-1)!2^{k-1}} = e^{-t}P(t)+e^{-t/2} =g(t)
+\end{align*}
+Claramente $\int_X g(t)dt < \infty$. Por tanto
+\begin{align*}
+\int_0^\infty u(zt)e^{-t}\frac{dt}{t} & = \int_0^\infty \sum_{k=1}^\infty a_k (zt)^k e^{-t}\frac{dt}{t}= \sum_{k=1}^\infty a_k z^k  \int_0^\infty t^{k-1}e^{-t}dt\\
+&= \sum_{k=1}^\infty \frac{1}{\Gamma(k)\Gamma(k+1)} \Gamma(k) z^k =  \sum_{k=1}^\infty \frac{z^k}{k!} = e^z -1
+\end{align*}
+\end{itemize}
+\end{solucion}
+\end{ejercicio}
+\end{document}
