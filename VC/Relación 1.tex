@@ -40,7 +40,7 @@ f(t)=\sum_{k=1}^\infty a_kz^kt^{k-1}e^{-t}  \qquad f_n(t) = \sum_{k=1}^n a_kz^kt
 \end{gather*}
 Tenemos que $f_n \to f$, $f_n$ es medible por ser suma finita de funciones continuas en $X$. Finalmente escogemos la siguiente $g$. Ante la falta de información sobre nuestra función $u$ no puedo encontrar una $g$ que valga para toda $z$. Supongamos que $|z|<M$. Entonces $\exists n_0$ tal que $\forall k>n_0$ $2^{k-1} M^k<k!$, de donde
 \begin{align*}
-\sum_{k=1}^\infty \abs{a_kz^kt^{k-1}e^{-t}} &= \sum_{k=1}^\infty  \frac{|z|^kt^{k}e^{-t}}{k!(k-1)!t} = e^{-t}\sum_{k=1}^{n_0} \frac{(Mt)^k}{k!(k-1)!t} + e^{-t}\sum_{n=n_0+1}^\infty \frac{(Mt)^k}{k!(k-1)!t}\\
+\sum_{k=1}^\infty \abs{a_kz^kt^{k-1}e^{-t}} &= \sum_{k=1}^\infty  \frac{|z|^kt^{k}e^{-t}}{k!(k-1)!t} < e^{-t}\sum_{k=1}^{n_0} \frac{(Mt)^k}{k!(k-1)!t} + e^{-t}\sum_{n=n_0+1}^\infty \frac{(Mt)^k}{k!(k-1)!t}\\
 &\leq e^{-t}P(t) + e^{-t}\sum_{n=1}^\infty \frac{t^{k-1}}{(k-1)!2^{k-1}} = e^{-t}P(t)+e^{-t/2} =g(t)
 \end{align*}
 Claramente $\int_X g(t)dt < \infty$. Por tanto
