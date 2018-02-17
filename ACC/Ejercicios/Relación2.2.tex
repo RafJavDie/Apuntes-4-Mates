@@ -1,0 +1,169 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\lex}{<_{lex}}
+\newcommand{\grlex}{<_{grlex}}
+\newcommand{\grevlex}{<_{grevlex}}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{2.2.1}
+Rewrite each of the following polynomials, ordering the terms using the lex order, the grlex order, and the grevlex order, giving $LM(f)$, $LT(f)$, and $multideg(f)$ in each case.
+\begin{enumerate}[a.]
+\item $f(x,y,z) = 2x + 3y + z + x^2- z^2 + x^3$.
+\item $f(x,y,z) = 2x^2y^8 - 3x^5yz^4 + xyz^3 - xy^4$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{enumerate}[a.]
+\item Respecto al orden lex:
+ \[ f = x^3 + x^2 + 2x + 3y - z^2 + z \]
+ Respecto al orden grlex:
+ \[ f = x^3 + x^2 - z^2 + 2x + 3y + z \]
+ Respecto al orden gravlex:
+ \[ f = x^3 + x^2 - z^2 + 2x + 3y + z \]
+ En los tres casos: $multideg(f)=(3,0,0)$, $LM(f)=x^3$ y $LT(f)=1$.
+\item Respecto al orden lex:
+ \[ f = -3x^5yz^4 + 2x^2y^8 - xy^4 + xyz^3 \]
+ Respecto al orden grlex:
+ \[ f = -3x^5yz^4 + 2x^2y^8 - xy^4 + xyz^3 \]
+ Respecto al orden gravlex:
+ \[ f = 2x^2y^8 -3x^5yz^4 - xy^4 + xyz^3\]
+ En orden lex y grlex: $multideg(f)=(5,1,4)$, $LM(f)=x^5yz^4$ y $LT(f)=-3$. En gravlex: $multideg(f)=(2,8,0)$, $LM(f)=x^2y^8$ y $LT(f)=2$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.2.2}
+Each of the following polynomials is written with its monomials ordered according to (exactly) one of lex, grlex, or grevlex order. Determine which monomial order was used in each case.
+\begin{enumerate}[a.]
+\item $f(x,y,z) = 7x^2y^4z - 2xy^6 + x^2y^2$.
+\item $f(x,y,z) = xy^3z + xy^2z^2 + x^2z^3$.
+\item $f(x,y,z) = x^4y^5z + 2x^3y^2z - 4xy^2z^4$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{enumerate}[a.]
+\item
+\begin{align*}
+(2,4,1) \not\lex & (1,6,0) \lex (2,2,0)\\
+(2,4,1) \grlex & (1,6,0) \grlex (2,2,0)\\
+(2,4,1) \not\grevlex & (1,6,0) \grevlex (2,2,0)
+\end{align*}
+Luego $f$ está ordenado por grlex.
+\item
+\begin{align*}
+(1,3,1) \lex & (1,2,2) \not\lex (2,0,3)\\
+(1,3,1) \grlex & (1,2,2) \not\grlex (2,0,3)\\
+(1,3,1) \grevlex & (1,2,2) \grevlex (2,0,3)
+\end{align*}
+Luego $f$ está ordenado por gravlex.
+\item
+\begin{align*}
+(4,5,1) \lex & (3,2,1) \not\lex (1,2,4)\\
+(4,5,1) \grlex & (3,2,1) \not\grlex (1,2,4)\\
+(4,5,1) \grevlex & (3,2,1) \not\grevlex (1,2,4)
+\end{align*}
+Luego $f$ está ordenado por lex.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.2.3}
+Repeat Exercise \ref{ejer:2.2.1} when the variables are ordered $z > y > x$.
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{enumerate}[a.]
+\item Respecto al orden lex:
+ \[ f = -z^2 + z + 3y + x^3 + x^2 + 2x \]
+ Respecto al orden grlex:
+ \[ f = x^3 - z^2 + x^2  + z + 3y + 2x \]
+ Respecto al orden gravlex:
+ \[ f = x^3 - z^2 + x^2  + z + 3y + 2x \]
+\item Respecto al orden lex:
+ \[ f = -3x^5yz^4 + xyz^3 + 2x^2y^8 - xy^4 \]
+ Respecto al orden grlex:
+ \[ f = -3x^5yz^4 + 2x^2y^8 + xyz^3 - xy^4 \]
+ Respecto al orden gravlex:
+ \[ f = 2x^2y^8 - 3x^5yz^4 + xyz^3 - xy^4 \]
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.2.4}
+Show that grlex is a monomial order according to Definition 1.
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{itemize}
+\item Orden total: Cierto a partir de la definición.
+\item Compatible con producto de monomios: Sea $α \grlex β$.
+Si $|α|>|β|$, entonces $|α+γ|=|α|+|γ|>|β|+|γ|>|β+γ|$, luego $α+γ \grlex β+γ$.
+Si $|α|=|β|$, entonces $α+γ \grlex β+γ$, pues $α+γ \lex β+γ$.
+\item $(\Z_{≥0}^n,\grlex)$ está bien ordenado: Supongamos que este no fuera el caso.
+Entonces existe una secuencia infinita:
+\[ α(1) \grlex α(2) \grlex α(3) \grlex \dots \]
+Esto implica que:
+\[ |α(1)| ≥ |α(2)| ≥ |α(3)| ≥ \dots \]
+Como $(\Z_{≥0},≥)$ está bien ordenado, esta cadena debe estabilizarse, digamos a partir de $n$. De manera que, como $|α(n)|=|α(m)|$ para todo $m≥n$:
+\[ α(n) \lex α(n+1) \lex α(n+2) \lex \dots \]
+Pero esto implicaría que $(\Z_{≥0},\lex)$ no está bien ordenado, y sabemos que no es el caso.
+Hemos llegado a una contradicción.
+\end{itemize}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.2.4}
+Show that grevlex is a monomial order according to Definition 1.
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{itemize}
+\item Orden total: Cierto a partir de la definición.
+\item Compatible con producto de monomios: Sea $α \grevlex β$.
+Si $|α|>|β|$, está claro.
+Si $|α|=|β|$, entonces el elemento no nulo más a la derecha de $α - β$ es negativo.
+Como $(α+γ)-(β+γ) = α-β$, entonces $α + γ \grevlex β+γ$.
+\item $(\Z_{≥0}^n,\grevlex)$ está bien ordenado: Supongamos que este no fuera el caso.
+Como en el ejercicio anterior, esto implica que existe una cadena infinita: 
+\[ α(1) \grevlex α(2) \grevlex α(3) \grevlex \dots \]
+tal que $n=|α(1)|=|α(2)|=\dots$.
+Pero basta ver que cada componente $α(i)$ forma a su vez una cadena ascendente de enteros positivos acotados por $n$.
+Es decir, cada componente debe llegar a ser constante $≤n$.
+Entonces no es posible tal cadena infinita.
+Hemos llegado a una contradicción.
+\end{itemize}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.2.6}
+Let $>$ be any monomial order.
+\begin{enumerate}[a.]
+\item Show that $α ≥ 0$ for all $α \in \Z^n_{≥0}$.
+\item Show that if $x^α$ divides $x^β$, then $α ≤ β$. Is the converse true?
+\item Show that if $α \in \Z_{≥0}^n$, then $α$ is the smallest element of $α + \Z_{≥0}^n = \{α+β \mid β \in \Z_{≥0}^n\}$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item Supongamos que $0 > α$.
+Entonces por la propiedad de compatibilidad por producto de monomio: $0+α > α+α$, es decir $α > 2α$.
+Podemos aplicar esto para obtener una cadena infinita:
+\[ 0 > α > 2α > \dots \]
+Esto contradice la propiedad de buen ordenamiento.
+Entonces $α ≤ 0$ por reducción al absurdo.
+\item Si $x^α$ divide a $x^β$, entonces existe $x^γ$ tal que $x^αx^γ=x^β$.
+Como $α ≤ α+γ = β$, deducimos que $α ≤ β$.
+Aquí usamos implícitamente el orden total (creo).
+\item Consecuencia del hecho de que $α ≥ 0$.
+Para todo $γ \in α + \Z_{≥0}^n$, $α ≥ 0$ implica que $α + γ ≥ α$, luego $α$ es el menor elemento del conjunto.
+\end{enumerate}
+\end{solucion}
+\end{document}
