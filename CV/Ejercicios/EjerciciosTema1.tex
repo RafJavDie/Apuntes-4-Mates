@@ -4,7 +4,7 @@
 %--------------------------------------------------------
 \begin{document}
 
-\title{Ejercicios de Cálculo en Variedades - Tema 1}
+\title{Ejercicios de From Calculus to Cohomology, Capítulo 2}
 \author{Javier Aguilar Martín}
 \maketitle
 
@@ -142,8 +142,43 @@ Alt^p(f)(w_1)\land Alt^q(f)(w_2)(v_1,\dots, v_{p+1})
 \end{solucion}
 
 \begin{ejercicio}{2.9}
+Sea $V$ un espacio vectorial $n$-dimensional con producto escalar $\langle,\rangle$. Por el ejercicio \ref{ejer:2.5} obtenemos un producto escalar en $Alt^p(V)$ para todo $p$, en particular en $Alt^n(V)$. 
+
+Un \emph{elemento de volumen} de $V$ es un vector unitario $vol\in Alt^n(V)$. El operador \emph{estrella de Hodge}
+\[
+*: Alt^p(V)\to Alt^{n-p}(V)
+\]  
+está definido por la ecuación $\langle *w,\tau\rangle vol=w\land \tau$. Probar que $*$ está bien definido y es lineal.
+
+Sea $\{e_1,\dots, e_n\}$ una base ortonormal de $V$ con $vol(e_1,\dots, e_n)=1$ y $\{\varepsilon_1,\dots, \varepsilon_n\}$ la base ortonormal dual de $Alt^1(V)$. Probar que 
+\[
+*(\varepsilon_1\land\dots\land\varepsilon_p)=\varepsilon_{p+1}\land\dots\land\varepsilon_n
+\]
+y en general que
+\[
+*(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)})=\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)}
+\]
+con $\sigma\in S(p,n-p)$. Probar que $*\circ *=(-1)^{n(n-p)}$ en $Alt^p(V)$.
 \end{ejercicio}
 \begin{solucion}
 PROBAR QUE EXISTE VOLUMEN Y VER SI ES ÚNICO Y CÓMO VARÍA AL CAMBIAR DE BASE ORTONORMAL
 \end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.10}
+Sea $V$ un espacio vectorial de dimensión 4 y $\{\varepsilon_1,\dots,\varepsilon_4\}$ una base de $Alt^1(V)$. Sea $A$ una matriz antisimétrica y definamos
+\[
+\alpha=\sum_{i<j}a_{ij}\varepsilon_i\land\varepsilon_j.
+\]
+Probar que $\alpha\land\alpha=0$ si y solo si $\det(A)=0$.  Digamos que $\alpha\land\alpha=\lambda\varepsilon_1\land\varepsilon_2\land\varepsilon_3\land\varepsilon_4$. ¿Cuál es la relación entre $\lambda$ y $\det(A)$?
+\end{ejercicio}
+\begin{solucion}
+\begin{gather*}
+\alpha\land\alpha=(\sum_{i<j}a_{ij}\varepsilon_i\land\varepsilon_j)\land (\sum_{i<j}a_{ij}\varepsilon_i\land\varepsilon_j)=\\
+(2a_{12}a_{34}-2a_{13}a_{24}+2a_{14}a_{23})(\varepsilon_1\land\varepsilon_2\land\varepsilon_3\land\varepsilon_4)
+\end{gather*}
+Esto es justamente $\frac{Pf(A)}{4}(\varepsilon_1\land\varepsilon_2\land\varepsilon_3\land\varepsilon_4)$, donde $Pf(A)$ es el pfaffiano\footnote{https://en.wikipedia.org/wiki/Pfaffian} de $A$. Como $\det(A)=Pf(A)^2$ se tiene el resultado. Si el módulo de $\alpha\land\alpha$ fuera $\lambda$, entonces $\lambda=Pf(A)/4=\sqrt{\det(A)}/4$. 
+\end{solucion}
+
 \end{document}
