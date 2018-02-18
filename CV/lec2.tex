@@ -1,0 +1,79 @@
+\documentclass[CV.tex]{subfiles}
+
+\begin{document}
+
+
+%\hyphenation{equi-va-len-cia}\hyphenation{pro-pie-dad}\hyphenation{res-pec-ti-va-men-te}\hyphenation{sub-es-pa-cio}
+
+\chapter{Cohomología de deRham sobre abiertos euclídeos}
+\section{Definiciones}
+Sea $U\subseteq\R^n$ un abierto euclídeo y $\R^n$ con la base canónica $\{e_1,\dots, e_n\}$, que induce una base dual sobre $Alt^1(\R)$, $\{\varepsilon_1,\dots, \varepsilon_n\}$. Ocasionalmente se usará la notación $\varepsilon_I=\varepsilon_{i_1}\land\dots\land\varepsilon_{i_p}$, donde $I=\{1\leq i_1<\cdots<i_p\leq n\}$.
+
+\begin{defi}
+Una \textbf{$p$-forma diferenciable} sobre $U$ es 
+\[
+w:U\to Alt^p(\R^n)
+\]
+\[
+x\mapsto w_x
+\]
+que es aplicación diferenciable $w_x(v_1,\dots, v_p)$ o también denotado $w(x)(v_1,\dots, v_p)$. 
+\end{defi}
+
+\begin{observaciones}
+$w_x=\sum_{\sigma\in S(p,n-p)}(w_x)_{\sigma}\varepsilon_{\sigma}$. Por otro lado, tiene sentido hablar de diferenciabilidad pues $Alt^p(\R^n)\cong \R^{\binom{n}{p}}$, por lo que la diferenciabilidad se tendrá coordenada a coordenada. Es decir, cada $x\mapsto (w_x)_{\sigma}$ es diferenciable. 
+\end{observaciones}
+
+\begin{lemma}
+El conjunto de todas las $p$-formas diferenciables $\Omega^p(U)$ es un $\R$-e.v.
+\end{lemma}
+
+Como $w$ es diferenciable, podemos considerar su derivada, $Dw$, tal que para cada $x\in U$, $D_xw:\R^n\to Alt^p(\R^n)$ es una aplicación lineal. Tendríamos entonces para cada $i=1,\dots, n$
+\[
+D_xw(e_i)=\frac{d}{dt}(w(x+te_i))|_{t=0}=\frac{\partial w}{\partial x_i}(x)
+\]
+Obsérvese que es el resultado es un vector, pues es una matriz aplicada sobre un vector. Podemos decir que $w=\sum_{\sigma}w_{\sigma}\varepsilon_{\sigma}$, donde $w_{\sigma}$ son $C^{\infty}$ diferenciables como funciones $w_{\sigma}: U\to \R=Alt^0(\R^n)$, por lo que $w_{\sigma}\in\Omega^0(U)=C^{\infty}(U;\R)$. Entonces, para cada $i=1,\dots, n$,
+\[
+D_xw(e_i)=\sum_{\sigma}\frac{\partial w_{\sigma}}{\partial x_i}(x)\varepsilon_{\sigma}
+\]
+\newpage
+Así, pues
+\[
+Dw: U\longrightarrow \{\text{aplicaciones lineales } \R^n\to Alt^p(\R^n)\}\subseteq M_{n\times\binom{n}{p}}
+\]
+\[x\longmapsto D_xw:\R^n\to Alt^p(\R^n)
+\]
+Se tiene además que si $w\in\Omega^p(U)$ y $f\in\Omega^0(U)$, $fw\in\Omega^p(U)$, que es equivalente a decir que $(fw)_x\in Alt^p(\R^n)$, definida como $fw(x)(v_1,\dots, v_p)=f(x)w_x(v_1,\dots, v_p)$ (o sin los $v_i$). Por tanto. $\Omega^p(U)$ es un $C^{\infty}(U;\R)$-módulo. 
+
+\begin{defi}
+Definimos la \textbf{diferencial exterior}
+\[
+\Omega^p(U)\overset{d}{\longrightarrow} \Omega^{p+1}(U)
+\]
+como un homomorfismo de $\R$-e.v. $w\longmapsto dw:U\to Alt^{p+1}(\R^n)$, donde $x\mapsto d_xw:\R^n\underbrace{\times\dots \times}_{p+1}\R^n\to \R$ está definida como
+\[
+d_xw(v_1,\dots, v_{p+1})=\sum_{l=1}^{p+1}(-1)^{l-1}D_xw(v_l)(v_1,\dots, \hat{v}_l,\dots, v_{p+1})
+\]
+\end{defi}
+Es fácil comprobar que $d_xw$ está bien definida. Además es multilineal por ser combinación lineal de multilineales. Probemos que es alternado. Por el lema \ref{alternado} basta comprobar que $d_xw(v_1,\dots, v_{p+1})=0$ si $\exists i\mid v_i=v_{i+1}$. 
+\begin{gather*}
+d_xw(v_1,\dots, v_{p+1})=\sum_{l=1}^{p+1}(-1)^{l-1}D_xw(v_l)(v_1,\dots, \hat{v}_l,\dots, v_{p+1})=\\
+\sum_{l=1}^{i-1}(-1)^{l-1}D_xw(v_l)(v_1,\dots, \hat{v}_l,\dots, v_{p+1})+\\
+(-1)^{i-1}D_xw(v_i)(v_1,\dots, \hat{v}_i,\dots, v_{p+1})+(-1)^{i}D_xw(v_{i+1})(v_1,\dots, \hat{v}_{i+1},\dots, v_{p+1})+\\
+\sum_{l=i+2}^{p+1}(-1)^{l-1}D_xw(v_l)(v_1,\dots, \hat{v}_l,\dots, v_{p+1})
+\end{gather*}
+El primer y el último sumando contienen a $v_i$ y a $v_{i+1}$, luego se anulan por se alternados. Los otros dos se anulan, porque al eliminar uno de los dos sigue estando el otro, y con el cambio de signo se cancelan.
+
+\begin{ej}
+Sea la aplicación diferenciable $x_i:U\to\R$ que consiste en proyectar sobre la $i$-ésima coordenada. $x_i\in \Omega^0(U)=C^{\infty}(U;\R)$, luego $dx_i\in\Omega^1(U)$, donde $dx_i:U\to Alt^1(\R^n)$ está definida como $x\mapsto d_x x_i$. Entonces, $d_x x_i(v)=D_x(x_i)(v)$, con $v\in\R^n$. Tengamos en cuenta que $D_x(x_i):\R^n\to Alt^0(\R^n)=\R$ es la aplicación $v\mapsto D_x(x_i)(v)$. Así que
+\[
+D_x(x_i)(v)=\sum_{j=1}^n\frac{\partial x_i}{\partial x_j}(x)v_j=\sum_{j=1}^n\frac{\partial x_i}{\partial x_j}(x)\varepsilon_j(v)=\left(\sum_{j=1}^n\frac{\partial x_i}{\partial x_j}(x)\varepsilon_j\right)(v)= \varepsilon_i
+\]
+Así que $d_xx_i=\varepsilon_i$. También escribiremos $dx_i=\varepsilon_i$ entendido como la función constante $\varepsilon_i$, ya que no se obtendría el valor concreto hasta evaluar en $x$. En general, para $f\in\Omega^0(U)$ se tiene
+\[
+d_xf(v)=\sum_{j=1}^n\parcial{f}{x^j}(x)(v_j)=\sum_{j=1}^n\parcial{f}{x^j}(x)\varepsilon_j(v)=\sum_{j=1}^n\parcial{f}{x^j}(x)dx_j(v).
+\]
+En otras palabras, $d_xf=\sum_{j=1}^n\parcial{f}{x^j}(x)dx_j$.
+
+\end{ej}
+\end{document}
