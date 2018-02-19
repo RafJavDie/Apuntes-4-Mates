@@ -14,7 +14,7 @@ Note that this result  holds for \emph{any} algebraically closed field.
 \end{ejercicio}
 \begin{solucion}
 Si $n = 1$, tenemos que $f(x) = cx+d$ con $c \neq 0$, luego podemos escribir $f(x) = c(x-d/c)$.
-Si $n > 1$, por el teorema fundamental del cálculo $f$ tiene una raíz $a \in \C$.
+Si $n > 1$, por el teorema fundamental del álgebra $f$ tiene una raíz $a \in \C$.
 Es más, tenemos que $f(x) = h(x)(x-a)+b$ por división de polinomios.
 Como $f(a) = h(a)\cdot 0 + b = b$, deducimos que $f(x) = h(x)(x-a)$, donde $h$ es un polinomio de grado $n-1$.
 Aplicando este proceso $n-1$ veces y aplicando por último el caso $n=1$, obtenemos el resultado.
@@ -89,7 +89,7 @@ Given $f_1,\dots , f_s ∈ k[x]$, let $h = \gcd( f_2,\dots , f_s)$. Then use the
 $\langle h\rangle = 
  \langle f_2,\dots , f_s\rangle$
 to show that 
- $\langle f1, h\rangle = 
+ $\langle f_1, h\rangle = 
  \langle f_1, f_2,\dots, f_s\rangle$.
 \end{ejercicio}
 \begin{solucion}
@@ -124,13 +124,13 @@ El algoritmo funciona porque siempre puede calcular el gcd de dos polinomios. Ad
 \begin{ejercicio}{1.5.8}
 Use a computer algebra system to compute the following gcd’s:
 \begin{itemize}
-\item[a.] $\gcd(x^4 + x^2 + 1, x^4 − x^2 − 2^x − 1, x^3 − 1)$.
+\item[a.] $\gcd(x^4 + x^2 + 1, x^4 − x^2 − 2x − 1, x^3 − 1)$.
 \item[b.] $\gcd(x^3 + 2x^2 − x − 2, x^3 − 2x^2 − x + 2, x^3 − x^2 − 4x + 4)$.
 \end{itemize}
 \end{ejercicio}
 
 \begin{solucion}
-En wolfram
+En Wolfram
 \begin{itemize}
 \item[a.] 1
 \item[b.]$x-1$
@@ -162,6 +162,7 @@ $\V( f_1,\dots , f_s)$ is nonempty.
 \end{ejercicio}
 \begin{solucion}
 \begin{itemize}
+\item[]
 \item[a.] Se sigue de que todo polinomio no constante tiene al menos una raíz en $\C$ y de que un polinomio consante no nulo no tiene raíces.
 \item[b.] La implicación a la izquierda es clara pues el ideal generado por dichos polinomios será todo $\C[x]$. Para la otra, $\V( f_1,\dots, f_s) = ∅$ es equivalente a que $\I(\V( f_1,\dots, f_s)) =\C[x]$, lo cual es equivalente a que $\langle 1\rangle= \I(\V( f_1,\dots, f_s))$, de donde se deduce el resultado. Hemos usado que $\sqrt{I}=\C[x]$ si y solo si $I=\C[x]$.
 \item[c.] Basta calcular el gcd y comprobar si es constante o no.
@@ -177,7 +178,7 @@ $$f = c(x − a_1)^{r_1}\cdots(x − a_l)^{r_l} ,$$
 where $a_1,\dots, a_l ∈ \C$ are distinct and $c ∈ \C \ \{0\}$.
 Define the polynomial
 $$f_{red} = c(x − a_1)\cdots (x − a_l).$$
-The polynomials $f$ and $f_red$ have the same roots, but their multiplicities may differ. In
+The polynomials $f$ and $f_{red}$ have the same roots, but their multiplicities may differ. In
 particular, all roots of $f_{red}$ have multiplicity one. We call fred the reduced or square-free
 part of $f$ . The latter name recognizes that $f_{red}$ is the square-free factor of $f$ of largest
 degree.
@@ -189,6 +190,7 @@ degree.
 \end{ejercicio}
 \begin{solucion}
 \begin{itemize}
+\item[]
 \item[a.] Se tiene por definición.
 \item[b.] Como $\V(f)=\V(f_{red})$, basta probar que $I=\langle f_{red}\rangle$ es radical. Pero esto es claro, pues si $g^r\in I$, como $f_{red}$ solo tiene factores lineales, esto significa que $g^r=cf^r$, luego $g=f/c\in I$. 
 \end{itemize}
