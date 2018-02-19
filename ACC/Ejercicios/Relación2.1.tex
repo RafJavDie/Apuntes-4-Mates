@@ -19,6 +19,7 @@ Determine whether the given polynomial is in the given ideal $I \subseteq \R[x]$
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
+\item[]
 \item $x^2-3x+2 = (x-1)(x-2) \Rightarrow x^2-3x+2 \in \gene{x-2}$.
 \item $x^5-4x+1 = (x^2+x)(x^3-x^2+x)+(-x^2-4x+1) \Rightarrow x^5-4x+1 \notin \gene{x^3-x^2+x}$.
 \item Buscamos un generador principal de $I$.
@@ -75,16 +76,16 @@ Find implicit equations for the affine varieties parametrized as follows.
 \begin{itemize}
 \item[a.] In $\R^3$ or $\C^3$:
 \begin{align*}
-&x1 = t − 5,\\
-&x2 = 2t + 1,\\
-&x3 = −t + 6.
+&x_1 = t − 5,\\
+&x_2 = 2t + 1,\\
+&x_3 = −t + 6.
 \end{align*}
 \item[b.] In $\R^4$ or $\C^4$:
 \begin{align*}
-&x1 = 2t − 5u,\\
-&x2 = t + 2u,\\
-&x3 = −t + u,\\
-&x4 = t + 3u.
+&x_1 = 2t − 5u,\\
+&x_2 = t + 2u,\\
+&x_3 = −t + u,\\
+&x_4 = t + 3u.
 \end{align*}
 \item[c.] In $\R^3$ or $\C^3$:
 \[
@@ -118,6 +119,7 @@ of (finite) monomials $x^{e_1}_{i_1}\cdots x^{e_n}_{i_n}$. Let $R$ denote the se
 we can add and multiply elements of $R$ in the usual way. Thus, $R$ is the polynomial ring
 $k[x_1, x_2,\dots]$ in infinitely many variables.
 \begin{itemize}
+\item[]
 \item[a.] Let $I = 
 \langle x_1, x_2, x_3,\rangle$ be the set of polynomials of the form $x_{t_1} f_1+\cdots+x_{t_m} f_m$, where
 $f_j ∈ R$. Show that $I$ is an ideal in the ring $R$.
@@ -131,5 +133,37 @@ only to consider subsets of $\{x_i | i ≥ 1\}$.
 \item[b.] Si fuera finitamente generado, en particular podríamos eliminar algún $x_i$ del conjunto de generadores, pero entonces el monomio $x_i$ dejaría de pertenecer a $I$, puesto que las variables son algebraicamente independientes, así que tenemos contradicción. 
 \end{itemize}
 \end{solucion}
-
+\newpage
+\begin{ejercicio}{2.1.5}
+In this problem you will show that all polynomial parametric curves in $k^2$ are contained in affine algebraic varieties.
+\begin{enumerate}[a.]
+\item Show that the number of distinct monomials $x^ay^b$ of total degree $≤ m$ in $k[x, y]$ is equal
+to $(m + 1)(m + 2)/2$.
+\item Show that if $f (t)$ and $g(t)$ are polynomials of degree $≤ n$ in $t$, then for $m$ large enough,
+the “monomials”
+$$
+[f(t)]^a[g(t)]^b
+$$
+with $a+b\leq m$ are linearly dependent.
+\item Deduce from part $(b)$ that if $C$ is a curve in $k^2$ given parametrically by $x = f (t)$, $y = g(t)$ for $f (t)$, $g(t) ∈ k[t]$, then $C$ is contained in $\V(F)$ for some nonzero $F ∈ k[x, y]$.
+\item Generalize parts $(a)$, $(b)$, and $(c)$ to show that any polynomial parametric surface
+$$
+x=f(t,u) \quad y = g(t,u) \quad z=h(t,u)
+$$
+is contained in an algebraic surface $\V(F)$, where $F ∈ k[x, y, z]$ is nonzero.
+\end{enumerate}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Calculemos el número de monomios de grado $m$. Para cada una de las dos variables $x$ e $y$ tenemos $m$ potencias que asignar. Es un ejercicio de combinatoria ver que es un ejemplo de stars and bars. Tenemos entonces 
+$$
+\binom{m+2-1}{m} = \binom{m+1}{m} = m+1
+$$
+Por tanto, el número de monomios distintos de grado menor o igual que $m$ será
+$$\sum_{k=1}^m k+1  = m + \sum_{k=1}^m k = m + \frac{m(m+1)}{2} = \frac{(m+1)(m+2)}{2}
+$$
+\item 
+\end{enumerate}
+\end{solucion}
+\end{ejercicio}
 \end{document}
