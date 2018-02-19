@@ -54,11 +54,17 @@ Let $p$ be a prime number. The ring of integers modulo $p$ is a field with $p$ e
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
-\item Sea $n \in \F_p\setminus\{0\}$.
-Si existe $m \in \F_p\setminus\{0\}$ tal que $n \cdot m \equiv 0 \pmod p$, entonces $p \mid n\cdot m$.
+\item[]
+\item 
+\begin{itemize}
+\item Veamos que la operación es interna.
+Sea $n \in \F_p\setminus\{0\}$. Si existe $m \in \F_p\setminus\{0\}$ tal que $n \cdot m \equiv 0 \pmod p$, entonces $p \mid n\cdot m$.
 Como $p$ es primo, entonces $p \mid n$ ó $p \mid m$.
 Si $p \mid n$, entonces $n \equiv 0 \pmod p$, luego llegamos a la contradicción $n \notin \F_p\setminus\{0\}$.
 Análogamente, $p \mid m$ lleva a una contradicción.
+\item  La asociatividad es clara, así como la existencia de elemento neutro $1$. Veamos que la operación es interna.
+\item Finalmente, la existencia del elemento inverso es consecuencia de la identidad de Bézout. Dado $n \in \F_p\setminus\{0\}$, como $p$ es primo, $\exists a,b$ tales que $ap + bn = 1$. Tomando clases módulo $p$, como $[p]=0$ llegamos a que $[b][n]=1$, luego $[n]$ es unidad.
+\end{itemize}
 \item Tenemos que $\F_p\setminus\{0\}$ es un grupo multiplicativo de $p-1$ elementos.
 Para todo $a \in \F_p\setminus\{0\}$, el conjunto $\langle a \rangle := \{a^n \mid n \in \Z_{≥0}\}$ es un subgrupo.
 Sea $m$ el orden de $\langle a \rangle$, se tiene que $a^m=1$.
