@@ -1,0 +1,122 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\lex}{<_{lex}}
+\newcommand{\grlex}{<_{grlex}}
+\newcommand{\grevlex}{<_{grevlex}}
+
+\newcommand{\PhantC}{\phantom{\colon}}%
+\newcommand{\CenterInCol}[1]{\multicolumn{1}{c}{#1}}%
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{2.3.1}
+Compute the remainder on division of the given polynomial $f$ by the orderes set $F$ (by hand).
+Use the grlex order, then the lex order in each case.
+\begin{enumerate}[a.]
+\item $f = x^7y^2 + x^3y^2 - y + 1$, $F = (xy^2-x, x-y^3)$.
+\item Repeat part (a) with the order of the pair $F$ reversed.
+\end{enumerate}
+\end{ejercicio}
+Usando grlex para ordenar los monomios:
+
+%% Este formato de división será reemplazada por uno más similar al que se haga en clase.
+\[
+\begin{array}{rrr}
+   q_1\colon  & \CenterInCol{x^6+x^2} & r \\
+   q_2\colon  & \CenterInCol{0}\\
+xy^2-x\PhantC & \multirow{2}*{$\sqrt{x^7y^2+x^3y^2-y+1}$}\\
+-y^3+x\PhantC &\\
+              & x^7y^2 - x^7\\\cline{2-2}
+              & x^7+x^3y^2-y+1\\
+              & x^3y^2-y+1 & \to x^7\\
+              & x^3y^2-x^3 \\\cline{2-2}
+              & -x^3-y+1\\
+              & -y+1 & \to x^3\\
+              & 1 & \to -y\\
+              & 0 & \to 1
+\end{array}
+\]
+
+Luego $x^7y^2+x^3y^2-y+1 = (x^6+x^2)(xy^2-x) + 0 (-y^3+x) + (x^7+x^3-y+1)$.
+
+Usando lex sale después de $17$ pasos:
+\[ x^7y^2 + x^3y^2- y + 1 = q_1(xy^2-x)+q_2(x-y^3)+(2y^3-y-1)\]
+donde
+\[ q_1 = x^6 + x^5y + x^4y^2 + x^4 + x^3y + x^2y^2 + 2x^2 + 2xy + 2y^2 + 2\]
+\[ q_2 = x^6 + x^5y + x^4 + x^3y + 2x^2 + 2xy + 2 \]
+
+Reordenando $F$ como $F = (x-y^3,xy^2-x)$ no se producen cambios en la división usando grlex, pues $LT(-y^3+x) = -y^3$ nunca divide al polinomio dividendo en ningún paso en (a).
+Por otro lado, la división lex nos da:
+\[ x^7y^2+x^3y^2-y+1 = q_1(x-y^3)+0(xy^2-x)+(y^{10}-y+1)\]
+con $q_1 = x^6y+x^5y^4+x^4y^7+x^3y^{10}+x^2y^{13}+xy^{16}+y^{19}+x^2y+xy^4+y^7$.
+
+\newpage
+
+\begin{ejercicio}{2.3.2}
+Compute the remainder on division:
+\begin{enumerate}[a.]
+\item $f = xy^2z^2 + xy - yz$, $F = (x-y^2, y-z^3, z^2-1)$.
+\item Repeat part (a) with the order of the set $F$ permuted cyclically.
+\end{enumerate}
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{2.3.3}
+Using a computer algebra system, check your work from Exercises \ref{ejer:2.3.1} and \ref{ejer:2.3.2}.
+\end{ejercicio}
+\begin{solucion}
+Ofrecemos un código en sagemath en el archivo adjunto `utils.sage'.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.3.4}
+Let $f = q_1 f_1 + \dots q_s f_s + r$ be the output of the divison algorithm.
+\begin{enumerate}[a.]
+\item Complete the proof begun in the text that $multideg(f) ≥ multideg(q_i f_i)$ provided that $q_i f_i \neq 0$.
+\item Prove that $multideg(f) ≥ multideg(r)$ when $r \neq 0$.
+\end{enumerate}
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{2.3.5}
+We will study the division of $f = x^3-x^2y-x^2z+x$ by $f_1 = x^2y-z$ and $f_2 = xy-1$.
+\begin{enumerate}[a.]
+\item Compute using grlex order:
+\[ r_1 = \text{remainder of $f$ on division by $(f_1,f_2)$} \]
+\[ r_2 = \text{remainder of $f$ on division by $(f_2,f_1)$} \]
+Your results should be \emph{different}.
+Where in the division algorithm did the difference occur?
+\item Is $r = r_1-r_2$ in the ideal $\gene{f_1,f_2}$?
+If so, find an explicit expression $r = Af_1 + Bf_2$..
+If not, say why not.
+\item Compute the remainder of $r$ on division by $(f_1,f_2)$.
+Why could you have predicted your answer before doing the division?
+\item Find another polynomial $g \in \gene{f_1,f_2}$ such that the remainder on division of $g$ by $(f_1,f_2)$ is nonzero.
+Hint: $(xy+1)f_2 = x^2y^2-1$, whereas $yf_1 = x^2y^2-yz$.
+\item Does the division algorithm give us a solution for the ideal membership problem for the ideal $\gene{f_1,f_2}$?
+Explain your answer.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item Computamos la división: $r_1 = x^3-x^2z+x-z$ y $r_2 = x^3-x^2z$. 
+La diferencia radica en que $x^2y$ del dividendo es divisible por $LT(f_1)$ y $LT(f_2)$ y $f_1 \neq f_2$, por lo que es relevante el orden de los divisores.
+\item $r=r_1-r_2 = x-z$. Tenemos que $f = q_1f_1+q_2f_2 + r_1$ y $f = q_1'f_1+q_2'f_2 + r_2$. Luego:
+\[ r=r_1-r_2 = (-q_1+q_1')f_1+(-q_2+q_2')f_2 \]
+Como $q_1 = -1$, $q_2 = q_1' = 0$ y $q_2' = -x$, deducimos que $r = f_1 - x f_2$.
+\item Tenemos que la división da por resto $x-z$ (aunque $r \in \gene{f_1,f_2}$).
+Podriamos haber predicho este resultado observando que todos los términos de $r$ no son divisibles por los términos líderes de $f_1$ y $f_2$, una de las propiedades del resto.
+\item Definimos $g = -yf_1 + (xy+1)f_2 = yz-1$, que no es divisible por los términos líderes de $f_1$ y $f_2$.
+\item No. Desearíamos que el resto de la división de un elemento de $\gene{f_1,f_2}$ por $(f_1,f_2)$ fuera $0$, pero no es el caso en $r$ ó en $g$.
+(¿Es esto lo que quiere el ejercicio que diga?)
+\end{enumerate}
+\end{solucion}
+\end{document}
