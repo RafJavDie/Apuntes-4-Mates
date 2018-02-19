@@ -120,7 +120,7 @@ Hemos llegado a una contradicción.
 
 \newpage
 
-\begin{ejercicio}{2.2.4}
+\begin{ejercicio}{2.2.5}
 Show that grevlex is a monomial order according to Definition 1.
 \end{ejercicio}
 \begin{solucion}\mbox{}
@@ -144,6 +144,18 @@ Hemos llegado a una contradicción.
 \newpage
 
 \begin{ejercicio}{2.2.6}
+Another monomial order is the \textbf{inverse lexicographic} or \textbf{invlex} order defined by the
+following: for $α, β ∈ \Z^n_{≥0}$, $α >_{invlex} β$ if and only if the rightmost nonzero entry of
+$α − β$ is positive. Show that invlex is equivalent to the lex order with the variables
+permuted in a certain way. (Which permutation?)
+\end{ejercicio}
+\begin{solucion}
+Basta hacer reverse a la upla.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.2.7}
 Let $>$ be any monomial order.
 \begin{enumerate}[a.]
 \item Show that $α ≥ 0$ for all $α \in \Z^n_{≥0}$.
@@ -160,10 +172,59 @@ Podemos aplicar esto para obtener una cadena infinita:
 Esto contradice la propiedad de buen ordenamiento.
 Entonces $α \geq  0$ por reducción al absurdo.
 \item Si $x^α$ divide a $x^β$, entonces existe $x^γ$ tal que $x^αx^γ=x^β$.
-Como $α ≤ α+γ = β$, deducimos que $α ≤ β$. Para el recíproco, basta probar que existe $\gamma$ tal que $\alpha+\gamma=\beta$. Basta tomar $\gamma=\beta-\alpha\geq 0$. Entonces $\alpha+\gamma=\beta$. 
+Como $α ≤ α+γ = β$, deducimos que $α ≤ β$. Para el recíproco, basta probar que existe $\gamma$ tal que $\alpha+\gamma=\beta$. Basta tomar $\gamma=\beta-\alpha\geq 0$. Entonces $\alpha+\gamma=\beta$. Así, tenemos $x^\beta=x^\alpha x^\gamma$.
 
 \item Consecuencia del hecho de que $α ≥ 0$.
 Para todo $γ \in α + \Z_{≥0}^n$, $α ≥ 0$ implica que $α + γ ≥ α$, luego $α$ es el menor elemento del conjunto.
 \end{enumerate}
 \end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.2.8}
+Write a precise definition of what it means for a system of linear equations to be in
+echelon form, using the ordering given in equation (2).
+\end{ejercicio}
+\begin{solucion}
+A system of $m$ linear equations in n variables is called an echelon system if
+\begin{enumerate}
+\item $m ≤ n$.
+\item Every variable is the leading variable of at most one equation.
+\item Every leading variable is to the left of the leading variables of all lower equations.
+\item Every equation has a leading variable.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.2.10}
+In $\Z_{≥0}$ with the usual ordering, between any two integers, there are only a finite number
+of other integers. Is this necessarily true in $\Z^n_{≥0}$ for a monomial order? Is it true for the
+grlex order?
+\end{ejercicio}
+\begin{solucion}
+Esto es equivalente a comprobar si hay una cantidad finita de elementos entre $0$ y $\gamma$ para cualquier $\gamma\in \Z^n_{≥0}$. Supongamos que no, entonces, como el orden es total, tendríamos
+\[
+\gamma\geq\gamma_1\geq\gamma_2\geq\dots\geq 0.
+\]
+En particular, $\gamma_1\geq\gamma_2\geq\cdots$ es una sucesión decreciente, por lo que se tiene que estabilizar en algún punto, así que hay una cantidad finita.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.2.13}
+Prove that $1 < x < x^2 < x^3 <\cdots$ is the unique monomial order on $k[x]$.
+\end{ejercicio}
+\begin{solucion}
+Esto es equivalente a probar que el único orden monomial en $\Z_{\geq 0}$ es
+\[
+0<1<2<\cdots
+\] 
+Como el orden es total, de existir otro, digamos $\prec$,  tendría que cumplir que $n+1\prec n$ para algún $n\geq 0$. Entonces, reiterando obtendríamos una cadena decreciente 
+\[
+n\succ n+1\succ n+2\succ\cdots 
+\]
+que no se estabiliza, luego no es un orden monomial.
+\end{solucion}
+
 \end{document}
