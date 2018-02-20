@@ -195,7 +195,7 @@ Lo cual da lugar a la parametrización buscada
 &x= c-t^2\\
 &y=t(c-t^2)
 \end{align*}
-Esta parametrización cubre todos los puntos salvo el origen porque $t$ toma todos los valores reales, lo cual es equivalente a obtener todas las rectas no verticales posibles, que como hemos visto en el segundo apartado, siempre dan un punto de corte salvo para cuando salen rectas tangentes al origen. Además cualquier punto de la curva elíptica distinto del origen definen una recta que pasa por un punto de la forma $(1,t)$ y por el $(0,0)$. 
+Esta parametrización cubre todos los punto. Además cualquier punto de la curva elíptica distinto del origen definen una recta que pasa por un punto de la forma $(1,t)$ y por el $(0,0)$. 
 \item Ya está resuelto antes.
 \end{itemize}
 \end{solucion}
@@ -251,10 +251,39 @@ ta/2 = \frac{2at^3}{\sqrt{1-t^2}} \qquad (1-t^2)t^2 = 16t^6 \qquad 1-t^2 = 16t^4
 \newpage
 
 \begin{ejercicio}{1.3.11}
-
+In this problem, we will derive the parametrization
+\begin{align*}
+x &= t(u^2 − t^2),\\
+y &= u,\\
+z &= u^2 − t^2,
+\end{align*}
+of the surface $x^2 − y^2z^2 + z^3 = 0$ considered in the text.
+\begin{enumerate}[a.]
+\item Adapt the formulas in part (d) of Exercise 8 to show that the curve $x^2 = cz^2 − z^3$ is parametrized by
+\begin{align*}
+z &= c − t^2,\\
+x &= t(c − t^2).
+\end{align*}
+\item Now replace the c in part (a) by $y^2$, and explain how this leads to the above parametrization of $x^2 − y^2z^2 + z^3 = 0$.
+\item Explain why this parametrization covers the entire surface $\V(x^2 − y^2z^2 + z^3)$. Hint: See part (c) of Exercise 8.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-
+\begin{enumerate}[a.]
+\item[]
+\item La recta que conecta el origen con $(1,t)$ es $(\lambda,\lambda t)$. Sustituyendo 
+$$
+\lambda^2t^2 = \lambda^2(c-\lambda)
+$$
+Como $\lambda =0$ nos da el origen, tenemos $t^2=c-\lambda$, luego $\lambda = c-t^2$. Luego $z=c-t^2$, $x=t(c-t^2)$.
+\item Si $y^2 = c$ luego podemos parametrizar
+\begin{align*}
+x &= t(u^2 − t^2),\\
+y &= u,\\
+z &= u^2 − t^2,
+\end{align*}
+\item Finalmente, veamos que la parametrización cubre completamente la superficie, pero eso es claro pues para cada $y$ fijo, la curva está completamente cubierta por la parametrización como vemos en el aparatado $(c)$ del Ejercicio 8.
+\end{enumerate}
 \end{solucion}
 
 
