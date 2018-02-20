@@ -161,7 +161,28 @@ y en general que
 con $\sigma\in S(p,n-p)$. Probar que $*\circ *=(-1)^{n(n-p)}$ en $Alt^p(V)$.
 \end{ejercicio}
 \begin{solucion}
-PROBAR QUE EXISTE VOLUMEN Y VER SI ES ÚNICO Y CÓMO VARÍA AL CAMBIAR DE BASE ORTONORMAL
+Consideramos una base ortonormal en $V$, $\{e_1,\dots, e_n\}$ cuya dual en $Alt^1(V)$ será $\{\varepsilon_1,\dots, \varepsilon_n\}$. Tenemos entonces que $vol=\lambda\varepsilon_1\land\dots\land\varepsilon_n$ tal que $\langle vol,vol\rangle=\lambda^2=1$. Luego tenemos dos posibilidades. Escogeremos $\lambda=1$. Con $\lambda=-1$ se obtendría todo igual cambiado de signo.
+
+La ecuación $\langle *w,\tau\rangle vol=w\land \tau$ se cumple si y solo si se cumple al evaluarla en la base de $V$. Vamos a suponer que la estrella está bien definida y veremos que solo puede ser de una forma, lo cual nos facilitará ver que efectivamente está bien definida.
+
+$*w=\sum_{\tau\in S(n-p,p)}*w(e_{\tau(1)},\dots, e_{\tau(p)})\varepsilon_{\tau}$. Los coeficienes son igual a $\langle *w,\varepsilon_{\tau}\rangle$. Por tanto, usando la fórmula, esto es gual a $w\land\varepsilon_{\tau}(e_1,\dots, e_n)$. Así que
+\[
+*w=\sum_{\tau\in S(n-p,p)}(w\land\varepsilon_{\tau}(e_1,\dots, e_2))\varepsilon_{\tau}:=\alpha.
+\]
+
+Hay que verificar entonces que $\langle\alpha,\beta\rangle=w\land\beta(e_1,\dots, e_n)$. Sea pues $\beta\in Alt^{n-p}(V)$, entonces $\beta=\sum_{\tau\in S(n-p,p)}\beta(e_{\tau(1)},\dots, e_{\tau(n-p)})\varepsilon_{\tau}$. Por lo que
+\[
+\langle \alpha,\beta\rangle=\langle \sum_{\tau} w\land \varepsilon_{\tau}(e_1,\dots, e_n), \sum_{\hat{\tau}}\beta(e_{\hat{\tau}(1)},\dots, e_{\hat{\tau}(n-p)})\varepsilon_{\hat{\tau}}\rangle=
+\]
+\[
+\sum_{\tau}\sum_{\hat{\tau}}w\land\varepsilon_{\tau}(e_1,\dots, e_n)\beta(e_{\hat{\tau}(1)},\dots, e_{\hat{\tau}(n-p)})\langle\varepsilon_{\tau},\varepsilon_{\hat{\tau}}\rangle=
+\]
+\[
+\sum_{\tau\in S(n-p,p)}(w\land\varepsilon_{\tau}(e_1,\dots, e_n)\beta(e_{\tau(1)},\dots, e_{\tau(n-p)})=\sum_{\tau}(w\land(\beta(e_{\sigma(1)},\dots, e_{\tau(n-p)})\varepsilon_{\tau})(e_1,\dots, e_n)=
+\]
+\[
+w\land(\sum_{\tau}\beta(e_{\tau(1)},\dots, e_{\tau(n-p)})\varepsilon_{\tau})(e_1,\dots, e_n)=w\land\beta(e_1,\dots, e_n)
+\]
 \end{solucion}
 
 \newpage
