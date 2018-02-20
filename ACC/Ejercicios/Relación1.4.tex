@@ -233,7 +233,15 @@ In Exercise 1.1.2, we showed that $x^2y+y^2x$ vanishes at all points of $\F_2^2$
 \begin{enumerate}[a.]
 \item[]
 \item Es claro que si $f(x,y) = h_1(x^2-x)+h_2(y^2-y)$ entonces $f(0,0)=f(1,0)=f(0,1)=f(1,1)=0$. Por tanto $f\in I$, luego $\gene{x^2-x,y^2-y}\subset I$
-\item
+\item Sabemos que podemos escribir $f=\sum_u p_i(x)y^i$. Utilizando el algoritmo de división, podemos dividir $p_i(x)$ por $x^2-x$ obteniendo $p_i(x) = m_i(x)(x^2-x)+r_i(x)$ con $\deg(r_i)\leq 1$ o $r_i=0$. Sumando, y utilizando que $r_i = a_ix+b_i$, obtenemos
+$$
+f(x,y) = \sum_i (m_i(x)(x^2-x) +r_i(x))y^i = A(x,y)(x^2-x) + q_1(y)x+q_2(y)
+$$
+Donde $A(x,y)=\sum_i m_i(x)y^i$, $q_1(y)=\sum_i a_iy^i$ y $q_2(y)=\sum_i b_i y^i$. Dividiendo $q_i$ entre $y^2-y$ obtenemos $q_i(y) = h_i(y)(y^2-y)+c_iy+d_i$, por lo que
+$$
+f(x,y)= A(x,y)(x^2-x) + B(x,y)(y^2-y) + c_1xy + d_1x+c_2y+d_2
+$$
+donde $B(x,y) = h_1(y)x+h_2(y)$.
 \item Sea $f(x,y) = axy+bx+cy+d$. Si $f\in I$ entonces se anula en cada punto. Como $f(0,0)=d$, $d=0$. Dado que $f(1,0)=b$ y $f(0,1)=c$ entonces $b=c=0$. Finalmente, $f(1,1)=a$ por lo que $a=0$. El recíproco es trivial.
 \item Sea $f\in I$ cualquiera, entonces podemos escriber $f$ según la fórmula obtenida en el apartado $(b)$, pero utilizando $(c)$, tenemos que puede escribirse simplemente como $A(x^2-x)+B(y^2-y)$. Pues si alguno de las otras constantes no fueran nulas, como $g = A(x^2-x)+B(y^2-y)\in \gene{x^2-x,y^2-y} \subset I$, tendríamos que $f-g\in I$, pero por la forma de $f-g$, por el apartado $(c)$, $f-g=0$. Por tanto, $f\in \gene{x^2-x,y^2-y}$.
 \item $x^2y + y^2x=y(x^2-x)+x(y^2-y)$ (recordemos que el cuerpo es $\F_2$)
@@ -297,6 +305,7 @@ $\langle x^2, y^2\rangle$.
 \end{ejercicio}
 \begin{solucion}
 \begin{itemize}
+\item[]
 \item[a.] Cualquier polinomio de $\langle x^2, y^2\rangle$ tendrá un término en $x^2$ o en $y^2$, cosa que $xy$ no tiene. 
 \item[b.] Por el mismo razonamiento, esos monomios no están contenidos. Además, cualquier otro de $k[x,y]$ tiene algún término en $x^2$ o en $y^2$, luego está en el ideal. 
 \end{itemize}
