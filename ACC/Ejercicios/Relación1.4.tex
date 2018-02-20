@@ -224,10 +224,16 @@ Let $V ⊆ \R^3$ be the curve parametrized by $(t^2, t^3, t^4)$.
 This problem is quite a bit more challenging than the previous one—figuring out the proper analogue of equation (2) is not easy. Once we study the division algorithm in
 Chapter 2, this exercise will become much easier.
 \end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Candidato $S=\V(x^3-y^2, x^4-z^2, y^4-z^3)$. Es claro que $V\subset S$, pues los tres polinomios se anulan en la parametrización se $V$. Podemos suponer que $xyz\neq 0$. En tal caso, si se anulan los tres polinomios y llamamos $t=\frac{y}{x}$ entonces $t^3=y^3/x^3 = y^3/y^2=y$. Análogamente, $t^4 = z$. Además, $x=y/t=t^3/t= t^2$. Por tanto, tenemos la igualdad. Análogamente, podemos demostrar el mismo resultado para $\V(x^2-z,xz-y)$. 
+\end{enumerate}
+\end{solucion}
 
 \newpage
 \begin{ejercicio}{1.4.13}
-In Exercise 1.1.2, we showed that $x^2y+y^2x$ vanishes at all points of $\F_2^2$. More generally, let $I ⊆ \F_2[x, y]$ be the ideal of all polynomials that vanish at all points of $\F_2^2$. The goal of this exercise is to show that $I = \gene{x^2-x,y^2-y}$
+In Exercise 1.1.2, we showed that $x^2y+y^2x$ vanishes at all points of $\F_2^2$. More gener ally, let $I ⊆ \F_2[x, y]$ be the ideal of all polynomials that vanish at all points of $\F_2^2$. The goal of this exercise is to show that $I = \gene{x^2-x,y^2-y}$
 \begin{enumerate}[a.]
 \item Show that $\gene{x^2-x,y^2-y}\subset I$.
 \item Show that every $f ∈ \F_2[x, y]$ can be written as $f = A(x^2 − x) + B(y^2 − y) + axy
@@ -263,6 +269,13 @@ This exercise is concerned with Proposition 8.
 \item Prove the following corollary of the proposition: if V and W are affine varieties in $k^n$, then $V \not\subseteq W$ if and only if $\I(V)\not\supseteq\I(W)$.
 \end{enumerate}
 \end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Es trivial, pues $V=W$ si y solo si $V\subset W$ y $W \subset V$. Ahora basta aplicar $(i)$.
+\item Veamos una implicación por reducción al absurdo. Supongamos que $V\not \subset W$ pero $\I(W)\subset I(V)$. Entonces, por la Proposicion 8, $V\subset W$, lo cual es una contradicción con la hipótesis. El recíproco es análogo.
+\end{enumerate}
+\end{solucion}
 \newpage
 \begin{ejercicio}{1.4.15}
 In the text, we defined $\I(V)$ for a variety $V ⊆ k^n$. We can generalize this as follows: if
@@ -353,6 +366,6 @@ Es trivial pues, si $f-g\in I$ entonces, dado que
 $$
 f^m-g^m = (f-g)\sum_{i=1}^{m-1}f^ig^{m-i}
 $$
-Luego $f^m-g^m \in I$
+Luego $f^m-g^m \in I$.
 \end{solucion}
 \end{document}
