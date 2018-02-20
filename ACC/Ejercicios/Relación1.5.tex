@@ -9,7 +9,7 @@
 \maketitle
 
 \begin{ejercicio}{1.5.1}
-Over the complex numbers $\C$, Corollary 3 can be stated in a stronger form. Namely, prove that if $f \in \C[x]$ is a polynomial of degree $n > 0$, then $f$ can be written in the form $f = c(x-a_1)\dots(x-a_n)$, where $c,a_1,\dots,a_n \in \C$ and $c \neq 0$.
+Over the complex numbers $\C$, Corollary 3 can be stated in a stronger form. Namely, prove that if $f \in \C[x]$ is a polynomial of degree $n > 0$, then $f$ can be written in the form $f = c(x-a_1)\dots(x-a_n)$, where $c,a_1,\dots,a_n \%in \C$ and $c \neq 0$.
 Note that this result  holds for \emph{any} algebraically closed field.
 \end{ejercicio}
 \begin{solucion}
@@ -147,7 +147,15 @@ En primer lugar calculamos el gcd de los generadores, que es $x-2$. Como $x^2-4=
 \end{solucion}
 
 \newpage
-
+\begin{ejercicio}{1.5.10}
+Give pseudocode for an algorithm that has input $f , g ∈ k[x]$ and output $h, A, B ∈ k[x]$ where $h = gcd( f , g)$ and $Af + Bg = h$. Hint: The idea is to add variables A, B, C,D to
+the algorithm so that $Af + Bg = h$ and $Cf + Dg = s$ remain true at every step of the algorithm. Note that the initial values of A, B, C,D are 1, 0, 0, 1, respectively. You may
+find it useful to let $quotient( f , g)$ denote the quotient of f on division by g, i.e., if the division algorithm yields f = qg + r, then $q = quotient( f , g)$.
+\end{ejercicio}
+\begin{solucion}
+Copiar y pegar el Algoritmo de Euclides extendido, que no es más que ir despejando en las divisiones del Algoritmo de Euclides tradicional.
+\end{solucion}
+\newpage
 \begin{ejercicio}{1.5.11}
 In this exercise we will study the one-variable case of the consistency problem from §2.
 Given $f_1,\dots , f_s ∈ k[x]$, this asks if there is an algorithm to decide whether $\V( f_1,\dots, f_s)$
@@ -192,12 +200,67 @@ degree.
 \begin{itemize}
 \item[]
 \item[a.] Se tiene por definición.
-\item[b.] Como $\V(f)=\V(f_{red})$, basta probar que $I=\langle f_{red}\rangle$ es radical. Pero esto es claro, pues si $g^r\in I$, como $f_{red}$ solo tiene factores lineales, esto significa que $g^r=cf^r$, luego $g=f/c\in I$. 
+\item[b.] Como $\V(f)=\V(f_{red})$, entonces $\I(V(f))=\I(\V(f_{red}))=\sqrt{\gene{f_{red}}}$. Veamos que $I={\gene{f_{red}}}$ es radical. Sea $g^r\in I$, entonces como $f_{red}$ solo tiene factores lineales, esto significa que $g^r=c^rf^r$, luego $g=cf\in I$. 
+\end{itemize}
+\end{solucion}
+\newpage
+\begin{ejercicio}{1.5.13}
+We will study the formal derivative of $f = c_0x^n +c_1x^{n−1} +\cdots+c_{n−1}x+c_n ∈ \C[x]$. The formal derivative is defined by the usual formulas from calculus:
+$$
+f' = nc_0x^{n−1} + (n − 1)c_1x^{n−2} + \cdots + c^{n−1} + 0.
+$$
+Prove that the following rules of differentiation apply:
+\begin{align*}
+(af)'&=af' \qquad \text{when }a \in \C\\
+(f+g)'&=f'+g'\\
+(fg)'&=f'g+fg'
+\end{align*}
+\end{ejercicio}
+\begin{solucion}
+Si de verdad necesitas probarlo...
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{1.5.14} In this exercise we will use the differentiation properties of Exercise 13 to compute
+$\gcd(f,f')$ when $f\in\C[x]$.
+\begin{itemize}
+\item[a.] Suppose $f = (x−a)^r h$ in $\C[x]$, where $h(a) \neq 0$. Then prove that $f'= (x−a)^{r−1} h_1$, where $h_1 ∈ \C[x]$ does not vanish at $a$. Hint: Use the product rule.
+\item[b.] Let $f = (x−a_1)^{r_1}\cdots(x−a_l)^{r_l}$ be the factorization of $f$, where $a_1,\dotsc, a_l$ are distinct.Prove that $f'$ is a product $f' = (x − a_1)^{r_1−1}\cdots(x − a_l)^{r_l−1} H$, where $H ∈ \C[x]$ is a polynomial vanishing at none of $a_1,\dotsc, a_l$.
+\item[c.] Prove that $g(f,f') = (x-a_1)^{r_1-1}\cdots(x-a_n)^{r_n-1}$.
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[]
+\item[a.] Sea $g=(x-a)^r$, entonces 
+$$
+f' = (gh)' = g'h+gh' = r(x-a)^{r-1}h+(x-a)^rh' = (x-a)^{r-1}(rh+(x-a)h')
+$$
+Tomamos $h_1(x)=rh(x)+(x-a)h'(x)$. Además, $h_1(a)=rh(a)\neq 0$.
+\item[b.] Probémoslo por inducción sobre el número de factores distintos. El caso $n=1$ es claro, veamos el caso $n=2$. Si $f=c(x-a)^{r}(x-b)^s$
+$$
+ f' = (x-a)^{r-1}(r(x-b)^s+(x-a)s(x-b)^{s-1}) = (x-a)^{r-1}(x-b)^{s-1}(r(x-b)+s(x-a))
+$$
+Además, $H(x)=r(x-b)+s(x-a)$ es tal que $H(a),H(b)\neq 0$, por lo que tenemos probado el caso $n=2$. Supongamos que el resultado es cierto para $n-1$ entonces, sea $f = (x−a_1)^{r_1}\cdots(x−a_n)^{r_n}$. Definimos $g=(x-a_1)^{r_1}\cdots (x-a_{n-1})^{r_{n-1}}$. Entonces podemos aplicar la hipótesis de inducción sobre $g$.
+\begin{align*}
+f'&=(g(x-a_n)^{r_n})'= g'(x-a_n)^{r_n}+gr_n(x-a_n)^{r_n-1} \\ 
+& =(x − a_1)^{r_{1}−1}\cdots(x − a_{n-1})^{r_{n-1}−1}G(x)(x-a_n)^{r_n}+gr_n(x-a_n)^{r_n-1}\\
+&=(x − a_1)^{r_{1}−1}\cdots(x − a_{n})^{r_{n}−1}(G(x)(x-a_n)+r_n(x-a_1)\cdots (x-a_{n-1}))\\
+&=(x − a_1)^{r_{1}−1}\cdots(x − a_{n})^{r_{n}−1}H(x)
+\end{align*}
+Es claro que si $1\leq i \leq n-1$ entonces $H(a_i) = G(a_i)(a_i-a_n)\neq 0$ por hipótesis. También es claro que $H(a_n)= \prod_{i=1}^{n-1}(a_n-a_i) \neq 0$ por hipótesis.
+\item  Sea $h$ nuestro candidato a $\gcd(f,f')$. Es claro que $h\mid f,f'$. Veamos $f/h$ y $f'/h$ son coprimos (luego no puede existir otro factor común no trivial que divida a ambos).
+$$
+f/h = \prod_{i=1}^n x-a_i \qquad f'/h = H(x)
+$$
+Sabemos que $H(a_i)\neq 0$ $\forall i$, pero $a_i$ son precisamente los factores de $f/h$, luego son coprimos.
 \end{itemize}
 \end{solucion}
 
-\newpage
 
+
+\newpage
 \begin{ejercicio}{1.5.15}
 Consider the square-free part $f_{red}$ of a polynomial $f ∈ \C[x]$ defined in Exercise 12.
 \begin{itemize}
@@ -206,14 +269,15 @@ $$f_{red} =
 \frac{f}{
 \gcd( f , f')}
 .$$
-The virtue of this formula is that it allows us to find the square-free part without
-factoring $f $. This allows for much quicker computations.
+The virtue of this formula is that it allows us to find the square-free part without factoring $f $. This allows for much quicker computations.
 \item[b.] Use a computer algebra system to find the square-free part of the polynomial
 $x^{11} − x^{10} + 2x^8 − 4x^7 + 3x^5 − 3x^4 + x^3 + 3x^2 − x − 1$.
 \end{itemize}
+
 \end{ejercicio}
 \begin{solucion}
 \begin{itemize}
+\item[]
 \item[a.] Se tiene inmediatamente al hacer la división.
 \item[b.] Llamamos $f=x^{11} − x^{10} + 2x^8 − 4x^7 + 3x^5 − 3x^4 + x^3 + 3x^2 − x − 1$. Entonces $f'=11x^{10}-10x^9+16x^7-28x^6+15x^4-12x^3+3x^2+6x-1$, $\gcd(f,f')=x^6 - x^5 + x^3 - 2 x^2 + 1$, $f_{red}=x^5+x^2-x-1=(x-1)(x+1)(x^3+x+1)$ (el último se descompone como facotres complejos un poco feos). 
 \end{itemize}
