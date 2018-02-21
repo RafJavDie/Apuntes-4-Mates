@@ -1,0 +1,182 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\colapso}{{\searrow\!\!\!\!\searrow}}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Homología Simplicial}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{1.1}
+Sea $K$ un complejo simplicial y $L \subseteq K$ un subcomplejo.
+Se dice que $L$ es un \emph{subcomplejo lleno} de $K$ si para todo símplice $σ \in K$ la intersección $σ \cap |L|$ es una cara de $σ$ (posiblemente vacía).
+Demostrar que son equivalentes:
+\begin{enumerate}
+\item $L$ es un subcomplejo lleno de $K$.
+\item Ningún símplice de $K-L$ corta a $L$ en todo su borde.
+\item Si los vértices de $σ$ están en $L$, $σ \in L$.
+\end{enumerate}
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.2}
+Sean $σ = (v_0,\dots,v_p)$ y $τ = (w_0,\dots,w_q)$ símplices en $\R^n$.
+Se dirá que $σ$ y $τ$ son \emph{unibles} si los $p+q+2$ puntos $v_0,\dots,v_p,w_0,\dots,w_q$ son afínmente independientes.
+En ese caso, se donta por $στ$ el $(p+q+1)$-símplice generado por dichos puntos.
+Dos complejos simpliciales $K$ y $L$ en $\R^n$ se llamen \emph{unibles} si:
+\begin{itemize}
+\item Para cada $σ \in K$ y $τ \in L$, $σ$ y $τ$ son unibles.
+\item $στ$ y $σ'τ'$ se cortan en una cara común
+\end{itemize}
+Se pide:
+\begin{enumerate}
+\item Probar que si $K$ y $L$ son dos complejos unibles, entonces la familia de símplices dada por:
+\[ KL = K \bigcup L \bigcup \{στ; σ \in K \text{ y }τ \in L\} \]
+es un complejo simplicial en $\R^n$ llamado la \emph{unión simplicial} de $K$ y $L$.
+\item Si $K = \{c\}$, entonces $KL$ es llamado \emph{complejo cono sobre} $L$ y es denotado por $cL$.
+Si $K = \{c_1,c_2\}$ la unión simplicial $KL$ es llamada el \emph{complejo suspensión de} $L$ y denotada $ΣL$.
+Más aún, si $L$ es finito $|cL|$ es homeomorfo al cono topológico $c|L|$ y $|ΣL|$ lo es a la suspenión topológica $Σ|L|$.
+\item Si $K, L \neq \emptyset$, el poliedro $|KL|$ es siempre conexo por caminos.
+\end{enumerate}
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.3}
+Sea $K$ complejo simplicial.
+Para cada símplica $σ \in K$ probar la igualdad $st(σ;K) = σlk(σ;K)$ donde el término de la derecha indica la corespondiente unión simplicial.
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.4}
+Se dice que dos aplicaciones simpliciales $φ$, $ψ : K \to L$ son contiguas si para todo $σ \in K$ se verifica que $φ(σ) \cup ψ(σ) \in L$.
+Probar qu dos aproximaciones simpliciales $φ$, $ψ : K \to L$ de una misma aplicación continua $f : |K| \to |L|$ son contiguas.
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.5}
+Probar que si $|K|$ es conexo, entonces es conexo por caminos.
+Más aún, se tiene que son equivalentes
+\begin{enumerate}
+\item $|K|$ es conexo.
+\item El $1$-esqueleto de $K$ es conexo.
+\item Dos vértices cualesquiera pueden unirse por un camino formado por aristas.
+\end{enumerate}
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.6}
+Sea $K$ un complejo simplicial.
+Un \emph{símplice principal} de $K$ es un símplice que no es cara propia de ningún símplice de $K$.
+Si $τ < σ$ es una cara propia que no es cara propia de otro símplice, se dice que $τ$ es \emph{cara libre} de $σ$.
+Obsérvese que necesariamente $\dim τ = \dim σ - 1$.
+
+Supongamos que $K$ tiene un símplice principal $σ$ con cara libre $τ$.
+Entonces, el subcomplejo $K_1 = K - \{σ,τ\}$ se llama \emph{colapso elemental} de $K$ através de $τ$, y se escribirá
+\[ K \searrow K_1 \]
+Una sucesión $K \searrow K_1 \searrow K_2 \searrow \dots \searrow K_n$ de colapsos elementales se llamará \emph{colapso} de $K$ a $K_n$, y se indicará mediante la notación $K \colapso K_n$.
+Si $K_n$ es un punto, se dice que $K$ es \emph{colapsable}, y se usa la notación $K \colapso 0$.
+\begin{enumerate}
+\item Probar que el cono $cK$ sobre un complejo $K$ es colapsable.
+\item Si $L$ es el complejo formado por un símplice y sus caras, entonces $L$ es colapsable.
+Probar además, que en este caso, para todo complejo $K$ el complejo $LK$ es colapsable.
+\item Dar un ejemplo de un subcomplejo $L$ de un complejo $K$ que sea colapsable, pero tal que $L$ no sea colapsable.
+\item Probar que si $K$ es colapsable, entonces $|K|$ es contráctil.
+\end{enumerate}
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.7}
+Un complejo simplicial de dimensión $1$ es llamado un \emph{grafo}.
+Dado un grafo $G$, se dice que un subgrafo $T \subseteq G$ es un \emph{árbol} si $T$ es conexo y no contiene ninguna poligonal simple errada (que serán llamadas \emph{lazos}).
+Probar que todo árbol colapsa a un punto.
+Probar que $T \subseteq G$ es un árbol maximal si y sólo si $T$ contiene todos los vértices de $G$.
+Probar que todo grafo conexo contiene un árbol maximal con respecto a la inclusión.
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.8}
+Dado un complejo simplicial $K$, probar que la relación binaria ``ser cara de'' induce un orden parcial entre los símplices de $K$.
+El grafo que representa dicho orden se denomina \emph{diagrama de Hasse} de $K$ y se denota por $\mathcal{H}(K)$.
+Probar que ambas estructuras son equivalentes, y caracterizar los colapsos en el diagrama de Hasse.
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.9}
+Dado un  espacio topológico $(X,\mathcal{T})$, consideremos un recubrimiento por abiertos de $X$ dado por $\mathcal{U} = \{\mathcal{U}_i\}_{i \in I}$.
+Se define el \emph{nervio} de $\mathcal{U}$ como la familia de subconjuntos de índices $\{i_0,\dots,i_q\}$ tales que la intersección $\mathcal{U}_{i_0} \cap \dots \cap \mathcal{U}_{i_q}$ es no vacía.
+Probar que el nervio de un recubrimiento es un complejo simplicial.
+Estudiar qué propiedad interesante tienen los nervios en espacios topológicos compactos.
+Decidir si todos los nrvios sobre un mismo espacio son del mismo tipo de homotopía
+(Considerar $X = S^1$ con la topología euclídea inducida).
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.10}
+Dado un grafo $G$, se define el complejo \emph{clique} de $G$ commo el complejo simplicial $K(G)$ tal que:
+\begin{itemize}
+\item $K(G)^1 = G$.
+\item $σ = (v_0,\dots,v_n)$ es un $n$-símplice de $K(G)$ si y sólo si el grafo complejo de vertices $v_0,\dots,v_n$ es un subgrafo de $G$.
+\end{itemize}
+Probar que $K(G)$ es efectivamente un complejo simplicial.
+Comparar los tipos de homotopía de $G$ y $K(G)$.
+Estudiar qué efecto tiene en $K(G)$ subdividir baricéntricamente $G$.
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.11}
+Sea $K$ una triangulación de una superficie.
+Estudiar topológicamente los poliedros $|st(x;K)|$ para todo $x \in |K|$.
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.12}
+Sean $I = [0,1]$ y $K$ un complejo simplicial, dotar de estructura simplicial al cilindro de $|K|$, denotado por $|K \times I|$, de modo que $|K \times I| = |K| \times I$.
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.13}
+Indicar si alguna de las siguientes aplicaciones entre los complejos indicados más abajo (ver hoja original) es simplicial:
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.14}
+Sea $f : Δ^2 \to Δ^2$ la aplicacion simplicial defina por (ver hoja original)
+
+Extenderla a una aplicación simplicial entre los complejos indicados en la siguiente figura (ver hoja original)
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.15}
+Probar que la imagen de un subcomplejo por una aplicación simplicial es un subcomplejo y que la imagen inversa de un subcomplejo es subcomplejo.
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.16}
+Probar que una aplicación simplicial puede cubrir todos los vértices y no ser sobreyectiva.
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.17}
+Sean $|K| = |L| = [0,1]$, teniendo $K$ vértices en $0$, $1/3$ y $1$ y $L$ en $0$, $2/3$ y $1$.
+Sea $f(x) = x^2$. Probar que $f$ de $K$ en $L$ no admite aproximaciń simplicial.
+
+Análogamente, probar que no existe aproximación simplicial de $f$ de $sd K$ en $L$, y encontrar una aproximación simplicial de $f$ de $sd^2 K$ en $L$.
+\end{ejercicio}
+\end{document}
