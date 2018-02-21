@@ -1,0 +1,84 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de From Calculus to Cohomology, Capítulo 3}
+\author{Javier Aguilar Martín}
+\maketitle
+
+
+\begin{ejercicio}{3.1}
+Probar para un abierto de $\R^2$ que el complejo de deRham
+\[
+0\to\Omega^0(U)\to\Omega^1(U)\to\Omega^2(U)\to 0
+\]
+es isomorfo al complejo
+\[
+0\to C^{\infty}(U;\R)\overset{grad}{\to}C^{\infty}(U;\R^2)\overset{rot}{\to}C^{\infty}(U;\R)\to 0.
+\]
+Análogamente, probar que para un abierto de $\R^3$ el complejo de deRham es isomorfo a
+\[
+0\to C^{\infty}(U;\R)\overset{grad}{\to}C^{\infty}(U;\R^3)\overset{rot}{\to}C^{\infty}(U;\R^3)\overset{div}{\to}C^{\infty}(U;\R)\to 0.
+\]
+\end{ejercicio}
+\begin{solucion}
+Será suficiente ver quién es la derivada exterior en cada caso. Sea $U\subseteq\R^2$, veamos en qué consiste $d:\Omega^0(U)\to\Omega^0(U)$. Si $f\in\Omega^0(U)$, $df=\parcial{f}{x}\varepsilon_1+\parcial{f}{y}\varepsilon_2$, que es isomorfo a $grad(f)$. Además, el conjunto imagen $grad(\Omega^0(U))\subseteq C^{\infty}(U;\R^2)$, por lo que es correcto elegir como siguiente conjunto como $C^{\infty}(U;\R^2)$, que es isomorfo como módulo a $\Omega^1(U)$. Sea ahora $w\in\Omega^1(U)$, por lo que $w=f_1\varepsilon_1+f_2\varepsilon_2$. 
+\[dw=d(f_1\varepsilon_1+f_2\varepsilon_2)=df_1\land\varepsilon_1+df_2\land\varepsilon_2=\left(\parcial{f_2}{x_1}-\parcial{f_1}{x_2}\right)\varepsilon_1\land\varepsilon_2\cong rot(f_1,f_2)
+\]
+Con la misma observación el conjunto imagen está bien definido. Y por el capítulo 1, la sucesión es exacta. Como bien dice el enunciado, el caso de $\R^3$ es análogo.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3.2}
+
+\end{ejercicio}
+\begin{solucion}
+ 
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{3.3}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{3.4}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3.5}
+
+\end{ejercicio}
+\begin{solucion}
+
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3.6}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3.7}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\end{document}
