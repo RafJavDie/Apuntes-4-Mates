@@ -84,17 +84,26 @@ Como $δ_n \circ δ_{n+1} = 0$, tenemos que $B_n \subseteq Z_n$.
 De esta manera, definimos $H_n(\mathcal{C}) = Z_n / B_n$ como el \emph{$n$-ésimo $\R$-e.v. de homología} del complejo de cadenas $\mathcal{C}$.
 \end{defi}
 
+\begin{nota}
+Un complejo de cadenas $\mathcal{C}$ es exacta si y solo si $H_n(\mathcal{C})=0$ para todo $n\in\Z$. 
+\end{nota}
+
 \begin{defi}
 Sean $\mathcal{C}=\{(C_n,δ_n)\}$ y $\mathcal{C}'=\{(C_n',δ_n')\}$ dos complejos de cadenas, se define $\mathcal{C}\oplus\mathcal{C}'$ como el el siguiente complejo: para cada $n \in \Z$, $(\mathcal{C} \oplus \mathcal{C}')_n = C_n \oplus C_n'$ y $d : C_n \oplus C_n' \to C_{n-1} \oplus C_{n-1}'$ definido como $d(c,c')=(δ_n(c),δ_n'(c'))$.
 \end{defi}
 
 \begin{defi}
-Sean $\mathcal{C}_1=\{(C_n^1,δ_n^1)\}$ y $\mathcal{C}_2=\{(C_n^2,δ_n^2)\}$ dos complejos de cadenas. Un homomorfismo de complejos de cadenas $f : \mathcal{C}_1 \to \mathcal{C}_2$ consiste en una familia $f = \{f_n : C_n^1 \to C_n^2\}_{n \in \Z}$ con $f_n$ homomorfismo de $\R$-e.v. tal que para todo $n \in \Z$, $δ_n^2 \circ f_n = f_{n-1} \circ δ_{n-1}^1$, es decir, el siguiente diagrama conmute:
+Sean $\mathcal{C}_1=\{(C_n^1,δ_n^1)\}$ y $\mathcal{C}_2=\{(C_n^2,δ_n^2)\}$ dos complejos de cadenas. Un homomorfismo o morfismo de complejos de cadenas $f : \mathcal{C}_1 \to \mathcal{C}_2$ consiste en una familia $f = \{f_n : C_n^1 \to C_n^2\}_{n \in \Z}$ con $f_n$ homomorfismo de $\R$-e.v. tal que para todo $n \in \Z$, $δ_n^2 \circ f_n = f_{n-1} \circ δ_{n-1}^1$, es decir, el siguiente diagrama conmute:
 \[\begin{tikzcd}
 	C_n^1 \arrow[r,"f_n"] \arrow[d,"δ_n^1"] & C_n^2 \arrow[d,"δ_n^2"]\\
 	C_{n-1}^1 \arrow[r,"f_{n-1}"] & C_{n-1}^2
 \end{tikzcd}\]
+Si cada uno de los $f_n$ es isomorfismo de espacios vectoriales, entonces $f$ es isomorfismo de complejo de cadenas.
 \end{defi}
+
+\begin{nota}
+Es fácil comprobar que $f_n(Z_n(\mathcal{C}_1))\subseteq Z_n(\mathcal{C}_2),\forall n\in\Z$, es decir, $f$ lleva ciclos en ciclos. Asímismo, $f_n(B_n(\mathcal{C}_1))\subseteq B_n(\mathcal{C}_2),\forall n\in\Z$, es decir, $f$ lleva bordes en bordes.
+\end{nota}
 
 \begin{prop}
 Si $f : \mathcal{C}_1 \to \mathcal{C}_2$ un homomorfismo de complejos de cadenas, entonces $f$ induce para cada $n \in \Z$ un homomorfismo:
@@ -106,7 +115,58 @@ En primer lugar tenemos que ver que la aplicación está bién definida. Sean $z
 
 Probemos que $f_*$ es homomorfismo de complejos de cadenas. Sean $\alpha,\beta\in\R$ y $z_1,z_2\in Z_n$. Usamos las propiedades del cociente de espacios vectoriales y que $f_n$ es homomorfismo.
 \[f_*(\alpha[z_1]+\beta[z_2])=f_*([\alpha z_1+\beta z_2])=[f_n(\alpha z_1+\beta z_2)]=[\alpha f_n(z_1)+\beta f_n(z_2)]=\]
-\[=\alpha[f_n(z_1)]+\beta[f_n(z_2)]=\alpha f_*([z_1])+\beta f_*([z_2])]\]
+\[=\alpha[f_n(z_1)]+\beta[f_n(z_2)]=\alpha f_*([z_1])+\beta f_*([z_2])\]
 \QED
 \end{dem}
+
+\begin{propi}
+\begin{enumerate}
+\item Si $\mathcal{C}_1=\mathcal{C}_2=\mathcal{C}$ y $f=\{Id:C_n\to C_n, n\in\Z\}$, entonces $(Id)_*=Id:H_n(\mathcal{C})\to H_n(\mathcal{C})$. 
+\item Si tenemos $f:\mathcal{C}\to\mathcal{C}'$ y $g:\mathcal{C}'\to\mathcal{C}''$ morfismos de complejos de cadenas, entonces $(g\circ f)_*=g_*\circ f_*$, donde la composición se entiende como $g_n\circ f_n$ para todo $n\in\Z$.
+\end{enumerate}
+\end{propi}
+
+\begin{defi}
+Sean $\mathcal{C}^1=\{(\mathcal{C}^1_n,\partial_n^1)\}$, $\mathcal{C}^2=\{(\mathcal{C}^2_n,\partial_n^2)\}$ y $\mathcal{C}^3=\{(\mathcal{C}^3_n,\partial_n^3)\}$, junto con morfismos $f:\mathcal{C}^1\to\mathcal{C}^2$ y $g:\mathcal{C}^2\to\mathcal{C}^3$. Si se cumple que
+\[
+0\to C_n^1\overset{f_n}{\to}C_n^2\overset{g_n}{\to}C_n^3\to 0
+\]
+es una sucesión exacta corta para todo $n\in\Z$, entonces decimos que
+\[
+0\to \mathcal{C}^1\overset{f}{\to}\mathcal{C}^2\overset{g}{\to}\mathcal{C}^3\to 0
+\]
+es una sucesión exacta corta de complejos de cadenas.
+\end{defi}
+
+
+\begin{prop}
+Con la notación de la definición anterior, si 
+\[
+0\to \mathcal{C}^1\overset{f}{\to}\mathcal{C}^2\overset{g}{\to}\mathcal{C}^3\to 0
+\]
+es una sucesión exacta corta de complejo de cadenas, entonces existen homomorfismos
+\[
+\Delta:H_n(\mathcal{C}^3)\to H_{n-1}(\mathcal{C}^1),\ n\in\Z,
+\]
+de manera que se tiene una sucesión exacta larga de la manera siguiente
+\[
+\cdots\to H_n(\mathcal{C}^1)\overset{f_*}{\to}H_n(\mathcal{C}^2)\overset{g_*}{\to}H_n(\mathcal{C}^3)\overset{\Delta}{\to}H_{n-1}(\mathcal{C}^1)\overset{f_*}{\to}H_{n-1}(\mathcal{C}^2)\to\cdots
+\]
+llamada \emph{sucesión exacta larga en homología}.
+\end{prop}
+
+\begin{dem}
+Tenemos
+\[\begin{tikzcd}
+0\arrow[r] & C_{n}^1\arrow[r, "f_{n}"]\arrow[d, "\partial_{n}^1"]& C_{n+1}^2\arrow[r, "g_{n}"]\arrow[d,"\partial_{n}^2"]& C_{n}^3\arrow[r]\arrow[d,"\partial_{n}^3"] & 0\\
+0\arrow[r] & C_{n-1}^1\arrow[r, "f_{n-1}"]\arrow[d, "\partial_{n-1}^1"]& C_{n-1}^2\arrow[r, "g_{n-1}"] \arrow[d,"\partial_{n-1}^2"]& C_{n-1}^3\arrow[r]\arrow[d,"\partial_{n-1}^3"]&  0\\
+0\arrow[r] & C_{n-2}^1\arrow[r, "f_{n-2}"]& C_{n-2}^2\arrow[r, "g_{n-2}"]& C_{n-2}^3\arrow[r] & 0
+\end{tikzcd}
+\]
+donde todos los cuadrados son conmutativos. Definimos $\Delta$ de la siguiente manera: dado $[z_3]\in H_n(\mathcal{C}^3)$, es decir, $z_3\in Z_n(\mathcal{C}^3)\subseteq C_n^3$, y como $g$ es sobreyectiva, $\exists x_2\in C_n^2$ con $g_n(x_2)=z_3$. Por otro lado, $g_{n-1})\partial_n^2(x_2))=\partial_n^3(g_n(x_2))=\partial_n^3(z_3)=0$, de donde se deduce que $\partial_n^2(x_2)\in\ker(g_{n-1})=\Ima(f_{n-1})$. Por tanto, existe un único (por inyectividad) $z_1\in C_{n-1}^1$ con $f_{n-1}(z_1)=\partial^2_n(x_2)$. Si probamos que $z_n\in Z_{n-1}(\mathcal{C}^1)$ entonces definiremos $\Delta([z_3])=[z_1]$.  
+
+Tenemos $f_{n-2}(\partial^1_{n-1}(z_1)=\partial^2_{n-1}(f_{n-1}(z_1))=\partial^2_{n-1}(\partial^2_n(x_2))=0$. Como $f_{n-2}$ es inyectiva, entonces $\partial^1_{n-1}(z_1)=0$, con lo que tenemos lo que buscábamos. Ahora tenemos que ver si realmente está bien definida. 
+\QED
+\end{dem}
+
 \end{document}
