@@ -197,6 +197,28 @@ A system of $m$ linear equations in n variables is called an echelon system if
 
 \newpage
 
+\begin{ejercicio}{2.2.9}
+In this exercise, we will study grevlex in more detail. Let $>_{invlex}$, be the order given in
+Exercise 6, and define $>_{rinvlex}$ to be the reversal of this ordering, i.e., for $α, β ∈ \Z^n_{
+≥0}$
+$$α >_{rinvlex} β\Leftrightarrow β >_{invlex} α.$$
+Notice that rinvlex is a “double reversal” of lex, in the sense that we first reverse the
+order of the variables and then we reverse the ordering itself.
+\begin{itemize}
+\item[a.] Show that $α >_{grevlex} β$ if and only if $|α| > |β|$, or $|α| = |β|$ and $α >_{rinvlex} β$.
+\item[b.] Is rinvlex a monomial ordering according to Definition 1? If so, prove it; if not, say
+which properties fail.
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item[a.] $α >_{grevlex} β$ if and only if $|α| > |β|$ or $|α| = |β|$ and $\beta >_{invlex}\alpha\Leftrightarrow \alpha>_{rinvlex}\beta$.
+\item[b.] Falla que no es un buen orden. Para ellos, basta construir una cadena creciente que no termine en $>_{invlex}$, lo cual es equivalente a construirla en $>_{lex}$, lo cual es trivial de conseguir. Esto nos dará una cadena decreciente en $>_{rinvlex}$ que no termina.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
 \begin{ejercicio}{2.2.10}
 In $\Z_{≥0}$ with the usual ordering, between any two integers, there are only a finite number
 of other integers. Is this necessarily true in $\Z^n_{≥0}$ for a monomial order? Is it true for the
