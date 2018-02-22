@@ -185,6 +185,59 @@ Hay que verificar entonces que $\langle\alpha,\beta\rangle=w\land\beta(e_1,\dots
 \[
 w\land(\sum_{\tau}\beta(e_{\tau(1)},\dots, e_{\tau(n-p)})\varepsilon_{\tau})(e_1,\dots, e_n)=w\land\beta(e_1,\dots, e_n)
 \]
+
+Ahora vamos a hacer lo que pide el ejercicio.
+
+\begin{gather*}
+*(\varepsilon_1\land\dots\land\varepsilon_p)=\sum_{\tau\in S(n-p,p)}*(\varepsilon_1\land\dots\land\varepsilon_p)(e_{\tau(1)},\dots, e_{\tau(n-p)})\varepsilon_{\tau}=\sum_{\tau\in S(n-p,p)}\langle *(\varepsilon_1\land\dots\land\varepsilon_p),\varepsilon_{\tau}\rangle\varepsilon_{\tau}
+\end{gather*}
+Por otro lado
+\begin{gather*}
+\langle *(\varepsilon_1\land\dots\land\varepsilon_p),\varepsilon_{\tau}\rangle=\varepsilon_1\land\dots\land\varepsilon_p\land\varepsilon_{\tau(1)}\land\dots\land\varepsilon_{\tau(n-p)}(e_1,\dots, e_n)=\\
+\begin{cases}
+0 & \{1,\dots, p\}\cap\{\tau(1),\dots,\tau(n-p)\}\neq\emptyset\\
+1 & \{1,\dots, p\}\cap\{\tau(1),\dots,\tau(n-p)\}=\emptyset\Rightarrow \tau(i)=p+i\forall 1\leq i\leq n-p
+\end{cases}
+\end{gather*}
+
+En general, 
+\begin{gather*}
+*(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)})=\sum_{\tau\in S(n-p,p)}\langle *(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)},\varepsilon_{\tau}\rangle\varepsilon_{\tau}.
+\end{gather*}
+Y de nuevo
+\begin{gather*}
+\langle *(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)},\varepsilon_{\tau}\rangle=\\
+\begin{cases}
+0 & \{\sigma(1),\dots, \sigma(p)\}\cap\{\tau(1),\dots,\tau(n-p)\}\neq\emptyset\\
+\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)}\land\varepsilon_{\sigma(p+1)}\land\dots\varepsilon_{\sigma(n)}(e_1,\dots, e_n) & \{\sigma(1),\dots, \sigma(p)\}\cap\{\tau(1),\dots,\tau(n-p)\}=\emptyset
+\end{cases}
+\end{gather*}
+En el segundo caso $\tau(i)=\sigma(p+i)\forall 1\leq i\leq n-p$.
+
+Sea ahora $w\in Alt^p(v)$, utilizando lo anterior
+\begin{gather*}
+w=\sum_{\sigma\in S(p,n-p)}w(e_{\sigma(1)},\dots, e_{\sigma(p)})\varepsilon_{\sigma}\Rightarrow\\
+*w=\sum_{\sigma\in S(p,n-p)}w(e_{\sigma})*(e_{\sigma})=\sum_{\sigma\in S(p,n-p)}w(e_{\sigma})sgn(\sigma)(\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)})\Rightarrow\\
+*(*w)=\sum_{\sigma\in S(p,n-p)}w(e_{\sigma})sgn(\sigma)*(\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)})
+\end{gather*}
+Repitiendo el argumento de antes, tenemos
+\begin{gather*}
+*(\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)})=\sum_{\tau\in S(n-p,p)}\langle *(\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)}),\varepsilon_{\tau}\rangle\varepsilon_{\tau}
+\end{gather*}
+Y además
+\begin{gather*}
+\langle *(\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)}),\varepsilon_{\tau}\rangle=\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)}\land\varepsilon_{\tau(1)}\land\dots\land\varepsilon_{\tau(n-p)}(e_1,\dots, e_n)
+\end{gather*}
+que de nuevo tenemos que vale 0 si $\sigma\neq\tau$ y si $\sigma=\tau$ entonces obtendríamos la expresión
+\begin{gather*}
+\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)}\land\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(n-p)}(e_1,\dots, e_n)=(-1)^{p(n-p)}sgn(\sigma)
+\end{gather*}
+pues tenemos que llevar al principio ordenadamente el factor $\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(n-p)}$.
+
+Volviendo entonces a $*(*w)$ tendríamos
+\begin{gather*}
+*(*w)=\sum_{\sigma\in S(p,n-p)}w(e_{\sigma})sgn(\sigma)(-1)^{p(n-p)}sgn(n)\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)}=(-1)^{p(n-p)}w
+\end{gather*}
 \end{solucion}
 
 \newpage
@@ -202,6 +255,89 @@ Probar que $\alpha\land\alpha=0$ si y solo si $\det(A)=0$.  Digamos que $\alpha\
 (2a_{12}a_{34}-2a_{13}a_{24}+2a_{14}a_{23})(\varepsilon_1\land\varepsilon_2\land\varepsilon_3\land\varepsilon_4)
 \end{gather*}
 Esto es justamente $2Pf(A)(\varepsilon_1\land\varepsilon_2\land\varepsilon_3\land\varepsilon_4)$, donde $Pf(A)$ es el pfaffiano\footnote{https://en.wikipedia.org/wiki/Pfaffian} de $A$. Como $\det(A)=Pf(A)^2$ se tiene el resultado. Si el módulo de $\alpha\land\alpha$ fuera $\lambda$, entonces $\lambda=2Pf(A)=2\sqrt{\det(A)}$. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.11}
+Sea $V$ un espacio vectorial $n$-dimensional con producto escalar $\langle,\rangle$ y elemento de volumen $vol\in Alt^n(V)$, como en el ejercicio \ref{ejer:2.9}. Sea $v\in Alt^1(V)$ y
+\[
+F_v:Alt^p(V)\to Alt^{p+1}(V)
+\]
+la aplicación
+\[
+F_v(w)=v\land w.
+\]
+Probar que 
+\[
+F^*_v=(-1)^{np}*\circ F_v\circ *: Alt^{p+1}(V)\to Alt^p(V)
+\]
+es adjunto a $F_v$, es decir, $\langle F_vw,\tau\rangle=\langle w,F^*_v\tau\rangle$. Sea $\{e_1,\dots, e_n\}$ una base ortonormal de $V$ con $vol(e_1,\dots,e_n)=1$ y $\{\varepsilon_1,\dots,\varepsilon_n\}$ la base dual (ortonormal) de $Alt^1(V)$. Probar que
+\[
+F^*_v(\varepsilon_1\land\dots\land\varepsilon_{p+1})=\sum_{i=1}^{p+1}(-1)^{i+1}\langle v,\varepsilon_i\rangle\varepsilon_1\land\dots\hat{\varepsilon}_i\land\dots\varepsilon_{p+1}.
+\]
+Probar que $F_vF^*_v+F^*_vF_v:Alt^p\to Alt^p(V)$ es la multiplicación por $||v||^2$. (Pista: suponer que $v=\lambda\varepsilon_1$ y probar que el caso general se sigue del caso particular).
+\end{ejercicio}
+\begin{solucion}
+Es evidente que tanto $F_v$ como $F^*_v$ son homomorfismos de espacios vectoriales. Sean $v\in Alt^1(V), w\in Alt^p(V), \tau\in Alt^{p+1}(V)$. 
+\begin{gather*}
+F_v(w),\tau\rangle=\langle v\land w,\tau\rangle=\langle v\land w, (-1)^{(p+1)(n-p-1)}*(*\tau)\rangle=(-1)^{(p+1)(n-p-1)}*\tau\land v\land w(e_1,\dots, e_n)=\\
+(-1)^{(p+1)(n-p-1)}(-1)^{n-p-1}v\land *\tau\land w(e_1,\dots, e_n)=(-1)^{(p+1)(n-p-1)+(n-p-1)}\langle *(v\land *\tau), w\rangle=\\
+(-1)^{p(n-p-1)}\langle *(w\land *\tau),w\rangle=\langle F^*_v(\tau),w\rangle=\langle w,F^*_v(\tau)\rangle
+\end{gather*}
+
+Vamos a la segunda parte. Se comprueba que
+\[
+*(\varepsilon_i\land\varepsilon_{p+2}\land\dots\land\varepsilon_n)=(-1)^{p(n-p)+p-i+1}\varepsilon_1\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_{p+1}
+\]
+Consideremos la permutación
+\[
+\sigma=\begin{pmatrix}
+1 & \dots & i-1 & i  &\dots & p & p+1 & p+2 & \dots & n\\
+1 & \dots & i-1 & i+1  & \dots & p+1 & i & p+2 & \dots & n
+\end{pmatrix}
+\]
+Entonces
+\begin{gather*}
+*(\varepsilon_1\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_n)=*(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)})=sgn(\sigma)\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)}=(-1)^{p-i+1}\varepsilon_i\land\varepsilon_{p+1}\land\dots\land\varepsilon_e\\
+\Rightarrow *(\varepsilon_i\land\varepsilon_{p+1}\land\dots\land\varepsilon_n)=(-1)^{p-i+1}**(\varepsilon_1\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_{p+1})=\\
+(-1)^{p-i+1}(-1)^{p(n-p)}\varepsilon_1\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_{p+1}
+\end{gather*}
+
+Ahora, $v=\sum_{i=1}^n\langle v,\varepsilon_i\rangle\varepsilon_i$, entonces
+\begin{gather*}
+F^*_v(\varepsilon_i\land\dots\varepsilon_p)=(-1)^{p(n-p-1)}*(v\land *(\varepsilon_1\land\dots\land\varepsilon_{p+1}))=(-1)^{p(n-p-1)}*(v\land\varepsilon_{p+2}\land\dots\land\varepsilon_n)=\\
+(-1)^{p(n-p-1)}*\left(\sum_{i=1}^n\langle v,\varepsilon_i\rangle\varepsilon_i\land\varepsilon_{p+2}\land\dots\land\varepsilon_n \right)=
+(-1)^{p(n-p-1)}\sum_{i=1}^n\langle v,\varepsilon_i\rangle\varepsilon_i *(\varepsilon_i\land\varepsilon_{p+1}\land\dots\land\varepsilon_n)=\\
+(-1)^{p(n-p-1)}\sum_{i=1}^n\langle v,\varepsilon_i\rangle(-1)^{p(n-p)+p-i+1}\varepsilon_1\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_{p+1}=\\
+\sum_{i=1}^{p+1}(-1)^{1-i}\langle v,\varepsilon_i\rangle\varepsilon_1\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_{p+1}=
+\sum_{i=1}^{p+1}(-1)^{i+1}\langle v,\varepsilon_i\rangle\varepsilon_1\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_{p+1}
+\end{gather*}
+
+Vamos ahora a probar la última parte. Observamos que $F_{v+\lambda w}=F_v+\lambda F_w$, y lo mismo con $F^*$. Por ello, basta tomar un $v=\lambda\varepsilon_1$ (sería para un $i=1,\dots, n$, pero es análogo). Además, como son lineales, es suficiente probar la ecuación para un $w=\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)}$ con $\sigma\in S(p,n-p)$.
+\begin{gather*}
+F_v(\varepsilon_{\sigma})=(\lambda\varepsilon_1)\land(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)}=\begin{cases}
+0 & \sigma(1)=1\\
+\lambda\varepsilon_1\land\varepsilon_{\sigma} & \sigma(1)\neq 1
+\end{cases}
+\end{gather*}
+Luego, por lo hecho en los anterores apartados, en el caso $\sigma(1)\neq 1$ tenemos
+\begin{gather*}
+F^*_vF_v(\varepsilon_{\sigma})=\lambda F^*_v(\varepsilon_1\land\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)})=\lambda\left(\sum_{j=1}^{p+1}(-1)`{j+1}\langle\lambda\varepsilon_1,\varepsilon_j\rangle\varepsilon_1\land\varepsilon_{\sigma(1)}\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_{\sigma(p)}  \right)=\lambda^2
+\end{gather*}
+Por otro lado 
+\begin{gather*}
+F^*_v(\varepsilon_{\sigma})=F^*_v(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)})=\sum_{i=1}^p(-1)^{i+1}\langle\lambda\varepsilon_1,\varepsilon_{\sigma(i)}\rangle \varepsilon_{\sigma(1)}\land\dots\land\hat{\varepsilon}_{\sigma(i)}\land\dots\land \varepsilon_{\sigma(p)}=\\
+\begin{cases}
+\lambda
+\varepsilon_{\sigma(2)}\land\dots\land\varepsilon_{\sigma(p)} & \sigma(1)=1\\
+0 & \varepsilon(1)\neq 1
+\end{cases}\Rightarrow F_vF^*_v(\varepsilon_{\sigma})=\begin{cases}
+\lambda^2\varepsilon_1\land\varepsilon_{\sigma(2)}\land\dots\land\varepsilon_{\sigma(p)}=\lambda^2\varepsilon_{\sigma}\\
+0
+\end{cases}
+\end{gather*}
+Por lo que al sumar sale exactamente el producto por $\lambda^2$.
 \end{solucion}
 
 \end{document}
