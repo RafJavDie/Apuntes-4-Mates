@@ -190,4 +190,33 @@ $\boxed{\subseteq}$ Sea $y\in |\mathring{st}(x;K)|$. Entonces existe $\sigma\in 
 $\boxed{\supseteq}$ Sea $y\in |st(x;K)|-|lk(x;K)|$. Por definición de la estrella, $\exists\eta\in |K|$ tal que $x\in\eta$ y $y\in\eta$. Además, como $y$ no está en el link, $\exists \tau\in |K|$ tal que $y\in\tau$ con $\tau\in |st(x;K)|$ y $x\in\tau$. Consideramos entonces $y\in\tau\cap\eta\in |st(x;K)|$ Como $\tau\cap\eta$ es unión disjunta de sus caras abiertas, entonces, o bien $\tau\cap\eta$ contiene a $y$ en su interior o bien lo contiene alguna de sus caras propias en su interior. En cualquier caso, $y\in |\mathring{st}(x;K)|$.  \QED
 \end{dem}
 
+\begin{lemma}
+Sea $K$ un complejo simiplicial y sea $A\subseteq|K|$. Se tiene que $A$ es abierto (cerrado) en $|K|$ si y solo si $A\cap\sigma$ es abierto (cerrado) de $\sigma$ para todo $\sigma\in K$. 
+\end{lemma}
+\begin{proof}
+$\boxed{\Rightarrow}$ Supongamos que $A$ es cerrado en $|K|$. Por definición de topología relativa, $A\cap\sigma$ es cerrado en $\sigma$ para todo $\sigma\in K$.
+
+$\boxed{\Leftarrow}$. Supongamos que $A\cap\sigma$ es cerrado para todo $\sigma\in K$. Entonces $A=\bigcup_{\sigma\in K} A\cap\sigma$, que como el complejo simplicial es finito, tenemos unión finita de cerrados de $\sigma$. Como $\sigma$ es compacto, tenemos unión finita de compactos, luego $A$ es compacto en $|K|$, luego $A$ es un cerrado.
+
+Con complementarios podemos obtener el resultado para abiertos. 
+\end{proof}
+
+\begin{lemma}
+Sea $f:|K|\to X$ donde $K$ es un complejo simplicial y $X$ es un espacio topológico. Entonces $f$ es continua $f|_{\sigma}:\sigma\to X$ es continua para todo $\sigma\in K$.
+\end{lemma}
+\begin{proof}
+ Sea $f:|K|\to X$ es continua, si y solo si para todo $G$ abierto de $X$ se tiene que $f^{-1}(G)$ es abierto de $|K|$. Por el lema anterior, esto es equivalente a que $f^{-1}(G)\cap\sigma=f^{-1}|_{\sigma}(G)$ es abierto, si y solo si $f|_{\sigma}$ es continua.
+\end{proof}
+
+\begin{prop}
+Dado $K$ complejo simplicial y $x\in|K|$, se tiene que $\mathring{st}(x;K)$ es un abierto de $|K|$ que contiene a $x$ y, en consecuencia, $st(x;K)$ es un entorno de $x$ en $|K|$.
+\end{prop}
+\begin{dem}
+\[
+\mathring{st}(x;K)=\bigcup_{x\in \sigma\in K}\mathring{\sigma}.
+\]
+Basta ver que $\mathring{\sigma}$ es abierto de $|K|$. Sea $\varepsilon=\min\{d_e(y,r_{v_0v_1}),d_e(y,\sigma_{v_0v_2},d_e(y,\sigma_{v_1v_2})\}$. Si $y\in B_{d_e}(y,\varepsilon/2)\subseteq \mathring{\sigma}$, entonces $\mathring{\sigma}$ es entorno de $y\in\mathring{\sigma}$. Por tanto $\mathring{\sigma}$ es abierto en $|K|$, luego $\mathring{st}(x;K)$ es abierto en $|K|$. 
+\QED
+\end{dem}
+
 \end{document}
