@@ -219,5 +219,74 @@ Basta ver que $\mathring{\sigma}$ es abierto de $|K|$. Sea $\varepsilon=\min\{d_
 \QED
 \end{dem}
 
+\begin{defi}
+Sean $K$ y $K'$ c.s., se dirá que $K'$ es una subdivisión de $K$ si:
+\begin{enumerate}
+	\item $|K|=|K'|$ como conjuntos.
+	\item $\forall σ \in K$ $\exists σ_i' \in K' \mid σ = \bigcup_{i\in I} σ_i'$.
+\end{enumerate}
+\end{defi}
+
+\begin{ej}
+Tenemos el siguiente complejo y una subdivisión suya:
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[fill=gray] (0,0) node[anchor=east]{$v_0$} -- (4,0) node[anchor=west]{$v_2$} -- (2,4) node[anchor=south]{$v_1$} -- cycle;
+\draw (2,4) -- (4,0) -- (6,4) node[anchor=south]{$v_3$} -- cycle;
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw[fill=gray] (0,0) node[anchor=east]{$v_0$} -- (2,0) node[anchor=north]{$v_6$} -- (2,2) node[anchor=west]{$v_4$} -- cycle;
+\draw[fill=gray] (0,0) -- (2,2) -- (2,4) node[above]{$v_1$} -- cycle;
+\draw[fill=gray] (2,0) -- (2,2) -- (4,0) node[below]{$v_2$} -- cycle;
+\draw[fill=gray] (2,2) -- (2,4) -- (4,0) -- cycle;
+\draw (2,4) -- (4,0) -- (6,4) node[anchor=south]{$v_3$} -- (4,4) node[anchor=south]{$v_5$} -- cycle;
+\draw (2,2) node[anchor=east]{$v_4$};
+\end{tikzpicture}
+\end{figure}
+\end{ej}
+
+\begin{defi}
+Dado el símplice $σ = (v_0,\dots,v_n)$, se define el baricéntro de $σ$ como:
+\[ b(σ) = \sum_{i=0}^n \frac{1}{n+1}v_i \]
+\end{defi}
+
+\begin{nota}
+\begin{enumerate}
+\item $b(σ) = \mathring{σ}$.
+\item El baricentro de un vértice es el propio vértice.
+\item El baricentro de un $1$-símplice es el punto medio.
+\item El baricentro de un $2$-símplice es el baricentro geométrico.
+\item Si tenemos una cadena de símplices $σ_1<σ_2<\dots<σ_n$, entonces $b(σ_1),\dots,b(σ_n)$ son afínmente independientes.
+\end{enumerate}
+\end{nota}
+
+\begin{defi}
+Dado un complejo simplicial $K$ se define la primera subdivisión baricéntrica de $K$ como el complejo simplicial $sd K$ formado por todos los síplices del tipo $(b(σ_0),b(σ_1),\dots,b(σ_k))$ donde $σ_0 < σ_1 <\dots <σ_k$ son símplices de $K$.
+\end{defi}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[fill=gray] (0,0) node[anchor=east]{$v_0$} -- (4,0) node[anchor=west]{$v_2$} -- (2,4) node[anchor=south]{$v_1$} -- cycle;
+\draw (2,4) -- (6,4) node[anchor=south]{$v_3$};
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw[fill=gray] (0,0) node[anchor=east]{$v_0$} -- (2,0) node[anchor=north]{$b(v_0,v_2)$} -- (4,0) node[anchor=west]{$v_2$} -- (3,2) node[anchor=west]{$b(v_2,v_1)$} -- (2,4) node[anchor=south]{$v_1$} -- (1,2) node[anchor=east]{$b(v_1,v_0)$} -- cycle;
+\draw (2,4) -- (4,4) node[anchor=south]{$b(v_2,v_3)$} -- (6,4) node[anchor=south]{$v_3$};
+\draw (2,2) node[anchor=north]{$b(v_0,v_1,v_2)$};
+\end{tikzpicture}
+\end{figure}
+
+\begin{prop}
+$sd K$ es una subdivisón de $K$.
+\end{prop}
+\begin{dem}
+\begin{enumerate}
+\item Veamos que $|K|=|sd K|$ por doble inclusión.
+Sea $x \in |sdK$, entonces existe $σ \in sd K$ tal que $x \in σ$, luego $x \in |K|$.
+Sea $x \in |K|$, sea $σ$ el soporte de $x$ en $K$ y calculamos $b(σ)$. (Seguimos en la siguiente clase)
+\end{enumerate}
+\end{dem}
 
 \end{document}
