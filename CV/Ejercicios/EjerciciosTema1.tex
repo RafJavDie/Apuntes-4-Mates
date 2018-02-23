@@ -340,4 +340,25 @@ F^*_v(\varepsilon_{\sigma})=F^*_v(\varepsilon_{\sigma(1)}\land\dots\land\varepsi
 Por lo que al sumar sale exactamente el producto por $\lambda^2$.
 \end{solucion}
 
+\newpage
+
+\begin{ejercicio}{2.12}
+Sea $V$ un espacio vectorial $n$-dimensional. Probar que para una aplicación lineal $f:V\to V$ existe un número $d(f)$ tal que
+\[
+Alt^n(f)(w)=d(f)w
+\]
+para $w\in Alt^n(V)$. Verificar la regla del producto
+\[
+d(g\circ f)=d(g)d(f)
+\]
+para aplicaciones lineales $f,g:V\to V$ usando la funtorialidad de $Alt^n$. Probar que $d(f)=\det(f)$. (Pista: tomar una base $e_1,\dots, e_n$ de $V$ y su base dual $\varepsilon_1,\dots,\varepsilon_n$ de $Alt^n(V)$, y evaluar $Alt^n(f)(\varepsilon_1\land\dots\land\varepsilon_n)$ sobre $(e_1,\dots, e_n)$ en términos de la matriz de $f$ respecto de la base elegida.)
+\end{ejercicio}
+\begin{solucion}
+Vamos a probar que $d(f)=\det(f)$ cumple lo pedido. Obsérvese que si probamos el primer apartado, después como $Alt^n(g\circ f)=Alt^n(f)\circ Alt^n(g)=d(f)d(g)=d(g)d(f)$ se tendrá el segundo. Como $Alt^n(f)$ es lineal, basta probarlo para $\varepsilon_1\land\dots\land\varepsilon_n$. Así pues.
+\[
+Alt^n(f)(\varepsilon_1\land\dots\land\varepsilon_n)(e_1,\dots, e_n)=\varepsilon_1\land\dots\land\varepsilon_n(f(e_1),\dots, f(e_n)),
+\]
+que por definición es la matriz de $f$ con respecto a la base $e_1,\dots, e_n$. 
+\end{solucion}
+
 \end{document}
