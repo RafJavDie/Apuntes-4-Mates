@@ -114,10 +114,134 @@ La diferencia radica en que $x^2y$ del dividendo es divisible por $LT(f_1)$ y $L
 \[ r=r_1-r_2 = (-q_1+q_1')f_1+(-q_2+q_2')f_2 \]
 Como $q_1 = -1$, $q_2 = q_1' = 0$ y $q_2' = -x$, deducimos que $r = f_1 - x f_2$.
 \item Tenemos que la división da por resto $x-z$ (aunque $r \in \gene{f_1,f_2}$).
-Podriamos haber predicho este resultado observando que todos los términos de $r$ no son divisibles por los términos líderes de $f_1$ y $f_2$, una de las propiedades del resto.
+Podriamos haber predicho este resultado observando que todos los términos de $r$ son no divisibles por los términos líderes de $f_1$ y $f_2$, una de las propiedades del resto.
 \item Definimos $g = -yf_1 + (xy+1)f_2 = yz-1$, que no es divisible por los términos líderes de $f_1$ y $f_2$.
 \item No. Desearíamos que el resto de la división de un elemento de $\gene{f_1,f_2}$ por $(f_1,f_2)$ fuera $0$, pero no es el caso en $r$ ó en $g$.
-(¿Es esto lo que quiere el ejercicio que diga?)
 \end{enumerate}
 \end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.3.6}
+ Using the grlex order, find an element $g$ of 
+ $\gene{f_1, f_2} = 
+\gene{2xy^2 −x, 3x^2y−y−1} ⊆ \R[x, y]$
+whose remainder on division by $( f_1, f_2)$ is nonzero. Hint: You can find such a $g$ where
+the remainder is $g$ itself.
+\end{ejercicio}
+\begin{solucion}
+Cualquier polinomio cuyos términos sean no divisibles por los términos líderes de $f_1$ y $f_2$ vale.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.3.7}
+ Answer the question of Exercise \ref{ejer:2.3.6} for 
+ $\gene{f_1, f_2, f_3} = 
+\gene{x^4y^2 − z, x^3y^3 − 1, x^2y^4 − 2z}
+⊆ \R[x, y, z]$. Find two different polynomials $g$ (not constant multiples of each other).
+\end{ejercicio}
+\begin{solucion}
+$xy$, $xz$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.3.8}
+Try to formulate a general pattern that fits the examples in Exercises \ref{ejer:2.3.5}(c)(d), \ref{ejer:2.3.6}, and \ref{ejer:2.3.7}.
+What condition on the leading term of the polynomial $g = A_1 f_1 +\dots+ A_s f_s$ would
+guarantee that there was a nonzero remainder on division by $( f_1,\dots, f_s)$? What does
+your condition imply about the ideal membership problem?
+\end{ejercicio}
+\begin{solucion}
+El patrón es lo que se ha dicho en \ref{ejer:2.3.6}. Se implica que ningún elemento de grado estrictamente menor que algún elemento de grado mínimo en el ideal pertenece al ideal.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.3.9}
+The discussion around equation (2) of Chapter 1, §4 shows that every polynomial $f ∈
+\R[x, y, z]$ can be written as
+$$f = h_1(y − x^2) + h_2(z − x^3) + r,$$
+where $r$ is a polynomial in $x$ alone and $\V(y−x^2, z−x^3)$ is the twisted cubic curve in $\R^3$.
+\begin{enumerate}[a.]
+\item Give a proof of this fact using the division algorithm. Hint: You need to specify
+carefully the monomial ordering to be used.
+\item Use the parametrization of the twisted cubic to show that $z^2 − x^4y$ vanishes at every
+point of the twisted cubic.
+\item Find an explicit representation
+$$z^2 − x^4y = h_1(y − x^2) + h_2(z − x^3)$$
+using the division algorithm.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item Usando lex con $z>y>x$, cualquier polinomio que tenga $z$ o $y$ sería divisible por el término líder de alguno de los generadores, luego el polinomio debe contener solo la variable $x$.
+\item Es claro sustituyendo un punto de la forma $(t,t^2, t^4)$ en el polinomio. 
+\item $h_1=-x^4$, $h_2=z+x^3$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.3.10}
+Let $V ⊆ \R^3$ be the curve parametrized by $(t, t^m, t^n)$, $n,m ≥ 2$.
+\begin{enumerate}[a.]
+\item Show that $V$ is an affine variety.
+\item Adapt the ideas in Exercise \ref{ejer:2.3.9} to determine $\I(V)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item A estas alturas creo que está claro que $V=\V(y-x^m, z-x^n)$. 
+\item Usando razonamientos análogos a los del ejercicio anterior, tenemos que $\I(V)=\sqrt{\gene{y-x^m,z-x^n}}$. Quien quiera que compruebe si ese ideal es radical o no.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.3.11}
+In this exercise, we will characterize completely the expression
+$$f = q_1 f_1 + \dots + q_s f_s + r$$
+that is produced by the division algorithm (among all the possible expressions for $f$ of
+this form). Let $LM( f_i) = x^{α(i)}$ and define
+\begin{align*}
+&Δ_1 = α(1) + \Z^n_{≥0},\\
+&Δ_2 = (α(2) + \Z^n_{≥0}) \ Δ_1,\\
+&\vdots\\
+&Δ_s = (α(s) + \Z^n_{≥0}) \
+\left(\bigcup^{s−1}_{i=1}
+Δ_i
+\right)
+,\\
+&\overline{Δ} = \Z^n_{≥0} \
+\left(\bigcup^{s−1}_{i=1}
+Δ_i
+\right)
+.
+\end{align*}
+(Note that $\Z^n_{≥0}$ is the disjoint union of the $Δ_i$ and $Δ$.)
+\begin{enumerate}[a.]
+\item Show that $β ∈ Δ_i$ if and only if $x^{α(i)}$ divides $x^β$ and no $x^{α(j)}$ with $j < i$ divides $x^β$.
+\item Show that $γ ∈ Δ$ if and only if no $x^{α(i)}$ divides $x^γ$.
+\item Show that in the expression $f = q_1 f_1 + \dots + q_s f_s + r$ computed by the division
+algorithm, for every $i$, every monomial $x^β$ in $q_i$ satisfies $β + α(i) ∈ Δ_i$, and every
+monomial $x^γ$ in $r$ satisfies $γ ∈ Δ$.
+\item Show that there is exactly one expression $f = q_1 f_1 + \dots + q_s f_s + r$ satisfying the
+properties given in part (c).
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.3.12}
+Show that the operation of computing remainders on division by $F = (f_1, \dots , f_s)$ is
+linear over $k$. That is, if the remainder on division of $g_i$ by $F$ is $r_i$, $i = 1, 2$, then, for any
+$c_1, c_2 ∈ k$, the remainder on division of $c_1g_1+c_2g_2$ is $c_1r_1+c_2r_2$. Hint: Use Exercise \ref{ejer:2.3.11}.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
 \end{document}
