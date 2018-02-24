@@ -191,21 +191,21 @@ $\boxed{\supseteq}$ Sea $y\in |st(x;K)|-|lk(x;K)|$. Por definición de la estrel
 \end{dem}
 
 \begin{lemma}
-Sea $K$ un complejo simiplicial y sea $A\subseteq|K|$. Se tiene que $A$ es abierto (cerrado) en $|K|$ si y solo si $A\cap\sigma$ es abierto (cerrado) de $\sigma$ para todo $\sigma\in K$. 
+Sea $K$ un complejo simiplicial y sea $A\subseteq|K|$. Se tiene que $A$ es cerrado en $|K|$ si y solo si $A\cap\sigma$ es cerrado de $\sigma$ para todo $\sigma\in K$. 
 \end{lemma}
 \begin{proof}
 $\boxed{\Rightarrow}$ Supongamos que $A$ es cerrado en $|K|$. Por definición de topología relativa, $A\cap\sigma$ es cerrado en $\sigma$ para todo $\sigma\in K$.
 
 $\boxed{\Leftarrow}$. Supongamos que $A\cap\sigma$ es cerrado para todo $\sigma\in K$. Entonces $A=\bigcup_{\sigma\in K} A\cap\sigma$, que como el complejo simplicial es finito, tenemos unión finita de cerrados de $\sigma$. Como $\sigma$ es compacto, tenemos unión finita de compactos, luego $A$ es compacto en $|K|$, luego $A$ es un cerrado.
-
-Con complementarios podemos obtener el resultado para abiertos. 
 \end{proof}
+
+El resultado anterior es cierto para abiertos exigiendo que $A\cap\mathring{\sigma}$ sea abierto.
 
 \begin{lemma}
 Sea $f:|K|\to X$ donde $K$ es un complejo simplicial y $X$ es un espacio topológico. Entonces $f$ es continua $f|_{\sigma}:\sigma\to X$ es continua para todo $\sigma\in K$.
 \end{lemma}
 \begin{proof}
- Sea $f:|K|\to X$ es continua, si y solo si para todo $G$ abierto de $X$ se tiene que $f^{-1}(G)$ es abierto de $|K|$. Por el lema anterior, esto es equivalente a que $f^{-1}(G)\cap\sigma=f^{-1}|_{\sigma}(G)$ es abierto, si y solo si $f|_{\sigma}$ es continua.
+ Sea $f:|K|\to X$ es continua, si y solo si para todo $F$ cerrado de $X$ se tiene que $f^{-1}(F)$ es cerrado de $|K|$. Por el lema anterior, esto es equivalente a que $f^{-1}(F)\cap\sigma=f^{-1}|_{\sigma}(F)$ es cerrado, si y solo si $f|_{\sigma}$ es continua.
 \end{proof}
 
 \begin{prop}
@@ -215,7 +215,7 @@ Dado $K$ complejo simplicial y $x\in|K|$, se tiene que $\mathring{st}(x;K)$ es u
 \[
 \mathring{st}(x;K)=\bigcup_{x\in \sigma\in K}\mathring{\sigma}.
 \]
-Basta ver que $\mathring{\sigma}$ es abierto de $|K|$. Sea $\varepsilon=\min\{d_e(y,r_{v_0v_1}),d_e(y,\sigma_{v_0v_2},d_e(y,\sigma_{v_1v_2})\}$. Si $y\in B_{d_e}(y,\varepsilon/2)\subseteq \mathring{\sigma}$, entonces $\mathring{\sigma}$ es entorno de $y\in\mathring{\sigma}$. Por tanto $\mathring{\sigma}$ es abierto en $|K|$, luego $\mathring{st}(x;K)$ es abierto en $|K|$. 
+Basta ver que $\mathring{\sigma}$ es abierto de $|K|$. Veámoslo para el caso de $\sigma=(v_0v_1v_2)$, que será fácilmente generalizable. Sea $\varepsilon=\min\{d_e(y,r_{v_0v_1}),d_e(y,\sigma_{v_0v_2},d_e(y,r_{v_1v_2})\}$, donde $r_{v_iv_j}$ es la recta definida por esos vértices. Como $y\in B_{d_e}(y,\varepsilon/2)\subseteq \mathring{\sigma}$, entonces $\mathring{\sigma}$ es entorno de $y\in\mathring{\sigma}$. Por tanto $\mathring{\sigma}$ es abierto en $|K|$, luego $\mathring{st}(x;K)$ es abierto en $|K|$. 
 \QED
 \end{dem}
 
@@ -243,6 +243,7 @@ Tenemos el siguiente complejo y una subdivisión suya:
 \draw[fill=gray] (2,2) -- (2,4) -- (4,0) -- cycle;
 \draw (2,4) -- (4,0) -- (6,4) node[anchor=south]{$v_3$} -- (4,4) node[anchor=south]{$v_5$} -- cycle;
 \draw (2,2) node[anchor=east]{$v_4$};
+\fill (4,4)  circle[radius=1.5pt];
 \end{tikzpicture}
 \end{figure}
 \end{ej}
@@ -254,7 +255,7 @@ Dado el símplice $σ = (v_0,\dots,v_n)$, se define el baricéntro de $σ$ como:
 
 \begin{nota}
 \begin{enumerate}
-\item $b(σ) = \mathring{σ}$.
+\item $b(σ) \in \mathring{σ}$.
 \item El baricentro de un vértice es el propio vértice.
 \item El baricentro de un $1$-símplice es el punto medio.
 \item El baricentro de un $2$-símplice es el baricentro geométrico.
@@ -263,8 +264,10 @@ Dado el símplice $σ = (v_0,\dots,v_n)$, se define el baricéntro de $σ$ como:
 \end{nota}
 
 \begin{defi}
-Dado un complejo simplicial $K$ se define la primera subdivisión baricéntrica de $K$ como el complejo simplicial $sd K$ formado por todos los síplices del tipo $(b(σ_0),b(σ_1),\dots,b(σ_k))$ donde $σ_0 < σ_1 <\dots <σ_k$ son símplices de $K$.
+Dado un complejo simplicial $K$ se define la primera subdivisión baricéntrica de $K$ como el complejo simplicial $sd K$ formado por todos los símplices del tipo $(b(σ_0),b(σ_1),\dots,b(σ_k))$ donde $σ_0 < σ_1 <\dots <σ_k$ son símplices de $K$.
 \end{defi}
+\begin{ej}
+En la siguiente figura se observa un complejo simplicial y sus baricentros.
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}
@@ -274,9 +277,15 @@ Dado un complejo simplicial $K$ se define la primera subdivisión baricéntrica 
 \begin{tikzpicture}
 \draw[fill=gray] (0,0) node[anchor=east]{$v_0$} -- (2,0) node[anchor=north]{$b(v_0,v_2)$} -- (4,0) node[anchor=west]{$v_2$} -- (3,2) node[anchor=west]{$b(v_2,v_1)$} -- (2,4) node[anchor=south]{$v_1$} -- (1,2) node[anchor=east]{$b(v_1,v_0)$} -- cycle;
 \draw (2,4) -- (4,4) node[anchor=south]{$b(v_2,v_3)$} -- (6,4) node[anchor=south]{$v_3$};
-\draw (2,2) node[anchor=north]{$b(v_0,v_1,v_2)$};
+\draw (2,2.1) node[anchor=north]{$b(v_0,v_1,v_2)$};
+\fill (3,2)  circle[radius=1.5pt];
+\fill (1,2)  circle[radius=1.5pt];
+\fill (2,0)  circle[radius=1.5pt];
+\fill (2,1.5)  circle[radius=1.5pt];
+\fill (4,4)  circle[radius=1.5pt];
 \end{tikzpicture}
 \end{figure}
+\end{ej}
 
 \begin{prop}
 $sd K$ es una subdivisón de $K$.
@@ -284,8 +293,8 @@ $sd K$ es una subdivisón de $K$.
 \begin{dem}
 \begin{enumerate}
 \item Veamos que $|K|=|sd K|$ por doble inclusión.
-Sea $x \in |sdK$, entonces existe $σ \in sd K$ tal que $x \in σ$, luego $x \in |K|$.
-Sea $x \in |K|$, sea $σ$ el soporte de $x$ en $K$ y calculamos $b(σ)$. (Seguimos en la siguiente clase)
+Sea $x \in |sdK|$, entonces existe $σ \in sd K$ tal que $x \in σ$, luego $x \in |K|$.
+Sea $x \in |K|$, sea $σ$ el soporte de $x$ en $K$ y calculamos $b(σ)$. (Seguimos en la siguiente clase) \QED
 \end{enumerate}
 \end{dem}
 
