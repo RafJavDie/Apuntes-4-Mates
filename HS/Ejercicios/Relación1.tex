@@ -18,6 +18,35 @@ Demostrar que son equivalentes:
 \item Si los vértices de $σ$ están en $L$, $σ \in L$.
 \end{enumerate}
 \end{ejercicio}
+\begin{solucion}
+$(1\Rightarrow 2)$ Si $L$ es un conjunto de vértices, entonces $\partial L=\emptyset$, por lo que el resultado es trivial. En cualquier otro caso, el borde de $L$ está formado por más de una cara propia, por lo que si algún símplice $\sigma\in K-L$ corta a $L$ en todo su borde, $\sigma\cap |L|$ no puede ser una (única) cara de $\sigma$, lo que contradice la definición de subcomplejo lleno.
+
+$(2\Rightarrow 3)$ Juraría haber encontrado un contraejemplo. Esta implicación es equivalente a $(\neg 3\Rightarrow\neg 2)$, es decir, si existe algún $\sigma$ cuyos vértices estén todos en $L$ pero $\sigma\notin L$, entonces existe algún símplice de $K-L$ que corta a $L$ todo su borde. ¿Pero qué pasa con esto?
+\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-2.689333333333333,-0.5) rectangle (9.577333333333332,3);
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (0.,0.) -- (3.,0.) -- (1.5,2.5980762113533165) -- cycle;
+\draw [line width=2.pt] (0.,0.)-- (3.,0.);
+\draw [line width=2.pt] (3.,0.)-- (1.5,2.5980762113533165);
+\draw [line width=2.pt] (1.5,2.5980762113533165)-- (0.,0.);
+\draw [line width=2.pt] (3.,0.)-- (5.,2.);
+\begin{scriptsize}
+\draw [fill=uuuuuu] (0.,0.) circle (2.0pt);
+\draw[color=uuuuuu] (-0.18266666666666662,0.17733333333333348) node {$A$};
+\draw [fill=xdxdff] (3.,0.) circle (2.5pt);
+\draw[color=xdxdff] (3.0173333333333328,0.252) node {$B$};
+\draw [fill=uuuuuu] (1.5,2.5980762113533165) circle (2.0pt);
+\draw[color=uuuuuu] (1.577333333333333,2.7693333333333356) node {$C$};
+\draw [fill=ududff] (5.,2.) circle (2.5pt);
+\draw[color=ududff] (5.076,2.193333333333335) node {$D$};
+\draw[color=black] (4.148,0.9773333333333342) node {$\sigma$};
+\end{scriptsize}
+\end{tikzpicture}
+
+Definimos $K$ como el complejo anterior, y como $L$, todos los símplices menos la arista $(BD)$ (como complejo simplicial los vértices no están aquí). Cogemos la arista $\sigma$, cuyos vértices son $B$ y $D$. Entonces ambos vértices están en $L$, y el único símplice de $K-L$ es $\sigma$, que claramente no corta a $L$ en todo su borde.
+\end{solucion}
 
 \newpage
 
@@ -41,6 +70,8 @@ Más aún, si $L$ es finito $|cL|$ es homeomorfo al cono topológico $c|L|$ y $|
 \item Si $K, L \neq \emptyset$, el poliedro $|KL|$ es siempre conexo por caminos.
 \end{enumerate}
 \end{ejercicio}
+\begin{solucion}
+\end{solucion}
 
 \newpage
 
@@ -48,6 +79,8 @@ Más aún, si $L$ es finito $|cL|$ es homeomorfo al cono topológico $c|L|$ y $|
 Sea $K$ complejo simplicial.
 Para cada símplica $σ \in K$ probar la igualdad $st(σ;K) = σlk(σ;K)$ donde el término de la derecha indica la corespondiente unión simplicial.
 \end{ejercicio}
+\begin{solucion}
+\end{solucion}
 
 \newpage
 
@@ -55,6 +88,8 @@ Para cada símplica $σ \in K$ probar la igualdad $st(σ;K) = σlk(σ;K)$ donde 
 Se dice que dos aplicaciones simpliciales $φ$, $ψ : K \to L$ son contiguas si para todo $σ \in K$ se verifica que $φ(σ) \cup ψ(σ) \in L$.
 Probar que dos aproximaciones simpliciales $φ$, $ψ : K \to L$ de una misma aplicación continua $f : |K| \to |L|$ son contiguas.
 \end{ejercicio}
+\begin{solucion}
+\end{solucion}
 
 \newpage
 
@@ -67,6 +102,8 @@ Más aún, se tiene que son equivalentes
 \item Dos vértices cualesquiera pueden unirse por un camino formado por aristas.
 \end{enumerate}
 \end{ejercicio}
+\begin{solucion}
+\end{solucion}
 
 \newpage
 
@@ -89,6 +126,8 @@ Probar además, que en este caso, para todo complejo $K$ el complejo $LK$ es col
 \item Probar que si $K$ es colapsable, entonces $|K|$ es contráctil.
 \end{enumerate}
 \end{ejercicio}
+\begin{solucion}
+\end{solucion}
 
 \newpage
 
@@ -99,6 +138,8 @@ Probar que todo árbol colapsa a un punto.
 Probar que $T \subseteq G$ es un árbol maximal si y sólo si $T$ contiene todos los vértices de $G$.
 Probar que todo grafo conexo contiene un árbol maximal con respecto a la inclusión.
 \end{ejercicio}
+\begin{solucion}
+\end{solucion}
 
 \newpage
 
@@ -107,6 +148,8 @@ Dado un complejo simplicial $K$, probar que la relación binaria ``ser cara de''
 El grafo que representa dicho orden se denomina \emph{diagrama de Hasse} de $K$ y se denota por $\mathcal{H}(K)$.
 Probar que ambas estructuras son equivalentes, y caracterizar los colapsos en el diagrama de Hasse.
 \end{ejercicio}
+\begin{solucion}
+\end{solucion}
 
 \newpage
 
@@ -118,6 +161,8 @@ Estudiar qué propiedad interesante tienen los nervios en espacios topológicos 
 Decidir si todos los nervios sobre un mismo espacio son del mismo tipo de homotopía
 (Considerar $X = S^1$ con la topología euclídea inducida).
 \end{ejercicio}
+\begin{solucion}
+\end{solucion}
 
 \newpage
 
@@ -131,6 +176,8 @@ Probar que $K(G)$ es efectivamente un complejo simplicial.
 Comparar los tipos de homotopía de $G$ y $K(G)$.
 Estudiar qué efecto tiene en $K(G)$ subdividir baricéntricamente $G$.
 \end{ejercicio}
+\begin{solucion}
+\end{solucion}
 
 \newpage
 
@@ -138,12 +185,16 @@ Estudiar qué efecto tiene en $K(G)$ subdividir baricéntricamente $G$.
 Sea $K$ una triangulación de una superficie.
 Estudiar topológicamente los poliedros $|st(x;K)|$ para todo $x \in |K|$.
 \end{ejercicio}
+\begin{solucion}
+\end{solucion}
 
 \newpage
 
 \begin{ejercicio}{1.12}
 Sean $I = [0,1]$ y $K$ un complejo simplicial, dotar de estructura simplicial al cilindro de $|K|$, denotado por $|K \times I|$, de modo que $|K \times I| = |K| \times I$.
 \end{ejercicio}
+\begin{solucion}
+\end{solucion}
 
 \newpage
 
@@ -213,6 +264,8 @@ Indicar si alguna de las siguientes aplicaciones entre los complejos indicados m
 
 \end{enumerate}
 \end{ejercicio}
+\begin{solucion}
+\end{solucion}
 
 \newpage
 
@@ -274,18 +327,24 @@ Extenderla a una aplicación simplicial entre los complejos indicados en la sigu
 \end{tikzpicture}
 \]
 \end{ejercicio}
+\begin{solucion}
+\end{solucion}
 
 \newpage
 
 \begin{ejercicio}{1.15}
 Probar que la imagen de un subcomplejo por una aplicación simplicial es un subcomplejo y que la imagen inversa de un subcomplejo es subcomplejo.
 \end{ejercicio}
+\begin{solucion}
+\end{solucion}
 
 \newpage
 
 \begin{ejercicio}{1.16}
 Probar que una aplicación simplicial puede cubrir todos los vértices y no ser sobreyectiva.
 \end{ejercicio}
+\begin{solucion}
+\end{solucion}
 
 \newpage
 
@@ -295,4 +354,7 @@ Sea $f(x) = x^2$. Probar que $f$ de $K$ en $L$ no admite aproximaciń simplicial
 
 Análogamente, probar que no existe aproximación simplicial de $f$ de $sd K$ en $L$, y encontrar una aproximación simplicial de $f$ de $sd^2 K$ en $L$.
 \end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
 \end{document}
