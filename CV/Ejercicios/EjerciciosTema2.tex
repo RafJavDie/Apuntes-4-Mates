@@ -33,10 +33,31 @@ Con la misma observación el conjunto imagen está bien definido. Y por el capí
 \newpage
 
 \begin{ejercicio}{3.2}
+Sea $U\subseteq\R^n$ un abierto y $dx_1,\dots dx_n$ las 1-formas constantes usuales. Sea $vol=dx_1\land\dots\land dx_n\in\Omega^n(U)$. Usar la estrella de Hodge $*:Alt^p(\R^n)\to Alt^{n-p}(\R^n)$ para definir un operador lineal  $$*:\Omega^p(U)\to\Omega^{n-p}(U)$$
+y probar que $*(dx_1\land\dots\land dx_p)=dx_{p+1}\land\dots\land dx_n$ y $*\circ *=(-1)^{n(n-p)}$. Definir $d^*:\Omega^p(U)\to\Omega^{p-1}(U)$ mediante
+$$d^*(w)=(-1)^{np+n-1}*\circ d\circ *(w).$$
+Probar que $d^*\circ d^*=0$. 
 
+Verificar la fórmula 
+\[
+d^*(fdx_1\land\dots\land dx_p)=\sum_{j=1}^p(-1)^j\parcial{f}{x_j}dx_1\land\dots\land\hat{x}_j\land\dots\land dx_p
+\]
+y más generalmente para $1\leq i_1<\cdots <i_p\leq n$ que 
+\[
+d^*(fdx_{i_1}\land\dots\land dx_{i_p})=\sum_{j=1}^p(-1)^j\parcial{f}{x_{i_j}}dx_{i_1}\land\dots\land\hat{x}_{i_j}\land\dots\land dx_{i_p}.
+\]
 \end{ejercicio}
 \begin{solucion}
- 
+Lo definimos mediante la ecuación $\langle *w,\tau\rangle vol =w\land\tau$, donde el producto escalar está definido como $\langle *w,\tau\rangle(x)=\langle *w(x), \tau(x)\rangle$. Usando el ejercicio 2.5 se tiene esta definición es consistente con definir $*(dx_1\land\dots\land dx_p)(x)=dx_{p+1}(x)\land\dots\land dx_n(x)$. A partir de lo cual, usando ese mismo ejercicio se tienen las dos primeras propiedades.
+
+Ver que $d^*$ está bien definida es una sencilla comprobación. Además es lineal por ser composición de lineales.
+\[
+d^*(d^*(w))=d^*((-1)^{np+n-1}*\circ d\circ *(w))=(-1)^{np+n-1}d^*(*\circ d\circ *(w))=
+\]
+\[
+(-1)^{np+n-1}((-1)^{n(p-1)+n-1}*\circ d\circ *(*\circ d\circ *(w)))=(-1)^{np+n-1}((-1)^{n(p-1)+n-1}(-1)^{n(n-p-1)}*\circ d\circ d\circ *(w)))=0
+\]
+pues $d\circ d=0$.
 \end{solucion}
 \newpage
 
