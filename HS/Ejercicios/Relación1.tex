@@ -107,6 +107,8 @@ Más aún, se tiene que son equivalentes
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+En primer lugar, es claro que cualquier símplice es conexo por caminos por ser convexo. Como $|K|$ es unión de símplices (supongamos más de uno), esto implica cualquiera de sus símplices tiene intersección no vacía con algún otro símplice distinto. Por tanto, usando las intersecciones y la conexión por caminos de cada símplice es fácil construir un camino entre dos puntos cualesquiera de dos símplices distintos.
+
 \end{solucion}
 
 \newpage
@@ -137,12 +139,17 @@ Probar además, que en este caso, para todo complejo $K$ el complejo $LK$ es col
 
 \begin{ejercicio}{1.7}
 Un complejo simplicial de dimensión $1$ es llamado un \emph{grafo}.
-Dado un grafo $G$, se dice que un subgrafo $T \subseteq G$ es un \emph{árbol} si $T$ es conexo y no contiene ninguna poligonal simple errada (que serán llamadas \emph{lazos}).
+Dado un grafo $G$, se dice que un subgrafo $T \subseteq G$ es un \emph{árbol} si $T$ es conexo y no contiene ninguna poligonal simple cerrada (que serán llamadas \emph{lazos}).
 Probar que todo árbol colapsa a un punto.
 Probar que $T \subseteq G$ es un árbol maximal si y sólo si $T$ contiene todos los vértices de $G$.
 Probar que todo grafo conexo contiene un árbol maximal con respecto a la inclusión.
 \end{ejercicio}
 \begin{solucion}
+Si el árbol está formado solo por un punto, es trivial. Si está formado por una arista, claramente podemos colapsarlo sobre uno de sus vértices. Para el caso general consideremos una raíz (un vértice sobre el que incidan al menos 2 aristas). Partimos entonces de las hojas (vértices sobre los que solo incide una arista). Las hojas son caras libres de las aristas que indicen en ella. Por tanto, en el primer paso podemos ir colapsando una a una todas estas aristas. A continuación, los padres de las hojas se habrán convertido en hojas, pues hemos eliminado a todos sus hijos, así que podemos repetir el proceso. Este proceso termina en tiempo finito porque hay una cantidad finita de vértices y además, por construcción termina en la raíz (el único padre que no es hijo de nadie), así que el grafo es colapsable a la raíz.
+
+El segundo resultado será cierto suponiendo que $G$ es conexo, puesto que si tiene algún vértice en otra componente conexa, ningún árbol (conexo por definicíon) podrá contenerlo. En este caso, si un árbol no contuviera algún vértice de $G$, por ser $G$ conexo y el ejercicio \ref{ejer:1.5}, se puede añadir una arista conectando dicho vértice al ábrol sin que se formen ciclos, por lo tanto, hemos probado la implicación directa. Recíprocamente, si un árbol contiene todos los vértices de $G$, nos preguntamos si podemos añadir alguna arista más. De nuevo por el ejercicio \ref{ejer:1.5} tenemos que todos los vértices del árbol están conectados por un camino de aristas (necesariamente aristas de $G$). Además solo puede ser un camino, pues de haber dos esto significaría que habría un ciclo. Luego añadir otra arista no existente añadiría un ciclo.
+
+Consideremos un subgrafo que contenga todas los vértices. Entonces por la implicación anterior, es suficiente que sea un árbol para ser máxima. Como hemos comentado antes, podemos conectar todos los vértices entre sí mediante aristas de $G$. Si $G$ es un árbol, ya habríamos terminado. Si no, entonces contiene algún ciclo, luego podemos eliminar alguna arista de modo que ningún vértice se desconecte del grafo. Como a lo sumo hay una cantidad finita de ciclos, este algoritmo termina y por construcción da un árbol. 
 \end{solucion}
 
 \newpage
@@ -153,6 +160,11 @@ El grafo que representa dicho orden se denomina \emph{diagrama de Hasse} de $K$ 
 Probar que ambas estructuras son equivalentes, y caracterizar los colapsos en el diagrama de Hasse.
 \end{ejercicio}
 \begin{solucion}
+La relación $\tau\leq\sigma$ es reflexiva pues todo símplice es cara de sí mismo tomando todo el conjunto de vértices que generan el símplice. Es antisimétrica puesto que si $\sigma\leq\tau$ y $\tau\leq\sigma$ entonces ninguno puede ser una cara propia del otro, puesto que el número de vértices que generen a $\tau$ y $\sigma$ debe ser el mismo, luego son iguales. Por último es transitiva, lo cual se deduce de que el orden por inclusión de los conjuntos de vértices que generan las caras es transitivo.
+
+¿Qué significa probar que ambas estructuras son equivalentes?
+
+Que $\tau$ sea cara libre de $\sigma$ es lo mismo pero dicho con otras palabras que $\tau<\sigma$ y no existe $\eta$ con $\tau\eta$. Por tanto, en el diagrama de Hasse habrá una sola arista que salga de $\tau$ hacia arriba, la cual se dirigirá a $\sigma$. Por tanto, en este diagrama, el colapso elemental se representa mediante un colapso (en el sentido de teoría de grafos) de dicha arista. Para que los colapsos de aristas caractericen los colapsos elementales (y por tanto los colapsos) tenemos que exigir que solo se pueda colapsar una arista tal que el vértice inferior no esté conectado a ningún otro vértice. 
 \end{solucion}
 
 \newpage
