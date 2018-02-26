@@ -58,6 +58,14 @@ d^*(d^*(w))=d^*((-1)^{np+n-1}*\circ d\circ *(w))=(-1)^{np+n-1}d^*(*\circ d\circ 
 (-1)^{np+n-1}((-1)^{n(p-1)+n-1}*\circ d\circ *(*\circ d\circ *(w)))=(-1)^{np+n-1}((-1)^{n(p-1)+n-1}(-1)^{n(n-p-1)}*\circ d\circ d\circ *(w)))=0
 \]
 pues $d\circ d=0$.
+
+Probamos el primer caso y el otro es análogo usando $p$-barajas.
+\begin{gather*}
+d^*(fdx_1\land\dots\land dx_p)=(-1)^{np+n-1}*\circ d\circ *(fdx_1\land\dots\land dx_p)=(-1)^{np+n-1}*\circ d( f dx_{p+1}\land\dots\land dx_n)=\\
+(-1)^{np+n-1}*(d f\land dx_{p+1}\land\dots\land dx_n)=(-1)^{np+n-1}*\left(\left(\sum_{j=1}^n\parcial{f}{x_j}dx_j\right)\land dx_{p+1}\land\dots\land dx_n\right)=\\
+(-1)^{np+n-1}*\left(\left(\sum_{j=1}^p\parcial{f}{x_j}dx_j\right)\land dx_{p+1}\land\dots\land dx_n\right)=\sum_{j=1}^p(-1)^j\parcial{f}{x_j}dx_1\land\dots\land\hat{x}_j\land\dots\land dx_p
+\end{gather*}
+Hay un pequeño salto de fe con el signo, pero nos lo vamos a creer.
 \end{solucion}
 \newpage
 
