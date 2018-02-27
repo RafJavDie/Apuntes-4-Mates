@@ -214,41 +214,45 @@ Los abiertos de $\R^n$ tienen una cantidad numerable de componentes conexas.
 $H^0(U)$ es el $\R$-e.v. de aplicaciones $U\to\R$ que son constantes en cada componente arco-conexa de $U$ (de hecho en cada componente conexa porque abierto conexo implica arco-conexo). 
 \end{lemma}
 \begin{proof}
-Sean $q_1,q_2\in U$ en la misma componente arco-conexa. Entonces existe $\varphi:[a,b]\to U$ continua con $\varphi(a)=q_1$ y $\varphi(b)=q_2$ y sea $f:U\to R$ continua y localmente constante. Por reducción al absurdo, supongamos que $f\varphi(a)<f\varphi(b)$, entonces debe de haber algún punto en el que $f$ cambie de valor, luego no es localmente constante.
+Sean $q_1,q_2\in U$ en la misma componente arco-conexa. Entonces existe $\varphi:[a,b]\to U$ continua con $\varphi(a)=q_1$ y $\varphi(b)=q_2$. Sea $f:U\to \R$ continua y localmente constante. Por reducción al absurdo, supongamos que $f\varphi(a)<f\varphi(b)$, entonces debe de haber algún punto en el que $f$ cambie de valor, luego no es localmente constante.
 \end{proof}
 
-Si $U=\sqcup U_i$, $[f]\in H^0(U)$, entonces $f=\sum c_i\chi_{U_i}$, $c_i\in\R$ y $\chi$ la función carácterística. Entonces $H^0(U)=\prod \R(i)$ donde $\R(i)$ es $\R$ pero con base $\chi_{U_i}$. 
+Si $U=\bigsqcup U_i$, $[f]\in H^0(U)$, entonces $f=\sum c_i\chi_{U_i}$, $c_i\in\R$ y $\chi$ la función carácterística. Entonces $H^0(U)=\prod \R(i)$ donde $\R(i)$ es $\R$ pero con base $\chi_{U_i}$. 
 
-El producto exterior definido sobre $\Omega^*(U)$ se extiende a $H^*(U)$.
+El producto exterior definido sobre $\Omega^*(U)$ se extiende a $H^*(U)$:
 \[
 \land: H^p(U)\times H^q\to H^{p+q}(U)
 \]
 \[
 ([w_1],[w_2])\longmapsto [w_1]\land [w_2]:=[w_1\land w_2]
 \]
-Está aplicación está bien definida, es bilineal, asociativa y anticonmutativa.  
+Está aplicación está bien definida, pues
+\begin{gather*}
+(w_1+d\eta_1)\land(w_2+d\eta_2)=w_1\land w_2+d\eta_1\land w_2+ w_1\land d\eta_2+d\eta_1\land d\eta_2=\\
+w_1\land w_2+d(\eta_1\land w_2+(-1)^pw_1\land \eta_2+\eta_1\land d\eta_2).
+\end{gather*}
 
-Sea $\phi:U_1\to U_2$ diferenciable, $U_1\subseteq\R^n, U_2\subseteq\R^m$. Dado $x\in U_1$, $D_x\phi:\R^n\to \R^m$ lineal. Esta aplicación induce $Alt^p(D_x\phi): Alt^p(\R^m)\to Alt^p(\R^n)$ para todo $p\geq 0$. Podemos inducir entonces $\Omega^p(\phi):\Omega^p(U_2)\to\Omega^p(U_1)$ como $w\mapsto\Omega^p(\phi)(w):U_1\to Alt^p(\R^n)$, que es la aplicación $\Omega^p(\phi)(w)_x(v_1,\dots, v_p)=w_{\phi(x)}(D_x\phi(v_1),\dots, D_x\phi(v_p))=Alt^p(D_x\phi)(w)(v_1,\dots, v_p)$.
+Además es bilineal, asociativa y anticonmutativa.  
+
+Sea $\phi:U_1\to U_2$ diferenciable, $U_1\subseteq\R^n, U_2\subseteq\R^m$. Dado $x\in U_1$, $D_x\phi:\R^n\to \R^m$ es lineal. Esta aplicación induce $Alt^p(D_x\phi): Alt^p(\R^m)\to Alt^p(\R^n)$ para todo $p\geq 0$. Podemos inducir entonces $\Omega^p(\phi):\Omega^p(U_2)\to\Omega^p(U_1)$ como $w\mapsto\Omega^p(\phi)(w):U_1\to Alt^p(\R^n)$, que es la aplicación $\Omega^p(\phi)(w)_x(v_1,\dots, v_p)=w_{\phi(x)}(D_x\phi(v_1),\dots, D_x\phi(v_p))=Alt^p(D_x\phi)(w)(v_1,\dots, v_p)$.
 
 En particular, para $p=0$, $\Omega^0(\phi)(x)=w_{\phi(x)}=w(\phi(x))=(w\circ\phi)(x)=(w\circ\phi)_x$, es decir, no es más que la composición. 
 
-Por otra parte, usando la regla de la cadena en $U_1\overset{\phi}{\to}U_2\overset{\psi}{\to}U_3$, tenemos $D_x(\psi\circ\phi)=D_{\phi(x)}\circ D_x\phi$, luego
+Por otra parte, usando la regla de la cadena en $U_1\overset{\phi}{\to}U_2\overset{\psi}{\to}U_3$, tenemos $D_x(\psi\circ\phi)=D_{\phi(x)}\psi\circ D_x\phi$, luego
 \begin{enumerate}
 \item $\Omega^p(\psi\circ\phi)=\Omega^p(\phi)\circ\Omega^p(\psi)$
 \item $\Omega^p(Id)=Id_{\Omega^p(U)}$.
 \end{enumerate}
 Vamos a denotar $\Omega^p(\phi)(w)=\phi^*(w)$.
 \begin{nota}
-$i:U_1\hookrightarrow U_2\subseteq\R^n$. Dado $x\in U_1$, $D_x i:\R^n\to\R^n$ es la identidad. Esto induce $\phi^*(i)=\Omega^p(i):\Omega^p(U_2)\to \Omega^p(U_1)$. Al evaluarla $\phi^*(i)(w)(x)(v_1,\dots, v_p)=w_{i(x)}(v_1,\dots, v_p)=w_x(v_1,\dots, v_p)$. 
+$i:U_1\hookrightarrow U_2\subseteq\R^n$. Dado $x\in U_1$, $D_x i:\R^n\to\R^n$ es la identidad. Esto induce $\phi^*(i)=\Omega^p(i):\Omega^p(U_2)\to \Omega^p(U_1)$. Al evaluarla $\phi^*(i)(w)(x)(v_1,\dots, v_p)=w_{i(x)}(v_1,\dots, v_p)=w_x(v_1,\dots, v_p)$, es decir, $\phi^*(i)(w)=w\circ i$.
 \end{nota}
 
-\begin{ej}
-CAMBIAR TODOS LOS Y POR X SALVO QUE EL LIBRO ME INDIQUE LO CONTRARIO
-
-$\phi:U_1\to U_2$ diferenciable, $U_1\subseteq\R^n, U_2\subseteq\R^m$, $\phi^*:\Omega^1(U_2)\to \Omega^1(U_1)$. Esta última manda $\varepsilon_i=dy_i\mapsto \phi^*(\varepsilon_i)=\phi^*(dy_i)=d\phi_i=\sum_{j=1}^n\parcial{\phi_i}{x_j}dx_j$. Vamos a probarlo. Sea $x\in U_1$ y $\phi^*(\varepsilon_i)\in\Omega(U_1)$, entonces $\phi^*(\varepsilon_i)_x\in Alt^1(\R^n)$, luego $\phi^*(\varepsilon)_x(v)=\phi^*(dy_i)_x(v)=(\varepsilon_i)_{\phi(x)}(D_x\phi(v))=(dy_i)_{\phi(x)}D_x(\phi(v))=\varepsilon_i(D_x(\phi(v))$. Ahora
+\begin{ej}1
+$\phi:U_1\to U_2$ diferenciable, $U_1\subseteq\R^n, U_2\subseteq\R^m$, $\phi^*:\Omega^1(U_2)\to \Omega^1(U_1)$. Esta última manda $\varepsilon_i=dx_i\mapsto \phi^*(\varepsilon_i)=\phi^*(dx_i)=d\phi_i=\sum_{j=1}^n\parcial{\phi_i}{x_j}dx_j$. Vamos a probarlo. Sea $x\in U_1$ y $\phi^*(\varepsilon_i)\in\Omega^1(U_1)$, entonces $\phi^*(\varepsilon_i)_x\in Alt^1(\R^n)$, luego $\phi^*(\varepsilon_i)_x(v)=\phi^*(dx_i)_x(v)=(\varepsilon_i)_{\phi(x)}(D_x\phi(v))=(dx_i)_{\phi(x)}D_x(\phi(v))=\varepsilon_i(D_x(\phi(v))$. Ahora
 \[
 D_x\phi(v)=\begin{pmatrix}
-\parcial{\phi_1}{x_1}(x) & \dots & \parcial{\phi}{x_n}(x)\\
+\parcial{\phi_1}{x_1}(x) & \dots & \parcial{\phi_1}{x_n}(x)\\
 \vdots & & \vdots \\
 \parcial{\phi_m}{x_1} & \dots & \parcial{\phi_m}{x_n}(x)
 \end{pmatrix}\begin{pmatrix}
@@ -259,13 +263,13 @@ v_n
 \]
 Por otro lado, dado $v\in\R^n$, $v=\sum_{i=1}^nv_ie_i$ Así pues, 
 \[
-\varepsilon_i(D_x\phi(v))=\varepsilon_i(\sum_{k=1}^m(\sum_{l=1}^n\parcial{\phi_k}{x_l}(x)v_l)e_k)=\sum_{l=1}^n\parcial{\phi_i}{x_l}(x)\varepsilon_l(v)=
+\varepsilon_i(D_x\phi(v))=\varepsilon_i\left(\sum_{k=1}^m\left(\sum_{l=1}^n\parcial{\phi_k}{x_l}(x)v_l\right)e_k\right)=\sum_{l=1}^n\parcial{\phi_i}{x_l}(x)\varepsilon_l(v)=
 \]
 \[
-\sum_{l=1}^n\parcial{\phi_i}{x_l}(x)d(x_l)_x=(\sum_{l=1}^n\parcial{\phi_i}{x_l}dx_l)_x(v)=(d\phi_i)_x(v)
+\sum_{l=1}^n\parcial{\phi_i}{x_l}(x)d(x_l)_x(v)=\left(\sum_{l=1}^n\parcial{\phi_i}{x_l}dx_l\right)_x(v)=(d\phi_i)_x(v)
 \]
 
-En particular, $d(\phi^*(dy_i))=d(d\phi_i)=0$. 
+Luego se tiene el resultado. En particular, $d(\phi^*(dx_i))=d(d\phi_i)=0$. 
 \end{ej}
 
 \begin{nota}
@@ -273,7 +277,7 @@ $\phi^*$ es homomorfismo de módulos sobre $C^{\infty}(U;\R)$. Si $f\in\Omega^0$
 \[
 \phi^*(fw)=(fw)_{\phi(x)}=f(\phi(x))w_{\phi(x)}=\phi^*(f)\phi^*(w)
 \]
-Estamos considerando homomorfismo de módulos también cuando el anillo base sufre una transformación en la imagen.
+Estamos considerando homomorfismo de módulos también cuando el anillo base sufre una transformación en la imagen (el caso clásico es cuando la transformación es la identidad).
 \end{nota}
 
 \begin{teorema}
@@ -292,7 +296,7 @@ Sea $\phi:U_1\to U_2$ diferenciable.
 \phi^*(w\land\tau)_x(v_1,\dots, v_{p+q})=(w\land\tau)_{\phi(x)}(D_x\phi(v_1),\dots, D_x\phi(v_{p+q}))=(w_{\phi(x)}\land\tau_{\phi(x)})(D_x\phi(v_1),\dots, D_x\phi(v_{p+q})=
 \]
 \[
-\sum_{\sigma\in S(p,p+q)}sgn\sigma)w_{\phi(x)}(D_x\phi(v_{\sigma(1)}),\dots, D_x\phi(v_{\sigma(p)})(D_x\phi(v_{\sigma(p+1)}),\dots, D_x\phi(v_{\sigma(p+q)}))=
+\sum_{\sigma\in S(p,p+q)}sgn(\sigma)w_{\phi(x)}(D_x\phi(v_{\sigma(1)}),\dots, D_x\phi(v_{\sigma(p)}))(D_x\phi(v_{\sigma(p+1)}),\dots, D_x\phi(v_{\sigma(p+q)}))=
 \]
 \[
 \sum_{\sigma\in S(p,p+q)}sgn(\sigma)(\phi^*w)_x(v_{\sigma(1)},\dots, v_{\sigma(p)})\phi^*(\tau)_x(v_{\sigma(p+1)},\dots, v_{\sigma(p+q)})=
@@ -307,25 +311,25 @@ Sea $\phi:U_1\to U_2$ diferenciable.
 \[
 dw=df=\sum_{k=1}^m\parcial{f}{x_k}\varepsilon_k=\sum_{k=1}^m\parcial{f}{x_k}dx_k=\sum_{k=1}^m\parcial{f}{x_k}\land dx_k
 \]
-Así pues.
+Así pues,
 \begin{gather*}
-\phi^*(dw)=\phi^*(\sum_{k=1}^m\parcial{f}{x_k}\land dx_k)=\sum_{k=1}^m\phi^*(\parcial{f}{x_k}\land\phi^*(dx_k)=\\
-\sum_{k=1}^m(\parcial{f}{x_k}\circ\phi)\land d\phi_k=\sum_{k=1}^m(\parcial{f}{x_k}\circ\phi)\land (\sum_{l=1}^n\parcial{\phi_k}{x_l}\varepsilon_l)=\\
-\sum_{l=1}^n\sum_{k=1}^m(\parcial{f}{x_k}\circ\phi)(\parcial{\phi_k}{x_l}\varepsilon_l=\sum_{l=1}^n\parcial{(f\circ\phi)}{x_l}\varepsilon_l=\\
-d(f\circ\phi)=d(\phi^*(f))=d(\phi^*(w))
+\phi^*(dw)=\phi^*\left(\sum_{k=1}^m\parcial{f}{x_k}\land dx_k\right)=\sum_{k=1}^m\phi^*\left(\parcial{f}{x_k}\right)\land\phi^*(dx_k)=\\
+\sum_{k=1}^m\left(\parcial{f}{x_k}\circ\phi \right)\land d\phi_k=\sum_{k=1}^m\left(\parcial{f}{x_k}\circ\phi\right)\land \left(\sum_{l=1}^n\parcial{\phi_k}{x_l}\varepsilon_l\right)=\\
+\sum_{l=1}^n\sum_{k=1}^m\left(\parcial{f}{x_k}\circ\phi\right)\left(\parcial{\phi_k}{x_l}\varepsilon_l\right)=\sum_{l=1}^n\left(\sum_{k=1}^m\left(\parcial{f}{x_k}\circ\phi\right)\parcial{\phi_k}{x_l}\right)\varepsilon_l=\sum_{l=1}^n\parcial{(f\circ\phi)}{x_l}\varepsilon_l=\\
+d(f\circ\phi)=d(\phi^*(f))=d(\phi^*(w)).
 \end{gather*}
 
 Ahora, vamos al caso de que $w=f\varepsilon_I=f\land\varepsilon_I\in\Omega^p(U_2)$ para $p>0$. 
 \begin{gather*}
-\phi^*(dw)=\phi^*(d(f\varepsilon_I))=\phi^*(df\land\varepsilon_I)=\phi^*(df)\land\phi^*(\varepsilon_I)=d(\phi^*(f)\land\phi^*(\varepsilon_I))
+\phi^*(dw)=\phi^*(d(f\varepsilon_I))=\phi^*(df\land\varepsilon_I)=\phi^*(df)\land\phi^*(\varepsilon_I)=d(\phi^*(f)\land\phi^*(\varepsilon_I)).
 \end{gather*}
 La última igualdad se tiene de que
 \[
-d(\phi^*(f)\land\phi^*(\varepsilon_I))=d\phi^*(f)\land\phi^*(\varepsilon_I)+(-1)^0\phi^*(f)\land d\phi^*(\varepsilon_I)
+d(\phi^*(f)\land\phi^*(\varepsilon_I))=d\phi^*(f)\land\phi^*(\varepsilon_I)+(-1)^0\phi^*(f)\land d\phi^*(\varepsilon_I).
 \]
 Pero $\phi^*(\varepsilon_I)=\phi^*(\varepsilon_{i_1}\land\dots\land\varepsilon_{i_p})=\phi^*(\varepsilon_{i_1})\land\dots\land\phi^*(\varepsilon_{i_p})$, luego
 \[
-d\phi^*(\varepsilon_I)=\sum_{k=1}^p(-1)^k\phi^*(\varepsilon_{i_1})\land\dots\land d\phi^*(\varepsilon_{i_k})\land\dots\land \phi^*(\varepsilon_{i_p})=
+d\phi^*(\varepsilon_I)=\sum_{k=1}^p(-1)^k\phi^*(\varepsilon_{i_1})\land\dots\land d\phi^*(\varepsilon_{i_k})\land\dots\land \phi^*(\varepsilon_{i_p})=0
 \]
 porque $d\phi^*(\varepsilon_{i_k})=d(d\phi_k))=0$.
 
@@ -339,14 +343,14 @@ Dado $\phi:U_1\to U_2$ diferenciable, $\{\phi^*:\Omega^p(U_2)\to\Omega^p(U_1)\}_
 H^p(\phi)=\phi^*:H^p(U_2)\to H^p(U_1)
 \]
 \[
-[z]\mapsto H^p(\phi)[z]:=[\phi^*(z)]
+[z]\mapsto H^p(\phi)[z]:=[\phi^*(z)].
 \]
 
 Veamos que está bien definida. Sea $[z]\in H^p(U_2)$. Entonces $dz=0$. Así que $d\phi^*(z)=\phi^*d(z)=0$, por lo que $\phi^*(z)$ es cerrada y define una clase de cohomología. Ahora, si $[z']=[z]\in H^p(U_2)$, $z'-z=d\tau$ para $\tau\in\Omega^{p-1}(U_2)$, luego $z'=z+d\tau\Rightarrow \phi^*(z')=\phi^*(z+d\tau)=\phi^*(z)+\phi^*(d\tau)=\phi^*(z)+d\phi^*(\tau)$. Entonces $[\phi^*(z)]=[\phi^*(z')]$. Además, tenemos
 \[
 \phi^*([w]\land[\tau])=\phi^*([w\land\tau])=[\phi^*(w\land\tau)]=[\phi^*(w)\land\phi^*(\tau)]=[\phi^*(w)]\land[\phi^*(\tau)]=\phi^*([w])\land\phi^*([\tau])
 \]
-Así que $\phi^*:H^*(U_2)\to H^*(U_1)$ es un $\R$-homomorfismo de álgebras DGA. Así que hemos establecitdo un functor contravariantes entre abiertos euclideos con aplicaciones diferenciables y  DGA con homomorfismos.
+Así que $\phi^*:H^*(U_2)\to H^*(U_1)$ es un $\R$-homomorfismo de álgebras DGA. De esta forma hemos establecido un functor contravariante entre abiertos euclídeos con aplicaciones diferenciables y  DGA con homomorfismos.
 
 \end{document}
 
