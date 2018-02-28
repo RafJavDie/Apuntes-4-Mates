@@ -1,4 +1,4 @@
-%\documentclass[twoside]{article}
+\documentclass[twoside]{article}
 \usepackage{../../estilo-ejercicios}
 \newcommand{\lex}{<_{lex}}
 \newcommand{\grlex}{<_{grlex}}
@@ -231,15 +231,35 @@ this form). Let $LM( f_i) = x^{α(i)}$ and define
 (Note that $\Z^n_{≥0}$ is the disjoint union of the $Δ_i$ and $Δ$.)
 \begin{enumerate}[a.]
 \item Show that $β ∈ Δ_i$ if and only if $x^{α(i)}$ divides $x^β$ and no $x^{α(j)}$ with $j < i$ divides $x^β$.
-\item Show that $γ ∈ Δ$ if and only if no $x^{α(i)}$ divides $x^γ$.
+\item Show that $γ ∈ \overline{Δ}$ if and only if no $x^{α(i)}$ divides $x^γ$.
 \item Show that in the expression $f = q_1 f_1 + \dots + q_s f_s + r$ computed by the division
 algorithm, for every $i$, every monomial $x^β$ in $q_i$ satisfies $β + α(i) ∈ Δ_i$, and every
-monomial $x^γ$ in $r$ satisfies $γ ∈ Δ$.
+monomial $x^γ$ in $r$ satisfies $γ ∈ \overline{Δ}$.
 \item Show that there is exactly one expression $f = q_1 f_1 + \dots + q_s f_s + r$ satisfying the
 properties given in part (c).
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion}\mbox{}
+\begin{enumerate}[a.]
+\item Si $β \in Δ_i$, sii $β \in α(i) + \Z_{≥0}^n$ y $β \notin \bigcup_{j=1}^{i-1} Δ_j$.
+Lo primero se da si y sólo si $β = α(i) + δ$ para algún $δ \in \Z_{≥0}$, es decir, $x^β = x^{α(i)}\cdot x^δ$.
+En definitiva, si y sólo si $x^{α(i)}$ divide a $x^β$.
+Supongamos que $x^β$ fuera divisble entre $x^{α(j)}$ para $j < i$.
+Esto se da si y sólo si existe $γ$ tal que $x^β = x^{α(j)} \cdot x^γ$, es decir, $β = α(j) + γ \in α(j) + \Z_{≥0}^n \subset Δ_j$.
+Esto demuestra las dos implicaciones.
+\item $γ$ no está en $\overline{Δ}$ si y sólo si $γ \in Δ_i$ para algún $i$, si y sólo si $γ$ es divisible por $x^{α(i)}$ por el apartado anterior.
+\item Claramente, $β+α(i) \in α(i) + \Z_{≥0}^n$.
+Hay que ver que $β+α(i) \notin Δ_j$ para cualquier $j < i$.
+Por el algoritmo de la división, $x^β = LM(p)/LM(f_i)$ para el primer $f_i$ donde sea posible esta división.
+En otras palabras, $β = multideg(p) - α(i)$ para el primer $i$ donde sea posible.
+Si existiera $x^{β+α(i)}$ fuera divisible por un $x^{α(j)}$ con $j < i$, tendríamos que hay $δ$ tal que $δ+α(j)=β+α(i)=multideg(f)$.
+Esto no es posible, pues la primera $j$ donde tenemos $multideg(f)-α(j) \in \Z_{≥0}^n$ es en $j=i$.
+Por el apartado (a), esto se resume en decir que $β+α(i) \in Δ_i$.
+
+Por el algoritmo de la división, todos los monomios del resto no son divisibles por $x^{α(i)}$, luego todos los monomios del resto están en $\overline{Δ}$ por el apartado (b).
+
+\item Sea $f = q_1 f_1 + \dots + q_s f_s + r = q_1' f_1 + \dots q_s' f_s + r'$.
+\end{enumerate}
 \end{solucion}
 
 \newpage
