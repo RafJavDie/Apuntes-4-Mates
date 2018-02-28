@@ -104,7 +104,7 @@ Show that grlex is a monomial order according to Definition 1.
 \begin{itemize}
 \item Orden total: Cierto a partir de la definición.
 \item Compatible con producto de monomios: Sea $α \grlex β$.
-Si $|α|>|β|$, entonces $|α+γ|=|α|+|γ|>|β|+|γ|>|β+γ|$, luego $α+γ \grlex β+γ$.
+Si $|α|>|β|$, entonces $|α+γ|=|α|+|γ|>|β|+|γ|=|β+γ|$, luego $α+γ \grlex β+γ$.
 Si $|α|=|β|$, entonces $α+γ \grlex β+γ$, pues $α+γ \lex β+γ$.
 \item $(\Z_{≥0}^n,\grlex)$ está bien ordenado: Supongamos que este no fuera el caso.
 Entonces existe una secuencia infinita:
@@ -230,6 +230,63 @@ Esto es equivalente a comprobar si hay una cantidad finita de elementos entre $0
 \gamma\geq\gamma_1\geq\gamma_2\geq\dots\geq 0.
 \]
 En particular, $\gamma_1\geq\gamma_2\geq\cdots$ es una sucesión decreciente, por lo que se tiene que estabilizar en algún punto, así que hay una cantidad finita.
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{2.2.11}
+Let $>$ be a monomial order on $\kn$.
+\begin{enumerate}[a.]
+\item Let $f ∈ \kn$ and let $m$ be a monomial. Show that $LT(m f) = m LT( f )$.
+\item Let $f , g ∈ \kn$. Is $LT( f g)$ necessarily the same as $LT( f ) LT(g)$?
+\item If $f_i, g_i ∈ \kn$, $1 ≤ i ≤ s$, is $LM(\sum_{i=1}^s f_ig_i)$ necessarily equal to $LM( f_i)LM(g_i)$ for some $i$?
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Sea $f=\sum_s a_sx^s$ y sea $q$ tal que $LT(f)= a_qx^q$. Por definición $x^q > x^s$ para todo $s\neq q$. Ahora bien, $mf = \sum a_s m x^s$. Por definición de orden de monomios, si $x^q > x^s$ entonces $x^q m > x^s m$. Es claro, por tanto, que $LT(mf)= x^s m = m LT(f)$.
+\item En efecto, ha de ser así. Si $f=\sum_s a_s x^s$ y $g=\sum_h b_h x^h$ entonces $fg = \sum_{s,h} a_s b_h x^s x^h$. Sean $p,q$ tales que $LT(f)=a_p x^p$, $LT(g)=b_q x^q$. Sea $a_s b_h x^s x^h$ cualquier término de $fg$ distinto de $a_pb^qx^px^q$. Dado que $x^p > x^s$ y $x^q > x^h$ tenemos que $x^p x^q > x^s x^h$, por lo que $x^{p+q}$ es el monomio líder, de donde se deduce inmediatamente el resultado.
+\item No. Tomemos $s=2$, $f_1 = f_2 = g_1 = x$, $g_2 = -x$. Es claro que tenemos las igualdades $LM(f_1)LM(g_1)= LM(f_2)LM(g_2)=x^2$ pero $f_1g_1+f_2g_2 = 0$, y $LM(0)$ no está siquiera definido.
+\end{enumerate}
+\end{solucion}
+
+
+\newpage
+\begin{ejercicio}{2.2.12}
+Lemma 8 gives two properties of the multidegree
+\begin{enumerate}[a.]
+\item Prove Lemma 8. Hint: The arguments used in Exercise 11 may be relevant.
+\item Suppose that $multideg( f) = multideg(g)$ and $f +g \neq 0$. Give examples to show that $multideg( f + g)$ may or may not equal $\max(multideg( f ), multideg(g))$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Probemos los dos enunciados.
+\begin{enumerate}[(i)]
+\item Hemos probado en el Ejercicio 11 que $LT(fg)=LT(f)LT(g)$. Esto implica en particular que $LM(fg)=LM(f)LM(g)$, es decir, que $x^h=x^px^q=x^{p+q}$, donde $h=multideg(fg)$, $p=multideg(f)$ y $q=multideg(q)$. El resultado se sigue trivialmente.
+\item Distingamos casos.
+\begin{itemize}
+\item Si $LM(f)\neq LM(g)$, entonces o bien $LM(f)>LM(g)$ o bien $LM(g)>LM(f)$. Supongamos sin pérdida de generalidad que tenemos la primera desigualdad. Entonces se sigue trivialmente que $LM(f)=LM(f+g)$ o equivalentemente, $multideg(f+g)=multideg(f)$ y se tiene el resultado.
+\item Si tenemos la igualdad, tenemos que distinguir casos nuevamente
+\begin{itemize}
+\item Si $LC(f)+LC(g)\neq 0$ entonces en $f+g$ está presente el monomio $LM(f)=LM(g)$ y se sigue fácilmente que es precisamente $LM(f+g)$, de donde tendremos que
+$$
+multideg(f+g)=multideg(f)=multidef(g)
+$$
+\item Si $LC(f)=-LC(g)$ entonces podemos es claro que necesariamente cada monomio de $f+g$ es menor que $LM(f)$, de donde tenemos trivialmente que
+$$
+multideg(f+g)<multideg(f)=multidef(g)
+$$
+\end{itemize}
+\end{itemize}
+\end{enumerate}
+\item Si tomamos $f=x^2+x$, $g=x^2$ entonces $$multideg(f+g)=multideg(f)=multideg(g)$$
+Si ahora tomamos $f=x^2+x$ y $g=-x^2$ entonces 
+$$
+multideg(f+g)<multideg(f)=multidef(g)
+$$
+\end{enumerate}
 \end{solucion}
 
 \newpage
