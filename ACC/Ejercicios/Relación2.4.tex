@@ -111,10 +111,10 @@ to $β$ in the shaded region shown at the top of the next page.
 Suppose that $I =\langle 
 x^{α} \mid α ∈ A\rangle$ is a monomial ideal, and let $S$ be the set of all exponents
 that occur as monomials of $I$. For any monomial order $>$, prove that the smallest element
-of $S$ with respect to $>$ must lie in A.
+of $S$ with respect to $>$ must lie in $A$.
 \end{ejercicio}
 \begin{solucion}
-
+Sea $\alpha$ el menor elemento de $A$, que existe porque $>$ es un buen orden. Entonces cualquier monomio de $I$ tiene al menos multigrado $\alpha$, pues el producto de monomios nunca disminuye el multigrado. Así que el menor elemento de $S$ no puede ser menor que $\alpha$, así que es de hecho $\alpha$.
 \end{solucion}
 
 \newpage
@@ -128,7 +128,9 @@ divisible by $x^{α(i)}$ for some $α(i) ∈ A$. Prove that $I =\langle
 x^{α(1)},\dots , x^{α(s)}\rangle$.
 \end{ejercicio}
 \begin{solucion}
-
+Claramente $\langle 
+x^{α(1)},\dots , x^{α(s)}\rangle\subseteq I$. Por otra parte, como $I=\langle 
+x^{β(1)},\dots , x^{β(s)}\rangle$ y cada $\beta(i)$ es divisible por un $\alpha(i)$, podemos general los $\beta(i)$ a partir de los $\alpha(i)$, así que tenemos la otra contención.
 \end{solucion}
 
 \newpage
@@ -139,7 +141,7 @@ a nonempty subset $A ⊆ \Z^n_{≥0}$, there are finitely many elements $α(1),\
 that for every $α ∈ A$, there exists some $i$ and some $γ ∈ \Z^n_{≥0}$ such that $α = α(i) + γ$.
 \end{ejercicio}
 \begin{solucion}
-
+$I=\gene{x^{\alpha}\mid \alpha\in A}$ está generado por $x^{\alpha(1)},\dots,x^{\alpha(s)}$ si y solo si para todo $\alpha\in A$ existe $γ ∈ \Z^n_{≥0}$ existe algún $i$ tal que $x^{\alpha}=x^{\alpha(i)}x^{\gamma}$ si y solo si $\alpha=\alpha(i)+\gamma$. 
 \end{solucion}
 
 \newpage
@@ -167,7 +169,7 @@ is called a product order. It is clear that many other monomial orders can be cr
 this method.
 \end{ejercicio}
 \begin{solucion}
-
+El orden es total pues tanto lex como grlex lo son. Si $(\alpha,\beta)>(\gamma,\delta)$ con $\alpha>_{lex}\beta$ entonces es claro que la suma conserva el orden por ser lex monomial. En el otro caso, la suma mantiene la primera igualdad y por tanto el orden también se conserva puesto que grlex es orden monomial. Por último, usando el Corollary 6, tenemos que es un buen orden pues $(0,0)\leq (\alpha,\beta)$ ya que los dos órdenes cumplen esta propiedad.
 \end{solucion}
 
 \newpage
