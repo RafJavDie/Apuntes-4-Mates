@@ -28,6 +28,11 @@ $I=\langle x^\alpha\mid\alpha\in A\rangle$ donde $A$ es el conjunto de multigrad
 Complete the proof of Lemma 3 begun in the text.
 \end{ejercicio}
 \begin{solucion}
+Tenemos que probar que si $f\in I$ monomial, entonces cada término de $f$ está en $I$. Pongamos que $I=\gene{x^{\alpha} \mid \alpha\in A\subseteq\Z^n_{\geq 0}}$. Entonces $f=\sum_{i=1}^s h_ix^{\alpha(i)}$ para $h_i\in k[x_1,\dots, x_n]$ y $\alpha(i)\in A$. Ahora expandimos los $h_i$ y nos queda
+\[
+f=\sum_{i=1}^s\left(\sum_j c_{i,j}x^{\beta(i,j)}\right)x^{\alpha(i)}=\sum_{i,j} c_{i,j}x^{\beta(i,j)}x^{\alpha(i)}.
+\]
+Agrupando los términos del mismo multigrado se llega al resultado.
 \end{solucion}
 \newpage
 
@@ -35,13 +40,53 @@ Complete the proof of Lemma 3 begun in the text.
 Let $I = \langle
 x^6, x^2y^3, xy^7\rangle ⊆ k[x, y]$.
 \begin{enumerate}[a.]
-\item In the $(m, n)$-plane, plot the set of exponent vectors $(m, n)$ of monomials xmyn appearing
+\item In the $(m, n)$-plane, plot the set of exponent vectors $(m, n)$ of monomials $x^my^n$ appearing
 in elements of $I$.
 \item If we apply the division algorithm to an element $f ∈ k[x, y]$, using the generators of $I$
 as divisors, what terms can appear in the remainder?
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a.]
+\item Con Geogebra hacemos este dibujito mono.
+
+\begin{center}
+\definecolor{cqcqcq}{rgb}{0.7529411764705882,0.7529411764705882,0.7529411764705882}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-0.8,-0.8) rectangle (9.8,7.8);
+\draw [color=cqcqcq,, xstep=1.0cm,ystep=1.0cm] (-6.06,-0.72) grid (16.94,10.42);
+\draw[->,color=black] (-6.06,0.) -- (16.94,0.);
+\foreach \x in {-6.,-5.,-4.,-3.,-2.,-1.,1.,2.,3.,4.,5.,6.,7.,8.,9.,10.,11.,12.,13.,14.,15.,16.}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[->,color=black] (0.,-0.72) -- (0.,10.42);
+\foreach \y in {,1.,2.,3.,4.,5.,6.,7.,8.,9.,10.}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-6.06,-0.72) rectangle (16.94,10.42);
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (1.,12.) -- (1.,7.) -- (2.,7.) -- (2.,3.) -- (6.,3.) -- (6.,0.) -- (18.,0.) -- (18.,11.) -- cycle;
+\draw [line width=2.pt,domain=6.0:16.940000000000005] plot(\x,{(-0.-0.*\x)/13.});
+\draw [line width=2.pt] (1.,7.) -- (1.,10.42);
+\draw [line width=2.pt] (1.,12.)-- (1.,7.);
+\draw [line width=2.pt] (1.,7.)-- (2.,7.);
+\draw [line width=2.pt] (2.,7.)-- (2.,3.);
+\draw [line width=2.pt] (2.,3.)-- (6.,3.);
+\draw [line width=2.pt] (6.,3.)-- (6.,0.);
+\draw [line width=2.pt] (6.,0.)-- (18.,0.);
+\draw [line width=2.pt] (18.,0.)-- (18.,11.);
+\draw [line width=2.pt] (18.,11.)-- (1.,12.);
+\begin{scriptsize}
+\draw [fill=black] (6.,0.) circle (2.5pt);
+\draw[color=black] (5.6,0.37) node {$(6,0)$};
+\draw [fill=black] (2.,3.) circle (2.5pt);
+\draw[color=black] (1.6,3.37) node {$(2,3)$};
+\draw [fill=black] (1.,7.) circle (2.5pt);
+\draw[color=black] (0.6,7.37) node {$(1,7)$};
+\end{scriptsize}
+\end{tikzpicture}
+\end{center}
+
+\item En el resto aparecerán los términos que quedan fuera de la región sombreada, pues son los que no son divisibles por ninguno de los monomios de la base.
+\end{enumerate}
 \end{solucion}
 
 \newpage
