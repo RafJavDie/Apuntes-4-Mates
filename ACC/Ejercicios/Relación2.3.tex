@@ -265,11 +265,18 @@ Por el algoritmo de la división, todos los monomios del resto no son divisibles
 \newpage
 
 \begin{ejercicio}{2.3.12}
-Show that the operation of computing remainders on division by $F = (f_1, \dots , f_s)$ is
-linear over $k$. That is, if the remainder on division of $g_i$ by $F$ is $r_i$, $i = 1, 2$, then, for any
-$c_1, c_2 ∈ k$, the remainder on division of $c_1g_1+c_2g_2$ is $c_1r_1+c_2r_2$. Hint: Use Exercise \ref{ejer:2.3.11}.
+Show that the operation of computiing remainders on division by $F = (f_1,\dots,f_s)$ is linear over $k$.
+That is, if the remainder on division of $g_i$ by $F$ is $r_i$, $i=1,2$, then, for any $c_1,c_2 \in k$, the remainder on division of $c_1 g_1 + c_2 g_2$ is $c_1 r_1 + c_2 r_2$.
+Hint: Use Exercise \ref{ejer:2.3.12}
 \end{ejercicio}
 \begin{solucion}
+Sean $g_i = q_i^1 f_1 + \dots q_i^s f_s + r_1$.
+Se tiene que:
+\[ c_1 g_1 + c_2 g_2 = (c_1 q_1^1+ c_2 q_2^1) f_1 + \dots + (c_1 q_1^s + c_2 q_2^s) f_s + (c_1 r_1 + c_2 r_2) \]
+Como los monomios de $c_1 q_1^i+ c_2 q_2^i$ son monomios de $q_1^i$ ó $q_2^i$, son monomios que están $Δ_i$. Igualmente, los monomios de $c_1 r_1 + c_2 r_2$ están en $\overline{Δ}$.
+
+Por el apartado (d) del ejercicio \ref{ejer:2.3.12}, esto quiere decir que la expresión anterior es el resultado de la división.
+En particular, el resto de la división es efectivamente $c_1 r_1 + c_2 r_2$.
 \end{solucion}
 
 \end{document}

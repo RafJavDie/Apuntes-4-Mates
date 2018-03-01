@@ -25,6 +25,12 @@ LT(g1), LT(g2), LT(g3)\rangle$.
 Se comprueba que el máximo común divisor de los 3 polinomios es 1, por lo que $1\in I$ pero claramente $Lt(1)=1\notin \langle
 LT(g1), LT(g2), LT(g3)\rangle$.
 \end{solucion}
+\begin{solucion}
+Tomamos
+\[ g = g_2 - yg_3 = xy - z^2 - xy + y^2z^4 = y^2z^4 - z^2 \in I\]
+pero $LT(g) = y^2z^4 \notin \gene{LT(g_1),LT(g_2),LT(g_3)}$.
+\end{solucion}
+
 \newpage
 
 \begin{ejercicio}{2.5.2}
@@ -39,17 +45,13 @@ you did in those exercises.
 \newpage
 
 \begin{ejercicio}{2.5.3}
-To generalize the situation of Exercises 1 and 2, suppose that $I = 
-\gene{ f_1,\dots, fs}$ is an ideal
-such that 
-$\gene{LT( f_1),\dots , LT( f_s)}$ is strictly smaller than 
-$\gene{LT(I)}$.
+To generalize the situation of Exercises 1 and 2, suppose that $I = \gene{f_1, \dots, fs}$ is an ideal
+such that $\gene{LT(f_1), \dots, LT(f_s)}$ is strictly smaller than $\gene{LT(I)}$.
 
 \begin{enumerate}[a.]
-\item Prove that there is some $f ∈ I$ whose remainder on division by $f_1,\dots , f_s$ is nonzero.
-Hint: First show that $LT( f ) \not∈ 
-\gene{LT( f_1),\dots , LT( f_s)}$ for some $f ∈ I$. Then use
-Lemma 2 of §4.
+\item Prove that there is some $f ∈ I$ whose remainder on division by $f_1, \dots, f_s$ is nonzero.
+Hint: First show that $LT(f) \not∈ \gene{LT(f_1), \dots, LT(f_s)}$ for some $f ∈ I$
+Then use Lemma 2 of §4.
 \item What does part (a) say about the ideal membership problem?
 \item How does part (a) relate to the conjecture you were asked to make in Exercise 8 of
 §3?
@@ -57,8 +59,16 @@ Lemma 2 of §4.
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
-\item 
-\item 
+\item Sea $g \in \gene{LT(I)}$ tal que $g \notin \gene{LT(f_1),\dots , LT(f_s)}$.
+Por el lema 2, como $\gene{LT(I)}$ es ideal monomial, todos los monomios de $g$ deben estar en $\gene{LT(I)}$.
+Al menos, uno de ellos, llamémoslo $x^{α}$ debe estar en $\gene{LT(I)}$ pero no en $\gene{LT(f_1), \dots, LT(f_s)}$.
+De nuevo, por el lema 2, existe un $f \in I$ tal que $LT(f)$ divide a $x^{α}$.
+Sin embargo $LT(f) \notin \gene{LT(f_1),\dots , LT(f_s)}$, pues eso implicaría que $x^{α} \in \gene{LT(f_1), \dots, LT(f_s)}$.
+
+Entonces, al aplicar el algoritmo de la división de $f$ entre $f_1,\dots,f_s$, al no ser divisible $LT(f)$ por $LT(f_1),\dots,LT(f_s)$, se añade $LT(f)$ al resto.
+Luego el resto es distinto de cero.
+\item Esto nos dice que si $\gene{LT(f_1), \dots , LT(f_s)}$ está estrictamente contenido en $\gene{LT(I)}$, entonces que si el resto de la división de $f$ por $f_1,\dots,f_s$ no es cero, esto no quiere decir que $f$ no esté en $I$.
+\item Podemos precisar la conjetura que hicimos en el ejercicio 2.3.8 con lo que hemos dicho en el apartado (b). 
 \end{enumerate}
 \end{solucion}
 
@@ -66,20 +76,27 @@ Lemma 2 of §4.
 
 \begin{ejercicio}{2.5.4}
 If $I ⊆ k[x_1,\dots , x_n]$ is an ideal, prove that 
-$\gene{LT(g) | g ∈ I\setminus \{0\}} = 
-\gene{LM(g) | g ∈ I\setminus \{0\}}$.
+$\gene{LT(g) \mid g ∈ I\setminus \{0\}} = \gene{LM(g) \mid g ∈ I\setminus \{0\}}$.
 \end{ejercicio}
 \begin{solucion}
-
+Sea $f \in \gene{LT(g) \mid g ∈ I\setminus \{0\}}$.
+Entonces
+\[ f = \sum_{i=1}^s \left(\sum_{j=1}^t c_{ij} x^{α_i}\right) LT(g_i) = \sum_{i=1}^s \left(\sum_{j=1}^t LC(g_i) c_{ij} x^{α_i}\right) LM(g_i) \in \gene{LM(g) \mid g ∈ I\setminus \{0\}} \]
+Análogamente, sea $f \in \gene{LM(g) \mid g ∈ I\setminus \{0\}}$. Entonces:
+\[ f = \sum_{i=1}^s \left(\sum_{j=1}^t c_{ij} x^{α_i}\right) LM(g_i) = \sum_{i=1}^s \left(\sum_{j=1}^t \frac{1}{LC(g_i)} c_{ij} x^{α_i}\right) LT(g_i) \in \gene{LT(g) \mid g ∈ I\setminus \{0\}} \]
 \end{solucion}
 \newpage
 
 \begin{ejercicio}{2.5.5}
-Let $I$ be an ideal of $k[x_1,\dots , x_n]$. Show that $G = {g_1,\dots , g_t} ⊆ I$ is a Gröbner basis of
+Let $I$ be an ideal of $k[x_1, \dots, x_n]$. Show that $G = {g_1, \dots, g_t} ⊆ I$ is a Gröbner basis of
 $I$ if and only if the leading term of any element of $I$ is divisible by one of the $LT(g_i)$.
 \end{ejercicio}
 \begin{solucion}
+Supongamos que $G$ fuera una base de Gröbner de $I$.
+Sea $f \in I$, entonces $LT(f) \in \gene{LT(I)} = \gene{LT(g_1),\dots,LT(g_t)}$.
+Por el lema 2, esto implica que $LT(f)$ es divisible por alguno de los $LT(g_i)$.
 
+La implicación contraria puede verse demostrada en \ref{ejer:2.5.3}.
 \end{solucion}
 
 \newpage
@@ -98,7 +115,12 @@ the $LT(g_i)$. Hence, terms are never added to the remainder, so that $f =
 the algorithm terminates.
 \end{ejercicio}
 \begin{solucion}
+Esta demostración no sigue exactamente el camino del ejercicio, pero es parecido.
 
+Tomamos $g_1,\dots,g_t$ verificando el enunciado y sea $f \in I$.
+Dividiendo $f$ entre $g_1,\dots,g_t$, tenemos que existen $q_1,\dots,q_t$ y $r$ en $k[x_1,\dots,x_n]$ tal que $f = q_1 g_q + \dots + q_s g_t + r$ donde ningún monomio de $r$ es divisible por $LT(g_1),\dots,LT(g_t)$.
+Si $r \neq 0$, $r = f - \sum_{i=1}^s q_i g_i \in I$, sin embargo $LT(r) \notin \gene{LT(g_1),\dots,LT(g_t)} = \gene{LT(I)}$. Esto no es posible por definición de $\gene{LT(I)}$.
+Entonces $r = 0$, luego $f = q_1 g_1 + \dots + q_s g_t$, es decir, $I = \gene{g_1,\dots,g_t}$.
 \end{solucion}
 
 \newpage
