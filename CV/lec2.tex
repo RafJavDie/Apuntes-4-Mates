@@ -352,5 +352,54 @@ Veamos que está bien definida. Sea $[z]\in H^p(U_2)$. Entonces $dz=0$. Así que
 \]
 Así que $\phi^*:H^*(U_2)\to H^*(U_1)$ es un $\R$-homomorfismo de álgebras DGA. De esta forma hemos establecido un functor contravariante entre abiertos euclídeos con aplicaciones diferenciables y  DGA con homomorfismos.
 
+
+\begin{ej}
+Sea $\gamma:(a,b)\to U\subseteq\R^m$ una curva diferenciable. Entonces $\gamma^*:\Omega^*(U)\to\Omega^*((a,b))$. Sea $w=f_1dx_1+\cdots+f_m dx_m\in\Omega^1(U)$. Vamos a calcular $\gamma^*(w)\in\Omega^1((a,b))$.
+\[
+\gamma^*(f_1dx_1+\cdots+f_m dx_m)=\gamma^*(f_1\land dx_1+\cdots+f_m d\land x_m)=\gamma^*(f_1)\land\gamma^*(dx_1)+\cdots+\gamma^*(f_m)\land\gamma^*(dx_m)=
+\]
+\[
+f_1\circ\gamma\land d\gamma_1+\cdots+f_m\circ\gamma\land d\gamma_m=f_1\circ\gamma\land \gamma_1'dt+\cdots+f_m\circ\gamma\land d\gamma_m'dt=\langle (f_1\gamma,\dots,f_m\gamma),(\gamma_1',\dots,\gamma_m')\rangle dt=
+\]
+\[
+\langle (f\circ\gamma(t),\gamma'(t)\rangle dt
+\]
+En física, se suele definir el trabajo a lo largo de la curva $\gamma$ como $A_{\gamma}(X)=\int_a^b\gene{X\circ\gamma(t),\gamma'(t)}dt=\int_a^b\gamma^*(w)$, donde $X:U\to\R^m$. Si $X$ es el gradiente de alguna función $\phi$ (es decir, $X$ es exacta), entonces escribimos 
+\[
+A_{\gamma}(X)=\int_a^b\gamma^*(gad(\phi))=\int_a^b\gamma^*(d\phi)=\int_a^b d\gamma^*(\phi)=\gamma^*\phi(b)-\gamma^*\phi(a)=\phi\gamma(b)-\phi\gamma(a).
+\]
+\end{ej}
+\begin{ej}
+Sea $\phi:U_1\subseteq\R^m\dot U_2\subseteq\R^m$. Entonces $\phi^*:\Omega^m(U_2)\to\Omega^m(U_1)$ viene dada por $dx_1\land\dots\land dx_m\mapsto \det(D\phi)dx_1\land\dots\land dx_m$. En efecto,
+\begin{gather*}
+\phi^*(dx_1\land\dots\land dx_m)(v_1,\dots, v_m)=\phi^*(dx_1)\land\dots\land\phi^*(dx_m)(v_1,\dots,v_m)=d\phi^*(x_1)\land\dots\land d\phi^*(x_m)(v_1,\dots, v_m)=\\
+d\phi_1\land\dots\land d\phi_m(v_1,\dots, v_m)=\det\begin{pmatrix}
+d\phi_1(v_1) & \dots & d\phi_1(v_m)\\
+\vdots & &\vdots\\
+d\phi_m(v_1) & \dots & d\phi_m(v_m)
+\end{pmatrix}=\det\left(\begin{pmatrix}
+\parcial{\phi_1}{x_1} &\dots & \parcial{\phi_1}{x_m}\\
+\vdots & & \vdots\\
+\parcial{\phi_m}{x_1} & \dots & \parcial{\phi_m}{x_m}
+\end{pmatrix}\begin{pmatrix}
+v_1^1 & \dots & v^m_1\\
+\vdots & & \vdots\\
+v_m^1 & \dots & v^m_m
+\end{pmatrix}\right)\\
+\det(D\phi)\begin{pmatrix}
+dx_1(v_1) & \dots & dx_1(v_m)\\
+\vdots & & \vdots\\
+dx_m(v_1) & \dots & dx_m(v_m)
+\end{pmatrix}=\det(D\phi)dx_1\land\dots\land dx_m(v_1,\dots, v_m)
+\end{gather*}
+\end{ej}
+
+\begin{ej}
+Consideremos $\phi:\R^n\times\R\to\R^n$ dada por $(x,t)\mapsto\phi(x)=\psi(t)x$ donde $\phi:\R\to\R$ es diferenciable. 
+\[
+\phi^*(dx_i)=d\phi_i=\sum_{j=1}^n\parcial{\phi_1}{x_j}dx_j+\parcial{\phi_i}{t}dt=\psi(t)dx_i+\psi'(t)x_idt.
+\]
+\end{ej}
+
 \end{document}
 
