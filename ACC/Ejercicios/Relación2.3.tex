@@ -252,14 +252,14 @@ this form). Let $LM( f_i) = x^{α(i)}$ and define
 \begin{align*}
 &Δ_1 = α(1) + \Z^n_{≥0},\\
 &Δ_2 = (α(2) + \Z^n_{≥0}) \setminus Δ_1,\\
-&\vdots\\
+&\;\vdots\\
 &Δ_s = (α(s) + \Z^n_{≥0}) \setminus
 \left(\bigcup^{s−1}_{i=1}
 Δ_i
 \right)
 ,\\
 &\overline{Δ} = \Z^n_{≥0} \setminus
-\left(\bigcup^{s−1}_{i=1}
+\left(\bigcup^{s}_{i=1}
 Δ_i
 \right)
 .
@@ -277,7 +277,7 @@ properties given in part (c).
 \end{ejercicio}
 \begin{solucion}\mbox{}
 \begin{enumerate}[a.]
-\item Si $β \in Δ_i$, sii $β \in α(i) + \Z_{≥0}^n$ y $β \notin \bigcup_{j=1}^{i-1} Δ_j$.
+\item Por definición $β \in Δ_i$ sii $β \in α(i) + \Z_{≥0}^n$ y $β \notin \bigcup_{j=1}^{i-1} Δ_j$.
 Lo primero se da si y sólo si $β = α(i) + δ$ para algún $δ \in \Z_{≥0}$, es decir, $x^β = x^{α(i)}\cdot x^δ$.
 En definitiva, si y sólo si $x^{α(i)}$ divide a $x^β$.
 Supongamos que $x^β$ fuera divisble entre $x^{α(j)}$ para $j < i$.
@@ -303,7 +303,7 @@ Por el algoritmo de la división, todos los monomios del resto no son divisibles
 \begin{ejercicio}{2.3.12}
 Show that the operation of computiing remainders on division by $F = (f_1,\dots,f_s)$ is linear over $k$.
 That is, if the remainder on division of $g_i$ by $F$ is $r_i$, $i=1,2$, then, for any $c_1,c_2 \in k$, the remainder on division of $c_1 g_1 + c_2 g_2$ is $c_1 r_1 + c_2 r_2$.
-Hint: Use Exercise \ref{ejer:2.3.12}
+Hint: Use Exercise \ref{ejer:2.3.11}
 \end{ejercicio}
 \begin{solucion}
 Sean $g_i = q_i^1 f_1 + \dots q_i^s f_s + r_1$.

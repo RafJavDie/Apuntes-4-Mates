@@ -32,7 +32,7 @@ Tenemos que probar que si $f\in I$ monomial, entonces cada término de $f$ está
 \[
 f=\sum_{i=1}^s\left(\sum_j c_{i,j}x^{\beta(i,j)}\right)x^{\alpha(i)}=\sum_{i,j} c_{i,j}x^{\beta(i,j)}x^{\alpha(i)}.
 \]
-Agrupando los términos del mismo multigrado se llega al resultado.
+Agrupando los términos del mismo multigrado, llegamos a que estos pueden escribirse como suma de $x^{\alpha(i)}$ multiplicados por monomios de $k[x_1,\dotsc,x_n]$, luego cada término de $f$ está en $I$.
 \end{solucion}
 \newpage
 
@@ -94,13 +94,14 @@ as divisors, what terms can appear in the remainder?
 \begin{ejercicio}{2.4.4}
 Let $I ⊆ k[x, y]$ be the monomial ideal spanned over $k$ by the monomials $x^{β}$ corresponding
 to $β$ in the shaded region shown at the top of the next page.
-\begin{enumerate}
-\item[a.] Use the method given in the proof of Theorem 5 to find an ideal basis for $I$.
-\item[b.] Find a minimal basis for I in the sense of Proposition 7.
+\begin{enumerate}[a.]
+\item Use the method given in the proof of Theorem 5 to find an ideal basis for $I$.
+\item Find a minimal basis for I in the sense of Proposition 7.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
+\item[]
 \item Tenemos $I=\langle x^3y^6,x^5y^4, x^6\rangle$. Usando el método del teorema 5, tenemos que la proyección de $I$ sería $\langle x^3\rangle$. Como $x^3y^6\in I$, $m=6$. Esto nos da los cortes $I_0=I_1=I_2=\gene{x^6}$ y $I_4=I_4\gene{x^5}$. Usando el teorema entonces tenemos $$I=\gene{ x^3y^6,x^5y^4,x^5y^5, x^6,x^6y, x^6y^2}$$
 \item En primer lugar podemos eliminar todos los monomios que contienen $x^6$ excepto él mismo, quedando $I=\gene{ x^3y^6,x^5y^4,x^5y^5, x^6}$. Ya solo podemos eliminar uno más, por lo que nos queda $I=\gene{ x^3y^6,x^5y^4, x^6}$, que es justo lo que tenía que salir.
 \end{enumerate}
@@ -141,14 +142,14 @@ a nonempty subset $A ⊆ \Z^n_{≥0}$, there are finitely many elements $α(1),\
 that for every $α ∈ A$, there exists some $i$ and some $γ ∈ \Z^n_{≥0}$ such that $α = α(i) + γ$.
 \end{ejercicio}
 \begin{solucion}
-$I=\gene{x^{\alpha}\mid \alpha\in A}$ está generado por $x^{\alpha(1)},\dots,x^{\alpha(s)}$ si y solo si para todo $\alpha\in A$ existe $γ ∈ \Z^n_{≥0}$ existe algún $i$ tal que $x^{\alpha}=x^{\alpha(i)}x^{\gamma}$ si y solo si $\alpha=\alpha(i)+\gamma$. 
+$I=\gene{x^{\alpha}\mid \alpha\in A}$ está generado por $x^{\alpha(1)},\dots,x^{\alpha(s)}$ si y solo si (aplicación directa del Lema 2) para todo $\alpha\in A$ existe $γ ∈ \Z^n_{≥0}$ existe algún $i$ tal que $x^{\alpha}=x^{\alpha(i)}x^{\gamma}$ si y solo si $\alpha=\alpha(i)+\gamma$. 
 \end{solucion}
 
 \newpage
 
 \begin{ejercicio}{2.4.8}
 If $I =\langle 
-x^{α(1)}, , x^{α(s)}\rangle$ is a monomial ideal, prove that a polynomial $f$ is in $I$ if and
+x^{α(1)},\dotsc , x^{α(s)}\rangle$ is a monomial ideal, prove that a polynomial $f$ is in $I$ if and
 only if the remainder of $f$ on division by $x^{α(1)}, \dots, x^{α(s)}$ is zero. Hint: Use Lemmas 2
 and 3.
 \end{ejercicio}
@@ -197,7 +198,36 @@ _{≥0}$.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-
+\begin{enumerate}[a.]
+\item[]
+\item Veamos las tres condiciones, Como no hay ambigüedad, voy a omitir la notación del $\cdot$ para el producto escalar.
+\begin{itemize}
+\item Primeramente, la irreflexividad, asimetría y transitividad se tienen trivialmente. Por tanto, es un orden estricto. Además, como $>$ es un orden total, necesariamente $>_u$ ha de serlo.
+\item Si $\alpha>_u \beta$ y $\gamma \in \Z^n_{\geq 0}$ entonces
+$$
+\alpha >_u \beta \Leftrightarrow u\alpha>u\beta\Leftrightarrow u\alpha+u\gamma >u\beta + u\gamma \Rightarrow u(\alpha+\gamma)>u(\beta+\gamma) \Leftrightarrow \alpha+\gamma >_u \beta + \gamma
+$$
+\item Finalmente, que $\alpha >_u 0$ se tiene por la independencia lineal de $u$ sobre $Q$. Como $u,\alpha \geq 0$, $\alpha u\geq 0$. Además, para que $u\alpha=0$, dado que $\alpha\in\Q^n$, necesariamente ha de tenerse que $\alpha=0$. 
+\end{itemize}
+\item Es claro que lo es, pues $1,\sqrt{2}>0$ y en caso de no ser linealmente independiente sobre $\Q^2$, tendríamos que existen $a,b\in \Q$ tales que
+$$
+a+b\sqrt{2}=0 \Rightarrow \sqrt{2} = -\frac{a}{b}
+$$
+Con lo que $\sqrt{2}$ sería racional.
+\item Tenemos que ver que $(1,\sqrt{2},\sqrt{3})$ es una tripleta independiente sobre $\Q^3$. Supongamos que $\exists a,b,c$ tales que
+$$
+a+b\sqrt{2}+c\sqrt{3}=0 
+$$
+Podemos suponer que $bc\neq 0$, pues si alguno de los dos fuese, tendríamos trivialmente el resultado. Equivalentemente tenemos que
+$$
+b\sqrt{2}+c\sqrt{3}=-a
+$$
+Es decir, tenemos una combinación lineal con coeficientes en $\Q^2\setminus\{(0,0)\}$ igualada a un racional. ¿Esto es posible? Si lo fuese, el cuadrado de esta combinación también habria de ser racional.
+$$
+(b\sqrt{2}+c\sqrt{3})^2 =2b^2+3c^2+2cb\sqrt{6}
+$$
+En mi casa esto es poco racional.
+\end{enumerate}
 \end{solucion}
 
 \newpage
