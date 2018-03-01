@@ -41,6 +41,9 @@ Un espacio topológico $X$ es irreducible sii todo abierto no vacío es denso.
 $X$ no es unión de dos cerrados propios sii $\emptyset$ no es intersección de dos abiertos sii $\not\exists$ abiertos disjuntos sii todo abierto no vacío corta todo abierto no vacío sii todo abierto no vacío es denso.
 \end{dem}
 
+\begin{propi}
+Una variedad algebraica (o conjunto algebraico) $W$ es irreducible si y sólo si $\I(W)$ es primo.
+\end{propi}
 \begin{dem}
 Supongamos que $\I(W)$ es primo y sea $W = U \cup V$. Basta ver que si $V \neq W$, entonces $U = V$.
 Supongamos que $W$ es reducible, entonces $W = U \cup V$ para algún cerrado $U$ y $V$, entonces $U=\V(I)$ y $V=\V(J)$ para ideales radicales $I$ y $J$ distintos.
@@ -50,6 +53,16 @@ Si $a \in \sqrt{IJ}$, entonces existe $a^p \in I$ e $a^q \in J$ tal que $p+q=n$.
 Como $I$ y $J$ son radicales, entonces $a \in I$ y $a \in J$, luego $a \in I\cap J$.
 Entonces $\I(W) = I \cap J$.
 
-Sea $fg \in \I(W)$, si $f$ y $g$ no están en $\I(W)$, entonces $\V(f)\cup\V(g)=\V(fg)\supset W$. Entonces $(\V(f) \cap W) \cup (\V(g) \cap W) = W$ y $W$ no es irreducible.
+Supongamos que $\I(W)$ no fuera primo. Sea $fg \in \I(W)$, si $f$ y $g$ no están en $\I(W)$, entonces $\V(f)\cup\V(g)=\V(fg)\supset W$. Entonces $(\V(f) \cap W) \cup (\V(g) \cap W) = W$ y $W$ no es irreducible.
+\end{dem}
+
+\begin{lemma}
+Un monomio $x^{α} \in \gene{LT(I)}$ si y sólo si $\exists f \in I$ tal que $LT(f) = x^{α}$.
+\end{lemma}
+\begin{dem}
+\begin{itemize}
+\item[($\Leftarrow$)] Definición de $\gene{LT(I)}$.
+\item[($\Rightarrow$)] Si $x^{α} \in \gene{LT(I)}$, entonces existe $f \in I$ tal que $LT(f) \mid x^{α}$ por el lema 2 de la sección 2.4. Digamos que $LT(f) = cx^{β}$. Tenemos que $α-β \in \Z_{≥0}^n$. Entonces $g:=\frac{1}{c}x^{α-β}f \in I$ y $LT(g) = x^{α}$.
+\end{itemize}
 \end{dem}
 \end{document}

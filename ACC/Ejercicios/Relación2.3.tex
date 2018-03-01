@@ -231,25 +231,52 @@ this form). Let $LM( f_i) = x^{α(i)}$ and define
 (Note that $\Z^n_{≥0}$ is the disjoint union of the $Δ_i$ and $Δ$.)
 \begin{enumerate}[a.]
 \item Show that $β ∈ Δ_i$ if and only if $x^{α(i)}$ divides $x^β$ and no $x^{α(j)}$ with $j < i$ divides $x^β$.
-\item Show that $γ ∈ Δ$ if and only if no $x^{α(i)}$ divides $x^γ$.
+\item Show that $γ ∈ \overline{Δ}$ if and only if no $x^{α(i)}$ divides $x^γ$.
 \item Show that in the expression $f = q_1 f_1 + \dots + q_s f_s + r$ computed by the division
 algorithm, for every $i$, every monomial $x^β$ in $q_i$ satisfies $β + α(i) ∈ Δ_i$, and every
-monomial $x^γ$ in $r$ satisfies $γ ∈ Δ$.
+monomial $x^γ$ in $r$ satisfies $γ ∈ \overline{Δ}$.
 \item Show that there is exactly one expression $f = q_1 f_1 + \dots + q_s f_s + r$ satisfying the
 properties given in part (c).
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion}\mbox{}
+\begin{enumerate}[a.]
+\item Si $β \in Δ_i$, sii $β \in α(i) + \Z_{≥0}^n$ y $β \notin \bigcup_{j=1}^{i-1} Δ_j$.
+Lo primero se da si y sólo si $β = α(i) + δ$ para algún $δ \in \Z_{≥0}$, es decir, $x^β = x^{α(i)}\cdot x^δ$.
+En definitiva, si y sólo si $x^{α(i)}$ divide a $x^β$.
+Supongamos que $x^β$ fuera divisble entre $x^{α(j)}$ para $j < i$.
+Esto se da si y sólo si existe $γ$ tal que $x^β = x^{α(j)} \cdot x^γ$, es decir, $β = α(j) + γ \in α(j) + \Z_{≥0}^n \subset Δ_j$.
+Esto demuestra las dos implicaciones.
+\item $γ$ no está en $\overline{Δ}$ si y sólo si $γ \in Δ_i$ para algún $i$, si y sólo si $γ$ es divisible por $x^{α(i)}$ por el apartado anterior.
+\item Claramente, $β+α(i) \in α(i) + \Z_{≥0}^n$.
+Hay que ver que $β+α(i) \notin Δ_j$ para cualquier $j < i$.
+Por el algoritmo de la división, $x^β = LM(p)/LM(f_i)$ para el primer $f_i$ donde sea posible esta división.
+En otras palabras, $β = multideg(p) - α(i)$ para el primer $i$ donde sea posible.
+Si existiera $x^{β+α(i)}$ fuera divisible por un $x^{α(j)}$ con $j < i$, tendríamos que hay $δ$ tal que $δ+α(j)=β+α(i)=multideg(f)$.
+Esto no es posible, pues la primera $j$ donde tenemos $multideg(f)-α(j) \in \Z_{≥0}^n$ es en $j=i$.
+Por el apartado (a), esto se resume en decir que $β+α(i) \in Δ_i$.
+
+Por el algoritmo de la división, todos los monomios del resto no son divisibles por $x^{α(i)}$, luego todos los monomios del resto están en $\overline{Δ}$ por el apartado (b).
+
+\item Sea $f = q_1 f_1 + \dots + q_s f_s + r = q_1' f_1 + \dots q_s' f_s + r'$.
+\end{enumerate}
 \end{solucion}
 
 \newpage
 
 \begin{ejercicio}{2.3.12}
-Show that the operation of computing remainders on division by $F = (f_1, \dots , f_s)$ is
-linear over $k$. That is, if the remainder on division of $g_i$ by $F$ is $r_i$, $i = 1, 2$, then, for any
-$c_1, c_2 ∈ k$, the remainder on division of $c_1g_1+c_2g_2$ is $c_1r_1+c_2r_2$. Hint: Use Exercise \ref{ejer:2.3.11}.
+Show that the operation of computiing remainders on division by $F = (f_1,\dots,f_s)$ is linear over $k$.
+That is, if the remainder on division of $g_i$ by $F$ is $r_i$, $i=1,2$, then, for any $c_1,c_2 \in k$, the remainder on division of $c_1 g_1 + c_2 g_2$ is $c_1 r_1 + c_2 r_2$.
+Hint: Use Exercise \ref{ejer:2.3.12}
 \end{ejercicio}
 \begin{solucion}
+Sean $g_i = q_i^1 f_1 + \dots q_i^s f_s + r_1$.
+Se tiene que:
+\[ c_1 g_1 + c_2 g_2 = (c_1 q_1^1+ c_2 q_2^1) f_1 + \dots + (c_1 q_1^s + c_2 q_2^s) f_s + (c_1 r_1 + c_2 r_2) \]
+Como los monomios de $c_1 q_1^i+ c_2 q_2^i$ son monomios de $q_1^i$ ó $q_2^i$, son monomios que están $Δ_i$. Igualmente, los monomios de $c_1 r_1 + c_2 r_2$ están en $\overline{Δ}$.
+
+Por el apartado (d) del ejercicio \ref{ejer:2.3.12}, esto quiere decir que la expresión anterior es el resultado de la división.
+En particular, el resto de la división es efectivamente $c_1 r_1 + c_2 r_2$.
 \end{solucion}
 
 \end{document}
