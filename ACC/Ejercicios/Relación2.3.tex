@@ -65,7 +65,31 @@ Compute the remainder on division:
 \item Repeat part (a) with the order of the set $F$ permuted cyclically.
 \end{enumerate}
 \end{ejercicio}
-
+\begin{solucion}
+Como no nos dan un orden, escogemos $grlex$.
+\[
+\begin{array}{rrr}
+   q_1\colon  & \CenterInCol{-xz^2} & r \\
+   q_2\colon  & \CenterInCol{0}\\
+     q_3\colon  & \CenterInCol{x^2}\\
+-y^2+x\PhantC & \multirow{2}*{$\sqrt{xy^2z^2 + xy - yz}$}\\
+-z^3+y\PhantC &\\
+z^2-1\PhantC &\\
+              & xy^2z^2-x^2z^2\\\cline{2-2}
+              &x^2z^2 +xy - yz \\
+              & x^2z^2-x^2\\\cline{2-2}
+              & x^2+xy-yz\\
+              & xy-yz& \to x^2\\
+              & -yz & \to xy\\
+              & 0& \to -yz
+\end{array}
+\]
+Luego tenemos que
+$$
+xy^2z^2 + xy - yz = -xz^2(x-y^2) + 0(y-z^3)+x^2(z^2-1)+(x^2+xy-yz)
+$$
+El apartado $b)$ se deja como ejercicio para 
+\end{solucion}
 \newpage
 
 \begin{ejercicio}{2.3.3}
@@ -86,8 +110,20 @@ Let $f = q_1 f_1 + \dots q_s f_s + r$ be the output of the divison algorithm.
 \begin{solucion}
 \begin{enumerate}[a.]
 \item[]
-\item Hemos visto en el texto que $q_i =LT(p)$ para algún valor de $p$ con $LT(p)\leq LT(f)$. Esto es, $multideg(p) \leq multideg(f)$. Tenemos
-$$multideg(q_i f_i) =multideg(q_i)+multideg(f_i)$$
+\item Hemos visto en el texto (Páginas 65-66) que $q_i =LT(p)/LT(f_i)$ para algún valor de $p$ que sabemos verifica $LT(p)\leq LT(f)$. Esto es, $$multideg(q_i) = multideg(p)-multideg(f_i) \leq multideg(f)-multidef(f_i)$$ 
+O equivalentemente
+$$multideg(f) \geq multideg(q_i)+multidef(f_i)$$
+Ahora basta tener en cuenta $multided(f_iq_i) = multidef(f_i)+multideg(q_i)$ por el Lema 8 (Página 60).
+\item Vamos a distinguir dos casos. 
+\begin{itemize}
+\item Si $r=f$ no hay nada que probar.
+\item Si $r\neq f$ entonces $\sum_i q_i f_i \neq 0$. Sea $g=-\sum_i q_i f_i$. Entonces, por el Lema 8 tenemos que
+$$
+multideg(r)=multideg(f+g) \leq \max{\{multideg(f),multideg(g)\}}=multideg(f)
+$$
+En la última igualdad hemos utilizidado el primer apartado y una sencilla inducción en la suma de los $q_if_i$.
+
+\end{itemize}
 
 \end{enumerate}
 \end{solucion}
@@ -138,7 +174,7 @@ whose remainder on division by $( f_1, f_2)$ is nonzero. Hint: You can find such
 the remainder is $g$ itself.
 \end{ejercicio}
 \begin{solucion}
-Cualquier polinomio cuyos términos sean no divisibles por los términos líderes de $f_1$ y $f_2$ vale.
+Cualquier polinomio cuyos términos sean no divisibles por los términos líderes de $f_1$ y $f_2$ vale. Por dar uno en concreto, $3x^2-y^2-y$.
 \end{solucion}
 
 \newpage
@@ -150,7 +186,7 @@ Cualquier polinomio cuyos términos sean no divisibles por los términos lídere
 ⊆ \R[x, y, z]$. Find two different polynomials $g$ (not constant multiples of each other).
 \end{ejercicio}
 \begin{solucion}
-$xy$, $xz$.
+Análogamente al caso anterior, escogemos un par de polinomios cuyos términos líderes no son divisibles por los términos líderes de $f_i$. Por ejemplo: $xy$, $xz$.
 \end{solucion}
 
 \newpage
@@ -202,7 +238,7 @@ Let $V ⊆ \R^3$ be the curve parametrized by $(t, t^m, t^n)$, $n,m ≥ 2$.
 \begin{solucion}
 \begin{enumerate}[a.]
 \item A estas alturas creo que está claro que $V=\V(y-x^m, z-x^n)$. 
-\item Usando razonamientos análogos a los del ejercicio anterior, tenemos que $\I(V)=\sqrt{\gene{y-x^m,z-x^n}}$. Quien quiera que compruebe si ese ideal es radical o no.
+\item Se tiene que $\I(V)={\gene{y-x^m,z-x^n}}$. Basta utilizar el Ejercicio 2.3.9 y el argumento del ejemplo de la Página 33.
 \end{enumerate}
 \end{solucion}
 
@@ -215,14 +251,14 @@ that is produced by the division algorithm (among all the possible expressions f
 this form). Let $LM( f_i) = x^{α(i)}$ and define
 \begin{align*}
 &Δ_1 = α(1) + \Z^n_{≥0},\\
-&Δ_2 = (α(2) + \Z^n_{≥0}) \ Δ_1,\\
+&Δ_2 = (α(2) + \Z^n_{≥0}) \setminus Δ_1,\\
 &\vdots\\
-&Δ_s = (α(s) + \Z^n_{≥0}) \
+&Δ_s = (α(s) + \Z^n_{≥0}) \setminus
 \left(\bigcup^{s−1}_{i=1}
 Δ_i
 \right)
 ,\\
-&\overline{Δ} = \Z^n_{≥0} \
+&\overline{Δ} = \Z^n_{≥0} \setminus
 \left(\bigcup^{s−1}_{i=1}
 Δ_i
 \right)
