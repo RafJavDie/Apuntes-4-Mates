@@ -65,27 +65,99 @@ d^*(fdx_1\land\dots\land dx_p)=(-1)^{np+n-1}*\circ d\circ *(fdx_1\land\dots\land
 (-1)^{np+n-1}*(d f\land dx_{p+1}\land\dots\land dx_n)=(-1)^{np+n-1}*\left(\left(\sum_{j=1}^n\parcial{f}{x_j}dx_j\right)\land dx_{p+1}\land\dots\land dx_n\right)=\\
 (-1)^{np+n-1}*\left(\left(\sum_{j=1}^p\parcial{f}{x_j}dx_j\right)\land dx_{p+1}\land\dots\land dx_n\right)=\sum_{j=1}^p(-1)^j\parcial{f}{x_j}dx_1\land\dots\land\hat{x}_j\land\dots\land dx_p
 \end{gather*}
-Hay un pequeño salto de fe con el signo, pero nos lo vamos a creer.
+
+Nótese lo siguiente:
+\[
+*(dx_j\land x_{p+1}\land\dots\land dx_p)_x=*(\varepsilon_j\land\varepsilon_{p+1}\land\dots\land\varepsilon_n)
+\]
+Recordemos que para $\sigma\in S(p,n-p)$ se tiene $*(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)})=sgn(\sigma)\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)})$. Entonces, consideremos la siguiente permutación para $i\in\{1,\dots, p\}$:
+\[
+\tau=\begin{pmatrix}
+1 & 2 & \dots &   n-p+1 & n-p+2& \dots & n-p+j+1 &n-p+i+2 & \dots & n\\
+i & p+1 & \dots & n      & 1   & \dots & j-1     & j+1    &\dots & p
+\end{pmatrix}
+\]
+Se tiene que $\tau\in S(n-p+1,p-1)$. $sgn(n)=(-1)^{n-j+1+np}$ pues $np+j-1+p(n-p)\equiv n-j-1+np\mod 2$.  Entonces,
+\[
+*(\varepsilon_j\land\varepsilon_{p+1}\land\dots\land\varepsilon_n)=*(\varepsilon_{\tau(1)}\land\dots\land\varepsilon_{\tau(n-p+1)})=sgn(\tau)\varepsilon_{\tau(n-p+2)}\land\dots\land\varepsilon_{\tau(n)}=sgn(\tau)\varepsilon_1\land\dots\land\hat{\varepsilon}_j\land\dots\varepsilon_p
+\]
+Como $(np+n-1)+(n-j+1+np)\equiv j\mod 2$, se tiene la última igualdad.
+
+Finalmente, si tenemos $d^*(fdx_{i_1}\land\dots\land dx_{i_p})$, entonces podemso considerar $\sigma\in S(p,n-p)$.
+\begin{gather*}
+d^*(fdxx_{\sigma(1)}\land\dots\land dx_{\sigma(p)})=(-1)^{np+n-1}*d*(f dx_{\sigma(1)}\land\dots\land dx_{\sigma(p)})\\
+(-1)^{np+n-1}*d(fdx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)})=(-1)^{np+n-1}*(\sum_{i=1}^n\parcial{f}{x_{\sigma(i)}}dx_{\sigma(i)}\land dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)})=\\
+(-1)^{np+n-1}*(\sum_{i=1}^p\parcial{f}{x_{\sigma(i)}}dx_{\sigma(i)}\land dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)})
+\end{gather*}
+
 \end{solucion}
 \newpage
 
 \begin{ejercicio}{3.3}
+Con la notación del ejercicio \ref{ejer:3.2}, el Laplaciano $\Delta:\Omega^p(U)\to\Omega^p(U)$ está definido como
+\[
+\Delta=d\circ d^*+d^*\circ d.
+\]
+Sea $f\in\Omega^0(U)$. Probar que $\Delta(f dx_1\land\dots\land dx_p)=\Delta(f)dx_1\land\dots\land dx_p$ donde
+\[
+-\Delta(f)=\frac{\partial^2 f}{x_1^2}+\cdots+\frac{\partial^2 f}{x_n^2}.
+\]
+(Pista: Intentar el caso $p=1,n=2$ primero. ¿Qué podemos decir sobre $\Delta(f\cdot dx_I)$ donde $I=(i_1,\dots, i_p)$?
+
+Una $p$-forma $w\in\Omega^p(U)$ se dice armónica si $\Delta(w)=0$. Probar que
+\[
+*:\Omega^p(U)\to \Omega^{n-p}(U)
+\]
+envía formas armónicas en formas armónicas.
 \end{ejercicio}
 \begin{solucion}
 \end{solucion}
 \newpage
 
 \begin{ejercicio}{3.4}
+Sea $Alt^p(\R^n,\C)$ el $\C$-espacio vectorial de aplicaciones $\R$-multilineales alternadas 
+\[
+w:\underbrace{\R^n\times\dots\times\R^n}_{p}\to\C.
+\]
+Nótese que $w$ puede escribirse de manera única como
+\[
+w=\operatorname{Re}(w)+i\operatorname{Im}(w),
+\]
+donde $\operatorname{Re}(w),\operatorname{Im}(w)\in Alt^p(\R^n)$.
 
+Extender el producto exterior a una aplicación $\C$-bilineal 
+\[
+Alt^p(\R^n,\C)\times Alt^p(\R^n,\C)\to Alt^{p+q}(\R^n,\C)
+\]
+y probar que se obtiene una $\C$-álgebra graduada anti-conmutativa $Alt^*(\R^n,\C)$.
 \end{ejercicio}
 \begin{solucion}
-
+Definimos el producto exterior $\land: Alt^p(\R^n,\C)\times Alt^p(\R^n,\C)\to Alt^{p+q}(\R^n,\C)$ como 
+\[
+w_1\land w_2=(\Rea(w_1)+i\Ima(w_1))\land(\Rea(w_2)+i\Ima(w_2))=
+\]
+\[
+(\Rea(w_1)\land\Rea(w_2)-\Ima(w_1)\land\Ima(w_2))+i(\Ima(w_1)\land\Rea(w_2)+\Rea(w_1)\land\Ima(w_2)),
+\]
+donde los productos exteriores de la segunda línea son los propios de las aplicaciones multilineales reales. Las propiedades del álgebra del producto exterior habitual se trasladan a este álgebra fácilmente.
 \end{solucion}
 
 \newpage
 
 \begin{ejercicio}{3.5}
-
+Introducir las $p$-formas diferenciales $\C$-evaluadas en un conjunto abierto $U\subseteq\R^n$ definiendo
+\[
+\Omega^p(U,\C)=C^{\infty}(U,Alt^p(\R^n,\C)).
+\]
+Nótese que $w\in\Omega^p(U,\C)$ pueden ser escritas de forma única como
+\[
+w=\operatorname{Re}(w)+i\operatorname{Im}(w),
+\]
+donde $\operatorname{Re}(w),\operatorname{Im}(w)\in \Omega^p(U)$. Extender $d$ a un operador $\C$-lineal 
+\[
+d:\Omega^p(U,\C)\to\Omega^{p+1}(U,\C)
+\]
+y probar que el teorema 3.7 es válido para las formas diferenciales $\C$-evaluadas. Generalizar el teorema 3.12 al caso de formas diferenciales $\C$-evaluadas.
 \end{ejercicio}
 \begin{solucion}
 
