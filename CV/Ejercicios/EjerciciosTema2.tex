@@ -174,8 +174,17 @@ df=d\Rea(f)+id\Ima(f)=\sum_{i=1}^n\parcial{\Rea{f}_i}{x_i}\varepsilon_i+i\sum_{i
 \]
 \item Dada $w\in\Omega^p(U,\C)$, $d(dw)=d(d\Rea(w)+id\Ima(w))=d(d\Rea(w))+id(d\Ima(w))=0$.
 \item Dadas $w_1\in\Omega^p(U,\C),w_2\in\Omega^q(U,\C)$, 
+\begin{gather*}
+d(w_1\land w_2)=d(\Rea(w_1)\land\Rea(w_2)-\Ima(w_1)\land\Ima(w_2))+i(\Ima(w_1)\land\Rea(w_2)+\Rea(w_1)\land\Ima(w_2))=\\
+d(\Rea(w_1)\land\Rea(w_2)-\Ima(w_1)\land\Ima(w_2))+id(\Ima(w_1)\land\Rea(w_2)+\Rea(w_1)\land\Ima(w_2))=\\
+d(\Rea(w_1)\land\Rea(w_2))-d(\Ima(w_1)\land\Ima(w_2))+id(\Ima(w_1)\land\Rea(w_2))+id(\Rea(w_1)\land\Ima(w_2))=\\
+d\Rea(w_1)\land\Rea(w_2)+(-1)^p\Rea(w_1)\land d\Rea(w_2)-d\Ima(w_1)\land\Ima(w_2)-(-1)^p\Ima(w_1)\land\Ima(w_2)+\\
+i(d\Ima(w_1)\land\Rea(w_2)+(-1)^p\Ima(w_1)\land d\Rea(w_2))+i(d\Rea(w_1)\land\Ima(w_2)+(-1)^p\Rea(w_1)\land d\Ima(w_2))=\\
+(d\Rea(w_1)+id\Ima(w_1))\land(\Rea(w_2)+i\Ima(w_2))+(-1)^p(\Rea(w_1)+i\Ima(w_1))\land (d\Rea(w_2)+id\Ima(w_2))=\\
+dw_1\land w_2+(-1)^pw_1\land dw_2
+\end{gather*}
 \end{enumerate}
-
+Como cada componente es única, se tiene además la unicidad.
 \end{solucion}
 
 \newpage
