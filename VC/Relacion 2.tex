@@ -1,0 +1,68 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+\usepackage{enumerate}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Variable Compleja - Relación 1}
+\author{Rafael González López}
+\maketitle
+
+\begin{ejercicio}{1}
+Demostrar que serie 
+$$
+\frac{1}{z}+\frac{1}{z(z+1)}+\frac{1}{z(z+1)(z+2)}+\cdots + \frac{1}{z(z+1)(z+2)\cdots  (z+n)}+\cdots$$
+converge uniformemente en compactos de $\C\setminus\{0,-1,-2,-3,\dotsc\}$. Demostrar que la serie define una función meromorfa en el plano complejo con polos en los enteros negativos y el $0$.
+
+¿Son los polos simples? ¿Cuál es el residuo en $z=-n$?
+\begin{solucion}
+Probemos primeramente que la serie converge uniformemente en compactos. Sea $\Omega = \C\setminus\{0,-1,-2,\dotsc\}$ y $K\subset B(0,r)$ un compacto de $\Omega$. Podemos suponer que $r>1$. Para probarlo vamos a utilizar el criterio M de Weierstrass. Tomamos $g_n = \prod_{j=0}^n \left(z+j\right)^{-1}$. Podemos suponer que $n\geq 2r$.  Tenemos entonces la siguiente acotación sobre $|g_n|$.
+
+\begin{align*}
+\abs{\prod_{j=0}^n \left(z+j\right)^{-1}} &= \prod_{j=0}^n \left|z+j\right|^{-1} =  \prod_{j=0}^{2r-1}\left|z+j\right|^{-1}  \prod_{j=2r}^n \left|z+j\right|^{-1}\\
+&\leq  \prod_{j=0}^{2r-1}\left|z+j\right|^{-1}  \prod_{j=2r}^n (j-|z|)^{-1} \leq \prod_{j=0}^{2r-1}|z+j|\frac{1}{r^{n-2r}}\\
+& \leq \frac{M}{r^{n-2r}}
+\end{align*}
+
+La última desigualdad se tiene dado que $h(z)=\prod_{j=0}^{2r-1}|z+j|$ es una función continua en el compacto $K$. Como $r>1$, tomando índices adecuadamente, es claro que podemos aplicar el criterio M de Weierstrass. Por tanto, hemos probado que la serie converge uniformemente en cada compacto.
+\newpage
+Vamos a ver que la serie define una función meromorfa en el plano complejo. Primeramente, tomando 
+$$
+ f_n(z) = \sum_{i=0}^n g_i(z) = \sum_{i=0}^n \prod_{j=0}^i (z+j)^{-1}
+$$
+Utilizando el apartado anterior, es claro que estamos en las condiciones del Teorema 2.5.2 de los apuntes, que establece:
+
+\begin{theorem}
+Si $\{f_n\}_{n=1}^\infty$ es una sucesión de funciones holomorfas que converge uniformemente a una función $f$ en cada subconjunto compacto de $\Omega$, entonces $f$ es una función holomorfa en $\Omega$
+\end{theorem}
+
+Por tanto, nuestra serie define una función holomorfa $f(z)$ en $\Omega$. Para probar que la función es meromorfa en el plano complejo, tenemos que ver que todas las discontinuidades son polos. Sea $a\in \N\cup\{0\}$. Vamos a demostrar que todas las discontinuidades son polos son simples a la vez que calculamos sus residuos, pues esto es equivalente a que 
+$$
+\lim_{z\to -a}(z+a)f(z) \in\C\setminus\{0\}
+$$
+Primeramente, es claro que utilizando un argumento análogo al anterior podemos probar que $h_n = (z+a)f_n$ define una función holomorfa en $\Omega \cup\{-a\}$, por lo que 
+$$
+\lim_{z\to -a}(z+a)f(z) \in\C
+$$
+y además la serie
+$$
+p_n(z) = \sum_{i=1}^n g_i(z) (z-a) = \sum_{i=0}^n \prod_{j=0}^i (z+j)^{-1}(z+a)
+$$
+converge uniformemente en cada compacto de $\Omega\cup\{-a\}$.  Tenemos que si $i\geq a$
+\begin{align*}
+\lim_{z\to -a}(z+a)\prod_{j=0}^i \left(z+j\right)^{-1}& =  \lim_{z\rightarrow-a}\left(\prod_{j=0}^{a-1}(z+j)^{-1}\right)\frac{(z+a)}{(z+a)}\left(\prod_{j=a+1}^{n}(z+j)^{-1}\right)\\
+&=\lim_{z\rightarrow-a}\left(\prod_{j=1}^{k}(z+a-i)^{-1}\right)\frac{(z+a)}{(z+a)}\left(\prod_{j=1}^{n-a}(z+a+j)^{-1}\right) \\
+&=\left(\prod_{j=1}^{a}(-1)(i)^{-1}\right)(1)\left(\prod_{j=1}^{n-a}(i)^{-1}\right)=\frac{(-1)^a}{a!(n-a)!}
+\end{align*}
+Por otra parte, si $i<a$ entonces
+$$
+\lim_{z\to -a}(z+a)\prod_{j=0}^i \left(z+j\right)^{-1} = 0
+$$
+Utilizando la convergencia uniforme en compactos puede intercambiarse límite y sumatorio, quedando finalmente
+$$
+\lim_{z\to -a}(z+a)f(z) = \sum_{n=a}^\infty \frac{(-1)^a}{a!(n-a)!} = \frac{(-1)^a}{a!}\sum_{n=0}^\infty \frac{1}{n!} = \frac{(-1)^a e}{a!} \in \C\setminus\{0\}
+$$
+\end{solucion}
+\end{ejercicio}
+\end{document}
