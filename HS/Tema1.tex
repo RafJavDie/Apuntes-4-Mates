@@ -295,9 +295,9 @@ $sd K$ es una subdivisón de $K$.
 \item Veamos que $|K|=|sd K|$ por doble inclusión.
 Sea $x \in |sdK|$, entonces existe $σ \in sd K$ tal que $x \in σ$, luego $x \in |K|$.
 
-Sea $x \in |K|$, sea $σ$ el soporte de $x$ en $K$ y calculamos $b(σ)$. Consideramos la semirrecta que parte de $b(\sigma)$ y pasa por $x$. Llamamos $x_1$ al punto de intersección de dicha semirrecta con $\partial\sigma$. Repetimos el proceso: sea $\sigma_1$ el soporte de $x_1$ en $K$. Construimos la semirrecta que parte de $b(\sigma_1)$ y pasa por $x_1$ y sea $x_2$ la intersección de dicha semirrecta con $\partial\sigma_1$. El proceso se repite y termina pues vamos bajando de dimensión en cada paso. Entonces $x\in (b(\sigma),b(\sigma_1),\dots, b(v_i))=(b(\sigma),b(\sigma_1),\dots,b(\sigma_k))$. 
+Sea $x \in |K|$, sea $σ$ el soporte de $x$ en $K$ y calculamos $b(σ)$. Consideramos la semirrecta que parte de $b(\sigma)$ y pasa por $x$. Llamamos $x_1$ al punto de intersección de dicha semirrecta con $\partial\sigma$. Repetimos el proceso: sea $\sigma_1$ el soporte de $x_1$ en $K$. Construimos la semirrecta que parte de $b(\sigma_1)$ y pasa por $x_1$ y sea $x_2$ la intersección de dicha semirrecta con $\partial\sigma_1$. El proceso se repite y termina pues vamos bajando de dimensión en cada paso. Entonces $x\in (b(\sigma),b(\sigma_1),\dots,b(\sigma_k))$. 
 
-\item Todo $\sigma\in K$ puede ponerse como unión de símplices de $sdK$. Dado $\sigma\in K$, hay que probar que $\sigma=\bigcup \tau_i$ (unión finita) donde $\tau_i\in sdK$. Se reduce a probar la doble inclusión con el mismo argumento anterior usando los vértices de $\sigma$. Una inclusión es clara porque los símplices generados por baricentros siempre están en $\sigma$. La otra es el razonamiento anterior con los vértices de $\sigma$.
+\item Todo $\sigma\in K$ puede ponerse como unión de símplices de $sdK$. Dado $\sigma\in K$, hay que probar que $\sigma=\bigcup \tau_i$ (unión finita) donde $\tau_i\in sdK$. Se reduce a probar la doble inclusión con el mismo argumento anterior usando los vértices de $\sigma$. Una inclusión es clara porque los símplices generados por baricentros siempre están en $\sigma$. La otra es el razonamiento anterior con los puntos de $\sigma$. Como la subdivisión baricéntrica genera un número finito de símplices, la unión es finita.
 \end{enumerate}
 \QED
 \end{dem}
@@ -319,7 +319,7 @@ Dado $\sigma=(v_0,\dots,v_n)$, $\delta(\sigma)=\max_{v_i,v_j\in\sigma}||v_i-v_j|
 \begin{proof}
 Sean $x,y\in\sigma=(v_0,\dots, v_n)$, entonces 
 \[
-||x-y||= \lVert\sum_{i=0}^n\lambda_iv_i-y\rVert=\norm{\sum_{i=0}\lambda_i(v_i-y)}\leq\sum_{i=1}^n\lambda_i\norm{v_i-y}\leq \max_{0\leq i\leq n}\norm{v_i-y}\leq\max_{0\leq i,j\leq n}\norm{v_i-v_j}.
+||x-y||= \norm{\sum_{i=0}^n\lambda_iv_i-y}=\norm{\sum_{i=0}\lambda_i(v_i-y)}\leq\sum_{i=1}^n\lambda_i\norm{v_i-y}\leq \max_{0\leq i\leq n}\norm{v_i-y}\leq\max_{0\leq i,j\leq n}\norm{v_i-v_j}.
 \]
 El último paso se consigue repitiendo el proceso con $y$. Así que $\delta(\sigma)=\max_{0\leq i,j\leq n}\norm{v_i-v_j}$.
 \end{proof}
@@ -339,9 +339,9 @@ m(sd^nK)\leq \left(\frac{r}{1+r}\right)^nm(K).
 
 \end{prop}
 \begin{dem}
-Basta hacerlo para la primera subdivisión y el resto se tendrá inductivamente. Sea $\mu=(b(\sigma_0),\dots, b(\sigma_k))\in sdK$ donde $\sigma_0<\cdots<\sigma_k$. Vamos a suponer por simplicidad que el $\delta(\mu)=\norm{b(\sigma_0)-b(\sigma_1)}$ donde $\sigma_0=(v_0,\dots, v_n)$ y $\sigma_1=(v_0,\dots, v_n,v_{n+1},\dots, v_s)$. Entonces, 
+Basta hacerlo para la primera subdivisión y el resto se tendrá inductivamente. Sea $\mu=(b(\sigma_0),\dots, b(\sigma_k))\in sdK$ donde $\sigma_0<\cdots<\sigma_k$. Vamos a suponer por simplicidad que $\delta(\mu)=\norm{b(\sigma_0)-b(\sigma_1)}$ donde $\sigma_0=(v_0,\dots, v_n)$ y $\sigma_1=(v_0,\dots, v_n,v_{n+1},\dots, v_s)$. Entonces, 
 \[
-\norm{b(\sigma_0)-b(\sigma_1)}=\norm{\sum_{i=0}^n\frac{1}{1+n}v_i-b(\sigma_1)}=\frac{1}{1+n}\norm{\sum_{i=0}^n\norm{v_i-b(\sigma_1)}}leq \max_{0\leq i\leq n}\norm{v_i-b(\sigma_1)}.
+\norm{b(\sigma_0)-b(\sigma_1)}=\norm{\sum_{i=0}^n\frac{1}{1+n}v_i-b(\sigma_1)}=\frac{1}{1+n}\norm{\sum_{i=0}^n\norm{v_i-b(\sigma_1)}}\leq \max_{0\leq i\leq n}\norm{v_i-b(\sigma_1)}.
 \]
 Haciendo el mismo proceso 
 \[
@@ -367,13 +367,13 @@ Sea $K$ complejo simplicial y sea $x\in|K|$. Se cumplen
 \begin{dem}
 \begin{enumerate}
 \item Como la realización de un complejo y de una subdivisión es el mismo espacio topológico, al ser $\mathring{st}(x;K)$ es un entorno de $x$, se tiene este apartado.
-\item Sea $U\subseteq|K|$ entorno de $x$. Entonces existe una bola $x\in B(x,\varepsilon)\subseteq U$. Por la proposición anterior, tomamos $n_0\in\N$ tal que $m(sd^{n_0}K)<\varepsilon$, veamos que $\mathring{st}(x;sd^nK)\subseteq U$. Sea $y\in \mathring{st}(x;sd^nK)$. Entonces $||y-x||<\varepsilon$, por lo que $y\in B(x,\varepsilon\subseteq U$, luego $y\in U$.
+\item Sea $U\subseteq|K|$ entorno de $x$. Entonces existe una bola $x\in B(x,\varepsilon)\subseteq U$. Por la proposición anterior, tomamos $n_0\in\N$ tal que $m(sd^{n_0}K)<\varepsilon$, veamos que $\mathring{st}(x;sd^nK)\subseteq U$. Sea $y\in \mathring{st}(x;sd^nK)$. Entonces $||y-x||<\varepsilon$, por lo que $y\in B(x,\varepsilon)\subseteq U$, luego $y\in U$.
 \end{enumerate}
 \QED
 \end{dem}
 
 \begin{defi}
-Dado un espacio topológico $X$ y un complejo simplicial $K$ tal que $|K|\cong X$. Entonces se dice que $K$ es una \emph{triangulación} de $X$. 
+Dado un espacio topológico $X$ y un complejo simplicial $K$ tal que $|K|\cong X$, se dice que $K$ es una \emph{triangulación} de $X$. 
 \end{defi}
 
 \begin{defi}

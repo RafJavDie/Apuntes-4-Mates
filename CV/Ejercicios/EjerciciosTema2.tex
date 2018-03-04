@@ -83,11 +83,11 @@ Se tiene que $\tau\in S(n-p+1,p-1)$. $sgn(n)=(-1)^{n-j+1+np}$ pues $np+j-1+p(n-p
 \]
 Como $(np+n-1)+(n-j+1+np)\equiv j\mod 2$, se tiene la última igualdad.
 
-Finalmente, si tenemos $d^*(fdx_{i_1}\land\dots\land dx_{i_p})$, entonces podemso considerar $\sigma\in S(p,n-p)$.
+Finalmente, si tenemos $d^*(fdx_{i_1}\land\dots\land dx_{i_p})$, entonces podemos considerar $\sigma\in S(p,n-p)$.
 \begin{gather*}
-d^*(fdxx_{\sigma(1)}\land\dots\land dx_{\sigma(p)})=(-1)^{np+n-1}*d*(f dx_{\sigma(1)}\land\dots\land dx_{\sigma(p)})\\
-(-1)^{np+n-1}*d(fdx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)})=(-1)^{np+n-1}*(\sum_{i=1}^n\parcial{f}{x_{\sigma(i)}}dx_{\sigma(i)}\land dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)})=\\
-(-1)^{np+n-1}*(\sum_{i=1}^p\parcial{f}{x_{\sigma(i)}}dx_{\sigma(i)}\land dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)})
+d^*(fdx_{\sigma(1)}\land\dots\land dx_{\sigma(p)})=(-1)^{np+n-1}*d*(f dx_{\sigma(1)}\land\dots\land dx_{\sigma(p)})\\
+(-1)^{np+n-1}*d(fdx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)})=(-1)^{np+n-1}*\left(\sum_{i=1}^n\parcial{f}{x_{\sigma(i)}}dx_{\sigma(i)}\land dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)}\right)=\\
+(-1)^{np+n-1}*\left(\sum_{i=1}^p\parcial{f}{x_{\sigma(i)}}dx_{\sigma(i)}\land dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)}\right)
 \end{gather*}
 
 \end{solucion}
@@ -160,8 +160,31 @@ d:\Omega^p(U,\C)\to\Omega^{p+1}(U,\C)
 y probar que el teorema 3.7 es válido para las formas diferenciales $\C$-evaluadas. Generalizar el teorema 3.12 al caso de formas diferenciales $\C$-evaluadas.
 \end{ejercicio}
 \begin{solucion}
+Una $p$-forma fiferencial $\C$-evaluada sobre $U$ será una aplicación diferenciable 
+\begin{gather*}
+w: U\to Alt^p(\R^n,\C)\\
+x\mapsto w_x
+\end{gather*}
+donde $w_x(v_1,\dots, v_p)=\Rea(w)_x(v_1,\dots,v_p)+i\Ima(w)_x(v_1,\dots, v_p)$. Extendemos $d$ como $dw=d\Rea(w)+id\Ima(w)$, que claramente es $\C$-lineal. Vamos a probar el teorema 3.7 del libro. 
 
-
+\begin{enumerate}
+\item Dada $f\in\Omega^0(U,\C)$, $f=\Rea(f)+i\Ima(f)$, luego 
+\[
+df=d\Rea(f)+id\Ima(f)=\sum_{i=1}^n\parcial{\Rea{f}_i}{x_i}\varepsilon_i+i\sum_{i=1}^n\parcial{\Ima{f}_i}{x_i}\varepsilon_i=\sum_{i=1}^n\parcial{(\Rea(f)+i\Ima(f))}{x_i}\varepsilon_i.=\sum_{i=1}^n\parcial{f}{x_i}\varepsilon_i.
+\]
+\item Dada $w\in\Omega^p(U,\C)$, $d(dw)=d(d\Rea(w)+id\Ima(w))=d(d\Rea(w))+id(d\Ima(w))=0$.
+\item Dadas $w_1\in\Omega^p(U,\C),w_2\in\Omega^q(U,\C)$, 
+\begin{gather*}
+d(w_1\land w_2)=d(\Rea(w_1)\land\Rea(w_2)-\Ima(w_1)\land\Ima(w_2))+i(\Ima(w_1)\land\Rea(w_2)+\Rea(w_1)\land\Ima(w_2))=\\
+d(\Rea(w_1)\land\Rea(w_2)-\Ima(w_1)\land\Ima(w_2))+id(\Ima(w_1)\land\Rea(w_2)+\Rea(w_1)\land\Ima(w_2))=\\
+d(\Rea(w_1)\land\Rea(w_2))-d(\Ima(w_1)\land\Ima(w_2))+id(\Ima(w_1)\land\Rea(w_2))+id(\Rea(w_1)\land\Ima(w_2))=\\
+d\Rea(w_1)\land\Rea(w_2)+(-1)^p\Rea(w_1)\land d\Rea(w_2)-d\Ima(w_1)\land\Ima(w_2)-(-1)^p\Ima(w_1)\land\Ima(w_2)+\\
+i(d\Ima(w_1)\land\Rea(w_2)+(-1)^p\Ima(w_1)\land d\Rea(w_2))+i(d\Rea(w_1)\land\Ima(w_2)+(-1)^p\Rea(w_1)\land d\Ima(w_2))=\\
+(d\Rea(w_1)+id\Ima(w_1))\land(\Rea(w_2)+i\Ima(w_2))+(-1)^p(\Rea(w_1)+i\Ima(w_1))\land (d\Rea(w_2)+id\Ima(w_2))=\\
+dw_1\land w_2+(-1)^pw_1\land dw_2
+\end{gather*}
+\end{enumerate}
+Como cada componente es única, se tiene además la unicidad.
 \end{solucion}
 
 \newpage

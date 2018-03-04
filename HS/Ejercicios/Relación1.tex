@@ -75,6 +75,15 @@ Más aún, si $L$ es finito $|cL|$ es homeomorfo al cono topológico $c|L|$ y $|
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}
+\item[]
+\item Basta probar que las condiciones de la definición de complejo simplicial se cumplen para los símplices de $\{στ; σ \in K \text{ y }τ \in L\}$. Sea entonces $$\sigma=(v_0,\dots,v_i,\dots, v_r, w_0,\dots,w_j,\dots, w_s)=vw$$ y $\tau\leq\sigma$ de modo que $\tau=(v_i,\dots, v_r,w_0,\dots w_j)$ (en otro caso basta reordenarlos). Entonces $\tau=(v_i\dots, v_r)(w_0,\dots w_j)$, como cada uno de los símplices unidos es una cara de $v$ y $w$ respectivamente, $\tau$ está en $KL$. Por otra parte, dados $\sigma,\sigma'\in KL$, si $\sigma\cap\sigma'\neq\emptyset$, entonces la intersección consiste en una upla formada por una serie de vértices de $K$ y $L$ (posiblemente de uno de los dos solamente), luego reordenándolos tenemos un símplice de $KL$.
+
+\item Como los complejos simpliciales son compactos y Hausdorf, el cono topológico es homeomorfo al cono geométrico, consistente en los segmentos que unen $c$ con los puntos de $|K|$, pero esto es precisamente el complejo cono. Análogamente se tiene para la suspensión, ya que $\Sigma |X|\cong c|X|\sqcup_{|X|} c|X|$.
+
+\item Basta comprobar que se puede conectar cualquier vértice de $K$ (análogamente de $L$) con algún símplice de $\{στ; σ \in K \text{ y }τ \in L\}$, pues todos los símplices de $K$ se encuentran con los de $L$ en dicho conjunto. Sea pues $x\in K$, entonces $x\in\sigma$ para algún $\sigma\in K$ (por ejemplo, el soporte de $x$). Entonces, existe $\tau\in L$ tal que $\sigma\tau\in\{στ; σ \in K \text{ y }τ \in L\}$. Como los símplices son conexos por caminos, ya está. 
+
+\end{enumerate}
 \end{solucion}
 
 \newpage
@@ -215,6 +224,7 @@ Estudiar topológicamente los poliedros $|st(x;K)|$ para todo $x \in |K|$.
 Sean $I = [0,1]$ y $K$ un complejo simplicial, dotar de estructura simplicial al cilindro de $|K|$, denotado por $|K \times I|$, de modo que $|K \times I| = |K| \times I$.
 \end{ejercicio}
 \begin{solucion}
+Podemos expresar $|K\times I|$ como $|KK|$, es decir, la realización de la unión simplicial de $K$ consigo mismo. Para que $|KK|$ sea exactamente igual a $|K|\times I$ como conjunto habrá que colocar las dos compias de $K$ en paralelo y a distancia 1. En efecto, el cilindro $|K|\times I$ consiste en la unión mediante segmentos de longitud 1 y en paralelo cada punto de $|K|\times\{0\}$ con los de $|K|\times\{1\}$, pero esto es precisamente lo que se hace al construir la unión simplicial, pues cada punto de dichos segmentos es una combinación convexa de vértices de $|K|\times\{0\}$ y $|K|\times\{1\}$ de la siguiente forma: dado un punto $x$ de uno de estos segmentos, el punto inicial será $x_1\in |K|\times\{0\}$ y el punto final $x_2\in |K|\times\{1\}$. Basta tomar ahora los soportes $\sigma_1\ni x_1,\sigma_2\ni x_2$, pues $x_1$ y $x_2$ son combinaciones convexas de los vértices de $\sigma_1$ y $\sigma_2$ respectivamente. Ahora, como combinación convexa sobre combinación convexa es convexa, $x$ es combinación convexa de los vértices de $\sigma_1$ y $\sigma_2$. Recíprocamente, dado $x\in |KK|$, entonces $x\in \sigma=(v_{i_1},\dots, v_{i_r},v_{j_1},\dots,v_{j_s})$. Consideramos ese conjunto de vértices en una de las dos copias de $K$, por ejemplo $K\times\{0\}$, el cual generará un subcomplejo  $L\subseteq K$, así que claramente $x\in |L|\times I\subseteq |K|\times I$.
 \end{solucion}
 
 \newpage
