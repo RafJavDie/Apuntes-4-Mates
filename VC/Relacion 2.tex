@@ -25,7 +25,7 @@ Probemos primeramente que la serie converge uniformemente en compactos. Sea $\Om
 & \leq \frac{M}{r^{n-2r}}
 \end{align*}
 
-La última desigualdad se tiene dado que $h(z)=\prod_{j=0}^{2r-1}|z+j|$ es una función continua en el compacto $K$. Como $r>1$, tomando índices adecuadamente, es claro que podemos aplicar el criterio M de Weierstrass. Por tanto, hemos probado que la serie converge uniformemente en cada compacto.
+La última desigualdad se tiene dado que $h(z)=\prod_{j=0}^{2r-1}|z+j|^{-1}$ es una función continua en el compacto $K$. Como $r>1$, tomando índices adecuadamente, es claro que podemos aplicar el criterio M de Weierstrass. Por tanto, hemos probado que la serie converge uniformemente en cada compacto.
 \newpage
 Vamos a ver que la serie define una función meromorfa en el plano complejo. Primeramente, tomando 
 $$
@@ -34,7 +34,7 @@ $$
 Utilizando el apartado anterior, es claro que estamos en las condiciones del Teorema 2.5.2 de los apuntes, que establece:
 
 \begin{theorem}
-Si $\{f_n\}_{n=1}^\infty$ es una sucesión de funciones holomorfas que converge uniformemente a una función $f$ en cada subconjunto compacto de $\Omega$, entonces $f$ es una función holomorfa en $\Omega$
+Si $\{f_n\}_{n=1}^\infty$ es una sucesión de funciones holomorfas que converge uniformemente a una función $f$ en cada subconjunto compacto de $\Omega$, entonces $f$ es una función holomorfa en $\Omega$.
 \end{theorem}
 
 Por tanto, nuestra serie define una función holomorfa $f(z)$ en $\Omega$. Para probar que la función es meromorfa en el plano complejo, tenemos que ver que todas las discontinuidades son polos. Sea $a\in \N\cup\{0\}$. Vamos a demostrar que todas las discontinuidades son polos son simples a la vez que calculamos sus residuos, pues esto es equivalente a que 
@@ -52,7 +52,7 @@ $$
 converge uniformemente en cada compacto de $\Omega\cup\{-a\}$.  Tenemos que si $i\geq a$
 \begin{align*}
 \lim_{z\to -a}(z+a)\prod_{j=0}^i \left(z+j\right)^{-1}& =  \lim_{z\rightarrow-a}\left(\prod_{j=0}^{a-1}(z+j)^{-1}\right)\frac{(z+a)}{(z+a)}\left(\prod_{j=a+1}^{n}(z+j)^{-1}\right)\\
-&=\lim_{z\rightarrow-a}\left(\prod_{j=1}^{k}(z+a-i)^{-1}\right)\frac{(z+a)}{(z+a)}\left(\prod_{j=1}^{n-a}(z+a+j)^{-1}\right) \\
+&=\lim_{z\rightarrow-a}\left(\prod_{j=1}^{a}(z+a-i)^{-1}\right)\frac{(z+a)}{(z+a)}\left(\prod_{j=1}^{n-a}(z+a+j)^{-1}\right) \\
 &=\left(\prod_{j=1}^{a}(-1)(i)^{-1}\right)(1)\left(\prod_{j=1}^{n-a}(i)^{-1}\right)=\frac{(-1)^a}{a!(n-a)!}
 \end{align*}
 Por otra parte, si $i<a$ entonces
