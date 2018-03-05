@@ -93,6 +93,9 @@ Sea $K$ complejo simplicial.
 Para cada símplica $σ \in K$ probar la igualdad $st(σ;K) = σlk(σ;K)$ donde el término de la derecha indica la corespondiente unión simplicial.
 \end{ejercicio}
 \begin{solucion}
+$\boxed{\subseteq}$ Sea $\tau\in st(σ;K)$, entonces o bien $\tau\in lk(σ;K)$ (en cuyo caso ya habríamos terminado) o bien $\sigma\leq\tau$. En este último caso, podemos extender $\sigma$ añadiendo vértices hasta llegar a $\tau$. Los vértices añadidos son una cara de $\tau$ que no tiene a $\sigma$ como cara, luego está en el link. Así pues, $\tau\in σlk(σ;K)$. 
+
+$\boxed{\supseteq}$ Sea $\tau\in σlk(σ;K)$. Si $\tau=\sigma\lor\tau\in lk(σ;K)$ ya habríamos terminado. Supongamos entonces que $\tau=\sigma\eta$. Entonces $\tau$ contiene a $\sigma$ como cara, luego $\tau\in st(σ;K)$.
 \end{solucion}
 
 \newpage
@@ -118,6 +121,13 @@ Más aún, se tiene que son equivalentes
 \begin{solucion}
 En primer lugar, es claro que cualquier símplice es conexo por caminos por ser convexo. Como $|K|$ es unión de símplices (supongamos más de uno), esto implica cualquiera de sus símplices tiene intersección no vacía con algún otro símplice distinto. Por tanto, usando las intersecciones y la conexión por caminos de cada símplice es fácil construir un camino entre dos puntos cualesquiera de dos símplices distintos.
 
+Probamos ahora las equivalencias.
+\begin{enumerate}
+\item[$(1\Rightarrow 2)$] Supongamos que el 1-esqueleto tiene 2 componentes conexas (por caminos). Entonces, cualquier símplice de dimensión mayor que se pueda generar usando vértices de una y otra componente contendrá una arista entre ellos, por lo que si algún símplice de ese tipo estuviera en $K$, el 1-esqueleto sería conexo. Así pues, $K$ solo puede tener símplices generados por vértices de cada una de las componentes conexas por separado. De este modo, cualquier complejo simplicial  generado tendrá dos componentes conexas, luego $|K|$ no sería conexo.
+\item[$(2\Rightarrow 3)$] Si el 1-esqueleto es conexo, entonces es conexo por caminos, luego los vértices se pueden conectar entre sí dentro del 1-esqueleto mediante caminos, que de hecho están formados por aristas.
+\item[$(3\Rightarrow 1)$] Como $K$ es unión de símplices y los símplices son conexos por caminos, al poder unir todos los puntos por un camino formado por aristas, en particular podemos unir todos los vértices por caminos, luego podemos llegar a cualquier otro punto yendo hasta un vértice por un tal camino y luego usar el segmento correspondiente al símplice. Luego $|K|$ es conexo por caminos, en particular, conexo.
+\end{enumerate}
+
 \end{solucion}
 
 \newpage
@@ -142,6 +152,19 @@ Probar además, que en este caso, para todo complejo $K$ el complejo $LK$ es col
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+Obsérvese que todo complejo simplicial tiene algún símplice maximal. En efecto, dado un símplice $\sigma=(v_0,\dots, v_l)$ solo podemos añadirle vértices sin salirnos del complejo una cantidad finita de veces pues la uplas son finitas. Una vez alcanzado este límite, habremos dado con un símplice principal.
+\begin{enumerate}
+\item Consideramos los símplices principales $K$, los cuales inducen símplices principales en $cK$ al añadirles el nuevo vértice. Entonces, si $\sigma$ es uno de los símplices principales de $K$, podemos hacer el colapso $cK-\{c\sigma,\sigma\}$, ya que al ser $\sigma$ principal en $K$, no puede ser cara propia de ningún otro símplice en $cK$. Una vez que hemos hecho esto con todos los símplices principales, nos quedará un complejo $K_1$. En este complejo podemos encontrar de nuevo símplices principales, que tendrán dimensión estrictamente menor que los anteriores, y podemos repetir el proceso. Como la dimensión es finita, obtendremos un colapso $K\searrow K_1\searrow\cdots\searrow K_n\searrow c$, luego $K\colapso 0$.
+
+\item Sea $\sigma=(v_0,\dots, v_n)$ el símplice de $L$. Entonces $\sigma$ es el único símplice principal. Entonces, colapsamos $\sigma$ junto con la cara $n-1$ dimensional $(v_1,\dots, v_n)$. Ahora, todas las caras $n-1$ dimensionales restantes son símplices principales. Así que en cada uno podemos realizar este mismo proceso. Podemos reiterar bajando de dimensión hasta colapsar sobre $v_0$ todo el símplice pues en cada paso colapsamos las caras que no lo contienen y además hay un número finito de caras, luego el proceso termina.
+
+Para la segunda parte, siguiendo el procedimiento del apartado anterior, basta colapsar $K$ sobre un vértice de $L$ y por último colapsar $L$ con el procedimiento de la primera parte de este apartado.
+\item Un triángulo relleno con todas sus caras es claramente colapsable (empezando por el 2-símplice y una arista, y luego las aristas que quedan con sus vértices), pero el triángulo sin el relleno no es colapsable pues no tiene caras libres.
+
+\item Teniendo en cuenta que los símplices son contráctiles, podemos expresar el colapso de un símplice sobre un vértice como una contracción del símplice sobre dicho vértice. Así, el colapso de un complejo simplicial no será más que una sucesión finita de contracciones, que se pueden convertir en una sola contracción concatenando las homotopías particionando adecuadamente el intervalo $[0,1]$.
+
+El recríproco no es cierto, como muestra el Dunce Hat\footnote{\url{https://en.wikipedia.org/wiki/Dunce_hat_(topology)}}
+\end{enumerate}
 \end{solucion}
 
 \newpage
