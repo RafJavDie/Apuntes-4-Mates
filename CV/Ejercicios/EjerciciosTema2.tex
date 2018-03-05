@@ -190,16 +190,40 @@ Como cada componente es única, se tiene además la unicidad.
 \newpage
 
 \begin{ejercicio}{3.6}
-
+Con la notación del ejercicio anterior, sean $U=\C-\{0\}=\R^1-\{0\}$ y sea $z\in\Omega^0(U,\C)$ la inclusión $U\to\C$. Denotando $x=\Rea(z), y=\Ima(z)$, probar
+\[
+\Rea(z^{-1}dz)=d\log(r),
+\]
+donde $r:U\to\R$ está definida como $r(z)=|z|=\sqrt{x^2+y^2}$. Probar también que
+\[
+\Ima(z^{-1}dz)=\frac{-y}{x^2+y^2}dx+\frac{x}{x^2+y^2}dy.
+\]
 \end{ejercicio}
 \begin{solucion}
-
+Tenemos $z=x+iy$, luego $z^{-1}=\dfrac{1}{x+iy}=\dfrac{x-iy}{x^2+y^2}$. Por otra parte, usando el ejercicio anterior, $dz=dx+idy$. Así que 
+\[
+z^{-1}dz=\dfrac{x-iy}{x^2+y^2}(dx+idy)=\dfrac{x-iy}{x^2+y^2}dx+\dfrac{x-iy}{x^2+y^2}idy=
+\]
+\[
+\left(\dfrac{x}{x^2+y^2}dx+\dfrac{y}{x^2+y^2}dy\right)+i\left(\frac{-y}{x^2+y^2}dx+\frac{x}{x^2+y^2}dy\right).
+\]
+La parte imaginaria ya la tenemos. Comprobemos entonces la real. Como $r$ es una aplicación con imagen real, podemos utilizar la diferencial real sobre $\log(r)$. Así,
+\[
+d\log(r)=\parcial{\log(r)}{x}dx+\parcial{\log(r)}{y}dy=\parcial{\log(\sqrt{x^2+y^2})}{x}dx+\parcial{\log(\sqrt{x^2+y^2})}{y}dy=
+\]
+\[
+\dfrac{x}{x^2+y^2}dx+\dfrac{y}{x^2+y^2}dy,
+\]
+como queríamos demostrar.
 \end{solucion}
 
 \newpage
 
 \begin{ejercicio}{3.7}
-
+Probar para la exponencial compleja $\exp :\C\to\C^*$ que
+\[
+d_z\exp =\exp(z)dz\text{ y } \exp^*(z^{-1})dz=dz.
+\]
 \end{ejercicio}
 \begin{solucion}
 
