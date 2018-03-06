@@ -1,0 +1,198 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\lex}{<_{lex}}
+\newcommand{\grlex}{<_{grlex}}
+\newcommand{\grevlex}{<_{grevlex}}
+
+\newcommand{\PhantC}{\phantom{\colon}}%
+\newcommand{\CenterInCol}[1]{\multicolumn{1}{c}{#1}}%
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{2.6.1}
+Show that Proposition 1 can be strengthened slightly as follows. Fix a monomial ordering
+and let $I ⊆ k[x_1,\dots , x_n]$ be an ideal. Suppose that $f ∈ k[x_1,\dots , x_n]$.
+\begin{enumerate}
+\item[a.] Show that $f$ can be written in the form $f = g + r$, where $g ∈ I$ and no term of $r$ is
+divisible by any element of $LT(I)$.
+\item[b.] Given two expressions $f = g + r = g'
++ r'$ as in part (a), prove that $r = r'$ Thus, $r$
+and $g$ are uniquely determined.
+\end{enumerate}
+\end{ejercicio}
+
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.2}
+In §5, we showed that $G = \{x + z, y − z\}$ is a Gröbner basis for lex order. Let us use
+this basis to study the uniqueness of the division algorithm.
+\begin{enumerate}[a.]
+\item Divide $xy$ by $x + z$, $y − z$.
+\item Now interchange the two polynomials and divide $xy$ by $y − z$, $x + z$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Vamos a fijar el orden lex habitual
+\begin{enumerate}[a.]
+\item $xy=y(x+z)-z(y-z)-z^2.$
+\item $xy=x(y-z)+z(x+z)-z^2.$
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.6.3}
+In Corollary 2, we showed that if $I =\gene{ 
+g_1,\dots , g_t}$ and if $G = \{g_1,\dots , g_t\}$ is a Gröbner
+basis for $I$, then $\bar{f}^G = 0$ for all $f ∈ I$. Prove the converse of this statement. Namely, show
+that if $G$ is a basis for $I$ with the property that $\bar{f}^G = 0$ for all $f ∈ I$, then $G$ is a Gröbner
+basis for I.
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.4}
+Let $G$ and $G'$ be Gröbner bases for an ideal $I$ with respect to the same monomial order
+in $k[x_1,\dots , x_n]$. Show that $\bar{f}^G = \bar{f}^{G'}$
+for all $f ∈ k[x_1,\dots , x_n]$. Hence, the remainder on
+division by a Gröbner basis is even independent of which Gröbner basis we use, as long
+as we use one particular monomial order. Hint: See Exercise \ref{ejer:2.6.1}.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.6.5}
+Compute $S( f , g)$ using the lex order.
+\begin{enumerate}[a.]
+\item $f = 4x^2z − 7y^2$, $g = xyz^2 + 3xz^4$.
+\item $f = x^4y − ^z2$, $g = 3xz^2 − y$.
+\item $f = x^7y^2z + 2ixyz$, $g = 2x^7y^2z + 4$.
+\item $f = xy + z^3$, $g = z^2 − 3z$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.6}
+Does $S( f , g)$ depend on which monomial order is used? Illustrate your assertion with
+examples.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.7}
+Prove that $\mathrm{multideg}(S( f , g)) < γ$, where $x^γ = \mathrm{lcm}(LM( f ), LM(g))$. Explain why this
+inequality is a precise version of the claim that $S$-polynomials are designed to produce
+cancellation.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.8}
+As in the proof of Theorem 6, suppose that $c_ix^{α(i)}g_i$ and $c_jx^{α(j)}g_j$ have multidegree $δ$.
+Prove that
+$$S(x^{α(i)}g_i, x^{α(j)}g_j) = x^{δ−γ_{ij}}S(g_i, g_j),$$
+where $x^{γ_{ij}} = \mathrm{lcm}(LM(g_i), LM(g_j))$.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.9}
+Show that $\{y − x^2, z − x^3\}$ is not a Gröbner basis for lex order with $x > y > z$.
+\end{ejercicio}
+\begin{solucion}
+Denotando $f=y − x^2,g=z − x^3$ tenemos que $\gene{LT(f),LT(g)}=\gene{-x^2,-x^3}=\gene{x^2}$. Sea $h=g-xf=z-y\in I$, pero $LT(h)=-y\notin\gene{LT(f),LT(g)}$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.10}
+Using Theorem 6, determine whether the following sets $G$ are Gröbner bases for the
+ideal they generate. You may want to use a computer algebra system to compute the
+$S$-polynomials and remainders.
+\begin{enumerate}[a.]
+\item $G = \{x^2 − y, x^3 − z\}$ for grlex order.
+\item $G = \{x^2 − y, x^3 − z\}$ for invlex order (see Exercise 6 of §2).
+\item $G = \{xy^2 − xz + y, xy − z^2, x − yz^4\}$ for lex order.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.11}
+Let $f , g ∈ k[x_1,\dots , x_n]$ be polynomials such that $LM( f )$ and $LM(g)$ are relatively prime
+monomials and $LC( f) = LC(g) = 1$. Assume that $f$ or $g$ has at least two terms.
+\begin{enumerate}
+\item Show that $S( f , g) = −(g − LT(g))f + (f − LT( f ))g$.
+\item Deduce that $S( f , g) \neq 0$ and that the leading monomial of $S( f , g)$ is a multiple of
+either $LM( f )$ or $LM(g)$ in this case.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.12}
+Let $f , g ∈ k[x_1,\dots , x_n]$ be nonzero and $x^α, x^β$ be monomials. Verify that
+$$S(x^αf , x^βg) = x^γS( f , g)$$
+where
+$$x^γ =
+\mathrm{lcm}(x^αLM( f ), x^βLM(g))
+\mathrm{lcm}(LM( f ), LM(g))
+.$$
+Be sure to prove that xγ is a monomial. Also explain how this relates to Exercise \ref{ejer:2.6.8}.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.13}
+Let $I ⊆ k[x_1,\dots , x_n]$ be an ideal, and let $G$ be a Gröbner basis of $I$.
+\begin{enumerate}[a.]
+\item Show that $\bar{f}^G = \bar{g}^G$ if and only if $f − g ∈ I$. Hint: See Exercise \ref{ejer:2.6.1}.
+\item Use Exercise \ref{2.6.1} to show that
+$$\bar{f + g}^G = \bar{f}^G + \bar{g}^G.$$
+\item Deduce that
+$$\overline{fg}^G = \overline{\bar{f}^G  \bar{g}^G}^G
+.$$
+We will return to an interesting consequence of these facts in Chapter 5.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+
+
+\end{document}
