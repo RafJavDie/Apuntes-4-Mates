@@ -266,12 +266,19 @@ dw_1\land w_2+(-1)^pw_1\land dw_2
 \end{gather*}
 \end{enumerate}
 Como cada componente es única, se tiene además la unicidad.
+
+Definimos también, para una aplicación diferenciable $\phi:U_1\subseteq\R^n\to U_2\subseteq\R^m$, la aplicación inducida $\phi^*:\Omega^p(U_2,\C)\to\Omega^p(U_1)$ como $\phi^*(w)=\phi^*(\Rea(w))+i\phi^*(\Ima(w))$ (usamos aquí la $\phi^*$ ordinaria). Se prueba entonces de manera análoga al caso real (teniendo en cuenta el producto exterior complejo y la diferencial exterior compleja) que se cumplen para $\tau\in\Omega^p(U,\C)$ y $\tau\in\Omega^q(U,\C)$
+\begin{enumerate}
+\item $\phi^*(w\land\tau)=\phi^*(w)\land\phi^*(\tau)$.
+\item $\phi^*(f)=f\circ\phi$ para $f\in\Omega^0(U,\C)$.
+\item $d\phi^*(w)=\phi^*(dw)$
+\end{enumerate}
 \end{solucion}
 
 \newpage
 
 \begin{ejercicio}{3.6}
-Con la notación del ejercicio anterior, sean $U=\C-\{0\}=\R^1-\{0\}$ y sea $z\in\Omega^0(U,\C)$ la inclusión $U\to\C$. Denotando $x=\Rea(z), y=\Ima(z)$, probar
+Con la notación del ejercicio anterior, sean $U=\C-\{0\}=\R^2-\{0\}$ y sea $z\in\Omega^0(U,\C)$ la inclusión $U\to\C$. Denotando $x=\Rea(z), y=\Ima(z)$, probar
 \[
 \Rea(z^{-1}dz)=d\log(r),
 \]
@@ -303,10 +310,29 @@ como queríamos demostrar.
 \begin{ejercicio}{3.7}
 Probar para la exponencial compleja $\exp :\C\to\C^*$ que
 \[
-d_z\exp =\exp(z)dz\text{ y } \exp^*(z^{-1})dz=dz.
+d_z\exp =\exp(z)dz\text{ y } \exp^*(z^{-1}dz)=dz.
 \]
 \end{ejercicio}
 \begin{solucion}
+En primer lugar, $\exp :\C\to\C^*$ se puede ver como una 0-forma compleja $\exp\in\Omega^0(\R^2,\C)$ simplemente expresándola como $\exp(z)=\exp(x,y)=e^x(\cos(y)+i\sin(y))$ para $z=x+iy$. Así que $d_z\exp=d_{(x,y)}\Rea(\exp)+id_{(x,y)}\Ima(\exp)$. Como $\Rea(\exp(x,y))=e^x\cos(y), \Ima(\exp(x,y))=e^x\sin(y)$,
+\[
+d_{(x,y)}\Rea(\exp)+id_{(x,y)}\Ima(\exp)=(e^x\cos(y)dx-e^x\sin(y)dy)+i(e^x\sin(y)dx+e^x\cos(y)dy)=
+\]
+\[
+e^x(\cos(y)+i\sin(y))(dx+idy)=\exp(z)dz.
+\]
+Para la otra igualdad, usando el ejercicio \ref{ejer:3.5} y la igualdad anterior
+\[
+\exp^*(z^{-1}dz)=\exp^*(z^{-1}\land dz)=\exp^*(z^{-1})\land\exp^*(dz)=\frac{\cos(y)-i\sin(y)}{e^x}\land d\exp^*(z)=
+\]
+\[
+\frac{\cos(y)-i\sin(y)}{e^x}\land d\exp=\frac{\cos(y)-i\sin(y)}{e^x}\land \exp dz=\frac{\cos(y)-i\sin(y)}{e^x} \exp dz=
+\]
+\[
+\frac{\cos(y)-i\sin(y)}{e^x}e^x(\cos(y)+i\sin(y))dz=dz.
+\]
+
+
 
 \end{solucion}
 
