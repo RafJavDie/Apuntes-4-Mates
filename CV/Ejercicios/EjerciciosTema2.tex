@@ -48,7 +48,7 @@ d^*(fdx_{i_1}\land\dots\land dx_{i_p})=\sum_{j=1}^p(-1)^j\parcial{f}{x_{i_j}}dx_
 \]
 \end{ejercicio}
 \begin{solucion}
-Lo definimos mediante la ecuación $\langle *w,\tau\rangle vol =w\land\tau$, donde el producto escalar está definido como $\langle *w,\tau\rangle(x)=\langle *w(x), \tau(x)\rangle$. Usando el ejercicio 2.5 se tiene esta definición es consistente con definir $*(dx_1\land\dots\land dx_p)(x)=dx_{p+1}(x)\land\dots\land dx_n(x)$. A partir de lo cual, usando ese mismo ejercicio se tienen las dos primeras propiedades.
+Lo definimos mediante la ecuación $\langle *w,\tau\rangle vol =w\land\tau$, donde el producto escalar está definido como $\langle *w,\tau\rangle(x)=\langle *w(x), \tau(x)\rangle$, es decir, $*(w)_x=*(w_x)$. Usando el ejercicio 2.5 se tiene esta definición es consistente con definir $*(dx_1\land\dots\land dx_p)(x)=dx_{p+1}(x)\land\dots\land dx_n(x)$. A partir de lo cual, usando ese mismo ejercicio se tienen las dos primeras propiedades.
 
 Ver que $d^*$ está bien definida es una sencilla comprobación. Además es lineal por ser composición de lineales.
 \[
@@ -86,10 +86,38 @@ Como $(np+n-1)+(n-j+1+np)\equiv j\mod 2$, se tiene la última igualdad.
 Finalmente, si tenemos $d^*(fdx_{i_1}\land\dots\land dx_{i_p})$, entonces podemos considerar $\sigma\in S(p,n-p)$.
 \begin{gather*}
 d^*(fdx_{\sigma(1)}\land\dots\land dx_{\sigma(p)})=(-1)^{np+n-1}*d*(f dx_{\sigma(1)}\land\dots\land dx_{\sigma(p)})\\
-(-1)^{np+n-1}*d(fdx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)})=(-1)^{np+n-1}*\left(\sum_{i=1}^n\parcial{f}{x_{\sigma(i)}}dx_{\sigma(i)}\land dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)}\right)=\\
-(-1)^{np+n-1}*\left(\sum_{i=1}^p\parcial{f}{x_{\sigma(i)}}dx_{\sigma(i)}\land dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)}\right)
+(-1)^{np+n-1}*d(fdx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)})=(-1)^{np+n-1}sgn(\sigma)*\left(\sum_{j=1}^n\parcial{f}{x_{\sigma(j)}}dx_{\sigma(j)}\land dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)}\right)=\\
+(-1)^{np+n-1}sgn(\sigma)*\left(\sum_{j=1}^p\parcial{f}{x_{\sigma(j)}}dx_{\sigma(j)}\land dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)}\right)=\\
+(-1)^{np+n-1}sgn(\sigma)\sum_{j=1}^p\parcial{f}{x_{\sigma(j)}}\left(dx_{\sigma(j)}\land dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)}\right)
 \end{gather*}
 
+Fijado $\sigma\in S(p,n-p)$ y $j\in\{1,\dots, p\}$, debe existir un único $0\leq k\leq n-p$ de modo que $\sigma(p+1)\leq\cdots\leq\sigma(p+k)\leq\sigma(j)\leq\sigma(p+k+1)\leq\cdots\leq\sigma(n)$, donde $k=0$ significará $\sigma(j)<\sigma(p+1)$. Tomamos la permutación $\beta$ que desde $k+2$ hasta $n$ es la identidad y desde 1 hasta $k+1$ es un ciclo en el que rota todos una posición a la derecha ($1\mapsto 2,\dots, k+1\mapsto 1$). Para el caso $k=0$, $\beta=Id$. Entonces $sgn(\beta)=(-1)^k$. Definimos también la permutación $\tau$ del apartado anterior. A partir de esto, definimos $\hat{\beta}=\sigma\tau
+\beta$. Veamos que $\hat{\beta}\in S(n-p+1,p-1)$. En el caso $k=0$ ya se había probado en el anterior apartado.
+\[
+\hat{\beta}(1)=\sigma(p+1),\dots, \hat{\beta}(k)=\sigma(p+k)
+\]
+\[
+\hat{\beta}(k+1)=\sigma(j),\hat{\beta}(k+2)=\sigma(p+k+1),\dots,\hat{\beta}(n-p+1)=\sigma(n) 
+\]
+de donde se deduce lo que queríamos probar. Ahora, 
+
+\begin{gather*}
+(-1)^k*(\varepsilon_{\sigma(j)}\land\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)})=*(\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(p+k)}\land\varepsilon_{\sigma(j)}\land\varepsilon_{\sigma(p+k+1)}\land\dots\land\varepsilon_{\sigma(n)})=  \\
+*(\varepsilon_{\hat{\beta}(1)}\land\dots\land\varepsilon_{\hat{\beta}(n-p+1)})=sgn(\hat{\beta})\varepsilon_{\hat{\beta}(n-p+2)}\land\dots\land\varepsilon_{\hat{\beta}(n)}=(-1)^k(-1)^{n+j-1+np}sgn(\sigma)\varepsilon_{\sigma(1)}\land\dots\land\hat{\varepsilon}_{\sigma(j)}\land\dots\land\varepsilon_{\sigma(p)}
+\end{gather*}
+Entre la priemra expresión y la última, eliminando el punto donde se evalúa, obtenemos
+\[
+*(dx_{\sigma(j)}\land dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)})=(-1)^{n+j-1+np}sgn(\sigma) dx_{\sigma(1)}\land\dots\land\hat{dx}_{\sigma(j)}\land\dots\land dx_{\sigma(p)}
+\]
+Volviendo a donde nos habíamos quedado calculando la estrella, obtenemos
+\begin{gather*}
+(-1)^{np+n-1}sgn(\sigma)\sum_{j=1}^p\parcial{f}{x_{\sigma(j)}}(-1)^{n+j-1+np}sgn(\sigma)\left(dx_{\sigma(1)}\land\dots\land \hat{dx}_{\sigma(j)}\land\dots\land dx_{\sigma(p)}\right)=\\
+\sum_{j=1}^p\parcial{f}{x_{\sigma(j)}}(-1)^{j}dx_{\sigma(1)}\land\dots\land \hat{dx}_{\sigma(j)}\land\dots\land dx_{\sigma(p)}
+\end{gather*}
+
+\begin{nota}
+El operador $d^*$ sirve para calcular la homología $H_*(U)$. 
+\end{nota}
 \end{solucion}
 \newpage
 
@@ -111,6 +139,59 @@ Una $p$-forma $w\in\Omega^p(U)$ se dice armónica si $\Delta(w)=0$. Probar que
 envía formas armónicas en formas armónicas.
 \end{ejercicio}
 \begin{solucion}
+Por el ejercicio anterior
+\[
+d^*(fx_1\land\dots\land dx_p)=\sum_{j=1}^n(-1)^j\parcial{f}{x_j}dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p,
+\]
+Así que
+\[
+dd^*(fx_1\land\dots\land dx_p)=\sum_{j=1}^n(-1)^j\left(\sum_{k=1}^n\frac{\partial^2 f}{\partial x_j\partial x_k}dx_k\right)\land dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p=
+\]
+\[
+\sum
+_{j=1}^p(-1)^j\left(\frac{\partial^2 f}{\partial x_j\partial x_k}dx_j\land dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p+\sum_{k=p+1}^n\frac{\partial^2 f}{\partial x_j\partial x_k}dx_k\land dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p\right)=
+\]
+\[
+\sum
+_{j=1}^p-\left(\frac{\partial^2 f}{\partial x_j\partial x_k}\land dx_1\land\dots\land dx_p\right)+\left(\sum_{j=1}^p(-1)^j\sum_{k=p+1}^n\frac{\partial^2 f}{\partial x_j\partial x_k}dx_k\land dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p\right)=
+\]
+\[
+-\sum_{j=1}^p\frac{\partial^2 f}{\partial x_j\partial x_k}\land dx_1\land\dots\land dx_p+\sum_{k=p+1}^ndx_k\land\left(\sum_{j=1}^p(-1)^j\frac{\partial^2 f}{\partial x_j\partial x_k}dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p\right)=
+\]
+\[
+-\sum_{j=1}^p\frac{\partial^2 f}{\partial x_j\partial x_k}\land dx_1\land\dots\land dx_p+\sum_{k=p+1}^ndx_k\land d^*\left(\parcial{f}{x_k}dx_1\land\dots\land dx_p\right)
+\]
+
+Por otro lado, $$d(f dx_1\land\dots\land dx_p)=\left(\sum_{k=1}^n\parcial{f}{x_j}dx_k\right)\land dx_1\land\dots\land dx_p=\sum_{k=p+1}^n\parcial{f}{x_j}dx_k\land dx_1\land\dots\land dx_p.$$
+De aquí
+\[
+d^*d(f dx_1\land\dots\land dx_p)=\sum_{k=p+1}^nd^*\left(\parcial{f}{x_j}dx_k\land dx_1\land\dots\land dx_p\right)=
+\]
+\[
+\sum_{k=p+1}^n\left(-\frac{\partial^2 f}{\partial x_k^2}dx_1\land\dots\land dx_p+\sum_{j=1}^p (-1)^{j-1}\frac{\partial^2 f}{\partial x_k\partial x_j}dx_k\land dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p\right)=
+\]
+\[
+-\sum_{k=p+1}^n\frac{\partial^2 f}{\partial x_k^2}dx_1\land\dots\land dx_p-\sum_{k=p+1}^n\sum_{j=1}^p(-1)^{j}\frac{\partial^2 f}{\partial x_k\partial x_j}dx_k\land dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p=
+\]
+\[
+-\sum_{k=p+1}^n\frac{\partial^2 f}{\partial x_k^2}dx_1\land\dots\land dx_p-\sum_{k=p+1}^n dx_k\land\left(\sum_{j=1}^p(-1)^{j}\frac{\partial^2 f}{\partial x_k\partial x_j} dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p\right)=\\
+\]
+\[
+-\sum_{k=p+1}^n\frac{\partial^2 f}{\partial x_k^2}dx_1\land\dots\land dx_p-\sum_{k=p+1}^ndx_k\land d^*\left(\parcial{f}{x_k} dx_1\land\dots\land dx_p\right)
+\]
+Sumando obtenemos finalmente el resultado.
+\begin{nota}
+Repitiendo lo mismo pero con $\sigma\in S(p,n-p)$, $\Delta(f dx_{\sigma(1)}\land\dots\land dx_{\sigma(p)}=\left(-\sum_{k=1}^n\frac{\partial^2 f}{\partial x_{\sigma(k)}^2}\right) dx_{\sigma(1)}\land\dots\land dx_{\sigma(p)}$
+\end{nota}
+
+Probemos ahora la segunda parte del ejercicio.  Sea $w=\sum_{\sigma} f_{\sigma}dx_{\sigma}$, entonces $\Delta(w)=\sum_{\sigma} \Delta(f_{\sigma}w_{\sigma})=-\sum_{\sigma}\Delta(f_{\sigma})w_{\sigma}$. Así que $\Delta(w)=0\Leftrightarrow \forall\sigma, \Delta(f_{\sigma}w_{\sigma})=0$ pues $\Delta$ es homomorfismo sobre $\Omega^p(U)$. Basta entonces probarlo para $w=fdx_{\sigma}$. Tenemos que $*w=*(fdx_{\sigma(1)}\land\dots\land dx_{\sigma(p)})=fdx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)}$. Así que
+\[
+\Delta(*w)=\left(-\sum_{k=1}^n\frac{\partial^2 f}{\partial x_k^2}\right)dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)}=0\Leftrightarrow \Delta(f)=0
+\] 
+si y solo si
+\[
+\Delta(w)=-\left(\sum_{k=1}^n\frac{\partial^2 h}{\partial x_k^2}\right)dx_{\sigma(1)}\land\dots\land dx_{\sigma(p)}=0.
+\]
 \end{solucion}
 \newpage
 
@@ -139,7 +220,7 @@ w_1\land w_2=(\Rea(w_1)+i\Ima(w_1))\land(\Rea(w_2)+i\Ima(w_2))=
 \[
 (\Rea(w_1)\land\Rea(w_2)-\Ima(w_1)\land\Ima(w_2))+i(\Ima(w_1)\land\Rea(w_2)+\Rea(w_1)\land\Ima(w_2)),
 \]
-donde los productos exteriores de la segunda línea son los propios de las aplicaciones multilineales reales. Las propiedades del álgebra del producto exterior habitual se trasladan a este álgebra fácilmente.
+donde los productos exteriores de la segunda línea son los propios de las aplicaciones multilineales reales. Las propiedades del álgebra del producto exterior habitual se trasladan a este álgebra fácilmente. Obsérvese además que $ Alt^p(\R^n,\C)=Alt^p(\R^n)\oplus  Alt^p(\R^n)$.
 \end{solucion}
 
 \newpage
