@@ -19,7 +19,7 @@ Let $I =\langle
 g_1, g_2, g_3\rangle ⊆ \R[x, y, z]$, where $g_1 = xy^2 − xz + y$, $g_2 = xy − z^2$ and
 $g_3 = x − yz^4$. Using the lex order, give an example of $g ∈ I$ such that $LT(g) \not∈
 \langle
-LT(g1), LT(g2), LT(g3)\rangle$.
+LT(g_1), LT(g_2), LT(g_3)\rangle$.
 \end{ejercicio}
 
 \begin{solucion}
@@ -37,12 +37,17 @@ $\gene{LT( f_1),\dots , LT( f_s)}$. Hint: This should follow directly from what
 you did in those exercises.
 \end{ejercicio}
 \begin{solucion}
-
+\begin{itemize}
+\item[]
+\item Para el Ejercicio 5 tenemos $x-z\in \gene{x^2y-z,xy-1}$, pero $x\notin\gene{x^2y,xy}$.
+\item Para el Ejercicio 6 tenemos $3x^2-y^2-y\in\gene{2xy^2-x,3x^2y-y-1}$, pero $3x^2\notin\gene{2xy^2,3x^2y}$.
+\item Para el Ejercicio 7 tenemos $xz-x \in \gene{x^4y^2 − z, x^3y^3 − 1, x^2y^4 − 2z}$, pero $xz\notin\gene{x^4y^2,x^3y^3,x^2y^4}$.
+\end{itemize}
 \end{solucion}
 \newpage
 
 \begin{ejercicio}{2.5.3}
-To generalize the situation of Exercises 1 and 2, suppose that $I = \gene{f_1, \dots, fs}$ is an ideal
+To generalize the situation of Exercises 1 and 2, suppose that $I = \gene{f_1, \dots, f_s}$ is an ideal
 such that $\gene{LT(f_1), \dots, LT(f_s)}$ is strictly smaller than $\gene{LT(I)}$.
 
 \begin{enumerate}[a.]
@@ -57,9 +62,8 @@ Then use Lemma 2 of §4.
 \begin{solucion}
 \begin{enumerate}[a.]
 \item Sea $g \in \gene{LT(I)}$ tal que $g \notin \gene{LT(f_1),\dots , LT(f_s)}$.
-Por el lema 2, como $\gene{LT(I)}$ es ideal monomial, todos los monomios de $g$ deben estar en $\gene{LT(I)}$.
-Al menos, uno de ellos, llamémoslo $x^{α}$ debe estar en $\gene{LT(I)}$ pero no en $\gene{LT(f_1), \dots, LT(f_s)}$.
-De nuevo, por el lema 2, existe un $f \in I$ tal que $LT(f)$ divide a $x^{α}$.
+Por el lema 2, como $\gene{LT(I)}$ es ideal monomial, todos los monomios de $g$ deben estar en $\gene{LT(I)}$. Al menos, uno de ellos, llamémoslo $x^{α}$ debe estar en $\gene{LT(I)}$ pero no en $\gene{LT(f_1), \dots, LT(f_s)}$. De nuevo, por el lema 2, existe un $f \in I$ tal que $LT(f)$ divide a $x^{α}$.
+
 Sin embargo $LT(f) \notin \gene{LT(f_1),\dots , LT(f_s)}$, pues eso implicaría que $x^{α} \in \gene{LT(f_1), \dots, LT(f_s)}$.
 
 Entonces, al aplicar el algoritmo de la división de $f$ entre $f_1,\dots,f_s$, al no ser divisible $LT(f)$ por $LT(f_1),\dots,LT(f_s)$, se añade $LT(f)$ al resto.
@@ -85,13 +89,11 @@ Análogamente, sea $f \in \gene{LM(g) \mid g ∈ I\setminus \{0\}}$. Entonces:
 \newpage
 
 \begin{ejercicio}{2.5.5}
-Let $I$ be an ideal of $k[x_1, \dots, x_n]$. Show that $G = {g_1, \dots, g_t} ⊆ I$ is a Gröbner basis of
+Let $I$ be an ideal of $k[x_1, \dots, x_n]$. Show that $G = \{g_1, \dots, g_t\} ⊆ I$ is a Gröbner basis of
 $I$ if and only if the leading term of any element of $I$ is divisible by one of the $LT(g_i)$.
 \end{ejercicio}
 \begin{solucion}
-Supongamos que $G$ fuera una base de Gröbner de $I$.
-Sea $f \in I$, entonces $LT(f) \in \gene{LT(I)} = \gene{LT(g_1),\dots,LT(g_t)}$.
-Por el lema 2, esto implica que $LT(f)$ es divisible por alguno de los $LT(g_i)$.
+Supongamos que el término lider de cada elemento de $I$ es divisible por algún $LT(g_i)$. Se deduce del Lema 2, que $\forall g \in I$ $LT(g)\in \gene{LT(g_i)\mid i=1,\dotsc,t}$, luego $\gene{LT(I)}\subset\gene{LT(g_i)\mid i=1,\dotsc,t}$. Como siempre se tiene la inclusión recíproca, se da la igualdad. Esto es la definición de ser base de Gröbner.
 
 La implicación contraria puede verse demostrada en \ref{ejer:2.5.3}.
 \end{solucion}
