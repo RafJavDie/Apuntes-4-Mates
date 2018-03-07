@@ -158,15 +158,87 @@ llamada \emph{sucesión exacta larga en homología}.
 \begin{dem}
 Tenemos
 \[\begin{tikzcd}
-0\arrow[r] & C_{n}^1\arrow[r, "f_{n}"]\arrow[d, "\partial_{n}^1"]& C_{n+1}^2\arrow[r, "g_{n}"]\arrow[d,"\partial_{n}^2"]& C_{n}^3\arrow[r]\arrow[d,"\partial_{n}^3"] & 0\\
+0\arrow[r] & C_{n}^1\arrow[r, "f_{n}"]\arrow[d, "\partial_{n}^1"]& C_n^2\arrow[r, "g_{n}"]\arrow[d,"\partial_{n}^2"]& C_{n}^3\arrow[r]\arrow[d,"\partial_{n}^3"] & 0\\
 0\arrow[r] & C_{n-1}^1\arrow[r, "f_{n-1}"]\arrow[d, "\partial_{n-1}^1"]& C_{n-1}^2\arrow[r, "g_{n-1}"] \arrow[d,"\partial_{n-1}^2"]& C_{n-1}^3\arrow[r]\arrow[d,"\partial_{n-1}^3"]&  0\\
 0\arrow[r] & C_{n-2}^1\arrow[r, "f_{n-2}"]& C_{n-2}^2\arrow[r, "g_{n-2}"]& C_{n-2}^3\arrow[r] & 0
 \end{tikzcd}
 \]
-donde todos los cuadrados son conmutativos. Definimos $\Delta$ de la siguiente manera: dado $[z_3]\in H_n(\mathcal{C}^3)$, es decir, $z_3\in Z_n(\mathcal{C}^3)\subseteq C_n^3$, y como $g$ es sobreyectiva, $\exists x_2\in C_n^2$ con $g_n(x_2)=z_3$. Por otro lado, $g_{n-1})\partial_n^2(x_2))=\partial_n^3(g_n(x_2))=\partial_n^3(z_3)=0$, de donde se deduce que $\partial_n^2(x_2)\in\ker(g_{n-1})=\Ima(f_{n-1})$. Por tanto, existe un único (por inyectividad) $z_1\in C_{n-1}^1$ con $f_{n-1}(z_1)=\partial^2_n(x_2)$. Si probamos que $z_n\in Z_{n-1}(\mathcal{C}^1)$ entonces definiremos $\Delta([z_3])=[z_1]$.  
+donde todos los cuadrados son conmutativos. Definimos $\Delta$ de la siguiente manera: dado $[z_3]\in H_n(\mathcal{C}^3)$, es decir, $z_3\in Z_n(\mathcal{C}^3)\subseteq C_n^3$, y como $g$ es sobreyectiva, $\exists x_2\in C_n^2$ con $g_n(x_2)=z_3$. Por otro lado, $g_{n-1}(\partial_n^2(x_2))=\partial_n^3(g_n(x_2))=\partial_n^3(z_3)=0$, de donde se deduce que $\partial_n^2(x_2)\in\ker(g_{n-1})=\Ima(f_{n-1})$. Por tanto, existe un único (por inyectividad) $z_1\in C_{n-1}^1$ con $f_{n-1}(z_1)=\partial^2_n(x_2)$. Si probamos que $z_n\in Z_{n-1}(\mathcal{C}^1)$ entonces definiremos $\Delta([z_3])=[z_1]$.  
 
-Tenemos $f_{n-2}(\partial^1_{n-1}(z_1)=\partial^2_{n-1}(f_{n-1}(z_1))=\partial^2_{n-1}(\partial^2_n(x_2))=0$. Como $f_{n-2}$ es inyectiva, entonces $\partial^1_{n-1}(z_1)=0$, con lo que tenemos lo que buscábamos. Ahora tenemos que ver si realmente está bien definida. 
+Tenemos $f_{n-2}(\partial^1_{n-1}(z_1)=\partial^2_{n-1}(f_{n-1}(z_1))=\partial^2_{n-1}(\partial^2_n(x_2))=0$. Como $f_{n-2}$ es inyectiva, entonces $\partial^1_{n-1}(z_1)=0$, con lo que tenemos lo que buscábamos.
+
+Ahora tenemos que ver si realmente está bien definida.
+Sea $z_3' \in Z_n(\mathcal{C}^3)$ otro representante de $[z_3] \in H_n(\mathcal{C}^3)$, es decir $[z_3]=[z_3']$.
+Existe $ω_3 \in C_{n+1}^3$ tal que $z_3'-z_3 = \partial_{n+1}^3(ω_3)$.
+Siguiendo el mismo procedimiento que usamos para $z_3$, obtenemos $x_2' \in C_n^2$ tal que $g_n(x_2')=z_3'$.
+También existe un único $z_1' \in C_{n-1}^1$ tal que $f_{n-1}(z_1') = \partial_n^2(x_2')$.
+Definimos $Δ([z_3'])=[z_1']$. Luego tenemos que ver si $[z_1] = [z_1']$, es decir, si $z_1' - z_1 \in B_{n-1}(\mathcal{C}^1)$.
+\[ g_n(x_2'-x2) = g_n(x_2')-g_n(x_2) = z_3-z_3 = \partial_{n+1}^3(ω_3) \]
+Como $g_{n+1}$ es sobre, existe $θ_2 \in C_{n+1}^2$ tal que $g_{n+1}(θ_2)=ω_3$.
+Ahora consideramos (usando conmutatividad del diagrama)
+\[ g_n((x_2'-x_2)-\partial_{n+1}^2(θ_2)) = g_n(x_2'-x_2)-g_n(\partial_{n+1}^2(θ_2)) = δ_{n+1}^3(ω_3) - δ_{n+1}^3(g_{n+1}(θ_2)) = 0 \]
+Entonces $x_2-x_2-\partial_{n+1}^2(θ_2) \in \ker g_n = \Ima f_n$, luego existe un único $α_1 \in C_n^1$ tal que $f_n(α_1)=x_2'-x_2-\partial_{n+1}^2(θ_2)$.
+Observamos que:
+\[ f_{n-1}(\partial_n^1(α_1)) = \partial_n^2(f_n(α_1)) = \partial_n^2(x_2'-x_2-\partial_{n+1}^2(θ_2)) = \partial_n^2(x_2')-\partial_n^2(x_2) = f_{n-1}(z_1'-z_1) \]
+Por inyectividad de $f_{n-1}$, deducimos $z_1'-z_1 = \partial_n^1(α_1) \in B_{n-1}(\mathcal{C}^1)$.
+
+Procedemos a ver que la sucesión es exacta. Hay que probar para todo $n \in \Z$:
+\begin{enumerate}
+\item $\Ima f_* = \ker g_*$. Tenemos que $g_n \circ f_n = 0$ para todo $n$, luego $g \circ f = 0$ como morfismo entre cadenas. En consecuencia, $g_* \circ f_* = (g \circ f)_* = 0$, finalmente $\Ima f_* \subseteq \ker g_*$.
+
+Por otro lado, sea $[z_2] \in H_n(\mathcal{C}^2)$ tal que $g_*([z_2])=0$.
+Como $g_*([z_2]) = [g_n(z_2)]$, entonces $g_n(z_2) \in B_n(\mathcal{C}^3)$.
+Entonces, existe $x_3 \in C_{n+1}^3$ tal que $\partial_{n+1}^3(x_3)=g_n(z_2)$.
+Por otro lado, por sobreyectividad, existe $x_2 \in C_{n+1}^2$ tal que $g_{n+1}(x_2) = x_3 \in C_{n+1}^3$.
+Consideramos:
+\[ g_n(z_2-\partial_{n+1}^2(x_2)) = g_n(z_2)-g_n(\partial_{n+1}^2(x_2)) = g_n(z_2)-\partial_{n+1}^3(g_{n+1}(x_2)) = g_n(z_2)-\partial_{n+1}^3(x_3) = 0 \]
+Luego $z_2 - \partial_{n+1}^2(x_2) \in \ker g_n = \Ima f_n$.
+Por lo tanto, existe un único $z_1 \in C_n^1$ tal que $f_n(z_1) = z_2 - \partial_{n+1}^2(x_2)$.
+Si $z_1$ es un ciclo, ya tendríamos el resultado, pues $f_*([z_1])=[f_n(z_1)] = [z_2-\partial_{n+1}^2(x_2)] = [z_2]$.
+Basta ver que $z_1$ es efectivamente un ciclo. Observando que:
+\[ f_{n-1}(\partial_n^1(z_1)) = \partial_n^2(f_n(z_1)) = \partial_n^2(z_2-\partial_{n+1}^2(x_2)) = 0 \]
+Por inyectividad de $f_{n-1}$, $\partial_n^1(z_1) = 0$ y $z_1 \in Z_n$.
+\item $\Ima g_* = \ker Δ$.Considermos $g_*([x_2])$ con $x_2 \in Z_n(\mathcal{C}^2)$.
+Entonces por definición de $Δ$ se tiene que $Δ([g_n(x_2)]) = 0$.
+
+Sea $[z_3] \in H_n(\mathcal{C}^3)$ tal que $Δ([z_3]) = [0]$.
+Por la construcción de $Δ$, esto quiere decir que existe $x_2 \in C_n^2$ tal que $g_n(x_2)=z_3$, $\partial_n^2(x_2)=0$ y existe $ω_1 \in C_n^1$ tal que $\partial_n^1(ω_1) = 0$.
+Observamos que como $g_n \circ f_n = [0]$:
+\[ g_*([x_2-f_n(ω_1)]) = [g_n(x_2 - f_n(ω_1))] = [g_n(x_2)] = [z_3] \]
+Para argumentar esto falta ve que $x_2-f_n(ω_1)$ es un ciclo, pero:
+\[ \partial_n^2(x_2-f_n(ω_1)) = \partial_n^2(x_2) - \partial_n^2f_n(ω_1) = \partial_n^2(x_2) - f_{n-1}\partial_n^1(ω_1) = 0 \]
+\item $\Ima Δ = \ker f_*$. Consideramo $Δ([z_3]) = [z_1]$ con $z_3 \in Z_n(\mathcal{C}^3)$.
+Por la construcción de $Δ$, esto quiere decir que existe $x_2 \in C_n^2$ tal que $g_n(x_2) = z_3$ y existe un único $z_1 \in C_{n-1}^1$ tal que $f_{n-1}(z_1) = \partial_n^2(x_2)$.
+Luego:
+\[ f_*(Δ([z_3])) = f_*([z_1]) = [f_{n-1}(z_1)] = [\partial_n^2(x_2)] = 0 \]
+
+Por otro lado, supongamos que $f_*([z_1]) = 0$ entonces existe $x_2 \in C_n^2$ tal que $\partial_n^2(x_2)=f_{n-1}(z_1)$.
+Tomamos $z_3 = g_n(x_2)$. Tenemos que:
+\[ \partial_n^3(z_3) = \partial_n^3(g_n(x_2)) = g_{n-1}(\partial_n^2(x_2)) = g_{n-1}(f_{n-1}(z_1)) = 0 \]
+Luego $z_3$ es un ciclo, además:
+\[ Δ([z_3]) = [z_1] \Rightarrow [z_1] \in \Ima Δ \]
+\end{enumerate}
 \QED
 \end{dem}
 
+\begin{defi}
+Dados dos complejos de cadenas $\mathcal{C} = \{(C_n,\partial_n)\}_{n \in \Z}$ y $\mathcal{C}' = \{(C_n',\partial_n')\}_{n \in \Z}$, podemos construir un tercer complejo de cadenas $\mathcal{C} \oplus \mathcal{C}'$ dado por:
+\[ \left(\mathcal{C}_n \oplus \mathcal{C}'\right)_n = C_n \oplus C_n' \]
+\[ \begin{matrix}\partial_n \oplus \partial_n' \colon & C_n \oplus C_n' \to C_{n-1} \oplus C_{n-1}'\\
+& (x,y) \mapsto \left(\partial_n(x), \partial_n'(y)\right) \end{matrix} \]
+\end{defi}
+
+\begin{defi}
+Dado un complejo de cadenas $\mathcal{C} = \{(C_n,\partial_n)\}_{n \in \Z}$ y dados subespacos vectoriales $C_n' \subseteq C_n$ $\forall n \in \Z$ cumpliendo que $\partial_n(C_n') \subseteq C_{n-1}'$, diremos que tenemos un \emph{subcomplejo de cadenas} $\mathcal{C}' = \{(C_n',\partial_n|_{C_n'})\}_{n \in \Z}$ de $\mathcal{C}$. Lo denotaremos $\mathcal{C}' \subseteq \mathcal{C}$.
+\end{defi}
+
+\begin{prop}
+Sea $\mathcal{C}$ un complejo de cadenas y consideremos $\mathcal{C}^1, \mathcal{C}^2 \subseteq \mathcal{C}$ subcomplejos.
+Entonces tenemos la secuencia exacta corta:
+\[ 0 \to C_n^1 \cap C_n^2 \xrightarrow{i_n} C_n^1 \oplus C_n^2 \xrightarrow{j_n} C_n \to 0 \]
+donde por:
+\[ i_n \colon x \mapsto (x,-x) \]
+\[ j_n \colon (x,y) \mapsto x+y\]
+\end{prop}
+La demostración es sencilla y queda como ejercicio.
 \end{document}
