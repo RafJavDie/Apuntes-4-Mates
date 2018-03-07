@@ -15,17 +15,34 @@
 \begin{ejercicio}{1.1}
 Sea $\mX_1, \mX_2, \dots, \mX_n$ una muestra aleatoria simple de una vector $p$-dimensional $\mX \sim (\m{µ},Σ)$.
 Sea $\media{\m{X}} = \frac{1}{n}\sum_{i=1}^n \m{X}_i$ y $S$ la matriz $S = [S_{jk}]$ con
-\[ S_{jk} = \sum_{i=1}^n (X_{ij} - \media{X}_j)(X_{ij}-\media{X}_k), \quad j,k=1,\dots,p\]
+\[ S_{jk} = \sum_{i=1}^n (X_{ij} - \media{X}_j)(X_{ik}-\media{X}_k), \quad j,k=1,\dots,p\]
 \begin{enumerate}[(a)]
 \item Demuestra que $S = \sum_{i=1}^n (\mX_i-\media{\m{X}})(\mX_i-\media{\m{X}})^t$.
 \item Sea $A_{m\times p}$ y sea $\m{Y}_1,\dots,\m{Y}_n$ con $\m{Y}_i = A \m{X}_i$.
 
-Demuestra que $\media{Y}=A \media{\mX}$ y que $S_Y = A S_X A^t$.
+Demuestra que $\media{\m{Y}}=A \media{\mX}$ y que $S_Y = A S_X A^t$.
 \item Sea $\mathbb{X}$ la matriz de datos. Demuestra que $S = \mathbb{X}^t H \mathbb{X}$, siendo $H$ simétrica e idempotente.
-\item Demuestra que $E(\media{\mX}) = \m{μ}$ y $Cov(\media{\m{X}}) = \frac{1}{n} Σ$.
+\item Demuestra que $E(\media{\mX}) = \m{μ}$ y $Cov(\media{\mX}) = \frac{1}{n} Σ$.
 \item Sea $\hat{Σ} = \frac{1}{n-1}S$, demuestra que $S(\hat{Σ}) = Σ$.
 \end{enumerate}
 \end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item
+\[ \left(\sum_{i=1}^n (\mX_i-\media{\m{X}})(\mX_i-\media{\m{X}})^t\right)_{jk} = \sum_{i=1}^n (\mX_i-\media{\m{X}})_j(\mX_i-\media{\m{X}})_k = S_{jk} \]
+\item
+\[ \media{\m{Y}} = \frac{1}{n} \sum_{i=1}^n \m{Y}_i = \frac{1}{n} \sum_{i=1}^n A\m{X}_i = A \media{\mX} \]
+\[ S_Y = \sum_{i=1}^n (\m{Y}_i-\media{\m{Y}})(\m{Y}_i-\media{\m{Y}})^t = \sum_{i=1}^n (A\mX_i-A\media{\mX})(A\mX_i-A\media{\mX})^t = A S_X A^t\]
+\item Recordemos que $H = I_n - \frac{1}{n}E_n^t$, donde $E_n$ es una matriz $n \times n$ de unos. 
+Por simetría e idempotencia: $H^t H = H^2 = H$. Entonces:
+\[ S = \tilde{\mathbb{X}}^t\tilde{\mathbb{X}} = (H \mathbb{X})^t (H \mathbb{X}) = \mathbb{X}^t H^t H \mathbb{X} = \mathbb{X}^t H \mathbb{X} \]
+\item
+\[ E(\media{\mX}) = \frac{1}{n}\sum_{i=1}^n E(\mX) = \frac{1}{n} (n \m{µ}) = \m{µ} \]
+\[ Cov(\media{\mX}) = ? \]
+\item
+\[ E(\hat{Σ})_{jk} = \frac{1}{n-1} E[S_{jk}] = \frac{1}{n-1} \sum_{i=1}^n E\left((X_{ij}-\media{X}_j)(X_{ik}-\media{X}_k)\right)\]
+\end{enumerate}
+\end{solucion}
 
 \newpage
 
