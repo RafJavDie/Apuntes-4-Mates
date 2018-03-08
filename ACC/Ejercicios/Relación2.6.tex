@@ -62,7 +62,7 @@ basis for I.
 
 \end{ejercicio}
 \begin{solucion}
-
+Supongamos que existe $f\in I$ con $LT(f)\notin LT(G)$. En particular, $LT(f)$ no es divisible por $LT(g_i)$ para ningún $i$. Pero entonces $\bar{f}^G \neq 0$. Contradicción.
 \end{solucion}
 
 \newpage
@@ -75,7 +75,7 @@ division by a Gröbner basis is even independent of which Gröbner basis we use,
 as we use one particular monomial order. Hint: See Exercise \ref{ejer:2.6.1}.
 \end{ejercicio}
 \begin{solucion}
-
+Es consecuencia de \ref{ejer:2.6.1} pues al dividir por $G$ tendríamos $f=g+r$ y al dividir por $G'$ tendríamos $f=g'+r'$, con $g,g',r,r'$ cumpliendo las condiciones de dicho ejercicio. Pero por el apartado b, $r=r'$, luego, usando la notación del enunciado, $\bar{f}^G = \bar{f}^{G'}$.
 \end{solucion}
 \newpage
 
@@ -146,8 +146,12 @@ $S$-polynomials and remainders.
 \item $G = \{xy^2 − xz + y, xy − z^2, x − yz^4\}$ for lex order.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
-
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item No lo es, pues $LT(G)=\gene{x^2}$, mientras que para $f=-xy+xz$, $LT(f)=-xy\notin LT(G)$. 
+\item 
+\item 
+\end{enumerate}
 \end{solucion}
 
 \newpage
@@ -187,15 +191,20 @@ Be sure to prove that xγ is a monomial. Also explain how this relates to Exerci
 Let $I ⊆ k[x_1,\dots , x_n]$ be an ideal, and let $G$ be a Gröbner basis of $I$.
 \begin{enumerate}[a.]
 \item Show that $\bar{f}^G = \bar{g}^G$ if and only if $f − g ∈ I$. Hint: See Exercise \ref{ejer:2.6.1}.
-\item Use Exercise \ref{2.6.1} to show that
-$$\bar{f + g}^G = \bar{f}^G + \bar{g}^G.$$
+\item Use Exercise \ref{ejer:2.6.1} to show that
+$$\overline{f + g}^G = \bar{f}^G + \bar{g}^G.$$
 \item Deduce that
 $$\overline{fg}^G = \overline{\bar{f}^G  \bar{g}^G}^G
 .$$
 We will return to an interesting consequence of these facts in Chapter 5.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Sean $f=h+r$ y $g=h'+r'$ tras dividir ambos polinomios por $G$. $f-g=(h-h')+(r-r')$. Si $r=r'$ entonces $f-g\in I$ puesto que $h,h'\in I$. Si $f-g\in I$, entonces $(r-r')=(f-g)-(h-h')\in I$, luego $LT(r-r')\in LT(I)$, pero ninguno de los términos de $r$ ni de $r'$ es divisible por ningún elemento de $G$, que es una base de Gröbner, luego $r-r'=0$. 
+\item
+\item
+\end{enumerate}
 \end{solucion}
 
 
