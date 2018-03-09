@@ -26,7 +26,7 @@ pairs(pulmonary)
 #Estudio de la normalidad
 apply(pulmonary,2,shapiro.test)
 #Test de Mardia
-library(MVN)
+source("Test_Mardia.R")
 mardiaTest(pulmonary)
 
 #1.iii
@@ -108,7 +108,7 @@ pairs(Z,col=c("red","blue")[g])
 
 #3.ii
 #####
-library(MVN)
+source("Test_Mardia.R")
 by(Z,g,mardiaTest)
 
 ( D2Maha= by(Z,g, function(M) mahalanobis(M,apply(M,2,mean),cov(M))) )
@@ -214,7 +214,7 @@ points(mediaC[1],mediaC[2],pch=6,col="blue",lwd=4)
 
 #4.iii
 ######
-library(MVN)
+source("Test_Mardia.R")
 by(Z,g,mardiaTest)   
 HotellingsT2(Z ~ g, mu = c(0,0))  
 #Tamaños muestrales iguales (no aplicamos MBox)
@@ -302,7 +302,7 @@ for (i in 1:p)
 #5.v
 #####
 #Contrastes multivariantes
-library(MVN)
+source("Test_Mardia.R")
 by(datos[,-5],datos[,5],mardiaTest)
 
 #MBox(datos[,1:p],datos[,p+1]) 
@@ -330,7 +330,7 @@ pairs(iris[,-5],col=iris.color)
 #cada variable y grupo
 #lapply(split(iris[,1:4],iris$Species),apply,2,shapiro.test)
 #Test de Mardia
-library(MVN)
+source("Test_Mardia.R")
 by(iris[,-5],iris[,5],mardiaTest)
 
 
