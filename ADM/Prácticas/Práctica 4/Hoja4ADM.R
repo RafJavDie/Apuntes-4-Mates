@@ -212,6 +212,12 @@ mediaC<- apply(Z[g=="Control",],2,mean)
 points(mediaT[1],mediaT[2],pch=6,col="red",lwd=4)
 points(mediaC[1],mediaC[2],pch=6,col="blue",lwd=4)
 
+# Calcular centroides: Alternativa
+medias <- aggregate(cbind(Puntulec,Puntuari) ~ Grupo,
+                    FUN = mean, data = datos)
+points(medias$Puntulec, medias$Puntuari,
+       pch = 6, col = c("red","blue"),lwd=4)
+
 #4.iii
 ######
 source("Test_Mardia.R")
