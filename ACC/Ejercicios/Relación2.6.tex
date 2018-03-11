@@ -83,13 +83,19 @@ Es consecuencia de \ref{ejer:2.6.1} pues al dividir por $G$ tendríamos $f=g+r$ 
 Compute $S( f , g)$ using the lex order.
 \begin{enumerate}[a.]
 \item $f = 4x^2z − 7y^2$, $g = xyz^2 + 3xz^4$.
-\item $f = x^4y − ^z2$, $g = 3xz^2 − y$.
+\item $f = x^4y − z^2$, $g = 3xz^2 − y$.
 \item $f = x^7y^2z + 2ixyz$, $g = 2x^7y^2z + 4$.
 \item $f = xy + z^3$, $g = z^2 − 3z$.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
 
+\begin{enumerate}[a.]
+\item $S(f,g)=3xz^2-y.$
+\item $S(f,g)=\frac{1}{3}x^3y^2 - z^4.$
+\item $S(f,g)=2ixyz+z^2.$
+\item $S(f,g)=3xyz+z^5.$
+\end{enumerate}
 \end{solucion}
 
 \newpage
@@ -99,7 +105,7 @@ Does $S( f , g)$ depend on which monomial order is used? Illustrate your asserti
 examples.
 \end{ejercicio}
 \begin{solucion}
-
+Sí depende. Sean $f=x+y$ y $g=x+y^2$, entonces con lex siendo $x>y$ obtenemos $S(f,g)=-y^2+y$, mientras que si $y>x$ nos da $S(f,g)=yx-x$.
 \end{solucion}
 
 \newpage
@@ -110,7 +116,7 @@ inequality is a precise version of the claim that $S$-polynomials are designed t
 cancellation.
 \end{ejercicio}
 \begin{solucion}
-
+Por definición, $S(f,g)=f\frac{x^{\gamma}}{LT(f)}-g\frac{x^{\gamma}}{LT(g)}$. Tenemos que $LT\left(f\frac{x^{\gamma}}{LT(f)}\right)=LT(f)\frac{x^{\gamma}}{LT(f)}=x^{\gamma}=LT(g)\frac{x^{\gamma}}{LT(g)}=LT\left(g\frac{x^{\gamma}}{LT(g)}\right)$. Por tanto, el término de multigrado $\gamma$ se cancela en $S(f,g)$. Como los demás términos tienen grado estríctamente menor, tenemos lo que buscábamos.
 \end{solucion}
 
 \newpage
