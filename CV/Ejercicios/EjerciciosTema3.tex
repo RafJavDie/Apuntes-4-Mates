@@ -1,0 +1,106 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de From Calculus to Cohomology, Capítulo 4}
+\author{Javier Aguilar Martín}
+\maketitle
+
+
+\begin{ejercicio}{4.1}
+Consideremos el diagrama conmutativo de espacios vectoriales y aplicaciones lineales en el que las filas son exactas
+\[
+\begin{tikzcd}
+A_1\arrow[d,"f_1"]\arrow[r] & A_2\arrow[d,"f_2"]\arrow[r] & A_3\arrow[d,"f_3"]\arrow[r] & A_4\arrow[d,"f_4"]\arrow[r] & A_5\arrow[d,"f_5"]\\
+B_1\arrow[r] & B_2\arrow[r] & B_3\arrow[r] & B_4\arrow[r] & B_5
+\end{tikzcd}
+\]
+Supongamos que $f_4$ es inyectiva, $f_1$ es sobreyectiva y $f_2$ es inyectiva. Probar que $f_3$ es inyectiva. Suponer que $f_2$ es sobreyectiva, $f_4$ es sobreyectiva y $f_5$ es inyectiva. Probar que $f_3$ es sobreyectiva. 
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4.2}
+Consideremos el siguiente diagrama conmutativo
+\[
+\begin{tikzcd}
+0\arrow[r] & A_1\arrow[d,"f_1"]\arrow[r] & A_2\arrow[d,"f_2"]\arrow[r] & A_3\arrow[d,"f_3"]\arrow[r] & 0\\
+0\arrow[r] & B_1\arrow[r] & B_2\arrow[r] & B_3\arrow[r] & 0
+\end{tikzcd}
+\]
+donde las filas son sucesiones exactas. Probar que existe una sucesión exacta
+\[
+0\to \ker{f_1}\to \ker{f_2}\to \ker{f_3}\to \coker{f_1}\to \coker{f_2}\to \coker{f_2}\to 0.
+\]
+(Pista: utilizar la sucesión exacta larga de cohomología).
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{4.3}
+En el diagrama conmutativo
+\[
+\begin{tikzcd}
+& 0\arrow[d] & 0\arrow[d] & 0\arrow[d] & 0\arrow[d] \\
+0\arrow[r] & A^{0,0}\arrow[r]\arrow[d] & A^{1,0}\arrow[r]\arrow[d]& A^{2,0}\arrow[r]\arrow[d]  & A^{3,0}\arrow[r]\arrow[d] &\cdots\\
+0\arrow[r] & A^{0,1}\arrow[r]\arrow[d] & A^{1,1}\arrow[r]\arrow[d]& A^{2,1}\arrow[r]\arrow[d]  & A^{3,1}\arrow[r]\arrow[d] &\cdots\\
+0\arrow[r] & A^{0,2}\arrow[r]\arrow[d] & A^{1,2}\arrow[r]\arrow[d]& A^{2,2}\arrow[r]\arrow[d]  & A^{3,2}\arrow[r]\arrow[d] &\cdots\\
+0\arrow[r] & A^{0,3}\arrow[r]\arrow[d] & A^{1,3}\arrow[r]\arrow[d]& A^{2,3}\arrow[r]\arrow[d]  & A^{3,3}\arrow[r]\arrow[d] &\cdots\\
+& \vdots & \vdots & \vdots & \vdots
+\end{tikzcd}
+\]
+la horizontal $(A^{*,q})$ y la vertical $A^{p,*})$ son complejos de cadenas donde $A^{p,q}=0$ si o bien $p<0$ o bien $q<0$. Supongamos que
+\begin{gather*}
+H^p(A^{*,q})=0\text{ para }q\neq 0\text{ y todo }p,
+H^q(A^{p,*})=0\text{ para }p\neq 0\text{ y todo }q.
+\end{gather*}
+Construir isomorfismos $H^p(A^{*,0})\to H^p(A^{0,*})$ para todo $p$.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{4.4}
+Sea $0\to A^0\overset{d_0}{\to}A^1\overset{d_1}{\to}\cdots\overset{d_{n-1}}{\to}A^n\to 0$ un complejo de cadenas y supongamos que $\dim A^i<\infty$. La \emph{característica de Euler} está definida como
+\[
+\chi(A^*)=\sum_{i=0}^n (-1)^i\dim A^i.
+\]
+Probar que $\chi(A^*)=0$ si $A^*$ es exacta. Probar que la sucesión 
+\[
+0\to H^i(A^*)\to A^i/\Ima d^{i-1}\overset{d^i}{\to}\Ima d^i\to 0
+\]
+es exacta y concluir que
+\[
+\dim A^i-\dim\Ima d^{i-1}=\dim H^i(A^*)+\dim\Ima d^i.
+\]
+Probar que $\chi(A^*)=\sum_{i=0}^n\dim H^i(A^*)$.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4.5}
+Asociar a dos aplicaciones lineales componibles 
+\[
+f:V_1\to V_2,\quad g:V_2\to V_3
+\]
+una sucesión exacta
+\[
+0\to \ker{f}\to\ker{g\circ f}\to\ker{g}\to\coker{f}\to\coker{g\circ f}\to\coker{g}\to 0.
+\]
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\end{document}
