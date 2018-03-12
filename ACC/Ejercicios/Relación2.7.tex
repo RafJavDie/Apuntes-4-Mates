@@ -1,0 +1,219 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\lex}{<_{lex}}
+\newcommand{\grlex}{<_{grlex}}
+\newcommand{\grevlex}{<_{grevlex}}
+
+\newcommand{\PhantC}{\phantom{\colon}}%
+\newcommand{\CenterInCol}[1]{\multicolumn{1}{c}{#1}}%
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{2.7.1}
+Check that $\overline{S( f_i , f_j )}^F = 0$ for all pairs $1 ≤ i < j ≤ 5$ in Example 1.
+\end{ejercicio}
+
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.2}
+Use the algorithm given in Theorem 2 to find a Gröbner basis for each of the following
+ideals. You may wish to use a computer algebra system to compute the $S$-polynomials
+and remainders. Use the lex, then the grlex order in each case, and then compare your
+results.
+\begin{enumerate}[a.]
+\item $I = \gene{x^2 y − 1, xy^2 − x}$ .
+\item $I = \gene{x^2 + y, x^4 + 2x^2 y + y^2 + 3}$ . [What does your result indicate about the variety
+\V(I)?]
+\item $I = \gene{x − z^4 , y − z^5}$ .
+\end{enumerate}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.7.3}
+Find reduced Gröbner bases for the ideals in Exercise \ref{ejer:2.7.2} with respect to lex and grlex.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.4}
+Use the result of Exercise 7 of §4 to give an alternate proof that Buchberger’s algorithm
+will always terminate after a finite number of steps.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.7.5}
+Let $G$ be a Gröbner basis of an ideal $I$ with the property that $LC (g) = 1$ for all $g ∈ G$.
+Prove that $G$ is a minimal Gröbner basis if and only if no proper subset of $G$ is a Gröbner
+basis of $I$.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.6}
+The minimal basis of a monomial ideal was introduced in Proposition 7 of §4. Show that
+a Gröbner basis $G$ of $I$ is minimal if and only if $LC (g) = 1$ for all $g ∈ G$ and $LT (G)$ is
+the minimal basis of the monomial ideal $LT (I)$.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.7}
+Fix a monomial order, and let $G$ and $\tilde{G}$ be minimal Gröbner bases for the ideal $I$.
+\begin{enumerate}[a.]
+\item Prove that $LT (G) = LT (\tilde{G})$.
+\item Conclude that $G$ and have the same number of elements.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.8}
+Develop an algorithm that produces a reduced Gröbner basis (see Definition 4) for an
+ideal $I$, given as input an arbitrary Gröbner basis for $I$. Prove that your algorithm works.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.9}
+Consider the ideal
+\[
+I = \gene{3x − 6y − 2z, 2x − 4y + 4w, x − 2y − z − w} ⊆ k[x, y, z, w]
+\]
+mentioned in the text. We will use lex order with $x > y > z > w$.
+\begin{enumerate}
+\item Show that the linear polynomials determined by the row echelon matrix (3) give a
+minimal Gröbner basis $I =  \gene{x − 2y − z − w, z + 3w}$ . Hint: Use Theorem 6 of §6.
+\item Show that the linear polynomials from the reduced row echelon matrix (4) give the
+reduced Gröbner basis $I = \gene{x − 2y + 2w, z + 3w}$.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.10}
+Let $A = (a_{ij} )$ be an $n × m$ matrix with entries in $k$ and let $f_i = a_{i1} x_1 +\cdots + a_{im} x_m$ be the
+linear polynomials in $k[x_1 ,\dots, x_m ]$ determined by the rows of $A$. Then we get the ideal
+$I = \gene{f_1 ,\dots , f_n}$ . We will use lex order with $x_1 > \cdots > x_m$ . Now let $B = (b_{ij} )$ be the
+reduced row echelon matrix determined by $A$ and let $g_1 ,\dots , g_t$ be the linear polynomials
+coming from the nonzero rows of $B$ (so that $t ≤ n$). We want to prove that $g_1 ,\dots , g_t$
+form the reduced Gröbner basis of $I$.
+\begin{enumerate}[a.]
+\item Show that $I =\gene{ g_1 ,\dots , g_t}$ . Hint: Show that the result of applying a row operation to
+$A$ gives a matrix whose rows generate the same ideal.
+\item Use Theorem 6 of §6 to show that $g_1 , \dots, g_t$ form a Gröbner basis of $I$. Hint: If the
+leading 1 in the ith row of $B$ is in the $s$-th column, we can write $g_i = x_s + C$, where $C$
+is a linear polynomial involving none of the variables corresponding to leading 1’s.
+If $g_j = x_t + D$ is written similarly, then you need to divide $S(g_i , g_j ) = x_t C − x_s D$ by
+$g_1 ,\dots , g_t$. Note that you will use only $g_i$ and $g_j$ in the division.
+\item Explain why $g_1 ,\dots , g_t$ form the reduced Gröbner basis of $I$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.11}
+Show that the result of applying the Euclidean Algorithm in $k[x]$ to any pair of polyno-
+mials $f , g$ is a reduced Gröbner basis for $f , g$ (after dividing by a constant to make the
+leading coefficient equal to 1). Explain how the steps of the Euclidean Algorithm can be
+seen as special cases of the operations used in Buchberger’s algorithm.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.12}
+Fix $F = \{ f_1 , \dots , f_s \}$ and let $r = f$. Since dividing $f$ by $F$ gives $r$ as remainder, adding
+$r$ to the polynomials we divide by should reduce the remainder to zero. In other words,
+we should have $\overline{f}^{F∪\{r\}}
+= 0$ when $r$ comes last. Prove this as follows.
+\begin{enumerate}[a.]
+\item When you divide $f$ by $F ∪\{r\}$, consider the first place in the division algorithm where
+the intermediate dividend $p$ is not divisible by any $LT ( f_i )$. Explain why $LT (p) =
+LT (r)$ and why the next intermediate dividend is $p − r$.
+\item From here on in the division algorithm, explain why the leading term of the inter-
+mediate dividend is always divisible by one of the $LT ( f_i )$. Hint: If this were false,
+consider the first time it fails. Remember that the terms of $r$ are not divisible by any
+$LT ( f_i )$.
+\item Conclude that the remainder is zero, as desired.
+\item (For readers who did Exercise 11 of §3.) Give an alternate proof of $\overline{f}^{F∪\{r\}}
+= 0$ using
+Exercise 11 of §3.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.13}
+In the discussion following the proof of Theorem 2, we commented that if $\overline{S( f , g)}^{G'} = 0$,
+then remainder stays zero when we enlarge $G'$. More generally, if $\overline{f}^F = 0$ and $F'$ is
+obtained from $F$ by adding elements at the end, then $f = 0$. Prove this.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.14}
+Suppose we have $n$ points $V = \{(a_1 , b_1 ), \dots , (a_n , b_n )\} ⊆ k^2$ where $a_1 , \dots , a_n$ are
+distinct. This exercise will study the Lagrange interpolation polynomial defined by
+\[
+h(x) =\sum^n_{i=1}b_i\prod_{i\neq j}
+\frac{ x_j − a_j}{a_i − a_j}
+∈ k[x].
+\]
+
+
+We will also explain how $h(x)$ relates to the reduced Gröbner basis of $\I(V) ⊆ k[x, y]$.
+\begin{enumerate}[a.]
+\item Show that $h(a_i ) = b_i$ for $i = 1, \dots , n$ and explain why $h$ has degree $≤ n − 1$.
+\item Prove that $h(x)$ is the unique polynomial of degree $≤ n − 1$ satisfying $h(a_i ) = b_i$ for
+$i = 1,\dots , n$.
+\item Prove that $\I(V) = \gene{f (x), y − h(x)}$ , where $f (x) =\prod_{i=1}^n (x − a_i )$. Hint: Divide
+$g ∈ \I(V)$ by $f (x), y − h(x)$ using lex order with $y > x$.
+\item Prove that $\{ f (x), y − h(x)\}$ is the reduced Gröbner basis for $\I(V) ⊆ k[x, y]$ for lex
+order with $y > x$.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+
+\end{document}
