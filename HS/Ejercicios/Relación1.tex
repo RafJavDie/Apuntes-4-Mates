@@ -19,35 +19,20 @@ Demostrar que son equivalentes:
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-$(1\Rightarrow 2)$ Si $L$ es un conjunto de vértices, entonces $\partial L=\emptyset$, por lo que el resultado es trivial. En cualquier otro caso, el borde de $L$ está formado por más de una cara propia, por lo que si algún símplice $\sigma\in K-L$ corta a $L$ en todo su borde, $\sigma\cap |L|$ no puede ser una (única) cara de $\sigma$, lo que contradice la definición de subcomplejo lleno.
+$(1\Rightarrow 2)$ Supongamos que algún símplice $\sigma\in K-L$ cortase a $L$ en todo su borde, es decir, $σ \cap |L| = \partial σ$. Pero $\partial σ$ no puede ser una (única) cara, lo que contradice la definición de subcomplejo lleno.
 
-$(2\Rightarrow 3)$ Juraría haber encontrado un contraejemplo. Esta implicación es equivalente a $(\neg 3\Rightarrow\neg 2)$, es decir, si existe algún $\sigma$ cuyos vértices estén todos en $L$ pero $\sigma\notin L$, entonces existe algún símplice de $K-L$ que corta a $L$ todo su borde. ¿Pero qué pasa con esto?
-\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
-\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
-\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
-\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
-\clip(-2.689333333333333,-0.5) rectangle (9.577333333333332,3);
-\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (0.,0.) -- (3.,0.) -- (1.5,2.5980762113533165) -- cycle;
-\draw [line width=2.pt] (0.,0.)-- (3.,0.);
-\draw [line width=2.pt] (3.,0.)-- (1.5,2.5980762113533165);
-\draw [line width=2.pt] (1.5,2.5980762113533165)-- (0.,0.);
-\draw [line width=2.pt] (3.,0.)-- (5.,2.);
-\begin{scriptsize}
-\draw [fill=uuuuuu] (0.,0.) circle (2.0pt);
-\draw[color=uuuuuu] (-0.18266666666666662,0.17733333333333348) node {$A$};
-\draw [fill=xdxdff] (3.,0.) circle (2.5pt);
-\draw[color=xdxdff] (3.0173333333333328,0.252) node {$B$};
-\draw [fill=uuuuuu] (1.5,2.5980762113533165) circle (2.0pt);
-\draw[color=uuuuuu] (1.577333333333333,2.7693333333333356) node {$C$};
-\draw [fill=ududff] (5.,2.) circle (2.5pt);
-\draw[color=ududff] (5.076,2.193333333333335) node {$D$};
-\draw[color=black] (4.148,0.9773333333333342) node {$\sigma$};
-\end{scriptsize}
-\end{tikzpicture}
+$(2\Rightarrow 3)$ Demostraremos que $(\neg 3 \Rightarrow \neg 2)$ por inducción. Sea $n$ la dimensión del símplice $σ$. Si $n=1$, entonces $σ = (v_0,v_1)$ tal que $v_0,v_1 \in L$, pero $σ \notin L$, entonces $σ \in K \setminus L$ pero $σ \cap |L| = \{(v_0),(v_1)\} = \partial σ$, que prueba $\neg (2)$.
 
-Definimos $K$ como el complejo anterior, y como $L$, todos los símplices menos la arista $(BD)$ (como complejo simplicial los vértices no están aquí). Cogemos la arista $\sigma$, cuyos vértices son $B$ y $D$. Entonces ambos vértices están en $L$, y el único símplice de $K-L$ es $\sigma$, que claramente no corta a $L$ en todo su borde.
+Supongamos que si es cierto para $n$, entonces es cierto para $n+1$. Su hubiera un $n+1$-símplice $σ = (v_0,\dots,v_{n+1})$ con $v_i \in L$ para todo $i$ pero $σ \notin L$. Por hipótesis de inducción, cualquier cara propia de $σ$ está en $L$. Como la unión de todas las caras propias de $σ$ es el borde $σ$, tenemos que $σ \cap |L| = \partial σ$, luego $\neg (2)$.
 
 $(3\Rightarrow 1)$ Sea $\sigma=(v_0\dots v_n)$.Si $\sigma\in L$ es trivial. Si $\sigma\notin L$, entonces hay algún vértice $v<\sigma$ con $v\notin L$. Por lo tanto $\sigma\cap|L|\subseteq (v_0\dots \hat{v}\dots v_n)$. Si se da la igualdad ya hemos terminado, si no, como la intersección debe ser un símplice, entonces podemos eliminar otro vértice y repetir. Así hasta que paremos en una cara de $\sigma$ (posiblemente vacía).
+
+$(3\Rightarrow 1)$ Hay 3 posibilidades:
+\begin{enumerate}
+\item $σ \cap L = \emptyset ≤ σ$.
+\item $σ \in L \Rightarrow σ \in L = σ ≤ σ$.
+\item $σ \notin L$ pero $σ \cap L \neq \emptyset$. Entonces hay vértices de $σ$ que no están en $L$. Nos olvidamos de ellos y sólo consideramos vértices de $σ$ que están en $L$. Estos son una cara de $σ$ que por $(3)$ está en $L$, luego $σ \cap L < σ$.
+\end{enumerate}
 
 $(1\Rightarrow 3)$ Supongamos que todos los vértices de $\sigma$ están en $L$. Entonces $\sigma\cap |L|$ debe ser una cara de $\sigma$ que contenga todos su vértices. La única que cumple esto es $\sigma$.
 \end{solucion}
@@ -85,6 +70,26 @@ Más aún, si $L$ es finito $|cL|$ es homeomorfo al cono topológico $c|L|$ y $|
 
 \end{enumerate}
 \end{solucion}
+
+\begin{solucion}\mbox{}
+\begin{enumerate}
+\item Sea $ρ$ un símplice de $KL$. Si $ρ \in K$ ó $ρ \in L$, claramente $ρ \in KL$.
+Si no, $ρ = στ$de algún $σ \in K$ y $τ \in L$.
+Entonces una cara de $σ$ es de la forma $σ'τ'$ con $σ' ≤ σ$ y $τ' ≤ τ$.
+Como $K$ y $L$ son complex simpliciales, $σ'τ' \in KL$.
+
+Dados dos símplices $ρ_1$ y $ρ_2$ de $KL$ cuya intersección es no vacía.
+\begin{itemize}
+\item Si ambos están $K$ ó ambos están en $L$, claramente la intersección está en $K$ ó $L$ respectivamente, luego $ρ_1 \cap ρ_2 \in KL$.
+\item Si unos está en $K$ y el otro en $L$, entonces su intersección es vacía.
+\item Si uno está en $K$ ó $L$ y el otro es del tipo $στ$ con $σ \in K$ y $τ \in L$, entonces la intersección está en $K$ ó $L$, luego está en $KL$.
+\item Si $ρ_1 = σ_1τ_1$ y $ρ_2 = σ_2τ_2$ con $σ_i \in K$ y $τ_i \in L$, entonces no es difícil ver:
+\[ (σ_1τ_1) \cap (σ_2τ_2) = (σ_1 \cap σ_2)(τ_1 \cap τ_2) \in KL \]
+\end{itemize}
+\end{enumerate}
+\item Si $K = \{v\}$, $KL = vL$ 
+\end{solucion}
+
 
 \newpage
 
