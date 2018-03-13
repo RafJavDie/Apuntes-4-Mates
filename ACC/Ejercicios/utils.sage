@@ -19,3 +19,7 @@ def divide(f,fs):
 			r += p.lt()
 			p -= p.lt()
 	return (qs,r)
+
+def syzygy(f,g):
+	l = lcm(f.lm(), g.lm())
+	return (l / f.lt()) * f - (l / g.lt()) * g
