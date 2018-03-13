@@ -35,18 +35,41 @@ Sea $b_3\in B_3$. Denotamos $b_4=\beta_3(b_3)\in B_4$. Por sobreyectividad de $f
 Consideremos el siguiente diagrama conmutativo
 \[
 \begin{tikzcd}
-0\arrow[r] & A_1\arrow[d,"f_1"]\arrow[r] & A_2\arrow[d,"f_2"]\arrow[r] & A_3\arrow[d,"f_3"]\arrow[r] & 0\\
-0\arrow[r] & B_1\arrow[r] & B_2\arrow[r] & B_3\arrow[r] & 0
+0\arrow[r] & A_1\arrow[d,"f_1"]\arrow[r, "\alpha_1"] & A_2\arrow[d,"f_2"]\arrow[r, "\alpha_2"] & A_3\arrow[d,"f_3"]\arrow[r] & 0\\
+0\arrow[r] & B_1\arrow[r, "\beta_1"] & B_2\arrow[r, "\beta_2"] & B_3\arrow[r] & 0
 \end{tikzcd}
 \]
 donde las filas son sucesiones exactas. Probar que existe una sucesión exacta
 \[
-0\to \ker{f_1}\to \ker{f_2}\to \ker{f_3}\to \coker{f_1}\to \coker{f_2}\to \coker{f_2}\to 0.
+0\to \ker{f_1}\to \ker{f_2}\to \ker{f_3}\to \coker{f_1}\to \coker{f_2}\to \coker{f_3}\to 0.
 \]
 (Pista: utilizar la sucesión exacta larga de cohomología).
 \end{ejercicio}
 \begin{solucion}
+Vamos a ver primero la exactitud de
+\[
+0\to \ker{f_1}\to \ker{f_2}\to \ker{f_3}.
+\]
+Denotamos $a_i=\alpha_i|_{\ker{f_i}}$. Estas aplicaciones están bien definidas, pues si $n\in\ker{f_i}$, entonces $f_{i+1}a_i(n)=\beta_if_i(n)=0$, así que $a_i(n)\in\ker{f_{i+1}}$. Claramente $a_1$ es inyectiva. Claramente, $\Ima{a_1}\subseteq\ker{a_2}$. Además, si $n\in\ker{f_2}$ con $a_2(n)=0$. En particular, $n\in\ker{\alpha_2}$, luego $n\in\Ima{\alpha_1}$. Así que $n=\alpha_1(m)$ para $m\in A_1$. Tenemos que probar que de hecho $m\in\ker{f_1}$. Usando la conmutatividad del diagrama, $\beta_1(f_1(m))=f_2(\alpha_1(m))=f_2(n)=0$. Como $\beta_1$ es inyectiva, $f_1(m)=0$, así que $m\in\ker{f_1}$.
 
+Probamos ahora la exactitud de
+\[
+\coker{f_1}\to \coker{f_2}\to \coker{f_3}\to 0.
+\]
+%\[
+%B_1/\Ima{f_1}\to B_2/\Ima{f_2}\to B_3/\Ima{f_3}\to 0
+%\]
+Definimos $b_i(n+\Ima{f_i})=\beta_i(n)+\Ima{f_{i+1}}$. Veamos que están bien definidas. Sean $n+\Ima{f_i}=n'+\Ima{f_i}$, entonces $n-n'\in\Ima{f_i}$, es decir, existe $a\in A_i$ con $f_i(a)=n-n'$. Por tanto, $\beta_i(n)-\beta(n')=\beta_if_i(a)=f_{i+1}\alpha_i(a)$, así que $\beta_i(n)-\beta(n')\in\Ima{f_{i+1}}$. Veamos que $b_2$ es sobreyectiva. Sea $m+\Ima{f_3}\in\coker{f_3}$. Como $\beta_2$ es sobreyectiva, existe $n\in B_2$ con $\beta_2(n)=m$. Entonces, $b_2(n+\Ima{f_2})=\beta_2(n)+\Ima{f_3}=m+\Ima{f_3}$. Por otro lado, claramente $b_2b_1=0$, por lo que $\Ima{b_1}\subseteq\ker{b_2}$. Recíprocamente, si $n+\Ima{f_2}\in\ker{b_2}$, es decir, $\beta_2(n)\in\Ima{f_3}$, por lo que sea $m\in A_3$ con $f_3(m)=\beta_2(n)$. Como $\alpha_2$ es sobreyectiva, sea $p\in A_2$ con $\alpha_2(p)=m$. Tenemos por conmutatividad, $\beta_2(n)=f_3\alpha_2(p)=\beta_2f_2(p)$, con lo que $n-f_2(p)\in\ker{\beta_2}=\Ima{\beta_1}$. Sea pues, $r\in B_1$ con $\beta_1(r)=n-f_2(p)$. Consideremos la clase $r+\Ima{f_1}$. Entonces, $$b_1(r+\Ima{f_1})=\beta_1(r)+\Ima{f_2}=n-f_2(p)+\Ima{f_2}=n+\Ima{f_2}.$$
+
+Por último, probamos la exactitud de 
+\[
+\ker{f_2}\to \ker{f_3}\to \coker{f_1}\to \coker{f_2}.
+\]
+Como ya tenemos $a_2$ y $b_1$ definidas, tenemos que definir $\delta:\ker{f_3}\to\coker{f_1}$. Dado $c\in\ker{f_3}$, como $\alpha_2$ es sobreyectiva, existe $a\in A_2$ con $\alpha_2(a)=c$. Por conmutatividad, $\beta_2(f_2(a_2))=f_3(c)=0$, luego $f_2(a)\in\ker{\beta_2}=\Ima{\beta_1}$. Así que sea $b\in B_1$ con $\beta_1(b)=f_2(a)$ ($b$ es único por inyectividad). Entonces, definimos $\delta(c)=b+\Ima{f_1}$, es decir, $$\delta(c)=\beta_1^{-1}(f_2(\alpha_2^{-1}(c)))+\Ima{f_1}.$$ Tenemos que ver que está bien definida. Sean $\alpha_2(a)=\alpha_2(a')=c$. Existe un único $b'\in B_1$ con $\beta_1(b')=f_2(a')$ de la misma forma que se calculó en la definición original. Tenemos que $a-a'\in\ker{\alpha_2}=\Ima{\alpha_1}$, así que $a-a'=\alpha_1(z)$ para algún $z\in A_1$. Así que $\beta_1(f_1(z))=f_2(\alpha_1(z))=f_2(a-a')=\beta_1(b-b')$. Por inyectividad de $\beta_1$, $f_1(z)=b-b'\in\Ima{f_1}.$
+
+Por la definición de $\delta$ es claro que $\Ima{a_2}\subseteq\ker{\delta}$. Recíprocamente, sea $p\in\ker{\delta}$ estando $p\in\ker{f_3}$. Tenemos que $p=\alpha_2(n)$ y $f_2(n)=\beta_1(m)$ con $m\in\Ima{f_1}$. Sea $m=f_1(x)$ con $x\in A_1$. Entonces $f_2\alpha_1(x)=\beta_1 f_1(x)=f_2(n)$.  Entonces, $n-\alpha_1(x)\in\ker{f_2}$. Además, $a_2(n-\alpha_1(x))=\alpha_2(n)-\alpha_2\alpha_1(x)=\alpha_2(n)=p$, así que $p\in\Ima{a_2}$.
+
+Por último, sea $p\in\ker{f_3}$, entonces $p=\alpha_2(b)$ y $f_2(a)=\beta_1(b)$, así que $\delta(p)=b+\Ima{f_1}$. Por tanto. $b_1(\delta(p))=\beta_1(b)+\Ima{f_2}=0$. Recíprocamente, supongamos que $b+\Ima{f_1}\in\ker{b_1}$. Entonces, $\beta_1(b)\in\Ima{f_2}$, digamos $\beta_1(b)=f_2(a)$ para $a\in A_2$. Sea $p=\alpha_2(a)$. Entonces, $f_3(\alpha_2(a))=\beta_2(f_2(a))=\beta_2(\beta_1(a))=0$. Por tanto, $p\in\ker{f_3}$, y $\delta(p)=b+\Ima{f_1}$.
 \end{solucion}
 \newpage
 
