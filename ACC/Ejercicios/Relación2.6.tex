@@ -89,13 +89,12 @@ Compute $S( f , g)$ using the lex order.
 \item $f = xy + z^3$, $g = z^2 − 3z$.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
-
-\begin{enumerate}[a.]
-\item $S(f,g)=3xz^2-y.$
-\item $S(f,g)=\frac{1}{3}x^3y^2 - z^4.$
-\item $S(f,g)=2ixyz+z^2.$
-\item $S(f,g)=3xyz+z^5.$
+\begin{solucion}\mbox{}
+\begin{enumerate}
+\item \[ S(f,g) = \frac{x^2yz^2}{4x^2z}f - \frac{x^2yz^2}{xyz^2}g = \frac{1}{4}yz(4x^2z-7y^2)-x(xyz^2+3xz^4) =  -3x^2z^4 - \frac{7}{4}y^3z. \]
+\item \[ S(f,g) = \frac{x^4yz^2}{x^4y}f - \frac{x^4yz^2}{3xz^2}g = z^2f-\frac{1}{3}x^3yg = \frac{1}{3}x^3y^2-z^4 \]
+\item \[ S(f,g) = \frac{x^7y^2z}{x^7y^2z}f-\frac{x^7y^2z}{2x^7y^2z}g = f- \frac{1}{2}g = 2ixyz-2\]
+\item \[ \frac{xyz^2}{xy}f-\frac{xyz^2}{z^2}g = z^2f-xyg = 3xyz+z^5 \]
 \end{enumerate}
 \end{solucion}
 
@@ -129,7 +128,11 @@ $$S(x^{α(i)}g_i, x^{α(j)}g_j) = x^{δ−γ_{ij}}S(g_i, g_j),$$
 where $x^{γ_{ij}} = \mathrm{lcm}(LM(g_i), LM(g_j))$.
 \end{ejercicio}
 \begin{solucion}
+En primer, lugar, tenemos $LT(x^{\alpha(i)}g_i)=x^{\alpha(i)}LT(g_i)$ puesto que los órdenes monomiales preservan la suma, y del mismo modo $LM(x^{\alpha(i)}g_i)=x^{\alpha(i)}LM(g_i)$. Así que si denotamos $x^{\gamma}=\mathrm{lcm}(x^{α(i)}LM(g_i),x^{α(j)}LM(g_j))$, entonces 
 
+$$S(x^{α(i)}g_i, x^{α(j)}g_j)=\frac{x^{\gamma}}{x^{\alpha(i)}LT(g_i)}x^{α(i)}g_i-\frac{x^{\gamma}}{x^{\alpha(j)}LT(g_j)}x^{α(j)}g_j=$$
+$$\frac{x^{\gamma}}{LT(g_i)}g_i-\frac{x^{\gamma}}{LT(g_j)}g_j=x^{\gamma}S(g_i,g_j).$$
+Por tanto, tenemos que probar que $\gamma=\delta-\gamma_{ij}$. Y esto no me cuadra.
 \end{solucion}
 
 \newpage
