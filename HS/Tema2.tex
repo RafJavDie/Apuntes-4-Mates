@@ -235,10 +235,96 @@ Dado un complejo de cadenas $\mathcal{C} = \{(C_n,\partial_n)\}_{n \in \Z}$ y da
 \begin{prop}
 Sea $\mathcal{C}$ un complejo de cadenas y consideremos $\mathcal{C}^1, \mathcal{C}^2 \subseteq \mathcal{C}$ subcomplejos.
 Entonces tenemos la secuencia exacta corta:
-\[ 0 \to C_n^1 \cap C_n^2 \xrightarrow{i_n} C_n^1 \oplus C_n^2 \xrightarrow{j_n} C_n \to 0 \]
+\[ 0 \to C_n^1 \cap C_n^2 \xrightarrow{i_n} C_n^1 \oplus C_n^2 \xrightarrow{j_n} \Ima{j_n}\subseteq C_n \to 0 \]
 donde por:
-\[ i_n \colon x \mapsto (x,-x) \]
-\[ j_n \colon (x,y) \mapsto x+y\]
+\[ i_n \colon x \mapsto (x,-x), \]
+\[ j_n \colon (x,y) \mapsto x+y.\]
+Además, estas aplicaciones conmutan con los operadores borde.
 \end{prop}
-La demostración es sencilla y queda como ejercicio. Pero yo creo que falta la hipótesis de que $C_n\subseteq C_n^1+C_n^2$.
+La demostración es sencilla y se deja como ejercicio.
+
+Por tanto, tenemos una sucesión exacta corta de complejos de cadenas
+\[
+0\to\mathcal{C}^1\cap\mathcal{C}^2\overset{i}{\to}\mathcal{C}^1\oplus\mathcal{C}^2\overset{j}{\to}\Ima{j}\to 0.
+\]
+Esta sucesión induce una sucesión exacta larga en homología llamada \emph{sucesión de Mayer-Vietoris}
+\[
+\cdots\to H_n(\mathcal{C}^1\cap\mathcal{C}^2)\overset{i_*}{\to}H_n(\mathcal{C}^1\oplus\mathcal{C}^2)\overset{j_*}{\to}H_n(\Ima{j})\overset{\Delta}{\to}H_{n-1}(\mathcal{C}^1\cap\mathcal{C}^2)\to\cdots
+\]
+\newpage
+\begin{observaciones}\
+\begin{enumerate}
+\item $H_n(\mathcal{C}^1\oplus\mathcal{C}^2)\cong H_n(\mathcal{C}^1)\oplus H_n(\mathcal{C}^2)$, mediante el isomorfismo $[(z_1,z_2)]\mapsto ([z_1],[z_2])$.
+\item $\Ima{j_n}=C^1_n+C^2_n=\{x+y\mid x\in C^1_n, y\in C^2_n\}$, así que $\Ima{j}=\mathcal{C}^1+\mathcal{C}^2$. Si $C^1_n+C_n^2=C_n$ para todo $n\in\Z$, entonces $\Ima{j}=\mathcal{C}$. Así que $H_n(\Ima{j})=H_n(\mathcal{C})$.
+\end{enumerate}
+\end{observaciones}
+
+\begin{defi}
+Un complejo de $\mathcal{C}=\{(C_n,\partial_n)\}_{n\in\Z}$ se dice \emph{positivo} si $C_n=0$ para todo $n>0$. En este cas, diremos que una aplicación lineal sobreyectiva $\varepsilon: C_0\to\mathbb{F}$ cumpliendo $\varepsilon\partial_1=0$ se dirá que es un \emph{aumento} de $\mathcal{C}$.
+\end{defi}
+
+Si tenemos un complejo de cadenas $\mathcal{C}$
+\[
+C_n\overset{\partial}{\to} C_{n-1}\to\cdots C_1\overset{\partial_1}{\to} C_0\to 0
+\]
+podemos aumentarlo a un complejo $\tilde{\mathbb{C}}$
+\[
+\tilde{C}_n\overset{\partial}{\to} \tilde{C}_{n-1}\to\cdots \tilde{C}_1\overset{\partial_1}{\to} \tilde{C}_0\overset{\varepsilon}{\to}\tilde{C}_{-1}\to 0.
+\]
+Donde $\tilde{C}_n=C_n$ para $n\geq 0$ y $\tilde{C}_{-1}=\mathbb{F}$. A los espacios vectoriales $H_n(\tilde{\mathbb{C}})$ también los denotaremos por $\tilde{H}_n( \mathcal{C})$ y los llamaremo espacios vectoriales de homología \emph{reducida} de $\mathcal{C}$. 
+
+Obsérvese que si $n\geq 1$, $\tilde{H}_n( \mathcal{C})=H_n( \mathcal{C})$. Además, $\tilde{H}_{-1}(\mathcal{C})=0$ y $\tilde{H}_0(\mathcal{C})\cong H_0(\mathcal{C})\oplus\mathbb{F}$. Vamos a justificar la última afirmación. Por definición, $\tilde{H}_0(\mathcal{C})=\ker{\varepsilon}/\Ima{\partial_1}$ y $H_0(\mathcal{C})=C_0/\Ima{\partial_1}$. Observamos que $\tilde{H}_0(\mathcal{C})\subseteq H_0(\mathcal{C})$. Así que podemos construir una sucesión exacta
+\[
+0\to \tilde{H}_0(\mathcal{C})\to H_0(\mathcal{C})\to \frac{C_0/\Ima{\partial_1}}{\ker{\varepsilon}/\Ima{\partial_1}}\to 0.
+\]
+Por el tercer teorema de isomorfía, el último término es isomorfo a $C_0/\ker{\varepsilon}\cong \mathbb{F}$ por el primer teorema de isomorfía. Así que, que por escisión de la sucesión exacta corta $H_0(\mathcal{C})\cong \tilde{H}_0(\mathcal{C})\oplus\mathbb{F}$.
+
+\begin{nota}
+Si la sucesión exacta fuera de grupos abelianos, en el caso de que el término de la derecha sea libre de torsión, entonces también escinde.
+\end{nota}
+
+Sea $0\to\mathcal{C}^1\overset{f}{\to}\mathcal{C}^2\overset{g}{\to}\mathcal{C}^3\to 0$ una sucesión exacta de complejos de cadenas positivos, y consideremos aumentos $\varepsilon_1:C_0^1\to\mathbb{F}$, $\varepsilon_2:C_0^2\to\mathbb{F}$ tales que $\varepsilon_2f_0=\varepsilon_1$. Entonces, equivalentemente se tiene una sucesión exacta cote de complejos de cadenas
+\[
+0\to\tilde{\mathcal{C}}^1\overset{\tilde{f}}{\to}\tilde{\mathcal{C}}^2\overset{\tilde{g}}{\to}\tilde{\mathcal{C}}^3\to 0.
+\]
+La diferencia entre esta sucesión y la original se da en los niveles inferiores.
+\[
+\begin{tikzcd}
+0\arrow[r] & C_0^1\arrow[r,"f_0"]\arrow[d, "\varepsilon_1"] & C_0^2\arrow[r,"g_0"]\arrow[d, "\varepsilon_2"]& C_0^3\arrow[r]\arrow[d] & 0\\
+0\arrow[r] & \F\arrow[r,"f_{-1}=Id"]\arrow[d] & \F\arrow[r, "g_{-1}=0"]\arrow[d] & 0\arrow[d,equal] &\\
+& 0 & 0 & 0 &
+\end{tikzcd}
+\]
+Claramente las filas son sucesiones exactas cortas y los diagramas conmutan. Entonces, tenemos la sucesión exacta larga en homología reducida:
+\[
+\cdots \to\tilde{H}_n(\mathcal{C}^1)\overset{\tilde{f}_*}{\to} \tilde{H}_n(\mathcal{C}^2)\overset{\tilde{g}_*}{\to}H_n(\CC^3)\overset{\Delta}{\to}\tilde{H}_{n-1}(\CC^1)\overset{\tilde{f}_*}{\to}\cdots
+\]
+
+Análogamente, se tiene una sucesión de Mayer-Vietoris en homología reducida de la siguiente manera: sean $\CC^1,\CC^2\subseteq\CC$ complejos de cadenas positivos. Consideramos aumentos de $\CC$, $\varepsilon:C_0\to\F$ tal que su restricción a $C_0^1\cap C_0^2$ es un aumento de la intersección. Obsérvese que con esta condición también se tiene que es aumento al restringirla a $C_0^i$. Con estas condiciones, la sucesión de Mayer-Vietoris queda
+\[
+\cdots\to \tilde{H}_n(\mathcal{C}^1\cap\mathcal{C}^2)\to\tilde{H}_n(\mathcal{C}^1\oplus\mathcal{C}^2)\to\tilde{H}_n(\Ima{j})\overset{\Delta}{\to}\tilde{H}_{n-1}(\mathcal{C}^1\cap\mathcal{C}^2)\to\cdots
+\]
+proveniente de la sucesión exacta corta 
+\[
+0\to \widetilde{\CC^1\cap \CC^2}\to \tilde{\CC}^1\oplus\tilde{\CC}^2\to\widetilde{\Ima{j}}\to 0
+\]
+que en dimensiones bajas se escribe como
+\[
+\begin{tikzcd}
+0\arrow[r] & C_0^1\cap C_0^2\arrow[r,"i_0"]\arrow[d, "\varepsilon|_{C_0^1\cap C_0^2}"'] & C_0^1\oplus C_0^2\arrow[r,"j_0"]\arrow[d, "\varepsilon|_{C_0^1}"', "\varepsilon|_{C_0^2}"] & \Ima{j_0}\arrow[r]\arrow[d, "\varepsilon|_{\Ima{j_0}}"] & 0\\
+0\arrow[r] & \F\arrow[r,"i_{-1}"]& \F\oplus\F\arrow[r, "j_{-1}"] & \F\arrow[r] & 0 
+\end{tikzcd}
+\]
+
+\begin{defi}
+Dos morfismos de complejos de cadenas $f,g:\CC^1\to\CC^2$ se dicen \emph{homotópicos} y se denota $f\simeq g$ si existe una familia de homomorfismos $h=\{h_n:C^1_n\to C^2_{n+1}\}_{n\in\Z}$ cumpliendo $f_n-g_n=\partial^2_{n+1}h_n+h_{n-1}\partial^1_n$ para todo $n\in\Z$.
+\end{defi}
+
+\begin{lemma}
+La relación ``ser homópicos'' entre morfismos de complejos de cadenas es es una relación de equivalencia.
+\end{lemma}
+\begin{proof}
+
+\end{proof}
+
 \end{document}
