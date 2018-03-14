@@ -57,26 +57,26 @@ Vamos a fijar el orden lex habitual
 \begin{ejercicio}{2.6.3}
 In Corollary 2, we showed that if $I =\gene{ 
 g_1,\dots , g_t}$ and if $G = \{g_1,\dots , g_t\}$ is a Gröbner
-basis for $I$, then $\bar{f}^G = 0$ for all $f ∈ I$. Prove the converse of this statement. Namely, show
-that if $G$ is a basis for $I$ with the property that $\bar{f}^G = 0$ for all $f ∈ I$, then $G$ is a Gröbner
+basis for $I$, then $\overline{f}^G = 0$ for all $f ∈ I$. Prove the converse of this statement. Namely, show
+that if $G$ is a basis for $I$ with the property that $\overline{f}^G = 0$ for all $f ∈ I$, then $G$ is a Gröbner
 basis for I.
 
 \end{ejercicio}
 \begin{solucion}
-Sea $G$ una base de $I$ tal que $\bar{f}^G=0$ para todo $f\in I$. Supongamos que no es una base de Gröbner, es decir, que existe $f\in I$ con $LT(f)\notin \gene{LT(G)}$. En particular, por el Ejercicio 2.5.5, $LT(f)$ no es divisible por $LT(g_i)$ para ningún $i$. Pero entonces $\bar{f}^G \neq 0$. Contradicción.
+Sea $G$ una base de $I$ tal que $\overline{f}^G=0$ para todo $f\in I$. Supongamos que no es una base de Gröbner, es decir, que existe $f\in I$ con $LT(f)\notin \gene{LT(G)}$. En particular, por el Ejercicio 2.5.5, $LT(f)$ no es divisible por $LT(g_i)$ para ningún $i$. Pero entonces $\overline{f}^G \neq 0$. Contradicción.
 \end{solucion}
 
 \newpage
 
 \begin{ejercicio}{2.6.4}
 Let $G$ and $G'$ be Gröbner bases for an ideal $I$ with respect to the same monomial order
-in $k[x_1,\dots , x_n]$. Show that $\bar{f}^G = \bar{f}^{G'}$
+in $k[x_1,\dots , x_n]$. Show that $\overline{f}^G = \overline{f}^{G'}$
 for all $f ∈ k[x_1,\dots , x_n]$. Hence, the remainder on
 division by a Gröbner basis is even independent of which Gröbner basis we use, as long
 as we use one particular monomial order. Hint: See Exercise \ref{ejer:2.6.1}.
 \end{ejercicio}
 \begin{solucion}
-Es consecuencia del Ejercicio \ref{ejer:2.6.1}, pues al dividir por $G$ tendríamos $f=g+r$ y al dividir por $G'$ tendríamos $f=g'+r'$, con $g,g',r,r'$ cumpliendo las condiciones de dicho ejercicio. Pero por el apartado b, $r=r'$, luego, usando la notación del enunciado, $\bar{f}^G = \bar{f}^{G'}$.
+Es consecuencia del Ejercicio \ref{ejer:2.6.1}, pues al dividir por $G$ tendríamos $f=g+r$ y al dividir por $G'$ tendríamos $f=g'+r'$, con $g,g',r,r'$ cumpliendo las condiciones de dicho ejercicio. Pero por el apartado b, $r=r'$, luego, usando la notación del enunciado, $\overline{f}^G = \overline{f}^{G'}$.
 \end{solucion}
 \newpage
 
@@ -111,7 +111,7 @@ Sí depende. Sean $f=x+y$ y $g=x+y^2$, entonces con lex siendo $x>y$ obtenemos $
 \newpage
 
 \begin{ejercicio}{2.6.7}
-Prove that $\mathrm{multideg}(S( f , g)) < γ$, where $x^γ = \mathrm{lcm}(LM( f ), LM(g))$. Explain why this
+Prove that $\mathrm{multideg}(S( f , g)) < γ$, where $x^γ = \lcm (LM( f ), LM(g))$. Explain why this
 inequality is a precise version of the claim that $S$-polynomials are designed to produce
 cancellation.
 \end{ejercicio}
@@ -127,16 +127,16 @@ Por tanto, el término de multigrado $\gamma$ se cancela en $S(f,g)$. Como los d
 As in the proof of Theorem 6, suppose that $c_ix^{α(i)}g_i$ and $c_jx^{α(j)}g_j$ have multidegree $δ$.
 Prove that
 $$S(x^{α(i)}g_i, x^{α(j)}g_j) = x^{δ−γ_{ij}}S(g_i, g_j),$$
-where $x^{γ_{ij}} = \mathrm{lcm}(LM(g_i), LM(g_j))$.
+where $x^{γ_{ij}} = \lcm (LM(g_i), LM(g_j))$.
 \end{ejercicio}
 \begin{solucion}
-En primer, lugar, tenemos $LT(x^{\alpha(i)}g_i)=x^{\alpha(i)}LT(g_i)$ puesto que los órdenes monomiales preservan la suma, y del mismo modo $LM(x^{\alpha(i)}g_i)=x^{\alpha(i)}LM(g_i)$. Así que si denotamos $x^{\gamma}=\mathrm{lcm}(x^{α(i)}LM(g_i),x^{α(j)}LM(g_j))$, entonces 
+En primer, lugar, tenemos $LT(x^{\alpha(i)}g_i)=x^{\alpha(i)}LT(g_i)$ puesto que los órdenes monomiales preservan la suma, y del mismo modo $LM(x^{\alpha(i)}g_i)=x^{\alpha(i)}LM(g_i)$. Así que si denotamos $x^{\gamma}=\lcm (x^{α(i)}LM(g_i),x^{α(j)}LM(g_j))$, entonces 
 \begin{align*}S(x^{α(i)}g_i, x^{α(j)}g_j)&=\frac{x^{\gamma}}{x^{\alpha(i)}LT(g_i)}x^{α(i)}g_i-\frac{x^{\gamma}}{x^{\alpha(j)}LT(g_j)}x^{α(j)}g_j\\
 &=\frac{x^{\gamma}}{LT(g_i)}g_i-\frac{x^{\gamma}}{LT(g_j)}g_j\\
 &=x^{\gamma-\gamma_{ij}}\left(\frac{x^{\gamma_{ij}}}{LT(g_i)}g_i-\frac{x^{\gamma_{ij}}}{LT(g_j)}g_j\right)\\
 &=x^{\gamma-\gamma_{ij}} S(g_i,g_j)
 \end{align*}
-Es fácil ver que $\gamma-\gamma_{ij}\geq 0$. Por tanto, tenemos que probar que $\gamma-\gamma_{ij}=\delta-\gamma_{ij}$, es decir, que $\gamma = \delta$.  Esto se deduce de que $\delta$ es el multigrado de ambos polinomios y si $f$ y $g$ tienen multigrado $\nu$ entonces $\mathrm{lcm}(f,g)$ también tiene multigrado $\nu$.
+Es fácil ver que $\gamma-\gamma_{ij}\geq 0$. Por tanto, tenemos que probar que $\gamma-\gamma_{ij}=\delta-\gamma_{ij}$, es decir, que $\gamma = \delta$.  Esto se deduce de que $\delta$ es el multigrado de ambos polinomios y si $f$ y $g$ tienen multigrado $\nu$ entonces $\lcm (f,g)$ también tiene multigrado $\nu$.
 \end{solucion}
 
 \newpage
@@ -160,11 +160,12 @@ $S$-polynomials and remainders.
 \item $G = \{xy^2 − xz + y, xy − z^2, x − yz^4\}$ for lex order.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}\
+\begin{solucion}
+Denotando en cada caso $f_i$ al i-ésimo elemento de $G$.
 \begin{enumerate}[a.]
-\item No lo es, pues $LT(G)=\gene{x^2}$, mientras que para $f=-xy+xz$, $LT(f)=-xy\notin LT(G)$. 
-\item 
-\item 
+\item Tenemos que $S(f_1,f_2)=yx$, que no es divisible por $LT(f_i)$. 
+\item Es trivial+ que sí lo es, pues invlex order equivale al lex order con $z>y>x$.
+\item Tenemos que $S(f_2,f_3)=-z^2+y^2z^4$, que no es divisible por $LT(f_i)$.
 \end{enumerate}
 \end{solucion}
 
@@ -180,7 +181,19 @@ either $LM( f )$ or $LM(g)$ in this case.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-
+\begin{enumerate}
+\item[]
+\item Sabemos que, por las hipótesis del enunciado, $x^\gamma=\lcm(f,g)=LT(f)LT(g)$. Por definición
+$$S(f,g)= S=f\frac{x^{\gamma}}{LT(f)}-g\frac{x^{\gamma}}{LT(g)} = LT(g)f-LT(f)g
+$$
+Si sumamos y restamos $fg$ en la expresión anterior, tenemos
+\begin{align*}
+S(f,g)&=-gf+LT(g)f +fg-LT(f)g\\
+&=(-g+LT(g))f+(f-LT(f))g \\
+&=-(g-LT(g))f+(f-LT(f))g
+\end{align*}
+\item Como $f$ o $g$ tiene al menos dos términos, $f-LT(f)$ o $g-LT(g)$ es un polinomio no nulo.
+\end{enumerate}
 \end{solucion}
 
 \newpage
@@ -190,13 +203,21 @@ Let $f , g ∈ k[x_1,\dots , x_n]$ be nonzero and $x^α, x^β$ be monomials. Ver
 $$S(x^αf , x^βg) = x^γS( f , g)$$
 where
 $$x^γ =
-\mathrm{lcm}(x^αLM( f ), x^βLM(g))
-\mathrm{lcm}(LM( f ), LM(g))
+\frac{\lcm (x^αLM( f ), x^βLM(g))}{\lcm (LM( f ), LM(g))}
 .$$
 Be sure to prove that $x^{γ}$ is a monomial. Also explain how this relates to Exercise \ref{ejer:2.6.8}.
 \end{ejercicio}
 \begin{solucion}
-
+Es fácil probar que el multigrado  de $\lcm(x^αLM( f ), x^βLM(g))$ es mayor que el $LM(f)$ y $LM(g)$ (con cualquier orden monomial), de donde se puede deducir que es mayor que el $\lcm$ de ambos. Se tiene además que
+\begin{align*}
+x^\gamma S(f,g)&=\frac{\lcm (x^αLM( f ), x^βLM(g))}{\lcm (LM( f ), LM(g))}\left(\frac{\lcm (LM( f ), LM(g))}{LT(f)}f-\frac{\lcm (LM( f ), LM(g))}{LT(g)} g\right)\\
+&=\frac{\lcm (x^αLM( f ), x^βLM(g))}{LT(f)}f-\frac{\mathrm{lcm}(x^αLM( f ), x^βLM(g))}{LT(g)}g\\
+&=\frac{\lcm (x^αLM( f ), x^βLM(g))}{LT(f)x^\alpha}fx^\alpha-\frac{\mathrm{lcm}(x^αLM( f ), x^βLM(g))}{LT(g)x^\beta}g
+x^\beta\\
+&=\frac{\lcm (x^αLM( f ), x^βLM(g))}{LT(fx^\alpha)}fx^\alpha-\frac{\mathrm{lcm}(x^αLM( f ), x^βLM(g))}{LT(gx^\beta)}g
+x^\beta\\
+&=S(x^\alpha f, x^\beta g)
+\end{align*}
 \end{solucion}
 
 \newpage
@@ -204,20 +225,28 @@ Be sure to prove that $x^{γ}$ is a monomial. Also explain how this relates to E
 \begin{ejercicio}{2.6.13}
 Let $I ⊆ k[x_1,\dots , x_n]$ be an ideal, and let $G$ be a Gröbner basis of $I$.
 \begin{enumerate}[a.]
-\item Show that $\bar{f}^G = \bar{g}^G$ if and only if $f − g ∈ I$. Hint: See Exercise \ref{ejer:2.6.1}.
+\item Show that $\overline{f}^G = \overline{g}^G$ if and only if $f − g ∈ I$. Hint: See Exercise \ref{ejer:2.6.1}.
 \item Use Exercise \ref{ejer:2.6.1} to show that
-$$\overline{f + g}^G = \bar{f}^G + \bar{g}^G.$$
+$$\overline{f + g}^G = \overline{f}^G + \overline{g}^G.$$
 \item Deduce that
-$$\overline{fg}^G = \overline{\bar{f}^G  \bar{g}^G}^G
+$$\overline{fg}^G = \overline{\overline{f}^G \cdot  \overline{g}^G}^G
 .$$
 We will return to an interesting consequence of these facts in Chapter 5.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}\
 \begin{enumerate}[a.]
-\item Sean $f=h+r$ y $g=h'+r'$ tras dividir ambos polinomios por $G$. $f-g=(h-h')+(r-r')$. Si $r=r'$ entonces $f-g\in I$ puesto que $h,h'\in I$. Si $f-g\in I$, entonces $(r-r')=(f-g)-(h-h')\in I$, luego $LT(r-r')\in LT(I)$, pero ninguno de los términos de $r$ ni de $r'$ es divisible por ningún elemento de $G$, que es una base de Gröbner, luego $r-r'=0$. 
-\item
-\item
+\item Fijemos un orden monomial y sean $f=h+r$ y $g=h'+r'$ las descomposiciones obtenidas según la Proposición 1. 
+\begin{itemize}
+\item Si los restos coinciden, entonces $f-g=h-h'$, pero $h,h'\in I$, luego $h-h'\in I$. 
+\item Si $f-g\in I$ entonces $f-g=f-g+0 = h-h' + r-r'$. Por unicidad de descomposición según la Proposición 1 se tiene el resultado.
+\end{itemize} 
+\item Es suficiente utilizar la Proposición 1. Consideremos las descomposiciones $f=h+r$ y $g=h+r'$. Naturalmente, $f+g=h+h'+r+r'$. Se tiene que $h+h'\in I$. Además, si $f+g\neq 0$ (en cuyo caso se tendría el resultado de manera trivial), 
+$$
+multideg(f+g)\leq \max\{multideg(r),multideg(r')\}<multideg(g) \quad \forall g \in G
+$$
+De donde deducimos que $LT(g)$ no divide a $LT(r-r')$ para todo $g\in G$. Por la unicidad que garantiza la Proposición 1 tenemos el resultado.
+\item Tenemos que $fg = hh'+hr'+h'r+rr'$. Sabemos que $hh'+hr'+h'r = p \in I$. Sin embargo, es posible que $rr'$ no cumpla primera condición de la Proposición 1, en ese caso escribimos $rr'=p'+r''$, según dicha proposición. Tomando $q=p+p'$ tenemos que $fg=q+r''$, ahora sí en las condiciones de la Proposición 1. Por la unicidad de $r''$ tenemos el resultado.
 \end{enumerate}
 \end{solucion}
 
