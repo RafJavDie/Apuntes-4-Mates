@@ -29,7 +29,7 @@ and $g$ are uniquely determined.
 \begin{solucion}
 \begin{enumerate}
 \item[]
-\item[a.] Si algún término de $r$ fuera divisible por algún elemento $h=h_1LT(g_1)+\dots+h_tLT(g_t)$, en particular sería divisible por cualquiera de los $LT(g_i)$, lo cual contradice la Proposición 1.
+\item[a.] Sea $\{g_1,\dotsc,g_t\}$ una base de Gröbner. Por la Proposición 1 tenemos que $f$ puede escribirse como $f=g+r$ con $g\in I$ y $r$, resto de la división, no es divisible por ningún $LT(g_i)$. Sea $h\in \gene{LT(I)}=\gene{LT(g_1),\dotsc,LT(g_t)}$. Luego, por ser ideal monomial, $\exists i \in\{1,\dotsc,t\}$ tal que $LT(g_i)$ divide a $LT(h)$, por lo que si $h$ divide a $r$, también lo haría $g_i$, lo cuál es una contradicción con el hecho de que $r$ sea resto de la división. 
 
 \item[b.] Este apartado se prueba igual que en el libro, puesto que basta que ninguno de los términos de $r$ y $r'$ sea divisibles por ninguno de los términos líderes de los generadores.
 \end{enumerate}
@@ -63,7 +63,7 @@ basis for I.
 
 \end{ejercicio}
 \begin{solucion}
-Supongamos que existe $f\in I$ con $LT(f)\notin LT(G)$. En particular, $LT(f)$ no es divisible por $LT(g_i)$ para ningún $i$. Pero entonces $\bar{f}^G \neq 0$. Contradicción.
+Sea $G$ una base de $I$ tal que $\bar{f}^G=0$ para todo $f\in I$. Supongamos que no es una base de Gröbner, es decir, que existe $f\in I$ con $LT(f)\notin \gene{LT(G)}$. En particular, por el Ejercicio 2.5.5, $LT(f)$ no es divisible por $LT(g_i)$ para ningún $i$. Pero entonces $\bar{f}^G \neq 0$. Contradicción.
 \end{solucion}
 
 \newpage
@@ -76,7 +76,7 @@ division by a Gröbner basis is even independent of which Gröbner basis we use,
 as we use one particular monomial order. Hint: See Exercise \ref{ejer:2.6.1}.
 \end{ejercicio}
 \begin{solucion}
-Es consecuencia de \ref{ejer:2.6.1} pues al dividir por $G$ tendríamos $f=g+r$ y al dividir por $G'$ tendríamos $f=g'+r'$, con $g,g',r,r'$ cumpliendo las condiciones de dicho ejercicio. Pero por el apartado b, $r=r'$, luego, usando la notación del enunciado, $\bar{f}^G = \bar{f}^{G'}$.
+Es consecuencia del Ejercicio \ref{ejer:2.6.1}, pues al dividir por $G$ tendríamos $f=g+r$ y al dividir por $G'$ tendríamos $f=g'+r'$, con $g,g',r,r'$ cumpliendo las condiciones de dicho ejercicio. Pero por el apartado b, $r=r'$, luego, usando la notación del enunciado, $\bar{f}^G = \bar{f}^{G'}$.
 \end{solucion}
 \newpage
 
@@ -116,7 +116,9 @@ inequality is a precise version of the claim that $S$-polynomials are designed t
 cancellation.
 \end{ejercicio}
 \begin{solucion}
-Por definición, $S(f,g)=f\frac{x^{\gamma}}{LT(f)}-g\frac{x^{\gamma}}{LT(g)}$. Tenemos que $LT\left(f\frac{x^{\gamma}}{LT(f)}\right)=LT(f)\frac{x^{\gamma}}{LT(f)}=x^{\gamma}=LT(g)\frac{x^{\gamma}}{LT(g)}=LT\left(g\frac{x^{\gamma}}{LT(g)}\right)$. Por tanto, el término de multigrado $\gamma$ se cancela en $S(f,g)$. Como los demás términos tienen grado estríctamente menor, tenemos lo que buscábamos.
+Por definición, $$S(f,g)=f\frac{x^{\gamma}}{LT(f)}-g\frac{x^{\gamma}}{LT(g)}$$ 
+Tenemos que $$LT\left(f\frac{x^{\gamma}}{LT(f)}\right)=LT(f)\frac{x^{\gamma}}{LT(f)}=x^{\gamma}=LT(g)\frac{x^{\gamma}}{LT(g)}=LT\left(g\frac{x^{\gamma}}{LT(g)}\right)$$
+Por tanto, el término de multigrado $\gamma$ se cancela en $S(f,g)$. Como los demás términos tienen grado estrictamente menor, se tiene el resultado.
 \end{solucion}
 
 \newpage
@@ -129,10 +131,12 @@ where $x^{γ_{ij}} = \mathrm{lcm}(LM(g_i), LM(g_j))$.
 \end{ejercicio}
 \begin{solucion}
 En primer, lugar, tenemos $LT(x^{\alpha(i)}g_i)=x^{\alpha(i)}LT(g_i)$ puesto que los órdenes monomiales preservan la suma, y del mismo modo $LM(x^{\alpha(i)}g_i)=x^{\alpha(i)}LM(g_i)$. Así que si denotamos $x^{\gamma}=\mathrm{lcm}(x^{α(i)}LM(g_i),x^{α(j)}LM(g_j))$, entonces 
-
-$$S(x^{α(i)}g_i, x^{α(j)}g_j)=\frac{x^{\gamma}}{x^{\alpha(i)}LT(g_i)}x^{α(i)}g_i-\frac{x^{\gamma}}{x^{\alpha(j)}LT(g_j)}x^{α(j)}g_j=$$
-$$\frac{x^{\gamma}}{LT(g_i)}g_i-\frac{x^{\gamma}}{LT(g_j)}g_j=x^{\gamma}S(g_i,g_j).$$
-Por tanto, tenemos que probar que $\gamma=\delta-\gamma_{ij}$. Y esto no me cuadra.
+\begin{align*}S(x^{α(i)}g_i, x^{α(j)}g_j)&=\frac{x^{\gamma}}{x^{\alpha(i)}LT(g_i)}x^{α(i)}g_i-\frac{x^{\gamma}}{x^{\alpha(j)}LT(g_j)}x^{α(j)}g_j\\
+&=\frac{x^{\gamma}}{LT(g_i)}g_i-\frac{x^{\gamma}}{LT(g_j)}g_j\\
+&=x^{\gamma-\gamma_{ij}}\left(\frac{x^{\gamma_{ij}}}{LT(g_i)}g_i-\frac{x^{\gamma_{ij}}}{LT(g_j)}g_j\right)\\
+&=x^{\gamma-\gamma_{ij}} S(g_i,g_j)
+\end{align*}
+Es fácil ver que $\gamma-\gamma_{ij}\geq 0$. Por tanto, tenemos que probar que $\gamma-\gamma_{ij}=\delta-\gamma_{ij}$, es decir, que $\gamma = \delta$.  Esto se deduce de que $\delta$ es el multigrado de ambos polinomios y si $f$ y $g$ tienen multigrado $\nu$ entonces $\mathrm{lcm}(f,g)$ también tiene multigrado $\nu$.
 \end{solucion}
 
 \newpage
