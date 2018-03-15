@@ -54,7 +54,31 @@ Vamos a calcular $H^*(\R^2-\{0\})$. Sean
 &U_1=\R^2-\{(x_1,x_2)\mid x_1\geq 0, x_2=0\}\\
 &U_2=\R^2-\{(x_1,x_2)\mid x_1\leq 0, x_2=0\}.
 \end{align*}
-Estos son conjuntos abiertos estrellados, así que $H^p(U_1)=H^p(U_2)=0$ para todo $p>0$ y $H^0(U_1)=H^0(U_2)=\R$. De hecho $H^0(U_{\nu})=\langle [\chi_{U_{\nu}}]\rangle$. Su intersección es $\R^2_+\sqcup\R^2_-$, así que por el corolario \ref{coro} aplicado a los semiplanos, $H^p(U_1\cap U_2)=0$ para todo $p>0$ y $H^0(U_1\cap U_2)=\R\oplus\R$, con generadores $[\chi_{\R^2_+}],[\chi_{\R^2_-}]$. 
+Estos son conjuntos abiertos estrellados, así que $H^p(U_1)=H^p(U_2)=0$ para todo $p>0$ y $H^0(U_1)=H^0(U_2)=\R$. De hecho $H^0(U_{\nu})=\langle [\chi_{U_{\nu}}]\rangle$. Su intersección es $\R^2_+\sqcup\R^2_-$, así que por el corolario \ref{coro} aplicado a los semiplanos, $H^p(U_1\cap U_2)=0$ para todo $p>0$ y $H^0(U_1\cap U_2)=\R\oplus\R$, con generadores $[\chi_{\R^2_+}],[\chi_{\R^2_-}]$. En la sucesión de Mayer-Vietoris, para $p>0$ tenemos
+\[
+0\to H^p(U_1\cap U_2)\overset{\partial^*}{\to} H^{p+1}(\R^2-\{0\})\to 0,
+\]
+lo cual indica que $\partial^*$ es un isomorfismo, así que $H^{q}(\R^2-\{0\})=0$ para $q\geq 2$. Para $p=0$ obtenemos
+\[
+\begin{tikzcd}
+0\arrow[r] & H^0(\R^2-\{0\})\arrow[r,"I^0"] & H^0(U_1)\oplus H^0(U_2)\arrow[r, "J^0"]\arrow[d,equal] & H^0(U_1\cap U_2)\arrow[r,"\partial^*"]\arrow[d, equals] & H^1(\R^2-\{0\})\arrow[r,"I^1"] & 0\\
+ & & \R\oplus\R &\R\oplus\R & & 
+\end{tikzcd}
+\]
+Como $\R^2-\{0\}$ es conexo, $H^0(\R^2-\{0\})\cong\R$ generador por $[\chi_{\R^2-\{0\}}]$. Así que como $I^0$ es inyectiva por exactitud, $\Ima{I^0}\cong\R$. Esto nos da a su vez $\ker{J^0}\cong\R$. Por el teorema del rango-nulidad, esto implica que $\Ima{J^0}\cong\R$. Utilizando el primer teorema de isomorfía teniendo en cuenta que $\partial^*$ es sobreyectiva y la exactitud, tenemos
+\[
+H^0(U_1\cap U_2)/\Ima{J^0}\cong H^1(\R^2-\{0\}).
+\]
+Pero $H^0(U_1\cap U_2)/\Ima{J^0}\cong\R$, por lo que concluimos
+\[
+H^p(\R^2-\{0\})=\begin{cases}
+0 & p\geq 2\\
+\R & p=1\\
+\R & p=0.
+\end{cases}
+\]
+
+Además, que $\partial^*$ sea sobreyectiva implica que $H^1(\R^2-\{0\})$ está generado por la imagen del algún elemento de $H^0(U_1\cap U_2)$. Además, por exactitud debe ser un elemento que no esté en la imagen de $J^0$. Siconsideramos $[\chi_{U_1}]$ y $[\chi_{U_2}]$, entonces $J^0([\chi_{U_1}])=j_2^*[\chi_{U_1}]=[\chi_{U_1}\circ j_1]=[\chi_{U_1\cap U_2}]=[\chi_{\R^2_+}]+[\chi_{\R^2_-}]$. Análogamente, $J^0[\chi_{U_2}]=-[\chi_{U_1\cap U_2}]=-[\chi_{\R^2_+}]-[\chi_{\R^2_-}]$. Tomando coordenadas, podemos decir que $\Ima{J^0}=\langle (1,1)\rangle$. Por tanto, dando un generador del cociente $H^0(U_1\cap U_2)/\Ima{J^0}=\langle (1,0),(0,1)\rangle/\langle (1,1)\rangle$ tenemos un elemento cuya imagen mediante $\partial^*$ genera $H^1(\R^2-\{0\})$. Esto es sencillo, pues podemos tomar, por ejemplo $(1,0)+\langle (1,1)\rangle$, que se corresponde con $[\chi_{\R^2_+}]+\Ima{J^0}$. También podríamos haber tomado de forma análoga como generador $[\chi_{\R^2_-}]+\Ima{J^0}$, o cualquier combinación de ambos.
 \end{ej}
 
 \end{document}
