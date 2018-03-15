@@ -1,0 +1,61 @@
+\documentclass[CV.tex]{subfiles}
+
+\begin{document}
+
+
+%\hyphenation{equi-va-len-cia}\hyphenation{pro-pie-dad}\hyphenation{res-pec-ti-va-men-te}\hyphenation{sub-es-pa-cio}
+
+\chapter{La sucesión de Mayer-Vietoris}
+
+\section{Definición de la sucesión de Mayer-Vietoris}
+Aquí desarrollaremos la llamada sucesión exacta larga (de cohomología) de Mayer-Vietoris que nos permitirá calcular la cohomología de de Rham de abiertos euclídeos.
+
+\begin{teorema}
+Sean $U_1,U_2\subseteq\R^n$ abiertos y $U=U_1\cup U_2$. Sean $i_{\nu}:U_{\nu}\to U$ y $j_{\nu}:U_1\cap U_2\to U_{\nu}$ ($\nu=1,2$) las correspondientes inclusiones. Entonces, la sucesión
+\[
+0\to \Omega^p(U)\overset{I^p}{\to}\Omega^p(U_1)\oplus\Omega^p(U_2)\overset{J^p}{\to}\Omega^p(U_1\cap U_2)\to 0
+\]
+es exacta, donde $I^p(w)=(i_1^*(w), i_2^*(w))$ y $J^p(w_1,w_2)=j_1^*(w_1)-j_2^*(w_2)$.
+\end{teorema}
+\begin{dem}
+\QED
+\end{dem}
+
+Claramente, $I^*$ y $J^*$ son aplicaciones de complejos de cadenas, por lo que obtenemos una sucesión exacta
+\[
+0\to \Omega^*(U)\overset{I^*}{\to}\Omega^*(U_1)\oplus\Omega^*(U_2)\overset{J^*}{\to}\Omega^*(U_1\cap U_2)\to 0
+\]
+de complejos de cadenas, a la cual hay una sucesión exacta larga de cohomología asociada
+\[
+\cdots\to H^p(U)\overset{I^p}{\to}H^p(\Omega^*(U_1)\oplus \Omega^*(U_2))\overset{J^p}{\to}H^p(U_1\cap U_2)\overset{\partial^*}{\to}H^{p+1}(U)\to \cdots
+\]
+Además, sabemos que $H^p(\Omega^*(U_1)\oplus \Omega^p(U_2))=H^p(\Omega^*(U_1))\oplus H^p(\Omega^*(U_2))=H^p(U_1)\oplus H^p(U_2)$. Así que se tiene el siguiente teorema.
+
+\begin{teorema}[sucesión de Mayer-Vietoris] Sean $U_1,U_2\in\R^n$ abiertos y $U=U_1\cup U_2$. Entonces existe una sucesión exacta larga en cohomología
+\[
+\cdots\to H^p(U)\overset{I^p}{\to}H^p(U_1)\oplus H^p(U_2)\overset{J^p}{\to}H^p(U_1\cap U_2)\overset{\partial^*}{\to}H^{p+1}(U)\to \cdots
+\]
+donde $I^p([w])=(i_1^*([w]), i_2^*([w]))$ y $J^p([w_1],[w_2])=j_1^*([w_1])-j_2^*([w_2])$.
+\end{teorema}
+
+\begin{coro}\label{coro}
+Si $U_1$ y $U_2$ son abiertos disjuntos de $\R^n$ entonces
+\[
+I^*: H^p(U_1\cup U_2)\to H^p(U_1)\oplus H^p(U_2)
+\]
+es isomorfismo.
+\end{coro}
+
+La demostración es muy sencilla, así que se deja como ejercicio.
+
+\begin{ej}
+Vamos a calcular $H^*(\R^2-\{0\})$. Sean
+\begin{align*}
+&U_1=\R^2-\{(x_1,x_2)\mid x_1\geq 0, x_2=0\}\\
+&U_2=\R^2-\{(x_1,x_2)\mid x_1\leq 0, x_2=0\}.
+\end{align*}
+Estos son conjuntos abiertos estrellados, así que $H^p(U_1)=H^p(U_2)=0$ para todo $p>0$ y $H^0(U_1)=H^0(U_2)=\R$. De hecho $H^0(U_{\nu})=\langle [\chi_{U_{\nu}}]\rangle$. Su intersección es $\R^2_+\sqcup\R^2_-$, así que por el corolario \ref{coro} aplicado a los semiplanos, $H^p(U_1\cap U_2)=0$ para todo $p>0$ y $H^0(U_1\cap U_2)=\R\oplus\R$, con generadores $[\chi_{\R^2_+}],[\chi_{\R^2_-}]$. 
+\end{ej}
+
+\end{document}
+

@@ -70,6 +70,25 @@ Como ya tenemos $a_2$ y $b_1$ definidas, tenemos que definir $\delta:\ker{f_3}\t
 Por la definición de $\delta$ es claro que $\Ima{a_2}\subseteq\ker{\delta}$. Recíprocamente, sea $p\in\ker{\delta}$ estando $p\in\ker{f_3}$. Tenemos que $p=\alpha_2(n)$ y $f_2(n)=\beta_1(m)$ con $m\in\Ima{f_1}$. Sea $m=f_1(x)$ con $x\in A_1$. Entonces $f_2\alpha_1(x)=\beta_1 f_1(x)=f_2(n)$.  Entonces, $n-\alpha_1(x)\in\ker{f_2}$. Además, $a_2(n-\alpha_1(x))=\alpha_2(n)-\alpha_2\alpha_1(x)=\alpha_2(n)=p$, así que $p\in\Ima{a_2}$.
 
 Por último, sea $p\in\ker{f_3}$, entonces $p=\alpha_2(b)$ y $f_2(a)=\beta_1(b)$, así que $\delta(p)=b+\Ima{f_1}$. Por tanto. $b_1(\delta(p))=\beta_1(b)+\Ima{f_2}=0$. Recíprocamente, supongamos que $b+\Ima{f_1}\in\ker{b_1}$. Entonces, $\beta_1(b)\in\Ima{f_2}$, digamos $\beta_1(b)=f_2(a)$ para $a\in A_2$. Sea $p=\alpha_2(a)$. Entonces, $f_3(\alpha_2(a))=\beta_2(f_2(a))=\beta_2(\beta_1(a))=0$. Por tanto, $p\in\ker{f_3}$, y $\delta(p)=b+\Ima{f_1}$.
+
+\vspace{0.5cm}
+
+{\bf\large ALTERNATIVA}
+
+Sean $C_1=\{0\to A_1\to B_1\to 0$, $C_2=\{0\to A_2\to B_2\}$ y $C_3=\{0\to A_3\to B_3\to 0\}$ complejos de cadenas inducidos por el diagrama. Entonces entonces podemos ver el diagrama como una sucesión exacta corta de complejos de cadenas
+\[
+0\to C_1\to C_2\to C_3\to 0,
+\]
+que tiene asociada
+\[
+0\to H^0(C_1)\to H^0(C_2)\to H^0(C_3)\overset{\partial^*}{\to} H^1(C_1)\to H^1(C_2)\to H^1(C_3)\to 0,
+\]
+que es igual a 
+\[
+0\to \ker{f_1} \to\ker{f_2} \to \ker{f_3}\to\coker{f_1}\to\coker{f_2}\to\coker{f_3}\to 0.
+\]
+
+
 \end{solucion}
 \newpage
 
@@ -87,7 +106,7 @@ En el diagrama conmutativo
 \]
 la horizontal $(A^{*,q})$ y la vertical $A^{p,*})$ son complejos de cadenas donde $A^{p,q}=0$ si o bien $p<0$ o bien $q<0$. Supongamos que
 \begin{gather*}
-H^p(A^{*,q})=0\text{ para }q\neq 0\text{ y todo }p,
+H^p(A^{*,q})=0\text{ para }q\neq 0\text{ y todo }p,\\
 H^q(A^{p,*})=0\text{ para }p\neq 0\text{ y todo }q.
 \end{gather*}
 Construir isomorfismos $H^p(A^{*,0})\to H^p(A^{0,*})$ para todo $p$.
@@ -113,7 +132,20 @@ es exacta y concluir que
 Probar que $\chi(A^*)=\sum_{i=0}^n\dim H^i(A^*)$.
 \end{ejercicio}
 \begin{solucion}
+Recordemos que si $A^*$ es exacta, a partir de $A^{i-1}\overset{d^{i-1}}{\to} A^i\overset{d^i}{\to} A^{i+1}$ podemos obtener para todo $i$ sucesiones exactas $\ker{d^i}=\Ima{d^{i-1}}\to A^i\to \Ima{d^i}$. Para $i=0$ tendríamos $A^0=\Ima{d^0}$ y para $i=n$ tenemos $A^n=\Ima{d^{n-1}}$. Como son sucesiones exactas de espacios vectoriales, escinden. Así que $A^i\cong \Ima{d^{i-1}}\oplus\Ima{d^i}$. Entonces, sustituyendo,
+\[
+\chi(A^*)=\dim(\Ima{d^0})-(\dim(\Ima{d^0}+\dim(\Ima{d^1}))+\cdots +(-1)^{n-1}(\dim(\Ima{d^{n-2}})+
+\]
+\[
++\dim(\Ima{d^{n-1}}))+(-1)^n\dim(\Ima{d^{n-1}})=0
+\]
 
+DIAGRAMA QUE ME TIENE QUE PASAR JAVI (la sobreyectividad por composición y la inyecticidad porque se induce en el cociente)
+
+Entonces, como la sucesión escinde, tomando dimensión $\dim(A^i)-\dim(\Ima{d^{i-1}})=\dim(A^i/\Ima{d^{i-1}})=\dim(H^i(A^ *))+\dim(\Ima{d^i})$. Entonces, sustituyendo 
+\[
+\chi(A^*)=\sum_{i=0}^n(-1)^i\dim(A^i)=\sum_{i=0}^n(-1)^i(\dim(\Ima{d^{i-1}})+\dim(H^i(A^*))+\dim(\Ima{d^i}))=\sum_{i=0}^n\dim(H^i(A^*)).
+\]
 \end{solucion}
 
 \newpage
@@ -129,7 +161,17 @@ una sucesión exacta
 \]
 \end{ejercicio}
 \begin{solucion}
+Sea
+\[
+\begin{tikzcd}
+0\arrow[d] & 0 \arrow[d] & 0\arrow[d]\\
+V_1\arrow[d,"f"]\arrow[r,"1\oplus f"] & V_1\oplus V_2\arrow[r, "f-1"] \arrow[d, "(g\circ f)\oplus 1"]& V_2 \arrow[d,"g"]\\
+V_2\arrow[d]\arrow[r, "g\oplus 1"]& V_3\oplus V_2\arrow[d] \arrow[r, "1-g"]& V_3\arrow[d]\\
+0 & 0 & 0 
+\end{tikzcd}
+\]
 
+Se comprueba fácilmente que los cuadrados conmutan y que las filas son exactas (incluyendo la inyecticidad de la izquierda y la sobreyectividad de la derecha). De la sucesión de homología se obtiene el resultado.
 \end{solucion}
 
 \end{document}
