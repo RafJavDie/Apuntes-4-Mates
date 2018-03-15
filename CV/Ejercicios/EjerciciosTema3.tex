@@ -13,8 +13,8 @@
 Consideremos el diagrama conmutativo de espacios vectoriales y aplicaciones lineales en el que las filas son exactas
 \[
 \begin{tikzcd}
-A_1\arrow[d,"f_1"]\arrow[r] & A_2\arrow[d,"f_2"]\arrow[r] & A_3\arrow[d,"f_3"]\arrow[r] & A_4\arrow[d,"f_4"]\arrow[r] & A_5\arrow[d,"f_5"]\\
-B_1\arrow[r] & B_2\arrow[r] & B_3\arrow[r] & B_4\arrow[r] & B_5
+A_1\arrow[d,"f_1"]\arrow[r, "\alpha_1"] & A_2\arrow[d,"f_2"]\arrow[r, "\alpha_2"] & A_3\arrow[d,"f_3"]\arrow[r, "\alpha_3"] & A_4\arrow[d,"f_4"]\arrow[r, "\alpha_4"] & A_5\arrow[d,"f_5"]\\
+B_1\arrow[r, "\beta_1"] & B_2\arrow[r, "\beta_2"] & B_3\arrow[r, "\beta_3"] & B_4\arrow[r, "\beta_4"] & B_5
 \end{tikzcd}
 \]
 Supongamos que $f_4$ es inyectiva, $f_1$ es sobreyectiva y $f_2$ es inyectiva. Probar que $f_3$ es inyectiva. Suponer que $f_2$ es sobreyectiva, $f_4$ es sobreyectiva y $f_5$ es inyectiva. Probar que $f_3$ es sobreyectiva. 
@@ -26,7 +26,7 @@ Sea $a_3\in A_3$ tal que $f_3(a_3)=0\in B_3$. Por conmutatividad del diagrama, $
 
 \underline{Sobreyectividad}
 
-Sea $b_3\in B_3$. Denotamos $b_4=\beta_3(b_3)\in B_4$. Por sobreyectividad de $f_4$, existe $a_4\in A_4$ tal que $f_4(a_4)=b_4$. Aplicando la conmutatividad del diagrama, $f_5(\alpha_4(a_4))=\beta_4(b_4)=\beta_4(\beta_3(b_4))=0$ por exactitud. Así que de la inyectividad de $f_5$ deducimos que $\alpha_4(a_4)=0$, o lo que es lo mismo, $a_4\in\ker{\alpha_4}=\Ima{\alpha_3}$, de modo que existe $a_3\in A_3$ con $\alpha_3(a_3)=a_4$. Usando la conmutatividad del diagrama, $\beta_3(f_3(a_3))=f_4(\alpha_3(a_3))=f_4(a_4)=b_4=\beta_3(b_3)$. Por lo tanto, $f_3(a_3)-b_3\in\ker{\beta_2}$, luego existe $b_2\in B_2$ tal que $\beta_2(b_2)=f_3(a_3)-b_3$. Por sobreyectividad de $f_2$, se tiene que existe $a_2\in A_2$ con $f_2(a_2)=b_2$, de donde se sigue por conmutatividad que $f_3(\alpha_2(a_2))=\beta_2(f_2(a_2))=\beta_2(b_2)=f_3(a_3)-b_3$. Concluimos pues, que $b_3=f_3(\alpha_2(a_2)-a_3)$.
+Sea $b_3\in B_3$. Denotamos $b_4=\beta_3(b_3)\in B_4$. Por sobreyectividad de $f_4$, existe $a_4\in A_4$ tal que $f_4(a_4)=b_4$. Aplicando la conmutatividad del diagrama, $f_5(\alpha_4(a_4))=\beta_4(b_4)=\beta_4(\beta_3(b_4))=0$ por exactitud. Así que de la inyectividad de $f_5$ deducimos que $\alpha_4(a_4)=0$, o lo que es lo mismo, $a_4\in\ker{\alpha_4}=\Ima{\alpha_3}$, de modo que existe $a_3\in A_3$ con $\alpha_3(a_3)=a_4$. Usando la conmutatividad del diagrama, $\beta_3(f_3(a_3))=f_4(\alpha_3(a_3))=f_4(a_4)=b_4=\beta_3(b_3)$. Por lo tanto, $f_3(a_3)-b_3\in\ker{\beta_3}=\Ima{\beta_2}$, luego existe $b_2\in B_2$ tal que $\beta_2(b_2)=f_3(a_3)-b_3$. Por sobreyectividad de $f_2$, se tiene que existe $a_2\in A_2$ con $f_2(a_2)=b_2$, de donde se sigue por conmutatividad que $f_3(\alpha_2(a_2))=\beta_2(f_2(a_2))=\beta_2(b_2)=f_3(a_3)-b_3$. Concluimos pues, que $b_3=f_3(\alpha_2(a_2)-a_3)$.
 \end{solucion}
 
 \newpage
