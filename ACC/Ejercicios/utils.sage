@@ -4,7 +4,6 @@ def divide(f,fs):
 	qs = [R(0)] * s
 	r = R(0)
 	p = f
-	print(p.lt())
 	while not p.is_zero():
 		i = 0
 		divisionocurred = False
@@ -21,5 +20,6 @@ def divide(f,fs):
 	return (qs,r)
 
 def syzygy(f,g):
+	R = f.parent() # Recupera anillo polinómico
 	l = lcm(f.lm(), g.lm())
-	return (l / f.lt()) * f - (l / g.lt()) * g
+	return R((l / f.lt()) * f - (l / g.lt()) * g)

@@ -66,7 +66,11 @@ Más aún, si $L$ es finito $|cL|$ es homeomorfo al cono topológico $c|L|$ y $|
 
 \item Como los complejos simpliciales son compactos y Hausdorf, el cono topológico es homeomorfo al cono geométrico, consistente en los segmentos que unen $c$ con los puntos de $|K|$, pero esto es precisamente el complejo cono. Análogamente se tiene para la suspensión, ya que $\Sigma |X|\cong c|X|\sqcup_{|X|} c|X|$.
 
-\item Basta comprobar que se puede conectar cualquier vértice de $K$ (análogamente de $L$) con algún símplice de $\{στ; σ \in K \text{ y }τ \in L\}$, pues todos los símplices de $K$ se encuentran con los de $L$ en dicho conjunto. Sea pues $x\in K$, entonces $x\in\sigma$ para algún $\sigma\in K$ (por ejemplo, el soporte de $x$). Entonces, existe $\tau\in L$ tal que $\sigma\tau\in\{στ; σ \in K \text{ y }τ \in L\}$. Como los símplices son conexos por caminos, ya está. 
+\item Recordemos que la conexión por caminos es transitiva, luego si probamos que todo punto de uno de los complejos simpliciales se puede conectar por camino a todo punto del otro complejo, tendríamos que la unión simplicial sería conexa por caminos.
+Es más, basta comprobar que se puede conectar cualquier punto de $K$ (análogamente de $L$) con algún símplice de $\{στ; σ \in K \text{ y }τ \in L\}$, pues todos los símplices de $K$ se encuentran con los de $L$ en dicho conjunto.
+Sea pues $x\in K$, entonces $x\in\sigma$ para algún $\sigma\in K$ (por ejemplo, el soporte de $x$).
+Entonces, existe $\tau\in L$ tal que $\sigma\tau\in\{στ; σ \in K \text{ y }τ \in L\}$.
+Como los símplices son conexos por caminos, ya está.
 
 \end{enumerate}
 \end{solucion}
@@ -87,7 +91,10 @@ Dados dos símplices $ρ_1$ y $ρ_2$ de $KL$ cuya intersección es no vacía.
 \[ (σ_1τ_1) \cap (σ_2τ_2) = (σ_1 \cap σ_2)(τ_1 \cap τ_2) \in KL \]
 \end{itemize}
 \end{enumerate}
-\item Si $K = \{v\}$, $KL = vL$ 
+\item .
+\item Sean $x,y \in |KL|$, vamos a construir un camino de $x$ a $y$.
+Sean $σ$ y $τ$ los símplices soporte de $x$ e $y$ en $K$ respectivamente.
+Digamos que $x$ está en el interior de $(v_0,\dots,v_p,w_0,\dots,w_q)$ e $y$ está en el interior de $(v_0',\dots,v_p',w_0,\dots,w_q)$.
 \end{solucion}
 
 
@@ -95,12 +102,12 @@ Dados dos símplices $ρ_1$ y $ρ_2$ de $KL$ cuya intersección es no vacía.
 
 \begin{ejercicio}{1.3}
 Sea $K$ complejo simplicial.
-Para cada símplica $σ \in K$ probar la igualdad $st(σ;K) = σlk(σ;K)$ donde el término de la derecha indica la corespondiente unión simplicial.
+Para cada símplice $σ \in K$ probar la igualdad $st(σ;K) = σlk(σ;K)$ donde el término de la derecha indica la corespondiente unión simplicial.
 \end{ejercicio}
 \begin{solucion}
 $\boxed{\subseteq}$ Sea $\tau\in st(σ;K)$, entonces o bien $\tau\in lk(σ;K)$ (en cuyo caso ya habríamos terminado) o bien $\sigma\leq\tau$. En este último caso, podemos extender $\sigma$ añadiendo vértices hasta llegar a $\tau$. Los vértices añadidos son una cara de $\tau$ que no tiene a $\sigma$ como cara, luego está en el link. Así pues, $\tau\in σlk(σ;K)$. 
 
-$\boxed{\supseteq}$ Sea $\tau\in σlk(σ;K)$. Si $\tau=\sigma\lor\tau\in lk(σ;K)$ ya habríamos terminado. Supongamos entonces que $\tau=\sigma\eta$. Entonces $\tau$ contiene a $\sigma$ como cara, luego $\tau\in st(σ;K)$.
+$\boxed{\supseteq}$ Sea $\tau\in σlk(σ;K)$. Si $\tau=\sigma$ ó $\tau\in lk(σ;K)$ ya habríamos terminado. Supongamos entonces que $\tau=\sigma\eta$. Entonces $\tau$ contiene a $\sigma$ como cara, luego $\tau\in st(σ;K)$.
 \end{solucion}
 
 \newpage
@@ -159,7 +166,12 @@ Probar además, que en este caso, para todo complejo $K$ el complejo $LK$ es col
 \begin{solucion}
 Obsérvese que todo complejo simplicial tiene algún símplice maximal. En efecto, dado un símplice $\sigma=(v_0,\dots, v_l)$ solo podemos añadirle vértices sin salirnos del complejo una cantidad finita de veces pues la uplas son finitas. Una vez alcanzado este límite, habremos dado con un símplice principal.
 \begin{enumerate}
-\item Consideramos los símplices principales $K$, los cuales inducen símplices principales en $cK$ al añadirles el nuevo vértice. Entonces, si $\sigma$ es uno de los símplices principales de $K$, podemos hacer el colapso $cK-\{c\sigma,\sigma\}$, ya que al ser $\sigma$ principal en $K$, no puede ser cara propia de ningún otro símplice en $cK$. Una vez que hemos hecho esto con todos los símplices principales, nos quedará un complejo $K_1$. En este complejo podemos encontrar de nuevo símplices principales, que tendrán dimensión estrictamente menor que los anteriores, y podemos repetir el proceso. Como la dimensión es finita, obtendremos un colapso $K\searrow K_1\searrow\cdots\searrow K_n\searrow c$, luego $K\colapso 0$.
+\item Consideramos los símplices principales $K$, los cuales inducen símplices principales en $cK$ al añadirles el nuevo vértice. Entonces, si $\sigma$ es uno de los símplices principales de $K$, podemos hacer el colapso $cK-\{c\sigma,\sigma\}$, ya que al ser $\sigma$ principal en $K$, no puede ser cara propia de ningún otro símplice en $cK$.
+Una vez que hemos hecho esto con todos los símplices principales, nos quedará un complejo $K_1$.
+
+Ahora se tiene que en $K_1$ hay caras libres, las dadas por las caras propias de los símplices principales de $K$, ya que al eliminar los símplices de $K$ para obtener $K_1$ aparecen nuevos símplices principales (de hecho $K_1 = vL$, con $L$ las caras propias maximales de los símplices principales de $K$).
+Podemos repeter el colapso $K \colapso K_1 \colapso K_2 \colapso \dots v$, luego $K \colapso v$.
+%En este complejo podemos encontrar de nuevo símplices principales, que tendrán dimensión estrictamente menor que los anteriores, y podemos repetir el proceso. Como la dimensión es finita, obtendremos un colapso $K\searrow K_1\searrow\cdots\searrow K_n\searrow c$, luego $K\colapso 0$.
 
 \item Sea $\sigma=(v_0,\dots, v_n)$ el símplice de $L$. Entonces $\sigma$ es el único símplice principal. Entonces, colapsamos $\sigma$ junto con la cara $n-1$ dimensional $(v_1,\dots, v_n)$. Ahora, todas las caras $n-1$ dimensionales restantes son símplices principales. Así que en cada uno podemos realizar este mismo proceso. Podemos reiterar bajando de dimensión hasta colapsar sobre $v_0$ todo el símplice pues en cada paso colapsamos las caras que no lo contienen y además hay un número finito de caras, luego el proceso termina.
 
