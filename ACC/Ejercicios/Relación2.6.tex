@@ -196,15 +196,11 @@ S(f,g)&=-gf+LT(g)f +fg-LT(f)g\\
 $$
 S=S(f,g)=-(g-LT(g))f+(f-LT(f))g = (f-LT(f))g 
 $$
-Luego $S\neq 0$ porque $g\neq 0$ y $LT(S)$ es múltiplo de $LT(g)$. El otro caso es análogo. Supongamos ahora que ambos tienen dos términos al menos. 
-% Sean 
-%$$
-%f^* = LT(f-LT(f)) \qquad g^* = LT(g-LT(g))
-%$$
-En ese caso, $g=LT(g)+r$ y $f=LT(f)+s$ con $r,s\in k[x_1,\dots, x_n]$ no nulos con $multideg(r)<multideg(g)$ y $multideg(s)<multideg(f)$. Tenemos del apartado anterior que $S(f,g)=LT(g)f-LT(f)g=LT(g)s-LT(f)r\neq 0$. Esto se tiene debido a que para anularse, el polinomio de la izquierda debe tener los mismos monomios que el de la derecha. En particular, $LT(f)$ debería dividir a $LT(g)s$. Como $LT(g)$ es primo con $LT(f)$ esto implicaría que $LT(f)$ divide a $s$, lo cual no es posible porque $multideg(s)<multideg(f)$. 
-
-Por otro lado, si el monomio líder está en $LT(g)f$ o en $LT(f)g$ entonces claramente el monomio líder es múltiplo de $LM(g)$ o de $LM(f)$. Supongamos entonces que estuviera en una combinación de $LT(g)s-LT(f)r$. En concreto, existirían $s',r'$ monomios de $s$ y $r$ respectivamente tales que $multideg(LT(g)s')=multideg(LT(f)r')$. Esto no es posible siguiendo un razonamiento análogo al utilizado para ver que $S\neq 0$, ya que si dos monomios tienen el mismo multigrado, entonces son iguales salvo constante. 
-
+Dado que $g\neq 0$ se tiene que $S\neq 0$ y y $LT(S)$ es múltiplo de $LT(g)$. El otro caso es análogo. Supongamos ahora que ambos tienen dos términos al menos. Si $multideg((g-LT(g))f)>multideg((f-LT(f))g)$, entonces claramente $LT(S)$ es múltiplo de $LT(f)$ y en ningún caso $S=0$. La desigualdad contraria es análoga. Si se da la igualdad, $\exists a \in k$ tal que
+$$
+LT(g-LT(g))LT(f) = a LT(f-LT(f))LT(g)
+$$
+Tenemos por tanto que $LT(f)$ divide a $LT(f-LT(f))LT(g)$, pero $LM(f)$ y $LM(g)$ son coprimos, luego $LT(f)$ dividiría a $LT(f-LT(f))$, lo que es absurdo.
 \end{enumerate}
 \end{solucion}
 
