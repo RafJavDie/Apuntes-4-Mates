@@ -11,6 +11,7 @@
 #1.i). LEER LOS DATOS Y RESUMIRLOS
 library(foreign)
 mamiferos<- data.frame(read.spss("leche.sav"))
+dim(mamiferos)
 head(mamiferos)
 row.names(mamiferos)<- mamiferos$animal
 mamiferos<- mamiferos[,-1]
@@ -25,12 +26,12 @@ cor(mamiferos)
 D<- dist(mamiferos)
 round(D,1)
 conglo<- hclust(D,method="complete")
-plot(conglo, cex=0.8,labels=mamiferos$ANIMAL,
-     main="Dendrograma",xlab=conglo$method,
-     sub="",ylab="Distancias",col="blue")
+plot(conglo, cex=0.8,labels=rownames(mamiferos),
+     main="Dendrograma",xlab="Completo",
+     sub="Distancias",ylab="Distancias",col="blue")
 
 cbind(conglo$merge,conglo$height) 
-#Lista de uniones que se van produciendo
+#Lista de uniones que se van produciendo. Se una el de la primera columna con el del segundo y la distancia en la tercera. -n representa el caso n, en positivo representa un conglomerado. Por ejemplo, -1 1 indica que el 1 se une al conglomerado 1, donde (en este caso) están el 2 y el 9.
 
 #1. iv)
 cluster <- cutree(conglo, k = 3)
@@ -62,12 +63,17 @@ grid()
 #1.vi)
 conglosin<- hclust(D,method="single")
 plot(conglosin, cex=0.8,
-     labels=mamiferos$ANIMAL,main=conglosin$method,
+     labels=rownames(mamiferos),main=conglosin$method,
      xlab="",sub="",ylab="Distancias",col="blue")
 
 congloaver<- hclust(D,method="average")
+congloavers<- hclust(D,method="single")
+
 plot(congloaver, cex=0.8,
-     labels=mamiferos$ANIMAL,main=congloaver$method,
+     labels=rownames(mamiferos),main=congloaver$method,
+     xlab="",sub="",ylab="Distancias",col="blue")
+plot(congloavers, cex=0.8,
+     labels=rownames(mamiferos),main=congloaver$method,
      xlab="",sub="",ylab="Distancias",col="blue")
 
 clustersin <- cutree(conglosin, k = 3)
@@ -105,7 +111,7 @@ D
 #2.ii
 conglosin<- hclust(D,method="single")
 plot(conglosin, cex=0.8,
-     main=conglo$method,ylab="Distancias",
+     main=conglosin$method,ylab="Distancias",
      col="blue",sub="")
 conglocom<- hclust(D)
 plot(conglocom, cex=0.8,
@@ -176,6 +182,8 @@ table(km$cluster,km3$cluster)
 #4. EJEMPLO DE COMPRESION DE IMAGENES CON K-MEDIAS
 ##################################################
 #4.i
+install.packages('pixmap')
+install.packages('jpeg')
 library(jpeg)
 library(pixmap)
 x <- readJPEG("mandril.jpg")
