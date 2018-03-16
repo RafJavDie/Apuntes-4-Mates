@@ -79,7 +79,11 @@ Prove that $G$ is a minimal Gröbner basis if and only if no proper subset of $G
 basis of $I$.
 \end{ejercicio}
 \begin{solucion}
+La definición de base de Gröbner minimal es que $LC (g) = 1$ para todo $g ∈ G$  y no existe $p\in G$ tal que $LT(p)\in\gene{LT(G\setminus\{p\})}$, o equivalentemente, $LC (g) = 1$ para todo $g ∈ G$ y para todo $p\in G$, $LT(p)\notin \gene{LT(G\setminus\{p\})}$.
 
+$\boxed{\Rightarrow}$ Sea $G=\{g_1,\dots, g_t\}$ y supongamos que existe un subconjunto propio $G'\subsetneq G$ que es base de Gröbner de $I$. Podemos suponer sin pérdida de generalidad que $G'=\{g_2,\dots, g_t\}$. Por ser base de Gröbner, $\gene{LT(G')}=LT(I)=\gene{LT(G)}$. Pero entonces, $g_1\in G$ y $LT(g_1)\in \gene{LT(G')}=\gene{LT(G\setminus\{g_1\})}$, lo cual contradice la minimalidad.
+
+$\boxed{\Leftarrow}$ Supongamos que $G$ no es minimal. Entonces existe $p\in G$ con $LT(p)\in\gene{LT(G\setminus\{p\})}$. Si llamamos $G'=G\setminus\{p\}$, entonces $LT(I)=\gene{LT(G)}=\gene{LT(G')}$, lo cual contradice que ningún subconjunto propio de $G$ sea base de Gröbner.
 \end{solucion}
 
 \newpage
@@ -90,7 +94,7 @@ a Gröbner basis $G$ of $I$ is minimal if and only if $LC (g) = 1$ for all $g �
 the minimal basis of the monomial ideal $LT (I)$.
 \end{ejercicio}
 \begin{solucion}
-
+$G$ es una base de Gröbner minimal si y solo si $LC (g) = 1$ para todo $g ∈ G$  y para todo $p\in G$, $LT(p)\notin \gene{LT(G\setminus\{p\})}$. Así que ya tenemos por definición $LC(g)=1$ para todo $g\in G$. La otra parte, por el Lemma 2 de §2, es equivalente a que para todo $p\in G$, $LT(p)$ no sea divisible por ningún $LT(g)$ con $g\in G$. Esta es precisamente la definición de ser base minimal de un ideal monomial, luego se tienen ambas implicaciones.
 \end{solucion}
 
 \newpage
@@ -99,11 +103,14 @@ the minimal basis of the monomial ideal $LT (I)$.
 Fix a monomial order, and let $G$ and $\tilde{G}$ be minimal Gröbner bases for the ideal $I$.
 \begin{enumerate}[a.]
 \item Prove that $LT (G) = LT (\tilde{G})$.
-\item Conclude that $G$ and have the same number of elements.
+\item Conclude that $G$ and $\tilde{G}$ have the same number of elements.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
-
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Por el ejercicio anterior (\ref{ejer:2.7.6}) sabemos que $LT(G)$ y $LT(\tilde{G})$ son bases minimales de $LT(I)$, pero por la Proposición 7 de §4, esta base minimal es única, así que necesariamente $LT (G) = LT (\tilde{G})$.
+\item El cardinal de $LT(G)$ es igual al de $G$, así que es trivial. 
+\end{enumerate}
 \end{solucion}
 
 \newpage
