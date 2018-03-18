@@ -23,11 +23,12 @@ Sea $\media{\m{X}} = \frac{1}{n}\sum_{i=1}^n \m{X}_i$ y $S$ la matriz $S = [S_{j
 Demuestra que $\media{\m{Y}}=A \media{\mX}$ y que $S_Y = A S_X A^t$.
 \item Sea $\mathbb{X}$ la matriz de datos. Demuestra que $S = \mathbb{X}^t H \mathbb{X}$, siendo $H$ simétrica e idempotente.
 \item Demuestra que $E(\media{\mX}) = \m{μ}$ y $Cov(\media{\mX}) = \frac{1}{n} Σ$.
-\item Sea $\hat{Σ} = \frac{1}{n-1}S$, demuestra que $S(\hat{Σ}) = Σ$.
+\item Sea $\hat{Σ} = \frac{1}{n-1}S$, demuestra que $E 	(\hat{Σ}) = Σ$.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[(a)]
+\item[]
 \item
 \[ \left(\sum_{i=1}^n (\mX_i-\media{\m{X}})(\mX_i-\media{\m{X}})^t\right)_{jk} = \sum_{i=1}^n (\mX_i-\media{\m{X}})_j(\mX_i-\media{\m{X}})_k = S_{jk} \]
 \item
@@ -38,10 +39,14 @@ Por simetría e idempotencia: $H^t H = H^2 = H$. Entonces:
 \[ S = \tilde{\mathbb{X}}^t\tilde{\mathbb{X}} = (H \mathbb{X})^t (H \mathbb{X}) = \mathbb{X}^t H^t H \mathbb{X} = \mathbb{X}^t H \mathbb{X} \]
 \item
 \[ E(\media{\mX}) = \frac{1}{n}\sum_{i=1}^n E(\mX) = \frac{1}{n} (n \m{µ}) = \m{µ} \]
-\[ Cov(\media{\mX}) = ? \]
+Como $\mX= \sum_{i=1}^n \muestra{X_i}/n$, y cada muestra es independiente, deducimos 
+\begin{gather*}
+ Cov(\media{\mX}) = \Sigma_{\media{\mX}}=\sum_{i=1}^n\Sigma_{\muestra{X_i}/n} = \sum_{i=1}^n\frac{1}{n} \Sigma_{\muestra{X_i}} \frac{1}{n} = \frac{1}{n^2}\sum_{i=1}^n \Sigma_{\muestra{X}}= \frac{1}{n}\Sigma
+\end{gather*}
 \item
 \[ E(\hat{Σ})_{jk} = \frac{1}{n-1} E[S_{jk}] = \frac{1}{n-1} \sum_{i=1}^n E\left((X_{ij}-\media{X}_j)(X_{ik}-\media{X}_k)\right)\]
 \end{enumerate}
+
 \end{solucion}
 
 \newpage
@@ -61,13 +66,60 @@ Distribución normal $p$-variante, $\mX \sim N_p(\m{μ},Σ)$.
 \[ M(\m{t}) = E\left(e^{\m{t}'\mX}\right) = E\left(e^{\sum_{i=1}^p t_i X_i}\right) = \exp\left(\m{t}'\m{μ} + \frac{1}{2}\m{t}'Σ\m{t}\right)\]
 Demuestra que
 \begin{enumerate}[i.]
-\item $B \mX + \m{c} ~ N(B \m{μ} + \m{c}, B Σ B^t)$.
+\item $B \mX + \m{c} \sim N(B \m{μ} + \m{c}, B Σ B^t)$.
 \item Si $\mX \sim N_p(\m{μ}_1,Σ_1)$, $\m{Y} \sim N_p(\m{μ}_2,Σ_2)$ e independientes, entonces $\mX+\m{Y} \sim N_p(\m{μ}_1+\m{μ}_2, Σ_1+Σ_2)$.
 \end{enumerate}
 \item Sea $\mX_1,\dots,\mX_n$ una muestra aleatoria de una distribución $N_p(\m{μ},Σ)$, demuestra que $\media{\m{X}} \sim N_p(\m{μ}, \frac{1}{n}Σ)$.
 \end{enumerate}
 \end{ejercicio}
-
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item La distribución normal $p$-variante es la generalización a dimensión $p$ de la distribución normal. Una posible definición es que un vector aleatorio sigue una distribución normal $p$-variante si toda combinación lineal de sus componentes sigue una distribución normal. Como estamos suponiendo que $\Sigma$ es no singular, también es equivalente a que el vector tenga la función de densidad
+$$
+f(\muestra{x})=\frac{1}{(2\pi)^{p/2}\abs{\Sigma}^{1/2}}\exp\{-1/2(\muestra{x}-\muestra{\mu})'\Sigma^{-1}(\muestra{x}-\muestra{\mu})\}
+$$
+\item Imagino que al menos para el primer apartado podemos partir de lo que viene en los apuntes
+\begin{enumerate}[i.]
+\item Sabemos que la densidad de $X$ es
+$$
+f_X(\muestra{x})=\frac{1}{(2\pi)^{p/2}\abs{\Sigma}^{1/2}}\exp\{-1/2(\muestra{x}-\muestra{\mu})'\Sigma^{-1}(\muestra{x}-\muestra{\mu})\}
+$$
+Deducimos entonces que
+$$
+F_Y(\muestra{x})=P[Y\leq \muestra{x}]= P[X\leq \Sigma^{1/2}\muestra x+\mu] = F_X( \Sigma^{1/2}\muestra x+\mu)
+$$
+Derivando y sustituyendo tenemos
+\begin{gather*}
+f_Y(x)=f_X(\Sigma^{1/2}\muestra x+\mu)\Sigma^{1/2} = \frac{1}{(2\pi)^{p/2}}\exp\{-1/2x'x\}
+\end{gather*}
+\item Veamos la primera componente, el resto es análogo
+\begin{gather*}
+f_{X_i}(x_1)=\int_{-\infty}^\infty \cdots \int_{-\infty}^\infty x_2\cdots x_p f_X(\muestra{x})dx_2\cdots dx_p\\
+= \frac{1}{(2\pi)^{p/2}}\int_{-\infty}^\infty \cdots \int_{-\infty}^\infty x_2\cdots x_p\exp\{-1/2(x_1^2+x_2^2+\cdots x_p^2)\}dx_2\cdots dx_p \\
+= \frac{\sqrt{2\pi}}{(2\pi)^{p/2}}\int_{-\infty}^\infty \cdots \int_{-\infty}^\infty x_3\cdots x_p\exp\{-1/2(x_1^2+x_3^2\cdots x_p^2)\}dx_3\cdots dx_p \\
+= \frac{1}{\sqrt{2\pi}}e^{-x_1^2/2} \sim N(0,1)
+\end{gather*}
+La independencia se tiene de manera trivial, pues
+$$
+f_X(\muestra{x})=\prod_{i=1}^p f_{X_i}(x_i)
+$$
+\item Se tendría por definición.
+\end{enumerate}
+\item ???
+\item 
+\begin{enumerate}[i.]
+\item Si no puedo usar que las $X_i$ son independientes llego hasta aquí como mucho
+\[ M(\m{t}) = E\left(e^{\m{t}'(B\mX+\muestra{c})}\right) = e^{t'\muestra{c}}E\left(e^{t'B\mX}\right) = \exp\left(\m{t}'\m{μ} + \frac{1}{2}\m{t}'Σ\m{t}\right)\]
+\item Si dos vectores aleatorios son independientes entonces la esperanza del producto es el producto de las esperanzas. Deducimos por tanto que la función generatriz de la suma es el producto de las funciones generatrices, de donde se deduce trivialmente el resultado.
+\end{enumerate}
+\item Los parámetros de una normal $p$-variante son el vector de medias y la matriz de covarianzas. Sabemos, por el apartado anterior, que 
+$$
+n\media{\mX}\sim N_p(n\muestra{\mu},n\Sigma)
+$$
+Es trivial comprobar utilizando también el apartado anterior que para la normal $p$-variante también se verifica que $a N_p(\muestra{\mu},\Sigma)= N_p(a\muestra{\mu},a^2\Sigma)$, de donde se deduce el resultado.
+\end{enumerate}
+\end{solucion}
 \newpage
 
 \begin{ejercicio}{1.3}
@@ -80,7 +132,15 @@ Distribución de Wishart, $W \sim W_p(n,Σ)$.
 \[ C W C' \sim W_q(n, CΣC') \]
 \end{enumerate}
 \end{ejercicio}
-
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item ???
+\item Sabemos que existe $X=[\muestra{X_1},\dotsc,\muestra{X_n}]'$ con $\muestra{X_i}\sim N_p(0,\Sigma)$ tal que $W=X'X$.
+$$
+E(W)= E\left(\sum_{i=1}^n \muestra{X_i}\muestra{X_i}'\right) = \sum_{i=1}^n E[\muestra{X_i}\muestra{X_i}'] = \sum_{i=1}^n \Sigma-\mu\mu' \overset{\mu=0}{=} n\Sigma
+$$
+\end{enumerate}
+\end{solucion}
 \newpage
 
 \begin{ejercicio}{1.4}
@@ -108,12 +168,5 @@ Demuestra que, bajo $H_0$:
 \[ T^2 \sim T^2_{m,n-1} \]
 \end{enumerate}
 \end{ejercicio}
-
-\newpage
-
-\[ A = \begin{pmatrix} 1 & 0 & \dots & 0& -1 & 0 & \dots & 0\\
- 0 & 1 & \dots & 0 & 0 & -1 & \dots & 0\\
- \vdots\\
-  0 & 0 & \dots & 1 & 0 & 0 & \dots & -1\\\end{pmatrix} \]
 
 \end{document}
