@@ -1,0 +1,117 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de From Calculus to Cohomology, Capítulo 5}
+\author{Javier Aguilar Martín}
+\maketitle
+
+
+\begin{ejercicio}{5.1}
+Usando la notación del ejemplo 5.4, un punto $(x,y)\in U_1$ está unívocamente determinado por sus coordenadas polares $(r,\theta)\in (0,\infty)\times (0,2\pi)$. Sea $arg_1\in\Omega^0(U_1)$ la función $(x,y)\mapsto \theta\in(0,2\pi)$ (¿por qué es $arg_1$ diferenciable?). Definir similarmente $arg_2\in\Omega^0(U_2)$ usando coordenadas polares con $\theta\in (-\pi,\pi)$ y probar la existencia de una 1-forma cerrada $\tau\in\Omega^1(\R^2-\{0\})$ tal que
+\[
+\eta_{U_{\nu}}=i^*_{\nu}(\tau)=d(arg_{\nu})\quad (\nu=1,2).
+\]
+Probar que el homomorfismo 
+\[
+\partial^0:H^0(U_1\cap U_2)\to H^1(\R^2-\{0\})
+\]
+lleva funciones localmente constantes con valores $\{0,2\pi\}$ en los semiplanos superior e inferior respectivamente en $[\tau]$. 
+\end{ejercicio}
+\begin{solucion}
+$arg_1(x,y)=\arctan(y/x)$, que es diferenciable en $x\neq 0$, así que $arg_1$ es diferenciable. Definimos $arg_2=arg_1-\pi$. Tenemos que 
+\[
+d(arg_1)=d(arg_2)=-\frac{y}{x^2+y^2}dx+\frac{x}{x^2+y^2}dy.
+\]
+Por lo que basta definir $\tau$ como la 1-forma obtenida. Para la última parte, sea $c=0\chi_{\R^2_+}+2\pi\chi_{\R^2_-}$. Vamos a buscar una preimagen de $c$ por $J^0$ utilizando la misma técnica que en la demostración de la sucesión de Mayer-Vietoris. Sean $p_1,p_2:U=\R^2-\{0\}\to[0,1]$ tales que $supp_U(p_{\nu})\subseteq U_{\nu}$ y $p_1+p_2=1$. Definimos
+\[
+c_2(x)=\begin{cases}
+-c(x)p_1(x) & x\in U_1\cap U_2,\\
+0 & x\in U_2-supp_U(p_1),
+\end{cases}
+\]
+y 
+\[
+c_1(x)=\begin{cases}
+c(x)p_2(x) & x\in U_1\cap U_2,\\
+0 & x\in U_1-supp_U(p_2).
+\end{cases}
+\]
+
+Se tiene entonces que $c=c_1(x)-c_2(x)$. Por tanto, $J^0(c_1,c_2)=c$. 
+ Entonces, por definición
+\[
+\partial^0([c])=[(I^1)^{-1}d_{\Omega^0(U_1)\oplus\Omega^0(U_2)}((J^0)^{-1})(c)]=[(I^1)^{-1}d_{\Omega^0(U_1)\oplus\Omega^0(U_2)}(c_1,c_2)]=
+\]
+ESTO NO ME LLEVA A NINGUNA PARTE, TENDRÍA QUE VER QUE LO QUE ME DA AL HACER LA DIFERENCIA CON TAU ESTÁ EN LA IMAGEN DE J0
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{5.2}
+Probar que la 1-forma $\tau\in\Omega^1(\R^2-\{0\})$ del ejercicio \ref{ejer:5.1} y $\Ima(z^{-1}dz)$ del ejercicio 3.6 son la misma. %\ref{3.6}
+\end{ejercicio}
+\begin{solucion}
+
+Con la expresión explícita que hemos dado es claro que son la misma.
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{5.3}
+¿Puede ser $\R^2$ cubierto por dos abiertos conexos $U,V$ tales que $U\cap V$ es disconexo? 
+\end{ejercicio}
+\begin{solucion}
+Sí, puede. Sea $U=\{(x,y)\in\R^2\mid x^2+y^2>1\}$ y $V=\{(x,y)\in\R^2\mid -1<y<1\}$. Claramente $\R^2=U\cup V$, pero $U\cap V=\{(x,y)\in\R^2\mid x^2+y^2>1, x>0\}\cup \{(x,y)\in\R^2\mid x^2+y^2>1, x<0\}$, que es unión de dos abiertos disjuntos y por tanto, disconexo. 
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{5.4}[Propiedad Phragmen-Brouwer de $\R^n$]  Supongamos que $p\neq q$ en $\R^n$. Un subconjunto cerrado $A\subseteq\R^n$ se dice que \emph{separa} $p$ y $q$ si $p$ y $q$ pertenecen a distintas componentes conexas de $\R^n-A$. 
+
+Sean $A$ y $B$ dos subcojuntos cerrados disjuntos de $\R^n$. Dados dos puntos distintos $p$ y $q$ en $\R^n-(A\cup B)$. Probar que si ni $A$ ni $B$ separan $p$ y $q$, entonces $A\cup B$ no separa $p$ y $q$. (Aplicar Mayer-Vietoris a $U_1=\R^n-A$, $U_2=\R^n-B$).
+
+\end{ejercicio}
+\begin{solucion}
+No vamos a seguir exactamente la indicación aunque se va a fundamentar en lo mismo.
+
+Recordemos que en $\R^n$, abierto y conexo implica conexo por caminos, por lo que las componentes conexas lo serán por caminos. Sea $V$ un entorno del segmento $[p,q]$ en $\R^n$ (podemos suponer que es estrellado, aunque con la versión más fuerte del lemma de Poincaré tampoco importa, porque lo que es seguro es que puede ser contráctil). Como ni $A$ ni $B$ separan a $p$ y $q$, sabemos que $V-A$ y $V-B$ son conexos por caminos. 
+
+Así que, en Mayer-Vietoris para $p=0$
+\[
+\begin{tikzcd}
+0\arrow[r] & H^0(V)\arrow[r,"I^0"] & H^0(V-A)\oplus H^0(V-B)\arrow[r, "J^0"] & H^0(V-(A\cup B))\arrow[r,"\partial^*"] & H^1(V).
+\end{tikzcd}
+\]
+Como $H^1(V)=0$, $H^0(V)=H^0(V-A)=H^0(V-B)=\R$,
+\[
+\begin{tikzcd}
+0\arrow[r] & \R\arrow[r,"I^0"] & \R\oplus \R\arrow[r, "J^0"] & H^0(V-(A\cup B))\arrow[r]& 0
+\end{tikzcd}
+\]
+de donde $\R\oplus\R\cong \R\oplus  H^0(V-(A\cup B))$, por lo que $H^0(V-(A\cup B))\cong\R$. Eso significa que $V-(A\cup B)$ es conexo por caminos, por lo que $A\cup B$ no separa $p$ y $q$. 
+
+{\bf\large ALTERNATIVA USANDO TAL CUAL LA INDICACIÓN}
+
+Recordemos que todo abierto de $\R^n$ puede ser expresado como unión numerable de componentes conexas (basta tomar bolas con centro racional). Sean $U_1=\R^n-A$ y $U_2=\R^n-B$. Entonces $U_1\cap U_2=\R^n-(A\cup B)$ y $U_1\cup U_2=\R^n$. Supongamos que $H^0(U_1)=\oplus_{i\in I}\R$ y $H^0(U_2)=\oplus_{j\in J}\R$. En Mayer-Vietoris, para $p=0$
+\[
+\begin{tikzcd}
+0\arrow[r] & H^0(\R^n)\arrow[r,"I^0"] & H^0(U_1)\oplus H^0(U_2)\arrow[r, "J^0"] & H^0(U_1\cap U_2)\arrow[r,"\partial^*"] & H^1(\R^n)
+\end{tikzcd}
+\]
+Como $H^0(\R^n)=\R$ y $H^1(\R^n)=0$, tenemos
+\[
+\begin{tikzcd}
+0\arrow[r] & \R \arrow[r,"I^0"] & H^0(U_1)\oplus H^0(U_2)\arrow[r, "J^0"] & H^0(U_1\cap U_2)\arrow[r] & 0
+\end{tikzcd}
+\]
+de donde $ H^0(U_1)\oplus H^0(U_2)=\R\oplus H^0(U_1\cap U_2)$, es decir,
+\[
+\oplus_{i\in I}\R\bigoplus \oplus_{j\in J}\R =\R\oplus H^0(U_1\cap U_2)
+\]
+\end{solucion}
+
+
+
+\end{document}

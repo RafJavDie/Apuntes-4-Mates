@@ -21,4 +21,33 @@ $$
 \sum_{i=1}^n (\x_i-\X) = \sum_{i=1}^n \x_i - \sum_{i=1}^n \X = \sum_{i=1}^n \x_i  - n \X = \sum_{i=1}^n \x_i  - n \frac{1}{n} \sum_{i=1}^n \x_i  =0
 $$
 \end{solucion}
+
+\begin{proof}
+Sea $t \in \R^p$. Tomemos $\hat{e}_1,\dots,\hat{e}_p$ que forman una base ortonormal de $\R^p$.
+Entonces existen unos coeficientes $c_1,\dots,c_p \in \R$ tal que $t = \sum_{i=1}^p c_i \hat{e}_i = E c$.
+Si $t' \cdot t = 1$, entonces, como $E$ debe ser ortogonal:
+\[ 1 = c' E' E c = c' c \]
+Tenemos que:
+\[ \hat{\sigma}^2_{t'x} = t' \Sigma_x t = c' E' \Sigma_x E c = (c_1,\dots,c_p) \begin{pmatrix}\lambda_1 & \dots & 0\\\vdots & \vdots & \vdots\\0 & \dots & \lambda_p\end{pmatrix}\begin{pmatrix}c_1\\\vdots\\c_p\end{pmatrix} = \sum_{i=1}^p \lambda_i c_i^2 \]
+Por otro lado:
+\begin{equation}\label{cov-autov} \hat{\sigma}_{t'x;\hat{e}_k'x} = t' \Sigma_x \hat{e}_k = t' \lambda_k \hat{e}_k = \lambda_k c' E' \hat{e}_k = \lambda_k c' \underline{v} = \lambda_k c_k \end{equation}
+donde $\underline{v} = E' \hat{e}_k$ es un vector que tiene todo ceros excepto en la posición $k$, donde tiene un $1$.
+
+Una vez visto esto, procedemos a demostrar el teorema:
+\begin{enumerate}
+\item Sea $t$ tal que $t't=1$, entonces partiendo que hemos ordenado los $\lambda_1 \geq \dots \geq \lambda_p$:
+\[ \hat{\sigma}^2_{t'x} = \sum_{i=1}^p \lambda_i c_i^2 \leq \lambda_1 \sum_{i=1}^p c_i^2 = \lambda_1 c' c = \lambda_1 = \hat{\sigma}_{\hat{e}_1'x}^2\]
+Además, como $e_1'e_1 = 1$, esta cota se alcanza.
+\qedhere
+
+\item Sea $t \in \R^p$ tal que $t't=1$ y $t' \hat{\Sigma}\hat{e}_1 = \hat{\sigma}_{t'x;\hat{e}_1'x}=0$. Esta segunda condición es equivalente a que $c_1 \lambda_1 = 0$ por \eqref{cov-autov}.
+Entonces $\lambda_1 = 0 = \lambda_2 = \dots = \lambda_p$ ó $c_1 = 0$.
+El primer caso es trivial. Miramos el caso $c_1 = 0$.
+Obsérvese que:
+\[ \hat{\sigma}_{t'x}^2 = \sum_{i=1}^p \lambda_i c_i^2 = \sum_{i=2}^p \lambda_i c_i^2 \leq \lambda_2 \sum_{i=2}^p c_i = \lambda_2 c'c = \lambda_2 = \hat{\sigma}_{\hat{e}_2'x}^2\]
+\qed
+
+\item Inducción (queda como ejercicio).
+\end{enumerate}
+\end{proof}
 \end{document}

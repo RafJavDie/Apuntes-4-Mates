@@ -18,6 +18,52 @@ Sean $U_1,U_2\subseteq\R^n$ abiertos y $U=U_1\cup U_2$. Sean $i_{\nu}:U_{\nu}\to
 es exacta, donde $I^p(w)=(i_1^*(w), i_2^*(w))$ y $J^p(w_1,w_2)=j_1^*(w_1)-j_2^*(w_2)$.
 \end{teorema}
 \begin{dem}
+Dada una aplicación diferenciable $\phi:V\to W$ y una $p$-forma $w\sum f_Idx_I\in\Omega^p(W)$, 
+\[
+\Omega^p(\phi)(w)=\phi^*(w)=\sum(f_I\circ\phi)d\phi_{i_1}\land\dots\land d\phi_{i_p}.
+\]
+En particular, si $\phi$ es una inclusión de abiertos euclídeos, esto es, $\phi_i(x)=x_i$, entonces $d\phi_{i_1}\land\dots\land d\phi_{i_p}=dx_{i_1}\land\dots\land dx_{i_p}$. Por tanto, 
+\begin{equation}\label{eq}
+\phi^*(w)=\sum(f_I\circ\phi)dx_I.
+\end{equation}
+Esto será usado para $\phi= i_{\nu},j_{\nu}$ ($\nu=1,2$). Se sigue de \ref{eq} que $I^p$ es inyectiva, pues si $I^p(w)=0$, entonces $i_1^*(w)=0=i_2^*(w)$, es decir,
+\[
+i_{\nu}^*(w)=\phi^*(w)=\sum(f_I\circ i_{\nu})dx_I=0
+\]
+si y solo si $f_I\circ i_{\nu}=0$ para todo $I$. Sin embargo, $f_I\circ i_{1}= f_I\circ i_{2}=0$ implica que $f_I=0$ en todo $U$, ya que $U_1$y $U_2$ cubren $U$. Probamos ahora que $\ker{J^p}=\Ima{I^p}$.  En primer lugar, 
+\[
+J^p\circ I^p(w)=j_2^*i_2^*(w)-j_1^*i_1^*(w)=j^*(w)-j^*(w)=0,
+\]
+donde $j:U_1\cap U_2\to U$ es la inclusión. Por tanto, $\Ima{I^p}\subseteq \ker{J^p}$. Para probar la inclusión contraria, tomamos dos $p$-formas $w_{\nu}\in\Omega^p(U_{\nu})$,
+\[
+w_1=\sum f_Idx_I,\quad w_2=\sum g_Idx_I.
+\]
+Si $J^p(w_1,w_2)=0$, entonces $j^*_1(w_1)=j_2^*(w_2)$, lo cual por \ref{eq} implica que $f_I\circ i_1= g_I\circ i_2$, o lo que es lo mismo, $f_I=g_I$ en $U_1\cap U_2$. Definimos la función diferenciable $h_I:U\to\R^n$ como
+\[
+h_I(x)=\begin{cases}
+f_I(x) & x\in U_1,\\
+g_I(x) & x\in U_2.
+\end{cases}
+\]
+Entonces, $I^p(\sum h_Idx_I)=(w_1,w_2)$. Por último, probamos que $J^p$ es sobreyectiva. Para ello usamos una partición de la unidad $\{p_1,p_2\}$ con soporte en $\{U_1, U_2\}$, esto es, funciones diferenciables
+\[
+p_{\nu}:U\to [0,1]
+\]
+para las que $supp_U(p_{\nu})\subseteq U_{\nu}$ y tales que $p_1(x)+p_2(x)=1$ para todo $x\in U$ (ver apéndice A del libro). Sea $f:U_1\cap U_2\to \R$ una función diferenciable. Usamos la partición para extenderla a $U_1$ y $U_2$. Como $supp_U(p_1)\cap U_2\subseteq U_1\cap U_2$, podemos definir una función diferenciable mediante
+\[
+f_2(x)=\begin{cases}
+-f(x)p_1(x) & x\in U_1\cap U_2,\\
+0 & x\in U_2-supp_U(p_1).
+\end{cases}
+\]
+Efectivamente, es diferenciable pues en la intersección de los dominios la función vale 0, ya que $p_1(x)=0$ en $U_2-supp_U(p_1)$.  Análogamente definismo
+\[
+f_1(x)=\begin{cases}
+f(x)p_2(x) & x\in U_1\cap U_2,\\
+0 & x\in U_1-supp_U(p_2).
+\end{cases}
+\]
+Nótese que $f_1(x)-f_2(x)=f(x)$ para todo $x\in U_1\cap U_2$, pues $p_1(x)+p_2(x)=1$. Para una forma diferencial $w\in \Omega^p(U_1\cap U_2)$, $w=\sum f_Idx_I$, podemos aplicarle el procedimiento anterior a cada $f_I:U_1\cap U_2\to\R$, dando lugar a funciones $f_{I,\nu}:U_{\nu}$, y por tanto, a formas diferenciales $w_{\nu}=\sum f_{I,\nu}dx_I\in\Omega^p(U_{\nu})$. Con esta elección, $J^p(w_1,w_2)=w$. 
 \QED
 \end{dem}
 
@@ -61,7 +107,7 @@ Estos son conjuntos abiertos estrellados, así que $H^p(U_1)=H^p(U_2)=0$ para to
 lo cual indica que $\partial^*$ es un isomorfismo, así que $H^{q}(\R^2-\{0\})=0$ para $q\geq 2$. Para $p=0$ obtenemos
 \[
 \begin{tikzcd}
-0\arrow[r] & H^0(\R^2-\{0\})\arrow[r,"I^0"] & H^0(U_1)\oplus H^0(U_2)\arrow[r, "J^0"]\arrow[d,equal] & H^0(U_1\cap U_2)\arrow[r,"\partial^*"]\arrow[d, equals] & H^1(\R^2-\{0\})\arrow[r,"I^1"] & 0\\
+0\arrow[r] & H^0(\R^2-\{0\})\arrow[r,"I^0"] & H^0(U_1)\oplus H^0(U_2)\arrow[r, "J^0"]\arrow[d,equals] & H^0(U_1\cap U_2)\arrow[r,"\partial^*"]\arrow[d, equals] & H^1(\R^2-\{0\})\arrow[r,"I^1"] & 0\\
  & & \R\oplus\R &\R\oplus\R & & 
 \end{tikzcd}
 \]
@@ -80,6 +126,17 @@ H^p(\R^2-\{0\})=\begin{cases}
 
 Además, que $\partial^*$ sea sobreyectiva implica que $H^1(\R^2-\{0\})$ está generado por la imagen del algún elemento de $H^0(U_1\cap U_2)$. Además, por exactitud debe ser un elemento que no esté en la imagen de $J^0$. Siconsideramos $[\chi_{U_1}]$ y $[\chi_{U_2}]$, entonces $J^0([\chi_{U_1}])=j_2^*[\chi_{U_1}]=[\chi_{U_1}\circ j_1]=[\chi_{U_1\cap U_2}]=[\chi_{\R^2_+}]+[\chi_{\R^2_-}]$. Análogamente, $J^0[\chi_{U_2}]=-[\chi_{U_1\cap U_2}]=-[\chi_{\R^2_+}]-[\chi_{\R^2_-}]$. Tomando coordenadas, podemos decir que $\Ima{J^0}=\langle (1,1)\rangle$. Por tanto, dando un generador del cociente $H^0(U_1\cap U_2)/\Ima{J^0}=\langle (1,0),(0,1)\rangle/\langle (1,1)\rangle$ tenemos un elemento cuya imagen mediante $\partial^*$ genera $H^1(\R^2-\{0\})$. Esto es sencillo, pues podemos tomar, por ejemplo $(1,0)+\langle (1,1)\rangle$, que se corresponde con $[\chi_{\R^2_+}]+\Ima{J^0}$. También podríamos haber tomado de forma análoga como generador $[\chi_{\R^2_-}]+\Ima{J^0}$, o cualquier combinación de ambos.
 \end{ej}
+
+\begin{teorema}
+Sea $U$ un abierto cubierto por abiertos convexos $U_1,\dots, U_r$. Entonces, para todo $p$, $H^p(U)$ es finitamente generado.
+\end{teorema}
+\begin{dem}
+Lo probamos por inducción en el número de convexos. Si $r=1$ se sigue del lema de Poincaré. Supongamos que el resultado es cierto para $r-1$ y sea $V=U_1\cup\dots\cup U_{r-1}$ de tal forma que $U=V\cup U_r$. Por la sucesión de Mayer-Vietoris tenemos la sucesión exacta
+\[
+H^{p-1}(U)(V\cap U_r)\overset{\partial^*}{\to} H^p(U)\overset{I^*}{\to} H^p(V)\oplus H^p(U_r),
+\]
+lo cual implica, por el lema \ref{sum} usando que $\ker{I^*}=\Ima{\partial^*}$, que $H^p(U)\cong \Ima{\partial^*}\oplus\Ima{I^*}$. Ahora, tanto, $V$ como $V\cap U_r=(U_1\cap U_r)\cup\dots\cup (U_{r-1}\cap U_r)$ son uniones de $r-1$ abiertos convexos. Así que $H^{p-1}(U)(V\cap U_r)$, $H^p(V)$ y $H^p(U_r)$ son finitamente generados, lo que implica el resultado para $H^p(U)$. \QED
+\end{dem}
 
 \end{document}
 
