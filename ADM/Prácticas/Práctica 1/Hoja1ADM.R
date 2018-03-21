@@ -141,10 +141,10 @@ A
 
 #8. Construir una matriz con la tabla de multiplicar
 n=9
-m=6
+m=9
 i=1:n
 j=1:m
-A=outer(i,j,"*")
+A=outer(i,j,"9")
 colnames(A)=paste("*",1:m,sep="")
 rownames(A)=1:n
 A

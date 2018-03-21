@@ -32,7 +32,6 @@ plot(Altura,Peso,main="Datos familiares", xlim=c(110,180)) #PUNTOS
 text(Altura,Peso,label=rownames(datos),adj=1,col="red")   
 #TEXTOS; adj controla la posición del texto respecto al punto
 grid()      #REJILLA
-
 regre<-lm(Peso~Altura)          #V.DEPEND.~V.INDEPEND.
 abline(regre,lwd=2,col="blue")
 summary(regre)
@@ -81,7 +80,7 @@ barplot(IMC,cex.names=0.7,main="IMC Familiar")
 abline(h=0)
 
 #v) Ordenar
-datosIMC<- data.frame(datos,IMC)
+datosIMC<- cbind(datos,IMC)
 datosIMC[order(-datosIMC$IMC),]
 
 selec<- subset(datosIMC,(IMC<25) & (IMC>20))
@@ -167,10 +166,10 @@ rug(USairpollution$popul,side=2)
 #iii) NUBE DE PUNTOS Y BOXPLOT E HISTOGRAMA
 #Para Rstudio, puede ser necesario ejecutar antes
 #las siguientes líneas y la última 
-#graphics.off() 
-#antig.par = par(no.readonly = TRUE) #guardar parám. gráf.
-#par("mar") #Márgenes (líneas) alrededor de cada gráfico
-#par(mar=c(1,1,1,1)) #Los reducimos
+graphics.off() 
+antig.par = par(no.readonly = TRUE) #guardar parám. gráf.
+par("mar") #Márgenes (líneas) alrededor de cada gráfico
+par(mar=c(1,1,1,1)) #Los reducimos
 #Con layout se define la ubicación de cada uno de los siguientes
 #gráficos tras dividir en 4 partes la consola de gráficos
 #[2 0] Gráfico 1: posición inferior izquierda
@@ -179,15 +178,15 @@ rug(USairpollution$popul,side=2)
 #      Sin uso: posición superior derecha
 layout(matrix(c(2,0,1,3),nrow=2,byrow=TRUE),widths=c(2,1),
        heights=c(1,2), respect=TRUE)
-xlim=range(USairpollution$popul*1.1)
+xlim2=range(USairpollution$popul*1.1)
 plot(popul~manu,data=USairpollution,
     xlab="Emp. Fabric. con al menos 20 trabajadores",
     ylab="POBLACION (miles)",type="n",cex.lab=0.9)
 with(USairpollution,text(manu,popul,cex=0.6,
      labels=abbreviate(rownames(USairpollution))))
-with(USairpollution,hist(manu,main="",xlim=xlim))
+with(USairpollution,hist(manu,main="",xlim=xlim2))
 with(USairpollution,boxplot(popul))
-#par(antig.par)  
+par(antig.par)  
 
 
 ##4.DATOS DECATHLON
@@ -199,7 +198,7 @@ with(USairpollution,boxplot(popul))
 library(foreign)
 decath<- data.frame(read.spss("decathlon1989.sav"))
 
-nombres<- decath$NOMPAIS
+nombres<- decath$nompais
 #ELIMINAR LA VARIABLE NOMBRES, SE ALMACENA COMO ETIQUETAS:
 decath<- decath[,1:10]    
 rownames(decath)<- nombres
@@ -356,6 +355,7 @@ rm(list=ls()) #Borrar todo el espacio de trabajo actual
 ls()  
 load(file="Espacio_trabajo.RData")
 ls()
+
 
 #i) Cargar un espacio de trabajo
 load(file="Pisa2009.RData") 

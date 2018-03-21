@@ -43,8 +43,18 @@ Como $\media{\mX}= \sum_{i=1}^n \muestra{X_i}/n$, y cada muestra es independient
 \begin{gather*}
  Cov(\media{\mX}) = \Sigma_{\media{\mX}}=\sum_{i=1}^n\Sigma_{\muestra{X_i}/n} = \sum_{i=1}^n\frac{1}{n} \Sigma_{\muestra{X_i}} \frac{1}{n} = \frac{1}{n^2}\sum_{i=1}^n \Sigma_{\muestra{X}}= \frac{1}{n}\Sigma
 \end{gather*}
-\item
-\[ E(\hat{Σ})_{jk} = \frac{1}{n-1} E[S_{jk}] = \frac{1}{n-1} \sum_{i=1}^n E\left((X_{ij}-\media{X}_j)(X_{ik}-\media{X}_k)\right)\]
+\item 
+\begin{align*} 
+(n-1)E(\hat{Σ})_{jk} &= E[S_{jk}] = \sum_{i=1}^n E\left[(X_{ij}-\media{X}_j)(X_{ik}-\media{X}_k)\right]\\
+&=\sum_{i=1}^\infty E\left[ X_{ij}X_{ik}\right]-nE[\media{X}_k\media{X}_j]\\
+&=nE[X_jE_k]-\frac{1}{n}\sum_{i,t=1}^nE[X_{ij}X_{tk}]
+\end{align*}
+Tengamos en cuenta que cuando $t\neq i$, $X_ij$ será independiente de $X_tk$ y por tanto la esperanza del producto será el producto de las esperanzas, es decir, solo coincidirá en $n$ términos, por lo que
+\begin{align*} 
+(n-1)E(\hat{Σ})_{jk} &=nE[X_jE_k]-\frac{1}{n}\sum_{i,t=1}^nE[X_{ij}X_{tk}]\\
+&=nE[X_jE_k]-\frac{1}{n}(nE[X_jX_k]-n(n-1)E[X_j]E[X_j])\\
+&= (n-1)Cov(X_j,X_k)
+\end{align*}
 \end{enumerate}
 
 \end{solucion}
