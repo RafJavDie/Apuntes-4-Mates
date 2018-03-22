@@ -101,13 +101,13 @@ f_0,f_1:\R^n-\{0\}\to\R^n-\{0\}
 son homotópicas si y solo si sus restricciones a $S^{n-1}$ son homotópicas.
 \end{ejercicio}
 \begin{solucion}
-Sea $i:S^{n-1}\hookrightarrow \R^n-\{0\}$ la inclusión y sea $p:\R^n-\{0\}\to S^{n-1}$ la aplicación definida como $p(x)=\dfrac{x}{||x||}$. Por un lado se tiene $p\circ i=Id_{S^{n-1}}$ y por otro $i\circ p\simeq Id_{\R^n-\{0\}}$ mediante la homotopía $H:\R^n-\{0\}\times I\to \R^n-\{0\}$ definida como $H(x,t)=tx+(1-t)\dfrac{x}{||x||}$. 
+Sea $i:S^{n-1}\hookrightarrow \R^n-\{0\}$ la inclusión y sea $p:\R^n-\{0\}\to S^{n-1}$ la aplicación definida como $p(x)=\dfrac{x}{||x||}$. Por un lado se tiene $p\circ i=Id_{S^{n-1}}$ y por otro $i\circ p\simeq Id_{\R^n-\{0\}}$ mediante la homotopía $H:(\R^n-\{0\})\times I\to \R^n-\{0\}$ definida como $H(x,t)=tx+(1-t)\dfrac{x}{||x||}$. 
 
-Para la segunda parte, la primera implicación es trivial, pues basta restringir la homotopía original a $S^{n-1}\times I$. Para la otra implicación vamos a seguir el siguiente proceso. Construiremos una homotopía entre $f_0$ y $f_1$ usando las equivalencias de homotopía encontradas anteriormente. En primer lugar, nuestra homotopía $G:\R^n-\{0\}\times I\to \R^n-\{0\}$ debe cumplir $G(x,0)=f_0(x)$ y $G(x,1)=f_1(x)$. Una vez definida $G(x,0)=f_0(x)$, llevaremos de forma continua esta aplicación a $f_0(i\circ p(x))$.  Esto lo podemos a hacer gracias a que $i\circ p(x)\simeq Id_{\R^n-\{0\}}$, así que existe una homotopía para lograrlo. De hecho es la homotopía $H(x,1-t)$. Como aquí ya estaremos en un punto de $S^{n-1}$, podemos usar la homotopía de la hipótesis, a la que llamaremos $F$, para llegar a $f_1(i\circ p(x))$. Ahora, $i\circ p \simeq Id_{\R^n-\{0\}}$, con lo que podemos componer con la homotopía $H$ definida anteriormente para obtener $f_1(x)$. Siguiendo estos pasos, definidos $G$ explícitamente como sigue
+Para la segunda parte, la primera implicación es trivial, pues basta restringir la homotopía original a $S^{n-1}\times I$. Para la otra implicación vamos a seguir el siguiente proceso. Construiremos una homotopía entre $f_0$ y $f_1$ usando las equivalencias de homotopía encontradas anteriormente. En primer lugar, nuestra homotopía $G:(\R^n-\{0\})\times I\to \R^n-\{0\}$ debe cumplir $G(x,0)=f_0(x)$ y $G(x,1)=f_1(x)$. Una vez definida $G(x,0)=f_0(x)$, llevaremos de forma continua esta aplicación a $f_0(i\circ p(x))$.  Esto lo podemos a hacer gracias a que $i\circ p(x)\simeq Id_{\R^n-\{0\}}$, así que existe una homotopía para lograrlo. De hecho es la homotopía $H(x,1-t)$. Como aquí ya estaremos en un punto de $S^{n-1}$, podemos usar la homotopía de la hipótesis, a la que llamaremos $F$, para llegar a $f_1(i\circ p(x))$. Ahora, $i\circ p \simeq Id_{\R^n-\{0\}}$, con lo que podemos componer con la homotopía $H$ definida anteriormente para obtener $f_1(x)$. Siguiendo estos pasos, definidos $G$ explícitamente como sigue
 \[
 G(x,t)=\begin{cases}
 f_0(H(x,1-3t)) & 0\leq t\leq \frac{1}{3}\\
-F(x, 3t-1) & \frac{1}{3}\leq t\leq\frac{2}{3}\\
+F(i\circ p(x), 3t-1) & \frac{1}{3}\leq t\leq\frac{2}{3}\\
 f_1(H(x, 3t-2)) & \frac{2}{3}\leq t\leq 1
 \end{cases}
 \]
