@@ -43,17 +43,17 @@ Como $\media{\mX}= \sum_{i=1}^n \muestra{X_i}/n$, y cada muestra es independient
 \begin{gather*}
  Cov(\media{\mX}) = \Sigma_{\media{\mX}}=\sum_{i=1}^n\Sigma_{\muestra{X_i}/n} = \sum_{i=1}^n\frac{1}{n} \Sigma_{\muestra{X_i}} \frac{1}{n} = \frac{1}{n^2}\sum_{i=1}^n \Sigma_{\muestra{X}}= \frac{1}{n}\Sigma
 \end{gather*}
-\item 
-\begin{align*} 
-(n-1)E(\hat{Σ})_{jk} &= E[S_{jk}] = \sum_{i=1}^n E\left[(X_{ij}-\media{X}_j)(X_{ik}-\media{X}_k)\right]\\
-&=\sum_{i=1}^\infty E\left[ X_{ij}X_{ik}\right]-nE[\media{X}_k\media{X}_j]\\
-&=nE[X_jE_k]-\frac{1}{n}\sum_{i,t=1}^nE[X_{ij}X_{tk}]
-\end{align*}
-Tengamos en cuenta que cuando $t\neq i$, $X_ij$ será independiente de $X_tk$ y por tanto la esperanza del producto será el producto de las esperanzas, es decir, solo coincidirá en $n$ términos, por lo que
-\begin{align*} 
-(n-1)E(\hat{Σ})_{jk} &=nE[X_jE_k]-\frac{1}{n}\sum_{i,t=1}^nE[X_{ij}X_{tk}]\\
-&=nE[X_jE_k]-\frac{1}{n}(nE[X_jX_k]-n(n-1)E[X_j]E[X_j])\\
-&= (n-1)Cov(X_j,X_k)
+\item Por teoría y el apartado anterior sabemos que
+$$
+\frac{1}{n}\Sigma_\muestra{X}= \Sigma_{\media{\mX}}= E[\media{\mX}\media{\mX}']-\mu\mu'
+$$
+Tenemos entonces
+\begin{align*}
+E[S]&=\sum_{i=1}^nE[(\muestra{X}_i-\media{\mX})(\muestra{X}_i-\media{\mX})']\\
+&= \sum_{i=1}^n E[\muestra{X}_i\muestra{X}_i'] - E[\muestra{X}_i\media{\mX}']- E[\media{\mX}\muestra{X}_i']+E[\media{\mX}\media{\mX}']\\
+&=nE[\muestra{X}\muestra{X}'] -nE[\media{\mX}\media{\mX}']\\
+&=nE[\muestra{X}\muestra{X}'] - \Sigma_\muestra{X} - n\mu\mu' \\&=
+n\Sigma_\muestra{X}-\Sigma_\muestra{X} = (n-1)\Sigma_\muestra{X}
 \end{align*}
 \end{enumerate}
 
@@ -93,34 +93,29 @@ $$
 \begin{enumerate}[i.]
 \item Sabemos que la densidad de $X$ es
 $$
-f_X(\muestra{x})=\frac{1}{(2\pi)^{p/2}\abs{\Sigma}^{1/2}}\exp\{-1/2(\muestra{x}-\muestra{\mu})'\Sigma^{-1}(\muestra{x}-\muestra{\mu})\}
+f_\muestra{X}(\muestra{x})=\frac{1}{(2\pi)^{p/2}\abs{\Sigma}^{1/2}}\exp\{-1/2(\muestra{x}-\muestra{\mu})'\Sigma^{-1}(\muestra{x}-\muestra{\mu})\}
 $$
-Deducimos entonces que
+Aplicamos la fórmula del cambio de variable. Tomamos $v(\muestra{x})=$, entonces
+$$f_\muestra{Y}(\muestra{x})=f_\muestra{X}(v(\muestra{x}))|v'(\muestra{x})| = \frac{1}{(2\pi)^{p/2}}\exp\{-1/2x'x\}
 $$
-F_Y(\muestra{x})=P[Y\leq \muestra{x}]= P[X\leq \Sigma^{1/2}\muestra x+\mu] = F_X( \Sigma^{1/2}\muestra x+\mu)
+\item Es claro que si tomamos $f_{\muestra{Y}_i}(\muestra{x}_i)= \frac{1}{\sqrt{2\pi}}e^{-x_i^2/2}$, entonces se sigue trivialmente
 $$
-Derivando y sustituyendo tenemos
-\begin{gather*}
-f_Y(x)=f_X(\Sigma^{1/2}\muestra x+\mu)\Sigma^{1/2} = \frac{1}{(2\pi)^{p/2}}\exp\{-1/2x'x\}
-\end{gather*}
-\item Veamos la primera componente, el resto es análogo
-\begin{gather*}
-f_{X_i}(x_1)=\int_{-\infty}^\infty \cdots \int_{-\infty}^\infty x_2\cdots x_p f_X(\muestra{x})dx_2\cdots dx_p\\
-= \frac{1}{(2\pi)^{p/2}}\int_{-\infty}^\infty \cdots \int_{-\infty}^\infty x_2\cdots x_p\exp\{-1/2(x_1^2+x_2^2+\cdots x_p^2)\}dx_2\cdots dx_p \\
-= \frac{\sqrt{2\pi}}{(2\pi)^{p/2}}\int_{-\infty}^\infty \cdots \int_{-\infty}^\infty x_3\cdots x_p\exp\{-1/2(x_1^2+x_3^2\cdots x_p^2)\}dx_3\cdots dx_p \\
-= \frac{1}{\sqrt{2\pi}}e^{-x_1^2/2} \sim N(0,1)
-\end{gather*}
-La independencia se tiene de manera trivial, pues
+f_\muestra{Y}(\muestra{x})=\prod_{i=1}^p f_{\muestra{Y}_i}(\muestra{x}_i)
 $$
-f_X(\muestra{x})=\prod_{i=1}^p f_{X_i}(x_i)
-$$
+Es claro, pues, que $f_{\muestra{Y}_i}(\muestra{x}_i)$ es la i-ésima componente, pues al integrar sobre el resto de variables ésta es constante y el resto integran 1 por ser densidades. La independencia se tiene por definición.
 \item Se tendría por definición.
 \end{enumerate}
-\item Intuyo que trivialérrimo, aunque si quieres me pongo a integrar.
+\item Sabemos que para $\muestra{Y}$, $E[\muestra{Y}]=0$ y $\Sigma_{\muestra{Y}}=I_p$. En Teoría hemos visto cómo se comportan la esperanza y la matriz de covarianzas al transformar linealmente las variables, es decir
+$$
+E[\muestra{X}]=E[\muestra{Y}\Sigma^{1/2}+\muestra{\mu}] = E[\muestra{Y}]\Sigma^{1/2}+\muestra{\mu}=\m{\mu}
+$$
+$$
+Cov[\muestra{X}]=Cov[\muestra{Y}\Sigma^{1/2}+\muestra{\mu}] ={\Sigma^{1/2}}'Cov[\m{Y}]\Sigma^{1/2}= {\Sigma^{1/2}}\Sigma^{1/2} =\Sigma
+$$
 \item 
 \begin{enumerate}[i.]
 \item Se deduce inmediatamente a partir de la siguiente cadena de igualdades
-\[ E\left(e^{\m{t}'(B\mX+\muestra{c})}\right) = e^{t'\muestra{c}}E\left(e^{t'B\mX}\right) = e^{t'\muestra{c}}M_X(B't) = \exp\left(t'(B\muestra{\mu}+\muestra{c})+\frac{1}{2}t'B\Sigma B't\right)\]
+\[ E\left(e^{\m{t}'(B\mX+\muestra{c})}\right) = e^{t'\muestra{c}}E\left(e^{t'B\mX}\right) = e^{t'\muestra{c}}M_\muestra{X}(B't) = \exp\left(t'(B\muestra{\mu}+\muestra{c})+\frac{1}{2}t'B\Sigma B't\right)\]
 \item Si dos vectores aleatorios son independientes entonces la esperanza del producto es el producto de las esperanzas. Deducimos por tanto que la función generatriz de la suma es el producto de las funciones generatrices, de donde se deduce trivialmente el resultado.
 \end{enumerate}
 \item Los parámetros de una normal $p$-variante son el vector de medias y la matriz de covarianzas. Sabemos, por el apartado anterior, que 

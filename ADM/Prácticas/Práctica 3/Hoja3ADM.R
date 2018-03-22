@@ -186,6 +186,7 @@ cbind(media,mu)
 #ii) Estudio de la normalidad multivariante
 
 apply(x,2,ananor)  #Estudio de la normalidad de cada componente
+
 pairs(x,col="red") #Análisis gráfico de la Normalidad bivariante de cada par
 
 sigmag<- var(x)
@@ -232,7 +233,7 @@ QQBeta(D2Maha,n,p)
 #Test de normalidad multivariante: Mardia
 install.packages("MVN")
 library(MVN)
-mardiaTest(x)
+mnv(x)
 
 #Otros dos tests de normalidad multivariante
 #install.packages("mvShapiroTest")
@@ -277,7 +278,7 @@ n<- nrow(datos)
 QQchisq(D2Maha,n,p)
 QQBeta(D2Maha,n,p)  #¿Outlier?
 library(MVN)
-mardiaTest(datos)      #aquí conviene p.value.small
+mvn(datos)      #aquí conviene p.value.small
 
 ui<- n*D2Maha/((n-1)^2)
 Fi<- ((n-p-1)/p)*(1/(1-ui)-1)
@@ -285,5 +286,5 @@ Fn<- max(Fi)
 pvalormaxF(Fn,n,p)  #Se identifica como outlier
 plot(Fi,type="h")
 which.max(Fi)
-mardiaTest(datos[-3,])  #Ahora se acepta la normalidad con más claridad
+mvn(datos[-3,])  #Ahora se acepta la normalidad con más claridad
 
