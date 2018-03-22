@@ -107,7 +107,7 @@ Si $U\subseteq\R^n$ es un abierto contráctil, entonces $H^p(U)=0$ para todo $p>
 
 En la proposición siguiente, se identificará $\R^n$ con el subespacio $\R^n\times\{0\}\subseteq\R^{n+1}$ y $\R\cdot 1$ denota el espacio vectorial de dimensión 1 consistente en las funciones constantes.
 
-\begin{prop}
+\begin{prop}\label{6.11}
 Si $A⊊\R^n$ es un cerrado se tiene que
 $$H^p(\R^{n+1}−A)=\begin{cases}
 H^{p−1}(\R^n−A) & p≥2,\\
@@ -136,6 +136,38 @@ H^1(R^{n+1}-A)\cong H^0(U_1\cap U_2)/\R\cdot 1=H^0(\R^n-A)/\R\cdot 1.
 Tenemos también $\dim(\Ima{I^*})=\dim(\ker{\partial^*})=1$, por lo que $H^0(R^{n+1}-A)\cong\R$. 
 \QED
 \end{dem}
+
+\begin{prop}
+En las condiciones del teorema \ref{6.11} se tiene el difeomorfismo $R:\R^{n+1}-A\to \R^{n+1}-A$ definido como $R(x_1,\dots, x_n,x_{n+1})=(x_1,\dots, x_n,-x_{n+1})$. El homomorfismo inducido $R^*:H^{p+1}(\R^{n+1}-A)\to H^{p+1}(\R^{n+1}-A)$. 
+\end{prop}
+\begin{dem}
+Con la notación de la prueba anterior, tenemos los siguientes diagramas conmutativos, donde los difeomorfismos horizontales son restricciones de $R$
+\[
+\begin{tikzcd}
+\R^{n+1}-A \arrow[r, "R"] & \R^{n+1}-A  &                               \R^{n+1}-A \arrow[r, "R"] & \R^{n+1}-A\\
+U_1\arrow[u, "i_1"]\arrow[r, "R_1"] & U_2\arrow[u, "i_2"] &              U_2\arrow[u, "i_2"]\arrow[r, "R_2"] & U_1\arrow[u, "i_1"]\\
+U_1\cap U_2\arrow[u, "j_1"]\arrow[r,"R_0"] & U_1\cap U_2\arrow[u, "j_2"]&U_1\cap U_2\arrow[u, "j_2"]\arrow[r,"R_0"] & U_1\cap U_2\arrow[u, "j_1"]
+\end{tikzcd}
+\]
+En  la prueba de la proposición \ref{6.11} vimos que $\partial^*:H^p(U_1\cap U_2)\to H^{p+1}(\R^{n+1}-A)$ es un isomorfismo, por lo tanto basta probar que $R^*\circ\partial^*([w])=-\partial^*([w])$ para una $p$-forma cerrada $w$ cualquiera en $U_1\cap U_2$. Usando el teorema \ref{5.1} podemos encontrar $w_{\nu}\in \Omega^p(U_{\nu})$, $\nu=1,2$, con $w=j_1^*(w_1)-j_2^*(w_2)$. Por la definición de $\partial^*$, $\partial^*([w])=[\tau]$, donde $\tau\in \Omega^{p+1}(\R^{n+1}-A)$ está determinada pro $i_{\nu}^*(\tau)=dw_{\nu}$ para $\nu=1,2$. Además tenemos, usando la conmutatividad de los diagramas anteriores
+\begin{align*}
+-R_0^*w&=R_0^*j_2(w_2)-R_0^*j_1(w_1)=j_1^*(R_1^*w2)-j_2^*(R_2^*w_1),\\
+i_1^*(R^*\tau)=R_1^*(i_2^*\tau)=R_1^*(dw_2)=d(R_1^*w_2),\\
+i_2^*(R^*\tau)=R_2^*(i_1^*\tau)=R_2^*(dw_1)=d(R_2^*w_1).
+\end{align*}
+Estas ecuaciones y la definición de $\partial^*$ nos da $\partial^*(-[R_0^*w])=[R^*\tau]$. Por lo tanto
+\begin{equation}\label{conmuta}
+\partial^*\circ R^*_0([w])=-R^*\circ\partial^*([w]).
+\end{equation}
+Para la proyección $pr:U_1\cap U_2\to R^n-A$ tenemos $pr\circ R_0=pr$, y por tanto la composición
+\[
+H^p(\R^n-A)\overset{pr^*}{\to} H^p(U_1\cap U_2)\overset{R_0^*}{\to}H^p(U_1\cap U_2)
+\]
+es igual a $pr^*$. Como $pr^*$ es un isomorfismo (en particular, inyectiva), necesariamente $R_0^*$ es la identidad en $H^p(U_1\cap U_2)$, con lo que el lado izquierdo de \ref{conmuta} se convierte en $\partial^*([w])$, lo cual prueba el resultado.
+\QED
+\end{dem}
+INTENTAR PROBAR LA CONMUTATIVIDAD EN LA OTRA PRUEBA Y SI NO PEDIRLE A JAVI (ES POSIBLE QUE TENGA QUE CAMBIAR ALGUNA NOTACIÓN, POR EJEMPLO LOS R, QUE ALGUNO SERÁ -R0)
+
 
 \end{document}
 
