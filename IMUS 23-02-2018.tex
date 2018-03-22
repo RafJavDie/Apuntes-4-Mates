@@ -1,0 +1,36 @@
+\documentclass[twoside]{article}
+\usepackage{estilo-ejercicios}
+\usepackage{fancyhdr}
+\usepackage{empheq}
+\usepackage{xcolor}
+
+\newsavebox\MBox
+\newcommand\Cline[2][red]{{\sbox\MBox{$#2$}%
+\rlap{\usebox\MBox}\color{#1}\rule[-1.2\dp\MBox]{\wd\MBox}{0.5pt}}}
+\renewcommand{\V}{\wedge}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Problema IMUS}
+\author{Rafael González López}
+\maketitle
+
+
+
+\begin{ejer}Tres amigos compran un queso de 1800gr. El primero de ellos lo parte en tres trozos. El segundo decide pesar los trozos en la báscula de la tienda, que muestra unos pesos de 500gr, 600gr y 700gr. El tercero decide volver a pesar los trozos en una báscula en su casa, que muestra unos pesos distintos a los pesos de la báscula de la tienda. Cuando van a repartirse los trozos no se ponen de acuerdo: el primer amigo insiste en que los trozos que él cortó son iguales, el segundo sostiene que la báscula de la tienda funciona correctamente, y el tercero afirma que la báscula de su casa es la que muestra los pesos reales. ¿Cómo deben repartirse los trozos de queso, sin volver a cortarlos, para que todos crean que su trozo pesa al menos 600gr?
+\end{ejer}
+\begin{solucion}
+Consideremos los tres tozos de queso $q_1$, $q_2$, y $q_3$. Entonces para el segundo amigo los pesos de estos trozos son $500$, $600$ y $700$ gramos respectivamente. Supongamos que los pesos calculados por el tercer amigo son respectivamente $p_1$, $p_2$ y $p_3$. Obviamente, dado que
+$$
+p_1+p_2+p_3 = 1800
+$$
+Tenemos que $\exists p_i$ tal que $p_i \geq 600$. Por si hubiera algún lector poco ducho en demostraciones, si no hubiese tal $p_i$ entonces $\sum_{i=1}^3 p_i < 3\cdot 600 = 1800$ y hemos dado la igualdad por supuesto. Por tanto:
+\begin{itemize}
+\item Si $p_1\geq 600$, entonces damos al tercer amigo el primer trozo, al segundo amigo el segundo o tercer trozo (él piensa que estos pesan $600$ y $700$ gramos) y al primer amigo el que no demos al segundo.
+\item Si $p_2\geq 600$, entonces damos al tercer amigo el segundo trozo, al segundo amigo el tercer otrozo y al primer amigo el primer trozo.
+\item Si $p_3 \geq 600$, entonces damos al tercer amigo el tercer trozo, al segundo amigo el segundo trozo y al primer amigo el primer trozo.
+\end{itemize}
+
+Por otra parte, tenemos que para el primero todos los trozos pesan $600$ gr, luego cualquier trozo que reciba le satisfará, por lo que vamos a preocuparnos por los dos segundos. 
+\end{solucion}
+\end{document}
