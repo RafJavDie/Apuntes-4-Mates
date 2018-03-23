@@ -177,7 +177,14 @@ Develop an algorithm that produces a reduced Gröbner basis (see Definition 4) f
 ideal $I$, given as input an arbitrary Gröbner basis for $I$. Prove that your algorithm works.
 \end{ejercicio}
 \begin{solucion}
-
+\begin{enumerate}
+\item[]
+\item Entrada: $G=\{g_1,\dotsc,g_t\}$ base de Gröbner.
+\item Dividimos por los términos líderes para que cada polinomio sea mónico. 
+\item Utilizando el Lema 3, comprobamos si $LT(g_i)\in \gene{LT(G\setminus\{g_i\}}$. Si está, removemos $g_i$ de la base, en caso contrario la dejamos.
+\item Procedemos como en la demostración de la Proposición 6, es decir, intercambiamos cada $g_i$ que permanezca en nuestro conjunto por $\overline{g_i}^{G\setminus \{g_i\}}$.
+\end{enumerate}
+La demostración de la Proposición 6 garantiza que el algoritmo funciona.
 \end{solucion}
 
 \newpage
@@ -196,7 +203,15 @@ reduced Gröbner basis $I = \gene{x − 2y + 2w, z + 3w}$.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-
+\begin{enumerate}
+\item[]
+\item Tenemos que una base $G=\{f_1,f_2\}=\{x-2y-z-w,z+3w\}$. ¿Es una base de Groebner? Calculamos
+$$
+S(f_1,f_2) = -3xw-2yz-z^2-zw = -3wf_1 -(2y+z+w)f_2
+$$
+Por tanto $G$ es base de Grobner. Además, es minimal pues $x\notin \gene{z}$ y $z\notin \gene{x}$. Sin embargo, es claro que no es reducida, $z$ es un monomio de $f_1$ que está en $\gene{z}$. 
+\item Como los términos líderes coinciden con los de la base de Gröbner anteriormente calculada, tenemos que esta también es una base de Gröbner. Además, es claramente reducida pues $x,y,w\notin \gene{z}$ y $z,w\notin\gene{x}$.
+\end{enumerate}
 \end{solucion}
 
 \newpage
@@ -225,13 +240,10 @@ $g_1 ,\dots , g_t$. Note that you will use only $g_i$ and $g_j$ in the division.
 \newpage
 
 \begin{ejercicio}{2.7.11}
-Show that the result of applying the Euclidean Algorithm in $k[x]$ to any pair of polyno-
-mials $f , g$ is a reduced Gröbner basis for $f , g$ (after dividing by a constant to make the
-leading coefficient equal to 1). Explain how the steps of the Euclidean Algorithm can be
-seen as special cases of the operations used in Buchberger’s algorithm.
+Show that the result of applying the Euclidean Algorithm in $k[x]$ to any pair of polynomials $f , g$ is a reduced Gröbner basis for $\gene{f , g}$ (after dividing by a constant to make the leading coefficient equal to 1). Explain how the steps of the Euclidean Algorithm can be seen as special cases of the operations used in Buchberger’s algorithm.
 \end{ejercicio}
 \begin{solucion}
-
+Sabemos que aplicando sucesivamente el algoritmo de división euclídea obtenemos el máximo común divisor $h$ de $f$ y $g$ que es precisamente una base de $\gene{f,g}$ como probamos en la Sección 1.5. Podemos suponer que $LC(h)=1$. Sea $p$ el grado de $h$. Como vimos en la demostración de la Proposición 6 de la Seccion 1.5, $h$ es un elemento de grado mínimo en $I$, luego es una base de Gröbner, $LT(h)$ divide a $LT(q)$ para cualquier otro $q\in I$. Por tanto, $\gene{LT(h)}=\gene{x^p}=\gene{LT(I)}$.  Cualquier monomio de $h$ distinto de su término líder tiene, por definición, grado menor que $p$, luego no puede pertenecer a $\gene{x^p}$, pues $x^p$ no puede dividirlo.
 \end{solucion}
 
 \newpage
