@@ -21,19 +21,26 @@ Check that $\overline{S( f_i , f_j )}^F = 0$ for all pairs $1 ≤ i < j ≤ 5$ i
 \begin{solucion}
 Copio del libro:
 \begin{align*}
-f_1 & = x^3-2xy\\
-f_2 & = x^2y-2y^2+x\\
-f_3 & = -x^2\\
-f_4 & = -2xy\\
-f_5 & = -2y^2+x
+f_1 & = x^3-2xy & f_2 & = x^2y-2y^2+x\\
+f_3 & = -x^2 & f_4 & = -2xy\\
+f_5 & = -2y^2+x & &
 \end{align*}
-Vemos el siguiente sicigio:
+Notemos que hay que realizar $(n-1)n/2$ comprobaciones (en este caso $n=5$). Obviamente no vamos a realizar 10 comprobaciones.
 
-\[ S(f_1, f_5) = \frac{x^3y^2}{x^3}f_1 - \frac{x^3y^2}{-2y^2}f_5 = y^2(x^3-2xy)+\frac{x^3}{2}(-2y^2+x) = -2xy^3+\frac{1}{2}x^4 =_{grlex} \frac{1}{2}x^4-2xy^3\]
+\[ S(f_1, f_3) = \frac{x^3}{x^3}f_1 - \frac{x^3}{-x^2}f_3 = -2xy\]
+\[ -2xy = f_4
+\]
 
-Pero el algoritmo de división nos da:
-\[ \frac{1}{2}x^4-2xy^3 = \frac{x}{2}f_1+f_2+y^2f_4-f_5 + x \Rightarrow \overline{S(f_1, f_5)}^F = x \]
-Luego el ejercicio está mal.
+
+\[ S(f_1, f_5) = \frac{x^3y^2}{x^3}f_1 - \frac{x^3y^2}{-2y^2}f_5 = y^2(x^3-2xy)+\frac{x^3}{2}(-2y^2+x) = -2xy^3+\frac{1}{2}x^4 = \frac{1}{2}x^4-2xy^3\]
+\[ \frac{1}{2}x^4-2xy^3 = \frac{x}{2}f_1+f_2 -y^2f_4-f_5 
+\]
+
+\[ S(f_2, f_4) = \frac{x^2y}{x^2y}f_2 - \frac{x^2y}{-2xy}f_4 = -2y^2+x\]
+\[ -2y^2+x = f_5
+\]
+
+
 \end{solucion}
 
 \newpage
@@ -51,7 +58,53 @@ $\V(I)$?]
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-
+\begin{enumerate}[a.]
+\item[]
+\item Distingamos según el orden que utilicemos. 
+\begin{itemize}
+\item Para el lex tenemos
+\[ S(f_1, f_2) = \frac{x^2y^2}{x^2y}f_1 - \frac{x^2y^2}{xy^2}f_2 = x^2y^2-y-x(xy^2-x) = x^2-y\]
+Como no es divisible por ninguno, añadimos $f_3=x^2-y$.
+Calculamos
+\[ S(f_1, f_3) = \frac{x^2y}{x^2y}f_1 - \frac{x^2y}{x^2}f_3 = -1+y^2\]
+Como no es divisible, consideramos $f_4=y^2-1$. 
+\[ S(f_2, f_3) = \frac{x^2y^2}{xy^2}f_2 - \frac{x^2y^2}{x^2}f_3 =-x^2+y^3 = -f_3 -yf_4\]
+Comprobamos el resto de casos en los que no añadiremos más
+$$
+S(f_1,f_4) =  \frac{x^2y^2}{x^2y}f_1 - \frac{x^2y^2}{y^2}f_4 = -x^2+y^3 = -f_3 + yf_4
+$$
+$$
+S(f_2,f_4) =  \frac{xy^2}{xy^2}f_2 + \frac{xy^2}{y^2}f_4 =-x+x = 0
+$$
+$$
+S(f_3,f_4) =  \frac{x^2y^2}{x^2}f_3 - \frac{x^2y^2}{y^2}f_4 = -y^3+x^2 = f_3-yf_4 
+$$
+Por tanto, $G=\{y^2-1,x^2-y,x^2y-1,xy^2-x\}$.
+\newpage
+\item Pasamos a resolver con grlex. 
+\[ S(f_1, f_2) = \frac{x^2y^2}{x^2y}f_1 - \frac{x^2y^2}{xy^2}f_2 = x^2y^2-y-x(xy^2-x) = x^2-y\]
+Como no es divisible por ninguno, añadimos $f_3=x^2-y$.
+\[ S(f_1, f_3) = \frac{x^2y}{x^2y}f_1 - \frac{x^2y}{x^2}f_3 = -1+y^2\]
+Como no es divisible, consideramos $f_4=y^2-1$. 
+\[ S(f_2, f_3) = \frac{x^2y^2}{xy^2}f_2 - \frac{x^2y^2}{x^2}f_3 =y^3-x^2 = yf_4 -f_3\\
+\]
+Análogamente comprobamos que el resto de la divisiones también son cero.
+\end{itemize}
+\item Distingamos los órdenes
+\begin{itemize}
+\item Para el orden lex, el resto de dividir $S(f_1,f_2)$ entre $\{f_1,f_2\}$ es $-3$, por lo que $I=k[x,y]$ y $\V(I)=\emptyset$.
+\item El hecho de que $I=k[x,y]$ no cambia por que utilicemos otro orden para dividir. 
+\end{itemize}
+\item Distingamos los órdenes
+\begin{itemize}
+\item Comencemos con el orden lex
+$$
+S(f_1,f_2) = xz^5-yz^4 = z^5f_1 -z^4f_2
+$$
+Por lo tanto $I$ es una base de Groebner.
+\item He comprobado en SAGE este caso y es estúpidamente largo, así que no lo voy a hacer.
+\end{itemize}
+\end{enumerate}
 \end{solucion}
 \newpage
 
@@ -59,7 +112,11 @@ $\V(I)$?]
 Find reduced Gröbner bases for the ideals in Exercise \ref{ejer:2.7.2} with respect to lex and grlex.
 \end{ejercicio}
 \begin{solucion}
-
+\begin{enumerate}[a.]
+\item[]
+\item $G=\{y^2-1,x^2-y,x^2y-1,xy^2-x\}$. Si consideramos los términos líderes, tenemos $y^2,x^2,x^2y,xy^2$, luego es claro que podemos desechar los dos útimos y quedarnos con $\{y^2-1,x^2-y\}$. Claramente se cumplen las condiciones de base reducida tanto para lex como para grlex.
+\item[c.] Tenemos que $\{x-z^4,y-z^5\}$ es claramente una base de Grobner reducida. El caso para el orden grlex se deja como ejercicio para el lector.
+\end{enumerate}
 \end{solucion}
 
 \newpage

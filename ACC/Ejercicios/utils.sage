@@ -23,3 +23,18 @@ def syzygy(f,g):
 	R = f.parent() # Recupera anillo polinómico
 	l = lcm(f.lm(), g.lm())
 	return R((l / f.lt()) * f - (l / g.lt()) * g)
+
+
+def syzyplus(g):
+	lista1 = [syzygy(g[i],g[j]) for i in range(0,len(g)-1) for j in range(i+1,len(g))];
+	return(lista1)
+
+def dival(f,fs):
+	lista1 = [divide(f[i],fs)[1] for i in range(0,len(f))]
+	return(lista1)
+	
+def nexpaso(g):
+	lista1 = dival(syzyplus(g),g);
+	lista2 = list(set(lista1).union(g))
+	lista3 = [x for x in lista2 if x!= 0]
+	return(lista3)
