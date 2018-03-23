@@ -173,14 +173,19 @@ Ahora se tiene que en $K_1$ hay caras libres, las dadas por las caras propias de
 Podemos repeter el colapso $K \colapso K_1 \colapso K_2 \colapso \dots v$, luego $K \colapso v$.
 %En este complejo podemos encontrar de nuevo símplices principales, que tendrán dimensión estrictamente menor que los anteriores, y podemos repetir el proceso. Como la dimensión es finita, obtendremos un colapso $K\searrow K_1\searrow\cdots\searrow K_n\searrow c$, luego $K\colapso 0$.
 
-\item Sea $\sigma=(v_0,\dots, v_n)$ el símplice de $L$. Entonces $\sigma$ es el único símplice principal. Entonces, colapsamos $\sigma$ junto con la cara $n-1$ dimensional $(v_1,\dots, v_n)$. Ahora, todas las caras $n-1$ dimensionales restantes son símplices principales. Así que en cada uno podemos realizar este mismo proceso. Podemos reiterar bajando de dimensión hasta colapsar sobre $v_0$ todo el símplice pues en cada paso colapsamos las caras que no lo contienen y además hay un número finito de caras, luego el proceso termina.
+\item Sea $\sigma=(v_0,\dots, v_n)$ el símplice de $L$. Entonces $\sigma$ es el único símplice principal. Entonces, colapsamos $\sigma$ junto con la cara $n-1$ dimensional $(v_1,\dots, v_n)$. Ahora, todas las caras $n-1$ dimensionales restantes son símplices principales. Así que en cada uno podemos realizar este mismo proceso. Podemos reiterar bajando de dimensión hasta colapsar sobre $v_0$ todo el símplice pues en cada paso colapsamos las caras que no lo contienen y además hay un número finito de caras, luego el proceso termina. Una alternativa es observar que un símplice es un cono sobre cualquiera de sus caras propias de dimensión máxima.
 
-Para la segunda parte, siguiendo el procedimiento del apartado anterior, basta colapsar $K$ sobre un vértice de $L$ y por último colapsar $L$ con el procedimiento de la primera parte de este apartado.
+Para la segunda parte, denotemos $L=\sigma$. Consideremos un símplice principal $\sigma'$ de $K$, entonces la unión simplicial $\sigma\sigma'$ es un símplice principal de $\sigma K$ (no existe ningún símplice de $\sigma K$ que contenga a $\sigma\sigma'$). Luego, dada una cara libre $\tau$ de $\sigma'$ en $K$, entonces $\sigma\tau$ resulta ser cara libre de $\sigma K$ ($\sigma\sigma'$ es el único símplice de $\sigma K$ que contiene a $\sigma\tau$). Colapsamos $\sigma K\searrow \sigma K-\{\sigma\tau,\sigma\sigma'\}$. Repetimos a continuación el proceso con todos los símplices principales de $K$ y continuamos el proceso con los símplices del borde de dichos símplices principales. Tras un número finito de pasos llegamos a un vértice.
+
 \item Un triángulo relleno con todas sus caras es claramente colapsable (empezando por el 2-símplice y una arista, y luego las aristas que quedan con sus vértices), pero el triángulo sin el relleno no es colapsable pues no tiene caras libres.
 
 \item Teniendo en cuenta que los símplices son contráctiles, podemos expresar el colapso de un símplice sobre un vértice como una contracción del símplice sobre dicho vértice. Así, el colapso de un complejo simplicial no será más que una sucesión finita de contracciones, que se pueden convertir en una sola contracción concatenando las homotopías particionando adecuadamente el intervalo $[0,1]$.
 
 El recríproco no es cierto, como muestra el Dunce Hat\footnote{\url{https://en.wikipedia.org/wiki/Dunce_hat_(topology)}}
+
+\begin{nota}
+La noción topológica equivalente al colapso es la \emph{homotopía simple}. La noción inversa es la de \emph{expansión}, es decir, un complejo simplicial $Y$ es expansión de $X$ si $Y$ se puede colapsar sobre $X$. Se dice que dos complejos simpliciales tienen el mismo tipo de homotopía simple si uno se puede transformar en el otro mediante una sucesión finita de colapsos y expansiones. 
+\end{nota}
 \end{enumerate}
 \end{solucion}
 
@@ -199,6 +204,12 @@ Si el árbol está formado solo por un punto, es trivial. Si está formado por u
 El segundo resultado será cierto suponiendo que $G$ es conexo, puesto que si tiene algún vértice en otra componente conexa, ningún árbol (conexo por definicíon) podrá contenerlo. En este caso, si un árbol no contuviera algún vértice de $G$, por ser $G$ conexo y el ejercicio \ref{ejer:1.5}, se puede añadir una arista conectando dicho vértice al ábrol sin que se formen ciclos, por lo tanto, hemos probado la implicación directa. Recíprocamente, si un árbol contiene todos los vértices de $G$, nos preguntamos si podemos añadir alguna arista más. De nuevo por el ejercicio \ref{ejer:1.5} tenemos que todos los vértices del árbol están conectados por un camino de aristas (necesariamente aristas de $G$). Además solo puede ser un camino, pues de haber dos esto significaría que habría un ciclo. Luego añadir otra arista no existente añadiría un ciclo.
 
 Consideremos un subgrafo que contenga todas los vértices. Entonces por la implicación anterior, es suficiente que sea un árbol para ser máxima. Como hemos comentado antes, podemos conectar todos los vértices entre sí mediante aristas de $G$. Si $G$ es un árbol, ya habríamos terminado. Si no, entonces contiene algún ciclo, luego podemos eliminar alguna arista de modo que ningún vértice se desconecte del grafo. Como a lo sumo hay una cantidad finita de ciclos, este algoritmo termina y por construcción da un árbol. 
+
+También podríamos utilizar los algoritmos clásicos de construcción de árbol maximal (en anchura o en profundidad), consistentes en empezar con un vértice y añadir en cada paso un vértice nuevo con la arista que lo una a uno de los vértices anteriores. Otra alternativa es comenzar también con un vértice y calcularle su estrella, y a cada nuevo vértice se le va calculando la estrella sin añadir aquellas aristas que formen ciclos.
+
+\begin{nota}
+Todo grafo retrae con deformación al wedge de circunferencias. Construyendo el árbol maximal y contando el número de aristas que no están incluidas en el árbol (cada una representa un ciclo) se puede saber sobre cuántas circunferencias retrae, y por tanto, se puede conocer su grupo fundamental y su homología.
+\end{nota}
 \end{solucion}
 
 \newpage
@@ -211,7 +222,8 @@ Probar que ambas estructuras son equivalentes, y caracterizar los colapsos en el
 \begin{solucion}
 La relación $\tau\leq\sigma$ es reflexiva pues todo símplice es cara de sí mismo tomando todo el conjunto de vértices que generan el símplice. Es antisimétrica puesto que si $\sigma\leq\tau$ y $\tau\leq\sigma$ entonces ninguno puede ser una cara propia del otro, puesto que el número de vértices que generen a $\tau$ y $\sigma$ debe ser el mismo, luego son iguales. Por último es transitiva, lo cual se deduce de que el orden por inclusión de los conjuntos de vértices que generan las caras es transitivo.
 
-¿Qué significa probar que ambas estructuras son equivalentes?
+Es claro que las estructuras son equivalentes, pues dado un diagrama podemos construir un complejo simplicial y dado un complejo simplicial podemos construir el complejo y además esta correspondencia es biyectiva.
+
 
 Que $\tau$ sea cara libre de $\sigma$ es lo mismo pero dicho con otras palabras que $\tau<\sigma$ y no existe $\eta$ con $\tau\eta$. Por tanto, en el diagrama de Hasse habrá una sola arista que salga de $\tau$ hacia arriba, la cual se dirigirá a $\sigma$. Por tanto, en este diagrama, el colapso elemental se representa mediante un colapso (en el sentido de teoría de grafos) de dicha arista. Para que los colapsos de aristas caractericen los colapsos elementales (y por tanto los colapsos) tenemos que exigir que solo se pueda colapsar una arista tal que el vértice inferior no esté conectado a ningún otro vértice. 
 \end{solucion}
