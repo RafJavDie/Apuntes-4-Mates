@@ -353,7 +353,17 @@ Sean $f,g \colon \CC^2 \to \CC^3$, $k \colon \CC^3 \to \CC^4$ y $l \colon \CC^1 
 \]
 \end{lemma}
 \begin{proof}
-Ejercicio.
+Si $f\simeq_h g$, entonces $f_n-g_n=\partial^3_{n+1}h_n+h_{n-1}\partial_n^2$. Utilizando que $l$ es morfismo de complejos de cadenas tenemos 
+\[
+f_nl_n-g_nl_n=\partial^3_{n+1}h_nl_n+h_{n-1}\partial_n^2l_n=\partial^3_{n+1}h_nl_n+h_{n-1}l_{n-1}\partial_n^2.
+\]
+Por tanto, $f\circ l\simeq_{h\circ l} g\circ l$.
+
+Similarmente, 
+\[
+k_nf_n-k_ng_n=k_n\partial^3_{n+1}h_n+k_nh_{n-1}\partial_n^2=\partial^4_{n+1}k_nh_n+k_nh_{n-1}\partial_n^2.
+\]
+Por tanto, $k\circ f\simeq_{k\circ h} k\circ g$. 
 \end{proof}
 
 \begin{coro}
