@@ -431,7 +431,7 @@ Consideramos las sucesiones exactas cortas:
 0 \arrow[r] & Z_{n+1}(\CC) \arrow[r,"i_n"] & C_{n+1} \arrow[r,"\partial_n"] & B_n(\CC) \arrow[r]&  0
 \end{tikzcd}
 \]
-Como una sucesión exacta corta de espacios vectoriales escinde, existe $\{t_n\}_{n \in \Z}$ tal que $t_n \colon B_{n-1}(\CC) \to C_n$ con $\partial_n \circ t_n = id_{B_{n-1}(\CC)}$.
+Como una sucesión exacta corta de espacios vectoriales escinde, existe $\{t_n\}_{n \in \Z}$ tal que $t_n \colon B_{n-1}(\CC) \to C_n$ con $\partial_n \circ t_n = Id_{B_{n-1}(\CC)}$.
 
 Se comprueba que $C_n = Z_n(\CC) + t_n(B_{n-1}(\CC))$ (no usamos el splitting lemma aquí).
 Entonces, como $Z_n(\CC) = B_n(\CC)$:
@@ -465,9 +465,25 @@ Sean $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ y $\CC' = \{(C_n',\partial_n')\}_{
 \end{enumerate}
 \end{prop}
 \begin{proof}\mbox{}
-Ya hemos probado anteriormente $\textsc{I}\Rightarrow \textsc{II}$ y $\textsc{II}\Rightarrow \textsc{IV}$, así que probamos $\textsc{II}\Rightarrow \textsc{III}$ y $\textsc{IV}\Rightarrow \textsc{I}$.
+\begin{enumerate}
+\item Sea $(x,y)\in D_n$, 
+\[
+\overline{\partial}_{n-1} \circ \overline{\partial}_n(x,y)=\overline{\partial}_{n-1}(-\partial_{n-1}(x), \partial'_n(y) + f_{n-1}(x))=
+\]
+\[
+(\partial_{n-2}\partial_{n-1}(x),\partial_{n-1}'( \partial'_n(y) + f_{n-1}(x))+f_{n-2}(-\partial_{n-1}(x)))=
+\]
+\[
+(0,\partial_{n-1}'f_{n-1}(x)-f_{n-2}\partial_{n-1}(x))=(0,0).
+\]
+\item Ya hemos probado anteriormente $\textsc{I}\Rightarrow \textsc{II}$ y $\textsc{II}\Rightarrow \textsc{IV}$, así que probamos $\textsc{II}\Rightarrow \textsc{III}$ y $\textsc{IV}\Rightarrow \textsc{I}$.
+\end{enumerate}
 \begin{itemize}
-\item[($\textsc{II}\Rightarrow \textsc{III}$)]
+\item[($\textsc{II}\Rightarrow \textsc{III}$)] Sea $[(z_1,z_2)]\in Z_n(\CC_f)$. Por definción, $\overline{\partial}_n(z_1,z_2)=(-\partial_{n-1}(z_1),\partial_n'(z_2)+f_{n-1}(z_1))=(0,0)$. De la primera componente obtenemos que $z_1\in Z_{n-1}(\CC)$. De la segunda, tomando clases de homología
+\[
+[0]=[-\partial_n'(z_2)]=[f_{n-1}(z_1)]=f_*[z_1].
+\]
+Como $f_*$ es isomorfismo, esto implica que $[z_1]=[0]$. Así que existe $c_1\in C_n$ tal que $-\partial_n(c_1)=z_1$. 
 \item[($\textsc{IV}\Rightarrow \textsc{I}$)]
 Sabemos que $Id_{\CC_f} \simeq_{\overline{h}} 0$. Proponemos la siguiente inversa homotópica a $f$:
 \[ g \colon \CC' \to \CC \text{ dada por }g_n = p_1^{n+1} \circ \overline{h}_n \circ i_2^n\]
@@ -483,6 +499,6 @@ D_n \arrow[ur,"p_1^n"] \arrow[dr,"p_2^n"]\\
 Para $g \circ f \simeq_h Id_{\CC}$, usaremos $h_n = -p_1^{n+2} \circ \overline{h}_{n+1} \circ i_1^n$.
 
 
-Para $f \circ g \simeq_{h'} id_{\CC'}$, usa $h_n' = p_2^{n+1} \circ \overline{h}_n \circ i_2^n$.
+Para $f \circ g \simeq_{h'} id_{\CC'}$, usaremos $h_n' = p_2^{n+1} \circ \overline{h}_n \circ i_2^n$.
 \end{proof}
 \end{document}
