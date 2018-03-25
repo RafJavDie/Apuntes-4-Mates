@@ -450,7 +450,7 @@ Luego $Id_{\CC} \simeq_h 0$.
 \end{proof}
 
 \begin{prop}
-Sean $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ y $\CC' = \{(C_n',\partial_n')\}_{n \in \Z}$ complejos de cadenas junto con un morfismo $f \colon \CC \to \CC'$ de complejos de cadenas. En estas condiciones definimos un nuevo complejo de cadenas $\CC_f = \{D_n,\overline{\partial}_n)\}_{n \in \Z}$ dado por:
+Sean $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ y $\CC' = \{(C_n',\partial_n')\}_{n \in \Z}$ complejos de cadenas junto con un morfismo $f \colon \CC \to \CC'$ de complejos de cadenas. En estas condiciones definimos un nuevo complejo de cadenas $\CC_f = \{(D_n,\overline{\partial}_n)\}_{n \in \Z}$ dado por:
 \[ D_n = C_{n-1} \oplus C_n' \]
 \[ \overline{\partial}_n (x,y) = (-\partial_{n-1}(x), \partial'_n(y) + f_{n-1}(x)) \]
 \begin{enumerate}
@@ -470,8 +470,8 @@ Ya hemos probado anteriormente $\textsc{I}\Rightarrow \textsc{II}$ y $\textsc{II
 \item[($\textsc{II}\Rightarrow \textsc{III}$)]
 \item[($\textsc{IV}\Rightarrow \textsc{I}$)]
 Sabemos que $Id_{\CC_f} \simeq_{\overline{h}} 0$. Proponemos la siguiente inversa homotópica a $f$:
-\[ g \colon \CC' \to \CC \text{ dada por }g_n = p_1^{n+1} \circ \overline{h}_n \circ i_n^2\]
-donde $p_1^{n+1}$ e $i_n^2$ provienen del diagrama de proyeccione e inclusiones siguiente:
+\[ g \colon \CC' \to \CC \text{ dada por }g_n = p_1^{n+1} \circ \overline{h}_n \circ i_2^n\]
+donde $p_1^{n+1}$ e $i_2^n$ provienen del diagrama de proyeccione e inclusiones siguiente:
 \[
 \begin{tikzcd}
 & C_{n-1} \arrow[r,"i_1^n"] & D_n\\
@@ -480,6 +480,9 @@ D_n \arrow[ur,"p_1^n"] \arrow[dr,"p_2^n"]\\
 \end{tikzcd}
 \]
 \end{itemize}
-Queda como ejercicio el resto de la demostración. Para $g \circ f \simeq_h id_{\CC}$, usar $h_n = -p_1^{n+2} \circ \overline{h}_{n+1} \circ i_1^n$. Para $f \circ g \simeq_{h'} id_{\CC'}$, usa $h_n' = p_2^{n+1} \circ \overline{h}_n \circ i_2^n$.
+Para $g \circ f \simeq_h Id_{\CC}$, usaremos $h_n = -p_1^{n+2} \circ \overline{h}_{n+1} \circ i_1^n$.
+
+
+Para $f \circ g \simeq_{h'} id_{\CC'}$, usa $h_n' = p_2^{n+1} \circ \overline{h}_n \circ i_2^n$.
 \end{proof}
 \end{document}
