@@ -1,7 +1,8 @@
 \documentclass[HS.tex]{subfiles}
 \begin{document}
-\chapter{Homología simplicial}
-\section{Álgebra homológica}
+
+\chapter{Álgebra homológica}
+\section{Exactitud}
 Nuestros objetos serán $\R$-espacio vectoriales de dimensión finita (o $R$-módulos con $R$ dominio de ideales principales).
 
 \begin{defi}
@@ -72,6 +73,8 @@ Luego $m_3 = θ_2(m_2)=θ_2(θ_1(m_1))=0$ por exactitud y $ψ_3$ es inyectiva.
 Ahora la sobreyectividad.
 Sea $n_3\in N_3$. Llamamos $n_4=\varphi_3(n_3)$. Como $\psi_4$ es sobreyectiva, existe $m_4$ tal que $\psi_4(m_4)=n_4$. Ahora, por la conmutatividad del diagrama, $\psi_5(\theta_4(m_4))=\varphi_4(\psi_4(m_4))=\varphi_4(n_4)=\varphi_4(\varphi_3(m_3))=0$, por exactitud. Luego, por inyectividad de $\psi_5$, tenemos que $\theta(m_4)=0$, que por exactitud significa que existe $m_3\in M_3$ tal que $m_4=\theta(m_3)$. Por conmutatividad del diagrama, tenemos que $\varphi_3(n_3)=\psi_4(\theta_3(m_3))=\varphi_3(\psi_3(m_3))$, luego $n_3-\psi_3(m_3)\in\ker{\varphi_3}$. Por exactitud, esto es equivalente a que exista $n_2\in N_2$ tal que $\varphi_2(n_2)=n_3-\psi_3(m_3)$. Como $\psi_2$, es sobreyectiva, existe $m_2\in M_2$ tal que $n_2=\psi_2(m_2)$. Por conmutatividad, $n_3-\psi(m_3)=\varphi_2(\psi_2(m_2))=\psi_3(\theta_2(m_2))$, luego $n_3=\psi(m_3+\theta_2(m_2))$, con lo que hemos encontrado su preimagen. \QED
 \end{dem}
+
+\section{Complejos de cadenas y su homología}
 
 \begin{defi}
 Un complejo de cadenas $\mathcal{C}$ es un diagrama del tipo siguiente:
@@ -260,18 +263,18 @@ Esta sucesión induce una sucesión exacta larga en homología llamada \emph{suc
 \end{observaciones}
 
 \begin{defi}
-Un complejo de $\mathcal{C}=\{(C_n,\partial_n)\}_{n\in\Z}$ se dice \emph{positivo} si $C_n=0$ para todo $n>0$. En este cas, diremos que una aplicación lineal sobreyectiva $\varepsilon: C_0\to\mathbb{F}$ cumpliendo $\varepsilon\partial_1=0$ se dirá que es un \emph{aumento} de $\mathcal{C}$.
+Un complejo de $\mathcal{C}=\{(C_n,\partial_n)\}_{n\in\Z}$ se dice \emph{positivo} si $C_n=0$ para todo $n>0$. En este caso, diremos que una aplicación lineal sobreyectiva $\varepsilon: C_0\to\mathbb{F}$ cumpliendo $\varepsilon\partial_1=0$ se dirá que es un \emph{aumento} de $\mathcal{C}$.
 \end{defi}
 
 Si tenemos un complejo de cadenas $\mathcal{C}$
 \[
 C_n\overset{\partial}{\to} C_{n-1}\to\cdots C_1\overset{\partial_1}{\to} C_0\to 0
 \]
-podemos aumentarlo a un complejo $\tilde{\mathbb{C}}$
+podemos aumentarlo a un complejo $\tilde{\mathcal{C}}$
 \[
 \tilde{C}_n\overset{\partial}{\to} \tilde{C}_{n-1}\to\cdots \tilde{C}_1\overset{\partial_1}{\to} \tilde{C}_0\overset{\varepsilon}{\to}\tilde{C}_{-1}\to 0.
 \]
-Donde $\tilde{C}_n=C_n$ para $n\geq 0$ y $\tilde{C}_{-1}=\mathbb{F}$. A los espacios vectoriales $H_n(\tilde{\mathbb{C}})$ también los denotaremos por $\tilde{H}_n( \mathcal{C})$ y los llamaremo espacios vectoriales de homología \emph{reducida} de $\mathcal{C}$. 
+Donde $\tilde{C}_n=C_n$ para $n\geq 0$ y $\tilde{C}_{-1}=\mathbb{F}$. A los espacios vectoriales $H_n(\tilde{\mathcal{C}})$ también los denotaremos por $\tilde{H}_n( \mathcal{C})$ y los llamaremo espacios vectoriales de homología \emph{reducida} de $\mathcal{C}$. 
 
 Obsérvese que si $n\geq 1$, $\tilde{H}_n( \mathcal{C})=H_n( \mathcal{C})$. Además, $\tilde{H}_{-1}(\mathcal{C})=0$ y $\tilde{H}_0(\mathcal{C})\cong H_0(\mathcal{C})\oplus\mathbb{F}$. Vamos a justificar la última afirmación. Por definición, $\tilde{H}_0(\mathcal{C})=\ker{\varepsilon}/\Ima{\partial_1}$ y $H_0(\mathcal{C})=C_0/\Ima{\partial_1}$. Observamos que $\tilde{H}_0(\mathcal{C})\subseteq H_0(\mathcal{C})$. Así que podemos construir una sucesión exacta
 \[
@@ -316,6 +319,8 @@ que en dimensiones bajas se escribe como
 \end{tikzcd}
 \]
 
+\section{Homotopía de complejos de cadenas}
+
 \begin{defi}
 Dos morfismos de complejos de cadenas $f,g:\CC^1\to\CC^2$ se dicen \emph{homotópicos} y se denota $f\simeq g$ si existe una familia de homomorfismos $h=\{h_n:C^1_n\to C^2_{n+1}\}_{n\in\Z}$ cumpliendo $f_n-g_n=\partial^2_{n+1}h_n+h_{n-1}\partial^1_n$ para todo $n\in\Z$.
 \end{defi}
@@ -323,8 +328,19 @@ Dos morfismos de complejos de cadenas $f,g:\CC^1\to\CC^2$ se dicen \emph{homotó
 \begin{lemma}
 La relación ``ser homópicos'' entre morfismos de complejos de cadenas es es una relación de equivalencia.
 \end{lemma}
-\begin{proof}
-Ejercicio.
+\begin{proof}\
+\begin{enumerate}
+\item Reflexiva: basta tomar como $h$ el morfismo 0 de complejos de cadenas.
+\item Simétrica: dado el morfismo $h$ que relaciona $f\simeq g$, es claro que el morfismo $-h$ relaciona $g\simeq f$.
+\item Transitiva: supongamos que $f\simeq g$ mediante $h$ y $g\simeq t$ mediante $h'$, entonces tenemos
+\[
+f_n-t_n=(f_n-g_n)+(g_n-t_n)=(\partial_{n+1}^2 h_n+h_{n-1}\partial_n^1)+(\partial_{n+1}^2 h_n'+h_{n-1}'\partial_n^1)=
+\]
+\[
+\partial_{n+1}^2(h_n+h_n')+(h_{n-1}+h_{n-1}')\partial_n^1.
+\]
+Por tanto, el morfismo que relaciona $f$ con $t$ es $h+h'$. 
+\end{enumerate}
 \end{proof}
 
 \begin{lemma}
@@ -350,35 +366,35 @@ Por transitividad, $k \circ f \simeq t \circ g$.
 \end{proof}
 
 \begin{defi}
-Un morfismo $f \colon \CC^1 \to \CC^2$ de complejos de cadenas se dice \textbf{equivalencia de homotopía} si $\exists g \colon \CC^2 \to \CC^2$ morfismo de complejos de cadenas tal que $f \circ g \simeq id_{\CC^2}$ y $g \circ f \simeq id_{\CC^1}$.
+Un morfismo $f \colon \CC^1 \to \CC^2$ de complejos de cadenas se dice \emph{equivalencia de homotopía} si $\exists g \colon \CC^2 \to \CC^2$ morfismo de complejos de cadenas tal que $f \circ g \simeq Id_{\CC^2}$ y $g \circ f \simeq Id_{\CC^1}$.
 
-Diremos que $\CC^1$ y $\CC^2$ son homotópicamente equivalentes si existe una equivalencia de homotopía entre ellos.
+Diremos que $\CC^1$ y $\CC^2$ son \emph{homotópicamente equivalentes} si existe una equivalencia de homotopía entre ellos.
 \end{defi}
 
-Es decir, a los isomorfismos de complejos de cadenas se llaman ``equivalencias de homotopía''.
 Hay que tener en cuenta que la inversa homótopica $g$ no tiene por qué ser única, por eso no usaremos la notación $f^{-1}$.
 
-\begin{prop}\mbox{}
+\begin{prop}
+Se verifican:
 \begin{enumerate}
-\item Si $f g \colon \CC^1 \to \CC^2$ son homotópicos, entonces $f_* = g_* \colon H_n(\CC^1) \to H_n(\CC^2)$.
-\item Como consecuencia, si $f \colon \CC^1 \to \CC^2$ es equivalencia de homotopía, entonces $f_* \colon H_n(\CC^1) \to H_n(\CC^2)$es un isomorfismos de espacios vectoriales para todo $n \in \Z$.
+\item Si $f, g \colon \CC^1 \to \CC^2$ son homotópicos, entonces $f_* = g_* \colon H_n(\CC^1) \to H_n(\CC^2)$.
+\item Como consecuencia, si $f \colon \CC^1 \to \CC^2$ es equivalencia de homotopía, entonces $f_* \colon H_n(\CC^1) \to H_n(\CC^2)$ es un isomorfismo de espacios vectoriales para todo $n \in \Z$.
 \end{enumerate}
 \end{prop}
-\begin{proof}
+\begin{proof}\
 \begin{enumerate}
 \item Sea $z \in Z_n(\CC^1)$:
-\[ f_*([z]) - g_*([z]) = [f_n(z)]-[g_n(z)] = [\partial_{n+1}^2(h_n(z)) + h_{n-1}(\partial_n^1(z))] \]
+\[ f_*([z]) - g_*([z]) = [f_n(z)]-[g_n(z)]=[f_n(z)-g_n(z)] = [\partial_{n+1}^2(h_n(z)) + h_{n-1}(\partial_n^1(z))]. \]
 Como $z$ es un ciclo, $\partial_n^1(z)=0$. Análogamente $h_n(z)$ es también un ciclo, luego:
 \[ [\partial_{n+1}^2(h_n(z)) + h_{n-1}(\partial_n^1(z))] = [0] \]
 Entonces $f_* = g_*$.
 \item Como $f$ es equivalencia de homotopía, existe $g$ inversa homotópica de $f$. Entonces:
-\[ (f \circ g) \simeq id_{\CC^2} \Rightarrow (f \circ g)_*= (id_{\CC^2})_* \Rightarrow f_* \circ g_* = id_{H_n(\CC^2)}\]
-\[ (g \circ f) \simeq id_{\CC^1} \Rightarrow (g \circ f)_*= (id_{\CC^1})_* \Rightarrow g_* \circ f_* = id_{H_n(\CC^1)}\]
+\[ (f \circ g) \simeq id_{\CC^2} \Rightarrow (f \circ g)_*= (id_{\CC^2})_* \Rightarrow f_* \circ g_* = Id_{H_n(\CC^2)}\]
+\[ (g \circ f) \simeq id_{\CC^1} \Rightarrow (g \circ f)_*= (id_{\CC^1})_* \Rightarrow g_* \circ f_* = Id_{H_n(\CC^1)}\]
 \end{enumerate}
 \end{proof}
 
 \begin{defi}
-Un complejo de cadenas $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ se dice \textbf{contráctil} si $id_{\CC} \simeq 0$.
+Un complejo de cadenas $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ se dice \emph{contráctil} si $Id_{\CC} \simeq 0$.
 \end{defi}
 
 \begin{prop}\mbox{}
@@ -387,21 +403,22 @@ Un complejo de cadenas $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ se dice \textbf{
 \item Si $\CC = \{(C_n,\partial_n)\}_{n \in \Z}$ es un complejo de cadenas formado por espacios vectoriales, entonces también se da la implicación contraria.
 \end{enumerate}
 \end{prop}
-\begin{proof}
+\begin{proof}\
 \begin{enumerate}
-\item Existe $h \in \{h_n \colon C_n \to \C_{n+1}\}_{n \in \Z}$ cumpliendo 
-\[ id_{C_n}-0 = \partial_{n+1} \circ h_n + h_{n-1} \circ \partial_n \]
+\item Existe $h \in \{h_n \colon C_n \to C_{n+1}\}_{n \in \Z}$ cumpliendo 
+\[ Id_{C_n}-0 = \partial_{n+1} \circ h_n + h_{n-1} \circ \partial_n \]
 Sea $z \in Z_n(\CC)$, aplicando la fórmula anterior a $z$:
-\[ (id_{C_n}-0)(z) = \partial_{n+1}(h_n(z)) + h_{n-1}(\partial_n(z)) \]
-\[ z = \partial_{n+1}(h_n(z)) \in B_n(\CC) \]
-Luego $[z] = [\partial_{n+1}(h_n(z))] = [0] \in H_n(\CC)$.
+\[ z=(Id_{C_n}-0)(z) = \partial_{n+1}(h_n(z)) + h_{n-1}(\partial_n(z)), \]
+luego
+\[ z = \partial_{n+1}(h_n(z)) \in B_n(\CC). \]
+Por lo que $[z] = [\partial_{n+1}(h_n(z))] = [0] \in H_n(\CC)$.
 
 \item Sabemos $Z_n(\CC) = B_n(\CC)$ para todo $n \in \Z$.
 Consideramos las sucesiones exactas cortas:
 \[
 \begin{tikzcd}
-0 \arrow[r] & Z_n(\CC) \arrow[r,"i_n"] & C_n \arrow[r,"\partial_n"] & B_{n-1}(\CC) \to 0\\
-0 \arrow[r] & Z_{n+1}(\CC) \arrow[r,"i_n"] & C_{n+1} \arrow[r,"\partial_n"] & B_n(\CC) \to 0
+0 \arrow[r] & Z_n(\CC) \arrow[r,"i_n"] & C_n \arrow[r,"\partial_n"] & B_{n-1}(\CC)\arrow[r] &  0\\
+0 \arrow[r] & Z_{n+1}(\CC) \arrow[r,"i_n"] & C_{n+1} \arrow[r,"\partial_n"] & B_n(\CC) \arrow[r]&  0
 \end{tikzcd}
 \]
 Como una sucesión exacta corta de espacios vectoriales escinde, existe $\{t_n\}_{n \in \Z}$ tal que $t_n \colon B_{n-1}(\CC) \to C_n$ con $\partial_n \circ t_n = id_{B_{n-1}(\CC)}$.
@@ -418,18 +435,18 @@ Dado $x \in C_n$, $x = b_n + t_n(b_{n-1})$ con $b_n \in B_n(\CC)$ y $b_{n-1} \in
 & h_{n-1}(\partial_n(x)) + \partial_{n+1}(h_n(x)) = h_{n-1}(\partial_n(b_n)+\partial_n(t_n(b_{n-1}))) + \partial_{n+1}(h_n(b_n)+h_n(t_n(b_{n-1}))) \\
 & = h_{n-1}(b_{n-1}) + \partial_{n+1}(h_n(b_n)) = t_n(b_{n-1}) + \partial_{n+1}(t_{n+1}(b_n)) = t_n(b_{n-1})+b_n = x
 \end{align*}
-Luego $id_{\CC} \simeq_h 0$.
+Luego $Id_{\CC} \simeq_h 0$.
 \end{enumerate}
 \end{proof}
 
 \begin{prop}
-Sean $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ y $\CC' = \{(C_n',\partial_n')\}_{n \in \Z}$ complejos de cadenas junto con un morfismo $f \colon \CC \to \CC'$ de complejos de cadenas. En estas condicioens definimos un nuevo complejo de cadenas $\CC_f = \{D_n,\overline{\partial}_n)\}_{n \in \Z}$ dado por:
+Sean $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ y $\CC' = \{(C_n',\partial_n')\}_{n \in \Z}$ complejos de cadenas junto con un morfismo $f \colon \CC \to \CC'$ de complejos de cadenas. En estas condiciones definimos un nuevo complejo de cadenas $\CC_f = \{D_n,\overline{\partial}_n)\}_{n \in \Z}$ dado por:
 \[ D_n = C_{n-1} \oplus C_n' \]
 \[ \overline{\partial}_n (x,y) = (-\partial_{n-1}(x), \partial'_n(y) + f_{n-1}(x)) \]
 \begin{enumerate}
 \item Comprobar $\overline{\partial}_{n-1} \circ \overline{\partial}_n = 0$ para todo $n \in \Z$.
 \item Si $C_n$ y $C_n'$ son espacios vectoriales, entonces son equivalentes:
-\begin{enumerate}[(i)]
+\begin{enumerate}[i]
 \item $f$ es equivalencia de homotopía.
 \item $f_* \colon H_n(\CC) \to H_n(\CC')$ isomorfismo.
 \item $H_n(\CC_f) = 0$.
@@ -438,9 +455,11 @@ Sean $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ y $\CC' = \{(C_n',\partial_n')\}_{
 \end{enumerate}
 \end{prop}
 \begin{proof}\mbox{}
+Ya hemos probado anteriormente $\textsc{I}\Rightarrow \textsc{II}$ y $\textsc{II}\Rightarrow \textsc{IV}$, así que probamos $\textsc{II}\Rightarrow \textsc{III}$ y $\textsc{IV}\Rightarrow \textsc{I}$.
 \begin{itemize}
-\item[((iv)$\Rightarrow$(i))]
-Sabemos que $id_{\CC_f} \simeq_{\overline{h}} 0$. Proponemos la siguiente inversa homotópica a $f$:
+\item[($\textsc{II}\Rightarrow \textsc{III}$)]
+\item[($\textsc{IV}\Rightarrow \textsc{I}$)]
+Sabemos que $Id_{\CC_f} \simeq_{\overline{h}} 0$. Proponemos la siguiente inversa homotópica a $f$:
 \[ g \colon \CC' \to \CC \text{ dada por }g_n = p_1^{n+1} \circ \overline{h}_n \circ i_n^2\]
 donde $p_1^{n+1}$ e $i_n^2$ provienen del diagrama de proyeccione e inclusiones siguiente:
 \[
