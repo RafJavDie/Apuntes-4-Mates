@@ -487,7 +487,7 @@ Como $f_*$ es isomorfismo, esto implica que $[z_1]=[0]$. Así que existe $c_1\in
 \item[($\textsc{IV}\Rightarrow \textsc{I}$)]
 Sabemos que $Id_{\CC_f} \simeq_{\overline{h}} 0$. Proponemos la siguiente inversa homotópica a $f$:
 \[ g \colon \CC' \to \CC \text{ dada por }g_n = p_1^{n+1} \circ \overline{h}_n \circ i_2^n\]
-donde $p_1^{n+1}$ e $i_2^n$ provienen del diagrama de proyeccione e inclusiones siguiente:
+donde $p_1^{n+1}$ e $i_2^n$ provienen del diagrama de proyecciones e inclusiones siguiente:
 \[
 \begin{tikzcd}
 & C_{n-1} \arrow[r,"i_1^n"] & D_n\\
@@ -496,9 +496,38 @@ D_n \arrow[ur,"p_1^n"] \arrow[dr,"p_2^n"]\\
 \end{tikzcd}
 \]
 \end{itemize}
-Para $g \circ f \simeq_h Id_{\CC}$, usaremos $h_n = -p_1^{n+2} \circ \overline{h}_{n+1} \circ i_1^n$.
+Para $g \circ f \simeq_h Id_{\CC}$, usaremos $h_n = -p_1^{n+2} \circ \overline{h}_{n+1} \circ i_1^{n+1}$. De la hipótesis tenemos que $Id_{\CC_f}^n=\overline{\partial}_{n+1}\overline{h}_n+\overline{h}_{n-1}\overline{\partial}_n$. Por otro lado, por la definición de $g$, tenemos
+\begin{equation}\label{compo}
+g_n\circ f_n=p_1^{n+1}\circ \overline{h}_n\circ i_2^n\circ f_n=p_1^{n+1}\circ\overline{h}_n(0,f_n)=(\overline{h}_n)_1(0,f_n),
+\end{equation}
+donde $(\overline{h}_n)_1$ denota la primera componente. A continuación, vamos a ver que $\partial_{n+1}h_n+h_{n-1}\partial_n+g_n\circ f_n=Id_{\CC}^n$. Así pues, sea $x\in C_n$:
+\begin{gather*}
+(\partial_{n+1}h_n+h_{n-1}\partial_n)(x)=-\partial_{n+1}(p_1^{n+2}\circ\overline{h}_{n+1}\circ i_1^{n+1})(x)+p_1^{n+1}\circ\overline{h}_n\circ i_1^n\circ (-\partial_n)(x)=\\
+-\partial_{n+1}(p_1^{n+2}\circ \overline{h}_{n+1}(x,0))+p_1^{n+1}\circ \overline{h}_n(-\partial_n(x),0)=\\
+-\partial_{n+1}((\overline{h}_{n+1})_1(x,0))+(\overline{h}_n)_1(-\partial_n(x),0).
+\end{gather*} 
+Sumamos ahora lo obtenido en \ref{compo}:
+\begin{gather*}
+(\partial_{n+1}h_n+h_{n-1}\partial_n)(x)+g_n\circ f_n(x)=-\partial_{n+1}((\overline{h}_{n+1})_1(x,0))+(\overline{h}_n)_1(-\partial_n(x),0)+(\overline{h}_n)_1(0,f_n(x))=\\
+-\partial_{n+1}((\overline{h}_{n+1})_1(x,0))+(\overline{h}_n)_1(-\partial_n(x),f_n(x))=\\
+(\overline{\partial}_{n+2}\overline{h}_{n+1})_1(x,0)+(\overline{h}_n)_1(\overline{\partial}_{n+1}(x,0))=(Id_{\CC_f}^{n+1})_1(x,0)=Id_{\CC}^n(x).
+\end{gather*}
 
 
-Para $f \circ g \simeq_{h'} id_{\CC'}$, usaremos $h_n' = p_2^{n+1} \circ \overline{h}_n \circ i_2^n$.
+Para $f \circ g \simeq_{h'} id_{\CC'}$, usaremos $h_n' = p_2^{n+1} \circ \overline{h}_n \circ i_2^n$ y operaremos de forma similar. Tenemos, para $y\in C_n'$,
+\begin{equation}\label{compo2}
+f_n\circ g_n(y)=f_n(p_1^{n+1}\circ \overline{h}_n\circ i_2^n(y))=f_n(p_1^{n+1}\circ \overline{h}_n(0,y))=f_n((\overline{h}_n)_2(0,y))
+\end{equation}
+A continuación,
+\begin{gather*}
+(\partial_{n+1}'h_n'+h_{n-1}'\partial_n')(y)=\partial_{n+1}'(p_2^{n+1}\circ\overline{h}_n\circ i_2^n(y))+p_2^{n+1}\circ\overline{h}_{n-1}\circ i_2^n(\partial_n'(y))=\\
+\partial_{n+1}'(p_2^{n+1}\circ\overline{h}_n(0,y))+p_2^{n+1}\circ\overline{h}_{n-1}(0,\partial_n'(y))=\partial_{n+1}'(\overline{h}_n)_2(0,y)+(\overline{h}_{n-1})_2(0,\partial_n'(y)).
+\end{gather*}
+Por último sumamos lo obtenido en \ref{compo2}:
+\begin{gather*}
+(\partial_{n+1}'h_n'+h_{n-1}'\partial_n')(y)+f_n\circ g_n(y)=\partial_{n+1}'(\overline{h}_n)_2(0,y)+(\overline{h}_{n-1})_2(0,\partial_n'(y))+f_n((\overline{h}_n)_2(0,y))=\\
+(\overline{\partial}_{n+1}\overline{h}_n)_2(0,y)+(\overline{h}_{n-1}\overline{\partial}_n)(0,y)=(Id_{\CC_f}^n)_2(0,y)=Id_{\CC'}(y).
+\end{gather*}
+
 \end{proof}
 \end{document}
