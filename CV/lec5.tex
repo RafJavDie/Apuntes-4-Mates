@@ -45,7 +45,7 @@ Una aplicación continua $f:X\to Y$ se dice que es \textbf{equivalencia de homot
 Si $X$ es homotópicamente equivalente al espacio topológico $\{\star\}$ se dice que es \textbf{contráctil}. Esto es equivalente a que $Id_X$ es homotópica a una aplicación constante.
 \end{defi}
 
-\begin{ej}
+\begin{ej}\label{segmento}
 Sean $Y⊂\R^m$ y $f,g:X→Y$ aplicaciones continuas tales que $∀x∈X$, el segmento $[f(x),g(x)]⊂Y$, entonces $f≃g$. Para probarlo, basta tomar la homotopía $H(x,t)=(1-t)f(x)+tg(x)$. En particular, si $Y$ es estrellado, entonces $Y$ es contráctil.
 \end{ej}
 
@@ -53,11 +53,18 @@ Sean $Y⊂\R^m$ y $f,g:X→Y$ aplicaciones continuas tales que $∀x∈X$, el se
 Sean $U,V\subseteq\R^n$ abiertos euclídeos, entonces:
 \begin{enumerate}
 \item $\forall h:U\to V$ continua, existe una aplicación $C^\infty$-diferenciable homotópica a $h$.
-\item Si $f,g:U\to V$ son aplicaciones diferenciables $f\simeq g$, entonces existe $H:U\times\mathbb R\to V$ diferenciable tal que $H(x,0)=f(x)$, $H(x,1)=g(x)$ para todo $x\in U$.
+\item Si $f,g:U\to V$ son aplicaciones diferenciables con $f\simeq g$, entonces existe $H:U\times\mathbb R\to V$ diferenciable tal que $H(x,0)=f(x)$, $H(x,1)=g(x)$ para todo $x\in U$.
 \end{enumerate}
 \end{lemma}
-\begin{proof}
-\ref{te} (el teorema donde aparece la descomposición de la forma diferencial, que tengo que añadirle la demostración)
+\begin{proof}\
+\begin{enumerate}
+\item Usamos el lema A9 libro para aproximar $h$ mediante una función diferenciable $f:U\to V$. Podemos elegir $f$ de modo que $V$ contenga el segmento de $h(x)$ a $f(x)$ para todo $x\in U$. Entonces $h\simeq f$ por el ejemplo \ref{segmento}. 
+\item Sea $G$ una homotopía de $f$ a $g$. Usamos una función continua $\psi:\R\to [0,1]$ con $\psi(t)=0$ para $t\leq\frac{1}{3}$ y $psi(t)=1$ para $t\geq\frac{2}{3}$ para construir 
+\[
+H:U\times \R\to V; H(x,t)=G(x,\psi(t)).
+\]
+Como $H(x,t)=f$ para $t\leq\frac{1}{3}$ y $H(x,t)=g$ para $t\geq\frac{2}{3}$, $H$ es diferenciable en $U\times (-\infty,\frac{1}{3})\cup U\times (\frac{2}{3},+\infty)$. El lema A9 nos permite aproximar $H$ mediante una función diferenciable $F:U\times\R\to V$ tal que $F$ y $H$ tienen la misma restricción en $U\times\{0,1\}$. Tenemos entonces que $F(x,0)=H(x,0)=f$ y $F(x,1)=H(x,1)=g$.
+\end{enumerate}
 \end{proof}
 
 \begin{teorema}
@@ -66,6 +73,32 @@ $$f^*,g^*:Ω^*(V)→Ω^*(U)$$
 son homotópicas como complejos de cadenas.
 \end{teorema}
 \begin{dem}
+Recordemos de la demostración del teorema \ref{poincare} que toda $p$-forma $w$ en $U\times\R$ se puede escribir como 
+\[
+w=\sum_If_I(x,t)dx_I+\sum_Jg_J(x,t)dt\land x_J.
+\]
+Si $\phi:U\to U\times\R$ es la inclusión $\phi(x)=\phi_0(x)=(x,0)$, entonces
+\[
+\phi_0^*(w)=\sum_If_I(x,0)d\phi_I=\sum_I f_I(x,0)dx_I,
+\]
+pues $\phi^*(dt\land dx_J)=0$ al ser la última componte de $\phi$ (la correspondiente a $t$) constante. Análogamente, para $\phi_1(x)=(x,1)$ se tiene que
+\[
+\phi_1^*(w)=\sum_I f_I(x,1)dx_I.
+\]
+En la prueba del teorema \ref{poincare} construimos $\tilde{S}_p:\Omega^p(U\times\R)\to \Omega^{p-1}(U)$ tal que 
+\begin{equation}\label{eq1}
+(d\tilde{S}_{p}+\tilde{p+1}d)(w)=\phi_1^*(w)-\phi_0^*(w).
+\end{equation}
+Consideremos la composición $U\overset{\phi_{\nu}}{\to}U\times\R\overset{F}{\to}V$, donde $F$ es una homotopía diferenciable entre $f$ y $g$. Entonces tenemos que $F\circ\phi_0=f$ y $F\circ \phi_1=g$. Definimos $S_p:\Omega^p(V)\to \Omega^{p-1}(U)$ como $S_p=\tilde{S}_p\circ F^*$ y afirmamos que
+\[
+dS_p+S_{p+1}d=g^*-f^*.
+\]
+Esto se sigue de \ref{eq1} aplicado a $F^*(w)$, pues 
+\begin{align*}
+d\tilde{S}_{p}(F^*(w))+\tilde{p+1}d(F^*(w))&=\phi_1^*F^*(w)-\phi_0^*F^*(w)\\
+&=(F\circ\phi_1)^*(w)-(F\circ\phi_0)^*(w)=g^*(w)-f^*(w).
+\end{align*}
+Aquí hemos usado que $\tilde{S}_{p+1}dF^*=\tilde{S}_{p+1}F^*d=S_{p+1}d$ por ser $F^*$ un morfismo de complejos de cadenas.
 \QED
 \end{dem}
 
