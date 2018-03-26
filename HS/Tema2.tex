@@ -483,7 +483,13 @@ Sean $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ y $\CC' = \{(C_n',\partial_n')\}_{
 \[
 [0]=[-\partial_n'(z_2)]=[f_{n-1}(z_1)]=f_*[z_1].
 \]
-Como $f_*$ es isomorfismo, esto implica que $[z_1]=[0]$. Así que existe $c_1\in C_n$ tal que $-\partial_n(c_1)=z_1$. 
+Como $f_*$ es isomorfismo, esto implica que $[z_1]=[0]$. Así que existe $c_1\in C_n$ tal que $-\partial_n(c_1)=z_1$. Sea ahora $a'=z_2-f_n(c_1)$. Se tiene que $$\partial_n'(a')=\partial_n'(z_2)-\partial_n'(f_n(c_1))=\partial_n'(z_2)-f_{n-1}(\partial_n(c_1))=\partial_n'(z_2)+f_{n-1}(z_1)=0.$$
+Es decir, que $a'$ define un ciclo en $C_n'$. Como $f_*$ es sobreyectiva, existe algún ciclo $a\in Z_n(\CC)$ y algún $c_2\in C_{n+1}'$ tal que
+\[
+f_n(a)+\partial_{n+1}'(c_2)=z_2-f_n(c_1).
+\]
+Por último, nótese que $z_1=-\partial_n(c_1+a)$ por ser $a$ un ciclo, y que $\partial_{n+1}'(c_2)+f_n(c_1+a)=z_2$. Así que $\overline{\partial}_{n+1}(c_1+a,c_2)=(z_1,z_2)$, luego $[(z_1,z_2)]=[(0,0)]$.
+
 \item[($\textsc{IV}\Rightarrow \textsc{I}$)]
 Sabemos que $Id_{\CC_f} \simeq_{\overline{h}} 0$. Proponemos la siguiente inversa homotópica a $f$:
 \[ g \colon \CC' \to \CC \text{ dada por }g_n = p_1^{n+1} \circ \overline{h}_n \circ i_2^n\]
