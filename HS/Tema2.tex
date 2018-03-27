@@ -138,7 +138,7 @@ es una sucesión exacta corta de complejos de cadenas.
 \end{defi}
 
 
-\begin{prop}
+\begin{prop}\label{long}
 Con la notación de la definición anterior, si 
 \[
 0\to \mathcal{C}^1\overset{f}{\to}\mathcal{C}^2\overset{g}{\to}\mathcal{C}^3\to 0
@@ -163,7 +163,10 @@ Tenemos
 0\arrow[r] & C_{n-2}^1\arrow[r, "f_{n-2}"]& C_{n-2}^2\arrow[r, "g_{n-2}"]& C_{n-2}^3\arrow[r] & 0
 \end{tikzcd}
 \]
-donde todos los cuadrados son conmutativos. Definimos $\Delta$ de la siguiente manera: dado $[z_3]\in H_n(\mathcal{C}^3)$, es decir, $z_3\in Z_n(\mathcal{C}^3)\subseteq C_n^3$, y como $g$ es sobreyectiva, $\exists x_2\in C_n^2$ con $g_n(x_2)=z_3$. Por otro lado, $g_{n-1}(\partial_n^2(x_2))=\partial_n^3(g_n(x_2))=\partial_n^3(z_3)=0$, de donde se deduce que $\partial_n^2(x_2)\in\ker(g_{n-1})=\Ima(f_{n-1})$. Por tanto, existe un único (por inyectividad) $z_1\in C_{n-1}^1$ con $f_{n-1}(z_1)=\partial^2_n(x_2)$. Si probamos que $z_1\in Z_{n-1}(\mathcal{C}^1)$ entonces definiremos $\Delta([z_3])=[z_1]$.  
+donde todos los cuadrados son conmutativos. Definimos $\Delta$ de la siguiente manera: dado $[z_3]\in H_n(\mathcal{C}^3)$, es decir, $z_3\in Z_n(\mathcal{C}^3)\subseteq C_n^3$, y como $g$ es sobreyectiva, $\exists x_2\in C_n^2$ con $g_n(x_2)=z_3$. Por otro lado, $g_{n-1}(\partial_n^2(x_2))=\partial_n^3(g_n(x_2))=\partial_n^3(z_3)=0$, de donde se deduce que $\partial_n^2(x_2)\in\ker(g_{n-1})=\Ima(f_{n-1})$. Por tanto, existe un único (por inyectividad) $z_1\in C_{n-1}^1$ con $f_{n-1}(z_1)=\partial^2_n(x_2)$. Si probamos que $z_1\in Z_{n-1}(\mathcal{C}^1)$ entonces definiremos $\Delta([z_3])=[z_1]$. Explícitamente
+\[
+\Delta([z_3])=[(f_{n-1})^{-1}(\partial_n^2(g_n^{-1}(z_3)))].
+\]
 
 Tenemos $f_{n-2}(\partial^1_{n-1}(z_1))=\partial^2_{n-1}(f_{n-1}(z_1))=\partial^2_{n-1}(\partial^2_n(x_2))=0$. Como $f_{n-2}$ es inyectiva, entonces $\partial^1_{n-1}(z_1)=0$, con lo que tenemos lo que buscábamos.
 
@@ -464,7 +467,7 @@ Sean $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ y $\CC' = \{(C_n',\partial_n')\}_{
 \end{enumerate}
 \end{enumerate}
 \end{prop}
-\begin{proof}\mbox{}
+\begin{dem}\mbox{}
 \begin{enumerate}
 \item Sea $(x,y)\in D_n$, 
 \[
@@ -534,6 +537,29 @@ Por último sumamos lo obtenido en \ref{compo2}:
 (\partial_{n+1}'h_n'+h_{n-1}'\partial_n')(y)+f_n\circ g_n(y)=\partial_{n+1}'(\overline{h}_n)_2(0,y)+(\overline{h}_{n-1})_2(0,\partial_n'(y))+f_n((\overline{h}_n)_2(0,y))=\\
 (\overline{\partial}_{n+1}\overline{h}_n)_2(0,y)+(\overline{h}_{n-1}\overline{\partial}_n)(0,y)=(Id_{\CC_f}^n)_2(0,y)=Id_{\CC'}(y).
 \end{gather*}
+\QED
+\end{dem}
 
-\end{proof}
+\begin{nota}
+Al complejo de cadenas $\CC_f$ definido en la proposición anterior se lo conoce como \emph{cono de f} (\emph{mapping cone}). A continuación vamos a ofrecer una prueba más conceptual de ($\textsc{II}\Rightarrow \textsc{III}$). 
+
+Empezamos observando que hay una sucesión exacta corta de complejos de cadenas
+\[
+0\to \CC'\to\CC_f\to \CC[-1]\to 0 
+\]
+dada por las inclusiones y las proyecciones. Aquí $\CC[-1]$ representa el \emph{shift} de $\CC$, es decir, considerar como $n$-ésimo espacio vectorial el $(n-1)$-ésimo de de $\CC$. De aquí podemos obtener la sucesión exacta larga en homología
+
+\[
+\cdots\to H_n(\mathcal{C}')\overset{(i_2^n)_*}{\to}H_n(\mathcal{C}_f)\overset{(p_1^n)_*}{\to}H_n(\mathcal{C}[-1])\overset{\Delta}{\to}H_{n-1}(\mathcal{C}')\overset{(i_2^{n-1})_*}{\to}H_{n-1}(\mathcal{C}_f)\to\cdots
+\]
+Vamos a ver que $\Delta=f_*$. Por la definición de $\Delta$ en la demostración de \ref{long}, dado $[z]\in H_n(\CC[-1])$, tenemos que
+\[
+\Delta([z])=[(i_2^n)^{-1}(\overline{\partial}_n((p_1^n)^{-1}(z)))]=[(i_2^n)^{-1}(\overline{\partial}_n(z,0))]=[(i_2^n)^{-1}(-\partial_{n-1}(z_3),f_{n-1}(z))]=
+\]
+\[
+=[(i_2^n)^{-1}(0,f_{n-1}(z))]=[f_{n-1}(z)]=f_*[z]
+\]
+como queríamos probar. Ahora, como $\Delta=f_*$ es isomorfismo, por exactitud tenemos que $(p_1^n)_*$ es la aplicación 0, luego $(i_2^n)^*$ es sobreyectiva. Por otra parte, la exactitud junto que con $f_*$ sea isomorfismo también implica que $(i_2^n)^*$ es la aplicación 0, luego necesariamente $H_n(\CC_f)=0$, y ya hemos terminado. 
+
+\end{nota}
 \end{document}
