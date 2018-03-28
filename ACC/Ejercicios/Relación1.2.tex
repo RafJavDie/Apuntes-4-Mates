@@ -19,7 +19,7 @@ Sketch the following affine varieties in $\R^2$.
 \begin{solucion}
 \begin{enumerate}[a.]
 \item[]
-\item Elipse. Véase $x^2+4y^2+2x-16y+1=0$ es equivalente a $(x+1)^2+(2y-4)^2=4^2$.
+\item Elipse. Véase $x^2+4y^2+2x-16y+1=0$ es equivalente a $(x+1)^2+(y-2)^2/\sqrt{2}=4^2$.
 \item Par de rectas $x+y=0$ y $x-y=0$.
 \item Punto $(-0.2,1.4)$.
 \end{enumerate}
@@ -118,11 +118,13 @@ Combining parts $(a)$ and $(b)$, we have proved that the four-leaved rose is the
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
+\item[]
 \item Tenemos que
 \[ (x^2+y^2)^3-4x^2y^2=r^6-4(r\cosθ)^2(r\sinθ)^2=r^6-4r^4\cos^2θ\sin^2θ \]
 Como $\sin(2θ)=2\sinθ\cosθ$:
 \[ r^6-4r^4\cos^2θ\sin^2θ = r^6-r^4 (\sin2θ)^2 = r^6 - r^4 r^2 = 0 \]
-Luego la rosa de cuatro hojas está contenida en $\V((x^2+y^2)^3-4x^2y^2)$. Recíprocamente, sea $(x,y)\in \V((x^2+y^2)^3-4x^2y^2)$. Vamos a tomar las coordenadas polares de este punto
+Luego la rosa de cuatro hojas está contenida en $\V((x^2+y^2)^3-4x^2y^2)$. 
+\item Recíprocamente, sea $(x,y)\in \V((x^2+y^2)^3-4x^2y^2)$. Podemos suponer que $x\neq 0$, pues si lo fuese daría lugar al punto $(0,0)$ y ese caso es trivial. Vamos a tomar las coordenadas polares de este punto
 $$
 r=\sqrt{x^2+y^2} \qquad \theta = \tan^{-1}(y/x)
 $$
@@ -192,6 +194,7 @@ proof is extremely difficult.
 \end{ejercicio}
 \begin{solucion}
 \begin{itemize}
+\item[]
 \item[a.] Las soluciones triviales vienen dadas por $y^n=1$ y $x^n=1$. Para $n$ impar tenemos las soluciones $y=1$ por un lado y $x=1$ por otro. En el caso de $n$ impar añadimos en la primera $y=-1$ y en la segunda $x=-1$.
 \item[b.] Si $F_n$ tiene una solución no trivial, entonces, eliminando denominadores, tendríamos una solución para el teorema de Fermat. Por otro lado, si el teorema de Fermat fuera falso, podríamos dividir por $z^n$ y nos daría una una solución de la forma $(x,y,1)$ con $(x,y)\in\Q^2$.
 \end{itemize}
@@ -277,9 +280,10 @@ for the Cartesian product.
 \end{ejercicio}
 \begin{solucion}
 \begin{itemize}
+\item[]
 \item[a.] Trivial.
-\item[b.] $\{y>0\}=\cup_{c>0}\{y=c\}$. Por el ejercicio \ref{ejer:1.2.9} el conjunto no es una variedad afín, pero cada recta sí lo es. 
-\item[c.] $\{y=x\}\setminus \{(1,1)\}$. Por el ejercicio \ref{ejer:1.2.8} no es variedad afín, aunque la recta y el punto sí lo son.
+\item[b.] Para cada $c\in \R_{>0}$ consideramos $R_C=\{(x,y)\in\R^2 \mid y=c\}$ variedad de $\R^2$. La unión de todas ellas resulta en el semiplano $R =\{(x,y)\in\R^2 \mid y>0\}$, que por el Ejercicio \ref{ejer:1.2.9} el conjunto no es una variedad.
+\item[c.] Consideremos $\{y=x\}\setminus \{(1,1)\}$. Por el Ejercicio \ref{ejer:1.2.8} no es variedad afín, aunque la recta y el punto sí lo son.
 \item[d.] Sean $V=\V(f_1,\dots, f_r)$ con $f_1,\dots, f_r\in k[x_1,\dots, x_n]$ y $W=\V(g_1,\dots, g_s)$ con $g_1,\dots, g_s\in k[y_1,\dots, y_m]$. Entonces $V\times W=\{(x_1,\dots, x_n,y_1,\dots, y_m)\in k^{n+m}\mid f_i(x_1,\dots, x_n)=0, g_j(y_1,\dots, y_m)=0, 1\leq i\leq n, 1\leq j\leq m\}$, luego por definción es una variedad afín.
 \end{itemize}
 \end{solucion}

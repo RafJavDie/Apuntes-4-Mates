@@ -9,8 +9,7 @@
 \maketitle
 
 \begin{ejercicio}{1.5.1}
-Over the complex numbers $\C$, Corollary 3 can be stated in a stronger form. Namely, prove that if $f \in \C[x]$ is a polynomial of degree $n > 0$, then $f$ can be written in the form $f = c(x-a_1)\dots(x-a_n)$, where $c,a_1,\dots,a_n \%in \C$ and $c \neq 0$.
-Note that this result  holds for \emph{any} algebraically closed field.
+Over the complex numbers $\C$, Corollary 3 can be stated in a stronger form. Namely, prove that if $f \in \C[x]$ is a polynomial of degree $n > 0$, then $f$ can be written in the form $f = c(x-a_1)\dots(x-a_n)$, where $c,a_1,\dots,a_n \in \C$ and $c \neq 0$. Note that this result  holds for \emph{any} algebraically closed field.
 \end{ejercicio}
 \begin{solucion}
 Si $n = 1$, tenemos que $f(x) = cx+d$ con $c \neq 0$, luego podemos escribir $f(x) = c(x-d/c)$.
@@ -37,7 +36,7 @@ Probaremos la implicación equivalente: si el determinante es cero, entonces los
 
 Supongamos que el determinante es cero.
 Entonces las columnas son linealmente dependientes.
-Es decir, hay $c_0,\dots,c_{n-1}$ tal que:
+Es decir, $\exists c_0,\dots,c_{n-1}\in \C$ no todos nulos tal que:
 \[ c_0 \begin{pmatrix} 1\\\vdots\\1\end{pmatrix} + c_1\begin{pmatrix} a_1\\\vdots\\a_n\end{pmatrix}+ \dots + c_{n-1}\begin{pmatrix} a_1^{n-1}\\\vdots\\a_n^{n-1}\end{pmatrix} = \begin{pmatrix}0\\\vdots\\0\end{pmatrix}\]
 Esto nos está dando $n$ soluciones del polinomio de grado $n-1$ dado por $c_0 + c_1 x + \dots + c_{n-1}x^{n-1}$.
 Como este polinomio tiene como máximo $n-1$ raíces distintas, esto quiere decir que $a_i = a_j$ para algún $i \neq j$.
@@ -93,7 +92,7 @@ to show that
  \langle f_1, f_2,\dots, f_s\rangle$.
 \end{ejercicio}
 \begin{solucion}
-Como $h=g_1f_2+\dots+g_nf_n$ para ciertos $g_1,\dots, g_n\in k[x]$, se tiene inmediatamente la igualdad. 
+Dado que $h$ divide a $f_i$, $i=2,\dotsc,s$, entonces es claro que $f_i\in\gene{f,h}$, de donde se deduce $\gene{f_1,\dotsc,f_s}\subset \gene{f,h}$. Recíprocamente, por utilizando la igualdad, tenemos que $h=g_1f_1+\dotsc f_sg_s$, luego $f_1,h\in\gene{f_1,\dotsc,f_s}$. 
 \end{solucion}
 
 \newpage

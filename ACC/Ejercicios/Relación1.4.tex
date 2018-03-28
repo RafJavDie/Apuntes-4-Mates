@@ -22,9 +22,14 @@ which describe the intersection of a circle and a hyperbola.
 \end{ejercicio}
 
 \begin{solucion}
-Multiplicando la segunda ecuación por $xy+1$ obtenemos $x^2y^2-1=0$, luego $y^2 = 1/x^2$.
+\begin{enumerate}[a.]
+\item[]
+\item Multiplicando la segunda ecuación por $xy+1$ obtenemos $x^2y^2-1=0$, luego $y^2 = 1/x^2$.
 Desde aquí eliminamos $y$ de la primer ecuación: $x^2+1/x^2-1=0$, que es equivalente a $x^4-x^2+1=0$.
-De como hemos obtenido este polinomio, deducimos que: $x^4-x^2+1 = (x^2)(x^2+y^2-1)-(xy+1)(xy-1) \in \gene{x^2+y^2-1, xy-1}$.
+\item De como hemos obtenido este polinomio, deducimos que: $$x^4-x^2+1 = (x^2)(x^2+y^2-1)-(xy+1)(xy-1) \in \gene{x^2+y^2-1, xy-1}$$.
+\end{enumerate}
+
+
 \end{solucion}
 
 \newpage
@@ -84,7 +89,11 @@ Luego $\gene{2x^2+3y^2-11, x^2-y^2-3} \supseteq \gene{x^2-4, y^2-1}$.
 Prove Proposition 4: If $f_1,\dots,f_s$ and $g_1,\dots,g_t$ are bases of the same ideal in $k[x_1,\dots,x_n]$, so that $\langle f_1,\dots,f_s\rangle = \langle g_1,\dots,g_t\rangle$, then we have $\V(f_1,\dots,f_s) = \V(g_1,\dots,g_t)$.
 \end{ejercicio}
 \begin{solucion}
-Evidente cuando recordamos que $\V(f_1,\dots,f_s) = \V(\gene{f_1,\dots,f_s})$.
+Evidente cuando recordamos que $\V(f_1,\dots,f_s) = \V(\gene{f_1,\dots,f_s})$. Sin embargo, este hecho se probará más adelante. Probemos una inclusión, pues la otra es análoga.Sea $I$ el ideal generado, claramente $f_i,g_j\in I$. Como los $f_i$ forman una base del ideal, podemos escribir
+$$
+g_j = a_{1j}f_1+\dotsc a_{sj}f_s
+$$
+Luego si $x\in \V(f_1,\dotsc,f_s)$ entonces $f_i(x)=0$ $\forall i$, por lo que $g_j(x)=0$ $\forall j$ y por tanto $x\in \V(g_1,\dotsc,g_t)$.
 \end{solucion}
 
 \newpage
@@ -93,8 +102,8 @@ Evidente cuando recordamos que $\V(f_1,\dots,f_s) = \V(\gene{f_1,\dots,f_s})$.
 Show that $\V(x+xy,y+xy,x^2,y^2) = \V(x,y)$.
 \end{ejercicio}
 \begin{solucion}
-Hemos visto en el ejercicio \ref{ejer:1.4.3} que $\gene{x+xy,y+xy,x^2,y^2} = \gene{x,y}$.
-Este hecho unido con el ejercicio \ref{ejer:1.4.4} demuestra el resultado.
+Hemos visto en el Ejercicio \ref{ejer:1.4.3} que $\gene{x+xy,y+xy,x^2,y^2} = \gene{x,y}$.
+Este hecho unido con el Ejercicio \ref{ejer:1.4.4} demuestra el resultado.
 \end{solucion}
 
 \newpage
@@ -116,14 +125,15 @@ If $s ≥ 2$ and $f_i \neq 0$ for all $i$, then show that for any $i$ and $j$, z
 \item As a consequence of the lack of independence is that when we write an element $f \in \gene{f_1,\dots,f_s}$ as $f = \sum_{i=1}^s h_i f_i$, the coefficients $h_i$ are not unique.
 As an example, consider $f = x^2 + xy + y^2 \in \gene{x,y}$.
 Express $f$ as a linear combination of $x$ and $y$ in two different ways.
-\item A basis $f_1,\dots,f_s$ of an ideal $I$ is said to be \emph{minimal} if no proper subset of $f_1,\dots,f_s$ is a basis of $I$. For example, $x$ $x^2$ is a basis of an ideal, but not a minimal basis since $x$ generates the same ideal.
+\item A basis $f_1,\dots,f_s$ of an ideal $I$ is said to be \emph{minimal} if no proper subset of $f_1,\dots,f_s$ is a basis of $I$. For example, $\{x,x^2\}$ is a basis of an ideal, but not a minimal basis since $x$ generates the same ideal.
 Unfortunately, an ideal can have mminimal bases consisting of different numbers of elements.
 To see this, show that $x$ and $x+x^2,x^2$ are minimal bases of the same ideal $k[x]$. Explain how this contrasts with the situation in linear algebra.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
-\item Como los escalares de $I$ como espacio vectorial son $k$, una base de $I$ sería $1,x,x^2,\dots$.
+\item[]
+\item Como espacio vectorial una base de $I$ es $1,x,x^2,\dots$. Por el Teorema de la base para e.v. tenemos que cualquier otra base tiene el mismo cardinal (en este caso infinito).
 Es una base infinita, luego $I$ tiene dimensión infinita como espacio vectorial.
 \item $xy-yx = 0$.
 \item $f_i f_j - f_j f_i = 0$. Aquí usamos que $f_i \neq 0$ para todo $i$.
@@ -158,6 +168,7 @@ Radicals ideals will play an important role in Chapter 4. In particular, the Nul
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
+\item[]
 \item Sea $f^m \in \I(V)$ con $f \in k[1,\dots,x_n]$ y $m$ entero positivo.
 Supongamos que $V$ es no vacío.
 Sea $p \in V$, entonces $f^m(p)=0$.
@@ -179,7 +190,7 @@ Let $V = \V(y − x^2, z − x^3)$ be the twisted cubic. In the text, we showed 
 \begin{enumerate}
 \item[]
 \item Sustituyendo $x\to t$, $y\to t^2$ y $z\to t^3$ es claro que $y^2-xz = t^4-tt^3 = 0$, luego se anula en todos los puntos de la curva.
-\item $(y+x^2)(y-x^2)-x(z-x^3) = y^2-xz$. 
+\item $y^2-xz=-x(z-x^3) + (y+x^2)(y-x^2)$. 
 \end{enumerate}
 \end{solucion}
 
@@ -187,7 +198,7 @@ Let $V = \V(y − x^2, z − x^3)$ be the twisted cubic. In the text, we showed 
 \begin{ejercicio}{1.4.10}
 Use the argument given in the discussion of the twisted cubic to show that $\I(\V(x−y)) = \gene{x-y}$. Your argument should be valid for any infinite field k.
 \begin{solucion}
-Sabemos que $\V(x-y) = \{(t,t)\mid t\in k\}$. Sea $f\func{k[x,y]}{k[t]}$ de manera que $x\to t$, $y\to t$. Es claro que $\ker f = \gene{x-y}$. Como $k[t]$ es dominio de integridad, $\ker f$ es un ideal primo, luego en particular es una ideal radical. 
+Sabemos que $\V(x-y) = \{(t,t)\mid t\in k\}$. Sea $f\func{k[x,y]}{k[t]}$ de manera que $x\to t$, $y\to t$. Es claro que $\ker f = \gene{x-y}$. Como $k[t]$ es dominio de integridad, $\ker f$ es un ideal primo, luego en particular es una ideal radical. Finalmente, por el Teorema de los ceros de Hilbert tenemos que $\I(\V(S))=\sqrt{\gene{S}}$, de donde se deduce el resultado.
 \end{solucion}
 \end{ejercicio}
 
@@ -206,7 +217,7 @@ Let $V ⊆ \R^3$ be the curve parametrized by $(t, t^3, t^4)$.
 $$
 f = h_1(x^3-y)+h_2(x^4-z)+r
 $$
-donde $r\in \R[x]$. Es claro que $\gene{x^3-y,x^4-z}\subset I(S)$. Recíprocamente, veamos que si $f\in I(S)$, $r=0$. Como $f\in I(S)$ entonces $f(t,t^3,t^4)=0$, luego
+donde $r\in \R[x]$. Es claro que $\gene{x^3-y,x^4-z}\subset I(S)$. Recíprocamente, veamos que si $f\in \I(S)$, $r=0$. Como $f\in I(S)$ entonces $f(t,t^3,t^4)=0$, luego
 $$
 f(t,t^3,t^4)= h_1(t,t^3,t^4)(t^3-t^3)+h_2(t,t^3,t^4)(t^4-t^4)+r(t) = r(t) = 0$$
 Como $r(t)=0$ $\forall t \in \R$ entonces $r=0$. Lo que prueba la igualdad.
@@ -227,22 +238,9 @@ Chapter 2, this exercise will become much easier.
 \begin{solucion}
 \begin{enumerate}[a.]
 \item[]
-\item Candidato $S=\V(x^3-y^2, x^4-z^2, y^4-z^3)$. Es claro que $V\subset S$, pues los tres polinomios se anulan en la parametrización se $V$. Podemos suponer que $xyz\neq 0$. En tal caso, si se anulan los tres polinomios y llamamos $t=\frac{y}{x}$ entonces $t^3=y^3/x^3 = y^3/y^2=y$. Análogamente, $t^4 = z$. Además, $x=y/t=t^3/t= t^2$. Por tanto, tenemos la igualdad. Análogamente, podemos demostrar el mismo resultado para $\V(x^2-z,xz-y^2)$. 
+\item Veamos que $V=\V(x^2-z,xz-y^2)$. Una inclusión es trivial, recíprocamente podemos suponer que $xyz\neq 0$, pues en otro caso se tendría $x=y=z=0$. Llamemos $t=y/x$. Entonces $t^2 = y^2/x^2 =xz/z = x$. Por tanto, $z=x^2=t^4$ e $y=tx=t^3$. Por tanto, se tiene la igualdad.
 
-
-\item Claramente $\gene{y^2-xz,z-x^2}\subseteq\I(V)$. Dado cualquier $f\in\R[x,y,z]$ podemos expresarlo como $f=h_1(y^2-xz)+h_2(z-x^2)+r$ con $h_1,h_2\in\R[x,y,z]$ y $r\in\R[x,y]$ pero con el exponente de $y$ a los sumo 1. Entonces, si $f\in\I(V)$ vamos a ver que $r=0$. Evaluando en los puntos de la forma $(t^2,t^3,t^4)$ nos queda $r(t^2,t^3)=0$. Como
-
-\[
-r(x,y)=\sum_{i}a_ix^i+y\sum_{j}b_jx^j+c
-\]
-
-Al evaluar
-
-\[
-r(t^2,t^3)=\sum_{i}a_it^{2i}+\sum_{j}b_jt^{2j+3}+c=0
-\]
-
-Así que $a_0+c=0$, $a_i=0$ para $i\geq 1$ y $b_i=0$ para todo $i$. Luego $r(x,y)=0$. 
+\item Claramente $\gene{y^2-xz,z-x^2}\subseteq\I(V)$. Dado cualquier $f\in\R[x,y,z]$ podemos expresarlo como $f=h_1(y^2-xz)+h_2(z-x^2)+r$ con $h_1,h_2\in\R[x,y,z]$ y $r\in\R[x,y]$ pero con el exponente de $y$ a los sumo 1. Entonces, si $f\in\I(V)$ vamos a ver que $r=0$. Evaluando en los puntos de la forma $(t^2,t^3,t^4)$ nos queda $r(t^2,t^3)=0$ $\forall t in \R$. Por tanto, $r=0$.
 
 %\item Por el apartado anterior y por el Nullstellensatz $\I(V)=\sqrt{\gene{x^3-y^2, x^4-z^2, y^4-z^3}}$. Supongamos que $f\in \R[x,y,z]$ y $f(t^2,t^3,t^4)=0$ para todo $t\in\R$. Tenemos que $f(x,y,z)=\sum_{i,j,k}a_{i,j,k}x^iy^jz^k$. Entonces 
 %\[
@@ -306,20 +304,21 @@ This exercise is concerned with Proposition 8.
 In the text, we defined $\I(V)$ for a variety $V ⊆ k^n$. We can generalize this as follows: if
 $S ⊆ k^n$ is any subset, then we set
 $$\I(S) = \{f ∈ k[x_1,\dots, x_n] \mid f (a_1,\dots, a_n) = 0\ \forall (a_1,\dots, a_n) ∈ S\}.$$
-\begin{itemize}
-\item[a.] Prove that $\I(S)$ is an ideal.
-\item[b.] Let $X = \{(a, a) ∈ \R^2 \mid a \neq 1\}$. By Exercise 8 of §2, we know that $X$ is not an affine
+\begin{enumerate}[a.]
+\item Prove that $\I(S)$ is an ideal.
+\item Let $X = \{(a, a) ∈ \R^2 \mid a \neq 1\}$. By Exercise 8 of §2, we know that $X$ is not an affine
 variety. Determine $\I(X)$. Hint: What you proved in Exercise 8 of §2 will be useful.
 See also Exercise 10 of this section.
-\item[c.] Let $\Z^n$ be the points of $\C^n$ with integer coordinates. Determine $\I(Z^n)$. Hint: See Exercise
+\item Let $\Z^n$ be the points of $\C^n$ with integer coordinates. Determine $\I(Z^n)$. Hint: See Exercise
 6 of §1.
-\end{itemize}
+\end{enumerate}
 \begin{solucion}
-\begin{itemize}
-\item[a.] Análogo a cuando es una variedad.
-\item[b.] $\I(X)=\I((t,t))=\langle x-y\rangle$.
-\item[c.] $\I(\Z^n)=\I(\C^n)=\{0\}$. 
-\end{itemize}
+\begin{enumerate}[a.]
+\item[]
+\item Análogo a cuando es una variedad.
+\item $\I(X)=\I((t,t))=\langle x-y\rangle$.
+\item $\I(\Z^n)=\I(\C^n)=\{0\}$. 
+\end{enumerate}
 \end{solucion}
 \end{ejercicio}
 
@@ -327,20 +326,22 @@ See also Exercise 10 of this section.
 
 \begin{ejercicio}{1.4.16}
 Here is more practice with ideals. Let $I$ be an ideal in $k[x_1,\dots , x_n]$.
+\begin{enumerate}[a.]
 \item[a.] Prove that $1 ∈ I$ if and only if $I = k[x_1,\dots , x_n]$.
 \item[b.] More generally, prove that $I$ contains a nonzero constant if and only if $I = k[x_1,\dots, x_n]$.
 \item[c.] Suppose $f , g ∈ k[x_1,\dots , x_n]$ satisfy $f^2, g^2 ∈ I$. Prove that $(f + g)^3 ∈ I$. Hint: Expand
 $(f + g)^3$ using the Binomial Theorem.
 \item[d.] Now suppose $f , g ∈ k[x_1,\dots , x_n]$ satisfy $f^r$ , $g^s ∈ I$. Prove that $(f + g)^{r+s−1} ∈ I$.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-\begin{itemize}
+\begin{enumerate}[a.]
 \item[]
-\item[a.] Si $1\in I$, por ser ideal, $f\cdot 1\in I$ para todo $f\in k[x_1,\dots , x_n]$. La otra inclusión es trivial. Recíprocamente, si $I=k[x_1,\dotsc,x_n]$ es claro que $1\in I$.
-\item[b.] Como $k$ es cuerpo, dada una constanta $a$, podemos generar $1=aa^{-1}$, por lo que podemos aplicar el apartado anterior.
-\item[c.] $(f+g)^3=f^3+3f^2g+3fg^2+g^3=ff^2+3f^2g+3fg^2+gg^2\in I$. 
-\item[d.] Basta hacer lo mismo que hemos hecho antes con el desarrollo general. 
-\end{itemize}
+\item Si $1\in I$, por ser ideal, $f\cdot 1\in I$ para todo $f\in k[x_1,\dots , x_n]$. Recíprocamente, si $I=k[x_1,\dotsc,x_n]$ es claro que $1\in I$.
+\item Como $k$ es cuerpo, dada una constanta $a$, podemos generar $1=aa^{-1}$, por lo que podemos aplicar el apartado anterior.
+\item $(f+g)^3=f^3+3f^2g+3fg^2+g^3=ff^2+3f^2g+3fg^2+gg^2\in I$. 
+\item Basta hacer lo mismo que hemos hecho antes con el desarrollo general. 
+\end{enumerate}
 \end{solucion}
 
 \newpage

@@ -11,8 +11,8 @@
 \begin{ejercicio}{1.3.1}
 Parametrize all solutions of linear equations
 \begin{align*}
-x+2y-2z+w=-1\\
-x+y+z-w=2
+x+2y-2z+w&=-1\\
+x+y+z-w&=2
 \end{align*}
 \end{ejercicio}
 \begin{solucion}
@@ -30,7 +30,7 @@ y&=\cos(2t)
 parametrizes a portion of a parabola. Indicate exactly what portion of the parabola is covered.
 \end{ejercicio}
 \begin{solucion}
-Sabemos que $\cos(2t)=\cos^2(t)-\sin^2(t) = 2\cos^2(t)-1$. Por tanto, es claro que se parametriza la parábola $y=x^2$ en el intervalo $[-1,1]$.
+Sabemos que $\cos(2t)=\cos^2(t)-\sin^2(t) = 2\cos^2(t)-1$. Por tanto, es claro que se parametriza la parábola $y=2x^2-1$ en el intervalo $[-1,1]$.
 \end{solucion}
 
 \newpage
@@ -39,7 +39,7 @@ Sabemos que $\cos(2t)=\cos^2(t)-\sin^2(t) = 2\cos^2(t)-1$. Por tanto, es claro q
 Given $f\in k[x]$, find a parametrization of $\V(y-f(x))$.
 \end{ejercicio}
 \begin{solucion}
-Trivialérrimo. $x=t$ y $y=f(t)$.
+Trivialérrimo. Tomamos $x=t$ y $y=f(t)$.
 \end{solucion}
 
 \newpage
@@ -59,7 +59,7 @@ y&=1-\frac{1}{t^2}
 \begin{solucion}
 \begin{enumerate}[a)]
 \item[]
-\item Lo que pega es hacer 
+\item Es claro que si $x=1$ entonces $1+t=t$, luego $1=0$. Por tanto podemos suponer que $x\neq 1$.
 $$
 x=\frac{t}{1+t} = \frac{1+t}{1+t}-\frac{1}{1+t} = 1 -\frac{1}{1+t}\qquad 1+t= \frac{1}{1-x} \qquad
 t = \frac{x}{1-x}
@@ -67,7 +67,7 @@ $$
 $$
 y = 1-\frac{1}{t^2} = 1 - \frac{(1-x)^2}{x^2} = \frac{2x-1}{x^2}
 $$
-Luego tenemos $\V(x^2y-2x+1)$. Efectivamente es fácil ver que la parametrización está contenida en $\V(x^2y-2x+1)$. \item Si $x=1$ entonces $y-2+1=0$, luego $y=1$. Si $x\neq 1$ entonces podemos escribir 
+Luego tenemos $\V(x^2y-2x+1)$. Efectivamente es fácil ver que la parametrización está contenida en $\V(x^2y-2x+1)$. \item Si $x\neq 1$ entonces podemos escribir 
 $t=x(1-x)^{-1}$ y procedemos inversamente al apartado anterior para ver que verifican la parametrización. Para ver que la parametrizació no cubre al $(1,1)$, vemos que no hay soluciones si impones que
 $$
 1=y=1-\frac{1}{t^2} \qquad 0 = \frac{1}{t^2}
@@ -94,14 +94,14 @@ answer with a picture. Hint: Consider the cases $x = a$ and $y = mx + b$ separat
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-Veamos la solución
 \begin{enumerate}[a)]
+\item[]
 \item Es inmediato a partir de la igualdad $\cosh^2(t)
 -\sinh^2(t)=1$. De hecho, la cubre completamente.
 \item Si $x=a$ entonces tenemos los casos donde $a\in(-1,1)$ donde corta en 0 puntos, los casos $a=-1,1$, donde corta en un punto, y el resto de casos donde se cortan en dos puntos. Si $y=mx+b$ entonces $(1-m^2)x^2-2mbx-(b^2+1)=0$. La ecuación sobre $x$ da como mucho dos soluciones. La ecuación $y=mx+b$ nos da un $y$ por cada $x$. Luego como mucho la recta corta a la hipérbola en $2$ puntos.
 \item Observemos que cada recta no vertical partiendo del $(-1,0)$ corta al eje $OY$ en un punto $(0,t)$ para $t\in(-\infty,+\infty)$. Cuando la recta sea paralela a alguna de las asíntotas no habrá punto de corte distinto de $(-1,0)$. Veremos que para $t\in(1,+\infty)$, la recta corta a la hipérbola por la parte inferior izquierda, para $t\in(0,1)$ corta en la parte superior derecha, para $t\in (-1,0)$ corta en la parte inferior derecha (para $t=0$ corta claramente en $(1,0)$) y para $t\in (-\infty,-1)$ corta en la parte superior izquierda.
 
-Sea entonces la recta $r\equiv (-1,0)+\lambda (1,t)$. Tenemos que imponer que esta recta corte a $x^2-y^22=1$, luego sustituimos y obtenemos
+Sea entonces la recta $r\equiv (-1,0)+\lambda (1,t)$. Tenemos que imponer que esta recta corte a $x^2-y^2=1$, luego sustituimos y obtenemos
 \[
 (-1+\lambda)^2-\lambda^2t^2=1\Rightarrow (1-t^2)\lambda^2-2\lambda=0.
 \]
@@ -156,26 +156,26 @@ Consider the curve defined by $y^2 = cx^2 −x^3$, where $c$ is some constant.
 \end{ejercicio}
 
 Our goal is to parametrize this curve.
-\begin{itemize}
-\item[a.] Show that a line will meet this curve at either 0, 1, 2, or 3 points. Illustrate your answer
+\begin{enumerate}[a.]
+\item Show that a line will meet this curve at either 0, 1, 2, or 3 points. Illustrate your answer
 with a picture. Hint: Let the equation of the line be either $x = a$ or $y = mx + b$.
-\item[b.] Show that a nonvertical line through the origin meets the curve at exactly one other
+\item Show that a nonvertical line through the origin meets the curve at exactly one other
 point when $m^2 \neq c$. Draw a picture to illustrate this, and see if you can come up with
 an intuitive explanation as to why this happens.
-\item[c.] Now draw the vertical line $x = 1$. Given a point $(1, t)$ on this line, draw the line
+\item Now draw the vertical line $x = 1$. Given a point $(1, t)$ on this line, draw the line
 connecting $(1, t)$ to the origin. This will intersect the curve in a point $(x, y)$. Draw a
 picture to illustrate this, and argue geometrically that this gives a parametrization of
 the entire curve.
-\item[d.] Show that the geometric description from part (c) leads to the parametrization
+\item Show that the geometric description from part (c) leads to the parametrization
 \begin{align*}
 &x = c − t^2,
 &y = t(c − t^2).
 \end{align*}
-\end{itemize}
+\end{enumerate}
 \begin{solucion}
 Vamos a pasar por alto los dibujos. 
-\begin{itemize}
-\item[a.] Si consideramos la recta $x=a$, cortará en los puntos que verifiquen $y^2=ca^2-a^3$. Que, dependiendo del signo de $ca^2-a^3$, serán 0, 1 o 2 puntos.  Si consideramos la recta $y=mx+b$, cortará en los puntos que verifiquen $(mx+b)^2=cx^2-x^3$. Es una ecuación de tercer grado, luego como mucho tendrá 3 soluciones.
+\begin{enumerate}[a.]
+\item Si consideramos la recta $x=a$, cortará en los puntos que verifiquen $y^2=ca^2-a^3$. Que, dependiendo del signo de $ca^2-a^3$, serán 0, 1 o 2 puntos.  Si consideramos la recta $y=mx+b$, cortará en los puntos que verifiquen $(mx+b)^2=cx^2-x^3$. Es una ecuación de tercer grado, luego como mucho tendrá 3 soluciones.
 \item Una recta no vertical que pase por el origen es de la forma $y=mx$. Sustituyendo obtenemos $m^2x^2=cx^2-x^3=(m^2-c)x^2=x^3$. Si $m^2\neq c$ podemos eliminar la solución $x=0$, luego nos queda $m^2-c^2=x$. Luego efectivamente tenemos una única solución adicional. La explicación es que para $m^2=c$ sale una recta tangente en 0 y en cualquier otro caso es secante, luego da otra solución. 
 \item Vamos a construir la parametrización descrita. La recta que conecta el origen con $(1,t)$ es $r\equiv (\lambda, \lambda t)$. Sustituyendo en la ecuación de la curva elíptica
 \[
@@ -192,7 +192,7 @@ Lo cual da lugar a la parametrización buscada
 \end{align*}
 Esta parametrización cubre todos los punto. Además cualquier punto de la curva elíptica distinto del origen definen una recta que pasa por un punto de la forma $(1,t)$ y por el $(0,0)$. 
 \item Ya está resuelto antes.
-\end{itemize}
+\end{enumerate}
 \end{solucion}
 
 \newpage
@@ -211,21 +211,23 @@ where $a$ is a constant. If we let $t$ vary in the range $−4.5 ≤ t ≤ 1.5$.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a.]
+\item Dado que $1\notin \sin([-4.5,1.5])$, deducimos que $x\neq a$ $\forall t$ en nuestro intervalo. Por tanto, podemos considerar
 $$
 y=\frac{\sin(t)}{\sqrt{1-\sin^2(t)}}(1+\sin(t)) =\frac{x}{\sqrt{1-\frac{x^2}{a^2}}}\left(1+\frac{x}{a}\right)=\frac{x}{\sqrt{a^2-{x^2}}}(a+x) = x\sqrt{\frac{a+x}{a-x}}
 $$
-Luego satisface $\V(y^2(a-x)-x^2(a+x))$. La idea para encontrar nuestra parametrización algebraica es simplemente
+Luego satisface $\V(y^2(a-x)-x^2(a+x))$. 
+\item La idea para encontrar nuestra parametrización algebraica es simplemente utilizar las que conocemos del seno y el coseno.
 \begin{align*}
 x&=a\frac{2t}{1+t^2}\\
-y&=a\frac{2t}{1-t^2}\frac{(1+t)^2}{1+t^2} = a\frac{2t(1+t)^2}{1-t^4}
+y&=a\frac{2t}{(1+t)(1-t)}\frac{(1+t)^2}{1+t^2} = a\frac{2t(1+t)^2}{1-t^4}
 \end{align*}
-
+\end{enumerate}
 \end{solucion}
 \newpage
 
 \begin{ejercicio}{1.3.10}
-
-\end{ejercicio} Around 180 B.C.E., Diocles wrote the book On Burning-Glasses. One of the curves he considered was the cissoid and he used it to solve the problem of the duplication of the cube [see part (c) below]. The cissoid has the equation $y^2(a + x) = (a − x)^3$, where a is
+Around 180 B.C.E., Diocles wrote the book On Burning-Glasses. One of the curves he considered was the cissoid and he used it to solve the problem of the duplication of the cube [see part (c) below]. The cissoid has the equation $y^2(a + x) = (a − x)^3$, where a is
 a constant. This gives the following curve in the plane:
 \begin{enumerate}[a.]
 \item Find an algebraic parametrization of the cissoid.
@@ -238,20 +240,20 @@ $$
 $$
 which shows how to construct $\sqrt[3]{2}$ using ruler, compass, and cissoid.
 \end{enumerate}
+\end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
 \item[]
-\item Primeramente hacemos el cambio $z=a-x$, de donde obtenemos $y^2(2a-z)=z^3$. Sabemos que una parametrización en polares de esta curva es $ r=2a\sin \theta \tan \theta$ con $\theta\in(-\pi/2,\pi/2)$. Clásicamente, tomando polares $z=r\cos \theta$, $y=r\sin \theta$, obtenemos
+\item Consideremos la recta que pasa por $(a,0)$ y $(-a,t)$, es decir $(a+2a\lambda,-\lambda t)$. Esta recta corta a la cisoide en
+$$
+\lambda^2t^2(2a+2a\lambda)=(-2a\lambda)^3 \qquad 2a\lambda^2(t^2(1+\lambda)+4a^2\lambda)=0
+$$
+Si $\lambda \neq 0$, entonces $\lambda = \dfrac{-t^2}{t^2+4a^2}$, es decir, el punto 
 \begin{align*}
-z&=2a\sin^2\theta\\
-y&= 2a\frac{\sin^3\theta}{\cos \theta}
+x&=\frac{4a^3-at^2}{t^2+4a^2}\\
+y&=\frac{t^3}{t^2+4a^2}
 \end{align*}
-Tomando $t = \sin \theta$ y tomando $z=a-z$
-\begin{align*}
-x&=a-2at^2\\
-y&=\frac{2at^3}{\sqrt{1-t^2}}
-\end{align*}
-
+La solución obtenida para $\lambda = 0$ podemos descartarla porque la obtenemos para $t=0$.
 \item  Construyamos la recta descrita en el enunciado. $r\equiv (a+\lambda (-x-a),\lambda\sqrt{a^2-x^2})$. Ahora vemos cuál es el punto $Q$, imponiendo que la primera coordenada sea justamente $x$.
 \[
 a+\lambda (-x-a)=x\Leftrightarrow \lambda=\frac{x-a}{-x-a}.

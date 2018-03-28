@@ -8,9 +8,9 @@
 \author{Diego Pedraza López}
 \maketitle
 
-\begin{ejercicio}{1.1.1}
+\begin{ejercicio}{1.1.1}\label{ejer:1.1.1}
 Let $\F_2 = \{0,1\}$, and define addition and multiplication by $0+0=1+1=0$, $0+1=1+0=1$, $0\cdot 0=0\cdot 1 = 1 \cdot 0 = 0$ and $1 \cdot 1 = 1$.
-Explain why $\F_2$ is a field. é
+Explain why $\F_2$ is a field.
 \end{ejercicio}
 \begin{solucion}
 Las propiedades asociativas y distributivas siguen de la definición de $+$ y $\cdot$.
@@ -34,10 +34,11 @@ Can you find one in which all of $x_1,\dots,x_n$ appear?
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
+\item[]
 \item Tenemos que $g(0,0)=g(0,1)=g(1,0)=g(1,1)=0$.
 Como $\F_2$ no es un cuerpo infinito, no se da la Proposición 5.
-\item Consideramos $xyz+xyz$.
-\item Consideramos $x_1\cdots x_n + x_1\cdots x_n$.
+\item Consideramos $x^2yz+xyz^2$.
+\item Consideramos $x_1^2\cdots x_n + x_1\cdots x_n^2$.
 \end{enumerate}
 \end{solucion}
 
@@ -62,7 +63,7 @@ Sea $n \in \F_p\setminus\{0\}$. Si existe $m \in \F_p\setminus\{0\}$ tal que $n 
 Como $p$ es primo, entonces $p \mid n$ ó $p \mid m$.
 Si $p \mid n$, entonces $n \equiv 0 \pmod p$, luego llegamos a la contradicción $n \notin \F_p\setminus\{0\}$.
 Análogamente, $p \mid m$ lleva a una contradicción.
-\item  La asociatividad es clara, así como la existencia de elemento neutro $1$. Veamos que la operación es interna.
+\item  La asociatividad es clara, así como la existencia de elemento neutro $1$. 
 \item Finalmente, la existencia del elemento inverso es consecuencia de la identidad de Bézout. Dado $n \in \F_p\setminus\{0\}$, como $p$ es primo, $\exists a,b$ tales que $ap + bn = 1$. Tomando clases módulo $p$, como $[p]=0$ llegamos a que $[b][n]=1$, luego $[n]$ es unidad.
 \end{itemize}
 \item Tenemos que $\F_p\setminus\{0\}$ es un grupo multiplicativo de $p-1$ elementos.
@@ -104,6 +105,7 @@ To see what this looks like in a specific case, consider the polynomial
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
+\item[]
 \item $f(x)=x^5(y^2z)-x^4(y^3)+x^2z+x(y+2)+(y^5-y^3z-5z+3)$.
 \item $f(y)=y^5+y^3(-z-x^4)+y^2(x^5z)+yx+(2x-5z+3)$.
 \item $f(z)=z(x^5y^2+x^2-y^3-5)+(-x^4y^3+y^5+xy+2x+3)$.
@@ -123,6 +125,7 @@ Prove that if $f$ vanishes at all points of $\Z_{M+1}^n$, then $f$ is the zero p
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
+\item[]
 \item Lo demostramos por inducción.
 Si $n=1$, es bien sabido que el hecho de que $f$ es anule en infinitos puntos implica que $f=0$.
 Supongamos que la proposición es cierta para $n-1$ y sea $f \in \C[x_1,\dots,x_n]$ que se anula en todos los puntos de $\Z^n$.
@@ -130,7 +133,7 @@ Agrupando por potencias, tenemos que:
 \[ f = \sum_{i=1}^N g_i(x_1,\dots,x_{n-1})x_n^i \]
 donde $g_i \in \C[x_1,\dots,x_{n-1}]$.
 Basta demostrar que $g_i = 0$ para todo $i$.
-Fijamos $(a_1,\dots,a_{n-1}) \in \Z^{n-1}$ y consideramos el polinomio $f(a_1,\dots,a_{n-1},x_n) \in k[x_n]$.
+Fijamos una $n-1$ tupla $(a_1,\dots,a_{n-1}) \in \Z^{n-1}$ y consideramos el polinomio $f(a_1,\dots,a_{n-1},x_n) \in k[x_n]$.
 Como este polinomio se anula en todo $\Z$, por la hipótesis de inducción es el polinomio cero.
 Obsérvese que los coeficientes de $f(a_1,\dots,a_{n-1},x_n)$ son los $g_i(a_1,\dots,a_{n-1})$, luego $g_i(a_1,\dots,a_{n-1})=0$ para todo $(a_1,\dots,a_{n-1})\in\Z^{n-1}$. 
 Por la hipótesis de inducción, esto implica que $g_i = 0$, luego $f = 0$.
