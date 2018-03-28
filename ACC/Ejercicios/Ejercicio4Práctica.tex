@@ -1,0 +1,43 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\lex}{<_{lex}}
+\newcommand{\grlex}{<_{grlex}}
+\newcommand{\grevlex}{<_{grevlex}}
+
+\newcommand{\PhantC}{\phantom{\colon}}%
+\newcommand{\CenterInCol}[1]{\multicolumn{1}{c}{#1}}%
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Álgebra, Combinatoria y Computación, Práctica 2}
+\author{Javier Aguilar Martín}
+\maketitle
+
+\begin{ejercicio}{4}
+Pruebe la proposición 1.
+\end{ejercicio}
+\begin{prop}
+Para un entero positivo $k$, consideremos el sistema polinómico
+\begin{align*}
+x_i^2-x_i=0,\quad i\in V,& & x_ix_j=0,\quad (i,j)\in E,& &\sum_{i\in V}x_i=k.
+\end{align*}
+El sistema tiene solución si y solamente si $G$ tiene un conjunto estable de tamaño $k$. 
+\end{prop}
+\begin{solucion}
+Definimos, para cada $i\in V$, las variables de decisión $x_i\in\{0,1\}$ con valor 1 si incluimos el vértice $i$ en el conjunto estable y 0 en caso contrario. Las restricciones a la hora de añadir vértices consisten en que no puede haber dos vértices adyacentes, o lo que es lo mismo, $x_ix_j=0$ si la arista $(i,j)\in E$. Por otra parte, $\sum_{i\in V}x_i=k$ si y solo si podemos darle el valor 1 exactamente a $k$ variables, lo cual es equivalente a que $G$ tenga un conjunto estable de $k$ elementos. En particular, el número de estabilidad será el número 
+\begin{align*}
+\alpha(G)=&\max k\\
+s.a:\ &x_ix_j=0, \forall (i,j)\in E\\
+&\sum_{i\in V}x_i=k\\
+&x_i\in \{0,1\}
+\end{align*} 
+Además, $x_i\in\{0,1\}$ si y solo si $x_i^2-x_i=0$. Así que se tiene la equivalencia buscada entre la existencia de soluciones factibles (no necesariamente óptimas, simplemente que verifiquen las restricciones) del problema anterior y la existencia de conjuntos estables de tamaño $k$.
+
+
+\end{solucion}
+
+
+
+
+\end{document}

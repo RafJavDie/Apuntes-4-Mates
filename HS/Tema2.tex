@@ -1,7 +1,8 @@
 \documentclass[HS.tex]{subfiles}
 \begin{document}
-\chapter{Homología simplicial}
-\section{Álgebra homológica}
+
+\chapter{Álgebra homológica}
+\section{Exactitud}
 Nuestros objetos serán $\R$-espacio vectoriales de dimensión finita (o $R$-módulos con $R$ dominio de ideales principales).
 
 \begin{defi}
@@ -73,6 +74,8 @@ Ahora la sobreyectividad.
 Sea $n_3\in N_3$. Llamamos $n_4=\varphi_3(n_3)$. Como $\psi_4$ es sobreyectiva, existe $m_4$ tal que $\psi_4(m_4)=n_4$. Ahora, por la conmutatividad del diagrama, $\psi_5(\theta_4(m_4))=\varphi_4(\psi_4(m_4))=\varphi_4(n_4)=\varphi_4(\varphi_3(m_3))=0$, por exactitud. Luego, por inyectividad de $\psi_5$, tenemos que $\theta(m_4)=0$, que por exactitud significa que existe $m_3\in M_3$ tal que $m_4=\theta(m_3)$. Por conmutatividad del diagrama, tenemos que $\varphi_3(n_3)=\psi_4(\theta_3(m_3))=\varphi_3(\psi_3(m_3))$, luego $n_3-\psi_3(m_3)\in\ker{\varphi_3}$. Por exactitud, esto es equivalente a que exista $n_2\in N_2$ tal que $\varphi_2(n_2)=n_3-\psi_3(m_3)$. Como $\psi_2$, es sobreyectiva, existe $m_2\in M_2$ tal que $n_2=\psi_2(m_2)$. Por conmutatividad, $n_3-\psi(m_3)=\varphi_2(\psi_2(m_2))=\psi_3(\theta_2(m_2))$, luego $n_3=\psi(m_3+\theta_2(m_2))$, con lo que hemos encontrado su preimagen. \QED
 \end{dem}
 
+\section{Complejos de cadenas y su homología}
+
 \begin{defi}
 Un complejo de cadenas $\mathcal{C}$ es un diagrama del tipo siguiente:
 \[ \cdots \rightarrow C_{n+1} \xrightarrow{\partial_{n+1}} C_n \xrightarrow{\partial_n} C_{n-1} \xrightarrow{\partial_{n-1}} \cdots \]
@@ -135,7 +138,7 @@ es una sucesión exacta corta de complejos de cadenas.
 \end{defi}
 
 
-\begin{prop}
+\begin{prop}\label{long}
 Con la notación de la definición anterior, si 
 \[
 0\to \mathcal{C}^1\overset{f}{\to}\mathcal{C}^2\overset{g}{\to}\mathcal{C}^3\to 0
@@ -160,7 +163,10 @@ Tenemos
 0\arrow[r] & C_{n-2}^1\arrow[r, "f_{n-2}"]& C_{n-2}^2\arrow[r, "g_{n-2}"]& C_{n-2}^3\arrow[r] & 0
 \end{tikzcd}
 \]
-donde todos los cuadrados son conmutativos. Definimos $\Delta$ de la siguiente manera: dado $[z_3]\in H_n(\mathcal{C}^3)$, es decir, $z_3\in Z_n(\mathcal{C}^3)\subseteq C_n^3$, y como $g$ es sobreyectiva, $\exists x_2\in C_n^2$ con $g_n(x_2)=z_3$. Por otro lado, $g_{n-1}(\partial_n^2(x_2))=\partial_n^3(g_n(x_2))=\partial_n^3(z_3)=0$, de donde se deduce que $\partial_n^2(x_2)\in\ker(g_{n-1})=\Ima(f_{n-1})$. Por tanto, existe un único (por inyectividad) $z_1\in C_{n-1}^1$ con $f_{n-1}(z_1)=\partial^2_n(x_2)$. Si probamos que $z_1\in Z_{n-1}(\mathcal{C}^1)$ entonces definiremos $\Delta([z_3])=[z_1]$.  
+donde todos los cuadrados son conmutativos. Definimos $\Delta$ de la siguiente manera: dado $[z_3]\in H_n(\mathcal{C}^3)$, es decir, $z_3\in Z_n(\mathcal{C}^3)\subseteq C_n^3$, y como $g$ es sobreyectiva, $\exists x_2\in C_n^2$ con $g_n(x_2)=z_3$. Por otro lado, $g_{n-1}(\partial_n^2(x_2))=\partial_n^3(g_n(x_2))=\partial_n^3(z_3)=0$, de donde se deduce que $\partial_n^2(x_2)\in\ker(g_{n-1})=\Ima(f_{n-1})$. Por tanto, existe un único (por inyectividad) $z_1\in C_{n-1}^1$ con $f_{n-1}(z_1)=\partial^2_n(x_2)$. Si probamos que $z_1\in Z_{n-1}(\mathcal{C}^1)$ entonces definiremos $\Delta([z_3])=[z_1]$. Explícitamente
+\[
+\Delta([z_3])=[(f_{n-1})^{-1}(\partial_n^2(g_n^{-1}(z_3)))].
+\]
 
 Tenemos $f_{n-2}(\partial^1_{n-1}(z_1))=\partial^2_{n-1}(f_{n-1}(z_1))=\partial^2_{n-1}(\partial^2_n(x_2))=0$. Como $f_{n-2}$ es inyectiva, entonces $\partial^1_{n-1}(z_1)=0$, con lo que tenemos lo que buscábamos.
 
@@ -260,18 +266,18 @@ Esta sucesión induce una sucesión exacta larga en homología llamada \emph{suc
 \end{observaciones}
 
 \begin{defi}
-Un complejo de $\mathcal{C}=\{(C_n,\partial_n)\}_{n\in\Z}$ se dice \emph{positivo} si $C_n=0$ para todo $n>0$. En este cas, diremos que una aplicación lineal sobreyectiva $\varepsilon: C_0\to\mathbb{F}$ cumpliendo $\varepsilon\partial_1=0$ se dirá que es un \emph{aumento} de $\mathcal{C}$.
+Un complejo de $\mathcal{C}=\{(C_n,\partial_n)\}_{n\in\Z}$ se dice \emph{positivo} si $C_n=0$ para todo $n>0$. En este caso, diremos que una aplicación lineal sobreyectiva $\varepsilon: C_0\to\mathbb{F}$ cumpliendo $\varepsilon\partial_1=0$ se dirá que es un \emph{aumento} de $\mathcal{C}$.
 \end{defi}
 
 Si tenemos un complejo de cadenas $\mathcal{C}$
 \[
 C_n\overset{\partial}{\to} C_{n-1}\to\cdots C_1\overset{\partial_1}{\to} C_0\to 0
 \]
-podemos aumentarlo a un complejo $\tilde{\mathbb{C}}$
+podemos aumentarlo a un complejo $\tilde{\mathcal{C}}$
 \[
 \tilde{C}_n\overset{\partial}{\to} \tilde{C}_{n-1}\to\cdots \tilde{C}_1\overset{\partial_1}{\to} \tilde{C}_0\overset{\varepsilon}{\to}\tilde{C}_{-1}\to 0.
 \]
-Donde $\tilde{C}_n=C_n$ para $n\geq 0$ y $\tilde{C}_{-1}=\mathbb{F}$. A los espacios vectoriales $H_n(\tilde{\mathbb{C}})$ también los denotaremos por $\tilde{H}_n( \mathcal{C})$ y los llamaremo espacios vectoriales de homología \emph{reducida} de $\mathcal{C}$. 
+Donde $\tilde{C}_n=C_n$ para $n\geq 0$ y $\tilde{C}_{-1}=\mathbb{F}$. A los espacios vectoriales $H_n(\tilde{\mathcal{C}})$ también los denotaremos por $\tilde{H}_n( \mathcal{C})$ y los llamaremo espacios vectoriales de homología \emph{reducida} de $\mathcal{C}$. 
 
 Obsérvese que si $n\geq 1$, $\tilde{H}_n( \mathcal{C})=H_n( \mathcal{C})$. Además, $\tilde{H}_{-1}(\mathcal{C})=0$ y $\tilde{H}_0(\mathcal{C})\cong H_0(\mathcal{C})\oplus\mathbb{F}$. Vamos a justificar la última afirmación. Por definición, $\tilde{H}_0(\mathcal{C})=\ker{\varepsilon}/\Ima{\partial_1}$ y $H_0(\mathcal{C})=C_0/\Ima{\partial_1}$. Observamos que $\tilde{H}_0(\mathcal{C})\subseteq H_0(\mathcal{C})$. Así que podemos construir una sucesión exacta
 \[
@@ -316,6 +322,8 @@ que en dimensiones bajas se escribe como
 \end{tikzcd}
 \]
 
+\section{Homotopía de complejos de cadenas}
+
 \begin{defi}
 Dos morfismos de complejos de cadenas $f,g:\CC^1\to\CC^2$ se dicen \emph{homotópicos} y se denota $f\simeq g$ si existe una familia de homomorfismos $h=\{h_n:C^1_n\to C^2_{n+1}\}_{n\in\Z}$ cumpliendo $f_n-g_n=\partial^2_{n+1}h_n+h_{n-1}\partial^1_n$ para todo $n\in\Z$.
 \end{defi}
@@ -323,8 +331,19 @@ Dos morfismos de complejos de cadenas $f,g:\CC^1\to\CC^2$ se dicen \emph{homotó
 \begin{lemma}
 La relación ``ser homópicos'' entre morfismos de complejos de cadenas es es una relación de equivalencia.
 \end{lemma}
-\begin{proof}
-Ejercicio.
+\begin{proof}\
+\begin{enumerate}
+\item Reflexiva: basta tomar como $h$ el morfismo 0 de complejos de cadenas.
+\item Simétrica: dado el morfismo $h$ que relaciona $f\simeq g$, es claro que el morfismo $-h$ relaciona $g\simeq f$.
+\item Transitiva: supongamos que $f\simeq g$ mediante $h$ y $g\simeq t$ mediante $h'$, entonces tenemos
+\[
+f_n-t_n=(f_n-g_n)+(g_n-t_n)=(\partial_{n+1}^2 h_n+h_{n-1}\partial_n^1)+(\partial_{n+1}^2 h_n'+h_{n-1}'\partial_n^1)=
+\]
+\[
+\partial_{n+1}^2(h_n+h_n')+(h_{n-1}+h_{n-1}')\partial_n^1.
+\]
+Por tanto, el morfismo que relaciona $f$ con $t$ es $h+h'$. 
+\end{enumerate}
 \end{proof}
 
 \begin{lemma}
@@ -337,7 +356,17 @@ Sean $f,g \colon \CC^2 \to \CC^3$, $k \colon \CC^3 \to \CC^4$ y $l \colon \CC^1 
 \]
 \end{lemma}
 \begin{proof}
-Ejercicio.
+Si $f\simeq_h g$, entonces $f_n-g_n=\partial^3_{n+1}h_n+h_{n-1}\partial_n^2$. Utilizando que $l$ es morfismo de complejos de cadenas tenemos 
+\[
+f_nl_n-g_nl_n=\partial^3_{n+1}h_nl_n+h_{n-1}\partial_n^2l_n=\partial^3_{n+1}h_nl_n+h_{n-1}l_{n-1}\partial_n^2.
+\]
+Por tanto, $f\circ l\simeq_{h\circ l} g\circ l$.
+
+Similarmente, 
+\[
+k_nf_n-k_ng_n=k_n\partial^3_{n+1}h_n+k_nh_{n-1}\partial_n^2=\partial^4_{n+1}k_nh_n+k_nh_{n-1}\partial_n^2.
+\]
+Por tanto, $k\circ f\simeq_{k\circ h} k\circ g$. 
 \end{proof}
 
 \begin{coro}
@@ -350,35 +379,35 @@ Por transitividad, $k \circ f \simeq t \circ g$.
 \end{proof}
 
 \begin{defi}
-Un morfismo $f \colon \CC^1 \to \CC^2$ de complejos de cadenas se dice \textbf{equivalencia de homotopía} si $\exists g \colon \CC^2 \to \CC^2$ morfismo de complejos de cadenas tal que $f \circ g \simeq id_{\CC^2}$ y $g \circ f \simeq id_{\CC^1}$.
+Un morfismo $f \colon \CC^1 \to \CC^2$ de complejos de cadenas se dice \emph{equivalencia de homotopía} si $\exists g \colon \CC^2 \to \CC^2$ morfismo de complejos de cadenas tal que $f \circ g \simeq Id_{\CC^2}$ y $g \circ f \simeq Id_{\CC^1}$.
 
-Diremos que $\CC^1$ y $\CC^2$ son homotópicamente equivalentes si existe una equivalencia de homotopía entre ellos.
+Diremos que $\CC^1$ y $\CC^2$ son \emph{homotópicamente equivalentes} si existe una equivalencia de homotopía entre ellos.
 \end{defi}
 
-Es decir, a los isomorfismos de complejos de cadenas se llaman ``equivalencias de homotopía''.
 Hay que tener en cuenta que la inversa homótopica $g$ no tiene por qué ser única, por eso no usaremos la notación $f^{-1}$.
 
-\begin{prop}\mbox{}
+\begin{prop}
+Se verifican:
 \begin{enumerate}
-\item Si $f g \colon \CC^1 \to \CC^2$ son homotópicos, entonces $f_* = g_* \colon H_n(\CC^1) \to H_n(\CC^2)$.
-\item Como consecuencia, si $f \colon \CC^1 \to \CC^2$ es equivalencia de homotopía, entonces $f_* \colon H_n(\CC^1) \to H_n(\CC^2)$es un isomorfismos de espacios vectoriales para todo $n \in \Z$.
+\item Si $f, g \colon \CC^1 \to \CC^2$ son homotópicos, entonces $f_* = g_* \colon H_n(\CC^1) \to H_n(\CC^2)$.
+\item Como consecuencia, si $f \colon \CC^1 \to \CC^2$ es equivalencia de homotopía, entonces $f_* \colon H_n(\CC^1) \to H_n(\CC^2)$ es un isomorfismo de espacios vectoriales para todo $n \in \Z$.
 \end{enumerate}
 \end{prop}
-\begin{proof}
+\begin{proof}\
 \begin{enumerate}
 \item Sea $z \in Z_n(\CC^1)$:
-\[ f_*([z]) - g_*([z]) = [f_n(z)]-[g_n(z)] = [\partial_{n+1}^2(h_n(z)) + h_{n-1}(\partial_n^1(z))] \]
+\[ f_*([z]) - g_*([z]) = [f_n(z)]-[g_n(z)]=[f_n(z)-g_n(z)] = [\partial_{n+1}^2(h_n(z)) + h_{n-1}(\partial_n^1(z))]. \]
 Como $z$ es un ciclo, $\partial_n^1(z)=0$. Análogamente $h_n(z)$ es también un ciclo, luego:
 \[ [\partial_{n+1}^2(h_n(z)) + h_{n-1}(\partial_n^1(z))] = [0] \]
 Entonces $f_* = g_*$.
 \item Como $f$ es equivalencia de homotopía, existe $g$ inversa homotópica de $f$. Entonces:
-\[ (f \circ g) \simeq id_{\CC^2} \Rightarrow (f \circ g)_*= (id_{\CC^2})_* \Rightarrow f_* \circ g_* = id_{H_n(\CC^2)}\]
-\[ (g \circ f) \simeq id_{\CC^1} \Rightarrow (g \circ f)_*= (id_{\CC^1})_* \Rightarrow g_* \circ f_* = id_{H_n(\CC^1)}\]
+\[ (f \circ g) \simeq id_{\CC^2} \Rightarrow (f \circ g)_*= (id_{\CC^2})_* \Rightarrow f_* \circ g_* = Id_{H_n(\CC^2)}\]
+\[ (g \circ f) \simeq id_{\CC^1} \Rightarrow (g \circ f)_*= (id_{\CC^1})_* \Rightarrow g_* \circ f_* = Id_{H_n(\CC^1)}\]
 \end{enumerate}
 \end{proof}
 
 \begin{defi}
-Un complejo de cadenas $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ se dice \textbf{contráctil} si $id_{\CC} \simeq 0$.
+Un complejo de cadenas $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ se dice \emph{contráctil} si $Id_{\CC} \simeq 0$.
 \end{defi}
 
 \begin{prop}\mbox{}
@@ -387,24 +416,25 @@ Un complejo de cadenas $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ se dice \textbf{
 \item Si $\CC = \{(C_n,\partial_n)\}_{n \in \Z}$ es un complejo de cadenas formado por espacios vectoriales, entonces también se da la implicación contraria.
 \end{enumerate}
 \end{prop}
-\begin{proof}
+\begin{proof}\
 \begin{enumerate}
-\item Existe $h \in \{h_n \colon C_n \to \C_{n+1}\}_{n \in \Z}$ cumpliendo 
-\[ id_{C_n}-0 = \partial_{n+1} \circ h_n + h_{n-1} \circ \partial_n \]
+\item Existe $h \in \{h_n \colon C_n \to C_{n+1}\}_{n \in \Z}$ cumpliendo 
+\[ Id_{C_n}-0 = \partial_{n+1} \circ h_n + h_{n-1} \circ \partial_n \]
 Sea $z \in Z_n(\CC)$, aplicando la fórmula anterior a $z$:
-\[ (id_{C_n}-0)(z) = \partial_{n+1}(h_n(z)) + h_{n-1}(\partial_n(z)) \]
-\[ z = \partial_{n+1}(h_n(z)) \in B_n(\CC) \]
-Luego $[z] = [\partial_{n+1}(h_n(z))] = [0] \in H_n(\CC)$.
+\[ z=(Id_{C_n}-0)(z) = \partial_{n+1}(h_n(z)) + h_{n-1}(\partial_n(z)), \]
+luego
+\[ z = \partial_{n+1}(h_n(z)) \in B_n(\CC). \]
+Por lo que $[z] = [\partial_{n+1}(h_n(z))] = [0] \in H_n(\CC)$.
 
 \item Sabemos $Z_n(\CC) = B_n(\CC)$ para todo $n \in \Z$.
 Consideramos las sucesiones exactas cortas:
 \[
 \begin{tikzcd}
-0 \arrow[r] & Z_n(\CC) \arrow[r,"i_n"] & C_n \arrow[r,"\partial_n"] & B_{n-1}(\CC) \to 0\\
-0 \arrow[r] & Z_{n+1}(\CC) \arrow[r,"i_n"] & C_{n+1} \arrow[r,"\partial_n"] & B_n(\CC) \to 0
+0 \arrow[r] & Z_n(\CC) \arrow[r,"i_n"] & C_n \arrow[r,"\partial_n"] & B_{n-1}(\CC)\arrow[r] &  0\\
+0 \arrow[r] & Z_{n+1}(\CC) \arrow[r,"i_n"] & C_{n+1} \arrow[r,"\partial_n"] & B_n(\CC) \arrow[r]&  0
 \end{tikzcd}
 \]
-Como una sucesión exacta corta de espacios vectoriales escinde, existe $\{t_n\}_{n \in \Z}$ tal que $t_n \colon B_{n-1}(\CC) \to C_n$ con $\partial_n \circ t_n = id_{B_{n-1}(\CC)}$.
+Como una sucesión exacta corta de espacios vectoriales escinde, existe $\{t_n\}_{n \in \Z}$ tal que $t_n \colon B_{n-1}(\CC) \to C_n$ con $\partial_n \circ t_n = Id_{B_{n-1}(\CC)}$.
 
 Se comprueba que $C_n = Z_n(\CC) + t_n(B_{n-1}(\CC))$ (no usamos el splitting lemma aquí).
 Entonces, como $Z_n(\CC) = B_n(\CC)$:
@@ -418,18 +448,18 @@ Dado $x \in C_n$, $x = b_n + t_n(b_{n-1})$ con $b_n \in B_n(\CC)$ y $b_{n-1} \in
 & h_{n-1}(\partial_n(x)) + \partial_{n+1}(h_n(x)) = h_{n-1}(\partial_n(b_n)+\partial_n(t_n(b_{n-1}))) + \partial_{n+1}(h_n(b_n)+h_n(t_n(b_{n-1}))) \\
 & = h_{n-1}(b_{n-1}) + \partial_{n+1}(h_n(b_n)) = t_n(b_{n-1}) + \partial_{n+1}(t_{n+1}(b_n)) = t_n(b_{n-1})+b_n = x
 \end{align*}
-Luego $id_{\CC} \simeq_h 0$.
+Luego $Id_{\CC} \simeq_h 0$.
 \end{enumerate}
 \end{proof}
 
 \begin{prop}
-Sean $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ y $\CC' = \{(C_n',\partial_n')\}_{n \in \Z}$ complejos de cadenas junto con un morfismo $f \colon \CC \to \CC'$ de complejos de cadenas. En estas condicioens definimos un nuevo complejo de cadenas $\CC_f = \{D_n,\overline{\partial}_n)\}_{n \in \Z}$ dado por:
+Sean $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ y $\CC' = \{(C_n',\partial_n')\}_{n \in \Z}$ complejos de cadenas junto con un morfismo $f \colon \CC \to \CC'$ de complejos de cadenas. En estas condiciones definimos un nuevo complejo de cadenas $\CC_f = \{(D_n,\overline{\partial}_n)\}_{n \in \Z}$ dado por:
 \[ D_n = C_{n-1} \oplus C_n' \]
 \[ \overline{\partial}_n (x,y) = (-\partial_{n-1}(x), \partial'_n(y) + f_{n-1}(x)) \]
 \begin{enumerate}
 \item Comprobar $\overline{\partial}_{n-1} \circ \overline{\partial}_n = 0$ para todo $n \in \Z$.
 \item Si $C_n$ y $C_n'$ son espacios vectoriales, entonces son equivalentes:
-\begin{enumerate}[(i)]
+\begin{enumerate}[i]
 \item $f$ es equivalencia de homotopía.
 \item $f_* \colon H_n(\CC) \to H_n(\CC')$ isomorfismo.
 \item $H_n(\CC_f) = 0$.
@@ -437,12 +467,36 @@ Sean $\CC = \{(C_n, \partial_n)\}_{n \in \Z}$ y $\CC' = \{(C_n',\partial_n')\}_{
 \end{enumerate}
 \end{enumerate}
 \end{prop}
-\begin{proof}\mbox{}
+\begin{dem}\mbox{}
+\begin{enumerate}
+\item Sea $(x,y)\in D_n$, 
+\[
+\overline{\partial}_{n-1} \circ \overline{\partial}_n(x,y)=\overline{\partial}_{n-1}(-\partial_{n-1}(x), \partial'_n(y) + f_{n-1}(x))=
+\]
+\[
+(\partial_{n-2}\partial_{n-1}(x),\partial_{n-1}'( \partial'_n(y) + f_{n-1}(x))+f_{n-2}(-\partial_{n-1}(x)))=
+\]
+\[
+(0,\partial_{n-1}'f_{n-1}(x)-f_{n-2}\partial_{n-1}(x))=(0,0).
+\]
+\item Ya hemos probado anteriormente $\textsc{I}\Rightarrow \textsc{II}$ y $\textsc{II}\Rightarrow \textsc{IV}$, así que probamos $\textsc{II}\Rightarrow \textsc{III}$ y $\textsc{IV}\Rightarrow \textsc{I}$.
+\end{enumerate}
 \begin{itemize}
-\item[((iv)$\Rightarrow$(i))]
-Sabemos que $id_{\CC_f} \simeq_{\overline{h}} 0$. Proponemos la siguiente inversa homotópica a $f$:
-\[ g \colon \CC' \to \CC \text{ dada por }g_n = p_1^{n+1} \circ \overline{h}_n \circ i_n^2\]
-donde $p_1^{n+1}$ e $i_n^2$ provienen del diagrama de proyeccione e inclusiones siguiente:
+\item[($\textsc{II}\Rightarrow \textsc{III}$)] Sea $[(z_1,z_2)]\in Z_n(\CC_f)$. Por definción, $\overline{\partial}_n(z_1,z_2)=(-\partial_{n-1}(z_1),\partial_n'(z_2)+f_{n-1}(z_1))=(0,0)$. De la primera componente obtenemos que $z_1\in Z_{n-1}(\CC)$. De la segunda, tomando clases de homología
+\[
+[0]=[-\partial_n'(z_2)]=[f_{n-1}(z_1)]=f_*[z_1].
+\]
+Como $f_*$ es isomorfismo, esto implica que $[z_1]=[0]$. Así que existe $c_1\in C_n$ tal que $-\partial_n(c_1)=z_1$. Sea ahora $a'=z_2-f_n(c_1)$. Se tiene que $$\partial_n'(a')=\partial_n'(z_2)-\partial_n'(f_n(c_1))=\partial_n'(z_2)-f_{n-1}(\partial_n(c_1))=\partial_n'(z_2)+f_{n-1}(z_1)=0.$$
+Es decir, que $a'$ define un ciclo en $C_n'$. Como $f_*$ es sobreyectiva, existe algún ciclo $a\in Z_n(\CC)$ y algún $c_2\in C_{n+1}'$ tal que
+\[
+f_n(a)+\partial_{n+1}'(c_2)=z_2-f_n(c_1).
+\]
+Por último, nótese que $z_1=-\partial_n(c_1+a)$ por ser $a$ un ciclo, y que $\partial_{n+1}'(c_2)+f_n(c_1+a)=z_2$. Así que $\overline{\partial}_{n+1}(c_1+a,c_2)=(z_1,z_2)$, luego $[(z_1,z_2)]=[(0,0)]$.
+
+\item[($\textsc{IV}\Rightarrow \textsc{I}$)]
+Sabemos que $Id_{\CC_f} \simeq_{\overline{h}} 0$. Proponemos la siguiente inversa homotópica a $f$:
+\[ g \colon \CC' \to \CC \text{ dada por }g_n = p_1^{n+1} \circ \overline{h}_n \circ i_2^n\]
+donde $p_1^{n+1}$ e $i_2^n$ provienen del diagrama de proyecciones e inclusiones siguiente:
 \[
 \begin{tikzcd}
 & C_{n-1} \arrow[r,"i_1^n"] & D_n\\
@@ -451,6 +505,61 @@ D_n \arrow[ur,"p_1^n"] \arrow[dr,"p_2^n"]\\
 \end{tikzcd}
 \]
 \end{itemize}
-Queda como ejercicio el resto de la demostración. Para $g \circ f \simeq_h id_{\CC}$, usar $h_n = -p_1^{n+2} \circ \overline{h}_{n+1} \circ i_1^n$. Para $f \circ g \simeq_{h'} id_{\CC'}$, usa $h_n' = p_2^{n+1} \circ \overline{h}_n \circ i_2^n$.
-\end{proof}
+Para $g \circ f \simeq_h Id_{\CC}$, usaremos $h_n = -p_1^{n+2} \circ \overline{h}_{n+1} \circ i_1^{n+1}$. De la hipótesis tenemos que $Id_{\CC_f}^n=\overline{\partial}_{n+1}\overline{h}_n+\overline{h}_{n-1}\overline{\partial}_n$. Por otro lado, por la definición de $g$, tenemos
+\begin{equation}\label{compo}
+g_n\circ f_n=p_1^{n+1}\circ \overline{h}_n\circ i_2^n\circ f_n=p_1^{n+1}\circ\overline{h}_n(0,f_n)=(\overline{h}_n)_1(0,f_n),
+\end{equation}
+donde $(\overline{h}_n)_1$ denota la primera componente. A continuación, vamos a ver que $\partial_{n+1}h_n+h_{n-1}\partial_n+g_n\circ f_n=Id_{\CC}^n$. Así pues, sea $x\in C_n$:
+\begin{gather*}
+(\partial_{n+1}h_n+h_{n-1}\partial_n)(x)=-\partial_{n+1}(p_1^{n+2}\circ\overline{h}_{n+1}\circ i_1^{n+1})(x)+p_1^{n+1}\circ\overline{h}_n\circ i_1^n\circ (-\partial_n)(x)=\\
+-\partial_{n+1}(p_1^{n+2}\circ \overline{h}_{n+1}(x,0))+p_1^{n+1}\circ \overline{h}_n(-\partial_n(x),0)=\\
+-\partial_{n+1}((\overline{h}_{n+1})_1(x,0))+(\overline{h}_n)_1(-\partial_n(x),0).
+\end{gather*} 
+Sumamos ahora lo obtenido en \ref{compo}:
+\begin{gather*}
+(\partial_{n+1}h_n+h_{n-1}\partial_n)(x)+g_n\circ f_n(x)=-\partial_{n+1}((\overline{h}_{n+1})_1(x,0))+(\overline{h}_n)_1(-\partial_n(x),0)+(\overline{h}_n)_1(0,f_n(x))=\\
+-\partial_{n+1}((\overline{h}_{n+1})_1(x,0))+(\overline{h}_n)_1(-\partial_n(x),f_n(x))=\\
+(\overline{\partial}_{n+2}\overline{h}_{n+1})_1(x,0)+(\overline{h}_n)_1(\overline{\partial}_{n+1}(x,0))=(Id_{\CC_f}^{n+1})_1(x,0)=Id_{\CC}^n(x).
+\end{gather*}
+
+
+Para $f \circ g \simeq_{h'} id_{\CC'}$, usaremos $h_n' = p_2^{n+1} \circ \overline{h}_n \circ i_2^n$ y operaremos de forma similar. Tenemos, para $y\in C_n'$,
+\begin{equation}\label{compo2}
+f_n\circ g_n(y)=f_n(p_1^{n+1}\circ \overline{h}_n\circ i_2^n(y))=f_n(p_1^{n+1}\circ \overline{h}_n(0,y))=f_n((\overline{h}_n)_2(0,y))
+\end{equation}
+A continuación,
+\begin{gather*}
+(\partial_{n+1}'h_n'+h_{n-1}'\partial_n')(y)=\partial_{n+1}'(p_2^{n+1}\circ\overline{h}_n\circ i_2^n(y))+p_2^{n+1}\circ\overline{h}_{n-1}\circ i_2^n(\partial_n'(y))=\\
+\partial_{n+1}'(p_2^{n+1}\circ\overline{h}_n(0,y))+p_2^{n+1}\circ\overline{h}_{n-1}(0,\partial_n'(y))=\partial_{n+1}'(\overline{h}_n)_2(0,y)+(\overline{h}_{n-1})_2(0,\partial_n'(y)).
+\end{gather*}
+Por último sumamos lo obtenido en \ref{compo2}:
+\begin{gather*}
+(\partial_{n+1}'h_n'+h_{n-1}'\partial_n')(y)+f_n\circ g_n(y)=\partial_{n+1}'(\overline{h}_n)_2(0,y)+(\overline{h}_{n-1})_2(0,\partial_n'(y))+f_n((\overline{h}_n)_2(0,y))=\\
+(\overline{\partial}_{n+1}\overline{h}_n)_2(0,y)+(\overline{h}_{n-1}\overline{\partial}_n)(0,y)=(Id_{\CC_f}^n)_2(0,y)=Id_{\CC'}(y).
+\end{gather*}
+\QED
+\end{dem}
+
+\begin{nota}
+Al complejo de cadenas $\CC_f$ definido en la proposición anterior se lo conoce como \emph{cono de f} (\emph{mapping cone}). A continuación vamos a ofrecer una prueba más conceptual de ($\textsc{II}\Rightarrow \textsc{III}$). 
+
+Empezamos observando que hay una sucesión exacta corta de complejos de cadenas
+\[
+0\to \CC'\to\CC_f\to \CC[-1]\to 0 
+\]
+dada por las inclusiones y las proyecciones. Aquí $\CC[-1]$ representa el \emph{shift} de $\CC$, es decir, considerar como $n$-ésimo espacio vectorial el $(n-1)$-ésimo de de $\CC$. De aquí podemos obtener la sucesión exacta larga en homología
+
+\[
+\cdots\to H_n(\mathcal{C}')\overset{(i_2^n)_*}{\to}H_n(\mathcal{C}_f)\overset{(p_1^n)_*}{\to}H_n(\mathcal{C}[-1])\overset{\Delta}{\to}H_{n-1}(\mathcal{C}')\overset{(i_2^{n-1})_*}{\to}H_{n-1}(\mathcal{C}_f)\to\cdots
+\]
+Vamos a ver que $\Delta=f_*$. Por la definición de $\Delta$ en la demostración de \ref{long}, dado $[z]\in H_n(\CC[-1])$, tenemos que
+\[
+\Delta([z])=[(i_2^n)^{-1}(\overline{\partial}_n((p_1^n)^{-1}(z)))]=[(i_2^n)^{-1}(\overline{\partial}_n(z,0))]=[(i_2^n)^{-1}(-\partial_{n-1}(z_3),f_{n-1}(z))]=
+\]
+\[
+=[(i_2^n)^{-1}(0,f_{n-1}(z))]=[f_{n-1}(z)]=f_*[z]
+\]
+como queríamos probar. Ahora, como $\Delta=f_*$ es isomorfismo, por exactitud tenemos que $(p_1^n)_*$ es la aplicación 0, luego $(i_2^n)^*$ es sobreyectiva. Por otra parte, la exactitud junto que con $f_*$ sea isomorfismo también implica que $(i_2^n)^*$ es la aplicación 0, luego necesariamente $H_n(\CC_f)=0$, y ya hemos terminado. 
+
+\end{nota}
 \end{document}

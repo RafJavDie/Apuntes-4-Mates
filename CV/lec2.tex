@@ -400,7 +400,131 @@ Consideremos $\phi:\R^n\times\R\to\R^n$ dada por $(x,t)\mapsto\phi(x)=\psi(t)x$ 
 \[
 \phi^*(dx_i)=d\phi_i=\sum_{j=1}^n\parcial{\phi_1}{x_j}dx_j+\parcial{\phi_i}{t}dt=\psi(t)dx_i+\psi'(t)x_idt.
 \]
+
 \end{ej}
+
+\begin{teorema}\label{poincare}
+Si $U$ es un abierto estrellado de $\R^n$, entonces $H^p(U)=0$ para $p>0$ y $H^0(U)=\R$. 
+\end{teorema}
+\begin{dem}
+Podemos suponer sin pérdida de generalidad que $U$ es estrellado con respecto a $0\in\R^n$. Supongamos que existe una colección $\{S_p:\Omega^p(U)\to \Omega^{p-1}(U)\}_{p\geq 0}$ de homomorfismos de espacios vectoriales tales que
+\begin{enumerate}
+\item si $p>0$, $dS_p+S_{p+1}d=1:\omega^p(U)\to\Omega^p(U)$, y
+\item si $p=0$, $S_1d=1-e:\Omega^0(U)\to\Omega^0(U)$, donde $e:\Omega^0(U)\to\Omega^0(U)$ es la evaluación en $0\in\R^n$, es decir, $e(w)_x=w(0)$ para $w\in\Omega^0(U)=C^{\infty}(U;\R)$.
+\end{enumerate}
+\[
+\begin{tikzcd}
+\Omega^{p+1}\arrow[dr, "S_{p+1}"]        & \Omega^{p+1}\\
+\Omega^p\arrow[u, "d"] \arrow[dr, "S_p"] & \Omega^p\arrow[u, "d"]\\
+\Omega^{p-1}\arrow[u,"d"]                & \Omega^{p-1}\arrow[u, "d"]\\
+\vdots \arrow[u]                                   & \vdots\arrow[u]\\
+        \Omega^1\arrow[dr, "S_1"]   \arrow[u]              & \Omega^1\arrow[u] \\
+\Omega^0\arrow[u, "d"]                        & \Omega^0\arrow[u, "d"] 
+\end{tikzcd}
+\]
+
+En tal caso, si $p>0$, $dS_p(w)+S_{p+1}d(w)=w$ para toda $w\in\Omega^p(U)$. Si $w$ es cerrada, es decir, $d(w)=0$, entonces $dS_p(w)=w$, por lo que $[w]=[dS_p(w)]=[0]\in H^p(U)$. Si $p=0$ y $w$ es cerrada tenemos que
+\[
+0=S_1d(w)=(1-e)(w)=w-e(w).
+\]
+Por tanto, $w_x=e(w)_x=w(0)$ para todo $x\in U$. Es decir, $w$ es la 0-forma constante $w(0)$, por lo que $H^0(U)=\R$. 
+
+Observemos ahora que dada $w\in\Omega^p(U\times\R)$, podemos escribirla como 
+\[
+w=\sum_If_I(x,t)dx_I+\sum_Jg_J(x,t)dt\land dx_J
+\]
+donde $I=\{1\leq i_1<\cdots<i_p\leq n\}$, $J=\{1\leq j_1<\cdots<j_{p-1}\leq n\}$, $dx_I=dx_{i_1}\land\dots\land dx_{i_p}$ y $dx_J=dx_{j_1}\land\dots\land dx_{j_{p-1}}$. Así,
+\[
+dw=\sum_Idf_I(x,t)\land dx_I+\sum_J dg_J(x,t)\land (dt\land dx_J).
+\]
+Como
+\begin{gather*}
+df_I(x,t)=\sum_{i=1}^n\parcial{f_I}{x_i}dx_i+\parcial{f_I}{t}dt,\\
+dg_I(x,t)=\sum_{i=1}^n\parcial{g_I}{x_i}dx_i+\parcial{g_I}{t}dt,
+\end{gather*}
+tenemos que 
+\begin{align*}
+dw&=\sum_I\left(\sum_{i=1}^n\parcial{f_I}{x_i}dx_i\land dx_I+\parcial{f_I}{t}dt\land dx_I\right)+ \sum_J\left(\sum_{i=1}^n\parcial{g_I}{x_i}dx_i\land (dt\land dx_J)+\parcial{g_I}{t}dt\land (dt\land dx_J)\right)\\
+&=\sum_I\left(\sum_{i=1}^n\parcial{f_I}{x_i}dx_i\land dx_I\right)+\left(\parcial{f_I}{t}dt\land dx_I-\sum_J\left(\sum_{i=1}^n\parcial{g_I}{x_i}dt\land dx_i\land dx_J\right)\right)
+\end{align*}
+Definimos $\tilde{S}_p:\Omega^p(U\times\R)\to\Omega^{p-1}(U)$ como
+\[
+w\mapsto \tilde{S}_p(w)=\sum_J\left(\int_0^1 g_J(x,t)dt\right)dx_J.
+\]
+Así, 
+\[
+\tilde{S}_{p+1}(dw)=\sum_I\left(\int_0^1\parcial{f_I}{t}dt\right)dx_I-\sum_J\left(\sum_{i=1}^n\left(\int_0^1\parcial{g_J}{x_i}dt\right)dx_i\land dx_J\right).
+\]
+Por otro lado, 
+\[
+d\tilde{S}_p(w)=\sum_J\left(\sum_{i=1}^n\left(\int_0^1\parcial{g_J(x,t)}{x_i}dt\right)dx_i\land dx_I\right).
+\]
+Sumando los cálculos anteriores obtenemos que
+\[
+d\tilde{S}_ p(w)+\tilde{S}_{p+1}(dw)=\sum_I\left(\int_0^1\parcial{f_I}{t}dt\right)dx_I=\sum_I(f_I(x,1)-f_I(x,0))dx_I.
+\]
+
+Vamos a aplicar esto a $\phi^*(w)\in\Omega^p(U\times\R)$ para 
+\[
+\phi:U\times\R\to U, \phi(x,t)=\psi(t)x
+\]
+donde $\psi:\R\to\R$ es una función diferenciable definida como
+\[
+\psi(t)=\begin{cases}
+0 & t\leq 0\\
+0\leq\psi(t)\leq 1 & t\in[0,1]\\
+1 & t\geq 1.
+\end{cases}
+\]
+y $w\in\Omega^p(U)$. Definimos finalmente 
+\[
+S_p(w)=\tilde{S}_p(\phi^*(w)).
+\]
+Si $w=\sum_Ih_I(x)dx_I$, entonces 
+\[
+\phi^*(w)=\sum_I\phi^*(h_I(x)dx_I)=\sum_I\phi^*(h_J(x))\land \phi^*(dx_I)=\sum_I(h_I(\phi(x,t))\land\phi^*(dx_I)).
+\]
+Por otra parte, 
+\[
+\phi^*(dx_I)=\phi^*(dx_{i_1})\land\dots\land\phi^*(dx_{i_p})
+\]
+con 
+\[
+\phi^*(dx_{i_k})=x_{i_k}\psi'(t)dt+\psi(t)dx_{i_k}.
+\]
+Así que
+\[
+\phi^*(dx_I)=(x_{i_1}\psi'(t)dt+\psi(t)dx_{i_1})\land\dots\land(x_{i_p}\psi'(t)dt+\psi(t)dx_{i_p}).
+\]
+De modo que
+\begin{gather*}
+\phi^*(w)=\sum_I(h_I(\phi(x,t))\land\phi^*(dx_I))=\\
+\sum_I(h_I(\phi(x,t))\land (x_{i_1}\psi'(t)dt+\psi(t)dx_{i_1})\land\dots\land(x_{i_p}\psi'(t)dt+\psi(t)dx_{i_p}))=\\
+\sum_Ih_I(\phi(x,t))(\psi(t))^p(dx_{i_1}\land\dots dx_{i_p})+\sum_Ih_I(\phi(x,t))(\cdots dt).
+\end{gather*}
+En el último término no nos interesa lo que hay concretamente, solamente que siempre aparece $dt$. Usando los cálculos anteriores, para $p>0$
+\begin{gather*}
+dS_p(w)+S_{p+1}(dw)=d\tilde{S}_p(\phi^*(w))+\tilde{S}_{p+1}(d\phi^*(w))=\\
+\sum_Ih_I(\phi(x,1))(\psi(1))^p(dx_{i_1}\land\dots\land dx_{i_p})-\sum_Ih_I(\phi(x,0))(\psi(0))^p(dx_{i_1}\land\dots\land dx_{i_p}).
+\end{gather*}
+Como $\phi(x,1)=x$, $\phi(x,0)=0$, $\psi(1)=0$ y $\psi(0)=0$, la expresión anterior es igual
+\[
+\sum_Ih_I(x)dx_I=w.
+\]
+Para $p=0$, 
+\[
+dS_0(w)+S_1(dw)=d\tilde{S}_0(\phi^*(w))+\tilde{S}_1(d\phi^*(w)).
+\]
+Ahora, $\tilde{S}_0:\Omega^0(U\times\R)\to\Omega^{-1}(U)=0$, luego $\tilde{S}_0=0$. Por otra parte, para $w=f\in\Omega^0(U)$, entonces $\phi^*(w)=w\circ\phi$. Así que
+\[
+d(\phi^*(w))=\sum_{i=1}^n\parcial{w\circ\phi}{x_i}dx_i+\parcial{w\circ\phi}{t}dt.
+\]
+Por tanto,
+\[
+\tilde{S}_1(d\phi^*(w))=\int_0^1\parcial{w\circ\phi}{t}dt=w\circ\phi(x,1)-w\circ\phi(x,0)=w(x)-w(0)=(1-e)(w).
+\]
+\QED
+\end{dem}
 
 \end{document}
 
