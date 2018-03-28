@@ -1,8 +1,8 @@
 \documentclass[twoside]{article}
 \usepackage{../../estilo-ejercicios}
-\newcommand{\lex}{<_{lex}}
-\newcommand{\grlex}{<_{grlex}}
-\newcommand{\grevlex}{<_{grevlex}}
+\newcommand{\lex}{>_{lex}}
+\newcommand{\grlex}{>_{grlex}}
+\newcommand{\grevlex}{>_{grevlex}}
 
 %--------------------------------------------------------
 \begin{document}
@@ -51,23 +51,23 @@ Each of the following polynomials is written with its monomials ordered accordin
 \begin{enumerate}[a.]
 \item
 \begin{align*}
-(2,4,1) \not\lex & (1,6,0) \lex (2,2,0)\\
-(2,4,1) \grlex & (1,6,0) \grlex (2,2,0)\\
-(2,4,1) \not\grevlex & (1,6,0) \grevlex (2,2,0)
+(2,4,1) >_{lex} & (1,6,0) \not>_{lex} (2,2,0)\\
+(2,4,1) >_{grlex} & (1,6,0) >_{grlex} (2,2,0)\\
+(2,4,1) \not>_{grevlex} & (1,6,0) >_{grevlex} (2,2,0)
 \end{align*}
 Luego $f$ está ordenado por grlex.
 \item
 \begin{align*}
-(1,3,1) \lex & (1,2,2) \not\lex (2,0,3)\\
-(1,3,1) \grlex & (1,2,2) \not\grlex (2,0,3)\\
-(1,3,1) \grevlex & (1,2,2) \grevlex (2,0,3)
+(1,3,1) >_{lex} & (1,2,2) \not>_{lex} (2,0,3)\\
+(1,3,1) >_{grlex} & (1,2,2) \not>_{grlex} (2,0,3)\\
+(1,3,1) >_{grevlex} & (1,2,2) >_{grevlex} (2,0,3)
 \end{align*}
 Luego $f$ está ordenado por grevlex.
 \item
 \begin{align*}
-(4,5,1) \lex & (3,2,1) \not\lex (1,2,4)\\
-(4,5,1) \grlex & (3,2,1) \not\grlex (1,2,4)\\
-(4,5,1) \grevlex & (3,2,1) \not\grevlex (1,2,4)
+(4,5,1) >_{lex} & (3,2,1) >_{lex} (1,2,4)\\
+(4,5,1) >_{grlex} & (3,2,1) \not>_{grlex} (1,2,4)\\
+(4,5,1) >_{grevlex} & (3,2,1) \not>_{grevlex} (1,2,4)
 \end{align*}
 Luego $f$ está ordenado por lex.
 \end{enumerate}
@@ -133,11 +133,16 @@ Como $(α+γ)-(β+γ) = α-β$, entonces $α + γ \grevlex β+γ$.
 \item $(\Z_{≥0}^n,\grevlex)$ está bien ordenado: Supongamos que este no fuera el caso.
 Como en el ejercicio anterior, esto implica que existe una cadena infinita: 
 \[ α(1) \grevlex α(2) \grevlex α(3) \grevlex \dots \]
-tal que $n=|α(1)|=|α(2)|=\dots$.
-Pero basta ver que cada componente $α(i)$ forma a su vez una cadena ascendente de enteros positivos acotados por $n$.
-Es decir, cada componente debe llegar a ser constante $≤n$.
-Entonces no es posible tal cadena infinita.
-Hemos llegado a una contradicción.
+tal que $n=|α(1)|=|α(2)|=\dotsc$.
+Esta cadena induce la cadena en $(\Z,>)$ 
+$$
+|α(1)|\geq |\alpha(2)| > |\alpha(3)| > \dotsc
+$$
+Que ha de estabilizarse por ser $(\Z,>)$ bien ordenado. Tenemos que $|\alpha(n)|=|\alpha(m)|$ $\forall m\geq n$ para algún $n\in \Z$. Por tanto, tenemos la siguiente cadena
+$$
+α(n) >_{invlex} α(n+1) >_{invlex} α(n+2) >_{invlex} \dotsc
+$$
+donde $(\Z,>_{invlex})$ es el orden monomial del Ejercicio \ref{ejer:2.2.6}. Por tanto, la cadena no puede ser infinita.
 \end{itemize}
 \end{solucion}
 
@@ -165,6 +170,7 @@ Let $>$ be any monomial order.
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
+\item[]
 \item Supongamos que $0 > α$.
 Entonces por la propiedad de compatibilidad por producto de monomio: $0+α > α+α$, es decir $α > 2α$.
 Podemos aplicar esto para obtener una cadena infinita:
@@ -172,10 +178,10 @@ Podemos aplicar esto para obtener una cadena infinita:
 Esto contradice la propiedad de buen ordenamiento.
 Entonces $α \geq  0$ por reducción al absurdo.
 \item Si $x^α$ divide a $x^β$, entonces existe $x^γ$ tal que $x^αx^γ=x^β$.
-Como $α ≤ α+γ = β$, deducimos que $α ≤ β$. Para el recíproco, basta probar que existe $\gamma$ tal que $\alpha+\gamma=\beta$. Basta tomar $\gamma=\beta-\alpha\geq 0$. Entonces $\alpha+\gamma=\beta$. Así, tenemos $x^\beta=x^\alpha x^\gamma$.
+Como $0\leq \gamma$ por el apartado anterior, entonces por definición de orden monomial tenemos $α ≤ α+γ = β$. El recíproco, sin embargo, no es cierto. Por ejemplo, con el order $lex$ tenemos que $(0,0,1)\leq (1,0,0)$, pero $z$ no divide a $x$.
 
-\item Consecuencia del hecho de que $α ≥ 0$.
-Para todo $γ \in α + \Z_{≥0}^n$, $α ≥ 0$ implica que $α + γ ≥ α$, luego $α$ es el menor elemento del conjunto.
+\item Consecuencia del hecho de que $\beta ≥ 0$.
+Para todo $γ \in α + \Z_{≥0}^n$, $\beta ≥ 0$ implica que $α + \beta ≥ α$, luego $α$ es el menor elemento del conjunto.
 \end{enumerate}
 \end{solucion}
 
@@ -225,11 +231,22 @@ of other integers. Is this necessarily true in $\Z^n_{≥0}$ for a monomial orde
 grlex order?
 \end{ejercicio}
 \begin{solucion}
-Esto es equivalente a comprobar si hay una cantidad finita de elementos entre $0$ y $\gamma$ para cualquier $\gamma\in \Z^n_{≥0}$. Supongamos que no, entonces, como el orden es total, tendríamos
-\[
-\gamma\geq\gamma_1\geq\gamma_2\geq\dots\geq 0.
-\]
-En particular, $\gamma_1\geq\gamma_2\geq\cdots$ es una sucesión decreciente, por lo que se tiene que estabilizar en algún punto, así que hay una cantidad finita.
+\begin{itemize}
+\item[]
+\item En general no tiene por qué. Por ejemplo, en $(\Z^2,\lex)$ entre $(1,0)$ y el $(0,1)$ podemos colar todos los $(0,a)$, $a\in \Z$, $a>2$. 
+\item Para el caso de grlex, consideramos $\alpha,\beta \in \Z^n$. Supongamos que $\alpha > \beta$, $|\alpha|=a$ y $|\beta|=b$. 
+\begin{itemize}
+\item Si $a=b$ entonces tengamos en cuenta si $\gamma \in \Z^n$ verifica $\alpha > \gamma > \beta$ entonces $|\gamma|=a=b$. ¿Cuántos elementos pueden verificar esto? Pues por combinatoria han de ser
+$$
+\binom{n+a-1}{a}
+$$
+Luego, en cualquier caso, han de ser necesariamente finitos.
+\item Si $a>b$, en en cualquier caso está acotado por todos los $\gamma$ tales que $|\gamma|=i$, $i=b,\dotsc,a$ que es el número
+$$
+\sum_{i=b}^a\binom{n+i-1}{i}
+$$
+\end{itemize}
+\end{itemize} 
 \end{solucion}
 
 \newpage

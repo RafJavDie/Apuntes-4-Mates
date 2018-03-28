@@ -95,6 +95,7 @@ x = t, y = t^4, z = t^7.
 \end{ejercicio}
 \begin{solucion}
 \begin{itemize}
+\item[]
 \item[a.] En este caso podemos despejar $t$ directamente de la primera ecuación y obtenemos $t=5+x_1$. Sustituyendo en las otras 2
 \begin{align*}
 &x_2=2x_1+11\\
@@ -118,20 +119,20 @@ numbers. A polynomial with coefficients in a field $k$ in the $x_i$ is a finite 
 of (finite) monomials $x^{e_1}_{i_1}\cdots x^{e_n}_{i_n}$. Let $R$ denote the set of all polynomials in the $x_i$. Note that
 we can add and multiply elements of $R$ in the usual way. Thus, $R$ is the polynomial ring
 $k[x_1, x_2,\dots]$ in infinitely many variables.
-\begin{itemize}
-\item[]
+\begin{enumerate}[a.] 
 \item[a.] Let $I = 
-\langle x_1, x_2, x_3,\rangle$ be the set of polynomials of the form $x_{t_1} f_1+\cdots+x_{t_m} f_m$, where
+\langle x_1, x_2, x_3,\dotsc\rangle$ be the set of polynomials of the form $x_{t_1} f_1+\cdots+x_{t_m} f_m$, where
 $f_j ∈ R$. Show that $I$ is an ideal in the ring $R$.
 \item[b.] Show, arguing by contradiction, that $I$ has no finite generating set. Hint: It is not enough
-only to consider subsets of $\{x_i | i ≥ 1\}$.
-\end{itemize}
+only to consider subsets of $\{x_i \mid i ≥ 1\}$.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-\begin{itemize}
+\begin{enumerate}[a.]
+\item[]
 \item[a.] En el enunciado ya se comentaba que podemos sumar polinomios de forma usual, lo cual significa que $I$ es subgrupo abeliano de $R$. Para ver que es ideal, consideremos $g\in R$. Entonces, dado $f= x_{t_1} f_1+\cdots+x_{t_m} f_m\in I$, tenemos que $gf=x_{t_1}g f_1+\cdots+x_{t_m}g f_m\in I$, ya que $gf_j\in R$. 
 \item[b.] Si fuera finitamente generado, en particular podríamos eliminar algún $x_i$ del conjunto de generadores, pero entonces el monomio $x_i$ dejaría de pertenecer a $I$, puesto que las variables son algebraicamente independientes, así que tenemos contradicción. 
-\end{itemize}
+\end{enumerate}
 \end{solucion}
 \newpage
 \begin{ejercicio}{2.1.5}
