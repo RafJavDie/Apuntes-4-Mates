@@ -126,7 +126,7 @@ Use the result of Exercise 7 of §4 to give an alternate proof that Buchberger�
 will always terminate after a finite number of steps.
 \end{ejercicio}
 \begin{solucion}
-
+En la prueba, una vez que sabemos que $LT(r)\notin \gene{LT(G')}$ pero $LT(r)\in\gene{LT(G)}$, en lugar de usar la cadena ascendente, podemos notar simplemente que por el lema de Dikcson, $LT(G)$ está finitamente generado, y como en cada paso nos mantenemos dentro de $LT(G)$ pero añadiendo polinomios que no están en el $LT(G')$ resultante, el algoritmo debe parar en un número finito de pasos.
 \end{solucion}
 \newpage
 
@@ -235,6 +235,17 @@ $g_1 ,\dots , g_t$. Note that you will use only $g_i$ and $g_j$ in the division.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a.]
+\item Aplicar operaciones por filas no es más que hacer combinaciones lineales de los $f_i$, luego claramente $\gene{f_1,\dots, f_n}\supseteq \gene{ g_1 ,\dots , g_t}$. Para la inclusión contraria basta recordar que estas operaciones son reversibles, pues se corresponden con el producto por una matriz regular, así que el mismo razonamiento sirve para probar  $\gene{f_1,\dots, f_n}\subseteq \gene{ g_1 ,\dots , g_t}$.
+
+\item Usaremos que $G=\{g_1 , \dots, g_t\}$ forma una base de Gröbner si y solo si el resto de dividir $S(g_i,g_j)$ por $G$ es 0 para todo $i\neq j$. Al estar en forma row echelon podemos escribir $g_i=x_s+C$ donde $C$ es un polinomio en variables que no son las correspondientes a ninguno de los 1's pivotes de la matriz, y análogamente $g_j=x_r+D$. Entonces $\lcm(LM(g_i),LM(g_j))=x_sx_r$, de modo que 
+\[
+S(g_i,g_j)=\frac{x_sx_r}{x_s}(x_s+C)-\frac{x_sx_r}{x_r}(x_r+D)=x_rx_s +x_rC-x_sx_r-x_sD=x_rC-x_sD
+\]
+Al dividir $x_rC-x_sD$ por $G$ solo intervienen $g_i$ y $g_j$ por construcción. De hecho, $x_rC-x_sD=-Dg_i+Cg_j$, por lo que el resto será 0.
+
+\item En primer lugar, $LC(p)=1$ para todo $p\in G$. Por otra parte, dado $p=x_i+C$ como antes, como ni $x_i$ ni ninguna variable de $C$ coincide con ninguno de los términos líderes del resto de polinomios de $G$, no puede ocurrir que un monomio de $p$ esté en $\gene{LT(G\setminus\{p\})}$. 
+\end{enumerate}
 \end{solucion}
 
 \newpage
@@ -268,7 +279,12 @@ Exercise 11 of §3.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-
+\begin{enumerate}[a.]
+\item Al dividir $f$ por $F$, que el resto sea $r$ significa que en el momento en que ningún $LT(f_i)$ divide al dividendo intermedio, $LT(p)=LT(r)$, ya que a partir de ese momento el término líder del resto no se altera y los demás términos del resto son de grado menor. Por tanto, al incluir $r$, pasaríamos a dividir $p$ por $r$, y como $LT(p)=LT(r)$, multiplicaríamos $r$ por 1 y restaríamos, es decir, haríamos $p-r$. 
+\item
+\item
+\item 
+\end{enumerate}
 \end{solucion}
 
 \newpage
@@ -276,10 +292,10 @@ Exercise 11 of §3.
 \begin{ejercicio}{2.7.13}
 In the discussion following the proof of Theorem 2, we commented that if $\overline{S( f , g)}^{G'} = 0$,
 then remainder stays zero when we enlarge $G'$. More generally, if $\overline{f}^F = 0$ and $F'$ is
-obtained from $F$ by adding elements at the end, then $f = 0$. Prove this.
+obtained from $F$ by adding elements at the end, then $\overline{f}^{F'} = 0$. Prove this.
 \end{ejercicio}
 \begin{solucion}
-
+Como $\overline{f}^F = 0$ no hay necesidad de añadir ningún término al resto al dividir, luego menos aún si añadimos algún polinomio.
 \end{solucion}
 
 \newpage
@@ -289,7 +305,7 @@ Suppose we have $n$ points $V = \{(a_1 , b_1 ), \dots , (a_n , b_n )\} ⊆ k^2$ 
 distinct. This exercise will study the Lagrange interpolation polynomial defined by
 \[
 h(x) =\sum^n_{i=1}b_i\prod_{i\neq j}
-\frac{ x_j − a_j}{a_i − a_j}
+\frac{ x − a_j}{a_i − a_j}
 ∈ k[x].
 \]
 
@@ -306,7 +322,14 @@ order with $y > x$.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a.]
+\item Sea $a_k$ con $1\leq k\leq n$. Entonces el producto $\prod_{i\neq j}
+\frac{ x − a_j}{a_i − a_j}$ vale 1 cuando $k=i$ y 0 cuando $k\neq i$. Así que en la suma solo nos queda $b_i$, por lo que $h(a_i)=b_i$. Además $h$ tiene grado menor o igual que $n-1$ porque en cada producto hay $n-1$ factores y la suma de polinomios no aumenta el grado. 
 
+\item Si hubiera un polinomio $f$ de grado menor o igual que $n-1$ con la misma propiedad, $h-f$ sería un polinomio de grado a lo sumo $n-1$ que se anula en $n$ puntos $a_1,\dots, a_n$. Por el teorema fundamental del álgebra, $h-f=0$, luego $h=f$. 
+\item
+\item 
+\end{enumerate}
 \end{solucion}
 
 
