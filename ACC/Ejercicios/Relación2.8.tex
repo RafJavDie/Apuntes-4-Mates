@@ -1,0 +1,228 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\lex}{<_{lex}}
+\newcommand{\grlex}{<_{grlex}}
+\newcommand{\grevlex}{<_{grevlex}}
+
+\newcommand{\PhantC}{\phantom{\colon}}%
+\newcommand{\CenterInCol}[1]{\multicolumn{1}{c}{#1}}%
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{2.8.1}
+Determine whether $f = xy^3 − z^2 + y^5 − z^3$ is in the ideal $I = 
+\gene{−x^3 + y, x^2y − z}$.
+\end{ejercicio}
+
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.8.2}
+Repeat Exercise \ref{ejer:2.8.1} for $f = x^3z − 2y^2$ and $I = 
+\gene{xz − y, xy + 2z^2, y − z}$.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.8.3}
+By the method of Examples 2 and 3, find the points in $\C^3$ on the variety
+$$\V(x^2 + y^2 + z^2 − 1, x^2 + y^2 + z^2 − 2x, 2x − 3y − z).$$
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.8.4}
+Repeat Exercise \ref{ejer:2.8.3} for $\V(x^2y − z^3, 2xy − 4z − 1, z − y^2, x3 − 4zy)$.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.8.5}
+Recall from calculus that a critical point of a differentiable function $f (x, y)$ is a point
+where the partial derivatives $\frac{∂f}
+{∂x}$ and $\frac{∂f}
+{∂y}$ vanish simultaneously. When $f ∈ \R[x, y]$, it
+follows that the critical points can be found by applying our techniques to the system of
+polynomial equations
+$$\frac{∂f}
+{∂x}
+=
+\frac{∂f}
+{∂y}
+= 0.$$
+To see how this works, consider the function
+
+$$f (x, y) = (x^2 + y^2 − 4)(x^2 + y^2 − 1) + (x − 3/2)^2 + (y − 3/2)^2.$$
+\begin{enumerate}[a.]
+\item Find all critical points of $f (x, y)$.
+\item Classify your critical points as local maxima, local minima, or saddle points. Hint:
+Use the second derivative test.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.8.6}
+Fill in the details of Example 5. In particular, compute the required Gröbner basis, and
+verify that this gives us (up to a constant multiple) the polynomial appearing on the
+left-hand side of equation (4).
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.8.7}
+Let the surface $S$ in $\R^3$ be formed by taking the union of the straight lines joining pairs
+of points on the lines 
+$$\left\lbrace
+\begin{array}{c}
+x = t\\
+y = 0\\
+z = 1
+\end{array}
+\right\rbrace,
+\left\lbrace
+\begin{array}{c}
+x = 0\\
+y = 1\\
+z = t\\
+\end{array}
+\right\rbrace$$
+with the same parameter value (i.e., the same $t$). (This is a special example of a class of
+surfaces called ruled surfaces.)
+\begin{enumerate}[a.]
+\item Show that the surface S can be given parametrically as
+\begin{align*}
+&x = ut,\\
+&y = 1 − u,\\
+&z = t + u(1 − t).
+\end{align*}
+\item Using the method of Examples 4 and 5, find an (implicit) equation of a variety $V$
+containing the surface $S$.
+\item Show $V = S$ (that is, show that every point of the variety V can be obtained by
+substituting some values for $t$, $u$ in the equations of part (a). Hint: Try to “solve” the
+implicit equation of $V$ for one variable as a function of the other two.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.8.8}
+Some parametric curves and surfaces are algebraic varieties even when the given
+parametrizations involve transcendental functions such as sin and cos. In this problem,
+we will see that the parametric surface $T$,
+
+\begin{align*}
+&x = (2 + cos(t)) cos(u),\\
+&y = (2 + cos(t)) sin(u),\\
+&z = sin(t),
+\end{align*}
+lies on an affine variety in $\R^3$.
+\begin{enumerate}[a.]
+\item Draw a picture of $T$. Hint: Use cylindrical coordinates.
+\item Let $a = \cos(t)$, $b = \sin(t)$, $c = \cos(u)$, $d = \sin(u)$, and rewrite the above equations
+as polynomial equations in $a, b, c, d, x, y, z$.
+\item The pairs $a$, $b$ and $c$, $d$ in part (b) are not independent since there are additional polynomial
+identities
+$$a^2 + b^2 − 1 = 0, c^2 + d^2 − 1 = 0$$
+stemming from the basic trigonometric identity. Form a system of five equations by
+adjoining the above equations to those from part (b) and compute a Gröbner basis for
+the corresponding ideal. Use the lex monomial ordering and the variable order
+$$a > b > c > d > x > y > z.$$
+There should be exactly one polynomial in your basis that depends only on $x, y, z$.
+This is the equation of a variety containing $T$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+\item[]
+
+\end{enumerate}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.8.9}
+Consider the parametric curve $K ⊆ \R^3$ given by
+\begin{align*}
+&x = (2 + cos(2s))cos(3s),\\
+&y = (2 + cos(2s))sin(3s),\\
+&z = sin(2s).
+\end{align*}
+\begin{enumerate}[a.]
+\item Express the equations of $K$ as polynomial equations in $x, y, z$, $a = \cos(s)$, $b = \sin(s)$.
+Hint: Trig identities.
+\item By computing a Gröbner basis for the ideal generated by the equations from part (a)
+and $a^2+b^2−1$ as in Exercise \ref{ejer:2.8.8}, show that $K$ is (a subset of) an affine algebraic curve.
+Find implicit equations for a curve containing $K$.
+\item Show that the equation of the surface from Exercise \ref{ejer:2.8.8} is contained in the ideal generated
+by the equations from part (b). What does this result mean geometrically? (You
+can actually reach the same conclusion by comparing the parametrizations of $T$ and
+$K$, without calculations.)
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+\item[]
+
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.8.10}
+Use the method of Lagrange multipliers to find the point(s) on the surface defined by
+$x^4 + y^2 + z^2 − 1 = 0$ that are closest to the point $(1, 1, 1)$ in $\R^3$. Hint: Proceed as in
+Example 3. (You may need to “fall back” on a numerical method to solve the equations
+you get.)
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.8.11}
+Suppose we have numbers a, b, c which satisfy the equations
+\begin{align*}
+a + b + c = 3,\\
+a2 + b2 + c2 = 5,\\
+a3 + b3 + c3 = 7.
+\end{align*}
+\begin{enumerate}[a.]
+\item Prove that $a^4 +b^4 +c^4 = 9$. Hint: Regard $a, b, c$ as variables and show carefully that
+$a^4 + b^4 + c^4 − 9 ∈ 
+\gene{a + b + c − 3, a^2 + b^2 + c^2 − 5, a^3 + b^3 + c^3 − 7}$.
+\item Show that $a^5 + b^5 + c^5 \neq 11$.
+\item What are $a^5 + b^5 + c^5$ and $a^6 + b^6 + c^6?$ Hint: Compute remainders.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+
+\end{document}
