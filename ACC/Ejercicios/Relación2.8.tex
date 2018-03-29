@@ -20,7 +20,7 @@ Determine whether $f = xy^3 − z^2 + y^5 − z^3$ is in the ideal $I =
 \end{ejercicio}
 
 \begin{solucion}
-
+Calculamos una base de Gröbner de $I$ para el orden lex, con lo que obtenemos $G=\{x^3 - y, x^2y - z, xy^3 - z^2, xz - y^2, y^5 - z^3\}$. Al dividir $f$ por $G$ obtenemos resto 0, por lo que $f\in I$.
 \end{solucion}
 
 \newpage
@@ -30,7 +30,7 @@ Repeat Exercise \ref{ejer:2.8.1} for $f = x^3z − 2y^2$ and $I =
 \gene{xz − y, xy + 2z^2, y − z}$.
 \end{ejercicio}
 \begin{solucion}
-
+Esta vez la base de Gröbner que calculamos es $G=\{[xz - z, y - z, z^2 + 1/2z\}$ y como resto de la división de $f$ por $G$ obtenemos es $2z$, por lo que $f\notin I$.
 \end{solucion}
 \newpage
 
@@ -39,16 +39,23 @@ By the method of Examples 2 and 3, find the points in $\C^3$ on the variety
 $$\V(x^2 + y^2 + z^2 − 1, x^2 + y^2 + z^2 − 2x, 2x − 3y − z).$$
 \end{ejercicio}
 \begin{solucion}
-
+Tal como en dichos ejemplos calculamos una base de Gröbner para $$I=\gene{x^2 + y^2 + z^2 − 1, x^2 + y^2 + z^2 − 2x, 2x − 3y − z}$$ usando el orden lex. En este caso obtenemos $G=\{x - \frac{1}{2}, y + \frac{1}{3}z - \frac{1}{3}, z^2 - \frac{1}{5}z - \frac{23}{40}\}$. Del último polinomio obtenemos las raíces
+\[
+z = \frac{1}{10} + \frac{3 \sqrt{13/2}}{10},\quad z = \frac{1}{10} - \frac{3 \sqrt{13/2}}{10}
+\]
+y del primera $x=\frac{1}{2}$. Por último, sustituyendo los dos valores de $z$ en la ecuación del segundo polinomio obtenemos
+\[
+y=\frac{1}{20}(6-\sqrt{26}),\quad y=\frac{1}{20}(6+\sqrt{26}).
+\]
 \end{solucion}
 
 \newpage
 
 \begin{ejercicio}{2.8.4}
-Repeat Exercise \ref{ejer:2.8.3} for $\V(x^2y − z^3, 2xy − 4z − 1, z − y^2, x3 − 4zy)$.
+Repeat Exercise \ref{ejer:2.8.3} for $\V(x^2y − z^3, 2xy − 4z − 1, z − y^2, x^3 − 4zy)$.
 \end{ejercicio}
 \begin{solucion}
-
+La base de Gröbner es $\{1\}$ en este caso, así que $\V(x^2y − z^3, 2xy − 4z − 1, z − y^2, x^3 − 4zy)=\V(1)=\emptyset$.
 \end{solucion}
 \newpage
 
@@ -75,7 +82,28 @@ Use the second derivative test.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-
+\begin{enumerate}[a.]
+\item Calculamos las derivadas parciales 
+\[
+\parcial{f}{x}=x (4 x^2 + 4 y^2 - 8) - 3,\quad \parcial{f}{y}=y (4 x^2 + 4 y^2 - 8) - 3.
+\]
+Para encontrar los puntos críticos calculamos una base de Gröbner del ideal $I=\gene{x (4 x^2 + 4 y^2 - 8) - 3, y (4 x^2 + 4 y^2 - 8) - 3}$. Obtenemos $G=\{x - y, y^3 - y - \frac{3}{8}\}$. Se comprueba que el segundo polinomio tiene como raíz $y=-\frac{1}{2}$. Luego uno de los puntos críticos es $(x_1,y_1)=(-\frac{1}{2},-\frac{1}{2})$. Dividiendo por $y+\frac{1}{2}$ podemos resolver y obtener las raíces
+\[
+y = \frac{1}{4} + \frac{\sqrt{13}}{4},\quad y = \frac{1}{4} - \frac{\sqrt{13}}{4}.
+\]
+resultando así en dos puntos críticos más
+\[
+(x_2,y_2)=\left(\frac{1}{4} + \frac{\sqrt{13}}{4},\frac{1}{4} + \frac{\sqrt{13}}{4}\right),\quad (x_3,y_3)=\left(\frac{1}{4} - \frac{\sqrt{13}}{4},\frac{1}{4} - \frac{\sqrt{13}}{4}\right)
+\]
+\item Calculamos la matriz Hessiana
+\[
+\begin{pmatrix}
+12x^2+4y^2-8 & 8xy\\
+8xy & 4(x^2+3y^2-2)
+\end{pmatrix}
+\]
+y me da pereza hacer lo que queda.
+\end{enumerate}
 \end{solucion}
 
 \newpage
@@ -86,7 +114,14 @@ verify that this gives us (up to a constant multiple) the polynomial appearing o
 left-hand side of equation (4).
 \end{ejercicio}
 \begin{solucion}
-
+Sage nos da 7 polinomios en lugar de 6, como dice el libro, que son
+\[
+G=\{t + u - x, u^2 - x^2 + y, ux^2 - uy - x^3 + 3/2xy - 1/2z, uxy - uz - x^2y - xz + 2y^2, uxz - uy^2 + x^2z - 1/2xy^2 - 1/2yz, 
+\]
+\[
+uy^3 - uz^2 - 2x^2yz + 1/2xy^3 - xz^2 + 5/2y^2z, x^3z - 3/4x^2y^2 - 3/2xyz + y^3 + 1/4z^2\}
+\]
+El único que no tiene ni $t$ ni $u$ es $x^3z - 3/4x^2y^2 - 3/2xyz + y^3 + 1/4z^2$, que es exactamente el que aparece en el libro.
 \end{solucion}
 
 \newpage
@@ -125,7 +160,21 @@ implicit equation of $V$ for one variable as a function of the other two.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}\
-
+\begin{enumerate}[a.]
+\item Es bastante evidente.
+\item Utilizando el método mencionado, obtenemos la ecuación implícita
+\[
+xy + y^2 + yz - 2y - z + 1=0
+\]
+\item Resolvemos la ecuación anterior para $z$, lo cual nos da
+\[
+z=\frac{xy+y^2-2y+1}{1-y}=\frac{xy}{1-y}+(1+y)
+\]
+Si ahora expresamos $x=ut, y=1-u$, al sustituir obtenemos
+\[
+z=t(1-u)+u=t-tu+u=t+u(1-t)
+\]
+\end{enumerate}
 \end{solucion}
 
 \newpage
@@ -157,9 +206,27 @@ This is the equation of a variety containing $T$.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-\begin{enumerate}
-\item[]
-
+\begin{enumerate}[a.]
+\item Sale un toro.
+\item 
+\begin{align*}
+&x=ac+2c\\
+&y=ad+2d\\
+&z=b
+\end{align*}
+\item 
+\begin{align*}
+&x-ac-2c=0\\
+&y-ad-2d=0\\
+&z-b=0\\
+&a^2 + b^2 − 1 = 0\\
+& c^2 + d^2 − 1 = 0
+\end{align*}
+Obtenemos una base de 9 polinomios y el único que depende solo de $x,y,z$ es
+\[
+x^4 + 2x^2y^2 + 2x^2z^2 - 10x^2 + y^4 + 2y^2z^2 - 10y^2 + z^4 + 6z^2 + 9
+\]
+Se puede comprobar que esta es la ecuación usual del toro\footnote{\url{https://en.wikipedia.org/wiki/Torus}}
 \end{enumerate}
 
 \end{solucion}
@@ -186,9 +253,29 @@ $K$, without calculations.)
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-\begin{enumerate}
-\item[]
+\begin{enumerate}[a.]
+\item $\cos(2s)=\cos^2(s)-\sin^2(s)$, $\sin(2s)=2\sin(s)\cos(s)$, $\cos(3s)=\cos^3(s)-3\sin^2(s)\cos(s)$, $\sin(3s)=3\sin(s)\cos^2(s)-\sin^3(s)$. 
+\begin{align*}
+&x-(2+a^2-b^2)(a^3-3b^2a)=0\\
+&y-(2+a^2-b^2)(3ba^2-b^3)=0\\
+&z-2ba=0
+\end{align*}
+\item 
+\begin{align*}
+&x-(2+a^2-b^2)(a^3-3b^2a)=0\\
+&y-(2+a^2-b^2)(3ba^2-b^3)=0\\
+&z-2ba=0\\
+&a^2+b^2-1=0
+\end{align*}
+\begin{align*}
+&x^2 + y^2 - 9=0\\
+ &xy + 18z^3 - 27/2z=0\\
+& xz^3 - 3/4xz - 1/18y^3 + 1/2y=0\\
+& y^4 - 9y^2 + 324z^6 - 486z^4 + 729/4z^2=0
+\end{align*}
+Habría que sustituir e ir resolviendo.
 
+\item Esta curva se obtiene a partir de la superficie del ejercicio \ref{ejer:2.8.7} haciendo $t=2s$, $u=3s$, por lo que está contenida en la superficie del ejercicio anterior. 
 \end{enumerate}
 \end{solucion}
 
@@ -209,8 +296,8 @@ you get.)
 Suppose we have numbers a, b, c which satisfy the equations
 \begin{align*}
 a + b + c = 3,\\
-a2 + b2 + c2 = 5,\\
-a3 + b3 + c3 = 7.
+a^2 + b^2 + c^2 = 5,\\
+a^3 + b^3 + c^3 = 7.
 \end{align*}
 \begin{enumerate}[a.]
 \item Prove that $a^4 +b^4 +c^4 = 9$. Hint: Regard $a, b, c$ as variables and show carefully that
@@ -221,6 +308,11 @@ $a^4 + b^4 + c^4 − 9 ∈
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a.]
+\item Calculamos la base de Gröbner $G=\{a + b + c - 3, b^2 + bc - 3b + c^2 - 3c + 2, c^3 - 3c^2 + 2*c + 2/3\}$. Dividimos $a^4 + b^4 + c^4 − 9$ por $G$ y obtenemos resto 0, por lo que se obtiene el resultado. 
+\item Operamos de forma similar, y obtenemos como resto $-2$, así que $a^5 + b^5 + c^5 -11$ no está en el ideal, por lo que no se tiene la igualdad.
+\item El resto de $a^5 + b^5 + c^5$ es $29/3$, por lo que $a^5 + b^5 + c^5-29/3$ es un elemento del ideal, así que el resultado es precisamente este resto. Análogamente, $a^6 + b^6 + c^6=19/3$.
+\end{enumerate}
 
 \end{solucion}
 
