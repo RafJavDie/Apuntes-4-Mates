@@ -1,0 +1,210 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\lex}{<_{lex}}
+\newcommand{\grlex}{<_{grlex}}
+\newcommand{\grevlex}{<_{grevlex}}
+
+\newcommand{\PhantC}{\phantom{\colon}}%
+\newcommand{\CenterInCol}[1]{\multicolumn{1}{c}{#1}}%
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{2.9.1}
+Let $S = (c_1, \dots , c_s)$ and $T = (d_1, \dots , d_s) ∈ (k[x_1, \dots , x_n])^s$ be syzygies on the leading
+terms of $F = (f_1, \dots , f_s)$.
+\begin{enumerate}[a.]
+\item Show that $S + T = (c_1 + d_1, . \dots , c_s + d_s)$ is also a syzygy.
+\item Show that if $g ∈ k[x_1,\dots , x_n]$, then $g  S = (gc_1, \dots , gc_s)$ is also a syzygy.
+\end{enumerate}
+\end{ejercicio}
+
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.9.2}
+Given any $G = (g_1, \dots , g_s) ∈ (k[x_1, \dots , x_n])_s$ , we can define a syzygy on $G$ to be an $s$-tuple
+$S = (h_1,\dots , h_s) ∈ (k[x_1, \dots , xn_])_s$ such that
+$\sum_i h_ig_i = 0$. [Note that the syzygies
+we studied in the text are syzygies on $LT(G) = (LT(g_1), \dots , LT(g_s))$.]
+\begin{enumerate}[a.]
+\item Show that if $G = (x^2 − y, xy − z, y^2 − xz)$, then $(z,−y, x)$ defines a syzygy on $G$.
+\item Find another syzygy on $G$ from part (a).
+\item Show that if $S, T$ are syzygies on $G$, and $g ∈ k[x_1,\dots , x_n]$, then $S+T$ and $gS$ are also
+syzygies on $G$.
+
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.9.3}
+Let $M$ be an $m × (m + 1)$ matrix of polynomials in $k[x_1, \dots , x_n]$. Let $I$ be the ideal generated
+by the determinants of all the $m × m$ submatrices of $M$ (such ideals are examples
+of determinantal ideals).
+\begin{enumerate}[a.]
+\item Find a $2×3$ matrix $M$ such that the associated determinantal ideal of $2×2$ submatrices
+is the ideal with generators $G$ as in part (a) of Exercise \ref{ejer:2.9.2}.
+\item Explain the syzygy given in part (a) of Exercise \ref{eje:2.9.2} in terms of your matrix.
+\item Give a general way to produce syzygies on the generators of a determinantal ideal.
+Hint: Find ways to produce $(m + 1) × (m + 1)$ matrices containing $M$, whose determinants
+are automatically zero.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.9.4}
+Prove that the syzygy $S_{ij}$ defined in (1) is homogeneous of multidegree $γ$.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.9.5}
+Complete the proof of Lemma 4 by showing that the decomposition into homogeneous
+components is unique. Hint: First show that if $S =
+\sum_{α} S_{α}'$, where $S_{α}'$ has multidegree
+$α$, then, for a fixed $i$, the $i$-th components of the $S_{α}'$ are either 0 or have multidegree equal
+to $α − \textrm{multideg}( f_i)$ and, hence, give distinct terms as $α$ varies.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.9.6}
+Suppose that $S$ is a homogeneous syzygy of multidegree $α$ in $S(G)$.
+\begin{enumerate}[a.]
+\item Prove that $S  G$ has multidegree $< α$.
+\item Use part (a) to show that Corollary 7 follows from Theorem 6.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.9.7}
+Complete the proof of Proposition 8 by proving the formula expressing $S_{ij}$ in terms of
+$S_{il}$ and $S_{jl}$.
+\end{ejercicio}
+\begin{solucion}\
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.9.8}
+Let $G$ be a finite subset of $k[x_1, \dots , x_n]$ and let $f ∈ 
+\gene{G}$. If $\overline{f}^G = r \neq 0$, then show that
+$f →_{G'} 0$, where $G'
+= G ∪ \{r\}$. This fact is used in the proof of Theorem 9.
+\end{ejercicio}
+\begin{solucion}
+
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.9.9}
+In the proof of Theorem 9, we claimed that for every value of $B$, if $1 ≤ i < j ≤ t$ and
+$(i, j) \not∈
+B$, then condition (6) was true. To prove this, we needed to show that if the
+claim held for $B$, then it held when $B$ changed to some $B'$. The case when $(i, j) \not∈
+B'$ but
+$(i, j) ∈ B$ was covered in the text. It remains to consider when $(i, j) \not∈B' ∪ B$. In this
+case, prove that (6) holds for $B'$. Hint: Note that (6) holds for $B$. There are two cases
+to consider, depending on whether $B'$ is bigger or smaller than $B$. In the latter situation,
+$B'
+= B \ \{(l,m)\}$ for some $(l,m) \neq (i, j)$.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.9.10}
+In this exercise, we will study the ordering on the set $\{(i, j) | 1 ≤ i < j ≤ t\}$ described
+in the proof of Theorem 9. Assume that $B = ∅$, and recall that $t$ is the length of $G$ when
+the algorithm stops.
+\begin{enumerate}[a.]
+\item Show that any pair $(i, j)$ with $1 ≤ i < j ≤ t$ was a member of $B$ at some point during
+the algorithm.
+\item Use part (a) and $B = ∅$ to explain how we can order the set of all pairs according to
+when a pair was removed from $B$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.9.11}
+Consider $f:1 = x^3−2xy$ and $f_2 = x^2y−2y^2+x$ and use grlex order on $k[x, y]$. These polynomials
+are taken from Example 1 of §7, where we followed Buchberger’s algorithm
+to show how a Gröbner basis was produced. Redo this example using the algorithm of
+Theorem 9 and, in particular, keep track of how many times you have to use the division
+algorithm.
+\end{ejercicio}
+\begin{solucion}
+
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.9.12}
+Consider the polynomials
+$$x^{n+1} − yz^{n−1}w, xy^{n−1} − z^n, x^nz − y^nw,$$
+and use grevlex order with $x > y > z > w$. Mora [see LAZARD (1983)] showed that the
+reduced Gröbner basis contains the polynomial
+$$z^{n^2+1} − y^{n^2}
+w.$$
+Prove that this is true when n is 3, 4, or 5. How big are the Gröbner bases?
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.9.13}
+In this exercise, we will look at some examples of how the term order can affect the
+length of a Gröbner basis computation and the complexity of the answer.
+\begin{enumerate}[a.]
+\item Compute a Gröbner basis for $I = 
+\gene{x^5 + y^4 + z^3 − 1, x^3 + y^2 + z^2 − 1}$ using lex and
+grevlex orders with $x > y > z$. You will see that the Gröbner basis is much simpler
+when using grevlex.
+\item Compute a Gröbner basis for $I = 
+\gene{x^5 + y^4 + z^3 − 1, x^3 + y^3 + z^2 − 1}$ using lex
+and grevlex orders with $x > y > z$. This differs from the previous example by a
+single exponent, but the Gröbner basis for lex order is significantly nastier (one of its
+polynomials has 282 terms, total degree 25, and a largest coefficient of 170255391).
+\item Let $I = 
+\gene{x^4 − yz^2w, xy^2 − z^3, x^3z − y^3w}$ be the ideal generated by the polynomials
+of Exercise \ref{ejer:2.9.12} with $n = 3$. Using lex and grevlex orders with $x > y > z > w$, show
+that the resulting Gröbner bases are the same. So grevlex is not always better than
+lex, but in practice, it is usually a good idea to use grevlex whenever possible.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\end{document}
