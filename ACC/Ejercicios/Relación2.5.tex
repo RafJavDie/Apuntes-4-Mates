@@ -63,15 +63,23 @@ Then use Lemma 2 of §4.
 \begin{enumerate}[a.]
 \item[]
 \item Sea $g \in \gene{LT(I)}$ tal que $g \notin \gene{LT(f_1),\dots , LT(f_s)}$.
-Por el Lema 2, como $\gene{LT(I)}$ es ideal monomial, todos los monomios de $g$ deben estar en $\gene{LT(I)}$. Al menos, uno de ellos, llamémoslo $x^{α}$ debe estar en $\gene{LT(I)}$ pero no en $\gene{LT(f_1), \dots, LT(f_s)}$. De nuevo, por el Lema 2, existe un $f \in I$ tal que $LT(f)$ divide a $x^{α}$.
+Por el Lema 3 de §4, como $\gene{LT(I)}$ es ideal monomial, todos los monomios de $g$ deben estar en $\gene{LT(I)}$. Al menos, uno de ellos, llamémoslo $x^{α}$ debe estar en $\gene{LT(I)}$ pero no en $\gene{LT(f_1), \dots, LT(f_s)}$. Por el Lema 2 de §4, existe un $f \in I$ tal que $LT(f)$ divide a $x^{α}$.
 
-Sin embargo $LT(f) \notin \gene{LT(f_1),\dots , LT(f_s)}$, pues eso implicaría que $x^{α} \in \gene{LT(f_1), \dots, LT(f_s)}$.
+Se tiene entonces que $LT(f) \notin \gene{LT(f_1),\dots , LT(f_s)}$, pues si perteneciese implicaría que $x^{α} \in \gene{LT(f_1), \dots, LT(f_s)}$.
 
 Entonces, al aplicar el algoritmo de la división de $f$ entre $f_1,\dots,f_s$, al no ser divisible $LT(f)$ por $LT(f_1),\dots,LT(f_s)$, se añade $LT(f)$ al resto.
 Luego el resto es distinto de cero.
 \item Esto nos dice que si $\gene{LT(f_1), \dots , LT(f_s)}$ está estrictamente contenido en $\gene{LT(I)}$, entonces que si el resto de la división de $f$ por $f_1,\dots,f_s$ no es cero, esto no quiere decir que $f$ no esté en $I$.
-\item Podemos precisar la conjetura que hicimos en el ejercicio 2.3.8 con lo que hemos dicho en el apartado (b). 
+\item Podemos precisar la conjetura que hicimos en el Ejercicio 2.3.8 con lo que hemos dicho en el apartado (b). 
 \end{enumerate}
+Notemos que en particular hemos probado el siguiente enunciado
+\begin{lemma}
+Si existe algún elemento de $I$ no cuyo elemento lider no sea divisible por $LT(G)$, entonces $G$ no es una base de Grobner.
+\end{lemma}
+Cuyo contrarrecíproco es
+\begin{lemma}
+Si $G$ es una base de Gröbner entonces el elemento líder de todo elemento de $I$ es divisible por $LT(G)$.
+\end{lemma}
 \end{solucion}
 
 \newpage
@@ -81,11 +89,12 @@ If $I ⊆ k[x_1,\dots , x_n]$ is an ideal, prove that
 $\gene{LT(g) \mid g ∈ I\setminus \{0\}} = \gene{LM(g) \mid g ∈ I\setminus \{0\}}$.
 \end{ejercicio}
 \begin{solucion}
-Sea $f \in \gene{LT(g) \mid g ∈ I\setminus \{0\}}$.
-Entonces
-\[ f = \sum_{i=1}^s \left(\sum_{j=1}^t c_{ij} x^{α_i}\right) LT(g_i) = \sum_{i=1}^s \left(\sum_{j=1}^t LC(g_i) c_{ij} x^{α_i}\right) LM(g_i) \in \gene{LM(g) \mid g ∈ I\setminus \{0\}} \]
-Análogamente, sea $f \in \gene{LM(g) \mid g ∈ I\setminus \{0\}}$. Entonces:
-\[ f = \sum_{i=1}^s \left(\sum_{j=1}^t c_{ij} x^{α_i}\right) LM(g_i) = \sum_{i=1}^s \left(\sum_{j=1}^t \frac{1}{LC(g_i)} c_{ij} x^{α_i}\right) LT(g_i) \in \gene{LT(g) \mid g ∈ I\setminus \{0\}} \]
+Es inmediato, pues estamos el $LT(g)$ y $LM(g)$ son el mismo monomio salvo producto por escalar y los ideales son cerrados para el producto por escalar.
+%Sea $f \in \gene{LT(g) \mid g ∈ I\setminus \{0\}}$.
+%Entonces
+%\[ f = \sum_{i=1}^s \left(\sum_{j=1}^t c_{ij} x^{α_i}\right) LT(g_i) = \sum_{i=1}^s \left(\sum_{j=1}^t LC(g_i) c_{ij} x^{α_i}\right) LM(g_i) \in \gene{LM(g) \mid g ∈ I\setminus \{0\}} \]
+%Análogamente, sea $f \in \gene{LM(g) \mid g ∈ I\setminus %\{0\}}$. Entonces:
+%\[ f = \sum_{i=1}^s \left(\sum_{j=1}^t c_{ij} x^{α_i}\right) LM(g_i) = \sum_{i=1}^s \left(\sum_{j=1}^t \frac{1}{LC(g_i)} c_{ij} x^{α_i}\right) LT(g_i) \in \gene{LT(g) \mid g ∈ I\setminus \{0\}} \]
 \end{solucion}
 \newpage
 
@@ -96,15 +105,13 @@ $I$ if and only if the leading term of any element of $I$ is divisible by one of
 \begin{solucion}
 Supongamos que el término lider de cada elemento de $I$ es divisible por algún $LT(g_i)$. Se deduce del Lema 2, que $\forall g \in I$ $LT(g)\in \gene{LT(g_i)\mid i=1,\dotsc,t}$, luego $\gene{LT(I)}\subset\gene{LT(g_i)\mid i=1,\dotsc,t}$. Como siempre se tiene la inclusión recíproca, se da la igualdad. Esto es la definición de ser base de Gröbner.
 
-La implicación contraria puede verse demostrada en \ref{ejer:2.5.3} por contrarrecíproco.
+La implicación contraria puede verse demostrada en el apartado a. del Ejercicio \ref{ejer:2.5.3} por contrarrecíproco.
 \end{solucion}
 
 \newpage
 
 \begin{ejercicio}{2.5.6}
-Corollary 6 asserts that a Gröbner basis is a basis, i.e., if $G = \{g_1,\dots , g_t\} ⊆ I$ satisfies
-$\gene{LT(I)} = 
-\gene{LT(g_1),\dots , LT(g_t)}$, then $I =\gene{ 
+Corollary 6 asserts that a Gröbner basis is a basis then $I =\gene{ 
 g_1,\dots , g_t}$. We gave one proof of this in the
 proof of Theorem 4. Complete the following sketch to give a second proof. If $f ∈ I$, then
 divide $f$ by $(g_1,\dots, g_t)$. At each step of the division algorithm, the leading term of the
@@ -115,12 +122,14 @@ the $LT(g_i)$. Hence, terms are never added to the remainder, so that $f =
 the algorithm terminates.
 \end{ejercicio}
 \begin{solucion}
-Esta demostración no sigue exactamente el camino del ejercicio, pero es parecido.
+Lo cierto es que el esquema del enunciado es bastante explícito en cuanto a la resolución en sí del ejercicio. Además, el hecho por el cuál en cada paso $LT(p)$ debe estar en $\gene{LT(I)}$ es donde reside la clave de la prueba del Teorema 4.
 
-Tomamos $g_1,\dots,g_t$ verificando el enunciado y sea $f \in I$.
-Dividiendo $f$ entre $g_1,\dots,g_t$, tenemos que existen $q_1,\dots,q_t$ y $r$ en $k[x_1,\dots,x_n]$ tal que $f = q_1 g_q + \dots + q_s g_t + r$ donde ningún monomio de $r$ es divisible por $LT(g_1),\dots,LT(g_t)$.
-Si $r \neq 0$, $r = f - \sum_{i=1}^s q_i g_i \in I$, sin embargo $LT(r) \notin \gene{LT(g_1),\dots,LT(g_t)} = \gene{LT(I)}$. Esto no es posible por definición de $\gene{LT(I)}$.
-Entonces $r = 0$, luego $f = q_1 g_1 + \dots + q_s g_t$, es decir, $I = \gene{g_1,\dots,g_t}$.
+%Comento esto porque el ejercicio dice que des una prueba alternativa  a la que se da en el Teorema 4. La prueba que se da aquí abajo es precisamente la que se da en el Teorema 4.
+
+%Tomamos $g_1,\dots,g_t$ verificando el enunciado y sea $f \in I$.
+%Dividiendo $f$ entre $g_1,\dots,g_t$, tenemos que existen $q_1,\dots,q_t$ y $r$ en $k[x_1,\dots,x_n]$ tal que $f = q_1 g_q + \dots + q_s g_t + r$ donde ningún monomio de $r$ es divisible por $LT(g_1),\dots,LT(g_t)$.
+%Si $r \neq 0$, $r = f - \sum_{i=1}^s q_i g_i \in I$, sin embargo $LT(r) \notin \gene{LT(g_1),\dots,LT(g_t)} = \gene{LT(I)}$. Esto no es posible por definición de $\gene{LT(I)}$.
+%Entonces $r = 0$, luego $f = q_1 g_1 + \dots + q_s g_t$, es decir, $I = \gene{g_1,\dots,g_t}$.
 \end{solucion}
 
 \newpage
@@ -133,7 +142,7 @@ for the ideal generated by these polynomials? Why or why not?
 Sea $I = \gene{f_1,f_2,f_3} = \gene{x^4y^2 −z^5, x^3y^3 −1, x^2y^4 −2z}$
 Consideramos:
 \[ f  = -y^2(x^4y^2-z^5)+x^2(x^2y^4-2z) = y^2z^5-2x^2z \in I \]
-Entonces $LT(f) = y^2z^5$, que no es divisible por ninguno de los polinomios $LT(f_1)$, $LT(f_2)$, $LT(f_3)$, luego $\{f_1,f_2,f_3\}$ no forman una base de Gröbner.
+Tenemos que $LT(f) = y^2z^5$, que no es divisible por ningún elemnto lider de nuestro conjunto, luego $\{f_1,f_2,f_3\}$ no forman una base de Gröbner.
 \end{solucion}
 
 \newpage
@@ -143,13 +152,7 @@ Repeat Exercise \ref{ejer:2.5.7} for $I = \gene{x − z^2, y − z^3}$ using the
 Hint: The difficult part of this exercise is to determine exactly which polynomials are in $\gene{LT(I)}$.
 \end{ejercicio}
 \begin{solucion}
-Sea $f_1 = x-z^2$ y $f_2 = y-z^3$.
-Nos preguntamos si $\gene{LT(f_1),LT(f_2)}=\gene{x,y}$ coincide con $\gene{LT(I)}$.
-Esto es equivalente a preguntarse si el término líder de cualquier polinomio de $I$ es divisible por $x$ ó $y$.
-Supongamos que no fuera así. Sea $f = p f_1 + q f_2$ no nulo tal que $LT(f)$ no es divisible por $x$ ó $y$.
-Necesariamente $LT(f)$ es un monomio de $z$. Por el orden lex, esto quiere decir que no hay ningún otro monomio con $x$ e $y$ en $f$, luego $f$ es un polinomio de $z$ solamente.
-Sin embargo, $\V(I) = \{(t^2,t^3,t) \colon t \in \R\}$, luego $f(t^2,t^3,t)=f(t)=0$ para todo $t \in \R$, luego $f = 0$.
-Luego no existe un monomio no nulo que $LT(I)$ que no sea divisible por $x$ ó $y$, luego $\{f_1,f_2\}$ forman una base de Gröbner.
+Sea $f_1 = x-z^2$ y $f_2 = y-z^3$. Dado que con el orden lex $LT(f_1)=x$ y $LT(f_2)=y$, al dividir por $\{f_1,f_2\}$ el resto de la división debe estar en $k[z]$. Como una parametrización de $\V(I)$ es  $\{(t^2,t^3,t) \colon t \in \R\}$, esto implica que el resto (llamémoslo $r(t)$) se anula en todo $z\in \R$, por lo que es 0. Por el Ejercicio \ref{ejer:2.5.5}, $\{f_1,f_2\}$ es una base de Gröbner.
 \end{solucion}
 
 \newpage
@@ -224,7 +227,7 @@ be a descending chain of affine varieties. Show that there is some $N ≥ 1$ suc
 $V_N = V_{N+1} = V_{N+2} = \cdots$ . Hint: Use the ACC and Exercise 14 of Chapter 1, §4.
 \end{ejercicio}
 \begin{solucion}
-Consecuencia inmediata del Nullstellensatz y la ascending chain condition, pero como no se ha visto todavía, vamos a demostrarlo con lo que sabemos. Si $V_i$ es una variedad afín, entonces existen $f_{i1},\dotsc,f_{ik}$ tales que $V_i=\V(f_{i1},\dotsc,f_{ik})$. Por la Proposición 9, esto equivale a que $V=\V(I_i)$ con $I_i=\gene{f_{i1},\dotsc,f_{ik}}$. Además, si $V_i \subset V_{j}$ entonces $\I(V_j)\subset \I(V_i)$. Por tanto, cada cadena descendente de variedades afines induce una cadena ascendente de ideales. Si la cadena de variedades afín no se detiene, la cadena de ideales tampoco lo haría, lo cuál sabemos que no puede ser.
+Consecuencia inmediata del Nullstellensatz y la ascending chain condition, pero como no se ha visto todavía, vamos a demostrarlo con lo que sabemos. Si $V_i$ es una variedad afín, entonces $\I(V_i)$ es un ideal. Además, si $V_i \subset V_{j}$ entonces $\I(V_j)\subset \I(V_i)$. Por tanto, cada cadena descendente de variedades afines induce una cadena ascendente de ideales. Si la cadena de variedades afín no se detiene, la cadena de ideales tampoco lo haría, lo cuál sabemos que no puede ser.
 \end{solucion}
 
 
@@ -245,10 +248,10 @@ Análogo a la segunda implicación de \ref{ejer:2.5.12}
 \begin{ejercicio}{2.5.15}
 Given polynomials $f_1, f_2,\dots ∈ k[x_1,\dots , x_n]$, let $\V( f_1, f_2,\dots) ⊆ k^n$ be the solutions of
 the infinite system of equations $f_1 = f_2 = \dots = 0$. Show that there is some $N$ such that
-$\V( f_1, f_2,\dots) = \V( f_1,\dots , f_N)$ y la Proposición 9.
+$\V( f_1, f_2,\dots) = \V( f_1,\dots , f_N)$.
 \end{ejercicio}
 \begin{solucion}
-Consecuencia inmediata de \ref{ejer:2.5.13}
+Consecuencia inmediata de \ref{ejer:2.5.13}.
 \end{solucion}
 
 \newpage
@@ -259,9 +262,7 @@ defined the variety of any ideal (see Definition 8). In particular, this means t
 is a variety. Prove that $\V(\I(V)) = V$. Hint: See the proof of Lemma 7 of Chapter 1, §4.
 \end{ejercicio}
 \begin{solucion}
-Sabemos que existe $f_1,\dotsc,f_s$ tales que $V=\V(f_1,\dotsc,f_n)$. Si $x\in\V(\I(V)))$. Entonces $x$ es raíz de los polinomios de $\I(V)$, que por definición son los polinomios tales que se anulan en $V$. En particular, $f_1,\dotsc,f_s$ son polinomios que anulan en $V$, luego $x$ es raíz de $f_1,\dotsc,f_s$, por lo que $x\in V$.
-
-Recíprocamente, como $I=\gene{g_1,\dotsc,g_t} \subset \I(V)$, entonces $\V(\I(V))\subset \V(I) = V$.
+Por definición de variedad afín, existe $I=\{g_1,\dotsc,g_t\}$ tal que $V=\V(I)$. Es claro que $I\subset \I(V)$, pues son polinomios que se anulan en $V$, luego $\V(\I(V))\subset \V(I) = V$. Recíprocamente, si $x\in V$, entonces $f(x)=0$ $\forall f \in \I(V)$ por definición de $\I(V)$, luego $x\in \V(I(V))$ y $V\subset \V(\I(V))$.
 \end{solucion}
 
 \newpage
