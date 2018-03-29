@@ -115,22 +115,20 @@ that occur as monomials of $I$. For any monomial order $>$, prove that the small
 of $S$ with respect to $>$ must lie in $A$.
 \end{ejercicio}
 \begin{solucion}
-Sea $\alpha$ el menor elemento de $A$, que existe porque $>$ es un buen orden. Entonces cualquier monomio de $I$ tiene al menos multigrado $\alpha$, pues el producto de monomios nunca disminuye el multigrado. Así que el menor elemento de $S$ no puede ser menor que $\alpha$, así que es de hecho $\alpha$.
+Sea $\alpha$ el menor elemento de $S$, que existe porque $>$ es un buen orden. Por definición $x^\alpha\in I$ que es divisible por algún $x^\beta$ con $\beta \in A$ (Lema 2 y Teorema 5). Por tanto $\exists \gamma \in \Z^n_{\geq 0}$ tal que $\beta  = \alpha + \gamma$. Si $\gamma>0$ entonces $\alpha$ tiene grado menor estricto que $\beta$, lo cuál es una contradicción con la hipótesis sobre $\alpha$. Por tanto $\alpha = \beta \in A$.
 \end{solucion}
 
 \newpage
 
 \begin{ejercicio}{2.4.6}
-Let $I =\langle 
-x^{α} \mid α ∈ A\rangle$ be a monomial ideal, and assume that we have a finite basis
+Let $I =\langle x^{α} \mid α ∈ A\rangle$ be a monomial ideal, and assume that we have a finite basis
 $I =\langle 
 x^{β(1)},\dots , x^{β(s)}\rangle$. In the proof of Dickson’s Lemma, we observed that each $x^{β(i)}$ is
 divisible by $x^{α(i)}$ for some $α(i) ∈ A$. Prove that $I =\langle 
 x^{α(1)},\dots , x^{α(s)}\rangle$.
 \end{ejercicio}
 \begin{solucion}
-Claramente $\langle 
-x^{α(1)},\dots , x^{α(s)}\rangle\subseteq I$. Por otra parte, como $I=\langle 
+Claramente $\langle x^{α(1)},\dots , x^{α(s)}\rangle\subseteq I$. Por otra parte, como $I=\langle 
 x^{β(1)},\dots , x^{β(s)}\rangle$ y cada $\beta(i)$ es divisible por un $\alpha(i)$, podemos general los $\beta(i)$ a partir de los $\alpha(i)$, así que tenemos la otra contención.
 \end{solucion}
 
@@ -260,9 +258,9 @@ Entendemos que $u$ no puede ser el vector nulo.  Como no hay ambigüedad, voy a 
 \begin{enumerate}[a.]
 \item Veamos las tres condiciones. escalar.
 \begin{itemize}
-\item 
-\item 
-\item
+\item El orden es claramente total, pues o el producto escalar o $>_\sigma$ determina si son iguales o uno mayor que otro.
+\item Supongamos que $\alpha >_{u,\sigma} \beta$ y sea $\gamma \in \Z^n_{\geq 0}$. Si $u\alpha > u\beta$ claramente, dado que $u\in \Z^n_{\geq 0}$, $u( \alpha+\gamma) > u(\beta + \gamma)$, por ser $u\gamma \geq 0$ y ser $>$ un orden monomial en $\Z$. Si el producto escalar coincide, entonces se tendría por ser $>_{\sigma}$ un orden monomial en $\Z^n$.
+\item Veamos que $\alpha \geq 0$. Si $\alpha \neq 0$ entonces, si $u\alpha >0 = u0$, tendríamos el resultado. Si $u\alpha =0$, como $\alpha \geq_{\sigma} 0$ por ser orden monomial tenemos el resultado.
 \end{itemize}
 \item Se tiene claramente tomando $u$ como el vector de $1$'s de $\Z^n$, pues $u\alpha=|\alpha|$ y las definiciones coinciden.
 \item Vamos a dar ejemplos concretos. Tomamos $\alpha=0$ y distinguimos, si $n$ es par tomamos $\beta=(u_n,-u_{n-1},\dotsc,u_2,-u_1)$. Si $n$ es impar, tomamos $\beta=(u_{n-1},-u_{n-2},\dotsc,-u_1,0)$, siempre que $u$ no sea el vector $(0,\dotsc,0,1)$. En ese caso, obviamente podemos tomar $\beta=(1,0,\dotsc,0)$.
