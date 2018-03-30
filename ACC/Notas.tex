@@ -80,7 +80,7 @@ Por el Ejercicio 2.2.7, sabemos que para cualquier orden monomial si $\alpha>\be
 \begin{lemma} Si $r,r'$ son tales que ningún monomio de $\gene{LT(I)}$ divide a ninguno de sus términos, entonces ningún monomio de $\gene{LT(I)}$ divide a ningún término de $r+r'$.
 \end{lemma}
 \begin{dem}
-Vamos a probar que no dividen a $LT(r-r')$ pues probado esto, basta aplicar inductivamente el resultado a $r-LT(r)$ y $r'-LT(r')$ (en caso de tener sentido, pues otro caso es trivial). Obviamente si $LT(r)\neq LT(r')$ entonces $LT(r-r')$ será uno de los dos, que no es divisible por ningún elemento de $\gene{LT(I)}$. Si se da la igualdad, pueden ocurrir dos cosas. O bien los coeficientes líderes no suman 0, en cuyo caso se sigue trivialmente; o bien suman cero. Si $r-r'$ tiene más de un término (en otro caso es trivial), entonces en $r$ y/o $r'$ en hay al menos un término del mismo multigrado cuya suma no se anula y forman el término líder de $LT(r-r')$. Por hipótesis, estos término no es divisible por ninguno de $\gene{LT(I)}$, de donde se tiene el resultado.
+Si el resultado no fuera cierto, existiría algún término divisible por algún monomio de $\gene{LT(I)}$. Sin embargo, dicho monomio sería un monomio de $r$ o un monomio de $r'$ o una combinación de ambos, que solo cambiaría el coeficiente pero no el multigrado, luego ninguno puede ser divisible por hipótesis.
 \end{dem}
 \section{Anillos noetherianos}
 \begin{defi}
@@ -93,13 +93,27 @@ Son anillos noetherianos:
 \item Los dominios de ideales principales (y por tanto los cuerpos).
 \end{itemize}
 \end{prop}
-\begin{prop}\mbox{}
-\begin{enumerate}
-	\item $A$ es noetheriano.
-	\item Toda cadena creciente $I_1 \subseteq I_2 \subseteq I_3 \subseteq \dots$ de ideales es estacionara, es decir, existe $r_0$ tal que $I_r = I_{r_0} \forall r \geq r_0$.
-\end{enumerate}
+\begin{prop}
+Un anillo A es noetheriano si y solo si verifica la condición de cadena ascendentes para ideales (ACC). 
 \end{prop}
+\begin{dem}
+\begin{itemize}
+\item[]
+	\item Supongamos que A es noetheriano y consideremos la cadena creciente de ideales:
+	\[ I_1 \subseteq I_2 \subseteq I_3 \subseteq \dots \subseteq I_r \subseteq \dots \]
+	Tomamos $I = \bigcup_{n\geq 1} I_n$. Tenemos que $I$ es un ideal, por lo tanto está finitamente generado como $I = \langle a_1, \dots, a_r \rangle$. Cada $a_i \in I_{n_i}$ para algún $n_i$. Entonces $a_i \in I_n$  $\forall i$, si $n > \max\{n_1,\dots,n_r\}$. Llegamos entonces a que $I \subseteq I_n \subseteq I$, es decir $I_n = I$. Por lo tanto $I_{n+k} = I$ $\forall k \geq 0$. 
+
+	\item Supongamos que se da la ACC. Sea $I \subseteq A$ y $x_1 \in I$. Entonces $\langle x_1 \rangle \subseteq I \subseteq A$. Si $I = \langle x_1 \rangle$, hemos acabado. Si no, tomamos $x_2 \in I \setminus \langle x_1 \rangle$ y $\langle x_1, x_2 \rangle \subseteq I \subseteq A$. Si $I = \langle x_1, x_2 \rangle$, hemos acabado. Si no, repetimos el argumento tomando un $x_3 \in I \setminus \langle x_1,x_2 \rangle$. Como la cadena creciente debe ser estacionaria, llegamos a que en algún momento, la cadena de ideales $\langle x_1,\dots,x_n\rangle$ debe estabilizarse y deducimos que $I = \langle x_1,\dots,x_n\rangle$. Por lo tanto $A$ es noetheriano. 
+
+\end{itemize}
+\end{dem}
 \begin{teorema}[Teorema de la Base de Hilbert] Sea $A$ un anillo conmutativo noetheriano, entonces $A[x]$ también es noetheriano.
 \end{teorema}
-
+\begin{dem}
+Sea $I$ idean de $A[x]$. Para $i\geq 1$ tomamos $f_i \in I\setminus \gene{f_1,\dotsc,f_{i-1}}$ elemento de grado mínimo. Si $\gene{f_1,\dotsc,f_i} = I$, entonce hemos acabado. En caso contrario, para cada $f_i$ consideramos $a_i$ su coeficiente líder y el ideal $\gene{a_1,\dotsc,a_i,\dotsc}\subset A$. Como $A$ es noetheriano, $\exists m\in \N$ tal que $\gene{a_1,\dotsc,a_i,\dotsc}=\gene{a_1,\dotsc,a_m}$. Vamos a probar que $I=\gene{f_1,\dotsc,f_m}$. Si no es así, entonces tomamos $f_{m+1}$ elemento de grado mínimo en $ I\setminus \gene{f_1,\dotsc,f_{m}}$. Sabemos que $a_{m+1}=\sum_{j=1}^m u_j a_j$ para ciertos $u_j\in A$. Dado que el $\deg(f_{m+1})\geq \deg(f_i)$ para $i=1,\dotsc,m$ el siguiente polinomio está bien definido
+$$
+g = \sum_{j=1}^m u_jf_jx^{\deg(f_{m+1})-\deg(f_j)} \in \gene{f_1,\dotsc,f_m}
+$$
+y además tiene el mismo coeficiente líder que $f_{m+1}$.  Obviamente $f_{m+1}-g \notin \gene{f_1,\dotsc,f_m}$, pues en ese caso $f_{m+1}$ también pertencería, pero $f_{m+1}-g$ tiene grado menor estricto que $f_{m+1}$, lo cuál es una contradicción con que $f_{m+1}$ sea de grado mínimo.
+\end{dem}
 \end{document}
