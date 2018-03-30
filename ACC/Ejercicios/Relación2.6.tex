@@ -64,6 +64,8 @@ basis for I.
 \end{ejercicio}
 \begin{solucion}
 Sea $G$ una base de $I$ tal que $\overline{f}^G=0$ para todo $f\in I$. Supongamos que no es una base de Gröbner, es decir, que existe $f\in I$ con $LT(f)\notin \gene{LT(G)}$. En particular, por el Ejercicio 2.5.5, $LT(f)$ no es divisible por $LT(g_i)$ para ningún $i$. Pero entonces $\overline{f}^G \neq 0$. Contradicción.
+
+Otra solución muy elegantemente escogida es la siguiente. El Teorema 6 (Criterio de Buchberger) nos dice que $G$ es base de Gröbner si y solo si $\overline{S(g_i,g_j)}^G=0$ para todo $i,j$ con $i\neq j$. Pero es claro que $S(g_i,g_j)\in I$, luego por hipótesis el resto de dividir por $G$ es $0$.
 \end{solucion}
 
 \newpage
@@ -90,11 +92,11 @@ Compute $S( f , g)$ using the lex order.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}\mbox{}
-\begin{enumerate}
+\begin{enumerate}[a.]
 \item \[ S(f,g) = \frac{x^2yz^2}{4x^2z}f - \frac{x^2yz^2}{xyz^2}g = \frac{1}{4}yz(4x^2z-7y^2)-x(xyz^2+3xz^4) =  -3x^2z^4 - \frac{7}{4}y^3z. \]
 \item \[ S(f,g) = \frac{x^4yz^2}{x^4y}f - \frac{x^4yz^2}{3xz^2}g = z^2f-\frac{1}{3}x^3yg = \frac{1}{3}x^3y^2-z^4 \]
 \item \[ S(f,g) = \frac{x^7y^2z}{x^7y^2z}f-\frac{x^7y^2z}{2x^7y^2z}g = f- \frac{1}{2}g = 2ixyz-2\]
-\item \[ \frac{xyz^2}{xy}f-\frac{xyz^2}{z^2}g = z^2f-xyg = 3xyz+z^5 \]
+\item \[ S(f,g)=\frac{xyz^2}{xy}f-\frac{xyz^2}{z^2}g = z^2f-xyg = 3xyz+z^5 \]
 \end{enumerate}
 \end{solucion}
 
@@ -105,7 +107,7 @@ Does $S( f , g)$ depend on which monomial order is used? Illustrate your asserti
 examples.
 \end{ejercicio}
 \begin{solucion}
-Sí depende. Sean $f=x+y$ y $g=x+y^2$, entonces con lex siendo $x>y$ obtenemos $S(f,g)=-y^2+y$, mientras que si $y>x$ nos da $S(f,g)=yx-x$.
+Sí, depende. Sean $f=x+y$ y $g=x+y^2$, entonces con lex siendo $x>y$ obtenemos $S(f,g)=-y^2+y$, mientras que si $y>x$ nos da $S(f,g)=yx-x$.
 \end{solucion}
 
 \newpage
@@ -130,7 +132,7 @@ $$S(x^{α(i)}g_i, x^{α(j)}g_j) = x^{δ−γ_{ij}}S(g_i, g_j),$$
 where $x^{γ_{ij}} = \lcm (LM(g_i), LM(g_j))$.
 \end{ejercicio}
 \begin{solucion}
-En primer, lugar, tenemos $LT(x^{\alpha(i)}g_i)=x^{\alpha(i)}LT(g_i)$ puesto que los órdenes monomiales preservan la suma, y del mismo modo $LM(x^{\alpha(i)}g_i)=x^{\alpha(i)}LM(g_i)$. Así que si denotamos $x^{\gamma}=\lcm (x^{α(i)}LM(g_i),x^{α(j)}LM(g_j))$, entonces 
+En primer lugar, tenemos que $LT(x^{\alpha(i)}g_i)=x^{\alpha(i)}LT(g_i)$ e igualmente se tiene $LM(x^{\alpha(i)}g_i)=x^{\alpha(i)}LM(g_i)$. Denotamos $x^{\gamma}=\lcm (x^{α(i)}LM(g_i),x^{α(j)}LM(g_j))$, entonces 
 \begin{align*}S(x^{α(i)}g_i, x^{α(j)}g_j)&=\frac{x^{\gamma}}{x^{\alpha(i)}LT(g_i)}x^{α(i)}g_i-\frac{x^{\gamma}}{x^{\alpha(j)}LT(g_j)}x^{α(j)}g_j\\
 &=\frac{x^{\gamma}}{LT(g_i)}g_i-\frac{x^{\gamma}}{LT(g_j)}g_j\\
 &=x^{\gamma-\gamma_{ij}}\left(\frac{x^{\gamma_{ij}}}{LT(g_i)}g_i-\frac{x^{\gamma_{ij}}}{LT(g_j)}g_j\right)\\
@@ -145,7 +147,13 @@ Es fácil ver que $\gamma-\gamma_{ij}\geq 0$. Por tanto, tenemos que probar que 
 Show that $\{y − x^2, z − x^3\}$ is not a Gröbner basis for lex order with $x > y > z$.
 \end{ejercicio}
 \begin{solucion}
-Denotando $f=y − x^2,g=z − x^3$ tenemos que $\gene{LT(f),LT(g)}=\gene{-x^2,-x^3}=\gene{x^2}$. Sea $h=g-xf=z-y\in I$, pero $LT(h)=-y\notin\gene{LT(f),LT(g)}$.
+Siguiendo la línea del capítulo, comprobamos el Teorema 6. Denotemos $f=y − x^2,g=z − x^3$. Tenemos que
+$$
+S(f,g)= -xy+z = 0\cdot f + 0\cdot g + (-xy+z)
+$$
+El resto de dividir $S(f,g)$ por $\{f,g\}$ no es $0$, por lo que no es una base de Gröbner.
+
+Una solución alternativa es la siguiente. Tenemos que  $\gene{LT(f),LT(g)}=\gene{-x^2,-x^3}=\gene{x^2}$. Sea $h=g-xf=z-y\in I$, pero $LT(h)=-y\notin\gene{LT(f),LT(g)}$.
 \end{solucion}
 
 \newpage
@@ -174,17 +182,17 @@ Denotando en cada caso $f_i$ al i-ésimo elemento de $G$.
 \begin{ejercicio}{2.6.11}
 Let $f , g ∈ k[x_1,\dots , x_n]$ be polynomials such that $LM( f )$ and $LM(g)$ are relatively prime
 monomials and $LC( f) = LC(g) = 1$. Assume that $f$ or $g$ has at least two terms.
-\begin{enumerate}
+\begin{enumerate}[a.]
 \item Show that $S( f , g) = −(g − LT(g))f + (f − LT( f ))g$.
 \item Deduce that $S( f , g) \neq 0$ and that the leading monomial of $S( f , g)$ is a multiple of
 either $LM( f )$ or $LM(g)$ in this case.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-\begin{enumerate}
+\begin{enumerate}[a.]
 \item[]
 \item Sabemos que, por las hipótesis del enunciado, $x^\gamma=\lcm(f,g)=LT(f)LT(g)$. Por definición
-$$S(f,g)= S=f\frac{x^{\gamma}}{LT(f)}-g\frac{x^{\gamma}}{LT(g)} = LT(g)f-LT(f)g
+$$S(f,g)=f\frac{x^{\gamma}}{LT(f)}-g\frac{x^{\gamma}}{LT(g)} = LT(g)f-LT(f)g
 $$
 Si sumamos y restamos $fg$ en la expresión anterior, tenemos
 \begin{align*}
@@ -196,7 +204,7 @@ S(f,g)&=-gf+LT(g)f +fg-LT(f)g\\
 $$
 S=S(f,g)=-(g-LT(g))f+(f-LT(f))g = (f-LT(f))g 
 $$
-Dado que $g\neq 0$ se tiene que $S\neq 0$ y y $LT(S)$ es múltiplo de $LT(g)$. El otro caso es análogo. Supongamos ahora que ambos tienen dos términos al menos. Si $multideg((g-LT(g))f)>multideg((f-LT(f))g)$, entonces claramente $LT(S)$ es múltiplo de $LT(f)$ y en ningún caso $S=0$. La desigualdad contraria es análoga. Si se da la igualdad, $\exists a \in k$ tal que
+Dado que $g\neq 0$ se tiene que $S\neq 0$ y y $LT(S)$ es múltiplo de $LT(g)$. El otro caso es análogo. Supongamos ahora que ambos tienen dos términos al menos. Si $$multideg((g-LT(g))f)>multideg((f-LT(f))g)$$ entonces claramente $LT(S)$ es múltiplo de $LT(f)$ y en ningún caso $S=0$. La desigualdad contraria es análoga. Si se da la igualdad, $\exists a \in k$ tal que
 $$
 LT(g-LT(g))LT(f) = a LT(f-LT(f))LT(g)
 $$
@@ -244,16 +252,12 @@ We will return to an interesting consequence of these facts in Chapter 5.
 \end{ejercicio}
 \begin{solucion}\
 \begin{enumerate}[a.]
-\item Fijemos un orden monomial y sean $f=h+r$ y $g=h'+r'$ las descomposiciones obtenidas según la Proposición 1. 
+\item Sean $f=h+r$ y $g=h'+r'$ las descomposiciones obtenidas según la Proposición 1. 
 \begin{itemize}
 \item Si los restos coinciden, entonces $f-g=h-h'$, pero $h,h'\in I$, luego $h-h'\in I$. 
-\item Si $f-g\in I$ entonces $f-g=f-g+0 = h-h' + r-r'$. Por unicidad de descomposición según la Proposición 1 se tiene el resultado.
+\item Si $f-g\in I$ entonces $f-g=f-g+0 = h-h' + r-r'$. Observemos que ambas descomposiciones están en las hipótesis de la Porposición 1, luego han de ser la misma. Por tanto $r-r'=0$.
 \end{itemize} 
-\item Es suficiente utilizar la Proposición 1. Consideremos las descomposiciones $f=h+r$ y $g=h+r'$. Naturalmente, $f+g=h+h'+r+r'$. Se tiene que $h+h'\in I$. Además, si $f+g\neq 0$ (en cuyo caso se tendría el resultado de manera trivial), 
-$$
-multideg(f+g)\leq \max\{multideg(r),multideg(r')\}<multideg(g) \quad \forall g \in G
-$$
-De donde deducimos que $LT(g)$ no divide a $LT(r-r')$ para todo $g\in G$. Por la unicidad que garantiza la Proposición 1 tenemos el resultado.
+\item Es suficiente utilizar la Proposición 1. Consideremos las descomposiciones $f=h+r$ y $g=h+r'$. Naturalmente, $f+g=h+h'+r+r'$. Análogamente al apartado anterior, la unicidad de garantiza la Proposición 1, tenemos que $r+r'$ es el resto de dividir $f+g$ por $G$.
 \item Tenemos que $fg = hh'+hr'+h'r+rr'$. Sabemos que $hh'+hr'+h'r = p \in I$. Sin embargo, es posible que $rr'$ no cumpla primera condición de la Proposición 1, en ese caso escribimos $rr'=p'+r''$, según dicha proposición. Tomando $q=p+p'$ tenemos que $fg=q+r''$, ahora sí en las condiciones de la Proposición 1. Por la unicidad de $r''$ tenemos el resultado.
 \end{enumerate}
 \end{solucion}

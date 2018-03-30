@@ -29,6 +29,8 @@
 \lhead{Curso 2017/2018}
 
 \begin{document}
+\chapter{Geometría algebraica}
+\section{Variedades}
 \begin{defi}
 Decimos que un espacio topológico $X$ es irreducibe si no es unión de dos cerrados (no necesariamente disjuntos).
 \end{defi}
@@ -57,6 +59,11 @@ Supongamos que $\I(W)$ no fuera primo. Sea $fg \in \I(W)$, si $f$ y $g$ no está
 \end{dem}
 
 \begin{lemma}
+Dado un ideal $I\subseteq k[x_1,\dots, x_n]$. Si $I$ tiene dimensión finita como espacio $k$-espacio vectorial, entonces su dimensión coincide con el cardinal de $\V(I)$. 
+\end{lemma}
+\chapter{Bases de Gröbner}
+\section{Monomios}
+\begin{lemma}
 Un monomio $x^{α} \in \gene{LT(I)}$ si y sólo si $\exists f \in I$ tal que $LT(f) = x^{α}$.
 \end{lemma}
 \begin{dem}
@@ -65,8 +72,34 @@ Un monomio $x^{α} \in \gene{LT(I)}$ si y sólo si $\exists f \in I$ tal que $LT
 \item[($\Rightarrow$)] Si $x^{α} \in \gene{LT(I)}$, entonces existe $f \in I$ tal que $LT(f) \mid x^{α}$ por el lema 2 de la sección 2.4. Digamos que $LT(f) = cx^{β}$. Tenemos que $α-β \in \Z_{≥0}^n$. Entonces $g:=\frac{1}{c}x^{α-β}f \in I$ y $LT(g) = x^{α}$.
 \end{itemize}
 \end{dem}
-
-\begin{lemma}
-Dado un ideal $I\subseteq k[x_1,\dots, x_n]$. Si $I$ tiene dimensión finita como espacio $k$-espacio vectorial, entonces su dimensión coincide con el cardinal de $\V(I)$. 
+\begin{lemma} $LT(f)$ no divide a $LT(f-LT(f))$.
 \end{lemma}
+\begin{dem}
+Por el Ejercicio 2.2.7, sabemos que para cualquier orden monomial si $\alpha>\beta$ entonces $x^\alpha$ no divide a $^\beta$. Por definición de orden monomial, si $LT(f)$ es el monomio cuyo multigrado es mayor que cualquier otro $f$, de donde se tiene el resultado.
+\end{dem}
+\begin{lemma} Si $r,r'$ son tales que ningún monomio de $\gene{LT(I)}$ divide a ninguno de sus términos, entonces ningún monomio de $\gene{LT(I)}$ divide a ningún término de $r+r'$.
+\end{lemma}
+\begin{dem}
+Vamos a probar que no dividen a $LT(r-r')$ pues probado esto, basta aplicar inductivamente el resultado a $r-LT(r)$ y $r'-LT(r')$ (en caso de tener sentido, pues otro caso es trivial). Obviamente si $LT(r)\neq LT(r')$ entonces $LT(r-r')$ será uno de los dos, que no es divisible por ningún elemento de $\gene{LT(I)}$. Si se da la igualdad, pueden ocurrir dos cosas. O bien los coeficientes líderes no suman 0, en cuyo caso se sigue trivialmente; o bien suman cero. Si $r-r'$ tiene más de un término (en otro caso es trivial), entonces en $r$ y/o $r'$ en hay al menos un término del mismo multigrado cuya suma no se anula y forman el término líder de $LT(r-r')$. Por hipótesis, estos término no es divisible por ninguno de $\gene{LT(I)}$, de donde se tiene el resultado.
+\end{dem}
+\section{Anillos noetherianos}
+\begin{defi}
+Un anillo se dice \textbf{noetheriano} si todo ideal es finitamente generado.
+\end{defi}
+\begin{prop}
+Son anillos noetherianos:
+\begin{itemize}
+\item Los anillos finitos
+\item Los dominios de ideales principales (y por tanto los cuerpos).
+\end{itemize}
+\end{prop}
+\begin{prop}\mbox{}
+\begin{enumerate}
+	\item $A$ es noetheriano.
+	\item Toda cadena creciente $I_1 \subseteq I_2 \subseteq I_3 \subseteq \dots$ de ideales es estacionara, es decir, existe $r_0$ tal que $I_r = I_{r_0} \forall r \geq r_0$.
+\end{enumerate}
+\end{prop}
+\begin{teorema}[Teorema de la Base de Hilbert] Sea $A$ un anillo conmutativo noetheriano, entonces $A[x]$ también es noetheriano.
+\end{teorema}
+
 \end{document}
