@@ -101,7 +101,7 @@ Análogamente comprobamos que el resto de la divisiones también son cero.
 $$
 S(f_1,f_2) = xz^5-yz^4 = z^5f_1 -z^4f_2
 $$
-Por lo tanto $I$ es una base de Groebner.
+Por lo tanto $I$ es una base de Gröbner.
 \item He comprobado en SAGE este caso y es estúpidamente largo, así que no lo voy a hacer.
 \end{itemize}
 \end{enumerate}
@@ -182,9 +182,9 @@ ideal $I$, given as input an arbitrary Gröbner basis for $I$. Prove that your a
 \item Entrada: $G=\{g_1,\dotsc,g_t\}$ base de Gröbner.
 \item Dividimos por los términos líderes para que cada polinomio sea mónico. 
 \item Utilizando el Lema 3, comprobamos si $LT(g_i)\in \gene{LT(G\setminus\{g_i\}}$. Si está, removemos $g_i$ de la base, en caso contrario la dejamos.
-\item Procedemos como en la demostración de la Proposición 6, es decir, intercambiamos cada $g_i$ que permanezca en nuestro conjunto por $\overline{g_i}^{G\setminus \{g_i\}}$.
+\item Procedemos como en la demostración de la Teorema 5, es decir, intercambiamos cada $g_i$ que permanezca en nuestro conjunto por $\overline{g_i}^{G\setminus \{g_i\}}$.
 \end{enumerate}
-La demostración de la Proposición 6 garantiza que el algoritmo funciona.
+La demostración de la Teorema 5 garantiza que el algoritmo funciona.
 \end{solucion}
 
 \newpage
@@ -205,7 +205,7 @@ reduced Gröbner basis $I = \gene{x − 2y + 2w, z + 3w}$.
 \begin{solucion}
 \begin{enumerate}
 \item[]
-\item Tenemos que una base $G=\{f_1,f_2\}=\{x-2y-z-w,z+3w\}$. ¿Es una base de Groebner? Calculamos
+\item Tenemos que una base $G=\{f_1,f_2\}=\{x-2y-z-w,z+3w\}$. ¿Es una base de Gröbner? Calculamos
 $$
 S(f_1,f_2) = -3xw-2yz-z^2-zw = -3wf_1 -(2y+z+w)f_2
 $$
@@ -236,6 +236,7 @@ $g_1 ,\dots , g_t$. Note that you will use only $g_i$ and $g_j$ in the division.
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
+\item[]
 \item Aplicar operaciones por filas no es más que hacer combinaciones lineales de los $f_i$, luego claramente $\gene{f_1,\dots, f_n}\supseteq \gene{ g_1 ,\dots , g_t}$. Para la inclusión contraria basta recordar que estas operaciones son reversibles, pues se corresponden con el producto por una matriz regular, así que el mismo razonamiento sirve para probar  $\gene{f_1,\dots, f_n}\subseteq \gene{ g_1 ,\dots , g_t}$.
 
 \item Usaremos que $G=\{g_1 , \dots, g_t\}$ forma una base de Gröbner si y solo si el resto de dividir $S(g_i,g_j)$ por $G$ es 0 para todo $i\neq j$. Al estar en forma row echelon podemos escribir $g_i=x_s+C$ donde $C$ es un polinomio en variables que no son las correspondientes a ninguno de los 1's pivotes de la matriz, y análogamente $g_j=x_r+D$. Entonces $\lcm(LM(g_i),LM(g_j))=x_sx_r$, de modo que 
@@ -254,7 +255,7 @@ Al dividir $x_rC-x_sD$ por $G$ solo intervienen $g_i$ y $g_j$ por construcción.
 Show that the result of applying the Euclidean Algorithm in $k[x]$ to any pair of polynomials $f , g$ is a reduced Gröbner basis for $\gene{f , g}$ (after dividing by a constant to make the leading coefficient equal to 1). Explain how the steps of the Euclidean Algorithm can be seen as special cases of the operations used in Buchberger’s algorithm.
 \end{ejercicio}
 \begin{solucion}
-Sabemos que aplicando sucesivamente el algoritmo de división euclídea obtenemos el máximo común divisor $h$ de $f$ y $g$ que es precisamente una base de $\gene{f,g}$ como probamos en la Sección 1.5. Podemos suponer que $LC(h)=1$. Sea $p$ el grado de $h$. Como vimos en la demostración de la Proposición 6 de la Seccion 1.5, $h$ es un elemento de grado mínimo en $I$, luego es una base de Gröbner, $LT(h)$ divide a $LT(q)$ para cualquier otro $q\in I$. Por tanto, $\gene{LT(h)}=\gene{x^p}=\gene{LT(I)}$.  Cualquier monomio de $h$ distinto de su término líder tiene, por definición, grado menor que $p$, luego no puede pertenecer a $\gene{x^p}$, pues $x^p$ no puede dividirlo.
+Sabemos que aplicando sucesivamente el algoritmo de división euclídea obtenemos el máximo común divisor $h$ de $f$ y $g$ que es precisamente una base de $\gene{f,g}$ como probamos en la Sección 1.5. Podemos suponer que $LC(h)=1$. Sea $p$ el grado de $h$. Es claro que una base unitaria es de Gröbner por el criterio de Buchberger. 
 \end{solucion}
 
 \newpage
@@ -280,10 +281,14 @@ Exercise 11 of §3.
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
-\item Al dividir $f$ por $F$, que el resto sea $r$ significa que en el momento en que ningún $LT(f_i)$ divide al dividendo intermedio, $LT(p)=LT(r)$, ya que a partir de ese momento el término líder del resto no se altera y los demás términos del resto son de grado menor. Por tanto, al incluir $r$, pasaríamos a dividir $p$ por $r$, y como $LT(p)=LT(r)$, multiplicaríamos $r$ por 1 y restaríamos, es decir, haríamos $p-r$. 
-\item
-\item
-\item 
+\item[]
+\item En la construcción de $r$ por el algoritmo de división al dividir $f$ por $F$, en el momento en el que por primera vez el dividendo intermedio $p$ verifica que $LT(p)$ no es divisible por $LT(f_i)$, $r$ deja de ser $0$ para ser $LT(p)$.  Por tanto, dado que el algoritmo tiene en cuenta el orden del conjunto divisor, hasta que no llegamos a este mismo paso al dividir por $F\cup\{r\}$. Por tanto, en este momento el dividendo intermedio es el mismo que el anterior, luego $LT(p)=LT(r)$. Por tanto, siguiendo el procedimiento del algoritmo, construimos el siguiente dividendo intermedio como 
+$$
+p-\frac{LT(p)}{LT(r)}r=p-r
+$$
+\item Supongamos que es falso y consideremos el primer momento de ocurre, es decir, el primer momento en el que el término líder del dividendo intermedio no es divisible por $LT(f_i)$. 00000000000000
+\item Como en cada paso el divisor intermedio es dividible por algún $LT(f_i)$ (salvo el paso donde hay que dividir por $LT(r)$), el algoritmo no actualiza $r$ de manera no trivial, luego es $0$.
+\item 0000000000000000000
 \end{enumerate}
 \end{solucion}
 
