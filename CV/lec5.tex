@@ -130,7 +130,7 @@ Sean $U$, $V$ y $W$ abiertos euclídeos.
 
 Este resultado muestra la invarianza homotópica de la topología, en particular:
 
-\begin{coro}[Invarianza topológica de la cohomología] 
+\begin{coro}[Invarianza topológica de la cohomología]\label{6.9} 
 Si $h:U\to V$ es un homeomorfismo, entonces $h^*:H^p(V)\to H^p(U)$ es isomorfismo para todo $p$.
 \end{coro}
 
@@ -170,7 +170,18 @@ Tenemos también $\dim(\Ima{I^*})=\dim(\ker{\partial^*})=1$, por lo que $H^0(R^{
 \QED
 \end{dem}
 
-\begin{prop}
+\begin{coro}\label{6.13}
+Para $n\geq 2$ tenemos los isomorfismos
+\[
+H^p(\R^n-\{0\})\cong \begin{cases}
+\R & p=0,n-1\\
+0 & c.c.
+\end{cases}
+\]
+\end{coro}
+Obsérvese que el caso $n=2$ ya lo habíamos tratado en el ejemplo \ref{menospunto}. El resto de casos se consiguer inducción en el teorema \ref{6.11}.
+
+\begin{prop}\label{addendum}
 En las condiciones del teorema \ref{6.11} se tiene el difeomorfismo $R:\R^{n+1}-A\to \R^{n+1}-A$ definido como $R(x_1,\dots, x_n,x_{n+1})=(x_1,\dots, x_n,-x_{n+1})$. El homomorfismo inducido $R^*:H^{p+1}(\R^{n+1}-A)\to H^{p+1}(\R^{n+1}-A)$. 
 \end{prop}
 \begin{dem}
@@ -183,23 +194,116 @@ U_1\cap U_2\arrow[u, "j_1"]\arrow[r,"R_0"] & U_1\cap U_2\arrow[u, "j_2"]&U_1\cap
 \end{tikzcd}
 \]
 En  la prueba de la proposición \ref{6.11} vimos que $\partial^*:H^p(U_1\cap U_2)\to H^{p+1}(\R^{n+1}-A)$ es un isomorfismo, por lo tanto basta probar que $R^*\circ\partial^*([w])=-\partial^*([w])$ para una $p$-forma cerrada $w$ cualquiera en $U_1\cap U_2$. Usando el teorema \ref{5.1} podemos encontrar $w_{\nu}\in \Omega^p(U_{\nu})$, $\nu=1,2$, con $w=j_1^*(w_1)-j_2^*(w_2)$. Por la definición de $\partial^*$, $\partial^*([w])=[\tau]$, donde $\tau\in \Omega^{p+1}(\R^{n+1}-A)$ está determinada pro $i_{\nu}^*(\tau)=dw_{\nu}$ para $\nu=1,2$. Además tenemos, usando la conmutatividad de los diagramas anteriores
-\begin{align*}
--R_0^*w&=R_0^*j_2(w_2)-R_0^*j_1(w_1)=j_1^*(R_1^*w2)-j_2^*(R_2^*w_1),\\
+\begin{gather*}
+-R_0^*w=R_0^*j_2(w_2)-R_0^*j_1(w_1)=j_1^*(R_1^*w2)-j_2^*(R_2^*w_1),\\
 i_1^*(R^*\tau)=R_1^*(i_2^*\tau)=R_1^*(dw_2)=d(R_1^*w_2),\\
 i_2^*(R^*\tau)=R_2^*(i_1^*\tau)=R_2^*(dw_1)=d(R_2^*w_1).
-\end{align*}
+\end{gather*}
 Estas ecuaciones y la definición de $\partial^*$ nos da $\partial^*(-[R_0^*w])=[R^*\tau]$. Por lo tanto
 \begin{equation}\label{conmuta}
 \partial^*\circ R^*_0([w])=-R^*\circ\partial^*([w]).
 \end{equation}
-Para la proyección $pr:U_1\cap U_2\to R^n-A$ tenemos $pr\circ R_0=pr$, y por tanto la composición
+Para la proyección $pr:U_1\cap U_2\to \R^n-A$ tenemos $pr\circ R_0=pr$, y por tanto la composición
 \[
 H^p(\R^n-A)\overset{pr^*}{\to} H^p(U_1\cap U_2)\overset{R_0^*}{\to}H^p(U_1\cap U_2)
 \]
 es igual a $pr^*$. Como $pr^*$ es un isomorfismo (en particular, inyectiva), necesariamente $R_0^*$ es la identidad en $H^p(U_1\cap U_2)$, con lo que el lado izquierdo de \ref{conmuta} se convierte en $\partial^*([w])$, lo cual prueba el resultado.
 \QED
 \end{dem}
-INTENTAR PROBAR LA CONMUTATIVIDAD EN LA OTRA PRUEBA Y SI NO PEDIRLE A JAVI (ES POSIBLE QUE TENGA QUE CAMBIAR ALGUNA NOTACIÓN, POR EJEMPLO LOS R, QUE ALGUNO SERÁ -R0)
+
+
+Una matriz $n\times n$ invertible $A$ define una aplicación lineal $\R^n\to\R^n$ y un difeomorfismo
+\[
+f_A:\R^n-\{0\}\to\R^n-\{0\}.
+\]
+
+\begin{coro}
+Para cada $n\geq 2$, la aplicación inducida $f_A^*:H^{n-1}(\R^n-\{0\})\to H^{n-1}(\R^n-\{0\})$ consiste en multiplicar por $\det(A)/|\det(A)|=\pm 1$.
+\end{coro}
+\begin{proof}
+Sea $B$ la matriz obtenida al sustituit la $r$-ésima fila de $A$ por la $r$-ésima fila sumada a $c$ veces la $s$-ésima fila, con $r\neq s$ y $c\in\R$,
+\[
+B=(I+cE_{r,s})A,
+\]
+donde $I$ es la matriz identidad y $E_{r,s}$ es la identidad con un 1 en la posición $(r,s)$. Una homotopía entre $f_A$ y $f_B$ se puede definir mediante las matrices
+\[
+(I+tcE_{r,s})A,\ 0\leq t\leq 1.
+\]
+Del teorema \ref{6.8} se sigue que $f_A^*=f_B^*$. Además $\det(A)=\det(B)$. Mediante una sucesión de operaciones elementales de este tipo, $A$ puede ser transformada en $\mathrm{diag}(1,\dots, 1,d)$, donde $d=\det(A)$. Por lo tanto, es suficiente probar la afirmación para matrices diagonales. Las matrices
+\[
+\mathrm{diag}(1,\dots, 1, \frac{|d|^td}{|d|}),\ 0\leq t\leq 1
+\]
+%también podría coger (1-t)d+td/|d| que no pasa por 0 porque es el segmento entre dos números con el mismo signo.
+dan lugar a una homotopía, lo cual reduce el problema a dos casos, $A=\mathrm{diag}(1,\dots, 1,\pm)$, así que $f_A$ es o bien la identidad o bien la aplicación $R$ de la proposición \ref{addendum}.
+\end{proof}
+
+De la invarianza topológica (\ref{6.9}) y del del corolario \ref{6.13}, junto con 
+\[
+H^p(\R^1-\{0\}\cong\begin{cases}
+\R\oplus\R & p=0\\
+0 & p\neq 0
+\end{cases}
+\]
+obtenemos
+
+\begin{prop}
+Si $n\neq m$, entonces $\R^n$ y $\R^m$ no son homeomorfos. 
+\end{prop}
+\begin{dem}
+Podemos asumir que un posible homeomorfismo enviaría el 0 al 0, por lo que induciría un homeomorfismo entre $\R^n-\{0\}$ y $\R^m-\{0\}$, por lo que
+\[
+H^p(\R^n-\{0\})\cong H^p(\R^m-\{0\})
+\]
+para todo $p$, lo cual entra en conflicto con los resultados anteriores.
+\QED
+\end{dem}
+
+\begin{nota}
+Ofrecemos la siguiente prueba más conceptual de la proposición \ref{addendum}. Sea
+\[
+\begin{tikzcd}
+0\arrow[r] & A^*\arrow[r, "f^*"]\arrow[d,"\alpha^*"] & B^*\arrow[r, "g^*"]\arrow[d,"\beta^*"]& C^*\arrow[d,"\gamma^*"]\arrow[r] & 0\\
+0\arrow[r] & A^*_1\arrow[r, "f^*_1"] & B^*_1\arrow[r, "g^*_1"] & C^*_1\arrow[r] & 0
+\end{tikzcd}
+\]
+un diagrama conmutativo de complejos de cadenas con filas exactas. Vamos a probar que el diagrama
+\[
+\begin{tikzcd}
+H^p(C^*)\arrow[r, "\partial^*"]\arrow[d, "\gamma^*"] & H^{p+1}(A^*)\arrow[d,"\alpha^*"]\\
+H^p(C^*_1)\arrow[r, "\partial^*_1"] & H^{p+1}(A^*_1)
+\end{tikzcd}
+\]
+es conmutativo. Sea $[c]\in H^p(C^*)$, y consideremos 
+\[
+\partial^*\gamma^*([c])=[(f_1^{p+1})^{-1}(d_{B_1}((g_1^p)^{-1}(\gamma^p(c))))]
+\]
+Como $g^p$ es sobreyectiva, podemos considerar $(g^p)^{-1}(c)\in B^p$. Por conmutatividad del diagrama, $g_1^p\beta^p((g^p)^{-1}(c))=\gamma^pg^p((g^p)^{-1}(c))=\gamma^p(c)$, por lo que podemos sustituir y obtenemos
+\[
+\partial^*\gamma^*([c])=[(f_1^{p+1})^{-1}(d_{B_1}(\beta^p((g^p)^{-1}(c))))]
+\]
+Como $\beta^*$ es un morfismo de complejos de cadenas, $d^p_{B_1}\beta^p=\beta^{p+1}d^p_B$, por lo que lo anterior queda como
+\[
+\partial^*\gamma^*([c])=[(f_1^{p+1})^{-1}(\beta^{p+1}(d_B^p((g^p)^{-1}(c))))]
+\]
+Ahora, de nuevo por conmutatividad, tenemos que $\beta^{p+1}f^{p+1}=f_1^{p+1}\alpha^{p+1}$, y como $f_1^{p+1}$ es inyectiva, podemos decir que $\alpha^{p+1}=(f_1^{p+1})^{-1}(\beta^{p+1}f^{p+1})$, así que
+%siempre va a haber preimagen porque beta f = f_1 (algo)
+\[
+\partial^*\gamma^*([c])=[(f_1^{p+1})^{-1}\beta^{p+1}(f^{p+1}(f^{p+1})^{-1})(d_B^p((g^p)^{-1}(c))))]=[\alpha^{p+1}(f^{p+1})^{-1}(d_B^p((g^p)^{-1}(c))))]
+\]
+%aquí lo mismo, porque f es morfismo de complejos de cadenas, entonces conmuta con d_B y eso hace que exista la preimagen
+que por definición es $\alpha^*\partial^*([c])$. Obsérvese que la preimagen por $f^{p+1}$ de $d_B$ existe porque $f^*$ es morfismo de cadenas, y por tanto conmuta con el operador borde. 
+
+En la situación de la proposición \ref{addendum} consideramos el diagrama
+\[
+\begin{tikzcd}
+0\arrow[r] & \Omega^*(U)\arrow[r, "I^*"]\arrow[d,"R^*"] & \Omega^*(U_1)\oplus \Omega^*(U_2)\arrow[r, "J^*"]\arrow[d,"R"]& \Omega^*(U_1\cap U_2)\arrow[d,"-R_0^*"]\arrow[r] & 0\\
+0\arrow[r] &  \Omega^*(U)\arrow[r, "I^*"] & \Omega^*(U_1)\oplus\Omega^*(U_2)\arrow[r, "J^*"] & \Omega^*(U_1\cap U_2)\arrow[r] & 0
+\end{tikzcd}
+\]
+con $R(w_1,w_2)=(R_1^*w_1,R_2^*w_2)$. Esto nos da la ecuación \ref{conmuta} de la demostración de \ref{addendum}. 
+%esto conmuta porque los R_i también cambian el signo, no dejan de ser como el R pero en un sitio más pequeño
+\end{nota}
+
 
 
 \end{document}
