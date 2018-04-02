@@ -10,6 +10,129 @@
 \maketitle
 
 \begin{ejercicio}{1}
+Interpretar geométricamente las relaciones siguientes:
+  \begin{AutoMultiColItemize}
+  \item[a)] $|z-1|+|z+i|=4$
+  \item[b)] $|z-2|+|z+2|>3$
+  \item[c)] $|z-a|=|z-b|$
+  \item[d)] $|z^2-z|\leq 1$
+  \item[e)] $\Re(z)+\Im(z)<1$
+  \item[f)] $0<\Re(iz)<1$
+  \item[g)] $\alpha < \arg(z) < \beta$
+  \end{AutoMultiColItemize}
+suponiendo en $g)$ que $-\pi<\alpha<\beta<\pi$. 
+\end{ejercicio}
+\begin{solucion}
+Sea $z=x+yi$. 
+\begin{enumerate}[a)]
+\item Tomando cuadrados apropiadamente
+\begin{gather*}
+\sqrt{(x-1)^2+y^2}+\sqrt{x^2+(y+1)^2}=4\\
+(x-1)^2+y^2 + x^2+(y+1)^2 + 2\sqrt{(x-1)^2+y^2}\sqrt{x^2+(y+1)^2} = 16\\
+2\sqrt{(x-1)^2+y^2}\sqrt{x^2+(y+1)^2} = 16 - (2 x^2 - 2 x + 2 y^2 + 2 y + 2)\\
+4((x-1)^2+y^2)(x^2+(y+1)^2) = (16 - (2 x^2 - 2 x + 2 y^2 + 2 y + 2))^2\\
+15 x^2 + x (-2 y - 16) + 15 y^2 + 16 y = 48	
+\end{gather*}
+Luego estamos ante una elipse que tiene el origen en su interior.
+\item Análogamente al primer apartado, tenemos el exterior de una elipse que no contine al origen.
+\item Si $a=b$, entonces todo $z$ es solución. Si son distintos, entonces
+$$
+(x-a)^2+y^2 = (x-b)^2 +y^2  \Leftrightarrow x^2+a^2-2ax = x^2+b^2 -2bx 
+$$
+Luego tenemos la recta vertical $x = \dfrac{b^2-a^2}{2(b-a)}=\dfrac{b+a}{2}$.
+\item 
+\item Dado que $\Re(z)=x$ y $\Re(z)=y$, tenemos que $x+y<1$, es decir, el semiplano abierto limitado por la recta $y=1-x$ que contiene al origen.
+\item $iz= ix-y$, luego $\Re(iz)= -y$. Por lo que $-1<y<0$ o es la banda horizontal abierta comprendida entre $y=-1$ e $y=0$.
+\item 
+\end{enumerate}
+\end{solucion}
+\newpage
+\begin{ejercicio}{2}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{3}
+Sea $g$ una holomorfa en un abierto $\Omega$ conexo. Probar que en cualquiera de los siguientes casos
+\begin{enumerate}[(i)]
+\item Si $\Re(g)$ es constante.
+\item Si $\Im(g)$ es constante.
+\item Si $|g|$ es constante.
+\end{enumerate}
+podemos concluir que $g$ es constante.
+\end{ejercicio}
+\begin{solucion}
+Los tres resultados se desprenden inmediatamente a partir de las ecauciones de Cauchy y el hecho de que el abierto $\Omega$ sea conexo, pues si no lo fuese, podría haber componentes conexas donde la constante variase. Denotemos $\Re(g)=u$, $\Im(g)=v$.
+\begin{enumerate}[(i)]
+\item Si $u$ es constante, entonces las ECR nos dicen que
+$$
+0 = \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \qquad 0 = \frac{\partial u}{\partial x} = - \frac{\partial u}{\partial y}$$
+Por lo que 
+$$
+0 = \frac{\partial v}{\partial x}  =\frac{\partial v}{\partial y} 
+$$ 
+Por lo que $v$ es constante.
+\item Este apartado es completamente análogo al anterior.
+\item Una posibilidad sería la siguiente. Si $|g|$ es constante, entonces la imagen es una cierta circunferencia de $\C$. Utilizando el Teorema de la aplicación abierta (Tema 3), tenemos que la imagen de una región por una aplicación holomorfa es cerrada si y solo si es constante. Sin embargo, vamos a probarlo de manera análoga a lo que hemos estado haciendo. Si $|g|$ es constante, entonces $|g|^2 =u^2+v^2 = c$. Podemos suponer que $c>0$, pues en otro caso es trivial. Por tanto, derivando
+$$
+u\frac{\partial u}{\partial x} + v\frac{\partial v}{\partial x} = 0 \qquad u\frac{\partial u}{\partial y} + v\frac{\partial v}{\partial y} = 0
+$$
+Sustituyendo las ECR
+$$
+u\frac{\partial u}{\partial x} - v\frac{\partial u}{\partial y} = 0 \qquad u\frac{\partial u}{\partial y} + v\frac{\partial u}{\partial x} = 0
+$$
+Multiplicamos la primera ecuación por $u$, la segunda por $v$ y sumamos, obteniendo
+$$(u^2+v^2)\frac{\partial u}{x} = 0 \Rightarrow \frac{\partial u}{x} = 0$$
+Si multiplicamos la primera por $-v$ y la segunda por $u$, al sumar obtenemos
+$$(u^2+v^2)\frac{\partial u}{y} = 0 \Rightarrow \frac{\partial u}{y} = 0 
+$$
+Por tanto, $u$ es constante y por el primer apartado tenemos que $v$ también lo es.
+\end{enumerate}
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{4}
+Para $a$ y $b$ complejo y $a\neq 0$ se define $a^b = e^{b\log a}$. Como $\log a$ toma infinitos valores, en general $a^b$ toma infinitos valores.
+\begin{enumerate}[(a)]
+\item ¿Qué relación hay entre dos valores $v$ y $w$ de $a^b$?
+\item Sea $b=n/m$ un número racional, cociente de dos números naturales $n$ y $m$, ¿cuántos valores distintos toma en este caso la potencia $a^b$? Si $v$ es uno de los valores de $a^b$, ¿cuánto vale $v^m$?
+\item ¿Cuáles son los valores de $i^i$?
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item Entre dos ramas del $\log z$ distan un mútliplo entero de $2\pi i$, luego podemos suponer que $v=e^{b\log a}$ y $w = e^{b(\log a+2k\pi i)}$ para algún $k\in \Z$. Por tanto
+$$
+\frac{w}{v} = e^{b2k\pi i}
+$$
+\item A partir de las consideraciones anteriores, tenemos
+$$
+a^b=a^{n/m}=e^{\frac{n}{m}(\log a +2k\pi i)} = e^{\frac{n}{m}\log a}e^{2\pi i\frac{kn}{m}}
+$$
+El primer término del producto es fijo, ¿pero cuánto valores puede tomar el segundo? Exactamente $m$ valores. En cualquier caso,
+$$
+v^m= (a^b)^m = \left(e^{\frac{n}{m}\log a}e^{2\pi i\frac{kn}{m}}\right)^m = e^{n\log a}e^{2\pi ikn} = e^{n\log a} = a^n
+$$
+\item 
+$$
+i^i = e^{i \log i} = e^{i(\log|i|+i\arg i +2k\pi i)}=e^{i(\pi/2 i + 2k\pi i)}= e^{-\pi/2+2\pi k}
+$$
+\end{enumerate}
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{5}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{6}
 Demostrar que la ecuación diferencial
 $$
 zu''(z)=u(z)$$
