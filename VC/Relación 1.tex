@@ -6,7 +6,8 @@
 \begin{document}
 
 \title{Variable Compleja - Relación 1}
-\author{Rafael González López}
+\author{Rafael González López\\
+Pendientes: 2,7,8}
 \maketitle
 
 \begin{ejercicio}{1}
@@ -48,8 +49,21 @@ Luego tenemos la recta vertical $x = \dfrac{b^2-a^2}{2(b-a)}=\dfrac{b+a}{2}$.
 \end{solucion}
 \newpage
 \begin{ejercicio}{2}
+Sea $f$ una serie de potencias centrada en el origen. Probar que $f$ tiene un desarrollo en serie de potencias alrededor de cualquier punto en su disco de convergencia.
 \end{ejercicio}
 \begin{solucion}
+Consideremos $f(z)=\sum_{n=0}^\infty a_n z^n$. Entonces
+\begin{align*}
+f(z)&=\sum_{n=0}^\infty a_n z^n \\
+&= \sum_{n=0}^\infty a_n (z_0 + (z-z_0))^n\\
+&= \sum_{n=0}^\infty a_n \sum_{k=0}^n\binom{n}{k}z_0^{n-k}(z-z_0)^k
+\end{align*}
+Como la serie converge absolutamente en su disco de convergencia, podemos reordenar los términos 
+\begin{align*}
+f(z)&=\sum_{n=0}^\infty a_n \sum_{k=0}^n\binom{n}{k}z_0^{n-k}(z-z_0)^k\\
+&=\sum_{n=0}^\infty \left(\sum_{k=n}^\infty a_k \binom{k}{n}z_0^{k-n}\right) (z-z_0)^n
+\end{align*}
+Ahora tenemos que ver que 
 \end{solucion}
 \newpage
 
@@ -127,8 +141,61 @@ $$
 
 
 \begin{ejercicio}{5}
+Hallar todas las soluciones de las ecuaciones:
+\begin{align*}
+&a)\; \sin z+  \cos z = 2 & &b)\;\sin z -\cos z = 3 & &c)\;\sin z -\cos z = i\\
+&d)\;\cosh z -\sinh z = 1 & &e)\;\sinh z -\cosh z = 2i & &f)\;2\cosh z +\sinh z = i
+\end{align*}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a)]
+\item[]
+\item Utilizando la definción de $\sen$ y $\cos$ complejos
+\begin{gather*}
+\frac{e^{iz}-e^{-iz}}{2i}+\frac{e^{iz}-+e^{-iz}}{2} = 2 
+\end{gather*}
+Haciendo el cambio $w=e^{iz}\neq 0$ llegamos a
+\begin{gather*}
+\frac{1-i}{2}w^2 -2w +\frac{1+i}{2} = 0
+\end{gather*}
+Resolviendo, obtenemos $w_1= (\sqrt{2}+1)e^{\pi i/4}$ y $w_2 = (\sqrt{2}-1)e^{\pi i/4}$. Desaciendo el cambio, tenemos $w= e^{zi}$ y tomando logaritmo
+$$
+z = \begin{cases}
+\pi/4 +2\pi k + \log(\sqrt{2}+1)i\\
+\pi/4 +2\pi k + \log(\sqrt{2}-1)i
+\end{cases}
+$$
+\item[c)] Primeramente, escribimos la definición
+$$
+\frac{e^{iz}-e^{-iz}}{2i}-\frac{e^{iz}-+e^{-iz}}{2} = i
+$$
+Realizamos el cambio $w=e^{iz}$.
+$$
+-\frac{1+i}{2}w^2-iw -\frac{1-i}{2}= 0
+$$
+Obtenemos las soluciones $w_1 = -(1+i)(\sqrt{3}+1)/2$ y $w_2=(1+i)(\sqrt{3}-1)/2$. Por tanto, deshaciendo el cambio y tomando logaritmo
+$$
+zi = \begin{cases}
+\log(\sqrt{3}+1)-\log(2)/2-3\pi i /4 + 2k\pi i\\
+\log(\sqrt{3}-1)-\log(2)/2 + \pi/4 + 2k\pi i
+\end{cases}
+$$
+\item[f)] Primeramente, escribimos la definición
+$$
+2\frac{e^z+e^{-z}}{2}+\frac{e^z-e^{-z}}{2} = i
+$$
+Realizando el cambio $w=e^z$
+$$
+3w^2-2iw+1 = 0
+$$
+Luego $w_1=i$, $w_2-i/3$. Por tanto, deshacemos el cambio y obtenemos
+$$
+z = \begin{cases}
+i \pi/2 + 2k\pi i\\
+-\log 3 - i\pi/2 + 2k\pi i
+\end{cases}
+$$
+\end{enumerate}
 \end{solucion}
 \newpage
 
@@ -172,6 +239,59 @@ Claramente $\int_X g(t)dt < \infty$. Por tanto
 &= \sum_{k=1}^\infty \frac{1}{\Gamma(k)\Gamma(k+1)} \Gamma(k) z^k =  \sum_{k=1}^\infty \frac{z^k}{k!} = e^z -1
 \end{align*}
 \end{itemize}
+\begin{nota}
+Una solución más elegante para el último apartado es la siguiente. Para probar que podemos intercambiar suma e integral, utilizando el teorema de convergencia dominada, utilizamos la siguiente función.
+\begin{align*}
+\abs{\int_0^\infty u(zt)e^{-t}\frac{dt}{t}} &= \abs{\int_0^\infty \sum_{k=1}^\infty a_k (zt)^k e^{-t}\frac{dt}{t}} \leq \int_0^\infty \abs{ \sum_{k=1}^\infty a_k (zt)^k} e^{-t}\frac{dt}{t} \\
+&\leq \int_0^\infty  \sum_{k=1}^\infty \abs{a_k (zt)^k }e^{-t}\frac{dt}{t} \overset{a_k>0}{=} \int_0^\infty  \sum_{k=1}^\infty a_k \abs{zt}^k e^{-t}\frac{dt}{t} \\ 
+&=\int_0^\infty  \sum_{k=1}^\infty a_k \abs{z}^k{t}^k e^{-t}\frac{dt}{t} \overset{\text{Beppo Levi}}{=} \sum_{k=1}^\infty a_k \abs{z}^k  \int_0^\infty t^{k-1}e^{-t}dt\\
+&= \sum_{k=1}^\infty \frac{1}{\Gamma(k)\Gamma(k+1)} \Gamma(k) \abs{z}^k =  \sum_{k=1}^\infty \frac{z^k}{k!} = e^{\abs{z}} -1
+\end{align*}
+Por tanto, es claro que podemos tomar $g(t)=\abs{u(zt)}e^{-t}/t$.
+\end{nota}
 \end{solucion}
 \end{ejercicio}
+
+\newpage 
+\begin{ejercicio}{7}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage 
+\begin{ejercicio}{8}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage 
+\begin{ejercicio}{9}
+Probar las siguientes desigualdades:
+\begin{enumerate}[(a)]
+\item Para todo $z\in \C$ se tiene
+$$\abs{e^z-1}\leq e^{\abs{z}}-1 \leq \abs{z}e^{\abs{z}}
+$$
+\item Para todo $z\in \C$ con $\abs{z}\leq 1$ se tiene
+$$
+\abs{e^z-1}\leq 2|z|
+$$
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item Probemos la primera desigualdad
+\begin{align*}
+\abs{e^z-1} &= \abs{\sum_{n=0}^\infty \frac{z^n}{n!}-1} = \abs{\sum_{n=1}^\infty \frac{z^n}{n!}} \leq \sum_{n=1}^\infty \frac{\abs{z}^n}{n!} =  \sum_{n=0}^\infty \frac{\abs{z}^n}{n!} -1 = e^{\abs{z}}-1
+\end{align*}
+Pasemos a la segunda
+\begin{align*}
+e^{\abs{z}}-1 &=  \sum_{n=0}^\infty \frac{\abs{z}^n}{n!} -1 =  \sum_{n=1}^\infty \frac{\abs{z}^n}{n!} \leq |z|\sum_{n=1}^\infty \frac{\abs{z}^{n-1}}{(n-1)!} = |z|e^{|z|}
+\end{align*}
+\item Utilizamos el desarrollo anterior
+\begin{align*}
+e^{\abs{z}}-1 &=  \sum_{n=0}^\infty \frac{\abs{z}^n}{n!} -1 =  \sum_{n=1}^\infty \frac{\abs{z}^n}{n!} = |z|\sum_{n=1}^\infty \frac{\abs{z}^{n-1}}{n!} \leq |z|\sum_{n=1}^\infty\frac{1}{n!}= |z|(e-1)\leq 2|z|
+\end{align*}
+\end{enumerate}
+\end{solucion}
 \end{document}
