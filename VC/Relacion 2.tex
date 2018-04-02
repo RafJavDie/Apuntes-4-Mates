@@ -8,7 +8,50 @@
 \title{Variable Compleja - Relación 1}
 \author{Rafael González López}
 \maketitle
+\begin{ejercicio}{2}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item 
+Queremos ver que $F(s)$ es analítica utilizando el teorema de convergencia. Las dos primeras condiciones son claras. Consideramos $\Re(s)>\sigma >0$. Tengamos en cuenta que si $z=x+yi$ entonces
+$$
+\abs{y^2+x^2-y^2+2xyi} \geq
+\begin{cases}
+\frac{3\sigma^2}{4} & |y|\leq x/2\\
+\sigma^2 & |y|>x/2
+\end{cases} \geq \frac{3\sigma^2}{4} 
+$$
+En el primer caso, es claro que $x^2-y^2 \geq x^2-x^2/4$, mientras que en el segundo caso se deriva a partir de $|2xyi|\geq 2x|y|\geq x^2$.
+\begin{align*}
+\abs{\frac{1}{t^2+z^2}\frac{t}{e^{2\pi t}-1}} \leq \frac{4}{3\sigma^2}\frac{t}{e^{2\pi t}-1}= g(t)
+\end{align*}
+Claramente $g(t)$ es una función continua en $[0,+\infty)$ y tiene integral finita. Consideramos $-1<a-3$ y tomamos un $\log x$ con $0<arg(x)<2\pi$.
 
+\item Tomamos un keycontour $\Gamma_{\varepsilon,R}$ centrado en $z=0$ de formar que el corredor sea simétrico respecto del eje  real positivo. Calculamos los residuos de los polos en el interior del contorno
+$$
+PENDIENTE
+$$
+De manera que
+$$
+\int_{\Gamma_{\varepsilon,R}} \frac{e^{a \log x}}{(1+x^2)^2}dx = 2\pi i\left( \frac{a-1}{4}ie^{\pi a/2}-\frac{a-1}{4}ie^{3\pi i a /2}\right)
+$$
+Veamos qué ocurre en las cuatro integrales que conforman la integral de nuestro contorno. Primeramente, en $C_\varepsilon$ (la circunferencia interior)
+$$
+\abs{\int_{C_\varepsilon}\frac{e^{a \log x}}{(1+x^2)^2} }\leq \frac{\varepsilon^a}{(1-\varepsilon^2)^2}2\pi \varepsilon 
+$$ 
+Luego se anula cuando $\varepsilon \to 0$, ya que $a>-1$.
+$$
+\int_{C_R} \frac{e^{a \log x}}{(1+x^2)^2} dx = \frac{R^a}{(R^2-1)^2}2\pi R
+$$
+Que tiende a $0$, pues $a<3$. Por la elección del $arg(x)$ tenemos que en los laterales del corredor, cuando hacemos tender su separación a $0$, tendremos que tomar en un caso $arg(x)=0$ y en otro $arg(x)=2\pi$, de donde deducimos que tienden a la integral que deseamos calcular $I$ y a $-e^{2\pi a}I$. Luego
+\begin{align*}
+I(1-e^{2\pi i a}) = 2\pi i\left( \frac{a-1}{4}ie^{\pi a/2}-\frac{a-1}{4}ie^{3\pi i a /2}\right)
+\end{align*} 
+\end{enumerate}
+
+\end{solucion}
+\newpage
 \begin{ejercicio}{1}
 Demostrar que serie 
 $$
