@@ -277,6 +277,8 @@ Sean $I = [0,1]$ y $K$ un complejo simplicial, dotar de estructura simplicial al
 \end{ejercicio}
 \begin{solucion}
 Podemos expresar $|K\times I|$ como $|KK|$, es decir, la realización de la unión simplicial de $K$ consigo mismo. Para que $|KK|$ sea exactamente igual a $|K|\times I$ como conjunto habrá que colocar las dos compias de $K$ en paralelo y a distancia 1. En efecto, el cilindro $|K|\times I$ consiste en la unión mediante segmentos de longitud 1 y en paralelo cada punto de $|K|\times\{0\}$ con los de $|K|\times\{1\}$, pero esto es precisamente lo que se hace al construir la unión simplicial, pues cada punto de dichos segmentos es una combinación convexa de vértices de $|K|\times\{0\}$ y $|K|\times\{1\}$ de la siguiente forma: dado un punto $x$ de uno de estos segmentos, el punto inicial será $x_1\in |K|\times\{0\}$ y el punto final $x_2\in |K|\times\{1\}$. Basta tomar ahora los soportes $\sigma_1\ni x_1,\sigma_2\ni x_2$, pues $x_1$ y $x_2$ son combinaciones convexas de los vértices de $\sigma_1$ y $\sigma_2$ respectivamente. Ahora, como combinación convexa sobre combinación convexa es convexa, $x$ es combinación convexa de los vértices de $\sigma_1$ y $\sigma_2$. Recíprocamente, dado $x\in |KK|$, entonces $x\in \sigma=(v_{i_1},\dots, v_{i_r},v_{j_1},\dots,v_{j_s})$. Consideramos ese conjunto de vértices en una de las dos copias de $K$, por ejemplo $K\times\{0\}$, el cual generará un subcomplejo  $L\subseteq K$, así que claramente $x\in |L|\times I\subseteq |K|\times I$.
+
+Posible mejor solución \url{https://math.stackexchange.com/questions/717322/product-of-simplicial-complexes}
 \end{solucion}
 
 \newpage
@@ -485,6 +487,13 @@ Sea $f(x) = x^2$. Probar que $f$ de $K$ en $L$ no admite aproximación simplicia
 Análogamente, probar que no existe aproximación simplicial de $f$ de $sd K$ en $L$, y encontrar una aproximación simplicial de $f$ de $sd^2 K$ en $L$.
 \end{ejercicio}
 \begin{solucion}
+ Voy a hacer el primero por la definición para que se vea lo duro que es y lo demás lo hacemos usando resultados de teoría. Una aproximación simplicial $\varphi:K\to L$ de $f$ debe cumplir por definición $\varphi(0)=0$ y $\varphi(1)=1$. Además $\varphi(1/3)\in\{0,2/3,1\}$. Como $f(1/3)=1/9\in (0,2/3)$, para que $\varphi(1/3)$ esté en el símplice soporte de $f(1/3)$, debe ser $0$ o $2/3$. Si $\varphi(1/3)=0$, consideramos el punto $0.9\in |K|$. $f(0.9)=0.81\in (2/3,1)$. Expresando 0.9 como suma convexa de los vértices de su soporte en $L$ tenemos que $\lambda=0.6$, de modo que $\varphi(0.9)=\lambda \varphi(1/3)+(1-\lambda)\varphi(1)=0.4\in (0,2/3)$, por lo que $\varphi(0.9)$ no está en el soporte de $f(0.9)$. Si $\varphi(1/3)=2/3$, entonces $f(2/3)$ está en el interior de $(0,2/3)$, mientras que $\varphi(2/3)=0.5\varphi(1/3)+0.5\varphi(1)=0.83$ está en el interior de $(2/3,1)$.
+
+En $sdK$ tenemos los vértices $0,1/6,1/3, 2/3,1$. Se tiene que $f$ admite una aproximación simplicial $\varphi:sdK\to L$ si y solo si para cada $v\in sdK$ existe $w\in L$ de modo que $\mathring{st}(v,sdK)\subseteq f^{-1}(\mathring{st}(w,L))$. Tenemos que $\mathring{st}(1,sdK)=(2/3,1)$, pero $f^{-1}(2/3)>2/3$, luego se da la contención inversa de forma estricta, luego $f$ no admite una aproximación simplicial. 
+
+En el caso de $sd^2K$ se comprueba por inspección que se da el resultado. 
+
+%Nuevamente, $\varphi(0)=0$ y $\varphi(1)=1$. Como $f(\mathring{st}(2/3,sdK))\subseteq \mathring{st}(\varphi(2/3), L)$, $\varphi(2/3)=2/3$. Usando el mismo resultado, como $f(\mathring{st}(1/3,sdK))\subsetneq (0,2/3)$, $\varphi(1/3)\in\{0,2/3\}$. 
 \end{solucion}
 
 \end{document}
