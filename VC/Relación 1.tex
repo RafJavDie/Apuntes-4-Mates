@@ -7,7 +7,7 @@
 
 \title{Variable Compleja - Relación 1}
 \author{Rafael González López\\
-Pendientes: 2,7b,8}
+Pendientes: 1,7b,8}
 \maketitle
 
 \begin{ejercicio}{1}
@@ -41,9 +41,12 @@ $$
 (x-a)^2+y^2 = (x-b)^2 +y^2  \Leftrightarrow x^2+a^2-2ax = x^2+b^2 -2bx 
 $$
 Luego tenemos la recta vertical $x = \dfrac{b^2-a^2}{2(b-a)}=\dfrac{b+a}{2}$.
-\item 
+\item Tenemos la ecuación $|z^2-z|\leq 1$, entonces
+$$
+|z||z-1|\leq 1 \Leftrightarrow |z||z-1| \leq 1 \Leftrightarrow (x^2+y^2)((x-1)^2+y^2) \leq 1
+$$
 \item Dado que $\Re(z)=x$ y $\Re(z)=y$, tenemos que $x+y<1$, es decir, el semiplano abierto limitado por la recta $y=1-x$ que contiene al origen.
-\item $iz= ix-y$, luego $\Re(iz)= -y$. Por lo que $-1<y<0$ o es la banda horizontal abierta comprendida entre $y=-1$ e $y=0$.
+\item $iz= ix-y$, luego $\Re(iz)= -y$. Por lo que $-1<y<0$ es la banda horizontal abierta comprendida entre $y=-1$ e $y=0$.
 \item 
 \end{enumerate}
 \end{solucion}
@@ -58,12 +61,19 @@ f(z)&=\sum_{n=0}^\infty a_n z^n \\
 &= \sum_{n=0}^\infty a_n (z_0 + (z-z_0))^n\\
 &= \sum_{n=0}^\infty a_n \sum_{k=0}^n\binom{n}{k}z_0^{n-k}(z-z_0)^k
 \end{align*}
-Como la serie converge absolutamente en su disco de convergencia, podemos reordenar los términos 
+Es decir queremos que
+$$\sum_{n=0}^\infty \sum_{k=0}^n | a_n \binom{n}{k} z_0^{n-k} (z-z_0)^k | =
+\sum_{n=0}^\infty \sum_{k=0}^n |a_n| \binom{n}{k} |z_0|^{n-k} |z-z_0|^k |< +\infty$$
+La última suma es de términos positivos así que la podemos reordenar como queramos y si nos da algo finito ya está.  Bien proseguimos viendo que
+$$\sum_{n=0}^\infty \sum_{k=0}^n |a_n| \binom{n}{k} |z_0|^{n-k} |z-z_0|^k |=
+\sum_{n=0}^\infty  |a_n| (|z_0|+|z-z_0|)^n$$
+Esto es finito si $|z_0|+|z-z_0| < R$ siendo $R$ el radio de covergencia de la serie original
+Es decir, siempre que $|z-z_0|<R-|z_0|$ podremos reagrupar los términos de la serie como queramos.
 \begin{align*}
 f(z)&=\sum_{n=0}^\infty a_n \sum_{k=0}^n\binom{n}{k}z_0^{n-k}(z-z_0)^k\\
 &=\sum_{n=0}^\infty \left(\sum_{k=n}^\infty a_k \binom{k}{n}z_0^{k-n}\right) (z-z_0)^n
 \end{align*}
-Ahora tenemos que ver que 
+Por tanto, si $z_0$ está en el disco de convergencia podemos encontrar un desarrollo en serie de potencial centrado en $z_0$.
 \end{solucion}
 \newpage
 
@@ -264,6 +274,7 @@ es analítica.
 $$
 \frac{ze^{xz}}{e^z-1}= \sum_{n=0}^\infty B_n(x)\frac{z^n}{n!}
 $$
+Demostrar que $B_n(x)$ es un polinomio de grado $n$. Calcular los tres primeros.
 \item Demostrar que 
 $$
 B_{k+1}(x+1)-B_{k+1}(x)=(k+1)x^k\qquad k\geq 0
@@ -300,8 +311,38 @@ Por tanto el mayor abierto al que se puede extender nuestro conjunto de funcione
 $$
 \Omega = \C\setminus\{2k\pi i \mid k\in \Z,\; k\neq 0\}
 $$
-\item Denotemos, para cada $x$ a nuestra función por $f_x(z)$. Entonces, como es analítica en $0$, tiene una serie de potencias asociada. Sea $C$ denota la circunferencia de radio $1$ y centro $0$. 
-
+\item Denotemos, para cada $x$ a nuestra función por $f_x(z)$. Entonces, como es analítica en $0$, tiene una serie de potencias asociada en $|z|<2\pi$. 
+\[ \sum_{n=0}^\infty \frac{x^n}{n!}z^{n+1}= z e^{zx} =(e^z-1) \left(\sum_{n=0}^\infty B_n(x) \frac{z^n}{n!}\right)=\left( \sum_{n=1}^\infty \frac{z^n}{n!}\right)\left(\sum_{n=0}^\infty B_n(x) \frac{z^n}{n!}\right)\]
+Si multiplicamos las dos series
+\[ \sum_{n=0}^\infty \frac{x^n}{n!}z^{n+1}= \left( \sum_{n=1}^\infty \frac{z^n}{n!}\right)\left(\sum_{n=0}^\infty B_n(x) \frac{z^n}{n!}\right) = \sum_{n=1}^\infty\sum_{k=0}^{n-1}\frac{B_k(x)}{(n-k)!k!} z^n \]
+Por tanto, si igualamos coeficientes obtenemos que $\forall n\geq 0$
+$$
+\frac{x^{n}}{n!} = \sum_{k=0}^{n} \frac{B_k(x)}{(n+1-k)!k!}
+$$
+Veamos por inducción que esto es un polinomio. Para $n=0$ tenemos $B_0(x) = 1$, que es claramente un polinomio de grado $0$. Supongamos que es cierto para $n-1$ y probémoslo para $n$. Tenemos que
+$$
+B_n(x) = x^n - n!\sum_{k=0}^{n-1} \frac{B_k(x)}{(n+1-k)!k!}
+$$
+Por hipótesis de inuducción, $B_i$ es un polinomio de grado $i$ para $i=0,\dotsc,n-1$, por lo que $B_n(x)$ es un polinomio de grado $n$.
+\begin{itemize}
+\item El caso $n=0$ lo hemos visto, $B_0(x)=1$.
+\item Si $n=1$,
+$$
+B_1(x)=x-1!\frac{B_0}{2!0!}=x-\frac{1}{2}
+$$
+\item Si $n=2$,
+\begin{align*}
+B_2(z)&=x^2 - 2!\left(\frac{B_0(x)}{3!0!}+\frac{B_1(x)}{2!1!}\right)\\
+&= x^2 -B_1(x) - \frac{B_0(x)}{3}\\
+&=x^2 -x+\frac{1}{2}-\frac{1}{3}\\
+&= x^2-x + \frac{1}{6}
+\end{align*}
+\end{itemize}
+%(z^1/1! + z^2/2! + z^3/3! + z^4/4! + ...)(B0 + B1z^1 + B2z^2/2 + B3z^3/6 + ...)
+%
+%z1B0/1!0! + z2B1/1!1! + z3B2/1!2! + z4B3/1!3! + ...
+%            z2B0/2!0! + z3B1/2!1! + z4B2/2!^2
+%                      + z3B0/3!0!   
 \item Tengamos en cuenta que como las series de potencias se pueden sumar término a término. Sabemos que este desarrollo es válido en un entorno de $0$
 $$
 \sum_{k=0}^\infty(B_k(x+1)-B_k(x))\frac{z^k}{k!}=\frac{ze^{(x+1)z}}{e^z-1}- \frac{ze^{xz}}{e^z-1} = \frac{ze^{xz}(e^z-1)}{e^z-1} = \sum_{k=0}^\infty \frac{x^{k}}{k!}z^{k+1}
