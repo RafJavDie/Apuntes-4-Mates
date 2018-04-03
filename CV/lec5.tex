@@ -52,7 +52,7 @@ Sean $Y⊂\R^m$ y $f,g:X→Y$ aplicaciones continuas tales que $∀x∈X$, el se
 \begin{lemma}
 Sean $U,V\subseteq\R^n$ abiertos euclídeos, entonces:
 \begin{enumerate}
-\item $\forall h:U\to V$ continua, existe una aplicación $C^\infty$-diferenciable homotópica a $h$.
+\item $\forall h:U\to V$ continua, existe una  aplicación $C^\infty$-diferenciable $f_h$ homotópica a $h$. Además $f_h$ se puede aproximar a $h$ tanto como queramos.
 \item Si $f,g:U\to V$ son aplicaciones diferenciables con $f\simeq g$, entonces existe $H:U\times\mathbb R\to V$ diferenciable tal que $H(x,0)=f(x)$, $H(x,1)=g(x)$ para todo $x\in U$.
 \end{enumerate}
 \end{lemma}
@@ -291,16 +291,16 @@ Ahora, de nuevo por conmutatividad, tenemos que $\beta^{p+1}f^{p+1}=f_1^{p+1}\al
 \partial^*\gamma^*([c])=[(f_1^{p+1})^{-1}\beta^{p+1}(f^{p+1}(f^{p+1})^{-1})(d_B^p((g^p)^{-1}(c))))]=[\alpha^{p+1}(f^{p+1})^{-1}(d_B^p((g^p)^{-1}(c))))]
 \]
 %aquí lo mismo, porque f es morfismo de complejos de cadenas, entonces conmuta con d_B y eso hace que exista la preimagen
-que por definición es $\alpha^*\partial^*([c])$. Obsérvese que la preimagen por $f^{p+1}$ de $d_B$ existe porque $f^*$ es morfismo de cadenas, y por tanto conmuta con el operador borde. 
+Esto último es por definición $\alpha^*\partial^*([c])$. Obsérvese que la preimagen por $f^{p+1}$ de $d_B$ existe porque $f^*$ es morfismo de cadenas, y por tanto conmuta con el operador borde. 
 
 En la situación de la proposición \ref{addendum} consideramos el diagrama
 \[
 \begin{tikzcd}
-0\arrow[r] & \Omega^*(U)\arrow[r, "I^*"]\arrow[d,"R^*"] & \Omega^*(U_1)\oplus \Omega^*(U_2)\arrow[r, "J^*"]\arrow[d,"R"]& \Omega^*(U_1\cap U_2)\arrow[d,"-R_0^*"]\arrow[r] & 0\\
+0\arrow[r] & \Omega^*(U)\arrow[r, "I^*"]\arrow[d,"R^*"] & \Omega^*(U_1)\oplus \Omega^*(U_2)\arrow[r, "J^*"]\arrow[d,"\overline{R}^*"]& \Omega^*(U_1\cap U_2)\arrow[d,"-R_0^*"]\arrow[r] & 0\\
 0\arrow[r] &  \Omega^*(U)\arrow[r, "I^*"] & \Omega^*(U_1)\oplus\Omega^*(U_2)\arrow[r, "J^*"] & \Omega^*(U_1\cap U_2)\arrow[r] & 0
 \end{tikzcd}
 \]
-con $R(w_1,w_2)=(R_1^*w_1,R_2^*w_2)$. Esto nos da la ecuación \ref{conmuta} de la demostración de \ref{addendum}. 
+con $\overline{R}^*(w_1,w_2)=(R_1^*w_2,R_2^*w_1)$. Esto nos da la ecuación \ref{conmuta} de la demostración de \ref{addendum}. 
 %esto conmuta porque los R_i también cambian el signo, no dejan de ser como el R pero en un sitio más pequeño
 \end{nota}
 
