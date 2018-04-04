@@ -30,7 +30,13 @@ Repeat Exercise \ref{ejer:2.8.1} for $f = x^3z − 2y^2$ and $I =
 \gene{xz − y, xy + 2z^2, y − z}$.
 \end{ejercicio}
 \begin{solucion}
-Esta vez la base de Gröbner que calculamos es $G=\{[xz - z, y - z, z^2 + 1/2z\}$ y como resto de la división de $f$ por $G$ obtenemos es $2z$, por lo que $f\notin I$.
+Calculamos la base Gröbner con el orden grlex y obtenemos
+$$G=\{xz - z, y - z, xy+2z^2,-2z^3 - z^2,2z^2 + z\}$$ 
+Si computamos ahora el resto de $f$ al dividir por esta base obtenemos
+$$
+x^3z − 2y^2 = (x^2+x+1)f_1 +(-2y+-2z)f_2 - f_5 +2z
+$$
+Por tanto, $f\notin I$.
 \end{solucion}
 \newpage
 

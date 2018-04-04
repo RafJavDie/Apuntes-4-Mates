@@ -38,3 +38,9 @@ def nexpaso(g):
 	lista2 = list(set(lista1).union(g))
 	lista3 = [x for x in lista2 if x!= 0]
 	return(lista3)
+
+def grobi(g):
+	h=g
+	while h != nexpaso(h):
+		h = nexpaso(h)
+	return(h)
