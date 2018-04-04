@@ -45,11 +45,19 @@ By the method of Examples 2 and 3, find the points in $\C^3$ on the variety
 $$\V(x^2 + y^2 + z^2 − 1, x^2 + y^2 + z^2 − 2x, 2x − 3y − z).$$
 \end{ejercicio}
 \begin{solucion}
-Tal como en dichos ejemplos calculamos una base de Gröbner para $$I=\gene{x^2 + y^2 + z^2 − 1, x^2 + y^2 + z^2 − 2x, 2x − 3y − z}$$ usando el orden lex. En este caso obtenemos $G=\{x - \frac{1}{2}, y + \frac{1}{3}z - \frac{1}{3}, z^2 - \frac{1}{5}z - \frac{23}{40}\}$. Del último polinomio obtenemos las raíces
-\[
+Tal como en dichos ejemplos calculamos una base de Gröbner para $$I=\gene{x^2 + y^2 + z^2 − 1, x^2 + y^2 + z^2 − 2x, 2x − 3y − z}$$ usando el orden lex. En este caso obtenemos la base formada por los siguiente polinomios
+\begin{align*}
+-2x + 1 & & 2x - 3y - z & & 3/2y + 1/2z - 1/2 \\
+ -10/9z^2 + 2/9z + 23/36 & & x^2 + y^2 + z^2 - 1
+\end{align*}
+Claramente podemos eliminar el segundo y el último polinomio, quedando finalmente la base
+$$
+-2x + 1 \qquad \frac{3}{2}y + \frac{1}{2}z - \frac{1}{2} \qquad -\frac{10}{9}z^2+\frac{2}{9}z+\frac{23}{26}
+$$ 
+Por tanto, $x=1/2$. Utilizamos la segunda ecuaación para obtener los valores de $z$ \[
 z = \frac{1}{10} + \frac{3 \sqrt{13/2}}{10},\quad z = \frac{1}{10} - \frac{3 \sqrt{13/2}}{10}
 \]
-y del primera $x=\frac{1}{2}$. Por último, sustituyendo los dos valores de $z$ en la ecuación del segundo polinomio obtenemos
+Por último, sustituyendo los dos valores de $z$ en la ecuación del segundo polinomio obtenemos
 \[
 y=\frac{1}{20}(6-\sqrt{26}),\quad y=\frac{1}{20}(6+\sqrt{26}).
 \]
@@ -61,7 +69,7 @@ y=\frac{1}{20}(6-\sqrt{26}),\quad y=\frac{1}{20}(6+\sqrt{26}).
 Repeat Exercise \ref{ejer:2.8.3} for $\V(x^2y − z^3, 2xy − 4z − 1, z − y^2, x^3 − 4zy)$.
 \end{ejercicio}
 \begin{solucion}
-La base de Gröbner es $\{1\}$ en este caso, así que $\V(x^2y − z^3, 2xy − 4z − 1, z − y^2, x^3 − 4zy)=\V(1)=\emptyset$.
+La base de Gröbner es $\{1\}$ en este caso, luego $\V(I)=\V(1)=\emptyset$.
 \end{solucion}
 \newpage
 
@@ -93,7 +101,7 @@ Use the second derivative test.
 \[
 \parcial{f}{x}=x (4 x^2 + 4 y^2 - 8) - 3,\quad \parcial{f}{y}=y (4 x^2 + 4 y^2 - 8) - 3.
 \]
-Para encontrar los puntos críticos calculamos una base de Gröbner del ideal $I=\gene{x (4 x^2 + 4 y^2 - 8) - 3, y (4 x^2 + 4 y^2 - 8) - 3}$. Obtenemos $G=\{x - y, y^3 - y - \frac{3}{8}\}$. Se comprueba que el segundo polinomio tiene como raíz $y=-\frac{1}{2}$. Luego uno de los puntos críticos es $(x_1,y_1)=(-\frac{1}{2},-\frac{1}{2})$. Dividiendo por $y+\frac{1}{2}$ podemos resolver y obtener las raíces
+Para encontrar los puntos críticos calculamos una base de Gröbner del ideal generado $I=\gene{x (4 x^2 + 4 y^2 - 8) - 3, y (4 x^2 + 4 y^2 - 8) - 3}$. Obtenemos $G=\{x - y, y^3 - y - \frac{3}{8}\}$. Se comprueba que el segundo polinomio tiene como raíz $y=-\frac{1}{2}$. Luego uno de los puntos críticos es $(x_1,y_1)=(-\frac{1}{2},-\frac{1}{2})$. Dividiendo por $y+\frac{1}{2}$ podemos resolver y obtener las raíces
 \[
 y = \frac{1}{4} + \frac{\sqrt{13}}{4},\quad y = \frac{1}{4} - \frac{\sqrt{13}}{4}.
 \]
@@ -121,12 +129,12 @@ left-hand side of equation (4).
 \end{ejercicio}
 \begin{solucion}
 Sage nos da 7 polinomios en lugar de 6, como dice el libro, que son
-\[
-G=\{t + u - x, u^2 - x^2 + y, ux^2 - uy - x^3 + 3/2xy - 1/2z, uxy - uz - x^2y - xz + 2y^2, uxz - uy^2 + x^2z - 1/2xy^2 - 1/2yz, 
-\]
-\[
-uy^3 - uz^2 - 2x^2yz + 1/2xy^3 - xz^2 + 5/2y^2z, x^3z - 3/4x^2y^2 - 3/2xyz + y^3 + 1/4z^2\}
-\]
+\begin{align*}
+G=\{&t + u - x, u^2 - x^2 + y, ux^2 - uy - x^3 + 3/2xy - 1/2z, uxy - uz - x^2y - xz + 2y^2,\\
+&uxz - uy^2 + x^2z - 1/2xy^2 - 1/2yz,
+uy^3 - uz^2 - 2x^2yz + 1/2xy^3 - xz^2 + 5/2y^2z,\\
+&x^3z - 3/4x^2y^2 - 3/2xyz + y^3 + 1/4z^2\}
+\end{align*}
 El único que no tiene ni $t$ ni $u$ es $x^3z - 3/4x^2y^2 - 3/2xyz + y^3 + 1/4z^2$, que es exactamente el que aparece en el libro.
 \end{solucion}
 
@@ -213,7 +221,8 @@ This is the equation of a variety containing $T$.
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
-\item Sale un toro.
+\item[]
+\item No necesitamos dibujos, es claramente la parametrización  de un toro.
 \item 
 \begin{align*}
 &x=ac+2c\\
@@ -260,6 +269,7 @@ $K$, without calculations.)
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
+\item[]
 \item $\cos(2s)=\cos^2(s)-\sin^2(s)$, $\sin(2s)=2\sin(s)\cos(s)$, $\cos(3s)=\cos^3(s)-3\sin^2(s)\cos(s)$, $\sin(3s)=3\sin(s)\cos^2(s)-\sin^3(s)$. 
 \begin{align*}
 &x-(2+a^2-b^2)(a^3-3b^2a)=0\\
@@ -294,6 +304,7 @@ Example 3. (You may need to “fall back” on a numerical method to solve the e
 you get.)
 \end{ejercicio}
 \begin{solucion}
+Trivial.
 \end{solucion}
 
 \newpage
@@ -315,7 +326,7 @@ $a^4 + b^4 + c^4 − 9 ∈
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
-\item Calculamos la base de Gröbner $G=\{a + b + c - 3, b^2 + bc - 3b + c^2 - 3c + 2, c^3 - 3c^2 + 2*c + 2/3\}$. Dividimos $a^4 + b^4 + c^4 − 9$ por $G$ y obtenemos resto 0, por lo que se obtiene el resultado. 
+\item Calculamos la base de Gröbner $$G=\{a + b + c - 3, b^2 + bc - 3b + c^2 - 3c + 2, c^3 - 3c^2 + 2c + 2/3\}$$ Dividimos $a^4 + b^4 + c^4 − 9$ por $G$ y obtenemos resto 0, por lo que se obtiene el resultado. 
 \item Operamos de forma similar, y obtenemos como resto $-2$, así que $a^5 + b^5 + c^5 -11$ no está en el ideal, por lo que no se tiene la igualdad.
 \item El resto de $a^5 + b^5 + c^5$ es $29/3$, por lo que $a^5 + b^5 + c^5-29/3$ es un elemento del ideal, así que el resultado es precisamente este resto. Análogamente, $a^6 + b^6 + c^6=19/3$.
 \end{enumerate}
