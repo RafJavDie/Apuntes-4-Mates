@@ -143,6 +143,8 @@ Consideremos $f(z)=2z^6-6z^5+4z^4$, $g(z)=p(z)-f(z)$ y $C$ la circunferencia de 
 Basta aplicar el teorema para tener el resultado.
 \end{solucion}
 \end{ejercicio}
+
+\newpage
 \begin{ejercicio}{6}
 Calcular las integrales
 $$
@@ -172,10 +174,28 @@ $$2\pi i \frac{3}{242} = \frac{3\pi i}{121}$$
 \newpage
 
 \begin{ejercicio}{7}
-
+\begin{enumerate}[(a)]
+\item Demostrar que todos los ceros de $z^4-8z+10$ están en el anillo $1<|z|<3$
+\item Calcular la integral $$\int_C \frac{z^3dz}{z^4-8z+10}$$
+siendo $C$ la circunferencia de centro $0$ y radio $3$.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-
+\begin{enumerate}[(a)]
+\item Procedemos análogamente al segundo apartado del Ejercicio 2. Utilizamos el Teorema de Rouché. Tomamos $f(z)=z^4$, $g(z)=-8z+10$. Entonces, en $|z|=3$,
+$$
+|f(z)|=|z^4| = 81 > 34 = 24 + 10 = |-8z|+10 \geq |-8z+10| = |g(z)|
+$$
+Por tanto, nuestro polinomio tiene cuatro raíces en $|z|<3$. Si tomamos $f(z)=10$ y $g(z)=z^4-8z$ entonces, en $|z|=1$,
+$$
+|f(z)| = 10 > 9 = 1+8 = |z^4|+|-8z| \geq |z^4-8z| =|g(z)|
+$$
+Como $f(z)=10$ no se anula en el disco unidad, deducimos que nuestro polinomios no tiene raíces en $|z|\leq 1$. Por tanto, las cuatro raíces están en el anillo. $w=z^3$ entonces $dw = 3z^2dz$
+\item 
+$$
+\int_C \frac{z^3dz}{z^4-8z+10} = \frac{1}{4} \int_C \frac{4z^3 -8 }{z^4-8z+10} + \frac{8 }{z^4-8z+10} dz
+$$
+\end{enumerate}
 \end{solucion}
 \newpage
 
@@ -189,10 +209,10 @@ $$2\pi i \frac{3}{242} = \frac{3\pi i}{121}$$
 
 
 \begin{ejercicio}{9}
-
+Probar que si una función analítica $f(z)$ tiene un cero de orden $N$ en $z=a$, entonces $f(z)=g(z)^N$ para alguna función $g(z)$ analítica en un entorno de $a$ y que satisface $g'(a)\neq 0$.
 \end{ejercicio}
 \begin{solucion}
-
+Debe haber habido algún extraño problema por el cuál este enunciado se corresponde con el del Ejercicio 4.
 \end{solucion}
 \newpage
 
