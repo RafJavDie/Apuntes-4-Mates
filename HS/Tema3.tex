@@ -13,25 +13,29 @@ Esta cuestión será abordada por la \emph{invariancia homotópica de la homolog
 \section{Nociones básicas de teoría de homotopía}
 \begin{defi}
 Dos aplicaciones continuas $f,g \colon X \to Y$ entre espacios topológicos se dicen homotópicas si existe una aplicación $H \colon X \times I \to Y$ continua (que llamamos \emph{homotopía}) cumpliendo:
-\[ H(x,0) = f(x) \quad \forall x \in X \]
-\[ H(x,1) = g(x) \quad \forall x \in X \]
-Dos aplicaciones $f,g$ \emph{homotópicas} por $H$ se denotan $f \simeq_H g$.
+\[ H(x,0) = f(x) \quad \forall x \in X, \]
+\[ H(x,1) = g(x) \quad \forall x \in X. \]
+Dos aplicaciones $f,g$ \emph{homotópicas} por $H$ se denotan $f \simeq_H g$. 
 \end{defi}
 
-\begin{prop}\mbox{}
-\begin{enumerate}
-\item La relación ``ser homotópica a'' entre aplicacioens continuas es una relación de equivalencia.
-\item Si en la definición antrior $f(x) = g(x)$ para $\forall x \in A \subseteq X$ y además
-\[ H(x,t) = f(x) = g(x),\quad \forall x \in A \forall t \in I \]
-entonces diremos que $f \simeq_H g$ relativa a $A$.
+\begin{defi}
+Si en la definición anterior $f(x) = g(x)$ para todo $x \in A \subseteq X$ y además
+\[ H(x,t) = f(x) = g(x),\quad \forall x \in A \forall t \in I, \]
+entonces diremos que $f \simeq_H g$ \emph{relativa} a $A$.
 Esto es que $A$ es un conjunto de puntos que la homotopía ``no mueve''.
-\end{enumerate}
+\end{defi}
+
+\begin{prop}
+La relación ``ser homotópica (relativa) a'' entre aplicacioens continuas es una relación de equivalencia.
 \end{prop}
+\begin{dem}
+En primer lugar, $f\simeq_H f$ con $H(x,t)=f(x)$ para todo $x$. Si $f\simeq_G g$, entonces $g\simeq_G f$ con $G(x,t)=H(x,1-t)$. Si $f\simeq_F g$ y $g\simeq_G h$, entonces $f\simeq_H h$, donde $H(x,t)=F(x,2t)$ para  $x\in [0,1/2]$ y $H(x,t)=G(x,2t-1)$ para $x\in [1/2,1]$.\QED
+\end{dem}
 
 \begin{defi}
-Dos espacios topológicos $X$ e $Y$ son del mismo tipo de homotopía (o homotópicamente equivalente) si existe $f \colon X \to Y$, existe $g \colon Y \to X$ continua cumpliendo:
-\[ f \circ g \simeq id_Y \quad g \circ f \simeq id_X \]
-En este caso diremos que tanto $f$ como $g$ son equivalentes de homotopía e inversas homotópicamente una de la otra.
+Dos espacios topológicos $X$ e $Y$ son del mismo \emph{tipo de homotopía} (u \emph{homotópicamente equivalente}) si existe $f \colon X \to Y$, existe $g \colon Y \to X$ continua cumpliendo:
+\[ f \circ g \simeq Id_Y \quad g \circ f \simeq Id_X. \]
+En este caso diremos que tanto $f$ como $g$ son \emph{equivalencias de homotopía} e \emph{inversas homotópicas} una de la otra.
 \end{defi}
 
 \begin{defi}
@@ -41,15 +45,20 @@ Si un espacio topológico $X$ es del mismo tipo de homotopía que un punto, ento
 Todo subespacio convexo $C \subseteq \R^n$ es contráctil.
 \end{ej}
 \begin{prop}
-$X$ es contráctil si y sólo si $id_X \simeq cte$.
+$X$ es contráctil si y sólo si $Id_X \simeq cte$.
 \end{prop}
+\begin{dem}
+Si $X$ es contráctil, entonces existen $f:X\to \{x_0\}$ y $g:\{x_0\}\to X$ tales que $g\circ f\simeq Id_X$. Necesitariamente $g$ es una aplicación constante, por lo que $g\circ f$ es constante, de donde se deduce el resultado.
+
+Si $Id_X \simeq cte$, entonces sea $x_0$ la constante a la que es homotópica. Sea entonces la inclusión $i:\{x_0\}\hookrightarrow X$. Se tiene claramente que la aplicación constante $x_0$ es inversa homotópica de la inclusión, pues $x_0\circ i=Id_{\{x_0\}}$ y $i\circ x_0\simeq Id_X$ por hipótesis. \QED
+\end{dem}
 
 \begin{defi}
 Dados $A \subseteq X$ e.t., una \emph{retracción} de $X$ en $A$ es una aplicación continua:
 \[ r \colon X \to A \]
 cumpliendo que $r(a) = a$ $\forall a \in A$.
-Si $i \colon A \to X$ denota la inclusión, entonces $r \circ i = id_A$.
-Si además, se cumple que $i \circ r \sim id_X$, diremos que $A$ es un \emph{retracto de deformación} de $X$.
+Si $i \colon A \to X$ denota la inclusión, entonces $r \circ i = Id_A$.
+Si además, se cumple que $i \circ r \simeq id_X$, diremos que $A$ es un \emph{retracto de deformación} de $X$.
 Si además, $i \circ r \simeq_H id_X$ relativa a $A$, entonces diremos que $A$ es un \emph{retracto de deformación fuerte} de $X$.
 \end{defi}
 
@@ -58,7 +67,7 @@ Si $A \subseteq X$ es retrato de deformación de $X$, entonces $A$ y $X$ son del
 \end{nota}
 \begin{ej}
 Damos un ejemplo de retracto que no es de deformación.
-Considereamos $X = S^1 \times I$ el cilindro. Consideramos $A = \{r\} \times I$, con $r \in S^1$.
-La retracción $r \colon X \to A$ definida por $r(s,i) = (r,i) \in A$ no es retracato de deformación. 
+Considereamos $X = S^1 \times I$ el cilindro. Consideramos $A = \{z\} \times I$, con $z \in S^1$.
+La retracción $r \colon X \to A$ definida por $r(s,t) = (z,t) \in A$ no es retracto de deformación. Si lo fuera, entonces el cilindro tendría el mismo tipo de homotopía que $A$, pero es fácil comprobar que $A$ es contráctil y que el cilindro retrae con deformacións sobre $S^1$, que es bien sabido que no es contráctil por tener grupo fundamental no trivial.
 \end{ej}
 \end{document}

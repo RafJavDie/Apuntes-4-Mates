@@ -54,27 +54,38 @@ v(x_1,\dots, x_{2m})=(-x_2, x_1,-x_4,x_3,\dots, -x_{2m},x_{2m-1}).
 \QED
 \end{dem}
 \begin{nota}
-En la homotopía $F(x,t)=(\cos\pi t)x+(\sin\pi t)w(x)$, la parte del seno es necesaria para que $F$ no se anule.
+Para una explicación de por qué es necesario que $w$ sea tangente para definir la homotopía $F$ en la demostración anterior consultar \url{https://math.stackexchange.com/questions/2720466/question-on-madsens-proof-of-the-hairy-ball-theorem}.
 \end{nota}
 
 
-\section{Invarianza de dominio}
+\section{Separación e invarianza de dominio}
 
 
-\begin{lemma}[Urysohn-Tietze] Si $A\subseteq \R^n$ es cerrado y $f:A\to\R^m$ es continua, entonces existe una aplicación continua $g:\R^n\to\R^m$ con $g|_A=f$.
+\begin{lemma}[Urysohn-Tietze]\label{Urysohn} Si $A\subseteq \R^n$ es cerrado y $f:A\to\R^m$ es continua, entonces existe una aplicación continua $g:\R^n\to\R^m$ con $g|_A=f$.
 \end{lemma}
-\begin{proof}
 
-\end{proof}
+Se puede consultar la demostración del lema de Urysohn-Tietze en el libro.
 
 \begin{prop}
 Seas $A\subseteq\R^n$ y $B\subseteq\R^m$ cerrados y sea $\phi:A\to B$ un homeomorfismo. Entonces existe un homeomorfismo $h$ de $\R^{n+m}$ en sí mismo tal que $h(x,0_m)=(0_n,\phi(x))$ para todo $x\in A$. 
 \end{prop}
 \begin{dem}
+Por el lema \ref{Urysohn} podemos extender $\phi$ de forma continua a una aplicación $f_1:\R^n\to\R^m$. Definimos un homeomorfismo $h_1:\R^n\times\R^m\to\R^n\times\R^m$ como
+\[
+h_1(x,y)=(x,y+f_1(x)).
+\]
+El inverso de $h_1$ se consigue restando $f_1(x)$. Análogamente, podemos extender $\phi^{-1}$ a una aplicación continua $f_2:\R^m\to\R^n$ y definir un homeomorfismo $h_2:\R^n\times\R^m\to\R^n\times\R^m$ como
+\[
+h_2(x,y)=(x+f_2(y),y).
+\]
+Si definimos $h=h_2\circ h_1$, entonces tenemos para $x\in A$ que
+\[
+h(x,0_m)=h_2^{-1}(x,f_1(x))=h_2^{-1}(x,\phi(x))=(x-f_2(\phi(x)),\phi(x))=(0_n,\phi(x)).
+\]
 \QED
 \end{dem}
 
-\begin{coro}
+\begin{coro}\label{7.7}
 Si $\phi:A\to B$ es un homeomorfismo entre conjuntos cerrados de $\R^n$, entonces $\phi$ puede ser extendido a un homeomorfismo $\tilde{\phi}:\R^{2n}\to \R^{2n}$.
 \end{coro}
 \begin{dem}
@@ -85,17 +96,85 @@ Por el teorema anterior, existe $\hat{\phi}:\R^{2n}\to\R^{2n}$ con $\hat{\phi}(A
 Supongamos que $A\neq\R^n$ y $B\neq\R^n$ son subconjuntos cerrados de $\R^n$. Si $A$ y $B$ son homeomorfos, entonces $H^p(\R^n-A)\cong H^p(\R^n-B)$ para todo $p$.
 \end{teorema}
 \begin{dem}
+Por inducción en el teorema \ref{6.11} obtenemos isomorfismos 
+\begin{gather*}
+H^{p+m}(\R^{n+m}-A)\cong H^p(\R^n-A)\ (p>0)\\
+H^m(\R^{n+m}-A)\cong H^0(\R^n-A)
+\end{gather*}
+para todo $m\geq 1$. Análogamente para $B$. Por el corolario \ref{7.7} sabemos que $\R^{2n}-A$ y $\R^{2n}-B$ son homeomorfos. La invarianza topológica de la cohomología de deRham implica que tienen cohomologías isomorfas. Así,
+\[
+H^p(\R^n-A)\cong H^{p+n}(\R^{2n}-A)\cong H^{p+n}(\R^{2n}-B)\cong H^p(\R^n-B)
+\]
+para $p>0$ y 
+\[
+H^0(\R^n-A)/\R\cong H^{n}(\R^{2n}-A)\cong H^{n}(\R^{2n}-B)\cong H^0(\R^n-B)/\R,
+\]
+lo cual implica que $H^0(\R^n-A)\cong H^0(\R^n-B)$. ESTO VALE PARA E.V. ¿PERO Y PARA R-MÓDULOS? (IMAGINO QUE PARA GRUPOS ABELIANOS TAMBIÉN ES CIERTO, AUNQUE ME GUSTARÍA UNA PRUEBA) ¿EN GENERAL?
 \QED
 \end{dem}
 
-\begin{coro}
+\begin{coro}\label{7.9}
 Si $A$ y $B$ son subconjuntos cerrados homeomorfos de $\R^n$, entonces $\R^n-A$ y $\R^n-B$ tienen el mismo número de componentes conexas. 
 \end{coro}
 \begin{dem}
-Si $A\neq\R^n$ y $B\neq\R^n$ se sigue del teorema anterior. Si $A=B=\R^n$ es evidente. El caso $A=\R^n$, $B\neq\R^n$ no puede ocurrir, pues implicaría que $\R^{n+1}-A$ tendría dos componentes conexas, mientras que $\R^{n+1}-B$ sería conexo.\QED LOS COMPLEMENTARIOS DE CONJUNTOS HOMEOMORFOS NO TIENEN POR QUÉ SER HOMEOMORFOS, NO ME MIENTAS MADSEN
+Si $A\neq\R^n$ y $B\neq\R^n$ se sigue del teorema anterior. Si $A=B=\R^n$ es evidente. El caso $A=\R^n$, $B\neq\R^n$ no puede ocurrir, pues implicaría que $\R^{n+1}-A$ tendría dos componentes conexas, mientras que $\R^{n+1}-B$ sería conexo.\QED 
+
+TENEMOS QUE LOS COMPLEMENTARIOS SON HOMEOMORFOS PARA 2N, NO PARA N+1, ASÍ QUE ESTO SOLO VALE PARA N=1. 
 \end{dem}
 
+\begin{teorema}[de separación de Jordan-Brouwer]
+Si $\Sigma\subseteq\R^n$ $(n\geq 2)$ es homeomorfo a $S^{n-1}$ entonces
+\begin{enumerate}
+\item $\R^n-\Sigma$ tiene dos componentes conexas $U_1$ y $U_2$, donde $U_1$ es acotada y $U_2$ no.
+\item $\Sigma$ es el conjunto de puntos frontera entre $U_1$ y $U_2$.
+\end{enumerate}
+Decimos que $U_1$ es el dominio interior de $\Sigma$ y $U_2$ es el dominio exterior de $\Sigma$.
+\end{teorema}
+\begin{dem}
+\QED
+\end{dem}
 
+\begin{teorema}
+Si $A\subseteq\R^n$ es homeomorfo a $D^k$, con $k\leq n$, entonces $\R^n-A$ es conexo.
+\end{teorema}
+\begin{dem}
+Como $A$ es compacto, $A$ es cerrado. Por el corolario \ref{7.9} es suficiente probar la afirmación para $D^k\subseteq\R^k\subset\R^n$, lo cual es sencillo. \QED
+\end{dem}
+
+\begin{teorema}[de Brouwer] 
+Sea $U\subseteq\R^n$ abierto y $f:U\to\R^n$ una aplicación inyectiva y continua. Entonces $f(U)$ es abierta en $\R^n$ y $f$ es homeomorfismo sobre su imagen. 
+\end{teorema}
+\begin{dem}
+\QED
+\end{dem}
+
+\begin{coro}[Invarianza de dominio]\label{7.13}
+Si $V\subseteq\R^n$ tiene la topología inducida por $\R^n$ y es homeomorfo a un abierto de $\R^n$, entonces $V$ es abierto en $\R^n$.
+\end{coro}
+
+\begin{coro}[Invarianza de dimensión]
+Sean $U\subseteq\R^n$ y $V\subseteq\R^m$ abiertos no vacíos. Si $U$ y $V$ son homeomorfos, entonces $n=m$.
+\end{coro}
+\begin{dem}
+Supongamos que $m<n$. El corolario \ref{7.13} aplicado a $V$, visto como subconjunto de $\R^n$ mediante la inclusión $\R^m\subseteq\R^n$, implica que que $V$ es abierto en $\R^m$. Esto contradice el hecho de que $V$ esté contenido en $\R^n$. \QED
+\end{dem}
+
+\begin{prop}
+Sea $\Sigma\subseteq\R^n$ $(n\geq 2)$ homeomorfo a $S^{n-1}$ y sean $U_1$ y $U_2$ los dominios interior y exterior de $\Sigma$. Entonces
+\begin{align*}
+&H^p(U_1)\cong \begin{cases}
+\R & p=0\\
+0 & c.c.
+\end{cases} &\text{y}& & H^p(U_2)=\begin{cases}
+\R & p=0,n-1\\
+0 & c.c.
+\end{cases}
+\end{align*}
+\end{prop}
+\begin{dem}
+\end{dem}
+
+\begin{ej}
+\end{ej}
 
 \end{document}
-
