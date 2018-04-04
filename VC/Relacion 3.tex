@@ -8,6 +8,121 @@
 \title{Variable Compleja - Relación 1}
 \author{Rafael González López}
 \maketitle
+\begin{ejercicio}{1}
+Encontrar los polos y partes singulares de las siguientes funciones
+\begin{gather*}
+(a)\; \frac{1}{z^2+5z+6} \qquad (b)\; \frac{1}{(z^2-1)^2} \qquad (c)\; \frac{1}{\sin z} \qquad (d)\; \cot z\\
+(e)\; \frac{1}{\sin^2 z}\qquad (f)\; \frac{1}{z^m(1-z)^n} \qquad\text{($m$ y $n$ enteros postivos)}
+\end{gather*}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item Tenemos que $z^2+5z+6=(z+2)(z+3)$. Luego los polos son $-2,-3$, ambos simples. Si $w=$ entonces
+$$
+\frac{1}{z+2}=\frac{1}{1-(-(z+3))} = - \sum_{n=0}^\infty (-1)^n(z-3)^n
+$$
+Desarrollos válido en $|z-3|<1$ Por tanto
+$$
+\frac{1}{z^2+5z+6} = \frac{1}{z-3} + \sum_{n=0}^\infty (-1)^{n+1}(z-3)^n
+$$
+Para el otro polo, consideramos
+$$
+\frac{1}{z+3} = \frac{1}{1-(-(z+2))} = \sum_{n=0}^\infty (-1)^n(z-2)^n
+$$
+Desarrollo válido en $|z-3|<1$. Por tanto
+$$
+\frac{1}{z^2+5z+6} = \frac{1}{z-2} + \sum_{n=0}^\infty (-1)^{n+1}(z-2)^n
+$$
+\newpage
+\item Tenemos que $(z^2-1)^2 = (z+1)^2(z-1)^2$. Consideramos el desarollo
+$$
+\sum_{k=0}^\infty (k+1)n^k = \frac{1}{(n-1)^2}
+$$
+Por tanto, si $z-1 = z+1 -2 = {2((z+1)/2-1)}$
+$$\frac{1}{(z^2-1)^2}=  \frac{1}{(z+1)^2} \sum_{n=0}^\infty\frac{(n+1)}{2^{n+2}}(z+1)^n = \frac{1/4}{(z+1)^{-2}}+\frac{2/8}{(z+1)} + \sum_{n=0}^\infty \frac{(n+3)}{2^{n+4}}(z+1)^{n} 
+$$
+Para la el otro polo procedemos análogamente, usando que $z+1=2+(z-1) = 2(1-(-(z-1)/2))$. Por tanto
+\begin{align*}
+\frac{1}{(z^2-1)^2}&=  \frac{1}{(z-1)^2} \sum_{n=0}^\infty\frac{(-1)^n(n+1)}{2^{n+2}}(z-1)^n\\
+&= \frac{1/4}{(z+1)^{-2}}-\frac{2/8}{(z+1)} + \sum_{n=0}^\infty \frac{(-1)^{n+2}(n+3)}{2^{n+4}}(z+1)^{n}
+\end{align*}
+\item Sabemos que nuestra función tiene polos simples en $k\pi$ para $k\in \Z$ y además son los únicos.
+Tengamos en cuenta que
+$$\frac{\sin z}{z-k\pi} = \frac{1}{z-k\pi}\sum_{k=0}^\infty \frac{(z-k\pi)^{2n+1}(-1)^{2n}}{(2n+1)!} = \sum_{k=0}^\infty \frac{(z-k\pi)^{2n+1}(-1)^{2n}}{(2n+1)!} $$
+Si denotamos por $a_k$ los coeficientes de la inversa función inversa (que tiene algún desarollo en $\pi k$ por no anularse nuestra función) y $b_k$ los propios, tenemos la relación
+$$
+c_n = \sum_{k=0}^{n}a_k b_{n-k}
+$$
+Calcular el término general de la serie sería latoso, pero como los polos son simples, basta calcular el primero.  $1 = c_0 = a_0 \cdot 1$. Por tanto las partes singulares son 
+$$
+\frac{1}{z-k\pi}
+$$
+\item Tenemos polos simples en $k\pi$. Desarrollando la serie del $\cos(z-k\pi)$ y usando la fórmula del apartado anterior tenemos que
+$$
+\cos z = \sum_{k=0}^\infty \frac{z^{2n}}{(2n)!}
+$$
+Por tanto el primer coeficiente de $(z-k\pi) \cos z / \sin z$ es $1 \cdot 1 = 1$. Por tanto la parte singulares simplemente
+$$\frac{1}{z-k\pi}
+$$
+\item Análogamente a (c), tenemos polos de segundo orden en $k\pi$. Por la relación obtenida en ese apartado, podemos calcular los dos primeros términos utilizando la fórmula del término del producto. Denotemos por $r_n$ los coeficientes de 
+$$\frac{\sin^2 z}{(z-k\pi)^2}$$
+Tenemos que $0 = a_1 + b_1 = a_1 $, luego $b_1= 0$. Por tanto $r_0 = a_0^2 = 1$ y $r_1= 2 a_0a_1 = 0$. Es decir, la parte singular es
+$$
+\frac{1}{(z-k\pi)^2}
+$$
+\item Es claro que tenemos un polo de orden $m$ en $z=0$ y un polo de orden $n$ en $z=1$. Como $n,m$ son enteros positivos 
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2}
+Dos cuestiones no relacionadas
+\begin{itemize}
+\item ¿Cuántos ceros tiene el polinomio $z^6-2z^5 +7z^4+z^3-z+1$ en el disco unidad?
+\item ¿Cuántos ceros tiene el polinomio $z^4-6z+3$ en la corona $1<|z|<2$.
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[]
+\item Aplicamos el Teorema de Rouche. Tomamos $f(z)=7z^4$ y $g(z)=z^6-2z^5+z^3-z+1$. Entonces en $|z|=1$
+$$
+|f(z)| = 7 > 6 = |z^6| + |-2z^5| + |z^3| + |-z| +1 \geq |g(z)|
+$$
+Por tanto, hay 4 raíces en el disco unidad.
+\item  Tengamos en cuenta que si tomamos $f(z)=-6z$ y $g(z)=z^4+3$, entonces en $|z|=1$ por el Teorema de Rouché
+$$
+|f(z)1 = 6 > 1+3 = |z|^4+ 3 \geq |z^4+3|
+$$
+Por tanto, nuestro polinomio tiene un cero en $|z|<1$. Si tomamos ahora $f(z)=z^4$ y $g(z)=-6z+3$ entonces en $|z|=2$
+$$
+|f(z)| = 2^4 = 16 \geq 15 = 12 + 3 = |-6z| + 3 \geq |-6z+3|
+$$
+Por tanto, en $|z|=2$ y $|z|=1$ no hay raíces. En $|z|<2$ hay 4 y en $|z|<1$ hay 1. Es decir, en $1<|z|<2$ hay 3 raíces.
+\end{itemize}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{3}
+Probar que una singularidad aislada de $f(z)$ no puede ser un polo de $e^{f(z)}$ 
+\end{ejercicio}
+\begin{solucion}
+Sea $a\in \C$ es una singularidad aislada de $f(z)$. Distingamos casos
+\begin{itemize}
+\item Si $a$ es una singularidad evitable, entonces en un entorno de $a$, $|f(z)|<M$ para algún $M>0$. Por tanto $|e^{f(z)}| \leq |e^M|$ en un entorno de $a$. Por el Teorema de Riemann, esta singularidad también es evitable.
+
+\end{itemize} entonces 
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{4}
+Probar que si una función analítica $f(z)$ tiene un cero de orden $N$ en $z=a$, entonces $f(z)=g(z)^N$ para alguna función $g(z)$ analítica en un entorno de $a$ y que satisface $g'(a)\neq 0$.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
 
 \begin{ejercicio}{5}
 Demostrar que el polinomio $p(z)=2x^6-6z^5+4z^4-z^2+z-1$ tiene sus ceros en el disco cerrado de radio $3$.
@@ -28,4 +143,66 @@ Consideremos $f(z)=2z^6-6z^5+4z^4$, $g(z)=p(z)-f(z)$ y $C$ la circunferencia de 
 Basta aplicar el teorema para tener el resultado.
 \end{solucion}
 \end{ejercicio}
+\begin{ejercicio}{6}
+Calcular las integrales
+$$
+\int_{|z|=2}\frac{dz}{z^3(z^{10}-2)} \qquad \int_{|z|=2}\frac{dz}{(z-3)(z^5-1)}
+$$
+\end{ejercicio}
+\begin{solucion}
+En ambos casos aplicaremos el Teorema de los residuos.
+\begin{enumerate}
+\item Si $w = 1/z$ entonces $1/w = z$, luego $-dw/w^2 = dz$. Por tanto 
+$$
+\int_{|z|=2}\frac{dz}{z^3(z^{10}-2)}= \int_{|w|=1/2} \frac{-dw}{w^2 (1/w)^3((1/w)^{10}-2)} = \int_{|w|=1/2}\frac{-w^{11}}{1+2w^{10}}
+$$
+Observemos que las raíces verifica que $2w^10 = -1$, luego $|w| = \frac{1}{\sqrt[10]{2}} > \frac{1}{2}$. Por tanto, todas las discontinuidades están en el exterior de $|w|=1/2$, por lo que la integral es $0$.
+\item Si $w = 1/z$ entonces $1/w = z$, luego $-dw/w^2 = dz$. Por tanto 
+$$
+\frac{dz}{(z-3)(z^5-1)}= \int_{|w|=1/2} \frac{-dw}{w^2 (1/w-3)((1/w)^{5}-1)} = \int_{|w|=1/2}\frac{-w^{4}}{(1-3w)(1-w^5)}
+$$
+Por tanto, solo tenemos un polo simple en $w=1/3$. Calculamos el residuo
+$$
+\lim_{w\to 1/3} \frac{w^4}{1-w^5} = \frac{3}{242}
+$$
+Por tanto, la integral vale
+$$2\pi i \frac{3}{242} = \frac{3\pi i}{121}$$
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{8}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{9}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{10}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
 \end{document}

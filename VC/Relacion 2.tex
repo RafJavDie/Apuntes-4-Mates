@@ -8,50 +8,6 @@
 \title{Variable Compleja - Relación 1}
 \author{Rafael González López}
 \maketitle
-\begin{ejercicio}{2}
-\end{ejercicio}
-\begin{solucion}
-\begin{enumerate}[a.]
-\item[]
-\item 
-Queremos ver que $F(s)$ es analítica utilizando el teorema de convergencia. Las dos primeras condiciones son claras. Consideramos $\Re(s)>\sigma >0$. Tengamos en cuenta que si $z=x+yi$ entonces
-$$
-\abs{y^2+x^2-y^2+2xyi} \geq
-\begin{cases}
-\frac{3\sigma^2}{4} & |y|\leq x/2\\
-\sigma^2 & |y|>x/2
-\end{cases} \geq \frac{3\sigma^2}{4} 
-$$
-En el primer caso, es claro que $x^2-y^2 \geq x^2-x^2/4$, mientras que en el segundo caso se deriva a partir de $|2xyi|\geq 2x|y|\geq x^2$.
-\begin{align*}
-\abs{\frac{1}{t^2+z^2}\frac{t}{e^{2\pi t}-1}} \leq \frac{4}{3\sigma^2}\frac{t}{e^{2\pi t}-1}= g(t)
-\end{align*}
-Claramente $g(t)$ es una función continua en $[0,+\infty)$ y tiene integral finita. Consideramos $-1<a-3$ y tomamos un $\log x$ con $0<arg(x)<2\pi$.
-
-\item Tomamos un keycontour $\Gamma_{\varepsilon,R}$ centrado en $z=0$ de formar que el corredor sea simétrico respecto del eje  real positivo. Calculamos los residuos de los polos en el interior del contorno
-$$
-PENDIENTE
-$$
-De manera que
-$$
-\int_{\Gamma_{\varepsilon,R}} \frac{e^{a \log x}}{(1+x^2)^2}dx = 2\pi i\left( \frac{a-1}{4}ie^{\pi a/2}-\frac{a-1}{4}ie^{3\pi i a /2}\right)
-$$
-Veamos qué ocurre en las cuatro integrales que conforman la integral de nuestro contorno. Primeramente, en $C_\varepsilon$ (la circunferencia interior)
-$$
-\abs{\int_{C_\varepsilon}\frac{e^{a \log x}}{(1+x^2)^2} }\leq \frac{\varepsilon^a}{(1-\varepsilon^2)^2}2\pi \varepsilon 
-$$ 
-Luego se anula cuando $\varepsilon \to 0$, ya que $a>-1$.
-$$
-\int_{C_R} \frac{e^{a \log x}}{(1+x^2)^2} dx = \frac{R^a}{(R^2-1)^2}2\pi R
-$$
-Que tiende a $0$, pues $a<3$. Por la elección del $arg(x)$ tenemos que en los laterales del corredor, cuando hacemos tender su separación a $0$, tendremos que tomar en un caso $arg(x)=0$ y en otro $arg(x)=2\pi$, de donde deducimos que tienden a la integral que deseamos calcular $I$ y a $-e^{2\pi a}I$. Luego
-\begin{align*}
-I(1-e^{2\pi i a}) = 2\pi i\left( \frac{a-1}{4}ie^{\pi a/2}-\frac{a-1}{4}ie^{3\pi i a /2}\right)
-\end{align*} 
-\end{enumerate}
-
-\end{solucion}
-\newpage
 \begin{ejercicio}{1}
 Demostrar que serie 
 $$
@@ -67,9 +23,13 @@ Probemos primeramente que la serie converge uniformemente en compactos. Sea $\Om
 &\leq  \prod_{j=0}^{2r-1}\left|z+j\right|^{-1}  \prod_{j=2r}^n (j-|z|)^{-1} \leq \prod_{j=0}^{2r-1}|z+j|\frac{1}{r^{n-2r}}\\
 & \leq \frac{M}{r^{n-2r}}
 \end{align*}
-
-La última desigualdad se tiene dado que $h(z)=\prod_{j=0}^{2r-1}|z+j|^{-1}$ es una función continua en el compacto $K$. Como $r>1$, tomando índices adecuadamente, es claro que podemos aplicar el criterio M de Weierstrass. Por tanto, hemos probado que la serie converge uniformemente en cada compacto.
+Hemos utilizado que el índice en el segundo producto $j\geq 2r$ y $|z|<r$
+$$
+|z|<r \Leftrightarrow -|z|>-r \qquad j-|z|> 2r-r = r \Leftrightarrow \frac{1}{j-|z|}< \frac{1}{r}
+$$
 \newpage
+La última desigualdad se tiene dado que $h(z)=\prod_{j=0}^{2r-1}|z+j|^{-1}$ es una función continua en el compacto $K$. Como $r>1$, tomando índices adecuadamente, es claro que podemos aplicar el criterio M de Weierstrass. Por tanto, hemos probado que la serie converge uniformemente en cada compacto.\\
+
 Vamos a ver que la serie define una función meromorfa en el plano complejo. Primeramente, tomando 
 $$
  f_n(z) = \sum_{i=0}^n g_i(z) = \sum_{i=0}^n \prod_{j=0}^i (z+j)^{-1}
@@ -89,9 +49,11 @@ $$
 \lim_{z\to -a}(z+a)f(z) \in\C
 $$
 y además la serie
+
 $$
 p_n(z) = \sum_{i=1}^n g_i(z) (z-a) = \sum_{i=0}^n \prod_{j=0}^i (z+j)^{-1}(z+a)
 $$
+
 converge uniformemente en cada compacto de $\Omega\cup\{-a\}$.  Tenemos que si $i\geq a$
 \begin{align*}
 \lim_{z\to -a}(z+a)\prod_{j=0}^i \left(z+j\right)^{-1}& =  \lim_{z\rightarrow-a}\left(\prod_{j=0}^{a-1}(z+j)^{-1}\right)\frac{(z+a)}{(z+a)}\left(\prod_{j=a+1}^{n}(z+j)^{-1}\right)\\
@@ -108,4 +70,217 @@ $$
 $$
 \end{solucion}
 \end{ejercicio}
+\newpage
+
+\begin{ejercicio}{2}
+Demostrar que la función definida por la integral 
+$$
+F(z)=\int_0^\infty\frac{tdt}{(t^2+z^2)(e^{2\pi t}-1)}
+$$
+es analítica en $\Re(z) >0$.
+\end{ejercicio}
+\begin{solucion}
+Queremos ver que $F(s)$ es analítica utilizando el teorema de convergencia. Las dos primeras condiciones son claras. Consideramos $\Re(s)>\sigma >0$. Tengamos en cuenta que si $z=x+yi$, realizamos el siguiente razonamiento.
+\begin{enumerate}
+\item Si $|y|\leq x/2$, entonces es claro que $x^2-y^2 \geq x^2-x^2/4 \geq 3\sigma^2/4\geq 0$, $t\geq 0$ y usamos que $|z|\geq |\Re(z)|$. Por tanto,
+$$
+\abs{t^2+x^2-y^2+2xyi} \geq |t^2+x^2-y^2| = t^2 + x^2-y^2 \geq x^2-y^2 \geq \frac{3\sigma^2}{4}
+$$
+\item Si $|y|>x/2$ entonces $|2xyi|\geq 2x|y| \geq x^2$. Además, $|z|\geq |\Im(z)|$, luego
+$$
+\abs{t^2+x^2-y^2+2xyi} \geq |2xyi|\geq 2x|y| \geq x^2 \geq \sigma^2 \geq \frac{3\sigma^2}{4}
+$$
+\end{enumerate}
+Deducimos, por tanto, que en el dominio considerado
+$$
+\abs{t^2+z^2} = \abs{t^2+x^2-y^2+2xyi} \geq \frac{3\sigma^2}{4} 
+$$
+Por tanto, podemos acotar la función del integrando de la siguiente manera
+\begin{align*}
+\abs{\frac{1}{t^2+z^2}\frac{t}{e^{2\pi t}-1}} \leq \frac{4}{3\sigma^2}\frac{t}{e^{2\pi t}-1}= g(t)
+\end{align*}
+Claramente $g(t)$ es una función continua en $[0,+\infty)$ y estrictamente positiva. Podemos probar que la integral converge, por ejemplo, por paso al limite. Claramente $e^{-\pi t}$ es integrable en $[0,+\infty)$, luego
+$$
+\lim_{t\to \infty}\frac{\frac{t}{e^{2\pi t}-1}}{e^{-\pi t}} = \lim_{t\to \infty}\frac{t}{e^{\pi t}-e^{-\pi t}} = 0
+$$
+Por lo que $g(t)$ también es integrable en $[0,+\infty)$. Por tanto, tenemos el resultado.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{3}
+Calcular la integral
+$$
+\int_0^\infty \frac{x^a}{(1+x^2)^2}dx \qquad -1<a<3
+$$
+\end{ejercicio}
+\begin{solucion}
+Consideramos $-1<a<3$ y tomamos un $\log x$ con $0<arg(x)<2\pi$.  Tomamos un keycontour $\Gamma_{\varepsilon,R}$ centrado en $z=0$ de formar que el corredor sea simétrico respecto del eje  real positivo. Calculamos los residuos de los polos en el interior del contorno, que son claramente dos polos de segundo orden.
+\begin{align*}
+\lim_{x\to i} \left(\frac{x^a}{(x+i)^2}\right)' &= \lim_{x\to i}\frac{e^{\log{x}(a-1)}(a(x+i)-2x)}{(x+i)^3} = \frac{e^{\pi (a-1)i/2}2i(a-1)}{8i^3}\\ 
+&=-\frac{(a-1)}{4}e^{\pi (a-1)i/2} =\frac{(a-1)}{4}ie^{\pi ai/2} \\
+\lim_{x\to -i} \left(\frac{x^a}{(x-i)^2}\right)' &= \lim_{x\to -i}\frac{e^{\log{x}(a-1)}(a(x-i)-2x)}{(x-i)^3} =\frac{e^{3\pi (a-1)i/2}2i(-a+1)}{-8i^3}\\ 
+&=-\frac{(a-1)}{4}e^{3\pi (a-1)i/2} = -\frac{(a-1)}{4}e^{3\pi ai/2}
+\end{align*}
+
+De manera que
+$$
+\int_{\Gamma_{\varepsilon,R}} \frac{e^{a \log x}}{(1+x^2)^2}dx = 2\pi i\left( \frac{a-1}{4}ie^{\pi a/2}-\frac{a-1}{4}ie^{3\pi i a /2}\right)
+$$
+Veamos qué ocurre en las cuatro integrales que conforman la integral de nuestro contorno. Primeramente, en $C_\varepsilon$ (la circunferencia interior)
+$$
+\abs{\int_{C_\varepsilon}\frac{e^{a \log x}}{(1+x^2)^2} }=\int_0^{2\pi} \abs{\frac{\varepsilon^a e^{ait} e^{it} i \varepsilon}{(1+\varepsilon^2e^{it})^2}}dt\leq \int_0^{2\pi}\frac{\varepsilon^a\varepsilon}{(1-\varepsilon^2)^2}dt = \frac{\varepsilon^a}{(1-\varepsilon^2)^2}2\pi \varepsilon 
+$$ 
+Luego se anula cuando $\varepsilon \to 0$, ya que $a>-1$. Análogamente
+$$
+\abs{\int_{C_R} \frac{e^{a \log x}}{(1+x^2)^2} dx } \leq  \frac{R^a}{(R^2-1)^2}2\pi R
+$$
+Que se anula cuando $R\to<\infty$, pues $a<3$. Por la elección del $arg(x)$ tenemos que en los laterales del corredor, cuando hacemos tender su separación a $0$, tendremos que tomar en un caso $arg(x)=0$ y en otro $arg(x)=2\pi$, de donde deducimos que tienden a la integral que deseamos calcular $I$ y a $-e^{2\pi a}I$. Luego
+\begin{align*}
+I(1-e^{2\pi i a}) = 2\pi i\left( \frac{a-1}{4}ie^{\pi a/2}-\frac{a-1}{4}ie^{3\pi i a /2}\right)
+\end{align*}
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{4}
+Calcular la integral
+$$
+\int_0^\infty \frac{\sin ax}{\sinh x}dx \qquad a \in \R
+$$
+\end{ejercicio}
+\begin{solucion}
+Tengamos en cuenta ambas función son impares, luego el cociente es par. Por tanto,
+$$
+\int_0^\infty \frac{\sin ax}{\sinh x}dx 
+ = \frac{1}{2} \int_{-\infty}^\infty \frac{\sin ax}{\sinh x}dx = \frac{1}{2}\Im\left( \int_{-\infty}^\infty \frac{e^{iax}}{\sinh x}dx\right)
+$$
+Consideramos ahora $\gamma_R$ el rectángulo apoyado en el segmento $[-R,R]$. Como tenemos una discontinuidad en el origen y en $2\pi i$, cambiamos este contorno por uno que hay $2$ semicircunferencias de radio $\varepsilon$ (la parte de abajo. De esta forma en $\gamma_R$ no hay ninguna singularidad y en su contorno solo queda la del $0$. Calculamos el residuo que es un polo simple
+$$
+\lim_{x\to0}x\frac{e^{iax}}{\sinh x} = \lim_{z\to0}\frac{e^{iax}+iaxe^{iax}}{\cosh x} = 1
+$$
+Dividimos nuestra curva de manera natural en $8$, los $6$ segmentos y las $2$ semicircunferencias. Tengamos en cuenta que en los dos segmentos inferiores cuando $R\to \infty$ la integral converge a la que deseamos. En los dos segmentos inferiores también lo hace pero con signo opuesto y multiplicado por $e^{-2\pi a}$. Por tanto, veamos qué ocurre en los segmentos verticales y las semicircunferencias.
+\begin{itemize}
+\item En la semicircunferencia inferior $C^1_\varepsilon$ tenemos la parametrización $\varepsilon e^{ti}$, $t=[\pi,2\pi]$.
+\begin{align*}
+\abs{\int_{C^1_\varepsilon} \frac{e^{iax}}{\sinh x}dx} &= \abs{\int_{\pi}^{2\pi} \frac{e^{iae^{it}\varepsilon}\varepsilon e^{it}}{\sinh(\varepsilon e^{it})}dt}\\
+& \leq 2 \varepsilon e^{|a|\varepsilon}\int_\pi^{2\pi}\frac{dt}{\abs{e^{\varepsilon e^{it}}-e^{-\varepsilon e^{it}}}}\\
+&\leq 2 \varepsilon e^{|a|\varepsilon}\int_\pi^{2\pi}\frac{dt}{}
+\end{align*}
+$$
+\abs{e^{\varepsilon e^{it}}-e^{-\varepsilon e^{it}}} \geq e^\varepsilon - |e^{-\varepsilon^{e^{it}}}| \geq e^\varepsilon - |e^{-\varepsilon(\cos(t)+i\sin(t))}| = e^\varepsilon - |e^{-\varepsilon\cos(t)}| = e^\varepsilon - \frac{1}{|e^{\varepsilon \cos(t)}|}
+$$
+\end{itemize}
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{5}
+Sea $f\func{\Omega}{\C}$ una función holomorfa en una región $\Omega$ que contiene el eje real $\R$. Demostrar que si existe una sucesión convergente de números reales $\{x_n\}$ tales que $f(x_n)\in \R$ entonces $f$ toma valores reales para todo $x\in \R$.
+\end{ejercicio}
+\begin{solucion}
+Tengamos en cuenta que $\{x_n\}$ no es una sucesión constante, pues en ese caso no sería cierto. Por ejemplo, para la sucesión constantemente el origen, la función $f(z)=zi$ verifica que $f(x_n)=0\in \R$ pero no toma más valores reales a lo largo de la recta real. Por tanto, supongamos que la sucesión es no constante. Sea $h(z)=\overline{z}$, definimos $\Omega^* = h(\Omega)$. Como $h$ es un isomorfismo continuo, luego es una aplicación abierta. Se desprende, por tanto, que $\Omega^*$ es una región que contiene al eje real. Definimos además
+$$
+G':=\Omega \cap \Omega^*
+$$
+Naturalmente $G'$ es abierto por ser intersección de abierto. Para ver que es región consideremos el siguiente razonamiento.  Aunque $G'$ podría ser no conexo, lo que es claro es que $\R$ debe estar en alguna completamente contenido en alguna componente conexa que denominamos $G$. Definimos ahora \begin{equation*}\begin{split}
+	g : & \  G \rightarrow \C \\
+	& z \mapsto g(z) = f(z) - \overline{f(\overline{z})},
+	\end{split}
+	\end{equation*}
+	que está bien definida por nuestra elección de $G$. Además, como $f(z)$ y $ \overline{f(\overline{z})}$ son funciones holomorfas en $G$, se sigue que $g$ también lo es. \\
+	Además, tenemos que \begin{equation*}
+	g(x_n) = f(x_n) - \overline{f(\overline{x_n})} = f(x_n) - f(x_n) = 0 \  \forall n \in \N.
+	\end{equation*}
+	Así, como $(x_n)$ es una sucesión convergente en $G$ y no constante, se sigue que $g \equiv 0$ en $G$, lo que implica que \begin{equation*}
+	f(z) = \overline{f(\overline{z})} \quad \text{para todo} \ z \in G.
+	\end{equation*}
+	Como $G$ contiene a la recta real, se tiene que \begin{equation*}
+	f(x) = \overline{f(x)} \quad \text{para todo} \ x \in \R,
+	\end{equation*}
+	lo que prueba que $f$ toma valores reales en toda la recta real. 
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{6}
+Sea $f\func{\Omega}{\C}$ una función holomorfa en una región $\Omega$ tal que para cierto $\varepsilon>0$ el disco de centro $0$ y radio $\varepsilon$ esté contenido en $\Omega$. Demostrar que $f$ toma valores reales en el segmento $(-\varepsilon,\varepsilon)$ y en el segmento $(-i\varepsilon,i\varepsilon)$ si y solo si el desarrollo de $f$ en el entorno de $0$ es de la forma
+$$
+f(z)=\sum_{n=0}^\infty a_nz^{2n}
+$$
+con los coeficientes $a_n \in \R$.
+\end{ejercicio}
+\begin{solucion}
+Una de las implicaciones es clara. Si $f$ tiene dicho desarrollo es el origen, que sabemos es válido al menos en $|z|<\varepsilon$, si $z\in (-\varepsilon,\varepsilon)$ y $a_n\in \R$ entonces $a_nz^{2n} \in \R$. Por tanto, la suma que supones convergente también es real. Análogamente, para $z\in (-\varepsilon i,\varepsilon i)$, $z^{2n} \in (-\varepsilon^{2n},\varepsilon^{2n})$, luego $a_n z^{2n}\in \R$.
+
+Recíprocamente, supongamos que $f$ toma valores reales en dichos segmentos. Podemos suponer que no son idénticamente cero al ser holomorfa. 
+\begin{itemize}
+\item Consideramos el desarrollo en serie de la función
+$$\sum_{n=0}^\infty a_n z^n
+$$
+Para $z\in(-\varepsilon,\varepsilon)$, $z=\overline{z}$. Como toma valores reales $f(z)=f(\overline{z})=\overline{f(\overline{z})}$, luego
+$$
+\sum_{n=0}^\infty a_n z^n = \sum_{n=0}^\infty \overline{a_n} \overline{z} = \sum_{n=0}^\infty \overline{a_n}z^n
+$$
+De donde deducimos que $a_n=\overline{a_n}$, por lo que son reales.
+\item Además, también para $z\in (-\varepsilon,\varepsilon)$ entonces tenemos que $f(iz) = \overline{f(zi)}$ y toma valores reales y teniendo en cuenta que $a_n \in \R$
+$$
+\sum_{n=0}^\infty a_n (iz)^n = \sum_{n=0}^\infty {\overline{a_n ({iz})^n}} = \sum_{n=0}^\infty {a_n ({-iz})^n}  
+$$
+Por lo que 
+$$
+a_{3+4n} (iz)^{3+4n} = a_{3+4n}(-i)z^{3+4n} = a_{3+4n}(-iz)^{3+4n} = -a_{3+4n}(-i)z^{3+4n}
+$$
+de donde $-a_{3+4n}=a_{3+4n}$, de donde se deduce que es nulo.
+$$
+a_{1+4n} (iz)^{1+4n} = a_{1+4n}iz^{1+4n} = a_{1+4n}(-iz)^{1+4n} -a_{1+4n}iz^{1+4n}
+$$
+de donde $a_{1+4n}=-a_{1+4n}$, de donde se deduce que es nulo.  Es decir, es nula para todos los impares, lo que demuestra el resultado.
+\end{itemize}
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{7}
+Considerar el compacto $K$ de la figura: Consistente en un disco de radio $2$ menos la unión de dos discos de radio $1$.
+$$
+K=\{z\in \C\mid |z|\geq 2, \; |z-1|\geq 1,\; |z+1|\geq 1\}
+$$
+¿Podemos aproximar una función holomorfa en un entorno de $K$, uniformemente en $K$ por funciones racionales con polos en $-1$ y $1$?
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{8}
+Sea $G$ el abierto interior del compacto $K$ definido en el problema anterior. ¿Es posible aproximar cualquier función holomorfa en $G$ uniformemente en cada compacto $L\subset G$ mediante polinomios? Demostrar que la respuesta es correcta.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{9}
+Supongamos que $f$ es una función continua no nula en $\overline{\mathbb{D}}$ que es holomorfa en $\mathbb{D}$. Probar que si 
+$$
+|f(z)|=1 \text{ siempre que } |z|=1
+$$
+entonces $f$ es constante.
+\end{ejercicio}
+\begin{solucion}
+Primeramente, como $f$ es analítica y no se anula en el disco unidad, entonces tiene sentido considerar en $|z|>1$ la función $f(1/z)$, que será analítica en $|z|>1$. Sabemos que si $g(z)$ es analítica entonces $\overline{g(\overline{z})}$ es analítica.  Por tanto, podemos considerar la función de $f$ dada por 
+$$
+g(z)=
+\begin{cases}
+f(z) & |z|\leq 1\\
+\overline{f\left({1}/{\overline{z}}\right)} & |z|>1
+\end{cases}
+$$
+Es claro que $g$ es analítica en $|z|\neq 1$. Tengamos en cuenta lo siguiente. Sabemos que $g$ es continua en $\overline{\mathbb{D}}$, que es compacto, luego $g$ está acotada por una cierta constante $M>0$. Ahora tengamos en cuenta que si $|z|>1$ entonces $\abs{1/\overline{z}}<1$, luego 
+$$|g(z)| = |\overline{f\left({1}/{\overline{z}}\right)}| = \abs{f\left({1}/{\overline{z}}\right)}<M
+$$
+Además, sabemos que $|f(z)|=1$ en $|z|=1$. Por tanto, si probamos que $g$ es entera, entonces por el Teorema de Liouville tendremos que $g$, y por tanto $f$, es constante.
+\end{solucion}
+\newpage
 \end{document}
