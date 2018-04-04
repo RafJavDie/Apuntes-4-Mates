@@ -1,0 +1,64 @@
+\documentclass[HS.tex]{subfiles}
+\begin{document}
+
+\chapter{Invariancia homotópica de la homología simplicial}
+
+\section{Generalidades sobre Álgebra Homológica}
+Sea $X$ un espacio topológico y supongamos que existe un complejo simplicial $K$ y un homeomorfismo $h \colon X \to |K|$.
+Entonces podríamos definir $H_n(X) := H_n(K)$.
+El par $(K,h)$ se llama \emph{trianguación} de $X$.
+Esto estará bien definido si $H_n$ no depende de la triangulación.
+Esta cuestión será abordada por la \emph{invariancia homotópica de la homología}.
+
+\section{Nociones básicas de teoría de homotopía}
+\begin{defi}
+Dos aplicaciones continuas $f,g \colon X \to Y$ entre espacios topológicos se dicen homotópicas si existe una aplicación $H \colon X \times I \to Y$ continua (que llamamos \emph{homotopía}) cumpliendo:
+\[ H(x,0) = f(x) \quad \forall x \in X \]
+\[ H(x,1) = g(x) \quad \forall x \in X \]
+Dos aplicaciones $f,g$ \emph{homotópicas} por $H$ se denotan $f \simeq_H g$.
+\end{defi}
+
+\begin{prop}\mbox{}
+\begin{enumerate}
+\item La relación ``ser homotópica a'' entre aplicacioens continuas es una relación de equivalencia.
+\item Si en la definición antrior $f(x) = g(x)$ para $\forall x \in A \subseteq X$ y además
+\[ H(x,t) = f(x) = g(x),\quad \forall x \in A \forall t \in I \]
+entonces diremos que $f \simeq_H g$ relativa a $A$.
+Esto es que $A$ es un conjunto de puntos que la homotopía ``no mueve''.
+\end{enumerate}
+\end{prop}
+
+\begin{defi}
+Dos espacios topológicos $X$ e $Y$ son del mismo tipo de homotopía (o homotópicamente equivalente) si existe $f \colon X \to Y$, existe $g \colon Y \to X$ continua cumpliendo:
+\[ f \circ g \simeq id_Y \quad g \circ f \simeq id_X \]
+En este caso diremos que tanto $f$ como $g$ son equivalentes de homotopía e inversas homotópicamente una de la otra.
+\end{defi}
+
+\begin{defi}
+Si un espacio topológico $X$ es del mismo tipo de homotopía que un punto, entonces diremos que $X$ es contráctil.
+\end{defi}
+\begin{ej}
+Todo subespacio convexo $C \subseteq \R^n$ es contráctil.
+\end{ej}
+\begin{prop}
+$X$ es contráctil si y sólo si $id_X \simeq cte$.
+\end{prop}
+
+\begin{defi}
+Dados $A \subseteq X$ e.t., una \emph{retracción} de $X$ en $A$ es una aplicación continua:
+\[ r \colon X \to A \]
+cumpliendo que $r(a) = a$ $\forall a \in A$.
+Si $i \colon A \to X$ denota la inclusión, entonces $r \circ i = id_A$.
+Si además, se cumple que $i \circ r \sim id_X$, diremos que $A$ es un \emph{retracto de deformación} de $X$.
+Si además, $i \circ r \simeq_H id_X$ relativa a $A$, entonces diremos que $A$ es un \emph{retracto de deformación fuerte} de $X$.
+\end{defi}
+
+\begin{nota}
+Si $A \subseteq X$ es retrato de deformación de $X$, entonces $A$ y $X$ son del mismo tipo de homotopía, pues tanto $r$ como $i$ son equivalentes de homotopía, y una es la inversa homotópica de la otra.
+\end{nota}
+\begin{ej}
+Damos un ejemplo de retracto que no es de deformación.
+Considereamos $X = S^1 \times I$ el cilindro. Consideramos $A = \{r\} \times I$, con $r \in S^1$.
+La retracción $r \colon X \to A$ definida por $r(s,i) = (r,i) \in A$ no es retracato de deformación. 
+\end{ej}
+\end{document}
