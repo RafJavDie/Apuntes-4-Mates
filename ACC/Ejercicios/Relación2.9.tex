@@ -18,17 +18,15 @@
 \begin{ejercicio}{2.9.1}
 Let $f_1 = xz +1$, $f_2 = yz+ 1$, and $f_3 = xz +y−z +1$. For lex order with $x > y > z$, show
 that
-$$S( f_1, f_2) = (−1)\cdot f_1 + 0\cdot  f_2 + 1 \cdot f_3.$$
+$$S( f_1, f_3) = 1\cdot f_1 + 0\cdot  f_2 + (−1)\cdot f_3.$$
 Also show that this is an lcm representation but not a standard representation.
 \end{ejercicio}
 \begin{solucion}
-Calculando $S(f_1,f_2)$ con Sage obtenemos que vale $-x+y$. Aunque tampoco es difícil hacer a mano.
-\[
-S(f_1,f_2)=\frac{xyz}{xz}(xz+1)-\frac{xyz}{yz}(yz+1)=yxz+y-yxz-x=-x+y
-\]
-Si ahora hacemos el cálculo $(−1)\cdot f_1 + 0\cdot  f_2 + 1 \cdot f_3$ esto nos da $y-z$, así que el enunciado seguramente esté mal. Si $f_3=xz +y−x +1$ entonces sí daría, así que vamos a suponer que esto es lo que debería aparecer.
+Es claro que $S(f_1,f_3)=-y+z$. Basta hacer las cuentas para ver que se verifica la representación.
 
-Comprobamos ahora la segunda parte del problema. $\mathrm{multideg}(S( f_1, f_2))=(1,0,0)<\mathrm{multideg}(-f_1)=(1,0,1)$, por lo que no es una representación estándar. Sin embargo, $\lcm(LM(f_1),LM(f_2))=xyz$, mientras que $LT(-f_1)=-xz$ y $LT(f_3)=xz$, por lo que $\lcm(LM(f_1),LM(f_2))>LT(-f_1),LT(f_3)$, es decir, es una representación LCM. 
+Comprobamos ahora la segunda parte del problema. 
+$$\mathrm{multideg}(S( f_1, f_2))=(1,0,0)<\mathrm{multideg}(-f_1)=(1,0,1)$$
+por lo que no es una representación estándar. Sin embargo, $\lcm(LM(f_1),LM(f_2))=xyz$, mientras que $LT(-f_1)=-xz$ y $LT(f_3)=xz$, por lo que $$\lcm(LM(f_1),LM(f_2))>LT(-f_1),LT(f_3)$$, es decir, es una representación LCM. 
 \end{solucion}
 \newpage
 
@@ -47,7 +45,7 @@ you found in part (b).
 \begin{enumerate}[a.]
 \item La simetría de los polinomios hace que baste comprobarlo para un orden lex, digamos $x>y>z$. En este caso, si llamamos $G$ al conjunto de generadores de $I$, $LT(G)=\{x^2, x, x\}$, de modo que $\gene{LT(G)}=\gene{x}$. Sin embargo, $$LT((x + y^2 + z − 1)- (x + y + z^2 − 1))=y^2\notin \gene{x},$$ por lo que $G$ no es una base de Gröbner.
 \item Para grlex los términos líderes son $x^2$, $y^2$ y $z^2$, respectivamente, que son primos entre sí.
-\item La proposición 4 asegura que los $S$-polinomios se reducen a 0 módulo $G$, y el teorema 3 nos indica que $G$ es una base de Gröbner.
+\item La Proposición 4 asegura que los $S$-polinomios se reducen a 0 módulo $G$, y el Teorema 3 nos indica que $G$ es una base de Gröbner.
 \end{enumerate}
 \end{solucion}
 
