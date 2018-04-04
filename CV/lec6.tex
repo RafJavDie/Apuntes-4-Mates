@@ -8,10 +8,92 @@
 \chapter{Aplicaciones de la cohomología de deRham}
 
 \section{Puntos fijos y otras aplicaciones}
+Introducimos primero la notación estándar $D^n=\{x\in\R^n\mid ||x||\leq 1\}$, $S^{n-1}=\{x\in\R^n\mid ||x||=1\}$.
+\begin{defi}
+Un \textbf{punto fijo} de una aplicación $f:X\to X$ es un punto $x\in X$ con $f(x)=x$.
+\end{defi}
+
+\begin{lemma}\label{borde}
+No existe ninguna aplicación continua $g:D^n\to S^{n-1}$ que sea la identidad sobre $\partial D^n=S^{n-1}$.
+\end{lemma}
+\begin{proof}
+Para $n=1$ se tiene por conexión, así que sea $n\geq 2$. Por reducción al absurdo, supongamos que existe $g:D^n\to S^{n-1}$ con $g|_{S^{n-1}}=Id_{S^{n-1}}$. Sea $r:\R^n-\{0\}\to\R^n-\{0\}$ dada por $r(x)=x/||x||$. Se tiene que $r\simeq Id_{\R^n-\{0\}}$, pues para todo $x\in\R^n-\{0\}$, el segmento que une $x$ con $r(x)$ está contenido en $\R^n-\{0\}$. Así, podemos definir $H(x,t)=g(tr(x))$ para $x\in\R^n-\{0\}$ y $t\in[0,1]$, lo cual nos da una homotopía entre $H(x,0)=g(0)$ y $H(x,1)=g(r(x))=r(x)$, por lo que $r$ es homotópica a una constante. Eso significa que $\R^n-\{0\}$ es contráctil, lo cual entra en contradicción con el cálculo de su homología.
+\end{proof}
+
+\begin{teorema}[del punto fijo de Brouwer] Toda aplicación continua $f:D^n\to D^n$ tiene algún punto fijo.
+\end{teorema}
+\begin{dem}
+Supongamos por reducción al absurdo que $f(x)\neq x$ para todo $x\in D^n$. Para cada $x\in D^n$ definimos $g(x)$ como la intersección con $S^{n-1}$ de la semirrecta con inicio en $f(x)$ y que pasa por $x$. Obtenemos la expresión 
+\[
+g(x)=x+tu,\quad u=\frac{x-f(x)}{||x-f(x)||}, \quad t=-x\cdot u+\sqrt{1-||x||^2+(x\cdot u)^2}.
+\] 
+Aquí, $x\cdot u$ denota el producto escalar usual. Como $g$ es continua y es la identidad en $S^{n-1}$, llegamos a una contradicción con el lema \ref{borde}.
+\QED
+\end{dem}
+
+Recordamos que el espacio tangente a $S^n$ en un punto $x\in S^n$ es $T_xS^n=\{x\}^{\perp}$, el complemento ortogonal en $\R^{n+1}$ del vector de posición. Esto es, $v\in T_xS^n$ si y solo si $v\cdot x=0$. Un campo vectorial tangente en $S^n$ es por tanto una aplicación continua $v:S^n\to\R^{n+1}$ tal que $v(x)\in T_xS^n$ para todo $x\in S^n$. 
+
+\begin{teorema}[de la bola peluda]
+La esfera $S^n$ tiene un campo vectorial tangente $v$ con $v(x)\neq 0$ para todo $x\in S^n$ si y solo si $n$ es impar.
+\end{teorema}
+\begin{dem}
+Dado un campo vectorial tangente $v$ a $S^n$, podemos extenderlo a un campo vectorial tangente $w$ a $\R^{n+1}-\{0\}$ definiendo
+\[
+w(x)=v\left(\frac{x}{||x||}\right).
+\] 
+Tenemos que $w(x)\neq 0$ y $w(x)\cdot x=0$ para todo $x\in\R^{n+1}-\{0\}$. La expresión
+\[
+F(x,t)=(\cos\pi t)x+(\sin\pi t)w(x)
+\]
+define una homotopía entre $f_0=Id_{\R^{n+1}-\{0\}}$ y $f_1=-Id_{\R^{n+1}-\{0\}}$. Esto implica que $(-Id_{\R^{n+1}-\{0\}})^*$ es la identidad en $H^n(\R^{n+1}-\{0\})\cong\R$ (\ref{6.13}). Por otra parte, por el corolario \ref{multiplica}, esta aplicación es la multiplicación por $(-1)^{n+1}$, por lo que $n$ es impar. 
+
+Recíprocamente, si $n=2m-1$, podemos definir el campo vectorial tangente $v$ como
+\[
+v(x_1,\dots, x_{2m})=(-x_2, x_1,-x_4,x_3,\dots, -x_{2m},x_{2m-1}).
+\]
+\QED
+\end{dem}
+\begin{nota}
+En la homotopía $F(x,t)=(\cos\pi t)x+(\sin\pi t)w(x)$, la parte del seno es necesaria para que $F$ no se anule.
+\end{nota}
 
 
 \section{Invarianza de dominio}
 
+
+\begin{lemma}[Urysohn-Tietze] Si $A\subseteq \R^n$ es cerrado y $f:A\to\R^m$ es continua, entonces existe una aplicación continua $g:\R^n\to\R^m$ con $g|_A=f$.
+\end{lemma}
+\begin{proof}
+
+\end{proof}
+
+\begin{prop}
+Seas $A\subseteq\R^n$ y $B\subseteq\R^m$ cerrados y sea $\phi:A\to B$ un homeomorfismo. Entonces existe un homeomorfismo $h$ de $\R^{n+m}$ en sí mismo tal que $h(x,0_m)=(0_n,\phi(x))$ para todo $x\in A$. 
+\end{prop}
+\begin{dem}
+\QED
+\end{dem}
+
+\begin{coro}
+Si $\phi:A\to B$ es un homeomorfismo entre conjuntos cerrados de $\R^n$, entonces $\phi$ puede ser extendido a un homeomorfismo $\tilde{\phi}:\R^{2n}\to \R^{2n}$.
+\end{coro}
+\begin{dem}
+Por el teorema anterior, existe $\hat{\phi}:\R^{2n}\to\R^{2n}$ con $\hat{\phi}(A\times 0_m)=0_n\times B$. Basta intercambiar las coordenadas para obtener el homeomorfismo $\tilde{\phi}$. \QED
+\end{dem}
+
+\begin{teorema}
+Supongamos que $A\neq\R^n$ y $B\neq\R^n$ son subconjuntos cerrados de $\R^n$. Si $A$ y $B$ son homeomorfos, entonces $H^p(\R^n-A)\cong H^p(\R^n-B)$ para todo $p$.
+\end{teorema}
+\begin{dem}
+\QED
+\end{dem}
+
+\begin{coro}
+Si $A$ y $B$ son subconjuntos cerrados homeomorfos de $\R^n$, entonces $\R^n-A$ y $\R^n-B$ tienen el mismo número de componentes conexas. 
+\end{coro}
+\begin{dem}
+Si $A\neq\R^n$ y $B\neq\R^n$ se sigue del teorema anterior. Si $A=B=\R^n$ es evidente. El caso $A=\R^n$, $B\neq\R^n$ no puede ocurrir, pues implicaría que $\R^{n+1}-A$ tendría dos componentes conexas, mientras que $\R^{n+1}-B$ sería conexo.\QED LOS COMPLEMENTARIOS DE CONJUNTOS HOMEOMORFOS NO TIENEN POR QUÉ SER HOMEOMORFOS, NO ME MIENTAS MADSEN
+\end{dem}
 
 
 
