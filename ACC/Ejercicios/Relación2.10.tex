@@ -7,6 +7,8 @@
 \newcommand{\PhantC}{\phantom{\colon}}%
 \newcommand{\CenterInCol}[1]{\multicolumn{1}{c}{#1}}%
 
+%\usepackage{fourier}
+%\usepackage{arcs}
 %--------------------------------------------------------
 \begin{document}
 
@@ -18,20 +20,29 @@
 Let $S = (c_1, \dots , c_s)$ and $T = (d_1, \dots , d_s) ∈ (k[x_1, \dots , x_n])^s$ be syzygies on the leading
 terms of $F = (f_1, \dots , f_s)$.
 \begin{enumerate}[a.]
-\item Show that $S + T = (c_1 + d_1, . \dots , c_s + d_s)$ is also a syzygy.
+\item Show that $S + T = (c_1 + d_1, \dots , c_s + d_s)$ is also a syzygy.
 \item Show that if $g ∈ k[x_1,\dots , x_n]$, then $g  S = (gc_1, \dots , gc_s)$ is also a syzygy.
 \end{enumerate}
 \end{ejercicio}
 
-\begin{solucion}
-
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item 
+\[
+\sum_{i=1}^s(c_i+d_i)LT(f_i)=\sum_{i=1}^s c_iLT(f_i)+\sum_{i=1}^s d_iLT(f_i)=0.
+\]
+\item
+\[
+\sum_{i=1}^sgc_iLT(f_i)=g\sum_{i=1}^s c_iLT(f_i)=0.
+\]
+\end{enumerate}
 \end{solucion}
 
 \newpage
 
 \begin{ejercicio}{2.10.2}
-Given any $G = (g_1, \dots , g_s) ∈ (k[x_1, \dots , x_n])_s$ , we can define a syzygy on $G$ to be an $s$-tuple
-$S = (h_1,\dots , h_s) ∈ (k[x_1, \dots , xn_])_s$ such that
+Given any $G = (g_1, \dots , g_s) ∈ (k[x_1, \dots , x_n])^s$ , we can define a syzygy on $G$ to be an $s$-tuple
+$S = (h_1,\dots , h_s) ∈ (k[x_1, \dots , x_n])^s$ such that
 $\sum_i h_ig_i = 0$. [Note that the syzygies
 we studied in the text are syzygies on $LT(G) = (LT(g_1), \dots , LT(g_s))$.]
 \begin{enumerate}[a.]
@@ -42,8 +53,15 @@ syzygies on $G$.
 
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
-
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item 
+\[
+(x^2-y)z+(xy-z)(-y)+(y^2-xz)x=x^2z-yz-xy^2+yz+xy^2-x^2z=0.
+\]
+\item Claramente el opuesto al del apartado anterior, $(-z,y, -x)$, también sería un syzygy.
+\item Totalmente análogo al ejercicio \ref{ejer:2.10.1}, ya que en ningún momento se usó que $LT(f_i)$ fuera el término líder de un polinomio.
+\end{enumerate}
 \end{solucion}
 \newpage
 
@@ -53,15 +71,35 @@ by the determinants of all the $m × m$ submatrices of $M$ (such ideals are exam
 of determinantal ideals).
 \begin{enumerate}[a.]
 \item Find a $2×3$ matrix $M$ such that the associated determinantal ideal of $2×2$ submatrices
-is the ideal with generators $G$ as in part (a) of Exercise \ref{ejer:2.9.2}.
-\item Explain the syzygy given in part (a) of Exercise \ref{eje:2.9.2} in terms of your matrix.
+is the ideal with generators $G$ as in part (a) of Exercise \ref{ejer:2.10.2}.
+\item Explain the syzygy given in part (a) of Exercise \ref{ejer:2.10.2} in terms of your matrix.
 \item Give a general way to produce syzygies on the generators of a determinantal ideal.
 Hint: Find ways to produce $(m + 1) × (m + 1)$ matrices containing $M$, whose determinants
 are automatically zero.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item 
+\[
+\begin{pmatrix}
+ x& y & z\\
+ 1& x & y \\
+\end{pmatrix}
+\]
 
+\item Consideramos la matriz de determinante nulo
+\[
+\begin{pmatrix}
+ x& y & z\\
+ 1& x & y \\
+ x &y & z
+\end{pmatrix}
+\]
+Podemos de hecho calcular de hecho su determinante desarrollando por la tercera fila, lo cual nos daría justamente la combinación lineal del ejercicio \ref{ejer:2.10.2}.
+
+\item En general, dada una matriz polinomial $m\times (m+1)$, podemos añadir una combinación lineal de las $m$ filas como $(m+1)$-ésima fila. El syzygy será la suma alternada de los elementos de dicha fila comenzando con signo $(-1)^{m+1}$.
+\end{enumerate}
 \end{solucion}
 
 \newpage
@@ -70,11 +108,15 @@ are automatically zero.
 Prove that the syzygy $S_{ij}$ defined in (1) is homogeneous of multidegree $γ$.
 \end{ejercicio}
 \begin{solucion}
-
+Recordamos que el syzygy definido en (1) era el $S$-polinomio genérico
+\[
+S_{ij}=\frac{x^\gamma}{LT(f_i)}e_i-\frac{x^\gamma}{LT(f_j)}e_j,
+\]
+con $\gamma=\lcm(LM(f_i),LM(f_j))$ y $e_i=(0,\dots,0,1,0,\dots, 0)$. Entonces es claro que es homogéneo de multigrado $\gamma$, pues $\frac{x^\gamma}{LT(f_i)}$ tiene multigrado $\alpha(i)=\gamma-\mathrm{multideg}(f_i)$, or lo que $\alpha(i)+\mathrm{multideg}(f_i)=\gamma$ y análogamente para $j$.
 \end{solucion}
 \newpage
 
-\begin{ejercicio}{2.9.5}
+\begin{ejercicio}{2.10.5}
 Complete the proof of Lemma 4 by showing that the decomposition into homogeneous
 components is unique. Hint: First show that if $S =
 \sum_{α} S_{α}'$, where $S_{α}'$ has multidegree
