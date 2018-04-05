@@ -112,7 +112,11 @@ Recordamos que el syzygy definido en (1) era el $S$-polinomio genérico
 \[
 S_{ij}=\frac{x^\gamma}{LT(f_i)}e_i-\frac{x^\gamma}{LT(f_j)}e_j,
 \]
-con $x^\gamma=\lcm(LM(f_i),LM(f_j))$ y $e_i=(0,\dots,0,1,0,\dots, 0)$. Entonces es claro que es homogéneo de multigrado $\gamma$, pues $\frac{x^\gamma}{LT(f_i)}$ tiene multigrado $\alpha(i)=\gamma-\mathrm{multideg}(f_i)$, por lo que $\alpha(i)+\mathrm{multideg}(f_i)=\gamma$ y análogamente para $j$.
+con $x^\gamma=\lcm(LM(f_i),LM(f_j))$ y $e_i=(0,\dots,0,1,0,\dots, 0)$. Es claro que es homogéneo, pues las únicas componentes no nulas son $i$ y $j$, y se verifica trivialmente para ambas que
+
+$$
+multideg\left(\frac{x^\gamma}{LT(f_k)}\right)+multideg(f_k)=\gamma
+$$
 \end{solucion}
 \newpage
 
@@ -124,7 +128,11 @@ $α$, then, for a fixed $i$, the $i$-th components of the $S_{α}'$ are either 0
 to $α − \textrm{multideg}( f_i)$ and, hence, give distinct terms as $α$ varies.
 \end{ejercicio}
 \begin{solucion}
-Sea $S=\sum_\alpha S_\alpha'$ con $S_\alpha'=(h_{\alpha 1},\dots,h_{\alpha s})$ una descomposición distinta. Por definición de elemento homogéneo, la componente $i$-ésima de $S_\alpha'$ o bien es 0 o bien tiene multigrado igual a $α − \textrm{multideg}( f_i)$, por lo que cada $\alpha$ da un $S_\alpha'$ distinto. Por tanto basta probar que $h_{\alpha i}=h_{\alpha i}'$ para cada $\alpha$. Como $h_{\alpha i}f_i$ tiene el mismo multigrado que $h_{\alpha i}'f_i$, tenemos que  $h_{\alpha i}$ y $h_{\alpha i}'$ son proporcionales. Si no son todos nulos (en cuyo caso ya se tendría la igualdad), debe ser la misma constante de proporcionalidad para todo $i$ para seguir siendo syzygies. Por último, esta constante debe ser 1 para que la suma dé $S$ y no un múltiplo. 
+Sea $S=\sum_\alpha S_\alpha'$ con $S_\alpha'=(h_{\alpha 1}',\dots,h_{\alpha s}')$ una descomposición distinta. Tenemos que ver que para cada $i=1,\dotsc,s$
+$$
+s_i = \sum_\alpha h_{\alpha i} = \sum_\alpha h_{\alpha i}'
+$$
+Por definición, ha de darse la igualdad multigrado a multigrado.	 o bien es 0 o bien tiene multigrado igual a $α − \textrm{multideg}( f_i)$, por lo que cada $\alpha$ da un $S_\alpha'$ distinto. Por tanto basta probar que $h_{\alpha i}=h_{\alpha i}'$ para cada $\alpha$. Como $h_{\alpha i}f_i$ tiene el mismo multigrado que $h_{\alpha i}'f_i$, tenemos que  $h_{\alpha i}$ y $h_{\alpha i}'$ son proporcionales. Si no son todos nulos (en cuyo caso ya se tendría la igualdad), debe ser la misma constante de proporcionalidad para todo $i$ para seguir siendo syzygies. Por último, esta constante debe ser 1 para que la suma dé $S$ y no un múltiplo. 
 \end{solucion}
 
 \newpage
@@ -140,9 +148,11 @@ Suppose that $S$ is a homogeneous syzygy of multidegree $α$ in $S(G)$.
 \begin{enumerate}[a.]
 \item Sea $G=(g_1,\dots, g_s)$ y $S=(h_1,\dots, h_s)$. Entonces $GS=\sum_{i=1}^s g_ih_i$. Tenemos que $\mathrm{multideg}(h_i)=\alpha-\mathrm{multideg}(g_i)$, así que a lo sumo el multigrado de $GS$ podrá ser $\alpha$. Pero la componente de grado $\alpha$ es justamente $\sum_{i=1}^s LT(g_i)h_i=0$ por definición, luego el multigrado de $SG$ es estrictamente menor que $\alpha$. 
 
-\item Si $G$ es un base de Gröbner, entonces $SG$ tiene resto 0 al dividir por $G$, lo cual implica que tiene una representación estándar por el lema 9.2.
+\item Si $G$ es un base de Gröbner, entonces $SG$ tiene resto 0 al dividir por $G$, lo cual implica que tiene una representación estándar por el Lema 9.2.
 
-Si $SG$ tiene una representación estándar, entonces $\alpha>\mathrm{multideg}(SG)>\mathrm{multideg}(A_ig_i)$, luego por el teorema 6 $G$ es una base de Gröbner. 
+Si $SG$ tiene una representación estándar, usando el apartado anterior y la definición de representación estandar,
+$$\alpha>\mathrm{multideg}(SG)\geq \mathrm{multideg}(A_ig_i)$$
+Por el Teorema 6 $G$ es una base de Gröbner. 
 \end{enumerate}
 \end{solucion}
 
