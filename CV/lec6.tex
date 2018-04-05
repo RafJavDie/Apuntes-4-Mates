@@ -117,12 +117,10 @@ lo cual implica que $H^0(\R^n-A)\cong H^0(\R^n-B)$. ESTO VALE PARA E.V. ¿PERO Y
 Si $A$ y $B$ son subconjuntos cerrados homeomorfos de $\R^n$, entonces $\R^n-A$ y $\R^n-B$ tienen el mismo número de componentes conexas. 
 \end{coro}
 \begin{dem}
-Si $A\neq\R^n$ y $B\neq\R^n$ se sigue del teorema anterior. Si $A=B=\R^n$ es evidente. El caso $A=\R^n$, $B\neq\R^n$ no puede ocurrir, pues implicaría que $\R^{n+1}-A$ tendría dos componentes conexas, mientras que $\R^{n+1}-B$ sería conexo.\QED 
-
-TENEMOS QUE LOS COMPLEMENTARIOS SON HOMEOMORFOS PARA 2N, NO PARA N+1, ASÍ QUE ESTO SOLO VALE PARA N=1. 
+Si $A\neq\R^n$ y $B\neq\R^n$ se sigue del teorema anterior. Si $A=B=\R^n$ es evidente. El caso $A=\R^n$, $B\neq\R^n$ no puede ocurrir, pues implicaría que $\R^{n+1}-A$ tendría dos componentes conexas, mientras que $\R^{n+1}-B$ sería conexo. Esto no es posible porque en $\R^{n+1}$ el teorema anterior es aplicable ya que ni $A$ ni $B$ son iguales a $\R^{n+1}$. \QED 
 \end{dem}
 
-\begin{teorema}[de separación de Jordan-Brouwer]
+\begin{teorema}[de separación de Jordan-Brouwer]\label{jordan}
 Si $\Sigma\subseteq\R^n$ $(n\geq 2)$ es homeomorfo a $S^{n-1}$ entonces
 \begin{enumerate}
 \item $\R^n-\Sigma$ tiene dos componentes conexas $U_1$ y $U_2$, donde $U_1$ es acotada y $U_2$ no.
@@ -130,8 +128,20 @@ Si $\Sigma\subseteq\R^n$ $(n\geq 2)$ es homeomorfo a $S^{n-1}$ entonces
 \end{enumerate}
 Decimos que $U_1$ es el dominio interior de $\Sigma$ y $U_2$ es el dominio exterior de $\Sigma$.
 \end{teorema}
-\begin{dem}
-\QED
+\begin{dem}\
+\begin{enumerate}
+\item Como $\Sigma$ es compacto, $\sigma$ es cerrado en $\R^n$. para probar (1) basta demostrar que se cumple para $S^{n-1}$ por el corolario \ref{7.9}, lo cual es cierto. Las componentes conexas de $\R^n-S^{n-1}$ son 
+\[
+\mathring{D}^n=\{x\in\R^n\mid ||x||<1\}\text{ y }W=\{x\in\R^n\mid ||x||>1\}.
+\]
+Eligiendo $r=\max_{x\in\Sigma}||x||$, el conjunto conexo 
+\[
+rW=\{x\in\R^n\mid ||x||>r\}
+\]
+estará contenida en una de las componentes conexas de $\R^n-\Sigma$. La otra componente estará por tanto acotada, con lo que tenemos (1). 
+
+\item Sea $p\in\Sigma$ y consideremos un entorno abierto $V$ de $p$ en $\R^n$. El conjunto $A=\Sigma-(\Sigma\cap V)$ es cerrado y homeomorfo a un correspondiente cerrado $B$ de $S^{n-1}$. Es claro que $\R^n-B$ es conexo, así que por el corolario \ref{7.9} también lo es $\R^n-A$. Para $p_1\in U_1$ y $p_2\in U_2$ podemos encontrar un camino $\gamma:[a,n]\to\R^n-A$ con $\gamma(a)=p_1$ y $\gamma(b)=p_2$. Por el apartado anterior, $\gamma$ no puede tener intersección vacía con $\Sigma$, es decir, $\gamma^{-1}(\Sigma)\neq\emptyset$. Además, $\gamma^{-1}\subseteq[a,b]$ es cerrado, por lo que tiene un primer elemento $c_1$ y un último elemento $c_2$, los cuales pertenecen a $(a,b)$. Por tanto, $\gamma(c_1),\gamma(c_2)\in\Sigma\cap V$ son puntos de contacto para $\gamma([a,c_1))\subseteq U_1$ y $\gamma((c_2,b])\subseteq U_2$ respectivamente. Por tanto, podemso encontrar $t_1\in [a,c_1)$ y $t_2\in (c_2,b]$ tales que $\gamma(t_1)\in U_1\cap V$ y $\gamma(t_2)\in U_2\cap V$. Esto demuestra que $p$ es un punto frontera tanto para $U_1$ como para $U_2$, lo cual prueba (2).\QED
+\end{enumerate}
 \end{dem}
 
 \begin{teorema}
@@ -145,12 +155,15 @@ Como $A$ es compacto, $A$ es cerrado. Por el corolario \ref{7.9} es suficiente p
 Sea $U\subseteq\R^n$ abierto y $f:U\to\R^n$ una aplicación inyectiva y continua. Entonces $f(U)$ es abierta en $\R^n$ y $f$ es homeomorfismo sobre su imagen. 
 \end{teorema}
 \begin{dem}
-\QED
+Basta comprobar que $f(U)$ es abierto, pues lo mismo será cierta para cualquier $W\subseteq U$ abierto, con lo que $f(W)$ será abierto, lo cual implicaría que $f$ es abierta en $U$, y por consiguiente homeomorfismo bajo las hipótesis del teorema. 
+
+Dado $x_0\in U$, sea $\delta>0$ tal que $D=\{x\in\R^n\mid |x-x_0|\leq\delta\}\subseteq U$. Sea $S=\partial D$ y $\mathring{D}=D-S$. Veamos que $f(\mathring{D})$ es abierto. Si $n=1$ se obtiene de forma sencilla por tratarse de funciones continuas de una sola variable, así que nos centramos en el caso $n\geq 2$. Tanto $S$ como $\Sigma=f(S)$ son homeomorfos a $S^{n-1}$ ($f$ es cerrada en $S$ puesto que imagen continua de un compacto es compacto, y un cerrado dentro de un comapcto es compato). Entonces $\R^n-\Sigma=U_1\cup U_2$, donde $U_1$ es la componente conexa acotada y $U_2$ la no acotada. Como $D$ es compacto, $\R^n-f(D)$ es no acotado, luego $\R^n-f(D)\subseteq U_2$. Esto implica que $\Sigma\cup U_1=\R^n-U_2\subseteq f(D)$, así que $U_1\subseteq f(\mathring{D})$ pues $f(D)=f(S)\sqcup f(\mathring{D})=\Sigma\sqcup f(\mathring{D})$. Como $\mathring{D}$ es conexo y $f(\mathring{D})\subseteq U_1\sqcup U_2$, que es conexo, $f(\mathring{D})\subseteq U_1$. En conclusión, $U_1=f(\mathring{D})$. \QED
 \end{dem}
 
 \begin{coro}[Invarianza de dominio]\label{7.13}
 Si $V\subseteq\R^n$ tiene la topología inducida por $\R^n$ y es homeomorfo a un abierto de $\R^n$, entonces $V$ es abierto en $\R^n$.
 \end{coro}
+
 
 \begin{coro}[Invarianza de dimensión]
 Sean $U\subseteq\R^n$ y $V\subseteq\R^m$ abiertos no vacíos. Si $U$ y $V$ son homeomorfos, entonces $n=m$.
@@ -159,7 +172,7 @@ Sean $U\subseteq\R^n$ y $V\subseteq\R^m$ abiertos no vacíos. Si $U$ y $V$ son h
 Supongamos que $m<n$. El corolario \ref{7.13} aplicado a $V$, visto como subconjunto de $\R^n$ mediante la inclusión $\R^m\subseteq\R^n$, implica que que $V$ es abierto en $\R^m$. Esto contradice el hecho de que $V$ esté contenido en $\R^n$. \QED
 \end{dem}
 
-\begin{prop}
+\begin{prop}\label{7.16}
 Sea $\Sigma\subseteq\R^n$ $(n\geq 2)$ homeomorfo a $S^{n-1}$ y sean $U_1$ y $U_2$ los dominios interior y exterior de $\Sigma$. Entonces
 \begin{align*}
 &H^p(U_1)\cong \begin{cases}
@@ -172,9 +185,64 @@ Sea $\Sigma\subseteq\R^n$ $(n\geq 2)$ homeomorfo a $S^{n-1}$ y sean $U_1$ y $U_2
 \end{align*}
 \end{prop}
 \begin{dem}
+El caso $p=0$ se sigue del teorema \ref{jordan}. Sea $W=\R^n-D^n$. Para $p>0$ se tienen isomorfismos
+\[
+H^p(U_1)\oplus H^p(U_2)\cong H^p(\R^n-\Sigma)\cong H^p(\R^n-S^{n-1})\cong H^p(\mathring{D}^n)\oplus H^p(W)\cong H^p(W).
+\]
+%esto es para p>0
+La inclusión $i:W\to\R^n-\{0\}$ es una equivalencia de homotopía con inversa homotópica $g(x)=\dfrac{||x||+1}{||x||}x$. Tenemos entonces que $H^p(i)$ es un isomorfismo. El cálculo del teorema \ref{6.13} nos da
+\[
+H^p(W)=\begin{cases}
+\R & p=0,n-1\\
+0 & c.c.
+\end{cases}
+\]
+Tenemos entonces que $H^p(U_1)=H^p(U_2)=0$ para $p\neq 0, n-1$. Por otro lado, las dimensiones de $H^{n-1}(U_1)$ y $H^{n-1}(U_1)$ son 0 o 1, luego basta probar que $H^{n-1}(U_2)\neq 0$. 
+
+Sin pérdida de generalidad podemos asumir que $0\in U_1$ y que el conjunto acotado $U_1\cup\Sigma$ está contenido en $D^n$. Tenemos entonces un diagrama conmutativo de inclusiones
+\[
+\begin{tikzcd}
+& \R^n-\{0\}\\
+W\arrow[ur, "i"]\arrow[r] & U_2\arrow[u]
+\end{tikzcd}
+\]
+y applicando $H^{n-1}$ obtenemos el diagrama conmutativo
+\[
+\begin{tikzcd}
+& H^{n-1}(\R^n-\{0\})\cong\R\arrow[dl, "H^{n-1}(i)"']\arrow[d]\\
+H^{n-1}(W)& H^{n-1}(U_2)\arrow[l] 
+\end{tikzcd}
+\]
+donde $H^{n-1}(i)$ es isomorfismo, por lo que $H^{n-1}(U_2)\neq 0$.
+\QED
 \end{dem}
 
 \begin{ej}
+Vamos a calcular la cohomología de $\R^n$ ``con $m$ agujeroes'', es decir, la cohomologíad e
+\[
+V=\R^n-\left(\bigcup_{j=1}^m K_j\right).
+\]
+Los ``agujeros'' $K_j$ en $\R^n$ son conjuntos compactos disjuntos con frontera $\Sigma_j$ homeomorfa a $S^{n-1}$. Por tanto, los interiores $\mathring{K}_j=K_j-\Sigma_j$ son justamente los dominios interiores de $\Sigma_j$. Se tiene
+\[
+H^p(V)\cong\begin{cases}
+\R & p=0\\
+\R^m & p=n-1\\
+0 & c.c.
+\end{cases}
+\]
+Para probarlo, usamos inducción en $m$. Para $m=1$ se probó en la proposición \ref{7.16}. Supongamos que la proposición es cierta para 
+\[
+V_1=\R^n-\left(\bigcup_{j=1}^{m-1}K_j\right).
+\]
+Sea $V_2=\R^n-K_m$. Entonces $V_1\cup V_2=\R^n$ y $V_1\cap V_2=V$. Para $p\geq 0$ tenemos la sucesión exacta de Mayer-Vietoris
+\[
+H^p(\R^n)\overset{I^*}{\to}H^p(V_1)\oplus H^p(V_2)\overset{J^*}{\to}H^p(V)\to 0 
+\]
+Si $p=0$ entonces $H^0(\R^n)\cong\R$ y $I^*$ es inyectiva. Por el caso base y la hipótesis de inducción tenemos $H^0(V_1)\cong\R\cong H^0(V_2)$. La exactitud nos da $H^0(V)\cong\R$. Si $p>0$ entonces $H^p(\R^n)=0$ y la sucesión exacta nos da isomorfismos 
+\[
+H^p(V_1)\oplus H^p(V_2)\cong H^p(V),
+\]
+de donde se sigue el resultado.
 \end{ej}
 
 \end{document}
