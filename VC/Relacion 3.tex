@@ -6,7 +6,8 @@
 \begin{document}
 
 \title{Variable Compleja - Relación 1}
-\author{Rafael González López}
+\author{Rafael González López\\
+1f,3,4}
 \maketitle
 \begin{ejercicio}{1}
 Encontrar los polos y partes singulares de las siguientes funciones
@@ -156,19 +157,19 @@ En ambos casos aplicaremos el Teorema de los residuos.
 \begin{enumerate}
 \item Si $w = 1/z$ entonces $1/w = z$, luego $-dw/w^2 = dz$. Por tanto 
 $$
-\int_{|z|=2}\frac{dz}{z^3(z^{10}-2)}= \int_{|w|=1/2} \frac{-dw}{w^2 (1/w)^3((1/w)^{10}-2)} = \int_{|w|=1/2}\frac{-w^{11}}{1+2w^{10}}
+\int_{|z|=2}\frac{dz}{z^3(z^{10}-2)}= \int_{|w|=1/2} \frac{dw}{w^2 (1/w)^3((1/w)^{10}-2)} = \int_{|w|=1/2}\frac{w^{11}}{1+2w^{10}}
 $$
-Observemos que las raíces verifica que $2w^10 = -1$, luego $|w| = \frac{1}{\sqrt[10]{2}} > \frac{1}{2}$. Por tanto, todas las discontinuidades están en el exterior de $|w|=1/2$, por lo que la integral es $0$.
+Observemos que las raíces verifica que $2w^{10} = -1$, luego $|w| = \frac{1}{\sqrt[10]{2}} > \frac{1}{2}$. Por tanto, todas las discontinuidades están en el exterior de $|w|=1/2$, por lo que la integral es $0$.
 \item Si $w = 1/z$ entonces $1/w = z$, luego $-dw/w^2 = dz$. Por tanto 
 $$
-\frac{dz}{(z-3)(z^5-1)}= \int_{|w|=1/2} \frac{-dw}{w^2 (1/w-3)((1/w)^{5}-1)} = \int_{|w|=1/2}\frac{-w^{4}}{(1-3w)(1-w^5)}
+\int_{|z|=2}\frac{dz}{(z-3)(z^5-1)}= \int_{|w|=1/2} \frac{dw}{w^2 (1/w-3)((1/w)^{5}-1)} = \int_{|w|=1/2}\frac{w^{4}}{(1-3w)(1-w^5)}
 $$
 Por tanto, solo tenemos un polo simple en $w=1/3$. Calculamos el residuo
 $$
-\lim_{w\to 1/3} \frac{w^4}{1-w^5} = \frac{3}{242}
+\lim_{w\to 1/3} (w-1/3)\frac{w^4}{(1-3w)(1-w^5)} = -\frac{1}{242}
 $$
 Por tanto, la integral vale
-$$2\pi i \frac{3}{242} = \frac{3\pi i}{121}$$
+$$-2\pi i \frac{1}{242} = -\frac{\pi i}{121}$$
 \end{enumerate}
 \end{solucion}
 \newpage
@@ -190,11 +191,20 @@ Por tanto, nuestro polinomio tiene cuatro raíces en $|z|<3$. Si tomamos $f(z)=1
 $$
 |f(z)| = 10 > 9 = 1+8 = |z^4|+|-8z| \geq |z^4-8z| =|g(z)|
 $$
-Como $f(z)=10$ no se anula en el disco unidad, deducimos que nuestro polinomios no tiene raíces en $|z|\leq 1$. Por tanto, las cuatro raíces están en el anillo. $w=z^3$ entonces $dw = 3z^2dz$
-\item 
+Como $f(z)=10$ no se anula en el disco unidad, deducimos que nuestro polinomios no tiene raíces en $|z|\leq 1$. Por tanto, las cuatro raíces están en el anillo. 
+\item Con el cambio $z=1/w$
 $$
-\int_C \frac{z^3dz}{z^4-8z+10} = \frac{1}{4} \int_C \frac{4z^3 -8 }{z^4-8z+10} + \frac{8 }{z^4-8z+10} dz
+\int_C \frac{z^3dz}{z^4-8z+10} = \int_{|w|=1/3} \frac{dw}{w(10w^4-8w^3+1)}
 $$
+Observemos que $dz = -dw/w^2$. ¿Dónde ha ido ese signo menos? Pues pensemos en la parametrización de $C$ $z=3e^{it}$, $t=[0,2\pi]$. Entonces $w=e^{-it}/3$. Por tanto, se recorrería en sentido contrario. Tengamos en cuenta que 
+$$
+|1-8w^3| \geq 1-|8w^3| = \frac{19}{27} > \frac{10}{81} = |10w^4|
+$$
+Dado que si $1-8w^3=0$ entonces $|w|=1/2$, $h(w)=10w^4-8w^3+1$ no tiene raíces en $|z|\leq 1/3$. En nuestra nueva integral solo tenemos un polo simple en $w=0$. Calculamos su residuo
+$$
+\lim_{w\to 0}wh(w) = 1
+$$
+Por tanto, la integral suma $2\pi i$.
 \end{enumerate}
 \end{solucion}
 \newpage

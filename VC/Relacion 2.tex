@@ -158,18 +158,31 @@ Consideramos ahora $\gamma_R$ el rectángulo apoyado en el segmento $[-R,R]$. Co
 $$
 \lim_{x\to0}x\frac{e^{iax}}{\sinh x} = \lim_{z\to0}\frac{e^{iax}+iaxe^{iax}}{\cosh x} = 1
 $$
-Dividimos nuestra curva de manera natural en $8$, los $6$ segmentos y las $2$ semicircunferencias. Tengamos en cuenta que en los dos segmentos inferiores cuando $R\to \infty$ la integral converge a la que deseamos. En los dos segmentos inferiores también lo hace pero con signo opuesto y multiplicado por $e^{-2\pi a}$. Por tanto, veamos qué ocurre en los segmentos verticales y las semicircunferencias.
+Dividimos nuestra curva de manera natural en $8$, los $6$ segmentos y las $2$ semicircunferencias. Tengamos en cuenta que en los dos segmentos inferiores cuando $R\to \infty$ la integral converge a la que deseamos. En los dos segmentos inferiores también lo hace pero con signo opuesto y multiplicado por $e^{-2\pi a i}$. Por tanto, veamos qué ocurre en los segmentos verticales y las semicircunferencias.
 \begin{itemize}
 \item En la semicircunferencia inferior $C^1_\varepsilon$ tenemos la parametrización $\varepsilon e^{ti}$, $t=[\pi,2\pi]$.
 \begin{align*}
-\abs{\int_{C^1_\varepsilon} \frac{e^{iax}}{\sinh x}dx} &= \abs{\int_{\pi}^{2\pi} \frac{e^{iae^{it}\varepsilon}\varepsilon e^{it}}{\sinh(\varepsilon e^{it})}dt}\\
-& \leq 2 \varepsilon e^{|a|\varepsilon}\int_\pi^{2\pi}\frac{dt}{\abs{e^{\varepsilon e^{it}}-e^{-\varepsilon e^{it}}}}\\
-&\leq 2 \varepsilon e^{|a|\varepsilon}\int_\pi^{2\pi}\frac{dt}{}
+\int_{C^1_\varepsilon} \frac{e^{iax}}{\sinh x}dx &=   \pi i
 \end{align*}
+\item En la otra semicircunferencia procederíamos análogamente, sabiendo que está orientada en sentido contrario y el residuo es
 $$
-\abs{e^{\varepsilon e^{it}}-e^{-\varepsilon e^{it}}} \geq e^\varepsilon - |e^{-\varepsilon^{e^{it}}}| \geq e^\varepsilon - |e^{-\varepsilon(\cos(t)+i\sin(t))}| = e^\varepsilon - |e^{-\varepsilon\cos(t)}| = e^\varepsilon - \frac{1}{|e^{\varepsilon \cos(t)}|}
+\lim_{x\to 2\pi i}(x-2\pi i)\frac{e^{iax}}{\sinh x} = \lim_{z\to 2\pi i}\frac{e^{iax}+ia(x-2\pi i)e^{iax}}{\cosh x} = 1
 $$
+Por tanto, en la suma se anula con la anterior.
+\item Finalmente, veamos qué ocurre en los laterales. Si $z=R +ti$ con $t\in [0,2\pi]$
+\begin{align*}
+\abs{\int_0^{2\pi} \frac{e^{-at+Ri}}{\sinh(R+ti)}dt} \leq  e^{|a|}\int_0^{2\pi}\frac{dt}{\abs{\sinh(R+ti)}} \leq 2e^{|a|}\frac{2\pi}{e^R-e^{-R}} 
+\end{align*}
+Claramente tiende a $0$ cuando $R\to \infty$.
+\item Para el caso $z=-R+ti$ para $t\in[2\pi,0]$.
 \end{itemize}
+\begin{align*}
+\abs{\int_{2\pi}^0 \frac{e^{-at+Ri}}{\sinh(R+ti)}dt} \leq  e^{|a|}\int_0^{2\pi}\frac{dt}{\abs{\sinh(-R+ti)}} \leq 2e^{|a|}\frac{2\pi}{e^R-e^{-R}} 
+\end{align*}
+Por tanto, llegamos a que
+$$
+(I+\pi i)(1-e^{-2\pi a i})=2\pi i \qquad I = \frac{2\pi i}{1-e^{-2\pi a i}}-\pi i = \frac{e^{\pi a i}}{\sinh(}
+$$
 \end{solucion}
 \newpage
 
@@ -222,7 +235,7 @@ $$
 \sum_{n=0}^\infty a_n z^n = \sum_{n=0}^\infty \overline{a_n} \overline{z} = \sum_{n=0}^\infty \overline{a_n}z^n
 $$
 De donde deducimos que $a_n=\overline{a_n}$, por lo que son reales.
-\item Además, también para $z\in (-\varepsilon,\varepsilon)$ entonces tenemos que $f(iz) = \overline{f(zi)}$ y toma valores reales y teniendo en cuenta que $a_n \in \R$
+\item Además, también para $z\in (-\varepsilon,\varepsilon)$ entonces tenemos que $f(iz) = \overline{f(iz)}$ (toma valores reales en $(-\varepsilon i, \varepsilon i)$ y teniendo en cuenta que $a_n \in \R$
 $$
 \sum_{n=0}^\infty a_n (iz)^n = \sum_{n=0}^\infty {\overline{a_n ({iz})^n}} = \sum_{n=0}^\infty {a_n ({-iz})^n}  
 $$
