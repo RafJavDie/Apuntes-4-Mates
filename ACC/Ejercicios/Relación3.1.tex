@@ -82,11 +82,23 @@ De donde obtenemos las soluciones $(\pm \sqrt{3},0),(1,1),(-1,-1)$.
 \newpage
 
 \begin{ejercicio}{3.1.3}
-
+Determine all solutions $(x, y) ∈ \Q^2$ of the system of equations
+\begin{align*}
+x^2+2y^2&=2\\
+x^2+xy+y^2&=2
+\end{align*}
+Also determine all solutions in $\C^2$.
 \end{ejercicio}
 \begin{solucion}
-\begin{enumerate}[a.]
-\end{enumerate}
+Procediendo análogamente al ejercicio anterior, calculamos una base de Gröbner del ideal generado y obtenemos
+$$
+G=\{x^2 + 2y^2 - 2, xy - y^2, 3y^3 - 2y\}
+$$
+Por tanto, $y(3y^2-2) =0$, de donde sacamos $y=0$ e $y=\pm \sqrt{2/3}$. Por tanto, tenemos los sistemas
+$$
+x^2 = 2 \qquad x^2 + \frac{4}{3}  = x^2 + x\sqrt{\frac{2}{3}}+\frac{2}{3} = 2 \qquad x^2 + \frac{4}{3} = x^2 - x\sqrt{\frac{2}{3}}+\frac{2}{3} = 2
+$$
+De donde obtenemos  $(\pm \sqrt{2},0)$ por la primera ecuación, $(\sqrt{2/3},\sqrt{2/3})$ por la segunda y $(-\sqrt{2/3},-\sqrt{2/3})$ para la tercera. En $\C$ son las mismas soluciones.
 \end{solucion}
 
 
