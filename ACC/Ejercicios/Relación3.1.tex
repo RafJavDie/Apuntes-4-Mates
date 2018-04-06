@@ -105,7 +105,7 @@ De donde obtenemos  $(\pm \sqrt{2},0)$ por la primera ecuación, $(\sqrt{2/3},\s
 \newpage
 
 \begin{ejercicio}{3.1.4}
-Find bases for the elimination ideals I1 and I2 for the ideal I determined by the equations:
+Find bases for the elimination ideals $I_1$ and $I_2$ for the ideal $I$ determined by the equations:
 \begin{align*}
 x^2+y^2+z^2&=4\\
 x^2+2y^2&=5\\
@@ -150,7 +150,24 @@ Sea $f\in I_l$, sabemos que $\exists g \in G$ tal que $LT(g)\mid LT(f)$ por defi
 \newpage
 
 \begin{ejercicio}{3.1.7}
-
+Consider the equations
+\[t^2 + x2^ + y^2 + z^2 = 0,\]
+\[t^2 + 2x^2 − xy − z^2 = 0,\]
+\[t + y^3 − z^3 = 0.\]
+We want to eliminate $t$. Let $I = 
+\gene{t^2 + x^2 + y^2 + z^2, t^2 + 2x^2 − xy − z^2, t + y^3 − z^3}$ be the
+corresponding ideal.
+\begin{enumerate}[a.]
+\item Using lex order with $t > x > y > z$, compute a Gröbner basis for $I$, and then find a basis
+for $I ∩ \Q[x, y, z]$. You should get four generators, one of which has total degree 12.
+\item Compute a grevlex Gröbner basis for $I ∩ \Q[x, y, z]$. You will get a simpler set of two
+generators.
+\item Combine the answer to part (b) with the polynomial $t + y^3 − z^3$ and show that this
+gives a Gröbner basis for $I$ with respect to the elimination order $>1$ (this is $>l$ with
+$l = 1$) of Exercise \ref{ejer:3.1.6}. Note that this Gröbner basis is much simpler than the one found
+in part (a). If you have access to a computer algebra system that knows elimination
+orders, then check your answer.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
@@ -161,7 +178,12 @@ Sea $f\in I_l$, sabemos que $\exists g \in G$ tal que $LT(g)\mid LT(f)$ por defi
 \newpage
 
 \begin{ejercicio}{3.1.8}
-
+In equation (6), we showed that $z \neq 0$ could be specified arbitrarily. Hence, $z$ can be
+regarded as a “parameter.” To emphasize this point, show that there are formulas for $x$ and
+$y$ in terms of $z$. Hint: Use $g_1$ and the quadratic formula to get $y$ in terms of $z$. Then use $xyz =
+1$ to get $x$. The formulas you obtain give a “parametrization” of $\V(I)$ which is different
+from those studied in §3 of Chapter 1. Namely, in Chapter 1, we used parametrizations by rational functions, whereas here, we have what is called a parametrization by algebraic
+functions. Note that $x$ and $y$ are not uniquely determined by $z$.
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
@@ -172,7 +194,24 @@ Sea $f\in I_l$, sabemos que $\exists g \in G$ tal que $LT(g)\mid LT(f)$ por defi
 \newpage
 
 \begin{ejercicio}{3.1.9}
-
+Consider the system of equations given by
+\[x^5 +
+\frac{1}
+{x^5} = y,\]
+\[x +
+\frac{1}
+{x}
+= z.\]
+Let $I$ be the ideal in $\C[x, y, z]$ determined by these equations.
+\begin{enumerate}[a.]
+\item Find a basis of $I_1 ⊆ \C[y, z]$ and show that $I_2 = \{0\}$.
+\item Use the Extension Theorem to prove that each partial solution $c ∈ \V(I_2) = \C$ extends
+to a solution in $\V(I) ⊆ \C^3$.
+\item Which partial solutions $(b, c) ∈ \V(I_1) ⊆ \R^2$ extend to solutions in $\V(I) ⊆ \R^3$?
+Explain why your answer does not contradict the Extension Theorem.
+\item If we regard $z$ as a “parameter” (see the previous problem), then solve for $x$ and $y$ as
+algebraic functions of $z$ to obtain a “parametrization” of $\V(I)$.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
