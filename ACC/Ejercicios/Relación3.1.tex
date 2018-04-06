@@ -139,10 +139,23 @@ Sea $f\in I_l$, sabemos que $\exists g in G$ tal que $LT(g)\mid LT(f)$ por defin
 \newpage
 
 \begin{ejercicio}{3.1.6}
-
+To exploit the generalized Elimination Theorem of Exercise 5, we need some interesting examples of monomial orders of $l$-	elimination type. We will consider two such orders.
+\begin{enumerate}[a.]
+\item Fix an integer $1\leq l \leq n$, and define the order $>_l$ as follows: if $\alpha,\beta \in \Z_{\geq 0}^n$, then $\alpha>_l\beta$ if
+$$
+\alpha_1 + \dotsc + a_l > \beta_1 + \dotsc + \beta_l \text{ or } \alpha_1 + \dotsc + a_l = \beta_1 + \dotsc + \beta_l \text{ and } \alpha >_{grevlex} \beta
+$$
+This is the $l$-th elimination order of BAYER and STILLMAN (1987b). Prove that $>l$ is a monomial order and is of $l$-elimination type. Hint: If you did Exercise 11 of Chapter 2,
+§4, then you have already done this problem.
+\item In Exercise 9 of Chapter 2, §4, we considered an example of a product order that mixed lex and grlex orders on different sets of variables. Explain how to create a product order that induces grevlex on both $k[x_{1},\dotsc, x_n]$ and $k[x_{l+1},\dotsc, x_n]$ and show that this order
+is of l-elimination type.
+\item If $G$ is a Gröbner basis for $I ⊆ k[x_1, . . . , x_n]$ for either of the monomial orders of parts (a) or (b), explain why $G ∩ k[x_{l+1}, . . . , x_n]$ is a Gröbner basis with respect to grevlex.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
+\item[]
+\item En efecto, la prueba del Ejercicio 2.4.11 garantiza que este es un orden monomial tomando $u$ cuyas $l$ primeras comopenentes son $1$ y el resto de $0$, y $>_\sigma$ como $>_{grevlex}$.
 \end{enumerate}
 \end{solucion}
 
