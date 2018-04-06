@@ -1,0 +1,91 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{3.2.1}
+Prove the Geometric Extension Theorem (Theorem 2) using the Extension Theorem and
+Lemma 1.
+\end{ejercicio}
+\begin{solucion}
+Por el Lema 1, $\pi_1(V)\subseteq\V(I_l)$, luego $\V(I_l)=\pi_1(V)\cup W$ para un cierto conjunto $W$. Por otro lado, dados $c_i$ como los del teorema de extensión, dado $a=(a_{l+1},\dots, a_n)\in \V(I_l)$, si $a\notin \V(c_1,\dots, c_s)$, entonces $a=\pi(\overline{a})$ con $\overline{a}=(a_1,\dots, a_l,a_{l+1},a_n)\in V$, por lo que si $a\notin \pi_1(V)$ es porque $a\in \V(c_1,\dots, c_s)$, luego $a\in \V(I_l)\cap \V(c_1,\dots, c_s)$. Con esto, $W= \V(I_l)\cap \V(c_1,\dots, c_s)$, lo cual prueba el teorema. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3.2.2}
+In example (2), verify carefully that 
+$\gene{(y−z)x^2+xy−1, (y−z)x^2+xz−1} =\gene{ 
+xy−1, xz−1}$.
+Also check that $y − z$ vanishes at all partial solutions in $V(I_1)$.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.2.3}
+In this problem, we will prove part (ii) of Theorem 3 in the special case when $I =\gene{ f_1, f_2, f_3}$, where
+\[f_1 = yx^3 + x^2,\]
+\[f_2 = y^3x^2 + y^2,\]
+\[f_3 = yx^4 + x^2 + y^2.\]
+\begin{enumerate}[a.]
+\item Find a Gröbner basis for $I$ and show that $I_1 = 
+\gene{y^2}$.
+\item Let $c_i$ be the coefficient of the highest power of $x$ in $f_i$. Then explain why $W =
+\V(c_1, c_2, c_3) ∩ \V(I_1)$ does not satisfy part (ii) of Theorem 3.
+\item Let $\tilde{I} = 
+ \gene{f_1, f_2, f_3, c_1, c_2, c_3}$. Show that $\V(I) = \V(\tilde{I})$ and $\V(I_1) = \V(\tilde{I}_1)$.
+\item Let $x^{N_i}$ be the highest power of $x$ appearing in $f_i$ and set $\tilde{f}_i = f_i − c_ix^{N_i}$ . Show that
+$\tilde{I} = 
+\gene{ \tilde{f}_1, \tilde{f}_2, \tilde{f}_3, c_1, c_2, c_3}$.
+\item Repeat part (b) for $\tilde{I}$ using the generators from part (d) to find $\widetilde{W} \subsetneq \V(I_1)$ that satisfies
+part (ii) of Theorem 3.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+ 
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.2.4}
+To see how the Closure Theorem can fail over $\R$, consider the ideal
+$I = 
+\gene{x^2 + y^2 + z^2 + 2, 3x^2 + 4y^2 + 4z^2 + 5}$.
+Let $V = \V(I)$, and let $π_1$ be the projection taking $(x, y, z)$ to $(y, z)$.
+\begin{enumerate}[a.]
+\item Working over $\C$, prove that $\V(I_1) = π_1(V)$.
+\item Working over $\R$, prove that $V = ∅$ and that $\V(I_1)$ is infinite. Thus, $\V(I_1)$ may be much
+larger than the smallest variety containing $π_1(V)$ when the field is not algebraically
+closed.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.2.5}
+Suppose that $I ⊆ \C[x, y]$ is an ideal such that $I_1 \neq \{0\}$. Prove that $\V(I_1) = π_1(V)$,
+where $V = \V(I)$ and $π_1$ is the projection onto the $y$-axis. Hint: Use part (i) of the Closure
+Theorem. Also, the only varieties contained in $\C$ are either $\C$ or finite subsets of $\C$.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+
+
+
+\end{document}
