@@ -22,7 +22,7 @@ Let $I\subset k[x_1,\dotsc,x_n]$ be an ideal.
 \begin{itemize}
 \item Claramente $I_l \subset k[x_{l+1},\dotsc,x_n]$.
 \item Si $f,g\in I_l$, entonces solo tienen términos en $x_{l+1},\dotsc,x_n$, luego la suma tendrá solo esos términos. Como $f+g\in I$ y $f+g\in k[x_{l+1},\dotsc,x_n]$ tenemos que $f+g\in I_l$.
-\item Tomando $a\in k$ y $f \in I_l$, entonces $af$ solo tiene términos en $x_{l+1},\dotsc,x_n$, luego el producto tendrá solo esos términos. Se deduce, como en el apartado anterior, que $af\in I_l$.
+\item Tomando $a\in k[x_{l+1},\dotsc,x_n]$ y $f \in I_l$, entonces $af$ solo tiene términos en $x_{l+1},\dotsc,x_n$, luego el producto tendrá solo esos términos. Se deduce, como en el apartado anterior, que $af\in I_l$.
 \end{itemize}
 \item Es inmediato si renombramos los índices de las variables y consideramos $I'=I_{l+1}$ que $I_1'=I_{l+1}$.
 \end{enumerate}
@@ -98,7 +98,7 @@ Por tanto, $y(3y^2-2) =0$, de donde sacamos $y=0$ e $y=\pm \sqrt{2/3}$. Por tant
 $$
 x^2 = 2 \qquad x^2 + \frac{4}{3}  = x^2 + x\sqrt{\frac{2}{3}}+\frac{2}{3} = 2 \qquad x^2 + \frac{4}{3} = x^2 - x\sqrt{\frac{2}{3}}+\frac{2}{3} = 2
 $$
-De donde obtenemos  $(\pm \sqrt{2},0)$ por la primera ecuación, $(\sqrt{2/3},\sqrt{2/3})$ por la segunda y $(-\sqrt{2/3},-\sqrt{2/3})$ para la tercera. En $\C$ son las mismas soluciones.
+De donde obtenemos  $(\pm \sqrt{2},0)$ por la primera ecuación, $(\sqrt{2/3},\sqrt{2/3})$ por la segunda y $(-\sqrt{2/3},-\sqrt{2/3})$ para la tercera. Por tanto no hay ninguna racional. En $\C^2$ son las mismas soluciones que hemos obtenido. 
 \end{solucion}
 
 
@@ -116,7 +116,7 @@ How many rational (i.e., in $\Q^3$) solutions are there?
 \begin{solucion}
 Si calculamos una base de Gröbner obtenemos
 $$ G=\{x + 2z^3 - 3z, y^2 - z^2 - 1, 2z^4 - 3z^2 + 1\}$$
-Resolvemos la tercera y obtenemos $z=\pm 1$ y $z=\pm 1/\sqrt{2}$ y sustituimos en las otras dos obteniendo
+Esto implica que $G_2=\{2z^4 - 3z^2 + 1\}$ y $G_1=G_2\cup \{y^2 - z^2 - 1\}$. Resolvemos la tercera y obtenemos $z=\pm 1$ y $z=\pm 1/\sqrt{2}$ y sustituimos en las otras dos obteniendo
 
 \begin{gather*}
 x=1 \quad y = \pm\sqrt{2} \qquad x= -1 \quad y = \pm\sqrt{2}\\
@@ -132,7 +132,7 @@ In this exercise, we will prove a more general version of the Elimination Theore
 \end{ejercicio}
 \begin{solucion}
 Análogamente a la prueba del Teorema 2, tenemos que ver que $$\gene{LT(I_l)}\subset \gene{LT(G_l)}$$
-Sea $f\in I_l$, sabemos que $\exists g in G$ tal que $LT(g)\mid LT(f)$ por definición de base de Gröbner. Ahora bien, si $LT(g)\mid LT(f)$, ya que $LT(f)$ es un monomio en $x_{l+1},\dotsc,x_n$, entonces $LT(g)$ también lo es. Por definición de  orden de tipo $l$-eliminador tenemos que el resto de monomios de $g$, si los hubiera, también serían en las mismas variables. Por tanto, $g\in G_l$.
+Sea $f\in I_l$, sabemos que $\exists g \in G$ tal que $LT(g)\mid LT(f)$ por definición de base de Gröbner. Ahora bien, si $LT(g)\mid LT(f)$, ya que $LT(f)$ es un monomio en $x_{l+1},\dotsc,x_n$, entonces $LT(g)$ también lo es. Por definición de  orden de tipo $l$-eliminador tenemos que el resto de monomios de $g$, si los hubiera, también serían en las mismas variables. Por tanto, $g\in G_l$.
 \end{solucion}
 
 
