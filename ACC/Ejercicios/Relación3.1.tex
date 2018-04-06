@@ -128,11 +128,11 @@ x=\sqrt{2} \quad y=\pm \sqrt{\frac{3}{2}} \qquad x = -\sqrt{2} \quad y=\pm\sqrt{
 \newpage
 
 \begin{ejercicio}{3.1.5}
-
+In this exercise, we will prove a more general version of the Elimination Theorem. Fix an integer $1\leq l \leq n$. We say that a monomial order $>$ on $k[x_1,\dotsc, x_n]$ is of $l$-elimination type provided that any monomial involving one of $x_1,\dotsc, x_l$ is greater than all monomials in $k[x_{l+1}, \dotsc, x_n]$. Prove the following generalized Elimination Theorem. If I is an ideal in $k[x_1,\dotsc, x_n]$ and $G$ is a  Gröbner basis of $I$ with respect a monomial order of $l$-elimination type, then $G_l = G\cap k[x_l,\dotsc, x_n]$ is a Gröbner basis of the $l$-th elimination ideal $I_l = I\cap k[x_{l+1},\dotsc, x_n]$.
 \end{ejercicio}
 \begin{solucion}
-\begin{enumerate}[a.]
-\end{enumerate}
+Análogamente a la prueba del Teorema 2, tenemos que ver que $$\gene{LT(I_l)}\subset \gene{LT(G_l)}$$
+Sea $f\in I_l$, sabemos que $\exists g in G$ tal que $LT(g)\mid LT(f)$ por definición de base de Gröbner. Ahora bien, si $LT(g)\mid LT(f)$, ya que $LT(f)$ es un monomio en $x_{l+1},\dotsc,x_n$, entonces $LT(g)$ también lo es. Por definición de  orden de tipo $l$-eliminador tenemos que el resto de monomios de $g$, si los hubiera, también serían en las mismas variables. Por tanto, $g\in G_l$.
 \end{solucion}
 
 
