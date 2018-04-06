@@ -22,7 +22,7 @@ Let $I\subset k[x_1,\dotsc,x_n]$ be an ideal.
 \begin{itemize}
 \item Claramente $I_l \subset k[x_{l+1},\dotsc,x_n]$.
 \item Si $f,g\in I_l$, entonces solo tienen términos en $x_{l+1},\dotsc,x_n$, luego la suma tendrá solo esos términos. Como $f+g\in I$ y $f+g\in k[x_{l+1},\dotsc,x_n]$ tenemos que $f+g\in I_l$.
-\item Tomando $a\in k$ y $f \in I_l$, entonces $af$ solo tiene términos en $x_{l+1},\dotsc,x_n$, luego el producto tendrá solo esos términos. Se deduce, como en el apartado anterior, que $af\in I_l$.
+\item Tomando $a\in k[x_{l+1},\dotsc,x_n]$ y $f \in I_l$, entonces $af$ solo tiene términos en $x_{l+1},\dotsc,x_n$, luego el producto tendrá solo esos términos. Se deduce, como en el apartado anterior, que $af\in I_l$.
 \end{itemize}
 \item Es inmediato si renombramos los índices de las variables y consideramos $I'=I_{l+1}$ que $I_1'=I_{l+1}$.
 \end{enumerate}
@@ -98,14 +98,14 @@ Por tanto, $y(3y^2-2) =0$, de donde sacamos $y=0$ e $y=\pm \sqrt{2/3}$. Por tant
 $$
 x^2 = 2 \qquad x^2 + \frac{4}{3}  = x^2 + x\sqrt{\frac{2}{3}}+\frac{2}{3} = 2 \qquad x^2 + \frac{4}{3} = x^2 - x\sqrt{\frac{2}{3}}+\frac{2}{3} = 2
 $$
-De donde obtenemos  $(\pm \sqrt{2},0)$ por la primera ecuación, $(\sqrt{2/3},\sqrt{2/3})$ por la segunda y $(-\sqrt{2/3},-\sqrt{2/3})$ para la tercera. En $\C$ son las mismas soluciones.
+De donde obtenemos  $(\pm \sqrt{2},0)$ por la primera ecuación, $(\sqrt{2/3},\sqrt{2/3})$ por la segunda y $(-\sqrt{2/3},-\sqrt{2/3})$ para la tercera. Por tanto no hay ninguna racional. En $\C^2$ son las mismas soluciones que hemos obtenido. 
 \end{solucion}
 
 
 \newpage
 
 \begin{ejercicio}{3.1.4}
-Find bases for the elimination ideals I1 and I2 for the ideal I determined by the equations:
+Find bases for the elimination ideals $I_1$ and $I_2$ for the ideal $I$ determined by the equations:
 \begin{align*}
 x^2+y^2+z^2&=4\\
 x^2+2y^2&=5\\
@@ -116,7 +116,7 @@ How many rational (i.e., in $\Q^3$) solutions are there?
 \begin{solucion}
 Si calculamos una base de Gröbner obtenemos
 $$ G=\{x + 2z^3 - 3z, y^2 - z^2 - 1, 2z^4 - 3z^2 + 1\}$$
-Resolvemos la tercera y obtenemos $z=\pm 1$ y $z=\pm 1/\sqrt{2}$ y sustituimos en las otras dos obteniendo
+Esto implica que $G_2=\{2z^4 - 3z^2 + 1\}$ y $G_1=G_2\cup \{y^2 - z^2 - 1\}$. Resolvemos la tercera y obtenemos $z=\pm 1$ y $z=\pm 1/\sqrt{2}$ y sustituimos en las otras dos obteniendo
 
 \begin{gather*}
 x=1 \quad y = \pm\sqrt{2} \qquad x= -1 \quad y = \pm\sqrt{2}\\
@@ -132,7 +132,7 @@ In this exercise, we will prove a more general version of the Elimination Theore
 \end{ejercicio}
 \begin{solucion}
 Análogamente a la prueba del Teorema 2, tenemos que ver que $$\gene{LT(I_l)}\subset \gene{LT(G_l)}$$
-Sea $f\in I_l$, sabemos que $\exists g in G$ tal que $LT(g)\mid LT(f)$ por definición de base de Gröbner. Ahora bien, si $LT(g)\mid LT(f)$, ya que $LT(f)$ es un monomio en $x_{l+1},\dotsc,x_n$, entonces $LT(g)$ también lo es. Por definición de  orden de tipo $l$-eliminador tenemos que el resto de monomios de $g$, si los hubiera, también serían en las mismas variables. Por tanto, $g\in G_l$.
+Sea $f\in I_l$, sabemos que $\exists g \in G$ tal que $LT(g)\mid LT(f)$ por definición de base de Gröbner. Ahora bien, si $LT(g)\mid LT(f)$, ya que $LT(f)$ es un monomio en $x_{l+1},\dotsc,x_n$, entonces $LT(g)$ también lo es. Por definición de  orden de tipo $l$-eliminador tenemos que el resto de monomios de $g$, si los hubiera, también serían en las mismas variables. Por tanto, $g\in G_l$.
 \end{solucion}
 
 
@@ -163,7 +163,24 @@ is of l-elimination type.
 \newpage
 
 \begin{ejercicio}{3.1.7}
-
+Consider the equations
+\[t^2 + x2^ + y^2 + z^2 = 0,\]
+\[t^2 + 2x^2 − xy − z^2 = 0,\]
+\[t + y^3 − z^3 = 0.\]
+We want to eliminate $t$. Let $I = 
+\gene{t^2 + x^2 + y^2 + z^2, t^2 + 2x^2 − xy − z^2, t + y^3 − z^3}$ be the
+corresponding ideal.
+\begin{enumerate}[a.]
+\item Using lex order with $t > x > y > z$, compute a Gröbner basis for $I$, and then find a basis
+for $I ∩ \Q[x, y, z]$. You should get four generators, one of which has total degree 12.
+\item Compute a grevlex Gröbner basis for $I ∩ \Q[x, y, z]$. You will get a simpler set of two
+generators.
+\item Combine the answer to part (b) with the polynomial $t + y^3 − z^3$ and show that this
+gives a Gröbner basis for $I$ with respect to the elimination order $>1$ (this is $>l$ with
+$l = 1$) of Exercise \ref{ejer:3.1.6}. Note that this Gröbner basis is much simpler than the one found
+in part (a). If you have access to a computer algebra system that knows elimination
+orders, then check your answer.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
@@ -174,21 +191,73 @@ is of l-elimination type.
 \newpage
 
 \begin{ejercicio}{3.1.8}
-
+In equation (6), we showed that $z \neq 0$ could be specified arbitrarily. Hence, $z$ can be
+regarded as a “parameter.” To emphasize this point, show that there are formulas for $x$ and
+$y$ in terms of $z$. Hint: Use $g_1$ and the quadratic formula to get $y$ in terms of $z$. Then use $xyz =
+1$ to get $x$. The formulas you obtain give a “parametrization” of $\V(I)$ which is different
+from those studied in §3 of Chapter 1. Namely, in Chapter 1, we used parametrizations by rational functions, whereas here, we have what is called a parametrization by algebraic
+functions. Note that $x$ and $y$ are not uniquely determined by $z$.
 \end{ejercicio}
 \begin{solucion}
-\begin{enumerate}[a.]
-\end{enumerate}
+Tenemos la ecuación de $g_1$
+\[
+y^4z^2 + y^2(z^4 − z^2) + 1=0
+\]
+Fijando $z$ como parámetro podemos despejar $y^2$
+\[
+y^2=\frac{z^2-z^4\pm\sqrt{(z^4-z^2)^2-4z^2}}{2z^2}\Rightarrow y=\pm\sqrt{\frac{z^2-z^4\pm\sqrt{(z^4-z^2)^2-4z^2}}{2z^2}}
+\]
+Por último de $xyz=1$ obtenemos
+\[
+x=\pm \frac{1}{z}\sqrt{\frac{2z^2}{z^2-z^4\pm\sqrt{(z^4-z^2)^2-4z^2}}}=\pm \sqrt{\frac{2}{z^2-z^4\pm\sqrt{(z^4-z^2)^2-4z^2}}}
+\]
 \end{solucion}
 
 
 \newpage
 
 \begin{ejercicio}{3.1.9}
-
+Consider the system of equations given by
+\[x^5 +
+\frac{1}
+{x^5} = y,\]
+\[x +
+\frac{1}
+{x}
+= z.\]
+Let $I$ be the ideal in $\C[x, y, z]$ determined by these equations.
+\begin{enumerate}[a.]
+\item Find a basis of $I_1 ⊆ \C[y, z]$ and show that $I_2 = \{0\}$.
+\item Use the Extension Theorem to prove that each partial solution $c ∈ \V(I_2) = \C$ extends
+to a solution in $\V(I) ⊆ \C^3$.
+\item Which partial solutions $(b, c) ∈ \V(I_1) ⊆ \R^2$ extend to solutions in $\V(I) ⊆ \R^3$?
+Explain why your answer does not contradict the Extension Theorem.
+\item If we regard $z$ as a “parameter” (see the previous problem), then solve for $x$ and $y$ as
+algebraic functions of $z$ to obtain a “parametrization” of $\V(I)$.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+Como buscamos un ideal en $\C[x, y, z]$, teniendo en cuenta que $x\neq 0$, nuestro ideal sera 
+\[
+I=\gene{x^5-x^5y+1, x^2-xz+1}.
+\]
 \begin{enumerate}[a.]
+\item Calculamos una base de Gröbner para $I$ con lex siendo $x>y>z$. 
+\[
+G=\{x^2 − xz + 1, y − z^5 + 5z^3 − 5z\}
+\]
+\item Ninguno de los polinomios depende solo de $z$ por lo que $I_2=\{0\}$. Por otro lado, $I_1$ tiene una base
+\[
+G_1=\{y−z^5+5z^3−5z\}
+\]
+ Como $I_2=\{0\}$, $\V(I_2)=\C$, luego podemos tomar cualquier $c\in\C$ como solución parcial. Como el coeficiente de $y$ en $G_1$ es 1, $c$ siempre se extiende a una solución parcial $(b,c)\in \V(I_1)$. Por último, el coeficiente de $x^2$ en $G$ es 1 luego por el mismo motivo siempre podemos extender $(b,c)$ a $(a,b,c)\in\V(I)$.  
+ 
+ \item Dada una solución parcial $(y,z)\in\V(I_1)$, tenemos que $y=z^5-5z^3+5z$. En $G$, despejando $x$ en función de $z$ obtenemos
+ \[
+ x=\frac{z\pm \sqrt{z^2-4}}{2}
+ \]
+ Esta solución existe en $\R$ siempre que $z^2\geq 4\Leftrightarrow |z|\geq 2$. 
+\item En el apartado anterior ya conseguimos esa parametrización.
 \end{enumerate}
 \end{solucion}
 
