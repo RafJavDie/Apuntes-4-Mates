@@ -224,7 +224,27 @@ algebraic functions of $z$ to obtain a “parametrization” of $\V(I)$.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+Como buscamos un ideal en $\C[x, y, z]$, teniendo en cuenta que $x\neq 0$, nuestro ideal sera 
+\[
+I=\gene{x^5-x^5y+1, x^2-xz+1}.
+\]
 \begin{enumerate}[a.]
+\item Calculamos una base de Gröbner para $I$ con lex siendo $x>y>z$. 
+\[
+G=\{x^2 − xz + 1, y − z^5 + 5z^3 − 5z\}
+\]
+\item Ninguno de los polinomios depende solo de $z$ por lo que $I_2=\{0\}$. Por otro lado, $I_1$ tiene una base
+\[
+G_1=\{y−z^5+5z^3−5z\}
+\]
+ Como $I_2=\{0\}$, $\V(I_2)=\C$, luego podemos tomar cualquier $c\in\C$ como solución parcial. Como el coeficiente de $y$ en $G_1$ es 1, $c$ siempre se extiende a una solución parcial $(b,c)\in \V(I_1)$. Por último, el coeficiente de $x^2$ en $G$ es 1 luego por el mismo motivo siempre podemos extender $(b,c)$ a $(a,b,c)\in\V(I)$.  
+ 
+ \item Dada una solución parcial $(y,z)\in\V(I_1)$, tenemos que $y=z^5-5z^3+5z$. En $G$, despejando $x$ en función de $z$ obtenemos
+ \[
+ x=\frac{z\pm \sqrt{z^2-4}}{2}
+ \]
+ Esta solución existe en $\R$ siempre que $z^2\geq 4\Leftrightarrow |z|\geq 2$. 
+\item En el apartado anterior ya conseguimos esa parametrización.
 \end{enumerate}
 \end{solucion}
 
