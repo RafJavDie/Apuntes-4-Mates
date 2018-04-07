@@ -9,7 +9,7 @@
 
 \title{Variable Compleja - Relación 1}
 \author{Rafael González López\\
-Pendientes: 1,7b,8}
+Pendientes: 1}
 \maketitle
 
 \begin{ejercicio}{1}
@@ -235,7 +235,7 @@ Por la igualdad de los coeficientes, $a_{n+1}=\dfrac{a_n}{n(n+1)}$ para $n\geq 1
 Esto es claro, pues $\sqrt[n]{n!}\sim n/e$. Luego $R=\infty$, es decir, la serie converge en todo $\C$. 
 
 Notemos que hemos probado que existe una función analítica que verifica la ecuación diferencial (la serie definida por los coeficientes anteriormente calculados), sabemos que es única donde converja por el Teorema de Unicidad de Funciones Analíticas y de hecho converge en todo $\C$ (luego la ecuación diferencial se satisface para todo $z\in \C$). 
-\item Pasemos a probar la última igualdad integral. Para ello intercambiaremos suma por integral, por lo que vamos a probar antes que estamos en las hipóteis del teorema de convergencia dominada. Sea $X=(0,\infty)$.
+\item Pasemos a probar la última igualdad integral. Para ello intercambiaremos suma por integral, por lo que vamos a probar antes que estamos en las hipótesis del teorema de convergencia dominada. Sea $X=(0,\infty)$.
 \begin{gather*}
 \int_0^\infty u(zt)e^{-t}\frac{dt}{t} = \int_0^\infty \sum_{k=1}^\infty a_k (zt)^k e^{-t}\frac{dt}{t}\\
 f(t)=\sum_{k=1}^\infty a_kz^kt^{k-1}e^{-t}  \qquad f_n(t) = \sum_{k=1}^n a_kz^kt^{k-1}e^{-t} \quad \forall z\in \C
@@ -325,7 +325,7 @@ Veamos por inducción que esto es un polinomio. Para $n=0$ tenemos $B_0(x) = 1$,
 $$
 B_n(x) = x^n - n!\sum_{k=0}^{n-1} \frac{B_k(x)}{(n+1-k)!k!}
 $$
-Por hipótesis de inuducción, $B_k(x)$ es un polinomio de grado $k$ para $k=0,\dotsc,n-1$, por lo que $B_n(x)$ es un polinomio de grado $n$.
+Por hipótesis de inducción, $B_k(x)$ es un polinomio de grado $k$ para $k=0,\dotsc,n-1$, por lo que $B_n(x)$ es un polinomio de grado $n$.
 \begin{itemize}
 \item El caso $n=0$ lo hemos visto, $B_0(x)=1$.
 \item Si $n=1$,
@@ -359,7 +359,7 @@ $$\sum_{n=0}^{1-1} n^{k-1} =0= 0^k(k+1)  = B_k(1)-B_k(0)
 $$
 Supongamos que es cierto para $n=N-1$ y veámoslo para $n=N$
 \begin{align*}
-\sum_{n=0}^{N-1} n^{k-1} &= (N-1)^k + \sum_{n=0}^{N-2} n^{k-1} \\
+\sum_{n=0}^{N-1} n^{k-1} &= (N-1)^{k-1} + \sum_{n=0}^{N-2} n^{k-1} \\
 &=\frac{k(N-1)^{k-1}}{k}+ \frac{B_k(N-1)-B_k(0)}{k} \\
 &=\frac{B_k(N)-B_k(N-1)}{k}  + \frac{B_k(N-1)-B_k(0)}{k}\\
 &= \frac{B_k(N)-B_k(0)}{k}

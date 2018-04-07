@@ -1,6 +1,7 @@
 \documentclass[twoside]{article}
 \usepackage{../estilo-ejercicios}
 
+
 \usepackage{enumerate}
 %--------------------------------------------------------
 \begin{document}
@@ -228,10 +229,40 @@ Debe haber habido algún extraño problema por el cuál este enunciado se corres
 
 
 \begin{ejercicio}{10}
-
+ Sea $\Omega$ el plano complejo menos las dos semirrectas $[1,+\infty)$ y $(-\infty,-1]$.
+\begin{enumerate}[(a)]
+\item Construir una función $f(z)$ holomorfa en $\Omega$ y tal que $f(z)^2(1-z^2)=1$ para todo $z\in\Omega$, y tal que $f(0)=1$. En lo que resta del problema llamaremos $\frac{1}{\sqrt{1-z^2}}$ a esta función.
+\item Demostrar que existe una primitiva $F(z)$ de $\frac{1}{\sqrt{1-z^2}}$ y solo una en $\Omega$ tal que \mbox{$F(0)=0$.}
+\item Demostrar que para $x\in(-1,1)$ se tiene $F(x)=\arcsin{x}$, siendo $\arcsin{x}$ la función usual de variable real. En lo que sigue usaremos por esto la notación $\arcsin{z}$ en lugar de $F(z)$. 
+\item Demostrar que siendo $\log{w}$ la rama principal del logaritmo, tenemos 
+\[\arcsin{z}=i\log(\sqrt{1-z^2}-iz),\quad z\in\Omega.\]
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
 
+\begin{enumerate}[(a)]
+\item[]
+\item Si $f:\Omega \to \C $ es una función holomorfa en $\Omega $, tal que $f(z)^2(1-z^2)=1$ para todo $z\in\Omega $, entonces $1/f$ es una rama holomorfa en $\Omega $ de la multifunción {$F:\C \setminus \{-1,1\}\to \mathcal{P} (\C )$,} definida como $F(z)=\sqrt{1-z^2}$. Ahora bien, solo existen dos ramas holomorfas en $\Omega $ de la multifunción $F$, a saber, 
+\[f_1(z)=e^{\frac{1}{2}\log(1-z^2)},\quad f_2(z)=-e^{\frac{1}{2}\log(1-z^2)},\]
+donde $\log:\C \setminus {(-\infty,0]}\to\C $ es la rama principal del logaritmo. Como $f(0)=1$, necesariamente $f=1/f_1$. 
+\item Observe que $\Omega $ es una región estrellada respecto del origen. Por lo tanto, la unicidad es inmediata (Prop 1.3.4). Ahora, considere $F:\Omega \to\C $, definida como 
+\[F(z)=\int_{\gamma_z} f(s)\,ds\,,\]
+donde $\gamma_z:[0,1]\to \C , \gamma_z(t)=tz$. En (Prop 2.2.5) se probó que $F$ es una primitiva de $f$. Además, se verifica que $F(0)=0$.
+\item Para cada $x\in(-1,1)$, se tiene
+\begin{align*}
+F(x) & = \int_0^{1}f(tx)x\;dt\\
+     & = x\int_0^{1}\frac{1}{\sqrt{1-(tx)^2}}\,dt\\
+     & = \int_0^x\frac{1}{\sqrt{1-u^2}}\,du
+\end{align*}
+Como $(\arcsin)'(x)=\frac{1}{\sqrt{1-x^2}}$, para todo $x\in(-1,1)$, y $\arcsin(0)=0$, obtenemos el resultado. 
+\item Este apartado es consecuencia inmediata de $(b)$. En efecto, pues 
+\[f_1(z)(i\log(f_1(z)-iz))'(z)=1\quad\forall\;z\in\Omega ,\]
+o equivalentemente, 
+\[(i\log(f_1(z)-iz))'(z)=f(z)\quad\forall\;z\in\Omega .\]
+Además, $(i\log(f_1(z)-iz))(0)=0$.
+
+Observe $f_1(z)-iz\in\C \setminus {(-\infty,0]}$, $\forall\,z\in\Omega $.
+\end{enumerate}
 \end{solucion}
 \newpage
 
