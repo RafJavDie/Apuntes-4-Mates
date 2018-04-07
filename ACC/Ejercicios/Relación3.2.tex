@@ -25,7 +25,10 @@ xy−1, xz−1}$.
 Also check that $y − z$ vanishes at all partial solutions in $V(I_1)$.
 \end{ejercicio}
 \begin{solucion}
-
+Tenemos que $x(y-z)\in \gene{ 
+xy−1, xz−1}$ pues $x(y-z)=-z(xy-1)+y(xz-1)$, así que añadiendo este polinomio podemos generar fácilmente $\gene{(y−z)x^2+xy−1, (y−z)x^2+xz−1}$. 
+FALTA LA OTRA INCLUSIÓN
+Calculando la base de Gröbner $G=\{xz-1,y-z\}$ es claro que $I_1=\gene{y-z}$. 
 \end{solucion}
 
 
@@ -69,8 +72,15 @@ larger than the smallest variety containing $π_1(V)$ when the field is not alge
 closed.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
-
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Como los $c_i$ son constantes, $\V(c_1,c_2)=\emptyset$, luego por el teorema de extensión geométrico $\V(I_1) = π_1(V)$. 
+\item $V=\emptyset$ porque $x^2 + y^2 + z^2 + 2=0$ no tiene soluciones reales. Calculamos una base de Gröbner para $I_1$ sobre $\R$ y obtenemos
+\[
+G_1=\{y^2 + z^2 - 1\}
+\]
+Luego $\V(I_1)$ son los puntos reales de la circunferencia $y^2+z^2=1$, que son infinitos. 
+\end{enumerate}
 \end{solucion}
 
 
