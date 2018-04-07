@@ -387,12 +387,12 @@ Como complejo simplicial abstracto, se puede simplemente tomar un vértice que n
 \section{Aplicaciones Simpliciales}
 
 \begin{defi}
-Dados $K$ y $L$ complejos simpliciales. Dada una aplicación $\varphi:K^0\to L^0$, se dice que $\varphi$ es \emph{simplicial} si para todo símplice $(v_0,\dots, v_n)\in K$, $(\varphi(v_0),\dots, \varphi(v_n))$ es un símplice de $L$. Inforlmamente, las aplicaciones simpliciales son las que envían símplices en símplices.
+Sean $K$ y $L$ complejos simpliciales. Dada una aplicación $\varphi:K^0\to L^0$, se dice que $\varphi$ es \emph{simplicial} si para todo símplice $(v_0,\dots, v_n)\in K$, $(\varphi(v_0),\dots, \varphi(v_n))$ es un símplice de $L$. Informalmente, las aplicaciones simpliciales son las que envían símplices en símplices.
 \end{defi}
 
 \begin{ej}\
 \begin{enumerate}
-\item Dado el triángulo relleno de vértices $\{v_0,v_1,v_2\}$ y una arista con vértices $w_0,w_1$ podemos comprobar que $\varphi(v_0)=w_0, \varphi(v_1)=w_0,\varphi(v_2)=w_1$ es una aplicación simplicial. 
+\item Dado el triángulo relleno de vértices $\{v_0,v_1,v_2\}$ y un segmento con vértices $w_0,w_1$ podemos comprobar que $\varphi(v_0)=w_0, \varphi(v_1)=w_0,\varphi(v_2)=w_1$ es una aplicación simplicial. 
 
 \item No sería aplicación simplicial si del triángulo relleno pasáramos al triángulo hueco mediante la aplicación natural, pues el 2-símplice no iría a un 2-símplice. 
 \end{enumerate}
@@ -401,6 +401,9 @@ Dados $K$ y $L$ complejos simpliciales. Dada una aplicación $\varphi:K^0\to L^0
 \begin{defi}
 Un \emph{isomorfismo simplicial} es una aplicación simplicial biyectiva. En la práctica, se trata de un reetiquetado de los vértices.
 \end{defi}
+
+Una aplicación simplicial se extiende de modo natural a todo el complejo simplicial de forma natural, llevando los $n$-símplices a los símplices formados por las imagénes de sus vértices. Por ello podemos hablar de aplicación simplicial definida como $\varphi:K\to L$.
+
 
 \begin{defi}
 Dada $\varphi:K\to L$ una aplicación simplicial, se define su \emph{aplicación inducida} $\varphi:|K|\to|L|$ como $\varphi(x)=\sum_{i=0}^n\lambda_i\varphi(v_i)$ para todo $x=\sum_{i=0}^n\lambda_iv_i\in K$. Es decir, $\varphi$ es la extensión lineal de la aplicación simplicial $\varphi$.
@@ -417,24 +420,44 @@ Dada $\varphi:K\to L$ una aplicación simplicial, se define su \emph{aplicación
 Dada $f:|K|\to|L|$ continua, se dirá que $\varphi:|K|\to |L|$ es una aproximación simplicial de $f$ si $\varphi(x)$ está en el símplice soporte de $f(x)$ para todo $x\in|K|$.
 \end{defi}
 
-\begin{nota}
-Si $\varphi$ es aproximación simplicial de $f$, se tiene que $||\varphi-f||\leq m(L)$ COPIAR DE LO QUE ME PASÓ JAVI
-\end{nota}
+\begin{lemma}\label{delta}
+Si $\varphi$ es aproximación simplicial de $f:|K|\to|L|$, se tiene que $||\varphi-f||=\sup\{||\varphi(x)-f(x)||\mid x\in K\}\leq m(L)$ .
+\end{lemma}
+\begin{proof}
+Como $\varphi$ es aproximación simplicial de $f$ se tiene que para todo $x\in K$ existe $\sigma\in L$ tal que $f(x),\varphi(x)\in\sigma$, luego $||\varphi(x)-f(x)||\leq\delta(\sigma)\leq m(L)$.
+\end{proof}
 
-\begin{lemma}
+
+\begin{lemma}\label{interseccion}
 Sea $K$ complejo simplicial. Entonces, dados $v_0,\dots, v_n\in K^0$,  $(v_0,\dots, v_n)\in K$ si y solo si $\bigcap_{i=0}^n\mathring{st}(v_i,K)\neq\emptyset$.
 \end{lemma}
 \begin{proof}
-Supongamos que $x\in \bigcap_{i=0}^n\mathring{st}(v_i,K)\Leftrightarrow x\in \mathring{st}(v_i,K)=\bigcup_{v_i<\tau}\mathring{\tau}\ \forall i$. Esto es equivalente a que $x\in \mathring{\tau}_i>v_i$ para todo $I$, luego por unicidad del soporte, $(v_0,\dots, v_n)$ es un símplice de $K$ y recíprocamente. 
+$x\in \bigcap_{i=0}^n\mathring{st}(v_i,K)\Leftrightarrow x\in \mathring{st}(v_i,K)=\bigcup_{v_i<\tau}\mathring{\tau}\ \forall i$. Esto es equivalente a que $x\in \mathring{\tau}_j>v_i$ para todo $i$, luego por unicidad del soporte, $(v_0,\dots, v_n)$ es un símplice de $K$ y recíprocamente. 
 \end{proof}
 
-\begin{prop}[I.4.4 de Elementos de Homología Clásica] 
-Sea $f:|K|\to|L|$ continua y sea $\varphi:K^0\to L^0$ una aplicación simplicial. Entonces, $\varphi$ es aproximación simplicial de $f$ si y solo si para todo $v\in K^0$, $f(\mathring{st}(v;K))\subseteq \mathring{st}(\varphi(v);L)$. 
+\begin{prop}\label{1.4.4}
+Sea $f:|K|\to|L|$ continua y sea $\varphi:K^0\to L^0$ una aplicación. Entonces, $\varphi$ es aproximación simplicial de $f$ si y solo si para todo $v\in K^0$, $f(\mathring{st}(v;K))\subseteq \mathring{st}(\varphi(v);L)$. 
 \end{prop}
+\begin{dem}
+Comprobemos primero que $\varphi$ es simplicial. Sea $\sigma\in K$ con vértices $v_0,\dots, v_k$. Por \ref{interseccion} tenemos $\bigcap_{i=0}^k\mathring{st}(v_i;K)\neq\emptyset$, luego
+\[
+\emptyset\neq f\left(\bigcap_{i=0}^k\mathring{st}(v_i;K)\right)\subseteq \bigcap_{i=0}^k f\left(\mathring{st}(v_i;K)\right)\subseteq \bigcap_{i=0}^k\mathring{st}(\varphi(v_i),L)
+\]
+así que los vértices $\varphi(v_i)$ están en un mismo símplice de $L$, con lo que $\varphi$ es aplicación simplicial.
+
+Sea ahora $x\in|K|$ tal que $x\in\mathring{\sigma}$ para algún $\sigma\in K$. Si $v_0,\dots, v_k$ son los vértices de $\sigma$, tenemos $x\in \bigcap_{i=0}^k\mathring{st}(v_i;K)$. Entonces, igual que antes, $f(x)\in \bigcap_{i=0}^k\mathring{st}(\varphi(v_i);L)$. Es decir, $\varphi(v_0),\dots, \varphi(v_k)$ son vértices del símplice soporte de $f(x)$ y $\varphi$ es aproximación simplicial de $f$.
+
+Recíprocamente, si $x\in\mathring{st}(v;K)$, entonces exite $\tau\in K$ con $v$ vértice de $\tau$ y $x\in\mathring{\tau}$. Por otro lado, $f(x)\in\mathring{\sigma}$ para algún $\sigma\in L$. Como $\varphi$ es una aproximación simplicial, $\varphi$ lleva el símplice $\tau$ en un símplice $\sigma'\in L$ tal que $\varphi(v)$ es un vértice de $\sigma'$, $\varphi(x)\in\mathring{\sigma}'$ y además $\varphi(x)\in\sigma$. Esto implica que $\sigma'\leq\sigma$ y $\varphi(v)\in\sigma$. Por tanto, $f(x)\in\mathring{\sigma}\subseteq\mathring{st}(\varphi(v);L)$, lo cual implica que $f(\mathring{st}(v;K))\subseteq \mathring{st}(\varphi(v);L)$.
+
+  \QED
+\end{dem}
 
 \begin{coro}\label{aprox}
 Dada $f:|K|\to|L|$ continua, $f$ admite como aproximación simplicial a $\varphi$ si y solo si para todo $v\in K^0$ existe $w\in L^0$ tal que $f(\mathring{st}(v,;K))\subseteq \mathring{st}(w,L)$, o equivalentemente, $\mathring{st}(v,;K))\subseteq f^{-1}(\mathring{st}(w,L))$. 
 \end{coro}
+\begin{dem}
+Supongamos que $\varphi$ es una aproximación simplicial de $f$. Entonces, por \ref{1.4.4} se tiene que para todo vértice $v\in K$, $f(\mathring{st}(v;K))\subseteq\mathring{st}(\varphi(v);L)$. Luego $\mathring{st}(v;K)\subseteq f^{-1}(\mathring{st}(w;L))$ para $w=\varphi(v)$.  Recíprocamente, si $\mathring{st}(v;K)\subseteq f^{-1}(\mathring{st}(w;L))$, definimos $\varphi:K^0\to L^0$ como $\varphi(v)=w$ en cada caso. Por tanto, $\mathring{st}(v;K)\subseteq f^{-1}(\mathring{st}(\varphi(v);L))$. Es decir, $f(\mathring{st}(v;K))\subseteq \mathring{st}(\varphi(v);L)$, y por \ref{1.4.4} se sigue que $\varphi$ es simplicial. \QED
+\end{dem}
 
 \begin{lemma}[de Lebesgue]
 Sea $X$ un espacio métrico compacto y $U=\{U_\alpha\}$ un recubrimiento por abiertos de $X$. Entonces existe $\varepsilon>0$ llamado \emph{número de Lebesgue} tal que para todo $A\subseteq X$ verificando $\delta(A)<\varepsilon$, se verifica que existe $\alpha_0$ de modoq ue $A\subseteq U_{\alpha_0}$.
@@ -444,7 +467,7 @@ Sea $X$ un espacio métrico compacto y $U=\{U_\alpha\}$ un recubrimiento por abi
 Dada $f:|K|\to |L|$ continua, existe $n_0\in\N$ y una aproximación simplicial de $\varphi$ de $f$ definida en $\varphi:|sd^{n_0}K|\to |L|$. 
 \end{prop}
 \begin{dem}
-Sea $W=\{\mathring{st}(w;L)\}_{w\in L^0}$ un recubrimiento abierto de $|L|$. Como $f$ es continua, $U=\{f^{-1}(\mathring{st}(w;L))\}_{w\in L^0}$ es un recubrimiento abierto de $|K|$, siendo $|K|$ compacto y métrico. En estas condiciones podemos aplicar el lema de Lebesgue, por lo que sea $\varepsilon>0$ el número de Lebesgue de $U$. Consideremos $n_0$ tal que $m(sd^{n_0}K)\leq\varepsilon/2$. Dado $v\in sd^{n_0}K$, $\delta(\mathring{st}(v; sd^{n_0}))=\sup ||x-x'||$ con $x\in\mathring{\sigma}$ siendo $v$ vértice de $\sigma$ y $x'\in \mathring{\sigma}'$ con $v$ vértice de $\sigma'$. Tenemos
+Sea $W=\{\mathring{st}(w;L)\}_{w\in L^0}$ un recubrimiento abierto de $|L|$. Como $f$ es continua, $U=\{f^{-1}(\mathring{st}(w;L))\}_{w\in L^0}$ es un recubrimiento abierto de $|K|$, siendo $|K|$ compacto y métrico. En estas condiciones podemos aplicar el lema de Lebesgue, por lo que sea $\varepsilon>0$ el número de Lebesgue de $U$. Consideremos $n_0$ tal que $m(sd^{n_0}K)<\varepsilon/2$. Dado $v\in sd^{n_0}K$, $\delta(\mathring{st}(v; sd^{n_0}))=\sup ||x-x'||$ con $x\in\mathring{\sigma}$ siendo $v$ vértice de $\sigma$ y $x'\in \mathring{\sigma}'$ con $v$ vértice de $\sigma'$. Tenemos
 \[
 ||x-x'||\leq ||x-v||+||x-v'||<\varepsilon/2+\varepsilon/2=\varepsilon
 \]
@@ -456,11 +479,11 @@ por lo que $\delta(\mathring{st}(v; sd^{n_0}))<\varepsilon$. Esto implica que $f
 Dada $f:|K|\to|L|$ continua y $\varepsilon>0$, existen $n_0,k_0\in\N$ y $\varphi:sd^{n_0}K\to sd^{k_0}L$ aproximación simplicial de $f$ tal que $||f-\varphi||<\varepsilon$.
 \end{coro}
 \begin{dem}
-Tomamos $k_0$ de modo que $m(sd^{k_0}L)<\varepsilon/2$ y aplicamos la proposición anterior. Existe $n_0\in\N$ y una aproximación simplicial $\varphi:sd^{n_0}K\to sd^{k_0}L$ con $||f-\varphi||\leq \delta(\sigma)<\varepsilon/2$. \QED
+Tomamos $k_0$ de modo que $m(sd^{k_0}L)<\varepsilon/2$ y aplicamos la proposición anterior junto con el lema \ref{delta}. Existe $n_0\in\N$ y una aproximación simplicial $\varphi:sd^{n_0}K\to sd^{k_0}L$ con $||f-\varphi||\leq \delta(\sigma)<\varepsilon/2$. \QED
 \end{dem}
 
 \begin{prop}
-Dadas $f:|K|\to|L|$ continua y $\varphi:|K|\to |L|$ aproximación simplicial de $f$; entonces $f$ y $\varphi$ son homotópicas (REFERENCIA AL TEMA 3 PARA LA DEFINICIÓN DE HOMOTOPÍA)
+Dadas $f:|K|\to|L|$ continua y $\varphi:|K|\to |L|$ aproximación simplicial de $f$; entonces $f$ y $\varphi$ son homotópicas (\ref{homotopia}).
 \end{prop}
 \begin{dem}
 Por definición de aproximación simplicial tenemos que $\varphi(x)$ y $f(x)$ están siempre en un mismo símplice para cada $x\in|K|$. Basta tomar como homotopía $H$ el segmento que une $f(x)$ y $\varphi(x)$, contenido en el símplice común. 
@@ -468,19 +491,5 @@ Por definición de aproximación simplicial tenemos que $\varphi(x)$ y $f(x)$ es
 \end{dem}
 
 
-A PARTIR DE AQUÍ POSIBLEMENTE CAMBIAR DE CAPÍTULO (CHAPTER HOMOLOGÍA SIMPLICIAL O ALGO ASÍ)
 
-\section{Complejos de cadenas simpliciales}
-
-\begin{defi}
-Sea $\sigma=(v_0,\dots, v_n)$, se llama \emph{orientación} de $\sigma$ a cada una de las dos clases de equivalencia que se obtienen al permutar vértices dependiendo de su paridad. A cada una la denotaremos $\sigma$ y $\overline{\sigma}$ (o $-\sigma$).
-\end{defi}
-
-\begin{defi}
-$C_n(K;\F)$ es el espacio vectorial de las $n$-cadenas  de $K$, es decir, todoas las comninaciones lineales finitas en coeficientes en $\F$ de $n$-símplices de $K$. Fórmalmente
-\[
-C_n(K,\F)=\frac{\F[\sigma,\overline{\sigma}}{\sigma+\overline{\sigma}}\cong \F[\sigma]
-\]
-es decir, consideramos iguales los símplices con distinta orientación.
-\end{defi}
 \end{document}
