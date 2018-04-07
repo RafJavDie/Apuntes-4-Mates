@@ -139,7 +139,7 @@ Sea $f\in I_l$, sabemos que $\exists g \in G$ tal que $LT(g)\mid LT(f)$ por defi
 \newpage
 
 \begin{ejercicio}{3.1.6}
-To exploit the generalized Elimination Theorem of Exercise 5, we need some interesting examples of monomial orders of $l$-	elimination type. We will consider two such orders.
+To exploit the generalized Elimination Theorem of Exercise 5, we need some interesting examples of monomial orders of $l$-3elimination type. We will consider two such orders.
 \begin{enumerate}[a.]
 \item Fix an integer $1\leq l \leq n$, and define the order $>_l$ as follows: if $\alpha,\beta \in \Z_{\geq 0}^n$, then $\alpha>_l\beta$ if
 $$
@@ -155,7 +155,16 @@ is of l-elimination type.
 \begin{solucion}
 \begin{enumerate}[a.]
 \item[]
-\item En efecto, la prueba del Ejercicio 2.4.11 garantiza que este es un orden monomial tomando $u$ cuyas $l$ primeras comopenentes son $1$ y el resto de $0$, y $>_\sigma$ como $>_{grevlex}$.
+\item En efecto, la prueba del Ejercicio 2.4.11 garantiza que este es un orden monomial tomando $u$ cuyas $l$ primeras comopenentes son $1$ y el resto de $0$, y $>_\sigma$ como $>_{grevlex}$. Es inmediato que este orden es de tipo $l$-eliminatorio, pues si $x^\alpha$ tiene algún monomio en $x_1,\dotsc,x_l$ y $x^\beta$, entonces $\exists i$, $1\leq i \leq l$ tal que $\alpha_i >0$ y no existe ninguno tal que $\beta_i >0$, por lo que 
+$$
+a_1 + \dotsc + \alpha_l > 0 = \beta_1 + \dotsc + \beta_l
+$$
+\item Lo natural parece ser tomar, si denotamos por $x$ al vector de las primeras $l$ componentes e $y$ al resto, de manera que cada monomio puede escribirse como $x^\alpha y^\beta$ con $\alpha\in \Z^l_{\geq0}$ y $\beta \in \Z_{\geq 0}^{n-l}$, definir el orden $>^*$ como
+$$
+x^\alpha y^\beta >^* x^\gamma y^\delta \Leftrightarrow x^\alpha >_{grevlex} x^\gamma \text{ or } x^\alpha = x^\beta >_{grevlex} x^\gamma
+$$
+Es trivial que es de tipo $l$-eliminatorio pues si un monomio no tiene elementos de $x_1,\dotsc,x_l$ podemos escribirlo como $x^0y^\gamma$, luego por ser orden monomial, cualquier monomio que tenga términos en $x_1,\dotsc,x_l$ verificará que $x^\alpha >_{grevlex}x^0$.
+\item Se desprende de la prueba del Ejercicio 3.1.5. El orden que utilizamos para comprobar que $g\in G\cap k[x_{l+1},\dotsc,x_n]$ se reduce al orden grevlex.
 \end{enumerate}
 \end{solucion}
 
@@ -164,9 +173,11 @@ is of l-elimination type.
 
 \begin{ejercicio}{3.1.7}
 Consider the equations
-\[t^2 + x2^ + y^2 + z^2 = 0,\]
-\[t^2 + 2x^2 − xy − z^2 = 0,\]
-\[t + y^3 − z^3 = 0.\]
+\begin{align*}
+t^2 + x^2 + y^2 + z^2 &= 0\\
+t^2 + 2x^2 − xy − z^2 &= 0\\
+t + y^3 − z^3 &= 0
+\end{align*}
 We want to eliminate $t$. Let $I = 
 \gene{t^2 + x^2 + y^2 + z^2, t^2 + 2x^2 − xy − z^2, t + y^3 − z^3}$ be the
 corresponding ideal.
@@ -184,6 +195,18 @@ orders, then check your answer.
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
+\item[]
+\item Usando SAGE obtenemos la base de Gröbner para $I$. La base tiene unos polinomios enormes, así que escribo directamente los que no tienen variable $t$
+\begin{align*}
+G\cap \Q[x,y,z] = \{&y^{13} - 4y^{10}z^3 + 5y^9 + 6y^7z^6 + 6y^7z^2 - 10y^6z^3 + 5y^5 - 4y^4z^9 - 12y^4z^5\\ &+
+ 5y^3z^6 + 13y^3z^2 + yz^{12} + 6yz^8 + 9yz^4,\\
+&-2y^{12} + 8y^9z^3 - 10y^8 - 12y^6z^6 - 12y^6z^2 + 20y^5z^3 - 10y^4 + 8y^3z^9\\
+&+ 24y^3z^5 - 10y^2z^6 - 26y^2z^2 - 2z^{12} - 12z^8 - 18z^4\}
+\end{align*}
+\item De manera absolutamente maravillosa obtenemos
+$$
+G\cap \Q[x,y,z] = \{-x^2 + xy + y^2 + 2z^2\}
+$$
 \end{enumerate}
 \end{solucion}
 
@@ -239,7 +262,7 @@ algebraic functions of $z$ to obtain a “parametrization” of $\V(I)$.
 \begin{solucion}
 Como buscamos un ideal en $\C[x, y, z]$, teniendo en cuenta que $x\neq 0$, nuestro ideal sera 
 \[
-I=\gene{x^5-x^5y+1, x^2-xz+1}.
+I=\gene{x^{10}-x^5y+1, x^2-xz+1}.
 \]
 \begin{enumerate}[a.]
 \item Calculamos una base de Gröbner para $I$ con lex siendo $x>y>z$. 
