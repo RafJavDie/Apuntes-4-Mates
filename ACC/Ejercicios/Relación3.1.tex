@@ -139,7 +139,7 @@ Sea $f\in I_l$, sabemos que $\exists g \in G$ tal que $LT(g)\mid LT(f)$ por defi
 \newpage
 
 \begin{ejercicio}{3.1.6}
-To exploit the generalized Elimination Theorem of Exercise 5, we need some interesting examples of monomial orders of $l$-3elimination type. We will consider two such orders.
+To exploit the generalized Elimination Theorem of Exercise 5, we need some interesting examples of monomial orders of $l$-elimination type. We will consider two such orders.
 \begin{enumerate}[a.]
 \item Fix an integer $1\leq l \leq n$, and define the order $>_l$ as follows: if $\alpha,\beta \in \Z_{\geq 0}^n$, then $\alpha>_l\beta$ if
 $$
@@ -164,7 +164,10 @@ $$
 x^\alpha y^\beta >^* x^\gamma y^\delta \Leftrightarrow x^\alpha >_{grevlex} x^\gamma \text{ or } x^\alpha = x^\beta >_{grevlex} x^\gamma
 $$
 Es trivial que es de tipo $l$-eliminatorio pues si un monomio no tiene elementos de $x_1,\dotsc,x_l$ podemos escribirlo como $x^0y^\gamma$, luego por ser orden monomial, cualquier monomio que tenga términos en $x_1,\dotsc,x_l$ verificará que $x^\alpha >_{grevlex}x^0$.
-\item Se desprende de la prueba del Ejercicio 3.1.5. El orden que utilizamos para comprobar que $g\in G\cap k[x_{l+1},\dotsc,x_n]$ se reduce al orden grevlex.
+\item Por el ejercicio anterior sabemos que podemos aplicar el Teorema de la Eliminación. El resultado se desprende del hecho de que podemos identificar un monomio $x^0 y^\beta \in k[x_1,\dotsc,x_n]$ con un monomio $y^\beta \in k[x_{l+1},\dotsc,x_n]$, pues para cualesquiera órdenes $>$ de (a) o (b):
+$$
+x^0y^\beta > x^0y^\gamma \Leftrightarrow y^\beta >_{grevlex} y^\gamma
+$$
 \end{enumerate}
 \end{solucion}
 
