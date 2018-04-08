@@ -32,7 +32,14 @@ H^p(\R^n-\Sigma)\cong\begin{cases}
 \]
 \end{ejercicio}
 \begin{solucion}
+%\S sale el símbolo de "capítulo"
+Basta hacer el cálculo para $\Sigma=S^k\subseteq\R^{k+1}\subseteq\R^n$. Como $\R^n-S^k$ es conexo para todo $1\leq k\leq n-2$, tenemos que $H^0(\R^n-S^k)\cong\R$. Primero calculamos
+\[
+H^p(\R^{k+1}-S^k)=H^p(\mathring{D}^{k+1})\oplus H^p(\R^{k+1}-D^{k+1}).
+\]
+Entonces $H^0(\R^{k+1}-S^k)\cong \R\oplus\R$, así que $H^1(\R^{k+2}-S^k)\cong\R$, lo cual, para $n=k+2$ prueba que $H^{n-k-1}(\R^n-S^k)\cong\R$. Podemos extender este resultado a todo $n\geq k+2$ usando que $H^{1+m}(\R^{n+m}-S^k)\cong H^1(\R^n-S^k)$. 
 
+Por otro lado, para $p>0$, $H^k(\R^{k+1}-S^k)\cong \R$ y $H^p(\R^{k+1}-S^k)=0$ en cualquier otro caso. Por tanto $H^{k+1}(\R^{k+2}-S^k)\cong \R$ y $H^p(\R^{k+2}-S^k)=0$ en otro caso que no haya sido cubierto anteriormente.  Esto nos da los resultados que faltaban para $n=k+2$, y del mismo modo que en el párrafo anterior se puede extender para todo $n\geq k+2$.
 \end{solucion}
 \newpage
 
@@ -50,7 +57,7 @@ Sea $f:D^n\to\R^n$ una aplicación continua, y sea $r\in(0,1)$ dado. Supongamos 
 (Pista: Modificar la prueba del teorema del punto fijo de Brouwer y usar ejercicios 6.4 y 7.3)
 \end{ejercicio}
 \begin{solucion}
-
+Supongamos que hay algún punto $y$ del disco cerrado de radio $r$ y centro 0 que no está en $f(D^n)$. Para cada punto $z=f(x)\in f(D^n)$ definimos $g(x)$ como la intersección con $S^{n-1}$ de la semirrecta que comienza en $z$ y pasa por $y$. NO SÉ CÓMO SEGUIR
 \end{solucion}
 
 \newpage
