@@ -30,7 +30,7 @@ that there is a variety $W \subsetneq \V(I_m)$ such that $\V(I_m) \setminus W �
 Closure Theorem.
 \end{ejercicio}
 \begin{solucion}
-Como $F(\C^m)=\pi_m(V)$ por el ejercicio \ref{ejer:3.3.1}, usando el teorema de la clausura (ii) tenemos el resultado. 
+Como $F(\C^m)=\pi_m(V)$ por el Ejercicio \ref{ejer:3.3.1}, usando el teorema de la clausura (ii) tenemos el resultado. 
 
 \end{solucion}
 
@@ -48,8 +48,7 @@ Give an example to show that Exercise \ref{ejer:3.3.2} is false over $\R$. Hint:
 \newpage
 
 \begin{ejercicio}{3.3.4}
-In the text, we proved that over $\C$, the tangent surface to the twisted cubic is defined by
-the equation
+In the text, we proved that over $\C$, the tangent surface to the twisted cubic is defined by 	the equation
 \[g_7 = x^3z − (3/4)x^2y^2 − (3/2)xyz + y^3 + (1/4)z^2 = 0.\]
 We want to show that the same is true over $\R$. If $(x, y, z)$ is a real solution of the above
 equation, then we proved (using the Extension Theorem) that there are $t, u ∈ \C$ such that
@@ -62,7 +61,15 @@ Use the Gröbner basis given in the text to show that $t$ and $u$ are real. This
 $(x, y, z)$ is on the tangent surface in $\R^3$. Hint: First show that $u$ is real.
 \end{ejercicio}
 \begin{solucion}\
-
+Utilizamos la base de Gröbner que se da en el texto. Sea una solución $(x,y,z)\in \R^3 \subset \C^3$, sabemos que existen $t,u\in \C$ tal que $(t,u,x,y,z) \in \V(I)$. Por tanto, esta tripleta anula la base de Gröbner y de $g_3$ deducimos
+$$
+0 = u(x^2-y) -x^3 +(3/2)xy -(1/2)z
+$$
+Si $x^2-y=0$, por $g_2$ tenemos que $u^2 = 0$, luego $u=0\in \R$. En otro caso,
+$$
+u = \frac{x^3 -(3/2)xy + (1/2)z}{x^2-y}
+$$
+Por lo que $u \in \R$. Por $g_1$, tenemos que $t=x-u$, por lo que $t\in \R$.
 \end{solucion}
 
 
@@ -74,7 +81,7 @@ $t$ and $u$ are uniquely determined by $x$, $y$, and $z$. Hint: The argument is 
 you did in Exercise \ref{ejer:3.3.4}.
 \end{ejercicio}
 \begin{solucion}
-
+Efectivamente, dados $x,y,z)$ siguiente el argumento del ejercicio anterior obtenmos los $t,u$.
 \end{solucion}
 
 \newpage
@@ -95,9 +102,21 @@ other “half”?
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Con SAGE obtenemos la base de Gröbner
+$$
+G=\{v^2 - z, uz - vx, u^2 - y, x^2 - yz, uv - x, ux - vy\}
+$$
+Luego la ecuación es $x^2-yz$.
+\item Tenemos que que $I_2 = \{v^2-z,x^2-yz\}$. Como el primer polinomio tiene coeficiente constante la mayor potencia de $v$, tenemos que por el Teorema de Extensión cualquier solución $(x,y,z)\in \V(I_2)$ se extiende a una solución $(u,x,y,z)\in \V(I_1)$. Análogamente, tenemos que los coeficientes líderes de las mayores potencais de $u$ definen la variedad
+$$
+\V(0,z,1,0,v,y) = \emptyset
+$$
+de donde se deduce el resultado volviendo a aplicar el Teorema de Extensión.
+\item 
+\end{enumerate}
 \end{solucion}
-
-
 \newpage
 
 \begin{ejercicio}{3.3.7}
