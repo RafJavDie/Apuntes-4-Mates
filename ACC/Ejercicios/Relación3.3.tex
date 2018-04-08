@@ -1,0 +1,269 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{3.3.1}
+In diagram (3) in the text, prove carefully that $F = π_m \circ i$ and $i(k^m) = V$.
+\end{ejercicio}
+\begin{solucion}
+Dado $(t_1,\dots, t_m)\in k^m$
+\[
+\pi_m\circ i(t_1,\dots, t_m)=\pi_m(t_1,\dots, t_m, f_1(t1,\dots, t_m),\dots, f_n(t_1,\dots, t_m))=
+\]
+\[
+(f_1(t_1,\dots, t_m),\dots, f_n(t_1,\dots, t_m))=F(t_1,\dots, t_m).
+\]
+En las ecuaciones anteriores tenemos $i(t_1,\dots, t_m)=(t_1,\dots, t_m, f_1(t_1,\dots, t_m),\dots, f_n(t_1,\dots, t_m))$, que son justamente los puntos de $V$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3.3.2}
+When $k = \C$, the conclusion of Theorem 1 can be strengthened. Namely, one can show
+that there is a variety $W \subsetneq \V(I_m)$ such that $\V(I_m) \setminus W ⊆ F(\C^m)$. Prove this using the
+Closure Theorem.
+\end{ejercicio}
+\begin{solucion}
+Como $F(\C^m)=\pi_m(V)$ por el ejercicio \ref{ejer:3.3.1}, usando el teorema de la clausura (ii) tenemos el resultado. 
+
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.3}
+Give an example to show that Exercise \ref{ejer:3.3.2} is false over $\R$. Hint: $t^2$ is always positive.
+\end{ejercicio}
+\begin{solucion}
+ 
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.4}
+In the text, we proved that over $\C$, the tangent surface to the twisted cubic is defined by
+the equation
+\[g_7 = x^3z − (3/4)x^2y^2 − (3/2)xyz + y^3 + (1/4)z^2 = 0.\]
+We want to show that the same is true over $\R$. If $(x, y, z)$ is a real solution of the above
+equation, then we proved (using the Extension Theorem) that there are $t, u ∈ \C$ such that
+\begin{align*}
+&x = t + u,\\
+&y = t^2 + 2tu,\\
+&z = t^3 + 3t^2u.
+\end{align*}
+Use the Gröbner basis given in the text to show that $t$ and $u$ are real. This will prove that
+$(x, y, z)$ is on the tangent surface in $\R^3$. Hint: First show that $u$ is real.
+\end{ejercicio}
+\begin{solucion}\
+
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.5}
+In the parametrization of the tangent surface of the twisted cubic, show that the parameters
+$t$ and $u$ are uniquely determined by $x$, $y$, and $z$. Hint: The argument is similar to what
+you did in Exercise \ref{ejer:3.3.4}.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3.3.6}
+Let $S$ be the parametric surface defined by
+\begin{align*}
+&x = uv,\\
+&y = u^2,\\
+&z = v^2.
+\end{align*}
+\begin{enumerate}[a.]
+\item Find the equation of the smallest variety $V$ that contains $S$.
+\item Over $\C$, use the Extension Theorem to prove that $S = V$. Hint: The argument is
+similar to what we did for the tangent surface of the twisted cubic.
+\item Over $\R$, show that $S$ only covers “half” of $V$. What parametrization would cover the
+other “half”?
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.7}
+Let $S$ be the parametric surface
+\[x = uv,\]
+\[y = uv^2,\]
+\[z = u^2.\]
+\begin{enumerate}[a.]
+\item Find the equation of the smallest variety $V$ that contains $S$.
+\item Over $\C$, show that $V$ contains points which are not on $S$. Determine exactly which
+points of $V$ are not on $S$. Hint: Use lexicographic order with $u > v > x > y > z$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.8}
+The Enneper surface is defined parametrically by
+\[x = 3u + 3uv^2 − u^3,\]
+\[y = 3v + 3u^2v − v^3,\]
+\[z = 3u^2 − 3v^2.\]
+\begin{enumerate}[a.]
+\item Find the equation of the smallest variety $V$ containing the Enneper surface. It will be
+a very complicated equation!
+\item  Over $\C$, use the Extension Theorem to prove that the above equations parametrize
+the entire surface $V$. Hint: There are a lot of polynomials in the Gröbner basis. Keep
+looking—you will find what you need.
+\end{enumerate}
+
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.9}
+The Whitney umbrella surface is given parametrically by
+\[x = uv,\]
+\[y = v,\]
+\[z = u^2.\]
+\begin{enumerate}[a.]
+\item Find the equation of the smallest variety containing the Whitney umbrella.
+\item Show that the parametrization fills up the variety over $\C$ but not over $\R$. Over $\R$,
+exactly what points are omitted?
+\item Show that the parameters $u$ and $v$ are not always uniquely determined by $x$, $y$, and $z$.
+Find the points where uniqueness fails and explain how your answer relates to the
+picture.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.10}
+Consider the curve in $\C^n$ parametrized by $x_i = f_i(t)$, where $f_1,\dots , f_n$ are polynomials in
+$\C[t]$. This gives the ideal
+\[I = 
+\gene{x_1 − f_1(t), \dots , x_n − f_n(t)} ⊆ \C[t, x_1, \dots , x_n].\]
+\begin{enumerate}[a.]
+\item Prove that the parametric equations fill up all of the variety $\V(I_1) ⊆ \C^n$.
+\item Show that the conclusion of part (a) may fail if we let $f_1,\dots  , f_n$ be rational functions.
+Hint: See §3 of Chapter 1.
+\item Even if all of the $f_i$’s are polynomials, show that the conclusion of part (a) may fail if
+we work over $\R$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.11}
+This problem is concerned with the proof of Theorem 2.
+\begin{enumerate}[a.]
+\item Take $h ∈ k[x_1, \dots , x_n$] and let $f_i$, $g_i$ be as in the theorem with $g = g_1 \cdots g_n$. Show
+that if $N$ is sufficiently large, then there is $F ∈ k[t_1, \dots , t_m, x_1, \dots , x_n]$ such that
+$g^Nh = F(t_1, \dots , t_m, g_1x_1, \dots , g_nx_n)$.
+\item Divide $F$ from part (a) by $x_1 − f_1, \dots , x_n − f_n$. Then, in this division, replace $x_i$ with
+$g_ix_i$ to obtain (10).
+\item Let $k$ be an infinite field and let $f , g ∈ k[t_1, \dots , t_m]$. Assume that $g \neq 0$ and that $f$
+vanishes on $k^m \ \V(g)$. Prove that $f$ is the zero polynomial. Hint: Consider $fg$.
+\item Complete the proof of Theorem 2 using ideas from the proof of Theorem 1.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.12}
+Consider the parametrization (6) given in the text. For simplicity, let $k = \C$. Also let
+$I = 
+\gene{vx − u^2, uy − v^2, z − u}$ be the ideal obtained by “clearing denominators.”
+\begin{enumerate}[a.]
+\item Show that $I_2 = 
+\gene{z(x^2y − z^3)}$.
+\item Show that the smallest variety in $\C^5$ containing $i(\C^2 \ W)$ [see diagram (8)] is the
+variety $\V(vx − u^2, uy − v^2, z − u, x^2y − z^3, vz − xy)$. Hint: Show that $i(\C^2 \ W) =
+π_1(\V(J))$, and then use the Closure Theorem.
+\item Show that $\{(0, 0, x, y, 0) | x, y ∈ \C\} ⊆ \V(I)$ and conclude that $\V(I)$ is not the
+smallest variety containing $i(\C^2 \ W)$.
+\item Determine exactly which portion of $x^2y = z^3$ is parametrized by (6).
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.13}
+Given a rational parametrization as in (7), there is one case where the naive ideal $I =
+\gene{g_1x_1 − f_1, \dots , g_nx_n − f_n}$ obtained by “clearing denominators” gives the right answer.
+Suppose that $x_i = f_i(t)/g_i(t)$ where there is only one parameter $t$.We can assume that for
+each $i$, $f_i(t)$ and $g_i(t)$ are relatively prime in $k[t]$ (so in particular, they have no common
+roots). If $I ⊆ k[t, x_1, \dots , x_n]$ is as above, then prove that $\V(I_1)$ is the smallest variety
+containing $F(k \ W)$, where as usual $g = g_1 \cdots g_n ∈ k[t]$ and $W = \V(g) ⊆ k$. Hint: In
+diagram (8), show that $i(k \ W) = \V(I)$, and adapt the proof of Theorem 2.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.14}
+The folium of Descartes can be parametrized by
+\[x =
+\frac{3t}{1 + t^3} ,\]
+\[y =
+\frac{3t^2}{1 + t^3} .\]
+\begin{enumerate}[a.]
+\item Find the equation of the folium. Hint: Use Exercise \ref{ejer:3.3.13}.
+\item Over $\C$ or $\R$, show that the above parametrization covers the entire curve.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.15}
+In Exercise 16 to §3 of Chapter 1, we studied the parametric equations over $\R$
+\[x =
+\frac{(1 − t)^2x_1 + 2t(1 − t)wx_2 + t^2x_3}{
+(1 − t)^2 + 2t(1 − t)w + t^2 } ,\]
+\[y =
+\frac{(1 − t)^2y_1 + 2t(1 − t)wy_2 + t^2y_3}{
+(1 − t)^2 + 2t(1 − t)w + t^2} ,\]
+where $w$, $x_1$, $y_1$, $x_2$, $y_2$, $x_3$, $y_3$ are constants and $w > 0$. By eliminating $t$, show that these
+equations describe a portion of a conic section. Recall that a conic section is described
+by an equation of the form
+\[ax^2 + bxy + cy^2 + dx + ey + f = 0.\]
+Hint: In most computer algebra systems, the Gröbner basis command allows polynomials
+to have coefficients involving symbolic constants like $w, x_1$, $y_1$, $x_2$, $y_2$, $x_3$, $y_3$.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\end{document}
