@@ -61,12 +61,20 @@ In this problem, we will prove part (ii) of Theorem 3 in the special case when $
 \item Let $x^{N_i}$ be the highest power of $x$ appearing in $f_i$ and set $\tilde{f}_i = f_i − c_ix^{N_i}$ . Show that
 $\tilde{I} = 
 \gene{ \tilde{f}_1, \tilde{f}_2, \tilde{f}_3, c_1, c_2, c_3}$.
-\item Repeat part (b) for $\tilde{I}$ using the generators from part (d) to find $\widetilde{W} \subsetneq \V(I_1)$ that satisfies
-part (ii) of Theorem 3.
+\item Repeat part (b) for $\tilde{I}$ using the generators from part (d) to find $\widetilde{W} \subsetneq \V(I_1)$ that satisfies part (ii) of Theorem 3.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
- 
+\begin{enumerate}[a.]
+\item[] 
+\item Consideremos el ideal generado y calculemos con SAGE una base de Gröbner y obtenemos 
+$G=\{x^2,y^2\}$
+de donde se sigue el resultado por el Teorema de Eliminación.
+\item Dichos coeficientes son $\{c_1,c_2,c_3\}=\{y,y^3,y\}$. Por tanto, $\V (c_1,c_2,c_3) \cap \V(I_1) = \{0\}$.
+\item Es claro que una base de Gröbner de este nuevo ideal será $G=\{x^2,y\}$, de donde se deducen las igualdades.
+\item La igualdad es una igualdad básica de teoría de ideales que no resiste mayor análisis, y los generadores se reducen a la base de Gröbner anterior.
+\item O hay una pájara mental de cuidado o no se puede hacer.
+\end{enumerate}
 \end{solucion}
 
 
@@ -86,7 +94,7 @@ closed.
 \end{ejercicio}
 \begin{solucion}\
 \begin{enumerate}[a.]
-\item Como los $c_i$ son constantes, $\V(c_1,c_2)=\emptyset$, luego por el teorema de extensión geométrico $\V(I_1) = π_1(V)$. 
+\item Como los $c_i$ son constantes	, se tiene inmediatamente por el Corolario 4.
 \item $V=\emptyset$ porque $x^2 + y^2 + z^2 + 2=0$ no tiene soluciones reales. Calculamos una base de Gröbner para $I_1$ sobre $\R$ y obtenemos
 \[
 G_1=\{y^2 + z^2 - 1\}
@@ -104,7 +112,7 @@ where $V = \V(I)$ and $π_1$ is the projection onto the $y$-axis. Hint: Use part
 Theorem. Also, the only varieties contained in $\C$ are either $\C$ or finite subsets of $\C$.
 \end{ejercicio}
 \begin{solucion}
-
+Si $I_1 \neq \{0\}$ entonce $\exists f \in k[y]$ tal que $f \in I_1$. 
 \end{solucion}
 
 
