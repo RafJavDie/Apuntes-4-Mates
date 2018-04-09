@@ -81,7 +81,7 @@ $t$ and $u$ are uniquely determined by $x$, $y$, and $z$. Hint: The argument is 
 you did in Exercise \ref{ejer:3.3.4}.
 \end{ejercicio}
 \begin{solucion}
-Efectivamente, dados $x,y,z)$ siguiente el argumento del ejercicio anterior obtenmos los $t,u$.
+Efectivamente, dados $(x,y,z)$ siguiente el argumento del ejercicio anterior obtenmos los $t,u$.
 \end{solucion}
 
 \newpage
@@ -109,12 +109,18 @@ $$
 G=\{v^2 - z, uz - vx, u^2 - y, x^2 - yz, uv - x, ux - vy\}
 $$
 Luego la ecuación es $x^2-yz$.
-\item Tenemos que que $I_2 = \{v^2-z,x^2-yz\}$. Como el primer polinomio tiene coeficiente constante la mayor potencia de $v$, tenemos que por el Teorema de Extensión cualquier solución $(x,y,z)\in \V(I_2)$ se extiende a una solución $(u,x,y,z)\in \V(I_1)$. Análogamente, tenemos que los coeficientes líderes de las mayores potencais de $u$ definen la variedad
+\item Tenemos que que $I_2 = \{v^2-z,x^2-yz\}$. Como el primer polinomio tiene coeficiente constante en la mayor potencia de $v$, tenemos que por el Teorema de Extensión cualquier solución $(x,y,z)\in \V(I_2)$ se extiende a una solución $(u,x,y,z)\in \V(I_1)$. Análogamente, tenemos que los coeficientes líderes de las mayores potencias de $u$ definen la variedad
 $$
 \V(0,z,1,0,v,y) = \emptyset
 $$
 de donde se deduce el resultado volviendo a aplicar el Teorema de Extensión.
-\item 
+\item Sobre $\R$ no cubre valores negativos de $y$ ni de $z$, cosa que en $\C$ sí. Para la otra mitad simplemente deberíamos parametrizar
+\begin{align*}
+&x = uv,\\
+&y = -u^2,\\
+&z = -v^2.
+\end{align*}
+Esto es suficiente pues, al ser $x^2=yz$, necesitamos que el producto $yz>0$. 
 \end{enumerate}
 \end{solucion}
 \newpage
@@ -130,7 +136,19 @@ Let $S$ be the parametric surface
 points of $V$ are not on $S$. Hint: Use lexicographic order with $u > v > x > y > z$.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Con el orden indicado en el enunciado encontramos la base de Gröbner
+\[
+\{u^2 - z, uv - x, ux - vz, uy - x^2, v^2z - x^2, vx - y, vyz - x^3, x^4 - y^2z\}
+\]
+así que la ecuación es $x^4-y^2z=0$. 
+\item Usamos el teorema de Extensión reiteradamente. Una solución $(x,y,z)\in\V(x^4-y^2z)=\V(I_2)$ se extiende a $(v,x,y,z)\in \V(I_1)$ siempre que $(x,y,z)\notin\V(z,x,yz)=\V(z,x)$, es decir, siempre que $xz\neq 0$. Por último, una solución $(v,x,y,z)\in\V(I_1)$ se extiende a una solución $(u,v,x,y,z)\in\V(I)$ siempre pues $u^2$ tiene un coeficiente constante. 
+
+En el caso de que $x=0$, en $S$ esto siempre implica que $y=0$, pero en la ecuación $x^4-y^2z=0$, $x=0\Rightarrow y^2z=0$, por lo que lo puntos de la forma $(0,y,0)$ están contenidos en $V$ para todo $y$. 
+
+En el caso $z=0$ no hay nada más que añadir, ya que en la parametrización esto implica $y=x=0$, y en la ecuación implica $x^4=0\Rightarrow x=0$. 
+\end{enumerate}
 \end{solucion}
 
 
@@ -150,7 +168,16 @@ looking—you will find what you need.
 \end{enumerate}
 
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Hay 15 polinomios muy largos en la base de Gröbner así que solo vamos a escribir el que nos da la ecuación
+\begin{gather*}
+x^6 + 3x^4y^2 - 1/9x^4z^3 + 3x^4z - 54x^4 + 3x^2y^4 - 2/9x^2y^2z^3 + 6x^2y^2z + 324x^2y^2\\
+ + 1/243x^2z^6 - 5/9x^2z^4 + 9x^2z^2 +729x^2 + y^6 - 1/9y^4z^3 + 3y^4z - 54y^4 + 1/243y^2z^6\\ 
+ - 5/9y^2z^4  + 9y^2z^2  + 729y^2 - 1/19683z^9 + 4/243z^7 - 2z^5 + 108z^3 - 2187z
+\end{gather*}
+\item Entre todos esos polinomios podemos encontrar coeficientes constantes en las máximas potencias de $u$ y de $v$ por lo que siempre podemos extender todas las soluciones, lo cual prueba que la parametrización cubre todo $V$ en $\C$. 
+\end{enumerate}
 \end{solucion}
 
 
@@ -170,7 +197,16 @@ Find the points where uniqueness fails and explain how your answer relates to th
 picture.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Tenemos la base de Gröbner 
+\[
+\{u^2 - z, ux - yz, uy - x, v - y, x^2 - y^2z\}
+\]
+por lo que la ecuación es $x^2-y^2z$. 
+\item En $\C$, por el teorema de extensión primero podemos encontrar el parámetro $v$ por tener $v$ coeficiente constante y a continuación podemos encontrar $u$ por tener $u^2$ coeficiente constante. NO VEO CUÁLES FALTAN SOBRE R
+\item Está claro que $v$ está totalmente determinado por el valor de $y$. Por otra parte $z$ nos determina dos posibles valores de $u$ si $z\neq 0$ y un solo valor si $z=0$. En este último caso tenemos entonces ambos parámetros determinados. Sin embargo, en el otro caso, si además añadimos que $y=v=0$, tenemos que necesariamente $x=0$, por lo que cualquiera de los dos valores de $u$ sería válido. En cualquier caso en el que $x\neq 0$ podríamos despejar $u$ pues $v$ tampoco podría ser 0. Así que los puntos donde no está determinado son los del eje $Z$, que se corresponden en el dibujo de la variedad con la línea de intersección consigo misma. 
+\end{enumerate}
 \end{solucion}
 
 
