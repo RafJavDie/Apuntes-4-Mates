@@ -122,7 +122,19 @@ Sea $a\in \C$ es una singularidad aislada de $f(z)$. Distingamos casos
 Probar que si una función analítica $f(z)$ tiene un cero de orden $N$ en $z=a$, entonces $f(z)=g(z)^N$ para alguna función $g(z)$ analítica en un entorno de $a$ y que satisface $g'(a)\neq 0$.
 \end{ejercicio}
 \begin{solucion}
-
+Sin pérdida de generalidad podemos, por traslación, considerar $a=0$. Sabemos que el primer coeficiente no nulo de su desarrollo en serie en un entorno de $0$ es el $N$-ésimo, y que podemos escribir
+$$
+f(z) = z^Nh(z)
+$$
+con $h(z)$ holomorfa en un entorno de $0$ y $h(z)\neq 0$. Por tanto, hay un disco de radio $\delta$ donde podemos considerar el desarollo válido y donde $h(z)$ no se anula. En ese disco podemos considerar un logaritmo de $h(z)$. Por tanto, $\exists u(z)$ tal que $h(z)=e^{u(z)}$ y la función analítica $g(z)=ze^{u(z)/N}$, de donde se tiene la primera parte del enunciado. Tenemos además que
+$$
+g'(z)=e^{u(z)/N}+ze^{u(z)/N}\frac{u'(z)}{N}
+$$
+Por tanto
+$$
+g'(0)^N = e^{u(0)} = h(0) \neq 0
+$$
+Luego $g'(0)\neq 0$.
 \end{solucion}
 \newpage
 
