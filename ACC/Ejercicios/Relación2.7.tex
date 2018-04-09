@@ -286,9 +286,9 @@ Exercise 11 of §3.
 $$
 p-\frac{LT(p)}{LT(r)}r=p-r
 $$
-\item Supongamos que es falso y consideremos el primer momento de ocurre, es decir, el primer momento en el que el término líder del dividendo intermedio no es divisible por $LT(f_i)$. 00000000000000
+\item Supongamos que es falso y consideremos el primer momento de ocurre, es decir, el primer momento en el que el término líder del dividendo intermedio no es divisible por $LT(f_i)$. Es claro que, al no ser ningún término de $r$ divisible por $f_i$, iremos cumputando los dividendos intermedios hasta que lleguemos al siguiente momento donde nos topemos, análogamente al primer apatado, en el ningún $LT(f_i)$ divida a $LT(p-r)$. Nótese que este $p$ no es el mismo que el del primer apartado, sino el que se tiene tras iterar el algoritmo y que coincidiría con el $p$ donde añadiríamos el siguiente elemento al resto. Sin embargo, esto no puede ocurrir, pues si ese término iba a ser añadido al resto, se anularía con el correspondiente de $r$, luego el algoritmo no se atascaría.
 \item Como en cada paso el divisor intermedio es dividible por algún $LT(f_i)$ (salvo el paso donde hay que dividir por $LT(r)$), el algoritmo no actualiza $r$ de manera no trivial, luego es $0$.
-\item 0000000000000000000
+\item Se tiene inmediatamente por la unicidad del apartado $(d)$.
 \end{enumerate}
 \end{solucion}
 
@@ -328,12 +328,17 @@ order with $y > x$.
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
+\item[]
 \item Sea $a_k$ con $1\leq k\leq n$. Entonces el producto $\prod_{i\neq j}
 \frac{ x − a_j}{a_i − a_j}$ vale 1 cuando $k=i$ y 0 cuando $k\neq i$. Así que en la suma solo nos queda $b_i$, por lo que $h(a_i)=b_i$. Además $h$ tiene grado menor o igual que $n-1$ porque en cada producto hay $n-1$ factores y la suma de polinomios no aumenta el grado. 
 
-\item Si hubiera un polinomio $f$ de grado menor o igual que $n-1$ con la misma propiedad, $h-f$ sería un polinomio de grado a lo sumo $n-1$ que se anula en $n$ puntos $a_1,\dots, a_n$. Por el teorema fundamental del álgebra, $h-f=0$, luego $h=f$. 
-\item
-\item 
+\item Si hubiera un polinomio $f$ de grado menor o igual que $n-1$ con la misma propiedad, $h-f$ sería un polinomio de grado a lo sumo $n-1$ que se anula en $n$ puntos $a_1,\dots, a_n$. Sabemos que sobre cualquier cuerpo $k$, un polinomio $k[x]$ de grado $n$ puede tener a lo sumo $n$ raíces, luego $h-f=0$. 
+\item Sea $g \in \I(V)$. Si dividimos por $\{f(x),y-h(x)\}$ obtendremos un resto $r$ que no va a depender de $y$ y cuyo término líder tendrá grado a lo sumo $n-1$. Se deduce por tanto que 
+$$
+g(x,y) = q_1f(x)+q_2(y-h(x)) + r(x)
+$$
+Sustituyendo los $n$ puntos de $V$ tendríamos que $r(x)$ se anula en $n$ puntos distintos, de donde deducimos que es $0$.
+\item En el apartado anterior hemos probado que es una base de Gröbner, pues todo $g \I(V)$ tiene resto $0$ al dividir por nuestra base. Ahora bien, $LT(y-h(x)) = y$ y el resto de términos son de la forma $x^{n-1}$. Por otra parte $LT(f(x))=x^n$ y el resto de términos son en $x$ con grado menor o igual que $n-1$. Por tanto, ningún monomio de ambos polinomios está en el ideal $\gene{y,x^n}$, lo que prueba el resultado.
 \end{enumerate}
 \end{solucion}
 
