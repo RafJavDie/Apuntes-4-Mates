@@ -11,7 +11,7 @@
 \begin{ejercicio}{3.5.1}
 As in Lemma 1, let $f = \sum_{j=1}^t A_j g_j$ be a standard representation and set $N = deg(f,x_1)$.
 \begin{enumerate}[a.]
-\item Prove that $N \geq deg(A_j g_J, x_1)$ when $A_j g_j \neq 0$.
+\item Prove that $N \geq deg(A_j g_j, x_1)$ when $A_j g_j \neq 0$.
 Hint: Recall that $multideg(f) \geq multideg(A_j g_j)$ when $A_j g_j \neq 0$.
 Then explain why the first entry in $multideg(f)$ is $deg(f,x_1)$.
 \item Prove that
@@ -19,14 +19,25 @@ Then explain why the first entry in $multideg(f)$ is $deg(f,x_1)$.
 Hint: Use part (a) and compare the coefficients of $x_1^N$ in $f = \sum_{j=1}^t A_j g_j$.
 \end{enumerate}
 \end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{enumerate}[(a)]
+\item Tenemos que $multideg(f) \geq multideg(A_j g_j)$ (ver ejercico 2.3.4).
+Como estamos en un orden lex con $x_1 > \cdots > x_n$, esto significa que:
+\[ N = deg(f,x_1) \geq deg(A_j g_j, x_1) \]
+\item
+\end{enumerate}
+\end{solucion}
 
 \newpage
 
 \begin{ejercicio}{3.5.2}
 Suppose that $k$ is a field and $\varphi \colon k[x_1,\dots,x_n] \to k[x_1]$ is a ring homomorphism that is the identity on $k$ and maps $x_1$ to $x_1$.
 Given an ideal $I \subseteq k[x_1,\dots,x_n]$, prove that $\varphi(I) \subseteq k[x_1]$ is an ideal.
-(In the proof of Theorem 2, we use thsi result when $\varphi$ is the map that evaluates $x_i$ at $a_i$ for $2 \leq i \leq n$.)
+(In the proof of Theorem 2, we use this result when $\varphi$ is the map that evaluates $x_i$ at $a_i$ for $2 \leq i \leq n$.)
 \end{ejercicio}
+\begin{solucion}
+Como $\varphi$ es claramente sobreyectiva, transforma ideales en ideales (demostrado en Estructuras Algebraicas).
+\end{solucion}
 
 \newpage
 
