@@ -290,10 +290,11 @@ $$
 \begin{itemize}
 \item Si la división acaba aquí no hay nada que probar.
 \item Si en la división por $F$, $LT(p-LT(p))$ no es divisible por ningún $LT(f_i)$ entonces $LT(p-LT(p))$ va al resto, luego  al dividir por $F\cup\{r\}$, este término se habría cancelado en $p-r$, luego la división continuaría como en la división por $F$.
-\item Si $LT(p-LT(p))$ es divisible por $LT(f_i)$ y denotemos por $p'$ al siguiente resto intermedio de la división por $F$, tenemos que, en particular, $LT(p-r)=LT(p)$ y
+\item Si $LT(p-LT(p))$ es divisible por $LT(f_i)$ y denotemos por $p'$ al resto intermedio que sigue a $p-LT(p)$ en la división por $F$. En particular $LT(p-LT(p))>LT(r-LT(r))$, luego $LT(p-r)=LT(p-LT(p))$ y
 $$
-p - r - \frac{LT(p-r)}{LT(f_i)}f_i =p - r - \frac{LT(p)}{LT(f_i)}f_i= p'-r
+p - r - \frac{LT(p-r)}{LT(f_i)}f_i =p - r - \frac{LT(p-LT(p))}{LT(f_i)}f_i= p'-r
 $$
+La clave de esta idea radica en que si $LT(p-LT(p))$ es divisible por algún $LT(f_i)$ en la división $F$ no hemos añadido más términos a $r$ más que $LT(p)$. Como en cada paso $LT(p_i)>LT(p_{i+1})$ y $LT(r-LT(r))= LT(p_j)$, donde el subíndice marca el paso donde ocurre el resto intermedio, tenemos que el siguiente término del resto ocurre posterior a $LT(p-LT(p))$.
 \end{itemize}
 Por tanto, la división no se atasca. 
 \item Como en cada paso el divisor intermedio es dividible por algún $LT(f_i)$ (salvo el paso donde hay que dividir por $LT(r)$), el algoritmo no actualiza $r$ de manera no trivial, luego es $0$.
