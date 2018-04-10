@@ -1,0 +1,141 @@
+\documentclass[CV.tex]{subfiles}
+
+\begin{document}
+
+
+%\hyphenation{equi-va-len-cia}\hyphenation{pro-pie-dad}\hyphenation{res-pec-ti-va-men-te}\hyphenation{sub-es-pa-cio}
+
+\chapter{Variedades Diferenciables}
+
+\section{Definiciones y resultados básicos}
+\begin{defi}\
+\begin{enumerate}
+\item Un espacio topológico $X$ es \textbf{segundo numerable (2ºN)} si posee una base numerable de abiertos $\V=\{V_i\}_{i=1}^{\infty}$. 
+\item $X$ es \textbf{Hausdorff} o \textbf{T2} si para todo $x,y\in X$ con $x\neq y$ existen abiertos $U,V$ tales que $x\in U, y\in V$ y $U\cap V=\emptyset$.
+\item $X$ es una \textbf{variedad topológica} si es T2, 2ºN y localmente homeomorfo a $\R^n$. Al número $n$ se le llama \textbf{dimensión} de la variedad. 
+\end{enumerate}
+\end{defi}
+
+\begin{nota}\label{nota}
+Toda bola $\mathring{B}(0,\varepsilon)\subseteq\R^n$ es difeomorfa a $\R^n$ mediante
+\[
+\phi(y)=\begin{cases}
+0 & y=0\\
+\tan\left(\pi\frac{||y||}{2\varepsilon}\right)\frac{y}{||y||} & y\neq 0, |y|<\varepsilon
+\end{cases}
+\]
+Por esto, podemos cambiar localmente homeomorfo a $\R^n$ por localmente homeomorfo a un abierto de $\R^n$.
+\end{nota}
+
+\begin{defi}\
+\begin{enumerate}
+\item Una \textbf{carta} $(U,h)$ en una en una variedad $n$-dimensional $M$ es un homeomorfismo $h:U\to U'$, donde $U$ es un abierto de $M$ y $U'$ es un abierto de $\R^n$.
+\item Una familia de cartas $\calA=\{h_i:U_i\to U_i'\mid i\in J\}$ se llama \textbf{atlas} cuando $\{U_i\mid i\in J\}$ cubre $M$.
+\item Un atlas se dice \textbf{diferenciable} cuando todas las aplicaciones
+\[
+h_{ji}=h_j\circ h_i^{-1}: h_i(U_i\cap U_j)\to h_j(U_i\cap U_j)
+\]
+son diferenciables cuando $U_i\cap U_j\neq\emptyset$. Estas aplicaciones son llamadas \textbf{cambios de cartas}. 
+\end{enumerate}
+\end{defi}
+
+\newpage
+
+\begin{defi}\
+\begin{enumerate}
+\item Dos atlas $\calA_1$ y $\calA_2$ se dicen \textbf{equivalentes} si $\calA_1\cup\calA_2$ es un atlas. Esto define una relación de equivalencias sobre la colección de atlas de $M$. 
+\item Una \textbf{estructura diferenciable} es una clase de equivalencia de atlas.
+\item Una \textbf{variedad diferenciable} $M$ será la variedad topológica $M$ dotada de estructura diferenciable.
+\end{enumerate}
+\end{defi}
+
+\begin{ej}\label{8.5}
+La esfera $n$-dimensional $S^n=\{x\in\R^{n+1}\mid ||x||=1\}$ es una variedad diferenciable $n$-dimensional. Definimos un atlas con $2(n+1)$ cartas $(U_{\pm i}, h_{\pm i})$, donde
+\[
+U_{+i}=\{x\in S^n\mid x_i>0\},\quad U_{-i}=\{x\in S^n\mid x_i<0\}
+\]
+y $h_{\pm i}:U_{\pm i}\to\mathring{D}^n$ es la aplicación dada por $h_{\pm i}(x)=(x_1,\dots, \hat{x}_i,\dots, x_{n+1})$. La inversa es la aplicación
+\[
+h_{\pm i}^{-1}(u)=(u_1,\dots, u_{i-1}, \sqrt{1-||u||^2}, u_{i+1},\dots, u_n).
+\]
+Es fácil comprobar que los cambios de cartas son diferenciables. 
+\end{ej}
+
+\begin{ej}
+En $S^n$ definimos la relacón de equivalencia $x\sim y $ si y solo si $x=y$ o $x=-y$. Las clases de equivalencia $[x]=\{x,-x\}$ definen el espacio proyectivo $\R\PP^n$. Alternativamente, se puede pensar en el espacio proyectivo como todas las rectas de $\R^n$ que pasan por el 0. Sea $\pi$ la proyección canónica $\pi(x)=[x]$. Dotamos a $\R\PP^n$ de la topología cociente. Usando la notación del ejemplo anterior, tenemos que $\pi(U_{+i})=\pi(U_{-i})$. Definimos entonces $U_i=\pi(U_{\pm i})\subseteq\R\PP^n$. Nótese que $\pi^{-1}(U_i)=U_{+i}\sqcup U_{-i}$. Una clase de equivalencia $[x]\in U_i$ tiene exactamente un respresentante en $U_{+1}$ y uno en $U_{-i}$. Por tanto, $\pi:U_{i+1}\to U_i$ es un homeomorfismo. Definisos
+\[
+h_i=h_{+i}\circ\pi^{-1}:U_i\to\mathring{D}^n.
+\]
+Esto da un atlas diferenciable. 
+\end{ej}
+
+\begin{defi}
+Sean $M_1$ y $M_2$ variedades diferenciables y $f:M_1\to M_2$ una aplicación continua. Se dice que $f$ es \textbf{diferenciable} en $x\in M_1$ si existen cartas $h_1:U_1\to U_2'$ y $h_2:U_2\to U_2'$ en $M_1$ y $M_2$ respectivamente con $x\in U_1$ y $f(x)\in U_2$ de modo que
+\[
+h_2\circ f\circ h_1^{-1}:h_1(f^{-1}(U_2))\to U_2'
+\]
+sea diferenciable en un entorno de $h_1(x)$. Si $f$ es diferenciable en todos los puntos de $M_1$, entonces se dice que $f$ es diferenciable. Si $f$ es diferenciable y tiene inversa diferenciable entonces se dice que es \textbf{difeomorfismo}.
+\end{defi}
+
+Como las cartas son difeomorfismos, la definición anterior no depende de las cartas escogidas. Una vez elegido el atlas, ya sabemos qué funciones son diferenciables sobre $M$. En particular, sabemos cuando un homeomorfismo $f:V\to V'$ entre abiertos $V\subseteq M$ y $V'\subseteq\R^n$ es un difeomorfismo. Podemos entonces definir el atlas \textbf{maximal} $\calA_{max}$ asociado a una estructura diferenciable:
+\[
+\calA_{max}=\{f:V\to V'\mid V\subseteq M\text{ abierto}, V'\subseteq\R^n\text{ abierto}, f\text{ difeomorfismo}\}.
+\]
+La inversa $f^{-1}:V'\to V$ de un difeomorfismo se llama \textbf{parametrización local}. Por la nota \ref{nota} se tiene que todo punto de una variedad diferenciable $M$ de dimensión $n$ tiene un entorno difeomorfo a $\R^n$. 
+
+\begin{defi}
+Un subconjunto $N\subseteq M$ de una variedad diferenciable $n$-dimensional es una \textbf{subvariedad diferenciable} (de dimensión $k$) si se satisface que para todo $x\in N$ existe una carta $h:U\to U'$ en $M$ tal que 
+\[
+x\in U\text{ y } h(U\cap N)=h(U)\cap\R^k
+\]
+donde $\R^k\subseteq\R^n$. 
+\end{defi}
+
+Es fácil ver que una subvariedad diferenciable $N\subseteq M$ es una variedad diferenciable. Un atlas diferenciable sobre $N$ puede formarse con todas las $h:U\cap N\to U'\cap\R^k$, donde $(U,h)$ son cartas de $M$ satisfaciendo la definición anterior.
+
+\begin{ej}
+La $n$-esfera $S^n$ es una subvariedad diferenciable de $\R^{n+1}$. De hecho, las cartas $(U_{\pm i}, h_{\pm i})$ del ejemplo \ref{8.5} se pueden extender a difeomorfismo de $\R^n$ satisfaciendo la definición de subvariedad diferenciable. 
+\end{ej}
+
+\begin{defi}
+Una \textbf{inmersión} (embedding) es una aplicación diferenciable $f:N\to M$ tal que $f(N)\subseteq M$ es subvariedad y además $f:N\to f(N)$ es difeomorfismo. 
+\end{defi}
+
+\begin{teorema}[Whitney]\label{Whitney}
+Para toda $n$-variedad diferenciable $M$, existe una inmersión $i:M\hookrightarrow\R^{n+k}$ para $k$ suficientemente grande. 
+\end{teorema}
+
+Nótese que $N=f(M)$ satisface las siguientes condiciones: para todo $p\in N$ existe un entorno abierto $V\subseteq\R^{n+k}$, un abierto $U'\subseteq\R^n$ y un homeomorfismo
+\[
+g:U'\to N\cap V
+\]
+tales que $g$ es diferenciable (considerado como aplicación de $U'$ en $V$) y tal que $D_xg:\R^n\to\R^{n+k}$ es inyectiva. 
+
+Esta es la definición usual de subvariedad. El teorema \ref{Whitney} afirma que toda variedad diferenciable es difeomorfa a una subvariedad. Recíprocamente, si $N\subseteq\R^{n+k}$ satisface la condición anterior, el teorema de la función implícita muestra que es una subvariedad en el sentido de la definición que hemos dado en este capítulo. Otro teorema de Whitney afirma que la codimensión $k$ siempre se puede tomar menor o igual que $n+1$. Sin embargo, no puede ser arbitrariamente pequeña: por ejemplo, $\R\PP^2$ tiene ninguna inmersión en $\R^3$. 
+
+\begin{defi}
+Sea $M$ una $n$-variedad diferenciable. Entonces $N\subseteq M$ es \textbf{dominio diferenciable con borde} o \textbf{subvariedad con borde de codimensión 0} si para cada $x\in N$ existe una carta $(U,h)$ de $M$ con $x\in U$ tal que 
+\[
+h(U\cap N)=h(U)\cap\R^n_-
+\]
+donde $\R^n_-=\{(x_1,\dots, x_n)\mid x_1\leq 0\}$. 
+\end{defi}
+ESTAS CONDICIONES NO VEO QUE SE DEDUZCAN DE LA DEFINICIÓN, ENTIENDO QUE SE PUEDE ESCOGER U PARA QUE SE CUMPLAN PERO NO ES AUTOMÁTICO PORQUE TAMBIÉN SE PUEDE COGER U MUY GRANDE
+Si $\hat{x}\in \mathring{N}$ entonces $h(\widehat{U})\subseteq\R^n_-$. Si $\hat{x}\in ext(N)$ entoncs $h(\widehat{U})\subseteq\R^n_+$. Y si $\hat{x}\in\partial N$ entonces $h(\widehat{U})$ corta a los dos semiplanos y $h(\hat{x})$ tendrá primera coordenada nula, es decir, estará en $\{0\}\times \R^{n-1}$ (que es justamente la intersección de los dos espacios). Se tiene por tanto
+\begin{enumerate}[a)]
+\item $\mathring{N}$ y $ext(N)$ son subvariedades diferenciables de $M$.
+\item $\partial N$ es una suvariedad diferenciable de dimensión $n-1$ con cartas $U_i\cap N\to h(U_i)\cap (\{0\}\times\R^{n-1})$ e intercambio de cartas diferenciable respetando la intersección con $\{0\}\times\R^{n-1}$. 
+\end{enumerate}
+Sea $\phi:k\circ h^{-1}$, con $k$ y $h$ cartas, entonces $\phi$ induce una aplicación 
+\[
+h(U\cap V)\cap\R^n_-\to k(U\cap V)\cap\R^n_-
+\]
+que restringe a un difeomorfismo e induce 
+\[
+\psi:h(U\cap V)\cap\partial\R^n_-\to k(U\cap V)\cap\partial\R^n_-
+\]
+donde $\partial\R^n_-=\{0\}\times\R^{n-1}$. Entonces, la matriz Jacobiana $D_q\phi$ con $q=h(p)$ es de la forma siguiente
+
+
+
+\end{document}
