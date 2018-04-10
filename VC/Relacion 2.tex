@@ -282,7 +282,10 @@ $$
 ¿Podemos aproximar una función holomorfa en un entorno de $K$, uniformemente en $K$ por funciones racionales con polos en $-1$ y $1$?
 \end{ejercicio}
 \begin{solucion}
-
+Por el Teorema de Ronge, tenemos que podemos aproximar una función en un entorno de $K$ uniformemente por funciones racionales con polos en $\C\setminus K$.
+$$
+R(x)
+$$
 \end{solucion}
 \newpage
 
@@ -291,6 +294,24 @@ $$
 Sea $G$ el abierto interior del compacto $K$ definido en el problema anterior. ¿Es posible aproximar cualquier función holomorfa en $G$ uniformemente en cada compacto $L\subset G$ mediante polinomios? Demostrar que la respuesta es correcta.
 \end{ejercicio}
 \begin{solucion}
+Notemos que el compacto no tiene por qué ser conexo.
+$$
+V_n = \{z\in \C\mid |z|<2-\frac{1}{n},\; |z+1|>1+\frac{1}{n},<\; |z-1|>1+\frac{1}{n}\}
+$$
+Además, $\overline{V_n}\subset G$.
+Por definición $V_n \subset G$. Recíprocamente, si $z\in G$ podemos encontrar un $\varepsilon$, que podemos suponer de la forma $\varepsilon=1/n$ tal que
+$$
+|z|<2-\varepsilon \qquad |z+1|>\varepsilon \qquad |z-1|>1+\varepsilon 
+$$
+Por tanto
+$$
+G = \bigcup_{n=1}^\infty V_n
+$$
+Como $K$ es compacto, sabemos que existe existe una cantidad finita de $V_i$ que lo recubren. Podemos considerar el compacto conexo
+$$
+S= \bigcup_{i=1}^s V_{n_i}
+$$
+y aplicar el Teorema de Rounge.
 \end{solucion}
 \newpage
 
@@ -308,13 +329,22 @@ $$
 g(z)=
 \begin{cases}
 f(z) & |z|\leq 1\\
-\overline{f\left({1}/{\overline{z}}\right)} & |z|>1
+1/\overline{f\left({1}/{\overline{z}}\right)} & |z|>1
 \end{cases}
 $$
-Es claro que $g$ es analítica en $|z|\neq 1$. Tengamos en cuenta lo siguiente. Sabemos que $g$ es continua en $\overline{\mathbb{D}}$, que es compacto, luego $g$ está acotada por una cierta constante $M>0$. Ahora tengamos en cuenta que si $|z|>1$ entonces $\abs{1/\overline{z}}<1$, luego 
-$$|g(z)| = |\overline{f\left({1}/{\overline{z}}\right)}| = \abs{f\left({1}/{\overline{z}}\right)}<M
+Es claro que $g$ es analítica en $|z|\neq 1$. Además es continua, pues $si z= e^{it}$ entonces
+$$
+\lim_{z\to e^{it},|z|\leq 1}g(z)=f(e^{it})
+$$
+$$
+\lim_{z\to e^{it},|z|>1}g(z)=1/\overline{f(1/\overline{e^{it}})} = 1/\overline{f(1/e^{-it}}=\overline{f(e^{it})} = f(e^{it})
+$$ Tengamos en cuenta lo siguiente. Dado que $|z|\leq 1$ es compacto, $f(z)$ alcanza máximo y mínimo $M$ y $m$. Luego $g(z)$ está acotada en $|z|\leq 1$. Ahora tengamos en cuenta que si $|z|>1$ entonces $\abs{1/\overline{z}}<1$, luego 
+$$|g(z)| = 1/|\overline{f\left({1}/{\overline{z}}\right)}| = 1/\abs{f\left({1}/{\overline{z}}\right)}<\frac{1}{S}
 $$
 Además, sabemos que $|f(z)|=1$ en $|z|=1$. Por tanto, si probamos que $g$ es entera, entonces por el Teorema de Liouville tendremos que $g$, y por tanto $f$, es constante.
+
+Consideremos una transformación bilineal $T$ que transforme la circunferencia en el eje real. Esa transformación lleva el exterior del disco al semiplano superior y el interior al semiplano interior (si no, cambiamos el signo). Consideramos $S$ la aplicación inversa de $T$. Por el Principio de Reflexión, tenemos que $f \circ T$ es una función entera. Por tanto, $(f\circ T)\circ T^{-1}$ también es holomorfa en $\C$ salvo quizás en un punto, pero usando que $f$ es acotada por el Teorema de Riemann tendríamos que $f$ es entera.
+
 \end{solucion}
 \newpage
 \end{document}

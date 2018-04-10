@@ -22,19 +22,19 @@ Encontrar los polos y partes singulares de las siguientes funciones
 \item[]
 \item Tenemos que $z^2+5z+6=(z+2)(z+3)$. Luego los polos son $-2,-3$, ambos simples. Si $w=$ entonces
 $$
-\frac{1}{z+2}=\frac{1}{1-(-(z+3))} = - \sum_{n=0}^\infty (-1)^n(z-3)^n
+\frac{1}{z+2}=\frac{1}{1-(-(z+3))} = - \sum_{n=0}^\infty (-1)^n(z+3)^n
 $$
-Desarrollos válido en $|z-3|<1$ Por tanto
+Desarrollos válido en $|z+3|<1$ Por tanto
 $$
-\frac{1}{z^2+5z+6} = \frac{1}{z-3} + \sum_{n=0}^\infty (-1)^{n+1}(z-3)^n
+\frac{1}{z^2+5z+6} = \frac{1}{z-3} + \sum_{n=0}^\infty (-1)^{n+1}(z+3)^n
 $$
 Para el otro polo, consideramos
 $$
 \frac{1}{z+3} = \frac{1}{1-(-(z+2))} = \sum_{n=0}^\infty (-1)^n(z-2)^n
 $$
-Desarrollo válido en $|z-3|<1$. Por tanto
+Desarrollo válido en $|z+3|<1$. Por tanto
 $$
-\frac{1}{z^2+5z+6} = \frac{1}{z-2} + \sum_{n=0}^\infty (-1)^{n+1}(z-2)^n
+\frac{1}{z^2+5z+6} = \frac{1}{z+2} + \sum_{n=0}^\infty (-1)^{n+1}(z+2)^n
 $$
 \newpage
 \item Tenemos que $(z^2-1)^2 = (z+1)^2(z-1)^2$. Consideramos el desarollo
@@ -42,12 +42,12 @@ $$
 \sum_{k=0}^\infty (k+1)n^k = \frac{1}{(n-1)^2}
 $$
 Por tanto, si $z-1 = z+1 -2 = {2((z+1)/2-1)}$
-$$\frac{1}{(z^2-1)^2}=  \frac{1}{(z+1)^2} \sum_{n=0}^\infty\frac{(n+1)}{2^{n+2}}(z+1)^n = \frac{1/4}{(z+1)^{-2}}+\frac{2/8}{(z+1)} + \sum_{n=0}^\infty \frac{(n+3)}{2^{n+4}}(z+1)^{n} 
+$$\frac{1}{(z^2-1)^2}=  \frac{1}{(z+1)^2} \sum_{n=0}^\infty\frac{(n+1)}{2^{n+2}}(z+1)^n = \frac{1/4}{(z+1)^{2}}+\frac{2/8}{(z+1)} + \sum_{n=0}^\infty \frac{(n+3)}{2^{n+4}}(z+1)^{n} 
 $$
 Para la el otro polo procedemos análogamente, usando que $z+1=2+(z-1) = 2(1-(-(z-1)/2))$. Por tanto
 \begin{align*}
 \frac{1}{(z^2-1)^2}&=  \frac{1}{(z-1)^2} \sum_{n=0}^\infty\frac{(-1)^n(n+1)}{2^{n+2}}(z-1)^n\\
-&= \frac{1/4}{(z+1)^{-2}}-\frac{2/8}{(z+1)} + \sum_{n=0}^\infty \frac{(-1)^{n+2}(n+3)}{2^{n+4}}(z+1)^{n}
+&= \frac{1/4}{(z+1)^{2}}-\frac{2/8}{(z+1)} + \sum_{n=0}^\infty \frac{(-1)^{n+2}(n+3)}{2^{n+4}}(z+1)^{n}
 \end{align*}
 \item Sabemos que nuestra función tiene polos simples en $k\pi$ para $k\in \Z$ y además son los únicos.
 Tengamos en cuenta que
