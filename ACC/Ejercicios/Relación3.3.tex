@@ -143,11 +143,9 @@ points of $V$ are not on $S$. Hint: Use lexicographic order with $u > v > x > y 
 \{u^2 - z, uv - x, ux - vz, uy - x^2, v^2z - x^2, vx - y, vyz - x^3, x^4 - y^2z\}
 \]
 así que la ecuación es $x^4-y^2z=0$. 
-\item Usamos el teorema de Extensión reiteradamente. Una solución $(x,y,z)\in\V(x^4-y^2z)=\V(I_2)$ se extiende a $(v,x,y,z)\in \V(I_1)$ siempre que $(x,y,z)\notin\V(z,x,yz)=\V(z,x)$, es decir, siempre que $xz\neq 0$. Por último, una solución $(v,x,y,z)\in\V(I_1)$ se extiende a una solución $(u,v,x,y,z)\in\V(I)$ siempre pues $u^2$ tiene un coeficiente constante. 
+\item Usamos el teorema de Extensión reiteradamente. Una solución $(x,y,z)\in\V(x^4-y^2z)=\V(I_2)$ se extiende a $(v,x,y,z)\in \V(I_1)$ siempre que $(x,y,z)\notin\V(z,x,yz)=\V(z,x)$, es decir, siempre que no se verifique $x=z=0$. Por último, una solución $(v,x,y,z)\in\V(I_1)$ se extiende a una solución $(u,v,x,y,z)\in\V(I)$ siempre pues $u^2$ tiene un coeficiente constante. 
 
-En el caso de que $x=0$, en $S$ esto siempre implica que $y=0$, pero en la ecuación $x^4-y^2z=0$, $x=0\Rightarrow y^2z=0$, por lo que lo puntos de la forma $(0,y,0)$ están contenidos en $V$ para todo $y$. 
-
-En el caso $z=0$ no hay nada más que añadir, ya que en la parametrización esto implica $y=x=0$, y en la ecuación implica $x^4=0\Rightarrow x=0$. 
+Veamos qué ocurre en los puntos de la forma $x=z=0$. En la parametrización si $z=0$ entonces $u^2=0$, luego $u=0$ y por tanto $x=y=z=0$. Sin embargo, en $x^4-y^2z = 0$, el eje Y está contenido dentro. Estos son los puntos que faltaban (salvo el origen que ya estaba).
 \end{enumerate}
 \end{solucion}
 
@@ -204,7 +202,14 @@ picture.
 \{u^2 - z, ux - yz, uy - x, v - y, x^2 - y^2z\}
 \]
 por lo que la ecuación es $x^2-y^2z$. 
-\item En $\C$, por el teorema de extensión primero podemos encontrar el parámetro $v$ por tener $v$ coeficiente constante y a continuación podemos encontrar $u$ por tener $u^2$ coeficiente constante. NO VEO CUÁLES FALTAN SOBRE R
+\item En $\C$, por el teorema de extensión primero podemos encontrar el parámetro $v$ por tener $v$ coeficiente constante y a continuación podemos encontrar $u$ por tener $u^2$ coeficiente constante. 
+
+En el caso de $\R$ hagamos la siguiente consideración. Sea $(x,y,z)$ tal que $x^2-y^2z=0$. Sea $y=v$. Si $z=0$ entonces $x=0$ y tenemos el eje Y que sí está en la paremetrización real, tomando $u=0$ y $v$ libre. Supongamos que $z\neq 0$. Ahora bien, sobre $\R$ si $z<0$ entonces 
+$$x^2-y^2z = 0 \Leftrightarrow x= y =0$$
+Por tanto, $z>0$ necesariamente y podemos escribir $z=u^2$ y suponer que $u\geq 0$. Por tanto
+$$
+x^2 = y^2z = v^2u^2 \qquad x = u\abs{v}
+$$
 \item Está claro que $v$ está totalmente determinado por el valor de $y$. Por otra parte $z$ nos determina dos posibles valores de $u$ si $z\neq 0$ y un solo valor si $z=0$. En este último caso tenemos entonces ambos parámetros determinados. Sin embargo, en el otro caso, si además añadimos que $y=v=0$, tenemos que necesariamente $x=0$, por lo que cualquiera de los dos valores de $u$ sería válido. En cualquier caso en el que $x\neq 0$ podríamos despejar $u$ pues $v$ tampoco podría ser 0. Así que los puntos donde no está determinado son los del eje $Z$, que se corresponden en el dibujo de la variedad con la línea de intersección consigo misma. 
 \end{enumerate}
 \end{solucion}
@@ -226,6 +231,28 @@ we work over $\R$.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a.]
+\item Distingamos dos casos
+\begin{itemize}
+\item Si $f_i(t)=k_i$, $k_i$ constante, para todo $i=1,\dotsc,n$, entonces es trivial que ocurre.
+\item Si no se verifica lo anterior, $\exists f_i$ no constante. Por tanto, siguiendo la notación del Teorema de Extensión, $c_i$ sí es una constante, por lo que $\V(c_1,\dotsc,c_n) = \emptyset$, de donde se sigue trivialmente el resultado.
+\end{itemize}
+\item Efectivamente puede fallar. Consideremos la parametrización para todo $t\in \C\setminus \{\pm i\}$
+\begin{align*}
+x&= \frac{1-t^2}{1+t^2}\\ 
+y&= \frac{2t}{1+t^2}
+\end{align*}
+Consideramos una base de Gröbner de esta parametrización y obtenemos una base de Gröbner
+$$
+G=\{tx + t - y, x^2 + y^2 - 1, s - 1/2x + 1/4y^2 - 1/2, ty + x - 1\}
+$$
+Luego $I_2 = \gene{x^2+y^2 -1}$. Obviamente, el punto $(-1,0)\in \V(I_2)$ pero si $x=-1$ entonces
+$$
+-1 = \frac{1-t^2}{1+t^2} \Leftrightarrow -1 -t^2 = 1 -t^2 \Leftrightarrow 1 = -1
+$$
+Es decir, no tiene solución.
+\item La parametrización $x=y=t^2$ induce la base de Gröbner $\{x-y,y-t^2\}$. Por tanto $\V(I_1) = \{(a,a)\mid a \in \R\}$. Sin embargo, es claro que la parametrización solo cubre la mitad.
+\end{enumerate}
 \end{solucion}
 
 
