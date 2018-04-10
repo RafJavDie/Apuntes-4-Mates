@@ -286,7 +286,16 @@ Exercise 11 of §3.
 $$
 p-\frac{LT(p)}{LT(r)}r=p-r
 $$
-\item Supongamos que es falso y consideremos el primer momento de ocurre, es decir, el primer momento en el que el término líder del dividendo intermedio no es divisible por $LT(f_i)$. Es claro que, al no ser ningún término de $r$ divisible por $f_i$, iremos cumputando los dividendos intermedios hasta que lleguemos al siguiente momento donde nos topemos, análogamente al primer apartado, en el que ningún $LT(f_i)$ divida a $LT(p-r)$. Nótese que este $p$ no es el mismo que el del primer apartado, sino el que se tiene tras iterar el algoritmo y que coincidiría con el $p$ donde añadiríamos el siguiente elemento al resto. Sin embargo, esto no puede ocurrir, pues si ese término iba a ser añadido al resto, se anularía con el correspondiente de $r$, luego el algoritmo no se atascaría.
+\item Nos situamos en el apartado $(a)$. Nuestro dividendo intermedio $p-r = (p-LT(p))-(r-LT(r))$. Notemos que hemos fijado $p$. En la división por $F$  $LT(p)$ hubiese ido al resto, pero ahora se ha cancelado con $LT(r)$. Pueden ocurrir dos sucesos:
+\begin{itemize}
+\item Si la división acaba aquí no hay nada que probar.
+\item Si en la división por $F$, $LT(p-LT(p))$ no es divisible por ningún $LT(f_i)$ entonces $LT(p-LT(p))$ va al resto, luego  al dividir por $F\cup\{r\}$, este término se habría cancelado en $p-r$, luego la división continuaría como en la división por $F$.
+\item Si $LT(p-LT(p))$ es divisible por $LT(f_i)$ y denotemos por $p'$ al siguiente resto intermedio de la división por $F$, tenemos que, en particular, $LT(p-r)=LT(p)$ y
+$$
+p - r - \frac{LT(p-r)}{LT(f_i)}f_i =p - r - \frac{LT(p)}{LT(f_i)}f_i= p'-r
+$$
+\end{itemize}
+Por tanto, la división no se atasca. 
 \item Como en cada paso el divisor intermedio es dividible por algún $LT(f_i)$ (salvo el paso donde hay que dividir por $LT(r)$), el algoritmo no actualiza $r$ de manera no trivial, luego es $0$.
 \item Se tiene inmediatamente por la unicidad del apartado $(d)$.
 \end{enumerate}
