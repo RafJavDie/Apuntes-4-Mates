@@ -1,0 +1,75 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{3.5.1}
+As in Lemma 1, let $f = \sum_{j=1}^t A_j g_j$ be a standard representation and set $N = deg(f,x_1)$.
+\begin{enumerate}[a.]
+\item Prove that $N \geq deg(A_j g_J, x_1)$ when $A_j g_j \neq 0$.
+Hint: Recall that $multideg(f) \geq multideg(A_j g_j)$ when $A_j g_j \neq 0$.
+Then explain why the first entry in $multideg(f)$ is $deg(f,x_1)$.
+\item Prove that
+\[ c_f = \sum_{deg(A_j g_j, x_1) = N} c_{A_j}c_{g_j} \]
+Hint: Use part (a) and compare the coefficients of $x_1^N$ in $f = \sum_{j=1}^t A_j g_j$.
+\end{enumerate}
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{3.5.2}
+Suppose that $k$ is a field and $\varphi \colon k[x_1,\dots,x_n] \to k[x_1]$ is a ring homomorphism that is the identity on $k$ and maps $x_1$ to $x_1$.
+Given an ideal $I \subseteq k[x_1,\dots,x_n]$, prove that $\varphi(I) \subseteq k[x_1]$ is an ideal.
+(In the proof of Theorem 2, we use thsi result when $\varphi$ is the map that evaluates $x_i$ at $a_i$ for $2 \leq i \leq n$.)
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{3.5.3}
+In the proof of Theorem 2, show that (1) follows from the assertion that $g_j(x_1,a) \in \gene{g_0(x_1,a)}$ for all $g_j \in G$.
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{3.5.4}
+This eercise will explore the example $I = \gene{x^2y+xz+1, xy-xz^2+z-1}$ discussed in this text.
+\begin{enumerate}[a.]
+\item Show that the partial solution $(b,c) = (0,0)$ does not extend to a solution $(a,0,0) \in \V(I)$.
+\item In the text, we showed that $g_0 = g_1$ for the partial solution $(1,1)$.
+Show that $g_0 = g_3$ works for all partial solutions differrent from $(1,1)$ and $(0,0)$.
+\end{enumerate}
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{3.5.5}
+Evaluation at $a$ is sometimes called \emph{specialization}.
+Given $I \subseteq k[x_1,\dots,x_n]$ with lex Gröbner basis $G = \{g_1,\dots,g_t\}$, we get the specialized basis $\{g_1(x_1,a),\dots,g_t(x_1,a)\}$.
+Discarding the polynomials that specialize to zero, we get $G' = \{g_j(x_1,a) \mid g_j(x_1,a) \neq 0\}$.
+\begin{enumerate}[a.]
+\item Show that $G'$ is a basis of the ideal $\{f(x_1,a) \mid f \in I\} \subseteq k[x_1]$.
+\item If in addition $a \in \V(I_1)$ is a partial solution satisfying the hypothesis of Theorem 2, prove that $G'$ is a Gröbner basis of $\{f(x_1,a) \mid f \in I\}$.
+\end{enumerate}
+The result of part (b) is an example of a \emph{specialization theorem} for Gröbner bases.
+We will study the specialization of Gröbner bases in more detail in Chapter 6.
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{3.5.6}
+Show that Theorem 2 remains true if we replace lex order for $x_1 > \cdots > x_n$ with any monomial order for which $x_1$ is greater that all monomials in $x_2,\dots,x_n$.
+This is an order of $1$-elimination type in the terminology of Exercise 3.1.5.
+Hint: You will need to show that Lemma 1 of this section holds for such monomial orders.
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{3.5.7}
+Use the strategy explained in the discussion following Theorem 2 to find all solutions of the system of equations given in Example 3 of Chapter 2, section 8.
+\end{ejercicio}
+\end{document}
