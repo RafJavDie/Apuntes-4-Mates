@@ -15,7 +15,7 @@ As in Lemma 1, let $f = \sum_{j=1}^t A_j g_j$ be a standard representation and s
 Hint: Recall that $multideg(f) \geq multideg(A_j g_j)$ when $A_j g_j \neq 0$.
 Then explain why the first entry in $multideg(f)$ is $deg(f,x_1)$.
 \item Prove that
-\[ c_f = \sum_{deg(A_j g_j, x_1) = N} c_{A_j}c_{g_j} \]
+\[ c_f = \sum_{\deg(A_j g_j, x_1) = N} c_{A_j}c_{g_j} \]
 Hint: Use part (a) and compare the coefficients of $x_1^N$ in $f = \sum_{j=1}^t A_j g_j$.
 \end{enumerate}
 \end{ejercicio}
@@ -24,7 +24,7 @@ Hint: Use part (a) and compare the coefficients of $x_1^N$ in $f = \sum_{j=1}^t 
 \item Tenemos que $multideg(f) \geq multideg(A_j g_j)$ (ver ejercico 2.3.4).
 Como estamos en un orden lex con $x_1 > \cdots > x_n$, esto significa que:
 \[ N = deg(f,x_1) \geq deg(A_j g_j, x_1) \]
-\item
+\item Como $f = \sum_{j=1}^t A_j g_j$, $c_f$ será la suma de los coeficientes de $x_1^N$ en cada $ A_j g_j$. Por definición, $\deg(A_j g_j, x_1) = N$ hace que nos quedemos con los $A_jg_j$ en los que aparece $x_1^N$. El coeficiente $c_j$ correspondiente a $x_1^N$ en $A_jg_j$ se obtiene al multiplicar dos monomios en los que la suma de los exponentes de $x_1$ es igual a $N$. Los coeficientes de estos monomios deben ser necesariamente $c_{A_j}$ y $c_{g_j}$ necesariamente, pues por el apartado anterior $N \geq deg(A_j g_j, x_1)$. Efectivamente, si $c_{A_j}$ (análogamente $c_{g_j}$) multiplicara a una pontencia mayor de $x_1$ que la que hace que $N = deg(A_j g_j, x_1)$, entonces  $N < deg(A_j g_j, x_1)$, lo cual no es posible. 
 \end{enumerate}
 \end{solucion}
 
@@ -44,17 +44,25 @@ Como $\varphi$ es claramente sobreyectiva, transforma ideales en ideales (demost
 \begin{ejercicio}{3.5.3}
 In the proof of Theorem 2, show that (1) follows from the assertion that $g_j(x_1,a) \in \gene{g_0(x_1,a)}$ for all $g_j \in G$.
 \end{ejercicio}
-
+\begin{solucion}
+Si todo $g_j \in G$ verifica que $g_j(x_1,a) \in \gene{g_0(x_1,a)}$, entonces todo polinomio expresable como combinación polinomial de los $g_j(x_1,a)$ también lo verifica. Como $G$ es base, dado $f\in I$, podemos expresarlo como $f=\sum A_jg_j$, así que $f(x_1,a)=\sum A_j(x_1,a)g_j(x_1,a)$. La otra inclusión es trivial así que se tiene el resultado. 
+\end{solucion}
 \newpage
 
 \begin{ejercicio}{3.5.4}
-This eercise will explore the example $I = \gene{x^2y+xz+1, xy-xz^2+z-1}$ discussed in this text.
+This exercise will explore the example $I = \gene{x^2y+xz+1, xy-xz^2+z-1}$ discussed in this text.
 \begin{enumerate}[a.]
 \item Show that the partial solution $(b,c) = (0,0)$ does not extend to a solution $(a,0,0) \in \V(I)$.
 \item In the text, we showed that $g_0 = g_1$ for the partial solution $(1,1)$.
 Show that $g_0 = g_3$ works for all partial solutions differrent from $(1,1)$ and $(0,0)$.
 \end{enumerate}
 \end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item Con la base de Gröbner del libro, al sustituir $y=z=0$ en $g_2$ obtenemos un polinomio constante igual -1, por lo que no hay ninguna solución para este polinomio. 
+\item 
+\end{enumerate}
+\end{solucion}
 
 \newpage
 
@@ -69,7 +77,12 @@ Discarding the polynomials that specialize to zero, we get $G' = \{g_j(x_1,a) \m
 The result of part (b) is an example of a \emph{specialization theorem} for Gröbner bases.
 We will study the specialization of Gröbner bases in more detail in Chapter 6.
 \end{ejercicio}
-
+\begin{solucion}
+\begin{enumerate}[a.]
+\item Análogo al ejercicio \ref{ejer:3.5.3}.
+\item En las condiciones del teorema 2 se tiene que existe $g_o\in G$ de modo que $\{f(x_1,a) \mid f \in I\}=\gene{g_o(x_1,a)}\in k[x_1]$ y además $g_o$ es minimal en cuanto al grado de $x_1$. Por tanto, $g_o$ forma una base de Gröbner del ideal, así que también forma una base de Gröbner cualquier base obtenida añadiendo elementos no nulos del ideal al conjunto unitario formado por $g_o$. 
+\end{enumerate}
+\end{solucion}
 \newpage
 
 \begin{ejercicio}{3.5.6}
@@ -77,7 +90,9 @@ Show that Theorem 2 remains true if we replace lex order for $x_1 > \cdots > x_n
 This is an order of $1$-elimination type in the terminology of Exercise 3.1.5.
 Hint: You will need to show that Lemma 1 of this section holds for such monomial orders.
 \end{ejercicio}
-
+\begin{solucion}
+En ningún momento de la prueba del Lemma 1 (ejercicio \ref{ejer:3.5.1}) ni del Teorema 2 se usa el orden particular del resto de variables, así que sería análogo. Es más, en lugar de $x_1$ podríamos fijar cualquier otra variable como mayor de todas y seguiría siendo análogo.
+\end{solucion}
 \newpage
 
 \begin{ejercicio}{3.5.7}
