@@ -71,6 +71,73 @@ Considereamos $X = S^1 \times I$ el cilindro. Consideramos $A = \{z\} \times I$,
 La retracción $r \colon X \to A$ definida por $r(s,t) = (z,t) \in A$ no es retracto de deformación. Si lo fuera, entonces el cilindro tendría el mismo tipo de homotopía que $A$, pero es fácil comprobar que $A$ es contráctil y que el cilindro retrae con deformacións sobre $S^1$, que es bien sabido que no es contráctil por tener grupo fundamental no trivial.
 \end{ej}
 
+\section{Complejo de cadenas simpliciales}
+\begin{defi}
+Sea $K$ un  complejo simplicial, y $\sigma \in K$ un $n$-símplice (sin pérdida de generalidad) $\sigma = (v_0,v_1,\dots,v_n)$.
+Definimos la relación de equivalencia $(v_0,v_1,\dots,v_n) \sim (v_{\pi(0)},v_{\pi(1)},\dots,v_{\pi(n)})$ si $\pi$ es una permutación par en $\{0,1,\dots,n\}$.
+\end{defi}
+Es decir, la relación de equivalencia inducida por la acción del grupo de las permutaciones pares sobre los $n$-símplices.
+Es sencillo ver que esto realmente es una relación de equivalencia.
+
+Mediante esta relación de equivalencia, aparecen dos clases de equivalencia (si $n > 0$), que llamamos \index{orientación}\emph{orientaciones} sobre $\sigma$, que denotaremos por $\sigma$ y $\overline{\sigma}$.
+
+Cuidado, aquí usamos el mismo símbolo para $\sigma$ el $n$-símplice y $\sigma$ al $n$-símplice orientado.
+Escribiremos $(v_0,v_1,\dots,v_n)$ para referirnos a un $n$-símplice y $[v_0,v_1,\dots,v_n]$ para referirnos a un $n$-símplice orientado.
+
+Dado un complejo simplicial $K$, procedemos a definir un complejo de cadenas $\{(C_n(K;\mathbb{F}), \partial_n)\}_{n\geq 0}$. 
+\begin{defi}
+Definimos $C_n(K;\mathbb{F})$ como el $\mathbb{F}$-espacio vectorial generado por todos los $n$-símplices orientados de $K$ cocientado por el subespacio vectorial $\gene{\sigma + \overline{\sigma} \mid \sigma\ n\text{-símplice de }K}$.
+\end{defi}
+Por ejemplo, $C_0(K;\mathbb{F})$ es el $\mathbb{F}$-espacio vectorial generado por los vértices de $K$.
+
+\begin{defi}
+Definimos los \index{borde}\emph{operador borde} $\partial_n \colon C_n(K; \mathbb{F}) \to C_{n-1}(K; \mathbb{F})$ como un operador lineal generado por:
+\[ \partial_n[v_0,v_1,\dots,v_n] := \sum_{i=1}^n (-1)^i [v_0,v_1,\dots,\widehat{v_i},\dots,v_n]\]
+\end{defi}
+
+\begin{ej}
+\[ \partial_2[v_0,v_1,v_2] = [v_1,v_2] - [v_0,v_2] + [v_0,v_1] = [v_0,v_1] + [v_1,v_2] + [v_2,v_0] \]
+\end{ej}
+
+\begin{nota}
+Obsérvese que $\partial_0 \colon C_0(K; \mathbb{F}) \to 0$.
+
+En el caso $n=1$, quitaremos los corchetes, es decir $\partial_1[v_0,v_1] = [v_1]-[v_0] = v_1 - v_0$.
+\end{nota}
+
+\begin{prop}
+El operador borde $\partial_n \colon C_n(K; \mathbb{F}) \to C_{n-1}(K; \mathbb{F})$ está bien definido.
+\end{prop}
+\begin{dem}
+Tenemos que ver que si tomamos otro representante de $[v_0,\dots,v_n]$, tenemos la misma imagen.
+Basta probar realmente que $\partial([v_0,v_1,\dots,v_n]) = -\partial_n([v_1,v_0,v_2\dots,v_n])$.
+\[ \partial([v_0,v_1,\dots,v_n]) = [v_1,v_2,\dots,v_n]-[v_0,v_2,\dots,v_n] + \sum_{i\neq0,1}(-1)^i[v_0,v_1,\dots,\widehat{v_i},\dots,v_n]\]
+\[ \partial([v_1,v_0,\dots,v_n]) = [v_1,v_2,\dots,v_n]-[v_0,v_2,\dots,v_n] + \sum_{i\neq0,1}(-1)^i[v_1,v_0,\dots,\widehat{v_i},\dots,v_n]\]
+Los dos primeros términos están en el otro lado con símbolo cambiado.
+Cada término del sumatorio aparece en el otro lado con símbolo cambiado.
+Luego $\partial([v_0,v_1,\dots,v_n]) = -\partial([v_1,v_0,\dots,v_n])$.
+\end{dem}
+
+\begin{lemma}
+Se tiene que $\partial_n \circ \partial_{n+1} = 0$ para todo $n$.
+\end{lemma}
+\begin{dem}
+\begin{align*}
+\partial_n(\partial_{n+1}([v_0,\dots,v_{n+1}])) & = \partial_n \left(\sum_{i=0}^{n+1} (-1)^i [v_0,\dots,\widehat{v_i},v_{n+1}]\right)\\
+& = \sum_{i=0}^{n+1} (-1)^i \partial_n([v_0,\dots,\widehat{v_i},v_{n+1}])\\
+& = \sum_{i=0}^{n+1} (-1)^i \left(\sum_{j<i} (-1)^j [v_0,\dots,\widehat{v_j},\dots,\widehat{v_i},\dots,v_{n+1}]\right. \\
+& \qquad\qquad \left.+ \sum_{j>i} (-1)^{j-1} [v_0,\dots,\widehat{v_i},\dots,\widehat{v_j},\dots,v_{n+1}]\right)
+\end{align*}
+Si $k < l$, el símplice orientado $[v_0,\dots,\widehat{v_k},\dots,\widehat{v_l},\dots,v_{n+1}]$ aparece dos veces en la combinación lineal anterior cuando $(i,j)=(l,k)$ y cuando $(i,j)=(k,l)$.
+En la primera aparición, tiene signo $(-1)^{k+l}$, en la otra aparición tiene signo $(-1)^{k+l-1}$, luego su suma es $0$.
+Como todos los símplices se anulan, tenemos el lema.
+\end{dem}
+
+Entonces tenemos el complejo de cadenas simpliciales orientadas en $K$:
+\[ \dots \to C_{n+1}(K; \mathbb{F}) \xrightarrow{\partial_{n+1}} C_n(K; \mathbb{F}) \xrightarrow{\partial_n} C_{n-1}(K; \mathbb{F}) \to \dots \to C_0(K; \mathbb{F}) \to 0 \]
+De aquí podemos definir el $n$-ésimo espacio vectorial de homología simplicial de $K$ (complejo positivo):
+\[ H_n(K; \mathbb{F}) := \frac{\ker \partial_n}{\Ima \partial_{n+1}}\]
+
 
 \begin{prop}
 El complejo de cadenas $\{(C_n(K;\F),\partial_n)\}_{n\geq 0}$ admite un aumento.
@@ -139,4 +206,5 @@ Pongamos que $i<j$ sin pérdida de generalidad. Entonces
 y al sustituir obtenemos 0, como deseábamos.
 \QED
 \end{dem}
+
 \end{document}
