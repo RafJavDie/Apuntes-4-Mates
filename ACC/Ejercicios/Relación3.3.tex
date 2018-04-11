@@ -267,11 +267,34 @@ $g^Nh = F(t_1, \dots , t_m, g_1x_1, \dots , g_nx_n)$.
 \item Divide $F$ from part (a) by $x_1 − f_1, \dots , x_n − f_n$. Then, in this division, replace $x_i$ with
 $g_ix_i$ to obtain (10).
 \item Let $k$ be an infinite field and let $f , g ∈ k[t_1, \dots , t_m]$. Assume that $g \neq 0$ and that $f$
-vanishes on $k^m \ \V(g)$. Prove that $f$ is the zero polynomial. Hint: Consider $fg$.
+vanishes on $k^m \setminus \V(g)$. Prove that $f$ is the zero polynomial. Hint: Consider $fg$.
 \item Complete the proof of Theorem 2 using ideas from the proof of Theorem 1.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Basta tomar $N = |multideg(h)|$. Damos un ejemplo. Si $h=x^2z+y^3+z+1$ entonces 
+$$g^3h = g^3x^2z+g^3y^3+g^3z+g^3 = g_1g_2^3g_3^2(g_1x)^2(g_3z)+g_1^3g_3^3(gy)^3+g_1^3g_2^3g_3^2(gz)+g^3
+$$
+\item Si renombramos $y_i = g_ix_i$ y consideramos el orden lexicográfico dado por $$t_1 > \dotsc > t_m  > y_1 > \dotsc > y_n$$
+entonces es claro que podemos dividir por $\{y-f_i\}$ y obtener
+$$
+g^Nh = q_1(y_1 - f_1) + \dotsc q_n(y_n-f_n) + r
+$$
+Además, $r$ no es divisible por ningún $y_i$, luego solo depende de $(t_1,\dotsc,t_m)$. Deshaciendo el cambio tenemos el resultado.
+\item Si consideramos $fg$, es claro que $fg(t_1,\dotsc,t_m)=0$ para todo $(t_1,\dotsc,t_m)\in k^m$. Por tanto $fg$ es el polinomio $0$. Tenemos que $fg=0$ y $g\neq 0$. Como $k[t_1,\dotsc,t_m]$ es dominio, tenemos que $f$ es el polinomio cero.
+\item Sustituyendo en un $a=(a_1,\dotsc,a_m)\in k^m$ arbitrario comprobamos que $r(t_1,\dotsc,t_m)$ es el polinomio 0. Por tanto
+$$g^Nh= q_1(g_1x_1 - f_1) + \dotsc +  q_n(g_nx_n-f_n)  \in \gene{g_1x_1 -f_1,\dotsc,g_nx_n-x_n}
+$$
+Utilizamos que 
+\begin{align*}
+h &= g^Ny^N h - h(1-g^Ny^N)\\
+&= y^N(g^Nh)+h(1+gy+\dotsc+g^{N-1}y^{N-1})(1-gy)\\
+&=y^Nq_1(g_1x_1 - f_1) + \dotsc + y^Nq_n(g_nx_n-f_n) + hp(g,y)(1-gy)
+\end{align*}
+Tomando $p(g,y)=1+gy+\dotsc+g^{N-1}y^{N-1}$, es claro que $h$ pertenece al ideal generado $\gene{g_1x_1-f_1,\dotsc,g_nx_n-f_n,1-gy}$
+\end{enumerate}
 \end{solucion}
 
 
@@ -284,15 +307,32 @@ $I =
 \begin{enumerate}[a.]
 \item Show that $I_2 = 
 \gene{z(x^2y − z^3)}$.
-\item Show that the smallest variety in $\C^5$ containing $i(\C^2 \ W)$ [see diagram (8)] is the
-variety $\V(vx − u^2, uy − v^2, z − u, x^2y − z^3, vz − xy)$. Hint: Show that $i(\C^2 \ W) =
+\item Show that the smallest variety in $\C^5$ containing $i(\C^2 \setminus W)$ [see diagram (8)] is the
+variety $\V(vx − u^2, uy − v^2, z − u, x^2y − z^3, vz − xy)$. Hint: Show that $i(\C^2 \setminus W) =
 π_1(\V(J))$, and then use the Closure Theorem.
-\item Show that $\{(0, 0, x, y, 0) | x, y ∈ \C\} ⊆ \V(I)$ and conclude that $\V(I)$ is not the
-smallest variety containing $i(\C^2 \ W)$.
+\item Show that $\{(0, 0, x, y, 0) \mid  x, y ∈ \C\} ⊆ \V(I)$ and conclude that $\V(I)$ is not the
+smallest variety containing $i(\C^2 \setminus W)$.
 \item Determine exactly which portion of $x^2y = z^3$ is parametrized by (6).
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Con SAGE calculamos una base de Gröbner de $I$ y obtenemos
+$$
+G=\{v^2 - yz, x^2yz - z^4, u - z, vx - z^2, vz^2 - xyz \}
+$$
+de donde se deduce trivialmente el resultado con el Teorema de Elminiación.
+\item En este caso $W$ está definido por $uv=0$. Notemos que siguiendo la notación del libro, la variedad del enunciado es $J_1$. Es claro que $\forall (t,u)\in \C^2\setminus W$
+$$
+i(t,u)=\left(u,v,\frac{u^2}{v},\frac{v^2}{u},u\right)
+$$
+Que pertenece trivialmente a $J$ (basta sustituir). Para la inclusión recíproca, supongamos que $(u,v,x,y,z)\in \pi_1(\V(J))$. Por definición $\exists h\in \C$ tales que $(h,u,v,x,y,z) \in \V(J)$ y verificando $huv=1$. Por tanto $uv\neq 0$ y podemos despejar las variables en función de $u$ y $v$, obteniendo el resultado.
+
+Por aplicación directa del Teorema de Clausura $\V(J_1)$ es la menor variedad que $\pi_1(\V(J))$.
+\item Sea $Q$ la variedad del enunciado, la contención es inmediata, pues basta sustituir $(u,v,x,y,z,)\to(0,0,x,y,0)$. El hecho por el cuál $\V(I)$ no es la menor variedad que contiene es debido a que $Q\cap \V(J_1) = \V(xy)$, es decir, es $\V(I)$ hay más puntos que en $\V(J_1)$, que también contiene a $W$.
+\item 
+\end{enumerate}
 \end{solucion}
 
 
@@ -304,10 +344,13 @@ Given a rational parametrization as in (7), there is one case where the naive id
 Suppose that $x_i = f_i(t)/g_i(t)$ where there is only one parameter $t$.We can assume that for
 each $i$, $f_i(t)$ and $g_i(t)$ are relatively prime in $k[t]$ (so in particular, they have no common
 roots). If $I ⊆ k[t, x_1, \dots , x_n]$ is as above, then prove that $\V(I_1)$ is the smallest variety
-containing $F(k \ W)$, where as usual $g = g_1 \cdots g_n ∈ k[t]$ and $W = \V(g) ⊆ k$. Hint: In
-diagram (8), show that $i(k \ W) = \V(I)$, and adapt the proof of Theorem 2.
+containing $F(k \setminus W)$, where as usual $g = g_1 \cdots g_n ∈ k[t]$ and $W = \V(g) ⊆ k$. Hint: In
+diagram (8), show that $i(k \setminus W) = \V(I)$, and adapt the proof of Theorem 2.
 \end{ejercicio}
 \begin{solucion}
+Comencemos probando que $i(k\setminus W)=\V(I)$. Para la inclusión no trivial consideremos $(t,x_1,\dotsc,x_n)\in \V(I)$. Tenemos que probar que $t\in k \setminus W$. Sabemos que se verifica $g_i(t)x_i = f_i(t)$. Como $f_i(t)$ y $g_i(t)$ son coprimos, no tienen raíces en común, luego la igualdad no puede darse trivialmente porque ambos se hayan anulado, es decir, necesariamente $g_i(t)f_i(t)\neq 0$. Por tanto, podemos despejar y obtener el resultado.
+
+Sea $h\in k[x_1,\dotsc,x_n]$ que sea anula $F(k/w)$
 \end{solucion}
 
 
