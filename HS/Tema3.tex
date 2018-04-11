@@ -70,4 +70,73 @@ Damos un ejemplo de retracto que no es de deformación.
 Considereamos $X = S^1 \times I$ el cilindro. Consideramos $A = \{z\} \times I$, con $z \in S^1$.
 La retracción $r \colon X \to A$ definida por $r(s,t) = (z,t) \in A$ no es retracto de deformación. Si lo fuera, entonces el cilindro tendría el mismo tipo de homotopía que $A$, pero es fácil comprobar que $A$ es contráctil y que el cilindro retrae con deformacións sobre $S^1$, que es bien sabido que no es contráctil por tener grupo fundamental no trivial.
 \end{ej}
+
+
+\begin{prop}
+El complejo de cadenas $\{(C_n(K;\F),\partial_n)\}_{n\geq 0}$ admite un aumento.
+\end{prop}
+
+\begin{dem}
+Hay que buscar $\varepsilon:C_0(K;\F)\to\F$ homomorfismo sobreyectivo tal que $\varepsilon\circ\partial_1=0$. Basta tomar la aplicación $v\mapsto \varepsilon(v)=1$ para todo vértice $v\in K$. Claramente es un homomorfismo sobreyectivo. También es fácil ver que $\varepsilon\circ\partial_1=0$, pues
+\[
+\varepsilon(\partial_1[v_i,v_j])=\varepsilon(v_i-v_j)\varepsilon(v_i)-\varepsilon(v_j)=1-1=0
+\]
+\QED
+\end{dem}
+El complejo
+\[
+\cdots\to C_{n+1}(K;\F)\overset{\overline{\partial}_{n+1}}{\to}C_n(K;\F)\overset{\overline{\partial}_n}{\to}\cdots\to C_0(K;\F)\overset{\varepsilon}{\to}\F\to 0
+\]
+da lugar a la homología simplicial reducida dada por 
+\[
+\widetilde{H}_n(K;\F)=\frac{\ker\overline{\partial}_n}{\Ima\overline{\partial}_{n+1}}
+\]
+donde $\overline{\partial}_0=\varepsilon$. Recordemos que $\widetilde{H}_n(K;\F)=H_n(K;\F)$ cuando $n\neq 0$ y $H_0(K;\F)=\widetilde{H}_0(K;\F)\oplus\F$.
+
+\begin{prop}
+Sean $K$ y $L$ complejos simpliciales y sea $\varphi:K\to L$ una aplicación simplicial. Entonces $\varphi$ induce homomorfismos $\varphi_*:C_n(K;\F)\to C_n(L;\F)$ para todo $n\geq 0$. Es más, se tienen diagramas conmutativos
+\[
+\begin{tikzcd}
+C_n(K;\F)\arrow[r, "\varphi_*"]\arrow[d, "\partial_n"] & C_n(L;\F)\arrow[d, "\partial_n"]\\
+C_{n-1}(K;\F)\arrow[r, "\varphi_*"] & C_{n-1}(L;\F)
+\end{tikzcd}
+\]
+\end{prop}
+\begin{dem}
+Dado $n>0$, definimos $\varphi_*:C_n(K;\F)\to C_n(L;\F)$ de la siguiente manera
+\[
+\varphi_*([v_0,\dots, v_n])=\begin{cases}
+[\varphi(v_0), \dots, \varphi(v_n)] & \varphi(v_i)\neq\varphi(v_j)\forall i\neq j\\
+0& c.c.
+\end{cases}
+\]
+Si $(v_0,\dots, v_n)$ es un $n$-símplice de $k$ entonces su imagen es un símplice de $L$ por ser $\varphi$ simplicial. Esta aplicación está bien definida además por la definición de las clases de equivalencia. Veamos la conmutatividad. Supongamos que tenemos un símplice con todos sus vértices distintos entre sí:
+\[
+\partial_n(\varphi_*([v_0,\dots, v_n])=\partial_n([\varphi(v_0), \dots, \varphi(v_n)])=
+\]
+\[
+\sum_{i=0}^n(-1)^i[\varphi(v_0), \dots,\widehat{\varphi(v_1)},\dots,  \varphi(v_n)]=\sum_{i=0}^n(-1)^i\varphi_*([v_0,\dots, \hat{v}_i,\dots, v_n])=
+\]
+\[
+\varphi_*\left(\sum_{i=0}^n(-1)^i[v_0,\dots, \hat{v}_i,\dots, v_n]\right)=\varphi_*(\partial_n[v_0,\dots, v_n])
+\]
+
+Por otro lado, si algún vértice se repite, es decir, $\varphi(v_i)=\varphi(v_j)$ para algún $i\neq j$ (supondremos por sencillez que solo en un caso), entonces $\partial_n(\varphi_*[(v_0,\dots, v_n]))=0$. Mientras que
+\[
+\varphi_*(\partial_n[v_0,\dots, v_n])=\varphi_*\left(\sum_{k=0}^n(-1)^k[v_0, \dots, \hat{v}_k,\dots, v_n]\right)=\sum_{k=0}^n(-1)^k\varphi_*([v_0,\dots, \hat{v}_k,\dots, v_n])
+\]
+Para todo $k\neq i,j$ se tiene que $\varphi_*[v_0,\dots, \hat{v}_k,\dots, v_n]=0$, así que la suma anterior nos da
+\[
+(-1)^i\varphi_*[v_0,\dots, \hat{v}_i,\dots, v_n]+(-1)^j\varphi_*([v_0,\dots, \hat{v}_j,\dots, v_n])=
+\]
+\[
+(-1)^i[\varphi(v_0),\dots, \widehat{\varphi(v_i)},\dots, \varphi(v_n)]+(-1)^j[\varphi(v_0),\dots, \widehat{\varphi(v_j)},\dots, \varphi(v_n)]
+\]
+Pongamos que $i<j$ sin pérdida de generalidad. Entonces
+\[
+[\varphi(v_0),\dots, \widehat{\varphi(v_i)},\dots, \varphi(v_n)]=(-1)^{j-i-1}[\varphi(v_0),\dots, \widehat{\varphi(v_j)},\dots, \varphi(v_n)]
+\]
+y al sustituir obtenemos 0, como deseábamos.
+\QED
+\end{dem}
 \end{document}
