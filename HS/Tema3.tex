@@ -67,7 +67,7 @@ Si $A \subseteq X$ es retrato de deformación de $X$, entonces $A$ y $X$ son del
 \end{nota}
 \begin{ej}
 Damos un ejemplo de retracto que no es de deformación.
-Considereamos $X = S^1 \times I$ el cilindro. Consideramos $A = \{z\} \times I$, con $z \in S^1$.
+Consideremos $X = S^1 \times I$ el cilindro. Consideramos $A = \{z\} \times I$, con $z \in S^1$.
 La retracción $r \colon X \to A$ definida por $r(s,t) = (z,t) \in A$ no es retracto de deformación. Si lo fuera, entonces el cilindro tendría el mismo tipo de homotopía que $A$, pero es fácil comprobar que $A$ es contráctil y que el cilindro retrae con deformacións sobre $S^1$, que es bien sabido que no es contráctil por tener grupo fundamental no trivial.
 \end{ej}
 
@@ -79,7 +79,7 @@ Definimos la relación de equivalencia $(v_0,v_1,\dots,v_n) \sim (v_{\pi(0)},v_{
 Es decir, la relación de equivalencia inducida por la acción del grupo de las permutaciones pares sobre los $n$-símplices.
 Es sencillo ver que esto realmente es una relación de equivalencia.
 
-Mediante esta relación de equivalencia, aparecen dos clases de equivalencia (si $n > 0$), que llamamos \index{orientación}\emph{orientaciones} sobre $\sigma$, que denotaremos por $\sigma$ y $\overline{\sigma}$.
+Mediante esta relación de equivalencia, aparecen dos clases de equivalencia (si $n > 0$, ya que para $n=0$ solo hay una), que llamamos \index{orientación}\emph{orientaciones} sobre $\sigma$, que denotaremos por $\sigma$ y $\overline{\sigma}$.
 
 Cuidado, aquí usamos el mismo símbolo para $\sigma$ el $n$-símplice y $\sigma$ al $n$-símplice orientado.
 Escribiremos $(v_0,v_1,\dots,v_n)$ para referirnos a un $n$-símplice y $[v_0,v_1,\dots,v_n]$ para referirnos a un $n$-símplice orientado.
@@ -105,37 +105,36 @@ Obsérvese que $\partial_0 \colon C_0(K; \mathbb{F}) \to 0$.
 En el caso $n=1$, quitaremos los corchetes, es decir $\partial_1[v_0,v_1] = [v_1]-[v_0] = v_1 - v_0$.
 \end{nota}
 
-\begin{prop}
+\begin{lemma}
 El operador borde $\partial_n \colon C_n(K; \mathbb{F}) \to C_{n-1}(K; \mathbb{F})$ está bien definido.
-\end{prop}
-\begin{dem}
+\end{lemma}
+\begin{proof}
 Tenemos que ver que si tomamos otro representante de $[v_0,\dots,v_n]$, tenemos la misma imagen.
 Basta probar realmente que $\partial([v_0,v_1,\dots,v_n]) = -\partial_n([v_1,v_0,v_2\dots,v_n])$.
 \[ \partial([v_0,v_1,\dots,v_n]) = [v_1,v_2,\dots,v_n]-[v_0,v_2,\dots,v_n] + \sum_{i\neq0,1}(-1)^i[v_0,v_1,\dots,\widehat{v_i},\dots,v_n]\]
-\[ \partial([v_1,v_0,\dots,v_n]) = [v_1,v_2,\dots,v_n]-[v_0,v_2,\dots,v_n] + \sum_{i\neq0,1}(-1)^i[v_1,v_0,\dots,\widehat{v_i},\dots,v_n]\]
-Los dos primeros términos están en el otro lado con símbolo cambiado.
-Cada término del sumatorio aparece en el otro lado con símbolo cambiado.
+\[ \partial([v_1,v_0,\dots,v_n]) = [v_0,v_2,\dots,v_n]-[v_1,v_2,\dots,v_n] + \sum_{i\neq0,1}(-1)^i[v_1,v_0,\dots,\widehat{v_i},\dots,v_n]\]
+Los dos primeros términos de la primera ecuación son opuestos a los de la segunda. Además, cada término del sumatorio aparece en la otra ecuación con una trasposición en los vértices.
 Luego $\partial([v_0,v_1,\dots,v_n]) = -\partial([v_1,v_0,\dots,v_n])$.
-\end{dem}
+\end{proof}
 
 \begin{lemma}
 Se tiene que $\partial_n \circ \partial_{n+1} = 0$ para todo $n$.
 \end{lemma}
-\begin{dem}
+\begin{proof}
 \begin{align*}
 \partial_n(\partial_{n+1}([v_0,\dots,v_{n+1}])) & = \partial_n \left(\sum_{i=0}^{n+1} (-1)^i [v_0,\dots,\widehat{v_i},v_{n+1}]\right)\\
 & = \sum_{i=0}^{n+1} (-1)^i \partial_n([v_0,\dots,\widehat{v_i},v_{n+1}])\\
 & = \sum_{i=0}^{n+1} (-1)^i \left(\sum_{j<i} (-1)^j [v_0,\dots,\widehat{v_j},\dots,\widehat{v_i},\dots,v_{n+1}]\right. \\
 & \qquad\qquad \left.+ \sum_{j>i} (-1)^{j-1} [v_0,\dots,\widehat{v_i},\dots,\widehat{v_j},\dots,v_{n+1}]\right)
 \end{align*}
-Si $k < l$, el símplice orientado $[v_0,\dots,\widehat{v_k},\dots,\widehat{v_l},\dots,v_{n+1}]$ aparece dos veces en la combinación lineal anterior cuando $(i,j)=(l,k)$ y cuando $(i,j)=(k,l)$.
+Si $k < l$, el símplice orientado $[v_0,\dots,\widehat{v_k},\dots,\widehat{v_l},\dots,v_{n+1}]$ aparece dos veces en la combinación lineal anterior: cuando $(i,j)=(l,k)$ y cuando $(i,j)=(k,l)$.
 En la primera aparición, tiene signo $(-1)^{k+l}$, en la otra aparición tiene signo $(-1)^{k+l-1}$, luego su suma es $0$.
 Como todos los símplices se anulan, tenemos el lema.
-\end{dem}
+\end{proof}
 
 Entonces tenemos el complejo de cadenas simpliciales orientadas en $K$:
 \[ \dots \to C_{n+1}(K; \mathbb{F}) \xrightarrow{\partial_{n+1}} C_n(K; \mathbb{F}) \xrightarrow{\partial_n} C_{n-1}(K; \mathbb{F}) \to \dots \to C_0(K; \mathbb{F}) \to 0 \]
-De aquí podemos definir el $n$-ésimo espacio vectorial de homología simplicial de $K$ (complejo positivo):
+De aquí podemos definir el $n$-ésimo espacio vectorial de homología simplicial de $K$ (todos sus símplices con el mismo signo de orientación):
 \[ H_n(K; \mathbb{F}) := \frac{\ker \partial_n}{\Ima \partial_{n+1}}\]
 
 
@@ -146,7 +145,7 @@ El complejo de cadenas $\{(C_n(K;\F),\partial_n)\}_{n\geq 0}$ admite un aumento.
 \begin{dem}
 Hay que buscar $\varepsilon:C_0(K;\F)\to\F$ homomorfismo sobreyectivo tal que $\varepsilon\circ\partial_1=0$. Basta tomar la aplicación $v\mapsto \varepsilon(v)=1$ para todo vértice $v\in K$. Claramente es un homomorfismo sobreyectivo. También es fácil ver que $\varepsilon\circ\partial_1=0$, pues
 \[
-\varepsilon(\partial_1[v_i,v_j])=\varepsilon(v_i-v_j)\varepsilon(v_i)-\varepsilon(v_j)=1-1=0
+\varepsilon(\partial_1[v_i,v_j])=\varepsilon(v_i-v_j)=\varepsilon(v_i)-\varepsilon(v_j)=1-1=0
 \]
 \QED
 \end{dem}
@@ -177,18 +176,18 @@ Dado $n>0$, definimos $\varphi_*:C_n(K;\F)\to C_n(L;\F)$ de la siguiente manera
 0& c.c.
 \end{cases}
 \]
-Si $(v_0,\dots, v_n)$ es un $n$-símplice de $k$ entonces su imagen es un símplice de $L$ por ser $\varphi$ simplicial. Esta aplicación está bien definida además por la definición de las clases de equivalencia. Veamos la conmutatividad. Supongamos que tenemos un símplice con todos sus vértices distintos entre sí:
+Si $(v_0,\dots, v_n)$ es un $n$-símplice de $K$ entonces su imagen es un símplice de $L$ por ser $\varphi$ simplicial. Esta aplicación está bien definida además por la definición de las clases de equivalencia. Veamos la conmutatividad. Supongamos que tenemos un símplice con todos sus vértices distintos entre sí:
 \[
-\partial_n(\varphi_*([v_0,\dots, v_n])=\partial_n([\varphi(v_0), \dots, \varphi(v_n)])=
+\partial_n(\varphi_*([v_0,\dots, v_n]))=\partial_n([\varphi(v_0), \dots, \varphi(v_n)])=
 \]
 \[
-\sum_{i=0}^n(-1)^i[\varphi(v_0), \dots,\widehat{\varphi(v_1)},\dots,  \varphi(v_n)]=\sum_{i=0}^n(-1)^i\varphi_*([v_0,\dots, \hat{v}_i,\dots, v_n])=
+\sum_{i=0}^n(-1)^i[\varphi(v_0), \dots,\widehat{\varphi(v_i)},\dots,  \varphi(v_n)]=\sum_{i=0}^n(-1)^i\varphi_*([v_0,\dots, \hat{v}_i,\dots, v_n])=
 \]
 \[
 \varphi_*\left(\sum_{i=0}^n(-1)^i[v_0,\dots, \hat{v}_i,\dots, v_n]\right)=\varphi_*(\partial_n[v_0,\dots, v_n])
 \]
 
-Por otro lado, si algún vértice se repite, es decir, $\varphi(v_i)=\varphi(v_j)$ para algún $i\neq j$ (supondremos por sencillez que solo en un caso), entonces $\partial_n(\varphi_*[(v_0,\dots, v_n]))=0$. Mientras que
+Por otro lado, si algún vértice se repite, es decir, $\varphi(v_i)=\varphi(v_j)$ para algún $i\neq j$ (supondremos por sencillez que solo en un caso), entonces $\partial_n(\varphi_*([v_0,\dots, v_n]))=0$. Mientras que
 \[
 \varphi_*(\partial_n[v_0,\dots, v_n])=\varphi_*\left(\sum_{k=0}^n(-1)^k[v_0, \dots, \hat{v}_k,\dots, v_n]\right)=\sum_{k=0}^n(-1)^k\varphi_*([v_0,\dots, \hat{v}_k,\dots, v_n])
 \]
