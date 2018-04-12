@@ -1,0 +1,71 @@
+\documentclass[CV.tex]{subfiles}
+
+\begin{document}
+
+
+%\hyphenation{equi-va-len-cia}\hyphenation{pro-pie-dad}\hyphenation{res-pec-ti-va-men-te}\hyphenation{sub-es-pa-cio}
+
+\chapter{Formas diferenciables sobre variedades}
+
+En el primer capítulo habíamos definido las formas diferenciables como aplicaciones $w\in\Omega^p(U)$, $w:U\subseteq\R^n\to Alt^p(\R^n)$. En este capítulo veremos cómo construirlas sobre variedades diferenciables.
+
+\section{Construcción de las formas diferenciables}
+
+Fijado $p\in U\subseteq\R^n$ abierto, definimos el conjunto $\{\gamma:I\to U$ diferenciable con $I$ intervalo abierto conteniendo el 0 y $\gamma(0)=p\}=C_p(U)$. Definimos sobre él la relación de equivalencia $\gamma_1\sim\gamma_2$ si y solo si $D_0\gamma_1=\gamma_1'(0)=\gamma_2'(0)=D_0\gamma_2$. Entonces $C_p(U)/\sim\cong\R^n$. Si $F:U\to V$ es diferenciable con $p\in U\subseteq\R^n$ y $V\subseteq\R^m$ abiertos, entonces dada $\gamma:I\to U$ curva diferenciable con $\gamma(0)=p$, la aplicación $D_pF:\R^n\to \R^m$ se puede definir como $\gamma(0)'\mapsto D_p(F(\gamma'(0))=D_0(F\circ\gamma)=(F\circ \gamma)'(0)$.  Así que definimos $D_pF:C_p(U)/\sim\to C_{F(p)}(V)/\sim$ como $[\gamma]\mapsto[F\circ\gamma]$.
+
+Dado $p\in M$ variedad $n$-dimensional, tomamos una carta $(U,h)$ en $M$ contieniendo a $p$ y consideramos $C_p(M)=\{\alpha:I\to M$ diferenciable con $I$ intervalo abierto conteniendo el 0 y $\gamma(0)=p\}$, donde definimos $\alpha_1\sim\alpha_2$ si y solo si $(h\circ\alpha_1)'(0)=(h\circ\alpha_2)'(0)$. Supongamos que tomáramos otra carta $(\widetilde{U},\tilde{h})$. Vamos a ver que la relación anterior no depende de la carta. Consideramos el intercambio de cartas $F=h\circ\tilde{h}^{-1}$ (que es difeomorfismo en un entorno de $\tilde{h}(p)$ en un entorno de $h(p)$). Esto implica que $D_{\tilde{h}(p)}F$ es isomorfismo. Así que $D_{\tilde{h}(p)}([\tilde{h}\circ\alpha_i])=[h\circ \alpha_i]$ para $i=1,2$, por lo que si las derivadas tomando $\tilde{h}$ son iguales, también lo son tomando $h$.
+
+\begin{defi}
+Definimos $T_pM=C_p(M)/\sim$.
+\end{defi}
+
+\begin{nota}
+\item $T_pM$ es un $\R$-espacio vectorial de dimensión $n$. Dada una carta $(U,h)$ alrededor de $p\in M$. Dada una carta $(U,h)$ alrededor de $p\in M$,
+\[
+\phi_h:T_pM\to \R^n=C_{h(p)}(h(U))/\sim 
+\]
+\[
+[\alpha]\mapsto \phi_h([\alpha])=(h\circ\alpha)'(0)=D_0(h\circ\alpha)
+\]
+$\phi_h$ es una biyección e induce una estructura de $\R$-espacio vectorial de dimensión $n$. Podemos considerar $\phi_h$ como un $\R$-isomorfismo de espacios vectoriales.Si $(\widetilde{U},\tilde{h})$ es otra carta para $p\in M$, entonces como $D_{h(p)}F:C_{h(p)}(h(U))/\sim\to C_{\tilde{h}(p)}(\tilde{h}(\widetilde{U})/sim$ es isomorfismo, tenemos que $\phi_h=D_{h(p)}F^{-1}\circ \phi_{\tilde{h}}$, ya que $\phi_h([\alpha])=[h\circ\alpha]$ y $\phi_{\tilde{h}}([\alpha])=[\tilde{h}\circ\alpha]=[\tilde{h}h^{-1}\alpha]$ (esto por el párrafo anterior a la definición) y a su vez esto es igual a $[F^{-1}h\alpha]$. 
+\end{nota}
+
+\begin{lemma}
+Sea $f:M\to N$ un diferenciable entre variedades de dimensión $m$ y $n$ respectivamente. Sea $p\in M$, entonces
+\begin{enumerate}
+\item Existe $D_pf:T_pM\to T_{f(p)}N$ $\R$-homomorfismo de espacios vectoriales dado por $D_pf[\alpha]=[f\circ\alpha]$.
+\item Si $(U,h)$ es una carta para $p\in M$ y $(V,g)$ alrededor de $f(p)\in N$, se tiene que conmuta el diagrama
+\[
+\begin{tikzcd}
+T_pM\arrow[r, "D_pf"]\arrow[d, "\phi_h"'] & T_{f(p)}N\arrow[d, "\phi_{\tilde{h}}"]\\
+\R^m\arrow[r, "D_{h(p)}(g\circ f\circ h^{-1})"'] & \R^n
+\end{tikzcd}
+\]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+ Tomando cartas $(U,h),(V,g)$ de un atlas maximal, tendremos que
+\[
+F=g\circ f\circ h^{-1}:h(U\cap f^{-1}(V))\to g(f(U\cap f^{-1}(V)))
+\]
+es diferenciable, luego induce $D_{h(p)}F:\R^m\to\R^n$  dada por $[\gamma]\mapsto[F\circ\gamma]$. Luego dado $[\alpha]\in T_pM$ se tiene que 
+\[
+D_{h(p)}F(\phi_h[\alpha])=[F\circ h\circ\alpha]=[g\circ f\alpha]=\phi_g[f\circ\alpha]
+\]
+Basta definir $D_pf[\alpha]=[f\circ \alpha]$, por lo que el diagrama conmuta. Como $\phi_h,\phi_g$ son isomorfimos se tiene entonces por el diagrama que $D_pf$ es homomorfismo de $\R$-espacios vectoriales.
+\end{proof}
+
+\begin{nota}\
+\begin{enumerate}
+\item $(U,h)$ , $D_ph=\phi_h:T_pM\to\R^m$ es isomorfismo si $M$ es una $m$-variedad. De hecho $\R^m\cong C_{h(p)}(h(U))/\sim =T_{h(p)}\R^m$. Además $\phi^{-1}_h=D_{h(p)}\phi=(D_{h^{-1}(p)}\phi)^{-1}$.
+\item Sea $i:M\hookrightarrow \R^n$ diferenciable y $p\in M$. $D_pi:T_pM\to T_{i(p)}\R^n\cong\R^n$ es una inyección y podemos identificar $T_pM=\Ima D_pi\subseteq\R^n$. 
+\item Si $M\overset{f}{\to}N\overset{\varphi}{\to}P$ son diferenciables, entonces $D_p(\varphi\circ f)=D_{f(p)}\varphi\circ D_pf$ (regla de la cadena).
+\item Dado $p\in M$, $(U,h)$ carta alrededor de $p$, entonces la base del $\R$-e.v $T_pM$ será $\{(\parcial{}{x_i})_p\}_{i=1
+}^n$ donde $(\parcial{}{x_i})_p=\phi^{-1}(e_i)$ siendo $\{e_1,\dots, e_n\}$ es la base ortonormal 
+\end{enumerate}
+\end{nota}
+
+
+
+\end{document}
