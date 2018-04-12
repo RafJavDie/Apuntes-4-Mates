@@ -1,0 +1,78 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Cálculo en Variedades, Mayo de 2016}
+\author{Javier Aguilar Martín}
+\maketitle
+
+
+\begin{ejercicio}{1}
+Recordemos del Ejercicio 2.4 que para un $\R$-espacio vectorial $V$ existe un isomorfismo $i:V\to Alt^1(V)=V^*$ dado por $i(v)\in Alt^1(V)$ que verifica $i(v)(w)=\langle w, v\rangle$ (producto escalar sobre $\R$ en $V$). 
+
+Dados $\{v_1,\dots, v_{n-1},w\}\subset\R^n$, tenemos la existencia de $\varphi\in Alt^1(\R^n)$ definida por $\varphi(w)=\det\begin{pmatrix}
+v_1\\
+\vdots\\
+v_{n-1}\\
+w
+\end{pmatrix}$. Entonces, por el isomorfismo anterior, existe un único $z=i^{-1}(\varphi)\in\R^n$ y, por tanto, $\varphi(w)=\langle w,z\rangle$. El vector $z$ es el llamado producto $v_1\times\dots\times v_{n-1}$.
+\begin{enumerate}[a)]
+\item Si hacemos lo anterior para $n=2$, ¿qué vector de $\R^2$ es $i^{-1}(\varphi)$?
+\item Supongamos que $\{v_1,\dots, v_{n-1}\}\subset\R^n$ son linealmente independientes. Comprueba que $\{v_1,\dots, v_{n-1}, v_1\times\dots\times v_{n-1}\}$ describe la orientación estándar de $\R^n$, es decir, la base está positivamente orientada respecto a $\varepsilon_1\land\dots\land\varepsilon_n\in Alt^n(\R^n)$ interpretada como la forma estándar de orientación $dx_1\land\dots\land dx_n\in\Omega^n(\R^n)$ evaluada en $0\in\R^n$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a)]
+\item  Tenemos que, dado $v\in\R^2$,  $\varphi(w)=\det\begin{pmatrix}
+v\\
+w
+\end{pmatrix}=v_1w_1-v_2w_1$. Por otro lado, $z=i^{-1}(\varphi)\Leftrightarrow i(z)=\varphi$, así que $\varphi(w)=i(z)(w)=\langle w,z\rangle =w_1z_1+w_2z_2$. Esto implica que $z=(w_2,-w_1)$. 
+\item
+\end{enumerate}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Demuestra que el homomorfismo $\land: Alt^1(\R^4)\times Alt^1(\R^4)\to Alt^2(\R^4)$ no es sobreyectivo. 
+
+Ayuda: encuentra $w\in Alt^2(\R^4)$ tal que $w\land w\neq 0$.
+\end{ejercicio}
+\begin{solucion}
+Sea $w=\varepsilon_1\land \varepsilon_2+\varepsilon_3\land\varepsilon_4$. Entonces $w\land w\neq 0$, tal como tengo en el Ejercicio 2.1. Si existieran $\alpha,\beta\in Alt^1(\R^4)$ con $w=\alpha\land\beta$, entonces 
+\[
+w\land w=(\alpha\land\beta)\land(\alpha\land\beta)=-(\alpha\land\alpha)\land(\beta\land\beta)=0,
+\]
+lo cual es una contradicción.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{3}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{4}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{5}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+
+\end{document}
