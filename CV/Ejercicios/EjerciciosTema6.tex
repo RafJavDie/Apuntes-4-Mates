@@ -13,9 +13,7 @@
  Probar que $\R^n$ no contiene ningún subconjunto homeomorfo a $D^m$ cuando $m>n$.
 \end{ejercicio}
 \begin{solucion}
-Sea $A\subseteq \R^n$ homeomorfo a $D^m\subseteq\R^m$. Como $A$ es compacto y conexo por ser $D^m$ compacto y conexo. En particular, $A$ es cerrado y no es $\R^n$. En el caso $n=1$ es trivial porque los compactos conexos de $\R$ son los intervalos cerrados y acotados, que no son homeomorfos a ningún $D^m$ con $m>1$.
-
-Sea $\phi:A\to D^m$ el homeomorfismo de la hipótesis. Entonces, por el lema 7.6 tenemos un homeomorfismo $h:\R^{n+m}\to\R^{n+m}$ con $h(x,0_m)=(0_n,\phi(x))$. 
+Si $D^m$ fuera homeomorfo a un cierto subconjunto $A\subseteq\R^n$ entonces también sus interiores son homeomorfos, con lo que habría un abierto no vacío n $\R^n$ homeomorfo a un abierto de $\R^m$, lo cual contradice la invariancia de dimensión.
 
 
 \end{solucion}
@@ -47,7 +45,7 @@ Por otro lado, para $p>0$, $H^k(\R^{k+1}-S^k)\cong \R$ y $H^p(\R^{k+1}-S^k)=0$ e
 Probar que no hay ninguna aplicación continua $g:D^n\to S^{n-1}$ con $g|_{S^{n-1}}\simeq Id|_{S^{n-1}}$.
 \end{ejercicio}
 \begin{solucion}
-En la demostración del lema 7.2 en lugar de $g(t\cdot r(x))$ cogeríamos $H(t\cdot r(x), t)$, donde $H$ es una homotopía entre la $g$ y $Id|_{S^{n-1}}$. Esto nos daría de nuevo una homotopía entre una constante y $r$.
+En la demostración del lema 7.2 en lugar de $g(t\cdot r(x))$ cogeríamos $G(x,t)=g(2tr(x))$ cuando $t\in [0,1/2]$ y $G(x,t)=H(r(x), 2t-1)$ cuando $t\in [1/2,0]$, donde $H$ es una homotopía entre la $g$ y $Id|_{S^{n-1}}$. Esto nos daría de nuevo una homotopía entre una constante y $r$.
 \end{solucion}
 \newpage
 
@@ -57,7 +55,9 @@ Sea $f:D^n\to\R^n$ una aplicación continua, y sea $r\in(0,1)$ dado. Supongamos 
 (Pista: Modificar la prueba del teorema del punto fijo de Brouwer y usar ejercicios 6.4 y 7.3)
 \end{ejercicio}
 \begin{solucion}
-Supongamos que hay algún punto $y$ del disco cerrado de radio $r$ y centro 0 que no está en $f(D^n)$. Para cada punto $z=f(x)\in f(D^n)$ definimos $g(x)$ como la intersección con $S^{n-1}$ de la semirrecta que comienza en $z$ y pasa por $y$. NO SÉ CÓMO SEGUIR
+Supongamos que hay algún punto $y$ del disco cerrado de radio $r$ y centro 0 que no está en $f(D^n)$. Para cada punto $z=f(x)\in f(D^n)$ definimos $g:B[0,1]\to S^{n-1}$ donde $g(x)$ es la intersección con $S^{n-1}$ de la semirrecta que comienza en $z$ y pasa por $y$. 
+
+Sea $h(y)$ la distancia con signo desde $y$ hasta el hiperplano $\pi$ orientado de modo que $h(p)>0$ donde $p$ tiene coordenadas no negativas (está por encima del hiperplano). Esto implica que para todo $y,\in B(x,1-r)$, $h(y)>0$. Además, $h(y)=y\cdot x$ siendo $x\perp \pi$ y $|x|=1$.  También se tiene $h(g(x))=\frac{f(x)-x_0}{|f(x)-x_0|}\cdot x=\frac{1}{|f(x)-x_0|}(f(x)\cdot x-x_0\cdot x)$, pues $g(x)=\frac{f(x)-x_0}{|f(x)-x_0|}$. Aquí todo es positivo, ya que la distancia dirigida $f(x)\cdot x=h(f(x))>h(x_0)=x_0\cdot x$, siendo $h(f(x))>0$, mientras que $h(-x)<0$, por lo que $g(x)\neq -x$. Esto implica que $g$ es homotópica a la identidad por el 6.4, lo cual contradice el ejercicio \ref{ejer:7.3}.
 \end{solucion}
 
 \newpage
@@ -73,7 +73,7 @@ Probar que las curvas $\alpha$ y $\beta$ intersecan (aplicar ambas partes del te
 \begin{solucion}
 Si no es inyectiva el resultado también es válido, bastará omitir los ciclos, lo que ocurre es que además también se cortan a sí mismas.
 
-Consideremos el arco de circunferencia $C$ que une $(-1,0)$ con $(1,0)$ (por ejemplo, el superior). Definimos $\Sigma=\alpha\cup C$ homeomorfa a $S^1$. Podemos considerar $D^2$ embebido en $\R^2$, de modo que, por el teorema de la curva de Jordan, $\Sigma$ divide a $\R^2$ en dos abiertos disjuntos $U_1$ enteramente contenido en $D^2$ y $U_2$ no acotado, siendo $\Sigma$ la frontera entre $U_1$ y $U_2$. Si $\beta$ no corta a $\alpha$, como está enteramente contenida en $D^2$ (es decir, no cortará a $C$ para salirse de $D^2$), entonces pasaría de $U_1$ y a $U_2$ sin cortar la frontera entre ellos, lo cual contradice el hecho de que $\beta$ sea continua.
+Consideremos el arco de circunferencia $C$ que une $(-1,0)$ con $(1,0)$ (por ejemplo, el superior), modificándola ligeramente para que no corte a $\beta(1)$. Definimos $\Sigma=\alpha\cup C$ homeomorfa a $S^1$. Podemos considerar $D^2$ embebido en $\R^2$, de modo que, por el teorema de la curva de Jordan, $\Sigma$ divide a $\R^2$ en dos abiertos disjuntos $U_1$ enteramente contenido en $D^2$ y $U_2$ no acotado, siendo $\Sigma$ la frontera entre $U_1$ y $U_2$. Si $\beta$ no corta a $\alpha$, como está enteramente contenida en $D^2$ (es decir, no cortará a $C$ para salirse de $D^2$), entonces pasaría de $U_1$ y a $U_2$ sin cortar la frontera entre ellos, lo cual contradice el hecho de que $\beta$ sea continua.
 \end{solucion}
 
 

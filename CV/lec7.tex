@@ -114,14 +114,14 @@ tales que $g$ es diferenciable (considerado como aplicación de $U'$ en $V$) y t
 Esta es la definición usual de subvariedad. El teorema \ref{Whitney} afirma que toda variedad diferenciable es difeomorfa a una subvariedad. Recíprocamente, si $N\subseteq\R^{n+k}$ satisface la condición anterior, el teorema de la función implícita muestra que es una subvariedad en el sentido de la definición que hemos dado en este capítulo. Otro teorema de Whitney afirma que la codimensión $k$ siempre se puede tomar menor o igual que $n+1$. Sin embargo, no puede ser arbitrariamente pequeña: por ejemplo, $\R\PP^2$ tiene ninguna inmersión en $\R^3$. 
 
 \begin{defi}
-Sea $M$ una $n$-variedad diferenciable. Entonces $N\subseteq M$ es \textbf{dominio diferenciable con borde} o \textbf{subvariedad con borde de codimensión 0} si para cada $x\in N$ existe una carta $(U,h)$ de $M$ con $x\in U$ tal que 
+Sea $M$ una $n$-variedad diferenciable. Entonces $N\subseteq M$ es \textbf{dominio diferenciable con borde} o \textbf{subvariedad con borde de codimensión 0} si para cada $x\in M$ existe una carta $(U,h)$ de $M$ con $x\in U$ tal que 
 \[
 h(U\cap N)=h(U)\cap\R^n_-
 \]
 donde $\R^n_-=\{(x_1,\dots, x_n)\mid x_1\leq 0\}$. 
 \end{defi}
-ESTAS CONDICIONES NO VEO QUE SE DEDUZCAN DE LA DEFINICIÓN, ENTIENDO QUE SE PUEDE ESCOGER U PARA QUE SE CUMPLAN PERO NO ES AUTOMÁTICO PORQUE TAMBIÉN SE PUEDE COGER U MUY GRANDE
-Si $\hat{x}\in \mathring{N}$ entonces $h(\widehat{U})\subseteq\R^n_-$. Si $\hat{x}\in ext(N)$ entoncs $h(\widehat{U})\subseteq\R^n_+$. Y si $\hat{x}\in\partial N$ entonces $h(\widehat{U})$ corta a los dos semiplanos y $h(\hat{x})$ tendrá primera coordenada nula, es decir, estará en $\{0\}\times \R^{n-1}$ (que es justamente la intersección de los dos espacios). Se tiene por tanto:
+
+Si $\hat{x}\in \mathring{N}$ entonces se puede elegit $\widehat{U}$ de modo que $h(\widehat{U})\subseteq\R^n_-$. Si $\hat{x}\in ext(N)$ entonces se puede elegir $\widehat{U}$ de modo que $h(\widehat{U})\subseteq\R^n_+$. Y si $\hat{x}\in\partial N$ entonces necesariamente $h(\widehat{U})$ corta a los dos semiplanos y $h(\hat{x})$ tendrá primera coordenada nula, es decir, estará en $\{0\}\times \R^{n-1}$ (que es justamente la intersección de los dos espacios). Se tiene por tanto:
 \begin{enumerate}[a)]
 \item $\mathring{N}$ y $ext(N)$ son subvariedades diferenciables de $M$.
 \item $\partial N$ es una suvariedad diferenciable de dimensión $n-1$ con cartas $U\cap \partial N\to h_i(U)\cap (\{0\}\times\R^{n-1})$ e intercambio de cartas diferenciable respetando la intersección con $\{0\}\times\R^{n-1}$. 
@@ -134,7 +134,7 @@ que restringe a un difeomorfismo e induce
 \[
 \psi:h(U\cap V)\cap\partial\R^n_-\to k(U\cap V)\cap\partial\R^n_-
 \]
-donde $\partial\R^n_-=\{0\}\times\R^{n-1}$. Entonces, la matriz Jacobiana $D_q\phi$ con $q=h(p)$ es de la forma
+donde $\partial\R^n_-=\{0\}\times\R^{n-1}$. Entonces, la matriz Jacobiana $D_q\phi$ con $q=h(p)\in\{0\}\times\R^{n-1}$, es de la forma
 \[
 D_q\phi=\left(
 \begin{tabular}{cccc}
@@ -144,8 +144,11 @@ $\dparcial{\phi_1}{x_1}$ & $\dparcial{\phi_1}{x_2}$ & $\cdots$ & $\dparcial{\phi
 \end{tabular}
  \right)
 \]
-TENGO CIERTA DUDA DE SI ES PHI O ES LA PRIMERA RESTRICCIÓN A LA PARTE NEGATIVA DE RN
-Además $|D_q\phi|\neq 0$ por ser $\phi$ difeomorfismo local. Obsérvese que, para $i>1$, $\dparcial{\phi_1}{x_i}=0$ VETE TÚ A SABER POR QUÉ. Por otro lado  $\dparcial{\phi_1}{x_1}>0$ porque $\phi$ preserva la orientación de $\R^n$, es decir, el lado superior del borde va al lado superior y lo mismo con el inferior, quedando fijo el borde. 
+
+Además $|D_q\phi|\neq 0$ por ser $\phi$ difeomorfismo local. Obsérvese que, para $i>1$, $\dparcial{\phi_1}{x_i}=0$, ya que $\phi_1(q)=0$ al llevar el borde en sí mismo (la primera coordenada dele borde es 0). Por otro lado  $\dparcial{\phi_1}{x_1}>0$ porque $\phi$ preserva la orientación de $\R^n$, es decir, el lado superior del borde va al lado superior y lo mismo con el inferior, quedando fijo el borde. 
+
+
+
 
 
 \end{document}
