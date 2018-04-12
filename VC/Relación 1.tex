@@ -267,6 +267,7 @@ Por tanto, es claro que podemos tomar $g(t)=\abs{u(zt)}e^{-t}/t$.
 \newpage 
 \begin{ejercicio}{7}
 \begin{enumerate}[(a)]
+\item[]
 \item Dado $x\in \C$ encontrar el mayor abierto en el que la función
 $$
 z\mapsto \frac{ze^{xz}}{e^z-1}
@@ -289,6 +290,7 @@ $$
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[(a)]
+\item[]
 \item Es claro que allá donde no se anule el denominador, para cada $x$ tenemos una función analítica que intentaremos prolongar allí donde se anule si es posible. Primeramente, es claro que el denominador se anula en $2k\pi i$ para $k\in \Z$. Es claro que el Teorema de Riemann asegura que si podemos prolongar continuamente la función en algún punto, la función será holomorfa en ese punto. Veamos que la función se puede prolongar solo en $z=0$.
 \begin{itemize}
 \item Si $x=0$ entonces, para $z=0$
@@ -334,7 +336,7 @@ B_1(x)=x-1!\frac{B_0}{2!0!}=x-\frac{1}{2}
 $$
 \item Si $n=2$,
 \begin{align*}
-B_2(z)&=x^2 - 2!\left(\frac{B_0(x)}{3!0!}+\frac{B_1(x)}{2!1!}\right)\\
+B_2(x)&=x^2 - 2!\left(\frac{B_0(x)}{3!0!}+\frac{B_1(x)}{2!1!}\right)\\
 &= x^2 -B_1(x) - \frac{B_0(x)}{3}\\
 &=x^2 -x+\frac{1}{2}-\frac{1}{3}\\
 &= x^2-x + \frac{1}{6}
@@ -387,10 +389,10 @@ Obtenemos por tanto despejando $G$ que \begin{equation*}
 G(z)^2 - (1+2z)G(z) + z = 0.
 \end{equation*}
 Resolvemos la ecuación: \begin{equation*}
-G(z) = \frac{1+2z \pm \sqrt{(1+2z)^2 - 4z}}{2} = \frac{1}{2} \left( 1 + 2z - \sqrt{4 + z^2} \right).
+G(z) = \frac{1+2z \pm \sqrt{(1+2z)^2 - 4z}}{2} = \frac{1}{2} \left( 1 + 2z - \sqrt{4z^2+1} \right).
 \end{equation*}
 Hemos elegido la raíz negativa para que se cumpla $G(0) = g_0 = 0$. \\
-Una vez que tenemos la expresión explícita de $G$, vamos a desarrollarla en serie de potencias centrada en 0 para obtener la expresión de $g_n$. \\
+Una vez que tenemos la expresión explícita de $G$, vamos a desarrollarla en serie de potencias centrada en 0 para obtener la expresión de $g_n$.
 
 Tenemos que para cualquier $\mu \in \C$ \begin{equation*}
 (1+z)^\mu = \sumno \binom{\mu}{n} z^n,
