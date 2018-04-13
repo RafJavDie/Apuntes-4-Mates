@@ -206,4 +206,12 @@ y al sustituir obtenemos 0, como deseábamos.
 \QED
 \end{dem}
 
+\begin{nota}\
+\begin{enumerate}
+\item \underline{Homología de un vértice (0-símplice)}: si $K=\{v\}$, su complejo de cadenas asociado es trivial en todos los niveles salvo en $C_0(K)=\gene{v}$. Por tanto, $H_q(K)=0$ para todo $q\geq 1$ y $H_0(K)=\frac{\ker\partial_0}{\Ima\partial_1}=\ker\partial_0=\gene{v}\cong\F$. Se tiene entonces que $\dim H_0(K)=1$ y en el resto de casos $\dim H_q(K)=0$. A estos números se los llama \emph{números de Betti}. En el caso de la homología reducida, $\widetilde{H}_0=\frac{\ker\varepsilon}{\Ima\partial_1}=\ker\varepsilon=0$. 
+
+\item \underline{Homología de un cono}: Sea $K=vL$ un cono simplicial. Tenemeos la inclusión natural $i:\{v\}\to K$, que induce una aplicación $i_*: \{(C_n,\partial_n)\}\to \{(C_n(K),\partial_n)\}$. La idea es probar que $i_*$ induce una equivalencia de homotopía entre los complejos de cadenas. Sea $g:\{(C_n(K),\partial_n)\}\to \{C_n(v),\partial_n)\}$ como $g_n(\sigma)=0$ para $n\geq 1$ y $g_p(v_i)=v$ para todo $v_i\in K^0$. Es claro que $g\circ i_*=Id_{\CC(v)}$. Vamos a ver que $i_*\circ g\simeq Id_{\CC(K)}$. Definimos una homotopía $h: \CC(K)\to\CC(K)[+1]$ como $h_n(v_0,\dots, v_n)=(v,v_0,\dots, v_n)$ si $v_i\neq v$ para todo $i$ y 0 en caso de que algún $v_i=v$. 
+\end{enumerate}
+\end{nota}
+
 \end{document}
