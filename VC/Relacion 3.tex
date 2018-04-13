@@ -6,7 +6,7 @@
 %--------------------------------------------------------
 \begin{document}
 
-\title{Variable Compleja - Relación 1}
+\title{Variable Compleja - Relación 3}
 \author{Rafael González López\\
 1f,3,4}
 \maketitle
@@ -39,7 +39,7 @@ $$
 \newpage
 \item Tenemos que $(z^2-1)^2 = (z+1)^2(z-1)^2$. Consideramos el desarollo
 $$
-\sum_{k=0}^\infty (k+1)n^k = \frac{1}{(n-1)^2}
+\sum_{k=0}^\infty (k+1)z^k = \frac{1}{(z-1)^2}
 $$
 Por tanto, si $z-1 = z+1 -2 = {2((z+1)/2-1)}$
 $$\frac{1}{(z^2-1)^2}=  \frac{1}{(z+1)^2} \sum_{n=0}^\infty\frac{(n+1)}{2^{n+2}}(z+1)^n = \frac{1/4}{(z+1)^{2}}+\frac{2/8}{(z+1)} + \sum_{n=0}^\infty \frac{(n+3)}{2^{n+4}}(z+1)^{n} 
@@ -50,9 +50,9 @@ Para la el otro polo procedemos análogamente, usando que $z+1=2+(z-1) = 2(1-(-(
 &= \frac{1/4}{(z+1)^{2}}-\frac{2/8}{(z+1)} + \sum_{n=0}^\infty \frac{(-1)^{n+2}(n+3)}{2^{n+4}}(z+1)^{n}
 \end{align*}
 \item Sabemos que nuestra función tiene polos simples en $k\pi$ para $k\in \Z$ y además son los únicos.
-Tengamos en cuenta que
-$$\frac{\sin z}{z-k\pi} = \frac{1}{z-k\pi}\sum_{k=0}^\infty \frac{(z-k\pi)^{2n+1}(-1)^{2n}}{(2n+1)!} = \sum_{k=0}^\infty \frac{(z-k\pi)^{2n+1}(-1)^{2n}}{(2n+1)!} $$
-Si denotamos por $a_k$ los coeficientes de la inversa función inversa (que tiene algún desarollo en $\pi k$ por no anularse nuestra función) y $b_k$ los propios, tenemos la relación
+Tengamos en cuenta que en un entorno de $k\pi$ podemos escribir
+$$\frac{\sin z}{z-k\pi}= \sum_{k=0}^\infty \frac{(z-k\pi)^{2n}(-1)^{n}}{(2n+1)!} $$
+Esta función es holomorfa y no se anula en un entorno $k\pi$, luego su inversa también es holomorfa en dicho entorno. Si denotamos por $a_k$ los coeficientes de la inversa función inversa (que tiene algún desarollo en $\pi k$ por no anularse nuestra función) y $b_k$ los propios, tenemos la relación
 $$
 c_n = \sum_{k=0}^{n}a_k b_{n-k}
 $$
@@ -60,6 +60,7 @@ Calcular el término general de la serie sería latoso, pero como los polos son 
 $$
 \frac{1}{z-k\pi}
 $$
+\newpage
 \item Tenemos polos simples en $k\pi$. Desarrollando la serie del $\cos(z-k\pi)$ y usando la fórmula del apartado anterior tenemos que
 $$
 \cos z = \sum_{k=0}^\infty \frac{z^{2n}}{(2n)!}
@@ -73,7 +74,20 @@ Tenemos que $0 = a_1 + b_1 = a_1 $, luego $b_1= 0$. Por tanto $r_0 = a_0^2 = 1$ 
 $$
 \frac{1}{(z-k\pi)^2}
 $$
-\item Es claro que tenemos un polo de orden $m$ en $z=0$ y un polo de orden $n$ en $z=1$. Como $n,m$ son enteros positivos 
+\item Es claro que tenemos un polo de orden $m$ en $z=0$ y un polo de orden $n$ en $z=1$. Veamos un desarrollo, el otro es análogo.
+$$
+\frac{1}{z}=\frac{1}{1+(z-1)}= \sum_{k=0}^\infty (-1)^k(z-1)^k
+$$
+Derivando $m$ veces tenemos que
+$$
+\frac{(-1)^mm!}{z^{m+1}}= \sum_{k=m}^\infty \frac{k!}{(k-m)!}(-1)^k(z-1)^{k-m}
+$$
+Como $m\geq 1$ entonces $(-1)^{2m-2} = 1$. Tenemos entonces
+\begin{align*}
+\frac{1}{z^m(z-1)^n} &= \frac{(-1)^{m-1}}{(m-1)!(z-1)^n}\sum_{k=m-1}^\infty \frac{k!}{(k-m+1)!}(-1)^k(z-1)^{k-m-1}\\
+& = {(-1)^{m-1}}\sum_{k=0}^\infty \binom{m-1+k}{k!}(-1)^{k+m-1}(z-1)^{k-n}\\
+&=\sum_{k=0}^\infty \binom{m-1+k}{k!}(-1)^{k}(z-1)^{k-n}
+\end{align*}
 \end{enumerate}
 \end{solucion}
 \newpage
