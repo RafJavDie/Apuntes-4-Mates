@@ -5,7 +5,7 @@
 %--------------------------------------------------------
 \begin{document}
 
-\title{Variable Compleja - Relación 1}
+\title{Variable Compleja - Relación 2}
 \author{Rafael González López\\
 7,8}
 \maketitle
@@ -135,7 +135,7 @@ Luego se anula cuando $\varepsilon \to 0$, ya que $a>-1$. Análogamente
 $$
 \abs{\int_{C_R} \frac{e^{a \log x}}{(1+x^2)^2} dx } \leq  \frac{R^a}{(R^2-1)^2}2\pi R
 $$
-Que se anula cuando $R\to<\infty$, pues $a<3$. Por la elección del $arg(x)$ tenemos que en los laterales del corredor, cuando hacemos tender su separación a $0$, tendremos que tomar en un caso $arg(x)=0$ y en otro $arg(x)=2\pi$, de donde deducimos que tienden a la integral que deseamos calcular $I$ y a $-e^{2\pi a}I$. Luego
+Que se anula cuando $R\to\infty$, pues $a<3$. Por la elección del $arg(x)$ los laterales del corredor, cuando hacemos tender su separación a $0$, toman en un caso $arg(x)=0$ y en otro $arg(x)=2\pi$, de donde deducimos que tienden a la integral que deseamos calcular $I$ y a $-e^{2\pi a}I$. Luego
 \begin{align*}
 I(1-e^{2\pi i a}) = 2\pi i\left( \frac{a-1}{4}ie^{\pi a/2}-\frac{a-1}{4}ie^{3\pi i a /2}\right)
 \end{align*}
@@ -173,7 +173,7 @@ Dividimos nuestra curva de manera natural en $8$, los $6$ segmentos y las $2$ se
 \end{align*}
 \item Expliquemos más detalladamente el proceso por el que hemos calculado la integral anterior en esta circunferencia.
 $$
-\int_{C^2_\varepsilon} \frac{e^{iax}}{\sinh x}dx =  \int_{C^1_\varepsilon} \frac{e^{-2\pi a}}{z-2\pi i} dz + \int_{C^1_\varepsilon} g(z)dz
+\int_{C^2_\varepsilon} \frac{e^{iax}}{\sinh x}dx =  \int_{C^2_\varepsilon} \frac{e^{-2\pi a}}{z-2\pi i} dz + \int_{C^2_\varepsilon} g(z)dz
 $$
 Con $g(z)$ holomorfa en la circunferencia cuando $\varepsilon$ es suficientemente pequeño. Por tanto, su integral está acotada y tiende a $0$ cuando $\varepsilon \to 0$. Tenemos la curva $e^{it}+2\pi$ con $t\in [\pi,2\pi]$ evaluada con signo negativo, luego obtenemos
 $$
@@ -307,11 +307,11 @@ Por tanto
 $$
 G = \bigcup_{n=1}^\infty V_n
 $$
-Como $K$ es compacto, sabemos que existe existe una cantidad finita de $V_i$ que lo recubren. Podemos considerar el compacto conexo
+Como $K$ es compacto, sabemos que existe existe una cantidad finita de $V_i$ que lo recubren. Podemos considerar el compacto
 $$
 S= \bigcup_{i=1}^s V_{n_i}
 $$
-y aplicar el Teorema de Rounge.
+cuyo complementario es claramente conexo y aplicar el Teorema de Rounge.
 \end{solucion}
 \newpage
 
