@@ -24,7 +24,17 @@ Completar los detalles de la nota 8.2 del libro.
 Sea $\varphi:N\to M$ una aplicación continua entre variedades diferenciables donde $M$ es subvariedad de $\R^k$. Sea $i:M\to \R^k$ la inclusión. Probar que $\varphi$ es diferenciable si y solo si $i\circ\varphi$ lo es.
 \end{ejercicio}
 \begin{solucion}
+Probamos primero que la inclusión es diferenciable. Para ello, tomamos una carta $(U_m, h_m)$ en $M$ (suponemos que $M$ es de dimensión $m\leq k$). Entonces
+\[
+ i\circ h_m^{-1}: h_m(U_m)\to \R^k
+\]
+es diferenciable, ya que es la inclusión de un abierto de $\R^m$ en $\R^k$. Por tanto, si $\varphi$ es diferenciable, entonces $i\circ\varphi$ es diferenciable por composición. 
 
+Recíprocamente, si $i\circ\varphi:N\to \R^k$ es diferenciable, significa que existe una carta $(U_n,h_n)$ de $N$ tal que
+\[
+i\circ\varphi\circ h_n^{-1}:h_n(U_n)\to\R^k
+\]
+es diferenciable. Como $i\circ\varphi=\varphi$ en cualquier abierto de $M$, entonces $\varphi$ es diferenciable.
 \end{solucion}
 \newpage
 
@@ -32,7 +42,7 @@ Sea $\varphi:N\to M$ una aplicación continua entre variedades diferenciables do
 Supongamos que $M\subseteq\R^k$ (con la topología inducida por $\R^k$) es una variedad topológica $n$-dimensional. Incluyamos $M$ en $\R^{k+n}$. Probar que $M$ es localmente plana en $\R^{n+k}$.
 \end{ejercicio}
 \begin{solucion}
-
+Recordemos hay que comprobar que se verifica la definición 8.8 pero sustituyendo las cartas por homeomorfismos. Entonces basta tomar la identidad $Id:\R^{n+k}\to\R^{n+k}$, de modo que para todo $x\in M\subseteq\R^n\subseteq\R^{n+k}$ se verifica que $x\in\R^{n+k}$ y además $Id(\R^{n+k}\cap M)=M=\R^n\cap M$.
 \end{solucion}
 \newpage
 
