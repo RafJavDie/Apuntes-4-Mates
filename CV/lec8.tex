@@ -16,18 +16,18 @@ Fijado $p\in U\subseteq\R^n$ abierto, definimos el conjunto $\{\gamma:I\to U$ di
 Dado $p\in M$ variedad $n$-dimensional, tomamos una carta $(U,h)$ en $M$ contieniendo a $p$ y consideramos $C_p(M)=\{\alpha:I\to M$ diferenciable con $I$ intervalo abierto conteniendo el 0 y $\gamma(0)=p\}$, donde definimos $\alpha_1\sim\alpha_2$ si y solo si $(h\circ\alpha_1)'(0)=(h\circ\alpha_2)'(0)$. Supongamos que tomáramos otra carta $(\widetilde{U},\tilde{h})$. Vamos a ver que la relación anterior no depende de la carta. Consideramos el intercambio de cartas $F=h\circ\tilde{h}^{-1}$ (que es difeomorfismo en un entorno de $\tilde{h}(p)$ en un entorno de $h(p)$). Esto implica que $D_{\tilde{h}(p)}F$ es isomorfismo. Así que $D_{\tilde{h}(p)}([\tilde{h}\circ\alpha_i])=[h\circ \alpha_i]$ para $i=1,2$, por lo que si las derivadas tomando $\tilde{h}$ son iguales, también lo son tomando $h$.
 
 \begin{defi}
-Definimos $T_pM=C_p(M)/\sim$.
+Definimos el \textbf{espacio tangente} $T_pM=C_p(M)/\sim$.
 \end{defi}
 
 \begin{nota}
-\item $T_pM$ es un $\R$-espacio vectorial de dimensión $n$. Dada una carta $(U,h)$ alrededor de $p\in M$. Dada una carta $(U,h)$ alrededor de $p\in M$,
+\item $T_pM$ es un $\R$-espacio vectorial de dimensión $n$. Dada una carta $(U,h)$ alrededor de $p\in M$,
 \[
 \phi_h:T_pM\to \R^n=C_{h(p)}(h(U))/\sim 
 \]
 \[
 [\alpha]\mapsto \phi_h([\alpha])=(h\circ\alpha)'(0)=D_0(h\circ\alpha)
 \]
-$\phi_h$ es una biyección e induce una estructura de $\R$-espacio vectorial de dimensión $n$. Podemos considerar $\phi_h$ como un $\R$-isomorfismo de espacios vectoriales.Si $(\widetilde{U},\tilde{h})$ es otra carta para $p\in M$, entonces como $D_{h(p)}F:C_{h(p)}(h(U))/\sim\to C_{\tilde{h}(p)}(\tilde{h}(\widetilde{U})/sim$ es isomorfismo, tenemos que $\phi_h=D_{h(p)}F^{-1}\circ \phi_{\tilde{h}}$, ya que $\phi_h([\alpha])=[h\circ\alpha]$ y $\phi_{\tilde{h}}([\alpha])=[\tilde{h}\circ\alpha]=[\tilde{h}h^{-1}\alpha]$ (esto por el párrafo anterior a la definición) y a su vez esto es igual a $[F^{-1}h\alpha]$. 
+$\phi_h$ es una biyección e induce una estructura de $\R$-espacio vectorial de dimensión $n$. Podemos considerar $\phi_h$ como un $\R$-isomorfismo de espacios vectoriales. Si $(\widetilde{U},\tilde{h})$ es otra carta para $p\in M$, entonces como $D_{h(p)}F:C_{h(p)}(h(U))/\sim\to C_{\tilde{h}(p)}(\tilde{h}(\widetilde{U})/\sim$ es isomorfismo, tenemos que $\phi_h=D_{h(p)}F^{-1}\circ \phi_{\tilde{h}}$, ya que $\phi_h([\alpha])=[h\circ\alpha]$ y $\phi_{\tilde{h}}([\alpha])=[\tilde{h}\circ\alpha]=[\tilde{h} \circ h^{-1}\circ h\circ \alpha]=[F^{-1} \circ h \circ \alpha]$. 
 \end{nota}
 
 \begin{lemma}
@@ -51,7 +51,7 @@ F=g\circ f\circ h^{-1}:h(U\cap f^{-1}(V))\to g(f(U\cap f^{-1}(V)))
 \]
 es diferenciable, luego induce $D_{h(p)}F:\R^m\to\R^n$  dada por $[\gamma]\mapsto[F\circ\gamma]$. Luego dado $[\alpha]\in T_pM$ se tiene que 
 \[
-D_{h(p)}F(\phi_h[\alpha])=[F\circ h\circ\alpha]=[g\circ f\alpha]=\phi_g[f\circ\alpha]
+D_{h(p)}F(\phi_h[\alpha])=[F\circ h\circ\alpha]=[g\circ f\circ \alpha]=\phi_g[f\circ\alpha]
 \]
 Basta definir $D_pf[\alpha]=[f\circ \alpha]$, por lo que el diagrama conmuta. Como $\phi_h,\phi_g$ son isomorfimos se tiene entonces por el diagrama que $D_pf$ es homomorfismo de $\R$-espacios vectoriales.
 \end{proof}
@@ -61,11 +61,56 @@ Basta definir $D_pf[\alpha]=[f\circ \alpha]$, por lo que el diagrama conmuta. Co
 \item $(U,h)$ , $D_ph=\phi_h:T_pM\to\R^m$ es isomorfismo si $M$ es una $m$-variedad. De hecho $\R^m\cong C_{h(p)}(h(U))/\sim =T_{h(p)}\R^m$. Además $\phi^{-1}_h=D_{h(p)}\phi=(D_{h^{-1}(p)}\phi)^{-1}$.
 \item Sea $i:M\hookrightarrow \R^n$ diferenciable y $p\in M$. $D_pi:T_pM\to T_{i(p)}\R^n\cong\R^n$ es una inyección y podemos identificar $T_pM=\Ima D_pi\subseteq\R^n$. 
 \item Si $M\overset{f}{\to}N\overset{\varphi}{\to}P$ son diferenciables, entonces $D_p(\varphi\circ f)=D_{f(p)}\varphi\circ D_pf$ (regla de la cadena).
-\item Dado $p\in M$, $(U,h)$ carta alrededor de $p$, entonces la base del $\R$-e.v $T_pM$ será $\{(\parcial{}{x_i})_p\}_{i=1
-}^n$ donde $(\parcial{}{x_i})_p=\phi^{-1}(e_i)$ siendo $\{e_1,\dots, e_n\}$ es la base ortonormal 
+\item Dado $p\in M$, y una carta $(U,h)$ alrededor de $p$, entonces la base del $\R$-e.v $T_pM$ será $\{(\parcial{}{x_i})_p\}_{i=1
+}^n$ donde $(\parcial{}{x_i})_p=\phi^{-1}_h(e_i)$ siendo $\{e_1,\dots, e_n\}$ la base estándar.
+\item Un vector tangente $X_p\in T_pM$ se podrá escribir de forma única como
+\begin{equation}\label{coord}
+X_p=\sum_{i=1}^m a_i\left(\parcial{}{x_i}\right)_p
+\end{equation}
+con $a=(a_1,\dots, a_m)\in\R^m$. Si $X_p=[\alpha]$, donde $\alpha:I\to U$ con $\alpha(0)=0$ se tiene $a=(h\circ \alpha)'(0)$. 
+
+\item Dada $f\in\CC^{\infty}(M;\R)$ tenemos la aplicación tantente
+\[
+D_pf:T_pM\to T_{f(p)}\R\cong\R.
+\]
+La \textbf{derivada direccional} $X_pf\in\R$ está definida como la imagen en $\R$ de $X_p$ mediante $D_pf$, es decir, $X_pf=(f\circ\alpha)'(0)$. En términos de $f\circ h^{-1}$ tenemos por la regla de la cadena
+\[
+X_pf=\frac{d}{dt}(f\circ h^{-1}\circ h\circ \alpha(t))|_{t=0}=\sum_{i=1}^m\parcial{f\circ h^{-1}}{x_i}(h(p))a_i.
+\]
+En particular 
+\[
+\left(\parcial{}{x_j}\right)_pf=\parcial{f\circ h^{-1}}{x_i}(h(p)).
+\]
+\item Tenemos una base similar $(\parcial{}{y_j})_{f(p)}$ ($1\leq j\leq n$) para $T_{f(p)}N$ y la matriz de $D_pf$ con respecto a las bases de $T_pM$ y $T_{f(p)}N$ es la matriz jacobiana en $h(p)$ de $g\circ f\circ h^{-1}$. En particular, cuando $N=M$ y $f=Id_M$ se tiene que
+\begin{equation}\label{cambio}
+\left(\parcial{}{x_i}\right)_pf=\parcial{\varphi}{x_i}(h(p))\left(\parcial{}{y_j}\right)_p
+\end{equation}
+donde $\varphi=g\circ h^{-1}$, siendo $(U,h)$ y $(V,g)$ cartas alrededor de $p$. 
 \end{enumerate}
 \end{nota}
 
+Supongamos que $X$ es una función que a cada $p\in M$ le asigna un vector tangente $X_p\in T_pM$. Dada una carta $(U,h)$, la fórmula \ref{coord} se cumple para unas ciertas funciones $a_i:U\to\R$. Si estas funciones son diferenciables en un entorno de $p$, entonces se dice que $X$ es diferenciable en $p$. Además esta condición es independiente de las cartas por \ref{cambio}. Si $X$ es diferenciable en todo punto $p\in M$ se dice que $X$ es un \textbf{campo de vectores diferenciable} en $M$. 
+
+Consideremos familias $w=\{w_p\}_{p\in M}$ de $k$-formas alternadas en $T_pM$, donde $w_p\in Alt^k(T_pM)$. Necesitamos la noción de deferenciabilidad en $p$ de $w$. Sea $g:W\to M$ una parametrización local (la inversa de una carta) donde $W\subseteq\R^m$ es abierto. Para $x\in W$,
+\[
+D_x g:\R^m\to T_{g(x)}M
+\]
+es un isomorfismo e induce un isomorfismo
+\[
+Alt^k(D_xg):Alt^k(T_{g(x)}M)\to Alt^k(\R^m).
+\]
+
+Definimos $g^*(w):W\to Alt^k(\R^m)$ como la función cuyo valor en $x$ es
+\[
+g^*(w)_x=Alt^k(D_xg)(w_{g(x)}).
+\]
+Recordemos que para $k=0$, $g^*(w)=w_{g(x)}$. 
+
+\begin{defi}
+Una familia $w=\{w_p\}_{p\in M}$ de $k$-formas alternadas en $T_pM$ se dice \textbf{diferenciable} si $g^*(w)$ es una función diferenciable para toda parametrización loca. El conjunto de tales familias diferenciables es un espacio vectorial denotado $\Omega^k(M)$. En particular, $\Omega^0(M)=\CC^{\infty}(M;\R)$. 
+
+LO DE QUE SEA ESPACIO VECTORIAL HABRÍA QUE DEMOSTRARLO
+\end{defi}
 
 
 \end{document}
