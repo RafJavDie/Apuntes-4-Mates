@@ -61,12 +61,9 @@ $$
 \frac{1}{z-k\pi}
 $$
 \newpage
-\item Tenemos polos simples en $k\pi$. Desarrollando la serie del $\cos(z-k\pi)$ y usando la fórmula del apartado anterior tenemos que
+\item Tenemos polos simples en $k\pi$, luego lo más sencillo es calcular el residuo directamente
 $$
-\cos z = \sum_{k=0}^\infty \frac{z^{2n}}{(2n)!}
-$$
-Por tanto el primer coeficiente de $(z-k\pi) \cos z / \sin z$ es $1 \cdot 1 = 1$. Por tanto la parte singulares simplemente
-$$\frac{1}{z-k\pi}
+\lim_{z\to k \pi}(z-k\pi)\frac{\cos z}{\sin z} = \lim_{z\to k \pi}\frac{\cos z-(z-k\pi)\sin z}{\cos z} = 1
 $$
 \item Análogamente a (c), tenemos polos de segundo orden en $k\pi$. Por la relación obtenida en ese apartado, podemos calcular los dos primeros términos utilizando la fórmula del término del producto. Denotemos por $r_n$ los coeficientes de 
 $$\frac{\sin^2 z}{(z-k\pi)^2}$$
@@ -83,10 +80,11 @@ $$
 \frac{(-1)^mm!}{z^{m+1}}= \sum_{k=m}^\infty \frac{k!}{(k-m)!}(-1)^k(z-1)^{k-m}
 $$
 Como $m\geq 1$ entonces $(-1)^{2m-2} = 1$. Tenemos entonces
+
 \begin{align*}
 \frac{1}{z^m(z-1)^n} &= \frac{(-1)^{m-1}}{(m-1)!(z-1)^n}\sum_{k=m-1}^\infty \frac{k!}{(k-m+1)!}(-1)^k(z-1)^{k-m-1}\\
-& = {(-1)^{m-1}}\sum_{k=0}^\infty \binom{m-1+k}{k!}(-1)^{k+m-1}(z-1)^{k-n}\\
-&=\sum_{k=0}^\infty \binom{m-1+k}{k!}(-1)^{k}(z-1)^{k-n}
+& = {(-1)^{m-1}}\sum_{k=0}^\infty \binom{m-1+k}{k}(-1)^{k+m-1}(z-1)^{k-n}\\
+&=\sum_{k=0}^\infty \binom{m-1+k}{k}(-1)^{k}(z-1)^{k-n}
 \end{align*}
 \end{enumerate}
 \end{solucion}
@@ -109,7 +107,7 @@ $$
 Por tanto, hay 4 raíces en el disco unidad.
 \item  Tengamos en cuenta que si tomamos $f(z)=-6z$ y $g(z)=z^4+3$, entonces en $|z|=1$ por el Teorema de Rouché
 $$
-|f(z)1 = 6 > 1+3 = |z|^4+ 3 \geq |z^4+3|
+|f(z)| = 6 > 1+3 = |z|^4+ 3 \geq |z^4+3|
 $$
 Por tanto, nuestro polinomio tiene un cero en $|z|<1$. Si tomamos ahora $f(z)=z^4$ y $g(z)=-6z+3$ entonces en $|z|=2$
 $$
@@ -124,11 +122,12 @@ Por tanto, en $|z|=2$ y $|z|=1$ no hay raíces. En $|z|<2$ hay 4 y en $|z|<1$ ha
 Probar que una singularidad aislada de $f(z)$ no puede ser un polo de $e^{f(z)}$ 
 \end{ejercicio}
 \begin{solucion}
-Sea $a\in \C$ es una singularidad aislada de $f(z)$. Distingamos casos
+Sea $a\in \C$ tal que $f(z)$ tiene una singularidad aislada en $a$. Distingamos casos
 \begin{itemize}
-\item Si $a$ es una singularidad evitable, entonces en un entorno de $a$, $|f(z)|<M$ para algún $M>0$. Por tanto $|e^{f(z)}| \leq |e^M|$ en un entorno de $a$. Por el Teorema de Riemann, esta singularidad también es evitable.
-
-\end{itemize} entonces 
+\item Si $f(z)$ tiene una singularidad evitable en $a$, entonces en un entorno de $a$, $|f(z)|<M$ para algún $M>0$. Por tanto $|e^{f(z)}| \leq |e^M|$ en un entorno de $a$. Por el Teorema de Riemann, esta singularidad también es evitable.
+\item Si $f(z)$ tiene un polo en $a$, entonces $\frac{1}{f(z)}$ tiene un cero en $a$ y es analítica en un entorno de $a$. Por el Teorema de la función abierta, la imagen de un entorno de $a$ es un entorno de $0$. En particular, tomará los valores $i\delta$ para $0\leq \delta < \varepsilon$. Por tanto, siguiendo este camino hacia $a$, $e^{f(z)}$ tiene módulo unidad, luego no puede tener límite infinito. De hecho, tenemos una singularidad esencial, pues podemos acercarnos a infinito también.
+\item Si $f(z)$ tiene una singularidad esencial en $a$, la imagen es densa, luego la imagen por la exponencial también. ¿Por qué? Basta tener en cuenta que dado un punto $b\neq 0$, podemos acercarnos a $\log b$ tanto como queramos, nuevamente porque la imagen de $f(z)$ es densa, luego la exponencial se acerca a $b$ tanto como queramos. Por tanto, la singularidad es nuevamente esencial.
+\end{itemize} 
 \end{solucion}
 \newpage
 
@@ -186,7 +185,7 @@ En ambos casos aplicaremos el Teorema de los residuos.
 $$
 \int_{|z|=2}\frac{dz}{z^3(z^{10}-2)}= \int_{|w|=1/2} \frac{dw}{w^2 (1/w)^3((1/w)^{10}-2)} = \int_{|w|=1/2}\frac{w^{11}}{1+2w^{10}}
 $$
-Observemos que las raíces verifica que $2w^{10} = -1$, luego $|w| = \frac{1}{\sqrt[10]{2}} > \frac{1}{2}$. Por tanto, todas las discontinuidades están en el exterior de $|w|=1/2$, por lo que la integral es $0$.
+Observemos que las raíces verifica que $2w^{10} = -1$, luego $|w| = \frac{1}{\sqrt[10]{2}} > \frac{1}{2}$. Todas las discontinuidades están en el exterior de $|w|=1/2$, por lo que la integral es $0$.
 \item Si $w = 1/z$ entonces $1/w = z$, luego $-dw/w^2 = dz$. Por tanto 
 $$
 \int_{|z|=2}\frac{dz}{(z-3)(z^5-1)}= \int_{|w|=1/2} \frac{dw}{w^2 (1/w-3)((1/w)^{5}-1)} = \int_{|w|=1/2}\frac{w^{4}}{(1-3w)(1-w^5)}
@@ -237,9 +236,24 @@ Por tanto, la integral suma $2\pi i$.
 \newpage
 
 \begin{ejercicio}{8}
-
+Sea $\Omega=\C\setminus(-\infty,-1]$. 
+\begin{enumerate}[(a)]
+\item Demostrar que existe una función holomorfa $f\func{\Omega}{\C}$ tal que $e^{f(z)}=1+z$ y $f(0)=0$.
+\item Demostrar que la función definida en $(a)$ es única.
+\item Sea $\alpha\in\C$ fijo. Para $z\in \Omega$ definimos $(1+z)^\alpha = e^{\alpha f(z)}$. Demostrar que $(1+z)^\alpha$ es una función holomorfa en $\Omega$ y que $\dfrac{d}{dz}(1+z)^\alpha = \alpha(1+z)^{\alpha-1}$. 
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item Claramente la región $\Omega$ es simplemente conexa y $z+1$ no se anula, por lo que podemos definir su logaritmo, que verifica $e^{\log (z+1)} = z+1$. Además, $e^{f(0)} = 0 +1 =1$, luego $f(0)=2k\pi i$. Si $k\neq 0$ entonces tomamos $f(z)-f(0)$ que, naturalmente, sigue cumpliendo las mismas propiedades.
+\item Es única, pues si hubiera una $g(z)$ en las mismas condiciones entonces $e^{f(z)-g(z)} = 1$. Por tanto, $\forall z \in \Omega$ $\exists k$ tal que $f(z)-g(z)=2k\pi i$, pero al ser $f$ y $g$ continua y $\Omega$ una región, deducimos que el $k$ no depende de $z$. Como ambas valen $0$ en $z=0$, deducimos que $k=0$ y la igualdad.
+\item Análogamente a como se demostró en la prueba el Teorema 6.3.1 (según la nomenclatura del libro) tenemos que $f'(z) = \frac{1}{1+z}$ por lo que
+\begin{align*}
+\dfrac{d}{dz}(1+z)^\alpha &=\dfrac{d}{dz} e^{\alpha f(z)} = \alpha f'(z) e^{\alpha f(z)} = \alpha\frac{1}{1+z}e^{\alpha f(z)} = \alpha e^{-f(z)} e^{\alpha f(z)} = \alpha e^{(\alpha-1)f(z)}\\
+&= \alpha (1+z)^{\alpha-1}
+\end{align*}
+\end{enumerate}
 
 \end{solucion}
 \newpage
@@ -277,7 +291,7 @@ donde $\gamma_z:[0,1]\to \C , \gamma_z(t)=tz$. En (Prop 2.2.5) se probó que $F$
 \item Para cada $x\in(-1,1)$, se tiene
 \begin{align*}
 F(x) & = \int_0^{1}f(tx)x\;dt\\
-     & = x\int_0^{1}\frac{1}{\sqrt{1-(tx)^2}}\,dt\\
+     & = \int_0^{1}\frac{x}{\sqrt{1-(tx)^2}}\,dt\\
      & = \int_0^x\frac{1}{\sqrt{1-u^2}}\,du
 \end{align*}
 Como $(\arcsin)'(x)=\frac{1}{\sqrt{1-x^2}}$, para todo $x\in(-1,1)$, y $\arcsin(0)=0$, obtenemos el resultado. 
