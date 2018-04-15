@@ -53,14 +53,25 @@ Si todo $g_j \in G$ verifica que $g_j(x_1,a) \in \gene{g_0(x_1,a)}$, entonces to
 This exercise will explore the example $I = \gene{x^2y+xz+1, xy-xz^2+z-1}$ discussed in this text.
 \begin{enumerate}[a.]
 \item Show that the partial solution $(b,c) = (0,0)$ does not extend to a solution $(a,0,0) \in \V(I)$.
-\item In the text, we showed that $g_0 = g_1$ for the partial solution $(1,1)$.
-Show that $g_0 = g_3$ works for all partial solutions different from $(1,1)$ and $(0,0)$.
+\item In the text, we showed that $g_o = g_1$ for the partial solution $(1,1)$.
+Show that $g_o = g_3$ works for all partial solutions different from $(1,1)$ and $(0,0)$.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
 \item Con la base de Gröbner del libro, al sustituir $y=z=0$ en $g_2$ obtenemos un polinomio constante igual -1, por lo que no hay ninguna solución para este polinomio. 
-\item 
+\item Como $g_3$ tiene grado 1 en $x$, por el Teorema 2 basta que $c_3(a)\neq 0$ para que $g_3=g_o$ dada una solución parcial $a\in\V(I_1)$. Recordemos que
+\[
+g_3=(z^3 − z^2)x − y + z^2 + z − 1,
+\]
+de modo que $c_3=z^3-z^2$, que se anula en $z=0$ y en $z=1$. Por tanto, $g_3=g_o$ para cualquier solución parcial en la que $z$ no sea ni 0 ni 1. En particular será soluciones distintas de $(1,1)$ y $(0,0)$, pero veamos  si $z=1$ implica $y=1$ y si $z=0$ implica $y=0$. Para ello basta sustituir en $g_4=y^2 − 2yz^2 − yz + y + 2z^4 − z^3$ (que era el polinomio que generaba $I_1$):
+\[
+g_4(y,0)=y^2+y=0\Rightarrow y=0, y=-1
+\]
+\[
+g_4(y,1)=y^2-2y-y+y+2-1=y^2-2y+1=0\Rightarrow y=1
+\]
+Vemos que tenemos además otra solución parcial para la cual no vale $g_3$, que es $(-1,0)$. Para ese caso sería óptimo $g_2=(y − z^2)x + z − 1$. Así que $g_o=g_3$ para toda solución parcial diferente de $(1,1)$, $(0,0)$ y $(-1,0)$. 
 \end{enumerate}
 \end{solucion}
 
@@ -98,4 +109,67 @@ En ningún momento de la prueba del Lemma 1 (ejercicio \ref{ejer:3.5.1}) ni del 
 \begin{ejercicio}{3.5.7}
 Use the strategy explained in the discussion following Theorem 2 to find all solutions of the system of equations given in Example 3 of Chapter 2, section 8.
 \end{ejercicio}
+\begin{solucion}
+Recordemos que en ese ejemplo, tras obtener la base de Gröbner nos quedó el sistema
+\begin{align*}
+&g_1=λ − \frac{3}{2}x − \frac{3}{2}yz − \frac{167616}{3835}z^6 +\frac{36717}{590}z^4 − \frac{134419}{7670}z^2,\\
+&g_2=x^2 + y^2 + z^2 − 1,\\
+&g_3=xy − \frac{19584}{3835}z^5 +\frac{1999}{295}z^3 − \frac{6403}{3835}z,\\
+&g_4=xz + yz^2 − \frac{1152}{3835}z^5 − \frac{108}{295}z^3 +\frac{2556}{3835}z,\\
+&g_5=y^3 + yz^2 − y − \frac{9216}{3835}z^5 +\frac{906}{295}z^3 − \frac{2562}{3835}z,\\
+&g_6=y^2z − \frac{6912}{3835}z^5 +\frac{827}{295}z^3 − \frac{3839}{3835}z,\\
+&g_7=yz^3 − yz − \frac{576}{59}z^6 +\frac{1605}{118}z^4 − \frac{453}{118}z^2,\\
+&g_8=z^7 − \frac{1763}{1152}z^5 +\frac{655}{1152}z^3 − \frac{11}{288}z.
+\end{align*}
+Además se habían encontrado soluciones para el último polinomio, es decir soluciones parciales en $\V(I_3)$
+\[
+z = 0, ±1, ±2/3, ±\sqrt{11}/8\sqrt{2}.
+\]
+Tenemos que $I_2=\gene{g_5,g_6,g_7,g_8}$, por lo que las soluciones parciales anteriores se podrán extender a $\V(I_2)$ siempre que no estén en $\V(c_5,c_6,c_7)=\V(z^3,z,1)=\emptyset$, es decir, que siempre se puede extender a una solución parcial de $\V(I_2)$. Buscamos ahora el polinomio óptimo para extender cada solución parcial de $\V(I_1)$. Para $z=0$ es claro que se trata de $g_5$.
+\[
+g_5(y,0)=y^3-y\Rightarrow y=0,y=1,y=-1
+\]
+Para $\pm 1$ es $g_6$, pues el coeficiente de $y$ en $g_7$ es $z^3-z$.
+\[
+g_6(y,1)=y^2 − \frac{6912}{3835} +\frac{827}{295} − \frac{3839}{3835}=y^2=0\Rightarrow y=0
+\]
+\[
+g_6(y,-1)=-g_6(y,1)
+\]
+Para el resto de soluciones, el polinomio óptimo es $g_7$. 
+\[
+g_7(y,2/3)=10/81 - 10y/27=0\Rightarrow y=1/3
+\]
+\[
+g_7(y,-2/3)=10/81 - 10y/27=0\Rightarrow y=-1/3
+\]
+\[
+g_7(y,\sqrt{11}/8\sqrt{2})=y = -351 \sqrt{11/2}/320
+\]
+\[
+g_7(y,-\sqrt{11}/8\sqrt{2})=351 \sqrt{11/2}/320
+\]
+Recapitulando, hemos encontrado las soluciones parciales
+\[
+(0,0), (1,0), (-1,0), (0,1), (0,-1), (1/3,2/3), (-1/3,-2/3), 
+\]
+\[
+(-351 \sqrt{11/2}/320,\sqrt{11}/8\sqrt{2}), (351 \sqrt{11/2}/320,-\sqrt{11}/8\sqrt{2}).
+\]
+Ahora tenemos que ver cuáles se extienden a $\V(I_1)=\V(g_2,\dots, g_8)$. Serán las que no pertenezcan a $\V(c_2, c_3,c_4)=\V(1,y,z)=\emptyset$, es decir, todas. Para $(0,0)$ el polinomio óptimo es $g_2$, que nos da las soluciones parciales $(\pm 1,0,0)$. Para $(1,0)$ y $(-1,0)$ el óptimo es $g_3$, que nos da  respectivamente $(0,\pm 1, 0)$. Para $(0,1)$ y $(0,-1)$ el óptimo es $g_4$, que nos da las soluciones $(0,0,\pm 1)$. 
+
+Para el resto de soluciones podemos elegir indistintamente $g_3$ o $g_4$ como polinomio óptimo. Lo haremos con $g_3$ por tener menos términos. Haciendo las sustituciones pertinentes obtenemos el conjunto de soluciones parciales de $\V(I_1)$ que aparece en el libro:
+
+\begin{align*}
+&z = 0; y = 0; x = ±1,\\
+&z = 0; y = ±1; x = 0,\\
+&z = ±1; y = 0; x = 0,\\
+&z = 2/3; y = 1/3; x = −2/3,\\
+&z = −2/3; y = −1/3; x = −2/3,\\
+&z =\sqrt{11}/8\sqrt{2}; y = −3\sqrt{11}/8\sqrt{2}; x = −3/8,\\
+&z = −\sqrt{11}/8\sqrt{2}; y = 3\sqrt{11}/8\sqrt{2}; x = −3/8.
+\end{align*}
+
+Finalmente, todas las soluciones parciales encontradas anteriormente se extienden a $\V(I)$ por tener $\lambda$ coeficiente constante, de modo que todas las soluciones se obtienen al despejar $\lambda$ de $g_1$. 
+\end{solucion}
 \end{document}
