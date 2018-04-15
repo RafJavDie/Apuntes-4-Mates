@@ -52,7 +52,9 @@ Sea $T^n=\R^n/\Z^n$ entendido como espacio de órbitas de la acción del grupo $
 Probar que $T^n$ es una variedad topológica compacta de dimensión $n$. Construir una estructura diferenciable en $T^n$ tal que $\pi$ se vuelva diferenciable y todo $p\in \R^n$ tiene un entorno abierto difeomorfo a un abierto de $T^n$ mediante $\pi$. Probar que $T^1$ es difeomorfo a $S^1$.  
 \end{ejercicio}
 \begin{solucion}
+En primer lugar, claramente el espacio de órbitas es homeomorfo al hipercubo en el que se identifican caras opuestas con la misma orientación. Por tanto, es compacto por cociente de un compacto y además admite como base la proyección de las bolas euclídeas (esto se deduce del hecho de que $\pi(\pi^{-1}(B))=B$ por ser sobreyectiva), de modo que se puede obtener una base numerable. Además, a partir de esta base es fácil comprobar que el espacio es Hausdorff, o también al observar que se ha obtenido como cociente de un Hausdorff compacto (el hipercubo).
 
+Obsérvese que la preimagen de un abierto de $T$ por $\pi$ es unión de $Z^n$ copias homeomorfas. Por tanto, basta recubrir $T^n$ con las proyecciones de los abiertos conexos de $\R^n$ y como carta enviar cada una de estas proyecciones a la preiamgen que se encuentra contenida en el hipercubo unidad en caso de existir, y si no hay ninguno enteramente contenido, tomar una preimagen conexa que corte a dicho hipercubo (por fijar ideas, digamos la que tenga todas sus coordenadas positivas). Al componer esta aplicación con $\pi$ nos lleva cada abierto conexo a uno difeomorfo (resulta una traslación), luego la aplicación es diferenciable. 
 \end{solucion}
 
 \newpage
@@ -63,7 +65,9 @@ Definimos $\tilde{A}:\R^2\to\R^2$ mediante $\tilde{A}(x,y)=(x+\frac{1}{2}, -y)$.
 Sea $K^2$ el conjunto de pares $\{q,A(q)\}$ con $q\in T^2$. Probar que $K^2$ con la topología cociente de $T^2$ es una 2-variedad topológica. Construir una estructura diferenciable sobre $K^2$.
 \end{ejercicio}
 \begin{solucion}
+Necesariamente $A([x,y])=[x+\frac{1}{2}, -y]$ para que se cumpla la composición. $A\circ A([x,y])=[x+1,y]=[x,y]$ por lo que es su propia inversa. Además no tiene puntos fijos porque no existe $\alpha\in\Z$ tal que $x+\alpha=x+\frac{1}{2}$.
 
+$K^2$ vuelve a ser compacta y Hausdorff por ser cociente de un compacto Hausdorff. Ahora el espacio cociente es claramente homeomorfo a un cuadrado con identificaciones $abab^{-1}$, que es localmente homeomorfo a $\R^2$ y por tanto $2$-variedad.
 \end{solucion}
 
 \newpage
