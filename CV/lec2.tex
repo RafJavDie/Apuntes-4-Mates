@@ -43,7 +43,7 @@ Dw: U\longrightarrow \{\text{aplicaciones lineales } \R^n\to Alt^p(\R^n)\}\subse
 \]
 \[x\longmapsto D_xw:\R^n\to Alt^p(\R^n)
 \]
-Se tiene además que si $w\in\Omega^p(U)$ y $f\in\Omega^0(U)$, $fw\in\Omega^p(U)$, que es equivalente a decir que $(fw)_x\in Alt^p(\R^n)$, definida como $fw(x)(v_1,\dots, v_p)=f(x)w_x(v_1,\dots, v_p)$ (o sin los $v_i$). Por tanto. $\Omega^p(U)$ es un $C^{\infty}(U;\R)$-módulo. 
+Se tiene además que si $w\in\Omega^p(U)$ y $f\in\Omega^0(U)$, $fw\in\Omega^p(U)$, que es equivalente a decir que $(fw)_x\in Alt^p(\R^n)$, definida como $fw(x)(v_1,\dots, v_p)=f(x)w_x(v_1,\dots, v_p)$ (o sin los $v_i$). Por tanto, $\Omega^p(U)$ es un $C^{\infty}(U;\R)$-módulo. 
 
 \begin{defi}
 Definimos la \textbf{diferencial exterior}
@@ -158,7 +158,7 @@ Para todo $p\geq 0$, $d:\Omega^p(U)\to\Omega^{p+1}(U)$ es el único verificando
 \begin{dem}
 Tenemos que probar la unicidad. Supongamos que existe $d'$ verificando 1,2 y 3. Entonces, sobre las 0-formas, $d=d'$ por 1. En particular, $dx_i=\varepsilon_i=d'x_i$. Ahora, como $(d')^2=0$, $0=d'd'x_i=d'\varepsilon_i$, luego $d'\varepsilon_{\sigma}=d'(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)})=0$ reiterando la regla de Leibniz.  
 
-Como $d$ y $d'$ son homomorfismos, basta comprobar que $d(f\varepsilon_{\sigma})=d'(f\varepsilon_{\sigma})$, de donde se ducirá que $dw=d'w$ para toda $w\in\Omega^p(U)$. 
+Como $d$ y $d'$ son homomorfismos, basta comprobar que $d(f\varepsilon_{\sigma})=d'(f\varepsilon_{\sigma})$, de donde se deducirá que $dw=d'w$ para toda $w\in\Omega^p(U)$.  
 \[
 d'(f\varepsilon_{\sigma})=d'(f\land\varepsilon_{\sigma})=d'f\land\varepsilon_{\sigma}+(-1)^0f\land d'(\varepsilon_{\sigma})=d'f\land\varepsilon_{\sigma}=df\varepsilon_{\sigma}=d(f\land\varepsilon_{\sigma})=d(f\varepsilon_{\sigma})
 \]
@@ -189,7 +189,7 @@ dw=d(g_3\varepsilon_1\land\varepsilon_2+g_2\varepsilon_1\land\varepsilon_2+g_1\v
 
 Como $d^2=0$, $\Ima(d:\Omega^{p-1}(U)\to\Omega^p(U))\subseteq\ker(d:\Omega^p(U)\to\Omega^{p+1})\subseteq\Omega^p(U)$. Podemos entonces hacer el cociente, al que denotamos $H^p(U)$, que es un $\R$-e.v. llamado \textbf{$p$-ésimo e.v. de cohomología de deRham}. A los elementos $w\in\Omega^p(U)$ tales que $dw=0$ se le llaman \textbf{formas cerradas}. Y a las formas $\rho\in\Omega^p(U)$ que son imagen $\tau\mapsto d(\tau)=\rho$ se llaman \textbf{formas exactas}. Así, podemos ver $H^p$ como el cociente de $p$-formas cerradas entre $p$-formas exactas. 
 
-Si $dw=0$ entonces define una clase de equivalencia $[w]\in H^p(U)$, también denotada $w+d(\Omega^{p-1}(U))$. Se tiene que $[w]=[w']\in H^p(U)$ si y solo si $w-w'\in d(\Omega^{p-1}(U))$. Como $w-w'=d(\tau)$, $w=w'+d(\tau)$. Veremos que el cociente es un espacio vectorial de dimensión finita a pesar de que cada espacio es de dimensión finita. 
+Si $dw=0$ entonces define una clase de equivalencia $[w]\in H^p(U)$, también denotada $w+d(\Omega^{p-1}(U))$. Se tiene que $[w]=[w']\in H^p(U)$ si y solo si $w-w'\in d(\Omega^{p-1}(U))$. Como $w-w'=d(\tau)$, $w=w'+d(\tau)$. Veremos que habitualmente el cociente es un espacio vectorial de dimensión finita a pesar de que cada espacio es de dimensión finita. 
 
 \begin{ej}
 \begin{enumerate}
@@ -218,7 +218,7 @@ $H^0(U)$ es el $\R$-e.v. de aplicaciones $U\to\R$ que son constantes en cada com
 Sean $q_1,q_2\in U$ en la misma componente arco-conexa. Entonces existe $\varphi:[a,b]\to U$ continua con $\varphi(a)=q_1$ y $\varphi(b)=q_2$. Sea $f:U\to \R$ continua y localmente constante. Por reducción al absurdo, supongamos que $f\varphi(a)<f\varphi(b)$, entonces debe de haber algún punto en el que $f$ cambie de valor, luego no es localmente constante.
 \end{proof}
 
-Si $U=\bigsqcup U_i$, $[f]\in H^0(U)$, entonces $f=\sum c_i\chi_{U_i}$, $c_i\in\R$ y $\chi$ la función carácterística. Entonces $H^0(U)=\prod \R(i)$ donde $\R(i)$ es $\R$ pero con base $\chi_{U_i}$. 
+Si $U=\bigsqcup U_i$, $[f]\in H^0(U)$, entonces $f=\sum c_i\chi_{U_i}$, $c_i\in\R$ y $\chi$ la función carácterística. Entonces $H^0(U)=\bigoplus \R(i)$ donde $\R(i)$ es el espacio vectorial isomorfo a $\R$ con base $\chi_{U_i}$. 
 
 El producto exterior definido sobre $\Omega^*(U)$ se extiende a $H^*(U)$:
 \[
@@ -249,8 +249,8 @@ Vamos a denotar $\Omega^p(\phi)(w)=\phi^*(w)$.
 $i:U_1\hookrightarrow U_2\subseteq\R^n$. Dado $x\in U_1$, $D_x i:\R^n\to\R^n$ es la identidad. Esto induce $\phi^*(i)=\Omega^p(i):\Omega^p(U_2)\to \Omega^p(U_1)$. Al evaluarla $\phi^*(i)(w)(x)(v_1,\dots, v_p)=w_{i(x)}(v_1,\dots, v_p)=w_x(v_1,\dots, v_p)$, es decir, $\phi^*(i)(w)=w\circ i$.
 \end{nota}
 
-\begin{ej}1
-$\phi:U_1\to U_2$ diferenciable, $U_1\subseteq\R^n, U_2\subseteq\R^m$, $\phi^*:\Omega^1(U_2)\to \Omega^1(U_1)$. Esta última manda $\varepsilon_i=dx_i\mapsto \phi^*(\varepsilon_i)=\phi^*(dx_i)=d\phi_i=\sum_{j=1}^n\parcial{\phi_i}{x_j}dx_j$. Vamos a probarlo. Sea $x\in U_1$ y $\phi^*(\varepsilon_i)\in\Omega^1(U_1)$, entonces $\phi^*(\varepsilon_i)_x\in Alt^1(\R^n)$, luego $\phi^*(\varepsilon_i)_x(v)=\phi^*(dx_i)_x(v)=(\varepsilon_i)_{\phi(x)}(D_x\phi(v))=(dx_i)_{\phi(x)}D_x(\phi(v))=\varepsilon_i(D_x(\phi(v))$. Ahora
+\begin{ej}
+Sean $\phi:U_1\to U_2$ diferenciable, $U_1\subseteq\R^n, U_2\subseteq\R^m$, $\phi^*:\Omega^1(U_2)\to \Omega^1(U_1)$. Esta última manda $\varepsilon_i=dx_i\mapsto \phi^*(\varepsilon_i)=\phi^*(dx_i)=d\phi_i=\sum_{j=1}^n\parcial{\phi_i}{x_j}dx_j$. Vamos a probarlo. Sea $x\in U_1$ y $\phi^*(\varepsilon_i)\in\Omega^1(U_1)$, entonces $\phi^*(\varepsilon_i)_x\in Alt^1(\R^n)$, luego $\phi^*(\varepsilon_i)_x(v)=\phi^*(dx_i)_x(v)=(\varepsilon_i)_{\phi(x)}(D_x\phi(v))=(dx_i)_{\phi(x)}D_x(\phi(v))=\varepsilon_i(D_x(\phi(v))$. Ahora
 \[
 D_x\phi(v)=\begin{pmatrix}
 \parcial{\phi_1}{x_1}(x) & \dots & \parcial{\phi_1}{x_n}(x)\\
@@ -262,7 +262,7 @@ v_1\\
 v_n
 \end{pmatrix}
 \]
-Por otro lado, dado $v\in\R^n$, $v=\sum_{i=1}^nv_ie_i$ Así pues, 
+Por otro lado, dado $v\in\R^n$, $v=\sum_{i=1}^nv_ie_i$. Así pues, 
 \[
 \varepsilon_i(D_x\phi(v))=\varepsilon_i\left(\sum_{k=1}^m\left(\sum_{l=1}^n\parcial{\phi_k}{x_l}(x)v_l\right)e_k\right)=\sum_{l=1}^n\parcial{\phi_i}{x_l}(x)\varepsilon_l(v)=
 \]
@@ -294,16 +294,16 @@ Sea $\phi:U_1\to U_2$ diferenciable.
 \begin{enumerate}
 \item Si $pq=0$, es trivial. Si $p,q>0$, sea $x\in U_1$ y $v_1,\dots v_{p+q}\in\R^n$.
 \[
-\phi^*(w\land\tau)_x(v_1,\dots, v_{p+q})=(w\land\tau)_{\phi(x)}(D_x\phi(v_1),\dots, D_x\phi(v_{p+q}))=(w_{\phi(x)}\land\tau_{\phi(x)})(D_x\phi(v_1),\dots, D_x\phi(v_{p+q})=
+\phi^*(w\land\tau)_x(v_1,\dots, v_{p+q})=(w\land\tau)_{\phi(x)}(D_x\phi(v_1),\dots, D_x\phi(v_{p+q}))=(w_{\phi(x)}\land\tau_{\phi(x)})(D_x\phi(v_1),\dots, D_x\phi(v_{p+q}))=
 \]
 \[
-\sum_{\sigma\in S(p,p+q)}sgn(\sigma)w_{\phi(x)}(D_x\phi(v_{\sigma(1)}),\dots, D_x\phi(v_{\sigma(p)}))(D_x\phi(v_{\sigma(p+1)}),\dots, D_x\phi(v_{\sigma(p+q)}))=
+\sum_{\sigma\in S(p,p+q)}sgn(\sigma)w_{\phi(x)}(D_x\phi(v_{\sigma(1)}),\dots, D_x\phi(v_{\sigma(p)}))\tau_{\phi(x)}(D_x\phi(v_{\sigma(p+1)}),\dots, D_x\phi(v_{\sigma(p+q)}))=
 \]
 \[
-\sum_{\sigma\in S(p,p+q)}sgn(\sigma)(\phi^*w)_x(v_{\sigma(1)},\dots, v_{\sigma(p)})\phi^*(\tau)_x(v_{\sigma(p+1)},\dots, v_{\sigma(p+q)})=
+\sum_{\sigma\in S(p,p+q)}sgn(\sigma)\phi^*(w)_x(v_{\sigma(1)},\dots, v_{\sigma(p)})\phi^*(\tau)_x(v_{\sigma(p+1)},\dots, v_{\sigma(p+q)})=
 \]
 \[
-\phi^*(w)_x\land (\phi^*(\tau))_x(v_1,\dots, v_{p+q})=(\phi^*(w)\land \phi^*(\tau))_x(v_1,\dots, v_{p+q})
+\phi^*(w)_x\land \phi^*(\tau)_x(v_1,\dots, v_{p+q})=(\phi^*(w)\land \phi^*(\tau))_x(v_1,\dots, v_{p+q})
 \]
 
 \item Esto está ya probado.
@@ -334,7 +334,9 @@ d\phi^*(\varepsilon_I)=\sum_{k=1}^p(-1)^k\phi^*(\varepsilon_{i_1})\land\dots\lan
 \]
 porque $d\phi^*(\varepsilon_{i_k})=d(d\phi_k))=0$.
 
-\item Intentarlo y fracasar
+\item Supongamos que existe $\hat{\phi}$ verificando las propiedades. Entonces, para las 0-formas se tiene que $\hat{\phi}=\phi^*$ pues $\hat{\phi}(f)=\phi^*(f)=f\circ\phi$. Para el caso general basta comprobar que $\hat{\phi}(f dx_I)=\phi^*(fdx_I)$. Tenemos
+\[\hat{\phi}(fdx_I)=\hat{\phi}(f\land dx_I)=\hat{\phi}(f)\land \hat{\phi}(dx_I)=\phi^*(f)\land d\hat{\phi}(x_I)=\phi^*(f)\land d\phi_I=\phi^*(f)\land\phi^*(dx_I)=\phi^*(f dx_I)
+\]
 \end{enumerate}
 \QED
 \end{dem}
@@ -367,11 +369,11 @@ f_1\circ\gamma\land d\gamma_1+\cdots+f_m\circ\gamma\land d\gamma_m=f_1\circ\gamm
 \]
 En física, se suele definir el trabajo a lo largo de la curva $\gamma$ como $A_{\gamma}(X)=\int_a^b\gene{X\circ\gamma(t),\gamma'(t)}dt=\int_a^b\gamma^*(w)$, donde $X:U\to\R^m$. Si $X$ es el gradiente de alguna función $\phi$ (es decir, $X$ es exacta), entonces escribimos 
 \[
-A_{\gamma}(X)=\int_a^b\gamma^*(gad(\phi))=\int_a^b\gamma^*(d\phi)=\int_a^b d\gamma^*(\phi)=\gamma^*\phi(b)-\gamma^*\phi(a)=\phi\gamma(b)-\phi\gamma(a).
+A_{\gamma}(X)=\int_a^b\gamma^*(\nabla(\phi))=\int_a^b\gamma^*(d\phi)=\int_a^b d\gamma^*(\phi)=\gamma^*\phi(b)-\gamma^*\phi(a)=\phi\gamma(b)-\phi\gamma(a).
 \]
 \end{ej}
 \begin{ej}
-Sea $\phi:U_1\subseteq\R^m\dot U_2\subseteq\R^m$. Entonces $\phi^*:\Omega^m(U_2)\to\Omega^m(U_1)$ viene dada por $dx_1\land\dots\land dx_m\mapsto \det(D\phi)dx_1\land\dots\land dx_m$. En efecto,
+Sea $\phi:U_1\subseteq\R^m\to U_2\subseteq\R^m$. Entonces $\phi^*:\Omega^m(U_2)\to\Omega^m(U_1)$ viene dada por $dx_1\land\dots\land dx_m\mapsto \det(D\phi)dx_1\land\dots\land dx_m$. En efecto,
 \begin{gather*}
 \phi^*(dx_1\land\dots\land dx_m)(v_1,\dots, v_m)=\phi^*(dx_1)\land\dots\land\phi^*(dx_m)(v_1,\dots,v_m)=d\phi^*(x_1)\land\dots\land d\phi^*(x_m)(v_1,\dots, v_m)=\\
 d\phi_1\land\dots\land d\phi_m(v_1,\dots, v_m)=\det\begin{pmatrix}
