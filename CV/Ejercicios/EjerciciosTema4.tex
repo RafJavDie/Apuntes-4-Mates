@@ -21,7 +21,7 @@ Probar que el homomorfismo
 lleva funciones localmente constantes con valores $\{0,2\pi\}$ en los semiplanos superior e inferior respectivamente en $[\tau]$. 
 \end{ejercicio}
 \begin{solucion}
-Sea $\varphi:(0,+\infty)\times (0,2\pi)\to U_1=\R^2-[0,+\infty)$ dada por $(r,\theta)\mapsto (r\cos\theta, r\sin\theta)$, que es diferenciable y biyectiva,   con inversa $(\sqrt{x^2+y^2}, arg_1(x,y))$. Como $|D_{r,\theta}\varphi|=r\neq 0$, así que $\varphi$ es localmente difeomorfismo, esto es, dado $(r,\theta)\in U$, existe un abierto $V$ tal que $\varepsilon|_V: V\to\varphi(V)$ es difeomorfismo con jacobiano 
+Sea $\varphi:(0,+\infty)\times (0,2\pi)\to U_1=\R^2-[0,+\infty)$ dada por $(r,\theta)\mapsto (r\cos\theta, r\sin\theta)$, que es diferenciable y biyectiva,   con inversa $(\sqrt{x^2+y^2}, arg_1(x,y))$. Como $|D_{r,\theta}\varphi|=r\neq 0$, se tiene que $\varphi$ es localmente difeomorfismo, esto es, dado $(r,\theta)\in U$, existe un abierto $V$ tal que $\varepsilon|_V: V\to\varphi(V)$ es difeomorfismo con jacobiano 
 \[
 D_{(x,y)}\varphi^{-1}=(D_{\varphi^{-1}(x,y)}\varphi)^{-1}=\frac{1}{r}\begin{pmatrix}
 r\cos\theta & -\sin\theta\\
@@ -57,7 +57,7 @@ Con la expresión explícita que hemos dado al calcular la jacobiana es claro qu
 ¿Puede ser $\R^2$ cubierto por dos abiertos conexos $U,V$ tales que $U\cap V$ es disconexo? 
 \end{ejercicio}
 \begin{solucion}
-Aplicamos Mayer-Vietoris a la situación descrita. Obtendríamos que $R\cong H^0(U)\oplus H^0(V)/H^0(\R^2)\cong H^0(U\cap V)$, por lo que la intersección es conexa.
+Aplicamos Mayer-Vietoris a la situación descrita. Obtendríamos que $\R\cong H^0(U)\oplus H^0(V)/H^0(\R^2)\cong H^0(U\cap V)$, por lo que la intersección es conexa.
 \end{solucion}
 \newpage
 
@@ -86,12 +86,12 @@ Sean $A$ y $B$ dos subcojuntos cerrados disjuntos de $\R^n$. Dados dos puntos di
 %de donde $\R\oplus\R\cong \R\oplus  H^0(V-(A\cup B))$, por lo que $H^0(V-(A\cup B))\cong\R$. Eso significa que $V-(A\cup B)$ es conexo por caminos, por lo que $A\cup B$ no separa $p$ y $q$. 
 
 %{\bf\large ALTERNATIVA USANDO TAL CUAL LA INDICACIÓN}
-Recordemos que todo abierto de $\R^n$ tiene como mucho una cantidad numerable de componentes conexas. Entonces $\R^n-A=A_1\sqcup\A_2\sqcup\cdots$, $\R^n-B=B_1\sqcup B_2\sqcup\cdots$  y $\R^n-(A\cup B)=C_1\sqcup C_2\sqcup\cdots$. Supongamos que $p,q\in A_1$, $p,q\in B_1$ y $p\in C_1$. Tenemos que probar que $q\in C_1$. Se tiene que $\R^n$ Por Mayer-Vietoris tenemos
+Recordemos que todo abierto de $\R^n$ tiene como mucho una cantidad numerable de componentes conexas. Entonces $\R^n-A=A_1\sqcup A_2\sqcup\cdots$, $\R^n-B=B_1\sqcup B_2\sqcup\cdots$  y $\R^n-(A\cup B)=C_1\sqcup C_2\sqcup\cdots$. Supongamos que $p,q\in A_1$, $p,q\in B_1$ y $p\in C_1$. Tenemos que probar que $q\in C_1$. Se tiene que $\R^n$ Por Mayer-Vietoris tenemos
 \[
 0\to H^0(\R^n)\to H^0(\R^n-A)\oplus H^0(\R^n-B)\overset{J^*}{\to} H^0(\R^n-(A\cup B))\to 0
 \]
 
-$H^0(\R^n-A)=\langle \chi_{A_i}\rangle\cong\R$, $H^0(\R^n-B)=\langle \chi_{B_j}\rangle\cong\R$ y $H^0(\R^n-(A\cup B))=\langle \chi_{C_R}\rangle\cong$. Consideremos $\chi_{C_1}$. Como $J^*$ es sobreyectivo, existe $(\sum a_i\chi_{A_i},\sum b_j\chi_{B_j})$ con $J^*(\sum a_i\chi_{A_i},\sum b_j\chi_{B_j})=\chi_{C_1}$. Es decir, $\sum a_i\chi_{A_i}-\sum b_j\chi_{B_j}=\chi_{C_1}$. Tenemos que $\chi_{C_1}(p)=1$ y que  $(\sum a_i\chi_{A_i}-\sum b_j\chi_{B_j})(p)=a_1-b_1$. También sabemos que $\chi_{C_1}(q)=(\sum a_i\chi_{A_i}-\sum b_j\chi_{B_j})(q)=a_1-b_1=(\sum a_i\chi_{A_i}-\sum b_j\chi_{B_j})(p)=\chi_{C_1}(p)=1$, por lo que $q\in C_1$. 
+$H^0(\R^n-A)=\langle \chi_{A_i}\rangle\cong\R$, $H^0(\R^n-B)=\langle \chi_{B_j}\rangle\cong\R$ y $H^0(\R^n-(A\cup B))=\langle \chi_{C_R}\rangle\cong\R$. Consideremos $\chi_{C_1}$. Como $J^*$ es sobreyectivo, existe $(\sum a_i\chi_{A_i},\sum b_j\chi_{B_j})$ con $J^*(\sum a_i\chi_{A_i},\sum b_j\chi_{B_j})=\chi_{C_1}$. Es decir, $\sum a_i\chi_{A_i}-\sum b_j\chi_{B_j}=\chi_{C_1}$. Tenemos que $\chi_{C_1}(p)=1$ y que  $(\sum a_i\chi_{A_i}-\sum b_j\chi_{B_j})(p)=a_1-b_1$. También sabemos que $\chi_{C_1}(q)=(\sum a_i\chi_{A_i}-\sum b_j\chi_{B_j})(q)=a_1-b_1=(\sum a_i\chi_{A_i}-\sum b_j\chi_{B_j})(p)=\chi_{C_1}(p)=1$, por lo que $q\in C_1$. 
 \end{solucion}
 
 
