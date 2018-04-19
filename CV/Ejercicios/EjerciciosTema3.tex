@@ -130,7 +130,7 @@ $$
 
 Sea entonces $[a_{1,0}]\in H^1(A^{*,0})$. Utilizando la conmutatividad del diagrama y la inyectividad de $A^{1,0}\to A^{1,1}$, tenemos una única imagen de $a_{1,0}$: $a_{1,1}\in \ker(A^{1,1}\to A^{2,1})=\Ima(A^{0,1}\to A^{1,1})$. Por inyectividad de esta última aplicación existe un único $a_{0,1}\in A^{0,1}$ que definiremos como la imagen de $a_{1,0}$ en $H^1(A^{0,*})$. En primer, lugar veamos que $a_{0,1}$ define un ciclo. Basta enviarlo a $A^{1,2}$ utilizando conmutatividad e inyectividad, pues la imagen de $a_{1,1}$ en $A^{1,2}$ es cero pues $a_{1,1}$ era un borde, así que efectivamente $a_{0,1}\in\ker(A^{1,1}\to A^{0,2})$. Tenemos que ver entonces que está bien definida. Vamos a añadir algo de notación para facilitarlo. Llamamos $g:A^{0,0}\to A^{1,0}$, $f:A^{1,0}\to A^{1,1}$, $g'=A^{0,0}\to A^{0,1}$, $f':A^{0,1}\to A^{1,1}$. Tenemos entonces que $a_{0,1}=(f')^{-1}(f(a_{1,0}))$. Sean entonces $a,a'$ tales que $a-a'\in \Ima(g)$, es decir, existe $\alpha$ con $g(\alpha)=a-a'$. Por conmutatividad, $f(a-a')=f(g(\alpha))=g'(g'(\alpha))$, luego $(f')^{-1}(f(a-a'))=g'(\alpha)$, de modo que  $(f')^{-1}(f(a-a'))=g'(\alpha)\in\Ima(g')$, así que las imágenes de $a$ y $a'$ definen la misma clase de cohomología. En la dirección opuesta se define análogamente, y se comprueba fácilmente que las definiciones son inversas la una de la otra, pues la expresión de la inversa será $f^{-1}f'$. En definitiva, hemos establecido $ H^1(A^{*,0})\cong  H^1(A^{0,*})$.
 
-Para el resto de casos es similar pero con más pasos intermedios usando que aplicar borde dos veces es trivial, así que se deja como ejercicio para quienes quieran malgastar su vida chasing diagrams.
+Para el resto de casos es similar pero con más pasos intermedios usando que aplicar borde dos veces es trivial, así que se deja como ejercicio.
 \end{solucion}
 \newpage
 
@@ -159,15 +159,34 @@ Recordemos que si $A^*$ es exacta, a partir de $A^{i-1}\overset{d^{i-1}}{\to} A^
 \]
 
 Observemos ahora el siguiente diagrama
+%\[
+%\begin{tikzcd}[remember picture] % see https://tex.stackexchange.com/a/256562/121799
+% & & & 0 &  \\
+% 0\arrow[r] & \ker{d^i}\arrow[d]\arrow[r] & A^i\arrow[d]\arrow[r] & \Ima{d^{i-1}}\arrow[r]\arrow[u] & 0\\
+%0 \arrow[r] &  H^i(A^*)\arrow[r] & A^i/ \Ima{d^{i-1}}\arrow[ur] & & 
+%\end{tikzcd}
+%\]
+
+
 \[
-\begin{tikzcd}
+\begin{tikzcd}[remember picture] % see https://tex.stackexchange.com/a/256562/121799
  & & & 0 &  \\
- 0\arrow[r] & \ker{d^i}\arrow[d]\arrow[r] & A^i\arrow[d]\arrow[r] & \Ima{d^{i-1}}\arrow[r]\arrow[u] & 0\\
-0 \arrow[r] &  H^i(A^*)\arrow[r] & A^i/ \Ima{d^{i-1}}\arrow[ur] & & 
+0\arrow[r] & \ker{d^i}\arrow[d]\arrow[r] &
+ A^i\arrow[d]\arrow[r] & \Ima {d^{i}}\arrow[r]\arrow[u] & 0\\
+0 \arrow[r] &  H^i(A^*)\arrow[r] & A^i/ \Ima {d^{i-1}}\arrow[ur] & & 
 \end{tikzcd}
 \]
+%\tikz[remember picture,overlay]{
+%\fill[blue,opacity=0.2] (tikz@f@1-3-1.south west|-tikz@f@1-3-3.south east)
+%--(tikz@f@1-3-1.north west|-tikz@f@1-3-3.north)
+%--(tikz@f@1-3-3.north) --(tikz@f@1-2-4.west)
+%--(tikz@f@1-2-4.west|-tikz@f@1-1-4.north west)
+%--(tikz@f@1-2-4.south east|-tikz@f@1-1-4.north east)
+%--(tikz@f@1-2-4.south east)
+%--(tikz@f@1-3-3.south east)--cycle;
+%}
 
-La fila completa sabemos que es exacta.  Además, $^i(A^*)\to A^i/ \Ima{d^{i-1}}$ es inyectiva pues es la proyección al cociente de una aplicación inyectiva. También se puede ver porque si $[a]=[0]\in  A^i/ \Ima{d^{i-1}}$, entonces $a\in  \Ima{d^{i-1}}$, luego también representa la clase del 0 en la cohomología. Por otra parte, tanto $A^i\to \Ima{d^{i-1}}$ como $A^i\to A^i/ \Ima{d^{i-1}}$ son sobreyectivas, así que por conmutatividad del diagrama, necesariamente $ A^i/ \Ima{d^{i-1}}\to \Ima{d^{i-1}}$ es sobreyectiva. Además se tiene la igualdad entre núcleo e imagen trivialmente, con lo que tenemos la exactitud buscada. Entonces, como la sucesión escinde, tomando dimensión $\dim(A^i)-\dim(\Ima{d^{i-1}})=\dim(A^i/\Ima{d^{i-1}})=\dim(H^i(A^ *))+\dim(\Ima{d^i})$. Entonces, sustituyendo 
+La fila completa sabemos que es exacta.  Además, $H^i(A^*)\to A^i/ \Ima{d^{i-1}}$ es inyectiva pues es la proyección al cociente de una aplicación inyectiva. También se puede ver porque si $[a]=[0]\in  A^i/ \Ima{d^{i-1}}$, entonces $a\in  \Ima{d^{i-1}}$, luego también representa la clase del 0 en la cohomología. Por otra parte, tanto $A^i\to \Ima{d^{i}}$ como $A^i\to A^i/ \Ima{d^{i-1}}$ son sobreyectivas, así que por conmutatividad del diagrama, necesariamente $ A^i/ \Ima{d^{i-1}}\to \Ima{d^{i}}$ es sobreyectiva. Además se tiene la igualdad entre núcleo e imagen trivialmente, con lo que tenemos la exactitud buscada. Entonces, como la sucesión escinde, tomando dimensión $\dim(A^i)-\dim(\Ima{d^{i-1}})=\dim(A^i/\Ima{d^{i-1}})=\dim(H^i(A^ *))+\dim(\Ima{d^i})$. Entonces, sustituyendo 
 \[
 \chi(A^*)=\sum_{i=0}^n(-1)^i\dim(A^i)=\sum_{i=0}^n(-1)^i(\dim(\Ima{d^{i-1}})+\dim(H^i(A^*))+\dim(\Ima{d^i}))=\sum_{i=0}^n\dim(H^i(A^*)).
 \]
