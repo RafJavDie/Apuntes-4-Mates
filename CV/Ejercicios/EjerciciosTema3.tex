@@ -176,15 +176,15 @@ Observemos ahora el siguiente diagrama
 0 \arrow[r] &  H^i(A^*)\arrow[r] & A^i/ \Ima {d^{i-1}}\arrow[ur] & & 
 \end{tikzcd}
 \]
-%\tikz[remember picture,overlay]{
-%\fill[blue,opacity=0.2] (tikz@f@1-3-1.south west|-tikz@f@1-3-3.south east)
-%--(tikz@f@1-3-1.north west|-tikz@f@1-3-3.north)
-%--(tikz@f@1-3-3.north) --(tikz@f@1-2-4.west)
-%--(tikz@f@1-2-4.west|-tikz@f@1-1-4.north west)
-%--(tikz@f@1-2-4.south east|-tikz@f@1-1-4.north east)
-%--(tikz@f@1-2-4.south east)
-%--(tikz@f@1-3-3.south east)--cycle;
-%}
+\tikz[remember picture,overlay]{
+\draw[-] (tikz@f@4-3-1.south west|-tikz@f@4-3-3.south east)
+--(tikz@f@4-3-1.north west|-tikz@f@4-3-3.north)
+--(tikz@f@4-3-3.north) --(tikz@f@4-2-4.west)
+--(tikz@f@4-2-4.west|-tikz@f@4-1-4.north west)
+--(tikz@f@4-2-4.south east|-tikz@f@4-1-4.north east)
+--(tikz@f@4-2-4.south east)
+--(tikz@f@4-3-3.south east)--cycle;
+}
 
 La fila completa sabemos que es exacta.  Además, $H^i(A^*)\to A^i/ \Ima{d^{i-1}}$ es inyectiva pues es la proyección al cociente de una aplicación inyectiva. También se puede ver porque si $[a]=[0]\in  A^i/ \Ima{d^{i-1}}$, entonces $a\in  \Ima{d^{i-1}}$, luego también representa la clase del 0 en la cohomología. Por otra parte, tanto $A^i\to \Ima{d^{i}}$ como $A^i\to A^i/ \Ima{d^{i-1}}$ son sobreyectivas, así que por conmutatividad del diagrama, necesariamente $ A^i/ \Ima{d^{i-1}}\to \Ima{d^{i}}$ es sobreyectiva. Además se tiene la igualdad entre núcleo e imagen trivialmente, con lo que tenemos la exactitud buscada. Entonces, como la sucesión escinde, tomando dimensión $\dim(A^i)-\dim(\Ima{d^{i-1}})=\dim(A^i/\Ima{d^{i-1}})=\dim(H^i(A^ *))+\dim(\Ima{d^i})$. Entonces, sustituyendo 
 \[
