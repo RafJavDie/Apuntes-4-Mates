@@ -108,9 +108,82 @@ Recordemos que para $k=0$, $g^*(w)=w_{g(x)}$.
 
 \begin{defi}
 Una familia $w=\{w_p\}_{p\in M}$ de $k$-formas alternadas en $T_pM$ se dice \textbf{diferenciable} si $g^*(w)$ es una función diferenciable para toda parametrización loca. El conjunto de tales familias diferenciables es un espacio vectorial denotado $\Omega^k(M)$. En particular, $\Omega^0(M)=\CC^{\infty}(M;\R)$. 
-
-LO DE QUE SEA ESPACIO VECTORIAL HABRÍA QUE DEMOSTRARLO
 \end{defi}
+
+\begin{lemma}
+Sea $g_i:W_i\to N$ una familia de parametrizaciones locales con $N=\bigcup g_i(W_i)$. Si $g_i^*(w)$ es diferenciable para todo $i$, entonces $w$ es diferenciable.
+\end{lemma}
+\begin{proof}
+Sea $g:W\to N$ una parametrización local cualquiera y $z\in W$. Probamos que $g^*(w)$ es diferenciable entorno a $z$. Elegimos $i$ con $g(z)\in g_i(W_i)$. En un entorno de $z$ podemos escribir $g=g_i\circ g_i^{-1}\circ g\circ h$, donde $h=g_i^{-1}\circ g:g^{-1}(g_i(W_i))\to W_i$ es una aplicación diferenciable entre abiertos euclídeos. Entonces
+\[
+g^*(w)=(g_i\circ h)^*(w)=h^*(g_i^*(w))
+\]
+en un entorno de $z$ y el lado derecho es diferenciable por hipótesis. 
+\end{proof}
+
+La diferencial exterior
+\[
+d:\Omega^k(M)\to\Omega^{k+1}(M)
+\]
+se puede definir a través de las parametrizaciones locales $g:W\to M$ como sigue. Si $w=\{w_p\}_{p\in M}$ es una $k$-forma diferenciable en $M$ entonces
+\[
+d_pw=Alt^{k+1}((D_xg)^{-1})\circ d_x(g^*w),\quad p=g(x).
+\]
+No es inmediato que $d_pw$ no dependa de la elección de $g$. Dada parametrización local $g$, entonces cualquier otra tiene localmente la forma $g\circ\phi$ con $\phi:U\to W$ difeomorfismo. Sean $z_1,\dots, z_{k+1}\in T_pM$. Elegimos $v_1,\dots, v_{k+1}\in\R^n$ de modo que $D_x(g\circ \phi)(v_i)=z_i$. Debemos probar que
+\[
+d_yg^*(w)(w)(w_1,\dots, w_{k+1})=d_x(g\circ\phi)^*(w)(v_1,\dots,v_{k+1})
+\]
+donde $\phi(x)=y$ y $D_x\phi(v_i)=w_i$ ESTO NO LO ENTIENDO . Esto se sigue de las ecuaciones 
+\begin{gather*}
+(g\circ\phi)^*(w)=\phi^*(g^*(w))\\
+d\phi^*(\tau)=\phi^*d(\tau),
+\end{gather*}
+donde $\tau=g^*(w)$. Es evidente que $d\circ d=0$, con lo que tenemos definido un complejo de cadenas. Tenemos que $\Omega^k(M)=0$ si $k>\dim(M)$ pues $Alt^k(T_pM)=0$ cuando $k>\dim(T_pM)$. Una aplicación diferenciable $\phi:M\to N$ induce un morfismo de complejo de cadenas $\phi^*:\Omega^*(N)\to\Omega^*(M)$
+\[
+\phi^*(\tau)_p=Alt^k(D_p\phi)(\tau_{\phi(p)}),\quad \tau\in \Omega^k(M),
+\]
+siendo $\phi^*(\tau)_p=\tau_{\phi(p)}$ para $k=0$. Se define el producto bilineal para $w\in\Omega^k(M)$ y $\tau\in\Omega^l(M)$, $w\land\tau$ como $(w\land\tau)_p)=w_p\land\tau_p\in\Omega^{k+l}(M)$.
+
+Se prueba usando parametrizaciones locales que $\phi^*w$ y $w\land\tau$ son diferenciables PROBARLO. Es también fácil de ver que
+\[
+d(w\land\tau)=dw\land\tau+(-1)^kw\land d\tau
+\]
+\[
+w\land\tau=(-1)^{kl}\tau\land w.
+\]
+
+\begin{defi}
+La $p$-ésima \textbf{cohomología de deRham} de una variedad $M$, denotada $H^p(M)$, es la $p$-ésima cohomología de $\Omega^*(M)$. 
+\end{defi}
+
+La diferencial exterior induce un producto $H^p(M)\times H^q(M)\to H^{p+q}(M)$ que convierte a $H^*(M)$ en un álgebra graduada. Nótese que $H^p(M)=0$ para $p>n=\dim(M)$ y para $p<0$. 
+
+El morfismo de complejos de cadenas $\phi^*$ inducido por una aplicación diferenciable $\phi:M\to N$ induce aplicaciones lineales
+\[
+\phi^*=H^p(\phi):H^p(N)\to H^p(M),
+\]
+lo cual convierte a la cohomología de deRham en un functor contravariante entre la categoría de variedades diferenciables y la categoría de $\R$-álgebras graduadas anticonmutativas.
+
+\begin{defi}\
+\begin{enumerate}
+\item Una variedad diferenciable $M$ de dimensión $n$ se dice \textbf{orientable} si existe $w\in\Omega^n(M)$ con $w_p\neq 0$ para todo $p\in M$. Una tal $w$ se denomina \textbf{forma de orientación} de $M$.
+\item Dos formas de orientación $w$ y $\tau$ de $M$ son equivalentes si $\tau=fw$ para alguna $f\in\Omega^0(M)$ con $f(p)>0$ para todo $p\in M$. Una \textbf{orientación} en $M$ es una clase de equivalencia de formas de orientación de $M$. 
+\end{enumerate}
+\end{defi}
+
+En el espacio euclídeo $\R^n$ tenemos la forma de orientación $dx_1\land\dots\land dx_n$, que representa la \textbf{orientación estándar} de $\R^n$. 
+
+Sea $M$ orientada con una forma de orientación $w$. Una base $b_1,\dots, b_n$ de $T_pM$ se dice \textbf{positivamente} o \textbf{negativamente  orientada} con respecto a $w$ dependiendo del signo de $w_p(b_1,\dots, b_n)\in\R$ (no puede ser 0 porque $w_p\neq 0$). El signo depende solo de la orientación determinada por $w$. Si $\tau$ es otra orientación, $\tau=fw$ para una unívocamente determinada $f\in\Omega^0(M)$ con $f(p)\neq 0$ para todo $p\in M$. Decimos que $w$ y $\tau$ determinan la misma orientación en $p$ si $f(p)>0$. Equivalentemente, $w$ y $\tau$ inducen las mismas bases positivamente orientadas de $T_pM$. Si $M$ es conexa, entonces $f$ tiene signo constante en $M$, así que se tiene:
+
+\begin{lemma}
+En una variedad diferenciable orientable conexa hay exactamente dos orientaciones.
+\end{lemma}
+
+Si $U$ es un abierto de una variedad diferenciable $M$, entonces una orientación de $U$ estará inducida por la restricción de la forma de orientación de $M$ a $U$. Recíprocamente se tiene:
+
+\begin{lemma}
+Sea $V=(V_i)_{i\in I}$ un recubrimiento por abiertos de la variedad diferenciable $M$. Supongamos que todos los $V_i$ tienen orientaciones y que en las intersecciones estas orientaciones coinciden. Entonces $M$ tiene una orientación cuya restricción a cada $V_i$ coincide con la orientación original de $V_i$. 
+\end{lemma}
 
 
 \end{document}

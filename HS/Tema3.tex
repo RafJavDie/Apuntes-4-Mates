@@ -1,75 +1,8 @@
 \documentclass[HS.tex]{subfiles}
 \begin{document}
 
-\chapter{Invariancia homotópica de la homología simplicial}
+\chapter{Homología simplicial}
 
-\section{Generalidades sobre Álgebra Homológica}
-Sea $X$ un espacio topológico y supongamos que existe un complejo simplicial $K$ y un homeomorfismo $h \colon X \to |K|$.
-Entonces podríamos definir $H_n(X) := H_n(K)$.
-El par $(K,h)$ se llama \emph{trianguación} de $X$.
-Esto estará bien definido si $H_n$ no depende de la triangulación.
-Esta cuestión será abordada por la \emph{invariancia homotópica de la homología}.
-
-\section{Nociones básicas de teoría de homotopía}
-\begin{defi}\label{homotopia}
-Dos aplicaciones continuas $f,g \colon X \to Y$ entre espacios topológicos se dicen homotópicas si existe una aplicación $H \colon X \times I \to Y$ continua (que llamamos \emph{homotopía}) cumpliendo:
-\[ H(x,0) = f(x) \quad \forall x \in X, \]
-\[ H(x,1) = g(x) \quad \forall x \in X. \]
-Dos aplicaciones $f,g$ \emph{homotópicas} por $H$ se denotan $f \simeq_H g$. 
-\end{defi}
-
-\begin{defi}
-Si en la definición anterior $f(x) = g(x)$ para todo $x \in A \subseteq X$ y además
-\[ H(x,t) = f(x) = g(x),\quad \forall x \in A \forall t \in I, \]
-entonces diremos que $f \simeq_H g$ \emph{relativa} a $A$.
-Esto es que $A$ es un conjunto de puntos que la homotopía ``no mueve''.
-\end{defi}
-
-\begin{prop}
-La relación ``ser homotópica (relativa) a'' entre aplicacioens continuas es una relación de equivalencia.
-\end{prop}
-\begin{dem}
-En primer lugar, $f\simeq_H f$ con $H(x,t)=f(x)$ para todo $x$. Si $f\simeq_G g$, entonces $g\simeq_G f$ con $G(x,t)=H(x,1-t)$. Si $f\simeq_F g$ y $g\simeq_G h$, entonces $f\simeq_H h$, donde $H(x,t)=F(x,2t)$ para  $x\in [0,1/2]$ y $H(x,t)=G(x,2t-1)$ para $x\in [1/2,1]$.\QED
-\end{dem}
-
-\begin{defi}
-Dos espacios topológicos $X$ e $Y$ son del mismo \emph{tipo de homotopía} (u \emph{homotópicamente equivalente}) si existe $f \colon X \to Y$, existe $g \colon Y \to X$ continua cumpliendo:
-\[ f \circ g \simeq Id_Y \quad g \circ f \simeq Id_X. \]
-En este caso diremos que tanto $f$ como $g$ son \emph{equivalencias de homotopía} e \emph{inversas homotópicas} una de la otra.
-\end{defi}
-
-\begin{defi}
-Si un espacio topológico $X$ es del mismo tipo de homotopía que un punto, entonces diremos que $X$ es \index{contráctil}\emph{contráctil}.
-\end{defi}
-\begin{ej}
-Todo subespacio convexo $C \subseteq \R^n$ es contráctil.
-\end{ej}
-\begin{prop}
-$X$ es contráctil si y sólo si $Id_X \simeq cte$.
-\end{prop}
-\begin{dem}
-Si $X$ es contráctil, entonces existen $f:X\to \{x_0\}$ y $g:\{x_0\}\to X$ tales que $g\circ f\simeq Id_X$. Necesitariamente $g$ es una aplicación constante, por lo que $g\circ f$ es constante, de donde se deduce el resultado.
-
-Si $Id_X \simeq cte$, entonces sea $x_0$ la constante a la que es homotópica. Sea entonces la inclusión $i:\{x_0\}\hookrightarrow X$. Se tiene claramente que la aplicación constante $x_0$ es inversa homotópica de la inclusión, pues $x_0\circ i=Id_{\{x_0\}}$ y $i\circ x_0\simeq Id_X$ por hipótesis. \QED
-\end{dem}
-
-\begin{defi}
-Dados $A \subseteq X$ e.t., una \emph{retracción} de $X$ en $A$ es una aplicación continua:
-\[ r \colon X \to A \]
-cumpliendo que $r(a) = a$ $\forall a \in A$.
-Si $i \colon A \to X$ denota la inclusión, entonces $r \circ i = Id_A$.
-Si además, se cumple que $i \circ r \simeq id_X$, diremos que $A$ es un \emph{retracto de deformación} de $X$.
-Si además, $i \circ r \simeq_H id_X$ relativa a $A$, entonces diremos que $A$ es un \emph{retracto de deformación fuerte} de $X$.
-\end{defi}
-
-\begin{nota}
-Si $A \subseteq X$ es retrato de deformación de $X$, entonces $A$ y $X$ son del mismo tipo de homotopía, pues tanto $r$ como $i$ son equivalentes de homotopía, y una es la inversa homotópica de la otra.
-\end{nota}
-\begin{ej}
-Damos un ejemplo de retracto que no es de deformación.
-Consideremos $X = S^1 \times I$ el cilindro. Consideramos $A = \{z\} \times I$, con $z \in S^1$.
-La retracción $r \colon X \to A$ definida por $r(s,t) = (z,t) \in A$ no es retracto de deformación. Si lo fuera, entonces el cilindro tendría el mismo tipo de homotopía que $A$, pero es fácil comprobar que $A$ es contráctil y que el cilindro retrae con deformacións sobre $S^1$, que es bien sabido que no es contráctil por tener grupo fundamental no trivial.
-\end{ej}
 
 \section{Complejo de cadenas simpliciales}
 \begin{defi}
@@ -84,7 +17,7 @@ Mediante esta relación de equivalencia, aparecen dos clases de equivalencia (si
 Cuidado, aquí usamos el mismo símbolo para $\sigma$ el $n$-símplice y $\sigma$ al $n$-símplice orientado.
 Escribiremos $(v_0,v_1,\dots,v_n)$ para referirnos a un $n$-símplice y $[v_0,v_1,\dots,v_n]$ para referirnos a un $n$-símplice orientado.
 
-Dado un complejo simplicial $K$, procedemos a definir un complejo de cadenas $\{(C_n(K;\mathbb{F}), \partial_n)\}_{n\geq 0}$. 
+Dado un complejo simplicial $K$, procedemos a definir un complejo de cadenas $\CC(K;F)=\{(C_n(K;\mathbb{F}), \partial_n)\}_{n\geq 0}$. 
 \begin{defi}
 Definimos $C_n(K;\mathbb{F})$ como el $\mathbb{F}$-espacio vectorial generado por todos los $n$-símplices orientados de $K$ cocientado por el subespacio vectorial $\gene{\sigma + \overline{\sigma} \mid \sigma\ n\text{-símplice de }K}$.
 \end{defi}
@@ -167,6 +100,7 @@ C_n(K;\F)\arrow[r, "\varphi_*"]\arrow[d, "\partial_n"] & C_n(L;\F)\arrow[d, "\pa
 C_{n-1}(K;\F)\arrow[r, "\varphi_*"] & C_{n-1}(L;\F)
 \end{tikzcd}
 \]
+En particular, $Id_*=Id$ y $(\psi\circ\varphi)_*=\psi_*\circ\varphi_*$.
 \end{prop}
 \begin{dem}
 Dado $n>0$, definimos $\varphi_*:C_n(K;\F)\to C_n(L;\F)$ de la siguiente manera
@@ -202,11 +136,11 @@ Pongamos que $i<j$ sin pérdida de generalidad. Entonces
 \[
 [\varphi(v_0),\dots, \widehat{\varphi(v_i)},\dots, \varphi(v_n)]=(-1)^{j-i-1}[\varphi(v_0),\dots, \widehat{\varphi(v_j)},\dots, \varphi(v_n)]
 \]
-y al sustituir obtenemos 0, como deseábamos.
+y al sustituir obtenemos 0, como deseábamos. La functorialidad se deduce directamente de la definición.
 \QED
 \end{dem}
 
-\begin{nota}\
+\begin{ej}\
 \begin{enumerate}
 \item \underline{Homología de un vértice (0-símplice)}: si $K=\{v\}$, su complejo de cadenas asociado es trivial en todos los niveles salvo en $C_0(K)=\gene{v}$. Por tanto, $H_q(K)=0$ para todo $q\geq 1$ y $H_0(K)=\frac{\ker\partial_0}{\Ima\partial_1}=\ker\partial_0=\gene{v}\cong\F$. Se tiene entonces que $\dim H_0(K)=1$ y en el resto de casos $\dim H_q(K)=0$. A estos números se los llama \emph{números de Betti}. En el caso de la homología reducida, $\widetilde{H}_0=\frac{\ker\varepsilon}{\Ima\partial_1}=\ker\varepsilon=0$. 
 
@@ -258,6 +192,75 @@ En particular, este resultado es válido para cualquier $n$-símplice, a partir 
 
 \item \underline{Homología del interior de un $n$-símplice}: podemos evitar el caso $n=0$ por ser el interior de un vértice vacío. Si $n=1$ entonces el interior de un segmento son dos vértices, por lo que claramente su homología se obtiene como suma directa de la de los vértices individuales (no así en la reducida, donde la suma directa sería siempre trivial pero la homología reducida de dos vértices es $\F$ en el nivel 0). Para $n\geq 2$ vamos a denotar $\overline{\partial}$ a los operadores borde correspondientes $C_q(\mathring{\sigma})$ y sin la barra a los de $\sigma$. Obsérvese que $C_q(\mathring{\sigma})=C_q(\sigma)$ para $q\leq n-1$ y $C_q(\mathring{\sigma})=0$ para $q\geq n$. De aquí se deduce que la homología $H_q(\mathring{\sigma})=H_q(\sigma)$ para todo $q\leq n-2$ y para $q\geq n$. Ahora bien, $H_{n-1}(\mathring{\sigma})=\ker\overline{\partial}_{n-1}$ pues $\Ima\overline{\partial}_n=0$. Por otra parte, por ser la homología de $\sigma$ trivial en este nivel, se tiene que $\ker\overline{\partial}_{n-1}=\ker\partial_{n-1}=\Ima\partial_n$. Obsérvese que $\partial_n$ es inyectiva, por lo que $\Ima\partial_n\cong \gene{sigma}\cong\F$, con lo cual ya tenemos la homología que faltaba. 
 \end{enumerate}
+\end{ej}
+
+\begin{defi}
+Sea $K$ un complejo simplicial y $L\subseteq K$ un subcomplejo. Entonces el complejo de cadenas $\{C_n(L;\F),\partial_n|\}$ es un subcomplejo de $\{C_n(K;\F),\partial_n\}$ y se llama \emph{homología orientada relativa del par} $(K,L)$ a la homología del \emph{complejo de cadenas relativas}
+\[
+C_*(K,L;\F)=\{C_n(K,L;\F),\tilde{\partial}_n\}=\{C_n(K,\F)/C_n(L,\F),\tilde{\partial}_n\}
+\]
+donde $\tilde{\partial}_n$ es el paso al cociente del operador borde. 
+\end{defi}
+
+\begin{prop}
+Si $L$ es un subcomplejo de $K$ se tiene la sucesión exacta de homología simplicial orientada de $(K,L)$
+\[
+\cdots\to H_n(L;\F)\overset{i_*}{\to} H_n(K;\F)\overset{j_*}{\to} H_n(K,L;\F)\overset{\Delta}{\to} H_{n-1}(L;\F)\to\cdots
+\]
+\end{prop}
+\begin{dem}
+Se sigue al considerar la sucesión exacta de complejos de cadenas
+\[
+0\to \CC(L;\F)\overset{i}{\to} \CC(K;\F)\overset{j}{\to} \CC(K,L;\F)\to 0
+\]
+donde $i$ es la inclusión canónica y $j$ es la proyección natural. Basta entonces aplicar la sucesión exacta larga en homología.  \QED
+\end{dem}
+
+\begin{nota}
+Si consideramos los complejos aumentados $\widetilde{C}_n(K)$ y $\widetilde{C}_n(L)$ obtenemos que el complejo relativo con aumento coincide con el complejo relativo original y tenemos análogamente la sucesión exacta de homología simplicial orientada reducida
+\[
+\cdots\to \widetilde{H}_n(L;\F)\overset{i_*}{\to} \widetilde{H}_n(K;\F)\overset{j_*}{\to} H_n(K,L;\F)\overset{\Delta}{\to} \widetilde{H}_{n-1}(L;\F)\to\cdots
+\]
 \end{nota}
+
+\begin{prop}
+Si $\sigma$ es un $n$-símplice ($n\geq 1$) se tiene
+\[
+H_p(\sigma,\mathring{\sigma};\F)\cong\begin{cases}
+\F & p=n\\
+0 & c.c.
+\end{cases}
+\]
+\end{prop}
+
+La demostración es muy sencilla y se deja como ejercicio. 
+
+\begin{prop}
+Sea $K$ un complejo simplicial y $K_1$ y $K_2$ subcomplejos de $K$. Entonces existe una sucesión exacta (\emph{sucesión de Mayer-Vietoris}):
+\[
+\cdots\to H_n(K_1\cap K_2;\F)\overset{\varphi}{\to}H_n(K_1;\F)\oplus H_n(K_2;\F)\overset{\psi}{\to}H_n(K_1\cup K_2;\F)\overset{\Delta}{\to}H_{n-1}(K_1\cap K_2;\F)\to\cdots
+\]
+donde $\varphi(x)=(i_{1*}(x),-i_{2*}(x))$ y $\psi(x)=j_{1*}(x)+j_{2*}(x)$, siendo $i_t:K_1\cap K_2\to K_t$ y $j_t:K_t\to K_1\cup K_2$  ($t=1,2$) las correspondientes inclusiones.
+\end{prop}
+
+\begin{dem}
+Tenemos la sucesión de Mayer-Vietoris para complejos de cadenas
+\[
+\cdots\to H_n(\mathcal{C}_1\cap\mathcal{C}_2)\overset{\varphi}{\to}H_n(\mathcal{C}_1\oplus\mathcal{C}_2)\overset{\psi}{\to}H_n(\Ima{j})\overset{\Delta}{\to}H_{n-1}(\mathcal{C}_1\cap\mathcal{C}_2)\to\cdots
+\]
+donde $\mathcal{C}_i=\{C_n(K_i;\F),\partial_n\}$ ($i=1,2$). Obsérvese que $\CC_1\cap\CC_2=\CC(K_1\cap K_2;\F)$. Además $\Ima{j}=\CC(K_1\cup K_2;\F)$ pues trivialmente $\Ima{j_n}\subseteq C_n(K_1\cup K_2;\F)$ y recíprocamente, si $\sigma\in K_1$ entonces $j(\sigma,0)=\sigma$ y análogamente si $\sigma\in K_2$. 
+\QED
+\end{dem}
+
+\begin{nota}\
+\begin{enumerate}
+\item La sucesión de Mayer-Vietoris también es válida para la homología reducida. 
+\item 
+\end{enumerate}
+\end{nota}
+
+\begin{ej}
+Vamos a calcular la homología de un colapso elemental (la cual se generaliza fácilmente a la de un colapso completo). Sea $K$ un complejo simplicial y $L\subseteq K$ un subcomplejo tal que $K\searrow L=K-\{\sigma,\tau\}$ con $\tau<\sigma$ una cara libre. Aplicamos la sucesión de Mayer-Vietoris para $K_1=L$ y $K_2=\sigma$. Entonces $K_1\cap K_2$ es el cono sobre $\partial\tau$, así que todas las homologías reducidas de $K_2$ y $K_1\cap K_2$ son triviales. A partir de la sucesión de Mayer-Vietoris para homología reducida obtenemos que $\widetilde{H}_n(K;\F)\cong \widetilde{H}_n(L;\F)$ para todo $n=0$, con lo cual también se tiene la igualdad en las homologías no reducidas. 
+\end{ej}
 
 \end{document}
