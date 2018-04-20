@@ -29,7 +29,7 @@ apply(datos,2,sd)    #CUASIDESV. TIPICA DE CADA COLUMNA
 #ii) NUBE DE PUNTOS
 attach(datos)    #PARA USAR DIRECTAMENTE EL NOMBRE DE LAS VARIABLES
 plot(Altura,Peso,main="Datos familiares", xlim=c(110,180)) #PUNTOS
-text(Altura,Peso,label=rownames(datos),adj=1,col="red")   
+text(Altura,Peso,label=rownames(datos),adj=2,col="red")   
 #TEXTOS; adj controla la posición del texto respecto al punto
 grid()      #REJILLA
 regre<-lm(Peso~Altura)          #V.DEPEND.~V.INDEPEND.
@@ -89,7 +89,7 @@ selec[order(-selec$IMC),] #DE MAYOR A MENOR
 
 
 #2. DATOS Boston
-################
+###############4#
 
 #i) ACCESO A DATOS YA DISPONIBLES EN R
 library(MASS)
@@ -203,7 +203,6 @@ nombres<- decath$nompais
 decath<- decath[,1:10]    
 rownames(decath)<- nombres
 decath
-
 
 #Resumen numérico:
 summary(decath)

@@ -99,6 +99,7 @@ which(max(y)-y <200)
 #vi) ¿Cuántos elementos de x son pares?
 sum(x%%2 ==0)
 
+
 #vii) Seleccionar los elementos de x en posiciones donde 
 #y sea múltiplo de 5
 x[y%%5 ==0]
@@ -144,7 +145,7 @@ n=9
 m=9
 i=1:n
 j=1:m
-A=outer(i,j,"9")
+A=outer(i,j,"*")
 colnames(A)=paste("*",1:m,sep="")
 rownames(A)=1:n
 A
