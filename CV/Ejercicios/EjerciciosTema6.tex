@@ -55,10 +55,36 @@ Sea $f:D^n\to\R^n$ una aplicación continua, y sea $r\in(0,1)$ dado. Supongamos 
 (Pista: Modificar la prueba del teorema del punto fijo de Brouwer y usar ejercicios 6.4 y 7.3)
 \end{ejercicio}
 \begin{solucion}
-Supongamos que hay algún punto $y$ del disco cerrado de radio $r$ y centro 0 que no está en $f(D^n)$. Para cada punto $z=f(x)\in f(D^n)$ definimos $g:B[0,1]\to S^{n-1}$ donde $g(x)$ es la intersección con $S^{n-1}$ de la semirrecta que comienza en $z$ y pasa por $y$. 
+Supongamos que hay algún punto $p$ del disco cerrado de radio $r$ y centro 0 que no está en $f(D^n)$. Para cada punto $z=f(x)\in f(D^n)$ definimos $g:B[0,1]\to S^{n-1}$ donde $g(x)$ es la intersección con $S^{n-1}$ de la semirrecta que comienza en $z$ y pasa por $y$. 
 
-Sea $h(y)$ la distancia con signo desde $y$ hasta el hiperplano $\pi$ orientado de modo que $h(p)>0$ donde $p$ tiene coordenadas no negativas (está por encima del hiperplano). Esto implica que para todo $y,\in B(x,1-r)$, $h(y)>0$. Además, $h(y)=y\cdot x$ siendo $x\perp \pi$ y $|x|=1$.  También se tiene $h(g(x))=\frac{f(x)-x_0}{|f(x)-x_0|}\cdot x=\frac{1}{|f(x)-x_0|}(f(x)\cdot x-x_0\cdot x)$, pues $g(x)=\frac{f(x)-x_0}{|f(x)-x_0|}$. Aquí todo es positivo, ya que la distancia dirigida $f(x)\cdot x=h(f(x))>h(x_0)=x_0\cdot x$, siendo $h(f(x))>0$, mientras que $h(-x)<0$, por lo que $g(x)\neq -x$. Esto implica que $g$ es homotópica a la identidad por el 6.4, lo cual contradice el ejercicio \ref{ejer:7.3}.
+Sea $h(p)$ la distancia con signo desde $p$ hasta el hiperplano $\pi$ orientado de modo que $h(p)>0$ (está por encima del hiperplano). Esto implica que para todo $y\in B(x,1-r)$, $h(y)>0$. Además, $h(y)=y\cdot x$ siendo $x\perp \pi$ y $|x|=1$.  También se tiene $h(g(x))=\frac{f(x)-x_0}{|f(x)-x_0|}\cdot x=\frac{1}{|f(x)-x_0|}(f(x)\cdot x-x_0\cdot x)$, pues $g(x)=\frac{f(x)-x_0}{|f(x)-x_0|}$. Aquí todo es positivo, ya que la distancia dirigida $f(x)\cdot x=h(f(x))>h(x_0)=x_0\cdot x$, siendo $h(f(x))>0$, mientras que $h(-x)<0$, por lo que $g(x)\neq -x$. Esto implica que $g$ es homotópica a la identidad por el 6.4, lo cual contradice el ejercicio \ref{ejer:7.3}.
+
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\draw[-,color=black] (-5.666666666666668,0.) -- (6,0.);
+%\foreach \x in {-5.,-4.,-3.,-2.,-1.,1.,2.,3.,4.,5.}
+%\draw[shift={(\x,0)},color=black] (0pt,-2pt);
+\draw[-,color=black] (0.,-3.02) -- (0.,4.486666666666665);
+\foreach \y in {-3.,-2.,-1.,1.,2.,3.,4.}
+\draw[shift={(0,\y)},color=black] (-2pt,0pt);
+\clip(-5.666666666666668,-3.02) rectangle (5,4.486666666666665);
+\draw [line width=1.pt] (0.,0.) circle (1.4142135623730951cm);
+\draw [line width=1.pt,domain=-5.666666666666668:5] plot(\x,{(-0.--1.*\x)/1.});
+\draw [line width=1.pt] (-2.,2.) circle (1.4142135623730951cm);
+\draw [line width=1.pt] (0.,0.) circle (2.8284271247461903cm);
+\draw (-1.,1.153333333333334) node[anchor=north west] {$p$};
+\draw (2.88,2.86) node[anchor=north west] {$\pi$};
+\draw [line width=1.pt,dash pattern=on 3pt off 3pt] (-2.,2.)-- (-1.,1.);
+\draw (-2.35,1.62) node[anchor=north west] {$1-r$};
+\begin{scriptsize}
+\draw [fill=black] (-1.,1.) circle (2.pt);
+\draw [fill=black] (-2.,2.) circle (2.pt);
+\end{scriptsize}
+\end{tikzpicture}
+\end{center}
+
 \end{solucion}
+
 
 \newpage
 
