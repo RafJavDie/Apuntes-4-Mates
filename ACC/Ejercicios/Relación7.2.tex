@@ -74,10 +74,23 @@ Write down the six permutation matrices in $GL(3, k)$.
 \newpage
 
 \begin{ejercicio}{7.2.5}
+Let $M_{τ}$ be the matrix of the linear transformation taking $x_1,\dots , x_n$ to $x_{τ(1)},\dots , x_{τ(n)}$.
+This means that if $e_1, \dots, e_n$ is the standard basis of $k^n$, then $M_τ \cdot(\sum_j x_je_j) =\sum_j x_{τ(j)}e_j$.
+\begin{enumerate}[a.]
+\item Show that $M_τ \cdot e_{τ(i)} = e_i$. Hint: Observe that
+$\sum_j x_je_j =\sum_j x_{τ(j)}e_{τ(j)}$.
+\item Prove that the $τ(i)$-th column of $M_τ$ is the $i$-th column of the identity matrix.
+\item Prove that $M_τ \cdot M_ν = M_{τν}$, where $τν$ is the permutation taking $i$ to $τ(ν(i))$.
+\end{enumerate}
 
 \end{ejercicio}
-\begin{solucion}
-
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Atiendiendo a la observación, se tiene por definición que $M_τ \cdot(\sum_j x_{τ(j)}e_{τ(j)})=M_τ \cdot(
+\sum_j x_je_j) =\sum_j x_{τ(j)}e_j$ y por otro lado $M_τ \cdot(\sum_j x_{τ(j)}e_{τ(j)})=\sum_j x_{τ(j)}e_{τ(j)}$. Por la unicidad de las coordenadas se tiene el resultado. 
+\item Fila a fila, tenemos que $(M_τ)_i(x_1,\dots, x_n)'=x_{\tau(i)}=Id_{\tau(i)}(x_1\dots, x_n)$, de donde se deduce el resultado.  
+\item Por un lado $M_{ντ}\cdot(\sum_j x_je_j) =\sum_j x_{\nu(τ(j))}e_j$ y por otro $M_τ (\cdot M_ν \cdot(\sum_j x_je_j))=M_τ \cdot(\sum_j x_{\nu(j)}e_j)=\sum_j x_{\tau(\nu(j))}e_j$.
+\end{enumerate}
 \end{solucion}
 \newpage
 
@@ -93,6 +106,30 @@ Write down the six permutation matrices in $GL(3, k)$.
 
 \end{ejercicio}
 \begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7.2.10}
+Prove Proposition 9.
+\end{ejercicio}
+\begin{solucion}
+\emph{If $G ⊆ GL(n, k)$ is a finite matrix group, then the set $k[x_1, \dots , x_n]^G$
+is closed under addition and multiplication and contains the constant polynomials.}
+
+
+Que contiene a los polinomios constantes es trivial. Si $f$ y $g$ son invariantes por $G$, entonces $f(x)+g(x)=f(Ax)+f(Ax)$ para toda $A\in G$ luego la suma es también invariante. Similarmente para la multiplicación, $f(x)g(x)=f(Ax)g(Ax)$. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7.2.11}
+Let $G ⊆ GL(n, k)$ be a finite matrix group. Then a polynomial
+$f ∈ k[x_1, \dots , x_n]$ is invariant under $G$ if and only if its homogeneous components
+are invariant.
+\end{ejercicio}
+\begin{solucion}
+Si las componentes homogéneas son invariantes entonces $f$ es invariante por linealidad. Recíprocamente, al evaluar $f(Ax)$ no se modifica el grado de ningún monomio por ser una transformación lineal, de modo que para cada $m$, $f_m(Ax)=\sum_j c_jf_{m,j}(x)$ con $c_j\in k$. Pero para que $f(Ax)=f(x)$ debe cumplirse que $f(Ax)=\sum_m f_m(Ax)=\sum_m\sum_j c_jf_{m,j}(x)=f(x)=\sum_m\sum_j f_{m,j}$ por lo que necesariamente $c_j=1$ para todo $j$ y hemos terminado.
 
 \end{solucion}
 \end{document}
