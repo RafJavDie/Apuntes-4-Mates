@@ -31,7 +31,10 @@ plot(conglo, cex=0.8,labels=rownames(mamiferos),
      sub="Distancias",ylab="Distancias",col="blue")
 
 cbind(conglo$merge,conglo$height) 
-#Lista de uniones que se van produciendo. Se una el de la primera columna con el del segundo y la distancia en la tercera. -n representa el caso n, en positivo representa un conglomerado. Por ejemplo, -1 1 indica que el 1 se une al conglomerado 1, donde (en este caso) están el 2 y el 9.
+#Lista de uniones que se van produciendo. Se una el de la primera columna con el del
+#segundo y la distancia en la tercera. -n representa el caso n, en positivo representa
+#un conglomerado. Por ejemplo, -1 1 indica que el 1 se une al conglomerado 1, donde 
+#(en este caso) están el 2 y el 9.
 
 #1. iv)
 cluster <- cutree(conglo, k = 3)
@@ -43,7 +46,7 @@ by(mamiferos,cluster,function(x) x)
 #Calcular los centroides:
 Centros=by(mamiferos,cluster,colMeans)  
 #(FORMATO list)
-Centros= t(sapply(split(mamiferos,cluster),colMeans))  
+Centros=t(sapply(split(mamiferos,cluster),colMeans))  
 #(FORMATO matrix)
 
 #1. v) 
@@ -95,7 +98,7 @@ plot(agnclus,
      main=paste("Agnes:",agnclus$method,sep=""))
 clusteragn=cutree(agnclus,3)
 table(cluster,clusteragn)
-
+split(mamiferos,clusteragn)
 
 #2. USO DEL COEFICIENTE DE GOWER
 ################################
@@ -138,7 +141,6 @@ agncluscom <- agnes(D,method="complete")
 summary(agncluscom)
 agncluscom$ac
 plot(agncluscom,main=agncluscom$method)
-
 
 #3.DATOS swiss
 ##############
@@ -200,7 +202,7 @@ datos<- cbind(R=c(R),G=c(G),B=c(B))
 head(datos)
 
 #4.ii
-for (k in c(2,5,10))
+for (k in c(2,5,15))
 { km<- kmeans(datos,k)
   datoscom<- km$centers[km$cluster,]
   Rcom<- matrix(datoscom[,1],nrow(R),ncol(R))
@@ -211,8 +213,6 @@ for (k in c(2,5,10))
   plot(imagen,main=paste("k= ",k),
        xlab=paste("ECM=",round(ECM,4)))
 }
-
-
 #5. DATOS agriculture
 #####################
 #5.i
@@ -226,7 +226,7 @@ grid()
 
 #5.ii
 agric.pam<- pam(agriculture,2)
-
+par(ask=F)
 summary(agric.pam)
 plot(agric.pam)
 

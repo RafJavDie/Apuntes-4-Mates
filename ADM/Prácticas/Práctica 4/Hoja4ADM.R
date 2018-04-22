@@ -84,6 +84,7 @@ legend("topleft",col=c("orange","blue","green"),
 #3. Dos medias
 ##############
 #3.i
+
 ####
 
 set.seed(12345)
@@ -97,17 +98,17 @@ g <- factor(rep(c(1,2),c(20,30)))
 data.frame(Z,g)
 summary(Z[g==1,])
 summary(Z[g==2,])
-#Se puede obtener con by:
-by(Z, g,summary)
-
+plot(Z[,c(1,2)],col=c("red","blue")[g])
+ #Se puede obtener con by:
+by(Z, h,summary)
 medias=by(Z,g,function(M)  apply(M,2,mean) ); medias
 sigmags= by(Z,g, cov ); sigmags
 str(sigmags)     #Estructura tipo lista
-sigmags[[1]]     #Acceso a una componente
+sigmags[[1]]     #Acceso a una componente 
 pairs(Z,col=c("red","blue")[g])
 
 #3.ii
-#####
+##### 
 source("Test_Mardia.R")
 by(Z,g,mardiaTest)
 
@@ -399,6 +400,7 @@ library(ICSNP)
 mardiaTest(Ax)
 HotellingsT2(Ax,mu = c(0,0))
 
+
 #7.iv
 #####
 #Para ver si las diferencias medias coinciden 
@@ -521,6 +523,3 @@ cbind(XtransB,datos$Grupo)
 sapply(split(XtransB,datos$Grupo),shapiro.test)
 var.test(XtransB~datos$Grupo)  
 t.test(XtransB ~ factor(datos$Grupo),var.equal=FALSE) #Se rechaza
-
-
-

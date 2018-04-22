@@ -16,6 +16,7 @@ grid()
 curve(pnorm(x),-4,4,1000,lwd=2,col="blue",
       main="Función de distribución de la ley N(0,1)",
       ylab="F(x)")
+
 grid()
 
 
@@ -34,7 +35,7 @@ qnorm(0.025)
 curve(dnorm(x),-4,4,1000,lwd=2,col="blue",
       main="Función de densidad de la ley N(0,1)",ylab="f(x)")
 abline(v=qnorm(0.975),col="red")
-abline(v=qnorm(0.025),col="red")
+abline(h=qnorm(0.025),col="red")
 grid()
 
 pnorm(qnorm(0.975))
@@ -166,7 +167,7 @@ for (rho in c(0,0.5,-0.5,0.7,-0.7,0.9,-0.9))
 #6.Estudio de la normalidad multivariante
 #########################################
 #i) Generar una muestra
-
+ 
 source("ananor.r")   
 library(MASS)   
 #MASS: Para usar mvrnorm, otra opción para generar 
