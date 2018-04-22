@@ -1,0 +1,98 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{7.2.1}
+If $A, B ∈ GL(n, k)$ are invertible matrices, show that $AB$ and $A^{−1}$ are also invertible.
+\end{ejercicio}
+\begin{solucion}
+Si $A$ y $B$ son invertibles podemos considerar $A^{-1}$ y $B^{-1}$ y el producto $B^{-1}A^{-1}$, que es claramente la inversa de $AB$. La inversa de $A^{-1}$ es trivialmente $A$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7.2.2}
+Suppose that $A ∈ GL(n, k)$ satisfies $A^m = I_n$ for some positive integer. If $m$ is the
+smallest such integer, then prove that the set $C_m = \{I_n, A, A^2,\dots , A^{m−1}\}$ has exactly $m$
+elements and is closed under matrix multiplication.
+\end{ejercicio}
+\begin{solucion}
+$C_m$ no puede tener más de $m$ elementos. Si tuviera menos esto implicaría que $A^k=A^l$ para algunos $0\leq k<l\leq m$. En ese caso, $I_n=A^{l-k}$, lo cual contradice que que $m$ sea el menor entero que verifica esa propiedad, por lo que hay exactamente $m$ elementos. Para ver que es cerrado para la multiplicación, basta ver que si $l+k> m$ entonces $A^lA^k\in C_m$, pues en cualquier otro caso es trivial. Dividiendo $l+k$ por $m$ obtendremos que $A^lA^k=A^{l+k}=A^{qm+r}=A^{qm}A^r=A^r$ con $r<m$, por lo que se tiene el resultado. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7.2.3}
+Write down the six permutation matrices in $GL(3, k)$.
+\end{ejercicio}
+\begin{solucion}
+\[
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{pmatrix}, \begin{pmatrix}
+0 & 0 & 1\\
+0 & 1 & 0\\
+1 & 0 & 0
+\end{pmatrix},\begin{pmatrix}
+0 & 1 & 0\\
+1 & 0 & 0\\
+0 & 0 & 1
+\end{pmatrix}, \begin{pmatrix}
+1 & 0 & 0\\
+0 & 0 & 1\\
+0 & 1 & 0
+\end{pmatrix}, \begin{pmatrix}
+0 & 1 & 0\\
+0 & 0 & 1\\
+1 & 0 & 0
+\end{pmatrix},
+\begin{pmatrix}
+0 & 0 & 1\\
+1 & 0 & 0\\
+0 & 1 & 0
+\end{pmatrix}.
+\]
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7.2.4}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7.2.5}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7.2.6}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7.2.7}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\end{document}
