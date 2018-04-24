@@ -27,7 +27,7 @@ Definimos el \textbf{espacio tangente} $T_pM=C_p(M)/\sim$.
 \[
 [\alpha]\mapsto \phi_h([\alpha])=(h\circ\alpha)'(0)=D_0(h\circ\alpha)
 \]
-$\phi_h$ es una biyección e induce una estructura de $\R$-espacio vectorial de dimensión $n$. Podemos considerar $\phi_h$ como un $\R$-isomorfismo de espacios vectoriales. Si $(\widetilde{U},\tilde{h})$ es otra carta para $p\in M$, entonces como $D_{h(p)}F:C_{h(p)}(h(U))/\sim\to C_{\tilde{h}(p)}(\tilde{h}(\widetilde{U})/\sim$ es isomorfismo, tenemos que $\phi_h=D_{h(p)}F^{-1}\circ \phi_{\tilde{h}}$, ya que $\phi_h([\alpha])=[h\circ\alpha]$ y $\phi_{\tilde{h}}([\alpha])=[\tilde{h}\circ\alpha]=[\tilde{h} \circ h^{-1}\circ h\circ \alpha]=[F^{-1} \circ h \circ \alpha]$. 
+$\phi_h$ es una biyección e induce una estructura de $\R$-espacio vectorial de dimensión $n$. Podemos considerar $\phi_h$ como un $\R$-isomorfismo de espacios vectoriales. Si $(\widetilde{U},\tilde{h})$ es otra carta para $p\in M$, entonces como $D_{h(p)}F:C_{h(p)}(h(U))/\sim\to C_{\tilde{h}(p)}(\tilde{h}(\widetilde{U}))/\sim$ es isomorfismo, tenemos que $\phi_h=D_{h(p)}F^{-1}\circ \phi_{\tilde{h}}$, ya que $\phi_h([\alpha])=[h\circ\alpha]$ y $\phi_{\tilde{h}}([\alpha])=[\tilde{h}\circ\alpha]=[\tilde{h} \circ h^{-1}\circ h\circ \alpha]=[F^{-1} \circ h \circ \alpha]$. 
 \end{nota}
 
 \begin{lemma}
@@ -62,26 +62,39 @@ Basta definir $D_pf[\alpha]=[f\circ \alpha]$, por lo que el diagrama conmuta. Co
 \item Sea $i:M\hookrightarrow \R^n$ diferenciable y $p\in M$. $D_pi:T_pM\to T_{i(p)}\R^n\cong\R^n$ es una inyección y podemos identificar $T_pM=\Ima D_pi\subseteq\R^n$. 
 \item Si $M\overset{f}{\to}N\overset{\varphi}{\to}P$ son diferenciables, entonces $D_p(\varphi\circ f)=D_{f(p)}\varphi\circ D_pf$ (regla de la cadena).
 \item Dado $p\in M$, y una carta $(U,h)$ alrededor de $p$, entonces la base del $\R$-e.v $T_pM$ será $\{(\parcial{}{x_i})_p\}_{i=1
-}^n$ donde $(\parcial{}{x_i})_p=\phi^{-1}_h(e_i)$ siendo $\{e_1,\dots, e_n\}$ la base estándar.
+}^n$ donde $(\parcial{}{x_i})_p=\phi^{-1}_h(e_i)=(D_{h(p)})^{-1}(e_i)$ siendo $\{e_1,\dots, e_n\}$ la base estándar.
 \item Un vector tangente $X_p\in T_pM$ se podrá escribir de forma única como
 \begin{equation}\label{coord}
 X_p=\sum_{i=1}^m a_i\left(\parcial{}{x_i}\right)_p
 \end{equation}
-con $a=(a_1,\dots, a_m)\in\R^m$. Si $X_p=[\alpha]$, donde $\alpha:I\to U$ con $\alpha(0)=0$ se tiene $a=(h\circ \alpha)'(0)$. 
+con $a=(a_1,\dots, a_m)\in\R^m$. Si $X_p=[\alpha]$, donde $\alpha:I\to U$ con $\alpha(0)=0$ se tiene $a=(h\circ \alpha)'(0)=D_0(h\circ\alpha)$, pues $D_0(h\circ\alpha)$ es una aplicación lineal de $\R$ en $\R^m$, de modo que su matriz es el vector $a$, es decir, $a_i=\parcial{(h\circ\alpha)}{x_i}(0)$. Más explícitamente, $a=\sum_{i=1}^m \parcial{(h\circ\alpha)}{x_i}(0)e_i$, luego 
+\[
+X_p=\phi_h^{-1}\left(\sum_{i=1}^m \parcial{(h\circ\alpha)}{x_i}(0)e_i \right)=\sum_{i=1}^m \parcial{(h\circ\alpha)}{x_i}(0)\phi_h^{-1}(e_i)=\sum_{i=1}^m a_i\left(\parcial{}{x_i}\right)_p.
+\]
 
-\item Dada $f\in\CC^{\infty}(M;\R)$ tenemos la aplicación tantente
+\item Dada $f\in\CC^{\infty}(M;\R)$ tenemos la aplicación tangente
 \[
 D_pf:T_pM\to T_{f(p)}\R\cong\R.
 \]
-La \textbf{derivada direccional} $X_pf\in\R$ está definida como la imagen en $\R$ de $X_p$ mediante $D_pf$, es decir, $X_pf=(f\circ\alpha)'(0)$. En términos de $f\circ h^{-1}$ tenemos por la regla de la cadena
 \[
-X_pf=\frac{d}{dt}(f\circ h^{-1}\circ h\circ \alpha(t))|_{t=0}=\sum_{i=1}^m\parcial{f\circ h^{-1}}{x_i}(h(p))a_i.
+X_p\mapsto D_pf([\alpha])=[f\circ\alpha]=(f\circ\alpha)'(0)
+\]
+La \textbf{derivada direccional} $X_pf\in\R$ está definida como la imagen en $\R$ de $X_p$ mediante $D_pf$, es decir, $X_pf=(f\circ\alpha)'(0)$. En términos de $f\circ h^{-1}$ tenemos por la regla de la cadena, recordando que $a_i=\parcial{(h\circ\alpha)}{x_i}(0)$,
+\[
+X_pf=\frac{d}{dt}((f\circ h^{-1})\circ (h\circ \alpha(t)))|_{t=0}=D_{h(p)}(f\circ h^{-1})D_0(h\circ\alpha)=\sum_{i=1}^m\parcial{f\circ h^{-1}}{x_i}(h(p))a_i.
 \]
 En particular 
 \[
-\left(\parcial{}{x_j}\right)_pf=\parcial{f\circ h^{-1}}{x_i}(h(p)).
+\left(\parcial{}{x_i}\right)_pf=\parcial{f\circ h^{-1}}{x_i}(h(p)).
 \]
-\item Tenemos una base similar $(\parcial{}{y_j})_{f(p)}$ ($1\leq j\leq n$) para $T_{f(p)}N$ y la matriz de $D_pf$ con respecto a las bases de $T_pM$ y $T_{f(p)}N$ es la matriz jacobiana en $h(p)$ de $g\circ f\circ h^{-1}$. En particular, cuando $N=M$ y $f=Id_M$ se tiene que
+\item Tenemos una base similar $(\parcial{}{y_j})_{f(p)}$ ($1\leq j\leq n$) para $T_{f(p)}N$ y la matriz de $D_pf$ con respecto a las bases de $T_pM$ y $T_{f(p)}N$ es la matriz jacobiana en $h(p)$ de $g\circ f\circ h^{-1}$. En particular, cuando $N=M$ y $f=Id_M$ se tiene que $\phi_g=D_{h(p)}(g\circ h^{-1})\phi_h$, luego $Id_{T_p(M)}=\phi_g^{-1}D_{h(p)}(g\circ h^{-1})\phi_h$. Así que
+\[
+\left(\parcial{}{x_i}\right)_p=\phi_g^{-1}D_{h(p)}(g\circ h^{-1})\phi_h\left(\left(\parcial{}{x_i}\right)_p\right)=\phi_g^{-1}(D_{h(p)}(g\circ h^{-1})e_i)=
+\]
+\[
+\phi_g^{-1}\left(\sum_{j=1}^m\parcial{\phi_j}{x_j}(h(p))e_j\right)=\sum_{j=1}^m\parcial{\phi_j}{x_j}(h(p))\left(\parcial{}{y_j}\right)_p
+\]
+que aplicado sobre $f$ nos da
 \begin{equation}\label{cambio}
 \left(\parcial{}{x_i}\right)_pf=\parcial{\varphi}{x_i}(h(p))\left(\parcial{}{y_j}\right)_p
 \end{equation}
@@ -89,9 +102,15 @@ donde $\varphi=g\circ h^{-1}$, siendo $(U,h)$ y $(V,g)$ cartas alrededor de $p$.
 \end{enumerate}
 \end{nota}
 
-Supongamos que $X$ es una función que a cada $p\in M$ le asigna un vector tangente $X_p\in T_pM$. Dada una carta $(U,h)$, la fórmula \ref{coord} se cumple para unas ciertas funciones $a_i:U\to\R$. Si estas funciones son diferenciables en un entorno de $p$, entonces se dice que $X$ es diferenciable en $p$. Además esta condición es independiente de las cartas por \ref{cambio}. Si $X$ es diferenciable en todo punto $p\in M$ se dice que $X$ es un \textbf{campo de vectores diferenciable} en $M$. 
+Supongamos que $X$ es una función que a cada $p\in M$ le asigna un vector tangente $X_p\in T_pM$. Dada una carta $(U,h)$, la fórmula \ref{coord} se cumple para unas ciertas funciones $a_i:U\to\R$. Si estas funciones son diferenciables en un entorno de $p$, entonces se dice que $X$ es diferenciable en $p$. Además esta condición es independiente de las cartas por \ref{cambio}. Si $X$ es diferenciable en todo punto $p\in M$ se dice que $X$ es un \textbf{campo de vectores diferenciable} en $M$. Se suele denotar por $\mathcal{D}(M)$ al conjunto de campos de vectores diferenciables sobre $M$, que es un $\R$-e.v. y $C^{\infty}(M;\R)$-módulo. 
 
-Consideremos familias $w=\{w_p\}_{p\in M}$ de $k$-formas alternadas en $T_pM$, donde $w_p\in Alt^k(T_pM)$. Necesitamos la noción de deferenciabilidad en $p$ de $w$. Sea $g:W\to M$ una parametrización local (la inversa de una carta) donde $W\subseteq\R^m$ es abierto. Para $x\in W$,
+\begin{defi}
+Consideramos $X:M\to \bigcup_{p\in M}\equiv TM$. Definimos este espacio $TM$ como \textbf{fibrado tangente} sobre $M$, que es una variedad diferenciable de dimensión $2n$ (siendo $n$ la dimensión de la variedad). Podemos ver los puntos de esta variedad como pares $(p,v)\in TM$ donde $p$ es el punto de la variedad y $v$ es el vector tangente, por lo que estará contenida en $M\times \R^n$, de donde heredará la estructura diferenciable. 
+\end{defi}
+
+Se tiene que la aplicación $\pi :TM\to M$ dada por $(p,v)\mapsto p$ es diferenciable y da lugar a una fibración. Claramente $\pi^{-1}(p)=T_pM\cong\R^n$ y además se puede encontrar una sección $s$, es decir, $\pi\circ s=Id_{TM}$, que dependiendo del fibrado podrá ser diferenciable o no.
+
+Consideremos familias $w=\{w_p\}_{p\in M}$ de $k$-formas alternadas en $T_pM$, donde $w_p\in Alt^k(T_pM)$, es decir, $w:M\to \bigcup_{p\in M}Alt^k(T_pM)$. Necesitamos la noción de deferenciabilidad en $p$ de $w$. Sea $g:W\to M$ una parametrización local (la inversa de una carta) donde $W\subseteq\R^m$ es abierto. Para $x\in W$,
 \[
 D_x g:\R^m\to T_{g(x)}M
 \]
@@ -104,21 +123,22 @@ Definimos $g^*(w):W\to Alt^k(\R^m)$ como la función cuyo valor en $x$ es
 \[
 g^*(w)_x=Alt^k(D_xg)(w_{g(x)}).
 \]
-Recordemos que para $k=0$, $g^*(w)=w_{g(x)}$. 
+Recordemos que para $k=0$, $g^*(w)=w_{g(x)}$ por lo que $\Omega^0(M)=C^{\infty}(M;\R)$. Obsérvese que en cada carta esta difinición coincide con la definición análoga para abiertos euclídeos de la sección \ref{inducida}.
+
 
 \begin{defi}
-Una familia $w=\{w_p\}_{p\in M}$ de $k$-formas alternadas en $T_pM$ se dice \textbf{diferenciable} si $g^*(w)$ es una función diferenciable para toda parametrización loca. El conjunto de tales familias diferenciables es un espacio vectorial denotado $\Omega^k(M)$. En particular, $\Omega^0(M)=\CC^{\infty}(M;\R)$. 
+Una familia $w=\{w_p\}_{p\in M}$ de $k$-formas alternadas en $T_pM$ se dice \textbf{diferenciable} si $g^*(w)$ es una función diferenciable para toda parametrización local. El conjunto de tales familias diferenciables es un espacio vectorial denotado $\Omega^k(M)$. En particular, $\Omega^0(M)=\CC^{\infty}(M;\R)$. 
 \end{defi}
 
 \begin{lemma}
 Sea $g_i:W_i\to N$ una familia de parametrizaciones locales con $N=\bigcup g_i(W_i)$. Si $g_i^*(w)$ es diferenciable para todo $i$, entonces $w$ es diferenciable.
 \end{lemma}
 \begin{proof}
-Sea $g:W\to N$ una parametrización local cualquiera y $z\in W$. Probamos que $g^*(w)$ es diferenciable entorno a $z$. Elegimos $i$ con $g(z)\in g_i(W_i)$. En un entorno de $z$ podemos escribir $g=g_i\circ g_i^{-1}\circ g\circ h$, donde $h=g_i^{-1}\circ g:g^{-1}(g_i(W_i))\to W_i$ es una aplicación diferenciable entre abiertos euclídeos. Entonces
+Sea $g:W\to N$ una parametrización local cualquiera y $z\in W$. Probamos que $g^*(w)$ es diferenciable entorno a $z$. Elegimos $i$ con $g(z)\in g_i(W_i)$. En un entorno de $z$ podemos escribir $g=g_i\circ g_i^{-1}\circ g=g_i\circ h$, donde $h=g_i^{-1}\circ g:g^{-1}(g_i(W_i))\to W_i$ es una aplicación diferenciable entre abiertos euclídeos. Entonces
 \[
 g^*(w)=(g_i\circ h)^*(w)=h^*(g_i^*(w))
 \]
-en un entorno de $z$ y el lado derecho es diferenciable por hipótesis. 
+en un entorno de $z$ y el lado derecho es diferenciable por hipótesis, ya que $ g_i^*(w)\in\Omega^k(W_i)$ y $h^*(g_i^*(w))\in\Omega^k(W)$. 
 \end{proof}
 
 La diferencial exterior
@@ -129,20 +149,28 @@ se puede definir a través de las parametrizaciones locales $g:W\to M$ como sigu
 \[
 d_pw=Alt^{k+1}((D_xg)^{-1})\circ d_x(g^*w),\quad p=g(x).
 \]
-No es inmediato que $d_pw$ no dependa de la elección de $g$. Dada parametrización local $g$, entonces cualquier otra tiene localmente la forma $g\circ\phi$ con $\phi:U\to W$ difeomorfismo. Sean $z_1,\dots, z_{k+1}\in T_pM$. Elegimos $v_1,\dots, v_{k+1}\in\R^n$ de modo que $D_x(g\circ \phi)(v_i)=z_i$. Debemos probar que
+Explicamos esta definición: tenemos $g:W\to M$, y $D_xg:T_xW\to T_pM$ con inversa $(D_xg)^{-1}:T_xW\to T_pM$, de modo que $Alt^{k+1}((D_xg)^{-1}):Alt^{k+1}(T_xW)\to Alt^{k+1}(T_pM)$. Como $d_xg^*(w)\in Alt^{k+1}(\R^n)$ por estar $g^*(w)\in Alt^{k}(\R^n)$, la composición tiene sentido. Además, podemos considerar localmente $g^*:\Omega^k(M)\to \Omega^k(W)$, que al componerla con la diferencial exterior de $\Omega^k(W)$ nos lleva a $\Omega^{k+1}(W)$. 
+
+No es inmediato que $d_pw$ no dependa de la elección de $g$. Dada parametrización local $g$, entonces cualquier otra tiene localmente la forma $g\circ\phi$ con $\phi:U\to W$ difeomorfismo. Sean $z_1,\dots, z_{k+1}\in T_pM$. Elegimos $v_1,\dots, v_{k+1}\in\R^n=T_xU$ de modo que $D_x(g\circ \phi)(v_i)=z_i$ y $w_1,\dots, w_{k+1}\in T_yM$ tales que $D_x\phi(v_i)=w_i$. Debemos probar que
 \[
-d_yg^*(w)(w)(w_1,\dots, w_{k+1})=d_x(g\circ\phi)^*(w)(v_1,\dots,v_{k+1})
+d_yg^*(w)(w_1,\dots, w_{k+1})=d_x(g\circ\phi)^*(w)(v_1,\dots,v_{k+1})
 \]
-donde $\phi(x)=y$ y $D_x\phi(v_i)=w_i$ ESTO NO LO ENTIENDO . Esto se sigue de las ecuaciones 
+donde $\phi(x)=y$. Esto se sigue de las ecuaciones 
 \begin{gather*}
 (g\circ\phi)^*(w)=\phi^*(g^*(w))\\
 d\phi^*(\tau)=\phi^*d(\tau),
 \end{gather*}
-donde $\tau=g^*(w)$. Es evidente que $d\circ d=0$, con lo que tenemos definido un complejo de cadenas. Tenemos que $\Omega^k(M)=0$ si $k>\dim(M)$ pues $Alt^k(T_pM)=0$ cuando $k>\dim(T_pM)$. Una aplicación diferenciable $\phi:M\to N$ induce un morfismo de complejo de cadenas $\phi^*:\Omega^*(N)\to\Omega^*(M)$
+donde $\tau=g^*(w)$. %La última igualdad se puede reescribir puntualmente como $g^*(d\tau)_{\phi(x)}=d_xg^*(w)\in \Omega^{k+1}(W)$ para algún $x\in W$ (es decir, es la diferencial entre abiertos euclídeos). 
+Efectivamente,
+\[
+d_x(g\circ\phi)^*(w)(v_1,\dots,v_{k+1})=d_x\phi^*( g^*(w))(v_1,\dots,v_{k+1})=\phi^*d_{\phi(x)}(g^*(w))(v_1,\dots,v_{k+1})=d_y(g^*(w))(w_1,\dots, w_{k+1})
+\] 
+
+Es evidente que $d\circ d=0$, con lo que tenemos definido un complejo de cadenas. Tenemos que $\Omega^k(M)=0$ si $k>\dim(M)$ pues $Alt^k(T_pM)=0$ cuando $k>\dim(T_pM)$. Una aplicación diferenciable $\phi:M\to N$ induce un morfismo de complejo de cadenas $\phi^*:\Omega^*(N)\to\Omega^*(M)$
 \[
 \phi^*(\tau)_p=Alt^k(D_p\phi)(\tau_{\phi(p)}),\quad \tau\in \Omega^k(M),
 \]
-siendo $\phi^*(\tau)_p=\tau_{\phi(p)}$ para $k=0$. Se define el producto bilineal para $w\in\Omega^k(M)$ y $\tau\in\Omega^l(M)$, $w\land\tau$ como $(w\land\tau)_p)=w_p\land\tau_p\in\Omega^{k+l}(M)$.
+siendo $\phi^*(\tau)_p=\tau_{\phi(p)}$ para $k=0$. Se define el producto bilineal para $w\in\Omega^k(M)$ y $\tau\in\Omega^l(M)$, $w\land\tau$ como $(w\land\tau)_p=w_p\land\tau_p\in\Omega^{k+l}(M)$.
 
 Se prueba usando parametrizaciones locales que $\phi^*w$ y $w\land\tau$ son diferenciables PROBARLO. Es también fácil de ver que
 \[
