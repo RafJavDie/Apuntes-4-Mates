@@ -82,7 +82,7 @@ Si $\sigma$ es un $n$-símplice orientado de $K$ y $\hat{\sigma}\subseteq\sigma$
 Si $\sigma_0<\sigma_1<\dots<\sigma_n=\sigma$ son símplices de $K$ entonces $\hat{\sigma}=(b(\sigma_0),b(\sigma_1),\dots, b(\sigma_k))$. Necesariamente ha de ocurrir $\sigma_0=v_0, \sigma_1=(v_0,v_1), \dots, \sigma_n=\sigma$, por ser una cadena de longitud $n+1$. 
 
 
-Consideramos el complejo de cadenas simpliciales orientadas $\{C_n(K),\partial_n\}_{n\geq 0}$. Tenemos también el complejo de cadenas $\{C_n(sdK,\partial_n\}_{n\geq 0}$. Para cada $n\geq 0$ definimos el operador \emph{subdivisión} $sd_*:C_n(K)\to C_n(sdK)$ de la siguiente manera:
+Consideramos el complejo de cadenas simpliciales orientadas $\{C_n(K),\partial_n\}_{n\geq 0}$. Tenemos también el complejo de cadenas $\{C_n(sdK),\partial_n\}_{n\geq 0}$. Para cada $n\geq 0$ definimos el operador \emph{subdivisión} $sd_*:C_n(K)\to C_n(sdK)$ de la siguiente manera:
 \[
 sd_*(\sigma)=\sum_{\hat{\sigma}\subset\sigma}[\sigma:\hat{\sigma}]\hat{\sigma}
 \]
@@ -100,7 +100,54 @@ Obsérvese que
 \]
 Denotamos $b(v_0)=\hat{\tau}_1$ y $b(v_1)=\hat{\tau}_2$, donde $\hat{\tau}_i$ denotará una cara de $\hat{\sigma}_i$ contenida en $\partial\sigma$.
 
-\item HACER DIBUJITO Sea $\sigma$ el 2-símplice $[v_0,v_1,v_2]$. Por definición
+\item  Sea $\sigma$ el 2-símplice $[v_0,v_1,v_2]$. 
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=2.0cm,y=2.0cm]
+\clip(-2.091122685185183,-0.9811111111111114) rectangle (6.227743055555544,3.0915162037037107);
+\fill[line width=1.pt,fill=black,fill opacity=0.10000000149011612] (0.,0.) -- (3.,0.) -- (1.5,2.5980762113533165) -- cycle;
+\draw [line width=1.pt] (0.,0.)-- (3.,0.);
+\draw [line width=1.pt] (3.,0.)-- (1.5,2.5980762113533165);
+\draw [line width=1.pt] (1.5,2.5980762113533165)-- (0.,0.);
+\draw [line width=1.pt] (0.75,1.2990381056766582)-- (3.,0.);
+\draw [line width=1.pt] (1.5,2.5980762113533165)-- (1.5,0.);
+\draw [line width=1.pt] (2.25,1.2990381056766584)-- (0.,0.);
+\draw (-0.3,0.06778935185185353) node[anchor=north west] {$v_0$};
+\draw (1.410034722222219,2.8745023148148214) node[anchor=north west] {$v_1$};
+\draw (3.0014699074074014,0.08949074074074245) node[anchor=north west] {$v_2$};
+\draw (0.,1.5145486111111155) node[anchor=north west] {$b(v_0,v_1)$};
+\draw (2.2853240740740692,1.5217824074074118) node[anchor=north west] {$b(v_1,v_2)$};
+\draw (1.3955671296296264,0.031620370370371985) node[anchor=north west] {$b(v_0,v_2)$};
+\draw (1.489606481481478,1.2613657407407446) node[anchor=north west] {$b(\sigma)$};
+\draw (0.67,0.96) node[anchor=north west] {$\hat{\sigma}_1$};
+\draw (1.06,1.66) node[anchor=north west] {$\hat{\sigma}_2$};
+\draw (1.64,1.62) node[anchor=north west] {$\hat{\sigma}_3$};
+\draw (2.03,0.94) node[anchor=north west] {$\hat{\sigma}_4$};
+\draw (1.68,0.43) node[anchor=north west] {$\hat{\sigma}_5$};
+\draw (1,0.45) node[anchor=north west] {$\hat{\sigma}_6$};
+\draw [shift={(1.1977777777777765,1.5177777777777794)},line width=2.pt,dash pattern=on 3pt off 3pt]  plot[domain=0.3080527810237691:4.889097836454726,variable=\t]({1.*0.20521593565538068*cos(\t r)+0.*0.20521593565538068*sin(\t r)},{0.*0.20521593565538068*cos(\t r)+1.*0.20521593565538068*sin(\t r)});
+\draw [shift={(1.7666666666666653,1.473333333333335)},line width=2.pt,dash pattern=on 3pt off 3pt]  plot[domain=0.5743048301747012:5.719869045687619,variable=\t]({1.*0.21*cos(\t r)+0.*0.21*sin(\t r)},{0.*0.21*cos(\t r)+1.*0.21*sin(\t r)});
+\draw [shift={(0.7977777777777766,0.8155555555555576)},line width=2.pt,dash pattern=on 3pt off 3pt]  plot[domain=0.6350267353903059:5.695182703632019,variable=\t]({1.*0.20978531059921557*cos(\t r)+0.*0.20978531059921557*sin(\t r)},{0.*0.20978531059921557*cos(\t r)+1.*0.20978531059921557*sin(\t r)});
+\draw [shift={(1.1444444444444433,0.3088888888888912)},line width=2.pt,dash pattern=on 3pt off 3pt]  plot[domain=0.9561333748727239:5.796286075368317,variable=\t]({1.*0.1849657959705298*cos(\t r)+0.*0.1849657959705298*sin(\t r)},{0.*0.1849657959705298*cos(\t r)+1.*0.1849657959705298*sin(\t r)});
+\draw [shift={(1.82,0.2822222222222246)},line width=2.pt,dash pattern=on 3pt off 3pt]  plot[domain=1.0074800653029345:5.873057966638092,variable=\t]({1.*0.19975293381550335*cos(\t r)+0.*0.19975293381550335*sin(\t r)},{0.*0.19975293381550335*cos(\t r)+1.*0.19975293381550335*sin(\t r)});
+\draw [shift={(2.1577777777777762,0.7977777777777798)},line width=2.pt,dash pattern=on 3pt off 3pt]  plot[domain=1.2068173702852523:5.668522355257421,variable=\t]({1.*0.19975293381550416*cos(\t r)+0.*0.19975293381550416*sin(\t r)},{0.*0.19975293381550416*cos(\t r)+1.*0.19975293381550416*sin(\t r)});
+\draw [->,line width=0.5pt] (1.3719607729248502,1.6262852173775961) -- (1.4318518518518506,1.5355555555555573);
+\draw [->,line width=0.5pt] (1.95,1.5912118459481928) -- (2.,1.5177777777777797);
+\draw [->,line width=0.5pt] (2.1958262109075015,0.9938735485232857) -- (2.2970370370370357,0.9607407407407428);
+\draw [->,line width=0.5pt] (0.9446424761605307,0.9653575479059667) -- (1.01111111111111,0.8955555555555577);
+\draw [->,line width=0.5pt] (1.2225054816614502,0.4765755614291284) -- (1.3133333333333321,0.43333333333333557);
+\draw [->,line width=0.5pt] (1.9104980363277935,0.4602990033833694) -- (2.006666666666665,0.4155555555555578);
+\begin{scriptsize}
+\draw [fill=black] (0.,0.) circle (1.5pt);
+\draw [fill=black] (3.,0.) circle (1.5pt);
+\draw [fill=black] (1.5,2.5980762113533165) circle (1.5pt);
+\draw [fill=black] (0.75,1.2990381056766582) circle (1.5pt);
+\draw [fill=black] (1.5,0.) circle (1.5pt);
+\draw [fill=black] (2.25,1.2990381056766584) circle (1.5pt);
+\draw [fill=black] (1.5,0.8660254037844389) circle (1.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+
+Por definición
 \[
 sd_*(\sigma)=\sum_{i=1}^6[\sigma:\hat{\sigma}_i]\hat{\sigma_i}
 \]
@@ -118,9 +165,17 @@ Si ahora calculamos $\partial_2(sd_*(\sigma))$ vamos obteniendo
 \]
 y así sucesivamente. Pero como vemos, al sumar alternadamente, se cancelan las aristas que no contienen ni $v_0$ ni $v_1$, y así con todos los demás vértices. Acabarán también desapareciendo las de la forma $[v_i,b(\sigma)]$. Por tanto, solo permanecerán las aristas del borde de $\sigma$. De modo que
 \[
-\partial_2(sd_*(\sigma)=\hat{\tau}_1-\hat{\tau}_2+\cdots -\hat{\tau}_6=\sum_{i=1}^6(-1)^2[\sigma:\hat{\sigma}_i]\hat{\tau}_i
+\partial_2(sd_*(\sigma))=\hat{\tau}_1-\hat{\tau}_2+\cdots -\hat{\tau}_6=\sum_{i=1}^6(-1)^2[\sigma:\hat{\sigma}_i]\hat{\tau}_i
 \]
-En general, para un $n$-símplice, $\partial_n(sd_*(\sigma))=\sum_{\hat{\sigma}\in sdK,\hat{\sigma}\subseteq\sigma}(-1)^n[\sigma:\hat{\sigma}]\hat{\tau}$ con $\hat{\sigma}$ de dimensión $n-1$ y $\hat{\tau}$ la única cara de $\hat{\sigma}$ contenida en $\partial\sigma$. DEMOSTRAR ESTO O BUSCARLO EN EL LIBRO
+En general, para un $n$-símplice, $\partial_n(sd_*(\sigma))=\sum_{\hat{\sigma}\in sdK,\hat{\sigma}\subseteq\sigma}(-1)^n[\sigma:\hat{\sigma}]\hat{\tau}$ con $\hat{\sigma}$ de dimensión $n-1$ y $\hat{\tau}$ la única cara de $\hat{\sigma}$ contenida en $\partial\sigma$. Vamos a probarlo. Tenemos
+\[
+\partial_n(sd_*(\sigma))=\sum[\sigma:\hat{\sigma}]\partial(\hat{\sigma})=\sum[\sigma:\hat{\sigma}]\sum_{j=0}^n (-1)^j\hat{\tau}_j
+\]
+donde $\hat{\tau}_j$ se obtiene eliminando de $\hat{\sigma}$ el vértice $j$-ésimo vértice, es decir, el de la forma $b(v_{i_1},\dots, v_{i_j})$. Basta observar que los $\hat{\tau}_j$ con $j\neq n$ se cancelan. Es claro que $\hat{\tau}_n$ solo es cara de $\hat{\sigma}$ puesto que es la única cara que tiene  en el borde (es la única que se obtiene eliminando $b(\sigma)$). 
+
+En el resto de casos, $\tau_j$ es cara de exactamente dos símplices. En efecto, si $j>0$ al eliminar $b(v_{i_1},\dots, v_{i_j})$, tenemos que permanecen $b(v_{i_1},\dots, v_{i_{j-1}})$ y $b(v_{i_1},\dots, v_{i_{j+1}})$, por lo que podemos completar la cadena con cualquiera de los vértices que los diferencian de modo que sigamos teniendo una cadena creciente de símplices. Para el caso $j=0$, podemos elegir cualquiera de los vértices del primer 1-símplice que aparezca en la cadena. Obsérvese que para el caso $j=n$ solo hay un $n$-símplice, por lo que efectivamente $\hat{\tau}_n$ es cara de un solo símplice. 
+
+Así pues, los $\hat{\tau}_j$ repetidos se cancelan pues cada una de las elecciones de vértice da lugar a una orientación inducida $\hat{\tau}_j$ distinta, de donde se deduce el resultado. 
 \end{enumerate}
 \end{ej}
 
