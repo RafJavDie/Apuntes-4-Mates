@@ -72,4 +72,85 @@ Consideremos $X = S^1 \times I$ el cilindro. Consideramos $A = \{z\} \times I$, 
 La retracción $r \colon X \to A$ definida por $r(s,t) = (z,t) \in A$ no es retracto de deformación. Si lo fuera, entonces el cilindro tendría el mismo tipo de homotopía que $A$, pero es fácil comprobar que $A$ es contráctil y que el cilindro retrae con deformacións sobre $S^1$, que es bien sabido que no es contráctil por tener grupo fundamental no trivial.
 \end{ej}
 
+\section{Invarianza topológica de la homología simplicial}
+
+Al principio del capítulo planteábamos la cuestión de si la homología simplicial dependía de la triangulacióne scogida. Vamos a empezar probando la invarianza por subdivisiones baricéntricas de una triangulación. Recordemos que dado un $n$-símplice $\sigma=(v_0,\dots, v_n)$, el baricentro de $\sigma$ se definía como $b(\sigma)=\sum_{i=0}^n\frac{1}{n+1}v_i\in\mathring{\sigma}$. Si tenemos en $K$ una sucesión estrictamente creciente de símplices $\sigma_0<\sigma_1<\dots <\sigma_k$, entonces un $k$ símplice de la subdivisión$sdK$ es de la forma $(b(\sigma_0),b(\sigma_1),\dots, b(\sigma_k))$. 
+
+Si $\sigma$ es un $n$-símplice orientado de $K$ y $\hat{\sigma}\subseteq\sigma$ es un $n$-símplice orientado de $sdK$, orientamos $\hat{\sigma}$ con la orientación inducida por $\sigma$, es dcir, ordenamos sus vértices según el orden de aparición en la construcción de $\hat{\sigma
+}$. 
+
+Si $\sigma_0<\sigma_1<\dots<\sigma_n=\sigma$ son símplices de $K$ entonces $\hat{\sigma}=(b(\sigma_0),b(\sigma_1),\dots, b(\sigma_k))$. Necesariamente ha de ocurrir $\sigma_0=v_0, \sigma_1=(v_0,v_1), \dots, \sigma_n=\sigma$, por ser una cadena de longitud $n+1$. 
+
+
+Consideramos el complejo de cadenas simpliciales orientadas $\{C_n(K),\partial_n\}_{n\geq 0}$. Tenemos también el complejo de cadenas $\{C_n(sdK,\partial_n\}_{n\geq 0}$. Para cada $n\geq 0$ definimos el operador \emph{subdivisión} $sd_*:C_n(K)\to C_n(sdK)$ de la siguiente manera:
+\[
+sd_*(\sigma)=\sum_{\hat{\sigma}\subset\sigma}[\sigma:\hat{\sigma}]\hat{\sigma}
+\]
+siendo $\hat{\sigma}$ símplices de dimensión $n$ y donde $[\sigma:\hat{\sigma}]=1$ si el orden de los vértices de $\sigma$ en la definición de $\hat{\sigma}$ da la orientación de $\sigma$ y $-1$en caso contrario. 
+
+\begin{ej}\
+\begin{enumerate}
+\item $\sigma$ el 1-símplice $[v_0,v_1]$ (orientado tal como está escrito). Tenemos que $b(v_0)=v_0$ y $b(v_1)=v_1$, así que el único vértice nuevo es $b(\Sigma)$. En cuanto a las aristas, surge de la cadena $v_0<\sigma$ la arista $\hat{\sigma}_1=[v_0,b(\sigma)]$ y de la cadena $v_1<\sigma$ la arista $\hat{\sigma}_2=[v_1,b(\sigma)]$. Vemos que claramente $[\sigma:\hat{\sigma}_1]=1$ porque primero aparece $v_0$ y después $b(\sigma)$ en la definición de $\hat{\sigma}$, que es la orientación inducida por $\sigma$. En cambio $[\sigma:\hat{\sigma}_2]=-1$, porque en la definición aparece primero $v_1$ y luego $b(\sigma)$, que es opuesto a la orientación inducida por $\sigma$. De este modo
+\[
+sd_*(\sigma)=[\sigma:\hat{\sigma}_1]\hat{\sigma}_1+[\sigma:\hat{\sigma}_2]\hat{\sigma}_2=\hat{\sigma}_1-\hat{\sigma}_2.
+\]
+Obsérvese que 
+\[
+\partial_1(sd_*(\sigma))=\partial_1(\hat{\sigma}_1)-\partial_1(\hat{\sigma}_2)=(b(\sigma)-v_0)-(b(\sigma)-v_1)=-v_0+v_1=(-1)[\sigma:\hat{\sigma}_1]b(v_0)+(-1)[\sigma:\hat{\sigma}_2]b(v_1)
+\]
+Denotamos $b(v_0)=\hat{\tau}_1$ y $b(v_1)=\hat{\tau}_2$, donde $\hat{\tau}_i$ denotará una cara de $\hat{\sigma}_i$ contenida en $\partial\sigma$.
+
+\item HACER DIBUJITO Sea $\sigma$ el 2-símplice $[v_0,v_1,v_2]$. Por definición
+\[
+sd_*(\sigma)=\sum_{i=1}^6[\sigma:\hat{\sigma}_i]\hat{\sigma_i}
+\]
+
+
+
+Vemos el primero y los demás son análogos. Tenemos la cadena $v_0<(v_0,v_1)<\sigma$. Esto nos da $\hat{\sigma}_1=[v_0, b(v_0,v_1),b(\sigma)]$. Este orden es el inducido por la orientación de $\sigma$, así que $[\sigma:\hat{\sigma}_1]=1$. Análogamente, si consideramos la cadena $v_1<(v_0,v_1)<\sigma$, obtenemos $\hat{\sigma}_2=[v_1,b(v_0,v_1),b(\sigma)]$, con $[\sigma:\hat{\sigma}_2]=-1$. Podemos ver esto observando que empezamos en la cadena con $v_1$ y luego necesariamente va $v_0$ porque la arista solo tiene $v_0$ y $v_1$. Después solo falta $v_2$. Por tanto tendríamos $[v_1,v_0,v_2]$, que es la orientación opuesta a la de $\sigma$. Continuando con este razonamiento, observando el dibujo se ve fácilmente que la suma es alternada.  
+
+Si ahora calculamos $\partial_2(sd_*(\sigma))$ vamos obteniendo
+\[
+\partial_2(\hat{\sigma}_1)=\partial_2[v_0, b(v_0,v_1), b(\sigma)]=[b(v_0,v_1)],b(\sigma)]-[v_0,b(\sigma)]+[v_0,b(v_0,v_1)]
+\]
+\[
+\partial_2(\hat{\sigma}_2)=\partial_2[v_1, b(v_0,v_1), b(\sigma)]=[b(v_0,v_1)],b(\sigma)]-[v_1,b(\sigma)]+[v_1,b(v_0,v_1)]
+\]
+y así sucesivamente. Pero como vemos, al sumar alternadamente, se cancelan las aristas que no contienen ni $v_0$ ni $v_1$, y así con todos los demás vértices. Acabarán también desapareciendo las de la forma $[v_i,b(\sigma)]$. Por tanto, solo permanecerán las aristas del borde de $\sigma$. De modo que
+\[
+\partial_2(sd_*(\sigma)=\hat{\tau}_1-\hat{\tau}_2+\cdots -\hat{\tau}_6=\sum_{i=1}^6(-1)^2[\sigma:\hat{\sigma}_i]\hat{\tau}_i
+\]
+En general, para un $n$-símplice, $\partial_n(sd_*(\sigma))=\sum_{\hat{\sigma}\in sdK,\hat{\sigma}\subseteq\sigma}(-1)^n[\sigma:\hat{\sigma}]\hat{\tau}$ con $\hat{\sigma}$ de dimensión $n-1$ y $\hat{\tau}$ la única cara de $\hat{\sigma}$ contenida en $\partial\sigma$. DEMOSTRAR ESTO O BUSCARLO EN EL LIBRO
+\end{enumerate}
+\end{ej}
+
+\begin{prop}
+La aplicación $sd_*\CC(K)\to\CC(sdK)$ es un morfismo de complejos de cadenas.
+\end{prop}
+\begin{dem}
+Ya sabemos que en cada nivel tenemos homomorfismos, así que falta ver la conmutatividad de los diagramas
+\[
+\begin{tikzcd}
+C_n(K)\arrow[r,"sd_*"]\arrow[d, "\partial_n"] & C_n(sdK)\arrow[d, "\partial_n"]\\
+C_{n-1}(K)\arrow[r, "sd_*"] & C_{n-1}(sdK)
+\end{tikzcd}
+\]
+Del ejemplo anterior tenemos ya 
+\begin{equation}\label{primera}
+\partial_n(sd_*(\sigma))=\sum_{\hat{\sigma}\in sdK,\hat{\sigma}\subseteq\sigma}(-1)^n[\sigma:\hat{\sigma}]\hat{\tau}
+\end{equation}
+Por otra parte, 
+\[
+sd_*(\partial_n(\sigma))=sd_*\left(\sum_{j=0}^n(-1)^j[v_0,\dots, \hat{v}_j, \dots, v_n]\right)=\sum_{j=0}^n(-1)^jsd_*([v_0,\dots, \hat{v}_j, \dots, v_n])
+\]
+Denotamos $\sigma_j$ al símplice obtenido a partir de $\sigma$ eliminando el vértice $v_j$. Entonces la anterior fórmula queda como
+\begin{equation}\label{segunda}
+\sum_{j=0}^n(-1)^j\left(\sum_{\sigma_j\in sdK,\hat{\sigma}_j\subseteq\sigma_j}[\sigma_j:\hat{\sigma}_j]\hat{\sigma}_j\right)
+\end{equation}
+Observamos que $\hat{\sigma}_j\subseteq\sigma_j\subseteq\partial\sigma$ y además $\dim(\hat{\sigma}_j)=\dim(\sigma_j)=n-1$. Por tanto, la familia de los $\hat{\tau}$ de \ref{primera} coincide con la familia de los $\hat{\sigma}_j$ de \ref{segunda}. Veamos además que los coeficientes son los mismos. Supongamos que $\hat{\tau}=\hat{\sigma}_j=[b(v_{i_0}),b(v_{i_0}, v_{i_1}), \dots, b(v_{i_0},\dots, v_{i_{n-1}})]$ proveniente de una cadena $v_{i_0}<(v_{i_0}, v_{i_1})<\cdots<\sigma_j$. Entonces $(i_0,i_1,\dots, i_{n-1})$ es una permutación $P$ del conjunto $(0,\dots, \hat{j}, n-1)$. Por tanto $[\sigma_j:\hat{\sigma}_j]=(-1)^{par(P)}$, donde $par(P)$ denota la paridad de $P$. Como estamos suponiendo que $\hat{\tau}=\hat{\sigma}_j$, se tiene que $\hat{\tau}$ es cara de $\hat{\sigma}=[b(v_{i_0}),b(v_{i_0}, v_{i_1}), \dots, b(v_{i_0},\dots, v_{i_{n-1}}, v_j)]$, donde $\hat{\sigma}_j$ surgiría al eliminar el último vértice. Por tanto, pa permutación $P'$ de $(i_0,\dots, i_{n-1}, j)$ a $(0,1,\dots, n)$ tiene como parridad, $par(P)+n-j$. Con esto, $[\sigma:\hat{\sigma}]=(-1)^{par(P)}(-1)^{n-j}$. Por lo que al multiplicarse por $(-1)^n$ en \ref{primera} obtenemos precisamente el signo que buscábamos en \ref{segunda}. 
+\QED
+\end{dem}
+
+
+
 \end{document}
