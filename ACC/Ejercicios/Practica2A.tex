@@ -1,0 +1,103 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\lex}{<_{lex}}
+\newcommand{\grlex}{<_{grlex}}
+\newcommand{\grevlex}{<_{grevlex}}
+
+\newcommand{\PhantC}{\phantom{\colon}}%
+\newcommand{\CenterInCol}[1]{\multicolumn{1}{c}{#1}}%
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Álgebra, Combinatoria y Computación, Práctica 2A}
+\author{Javier Aguilar Martín}
+\maketitle
+
+\begin{ejercicio}{1}
+En la extensión $\Q(\alpha)$ de $\Q$ donde $\alpha$ es una raíz del polinomio irreducible $x^5-x-2$, calcule el polinomio mínimo de $\beta=1-\alpha-2\alpha^3$. 
+\end{ejercicio}
+
+\begin{solucion}
+
+Como $p(x)=x^5-x-2$ es mónico e irreducible, $p$ es el polinomio mínimo de $\alpha$. Consideramos ahora el polinomio $f(x)=-2x^2-x+1$. En las condiciones de la proposición 1, calculamos una base de Gröbner para $J=\gene{p,y-f}= \gene{x^5-x-2, y+2x^2+x-1}$. 
+En SAGE esto lo conseguimos usando
+\begin{verbatim}
+Q.<x,y>=PolynomialRing(QQ,order='lex')
+J=ideal(x^5-x-2,y+2*x^2+x-1)
+G=J.groebner_basis()
+G
+\end{verbatim}
+cuyo resultado es $G=\{x - \frac{40}{9871}y^4 + \frac{536}{9871}y^3 - \frac{634}{9871}y^2 - \frac{3077}{9871}y + \frac{12879}{9871}, y^5 - 5y^4 + 2y^3 + 62y^2 - 120y + 158\}$. Ahora, sabemos en una base de Gröbner para $\Q(y)\cap J$ es $G_1=\{  y^5 - 5y^4 + 2y^3 + 62y^2 - 120y + 158\}$, que es mónico y además es irreducible como se comprueba con el código
+\begin{verbatim}
+R = QQ['y']
+y = R.gen()
+(y^5 - 5*y^4 + 2*y^3 + 62*y^2 - 120*y + 158).is_irreducible()
+\end{verbatim}
+Por tanto, en virtud de la proposición 1, $q(y)=y^5 - 5y^4 + 2y^3 + 62y^2 - 120y + 158$ es el polinomio mínimo de $\beta$. 
+\end{solucion}
+
+\begin{ejercicio}{2}
+En la extensión $\Q(\alpha)$ donde $\alpha$ es una raíz del polinomio irreducible $x^5-x-2$, calcule el polinomio mínimo de $\beta=(1-\alpha-2\alpha^3)/\alpha$. 
+\end{ejercicio}
+\begin{solucion}
+%En primer lugar, tenemos que $\alpha$ es tal que $\alpha^5-\alpha-2=0$, de donde 
+%\[
+%2=\alpha^5-\alpha\Rightarrow 1=\frac{\alpha^5-\alpha}{2}=\alpha\cdot \frac{\alpha^4-1}{2},
+%\]
+%por lo que $\frac{1}{\alpha}=\frac{\alpha^4-1}{2}$. Así, utilizando la notación de la proposición 2,
+%\[
+%\beta=f(\alpha)s(\alpha)=(1-\alpha-2\alpha^3)\cdot \frac{\alpha^4-1}{2}=\frac{1}{2}(-2\alpha^6 - \alpha^5 + \alpha^4 + 2\alpha^2 + \alpha - 1)=
+%\]
+%\[
+%\frac{1}{2}(-2\alpha(\alpha+2) - (\alpha+2) + \alpha^4 + 2\alpha^2 + \alpha - 1)=\frac{1}{2}(\alpha^4-2\alpha-3)
+%\]
+
+Tenemos $\beta=f(\alpha)/g(\alpha)$ donde $f(x)=1-x-2x^3$ y $g(x)=x$. 
+
+Usando el punto 3 de la proposición 2, calculamos una base de Gröbner para $\gene{y-fs,p}=\gene{gy-f,p}$. Es decir, tenemos el ideal $J=\gene{xy+2x^3+x-1,x^5-x-2}$. Calculamos análogamente al ejercicio \ref{ejer:1} la base de Gröbner para $J$ y para $J\cap \Q(\alpha)$, obteniendo para esta última
+\[
+G_1=\{y^5 + \frac{11}{2}y^4 + 4y^3 - 5y^2 + 95y + 259\}
+\]
+que usando los mismos comandos que en el ejercicio \ref{ejer:1} se comprueba que es irreducible, y como es mónico, es el polinomio mínimo de $\beta$ por la proposición 2 apartado 4. 
+\end{solucion}
+
+\begin{ejercicio}{3}
+Consideremos la extensión de cuerpos $\Q\subset \Q(\alpha_1,\alpha_2,\alpha_3)$, donde $\alpha_1=\sqrt{5}$, $\alpha_2=3+2i$, $\alpha_3=\sqrt{2-\sqrt[5]{3}}$. El polinomio mínimo de $\alpha_1$ sobre $\Q$ es $p_1=x_1^2-5$, el polinomio mínimo de $\alpha_2$ sobre $\Q(\alpha_1)$ es $p_2=x_2^2-6x_2+13$, y el polinomio mínimo de $\alpha_3$ sobre $\Q(\alpha_1,\alpha_2)$ es $p_3=(x_3^2-2)^5+3$. Calcule el polinomio mínimo de $\beta=1-\alpha_1\alpha_2+\alpha_3^2$ sobre $\Q$. Pruebe que $\Q(\alpha_1,\alpha_2,\alpha_3)\neq\Q(\beta)$. 
+\end{ejercicio}
+\begin{solucion}
+Obsérvese en primer lugar que $\overline{p}_i=p_i$ para $i=1,2,3$ pues cada uno solo depende de la variable $x_i$. En las condiciones de la proposición 3, $\beta=f(\alpha_1,\alpha_2,\alpha_3)/g(\alpha_1,\alpha_2,\alpha_3)$ con $f(x_1,x_2,x_3)=1-x_1x_2+x_3^3$ y $g(x_1,x_2,x_3)=1$. Calculamos ahora una base de Gröbner para $J=\gene{gy-f, \overline{p}_1,\overline{p}_2,\overline{p}_3}=\gene{y-x_3^3+x_1x_2-1, x_1^2-5,x_2^2-6x_2+13,(x_3^2-2)^5+3}$ y obtenemos el polinomio que genera $J\cap \Q(y)$ mediante
+\begin{verbatim}
+Q.<x1,x2,x3,y>=PolynomialRing(QQ,order='lex')
+I=ideal(y-x3^3+x1*x2-1, x1^2-5,x2^2-6*x2+13,(x3^2-2)^5+3)
+G=I.groebner_basis()
+G[-1]
+\end{verbatim}
+Nos da un polinomio de grado 20 excesivamente largo como para escribirlo. 
+
+En el apartado 2 vamos a usar la regla de la torre para las extensiones de cuerpos. Primero es claro que $\Q(\beta)\subseteq Q(\alpha_1,\alpha_2,\alpha_3)$. Para ver que inclusión es estricta calculamos el grado de la extensión $[\Q(\alpha_1,\alpha_2,\alpha_3):\Q]$. Sabemos que $[\Q(\beta):\Q]=20$ por el grado del polinomio mínimo. si obtenemos $[\Q(\alpha_1,\alpha_2,\alpha_3):\Q]\neq 20$ tendremos el resultado. Tenemos
+%\[
+%[\Q(\alpha_1,\alpha_2,\alpha_3):\Q]=[\Q(\alpha_1,\alpha_2,\alpha_3):\Q(\beta)][\Q(\beta):\Q]=[\Q(\alpha_1,\alpha_2,\alpha_3):\Q(\beta)]
+%\]
+%y por otro lado
+\[
+[\Q(\alpha_1,\alpha_2,\alpha_3):\Q]=[\Q(\alpha_1,\alpha_2,\alpha_3):\Q(\alpha_1,\alpha_2)(\alpha_3):\Q(\alpha_1,\alpha_2)][\Q(\alpha_1)(\alpha_2):\Q(\alpha_1)][\Q(\alpha_1):\Q]
+\]
+Ahora, usando el grado de los polinomios mínimos,  $[\Q(\alpha_1):\Q]=2$, $[\Q(\alpha_1)(\alpha_2):\Q(\alpha_1)]=2$, $[\Q(\alpha_1,\alpha_2,\alpha_3):\Q(\alpha_1,\alpha_2)(\alpha_3):\Q(\alpha_1,\alpha_2)]=10$, luego el producto es 40, así que se tiene la contención estricta. 
+\end{solucion}
+
+
+\begin{ejercicio}{4}
+Obtenga los restos $r,$ a partir de su DNI módulo 15 como en la práctica anterior. Para los valores encontrados calcle el polinomio mínimo de los elementos sobre $\Q$. 
+\end{ejercicio}
+\begin{solucion}
+En mi caso, el número de mi DNI es $N=17477010$, y al darle la vuelta (eliminando el 0 inicial) es $M=1077471$. Por lo que obtengo los valores $r=0$, $s=6$. 
+Para $r=0$ se obtiene el elemento $\sqrt[3]{2}+\sqrt[3]{4}+1$. Empezamos calculando el polinomio mínimo sobre $\Q$ de $\alpha_1=\sqrt[3]{2}$, que es $p_1=x_1^3-2=\overline{p}_1$. Para $\alpha_2=\sqrt[3]{4}=\sqrt[3]{2}\sqrt[3]{2}$ tenemos el polinomio mínimo sobre $\Q(\alpha_1)$, $p_2=x_2-\sqrt[3]{2}\sqrt[3]{2}$, luego $\overline{p}_2=x_2-x_1^2$. Como en el ejercicio \ref{ejer:3} calculamos el polinomio mínimo de $\beta=\alpha_1+\alpha_2+1$, siendo en este caso $f(x_1,x_2)=x_1+x_2+1$ y $g(x_1,x_2)=1$. Obtenemos que su polinomio mínimo es $$y^3 - 3y^2 - 3y - 1.$$
+
+Para $s=6$ tenemos $\beta=\sqrt{2}-\sqrt{3}+\sqrt[3]{2}=\alpha_1+\alpha_2+\alpha_3$. En este caso los $\alpha_i$ son algebraicamente independientes. Así que tenemos los polinomios mínimos $p_1=x_1^2-2=\overline{p}_1$, $p_2=x_2^2-3=\overline{p}_2$, $p_3=x_3^3-2=\overline{p}_3$. Con $f(x_1,x_2,x_3)=x_1-x_2+x_3$ y $g(x_1,x_2,x_3)=1$, en esta ocasión el polinomio mínimo es
+\[
+y^12 - 30y^10 - 8y^9 + 303y^8 - 1036y^6 - 1104y^5 + 663y^4 + 3488y^3 + 1290y^2 + 696y - 3863.
+\]
+\end{solucion}
+
+\end{document}
