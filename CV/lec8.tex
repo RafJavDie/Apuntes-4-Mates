@@ -149,7 +149,7 @@ se puede definir a través de las parametrizaciones locales $g:W\to M$ como sigu
 \[
 d_pw=Alt^{k+1}((D_xg)^{-1})\circ d_x(g^*w),\quad p=g(x).
 \]
-Explicamos esta definición: tenemos $g:W\to M$, y $D_xg:T_xW\to T_pM$ con inversa $(D_xg)^{-1}:T_xW\to T_pM$, de modo que $Alt^{k+1}((D_xg)^{-1}):Alt^{k+1}(T_xW)\to Alt^{k+1}(T_pM)$. Como $d_xg^*(w)\in Alt^{k+1}(\R^n)$ por estar $g^*(w)\in Alt^{k}(\R^n)$, la composición tiene sentido. Además, podemos considerar localmente $g^*:\Omega^k(M)\to \Omega^k(W)$, que al componerla con la diferencial exterior de $\Omega^k(W)$ nos lleva a $\Omega^{k+1}(W)$. 
+Explicamos esta definición: tenemos $g:W\to M$, y $D_xg:T_xW\to T_pM$ con inversa $(D_xg)^{-1}:T_xW\to T_pM$, de modo que $Alt^{k+1}((D_xg)^{-1}):Alt^{k+1}(T_xW)\to Alt^{k+1}(T_pM)$. Como $d_xg^*(w)\in Alt^{k+1}(\R^n)$ por estar $g^*(w)\in Alt^{k}(\R^n)$, la composición tiene sentido. Además, podemos considerar localmente $g^*:\Omega^k(M)\to \Omega^k(W)$, que al componerla con la diferencial exterior de $\Omega^k(W)$ nos lleva a $\Omega^{k+1}(W)$. Al evaluarla sobre unos vectores $v_1,\dots, v_{k+1}$ obtenemos $d_{g^{-1}(x)}g^*(w)(D_xg^{-1}(v_1),\dots, D_xg^{-1}(v_{k+1}))$. 
 
 No es inmediato que $d_pw$ no dependa de la elección de $g$. Dada parametrización local $g$, entonces cualquier otra tiene localmente la forma $g\circ\phi$ con $\phi:U\to W$ difeomorfismo. Sean $z_1,\dots, z_{k+1}\in T_pM$. Elegimos $v_1,\dots, v_{k+1}\in\R^n=T_xU$ de modo que $D_x(g\circ \phi)(v_i)=z_i$ y $w_1,\dots, w_{k+1}\in T_yM$ tales que $D_x\phi(v_i)=w_i$. Debemos probar que
 \[
@@ -170,21 +170,24 @@ Es evidente que $d\circ d=0$, con lo que tenemos definido un complejo de cadenas
 \[
 \phi^*(\tau)_p=Alt^k(D_p\phi)(\tau_{\phi(p)}),\quad \tau\in \Omega^k(M),
 \]
-siendo $\phi^*(\tau)_p=\tau_{\phi(p)}$ para $k=0$. Se define el producto bilineal para $w\in\Omega^k(M)$ y $\tau\in\Omega^l(M)$, $w\land\tau$ como $(w\land\tau)_p=w_p\land\tau_p\in\Omega^{k+l}(M)$.
+siendo $\phi^*(\tau)_p=\tau_{\phi(p)}$ para $k=0$. Es decir, $\phi^*(\tau)_p(v_1,\dots, v_k)=\tau_{\phi(p)}(D_p\phi(v_1),\dots, D_p\phi(v_k))$. Se define el producto exterior para $w\in\Omega^k(M)$ y $\tau\in\Omega^l(M)$, $w\land\tau$ como $(w\land\tau)_p=w_p\land\tau_p\in\Omega^{k+l}(M)$.
 
-Se prueba usando parametrizaciones locales que $\phi^*w$ y $w\land\tau$ son diferenciables PROBARLO. Es también fácil de ver que
+Se prueba usando parametrizaciones locales que $\phi^*w$ y $w\land\tau$ son diferenciables. Es también fácil de ver que
 \[
-d(w\land\tau)=dw\land\tau+(-1)^kw\land d\tau
+d(w\land\tau)=dw\land\tau+(-1)^kw\land d\tau,
 \]
 \[
-w\land\tau=(-1)^{kl}\tau\land w.
+w\land\tau=(-1)^{kl}\tau\land w,
+\]
+\[
+\phi^*d=d\phi^*.
 \]
 
 \begin{defi}
 La $p$-ésima \textbf{cohomología de deRham} de una variedad $M$, denotada $H^p(M)$, es la $p$-ésima cohomología de $\Omega^*(M)$. 
 \end{defi}
 
-La diferencial exterior induce un producto $H^p(M)\times H^q(M)\to H^{p+q}(M)$ que convierte a $H^*(M)$ en un álgebra graduada. Nótese que $H^p(M)=0$ para $p>n=\dim(M)$ y para $p<0$. 
+El producto exterior induce un producto $H^p(M)\times H^q(M)\to H^{p+q}(M)$ que convierte a $H^*(M)$ en un álgebra graduada. Nótese que $H^p(M)=0$ para $p>n=\dim(M)$ y para $p<0$. 
 
 El morfismo de complejos de cadenas $\phi^*$ inducido por una aplicación diferenciable $\phi:M\to N$ induce aplicaciones lineales
 \[
@@ -194,24 +197,86 @@ lo cual convierte a la cohomología de deRham en un functor contravariante entre
 
 \begin{defi}\
 \begin{enumerate}
-\item Una variedad diferenciable $M$ de dimensión $n$ se dice \textbf{orientable} si existe $w\in\Omega^n(M)$ con $w_p\neq 0$ para todo $p\in M$. Una tal $w$ se denomina \textbf{forma de orientación} de $M$.
+\item Una variedad diferenciable $M$ de dimensión $n$ se dice \textbf{orientable} si existe $w\in\Omega^n(M)$ con $w_p\neq 0$ (no es idénticamente nula) para todo $p\in M$. Una tal $w$ se denomina \textbf{forma de orientación} de $M$.
 \item Dos formas de orientación $w$ y $\tau$ de $M$ son equivalentes si $\tau=fw$ para alguna $f\in\Omega^0(M)$ con $f(p)>0$ para todo $p\in M$. Una \textbf{orientación} en $M$ es una clase de equivalencia de formas de orientación de $M$. 
 \end{enumerate}
 \end{defi}
 
 En el espacio euclídeo $\R^n$ tenemos la forma de orientación $dx_1\land\dots\land dx_n$, que representa la \textbf{orientación estándar} de $\R^n$. 
 
-Sea $M$ orientada con una forma de orientación $w$. Una base $b_1,\dots, b_n$ de $T_pM$ se dice \textbf{positivamente} o \textbf{negativamente  orientada} con respecto a $w$ dependiendo del signo de $w_p(b_1,\dots, b_n)\in\R$ (no puede ser 0 porque $w_p\neq 0$). El signo depende solo de la orientación determinada por $w$. Si $\tau$ es otra orientación, $\tau=fw$ para una unívocamente determinada $f\in\Omega^0(M)$ con $f(p)\neq 0$ para todo $p\in M$. Decimos que $w$ y $\tau$ determinan la misma orientación en $p$ si $f(p)>0$. Equivalentemente, $w$ y $\tau$ inducen las mismas bases positivamente orientadas de $T_pM$. Si $M$ es conexa, entonces $f$ tiene signo constante en $M$, así que se tiene:
+Sea $M$ orientada con una forma de orientación $w$. Una base $b_1,\dots, b_n$ de $T_pM$ se dice \textbf{positivamente} o \textbf{negativamente  orientada} con respecto a $w$ dependiendo del signo de $w_p(b_1,\dots, b_n)\in\R$ (no puede ser 0 porque $w_p\neq 0$ y multilineal). El signo depende solo de la orientación determinada por $w$. Si $\tau$ es otra orientación, $\tau=fw$ para una unívocamente determinada $f\in\Omega^0(M)$ con $f(p)\neq 0$ para todo $p\in M$. Efectivamente, $g^*(w)_p$ y $g^*(\tau)_p$ verifican $g^*(\tau)_p=h(p)g^*(w)_p$, por lo que basta componer $h$ con $g^{-1}$. Decimos que $w$ y $\tau$ determinan la misma orientación en $p$ si $f(p)>0$. Equivalentemente, $w$ y $\tau$ inducen las mismas bases positivamente orientadas de $T_pM$. Si $M$ es conexa, entonces $f$ tiene signo constante en $M$, así que se tiene:
 
 \begin{lemma}
 En una variedad diferenciable orientable conexa hay exactamente dos orientaciones.
 \end{lemma}
 
-Si $U$ es un abierto de una variedad diferenciable $M$, entonces una orientación de $U$ estará inducida por la restricción de la forma de orientación de $M$ a $U$. Recíprocamente se tiene:
+Si $U$ es un abierto de una variedad diferenciable $M$ (esto implica que $U$ es subvariedad), entonces una orientación de $U$ estará inducida por la restricción de la forma de orientación de $M$ a $U$. Es decir, para $p\in U$, $(w|_{U})_p=w_p$. Para $i:U\to M$ la inclusión se puede ver como $i^*(w)_p(w|_{U})_p=w_p$. Recíprocamente se tiene:
 
-\begin{lemma}
+\begin{lemma}\label{vi}
 Sea $V=(V_i)_{i\in I}$ un recubrimiento por abiertos de la variedad diferenciable $M$. Supongamos que todos los $V_i$ tienen orientaciones y que en las intersecciones estas orientaciones coinciden. Entonces $M$ tiene una orientación cuya restricción a cada $V_i$ coincide con la orientación original de $V_i$. 
 \end{lemma}
+La prueba en el libro.
 
+\begin{defi}
+Sea $\phi:M_1\to M_2$ un difeomorfismo entre variedades orientadas por formas de orientación $w_i\in\Omega^n(M_i)$. Diremos que $\phi$ \textbf{preserva la orientación} si $\phi^*(w_2)$ es equivalente a $w_1$. En caso contrario, decimos que $\phi$  \textbf{revierte la orientación}.
+\end{defi}
+
+\begin{nota}
+El hecho de que $\phi$ sea difeomorfismo nos garantiza que $\phi^*(w_2)$ es una forma de orientación, ya que $\phi^*(w_2)_x(v_1,\dots, v_n)=w_{2\phi(x)}(D_x\phi(v_1),\dots, D_x\phi(v_n))$. Como $D_x\phi$ es isomorfismo $D_x\phi(v_i)=0$ si y solo si $v_i=0$. 
+\end{nota}
+
+\begin{ej}
+Sean $U_1,U_2\subseteq\R^n$ abiertos orientados con la orientación estándar y $\phi:U_1\to U_2$ difeomorfismo. Vimos en \ref{deter} que $\phi^*(dx_I)=\det(D_x\phi)dx_I$, por lo que $\phi$ preserva la orientación si y solo si $\det(D_x\phi)>0$ para todo $x\in U_1$. 
+\end{ej}
+
+Dada cualquier variedad diferenciable orientada $M$ y $p\in M$, podemos siempre encontrar una carta $h:U\to U'$ alrededor de $p$ de tal forma que $h$ preserve la orientación: si no lo preserva, basta cambiar de signo una coordenada. Se dirá en tal caso que $(U,h)$ es una \textbf{carta orientada}. El intercambio de dos cartas orientadas tendrá jacobiano positivo. Un atlas en el que todos los intercambios de cartas con jacobiano positivo se dirá \textbf{atlas positivo}.
+
+\begin{prop}
+Sea $\{h_i:U_i\to U_i'\}_{i\in I}$ es un atlas positivo sobre $M$, entonces $M$ posee una orientación tal que todas las $h_i$ son cartas orientables.
+\end{prop}
+\begin{dem}
+Para cada $i$, podemos considerar $h_i:U_i\to U_i'$ como un difeomorfismo que preserva la orientación, dotando $U_i'$ de la orientación estándar. Es decir, dotamos a $U_i$ de la orientación dada por $h_i^*(dx_I)$. Como los jacobianos son positivos, la orientación coincide en las intersecciones. Entonces por el lema \ref{vi} existe una orientación sobre $M$ de modo que la inducida sobre cada $U_i$ es equivalente a la original, es decir, que las cartas $(U_i,h_i)$ son orientadas.
+\QED
+\end{dem}
+
+
+\begin{defi}
+Una \textbf{estructura Riemanniana} (o métrica Riemanniana) sobre una variedad diferenciable $M$ es una colección de productos escalares $\{\gene{,}_0\}_{p\in M}$ sobre $T_pM$
+\[
+\gene{,}_p:T_pM\times T_pM\to\R
+\] 
+tal que verifique para toda parametrización $f:W\to M$ que la aplicación
+\[
+W\to\R
+\]
+\[
+x\mapsto \gene{D_xf(v_1),D_xf(v_2)}_{f(x)}
+\]
+sea diferenciable para todo $v_1,v_2\in\R^n$.
+\end{defi}
+
+Como los productos escalares son bilineales, basta comprobar la diferenciabilidad sobre una base de $\R^n$.  Es decir, basta comprobar que son diferenciables las aplicaciones
+\[
+g_{ij}:W\to \R
+\]
+\[
+x\mapsto \gene{D_x f(e_i),D_xf(e_j)}_{f(x)}
+\]
+para $\{e_1,\dots, e_n\}$ base de $\R^n$. Dado $x\in W$, $\{g_{ij}(x)\}_{1\leq i,j\leq n}$ es una matriz $n\times n$ simétrica y definida positiva. Los coeficientes de esta matriz se denominan \textbf{coeficientes de la primera forma fundamental}. Por tanto, tenemos una aplicación diferenciable $M\to S\subseteq \mathcal{M}_{n\times m}$.  
+
+Una variedad $M$ con estructura Riemanniana se dirá que es una \textbf{variedad Riemanniana}. Toda variedad se puede todar de estructura Riemanniana, pues podemos sumergir $M$ en $\R^{n+k}$ como subvariedad usando el teorema de Whitney. Entonces, para todo $p\in M$; $T_p(M)\subseteq T_p(\R^{n+k}$, por lo que $M$ hereda la estructura Riemanniana de $\R^{n+k}$ consistente en el producto escalar estándar.
+
+
+\begin{prop}
+Si $M$ es una variedad Riemanniana y orientada de dimensión $n$, entonces posee una forma de orientación única $vol_M$ determinada por
+\[
+(vol_M)_p(b_1,\dots, b_n)=1
+\]
+para todo $p\in M$ y para toda base ortonormal $\{b_1,\dots, b_n\}$ de $T_pM$ con respecto a la estructura Riemanniana de $M$. A $vol_M$ la llamaremos \textbf{forma volumen} sobre $M$.
+\end{prop}
+
+\begin{dem}
+\QED
+\end{dem}
 
 \end{document}
