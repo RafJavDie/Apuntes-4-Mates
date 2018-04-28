@@ -232,7 +232,7 @@ Sean $U_1,U_2\subseteq\R^n$ abiertos orientados con la orientación estándar y 
 Dada cualquier variedad diferenciable orientada $M$ y $p\in M$, podemos siempre encontrar una carta $h:U\to U'$ alrededor de $p$ de tal forma que $h$ preserve la orientación: si no lo preserva, basta cambiar de signo una coordenada. Se dirá en tal caso que $(U,h)$ es una \textbf{carta orientada}. El intercambio de dos cartas orientadas tendrá jacobiano positivo. Un atlas en el que todos los intercambios de cartas con jacobiano positivo se dirá \textbf{atlas positivo}.
 
 \begin{prop}
-Sea $\{h_i:U_i\to U_i'\}_{i\in I}$ es un atlas positivo sobre $M$, entonces $M$ posee una orientación tal que todas las $h_i$ son cartas orientables.
+Sea $\{h_i:U_i\to U_i'\}_{i\in I}$ es un atlas positivo sobre $M$, entonces $M$ posee una orientación tal que todas las $h_i$ son cartas orientadas.
 \end{prop}
 \begin{dem}
 Para cada $i$, podemos considerar $h_i:U_i\to U_i'$ como un difeomorfismo que preserva la orientación, dotando $U_i'$ de la orientación estándar. Es decir, dotamos a $U_i$ de la orientación dada por $h_i^*(dx_I)$. Como los jacobianos son positivos, la orientación coincide en las intersecciones. Entonces por el lema \ref{vi} existe una orientación sobre $M$ de modo que la inducida sobre cada $U_i$ es equivalente a la original, es decir, que las cartas $(U_i,h_i)$ son orientadas.
@@ -241,7 +241,7 @@ Para cada $i$, podemos considerar $h_i:U_i\to U_i'$ como un difeomorfismo que pr
 
 
 \begin{defi}
-Una \textbf{estructura Riemanniana} (o métrica Riemanniana) sobre una variedad diferenciable $M$ es una colección de productos escalares $\{\gene{,}_0\}_{p\in M}$ sobre $T_pM$
+Una \textbf{estructura Riemanniana} (o métrica Riemanniana) sobre una variedad diferenciable $M$ es una colección de productos escalares $\{\gene{,}_p\}_{p\in M}$ sobre $T_pM$
 \[
 \gene{,}_p:T_pM\times T_pM\to\R
 \] 
@@ -264,7 +264,7 @@ x\mapsto \gene{D_x f(e_i),D_xf(e_j)}_{f(x)}
 \]
 para $\{e_1,\dots, e_n\}$ base de $\R^n$. Dado $x\in W$, $\{g_{ij}(x)\}_{1\leq i,j\leq n}$ es una matriz $n\times n$ simétrica y definida positiva. Los coeficientes de esta matriz se denominan \textbf{coeficientes de la primera forma fundamental}. Por tanto, tenemos una aplicación diferenciable $M\to S\subseteq \mathcal{M}_{n\times m}$.  
 
-Una variedad $M$ con estructura Riemanniana se dirá que es una \textbf{variedad Riemanniana}. Toda variedad se puede todar de estructura Riemanniana, pues podemos sumergir $M$ en $\R^{n+k}$ como subvariedad usando el teorema de Whitney. Entonces, para todo $p\in M$; $T_p(M)\subseteq T_p(\R^{n+k}$, por lo que $M$ hereda la estructura Riemanniana de $\R^{n+k}$ consistente en el producto escalar estándar.
+Una variedad $M$ con estructura Riemanniana se dirá que es una \textbf{variedad Riemanniana}. Toda variedad se puede todar de estructura Riemanniana, pues podemos sumergir $M$ en $\R^{n+k}$ como subvariedad usando el teorema de Whitney. Entonces, para todo $p\in M$, $T_p(M)\subseteq T_p(\R^{n+k})$, por lo que $M$ hereda la estructura Riemanniana de $\R^{n+k}$ consistente en el producto escalar estándar.
 
 
 \begin{prop}
@@ -276,6 +276,35 @@ para todo $p\in M$ y para toda base ortonormal $\{b_1,\dots, b_n\}$ de $T_pM$ co
 \end{prop}
 
 \begin{dem}
+Sea $w\in \Omega^n(M)$ una forma de orientación representante de la orientación de $M$. Consideremos dos bases ortonormales orientadas positivamente $b_1,\dots,b_n$ y $b_1',\dots,b_n'$ en $T_pM$. Existe una matriz $n\times n$ ortogonal $C=(c_{ij})$ tal que
+\[
+b_i'=\sum_{j=1}^n c_{ij}b_j
+\]
+y $w_p\in Alt^n(T_pM)$ satisface
+\[
+w_p(b_1',\dots,b_n')=\det(C)w_p(b_1,\dots,b_n).
+\]
+Como están orientadas positivamente, $\det(C)>0$, por lo que $\det(C)=1$ por ser ortogonal. Por tanto, existe una función $\rho:M\to (0,+\infty)$ tal que $\rho(p)=w_p(b_1,\dots,b_n)$ para cualquier base ortonormal orientada positivamente de $T_pM$. Tenemos que probar que $\rho$ es diferenciable, con lo que $vol_M=\rho^{-1}w$ será la forma buscada. NO ENTIENDO QUE SEA ESTA LA FORMA, NO LE VEO SENTIDO A ESA COMPOSICIÓN
+
+Consideremos una parametrización local $f:W\to M$ que preserve la orientación y sea
+\[
+X_j(q)=\left(\parcial{}{x_j}\right)_q=D_qf(e_j)\in T_{f(q)}M, 1\leq j\leq n, q\in W.
+\]
+Estos vectores forman una base positivamente orientada de $T_{f(q)}M$.
+ El método de Gram-Schmidt nos da una matriz triangular superior $A(q)=(a_{ij}(q))$ de funciones diferenciables en $W$ con $a_{ij}(q)>0$ tales que
+\[
+b_i(q)=\sum_{j=1}^na_{ij}(q)X_j(q), i=1,\dots, n
+\]
+es una base positivamente orientada de $T_{f(q)}M$. Entonces
+\[
+\rho\circ f(q)=w_{f(q)}(b_1(q),\dots, b_n(q))=\det(A(q))w_{f(q)}(X_1(q),\dots, X_n(q))=
+\]
+\[
+(\det(A(q))(f^*w)_q(e_1,\dots, e_n).
+\]
+Esto prueba que $\rho$ es diferenciable. 
+
+
 \QED
 \end{dem}
 
