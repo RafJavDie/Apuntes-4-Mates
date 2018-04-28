@@ -194,7 +194,7 @@ En particular, este resultado es válido para cualquier $n$-símplice, a partir 
 \end{enumerate}
 \end{ej}
 
-\begin{prop}
+\begin{prop}\label{arista}
 Sea $σ=(v,w)$ un $1$-símplice
 \[ H_n(\partial σ) = \begin{cases}0 & \text{ si }n≥1\\ \F^2\gene{v,w} & \text{ si }n=0\end{cases}\]
 \[ \tilde{H}_n(\partial σ) = \begin{cases}0 & \text{ si }n≥1\\ \F\gene{v-w} & \text{ si }n=0\end{cases}\]
@@ -210,10 +210,11 @@ Para $n=0$, como $\Ima \partial_1 = 0$, tenemos que $H_0(\partial σ) = \ker \pa
 Por otro lado, como $\varepsilon(v)=1$ y $\varepsilon(w)=1$, se deduce que $\ker \varepsilon = \F\gene{v-w}$, luego:
 \[ \tilde{H}_0(\partial σ) = \frac{\ker \varepsilon}{\Ima \partial_1} = \ker \varepsilon = \F\gene{v-w} \]
 \[ \tilde{H}_n(\partial σ) = H_n(\partial σ) \quad \forall n ≥ 1 \]
+\QED
 \end{dem}
 
 \begin{prop}
-Sea $σ$ un $n$-símplice con $n≥2$ y sea $v \in σ^\circ$
+Sea $σ$ un $n$-símplice con $n≥2$ y sea $v \in σ$
 \[ H_q(\partial σ) = \begin{cases}
   0 & \text{ si }q \neq n-1,0\\
   \F\gene{\partial_n σ} & \text{ si }q=n-1\\
@@ -234,6 +235,7 @@ Pero:
 Tomando $σ = (v_0,\dots,v_n)$.
 Como $C_n(σ) = \F\gene{σ}$, entonces:
 \[ \Ima \partial_n = \F\gene{\partial_n(σ)} = \F\gene{\sum_{i=0}^n (-1)^i (v_0,\dots,\widehat{v_i},\dots,v_n)}\]
+\QED
 \end{dem}
 
 
@@ -302,7 +304,7 @@ donde $\mathcal{C}_i=\{C_n(K_i;\F),\partial_n\}$ ($i=1,2$). Obsérvese que $\CC_
 \end{enumerate}
 \end{nota}
 
-\begin{ej}
+\begin{ej}\label{colapso}
 Vamos a calcular la homología de un colapso elemental (la cual se generaliza fácilmente a la de un colapso completo). Sea $K$ un complejo simplicial y $L\subseteq K$ un subcomplejo tal que $K\searrow L=K-\{\sigma,\tau\}$ con $\tau<\sigma$ una cara libre. Aplicamos la sucesión de Mayer-Vietoris para $K_1=L$ y $K_2=\sigma$. 
 Como $τ$ es cara libre de $σ$, $σ$ es de hecho un cono sobre $τ$.
 Entonces $K_1\cap K_2$ es el cono sobre $\partial\tau$, así que todas las homologías de $K_1\cap K_2$ son triviales.
@@ -379,7 +381,14 @@ Luego:
 \draw (0,2) node[anchor=south]{$v_0$} -- (0,0) node[anchor=north]{$v_1$} -- (2,0) node[anchor=north]{$v_4$} -- (2,2) node[anchor=south]{$v_5$} -- cycle;
 \end{tikzpicture}
 \end{figure}
-\emph{Continuará...}
+Vamos a probar aprovechando este ejemplo, que la homología de cualquier triangulación de la circunferencia como un polígono de $n$ lados es siempre la misma, por lo que tendremos que la homología de la banda de Möbius es la misma que la del cilindro. Sea entonces $K$ una tal triangulación formada por vértices $v_0,\dots, v_{n-1}$. Consideramos los subcomplejos $K_1=K-(v_0,v_1)$ y $K_2=\{v_0,v_1,(v_0,v_1)\}$. Claramente $K_1\cup K_2=K$ y además $K_1\cap K_2=\partial(v_0,v_1)$, por lo que su homología viene dada por la proposición \ref{arista}. Por otro lado, es fácil comprobar que tanto $K_1$ como $K_2$ son colapsables (colapsan sobre un punto), así que por el ejemplo \ref{colapso} tenemos que su homología reducida es trivial. Además es claro que para $n\geq 2$ la homología de esta triangulación es trivial. Así pues, nos vamos a la sucesión de Mayer-Vietoris reducida:
+\[
+\begin{tikzcd}
+ H_1(K_1)\oplus H_1(K_2)\arrow[d,equal]\arrow[r] & H_1(K)\arrow[r] & \widetilde{H}_0(K_1\cap K_2)\arrow[d,equal]\arrow[r] & \widetilde{H}_0(K_1)\oplus \widetilde{H}_0(K_2)\arrow[d,equal]\\
+                    0                              &                 &  \F & 0
+\end{tikzcd}
+\]
+Por lo que $H_1(K)\cong\F$. También tenemos de forma similar que $\widetilde{H}_0(K)=0$, con lo que se tiene el resultado. 
 \end{enumerate}
 \end{ej}
 \end{document}
