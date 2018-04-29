@@ -26,7 +26,23 @@ cyclic permutations $(1\ 2)$ and $(1\ 2\ \dots \ n)$ generate the symmetric grou
 4 in Section 3.5 of DUMMIT and FOOTE (2004).
 \end{ejercicio}
 \begin{solucion}
-
+Sabemos que $S_n$ está generado por las trasposiciones de la forma $(i\ i+1)$, luego basta ver que podemos generar estas permutaciones a partir de $\tau=(1\ 2)$ y $\sigma=(1\ 2\ \dots \ n)$. Para ello, basta observar que $\sigma^{i-1}\tau\sigma^{-i+1}=(i\ i+1)$. Efectivamente
+\[
+\sigma^{i-1}\tau\sigma^{-i+1}(k)=\sigma^{i-1}\tau(k-i+1\mod n)=\begin{cases}
+\sigma^{i-1}(2) & k-i+1\equiv 1\mod n\\
+\sigma^{i-1}(1) & k-i+1\equiv 2\mod n\\
+\sigma^{i-1}(k-i+1\mod n) & c.c.
+\end{cases}
+\]
+Observamos que las congruencias de las condiciones son respectivamente equivalentes a $k\equiv i\mod n$ y $k\equiv 1\mod n$ respectivamente, luego obtenemos finalmente
+\[
+\sigma^{i-1}\tau\sigma^{-i+1}(k)=\begin{cases}
+1+i & k\equiv i\mod n\\
+i& k\equiv i+1\mod n\\
+k & c.c.
+\end{cases}
+\]
+como queríamos demostrar.
 \end{solucion}
 
 \newpage
