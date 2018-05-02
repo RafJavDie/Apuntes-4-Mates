@@ -206,6 +206,58 @@ Observamos que $\hat{\sigma}_j\subseteq\sigma_j\subseteq\partial\sigma$ y ademá
 \QED
 \end{dem}
 
+\begin{teorema}
+El morfismo inducido $sd_*:H_n(K)\to H_n(sdK)$ es un isomorfismo.
+\end{teorema}
+\begin{dem}
+COPIAR DEL LIBRO
+\QED
+\end{dem}
+
+
+
+\begin{observacion}
+\item Podemos componer $sd_*$ consigo mismo tantas veces como queramos, lo cual nos lleva de la primera subdivisión baricéntrica a la $n$-ésima. Por el teorema anterior, todas las subdivisiones tienen homologías isomorfmas. Además, si $f:K\to L$ es una aplicación simplicial y $f:sdK\to sdL$ es la aplicación correspondiente a las subdivisiones, tenemos los diagramas conmutativos 
+\[
+\begin{tikzcd}
+C_n(K)\arrow[r,"sd_*"]\arrow[d,"f_*"] & C_n(sdK)\arrow[d,"f_*"]\\
+C_n(L)\arrow[r,"sd_*"] & C_n(sdL)
+\end{tikzcd}
+\]
+
+
+La aplicación $f:sdK\to sdL$ está definida como $f(b(\sigma))=b(f(\sigma))$ para todo $\sigma\in K$. Esto es equivalente a hacer la extensión lineal.
+
+
+\end{observacion}
+
+\begin{teorema}
+Existe una aplicación simplicial $\lambda: sdK\to K$ que es aproximación simplicial de $Id:|K|\to |K|$ tal que $\lambda_*:C_n(sdK)\to C_n(K)$ verifica que $\lambda_*\circ sd_*=Id_*$.
+\end{teorema}
+\begin{dem}
+Ordenamos totalmente los vértices de $K$ como $v_0<v_1<\cdots<v_n<\cdots$. Definimos $\lambda:\{$vértices de $sdK\}\to\{$ vértices de $K\}$ de la siguiente forma: si $\sigma=(v_{i_0}, \dots, v_{i_n})\in K$ y consideramos $b(\sigma)$, definimos $\lambda(b(\sigma))=\max\{v_{i_0},\dots, v_{i_n}\}$. Claramente $\lambda$ lleva símpilces en símplices (aunque puede degenerar). 
+
+Para ver que $\lambda$ es aproximación simplicial de $Id:|K|\to|K|$ probaremos que para todo $x\in K$, $\lambda(x)$ está en el símplice soporte (el único en cuyo interior está) de $Id(x)=x$. Como $x\in |K|=|sdK|$, dado $\sigma\in K$ con $x\in\sigma$, $\exists!\hat{\tau}\in sdK\mid x\in\mathring{\hat{\tau}}$, luego existe $\tau<\sigma$ con $\mathring{\hat{\tau}}\subseteq\mathring{\tau}$. Como $\lambda(\hat{\tau})\subseteq\tau$, se tiene que $\lambda(x)=\lambda(\mathring{\hat{\tau}}\subseteq\lambda(\hat{\tau})\subseteq\tau\subseteq\sigma$, lo que prueba que es aproximación simplicial.
+
+Por último, probamos $\lambda_*\circ sd_*=Id_{C_n(K)}$. Basta probar que $\lambda(sd_*(\sigma))=\sigma$ para todo $n$-símplice de $K$. 
+\[
+\lambda\left(\sum_{\hat{\sigma}\in sdK, \hat{\sigma}\subseteq\sigma}[\sigma:\hat{\sigma}]\hat{\sigma}\right)=\sum[\sigma:\hat{\sigma}]\lambda(\hat{\sigma})=[\sigma:\hat{\sigma}_0]\overline{\sigma}
+\]
+donde el orden de aparición de los vértices de $\sigma$ en $\hat{\sigma}$ coincide con el orden dado sobre los vértices de $K$ ($\hat{\sigma}: v_{i_0}<(v_{i_0},v_{i_1})<\cdots< (v_{i_0},\dots, v_{i_n})=\sigma$ no orientado). Si se modifica el orden habrá repetición de vértices, pues si $v_{i_1}<v_{i_0}$, $\lambda(b(v_{i_0})=\lambda(b(v_{i_1}))$. Además, $\overline{\sigma}$ es $\sigma$ con la orientación $\overline{\sigma}=[v_{i_0},\dots, v_{i_n}]$. Por tanto, si $[\sigma:\hat{\sigma}_0]=1$, entonces $\overline{\sigma}=\sigma$ y si  $[\sigma:\hat{\sigma}_0]=-1$ entonces $\overline{\sigma}$ es la orientación opuesta a la de $\sigma$, en cualquier caso, el resultado de $[\sigma:\hat{\sigma}_0]\overline{\sigma}=\sigma$. Entonces $\lambda_*\circ sd_*=Id_{H_n(K)}$ por functorialidad. 
+
+\QED
+\end{dem}
+
+Sea ahora $f:|K|\to|L|$ continua. Vamos a definir $f_*:H_n(K)\to H_n(L)$ ($n\geq 0$) de la siguiente manera:
+\[
+f_*:=\varphi_*\circ sd_*
+\]
+Sabemos que existe $m\geq 0$ y $\varphi:sd^mK\to L$ aproximación simplicial de $f$. Por otra parte, tenemos el isomorfismo $sd_*^m:H_n(K)\to H_n(sd^mK)$. Comprobaremos que $f_*$ está bien definida. Si tomamos ahora $m'\geq 0$ y $\psi:sd^{m'}K\to L$ otra aproximación simplicial de $f$, tenemos que probar que $\varphi_*sd_*^M=\psi_*sd_*^{m'}$.
+
+\begin{defi}
+
+\end{defi}
+
 
 
 \end{document}
