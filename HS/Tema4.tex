@@ -210,14 +210,20 @@ Observamos que $\hat{\sigma}_j\subseteq\sigma_j\subseteq\partial\sigma$ y ademá
 El morfismo inducido $sd_*:H_n(K)\to H_n(sdK)$ es un isomorfismo.
 \end{teorema}
 \begin{dem}
-COPIAR DEL LIBRO
+Razonamos po rinducción en el número $n$ de símplices. Si $n=1$ entonces $K$ tiene un solo vértice y el resultado es trivial. Supongámoslo cierto para complejos de $n-1$ símplices. Sea $K$ un complejo con $n$ símplices y $\sigma\in K$ un símplice de dimensión máxima en $K$. Toamos el complejo $L=K-\{\sigma\}$. Por hipótesis, como $\partial\sigma\subseteq L$ el resultado se cumple para $L$ y para $\partial\sigma=L\cap\sigma$. Además tenemos el siguiente diagrama conmutativo de sucesiones de Mayer-Vietoris
+\[
+\begin{tikzcd}
+\cdots\arrow[r] & H_q(\partial\sigma)\arrow[r]\arrow[d,"sd_*"] & H_1(\sigma)\oplus H_q(L)\arrow[r]\arrow[d, "sd_*"] & H_q(K)\arrow[d, "sd_*"]\arrow[r]&\cdots \\
+\cdots\arrow[r] & H_q(sd\partial\sigma)\arrow[r]& H_1(sd\sigma)\oplus H_q(sdL)\arrow[r] & H_q(sdK)\arrow[r]&\cdots 
+\end{tikzcd}
+\]
+Puesto que $sd\sigma$ es el cono $b(\sigma)\cdot sd\partial\sigma$ se tiene que $H_q(sd\sigma)=0$ si $q\neq 0$ y $H_0(sd\sigma)\cong\F$ con cualquier vértice como generador, por lo que es isomorfa a la homología de $\sigma$, es decir, $sd_*:H_q(\sigma)\to H_q(sd\sigma)$ es isomorfismo. El resultado se sigue ahora del lema de los cinco (\ref{cinco}). 
 \QED
 \end{dem}
 
 
 
-\begin{observacion}
-\item Podemos componer $sd_*$ consigo mismo tantas veces como queramos, lo cual nos lleva de la primera subdivisión baricéntrica a la $n$-ésima. Por el teorema anterior, todas las subdivisiones tienen homologías isomorfmas. Además, si $f:K\to L$ es una aplicación simplicial y $f:sdK\to sdL$ es la aplicación correspondiente a las subdivisiones, tenemos los diagramas conmutativos 
+\begin{observacion} Podemos componer $sd_*$ consigo mismo tantas veces como queramos, lo cual nos lleva de la primera subdivisión baricéntrica a la $n$-ésima. Por el teorema anterior, todas las subdivisiones tienen homologías isomorfmas. Además, si $f:K\to L$ es una aplicación simplicial y $f:sdK\to sdL$ es la aplicación correspondiente a las subdivisiones, tenemos los diagramas conmutativos 
 \[
 \begin{tikzcd}
 C_n(K)\arrow[r,"sd_*"]\arrow[d,"f_*"] & C_n(sdK)\arrow[d,"f_*"]\\
@@ -232,18 +238,18 @@ La aplicación $f:sdK\to sdL$ está definida como $f(b(\sigma))=b(f(\sigma))$ pa
 \end{observacion}
 
 \begin{teorema}
-Existe una aplicación simplicial $\lambda: sdK\to K$ que es aproximación simplicial de $Id:|K|\to |K|$ tal que $\lambda_*:C_n(sdK)\to C_n(K)$ verifica que $\lambda_*\circ sd_*=Id_*$.
+Existe una aplicación simplicial $\lambda: sdK\to K$ que es aproximación simplicial de $Id:|K|\to |K|$ tal que $\lambda:C_n(sdK)\to C_n(K)$ verifica que $\lambda_*\circ sd_*=Id_{H_n(K)}$.
 \end{teorema}
 \begin{dem}
 Ordenamos totalmente los vértices de $K$ como $v_0<v_1<\cdots<v_n<\cdots$. Definimos $\lambda:\{$vértices de $sdK\}\to\{$ vértices de $K\}$ de la siguiente forma: si $\sigma=(v_{i_0}, \dots, v_{i_n})\in K$ y consideramos $b(\sigma)$, definimos $\lambda(b(\sigma))=\max\{v_{i_0},\dots, v_{i_n}\}$. Claramente $\lambda$ lleva símpilces en símplices (aunque puede degenerar). 
 
-Para ver que $\lambda$ es aproximación simplicial de $Id:|K|\to|K|$ probaremos que para todo $x\in K$, $\lambda(x)$ está en el símplice soporte (el único en cuyo interior está) de $Id(x)=x$. Como $x\in |K|=|sdK|$, dado $\sigma\in K$ con $x\in\sigma$, $\exists!\hat{\tau}\in sdK\mid x\in\mathring{\hat{\tau}}$, luego existe $\tau<\sigma$ con $\mathring{\hat{\tau}}\subseteq\mathring{\tau}$. Como $\lambda(\hat{\tau})\subseteq\tau$, se tiene que $\lambda(x)=\lambda(\mathring{\hat{\tau}}\subseteq\lambda(\hat{\tau})\subseteq\tau\subseteq\sigma$, lo que prueba que es aproximación simplicial.
+Para ver que $\lambda$ es aproximación simplicial de $Id:|K|\to|K|$ probaremos que para todo $x\in K$, $\lambda(x)$ está en el símplice soporte (el único en cuyo interior está) de $Id(x)=x$. Como $x\in |K|=|sdK|$, dado $\sigma\in K$ con $x\in\sigma$, $\exists!\hat{\tau}\in sdK\mid x\in\mathring{\hat{\tau}}$, luego existe $\tau<\sigma$ con $\mathring{\hat{\tau}}\subseteq\mathring{\tau}$. Como $\lambda(\hat{\tau})\subseteq\tau$, se tiene que $\lambda(x)\in\lambda(\mathring{\hat{\tau}})\subseteq\lambda(\hat{\tau})\subseteq\tau\subseteq\sigma$, lo que prueba que es aproximación simplicial.
 
-Por último, probamos $\lambda_*\circ sd_*=Id_{C_n(K)}$. Basta probar que $\lambda(sd_*(\sigma))=\sigma$ para todo $n$-símplice de $K$. 
+Por último, probamos $\lambda\circ sd_*=Id_{C_n(K)}$. Basta probar que $\lambda(sd_*(\sigma))=\sigma$ para todo $n$-símplice de $K$. 
 \[
-\lambda\left(\sum_{\hat{\sigma}\in sdK, \hat{\sigma}\subseteq\sigma}[\sigma:\hat{\sigma}]\hat{\sigma}\right)=\sum[\sigma:\hat{\sigma}]\lambda(\hat{\sigma})=[\sigma:\hat{\sigma}_0]\overline{\sigma}
+\lambda(sd_*(\sigma))=\lambda\left(\sum_{\hat{\sigma}\in sdK, \hat{\sigma}\subseteq\sigma}[\sigma:\hat{\sigma}]\hat{\sigma}\right)=\sum[\sigma:\hat{\sigma}]\lambda(\hat{\sigma})=[\sigma:\hat{\sigma}_0]\overline{\sigma}
 \]
-donde el orden de aparición de los vértices de $\sigma$ en $\hat{\sigma}$ coincide con el orden dado sobre los vértices de $K$ ($\hat{\sigma}: v_{i_0}<(v_{i_0},v_{i_1})<\cdots< (v_{i_0},\dots, v_{i_n})=\sigma$ no orientado). Si se modifica el orden habrá repetición de vértices, pues si $v_{i_1}<v_{i_0}$, $\lambda(b(v_{i_0})=\lambda(b(v_{i_1}))$. Además, $\overline{\sigma}$ es $\sigma$ con la orientación $\overline{\sigma}=[v_{i_0},\dots, v_{i_n}]$. Por tanto, si $[\sigma:\hat{\sigma}_0]=1$, entonces $\overline{\sigma}=\sigma$ y si  $[\sigma:\hat{\sigma}_0]=-1$ entonces $\overline{\sigma}$ es la orientación opuesta a la de $\sigma$, en cualquier caso, el resultado de $[\sigma:\hat{\sigma}_0]\overline{\sigma}=\sigma$. Entonces $\lambda_*\circ sd_*=Id_{H_n(K)}$ por functorialidad. 
+donde el orden de aparición de los vértices de $\sigma$ en $\hat{\sigma}$ coincide con el orden dado sobre los vértices de $K$ ($\hat{\sigma}: v_{i_0}<(v_{i_0},v_{i_1})<\cdots< (v_{i_0},\dots, v_{i_n})=\sigma$ no orientado). Si se modifica el orden habrá repetición de vértices, pues si $v_{i_1}<v_{i_0}$, $\lambda(b(v_{i_0})=\lambda(b(v_{i_0},v_{i_1}))$. Además, $\overline{\sigma}$ es $\sigma$ con la orientación $\overline{\sigma}=[v_{i_0},\dots, v_{i_n}]$. Por tanto, si $[\sigma:\hat{\sigma}_0]=1$, entonces $\overline{\sigma}=\sigma$ y si  $[\sigma:\hat{\sigma}_0]=-1$ entonces $\overline{\sigma}$ es la orientación opuesta a la de $\sigma$, en cualquier caso, el resultado de $[\sigma:\hat{\sigma}_0]\overline{\sigma}=\sigma$. Entonces $\lambda_*\circ sd_*=Id_{H_n(K)}$ por functorialidad. 
 
 \QED
 \end{dem}
@@ -252,11 +258,26 @@ Sea ahora $f:|K|\to|L|$ continua. Vamos a definir $f_*:H_n(K)\to H_n(L)$ ($n\geq
 \[
 f_*:=\varphi_*\circ sd_*
 \]
-Sabemos que existe $m\geq 0$ y $\varphi:sd^mK\to L$ aproximación simplicial de $f$. Por otra parte, tenemos el isomorfismo $sd_*^m:H_n(K)\to H_n(sd^mK)$. Comprobaremos que $f_*$ está bien definida. Si tomamos ahora $m'\geq 0$ y $\psi:sd^{m'}K\to L$ otra aproximación simplicial de $f$, tenemos que probar que $\varphi_*sd_*^M=\psi_*sd_*^{m'}$.
+Sabemos que existe $m\geq 0$ y $\varphi:sd^mK\to L$ aproximación simplicial de $f$. Por otra parte, tenemos el isomorfismo $sd_*^m:H_n(K)\to H_n(sd^mK)$. Comprobaremos que $f_*$ está bien definida. Si tomamos ahora $m'\geq 0$ y $\psi:sd^{m'}K\to L$ otra aproximación simplicial de $f$, tenemos que probar que $\varphi_*sd_*^M=\psi_*sd_*^{m'}$. Para ello necesitaremos algunos resultados previos.
+
+\begin{prop}
+Sean $K_1$ y $K_2$ complejos simpliciales y $f:|K_1|\to|K_2|$ continua tal que $f|_{|L|}$ es simplicial para un cierto subcomplejo $L\subseteq K$. Si $\varphi:|K_1|\to|K_2|$ es una aprocimación simplicial de $f$ entonces $f$ es homotópica a $\varphi$ relativamente a $|L|$.  
+\end{prop}
+\begin{dem}
+Sea $F(x,t)=tf(x)+(1-t)\varphi(x)$. Esta es la homotopía buscada, pues dado $x\in|K_1|$ sabemos que algún simplice de $K_2$ contiene a $\varphi(x)$ y $f(x)$, luego por convexidad contiene al segmento que los une. Sabemos además que $\varphi|_{L}=f_{|L|}$, de donde se obtiene que la homotopía sea relativa.
+\QED
+\end{dem}
 
 \begin{defi}
-
+Dos aplicaciones simpliciales $\varphi,\psi:K\to L$ se dicen \emph{contiguas} si para cada símplice $\sigma\in K$ la unión $\varphi(\sigma)\cup\psi(\sigma)$ está en un símplice de $L$. Dos aplicaciones simpliciales $\varphi$y $\psi$ se dicen que están en la misma \emph{clase de contiguidad} si existe una sucesión de aplicaciones símpliciales $\varphi_0,\dots, \varphi_n$ tales que $\varphi=\varphi_0$, $\psi=\varphi_n$ y $\varphi_i$ es contigua a $\varphi_{i+1}$ para todo $i$. 
 \end{defi}
+
+\begin{lemma}
+Dos aproximaciones simpliciales $\varphi,\psi:K\to L$ de una misma aplicación continua $f:|K|\to|L|$ son contiguas. Más aún, si $f\simeq_H g$, existen aproximaciones simpliciales de $f$ y $g$ en la misma clase de contiguidad.
+\end{lemma}
+\begin{proof}
+
+\end{proof}
 
 
 
