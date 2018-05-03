@@ -105,7 +105,7 @@ donde $\varphi=g\circ h^{-1}$, siendo $(U,h)$ y $(V,g)$ cartas alrededor de $p$.
 Supongamos que $X$ es una función que a cada $p\in M$ le asigna un vector tangente $X_p\in T_pM$. Dada una carta $(U,h)$, la fórmula \ref{coord} se cumple para unas ciertas funciones $a_i:U\to\R$. Si estas funciones son diferenciables en un entorno de $p$, entonces se dice que $X$ es diferenciable en $p$. Además esta condición es independiente de las cartas por \ref{cambio}. Si $X$ es diferenciable en todo punto $p\in M$ se dice que $X$ es un \textbf{campo de vectores diferenciable} en $M$. Se suele denotar por $\mathcal{D}(M)$ al conjunto de campos de vectores diferenciables sobre $M$, que es un $\R$-e.v. y $C^{\infty}(M;\R)$-módulo. 
 
 \begin{defi}
-Consideramos $X:M\to \bigcup_{p\in M}\equiv TM$. Definimos este espacio $TM$ como \textbf{fibrado tangente} sobre $M$, que es una variedad diferenciable de dimensión $2n$ (siendo $n$ la dimensión de la variedad). Podemos ver los puntos de esta variedad como pares $(p,v)\in TM$ donde $p$ es el punto de la variedad y $v$ es el vector tangente, por lo que estará contenida en $M\times \R^n$, de donde heredará la estructura diferenciable. 
+Consideramos $X:M\to \bigcup_{p\in M}T_pM \equiv TM$. Definimos este espacio $TM$ como \textbf{fibrado tangente} sobre $M$, que es una variedad diferenciable de dimensión $2n$ (siendo $n$ la dimensión de la variedad). Podemos ver los puntos de esta variedad como pares $(p,v)\in TM$ donde $p$ es el punto de la variedad y $v$ es el vector tangente, por lo que estará contenida en $M\times \R^n$, de donde heredará la estructura diferenciable. 
 \end{defi}
 
 Se tiene que la aplicación $\pi :TM\to M$ dada por $(p,v)\mapsto p$ es diferenciable y da lugar a una fibración. Claramente $\pi^{-1}(p)=T_pM\cong\R^n$ y además se puede encontrar una sección $s$, es decir, $\pi\circ s=Id_{TM}$, que dependiendo del fibrado podrá ser diferenciable o no.
@@ -284,7 +284,7 @@ y $w_p\in Alt^n(T_pM)$ satisface
 \[
 w_p(b_1',\dots,b_n')=\det(C)w_p(b_1,\dots,b_n).
 \]
-Como están orientadas positivamente, $\det(C)>0$, por lo que $\det(C)=1$ por ser ortogonal. Por tanto, existe una función $\rho:M\to (0,+\infty)$ tal que $\rho(p)=w_p(b_1,\dots,b_n)$ para cualquier base ortonormal orientada positivamente de $T_pM$. Tenemos que probar que $\rho$ es diferenciable, con lo que $vol_M=\rho^{-1}w$ será la forma buscada. NO ENTIENDO QUE SEA ESTA LA FORMA, NO LE VEO SENTIDO A ESA COMPOSICIÓN
+Como están orientadas positivamente, $\det(C)>0$, por lo que $\det(C)=1$ por ser ortogonal. Por tanto, existe una función $\rho:M\to (0,+\infty)$ tal que $\rho(p)=w_p(b_1,\dots,b_n)$ para cualquier base ortonormal orientada positivamente de $T_pM$. Tenemos que probar que $\rho$ es diferenciable, con lo que $(vol_M)_p=\frac{1}{\rho(p)}w_p$ será la forma buscada. 
 
 Consideremos una parametrización local $f:W\to M$ que preserve la orientación y sea
 \[
@@ -297,15 +297,93 @@ b_i(q)=\sum_{j=1}^na_{ij}(q)X_j(q), i=1,\dots, n
 \]
 es una base positivamente orientada de $T_{f(q)}M$. Entonces
 \[
-\rho\circ f(q)=w_{f(q)}(b_1(q),\dots, b_n(q))=\det(A(q))w_{f(q)}(X_1(q),\dots, X_n(q))=
+\rho( f(q))=w_{f(q)}(b_1(q),\dots, b_n(q))=\det(A(q))w_{f(q)}(X_1(q),\dots, X_n(q))=
 \]
 \[
-(\det(A(q))(f^*w)_q(e_1,\dots, e_n).
+\det(A(q))w_{f(q)}(D_qf(e_1), \dots, D_qf(e_n))=(\det(A(q)))(f^*w)_q(e_1,\dots, e_n)\in\Omega^n(W).
 \]
 Esto prueba que $\rho$ es diferenciable. 
-
-
 \QED
 \end{dem}
+
+Hemos visto que para $w=vol_M$, $\rho(f(q))=1=(\det(A(q)))(f^*vol_M)_q(e_1,\dots, e_n)$. Como no se anula y es diferenciable, es una forma de orientación en $\R^n$, y como además vale 1 tenemos que $(\det(A(q)))(f^*vol_M)_q(e_1,\dots, e_n)=(dx_1\land\dots\land dx_n)_q(e_1,\dots, e_n)$. Así que
+\[
+(f^*vol_M)=\frac{1}{\det(A(q))}(dx_1\land\dots\land dx_n)_q
+\] 
+Sobre $\{b_1(q), \dots, b_n(q)\}$ base ortonormal de $T_{f(q)}M$ tendremos que
+\[
+\delta_{ik}=\gene{b_i(q),b_k(q)}_{f(q)}=\sum_{j=1}^n\sum_{l=1}^n a_{ij}(q)g_{jl}(q)a_{kl}(q)
+\]
+y por otro lado, denotando $G=(g_{ij})$,
+\[
+\gene{b_i(q),b_k(q)}_{f(q)}=\gene{A(q)X_i(q),A(q)X_k(q)}_{f(q)}=(A(q)X_i(q))^t G (A(q)X_k(q))
+\]
+por lo que $I=A(q)^tGA(q)$, de modo que $1=|\det(A(q))|^2|\det(G)|$ y como $\det(A(q))>0$, $1/\det(A(q))=\sqrt{\det(G)}$, así que 
+\[
+(f^*vol_M)_q=\sqrt{\det(g_{ij})}(dx_1\land\dots\land dx_n)_q
+\]
+
+\begin{ej}
+Sea $w_0\in\Omega^{n-1}(\R^n)$ definida como $(w_0)_x(w_1,\dots, w_{n-1})=\det(x,w_1,\dots, w_n)$, luego
+\[
+w_0=\sum_{i=1}^n (w_0)_x(e_1,\dots, \hat{e}_i, \dots, e_n) dx_1\land\dots\land \hat{dx}_i\land\dots\land dx_n=
+\]
+\[
+(-1)^{i-1}x_i dx_1\land\dots\land \hat{dx}_i\land\dots\land dx_n
+\]
+Elijamos $x\in S^{n-1}\subseteq\R^n$ y una base $\{w_1,\dots, w_{n-1}\}\subseteq T_x S^{n-1}$.  Es claro que $\{x, w_1,\dots, w_{n-1}\}$ es base de $T_x\R^n$, por lo que $(w_0)_x(w_1,\dots, w_{n-1})=\det(x,w_1,\dots, w_{n-1})\neq 0$, así que $w_0|_{S^{n-1}}=i^*(w_0)$ es una forma de orientación sobre $S^{n-1}$. Además se verigica que $\{w_1,\dots, w_n\}$ está positivamente orientado respecto a $w_0|_{S^{n-1}}$ si y solo si $\{x,w_1,\dots, w_n\}$ está positivamente orientado respecto a la orientación estándar de $\R^n$, pues $\det(x,w_1,\dots, w_n)=(dx_1\land\dots\land dx_n)(x, w_1,\dots, w_n)$. 
+
+Por otra parte, si consideramos la estructura Riemanniana de $S^{n-1}$ que hereda de $\R^n$, si $\{w_1,\dots, w_n\}$ es una base ortonormal de $T_xS^{n-1}$ entonces $(w_0)_x(w_1,\dots, w_{n-1})=\det(x,w_1,\dots, w_{n-1})=1$, así que $i^*(w_0)=vol_{S^{n-1}}$.
+
+Vamos ahora a buscar $w\in\Omega^{n-1}(\R^n-\{0\})$ que sea cerrada y que $i^*(w)=vol_{S^{n-1}}$. La retracción $r:\R^n-\{0\}\to S^{n-1}$ es diferenciable, así que podemos considerar $r^*:\Omega^{n-1}(S^{n-1})\to \Omega^{n-1}(\R^n-\{0\})$, de modo que consideramos $w=r^*(vol_{S^{n-1}})$. Si $x\in\R^n-\{0\}$, entonces $w_x\in Alt^{n-1}(\R^n)$.
+\[
+w_x(w_1,\dots, w_{n-1})=r^*(vol_{S^{n-1}})_x(w_1,\dots, w_{n-1})=
+\]
+\[
+(w_0)_{r(x)}(D_x r(w_1),\dots, D_x r(w_{n-1}))=\det\left(\frac{x}{|x|}, D_x r(w_1),\dots, D_x r(w_{n-1})\right)
+\]
+Ahora, 
+\[
+D_xr(v)=\begin{cases}
+0 & v\in\R x\\
+\frac{v}{|x|} & v\in(\R x)^{\perp}
+\end{cases}
+\]
+El primer caso es porque al proyectar la curva $\alpha(t)=x+tv$ sobre $S^{n-1}$ mediante $r$, nos queda una curva constante igual a $x$, es decir $D_xr(v)=(r\circ \alpha)'(0)=0$. 
+%la segunda parte no es trivial 
+INTENTAR CALCULAR LA SEGUNDA
+Entonces, dado un vector $w=\overline{w}\oplus\tilde{w}$ con $\overline{w}\in\R x$ y $\tilde{w}\in (\R x)^{\perp}$, $D_xr(w)=D_xr(\tilde{w})=\frac{\tilde{w}}{|x|}$. Entonces, la expresión anterior queda como
+\[
+\frac{1}{|x|^n}\det(x,\tilde{w}_1,\dots, \tilde{w}_{n-1})=\frac{1}{|x|^n}\det(x,w_1,\dots, w_{n-1})=\frac{1}{|x|^n}(w_0)_x(w_1,\dots, w_{n-1})
+\]
+Aquí hemos utilizado que $w_i=\tilde{w}_i+\overline{w}_i$, que $\overline{w}_i$ son paralelos a $x$ y la linealidad del determiante. Así,
+\[
+w_x=\frac{1}{|x|^n}\sum_{i=1}^n(-1)^{i-1} x_i dx_1\land\dots\land\hat{dx}
+_i\land\dots\land dx_n\in\Omega^{n-1}(\R^n-\{0\})\]
+
+Podemos comprobar que $w_x$ es cerrada, pues $d:\Omega^{n-1}(S^{n-1})\to \Omega^n(S^{n-1})$ es la aplicación nula por ser $n>\dim(S^{n-1})=n-1$. Así que el resultado se deduce de que $dw=d r^*(vol_{S^{n-1}})=r^*(d vol_{S^{n-1}})=0$.  
+\end{ej}
+
+\begin{ej}
+Sea $\R \PP^{n-1}=S^{n-1}/\sim$ la variedad inducida por la acción de $\Z_2$ mediante la antipodal $A:S^{n-1}\to S^{n-1}$ dada por $x\mapsto A(x)=-x$. Tenemos el diagrama conmutativo
+\[
+\begin{tikzcd}
+S^{n-1}\arrow[r,"A"]\arrow[d, "\pi"] & S^{n-1}\arrow[dl, "\pi"]\\
+\R\PP^{n-1} & 
+\end{tikzcd}
+\]
+Recordemos que $A^*(w)=(-1)^nw$. Es claro que, fijado $x\in S^{n-1}$, $D_xA T_xS^{n-1}\to T_{-x}S^{n-1}$ es un isomorfismo por ser difeomorfismo y de hecho es isometría pues el producto escalar se conserva al cambiar todos los signos. Por el diagrama conmutativo anterior, $D_x\pi=D_{A(x)}\pi D_xA$ y además $D_x\pi T_xS^{n-1}\to T_{\pi(x)}\R\PP^{n-1}$ es isomorfismo. Como $D_xA$ es isometría podemos dotar de estructura Riemanniana a $\R\PP^{n-1}$ de forma que sea compatible con $\pi$, ya que no importará si elegimos $x$ o $-x$.
+\[
+\gene{v,w}_{\pi(x)}=\gene{(D_x\pi)^{-1}(v),(D_x\pi)^{-1}(w)}_x
+\]
+Como $A^*(vol_{S^{n-1}})=(-1)^nvol_{S^{n-1}}$ y $A^*\pi^*=\pi^*:\Omega^{n-1}(\R\PP^{n-1})\to\Omega^{n-1}(S^{n-1})$, tenemso que si $n$ es par, podemos orientar $\R\PP^{n-1}$ con una forma de orientación $w$ tal que $\pi^*(w)=vol_{S^{n-1}}$. Dado $[x]\in\R\PP^{n-1}$, definimos
+\[
+w_{[x]}(v_1,\dots, v_n)=(vol_{S^{n-1}})_x((D_x\pi)^{-1}(v_1),\dots, (D_x\pi)^{-1}(v_n))=(vol_{S^{n-1}})_{-x}((D_x\pi)^{-1}(v_1),\dots, (D_x\pi)^{-1}(v_n))=
+\] 
+\[
+A^*(vol_{S^{n-1}})_x((D_x\pi)^{-1}(v_1),\dots, (D_x\pi)^{-1}(v_n))
+\]
+gracias a que $n$ es par y el signo no cambia. Así definido tenemos un volumen, por ser $D_x\pi$ isometría, es decir, al evaluarlo sobre una base ortonormal obtenemos 1. Así que $w=vol_{\R\PP^{n-1}}$ con $\pi^*(vol_{\R\PP^{n-1}})=vol_{S^{n-1}}$ Y $\R\PP^{n-1}$ es orientable si y solo si $n$ es par.
+\end{ej}
 
 \end{document}
