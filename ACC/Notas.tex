@@ -116,4 +116,94 @@ g = \sum_{j=1}^m u_jf_jx^{\deg(f_{m+1})-\deg(f_j)} \in \gene{f_1,\dotsc,f_m}
 $$
 y además tiene el mismo coeficiente líder que $f_{m+1}$.  Obviamente $f_{m+1}-g \notin \gene{f_1,\dotsc,f_m}$, pues en ese caso $f_{m+1}$ también pertencería, pero $f_{m+1}-g$ tiene grado menor estricto que $f_{m+1}$, lo cuál es una contradicción con que $f_{m+1}$ sea de grado mínimo.
 \end{dem}
+
+\section{Demostración automátiac de teoremas}
+Vamos a demostrar el \textbf{teorema de las medianas}.
+Sean $A=(a_1,a_2)$, $B=(b_1,b_2)$ y $C=(c_1,c_2)$ puntos de $\R^2$.
+Consideramos el triángulo $\triangle ABC$.
+Sean $M_{AB}=(m_{11},m_{12})$, $M_{BC}=(m_{21},m_{22})$ y $M_{CA}=(m_{31},m_{32})$ las medianas del triángulo entre los correspondientes puntos.
+Los puntos $M$ están definidos por las raíces de los siguientes polinomios:
+\begin{align*}
+	h_1 \equiv 2m_{11}-a_1-b_1\\
+	h_2 \equiv 2m_{12}-a_2-b_2\\
+	h_3 \equiv 2m_{21}-b_1-c_1\\
+	h_4 \equiv 2m_{22}-b_2-c_2\\
+	h_5 \equiv 2m_{31}-1_1-c_1\\
+	h_6 \equiv 2m_{32}-a_2-c_2\\
+\end{align*}
+Sea $G=(g_1,g_2)$ el punto de corte de $AM_{AB}$ y $BM_{CA}$, es decir, el baricéntro.
+Se tiene que $G \in AM_{BC}$ si y sólo si $(g_1,g_2)$ es raíz de:
+\[ h_7 \equiv \begin{vmatrix}1 & 1 & 1\\a_1 & m_{21} & g_1\\\\a_2 & m_{22} & g_2\end{vmatrix} \]
+$G \in BM_{CA}$ si y sólo si $(g_1,g_2)$ es raíz de:
+\[ h_8 \equiv \begin{vmatrix}1 & 1 & 1\\b_1 & m_{31} & g_1\\\\b_2 & m_{32} & g_2\end{vmatrix} \]
+
+El teorema consiste en demostrar que $G \in CM_{AB}$, es decir, que:
+\[ c \equiv \begin{vmatrix}1 & 1 & 1\\c_1 & m_{11} & g_1\\\\c_2 & m_{12} & g_2\end{vmatrix} = 0 \]
+
+Tenemos un conjunto de polinomios en $\mathbb{K}[a_1,a_2,\dots,g_1,g_2]$.
+Tenemos que:
+\[ h_1=h_2=\dots=h_8 = 0 \Rightarrow c=0 \]
+es equivalente a:
+\[ \V(h_1,\dots,h_8) \subset \V(c) \]
+o, alternativamente:
+\[ c \in \sqrt{\gene{h_1,\dots,h_8}} \]
+
+Hemos transformado el problema geométrico en un problema algebraico de pertenencia en ideal.
+En este caso estamos en la pertenencia al radical de un ideal, esto es equivalente a comprobar la pertenencia en un ideal con una variable más por el siguiente lema.
+
+\begin{lemma}
+Para un ideal $I \subset K[\underline{x}]$, son equivalentes:
+\begin{enumerate}
+\item $c \in \sqrt{I}$
+\item $\gene{I, ct-1} = \gene{1}$, con $\gene{I, ct-1} \subset K[\underline{x},t]$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}\mbox{}
+\begin{itemize}
+\item[$(1)\Rightarrow(2)$] Sea $c \in \sqrt{I}$ y llamemos $\overline{I} = \gene{I, ct-1}$.
+Queremos probar que $\V(\overline{I})=\emptyset$.
+Supongamos que $(\underline{a},b) \in \V(\overline{I})$.
+Entonces $f_i(\underline{a}) = 0$ para $1\leq i \leq r$, donde $I = \gene{f_1,\dots,f_r}$.
+Entonces $c \in \sqrt{I}$, implica que $c(\underline{a})=0$.
+Luego $c(\underline{a})\cdot b - 1 = -1 \neq 0$.
+Esto es una contradicción. 
+\item[$(2)\Rightarrow(1)$] 
+Para todo $\underline{a} \in \V(I) = \V(f_1,\dots,f_r)$, se tiene que $f_i(\underline{a})$ para $1\leq i \leq r$.
+Existe un polinomio $h$ tal que:
+\[ 1 = h(\underline{a},t)(1-c(\underline{a})\cdot t)\]
+o equivalentemente:
+\[ h(\underline{a},t) = \frac{1}{1-c(\underline{a})\cdot t} \]
+Como $h$ debe ser un polinomio, el denominador debe ser trivial, luego $c(\underline{a}) = 0$.
+\end{itemize}
+\end{proof}
+
+No siempre el métdo funciona.
+Como ejemplo, sea $G$ el baricentro, $H$ el ortocentro y $O$ el circuncentro.
+Veamos que están alineados (la recta que une estos puntos se llama \emph{recta de Euler}).
+Fijando un sistema de referencia adecuado: $A=(0,0)$, $B=(1,0)$ y $C=(c_1,c_2)$.
+
+Tenemos que la mediana desde $C$ da la ecuación:
+\[ (1-2c_1)y+2c_2x-c_2 = 0 \]
+La mediana desde $A$:
+\[ (c_1+1)y+c_2x = 0 \]
+
+\begin{itemize}
+\item Condiciones sobre $G=(x_1,x_2)$
+\[ h_1 \colon (1-2c_1)x_2 + 2c_2x_1 - c_2 = 0 \]
+\[ h_2 \colon (c_1+1)x_2 - c_2x_1 = 0 \]
+\item Condiciones sobre $H = (y_1,y_2)$
+\[ h_3 \colon y_1 - c_1 = 0 \]
+\[ h_4 \colon -c_2 y - c_1 y_1 + y_1 = 0 \]
+\item Condiciones sobre $O = (z_1,z_2)$
+\[ h_5 \colon d(A,O)^2 - d(B,O)^2 = z_1^2+z_2^2 - \left((z_1-1)^2+z_2^2\right) = 0 \]
+\[ h_6 \colon d(A,O)^2 - d(C,O)^2 = z_1^2+z_2^2 - \left((z_1-c_1)^2+(z_2-c_2)^2\right) = 0 \]
+\end{itemize}
+Tenemos que demostrar que:
+\[ c \colon \begin{vmatrix}1 & 1 & 1\\x_1 & y_1 & z_1\\x_2 & y_2 & z_2\end{vmatrix} = 0\]
+Definiendo $I = \gene{h_1,\dots,h_6}$, el teorema quedaría probado si $c \in \sqrt{I}$, es decir, si $\gene{I,ct-1}=\gene{1}$.
+Sin embargo, la base de Gröbner de $\gene{I,ct-1}$ es:
+\[ \mathcal{G} = \{x_1y_2t-x_1z_2t+z_2c_1t-\frac{1}{2}y_2t-1, c_1^2-c_1, x_2, y_1-c_1, z_1-\frac{1}{2},c_2 \}\]
+Obsérvese ese $c_2$ al final, eso no puede estar bien.
+Hay que añadir la \emph{condición degenerada} $c_2 \neq 0$ al ideal, lo hacemos añadiendo $c_2t-1$.
+Con este polinomio añadido a $I$, ya tenemos que $\gene{I,ct-1} = \gene{1}$.
 \end{document}
