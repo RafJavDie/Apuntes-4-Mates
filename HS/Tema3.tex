@@ -344,14 +344,14 @@ Para $n=0$, consideramos la misma sucesión pero obteniéndola de la sucesión d
 \draw (0,0) node[anchor=south]{};
 \end{tikzpicture}
 \begin{tikzpicture}
-\draw (1,2) node[anchor=south]{$v_0$} -- (0,0) node[anchor=north]{$v_5$} -- (2,0) node[anchor=north]{$v_1$} -- cycle;
+\draw (1,2) node[anchor=south]{$v_3$} -- (0,0) node[anchor=north]{$v_5$} -- (2,0) node[anchor=north]{$v_1$} -- cycle;
 \end{tikzpicture}
 \end{figure}
 
 Luego:
-\[ H_n(K) \cong H_n(\partial(v_1,v_5,v_4)) = \begin{cases}
+\[ H_n(K) \cong H_n((v_1,v_5,v_3)) = \begin{cases}
   \F\gene{v_1} & \text{ si }n=0\\
-  \F\gene{\partial(v_1,v_5,v_4)} & \text{ si }n=1\\
+  \F\gene{\partial(v_1,v_5,v_3)} & \text{ si }n=1\\
     0 & \text{ si }n>1\end{cases}\]
 
 \item \underline{Homología de la cinta de Möbius}:
@@ -503,7 +503,7 @@ Luego
 \[ \widetilde{H}_q(K_2) \cong H_q(L) = \begin{cases}0 & \text{ si }q\neq 1\\\F^2\gene{\tau_1,\tau_2} & \text{ si }q=1\end{cases}\]
 donde
 \begin{align*}
-\tau_1 & = (v_0,v_3)+(v_3,v_6)+(v_6,v_0)\\
+\tau_1 & = (v_0,v_6)+(v_6,v_3)+(v_3,v_0)\\
 \tau_2 & =(v_0,v_1)+(v_1,v_2)+(v_2,v_0)
 \end{align*}
 Aplicamos Mayer-Vietoris para $K_1$ y $K_2$:
@@ -525,7 +525,9 @@ Tras dotar a todos los $2$-símplices de una orientación coherente (caras comun
 \[ c = \sum_{\dim(µ \in K_2)=2} µ \]
 una $2$-cadena que verifica:
 \[ \partial_2(c) = (v_4,v_5)+(v_5,v_7)+(v_7,v_4) = \tau \]
-Luego $\tau$ visto en $\widetilde{H}_1(K_2)$ es trivial, luego $i_{*1}$ envía $\tau$ en $0$. Luego $\ker i_{*1}=\F\gene{\tau}$.
+Luego $\tau$ visto en $\widetilde{H}_1(K_2)$ es trivial, luego $i_{*1}$ envía $\tau$ en $0$. Luego $\ker i_{*1}=\F\gene{\tau}$. Como $\Delta_{*2}$ es homeomorfismo sobre su imagen tenemos que $\widetilde{H}_1(K_2)\cong \Ima\Delta_{*2}\cong \F\gene{\tau}$.
+
+Por otra parte, tenemos que $j_{*1}$ es inyectiva porque hemos probado que $i_{*1}$ es la aplicación nula. Así que por exactitud es de hecho isomorfismo. Esto implica que $\widetilde{H}_1(K)\cong \F^2\gene{\tau_1,\tau_2}$.
 
 \emph{Continuará...}
 \end{ej}
