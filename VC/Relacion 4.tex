@@ -9,6 +9,137 @@
 \title{Variable Compleja - Relación 4}
 \author{Rafael González López}
 \maketitle
+
+
+\begin{ejercicio}{1}
+Determinar el orden de las funciones:
+$$
+e^{az^4},\quad z^2e^{2z}-e^{3z},\quad e^z \cos z,\quad \cos\sqrt{z}, \quad e^5z-3e^{2z^2}, \quad e^{\cos z},\quad \int_0^1 e^{tz^2}dt
+$$
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[]
+\item Si $a=0$, entonces $\rho=0$. En otro caso
+$$
+|e^{az^4}|\leq e^{|a||z|^4} \quad \forall z \in \C
+$$
+Luego $\rho\leq 4$. Supongamos que $\rho <4$, entonces $\exists r,A,B>0$ con $\rho<r<4$ tales que
+$$
+|e^{az^4}|\leq Ae^{B|z|^r} \quad \forall z \in \C
+$$
+Consideremos $z\in \R_{>0}$. En ese caso $|e^{az^4}|=e^{az^4}$ y $ Ae^{B|z|^r} = Ae^{Bz^r}$. Es claro que cuando $z\to \infty$ la desigualdad deja de ser cierta.
+\item Naturalmente si $|z|>1$ entonces $|z^2e^{2z}|\geq |e^{2z}|$, por lo que $z^2e^{2z}$ tiene orden $\geq 1$. Además usando que $z^2$ tiene orden $\leq 1$
+$$
+|z^2e^{2z}|\leq |z|^2e^{2|z|}\leq Ae^{3|z|}
+$$
+Por tanto $z^2e^{2z}$ tiene orden $1$. Como $e^{3z}$ también y la diferencia es no nula, tenemos que es de orden $1$.
+\item Sabemos que $\cos z = (e^{iz}+e^{-iz})/2$, luego
+$$
+|e^z \cos z| \leq e^{|z|}e^{|z|} = e^{2|z|}
+$$
+Por tanto, tiene orden $\leq 1$.
+\end{itemize}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Sea
+$$
+f(z)=\frac{\sqrt{2}e^{-\pi i/8}\cos\left(\frac{\pi z}{2}\right)-e^{-\frac{\pi i}{2}z^2}}{\cos(\pi z)}
+$$
+\begin{enumerate}[(a)]
+\item Demostrar que $f$ es una función entera, es decir sus singularidades aisladas son evitables.
+\item ¿Cuál es el orden de $f(z)$?
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item Sabemos que el $\cos \pi z$ se anula si y solo si $z=(2k+1)/2$ con $k\in \Z$
+\item 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+Sea $\rho>1$.
+\begin{enumerate}[(a)]
+\item Demostrar que el producto
+$$
+\prod_{n=0}^\infty \left(1-\frac{z}{\rho^n}\right) 
+$$
+define una función entera $f(z)$.
+\item ¿Cuál es el orden de la función $f$?
+\item La función $f(z)$ y $f(\rho z)$ están conectadas por una ecuación funcional. Encontrar y demostrar esta ecuación.
+\item Demostrar que $f(z)$ tiene orden $0$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item Es claro que para cada $r>0$, $|z|\leq r$, $F_n(z)=1-z/\rho^n$ verifica 
+$$
+|F_n(z)-1| = |z|/\rho^n \leq r/\rho^n \qquad \sum_{n=0}^\infty r/\rho^n = r \frac{\rho}{\rho-1}
+$$
+Por tanto, el producto define una función holomorfa en $|z|<r$. Como $r$ es arbitrario, tenemos que define una función $f(z)$ que es entera.
+\item Sabemos que tenemos la desigualdad
+%$$
+%\abs{\prod_{n=0}^\infty \left(1-\frac{z}{\rho^n}\right)} = \prod_{n=0}^\infty \prod_{n=0}^\infty \abs{1-\frac{z}{\rho^n}} \leq \prod_{n=0}^\infty \left(1+\frac{|z|}{\rho^n}\right) \leq e^{|z|\sum_n \rho^{-n}} = e^{|z|\rho(\rho-1)^{-1}}
+%$$
+\item Es claro que 
+$$
+f(z\rho) = \prod_{n=0}^\infty  \left(1-\frac{z}{\rho^{n-1}}\right)  = (1-z\rho)\prod_{n=1}^\infty  \left(1-\frac{z}{\rho^{n-1}}\right)  = (1-z\rho)f(z)
+$$
+\item Demostrado en (b).
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4}
+Probar que si $f$ es una función entera de orden finito que omite dos valores, entonces $f$ es constante. Esto es cierto también para cualquier función entera y se conoce como el teorema pequeño de Picard.
+\end{ejercicio}
+\begin{solucion}
+Supongamos que $f$ omite dos valores $a$ y $b$. Entonces $f(z)-a$ (resp. con $b$) es una función holomorfa que no se anula en $\C$. Como $f$ es de orden finito $\rho$, como aplicación directa del teorema de Hadamard tenemos que existe un polinomio $g(z)$ de grado menor o igual $k=\suelo{\rho}$ tal que $f(z)-a=e^{g(z)}$. Análogamente para $b$ tenemos el resultado para un polinomio $h(z)$. Por tanto, $f(z)=e^{g(z)}+a=e^{h(z)}+b$. Como estamos en $\C$ sabemos que si $h$ o $g$ son no constantes, existe algún $z_0\in \C$ tal que $h(z_0)=g(z_0)$, por lo que 
+$$
+f(z_0) = e^{g(z_0)}+a=e^{h(z_0)}+b \Rightarrow a = b
+$$
+Lo cuál no es posible por hipótesis, luego $h$ y $g$ son polinomios constantes y, por tanto, $f(z)=e^{g}+a$ que es constante.
+\end{solucion}
+
+\newpage
+
+
+\begin{ejercicio}{5}
+Supongamos que $f$ sea entera y no se anule y que ninguna de sus derivadas se anule. Probar que si $f$ es además de orden finito, entonces $f(z)=e^{az+b}$ para algunas constantes $a$ y $b$.
+\end{ejercicio}
+\begin{solucion}
+Aplicamos el Teorema de Hadamard. Como $f$ no se anula y tiene orden finito $r$, sabemos que existe un polinomio $p(z)$ de grado $\leq \suelo{r}$ tal que
+$$
+f(z)=e^{p(z)}
+$$
+Sabemos que $f'(z)=p'(z)e^{p(z)}$ se anula si y solo si $p'(z)$ se anula. Como por hipótesis no se anula, deducimos que $p'(z)$ es una constante no nula y $p(z)$ es de la forma $az+b$.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{6}
+Proba que la ecuación $e^{z}-z=0$ tiene infinitas soluciones en $\C$.
+\end{ejercicio}
+\begin{solucion}
+Por reducción al absurdo, supongamos que no es así, es decir, que existe una cantidad finita $s$ (en principio puede ser nula). Claramente $f(z)=e^z-z$ es una función entera de orden $1$. Como aplicación de teorema de Hadamard tenemos que
+$$
+f(z)=e^{az+b}\prod_{n=1}^s (1-z/a_n)e^z = e^{(a+s)z+b}\prod_{n=1}^s(1-z/a_n) = e^{(a+s)z+b}p(z)
+$$
+Igualando a $0$, tenemos que podemos tomar $b=0$ (o cualquier otro múltiplo entero de $2\pi i$). Podemos suponer que $a+s\neq 0$ pues otro caso es trivial. Claramente $f'(z)=e^z$ no se anula en $\C$. Sin embargo
+$$
+(e^{(a+s)z}p(z))' = ((a+s)p(z)+p'(z))e^{(a+s)z}
+$$
+se anula necesariamente en algún punto a menos que $p(z)$ sea un polinomio de grado $1$ ($s=1$) o una constante ($s=0$). Es fácil comprobar en ambos casos la igualdad sería absurda.
+\end{solucion}
+\newpage
 \begin{ejercicio}{7}
 Deducir del teorema de Hadamard que si $F$ es entera de orden de crecimiento $\rho$ no entero, entonces $F$ tiene infinitos ceros.
 \end{ejercicio}
@@ -43,9 +174,34 @@ $$
 |e^{P(z)}|\leq e^{|P(z)|}\leq e^{k|z|^k}
 $$
 Luego tiene orden $\leq k$. 
-\item Tenemos $E_k(z/a_n)$ es el producto de un polinomio y una exponencial elevada a un polinomio de grado $k$. Usando la proposición y las consideraciones anteriores tenemos que $E_k(z/a_n)$ tiene orden $k$. 
+\item Tenemos $E_k(z/a_n)$ es el producto de un polinomio y una exponencial elevada a un polinomio de grado $k$. Usando la proposición y las consideraciones anteriores tenemos que $E_k(z/a_n)$ tiene orden $\leq k$. 
 \end{itemize}
 Por tanto, podemos escribir $f(z)$ como un producto finito de funciones de orden $\leq k$, de lo que colegimos que tiene orden $\leq k$, lo cuál es claramente una contradicción.
 \end{solucion}
+\newpage
+\begin{ejercicio}{8}
+Encontrar la región en que se trasnforma $\{z\in\C\mid |z|<1,\,\Im(z)>0\}$.
+\end{ejercicio}
+\begin{solucion}
+Pensemos primero en qué se transforma la frontera de la región. Sabemos que $w(0)=-i/2$, $w(-1) = (2+i)/(i-2)$ y $w(1)= (2-i)/(2+i)$, que forman parte de una circunferencia. 
+\end{solucion}
+\newpage
 
+\begin{ejercicio}{9}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{10}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{11}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+\newpage
 \end{document}
