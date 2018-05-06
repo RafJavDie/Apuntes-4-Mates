@@ -39,7 +39,7 @@ det(R)
 #R es singular, por lo que no se puede calcular 
 #ni KMO ni el test de Barlett
 #Además tampoco se puede aplicar el método AF
-#de máxima verosimilitud
+#de máxima verosimilitud                                  ### ¿Por qué?
 
 
 #3. Estimar el modelo A.F. mediante el 
@@ -64,7 +64,7 @@ colnames(L)= paste("Factor",1:m)
 L
 (h= apply(L^2,1,sum))   #comunalidades
 (psi= diag(R)-h)        #varianzas específicas
-cbind(L,h,psi)           #Parece ser necesario aplicar alguna rotación
+cbind(L,h,psi)          #Parece ser necesario aplicar alguna rotación
 
 #Contribuciones de los factores
 contrib=   apply(L^2,2,sum)

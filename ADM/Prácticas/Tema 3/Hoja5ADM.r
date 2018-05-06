@@ -226,7 +226,6 @@ grid()
 
 #5.ii
 agric.pam<- pam(agriculture,2)
-par(ask=F)
 summary(agric.pam)
 plot(agric.pam)
 
@@ -279,7 +278,7 @@ plot(clx3)
 
 #Dibujar la nube de puntos distinguiendo
 #el conglomerado mediante colores
-plot(xclara, col=clx3$clustering)
+plot(xclara, col=c("red","blue","green")[clx3$clustering])
 
 #8. METODO FANNY
 ################
@@ -300,7 +299,6 @@ Mclusfaith
 matz<-Mclusfaith$z
 round(matz[1:10,],4) #Para cada caso, prob. de pertenencia a cada grupo
 plot(Mclusfaith) #0 para terminar
-
 names(Mclusfaith) 
 #lista de toda la informacion presente en EMfaith
 L<-Mclusfaith$loglik

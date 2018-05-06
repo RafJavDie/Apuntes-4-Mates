@@ -16,25 +16,25 @@ boxplot(decath[,1:10]) #mejor trabajar con las correlaciones
 R<- cor(decath[,1:10]) #matriz de correlaciones
 round(R,2)
 det(R)  #valor pequeño, señal de alto grado 
-#de intercorrelación
+        #de intercorrelación
 
 ########################################
 #2.Análisis de componentes principales
 ########################################
 
-acp<- princomp(decath[,1:10], cor = TRUE)
-str(acp)   #estructura resultante
-summary(acp)  #Da las d.t. de las componentes
+acp<- princomp(decath[,1:10], cor = TRUE)          #### TRUE porque están tipificados ¿? 
+str(acp)   #estructura resultante                 
+summary(acp)  #Da las d.t. de las componentes      
 
 #Un resumen con mejor formato:
-resumen<- matrix(NA,nrow=length(acp$sdev),ncol=3)
-resumen[,1]<-  acp$sdev^2
+resumen<- matrix(NA,nrow=length(eigen(R)$values),ncol=3)
+resumen[,1]<-  eigen(R)$values 
 resumen[,2]<- 100*resumen[,1]/sum(resumen[,1])
 resumen[,3]<- cumsum(resumen[,2])
 colnames(resumen)<- c("Autovalor","Porcentaje",
                       "Porcentaje acumulado")
-resumen
-
+resumen                                           ### La variavilidad explicada es
+                                                  ### el porcentaje, ¿no?
 eigen(R)$values  #Coinciden con resumen[,1]
 
 #Gráfico de sedimentación
@@ -43,8 +43,6 @@ plot(resumen[,1],type="h",
 abline(h=mean(resumen[,1]),lwd=2,lty=2,col="blue")
 #otra opción:
 plot(acp,col="blue",main="Decathlon 1989") 
-
-
 
 
 #####################################################
@@ -61,29 +59,28 @@ plot(acp,col="blue",main="Decathlon 1989")
 #H0: landa[m+1]=...=landa[p]=0
 numcp<- function(n,p,m,landa)
 {  a<-n- ((2+p+11)/6)
-  lmedia<- log(mean(landa[(m+1):p]))
-  suma<- sum(log(landa[(m+1):p]))
-  Q<- a*( (p-m)*lmedia-suma)
-  gl<- (p-m+2)*(p-m+1)/2
-  pvalor<- 1-pchisq(Q,gl)
+   lmedia<- log(mean(landa[(m+1):p]))
+   suma<- sum(log(landa[(m+1):p]))
+   Q<- a*( (p-m)*lmedia-suma)
+   gl<- (p-m+2)*(p-m+1)/2
+   pvalor<- 1-pchisq(Q,gl)
   list(Q=Q,gl=gl,pv=pvalor)
 }
-cbind(0:9,t(sapply(0:9,numcp,n=nrow(decath),p=10,acp$sdev^2)))  
-#Sugiere dos C.P.
-#Se acepta #H0: landa[3]=...=landa[p]=0
+cbind(0:9,t(sapply(0:9,numcp,n=nrow(decath),p=10,acp$sdev^2)))   .#### ¿Cómo se interpreta?
+#Sugiere dos C.P.                                      #### ¿Por qué no 4 que es donde
+#Se acepta #H0: landa[3]=...=landa[p]=0                #### se maximiza el pv?
 #Sin embargo las dos primeras CP sólo explican
 #el 71% de la varianza total
 
 #####################################################
 #4. Coeficientes y correlaciones de las C.P.
 #####################################################
+acp$loadings #Coeficientes que definen cada combinación lineal
+eigen(R)$vectors  #Coinciden. Osea: son los fucking autovectores.
 
-loadings(acp) #Coeficientes que definen cada combinación lineal
-eigen(R)$vectors  #Coinciden
-#para calcular las correlaciones entre las 
-#variables y las componentes
-cor_vc<-loadings(acp)%*%diag(acp$sdev)
-cor_vc
+# Correlaciones entre las variables originales y las componentes
+cor_vc<-loadings(acp)%*%diag(acp$sdev)       
+cor_vc                                      ## Preguntar ???
 cor_vc[,1:2]  #las dos primeras
 #También se pueden calcular mediante
 #cor(decath[,1:10],acp$scores)[,1:2]
@@ -100,7 +97,7 @@ abline(v=0.5,lty=2)
 abline(v=-0.5,lty=2)
 abline(h=-0.5,lty=2)
 
-#Comunalidades: para cada variable, es 
+#Comunalidades: para cada variable, es         ### ¿Por qué?
 #el coeficiente R2 entre esa variable
 #y el conjunto de las c.p.seleccionadas
 #Se puede calcular como la suma de las 
@@ -123,7 +120,7 @@ autovalores<- descompespec$values
 autovectores<- descompespec$vectors
 autovectores%*%diag(autovalores)%*%t(autovectores)
 R
-#Aproximación mediante las dos primeras CP:
+#Aproximación mediante las dos primeras CP:6
 Raprox2<- autovectores[,1:2]%*%diag(autovalores[1:2])%*%t(autovectores[,1:2])
 Raprox2  #Matriz de correlaciones reproducidas
 
@@ -154,4 +151,3 @@ plot(acp$scores[,1:2],type="n",
      xlab="C.P. 1",ylab="C.P.2")
 text(acp$scores[,1:2],labels=decath$nompais,cex=0.6)
 abline(h=0,v=0,lty=2,col="blue")
-

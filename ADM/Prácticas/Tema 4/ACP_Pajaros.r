@@ -32,7 +32,8 @@ EBarl = -(n-1-(2*p+5)/6)*log(det(R))
 gl = p*(p-1)/2
 EBarl
 gl
-pchisq(EBarl,gl,lower.tail=FALSE)  #Significativo
+pchisq(EBarl,gl,lower.tail=FALSE)  #Significativo   ### ¿QUÉ ESTAMOS HACIENDO AQUÍ?
+                                                    ### ¿No calculamos IC o p-value?
 
 #########################################
 #2. Análisis de componentes principales
@@ -43,7 +44,7 @@ autovec= eigen(R)$vectors
 #Gráfico de sedimentación
 plot(autoval,type="h",main="Datos de los pájaros",ylab="Autovalor",
 xlab="Componente",col="red")
-abline(h=mean(autoval),lwd=2,lty=2,col="blue")
+abline(h=mean(autoval),lwd=3,lty=3,col="blue")
 
 #Una sola C.P. explica el 76%, mejor dos C.P.
 resumen= matrix(NA,nrow=length(autoval),ncol=3)
@@ -52,21 +53,19 @@ resumen[,2]= 100*resumen[,1]/sum(resumen[,1])
 resumen[,3]= cumsum(resumen[,2])
 colnames(resumen)= c("Autovalor","Porcentaje","Porcentaje acumulado")
 resumen
-
-
-m=2  #Número de componentes a considerar
+m=2  #Número de componentes a considerar           ### ¿Qué criterio usamos? ¿Más del 80%?
 #Matriz de coeficientes que definen cada 
 #combinación lineal:
 L= autovec[,1:m] 
 rownames(L)=colnames(R)
 #para calcular las correlaciones entre las variables y las componentes
-cor_vc=L%*%diag(sqrt(autoval[1:m]))
-cor_vc
+cor_vc=L%*%diag(sqrt(autoval[1:m]))                ### Propiedad 1.5 ??
+cor_vc                                             ### PREGUNTARRRR
 
 #Comunalidades: para cada variable, es 
 #la suma de correlaciones cuadrado
 #con las c.p. seleccionadas
-cbind(apply(correlaciones^2,1,sum))
+cbind(apply(R^2,1,sum))       #### Esto está mal escrito. ¿Hola? 
 
 
 
@@ -77,7 +76,7 @@ cbind(apply(correlaciones^2,1,sum))
 #La rotación ortogonal varimax
 #facilita la interpretación
 (rotvmax= varimax(L))
-Lrot=loadings(rotvmax)
+Lrot=rotvmax$loadings
 rownames(Lrot)=colnames(R)
 Lrot #Más fácil de interpretar
 
@@ -86,5 +85,4 @@ plot(L,type="n",xlim=c(-1,1),ylim=c(-1,1),
 text(L,labels=rownames(L),cex=0.8)
 text(Lrot,labels=rownames(Lrot),cex=0.8,col="red")
 grid()
-abline(h=0,v=0,lty=2)
-
+abline(h=0,v=0,lty=2)                                #### ¿Cuál es la interpretación?
