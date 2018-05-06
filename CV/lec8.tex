@@ -231,7 +231,7 @@ Sean $U_1,U_2\subseteq\R^n$ abiertos orientados con la orientación estándar y 
 
 Dada cualquier variedad diferenciable orientada $M$ y $p\in M$, podemos siempre encontrar una carta $h:U\to U'$ alrededor de $p$ de tal forma que $h$ preserve la orientación: si no lo preserva, basta cambiar de signo una coordenada. Se dirá en tal caso que $(U,h)$ es una \textbf{carta orientada}. El intercambio de dos cartas orientadas tendrá jacobiano positivo. Un atlas en el que todos los intercambios de cartas con jacobiano positivo se dirá \textbf{atlas positivo}.
 
-\begin{prop}
+\begin{prop}\label{9.14}
 Sea $\{h_i:U_i\to U_i'\}_{i\in I}$ es un atlas positivo sobre $M$, entonces $M$ posee una orientación tal que todas las $h_i$ son cartas orientadas.
 \end{prop}
 \begin{dem}
@@ -385,5 +385,49 @@ A^*(vol_{S^{n-1}})_x((D_x\pi)^{-1}(v_1),\dots, (D_x\pi)^{-1}(v_n))
 \]
 gracias a que $n$ es par y el signo no cambia. Así definido tenemos un volumen, por ser $D_x\pi$ isometría, es decir, al evaluarlo sobre una base ortonormal obtenemos 1. Así que $w=vol_{\R\PP^{n-1}}$ con $\pi^*(vol_{\R\PP^{n-1}})=vol_{S^{n-1}}$ Y $\R\PP^{n-1}$ es orientable si y solo si $n$ es par.
 \end{ej}
+
+\begin{nota}
+Dadas dos variedades diferenciables $M$ y $N$ de dimensiones $m$ y $n$ respectivamente, el producto cartesiano $M\times N$ es una variedad diferenciable de dimensión $m+n$. Para un par de cartas $h:U\to U'$ y $k:V\to V'$ de $M$ y $N$ respectivamente, podemos usar $h\times k:U\times V\to U'\times V'$ como carta de $M\times N$. Este producto de cartas forma un atlas diferenciable sobre $M\times N$. Para $p\in M$ y $q\in N$ hay un isomorfismo natural
+\[
+T_{(p,q)}(M\times N)\cong T_pM\oplus T_qN.
+\]
+Si $M$ y $N$ están orientadas, se pueden usar cartas orientadas $(U,h)$ y $(V,k)$. Los difeomorfismos de transición entre cartas $(U\times V, h\times k)$ satisfacen la condición de la proposición \ref{9.14}, así que obtenemos una \textbf{orientación producto} en $M\times N$. Si las orientaciones están especificadas por formas de orientación $w\in\Omega^m(M)$ y $\tau\in\Omega^n(N)$, la orientación producto viene dada por la forma de orientación $pr^*_M(w)\land pr^*_N(\tau)$, siendo $pr_M$ y $pr_N$ las proyecciones de $M\times N$ en $M$ y $N$ respectivamente. 
+\end{nota}
+
+En adelante consideraremos una variedad diferenciable $M\subseteq\R^{n+k}$ de dimensión $n$. En cada punto $p\in M$ se tiene un espacio vectorial normal $T_pM^{\perp}$ de dimensión $k$. Un \textbf{campo vectorial normal diferenciable} $Y$ en un abierto $W\subseteq M$ es una aplicación diferenciable $Y:W\to\R^{n+k}$ con $Y(p)\in T_pM^{\perp}$ para todo $p\in W$. En el caso $k=1$, $Y$ se llama \textbf{aplicación de Gauss} cuando $Y(p)$ tiene longitud 1. Tal aplicación siempre existe localmente por lo siguiente:
+
+\begin{lemma}
+Para todo $p_0\in M\subseteq\R^{n+k}$ existe un entorno abierto $W$ de $p_0$ en $M$ y campos vectoriales normales diferenciables $Y_j$ ($1\leq j\leq k$) en $W$ tales que $Y_1(p),\dots, Y_k(p)$ forman una base ortonormal de $T_pM^{\perp}$ para todo $p\in W$.
+\end{lemma}
+\begin{proof}
+Entorno a $p_0\in M$ existen vectores tangentes diferenciables $X_1,\dots, X_n$ que en cada punto $p$ dan lugar a una base de $T_pM$. Elegimos una base $V_1,\dots, V_n\in T_{p_0}M^{\perp}$. Dado que el determinante $(n+k)\times(n+k)$
+\[
+\det(X_1(p),\dots, X_n(p),V_1,\dots, V_k)
+\]
+no se anula en $p_0$, tampoco se anula en un entorno $W$ de $p_0$ en $M$. Aplicando Gram-Schmidt obtenemos una base ortonormal de $\R^{n+k}$
+\[
+\widetilde{X}_1(p),\dots, \widetilde{X}_n, Y_1(p),\dots, Y_k(p)
+\]
+donde los primeros $n$ vectores generan $T_pM$. Además todos los vectores resultantes son diferenciables por lo que se tiene el resultado.
+\end{proof}
+
+
+\begin{prop}
+Sea $M\subseteq\R^{n+1}$ una variedad diferenciable de codimensión 1.
+\begin{enumerate}
+\item Hay una correspondencia biunívoca entre campos de vectores normales diferenciables $Y$ en $M$ y $n$-formas en $\Omega^n(M)$. Esta correspondencia asocia a $Y$ la $n$-forma $w=w_Y$ dada por
+\[
+w_p(W_1,\dots, W_n)=\det(Y(p), W_1,\dots, W_n)
+\]
+para $p\in M$, $W_i\in T_pM$.
+\item Esto induce una correspondencia biunívoca entre las aplicaciones de Gauss $Y:M\to S^n$ y las orientaciones de $M$:
+\end{enumerate}
+\end{prop}
+\begin{dem}
+Si $p\in M$ entonces $Y(p)=0$ si y solo si $w_p\equiv 0$. Como $w_Y$ depende linealmente de $Y$, la aplicación $Y\mapsto w_Y$ debe ser inyectiva. Si $Y$ es una aplicación de Gauss, entonces $w_Y$ es una forma de orientación que coincide justamente con la forma de volumen asociada a la orientación determinada por $w_Y$ y la estructura Riemanniana de $M$ inducida por $\R^{n+1}$. Si $M$ tiene una aplicación de Gauss, entonces 1 se verifica, ya que todo elemento de $\Omega^n(M)$ es de la forma $fw_Y=w_{fY}$ para alguna $f\in C^{\infty}(M,\R)$. Ahora, $M$ puede ser cubierta por abiertos para los que existe una aplicación de Gauss. Para cada uno de ellos se verifica 1, pero entonces también se verifica globalmente.
+
+Una orientación de $M$ determina una forma de volumen $vol_M$, y de 1 se obtiene $Y$ con $w_Y=vol_M$. Este $Y$ es una aplicación de Gauss. 
+\QED
+\end{dem}
 
 \end{document}
