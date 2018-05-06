@@ -1,0 +1,51 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+
+\usepackage{enumerate}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Variable Compleja - Relación 4}
+\author{Rafael González López}
+\maketitle
+\begin{ejercicio}{7}
+Deducir del teorema de Hadamard que si $F$ es entera de orden de crecimiento $\rho$ no entero, entonces $F$ tiene infinitos ceros.
+\end{ejercicio}
+\begin{solucion}
+El resultado se derivará inmediatamente a partir de la siguiente proposición. 
+\begin{prop}
+Sean $f,g$ dos funciones enteras con orden $\leq k$ entonces el producto $fg$ tiene orden $\leq k$.
+\end{prop}
+\begin{dem}
+Sabemos que $\exists A,B,C,D>0$ tales que $\forall z\in \C$
+$$
+|f(z)|\leq Ae^{B|z|^k} \qquad |g(z)|\leq Ce^{D|z|^k}
+$$
+Por tanto, $\forall z \in \C$
+$$
+|f(z)g(z)| \leq ACe^{B|z|^k+D|z|^k} = ACe^{(B+D)|z|^k}
+$$
+\end{dem}
+Una consecuencia inmediata es que podemos sustituir el producto de dos funciones por cualquier producto finito de funciones. Pasemos a resolver el problema. Supongamos que $f$ tiene una cantidad finita de ceros $a_1,\dotsc,a_s$. Entonces, por el Teorema de Hadamard tenemos que
+$$
+f(z)=e^{P(z)}z^m\prod_{n=1}^s E_k(z/a_n)
+$$
+donde $k$ es el entero tal que $k<\rho<k+1$. Analicemos esta descomposición. 
+\begin{itemize}
+\item Por un lado tenemos que cualquier polinomio tiene orden $0$ pues para todo $\rho>0$
+$$
+\lim_{|z|\to\infty} \frac{|P(z)|}{e^{|z|^\rho}} = 0
+$$
+Luego, en particular, tiene orden $\leq k$.
+\item Por otro lado, si $P(z)$ es un polinomio de grado $k$ entonces para $|z|>1$ suficientemente grande
+$$
+|e^{P(z)}|\leq e^{|P(z)|}\leq e^{k|z|^k}
+$$
+Luego tiene orden $\leq k$. 
+\item Tenemos $E_k(z/a_n)$ es el producto de un polinomio y una exponencial elevada a un polinomio de grado $k$. Usando la proposición y las consideraciones anteriores tenemos que $E_k(z/a_n)$ tiene orden $k$. 
+\end{itemize}
+Por tanto, podemos escribir $f(z)$ como un producto finito de funciones de orden $\leq k$, de lo que colegimos que tiene orden $\leq k$, lo cuál es claramente una contradicción.
+\end{solucion}
+
+\end{document}
