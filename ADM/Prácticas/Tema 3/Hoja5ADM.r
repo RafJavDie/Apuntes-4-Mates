@@ -110,7 +110,8 @@ flower
 
 D <- daisy(flower,type = list(asymm = c("V1", "V3"), symm= 2,ordratio= 7,logratio= 8))
 D
-
+D1 <- daisy(flower,type = list(asymm = c(1, 3), symm= 2,ordratio= 7,logratio= 8))
+D
 #2.ii
 conglosin<- hclust(D,method="single")
 plot(conglosin, cex=0.8,

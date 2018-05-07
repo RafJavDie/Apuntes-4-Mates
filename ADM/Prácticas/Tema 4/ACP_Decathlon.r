@@ -22,8 +22,8 @@ det(R)  #valor pequeño, señal de alto grado
 #2.Análisis de componentes principales
 ########################################
 
-acp<- princomp(decath[,1:10], cor = TRUE)          #### TRUE porque están tipificados ¿? 
-str(acp)   #estructura resultante                 
+acp<- princomp(decath[,1:10], cor = TRUE)          #### Que utilice la estandarizada 
+str(acp)                                           #### Estructura resultante                 
 summary(acp)  #Da las d.t. de las componentes      
 
 #Un resumen con mejor formato:
@@ -34,7 +34,7 @@ resumen[,3]<- cumsum(resumen[,2])
 colnames(resumen)<- c("Autovalor","Porcentaje",
                       "Porcentaje acumulado")
 resumen                                           ### La variavilidad explicada es
-                                                  ### el porcentaje, ¿no?
+                                                  ### el porcentaje
 eigen(R)$values  #Coinciden con resumen[,1]
 
 #Gráfico de sedimentación
@@ -69,6 +69,9 @@ numcp<- function(n,p,m,landa)
 cbind(0:9,t(sapply(0:9,numcp,n=nrow(decath),p=10,acp$sdev^2)))   .#### ¿Cómo se interpreta?
 #Sugiere dos C.P.                                      #### ¿Por qué no 4 que es donde
 #Se acepta #H0: landa[3]=...=landa[p]=0                #### se maximiza el pv?
+
+# La primera que se acepta es l3 = l4 = ... = 0, por lo que cogemos 2 componentes principales.
+
 #Sin embargo las dos primeras CP sólo explican
 #el 71% de la varianza total
 
@@ -80,7 +83,7 @@ eigen(R)$vectors  #Coinciden. Osea: son los fucking autovectores.
 
 # Correlaciones entre las variables originales y las componentes
 cor_vc<-loadings(acp)%*%diag(acp$sdev)       
-cor_vc                                      ## Preguntar ???
+cor_vc                                      
 cor_vc[,1:2]  #las dos primeras
 #También se pueden calcular mediante
 #cor(decath[,1:10],acp$scores)[,1:2]

@@ -142,9 +142,10 @@ t.test(XtransB ~ g,var.equal=FALSE)
 ### Función Daisy ###
 
 # Es una función análoga a dist para situacioens donde tenemos variables de distinto tipo.
-# ¿Esto es el coeficiente de disimilaridad de Bower? [Preguntar]
 
 D <- daisy(flower,type = list(asymm = c("V1", "V3"), symm= 2,ordratio= 7,logratio= 8))
+
+## Como hay un factor se coge la dstancai de boer automaticamente
 
 ####################################
 ## Método jerárquico aglomerativo ##
@@ -191,9 +192,7 @@ apply(mamiferos,2, function(x)
 agnclus <- agnes(mamiferos, metric = "euclidean", # Ejemplos de agnes con datos
                  stand = FALSE,method="complete") # y método complete
 
-# Si ploteas el agnes salen dos plots: banner y dendograma [¿¿Diferencias??]
 # Los objetos agnes tienen $ac, el coeficiente de aglomeración.
-
 
 
 ####################################
@@ -221,8 +220,7 @@ ECM<- mean((datos-km$centers[km$cluster,])^2)
 
 ### Método de K-medioides ### 
 
-#Funcion pam.`Al igual que kmeans acepta tanto datamatrix 
-####### como matriz de disimilaridad.` 
+#Funcion pam.`Al igual que kmeans acepta tanto datamatrix como matriz de disimilaridad.` 
 agric.pam<- pam(agriculture,2) 
 ## El plot nos da dos gráficas por las que habría que preguntar la verdad. 
 plot(agric.pam)
