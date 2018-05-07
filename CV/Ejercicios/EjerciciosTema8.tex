@@ -86,6 +86,12 @@ Tomamos la curva $\gamma(s)=A+sB$ tal que $\gamma'(0)=B$. Entonces,
 \[
 D_A\varphi(B)=D_A\varphi(\gamma'(0))=(\varphi\circ\gamma)'(0)=A^tB+B^tA.
 \]
+
+Para la segunda parte tenemos que probar que $D_A\varphi$ es sobreyectiva para toda matriz ortogonal $A$. Es decir, dada $\gamma:[0,1]\to S_n$ con $\gamma'(0)\in S_n$, tenemos que encontrar $B\in M$ tal que $\gamma'(0)=B^tA+A^tB$. Para ello hacemos la siguiente descomposición:
+\[
+\gamma'(0)=\frac{(\gamma'(0)A^t)}{2}A+A^t\frac{(A\gamma'(0))}{2}
+\]
+con lo que $B=\frac{A\gamma'(0)}{2}$.
 \end{solucion}
 \newpage
 
@@ -93,6 +99,7 @@ D_A\varphi(B)=D_A\varphi(\gamma'(0))=(\varphi\circ\gamma)'(0)=A^tB+B^tA.
 Un \emph{grupo de Lie} $G$ es una variedad diferenciable, que es también un grupo, tal que el producto y tomar inverso son diferenciables. Demostrar que $O_n$ es un grupo de Lie. (Aplicar \ref{ejer:9.9})
 \end{ejercicio}
 \begin{solucion}
+$O_n$ hereda la estructura diferenciable de $M_n(\R)$, que es equivalente a la de $\R^{n\times n}$. Es claro que el producto de matrices es diferenciable, luego en $O_n$ lo es. En el caso de la inversa, como en el caso de $O_n$ es igual a trasponer, que no es más que una reordenación de las coordenadas es también claro que se trata de una aplicación diferenciable.
 \end{solucion}
 \newpage
 
