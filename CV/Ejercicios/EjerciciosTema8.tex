@@ -56,6 +56,49 @@ $O_n$ hereda la estructura diferenciable de $M_n(\R)$, que es equivalente a la d
 Sea $\varphi:M\to N$ una aplicación diferenciable entre variedades diferenciables. Probar que $\varphi^*:\Omega^*(N)\to\Omega^*(M)$ es un morfismo de complejos de cadenas.
 \end{ejercicio}
 \begin{solucion}
+Tenemos que probar que el siguiente diagrama es conmutativo 
+\[
+\begin{tikzcd}
+\Omega^k(N)\arrow[r,"d^k"]\arrow[d,"\varphi^*"] & \Omega^{k+1}(N)\arrow[d,"\varphi^*"]\\
+\Omega^k(M)\arrow[r, "d^k"] & \Omega^{k+1}(M)
+\end{tikzcd}
+\]
+para todo $k$. Sea $w\in\Omega^k(N)$. Elegimos $p\in M,q=\varphi(p)\in N$ y parametrizaciones locales $g:W\to M$ y $h:V\to N$. Tenemos por definición
+\[
+d_qw=Alt^{k+1}((D_yh)^{-1})d_y(h^*(w))=Alt^{k+1}(D_qh^{-1})d_y(h^*(w))
+\]
+donde $y$ cumple $h(y)=q=\varphi(p)$, así que
+\[
+\varphi^*(d_qw)_p=Alt^{k+1}(D_p\varphi)\circ Alt^{k+1}(D_qh^{-1})(d_yh^*(w))=
+\]
+\[
+Alt^{k+1}(D_qh^{-1}D_p\varphi)(d_yh^*(w))=Alt^{k+1}(D_ph^{-1}\varphi)(d_y(h^*(w)))=
+\]
+%\[
+%Alt^{k+1}(D_ph^{-1}\varphi)(d_yAlt^k(D_yh)(w_{h(y)})).
+%\]
+%Ahora, por la conmutatividad de $d$ con $\Omega^k(h)$ a nivel de complejo de cocadenas de abiertos euclídeos, esto es igual a 
+%\[
+%Alt^{k+1}(D_ph^{-1}\varphi)Alt^{k+1}(D_yh)(d_q w_{\varphi(p)})=Alt^{k+1}(D_p\varphi)(d_yw_{\varphi(p)}).
+%\]
+% 
+Por otro lado, 
+%\[
+%\varphi^*(w)_p=Alt^k(D_p\varphi)(w_{\varphi(p)}),
+%\]
+%así que 
+eligiendo $x$ con  $g(x)=p$ tenemos
+\[
+d_p\varphi^*(w)=Alt^{k+1}((D_xg)^{-1})d_x(g^*(\varphi^*(w)))=
+\]
+%\[
+%Alt^{k+1}(D_xg^{-1})d_x(Alt^k(D_xg)\circ Alt^k(D_p\varphi)(w_{\varphi(p)}))=
+%\]
+%\[
+%Alt^{k+1}(D_xg^{-1})d_x(Alt^k(D_x\varphi g)(w_{\varphi(p)})=Alt^{k+1}(D_p\varphi)(d_x w_{\varphi(p)})
+%\]
+
+SUPONGO QUE NO ME QUEDA MÁS REMEDIO QUE EVALUAR EN VECTORES
 \end{solucion}
 
 \newpage
@@ -64,6 +107,7 @@ Sea $\varphi:M\to N$ una aplicación diferenciable entre variedades diferenciabl
 El producto escalar usual en $\R^n$ induce un producto escalar en $Alt^n(\R^n)$ (ver ejercicio 2.5). Probar que $w\in Alt^n(\R^n)$ es un vector unitario si y solo si $w(v_1,\dots, v_n)=\pm 1$ para toda base ortonormal $\{v_1,\dots, v_n\}$ de $\R^n$.
 \end{ejercicio}
 \begin{solucion}
+Dada $w\in Alt^n(\R^n)$ tenemos que $w=\lambda \varepsilon_1\land\dots\varepsilon_n=\lambda\varepsilon_I$ con $\lambda\in\R$. Entonces $\gene{w,w}=\lambda^2\det(\gene{\varepsilon_i,\varepsilon_j})=\lambda^2\det(\gene{i^{-1}(\varepsilon_i),i^{-1}(\varepsilon_j)})=\lambda^2$. La última igualdad se tiene porque $i$ lleva bases ortonormales en bases ortonormales y estamos tomando la dual de la base estándar. Por otra parte, $w(v_1,\dots, v_n)=\lambda\det(\varepsilon_i(v_j))=\pm\lambda$. Así que $\gene{w,w}=1\Leftrightarrow \lambda=1\Leftrightarrow w(v_1,\dots, v_n)=\pm 1$.
 \end{solucion}
 
 \newpage
