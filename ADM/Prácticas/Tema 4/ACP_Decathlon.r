@@ -100,7 +100,7 @@ abline(v=0.5,lty=2)
 abline(v=-0.5,lty=2)
 abline(h=-0.5,lty=2)
 
-#Comunalidades: para cada variable, es         ### ¿Por qué?
+#Comunalidades: para cada variable, es         
 #el coeficiente R2 entre esa variable
 #y el conjunto de las c.p.seleccionadas
 #Se puede calcular como la suma de las 
@@ -154,3 +154,4 @@ plot(acp$scores[,1:2],type="n",
      xlab="C.P. 1",ylab="C.P.2")
 text(acp$scores[,1:2],labels=decath$nompais,cex=0.6)
 abline(h=0,v=0,lty=2,col="blue")
+

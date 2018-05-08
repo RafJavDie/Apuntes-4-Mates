@@ -39,7 +39,7 @@ det(R)
 #R es singular, por lo que no se puede calcular 
 #ni KMO ni el test de Barlett
 #Además tampoco se puede aplicar el método AF
-#de máxima verosimilitud                                  ### ¿Por qué?
+#de máxima verosimilitud                                 
 
 
 #3. Estimar el modelo A.F. mediante el 

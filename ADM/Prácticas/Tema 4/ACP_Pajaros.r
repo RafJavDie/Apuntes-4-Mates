@@ -32,8 +32,8 @@ EBarl = -(n-1-(2*p+5)/6)*log(det(R))
 gl = p*(p-1)/2
 EBarl
 gl
-pchisq(EBarl,gl,lower.tail=FALSE)  #Significativo   ### ¿QUÉ ESTAMOS HACIENDO AQUÍ?
-                                                    ### ¿No calculamos IC o p-value?
+pchisq(EBarl,gl,lower.tail=FALSE)  #Significativo  
+                                                    
 
 #########################################
 #2. Análisis de componentes principales
@@ -53,7 +53,7 @@ resumen[,2]= 100*resumen[,1]/sum(resumen[,1])
 resumen[,3]= cumsum(resumen[,2])
 colnames(resumen)= c("Autovalor","Porcentaje","Porcentaje acumulado")
 resumen
-m=2  #Número de componentes a considerar           ### ¿Qué criterio usamos? ¿Más del 80%?
+m=2  #Número de componentes a considerar           
 #Matriz de coeficientes que definen cada 
 #combinación lineal:
 L= autovec[,1:m] 
@@ -65,7 +65,7 @@ cor_vc                                             ### PREGUNTARRRR
 #Comunalidades: para cada variable, es 
 #la suma de correlaciones cuadrado
 #con las c.p. seleccionadas
-cbind(apply(R^2,1,sum))       #### Esto está mal escrito. ¿Hola? 
+cbind(apply(cor_vc^2,1,sum))       #### Esto está mal escrito. ¿Hola? 
 
 
 
@@ -85,4 +85,4 @@ plot(L,type="n",xlim=c(-1,1),ylim=c(-1,1),
 text(L,labels=rownames(L),cex=0.8)
 text(Lrot,labels=rownames(Lrot),cex=0.8,col="red")
 grid()
-abline(h=0,v=0,lty=2)                                #### ¿Cuál es la interpretación?
+abline(h=0,v=0,lty=2)                                
