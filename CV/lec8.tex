@@ -376,14 +376,18 @@ Recordemos que $A^*(w)=(-1)^nw$. Es claro que, fijado $x\in S^{n-1}$, $D_xA T_xS
 \[
 \gene{v,w}_{\pi(x)}=\gene{(D_x\pi)^{-1}(v),(D_x\pi)^{-1}(w)}_x
 \]
-Como $A^*(vol_{S^{n-1}})=(-1)^nvol_{S^{n-1}}$ y $A^*\pi^*=\pi^*:\Omega^{n-1}(\R\PP^{n-1})\to\Omega^{n-1}(S^{n-1})$, tenemso que si $n$ es par, podemos orientar $\R\PP^{n-1}$ con una forma de orientación $w$ tal que $\pi^*(w)=vol_{S^{n-1}}$. Dado $[x]\in\R\PP^{n-1}$, definimos
+Como $A^*(vol_{S^{n-1}})=(-1)^nvol_{S^{n-1}}$ y $A^*\pi^*=\pi^*:\Omega^{n-1}(\R\PP^{n-1})\to\Omega^{n-1}(S^{n-1})$, tenemos que si $n$ es par, podemos orientar $\R\PP^{n-1}$ con una forma de orientación $w$ tal que $\pi^*(w)=vol_{S^{n-1}}$. Dado $[x]\in\R\PP^{n-1}$, definimos
 \[
 w_{[x]}(v_1,\dots, v_n)=(vol_{S^{n-1}})_x((D_x\pi)^{-1}(v_1),\dots, (D_x\pi)^{-1}(v_n))=(vol_{S^{n-1}})_{-x}((D_x\pi)^{-1}(v_1),\dots, (D_x\pi)^{-1}(v_n))=
 \] 
 \[
 A^*(vol_{S^{n-1}})_x((D_x\pi)^{-1}(v_1),\dots, (D_x\pi)^{-1}(v_n))
 \]
-gracias a que $n$ es par y el signo no cambia. Así definido tenemos un volumen, por ser $D_x\pi$ isometría, es decir, al evaluarlo sobre una base ortonormal obtenemos 1. Así que $w=vol_{\R\PP^{n-1}}$ con $\pi^*(vol_{\R\PP^{n-1}})=vol_{S^{n-1}}$ Y $\R\PP^{n-1}$ es orientable si y solo si $n$ es par.
+gracias a que $n$ es par y el signo no cambia. Así definido tenemos un volumen, por ser $D_x\pi$ isometría, es decir, al evaluarlo sobre una base ortonormal obtenemos 1. Así que $w=vol_{\R\PP^{n-1}}$ con $\pi^*(vol_{\R\PP^{n-1}})=vol_{S^{n-1}}$. En general $\pi^*(vol_{\R\PP^{n-1}})=\pm (vol_{S^{n-1}})$. Como $S^{n-1}$ es conexa, se tiene globalmente el mismo signo. Ahora,
+\[
+(-1)^n(\pm 1)vol_{S^{n-1}}=\pm A^*(vol_{S^{n-1}})=A^*(\pi^*(vol_{\R\PP^{n-1}}))=\pi^*(vol_{\R\PP^{n-1}})=\pm vol_{S^{n-1}}
+\]
+por lo que $\R\PP^{n-1}$ es orientable si y solo si $n$ es par.
 \end{ej}
 
 \begin{nota}
@@ -424,10 +428,62 @@ para $p\in M$, $W_i\in T_pM$.
 \end{enumerate}
 \end{prop}
 \begin{dem}
-Si $p\in M$ entonces $Y(p)=0$ si y solo si $w_p\equiv 0$. Como $w_Y$ depende linealmente de $Y$, la aplicación $Y\mapsto w_Y$ debe ser inyectiva. Si $Y$ es una aplicación de Gauss, entonces $w_Y$ es una forma de orientación que coincide justamente con la forma de volumen asociada a la orientación determinada por $w_Y$ y la estructura Riemanniana de $M$ inducida por $\R^{n+1}$. Si $M$ tiene una aplicación de Gauss, entonces 1 se verifica, ya que todo elemento de $\Omega^n(M)$ es de la forma $fw_Y=w_{fY}$ para alguna $f\in C^{\infty}(M,\R)$. Ahora, $M$ puede ser cubierta por abiertos para los que existe una aplicación de Gauss. Para cada uno de ellos se verifica 1, pero entonces también se verifica globalmente.
+Si $p\in M$ entonces $Y(p)=0$ si y solo si $w_p\equiv 0$. Como $w_Y$ depende linealmente de $Y$, la aplicación $Y\mapsto w_Y$ debe ser inyectiva. Si $Y$ es una aplicación de Gauss, entonces $w_Y$ es una forma de orientación (porque no se anula por lo anterior) que coincide justamente con la forma de volumen asociada a la orientación determinada por $w_Y$ y la estructura Riemanniana de $M$ inducida por $\R^{n+1}$. Si $M$ tiene una aplicación de Gauss, entonces 1 se verifica, ya que todo elemento de $\Omega^n(M)$ es de la forma $fw_Y=w_{fY}$ para alguna $f\in C^{\infty}(M,\R)$, así que es sobreyectiva. 
 
-Una orientación de $M$ determina una forma de volumen $vol_M$, y de 1 se obtiene $Y$ con $w_Y=vol_M$. Este $Y$ es una aplicación de Gauss. 
+Ahora, $M$ puede ser cubierta por abiertos para los que existe una aplicación de Gauss. Para cada uno de ellos se verifica 1, pero entonces también se verifica globalmente. Efectivamente, si $Y$ es campo diferenciable normal sobre $M$, $Y|_{W_i}$ lo es sobre $W_i$, lo cual es equivalente a que $(w_Y)|_{W-i}$ sea una $n$-forma diferenciable sobre $W_i$. Es decir, que $w_Y$ es diferenciable en cada $W_i$, lo cual por definición implica que es diferenciable en $M$. Recíprocamente, si $w\in\Omega^n(M)$, al restringirla a un abierto será diferenciable, por lo que sus restricciones son de la forma $w_{Y_i}$ donde $Y_i:W_i\to S^n$ es un campo de Gauss. Esto describe una aplicación diferenciable $Y:M\to S^n$. 
+
+Por último, una orientación de $M$ determina una forma de volumen $vol_M$, y de 1 se obtiene $Y$ con $w_Y=vol_M$. Este $Y$ es una aplicación de Gauss, por ser necesariamente $|Y(p)|=1$ para todo $p$.  
 \QED
 \end{dem}
+
+\begin{teorema}[Entornos tubulares]
+
+Sea $M\subseteq\R^{n+k}$ subvariedad diferenciable de dimensión $n$. Entonces existe un abierto $V\subseteq\R^{n+k}$ con $M\subseteq V$ y una retracción $r:V\to M$ diferenciable con $r|_M=Id_M$ verificando:
+\begin{enumerate}
+\item para todo $x\in V, y\in M$ se tiene $|x-r(x)|\leq|x-y|$, dándose la igualdad solo cuando $y=r(x)$. 
+\item para todo $p\in M$, $r^{-1}(p)$ es una bola abierta en el hiperplano $p+T_pM^{\perp}$ con centro $p$ y radio $\rho(p)$ definiendo una aplicación diferenciable $\rho:M\to (0,+\infty)$. 
+\item si $\varepsilon:M\to\R$ es diferenciable y $0<\varepsilon(p)<\rho(p)$ para todo $p\in M$, $S_{\varepsilon}=\{x\in V\mid |x-r(x)|=\varepsilon(r(x))\}=Fr(V_{\varepsilon})$ es una subvariedad diferenciable de $\R^{n+k}$ de codimensión 1.  A $V=V_\rho$ se le llama \textbf{entorno tubular}.
+\end{enumerate}
+\end{teorema}
+
+
+\begin{prop}
+Si $M$ es una variedad diferenciable compacta, entonces $H^p(M)$ es de dimensión finita.
+\end{prop}
+\begin{dem}
+Como $M$ es compacta, puede ser recubierta por abiertos $U_i$ de $\R^{n+k}$ centrados en $p_i\in M$, $M=U_1\cup\dots\cup U_r\subseteq V$ donde $V$ es un entorno tubular. Como $i^*\circ r^*=Id^*$, $i^*$ es sobreyectiva y $r^*$ es inyectiva, así que como $i^*:H^p(U)\to H^p(M)$ es sobreyectiva, $H^p(M)$ es finitamente generado. \QED
+\end{dem}
+
+\begin{prop}
+Sean $M_1,M_2$ subvariedades diferenciables de un espacio euclídeo:
+\item Si $f_0,f_1:M_1\to M_2$ son aplicaciones diferenciables homotópicas, entonces $f_0^*=f_1^*:H^p(M_2)\to H^p(M_1)$ para todo $p\geq 0$.
+\item Toda aplicación continua $\phi:M_1\to M_2$ continua es homotópica a una aplicación diferenciable $g:M_1\to M_2$. Así, el functor cohomología se extiende a la categoría de variedades diferenciables con aplicaciones continuas.
+\end{prop}
+\begin{dem}
+Sean $V_j$ entornos tubulares de $M_j$ con aplicaciones $i_j:M_j\to V_j $ y $r_j:V_j\to M_j$.
+\begin{enumerate}
+\item $f_0\simeq f_1\Rightarrow i_2f_0r_1\simeq i_2f_1r_1\Rightarrow (i_2f_0r_1)^*=(i_2f_1r_1)^*\Rightarrow r_1^*f_0^*i_2^*=r_1^*f_1^*i_2^*$. Como $i_2^*$ es epimorfismo y $r_1^*$ es monomorfismo, se tiene la igualdad buscada.
+\item Tenemos que $i_2\phi r_1:V_1\to V_2$ es una aplicación continua, por lo que existe $g:V_1\to V_2$ diferenciable con $g\simeq i_2\phi r_1$. Consideramos entonces $r_2gi_1:M_1\to M_2$. Se tiene $r_2gi_1\simeq r_2(i_2\phi r_1)i_1=\phi$. 
+\end{enumerate}
+\QED
+\end{dem}
+
+\begin{coro}
+Si $M\subseteq\R^{n+k}$ es una subvariedad diferenciable de dimensión $n$ y $(V,i,r)$ un entorno tubular. Entonces $i^*:H^p(V)\to H^p(M)$ es isomorfismo para todo $p\geq 0$.
+\end{coro}
+\begin{dem}
+Tenemos que $r\circ i=Id_M$ y $i\circ r\cong Id_V$, ya que $V$ con tiene el segmento entre $x$ y $r(x)$ para todo $x\in V$, así que $r$ e $i$ son inversas homotópicas, de donde se deduce el resultado. \QED
+\end{dem}
+
+\begin{ej}
+$H^p(S^n)\cong H^p(\R^{n+1}-\{0\})$. 
+\end{ej}
+
+\begin{nota}
+Si $M\subseteq\R^l$ es una subvariedad diferenciable de dimensión $n$ y $U_1$ y $U_2$ son abiertos de la variedad, entonces se tiene la sucesión de Mayer-Vietoris
+\[
+\cdots\to H^p(U_1\cup U_2)\xrightarrow{I_*}H^p(U_1)\oplus H^p(U_2)\xrightarrow{J_*}H^p(U_1\cap U_2)\xrightarrow{\partial_*}H^{p-1}(U_1\cup U_2)\to\cdots 
+\]
+\end{nota}
 
 \end{document}
