@@ -269,7 +269,7 @@ Sea $F(x,t)=tf(x)+(1-t)\varphi(x)$. Esta es la homotopía buscada, pues dado $x\
 \end{dem}
 
 \begin{defi}
-Dos aplicaciones simpliciales $\varphi,\psi:K\to L$ se dicen \emph{contiguas} si para cada símplice $\sigma\in K$ la unión $\varphi(\sigma)\cup\psi(\sigma)$ está en un símplice de $L$. Dos aplicaciones simpliciales $\varphi$ y $\psi$ se dicen que están en la misma \emph{clase de contiguidad} si existe una sucesión de aplicaciones símpliciales $\varphi_0,\dots, \varphi_n$ tales que $\varphi=\varphi_0$, $\psi=\varphi_n$ y $\varphi_i$ es contigua a $\varphi_{i+1}$ para todo $i$. 
+Dos aplicaciones simpliciales $\varphi,\psi:K\to L$ se dicen \emph{contiguas} si para cada símplice $\sigma\in K$ la unión $\varphi(\sigma)\cup\psi(\sigma)$ está en un símplice de $L$. Dos aplicaciones simpliciales $\varphi$ y $\psi$ se dicen que están en la misma \emph{clase de contigüidad} si existe una sucesión de aplicaciones símpliciales $\varphi_0,\dots, \varphi_n$ tales que $\varphi=\varphi_0$, $\psi=\varphi_n$ y $\varphi_i$ es contigua a $\varphi_{i+1}$ para todo $i$. 
 \end{defi}
 
 \begin{lemma}
@@ -289,8 +289,10 @@ El segundo resultado no se demuestra aquí.
 Hay una demostración en el libro de Ayala.
 \end{proof}
 
+\section{Homología simplicial ordenada}
+
 Llamemos $\overline{C}_n(K)$ al espacio vectorial generado por todas las secuencias ordenadas de $n+1$ vértices de un mismo símplice de $K$ (pudiendo repetir vértices).
-Por ejemplo, $(v_0,v_0,\dots,v_0) \in \overline{C}_n(K)$ donde $\exists \sigma \in K$ tal que $v_0 \in K$.
+Por ejemplo, $(v_0,v_0,\dots,v_0) \in \overline{C}_n(K)$ donde $\exists \sigma \in K$ tal que $v_0 \in \sigma$.
 A los elementos de $\overline{C}_n(K)$ los llamamos \emph{cadenas de $n$-símplices ordenados} (no confundir con orientados).
 Definimos:
 \begin{align*}
@@ -314,7 +316,7 @@ Por tanto, tenemos el homomorfismo:
 \[ \mu_* \colon \overline{H}_n(K) \to H_n(K),\ n\geq 0\]
 
 Es más, $\mu_* \colon \overline{H}_n(K) \to H_n(K)$ es isomorfismo para todo $n \geq 0$.
-En el libro de Ayala se da homomorfismo inverso.
+En el libro de Ayala se da el homomorfismo inverso.
 \end{propi}
 
 \begin{propi}
@@ -363,25 +365,25 @@ Volvemos a nuestro problema de la buena definición de $f_*$.
 Sea $f \colon |K| \to |L|$ continua, entonces $f_*$ está bien definido.
 \end{coro}
 \begin{dem}
-Supongamos $\varphi \colon Sd^n K \to L$, $\psi \colon Sd^m K \to L$ aproximaciones simpliciales de $f$ y supongamos $m \geq n$.
+Supongamos $\varphi \colon sd^n K \to L$, $\psi \colon sd^m K \to L$ aproximaciones simpliciales de $f$ y supongamos $m \geq n$.
 Consideramos:
-\[ Sd^m K \xrightarrow{\lambda} Sd^{m-1} K \xrightarrow{\lambda} \dots Sd^n K \xrightarrow{\varphi} L \]
+\[ sd^m K \xrightarrow{\lambda} sd^{m-1} K \xrightarrow{\lambda} \cdots\xrightarrow{\lambda} sd^n K \xrightarrow{\varphi} L \]
 Cuidado con el abuso de notación aquí, cada $\lambda$ es una distinta aproximación implicial de $id \colon |K| \to |K|$.
-Entonces, como $\varphi$ es aproximación simplicial de $f$ y $(\lambda \circ \dots \circ \lambda)$ es aproximación simplicial de $id$, entonces:
-\[ \varphi \circ (\lambda \circ \overset{(m-n)}{\dots} \circ \lambda) \colon Sd^m K \to L\]
+Entonces, como $\varphi$ es aproximación simplicial de $f$ y $(\lambda \circ \dots \circ \lambda)$ es aproximación simplicial de $Id$, entonces:
+\[ \varphi \circ (\lambda \circ \overset{(m-n)}{\dots} \circ \lambda) \colon sd^m K \to L\]
 es también aproximación simplicial e $f$.
-Como $\psi \colon Sd^m K \to L$ es también aproximación simplicial de $f$, por el corolario anterior:
+Como $\psi \colon sd^m K \to L$ es también aproximación simplicial de $f$, por el corolario anterior:
 \[ \psi_* \equiv (\varphi \circ (\lambda\circ\overset{(m-n)}{\dots} \circ \lambda))_* = \varphi_* \circ \lambda_* \circ \overset{(m-n)}{\dots}\circ \lambda_* = \varphi_* \circ \lambda_*^{m-n}\]
 
 Obsérvese que entonces:
-\[ \psi_* \circ sd_*^m = (\varphi_* \circ \lambda_*^{m-n}) \circ sd_*^m* =  \varphi_* \circ sd_*^n \]
+\[ \psi_* \circ sd_*^m = (\varphi_* \circ \lambda_*^{m-n}) \circ sd_*^m =  \varphi_* \circ sd_*^n \]
 Esto demuestra que $f_*$ está bien definido.
 \end{dem}
 
 Unas propiedades básicas:
 \begin{propi}\mbox{}
 \begin{enumerate}
-	\item Para $id \colon |K| \to |K|$, se tiene $id_* = id_{H_n(K)}$
+	\item Para $Id \colon |K| \to |K|$, se tiene $Id_* = Id_{H_n(K)}$
 	\item Para $|K| \xrightarrow{f} |L| \xrightarrow{g} |M|$, entonces $(g \circ f)_* = g_* \circ f_*$
 	\item Si $f \cong g\colon |K| \to |L|$, entonces $f_* \equiv g_* \colon H_n(K) \to H_n(L)$.
 \end{enumerate}
@@ -412,6 +414,6 @@ Como $\alpha_q = \dim C_q(K)$:
  & = \sum_{q \geq 0} (-1)^q \left(\dim H_q(K) + \dim B_q(K) + \dim B_{q-1}(K)\right)\\
  & = \sum_{q \geq 0} (-1)^q \dim H_q(K)
 \end{align*}
-que es invariante homotópica.
+que es invariante homotópica. \QED
 \end{dem}
 \end{document}
