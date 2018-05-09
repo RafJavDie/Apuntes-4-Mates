@@ -341,11 +341,44 @@ Busquemos una homotopía $\{h_n\}_{n\geq 0}$, donde $h_n \colon \overline{C}_n(K
 \end{tikzcd}\]
 Basta tomar
 \[
-	h \colon (v_0,\dots,v_n) \mapsto \sum_{i=0}^n (-1)^i (\varphi(v_0),\varphi(v_1),\dots,\varphi(v_i),\psi(v_i),\psi(v_{i+1})\dots,\psi(v_n))
+	h_n \colon (v_0,\dots,v_n) \mapsto \sum_{i=0}^n (-1)^i (\varphi(v_0),\varphi(v_1),\dots,\varphi(v_i),\psi(v_i),\psi(v_{i+1})\dots,\psi(v_n))
 \]
-Comprúebese que:
+Falta comprobar que:
 \[ \overline{\psi}_* - \overline{\varphi}_* = h_{n-1} \circ \overline{\partial}_n + \overline{\partial}_{n+1} \circ h_n \quad \forall n \geq 0 \]
-(Esto es complicado, queda como ejercicio comprobarlo para $n=2$).
+La notación para el caso general es complicada, así que haremos el caso $n=2$ del que se desprende claramente la idea general. Sea $(v_0,v_1,v_2)\in \overline{C}_2(K)$. Entonces $(\overline{\psi}_* - \overline{\varphi}_*)(v_0,v_1,v_2)=(\psi(v_0),\psi(v_1),\psi(v_2))-(\varphi(v_0),\varphi(v_1), \varphi(v_2))$. Por otro lado
+\[
+\partial_3h_2(v_0,v_1,v_2)=\partial_3(\varphi(v_0), \psi(v_0),\psi(v_1),\psi(v_2))-\partial_3(\varphi(v_0), \varphi(v_1),\psi(v_1),\psi(v_2))+\partial_3(\varphi(v_0), \varphi(v_1),\varphi(v_2),\psi(v_2))
+\]
+Tratamos cada sumando por separado:
+\[
+\partial_3(\varphi(v_0), \psi(v_0),\psi(v_1),\psi(v_2))=(\psi(v_0),\psi(v_1),\psi(v_2))-(\varphi(v_0),\psi(v_1),\psi(v_2))+(\varphi(v_0), \psi(v_0),\psi(v_2))-(\varphi(v_0), \psi(v_0),\psi(v_1))
+\]
+\[
+\partial_3(\varphi(v_0), \varphi(v_1),\psi(v_1),\psi(v_2))=(\varphi(v_1),\psi(v_1),\psi(v_2))-(\varphi(v_0),\psi(v_1),\psi(v_2))+(\varphi(v_0), \varphi(v_1),\psi(v_2))-(\varphi(v_0), \varphi(v_1),\psi(v_1))
+\]
+\[
+\partial_3(\varphi(v_0), \varphi(v_1),\varphi(v_2),\psi(v_2))=( \varphi(v_1),\varphi(v_2),\psi(v_2))-(\varphi(v_0), \varphi(v_2),\psi(v_2))+(\varphi(v_0), \varphi(v_1),\psi(v_2))-(\varphi(v_0), \varphi(v_1),\varphi(v_2))
+\]
+Al sumar hay algunos términos que se cancelan, por lo que nos queda
+\begin{gather*}
+\partial_3h_2(v_0,v_1,v_2)=(\psi(v_0),\psi(v_1),\psi(v_2))-(\varphi(v_0), \varphi(v_1),\varphi(v_2))+ [(\varphi(v_0), \psi(v_0),\psi(v_2))-(\varphi(v_0), \psi(v_0),\psi(v_1))-\\
+-(\varphi(v_1),\psi(v_1),\psi(v_2))+(\varphi(v_0), \varphi(v_1),\psi(v_1))+( \varphi(v_1),\varphi(v_2),\psi(v_2))-(\varphi(v_0), \varphi(v_2),\psi(v_2))]
+\end{gather*}
+Ahora,
+\[
+h_1\partial_2(v_0,v_1,v_2)=h_1(v_1,v_2)-h_1(v_0,v_2)+h_1(v_0,v_1)
+\]
+donde
+\[
+h_1(v_1,v_2)=(\varphi(v_1),\psi(v_1),\psi(v_2))-(\varphi(v_1),\varphi(v_2),\psi(v_2))
+\]
+\[
+h_1(v_0,v_2)=(\varphi(v_0),\psi(v_0),\psi(v_2))-(\varphi(v_0),\varphi(v_2),\psi(v_2))
+\]
+\[
+h_1(v_0,v_1)=(\varphi(v_0),\psi(v_0),\psi(v_1))-(\varphi(v_0),\varphi(v_1),\psi(v_1))
+\]
+Se comprueba entonces que todos estos términos se cancelan con la suma entre corchetes anterior y solo queda $\psi(v_0),\psi(v_1),\psi(v_2))-(\varphi(v_0), \varphi(v_1),\varphi(v_2))$ como queríamos demostrar. \QED
 \end{dem}
 
 \begin{coro}
