@@ -269,16 +269,149 @@ Sea $F(x,t)=tf(x)+(1-t)\varphi(x)$. Esta es la homotopía buscada, pues dado $x\
 \end{dem}
 
 \begin{defi}
-Dos aplicaciones simpliciales $\varphi,\psi:K\to L$ se dicen \emph{contiguas} si para cada símplice $\sigma\in K$ la unión $\varphi(\sigma)\cup\psi(\sigma)$ está en un símplice de $L$. Dos aplicaciones simpliciales $\varphi$y $\psi$ se dicen que están en la misma \emph{clase de contiguidad} si existe una sucesión de aplicaciones símpliciales $\varphi_0,\dots, \varphi_n$ tales que $\varphi=\varphi_0$, $\psi=\varphi_n$ y $\varphi_i$ es contigua a $\varphi_{i+1}$ para todo $i$. 
+Dos aplicaciones simpliciales $\varphi,\psi:K\to L$ se dicen \emph{contiguas} si para cada símplice $\sigma\in K$ la unión $\varphi(\sigma)\cup\psi(\sigma)$ está en un símplice de $L$. Dos aplicaciones simpliciales $\varphi$ y $\psi$ se dicen que están en la misma \emph{clase de contiguidad} si existe una sucesión de aplicaciones símpliciales $\varphi_0,\dots, \varphi_n$ tales que $\varphi=\varphi_0$, $\psi=\varphi_n$ y $\varphi_i$ es contigua a $\varphi_{i+1}$ para todo $i$. 
 \end{defi}
 
 \begin{lemma}
 Dos aproximaciones simpliciales $\varphi,\psi:K\to L$ de una misma aplicación continua $f:|K|\to|L|$ son contiguas. Más aún, si $f\simeq_H g$, existen aproximaciones simpliciales de $f$ y $g$ en la misma clase de contiguidad.
 \end{lemma}
 \begin{proof}
+Sea $\sigma \in K$ y $x \in \mathring{\sigma}$.
+Por ser $\varphi$ y $\psi$ aproximaciones simpliciales, se tiene:
+\begin{itemize}
+	\item $\varphi(x)$ está en el símplice $\tau \in L$ soporte de $f(x)$, es decir, $f(x) \in \mathring{\tau}$.
+	Como además, $\varphi(\sigma) \in L$, tenemos que $\varphi(\sigma) < \tau$.
+	\item Análogamente, $\psi(\sigma) < \tau$.
+\end{itemize}
+Luego $\varphi(\sigma) \cup \psi(\sigma) \subseteq \tau$.
 
+El segundo resultado no se demuestra aquí.
+Hay una demostración en el libro de Ayala.
 \end{proof}
 
+Llamemos $\overline{C}_n(K)$ al espacio vectorial generado por todas las secuencias ordenadas de $n+1$ vértices de un mismo símplice de $K$ (pudiendo repetir vértices).
+Por ejemplo, $(v_0,v_0,\dots,v_0) \in \overline{C}_n(K)$ donde $\exists \sigma \in K$ tal que $v_0 \in K$.
+A los elementos de $\overline{C}_n(K)$ los llamamos \emph{cadenas de $n$-símplices ordenados} (no confundir con orientados).
+Definimos:
+\begin{align*}
+	\overline{\partial}_n \colon \overline{C}_n(K) & \to \overline{C}_{n-1}(K)\\
+	(v_0,\dots,v_n) & \mapsto \sum_{i=0}^n (-1)^i(v_0,\dots,\widehat{v_i},\dots,v_n)
+\end{align*}
+Con esto surge un complejo de cadenas $(\overline{C}_n(K), \overline{\partial}_n)_{n \geq 0}$ lamado \emph{complejo de cadenas simpliciales ordenadas} de $K$.
+De aquí surge un espacio vectorial de homología simplicial ordenada $H_n$
 
+Definimos $\mu_n \colon \overline{C}_n(K) \to C_n(K)$, donde $n \geq 0$ como:
 
+\[ \mu \colon (v_0,\dots,v_n) \mapsto \begin{cases}0 & \text{ si se repiten vértices}\\ [v_0,\dots,v_n] & \text{ en caso contrario}\end{cases}\]
+
+\begin{propi}\mbox{}
+Se tiene el siguiente diagram conmutativo:
+\[\begin{tikzcd}{\overline{C}_n(K)} \arrow[r,"\mu_n"] \arrow[d,"\overline{\partial}_n" left] & {C_n(K)} \arrow[d,"\partial_n"]\\
+{\overline{C}_{n-1}(K)} \arrow[r,"\mu_{n-1}" below] & C_{n-1}(K)
+\end{tikzcd}\]
+
+Por tanto, tenemos el homomorfismo:
+\[ \mu_* \colon \overline{H}_n(K) \to H_n(K),\ n\geq 0\]
+
+Es más, $\mu_* \colon \overline{H}_n(K) \to H_n(K)$ es isomorfismo para todo $n \geq 0$.
+En el libro de Ayala se da homomorfismo inverso.
+\end{propi}
+
+\begin{propi}
+Si $\varphi \colon K \to L$ es aplicación simplicial, entonces se tienen los diagramas conmutativos:
+\[\begin{tikzcd}{\overline{C}_n(K)} \arrow[r,"\mu_n"] \arrow[d,"\varphi_*" left] & {C_n(K)} \arrow[d,"\varphi_*"]\\
+{\overline{C}_n(L)} \arrow[r,"\mu_n" below] & C_n(L)
+\end{tikzcd} \quad \begin{tikzcd}{\overline{H}_n(K)} \arrow[r,"\mu_*","\cong" below] \arrow[d,"\varphi_*" left] & {H_n(K)} \arrow[d,"\varphi_*"]\\
+{\overline{H}_n(L)} \arrow[r,"\mu_n" below,"\cong" above] & H_n(L)
+\end{tikzcd}\]
+\end{propi}
+
+\begin{prop}
+Si $\varphi, \psi \colon K \to L$ son aplicaciones simpliciales en la misma clase de contigüidad, entonces los homomorfismos de complejos de cadenas:
+\[ \overline{\varphi}_*, \overline{\psi}_* \colon (\overline{C}_n(K), \overline{\partial}_n)_{n \geq 0} \to (\overline{C}_n(L), \overline{\partial}_n)_{n \geq 0}  \]
+son homotópicos.
+\end{prop}
+\begin{dem}
+Busquemos una homotopía $\{h_n\}_{n\geq 0}$, donde $h_n \colon \overline{C}_n(K) \to \overline{C}_{n+1}(L)$ y cumpliendo:
+\[\begin{tikzcd}
+& \dots \arrow[r] & {\overline{C}_n(K)} \arrow[r,"\overline{\partial}_n"] \arrow[dl,"h_n"] \arrow[d,shift right,"\overline{\varphi}_*" left] \arrow[d,shift left,"\overline{\psi}_*" right]& \overline{C}_{n-1}(K) \arrow[r] \arrow[dl,"h_{n-1}"] & \dots\\
+\dots \arrow[r] & {\overline{C}_{n+1}(L)} \arrow[r,"\overline{\partial}_{n+1}"] & {\overline{C}_n(L)} \arrow[r,"\overline{\partial}_n"] & {\overline{C}_{n-1}(L)} \arrow[r] & \dots
+\end{tikzcd}\]
+Basta tomar
+\[
+	h \colon (v_0,\dots,v_n) \mapsto \sum_{i=0}^n (-1)^i (\varphi(v_0),\varphi(v_1),\dots,\varphi(v_i),\psi(v_i),\psi(v_{i+1})\dots,\psi(v_n))
+\]
+Comprúebese que:
+\[ \overline{\psi}_* - \overline{\varphi}_* = h_{n-1} \circ \overline{\partial}_n + \overline{\partial}_{n+1} \circ h_n \quad \forall n \geq 0 \]
+(Esto es complicado, queda como ejercicio comprobarlo para $n=2$).
+\end{dem}
+
+\begin{coro}
+En las condiciones anteriores, $\overline{\varphi}_* \equiv \overline{\psi}_* \colon \overline{H}_n(K) \to \overline{H}_n(L)$ para todo $n \geq 0$.
+Entonces, del diagrama
+\[\begin{tikzcd}{\overline{H}_n(K)} \arrow[r,"\mu_*","\cong" below] \arrow[d,"\psi\equiv\varphi_*" left] & {H_n(K)} \arrow[d,shift right,"\varphi_*" left] \arrow[d,shift left,"\psi_*" right]\\
+{\overline{H}_n(L)} \arrow[r,"\mu_n" below,"\cong" above] & H_n(L)
+\end{tikzcd}\]
+
+En conclusión, si $\varphi, \psi \colon K \to L$ son aproximaciones simpliciales de $f \colon |K| \to |L|$, entonces:
+\[ \varphi_{*} \equiv \psi_* \colon H_n(K) \to H_n(L) \quad \forall n \geq 0\]
+\end{coro}
+
+Volvemos a nuestro problema de la buena definición de $f_*$.
+
+\begin{coro}
+Sea $f \colon |K| \to |L|$ continua, entonces $f_*$ está bien definido.
+\end{coro}
+\begin{dem}
+Supongamos $\varphi \colon Sd^n K \to L$, $\psi \colon Sd^m K \to L$ aproximaciones simpliciales de $f$ y supongamos $m \geq n$.
+Consideramos:
+\[ Sd^m K \xrightarrow{\lambda} Sd^{m-1} K \xrightarrow{\lambda} \dots Sd^n K \xrightarrow{\varphi} L \]
+Cuidado con el abuso de notación aquí, cada $\lambda$ es una distinta aproximación implicial de $id \colon |K| \to |K|$.
+Entonces, como $\varphi$ es aproximación simplicial de $f$ y $(\lambda \circ \dots \circ \lambda)$ es aproximación simplicial de $id$, entonces:
+\[ \varphi \circ (\lambda \circ \overset{(m-n)}{\dots} \circ \lambda) \colon Sd^m K \to L\]
+es también aproximación simplicial e $f$.
+Como $\psi \colon Sd^m K \to L$ es también aproximación simplicial de $f$, por el corolario anterior:
+\[ \psi_* \equiv (\varphi \circ (\lambda\circ\overset{(m-n)}{\dots} \circ \lambda))_* = \varphi_* \circ \lambda_* \circ \overset{(m-n)}{\dots}\circ \lambda_* = \varphi_* \circ \lambda_*^{m-n}\]
+
+Obsérvese que entonces:
+\[ \psi_* \circ sd_*^m = (\varphi_* \circ \lambda_*^{m-n}) \circ sd_*^m* =  \varphi_* \circ sd_*^n \]
+Esto demuestra que $f_*$ está bien definido.
+\end{dem}
+
+Unas propiedades básicas:
+\begin{propi}\mbox{}
+\begin{enumerate}
+	\item Para $id \colon |K| \to |K|$, se tiene $id_* = id_{H_n(K)}$
+	\item Para $|K| \xrightarrow{f} |L| \xrightarrow{g} |M|$, entonces $(g \circ f)_* = g_* \circ f_*$
+	\item Si $f \cong g\colon |K| \to |L|$, entonces $f_* \equiv g_* \colon H_n(K) \to H_n(L)$.
+\end{enumerate}
+\end{propi}
+La propiedad importante:
+\begin{coro}[Invarianza homotópica de la homología simplicial]
+Si $f \colon |K| \to |L|$ es equivalencia de homotopía, entonces:
+\[ f_* \colon H_n(K) \to H_n(L) \ \text{es isomorfismo}\]
+\end{coro}
+
+Una aplicación de esto:
+\begin{consec}
+Sea $K$ un complejo simplicial finito y $\alpha_q$ el número de $q$-símplices de $K$.
+Definimos la característica de Euler como $\chi(K) = \sum_{q \geq 0} (-1)^q \alpha_q$.
+
+Tenemos entonces que $\chi(K)$ es una invariante homotópica de $K$.
+\end{consec}
+\begin{dem}
+Tenemos la siguiente sucesión exacta corta:
+\[ 0 \to Z_q(K) \to C_q(K) \to B_{q-1}(K) \to 0\]
+Como son espacios vectoriales, por el primer teorema de isomorfía: $\dim C_q(K) = \dim Z_q(K) + \dim B_{q-1}(K)$.
+Por otro lado:
+\[ 0 \to B_q(K) \to Z_q(K) \to H_q(K) \to 0\]
+Luego $\dim Z_q(K) = \dim B_q(K) + \dim H_q(K)$.
+Como $\alpha_q = \dim C_q(K)$:
+\begin{align*}
+\chi(K) & = \sum_{q \geq 0} (-1)^q \dim C_q(K)\\
+ & = \sum_{q \geq 0} (-1)^q \left(\dim H_q(K) + \dim B_q(K) + \dim B_{q-1}(K)\right)\\
+ & = \sum_{q \geq 0} (-1)^q \dim H_q(K)
+\end{align*}
+que es invariante homotópica.
+\end{dem}
 \end{document}
