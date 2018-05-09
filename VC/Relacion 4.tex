@@ -53,7 +53,14 @@ $$
 $$
 Como $2s < 1$, es claro que esto no puede ser.
 \item Es fácil probar que el orden de $e^5z-3e^{2z^2}$ es $2$.
-\item Para el caso $e^{\cos z}$
+\item Para el caso $e^{\cos z}$, veamos que no tiene orden finito. Consideremos entonces los valores $ti$ con $t\in \R_{>0}$
+$$
+e^{\cos(it)}=e^{\cosh(t)}=e^{e^t/2}e^{e^{-t}/2} > e^{e^t/2}
+$$
+Si tiene orden finito $\rho$ entonces $\exists A, B$ tales que
+$$
+e^{e^t/2} \leq e^{\cos(it)} \leq Ae^{Bt^\rho} \quad \forall t\in \R$$
+Entonces $e^{t/2}\leq Bt^\rho+\log A$, lo cuál no es verdad para ningún $t$ lo suficientemente grande.
 \item Si $z\neq 0$ podemos integrar directamente
 $$
 \int_0^1 e^{tz^2}dt = \frac{e^{z^2}-1}{z^2}
@@ -209,16 +216,37 @@ Por tanto, podemos escribir $f(z)$ como un producto finito de funciones de orden
 \end{solucion}
 \newpage
 \begin{ejercicio}{8}
-Encontrar la región en que se trasnforma $\{z\in\C\mid |z|<1,\,\Im(z)>0\}$.
+Encontrar la región en que se trasnforma $\{z\in\C\mid |z|<1,\,\Im(z)>0\}$ mediante la transformación $w=\frac{2z-i}{2+iz}$.
 \end{ejercicio}
 \begin{solucion}
-Pensemos primero en qué se transforma la frontera de la región. Sabemos que $w(0)=-i/2$, $w(-1) = (2+i)/(i-2)$ y $w(1)= (2-i)/(2+i)$, que forman parte de una circunferencia. 
+Como tenemos una transformación de Möbius basta encontrar la imagen de la frontera y un punto interior. Sabemos que $$A =w(0)=-i/2 \qquad B= w(1) = \frac{2-i}{2+i} \qquad C = w(-1) = \frac{2+i}{i-2} \qquad D=w(i) = i$$
+Por tanto, tanto la semirrecta como la semicircunferencia tienen imágenes contenidas en circunferencias. Como $w(i/2)=0$, la imagen está dentro de esta frontera
+$$
+\{z\in \C \mid |z|< 1,\; |z+5i/4|>0.75\}
+$$
+\begin{figure}[h]
+\includegraphics[scale=0.65]{ej8}
+\centering
+\end{figure}
 \end{solucion}
 \newpage
 
 \begin{ejercicio}{9}
+¿Cuál es la región trasnformada del ángulo $\{z\in \C\mid 0<\arg(z)<\pi/4\}$ mediante la transformación $w=z/(z-1)$.
 \end{ejercicio}
 \begin{solucion}
+Calculamos la imagen de la frontera del conjunto análogamente al ejercicio anterior y obtenemos
+$$
+A = w(0)= 0 \qquad B=w(\infty)=1 \qquad C= w(2)=2 \qquad D =w(1+i) = 1-i 
+$$
+La imagen de la semirecta $\arg(z)=0$ es $\R\setminus[0,1]$. La imagen de $\arg(z)=\pi/4$ es la circunferencia $|z-(1-i)/2|=\sqrt{2}/2$. Cogiendo un punto interior tenemos que
+$$
+\{z\in \C \mid |z-(1-i)/2|>\sqrt{2}/2, \;\Im(z)<0\}
+$$
+\begin{figure}[h]
+\includegraphics[scale=0.65]{ej9}
+\centering
+\end{figure}
 \end{solucion}
 \newpage
 
@@ -235,6 +263,37 @@ Encontrar los transformados de los discos $|z|=r$ y las semirrectas $\arg(z)=\al
 \newpage
 
 \begin{ejercicio}{11}
+Sea $\Omega$ una región simplemente conexa del plano complejo, y sea $K$ un compacto incluido en $\Omega$. Probar que existe una curva cerrada $\gamma$ en $\Omega$ cuyo recorrido no corta a $K$ y tal que $n(\gamma,a)=1$, para todo $a\in K$.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+\newpage
+
+
+
+\begin{ejercicio}{12}
+Sea $a>0$. Se considera la región $\Omega$ y la función $f_a$ definida por:
+$$
+\Omega=\{z\in \C \mid \Im(z)<0,\;|z|>1,\;|z+1|<2\} \qquad f_a(z)=\exp\left(\frac{ai}{z-1}\right)
+$$
+\begin{enumerate}[(a)]
+\item Probar que $f_a$ es inyectiva en $\Omega$ si y solo si $a\leq 8\pi$.
+\item Sea $g_=f_{4\pi}$. Probar que $g$ representa conformemente $\Omega$ en un semidisco. Determinar la imagen mediante $g$ de cada uno de los tres arcos (dos de circunferencia, y uno de recta) que componen la frontera de $\Omega$.
+\item Dar una representación conforme de $ºOmega$ en el primer cuadrante; de $\Omega$ en la banda abierta que forman los puntos  $z\in \C$ con $-2\pi<\Im(z) <-\pi$ y de $\Omega$ en la región $G=\{z\in\C\mid |z|>1,\;|z+1|<2\}$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+\newpage
+
+
+
+\begin{ejercicio}{13}
+Sean $a>0$, y $\Omega_1$ el semiplano derecho abierto al que se le quita el segmento $(0,a]$. Sean $b\in(-1,1)$, y $\Omega_2$ el disco unidad $\mathbb{D}$ al que se le quita el segmento $[b,1)$.
+\begin{enumerate}[(a)]
+\item Determinar la imagen de $\Omega_1$ mediante la transformación $w=z^2$, y representar $\Omega_1$ conformemente en el semiplano derecho.
+\item Representar conformemente $\Omega_2$ en el semiplano derecho y en el disco unidad $\mathbb{D}$.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
 \end{solucion}
