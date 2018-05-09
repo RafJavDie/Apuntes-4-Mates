@@ -85,6 +85,34 @@ you can get the computer to generate the elementary symmetric polynomials.
  
 \end{ejercicio}
 \begin{solucion}
+Será útil tener $f$ desarrollado como $x^4y^2 + x^4z^2 + x^2y^4 + 2x^2y^2z^2 + x^2z^4 + y^4z^2 + y^2z^4$.
+\begin{enumerate}[a.]
+\item $LT(f)=x^4y^2=LT(\sigma_2^2\sigma_1^2)$
+\begin{align*}
+f_1=f-\sigma_2^2\sigma_1^2=&-2x^4yz - 2x^3y^3 - 8x^3y^2z - 8x^3yz^2 - 2x^3z^3 - 8x^2y^3z - 13x^2y^2z^2\\ &- 8x^2yz^3 - 2xy^4z - 8xy^3z^2 - 8xy^2z^3 - 2xyz^4 - 2y^3z^3
+\end{align*}
+$LT(f_1)=-2x^4yz=-2LT(\sigma_3\sigma_1^3)$
+\begin{align*}
+f_2=f_1+2\sigma_3\sigma_1^3=&-2x^3y^3 - 2x^3y^2z - 2x^3yz^2 - 2x^3z^3 - 2x^2y^3z - x^2y^2z^2 - 2x^2yz^3 - 2xy^3z^2 - 2xy^2z^3 - 2y^3z^3
+\end{align*}
+$LT(f_2)=-2x^3y^3=-2LT(\sigma_2^3)$
+\[
+f_3=f_2+2\sigma_2^3=4x^3y^2z + 4x^3yz^2 + 4x^2y^3z + 11x^2y^2z^2 + 4x^2yz^3 + 4xy^3z^2 + 4xy^2z^3
+\]
+$LT(f_3)=4x^3y^2z=4LT(\sigma_1\sigma_2\sigma_3)$
+\[
+f_4=f_3-4\sigma_1\sigma_2\sigma_3=-x^2y^2z^2=-\sigma_3^2
+\]
+Por tanto
+\[
+f=-\sigma_3^2+4\sigma_1\sigma_2\sigma_3-2\sigma_2^3-2\sigma_3\sigma_1^3.
+\]
+\item Consideramos el ideal $I=\gene{\sigma_1-t_1,\sigma_2-t_2,\sigma_3-t_3}\subset k[x,y,z,t_1,t_2,t_3]$, con base de Gröbner
+\[
+G=\{x + y + z - t_1, y^2 + yz - yt_1 + z^2 - zt_1 + t_2, z^3 - z^2t_1 + zt_2 - t_3\}
+\]
+Si denotamos $g\in k[t_1,t_2,t_3]$ al resto de dividir $f$ por $G$, sabemos que $g(\sigma_1,\sigma_2,\sigma_3)$ es la expresión que buscamos. Pero no me sale la división en SAGE.
+\end{enumerate}
 
 
 
@@ -116,7 +144,11 @@ $g(α_1, \dots , α_n) ∈ k$.
 \end{enumerate}
  
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Por el ejercicio \ref{ejer:7.1.4} sabemos que los coeficientes de $f$ son, salvo signo, los polinomios simétricos en las raíces de $f$. Por tanto, el resultado se tiene como corolario del teorema fundamental de los polinomios simétricos.
+\item Cualquier combinación algebraica de elementos de $k$ está en $k$.
+\end{enumerate}
 
 \end{solucion}
 
@@ -130,6 +162,27 @@ $α_3$ is the average of the other two. Hence, you get a condition stating that 
 three expressions similar to $2α_1 − α_2 − α_3$ is equal to zero. Now use Exercise \ref{ejer:7.1.7}.
 \end{ejercicio}
 \begin{solucion}
+Tenemos como dice el enunciado la ecuación
+\begin{equation}\label{1}
+(2α_1 − α_2 − α_3)(-α_1 + 2α_2 − α_3)(-α_1 − α_2 + 2α_3)=0.
+\end{equation}
+Por otro lado tenemos
+\begin{align*}
+a_3=&-\alpha_1\alpha_2\alpha_3\\
+a_2= & \alpha_1\alpha_2+\alpha_1\alpha_3+\alpha_2\alpha_3\\
+a_1=&-\alpha_1-\alpha_2-\alpha_3
+\end{align*}
+Tenemos, a partir de última ecuación que \ref{1} se reescribe como
+\[
+(a_1+3\alpha_1)(a_1+3\alpha_2)(a_1+3\alpha_3)=0
+\]
+que desarrollando se convierte en
+\[
+a_1^3 + 3a_1^2\alpha_1 + 3a_1^2\alpha_2 + 3a_1^2\alpha_3 + 9a_1\alpha_1\alpha_2+ 9a_1\alpha_1\alpha_3 + 9a_1\alpha_2\alpha_3 + 27\alpha_1\alpha_2\alpha_3=
+\]
+\[
+a_1^3-3a_1^3+9a_1a_2-27a_3=-2a_1^3+9a_1a_2-27a_3=0
+\]
 \end{solucion}
 \newpage
 
