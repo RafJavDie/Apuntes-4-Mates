@@ -71,7 +71,17 @@ the identities of Exercise \ref{ejer:7.1.3}.
 \newpage
 
 \begin{ejercicio}{7.1.5}
+Consider the polynomial
+$f = (x^2 + y^2)(x^2 + z^2)(y^2 + z^2) ∈ k[x, y, z]$.
+\begin{enumerate}[a.]
+\item Use the method given in the proof of Theorem 3 to write f as a polynomial in the
+elementary symmetric polynomials $σ_1$, $σ_2$, $σ_3$.
+\item Use the method described in Proposition 4 to write $f$ in terms of $σ_1$, $σ_2$, $σ_3$.
+\end{enumerate}
 
+ You can use a computer algebra system for both parts of the exercise. Note that by
+stripping off the coefficients of powers of $X$ in the polynomial $(X − x)(X − y)(X − z)$,
+you can get the computer to generate the elementary symmetric polynomials.
  
 \end{ejercicio}
 \begin{solucion}
@@ -82,19 +92,64 @@ the identities of Exercise \ref{ejer:7.1.3}.
 \newpage
 
 \begin{ejercicio}{7.1.6}
+If the variables are $x_1, \dots , x_n$, show that $\sum_{i\neq j} x^2_i
+x_j = σ_1σ_2 −3σ_3$. Hint: If you get stuck,
+see Exercise \ref{ejer:7.1.13}. Note that a computer algebra system cannot help here!
+\end{ejercicio}
+\begin{solucion}
+\begin{gather*}
+\sigma_1\sigma_2=\sum_{i=1}^nx_i\sum_{i_1<i_2}x_{i_1}x_{i_2}=\sum_{1\leq i\leq n, i_1<i_2}x_ix_{i_1}x_{i_2}=\\
+\sum_{i_2<i_2}x_{i_1}^2x_{i_2}+\sum_{i_2<i_2}x_{i_1}x_{i_2}^2+\sum_{i<i_1<i_2}x_ix_{i_1}x_{i_2}+\sum_{i_1<i<i_2}x_ix_{i_1}x_{i_2}+\sum_{i_1<i_2<i}x_ix_{i_1}x_{i_2}=\\
+\sum_{i\neq j} x_i^2x_j+3\sum_{j_1<j_2<j_3}x_{j_1}x_{j_2}x_{j_3}=\sum_{i\neq j} x_i^2x_j+3\sigma_3.
+\end{gather*}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7.1.7}
+Let $f = x_n + a_1x_{n−1} + \cdots + a_n ∈ k[x]$ have roots $α_1,\dots, α_n$, which lie in some bigger
+field $K$ containing $k$.
+\begin{enumerate}[a.]
+\item Prove that any symmetric polynomial $g(α_1, \dots , α_n)$ in the roots of $f$ can be expressed
+as a polynomial in the coefficients $a_1, \dots , a_n$ of $f$.
+\item In particular, if the symmetric polynomial $g$ has coefficients in $k$, conclude that
+$g(α_1, \dots , α_n) ∈ k$.
+\end{enumerate}
+ 
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7.1.9}
+Given a cubic polynomial $f = x^3+a_1x^2+a_2x+a_3$, what condition must the coefficients
+of $f$ satisfy in order for one of its roots to be the average of the other two? Hint: If $α_1$ is
+the average of the other two, then $2α_1 − α_2 − α_3 = 0$. But it could happen that $α_2$ or
+$α_3$ is the average of the other two. Hence, you get a condition stating that the product of
+three expressions similar to $2α_1 − α_2 − α_3$ is equal to zero. Now use Exercise \ref{ejer:7.1.7}.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7.1.13}
 
 \end{ejercicio}
 \begin{solucion}
 
 \end{solucion}
 \newpage
-
-\begin{ejercicio}{7.1.7}
-
+\begin{ejercicio}{7.1.16}
+Consider the field $\F_2 = \{0, 1\}$ consisting of two elements. Show that it is impossible
+to express the symmetric polynomial $xy ∈ \F_2[x, y]$ as a polynomial in $s_1$ and $s_2$ with
+coefficients in $\F_2$. Hint: Show that $s_2 = s^2_1$!
 \end{ejercicio}
 \begin{solucion}
-
+Por definición $s_1=x+y$, $s_2=x^2+y^2$. Como estamos en $\F_2$, $s_1^2=x^2+y^2=s_2$. Supongamos que $xy$ se expresa como un polinomio de grado $n$ en $s_1$ y $s_2$. Utilizando la observación anterior tendríamos que
+\[
+xy=a_1(x+y)+\sum_{i=1}^nb_i(x^2+y^2)^i+(x+y)\sum_{j=1}^{n-1}(x^2+y^2)^j,\quad a_1, b_i,c_j\in \F_2
+\]
+Observamos que en los dos sumandos de la derecha, tanto $x$ como $y$ aparecen siempre con grando mayor o igual que 2, mientras que en $xy$ tienen ambos grado 1. Por tanto, $xy=a_1(x+y)$, lo cual no es posible.
 \end{solucion}
-
-
 \end{document}
