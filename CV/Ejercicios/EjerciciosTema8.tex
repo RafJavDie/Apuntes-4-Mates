@@ -120,24 +120,77 @@ Probar que la botella de Klein no es orientable.
 \newpage
 
 \begin{ejercicio}{9.15}
+Sea $M$ una variedad diferenciable $n$-dimensional y denotemos por $\widetilde{M}$ el conjunto de los pares $(p, o_p)$, donde $p\in M$ y $o_p$ es una de las dos orientaciones de $T_pM$. La proyección $\pi:\widetilde{M}\to M$ envía $(p,o_p)$ a $p$. 
+
+Para un abierto orientado $W\subseteq M$ con forma de orientación $w\in\Omega^n(W)$ denotamos $\widetilde{W}\subseteq\widetilde{M}$ al conjunto de pares $(p,o_p)$, donde $p\in W$ y $o_p$ es la orientación de $T_pM$ determinada por $w_p\in Alt^n T_pM$.
+
+Probar que $\widetilde{M}$ tiene una topología tal que $\widetilde{W}$ es abierto y $\pi$ es un homeomorfismo entre $\widetilde{W}$ y $W$ para todo abierto orientado $W\subseteq M$. Probar que $\widetilde{M}$ tiene una orientación canónica. El par consistente en $\widetilde{M}$ y $\pi$ se llama \emph{oriented double covering} (doble recubridor orientado) de $M$.
 \end{ejercicio}
 \begin{solucion}
+Para cada abierto orientado $W\subseteq M$ con forma de orientación $w\in\Omega^n(W)$ definimos los conjuntos $W_+=\{(p,o_p)\in\widetilde{M}\mid p\in W, o_p\in [w]\}$ y $W_-\{(p,o_p)\in\widetilde{M}\mid p\in W, o_p\notin[w]\}$. Dotamos a $\widetilde{M}$ de la topología que tiene como base el de abiertos la familia $\{W_+,W_-\}_{W\subseteq M}$. Con la notación del enunciado, $\widetilde{W}=W_+$ y es evidente que $\pi:W_+\to W$ es homeomorfismo con esta topología.
+
+Construimos un atlas sobre $\widetilde{M}$ a partir del atlas $\{(U,\varphi)\}$ de $M$. Para ello consideramos la familia $\{(U_\pm, \varphi_\pm)\}$ con $\varphi_\pm:=\varphi\circ\pi$. Es claro que los abiertos recubren $\widetilde{M}$ y por la observación anterior, $\varphi_\pm$ es un homeomorfismo entre $U_\pm$ y $\varphi(U)$. Además, dadas dos cartas $(U_\pm,\varphi_\pm)$ y $(V_\pm,\psi_\pm)$, se tiene que la aplicación
+\[
+\psi_\pm\circ \varphi_\pm^{-1}=\psi\circ\pi\circ\pi^{-1}\circ\varphi^{-1}=\psi\circ\varphi\in C^{\infty}
+\]
+pues $\pi$ se está restringiendo a un dominio donde es homeomorfismo.
+
+Se puede orientar $\widetilde{M}$ con la forma de orientación $w\in\Omega^n(\widetilde{M})$ que en cada punto $(p,o_p)$ vale $o_p$. 
+
+
 \end{solucion}
 \newpage
 
 \begin{ejercicio}{9.16}
+Sea $M$ una variedad diferenciable conexa. Probar que $\widetilde{M}$ consiste en a lo sumo dos componentes conexas, y que $M$ es orientable si y solo si $\widetilde{M}$ es conexa.
 \end{ejercicio}
 \begin{solucion}
+Si $M$ es orientable, entonces podemos considerar $\widetilde{M}_+$ y $\widetilde{M}_-$, que son abiertos disjuntos que recubren $\widetilde{M}$, de modo que $\widetilde{M}$ tiene dos componentes conexas.
+CASO NO ORIENTABLE
 \end{solucion}
 \newpage
 
 \begin{ejercicio}{9.17}
+Sea $V\subseteq\R^{n+k}$ un entorno tubular de una subvariedad diferenciable $M\subseteq\R^{n+k}$ de dimensión $n$ con la proyección asociada $r:V\to M$. Se define la aplicación diferenciable $f:V-M\to\R$ mediante
+\[
+f(x)=||x-r(x)||=\min_{y\in M}||x-y||.
+\]
+Probar que $f$ es una solución a la ecuación diferencial 
+\[
+\sum_{j=1}^{n+k}\left(\parcial{f}{x_j}\right)^2=1.
+\]
+Supongamos que $k=1$ y que $M$ está orientada por una aplicación de Gauss $Y$. Podemos definir la distancia signada de $M$, $\varphi:V\to R$ requiriendo
+\[
+\varphi(x)Y(r(x))=x-r(x)\quad (x\in V).
+\]
+Probar que $\varphi$ es una solución de la ecuación 
+\[
+\sum_{j=1}^{n+1}\left(\parcial{\varphi}{x_j}\right)^2=1.
+\]
 \end{ejercicio}
 \begin{solucion}
+Las derivadas salen unos chorizos enormes pero al final sale lo que tiene que salir. Para la segunda parte observar $||\varphi(x)||=f(x)$. 
 \end{solucion}
 \newpage
 
 \begin{ejercicio}{9.18}
+Sea $\pi:\widetilde{M}\to M$ el doble recubridor orientado del ejercicio \ref{ejer:9.15}. Sea $A:\widetilde{M}\to \widetilde{M}$ la aplicación que para cada $p\in M$ intercambia los dos puntos en $\pi^{-1}(p)$. Probar que $A$ es un difeomorfismo de orden 2 y que
+\[
+\Omega^r(\widetilde{M})=\Omega^r(\widetilde{M})_+\oplus\Omega^r(\widetilde{M})_-,
+\]
+donde $\Omega^r(\widetilde{M})_\pm$ es el subespacio propio asociado a $\pm 1$ para el isomorfismo
+\[
+A^*:\Omega^r(\widetilde{M})\to \Omega^r(\widetilde{M}).
+\]
+Probar que el complejo de deRham $(\Omega^*(\widetilde{M}),d)$ se descompone en la suma directa de dos subcomplejos
+\[
+(\Omega^*(\widetilde{M})_+,d)\text{ y } (\Omega^*(\widetilde{M})_-,d).
+\]
+Probar que $\pi^*$ es un isomorfismo entre el complejo $(\Omega^*(\widetilde{M}),d)$ y $(\Omega^*(\widetilde{M})_+,d)$. Probar que para todo $k\in\Z$ se tiene que
+\[
+H^k(\pi):H^k(M)\to H^k(\widetilde{M})
+\]
+envía $H^k(M)$ mediante isomorfismo a al subespacio propio asociado a 1 en $H^k(\widetilde{M})$ de $H^k(A)$. 
 \end{ejercicio}
 \begin{solucion}
 \end{solucion}
