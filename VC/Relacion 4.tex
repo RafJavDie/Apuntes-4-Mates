@@ -39,8 +39,28 @@ $$
 |e^z \cos z| \leq e^{|z|}e^{|z|} = e^{2|z|}
 $$
 Por tanto, tiene orden $\leq 1$. El orden debe ser necesariamente 1, pues si no lo fuese razonaríamos como en el segundo apartado.
-\item Sabemos que $\cos \sqrt{z} = (e^{i\sqrt{z}}+e^{-i\sqrt{z}})/2$,
+\item Sabemos que podemos definir $\cos \sqrt{z}$ como una función entera bien definida como
+$$
+\cos \sqrt{z} = \sum_{n=0}^\infty (-1)^n \frac{z^n}{(2n)!}
+$$
+Tenemos claramente la siguiente 
+$$
+\abs{ \sum_{n=0}^\infty (-1)^n \frac{z^n}{(2n)!}} \leq \sum_{n=0}^\infty \frac{\abs{z}^n}{(2n)!} \leq  \sum_{n=0}^\infty \frac{\abs{z}^{n/2}}{n!} = e^{|z|^{1/2}}
+$$
+Luego el orden es $\leq 1/2$. Supongamos que el orden fuera $<1/2$. Tomamos $r$ tal que $\rho < r <1/2$. Sabemos que los ceros de esta función son $((n+1/2)\pi)^2$ Entonces debería verificarse
+$$
+\sum_{n=-\infty}^\infty \frac{1}{((n+1/2)\pi)^{2s}} < \infty
+$$
+Como $2s < 1$, es claro que esto no puede ser.
+\item Es fácil probar que el orden de $e^5z-3e^{2z^2}$ es $2$.
+\item Para el caso $e^{\cos z}$
+\item Si $z\neq 0$ podemos integrar directamente
+$$
+\int_0^1 e^{tz^2}dt = \frac{e^{z^2}-1}{z^2}
+$$
+Notemos que podemos definir esta función como holomorfa en $0$ y coincide con el resultado de la integral tomando $z=0$. Es claro que el orden es $2$.
 \end{itemize}
+
 \end{solucion}
 
 \newpage

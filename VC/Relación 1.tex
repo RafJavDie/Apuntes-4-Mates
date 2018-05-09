@@ -49,7 +49,7 @@ $$
 $$
 \item Dado que $\Re(z)=x$ y $\Re(z)=y$, tenemos que $x+y<1$, es decir, el semiplano abierto limitado por la recta $y=1-x$ que contiene al origen.
 \item $iz= ix-y$, luego $\Re(iz)= -y$. Por lo que $-1<y<0$ es la banda horizontal abierta comprendida entre $y=-1$ e $y=0$.
-\item 
+\item Claramente es un arco.
 \end{enumerate}
 \end{solucion}
 \newpage
@@ -63,11 +63,11 @@ f(z)&=\sum_{n=0}^\infty a_n z^n \\
 &= \sum_{n=0}^\infty a_n (z_0 + (z-z_0))^n\\
 &= \sum_{n=0}^\infty a_n \sum_{k=0}^n\binom{n}{k}z_0^{n-k}(z-z_0)^k
 \end{align*}
-Es decir queremos que
+Comprobemos la convergencia de la serie reordenada:
 $$\sum_{n=0}^\infty \sum_{k=0}^n | a_n \binom{n}{k} z_0^{n-k} (z-z_0)^k | =
-\sum_{n=0}^\infty \sum_{k=0}^n |a_n| \binom{n}{k} |z_0|^{n-k} |z-z_0|^k < +\infty$$
-La última suma es de términos positivos así que la podemos reordenar como queramos y si nos da algo finito ya está.  Bien proseguimos viendo que
-$$\sum_{n=0}^\infty \sum_{k=0}^n |a_n| \binom{n}{k} |z_0|^{n-k} |z-z_0|^k |=
+\sum_{n=0}^\infty \sum_{k=0}^n |a_n| \binom{n}{k} |z_0|^{n-k} |z-z_0|^k $$
+La suma es de términos positivos así que la podemos reordenar como queramos y si nos da algo finito ya está.  Bien proseguimos viendo que
+$$\sum_{n=0}^\infty \sum_{k=0}^n |a_n| \binom{n}{k} |z_0|^{n-k} |z-z_0|^k =
 \sum_{n=0}^\infty  |a_n| (|z_0|+|z-z_0|)^n$$
 Esto es finito si $|z_0|+|z-z_0| < R$ siendo $R$ el radio de covergencia de la serie original
 Es decir, siempre que $|z-z_0|<R-|z_0|$ podremos reagrupar los términos de la serie como queramos.
@@ -291,7 +291,7 @@ $$
 \begin{solucion}
 \begin{enumerate}[(a)]
 \item[]
-\item Es claro que allá donde no se anule el denominador, para cada $x$ tenemos una función analítica que intentaremos prolongar allí donde se anule si es posible. Primeramente, es claro que el denominador se anula en $2k\pi i$ para $k\in \Z$. Es claro que el Teorema de Riemann asegura que si podemos prolongar continuamente la función en algún punto, la función será holomorfa en ese punto. Veamos que la función se puede prolongar solo en $z=0$.
+\item Es claro que allá donde no se anule el denominador, para cada $x$ tenemos una función analítica que intentaremos prolongar allí donde se anule si es posible. Primeramente, el denominador se anula en $2k\pi i$ para $k\in \Z$. Es claro que el Teorema de Riemann asegura que si podemos prolongar continuamente la función en algún punto, la función será holomorfa en ese punto. Veamos que la función se puede prolongar solo en $z=0$.
 \begin{itemize}
 \item Si $x=0$ entonces, para $z=0$
 $$

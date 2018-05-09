@@ -124,9 +124,12 @@ Probar que una singularidad aislada de $f(z)$ no puede ser un polo de $e^{f(z)}$
 \begin{solucion}
 Sea $a\in \C$ tal que $f(z)$ tiene una singularidad aislada en $a$. Distingamos casos
 \begin{itemize}
-\item Si $f(z)$ tiene una singularidad evitable en $a$, entonces en un entorno de $a$, $|f(z)|<M$ para algún $M>0$. Por tanto $|e^{f(z)}| \leq |e^M|$ en un entorno de $a$. Por el Teorema de Riemann, esta singularidad también es evitable.
-\item Si $f(z)$ tiene un polo en $a$, entonces $\frac{1}{f(z)}$ tiene un cero en $a$ y es analítica en un entorno de $a$. Por el Teorema de la función abierta, la imagen de un entorno de $a$ es un entorno de $0$. En particular, tomará los valores $i\delta$ para $0\leq \delta < \varepsilon$. Por tanto, siguiendo este camino hacia $a$, $e^{f(z)}$ tiene módulo unidad, luego no puede tener límite infinito. De hecho, tenemos una singularidad esencial, pues podemos acercarnos a infinito también.
-\item Si $f(z)$ tiene una singularidad esencial en $a$, la imagen es densa, luego la imagen por la exponencial también. ¿Por qué? Basta tener en cuenta que dado un punto $b\neq 0$, podemos acercarnos a $\log b$ tanto como queramos, nuevamente porque la imagen de $f(z)$ es densa, luego la exponencial se acerca a $b$ tanto como queramos. Por tanto, la singularidad es nuevamente esencial.
+\item Si $f(z)$ tiene una singularidad evitable en $a$, entonces en un entorno de $a$, $|f(z)|<M$ para algún $M>0$. Por tanto $|e^{f(z)}| \leq e^{|f(z)|}\leq e^M$ en un entorno de $a$. Por el Teorema de Riemann, esta singularidad también es evitable.
+\item Si $f(z)$ tiene un polo en $a$, entonces $\frac{1}{f(z)}$ tiene un cero en $a$ y es analítica en un entorno de $a$. Por el Teorema de la función abierta, la imagen de un entorno de $a$ es un entorno de $0$. En particular, tomará los valores $i\delta$ para $0\leq \delta < \varepsilon$. Por tanto, $f(z)$ toma valores en $i\delta^{-1}$ con $0<\delta<\varepsilon$. Usando estos puntos (que se acumulan en $a$) tenemos que  $e^{f(z)}$ tiene módulo unidad, luego no puede tener límite infinito. 
+
+Este resultado puede mejorarse. Podemos probar que en $a$ $e^{f(z)}$ tiene, de hecho, una singularidad esencial. Como $1/f(z)$ toma los valores $\delta$ para $0\leq \delta \leq \varepsilon$ (para algún $\varepsilon$) deducimos que $e^{f(z)}$ tenderá a infinito por esos puntos, por lo que no puede ser una singularidad evitable.
+
+\item Si $f(z)$ tiene una singularidad esencial en $a$, la imagen en un entorno de $a$ es densa en $\C$. Sea $b\in \C$ consideremos $\log b$ (para algún logaritmo donde esté bien definido). Como la imagen es densa, $\exists z_n$ tal que $f(z_n) \to \log b$, por lo que $e^{f(z_n)}\to b$. Como $b$ era arbitrario, hemos probado que la imagen de $e^{f(z)}$ es densa en $\C$. Deducimos que $f(z)$ tiene una singularidad esencial en $a$.
 \end{itemize} 
 \end{solucion}
 \newpage
