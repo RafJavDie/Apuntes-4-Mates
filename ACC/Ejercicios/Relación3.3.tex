@@ -320,7 +320,7 @@ smallest variety containing $i(\C^2 \setminus W)$.
 $$
 G=\{v^2 - yz, x^2yz - z^4, u - z, vx - z^2, vz^2 - xyz \}
 $$
-de donde se deduce trivialmente el resultado con el Teorema de Elminiación.
+de donde se deduce trivialmente el resultado con el Teorema de Eliminación.
 \item En este caso $W$ está definido por $uv=0$. Notemos que siguiendo la notación del libro, la variedad del enunciado es $J_1$. Es claro que $\forall (t,u)\in \C^2\setminus W$
 $$
 i(t,u)=\left(u,v,\frac{u^2}{v},\frac{v^2}{u},u\right)
@@ -333,6 +333,19 @@ Por aplicación directa del Teorema de Clausura $\V(J_1)$ es la menor variedad q
 \end{enumerate}
 \end{solucion}
 
+% Eliminar esto si innecesario
+\begin{solucion}
+Tenemos que el dominio donde $u,v \neq 0$ es  $\V(g)$ donde $g(u,v) = uv$. Por otro lado:
+\begin{align*} F & \colon \mathbb{K}^2 - W \to K^3 \\
+& (u,v) \mapsto (u^2/v, v^2/u, u) \end{align*}
+Entonces para $S = \F(\mathbb{K}^2- W)$ el objetivo es calcular $\overline{S}$.
+El teorema nos dice que $\overline{S} = \V(J_{1+2}) = \V(J \cap \mathbb{K}[x,y,z])$, donde:
+\[ J = \gene{1-tg, vx-u^2, uy-v^2, -u + z} \]
+La base de Gröbner de $J$ usando el orden lex $t > u > v > x > y > z$ es:
+\[ \mathcal{G} = \{tuv-1, tyz^2-v, tz^3-x, u-z, v^2-yz, vx-z^2, vz-xy, x^2y-z^3 \}\]
+Luego:
+\[ J_{1+2} = \gene{x^2y-z^2}\]
+\end{solucion}
 
 \newpage
 
