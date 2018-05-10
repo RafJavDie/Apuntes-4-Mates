@@ -36,12 +36,27 @@ Sea $M$ una $n$-variedad diferenciable conexa y orientable. Considera la aplicac
 entre las dos orientaciones posibles $M$ y $-M$. Demuestra que entonces $1_M$ invierta la orientación.
 \end{ejercicio}
 \begin{solucion}
-
+Sean $w\in\Omega^n(M)$ la forma de orientación que determina la orientación de $M$ (y por tanto $-w$ la de $-M$). Por funtorialidad de la estrella, $1_M^*=Id:\Omega^*(-M)\to\Omega^*(M)$, por lo que $1_M^*(-w)=-w$, así que $1_M$ revierte la orientación por definición.
 \end{solucion}
 \newpage
 
 \begin{ejercicio}{4}
-
+Sea $M$ una $n$-variedad diferenciable orientable y compacta. Considera el siguiente morfismo
+\[
+\begin{tikzcd}
+\mathcal{P}: & \Omega^k(M)\arrow[r]    & (\Omega^{n-k}(M))^*  &                  & \\
+             & \alpha\arrow[r, mapsto] & \mathcal{P}(\alpha): & \Omega^{n-k}(M)\arrow[r]  & \R\\
+             &		                   &					  &  \beta\arrow[r]  &\mathcal{P}(\alpha)(\beta)=\int_M \alpha\land\beta
+\end{tikzcd}
+\]
+\begin{enumerate}[a)]
+\item Demuestra que $\mathcal{P}$ está bien definido y que además describe un homomorfismo de $\R$-espacios vectoriales.
+\item Diremos que las $k$-formas $\delta\equiv\gamma$ son equivalentes si $\delta-\gamma=d\phi$ para alguna $(k-1)$-forma $\phi$. Demuestra que si $\alpha_1\equiv \alpha_2$, $\beta_1\equiv\beta_2$ y son formas exactas, entonces $\mathcal{P}(\alpha_1)(\beta_1)=\mathcal{P}(\alpha_2)(\beta_2)$. 
+\item Utilizando b), demuestra que $\mathbb{P}$ induce un homomorfismo de $\R$-espacios vectoriales $\overline{P}:H^k(M)\to (H^{n-k}(M))^*$.
+\end{enumerate}
+\begin{nota}
+Recuerda que si $V$ es un $R$-espacio vectorial, también se denota por $(V)^*=Hom_\R(V,\R)=Alt^1(V)$ al conocido como espacio dual de $V$.
+\end{nota}
 \end{ejercicio}
 \begin{solucion}
 
