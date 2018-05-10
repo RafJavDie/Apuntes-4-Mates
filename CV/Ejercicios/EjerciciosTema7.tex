@@ -42,9 +42,23 @@ Sea $T^n=\R^n/\Z^n$ entendido como espacio de órbitas de la acción del grupo $
 Probar que $T^n$ es una variedad topológica compacta de dimensión $n$. Construir una estructura diferenciable en $T^n$ tal que $\pi$ se vuelva diferenciable y todo $p\in \R^n$ tiene un entorno abierto difeomorfo a un abierto de $T^n$ mediante $\pi$. Probar que $T^1$ es difeomorfo a $S^1$.  
 \end{ejercicio}
 \begin{solucion}
-En primer lugar, claramente el espacio de órbitas es homeomorfo al hipercubo en el que se identifican caras opuestas con la misma orientación. Por tanto, es compacto por cociente de un compacto y además admite como base la proyección de las bolas euclídeas (esto se deduce del hecho de que $\pi(\pi^{-1}(B))=B$ por ser sobreyectiva), de modo que se puede obtener una base numerable. Además, a partir de esta base es fácil comprobar que el espacio es Hausdorff, o también al observar que se ha obtenido como cociente de un Hausdorff compacto (el hipercubo).
+En primer lugar, claramente el espacio de órbitas es homeomorfo al hipercubo en el que se identifican caras opuestas con la misma orientación. Por tanto, es compacto por cociente de un compacto y además admite como base la proyección de las bolas euclídeas (esto se deduce del hecho de que $\pi(\pi^{-1}(B))=B$ por ser sobreyectiva), de modo que se puede obtener una base numerable. Además, a partir de esta base es fácil comprobar que el espacio es Hausdorff, o también al observar que se ha obtenido como cociente de un Hausdorff compacto (el hipercubo). O también que $\pi([0,1]^n)=T^n$, así que por ser imagen continua de compacto es compacto.
 
-Obsérvese que la preimagen de un abierto de $T$ por $\pi$ es unión de $Z^n$ copias homeomorfas. Por tanto, basta recubrir $T^n$ con las proyecciones de los abiertos conexos de $\R^n$ y como carta enviar cada una de estas proyecciones a la preiamgen que se encuentra contenida en el hipercubo unidad en caso de existir, y si no hay ninguno enteramente contenido, tomar una preimagen conexa que corte a dicho hipercubo (por fijar ideas, digamos la que tenga todas sus coordenadas positivas). Al componer esta aplicación con $\pi$ nos lleva cada abierto conexo a uno difeomorfo (resulta una traslación), luego la aplicación es diferenciable. 
+Obsérvese que la preimagen de un abierto de $T$ por $\pi$ es unión de $Z^n$ copias homeomorfas si el abierto es lo bastante pequeño como para que sus preimágenes sean disjuntas. Por tanto, basta recubrir $T^n$ con las proyecciones de los abiertos conexos de $\R^n$ y como carta enviar cada una de estas proyecciones a la preiamgen que se encuentra contenida en el hipercubo unidad en caso de existir, y si no hay ninguno enteramente contenido, tomar una preimagen conexa que corte a dicho hipercubo (por fijar ideas, digamos la que tenga todas sus coordenadas positivas). Al componer esta aplicación con $\pi$ nos lleva cada abierto conexo a uno difeomorfo (resulta una traslación), luego la aplicación es diferenciable. 
+
+En resumen, para cada $p\in T^n$, existe un único $x(p)\in [0,1)^n$ con $W_p=\pi(B(x(p),1/3))$ abierto pues $\pi^{-1}(w_p)=\sqcup_{r\in\Z^n} (r+B(x(p),1/3))$. Además, $h_p^{-1}=\pi|:B(x(p),1/3)\to W_p$ es homeomorfismo. Por lo que aplicación es continua, biyectiva y abierta. Entonces $\{(W_p,h_p)\}_{p\in T^n}$ es un atlas para $T^n$. Nos falta comprobar que el intercambio de cartas es diferenciable, pero esto es fácil de ver, porque si las cartas que interseccionan son del mismo hipercubo el intercambio de cartas es la identidad, y si intersecan cartas de hipercubos contiguos entonces el intercambio será una traslación. 
+
+Con esta estructura diferenciable, las bolas $B(x,1/3)$ en $\R^n$ son difeomorfas los abiertos $W_{\pi(x)}$ mediante $\pi|=h_p^{-1}$, pues tenemos el diagrama
+\[
+\begin{tikzcd}
+B(x,1/3)\arrow[r, "h_p^{-1}"]\arrow[d, "Id"] & W_{\pi(x)}\arrow[d, "h_p"]\\
+B(x,1/3)\arrow[r, "Id"]& B(x,1/3)
+\end{tikzcd}
+\]
+por lo que el intercambio de cartas es la identidad.
+
+
+Podemos comprobar que $T^1$ es homeomorfo a $S^1$ tomando la aplicación $\varphi:\R\to S^1$ definida como $\varphi(t)=(\cos(2\pi t), \sin(2\pi t))$, que pasa al cociente de forma continua como $\pi\hat{\varphi}=\varphi$, y de hecho $\hat{\varphi}:T^1\to S^1$ es biyectiva. Como $T^1$ es Hausdorff y compacto, un cerrado en $T^1$ es compacto, de modo que la imagen mediante $\hat{\varphi}$ de un cerrado es cerrado por ser compacto. Tenemos que ver que $\hat{\varphi}$ es diferenciable usando las cartas $(U_{\pm i}, h_{\pm i})$ de $S^1$.  Paritmos de $(x-1/3,x+1/3)$, que es difeomorfo a un cierto $W_p$ para $p\in T^1$. Después, $\hat{\varphi}$ nos lleva a $x(p)\in U_{\pm i}$, y la carta $h_{\pm i}$ hace la proyección sobre una de las coordenadas, por lo que el resultado es $\cos(2\pi t)$ o $\sin(2\pi t)$, de modo que será diferenciable. Para la inversa, basta tomar las funciones argumento.
 \end{solucion}
 
 \newpage
@@ -55,9 +69,16 @@ Definimos $\tilde{A}:\R^2\to\R^2$ mediante $\tilde{A}(x,y)=(x+\frac{1}{2}, -y)$.
 Sea $K^2$ el conjunto de pares $\{q,A(q)\}$ con $q\in T^2$. Probar que $K^2$ con la topología cociente de $T^2$ es una 2-variedad topológica. Construir una estructura diferenciable sobre $K^2$.
 \end{ejercicio}
 \begin{solucion}
-Necesariamente $A([x,y])=[x+\frac{1}{2}, -y]$ para que se cumpla la composición. $A\circ A([x,y])=[x+1,y]=[x,y]$ por lo que es su propia inversa. Además no tiene puntos fijos porque no existe $\alpha\in\Z$ tal que $x+\alpha=x+\frac{1}{2}$.
+Necesariamente $A([x,y])=[x+\frac{1}{2}, -y]$ para que se cumpla la composición. $A\circ A([x,y])=[x+1,y]=[x,y]$ por lo que es su propia inversa. Además no tiene puntos fijos porque no existe $\alpha\in\Z$ tal que $x+\alpha=x+\frac{1}{2}$. Como $\pi$ es diferenciable, basta que comprobar que $a(p)=\tilde{A}(x(p))$ es diferenciable. Tenemos el intercambio de cartas
+\[
+\begin{tikzcd}
+W_p\arrow[r, "a"]\arrow[d, "h_p"] & B(\tilde{A}(p),1/3)\arrow[d, "Id"]\\
+B(x(p),1/3)\arrow[r, "\tilde{A}|"] & B(\tilde{A}(p), 1/3)
+\end{tikzcd}
+\]
+que es claramente diferenciable. Como $A$ es su propia inversa y es diferenciable, es difeomorfismo.
 
-$K^2$ vuelve a ser compacta y Hausdorff por ser cociente de un compacto Hausdorff. Ahora el espacio cociente es claramente homeomorfo a un cuadrado con identificaciones $abab^{-1}$, que es localmente homeomorfo a $\R^2$ y por tanto $2$-variedad.
+$K^2$ vuelve a ser compacta y Hausdorff por ser cociente de un compacto Hausdorff. Ahora el espacio cociente es claramente homeomorfo a un cuadrado con identificaciones $abab^{-1}$, que es localmente homeomorfo a $\R^2$ y por tanto $2$-variedad. Veamos $K^2$ directamente como un cociente de $\R^2$ a través de la composición $p\pi$. Para todo $q\in K^2$ existe $(x,y)\in [0,1/2)\times [-1/2,1/2)$ tal que $p\pi(x,y)=q$. Denotamos $W_q=p\pi(B(x(q), 1/8))$, de modo que la restricción $(p\pi)|:B(x(q),1/8)\to W_q$ es homeomorfismo. Entonces $\{(W_q, h_q)\}$ es un atlas para $K^2$ de forma análoga a como se construyó para el toro.
 \end{solucion}
 
 \newpage

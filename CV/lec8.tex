@@ -195,6 +195,8 @@ El morfismo de complejos de cadenas $\phi^*$ inducido por una aplicación difere
 \]
 lo cual convierte a la cohomología de deRham en un functor contravariante entre la categoría de variedades diferenciables y la categoría de $\R$-álgebras graduadas anticonmutativas.
 
+\section{Orientación de variedades}
+
 \begin{defi}\
 \begin{enumerate}
 \item Una variedad diferenciable $M$ de dimensión $n$ se dice \textbf{orientable} si existe $w\in\Omega^n(M)$ con $w_p\neq 0$ (no es idénticamente nula) para todo $p\in M$. Una tal $w$ se denomina \textbf{forma de orientación} de $M$.
@@ -372,16 +374,16 @@ S^{n-1}\arrow[r,"A"]\arrow[d, "\pi"] & S^{n-1}\arrow[dl, "\pi"]\\
 \R\PP^{n-1} & 
 \end{tikzcd}
 \]
-Recordemos que $A^*(w)=(-1)^nw$. Es claro que, fijado $x\in S^{n-1}$, $D_xA T_xS^{n-1}\to T_{-x}S^{n-1}$ es un isomorfismo por ser difeomorfismo y de hecho es isometría pues el producto escalar se conserva al cambiar todos los signos. Por el diagrama conmutativo anterior, $D_x\pi=D_{A(x)}\pi D_xA$ y además $D_x\pi T_xS^{n-1}\to T_{\pi(x)}\R\PP^{n-1}$ es isomorfismo. Como $D_xA$ es isometría podemos dotar de estructura Riemanniana a $\R\PP^{n-1}$ de forma que sea compatible con $\pi$, ya que no importará si elegimos $x$ o $-x$.
+Recordemos que $A^*(w)=(-1)^nw$. Es claro que, fijado $x\in S^{n-1}$, $D_xA: T_xS^{n-1}\to T_{-x}S^{n-1}$ es un isomorfismo por ser $A$ difeomorfismo y de hecho es isometría pues el producto escalar se conserva al cambiar todos los signos. Por el diagrama conmutativo anterior, $D_x\pi=D_{A(x)}\pi D_xA$ y además $D_x\pi: T_xS^{n-1}\to T_{\pi(x)}\R\PP^{n-1}$ es isomorfismo. Como $D_xA$ es isometría podemos dotar de estructura Riemanniana a $\R\PP^{n-1}$ de forma que sea compatible con $\pi$, ya que no importará si elegimos $x$ o $-x$.
 \[
 \gene{v,w}_{\pi(x)}=\gene{(D_x\pi)^{-1}(v),(D_x\pi)^{-1}(w)}_x
 \]
 Como $A^*(vol_{S^{n-1}})=(-1)^nvol_{S^{n-1}}$ y $A^*\pi^*=\pi^*:\Omega^{n-1}(\R\PP^{n-1})\to\Omega^{n-1}(S^{n-1})$, tenemos que si $n$ es par, podemos orientar $\R\PP^{n-1}$ con una forma de orientación $w$ tal que $\pi^*(w)=vol_{S^{n-1}}$. Dado $[x]\in\R\PP^{n-1}$, definimos
 \[
-w_{[x]}(v_1,\dots, v_n)=(vol_{S^{n-1}})_x((D_x\pi)^{-1}(v_1),\dots, (D_x\pi)^{-1}(v_n))=(vol_{S^{n-1}})_{-x}((D_x\pi)^{-1}(v_1),\dots, (D_x\pi)^{-1}(v_n))=
+w_{[x]}(v_1,\dots, v_n)=(vol_{S^{n-1}})_x((D_x\pi)^{-1}(v_1),\dots, (D_x\pi)^{-1}(v_n))=
 \] 
 \[
-A^*(vol_{S^{n-1}})_x((D_x\pi)^{-1}(v_1),\dots, (D_x\pi)^{-1}(v_n))
+(vol_{S^{n-1}})_{-x}((D_x\pi)^{-1}(v_1),\dots, (D_x\pi)^{-1}(v_n))=A^*(vol_{S^{n-1}})_x((D_x\pi)^{-1}(v_1),\dots, (D_x\pi)^{-1}(v_n))
 \]
 gracias a que $n$ es par y el signo no cambia. Así definido tenemos un volumen, por ser $D_x\pi$ isometría, es decir, al evaluarlo sobre una base ortonormal obtenemos 1. Así que $w=vol_{\R\PP^{n-1}}$ con $\pi^*(vol_{\R\PP^{n-1}})=vol_{S^{n-1}}$. En general $\pi^*(vol_{\R\PP^{n-1}})=\pm (vol_{S^{n-1}})$. Como $S^{n-1}$ es conexa, se tiene globalmente el mismo signo. Ahora,
 \[
@@ -451,7 +453,7 @@ Sea $M\subseteq\R^{n+k}$ subvariedad diferenciable de dimensión $n$. Entonces e
 Si $M$ es una variedad diferenciable compacta, entonces $H^p(M)$ es de dimensión finita.
 \end{prop}
 \begin{dem}
-Como $M$ es compacta, puede ser recubierta por abiertos $U_i$ de $\R^{n+k}$ centrados en $p_i\in M$, $M=U_1\cup\dots\cup U_r\subseteq V$ donde $V$ es un entorno tubular. Como $i^*\circ r^*=Id^*$, $i^*$ es sobreyectiva y $r^*$ es inyectiva, así que como $i^*:H^p(U)\to H^p(M)$ es sobreyectiva, $H^p(M)$ es finitamente generado. \QED
+Como $M$ es compacta, puede ser recubierta por abiertos $U_i$ de $\R^{n+k}$ centrados en $p_i\in M$, $M=U_1\cup\dots\cup U_r\subseteq V$ donde $V$ es un entorno tubular. Como $i^*\circ r^*=Id^*$, $i^*:H^p(U)\to H^p(M)$ es sobreyectiva, luego $H^p(M)$ es finitamente generado. \QED
 \end{dem}
 
 \begin{prop}
@@ -469,7 +471,7 @@ Sean $V_j$ entornos tubulares de $M_j$ con aplicaciones $i_j:M_j\to V_j $ y $r_j
 \end{dem}
 
 \begin{coro}
-Si $M\subseteq\R^{n+k}$ es una subvariedad diferenciable de dimensión $n$ y $(V,i,r)$ un entorno tubular. Entonces $i^*:H^p(V)\to H^p(M)$ es isomorfismo para todo $p\geq 0$.
+Si $M\subseteq\R^{n+k}$ es una subvariedad diferenciable de dimensión $n$ y $(V,i,r)$ un entorno tubular, entonces $i^*:H^p(V)\to H^p(M)$ es isomorfismo para todo $p\geq 0$.
 \end{coro}
 \begin{dem}
 Tenemos que $r\circ i=Id_M$ y $i\circ r\cong Id_V$, ya que $V$ con tiene el segmento entre $x$ y $r(x)$ para todo $x\in V$, así que $r$ e $i$ son inversas homotópicas, de donde se deduce el resultado. \QED
@@ -485,5 +487,29 @@ Si $M\subseteq\R^l$ es una subvariedad diferenciable de dimensión $n$ y $U_1$ y
 \cdots\to H^p(U_1\cup U_2)\xrightarrow{I_*}H^p(U_1)\oplus H^p(U_2)\xrightarrow{J_*}H^p(U_1\cap U_2)\xrightarrow{\partial_*}H^{p-1}(U_1\cup U_2)\to\cdots 
 \]
 \end{nota}
+
+\begin{ej}
+Vamos a calcular la cohomología de $\R\PP^{n-1}$. Recordemos que $D_xA:T_xS^{n-1}\to T_{A(x)}S^{n-1}$ es isometría, luego para todo $p$, $Alt^p(T_{A(x)}S^{n-1})\cong Alt^p(T_xS^{n-1})$. También es isometría $D_x\pi:T_x S^{n-1}\to T_{\pi(x)}\R\PP^{n-1}$.
+
+Tenemos por otra parte $\pi^*=\Omega^p(\pi):\Omega^p(\R\PP^{n-1})\to\Omega^p(S^{n-1})$ es inyectivo. Efectivamente, dada $w\in \Omega^p(\R\PP^{n-1})$; $\pi^*(w)_x(w_1,\dots, w_2)=w_{\pi(x)}(D_x\pi(w_1),\dots, D_x\pi(w_p))$. Si $\pi^*(w)=0$, entonces para todo $x\in S^{n-1}$ $\pi^*(w)_x=0$, si y solo si $\pi^*(w)_x(w_1,\dots, w_p)=w_{\pi(x)}(D_x\pi(w_1),\dots, D_x\pi(w_p))=0$ para todo $w_i\in T_x S^{n-1}$. Para todo $\pi(x)\in\R\PP^{n-1}$, cualquier $v_i\in T_x\R\PP^{n-1}$ se puede escribir como $D_x\pi(w_i)$ por ser $D_x\pi$ isomorfismo. Así que $w_{\pi(x)}(v_1,\dots, v_p)=w_{\pi(x)}(D_x\pi(w_1),\dots, D_x\pi(w_p))=\pi^*(w)_x(w_1,\dots, w_p)=0$, por lo que $w_{\pi(x)}$ es idénticamente nulo.
+
+Como $\pi\circ A=\pi$, tenemos que $\Ima\pi^*\cong \{w\in\Omega^p(S^{n-1})\mid w=A^*(w)\}\subseteq\Omega^p(S^{n-1})$. Como $(A^*)^2=Id$, podemos  descomponer $\Omega^p(S^{n-1})=\Omega^p_+(S^{n-1})\oplus \Omega^p_-(S^{n-1})$. Obsérvese que $\Omega^p_+(S^{n-1})=\Ima\pi^*\cong \Omega^p(\R\PP^{n-1})$ por ser $\pi^*$ inyectiva. 
+
+Tenemos que $\Omega^p_\pm(S^{n-1})=\Ima(\frac{1}{2}(Id\pm \Omega^p(A)))$. Esto es así porque a cada $w\in \Omega^p(S^{n-1})$ le podemos asignar $\varphi(w)=\frac{w+A^*(w)}{2}\oplus \frac{w-A^*(w)}{2}\in\Omega^p_+(S^{n-1})\oplus\Omega^p_-(S^{n-1})$, que al aplicarle $A^*$ nos da la identidad medios y menos la identidad medios. Además, por linealidad de la diferencial, $d(\varphi(w))=\frac{dw+dA^*(w)}{2}+\frac{dw-dA^*(w)}{2}=\varphi(dw)=\varphi_+(dw) +\varphi_-(dw)$, por lo que tenemos el complejo de cadenas descompuesto en parte positiva y negativa. Así que también podemos descomponer $H^p(S^{n-1})\cong H^p_+(S^{n-1})\oplus H^p_-(S^{n-1})$.  Como la parte positiva es la parte invariante por $A^*$, $H^p(\R\PP^{n-1})\cong H^p_+(S^{n-1})$.  Tenemos los isomorfismos
+\[
+\begin{tikzcd}
+H^{n-1}(\R^n-\{0\})\arrow[r,"t^*"]\arrow[d, "i^*"] & H^{n-1}(\R^n-\{0\})\arrow[d, "i^*"]\\
+H^{n-1}(S^{n-1})\arrow[r, "A^*"] & H^{n-1}(S^{n-1})
+\end{tikzcd}
+\]
+donde $t(x)=-x$. Sabemos que $\R\PP^{n-1}$ es conexo. Además, dado un generador $[z]\in H^{n-1}(S^{n-1})$, si $A^*([z])=-[z]$ entonces no está en la clase del proyectivo, por lo que solo lo estará si $n$ es par. En resumen,
+\[
+H^p(\R\PP^{n-1})\cong H^p(S^{n-1})_+=\begin{cases}
+\R & p=n-1, n\equiv 0\mod 2\\
+\R & p=0\\
+0 & c.c.
+\end{cases}
+\]
+\end{ej}
 
 \end{document}

@@ -14,6 +14,8 @@ Sea $M\subseteq\R^l$ una subvariedad diferenciable y supongamos que los puntos $
 \begin{solucion}
 Podemos considerar $T_{p_0}M$ como subespacio de $\R^l$, por lo que el resultado se deduce del teorema de la proyección. 
 %https://math.stackexchange.com/questions/1492497/projection-theorem-understanding-two-parts-of-the-proof
+
+
 \end{solucion}
 \newpage
 
@@ -146,7 +148,9 @@ Sea $M$ una variedad diferenciable conexa. Probar que $\widetilde{M}$ consiste e
 \end{ejercicio}
 \begin{solucion}
 Si $M$ es orientable, entonces podemos considerar $\widetilde{M}_+$ y $\widetilde{M}_-$, que son abiertos disjuntos que recubren $\widetilde{M}$, de modo que $\widetilde{M}$ tiene dos componentes conexas.
-CASO NO ORIENTABLE
+
+
+Supongamos que $M$ es no orientable y sea $W\subseteq\widetilde{M}$ una componente conexa. La restricción $\pi|_W: W\to M$ sigue siendo un recubridor diferenciable. Efectivamente, para cada abierto $U\subseteq M$, cada componente conexa de $\pi^{-1}(U)$ está en una única componente conexa de $\widetilde{M}$, por lo que podemos quedarnos con las preimágenes que estén en $W$. Así que todas las fibras tienen el mismo cardinal. Esto quiere decir que  las fibras en $W$ tienen cardinalidad 1 o 2. Si tuvieran cardinalidad 1, entonces $\pi|_W$ sería un difeomorfismo y su inversa induciría una orientación en $M$. De esta forma, la cardinalidad de las fibras es 2 y eso implica que necesariamente $W=\widetilde{M}$, con lo que se tienen la conexión.
 \end{solucion}
 \newpage
 
@@ -186,12 +190,24 @@ Probar que el complejo de deRham $(\Omega^*(\widetilde{M}),d)$ se descompone en 
 \[
 (\Omega^*(\widetilde{M})_+,d)\text{ y } (\Omega^*(\widetilde{M})_-,d).
 \]
-Probar que $\pi^*$ es un isomorfismo entre el complejo $(\Omega^*(\widetilde{M}),d)$ y $(\Omega^*(\widetilde{M})_+,d)$. Probar que para todo $k\in\Z$ se tiene que
+Probar que $\pi^*$ es un isomorfismo entre el complejo $(\Omega^*(M),d)$ y $(\Omega^*(\widetilde{M})_+,d)$. Probar que para todo $k\in\Z$ se tiene que
 \[
 H^k(\pi):H^k(M)\to H^k(\widetilde{M})
 \]
 envía $H^k(M)$ mediante isomorfismo a al subespacio propio asociado a 1 en $H^k(\widetilde{M})$ de $H^k(A)$. 
 \end{ejercicio}
 \begin{solucion}
+Es evidente que $A$ tiene orden 2 porque solo hay dos fibras para cada punto. Por tanto es su propia inversa y basta probar que es diferenciable para comprobar que es difeomorfismo, pero esto es claro puesto que $$\psi_{\pm}\circ A\circ\varphi_{\pm}=\psi\circ\pi\circ A\circ \pi^{-1}\circ\varphi^{-1}=\psi\circ\varphi$$
+pues las proyecciones actúan igual sobre las dos fibras, es decir, $\pi\circ A=\pi$.
+
+Como $A$ es un difeomorfismo de orden 2, $A^*:\Omega^r(\widetilde{M})\to \Omega^r(\widetilde{M})$ es un isomorfismo de orden 2, con lo que podemos descomponer $\Omega^r(\widetilde{M})=\Omega^r(\widetilde{M})_+\oplus\Omega^r(\widetilde{M})_-$ para todo $r$, donde $\Omega^r(\widetilde{M})_+=\{w\in \Omega^r(\widetilde{M})\mid A^*w=w\}$ y $\Omega^r(\widetilde{M})_-$ es su complemento ortogonal, es decir el subespacio formado por las formas diferenciales tales que $(A^*w)_{(p,o_p)}=w_{(p,-o_p)}=-w_{(p,o_p)}$.
+
+Definimos el isomorfismo $\phi: \Omega^r(\widetilde{M})\to \Omega^r(\widetilde{M})$ como $\phi(w)=\frac{w+A^*(w)}{2}\oplus \frac{w-A^*(w)}{2}$. Con esto es claro que $d$ respeta los subespacios de forma análoga a como se hizo para el espacio proyectivo. Por tanto, se tiene la descomposición $(\Omega^*(\widetilde{M}),d)=(\Omega^*(\widetilde{M})_+,d)\oplus(\Omega^*(\widetilde{M})_-,d).$
+
+Esto induce una descomposición similar en cohomología, $H^k(\widetilde{M})=H^k(\widetilde{M})_+\oplus H^k(\widetilde{M})_-$. 
+
+Para probar que $\pi^*$ induce tal isomorfismo, observemos primero que como $\pi\circ A=\pi$, para cada $r$, $\Ima\pi^*\cong \{w\in \Omega^r(\widetilde{M})\mid w=A^*(w)\}=\Omega^r(\widetilde{M})_+$. Por tanto, tenemos que ver que $\pi^*$ es inyectiva. Supongamos que $\pi^*(w)=0$, entonces para todo $q=(p,o_p)\in\widetilde{M}$, $\pi^*(w)_q=0$. Equivalentemente, $\pi^*(w)_q(w_1,\dots, w_r)=w_p(D_p\pi(w_r),\dots, D_p\pi(w_r))$ para todo $w_i\in T_q\widetilde{M}$. Pero $D_p\pi$ es isomorfismo por ser $\pi$ difeomorfismo local, así que $w_p(v_1,\dots, v_p)=w_p(D_p\pi(w_r),\dots, D_p\pi(w_r))$ para todo $v_i\in T_pM$.
+
+A partir de esto y la descomposición del complejo de cadenas se tiene directamente que $H^k(\pi)$ es un isomorfismo entre $H^k(M)$ y $H^k(\widetilde{M})_+$.
 \end{solucion}
 \end{document}
