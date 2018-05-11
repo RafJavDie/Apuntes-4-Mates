@@ -43,13 +43,36 @@ $$
 r(\muestra{y}_{{(i)}},\muestra{x}_{{(j)}}) = \frac{\hat{\lambda}_i \hat{e}_{ij}}{\hat{\sigma}_{j}\sqrt{\hat{\lambda_j}}} = \frac{\hat{e}_{ij}\sqrt{\hat{\lambda}_i}}{\hat{\sigma}_j}
 $$
 \item Demuestra que la primera CP es la combinación lineal (normalizada) de máxima varianza. 
+
+Sea $H=\{t\in \R^p \mid t't=1\}$. Queremos demostrar que
+$$
+\hat{\sigma}_{\muestra{y}_{(1)}}=\sup_{t\in H}\hat{\sigma}^2_{t'\muestra{x}}
+$$
+Como las columnas de $\hat{E}$ forman una base (ortonorma) de $\R^p$, para cada $t$ existe $c\in \R^p$ tal que $t = \sum_{i=1}^p c_i \hat{e}_i$. Es decir, $t=\hat{E}c$. Además, $c'c = t'EE't=t't=1$ y
+$$
+\hat{\sigma}^2_{t'\muestra{x}} = t'\hat{\Sigma}t =  c'\hat{E}'\hat{\Sigma}\hat{E}c = c'\hat{\Lambda}c = \sum_{i=1}^p \hat{\lambda}_i c_i^2 \leq \hat{\lambda}_1 \sum_{i=1}^p  c_i^2 = \hat{\lambda}_1 = \hat{\sigma}^2_{\muestra{y}_{(1)}}
+$$
+Por tanto,
+$$
+d
+$$
 \item Demuestra que la suma de las varianzas de las variables originales es igual a la suma de las varianzas de las CP.
+
+Sabemos que $trace(AB)=trace(BA)$, luego
+$$
+trace(\hat{\Sigma})=trace(\hat{E}\hat{\Lambda}\hat{E}')=trace((\hat{E}\hat{\Lambda})\hat{E}') = trace(\hat{E}'(\hat{E}\hat{\Lambda})) = trace(\hat{\Lambda})=\sum_{i=1}^p \hat{\lambda}_i
+$$
 \item Demuestra que las CP están incorreladas.
+
+Es trivial, pues la matriz de varianzas covarianzas es diagonal, luego las correlaciones entre distintas variables son nulas.
 \item Considérese el conjunto de datos muestrales.
 \[ \begin{pmatrix}5 & 3 & ? & ? & ?\\4 & a & ? & ? & ?\\4 & a & ? & ? & ?\\1 & a & ? & ? & ?\end{pmatrix}\]
 \begin{enumerate}
 	\item Determina el mayor autovalor de $\widehat{\Sigma}$ sabiendo que el autovector asociado es $(1,0,0,0,0)$.
 	\item Calcula el valoor de $a$ sabiendo que el segundo autovector es $(0,1,0,0,0)$.
+\end{enumerate}
+\begin{enumerate}
+\item Claramente el autovalor asociado será el elemento $\hat{\Sigma}_{11}$. Sabemos que
 \end{enumerate}
 \end{enumerate}
 
