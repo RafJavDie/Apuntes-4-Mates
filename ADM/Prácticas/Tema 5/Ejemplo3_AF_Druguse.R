@@ -21,7 +21,7 @@
 load(file="druguse.RData")  #Matriz de correlaciones
 druguse
 
-#library(corrplot)
+library(corrplot)
 corrplot(druguse,method="ellipse")
 
 #2. Estimar el modelo AF mediante máxima verosimilitud
