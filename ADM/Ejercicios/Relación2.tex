@@ -1,0 +1,40 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\media}[1]{{\overline{#1}}}
+\newcommand{\muestra}[1]{{\underline{#1}}}
+\newcommand{\m}[1]{{\muestra{#1}}}
+\newcommand{\mX}{{\muestra{X}}}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Análisis de Datos Multivariantes}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\section{Análisis de Componentes Principales}
+Sea $X$ una matriz de datos $n \times p$ y $\widehat{\Sigma}$ la matriz de varianzas asociada.
+
+\begin{enumerate}
+\item Describe cual es el objetivo fundamental del ACP. 
+\item Define las puntuaciones de los $n$ puntos sobre las $p$ CP. 
+\item Demuestra que $d(x_i, x_j) = d(y_i, y_j)$ con $y_i$ el vector de puntuaciones sobre las componentes principales correspondiente al individuo $i$. 
+\item Demuestra que la varianza de la $j$−ésima CP es el $j$−ésimo mayor autovalor de $\widehat{\Sigma}$.
+\item Determina el coeficiente de correlación lineal entre $y_{(i)}$ ($i$−ésima CP) y $x_{(j)}$ .($j$−ésima variable). 
+\item Demuestra que la primera CP es la combinación lineal (normalizada) de máxima varianza. 
+\item Demuestra que la suma de las varianzas de las variables originales es igual a la suma de las varianzas de las CP.
+\item Demuestra que las CP están incorreladas.
+\item Considérese el conjunto de datos muestrales.
+\[ \begin{pmatrix}5 & 3 & ? & ? & ?\\4 & a & ? & ? & ?\\4 & a & ? & ? & ?\\1 & a & ? & ? & ?\end{pmatrix}\]
+\begin{enumerate}
+	\item Determina el mayor autovalor de $\widehat{\Sigma}$ sabiendo que el autovector asociado es $(1,0,0,0,0)$.
+	\item Calcula el valoor de $a$ sabiendo que el segundo autovector es $(0,1,0,0,0)$.
+\end{enumerate}
+\end{enumerate}
+
+\section{Análisis Factorial}
+
+\section{Análisis de Correspondencia}
+
+\section{Análisis Discriminante}
+\end{document}
