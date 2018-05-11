@@ -525,11 +525,11 @@ Tras dotar a todos los $2$-símplices de una orientación coherente (caras comun
 \[ c = \sum_{\dim(µ \in K_2)=2} µ \]
 una $2$-cadena que verifica:
 \[ \partial_2(c) = (v_4,v_5)+(v_5,v_7)+(v_7,v_4) = \tau \]
-Luego $\tau$ visto en $\widetilde{H}_1(K_2)$ es trivial, luego $i_{*1}$ envía $\tau$ en $0$. Luego $\ker i_{*1}=\F\gene{\tau}$. Como $\Delta_{*2}$ es homeomorfismo sobre su imagen tenemos que $\widetilde{H}_1(K_2)\cong \Ima\Delta_{*2}\cong \F\gene{\tau}$.
+Luego $\tau$ visto en $\widetilde{H}_1(K_2)$ es trivial, por lo que $i_{*1}$ envía $\tau$ en $0$. Así que $\ker i_{*1}=\F\gene{\tau}$. Como $\Delta_{*2}$ es isomorfismo sobre su imagen tenemos que $\widetilde{H}_1(K_2)\cong \Ima\Delta_{*2}\cong \F\gene{\tau}$.
 
 Por otra parte, tenemos que $j_{*1}$ es inyectiva porque hemos probado que $i_{*1}$ es la aplicación nula. Así que por exactitud es de hecho isomorfismo. Esto implica que $\widetilde{H}_1(K)\cong \F^2\gene{\tau_1,\tau_2}$.
 
-\emph{Continuará...}
+Utilizando los cálculos anteriores, $\widetilde{H}_2(K)\cong\Ima\Delta_{*2}=\ker{i_{*1}}\cong\F\gene{\tau}$. Sin embargo podemos escoger un generador más apropiado, basta elegir $c' = \sum_{\dim(µ \in K)=2} µ $, que es un 2-ciclo cuyo borde es 0. 
 \end{ej}
 
 \begin{ej}
@@ -622,11 +622,11 @@ Tomamos $K_1=\gene{v_4,v_5,v_6}$ y $K_2=K-\{(v_4,v_5,v_6)\}$. Ya conocemos la ho
 \]
 Si orientamos $K$ igual que en el ejemplo anterior consideramos 
 \[ c = \sum_{\dim(µ \in K_2)=2} µ \]
-en $K_2$ se comprueba que $\partial c=\sigma+2\tau$, por lo que $[\sigma]=2[-\tau]$ en $H_1(K_2)$. Así que $i_*([\sigma])=2[-\tau]$ con lo que tenemos que  $i_*$ es inyectiva. Por exactitud esto implica que $H_2(K)\cong\Ima\Delta_{*2}=\ker i_*=0$. Ahora, usando el primer teorema de isomorfía y la sobreyectividad de $j_{1*}$ tenemos que
+en $K_2$ se comprueba que $\partial c=\sigma+2\tau$, por lo que $[\sigma]=2[-\tau]$ en $H_1(K_2)$. Así que $i_*([\sigma])=2[-\tau]$ con lo que tenemos que  $i_*$ es inyectiva si $\F$ no es de característica 2. Por exactitud esto implica que $H_2(K)\cong\Ima\Delta_{*2}=\ker i_*=0$. Ahora, usando el primer teorema de isomorfía y la sobreyectividad de $j_{1*}$ tenemos que
 \[
-H_1(K)\cong \F^2\gene{\tau}/2\F\gene{\tau}=0
+H_1(K)\cong \F\gene{\tau}/2\F\gene{\tau}=0
 \]
-por ser $\F$ cuerpo. En conclusión, $\widetilde{H}_q(K)=0$ para todo $q$.
+por ser $\F$ cuerpo. En conclusión, $\widetilde{H}_q(K)=0$ para todo $q$. Si $\F$ fuera de característica 2, entonces $\ker{i_*}=\F\gene{\tau}$. En este caso, $H_2(K)\cong \F\gene{\tau}$ (aunque podemos tomar como generador la suma de los 2-símplices) y $H_1(K)\cong\F\gene{\tau}$.
 \end{ej}
 
 En el siguiente capítulo probaremos que los cálculos de los ejemplos anteriores son válidos para cualquier otra triangulación que se realice de los espacios en cuestión.
