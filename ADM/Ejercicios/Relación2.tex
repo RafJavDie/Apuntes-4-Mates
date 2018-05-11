@@ -16,11 +16,32 @@
 Sea $X$ una matriz de datos $n \times p$ y $\widehat{\Sigma}$ la matriz de varianzas asociada.
 
 \begin{enumerate}
-\item Describe cual es el objetivo fundamental del ACP. 
+\item Describe cual es el objetivo fundamental del ACP.
+
+Determinar un espacio de dimensión "reducida" que represente adecuadamente un conjunto de n observaciones $p$-−dimensionales. Para ello sustituimos las variables originales por un número pequeño de combinaciones lineales de las variables originales, incorreladas y "perdiendo" poca información.
+
 \item Define las puntuaciones de los $n$ puntos sobre las $p$ CP. 
-\item Demuestra que $d(x_i, x_j) = d(y_i, y_j)$ con $y_i$ el vector de puntuaciones sobre las componentes principales correspondiente al individuo $i$. 
+\item Demuestra que $d(\muestra{x_i}, \muestra{x_j}) = d(\muestra{y_i}, \muestra{y_j})$ con $\muestra{y_i}$ el vector de puntuaciones sobre las componentes principales correspondiente al individuo $i$. 
+
+Sabemos que $\muestra{y_i} = \hat{E}'\muestra{x_i}$ con $E$ una matriz ortogonal, luego se tiene de manera inmediata que 
+$$
+d^2(\muestra{y_i},\muestra{y_j})=(\muestra{y_j}-\muestra{y_i})'(\muestra{y_j}-\muestra{y_i}) = (\muestra{x_j}-\muestra{x_i})\hat{E}\hat{E}'(\muestra{x_j}-\muestra{x_i}) = (\muestra{x_j}-\muestra{x_i}) '(\muestra{x_j}-\muestra{x_i}) = d^2(\muestra{x_i},\muestra{x_j})
+$$
 \item Demuestra que la varianza de la $j$−ésima CP es el $j$−ésimo mayor autovalor de $\widehat{\Sigma}$.
-\item Determina el coeficiente de correlación lineal entre $y_{(i)}$ ($i$−ésima CP) y $x_{(j)}$ .($j$−ésima variable). 
+
+Sabemos que $$\Sigma_{\muestra{Y}} = Cov(\hat{E}'\muestra{X})= \hat{E}'Cov(\muestra{X})\hat{E} =\hat{E}' \hat{\Sigma}\hat{E}= \hat{\Lambda}$$
+La varianza de la $j$-ésima componente principal es el $j$-ésimo elemento diagonal de $\hat{\Lambda}$, que es precisamente el $j$-ésimo mayor autovalor de $\hat{\Sigma}$.
+
+\item Determina el coeficiente de correlación lineal entre $\muestra{y}_{{(i)}}$ ($i$−ésima CP) y $\muestra{x}_{(j)}$ .($j$−ésima variable).
+
+Tengamos en cuenta que $\hat{e_i}'\hat{\Sigma}_{\cdot j} = (\hat{E}')_{i \cdot}\hat{\Sigma}_{\cdot j}=(\hat{E}'\hat{\Sigma})_{ij}=(\hat{\Lambda}\hat{E}')_{ij}=\hat{\lambda}_i \hat{e}_{ij}$. Entonces:
+$$
+Cov(\muestra{y}_{{(i)}},\muestra{x}_{{(j)}}) = Cov(\hat{e_i}' \muestra{x},\muestra{x}_{{(j)}}) = \hat{e_i}'Cov(\muestra{x},\muestra{x}_{(j)})= \hat{e_i}'\hat{\Sigma}_{\cdot j} = \hat{\lambda}_i \hat{e}_{ij}
+$$ 
+Por tanto, tenemos
+$$
+r(\muestra{y}_{{(i)}},\muestra{x}_{{(j)}}) = \frac{\hat{\lambda}_i \hat{e}_{ij}}{\hat{\sigma}_{j}\sqrt{\hat{\lambda_j}}} = \frac{\hat{e}_{ij}\sqrt{\hat{\lambda}_i}}{\hat{\sigma}_j}
+$$
 \item Demuestra que la primera CP es la combinación lineal (normalizada) de máxima varianza. 
 \item Demuestra que la suma de las varianzas de las variables originales es igual a la suma de las varianzas de las CP.
 \item Demuestra que las CP están incorreladas.
