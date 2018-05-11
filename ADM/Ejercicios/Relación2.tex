@@ -69,10 +69,26 @@ Es trivial, pues la matriz de varianzas covarianzas es diagonal, luego las corre
 \[ \begin{pmatrix}5 & 3 & ? & ? & ?\\4 & a & ? & ? & ?\\4 & a & ? & ? & ?\\1 & a & ? & ? & ?\end{pmatrix}\]
 \begin{enumerate}
 	\item Determina el mayor autovalor de $\widehat{\Sigma}$ sabiendo que el autovector asociado es $(1,0,0,0,0)$.
-	\item Calcula el valoor de $a$ sabiendo que el segundo autovector es $(0,1,0,0,0)$.
-\end{enumerate}
-\begin{enumerate}
-\item Claramente el autovalor asociado será el elemento $\hat{\Sigma}_{11}$. Sabemos que
+	
+	Claramente el autovalor asociado será el elemento $\hat{\Sigma}_{11}$. Si util
+$$
+\hat{\sigma}_{11}=\hat{\sigma}_1^2=\frac{1}{3}\sum_{i=1}^4(X_{i1}-\frac{5+4+4+1}{4})^2 = \frac{1}{3}\left[(5-\frac{14}{4})^2 +  2(4-\frac{14}{4})^2 + (1-\frac{14}{4})^2\right]= 3
+$$
+
+	\item Calcula el valor de $a$ sabiendo que el segundo autovector es $(0,1,0,0,0)$. 
+	
+Sabemos que la $\hat{\sigma}_{\muestra{y}_{(1)}\muestra{y}_{(2)}}=0$. Tenemos
+$$
+\hat{\sigma}_{\muestra{y}_{(1)},\muestra{y}_{(2)}} = \hat{\sigma}_{\hat{e}_1'\muestra{x},\hat{e}_2'\muestra{x}} = \hat{e}_1'\Sigma \hat{e}_2 = \hat{\sigma}_{12}
+$$
+Haciendo el cálculo de dicho estimador obtenemos
+\begin{align*}
+\hat{\sigma}_{12}&=\frac{1}{3}\sum_{i=1}^4(X_{i1}-\frac{14}{4})(X_{i2}-\frac{3+3a}{4})\\
+&=\frac{1}{3}\left[(5-\frac{14}{4})(3-\frac{3+3a}{4})+2(4-\frac{14}{4})(a-\frac{3+3a}{4})+(1-\frac{14}{4})(a-\frac{3+3a}{4})\right]\\
+&=\frac{3-a}{2}
+\end{align*}
+Por tanto $a=3$.
+
 \end{enumerate}
 \end{enumerate}
 
