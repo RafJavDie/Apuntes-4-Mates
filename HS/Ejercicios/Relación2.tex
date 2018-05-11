@@ -5,16 +5,20 @@
 \begin{document}
 
 \title{Ejercicios de Homología Simplicial}
-\author{Diego Pedraza López, Javier Aguilar Martín}
+\author{Javier Aguilar Martín, Diego Pedraza López}
 \maketitle
 
 \begin{ejercicio}{2.1}
 Probar que si $K$ es un complejo simplicial conexo, entonces
-$\Im[∂_1 : C_1(K; \F) → C_0(K; \F)]$ es el subespacio de todas las cadenas $∑λ_iv_i$ con $∑λ_i = 0$.
+$\Ima[∂_1 : C_1(K; \F) → C_0(K; \F)]$ es el subespacio de todas las cadenas $∑λ_iv_i$ con $∑λ_i = 0$.
 Deducir que $H_0(K; \F) \cong \F$ generado por la clase de homología de cualquier vértice de $K$.
 \end{ejercicio}
 \begin{solucion}
+Si $C_1(K;\F)$ está generado por $\{(v_i,v_j)\}_{i,j\in I}$, $\Ima\partial_1$ estará generado por las imágenes de estos generadores, que son expresiones de la forma $v_j-v_i$. Cualquier combinación lineal de estas expresiones nos da una cadena de la forma buscada. Si $K$ no es conexo no hay tanta diferencia, pues $C_1(K;\F)=\oplus C_1(K_i;\F)$ donde $K_i$ son las componentes conexas de $K$, de modo que de cada sumando obtendremos combinaciones $∑λ_iv_i$ con $∑λ_i = 0$, que al sumarse siguen dando una combinación de la misma forma. La diferencia está en que ahora los vértices de cada componente conexa estarían agrupados en sumandos distintos, lo que hace que la dimensión de $H_0(K;\F)$ sea igual al número de componentes conexas.
 
+Una alternativa es recordar que $\Ima\partial_1=\ker\varepsilon$, donde $\varepsilon(v_i)=1$, por lo que $\ker\varepsilon=\{\sum\lambda_iv_i\mid \varepsilon(\sum\lambda_iv_i)=0\}=\{\sum\lambda_iv_i\mid \sum\lambda_i =0\}$.
+
+Comprobemos que el subespacio de tales cadenas tiene dimensión 1, de donde se deducirá el resultado. Consideremos el morfismo $C_0(K;\F)\to\F$ que a cada combinación lineal $∑λ_iv_i$ le asigna el valor de la suma $∑λ_i$. Claramente estamos buscando la dimensión del núcleo de esta aplicación, que será 0 o 1. Como hay sumas con coeficientes no nulos que verifican $∑λ_i = 0$, la dimensión no es 0, por lo que efectivamente es 1.
 \end{solucion}
 
 \newpage
@@ -22,13 +26,20 @@ Deducir que $H_0(K; \F) \cong \F$ generado por la clase de homología de cualqui
 \begin{ejercicio}{2.2}
 Probar que $\widetilde{H}_0(K; \F) = \ker[c_∗ : H_0(K; \F) → H_0(\{v\}; \F)]$ donde $c : K →
 \{v\}$ es la aplicación constante. Deducir $H_0(K; \F) \cong \widetilde{H}_0(K; \F)
-⊕F$.
+⊕\F$.
 \end{ejercicio}
 \begin{solucion}
+Se tiene que $H_0(\{v\}; \F)\cong \F\gene{v}$ y $c_*$ es la aplicación $\lambda[v_i]\mapsto \lambda [v]$, luego 
+\begin{gather*}
+\ker{c_*}=\{\sum\lambda_i[v_i]\mid c_*(\sum\lambda_i[v_i])=0\}=\{\sum\lambda_i[v_i]\mid \sum\lambda_ic_*[v_i]=0\}=\\
+\{\sum\lambda_i[v_i]\mid\sum\lambda_i[v]=0\}=\{\sum\lambda_i[v_i]\mid \sum\lambda_i=0\}=\{[\sum\lambda_iv_i]\mid \sum\lambda_i=0\}
+\end{gather*} 
 
-\end{solucion}
-
-\begin{solucion}
+Del resultado anterior podemos establecer la sucesión exacta corta
+\[
+0\to \widetilde{H}_0(K;\F)\hookrightarrow H_0(K;\F)\overset{c_*}{\to} \F\to 0
+\]
+de donde se obtiene el resultado. 
 \end{solucion}
 
 
@@ -42,7 +53,7 @@ H_p(K_i; \F)$, siendo los generadores de $H_0(K; \F)$ las
 clases de homología de un vértice cualquiera por cada componente
 \end{ejercicio}
 \begin{solucion}
-
+Por inducción en el número de componentes conexas es consecuencia inmediata de aplicar Mayer-Vietoris a una descomposición de $K$ como unión de una componente conexa y la unión de las demás, pues la intersección es vacía.
 \end{solucion}
 
 \newpage
@@ -115,7 +126,7 @@ $G$ tiene un único lazo.
 
 \begin{ejercicio}{2.9}
 Calcular los F-espacios vectoriales de homología de $K$, siendo $K =
-\partial^n
+\partial\sigma^n
 ∨
 \partial σ^m$
 \end{ejercicio}
@@ -185,8 +196,37 @@ consistente en $k$ circunferencias disjuntas
 $S_1, \dots , S_k$ y un segmento $A$ tangente a cada una de ellas y calcular sus $\F$-espacios
 vectoriales de homología.
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion}\
 
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.7cm,y=0.7cm]
+\clip(.,-1) rectangle (21.,4);
+\draw[line width=2.pt] (0.,0.) -- (2.,3.) -- (4.,0.) -- cycle;
+\draw[line width=2.pt] (5.,0.) -- (7.,3.) -- (9.,0.) -- cycle;
+\draw[line width=2.pt] (14.,0.) -- (16.,3.) -- (18.,0.) -- cycle;
+\draw [line width=2.pt] (0.,0.)-- (2.,3.);
+\draw [line width=2.pt] (2.,3.)-- (4.,0.);
+\draw [line width=2.pt] (4.,0.)-- (0.,0.);
+\draw [line width=2.pt] (5.,0.)-- (7.,3.);
+\draw [line width=2.pt] (7.,3.)-- (9.,0.);
+\draw [line width=2.pt] (9.,0.)-- (5.,0.);
+\draw [line width=2.pt] (14.,0.)-- (16.,3.);
+\draw [line width=2.pt] (16.,3.)-- (18.,0.);
+\draw [line width=2.pt] (18.,0.)-- (14.,0.);
+\draw [line width=2.pt] (2.,3.)-- (16.,3.);
+\draw (9.74,4.) node[anchor=north west] {$A$};
+\draw (1.54,0.) node[anchor=north west] {$S_1$};
+\draw (6.7,0.) node[anchor=north west] {$S_2$};
+\draw (15.72,0.) node[anchor=north west] {$S_k$};
+\begin{scriptsize}
+\draw [fill=black] (11.,1.58) circle (1.0pt);
+\draw [fill=black] (13.,1.56) circle (1.0pt);
+\draw [fill=black] (12.02,1.56) circle (1.0pt);
+\end{scriptsize}
+\end{tikzpicture}
+\end{center}
+
+Este espacio es claramente del mismo tipo de homotopía de un wedge de circunferencias, por lo que su homología es la suma directa de las homologías de las circunferencias, que ya las conocemos.
 \end{solucion}
 
 \newpage
@@ -247,6 +287,7 @@ Calcular los $\F$-espacios vectoriales de homología de un cilindro con dos
 agujeros.
 \end{ejercicio}
 \begin{solucion}
+Un cilindro al que se le hacen dos agujeros es del mismo tipo de homotopía que de un wedge de tres circunferencias, por lo que sus espacios de homología son las sumas directas de los de las tres circunferencias.
 \end{solucion}
 
 \newpage
@@ -283,6 +324,7 @@ Probar que los espacios euclídeos $\R^n$
 y $\R^m$ no son homeomorfos si $n\neq m$.
 \end{ejercicio}
 \begin{solucion}
+Si fueran homeomorfos también serían homeomorfos $\R^n-\{x\}$ y $\R^m-\{y\}$ donde $x\in\R^n$ e $y\in\R^m$. Sabemos que estos espacios son del mismo tipo de homotopía que $S^{n-1}$ y $S^{m-1}$ respectivamente, por lo que conocemos sus espacios de homología, los cuales sabemos que no son iguales si $n\neq m$, por lo que no $\R^n$ no es homeomorfo a $\R^m$ en este caso.
 \end{solucion}
 \newpage
 
