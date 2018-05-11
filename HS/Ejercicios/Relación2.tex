@@ -16,7 +16,7 @@ Deducir que $H_0(K; \F) \cong \F$ generado por la clase de homología de cualqui
 \begin{solucion}
 Si $C_1(K;\F)$ está generado por $\{(v_i,v_j)\}_{i,j\in I}$, $\Ima\partial_1$ estará generado por las imágenes de estos generadores, que son expresiones de la forma $v_j-v_i$. Cualquier combinación lineal de estas expresiones nos da una cadena de la forma buscada. Si $K$ no es conexo no hay tanta diferencia, pues $C_1(K;\F)=\oplus C_1(K_i;\F)$ donde $K_i$ son las componentes conexas de $K$, de modo que de cada sumando obtendremos combinaciones $∑λ_iv_i$ con $∑λ_i = 0$, que al sumarse siguen dando una combinación de la misma forma. La diferencia está en que ahora los vértices de cada componente conexa estarían agrupados en sumandos distintos, lo que hace que la dimensión de $H_0(K;\F)$ sea igual al número de componentes conexas.
 
-Una alternativa es recordar que $\Ima\partial_1=\ker\varepsilon$, donde $\varepsilon(v_i)=1$, por lo que $\ker\varepsilon=\{\sum\lambda_iv_i\mid \varepsilon(\sum\lambda_iv_i)=0\}=\{\sum\lambda_iv_i\mid \sum\lambda_i =0\}$.
+Una alternativa es recordar que $\Ima\partial_1=\ker\varepsilon$, donde $\varepsilon(v_i)=1$, al ser la homología reducida de un conexo nula, por lo que $\ker\varepsilon=\{\sum\lambda_iv_i\mid \varepsilon(\sum\lambda_iv_i)=0\}=\{\sum\lambda_iv_i\mid \sum\lambda_i =0\}$.
 
 Comprobemos que el subespacio de tales cadenas tiene dimensión 1, de donde se deducirá el resultado. Consideremos el morfismo $C_0(K;\F)\to\F$ que a cada combinación lineal $∑λ_iv_i$ le asigna el valor de la suma $∑λ_i$. Claramente estamos buscando la dimensión del núcleo de esta aplicación, que será 0 o 1. Como hay sumas con coeficientes no nulos que verifican $∑λ_i = 0$, la dimensión no es 0, por lo que efectivamente es 1.
 \end{solucion}
@@ -34,7 +34,7 @@ Se tiene que $H_0(\{v\}; \F)\cong \F\gene{v}$ y $c_*$ es la aplicación $\lambda
 \ker{c_*}=\{\sum\lambda_i[v_i]\mid c_*(\sum\lambda_i[v_i])=0\}=\{\sum\lambda_i[v_i]\mid \sum\lambda_ic_*[v_i]=0\}=\\
 \{\sum\lambda_i[v_i]\mid\sum\lambda_i[v]=0\}=\{\sum\lambda_i[v_i]\mid \sum\lambda_i=0\}=\{[\sum\lambda_iv_i]\mid \sum\lambda_i=0\}
 \end{gather*} 
-
+Atendiendo al ejercicio anterior esto es justamente $\ker\varepsilon/\Ima\partial_1=\widetilde{H}_0$.
 Del resultado anterior podemos establecer la sucesión exacta corta
 \[
 0\to \widetilde{H}_0(K;\F)\hookrightarrow H_0(K;\F)\overset{c_*}{\to} \F\to 0
@@ -81,8 +81,16 @@ C_p(K; \F)/B_p(K; \F) \cong H_p(K; \F)
 \]
 \end{ejercicio}
 \begin{solucion}
-
-
+El primer resultado se tiene de la sucesión exacta
+\[
+0\to Z_p(K; \F)\hookrightarrow C_p(K; \F)\overset{\partial}{\to} B_{p−1}(K; \F)\to 0.
+\]
+Como estamos trabajando con espacios vectoriales, podemos usar que $B_p(K; \F)\cong B_p(K;\F)\oplus 0$ para decir que
+\[
+C_p(K; \F)/B_p(K; \F)\cong C_p(K; \F)/(B_p(K; \F)\oplus 0)\cong (Z_p(K; \F)
+⊕B_{p−1}(K; \F))/(B_p(K; \F)\oplus 0)\cong H_p(K; \F)
+⊕B_{p−1}(K; \F).
+\]
 \end{solucion}
 
 \newpage
@@ -141,7 +149,7 @@ Obtener los $\F$-espacios vectoriales de homología del complejo abstracto
 $C$ correspondiente a la triangulación del cilindro vista en clase.
 \end{ejercicio}
 \begin{solucion}
-
+El mismo cálculo hecho en los apuntes es válido.
 \end{solucion}
 
 \newpage
@@ -151,13 +159,14 @@ Calcular los $\F$-espacios vectoriales de homologíaa del complejo abstracto
 $M$ correspondiente a la triangulación de la banda de Möbius vista en clase.
 \end{ejercicio}
 \begin{solucion}
+El mismo cálculo hecho en los apuntes es válido.
 \end{solucion}
 
 \newpage
 
 \begin{ejercicio}{2.12}
 Demostrar que la homología simplicial (reducida) con coeficientes en
-cualquier cuerpo $\F$ de la triangulación del sombrero bobo vista en clase es trivial. Sin
+cualquier cuerpo $\F$ de la triangulación $L$ del sombrero bobo vista en clase es trivial. Sin
 embargo, comprobar que $L$ no es colapsable.
 \end{ejercicio}
 \begin{solucion}
@@ -246,9 +255,57 @@ B$. Triangular el espacio $X$ y hallar los $\F$-espacios vectoriales de homolog�
 correspondientes a dicha triangulación.
 \end{ejercicio}
 \begin{solucion}
+Damos la siguiente triangulación $K$
 
+\definecolor{sqsqsq}{rgb}{0.12549019607843137,0.12549019607843137,0.12549019607843137}
+\definecolor{eqeqeq}{rgb}{0.8784313725490196,0.8784313725490196,0.8784313725490196}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-1.87,1) rectangle (9.63,5.61);
+\fill[line width=2.pt,color=eqeqeq,fill=eqeqeq,fill opacity=0.800000011920929] (1.28,3.1) -- (2.74,4.5) -- (2.68,1.66) -- cycle;
+\fill[line width=2.pt,color=eqeqeq,fill=eqeqeq,fill opacity=0.800000011920929] (2.74,4.5) -- (1.28,3.1) -- (3.52,4.14) -- cycle;
+\fill[line width=2.pt,color=eqeqeq,fill=eqeqeq,fill opacity=0.800000011920929] (2.68,1.66) -- (2.74,4.5) -- (4.44,2.96) -- cycle;
+\fill[line width=2.pt,color=eqeqeq,fill=eqeqeq,fill opacity=0.800000011920929] (3.52,4.14) -- (2.74,4.5) -- (4.44,2.96) -- cycle;
+\draw [line width=2.pt] (1.28,3.1)-- (2.68,1.66);
+\draw [line width=2.pt] (2.68,1.66)-- (4.44,2.96);
+\draw [line width=2.pt] (2.68,1.66)-- (2.74,4.5);
+\draw [line width=2.pt] (1.28,3.1)-- (2.74,4.5);
+\draw [line width=2.pt] (2.74,4.5)-- (4.44,2.96);
+\draw [line width=2.pt,dash pattern=on 2pt off 2pt] (1.28,3.1)-- (3.52,4.14);
+\draw [line width=2.pt] (2.74,4.5)-- (3.52,4.14);
+\draw [line width=2.pt] (3.52,4.14)-- (4.44,2.96);
+\draw [line width=2.pt,dash pattern=on 2pt off 2pt] (2.68,1.66)-- (3.52,4.14);
+\draw [line width=2.pt,color=eqeqeq] (1.28,3.1)-- (2.74,4.5);
+\draw [line width=2.pt,color=eqeqeq] (2.74,4.5)-- (2.68,1.66);
+\draw [line width=2.pt,color=eqeqeq] (2.68,1.66)-- (1.28,3.1);
+\draw [line width=2.pt,color=eqeqeq] (2.74,4.5)-- (1.28,3.1);
+\draw [line width=2.pt,color=eqeqeq] (1.28,3.1)-- (3.52,4.14);
+\draw [line width=2.pt,color=eqeqeq] (3.52,4.14)-- (2.74,4.5);
+\draw [line width=2.pt,color=eqeqeq] (2.68,1.66)-- (2.74,4.5);
+\draw [line width=2.pt,color=eqeqeq] (2.74,4.5)-- (4.44,2.96);
+\draw [line width=2.pt,color=eqeqeq] (4.44,2.96)-- (2.68,1.66);
+\draw [line width=2.pt,color=eqeqeq] (3.52,4.14)-- (2.74,4.5);
+\draw [line width=2.pt,color=eqeqeq] (2.74,4.5)-- (4.44,2.96);
+\draw [line width=2.pt,color=eqeqeq] (4.44,2.96)-- (3.52,4.14);
+\draw [line width=2.pt] (1.28,3.1)-- (2.74,4.5);
+\draw [line width=2.pt] (2.74,4.5)-- (2.68,1.66);
+\draw [line width=2.pt] (2.68,1.66)-- (1.28,3.1);
+\draw [line width=2.pt] (2.74,4.5)-- (4.44,2.96);
+\draw [line width=2.pt] (4.44,2.96)-- (2.68,1.66);
+\draw [line width=2.pt] (2.74,4.5)-- (3.52,4.14);
+\draw [line width=2.pt,color=sqsqsq] (3.52,4.14)-- (4.44,2.96);
+\end{tikzpicture}
+
+donde el poliedro es hueco y el ``suelo'' no tiene 2-símplices.
+
+Descomponemos $K$ como las triangulaciones correspondientes a $A$ y a $B$, es decir, el cono sobre el cuadrilátero y el segmento transveral. Ambas homologías reducidas son triviales, y la intersección son dos puntos, que tiene homología reducida trivial en todos los niveles salvo en el 0, que es $\F$.  Así que obtenemos que 
+\[
+\widetilde{H}_n(K,\F)\cong \begin{cases}
+\F & n=1\\
+0 & c.c.
+\end{cases}
+\]
+donde $\F$ está generado por la circunferencia sobre la que colapsa el complejo, que es la circunferencia formada por el segmento transveral y las dos aristas con las que es incidente. 
 \end{solucion}
-
 \newpage
 
 \begin{ejercicio}{2.17}
@@ -266,7 +323,11 @@ B = \{(x, y, z) ∈ \R^3
 triangular $Y$ y hallar los $\F$-espacios vectoriales de homología correspondientes a esa triangulación
 \end{ejercicio}
 \begin{solucion}
- 
+Este espacio se puede triangular uniendo dos copias de la triangulación de \ref{ejer:2.16} haciendo que los dos ``suelos'' coincidan. Por tanto tenemos una descomposición evidente para la sucesión de Mayer-Vietoris, cuya intersección es del mismo tipo de homotopía que un wedge de dos circunferencias. Entonces obtenemos la sucesión
+\[
+0\to H_2(K)\xrightarrow{\Delta_2} \F\oplus\F\xrightarrow{i_{*1}}\F\oplus\F\xrightarrow{j_{*1}}H_1(K)\xrightarrow{i_{*0}}\F\to 0
+\]
+Los dos ciclos que generan la homología de la intersección son linealmente dependientes en la unión, pues la suma forma el borde de la parte superior (o inferior) de $K$ (obsérvese que al orientarlos la arista transversal se cancela y efectivamente forman el borde). Además no son triviales pues individualmente no son borde de ningún 2-símplice. Así que $i_{*1}$ tiene rango 1, lo cual implica que su núcleo tiene dimensión 1. La exactitud nos da que $H_2(K)\cong\F$. Ahora, aplicando el primer teorema de isomorfía junto con la exactitud $H_1(K)\cong \F\oplus\F$. Finalmente $H_0(K)=\F$ por ser conexo. 
 \end{solucion}
 
 \newpage
