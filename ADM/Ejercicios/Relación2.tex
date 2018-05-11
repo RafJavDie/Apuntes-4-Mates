@@ -91,22 +91,52 @@ Por tanto $a=3$.
 
 \end{enumerate}
 \end{enumerate}
-
+\newpage
 \section{Análisis Factorial}
 \begin{enumerate}
 \item Describe cual es el objetivo básico del Análisis Factorial.
+
+El objetivo del Análisis Factorial (AF) es describir, si es posible, la estructura de covarianzas entre diversas variables en términos de un número reducido de variables
+latentes, no observables, denominadas factores.
+
+Supuesto que las variables están correladas, el objetivo es reducir la redundancia usando un menor número de factores
+
 \item Describe el Modelo Factorial Ortogonal y las hipótesis del mismo.
+
+Sea $\muestra{X}$ un vector aleatorio (observable) p− dimensional, $X \sim (\mu,\Sigma)$. El modelo factorial postula que el vector aleatorio $\muestra{X}$ depende linealmente de "un número reducido" de variables aleatorias no observables $F_1,\dotsc,F_m$, denominadas factores comunes y $p$ fuentes de variación adicionales $\varepsilon_1, ..., ε_p$ denominados errores aleatorios o
+factores específicos:
+$$
+X-\mu = LF+\varepsilon
+$$
+La matriz $L$ es la matriz de cargas factoriales. $l_{ij}$ es la carga factorial de la variable $i$-ésima sobre el $j$-ésimo factor. Los factores comunes pueden estar relacionados con todas las variables originales, mientras que cada factor específico está relacionado con una única variable original. Tanto los factores comunes como los factores específicos son no observables. 
+
+Además, asumimos $\E[F]=\E[\varepsilon]=0$. $Cov[F]=I_m$, $Cov(\varepsilon)=\Psi$ matriz diagonal y $Cov(F,\varepsilon)=0$.
 \item Demuestra que bajo las hipótesis del modelo:
-\begin{align}
-\Sigma & = L L' + \Psi \Leftrightarrow
+\begin{gather}
+\Sigma = L L' + \Psi \Leftrightarrow
 \begin{cases}
 \sigma_{ii} = l_{i1}^2 + \dots + l_{im}^2 + \psi_i\\
 \sigma_{ik} = \sum_{j=1}^m l_{ij} \cdot l_{kj}
 \end{cases}\\
 Cov(\m{X}, \m{F}) = L \Leftrightarrow l_{ij} = Cov(X_i, F_j)
-\end{align}
+\end{gather}
+
+La doble implicación es clara, así que demostramos la igualdad izquierda.
+$$
+\Sigma = Cov(X-\mu) = Cov(LF+\varepsilon) = LCov(F)L' + Cov(\varepsilon) = LL'+\Psi
+$$
+Para la segunda igualdad
+$$
+Cov(X,F) = Cov(X-\mu,F) = Cov(LF+\varepsilon,F) = Cov(LF,F)+Cov(\varepsilon,F) = LI_m + 0 = L
+$$
 \item Demuestra que si las variables originales están normalizadas
+
 \[ \rho(X_i, F_j) = l_{ij}. \]
+
+Si las variables están estandarizadas $\hat{\sigma}{X_i}=1$. Además, $Cov(F_j) = 1$ por hipótesis del modelo. Por tanto
+$$
+\rho(X_i,F_j) = \frac{Cov(X_i,F_j)}{\sigma_{X_i}\sigma_{F_j}} = L_{ij} = l_{ij}
+$$
 \item Describe las (3) etapas básicas, y el objetivo de cada una de ellas, cuando se realiza un análisis factorial.
 \item Describe el Método de las Componentes Principales para estimar la matriz de cargas factoriales y la matriz de varianzas específicas.
 \item Demuestra que en el Método de las Componentes Principales, las cargas factoriales estimadas no cambian cuando se incrementa el número de factores.
@@ -117,6 +147,7 @@ Cov(\m{X}, \m{F}) = L \Leftrightarrow l_{ij} = Cov(X_i, F_j)
 \end{enumerate}
 \end{enumerate}
 
+\newpage
 \section{Análisis de Correspondencia}
 \begin{enumerate}
 \item 
