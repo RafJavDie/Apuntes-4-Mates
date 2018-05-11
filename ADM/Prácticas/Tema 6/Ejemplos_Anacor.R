@@ -166,7 +166,7 @@ summary(anacor)$rows$" k=2"       # las que aparecen en el summary
 
 
 # La suma de cuadrados ponderada de las coordenadas principales  
-# en la dimensión k es el cuadrado del k-ésimo autovalor 
+# en la dimensión k es el k-ésimo autovalor 
 # (inercia del factor k)
 # Para las estandarizadas, esa suma es 1
 # Una propiedad similar se verifica para las columnas

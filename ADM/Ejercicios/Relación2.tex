@@ -1,0 +1,111 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\media}[1]{{\overline{#1}}}
+\newcommand{\muestra}[1]{{\underline{#1}}}
+\newcommand{\m}[1]{{\muestra{#1}}}
+\newcommand{\mX}{{\muestra{X}}}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Análisis de Datos Multivariantes}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\section{Análisis de Componentes Principales}
+Sea $X$ una matriz de datos $n \times p$ y $\widehat{\Sigma}$ la matriz de varianzas asociada.
+
+\begin{enumerate}
+\item Describe cual es el objetivo fundamental del ACP. 
+\item Define las puntuaciones de los $n$ puntos sobre las $p$ CP. 
+\item Demuestra que $d(x_i, x_j) = d(y_i, y_j)$ con $y_i$ el vector de puntuaciones sobre las componentes principales correspondiente al individuo $i$. 
+\item Demuestra que la varianza de la $j$−ésima CP es el $j$−ésimo mayor autovalor de $\widehat{\Sigma}$.
+\item Determina el coeficiente de correlación lineal entre $y_{(i)}$ ($i$−ésima CP) y $x_{(j)}$ .($j$−ésima variable). 
+\item Demuestra que la primera CP es la combinación lineal (normalizada) de máxima varianza. 
+\item Demuestra que la suma de las varianzas de las variables originales es igual a la suma de las varianzas de las CP.
+\item Demuestra que las CP están incorreladas.
+\item Considérese el conjunto de datos muestrales.
+\[ \begin{pmatrix}5 & 3 & ? & ? & ?\\4 & a & ? & ? & ?\\4 & a & ? & ? & ?\\1 & a & ? & ? & ?\end{pmatrix}\]
+\begin{enumerate}
+	\item Determina el mayor autovalor de $\widehat{\Sigma}$ sabiendo que el autovector asociado es $(1,0,0,0,0)$.
+	\item Calcula el valoor de $a$ sabiendo que el segundo autovector es $(0,1,0,0,0)$.
+\end{enumerate}
+\end{enumerate}
+
+\section{Análisis Factorial}
+\begin{enumerate}
+\item Describe cual es el objetivo básico del Análisis Factorial.
+\item Describe el Modelo Factorial Ortogonal y las hipótesis del mismo.
+\item Demuestra que bajo las hipótesis del modelo:
+\begin{align}
+\Sigma & = L L' + \Psi \Leftrightarrow
+\begin{cases}
+\sigma_{ii} = l_{i1}^2 + \dots + l_{im}^2 + \psi_i\\
+\sigma_{ik} = \sum_{j=1}^m l_{ij} \cdot l_{kj}
+\end{cases}\\
+Cov(\m{X}, \m{F}) = L \Leftrightarrow l_{ij} = Cov(X_i, F_j)
+\end{align}
+\item Demuestra que si las variables originales están normalizadas
+\[ \rho(X_i, F_j) = l_{ij}. \]
+\item Describe las (3) etapas básicas, y el objetivo de cada una de ellas, cuando se realiza un análisis factorial.
+\item Describe el Método de las Componentes Principales para estimar la matriz de cargas factoriales y la matriz de varianzas específicas.
+\item Demuestra que en el Método de las Componentes Principales, las cargas factoriales estimadas no cambian cuando se incrementa el número de factores.
+\item Describe
+\begin{enumerate}
+	\item En qué consiste la rotación de factores.
+	\item En que consiste la rotación varimax y qué pretende.
+\end{enumerate}
+\end{enumerate}
+
+\section{Análisis de Correspondencia}
+\begin{enumerate}
+\item 
+\begin{enumerate}
+\item Plantea los problemas de independencia de caracteres y de homgeneidad de poblaciones.
+\item Demuestra que los estadísticos $\chi^2$ asociados a ambos problemas y sus distribuciones coinciden.
+\end{enumerate}
+\item Sean $r_1', \dots, r_n'$ las distribuciones condicionadas por filas asociadas a un tabla de contingencia
+\[\begin{matrix}
+    & B_1    & \dots & B_j    & \dots & B_p\\
+A_1 & N_{11} & \dots & N_{1j} & \dots & N_{1p} & N_{1.}\\
+\vdots & \vdots & & \vdots & & \vdots & \vdots\\
+A_i & N_{i1} & \dots & N_{ij} & \dots & N_{ip} & N_{i.} = \sum_{j=1}^p N_{ij}\\
+\vdots & \vdots & & \vdots & & \vdots & \vdots\\
+A_n & N_{n1} & \dots & N_{nj} & \dots & N_{np} & N_{n.}\\
+    & N_{.1} & \dots & N_{.j} = \sum_{i=1}^n N_{ij} & \dots & N_{.p} & N
+\end{matrix}\]
+\begin{enumerate}
+	\item Define el centro de gravedad de las filas: $m_r'$
+	\item Define la distancia ji-cuadrado entre dos distribuciones. 
+	\item Demuestra que $\chi^2 = N\sum_{i=1}^n f_{i.} d_{\chi^2} (r_i, m_r)$
+\end{enumerate}
+\item Describe el objetivo del análisis de correspondencias (por filas).
+\item Analogías y diferencias entre el ACP y el AC.
+\item Plantea y resuelve el problema de optimización al que conduce el AC. 
+\item Demuestra que el cuadrado de la distancia euclídea entre las proyecciones de dos filas $P_{r_i}$ y $P_{r_i'}$ coincide con la distancia \emph{ji−cuadrado} entre las filas $r_i$ y $r_i'$.
+\item Concepto de vértice en el problema del AC por filas. Interpretación. 
+\item Determina las coordenadas de $m_r'$ en la nueva base. 
+\item Demuestra que $(0, m_r)$ es un autovalor-vector de la matriz
+\[ S_r = \sum_{i=1}^n f_{i.} (r_i - m_r) (r_i - m_r)^t D_p^{-1} \]
+\item Determina las coordenadas de las filas correspondientes al autovector $m_r$. ¿Qué evidencian?
+\item Demuestra que la varianza ponderada de las coordenadas correspondientes al autovector $u_k$ se puede expresar como
+\[ \sum_{i=1}^n f_{i.} (r_i^t D_p^{-1} u_k)^2 \]
+\item Define la inercia total y demuestra que es igual a la suma de los autovalores de $S_r$.
+\end{enumerate}
+
+\section{Análisis Discriminante}
+\begin{enumerate}
+\item Discriminación en dos poblaciones con distribuciones conocidas
+\begin{enumerate}
+	\item Define la probabilidad total de error de clasificación de una regla discriminante.
+	\item Determina la regla discriminante que minimiza la probabilidad total de error de clasificación 
+	\item Plantea y resuelve el problema original de Fisher. 
+	\item Demuestra que supuesto que las poblaciones se distribuyen según $N(\mu_i, \Sigma)$, $i = 1, 2$, la regla discriminante que minimiza la proba- bilidad total de error coincide con la resultante de la propuesta de Fisher.
+\end{enumerate}
+\item Coordenadas discriminantes canónicas 
+\begin{enumerate}
+	\item Planteamiento y solución.
+	\item Describe el criterio de clasificación basado en las coordenadas canónicas.
+\end{enumerate}
+\end{enumerate}
+\end{document}
