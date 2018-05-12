@@ -147,11 +147,11 @@ apply(Z,2,sd)
 #Para aplicar la fórmula de transparencias
 #las variables deben centrarse
 #aquí no hace falta
-Xcent=scale(Z,center=TRUE,scale=FALSE)  
+Xcent=scale(Z,center=TRUE,scale=FALSE)              ### ¿Z o X?
 summary(Xcent)
-Frot= t(solve(t(Lrot)%*%Lrot)%*%t(Lrot)%*%t(Xcent))
+Frot= t(solve(t(Lrot)%*%Lrot)%*%t(Lrot)%*%t(Xcent)) ### ¿Esta es la fórmula?
 rownames(Frot)= rownames(X)
-Frot
+Frot                                                ### ¿Estas son las puntuaciones?
 
 #Comprobar que tienen media 0
 #y matriz de cov=I
@@ -161,7 +161,7 @@ cov(Frot)
 #Nube de puntos de las puntuaciones factoriales
 plot(Frot,type="n",
      main="Puntuaciones factoriales mediante mínimos cuadrados \nRotación varimax")
-text(Frot,labels=rownames(F),cex=0.7,col="red")
+text(Frot,labels=rownames(Frot),cex=0.7,col="red")
 abline(h=0,v=0,lty=2,col="blue")
 
 #Aproximación a R

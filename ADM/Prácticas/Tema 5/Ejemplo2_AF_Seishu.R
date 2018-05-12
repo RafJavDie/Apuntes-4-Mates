@@ -52,7 +52,10 @@ PAF$Bartlett #estadístico del test
 #cálculo del p-valor
 p=ncol(datos)
 gl= p*(p-1)/2
-1-pchisq(PAF$Bartlett,gl)   #Contraste significativo
+1-pchisq(PAF$Bartlett,gl)   # Contraste significativo  ### Por tanto, no.
+                            # ¿Cómo aceptaríamos aquí? >0.025 ??
+                            # 178 no pertenece ni cerca a 
+                            # c(qchisq(0.025,gl),qchisq(0.975,gl)) = [28,65]
 
 #(normalidad multivariante cuestionable
 #p.value.small
@@ -109,8 +112,8 @@ abline(h=0,v=0,lty=2)
 (psirot= diag(R)-hrot)        #varianzas específicas
 cbind(L,h,psi,Lrot,hrot,psirot)
 
-#Puntuaciones factoriales para la rotación varimax
-#Para la solución de componentes principales 
+#Puntuaciones factoriales para la rotación varimax   ## ¿Las puntaciones se toman
+#Para la solución de componentes principales         ## para los factores rotados?
 #se puede usar mínimos cuadrados ordinarios
 #Los datos deben ser centrados, 
 #o sea, scale(...center=TRUE)
@@ -147,18 +150,19 @@ sum(autoval[-c(1:m)]^2)
 
 #3. Método de Factores  Principales    
 #####################################
-#install.packages(c("psych","GPArotation"))
+install.packages(c("psych","GPArotation"))
 library(psych)    #Necesita la librería GPArotation
 library(GPArotation)
-af.fp = fa(datos,4,fm="pa",rotate="varimax",max.iter=350)
+af.fp = fa(datos,4,fm="pa",rotate="varimax",max.iter=350) ##
 af.fp 
+
 #####################################
 #4. Estimar el modelo AF mediante el método 
 #   de máxima verosimilitud (variables tipificadas) 
 #   (función factanal)
 ###################################################
 af.mv = factanal(datos,m,scores="Bartlett")
-#scores="regresssion" para el otro método
+#scores="regresssion" para el otro método           ## ¿Criterio de método?
 af.mv #Ya aplica rotación varimax; contraste satisfactorio
 cbind(Comunalidad=1-af.mv$uniqueness,Especificidad=af.mv$uniqueness)
 L=loadings(af.mv); L
