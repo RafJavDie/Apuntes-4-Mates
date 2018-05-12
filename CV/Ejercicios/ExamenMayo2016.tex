@@ -62,7 +62,20 @@ Sea $M$ una $n$-variedad diferenciable orientable compacta y $w_0$ una forma de 
 \textbf{Ayuda}: Toma una familia de parametrizaciones de $M$ que la cubran. Demuestra que el resultado se verifica localmente para cada parametrización. Luego demuestra que las aplicaciones encontradas localmente definen una aplicación $f\in C^{\infty}(M;\R)$.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}
+\begin{solucion}\
+\begin{enumerate}
+\item 
+\[
+(g^*\rho)_x(e_{i_1},\dots, e_{i_r})=\rho_{g(x)}(D_xg(e_{i_1}),\dots, D_xg(e_{i_r}))=(\rho)_{g(x)}\left(\left(\parcial{}{x_{i_1}}\right)_{g(x)},\dots, \left(\parcial{}{x_{i_r}}\right)_{g(x)}\right)
+\]
+\item Sea $(U,h)$ una carta de $M$. Sabemos que la restricción $w_U\in\Omega^n(U)$ es diferenciable para todo $U$. Consideramos la parametrización local $g=h^{-1}$, que es un difeomorfismo entre un abierto $W$ de $\R^n$ y $U$. Por tanto, $h^*:\Omega^n(W)\to\Omega^n(U)$ es un isomorfismo. Como sabemos que toda $\tau\in\Omega^n(W)$ se escribe como $\tau=f dx_I$ con $f\in C^{\infty}(W;\R)$, cualquier $w_U\in\Omega^n(U)$ se escribe $w_U=h^*(\tau)=h^*(f)h^*(dx_I)=h^*(f)w_{0U}$ (recordemos que la estrella salta sobre el wedge y que para 0-formas el wedge coincide con el producto). Como $h^*(f)=f\circ h\in C^{\infty}(U;\R)$ el resultado se tiene localmente. 
+
+Podemos definir $w_0\in\Omega^n(M)$ como la familia $\{w_{0U}\}$, que es claramente diferenciable. Tenemos que probar entonces que si definimos $f:M\to \R$ en cada punto $p\in M$ como $h_p^*(f)(p)$ donde $(U_p,h_p)$ es una carta entorno a $p$, entonces $f\in C^{\infty}(M;\R)$. Para ello, sea otra carta $(U_1,h_1)$ con $p\in U_1$, entonces
+\[
+h_p^*(f)\circ h_1^{-1}=f\circ h_p\circ h_1^{-1}.
+\]
+Como el cambio de cartas $h_p\circ h^{-1}_1$ es diferenciable y $f$ es diferenciable por hipótesis, esta aplicación es diferenciable en todo punto, con lo que se tiene el resultado global.
+\end{enumerate}
 
 \end{solucion}
 \newpage
@@ -71,7 +84,7 @@ Sea $M$ una $n$-variedad diferenciable orientable compacta y $w_0$ una forma de 
 Sea $M$ una $n$-variedad diferenciable, compacta y orientable, $\theta\in \Omega^{n-1}(M)$. Demuestra que $d\theta$ debe anularse en algún punto de $M$.
 \end{ejercicio}
 \begin{solucion}
-
+Sea $\theta\in\Omega^{n-1}(M)$. Si $\theta$ se anula en algún punto de $M$, por linealidad $d\theta$ también se anula en ese punto, si no, como $M$ es compacta, $\theta$ tiene soporte compacto, luego $\theta\in\Omega_c^{n-1}(M)$. Como $M$ es orientable tenemos que $\int_M d\theta=0$, pero esto implica que necesariamente $d\theta=0$ en algún punto, con lo que se tiene el resultado.
 \end{solucion}
 
 \newpage
