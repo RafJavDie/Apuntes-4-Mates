@@ -96,12 +96,22 @@ C_p(K; \F)/B_p(K; \F)\cong C_p(K; \F)/(B_p(K; \F)\oplus 0)\cong (Z_p(K; \F)
 \newpage
 
 \begin{ejercicio}{2.6}
-Sea $K$ un complejo simplicial y $K^m$ su $m$-esqueleto. Probar que $H^n(K; \F) =
-H^n(K^m; \F)$ si $n < m$. ¿Qué relación hay entre $H^m(K; \F)$ y $H^m(K^m; \F)$?
+Sea $K$ un complejo simplicial y $K^m$ su $m$-esqueleto. Probar que $H_n(K; \F) =
+H_n(K^m; \F)$ si $n < m$. ¿Qué relación hay entre $H_m(K; \F)$ y $H_m(K^m; \F)$?
 
 \end{ejercicio}
 \begin{solucion}
+$K^m$ tiene los mismos símplices de dimensión menor o igual que $m$ que $K$, por lo que los complejos de cadenas tienen los mismos espacios y morfismos en los niveles menores que $m$, así que $H_n(K; \F) =
+H_n(K^m; \F)$ si $n < m$.
 
+En el nivel $m$ tenemos los complejos de cadenas
+\[
+\begin{tikzcd}
+\cdots\to C_{m+1}(K;\F)\arrow[r,"\partial_{m+1}"] & C_m(K;\F)\arrow[r,"\partial_m"]\arrow[d,equal] & C_{m-1}(K;\F)\arrow[d, equal]\to\cdots\\
+ 0\arrow[r] & C_m(K^m;\F)\arrow[r, "\partial_m"] & C_{m-1}(K;\F)\to\cdots
+\end{tikzcd}
+\]
+Por lo que $H_m(K^m;\F)=\ker\partial_m$ y $H_m(K;\F)=\ker\partial_m/\Ima\partial_{m+1}$, por lo que $H_m(K^m;\F)\cong H_m(K;\F)\oplus\Ima\partial_{m+1}$.
 \end{solucion}
 
 \newpage
@@ -112,7 +122,7 @@ todo $n ≥ 0$.
 
 \end{ejercicio}
 \begin{solucion}
-
+Podemos descomponer $ΣK$ como la unión de los dos conos que la forman, cuya intersección es $K$. Como la homología reducida de los conos es trivial, la sucesión de Mayer-Vietoris nos da el isomorfismo buscado.
 \end{solucion}
 
 \newpage
@@ -376,6 +386,13 @@ Calcular los $\F$-espacios vectoriales de homología de dos toros entrelazados:
 \end{ejercicio}
 
 \begin{solucion}
+Para triangular este espacio basta considerar dos toros disjuntos triangulados e identificar de la misma forma los lados superior e inferior de uno con los laterales del otro. Esto nos da una descomposición evidente del espacio de la figura como unión de dos toros cuya intersección es una cirfunferencia. Mayer-Vietoris nos da la sucesión exacta
+
+\begin{align*}
+0\to\F\oplus\F\xrightarrow{j_{*2}} H_2(K)\xrightarrow{\Delta_{*2}}\F\xrightarrow{i_{*1}}(\F\oplus\F)\oplus(\F\oplus\F)\xrightarrow{j_{*1}}H_1(K)\to 0
+\end{align*}
+
+Como la circunferencia de la intersección no es borde en la unión, $i_{*1}$ es inyectiva, por lo que $\ker{i_{i*}}=\Ima\Delta_{*2}=0$. Esto significa que $rango H_2(K)=rango(\ker\Delta_{*2})=rango(\Ima{j_{2*}})=2$, de modo que $H_2(K)\cong \F\oplus\F$ generada por cada uno de los dos toros. Por exactitud hemos obtenido a su vez que $\ker{j_{1*}}=\F$, luego $H_1(K)=\F\oplus\F\oplus\F$, generada por cada una de las tres circunferencias que aparecen identificadas. Claramente $H_0(K)=\F$. 
 \end{solucion}
 
 \newpage
