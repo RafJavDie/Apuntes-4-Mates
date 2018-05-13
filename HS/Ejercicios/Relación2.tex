@@ -143,13 +143,13 @@ $G$ tiene un único lazo.
 \newpage
 
 \begin{ejercicio}{2.9}
-Calcular los F-espacios vectoriales de homología de $K$, siendo $K =
-\partial\sigma^n
+Calcular los $\F$-espacios vectoriales de homología de $K$, siendo $K =
+(\partial\sigma)^n
 ∨
-\partial σ^m$
+(\partial σ)^m$
 \end{ejercicio}
 \begin{solucion}
-
+Como la homología de una suma punteada es la suma directa de las homologías, basta calcular $H_*((\partial\sigma)^n)$. Si $n\geq \dim(\sigma)$ entonces $(\partial\sigma)^n=\emptyset$. Si $n=\dim(\sigma)-1$, entonces $(\partial\sigma)^n=\partial\sigma$, cuya homología conocemos ya. Para $n<\dim(\sigma)-1$ hacemos un cálculo similar al de $\partial\sigma$ (obsérvese que en este caso necesariamente $n\geq 2$). Tenemos entonces que $H_p((\partial\sigma)^n)=H_p(\partial\sigma)$ para todo $p\leq n-1$ y $H_p((\partial\sigma)^n)=0$ para todo $p>n$. En el caso $p=n$, usamos el ejercicio \ref{ejer:2.6}, con lo que $H_n((\partial\sigma)^n)=H_n(\partial\sigma)\oplus\Ima{\partial_{n+1}}$.
 \end{solucion}
 
 \newpage
@@ -189,12 +189,14 @@ $L$ no es colapsable porque no tiene caras libres
 
 \begin{ejercicio}{2.13}
 Sea $σ$ un $n$-símplice y $K$ el complejo formado por $σ$ y sus caras. Probar
-que si $0 < q < n$, $H_q(K^q
-; \F)$ es un $\F$-espacio vectorial de dimensión $\binom{n}
-{q+1}$.
+que si $0 < q < n$, $H_q(K^q; \F)$ es un $\F$-espacio vectorial de dimensión $\binom{n}{q+1}$.
 \end{ejercicio}
 \begin{solucion}
+Observemos que la hipótesis de que $0<q<n$ implica que $n\geq 2$. Además, como $q<n$, $K^q=(\partial K)^q$, por lo que usando el ejercicio \ref{ejer:2.9} o el \ref{ejer:2.6} obtenemos que $H_q(K^q; \F)=H_q(\partial K; \F)\oplus\Ima{\partial_{q+1}}.$ Si $q=n-1$, entonces $\Ima{\partial_{q+1}}=0$ pues $\partial K$ no tiene $n$ símplices. Entonces $H_{n-1}(K^q; \F)=H_{n-1}(\partial K; \F)\cong\F$, luego tiene dimensión $1=\binom{n}{n-1+1}$. Para $0<q<n-1$ (aquí $n\geq 3$), $H_q(\partial K; \F)=0$, luego hay que probar que $\Ima{\partial_{q+1}}$ tiene dimensión $\binom{n}{q+1}$. Tengamos en cuenta que $\Ima{\partial_{q+1}}$ está generado por las imágenes de todos los $q+1$ símplices de $K$, que se obtienen eligiendo $q+1$ elementos de la lista $[v_0,\dots, v_n]$ que tiene cardinal $n+1$. Sin embargo, las imágenes no serán linealmente independientes en general. Vamos a probar que cualquier conjunto de $q$ símplices de dimensión $q+1$ tiene imagen linealmente independiente y que el conjunto de $q+1$ elementos siempre tiene imagen linealmente dependiente, de lo cual se deducirá el resultado.
 
+
+
+HAY QUE TERMINARLO
 \end{solucion}
 
 \newpage
