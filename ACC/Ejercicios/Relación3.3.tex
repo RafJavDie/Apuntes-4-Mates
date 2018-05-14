@@ -14,7 +14,7 @@ In diagram (3) in the text, prove carefully that $F = π_m \circ i$ and $i(k^m) 
 \begin{solucion}
 Dado $(t_1,\dots, t_m)\in k^m$
 \[
-\pi_m\circ i(t_1,\dots, t_m)=\pi_m(t_1,\dots, t_m, f_1(t1,\dots, t_m),\dots, f_n(t_1,\dots, t_m))=
+\pi_m\circ i(t_1,\dots, t_m)=\pi_m(t_1,\dots, t_m, f_1(t_1,\dots, t_m),\dots, f_n(t_1,\dots, t_m))=
 \]
 \[
 (f_1(t_1,\dots, t_m),\dots, f_n(t_1,\dots, t_m))=F(t_1,\dots, t_m).
@@ -208,7 +208,11 @@ En el caso de $\R$ hagamos la siguiente consideración. Sea $(x,y,z)$ tal que $x
 $$x^2-y^2z = 0 \Leftrightarrow x= y =0$$
 Por tanto, la parametrización incluye la parte negativa del eje $Z$, la cual no puede estar en la parametrización pues $z=u^2>0$ cuando $u\in\R$. Cualquier otro punto sí está en la parametrización, pues para $z>0$ podemos siempre expresar $y=v$ y $z=u^2$ , de modo que $x^2-v^2u^2=0\Rightarrow x$ y tomar $x=uv$. Nótese que podemos tomar $u$ con el signo adecuado de modo que $x$ sigue siendo $uv$ independientemente del signo de $v$ y de si tomamos raíz positiva o negativa. 
 
-\item Está claro que $v$ está totalmente determinado por el valor de $y$. Por otra parte $z$ nos determina dos posibles valores de $u$ si $z\neq 0$ y un solo valor si $z=0$. En este último caso tenemos entonces ambos parámetros determinados. Sin embargo, en el otro caso, si además añadimos que $y=v=0$, tenemos que necesariamente $x=0$, por lo que cualquiera de los dos valores de $u$ sería válido. En cualquier caso en el que $x\neq 0$ podríamos despejar $u$ pues $v$ tampoco podría ser 0. Así que los puntos donde no está determinado son los del eje $Z$, que se corresponden en el dibujo de la variedad con la línea de intersección consigo misma. 
+\item Es claro que $v$ siempre está determinado, pues tenemos que $v-y=0$. En general, $uy-x$ va a determinar también $u$ de manera unívoca, a menos que $y=0$. Ese caso tenemos las siguientes realciones sobre $u$:
+$$
+u^2 = z \qquad ux = 0
+$$
+Luego, si $x\neq 0$, $u$ también estará univocamente determinado. Por tanto, solo en el caso $x=y=0$ entonces tenemos 2 posibles valores para $u$.
 \end{enumerate}
 \end{solucion}
 
@@ -230,6 +234,7 @@ we work over $\R$.
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
+\item[]
 \item Distingamos dos casos
 \begin{itemize}
 \item Si $f_i(t)=k_i$, $k_i$ constante, para todo $i=1,\dotsc,n$, entonces es trivial que ocurre.
@@ -379,6 +384,17 @@ The folium of Descartes can be parametrized by
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Utilizamos SAGE para obtener una base de Gröbner y aplicar el Teorema 2. Obtenemos
+$$
+\{tx - y, ty^2 + x^2 - 3y, 9h + 3ty + xy - 9, x^3 - 3xy + y^3, t^2y - 3t + x \}
+$$
+Luego la menor variedad que contiene a la curva es $x^3-3xy+y^3$. 
+\item En $\C$ podemos aplicar el Teorema de Extensión. En este caso $c_1(x,y)=x$, $c_2(x,y)=y^2$, $c_3(x,y)=y$. Por tanto, como $\V(x,y)=\{(0,0)\}$, siempre que $(x,y)\neq (0,0)$, podemos extender. El caso $(0,0)$ está trivialmente recogido en la parametrización por $t=0$.
+
+Para el caso real, tenemos que probar que si $(x,y)\in \R^2$ entonces tenemos un $t\in \R$ que extiende. Si $x\neq 0$ entonces $t=y/x \in \R$. Si $x=0$ e $y\neq 0$ entonces podemos obtener $t=3/y$. Si $x=y=0$, sabemos que tenemos $t=0$.
+\end{enumerate}
 \end{solucion}
 
 
