@@ -133,7 +133,11 @@ f=-\sigma_3^2+4\sigma_1\sigma_2\sigma_3-2\sigma_2^3-2\sigma_3\sigma_1^3.
 \[
 G=\{x + y + z - t_1, y^2 + yz - yt_1 + z^2 - zt_1 + t_2, z^3 - z^2t_1 + zt_2 - t_3\}
 \]
-Si denotamos $g\in k[t_1,t_2,t_3]$ al resto de dividir $f$ por $G$, sabemos que $g(\sigma_1,\sigma_2,\sigma_3)$ es la expresión que buscamos. Pero no me sale la división en SAGE.
+Si denotamos $g\in k[t_1,t_2,t_3]$ al resto de dividir $f$ por $G$, sabemos que $g(\sigma_1,\sigma_2,\sigma_3)$. De hecho
+$$
+g(t_1,t_2,t_3)= -2t_1^3t_3 + t_1^2t_2^2 + 4t_1t_2t_3 - 2t_2^3 - t_3^2
+$$
+Notemos que hemos encontrado la misma expresión usando ambos métodos, como no podría ser de otra forma.
 \end{enumerate}
 
 
@@ -161,21 +165,51 @@ field $K$ containing $k$.
 \begin{enumerate}[a.]
 \item Prove that any symmetric polynomial $g(α_1, \dots , α_n)$ in the roots of $f$ can be expressed
 as a polynomial in the coefficients $a_1, \dots , a_n$ of $f$.
-\item In particular, if the symmetric polynomial $g$ has coefficients in $k$, conclude that
+\item If the symmetric polynomial $g$ has coefficients in $k$, conclude that
 $g(α_1, \dots , α_n) ∈ k$.
 \end{enumerate}
  
 \end{ejercicio}
 \begin{solucion}\
 \begin{enumerate}[a.]
-\item Por el ejercicio \ref{ejer:7.1.4} sabemos que los coeficientes de $f$ son, salvo signo, los polinomios simétricos en las raíces de $f$. Por tanto, el resultado se tiene como corolario del teorema fundamental de los polinomios simétricos.
-\item Cualquier combinación algebraica de elementos de $k$ está en $k$.
+\item Por el Ejercicio \ref{ejer:7.1.4} sabemos que los coeficientes de $f$ son, salvo signo, los polinomios simétricos en las raíces de $f$. Por tanto, el resultado se tiene como corolario del teorema fundamental de los polinomios simétricos.
+\item Dado que $k$ es un cuerpo, cualquier combinación algebraica de elementos de $k$ está en $k$.
 \end{enumerate}
 
 \end{solucion}
 
 \newpage
 
+
+
+
+\begin{ejercicio}{7.1.8}
+As in Exercise 7, let $f = x_n +a_1x_{n−1} +\cdots + a_n ∈ k[x]$ have roots $α_1, \dotsc , α_n$, which lie
+in some bigger field K containing k. The discriminant of $f$ is defined to be
+$$
+D( f) = \prod_{i\neq j}(\alpha_i - \alpha_j)
+$$
+\begin{enumerate}[a.]
+\item Use Exercise 7 to show that $D( f )$ is a polynomial in $a_1, \dotsc, a_n$.
+\item When $n = 2$, express $D( f )$ in terms of $a_1$ and $a_2$. Does your result look familiar?
+\item  When $n = 3$, express $D( f )$ in terms of $a_1, a_2, a_3$.
+\item Explain why a cubic polynomial $x3 +a1x2 +a2x+a3$ has a multiple root if and only if $−4a^3_1a_3 + a^2_1a^2_2+ 18a_1a_2a_3 - 4a^3_2 - 27a^2_3= 0.$
+\end{enumerate}
+\end{ejercicio}
+
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item 
+\item Si $n=2$ tenemos una parábola y tan solo dos raíces dadas por $(a_1^2\pm\sqrt{a_1^2-4a_2})/2$. Por tanto
+$$
+D(f)=\alpha_1 - \alpha_2 = \sqrt{a_1^2-4a_2}
+$$
+\item 
+\item 
+\end{enumerate}
+\end{solucion}
+
+\newpage
 \begin{ejercicio}{7.1.9}
 Given a cubic polynomial $f = x^3+a_1x^2+a_2x+a_3$, what condition must the coefficients
 of $f$ satisfy in order for one of its roots to be the average of the other two? Hint: If $α_1$ is
@@ -213,6 +247,22 @@ a_1^3-3a_1^3+9a_1a_2-27a_3=-2a_1^3+9a_1a_2-27a_3=0
 \end{ejercicio}
 \begin{solucion}
 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7.1.15}
+
+\begin{enumerate}[a.]
+\item
+\end{enumerate}
+\end{ejercicio}
+
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item[]
+\item
+\end{enumerate}
 \end{solucion}
 \newpage
 \begin{ejercicio}{7.1.16}
