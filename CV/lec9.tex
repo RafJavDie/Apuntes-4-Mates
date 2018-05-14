@@ -9,8 +9,67 @@
 
 
 
+
+
+
 \section{Definición de la integral}
 
+Sea $M$ una $n$-variedad diferenciable orientable. Se va a definir una integral
+\[
+\int_M:\Omega_c^n(M)\to\R
+\]
+el espacio vectorial de $n$-formas con soporte compacto. En el caso especial de que $M=\R^n$ (con la orientación estándar), podemos escribir $w\in\Omega_c^n(M)$ de forma única como $w=f(x)dx_1\land\dots\land dx_n$, donde $f\in C^{\infty}(\R^n;\R)$ tiene soporte compacto. Definimos entonces
+\[
+\int_{\R^n}f(x)dx_1\land\dots\land dx_n=\int_{\R^n} f(x)d\mu_n,
+\]
+donde $d\mu_n$ es la medida de Lebesgue usual de $\R^n$. La misma definición puede ser usada cuando $w\in\Omega_c^n(V)$ para un abierto $V\subseteq\R^n$, pues $w$ y $f$ son extensibles con diferenciabilidad a todo $\R^n$ haciendo que sean 0 en $\R^n-supp_V(w)$. 
 
+\begin{lemma}
+Sea $\phi:V\to W$ entre abiertos de $\R^n$ y supongamos que $\det(D_x\phi)$ tiene signo constante $\delta=\pm 1$ para todo $x\in V$. Para $w\in\Omega_c^n(W)$ tenemos que
+\[
+\int_V\phi^*(w)=\delta\int_Ww.
+\]
+\end{lemma}
+\begin{proof}
+Si $w=f(x)dx_1\land\dots\land dx_n$ se sigue que
+\begin{align*}
+\phi^*(w)=f(\phi(x))\det(D_x\phi)dx_1\land\dots\land dx_n=\delta f(\phi(x))|\det(D_x\phi)|dx_1\land\dots\land dx_n.
+\end{align*}
+El resultado se sigue entonces del teorema de reparametrización de integrales que afirma que
+\[
+\int_W f(x)d\mu_n=\int_V f(\phi(x))|\det(D_x\phi)|d\mu_n.
+\]
+\end{proof}
 
+\begin{prop}
+Para una $n$-variedad diferenciable orientable cualquiera $M$, existe un único operador lineal 
+\[
+\int_M:\Omega_c^n(M)\to\R
+\]
+con la propiedad de que si $w\in\Omega_c^n(\R)$ tiene soporte contenido en $U$, donde $(U,h)$ es una carta positivamente orientada, entonces
+\[
+\int_M w=\int_{h(U)}(h^{-1})^*w.
+\]
+\end{prop}
+\begin{dem}
+\QED
+\end{dem}
+\begin{lemma}
+Sea $M$ una variedad diferenciable orientable de dimensión $n$.
+\begin{enumerate}
+\item  $\int_M w$ cambia de signo cuando se recierte la orientación de $M$.
+\item Si $w\in \Omega_c^n(M)$ tiene soporte contenido en un abierto $W\subseteq M$, entonces
+\[
+\int_M w=\int_W w.
+\]
+\item Si $\phi:M\to N$ es un difeomorfismo que preserva la orientación, entonces se tiene que
+\[
+\int_M w=\int_N\phi^*(w)
+\]
+para $w\in\Omega_c^n(M)$. 
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+
+\end{proof}
 \end{document}
