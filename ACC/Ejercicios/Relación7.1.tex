@@ -9,12 +9,18 @@
 \maketitle
 
 \begin{ejercicio}{7.1.1}
-Prove that $f ∈ k[x, y, z]$ is symmetric if and only if $f (x, y, z) = f (y, x, z) = f (y, z, x)$.
+Prove that $f ∈ k[x, y, z]$ is symmetric if and only if $$f (x, y, z)= f (y, x, z) = f (y, z, x)$$
 \end{ejercicio}
 \begin{solucion}
 La implicación directa es trivial. Para la segunda basta probar que las permutaciones del enunciado generan $S_3$, pues podemos ver los polinomios que son iguales tras reordenar las variables como elementos de cada órbita por la acción de $S_3$ en las 3-uplas de variables, por tanto, como esta acción es transitiva, si son iguales los polinomios evaluados sobre la imagen mediante unos generadores, lo serán sobre todos los reordenamientos de variables.
 
-En este caso, las permutaciones dadas son $(1\ 2)$,  $(2\ 3)$ y $(1\ 3)$. Estas son todas las permutaciones de $S_3$, por lo tanto sabemos que generan todo el grupo, con lo que ya lo tenemos.  
+En este caso, las permutaciones dadas son $(1\ 2)$,  $(2\ 3)$ y $(1\ 3)$. Estas son todas las permutaciones de $S_3$, por lo tanto sabemos que generan todo el grupo, con lo que ya lo tenemos. 
+\end{solucion}
+
+\begin{solucion}
+Una implicación es trivial.Sean $\sigma,\mu$ dos permutaciones. Notemos por $f_\sigma(x,y,z) =  f(\sigma(x),\sigma(y),\sigma(z))$. Si $\sigma$ y $\mu$ son tales que
+$$f(x,y,z)=f(\sigma(x),\sigma(y),\sigma(z))=f(\mu(x),\mu(y),\mu(z))$$
+Entonces es claro que $f(x,y,z)=f_{\sigma \circ \mu}(x,y,z)=f_{ \mu\circ \sigma}(x,y,z)$. Es decir, el conjunto de permutaciones que mantienen la simetría de $f$ forman un grupo. En este caso, sabemos que $(1,2)$ y $(1,3)$. Sabemos que $\gene{(1,2),(1,3)}=S_3$, por lo que se verifica para toda permutación y $f$ es simétrica.
 \end{solucion}
 
 \newpage
@@ -48,24 +54,40 @@ como queríamos demostrar.
 \newpage
 
 \begin{ejercicio}{7.1.3}
-Let $σ^{(i)}_j$ denote the $j$-th elementary symmetric polynomial in $x_1,\dots, x_{i−1}, x_{i+1},\dots, x_n$
+Let $σ^{(i)}_j$ denote the $j$-th elementary symmetric polynomial in $x_1,\dots, x_{i−1},$ $x_{i+1},\dots, x_n$
 for $j < n$. The superscript “$(i)$” tells us to omit the variable $x_i$. Also set $σ^{(i)}_n = 0$ and
 $σ_0 = 1$. Prove that $σ_j = σ^{(i)}_j + x_iσ^{(i)}_{j−1}$ for all $i, j$. This identity is useful in induction
 arguments involving elementary symmetric polynomials.
 \end{ejercicio}
 \begin{solucion}
-Para $\sigma_1$ y $\sigma_n$ es trivial. 
-
+En realidad la simetría de los polinomios elementales nos permite colegir que si probamos el resultado para un $i$ fijo y para todo $j$ entonces está probado para todo $i$, pues el papel que cumple la variable $i$ es fácilmente intercambiable por simetría. Sea $i=1$ y $j$ fijo. Veamos que el resultado se tiene directamente. Podemos suponer que $n\geq 2$, pues otro caso es trivial.
+\begin{align*}
+\sigma_j &= \sum_{1\leq i_1<\cdots<i_j\leq n}x_{i_1}\cdots x_{i_j}\\
+&= \sum_{2\leq i_2<\cdots <i_j\leq n}x_{1}x_{i_2}\cdots x_{i_j} + \sum_{2\leq i_1<\cdots<i_j\leq n}x_{i_1}\cdots x_{i_j} \\
+& = x_1 \sigma_{j-1}^{(1)}+\sigma_j^{(1)}
+\end{align*}
 \end{solucion}
 \newpage
 
 \begin{ejercicio}{7.1.4}
-As in (2), let $f (X) = (X − x_1)(X − x_2) \cdots (X − x_n)$. Prove that $f = X_n − σ_1X^{n−1} +
+As in (2), let $f (X) = (X − x_1)(X − x_2) \cdots (X − x_n)$. Prove that $f = X^n − σ_1X^{n−1} +
 σ_2X^{n−2} +\cdots+(−1)^{n−1}σ_{n−1}X +(−1)^nσ_n$. Hint: You can give an induction proof using
 the identities of Exercise \ref{ejer:7.1.3}.
 \end{ejercicio}
 \begin{solucion}
-
+Para $n=1$ tenemos el resultado de manera trivial. Por ilustrar, para $n=2$ tenemos
+$$
+(X-X_1)(X-x_2) = X^2-(x_1+x_2)X+x_1x_2
+$$
+Supongamos que el resultado es cierto para $n-1$ y probémoslo para $n$. Esto significa
+\begin{align*}
+f(X)&=(X − x_1)(X − x_2) \cdots (X − x_n)\\
+&= (X-x_1)[(X − x_2) \cdots (X − x_n)]\\
+&=(X-x_1)[X^{n-1} − σ_1^{(1)}X^{n−2} +\cdots+(−1)^{n−2}σ_{n−2}^{(1)}X +(−1)^{n-1}σ_{n-1}^{(1)}]\\
+&=X^n + (-\sigma_1^{(1)} + x_1\sigma_0^{(1)})X^{n-1}+ \cdots +(-1)^{n-1}(\sigma_{n-1}^{(1)}-x_1\sigma_{n-1}^{(1)})X+(-1)^nx_1\sigma_{n-1}^{(1)}\\
+&= X^n − σ_1X^{n−1} +σ_2X^{n−2} +\cdots+(−1)^{n−1}σ_{n−1}X +(−1)^nσ_n\\
+\end{align*}
+Como queríamos probar.
 \end{solucion}
 
 \newpage

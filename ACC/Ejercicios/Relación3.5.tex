@@ -36,7 +36,11 @@ Given an ideal $I \subseteq k[x_1,\dots,x_n]$, prove that $\varphi(I) \subseteq 
 (In the proof of Theorem 2, we use this result when $\varphi$ is the map that evaluates $x_i$ at $a_i$ for $2 \leq i \leq n$.)
 \end{ejercicio}
 \begin{solucion}
-Como $\varphi$ es claramente sobreyectiva, transforma ideales en ideales (demostrado en Estructuras Algebraicas).
+Las hipótesis sobre el homomorfismo nos permiten deducir que este es sobreyectivo, pues para cada monomio $ax_1^n \in k[x_1]$ podemos tomar como preimagen el monomio $ax_1^n \in k[x_1,\dots,x_n]$. Sabemos que la sobreyectividad es suficiente para probar el resultado, pero vamos a verlo explícitamente.
+\begin{itemize}
+\item Sean $x,y \in \varphi(I)$ entonces $\exists a,b\in I$ tales que $\varphi(a)=x$ y $\varphi(b)=y$. Por tanto, como $a+b \in I$, $\varphi(a+b)=\varphi(a)+\varphi(b)=x+y\in \varphi(I)$.
+\item Sean $x \in \varphi(I)$ y $\lambda \in k[x_1]$, entonces tenemos $a\in I$ tal que $\varphi(a)=x$ y, por sobreyectividad, $b\in k[x_1,\dotsc,x_n]$ tal que $\varphi(b)=\lambda$. Sabemos que $ab\in I$, luego $\varphi(ab)=\varphi(a)\varphi(b)=\lambda x \in \varphi(I)$.
+\end{itemize}
 \end{solucion}
 
 \newpage
@@ -45,7 +49,7 @@ Como $\varphi$ es claramente sobreyectiva, transforma ideales en ideales (demost
 In the proof of Theorem 2, show that (1) follows from the assertion that $g_j(x_1,a) \in \gene{g_0(x_1,a)}$ for all $g_j \in G$.
 \end{ejercicio}
 \begin{solucion}
-Si todo $g_j \in G$ verifica que $g_j(x_1,a) \in \gene{g_0(x_1,a)}$, entonces todo polinomio expresable como combinación polinomial de los $g_j(x_1,a)$ también lo verifica. Como $G$ es base, dado $f\in I$, podemos expresarlo como $f=\sum A_jg_j$, así que $f(x_1,a)=\sum A_j(x_1,a)g_j(x_1,a)$. La otra inclusión es trivial así que se tiene el resultado. 
+Si todo $g_j \in G$ verifica que $g_j(x_1,a) \in \gene{g_0(x_1,a)}$, entonces todo polinomio expresable como combinación polinomial de los $g_j(x_1,a)$ también lo verifica. Como $G$ es base, dado $f\in I$, podemos expresarlo como $f=\sum A_jg_j$, así que $f(x_1,a)=\sum A_j(x_1,a)g_j(x_1,a)$. Luego los $g_j$ son una base de $\gene{g_0(x_1,a)}$, como queríamos probar.
 \end{solucion}
 \newpage
 
@@ -59,6 +63,7 @@ Show that $g_o = g_3$ works for all partial solutions different from $(1,1)$ and
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
+\item[]
 \item Con la base de Gröbner del libro, al sustituir $y=z=0$ en $g_2$ obtenemos un polinomio constante igual -1, por lo que no hay ninguna solución para este polinomio. 
 \item Como $g_3$ tiene grado 1 en $x$, por el Teorema 2 basta que $c_3(a)\neq 0$ para que $g_3=g_o$ dada una solución parcial $a\in\V(I_1)$. Recordemos que
 \[
@@ -90,8 +95,11 @@ We will study the specialization of Gröbner bases in more detail in Chapter 6.
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
-\item Análogo al ejercicio \ref{ejer:3.5.3}.
-\item En las condiciones del teorema 2 se tiene que existe $g_o\in G$ de modo que $\{f(x_1,a) \mid f \in I\}=\gene{g_o(x_1,a)}\in k[x_1]$ y además $g_o$ es minimal en cuanto al grado de $x_1$. Por tanto, $g_o$ forma una base de Gröbner del ideal, así que también forma una base de Gröbner cualquier base obtenida añadiendo elementos no nulos del ideal al conjunto unitario formado por $g_o$. 
+\item[]
+\item Análogo al Ejercicio \ref{ejer:3.5.3}.
+\item En las condiciones del Teorema 2 se tiene que existe $g_o\in G$ de modo que $\{f(x_1,a) \mid f \in I\}=\gene{g_o(x_1,a)}\in k[x_1]$ y además $g_o$ es minimal en cuanto al grado de $x_1$. Por tanto, $g_o$ forma una base de Gröbner del ideal, así que también forma una base de Gröbner cualquier base obtenida añadiendo elementos no nulos del ideal al conjunto unitario formado por $g_o$. 
+
+ESTOY BASTANTE SEGURO DE QUE ESTO ESTÁ MAL
 \end{enumerate}
 \end{solucion}
 \newpage
