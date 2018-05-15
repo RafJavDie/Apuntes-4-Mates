@@ -12,7 +12,8 @@
 Sea $M\subseteq\R^l$ una subvariedad diferenciable y supongamos que los puntos $p\in\R^l$ y $p_0\in M$ son tales que $||p-p_0||\leq ||p-q||$ para todo $q\in M$. Probar que $p-p_0\in T_{p_0}M^{\perp}$.
 \end{ejercicio}
 \begin{solucion}
-Podemos considerar $T_{p_0}M$ como subespacio de $\R^l$, por lo que el resultado se deduce del teorema de la proyección. 
+Consideramos el segmento que va de $p$ a $p_0$, que debe atravesar el entorno tubular $V$ de $M$. Llamamos $\hat{p}$ a un punto de intersección del segmento con $V$. Como $p_0$,$\hat{p}$ y $p$ están alineados, basta probar que $r(\hat{p})=p_0$. Tenemos que $\hat{p}\in V\cap \gene{p_0+(p-p_0)}$ (de modo que $\hat{p}$ esté en la componente conexa que contiene a $p_0$). Además, $p-p_0=p-\hat{p}+\hat{p}-p_0$, que tomando norma se traduce en $|p-q|\leq |p-p_0|=|p-\hat{p}+\hat{p}-p_0|=|p-\hat{p}|+|\hat{p}-p_0|$ y $|\hat{p}-p_0|\leq |\hat{p}-q|$ para todo $q\in M$. La última desigualdad nos da que $p_0=r(\hat{p})$, por lo que $p_0-\hat{p}=r(\hat{p})-\hat{p}\in T_pM^{\perp}$, siendo $p_0-\hat{p}$ paralelo a $p-p_0$.
+
 %https://math.stackexchange.com/questions/1492497/projection-theorem-understanding-two-parts-of-the-proof
 
 
@@ -43,6 +44,7 @@ Para la segunda parte tenemos que probar que $D_A\varphi$ es sobreyectiva para t
 \gamma'(0)=\frac{(\gamma'(0)A^t)}{2}A+A^t\frac{(A\gamma'(0))}{2}
 \]
 con lo que $B=\frac{A\gamma'(0)}{2}$.
+Esto es suficiente pues por ser $O_n$ subespacio vectorial de $M_n(\R)$, tiene estructura de subvariedad diferenciable. De hecho tiene $\dim(S_n)=\frac{(n+1)n}{2}$.
 \end{solucion}
 \newpage
 
@@ -118,6 +120,43 @@ Dada $w\in Alt^n(\R^n)$ tenemos que $w=\lambda \varepsilon_1\land\dots\varepsilo
 Probar que la botella de Klein no es orientable.
 \end{ejercicio}
 \begin{solucion}
+Por reducción al absurdo, supongamos que $K^2$ es orientable, entonces existe $\sigma\in\Omega^2(K^2)$ que no se anula en ningún punto $x\in K^2$, es decir, es una forma de orientación. Denotamos $\hat{\pi}=p\circ\pi$. Entonces $\hat{\pi}^*(\sigma)\in\Omega^2(\R^2)$ es forma de orientación porque $\hat{\pi}$ es isomorfismo por composición de isomorfismos. Así que $\hat{\pi}^*=f dx_1\land dx_2$ con $f\in C^{\infty}(\R^2;\R)$. Sin pérdida de generalidad supongamos que $f(x,y)>0$ para todo $(x,y)\in\R^2$. Pero por conmutatividad, $\hat{A}^*\hat{\pi}^*=\hat{A}^*(fdx_1\land dx_2)=f(\hat{A})\hat{A}^*(dx_1)\land\hat{A}^*(dx_2)=f\circ\hat{A} d\hat{A}_1\land d\hat{A}_2=(f\circ\hat{A}) dx_1\land (-dx_2)=-f\circ\hat{A} dx_1\land dx_2$, que es constantemente negativo. Contradicción. 
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{9.14}
+CAMBIAR $d_pf(v)$ por $D_pf(v)$. LAS PARCIALES SON ENTRE PARÉNTESIS SUB $h(x)$
+\end{ejercicio}
+\begin{solucion}
+Dada la parametrización $h:W\to M$, tomamos como baste de $T_h(x)M$ la base habitual de las derivadas parciales en $h(x)$. Recordemos que
+\[
+\left(\parcial{}{x_i}\right)_{h(x)}=\phi_{h^{-1}}(e_i)=D_xh(e_i)
+\]
+donde $\{e_i,\dots, e_i\}$ la base de $\R^n$. Entonces
+\[
+\gene{grad_{h(x)}f,\left(\parcial{}{x_j}\right)_{h(x)}}=D_{h(x)}f\left(\parcial{}{x_j}\right)_{h(x)}=D_{h(x)}f(D_xh(e_j))=D_x(f\circ h)(e_j)=\left(\parcial{f\circ h}{x_j}\right)_x
+\]
+Y por otro lado 
+\[
+\gene{grad_{h(x)}f,\left(\parcial{}{x_j}\right)_{h(x)}}=\gene{\sum_{i=1}^na_i(x)\left(\parcial{}{x_i}\right),\left(\parcial{}{x_j}\right)_{h(x)}}=\sum_{i=1}^na_i(x)\gene{\left(\parcial{}{x_i}\right), \left(\parcial{}{x_j}\right)}=\sum_{i=1}^n g_{ij}(x)a_i(x)
+\]
+
+Veamos que $grad(f):M\to TM$ es diferenciable. Damos un atlas diferenciable sobre $TM=\{(p,v)\mid p\in M, v\in T_pM\}\subseteq M\times
+\R^n$. Para cada $p\in M$, $g:W\to M$ parametrización alrededor de $p\in M$, 
+\begin{align*}
+W\times\R^n\longrightarrow \pi^{-1}(W)\\
+(x,v)\longmapsto (g(x), D_xg(v))
+\end{align*}
+es una parametrización de $TM$. COMPROBAR QUE EL CAMBIO DE CARTAS ES DIFERENCIABLE. 
+
+Así, dado $p\in M$, $grad(f):M\to TM$ está definido por $p\mapsto (p,grad_p(f))$. Dada una carta $(U,h)$ alrededor de $p$, entonces $(U\times\R^n, h\times D_ph)$ es una carta alrededor de $(p,grad_p(f))$. La composición nos da $(h(p), (a_1(x),\dots, a_n(x))$ que es diferenciable. 
+
+Para la última parte, comprobamos que en un entorno de $p\in f^{-1}(c)$ tenemos una subvariedad diferenciable de dimensión $n-1$ con $grad_p(f)$ normal a $f^{-1}(c)$ en $p$. Sea $g:W\to M$ una parametrización alrededor de $p\in M$.  Entonces tenemos la composición $W\xrightarrow{g}M\xrightarrow{f}\R$, con $p=g(x_0)$. Tenemos que
+\[
+0\neq grad_p(f)=\sum_{j=1}^na_i(x_0)\left(\parcial{}{x_j}\right)_{g(x_0)}
+\]
+por lo que existe $V\subseteq W$ entorno de $x_0$ de modoq ue $grad_{g(x)}f\neq 0$ para todo $x\in V$. Por tanto existe $v\in T_pM$ de modo que $\gene{grad_{g(x)}f,v}=D_pf(v)\neq 0$, así que dado $q\in g(V)$, $D_qf:T_qM\to T_{f(q)}\R=\R$ es no nulo, así que es sobreyectivo. Aplicando 9.5 y 9.6, $V\cap f^{-1}(c)$ es subvariedad diferenciable de $V$ y por tanto de $M$, de dimensión $\dim(g(V))-\dim(\R)=n-1$. Veamos ahora que $grad_pf\in T_pf^{-1}(c)^{\perp}$. Sea $[\alpha]\in T_pf^{-1}(c)$, comprobemso que $\gene{grad_pf,[\alpha]}_p=0$. Este producto es $D_pf([\alpha])=(\alpha\circ f)'(0)$. Como $\alpha$ es una curva en $f^{-1}(c)$, $\alpha\circ f$ es constantemente $c$, por lo que la derivada es 0. 
+. 
 \end{solucion}
 \newpage
 
@@ -129,7 +168,11 @@ Para un abierto orientado $W\subseteq M$ con forma de orientación $w\in\Omega^n
 Probar que $\widetilde{M}$ tiene una topología tal que $\widetilde{W}$ es abierto y $\pi$ es un homeomorfismo entre $\widetilde{W}$ y $W$ para todo abierto orientado $W\subseteq M$. Probar que $\widetilde{M}$ tiene una orientación canónica. El par consistente en $\widetilde{M}$ y $\pi$ se llama \emph{oriented double covering} (doble recubridor orientado) de $M$.
 \end{ejercicio}
 \begin{solucion}
-Para cada abierto orientado $W\subseteq M$ con forma de orientación $w\in\Omega^n(W)$ definimos los conjuntos $W_+=\{(p,o_p)\in\widetilde{M}\mid p\in W, o_p\in [w]\}$ y $W_-\{(p,o_p)\in\widetilde{M}\mid p\in W, o_p\notin[w]\}$. Dotamos a $\widetilde{M}$ de la topología que tiene como base el de abiertos la familia $\{W_+,W_-\}_{W\subseteq M}$. Con la notación del enunciado, $\widetilde{W}=W_+$ y es evidente que $\pi:W_+\to W$ es homeomorfismo con esta topología.
+Para cada abierto orientado $W\subseteq M$ con forma de orientación $w\in\Omega^n(W)$ definimos los conjuntos $W_+=\{(p,o_p)\in\widetilde{M}\mid p\in W, o_p\in [w]\}$ y $W_-\{(p,o_p)\in\widetilde{M}\mid p\in W, o_p\notin[w]\}$. Dotamos a $\widetilde{M}$ de la topología que tiene como base el de abiertos la familia $\{W_+,W_-\}_{W\subseteq M}$.
+
+COMPROBAR QUE ES BASE, ES DECIR QUE $\widetilde{M}\cap\widetilde{N}$ CUANDO ES NO VACÍO TIENE UN ENTORNO DE LA MISMA FORMA DENTRO
+
+ Con la notación del enunciado, $\widetilde{W}=W_+$ y es evidente que $\pi:W_+\to W$ es homeomorfismo con esta topología.
 
 Construimos un atlas sobre $\widetilde{M}$ a partir del atlas $\{(U,\varphi)\}$ de $M$. Para ello consideramos la familia $\{(U_\pm, \varphi_\pm)\}$ con $\varphi_\pm:=\varphi\circ\pi$. Es claro que los abiertos recubren $\widetilde{M}$ y por la observación anterior, $\varphi_\pm$ es un homeomorfismo entre $U_\pm$ y $\varphi(U)$. Además, dadas dos cartas $(U_\pm,\varphi_\pm)$ y $(V_\pm,\psi_\pm)$, se tiene que la aplicación
 \[
@@ -173,7 +216,7 @@ Probar que $\varphi$ es una solución de la ecuación
 \]
 \end{ejercicio}
 \begin{solucion}
-Las derivadas salen unos chorizos enormes pero al final sale lo que tiene que salir. Para la segunda parte observar $||\varphi(x)||=f(x)$. 
+
 \end{solucion}
 \newpage
 
