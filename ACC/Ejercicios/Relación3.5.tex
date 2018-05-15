@@ -21,9 +21,9 @@ Hint: Use part (a) and compare the coefficients of $x_1^N$ in $f = \sum_{j=1}^t 
 \end{ejercicio}
 \begin{solucion}\mbox{}
 \begin{enumerate}[(a)]
-\item Tenemos que $multideg(f) \geq multideg(A_j g_j)$ (ver ejercico 2.3.4).
-Como estamos en un orden lex con $x_1 > \cdots > x_n$, esto significa que:
-\[ N = deg(f,x_1) \geq deg(A_j g_j, x_1) \]
+\item Tenemos que $multideg(f) \geq multideg(A_j g_j)$ por definición de representación estándar. Como estamos en un orden lex con $x_1 > \cdots > x_n$, esto significa que:
+\[deg(f,x_1) \geq deg(A_j g_j, x_1) \]
+por definición de orden lexicográfico.
 \item Como $f = \sum_{j=1}^t A_j g_j$, $c_f$ será la suma de los coeficientes de $x_1^N$ en cada $ A_j g_j$. Por definición, $\deg(A_j g_j, x_1) = N$ hace que nos quedemos con los $A_jg_j$ en los que aparece $x_1^N$. El coeficiente $c_j$ correspondiente a $x_1^N$ en $A_jg_j$ se obtiene al multiplicar dos monomios en los que la suma de los exponentes de $x_1$ es igual a $N$. Los coeficientes de estos monomios deben ser necesariamente $c_{A_j}$ y $c_{g_j}$ necesariamente, pues por el apartado anterior $N \geq deg(A_j g_j, x_1)$. Efectivamente, si $c_{A_j}$ (análogamente $c_{g_j}$) multiplicara a una pontencia mayor de $x_1$ que la que hace que $N = deg(A_j g_j, x_1)$, entonces  $N < deg(A_j g_j, x_1)$, lo cual no es posible. 
 \end{enumerate}
 \end{solucion}
@@ -49,7 +49,7 @@ Las hipótesis sobre el homomorfismo nos permiten deducir que este es sobreyecti
 In the proof of Theorem 2, show that (1) follows from the assertion that $g_j(x_1,a) \in \gene{g_0(x_1,a)}$ for all $g_j \in G$.
 \end{ejercicio}
 \begin{solucion}
-Si todo $g_j \in G$ verifica que $g_j(x_1,a) \in \gene{g_0(x_1,a)}$, entonces todo polinomio expresable como combinación polinomial de los $g_j(x_1,a)$ también lo verifica. Como $G$ es base, dado $f\in I$, podemos expresarlo como $f=\sum A_jg_j$, así que $f(x_1,a)=\sum A_j(x_1,a)g_j(x_1,a)$. Luego los $g_j$ son una base de $\gene{g_0(x_1,a)}$, como queríamos probar.
+Si todo $g_j \in G$ verifica que $g_j(x_1,a) \in \gene{g_0(x_1,a)}$, entonces todo polinomio expresable como combinación polinomial de los $g_j(x_1,a)$ también lo verifica. Como $G$ es base, dado $f\in I$, podemos expresarlo como $f=\sum A_jg_j$, así que $f(x_1,a)=\sum A_j(x_1,a)g_j(x_1,a)$. Por tanto $\{f(x_1,a)\mid f \in I\}\subset \gene{g_0(x_1,a)}$. Como la inclusión contraria es clara, tenemos el resultado.
 \end{solucion}
 \newpage
 
@@ -69,14 +69,11 @@ Show that $g_o = g_3$ works for all partial solutions different from $(1,1)$ and
 \[
 g_3=(z^3 − z^2)x − y + z^2 + z − 1,
 \]
-de modo que $c_3=z^3-z^2$, que se anula en $z=0$ y en $z=1$. Por tanto, $g_3=g_o$ para cualquier solución parcial en la que $z$ no sea ni 0 ni 1. En particular será soluciones distintas de $(1,1)$ y $(0,0)$, pero veamos  si $z=1$ implica $y=1$ y si $z=0$ implica $y=0$. Para ello basta sustituir en $g_4=y^2 − 2yz^2 − yz + y + 2z^4 − z^3$ (que era el polinomio que generaba $I_1$):
-\[
-g_4(y,0)=y^2+y=0\Rightarrow y=0, y=-1
-\]
-\[
-g_4(y,1)=y^2-2y-y+y+2-1=y^2-2y+1=0\Rightarrow y=1
-\]
-Vemos que tenemos además otra solución parcial para la cual no vale $g_3$, que es $(-1,0)$. Para ese caso sería óptimo $g_2=(y − z^2)x + z − 1$. Así que $g_o=g_3$ para toda solución parcial diferente de $(1,1)$, $(0,0)$ y $(-1,0)$. 
+de modo que $c_3=z^3-z^2$, que se anula en $z=0$ y en $z=1$. Por tanto, $g_3=g_o$ para cualquier solución parcial en la que $z$ no sea ni 0 ni 1. Si $z=0$ entonces las soluciones parciales de $y$ son $y(1+y)$. Si $y=0$ de hecho no puede extenderse de ninguna forma, pues $g_2 =1$. Si $y=-1$ entonces $g_3=0$ pero $g_1=-g_2 = x+1$, luego puede extenderse la solución a $(-1,-1,0)$. El enunciado probablemente esté mal.
+
+Si $z=1$ tenemos para $y$ las extensiones $y^2 -2y+1=(y-1)^2$. Es decir, debe ser el $(1,1)$. Para este punto $g_3 = g_2 = 0$ pero $g_1 = x^2+x+1$, por lo que podemos extenderlo y $g_1=g_0$.
+
+¿Puede pasar que en $g_3$ no se anule el coeficiente de $x$ ($z\neq 0,1$) pero que las $g_i$ no tengan raices en común? 
 \end{enumerate}
 \end{solucion}
 
@@ -97,9 +94,7 @@ We will study the specialization of Gröbner bases in more detail in Chapter 6.
 \begin{enumerate}[a.]
 \item[]
 \item Análogo al Ejercicio \ref{ejer:3.5.3}.
-\item En las condiciones del Teorema 2 se tiene que existe $g_o\in G$ de modo que $\{f(x_1,a) \mid f \in I\}=\gene{g_o(x_1,a)}\in k[x_1]$ y además $g_o$ es minimal en cuanto al grado de $x_1$. Por tanto, $g_o$ forma una base de Gröbner del ideal, así que también forma una base de Gröbner cualquier base obtenida añadiendo elementos no nulos del ideal al conjunto unitario formado por $g_o$. 
-
-ESTOY BASTANTE SEGURO DE QUE ESTO ESTÁ MAL
+\item En las condiciones del Teorema 2 se tiene que existe $g_o\in G$ de tal modo que se da la igualdad $\{f(x_1,a) \mid f \in I\}=\gene{g_o(x_1,a)}\in k[x_1]$ y además $g_o$ es minimal en cuanto al grado de $x_1$. Por tanto, $g_o$ forma una base de Gröbner del ideal, así que también forma una base de Gröbner cualquier base que lo contenga (en particular $\{g_j(x_1,a)\}$) es una base de Gröbner.
 \end{enumerate}
 \end{solucion}
 \newpage

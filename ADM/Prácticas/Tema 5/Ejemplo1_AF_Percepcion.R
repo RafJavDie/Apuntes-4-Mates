@@ -145,11 +145,11 @@ apply(Z,2,mean)
 apply(Z,2,sd)
 
 #Para aplicar la fórmula de transparencias
-#las variables deben centrarse
+#las variables deben centrarse 
 #aquí no hace falta
 Xcent=scale(Z,center=TRUE,scale=FALSE)              ### ¿Z o X?
 summary(Xcent)
-Frot= t(solve(t(Lrot)%*%Lrot)%*%t(Lrot)%*%t(Xcent)) ### ¿Esta es la fórmula?
+Frot= t(solve(t(Lrot)%*%Lrot)%*%t(Lrot)%*%t(Xcent)) ### 
 rownames(Frot)= rownames(X)
 Frot                                                ### ¿Estas son las puntuaciones?
 
