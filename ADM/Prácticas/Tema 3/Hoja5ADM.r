@@ -133,6 +133,7 @@ which(cluster==1)
 which(cluster==2)
 which(cluster==3)
 
+
 #2.iii
 agnclusin <- agnes(D,method="single")
 summary(agnclusin)

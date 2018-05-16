@@ -4,7 +4,8 @@
 \newcommand{\muestra}[1]{{\underline{#1}}}
 \newcommand{\m}[1]{{\muestra{#1}}}
 \newcommand{\mX}{{\muestra{X}}}
-
+\usepackage{csquotes}
+\newcommand{\ev}{\m{\hat{e}}}
 %--------------------------------------------------------
 \begin{document}
 
@@ -18,15 +19,41 @@ Sea $X$ una matriz de datos $n \times p$ y $\widehat{\Sigma}$ la matriz de varia
 \begin{enumerate}
 \item Describe cual es el objetivo fundamental del ACP.
 
-Determinar un espacio de dimensión "reducida" que represente adecuadamente un conjunto de n observaciones $p$-−dimensionales. Para ello sustituimos las variables originales por un número pequeño de combinaciones lineales de las variables originales, incorreladas y "perdiendo" poca información.
+Determinar un espacio de dimensión \enquote{reducida} que represente adecuadamente un conjunto de n observaciones $p$-dimensionales. Para ello sustituimos las variables originales por un número pequeño de combinaciones lineales de las variables originales, incorreladas y \enquote{perdiendo} poca información. En ocasiones el ACP sirve como input para posteriores análisis: regresión, ANOVA, conglomerados,...
+
+Su construcción no requiere supuesto de normalidad. No obstante, en poblaciones normales se pueden realizar tests de hipótesis y proporcionan interpretaciones útiles de los elipsoides de densidad constante.
 
 \item Define las puntuaciones de los $n$ puntos sobre las $p$ CP. 
-\item Demuestra que $d(\muestra{x_i}, \muestra{x_j}) = d(\muestra{y_i}, \muestra{y_j})$ con $\muestra{y_i}$ el vector de puntuaciones sobre las componentes principales correspondiente al individuo $i$. 
 
-Sabemos que $\muestra{y_i} = \hat{E}'\muestra{x_i}$ con $E$ una matriz ortogonal, luego se tiene de manera inmediata que 
+Definimos la puntuación de los $n$ puntos sobre las $k$-ésima componente principal como
 $$
-d^2(\muestra{y_i},\muestra{y_j})=(\muestra{y_j}-\muestra{y_i})'(\muestra{y_j}-\muestra{y_i}) = (\muestra{x_j}-\muestra{x_i})\hat{E}\hat{E}'(\muestra{x_j}-\muestra{x_i}) = (\muestra{x_j}-\muestra{x_i}) '(\muestra{x_j}-\muestra{x_i}) = d^2(\muestra{x_i},\muestra{x_j})
+\muestra{y}_{(k)} = \begin{pmatrix}
+{\m{\hat{e}}}_k'\m{x}_1\\
+\vdots\\
+{\m{\hat{e}}}_k'\m{x}_n
+\end{pmatrix} = 
+X\m{\hat{e}}_k
 $$
+Por tanto, las puntuaciones sobre las $p$ componentes principales son
+$$
+Y = \begin{pmatrix}
+{\m{\hat{e}}}_1'\m{x}_1 & \cdots & {\m{\hat{e}}}_p'\m{x}_1\\\
+\vdots  &  & \vdots\\
+{\m{\hat{e}}}_1'\m{x}_n  & \cdots &	{\m{\hat{e}}}_p'\m{x}_n
+\end{pmatrix} 
+=X\hat{E}
+$$
+
+\item Demuestra que $d(\m{x}_i, \m{x}_j) = d(\muestra{y_i}, \m{y}_j)$ con $\muestra{y}_i$ el vector de puntuaciones sobre las componentes principales correspondiente al individuo $i$. 
+
+Sabemos que $\muestra{y_i} = \hat{E}'\m{x}_i$ con $E$ una matriz ortogonal, luego se tiene de manera inmediata que 
+\begin{align*}
+d^2(\m{y}_i,\m{y}_j)&=(\m{y}_j-\m{y}_i)'(\m{y}_j-\m{y}_i)\\
+& = (\hat{E}'\m{x}_j-\hat{E}'\m{x}_i)'(\hat{E}'\m{x}_j-\hat{E}'\m{x}_i)\\
+& = (\m{x}_j-\m{x}_i)'\hat{E}\hat{E}'(\m{x}_j-\m{x}_i)\\
+& = (\m{x}_j-\m{x}_i) '(\m{x}_j-\m{x}_i) = d^2(\m{x}_i,\m{x}_j)
+\end{align*}
+
 \item Demuestra que la varianza de la $j$−ésima CP es el $j$−ésimo mayor autovalor de $\widehat{\Sigma}$.
 
 Sabemos que $$\Sigma_{\muestra{Y}} = Cov(\hat{E}'\muestra{X})= \hat{E}'Cov(\muestra{X})\hat{E} =\hat{E}' \hat{\Sigma}\hat{E}= \hat{\Lambda}$$
@@ -34,33 +61,40 @@ La varianza de la $j$-ésima componente principal es el $j$-ésimo elemento diag
 
 \item Determina el coeficiente de correlación lineal entre $\muestra{y}_{{(i)}}$ ($i$−ésima CP) y $\muestra{x}_{(j)}$ .($j$−ésima variable).
 
-Tengamos en cuenta que $\hat{e_i}'\hat{\Sigma}_{\cdot j} = (\hat{E}')_{i \cdot}\hat{\Sigma}_{\cdot j}=(\hat{E}'\hat{\Sigma})_{ij}=(\hat{\Lambda}\hat{E}')_{ij}=\hat{\lambda}_i \hat{e}_{ij}$. Entonces:
-$$
-Cov(\muestra{y}_{{(i)}},\muestra{x}_{{(j)}}) = Cov(\hat{e_i}' \muestra{x},\muestra{x}_{{(j)}}) = \hat{e_i}'Cov(\muestra{x},\muestra{x}_{(j)})= \hat{e_i}'\hat{\Sigma}_{\cdot j} = \hat{\lambda}_i \hat{e}_{ij}
-$$ 
+Sea $c_j$ el $j$-ésimo vector de la base canónica de $\R^p$.
+\begin{align*}
+Cov(\muestra{y}_{{(i)}},\muestra{x}_{{(j)}}) &= Cov(\muestra{x}_{{(j)}},\muestra{y}_{{(i)}})\\
+& = Cov(c_j'\muestra{x},\ev_i' \muestra{x})\\
+&= c_j'Cov(\muestra{x},\muestra{x})\ev_i \\
+&= c_j'\hat{\Sigma}\ev_i \\
+&= c_j' \hat{\lambda}_i\ev_i \\
+&= \hat{\lambda}_i \ev_{ij}
+\end{align*} 
 Por tanto, tenemos
 $$
 r(\muestra{y}_{{(i)}},\muestra{x}_{{(j)}}) = \frac{\hat{\lambda}_i \hat{e}_{ij}}{\hat{\sigma}_{j}\sqrt{\hat{\lambda_j}}} = \frac{\hat{e}_{ij}\sqrt{\hat{\lambda}_i}}{\hat{\sigma}_j}
 $$
+\newpage
 \item Demuestra que la primera CP es la combinación lineal (normalizada) de máxima varianza. 
 
-Sea $H=\{t\in \R^p \mid t't=1\}$. Queremos demostrar que
+Sea $H=\{t\in \R^p \mid t't=1\}$. El enunciado del problema es equivalente a demostrar la igualdad
 $$
 \hat{\sigma}_{\muestra{y}_{(1)}}=\sup_{t\in H}\hat{\sigma}^2_{t'\muestra{x}}
 $$
-Como las columnas de $\hat{E}$ forman una base (ortonorma) de $\R^p$, para cada $t$ existe $c\in \R^p$ tal que $t = \sum_{i=1}^p c_i \hat{e}_i$. Es decir, $t=\hat{E}c$. Además, $c'c = t'EE't=t't=1$ y
+
+Como las columnas de $\hat{E}$ forman una base (ortonormal) de $\R^p$, para cada $t$ existe $c\in \R^p$ tal que $t = \sum_{i=1}^p c_i \hat{e}_i$. Es decir, $t=\hat{E}c$. Además, $c'c = t'EE't=t't=1$ y
 $$
 \hat{\sigma}^2_{t'\muestra{x}} = t'\hat{\Sigma}t =  c'\hat{E}'\hat{\Sigma}\hat{E}c = c'\hat{\Lambda}c = \sum_{i=1}^p \hat{\lambda}_i c_i^2 \leq \hat{\lambda}_1 \sum_{i=1}^p  c_i^2 = \hat{\lambda}_1 = \hat{\sigma}^2_{\muestra{y}_{(1)}}
 $$
-Por tanto,
-$$
-d
-$$
 \item Demuestra que la suma de las varianzas de las variables originales es igual a la suma de las varianzas de las CP.
 
-Sabemos que $trace(AB)=trace(BA)$, luego
+Sabemos que $trace(AB)=trace(BA)$. Además, es conocido que 
 $$
-trace(\hat{\Sigma})=trace(\hat{E}\hat{\Lambda}\hat{E}')=trace((\hat{E}\hat{\Lambda})\hat{E}') = trace(\hat{E}'(\hat{E}\hat{\Lambda})) = trace(\hat{\Lambda})=\sum_{i=1}^p \hat{\lambda}_i
+trace(\hat{\Sigma}) = \sum_{i=1}^p \sigma_i^2 \qquad trace(\hat{\Lambda}) = \sum_{i=1}^p \hat{\lambda}_i
+$$
+Luego basta tener en cuenta que
+$$
+trace(\hat{\Sigma})=trace(\hat{E}\hat{\Lambda}\hat{E}')=trace((\hat{E}\hat{\Lambda})\hat{E}') = trace(\hat{E}'(\hat{E}\hat{\Lambda})) = trace(\hat{\Lambda})
 $$
 \item Demuestra que las CP están incorreladas.
 
@@ -70,7 +104,7 @@ Es trivial, pues la matriz de varianzas covarianzas es diagonal, luego las corre
 \begin{enumerate}
 	\item Determina el mayor autovalor de $\widehat{\Sigma}$ sabiendo que el autovector asociado es $(1,0,0,0,0)$.
 	
-	Claramente el autovalor asociado será el elemento $\hat{\Sigma}_{11}$. Si util
+	Claramente el autovalor asociado será el elemento $\hat{\Sigma}_{11}$. Si utilizamos las fórmulas de $\hat{\sigma}_{11}$ obtenemos
 $$
 \hat{\sigma}_{11}=\hat{\sigma}_1^2=\frac{1}{3}\sum_{i=1}^4(X_{i1}-\frac{5+4+4+1}{4})^2 = \frac{1}{3}\left[(5-\frac{14}{4})^2 +  2(4-\frac{14}{4})^2 + (1-\frac{14}{4})^2\right]= 3
 $$
@@ -104,10 +138,10 @@ las correlaciones observadas, aunque dicho factor no sea observable.
 
 \item Describe el Modelo Factorial Ortogonal y las hipótesis del mismo.
 
-Sea $\muestra{X}$ un vector aleatorio (observable) $p$−dimensional, $\mX \sim (\mu,\Sigma)$. El modelo factorial postula que el vector aleatorio $\muestra{X}$ depende linealmente de "un número reducido" de variables aleatorias no observables $F_1,\dotsc,F_m$, denominadas factores comunes y $p$ fuentes de variación adicionales $\varepsilon_1, ..., ε_p$ denominados errores aleatorios o
+Sea $\muestra{X}$ un vector aleatorio (observable) $p$−dimensional, $\mX \sim (\mu,\Sigma)$. El modelo factorial postula que el vector aleatorio $\muestra{X}$ depende linealmente de \enquote{un número reducido} de variables aleatorias no observables $F_1,\dotsc,F_m$, denominadas factores comunes y $p$ fuentes de variación adicionales $\varepsilon_1, ..., ε_p$ denominados errores aleatorios o
 factores específicos:
 $$
-\mX-\mu = LF+\varepsilon
+\mX-\m{\mu} = L\m{F}+\m{\varepsilon}
 $$
 La matriz $L$ es la matriz de cargas factoriales. $l_{ij}$ es la carga factorial de la variable $i$-ésima sobre el $j$-ésimo factor. Los factores comunes pueden estar relacionados con todas las variables originales, mientras que cada factor específico está relacionado con una única variable original. Tanto los factores comunes como los factores específicos son no observables. 
 
@@ -139,11 +173,24 @@ $$
 \rho(X_i,F_j) = \frac{Cov(X_i,F_j)}{\sigma_{X_i}\sigma_{F_j}} = L_{ij} = l_{ij}
 $$
 \item Describe las (3) etapas básicas, y el objetivo de cada una de ellas, cuando se realiza un análisis factorial.
+
+Las tres etapas básicas son la estimación, la rotación (interpretación) y la puntuación. Expliquemos en qué consisten:
+
+\begin{enumerate}
+\item \textbf{Estimación}. Sea $\muestra{x_1},\dotsc,\muestra{x_n}$ una muestra aleatoria de $\mX\sim (\mu,\Sigma)$. Dado $(\hat{\Sigma},m)$ nuestro objetivo es determinar $(\hat{L},\hat{\Psi})$. Para este cometido los métodos más usuales son: CP, factor principal y máxima verosimilitud.
+\item \textbf{Rotación}. Las cargas factoriales obtenidas a través de una transformación ortogonal de las cargas iniciales tienen la misma capacidad para reproducir la matriz de covarianza (o correlación). Dado que una transformación ortogonal realiza una rotación de los ejes coordenados, a las transformaciones ortogonales de las cargas factoriales, y por tanto de los factores, se denomina rotación factorial o rotación de los factores.
+
+Especialmente interesante es el caso de la rotación varimax. La interpretación de los factores se facilita si los que `afectan' (o correlacionan) a algunas variables no lo hacen a otras. La rotación varimax es aquella maximiza una medida de la variabilidad de los cuadrados de las cargas factoriales, es decir, un forma de alcanzar el propóstio anterior.
+
+\item \textbf{Puntuación}. Teniendo en cuenta que los factores son variables no observable, un problema de interés
+es estimar los valores de los factores (puntuaciones factoriales) en cada una de los $n$ elementos muestrales, o bien, sobre un nuevo individuo. Con este fin hemos visto los métodos de mínimos cuadrados ponderados y regresión.
+\end{enumerate}
+
 \item Describe el Método de las Componentes Principales para estimar la matriz de cargas factoriales y la matriz de varianzas específicas.
 
 Sea $\muestra{x_1},\dotsc,\muestra{x_n}$ una muestra aleatoria de $\mX\sim (\mu,\Sigma)$. Dado $(\hat{\Sigma},m)$ nuestro objetivo es determinar $(\hat{L},\hat{\Psi})$. Para ello consideramos $(\hat{\lambda_i},\hat{e_i})$ los autovalores y atovectores unitarios (ordenados decrecientemente) de $\hat{\Sigma}$. Fijamos un número $m<p$. Sabemos que si los $p-m$ últimos autovalores son muy pequeños, podemos aproximar
 $$
-\Sigma = \begin{pmatrix}
+\Sigma  \approx \begin{pmatrix}
 \sqrt{\lambda_1}e_1 & \cdots & \sqrt{\lambda_m}e_m 
 \end{pmatrix}
 \begin{pmatrix}
@@ -191,7 +238,31 @@ Las rotaciones varimax obtenidas a partir de dos estimaciones distintas de  carg
 \item 
 \begin{enumerate}
 \item Plantea los problemas de independencia de caracteres y de homgeneidad de poblaciones.
+
+\begin{enumerate}
+\item[] \textbf{Independencia}. Sean $(A,B)$ dos variables categóricas con $n$ y $p$ modalidades respectivamente. El problema de la independencia consiste en determinar si ambas variables son independencias, es decir, si se verifica la hipótesis
+$$
+H_0\colon P(A_i\cap B_j) = P(A_i)P(B_j), \; \forall i,j
+$$
+Seleccionamos una muestra $m$ de tamaño $N$ y consideramos $N_{ij}$ el número de elementos de $m$ que presentan $A_i\cap B_j$. Se tiene que $N_{ij}\sim Bi(N,P(A_i\cap B_j)$. En estas condiciones tenemos que el estadístico ji-cuadrado para el contraste es
+$$
+\chi^2 = \sum_{i=1}^n \sum_{j=1}^p \frac{(N_{ij}-e_{ij})^2}{e_{ij}}
+$$
+Donde $e_{ij} = \E_{H_0}(N_{ij}) = NP_{H_0}(A_i)P_{H_0}(B_j) = \dfrac{N_{i.}N_{.j}}{N}$. Nuestro estadístico $\chi^2 \conv{L}\chi^2_{(n-1)(p-1)}$. Por tanto, una región crítica para un test de tamaño $\alpha$ es $\chi^2 \geq \chi^2_{(n-1)(p-1),1-\alpha}$.
+\item[] \textbf{Homogeneidad} Consideremos una variable $B$ con $p$ modalidades $B_1,\dotsc,B_p$. El problema de la homogeoneidad en $n$ poblacioens $(P_1,\dotsc,P_n)$ consiste en determinar si podemos aceptar la hipótesis
+$$
+H_0\colon P_1(B_j) = \cdots P_n(B_j),\;\forall j
+$$
+Para ello seleccionamos de forma independiente una muestra $m_i$ de tamaño $N_i$ en cada población. Sean $N_{ij}$ el número de elementos de $m_i$ que presentan $B_j$, se tiene que $N_{ij}\sim Bi(N_i,P(B_j)$. En estas condiciones tenemos que el estadístico ji-cuadrado para el contraste es
+$$
+\chi^2 = \sum_{i=1}^n \sum_{j=1}^p \frac{(N_{ij}-e_{ij})^2}{e_{ij}}
+$$
+Donde $e_{ij} = \E_{H_0}(N_{ij}) = N_{i.}P_{H_0}(B_j) = \dfrac{N_{i.}N_{.j}}{N}$. Verifica $\chi^2 \conv{L}\chi^2_{(n-1)(p-1)}$. Una región crítica para un test de tamaño $\alpha$ es $\chi^2 \geq \chi^2_{(n-1)(p-1),1-\alpha}$.
+\end{enumerate}
+
 \item Demuestra que los estadísticos $\chi^2$ asociados a ambos problemas y sus distribuciones coinciden.
+
+Lo demostraría, pero no sé cómo. ¿¿¿¿¿¿????????????¿¿¿¿¿¿¿¿¿¿¿?????
 \end{enumerate}
 \item Sean $r_1', \dots, r_n'$ las distribuciones condicionadas por filas asociadas a un tabla de contingencia
 \[\begin{matrix}
@@ -205,8 +276,26 @@ A_n & N_{n1} & \dots & N_{nj} & \dots & N_{np} & N_{n.}\\
 \end{matrix}\]
 \begin{enumerate}
 	\item Define el centro de gravedad de las filas: $m_r'$
-	\item Define la distancia ji-cuadrado entre dos distribuciones. 
-	\item Demuestra que $\chi^2 = N\sum_{i=1}^n f_{i.} d_{\chi^2} (r_i, m_r)$
+	
+	El centro de gravedad $m_r'$ de las filas de $M_r$ viene dado por 
+	$$
+	m_r'=\sum_{i=1}^n f_{i.}r_i' = \sum_{i=1}^n  \frac{N_{i.}}{N}\left[\frac{N_{ij}}{N_{i.}}\right]_j = \frac{1}{N}\sum_{i=1}^n \left[{N_{ij}}\right]_j = \left[\frac{N_{.j}}{N}\right]_{j}
+	$$
+	\item Define la distancia ji-cuadrado entre dos distribuciones.  PREGUNTAR ¿Las distribuciones son las filas de Mr? ¿O de la tabla de contigencia? 
+	
+	Sea $D_p = diag(f_{.1},\dotsc,f_{.p})$. Definimos la distancia $d_{\chi^2}(r_i,r_j)$ como
+	$$
+	d_{\chi^2}(r_i,r_j) = (r_i - r_j)'D_p^{-1}(r_i - r_j)
+	$$
+	\item Demuestra que $\chi^2 = N\sum_{i=1}^n f_{i.} d_{\chi^2} (r_i, m_r)$. 
+	
+	
+	\begin{align*}
+	\chi^2 &= \sum_{i=1}^n \sum_{j=1}^p \frac{(N_{ij}-e_{ij})^2}{e_{ij}} = \sum_{i=1}^n \sum_{j=1}^p \frac{(N_{ij}-\frac{N_{i.}N_{.j}}{N})^2}{\frac{N_{i.}N_{.j}}{N}}\\
+	&=  \sum_{i=1}^n \sum_{j=1}^p \frac{N_{i.}^2(\frac{N_{ij}}{N_{i.}}-\frac{N_{.j}}{N})^2}{\frac{N_{i.}N_{.j}}{N}} = N \sum_{i=1}^n \sum_{j=1}^p \frac{N_{i.}(r_{ij}-f_{.j})^2}{N_{.j}}\\
+	&= N \sum_{i=1}^n N_{i.}/N\sum_{j=1}^p \frac{(r_{ij}-f_{.j})^2}{N_{.j}/N} = N \sum_{i=1}^n f_{i.}\sum_{j=1}^p \frac{(r_{ij}-f_{.j})^2}{f_{.j}} \\
+	&= N\sum_{i=1}^n f_{i.}d_{\chi^2}(r_i,m_r)
+	\end{align*}
 \end{enumerate}
 \item Describe el objetivo del análisis de correspondencias (por filas).
 \item Analogías y diferencias entre el ACP y el AC.
@@ -221,7 +310,7 @@ A_n & N_{n1} & \dots & N_{nj} & \dots & N_{np} & N_{n.}\\
 \[ \sum_{i=1}^n f_{i.} (r_i^t D_p^{-1} u_k)^2 \]
 \item Define la inercia total y demuestra que es igual a la suma de los autovalores de $S_r$.
 \end{enumerate}
-
+\newpage
 \section{Análisis Discriminante}
 \begin{enumerate}
 \item Discriminación en dos poblaciones con distribuciones conocidas

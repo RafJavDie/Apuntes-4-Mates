@@ -57,7 +57,7 @@ resul$p.value      # p-valor del contraste de hipótesis
 
 resul$observed     # Tabla de frecuencias absolutas observadas
 resul$expected     # Tabla de frecuencias absolutas esperadas bajo hipótesis de independencia
-resul$residuals    # Residuos de Pearson: (observed - expected) / sqrt(expected)
+chisresul$residuals    # Residuos de Pearson: (observed - expected) / sqrt(expected)
 sum(resul$residuals^2) # Coincide con el estadístico chi-cuadrado
 
 sum(resul$residuals^2)/sum(tabla)  #Inercia=chicuadrado/n

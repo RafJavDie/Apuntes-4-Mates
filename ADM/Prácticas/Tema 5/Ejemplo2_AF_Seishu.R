@@ -52,10 +52,8 @@ PAF$Bartlett #estadístico del test
 #cálculo del p-valor
 p=ncol(datos)
 gl= p*(p-1)/2
-1-pchisq(PAF$Bartlett,gl)   # Contraste significativo  ### Por tanto, no.
-                            # ¿Cómo aceptaríamos aquí? >0.025 ??
-                            # 178 no pertenece ni cerca a 
-                            # c(qchisq(0.025,gl),qchisq(0.975,gl)) = [28,65]
+1-pchisq(PAF$Bartlett,gl)   # Contraste significativo  
+## Por tanto, no aceptmos la esfericidad y aplicamos AF.
 
 #(normalidad multivariante cuestionable
 #p.value.small

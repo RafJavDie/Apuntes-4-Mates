@@ -33,7 +33,7 @@ pvalores<-sapply(1:7, function(nf)
   factanal(covmat = druguse, factors = nf, 
            method = "mle", n.obs = 1634)$PVAL)
 names(pvalores)<- 1:7
-round(pvalores,4)  #Sugiere 6 factores
+round(pvalores,4)  #Sugiere 6 factores        ############ ¿Qué estamos haciendo aquí?
 plot(eigen(druguse)$values,type="h")
 
 #AF máxima verosimilitud con 6 factores
@@ -59,7 +59,7 @@ af.mv       #Rotación varimax (por defecto)
 
  pfun(6)
  summary(pfun(6))   #con 6 hay un buen ajuste
- summary(pfun(3))
+ summary(pfun(3))                          ############ ¿Por qué probamos con 3?
  boxplot(pfun(6),ylim=c(-0.1,0.1),col="red",
    main="Correlaciones Residuales\n Método de máxima verosimilitud" )
  boxplot(pfun(3),add=TRUE,col="lightblue")

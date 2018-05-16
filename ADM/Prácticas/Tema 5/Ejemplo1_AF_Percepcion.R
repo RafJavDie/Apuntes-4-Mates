@@ -55,9 +55,12 @@ plot(princomp(X,cor=TRUE))   #Sugiere dos factores
 round(autoval,2)
 (autovec= eigen(R)$vectors)
 m= 2  #número de factores
+
 L=autovec[,1:m]%*%diag(sqrt(autoval[1:m]))  
 #Cargas factoriales
+
 rownames(L)= colnames(X)            
+
 #Coinciden con las correlaciones entre 
 #variables y factores (R)
 colnames(L)= paste("Factor",1:m)  
@@ -144,14 +147,14 @@ Z= scale(X,center=TRUE,scale=TRUE)
 apply(Z,2,mean)
 apply(Z,2,sd)
 
-#Para aplicar la fórmula de transparencias
-#las variables deben centrarse 
+#Para aplicar la fórmula de transparencias   ### Aclaro: Si trabajas con R, todo TRUE
+#las variables deben centrarse               ### Si trabajas con Sigma, solo center.
 #aquí no hace falta
-Xcent=scale(Z,center=TRUE,scale=FALSE)              ### ¿Z o X?
+Xcent=scale(Z,center=TRUE,scale=FALSE)              
 summary(Xcent)
-Frot= t(solve(t(Lrot)%*%Lrot)%*%t(Lrot)%*%t(Xcent)) ### 
-rownames(Frot)= rownames(X)
-Frot                                                ### ¿Estas son las puntuaciones?
+Frot= t(solve(t(Lrot)%*%Lrot)%*%t(Lrot)%*%t(Xcent))  ## ¿Tiene que ser la rotada?
+rownames(Frot)= rownames(X)                          ## ¿O puede ser la L normal?
+Frot                                                
 
 #Comprobar que tienen media 0
 #y matriz de cov=I

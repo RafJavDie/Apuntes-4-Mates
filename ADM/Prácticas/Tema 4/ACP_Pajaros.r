@@ -21,11 +21,11 @@ colnames(R)= rownames(R)= c("longcra","anchcra",
 R
 R-t(R)  #Comprobar que es simétrica
 
-#El test de esfericidad de Bartlett contrasta 
-#la hipótesis nula de que una matriz
-#var-cov es proporcional a la identidad, 
-#si se trabaja con las variables tipificadas
-#H0:R=I ,  H1:R!=I
+# El test de esfericidad de Bartlett contrasta 
+# la hipótesis nula de que una matriz
+# var-cov es proporcional a la identidad, 
+# si se trabaja con las variables tipificadas
+# H0:R=I ,  H1:R!=I
 n=400
 p= ncol(R)
 EBarl = -(n-1-(2*p+5)/6)*log(det(R))
@@ -59,13 +59,13 @@ m=2  #Número de componentes a considerar
 L= autovec[,1:m] 
 rownames(L)=colnames(R)
 #para calcular las correlaciones entre las variables y las componentes
-cor_vc=L%*%diag(sqrt(autoval[1:m]))                ### Propiedad 1.5 ??
-cor_vc                                             ### PREGUNTARRRR
+cor_vc=L%*%diag(sqrt(autoval[1:m]))               
+cor_vc                                            
 
 #Comunalidades: para cada variable, es 
 #la suma de correlaciones cuadrado
 #con las c.p. seleccionadas
-cbind(apply(cor_vc^2,1,sum))       #### Esto está mal escrito. ¿Hola? 
+cbind(apply(cor_vc^2,1,sum))       
 
 
 
@@ -86,3 +86,4 @@ text(L,labels=rownames(L),cex=0.8)
 text(Lrot,labels=rownames(Lrot),cex=0.8,col="red")
 grid()
 abline(h=0,v=0,lty=2)                                
+

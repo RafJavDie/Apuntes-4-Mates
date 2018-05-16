@@ -145,7 +145,7 @@ t.test(XtransB ~ g,var.equal=FALSE)
 
 D <- daisy(flower,type = list(asymm = c("V1", "V3"), symm= 2,ordratio= 7,logratio= 8))
 
-## Como hay un factor se coge la dstancai de boer automaticamente
+## Como hay un factor se coge la distancia de bower automaticamente
 
 ####################################
 ## Método jerárquico aglomerativo ##
@@ -153,7 +153,7 @@ D <- daisy(flower,type = list(asymm = c("V1", "V3"), symm= 2,ordratio= 7,lograti
 
 ### Método Hclust ### 
 
-# Puedes usar otros "Average" u otros métodos como "single" o "average". 
+# Puedes usar otros métodos como "single" o "average". 
 D<- dist(datos)
 round(D,1)
 conglo<- hclust(D,method="complete") ## Solo acepta la matriz de disimilaridad
