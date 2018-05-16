@@ -24,7 +24,7 @@ Solo es necesario considerar el caso $q=1$, pues para $q\geq 2$, $w\land w\in Al
 Sea $M$ una $n$-variedad diferenciable, compacta y orientable, $\theta\in\Omega^{n-1}(M)$. Demuestra que $d\theta$ debe anularse en algún punto de $M$.
 \end{ejercicio}
 \begin{solucion}
-
+Sea $\theta\in\Omega^{n-1}(M)$. El soporte es en general un cerrado, y como $M$ es compacta, el soporte es compacto. Como $M$ es orientable tenemos que $\int_M d\theta=0$, pero esto implica que necesariamente $d\theta=0$ en algún punto, con lo que se tiene el resultado. 
 \end{solucion}
 \newpage
 
@@ -52,14 +52,25 @@ Sea $M$ una $n$-variedad diferenciable orientable y compacta. Considera el sigui
 \begin{enumerate}[a)]
 \item Demuestra que $\mathcal{P}$ está bien definido y que además describe un homomorfismo de $\R$-espacios vectoriales.
 \item Diremos que las $k$-formas $\delta\equiv\gamma$ son equivalentes si $\delta-\gamma=d\phi$ para alguna $(k-1)$-forma $\phi$. Demuestra que si $\alpha_1\equiv \alpha_2$, $\beta_1\equiv\beta_2$ y son formas exactas, entonces $\mathcal{P}(\alpha_1)(\beta_1)=\mathcal{P}(\alpha_2)(\beta_2)$. 
-\item Utilizando b), demuestra que $\mathbb{P}$ induce un homomorfismo de $\R$-espacios vectoriales $\overline{P}:H^k(M)\to (H^{n-k}(M))^*$.
+\item Utilizando b), demuestra que $\mathcal{P}$ induce un homomorfismo de $\R$-espacios vectoriales $\overline{P}:H^k(M)\to (H^{n-k}(M))^*$.
 \end{enumerate}
 \begin{nota}
 Recuerda que si $V$ es un $R$-espacio vectorial, también se denota por $(V)^*=Hom_\R(V,\R)=Alt^1(V)$ al conocido como espacio dual de $V$.
 \end{nota}
 \end{ejercicio}
-\begin{solucion}
-
+\begin{solucion}\
+\begin{enumerate}[a)]
+\item Como $\alpha\in\Omega^k(M)$ y $\beta\in\Omega^{n-k}(M)$, $\alpha\land\beta\in\Omega^n(M)$ y la integral está bien definida. La linealidad del producto exterior y de la integral convierte a $\mathcal{P}$ en un homomorfismo de $\R$-espacios vectoriales.
+\item Supongamos que $\alpha_2=\alpha_1+d\phi_{\alpha}$ y $\beta_2=\beta_1+d\phi_{\beta}$. Si las formas son exactas, tenemos además que $\alpha_1=d\tau_{\alpha}$ y $\beta_1=d\tau_{\beta}$. Entonces
+\begin{align*}
+\mathcal{P}(\alpha_2)(\beta_2)&=\int_M\alpha_2\land\beta_2=\int_M(\alpha_1+d\phi_{\alpha})\land (\beta_1+d\phi_{\beta})\\
+&=\int_M\alpha_1\land\beta_1+\int_M\alpha_1\land d\phi_{\beta}+\int_Md\phi_{\alpha}\land\beta_1+\int_Md\phi_{\alpha}\land d\phi_{\beta}\\
+&=\mathcal{P}(\alpha_1)(\beta_1)+\int_Md\tau_{\alpha}\land d\phi_{\beta}+\int_Md\phi_{\alpha}\land d\tau_{\beta}+\int_Md\phi_{\alpha}\land d\phi_{\beta}\\
+&=\mathcal{P}(\alpha_1)(\beta_1)+\int_Md(\tau_{\alpha}\land \phi_{\beta})+\int_Md(\phi_{\alpha}\land \tau_{\beta})+\int_Md(\phi_{\alpha}\land \phi_{\beta}).
+\end{align*}
+Ahora, por el corolario del teorema de Stokes, todos los sumandos menos el primero son 0, lo que nos da el resultado. 
+\item Basta comprobar que está bien definido, lo cual es inmediato a partir de b), pues estar en la misma clase de cohomología es por definición estar relacionados mediante la relación de equivalencia de b).
+\end{enumerate}
 \end{solucion}
 
 
