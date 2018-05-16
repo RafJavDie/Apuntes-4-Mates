@@ -565,7 +565,7 @@ Consideremos $K_1=\{\gene{v_5,v_6,v_7}\}$ y $K_2=K-\{(v_5,v_6,v_7)\}$. Se tiene 
 \end{align*}
 donde $\tau=(v_5,v_6)+(v_6,v_7)+(v_7,v_5)$, $\tau_1=(v_0,v_1)+(v_1,v_4)+(v_4,v_0)$ y $\tau_2=(v_0,v_2)+(v_2,v_3)+(v_3,v_0)$. Veamos cómo funciona $i_{*1}$. Si orientamos $K$ igual que en el ejemplo anterior consideramos 
 \[ c = \sum_{\dim(µ \in K_2)=2} µ \]
-en $K_2$ se comprueba que $\partial c=\tau+2\tau_1$, por lo que $[\tau]=2[-\tau_1]$ en $H_1(K_2)$. Así que $i_*([\tau])=2[-\tau_1]$ con lo que tenemos que  $i_*$ es inyectiva. Por exactitud esto implica que $H_2(K)\cong\Ima\Delta_{*2}=\ker i_*=0$. Ahora, usando el primer teorema de isomorfía y la sobreyectividad de $j_{1*}$ tenemos que
+en $K_2$ se comprueba que $\partial c=\tau+2\tau_1$, por lo que $[\tau]=2[-\tau_1]$ en $H_1(K_2)$. Así que $i_*([\tau])=2[-\tau_1]$ con lo que tenemos que  $i_*$ es inyectiva si la característica de $\F$ no es 2 y nula en caso contrario. Centrémonos en el primer caso. Por exactitud esto implica que $H_2(K)\cong\Ima\Delta_{*2}=\ker i_*=0$. Ahora, usando el primer teorema de isomorfía y la sobreyectividad de $j_{1*}$ tenemos que
 \[
 H_1(K)\cong \F^2\gene{\tau_1,\tau_2}/2\F\gene{\tau_1}=\F\gene{\tau_2}
 \]
@@ -574,6 +574,13 @@ $$\widetilde{H}_q(K)\cong \begin{cases}
 \F\gene{\tau_2} & q=1\\
 0 & c.c.
 \end{cases}$$
+Si $\F$ es de característica dos, con un procedimiento análogo llegamos a que
+$$\widetilde{H}_q(K)\cong \begin{cases}
+\F\gene{c'} & q=2\\
+\F\gene{\tau_1,\tau_2} & q=1\\
+0 & c.c.
+\end{cases}$$
+donde \[ c' = \sum_{\dim(µ \in K)=2} µ. \]
 \end{ej}
 
 \begin{ej}
