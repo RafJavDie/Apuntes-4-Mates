@@ -1,0 +1,284 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{7.3.1}\
+\begin{enumerate}[a.]
+\item Explain why $1 ∈ k[x^2]$ but $1 \not∈ 
+\gene{x^2}$.
+\item Explain why $x^3 \not∈ k[x^2]$ but $x^3 ∈ 
+x^2$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item $1 ∈ k[x^2]$ por definición de anillo de polinomios, ya que $1\in k$. $1 \not∈ 
+\gene{x^2}$ porque eso implicaría que existe un polinomio $f\in k[x]$ de modo que $f(x)x^2=1$, con lo que $x^2$ sería unidad, lo cual no es cierto.
+\item Los polinomios de $k[x^2]$ son expresiones finitas de la forma $\sum_i a_i(x^2)^i$, por lo que todos los términos tienen grado par, por lo que $x^3 \not∈ k[x^2]$. Sin embargo, $x^3=x\cdot x^2$, por lo que $x^3 ∈ 
+x^2$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7.3.2}
+Let $G$ be a finite matrix group in $GL(n, k)$. Prove that the Reynolds operator $R_G$ has the
+following properties:
+\begin{enumerate}[a.]
+\item If $a, b ∈ k$ and $f , g ∈ k[x_1, \dots, x_n]$, then $R_G(af + bg) = aR_G( f) + bR_G(g)$.
+\item $R_G$ maps $k[x_1, \dots, x_n]$ to $k[x_1, \dots , x_n]^G$ and is onto.
+\item $R_G \circ R_G = R_G$.
+\item If $f ∈ k[x_1, \dots, x_n]^G$ and $g ∈ k[x_1, \dots , x_n]$, then $R_G( fg) = f  R_G(g)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Tengamos presenta la definición del operador de Reynolds
+\[
+R_G( f )(x) =
+\frac{1}{|G|}\sum_{A∈G}f (A \cdot x)
+\]
+\begin{enumerate}[a.]
+\item 
+\[
+R_G( af + bg )(x) =
+\frac{1}{|G|}\sum_{A∈G}(af + bg) (A \cdot x)=a\frac{1}{|G|}\sum_{A∈G}f (A \cdot x)+b\frac{1}{|G|}\sum_{A∈G}g (A \cdot x)=aR_G( f)(x) + bR_G(g)(x).
+\]
+\item Dada $B\in G$, 
+\[
+R_G( f )(Bx) =
+\frac{1}{|G|}\sum_{A∈G}f (A \cdot B x)=\frac{1}{|G|}\sum_{A∈G}f ( A x)
+\]
+puesto que $AB$ recorre todas las matrices de $G$, así que a lo sumo cambia el orden en el que aparece cada término.
+
+Dado $g\in k[x_1, \dots, x_n]^G$, $g(x)=g(Ax)$ para toda $A\in G$, de modo que $g(x)=\frac{1}{|G|}\sum_{A∈G}g (A x)=R_G(g)(x)$, por lo que se tiene a sí mismo como preimagen. 
+\item Por el apartado anterior, $R_G$ envía $k[x_1, \dots, x_n]$ en $k[x_1, \dots, x_n]^G$ y es la identidad sobre este último, por lo que se tiene el resultado.
+\item \[
+R_G( fg )(x) =
+\frac{1}{|G|}\sum_{A∈G}f (A \cdot x)g(A\cdot x)=\frac{1}{|G|}\sum_{A∈G}f (x)g(A\cdot x)=f(x)\sum_{A∈G}g(A\cdot x)=f(x)R_G(g)(x).
+\]
+
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7.3.3}
+In this exercise, we will work with the cyclic group $C_4 ⊆ GL(2, k)$ from Example 4 in
+the text.
+\begin{enumerate}[a.]
+\item Prove that the Reynolds operator of $C_4$ is given by
+\[
+R_{C_4} ( f )(x, y) =
+\frac{1}{4}
+( f (x, y) + f (−y, x) +f (−x,−y) + f (y,−x)).
+\]
+\item Compute $R_{C_4}(x^iy^j)$ for all $i + j ≤ 4$. Note that some of the computations are done in
+Example 4. You can check your answers against the table in Example 6.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item El grupo $C_4$ está formado por las matrices
+\[
+\begin{pmatrix}
+0 & -1\\
+1 & 0
+\end{pmatrix}, \begin{pmatrix}
+-1 & 0\\
+0 & -1
+\end{pmatrix},\begin{pmatrix}
+0 & 1\\
+-1 & 0
+\end{pmatrix}, \begin{pmatrix}
+0 & 1\\
+1 & 0
+\end{pmatrix}.
+\]
+Con esto y con la definición del operador de Reynolds el resultado se sigue inmediatamente.
+\item Están hechos en la página 368 del libro.
+\end{enumerate}
+
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{7.3.4}
+We will use
+the multinomial coefficients, which are defined as follows. For $α = (α_1, \dots , α_n) ∈ \Z^n_{≥0}$,
+let $|α| = m$ and define 
+\[
+\binom{m}{α}
+=
+\frac{m!}{α_1!α_2! \cdots α_n!}.
+\]
+\begin{enumerate}[a.]
+\item Prove that $\binom{m}{\alpha}$
+is an integer. Hint: Use induction on $n$ and note that when $n = 2$, $\binom{m}{\alpha}$
+is a binomial coefficient.
+
+\item Prove that
+\[
+(x_1 + \cdots + x_n)^m =
+\sum_{|α|=m}\binom{m}{α}x^α.
+\]
+In particular, the coefficient $a_α$ in equation (2) is the positive integer $\binom{m}{α}$. Hint: Use
+induction on $n$ and note that the case $n = 2$ is the binomial theorem.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Para $n=1$ tendríamos el número 1. Para $n=2$ se trata del coeficiente binomial, pues tenemos $\frac{m!}{α_1!α_2!}$ con $\alpha_2=m-\alpha_1$, por lo que es entero. Supongámoslo cierto para $n-1$, es decir, es cierto para $|\alpha|=\alpha_1+\cdots\alpha_{n-1}=m$. Entonces, dado $\alpha_n\in\Z$,
+\[
+\binom{m+\alpha_n}{\alpha\cup \alpha_n}=\frac{(m+\alpha_n)!}{α_1! \cdots \alpha_{n-1}!α_n!}=\frac{(m+\alpha_n)\cdots(m+1)}{\alpha_n!}\frac{m!}{α_1! \cdots \alpha_{n-1}!}=\binom{m+\alpha_n}{\alpha_n}\binom{m}{\alpha}\in\Z
+\]
+\item Para $m=1$ y para $n=1$ es trivial. Para $n=2$ tenemos justamente el teorema del binomio. Supongamos el resultado cierto para $n-1$. Entonces
+\begin{gather*}
+(x_1 + \cdots+x_{n-1} + x_n)^m=((x_1 + \cdots+ x_{n-1})+ x_n)^m=\sum_{k=0}^m (x_1\cdots x_{n-1})^{m-k}x_n^k=\sum_{|\alpha|=m}x^\alpha
+\end{gather*}
+
+
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7.2.5}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7.3.6}
+If we have two finite matrix groups $G$ and $H$ such that $G ⊆ H ⊆ GL(n, k)$, prove that
+$k[x_1, \dots , x_n]^H ⊆ k[x_1, \dots , x_n]^G$.
+\end{ejercicio}
+\begin{solucion}
+Dado $f\in k[x_1, \dots , x_n]^H$, $f(Ax)=f(x)$ para toda $A\in H$. En particular, para $A\in G$.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7.3.7}
+Consider the matrix
+$$A =
+\begin{pmatrix}
+0 &−1\\
+1 &−1
+\end{pmatrix}∈ GL(2, k).$$
+\begin{enumerate}[a.]
+\item Show that $A$ generates a cyclic matrix group $C_3$ of order 3.
+\item Use Theorem 5 to find finitely many homogeneous invariants which generate $k[x, y]^{C_3}$.
+\item Can you find fewer invariants that generate $k[x, y]^{C_3}$? Hint: If you have invariants
+$f_1, \dots , f_m$, you can use Proposition 7 to determine whether $f_1 ∈ k[ f_2, \dots , f_m]$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item 
+\[
+A^2=\begin{pmatrix}
+-1 & 1\\
+-1 & 0
+\end{pmatrix}, A^3=I.
+\]
+\item Como el grupo tiene orden 3, tenemos que calcular $R_{C_3}(x^iy^j)$ para todo $1\leq i+j\leq 3$.
+\begin{align*}
+R_{C_3}(x)=\frac{1}{3}(-y+y-x+x) \Rightarrow  &0\\
+R_{C_3}(x^2)=\frac{1}{3}((-y)^2+(y-x)^2+x^2)\Rightarrow & 2x^2-2xy+2y^2\\
+R_{C_3}(x^3)=\frac{1}{3}(-y^3+(y-x)^3+x^3)\Rightarrow & 3x^2y-3y^2\\
+R_{C_3}(y)=\frac{1}{3}(x-y-x+y)\Rightarrow & 0\\
+R_{C_3}(y^2)=\frac{1}{3}((x-y)^2+x^2+y^2)\Rightarrow & 2x^2+2y^2-2xy\\
+R_{C_3}(y^3)=\frac{1}{3}((x-y)^3-x^3+y^3)\Rightarrow &-3x^2y+3xy^2\\
+R_{C_3}(xy)=\frac{1}{3}()\\
+R_{C_3}(x^2y)=\frac{1}{3}()\\
+R_{C_3}(xy^2)=\frac{1}{3}()\\
+\end{align*}
+TERMINARLO O HACER UN PROGRAMA EN SAGE
+\end{enumerate}
+
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7.3.8}
+Let $A$ be the matrix of Exercise \ref{ejer:7.3.7}.
+\begin{enumerate}[a.]
+\item Show that $−A$ generates a cyclic matrix group $C_6$, of order 6.
+\item Show that $−I_2 ∈ C_6$. Then use Exercise \ref{ejer:7.3.6} and §2 to show that $k[x, y]^{C_6} ⊆ k[x^2, y^2, xy]$.
+Conclude that all nonzero homogeneous invariants of $C_6$ have even total degree.
+\item Use part (b) and Theorem 5 to find $k[x, y]^{C_6}$. Hint: There are still a lot of Reynolds
+operators to compute. You should use a computer algebra program to design a procedure
+that has $i, j$ as input and $R_{C_6} (x^iy^j)$ as output.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item 
+\item 
+\item
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7.3.9}
+
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7.3.10}
+Consider the finite matrix group
+\[
+G =
+\left\{\begin{pmatrix}
+±1& 0 &0\\
+0 &±1 &0\\
+0 &0 &±1
+\end{pmatrix}
+\right\}
+⊆ GL(3, k).
+\]
+Note that $G$ has order 8.
+\begin{enumerate}[a.]
+\item If we were to use Theorem 5 to determine $k[x, y, z]^G$, for how many monomials would
+we have to compute the Reynolds operator?
+\item Use the method of Example 12 in §2 to determine $k[x, y, z]^G$.
+\end{enumerate}
+ 
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item $9+8+7+6+5+4+3+2=44$. 
+\item 
+\end{enumerate}
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{7.3.11}
+Let $f$ be the polynomial (4) in the text.
+\begin{enumerate}[a.]
+\item Verify that $f ∈ k[x, y]^{C_4} = k[x^2 + y^2, x^3y − xy^3, x^2y^2]$.
+\item Use Proposition 7 to express $f$ as a polynomial in $x^2 + y^2$, $x^2y − xy^3$, $x^2y^2$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion} 
+El polinomio en cuestión es $$f (x, y) = x^8 + 2x^6y^2 − x^5y^3 + 2x^4y^4 + x^3y^5 + 2x^2y^6 + y^8.$$
+\begin{enumerate}[a.]
+\item Se tiene $f(x,y)=f(-y,x)=f(-x,-y)=f(y,-x)$, que es por definición ser invariante por $C_4$.
+\item 
+\end{enumerate}
+\end{solucion}
+
+
+\end{document}
+
