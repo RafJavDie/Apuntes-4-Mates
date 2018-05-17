@@ -24,3 +24,16 @@ abline(0,1)
 
 # Error cuadrático medio
 (mse <- mean((yhat - test$mortality_rate)^2))
+
+install.packages("gbm")
+library(gbm)
+boost.mortality <- gbm(mortality_rate~.-Id,
+                       data=train,
+                       distribution="gaussian",
+                       n.trees=5000,
+                       interaction.depth=4)
+summary(boost.mortality)
+yhat.boost <- predict(boost.mortality,
+                      newdata = test,
+                      n.trees = 5000)
+(mean((yhat.boost - test$mortality_rate)^2))
