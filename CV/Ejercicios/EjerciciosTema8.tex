@@ -125,7 +125,21 @@ Por reducción al absurdo, supongamos que $K^2$ es orientable, entonces existe $
 \newpage
 
 \begin{ejercicio}{9.14}
-CAMBIAR $d_pf(v)$ por $D_pf(v)$. LAS PARCIALES SON ENTRE PARÉNTESIS SUB $h(x)$
+Sea $M$ una variedad Riemanniana de dimensión $n$ y $f\in C^{\infty}(M;\R)$. Se define el campo vectorial gradiente $grad f$ en $M$ exigiendo que $grad_pf\in T_pM$ verifique
+\[
+\gene{grad_pf,v}_p=D_pf(v)
+\]
+para todo $v\in T_pM$. Probar que para una parametrización local $h:W\to M$, se tiene
+\[
+grad_{h(x)}f=\sum_{j=1}^n a_j(x)\left(\parcial{}{x_i}\right)_{h(x)}
+\]
+donde $a_j\in C^{\infty}(W;\R)$, $1\leq j\leq n$ están determinadas por el sistema de ecuaciones lineales 
+\[
+\sum_{i=1}^n g_{ij}(x)a_j(x)=\parcial{f}{x_i}(x)\quad (1\leq i\leq n).
+\]
+Probar que la aplicación $grad f:M\to TM$ es diferenciable.
+
+Sea $p\in M$ con $grad_p f\neq 0$. Sea $c=f(p)$. Probar que $f^{-1}(c)$ en un entorno de $p$ es una $(n-1)$-subvariedad diferenciable, y que $grad_pf$ es un vector normal a $f^{-1}(c)$ en $p$. 
 \end{ejercicio}
 \begin{solucion}
 Dada la parametrización $h:W\to M$, tomamos como baste de $T_h(x)M$ la base habitual de las derivadas parciales en $h(x)$. Recordemos que
@@ -147,7 +161,7 @@ Veamos que $grad(f):M\to TM$ es diferenciable. Damos un atlas diferenciable sobr
 W\times\R^n\longrightarrow \pi^{-1}(W)\\
 (x,v)\longmapsto (g(x), D_xg(v))
 \end{align*}
-es una parametrización de $TM$. COMPROBAR QUE EL CAMBIO DE CARTAS ES DIFERENCIABLE. 
+es una parametrización de $TM$. 
 
 Así, dado $p\in M$, $grad(f):M\to TM$ está definido por $p\mapsto (p,grad_p(f))$. Dada una carta $(U,h)$ alrededor de $p$, entonces $(U\times\R^n, h\times D_ph)$ es una carta alrededor de $(p,grad_p(f))$. La composición nos da $(h(p), (a_1(x),\dots, a_n(x))$ que es diferenciable. 
 
@@ -170,7 +184,7 @@ Probar que $\widetilde{M}$ tiene una topología tal que $\widetilde{W}$ es abier
 \begin{solucion}
 Para cada abierto orientado $W\subseteq M$ con forma de orientación $w\in\Omega^n(W)$ definimos los conjuntos $W_+=\{(p,o_p)\in\widetilde{M}\mid p\in W, o_p\in [w]\}$ y $W_-\{(p,o_p)\in\widetilde{M}\mid p\in W, o_p\notin[w]\}$. Dotamos a $\widetilde{M}$ de la topología que tiene como base el de abiertos la familia $\{W_+,W_-\}_{W\subseteq M}$.
 
-COMPROBAR QUE ES BASE, ES DECIR QUE $\widetilde{M}\cap\widetilde{N}$ CUANDO ES NO VACÍO TIENE UN ENTORNO DE LA MISMA FORMA DENTRO
+%es trivial COMPROBAR QUE ES BASE, ES DECIR QUE $\widetilde{M}\cap\widetilde{N}$ CUANDO ES NO VACÍO TIENE UN ENTORNO DE LA MISMA FORMA DENTRO
 
  Con la notación del enunciado, $\widetilde{W}=W_+$ y es evidente que $\pi:W_+\to W$ es homeomorfismo con esta topología.
 
@@ -195,9 +209,16 @@ Si $M$ es orientable, entonces podemos considerar $\widetilde{M}_+$ y $\widetild
 
 Supongamos que $M$ es no orientable y sea $W\subseteq\widetilde{M}$ una componente conexa. La restricción $\pi|_W: W\to M$ sigue siendo un recubridor diferenciable. Efectivamente, para cada abierto $U\subseteq M$, cada componente conexa de $\pi^{-1}(U)$ está en una única componente conexa de $\widetilde{M}$, por lo que podemos quedarnos con las preimágenes que estén en $W$. Así que todas las fibras tienen el mismo cardinal. Esto quiere decir que  las fibras en $W$ tienen cardinalidad 1 o 2. Si tuvieran cardinalidad 1, entonces $\pi|_W$ sería un difeomorfismo y su inversa induciría una orientación en $M$. De esta forma, la cardinalidad de las fibras es 2 y eso implica que necesariamente $W=\widetilde{M}$, con lo que se tienen la conexión.
 
-VERLO COMO UNA APLICACIÓN $F:\widetilde{M}\to S^0=\{1,-1\}$ QUE ENVÍA AL 1 SI LA ORIENTACIÓN ES LA POSITIVA, QUE ES DIFERENCIABLE (LO IMPORTANTE ES QUE ES CONTINUA)
+SOLUCIÓN DE CLASE
 
-SI TIENE MÁS DE DOS COMPONENTES CONEXAS, HAY DOS QUE VAN AL MISMO, ENTONCES COGER UNA CADENA DE ABIERTOS QUE UNA $p$ CON $q$ Y LEVANTARLA AL RECUBRIDOR, LO QUE DARÁ UNA CADENA ENTRE LAS DOS, PERO ENTONCES SON LA MISMA. 
+Sea $F:\widetilde{M}\to S^0=\{1,-1\}$ dotando a $S^0$ tiene la topología discreta. Fijada una orientación de $\R^n$, la podemos comparar con la orientación $o_p$ para todo $(p,o_p)\in\widetilde{M}$ , pues $D_{(p,o_p)}:T_{(p,o_p)}\widetilde{M}\to T_pM$ y $D_p\varphi:T_pM\to T_{\varphi(p)}\R^n=\R^n$ son isomorfismos. Así que $F(p,o_p)=1$ si $o_p$ es la orientación de $\R^n$ y $-1$ en caso contrario. Entonces $F^{-1}(\pm 1)$ son abiertos por definición de la topología de $\widetilde{M}$, por lo que $F$ es continua. 
+
+Veamos que $\widetilde{M}$ tiene a lo más 2 componentes conexas. Supongamos que tiene más, entonces sin pérdida de generalidad al menos dos componentes $C_1,C_2$ verifican $F(C_1)=F(C_2)=1$.  Sean $(p,o_p)\in \hat{U}_{\alpha,i}\subseteq C_1$ y $(q,o_q)\in\hat{U}_{\beta,j}\subseteq C_2$. Como $M$ es conexo, tenemos una cadena $U_\alpha=U_{\alpha_1},\dots, U_{\alpha_m}=U_{\beta}$ de modo que las intersecciones no son vacías. Entonces podemos levantar esta cadena a $\widetilde{M}$ mediante $\pi^{-1}$ eligiendo en cada caso el abierto preimagen adecuado. Entonces conseguiríamos una cadena uniendo $(p,o_p)$ y $(q,o_q)$ con lo que estarían en la misma componente conexa.
+
+Si $\widetilde{M}$ no es conexo, $\widetilde{M}=C_1\sqcup C_2$, que es orientable, luego los $C_i$ son orientables, de modo que $\pi(C_1)$ es orientable por la orientación inducida. 
+
+Si $M$ es orientable, elegimos una forma de orientación $\sigma\in\Omega^n(M)$. Definimos $s:M\to\widetilde{M}$ como $x\mapsto s(x)=(x,[\sigma_x])$ y $t$ análogamente como $t(x)=(x,-[\sigma_x])$. Entonces $F\circ s=1$ y $F\circ t=-1$, por lo que $s(M)\neq t(M)$ son componentes distintas.
+ 
 \end{solucion}
 \newpage
 
@@ -220,7 +241,43 @@ Probar que $\varphi$ es una solución de la ecuación
 \]
 \end{ejercicio}
 \begin{solucion}
+Recordemos del ejercicio \ref{ejer:9.14} que para $x\in V-M$
+\[
+\gene{grad_xf, grad_xf}_x=\gene{\sum_{i=1}^na_i(x)\left(\parcial{}{x_i}\right)_x,\sum_{i=1}^na_i(x)\left(\parcial{}{x_i}\right)_x}=\sum_{i=1}^n\sum_{j=1}a_i(x)a_j(x)\gene{\left(\parcial{}{x_i}\right)_x, \left(\parcial{}{x_j}\right)_x}=\sum_{i=1}^na_i(x)^2
+\]
+porque podemos elegir una base para que sean ortogonales. Así que 
+\[
+\gene{grad_xf,\left(\parcial{}{x_i}\right)_x}_x=a_i(x) 
+\]
+y al mismo tiempo es igual a $D_xf\left(\left(\parcial{}{x_i}\right)_x\right)=\left(\parcial{f}{x_i}\right)(x)$.
 
+Dado $x\in V-M$ y $\varepsilon=f(x)$, vemos que $x\in S_{\varepsilon}=f^{-1}(f(x))\subseteq V$ es subvariedad de $\R^{n+k}$ de codimensión 1. Tomamos $(W,s,i)$ con $W\supseteq S_{\varepsilon}$ entorno tubular de $S_{\varepsilon}$ y sea $l=[x,r(x)]$. Tomamos $y\in l\cap V\cap W$ en la componente conexa de $x$ en $l\cap V\cap W$. Se verifica $|y-s(y)|=\min\{|y-z|, z\in S_{\varepsilon}\}\leq |y-x|$. Entonces $|x-r(x)|=|x-y|+|y-r(x)|\geq |s(y)-y|+|y-r(x)|=|y-r(x)|+\min\{|y-z|, z\in S_{\varepsilon}\}\geq |s(y)-r(x)|+\min\{|y-z|, z\in S_{\varepsilon}\}\geq d(S_\varepsilon,M)=\varepsilon$; pero $|x-y|+|y-r(x)|=\varepsilon$, luego $s(y)=x$, lo cual implica $x-r(x)\in (T_xS_{\varepsilon})^{\perp}$ y también $grad_xf\in T_xS_\varepsilon^\perp$. Como $S_\varepsilon$ tiene codimensión 1, la dimensión del ortogonal es 1, por lo que $grad_xf=\lambda(x-r(x))$. Así pues
+\[
+\lambda^2|x-r(x)|^2=\gene{grad_xf,grad_xf}=\gene{grad_xf,\lambda(x-r(x))}=\lambda \gene{grad_xf, x-r(x)}=\lambda D_xf(x-r(x)).
+\]
+Tomamos la curva $\alpha:I\to V-M, \alpha(t)=x+t(x-r(x))$, la cual verifica $\alpha(0)=x$ y $\alpha'(0)=x-r(x)$. Asi que $D_xf(r-r(x))=(f\circ\alpha)'(0)$, donde 
+\[
+f\circ\alpha(t)=|x+t(x-r(x))-r(x+t(x-r(x))|=|x+t(x-r(x))-r(x)|=|x-r(x)||1+t|=|x-r(x)|\sqrt{(1+t)^2}
+\]
+con lo que su derivada es $|x-r(x)|$. Finalmente $\lambda|x-r(x)|=1$, luego $grad_xf=\frac{x-r(x)}{|x-r(x)|}$, con lo que el producto escalar es 1.
+
+Para la segunda parte, igual que antes, 
+\[
+D_x\varphi(grad_x\varphi)=\gene{grad_x\varphi,grad_x\varphi}=\sum_{i=1}^{k+1}\left(\parcial{\varphi}{x_i}\right)^2(x)
+\]
+donde $\varphi(x)=\gene{Yr(x), x-r(x)}_x$. $grad_x\varphi, Y_x\in T_{r(x)}M^\perp$, que tiene dimensión 1, luego $grad_xf=\lambda(x)Yr(x)$ donde
+\[
+\lambda(x)=\gene{grad_xf,Yr(x)}=D_x\varphi(Yr(x))
+\]
+el cual probaremos que vale 1 de la misma forma que en la primera parte. Tomamos $\alpha:V\to M, \alpha(t)=x+tYr(x)$ donde $\alpha(0)=x$ y $\alpha'(x)=Yr(x)$. 
+\[
+\varphi\circ\alpha(t)=\gene{Yr(\alpha(t)), \alpha(t)-r\alpha(t)}=\gene{Yr(\alpha(t), x+tYr(x)-r(x)}
+\] 
+luego
+\[
+(\varphi\circ\alpha)'(t)=\gene{Yr(\alpha(t)), Yr(x)}
+\]
+que al evaluarla da 1. 
 \end{solucion}
 \newpage
 

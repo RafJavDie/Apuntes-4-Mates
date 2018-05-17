@@ -52,6 +52,19 @@ con la propiedad de que si $w\in\Omega_c^n(\R)$ tiene soporte contenido en $U$, 
 \]
 \end{prop}
 \begin{dem}
+Si $w\in\Omega^n_c(M)$ y tiene $supp(w)\subseteq U$, con $(U,h)$ una carta orientada positivamente, definimos
+\[
+\int_M w:=\int_{h(U)}(h^{-1})^*w.
+\]
+Veamos que este valor no depende de la carta. Sea $(\tilde{U}, \tilde{h})$ otra carta orientada positivamente que contenga al soporte de $w$, entonces tenemos el cambio de cartas $\phi:V=h(U\cap\widetilde{U})\to W=\widetilde{h}(U\cap\widetilde{U})$ es un difeomorfismo con jacobiano positivo. Si escribimos $\tau=(\widetilde{h}^{-1})^*(w)$, aplicando el lema anterior
+\[
+\int_M w=\int_{h(U)}(h^{-1})^*(w)=\int_V\phi^*(\tau)=\int_W\tau.
+\] 
+Para el caso general, fijado un atlas positivo de $M$, elegimos una partición de la unidad subordinada al atlas $\{\rho_\alpha\}_{\alpha\in A}$. Entonces, si $w\in\Omega_c^n(M)$, $w=\sum_{\alpha\in A}\rho_\alpha w$. Para cada $\alpha\in A$, $supp(\rho_\alpha w)\subseteq U_\alpha$ y es compacto. Definimos
+\[
+\int_M w=\sum_{\alpha\in A}\int_M\rho_\alpha w. 
+\]
+Además, por las propiedades de la partición de la unidad, en cada punto tenemos una suma finita. En particular, si $w$ tiene soporte pequeño, las definiciones coinciden. Claramente el operador definido es lineal y continuo. La unicidad se sigue de la propia demostración, pues si hubiera otro homomorfismo verificando la definición, entonces podríamos escribirlo, eligiendo una partición de la unidad, podemos escribirlo como la suma anterior, y cada sumando debe coincidir pues debe ser el mismo número en las formas de soporte pequeño.
 \QED
 \end{dem}
 \begin{lemma}
@@ -69,7 +82,30 @@ Sea $M$ una variedad diferenciable orientable de dimensión $n$.
 para $w\in\Omega_c^n(M)$. 
 \end{enumerate}
 \end{lemma}
-\begin{proof}
 
-\end{proof}
+\begin{nota}
+Extendemos la definición a $n$-formas continuas. Supongamos $M$ dotada de una forma de orientación $\sigma$. Consideramos $\{f\sigma:f\in C^0(M;\R)\}$. Se tiene $supp(f\sigma)=sup(f)\subseteq M$. Podemos definir 
+\[
+I_\sigma:C_c^0(M;\R)\to\R
+\]
+como $I_\sigma(f)=\int_M f\sigma$, que es lineal y de hecho $I_\sigma(f)\geq 0$ si $f\geq 0$. 
+
+Usando particiones de la unidad subornidada a un atlas positivo orientado, basta definid $I_\sigma(f)$ sobre aquellas $f$ de soporte pequeño en una carta positiva $(U,h)$. En tal caso
+\[
+I_\sigma(f)=\int_M f\sigma:=\int_{h(U)}f\circ h^{-1}(x)\phi(x) d\mu_n
+\]
+donde $\phi$ está determinado por $(h^{-1})^*(\sigma)=\phi(x)dx_1\land\dots\land dx_n$. Como $\phi$ es positiva, $I_\sigma(f)\geq 0$.
+
+De acuerdo con el teorema de representación de Riesz, $I_\sigma$ determina una medida positiva $\mu_\sigma$ en $M$ satisfaciendo
+\[
+\int_M f(x)d\mu_\sigma=\int_M f\sigma, \quad f\in C_c^0(M;\R)
+\]
+con lo que se podrán utilizar los resultados de la integral de Lebesgue. 
+
+Si $M$ es una $n$-variedad Riemanniana, el volumen $vol_M$ determinará una medida $\mu_M$ en $M$ análoga a la de Lebesgue en $\R^n$. Para un conjunto (compacto) $K$, el volumen de $K$ puede definirse como 
+\[
+Vol(K)=\int_K vol_M\in\R.
+\]
+\end{nota}
+
 \end{document}
