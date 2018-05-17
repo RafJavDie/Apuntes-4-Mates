@@ -129,13 +129,13 @@
 	\item<2-> Para cada valor $\alpha$, encuentra el subarbol $T$ que minimiza
 	\[ \sum_{m=1}^{|T|} \sum_{i\colon x_I \in R_m} (y_i - \widehat{y}_{R_m})^2 + \alpha|T| \]
 	\item<3-> Use cross-validation para elegir $\alpha$.
-	\item<3-> Devuelve su correspondiente árbol.
+	\item<4-> Devuelve su correspondiente árbol.
 \end{enumerate}
 \end{frame}
 
 \begin{frame}
 \begin{figure}[h!]
-\includegraphics[scale=0.5]{prunning}
+\includegraphics[scale=0.4]{prunning}
 \end{figure}
 \end{frame}
 
@@ -145,5 +145,46 @@
 \end{figure}
 \end{frame}
 
+\section{Mejoras}
+\begin{frame}
+\frametitle{Bagging}
+\begin{enumerate}
+	\item<1-> Coger muestras de las observaciones de entrenamiento.
+	\item<2-> Formar para cada muestra un árbol.
+	\item<3-> Si queremos hacer una predicción, hacemos 
+	\begin{enumerate}
+		\item La media de las predicciones de los árboles si es un modelo de regresión.
+		\item La predicción mayoritaria si es un modelo de clasificación.
+	\end{enumerate}
+\end{enumerate}
+\end{frame}
 
+\begin{frame}
+\frametitle{Random Forests}
+Como bagging, pero cada árbol usa sólo algunos predictores.
+\end{frame}
+
+\begin{frame}
+\frametitle{Boosting}
+\begin{enumerate}
+	\item<1-> Inicializar $r_i = y_i$.
+	\item<2-> Para $b=1,2,\dots,B$:
+	\begin{enumerate}
+		\item Calcular un modelo de predicción basado en árbol $\widehat{f}^b$ para los datos $(X,r)$.
+		\item Actualizar residuos:
+		\[ r_i \leftarrow r_i - \lambda \widehat{f}^b(x_i) \]
+	\end{enumerate}
+	\item<3-> Devolver:
+	\[ \widehat{f}(x) = \sum_{b=1}^B \lambda \widehat{f}^b(x) \]
+\end{enumerate}
+\end{frame}
+
+
+\setbeamertemplate{headline}{}
+
+\begin{frame}
+\begin{figure}[h!]
+\includegraphics[scale=0.25]{lorax}
+\end{figure}
+\end{frame}
 \end{document}
