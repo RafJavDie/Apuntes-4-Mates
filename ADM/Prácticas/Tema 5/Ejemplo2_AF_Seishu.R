@@ -160,7 +160,7 @@ af.fp
 #   (función factanal)
 ###################################################
 af.mv = factanal(datos,m,scores="Bartlett")
-#scores="regresssion" para el otro método           ## ¿Criterio de método?
+#scores="regresssion" para el otro método         
 af.mv #Ya aplica rotación varimax; contraste satisfactorio
 cbind(Comunalidad=1-af.mv$uniqueness,Especificidad=af.mv$uniqueness)
 L=loadings(af.mv); L

@@ -46,6 +46,8 @@ prop.table(tabla,2)
 mosaicplot(tabla, main="Plot de las distribuciones de Partido condicionadas a Diario")
 mosaicplot(t(tabla), main="Plot de las distribuciones de Diario  condicionadas a Partido")
 
+#################################### ¿Qué hay que interpretar?
+
 # Test chi-cuadrado de independencia
 resul<- chisq.test(tabla)
 resul              # Significativo: se rechaza la independencia

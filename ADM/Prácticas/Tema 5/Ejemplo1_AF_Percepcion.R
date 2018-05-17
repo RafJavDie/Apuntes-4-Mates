@@ -152,8 +152,8 @@ apply(Z,2,sd)
 #aquí no hace falta
 Xcent=scale(Z,center=TRUE,scale=FALSE)              
 summary(Xcent)
-Frot= t(solve(t(Lrot)%*%Lrot)%*%t(Lrot)%*%t(Xcent))  ## ¿Tiene que ser la rotada?
-rownames(Frot)= rownames(X)                          ## ¿O puede ser la L normal?
+Frot= t(solve(t(Lrot)%*%Lrot)%*%t(Lrot)%*%t(Xcent))  ## Si es con L cambian las 
+rownames(Frot)= rownames(X)                          ## puntuaciones
 Frot                                                
 
 #Comprobar que tienen media 0
