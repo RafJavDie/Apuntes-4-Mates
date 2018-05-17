@@ -205,6 +205,39 @@ Calcular los $\F$-espacios vectoriales de homología de $K$, siendo $K$ la trian
 del toro con una membrana vista en clase.
 \end{ejercicio}
 \begin{solucion}
+Tenemos la triangulación $K$
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\draw[fill=gray] (0,3) node[anchor=south]{$v_0$} -- (0,2) node[anchor=east]{$v_1$} -- (1,3) -- cycle;
+\draw[fill=gray] (0,2) -- (1,3) node[anchor=south]{$v_3$} -- (1,2) -- cycle;
+\draw[fill=gray] (1,3) -- (1,2) node[anchor=north]{$v_4$} -- (2,3) node[anchor=south]{$v_6$} -- cycle;
+\draw[fill=gray] (1,2) -- (2,3) -- (2,2) -- cycle;
+\draw[fill=gray] (2,2) -- (3,3) -- (3,2) node[anchor=west]{$v_1$} -- cycle;
+\draw[fill=gray] (3,3) -- (3,4) node[anchor=west]{$v_6$} -- (4,3) node[anchor=west]{$v_3$} -- cycle;
+\draw[fill=gray] (2,2) -- (2,3) -- (3,3) node[anchor=north west]{$v_0$} -- cycle;
+\draw[fill=gray] (0,2) -- (0,1) node[anchor=east]{$v_2$} -- (1,2) node[anchor=south]{$v_4$} -- cycle;
+\draw[fill=gray] (0,1) -- (1,2) -- (1,1) node[anchor=north]{$v_3$} -- cycle;
+\draw[fill=gray] (1,2) -- (1,1) node[anchor=north]{$v_5$} -- (2,2) -- cycle;
+\draw[fill=gray] (1,1) -- (2,2) node[anchor=south]{$v_7$} -- (2,1) -- cycle;
+\draw[fill=gray] (2,1) -- (2,2) -- (3,2) -- cycle;
+\draw[fill=gray] (2,1) -- (3,2) -- (3,1) node[anchor=west]{$v_2$} -- cycle;
+\draw[fill=gray] (0,1) -- (0,0) node[anchor=east]{$v_0$} -- (1,1) node[anchor=south]{$v_5$} -- cycle;
+\draw[fill=gray] (0,0) -- (1,1) -- (1,0) node[anchor=north]{$v_3$} -- cycle;
+\draw[fill=gray] (1,1) -- (1,0) -- (2,1) -- cycle;
+\draw[fill=gray] (1,0) -- (2,1) -- (2,0) node[anchor=north]{$v_6$} -- cycle;
+\draw[fill=gray] (2,0) -- (2,1) node[anchor=south]{$v_8$} -- (3,1) -- cycle;
+\draw[fill=gray] (2,0) -- (3,1) -- (3,0) node[anchor=north]{$v_0$} -- cycle;
+\end{tikzpicture}
+\end{figure}
+
+Hacemos la descomposición obvia con $K_1=T^2$ y $K_2=D^2$, cuya intersección es la circunferencia interior del toro y borde del disco. $H_2(K_1)=\F$ generado por la suma de todos sus 2-símplices y $H_1(K_1)=\F^2$ generado por las dos circunferencias que forman los límites de la triangulación. $H_2(K_2)=H_1(K_1)=0$ por ser colapsable. Por último $H_1(K_1\cap K_2)=\F$. Sustituyendo estos datos en la sucesión de Mayer-Vietoris reducida obtenemos
+\[
+0\to \F\xrightarrow{j_{*2}}H_2(K)\xrightarrow{\Delta_{2*}}\F\xrightarrow{i_{*1}}\F^2\xrightarrow{j_{*1}}H_1(K)\to 0.
+\]
+El borde de $K_2$ es evidentemente trivial en $K_2$, pero en $K_1$ es uno de los generadores de la homología, por lo que $i_{*1}$ es inyectiva. Esto implica que $\Delta_{2*}$ es nulo, a lo cual podemos unir el primer teorema de isomorfía para concluir que $H_2(K)=\F$ generado por la suma de los 2-símplices del toro. 
+
+Por otro lado, que $i_{*1}$ sea inyectiva implica que $\ker{j_{*1}}$ tiene rango 1, por lo que por ser además sobreyectiva, esto implica que $H_1(K)=\F$ generado por el 1-ciclo del toro que no es borde de $K_2$. Además $H_0(K)=\F$ por ser conexo. 
 
 \end{solucion}
 
@@ -350,6 +383,13 @@ su ecuador en un toro. Triangular $X$ y calcular los $\F$-espacios vectoriales d
 simplicial de $X$. Determinar también la carcaterística de Euler-Poincaré $χ(K)$.
 \end{ejercicio}
 \begin{solucion}
+A partir de la triangulación del ejercicio \ref{ejer:2.14} basta tomar un vértice $v_9$ afinmente independiente a $\{v_0,v_3,v_6\}$ y hacer con esto la triangulación habitual de la esfera sobre el disco triangulado que se añadió a la triangulación del toro. Entonces hacemos la descomposición análoga a dicho ejercicio. Ahora $H_2(K_2)=\F$ y $H_1(K_1)=0$. La intersección sigue siendo la misma que en el anteriomente mencionado ejercicio. Lo que nos da la sucesión de Mayer-Vietoris reducida
+\[
+0\to \F\oplus\F\xrightarrow{j_{*2}}H_2(K)\xrightarrow{\Delta_{2*}}\F\xrightarrow{i_{*1}}\F^2\xrightarrow{j_{*1}}H_1(K)\to 0.
+\]
+De nuevo $i_{*1}$ actúa como en el \ref{ejer:2.14} por lo que los cálculos son análogos, obteniendo así $H_2(K)=\F^2$ generado por el generador de la del toro y la de la esfera, y $H_1(K)=\F$ generado por el ciclo del toro que no interseca en la esfera. Como de costumbre, $H_0(K)=\F$.
+
+Con todo esto, $\chi(K)=1-1+2=2$.  
 \end{solucion}
 
 \newpage
@@ -359,7 +399,7 @@ Calcular los $\F$-espacios vectoriales de homología de un cilindro con dos
 agujeros.
 \end{ejercicio}
 \begin{solucion}
-Un cilindro al que se le hacen dos agujeros es del mismo tipo de homotopía que de un wedge de tres circunferencias, por lo que sus espacios de homología son las sumas directas de los de las tres circunferencias.
+Un cilindro al que se le hacen dos agujeros es del mismo tipo de homotopía que de un wedge de tres circunferencias, por lo que sus espacios de homología son las sumas directas de los de las tres circunferencias. 
 \end{solucion}
 
 \newpage
@@ -373,6 +413,9 @@ Calcular los $\F$-espacios vectoriales de homología de:
 \end{figure}
 \end{ejercicio}
 \begin{solucion}
+El cálculo es análogo al ejercicio \ref{ejer:2.18} ya que la triangulación es similar, pero intercambiando $v_3$ por $v_1$ y $v_6$ por $v_2$, así que resulta la misma homología. 
+
+PREGUNTAR SI SON HOMEOMORFOS PORQUE CREO QUE NO, PERO NO SE ME OCURRE FORMA DE PROBARLO Y DE HECHO EL COCIENTE ES EL MISMO, PODRÍA HACER UNA APLICACIÓN SIMPLICIAL QUE ME CAMBIARA LOS VÉRTICES, SIMPLEMENTE DEPENDE DEL ORDEN EN EL QUE PEGUE
 \end{solucion}
 
 \newpage
