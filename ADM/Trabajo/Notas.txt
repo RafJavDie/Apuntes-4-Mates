@@ -1,18 +1,34 @@
-Prentamos el mÈtodo tree-based. Puede utilizarse tanto para problemas de regresiÛn y clasificaciÛn.
-Para ello "estratificaremos" o "segmentramos" el predictor space en un cierto n˙mero de regiones.
-Dado que el conjunto de las reglas de divisiÛn que usamos para segmentar el predictor space pueden
-resumirse en un ·rbol, estas aproximaciones se conocen como mÈtodos de ·rbol de decisiÛn.
+Prentamos el m√©todo tree-based. Puede utilizarse tanto para problemas de regresi√≥n y clasificaci√≥n.
+Para ello "estratificaremos" o "segmentramos" el predictor space en un cierto n√∫mero de regiones.
+Dado que el conjunto de las reglas de divisi√≥n que usamos para segmentar el predictor space pueden
+resumirse en un √°rbol, estas aproximaciones se conocen como m√©todos de √°rbol de decisi√≥n.
 
 foto arbol
 
-En cuanto a la capacidad del mÈtodo para ser interpretado, se considera que ˙til, pero en otros aspectos
-como la precisiÛn en las predicciones se encuentra ampliamente superado por otros mÈtodos como el
+En cuanto a la capacidad del m√©todo para ser interpretado, se considera que √∫til, pero en otros aspectos
+como la precisi√≥n en las predicciones se encuentra ampliamente superado por otros m√©todos como el
 aprendizaje supervisado.
 
 Ejemplo Hitters
 
 Las regiones en las que finalmente quedan divido el predictor space se denominan hojas o nodos finales.
-TÌpicamente el ·rbol (figura) se dibja con las hojas en la parte inferior. Los puntos del ·rbol donde 
+T√≠picamente el √°rbol (figura) se dibuja con las hojas en la parte inferior. Los puntos del √°rbol donde 
 se divide el predictor space se denominan nodos internos.
 
-- P
+- Predicci√≥n por estratificaci√≥n del espacio
+Supongamos que tenemos unos observables X_1,...,X_p.
+Para construir un arbol de regresion, particionamos el predictor space (el conjunto de valores posibles 
+para los observables) en regiones R_1,...,R_J.
+Toda observaci√≥n que cae en R_j, se le asocia la misma predicci√≥n, que es el valor medio de los valores
+de las observaciones de entrenamiento que se encuentra en R_j.
+
+Para ello, hacemos separaci√≥n binaria recursiva (recursive binary splitting) del espacio.
+Esto consiste en elegir un predictor X_j y un punto de corte s y crear dos regiones R_1 y R_2,
+donde X_j < s y X_j ‚â• s respectivamente, de forma que se minimiza la ecuaci√≥n
+
+\[ \sum_{i\colon x_i \in R_1(j,s)} (y_i - \widehat{y}_{R_1})^2 + \sum_{i: x_i \in R_2(j,s)} (y_i - ≈∑_{R_2})^2 \]
+donde ≈∑_{R_j} es la y media de las observaciones de entrenamiento en la caja R_j.
+
+A continuaci√≥n, repetimos el proceso recursivamente hasta que hemos creado suficientes cajas.
+
+- Tree pruning

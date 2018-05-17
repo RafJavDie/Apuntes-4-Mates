@@ -1,3 +1,5 @@
+library(tree)
+
 # Carga de datos
 train <- read.csv("train.csv")
 test <- read.csv("test.csv")
@@ -25,7 +27,7 @@ abline(0,1)
 # Error cuadrático medio
 (mse <- mean((yhat - test$mortality_rate)^2))
 
-install.packages("gbm")
+#install.packages("gbm")
 library(gbm)
 boost.mortality <- gbm(mortality_rate~.-Id,
                        data=train,
