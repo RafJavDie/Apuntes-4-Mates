@@ -1,0 +1,483 @@
+\documentclass{article}
+\usepackage{amsmath,accents}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{amsthm}
+\usepackage{nccmath}
+\usepackage[spanish]{babel}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{tikz-cd}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{cd}
+\usetikzlibrary{babel}
+\theoremstyle{plain}
+
+\renewcommand{\baselinestretch}{1,4}
+\setlength{\oddsidemargin}{0.5in}
+\setlength{\evensidemargin}{0.5in}
+\setlength{\textwidth}{5.4in}
+\setlength{\topmargin}{-0.25in}
+\setlength{\headheight}{0.5in}
+\setlength{\headsep}{0.6in}
+\setlength{\textheight}{8in}
+\setlength{\footskip}{0.75in}
+
+\theoremstyle{definition}
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{propi}[theorem]{Propiedades}
+\newtheorem{condition}{Condition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{coro}[theorem]{Corolario}
+\newtheorem{criterion}{Criterion}
+\newtheorem{defi}[theorem]{Definición}
+\newtheorem{example}[theorem]{Ejemplo}
+\newtheorem{exercise}{Ejercicio}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{nota}[theorem]{Nota}
+\newtheorem{sol}{Solución}
+\newtheorem*{sol*}{Solución}
+\newtheorem{prop}[theorem]{Proposición}
+\newtheorem{remark}{Remark}
+
+\newtheorem{dem}[theorem]{Demostración}
+
+\newtheorem{summary}{Summary}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\ninf}[1]{\norm{#1}_\infty}
+\providecommand{\numn}[1]{\norm{#1}_1}
+\providecommand{\gabs}[1]{\left|{#1}\right|}
+\newcommand{\bor}[1]{\mathcal{B}(#1)}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\X}{\chi}
+\providecommand{\Zn}[1]{\Z / \Z #1}
+\newcommand{\resi}{\varepsilon_L}
+\newcommand{\cee}{\mathbb{C}}
+\providecommand{\conv}[1]{\overset{#1}{\longrightarrow}}
+\providecommand{\gene}[1]{\langle{#1}\rangle}
+\providecommand{\convcs}{\xrightarrow{CS}}
+% xrightarrow{d}[d]
+\setcounter{exercise}{0}
+\newcommand{\cicl}{\mathcal{C}}
+
+\newenvironment{ejercicio}[2][Estado]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries Ejercicio}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%--------------------------------------------------------
+\begin{document}
+\title{Relación 1 - Geometría y Topología de superficies }
+\author{Javi, Rafa, Diego}
+\maketitle
+\begin{exercise}
+En un espacio $X$ definimos la relación $x \mathcal{R} y$ si existe un subespacio conexo por caminos $C \subseteq X$ con $x,y \in C$. ¿Cuáles son las clases de equivalencia?
+\end{exercise}
+\begin{sol*}
+La clase de equivalencia de un elemento $x \in X$ será todo $y$ tal que existe $C \subseteq X$ con $x, y \in C$, luego:
+\[ [x] = \bigcup_{\substack{C \subseteq X \\ x \in C}} C \]
+que es el mayor subconjunto conexo por caminos de $X$ que contiene a $x$. Este conjunto, por definición, es la componente conexo por camino de $x$.
+\end{sol*}
+
+\newpage
+\begin{exercise}
+Probar que si $\mathcal{R}$ es una relación de equivalencia sobre un espacio $X$, las siguientes condiciones son equivalentes:
+\begin{itemize}
+	\item La aplicación $p : X \to X/\mathcal{R}$ es cerrada (abierta).
+	\item Para todo cerrado (abierto) $A \subseteq X$, la unión de todas las clases de equivalencia que cortan a $A$ es cerrado (abierto) de $X$.
+	\item Para todo abierto (cerrado) $A \subseteq X$, la unión de todas las clases de equivalencias contenidas en $A$ es abierto (cerrado) de $X$.
+\end{itemize}
+\end{exercise}
+\begin{sol*}
+\begin{itemize}
+\item[]
+\item Supongamos que p es cerrada y consideramos las clases de equivalencia $[x]$ tales que $A\cap[x]\neq \emptyset$ y sea $\Gamma$ la unión de todas ellos. Es claro que $p(A) = p(\Gamma)$. Como A es cerrado, por la hipótesis sobre $p$, $p(\Gamma)$ también lo es. Usando que la proyección continua, sabemos que $p^{-1}(p(\Gamma))$ es cerrado, pero, esto es precisamente $\Gamma$.
+\item Usando una construcción análoga, es claro que si suponemos la segunda propiedad y sea $A \subset X$ cerrado, entonces $p(A)$ es cerrado si, por construcción de la topología del cociente, $p^{-1}(p(A))$ es cerrado, pero $p^{-1}(p(A)) = \Gamma$, que es cerrado por hipótesis.
+\item Supongamos la segunda propiedad y sea $A \subset X$ abierto. En tal caso, $A^c$ es cerrado y podemos aplicarle la hipótesis, es decir, la unión de todas las clases de equivalencia $\Gamma$ que cortan a $A^c$ es cerrado. Basta considerar que:
+\[
+\Gamma = \bigcup_{[x]\cap A^c \neq \emptyset} [x]  = \bigcup_{[x]\not\subset A} [x] \Rightarrow \Gamma^c = \bigcup_{[x]\subset A} [x]
+\]
+Por tanto, $\Gamma^c$ es la unión de todas las clases de equivalencias contenidas en $A$ y, por ser $\Gamma$ cerrado, deducimos $\Gamma^c$ es abierto.
+\item Finalmente, veamos que suponiendo la tercera propiedad tenemos la segunda. Sea $A\subset X$ cerrado, entonces $A^c$ es abierto y podemos aplicarle la hipótesis, es decir, que el conjunto $\Gamma = \bigcup_{[x]\subset A}[x]$ es abierto. Entonces $\Gamma^c = \bigcup_{[x]\cap A^c \neq \emptyset} [x]$ es cerrado, como queríamos probar.
+\end{itemize}
+\end{sol*}
+
+\newpage
+\begin{exercise}
+Sean $A$ y $B$ subconjuntos de $X$ tales que $A$ es cerrado y $A \subseteq B$. Probar que existe una inmersión de $B/A$ en $X/A$.
+\end{exercise}
+\begin{sol*}[con $B$ cerrado]
+Vamos a dar explícitamente dicha inmersión. Esta es la aplicación $i_\pi:B/A\rightarrow X/A$ definida como $i_\pi([b])=[b]$. 
+\begin{itemize}
+\item Está bien definida puesto que la imagen de dos elementos coincide si y solo sí están relacionados. Por ello es además inyectiva. 
+\item Claramente es continua, ya que si $G$ es un abierto de $X/A$, entonces $i_\pi^{-1}(G)$ es de la forma $G\cap B/A$, que por definición de la topología del subespacio, es abierto. 
+\item Obsérvese que en $i_\pi([b])$ no hay más elementos que en $[b]$ puesto que si $c\in[b]$, entonces o bien $c=b$ o bien $c,b\in A\subseteq B$. Esto quiere decir que $i_\pi(C)=C\ \forall C\subseteq B$, llevando $C$ la topología del subespacio. 
+\item Veamos por último que es cerrada. Sea $W$ un cerrado de $B/A$, entonces $W = K \cap A$ para algún $K \subset B$ cerrado, que es a su vez $K = S \cap B$ para algún cerrado $S\subset X$ Por tanto $W=A \cap B \cap S = A \cap S$. Queremos ver que $p(W)=W$ es también cerrado en $X/A$, pero esto es sí y solo sí W es la intersección de algún cerrado de $X$ con $A$, como efectivamente se verifica.
+\end{itemize} 
+% Entonces $\pi_B^{-1}(W)$ es cerrado por la definición de topología cociente, siendo $\pi_B$ la proyección canónica de $B$ en $B/A$. Observemos el %siguiente diagrama conmutativo:
+%\[
+%\begin{tikzcd}
+%B\arrow[r,"\pi_B"]\arrow[d,"i"'] & B/A\arrow[r,"i_\pi"] & X/A\\
+%X\arrow[urr,"\pi"]
+%\end{tikzcd}
+%\]
+%Esto quiere decir que $i_\pi=\pi\circ i\circ \pi_B^{-1}$. Por lo anterior y la hipótesis añadida, $i\circ \pi_B^{-1}(W)$ es cerrado, luego resta probar que $\pi$ es cerrada. Esto se tiene por el ejercicio anterior, ya que todas las clases de equivalencia contenidas en $A$ forman un solo punto en el cociente, de modo que su unión es cerrada. 
+\end{sol*}
+
+\newpage
+\begin{exercise}
+Sea $X$ un espacio $T_2$ y $K \subseteq X$ compacto. Probar que $X/K$ es un espacio $T_2$.
+\end{exercise}
+\begin{sol*}
+Consideramos dos puntos $x, y \in X$ con $x \neq y$. Supongamos que $y\in K$. Vamos a buscar una separación por entornos de $[x],[y] \in X/K$. Para cada $k \in K$, existe un entorno abierto $V_k$ de $k$ y un entorno abierto $G^k_x$ de $x$ con $G^k_x \cap V_k = \emptyset$. Por lo tanto, definimos:
+\[ G_x = \bigcap_{k \in K} G^k_x \]
+\[ V = \bigcup_{k \in K} V_k \]
+de manera que $G_x \cap V = \emptyset$. Sea $p : X \to X/K$ la proyección a $X/K$. Como $p(G_x)$ y $p(V)$ son entornos abiertos de $[x]$ e $[y]$ respectivamente y $p(G_x) \cap p(V) = \emptyset$, $[x]$ e $[y]$ están separados. Si $x,y \notin K$, basta tomar $H_x, H_y \subset X$ que separen $x$ e $y$, usando que $X$ es $T_2$. Entonces $p(H_x \cap G_x) \cap p(H_y \cap G_y) = \emptyset$. Luego $[x]$ e $[y]$ están separados y, por lo tanto, $X/K$ es espacio $T_2$.
+\end{sol*}
+
+
+\newpage
+\begin{exercise}
+Indíquense cuáles de los siguientes espacios son homeomorfos entre sí:
+\begin{itemize}
+	\item $\mathbb{R}/\mathbb{Z}$;
+	\item el subespacio $K \subseteq \mathbb{R}^2$ formado por la unión de las cicunferencias $C_k$ con centro $(\pm \frac{1}{k},0)$ y radio $\frac{1}{k}$ con $k \geq 1$;
+	\item $[-1,1]/A$ con $A = \{ \pm \frac{1}{k} : k \geq 1\}$
+\end{itemize}
+\end{exercise}
+\begin{sol*}
+\begin{itemize}
+Vamos a probar que los dos últimos espacios son homeomorfos entre sí, pero el primero no es homeomorfo a ellos. Para ello probaremos en primer lugar que $\mathbb{R}/\mathbb{Z}$ no es compacto, mientras que los pendientes hawaiianos (segundo espacio) sí lo son, y por último probaremos la existencia de un homeomorfismo entre los dos espacios finales.
+\item  Para ver que $\mathbb{R}/\mathbb{Z}$ no es compacto consideremos el siguiente recubrimiento de $\R$: $\{(n-\frac{3}{4}, n+\frac{3}{4})\}_{n\in\Z}$. Este recubrimiento induce otro recubriento por abiertos en el cociente que claramente no contiene ningún subrecubrimiento finito. Vamos ahora que los pendientes hawaiianos son compactos. Basta que lo probemos para uno de ellos ya que los dos pendientes son la unión por un punto de cada uno de ellos, y la unión por un punto de compactos es compactas (esto es un corolario del ejercicio 20). Por fijar ideas consideremos el derecho, es decir, la familia de circunferencias 
+\[\left(x-\frac{1}{k}\right)^2-y^2=\frac{1}{k^2}\]
+a la que llamaremos $X$. Sea $\mathcal{U}$ un recubrimiento por abiertos y sea $U_0\in\mathcal{U}$ cualquier abierto que contenga el origen. Por ser $X$ un subespacio de $\R^2$ podemos escribir $U_0=V\cap X$ para algún abierto $V\subset\R^2$ que contenga el origen. Este abierto debe contener algún conjunto de la forma $\left\{(x,y)| \left(x-\frac{1}{N}\right)^2-y^2=\frac{1}{N^2}\right\}$ para algún $N$ lo bastante grande, ya que este tipo de conjuntos forman una base de entornos del origen, y por esto último $V\subseteq U_0$ (seleccionado $V$ para que el $N$ sea el adecuado). Esto quiere decir que $U_0$ contiene todas las circunferencias salvo una cantidad finita. Por lo tanto solo queda por cubrir una cantidad finita de circunferencias y con eso hemos conseguido un subrecubrimiento finito. 
+\item Definimos $f:[-1,1]\rightarrow K$ a trozos como 
+\begin{gather*}
+f\left(\pm\frac{1}{k}\right)=0\\
+f\left(\left(-\frac{1}{k},-\frac{1}{k+1}\right)\right)=C_{-k}\\
+f\left(\left(\frac{1}{k+1},\frac{1}{k}\right)\right)=C_k.
+\end{gather*}
+Para ser más explícitos y ver claramente que la aplicación es continua, 
+\begin{align*}
+f\left(\left(-\frac{1}{k},-\frac{1}{k+1}\right)\right)=&-\frac{1}{k}+\frac{1}{k}e^{\frac{2\pi i}{t}}\ \forall t\in\left(-\frac{1}{k},-\frac{1}{k+1}\right)\\
+f\left(\left(\frac{1}{k+1},\frac{1}{k}\right)\right)=&\frac{1}{k}+\frac{1}{k}e^{\frac{\pi i}{t}}\ \forall t\in\left(\frac{1}{k+1},\frac{1}{k}\right)
+\end{align*}
+Así es más claro que los límites coinciden en los puntos $\pm\frac{1}{k}$. Por definición esta aplicación es sobreyectiva. Además es cerrada porque restringida a $[-1,1]\setminus A$ es homeomorfismo sobre las $C_k$, y cualquier cerrado como mucho añadiría el origen, que es cerrado (por ser un punto), y la unión finita de cerrados es cerrado.
+Por todo ello sabemos que existe un homeomorfismo entre $[-1,1]/A$ y $K$. 
+\end{itemize} 
+
+\end{sol*}
+
+\newpage
+\begin{exercise}
+Probar que $\mathbb{R}/\mathbb{Q}$ no es $T_2$ y por tanto no puede ser metrizable.
+\end{exercise}
+\begin{sol*}
+Razonamos por reducción al absurdo. Supongamos que $\mathbb{R}/\mathbb{Q}$ es $T_2$. Entonces, dado $x\in\R$ existen $U,V$ abiertos de $\mathbb{R}/\mathbb{Q}$ tales que $[x]\in U, [\Q]\in V, V\cap U=\emptyset$. Consideremos la proyección canónica $\pi:\R\rightarrow\mathbb{R}/\mathbb{Q}$. Se cumple entonces
+\[\pi^{-1}(U\cap V)=\pi^{-1}(U)\cap\pi^{-1}(V)=\emptyset\]
+Pero $\Q\subseteq \pi^{-1}(V)$, así que hemos llegado a una contradicción con que $\Q$ es denso en $\R$. 
+\end{sol*}
+
+
+\newpage
+\begin{exercise}
+Indíquense subespacios de $\mathbb{R}^3$ homeomorfos a los siguientes espacios cocientes:
+\begin{itemize}
+	\item $\mathbb{R}^2/D^2$, donde $D^2$ es la bola unidad cerrada;
+	\item $\mathbb{R}^2/S^1$;
+	\item $\mathbb{R}^2/(\mathbb{R}^2-B^2)$, donde $B^2$ es la bola abierta unidad.
+\end{itemize}
+\end{exercise}
+
+\begin{sol*}
+\begin{itemize}\
+	\item Se va a probar que $\mathbb{R}^2/D^2\cong\R^2$. Para ello utilizamos la función $f:\mathbb{R}^2\to\mathbb{R}^2$ definida a trozos como 
+\[f(x)=\begin{cases}
+\frac{||x||-1}{||x||}x & |x||>1\\
+f(x)=0 & ||x||\leq 1
+\end{cases}.
+\] 
+Se ve claramente que es continua porque $$\lim_{||x||\to 1}\frac{||x||-1}{||x||}x=0.$$
+Además es sobreyectiva. Si $y=0\in\R^2$ tiene como preimagen toda la bola unidad cerrada, y si $y\neq 0$ entonces se puede comprobar que $$x=\frac{||y||+1}{||y||}y$$ es su preimagen. Tenemos que demostrar por último que $f$ es cerrada. Como hemos visto, si $||x||>1$ entonces $f$ tiene una inversa continua dada por $$f(y)=\frac{||y||+1}{||y||}y,$$ por lo que es cerrada en este dominio. Si tenemos un cerrado $C\subseteq D^2$ entonces es trivial ver que su imagen es cerrada pues se trata de un punto. Si tenemos un cerrado $C$ tal que $C\cap(\mathbb{R}^2-D^2)\neq\emptyset$ y $C\cap D^2\neq\emptyset$ podemos suponer que es conexo porque en otro caso trataríamos sus componentes conexas de forma independiente. También podemos suponer que no se trata de un solo punto porque ese caso es trivial. Sea entonces $\{y_n\}\subset f(C)$ una sucesión convergiendo a algún $y\in\R^2$. Tenemos entonces también una sucesión $\{x_n\}\subset C$ tal que $y_n=f(x_n)$. Esta sucesión debe de ser acotada pues $y_n$ es convergente. Si $y\neq 0$ entonces no hay problema porque podemos tomar un cerrado que sea entorno de $y$ y su imagen por $f^{-1}$ también es cerrado. De modo que $x_n$ tiene una subsucesión convergente a $x=f^{-1}(y)$ y por tanto $y=f(x)\in f(C)$. Si $y=0$ entonces $y\in f(C)$ porque estamos suponiendo que $C\cap D^2\neq\emptyset$.
+	\item En este caso tenemos un cociente homeomorfo a $\R^2\vee S^2$. Veámoslo definiendo la siguiente función definida a trozos $f:\R^2\to\R^2\vee S^2$ tal que
+	\[
+	f(x)=\begin{cases}
+	g(x)=\frac{||x||-1}{||x||}x & |x||>1\\
+	x_0 & ||x||=1\\
+	p(x) & ||x||<1
+	\end{cases}
+	\]
+	donde $x_0$ es el punto de unión en la \emph{wedge sum} y $p:B^2\to S^2\setminus\{x_0\}$ es la proyección estereográfica. Como la proyección es homeomorfismo el primer trozo es la aplicación del apartado anterior, esta aplicación es claramente sobreyectiva. Además es continua puesto que los límites coinciden en cada parte (entendiendo que la frontera de $B^2$ se proyectaría sobre $x_0$). Tanto el trozo de $g$ como el $p$ son homeomorfismos locales, por lo que se puede probar que es cerrada aplicando el mismo razonamiento que en el apartado anterior para los casos en que $||y||=1$ y $||y||\neq 1$. O bien, teniendo en cuenta que $D^2$ es compacto y $S^2$ es Hausdorff, para luego aplicar el razonamiento del primer apartado solo al caso en el que $||y||>1$. 
+	\item El subespacio resultante es homeomorfo a $S^2$. Para verlo nos ayudamos de la función $f:\mathbb{R}^2\to S^2$ definida como:
+\[ f(x_1,\dots,x_n) = \begin{cases}
+(2 \sqrt{1-\norm{x}^2}x_1, \dots, 2 \sqrt{1-\norm{x}^2}x_n, 2 \norm{x}^2-1) & x\in B^n\\
+(0,0,1) & x\not \in B^n
+\end{cases} \]
+Claramente $f$ es continua y sobreyectiva. Además, es inyectiva en el interior de $B^n$ y constante en el resto, luego la relación que induce es la que deseamos. Además es cerrada, y se puede aplicar un razonamiento análogo al del primer apartado distinguiendo. 
+\end{itemize}
+\end{sol*}
+
+
+\newpage
+\begin{exercise}
+Sean $\mathcal{R}_1$ y $\mathcal{R}_2$ dos relaciones de equivalencia sobre $X$. Si $x \mathcal{R}_1 y$ implica que $x \mathcal{R}_2 y$, probar que si $\mathcal{R}$ es la relación en $X/\mathcal{R}_1$ dada por $[x] \mathcal{R} [y]$ si $x \mathcal{R}_2 y$, entonces $(X/\mathcal{R}_1)/\mathcal{R}$ es homeomorfo a $X / \mathcal{R}_2$.
+\end{exercise}
+\begin{sol*}
+Usaremos $[\cdot]_1$ y $[\cdot]_2$ para referirnos a las clases de equivalencia de $\mathcal{R}_1$ y $\mathcal{R}_2$ respectivamente. Definimos la aplicación $f : X/\mathcal{R}_1 \to X/\mathcal{R}_2$ como:
+\[ f ([x]_1) = [x]_2 \]
+Veamos que $f$ está bien definida. Sea $y \in [x]_1$, es decir, con $y \mathcal{R}_1 x$. Por hipótesis, esto implica que $y \mathcal{R}_2 x$, luego $y \in [x]_2$. Para ver que $f$ es sobreyectiva, basta observar que para todo $[x]_2 \in X/\mathcal{R}_2$, $f([x]_1) = [x]_2$ por la hipótesis. Para $x,y \in X$, 
+	\[ f([x]_1) = f([y]_1) \Leftrightarrow [x]_2 = [y]_2 \Leftrightarrow x \mathcal{R}_2 y \Leftrightarrow [x]_1 \mathcal{R} [y]_1 \]
+	Luego $\mathcal{R}$ es la relación inducida por $f$. Por la proposición 1.4.5,  $(X/\mathcal{R}_1)/\mathcal{R}$ es homeomorfo a $X/\mathcal{R}_2$.
+\end{sol*}
+
+\newpage
+\begin{exercise}
+Sea $\mathcal{R}$ una relación de sobre $X$ tal que para todo $x \in X$, $[x]$ está contenida en alguna componente conexa de $X$. Probar que las componentes conexa de $X/\mathcal{R}$ son las imágenes por la proyección canónica de las componentes conexas de $X$.
+\end{exercise}
+\begin{sol*}
+Para cada $x\in X$ denotamos $C_x$ su componente conexa. Análogamente $C_{[x]}$ será la componente conexa de $[x]$ en el cociente. Sea $\pi:X\to X/\mathcal{R}$ la proyección canónica. Como $x\in [x]$ y la imagen continua de un conexo es conexa, se tiene inmediatamente que $\pi(C_x)\subseteq C_{[x]}$.
+Para la otra inclusión, supongamos que existe $[y]\in C_{[x]}$ tal que $C_y\neq C_x$. Tenemos que la imagen de cada componente conexa está contenida en una componente conexa, luego $\pi(C_y)\subset C_{[x]}$. Para la otra inclusión, supongamos que existe $[y]\in C_{[x]}$ tal 	que $y\in C_y\neq C_x$. Entonces existen $U$ y $V$ ambos clopen tales que $C_x\subset U$, $C_y\subset V$, $U\cup V=X$ y $U\cap V=\emptyset$. Nótese que $[x]$ solo se encuentra en uno de los dos, porque si no habríamos encontrado una partición de $[x]$. Como son clopen, son unión de componentes conexas, por lo que si $z\in U\Rightarrow [z]\subset U$ y lo mismo para $V$. Además se tiene que $\pi^{-1}\pi(U)=U$ (análogamente para $V$) por construcción, ya que $U = \bigcup \bigl\{ [z] : [z] \cap U \neq\emptyset\}$, por lo que $\pi(U)$ y $\pi(V)$ son clopen. Entonces $\pi(U)\cap C_{[x]}$ y $\pi(V)\cap C_{[x]}$ forman una partición por cerrados (ya que las componentes conexas son siempre cerradas y la intersección finita de cerrados es cerrada) de $C_{[x]}$, con lo cual hemos llegado a una contradicción.
+\end{sol*}
+
+\newpage
+\begin{exercise} Sea $f : B^n \to S^n$ la función continua dada por:
+\[ f(x_1,\dots,x_n) = (2 \sqrt{1-\norm{x}^2}x_1, \dots, 2 \sqrt{1-\norm{x}^2}x_n, 2 \norm{x}^2-1). \]
+Sea $\mathcal{R}_f$ la relación de equivalencia genera por $x \mathcal{R}_f y$ si $f(x) = f(y)$. Probar que $B ^n/\mathcal{R}_f$ es $B^n/S^{n-1}$ y deducir que este espacio cociente es homeomorfo a $S^n$.
+\end{exercise}
+\begin{sol*}
+En primer lugar veamos que $f$ está bien definida, es decir, que $f$ toma valores en $S^n$. Para ello comprobamos que $||f(x)||=1$.
+\begin{gather*}
+||f(x)||^2=4(1-||x||^2)\sum_{i=1}^n x_i^2 +4||x||^4-4||x||^2+1=1
+\end{gather*}
+Para probar que $B ^n/\mathcal{R}_f$ es $B^n/S^{n-1}$ probaremos que $x \mathcal{R}_f y\leftrightarrow x,y\in S^{n-1}$. La implicación a la izquierda es trivial puesto que si $x,y\in S^{n-1}$ entonces $||x||=||y||=1$, por lo que $f(x)=f(y)=(0,\dots,0,1)$. Para la otra implicación supongamos que $f(x)=f(y)$ y que $x,y\not\in S^{n-1}$. Igualando la última coordenada obtenemos que $||x||=||y||$. Sustituyendo en las otras coordenadas e igualando, como por hipótesis $||x||\neq 1$, podemos eliminar $2\sqrt{1-\norm{x}^2}$ y obtener que $x_i=y_i\ \forall i=1,\dots, n$. Esto quiere decir que los elementos de fuera de $S^{n-1}$ solo están relacionados consigo mismos y hemos demostrado la primera parte del enunciado.
+Para probar la segunda parte consideramos el siguiente diagrama:
+\[
+\begin{tikzcd}
+B^n\arrow[r,"f"]\arrow[d,"\pi"'] & S^{n-1}\\
+B^n/\sim \arrow[ur, "\tilde{f}"',dashed]
+\end{tikzcd}
+\]
+donde $\tilde{f}([x])=f(x)$. Tenemos que $\tilde{f}$ es continua porque $f$ lo es. Además $f$ es cerrada porque va de un compacto en un $T_2$. Veamos entonces que es sobreyectiva. Sea $(y_1,\dots,y_n, y_{n+1})\in S^n\setminus\{(0,\dots,0,1)\}$ (eliminamos este punto porque ya sabemos que tiene preimagen). Buscamos $x$ tal que 
+\[2\sqrt{1-\norm{x}^2}x_i=y_i\ \forall i=1,\dots, n\qquad 2||x||^2-1=y_{n+1}\]
+De la última ecuación obtenemos $||x||^2=\dfrac{y_{n+1}+1}{2}<1$. Sustituimos este resultado en el resto de coordenadas y despejamos, obteniendo
+\[x_i=\frac{y_i}{2\sqrt{1-\frac{y_{n+1}+1}{2}}}.\]
+Como el denominador no se anula, los $x_i$ están bien definidos y hemos probado lo que queríamos.
+\end{sol*}
+
+
+\newpage
+\begin{exercise}
+En $\mathbb{R}^2$ se define la relación $(x,y) \mathcal{R} (u,v)$ si $y+x^2 = v+u^2$. ¿A qué subespacio euclídeo es homeomorfo $\mathbb{R}^2/\mathcal{R}$?
+\end{exercise}
+\begin{sol*}
+Sea la función $f: \R^2 \to \R$, $f(x,y)=y+x^2$, entonces es claro que la relación inducida por f corresponde con la relación del enunciado. Basta ver que la aplicación f es continua, sobreyectiva y abierta. Que es continua es claro por ser polinómica y sobreyectiva tomando $(0,y)$ para cada $y\in\R$. 
+\newline
+Veamos que es abierta. Sea $A$ un abierto de $\R^2$, $f(A)$ su imagen por f y sea $x\in f(A)$. Sea $(u,v)\in f^{-1}(x)\cap A$. Como $A$ es abierto, $\exists B((u,v),\delta)\subset A$ para algún $\delta>0$. En tal caso, tenemos que $K=\{(u,v+\lambda \dfrac{\delta}{2}) \mid \lambda \in (-1,1)\}\subset B((u,v),\delta) \subset A$. Por tanto, tenemos que $f(K) = \{x+\lambda\frac{\delta}{2} \mid \lambda \in (-1,1)\} = B(x,1) \subset f(A)$, por lo que $x\in \mathring{A}$.
+\end{sol*}
+
+\newpage
+\begin{exercise}
+Sea $\mathcal{R}$ una relación de equivalencia sobre $(X, \mathcal{T})$. Probar que si $X/\mathcal{R}$ es $T_2$, entonces $\mathcal{R}$ es cerrado en $X \times X$.
+\end{exercise}
+\begin{sol*}
+Sean $[x],[y] \in X/\mathcal{R}$ con $[x] \neq [y]$. Como $X/\mathcal{R}$ es $T_2$ existen unos abiertos $G'$, $H' \subset X/\mathcal{R}$ con $[x] \in G'$, $[y] \in H'$ y $G' \cap H' = \emptyset$. Sea $p : X \to X/\mathcal{R}$ la proyección canónica y sean $G = p^{-1}(G')$, $H = p^{-1}(H')$ abiertos de $X$. Por construcción, ningún elemento de $G$ está relacionado con algún elemento de $H$, por lo tanto $G \times H \subseteq (X \times X) \setminus \mathcal{R}$. Como $(x,y)$ está en el abierto $G \times H$, hemos llegado a que $(x,y)$ es punto interior de $(X \times X) \setminus \mathcal{R}$. Entonces $(X\times X) \setminus \mathcal{R}$ es un abierto y, finalmente, $\mathcal{R}$ es cerrado en $X \times X$.
+% Probado como equivalencia (añadiendo que la proyección sea abierta) en la página 88, teorema 7.7 \url{http://im0.p.lodz.pl/~kubarski/AnalizaIV/Wyklady/L-Tu-1441973990.pdf}
+\end{sol*}
+
+\newpage
+\begin{exercise}
+Sea $X = \{x \in \mathbb{R} : x \geq 0\}$. Se considera sobre $X$ la relación de equivalencia $\mathcal{R}$ definida por la partición $\left\{\left\{a, \frac{1}{a}\right\} \right\}_{a > 0} \cup \{0\}$. Demostrar que $p : X \to X/\mathcal{R}$ es abierta, pero que $\mathcal{R}$ no es abierto en $X \times X$.
+\end{exercise}
+\begin{sol*}
+Es claro que $\mathcal{R}$ no puede ser abierto. Podemos considerar $X\times X$ como la restricción al primer cuadrante de $\R^2$ con la topología habitual. En este sentido, podemos ver $\mathcal{R}$ como la unión de dos grafos de funciones continuas, que son cerradas de $\R^2$, y por tanto también lo son de $X\times X$. Por ser el primer cuadrante superior conexo, deducimos $\mathcal{R}$ no puede ser abierto. 
+\newline
+Veamos que la aplicación $p$ es abierta. Sea $A$ un abierto de $\R_{\geq 0}$, entonces $A$ es la unión de, o bien, intervalos abiertos contenidos en $\R_{>0}$ o bien intervalos de la forma $[0,a)$ con $a\in\R_{>0}$. Como la unión arbitraria de abiertos es abierta, supondremos simplemente que $A=(a,b)$ o que $A=[0,a)$. En tal caso, $p(A)$ es abierto si y solo si $p^{-1}(p(A))$ es abierto, pero, ¿tenemos una expresión explícita para este conjunto? De hecho sí, dado que $a,b\in \R_{>0}$:
+\[
+p^{-1}(p(A))=
+\begin{cases}
+(a,b)\cup\left(\frac{1}{b},\frac{1}{a}\right) & A = (a,b)\\
+[0,a)\cup \left(\frac{1}{a},+\infty\right) & A = [0,a)
+\end{cases}
+\]
+Claramente estos conjuntos son abiertos en $X$.
+\end{sol*}
+
+\newpage
+\begin{exercise}
+Sea $\mathcal{R}$ una relación de equivalencia sobre $(X, \mathcal{T})$ tal que $p : X \to X/\mathcal{R}$ es abierta. Entonces $X/\mathcal{R}$ es $T_2$ si y sólo si $\mathcal{R}$ es cerrado en $X \times X$. Deducir de este resultado que el espacio proyectivo $P_2(\mathbb{R})$ es una espacio $T_2$.
+\end{exercise}
+\begin{sol*}
+Una de las implicaciones está demostrada en el ejercicio 12. Tenemos que ver que si $\mathcal{R}$ es cerrado en $X \times X$, entonces $X / \mathcal{R}$ es $T_2$. Consideramos el par $(x,y)$ en el abierto $(X \times X) \setminus \mathcal{R}$. Como $(x,y)$ es interior, existe un entorno abierto $G \times H$ disjunto a $\mathcal{R}$. Entonces $p(G) \cap p(H) = \emptyset$. Además, al ser $p$ abierta, $p(G)$ y $p(H)$ son entornos abiertos de $[x]$ e $[y]$. Entonces $X/\mathcal{R}$ es $T_2$.  
+
+Mirar ejercicio 12. Para ver que la proyección es abierta considerar $S^2$ y $S^2/\mathcal{R}$ con la relación antipodal. (A completar)
+\end{sol*}
+
+
+\newpage
+\begin{exercise}
+Probar que para todo espacio topológico $X$ el cono $C X$ y la suspensión $\Sigma X$ son conexos por caminos.
+\end{exercise}
+\begin{sol*}
+En el cono basta ver que el vértice se puede conectar con los demás puntos. En la suspensión sería análogo con el otro vértice así que no se va a escribir. Sobre el cilindro $X\times Y$ consideramos un punto $(x,t)$ y conectamos con un camino (sabemos que el cilindro es conexo por caminos) hasta $(x,1)$. Después yuxtaponemos con un camino entre $(x,1)$ y $(x',1)$. Por último, yuxtaponemos con un camino hasta $(x',t')$. Al pasar al cociente tenemos un camino que permanece constante sobre el vértice el tiempo que se produce el camino entre $(x,1)$ y $(x',1)$ pero que conecta $[x,t]$ con $[x',t']$.
+\end{sol*}
+
+\newpage
+\begin{exercise}
+\begin{itemize}
+\item[]
+	\item Probar que $C S^{n-1}$ es homeomorfo a $B^n$, con $n \geq 1$ ($B^n$ es la bola cerrada con centro el origen y radio $1$).
+	\item Dado $X \subseteq \mathbb{R}^{n-1} \times \{0\} \subseteq \mathbb{R}^n$ y $v \in \mathbb{R}^n-\mathbb{R}^{n-1} \times \{0\}$ se considera el conjunto $vX = \{ tv + (1-t)x : x \in X, t \in [0,1]\}$. Probar que si $X$ es compacto, entonces $C X$ es homeomorfo a $vX$.
+	\item Considérese $X = \mathbb{Z} \subseteq \mathbb{R}$ y demuéstrese que $C X$ no tiene en el vértice una base numerable de abiertos. Concluir que el resultado del apartado anterior no es cierto en general.
+\end{itemize}
+\begin{sol*}
+\begin{itemize}
+\item[]
+\item Sea $f:S^{n-1}\times [0,1] \to B^n$, $f(x,t) = (1-t)x$. Es claro que f es continua y sobreyectiva. Además, como $S^{n-1}\times [0,1]$ es compacto y $B^n$ es espacio métrico, en particular es $T_2$, luego $f$ es cerrada. Como la relación que induce $f$ es aquella bajo la cual el cociente del cilindro es el cono, tenemos la prueba.
+\item Sea $f:X\times [0,1] \to vX$, $f(x,t) = tv + (1-t)x$. Es claro que $f(x,1)= v$ y que $f(x,0)=x$. La aplicación $f$ es claramente continua y, además, sobreyectiva pues: $\forall x\in vC$, $x = tv + (1-t)x'$ para algún $x'\in x$, $t\in [0,1]$, así tomamos $(x',t)$ como preimagen. Por hipótesis, X es compacto, luego $X\times [0,1]$ es compacto y, como $vX$ es subconjunto de $\R^n$, es $T_2$, por lo que deducimos que $f$ es cerrada. Finalmente, veamos cuál es la relación que induce $f$. Es claro que $f(x,t)$ es inyectiva para $t=0$ pero para $t=1$ todo X va a parar a único punto. Por las hipótesis sobre $v$, sabemos que la matriz $\left(tv \mid (1-t)x\right)$, si $t\neq 0,1$ tiene rango máximo, luego cada punto de $y$ tiene una y solo una preimagen. Por tanto, la relación que induce $f$ es, como queríamos probar:
+\begin{gather*}
+f(x,t) = f(x',t') \Leftrightarrow tv + (1-t)x = t'v + (1-t)x' \Leftrightarrow x = x' \lor t = 1
+\end{gather*}
+\item Supongamos que existe un base numerable de entornos del vértice dados por
+\begin{gather*}
+V_1=\bigcup_{n\in\Z}\{n\}\times(a_{n1},1]\\
+\vdots\\
+V_m=\bigcup_{n\in\Z}\{n\}\times(a_{nm},1]\\
+\vdots
+\end{gather*}
+con $a_{nm}\in(0,1)$. Consideremos el entorno $\{1\}\times(w_1,1]$ con $w_1<a_{11}$. Este entorno no está contenido en $V_1$ por construcción. Así pues, construimos 
+\[W=\Z_-\times(0,1]\cup\bigcup_{n=1}^{\infty}\{1\}\times (w_n,1]\quad w_n<a_{nn}.\]
+Por lo que hemos comentado $W\not\subseteq V_j\ \forall j$, con lo que hemos llegado a una contradicción. 
+\end{itemize}
+
+\end{sol*}
+\end{exercise}
+
+
+\newpage
+\begin{exercise}\mbox{}
+\begin{itemize}
+	\item Probar que para todo espacio $X$ existe un inmersión cerrada de $X$ en $C X$.
+	\item Probar que la aplicación $\phi : X \to \Sigma X$ dada por $\phi(x) = [x, \frac{1}{2}]$ es una inmersión cerrada.
+	\item Probar que existen inmersiones cerradas $\phi_1, \phi_2 : C X \to \Sigma X$ cuyas imágenes son los subespacios $C_1 X = \{[x,t] \in \Sigma X : -1 \leq t \leq 0\}$, $C_2 X = \{[x,t] \in \Sigma X : 0 \leq t \leq 1\}$
+\end{itemize}
+\end{exercise}
+\begin{sol*}
+\begin{itemize}
+\item[]
+\item Basta ver que la aplicación, $\phi:X\to CX$, $\phi(x) = [x, \frac{1}{2}]$ es una inmersión cerrada. Sea además $\pi: X\times [0,1]\to CX$ la proyección del cilindro de X sobre su cono, entonces: 
+\begin{itemize}
+\item Que es cerrada, es decir, que la imagen de la inmersión es un cerrado del espacio de llegada, es claro, pues dicha imagen es $X\times \{\frac{1}{2}\}$, que es un producto de cerrados, por lo que es cerrado en la topología del producto y, por definición de la topología cociente, $p(X\times\{\frac{1}{2}\}) = X\times\{\frac{1}{2}\}$ es cerrado.
+\item La inyectividad es trivial. 
+\item Veamos que es continua. Sea $A\subset X\times \{\frac{1}{2}\}$ un abierto, entonces se tiene que $A =\{(x,\frac{1}{2})\mid x\in S\subset X\text{ abierto}\}$, luego $p^{-1}(A) = S$, que es abierto por definición.
+\item Que es abierta es trivial por la definición de la topología del producto.
+\end{itemize}
+\item Sea $K$ un cerrado de X y sea $\{y_k\}\subset \phi(K)$ una sucesión con límite $y$. 
+\end{itemize}
+\end{sol*}
+\newpage
+\begin{exercise}
+Probar que $\Sigma S^{n-1}$ es homeomorfo a $S^n$, $n \geq 1$. \textbf{Indicación:} Considérese la aplicación $f : S^{n-1} \times [0,1] \to S^n$ dada por:
+\[ f(x,t) = (\sqrt{1-(2t-1)^2}x, 2t-1) \]
+\end{exercise}
+\begin{sol*}
+Veamos cuál es la relación que induce f. Sea $(x,y),(x',y')\in S^{n-1} \times [0,1]$:
+\begin{gather*}
+f(x,y) = f(x',y') \Leftrightarrow (\sqrt{1-(2y-1)^2}x, 2y-1) = (\sqrt{1-(2y'-1)^2}x', 2y'-1) \Leftrightarrow\\
+y=y' \quad \sqrt{1-(2y-1)^2}x = \sqrt{1-(2y-1)^2}x' \Leftrightarrow
+\begin{cases}
+y=y'\in\{0,1\}&\\
+y=y'\in (0,1) & x=x'
+\end{cases}
+\end{gather*}
+La relación que induce f es la de la suspensión del espacio: $S^{n-1}\times[0,1]/\mathcal{R}_f = \Sigma S^{n-1}$. Además, f es continua en su intervalo de definición: el argumento de la raíz es mayor o igual que cero. ¿Es sobreyectiva? Los polos son imagen de $S^{n-1}\times\{0,1\}$. Sea $(q,r)\in S^n$, $(q,r)$ distinto de los polos, entonces tomamos como preimagen $\left(\dfrac{q}{\sqrt{1-(2t-1)^2}},\dfrac{r+1}{2}\right)$. 
+\newline
+Resta ver que la aplicación es cerrada, pero este hecho se deduce de que $S^{n-1}\times[0,1]$ sea compacto (pues el el producto de compactos) y que $S^{n}$ es metrizable y, por tanto, $T_2$.
+\end{sol*}
+
+\newpage
+\begin{exercise}
+Pruébese que $S^2$ es homeomorfo a ($S^1 \times S^1) / (S^1 \lor S^1)$.
+\end{exercise}
+\begin{sol*}
+Vamos a probarlo usando el polígono fundamental del toro $S^1 \times S^1$. En el borde podemos encontrar $S^1 \lor S^1$, luego basta llevar el borde a un punto. Esta operación da como resultado el mismo espacio que $D^2/S^1$, que ya hemos probado en clase que es homeomorfo a $S^2$.
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-1.3444444444444448,-1.6466666666666665) rectangle (11.433333333333335,4.54222222222222);
+\fill[line width=1.6pt,fill=black,fill opacity=0.10000000149011612] (0.,3.) -- (3.,3.) -- (3.,0.) -- (0.,0.) -- cycle;
+\fill[line width=0.pt,fill=black,fill opacity=0.10000000149011612] (6.,3.) -- (9.,3.) -- (9.,0.) -- (6.,0.) -- cycle;
+\draw [line width=1.6pt] (0.,3.)-- (3.,3.);
+\draw [line width=1.6pt] (3.,3.)-- (3.,0.);
+\draw [line width=1.6pt] (3.,0.)-- (0.,0.);
+\draw [line width=1.6pt] (0.,0.)-- (0.,3.);
+\draw [->] (4.,1.5) -- (5.,1.5);
+\draw [->] (0.,3.) -- (1.5,3.);
+\draw [->] (0.,0.) -- (1.5,0.);
+\draw [->] (3.,0.) -- (3.,1.5);
+\draw [->] (0.,0.) -- (0.,1.5);
+\draw (4.2,1.92) node[anchor=north west] {$\Large{\pi}$};
+\draw (8.955555555555557,3.4755555555555544) node[anchor=north west] {$\Large{P}$};
+\draw (9.222222222222223,1.72) node[anchor=north west] {$\Large{\cong{S^2}}$};
+\draw (1.2,3.63111111111111) node[anchor=north west] {$\Large{A}$};
+\draw (3.1222222222222227,1.6977777777777772) node[anchor=north west] {$\Large{B}$};
+\draw (-0.6111111111111114,1.786666666666666) node[anchor=north west] {$\Large{B}$};
+\draw (1.2,-0.04666666666666652) node[anchor=north west] {$\Large{A}$};
+\begin{scriptsize}
+\draw [fill=black] (9.,3.) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+
+\end{sol*}
+
+\newpage
+\begin{exercise}
+Probar que si $X$ e $Y$ son conexos por caminos o compactos, $X \cup_f Y$ también lo es.
+\end{exercise}
+\begin{sol*}\mbox{}
+\begin{itemize}
+\item Sean X e Y conexos por caminos, $f:A\subset X\to Y$ una aplicación continua, consideremos $X \cup_f Y$. Sean $x,y\in X \cup_f Y$, tengamos presente que $A$ y $f(A)$ son un único punto en el espacio de pegamiento y que $X\setminus A$ y $Y\setminus f(A)$ permanece constante.
+\begin{itemize}
+\item Si $x$ e $y$ se encuentran en $p(X)$ o en $p(Y)$, dado que la proyección canónica es continua, estos subespacios de $X \cup_f Y$ son conexos por caminos.
+\item Si se encuentran en distintas, supongamos sin pérdida de generalidad que $x\in p(X\setminus A)$ (si su preimagen está en A es trivial). Sea en $X$ un camino $\varphi$ que vaya de $p^{-1}(x)$, que es un único punto por hipótesis, a algún punto de $A$, entonces $p(\varphi)$ es un camino de $x$ a $p(A)$ en el cociente. Haciendo una consideración análoga para $y$ y uniendo los caminos tenemos el resultado.
+\end{itemize}
+\item Sean X e Y compactos, $f:A\subset X\to Y$ una aplicación continua consideremos $X \cup_f Y$. Primeramente, como X e Y son compactos, $X\sqcup Y$ es también compacto. Sea $C_i$, $i\in I$ un recubrimiento de $X \cup_f Y$, entonces $p^{-1}(C_i)$ es un recubrimiento abierto de $X\sqcup Y$. Como este es compacto, $\exists J \subset I$ con $|J|$ finito tal que $p^{-1}(C_j)$, $j\in J$ es un recubrimiento abierto finito de $X\sqcup Y$. Finalmente, $p(p^{-1}(C_j))=C_j$ (usando que $p$ es sobreyectiva), $j\in J$ es un recubrimiento abierto finito del cociente. Por tanto, este es compacto.
+\end{itemize}
+\end{sol*}
+
+
+\newpage
+\begin{exercise}
+Sean $X$, $Y$ y $W$ espacios topológicos, $A \subseteq X$ cerrado y $f : A \to Y$, $g : Y \to W$ aplicaciones continuas. Probar que los espacios $(X \cup_f Y) \cup_g W$ y $X \cup _{g \circ f} W$ son homeomorfos.
+\end{exercise}
+\begin{sol*}
+Nótese que $A$ cerrado implica que la composición de la inclusión y la proyección $j:W\to X\sqcup W\to X\cup_{gf}W$ es una inmersión sobre un subespacio cerrado. Las aplicaciones definidas como uniones a continuación también estarán bien definidas y serán continuas por esta hipótesis.\\
+En primer lugar definimos una aplicación continua $\alpha=Id_X\cup g:X\sqcup Y\to X\sqcup W$ como $\alpha(x)=x\ \forall x\in X$, $\alpha(y)=g(y)\ \forall y\in Y$. Componiendo con la proyección al cociente obtenemos $\alpha':X\sqcup Y\to X\cup_{gf} W$. Por la relación de pegamiento, esta aplicación induce otra $\alpha'':X\cup_f Y\to X\cup_{gf} W$. Entonces, la aplicación $\alpha''\cup j:(X\cup_f)\sqcup W\to X\cup_{gf}W$ induce el que será nuestro homeomorfismo $\phi:(X\cup_f Y)\cup_g W\to X\cup_{gf} W$.\\
+Para la inversa, comenzamos por la aplicación continua $i:X\to X\sqcup Y\to X\cup_f Y$, que es composición de la inclusión y la proyección. Esto nos da una aplicación $\beta=i\cup Id_W:X\sqcup W\to (X\cup_f Y)\sqcup W$. Componiendo con la proyección al cociente obtenemos $\beta':X\sqcup W\to (X\cup_f Y)\cup_g W$. De nuevo, por las relaciones de pegamientos llegamos a la aplicación inducida $\psi:X\cup_{gf} W\to (X\cup_f Y)\cup_g W$.\\
+Ahora tenemos que comprobar que $\phi$ y $\psi$ son inversas. Primero veamos como está definida $\phi$. Sea $[z]\in (X\cup_f Y)\cup_g W$. Si $z\in W$ entonces $\phi([z])=j(z)$ y si $z=[w]\in X\cup_f Y$ entonces $\phi([z])=\alpha''(z)$. Esto se reduce a $\phi([z])=\{w\}$ si $w\in X$ y $\phi([z])=\{g(w)\}$ si $w\in Y$ donde $\{w\}$ denota la clase de $w$ en $X\cup_{gf}W$. Luego, $\psi(\{z\})=[z]$ si $z\in W$ y $\psi(\{z\})=[i(z)]$ si $z\in X$. Así pues:
+\begin{itemize}
+\item Si $z\in W$, $\psi(\phi([z])) = \psi(j(z)) = \psi(\{z\}) = [z]$.
+\item Si $z=[w]$ y $w\in X$, $\psi(\phi([z])) = \psi(\{w\}) = [i(w)] = [z]$.
+\item Si $z=[w]$ y $w\in Y$, $\psi(\phi([z])) = \psi(\{g(w)\}) = [i(w)] = [z]$. 
+\item Si $z\in W$, $\phi(\psi(\{z\})) = \phi([z]) = j(z) = \{ z \}$.
+\item Si $z\in X$, $\phi(\psi(\{z\})) = \phi([i(z)]) = \{z\}$. 
+\end{itemize}
+Con esto finaliza la prueba.
+\end{sol*}
+\end{document}

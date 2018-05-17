@@ -1,0 +1,254 @@
+\documentclass{article}
+\usepackage{amsmath,accents}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{amsthm}
+\usepackage{nccmath}
+\usepackage[spanish]{babel}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{tikz-cd}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{cd}
+\usetikzlibrary{babel}
+\theoremstyle{plain}
+\hypersetup{colorlinks=true,citecolor=red, linkcolor=blue}
+
+\renewcommand{\baselinestretch}{1,4}
+\setlength{\oddsidemargin}{0.5in}
+\setlength{\evensidemargin}{0.5in}
+\setlength{\textwidth}{5.4in}
+\setlength{\topmargin}{-0.25in}
+\setlength{\headheight}{0.5in}
+\setlength{\headsep}{0.6in}
+\setlength{\textheight}{8in}
+\setlength{\footskip}{0.75in}
+
+\theoremstyle{definition}
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{propi}[theorem]{Propiedades}
+\newtheorem{condition}{Condition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{coro}[theorem]{Corolario}
+\newtheorem{criterion}{Criterion}
+\newtheorem{defi}[theorem]{Definición}
+\newtheorem{example}[theorem]{Ejemplo}
+\newtheorem{exercise}{Ejercicio}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{nota}[theorem]{Nota}
+\newtheorem{sol}{Solución}
+\newtheorem*{sol*}{Solución}
+\newtheorem{prop}[theorem]{Proposición}
+\newtheorem{remark}{Remark}
+
+\newtheorem{dem}[theorem]{Demostración}
+
+\newtheorem{summary}{Summary}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\ninf}[1]{\norm{#1}_\infty}
+\providecommand{\numn}[1]{\norm{#1}_1}
+\providecommand{\gabs}[1]{\left|{#1}\right|}
+\newcommand{\bor}[1]{\mathcal{B}(#1)}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\X}{\chi}
+\providecommand{\Zn}[1]{\Z / \Z #1}
+\newcommand{\resi}{\varepsilon_L}
+\newcommand{\cee}{\mathbb{C}}
+\providecommand{\conv}[1]{\overset{#1}{\longrightarrow}}
+\providecommand{\gene}[1]{\langle{#1}\rangle}
+\providecommand{\convcs}{\xrightarrow{CS}}
+% xrightarrow{d}[d]
+\setcounter{exercise}{0}
+\newcommand{\cicl}{\mathcal{C}}
+
+\newenvironment{ejercicio}[2][Estado]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries Ejercicio}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%--------------------------------------------------------
+\begin{document}
+\title{Relación 4 - Geometría y Topología de superficies }
+\author{Javi, Rafa, Diego}
+\maketitle
+\begin{exercise} Probar que la yuxtaposición de caminos satisface la siguiente propiedad de cancelación: si $f_0*g_0 \sim f_1* g_1$ y $g_0 \sim g_1$, entonces $f_0 \sim f_1$.
+\end{exercise}
+\begin{sol*}
+Como $g_0 \sim g_1\Leftrightarrow \overline{g_0}\sim\overline{g_1}$, usamos la compatibilidad de la yuxtaposición con la equivalencia de caminos.
+\[
+f_0*g_0 \sim f_1* g_1\Leftrightarrow f_0*g_0*\overline{g_0}\sim f_1*g_1*\overline{g_1}\Leftrightarrow f_0\sim f_1.
+\]
+\end{sol*}
+
+\vspace{0.1cm}
+
+\newpage \begin{exercise} \label{s1}Probar que todo lazo $\alpha$ en $x_0\in X$ define una aplicación continua $f_\alpha: S^1 \to X$ con $f_\alpha((1,0)) = x_0$ y recíprocamente. Más aún, si $\alpha \sim \alpha'$ entonces $f_{\alpha} \simeq f_{\alpha'} \mbox{ rel. } (0,1)$.
+\end{exercise}
+\begin{sol*}
+Observemos que $S^1$ se puede considerar como $[0,1]/\sim$ con la relación generada por $0\sim 1$. Por tanto, si denotamos por $\pi$ a la aplicación cociente e $I=[0,1]$ obtenemos el siguiente diagrama conmutativo:
+\[
+\begin{tikzcd}
+I\arrow[r,"\alpha"]\arrow[d,"\pi"'] & X\\
+S^1\arrow[ur,"\alpha\circ\pi^{-1}"']
+\end{tikzcd}
+\]
+Por lo que $f_\alpha=\alpha\circ\pi^{-1}$. Además, si vemos $\pi(x)=e^{2\pi i x}$ entonces
+\[
+f_\alpha((1,0))=\alpha\circ\pi^{-1}((1,0))=\alpha(\{0,1\})=x_0
+\]
+Por otro lado, si $\alpha\sim\alpha'$ entonces por propiedades de composición y homotopías se tiene $\alpha\circ\pi^{-1} \simeq \alpha'\circ\pi^{-1}$, luego $f_\alpha \simeq f_{\alpha'}$.
+\end{sol*}
+
+\vspace{0.1cm}
+
+\newpage \begin{exercise} Probar que para un espacio conexo por caminos $X$ las tres condiciones siguientes son equivalentes:
+(a) Toda aplicación continua $f: S^1\to X$ es homotópica a una constante; (b) toda aplicación continua $f: S ^1 \to X$ se extiende al disco $D^2$;
+(c) $\pi_1(X,x_0) = 0$ para todo $x_0\in X$.
+\end{exercise}
+\begin{sol*}
+$\boxed{(a)\Rightarrow(b)}$ Por hipótesis existe una homotopía $H:S^1\times I\to X$ cumpliendo $H(x,0)=f(x)$ y $H(x,1)=x_0\in X$. Podemos pensar en esta homotopía como una aplicación del cilindro a $X$ en la que toda la tapa superior tiene la misma imagen. Por tanto podemos factorizar a través del cono, que sabemos que es homeomorfo mediante un homemomorfismo que llamaremos $g$ a $D^2$.
+\[
+\begin{tikzcd}
+S\times I\arrow[r,"H"]\arrow[d,"\pi"']& X\\
+CS^1\arrow[ur,"\tilde{\pi}"]\arrow[d,"g"',"\cong"]\\
+D^2\arrow[uur,"\tilde{\pi}\circ g^{-1}"']
+\end{tikzcd}
+\]
+Por tanto $f$ se extiende mediante $\tilde{\pi}\circ g^{-1}$.\\
+$\boxed{(b)\Rightarrow(c)}$ Sea $i:S^1\hookrightarrow D^2$ la inclusión y volvamos a considerar el homeomorfismo $g$ del apartado anterior. Supongamos que $f$ se extiende mediante una función $h$. Entonces obtenemos el siguiente diagrama conmutativo:
+\[
+\begin{tikzcd}
+CS^1\arrow[ddr,"g^{-1}\circ h"]\\
+D^2\arrow[u,"g"]\arrow[dr,"h"]\\
+S^1\arrow[u,"i",hookrightarrow]\arrow[r,"f"]& X
+\end{tikzcd}
+\]
+Dado un lazo, podemos extenderlo a $D^2$ y llevarlo al cono, contrayéndolo sobre el vértice. Por lo tanto el lazo es homotópico al constante. Como $X$ es conexo por caminos, esta construcción no depende del punto base y por tanto $\pi_1(X,x_0)=0$.\\
+$\boxed{(c)\Rightarrow(a)}$ Se tiene que $f:S^1\to X$ identifica a un lazo en $X$, y como $\pi_1(X,x_0)=0$ concluimos que $f\sim x_0$.
+\end{sol*}
+\newpage 
+
+\begin{exercise}
+Probar que $\pi_1(X,x_0) = 0$ si y sólo para todo $x\in X$ dos caminos cualesquiera entre $x_0$ y $x$ son equivalentes.
+\end{exercise}
+
+\begin{sol*}
+$\boxed{\Rightarrow}$ Sea $\gamma_1$ y $\gamma_2$ dos caminos entre $x_0$ y $x$. Entonces $\gamma_1*\overline{\gamma_2}$ es un lazo en $x_0$. Como $\pi_1(X,x_0)=0$ se tiene
+\[
+\gamma_1*\overline{\gamma_2}\sim c_{x_0}\Leftrightarrow \gamma_1\sim\gamma_2,
+\]
+como queríamos demostrar.\\
+$\boxed{\Leftarrow}$ Tomando $x=x_0$ tenemos que todos los lazos son equivalentes. En particular son equivalentes al lazo constante $c_{x_0}$, por lo que se deduce que $\pi_1(X,x_0)=0$.
+\end{sol*}
+
+
+\newpage \begin{exercise} Sea $A\subseteq X$ la componente conexa por caminos del punto $x_0\in X$. Probar que la inclusión
+$i: A\to X$ induce un isomorfismo $i_*: \pi_1(A,x_0) \to \pi_1(X,x_0)$.
+\end{exercise}
+\begin{sol*}
+Sabemos por teoría que $i_*$ es homomorfismo, luego basta probar que es inyectivo y sobreyectivo. Veamos primero la sobreyectividad tomando un lazo $\alpha:I\to X$ basado en $x_0$. Como $x_0\in A$ y $A$ es la componente conexa por caminos de $x_0$ se sigue que la imagen de $\alpha$ está contenida en $A$. Por tanto denotemos $\alpha':I\to A$ a la restricción de $f$ sobre $A$. Entonces $[\alpha]=[i\circ \alpha']=i_*([\alpha'])$, por lo que $i_*$ es sobreyectiva. Para ver la inyectividad sea $[\alpha]\in \pi_1(A,x_0)$ tal que $i_*([\alpha])=1=[c_{x_0}]$. Por estar basado $\alpha$ en $x_0$ y ser $A$ su componente conexa por caminos tenemos que $\alpha\subset A$, por lo que $i_*([\alpha])=[i\circ\alpha]=[\alpha]$, así que $[\alpha]=[c_{x_0}]$ y por lo tanto $i_*$ es inyectiva, con lo que finaliza la prueba. 
+\end{sol*}
+
+\newpage 
+
+\begin{exercise}
+Probar que si $X = A\cup B$ con $A$ y $B$ abiertos tales que $A$, $B$ y $A\cap B$ son conexos por caminos
+ y $A$ y $B$ simplemente conexos entonces  $X$ es simplemente conexo. Aplicar este resultado para deducir
+ que $\pi_1(S^n) = 0$ para todo $n \geq 2$.
+\end{exercise}
+\begin{sol*}
+Dado que $X$ es conexo por caminos (y por tanto conexo) $A\cap B\neq\emptyset$. Consideremos por tanto un lazo $\alpha: I\to X$ tal que $u(0)=u(1)=x_0\in A$ (sería análogo si $x_0\in B$). Por el lema de Lebesgue existe una partición $0=a_0<a_1<\cdots <a_n=1$ del intervalo $I$ de tal modo que $\forall i=0,\dots, n$ o bien $\alpha([a_i,a_{i+1}])\subset A$ o bien $\alpha([a_i,a_{i+1}])\subset B$. De hecho podemos elegir una partición tal que si $\alpha([a_{i-1},a_{i}])\not\subset A$ entonces $\alpha([a_{i},a_{i+1}])\subset A$ (análogamente para $B$). Por ello, podemos suponer que $\alpha(a_k)\in A\cap B\ \forall k=1,\dots,n-1$. Consideremos el segmento $[a_k,a_{k+1}]$ tal que $\alpha([a_k,a_{k+1}])\subset B$. Los puntos $\alpha(a_k)$ y $\alpha(a_{k+1})$ están unidos por un camino $\gamma_k: I\to A\cap B$. Como $B$ es simplemente conexo existe una homotopía $H_k:[a_k,a_{k+1}]\to B$ entre $\alpha_{\big|[a_k,a_{k+1}]}$ y $\gamma_k$. Por tanto $\alpha$ es homotópica a un lazo $\beta:I\to A$. Como $A$ es simplemente conexo, se sigue que $\beta$ es nul-homotópico, y por tanto, $X$ es simplemente conexo.\\
+Para el caso de $S^n$ para $n\geq 2$ podemos considerar $A=S^n\setminus\{(0,\dots,0,1)\}$ y $B=S^n\setminus\{(0,\dots,0,-1)\}$. Claramente $A$ y $B$ son simplemente conexos pues son homeomorfos a $\R^n$ mediante la proyección estereográfica. Además su intersección es $S^n\setminus\{(0,\dots,0,1),(0,\dots,0,-1)\}$, que es homeomorfa a $\R^n\setminus\{0\}$ y por tanto es conexa por caminos. Aplicando el resultado anterior deducimos que $\pi_1(S^n) = 0$ para todo $n \geq 2$.  
+\end{sol*}
+
+\newpage 
+
+\begin{exercise}
+Dar una familia infinita de espacios conexos por caminos simplemente conexos que no sean homeomorfos.
+\end{exercise}
+\begin{sol*}
+La familia $\{\R^n\}_{n\geq 1}$. Supongamos que sin pérdida de generalidad que $n>m$ y que existe un homeomorfismo $f:\R^n \to \R^m$ como $\R^m\times\{0,\dotsc,0\}$. Consideremos además la inclusión $i:\R^m \to \R^n$. Entonces $\mu :\R^n \to \R^n$ definida como $\mu = i\circ f$ es una función continua en inyectiva, luego, por el Teorema de Invarianza del Dominio sabemos que la imagen de $\mu$ debe ser un abierto de $\R^n$, que no es el caso.
+\end{sol*}
+
+\vspace{0.1cm}
+
+\newpage \begin{exercise} Un espacio conexo por caminos $X$ se dice que es {\it $1$-simple} si
+dados $x_0, x_1\in X$, dos caminos de $X$ cualesquiera entre $x_0$ y $x_1$ inducen el mismo
+isomorfismo entre $\pi_1(X,x_1)$ y $\pi_1(X,x_0)$.
+Probar que $X$ es 1-simple si y sólo si $\pi_1(X)$ es abeliano.
+\end{exercise}
+\begin{sol*}
+$\boxed{\Leftarrow}$ Supongamos que $\pi_1(X)$ es abeliano. Sean $\alpha$ y $\beta$ dos caminos entre $x_0$ y $x_1$. Sea $f$ un lazo en $x_0$. Entonces $\overline{\alpha}*f*\beta$ es un lazo en $x_1$. También lo es $\overline{\beta}*\alpha$. Así pues
+\begin{align*}
+\alpha_\sharp([f])&=[\overline{\alpha}][f][\alpha]\\
+				  &=([\overline{\alpha}][f][\beta])([\overline{\beta}][\alpha])\\
+				  &=([\overline{\beta}][\alpha])([\overline{\alpha}][f][\beta])\\
+				  &=[\overline{\beta}][f][\beta]\\
+				  &=\beta_\sharp([f]).
+\end{align*}
+$\boxed{\Rightarrow}$ Sean $f$ y $g$ dos lazos en $x_0$. Sean $\alpha$ un camino entre $x_0$ y $x_1$. Definimos el camino $\gamma=f*\alpha$ entre $x_0$ y $x_1$. Tenemos que $\overline{\gamma}=\overline{\alpha}*\overline{f}$. Por hipótesis $\alpha_\sharp([g])=\gamma_\sharp([g])$, luego 
+\[
+[\overline{\alpha}][g][\alpha]=[\overline{\alpha}][\overline{f}][g][f][\alpha]\Rightarrow [g]=[\overline{f}][g][f]\Rightarrow [f][g]=[g][f]
+\]
+\end{sol*}
+
+\newpage 
+\begin{exercise}
+Sea $[S^1,X]$ el conjunto de las clases de homotopía (no necesariamente relativa) de aplicaciones de $S^1$ en $X$. De acuerdo con el problema \ref{s1} hay definida una aplicación $\varphi: \pi_1(X,x_0) \to [S^1,X]$, $[\alpha] \mapsto [f_{\alpha}]$. Probar que si $X$ es conexo por caminos se tiene que $\varphi$ es sobreyectiva. Más aún, si $\varphi ([\alpha]) = \varphi([\beta])$, $[\alpha]$ y $[\beta]$ son elementos conjugados en $\pi_1(X,x_0)$.
+Como consecuencia, si $X$ es conexo por caminos existe una biyección entre $[S^1,X]$ y las clases por conjugación de $\pi_1(X,x_0)$.
+\end{exercise}
+\begin{sol*}
+Página 4 \url{http://www.math.northwestern.edu/~pgoerss/math440/probset1.pdf}
+\end{sol*}
+
+
+
+
+
+\newpage \begin{exercise} Consideremos el espacio $X = \{a,b,c,d\}$ con la topología $\mathcal{T} = \{\emptyset, X$, $\{c\},\{d\}, \{c,d\}, \{a,c,d\}, \{b,c,d\}\}$.
+\par
+ Veamos que $\pi_1(X,d)$ no es el grupo trivial. Para ello, sea $\alpha: [0,1]\to X$ la aplicación $\alpha(t) = d$ si $t \in [0,\frac{1}{4}) \cup (\frac{3}{4},1]$, $\alpha(t) = c$ si $t\in (\frac{1}{4},\frac{3}{4})$, $f(\frac{1}{4}) = a$ y $\alpha(\frac{3}{4}) = b$.  Probar que $\alpha$ es un lazo en $d$ que no es equivalente al lazo constante. Para esto último, suponer lo contrario y si $H$ es una homotopía, probar que $t_0 = \mbox{sup }\{t; c\in H(I\times \{t\})\}$ es un máximo y llegar a la contradicción de que debe ser $t_0 = 1$.
+\end{exercise}
+\begin{sol*}
+Suponemos que $\alpha$ es nul-homotópica y consideramos la homotopía $H : I \times I \to X$  de $\alpha$ a la función constante $e(t)=d$ para $t \in I$.
+Vamos a demostrar que el conjunto $G = \{t ; c \in H(I \times \{t\}\}$ es un abierto cerrado. Para ver que es abierto, observamos que $\{(i,t) ; c \in H(i,t)\} = H^{-1}({c})$. Como $H$ es continua y $\{c\}$ es un abierto, $H^{-1}({c})$ es también abierto. Como $G$ es la proyección de $H^{-1}(c)$ sobre la segunda coordenada, $G$ es abierto. Por otro lado, existe $t_0$, ya que $G \subseteq I$. Aunque $G$ debe ser una unión de intervalos, podemos suponer sin pérdida de generalidad que es un sólo intervalo. Sea $\{(i_n,t_n)\}\subset I\times G$ una sucesión tal que $H(i_n,t_n) = c$ y $t_n \to t_0$. Por continuidad (tomando si es necesario una subsucesión de manera que $i_n$ converga en $i_0 \in I$):
+\[ H(i_0,t_0) = \lim\limits_{(i_n,t_n)\to (\infty,\infty)}H(i_n,t_n) = c \]
+Por lo tanto $t_0 \in G$. Entonces $G$ es un abierto cerrado. Basta ver, que por inspección, $X$ es conexo (no se puede expresar como la unión disjunta de dos abiertos de $\mathcal{T}$). Además $G\neq\emptyset$ pues $0\in G$. Por lo tanto $G = I$ y $t_0 = 1$. Hemos llegado entonces a una contradicción, pues $H(I,1) \neq \{d\}$. Luego $\alpha$ no es nul-homotópica y $\pi_1(X,d)$ no es trivial.
+\end{sol*}
+
+\newpage \begin{exercise} Sea $H: X\times I \to X$ una homotopía con $H(x,0) =  H(x,1) = x$ para todo $x\in X$. Si $\gamma$ es el lazo en $x_0$ $\gamma(t) = H(x_0,t)$, probar que la clase $[\gamma]$ conmuta con todo elemento de $\pi_1(X,x_0)$.
+\end{exercise}
+\begin{sol*} 
+Para probar este resultado vamos a usar el lemma 1.19 de \emph{Algebraic Topology}, que puede ser encontrado en la página 37 del libro \url{https://www.math.cornell.edu/~hatcher/AT/AT.pdf}
+El diagrama conmutativo que aparece en el libro se convierte en el siguiente, teniendo en cuenta que $H(x,0)_*=H(x,1)_*=Id$:
+\[
+\begin{tikzcd}
+\pi_1(X,x_0)\arrow[r,"Id"]\arrow[dr,"Id"'] &\pi_1(X,x_0)\arrow[d,"\gamma_\sharp"]\\
+&\pi_1(X,x_0)
+\end{tikzcd}
+\]
+Por el lema deducimos que $\gamma_\sharp=Id$, o lo que es lo mismo, dado $[g]\in\pi_1(X,x_0)$
+\[
+[g]=\gamma_\sharp([g])=[\overline{\gamma}][g][\gamma],
+\]
+por lo que $[\gamma]$ conmuta con todos los demás elementos (esto significa que $[\gamma]$ pertenece al centro de $\pi_1(X,x_0)$.
+\end{sol*}
+\end{document}
