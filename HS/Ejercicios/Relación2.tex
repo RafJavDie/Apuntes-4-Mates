@@ -367,11 +367,37 @@ B = \{(x, y, z) ∈ \R^3
 triangular $Y$ y hallar los $\F$-espacios vectoriales de homología correspondientes a esa triangulación
 \end{ejercicio}
 \begin{solucion}
-Este espacio se puede triangular uniendo dos copias de la triangulación de \ref{ejer:2.16} haciendo que los dos ``suelos'' coincidan. Por tanto tenemos una descomposición evidente para la sucesión de Mayer-Vietoris, cuya intersección es del mismo tipo de homotopía que un wedge de dos circunferencias. Entonces obtenemos la sucesión
-\[
-0\to H_2(K)\xrightarrow{\Delta_2} \F\oplus\F\xrightarrow{i_{*1}}\F\oplus\F\xrightarrow{j_{*1}}H_1(K)\xrightarrow{i_{*0}}\F\to 0
-\]
-Los dos ciclos que generan la homología de la intersección son linealmente dependientes en la unión, pues la suma forma el borde de la parte superior (o inferior) de $K$ (obsérvese que al orientarlos la arista transversal se cancela y efectivamente forman el borde). Además no son triviales pues individualmente no son borde de ningún 2-símplice. Así que $i_{*1}$ tiene rango 1, lo cual implica que su núcleo tiene dimensión 1. La exactitud nos da que $H_2(K)\cong\F$. Ahora, aplicando el primer teorema de isomorfía junto con la exactitud $H_1(K)\cong \F\oplus\F$. Finalmente $H_0(K)=\F$ por ser conexo. 
+Este espacio se puede triangular uniendo dos tetraedos por sus ``suelos'' y conectando los dos vértices no adyacentes con una arista. 
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\draw (1,2) node[anchor=south]{$v_0$} -- (0.3,1.1) node[anchor=east]{$v_1$} -- (1.2,0.9) -- cycle;
+\draw (1.2,0.9) node[anchor=south]{$v_2$} -- (1.6,1.1) node[anchor=west]{$v_3$}-- (1,2) -- cycle; 
+\draw (1.2,0.9) -- (1.6,1.1) -- (1,0) node[anchor=north]{$v_4$} -- cycle; 
+\draw (1,0) -- (0.3,1.1) -- (1.2,0.9) -- cycle; 
+\draw[dashed] (1,0) -- (1,2); 
+\end{tikzpicture}
+\end{figure}
+
+Tomamos $K_1 = (v_0, v_4)$ y $K_2 \cong$ triangulación de las esfera.
+Entonces $K = K_1 \cup K_2$ y $K_1 \cap K_2 = \{(v_0), (v_4)\}$.
+
+Usando Mayer-Vietoris reducido teniendo en cuenta que:
+\begin{itemize}
+\item $\widetilde{H}_2(K_1 \cap K_2) = 0$.
+\item $\widetilde{H}_2(K_1) \oplus \widetilde{H}_2(K_2) = 0 \oplus \F\gene{c} \cong \F\gene{c}$.
+\item $\widetilde{H}_1(K_1 \cap K_2) = 0$.
+\item $\widetilde{H}_1(K_1) \oplus \widetilde{H}_2(K_2) = 0$.
+\item $\widetilde{H}_0(K_1 \cap K_2) = \F\gene{v_0-v_4}$.
+\item $\widetilde{H}_0(K_1) \oplus \widetilde{H}_0(K_2) = 0$.
+\end{itemize}
+Donde $c$ suma es la súma de los símplices de $K$ de dimensión $2$
+Tenemos que:
+\[ 0 \xrightarrow{i_{*2}} \F\gene{c} \xrightarrow{j_{*2}} \widetilde{H}_2(K) \xrightarrow{\Delta_2} 0 \]
+\[ 0 \xrightarrow{j_{*1}} \widetilde{H}_1(K) \xrightarrow{\Delta_1} \F\gene{v_0-v_4} \xrightarrow{i_{*0}} 0 \]
+\[ 0 \xrightarrow{j_{*0}} \widetilde{H}_0(K) \to 0 \]
+Por lo tanto, $\widetilde{H}_2(K) = \F\gene{c}$, $\widetilde{H}_1(K) = \F\gene{v_0-v_4}$ y $\widetilde{H}_0(K) = 0$.
 \end{solucion}
 
 \newpage
