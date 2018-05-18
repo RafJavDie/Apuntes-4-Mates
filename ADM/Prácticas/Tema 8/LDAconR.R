@@ -30,7 +30,6 @@ medias=by(datos[,2:3],datos[,1],colMeans)
 names(medias)
 media1= medias$"1"
 media2= medias$"2"
-
 points(media1[1],media1[2],col=1,lwd=4,pch=2)
 points(media2[1],media2[2],col=2,lwd=4,pch=2)
 

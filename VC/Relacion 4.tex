@@ -147,11 +147,17 @@ $$
 Probar que si $f$ es una función entera de orden finito que omite dos valores, entonces $f$ es constante. Esto es cierto también para cualquier función entera y se conoce como el teorema pequeño de Picard.
 \end{ejercicio}
 \begin{solucion}
-Supongamos que $f$ omite dos valores $a$ y $b$. Entonces $f(z)-a$ (resp. con $b$) es una función holomorfa que no se anula en $\C$. Como $f$ es de orden finito $\rho$, como aplicación directa del teorema de Hadamard tenemos que existe un polinomio $g(z)$ de grado menor o igual $k=\suelo{\rho}$ tal que $f(z)-a=e^{g(z)}$. Análogamente para $b$ tenemos el resultado para un polinomio $h(z)$. Por tanto, $f(z)=e^{g(z)}+a=e^{h(z)}+b$. Como estamos en $\C$ sabemos que si $h$ o $g$ son no constantes, existe algún $z_0\in \C$ tal que $h(z_0)=g(z_0)$, por lo que 
+Supongamos que $f$ omite dos valores $a$ y $b$. Entonces $f(z)-a$ (resp. con $b$) es una función holomorfa que no se anula en $\C$. Como $f$ es de orden finito $\rho$, como aplicación directa del teorema de Hadamard tenemos que existe un polinomio $g(z)$ de grado menor o igual $k=\suelo{\rho}$ tal que $f(z)-a=e^{g(z)}$. Análogamente para $b$ tenemos el resultado para un polinomio $h(z)$. Por tanto, $f(z)=e^{g(z)}+a=e^{h(z)}+b$. Como estamos en $\C$ sabemos que si $h-g$ es no constante, existe algún $z_0\in \C$ tal que $h(z_0)=g(z_0)$, por lo que 
 $$
 f(z_0) = e^{g(z_0)}+a=e^{h(z_0)}+b \Rightarrow a = b
 $$
-Lo cuál no es posible por hipótesis, luego $h$ y $g$ son polinomios constantes y, por tanto, $f(z)=e^{g}+a$ que es constante.
+Lo cuál no es posible por hipótesis, luego $h-g$ es constante. Por tanto $h(z)=g(z)+c$. Si $h(z)$ es no constante, tiene al menos una raíz $z_1$, donde se tiene que $g(z_1)=-c$. Análogamente, también habría de existir una raíz $z_2$ de $g(z)$ tal que $h(z_2)=c$.
+$$
+f(z_1)=1+b = e^{-c}+a \qquad f(z_2) = 1 + a = e^{c}+b
+$$
+Si restamos, obtenemos $b-a = e^{-c}-e^c + ($
+
+
 \end{solucion}
 
 \newpage
