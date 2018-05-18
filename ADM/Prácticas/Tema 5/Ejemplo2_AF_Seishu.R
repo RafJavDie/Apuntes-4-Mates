@@ -11,7 +11,7 @@
 #más seco, cuanto más negativo, más dulce
 
 #1. Leer los datos y calcular las medidas
-#   de adecuación muestral. Aplicar el test
+#   de adecuación muestral. Aplicar el test 
 #   de esfericidad de Bartlett
 #2. Estimar el modelo AF mediante el método 
 #   de Componentes Principales (variables tipificadas)  
