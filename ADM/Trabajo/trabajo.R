@@ -5,37 +5,64 @@ train <- read.csv("train.csv")
 test <- read.csv("test.csv")
 
 # Construccion de arbol
-tree.mortality <- tree(mortality_rate~.-Id, train)
+mortality <- tree(mortality_rate~.-Id, train)
 
-summary(tree.mortality)
-plot(tree.mortality)
-text(tree.mortality, pretty=0)
+summary(mortality)
+plot(mortality)
+text(mortality, pretty=0)
 
 # Reduccion del arbol
-cv.mortality <- cv.tree(tree.mortality)
-plot(cv.mortality$size, cv.mortality$dev, type='b')
+mortality.cv <- cv.tree(tree.mortality)
+plot(mortality.cv$size, mortality.cv$dev, type='b')
 # Vemos que no necesitamos reducir el arbol
 
 # Prediccion
-yhat <- predict(tree.mortality, newdata=test)
+yhat <- predict(mortality, newdata=test)
 
 # Grafico
 plot(yhat, test$mortality_rate)
 abline(0,1)
 # Cuanto mas alejado de la recta, peor.
 
-# Error cuadrático medio
-(mse <- mean((yhat - test$mortality_rate)^2))
+# Raíz cuadrada del Error cuadrático medio
+(mse <- sqrt(mean((yhat - test$mortality_rate)^2)))
+(r2 <- cor(yhat, test$mortality_rate)^2)
 
+# Vamos a usar RandomForest para mejorar
+#install.packages("randomForest")
+library(randomForest)
+mortality.forest <- randomForest(mortality_rate~.-Id,
+                                 data = train)
+yhat.forest <- predict(mortality.forest, newdata=test)
+
+(mse.forest <- sqrt(mean((yhat.forest - test$mortality_rate)^2)))
+(r2.forest <- cor(yhat.forest, test$mortality_rate)^2)
+
+# Vamos a usar boost para mejorar
 #install.packages("gbm")
 library(gbm)
-boost.mortality <- gbm(mortality_rate~.-Id,
+mortality.boost <- gbm(mortality_rate~.-Id,
                        data=train,
                        distribution="gaussian",
                        n.trees=5000,
                        interaction.depth=4)
-summary(boost.mortality)
-yhat.boost <- predict(boost.mortality,
+summary(mortality.boost)
+yhat.boost <- predict(mortality.boost,
                       newdata = test,
                       n.trees = 5000)
-(mean((yhat.boost - test$mortality_rate)^2))
+
+(mse.boost <- sqrt(mean((yhat.boost - test$mortality_rate)^2)))
+(r2.boost <- cor(yhat.boost, test$mortality_rate)^2)
+
+# Comparamos los errores de los 3 métodos.
+error <- matrix(c(mse, mse.forest, mse.boost,
+                  r2, r2.forest, r2.boost), 
+                nrow=3)
+colnames(error) <- c("MSE", "R^2")
+barplot(error,
+        col = c("darkred","blue","lightblue"),
+        legend = rownames(data),
+        beside = TRUE)
+legend("topleft",
+       fill = c("darkred","blue","lightblue"),
+       legend = c("Normal", "Forest", "Boost"))
