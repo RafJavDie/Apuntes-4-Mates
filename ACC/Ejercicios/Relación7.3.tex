@@ -220,18 +220,42 @@ that has $i, j$ as input and $R_{C_6} (x^iy^j)$ as output.
 \end{ejercicio}
 \begin{solucion}\
 \begin{enumerate}[a.]
-\item 
-\item 
-\item
+\item $(-A)(-A)=A^2$, $-AA^2=-A^3=-I_2$, $-A(-A)^3=A^4=A$, $-AA=-A^2$, $-A(-A)^2=A^3=I_2$. 
+\item $-I_2\in C_6$ por el apartado anterior. Ahora, esto implica que $C_2\subseteq C_6$, por lo que usando el ejercicio \ref{ejer:7.3.6}, $k[x, y]^{C_6} ⊆ k[x,y]^{C_2}=k[x^2, y^2, xy]$. Esto implica evidentemente que los invariantes homogéneos tienen grado total par.
+\item Tendremos que calcular el operador de Reynolds sobre los monomios $x^iy^j$ con $1\leq i+j\leq 6$ y $i+j\equiv 0\mod 2$, es decir, sobre $x^2,y^2,xy$ y cualquier producto de ellos de grado total inferior a 6. FALTAN LOS CÁLCULOS.
 \end{enumerate}
 \end{solucion}
 
 \newpage
 
 \begin{ejercicio}{7.3.9}
-
+Let $A$ be the matrix
+\[
+A =
+\frac{1}{\sqrt{2}}\begin{pmatrix}
+1 &−1\\
+1 &1\\
+\end{pmatrix}
+∈ GL(2, k).
+\]
+\begin{enumerate}[a.]
+\item Show that $A$ generates a cyclic matrix group $C_8 ⊆ GL(2, k)$ of order 8.
+\item Give a geometric argument to explain why $x^2 + y^2 ∈ k[x, y]^{C_8}$ . Hint: $A$ is a rotation
+matrix.
+\item As in Exercise \ref{ejer:7.3.8}, explain why all homogeneous invariants of $C_8$ have even total
+degree.
+\item Find $k[x, y]^{C_8}$ . Hint: Do not do this problem unless you know how to design a procedure
+(on some computer algebra program) that has $i$, $j$ as input and $R_{C_8} (x^iy^j)$ as
+output.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a.]
+\item HACIENDO LOS CÁLCULOS NO ME SALE.
+\item La ecuación $x^2+y^2=0$, luego si $k$ es algebraicamente cerrado $x^2=-y^2\Rightarrow x=iy$. El conjunto de puntos de este tipo son invariantes por rotaciones. En un cuerpo contenido en $\R^2$ es más claro, pues $x^2+y^2=r^2$ es una circunferencia, que claramente es invariante por rotaciones para cualquier $r$.
+\item
+\item 
+\end{enumerate}
 \end{solucion}
 \newpage
 
@@ -258,7 +282,7 @@ we have to compute the Reynolds operator?
 \begin{solucion}\
 \begin{enumerate}[a.]
 \item $9+8+7+6+5+4+3+2=44$. 
-\item 
+\item Obsérvese que este grupo está generado por las 3 matrices que son como la identidad pero con una de las entradas de la diagonal cambiada de signo. Entonces un polynomio $f\in k[x, y, z]^G$ si y solo si $f(x,y,z)=f(-x,y,z)=f(x,-y,z)=f(x,y,-z)$. Siguiendo la analogía del ejemplo 12, llegamos a que $k[x, y, z]^G=k[x^2,y^2,z^2]$.
 \end{enumerate}
 \end{solucion}
 \newpage
