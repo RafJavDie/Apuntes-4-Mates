@@ -262,7 +262,7 @@ Donde $e_{ij} = \E_{H_0}(N_{ij}) = N_{i.}P_{H_0}(B_j) = \dfrac{N_{i.}N_{.j}}{N}$
 
 \item Demuestra que los estadísticos $\chi^2$ asociados a ambos problemas y sus distribuciones coinciden.
 
-Lo demostraría, pero no sé cómo. ¿¿¿¿¿¿????????????¿¿¿¿¿¿¿¿¿¿¿?????
+Respondido en el apartado anterior. 
 \end{enumerate}
 \item Sean $r_1', \dots, r_n'$ las distribuciones condicionadas por filas asociadas a un tabla de contingencia
 \[\begin{matrix}
@@ -281,8 +281,7 @@ A_n & N_{n1} & \dots & N_{nj} & \dots & N_{np} & N_{n.}\\
 	$$
 	m_r'=\sum_{i=1}^n f_{i.}r_i' = \sum_{i=1}^n  \frac{N_{i.}}{N}\left[\frac{N_{ij}}{N_{i.}}\right]_j = \frac{1}{N}\sum_{i=1}^n \left[{N_{ij}}\right]_j = \left[\frac{N_{.j}}{N}\right]_{j}
 	$$
-	\item Define la distancia ji-cuadrado entre dos distribuciones.  PREGUNTAR ¿Las distribuciones son las filas de Mr? ¿O de la tabla de contigencia? 
-	
+	\item Define la distancia ji-cuadrado entre dos distribuciones.  
 	Sea $D_p = diag(f_{.1},\dotsc,f_{.p})$. Definimos la distancia $d_{\chi^2}(r_i,r_j)$ como
 	$$
 	d_{\chi^2}(r_i,r_j) = (r_i - r_j)'D_p^{-1}(r_i - r_j)
@@ -298,17 +297,91 @@ A_n & N_{n1} & \dots & N_{nj} & \dots & N_{np} & N_{n.}\\
 	\end{align*}
 \end{enumerate}
 \item Describe el objetivo del análisis de correspondencias (por filas).
+
+Representar los perfiles filas y columnas en un número menor
+de dimensiones (generalmente 2) de forma que los perfiles próximos en la métrica ji−cuadrado tengan representaciones próximas en la distancia euclídea.
+
+
 \item Analogías y diferencias entre el ACP y el AC.
+
+Ambos procedimientos buscan reducir la dimensión del espacio original de estudio. Para ello se realizan cambios de base que mantengan la máxima varianza en las primeras componentes.  
+
+La diferencia entre ambos procedimientos es que en el AC utilizamos la distancia ji-cuadrado en lugar de la distancia euclídea. Esto provoca que, mientras que en el ACP, la distancia euclídea de los individuos originales y los transformados coinciden, en el AC, la distancia ji-cuadrado de las coordenadas originales coincide con el cuadrado de la distancias euclídeas de las proyecciones. Además, en el ACP las coordenadas deben estar incorreladas. 
+
 \item Plantea y resuelve el problema de optimización al que conduce el AC. 
+
+El problema que se plantea en el AC por filas es determinar los ejes $u_1, u_2,\dotsc, u_p$, unitarios y ortogonales, que maximicen la varianza (ponderada) de las proyecciones
+\begin{itemize}
+\item Primer eje
+\begin{align*}
+\max_{u_1} & p'_{u_1}D_pp_{u_1} \\
+s.a.& u_1'D_p^{-1}u_1 = 1
+\end{align*}
+\item Segundo eje
+\begin{align*}
+\max_{u_2} &\; p'_{u_2}D_pp_{u_2} \\
+s.a.& \;u_2'D_p^{-1}u_2 = 1 \qquad u_1'D_p^{-1}u_2 = 0 
+\end{align*}
+\end{itemize}
+
 \item Demuestra que el cuadrado de la distancia euclídea entre las proyecciones de dos filas $P_{r_i}$ y $P_{r_i'}$ coincide con la distancia \emph{ji−cuadrado} entre las filas $r_i$ y $r_i'$.
+
+\begin{align*}
+d^2(P_{r_i},P_{r_i'}) &= (P_{r_i}-P_{r_i'})'(P_{r_i}-P_{r_i'})\\
+&=\sum_{\alpha=1}^p (u_\alpha D^{-1}_p r_i - u_\alpha D^{-1}_p r_{i'} )'(u_\alpha D^{-1}_p r_i - u_\alpha D^{-1}_p r_{i'} )\\
+&=\sum_{\alpha=1}^p (r_i-r_{i'})'(u_\alpha D^{-1}_p )'(u_\alpha D^{-1}_p)(r_i-r_{i'})\\
+&=(r_i-r_{i'})'D^{-1}_p\left(\sum_{\alpha=1}^p u_\alpha'  u_\alpha D^{-1}_p \right)(r_i-r_{i'})\\
+&=(r_i-r_{i'})'D^{-1}_p(r_i-r_{i'})\\
+&= d_{\chi^2}(r_i,r_{i'})
+\end{align*}
+
+
 \item Concepto de vértice en el problema del AC por filas. Interpretación. 
+
+Los vértices de las filas son distribuciones degeneradas, es decir, filas donde toda la información se concentra en una sola categoría $B_i$, es decir el vértice $v_{f_i}$ es el vector $p$ dimensional que tiene un $1$ en la componente $i$-ésima y $0$ en el resto.
+
+Para la interpretación, dado que $d_{\chi^2}(r_i,v_{f_j})= d^2(P_{r_i},P_{v_{f_j}})$, podemos interpretarlo como la distancia perfil filar $r_i$ a la característica $B_j$.
+
 \item Determina las coordenadas de $m_r'$ en la nueva base. 
+
+La coordenada $i$-ésima viene dada por $m_r' D_p^{-1} u_i$. Claramente $m_r'D_p^{-1} = 1_p'$. Luego $m_r'D_p^{-1}u_i = u_i'1_p = 0$. ¿¿PREGUNTAR??
 \item Demuestra que $(0, m_r)$ es un autovalor-vector de la matriz
 \[ S_r = \sum_{i=1}^n f_{i.} (r_i - m_r) (r_i - m_r)^t D_p^{-1} \]
+
+Tenemos que
+\begin{align*}
+S_rm_r &= \sum_{i=1}^n f_{i.} (r_i - m_r) (r_i - m_r)^t D_p^{-1} m_r\\
+& = \sum_{i=1}^n f_{i.} (r_i - m_r) (r_i - m_r)^t 1_p
+\end{align*}
+Ahora bien, es claro que $r_i' 1_p = 1 = m_r' 1_p$, de donde se deduce que $(r_i-m_r)'1_p = 0$ y el resultado.
+
 \item Determina las coordenadas de las filas correspondientes al autovector $m_r$. ¿Qué evidencian?
+
+Por el razonamiento anterior tenemos que $r_i D_p^{-1} m_r = 1$. Al ser una columna constante se evidencia que la varianza ponderada es nula. ¿¿Por qué??
+
 \item Demuestra que la varianza ponderada de las coordenadas correspondientes al autovector $u_k$ se puede expresar como
 \[ \sum_{i=1}^n f_{i.} (r_i^t D_p^{-1} u_k)^2 \]
+
+Es inmediato. Si la fórmula de la varianza ponderadas es
+$$
+\sum_{i=1}^n f_{i.} (r_i^t D_p^{-1} u_k-m_r'D_p^{-1}u_k)^2
+$$
+Y anteriormente hemos deducido que $m_r'D_p^{-1}u_k =1_p'u_k = 0$. ¿INSISTO, PREGUNTAR?
 \item Define la inercia total y demuestra que es igual a la suma de los autovalores de $S_r$.
+
+Dfinimos la inercia total como $InT = \dfrac{\chi^2}{N}$. Esto es, por lo visto en teoría
+$$
+InT = \sum_{i=1}^n f_{i.}d_{\chi^2}(r_i,m_r)
+$$
+Además,
+\begin{align*}
+traza(S_r) &= \sum_{i=1}^n \lambda_i \\
+&=traza\left(\sum_{i=1}^n f_{i.} (r_i - m_r) (r_i - m_r)^t D_p^{-1} \right)\\
+&= \sum_{i=1}^n f_{i.} traza((r_i - m_r) (r_i - m_r)^t D_p^{-1})\\
+& = \sum_{i=1}^n f_{i.}((r_i - m_r) D_p^{-1} (r_i - m_r)^t \\
+&= \sum_{i=1}^n f_{i.}d_{\chi^2}(r_i,m_r)
+\end{align*}
+PREGUNTAR
 \end{enumerate}
 \newpage
 \section{Análisis Discriminante}
