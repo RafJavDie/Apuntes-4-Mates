@@ -324,7 +324,40 @@ s.a.& \;u_2'D_p^{-1}u_2 = 1 \qquad u_1'D_p^{-1}u_2 = 0
 \end{align*}
 \end{itemize}
 
+Denotemos por $S_r = F'D_n^{-1}FD_p^{-1}-m_r1_p = M_r'M_c'-m_r1_p$, entonces operando podemos llegar
+$$
+p'_{u_i}D_np_{u_i} = u_i'D_p^{-1}(M_r -m_r1_p')'D_n(M_r -m_r1_p')D_p^{-1}u_i = u_i'D_p^{-1}S_ru_i
+$$
+Vamos a probar en general que, dadas $A$ simétrica y $M$ simétrica definida positiva entonces
+\begin{align*}
+\max_{u_1} &\;  u_i'Au_i \\
+s.a.&\;  u_1'Mu_1 = 1
+\end{align*}
+\begin{align*}
+\max_{u_2} &\;  u_2'Au_2 \\
+s.a.& \; u_2'Mu_2  1 \qquad u_1'Mu_2 = 0 
+\end{align*}
+Así como el resto de problemas, tienen como solución los pares $(\lambda_i,u_i)$ autovalores-autovectores normalizados (en orden decreciente) de $M^{-1}A$. En nuestro caso $M=D_p^{-1}$, $A = D^{-1}_p S_r$, luego la solución vendrá determinada por los autovalores de $S_r$.
+
+Consideremos $L(u_1,\lambda) = u_1'Au_1 - \lambda(u_1'Mu_1-1)$. Derivando con respecto a $u_1$ e igualando a $0$ obtenemos
+$$
+\frac{L}{\partial u_1}(u_1,\lambda)= 2Au_1 -2\lambda Mu_1 = 0 \Rightarrow Au_1 = \lambda M u_1 \Rightarrow  M^{-1}A u_1 = \lambda u_1
+$$
+Por tanto, $(\lambda,u_1)$ deben ser pares autovalor-autovector de $M^{-1}A$. Si multiplicamos por $u_1'$ en la segunda igualdad, tenemos $u_1' A u_1 = \lambda u_1'Mu_1 = \lambda$, por lo que la función objetivo se maximiza en un autovalor que debe ser, por tanto, el máximo autovalor. Deducimos por tanto que $u_1$ es el autovector unitario asociado. 
+
+Demostramos el caso $u_2$ y el resto es análogo. Sea
+$$
+L(u_2,\beta_1,\beta_2) = u_2'Au_2 - \beta_1(u_2'Mu_2-1) - \beta_2(u_1'Mu_2)
+$$
+Derivamos con respecto a $u_2$ e igualamos a $0$
+$$
+\frac{L}{\partial u_2}(u_2,\beta_1,\beta_2) = 2Au_2 -2\beta_1 Mu_2 - \beta_2Mu_1 = 0 
+$$
+En la igualdad del problema anterior $Au_1 = \lambda Mu_1$ es claro que si multiplicamos por $u_2'$ u y usamos que $u_2'Mu_1=0$ tenemos que $u_2'Au_1 =0$. Si multiplicamos por $u_1'$ utilizando las condiciones de este y el problema anterior sobre $u_1$ tenemos simplemente $\beta_2 = 0$. De $Au_2 = \beta_1 M u_2$ deducimos que $M^{-1}Au_2 =\beta_1 u_2$ y $u_2'Au_2 = \beta_1$ y el resto se sigue trivialmente.
+
+
 \item Demuestra que el cuadrado de la distancia euclídea entre las proyecciones de dos filas $P_{r_i}$ y $P_{r_i'}$ coincide con la distancia \emph{ji−cuadrado} entre las filas $r_i$ y $r_i'$.
+
 
 \begin{align*}
 d^2(P_{r_i},P_{r_i'}) &= (P_{r_i}-P_{r_i'})'(P_{r_i}-P_{r_i'})\\
