@@ -408,11 +408,12 @@ InT = \sum_{i=1}^n f_{i.}d_{\chi^2}(r_i,m_r)
 $$
 Además,
 \begin{align*}
-traza(S_r) &= \sum_{i=1}^n \lambda_i \\
+\sum_{i=1}^n \lambda_i & = traza(S_r)\\
 &=traza\left(\sum_{i=1}^n f_{i.} (r_i - m_r) (r_i - m_r)^t D_p^{-1} \right)\\
 &= \sum_{i=1}^n f_{i.} traza((r_i - m_r) (r_i - m_r)^t D_p^{-1})\\
 & = \sum_{i=1}^n f_{i.}(r_i - m_r) D_p^{-1} (r_i - m_r)^t \\
-&= \sum_{i=1}^n f_{i.}d_{\chi^2}(r_i,m_r)
+&= \sum_{i=1}^n f_{i.}d_{\chi^2}(r_i,m_r)\\
+& = InT
 \end{align*}
 PREGUNTAR
 \end{enumerate}
@@ -422,9 +423,68 @@ PREGUNTAR
 \item Discriminación en dos poblaciones con distribuciones conocidas
 \begin{enumerate}
 	\item Define la probabilidad total de error de clasificación de una regla discriminante.
-	\item Determina la regla discriminante que minimiza la probabilidad total de error de clasificación 
+
+	\begin{sol}
+	Sea $P$ una población formada por dos grupos $G_1$ y $G_2$ con proporciones $\pi_1$ y $\pi_2$ respectivamente.
+	Sea una regla discriminante una regla discriminante del espacio muestral $\mathcal{R} = \mathcal{R}_1 \cup \mathcal{R}_2$ con función de densidad $f_i$ en los grupos $G_1$ y $G_2$ con $i=1,2$.
+	La probabilidad total de error es:
+	\[ P[\mathcal{R}; f] = P(1/2) \pi_2 + P(2/1)\pi_1 \]
+	donde:
+	\[ P(i/j) = P[\text{asignar a }G_i\mid\text{ siendo de }G_j]\]
+	\end{sol}
+
+	\item Determina la regla discriminante que minimiza la probabilidad total de error de clasificación.
+
+	\begin{sol}
+	\begin{align*}
+	P[\mathcal{R}; f] & = P(1/2)\pi_2 + P(2/1)\pi_1\\
+	& = \pi_2 \int_{\mathcal{R}_1} f_2(\m{x}) d \m{x} + \pi_1 \int_{\mathcal{R}_2} f_1(\m{x}) d \m{x}\\
+	& = \pi_2 \int_{\mathcal{R}_1} f_2(\m{x}) d\m{x} + \pi_1 \left(1 - \int_{\mathcal{R}_1} f_1(\m{x}) d\m{x}\right)\\
+	& = \int_{\mathcal{R}_1} (\pi_2 f_2(\m{x}) - \pi_1 f_1(\m{x})) d\m{x} + \pi_1
+	\end{align*}
+	Luego podemos para minimizar el error tomando:
+	\begin{align*}
+	\text{Asignar }\m{x}_0\text{ a }G_1\text{ si }\pi_1 f_1(\m{x}_0) > \pi_2 f_2(\m{x}_0)\\
+	\text{Asignar }\m{x}_0\text{ a }G_2\text{ si }\pi_1 f_1(\m{x}_0) < \pi_2 f_2(\m{x}_0)\\
+	\text{Asignar }\m{x}_0\text{ aleatoriamente si } \pi_1 f_1(\m{x}_0) = \pi_2 f_2(\m{x}_0)\\
+	\end{align*}
+	\end{sol}
+
 	\item Plantea y resuelve el problema original de Fisher. 
-	\item Demuestra que supuesto que las poblaciones se distribuyen según $N(\mu_i, \Sigma)$, $i = 1, 2$, la regla discriminante que minimiza la proba- bilidad total de error coincide con la resultante de la propuesta de Fisher.
+
+	\begin{sol}
+	Consideramos dos poblaciones con $\Sigma_1 = \Sigma_2$ y una muestra aleatoria de cada subpoblación $\m{x}_{i1},\dots,\m{x}_{in_i}$ de $G_i$ con $i=1,2$.
+	El problema de Fisher consisten en determinar la combinación lineal $\m{c}$ correspondiente a:
+	\[ \max_{\m{c} \in \mathbb{R}^p} \frac{\left(\m{c}^t \m{\overline{x}}_1-\m{c}^t \m{\overline{x}}_2\right)^2}{\m{c}^t \widehat{\Sigma} \m{c}} \]
+	
+	Esto resulta en una regla discriminante:
+	\[ \text{Asignar }\m{x}_0\text{ a }G_1\text{ si }|\m{c}^t \m{x}_0 - \m{c}^t\m{\overline{x}}_1 | < |\m{c}^t\m{x}_0 - \m{c}^t\m{\overline{x}}_2| \]
+	\end{sol}
+
+	\item Demuestra que supuesto que las poblaciones se distribuyen según $N(\mu_i, \Sigma)$, $i = 1, 2$, la regla discriminante que minimiza la proba bilidad total de error coincide con la resultante de la propuesta de Fisher.
+
+	\begin{sol}
+	El problema es equivalente a (PREGUNTAR: ¿Por qué podemos quitar el denominador?):
+	\begin{align*}
+	\max_{\m{c} \in \R^p} \left(\m{c}^t\m{\overline{x}}_2-\m{c}^t\m{\overline{x}}_2\right)^2 & \qquad \equiv \qquad & \max_{\m{c} \in \R^p} \m{c}^t(\m{\overline{x}}_1-\m{\overline{x}}_2)(\m{\overline{x}}_1-\m{\overline{x}}_1)^t \m{c} \\
+	s.a.\ \m{c}^t \widehat{\Sigma} \m{c} = 1 & & s.a.\ \m{c}^t \widehat{\Sigma} \m{c} = 1
+	\end{align*}
+	cuya solución es el autovalor-vector de $\widehat{\Sigma}^{-1} (\m{\overline{x}}_1-\m{\overline{x}}_2)(\m{\overline{x}}_1-\m{\overline{x}}_1)^t =: \widehat{\Sigma}^{-1}\m{d}\m{d}^t$. En concreto, su autovalor es:
+	\[ \m{d}^t \widehat{\Sigma}^{-1} \m{d} \]
+	y un autovector:
+	\[ \widehat{\Sigma}^{-1}\m{d} \]
+	que normalizando queda:
+	\[ \m{e} = \frac{\widehat{\Sigma}^{-1}\m{d}}{\left(\m{d}^t \widehat{\Sigma}^{-1}\m{d}\right)^{1/2}}\]
+
+	Entonces la regla discriminante asociada consiste en 
+	\begin{center}Asignar $\m{x}_0$ a $G_1$ si $|\widehat{e}^t \m{x}_0 - \widehat{e}^t \m{\overline{x}}_1| < |\widehat{e}^t \m{x}_0 - \widehat{e}^t \m{\overline{x}}_2|$.\end{center}
+
+	Operando se tiene que es equivalente a la regla:
+	\begin{center}Asignar $\m{x}_0$ a $G_1$ si $\m{c}^t \m{x}_0 > \frac{1}{2} \m{c}^t (\m{\overline{x}}_1 + \m{\overline{x}}_2)$\end{center}
+	Esto coincide con la Regla Discriminante Lineal de Fisher:
+	\begin{center}Asignar $\m{x}_0$ a $G_1$ si $\widehat{\lambda}^t \m{x}_0 > \frac{1}{2} \widehat{\lambda}^t (\m{\overline{x}}_1 + \m{\overline{x}}_2)$\end{center}
+	con $\widehat{\lambda}^t = (\m{\overline{x}}_1 - \m{\overline{x}}_2)^t \widehat{\Sigma}^{-1}$.
+	\end{sol}
 \end{enumerate}
 \item Coordenadas discriminantes canónicas 
 \begin{enumerate}
