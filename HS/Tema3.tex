@@ -7,7 +7,7 @@
 \section{Complejo de cadenas simpliciales}
 \begin{defi}
 Sea $K$ un  complejo simplicial, y $\sigma \in K$ un $n$-símplice (sin pérdida de generalidad) $\sigma = (v_0,v_1,\dots,v_n)$.
-Definimos la relación de equivalencia $(v_0,v_1,\dots,v_n) \sim (v_{\pi(0)},v_{\pi(1)},\dots,v_{\pi(n)})$ si $\pi$ es una permutación par en $\{0,1,\dots,n\}$.
+Definimos la relación de equivalencia $(v_0,v_1,\dots,v_n) \sim (v_{\pi(0)},v_{\pi(1)},\dots,v_{\pi(n)})$ si $\pi$ es una permutación par de $\{0,1,\dots,n\}$.
 \end{defi}
 Es decir, la relación de equivalencia inducida por la acción del grupo de las permutaciones pares sobre los $n$-símplices.
 Es sencillo ver que esto realmente es una relación de equivalencia.
@@ -72,7 +72,7 @@ De aquí podemos definir el $n$-ésimo espacio vectorial de homología simplicia
 
 
 \begin{prop}
-El complejo de cadenas $\{(C_n(K;\F),\partial_n)\}_{n\geq 0}$ admite un aumento.
+El complejo de cadenas $\{(C_n(K;\F),\partial_n)\}_{n\geq 0}$ admite un aumento siempre que $K\neq \emptyset$.
 \end{prop}
 
 \begin{dem}
@@ -190,7 +190,7 @@ Esto demuestra que:
 
 En particular, este resultado es válido para cualquier $n$-símplice, a partir de lo cual podemos calcular los siguiente.
 
-\item \underline{Homología del interior de un $n$-símplice}: podemos evitar el caso $n=0$ por ser el interior de un vértice vacío. Si $n=1$ entonces el interior de un segmento son dos vértices, por lo que claramente su homología se obtiene como suma directa de la de los vértices individuales (no así en la reducida, donde la suma directa sería siempre trivial pero la homología reducida de dos vértices es $\F$ en el nivel 0). Para $n\geq 2$ vamos a denotar $\overline{\partial}$ a los operadores borde correspondientes $C_q(\mathring{\sigma})$ y sin la barra a los de $\sigma$. Obsérvese que $C_q(\mathring{\sigma})=C_q(\sigma)$ para $q\leq n-1$ y $C_q(\mathring{\sigma})=0$ para $q\geq n$. De aquí se deduce que la homología $H_q(\mathring{\sigma})=H_q(\sigma)$ para todo $q\leq n-2$ y para $q\geq n$. Ahora bien, $H_{n-1}(\mathring{\sigma})=\ker\overline{\partial}_{n-1}$ pues $\Ima\overline{\partial}_n=0$. Por otra parte, por ser la homología de $\sigma$ trivial en este nivel, se tiene que $\ker\overline{\partial}_{n-1}=\ker\partial_{n-1}=\Ima\partial_n$. Obsérvese que $\partial_n$ es inyectiva, por lo que $\Ima\partial_n\cong \gene{\sigma}\cong\F$, con lo cual ya tenemos la homología que faltaba. 
+\item \underline{Homología del interior de un $n$-símplice}: podemos evitar el caso $n=0$ por ser el interior de un vértice igual a sí mismo. Si $n=1$ entonces el interior de un segmento son dos vértices, por lo que claramente su homología se obtiene como suma directa de la de los vértices individuales (no así en la reducida, donde la suma directa sería siempre trivial pero la homología reducida de dos vértices es $\F$ en el nivel 0). Para $n\geq 2$ vamos a denotar $\overline{\partial}$ a los operadores borde correspondientes $C_q(\mathring{\sigma})$ y sin la barra a los de $\sigma$. Obsérvese que $C_q(\mathring{\sigma})=C_q(\sigma)$ para $q\leq n-1$ y $C_q(\mathring{\sigma})=0$ para $q\geq n$. De aquí se deduce que la homología $H_q(\mathring{\sigma})=H_q(\sigma)$ para todo $q\leq n-2$ y para $q\geq n$. Ahora bien, $H_{n-1}(\mathring{\sigma})=\ker\overline{\partial}_{n-1}$ pues $\Ima\overline{\partial}_n=0$. Por otra parte, por ser la homología de $\sigma$ trivial en este nivel, se tiene que $\ker\overline{\partial}_{n-1}=\ker\partial_{n-1}=\Ima\partial_n$. Obsérvese que $\partial_n$ es inyectiva, por lo que $\Ima\partial_n\cong \gene{\sigma}\cong\F$, con lo cual ya tenemos la homología que faltaba. 
 \end{enumerate}
 \end{ej}
 
@@ -238,7 +238,7 @@ Como $C_n(σ) = \F\gene{σ}$, entonces:
 \QED
 \end{dem}
 
-
+\section{Homología relativa}
 \begin{defi}
 Sea $K$ un complejo simplicial y $L\subseteq K$ un subcomplejo. Entonces el complejo de cadenas $\{C_n(L;\F),\partial_n|\}$ es un subcomplejo de $\{C_n(K;\F),\partial_n\}$ y se llama \emph{homología orientada relativa del par} $(K,L)$ a la homología del \emph{complejo de cadenas relativas}
 \[
@@ -297,12 +297,10 @@ donde $\mathcal{C}_i=\{C_n(K_i;\F),\partial_n\}$ ($i=1,2$). Obsérvese que $\CC_
 \QED
 \end{dem}
 
-\begin{nota}\
-\begin{enumerate}
+\begin{nota}
 La sucesión de Mayer-Vietoris también es válida para la homología reducida cuando ninguno de los complejos que intervienen son vacíos.
-\end{enumerate}
 \end{nota}
-
+\section{Ejemplos de cálculos de homología}
 \begin{ej}\label{colapso}
 Vamos a calcular la homología de un colapso elemental (la cual se generaliza fácilmente a la de un colapso completo). Sea $K$ un complejo simplicial y $L\subseteq K$ un subcomplejo tal que $K\searrow L=K-\{\sigma,\tau\}$ con $\tau<\sigma$ una cara libre. Aplicamos la sucesión de Mayer-Vietoris para $K_1=L$ y $K_2=\sigma$. 
 Como $τ$ es cara libre de $σ$, $σ$ es de hecho un cono sobre $τ$.
