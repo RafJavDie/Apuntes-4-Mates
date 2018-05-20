@@ -46,7 +46,7 @@ prop.table(tabla,2)
 mosaicplot(tabla, main="Plot de las distribuciones de Partido condicionadas a Diario")
 mosaicplot(t(tabla), main="Plot de las distribuciones de Diario  condicionadas a Partido")
 
-#################################### ¿Qué hay que interpretar?
+#################################### ¿Cómo sería si fueran independientes?
 
 # Test chi-cuadrado de independencia
 resul<- chisq.test(tabla)
@@ -59,7 +59,7 @@ resul$p.value      # p-valor del contraste de hipótesis
 
 resul$observed     # Tabla de frecuencias absolutas observadas
 resul$expected     # Tabla de frecuencias absolutas esperadas bajo hipótesis de independencia
-chisresul$residuals    # Residuos de Pearson: (observed - expected) / sqrt(expected)
+resul$residuals    # Residuos de Pearson: (observed - expected) / sqrt(expected)
 sum(resul$residuals^2) # Coincide con el estadístico chi-cuadrado
 
 sum(resul$residuals^2)/sum(tabla)  #Inercia=chicuadrado/n
@@ -83,14 +83,14 @@ sum(resul$residuals^2)/sum(tabla)  #Inercia=chicuadrado/n
 #_______________________________________________________________________________________ 
 
 assocplot(tabla,col=c("blue","red"),
-          main="Azul: Obs>Esp, Rojo: Obs<Esp")
+          main="Azul: Obs>Esp, Rojo: Obs<Esp")         ### ¿Interpretación?
 
 
 
 #Análisis de Correspondencias con la  librería ca
 #_______________________________________________________________________________________ 
 
-#install.packages("ca")
+install.packages("ca")
 library(ca)
 
 # Función ca() 
@@ -149,7 +149,7 @@ summary(anacor)
 
 
 names(anacor)
-anacor$sv    # Valores singulares
+anacor$sv    # Valores singulares                     What???
 anacor$sv^2  # Autovalores
 
 anacor$rowinertia      # Inercia de las filas
@@ -298,7 +298,10 @@ anacor<- ca(tabla,suprow=c(6))
 
 anacor$rowcoord      # Coordenadas estandarizadas de las filas
 summary(anacor)$rows # Coordenadas principales*1000
-plot(anacor)             #( k=1 y k=2)
+plot(anacor)             #( k=1 y k=2)                              
+
+
+### No se ve un pijo. ¿Hola?
 
 ##############################
 #Ejemplo 3: Tareas 
@@ -346,7 +349,7 @@ sum(resul$residuals^2)/sum(tabla)  #Inercia=chicuadrado/n
 assocplot(tabla,col=c("blue","red"),
           main="Azul: Obs>Esp, Rojo: Obs<Esp")
 
-# Análisis de correspondencia
+# Análisis de correspondencia                     ### Preguntar interpretacion
 library(ca)
 anacor<- ca(tabla)
 summary(anacor)   
