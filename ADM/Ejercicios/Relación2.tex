@@ -314,12 +314,12 @@ El problema que se plantea en el AC por filas es determinar los ejes $u_1, u_2,\
 \begin{itemize}
 \item Primer eje
 \begin{align*}
-\max_{u_1} & p'_{u_1}D_pp_{u_1} \\
-s.a.& u_1'D_p^{-1}u_1 = 1
+\max_{u_1} &\; p'_{u_1}D_np_{u_1} \\
+s.a.&\; u_1'D_p^{-1}u_1 = 1
 \end{align*}
 \item Segundo eje
 \begin{align*}
-\max_{u_2} &\; p'_{u_2}D_pp_{u_2} \\
+\max_{u_2} &\; p'_{u_2}D_n p_{u_2} \\
 s.a.& \;u_2'D_p^{-1}u_2 = 1 \qquad u_1'D_p^{-1}u_2 = 0 
 \end{align*}
 \end{itemize}
@@ -328,9 +328,9 @@ s.a.& \;u_2'D_p^{-1}u_2 = 1 \qquad u_1'D_p^{-1}u_2 = 0
 
 \begin{align*}
 d^2(P_{r_i},P_{r_i'}) &= (P_{r_i}-P_{r_i'})'(P_{r_i}-P_{r_i'})\\
-&=\sum_{\alpha=1}^p (u_\alpha D^{-1}_p r_i - u_\alpha D^{-1}_p r_{i'} )'(u_\alpha D^{-1}_p r_i - u_\alpha D^{-1}_p r_{i'} )\\
-&=\sum_{\alpha=1}^p (r_i-r_{i'})'(u_\alpha D^{-1}_p )'(u_\alpha D^{-1}_p)(r_i-r_{i'})\\
-&=(r_i-r_{i'})'D^{-1}_p\left(\sum_{\alpha=1}^p u_\alpha'  u_\alpha D^{-1}_p \right)(r_i-r_{i'})\\
+&=\sum_{\alpha=1}^p (r_i' D^{-1}_p u_\alpha - r_{i'}' D^{-1}_p u_\alpha )(r_i' D^{-1}_p u_\alpha - r_{i'} D^{-1}_p u_\alpha )\\
+&=\sum_{\alpha=1}^p (r_i-r_{i'})' (D^{-1}_p u_\alpha)(D^{-1}_p u_\alpha)'(r_i-r_{i'})\\
+&=(r_i-r_{i'})'D^{-1}_p\left(\sum_{\alpha=1}^p u_\alpha  u_\alpha' D^{-1}_p \right)(r_i-r_{i'})\\
 &=(r_i-r_{i'})'D^{-1}_p(r_i-r_{i'})\\
 &= d_{\chi^2}(r_i,r_{i'})
 \end{align*}
@@ -378,7 +378,7 @@ Además,
 traza(S_r) &= \sum_{i=1}^n \lambda_i \\
 &=traza\left(\sum_{i=1}^n f_{i.} (r_i - m_r) (r_i - m_r)^t D_p^{-1} \right)\\
 &= \sum_{i=1}^n f_{i.} traza((r_i - m_r) (r_i - m_r)^t D_p^{-1})\\
-& = \sum_{i=1}^n f_{i.}((r_i - m_r) D_p^{-1} (r_i - m_r)^t \\
+& = \sum_{i=1}^n f_{i.}(r_i - m_r) D_p^{-1} (r_i - m_r)^t \\
 &= \sum_{i=1}^n f_{i.}d_{\chi^2}(r_i,m_r)
 \end{align*}
 PREGUNTAR
