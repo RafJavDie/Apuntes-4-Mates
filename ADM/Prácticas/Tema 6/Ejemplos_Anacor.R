@@ -46,8 +46,6 @@ prop.table(tabla,2)
 mosaicplot(tabla, main="Plot de las distribuciones de Partido condicionadas a Diario")
 mosaicplot(t(tabla), main="Plot de las distribuciones de Diario  condicionadas a Partido")
 
-#################################### ¿Cómo sería si fueran independientes?
-
 # Test chi-cuadrado de independencia
 resul<- chisq.test(tabla)
 resul              # Significativo: se rechaza la independencia
@@ -90,7 +88,7 @@ assocplot(tabla,col=c("blue","red"),
 #Análisis de Correspondencias con la  librería ca
 #_______________________________________________________________________________________ 
 
-install.packages("ca")
+#install.packages("ca")
 library(ca)
 
 # Función ca() 

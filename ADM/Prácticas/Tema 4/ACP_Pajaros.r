@@ -32,7 +32,7 @@ EBarl = -(n-1-(2*p+5)/6)*log(det(R))
 gl = p*(p-1)/2
 EBarl
 gl
-pchisq(EBarl,gl,lower.tail=FALSE)  #Significativo  
+pchisq(EBarl,gl,lower.tail=FALSE)  #Significativo  ## ¿Cuando rechazamos?
                                                     
 
 #########################################

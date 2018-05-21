@@ -104,9 +104,9 @@ Es trivial, pues la matriz de varianzas covarianzas es diagonal, luego las corre
 \begin{enumerate}
 	\item Determina el mayor autovalor de $\widehat{\Sigma}$ sabiendo que el autovector asociado es $(1,0,0,0,0)$.
 	
-	Claramente el autovalor asociado será el elemento $\hat{\Sigma}_{11}$. Si utilizamos las fórmulas de $\hat{\sigma}_{11}$ obtenemos
+Si $\lambda_1$ es el mayor autovalor de $\Sigma$ asociado al vector unitario, entonces es claro que $\hat{e}_1'\hat{\Sigma}\hat{e}_1'=\lambda_1$, pero $\hat{e}_1' = (1,0,0,0,0)$, luego $\hat{\sigma}_{11} = \lambda_1$.
 $$
-\hat{\sigma}_{11}=\hat{\sigma}_1^2=\frac{1}{3}\sum_{i=1}^4(X_{i1}-\frac{5+4+4+1}{4})^2 = \frac{1}{3}\left[(5-\frac{14}{4})^2 +  2(4-\frac{14}{4})^2 + (1-\frac{14}{4})^2\right]= 3
+\hat{\sigma}_{11}=\frac{1}{3}\sum_{i=1}^4(X_{i1}-\frac{5+4+4+1}{4})^2 = \frac{1}{3}\left[(5-\frac{14}{4})^2 +  2(4-\frac{14}{4})^2 + (1-\frac{14}{4})^2\right]= 3
 $$
 
 	\item Calcula el valor de $a$ sabiendo que el segundo autovector es $(0,1,0,0,0)$. 
@@ -205,7 +205,7 @@ Nuestra aproximación muestral consistirá en $$\hat{L}_m=\begin{pmatrix}
 $$
 \item Demuestra que en el Método de las Componentes Principales, las cargas factoriales estimadas no cambian cuando se incrementa el número de factores.
 
-El resultado es claro, pues para un $m$ fijo, la estimación las cargas factoriales (elementos de $\hat{L}_m$ son $\hat{l}_{ij}=\sqrt{\hat{\lambda}_j}\hat{e}_{ji}$. Aumentar $m$ tan solo implica añadir nuevas columnas a la matriz $\hat{L}_m$, de manera que las ya existentes se mantienen inmutables. Se sigue, por tanto, que las estimaciones de las cargas factoriales ya estimadas no cambian.
+El resultado es claro, pues para un $m$ fijo, la estimación las cargas factoriales (elementos de $\hat{L}_m$) son $\hat{l}_{ij}=\sqrt{\hat{\lambda}_j}\hat{e}_{ji}$. Aumentar $m$ tan solo implica añadir nuevas columnas a la matriz $\hat{L}_m$, de manera que las ya existentes se mantienen inmutables. Se sigue, por tanto, que las estimaciones de las cargas factoriales ya estimadas no cambian.
 \item Describe
 \begin{enumerate}
 	\item En qué consiste la rotación de factores.
@@ -335,7 +335,7 @@ s.a.&\;  u_1'Mu_1 = 1
 \end{align*}
 \begin{align*}
 \max_{u_2} &\;  u_2'Au_2 \\
-s.a.& \; u_2'Mu_2  1 \qquad u_1'Mu_2 = 0 
+s.a.& \; u_2'Mu_2 = 1 \qquad u_1'Mu_2 = 0 
 \end{align*}
 Así como el resto de problemas, tienen como solución los pares $(\lambda_i,u_i)$ autovalores-autovectores normalizados (en orden decreciente) de $M^{-1}A$. En nuestro caso $M=D_p^{-1}$, $A = D^{-1}_p S_r$, luego la solución vendrá determinada por los autovalores de $S_r$.
 
@@ -377,7 +377,7 @@ Para la interpretación, dado que $d_{\chi^2}(r_i,v_{f_j})= d^2(P_{r_i},P_{v_{f_
 
 \item Determina las coordenadas de $m_r'$ en la nueva base. 
 
-La coordenada $i$-ésima viene dada por $m_r' D_p^{-1} u_i=0$ para $i\neq p$ y $1$ para $i=p$. Esto se debe a que, como veremos en el ejercicio siguiente, $m_r$ es un autovector asociado al $0$ de $S_r$, luego está incorrelado con el resto y tiene norma $D_p$ unitaria.
+La coordenada $i$-ésima viene dada por $m_r' D_p^{-1} u_i=0$ para $i\neq p$ y $1$ para $i=p$. Esto se debe a que, como veremos en el ejercicio siguiente, $m_r$ es el autovector unitario asociado al $0$ de $S_r$, luego está incorrelado con el resto y tiene norma $D_p$ unitaria.
 \item Demuestra que $(0, m_r)$ es un autovalor-vector de la matriz
 \[ S_r = \sum_{i=1}^n f_{i.} (r_i - m_r) (r_i - m_r)^t D_p^{-1} \]
 
@@ -390,7 +390,9 @@ Ahora bien, es claro que $r_i' 1_p = 1 = m_r' 1_p$, de donde se deduce que $(r_i
 
 \item Determina las coordenadas de las filas correspondientes al autovector $m_r$. ¿Qué evidencian?
 
-Por el razonamiento anterior tenemos que $r_i D_p^{-1} m_r = 1$. Al ser una columna constante se evidencia que la varianza ponderada es nula. ¿¿Por qué??
+Por el razonamiento anterior tenemos que $r_i D_p^{-1} m_r = 1$. Al ser una columna constante se evidencia que la varianza ponderada es nula.
+
+Posible idea: Los vectores que forman parte de la base son soluciones de un problema donde se maximiza la varianza ponderada. en este caso mr está asociado al autovector 0, luego la varianza de la proyección de ri sobre mr es nula y, por tanto, tenia que salir si o si un vector cte
 
 \item Demuestra que la varianza ponderada de las coordenadas correspondientes al autovector $u_k$ se puede expresar como
 \[ \sum_{i=1}^n f_{i.} (r_i^t D_p^{-1} u_k)^2 \]
@@ -399,7 +401,7 @@ Es inmediato. Si la fórmula de la varianza ponderadas es
 $$
 \sum_{i=1}^n f_{i.} (r_i^t D_p^{-1} u_k-m_r'D_p^{-1}u_k)^2
 $$
-Y anteriormente hemos deducido que $m_r'D_p^{-1}u_k =1_p'u_k = 0$. 
+Si $k\neq p$ entonces $m_r'D_p^{-1}u_k=0$, pues $m_k = u_p$ y los autovectores están incorrelados. En estos casos la fórmula se sigue trivialmente. Para $k=p$ tenemos que el paréntesis suma $0$, pero no veo que se cumpla la igualdad. 	PREGUNTAR.
 \item Define la inercia total y demuestra que es igual a la suma de los autovalores de $S_r$.
 
 Definimos la inercia total como $InT = \dfrac{\chi^2}{N}$. Esto es, por lo visto en teoría

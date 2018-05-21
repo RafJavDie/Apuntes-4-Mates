@@ -110,8 +110,8 @@ abline(h=0,v=0,lty=2)
 (psirot= diag(R)-hrot)        #varianzas específicas
 cbind(L,h,psi,Lrot,hrot,psirot)
 
-#Puntuaciones factoriales para la rotación varimax   ## ¿Las puntaciones se toman
-#Para la solución de componentes principales         ## para los factores rotados?
+#Puntuaciones factoriales para la rotación varima
+#Para la solución de componentes principales         
 #se puede usar mínimos cuadrados ordinarios
 #Los datos deben ser centrados, 
 #o sea, scale(...center=TRUE)
@@ -148,7 +148,7 @@ sum(autoval[-c(1:m)]^2)
 
 #3. Método de Factores  Principales    
 #####################################
-install.packages(c("psych","GPArotation"))
+#install.packages(c("psych","GPArotation"))
 library(psych)    #Necesita la librería GPArotation
 library(GPArotation)
 af.fp = fa(datos,4,fm="pa",rotate="varimax",max.iter=350) ##

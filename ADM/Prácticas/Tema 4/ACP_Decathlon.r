@@ -67,9 +67,7 @@ numcp<- function(n,p,m,landa)
   list(Q=Q,gl=gl,pv=pvalor)
 }
 cbind(0:9,t(sapply(0:9,numcp,n=nrow(decath),p=10,acp$sdev^2)))  
-# Se acepta #H0: landa[3]=...=landa[p]=0     
-# La primera que se acepta es l3 = l4 = ... = 0, por lo que cogemos 
-# 2 componentes principales.
+# Se acepta #H0: landa[3]=...=landa[p]=0
 
 #Sin embargo las dos primeras CP sólo explican
 #el 71% de la varianza total
