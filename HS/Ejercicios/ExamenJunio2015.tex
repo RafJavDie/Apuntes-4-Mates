@@ -1,0 +1,47 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\colapso}{{\searrow\!\!\!\!\searrow}}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Examen de Homología Simplicial (Junio de 2016)}
+\author{Javier Aguilar Martín}
+\maketitle
+
+\begin{ejercicio}{1}
+Dado un complejo simplicial $K$ y $v\in K^0$, se define el borrado de $v$ en $K$ como :
+\[
+delt(v;K)=\{\sigma\in K\mid v\notin\sigma\}.
+\]
+Se pide:
+\begin{enumerate}
+\item Probar que $del(v;K)$ es un subcomplejo de $K$ tal que $lk(v;K)\subseteq del(v;K)$.
+\item Probar que $K=st(v;K)\cup del(v;K)$ y $lk(v;K)=st(v;K)\cap del(v;K)$.
+\item Probar que si existe $v\in K^0$ tal que $lk(v;K)$ es colapsable, entonces $K$ colapsa a $del(v;K)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item Si $v\notin\sigma$ se tiene también $x\notin\tau$ para cualquier $\tau\leq\sigma$. Si $v\notin\sigma$ y $v\notin\mu$ claramente $v\notin \sigma\cap\tau$. Con esto tenemos probado que $del(v;K)$ es un subcomplejo de $K$. Que $lk(v;K)\subseteq del(v;K)$ se tiene trivialmente de la definición del link, ya que son símplices que no contienen a $v$.
+
+\item La primera igualdad es evidente pues si $v\in \sigma$ entonces $\sigma\in st(v;K)$ y si $v\notin\sigma$ entonces $\sigma\in del(v;K)$. La otra igualdad es también sencilla pues si $\sigma\in st(v;K)\cap del(v;K)$, entonces $v\notin \sigma$ pero $\sigma\in st(v;K)$, y este tipo de símplices son los que forman $lk(v;K)$. 
+
+\item 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Sean $A=\{(x,y,z)\in\R^3\mid x^2+y^2+z^2=1\}$, $B=\{(x,y,z)\in\R^3\mid x^2+y^2+z^2\leq 4, z=0\}$ y $C=\{(x,y,z)\in\R^3\mid x=0,y=0, 0\leq z\leq 1\}$. Dar triangulaciones de $A$, $B$ y $C$ y calcular los $\F$-espacios vectoriales de homología reducida de $A\cup B$, $A\cup C$ y $A\cup B\cup C$ usando dichas triangulaciones e indicando explícitamente sus generadores.
+\end{ejercicio}
+\begin{solucion}
+Como hay que hacer el cálculo de homologías con las triangulaciones que demos, no serán tan naturales como si simplemente quisiéramos triangular los espacios por separado. Para la esfera $A$ conservamos la triangulación clásica como borde de un 3-símplice y también para $C$ también conservamos la triangulación usual de un segmento como complejo generado por un 1-símplice. En cuando a $B$, hacemos la siguiente triangulación:
+
+(Voy a dibujarla, básicamente es pegar tres 2-símplices a los lados de un 2-símplice y subdividido. La unión de los 3 no saldrá homeomorfo pero sí del mismo tipo de homotopía)
+\end{solucion}
+
+
+
+
+\end{document}
