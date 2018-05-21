@@ -151,12 +151,11 @@ Supongamos que $f$ omite dos valores $a$ y $b$. Entonces $f(z)-a$ (resp. con $b$
 $$
 f(z_0) = e^{g(z_0)}+a=e^{h(z_0)}+b \Rightarrow a = b
 $$
-Lo cuál no es posible por hipótesis, luego $h-g$ es constante. Por tanto $h(z)=g(z)+c$. Si $h(z)$ es no constante, tiene al menos una raíz $z_1$, donde se tiene que $g(z_1)=-c$. Análogamente, también habría de existir una raíz $z_2$ de $g(z)$ tal que $h(z_2)=c$.
+Lo cuál no es posible por hipótesis, luego $h-g$ es constante. Por tanto $h(z)=g(z)+c$. Si $c=2\pi i k$ $(k\in \Z)$ se tiene trivialmente una contradicción análoga. Supongamos que $c$ no es de esa forma. Por tanto, tenemos
 $$
-f(z_1)=1+b = e^{-c}+a \qquad f(z_2) = 1 + a = e^{c}+b
+e^{g(z)}=\frac{b-a}{1-e^c}
 $$
-Si restamos, obtenemos $b-a = e^{-c}-e^c + ($
-
+Por tanto, $e^{g(z)}$ es constante y $f$ también. 
 
 \end{solucion}
 
@@ -280,6 +279,12 @@ Encontrar los transformados de los discos $|z|=r$ y las semirrectas $\arg(z)=\al
 Sea $\Omega$ una región simplemente conexa del plano complejo, y sea $K$ un compacto incluido en $\Omega$. Probar que existe una curva cerrada $\gamma$ en $\Omega$ cuyo recorrido no corta a $K$ y tal que $n(\gamma,a)=1$, para todo $a\in K$.
 \end{ejercicio}
 \begin{solucion}
+Podemos suponer que $\Omega\neq \emptyset$. Si $\Omega = \C$, sabemos que $K\subset D(0,R)$ y podemos tomar $\gamma = C_R$. El resultado se sigue trivialmente.
+
+Si $\Omega \neq \C$ entonces, por el Teorema de Riemann podemos considerar la aplicación $f$ biholomorfismo entre el disco unidad y $\Omega$. Como $K$ es compacto $f^{-1}(K)$ es compacto y $\exists 1>r>0$ tal que $f^{-1}(K)\subset D(0,r)$. Tomamos $\gamma = f(C_r)$. Entonces
+$$
+\frac{1}{2\pi i}\int_{f(C_r)}\frac{dz}{z-a}=\frac{1}{2\pi i}\int_{C_r}\frac{f'(z)}{f(z)-f(a)}dz = 1
+$$
 \end{solucion}
 \newpage
 
@@ -293,10 +298,26 @@ $$
 \begin{enumerate}[(a)]
 \item Probar que $f_a$ es inyectiva en $\Omega$ si y solo si $a\leq 8\pi$.
 \item Sea $g_=f_{4\pi}$. Probar que $g$ representa conformemente $\Omega$ en un semidisco. Determinar la imagen mediante $g$ de cada uno de los tres arcos (dos de circunferencia, y uno de recta) que componen la frontera de $\Omega$.
-\item Dar una representación conforme de $ºOmega$ en el primer cuadrante; de $\Omega$ en la banda abierta que forman los puntos  $z\in \C$ con $-2\pi<\Im(z) <-\pi$ y de $\Omega$ en la región $G=\{z\in\C\mid |z|>1,\;|z+1|<2\}$.
+\item Dar una representación conforme de $\Omega$ en el primer cuadrante; de $\Omega$ en la banda abierta que forman los puntos  $z\in \C$ con $-2\pi<\Im(z) <-\pi$ y de $\Omega$ en la región $G=\{z\in\C\mid |z|>1,\;|z+1|<2\}$.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[(a)]
+\item []
+\item
+Tengamos en cuenta que $f_a(z)$ es la exponencial de una transformación lineal $T_a(z)$. $T_a(1)=\infty$ y el eje real va al eje imaginario. Las dos circunferncias $|z|=1$ y $|z+1|=2$ van a las rectas perpendiculares al eje imaginario dadas por $y=-ia/2$, $y=-ia/4$. Realizando de manera adecuada las cuentas tenemos que se transforma en la banda contenida en el semiplano $\Re(z)<0$, $-a/2<\Im(z)<-a/4$. La anchura es $a/4$. Sabemos que la exponencial de una banda es inyectiva si y solo si la banda tiene anchura $\leq 2\pi$, de donde se deduce el resultado.
+
+\item Dado que $\Re(T_a(\Omega))<0$, tenemos que $|f(z)|=e^{\Re(T_a(z))}<1$.
+\item Sabemos que $f_{4\pi}$ manda $\Omega$ a la semicircunferencia superior, luego basta construir una transformación de Möbius que mande este conjunto al primer cuadrante. En este caso tomamos
+$$
+f(z)=\frac{z+1}{1-z} \qquad f(0)=1 \qquad f(1)=\infty \qquad f(-1) = 0 \qquad f(i) = i
+$$
+Además, si $w$ está  en el primer cuadrante, podemos tomar como preimagen $z = \frac{w -1}{w +1}$.  
+
+Para la siguiente, utilizamos la composición anterior junto con el logaritmo, que lleva el primer cuadrante en una banda completa y ajustamos debidamente.
+
+
+\end{enumerate}
 \end{solucion}
 \newpage
 

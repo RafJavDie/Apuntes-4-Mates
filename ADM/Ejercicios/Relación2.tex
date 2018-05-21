@@ -377,7 +377,7 @@ Para la interpretación, dado que $d_{\chi^2}(r_i,v_{f_j})= d^2(P_{r_i},P_{v_{f_
 
 \item Determina las coordenadas de $m_r'$ en la nueva base. 
 
-La coordenada $i$-ésima viene dada por $m_r' D_p^{-1} u_i$. Claramente $m_r'D_p^{-1} = 1_p'$. Luego $m_r'D_p^{-1}u_i = u_i'1_p = 0$. ¿¿PREGUNTAR??
+La coordenada $i$-ésima viene dada por $m_r' D_p^{-1} u_i=0$ para $i\neq p$ y $1$ para $i=p$. Esto se debe a que, como veremos en el ejercicio siguiente, $m_r$ es un autovector asociado al $0$ de $S_r$, luego está incorrelado con el resto y tiene norma $D_p$ unitaria.
 \item Demuestra que $(0, m_r)$ es un autovalor-vector de la matriz
 \[ S_r = \sum_{i=1}^n f_{i.} (r_i - m_r) (r_i - m_r)^t D_p^{-1} \]
 
@@ -399,10 +399,10 @@ Es inmediato. Si la fórmula de la varianza ponderadas es
 $$
 \sum_{i=1}^n f_{i.} (r_i^t D_p^{-1} u_k-m_r'D_p^{-1}u_k)^2
 $$
-Y anteriormente hemos deducido que $m_r'D_p^{-1}u_k =1_p'u_k = 0$. ¿INSISTO, PREGUNTAR?
+Y anteriormente hemos deducido que $m_r'D_p^{-1}u_k =1_p'u_k = 0$. 
 \item Define la inercia total y demuestra que es igual a la suma de los autovalores de $S_r$.
 
-Dfinimos la inercia total como $InT = \dfrac{\chi^2}{N}$. Esto es, por lo visto en teoría
+Definimos la inercia total como $InT = \dfrac{\chi^2}{N}$. Esto es, por lo visto en teoría
 $$
 InT = \sum_{i=1}^n f_{i.}d_{\chi^2}(r_i,m_r)
 $$
@@ -415,7 +415,11 @@ Además,
 &= \sum_{i=1}^n f_{i.}d_{\chi^2}(r_i,m_r)\\
 & = InT
 \end{align*}
-PREGUNTAR
+Aquí hemos utilizado que $traza(AB)=traza(BA)$. Si denotamos $A=r_i - m_r$, entonces
+$$
+traza(AA'D_p^{-1}) = traza(A(A'D_p^{-1})) = traza(A'D_p^{-1}A)
+$$
+Pero $A'D_p^{-1}A$ es un escalar.
 \end{enumerate}
 \newpage
 \section{Análisis Discriminante}
