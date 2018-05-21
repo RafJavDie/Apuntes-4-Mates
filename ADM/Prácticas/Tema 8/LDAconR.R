@@ -148,6 +148,7 @@ boxplot(predict(anadis)$x~datos[,4])
 #Estimación optimista (aparente o empírica)
 predi<- predict(anadis)
 str(predi)
+
 #Contiene 3 componentes
 #class: clasificación con la regla de Fisher
 #posterior: estimación de las probabilidades de
