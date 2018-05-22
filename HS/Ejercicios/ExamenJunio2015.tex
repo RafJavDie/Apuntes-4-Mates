@@ -26,12 +26,29 @@ Se pide:
 
 \item La primera igualdad es evidente pues si $v\in \sigma$ entonces $\sigma\in st(v;K)$ y si $v\notin\sigma$ entonces $\sigma\in del(v;K)$. La otra igualdad es también sencilla pues si $\sigma\in st(v;K)\cap del(v;K)$, entonces $v\notin \sigma$ pero $\sigma\in st(v;K)$, y este tipo de símplices son los que forman $lk(v;K)$. 
 
-\item Sketch of the proof:
-\begin{itemize}
-\item Probar que para que el link sea colapsable el vértice debe estar en el borde
-\item Colapsar la estrella al link
-\item Hecho porque el link está en el del
-\end{itemize}
+%\item Sketch of the proof:
+%\begin{itemize}
+%\item Probar que para que el link sea colapsable el vértice debe estar en el borde
+%\item Colapsar la estrella al link
+%\item Hecho porque el link está en el del
+%\end{itemize}
+\item Sin pérdida de generalidad, supongamos que $K=st(v;K)$ (los demás símplices resultarán irrelevantes). Sea $L=lk(v;K)$.
+Véase que $K=vL$ y que $del(v;K) = L$.
+Tenemos que probar que $K \searrow\!\!\searrow L$.
+Para ello usamos que existe una cadena de colapsos:
+\[ L = L_1 \searrow L_2 \searrow \dots \searrow L_m = \{\tilde{v}\} \]
+
+Si $τ$ es una cara libre del símplice principal $σ$ de $L$, tenemos que $vτ$ es una cara libre del símplice principal $vσ$ en $K$.
+Al colapsar $K=K_1 \searrow K_2$ sobre $vτ$ y $vσ$, eliminamos $σ$ y $τ$ de $lk(v;K_2)$, de manera que coincide con $L_2$.
+Repitiendo este proceso tenemos que:
+\[ K = K_1 \searrow K_2 \searrow \dots \searrow K_m \]
+con
+\[ lk(v;K_i) = L_i\quad \forall i=1,\dots,m \]
+
+Como $L_m = \{\tilde{v}\}$, entonces $K_m = L \cup \{v\} \cup \{(v,\tilde{v})\}$.
+Podemos hacer un colapso sobre $v<(v,\tilde{v})$ de $K_m$ obteniendo $K_m \searrow L$.
+Luego:
+\[ K \searrow\!\!\searrow del(v;K) \]
 \end{enumerate}
 \end{solucion}
 
