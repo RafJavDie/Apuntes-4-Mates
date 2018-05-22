@@ -84,7 +84,7 @@ para $w\in\Omega_c^n(M)$.
 \end{lemma}
 
 \begin{nota}
-Extendemos la definición a $n$-formas continuas. Supongamos $M$ dotada de una forma de orientación $\sigma$. Consideramos $\{f\sigma:f\in C^0(M;\R)\}$. Se tiene $supp(f\sigma)=sup(f)\subseteq M$. Podemos definir 
+Extendemos la definición a $n$-formas continuas. Supongamos $M$ dotada de una forma de orientación $\sigma$. Consideramos $\{f\sigma:f\in C^0(M;\R)\}$. Se tiene $supp(f\sigma)=supp(f)\subseteq M$. Podemos definir 
 \[
 I_\sigma:C_c^0(M;\R)\to\R
 \]
@@ -92,20 +92,174 @@ como $I_\sigma(f)=\int_M f\sigma$, que es lineal y de hecho $I_\sigma(f)\geq 0$ 
 
 Usando particiones de la unidad subornidada a un atlas positivo orientado, basta definid $I_\sigma(f)$ sobre aquellas $f$ de soporte pequeño en una carta positiva $(U,h)$. En tal caso
 \[
-I_\sigma(f)=\int_M f\sigma:=\int_{h(U)}f\circ h^{-1}(x)\phi(x) d\mu_n
+I_\sigma(f)=\int_M f\sigma:=\int_{h(U)}f\circ h^{-1}\phi(x) d\mu_n
 \]
 donde $\phi$ está determinado por $(h^{-1})^*(\sigma)=\phi(x)dx_1\land\dots\land dx_n$. Como $\phi$ es positiva, $I_\sigma(f)\geq 0$.
 
-De acuerdo con el teorema de representación de Riesz, $I_\sigma$ determina una medida positiva $\mu_\sigma$ en $M$ satisfaciendo
+De acuerdo con el teorema de representación de Riesz que enunciaremos a continuación, $I_\sigma$ determina una medida positiva $\mu_\sigma$ en $M$ satisfaciendo
 \[
 \int_M f(x)d\mu_\sigma=\int_M f\sigma, \quad f\in C_c^0(M;\R)
 \]
 con lo que se podrán utilizar los resultados de la integral de Lebesgue. 
 
-Si $M$ es una $n$-variedad Riemanniana, el volumen $vol_M$ determinará una medida $\mu_M$ en $M$ análoga a la de Lebesgue en $\R^n$. Para un conjunto (compacto) $K$, el volumen de $K$ puede definirse como 
+\begin{teorema}[de Representación de Riesz]
+Sea $X$ un espacio topológico localmente compacto y Hausdorff. Sea $\Lambda:C_c^0(X)\to\R$ un homeomorfismo lineal tal que $\Lambda(f)\geq 0$ para toda $f\geq 0$. Entonces existe un $\sigma$-álgebra $\mathcal{M}$ en $X$ conteniendo a los conjuntos de Borel de $X$ y existe una única medida positiva $\mu$ que representa a $\sigma$, es decir, $\Lambda(f)=\int_X f d\mu$.
+\end{teorema}
+
+Si $M$ es una $n$-variedad Riemanniana orientada, el volumen $vol_M$ determinará una medida $\mu_M$ en $M$ análoga a la de Lebesgue en $\R^n$. Para un conjunto compacto $K$, el volumen de $K$ puede definirse como 
 \[
 Vol(K)=\int_K vol_M\in\R.
 \]
 \end{nota}
 
+\begin{ej}
+Si quisiéramos calcular $vol(S^1)=\int_{S^1} (dx- dy)$ necesitaríamos hacer una partición de la unidad, lo cual sería muy complicado. Entonces se calcula $\int_{S^1} f d\mu_{vol_{S^1}}=\int_{S^1-\{N,S\}} f d\mu_{vol_{S^1}}=\int_{S^1-\{N,S\}} vol$, que no es más que la suma de las integrales en los dos abiertos, que sabemos calcularla.
+\end{ej}
+
+Lo siguiente que queremos es definir la integral en variedades con borde diferenciable. Sea $M$ una variedad diferenciable de dimensión $n$. Si $N\subseteq M$ es un dominio con borde diferenciable, entonces $\partial N$ es una subvariedad diferenciable de $M$ de dimensión $n-1$. Si $n\geq 2$ y $M$ es orientable, entonces existe una orientación sobre $\partial N$ tal que para $p\in\partial N$ y $v_1\in T_pM$ ``apuntando hacia fuera'' entonces $\{v_2,\dots, v_n\}$ es base de $T_p\partial N$ positivamente orientada si y solo si $\{v_1,v_2,\dots, v_n\}$ es base de $T_pM$ positivamente orientada. 
+
+Vamos a dar más rigor a lo descrito anterior mente. Dado $v_1\in T_pM$ con $p\in\partial N$, se dice que $v_1$ \textbf{apunta hacia fuera} si existe una carta $(U,h)$ alrededor de $p$ (adaptada a $N$, es decir, $h(U\cap N)=h(U)\cap \R^n_-$) tal que $D_ph(v_1)=w_1$ tiene la primera coordenada positiva. 
+
+Dada una base $\{e_1,e_2,\dots, e_n\}\subset T_{h(p)}\R^n$ positivamente orientada, como $D_ph$ es isomorfismo y la carta es positiva, las preimágenes de esta base forman una base positivamente orientada de $T_pM$. Bastará llamar $v_1,v_2,\dots, v_n$ a estas preimágenes, y de modo que $D_ph(v_i)=e_i$. 
+
+\begin{nota}
+Si $w\in\Omega_c^n(M)$ y $N\subseteq M$ es un dominio diferenciable con borde podemos definir
+\[
+\int_N w=\int_M\chi_N w=\int_M \chi_N f\sigma=\int_M \chi_N f d\mu_{\sigma}
+\]
+pues $supp(w)$ es compacto en $M$, $\chi_N$ es integrable y $supp(\chi_Nw)$ es compacto en $N$. Aquí $\sigma$ representa la orientación de $M$. Podemos por tanto integrar las formas compactas de $M$ sobre dominios de $N$.
+
+En el caso $n=1$, si $N\subseteq M$, entonces $\dim(N)=1$ y $\dim(\partial N)=0$, por lo que el borde será una colección de puntos. Una orientación sobre $\partial N$ consiste en asignar signo $\pm$ a cada uno de los puntos de $\partial N$. Dado $v_1\in T_pM$ dirigido hacia fuera: a $p$ le asignamos signo positivo si $v_1$ define una orientación positiva de $T_pM$ y negativo en caso contrario. Nótese que las únicas variedades diferenciables conexas y cerradas de dimensión 1 son $\R$ y $S^1$, por lo que solo habrá una cantidad finita de puntos en el borde de cualquier subvariedad del mismo tipo. Si $f\in\Omega^0(\partial N)$ entonces 
+\[
+\int_{\partial N} f=\sum_{p\in\partial N} sgn(p)f(p)
+\]
+\end{nota}
+
+\begin{teorema}[Stokes]
+Sea $N\subseteq M$ un dominio diferenciable con borde de la $n$-variedad orientada $M$ y supongamos que $\partial N$ tiene la orientación inducida. Sea $w\in\Omega^{n-1}(M)$ de modo que $supp(w)\cap N$ sea compacto. Entonces
+\[
+\int_{\partial N} i^*(w)=\int_N dw.
+\]
+donde $i:\partial N\to M$ es la inclusión (y $w$ se entiende también como la restricción a $N$).
+\end{teorema}
+\begin{dem}
+La demostración se hará para $n=2$, pues para $n=1$ es el teorema fundamental del cálculo. Como $i^*(w)$ tiene soporte compacto, podemos elegir una función $f\in\Omega_c^0(M)$ que valga 1 en $N\cap supp(w)$ para considerar $fw$ que vale lo mismo que $w$ sobre $N$. Las integrales valen lo mismo cuando reemplazamos $w$ por $fw$, asíq ue podemos suponer que $w$ tiene soporte compacto desde el principio. 
+
+Tomamos un atlas sobre $M$ con cartas adaptadas a $N$ positivamente orientadas y una partición de la unidad $\{\rho_{\alpha}\}_{\alpha\in A}$ subordinada al atlas. Por un lado
+\[
+\int_{\partial N} i^*(w)=\sum_{\alpha\in A}\int_{\partial N}\rho_{\alpha} i^*(w)
+\]
+y por otro
+\[
+\int_N dw=\sum_{\alpha\in A}\int_N d(\rho_\alpha w)
+\]
+así que podemos reducir al caso:
+\begin{enumerate}[a.]
+ \item $w\in\Omega_c^{n-1}(M)$
+ \item $supp(w)\subseteq U$, con $(U,h)$ una carta adaptada orientada positivamente. 
+\end{enumerate}
+
+Tomamos $k\in\Omega_c^{n-1}(\R^n)$ tal que $k|_{h(U)}= (h^{-1})^*(w)$ y $k|_{\R^n-h(U)}=0$. Entonces por la invarianza de la integral
+\[
+\int_{\partial N} w=\int_{h(U)\cap \partial \R^n_-} (h^{-1})^*(w)=\int_{\partial\R^n_-} k
+\]
+y 
+\[
+\int_N dw=\int_{h(U)\cap\R^n_-}(h^{-1})^*(dw)=\int_{\R^n_-}dk.
+\]
+Nos reducimos al caso $M=\R^n$ y $N=\R^n_-$ con $w\in\Omega_c^{n-1}(\R^n)$. Tenemos que $w=\sum_{i=1}^n f_i dx_1\land\cdots\land \hat{dx}_i\land\cdots\land dx_n$ con $f_i\in\Omega_c^0(\R^n)$. Existe $b>0$ tal que $supp(f_i)\subsetneq [-b,b]^n$. Ahora, 
+\[
+i^*(w)=w_{\partial\R^n_-}=f_1(0,x_2,\dots, x_n)dx_2\land\cdots\land dx_n.
+\]
+Dado $p\in\partial\R^n_-$ y $v_2,\dots, v_n\in T_p(\partial\R^n_-)$, $i^*(w)_p(v_2,\dots, w_n)=w_{i(p)}(D_pi(v_2),\dots, D_pi(v_n))$, donde $i:\partial\R^n_-=\R^{n-1}\to \R^n$ es la aplicación $(x_2,\dots, x_n)\mapsto (0,x_2,\dots, x_n)$, por lo que $D_p i:T_p\R^{n-1}\to R_p\R^n$ es la aplicación $(t_2,\dots, t_n)\mapsto (0,t_2,\dots, t_n)$. Como empiezan por 0, cada vez que aparezca $dx_1$, el término se anulará. Por tanto
+\[
+\int_{\partial\R^n_-}i^*(w)=\int_{\partial\R^n_-} f_1(0,x_2,\dots, x_n)dx_1\land\cdots\land dx_n=\int_{\partial\R^n_-}f_1(0,x_2,\dots, x_n) d\mu_{n-1}
+\]
+Por otra parte
+\[
+dw=\sum_{i=1}^n df_i\land dx_1\land\cdots\land \hat{dx}_i\land\cdots\land dx_n=\sum_{i=1}^n(-1)^{i-1}\parcial{f}{x_i}dx_1\land\cdots\land \hat{dx}_i\land\cdots\land dx_n
+\]
+Así que
+\[
+\int_{\R^n_-}dw=\sum_{i=1}^n(-1)^{i-1}\int_{\R^n_-}\parcial{f}{x_i}d\mu_n
+\]
+Ahora, para $2\leq i\leq n$, 
+\[
+\int_{-\infty}^{+\infty}\parcial{f_i}{x_i}(x_1, \dots, t,\dots, x_n)dt =\int_{-b}^b\parcial{f_i}{x_i}(x_1,\dots, t,\dots, x_n)dt=f_i(x,\dots, b,\dots, x_n)-f_i(x_1,\dots, -b, \dots, x_n)=0
+\]
+pues al estar $supp(f_i)\subsetneq [-b,b]^n$ ambos términos se anulan. Entonces, aplicando Fubini
+\[
+\int_{\R^n_-}\parcial{f_i}{x_i}d\mu_n=\int_{-\infty}^0\int_{-\infty}^{+\infty}\cdots\int_{-\infty}^{+\infty} (\parcial{f_i}{x_i}dx_n)\cdots dx_2dx_1=0.
+\]
+Para $i=1$, 
+\[
+\int_{-\infty}^0\parcial{f_1}{x_1}(t,x_2,\dots, x_n)dt=\int_{-b}^0(t,x_2,\dots, x_n)dt=f_1(0,x_2,\dots, x_n)-f_1(-b,x_2,\dots, x_n)=f_1(0,x_2,\dots, x_n).
+\]
+Por lo que usando Fubini
+\[
+\int_{\R^n_-}\parcial{f_1}{x_1}d\mu_n=\int_{-\infty}^{+\infty}\cdots\int_{-\infty}^{+\infty}\int_{-\infty}^0\parcial{f_1}{x_1}(t,x_2,\dots, x_n)dt)dx_2\cdots dx_n=
+\]
+\[
+\int_{\partial\R^{n-1}}f_1(0,x_2,\dots, x_n)dx_2\land\cdots\land dx_n=\int_{\partial\R^n_-}f_1(0,x_2,\dots, x_n)d\mu_{n-1}.
+\]
+Con lo que hemos probado el resultado.
+\QED
+\end{dem}
+
+\begin{coro}
+Si $M$ es una $n$-variedad diferenciable orientada y $w\in \Omega_c^{n-1}(M)$, entonces
+\[
+\int_M dw=0.
+\]
+\end{coro}
+
+\begin{teorema}\label{aumento}
+Sea $M$ una variedad diferenciable orientada conexa de dimensión $n$. Entonces
+\[
+\cdots\to\Omega_c^{n-1}(M)\xrightarrow{d}\Omega_c^{n}(M)\xrightarrow{\int_M}\R\to 0
+\]
+es exacta.
+\end{teorema}
+
+\begin{coro}
+Si $M$ es además compacta, 
+\[
+\cdots\to\Omega^{n-1}(M)\xrightarrow{d}\Omega^{n}(M)\xrightarrow{\int_M}\R\to 0
+\]
+es exacta e induce un isomorfismo $\int_M:H^n(M)\to\R$. 
+\end{coro}
+\begin{dem}
+Si $\tau\in\Omega^{n-1}(M)$, $d\tau\in\Omega^n(M)$, luego $\int_M d\tau=0$, así que $\int_M$ pasa al cociente.  El homomorfismo $\varphi=\int_M:H^n(M)\to\R$,$[z]\mapsto \int_M z=\varphi(z)$:
+\begin{itemize}
+\item es sobreyectivo por exactitud.
+\item es inyectivo, si $\varphi([w])=\int_M w=0$, por exactitud, $w=d\rho$ para $\rho\in\Omega^{n-1}(M)$, así que $[w]=[d\rho]=0\in H^n(M)$.
+\end{itemize}
+\QED
+\end{dem}
+
+En particular, $\int_M vol\neq 0$ porque $vol_M$ no se anula, así que $[vol_M]$ es un generador de $H^n(M)$. 
+
+Para probar el teorema \ref{aumento} hacen falta varios lemas probados en el libro.
+\begin{lemma}\label{A}
+El teorema \ref{aumento} es válido para $M=\R^n$ ($n\geq 1$).
+\end{lemma}
+\begin{lemma}
+Dado un recubrimiento por abiertos $\{U_{\alpha}\}$ de una variedad diferenciable conexa $M$ y dados $p,q\in M$, existen $\alpha_1,\dots, \alpha_r\in A$ tales que $p\in U_{\alpha_1}$, $q\in U_{\alpha_r}$ y $U_{\alpha_i}\cap U_{\alpha_{i+1}}\neq\emptyset$ para $1\leq i\leq r-1$.
+\end{lemma}
+\begin{lemma}
+Sea $U\subseteq M$ un abierto de una variedad diferenciable difeomorfo a $\R^n$ y $W\subseteq U$ abierto. Entonces para toda $w\in\Omega_c^n(M)$ con $supp(w)\subseteq U$, existe $k\in\Omega_c^{n-1}(M)$  con $supp(k)\subseteq U$ tal que $supp(w-dk)\subseteq W$. 
+\end{lemma}
+\begin{lemma}\label{D}
+Si $M$ es una variedad diferenciable conexa y $\emptyset\neq W\subseteq M$ es abierto, entonces para toda $w\in\Omega_c^n(M)$ existe $k\in\Omega_c^{n-1}(M)$ con $supp(w-dk)\subseteq W$. 
+\end{lemma}
+
+\begin{dem}[del teorema \ref{aumento}]
+
+Supongamos que tenemos $w\in\Omega^n_c(M)$ con $\int_M=0$. Elegimos $\R^n\cong W\subseteq M$ abierto. Por el lema \ref{D} existe $k\in\Omega_c^{n-1}(M)$ con $supp(w-dk)\subseteq W$. Así que
+\[
+\int_W w-dk=\int_M w-dk=\int_M w-\int_M dk=0-0=0
+\]
+Ahora, aplicando el lema \ref{A}, existe $\tau_0\in\Omega_c^{n-1}(W)$ tal que $d\tau_0=w-dk$ en $W$. Extendemos $\tau_0$ a todo $M$ haciendo que valga 0 fuera de $W$, por lo que obtenemos $\tau\in\Omega_c^{n-1}(M)$. Entonces $w-dk=d\tau$, luego $w=d(\tau+k)$. \QED
+\end{dem}
 \end{document}
+

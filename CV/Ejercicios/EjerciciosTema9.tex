@@ -1,0 +1,160 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de From Calculus to Cohomology, Capítulo 10}
+\author{Javier Aguilar Martín}
+\maketitle
+
+\begin{ejercicio}{10.1}
+Sea $\pi:\R^2\to T^2$ como en el ejercicio 8.4 y sean
+\[
+U_1=\pi(\R\times (0,1)),\quad U_2=\pi(\R\times (-\frac{1}{2},\frac{1}{2})).
+\]
+Probar que $U_1$ y $U_2$ son difeomorfos a $S^1\times\R$, y que $U_1\cap U_2$ tiene 2 componentes conexas, ambas isomorfas a $S^1\times\R$. Nótese que $U_1\cup U_2=T^2$.
+\end{ejercicio}
+\begin{solucion}
+
+
+
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{10.2}
+Con la notación del ejercicio anterior tenemos variedades diferenciables
+\[
+C_1=\pi(\R\times\{a\}),\quad C_2=\pi(\{b\}\times\R)\quad (a,b\in\R)
+\]
+de $T^2$ que son difeomorfas a $S^1$ y tienen la orientación inducida por $\R$. Probar que la aplicación
+\[
+\Omega^1(T^2)\to\R^2; w\mapsto (\int_{C_1}w, \int_{C_2}w)
+\]
+induce un isomorfismo $H^1(T^2)\to \R^2$. Probar que este isomorfismo es independiente de $a$ y $b$.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{10.3}
+Usando la notación del ejercicio 8.4, tenemos subvariedades diferenciables en el toro $n$ dimensional $T^n=\R^n/\Z^n$, que son difeomorfas a $S^1$
+\[
+C_j=\{\pi(0,\dots, 0,s,0,\dots, 0)\mid s\in\R\}
+\]
+donde $s$ está en la $j$-ésima posición, $1\leq j\leq n$. Se las dota de la orientación canónica. Sea $w\in\Omega^1(T^n)$ una 1-forma cerrada con 
+\[
+\int_{C_j}w=0,\quad 1\leq j\leq n.
+\]
+Probar que $w$ es exacta. 
+
+(Pista: Encontrar $f\in C^{\infty}(\R^n;\R)$ tal que $df=\pi^*(w)$, y probar que $f$ es periódica con periodo 1 en las $n$ variables. )
+
+Probar también que la aplicación
+\[
+\Omega^1(T^n)\to\R^n; w\mapsto (\int_{C_1}w,\dots, \int_{C_n}w)
+\]
+induce un isomorfismo $H^1(T^n)\to\R^n$. 
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{10.4}
+Probar que para toda $n$-variedad diferenciable conexa compacta y no orientable $M$ se tiene que $H^n(M)=0$. (Pista: usar ejercicio 9.18).
+\end{ejercicio}
+\begin{solucion}
+Por el ejercicio 9.18 tenemos un isomorfismo entre $H^n(M)\cong H^n(\widetilde{M})_+$, y por otro lado tenemos el isomorfismo entre $H^n(\widetilde{M})\cong\R$. Consideremos $w\in\Omega^n(M)$ una $n$-forma cerrada y sea $\tilde{w}=\pi^*(w)$. Como $A$ revierte la orientación
+\[
+\int_{\widetilde{M}} A^*\tilde{w}=-\int_{\widetilde{M}} \tilde{w}
+\]
+Pero $A^*\tilde{w}=A^*\pi^*(w)=(\pi\circ A)^*(w)=\pi^*(w)=\tilde{w}$, por lo que $\int_{\widetilde{M}} \tilde{w}=0$. Esto quiere decir que existe $\rho\in\Omega^{n-1}(\widetilde{M})$ con $\tilde{w}=d\rho$. Consideramos ahora $\eta=\frac{1}{2}(\rho+A^*\rho)$. Es claro que $A^*\eta=\eta$ y además $d\eta=\frac{1}{2}(d\rho+A^*d\rho)=\tilde{w}$, así que podemos reemplazar $\rho$ por $\eta$. Como es invariante por $A^*$ AHORA FALTARÍA BAJARLA DE NUEVO PARA CONSEGUIR QUE TODAS SEAN EXACTAS, PERO NO LO VEO CLARO. $\pi^*$ es difeomorfismo local, así que alomejor podría bajarlo con $(\pi^{-1})^*$ pero no estoy seguro si con eso me valdría o tengo que hacer algún razonamiento extra por el hecho de que es local.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{10.5}
+Calcular la cohomología de deRham de la botella de Klein. (Pista: el oriented double covering se puede identificar con la aplicación $T^2\to K^2$ del ejercicio 8.5)
+\end{ejercicio}
+\begin{solucion}
+Por la pista y por el ejercicio anterior tenemos que $H^2(K^2)=0$ y por conexión $H^0(K^2)=\R$, así que solo falta calcular $H^1(K^2)$. 
+¿NO HARÍA FALTA LA COHOMOLOGÍA DEL TORO PARA ESTO?
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{10.6}
+Sea $R$ un dominio compacto con borde diferenciable en una $n$-variedad diferenciable orientada $M$. Probar que para $w\in\Omega^{p-1}(M)$, $\tau\in\Omega^{n-p}(M9$ se tiene
+\[
+\int_R dw\land \tau=\int_{\partial R}w\land\tau+(-1)^p\int_R w\land d\tau
+\]
+\end{ejercicio}
+\begin{solucion}
+Recordemos que 
+\[
+d(w\land\tau)=dw\land \tau +(-1)^{p-1} w\land d\tau
+\]
+por lo que
+\[
+\int_R d(w\land\tau)=\int_R dw\land \tau +(-1)^{p-1}\int_R w\land d\tau.
+\]
+Usando Stokes en el miembro de la izquierda y despejando
+\[
+\int_R dw\land \tau=\int_{\partial R}w\land\tau+(-1)^p\int_R w\land d\tau.
+\]
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{10.}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{10.}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{10.}
+
+\end{ejercicio}
+\begin{solucion}
+
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{10.}
+
+\end{ejercicio}
+\begin{solucion}
+
+ 
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{10.}
+
+\end{ejercicio}
+\begin{solucion}
+Recordemos del ejercicio \ref{ejer:9.14} que para $x\in V-M$
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{10.}
+
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+\end{document}

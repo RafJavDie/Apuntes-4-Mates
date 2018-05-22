@@ -26,7 +26,12 @@ Se pide:
 
 \item La primera igualdad es evidente pues si $v\in \sigma$ entonces $\sigma\in st(v;K)$ y si $v\notin\sigma$ entonces $\sigma\in del(v;K)$. La otra igualdad es también sencilla pues si $\sigma\in st(v;K)\cap del(v;K)$, entonces $v\notin \sigma$ pero $\sigma\in st(v;K)$, y este tipo de símplices son los que forman $lk(v;K)$. 
 
-\item 
+\item Sketch of the proof:
+\begin{itemize}
+\item Probar que para que el link sea colapsable el vértice debe estar en el borde
+\item Colapsar la estrella al link
+\item Hecho porque el link está en el del
+\end{itemize}
 \end{enumerate}
 \end{solucion}
 
@@ -36,9 +41,31 @@ Se pide:
 Sean $A=\{(x,y,z)\in\R^3\mid x^2+y^2+z^2=1\}$, $B=\{(x,y,z)\in\R^3\mid x^2+y^2+z^2\leq 4, z=0\}$ y $C=\{(x,y,z)\in\R^3\mid x=0,y=0, 0\leq z\leq 1\}$. Dar triangulaciones de $A$, $B$ y $C$ y calcular los $\F$-espacios vectoriales de homología reducida de $A\cup B$, $A\cup C$ y $A\cup B\cup C$ usando dichas triangulaciones e indicando explícitamente sus generadores.
 \end{ejercicio}
 \begin{solucion}
-Como hay que hacer el cálculo de homologías con las triangulaciones que demos, no serán tan naturales como si simplemente quisiéramos triangular los espacios por separado. Para la esfera $A$ conservamos la triangulación clásica como borde de un 3-símplice y también para $C$ también conservamos la triangulación usual de un segmento como complejo generado por un 1-símplice. En cuando a $B$, hacemos la siguiente triangulación:
+Como hay que hacer el cálculo de homologías con las triangulaciones que demos, no serán tan naturales como si simplemente quisiéramos triangular los espacios por separado. Para la esfera $A$ usamos la triangulación como octaedro.  Para $C$ conservamos la triangulación usual de un segmento como complejo generado por un 1-símplice. En cuando a $B$, hacemos la siguiente triangulación:
 
-(Voy a dibujarla, básicamente es pegar tres 2-símplices a los lados de un 2-símplice y subdividido. La unión de los 3 no saldrá homeomorfo pero sí del mismo tipo de homotopía)
+(La dibujaré)
+
+Pasamos a calcular las homologías:
+\begin{itemize}
+\item $A\cup B$ es colapsable a la esfera con una membrana en su interior, así que dividimos el espacio en la membrana $K_1$ y la esfera $K_2$, cuyas homologías son conocidas, y cuya intersección es una circunferencia, que también tiene homología conocida. La circunferencia es el borde de la membrana y el borde de cualquiera de las semiesferas, por lo que tenemos el mapeo nulo $H_1(K_1\cap K_2)\to H_1(K_1)\oplus H_1(K_2)=0$. Tenemos directamente $H_1(K_1)=0$ por estar entre ceros en Mayer-Vietoris y $\widetilde{H}_0(K)=0$ por ser conexo. En cuanto a $H_2(K)$, tenemos en Mayer-Vietoris
+\[
+0\to\F\xrightarrow{j_{*2}}H_2(K)\xrightarrow{\Delta_{*2}}\F\to 0
+\]
+Por escindibilidad, $H_2(K)=\F\oplus\F$, donde un generador es la memebrana con el hemisferio norte y el otro con el hemisferio sur.
+
+\item $A\cup C$ colapsa sobre $A$, cuya homología reducida es $\widetilde{H}_p(A)=0$ si $p\neq 2$, $\widetilde{H}_2(A)=\F$ generado por la suma de todos sus 2-símplices.
+
+\item Colapsamos $A\cup B\cup C$ de la misma forma que en $A\cup B$. Descomponemos este complejo $K$ en $K_1=A\cup C$ y $K_2=B$, donde estamos abusando de notación llamando $B$ a lo que queda tras colapsar. La intersección  sería justamente $D=S^1\sqcup\{v\}$, donde el punto es un extremo de $C$. Sabemos que $\widetilde{H}_0(D)=\F\gene{v-v_i}$ para cualquier $v_i$ fijo de la triangulación de $S^1$ y $H_p(D)=H_p(S^1)$ para todo $p\neq 0$. Es claro que $K_1$ colapsa sobre $A$, así que ya podemos sustituir en Mayer-Vietoris. Tenemos entonces
+\[
+0\to \F\to H_2(K)\to \F\to 0
+\]
+con lo que $H_2(K)=\F\oplus\F$ con los mismos generadores que tenía $A\cup B$. 
+%Para obtener $\widetilde{H}_0(K)$ usaremos la homología no reducida. Tenemos
+\[
+0\to H_1(K)\to\F\to\F\oplus\F\to 0
+\]
+Como la última no trivial es sobreyectiva, deducimos que $H_1(K)=\F$. Podemos tomar como generador un 1-ciclo que contenga a $C$. 
+\end{itemize}
 \end{solucion}
 
 
