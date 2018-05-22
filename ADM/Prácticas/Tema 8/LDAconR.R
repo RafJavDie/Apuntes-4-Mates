@@ -59,14 +59,14 @@ boxplot(predict(anadis)$x~datos[,1],ylab="FLD")
 anadis #a mayor Lim_elast y menor Resisten_Fin 
 #más probable Temp. 2
 plot(anadis)      #Clara separación de ambos grupos
-#FLD en cada grupo
+#FLD en cada grupo                                      
 predict(anadis)$x[datos$Temperatura==1]
 predict(anadis)$x[datos$Temperatura==2]
            
 #En la función lda, los coeficientes de la 
 #FLD están normalizados como sigue: 
 (a<-anadis$scaling)   #Coeficientes FLD  
-#LOs coeficientes que devuelve lda verifican que
+#Los coeficientes que devuelve lda verifican que
 #  t(a) %*% Sigmagorro %*% a = 1
 
 
@@ -114,8 +114,8 @@ boxplot(datos[,3]~datos[,4],main=names(datos)[3],
         col=colores)
 par(mfrow=c(1,1))
 
-#Normalidad multivariante (se acepta)
-
+#Normalidad multivariante (se acepta)           ### Pensaba que el test de Mardia
+                                                ### No aplicaba a la normalidad multiv
 Test_Mardia(datos[datos$tipo=="auto",1:3])
 Test_Mardia(datos[datos$tipo=="bus",1:3])
 #Homocedasticidad:
@@ -134,10 +134,10 @@ anadis<-lda(datos[,-4],datos[,4])
 anadis
 
 boxplot(predict(anadis)$x~datos[,4])  
-#Valores altos de la FLD: bus
+#Valores altos de la FLD: bus                         
 
 #A mayor nivel de ingresos, menor coste relativo
-#y menor tiempo de espera, mayor es la tendencia a 
+#y menor tiempo de espera, mayor es la tendencia a    
 #elegir el autobús
 
 #######
@@ -155,7 +155,8 @@ str(predi)
 #           automóvil y autobús
 #x: FLD
 #"matriz de confusión"
-confu<-table(Real=datos$tipo,Predic=predi$class)
+confu<-table(Real=
+               datos$tipo,Predic=predi$class)
 confu
 100*prop.table(confu,1)
 100*diag(prop.table(confu,1)) #Acierto en cada clase
@@ -371,7 +372,6 @@ grid()
 # Puntuaciones de las CP sobre el conjunto test
 puntucptest=predict(acp,datostest)[,1:m]
 dim(puntucptest)
-
 # Predicciones del lda sobre el conjunto test
 preditest=predict(modelo.lda,puntucptest)$class
 

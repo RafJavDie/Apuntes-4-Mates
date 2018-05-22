@@ -104,7 +104,7 @@ Es trivial, pues la matriz de varianzas covarianzas es diagonal, luego las corre
 \begin{enumerate}
 	\item Determina el mayor autovalor de $\widehat{\Sigma}$ sabiendo que el autovector asociado es $(1,0,0,0,0)$.
 	
-Si $\lambda_1$ es el mayor autovalor de $\Sigma$ asociado al vector unitario, entonces es claro que $\hat{e}_1'\hat{\Sigma}\hat{e}_1'=\lambda_1$, pero $\hat{e}_1' = (1,0,0,0,0)$, luego $\hat{\sigma}_{11} = \lambda_1$.
+Si $\lambda_1$ es el mayor autovalor de $\Sigma$ asociado al vector unitario, entonces es claro que $\hat{e}_1'\hat{\Sigma}\hat{e}_1=\lambda_1$, pero $\hat{e}_1' = (1,0,0,0,0)$, luego $\hat{\sigma}_{11} = \lambda_1$.
 $$
 \hat{\sigma}_{11}=\frac{1}{3}\sum_{i=1}^4(X_{i1}-\frac{5+4+4+1}{4})^2 = \frac{1}{3}\left[(5-\frac{14}{4})^2 +  2(4-\frac{14}{4})^2 + (1-\frac{14}{4})^2\right]= 3
 $$
@@ -168,7 +168,7 @@ $$
 
 \[ \rho(X_i, F_j) = l_{ij}. \]
 
-Si las variables están estandarizadas $\hat{\sigma}_{X_i}=1$. Además, $\sigma_{F_j}=Cov(F)_{jj} = 1$ por hipótesis del modelo. Por tanto
+Si las variables están estandarizadas ${\sigma}_{X_i}=1$. Además, $\sigma_{F_j}=\sqrt{Cov(F)_{jj}} = 1$ por hipótesis del modelo. Por tanto
 $$
 \rho(X_i,F_j) = \frac{Cov(X_i,F_j)}{\sigma_{X_i}\sigma_{F_j}} = L_{ij} = l_{ij}
 $$
@@ -495,7 +495,38 @@ Pero $A'D_p^{-1}A$ es un escalar.
 \item Coordenadas discriminantes canónicas 
 \begin{enumerate}
 	\item Planteamiento y solución.
+	
+Sea una población $P$ formada por $k$ subpoblaciones o grupos  $G_i$ con proporciones $\pi_i$, $i=1,\dotsc,k$ $(\sum_{i=1}^k\pi_i = 1)$. Sea $\m{X}$ un vector aleatorio $p$-dimensional con función de densidad $f_i(x)$ en $G_i$. El objetivo de las coordenadas discriminantes consiste en determinar las combinaciones lineales de las variables $\m{Y}=c'\m{X}$ que más diferencien entre los grupos. Si denotamos por $e_i$ a dichas combinaciones, estas vienen dadas por los problemas
+\begin{align*}
+\sup_{c\neq 0}&\;\frac{c'Bc}{c'Wc} &\sup_{c\neq 0}&\;{c'Bc}\\
+ & & sa:\;&c'Wc=1
+\end{align*}
+\begin{align*}
+\sup_{c\neq 0}&\;\frac{c'Bc}{c'Wc} &\sup_{c\neq 0}&\;{c'Bc}\\
+sa: &\;e_1' W c = 0 & sa:\;&c'Wc=1 \\
+& & & e_1'Wc =0
+\end{align*}
+Y así hasta la $k$-ésima, donde
+$$
+W = \sum_{i=1}^k S_i \qquad B = \sum_{i=1}^k n_i (\m{\media{x}}_i-\muestra{\media{x}})(\m{\media{x}}_i-\muestra{\media{x}})' \qquad \m{\media{x}} = \frac{1}{n}\sum_{i=1}^k\sum_{j=1}^{n_i}\m{x}_{ij}
+$$
+
+Tal como vimos en el Tema $6$, la solución a estos problemas están dados por los pares autovalor-autovector de la matriz $W^{-1}B$.
 	\item Describe el criterio de clasificación basado en las coordenadas canónicas.
+	
+	Las coordenada discriminate de una muestra $\m{x}_0$ están dadas por
+	$$
+	C_r \m{x}_0 \qquad C_r = \begin{pmatrix}
+	e_1'\\
+	\vdots \\
+	e_r'\\
+	\end{pmatrix} \qquad r=\min\{p,k-1\}
+	$$
+Nuestra regla consistirá en
+$$
+\text{Asignar $\m{x}_0$ a $G_i$ si }d(C_r\m{x}_0,C_r\m{x}_i) = \min_{s=1,\dotsc,k}d(C_r\m{x}_0,C_r\m{x}_i)
+$$
+Aunque generalmente solo utilizamos 2 coordenadas discriminantes.
 \end{enumerate}
 \end{enumerate}
 \end{document}

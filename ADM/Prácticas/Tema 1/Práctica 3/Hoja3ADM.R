@@ -231,7 +231,7 @@ QQBeta<- function(D2,n,p)
 QQBeta(D2Maha,n,p)
 
 
-#Test de normalidad multivariante: Mardia
+#Test de normalidad multivariante
 install.packages("MVN")
 library(MVN)
 mnv(x)
