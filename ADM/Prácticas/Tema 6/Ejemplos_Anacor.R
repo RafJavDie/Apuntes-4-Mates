@@ -62,6 +62,7 @@ sum(resul$residuals^2) # Coincide con el estadístico chi-cuadrado
 
 sum(resul$residuals^2)/sum(tabla)  #Inercia=chicuadrado/n
 
+
 # Dibujo de los residuos a través de un plot de asociación
 #_______________________________________________________________________________________ 
 # Orden: 
@@ -81,7 +82,7 @@ sum(resul$residuals^2)/sum(tabla)  #Inercia=chicuadrado/n
 #_______________________________________________________________________________________ 
 
 assocplot(tabla,col=c("blue","red"),
-          main="Azul: Obs>Esp, Rojo: Obs<Esp")         ### ¿Interpretación?
+          main="Azul: Obs>Esp, Rojo: Obs<Esp")
 
 
 
@@ -194,7 +195,6 @@ anacor$N          # Tabla de frecuencias
 plot(anacor,main="Diario y partido preferido")
 anacor$rowcoord%*%diag(anacor$sv) # Coordenadas principales de las filas
 
-
 plot(anacor,main="Diario y partido preferido", mass=TRUE)
 
 
@@ -241,6 +241,7 @@ plot(anacor,main="Diario y partido preferido", mass=TRUE)
 tabla=as.matrix(read.table("Autores.txt",
                 row.names=1,header=TRUE))
 tabla
+
 
 # Calcular distancias chi-cuadrado entre filas
 
@@ -299,7 +300,6 @@ summary(anacor)$rows # Coordenadas principales*1000
 plot(anacor)             #( k=1 y k=2)                              
 
 
-### No se ve un pijo. ¿Hola?
 
 ##############################
 #Ejemplo 3: Tareas 

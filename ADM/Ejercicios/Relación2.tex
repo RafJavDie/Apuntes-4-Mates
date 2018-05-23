@@ -177,10 +177,8 @@ $$
 Las tres etapas básicas son la estimación, la rotación (interpretación) y la puntuación. Expliquemos en qué consisten:
 
 \begin{enumerate}
-\item \textbf{Estimación}. Sea $\muestra{x_1},\dotsc,\muestra{x_n}$ una muestra aleatoria de $\mX\sim (\mu,\Sigma)$. Dado $(\hat{\Sigma},m)$ nuestro objetivo es determinar $(\hat{L},\hat{\Psi})$. Para este cometido los métodos más usuales son: CP, factor principal y máxima verosimilitud.
+\item \textbf{Estimación}. Sea $\muestra{x_1},\dotsc,\muestra{x_n}$ una muestra aleatoria de $\mX\sim (\mu,\Sigma)$. Dado $(\hat{\Sigma},m)$ nuestro objetivo es determinar $(\hat{L},\hat{\Psi})$ tales que $\hat{\Sigma}\approx \hat{L}_m\hat{L}_m'+\hat{\Psi}$. Para este cometido los métodos más usuales son: CP, factor principal y máxima verosimilitud.
 \item \textbf{Rotación}. Las cargas factoriales obtenidas a través de una transformación ortogonal de las cargas iniciales tienen la misma capacidad para reproducir la matriz de covarianza (o correlación). Dado que una transformación ortogonal realiza una rotación de los ejes coordenados, a las transformaciones ortogonales de las cargas factoriales, y por tanto de los factores, se denomina rotación factorial o rotación de los factores.
-
-Especialmente interesante es el caso de la rotación varimax. La interpretación de los factores se facilita si los que `afectan' (o correlacionan) a algunas variables no lo hacen a otras. La rotación varimax es aquella maximiza una medida de la variabilidad de los cuadrados de las cargas factoriales, es decir, un forma de alcanzar el propóstio anterior.
 
 \item \textbf{Puntuación}. Teniendo en cuenta que los factores son variables no observable, un problema de interés
 es estimar los valores de los factores (puntuaciones factoriales) en cada una de los $n$ elementos muestrales, o bien, sobre un nuevo individuo. Con este fin hemos visto los métodos de mínimos cuadrados ponderados y regresión.
@@ -371,7 +369,7 @@ d^2(P_{r_i},P_{r_i'}) &= (P_{r_i}-P_{r_i'})'(P_{r_i}-P_{r_i'})\\
 
 \item Concepto de vértice en el problema del AC por filas. Interpretación. 
 
-Los vértices de las filas son distribuciones degeneradas, es decir, filas donde toda la información se concentra en una sola categoría $B_i$, es decir el vértice $v_{f_i}$ es el vector $p$ dimensional que tiene un $1$ en la componente $i$-ésima y $0$ en el resto.
+Los vértices de las filas son distribuciones degeneradas, es decir, filas donde toda la información se concentra en una sola categoría $B_i$. El vértice $v_{f_i}$ es el vector $p$ dimensional que tiene un $1$ en la componente $i$-ésima y $0$ en el resto.
 
 Para la interpretación, dado que $d_{\chi^2}(r_i,v_{f_j})= d^2(P_{r_i},P_{v_{f_j}})$, podemos interpretarlo como la distancia perfil filar $r_i$ a la característica $B_j$.
 
@@ -390,25 +388,32 @@ Ahora bien, es claro que $r_i' 1_p = 1 = m_r' 1_p$, de donde se deduce que $(r_i
 
 \item Determina las coordenadas de las filas correspondientes al autovector $m_r$. ¿Qué evidencian?
 
-Por el razonamiento anterior tenemos que $r_i D_p^{-1} m_r = 1$. Al ser una columna constante se evidencia que la varianza ponderada es nula.
+Por el razonamiento anterior tenemos que $r_i' D_p^{-1} m_r = 1$. Al ser una columna constante se evidencia que la varianza ponderada es nula.
 
-Posible idea: Los vectores que forman parte de la base son soluciones de un problema donde se maximiza la varianza ponderada. en este caso mr está asociado al autovector 0, luego la varianza de la proyección de ri sobre mr es nula y, por tanto, tenia que salir si o si un vector cte
+¿Por qué sabíamos que sería un vector constante antes de calcular la proyección? Por la construcción de $m_r = u_p$, sabemos que maximiza la varianza proyectada con valor objetivo nulo. Por tanto, sabemos que el vector $M_rD_p^{-1} m_r$ sería constante.
 
-\item Demuestra que la varianza ponderada de las coordenadas correspondientes al autovector $u_k$ se puede expresar como
+\item Demuestra que la varianza ponderadas de las coordenadas correspondientes al autovector $u_k$ $(k\neq p)$ se puede expresar como
 \[ \sum_{i=1}^n f_{i.} (r_i^t D_p^{-1} u_k)^2 \]
 
 Es inmediato. Si la fórmula de la varianza ponderadas es
 $$
 \sum_{i=1}^n f_{i.} (r_i^t D_p^{-1} u_k-m_r'D_p^{-1}u_k)^2
 $$
-Si $k\neq p$ entonces $m_r'D_p^{-1}u_k=0$, pues $m_k = u_p$ y los autovectores están incorrelados. En estos casos la fórmula se sigue trivialmente. Para $k=p$ tenemos que el paréntesis suma $0$, pero no veo que se cumpla la igualdad. 	PREGUNTAR.
+Si $k\neq p$ entonces $m_r'D_p^{-1}u_k=0$, pues $m_k = u_p$ y los autovectores están incorrelados. En estos casos la fórmula se sigue trivialmente.
 \item Define la inercia total y demuestra que es igual a la suma de los autovalores de $S_r$.
 
-Definimos la inercia total como $InT = \dfrac{\chi^2}{N}$. Esto es, por lo visto en teoría
+Definimos la inercia total como $InT = \dfrac{\chi^2}{N}$. Sabemos por teoría que:
 $$
 InT = \sum_{i=1}^n f_{i.}d_{\chi^2}(r_i,m_r)
 $$
-Además,
+
+
+Sabemos que $traza(AB)=traza(BA)$. Si denotamos $A=r_i - m_r$, entonces
+$$
+traza(AA'D_p^{-1}) = traza(A(A'D_p^{-1})) = traza(A'D_p^{-1}A)
+$$
+Pero $A'D_p^{-1}A$ es un escalar. Entonces se tiene:..
+
 \begin{align*}
 \sum_{i=1}^n \lambda_i & = traza(S_r)\\
 &=traza\left(\sum_{i=1}^n f_{i.} (r_i - m_r) (r_i - m_r)^t D_p^{-1} \right)\\
@@ -417,11 +422,7 @@ Además,
 &= \sum_{i=1}^n f_{i.}d_{\chi^2}(r_i,m_r)\\
 & = InT
 \end{align*}
-Aquí hemos utilizado que $traza(AB)=traza(BA)$. Si denotamos $A=r_i - m_r$, entonces
-$$
-traza(AA'D_p^{-1}) = traza(A(A'D_p^{-1})) = traza(A'D_p^{-1}A)
-$$
-Pero $A'D_p^{-1}A$ es un escalar.
+
 \end{enumerate}
 \newpage
 \section{Análisis Discriminante}
@@ -470,7 +471,7 @@ Pero $A'D_p^{-1}A$ es un escalar.
 	\item Demuestra que supuesto que las poblaciones se distribuyen según $N(\mu_i, \Sigma)$, $i = 1, 2$, la regla discriminante que minimiza la proba bilidad total de error coincide con la resultante de la propuesta de Fisher.
 
 	\begin{sol}
-	El problema es equivalente a (PREGUNTAR: ¿Por qué podemos quitar el denominador?):
+	El problema es equivalente a  
 	\begin{align*}
 	\max_{\m{c} \in \R^p} \left(\m{c}^t\m{\overline{x}}_2-\m{c}^t\m{\overline{x}}_2\right)^2 & \qquad \equiv \qquad & \max_{\m{c} \in \R^p} \m{c}^t(\m{\overline{x}}_1-\m{\overline{x}}_2)(\m{\overline{x}}_1-\m{\overline{x}}_1)^t \m{c} \\
 	s.a.\ \m{c}^t \widehat{\Sigma} \m{c} = 1 & & s.a.\ \m{c}^t \widehat{\Sigma} \m{c} = 1
