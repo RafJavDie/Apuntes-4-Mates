@@ -60,7 +60,43 @@ Sean $A=\{(x,y,z)\in\R^3\mid x^2+y^2+z^2=1\}$, $B=\{(x,y,z)\in\R^3\mid x^2+y^2+z
 \begin{solucion}
 Como hay que hacer el cálculo de homologías con las triangulaciones que demos, no serán tan naturales como si simplemente quisiéramos triangular los espacios por separado. Para la esfera $A$ usamos la triangulación como octaedro.  Para $C$ conservamos la triangulación usual de un segmento como complejo generado por un 1-símplice. En cuando a $B$, hacemos la siguiente triangulación:
 
-(La dibujaré)
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-4.62,-4.004) rectangle (13.78,5.004);
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (0.,0.) -- (3.,0.) -- (1.5,2.5980762113533165) -- cycle;
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (0.,0.) -- (1.5,2.5980762113533165) -- (-1.5,2.598076211353318) -- cycle;
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (3.,0.) -- (0.,0.) -- (1.5,-2.5980762113533165) -- cycle;
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (1.5,2.5980762113533165) -- (3.,0.) -- (4.5,2.5980762113533156) -- cycle;
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (-1.5,2.598076211353318) -- (4.5,2.5980762113533156) -- (1.52,4.) -- cycle;
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (-1.5,2.598076211353318) -- (-1.,-1.) -- (1.5,-2.5980762113533165) -- cycle;
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (1.5,-2.5980762113533165) -- (4.,-1.) -- (4.5,2.5980762113533156) -- cycle;
+\draw [line width=2.pt] (0.,0.)-- (3.,0.);
+\draw [line width=2.pt] (3.,0.)-- (1.5,2.5980762113533165);
+\draw [line width=2.pt] (1.5,2.5980762113533165)-- (0.,0.);
+\draw [line width=2.pt] (0.,0.)-- (1.5,2.5980762113533165);
+\draw [line width=2.pt] (1.5,2.5980762113533165)-- (-1.5,2.598076211353318);
+\draw [line width=2.pt] (-1.5,2.598076211353318)-- (0.,0.);
+\draw [line width=2.pt] (3.,0.)-- (0.,0.);
+\draw [line width=2.pt] (0.,0.)-- (1.5,-2.5980762113533165);
+\draw [line width=2.pt] (1.5,-2.5980762113533165)-- (3.,0.);
+\draw [line width=2.pt] (1.5,2.5980762113533165)-- (3.,0.);
+\draw [line width=2.pt] (3.,0.)-- (4.5,2.5980762113533156);
+\draw [line width=2.pt] (4.5,2.5980762113533156)-- (1.5,2.5980762113533165);
+\draw [line width=2.pt] (-1.5,2.598076211353318)-- (4.5,2.5980762113533156);
+\draw [line width=2.pt] (4.5,2.5980762113533156)-- (1.52,4.);
+\draw [line width=2.pt] (1.52,4.)-- (-1.5,2.598076211353318);
+\draw [line width=2.pt] (-1.5,2.598076211353318)-- (-1.,-1.);
+\draw [line width=2.pt] (-1.,-1.)-- (1.5,-2.5980762113533165);
+\draw [line width=2.pt] (1.5,-2.5980762113533165)-- (-1.5,2.598076211353318);
+\draw [line width=2.pt] (1.5,-2.5980762113533165)-- (4.,-1.);
+\draw [line width=2.pt] (4.,-1.)-- (4.5,2.5980762113533156);
+\draw [line width=2.pt] (4.5,2.5980762113533156)-- (1.5,-2.5980762113533165);
+\draw [line width=2.pt] (-1.,-1.)-- (0.,0.);
+\draw [line width=2.pt] (1.52,4.)-- (1.5,2.5980762113533165);
+\draw [line width=2.pt] (3.,0.)-- (4.,-1.);
+\draw [line width=2.pt] (1.5,2.5980762113533165)-- (1.5,0.);
+\draw [line width=2.pt] (0.,0.)-- (2.25,1.2990381056766584);
+\draw [line width=2.pt] (3.,0.)-- (0.75,1.2990381056766582);
+\end{tikzpicture}
 
 Pasamos a calcular las homologías:
 \begin{itemize}

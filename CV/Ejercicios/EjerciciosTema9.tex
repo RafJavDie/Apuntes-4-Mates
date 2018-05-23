@@ -14,10 +14,20 @@ Sea $\pi:\R^2\to T^2$ como en el ejercicio 8.4 y sean
 U_1=\pi(\R\times (0,1)),\quad U_2=\pi(\R\times (-\frac{1}{2},\frac{1}{2})).
 \]
 Probar que $U_1$ y $U_2$ son difeomorfos a $S^1\times\R$, y que $U_1\cap U_2$ tiene 2 componentes conexas, ambas isomorfas a $S^1\times\R$. Nótese que $U_1\cup U_2=T^2$.
+
+Usar la sucesión exacta de Mayer-Vietoris y el corolario 10.14 para probar que
+\[
+H^0(T^2)\cong H^2(T^2)\cong\R\text{ y }H^1(T^2)\cong\R^2.
+\]
 \end{ejercicio}
 \begin{solucion}
+FALTA PROBAR EL DIFEOMORFISMO
 
-
+Como el toro es orientable conexo y compacto, el corolario 10.14 nos da $H^2(T^2)\cong\R$. Por otra parte, $H^p(S^1\times\R)\cong H^p(S^1)$ para todo $p$ por la invarianza homotópica de la cohomología. Por ser en particular conexo, $H^0(T^2)\cong\R$. En Mayer-Vietoris
+\[
+0\to\R\xrightarrow{I^*}\R\oplus\R\xrightarrow{J^*}\R\oplus\R\xrightarrow{\partial_*}H^1(T^2)\xrightarrow{I^*}\R\oplus\R\xrightarrow{J^*}\R\oplus\R\xrightarrow{\partial^*}\R\xrightarrow{} 0
+\]
+Reiterando el teorema del rango-nulidad llegamos a que $\Ima{\partial^*}=\ker{I^*}=\R=\Ima{I^*}$. Por el primer teorema de isomorfía, $H^1(T^2)=\R\oplus\R$. 
 
 \end{solucion}
 \newpage
