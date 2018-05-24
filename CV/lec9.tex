@@ -10,8 +10,6 @@
 
 
 
-
-
 \section{Definición de la integral}
 
 Sea $M$ una $n$-variedad diferenciable orientable. Se va a definir una integral
@@ -92,7 +90,7 @@ como $I_\sigma(f)=\int_M f\sigma$, que es lineal y de hecho $I_\sigma(f)\geq 0$ 
 
 Usando particiones de la unidad subornidada a un atlas positivo orientado, basta definid $I_\sigma(f)$ sobre aquellas $f$ de soporte pequeño en una carta positiva $(U,h)$. En tal caso
 \[
-I_\sigma(f)=\int_M f\sigma:=\int_{h(U)}f\circ h^{-1}\phi(x) d\mu_n
+I_\sigma(f)=\int_M f\sigma:=\int_{h(U)}f\circ h^{-1}(x)\phi(x) d\mu_n
 \]
 donde $\phi$ está determinado por $(h^{-1})^*(\sigma)=\phi(x)dx_1\land\dots\land dx_n$. Como $\phi$ es positiva, $I_\sigma(f)\geq 0$.
 
@@ -189,7 +187,7 @@ Ahora, para $2\leq i\leq n$,
 \]
 pues al estar $supp(f_i)\subsetneq [-b,b]^n$ ambos términos se anulan. Entonces, aplicando Fubini
 \[
-\int_{\R^n_-}\parcial{f_i}{x_i}d\mu_n=\int_{-\infty}^0\int_{-\infty}^{+\infty}\cdots\int_{-\infty}^{+\infty} (\parcial{f_i}{x_i}dx_n)\cdots dx_2dx_1=0.
+\int_{\R^n_-}\parcial{f_i}{x_i}d\mu_n=\int_{-\infty}^0\int_{-\infty}^{+\infty}\cdots\int_{-\infty}^{+\infty} \left(\parcial{f_i}{x_i}dx_n\right)\cdots dx_2dx_1=0.
 \]
 Para $i=1$, 
 \[
@@ -212,6 +210,29 @@ Si $M$ es una $n$-variedad diferenciable orientada y $w\in \Omega_c^{n-1}(M)$, e
 \int_M dw=0.
 \]
 \end{coro}
+
+\begin{nota}
+Si $w$ es una $r$-forma cerrada de $M$, entonces $[w]\in H^r(M)$. Si existe una subvariedad compacta sin borde de dimensión $r$ con $f:Q\to M$ tal que $\int_Q f^*(w)\neq 0$, entonces $[w]\neq 0$. Efectivamente, si $[w]=0$, entonces $w=d\rho$ con $\rho\in \Omega^{n-1}(M)$, así que $\int_Q f^*(w)=\int_Q f^*(d\rho)=\int_Q d(f^*(\rho))=0$. El recíproco también es cierto aunque no es posible probarlo con las herramientas que tenemos, es decir, si $[w]\neq 0$, entonces existe $Q$ verificando las propiedades.
+\end{nota}
+
+\begin{ej}
+Consideremos $S^{n-1}\subseteq\R^n-\{0\}$ y la forma 
+\[
+w=\frac{1}{|x|}\sum_{I=1}^N(-1)^{i-1}x_i dx_1\land\cdots\land \hat{dx}_i\land\dots\land dx_n.
+\]
+Vimos en \ref{9.18} que $i^*(w)$ es una orientación sobre $S^{n-1}$, de hecho $i^*(w)=vol_{S^{n-1}}$. Entonces $0<\int_{S^{n-1}} w$, por lo que $0\neq [w]\in H^{n-1}(\R^n-\{0\})\cong\R$. De modo que $[w]$ es un generador de $H^{n-1}(\R^n-\{0\})$, pues la aplicación $H^{n-1}(\R^n-\{0\})\to\R$ dada por $[z]\mapsto \int_{S^{n-1}}i^*(z)$ es un isomorfismo. 
+
+Tenemos además que $vol(S^{n-1})=\int_{S^{n-1}} i^*(w)$. Para hacer este cálculo consideramos $D^n\subseteq\R^n$ y la forma $$w_0=\sum_{i=1}^n (-1)^{i-1} x_idx_1\land\cdots\land \hat{dx}_i\land\dots\land dx_n.$$
+Es claroq ue $w_0|_{S^{n-1}}=i^*(w)=vol_{S^{n-1}}$, así que
+\[
+vol_{S^{n-1}}=\int_{S^{n-1}} i^*(w_0)=\int_{D^n} dw_0=\int_{D^n} n dx_1\land\cdots\land \hat{dx}_i\land\dots\land dx_n=nvol(D^n).
+\]
+Por inducción y usando fubinit tenemos 
+\begin{align*}
+vol(D^{2n})=\frac{\pi^n}{n!};\ & vol(D^{2n+1})=\frac{2^{2n+1}n!\pi^n}{(2n+1)!}\\
+vol(S^{2n-1})=\frac{2\pi^n}{(n-1)!};\ & vol(S^{2n})=\frac{2^{2n+1}n!\pi^n}{(2n)!}
+\end{align*}
+\end{ej}
 
 \begin{teorema}\label{aumento}
 Sea $M$ una variedad diferenciable orientada conexa de dimensión $n$. Entonces
