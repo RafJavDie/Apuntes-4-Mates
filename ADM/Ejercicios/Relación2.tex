@@ -218,9 +218,9 @@ $$
 $$
 	\item En que consiste la rotación varimax y qué pretende.
 	
-	La interpretación de los factores se facilita si los que afectan (o correlacionan) a algunas variables no lo hacen a otras. Buscamos una represenetación de manera que, si $(\hat{l}_{ij}^*)^2$ crece en valor absoluto, entonces $(\hat{l}_{kj}^*)^2$ decrece en valor absoluto para $k\neq i$. Una forma de alcanzar el objetivo anterior es buscar la representación con máxima variabilidad (criterio varimax) en los conjuntos de valores. Para ello, utilizamos una medida de variabilidad de las cargas factoriales asociados al factor $j$-ésimo viene dada por la varianza de $\{(\hat{l}_{kj}^*)^2\mid i=1,\dotsc,p\}$:
+	La interpretación de los factores se facilita si los que afectan (o correlacionan) a algunas variables no lo hacen a otras. Buscamos una representación de manera que, si $(\hat{l}_{ij}^*)^2$ crece, entonces $(\hat{l}_{kj}^*)^2$ decrece para $k\neq i$. Una forma de alcanzar el objetivo anterior es buscar la representación con máxima variabilidad (criterio varimax) en los conjuntos de valores $\{(l_{ij}*)^2 \mid i=1,\dotsc,p,\; j=1,\dotsc, m\}$. Para ello, utilizamos una medida de variabilidad de las cargas factoriales asociados al factor $j$-ésimo, la cual viene dada por la varianza de $\{(\hat{l}_{ij}^*)^2\mid i=1,\dotsc,p\}$:
 	$$
-	V_j =\frac{1}{p}\sum_{i=1}^p \left[(\hat{l}_{kj}^*)^2-\nu_j\right]^2 \qquad \nu_j = \frac{1}{p}\sum_{i=1}^p (\hat{l}_{kj}^*)^2
+	V_j =\frac{1}{p}\sum_{i=1}^p \left[(\hat{l}_{ij}^*)^2-\nu_j\right]^2 \qquad \nu_j = \frac{1}{p}\sum_{i=1}^p (\hat{l}_{ij}^*)^2
 	$$
 La rotación varimax es la que maximiza la suma de las variabilidades de todos los factores: 
 $$
@@ -238,7 +238,7 @@ Las rotaciones varimax obtenidas a partir de dos estimaciones distintas de  carg
 \item Plantea los problemas de independencia de caracteres y de homgeneidad de poblaciones.
 
 \begin{enumerate}
-\item[] \textbf{Independencia}. Sean $(A,B)$ dos variables categóricas con $n$ y $p$ modalidades respectivamente. El problema de la independencia consiste en determinar si ambas variables son independencias, es decir, si se verifica la hipótesis
+\item[] \textbf{Independencia}. Sean $(A,B)$ dos variables categóricas con $n$ y $p$ modalidades respectivamente. El problema de la independencia consiste en determinar si ambas variables son independientes, es decir, si se verifica la hipótesis
 $$
 H_0\colon P(A_i\cap B_j) = P(A_i)P(B_j), \; \forall i,j
 $$
