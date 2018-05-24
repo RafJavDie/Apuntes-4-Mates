@@ -104,12 +104,12 @@ other “half”?
 \begin{solucion}
 \begin{enumerate}[a.]
 \item[]
-\item Con SAGE obtenemos la base de Gröbner
+\item Con SAGE obtenemos la base de Gröbner $(u>v>x>y>z)$
 $$
 G=\{v^2 - z, uz - vx, u^2 - y, x^2 - yz, uv - x, ux - vy\}
 $$
 Luego la ecuación es $x^2-yz$.
-\item Tenemos que que $I_2 = \{v^2-z,x^2-yz\}$. Como el primer polinomio tiene coeficiente constante en la mayor potencia de $v$, tenemos que por el Teorema de Extensión cualquier solución $(x,y,z)\in \V(I_2)$ se extiende a una solución $(u,x,y,z)\in \V(I_1)$. Análogamente, tenemos que los coeficientes líderes de las mayores potencias de $u$ definen la variedad
+\item Tenemos que que $I_1 = \{v^2-z,x^2-yz\}$. Como el primer polinomio tiene coeficiente constante en la mayor potencia de $v$, tenemos que por el Teorema de Extensión cualquier solución $(x,y,z)\in \V(I_1)$ se extiende a una solución $(v,x,y,z)\in \V(I)$. Análogamente, tenemos que los coeficientes líderes de las mayores potencias de $u$ definen la variedad
 $$
 \V(0,z,1,0,v,y) = \emptyset
 $$
@@ -206,7 +206,7 @@ por lo que la ecuación es $x^2-y^2z$.
 
 En el caso de $\R$ hagamos la siguiente consideración. Sea $(x,y,z)\in \R^3$ tal que $x^2-y^2z=0$. Sabemos que existen $(u,v)\in\C^2$ tales que $(u,v,x,y,z)\in \V(I)$. Por la ecuación $v-y=0$ tenemos que si $y\in \R$ entonces $v\in \R$. Además, si $y\neq 0$ entonces $u=x/y\in \R$. Si $y=0$ pero $x\neq 0$ entonces $u=0$. Finalmente, si $y=v=x=0$, tenemos que todas las ecuaciones se verifican trivialmente, salvo $u^2=z$. Si $z<0$ entonces $u \notin \R$ pero es claro que todo punto $(0,0,z)$ con $z<0$ verifica $x^2-y^2z=0$.
 
-\item Es claro que $v$ siempre está determinado, pues tenemos que $v-y=0$. En general, $uy-x$ va a determinar también $u$ de manera unívoca, a menos que $y=0$. Ese caso tenemos las siguientes realciones sobre $u$:
+\item Tenemos $v$ siempre está determinado, pues tenemos que $v-y=0$. En general, $uy-x$ va a determinar también $u$ de manera unívoca, a menos que $y=0$. Ese caso tenemos las siguientes realciones sobre $u$:
 $$
 u^2 = z \qquad ux = 0
 $$
@@ -235,8 +235,8 @@ we work over $\R$.
 \item[]
 \item Distingamos dos casos
 \begin{itemize}
-\item Si $f_i(t)=k_i$, $k_i$ constante, para todo $i=1,\dotsc,n$, entonces es trivial que ocurre.
-\item Si no se verifica lo anterior, $\exists f_i$ no constante. Por tanto, siguiendo la notación del Teorema de Extensión, $c_i$ sí es una constante, por lo que $\V(c_1,\dotsc,c_n) = \emptyset$, de donde se sigue trivialmente el resultado.
+\item Si $f_i(t)=k_i$, $k_i$ constante, para todo $i=1,\dotsc,n$, entonces es trivial que ocurre, pues $\V(I)=\{(k_1,\dotsc,k_n)\}$.
+\item Si no se verifica lo anterior, $\exists f_i$ no constante. Por tanto, siguiendo la notación del Teorema de Extensión, $c_i$ sí es una constante no nula, por lo que $\V(c_1,\dotsc,c_n) = \emptyset$, de donde se sigue trivialmente el resultado.
 \end{itemize}
 \item Efectivamente puede fallar. Consideremos la parametrización para todo $t\in \C\setminus \{\pm i\}$
 \begin{align*}
@@ -247,7 +247,7 @@ Consideramos una base de Gröbner de esta parametrización y obtenemos una base 
 $$
 G=\{tx + t - y, x^2 + y^2 - 1, s - 1/2x + 1/4y^2 - 1/2, ty + x - 1\}
 $$
-Luego $I_2 = \gene{x^2+y^2 -1}$. Obviamente, el punto $(-1,0)\in \V(I_2)$ pero si $x=-1$ entonces
+Luego $I_1 = \gene{x^2+y^2 -1}$. Obviamente, el punto $(-1,0)\in \V(I_2)$ pero si $x=-1$ entonces
 $$
 -1 = \frac{1-t^2}{1+t^2} \Leftrightarrow -1 -t^2 = 1 -t^2 \Leftrightarrow 1 = -1
 $$
@@ -309,8 +309,7 @@ $I =
 \item Show that $I_2 = 
 \gene{z(x^2y − z^3)}$.
 \item Show that the smallest variety in $\C^5$ containing $i(\C^2 \setminus W)$ [see diagram (8)] is the
-variety $\V(vx − u^2, uy − v^2, z − u, x^2y − z^3, vz − xy)$. Hint: Show that $i(\C^2 \setminus W) =
-π_1(\V(J))$, and then use the Closure Theorem.
+variety $\V(vx − u^2, uy − v^2, z − u, x^2y − z^3, vz − xy)$. Hint: Show that $i(\C^2 \setminus W) = π_1(\V(J))$, and then use the Closure Theorem.
 \item Show that $\{(0, 0, x, y, 0) \mid  x, y ∈ \C\} ⊆ \V(I)$ and conclude that $\V(I)$ is not the
 smallest variety containing $i(\C^2 \setminus W)$.
 \item Determine exactly which portion of $x^2y = z^3$ is parametrized by (6).
@@ -324,30 +323,21 @@ $$
 G=\{v^2 - yz, x^2yz - z^4, u - z, vx - z^2, vz^2 - xyz \}
 $$
 de donde se deduce trivialmente el resultado con el Teorema de Eliminación.
-\item En este caso $W$ está definido por $uv=0$. Notemos que siguiendo la notación del libro, la variedad del enunciado es $J_1$. Es claro que $\forall (t,u)\in \C^2\setminus W$
+\item En este caso $W=\V(uv)$. Notemos que siguiendo Probemos la igualdad del enunciado. Es claro que $\forall (u,v)\in \C^2\setminus W$
 $$
-i(t,u)=\left(u,v,\frac{u^2}{v},\frac{v^2}{u},u\right)
+j(u,v)=\left(\frac{1}{uv},u,v,\frac{u^2}{v},\frac{v^2}{u},u\right) \in \V(J)
 $$
-Que pertenece trivialmente a $J$ (basta sustituir). Para la inclusión recíproca, supongamos que $(u,v,x,y,z)\in \pi_1(\V(J))$. Por definición $\exists h\in \C$ tales que $(h,u,v,x,y,z) \in \V(J)$ y verificando $huv=1$. Por tanto $uv\neq 0$ y podemos despejar las variables en función de $u$ y $v$, obteniendo el resultado.
+Por tanto, aplicando $\pi_1$ tenemos que $\pi_1(j(u,v))=i(u,v)\in π_1(\V(J))$. Para la inclusión recíproca, supongamos que $(u,v,x,y,z)\in \pi_1(\V(J))$. Por definición $\exists h\in \C$ tales que $(h,u,v,x,y,z) \in \V(J)$ y verificando $huv=1$. Por tanto $uv\neq 0$ y $(u,v)\notin \V(uv)$. Por tanto, $(u,v,x,y,z)\in i(\C^2\setminus W)$.
 
-Por aplicación directa del Teorema de Clausura $\V(J_1)$ es la menor variedad que $\pi_1(\V(J))$.
+Sabemos que $\V(J_1)$ es la menor variedad de $\C^5$ que contiene a $\pi_1(\V(J))=i(\C^2\setminus W)$. Aclaremos que $J_1$ viene dado por
+$$
+J_1 = \{u - z, vz - xy, v^2 - yz, vx - z^2, x^2y - z^3\}
+$$
+Que es precisamente el ideal del enunciado.
+
 \item Sea $Q$ la variedad del enunciado, la contención es inmediata, pues basta sustituir $(u,v,x,y,z,)\to(0,0,x,y,0)$. El hecho por el cuál $\V(I)$ no es la menor variedad que contiene es debido a que $Q\cap \V(J_1) = \V(xy)$, es decir, es $\V(I)$ hay más puntos que en $\V(J_1)$, que también contiene a $W$.
 \item Están cubiertos los puntos donde $y\neq 0$ o $x\neq 0$, ya que $y=0$ implica $v=0$, con lo que $x=\frac{u^2}{v}$ no está definido, y similarmente si $x=0$ entonces $u=0$, haciendo imposible definir $y=\frac{v^2}{u}$. Sin embargo es claro que lo puntos de la forma $(x,0,0)$ y $(0,y,0)$ están en la variedad para todo $x,y\in\C$. Cualquier otro punto es posible despejarlo por lo que estos son todos los puntos que faltan.
 \end{enumerate}
-\end{solucion}
-
-% Eliminar esto si innecesario
-\begin{solucion}
-Tenemos que el dominio donde $u,v \neq 0$ es  $\V(g)$ donde $g(u,v) = uv$. Por otro lado:
-\begin{align*} F & \colon \mathbb{K}^2 - W \to K^3 \\
-& (u,v) \mapsto (u^2/v, v^2/u, u) \end{align*}
-Entonces para $S = \F(\mathbb{K}^2- W)$ el objetivo es calcular $\overline{S}$.
-El teorema nos dice que $\overline{S} = \V(J_{1+2}) = \V(J \cap \mathbb{K}[x,y,z])$, donde:
-\[ J = \gene{1-tg, vx-u^2, uy-v^2, -u + z} \]
-La base de Gröbner de $J$ usando el orden lex $t > u > v > x > y > z$ es:
-\[ \mathcal{G} = \{tuv-1, tyz^2-v, tz^3-x, u-z, v^2-yz, vx-z^2, vz-xy, x^2y-z^3 \}\]
-Luego:
-\[ J_{1+2} = \gene{x^2y-z^2}\]
 \end{solucion}
 
 \newpage
@@ -364,7 +354,11 @@ diagram (8), show that $i(k \setminus W) = \V(I)$, and adapt the proof of Theore
 \begin{solucion}
 Comencemos probando que $i(k\setminus W)=\V(I)$. Para la inclusión no trivial consideremos $(t,x_1,\dotsc,x_n)\in \V(I)$. Tenemos que probar que $t\in k \setminus W$. Sabemos que se verifica $g_i(t)x_i = f_i(t)$. Si $g_i(t) = 0$ entonces $f_i(t)=0$ y tendrían raíces en común. Por tanto podemos despejar $x_i$ en $g_i(t)x_i = f_i(t)$.
 
-Sea $h\in k[x_1,\dotsc,x_n]$ que sea anula $F(k/W)$, tenemos que probar que se anula en $\V(I_1)$. Sin embargo, sabemos que $F(k\setminus W)=\pi_1(i(k\setminus W))=\pi_1(\V(I)) \subset \V(I_1)$. ¿Se da la inclusión contraria? 
+Sabemos que $F(k\setminus W)=\pi_1(i(k\setminus W))=\pi_1(\V(I))$. Por tanto, $\V(I_1)$ es una variedad que contiene a $F(k \setminus W)$. Comprobemos que es la menor. Sea $h\in k[x_1,\dotsc,x_n]$ que se anula $F(k/W)$, tenemos que probar que $h\in I_1$. De manera análoga a la prueba del Teorema 2 tenemos que $\exists N>0$ tal que
+$$
+g^N h(x_1,\dotsc,x_n) = q_1(g_1x_1-f_1)+\dotsc + q_n(g_nx_n-f_n) \in I
+$$
+
 \end{solucion}
 
 

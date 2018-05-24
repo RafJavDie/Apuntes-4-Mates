@@ -111,11 +111,12 @@ Será útil tener $f$ desarrollado como $x^4y^2 + x^4z^2 + x^2y^4 + 2x^2y^2z^2 +
 \begin{enumerate}[a.]
 \item $LT(f)=x^4y^2=LT(\sigma_2^2\sigma_1^2)$
 \begin{align*}
-f_1=f-\sigma_2^2\sigma_1^2=&-2x^4yz - 2x^3y^3 - 8x^3y^2z - 8x^3yz^2 - 2x^3z^3 - 8x^2y^3z - 13x^2y^2z^2\\ &- 8x^2yz^3 - 2xy^4z - 8xy^3z^2 - 8xy^2z^3 - 2xyz^4 - 2y^3z^3
+f_1=f-\sigma_2^2\sigma_1^2&=-2x^4yz - 2x^3y^3 - 8x^3y^2z - 8x^3yz^2 - 2x^3z^3 - 8x^2y^3z - 13x^2y^2z^2\\ &- 8x^2yz^3 - 2xy^4z - 8xy^3z^2 - 8xy^2z^3 - 2xyz^4 - 2y^3z^3
 \end{align*}
 $LT(f_1)=-2x^4yz=-2LT(\sigma_3\sigma_1^3)$
 \begin{align*}
-f_2=f_1+2\sigma_3\sigma_1^3=&-2x^3y^3 - 2x^3y^2z - 2x^3yz^2 - 2x^3z^3 - 2x^2y^3z - x^2y^2z^2 - 2x^2yz^3 - 2xy^3z^2 - 2xy^2z^3 - 2y^3z^3
+f_2=f_1+2\sigma_3\sigma_1^3&=-2x^3y^3 - 2x^3y^2z - 2x^3yz^2 - x^3z^3 - 2x^2y^3z - x^2y^2z^2\\
+& - 2x^2yz^3 - 2xy^3z^2 - 2xy^2z^3 - 2y^3z^3
 \end{align*}
 $LT(f_2)=-2x^3y^3=-2LT(\sigma_2^3)$
 \[
@@ -172,8 +173,8 @@ $g(α_1, \dots , α_n) ∈ k$.
 \end{ejercicio}
 \begin{solucion}\
 \begin{enumerate}[a.]
-\item Por el Ejercicio \ref{ejer:7.1.4} sabemos que los coeficientes de $f$ son, salvo signo, los polinomios simétricos en las raíces de $f$. Es decir, cada $a_i$ es la forma $(-1)^{n-i}\sigma_i$ o, equivalentemente, $\sigma_i = (-1)^{n-i}a_i$. Además, dado que $g(\alpha_1,\dotsc,\alpha_n)$ es un polinomio simétrico, por el Teorema Fundamental de los Polinomios simétricos, $g=h(\sigma_1,\dotsc,\sigma_n)$. como las $\sigma_i$ se pueden escribir como funciones de $a_i$ tenemos el resultado.
-\item Si
+\item Por el Ejercicio \ref{ejer:7.1.4} sabemos que los coeficientes de $f$ son, salvo signo, los polinomios simétricos en las raíces de $f$. Es decir, cada $a_i$ es la forma $(-1)^{n-i}\sigma_i(\alpha_1,\dotsc,\alpha_n)$ o, equivalentemente, $\sigma_i = (-1)^{n-i}a_i$. Además, dado que $g(\alpha_1,\dotsc,\alpha_n)$ es un polinomio simétrico, por el Teorema Fundamental de los Polinomios simétricos con coeficientes en $(\alpha_1,\dotsc,\alpha_n)$, $g=h(\sigma_1,\dotsc,\sigma_n)$. Dado que las $\sigma_i$ se pueden escribir como funciones de $a_i$ tenemos el resultado.
+\item No más que tener en cuenta que para probar el resultado anterior, supuesto que $g$ tiene coeficientes en $k$, la expresión de $g$ como polinomio en los coeficientes de $a_i$ también tiene coeficientes en $k$. Por tanto, $g$ es el resultado de sumas y productos de elementos de $k$ que, por ser cuerpo, es cerrado para ambas operaciones.
 \end{enumerate}
 
 \end{solucion}
@@ -199,13 +200,18 @@ $$
 
 \begin{solucion}\
 \begin{enumerate}[a.]
-\item 
+\item Claramente es un polinomio simétrico en las raíces de $f$, luego el primer apartado del ejercicio anterior deriva inmediatamente el resultado.
 \item Si $n=2$ tenemos una parábola y tan solo dos raíces dadas por $(a_1^2\pm\sqrt{a_1^2-4a_2})/2$. Por tanto
 $$
-D(f)=\alpha_1 - \alpha_2 = \sqrt{a_1^2-4a_2}
+D(f)=(\alpha_1 - \alpha_2)(\alpha_2 - \alpha_1) =-\sqrt{a_1^2-4a_2}\sqrt{a_1^2-4a_2} = 4a_2 - a_1^2
 $$
-\item 
-\item 
+\item Tenemos
+\begin{align*}
+-D(f)&=(\alpha_1-\alpha_2)^2(\alpha_1-\alpha_3)^2(\alpha_2-\alpha_3)^2\\
+&=-4\sigma_1^3\sigma_3 + \sigma_1^2\sigma_2^2 + 18\sigma_1\sigma_2\sigma_3 - 4\sigma_2^3 - 27\sigma_3^2
+\end{align*}
+Ahora basta tener en cuenta que en el caso cúbico $\sigma_1 = -a_1$, $\sigma_2 = a_2$ y $\sigma_3 = -a_3$.
+\item Irresoluble sin conocer resultantes.
 \end{enumerate}
 \end{solucion}
 
