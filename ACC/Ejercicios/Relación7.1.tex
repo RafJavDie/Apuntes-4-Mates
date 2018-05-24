@@ -248,28 +248,31 @@ a_1^3-3a_1^3+9a_1a_2-27a_3=-2a_1^3+9a_1a_2-27a_3=0
 \end{solucion}
 \newpage
 
-\begin{ejercicio}{7.1.13}
-
+\begin{ejercicio}{7.1.14}
+In this exercise, you will prove the Newton identities used in the proof of Theorem 8. Let the variables be $x_1,\dotsc,x_n$
+\begin{enumerate}[a.]
+\item Set $σ_0 = 1$ and $σ_i = 0$ whenever $i < 0$ or $i > n$. Then show that the Newton identities are equivalent to
+$$
+\sum_{k=0}^{j-1} (-1)^{j}\sigma_{k}s_{j-k} + (-1)^j j \sigma_j = 0, \quad j\geq 1 
+$$
+\item Prove the identity of part (a) by induction on $n$. Hint: Similar to Exercise 3, let $s^{(n)}_j$ be
+the $j$th power sum of $x_1,\dotsc,x_{n-1}$, i.e., all variables except $x_n$. Then use Exercise 3 and note that $s_j = s^{(n)}_j+x_n^j$.
+\end{enumerate} 
 \end{ejercicio}
 \begin{solucion}
-
-\end{solucion}
-
-\newpage
-
-\begin{ejercicio}{7.1.15}
-
-\begin{enumerate}[a.]
-\item
-\end{enumerate}
-\end{ejercicio}
-
-\begin{solucion}\
 \begin{enumerate}[a.]
 \item[]
 \item
+\item Para $j=1$ es caro, pues tenemos simplemente $\sigma_0 s_1 - s_1 = 0$. Supongamos que es cierto para $j=s-1$ y veamos que es cierto para $j=s$. De la hipótesis de inducción podemos deducir que
+\begin{align*}
+\sum_{k=0}^{j-1} (-1)^{j}\sigma_{k}s_{j-k} + (-1)^j j \sigma_j  
+&= -(-1)^{j-1}(j-1)\sigma_{j-1} + (-1)^{j-1}\sigma_{j-1}s_1 + (-1)^j j \sigma_j\\
+&=(-1)^{j-1}\sigma_{j-1}[-(j-1)+s_1] + (-1)^j j \sigma_j
+\end{align*}
+
 \end{enumerate}
 \end{solucion}
+
 \newpage
 \begin{ejercicio}{7.1.16}
 Consider the field $\F_2 = \{0, 1\}$ consisting of two elements. Show that it is impossible
