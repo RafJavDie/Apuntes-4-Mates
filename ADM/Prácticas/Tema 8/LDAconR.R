@@ -269,8 +269,8 @@ pairs(iris[,-5],col=iris.color)
 
 
 #######
-# (b)
-######
+# (b) # 
+#######
 
 #Redefinir niveles a una sola letra
 #Útil para plot.lda

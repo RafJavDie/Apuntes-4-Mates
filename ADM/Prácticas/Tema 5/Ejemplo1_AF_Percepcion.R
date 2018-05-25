@@ -41,7 +41,6 @@ det(R)
 #Además tampoco se puede aplicar el método AF
 #de máxima verosimilitud                                 
 
-
 #3. Estimar el modelo A.F. mediante el 
 #   método de Componentes Principales
 #######################################

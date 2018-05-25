@@ -21,18 +21,25 @@ colnames(R)= rownames(R)= c("longcra","anchcra",
 R
 R-t(R)  #Comprobar que es simétrica
 
+
 # El test de esfericidad de Bartlett contrasta 
 # la hipótesis nula de que una matriz
 # var-cov es proporcional a la identidad, 
 # si se trabaja con las variables tipificadas
 # H0:R=I ,  H1:R!=I
-n=400
-p= ncol(R)
-EBarl = -(n-1-(2*p+5)/6)*log(det(R))
-gl = p*(p-1)/2
-EBarl
-gl
-pchisq(EBarl,gl,lower.tail=FALSE)  #Significativo  ## ¿Cuando rechazamos?
+
+esfbarl <- function(M){
+  n=400
+  p= ncol(M)
+  EBarl = -(n-1-(2*p+5)/6)*log(det(M))
+  gl = p*(p-1)/2
+  EBarl
+  gl
+  s = pchisq(EBarl,gl,lower.tail=FALSE)
+  return(s)
+}
+esfbarl(R)
+#Significativo  ## ¿Cuando rechazamos?
                                                     
 
 #########################################
@@ -68,7 +75,6 @@ cor_vc
 cbind(apply(cor_vc^2,1,sum))       
 
 
-
 #########################################
 #3. Análisis de componentes principales
 #########################################
@@ -85,5 +91,4 @@ plot(L,type="n",xlim=c(-1,1),ylim=c(-1,1),
 text(L,labels=rownames(L),cex=0.8)
 text(Lrot,labels=rownames(Lrot),cex=0.8,col="red")
 grid()
-abline(h=0,v=0,lty=2)                                
-
+abline(h=0,v=0,lty=2)
