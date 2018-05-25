@@ -267,8 +267,7 @@ plot(2:10,sapply(2:10,function(x) pam(ruspini,x)$silinfo$avg.width ),type="l")
 rusp.pam<- pam(ruspini,4)
 plot(rusp.pam)
 plot(ruspini,main="4-medioides",
-     col=rusp.pam$clustering)
-points(rusp.pam$medoids,pch=10,cex=2.5,col="red")
+     col=rusp.pam$clustering)points(rusp.pam$medoids,pch=10,cex=2.5,col="red")
 grid()
 
 #7. FUNCION clara

@@ -49,7 +49,7 @@ k & c.c.
 \end{cases}
 \]
 como queríamos demostrar.
-\end{solucion}
+\end{solucion}	
 
 \newpage
 
@@ -253,7 +253,7 @@ In this exercise, you will prove the Newton identities used in the proof of Theo
 \begin{enumerate}[a.]
 \item Set $σ_0 = 1$ and $σ_i = 0$ whenever $i < 0$ or $i > n$. Then show that the Newton identities are equivalent to
 $$
-\sum_{k=0}^{j-1} (-1)^{j}\sigma_{k}s_{j-k} + (-1)^j j \sigma_j = 0, \quad j\geq 1 
+\sum_{k=0}^{j-1} (-1)^{k}\sigma_{k}s_{j-k} + (-1)^j j \sigma_j = 0, \quad j\geq 1 
 $$
 \item Prove the identity of part (a) by induction on $n$. Hint: Similar to Exercise 3, let $s^{(n)}_j$ be
 the $j$th power sum of $x_1,\dotsc,x_{n-1}$, i.e., all variables except $x_n$. Then use Exercise 3 and note that $s_j = s^{(n)}_j+x_n^j$.
@@ -262,14 +262,20 @@ the $j$th power sum of $x_1,\dotsc,x_{n-1}$, i.e., all variables except $x_n$. T
 \begin{solucion}
 \begin{enumerate}[a.]
 \item[]
-\item
-\item Para $j=1$ es claro, pues tenemos simplemente $\sigma_0 s_1 - s_1 = 0$. Supongamos que es cierto para $j=s-1$ y veamos que es cierto para $j=s$. De la hipótesis de inducción podemos deducir que
+\item Si $1\leq j \leq n$ es claro, pues coincide con la identidad de Newton habitual. Si $j>n$ entonces tenemos que comprobar que
+$$
+\sum_{k=0}^{j-1} (-1)^{k}\sigma_{k}s_{j-k} + (-1)^j j \sigma_j  = \sum_{k=0}^n \sigma_k s_{j-k}(-1)^k
+$$
+Como $\sigma_j=0$ para $j>n$, entonces en la igualdad de la izquierda podemos eliminar el primer sumando y dejar la suma hasta $n$, donde tenemos la coincidencia.  
+\item La igualdad $s_j = s_j^{(n)} + x^j_n$ es trivial, no resiste mayor análisis. Pasemos a probar $a.$ por inducción sobre $n$. Si $n = 1$ entonces $\forall j >1$ $\sigma_j =0$. La igualdad es clara para $j=$. Si $\forall j \geq 2$ todos los términos de la suma se anulan salvo los dos primeros (que se anulan), quedando
+$$
+\sum_{k=0}^{j-1} (-1)^{k}\sigma_{k}s_{j-k} = \sigma_0 s_j - \sigma_1 s_{j-1} = x^j - x x^{j-1} = 0
+$$
+Supongamos que para todo $n\leq s-1$ verifica la igualdad para todo $j$ y veamos qué ocurre para $n=s$. Si $j=1$ es trivial. Supongamos hipótesis de inducción para $j\leq n$.
 \begin{align*}
-\sum_{k=0}^{j-1} (-1)^{j}\sigma_{k}s_{j-k} + (-1)^j j \sigma_j  
-&= -(-1)^{j-1}(j-1)\sigma_{j-1} + (-1)^{j-1}\sigma_{j-1}s_1 + (-1)^j j \sigma_j\\
-&=(-1)^{j-1}\sigma_{j-1}[-(j-1)+s_1] + (-1)^j j \sigma_j
+\sum_{k=0}^{j-1} (-1)^{k}\sigma_{k}s_{j-k} + (-1)^j j \sigma_j   &= (-1)^{j-1}\sigma_{j-1}s_1 + (-1)^{j-1}(j-1)\sigma_{j-1}+(-1)^j j \sigma_j\\
+&=(-1)^{j-1}\sigma_{j-1}(s_1 + (j-1))+(-1)^j j \sigma_j
 \end{align*}
-
 \end{enumerate}
 \end{solucion}
 
