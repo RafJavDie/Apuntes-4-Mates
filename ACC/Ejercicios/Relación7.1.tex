@@ -299,26 +299,54 @@ Luego el coeficiente de todo monomio $x^α$ es $0$, lo que demuestra la identida
 
 \begin{ejercicio}{7.1.11}
 In this exercise, we will prove the identity
-\[ 0 = h_k(x_k, \dots, x_n) + \sum_{i=1}^k (-1)^i h_{k-i}(x_k,\dots,x_n) σ_i(x_1,\dots,x_n) \]
+\[ 0 = h_j(x_j, \dots, x_n) + \sum_{i=1}^j (-1)^i h_{k-i}(x_j,\dots,x_n) σ_i(x_1,\dots,x_n) \]
 used in the proof of Proposition 5.
 As in Exercise 10, let $σ_0 = 1$, so that the identity can be written more compactly as
-\[ 0 = \sum_{i=0}^k (-1)^i h_{k-i}(x_k,\dots,x_n) σ_i(x_1,\dots,x_n) \]
+\[ 0 = \sum_{i=0}^k (-1)^i h_{j-i}(x_j,\dots,x_n) σ_i(x_1,\dots,x_n) \]
 The idea is to separate out the variables $x_1,\dots,x_{j-1}$.
-TO this end, if $S \subset \{1,\dots,k-1\}$, let $x^S$ be the product of the coresponding variables and let $|S|$ denote the number of elements in $S$.
+To this end, if $S \subset \{1,\dots,j-1\}$, let $x^S$ be the product of the coresponding variables and let $|S|$ denote the number of elements in $S$.
 \begin{enumerate}
 \item Prove that
-\[ σ_i(x_1,\dots,x_n) = \sum_{S \subset \{1,\dots,k-1\} x^S σ_{i-|S|}}(x_k,\dots,x_n), \]
+\[ σ_i(x_1,\dots,x_n) = \sum_{S \subset \{1,\dots,j-1\}} x^S σ_{i-|S|}(x_j,\dots,x_n), \]
 where we set $σ_m = 0$ if $m < 0$.
 \item Prove that
-\[ \sum_{i=0}^k (-1)^i h_{k-i}(x_k,\dots,x_n) σ_i(x_1,\dots,x_n) \]
-\[ = \sum_{S \subset \{1,\dots,k-1\}} x^S \left(\sum_{i=|S|} (-1)^i h_{k-i}(x_k,\dots,x_n) σ_{i-|S|}(x_k,\dots,x_n)\right) \]
+\[ \sum_{i=0}^j (-1)^i h_{j-i}(x_j,\dots,x_n) σ_i(x_1,\dots,x_n) \]
+\begin{equation}\label{eq:7.1.11} = \sum_{S \subset \{1,\dots,j-1\}} x^S \left(\sum_{i=|S|}^j (-1)^i h_{j-i}(x_j,\dots,x_n) σ_{i-|S|}(x_j,\dots,x_n)\right) \end{equation}
 \item Use Exercise \ref{ejer:7.1.10} to conclude that the sum inside the parentheses is zero for every $S$.
 This proves the desired identity.
 Hint: Let $l = i-|S|$.
 \end{enumerate}
-
 \end{ejercicio}
 
+\begin{solucion}
+\mbox{}
+\begin{enumerate}
+\item Consideramos en cada término de $σ_i$ como el producto de dos monomios $x^S$ y $x^T$, con $S \subset \{x_1,\dots,x_{j-1}\}$ y $T \subset \{x_j,\dots,x_n\}$.
+Por un lado tenemos que $|T|=i-|S|$.
+Sacando factor común $x^S$, tenemos:
+\[ σ_i(x_1,\dots,x_n) = \sum_{S \subseteq \{1,\dots,j-1\}} x^S \left(\sum_{\substack{T \subseteq \{j,\dots,n\}\\|T|=1-|S|}} x^T\right) = \sum_{S \subset \{1,\dots,j-1\}} x^S σ_{i-|S|}(x_j,\dots,x_n) \]
+
+\item
+\begin{align*}
+\sum_{i=0}^j & (-1)^i h_{j-i}(x_j,\dots,x_n) σ_i(x_1,\dots,x_n)\\
+& = \sum_{i=0}^j (-1)^i h_{j-i}(x_j,\dots,x_n) \left(\sum_{S \subset \{1,\dots,j-1\}} x^S σ_{i-|S|}(x_j,\dots,x_n)\right)\\
+& = \sum_{i=0}^j \sum_{S \subset \{1,\dots,j-1\}} x^S (-1)^i h_{j-i}(x_j,\dots,x_n) σ_{i-|S|}(x_j,\dots,x_n)\\
+& = \sum_{S \subset \{1,\dots,j-1\}} x^S \left(\sum_{i=0}^j (-1)^i h_{j-i}(x_j,\dots,x_n) σ_{i-|S|}(x_j,\dots,x_n)\right)\\
+& =  \sum_{S \subset \{1,\dots,j-1\}} x^S \left(\sum_{\mathbf{i=|S|}}^j (-1)^i h_{j-i}(x_j,\dots,x_n) σ_{i-|S|}(x_j,\dots,x_n)\right)
+\end{align*}
+Podemos imponer que el segundo sumatorio empiece por $|S|$ porque $σ_{i-|S|} = 0$ para $i - |S| < 0$.
+\item Sea $l = i - |S|$ y $k = j - |S|$, entonces tenemos para los términos de \eqref{eq:7.1.11}:
+\begin{align*}
+\sum_{i=|S|}^j & (-1)^i h_{j-i}(x_j,\dots,x_n) σ_{i-|S|}(x_j,\dots,x_n)\\
+& = \sum_{l=0}^{j-|S|} (-1)^{l+|S|} h_{j-|S|-l}(x_j,\dots,x_n) σ_{l}(x_j,\dots,x_n)\\
+& = (-1)^{|S|}\sum_{l=0}^{k} (-1)^l h_{k-l}(x_j,\dots,x_n) σ_{l}(x_j,\dots,x_n)\\
+& = 0
+\end{align*}
+por lo demostrado en el ejercicio \ref{ejer:7.1.10}.
+
+Entonces cada sumando de \eqref{eq:7.1.11} es $0$, luego la suma es $0$.
+\end{enumerate}
+\end{solucion}
 \newpage
 
 \begin{ejercicio}{7.1.14}
