@@ -108,7 +108,7 @@ En el nivel $m$ tenemos los complejos de cadenas
 \[
 \begin{tikzcd}
 \cdots\to C_{m+1}(K;\F)\arrow[r,"\partial_{m+1}"] & C_m(K;\F)\arrow[r,"\partial_m"]\arrow[d,equal] & C_{m-1}(K;\F)\arrow[d, equal]\to\cdots\\
- 0\arrow[r] & C_m(K^m;\F)\arrow[r, "\partial_m"] & C_{m-1}(K;\F)\to\cdots
+ 0\arrow[r] & C_m(K^m;\F)\arrow[r, "\partial_m"] & C_{m-1}(K^m;\F)\to\cdots
 \end{tikzcd}
 \]
 Por lo que $H_m(K^m;\F)=\ker\partial_m$ y $H_m(K;\F)=\ker\partial_m/\Ima\partial_{m+1}$, por lo que $H_m(K^m;\F)\cong H_m(K;\F)\oplus\Ima\partial_{m+1}$.
@@ -140,6 +140,25 @@ $G$ tiene un único lazo.
 Sea $T$ un árbol maximal en $G$. Denotamos por $e_1,\dots, e_n$ a las aristas de $G$ que no están en $T$, es decir, $T=G-\{e_1,\dots, e_n\}$. Sea $z_i$, $1\leq i\leq n$, el subgrafo obtenido al añadir a $T$ la arista $e_i$. Tenemos que probar que $\{z_1,\dots, z_n\}$ es una base de $H_1(G)$. Se prueba por inducción en $n$. Si $z_1$ es todo el grafo, entonces el grafo colapsa hasta el 1-ciclo que se ha conseguido al añadir $e_1$, luego $H_1(G)=\F$ generado por ese 1-ciclo. Supuesto que el resultado es cierto para $n-1$ ciclos, para el caso de $n$ utilizamos la descomposición de Mayer-Vietoris en el nuevo 1-ciclo y lo que existía antes. La intersección es colapsable pues es un ciclo menos una arista. Así que la exactitud de Mayer-Vietoris con la hipótesis de inducción nos da el resultado deseado. 
 
 El caso $\nu(G)=1$ es el caso base, por lo que se ha probado ya.
+\end{solucion}
+
+\begin{solucion}
+Lo razonamos por inducción en $\mu$:
+Si $\mu = 0$, entonces $G = T \searrow\!\!\searrow v$, con $v \in G^0$.
+Entonces $H_1(G) = H_1(T) = 0$.
+Si $\mu = 1$, enotnces $G = T \cup \{e_1\}$.
+Colapsamos por todos los vértices libres de $G$ y obtenemos el $1$ ciclo $z_1$.
+Entonces:
+\[ H_1(G) = H_1(z_1) = \F\gene{z_1} \]
+Supongamos que la hipótesis es cierta hasta $μ-1$.
+Veamos que es cierto para $μ$.
+Tenemos que:
+\[ G = T \cup \{e_1, \dots, e_μ \} = \underbrace{T \cup \{e_1, \dots, e_{μ-1}\}}_{K_1} \cup \underbrace{\{e_μ\}}_{K_2} \]
+Tenemos que $K_1 \cup K_2 = G$ y $K_1 \cap _2 = \{v,w\}$, donde $\partial e_μ = w-v$.
+Tenemos por hipótesis que $H_1(K_1) = \F^{μ-1}\gene{z_1,\dots,z_{μ-1}}$.
+Por otro lado, $H_1(K_2) = 0$.
+
+Aplicando Mayer-Vietoris para calcular $\widetilde{H}_n(G)$ del mismo modo que se hizo para el cálculo de la homología de un$1$-ciclo.
 \end{solucion}
 
 \newpage
