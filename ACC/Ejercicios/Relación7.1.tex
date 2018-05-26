@@ -248,6 +248,52 @@ a_1^3-3a_1^3+9a_1a_2-27a_3=-2a_1^3+9a_1a_2-27a_3=0
 \end{solucion}
 \newpage
 
+\begin{ejercicio}{7.1.10}
+As in Proposition 5, let $h_j(x_1 , \dots , x_n)$ be the sum of all monomials of total degree $j$ in $x_1 ,\dots , x_n$.
+Also, let $σ_0 = 1$ and $σ_i = 0$ if $i > n$.
+The goal of this exercise is to show that if $j > 0$, then
+\[ 0 = \sum_{i=0}^j (-1)^i h_{j-i}(x_1,\dots,x_n) \sigma_i(x_1,\dots,x_n) \]
+In Exercise 11, we will use this to prove the closely related identity (5) that appears in the text. To prove the above identity, we will compute the coefficients of the monomials xα that appear in $h_{j-i} σ_i$.
+Since every term in $h_{j-i} σ_i$ has total degree $j$, we can assume that $x^α$ has total degree $j$.
+We will let a denote the number of variables that actually appear in $x^α$.
+\begin{enumerate}
+\item If $x^α$ appears in $h_{j-i} σ_i$, show that $i ≤ a$. Hint: How many variables appear in each term of $σ_i$?
+\item If $i ≤ a$, show that exactly $\binom{a}{i}$ terms of $σ_i$ involve only variables that appear in $x^α$.
+Note that all of these terms have total degree $i$.
+\item If $i ≤ a$, show that $x^α$ appears in $h_{j-i} σ_i$ with coefficient $\binom{a}{i}$.
+Hint: This follows from part (b) because $h_{j-i}$ is the sum of all monomials of total degree $j - i$, and each monomial has coefficient $1$.
+\item Conclude that the coefficient of $x^α$ in $\sum_{i=0}^j (-1)^i h_{-i}σ_i$ is $\sum_{i=0}^a (-1)^i \binom{a}{i}$.
+Then use the binomial theorem to show that the coefficient of $x^α$ is zero.
+This will complete the proof of our identity.
+\end{enumerate}
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{7.1.11}
+In this exercise, we will prove the identity
+\[ 0 = h_k(x_k, \dots, x_n) + \sum_{i=1}^k (-1)^i h_{k-i}(x_k,\dots,x_n) σ_i(x_1,\dots,x_n) \]
+used in the proof of Proposition 5.
+As in Exercise 10, let $σ_0 = 1$, so that the identity can be written more compactly as
+\[ 0 = \sum_{i=0}^k (-1)^i h_{k-i}(x_k,\dots,x_n) σ_i(x_1,\dots,x_n) \]
+The idea is to separate out the variables $x_1,\dots,x_{j-1}$.
+TO this end, if $S \subset \{1,\dots,k-1\}$, let $x^S$ be the product of the coresponding variables and let $|S|$ denote the number of elements in $S$.
+\begin{enumerate}
+\item Prove that
+\[ σ_i(x_1,\dots,x_n) = \sum_{S \subset \{1,\dots,k-1\} x^S σ_{i-|S|}}(x_k,\dots,x_n), \]
+where we set $σ_m = 0$ if $m < 0$.
+\item Prove that
+\[ \sum_{i=0}^k (-1)^i h_{k-i}(x_k,\dots,x_n) σ_i(x_1,\dots,x_n) \]
+\[ = \sum_{S \subset \{1,\dots,k-1\}} x^S \left(\sum_{i=|S|} (-1)^i h_{k-i}(x_k,\dots,x_n) σ_{i-|S|}(x_k,\dots,x_n)\right) \]
+\item Use Exercise \ref{ejer:7.1.10} to conclude that the sum inside the parentheses is zero for every $S$.
+This proves the desired identity.
+Hint: Let $l = i-|S|$.
+\end{enumerate}
+
+\end{ejercicio}
+
+\newpage
+
 \begin{ejercicio}{7.1.14}
 In this exercise, you will prove the Newton identities used in the proof of Theorem 8. Let the variables be $x_1,\dotsc,x_n$
 \begin{enumerate}[a.]
