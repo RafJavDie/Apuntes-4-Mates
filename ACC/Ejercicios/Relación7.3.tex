@@ -45,22 +45,22 @@ R_G( f )(x) =
 \]
 \begin{enumerate}[a.]
 \item 
-\[
-R_G( af + bg )(x) =
-\frac{1}{|G|}\sum_{A∈G}(af + bg) (A \cdot x)=a\frac{1}{|G|}\sum_{A∈G}f (A \cdot x)+b\frac{1}{|G|}\sum_{A∈G}g (A \cdot x)=aR_G( f)(x) + bR_G(g)(x).
-\]
-\item Dada $B\in G$, 
-\[
-R_G( f )(Bx) =
-\frac{1}{|G|}\sum_{A∈G}f (A \cdot B x)=\frac{1}{|G|}\sum_{A∈G}f ( A x)
-\]
-puesto que $AB$ recorre todas las matrices de $G$, así que a lo sumo cambia el orden en el que aparece cada término.
+\begin{align*}
+R_G( af + bg )(x) &= \frac{1}{|G|}\sum_{A∈G}(af + bg) (A \cdot x)\\
+&=a\frac{1}{|G|}\sum_{A∈G}f (A \cdot x)+b\frac{1}{|G|}\sum_{A∈G}g (A \cdot x)\\
+&=aR_G( f)(x) + bR_G(g)(x)
+\end{align*}
 
-Dado $g\in k[x_1, \dots, x_n]^G$, $g(x)=g(Ax)$ para toda $A\in G$, de modo que $g(x)=\frac{1}{|G|}\sum_{A∈G}g (A x)=R_G(g)(x)$, por lo que se tiene a sí mismo como preimagen. 
+\item Por un lado, $\forall A \in G$
+$$
+R_G((f(Ax)) = \frac{1}{|G|}\sum_{B \in G} f(BAx) = \frac{1}{|G|}\sum_{B \in G} f(Bx) = \frac{1}{|G|}\sum_{B \in G} f(x) = R_G(f(x))
+$$
+Si $f\in k[x_1,\dotsc,x_n]^G$ entonces $R_G(f)=f$, por lo que basta tomar como preimagen de cada $f$ a ella misma.
 \item Por el apartado anterior, $R_G$ envía $k[x_1, \dots, x_n]$ en $k[x_1, \dots, x_n]^G$ y es la identidad sobre este último, por lo que se tiene el resultado.
-\item \[
+\item Vemos directamente que 
+\[
 R_G( fg )(x) =
-\frac{1}{|G|}\sum_{A∈G}f (A \cdot x)g(A\cdot x)=\frac{1}{|G|}\sum_{A∈G}f (x)g(A\cdot x)=f(x)\sum_{A∈G}g(A\cdot x)=f(x)R_G(g)(x).
+\frac{1}{|G|}\sum_{A∈G}f (A \cdot x)g(A\cdot x)=f(x)\sum_{A∈G}g(A\cdot x)=f(x)R_G(g)(x).
 \]
 
 \end{enumerate}
@@ -134,15 +134,27 @@ induction on $n$ and note that the case $n = 2$ is the binomial theorem.
 \end{ejercicio}
 \begin{solucion}\
 \begin{enumerate}[a.]
-\item Para $n=1$ tendríamos el número 1. Para $n=2$ se trata del coeficiente binomial, pues tenemos $\frac{m!}{α_1!α_2!}$ con $\alpha_2=m-\alpha_1$, por lo que es entero. Supongámoslo cierto para $n-1$, es decir, es cierto para $|\alpha|=\alpha_1+\cdots\alpha_{n-1}=m$. Entonces, dado $\alpha_n\in\Z$,
+\item Para $n=1$ tendríamos el número 1. Para $n=2$ se comprueban los casos $(1,3)$ y $(2,2)$. Es claro que si se cumple para $\alpha$ se cumple para $reverse(\alpha)$.  Supongámoslo cierto para $n-1$, es decir, es cierto para $|\alpha|=\alpha_1+\cdots\alpha_{n-1}=m$. Entonces, dado $\alpha_n\in\Z$,
 \[
-\binom{m+\alpha_n}{\alpha\cup \alpha_n}=\frac{(m+\alpha_n)!}{α_1! \cdots \alpha_{n-1}!α_n!}=\frac{(m+\alpha_n)\cdots(m+1)}{\alpha_n!}\frac{m!}{α_1! \cdots \alpha_{n-1}!}=\binom{m+\alpha_n}{\alpha_n}\binom{m}{\alpha}\in\Z
+\binom{m+\alpha_n}{\alpha\cup \alpha_n}=\frac{(m+\alpha_n)!}{α_1! \cdots \alpha_{n-1}!α_n!}=\frac{(m+\alpha_n)\cdots(m+1)}{\alpha_n!}\frac{m!}{α_1! \cdots \alpha_{n-1}!}=\A\binom{m}{\alpha}\in\Z
 \]
-\item Para $m=1$ y para $n=1$ es trivial. Para $n=2$ tenemos justamente el teorema del binomio. Supongamos el resultado cierto para $n-1$. Entonces
-\begin{gather*}
-(x_1 + \cdots+x_{n-1} + x_n)^m=((x_1 + \cdots+ x_{n-1})+ x_n)^m=\sum_{k=0}^m (x_1\cdots x_{n-1})^{m-k}x_n^k=\sum_{|\alpha|=m}x^\alpha
-\end{gather*}
-
+Tenemos que el producto de una sucesión de $k$ enteros es divisible por $k!$, por lo que $A\in \N$.
+\item Vamos a probarlo para un $m$ arbitrario para dos casos. Para $n=1$
+$$
+x^m = \binom{m}{m}x^m = \sum_{|\alpha|}x^\alpha
+$$
+Para $n=2$ tenemos, por el binomio de Newton
+$$
+(x_1+x_2)^m = \sum_{k=0}^m \binom{m}{k}x_1^kx_2^{m-k} = \sum_{k=0}^m \binom{n}{(n-k,k)}(x_1,x_2)^{(n-k,k)}
+$$
+Para $m=1$ y $n$ arbitrario también es fácil de comprobar. Por doble inducción, supongamos que se cumple para $m-1$ y $n-1$. Supongamos la hipótesis de inducción para $n-1$. Entonces para $n$ tenemos
+\begin{align*}
+(x_1+\dotsc+x_n)^m &= \sum_{k=0}^m \binom{m}{k}(x_1+\dotsc x_{n-1})^kx_n^{m-k}\\
+&= \sum_{k=0}^m \binom{m}{k}(x_1+\dotsc x_{n-1})^kx_n^{m-k} \\
+&=(x_1+\dotsc+x_{n-1})^m + \sum_{k=0}^{m-1} \sum_{|\beta|=k}(x_1,\dotsc,x_{n-1})^\beta x^{m-k}\\
+&=(x_1+\dotsc+x_{n-1})^m + \sum_{k=0}^{m-1} \sum_{|\beta|=k}\binom{m}{\beta}(x_1,\dotsc,x_{n-1})^\beta x^{m-k}\\
+&=(x_1+\dotsc+x_{n-1})^m + \sum_{k=0}^{m-1} \sum_{|\beta|=k}\binom{m}{(\beta,m-k)}(x_1,\dotsc,x_{n-1},x_n)^{(\beta,m-k)}
+\end{align*}
 
 \end{enumerate}
 \end{solucion}
@@ -175,6 +187,10 @@ total degree $< d$. By the minimality of $d$, $R_G(h_i) ∈ k[ f_1, \dots, f_m]$
 this contradicts $f \not∈ k[ f_1, \dots , f_m]$.
 \end{enumerate}
 \begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Sabemos por ACGA que $I$ es un ideal homogéneo y que, por ser $k[x_1,\dotsc,x_n]$ noetheriano, existe un conjunto finito de polinomios homogéneos tales que $I=\gene{f_1,\dotsc,f_m}$.
+\end{enumerate}
 \end{solucion}
 \newpage
 
@@ -183,7 +199,7 @@ If we have two finite matrix groups $G$ and $H$ such that $G ⊆ H ⊆ GL(n, k)$
 $k[x_1, \dots , x_n]^H ⊆ k[x_1, \dots , x_n]^G$.
 \end{ejercicio}
 \begin{solucion}
-Dado $f\in k[x_1, \dots , x_n]^H$, $f(Ax)=f(x)$ para toda $A\in H$. En particular, para $A\in G$.
+Dado $f\in k[x_1, \dots , x_n]^H$, $f(Ax)=f(x)$ para toda $A\in H$. En particular, para $A\in G$, por lo que se cumple el resultado.
 \end{solucion}
 \newpage
 

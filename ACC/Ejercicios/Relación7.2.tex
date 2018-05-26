@@ -23,7 +23,7 @@ smallest such integer, then prove that the set $C_m = \{I_n, A, A^2,\dots , A^{m
 elements and is closed under matrix multiplication.
 \end{ejercicio}
 \begin{solucion}
-$C_m$ no puede tener más de $m$ elementos. Si tuviera menos esto implicaría que $A^k=A^l$ para algunos $0\leq k<l\leq m$. En ese caso, $I_n=A^{l-k}$, lo cual contradice que que $m$ sea el menor entero que verifica esa propiedad, por lo que hay exactamente $m$ elementos. Para ver que es cerrado para la multiplicación, basta ver que si $l+k> m$ entonces $A^lA^k\in C_m$, pues en cualquier otro caso es trivial. Dividiendo $l+k$ por $m$ obtendremos que $A^lA^k=A^{l+k}=A^{qm+r}=A^{qm}A^r=A^r$ con $r<m$, por lo que se tiene el resultado. 
+$C_m$, por construcción, tiene a lo sumo $m$ elementos. Si tuviera menos, esto implicaría que $A^k=A^l$ para algunos $0\leq k<l\leq m$. En ese caso, $I_n=A^{l-k}$, lo cual contradice que que $m$ sea el menor entero que verifica esa propiedad. Para ver que es cerrado para la multiplicación, basta ver que si $l+k> m$ entonces $A^lA^k\in C_m$, pues en cualquier otro caso es trivial. Dividiendo $l+k$ por $m$ obtendremos que $A^lA^k=A^{l+k}=A^{qm+r}=A^{qm}A^r=A^r$ con $r<m$, por lo que se tiene el resultado. 
 \end{solucion}
 
 \newpage
@@ -79,8 +79,9 @@ $\sum_j x_je_j =\sum_j x_{τ(j)}e_{τ(j)}$.
 \end{ejercicio}
 \begin{solucion}\
 \begin{enumerate}[a.]
-\item Atiendiendo a la observación, se tiene por definición que $M_τ \cdot(\sum_j x_{τ(j)}e_{τ(j)})=M_τ \cdot(
-\sum_j x_je_j) =\sum_j x_{τ(j)}e_j$ y por otro lado $M_τ \cdot(\sum_j x_{τ(j)}e_{τ(j)})=\sum_j x_{τ(j)}e_{τ(j)}$. Por la unicidad de las coordenadas se tiene el resultado. 
+\item Atendiendo a la observación, se tiene por definición y linealidad que $$ \sum_j x_{\tau(j)}M_{\tau}(e_{\tau(j)})= M_τ \cdot(\sum_j x_{τ(j)}e_{τ(j)})=M_τ \cdot(
+\sum_j x_je_j) =\sum_j x_{τ(j)}e_j$$
+Dado que las coordenadas son distintas para cada vector y son únicas, en este caso hay una correspondencia biunívoca entre las coordenada y el vector, por lo que necesariamente se tiene el resultado. 
 \item Fila a fila, tenemos que $(M_τ)_i(x_1,\dots, x_n)'=x_{\tau(i)}=Id_{\tau(i)}(x_1\dots, x_n)$, de donde se deduce el resultado.  
 \item Por un lado $M_{ντ}\cdot(\sum_j x_je_j) =\sum_j x_{\nu(τ(j))}e_j$ y por otro $M_τ (\cdot M_ν \cdot(\sum_j x_je_j))=M_τ \cdot(\sum_j x_{\nu(j)}e_j)=\sum_j x_{\tau(\nu(j))}e_j$.
 \end{enumerate}
@@ -115,7 +116,6 @@ Las rotaciones del cubo son precisamente rotaciones de estas $4$ diagonales, lue
 \item Pensando en como se rotan los ejes bajo esta rotación queda claro que:
 \[ B = \begin{pmatrix}0 & -1 & 0\\1 & 0 & 0\\0 & 0 & 1\end{pmatrix} \]
 
-\item Sin hacer.
 \end{enumerate}
 \end{solucion}
 \newpage
@@ -221,9 +221,22 @@ can be written in the form $uA(u, w) + vB(v, w) + C(w)$.
 \item Show that a polynomial $r = uA(u, w) + vB(v, w) + C(w)$ satisfies $r(x^2, y^2, xy) = 0$
 if and only if $r = 0$.
 \end{enumerate}
-
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Distingamos casos. Los monomios de $g$ son de la forma $u^av^bw^c$. Si $a\geq 1$ y $b=0$ o al contrario, entonces es claro. Si $a> b \geq 1$ entonces $u^av^bw^c = u^{a-b}w^{2b+c}$ y análogo para los casos $a=b\geq 1$ y $b>a\geq 1$.
+\begin{gather*}
+u^4v^2 w  = uw((uv)^2 - w^4)+ u^2w^4 w\\
+= 
+\end{gather*}
+
+\item Escribimos $uA(u,w) = \sum_{i,j} a_{ij} u^{i+1}w^j$, $uB(v,w) = \sum_{h,g} b_{hg} v^{h+1}w^g$ y $C(w)=\sum_{k}c_kw^k$. Sustituyendo en la suma obtenemos
+$$
+r(x^2,y^2,xy) = \sum_{i,j} a_{ij} y^{2i+2+j}x^j + \sum_{h,g} b_{hg} x^{2h+2+g}y^g+ \sum_{k}c_kx^ky^k
+$$ 
+Si tratamos de agrupar las potencias, observamos lo siguiente. En los primeros dos sumatorios no hay potencias de la forma $x^kw^k$, que son los que están en la tercera. Por tanto, $c_k = 0$ para todo $k$. Ahora bien, si $2i+2+j = g$ entonces no puede darse $2h+2+g=j$. Sumando ambas ecuaciones obtenemos $2i+2h + 4 = 0$. Como $i,h\geq 0$ no puede ser. Por tanto, como los coeficientes se igualan individualmente a $0$, tenemos que $r$ es el polinomio $0$.
+\end{enumerate}
 \end{solucion}
 \newpage
 \begin{ejercicio}{7.2.14}
@@ -242,66 +255,47 @@ give an example to show how uniqueness fails?
 relation between the invariants.
 \end{enumerate}
 \end{ejercicio}
-\begin{solucion}\
+\begin{solucion}
 \begin{enumerate}[a.]
+\item[]
 \item
 \[
 A^2=\begin{pmatrix}
 -1 & 0\\
 0 & -1
-\end{pmatrix}, A^3=\begin{pmatrix}
+\end{pmatrix} \qquad A^3=\begin{pmatrix}
 -i & 0\\
 0 & i
-\end{pmatrix}, A^4=I
+\end{pmatrix} \qquad A^4=I
 \]
-\item Como $A^2=-I$, sabemos que $\C[x, y]^{C_4}$ es un subgrupo del conjunto invariante encontrado en el ejercicio \ref{ejer:7.2.12}. Usamos índices $l,j$ para evitar la confusión con la unidad imaginaria. De $A$ y $A^3$ obtenemos además las relaciones
-\[
-a_{lj}=(-1)^li^{l+j}a_{lj}, a_{lj}=(-1)^ji^{l+j}a_{lj}
-\]
-De la primera ecuación obtenemos que $a_{lj}=0$ en los siguientes casos:
-\[
-\begin{cases}
-l\equiv 1\mod 2 & l+j\equiv 0,1,3\mod 4\\
-l\equiv 0\mod 2 & l+j\equiv 1,2,3\mod 4
-\end{cases}
-\]
-De la segunda obtenemos que $a_{lj}= 0$ en los siguientes casos:
+\item Tenemos que
+$$
+R_{C_4}(f)=\frac{1}{4}(f(x,y)+f(xi,-yi)+f(-x,-y)+f(-ix,iy))
+$$
+Por el Teorema 5 de 7.3 tenemos
+\begin{align*}
+R_{C_4}(x)&=\frac{1}{4}(x+xi-x-xi) = 0  & 
+R_{C_4}(x^2)&=\frac{1}{4}(x^2-x^2+x^2+x^2) = 0\\
+R_{C_4}(x^3) &=\frac{1}{4}(x^3-x^3i-x^3+x^3i)=0 &
+R_{C_4}(x^4) &=\frac{1}{4}(x^4+x^4+x^4+x^4)=x^4\\
+R_{C_4}(y)&=\frac{1}{4}(y-yi-y+yi) = 0 &
+R_{C_4}(y^2)&=\frac{1}{4}(y^2-y^2+y^2-y^2) = 0\\
+R_{C_4}(y^3) &=\frac{1}{4}(y^3+y^3i+y^3-y^3i)=0&
+R_{C_4}(y^4) &=\frac{1}{4}(y^4+y^4+y^4+y^4)=y^4\\
+R_{C_4}(xy)&=\frac{1}{4}(xy+xy+xy +xy) = xy & 
+R_{C_4}(xy^2)&=\frac{1}{4}(xy^2-xy^2i-xy^2+xy^2i) = 0\\
+R_{C_4}(xy^3)&=\frac{1}{4}(xy^3+xy^3+xy^3+xy^3) = xy^3 & 
+R_{C_4}(x^2y)&=\frac{1}{4}(x^2y+x^2yi -x^2y-x^2yi)=0 \\
+R_{C_4}(x^3y)&=\frac{1}{4}(x^3y+x^3y+x^3y+x^3y)=x^3y &
+R_{C_4}(x^2y^2)&=\frac{1}{4}(x^2y^2+x^2y^2+x^2y^2+x^2y^2)=x^2y^2
+\end{align*}
+Por tanto $k[x,y]^{G_4}=k[x^4,y^4,xy,xy^3,x^3y,x^2y^2]=k[x^4,y^4,xy,xy^3,x^3y]$
 
-\[
-\begin{cases}
-j\equiv 1\mod 2 & l+j\equiv 0,1,3\mod 4\\
-j\equiv 0\mod 2 & l+j\equiv 1,2,3\mod 4
-\end{cases}
-\]
-
-Vemos que en todos estos casos se cumple que si $l+j$ es impar, $a_{lj}=0$.  Tenemos por tanto los invariantes homogéneos
-\[
-x^ly^j=\begin{cases}
-x^{2k+1}y^{4h-2k-1} & l\equiv 1\mod 2,l+j\equiv 0\mod 4\\
-x^{2k+1}y^{4h-2k} & l\equiv 1\mod 2,l+j\equiv 1\mod 4\\
-x^{2k+1}y^{4h-2k+2} & l\equiv 1\mod 2,l+j\equiv 3\mod 4\\
-x^{2k}y^{4h-2k} & l\equiv 0\mod 2,l+j\equiv 0\mod 4\\
-x^{2k}y^{4h-2k+2} & l\equiv 0\mod 2,l+j\equiv 2\mod 4\\
-x^{2k}y^{4h-2k+3} & l\equiv 0\mod 2,l+j\equiv 3\mod 4\\
-x^{4h-2k-1}y^{2k+1} & j\equiv 1\mod 2,l+j\equiv 0\mod 4\\
-x^{4h-2k}y^{2k+1} & j\equiv 1\mod 2,l+j\equiv 1\mod 4\\
-x^{4h-2k+2}y^{2k+1} & j\equiv 1\mod 2,l+j\equiv 3\mod 4\\
-x^{4h-2k+1}y^{2k} & j\equiv 0\mod 2,l+j\equiv 1\mod 4\\
-x^{4h-2k+2}y^{2k} & j\equiv 0\mod 2,l+j\equiv 2\mod 4\\
-x^{4h-2k+3}y^{2k} & j\equiv 0\mod 2,l+j\equiv 2\mod 4\\
-\end{cases}
-\]
-
-\item Tenemos
-\[
-x^{2k+1}y^{4h-2k-1}\cdot x^{4h-2k+3}y^2k=x^{4(h+1)}y^{4h}
-\]
-y
-\[
-x^{2k+1}y^{4h-2k-1}\cdot x^{4h-2k-1}y^{2k+1}=x^{4h}y^{4h}
-\]
-por lo que el primero se consigue multiplicando el segundo por $x$, por lo que si aparece algún término con $x^{4(h+1)}y^{4h}$, podrá escribirse de dos formas usando los invariantes encontrados.
-\item
+\item Se tiene 
+$$
+(x^3y)(xy^3)=(xy)^4=x^4y^4
+$$
+\item Por ejemplo, $(x^3y)(xy^3)x^4y^4 = (xy)^8$.
 \end{enumerate}
 \end{solucion}
 
@@ -328,7 +322,10 @@ you found in part (b).
 \begin{enumerate}[a.]
 \item Trivial.
 \item En el Ejemplo 12 aparece calculado $k[x, y]^{V_4}=k[x^2,y^2]$. 
-\item Como $x^2$ es algebraicamente independiente de $y^2$ se sigue el resultado.
+\item Utilizaremos la Proposición 1 de la sección 7.4. Basta ver que $I_F = \{0\}$. Comprobamos qué ocurre si $f(x^2,y^2)=0$. 
+$$
+\sum_{i,j}c_{ij} x^{2i}y^{2j} = 0 \Rightarrow c_{ij} = 0 \; \forall i,j \Rightarrow f = 0
+$$
 \end{enumerate}
 \end{solucion}
 
