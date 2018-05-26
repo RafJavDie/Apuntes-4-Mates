@@ -253,20 +253,47 @@ As in Proposition 5, let $h_j(x_1 , \dots , x_n)$ be the sum of all monomials of
 Also, let $σ_0 = 1$ and $σ_i = 0$ if $i > n$.
 The goal of this exercise is to show that if $j > 0$, then
 \[ 0 = \sum_{i=0}^j (-1)^i h_{j-i}(x_1,\dots,x_n) \sigma_i(x_1,\dots,x_n) \]
-In Exercise 11, we will use this to prove the closely related identity (5) that appears in the text. To prove the above identity, we will compute the coefficients of the monomials xα that appear in $h_{j-i} σ_i$.
+In Exercise \ref{ejer:7.1.11}, we will use this to prove the closely related identity (5) that appears in the text.
+To prove the above identity, we will compute the coefficients of the monomials $x^α$ that appear in $h_{j-i} σ_i$.
 Since every term in $h_{j-i} σ_i$ has total degree $j$, we can assume that $x^α$ has total degree $j$.
-We will let a denote the number of variables that actually appear in $x^α$.
+We will let $a$ denote the number of variables that actually appear in $x^α$.
 \begin{enumerate}
 \item If $x^α$ appears in $h_{j-i} σ_i$, show that $i ≤ a$. Hint: How many variables appear in each term of $σ_i$?
 \item If $i ≤ a$, show that exactly $\binom{a}{i}$ terms of $σ_i$ involve only variables that appear in $x^α$.
 Note that all of these terms have total degree $i$.
 \item If $i ≤ a$, show that $x^α$ appears in $h_{j-i} σ_i$ with coefficient $\binom{a}{i}$.
 Hint: This follows from part (b) because $h_{j-i}$ is the sum of all monomials of total degree $j - i$, and each monomial has coefficient $1$.
-\item Conclude that the coefficient of $x^α$ in $\sum_{i=0}^j (-1)^i h_{-i}σ_i$ is $\sum_{i=0}^a (-1)^i \binom{a}{i}$.
+\item Conclude that the coefficient of $x^α$ in $\sum_{i=0}^j (-1)^i h_{j-i}σ_i$ is $\sum_{i=0}^a (-1)^i \binom{a}{i}$.
 Then use the binomial theorem to show that the coefficient of $x^α$ is zero.
 This will complete the proof of our identity.
 \end{enumerate}
 \end{ejercicio}
+\begin{solucion}
+\mbox{}
+\begin{enumerate}
+\item En cada término de $σ_i$ hay $i$ variables únicas.
+En consecuencia, cada término de $h_{j-i} σ_i$ tiene al menos $i$ variables únicas.
+Si $x^α$ es el monomio de uno de estos términos y tiene $a$ variables únicas, entonces necesariamente $i ≤ a$.
+\item Combinatoria básica. Estamos eligiendo grupos de $i$ elementos entre $a$ opciones sin repetición ni relevancia de orden.
+\item Sea $x^β$ uno de los $\binom{a}{i}$ monomios de $σ_i$ de los que hablamos en (b).
+Tenemos que $|β|=i$, que $β$ está formado por $0$ y $1$, y que $α_k ≥ β_k$ para todo $k$.
+Podemos tomar $γ = α-β$.
+Tenemos que $|γ| = j-i$, luego $x^γ$ aparece en $h_{j-i}$.
+Entonces $x^γ x^β = x^{γ+β} = x^α$ aparece en $h_{j-i} σ_i$.
+
+En resumen, por cada uno de los $\binom{a}{i}$ monomios de $σ_i$, hay un único monomio de $h_{j-i}$ que al multiplicar nos da $x^α$.
+Al sumarlos todos, el coeficiente de $x^α$ es $\binom{a}{i}$.
+\item Por un lado sabemos que $x^α$ no aparecerá en los términos donde $i > a$ (por (a)).
+Por otro lado, el coeficiente de $x^α$ en de cada término del sumatorio es $(-1)^i \binom{a}{i}$ (por (c)).
+Entonces el coeficiente en el sumatorio es $\sum_{i=0}^a (-1)^i \binom{a}{i}$.
+
+Sin embargo, por la fórmula del binomio
+\[
+\sum_{i=0}^a (-1)^i \binom{a}{i} = \sum_{i=0}^a \binom{a}{i} (-1)^i 1^{a-i} = (-1+1)^a = 0
+\]
+Luego el coeficiente de todo monomio $x^α$ es $0$, lo que demuestra la identidad.
+\end{enumerate}
+\end{solucion}
 
 \newpage
 
