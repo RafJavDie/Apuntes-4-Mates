@@ -1,0 +1,105 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Parcial - 29/5/2017}
+\author{Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{1}
+El \emph{folium de Descartes} se puede parametrizar por
+\[ x = \frac{3t}{1+t^3}, \quad y = \frac{3t^2}{1+t^3} \]
+\begin{enumerate}
+\item Encuentra la ecuación del folium.
+(Nota: Una base de Gröbner del ideal $\langle t^3x-3t+x, t^3y - 3t^2+y, -ut^3 -u +1\rangle \subset \C[u,t,x,y,z]$ es $G = \{u+1/3ty-1, t^2y-3t+x, tx-y, ty^2+x^2-3y, x^3 - 3xy + y^3\})$.
+\item Tanto para $\C$ como para $\R$, comprobar que la parametrización anterior recorre toda la curva.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Ver Relación 3.3, ejercicio 14.
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{2}
+Supongamos que tenemos una familia de curvas en $\R^2$ determinadas por $F \in \R[x,y,t]$.
+Algunas de las curvas $\V(F_t)$ pueden tener puntos singulares mientras otras quizás no.
+En este ejercicio veremos que se pueden encontrar las curvas de la familia que tienen alguna singularidad.
+\begin{enumerate}
+\item Considerando las ecuaciones $F = \frac{\partial}{\partial x}F = \frac{\partial}{\partial y}F = 0$ en $\R^3$ y usando teoría de eliminación, describir un procediiento para determinar aquello valores de $t$ correspondientes a las curvas de la familia que tienen algún punto singular.
+\item Aplicar el método anterior a las curvas de la familia dada por $F = xy - t \in \R[x,y,t]$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\textbf{NO ENTRA}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+Sea $G \subset GL(n,k)$ un grupo finito de matrices.
+Probar que un polinomio $f \in k[x_1,\dots,x_n]$ es invariante para $G$ si y sólo si sus componentes homogéneas lo son.
+\end{ejercicio}
+
+\begin{solucion}
+Básicamente una generalización de la proposición 7.1.7 del libro.
+
+Supongamos que $f \in k[x_1,\dots,x_n]$ es invariante para $G$.
+Sea $x_{i_1},\dots,x_{i_n}$ una permutación de $x_1,\dots,x_n$ bajo $G$.
+Esta permutación transforma los términos de $f$ en otro de mismo grado.
+Como $f(x_1,\dots,x_n) = f(x_{i_1},\dots,x_{i_n})$, se debe dar la igualdad por componente homogénea.
+Luego las componentes homogéneas también son invariantes para $G$.
+
+La otra implicación es evidente. Si cada término de $f$ que invariante para $G$, $f$ no cambia.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4}
+Sea $G \subset GL(n,k)$ un grupo finito de matrices.
+probar que el operador de Reynolds $R_G$ tiene las siguientes propiedades:
+\begin{enumerate}
+\item Sean $a,b \in k$ y $f, g \in k[x_1,\dots,x_n]$ entonces $R_G(a f + b g) = a R_G(f) + b R_G(g)$.
+\item La aplicación $R_G$ de $k[x_1,\dots,x_n]$ en $k[x_1,\dots,x_n]^G$ es sobreyectiva.
+\item $R_G \circ R_G = R_G$.
+\item Si $f \in k[x_1,\dots,x_n]^G$ y $g \in k[x_1,\dots,x_n]$, entonces $R_G(f g) = f \cdot R_G(g)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\mbox{}
+\begin{enumerate}
+\item Por un lado:
+\begin{align*}
+R_G(a f)(x) & = \frac{1}{|G|} \sum_{A \in G} af(A \cdot x)\\
+& = a \frac{1}{|G|} \sum_{A \in G} f(A \cdot x)\\
+& = a R_G(f)(x)
+\end{align*}
+
+Por otro lado:
+\begin{align*}
+R_G(f + g)(x) & = \frac{1}{|G|} \sum_{A \in G} \left(f(A \cdot x) + g(A \cdot x)\right)\\
+& = \frac{1}{|G|} \sum_{A \in G} f(A \cdot x) + \frac{1}{|G|} \sum_{A \in G} g(A \cdot x)\\
+& = (R_G(f) + R_G(g))(x)
+\end{align*}
+
+Luego:
+\[ R_G(a f + b g) = a R_G(f) + b R_G(g) \]
+
+\item Sea $f \in k[x_1,\dots,x_n]^G$.
+Entonces se tiene que $f$ es un punto fijo de $R_G$, es decir, $R_G(f) = f$.
+Luego $R_G$ es sobreyectiva.
+
+\item Como todo polinomio de $k[x_1,\dots,x_n]^G$ es punto fijo de $R_G$, entonces $R_G(f)$ es punto fijo de $R_G$ para cualquier $f$, es decir:
+\[ (R_G \circ R_G)(f) = R_G(R_G(f)) = R_G(f) \]
+
+\item 
+\begin{align*}
+R_G(f g)(x) & = \frac{1}{|G|} \sum_{A \in G} f(A \cdot x) g(A \cdot x)& \\
+& = \frac{1}{|G|} \sum_{A \in G} f(x) g(A \cdot x) & f\text{ invariante por }G\\
+& = f(x) \frac{1}{|G|} \sum_{A \in G} g(A \cdot x)\\
+& = (f \cdot R_G(g))(x)
+\end{align*}
+\end{enumerate}
+\end{solucion}
+\end{document}
