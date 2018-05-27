@@ -186,7 +186,7 @@ Una \textbf{$k$-álgebra} $A$ es un $k$-espacio vectorial con una aplicación bi
 $$\mu:A\times A\to A$$
 que sea asociativa, es decir, $\mu(a,\mu(b,c))=\mu(\mu(a,b),c)\ \forall a,b,c\in A$. Si además existe $1\in A$ tal que $\mu(1,a)=\mu(a,1)=a$, entonces se dirá que $A$ es un \textbf{álgebra unitaria}.
 
-Diremos que $A_*$ es un \textbf{álgebra graduada} si $A_*=\oplus_{r\geq 0}A_r$ tal que $\mu:A_r\times A_l\to A_{r+1}$ son bilineales y asociativas, con los $A_r$ espacios vectoriales.
+Diremos que $A_*$ es un \textbf{álgebra graduada} si $A_*=\oplus_{r\geq 0}A_r$ tal que $\mu:A_r\times A_l\to A_{r+l}$ son bilineales y asociativas, con los $A_r$ espacios vectoriales.
 
 Un álgebra graduada $A_*$ se dice \textbf{conexa} (o coercitiva) si $1\in A_0$ y si existe $\varepsilon:k\to A_0$ que es isomorfismo dado por $\varepsilon(r)=r\cdot 1$.
 
@@ -287,7 +287,7 @@ Se verifican:
 \item $Alt^p(f)(w_1+w_2)(v_1,\dots, v_p)=(w_1+w_2)(f(v_1),\dots, f(v_p))=w_1(f(v_1),\dots, f(v_p))+w_2(f(v_1),\dots, f(v_p))=Alt^p(f)(w_1)(v_1,\dots, v_p)+Alt^p(f)(w_2)(v_1,\dots, v_p)$.
 \item 
 
-$Alt^p(g\circ f)(w)(v_1,\dots, v_p)=w(g(f(v_1)),\dots, g(f(v_p)))=Alt^p(g)(w(f(v_1),\dots, f(v_p))=Alt^p(g)\circ Alt^p(g)(w)(v_1,\dots, v_p)$
+$Alt^p(g\circ f)(w)(v_1,\dots, v_p)=w(g(f(v_1)),\dots, g(f(v_p)))=Alt^p(g)(w(f(v_1),\dots, f(v_p))=Alt^p(f)\circ Alt^p(g)(w)(v_1,\dots, v_p)$
 
 
 \item $Alt^p(Id_V)(w)(v_1,\dots, v_p)=w(v_1,\dots, v_p)=Id_{Alt^p(V)}(w)(v_1,\dots, v_p)$.
