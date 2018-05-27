@@ -378,12 +378,18 @@ The folium of Descartes can be parametrized by
 \begin{solucion}
 \begin{enumerate}[a.]
 \item[]
-\item Utilizamos SAGE para obtener una base de Gröbner y aplicar el Teorema 2. Obtenemos
+\item Como el numerador y el denominador son coprimos en cada parametrización, consideramos el siguiente ideal usando la simplificación del ejercicio \ref{ejer:3.3.13}.
+\[ I = \gene{(1+t^3)x-3t, (1+t^3)y-3t^2}\]
+con el orden lexicográfico $t < x < y$.
+
+Utilizamos SAGE para obtener una base de Gröbner y aplicar el Teorema 2. Obtenemos
 $$
-\{tx - y, ty^2 + x^2 - 3y, 9h + 3ty + xy - 9, x^3 - 3xy + y^3, t^2y - 3t + x \}
+\{t^2y - 3t + x, tx - y, ty^2 + x^2 - 3y, x^3 - 3xy + y^3 \}
 $$
 Luego la menor variedad que contiene a la curva es $x^3-3xy+y^3$. 
-\item En $\C$ podemos aplicar el Teorema de Extensión. En este caso $c_1(x,y)=x$, $c_2(x,y)=y^2$, $c_3(x,y)=y$. Por tanto, como $\V(x,y)=\{(0,0)\}$, siempre que $(x,y)\neq (0,0)$, podemos extender. El caso $(0,0)$ está trivialmente recogido en la parametrización por $t=0$.
+\item En $\C$ podemos aplicar el Teorema de Extensión. En este caso $c_1(x,y)=y$, $c_2(x,y)=x$, $c_3(x,y)=y^2$.
+Por tanto, como $\V(c_1,c_2,c_3) = \V(x,y) = \{(0,0)\}$, podemos extender por el teorema cuando $(x,y)\neq (0,0)$.
+El caso $(0,0)$ está trivialmente recogido en la parametrización por $t=0$.
 
 Para el caso real, tenemos que probar que si $(x,y)\in \R^2$ entonces tenemos un $t\in \R$ que extiende. Si $x\neq 0$ entonces $t=y/x \in \R$. Si $x=0$ e $y\neq 0$ entonces podemos obtener $t=3/y$. Si $x=y=0$, sabemos que tenemos $t=0$.
 \end{enumerate}
