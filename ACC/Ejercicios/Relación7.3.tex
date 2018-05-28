@@ -193,8 +193,17 @@ this contradicts $f \not∈ k[ f_1, \dots , f_m]$.
 \item[]
 \item Sabemos por ACGA que $I$ es un ideal homogéneo y que, por ser $k[x_1,\dotsc,x_n]$ noetheriano, existe un conjunto finito de polinomios homogéneos tales que $I=\gene{f_1,\dotsc,f_m}$ [No encuentro la prueba].
 \item Dado que las constantes siempre están contenidas, si no se da la contención del enunciado es porque existe $f$ no constante tal que $f\in k[x_1,\dotsc,x_n]^g$ que no está en $k[f_1,\dotsc,f_m]$.
-\item Consideremos con grado total minimal $d$. Como $f_i$ es homogéneo, basta separar $h_i$ en sus componentes homogéneas y agrupar. [NO BASTA, CREO QUE HAY USAR QUE EL GRADO ES MÍNIMO]
-\item Se deduce de que lo siguiente. Como $f$ está en el ideal, entonces también es invariante, luego $R_G(f)=f$. Además, el operador de Reynolds es aditivo, por lo que $R_G$ de la suma, es la suma de las $R_G$. Terminamos la prueba usando que si $f_i$ es invariante, entonces $R_G(h_if_i)=R_G(h_i)f_i$. La última parte se sigue análogamente al apartado anterior.
+\item Consideremos con grado total minimal $d$. Si descomponemos $h_i = \sum_{j} h_{ij}$ en sus componentes homogéneas, entonces
+$$
+f = \sum_i f_i h_i = \sum_i f_i \sum_j  h_{ij}
+$$
+Como $f$ es homogéneo de grado $d$, para cada $f_i$ existe a lo sumo un $h_{ij}$ tal que el producto tenga grado $d$. Después de agrupar los $f_i h_{ij}$ por grado, los que no sean de grado $d$ se anularán. Por tanto, si denotamos por $m_i$ al $h_{ij}$ tal que $f_i h_{ij}=d$ (o $0$ en caso de no existir), podemos escribir
+$$
+f = \sum_i f_i m_i 
+$$
+con $f_i m_i$ es $0$ o de grado total $d$.
+
+\item Se deduce de que lo siguiente. Como $f$ está en el ideal, entonces también es invariante, luego $R_G(f)=f$. Además, el operador de Reynolds es aditivo, por lo que $R_G$ de la suma, es la suma de las $R_G$. Terminamos la prueba usando que si $f_i$ es invariante, entonces $R_G(h_if_i)=R_G(h_i)f_i$. $R_G(h_i)f_i$ es $0$ si $h_i f_i = 0$ (si $h_i = 0$). En otro caso, como $R_G(h_i)$ no cambia el grado total $h_i$, se tiene el resultado.
 \item Sabemos que $f$ tiene grado mínimo entre los invariantes que no están en $k[f_1,\dotsc,f_n]$. Como podemos suponer que $R_G(h_i)f_i$ tiene grado $d$, necesariamente, si no es un término nulo, $R_G(h_i)$ tiene grado total $<d$ (pues el de $f_i$ es no nulo). Como $R_G(h_i)$ es invariante y tiene grado $<d$, implica que $R_G(h_i)\in k[f_1,\dotsc,f_m]$ $\forall i$. Entonces $R_G(h_i) = g_i(f_1,\dotsc,f_m)$, luego
 $$
 f = \sum_{i=1}^m f_i g_i(f_1,\dotsc,f_m) = p(f_1,\dotsc,f_m) \in k[f_1,\dotsc,f_m]
