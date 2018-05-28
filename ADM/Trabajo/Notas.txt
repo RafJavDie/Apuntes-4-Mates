@@ -19,13 +19,13 @@ Típicamente el árbol (figura) se dibuja con las hojas en la parte inferior. Lo
 se divide el predictor space se denominan "nodos internos" mientras que los segmentos que conectan los nodos
 se denominan "ramas".
 
-# Ejemplo Hitters
+# Ejemplo Moratality Rates
 
-###########
-Predicción 
-###########
+######################
+Árboles de regresión
+######################
 
-Sean X_1,...,X_p v.a. Para construir un arbol de regresion, particionamos el predictor space
+Sean X_1,...,X_p v.a. Para construir un arbol de regresion, particionamos el espacio de predicción
 en regiones R_1,...,R_J. Toda observación que cae en R_j, se le asocia la misma predicción, 
 que es el valor medio de los valores de las observaciones de entrenamiento que se encuentra en R_j.
 
@@ -34,7 +34,8 @@ Recursive binary splitting
 ############################
 
 Realizamos una "separación binaria recursiva" del espacio. Esto consiste en elegir un X_j y un punto de 
-corte s y crear dos regiones  R_1 y R_2, donde X_j < s y X_j ≥ s respectivamente, de forma que se minimiza la ecuación
+corte s y crear dos regiones  R_1 y R_2, donde X_j < s y X_j ≥ s respectivamente, de forma que se minimiza la RSS
+(suma de los residuos al cuadrado)
 
 \[ \sum_{i\colon x_i \in R_1(j,s)} (y_i - \widehat{y}_{R_1})^2 + \sum_{i: x_i \in R_2(j,s)} (y_i - ŷ_{R_2})^2 \]
 
@@ -59,5 +60,41 @@ conjunto pequeño de subárboles.
 1. Por ejemplo, utilizando separación binaria recursiva".
 2. Weakest Link Pruning / Cost complexity pruning. Indexamos los árboles según un parámetro alfa
    |T| es el número de hojas. Rm indexan los rectángulos que se corresponden con dichas hojas. Si
-   alpha = 0 entonces T=T0. Si alfa crece, hay un "coste" por tener un gran número de nodos finales
-3. 
+   alpha = 0 entonces T=T0. Si alfa crece, hay un "coste" por tener un gran número de nodos finales.
+3. Dividimos los datos de entrenamiento en K folds y repetimos los pasos anteriores usando todos los datos
+   salvo el k-ésimo fold. Evaluamos el error cuadrático medio de la predicción como función de alfa. 
+   Tomamos como "error" para cada alfa como la media de los errores calculados para el k-ésimo fold.
+4. Volvemos al árbol T0 original y tomamos un subárbol que corresponda al valor obtenido de alfa.
+
+# ¿Sería posible ver un ejemplo de esto?
+
+# Tabla Tree Size / Mean Squared Error  
+
+
+
+#############
+Clasificacón
+#############
+
+La idea detrás de los árboles de clasificación es similar a la idea que hay tras los árboles de predicción, pero
+en este caso buscamos una respuesta más "cualitativa" que "cuantitativa". Recuerdo que para la predicción en los 
+árboles de regresión utilizamos la media de las observaciones que pertenecen a la misma hoja. Para los árboles de
+clasificación tomaremos como predicción la moda de las observaciones que pertenecen a la misma hoja.
+
+Naturalmente para variables cualitativas el RSS puede no tener mucho sentido como medida del error que cometemos.
+La alternativa natural es el ratio del error de clasificiación (classification error rate). Esto es, la fracción
+de observaciones que en cada región no pertenecen a la clase más común
+
+\[ E = 1 - \max(\hat{p}_{mk}) \]
+
+donde \hat{p}_{mk} es la proporción de observaciones de la m-ésiam región (hoja) de la clase k.
+Esta medida de error no es lo suficientemente sensible cuando los árboles crecen y en la práctica, con el fin de
+evaluar la calidad de una división del árbol, se suelen utilizar otras dos medidas
+
+- Índice de Gini: Es una medida de la varianza total sobre las K clases. 
+\[ G = \sum_{k=1}^K \hat{p}_{mk}(1-\hat{p}_{mk})  \]
+
+
+- Entropía cruzada: Es una alternativa al índice de Gini. En ambos casos también se acerca a 0 cuando el nodo es puro.
+\[ D = -\sum_{k=1}^K \hat{p}_{mk} \log \hat{p}_{mk} \]
+
