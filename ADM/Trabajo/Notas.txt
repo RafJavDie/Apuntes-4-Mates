@@ -43,6 +43,8 @@ donde ŷ_{R_j} es la y media de las observaciones de entrenamiento en la caja R_
 particionar el espacio predictor sobre otra X_i,  particionamos una de las dos regiones que hemos generado 
 antes. Repetimos el proceso recursivamente hasta que hemos creado suficientes cajas.
 
+# Escribir fórmula general del RSS
+
 Un criterio para detener el algoritmo puede ser que en cada caja haya menos de un determinado número de elementos.
 
 #########
@@ -97,4 +99,43 @@ evaluar la calidad de una división del árbol, se suelen utilizar otras dos med
 
 - Entropía cruzada: Es una alternativa al índice de Gini. En ambos casos también se acerca a 0 cuando el nodo es puro.
 \[ D = -\sum_{k=1}^K \hat{p}_{mk} \log \hat{p}_{mk} \]
+
+Las tres medidas pueden utilizarse para la poda del árbol, pero la priemera es preferible si nuestro objetivo es 
+precisión al a hora de predecir. Naturalmente, tanto la construcción como la poda del árbol se realiza análogamente
+a las que hemos mostrado anteriormente.
+
+
+###########################
+Árboles vs Modelos lineales
+###########################
+
+A continuación oferecemos una comparativa entre lLos modelos lineales (que han sido / serán presentados por otros
+compañeros). ¿Qué modelo es mejor? Pues depende de cómo sea el problema. Si los datos, por sus características,
+se adecuan bien al modelo lineal, entonces las aproximiaciones y regresiones lineales funcionarán mejor, generalmente,
+que los árboles de regresión. Si, en cambio, los datos tienen una estructura no lineal y compleja, entonces el modelo
+de árboles se adaptarán mejor que los método clásicos.
+
+# Algo como la figura 8.7 me parece un ejemplo magnífico de lo que se ha explicado arriba. 
+
+
+#######################
+Ventajas y desventajas
+#######################
+
+Ventajas:
+- Son fáciles de explicar incluso si no saben nada de regresión lineal.
+- Mucha gente piensa que son más parecidos a cómo funciona el sistema de decisión de los 
+  seres humanos, a diferencia de otros modelos.
+- Pueden ser presentados gráficamente y fácilmente interpretrados.
+- Pueden incluir variables cualitativas sin problemas y sin necesida de crear nuevas variables.
+
+Desventajas:
+- No tienen tanta capacidad para predecir, en general, como otros modelos de regresión y clasificación.
+
+
+
+
+#################################
+Bagging, Random Forest, Boosting
+#################################
 
