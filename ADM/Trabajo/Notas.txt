@@ -21,6 +21,7 @@ se denominan "ramas".
 
 # Ejemplo Moratality Rates
 
+
 ######################
 Árboles de regresión
 ######################
@@ -133,9 +134,36 @@ Desventajas:
 - No tienen tanta capacidad para predecir, en general, como otros modelos de regresión y clasificación.
 
 
-
-
 #################################
 Bagging, Random Forest, Boosting
 #################################
+
+A continuación preentamos tres modelos que usan a su vez árboles como "bloques" para construir modelos de predicción
+más potentes.
+
+########
+Bagging
+########
+
+Comencemos por una primera observación. Sabemos que si tenemos n observaciones independientes Xi con varianza sigma^2, 
+entonces la media muestral tiene varianza sigma^2/n. En otras palabras, hacer la media de las observaciones reduce la 
+varianza. Por tanto, una manera natural de aumentar la precisión de nuestras prediccioens será tomar varios conjuntos
+de entrenamiento de una población, construir modelos de predicción de manera separada con cada uno de ellos y, finalmente,
+hacer la media de los resultados predichos. 
+
+Este método puede no ser muy práctica pues en la vida real muchas veces no se tiene acceso a múltiples conjuntos de
+entrenamiento. En lugar de eso, podemos toamr muestras aleatorias de un solo conjunto de entramiento y repetir el proceso.
+A este último método es al que se le conoce como bagging. En la práctica, construimos B árboles de decisión usando B conjuntos
+de entrenamiento obtenidos como acabamos de explicar y calculamos la media de las predicciones. Estos árboles son profundos
+y no han sido podados, luego tienen poco sesgo pero una gran varianza. Haciendo la media, mantenemos el caracter del sesgo 
+y además reducimos la varianza. 
+
+
+
+
+
+
+
+
+
 
