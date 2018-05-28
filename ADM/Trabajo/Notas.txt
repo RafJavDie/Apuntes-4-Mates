@@ -42,6 +42,8 @@ donde ŷ_{R_j} es la y media de las observaciones de entrenamiento en la caja R_
 particionar el espacio predictor sobre otra X_i,  particionamos una de las dos regiones que hemos generado 
 antes. Repetimos el proceso recursivamente hasta que hemos creado suficientes cajas.
 
+Un criterio para detener el algoritmo puede ser que en cada caja haya menos de un determinado número de elementos.
+
 #########
 Prunning
 #########
@@ -49,4 +51,13 @@ Prunning
 Otra estrategia para generar un árbol es partir de un árbol "grande" T0 y "podarlo" para obtener otro árbol. ¿Cómo
 determinamos la forma óptima de "podar" un árbol? Intuitivamente nuestro objetivo es minimizar la tasa de error,
 lo cuál si realizamos por cross-validation puede ser muy engorroso, debido a que la cantidad de subárboles de un
-árbol dado puede ser muy grande. 
+árbol dado puede ser muy grande. La solución que damos a este problema es que solo buscaremos la optimalidad en un
+conjunto pequeño de subárboles. 
+
+# Algoritmo (comentarios a lo que viene en la presentación)
+
+1. Por ejemplo, utilizando separación binaria recursiva".
+2. Weakest Link Pruning / Cost complexity pruning. Indexamos los árboles según un parámetro alfa
+   |T| es el número de hojas. Rm indexan los rectángulos que se corresponden con dichas hojas. Si
+   alpha = 0 entonces T=T0. Si alfa crece, hay un "coste" por tener un gran número de nodos finales
+3. 
