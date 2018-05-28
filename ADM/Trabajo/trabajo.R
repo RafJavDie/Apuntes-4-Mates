@@ -1,3 +1,9 @@
+########################
+#     Trabajo ADM      #
+#  Tree-based methods  #
+########################
+
+#install.package("tree")
 library(tree)
 
 # Carga de datos
@@ -12,8 +18,9 @@ plot(mortality)
 text(mortality, pretty=0)
 
 # Reduccion del arbol
-mortality.cv <- cv.tree(tree.mortality)
+mortality.cv <- cv.tree(mortality)
 plot(mortality.cv$size, mortality.cv$dev, type='b')
+
 # Vemos que no necesitamos reducir el arbol
 
 # Prediccion
@@ -24,7 +31,7 @@ plot(yhat, test$mortality_rate)
 abline(0,1)
 # Cuanto mas alejado de la recta, peor.
 
-# Raíz cuadrada del Error cuadrático medio
+# Ra�z cuadrada del Error cuadrático medio
 (mse <- sqrt(mean((yhat - test$mortality_rate)^2)))
 (r2 <- cor(yhat, test$mortality_rate)^2)
 
