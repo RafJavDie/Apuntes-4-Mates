@@ -1,34 +1,52 @@
-Prentamos el método tree-based. Puede utilizarse tanto para problemas de regresión y clasificación.
-Para ello "estratificaremos" o "segmentramos" el predictor space en un cierto número de regiones.
+﻿
+#############
+Introducción
+#############
+
+Presentamos el método tree-based. Puede utilizarse tanto para problemas de regresión y clasificación.
+Para ello "estratificaremos" o "segmentaremos" el predictor space en un cierto número de regiones.
 Dado que el conjunto de las reglas de división que usamos para segmentar el predictor space pueden
 resumirse en un árbol, estas aproximaciones se conocen como métodos de árbol de decisión.
 
-foto arbol
+# Foto árbol
 
 En cuanto a la capacidad del método para ser interpretado, se considera que útil, pero en otros aspectos
 como la precisión en las predicciones se encuentra ampliamente superado por otros métodos como el
 aprendizaje supervisado.
 
-Ejemplo Hitters
-
-Las regiones en las que finalmente quedan divido el predictor space se denominan hojas o nodos finales.
+Las regiones en las que finalmente quedan divido el predictor space se denominan "hojas" o "nodos finales".
 Típicamente el árbol (figura) se dibuja con las hojas en la parte inferior. Los puntos del árbol donde 
-se divide el predictor space se denominan nodos internos.
+se divide el predictor space se denominan "nodos internos" mientras que los segmentos que conectan los nodos
+se denominan "ramas".
 
-- Predicción por estratificación del espacio
-Supongamos que tenemos unos observables X_1,...,X_p.
-Para construir un arbol de regresion, particionamos el predictor space (el conjunto de valores posibles 
-para los observables) en regiones R_1,...,R_J.
-Toda observación que cae en R_j, se le asocia la misma predicción, que es el valor medio de los valores
-de las observaciones de entrenamiento que se encuentra en R_j.
+# Ejemplo Hitters
 
-Para ello, hacemos separación binaria recursiva (recursive binary splitting) del espacio.
-Esto consiste en elegir un predictor X_j y un punto de corte s y crear dos regiones R_1 y R_2,
-donde X_j < s y X_j ≥ s respectivamente, de forma que se minimiza la ecuación
+###########
+Predicción 
+###########
+
+Sean X_1,...,X_p v.a. Para construir un arbol de regresion, particionamos el predictor space
+en regiones R_1,...,R_J. Toda observación que cae en R_j, se le asocia la misma predicción, 
+que es el valor medio de los valores de las observaciones de entrenamiento que se encuentra en R_j.
+
+############################
+Recursive binary splitting 
+############################
+
+Realizamos una "separación binaria recursiva" del espacio. Esto consiste en elegir un X_j y un punto de 
+corte s y crear dos regiones  R_1 y R_2, donde X_j < s y X_j ≥ s respectivamente, de forma que se minimiza la ecuación
 
 \[ \sum_{i\colon x_i \in R_1(j,s)} (y_i - \widehat{y}_{R_1})^2 + \sum_{i: x_i \in R_2(j,s)} (y_i - ŷ_{R_2})^2 \]
-donde ŷ_{R_j} es la y media de las observaciones de entrenamiento en la caja R_j.
 
-A continuación, repetimos el proceso recursivamente hasta que hemos creado suficientes cajas.
+donde ŷ_{R_j} es la y media de las observaciones de entrenamiento en la caja R_j. A continuación, en vez de 
+particionar el espacio predictor sobre otra X_i,  particionamos una de las dos regiones que hemos generado 
+antes. Repetimos el proceso recursivamente hasta que hemos creado suficientes cajas.
 
-- Tree pruning
+#########
+Prunning
+#########
+
+Otra estrategia para generar un árbol es partir de un árbol "grande" T0 y "podarlo" para obtener otro árbol. ¿Cómo
+determinamos la forma óptima de "podar" un árbol? Intuitivamente nuestro objetivo es minimizar la tasa de error,
+lo cuál si realizamos por cross-validation puede ser muy engorroso, debido a que la cantidad de subárboles de un
+árbol dado puede ser muy grande. 
