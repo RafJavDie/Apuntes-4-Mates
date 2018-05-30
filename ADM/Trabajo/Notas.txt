@@ -161,9 +161,30 @@ y además reducimos la varianza. Esta técnica ha demostrado ser muy efectiva en
 En el caso en el que tengamos variables cualitativas, la aproximación más simple consiste en "guardar" la clase predicha
 por cada árbol y tomar el "voto de la mayoría", es decir, dar como respuesta la clase que más veces guardado.
 
-# Tabla comparativa bagging, random forest, etc
+##############
+Random Forests
+##############
 
+Al igual que en Bagging, la mejora Random Forest considera
+una colección de árboles, pero tratamos de que sean más incorrelados.
+Para hacemos que cada árbol se forme sin usar todos los predictores.
 
+Las predicciones se hacen de la misma forma que en Bagging.
+Este método mejora la sensibilidad de las predicciones,
+especialmente cuando hay un predictor más fuerte que el resto.
 
+########
+Boosting
+########
 
+Boosting es también similar a Bagging, pero en lugar de crear
+los árboles independientemente, formamos los árboles usando
+información de los árboles anteriores.
 
+En concreto, empezamos con un árbol normal y luego construimos
+árboles que modelicen los residuos del árbol anterior.
+El árbol final será una suma de los árboles con un factor de encojimiento
+λ.
+
+Este factor λ provoca un ralentizamiento en el aprendizaje, a cambio
+de un mejor resultado. 
