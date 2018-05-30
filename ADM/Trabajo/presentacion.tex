@@ -60,6 +60,16 @@
 \end{frame}
 
 \section{Recursive Binary Splitting}
+
+
+\begin{frame}
+\begin{center}
+Suma de los residuios al cuadrado (RSS)
+\end{center}
+\[ \min \sum_{j=1}^J\sum_{i\in R_j}(y_i-\hat{y}_{R_j})^2 \]
+\end{frame}
+
+
 \begin{frame}
 \begin{figure}[h!]
 %\includesvg[scale=0.5]{dibujo}
@@ -105,23 +115,27 @@
 	\item<1-> Crea un árbol grande $T_0$.
 	\item<2-> Para cada valor $\alpha$, encuentra el subárbol $T$ que minimiza
 	\[ \sum_{m=1}^{|T|} \sum_{i\colon x_I \in R_m} (y_i - \widehat{y}_{R_m})^2 + \alpha|T| \]
-	\item<3-> Use cross-validation para elegir $\alpha$.
+	\item<3-> Usamos $K$-fold cross-validation para elegir $\alpha$.
 	\item<4-> Devuelve su correspondiente árbol.
 \end{enumerate}
 \end{frame}
+\section{Clasificación}
 
 \begin{frame}
-\begin{figure}[h!]
-\includegraphics[scale=0.4]{prunning}
-\end{figure}
+\begin{gather*}
+ E = 1 - \max(\hat{p}_{mk}) \\ 
+ G = \sum_{k=1}^K \hat{p}_{mk}(1-\hat{p}_{mk})\\
+  D = -\sum_{k=1}^K \hat{p}_{mk} \log \hat{p}_{mk}
+\end{gather*}
 \end{frame}
 
+\section{Comparativas, ventajas y desventajas}
 \begin{frame}
 \begin{figure}[h!]
-\includegraphics[scale=0.28]{grafo1}
+%\includesvg[scale=0.5]{dibujo3}
+\includegraphics[scale=0.3]{svg-inkscape/compara.png}
 \end{figure}
 \end{frame}
-
 \section{Mejoras}
 \begin{frame}
 \frametitle{Bagging}
