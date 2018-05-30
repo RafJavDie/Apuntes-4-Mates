@@ -19,9 +19,6 @@ Típicamente el árbol (figura) se dibuja con las hojas en la parte inferior. Lo
 se divide el predictor space se denominan "nodos internos" mientras que los segmentos que conectan los nodos
 se denominan "ramas".
 
-# Ejemplo Moratality Rates
-
-
 ######################
 Árboles de regresión
 ######################
@@ -34,9 +31,15 @@ que es el valor medio de los valores de las observaciones de entrenamiento que s
 Recursive binary splitting 
 ############################
 
-Realizamos una "separación binaria recursiva" del espacio. Esto consiste en elegir un X_j y un punto de 
-corte s y crear dos regiones  R_1 y R_2, donde X_j < s y X_j ≥ s respectivamente, de forma que se minimiza la RSS
-(suma de los residuos al cuadrado)
+En teoría las regiones en las que dividimos el espacio pueden tener cualquier forma, pero elegir unas particiones
+en las que las regiones pueden tomar cualquier aspecto es inabarcable desde el punto de vista computacional. Por
+tanto realizamos una partición en rectángulos n-dimensionales. Para ellos seguimos el algoritmo denominado
+ "separación binaria recursiva" del espacio y nuestro obetivo será minimizar el RSS
+
+# Ecuación
+
+ Esto consiste en elegir un X_j y un punto de  corte s y crear dos regiones  R_1 y R_2, donde X_j < s y X_j ≥ s 
+respectivamente. De manera que buscamos s,j tales que se minimiza
 
 \[ \sum_{i\colon x_i \in R_1(j,s)} (y_i - \widehat{y}_{R_1})^2 + \sum_{i: x_i \in R_2(j,s)} (y_i - ŷ_{R_2})^2 \]
 
@@ -44,18 +47,18 @@ donde ŷ_{R_j} es la y media de las observaciones de entrenamiento en la caja R_
 particionar el espacio predictor sobre otra X_i,  particionamos una de las dos regiones que hemos generado 
 antes. Repetimos el proceso recursivamente hasta que hemos creado suficientes cajas.
 
-# Escribir fórmula general del RSS
-
 Un criterio para detener el algoritmo puede ser que en cada caja haya menos de un determinado número de elementos.
 
 #########
 Prunning
 #########
 
-Otra estrategia para generar un árbol es partir de un árbol "grande" T0 y "podarlo" para obtener otro árbol. ¿Cómo
-determinamos la forma óptima de "podar" un árbol? Intuitivamente nuestro objetivo es minimizar la tasa de error,
-lo cuál si realizamos por cross-validation puede ser muy engorroso, debido a que la cantidad de subárboles de un
-árbol dado puede ser muy grande. La solución que damos a este problema es que solo buscaremos la optimalidad en un
+El proceso que hemos explicado, a pesar de que realiza buenas predicciones, tiene el problema de sobreenternarse con
+cierta facilidad. Un árbol más pequeño (con menos regiones) puede tener una menor varianza y ser más fácilmente interpretable
+a pesar de tener algo más de sesgo. Una posible estrategia pa realizarlo generar un árbol "grande" T0 y "podarlo" 
+para obtener otro árbol. ¿Cómo determinamos la forma óptima de "podar" un árbol? Intuitivamente nuestro objetivo es 
+minimizar la tasa de error. Dado que puede haber una gran cantidad de subárboles, minimzar el error por validación cruzada 
+puede no ser la mejor opción. La solución que damos a este problema es que solo buscaremos la optimalidad en un
 conjunto pequeño de subárboles. 
 
 # Algoritmo (comentarios a lo que viene en la presentación)
@@ -181,6 +184,15 @@ Boosting es también similar a Bagging, pero en lugar de crear
 los árboles independientemente, formamos los árboles usando
 información de los árboles anteriores.
 
+<<<<<<< .mine
+#########
+Boosting
+#########
+
+
+
+
+=======
 En concreto, empezamos con un árbol normal y luego construimos
 árboles que modelicen los residuos del árbol anterior.
 El árbol final será una suma de los árboles con un factor de encojimiento
@@ -188,3 +200,4 @@ El árbol final será una suma de los árboles con un factor de encojimiento
 
 Este factor λ provoca un ralentizamiento en el aprendizaje, a cambio
 de un mejor resultado. 
+>>>>>>> .theirs
