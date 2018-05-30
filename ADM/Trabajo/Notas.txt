@@ -3,29 +3,29 @@
 Introducción
 #############
 
-Presentamos el método tree-based. Puede utilizarse tanto para problemas de regresión y clasificación.
-Para ello "estratificaremos" o "segmentaremos" el predictor space en un cierto número de regiones.
-Dado que el conjunto de las reglas de división que usamos para segmentar el predictor space pueden
-resumirse en un árbol, estas aproximaciones se conocen como métodos de árbol de decisión.
+Vamos a presentar el método tree-based. Puede utilizarse para problemas de regresión y clasificación.
+El método consiste en "estratificar" o "segmentar" o "dividir" el espacio de predicciones en un cierto
+número de regiones. Dado que el conjunto de las reglas de división que usamos para segmentar el espacio de 
+predicciones pueden resumirse en un árbol, estas aproximaciones se conocen como métodos de árbol de decisión.
 
-# Foto árbol
+# Foto estratificación
 
-En cuanto a la capacidad del método para ser interpretado, se considera que útil, pero en otros aspectos
-como la precisión en las predicciones se encuentra ampliamente superado por otros métodos como el
-aprendizaje supervisado.
+Este método se considera es útil porque se interpreta con facilidad, pero a la hora de predicir
+se encuentra ampliamente superado por otros métodos como el aprendizaje supervisado.
 
-Las regiones en las que finalmente quedan divido el predictor space se denominan "hojas" o "nodos finales".
-Típicamente el árbol (figura) se dibuja con las hojas en la parte inferior. Los puntos del árbol donde 
-se divide el predictor space se denominan "nodos internos" mientras que los segmentos que conectan los nodos
+Las regiones en las que finalmente quedan divido el espacio de predicciones se denominan "hojas" o "nodos finales".
+Típicamente el árbol (figura) se dibuja con las hojas en la parte inferior. Los puntos del árbol donde se divide 
+el espacio de predicciones se denominan "nodos internos" mientras que los segmentos que conectan los nodos
 se denominan "ramas".
 
-######################
-Árboles de regresión
-######################
+##########
+Regresión
+##########
 
-Sean X_1,...,X_p v.a. Para construir un arbol de regresion, particionamos el espacio de predicción
-en regiones R_1,...,R_J. Toda observación que cae en R_j, se le asocia la misma predicción, 
-que es el valor medio de los valores de las observaciones de entrenamiento que se encuentra en R_j.
+Para realizar una predicción usando este método, particionamos el espacio de predicción (el espacio donde 
+toman valores las variables) en ciertos conjuntos, de manera que rellenen dicho espacio y no se solapen.
+Toda observación que cae en R_j, se le asocia la misma predicción, que es el valor medio de los valores de 
+las observaciones de los valores de entrenamiento que se encuentra en R_j.
 
 ############################
 Recursive binary splitting 
@@ -33,21 +33,21 @@ Recursive binary splitting
 
 En teoría las regiones en las que dividimos el espacio pueden tener cualquier forma, pero elegir unas particiones
 en las que las regiones pueden tomar cualquier aspecto es inabarcable desde el punto de vista computacional. Por
-tanto realizamos una partición en rectángulos n-dimensionales. Para ellos seguimos el algoritmo denominado
- "separación binaria recursiva" del espacio y nuestro obetivo será minimizar el RSS
+tanto, realizamos una partición en rectángulos n-dimensionales. Para ellos seguimos el algoritmo denominado
+"separación binaria recursiva" del espacio, de manera que nuestro obetivo será minimizar el RSS:
 
 # Ecuación
 
- Esto consiste en elegir un X_j y un punto de  corte s y crear dos regiones  R_1 y R_2, donde X_j < s y X_j ≥ s 
-respectivamente. De manera que buscamos s,j tales que se minimiza
+donde ŷ_{R_j} es la y media de las observaciones de entrenamiento en la caja R_j. 
+
+El algoritmo básicamente consiste en elegir un X_j y un punto de corte s y crear dos regiones R_1 y R_2, donde 
+X_j < s y X_j ≥ s respectivamente. De manera que buscamos s,j tales que se minimiza
 
 \[ \sum_{i\colon x_i \in R_1(j,s)} (y_i - \widehat{y}_{R_1})^2 + \sum_{i: x_i \in R_2(j,s)} (y_i - ŷ_{R_2})^2 \]
 
-donde ŷ_{R_j} es la y media de las observaciones de entrenamiento en la caja R_j. A continuación, en vez de 
-particionar el espacio predictor sobre otra X_i,  particionamos una de las dos regiones que hemos generado 
-antes. Repetimos el proceso recursivamente hasta que hemos creado suficientes cajas.
-
-Un criterio para detener el algoritmo puede ser que en cada caja haya menos de un determinado número de elementos.
+Una vez que hemos hecho la primera división, continuamos dividiendo de la misma forma cada región que hemos generado
+anteriormente y repetimos el proceso recursivamente hasta que hemos creado suficientes cajas. Un criterio para detener 
+el algoritmo puede ser que en cada caja haya un determinado número de elementos.
 
 #########
 Prunning
@@ -55,28 +55,20 @@ Prunning
 
 El proceso que hemos explicado, a pesar de que realiza buenas predicciones, tiene el problema de sobreenternarse con
 cierta facilidad. Un árbol más pequeño (con menos regiones) puede tener una menor varianza y ser más fácilmente interpretable
-a pesar de tener algo más de sesgo. Una posible estrategia pa realizarlo generar un árbol "grande" T0 y "podarlo" 
-para obtener otro árbol. ¿Cómo determinamos la forma óptima de "podar" un árbol? Intuitivamente nuestro objetivo es 
-minimizar la tasa de error. Dado que puede haber una gran cantidad de subárboles, minimzar el error por validación cruzada 
-puede no ser la mejor opción. La solución que damos a este problema es que solo buscaremos la optimalidad en un
-conjunto pequeño de subárboles. 
+a pesar de tener algo más de sesgo. Una manera de hacer eso puede ser utilizar el algoritmo anterior imponiendo que solo
+pueda realizarse un determinado número de divisiones, pero esto en general no es muy efectivo porque una división que disminuya
+poco el RSS puede preceder a una que lo disminuya mucho. En su lugar vamos a generar un árbol "grande" T0 y "podarlo" 
+para obtener otro árbol menor. Dado que puede haber una gran cantidad de subárboles, minimzar el error por validación cruzada 
+puede no ser la mejor opción. Presentamos el siguiente algoritmo para resolver el problema
 
 # Algoritmo (comentarios a lo que viene en la presentación)
 
-1. Por ejemplo, utilizando separación binaria recursiva".
-2. Weakest Link Pruning / Cost complexity pruning. Indexamos los árboles según un parámetro alfa
-   |T| es el número de hojas. Rm indexan los rectángulos que se corresponden con dichas hojas. Si
-   alpha = 0 entonces T=T0. Si alfa crece, hay un "coste" por tener un gran número de nodos finales.
+1. Generamos un árbol T0 usando RBS. 
+2. Encontramos el árbol T que minimiza la siguiente función.
 3. Dividimos los datos de entrenamiento en K folds y repetimos los pasos anteriores usando todos los datos
    salvo el k-ésimo fold. Evaluamos el error cuadrático medio de la predicción como función de alfa. 
    Tomamos como "error" para cada alfa como la media de los errores calculados para el k-ésimo fold.
 4. Volvemos al árbol T0 original y tomamos un subárbol que corresponda al valor obtenido de alfa.
-
-# ¿Sería posible ver un ejemplo de esto?
-
-# Tabla Tree Size / Mean Squared Error  
-
-
 
 #############
 Clasificacón
