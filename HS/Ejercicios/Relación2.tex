@@ -201,9 +201,75 @@ cualquier cuerpo $\F$ de la triangulación $L$ del sombrero bobo vista en clase 
 embargo, comprobar que $L$ no es colapsable.
 \end{ejercicio}
 \begin{solucion}
+En clase no se ha visto ninguna triangulación así que voy a dar una no muy óptima. 
 
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
 
-$L$ no es colapsable porque no tiene caras libres
+\clip(-5,-0.68) rectangle (5,4);
+\fill[line width=1.pt,fill=black,fill opacity=0.10000000149011612] (0.,0.) -- (4.,0.) -- (2.,3.4641016151377553) -- cycle;
+\fill[line width=1.pt,fill=black,fill opacity=0.10000000149011612] (1.67,0.99) -- (2.32,0.99) -- (1.995,1.5529165124598854) -- cycle;
+\draw [line width=1.pt] (0.,0.)-- (4.,0.);
+\draw [line width=1.pt] (4.,0.)-- (2.,3.4641016151377553);
+\draw [line width=1.pt] (2.,3.4641016151377553)-- (0.,0.);
+\draw [line width=1.pt] (1.67,0.99)-- (2.32,0.99);
+\draw [line width=1.pt] (2.32,0.99)-- (1.995,1.5529165124598854);
+\draw [line width=1.pt] (1.995,1.5529165124598854)-- (1.67,0.99);
+\draw [line width=1.pt] (1.67,0.99)-- (1.43,1.59);
+\draw [line width=1.pt] (1.43,1.59)-- (1.995,1.5529165124598854);
+\draw [line width=1.pt] (2.,3.4641016151377553)-- (1.995,1.5529165124598854);
+\draw [line width=1.pt] (2.,3.4641016151377553)-- (1.43,1.59);
+\draw [line width=1.pt] (1.43,1.59)-- (1.2922689603142603,2.2382754963085074);
+\draw [line width=1.pt] (0.571003082948986,0.9890063509461096)-- (1.43,1.59);
+\draw [line width=1.pt] (0.571003082948986,0.9890063509461096)-- (1.67,0.99);
+\draw [line width=1.pt] (1.67,0.99)-- (0.,0.);
+\draw [line width=1.pt] (1.995,1.5529165124598854)-- (2.55,1.58);
+\draw [line width=1.pt] (2.32,0.99)-- (2.55,1.58);
+\draw [line width=1.pt] (1.995,1.5529165124598854)-- (2.6640707856478962,2.3138972745734185);
+\draw [line width=1.pt] (2.55,1.58)-- (2.6640707856478962,2.3138972745734185);
+\draw [line width=1.pt] (2.55,1.58)-- (3.433147552145625,0.9818172400785652);
+\draw [line width=1.pt] (2.32,0.99)-- (3.,0.);
+\draw [line width=1.pt] (2.32,0.99)-- (4.,0.);
+\draw [line width=1.pt] (2.55,1.58)-- (4.,0.);
+\draw [line width=1.pt] (1.67,0.99)-- (1.4,0.);
+\draw [line width=1.pt] (2.32,0.99)-- (1.4,0.);
+\draw (2.,3.74) node[anchor=north west] {$v_0$};
+\draw (2.73,2.5) node[anchor=north west] {$v_1$};
+\draw (3.48,1.22) node[anchor=north west] {$v_2$};
+\draw (4.,0.12) node[anchor=north west] {$v_0$};
+\draw (0.8,2.56) node[anchor=north west] {$v_1$};
+\draw (0.,1.25) node[anchor=north west] {$v_2$};
+\draw (0.,0.12) node[anchor=north west] {$v_0$};
+\draw (1.4,0.12) node[anchor=north west] {$v_1$};
+\draw (3.,0.12) node[anchor=north west] {$v_2$};
+\draw (1.9,1.65) node[anchor=north west] {$v_3$};
+\draw (2.35,1.18) node[anchor=north west] {$v_4$};
+\draw (1.6,1.11) node[anchor=north west] {$v_5$};
+\draw (1.4,1.94) node[anchor=north west] {$v_6$};
+\draw (2.58,1.84) node[anchor=north west] {$v_7$};
+\begin{scriptsize}
+\draw [fill=black] (0.,0.) circle (1.5pt);
+\draw [fill=black] (4.,0.) circle (1.5pt);
+\draw [fill=black] (2.,3.4641016151377553) circle (1.5pt);
+\draw [fill=black] (1.67,0.99) circle (1.5pt);
+\draw [fill=black] (2.32,0.99) circle (1.5pt);
+\draw [fill=black] (1.995,1.5529165124598854) circle (1.5pt);
+\draw [fill=black] (1.43,1.59) circle (1.5pt);
+\draw [fill=black] (1.2922689603142603,2.2382754963085074) circle (1.5pt);
+\draw [fill=black] (0.571003082948986,0.9890063509461096) circle (1.5pt);
+\draw [fill=black] (2.55,1.58) circle (1.5pt);
+\draw [fill=black] (2.6640707856478962,2.3138972745734185) circle (1.5pt);
+\draw [fill=black] (3.433147552145625,0.9818172400785652) circle (1.5pt);
+\draw [fill=black] (3.,0.) circle (1.5pt);
+\draw [fill=black] (1.4,0.) circle (1.5pt);
+\end{scriptsize}
+
+\end{tikzpicture}
+
+$L$ no es colapsable porque no tiene caras libres. Veamos que su homología es trivial. Hacemos la descomposición $L=L_1\cup L_2$ eliminando el triángulo $L_1$ generado por $v_3,v_4,v_5$, cuya homología es trivial por ser contráctil. $L_2$ colapsa al borde del triángulo grande, que es en realidad una cirfunferencia triangulada por lo vértices $v_0,v_1,v_2$. La intersección es $S^1$, así que en Mayer-Vietoris obtenemos, teniendo en cuenta que $\widetilde{H}_0(L)=0$ por ser conexo,
+\[
+0\to H_2(L)\xrightarrow{\Delta_{*2}}\F\xrightarrow{i_{*1}}\F\oplus 0\xrightarrow{j_{*1}} H_1(L)\to 0
+\]
+Tenemos que estudiar la inclusión de $L_1\cap L_2$ en $L_1$. Si denotamos por $c$ a la suma de los 2-símplices de $L_1$, $\partial c=-z-z_1$, donde $z=[v_0,v_1]+[v_1,v_2]+[v_2,v_0]$ y $z_1=[v_3,v_4]+[v_4,v_5]+[v_5,v_3]$. Como $z$ genera $H_1(L_1)$ y $z_1$ genera $H_1(L_1\cap L_2)$, la inclusión es inyectiva. A partir de esto obtenemos que $H_2(L)=H_1(L)=0$. 
 \end{solucion}
 
 \newpage

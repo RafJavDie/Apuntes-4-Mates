@@ -73,6 +73,8 @@ Entonces, existe $\tau\in L$ tal que $\sigma\tau\in\{στ; σ \in K \text{ y }τ
 Como los símplices son conexos por caminos, ya está.
 
 \end{enumerate}
+
+
 \end{solucion}
 
 \begin{solucion}\mbox{}
@@ -139,6 +141,17 @@ Probamos ahora las equivalencias.
 \item[$(1\Rightarrow 2)$] Supongamos que el 1-esqueleto tiene 2 componentes conexas (por caminos). Entonces, cualquier símplice de dimensión mayor que se pueda generar usando vértices de una y otra componente contendrá una arista entre ellos, por lo que si algún símplice de ese tipo estuviera en $K$, el 1-esqueleto sería conexo. Así pues, $K$ solo puede tener símplices generados por vértices de cada una de las componentes conexas por separado. De este modo, cualquier complejo simplicial  generado tendrá dos componentes conexas, luego $|K|$ no sería conexo.
 \item[$(2\Rightarrow 3)$] Si el 1-esqueleto es conexo, entonces es conexo por caminos, luego los vértices se pueden conectar entre sí dentro del 1-esqueleto mediante caminos, que de hecho están formados por aristas.
 \item[$(3\Rightarrow 1)$] Como $K$ es unión de símplices y los símplices son conexos por caminos, al poder unir todos los puntos por un camino formado por aristas, en particular podemos unir todos los vértices por caminos, luego podemos llegar a cualquier otro punto yendo hasta un vértice por un tal camino y luego usar el segmento correspondiente al símplice. Luego $|K|$ es conexo por caminos, en particular, conexo.
+\end{enumerate}
+
+SOLUCIÓN DE CLASE
+
+Supongamos que $|K|$ es conexo. Dado $x_0\in|K|$, sea $U_{x_0}=\{y\in|K|\mid\exists$ camino de $x_0$ a $y\}$. Veamos que
+\begin{enumerate}
+\item $U_{x_0}\neq\emptyset$ para todo $x_0\in|K|$, ya que existe el camino constante en $x_0$, así que $x_0\in U_{x_0}$.
+\item $U_{x_0}$ es abierto, es decir, vamos a ver que dado $y\in U_{x_0}$ existe un abierto entre $y$ y $U_{x_0}$. Como $y\in U_{x_0}$, existe un camino $\alpha:[0,1]\to |K|$ tal que $\alpha(0)=x_0$ y $\alpha(1)=y$. Consideremos la estrella abierta de $y$ en $|K|$, dado que un símplice es conexo, cualquier punto de la estrella abierta de $y$ está conextado mediante un segmento con $y$, luego añadiendo $\alpha$, cualquier punto de la estrella abierta de $y$ está conectado con $x_0$, luego $y\in\mathring{st}(y,|K|)\subseteq U_{x_0}$. 
+\item $U_{x_0}$ es cerrado, si y solo si $|K|\setminus U_{x_0}$ si y solo si $|K|\mid U_{x_0}$ es entorno de todos sus puntos. Dado $y\in |K|\mid U_{x_0}$, basta considerar $\mathring{st}(y,|K|)\subseteq|K|\setminus U_{x_0}$, ya que de lo contrario, por ser la estrella abierta conexa por caminos, existiría un camino entre $x_0$ e $y$.
+
+Veamos que entonces el 1-esqueleto es conexo. Dados $x,y\in |K^1|$ sabemos que existe un camino $\alpha:[0,1]\to |K|$ de $x$ a $y$. Por el teorema de aproximación simplicial, existe una subdivisión $sd^n[0,1]$ y $\varphi:sd^n[0,1]\to |K|$ que es aproximación de $\alpha$. Como $sd^n[0,1]$ está formado solo por vértices y aristas, la imagen también debe estar formada por vértices y aristas, luego su imagen es un camino en $K^1$. Es posible que $\varphi(0)\neq x$ y $\varphi(1)\neq y$ si están en el interior de una arista, pero en cualquier caso, se podrá hacer un camino entre $\varphi(0)$ y $x$, y entre $\varphi(1)$ e $y$ dentro de la arista en la que se encuentran. 
 \end{enumerate}
 
 \end{solucion}
