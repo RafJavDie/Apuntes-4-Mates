@@ -19,7 +19,7 @@ text(mortality, pretty=0)
 
 # Reduccion del arbol
 mortality.cv <- cv.tree(mortality)
-plot(mortality.cv$size, mortality.cv$dev, type='b')
+plot.tree.sequence(mortality.cv)
 
 # Vemos que no necesitamos reducir el arbol
 
@@ -27,8 +27,10 @@ plot(mortality.cv$size, mortality.cv$dev, type='b')
 yhat <- predict(mortality, newdata=test)
 
 # Grafico
-plot(yhat, test$mortality_rate)
-abline(0,1)
+plot(yhat, test$mortality_rate,
+     xlab = "Predicción", ylab = "Real",
+     xlim = c(0.5,3.0), ylim = c(0.5, 3.0))
+abline(0, 1, lty = 2)
 # Cuanto mas alejado de la recta, peor.
 
 # Ra�z cuadrada del Error cuadrático medio
