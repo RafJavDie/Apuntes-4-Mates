@@ -15,7 +15,7 @@ mortality <- tree(mortality_rate~.-Id, train)
 
 summary(mortality)
 plot(mortality)
-text(mortality, pretty=0)
+text(mortality, pretty = TRUE)
 
 # Reduccion del arbol
 mortality.cv <- cv.tree(mortality)
@@ -75,3 +75,5 @@ barplot(error,
 legend("topleft",
        fill = c("darkred","blue","lightblue"),
        legend = c("Normal", "Forest", "Boost"))
+
+# La mejora al usar RandomForest y Boost es bastante baja.
