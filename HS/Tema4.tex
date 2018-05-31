@@ -27,7 +27,7 @@ Esto es que $A$ es un conjunto de puntos que la homotopía ``no mueve''.
 \end{defi}
 
 \begin{prop}
-La relación ``ser homotópica (relativa) a'' entre aplicacioens continuas es una relación de equivalencia.
+La relación ``ser homotópica (relativa) a'' entre aplicaciones continuas es una relación de equivalencia.
 \end{prop}
 \begin{dem}
 En primer lugar, $f\simeq_H f$ con $H(x,t)=f(x)$ para todo $x$. Si $f\simeq_G g$, entonces $g\simeq_G f$ con $G(x,t)=H(x,1-t)$. Si $f\simeq_F g$ y $g\simeq_G h$, entonces $f\simeq_H h$, donde $H(x,t)=F(x,2t)$ para  $x\in [0,1/2]$ y $H(x,t)=G(x,2t-1)$ para $x\in [1/2,1]$.\QED
@@ -60,7 +60,7 @@ Dados $A \subseteq X$ e.t., una \emph{retracción} de $X$ en $A$ es una aplicaci
 cumpliendo que $r(a) = a$ $\forall a \in A$.
 Si $i \colon A \to X$ denota la inclusión, entonces $r \circ i = Id_A$.
 Si además, se cumple que $i \circ r \simeq id_X$, diremos que $A$ es un \emph{retracto de deformación} de $X$.
-Si además, $i \circ r \simeq_H id_X$ relativa a $A$, entonces diremos que $A$ es un \emph{retracto de deformación fuerte} de $X$.
+Si además, $i \circ r \simeq id_X$ relativa a $A$, entonces diremos que $A$ es un \emph{retracto de deformación fuerte} de $X$.
 \end{defi}
 
 \begin{nota}
@@ -74,9 +74,9 @@ La retracción $r \colon X \to A$ definida por $r(s,t) = (z,t) \in A$ no es retr
 
 \section{Invarianza topológica de la homología simplicial}
 
-Al principio del capítulo planteábamos la cuestión de si la homología simplicial dependía de la triangulacióne scogida. Vamos a empezar probando la invarianza por subdivisiones baricéntricas de una triangulación. Recordemos que dado un $n$-símplice $\sigma=(v_0,\dots, v_n)$, el baricentro de $\sigma$ se definía como $b(\sigma)=\sum_{i=0}^n\frac{1}{n+1}v_i\in\mathring{\sigma}$. Si tenemos en $K$ una sucesión estrictamente creciente de símplices $\sigma_0<\sigma_1<\dots <\sigma_k$, entonces un $k$ símplice de la subdivisión $sdK$ es de la forma $(b(\sigma_0),b(\sigma_1),\dots, b(\sigma_k))$. 
+Al principio del capítulo planteábamos la cuestión de si la homología simplicial dependía de la triangulación escogida. Vamos a empezar probando la invarianza por subdivisiones baricéntricas de una triangulación. Recordemos que dado un $n$-símplice $\sigma=(v_0,\dots, v_n)$, el baricentro de $\sigma$ se definía como $b(\sigma)=\sum_{i=0}^n\frac{1}{n+1}v_i\in\mathring{\sigma}$. Si tenemos en $K$ una sucesión estrictamente creciente de símplices $\sigma_0<\sigma_1<\dots <\sigma_k$, entonces un $k$ símplice de la subdivisión $sdK$ es de la forma $(b(\sigma_0),b(\sigma_1),\dots, b(\sigma_k))$. 
 
-Si $\sigma$ es un $n$-símplice orientado de $K$ y $\hat{\sigma}\subseteq\sigma$ es un $n$-símplice orientado de $sdK$, orientamos $\hat{\sigma}$ con la orientación inducida por $\sigma$, es dcir, ordenamos sus vértices según el orden de aparición en la construcción de $\hat{\sigma
+Si $\sigma$ es un $n$-símplice orientado de $K$ y $\hat{\sigma}\subseteq\sigma$ es un $n$-símplice orientado de $sdK$, orientamos $\hat{\sigma}$ con la orientación inducida por $\sigma$, es decir, ordenamos sus vértices según el orden de aparición en la construcción de $\hat{\sigma
 }$. 
 
 Si $\sigma_0<\sigma_1<\dots<\sigma_n=\sigma$ son símplices de $K$ entonces $\hat{\sigma}=(b(\sigma_0),b(\sigma_1),\dots, b(\sigma_k))$. Necesariamente ha de ocurrir $\sigma_0=v_0, \sigma_1=(v_0,v_1), \dots, \sigma_n=\sigma$, por ser una cadena de longitud $n+1$. 
@@ -210,7 +210,7 @@ Observamos que $\hat{\sigma}_j\subseteq\sigma_j\subseteq\partial\sigma$ y ademá
 El morfismo inducido $sd_*:H_n(K)\to H_n(sdK)$ es un isomorfismo.
 \end{teorema}
 \begin{dem}
-Razonamos po rinducción en el número $n$ de símplices. Si $n=1$ entonces $K$ tiene un solo vértice y el resultado es trivial. Supongámoslo cierto para complejos de $n-1$ símplices. Sea $K$ un complejo con $n$ símplices y $\sigma\in K$ un símplice de dimensión máxima en $K$. Toamos el complejo $L=K-\{\sigma\}$. Por hipótesis, como $\partial\sigma\subseteq L$ el resultado se cumple para $L$ y para $\partial\sigma=L\cap\sigma$. Además tenemos el siguiente diagrama conmutativo de sucesiones de Mayer-Vietoris
+Razonamos por inducción en el número $n$ de símplices. Si $n=1$ entonces $K$ tiene un solo vértice y el resultado es trivial. Supongámoslo cierto para complejos de $n-1$ símplices. Sea $K$ un complejo con $n$ símplices y $\sigma\in K$ un símplice de dimensión máxima en $K$. Toamos el complejo $L=K-\{\sigma\}$. Por hipótesis, como $\partial\sigma\subseteq L$ el resultado se cumple para $L$ y para $\partial\sigma=L\cap\sigma$. Además tenemos el siguiente diagrama conmutativo de sucesiones de Mayer-Vietoris
 \[
 \begin{tikzcd}
 \cdots\arrow[r] & H_q(\partial\sigma)\arrow[r]\arrow[d,"sd_*"] & H_1(\sigma)\oplus H_q(L)\arrow[r]\arrow[d, "sd_*"] & H_q(K)\arrow[d, "sd_*"]\arrow[r]&\cdots \\

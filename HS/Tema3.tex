@@ -17,7 +17,7 @@ Mediante esta relación de equivalencia, aparecen dos clases de equivalencia (si
 Cuidado, aquí usamos el mismo símbolo para $\sigma$ el $n$-símplice y $\sigma$ al $n$-símplice orientado.
 Escribiremos $(v_0,v_1,\dots,v_n)$ para referirnos a un $n$-símplice y $[v_0,v_1,\dots,v_n]$ para referirnos a un $n$-símplice orientado.
 
-Dado un complejo simplicial $K$, procedemos a definir un complejo de cadenas $\CC(K;F)=\{(C_n(K;\mathbb{F}), \partial_n)\}_{n\geq 0}$. 
+Dado un complejo simplicial $K$, procedemos a definir un complejo de cadenas $\CC(K;\F)=\{(C_n(K;\mathbb{F}), \partial_n)\}_{n\geq 0}$. 
 \begin{defi}
 Definimos $C_n(K;\mathbb{F})$ como el $\mathbb{F}$-espacio vectorial generado por todos los $n$-símplices orientados de $K$ cocientado por el subespacio vectorial $\gene{\sigma + \overline{\sigma} \mid \sigma\ n\text{-símplice de }K}$.
 \end{defi}
@@ -144,7 +144,7 @@ y al sustituir obtenemos 0, como deseábamos. La functorialidad se deduce direct
 \begin{enumerate}
 \item \underline{Homología de un vértice (0-símplice)}: si $K=\{v\}$, su complejo de cadenas asociado es trivial en todos los niveles salvo en $C_0(K)=\gene{v}$. Por tanto, $H_q(K)=0$ para todo $q\geq 1$ y $H_0(K)=\frac{\ker\partial_0}{\Ima\partial_1}=\ker\partial_0=\gene{v}\cong\F$. Se tiene entonces que $\dim H_0(K)=1$ y en el resto de casos $\dim H_q(K)=0$. A estos números se los llama \emph{números de Betti}. En el caso de la homología reducida, $\widetilde{H}_0=\frac{\ker\varepsilon}{\Ima\partial_1}=\ker\varepsilon=0$. 
 
-\item \underline{Homología de un cono}: Sea $K=vL$ un cono simplicial. Tenemeos la inclusión natural $i:\{v\}\to K$, que induce una aplicación $i_*: \{(C_n,\partial_n)\}\to \{(C_n(K),\partial_n)\}$. La idea es probar que $i_*$ induce una equivalencia de homotopía entre los complejos de cadenas. Sea $g:\{(C_n(K),\partial_n)\}\to \{C_n(v),\partial_n)\}$ definida como $g_n(\sigma)=0$ para $n\geq 1$ y $g_0(v_i)=v$ para todo $v_i\in K^0$. Es claro que $g\circ i_*=Id_{\CC(v)}$. Vamos a ver que $i_*\circ g\simeq Id_{\CC(K)}$. Definimos una homotopía $h: \CC(K)\to\CC(K)[+1]$ como 
+\item \underline{Homología de un cono}: Sea $K=vL$ un cono simplicial. Tenemos la inclusión natural $i:\{v\}\to K$, que induce una aplicación $i_*: \{(C_n,\partial_n)\}\to \{(C_n(K),\partial_n)\}$. La idea es probar que $i_*$ induce una equivalencia de homotopía entre los complejos de cadenas. Sea $g:\{(C_n(K),\partial_n)\}\to \{C_n(v),\partial_n)\}$ definida como $g_n(\sigma)=0$ para $n\geq 1$ y $g_0(v_i)=v$ para todo $v_i\in K^0$. Es claro que $g\circ i_*=Id_{\CC(v)}$. Vamos a ver que $i_*\circ g\simeq Id_{\CC(K)}$. Definimos una homotopía $h: \CC(K)\to\CC(K)[+1]$ como 
 \[
 h_n ([v_0,\dots,v_n]) = \begin{cases}
 	[v, v_0,\dots,v_n] & \text{ si }v_i \neq v\text{ para todo }i\\
@@ -197,7 +197,7 @@ En particular, este resultado es válido para cualquier $n$-símplice, a partir 
 \begin{prop}\label{arista}
 Sea $σ=(v,w)$ un $1$-símplice
 \[ H_n(\partial σ) = \begin{cases}0 & \text{ si }n≥1\\ \F^2\gene{v,w} & \text{ si }n=0\end{cases}\]
-\[ \tilde{H}_n(\partial σ) = \begin{cases}0 & \text{ si }n≥1\\ \F\gene{v-w} & \text{ si }n=0\end{cases}\]
+\[ \widetilde{H}_n(\partial σ) = \begin{cases}0 & \text{ si }n≥1\\ \F\gene{v-w} & \text{ si }n=0\end{cases}\]
 \end{prop}
 \begin{dem}
 Tenemos la sucesión:
@@ -208,8 +208,8 @@ Tenemos la sucesión:
 Entonces $H_n(\partial σ) = \frac{\ker \partial_n}{\Ima \partial_{n+1}} = 0$ para todo $n \geq 1$.
 Para $n=0$, como $\Ima \partial_1 = 0$, tenemos que $H_0(\partial σ) = \ker \partial_0  = \F^2\gene{v,w}$.
 Por otro lado, como $\varepsilon(v)=1$ y $\varepsilon(w)=1$, se deduce que $\ker \varepsilon = \F\gene{v-w}$, luego:
-\[ \tilde{H}_0(\partial σ) = \frac{\ker \varepsilon}{\Ima \partial_1} = \ker \varepsilon = \F\gene{v-w} \]
-\[ \tilde{H}_n(\partial σ) = H_n(\partial σ) \quad \forall n ≥ 1 \]
+\[ \widetilde{H}_0(\partial σ) = \frac{\ker \varepsilon}{\Ima \partial_1} = \ker \varepsilon = \F\gene{v-w} \]
+\[ \widetilde{H}_n(\partial σ) = H_n(\partial σ) \quad \forall n ≥ 1 \]
 \QED
 \end{dem}
 
@@ -242,9 +242,9 @@ Como $C_n(σ) = \F\gene{σ}$, entonces:
 \begin{defi}
 Sea $K$ un complejo simplicial y $L\subseteq K$ un subcomplejo. Entonces el complejo de cadenas $\{C_n(L;\F),\partial_n|\}$ es un subcomplejo de $\{C_n(K;\F),\partial_n\}$ y se llama \emph{homología orientada relativa del par} $(K,L)$ a la homología del \emph{complejo de cadenas relativas}
 \[
-C_*(K,L;\F)=\{C_n(K,L;\F),\tilde{\partial}_n\}=\{C_n(K,\F)/C_n(L,\F),\tilde{\partial}_n\}
+C_*(K,L;\F)=\{C_n(K,L;\F),\widetilde{\partial}_n\}=\{C_n(K,\F)/C_n(L,\F),\widetilde{\partial}_n\}
 \]
-donde $\tilde{\partial}_n$ es el paso al cociente del operador borde. 
+donde $\widetilde{\partial}_n$ es el paso al cociente del operador borde. 
 \end{defi}
 
 \begin{prop}
@@ -310,8 +310,8 @@ Entonces tenemos las sucesiones exactas:
 Entonces $ψ$ es un isomorfismo, luego $H_n(K) \cong H_n(L) \oplus H_n(σ)$.
 Además para $n\neq 0$, $H_n(σ) = 0$, luego tenemos que $H_q(K) \cong H_n(L)$.
 
-Para $n=0$, consideramos la misma sucesión pero obteniéndola de la sucesión de Mayer-Vietoris para homología reducida, de manera que $\tilde{H_0}(K_1 \cap K_2) = 0$.
-\[ 0 \xrightarrow{φ} H_1(L) \xrightarrow{ψ} H_1(K) \xrightarrow{Δ} \tilde{H_0}(K_1 \cap K_2) \]
+Para $n=0$, consideramos la misma sucesión pero obteniéndola de la sucesión de Mayer-Vietoris para homología reducida, de manera que $\widetilde{H_0}(K_1 \cap K_2) = 0$.
+\[ 0 \xrightarrow{φ} H_1(L) \xrightarrow{ψ} H_1(K) \xrightarrow{Δ} \widetilde{H_0}(K_1 \cap K_2) \]
 \end{ej}
 
 \begin{ej}
