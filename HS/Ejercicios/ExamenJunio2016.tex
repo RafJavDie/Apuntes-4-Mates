@@ -20,10 +20,41 @@ Denotamos $K$ a este complejo simplial. Hacemos la descomposición del complejo 
 $K_2$ es colapsable, por lo que su homologías reducida también es nula.
 Por otro lado:
 \[ K_1 \cap K_2 = \{ v_0, v_1, v_2, v_3, (v_0, v_1), (v_2, v_3) \} \]
-es decir, dos segmentos.
-Luego su homología reducida es la suma de las homologías reducidas de los segmentos, que son nulas.
+es decir, dos segmentos, que se colapsan en dos puntos $v_0$ y $v_2$.
+Entonces tenemos que:
+\[
+\widetilde{H}_n(K_1 \cap K_2) =
+\begin{cases}
+	0 & \text{ si }n \neq 0\\
+	\F\gene{v_2-v_0} & \text{ si }n = 0
+\end{cases}
+\]
 
-Esto en Mayer-Vietoris nos da que la homología reducida de $K$ es isomorfa a la del toro, y además podemos elegir los mismos generadores.
+Por otro lado, tenemos que, como $K_1$ es un toro:
+\[
+\widetilde{H}_n(K_1) =
+\begin{cases}
+	0 & \text{ si }n \neq 1,2\\
+	\F\gene{c} & \text{ si }n = 2\\
+	\F^2\gene{\tau_1, \tau_2} & \text{ si }n = 1
+\end{cases}
+\]
+donde
+\begin{align*}
+c & = \sum_{\mu \in K_1, \dim\mu = 2} \mu\\
+\tau_1 & = (v_0, v_1) + (v_1, v_2) + (v_2, v_3) + (v_3, v_0)\\
+\tau_2 & = (v_0, v_4) + (v_4, v_5) + (v_5, v_0)
+\end{align*}
+adecuadamente orientado.
+
+Esto en Mayer-Vietoris:
+\begin{align*}
+0 \xrightarrow{i_{*2}} \widetilde{H}_2(K_1)\oplus \widetilde{H}_2(K_2) \cong \F\gene{c} \xrightarrow{j_{*2}} \widetilde{H}_2(K) \xrightarrow{\Delta_{*2}} \widetilde{H}_1(K_1 \cap K_2) \cong 0\\
+\xrightarrow{i_{*1}} \widetilde{H}_1(K_1)\oplus \widetilde{H}_1(K_2) \cong \F\gene{\tau_1,\tau_2}\xrightarrow{j_{*1}} \widetilde{H}_1(K) \xrightarrow{\Delta_{*1}} \widetilde{H}_0(K_1 \cap K_2) \cong \F\gene{v_2-v_0} \to 0
+\end{align*}
+Entonces:
+\[ \widetilde{H}_2(K) \cong \F\gene{c} \]
+\[ 0 \to \F\gene{\tau_1,\tau_2}\xrightarrow{j_{*1}} \widetilde{H}_1(K) \xrightarrow{\Delta_{*1}} \F\gene{v_2-v_0} \to 0\]
 \end{solucion}
 
 \newpage
