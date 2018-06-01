@@ -279,10 +279,25 @@ Sea $σ$ un $n$-símplice y $K$ el complejo formado por $σ$ y sus caras. Probar
 que si $0 < q < n$, $H_q(K^q; \F)$ es un $\F$-espacio vectorial de dimensión $\binom{n}{q+1}$.
 \end{ejercicio}
 \begin{solucion}
-Observemos que la hipótesis de que $0<q<n$ implica que $n\geq 2$. Además, como $q<n$, $K^q=(\partial K)^q$, por lo que usando el ejercicio \ref{ejer:2.9} o el \ref{ejer:2.6} obtenemos que $H_q(K^q; \F)=H_q(\partial K; \F)\oplus\Ima{\partial_{q+1}}.$ Si $q=n-1$, entonces $\Ima{\partial_{q+1}}=0$ pues $\partial K$ no tiene $n$ símplices. Entonces $H_{n-1}(K^q; \F)=H_{n-1}(\partial K; \F)\cong\F$, luego tiene dimensión $1=\binom{n}{n-1+1}$. Para $0<q<n-1$ (aquí $n\geq 3$), $H_q(\partial K; \F)=0$, luego hay que probar que $\Ima{\partial_{q+1}}$ tiene dimensión $\binom{n}{q+1}$. Tengamos en cuenta que $\Ima{\partial_{q+1}}$ está generado por las imágenes de todos los $q+1$ símplices de $K$, que se obtienen eligiendo $q+1$ elementos de la lista $[v_0,\dots, v_n]$ que tiene cardinal $n+1$. Sin embargo, las imágenes no serán linealmente independientes en general. 
+Observemos que la hipótesis de que $0<q<n$ implica que $n\geq 2$. Además, como $q<n$, $K^q=(\partial K)^q$, por lo que usando el ejercicio \ref{ejer:2.9} o el \ref{ejer:2.6} obtenemos que $H_q(K^q; \F)=H_q(\partial K; \F)\oplus\Ima{\partial_{q+1}}.$ Si $q=n-1$, entonces $\Ima{\partial_{q+1}}=0$ pues $\partial K$ no tiene $n$ símplices. Entonces $H_{n-1}(K^q; \F)=H_{n-1}(\partial K; \F)\cong\F$, luego tiene dimensión $1=\binom{n}{n-1+1}$. 
 
+%Para $0<q<n-1$ (aquí $n\geq 3$), $H_q(\partial K; \F)=0$, luego hay que probar que $\Ima{\partial_{q+1}}$ tiene dimensión $\binom{n}{q+1}$. Tengamos en cuenta que $\Ima{\partial_{q+1}}$ está generado por las imágenes de todos los $q+1$ símplices de $K$, que se obtienen eligiendo $q+1$ elementos de la lista $[v_0,\dots, v_n]$ que tiene cardinal $n+1$. Sin embargo, las imágenes no serán linealmente independientes en general. 
+%
+%
+%HAY QUE TERMINARLO
 
-HAY QUE TERMINARLO
+En general, tenemos que $H_j(K^q,\F)=H_j(K,\F)=0$ para $j<q$ y $H_j(K^q,\F)=0$ para $j>q$. Entonces $\chi(K^q)=1+(-1)^q\dim H_q(K^q,\F)$. Por otro lado, 
+\[
+\chi(K^q)=\sum_{j=0}^q (-1)^j\alpha_j(K)=\sum_{j=0}^q (-1)^j\binom{n+1}{j+1}=\frac{(-1)^q (q + 2) \binom{n + 1}{ q + 2} + n + 1}{n + 1}
+\]
+de donde 
+\[
+1+(-1)^q\dim H_q(K^q,\F)=\frac{(-1)^q (q + 2) \binom{n + 1}{ q + 2} + n + 1}{n + 1}\Rightarrow
+\]
+\[
+\dim H_q(K^q,\F)=\frac{ (q + 2) \binom{n + 1}{ q + 2}}{n + 1}=\binom{n}{q+1}.
+\]
+
 \end{solucion}
 
 \newpage
