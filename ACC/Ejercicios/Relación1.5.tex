@@ -92,7 +92,7 @@ to show that
  \langle f_1, f_2,\dots, f_s\rangle$.
 \end{ejercicio}
 \begin{solucion}
-Dado que $h$ divide a $f_i$, $i=2,\dotsc,s$, entonces es claro que $f_i\in\gene{f,h}$, de donde se deduce $\gene{f_1,\dotsc,f_s}\subset \gene{f,h}$. Recíprocamente, por utilizando la igualdad, tenemos que $h=g_1f_1+\dotsc f_sg_s$, luego $f_1,h\in\gene{f_1,\dotsc,f_s}$. 
+Dado que $h$ divide a $f_i$, $i=2,\dotsc,s$, entonces es claro que $f_i\in\gene{f,h}$, de donde se deduce $\gene{f_1,\dotsc,f_s}\subset \gene{f,h}$. Recíprocamente, utilizando la igualdad, tenemos que $h=g_1f_1+\dotsc f_sg_s$, luego $f_1,h\in\gene{f_1,\dotsc,f_s}$. 
 \end{solucion}
 
 \newpage
@@ -147,9 +147,9 @@ En primer lugar calculamos el gcd de los generadores, que es $x-2$. Como $x^2-4=
 
 \newpage
 \begin{ejercicio}{1.5.10}
-Give pseudocode for an algorithm that has input $f , g ∈ k[x]$ and output $h, A, B ∈ k[x]$ where $h = gcd( f , g)$ and $Af + Bg = h$. Hint: The idea is to add variables A, B, C,D to
-the algorithm so that $Af + Bg = h$ and $Cf + Dg = s$ remain true at every step of the algorithm. Note that the initial values of A, B, C,D are 1, 0, 0, 1, respectively. You may
-find it useful to let $quotient( f , g)$ denote the quotient of f on division by g, i.e., if the division algorithm yields f = qg + r, then $q = quotient( f , g)$.
+Give pseudocode for an algorithm that has input $f , g ∈ k[x]$ and output $h, A, B ∈ k[x]$ where $h = gcd( f , g)$ and $Af + Bg = h$. Hint: The idea is to add variables $A$, $B$, $C$, $D$ to
+the algorithm so that $Af + Bg = h$ and $Cf + Dg = s$ remain true at every step of the algorithm. Note that the initial values of $A$, $B$, $C$, $D$ are 1, 0, 0, 1, respectively. You may
+find it useful to let $quotient( f , g)$ denote the quotient of $f$ on division by $g$, i.e., if the division algorithm yields $f = qg + r$, then $q = quotient( f , g)$.
 \end{ejercicio}
 \begin{solucion}
 Copiar y pegar el Algoritmo de Euclides extendido, que no es más que ir despejando en las divisiones del Algoritmo de Euclides tradicional.
@@ -179,7 +179,7 @@ $\V( f_1,\dots , f_s)$ is nonempty.
 \newpage
 
 \begin{ejercicio}{1.5.12}
-Since we are working over the complex numbers, we know by Exercise 1 that $f$
+Since we are working over the complex numbers, we know by Exercise \ref{ejer:1.5.1} that $f$
 factors completely, i.e.,
 $$f = c(x − a_1)^{r_1}\cdots(x − a_l)^{r_l} ,$$
 where $a_1,\dots, a_l ∈ \C$ are distinct and $c ∈ \C \ \{0\}$.
@@ -225,8 +225,8 @@ Si de verdad necesitas probarlo...
 $\gcd(f,f')$ when $f\in\C[x]$.
 \begin{itemize}
 \item[a.] Suppose $f = (x−a)^r h$ in $\C[x]$, where $h(a) \neq 0$. Then prove that $f'= (x−a)^{r−1} h_1$, where $h_1 ∈ \C[x]$ does not vanish at $a$. Hint: Use the product rule.
-\item[b.] Let $f = (x−a_1)^{r_1}\cdots(x−a_l)^{r_l}$ be the factorization of $f$, where $a_1,\dotsc, a_l$ are distinct.Prove that $f'$ is a product $f' = (x − a_1)^{r_1−1}\cdots(x − a_l)^{r_l−1} H$, where $H ∈ \C[x]$ is a polynomial vanishing at none of $a_1,\dotsc, a_l$.
-\item[c.] Prove that $g(f,f') = (x-a_1)^{r_1-1}\cdots(x-a_n)^{r_n-1}$.
+\item[b.] Let $f = (x−a_1)^{r_1}\cdots(x−a_l)^{r_l}$ be the factorization of $f$, where $a_1,\dotsc, a_l$ are distinct. Prove that $f'$ is a product $f' = (x − a_1)^{r_1−1}\cdots(x − a_l)^{r_l−1} H$, where $H ∈ \C[x]$ is a polynomial vanishing at none of $a_1,\dotsc, a_l$.
+\item[c.] Prove that $\gcd(f,f') = (x-a_1)^{r_1-1}\cdots(x-a_n)^{r_n-1}$.
 \end{itemize}
 \end{ejercicio}
 \begin{solucion}
@@ -251,7 +251,7 @@ f'&=(g(x-a_n)^{r_n})'= g'(x-a_n)^{r_n}+gr_n(x-a_n)^{r_n-1} \\
 Es claro que si $1\leq i \leq n-1$ entonces $H(a_i) = G(a_i)(a_i-a_n)\neq 0$ por hipótesis. También es claro que $H(a_n)= \prod_{i=1}^{n-1}(a_n-a_i) \neq 0$ por hipótesis.
 \item  Sea $h$ nuestro candidato a $\gcd(f,f')$. Es claro que $h\mid f,f'$. Veamos $f/h$ y $f'/h$ son coprimos (luego no puede existir otro factor común no trivial que divida a ambos).
 $$
-f/h = \prod_{i=1}^n x-a_i \qquad f'/h = H(x)
+f/h = \prod_{i=1}^n (x-a_i) \qquad f'/h = H(x)
 $$
 Sabemos que $H(a_i)\neq 0$ $\forall i$, pero $a_i$ son precisamente los factores de $f/h$, luego son coprimos.
 \end{itemize}
@@ -278,7 +278,7 @@ $x^{11} − x^{10} + 2x^8 − 4x^7 + 3x^5 − 3x^4 + x^3 + 3x^2 − x − 1$.
 \begin{itemize}
 \item[]
 \item[a.] Se tiene inmediatamente al hacer la división.
-\item[b.] Llamamos $f=x^{11} − x^{10} + 2x^8 − 4x^7 + 3x^5 − 3x^4 + x^3 + 3x^2 − x − 1$. Entonces $f'=11x^{10}-10x^9+16x^7-28x^6+15x^4-12x^3+3x^2+6x-1$, $\gcd(f,f')=x^6 - x^5 + x^3 - 2 x^2 + 1$, $f_{red}=x^5+x^2-x-1=(x-1)(x+1)(x^3+x+1)$ (el último se descompone como facotres complejos un poco feos). 
+\item[b.] Llamamos $f=x^{11} − x^{10} + 2x^8 − 4x^7 + 3x^5 − 3x^4 + x^3 + 3x^2 − x − 1$. Entonces $f'=11x^{10}-10x^9+16x^7-28x^6+15x^4-12x^3+3x^2+6x-1$, $\gcd(f,f')=x^6 - x^5 + x^3 - 2 x^2 + 1$, $f_{red}=x^5+x^2-x-1=(x-1)(x+1)(x^3+x+1)$ (el último se descompone como factores complejos un poco feos). 
 \end{itemize}
 \end{solucion}
 

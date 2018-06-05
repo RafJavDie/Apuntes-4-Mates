@@ -88,7 +88,7 @@ Luego tenemos que
 $$
 xy^2z^2 + xy - yz = -xz^2(x-y^2) + 0(y-z^3)+x^2(z^2-1)+(x^2+xy-yz)
 $$
-El apartado $b)$ se deja como ejercicio para 
+El apartado $b)$ se deja como ejercicio para el lector. 
 \end{solucion}
 \newpage
 
@@ -110,10 +110,10 @@ Let $f = q_1 f_1 + \dots q_s f_s + r$ be the output of the divison algorithm.
 \begin{solucion}
 \begin{enumerate}[a.]
 \item[]
-\item Hemos visto en el texto (Páginas 65-66) que $q_i =LT(p)/LT(f_i)$ para algún valor de $p$ que sabemos verifica $LT(p)\leq LT(f)$. Esto es, $$multideg(q_i) = multideg(p)-multideg(f_i) \leq multideg(f)-multidef(f_i)$$ 
+\item Hemos visto en el texto (Páginas 65-66) que $q_i =LT(p)/LT(f_i)$ para algún valor de $p$ que sabemos verifica $LT(p)\leq LT(f)$. Esto es, $$multideg(q_i) = multideg(p)-multideg(f_i) \leq multideg(f)-multideg(f_i)$$ 
 O equivalentemente
 $$multideg(f) \geq multideg(q_i)+multidef(f_i)$$
-Ahora basta tener en cuenta $multided(f_iq_i) = multidef(f_i)+multideg(q_i)$ por el Lema 8 (Página 60).
+Ahora basta tener en cuenta $multideg(f_iq_i) = multideg(f_i)+multideg(q_i)$ por el Lema 8 (Página 60).
 \item Vamos a distinguir dos casos. 
 \begin{itemize}
 \item Si $r=f$ no hay nada que probar.
@@ -266,7 +266,7 @@ this form). Let $LM( f_i) = x^{α(i)}$ and define
 \right)
 .
 \end{align*}
-(Note that $\Z^n_{≥0}$ is the disjoint union of the $Δ_i$ and $Δ$.)
+(Note that $\Z^n_{≥0}$ is the disjoint union of the $Δ_i$ and $\overline{Δ}$.)
 \begin{enumerate}[a.]
 \item Show that $β ∈ Δ_i$ if and only if $x^{α(i)}$ divides $x^β$ and no $x^{α(j)}$ with $j < i$ divides $x^β$.
 \item Show that $γ ∈ \overline{Δ}$ if and only if no $x^{α(i)}$ divides $x^γ$.
@@ -296,7 +296,7 @@ Por el apartado (a), esto se resume en decir que $β+α(i) \in Δ_i$.
 
 Por el algoritmo de la división, todos los monomios del resto no son divisibles por $x^{α(i)}$, luego todos los monomios del resto están en $\overline{Δ}$ por el apartado (b).
 
-\item Sea $f = q_1 f_1 + \dots + q_s f_s + r = q_1' f_1 + \dots q_s' f_s + r'$.
+\item Tenemos que el resultado es cierto para $n=1$. Para $s=1$ se puede usar un razonamiento análogo al caso univariante\footnote{\url{https://math.stackexchange.com/questions/1972421/proof-of-uniqueness-of-division-theorem-for-polynomials}} reemplazando el grado por el multigrado. Teniendo en cuenta que $k[x_1,\dots, x_n]=k[x_1,\dots,x_{n-1}][x_n]$ se puede hacer una doble inducción en $s$ y en $n$.
 \end{enumerate}
 \end{solucion}
 
