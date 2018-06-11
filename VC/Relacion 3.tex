@@ -50,27 +50,33 @@ Para la el otro polo procedemos análogamente, usando que $z+1=2+(z-1) = 2(1-(-(
 &= \frac{1/4}{(z+1)^{2}}-\frac{2/8}{(z+1)} + \sum_{n=0}^\infty \frac{(-1)^{n+2}(n+3)}{2^{n+4}}(z+1)^{n}
 \end{align*}
 \item Sabemos que nuestra función tiene polos simples en $k\pi$ para $k\in \Z$ y además son los únicos.
-Tengamos en cuenta que en un entorno de $k\pi$ podemos escribir
-$$\frac{\sin z}{z-k\pi}= \sum_{k=0}^\infty \frac{(z-k\pi)^{2n}(-1)^{n}}{(2n+1)!} $$
-Esta función es holomorfa y no se anula en un entorno $k\pi$, luego su inversa también es holomorfa en dicho entorno. Si denotamos por $a_k$ los coeficientes de la inversa función inversa (que tiene algún desarollo en $\pi k$ por no anularse nuestra función) y $b_k$ los propios, tenemos la relación
+Por tanto, calculamos directamente el residuo
 $$
-c_n = \sum_{k=0}^{n}a_k b_{n-k}
+\lim_{z\to k\pi} \frac{z-k\pi}{\sin z} = \lim_{z \to k\pi} \frac{1}{\cos(z)} = (-1)^{k}
 $$
-Calcular el término general de la serie sería latoso, pero como los polos son simples, basta calcular el primero.  $1 = c_0 = a_0 \cdot 1$. Por tanto las partes singulares son 
-$$
-\frac{1}{z-k\pi}
-$$
-\newpage
 \item Tenemos polos simples en $k\pi$, luego lo más sencillo es calcular el residuo directamente
 $$
 \lim_{z\to k \pi}(z-k\pi)\frac{\cos z}{\sin z} = \lim_{z\to k \pi}\frac{\cos z-(z-k\pi)\sin z}{\cos z} = 1
 $$
-\item Análogamente a (c), tenemos polos de segundo orden en $k\pi$. Por la relación obtenida en ese apartado, podemos calcular los dos primeros términos utilizando la fórmula del término del producto. Denotemos por $r_n$ los coeficientes de 
-$$\frac{\sin^2 z}{(z-k\pi)^2}$$
-Tenemos que $0 = a_1 + b_1 = a_1 $, luego $b_1= 0$. Por tanto $r_0 = a_0^2 = 1$ y $r_1= 2 a_0a_1 = 0$. Es decir, la parte singular es
+\item Análogamente a (c), tenemos polos de segundo orden en $k\pi$. Calculamos el residuo en cada polo y el coeficiente de $1/(z-k\pi)^2$.
+\begin{align*}
+\lim_{z\to k\pi} \frac{\partial }{\partial z}\frac{(z-k\pi)^2}{\sin^2 z} &= \lim_{z\to k\pi} \frac{2(z-k\pi)\sin z - 2(z-k\pi)^2\cos z}{\sin^3 z} \\
+&=2\lim_{z\to k\pi} \frac{\sin z - (z-k\pi)\cos z + (z-k\pi)^2\sin z}{3\sin^2 z \cos z}\\
+&=2\lim_{z\to k\pi} \frac{3(z-k\pi)\sin z+ (z-k\pi)^2\cos z}{6\sin z \cos^2 z - 3\sin^3z}\\
+&= 2\lim_{z\to k\pi} \frac{5(z-k\pi)\cos z - ((z-k\pi)^3 -3)\sin z}{6 \cos^3z - 21 \cos z \sin^2 z} \\ 
+&=0
+\end{align*}
+Para el otro coeficiente, directamente
+\begin{align*}
+\lim_{z\to k\pi}\frac{(z-k\pi)^2}{\sin^2 z} &= \lim_{z\to k\pi} \frac{2(z-k\pi)}{2\sin z \cos z} \\
+&=\lim_{z\to k\pi} \frac{1}{\cos^2 z - \sin^2 z}\\
+&=1
+\end{align*}
+Luego la parte singular es
 $$
-\frac{1}{(z-k\pi)^2}
+\frac{1}{(z-k\pi)^2}+ \frac{0}{z-k\pi}
 $$
+
 \item Es claro que tenemos un polo de orden $m$ en $z=0$ y un polo de orden $n$ en $z=1$. Veamos un desarrollo, el otro es análogo.
 $$
 \frac{1}{z}=\frac{1}{1+(z-1)}= \sum_{k=0}^\infty (-1)^k(z-1)^k
@@ -100,20 +106,20 @@ Dos cuestiones no relacionadas
 \begin{solucion}
 \begin{itemize}
 \item[]
-\item Aplicamos el Teorema de Rouche. Tomamos $f(z)=7z^4$ y $g(z)=z^6-2z^5+z^3-z+1$. Entonces en $|z|=1$
+\item Aplicamos el Teorema de Rouche. Tomamos $f(z)$ el polinomio del enunciado y $g(z)=7z^4$. Entonces en $|z|=1$
 $$
-|f(z)| = 7 > 6 = |z^6| + |-2z^5| + |z^3| + |-z| +1 \geq |g(z)|
+|f(z)-g(z)| \leq  |z^6| + |-2z^5| + |z^3| + |-z| +1 = 6 < 7 = |g(z)| \leq |f(z)|+|g(z)|
 $$
 Por tanto, hay 4 raíces en el disco unidad.
-\item  Tengamos en cuenta que si tomamos $f(z)=-6z$ y $g(z)=z^4+3$, entonces en $|z|=1$ por el Teorema de Rouché
+\item Tomamos $f(z)$ el polinomio del enunciado y $g(z)=z^4$. Entonces, en $|z|=2$
 $$
-|f(z)| = 6 > 1+3 = |z|^4+ 3 \geq |z^4+3|
+|f(z)-g(z)| = |6z-3| \leq 6|z|+3 = 15 < 16 = |g(z)| \leq |f(z)|+ |g(z)|
 $$
-Por tanto, nuestro polinomio tiene un cero en $|z|<1$. Si tomamos ahora $f(z)=z^4$ y $g(z)=-6z+3$ entonces en $|z|=2$
+Por lo que tiene $4$ raíces en $|z|<2$. Consideremos ahora $g(z)=6z$. Entonces, en $|z|=1$
 $$
-|f(z)| = 2^4 = 16 \geq 15 = 12 + 3 = |-6z| + 3 \geq |-6z+3|
+|f(z)-g(z)| = |z^4+3|\leq |z|^4+3 = 4 < 6 = |g(z)| \leq |f(z)|+|g(z)|
 $$
-Por tanto, en $|z|=2$ y $|z|=1$ no hay raíces. En $|z|<2$ hay 4 y en $|z|<1$ hay 1. Es decir, en $1<|z|<2$ hay 3 raíces.
+Por lo que tiene una raíz en $|z|<1$. Luego en $1<|z|<3$ tenemos $3$ raíces.
 \end{itemize}
 \end{solucion}
 \newpage

@@ -162,24 +162,51 @@ Hallar todas las soluciones de las ecuaciones:
 \begin{solucion}
 \begin{enumerate}[a)]
 \item[]
-\item Utilizando la definción de $\sen$ y $\cos$ complejos
+\item Utilizando la definición de $\sen$ y $\cos$ complejos
 \begin{gather*}
-\frac{e^{iz}-e^{-iz}}{2i}+\frac{e^{iz}-+e^{-iz}}{2} = 2 
+\frac{e^{iz}-e^{-iz}}{2i}+\frac{e^{iz}+e^{-iz}}{2} = 2 
 \end{gather*}
 Haciendo el cambio $w=e^{iz}\neq 0$ llegamos a
 \begin{gather*}
-\frac{1-i}{2}w^2 -2w +\frac{1+i}{2} = 0
+\frac{w^2-1}{i}+w^2+1 - 4w = 0 \\
+-w^2i+i+w^2+1-4w = 0\\
+w^2(1-i)-4w+i+1 = 0
 \end{gather*}
-Resolviendo, obtenemos $w_1= (\sqrt{2}+1)e^{\pi i/4}$ y $w_2 = (\sqrt{2}-1)e^{\pi i/4}$. Desaciendo el cambio, tenemos $w= e^{zi}$ y tomando logaritmo
+Resolviendo, obtenemos $w_1= (\sqrt{2}+1)e^{\pi i/4}$ y $w_2 = (\sqrt{2}-1)e^{\pi i/4}$. Deshaciendo el cambio, tenemos $w= e^{zi}$ y tomando logaritmo
 $$
 z = \begin{cases}
 \pi/4 +2\pi k + \log(\sqrt{2}+1)i\\
 \pi/4 +2\pi k + \log(\sqrt{2}-1)i
 \end{cases}
 $$
+\item Utilizando la definición de $\sen$ y $\cos$ complejos
+\begin{gather*}
+\frac{e^{iz}-e^{-iz}}{2i}-\frac{e^{iz}+e^{-iz}}{2} = 3 
+\end{gather*}
+Haciendo el cambio $w=e^{iz}\neq 0$ llegamos a
+\begin{gather*}
+\frac{w^2-1}{2i}-\frac{w^2+1}{2}-3w=0 \\ 
+-w^2i+i - w^2 - 1 -6w  = 0 \\
+-w^2(1+i)-6w - 1+i = 0 \\
+w^2(1+i)+6w + 1-i = 0
+\end{gather*}
+Resolviendo, obtenemos $w_1= (1-i)(\sqrt{7}-3)/2$ y $w_2 = (-1+i)(3+\sqrt{7})/2$. Deshaciendo el cambio, tenemos $w= e^{zi}$ y tomando logaritmo
+$$
+zi = \begin{cases}
+\log((3-\sqrt{7})/\sqrt{2})+3\pi i/4 + 2\pi i k\\
+\log((3+\sqrt{7})/\sqrt{2})+3\pi i/4 + 2\pi i k
+\end{cases}
+$$
+Luego 
+$$
+z = \begin{cases}
+-\log((3-\sqrt{7})/\sqrt{2})i +3\pi/4 + 2\pi k\\
+-\log((3+\sqrt{7})/\sqrt{2})i+3\pi/4 + 2\pi k
+\end{cases}
+$$
 \item[c)] Primeramente, escribimos la definición
 $$
-\frac{e^{iz}-e^{-iz}}{2i}-\frac{e^{iz}-+e^{-iz}}{2} = i
+\frac{e^{iz}-e^{-iz}}{2i}-\frac{e^{iz}+e^{-iz}}{2} = i
 $$
 Realizamos el cambio $w=e^{iz}$.
 $$
@@ -192,6 +219,12 @@ zi = \begin{cases}
 \log(\sqrt{3}-1)-\log(2)/2 + \pi/4 + 2k\pi i
 \end{cases}
 $$
+\item[d)] Primeramente, escribimos la definición
+$$
+\frac{e^{z}+e^{-z}}{2}-\frac{e^{z}-e^{-z}}{2} = 1 = e^{-z}
+$$
+Claramente $e^{-z}=1$ es equivalente a $1 = e^{z}$. Lo cuál sucede si y solo si $z=2k\pi i$.
+
 \item[f)] Primeramente, escribimos la definición
 $$
 2\frac{e^z+e^{-z}}{2}+\frac{e^z-e^{-z}}{2} = i

@@ -54,12 +54,11 @@ y además la serie
 $$
 p_n(z) = \sum_{i=1}^n g_i(z) (z-a) = \sum_{i=0}^n \prod_{j=0}^i (z+j)^{-1}(z+a)
 $$
-
 converge uniformemente en cada compacto de $\Omega\cup\{-a\}$.  Tenemos que si $i\geq a$
 \begin{align*}
-\lim_{z\to -a}(z+a)\prod_{j=0}^i \left(z+j\right)^{-1}& =  \lim_{z\rightarrow-a}\left(\prod_{j=0}^{a-1}(z+j)^{-1}\right)\frac{(z+a)}{(z+a)}\left(\prod_{j=a+1}^{n}(z+j)^{-1}\right)\\
-&=\lim_{z\rightarrow-a}\left(\prod_{j=1}^{a}(z+a-j)^{-1}\right)\frac{(z+a)}{(z+a)}\left(\prod_{j=1}^{n-a}(z+a+j)^{-1}\right) \\
-&=\left(\prod_{j=1}^{a}(-1)j^{-1}\right)(1)\left(\prod_{j=1}^{n-a}j^{-1}\right)=\frac{(-1)^a}{a!(n-a)!}
+\lim_{z\to -a}(z+a)\prod_{j=0}^i \left(z+j\right)^{-1}& =  \lim_{z\rightarrow-a}\left(\prod_{j=0}^{a-1}(z+j)^{-1}\right)\frac{(z+a)}{(z+a)}\left(\prod_{j=a+1}^{i}(z+j)^{-1}\right)\\
+&=\lim_{z\rightarrow-a}\left(\prod_{j=1}^{a}(z+a-j)^{-1}\right)\frac{(z+a)}{(z+a)}\left(\prod_{j=1}^{i-a}(z+a+j)^{-1}\right) \\
+&=\left(\prod_{j=1}^{a}(-1)j^{-1}\right)(1)\left(\prod_{j=1}^{i-a}j^{-1}\right)=\frac{(-1)^a}{a!(i-a)!}
 \end{align*}
 Por otra parte, si $i<a$ entonces
 $$
@@ -120,12 +119,12 @@ Consideramos $-1<a<3$ y tomamos un $\log x$ con $0<arg(x)<2\pi$.  Tomamos un key
 \lim_{x\to i} \left(\frac{x^a}{(x+i)^2}\right)' &= \lim_{x\to i}\frac{e^{\log{x}(a-1)}(a(x+i)-2x)}{(x+i)^3} = \frac{e^{\pi (a-1)i/2}2i(a-1)}{8i^3}\\ 
 &=-\frac{(a-1)}{4}e^{\pi (a-1)i/2} =\frac{(a-1)}{4}ie^{\pi ai/2} \\
 \lim_{x\to -i} \left(\frac{x^a}{(x-i)^2}\right)' &= \lim_{x\to -i}\frac{e^{\log{x}(a-1)}(a(x-i)-2x)}{(x-i)^3} =\frac{e^{3\pi (a-1)i/2}2i(-a+1)}{-8i^3}\\ 
-&=-\frac{(a-1)}{4}e^{3\pi (a-1)i/2} = -\frac{(a-1)}{4}e^{3\pi ai/2}
+&=-\frac{(a-1)}{4}i e^{3\pi i a /2}
 \end{align*}
 
 De manera que
 $$
-\int_{\Gamma_{\varepsilon,R}} \frac{e^{a \log x}}{(1+x^2)^2}dx = 2\pi i\left( \frac{a-1}{4}ie^{\pi a/2}-\frac{a-1}{4}ie^{3\pi i a /2}\right)
+\int_{\Gamma_{\varepsilon,R}} \frac{e^{a \log x}}{(1+x^2)^2}dx = 2\pi i\left( \frac{a-1}{4}ie^{\pi i a/2}-\frac{(a-1)}{4}i e^{3\pi i a /2}\right)
 $$
 Veamos qué ocurre en las cuatro integrales que conforman la integral de nuestro contorno. Primeramente, en $C_\varepsilon$ (la circunferencia interior)
 $$
@@ -135,13 +134,18 @@ Luego se anula cuando $\varepsilon \to 0$, ya que $a>-1$. Análogamente
 $$
 \abs{\int_{C_R} \frac{e^{a \log x}}{(1+x^2)^2} dx } \leq  \frac{R^a}{(R^2-1)^2}2\pi R
 $$
-Que se anula cuando $R\to\infty$, pues $a<3$. Por la elección del $arg(x)$ los laterales del corredor, cuando hacemos tender su separación a $0$, toman en un caso $arg(x)=0$ y en otro $arg(x)=2\pi$, de donde deducimos que tienden a la integral que deseamos calcular $I$ y a $-e^{2\pi a}I$. Luego
+Que se anula cuando $R\to\infty$, pues $a<3$. Por la elección del $arg(x)$ los laterales del corredor, cuando hacemos tender su separación a $0$, toman en un caso $arg(x)=0$ y en otro $arg(x)=2\pi$, de donde deducimos que tienden a la integral que deseamos calcular $I$ y a $-e^{2\pi i a}I$. Luego
 \begin{align*}
-I(1-e^{2\pi i a}) = 2\pi i\left( \frac{a-1}{4}ie^{\pi a/2}-\frac{a-1}{4}ie^{3\pi i a /2}\right)
+I(1-e^{2\pi i a}) &= 2\pi i\left( \frac{a-1}{4}ie^{\pi i a/2}-\frac{a-1}{4}ie^{3\pi i a /2}\right) \\
+&= \pi  \frac{a-1}{4}\left(e^{3\pi i a/2}-e^{\pi i a /2}\right)
+\end{align*}
+\begin{align*}
+I& = \pi  \frac{a-1}{2}\frac{e^{3\pi i a/2}-e^{\pi i a /2}}{1-e^{2\pi i a}}\\
+& = \pi  \frac{a-1}{2}\frac{e^{\pi i a/2}-e^{-\pi i a /2}}{e^{-\pi i a}-e^{\pi i a}}\\
+& =\pi \frac{1-a}{2}\frac{\sin(\pi a /2)}{\sin(\pi a)}
 \end{align*}
 \end{solucion}
 \newpage
-
 
 \begin{ejercicio}{4}
 Calcular la integral
@@ -182,13 +186,13 @@ $$
 Por tanto, en la suma se anula con la anterior.
 \item Finalmente, veamos qué ocurre en los laterales. Si $z=R +ti$ con $t\in [0,2\pi]$
 \begin{align*}
-\abs{\int_0^{2\pi} \frac{e^{-at+Ri}}{\sinh(R+ti)}dt} \leq  e^{|a|}\int_0^{2\pi}\frac{dt}{\abs{\sinh(R+ti)}} \leq  \frac{2\pi}{\sinh R}
+\abs{\int_0^{2\pi} \frac{e^{-at+Ri}}{\sinh(R+ti)}dt} \leq  e^{2\pi|a|}\int_0^{2\pi}\frac{dt}{\abs{\sinh(R+ti)}} \leq  e^{2\pi|a|}\frac{2\pi}{\sinh R}
 \end{align*}
 Claramente tiende a $0$ cuando $R\to \infty$.
 \item Para el caso $z=-R+ti$ para $t\in[2\pi,0]$.
 \end{itemize}
 \begin{align*}
-\abs{\int_{2\pi}^0 \frac{e^{-at+Ri}}{\sinh(R+ti)}dt} \leq  e^{|a|}\int_0^{2\pi}\frac{dt}{\abs{\sinh(-R+ti)}} \leq \frac{2\pi}{\sinh R}
+\abs{\int_{2\pi}^0 \frac{e^{-at+Ri}}{\sinh(R+ti)}dt} \leq  e^{2\pi|a|}\int_0^{2\pi}\frac{dt}{\abs{\sinh(-R+ti)}} \leq e^{2\pi|a|}\frac{2\pi}{\sinh R}
 \end{align*}
 Por tanto, llegamos a que
 $$
@@ -216,7 +220,7 @@ Tengamos en cuenta que $\{x_n\}$ no es una sucesión constante, pues en ese caso
 $$
 G':=\Omega \cap \Omega^*
 $$
-Naturalmente $G'$ es abierto por ser intersección de abierto. Para ver que es región consideremos el siguiente razonamiento.  Aunque $G'$ podría ser no conexo, lo que es claro es que $\R$ debe estar en alguna completamente contenido en alguna componente conexa que denominamos $G$. Definimos ahora \begin{equation*}\begin{split}
+Naturalmente $G'$ es abierto por ser intersección de abierto. Aunque $G'$ podría ser no conexo, lo que es claro es que $\R$ debe estar en alguna completamente contenido en alguna componente conexa que denominamos $G$. Definimos ahora \begin{equation*}\begin{split}
 	g : & \  G \rightarrow \C \\
 	& z \mapsto g(z) = f(z) - \overline{f(\overline{z})},
 	\end{split}
@@ -244,19 +248,19 @@ $$
 con los coeficientes $a_n \in \R$.
 \end{ejercicio}
 \begin{solucion}
-Una de las implicaciones es clara. Si $f$ tiene dicho desarrollo es el origen, que sabemos es válido al menos en $|z|<\varepsilon$, si $z\in (-\varepsilon,\varepsilon)$ y $a_n\in \R$ entonces $a_nz^{2n} \in \R$. Por tanto, la suma que supones convergente también es real. Análogamente, para $z\in (-\varepsilon i,\varepsilon i)$, $z^{2n} \in (-\varepsilon^{2n},\varepsilon^{2n})$, luego $a_n z^{2n}\in \R$.
+Una de las implicaciones es clara. Si $f$ tiene dicho desarrollo es el origen, que sabemos es válido al menos en $|z|<\varepsilon$, si $z\in (-\varepsilon,\varepsilon)$ y $a_n\in \R$ entonces $a_nz^{2n} \in \R$. Por tanto, la suma (que suponemos convergente) también es real. Análogamente, para $z\in (-\varepsilon i,\varepsilon i)$, $z^{2n} \in (-\varepsilon^{2n},\varepsilon^{2n})$, luego $a_n z^{2n}\in \R$.
 
-Recíprocamente, supongamos que $f$ toma valores reales en dichos segmentos. Podemos suponer que no son idénticamente cero al ser holomorfa. 
+Recíprocamente, supongamos que $f$ toma valores reales en dichos segmentos. 
 \begin{itemize}
 \item Consideramos el desarrollo en serie de la función
 $$\sum_{n=0}^\infty a_n z^n
 $$
 Para $z\in(-\varepsilon,\varepsilon)$, $z=\overline{z}$. Como toma valores reales $f(z)=f(\overline{z})=\overline{f(\overline{z})}$, luego
 $$
-\sum_{n=0}^\infty a_n z^n = \sum_{n=0}^\infty \overline{a_n} \overline{z} = \sum_{n=0}^\infty \overline{a_n}z^n
+\sum_{n=0}^\infty a_n z^n = \sum_{n=0}^\infty {a_n} \overline{z} = \sum_{n=0}^\infty \overline{a_n}z^n
 $$
 De donde deducimos que $a_n=\overline{a_n}$, por lo que son reales.
-\item Además, también para $z\in (-\varepsilon,\varepsilon)$ entonces tenemos que $f(iz) = \overline{f(iz)}$ (toma valores reales en $(-\varepsilon i, \varepsilon i)$ y teniendo en cuenta que $a_n \in \R$
+\item Además, también para $z\in (-\varepsilon,\varepsilon)$ entonces tenemos que $f(iz) = \overline{f(iz)}$ (toma valores reales en $(-\varepsilon i, \varepsilon i)$) y teniendo en cuenta que $a_n \in \R$
 $$
 \sum_{n=0}^\infty a_n (iz)^n = \sum_{n=0}^\infty {\overline{a_n ({iz})^n}} = \sum_{n=0}^\infty {a_n ({-iz})^n}  
 $$
@@ -321,7 +325,7 @@ $$
 entonces $f$ es constante.
 \end{ejercicio}
 \begin{solucion}
-Primeramente, como $f$ es analítica y no se anula en el disco unidad, entonces tiene sentido considerar en $|z|>1$ la función $f(1/z)$, que será analítica en $|z|>1$. Sabemos que si $g(z)$ es analítica entonces $\overline{g(\overline{z})}$ es analítica.  Por tanto, podemos considerar la función de $f$ dada por 
+Primeramente, como $f$ es analítica y no se anula en el disco unidad, entonces tiene sentido considerar en $|z|>1$ la función $f(1/z)$, que será analítica en $|z|>1$. Sabemos que si $g(z)$ es analítica entonces $\overline{g(\overline{z})}$ es analítica.  Por tanto, como $f$ no se anula en el disco, tiene sentido considerar
 $$
 g(z)=
 \begin{cases}
@@ -329,19 +333,23 @@ f(z) & |z|\leq 1\\
 1/\overline{f\left({1}/{\overline{z}}\right)} & |z|>1
 \end{cases}
 $$
-Es claro que $g$ es analítica en $|z|\neq 1$. Además es continua, pues $si z= e^{it}$ entonces
+Es claro que $g$ es analítica en $|z|\neq 1$. Además es continua, pues si $z= e^{it}$ entonces
 $$
 \lim_{z\to e^{it},|z|\leq 1}g(z)=f(e^{it})
 $$
 $$
-\lim_{z\to e^{it},|z|>1}g(z)=1/\overline{f(1/\overline{e^{it}})} = 1/\overline{f(1/e^{-it}}=\overline{f(e^{it})} = f(e^{it})
-$$ Tengamos en cuenta lo siguiente. Dado que $|z|\leq 1$ es compacto, $f(z)$ alcanza máximo y mínimo $M$ y $m$. Luego $g(z)$ está acotada en $|z|\leq 1$. Ahora tengamos en cuenta que si $|z|>1$ entonces $\abs{1/\overline{z}}<1$, luego 
+\lim_{z\to e^{it},|z|>1}g(z)=1/\overline{f(1/\overline{e^{it}})} = 1/\overline{f(1/e^{-it})}=\overline{f(e^{it})} = f(e^{it})
+$$ Tengamos en cuenta lo siguiente. Dado que $|z|\leq 1$ es compacto, $f(z)$ alcanza máximo y mínimo $M$ y $m$. Luego $g(z)$ está acotada en $|z|\leq 1$. Ahora tengamos en cuenta que si $|z|>1$ entonces $\abs{1/\overline{z}}<1$, luego si $|z|>1$
 $$|g(z)| = 1/|\overline{f\left({1}/{\overline{z}}\right)}| = 1/\abs{f\left({1}/{\overline{z}}\right)}<\frac{1}{S}
 $$
 Además, sabemos que $|f(z)|=1$ en $|z|=1$. Por tanto, si probamos que $g$ es entera, entonces por el Teorema de Liouville tendremos que $g$, y por tanto $f$, es constante.
 
-Consideremos una transformación bilineal $T$ que transforme la circunferencia en el eje real. Esa transformación lleva el exterior del disco al semiplano superior y el interior al semiplano interior (si no, cambiamos el signo). Consideramos $S$ la aplicación inversa de $T$. Por el Principio de Reflexión, tenemos que $f \circ T$ es una función entera. Por tanto, $(f\circ T)\circ T^{-1}$ también es holomorfa en $\C$ salvo quizás en un punto, pero usando que $f$ es acotada por el Teorema de Riemann tendríamos que $f$ es entera.
-
+Una posibilidad sería intentar aplicar el teorema de Morera, lo cuál es efectivo pero algo engorroso. En su lugar, utilizaremos transformaciones de Möbius 
+\begin{enumerate}
+\item Sea una transformación bilineal $T$ que transforme la circunferencia en el eje real. 
+\item Consideremos la función $f \circ T^{-1}$. Como $T^{-1}$ es holomorfa en $\C$ salvo quizás en un punto, la composición es holomorfa en $\C- \R$ salvo quizás en otro punto donde por hipótesis está acotada. Por el Teorema de Riemann, la función es holomorfa en $\C-\R$ y por el principio de Reflexión, tenemos que es entera. 
+\item Componiendo $f = f \circ T^{-1} \circ T$, tenemos que $f$ es holomorfa salvo quizá en un punto, con lo que al estar acotada aplicamos Riemann y tenemos que es entera y el resultado.
+\end{enumerate}
 \end{solucion}
 \newpage
 \end{document}
