@@ -1,0 +1,200 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+
+\usepackage{enumerate}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Variable Compleja - Relación 6}
+\author{Rafael González López}
+\maketitle
+
+
+\begin{ejercicio}{1}
+Demostrar que la función $w(z)$ definida por la integral
+$\displaystyle{w(z)=\frac{1}{\pi i}\int_{-\infty}^{+\infty}\frac{e^{-t^2}}{t-z}\,dt}$
+es analítica para $\Im(z)>0$. 
+\end{ejercicio}
+\begin{solucion}
+Como ya a estas alturas de la película uno se espera, consideremos $a>0$ y la banda $\Im(z)>a$. En tal caso aplicamos el teorema de analiticidad de integrales paramétricas. Las dos primeras condiciones son evidentes, pasemos a la tercera. Notemos que $t \in \R$ e $\Im(z)>a$, luego $|t-z| > \Im(t-z) = a>0$. Por tanto
+$$
+\abs{\frac{e^{-t^2}}{t-z}}\leq \frac{e^{-t^2}}{a} \qquad \int_{-\infty}^\infty \frac{e^{-t^2}}{a} = \frac{\sqrt{\pi}}{a}
+$$ 
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{2}
+Sea $f(z)$ la función definida  por la serie de potencias
+$\displaystyle{f(z)=\sum_{n=1}^\infty \frac{z^n}{n^2}}$.
+\begin{enumerate}[a)]
+\item ¿Dónde vale la representación anterior?
+
+Sea $\Omega$ el plano complejo con un corte a lo largo del eje real desde $1$ a $\infty$, es decir,
+$\Omega=\C\smallsetminus[1,\infty)$. 
+
+\item Demostrar que para $|z|<1$ se tiene 
+$\displaystyle{f(z)=-\int_0^z \log(1-\zeta)\frac{d\zeta}{\zeta}}$,
+tomando un camino de integración contenido en $\Omega$ con extremos $0$ y $z$. 
+\item  Demostrar que la integral en (b) permite extender $f(z)$ a todo $\Omega$ como función 
+holomorfa.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a)]
+\item[]
+\item Por la fórmula de Hadamard tenemos que $R^{-1} = \limsup \sqrt[n]{1/n^2} = 1$. Por tanto, en principio vale en $|z|<1$. En $|z|=1$ podemos aplicar el criterio M de Weierstrass para ver que también es válida la representación.
+\item Sabemos que en $\Omega$ la función $1-z$ no se anula y podemos definir $\log(1-z)$ que verifica las propiedades habituales. Definimos por tanto 
+$$
+h(z)=-\int_0^{z}\log(1-\zeta)\frac{d\zeta}{\zeta}
+$$
+Como $\Omega$ es simplemente conexo, la integral no depende del camino escogido. Ahora bien, en $|z|<1$ podemos derivar la serie anterior término a término y definir un logaritmo de manera natural como una serie de potencias, de manera que
+$$
+f'(z)=\sum_{n=1}^\infty \frac{z^{n-1}}{n} = \frac{1}{z}\sum_{n=1}^\infty \frac{z^{n}}{n} = -\frac{1}{z}\log(1-z)
+$$
+Como $f(0)=0$ tenemos que
+$$
+f(z)=-\int_0^{z}\log(1-\zeta)\frac{d\zeta}{\zeta}
+$$
+donde la integral es cualquier camino entre $0$ y $z$ contenido en $|z|<1$. Es claro que, por ejemplo, si $z\in \R$ y $-1<z<1$ entonces $f(z)=h(z)$, luego coinciden en $|z|<1$. 
+\item Consecuencia inmediata del apartado anterior. Hemos probado que $h(z)$ coincide con $f(z)$ en el disco unidad y además extiende $f(z)$ a $\Omega$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{3}
+Sea $\sum_{n=0}^\infty c_n z^n$ una serie de potencias con  radio de convergencia  $R$. Suponemos que $0<R<\infty$.  
+\begin{enumerate}[a)]
+\item  Demostrar que 
+$\displaystyle{f(z)=\sum_{n=0}^\infty \frac{c_n}{n!}z^n}$
+es una función  entera. 
+\item  Dado $0<r<R$, probar que existe una constante $M=M(r)$ tal que 
+$|f(z)|\le Me^{|z|/r}.$
+\item  Si existen constantes $A$ y $B$ tales que $|f(z)|\le A e^{B|z|}$, demostrar que 
+$BR\ge 1$.
+\item Demostrar que el orden de $f(z)$ es 1.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a)]
+\item[]
+\item Denotemos por $R'$ el radio de la nueva serie. Sabemos que
+$$
+\frac{1}{R} = \limsup_n \abs{c_n}^{1/n} \qquad\frac{1}{R'} = \limsup_n \abs{c_n\frac{1}{n!}}^{1/n}
+$$
+Como estamos trabajando con sucesiones de reales positivos, tenemos que $1/R\geq 0$. Además, siempre se tiene que
+$$
+0\leq \frac{1}{R'}=\limsup_n \abs{c_n\frac{1}{n!}}^{1/n} \leq \limsup_n \abs{c_n}^{1/n}\limsup_n\abs{\frac{1}{n!}}^{1/n} = \frac{1}{R}\limsup_n \frac{e}{n} = 0
+$$
+Por tanto, $R=\infty$.
+\item Si $0<r<R$ entonces $1/R < 1/r$. Como $1/R$ es el límite superior de $|c_n|^{1/n}$, tenemos que $1/r^n > |c_n|$ salvo para una cantidad finita. Multiplicando por una constante $M$ apropiada, lo tenemos para todo $n$. Por tanto
+$$
+|f(z)| = \abs{\sum_{n=0}^\infty \frac{c_n}{n!}z^n}\leq \sum_{n=0}^\infty \abs{\frac{c_n}{n!}z^n} \leq \sum_{n=0}^\infty M{\frac{(|z|/r)^n}{n!}} = Me^{|z|/r}
+$$
+\item Sean $A$ y $B$ que verifiquen la desigualdad. Supongamos que $BR<1$. En particular, $B<1/R$.
+$$
+|f(z)|\leq Ae^{B|z|} \qquad |f(z)|\leq Me^{|z|/B}
+$$
+\item En el apartado b) ya hemos probado que el orden es $\leq 1$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{4}
+Sea $f$ la función
+\[ f(z)\ =\frac{1}{z + 3}+2iz^3+z^5.\]
+Determinar el número de raíces que,
+contando multiplicidades, tiene $f$ en las regiones:
+\begin{enumerate}[a)]
+\item El disco abierto $\Omega_1$ de centro 0 y radio 2; es decir, $\Omega_1=\{z\in\C : |z| < 2\}$.
+\item El disco unidad abierto $\mathbb{D}$. 
+\item La corona $\Omega_2=\{z\in\C : 1/2 < |z| < 1\}$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Aplicaremos en cada caso el Teorema de Rouché.
+\begin{enumerate}
+\item En $|z|=2$ tenemos que $|z+3|\geq |z|-3 = 1$. Por tanto, si tomamos $g(z)=z^5$ tenemos
+$$
+|f(z)-g(z)| = \abs{\frac{1}{z+3}+2iz^3} \leq 1 + 2|z|^3 = 1+2^4 < 2^5 = |g(z)|
+$$
+Luego tiene $5$ raíces.
+\item En $|z|=1$ tenemos que $|z+3| \geq 3-1 = 2$, luego $|z-3|^{-1}\leq 1/2$. Tomamos $g(z)=2iz^3$.
+$$
+\abs{f(z)-g(z)} \leq 1/2+|z|^5 = 3/2 < 2 = |2iz^3|  = |g(z)|
+$$
+Luego tiene 3 soluciones. 
+\item En $|z|=1/2$ tenemos $|z+3| \leq 3+1/2 = 7/2 $.  Tomamos $g(z)=1/(z+3)$.
+$$
+\abs{f(z)-g(z)} \leq 2|z|^3+|z|^5 = 9/32 < 2/7 \leq \abs{\frac{1}{z+3}} = |g(z)|
+$$
+Luego no tiene raíces en $|z|\leq 1/2$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{5}
+Definimos una función por medio de la integral
+\[F(z)=\int_{-\infty}^\infty \frac{e^t}{1+e^{2t}}e^{izt}\,dt.\]
+Determinar el mayor abierto $G$ en que está definida la función $F(z)$ y demostrar que $F\colon G\to \C$ es holomorfa. 
+\end{ejercicio}
+\begin{solucion}
+Primeramente, tengamos ne cuenta que el denominador no se anula para ningún $t\in \R$. Vamos a tratar de aplicar el teorema de analiticidad de integrales paramétricas. Las dos primeras hipótesis se verifican para todo $z\in \C$ y $t\in \R$. Veamos dónde podemos acotar la integral.
+$$
+\abs{\frac{e^{t(1+iz)}}{1+e^{2t}}} = \frac{|e^{t(1+iz)}|}{1+e^{2t}} = \frac{e^{t(1-\Im(z))}}{1+e^{2t}}
+$$
+Si $1-\Im(z)-2\geq 0$ entonces el límite $t\to\infty$ del integrando no tiende a $0$. Por tanto, sabemos que $\Im(z)>-1$. Igualmente, si $1-\Im(z)\leq0$ el límite cuando $t\to-\infty$ no tiende a $0$, luego $\Im(z)<1$. Por tanto, nuestro candidato es
+$$
+G = \{z \in \C \mid -1 < \Im(z)<1\}
+$$
+Tomando $-1<a<b<1$ es fácil probar que es holomorfa en la banda $a<\Im(z)<b$. Si $t\geq 0$
+$$
+ \frac{e^{t(1-\Im(z))}}{1+e^{2t}} \leq \frac{e^{t(1-a)}}{1+e^{2t}} \qquad \int_0^\infty \frac{e^{t(1-a)}}{1+e^{2t}} dt < \infty 
+$$
+Si $t<0$ entonces
+$$
+ \frac{e^{t(1-\Im(z))}}{1+e^{2t}} \leq \frac{e^{t(1-b)}}{1+e^{2t}} \qquad \int_{-\infty}^0 \frac{e^{t(1-b)}}{1+e^{2t}} dt < \infty
+$$
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{6}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{7}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{8}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{9}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{10}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{11}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+
+\end{document}
