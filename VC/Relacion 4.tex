@@ -129,7 +129,7 @@ Supongamos que el orden de $f(z)$ es $\rho>0$ y consideremos $0<r<\rho$. Podemos
 $$
 \sum_{n=0}^\infty \log \left({1+\frac{|z|}{\rho^n}}\right) \leq C |z|^{r}\sum_{n=1}^\infty \frac{1}{(\rho^{r})^n}
 $$
-Si $\rho<1$ entonces $\rho^{r}<1$ y la suma converge a un cierto número $B$. Si denotamos por $A = B\cdot C$ entonces es claro que se tiene de manera contradictoria
+Si $\rho>1$ entonces $\rho^{r}>/2q21$ y la suma converge a un cierto número $B$. Si denotamos por $A = B\cdot C$ entonces es claro que se tiene de manera contradictoria
 $$
 \abs{\prod_{n=0}^\infty \left(1-\frac{z}{\rho^n}\right)} \leq e^{A|z|^{r}}
 $$
@@ -220,7 +220,7 @@ $$
 Luego, en particular, tiene orden $\leq k$.
 \item Por otro lado, si $P(z)$ es un polinomio de grado $k$ entonces para $|z|>1$ suficientemente grande
 $$
-|e^{P(z)}|\leq e^{|P(z)|}\leq e^{k|z|^k}
+|e^{P(z)}|\leq e^{|P(z)|}\leq e^{c|z|^k}
 $$
 Luego tiene orden $\leq k$. 
 \item Tenemos $E_k(z/a_n)$ es el producto de un polinomio y una exponencial elevada a un polinomio de grado $k$. Usando la proposición y las consideraciones anteriores tenemos que $E_k(z/a_n)$ tiene orden $\leq k$. 
@@ -269,8 +269,25 @@ Encontrar los transformados de los discos $|z|=r$ y las semirrectas $\arg(z)=\al
 \begin{solucion}
 \begin{enumerate}[(a)]
 \item[]
-\item 
-\item 
+\item Sea el disco $re^{it}$ con $t\in [0,2\pi)$, entonces
+$$
+T(re^{it}) =\frac{1}{2}\left(re^{it}+\frac{e^{-it}}{r}\right) = \frac{1}{2}\left(r+\frac{1}{r}\right)\cos t + \frac{i}{2}\left(r-\frac{1}{r}\right)\sin t
+$$
+Luego puede ser interpretado como la curva parametrizada por 
+\begin{align*}
+x &= \frac{1}{2}\left(r+\frac{1}{r}\right)\cos t = a\cos t\\
+y &= \frac{1}{2}\left(r-\frac{1}{r}\right)\sin t = b\sin t
+\end{align*}
+Por lo que tenemos dos casos. Si $r=1$, entonces el segmento $[-1,1]$. En otro caso, tenemos una elipse con semiejes $a$ y $b$.
+\item Sea la recta $re^{it}$ con $r\in(0,\infty)$ para cada $t \in [0,2\pi)$ fijo. Análogamente, llegamos a
+\begin{align*}
+x &= \frac{1}{2}\left(r+\frac{1}{r}\right)\cos t = a\cos t\\
+y &= \frac{1}{2}\left(r-\frac{1}{r}\right)\sin t = b\sin t
+\end{align*} 
+\begin{itemize}
+\item Si $t=0$ entonces tenemos el segmento real $(1,\infty)$. Los casos $t=\pi/2, \pi, 3\pi/2$ son análogos.
+\item En otro caso, tenemos una rama de una hipérbola.
+\end{itemize}
 \end{enumerate}
 \end{solucion}
 \newpage
@@ -281,10 +298,11 @@ Sea $\Omega$ una región simplemente conexa del plano complejo, y sea $K$ un com
 \begin{solucion}
 Podemos suponer que $\Omega\neq \emptyset$. Si $\Omega = \C$, sabemos que $K\subset D(0,R)$ y podemos tomar $\gamma = C_R$. El resultado se sigue trivialmente.
 
-Si $\Omega \neq \C$ entonces, por el Teorema de Riemann podemos considerar la aplicación $f$ biholomorfismo entre el disco unidad y $\Omega$. Como $K$ es compacto $f^{-1}(K)$ es compacto y $\exists 1>r>0$ tal que $f^{-1}(K)\subset D(0,r)$. Tomamos $\gamma = f(C_r)$. Entonces
+Si $\Omega \neq \C$ entonces, por el Teorema de Riemann podemos considerar la aplicación $f$ aplicación conforme entre el disco unidad y $\Omega$. Supongamos que $f\func{\mathbb{D}}{\Omega}$. Como $K$ es compacto $f^{-1}(K)$ es compacto y $\exists r$ con $0<r<1$ tal que $f^{-1}(K)\subset D(0,r)$. Consideremos $\gamma = C_r$ y $f \circ \gamma$. Por tanto, $\forall a \in K$
 $$
-\frac{1}{2\pi i}\int_{f(C_r)}\frac{dz}{z-a}=\frac{1}{2\pi i}\int_{C_r}\frac{f'(z)}{f(z)-f(a)}dz = 1
+n(f\circ \gamma,a)=\frac{1}{2\pi i} \int_{f \circ C_r} \frac{dz}{z-a} = \frac{1}{2\pi i}\int_{C_r} \frac{f'(z)}{f(z)-a} =  1
 $$
+En la segunda igualdad hemos hecho el cambio de variable $w = f^{-1}(z)$, con lo que $w= f^{-1}(f\circ \gamma) = \gamma$ al ser $f$ conforme. Para la última igualdad hemos usado el principio del argumento. Notemos que en $C_r$, $f(z) \neq a$, pues $a \in K$, luego $f^{-1}(a) \in f^{-1}(K) \subset |z|<r$. Además, $f$ no tiene polos (naturalmente) en $|z|<r$ y sí tiene un único $0$ por ser $f$ biyectiva.
 \end{solucion}
 \newpage
 
@@ -297,7 +315,7 @@ $$
 $$
 \begin{enumerate}[(a)]
 \item Probar que $f_a$ es inyectiva en $\Omega$ si y solo si $a\leq 8\pi$.
-\item Sea $g_=f_{4\pi}$. Probar que $g$ representa conformemente $\Omega$ en un semidisco. Determinar la imagen mediante $g$ de cada uno de los tres arcos (dos de circunferencia, y uno de recta) que componen la frontera de $\Omega$.
+\item Sea $g =f_{4\pi}$. Probar que $g$ representa conformemente $\Omega$ en un semidisco. Determinar la imagen mediante $g$ de cada uno de los tres arcos (dos de circunferencia, y uno de recta) que componen la frontera de $\Omega$.
 \item Dar una representación conforme de $\Omega$ en el primer cuadrante; de $\Omega$ en la banda abierta que forman los puntos  $z\in \C$ con $-2\pi<\Im(z) <-\pi$ y de $\Omega$ en la región $G=\{z\in\C\mid |z|>1,\;|z+1|<2\}$.
 \end{enumerate}
 \end{ejercicio}
@@ -331,6 +349,15 @@ Sean $a>0$, y $\Omega_1$ el semiplano derecho abierto al que se le quita el segm
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item La imagen por $z^2$ es $\C\setminus (-\infty,a]$. Si consideramos $z-a$, tenemos $\C\setminus (-\infty,0]$. Finalmente, sabemos que aquí podemos definir un logaritmo y considerar la raíz cuadrada. Por tanto, la representación conforme viene dada por $\sqrt{z^2-a}$.
+\item Consideremos la transformación
+$$
+S(z)= \frac{1-z}{1+z}
+$$
+Esta transformación verifica $S(1)=0$, $S(-1)=\infty$, $S(i)=-i$. Por tanto, la circunferencia unidad va en el eje imaginario. Como $S(0)=1$, el interior va al semiplano derecho. Además, el eje real va en el eje real, de manera que el segmento $(b,1]$ va en el segmento $(S(b),1]$. Usando el ejercicio anterior tomando $a=S(b)$, tenemos una representación conforme de $\Omega_2$ en el semiplano derecho. Finalmente, tengamos en cuenta que $S(0)=1$, $S(i)=-i$, $S(-i)=i$, luego el eje imaginario va la circunferencia. Además, $S(1)=0$, luego el semiplano derecho va al interior de la circunferencia.
+\end{enumerate}
 \end{solucion}
 \newpage
 \end{document}
