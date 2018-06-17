@@ -91,10 +91,19 @@ Por tanto, $R=\infty$.
 $$
 |f(z)| = \abs{\sum_{n=0}^\infty \frac{c_n}{n!}z^n}\leq \sum_{n=0}^\infty \abs{\frac{c_n}{n!}z^n} \leq \sum_{n=0}^\infty M{\frac{(|z|/r)^n}{n!}} = Me^{|z|/r}
 $$
-\item Sean $A$ y $B$ que verifiquen la desigualdad. Supongamos que $BR<1$. En particular, $B<1/R$.
+\item Sean $A$ y $B$ que verifiquen la desigualdad. Denotamos por $C_R$ la circunferencia de centro $0$ y radio $R$. Entonces
 $$
-|f(z)|\leq Ae^{B|z|} \qquad |f(z)|\leq Me^{|z|/B}
+\abs{\frac{c_n}{n!}} = \abs{\frac{1}{2\pi i}\int_{C_R}\frac{f(z)}{z^{n+1}}dz} \leq \frac{1}{2\pi} \abs{\int_0^{2\pi}\frac{f(Re^{it})}{R^{n+1}e^{(n+1)it}}Rie^{it}dz} \leq \frac{1}{2\pi}\int_0^{2\pi}\frac{Ae^{B|Re^{it}|}}{R^{n}}dz = \frac{Ae^{BR}}{R^n}
 $$
+Optimicemos esta función como función de $R$. Aplicando logaritmo y derivando obtenemos
+$$
+\log A + BR - n \log R \Rightarrow B - \frac{n}{R} = 0 \Rightarrow R = \frac{n}{B}
+$$
+Deducimos que
+$$
+|c_n| \leq n!\frac{Ae^n}{(n/B)^n} \Rightarrow |c_n|^{1/n} \leq \frac{A^{1/n}e}{n/B}n!^{1/n} \to B 
+$$
+Por tanto $1/R \leq B$ o equivalentemente $BR\geq 1$.
 \item En el apartado b) ya hemos probado que el orden es $\leq 1$.
 \end{enumerate}
 \end{solucion}
@@ -159,39 +168,206 @@ $$
 
 \newpage
 \begin{ejercicio}{6}
+Para $n\in\N$, y $z\in\C$, denotamos $f_n(z)=z^n + n^{z-1}$. 
+Sea $\Omega$ el conjunto formado por los $z\in\C$ para los que la serie
+$\sum_n f_n(z)$ converge absolutamente.
+\begin{enumerate}[a)]
+\item Probar:  $\lim_{n\to\infty}{|f_n(z)|\over |z^n|}=1$, si $|z|>1$;\quad  y \quad
+$\lim_{n\to\infty}{|f_n(z)|\over |n^{z-1}|}=1$, si $|z|<1$.
+\item Determinar el conjunto $\Omega$, y verificar que es una
+regi\'on.
+\item Si denotamos por $F(z)=\sum_{n=1}^\infty f_n(z)$, demostrar que $F$ es holomorfa en $\Omega $.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a)]
+\item[]
+\item Naturalmente $|f_n(z)|/|z^n| = |1 + n^{z-1}/z^n|$. Tenemos además que
+$$
+1-\frac{|n^{z-1}|}{|z|^n} \leq \frac{|f_n(z)|}{z^n}\leq 1 + \frac{|n^{z-1}|}{|z|^n}
+$$
+Dado que $|n^{z-1}|/|z|^n\to 0$ cuando $n\to \infty$ cuando $|z|>1$ tenemos el primer límite. Para el segundo, tenemos que $|f_n(z)|/|n^{z-1}| = |1 + z^n/n^{z-1}|$ 
+$$
+1-\frac{|z|^n}{|n^{z-1}|} \leq \frac{|f_n(z)|}{z^n}\leq 1 + \frac{|z|^n}{|n^{z-1}|}
+$$
+Como $|z|^n/|n^{z-1}| \to 0$ cuando $n\to \infty$ y $|z|<1$, tenemos el resultado.
+\item El primer límite nos indica que en $|z|>1$ la serie original diverge, pues $\sum z^n$ diverge para $|z|>1$, pues en particular $f_n(z) \not \to 0$. En $|z|=1$ tenemos
+$$
+|f_n(z)| \geq n^{z-1}-|z|^n  = n^{z-1} - 1 \not\to 0
+$$ Finalmente, en $|z|<1$. Si $\Re(z)>0$ entonces es claro que también diverge por comparación, pues $|n^{z-1}| = n^{x-1} \to \infty$. Si $\Re(z)=0$ entonces diverge ¿Por qué?. Luego 
+$$
+\Omega = \{z\in \C \mid |z|<1,\; \Re(z)<0\}
+$$
+\item Consideremos $\Omega_{r,\varepsilon} = \{z\in \C \mid |z|<r<1,\; \Re(z)<-\varepsilon<0\}$. En esta región tenemos
+$$
+|z^n+n^{z-1}| < r^n + n^{-\varepsilon-1} \qquad \sum_{n=1}^\infty r^n + n^{-\varepsilon-1} < \infty
+$$
+Por el criterio $M$ de Weierstrass tenemos que la serie converge absolutamente. Basta hacer $r\to 1$ y $\varepsilon\to 0$.
+\end{enumerate}
 \end{solucion}
 
 \newpage
 \begin{ejercicio}{7}
+Determinar todos los isomorfismos $\varphi$ entre el semiplano superior $\Omega=\{ z\in \C : \Im z >0 \}$ y el disco unidad $\mathbb{D}$ que verifican $\varphi(i)=0$. Si $K$ es el disco de centro $0$ y radio $1/2$, quién es $\varphi^{-1}(K)$?
 \end{ejercicio}
 \begin{solucion}
+Hagamos la siguiente cosideración. Sabemos los isomorfismos del semiplano al disco forman un grupo isomorfo al de los automorfismos del disco. Veamos esto. Sea
+$$
+f(z) = i\frac{1-z}{1+z}
+$$
+La aplicación $f(z)$ es un isomorfismo del disco al semiplano.
+Definimos la operación $\phi+\psi = \phi \circ f \circ \psi$. Entonces es claro que los isomorfismos del semiplano verifican trivialmente la asociatividad, la clausura y
+$$
+\psi + f^{-1} = f^{-1} + \psi = \psi \qquad \phi + (f^{-1} \circ \psi^{-1} \circ f^{-1}) = (f^{-1} \circ \psi^{-1} \circ f^{-1}) + \phi = f^{-1}
+$$
+por lo que tenemos identidad y elemento inverso. Ahora veamos que este grupo es isomorofo al de los automorfismos del disco.  Consideremos la aplicación
+$$
+F(\phi) =  \phi \circ f
+$$
+Entonces verifica
+$$
+F(\phi + \psi) =(\phi \circ f \circ \psi) \circ f= (\phi\circ f)\circ (\psi\circ f) = F(\phi)\circ G(\psi)
+$$
+Además, $F$ tiene inversa dada por $G(h) = h \circ f^{-1}$, donde $h$ es un automorfimo del disco. Por tanto, tenemos el isomorfismos entre los grupos. Ahora bien, fijémonos que si $\phi,\psi$ son dos isomorfismos del semiplano en el disco tales que $\phi(i)=\psi(i)=0$ entonces
+$$
+\phi + (f^{-1}\circ \psi^{-1} \circ f^{-1})(i) = \phi \circ \psi^{-1} \circ f^{-1} (i) = \phi\circ \psi^{-1}(0) =\phi(i)=0
+$$
+Luego los isomorfismos considerados forman un subgrupo. En el disco, estos se corresponden con los automorfismos tales que $F^{-1}(h)(i) = h \circ f^{-1}(i)= h(0) = 0$, luego son los automorfismos que dejan fijo el origen. Sabemos que estos son precisamente los giros. Por tanto, los isomorfismos del semiplano al disco que llevan $i$ a $0$ son
+$$
+\phi_\alpha(z) = e^{i\alpha}\frac{i-z}{i+z}
+$$
+\newpage
+A mí me apetecía escribir todo lo anterior por mero ejercicio intelectual, pero otra forma de llegar al mismo resultado sería la siguiente. Si $\phi$ es un isomorifsmo, en particular es una aplicación conforme, luego el borde ha de ir al borde $\phi(\R)$ tiene que ir a $|z|=1$ y $f(-i) = \infty$ por simetría. 
+\newline
+Para la segunda parte consideremos $k$ el disco $|z|<1/2$. Como la inversa de un giro es un giro, que deja invariante al disco, $\phi^{-1}(K)=f(K)$. Sabemos que
+$$
+f(0) =i \qquad f(1/2)=i/3 \qquad f(-1/2) = 3i
+$$
+Notemos que el eje real va en el eje imaginario. Además, $f(i/2)$ no es puramente imaginario, $f(K)$ es un disco. Tenemos dos punto, resta determinar el centro. Como el eje real es perpendicular a $|z|=1/2$, el eje imaginario es perpendicular al borde de $f(K)$, luego el centro está en el eje imaginario, pero ya tenemos que dos puntos del borde que están allí, luego el centro es $5i/3$ y el radio es $4/3$.
 \end{solucion}
 
 \newpage
 \begin{ejercicio}{8}
+Sea $\Omega$ la región angular $\Omega=\{ z\in \C : |\arg(z)| < \pi /4 \}$:
+\begin{enumerate}[a)]
+\item Dar un isomorfismo $f$ entre $\Omega $ y el disco unidad $\mathbb{D}$, con $f(1)=0$.
+Comprobar que $|f(2)|=3/5$.
+\item  Sea $g\colon \Omega\to \mathbb{D}$ holomorfa con $g(1)=0$ y  $g(2)=3/5$. Probar que $g$ es un 
+isomorfismo entre $\Omega $ y el disco unidad $\mathbb{D}$.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a)]
+\item[]
+\item Sabemos que la función $z^2$ es inyectiva en $\Omega$ y $z^2(\Omega)$ es precisamente el semiplano derecho. Componiendo con el giro $iz$ tenemos semiplano superior y llevamos este al disco, teniendo finalmente la aplicación
+$$
+f(z) = \frac{i-z^2i}{i+z^2i} = \frac{1-z^2}{1+z^2}
+$$
+Notemos que $f(1)=0$ y $|f(2)|= \abs{\frac{1-4}{1+4}} = 3/5$.
+\item Notemos que la composición $h = g \circ  f^{-1}$ verifica que $h$ es holomorfa, $h(0)=0$ y $|h(3/5)| = |3/5|$ luego, por el Lema de Schwarz, $h$ es una rotación. De hecho, como $h(3/5)=3/5$ $h=id$ y $f=g$.
+\end{enumerate}
 \end{solucion}
 
 \newpage
 
 \begin{ejercicio}{9}
+Se define, para cada $z\in \C$, y cada $\alpha >1/2$, la función
+$$
+Q_\alpha(z)=
+\prod_{n=1}^\infty \Bigl(1+{z\over n^\alpha}\Bigl)\exp(-z/ n^\alpha).
+$$
+\begin{enumerate}[a)]
+\item Probar que, para todo $\alpha>1/2$, la función $Q_\alpha$ está bien definida y es entera.
+\item Probar que existe $A>0$ tal que $(z+1)Q_1(z+1) = AQ_1(z)$, para todo $z\in \C$.
+\item Calcular $g(z)=Q_1(z)\cdot Q_1(-z)$, expresándola como combinación de funciones elementales.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a)]
+\item[]
+\item Sea $\alpha>1/2$ y consideremos $|z|<R$. Sabemos que $n^{\alpha}\to \infty$, luego $\exists n_0=n_0(\alpha,R) \in \N$ tal que $\forall n \geq n_0$ $n^\alpha > 2R$. Por tanto, $|z/n^\alpha|<1/2$. Vamos a ver que la suma de los logaritmos converge utilizando el criterio M de Weierstrass. Para $n\geq n_0$
+\begin{align*}
+\abs{-\frac{z}{n^\alpha}+\log\left(1+\frac{z}{n^\alpha}\right)}&=\abs{-\frac{z}{n^\alpha}+\sum_{k=1}^\infty \frac{(-1)^k}{k}\left(\frac{z}{n^\alpha}\right)^k}\\
+&=\abs{\sum_{k=2}^\infty \frac{(-1)^k}{k}\left(\frac{z}{n^\alpha}\right)^k}\\
+&\leq\sum_{k=2}^\infty \frac{1}{k}\abs{\frac{z}{n^\alpha}}^k\\
+&= \frac{|z|^2}{n^{2\alpha}}\sum_{k=2}^\infty \frac{1}{k}\abs{\frac{z}{n^\alpha}}^{k-2} \\
+&\leq \frac{R^2}{n^{2\alpha}}\sum_{k=2}^\infty \frac{1}{k}(1/2)^{k-2}\\
+&=\frac{4R^2}{n^{2\alpha}}(-\log(1/2)) \leq \frac{3R^2}{n^{2\alpha}}
+\end{align*}
+Como $\alpha>1/2$, $2\alpha>1$, por lo que la serie $\sum 3R^2/n^{2\alpha}$ converge. Por tanto, $Q_\alpha(z)$ está bien definida y es holomorfa en $|z|<R$ para $\alpha>1/2$. Como $R$ era arbitrario, deducimos que es entera.
+\item Notemos que si $1+ (z+1)/n = 0$ entonces $z = -(n+1)$. 
+\begin{align*}
+(z+1)Q_1(z+1)&=(z+1)\prod_{n=1}^\infty \Bigl(1+{z+1\over n}\Bigl)e^{-(z+1)/ n}\\
+&=(z+1)\prod_{n=1}^\infty\left(1+\frac{z}{n+1}\right)\left(1+\frac{1}{n}\right)e^{-z/n - 1/n}\\
+&=\prod_{n=1}^\infty \left(1+\frac{z}{n}\right)e^{-z/n}\prod_{m=1}^\infty \left(1+\frac{1}{m}\right)e^{-1/m}\\
+&=Q_1(z)Q_1(1)
+\end{align*}
+\item Comprobamos directamente
+\begin{align*}
+Q_1(z)Q_1(-z) &= \prod_{n=1}^\infty \left(1+\frac{z}{n}\right)e^{z/n}\prod_{n=1}^\infty \left(1-\frac{z}{n}\right)e^{-z/n}\\
+&= \prod_{n=1}^\infty \left(1-\frac{z^2}{n^2}\right)\\
+&=\frac{\sin \pi z}{\pi z}
+\end{align*}
+\end{enumerate}
 \end{solucion}
 
 \newpage
 \begin{ejercicio}{10}
+Sea $f\colon\overline{\mathbb{D}} \to \C$ continua, holomorfa en $\mathbb{D}$, y con $|f(z)|=1$, 
+para todo $z\in \partial\mathbb{D}$. Probar:
+\begin{enumerate}
+\item Si $f$ no tiene ceros en $\mathbb{D}$, entonces $f$ es constante.
+\item En todo caso $f$ tiene a lo sumo un n\'umero finito de ceros en $\mathbb{D}$.
+\item Existen $c\in\partial\mathbb{D}$, $k\ge 0$, $N\ge 0$, y $a_1$, 
+$a_2$, \dots, $a_N\in\mathbb{D}$ (no necesariamente distintos), tales que
+$$
+f(z)=c z^k \prod_{n=1}^N \biggl({z-a_n\over 1-\overline{a_n} z}\biggr)\,,\qquad
+\hbox{para todo $z\in \overline{\mathbb{D}}$.}
+$$
+
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a)]
+\item[]
+\item Supongamos que $f$ no tiene ceros en $\mathbb{D}$. Si $f$ no es constante, por su módulo alcanza el máximo en la frontera y $\exists z \in \mathbb{D}$ tal que $|f(z)|<1$. Además, existe, es holomorfa y está bien definida $g=1/f$, pero $|g(z)|=1/|f(z)| >1$ y $|g(z)|$ debería alcanzar su máximo en la frontera, donde tiene módulo 1. Por tanto, si $f$ no tiene ceros en $\mathbb{D}$ entonces es constante.
+\item Es una consecuencia del Teorema de Weierstrass: Una sucesión acotada tiene al menos un punto de acumulación. Si el conjunto de ceros en $\mathbb{D}$ fuese infinito, habría uno de acumulación, luego $f$ debería ser la función nula.	
+\item Vamos a aplicar el apartado anterior. Sean $a_1,\dotsc,a_N$ los ceros de $f$ en $0<|z|<1$ y $k$ el orden del $0$ de $f$ (si no es $f(0)\neq 0$ entonces $k=0$). Entonces la siguiente función es continua en $\overline{D}$ y holomorfa en $\mathbb{D}$
+$$
+h(z)=\frac{f(z)}{z^k}\prod_{n=1}^N \left(\frac{1-\overline{a_n}z}{z-a_n}\right)
+$$
+Por construcción, $h(z)$ no se anula en $\mathbb{D}$ y en $|z|=1$ tenemos
+$$
+|h(z)| = \abs{\frac{f(z)}{z^k}\prod_{n=1}^N \left(\frac{1-\overline{a_n}z}{z-a_n}\right)} = \frac{|f(z)|}{|z|^k}\prod_{n=1}^N \abs{\frac{1-\overline{a_n}z}{z-a_n}} = \prod_{n=1}^N \abs{\frac{1-\overline{a_n}z}{z-a_n}}=1 
+$$
+Por tanto, $h(z) = e^{it}$ para algún $t\in [0,2\pi)$ y 
+$$
+f(z) = e^{it}z^k \prod_{n=1}^N \biggl({z-a_n\over 1-\overline{a_n} z}\biggr)
+$$
+\end{enumerate}
 \end{solucion}
 
 \newpage
 \begin{ejercicio}{11}
+Supongamos que la función analítica $f(z) = \sum_{n\ge 0}
+c_n z^n$  definida en el disco unidad $\mathbb{D}$ es un isomorfismo de tal disco sobre una región $G$ de \'area $S$. Demostrar: 
+\begin{enumerate}[a)]
+\item $S = \pi \cdot \sum_{n=1}^\infty n \vert c_n\vert^2$.
+\item ({\sl Propiedad extremal de la representación sobre
+un disco}) Si $f'(0) = 1$, el área de $G$ no es menor que la
+del disco.
+\end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}[a)]
+\item[]
+\item 
+\item Sabemos que $c_n = \frac{f^{n)}(0)}{n!}$. En particular $c_1 = f'(0) = 1$. Por tanto
+$$
+S = \pi \sum_{n=1}^\infty n|c_n|^2 \geq \pi \cdot 1 \cdot 1 = \pi 
+$$
+Como $\pi$ es el área de $\mathbb{D}$ se tiene el resultado.
+\end{enumerate}
 \end{solucion}
 
 \newpage
