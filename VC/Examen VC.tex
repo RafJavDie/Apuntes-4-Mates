@@ -72,8 +72,19 @@ $\Omega^-_{R,\varepsilon}=\{z\in\C: |\Re z|\le R, \Im z<-\varepsilon\}.$
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+En los tres primeros casos vamos a aplicar el Teorema de Analiticidad de Integrales paramétricas. En los tres primeros apartados las dos primeras condiciones del teoremas son claras, luego basta probar la tercera.
 \begin{enumerate}[a)]
-\item[]
+\item Para $z$ con $\Re(z)>\varepsilon$, la función del integrando es continua en 0, luego basta estudiar el comportamiento en el infinito $|z+t| \geq |\Re(z+t)| \geq \varepsilon+t$. 
+$$
+\abs{\frac{\cos t}{(z+t)^2}} \leq \frac{1}{(t+\varepsilon)^2} \qquad \int_0^\infty \frac{1}{(t+\varepsilon)^2} dt < \infty
+$$
+\item Nuevamente, el integrando está bien definido en $0$, pues $$|z+t|^2 = |t+x + iy|^2 = (t+x)^2+y^2 \geq (t-R)^2+\varepsilon^2>0$$
+Es fácil ver que el último polinomio no tiene raíces reales. Por tanto,
+$$
+\abs{\frac{\cos t}{(z+t)^2}} \leq \frac{1}{(t-R)^2+\varepsilon^2} \qquad \int_0^\infty \frac{1}{(t-R)^2+\varepsilon^2} dt < \infty
+$$
+\item Este apartado es análogo al anterior.
+\item En $\C\setminus (-\infty,0]$.
 \end{enumerate}
 \end{solucion}
 
