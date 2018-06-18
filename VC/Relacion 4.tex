@@ -85,15 +85,7 @@ $$
 \begin{solucion}
 \begin{enumerate}[(a)]
 \item[]
-\item Sabemos que el $\cos \pi z$ se anula si y solo si $z=(2k+1)/2$ con $k\in \Z$. Sabemos que en esos puntos $\cos(\pi z)$ tiene un cero simple. ¿Cuánto vale el numerador en esos puntos? Usando la fórmula del $\cos(a+b)$.
-
-\begin{align*}
-n((2k-1)/2)&=\sqrt{2}e^{-\pi i/8}\cos\left(\frac{\pi}{4}+k\frac{\pi}{2}\right)-e^{-\frac{\pi i}{2}((2k+1)/2)^2} \\
-&= \sqrt{2}e^{-\pi i/8}(\sqrt{2}^{-1}\cos(k\pi/2)+\sqrt{2}^{-1}\sin(k\pi/2))-e^{-\pi i/8}e^{-\pi i (k^2+k)/2}\\
-&=e^{-\pi i/8}(\cos(k\pi/2)+\sin(k\pi/2)-e^{-\pi i (k^2+k)/2}) = 0
-\end{align*}
-
-Veamos que las funciones repiten sus valores módulo 4, una simple tabla nos permite ver que se anula.
+\item 
 \item 
 \end{enumerate}
 \end{solucion}
@@ -158,7 +150,13 @@ $$
 Por tanto, $e^{g(z)}$ es constante y $f$ también. 
 
 \end{solucion}
-
+\begin{solucion}
+Si $f$ omite $a$ y $b$ entonces $f(z)-a$, al ser de orden finito, puede escribirse como $f(z)-a = e^{g(z)}$ donde $g(z)$ en polinomio. Por tanto, $f(z)=e^{g(z)}+a$. Si $g(z)$ es constante, hemos acabado. En caso contrario, $\exists z_1$ tal que $g(z_1) = \log (b-a)$ para algún logaritmo. Por tanto
+$$
+f(z_1) = e^{g(z_1)}+e^{\log(b-a)}+a = b
+$$
+Lo cual es una contradicción.
+\end{solucion}
 \newpage
 
 

@@ -200,11 +200,11 @@ $$
 $$
 Entonces tenemos que la integral sobre el contorno es $2\pi i A$. Por otra parte, Si hemos escogido el logaritmo de tal forma que el argumento por la parte superior es $0$ y por la inferior es $2\pi$, tenemos que la integral en el pasillo, cuando tenemos la longitud del mismo a $0$, se convierten en $L(s)$ y $-e^{2\pi s}L(s)$. Finalmente, analicemos qué ocurre en las circunferences $C_R$ y $C_\varepsilon$. Por una parte
 $$
-\abs{\int_{C_R}\frac{z^s}{1+z^8}} \leq 2\pi R \frac{R^{\Re(s)}}{R^8-1} \to 0
+\abs{\int_{C_R}\frac{z^s}{1+z^8}dz} \leq 2\pi R \frac{R^{\Re(s)}}{R^8-1} \to 0
 $$
 Pues $\Re(s)+1 < 8$. Veamos qué ocurre en la circunferencia interior
 $$
-\abs{\int_{C_\varepsilon}\frac{z^s}{1+z^8}} \leq 2\pi R \frac{\varepsilon^{\Re(s)}}{\varepsilon^8-1} \to 0
+\abs{\int_{C_\varepsilon}\frac{z^s}{1+z^8}dz} \leq 2\pi R \frac{\varepsilon^{\Re(s)}}{\varepsilon^8-1} \to 0
 $$
 Como $\Re(s)>-1$ entonces $\Re(s)+1>0$, por lo que se tiene el resultado. Por tanto
 $$
@@ -304,7 +304,7 @@ K(s) =\int_0^\infty e^{-(t+\frac{1}{t})}t^s\frac{dt}{t} = - \int_\infty^0 e^{-1/
 $$
 \item Directamente
 $$
-|K(s)| = \abs{\int_0^\infty e^{-(t+\frac{1}{t})}t^{s-1}dt}\leq \int_0^\infty e^{-t}\abs{t^{s-1}}dt \leq \int_0^\infty e^{-t}{t^{\sigma-1}}dt = K(\sigma)
+|K(s)| = \abs{\int_0^\infty e^{-(t+\frac{1}{t})}t^{s-1}dt}\leq \int_0^\infty e^{-t}\abs{t^{s-1}}dt \leq \int_0^\infty e^{-t}{t^{\sigma-1}}dt = \Gamma(\sigma)
 $$
 Hemos usado que $|t^{s}| = t^{\Re(s)} = t^\sigma$.
 \end{enumerate}
