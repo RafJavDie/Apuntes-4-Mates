@@ -104,7 +104,15 @@ $$
 |c_n| \leq n!\frac{Ae^n}{(n/B)^n} \Rightarrow |c_n|^{1/n} \leq \frac{A^{1/n}e}{n/B}n!^{1/n} \to B 
 $$
 Por tanto $1/R \leq B$ o equivalentemente $BR\geq 1$.
-\item En el apartado b) ya hemos probado que el orden es $\leq 1$.
+\item En el apartado b) ya hemos probado que el orden es $\leq 1$. Supongamos que $\exists r$ con $0<r<1$ tal que $\exists A,B>0$ con $|f(z)|\leq Ae^{B|z|^r}$. Entonces podemos escribir
+$$
+|f(z)|\leq Ae^{B|z||z|^{r-1}}
+$$
+Como $r-1<0$ para $|z|$ suficentemente grande tenemos que $|z|^{r-1}<\varepsilon$. Multiplicando por una constante $A'(\varepsilon)$ tenemos que $\forall z \in \C$
+$$
+|f(z)|\leq A'(\varepsilon)e^{B \varepsilon|z|}
+$$
+Tomando $\varepsilon = 1/(2RB)$ la cota debería seguir verificándose, pero $RB\varepsilon = 1/2 < 1$ lo cual contradice lo probado en $c)$.
 \end{enumerate}
 \end{solucion}
 
@@ -194,7 +202,8 @@ Como $|z|^n/|n^{z-1}| \to 0$ cuando $n\to \infty$ y $|z|<1$, tenemos el resultad
 \item El primer límite nos indica que en $|z|>1$ la serie original diverge, pues $\sum z^n$ diverge para $|z|>1$, pues en particular $f_n(z) \not \to 0$. En $|z|=1$ tenemos
 $$
 |f_n(z)| \geq n^{z-1}-|z|^n  = n^{z-1} - 1 \not\to 0
-$$ Finalmente, en $|z|<1$. Si $\Re(z)>0$ entonces es claro que también diverge por comparación, pues $|n^{z-1}| = n^{x-1} \to \infty$. Si $\Re(z)=0$ entonces diverge ¿Por qué?. Luego 
+$$ 
+Consideremos ahora $|z|<1$. Si $\Re(z)>0$ entonces es claro que también diverge por comparación, pues $|n^{z-1}| = n^{x-1} \to \infty$. Si $\Re(z)=0$ entonces diverge pues $|z^n+n^{z-1}| > n^{-1} - |z|^n \to \infty$. Por tanto, 
 $$
 \Omega = \{z\in \C \mid |z|<1,\; \Re(z)<0\}
 $$
@@ -237,7 +246,11 @@ $$
 \phi_\alpha(z) = e^{i\alpha}\frac{i-z}{i+z}
 $$
 \newpage
-A mí me apetecía escribir todo lo anterior por mero ejercicio intelectual, pero otra forma de llegar al mismo resultado sería la siguiente. Si $\phi$ es un isomorifsmo, en particular es una aplicación conforme, luego el borde ha de ir al borde $\phi(\R)$ tiene que ir a $|z|=1$ y $f(-i) = \infty$ por simetría. 
+A mí me apetecía escribir todo lo anterior por mero ejercicio intelectual, pero otra forma de llegar al mismo resultado sería la siguiente. Si $\phi$ es un isomorifsmo del semiplano al disco, entonces $h = f \circ \phi$ es un automorfismo del disco. Hemos probado en Teoría que los automorfismos del disco son transformaciones bilineales. Por tanto, $\phi = f^{-1}\circ h$ es una transformación bilineal. Como $\phi(i)=0$ tenemos que $z-i$ es un factor. Como $\phi$ lleva el eje real en la circunferencia unidad y $\phi$ es una transformación bilineal, el simétrico de $i$ respecto del eje real ($-i$) tiene que ir en el simétrico de $0$ respecto de la circunferencia ($\infty$), por lo que 
+$$
+\phi(z) = a \frac{z-i}{z+i}
+$$
+Como $|a| = 1$ por ir al disco, tenemos que $a = e^{it}$ para algún $t \in [0,2\pi)$.
 \newline
 Para la segunda parte consideremos $k$ el disco $|z|<1/2$. Como la inversa de un giro es un giro, que deja invariante al disco, $\phi^{-1}(K)=f(K)$. Sabemos que
 $$

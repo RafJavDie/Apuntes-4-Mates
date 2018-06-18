@@ -151,7 +151,12 @@ F'(z)&=\int_0^\infty -e^{-t^2} \sin(2zt) 2t dt \\
 &= -2 z\int_0^\infty e^{-t^2}\cos(2zt)\\
 &= -2zF(z)
 \end{align*}
-
+\item Utilizando el apartado anterior
+$$
+(e^{z^2}F(z))' = 2ze^{z^2}F(z) + e^{z^2}F'(z) =  2ze^{z^2}F(z) -  2ze^{z^2}F(z)  = 0
+$$
+Por lo que $F(z)e^{z^2}$ es constante.
+\item Deducimos inmediatamente de lo anterior que $\exists c \in \C$ tal que $F(z)=ce^{-z^2}$. Evaluando la integral tenemos que $F(0)=\int_0^\infty e^{-t^2}dt = \sqrt{\pi}/2$, por lo que se tiene el resultado.
 \end{enumerate}
 \end{solucion}
 \newpage
@@ -194,22 +199,7 @@ Cuando $x\to \infty$ $x^{\Re(s)}\leq x^b$, mientras que cuando $x\to 0$ $x^{\Re(
 $$
 L(s)=\int_0^\infty \frac{x^s\,dx}{1+x^8} = -\int_\infty^0 \frac{w^{-s}}{1+1/w^8}\frac{dw}{w^2}= \int_0^\infty \frac{w^{6-s}}{x^8+1}dw = L(6-s)
 $$
-\item Vamos a probar con un contorno de juguete centrado en el 0 de radio $R$. Sea $A$ la suma de los residuos de la función
-$$
-\frac{z^s}{1+z^8}
-$$
-Entonces tenemos que la integral sobre el contorno es $2\pi i A$. Por otra parte, Si hemos escogido el logaritmo de tal forma que el argumento por la parte superior es $0$ y por la inferior es $2\pi$, tenemos que la integral en el pasillo, cuando tenemos la longitud del mismo a $0$, se convierten en $L(s)$ y $-e^{2\pi s}L(s)$. Finalmente, analicemos qué ocurre en las circunferences $C_R$ y $C_\varepsilon$. Por una parte
-$$
-\abs{\int_{C_R}\frac{z^s}{1+z^8}dz} \leq 2\pi R \frac{R^{\Re(s)}}{R^8-1} \to 0
-$$
-Pues $\Re(s)+1 < 8$. Veamos qué ocurre en la circunferencia interior
-$$
-\abs{\int_{C_\varepsilon}\frac{z^s}{1+z^8}dz} \leq 2\pi R \frac{\varepsilon^{\Re(s)}}{\varepsilon^8-1} \to 0
-$$
-Como $\Re(s)>-1$ entonces $\Re(s)+1>0$, por lo que se tiene el resultado. Por tanto
-$$
-L(s) = 2\pi i \frac{A}{1-e^{2\pi s}}
-$$
+
 \end{enumerate}
 \end{solucion}
 \newpage
@@ -240,10 +230,18 @@ $$
 \end{solucion}
 \newpage
 \begin{ejercicio}{9}
-Prueba el recíproco del teorema de Runge: si $K$ es un compacto cuyo complementario no es conexo, entonces existe una función $f$ holomorfa en un entorno de $K$ que no puede ser aproximada uniformemente por un polinomio en $K$. (Pista: Toma un punto $z_0$ en una componente acotada de $K^c$, muestra que existe un polinomio $p$ tal que $|(z-z_0)p(z)-1|\leq 1$. Usa el principio del módulo máximo para mostrar que esta desiguladad sigue siendo cierta para todo $z$ en la componente de $K^c$ que contiene a $z_0$.)
+Prueba el recíproco del teorema de Runge: si $K$ es un compacto cuyo complementario no es conexo, entonces existe una función $f$ holomorfa en un entorno de $K$ que no puede ser aproximada uniformemente por un polinomio en $K$. (Pista: Toma un punto $z_0$ en una componente acotada de $K^c$, muestra que existe un polinomio $p$ tal que $|(z-z_0)p(z)-1|< 1$. Usa el principio del módulo máximo para mostrar que esta desiguladad sigue siendo cierta para todo $z$ en la componente de $K^c$ que contiene a $z_0$.)
 \end{ejercicio}
 \begin{solucion}
-Consideremos un compacto $K$ tal que su complementario no sea conexo y sea $w \in K^c$ un elemento de la componente acotada.
+Consideremos un compacto $K$ tal que su complementario no sea conexo y sea $z_0 \in K^c$ un elemento de alguna componente componente acotada que denominamos $G$. Por reducción al absurdo, supongamos que toda función puede ser aproximada por polinomios y consideremos $f(z)=(z-z_0)^{-1}$. Como $K$ es compacto y $f(z)$ es continua en $K$, si $|f(z)|$ está acotada por una constante $m$ en $K$. Por hipótesis, $\exists p(z)$ tal que $\forall z \in K$
+$$
+|f(z)|-|p(z)|\leq |p(z)-f(z)| < m \leq |f(z)|
+$$
+Si multiplcamos por $|z-z_0|$, nos queda finalmente $\forall z \in K$
+$$
+1-|p(z)(z-z_0)| < 1 \Leftrightarrow |p(z)(z-z_0)|>0
+$$
+Ahora bien, si $G$ es la componente de $K^c$ donde está $z_0$, la desigualdad anterior es válida para $ \partial G \subset K$. Pero $p(z)(z-z_0)$ son funciones enteras, luego por el principio del módulo máximo, como $G$ es acotada, si la cota vale en la frontera vale también en su interior. En particular, la cota debería ser válida para $z=z_0$, lo cuál no es posible.
 \end{solucion}
 \newpage
 \begin{ejercicio}{10}
@@ -304,9 +302,19 @@ K(s) =\int_0^\infty e^{-(t+\frac{1}{t})}t^s\frac{dt}{t} = - \int_\infty^0 e^{-1/
 $$
 \item Directamente
 $$
-|K(s)| = \abs{\int_0^\infty e^{-(t+\frac{1}{t})}t^{s-1}dt}\leq \int_0^\infty e^{-t}\abs{t^{s-1}}dt \leq \int_0^\infty e^{-t}{t^{\sigma-1}}dt = \Gamma(\sigma)
+|K(s)| = \abs{\int_0^\infty e^{-(t+\frac{1}{t})}t^{s-1}dt}\leq \int_0^\infty e^{-t}\abs{t^{s-1}}dt = \int_0^\infty e^{-t}{t^{\sigma-1}}dt = \Gamma(\sigma)
 $$
 Hemos usado que $|t^{s}| = t^{\Re(s)} = t^\sigma$.
+\item Hagamos la siguiente consideración. Si $|s|= R$. Podemos suponer que $R>1$.
+$$
+|K(s)| = \abs{\int_0^\infty e^{-(t+\frac{1}{t})}t^{s-1}dt}\leq \int_0^\infty e^{-t-1/t}\abs{t^{s-1}}dt = \int_0^\infty e^{-t-1/t}{t^{\sigma-1}}dt = K(\sigma)
+$$
+Como $K(s)$ es par, basta considerar $0\leq \sigma \leq R$. Sabemos que $K(s)$ es entera, luego $|K(s)| \leq M$ si $0\leq \sigma \leq 1$. Tengamos en cuenta que si $\sigma \geq 1$ entonces $\Gamma(\sigma)$ es creciente. Si $1\leq \sigma \leq R$ entonces 
+$$|K(s)|\leq K(\sigma)\leq \Gamma(\sigma) \leq \Gamma(R)$$ Sea $n$ el menor natural tal que $n\leq R < 2n$, entonces $\Gamma(R) < (2n)! \leq (2n)^{2n} < (2R)^{2R}$. Multiplicando por una constante adecuada, esta cota es válida en . Por tanto
+$$
+|K(s)| < A(2R)^{2R} = Ae^{2R\log(2R)} \leq Ae^{2C(\varepsilon)R^{1+\varepsilon}}= Ae^{2C(\varepsilon)|s|^{1+\varepsilon}}
+$$
+Como tenemos una cota válida para todo $\varepsilon>0$ tenemos que el orden es $\leq 1$.
 \end{enumerate}
 \end{solucion}
 \newpage

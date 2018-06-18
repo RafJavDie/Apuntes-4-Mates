@@ -29,7 +29,7 @@ $K\subset\Omega$ de manera que $f$ no se pueda aproximar uniformemente en $K$ po
 \item La función $\cos \sqrt{z}$.
 \item Basta encontrar la distancia entre $2+i$ y la discontinuidad más próxima de la función a dicho punto. Un análisis heurístico revela que esta es $z=\pi/2$, luego $R=\sqrt{1 + (2 - \pi/2)^2}$.
 \item Tomamos $f(z)=1/z$ definida en $\Omega = \C\setminus\{0\}$ y el compacto $K=\{z\mid 1\leq |z|\leq 2\}$.
-\item 
+\item Supongamos que planteamos el problema de Dirichlet en una región simplemente conexa $\Omega$ distinta de $\C$. Por el Teorema de Riemann sabemos que existe $F\func{ \mathbb{D}}{\Omega}$. Aunque en general no tiene por qué ocurrir, bajo ciertas hipótesis puede suponer que $F$ se extiende continuamente a una función $F\func{\overline{\mathbb{D}}}{\overline{\Omega}}$. Dado que sabemos resolver explícitamente el problema de Dirichlet en el disco y la composición de una función harmónica y una analítica es harmónica, podemos resolver fácilmente el problema original.
 \end{enumerate}
 \end{solucion}
 
@@ -78,7 +78,7 @@ En los tres primeros casos vamos a aplicar el Teorema de Analiticidad de Integra
 $$
 \abs{\frac{\cos t}{(z+t)^2}} \leq \frac{1}{(t+\varepsilon)^2} \qquad \int_0^\infty \frac{1}{(t+\varepsilon)^2} dt < \infty
 $$
-\item Nuevamente, el integrando está bien definido en $0$, pues $$|z+t|^2 = |t+x + iy|^2 = (t+x)^2+y^2 \geq (t-R)^2+\varepsilon^2>0$$
+\item Nuevamente, el integrando está bien definido en $0$, pues $$|z+t|^2 = |t+x + iy|^2 \geq t^2+x^2-2xt + \varepsilon^2 \geq t^2 - R^2-2Rt + \varepsilon^2$$
 Es fácil ver que el último polinomio no tiene raíces reales. Por tanto,
 $$
 \abs{\frac{\cos t}{(z+t)^2}} \leq \frac{1}{(t-R)^2+\varepsilon^2} \qquad \int_0^\infty \frac{1}{(t-R)^2+\varepsilon^2} dt < \infty
@@ -102,21 +102,53 @@ Consideremos la función $f(z)=e^{2\pi z^2}-1$.
 \item[]
 \item Tomando logaritmo en $e^{2\pi z^2} = 1$ tenemos directamente que
 $$
-2\pi z^2 = 2\pi i k \qquad z^2 = ik \qquad z = \pm \frac{1+i}{2}\sqrt{k} 
+2\pi z^2 = 2\pi i k \qquad z^2 = ik \qquad z = \pm \frac{1+i}{\sqrt{2}}\sqrt{k} 
 $$
-Denotemos por $a_k$ los ceros de $f$. La multiplicidad de cualquiera de ellos es $1$, pues
+Denotemos
 $$
-\lim_{z\to a_k} \frac{e^{2\pi z^2}-1}{z-a_k} = \lim_{z\to a_k}4\pi z {e^{2\pi z^2}} \neq 0
+a_k = \begin{cases}
+\frac{1+i}{\sqrt{2}}\sqrt{k} & k\geq 0\\
+-\frac{1+i}{\sqrt{2}}\sqrt{-k} & k\leq 0
+\end{cases}
+\qquad
+b_k = ia_k
 $$
+Que son precisamente los ceros de $f$. La multiplicidad de cualquiera de ellos es $1$ salvo que $a_0=b_0=0$ que naturalmente es doble. 
 \item Trivialmente 2.
 \item Lo de simplificar igual está complicado, pero vamos a ver qué sale
 \begin{align*}
 f(z) & = e^{2\pi z^2}-1\\
-&= e^{Az^2+Bz+C}z\prod_{n=1}^\infty E_2(z/a_n)E_2(z/a_{-n})\\
-&= e^{Az^2+Bz+C}z\prod_{n=1}^\infty (1-z/a_n)(1+z/a_n)e^{z^2/a_n^2}\\
-&=e^{Az^2+Bz+C}z\prod_{n=1}^\infty (1-z^2/a_n^2)e^{z^2/a_n^2}\\
-&=e^{Az^2+Bz+C}z\prod_{n=1}^\infty (1+z^2i/n)e^{z^2i/n}\\
+&= e^{Az^2+Bz+C}z^2\prod_{\substack{n=1}}^\infty E_2(z/a_{n}E_2(z/a_{-n})\prod_{\substack{n=1}}^\infty E_2(z/b_{-n})E_2(z/b_{-n})\\
+&= e^{Az^2+Bz+C}z^2\prod_{n=1}^\infty E_2(z/a_n)E_2(-z/a_{n})\prod_{n=1}^\infty E_2(z/b_n)E_2(-z/b_n)\\
+&= e^{Az^2+Bz+C}z^2\prod_{n=1}^\infty (1-z^2/a_n^2)e^{z^2/a_n^2}\prod_{n=1}^\infty  (1-z^2/b_n^2)e^{z^2/b_n^2}\\
+&= e^{Az^2+Bz+C}z^2\prod_{n=1}^\infty (1-z^2/a_n^2)e^{z^2/a_n^2}\prod_{n=1}^\infty  (1+z^2/a_n^2)e^{-z^2/a_n^2}\\
+&= e^{Az^2+Bz+C}z^2\prod_{n=1}^\infty (1+iz^2/n)e^{-iz^2/n}\prod_{n=1}^\infty  (1-iz^2/n)e^{iz^2/n}\\
+&= e^{Az^2+Bz+C}z^2\prod_{n=1}^\infty (1-(z^2i)^2/n^2)
 \end{align*}
+Sabemos que 
+$$
+\frac{\sin \pi z}{z\pi} =\prod_{i=1}^\infty\left(1-\frac{z^2}{n^2}\right)
+$$
+Por tanto
+$$
+f(z) = e^{Az^2+Bz+C}\sin(\pi z^2i) = ie^{Az^2+Bz+C}\sinh(\pi z^2)  
+$$
+Veamos los coeficientes del polinomio. Como $f(z)$ es par es claro que $B=0$. Dividiendo por $z^2$ y tomando límite tenemos que $C=\log (-2i)$, luego
+$$
+f(z)=2 e^{Az^2}\sinh(\pi z^2) 
+$$
+Sabemos que
+$$
+f(z)=e^{2\pi z^2} -1 = e^{\pi z^2}(e^{\pi z^2}-e^{-\pi z^2}) = 2e^{\pi^2 z^2} \sinh \pi z^2
+$$
+Luego $A=\pi$. Otra forma de ver esto es la siguiente.
+\begin{align*}
+e^{2\pi z^2} -1 &= 2\pi z^2 + 2\pi^2 z^4 + \dotsc\\
+e^{Az^2} &= 1 + Az^2 + \frac{A^2}{2}z^4 + \dotsc\\
+\prod_{n=1}^\infty (1+z^4/n^2) &= 1 + \dotsc \\
+2e^{Az^2}z^2  \prod_{n=1}^\infty (1+z^4/n^2) &= 2Az^2 + \dotsc
+\end{align*}
+Luego $2A = 2\pi$.
 \end{enumerate}
 \end{solucion}
 
