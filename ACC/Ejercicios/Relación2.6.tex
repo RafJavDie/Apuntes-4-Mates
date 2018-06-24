@@ -132,13 +132,12 @@ $$S(x^{α(i)}g_i, x^{α(j)}g_j) = x^{δ−γ_{ij}}S(g_i, g_j),$$
 where $x^{γ_{ij}} = \lcm (LM(g_i), LM(g_j))$.
 \end{ejercicio}
 \begin{solucion}
-En primer lugar, tenemos que $LT(x^{\alpha(i)}g_i)=x^{\alpha(i)}LT(g_i)$ e igualmente se tiene $LM(x^{\alpha(i)}g_i)=x^{\alpha(i)}LM(g_i)$. Denotamos $x^{\gamma}=\lcm (x^{α(i)}LM(g_i),x^{α(j)}LM(g_j))$, entonces 
-\begin{align*}S(x^{α(i)}g_i, x^{α(j)}g_j)&=\frac{x^{\gamma}}{x^{\alpha(i)}LT(g_i)}x^{α(i)}g_i-\frac{x^{\gamma}}{x^{\alpha(j)}LT(g_j)}x^{α(j)}g_j\\
-&=\frac{x^{\gamma}}{LT(g_i)}g_i-\frac{x^{\gamma}}{LT(g_j)}g_j\\
-&=x^{\gamma-\gamma_{ij}}\left(\frac{x^{\gamma_{ij}}}{LT(g_i)}g_i-\frac{x^{\gamma_{ij}}}{LT(g_j)}g_j\right)\\
-&=x^{\gamma-\gamma_{ij}} S(g_i,g_j)
+En primer lugar, tenemos que $LT(x^{\alpha(i)}g_i)=x^{\alpha(i)}LT(g_i)$ e igualmente se tiene $LM(x^{\alpha(i)}g_i)=x^{\alpha(i)}LM(g_i)$. Sabemos que $x^{\delta}=\lcm (x^{α(i)}LM(g_i),x^{α(j)}LM(g_j))$, entonces 
+\begin{align*}S(x^{α(i)}g_i, x^{α(j)}g_j)&=\frac{x^{\delta}}{x^{\alpha(i)}LT(g_i)}x^{α(i)}g_i-\frac{x^{\delta}}{x^{\alpha(j)}LT(g_j)}x^{α(j)}g_j\\
+&=\frac{x^{\delta}}{LT(g_i)}g_i-\frac{x^{\delta}}{LT(g_j)}g_j\\
+&=x^{\delta-\gamma_{ij}}\left(\frac{x^{\gamma_{ij}}}{LT(g_i)}g_i-\frac{x^{\gamma_{ij}}}{LT(g_j)}g_j\right)\\
+&=x^{\delta-\gamma_{ij}} S(g_i,g_j)
 \end{align*}
-Es fácil ver que $\gamma-\gamma_{ij}\geq 0$. Por tanto, tenemos que probar que $\gamma-\gamma_{ij}=\delta-\gamma_{ij}$, es decir, que $\gamma = \delta$.  Esto se deduce de que $\delta$ es el multigrado de ambos polinomios y si $f$ y $g$ tienen multigrado $\nu$ entonces $\lcm (f,g)$ también tiene multigrado $\nu$.
 \end{solucion}
 
 \newpage
@@ -152,8 +151,8 @@ $$
 S(f,g)= -xy+z = 0\cdot f + 0\cdot g + (-xy+z)
 $$
 El resto de dividir $S(f,g)$ por $\{f,g\}$ no es $0$, por lo que no es una base de Gröbner.
-
-Una solución alternativa es la siguiente. Tenemos que  $\gene{LT(f),LT(g)}=\gene{-x^2,-x^3}=\gene{x^2}$. Sea $h=g-xf=z-y\in I$, pero $LT(h)=-y\notin\gene{LT(f),LT(g)}$.
+\end{solucion}
+\begin{solucion} Tenemos que  $\gene{LT(f),LT(g)}=\gene{-x^2,-x^3}=\gene{x^2}$. Sea $h=g-xf=z-y\in I$, pero $LT(h)=-y\notin\gene{LT(f),LT(g)}$.
 \end{solucion}
 
 \newpage
