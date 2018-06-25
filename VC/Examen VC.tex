@@ -53,7 +53,13 @@ Se define la sucesión $(F_n)$ como los coeficientes del desarrollo de potencias
 & = 
 \frac{1}{\sqrt{5}}\sum_{n=0}^\infty z^n\left(\frac{1}{B^{n+1}}-\frac{1}{A^{n+1}}\right)
 \end{align*}
-La existencia y unicidad es consecuencia de que $f$ sea holomorfa en un entorno del origen.
+La existencia y unicidad es consecuencia de que $f$ sea holomorfa en un entorno del origen. Una alternativa al desarrollo anterior sería la siguiente
+\begin{align*}
+\frac{1}{1-z-z^2}& = -\frac{z-A}{z-B} \\
+&=-\frac{1}{AB}\frac{1}{1-z/A}\frac{1}{1-z/B}\\
+&= -\frac{1}{AB}\sum_{n=0}^\infty (z/A)^n\sum_{m=0}^\infty (z/B)^m\\
+&= -\frac{1}{AB}\sum_{n=0}^\infty \sum_{m=0}^n \frac{z^n}{A^mB^{n-m}}
+\end{align*}
 \item $F_0 = 0$. $F_1 = 1$, $F_2 = 1$, $F_3 = 2$, $F_4=3$, $F_5=5$ y $F_6 = 8$.
 \item Claramente sigue la sucesión de Fibonacci, descrita por $a_0 =0$, $a_1=1$ y $a_n = a_{n-1}+a_{n-2}$ para $n\geq 2$.
 \end{enumerate}
@@ -78,7 +84,10 @@ En los tres primeros casos vamos a aplicar el Teorema de Analiticidad de Integra
 $$
 \abs{\frac{\cos t}{(z+t)^2}} \leq \frac{1}{(t+\varepsilon)^2} \qquad \int_0^\infty \frac{1}{(t+\varepsilon)^2} dt < \infty
 $$
-\item Nuevamente, el integrando está bien definido en $0$, pues $$|z+t|^2 = |t+x + iy|^2 \geq t^2+x^2-2xt + \varepsilon^2 \geq t^2 - R^2-2Rt + \varepsilon^2$$
+\item Nuevamente, el integrando está bien definido en $0$, pues $$|z+t|^2 = |t+x + iy|^2 = (t+x)^2 + y^2 \geq (t+x)^2 + \varepsilon^2 $$
+$$
+(t-x)^2 = t^2 + x^2 + 2xt \geq t^2 + x^2 - 2xt  
+$$
 Es fácil ver que el último polinomio no tiene raíces reales. Por tanto,
 $$
 \abs{\frac{\cos t}{(z+t)^2}} \leq \frac{1}{(t-R)^2+\varepsilon^2} \qquad \int_0^\infty \frac{1}{(t-R)^2+\varepsilon^2} dt < \infty
@@ -118,7 +127,7 @@ Que son precisamente los ceros de $f$. La multiplicidad de cualquiera de ellos e
 \item Lo de simplificar igual está complicado, pero vamos a ver qué sale
 \begin{align*}
 f(z) & = e^{2\pi z^2}-1\\
-&= e^{Az^2+Bz+C}z^2\prod_{\substack{n=1}}^\infty E_2(z/a_{n}E_2(z/a_{-n})\prod_{\substack{n=1}}^\infty E_2(z/b_{-n})E_2(z/b_{-n})\\
+&= e^{Az^2+Bz+C}z^2\prod_{\substack{n=1}}^\infty E_2(z/a_{n})E_2(z/a_{-n})\prod_{\substack{n=1}}^\infty E_2(z/b_{-n})E_2(z/b_{-n})\\
 &= e^{Az^2+Bz+C}z^2\prod_{n=1}^\infty E_2(z/a_n)E_2(-z/a_{n})\prod_{n=1}^\infty E_2(z/b_n)E_2(-z/b_n)\\
 &= e^{Az^2+Bz+C}z^2\prod_{n=1}^\infty (1-z^2/a_n^2)e^{z^2/a_n^2}\prod_{n=1}^\infty  (1-z^2/b_n^2)e^{z^2/b_n^2}\\
 &= e^{Az^2+Bz+C}z^2\prod_{n=1}^\infty (1-z^2/a_n^2)e^{z^2/a_n^2}\prod_{n=1}^\infty  (1+z^2/a_n^2)e^{-z^2/a_n^2}\\

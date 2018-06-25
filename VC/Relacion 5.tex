@@ -253,17 +253,17 @@ Sabemos que estudiar el producto infinito es equivalente a estudiar la suma de l
 $$
 \sum_{n=1}^\infty \log\Bigl(1-\frac{z}{n^{1/2}}\Bigr) + \frac{z}{n^{1/2}}+\frac{z^2}{2n}
 $$
-Sabemos que en $|z|<1$ podemos definir $\log (1-z)$ de manera natural como una serie de potencias. Luego
+Podemos suponer que $|z|<R$ y que $n^{1/2}>2R$. Luego
 $$
-\sum_{n=1}^\infty \log\Bigl(1-\frac{z}{n^{1/2}}\Bigr) + \frac{z}{n^{1/2}}+\frac{z^2}{2n} = \sum_{n=1}^\infty\left( -\sum_{k=1}^\infty \frac{z^k}{n^{k/2}k} + \frac{z}{n^{1/2}}+\frac{z^2}{2n}\right) = -\sum_{n=1}^\infty \sum_{k=3}^\infty \frac{z^k}{n^{k/2}k}
+\log\Bigl(1-\frac{z}{n^{1/2}}\Bigr) + \frac{z}{n^{1/2}}+\frac{z^2}{2n} = -\sum_{k=1}^\infty \frac{z^k}{n^{k/2}k} + \frac{z}{n^{1/2}}+\frac{z^2}{2n} = -\sum_{k=3}^\infty \frac{z^k}{n^{k/2}k}
 $$
 Por otra parte tenemos
 \begin{align*}
-\abs{\sum_{k=3}^\infty \frac{z^k}{n^{k/2}k}} &= \abs{\sum_{k=3}^\infty \frac{1}{n^{3/2}}\frac{z^k}{n^{(k-3)/2}k}}\\
-& \leq  \frac{1}{n^{3/2}}\sum_{k=3}^\infty \frac{1}{n^{(k-3)/2}k}\\
-&\leq  \frac{1}{3n^2}+ \frac{1}{n^{3/2}}\sum_{k=4}^\infty \frac{1}{n^{(k-3)/2}k}\\
-&\leq  \frac{1}{3n^2}+ \frac{1}{n^{3/2}}\sum_{k=4}^\infty \frac{1}{n^{k/4}k} \\
-& =  \frac{1}{3n^2}- \frac{1}{n^{3/2}}\log\left(1-\frac{1}{n^{1/4}}\right)
+\abs{\sum_{k=3}^\infty \frac{z^k}{n^{k/2}k}} &= \abs{\sum_{k=3}^\infty \frac{z^k}{n^{(k-3)/2}k}}\\
+& = \frac{|z|^3}{n^{3/2}}\abs{\sum_{k=3}^\infty \frac{|z|^{k-3}}{n^{k/2-3/2}}\frac{1}{k}}\\
+& \leq  \frac{R^{3}}{n^{3/2}}\sum_{k=3}^\infty \frac{1}{2^{k-3}k}\\
+& \leq  \frac{8R^{3}}{n^{3/2}}\sum_{k=1}^\infty \frac{1}{2^{k}k}\\
+&= \frac{M}{n^{3/2}}
 \end{align*}
 Sabemos que es el término general de una serie que converge, pues es dicha serie es la la diferencia de dos series convergentes. La segunda converge, por ejemplo, por comparación por paso al límite con la serie $\sum n^{5/4}$.
 \end{solucion}
