@@ -85,7 +85,7 @@ f(X)&=(X − x_1)(X − x_2) \cdots (X − x_n)\\
 &= (X-x_1)[(X − x_2) \cdots (X − x_n)]\\
 &=(X-x_1)[X^{n-1} − σ_1^{(1)}X^{n−2} +\cdots+(−1)^{n−2}σ_{n−2}^{(1)}X +(−1)^{n-1}σ_{n-1}^{(1)}]\\
 &=X^n + (-\sigma_1^{(1)} + x_1\sigma_0^{(1)})X^{n-1}+ \cdots +(-1)^{n-1}(\sigma_{n-1}^{(1)}-x_1\sigma_{n-1}^{(1)})X+(-1)^nx_1\sigma_{n-1}^{(1)}\\
-&= X^n − σ_1X^{n−1} +σ_2X^{n−2} +\cdots+(−1)^{n−1}σ_{n−1}X +(−1)^nσ_n\\
+&= X^n − σ_1X^{n−1} +σ_2X^{n−2} +\cdots+(−1)^{n−1}σ_{n−1}X +(−1)^nσ_n
 \end{align*}
 Como queríamos probar.
 \end{solucion}
@@ -157,6 +157,14 @@ see Exercise \ref{ejer:7.1.13}. Note that a computer algebra system cannot help 
 \sum_{i_2<i_2}x_{i_1}^2x_{i_2}+\sum_{i_2<i_2}x_{i_1}x_{i_2}^2+\sum_{i<i_1<i_2}x_ix_{i_1}x_{i_2}+\sum_{i_1<i<i_2}x_ix_{i_1}x_{i_2}+\sum_{i_1<i_2<i}x_ix_{i_1}x_{i_2}=\\
 \sum_{i\neq j} x_i^2x_j+3\sum_{j_1<j_2<j_3}x_{j_1}x_{j_2}x_{j_3}=\sum_{i\neq j} x_i^2x_j+3\sigma_3.
 \end{gather*}
+\end{solucion}
+\begin{solucion}
+\begin{align*}
+\sigma_1\sigma_2&=\sum_{i=1}^nx_i\sum_{i_1<i_2}x_{i_1}x_{i_2}\\
+&=\sum_{i\neq j}x_i^2x_j + \sum_{i\neq j \neq k \neq i} x_i x_j x_k\\
+&=\sum_{i\neq j}x_i^2x_j + 3\sum_{1\leq i<j<k\leq n} x_i x_j x_k\\
+&=\sum_{i\neq j} x_i^2x_j + 3\sigma_3
+\end{align*}
 \end{solucion}
 \newpage
 
