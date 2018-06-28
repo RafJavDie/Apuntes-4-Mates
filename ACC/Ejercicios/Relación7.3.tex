@@ -38,7 +38,7 @@ following properties:
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
-Tengamos presenta la definición del operador de Reynolds
+Tengamos presente la definición del operador de Reynolds
 \[
 R_G( f )(x) =
 \frac{1}{|G|}\sum_{A∈G}f (A \cdot x)
@@ -191,8 +191,8 @@ this contradicts $f \not∈ k[ f_1, \dots , f_m]$.
 \begin{solucion}
 \begin{enumerate}[a.]
 \item[]
-\item Sabemos por ACGA que $I$ es un ideal homogéneo y que, por ser $k[x_1,\dotsc,x_n]$ noetheriano, existe un conjunto finito de polinomios homogéneos tales que $I=\gene{f_1,\dotsc,f_m}$ [No encuentro la prueba].
-\item Dado que las constantes siempre están contenidas, si no se da la contención del enunciado es porque existe $f$ no constante tal que $f\in k[x_1,\dotsc,x_n]^g$ que no está en $k[f_1,\dotsc,f_m]$.
+\item Es inmediato que en un anillo noetheriano la ACC nos permite de cada conjunto generador de un ideal un subcojunto finito que también lo genera. Como $I$ está generado por invariantes homogéneos de grado positivo, tenemos el resultado.
+\item Dado que las constantes siempre están contenidas, si no se da la contención del enunciado es porque existe $f$ no constante tal que $f\in k[x_1,\dotsc,x_n]^G$ que no está en $k[f_1,\dotsc,f_m]$.
 \item Consideremos con grado total minimal $d$. Si descomponemos $h_i = \sum_{j} h_{ij}$ en sus componentes homogéneas, entonces
 $$
 f = \sum_i f_i h_i = \sum_i f_i \sum_j  h_{ij}
@@ -279,7 +279,7 @@ that has $i, j$ as input and $R_{C_6} (x^iy^j)$ as output.
 \begin{enumerate}[a.]
 \item $(-A)(-A)=A^2$, $-AA^2=-A^3=-I_2$, $-A(-A)^3=A^4=A$, $-AA=-A^2$, $-A(-A)^2=A^3=I_2$. 
 \item $-I_2\in C_6$ por el apartado anterior. Ahora, esto implica que $C_2\subseteq C_6$, por lo que usando el ejercicio \ref{ejer:7.3.6}, $k[x, y]^{C_6} ⊆ k[x,y]^{C_2}=k[x^2, y^2, xy]$. Esto implica evidentemente que los invariantes homogéneos tienen grado total par.
-\item Tendremos que calcular el operador de Reynolds sobre los monomios $x^iy^j$ con $1\leq i+j\leq 6$ y $i+j\equiv 0\mod 2$, es decir, sobre $x^2,y^2,xy$ y cualquier producto de ellos de grado total inferior a 6. FALTAN LOS CÁLCULOS.
+\item Tendremos que calcular el operador de Reynolds sobre los monomios $x^iy^j$ con $1\leq i+j\leq 6$ y $i+j\equiv 0\mod 2$, es decir, sobre $x^2,y^2,xy$ y cualquier producto de ellos de grado total inferior a 6. Resta realizar los cálculos.
 \end{enumerate}
 \end{solucion}
 
@@ -308,9 +308,10 @@ output.
 \end{ejercicio}
 \begin{solucion}
 \begin{enumerate}[a.]
-\item HACIENDO LOS CÁLCULOS NO ME SALE.
+\item Basta realizar la comprobación en SAGE. De hecho, $A^8 = - A^4 = Id$.
 \item La ecuación $x^2+y^2=0$, luego si $k$ es algebraicamente cerrado $x^2=-y^2\Rightarrow x=iy$. El conjunto de puntos de este tipo son invariantes por rotaciones. En un cuerpo contenido en $\R^2$ es más claro, pues $x^2+y^2=r^2$ es una circunferencia, que claramente es invariante por rotaciones para cualquier $r$.
-\item
+\item Como $-I_2 \in C_8$, $C_2 \subset C_8$, luego $k[x,y]^{C_8}\subset k[x,y]^{C_2} = k[x^2,y^2,xy]$, luego todos los monomios tienen grado par.	
+
 \item 
 \end{enumerate}
 \end{solucion}
@@ -349,14 +350,21 @@ we have to compute the Reynolds operator?
 Let $f$ be the polynomial (4) in the text.
 \begin{enumerate}[a.]
 \item Verify that $f ∈ k[x, y]^{C_4} = k[x^2 + y^2, x^3y − xy^3, x^2y^2]$.
-\item Use Proposition 7 to express $f$ as a polynomial in $x^2 + y^2$, $x^2y − xy^3$, $x^2y^2$.
+\item Use Proposition 7 to express $f$ as a polynomial in $x^2 + y^2$, $x^3y − xy^3$, $x^2y^2$.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion} 
 El polinomio en cuestión es $$f (x, y) = x^8 + 2x^6y^2 − x^5y^3 + 2x^4y^4 + x^3y^5 + 2x^2y^6 + y^8.$$
 \begin{enumerate}[a.]
 \item Se tiene $f(x,y)=f(-y,x)=f(-x,-y)=f(y,-x)$, que es por definición ser invariante por $C_4$.
-\item 
+\item El resto $g$ que obtenemos aplicando la Proposición 7 es
+$$
+g(y_1,y_2,y_3) = y_1^4 - 2y_2^2-y_2y_3 - 8y_3^2
+$$ 
+Por lo que 
+$$
+f(x,y) = (x^2+y^2)^4-2(x^3y-y^3x)^2 - (x^3y-y^3x)x^2y^2 - 8(x^2y^2)^3
+$$
 \end{enumerate}
 \end{solucion}
 
