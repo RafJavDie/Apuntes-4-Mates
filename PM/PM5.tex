@@ -6,19 +6,19 @@
 \section{Poliedros enteros y matrices totalmente unimodulares}
 Sean $A \in \R^{m \times n}$, $b\in\R^m$ y $c\in\R^n$, consideramos el problema:
 
-\begin{align*}
-(PE) & \min c'x\\
-	 & A x = b\\
-	 & x \in \mathbb{Z}_+^n
-\end{align*}
+\[\begin{tabular}{ccl}
+ (PE) & $\min$ & $c'x$\\
+ & s.a.: & $Ax=b$\\
+ & & $x \in \mathbb{Z}_+^n$
+\end{tabular}\]
 
 Denotaremos por $z_{PE}$ al valor óptimo de este problema. (PE) tiene asociado otro problema que denominaremos el ``problema relajado lineal'' y denotamos por (LP) que consiste;
 
-\begin{align*}
-(LP) & \min c'x\\
-	 & A x = b\\
-	 & x \in \mathbb{R}_+^n
-\end{align*}
+\[\begin{tabular}{ccl}
+ (LP) & $\min$ & $c'x$\\
+ & s.a.: & $Ax=b$\\
+ & & $x \in \mathbb{R}_+^n$
+\end{tabular}\]
 
 \begin{obser}
 Si $x$ es factible en $PE$ entonces también lo es en $LP$.
@@ -33,22 +33,23 @@ Un problema es de \textbf{programación binaria} ó $\{0,1\}$ si sus variables e
 \begin{defi}
 Decimos que un problema es \textbf{entero-mixto} $(PME)$ si:
 
-\begin{align*}
-(PME) & \min c'x+d'y\\
-	  & A_1 x + A_2 y = b\\
-	  & x \in \Z_+^{n_1}, y \in \R_+^{n_2}\\
-	  & A_1 \in \R^{m\times n_1}, A_2 \in \R^{m \times n_2}, b \in \R^m, c \in \R^{n_1}, d \in \R^{n_2}
-\end{align*}
+\[\begin{tabular}{ccl}
+ (PME) & $\min$ & $c'x + d'y$\\
+ & s.a.: & $A_1 x + A_2 y = b$\\
+ & & $x \in \Z_+^{n_1}, y \in \R_+^{n_2}$\\
+ & & $A_1 \in \R^{m\times n_1}, A_2 \in \R^{m \times n_2}$\\
+ & & $b \in \R^m, c \in \R^{n_1}, d \in \R^{n_2}$
+\end{tabular}\]
 \end{defi}
 \begin{example}
 Veamos que no siempre coincide $z_{PE}$ con un redondeo de $z_{LP}$.
 
-\begin{align*}
-(PME) & \min 21x_1+11x_2\\
-	  & 6x_1+4x_2 ≤ 13\\
-	  & x_1,x_2 \in \Z_+\\
-(LP) & x_1,x_2 \in \R_+
-\end{align*}
+\[\begin{tabular}{ccl}
+ (PME) & $\min$ & $21x_1 + 11x_2$\\
+ & s.a.: & $6x_1 + 4x_2 ≤ 13$\\
+ & & $x_1,x_2 \in \Z_+$\\
+ (LP) & & $x_1,x_2 \in \R_+$
+\end{tabular}\]
 
 La solución óptima de $LP$ es $(\frac{13}{7},0)$. El redondeo más cercano es $(2,0)$. El redondeo por abajo es $(1,0)$. Ninguno es la solución óptima, que es $(0,3)$, como se puede comprobar evaluando la función en cada uno de los puntos de coordenadas enteras señalados en la figura.
 
@@ -91,41 +92,32 @@ La solución óptima de $LP$ es $(\frac{13}{7},0)$. El redondeo más cercano es 
 
 \begin{obser}
 Sea $X=\{x \in \R^n : Ax=b, x \in x \in \Z_+^n\}$. La solución óptima del $PME$ coincide con la solución del problema de optimización:
-\[
-\begin{aligned}
-& \min
-& & c'x \\
-& \text{sujeto a}
-& & x \in CO(X)\end{aligned}
-\]
+\[\begin{tabular}{ccl}
+ & $\min$ & $c'x$\\
+ & s.a.: & $x \in CO(X)$
+\end{tabular}\]
+
 Sin embargo, calcular la envolvente convexa se puede volver muy costoso en dimensiones superiores.
 \end{obser}
-\newpage
+
 \begin{example}[Problema de la mochila]
 Un conjunto de productos numerados de $1$ a $n$. El producto $i$ ocupa un volumen $a_i$ y reporta una satisfacción $p_i$. Dada una mochila con capacidad $V$ determinar la carga que maximiza la satisfacción. Definimos las variables $x_i$ con $x_i = 1$ si decido incluir el producto $i$ y $x_i = 0$ en caso contrario. Podemos definir el problema binario:
-\[
-\begin{aligned}
-& \max
-& & \sum_{i=1}^n p_i x_i \\
-& \text{sujeto a}
-& & \sum_{i=1}^n a_i x_i ≤ V\\
-& & & x_i \in \{0,1\}\ \forall i 
-\end{aligned}
-\]
+\[\begin{tabular}{ccl}
+ & $\max$ & $\sum_{i=1}^n p_i x_i$\\
+ & s.a.: & $\sum_{i=1}^n a_i x_i ≤ V$\\
+ & & $x_i \in \{0,1\}\ \forall i$
+\end{tabular}\]
 \end{example}
 
 \begin{example}[Problema de transporte]
 Consideramos $m$ puntos de suministro y $n$ puntos de consumo. Cada punto de suministro $i$ dispone de una oferta $o_i$ con $i = 1,\dots,m$. Cada punto de consumo $j$ tiene una demanda $d_j$ con $j = 1,\dots,n$. Supongamos que $o_i,d_j \in \Z_+\ \forall i,j$ (los productos son indivisibles). Además, $\sum_{i=1}^m o_i = \sum_{j=1}^m d_j$. El coste unitario de enviar una unidad desde $i$ a $j$ es $c_{ij}$. El problema consiste en deterinar el plan de transporte que minimiza el coste total de distribución. Definimos $x_{ij}$ como la cantidad enviada desde $i$ a $j$, de manera que el problema consiste en:
-\[
-\begin{aligned}
-& \min
-& & \sum_{i=1}^m \sum_{j=1}^n c_{ij}x_{ij} \\
-& \text{sujeto a}
-& & \sum_{j=1}^n x_{ij} = o_i \ \forall i\\
-& & & \sum_{i=1}^n x_{ij} = d_j \ \forall j\\
-& & & x_{ij} \in \Z_+ \ \forall i,j
-\end{aligned}
-\]
+
+\[\begin{tabular}{ccl}
+ & $\min$ & $\sum\limits_{i=1}^m \sum\limits_{j=1}^n c_{ij}x_{ij}$\\
+ & s.a.: & $\sum\limits_{j=1}^n x_{ij} = o_i \ \forall i$\\
+ & & $\sum\limits_{i=1}^n x_{ij} = d_j \ \forall j$\\
+ & & $x_{ij} \in \Z_+ \ \forall i,j$
+\end{tabular}\]
 \end{example}
 
 \begin{nota}
@@ -395,12 +387,14 @@ Se puede hacer una partición de las columnas de $A$, $J_1=\{$columnas pares$\}$
 
 \section{Esquemas de ramificación y acotación}
 
-En esta sección se muestra un algoritmo para hallar la solución óptima de un problema de programación entera
-\begin{align*}
-(PE)\quad z_{PE} = & \max\ c'x\\
-               & sa:\ Ax=b\\
-     		&x\in\Z_+^n.
-\end{align*}
+En esta sección se muestra un algoritmo para hallar la solución óptima $z_{PE}$ de un problema de programación entera
+\[
+\begin{tabular}{c c l}
+	(PE) & $\max$ & $c'x$\\
+	& s.a.: & $Ax = b$\\
+	& & $x \in \Z_+^n$
+\end{tabular}
+\]
 El algoritmo se basa en la proposición siguiente. 
 \begin{prop}
 Consideremos el problema $z=\max\{c'x:x\in X\}$, con $c\in\R^n$ y $X\subset\R^n$. Sea $X=X_1\cup X_2\cup\dots\cup X_K$ una descomposición de $X$ en conjuntos más pequeños y sea $z^k=\max\{c'x:x\in X_k\}$ para $k=1,\dots,K$. Entonces $z=\underset{k=1,\dots,K}{\max} z^k$.

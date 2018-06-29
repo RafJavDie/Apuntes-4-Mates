@@ -54,30 +54,39 @@ La transformación que lleva (P) en (D) crea por cada restricción de (P) una va
 
 \begin{example}
 Consideramos el problema
-\[\begin{aligned}
-	(P) & \min c'x\\
-	\text{sa:} & Ax ≥ b\\
-	& x ≥ 0
-\end{aligned}\]
+\begin{center}
+\begin{tabular}{c c l}
+	$(P)$ & $\min$ & $c'x$\\
+	& s.a.: & $Ax ≥ b$\\
+	& & $x ≥ 0$
+\end{tabular}
+\end{center}
+
 Su problema dual correspondiente es:
-\[\begin{aligned}
-	(D) & \max u'b\\
-	\text{sa:} & u'A ≤ c'\\
-	& u ≥ 0
-\end{aligned}\]
+\begin{center}
+\begin{tabular}{c c l}
+	$(D)$ & $\max$ & $u'b$\\
+	& s.a.: & $u'A ≤ c'$\\
+	& & $u ≥ 0$
+\end{tabular}
+\end{center}
 Por otro lado, si añadimos variables de holgura en (P):
-\[\begin{aligned}
-	(P') & \min c'x\\
-	\text{sa:} & Ax - I x_h = b\\
-	& x,x_h ≥ 0
-\end{aligned}\]
+\begin{center}
+\begin{tabular}{c c l}
+	$(P')$ & $\min$ & $c'x$\\
+	& s.a.: & $Ax - I x_h = b$\\
+	& & $x, x_h ≥ 0$
+\end{tabular}
+\end{center}
 y dualizamos:
-\[\begin{aligned}
-	(D') & \max u'b\\
-	\text{sa:} & u'A ≤ c'\\
-	& u'(-I) ≤ 0\\
-	& u \text{ sin restricciones}
-\end{aligned}\]
+\begin{center}
+\begin{tabular}{c c l}
+	$(D')$ & $\max$ & $u'b$\\
+	& s.a.: & $u'A ≤ c'$\\
+	& & u'(-I) ≤ 0\\
+	& & $u$ sin restricciones
+\end{tabular}
+\end{center}
 que es equivalente a $(D)$.
 \end{example}
 \begin{nota} Denotaremos $X = \{x \in \R^n : Ax ≥ b, x ≥ 0\}$ y $U = \{ u \in \R^m \mid u'A ≤ c', u ≥ 0 \}$.
@@ -261,11 +270,16 @@ Para una componente genérica $j\in \mathbb{N}$ se tiene que $\overline{c}_j+\De
 \subsection{Variaciones en términos independientes}
 
 Sea $z(0)= \min c'x$ sujeto a $Ax=b, x\geq 0$. Para cada $g\in\R^m$ queremos estudiar qué le ocurre al problema:
-\begin{align*}
-z(\Delta)=\min c'x\\
-sa: Ax=b+\Delta g\\
-\Delta\in\R
-\end{align*}
+
+\[
+z(\Delta) = \left\{
+\begin{tabular}{c l}
+	$\min$ & $c'x$\\
+	s.a.: & $Ax = b + \Delta g$
+\end{tabular}
+\right.
+\]
+
 Si $B$ es una base asociada a la solución óptima de $z(0)$, ¿cuál es el rango de $\Delta$ que mantiene $B$ óptima? Las condiciones para que sea óptima son:
 \begin{enumerate}
 \item Condición de optimalidad. Como nuestra solución es óptima en $\Delta =0$: \[\overline{c_R(0)}'=c'_N-c'_B B^{-1}N\geq 0.\]
@@ -281,13 +295,16 @@ Tomemos un índice $j$ arbitrario. Entonces $\overline{b}_j+\Delta\overline{g}_j
 \Rightarrow \max_{j:\overline{g}_j >0}-\frac{\overline{b}_j}{\overline{g}_j} \leq \Delta \leq \min_{j:\overline{g}_j <0}-\frac{\overline{b}_j}{\overline{g}_j}\]
 \end{enumerate}
 \begin{example}
-\begin{align*}
-\min & -2x_1-x_2 &\\
-sa: & x_1+x_2 &\leq 5\\
-    & -x_1+x_2 & =0\\
-    & 6x_1+2x_2 & \leq 21\\
-    & x_1,x_2 & \geq 0
-\end{align*}
+\[
+\begin{tabular}{c c l}
+	& $\min$ & $-2x_1-x_2 $\\
+	& s.a.: & $x_1+x_2 \leq 5$\\
+    & & $-x_1+x_2 = 0$\\
+    & & $6x_1+2x_2 \leq 21$\\
+	& & $x_1, x_2 ≥ 0$
+\end{tabular}
+\]
+
 Pongamos $g'=(0,0,1)$. La base óptima para $x_1,x_2,x_4$ de este problema era $B=[a_1\ a_2\ a_4]$. Imponemos $B^{-1}(b+\Delta g)\geq 0$ y despejamos $\Delta$ Obtenemos
 \[
 \begin{pmatrix}
@@ -305,14 +322,13 @@ Por lo tanto $\Delta\in [-1,9]$. Esto quiere decir que $B$ es óptima para $b_3\
 
 \subsection{Añadir una nueva variable $x_{n+1}$ a un problema}
 Dado un problema $(P)$ $\min c'x$, $Ax=b$, $x\geq 0$. Queremos estudiar cuánto sigue siendo óptima una base de (P) en el problema $(P')$
-\begin{align*}
-\min\ & c'x+c_{n+1}x_{n+1}\\
-sa:\ & [A|a_{n+1}]\begin{bmatrix}
-x\\
-x_{n+1}
-\end{bmatrix}=b\\
- &  x,x_{n+1}\geq 0
-\end{align*}
+\[\begin{tabular}{c c l}
+	(P') & $\min$ & $c'x+c_{n+1}x_{n+1}$\\
+	& s.a.: & $[A|a_{n+1}]\begin{bmatrix}x\\x_{n+1}\end{bmatrix}=b$\\
+    & & $x,x_{n+1}\geq 0$
+\end{tabular}
+\]
+
 Dada $B$ una base óptima en $(P)$ queremos determinar una condición para que sea óptima en $(P')$. Las condiciones para $(P')$ son:
 \begin{enumerate}
 \item Factibilidad, que es la misma que en $(P)$, $B^{-1}b\geq 0$. 
@@ -328,12 +344,14 @@ La primera se verifica trivialmente por las hipótesis. La segunda es la condici
 
 \subsection{Añadir una restricción}
 Partimos de nuevo del problema $(P)$ $\min c'x$, $Ax=b$, $x\geq 0$. y le añadimos la restricción $a'_q x\leq b_q$ con $b_q \geq 0$ para formar el problema $(P_q)$. En tal caso, estandarizamos el problema añadiendo una holgura $h_q$ y nos queda:
-\begin{align*}
-\min\ & c'x\\
-sa:\  & Ax=b\\
-& a'_q x+h_q= b_q\\
- & x, b_q, h_q\geq 0
-\end{align*}
+\[\begin{tabular}{c c l}
+	& $\min$ & $c'x$\\
+	& s.a.: & $Ax=b$\\
+	& & $a'_q x + h_q = b_q$\\
+    & & $x, b_q, h_q\geq 0$
+\end{tabular}
+\]
+
 Suponemos que $B$ es una base óptima en $(P)$. Queremos analizar la base formada por $B$, la ampliación de las columnas y la nueva holgura, es decir:
 \[ B_q=\begin{bmatrix}
 B & 0\\
@@ -370,31 +388,46 @@ B^{-1}b\\
 
 \begin{example}
 Añadimos al ejemplo anterior la restricción $x_1+x_2\leq 4$ y estandarizamos:
-\[\begin{aligned}
-\min & -2x_1-x_2 &\\
-sa: & x_1+x_2 +x_3 &= 5\\
-    & -x_1+x_2 +x_4 & =0\\
-    & 6x_1+2x_2  +x_4 & = 21\\
-    & x_1+x_2 +x_6  & = 4\\
-    & x_1,x_2,x_3,x_4,x_5,x_6 & \geq 0
-\end{aligned}\]
+\[\begin{tabular}{c c l}
+	& $\min$ & $-2x_1-x_2$\\
+	& s.a.: & $x_1+x_2 +x_3 = 5$\\
+	& & $-x_1+x_2 +x_4 =0$\\
+	& & $6x_1+2x_2  +x_4 = 21$\\
+	& & $x_1+x_2 +x_6 = 4$\\
+    & & $x_1,x_2,x_3,x_4,x_5,x_6 \geq 0$
+\end{tabular}\]
 Se deja como ejercicio ver que no se verifica la condición obtenida.
 \end{example}
 
 \section{Precios Sombra}
-Definimos 
-\begin{align*}
-f: \R^m& \longrightarrow \R\\
- f(b) = & \min\ c'x\\
-  sa:\  & Ax=b\\
-  & x\geq 0
-\end{align*}
+Definimos una función $f: \R^m \longrightarrow \R$ como:
+\[
+ f(b) = \left\{\begin{tabular}{c l}
+ $\min$ & $c'x$\\
+ s.a.: & $Ax=b$\\
+ & $x\geq 0$
+ \end{tabular}
+ \right.
+\]
 Queremos derivar esta función. Supongamos en este problema que las bases factibles son $B_1,\dots, B_r$. Consideramos el problema dual que verifica
-\[\begin{aligned}
- f(b) = & \min\ c'x & & = \max u'b & = \max\{c'_{B_1}B_1^{-1}b,\dots, c'_{B_r}B_r^{-1}b\}\\
-        & sa: Ax=b & & sa: u'A\leq c\\
-        &  x\geq 0 & & u\in\R^m &
-\end{aligned}\]
+\[
+ f(b) = \left\{
+ \begin{tabular}{cl}
+ $\min$ & $c'x$\\
+ s.a.: & $Ax=b$\\
+ & $x \geq 0$
+ \end{tabular}
+ \right.
+ \quad = \left\{
+ \begin{tabular}{cl}
+ $\max$ & $u'b$\\
+ s.a.: & $u'A\leq c$\\
+ & $u \in \R^m$
+ \end{tabular}
+ \right.
+ \quad = \max\{c'_{B_1}B_1^{-1}b,\dots, c'_{B_r}B_r^{-1}b\}
+\]
+
 Llamamos $u_i=c'_{B_i}B_i^{-1}$. Entonces, $f(b)=\max_{1\leq i\leq r}u_i'b$. Digamos que este máximo se alcanza en una $u^*$, solución óptima dual.
 Entonces $f(b)=(u^*)' b$. Derivando respecto al término independiente de la $i$-ésima restricción $b_i$:
 \[\frac{\partial f}{\partial b_i}=\frac{\partial }{\partial b_i}\left(\sum_{j=1}^m u^*_jb_j\right)=u^*_i\]
