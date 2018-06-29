@@ -143,21 +143,21 @@ Un poliedro $P = \{x \in \R^n : Ax≤b \}$ se dice \textbf{entero} si todos sus 
 \end{defi}
 
 \begin{theorem}
-Sea $p$ un poliedro y $z_{LP}$ el valor óptimo de $\min \{c'x : x \in P\}$, $c \in \R^n$. Son equivalentes:
+Sea $P$ un poliedro y $z_{LP}$ el valor óptimo de $\min \{c'x : x \in P\}$, $c \in \R^n$. Son equivalentes:
 \begin{enumerate}
 	\item $P$ es entero
-	\item $\forall c \in \R^n$ tal que $z_{LP} > -\infty$, la solución óptima $x^* \in \Z^n$.
-	\item $\forall c \in \R^n$ tal que $z_{LP} > -\infty$, $x^* \in \Z^n$.
-	\item $\forall c \in \R^n$ tal que $z_{LP} > -\infty$, $c'x^*=z_{LP}\in \Z$.
+	\item Para todo $c \in \R^n$ tal que $z_{LP} > -\infty$, se tiene que la solución óptima $x^*$ es entera.
+	\item Para todo $c \in \Z^n$ tal que $z_{LP} > -\infty$, se tiene que la solución óptima $x^*$ es entera.
+	\item Para todo $c \in \Z^n$ tal que $z_{LP} > -\infty$, $z_{LP}\in \Z$.
 \end{enumerate}
 \end{theorem}
 
 \begin{dem}
 \begin{itemize}
 \item[]
-	\item[$(1 \to 2)$] Obvio por teorema fundamental de la programación lineal.
+	\item[$(1 \to 2)$] Si el problema relajado tiene solución óptima, debe estar en un punto extremo de $P$ (Teorema fundamental de la PL).
 	\item[$(2 \to 3)$] Obvio
-	\item[$(3 \to 4)$] Si $\forall c \in \Z^n \to x^* \in \Z^n$, entonces $z_{LP} = c'x^* \in \Z$.
+	\item[$(3 \to 4)$] Si $c \in \Z^n$ y $x^* \in \Z^n$, entonces $z_{LP} = c'x^* \in \Z$.
 	\item[$(4 \to 1)$] Supongamos que $P$ no es entero. Entonces existe una función objetivo $\tilde{c}\in \Z^n$ tal que su óptimo es el vértice $\tilde{x} \in P$ que tiene al menos una coordenada no entera. Supongamos que es $\tilde{x_i} \notin \Z$. Por $(4)$, $\tilde{c}'\tilde{x} \in \Z$. Consdero $\hat{c} = \tilde{c} + \frac{1}{q} e_i$, con $q >> 0$, de forma que $\tilde{x}$ es también óptimo para $\hat{c}$. Como $q \in \Z$, entonces $q\tilde{c}$ también optimiza en $\tilde{x}$. Igualmente $q\hat{c}$ optimiza en $\tilde{x}$. Por $(4)$, $q\hat{c}'\tilde{x} \in \Z$ y $q\tilde{c}\tilde{x} \in \Z$. Así pues,
 	\[ \Z \ni q\tilde{c}'\tilde{x} - q\hat{c}\tilde{x} = q\tilde{c}\tilde{x}-q\tilde{c}\tilde{x}-\tilde{x_i} = -\tilde{x_i} \notin \Z \]
 	Por lo que llegamos a un absurdo.
@@ -165,7 +165,7 @@ Sea $p$ un poliedro y $z_{LP}$ el valor óptimo de $\min \{c'x : x \in P\}$, $c 
 \end{dem}
 
 \begin{defi}
-Un sistema de desigualdades $Ax ≤ b$ $x \in \R^n$ es Totalmente Dual Entero (TDE) si para cualquier $c \in \Z$ tal que $z_{LP} = \min \{ c'x : Ax≤b\} > -\infty$ entonces el problema dual asociado $\max \{u'b : u'A = c', u ≥ 0\}$ tiene solución óptima $u^* \in \Z^m$.
+Un sistema de desigualdades $Ax ≤ b$ $x \in \R^n$ es Totalmente Dual Entero (TDE) si para cualquier $c \in \Z^n$ tal que $z_{LP} = \min \{ c'x : Ax≤b\} > -\infty$ entonces el problema dual asociado $\max \{u'b : u'A = c', u ≥ 0\}$ tiene solución óptima $u^* \in \Z^m$.
 \end{defi}
 
 \begin{theorem}
@@ -286,7 +286,7 @@ x_{B_i}=\frac{det(\text{B con la i-ésima columna reemplazada por b})}{det(B)}=\
 \begin{coro} Sea $P(b)=\{x \in \R^n_+ \mid \overline{b}\leq Ax\leq b,\; \overline{d}\leq x \leq d\} \neq \emptyset$ con $b,d,\overline{b},\overline{d}\in\Z^n$. Entonces $P(b)$ es entero.
 \end{coro}
 \begin{dem}
-Las desigualdades que definen $P(B)$ se pueden expresar como:
+Las desigualdades que definen $P(b)$ se pueden expresar como:
 \[
 \begin{matrix}
 Ax \leq b\\
