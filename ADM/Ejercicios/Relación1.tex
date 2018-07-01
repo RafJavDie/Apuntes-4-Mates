@@ -95,8 +95,8 @@ $$
 $$
 f_\muestra{X}(\muestra{x})=\frac{1}{(2\pi)^{p/2}\abs{\Sigma}^{1/2}}\exp\{-1/2(\muestra{x}-\muestra{\mu})'\Sigma^{-1}(\muestra{x}-\muestra{\mu})\}
 $$
-Aplicamos la fórmula del cambio de variable. Tomamos $v(\muestra{x})=$, entonces
-$$f_\muestra{Y}(\muestra{x})=f_\muestra{X}(v(\muestra{x}))|v'(\muestra{x})| = \frac{1}{(2\pi)^{p/2}}\exp\{-1/2x'x\}
+Aplicamos la fórmula del cambio de variable. Tomamos $v(\muestra{x})=\Sigma^{1/2}x+\mu$, entonces
+$$f_\muestra{Y}(\muestra{x})=f_\muestra{X}(v(\muestra{x}))|v'(\muestra{x})| = \frac{1}{(2\pi)^{p/2}}\exp\{-x'x/2\}
 $$
 \item Es claro que si tomamos $f_{\muestra{Y}_i}(\muestra{x}_i)= \frac{1}{\sqrt{2\pi}}e^{-x_i^2/2}$, entonces se sigue trivialmente
 $$
@@ -107,10 +107,10 @@ Es claro, pues, que $f_{\muestra{Y}_i}(\muestra{x}_i)$ es la i-ésima componente
 \end{enumerate}
 \item Sabemos que para $\muestra{Y}$, $E[\muestra{Y}]=0$ y $\Sigma_{\muestra{Y}}=I_p$. En Teoría hemos visto cómo se comportan la esperanza y la matriz de covarianzas al transformar linealmente las variables, es decir
 $$
-E[\muestra{X}]=E[\muestra{Y}\Sigma^{1/2}+\muestra{\mu}] = E[\muestra{Y}]\Sigma^{1/2}+\muestra{\mu}=\m{\mu}
+E[\muestra{X}]=E[\Sigma^{1/2}\muestra{Y}+\muestra{\mu}] = \Sigma^{1/2}E[\muestra{Y}]+\muestra{\mu}=\m{\mu}
 $$
 $$
-Cov[\muestra{X}]=Cov[\muestra{Y}\Sigma^{1/2}+\muestra{\mu}] ={\Sigma^{1/2}}'Cov[\m{Y}]\Sigma^{1/2}= {\Sigma^{1/2}}\Sigma^{1/2} =\Sigma
+Cov[\muestra{X}]=Cov[\Sigma^{1/2}\muestra{Y}+\muestra{\mu}] ={\Sigma^{1/2}}Cov[\m{Y}]\Sigma^{1/2}= {\Sigma^{1/2}}\Sigma^{1/2} =\Sigma
 $$
 \item 
 \begin{enumerate}[i.]
@@ -118,6 +118,7 @@ $$
 \[ E\left(e^{\m{t}'(B\mX+\muestra{c})}\right) = e^{t'\muestra{c}}E\left(e^{t'B\mX}\right) = e^{t'\muestra{c}}M_\muestra{X}(B't) = \exp\left(t'(B\muestra{\mu}+\muestra{c})+\frac{1}{2}t'B\Sigma B't\right)\]
 \item Si dos vectores aleatorios son independientes entonces la esperanza del producto es el producto de las esperanzas. Deducimos por tanto que la función generatriz de la suma es el producto de las funciones generatrices, de donde se deduce trivialmente el resultado.
 \end{enumerate}
+\newpage
 \item Los parámetros de una normal $p$-variante son el vector de medias y la matriz de covarianzas. Sabemos, por el apartado anterior, que 
 $$
 n\media{\mX}\sim N_p(n\muestra{\mu},n\Sigma)
@@ -140,7 +141,7 @@ Distribución de Wishart, $W \sim W_p(n,Σ)$.
 \begin{solucion}
 \begin{enumerate}[(a)]
 \item[]
-\item Supongamos que $X$ es una matriz $n\times p$ de manera que las filas de $X$ fomran una muestra aleatoria de una $N_p(0,\Sigma)$. Decimos entonces que $w=X'X$ sigue una distribución de Wishart no singular $p$-dimensional con $n$ grados de libertad.
+\item Supongamos que $X$ es una matriz $n\times p$ de manera que las filas de $X$ fomran una muestra aleatoria de una $N_p(0,\Sigma)$. Decimos entonces que $W=X'X$ sigue una distribución de Wishart no singular $p$-dimensional con $n$ grados de libertad y matriz de escala $\Sigma$.
 \item Sabemos que existe $X=[\muestra{X_1},\dotsc,\muestra{X_n}]'$ con $\muestra{X_i}\sim N_p(0,\Sigma)$ independientes entre sí tal que $W=X'X$.
 $$
 E(W)= E\left(\sum_{i=1}^n \muestra{X_i}\muestra{X_i}'\right) = \sum_{i=1}^n E[\muestra{X_i}\muestra{X_i}'] = \sum_{i=1}^n \Sigma-\mu\mu' \overset{\mu=0}{=} n\Sigma
@@ -196,7 +197,7 @@ Demuestra que, bajo $H_0$:
 \begin{solucion}
 \begin{enumerate}[(a)]
 \item[]
-\item Vamos a aplicar el apartado b) del apartado anterior. Sabemos que $\media{\mX}-\media{\mu}\sim N_p(0,  \frac{1}{n}\Sigma)$. Por tanto $n^{1/2}(\media{\mX}-\media{\mu})\sim N_p(0, \Sigma)$ y estamos en las condiciones para aplicar el apartado.
+\item Vamos a aplicar el apartado b) del ejercicio anterior. Sabemos que $\media{\mX}-\media{\mu}\sim N_p(0,  \frac{1}{n}\Sigma)$. Por tanto $n^{1/2}(\media{\mX}-\media{\mu})\sim N_p(0, \Sigma)$ y estamos en las condiciones para aplicar el apartado.
 \item Bajo la hipótesis $H_0$, tenemos que $n^{1/2}(A\media{\mX}-\muestra{d})\sim N_p(0,A\Sigma A')$ y, usando el Ejerciocio 1.3,  $ASA'\sim W_p(n-1,A\Sigma A')$. Basta aplicar un razonamiento análogo al del apartado anterior.
 \end{enumerate}
 \end{solucion}

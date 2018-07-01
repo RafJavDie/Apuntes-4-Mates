@@ -157,9 +157,12 @@ Cov(\m{X}, \m{F}) = L \Leftrightarrow l_{ij} = Cov(X_i, F_j)
 \end{gather}
 
 La doble implicación es clara, así que demostramos la igualdad izquierda.
-$$
-\Sigma = Cov(\mX-\mu) = Cov(LF+\varepsilon) = LCov(F)L' + Cov(\varepsilon) = LL'+\Psi
-$$
+\begin{align*}
+\Sigma &= Cov(\mX-\mu) \\
+&= Cov(LF+\varepsilon)\\
+&= LCov(F)L' + Cov(\varepsilon) +LCov(F,\varepsilon)+Cov(\varepsilon,F)L' \\
+&= LL'+\Psi
+\end{align*}
 Para la segunda igualdad
 $$
 Cov(\mX,F) = Cov(\mX-\mu,F) = Cov(LF+\varepsilon,F) = Cov(LF,F)+Cov(\varepsilon,F) = LI_m + 0 = L
@@ -242,16 +245,16 @@ Las rotaciones varimax obtenidas a partir de dos estimaciones distintas de  carg
 $$
 H_0\colon P(A_i\cap B_j) = P(A_i)P(B_j), \; \forall i,j
 $$
-Seleccionamos una muestra $m$ de tamaño $N$ y consideramos $N_{ij}$ el número de elementos de $m$ que presentan $A_i\cap B_j$. Se tiene que $N_{ij}\sim Bi(N,P(A_i\cap B_j)$. En estas condiciones tenemos que el estadístico ji-cuadrado para el contraste es
+Seleccionamos una muestra $m$ de tamaño $N$ y consideramos $N_{ij}$ el número de elementos que presentan $A_i\cap B_j$. Tenemos $N_{ij}\sim Bi(N,P(A_i\cap B_j))$. En estas condiciones  el estadístico ji-cuadrado para el contraste es
 $$
 \chi^2 = \sum_{i=1}^n \sum_{j=1}^p \frac{(N_{ij}-e_{ij})^2}{e_{ij}}
 $$
 Donde $e_{ij} = \E_{H_0}(N_{ij}) = NP_{H_0}(A_i)P_{H_0}(B_j) = \dfrac{N_{i.}N_{.j}}{N}$. Nuestro estadístico $\chi^2 \conv{L}\chi^2_{(n-1)(p-1)}$. Por tanto, una región crítica para un test de tamaño $\alpha$ es $\chi^2 \geq \chi^2_{(n-1)(p-1),1-\alpha}$.
 \item[] \textbf{Homogeneidad} Consideremos una variable $B$ con $p$ modalidades $B_1,\dotsc,B_p$. El problema de la homogeoneidad en $n$ poblacioens $(P_1,\dotsc,P_n)$ consiste en determinar si podemos aceptar la hipótesis
 $$
-H_0\colon P_1(B_j) = \cdots P_n(B_j),\;\forall j
+H_0\colon P_1(B_j) = \cdots = P_n(B_j),\;\forall j
 $$
-Para ello seleccionamos de forma independiente una muestra $m_i$ de tamaño $N_i$ en cada población. Sean $N_{ij}$ el número de elementos de $m_i$ que presentan $B_j$, se tiene que $N_{ij}\sim Bi(N_i,P(B_j)$. En estas condiciones tenemos que el estadístico ji-cuadrado para el contraste es
+Para ello seleccionamos de forma independiente una muestra $m_i$ de tamaño $N_i$ en cada población. Sean $N_{ij}$ el número de elementos de $m_i$ que presentan $B_j$, se tiene que $N_{ij}\sim Bi(N_i,P_i(B_j))$. En estas condiciones tenemos que el estadístico ji-cuadrado para el contraste es
 $$
 \chi^2 = \sum_{i=1}^n \sum_{j=1}^p \frac{(N_{ij}-e_{ij})^2}{e_{ij}}
 $$
@@ -322,7 +325,7 @@ s.a.& \;u_2'D_p^{-1}u_2 = 1 \qquad u_1'D_p^{-1}u_2 = 0
 \end{align*}
 \end{itemize}
 
-Denotemos por $S_r = F'D_n^{-1}FD_p^{-1}-m_r1_p = M_r'M_c'-m_r1_p$, entonces operando podemos llegar
+Denotemos por $S_r = F'D_n^{-1}FD_p^{-1}-m_r1_p' = M_r'M_c'-m_r1_p'$, entonces operando podemos llegar
 $$
 p'_{u_i}D_np_{u_i} = u_i'D_p^{-1}(M_r -m_r1_p')'D_n(M_r -m_r1_p')D_p^{-1}u_i = u_i'D_p^{-1}S_ru_i
 $$
@@ -351,7 +354,7 @@ Derivamos con respecto a $u_2$ e igualamos a $0$
 $$
 \frac{L}{\partial u_2}(u_2,\beta_1,\beta_2) = 2Au_2 -2\beta_1 Mu_2 - \beta_2Mu_1 = 0 
 $$
-En la igualdad del problema anterior $Au_1 = \lambda Mu_1$ es claro que si multiplicamos por $u_2'$ u y usamos que $u_2'Mu_1=0$ tenemos que $u_2'Au_1 =0$. Si multiplicamos por $u_1'$ utilizando las condiciones de este y el problema anterior sobre $u_1$ tenemos simplemente $\beta_2 = 0$. De $Au_2 = \beta_1 M u_2$ deducimos que $M^{-1}Au_2 =\beta_1 u_2$ y $u_2'Au_2 = \beta_1$ y el resto se sigue trivialmente.
+En la igualdad del problema anterior $Au_1 = \lambda Mu_1$ es claro que si multiplicamos por $u_2'$ y usamos que $u_2'Mu_1=0$ tenemos que $u_2'Au_1 =0$. Si multiplicamos por $u_1'$ utilizando las condiciones de este y el problema anterior sobre $u_1$ tenemos simplemente $\beta_2 = 0$. De $Au_2 = \beta_1 M u_2$ deducimos que $M^{-1}Au_2 =\beta_1 u_2$ y $u_2'Au_2 = \beta_1$ y el resto se sigue trivialmente.
 
 
 \item Demuestra que el cuadrado de la distancia euclídea entre las proyecciones de dos filas $P_{r_i}$ y $P_{r_i'}$ coincide con la distancia \emph{ji−cuadrado} entre las filas $r_i$ y $r_i'$.
@@ -399,7 +402,7 @@ Es inmediato. Si la fórmula de la varianza ponderadas es
 $$
 \sum_{i=1}^n f_{i.} (r_i^t D_p^{-1} u_k-m_r'D_p^{-1}u_k)^2
 $$
-Si $k\neq p$ entonces $m_r'D_p^{-1}u_k=0$, pues $m_k = u_p$ y los autovectores están incorrelados. En estos casos la fórmula se sigue trivialmente.
+Si $k\neq p$ entonces $m_r'D_p^{-1}u_k=0$, pues $m_r = u_p$ y los autovectores están incorrelados. En estos casos la fórmula se sigue trivialmente.
 \item Define la inercia total y demuestra que es igual a la suma de los autovalores de $S_r$.
 
 Definimos la inercia total como $InT = \dfrac{\chi^2}{N}$. Sabemos por teoría que:
