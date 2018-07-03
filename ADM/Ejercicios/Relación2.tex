@@ -56,7 +56,7 @@ d^2(\m{y}_i,\m{y}_j)&=(\m{y}_j-\m{y}_i)'(\m{y}_j-\m{y}_i)\\
 
 \item Demuestra que la varianza de la $j$−ésima CP es el $j$−ésimo mayor autovalor de $\widehat{\Sigma}$.
 
-Sabemos que $$\Sigma_{\muestra{Y}} = Cov(\hat{E}'\muestra{X})= \hat{E}'Cov(\muestra{X})\hat{E} =\hat{E}' \hat{\Sigma}\hat{E}= \hat{\Lambda}$$
+Sabemos que $$\hat{\Sigma}_{\muestra{Y}} =\sum_{i=1}^n (Y_i-\m{\overline{Y}})(Y_i-\m{\overline{Y}})' =\hat{E}' \hat{\Sigma}\hat{E}= \hat{\Lambda}$$
 La varianza de la $j$-ésima componente principal es el $j$-ésimo elemento diagonal de $\hat{\Lambda}$, que es precisamente el $j$-ésimo mayor autovalor de $\hat{\Sigma}$.
 
 \item Determina el coeficiente de correlación lineal entre $\muestra{y}_{{(i)}}$ ($i$−ésima CP) y $\muestra{x}_{(j)}$ .($j$−ésima variable).
@@ -181,7 +181,7 @@ Las tres etapas básicas son la estimación, la rotación (interpretación) y la
 
 \begin{enumerate}
 \item \textbf{Estimación}. Sea $\muestra{x_1},\dotsc,\muestra{x_n}$ una muestra aleatoria de $\mX\sim (\mu,\Sigma)$. Dado $(\hat{\Sigma},m)$ nuestro objetivo es determinar $(\hat{L},\hat{\Psi})$ tales que $\hat{\Sigma}\approx \hat{L}_m\hat{L}_m'+\hat{\Psi}$. Para este cometido los métodos más usuales son: CP, factor principal y máxima verosimilitud.
-\item \textbf{Rotación}. Las cargas factoriales obtenidas a través de una transformación ortogonal de las cargas iniciales tienen la misma capacidad para reproducir la matriz de covarianza (o correlación). Dado que una transformación ortogonal realiza una rotación de los ejes coordenados, a las transformaciones ortogonales de las cargas factoriales, y por tanto de los factores, se denomina rotación factorial o rotación de los factores.
+\item \textbf{Rotación}. En el paso anteiror hemos estimado una matriz de cargas. Dado que $Cov(\m{X},F) = L$, $\rho(X_i,F_j)=l_{ij}/\sigma_i$, el $j$-ésimo factor común puede interpretrarse en términos de las variables con las que tenga mayor correlación. Además, las cargas factoriales obtenidas a través de una transformación ortogonal de las cargas iniciales tienen la misma capacidad para reproducir la matriz de covarianza (o correlación). Dado que una transformación ortogonal realiza una rotación de los ejes coordenados, a las transformaciones ortogonales de las cargas factoriales, y por tanto de los factores, se denomina rotación factorial o rotación de los factores. El objetivo de rotar los factores es encontrar una representación que facilite la representación de acuerdo con idea que hemos expresado al principio, es decir, que los factores estén altamente correlacionados con unas variables y poco o nada correlacionados con otras.
 
 \item \textbf{Puntuación}. Teniendo en cuenta que los factores son variables no observable, un problema de interés
 es estimar los valores de los factores (puntuaciones factoriales) en cada una de los $n$ elementos muestrales, o bien, sobre un nuevo individuo. Con este fin hemos visto los métodos de mínimos cuadrados ponderados y regresión.
@@ -249,7 +249,7 @@ Seleccionamos una muestra $m$ de tamaño $N$ y consideramos $N_{ij}$ el número 
 $$
 \chi^2 = \sum_{i=1}^n \sum_{j=1}^p \frac{(N_{ij}-e_{ij})^2}{e_{ij}}
 $$
-Donde $e_{ij} = \E_{H_0}(N_{ij}) = NP_{H_0}(A_i)P_{H_0}(B_j) = \dfrac{N_{i.}N_{.j}}{N}$. Nuestro estadístico $\chi^2 \conv{L}\chi^2_{(n-1)(p-1)}$. Por tanto, una región crítica para un test de tamaño $\alpha$ es $\chi^2 \geq \chi^2_{(n-1)(p-1),1-\alpha}$.
+Donde $e_{ij} = \hat{\E}_{H_0}(N_{ij}) = N\hat{P}_{H_0}(A_i)\hat{P}_{H_0}(B_j) = \dfrac{N_{i.}N_{.j}}{N}$. Nuestro estadístico $\chi^2 \conv{L}\chi^2_{(n-1)(p-1)}$. Por tanto, una región crítica para un test de tamaño $\alpha$ es $\chi^2 \geq \chi^2_{(n-1)(p-1),1-\alpha}$. Los grados de libertad son la diferencia entre el número de parámaetros iniciales menos los que tendríamos bajo $H_0$. En este caso, los iniciales son $np-1$, los $P(A_i\cap B_j)$, y los finales sería $n-1 + p -1$, los $P(A_i)$ y $P(B_j)$. Luego $np-1 - (n-1+p-1) = p(n - 1) -n -1 = (n-1)(p-1)$.
 \item[] \textbf{Homogeneidad} Consideremos una variable $B$ con $p$ modalidades $B_1,\dotsc,B_p$. El problema de la homogeoneidad en $n$ poblacioens $(P_1,\dotsc,P_n)$ consiste en determinar si podemos aceptar la hipótesis
 $$
 H_0\colon P_1(B_j) = \cdots = P_n(B_j),\;\forall j
@@ -258,9 +258,8 @@ Para ello seleccionamos de forma independiente una muestra $m_i$ de tamaño $N_i
 $$
 \chi^2 = \sum_{i=1}^n \sum_{j=1}^p \frac{(N_{ij}-e_{ij})^2}{e_{ij}}
 $$
-Donde $e_{ij} = \E_{H_0}(N_{ij}) = N_{i.}P_{H_0}(B_j) = \dfrac{N_{i.}N_{.j}}{N}$. Verifica $\chi^2 \conv{L}\chi^2_{(n-1)(p-1)}$. Una región crítica para un test de tamaño $\alpha$ es $\chi^2 \geq \chi^2_{(n-1)(p-1),1-\alpha}$.
+Donde $e_{ij} = \hat{\E}_{H_0}(N_{ij}) = N_{i.}\hat{P}_{H_0}(B_j) = \dfrac{N_{i.}N_{.j}}{N}$. Verifica $\chi^2 \conv{L}\chi^2_{(n-1)(p-1)}$. Una región crítica para un test de tamaño $\alpha$ es $\chi^2 \geq \chi^2_{(n-1)(p-1),1-\alpha}$. Los grados de libertad vienen dados por la diferencia entre los parámetros iniciales y los que tenemos bajo la hipótesis nula. Inicialmente tenemos $n(p-1)$, correspondientes a los $P_i(B_j)$ y bajo $H_0$ tenemos $p-1$, los $P(B_j)$. 
 \end{enumerate}
-
 \item Demuestra que los estadísticos $\chi^2$ asociados a ambos problemas y sus distribuciones coinciden.
 
 Respondido en el apartado anterior. 

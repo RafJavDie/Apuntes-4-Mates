@@ -50,6 +50,7 @@ det(R)
 
 #cor=TRUE: datos tipificados
 plot(princomp(X,cor=TRUE))   #Sugiere dos factores
+
 (autoval= eigen(R)$values)   #autovalores y autovectores
 round(autoval,2)
 (autovec= eigen(R)$vectors)

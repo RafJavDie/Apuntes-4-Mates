@@ -45,7 +45,6 @@ esfbarl(R)
 #########################################
 #2. Análisis de componentes principales
 #########################################
-
 autoval= eigen(R)$values
 autovec= eigen(R)$vectors
 #Gráfico de sedimentación
@@ -92,3 +91,4 @@ text(L,labels=rownames(L),cex=0.8)
 text(Lrot,labels=rownames(Lrot),cex=0.8,col="red")
 grid()
 abline(h=0,v=0,lty=2)
+

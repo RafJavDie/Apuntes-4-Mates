@@ -43,6 +43,7 @@ plot(resumen[,1],type="h",
 abline(h=mean(resumen[,1]),lwd=2,lty=2,col="blue")
 #otra opción:
 plot(acp,col="blue",main="Decathlon 1989") 
+abline(h=mean(resumen[,1]),lwd=2,lty=2,col="blue")
 
 
 #####################################################
@@ -151,4 +152,3 @@ plot(acp$scores[,1:2],type="n",
      xlab="C.P. 1",ylab="C.P.2")
 text(acp$scores[,1:2],labels=decath$nompais,cex=0.6)
 abline(h=0,v=0,lty=2,col="blue")
-

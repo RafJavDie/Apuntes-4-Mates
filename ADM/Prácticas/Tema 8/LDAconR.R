@@ -116,8 +116,8 @@ par(mfrow=c(1,1))
 
 #Normalidad multivariante (se acepta)           ### Pensaba que el test de Mardia
                                                 ### No aplicaba a la normalidad multiv
-Test_Mardia(datos[datos$tipo=="auto",1:3])
 Test_Mardia(datos[datos$tipo=="bus",1:3])
+Test_Mardia(datos[datos$tipo=="auto",1:3])
 #Homocedasticidad:
 MBox(datos[,1:3],datos[,4])
 
@@ -149,7 +149,7 @@ boxplot(predict(anadis)$x~datos[,4])
 predi<- predict(anadis)
 str(predi)
 
-#Contiene 3 componentes
+#Contiene 3 componentes                                 ## Ejemplo tasa de acierto AQUí
 #class: clasificación con la regla de Fisher
 #posterior: estimación de las probabilidades de
 #           automóvil y autobús
@@ -186,6 +186,7 @@ by(probabiJ,prediJ,summary)
 #o bien
 boxplot(probabiJ~prediJ)
 abline(h=0.5,col="blue",lty=2)
+
 # Se pretende crear la curva ROC para determinar el uso del "BUS" a través de las
 # probabilidades a posteriori determinadas como resultado del análisis discriminante.
 # 
