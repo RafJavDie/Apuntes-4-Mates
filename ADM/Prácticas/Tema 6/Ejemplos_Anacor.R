@@ -148,7 +148,7 @@ summary(anacor)
 
 
 names(anacor)
-anacor$sv    # Valores singulares                     What???
+anacor$sv    # Valores singulares                     
 anacor$sv^2  # Autovalores
 
 anacor$rowinertia      # Inercia de las filas

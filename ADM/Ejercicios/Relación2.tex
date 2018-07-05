@@ -164,9 +164,13 @@ La doble implicación es clara, así que demostramos la igualdad izquierda.
 &= LL'+\Psi
 \end{align*}
 Para la segunda igualdad
-$$
-Cov(\mX,F) = Cov(\mX-\mu,F) = Cov(LF+\varepsilon,F) = Cov(LF,F)+Cov(\varepsilon,F) = LI_m + 0 = L
-$$
+\begin{align*}
+Cov(\mX,F) &= Cov(\mX-\mu,F)\\
+& = Cov(LF+\varepsilon,F) \\
+&= Cov(LF,F)+Cov(\varepsilon,F) \\
+&= LI_m + 0 = L
+\end{align*}
+
 \item Demuestra que si las variables originales están normalizadas
 
 \[ \rho(X_i, F_j) = l_{ij}. \]
@@ -306,8 +310,8 @@ de dimensiones (generalmente 2) de forma que los perfiles próximos en la métri
 
 Ambos procedimientos buscan reducir la dimensión del espacio original de estudio. Para ello se realizan cambios de base que mantengan la máxima varianza en las primeras componentes.  
 
-La diferencia entre ambos procedimientos es que en el AC utilizamos la distancia ji-cuadrado en lugar de la distancia euclídea. Esto provoca que, mientras que en el ACP, la distancia euclídea de los individuos originales y los transformados coinciden, en el AC, la distancia ji-cuadrado de las coordenadas originales coincide con el cuadrado de la distancias euclídeas de las proyecciones. Además, en el ACP las coordenadas deben estar incorreladas. 
-
+La diferencia entre ambos procedimientos es que en el AC utilizamos la distancia ji-cuadrado y trabajamos con perfiles fila, mientras que en el ACP se utiliza la distancia euclídea y con datos cualesquiera. Esto provoca que, mientras que en el ACP, la distancia euclídea de los individuos originales y los transformados coinciden, en el AC, la distancia ji-cuadrado de las coordenadas originales coincide con el cuadrado de la distancias euclídeas de las proyecciones.
+%
 \item Plantea y resuelve el problema de optimización al que conduce el AC. 
 
 El problema que se plantea en el AC por filas es determinar los ejes $u_1, u_2,\dotsc, u_p$, unitarios y ortogonales, que maximicen la varianza (ponderada) de las proyecciones
