@@ -442,7 +442,7 @@ Cx<- C%*%t(as.matrix(datosNC))
 Cx
 Cx<- t(Cx)
 library(ICSNP)
-mardiaTest(Cx)
+mardiaTest(C)
 HotellingsT2(Cx,mu = rep(0,p-1)) 
 
 

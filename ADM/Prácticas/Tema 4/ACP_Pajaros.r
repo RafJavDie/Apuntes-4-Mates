@@ -1,6 +1,6 @@
 ################################################
 #ANALISIS DE DATOS MULTIVARIANTES.             #  
-#GRADO EN MATEMÁTICAS.                         #
+#GRADO EN MATEMÁTICAS.                        #
 #DOBLE GRADO EN MATEMÁTICAS Y ESTADÍSTICA      #
 #ANALISIS DE COMPONENTES PRINCIPALES           #
 #CON UNA MATRIZ DE CORRELACIONES               #
