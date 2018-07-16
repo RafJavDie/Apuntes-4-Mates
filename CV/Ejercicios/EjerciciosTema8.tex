@@ -56,54 +56,54 @@ $O_n$ hereda la estructura diferenciable de $M_n(\R)$, que es equivalente a la d
 \end{solucion}
 \newpage
 
-\begin{ejercicio}{9.11}
-Sea $\varphi:M\to N$ una aplicación diferenciable entre variedades diferenciables. Probar que $\varphi^*:\Omega^*(N)\to\Omega^*(M)$ es un morfismo de complejos de cadenas.
-\end{ejercicio}
-\begin{solucion}
-Tenemos que probar que el siguiente diagrama es conmutativo 
-\[
-\begin{tikzcd}
-\Omega^k(N)\arrow[r,"d^k"]\arrow[d,"\varphi^*"] & \Omega^{k+1}(N)\arrow[d,"\varphi^*"]\\
-\Omega^k(M)\arrow[r, "d^k"] & \Omega^{k+1}(M)
-\end{tikzcd}
-\]
-para todo $k$. Sea $w\in\Omega^k(N)$. Elegimos $p\in M,q=\varphi(p)\in N$ y parametrizaciones locales $g:W\to M$ y $h:V\to N$. Tenemos por definición
-\[
-d_qw=Alt^{k+1}((D_yh)^{-1})d_y(h^*(w))=Alt^{k+1}(D_qh^{-1})d_y(h^*(w))
-\]
-donde $y$ cumple $h(y)=q=\varphi(p)$, así que
-\[
-\varphi^*(d_qw)_p=Alt^{k+1}(D_p\varphi)\circ Alt^{k+1}(D_qh^{-1})(d_yh^*(w))=
-\]
-\[
-Alt^{k+1}(D_qh^{-1}D_p\varphi)(d_yh^*(w))=Alt^{k+1}(D_ph^{-1}\varphi)(d_y(h^*(w)))=
-\]
+%\begin{ejercicio}{9.11}
+%Sea $\varphi:M\to N$ una aplicación diferenciable entre variedades diferenciables. Probar que $\varphi^*:\Omega^*(N)\to\Omega^*(M)$ es un morfismo de complejos de cadenas.
+%\end{ejercicio}
+%\begin{solucion}
+%Tenemos que probar que el siguiente diagrama es conmutativo 
 %\[
-%Alt^{k+1}(D_ph^{-1}\varphi)(d_yAlt^k(D_yh)(w_{h(y)})).
+%\begin{tikzcd}
+%\Omega^k(N)\arrow[r,"d^k"]\arrow[d,"\varphi^*"] & \Omega^{k+1}(N)\arrow[d,"\varphi^*"]\\
+%\Omega^k(M)\arrow[r, "d^k"] & \Omega^{k+1}(M)
+%\end{tikzcd}
 %\]
-%Ahora, por la conmutatividad de $d$ con $\Omega^k(h)$ a nivel de complejo de cocadenas de abiertos euclídeos, esto es igual a 
+%para todo $k$. Sea $w\in\Omega^k(N)$. Elegimos $p\in M,q=\varphi(p)\in N$ y parametrizaciones locales $g:W\to M$ y $h:V\to N$. Tenemos por definición
 %\[
-%Alt^{k+1}(D_ph^{-1}\varphi)Alt^{k+1}(D_yh)(d_q w_{\varphi(p)})=Alt^{k+1}(D_p\varphi)(d_yw_{\varphi(p)}).
+%d_qw=Alt^{k+1}((D_yh)^{-1})d_y(h^*(w))=Alt^{k+1}(D_qh^{-1})d_y(h^*(w))
 %\]
-% 
-Por otro lado, 
+%donde $y$ cumple $h(y)=q=\varphi(p)$, así que
 %\[
-%\varphi^*(w)_p=Alt^k(D_p\varphi)(w_{\varphi(p)}),
-%\]
-%así que 
-eligiendo $x$ con  $g(x)=p$ tenemos
-\[
-d_p\varphi^*(w)=Alt^{k+1}((D_xg)^{-1})d_x(g^*(\varphi^*(w)))=
-\]
-%\[
-%Alt^{k+1}(D_xg^{-1})d_x(Alt^k(D_xg)\circ Alt^k(D_p\varphi)(w_{\varphi(p)}))=
+%\varphi^*(d_qw)_p=Alt^{k+1}(D_p\varphi)\circ Alt^{k+1}(D_qh^{-1})(d_yh^*(w))=
 %\]
 %\[
-%Alt^{k+1}(D_xg^{-1})d_x(Alt^k(D_x\varphi g)(w_{\varphi(p)})=Alt^{k+1}(D_p\varphi)(d_x w_{\varphi(p)})
+%Alt^{k+1}(D_qh^{-1}D_p\varphi)(d_yh^*(w))=Alt^{k+1}(D_ph^{-1}\varphi)(d_y(h^*(w)))=
 %\]
-
-SUPONGO QUE NO ME QUEDA MÁS REMEDIO QUE EVALUAR EN VECTORES
-\end{solucion}
+%%\[
+%%Alt^{k+1}(D_ph^{-1}\varphi)(d_yAlt^k(D_yh)(w_{h(y)})).
+%%\]
+%%Ahora, por la conmutatividad de $d$ con $\Omega^k(h)$ a nivel de complejo de cocadenas de abiertos euclídeos, esto es igual a 
+%%\[
+%%Alt^{k+1}(D_ph^{-1}\varphi)Alt^{k+1}(D_yh)(d_q w_{\varphi(p)})=Alt^{k+1}(D_p\varphi)(d_yw_{\varphi(p)}).
+%%\]
+%% 
+%Por otro lado, 
+%%\[
+%%\varphi^*(w)_p=Alt^k(D_p\varphi)(w_{\varphi(p)}),
+%%\]
+%%así que 
+%eligiendo $x$ con  $g(x)=p$ tenemos
+%\[
+%d_p\varphi^*(w)=Alt^{k+1}((D_xg)^{-1})d_x(g^*(\varphi^*(w)))=
+%\]
+%%\[
+%%Alt^{k+1}(D_xg^{-1})d_x(Alt^k(D_xg)\circ Alt^k(D_p\varphi)(w_{\varphi(p)}))=
+%%\]
+%%\[
+%%Alt^{k+1}(D_xg^{-1})d_x(Alt^k(D_x\varphi g)(w_{\varphi(p)})=Alt^{k+1}(D_p\varphi)(d_x w_{\varphi(p)})
+%%\]
+%
+%SUPONGO QUE NO ME QUEDA MÁS REMEDIO QUE EVALUAR EN VECTORES
+%\end{solucion}
 
 \newpage
 
