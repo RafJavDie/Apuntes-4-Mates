@@ -16,7 +16,7 @@ A cada problema de programación lineal
      &     &             &              &         $x_3$ & libre
 \end{tabular}
 \end{center}
-al que llamaremos primal (P) y donde $x_1, x_2$ y $x_3$ son vectores de variables de decisión, le vamos a asociar otro problema de programación lineal al que llamaremos dual (D) dado por las siguiente transformación:
+al que llamaremos \index{problema!primal}primal (P) y donde $x_1, x_2$ y $x_3$ son vectores de variables de decisión, le vamos a asociar otro problema de programación lineal al que llamaremos \index{problema!dual}\index{dual|see {problema dual}}dual (D) dado por las siguiente transformación:
 
 \begin{center}
 \begin{tabular}{cccccc}
@@ -246,7 +246,7 @@ u'^*Ax^* > u'^* b \Rightarrow c'x^* \geq u'^*Ax^*>u'^*b
 \]
 Esto es absurdo, pues por hipótesis $c'x^*=u'^*b$. Análogamente deducimos que $(u'^*A-c')x^* = 0$.
 \end{dem}
-\section{Análisis de postoptimalidad}
+\section{Análisis de postoptimalidad}\index{postoptimalidad}
 \subsection{Variaciones en la función objetivo}
 Dado un problema $(P)$ $\min c'x$, $Ax=b$, $x\geq 0$ consideramos un vector $d\in\R^n$ y la familia de problemas: $P(\Delta)$: $\min c'x + \Delta d'x$, $Ax=b$, $x\geq 0$. Observemos que $P=P(0)$. Supongamos que B es una base asociada a una solución óptima de $x^*(0)$. Es decir, $x^*(0)=[B^{-1}b | 0]' \geq 0$. Queremos determinar el rango de valores de $\Delta$ que mantienen a $x^*(0)$ como solución óptima de $P(\Delta)$. La condición que certifica que $B$ es una base óptima son:
 \begin{itemize}
@@ -433,7 +433,8 @@ Entonces $f(b)=(u^*)' b$. Derivando respecto al término independiente de la $i$
 \[\frac{\partial f}{\partial b_i}=\frac{\partial }{\partial b_i}\left(\sum_{j=1}^m u^*_jb_j\right)=u^*_i\]
 Por lo tanto, $u^*_i$ es la tasa de crecimiento de la valor objetivo óptimo con una unidad de incremento en $b_i$.
 
-Económicamente, llamamos a $u^*$ vector de \textbf{precios sombra}. Para ilustrar, si la $i$-ésima restricción representa una demanda de producción de $b_i$ unidades del $i$-ésimo producto y $c'x$ representa el coste total de producción, $u^*_i$ es el coste incremental de producir una unidad más del $i$-ésimo producto.
+Económicamente, llamamos a $u^*$ vector de \nuevotermino{precios sombra}.
+Para ilustrar, si la $i$-ésima restricción representa una demanda de producción de $b_i$ unidades del $i$-ésimo producto y $c'x$ representa el coste total de producción, $u^*_i$ es el coste incremental de producir una unidad más del $i$-ésimo producto.
 
 \begin{example}
 $g'=(0,0,1)=e'_3$. Teníamos que $z(\Delta)$ al variar $b_3\in [20,30]$ mantiene la base óptima.

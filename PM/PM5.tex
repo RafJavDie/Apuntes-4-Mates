@@ -12,7 +12,8 @@ Sean $A \in \R^{m \times n}$, $b\in\R^m$ y $c\in\R^n$, consideramos el problema:
  & & $x \in \mathbb{Z}_+^n$
 \end{tabular}\]
 
-Denotaremos por $z_{PE}$ al valor óptimo de este problema. (PE) tiene asociado otro problema que denominaremos el ``problema relajado lineal'' y denotamos por (LP) que consiste;
+Denotaremos por $z_{PE}$ al valor óptimo de este problema.
+(PE) tiene asociado otro problema que denominaremos el ``problema relajado lineal''\index{problema!relajado lineal} y denotamos por (LP)\index{LP|see {problema relajado lineal}} que consiste:
 
 \[\begin{tabular}{ccl}
  (LP) & $\min$ & $c'x$\\
@@ -27,7 +28,7 @@ Si $x$ es factible en $PE$ entonces también lo es en $LP$.
 Esto implica que $z_{LP} ≤ z_{PE}$, donde $z_{LP} $ es el valor óptimo de $LP$.
 \end{obser}
 \begin{defi}
-Un problema es de \textbf{programación binaria} ó $\{0,1\}$ si sus variables están restringidas a tomar valores en $\{0,1\}$.
+Un problema es de \nuevotermino{programación binaria} ó $\{0,1\}$ si sus variables están restringidas a tomar valores en $\{0,1\}$.
 \end{defi}
 \newpage
 \begin{defi}
@@ -131,7 +132,7 @@ Si al final aparecen dificultades, definir más variables o restricciones.
 \end{nota}
 
 \begin{defi}
-Un poliedro $P = \{x \in \R^n : Ax≤b \}$ se dice \textbf{entero} si todos sus puntos extremos tienen coordenadas enteras.
+Un poliedro $P = \{x \in \R^n : Ax≤b \}$ se dice \index{poliedro!entero}\textbf{entero} si todos sus puntos extremos tienen coordenadas enteras.
 \end{defi}
 
 \begin{theorem}
@@ -157,7 +158,7 @@ Sea $P$ un poliedro y $z_{LP}$ el valor óptimo de $\min \{c'x : x \in P\}$, $c 
 \end{dem}
 
 \begin{defi}
-Un sistema de desigualdades $Ax ≤ b$ $x \in \R^n$ es Totalmente Dual Entero (TDE) si para cualquier $c \in \Z^n$ tal que $z_{LP} = \min \{ c'x : Ax≤b\} > -\infty$ entonces el problema dual asociado $\max \{u'b : u'A = c', u ≥ 0\}$ tiene solución óptima $u^* \in \Z^m$.
+Un sistema de desigualdades $Ax ≤ b$ $x \in \R^n$ es \index{totalmente dual entero}Totalmente Dual Entero (TDE) si para cualquier $c \in \Z^n$ tal que $z_{LP} = \min \{ c'x : Ax≤b\} > -\infty$ entonces el problema dual asociado $\max \{u'b : u'A = c', u ≥ 0\}$ tiene solución óptima $u^* \in \Z^m$.
 \end{defi}
 
 \begin{theorem}
@@ -199,8 +200,9 @@ Todos los vértices de este poliedro son enteros. Su dual es:
 Si el sistema original fuese $TDE$ los vértices del dual serían enteros pero podemos comprobar que la solución óptima es $y_1=y_2=y_3=y_4 = 1/2$, no entera.
 \end{example}
 \begin{defi}
-A es una matriz Totalmente Unimodular si y solo si $\forall B\subset A$, B cuadrada, entonces $det(B)\in\{-1,0,1\}$. 
+A es una \index{matriz!totalmente unimodular}matriz \textbf{Totalmente Unimodular} si y solo si $\forall B\subset A$, B cuadrada, entonces $det(B)\in\{-1,0,1\}$. 
 \end{defi}
+Esto nos 
 \begin{nota}
 Si A es TU entonces $a_{ij}\in\{0,\pm1\}$.
 \end{nota}
@@ -401,7 +403,7 @@ Consideremos el problema $z=\max\{c'x:x\in X\}$, con $c\in\R^n$ y $X\subset\R^n$
 \end{prop}
 
 \begin{center}
-{\bf Algoritmo de ramificación y acotación (Branch and Bound-B\&B)}
+{\bf Algoritmo de ramificación y acotación (\index{Branch and Bound}Branch and Bound-B\&B)}
 \end{center}
 
 \begin{tabbing}

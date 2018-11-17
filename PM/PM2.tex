@@ -5,11 +5,11 @@
 \section{Conjuntos convexos}
 
 \begin{defi}
-Un conjunto $S\subseteq\R^n$ es \textbf{convexo} si $\forall x^1,x^2\in S$ y $\forall  \lambda\in[0,1]$ se cumple que $\lambda x^1 + (1-\lambda)x^2\in S$.
+Un conjunto $S\subseteq\R^n$ es \nuevotermino{convexo} si $\forall x^1,x^2\in S$ y $\forall  \lambda\in[0,1]$ se cumple que $\lambda x^1 + (1-\lambda)x^2\in S$.
 \end{defi}
 
 \begin{defi}
-Un \textbf{semiespacio} es un conjunto de la forma $H^-=\left\{x\in\R^n: a'x\leq b, a\in\R^n, b\in\R\right\}$ o de la forma $H^+=\left\{x\in\R^n: a'x\geq b, a\in\R^n,\,b\in\R\right\}$.
+Un \nuevotermino{semiespacio} es un conjunto de la forma $H^-=\left\{x\in\R^n: a'x\leq b, a\in\R^n, b\in\R\right\}$ o de la forma $H^+=\left\{x\in\R^n: a'x\geq b, a\in\R^n,\,b\in\R\right\}$.
 \end{defi}
 
 \begin{prop}
@@ -32,7 +32,10 @@ Definimos $x(\lambda)$ igual que en la demostración anterior. Supongamos que $S
 \end{dem}
 
 \begin{defi}
-Un \textbf{poliedro} es el conjunto de puntos definido por la intersección de un número finito de semiespacios. Visto matricialmente, dados $A\in\R^{m\times n}, b\in \R^m$ se define el poliedro $P=\left\{x\in \R^n: Ax\leq b\right\}$. Si denotamos por $a_i$ a la i-ésima fila de $A$ vemos que este conjunto se reescribe como $\left\{x\in\R^n: a_ix\leq b_i\ \forall i=1,\dots, n\right\}$, que es equivalente a la primera definición. Un poliedro acotado se llama \textbf{politopo}. 
+Un \nuevotermino{poliedro} es el conjunto de puntos definido por la intersección de un número finito de semiespacios.
+Visto matricialmente, dados $A\in\R^{m\times n}, b\in \R^m$ se define el poliedro $P=\left\{x\in \R^n: Ax\leq b\right\}$.
+Si denotamos por $a_i$ a la i-ésima fila de $A$ vemos que este conjunto se reescribe como $\left\{x\in\R^n: a_ix\leq b_i\ \forall i=1,\dots, n\right\}$, que es equivalente a la primera definición.
+Un poliedro acotado se llama \nuevotermino{politopo}.
 \end{defi}
 
 \begin{coro}
@@ -40,20 +43,20 @@ Los poliedros son convexos.
 \end{coro}
 
 \begin{defi}
-Se define el \textbf{rayo} por un $x\in\R^n$ como el conjunto $\left\{y\in\R^n: y=\lambda x, \lambda\geq 0\right\}$.
+Se define el \nuevotermino{rayo} por un $x\in\R^n$ como el conjunto $\left\{y\in\R^n: y=\lambda x, \lambda\geq 0\right\}$.
 \end{defi}
 
 \begin{defi}
-Sea S convexo y $x\in S$. El punto $x$ dice \textbf{punto extremo} si $x=\lambda x^1 +(1-\lambda)x^2$ con $x^1,x^2\in S$ y $\lambda\in (0,1)$ implica que $x^1=x^2=x$.
+Sea S convexo y $x\in S$. El punto $x$ dice \nuevotermino{punto extremo} si $x=\lambda x^1 +(1-\lambda)x^2$ con $x^1,x^2\in S$ y $\lambda\in (0,1)$ implica que $x^1=x^2=x$.
 \end{defi}
 \begin{nota}  En el caso de los poliedros, los puntos extremos coinciden con la idea de vértice. En una bola euclídea cerrada su frontera es de puntos extremos.
 \end{nota}
 
 \begin{defi}
-Diremos que $d\in\R^n$ es una \textbf{dirección} de $S\subseteq\R^n$ si $\forall x\in S$ se tiene que $x+\alpha d\in S\ \forall\alpha\geq 0$.
+Diremos que $d\in\R^n$ es una \nuevotermino{dirección} de $S\subseteq\R^n$ si $\forall x\in S$ se tiene que $x+\alpha d\in S\ \forall\alpha\geq 0$.
 \end{defi}
 
-\begin{defi} Una dirección $d$ es \textbf{extrema} si $d=\alpha^1d^1+\alpha^2d^2$, siendo $d^i$ direcciones de $S$ y $\alpha^1,\alpha^2>0$ implica que $d^1$ es proporcional a $d^2$.
+\begin{defi} Una dirección $d$ es \index{dirección!extrema}\textbf{extrema} si $d=\alpha^1d^1+\alpha^2d^2$, siendo $d^i$ direcciones de $S$ y $\alpha^1,\alpha^2>0$ implica que $d^1$ es proporcional a $d^2$.
 \end{defi}
 
 \begin{defi}
@@ -70,14 +73,14 @@ S(d-1)= \left\{x\in\R^n:x=\sum_{i=1}^d\lambda_i a^i,\lambda_i\geq 0, \sum_{i=1}^
 $S(1)$ es un segmento, $S(2)$ es un triángulo relleno y $S(3)$ es un tetraedro relleno.
 \end{example}
 
-\begin{defi} Dado un conjunto $S\subset\R^n$, su \textbf{envolvente} (envoltura) \textbf{convexa} $CO(S)$ es:
+\begin{defi} Dado un conjunto $S\subset\R^n$, su \nuevotermino{envolvente} (envoltura) \textbf{convexa} $CO(S)$ es:
 \[
 CO(S)=\left\{x\in\R^n: x=\sum_{i=1}^d\lambda_i x^i, d<+\infty, x^i\in S, i=1,\dots, d, \lambda_i\geq 0, \sum_{i=1}^d\lambda_i =1\right\}
 \]
 $CO(S)$ es el menor convexo que contiene a $S$.
 \end{defi}
 
-\begin{defi} Diremos que $C\subset\R^n$ es un \textbf{cono} si contiene a todos sus rayos, es decir, $\forall x\in C$ $\lambda x\in C, \lambda\geq 0$.
+\begin{defi} Diremos que $C\subset\R^n$ es un \nuevotermino{cono} si contiene a todos sus rayos, es decir, $\forall x\in C$ $\lambda x\in C, \lambda\geq 0$.
 \end{defi}
 \begin{example}
 Una semirrecta que pasa por el origen es un cono. No todos los conos son conjuntos convexos.
@@ -248,14 +251,14 @@ $\QED$
 \section{Representación de poliedros}
 
 \begin{defi}
-Diremos que un poliedro $P$ está en forma \textbf{estándar} si $P=\{x\in\R^n: Ax=b,x\geq 0\}$ con $A\in\R^{m\times n},$ $b\in\R^m$, $n\geq m$ y $rg(A)=m$.
+Diremos que un poliedro $P$ está en forma \index{poliedro!estándar}\textbf{estándar} si $P=\{x\in\R^n: Ax=b,x\geq 0\}$ con $A\in\R^{m\times n},$ $b\in\R^m$, $n\geq m$ y $rg(A)=m$.
 \end{defi} 
 \begin{nota}
 Todo poliedro se puede escribir en forma estándar pues $a'x\leq b\equiv a'x+y=b, y\geq 0$ y análogamente restando para la desigualdad contraria.
 Si $x_j\in\R$ entonces podemos escribir $x_j=x_j^+ -x_j^-$ siendo $x_j^+=\max{\{x_j,0\}}, x_j^-=-\min{\{x_j,0\}}$.
 \end{nota}
 
-\begin{defi}Dado que $A\in\R^{m\times n}, b\in\R^m, n\geq m$ y $rg(A)=m$, existe una matriz $B$ de $m$ columas de $A$ que son linealmente independientes, es decir que $rg(B)=m$ ($\exists B^{-1}$). Si $B^{-1}b\geq 0$ diremos que B es una \textbf{base}. 
+\begin{defi}Dado que $A\in\R^{m\times n}, b\in\R^m, n\geq m$ y $rg(A)=m$, existe una matriz $B$ de $m$ columas de $A$ que son linealmente independientes, es decir que $rg(B)=m$ ($\exists B^{-1}$). Si $B^{-1}b\geq 0$ diremos que B es una \nuevotermino{base}\index{matriz básica|see {base}}. 
 \end{defi}
 \begin{obser} Sea $B$ en las condiciones anteriores (no necesariamente base), podemos escribir $A$ como $[B\ N]$. Las variables del sistema $Ax=b$ también se pueden reordenar de modo que:
 \[
