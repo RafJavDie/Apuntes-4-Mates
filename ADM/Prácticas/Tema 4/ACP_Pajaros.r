@@ -39,7 +39,7 @@ esfbarl <- function(M){
   return(s)
 }
 esfbarl(R)
-#Significativo  ## ¿Cuando rechazamos?
+#Significativo  
                                                     
 
 #########################################
