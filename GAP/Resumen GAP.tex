@@ -5,34 +5,24 @@
 %\usepackage[T1]{fontenc}
 %\usepackage[francais]{babel}
 %\usepackage{lmodern}
-
 %\usepackage{epstopdefi}
-
 %\usepackage[spanish]{babel}
 %\usepackage[T1]{fontenc}
-
-
 %\usepackage[latin1]{inputenc}
 
-
 \title{\textsc{Resumen de la asignatura\\ Geometría Aplicada.}}
-\author{\textsc{Ismael Ruiz Donaire}\\ \textsc{Mercedes Prado Rodríguez}\\ \textsc{Jesús Rebollo Bueno}}
+\author{\textsc{Ismael Ruiz Donaire}\\ \textsc{Mercedes Prado Rodríguez}\\ \textsc{Jesús Rebollo Bueno}\\ \\ Editado por\\ \textsc{Javier Aguilar Martín}\\ \textsc{Rafael González López}\\ \textsc{Diego Pedraza López}}
 \date{}
-
-
 
 \usepackage{makeidx}
 \makeindex
 
 %\newtheorem{thm}{Teorema}
-
 %\theoremstyle{definition}
 %\newtheorem{defi}[thm]{Definición}
 %\newtheorem{nt}[thm]{Nota}
 %\newtheorem{obs}[thm]{Observación}
 %\newtheorem{ej}[thm]{Ejemplos}
-
-
 %\theoremstyle{Teorema}
 %\newtheorem{propo}[thm]{Proposición}
 %\newtheorem{coro}[thm]{Corolario}
@@ -64,7 +54,9 @@
 
 \chapter{Aplicaciones entre Superficies}
 
-Vamos a introducir las definciones, enunciados de teoremas y ejemplos, con el fin de poder usar este documento en el examen de la asignatura.
+\section{Introducción}
+
+Vamos a introducir las definiciones, enunciados de teoremas y ejemplos, con el fin de poder usar este documento en el examen de la asignatura.
 
 \begin{defi}[función diferenciable]\label{1}
 Sea $M$ una superficie regular (sup.reg.) en $\mathbb{R}^3$. Una $\textbf{función}$ continua $f: M \rightarrow \mathbb{R}$ se dice $\textbf{diferenciable}$ en un punto $p \in M$ si existe una superficie simple $(U,\textbf{x})$ en $M$ tal que  $p \in U$ y $ f\circ \textbf{x}$ es diferenciable en $p' = \textbf{x}^{-1}(p)$. f será diferenciable en $M$ si lo es en todo punto de $M$.
@@ -94,7 +86,6 @@ La \textbf{Proposición \ref{3}} vale también si tomamos $f: G \subseteq \mathb
 \end{nota}
 
 \newpage
-
 \begin{ejs}\
 \begin{enumerate}
 \item \textbf{Distancia a un punto (al cuadrado).}
@@ -106,7 +97,7 @@ Sean $p_0=(x_0,y_0,z_0)$ un punto de $\mathbb{R}^3$ y $f: \mathbb{R}^3 \rightarr
 \item \textbf{Distancia a un punto. }
 
 Sean $p_0=(x_0,y_0,z_0)$ un punto de $\mathbb{R}^3$
-y $f: \mathbb{R}^3 \setminus\lbrace p_0\rbrace \rightarrow \mathbb{R}$ tal que $f(x,y,z)=\sqrt{(x-x_0)^2+(y-y_0)^2+(z-z_0)
+y $f: \mathbb{R}^3 \setminus\lbrace p_0\rbrace \rightarrow \mathbb{R}$ la aplicación distancia de un punto a $p_0$ dada por $f(x,y,z)=\sqrt{(x-x_0)^2+(y-y_0)^2+(z-z_0)
 ^2}$. Entonces  $f\vert_M$ es diferenciable con $M$ sup.reg. de $\mathbb{R}^3$ tal que $p_0 \notin M$.
 
 \item \textbf{Función altura sobre un plano  $\pi_0$.}
@@ -139,7 +130,7 @@ Así pues, $\Y_2^{-1}\circ f\circ \X_2$ es diferenciable en $p''=\X_2^{-1}(p)$ p
 
 
 \begin{teorema}
-Sean  $f: \mathbb{R}^3 \rightarrow \mathbb{R}^3$ diferenciable, $M$,$N$ sup.reg. tales que $f(M) \subseteq N$. Entonces $f\vert_M : M \rightarrow N$ es también diferenciable.(Se puede cambiar $f: G \subseteq \mathbb{R}^3 \rightarrow \mathbb{R}^3$ con $G$ abierto y $M\subseteq G$).
+Sean  $f: \mathbb{R}^3 \rightarrow \mathbb{R}^3$ diferenciable, $M$,$N$ sup.reg. tales que $f(M) \subseteq N$. Entonces $f\vert_M : M \rightarrow N$ es también diferenciable. Se puede cambiar $f: G \subseteq \mathbb{R}^3 \rightarrow \mathbb{R}^3$ con $G$ abierto y $M\subseteq G$.
 \end{teorema}
 
 \begin{dem} Sea $f\func{\R^3}{\R^3}$ una aplicación diferenciable, entonces, en particular, es continua. Sean $M$ y $N$ dos superficies regulares en $\R^3$ con $f(M)=N$. Veamos que $f|_M\func{M}{N}$ es continua. Sea $H\subset N$ abierto, $\exists J\subset \R^3$ abierto tal que $G=J\cap N$. Entonces $f|_M^{-1}(H) = f^{-1}(H)\cap M = f^{-1}(J\cap N)\cap M=f^{-1}(J)\cap f^{-1}(N)\cap M = f^{-1}(J)\cap M$ abierto relativo en M, puesto que $F^{-1}(J)\subset \R^3$ es abierto. Luego, $f|_M$ es continua.
@@ -1403,14 +1394,14 @@ Veamos dicho algoritmo:
         \end{itemize}
 
 \vspace{0.4cm}
-\subsubsection{\underline{árbol Spanning Minimal (A.S.M.)}}
+\subsubsection{\underline{Árbol Spanning Minimal (A.S.M.)}}
 
 Supongamos que queremos construir carreteras entre varias ciudades. Formalmente tenemos un grafo $\bs{G=(V,A)}$ cuyos vértices son las ciudades y las aristas las carreteras, y una función $\bs{w:A\rightarrow\mathbb{N}}$ de forma que $\bs{w(a)}$ representa el coste de la carretera $\bs{a}$. Decimos que $\bs{G}$ y $\bs{w}$ constituyen un grafo ponderado y que $\bs{w}$ es una función de peso.
 \vspace{0.2cm}
 
 El objetivo práctico es obtener una red de carreteras de coste mínimo, que se corresponde con el problema de obtener un árbol spanning $\bs{T=(V,A')}$ de $\bs{G}$ cuyo peso total $$\bs{w(T)=\sum_{a\in A'}w(a)}$$ sea el menor posible. Este problema tiene solución, sin embargo, pueden existir varios árboles spanning distintos cuyo peso total sea mínimo.
 \vspace{0.6cm}
-
+\newpage
 \noindent\textbf{Algoritmo voraz aplicado a un árbol Spanning Minimal:}
 \vspace{0.3cm}
 
@@ -1495,8 +1486,6 @@ Para el ejemplo dado tendríamos el siguiente grafo:
       \end{center}
 
 
-%\vspace{0.2cm}
-\newpage
 \noindent\underline{\textbf{Algoritmo Búsqueda en Profundidad (B.E.P.)}}:
 
         \begin{quotation}
@@ -1576,6 +1565,7 @@ Para el ejemplo dado tendríamos el siguiente grafo:
 %
 %
 %\vspace{0.2cm}
+\newpage
         En la B.E.P. la lista de vértices se conoce con el nombre de pila, ya que se comporta como una pila de platos,
         sólo se pueden añadir o quitar vértices (platos) en la cima de la pila.
 \vspace{0.2cm}
@@ -2018,7 +2008,7 @@ $$S = \{ p_1, \dots ,p_n \} \subset \mathbb{R}^2$$
 
 \vspace{-0.2cm}
 
-$$Vor(p_i)=\{q\in \mathbb{R}^2 | d(q,p_i) \leq d(q,p_j), \forall j \neq i \}$$.
+$$Vor(p_i)=\{q\in \mathbb{R}^2 \mid d(q,p_i) \leq d(q,p_j), \forall j \neq i \}$$.
 
 \end{defi}
 
@@ -2761,7 +2751,9 @@ Partición de la Unidad
 
 \vspace{0.2cm}
 
-\item Derivada: $\displaystyle \frac{d}{dx} B_k^n(x)= n( B_{k-1}^{n-1}(x)-B_k^{n-1}(x))$
+\item Derivada: $\displaystyle \frac{d}{dx} B_k^n(x)= n( B_{k-1}^{n-1}(x)-B_k^{n-1}(x))$. 
+
+Cuando alguno de los términos no esté definido, la fórmula sigue teniendo sentido eliminando dicho término.
 \end{itemize}
 
 \subsection{Curvas de Bézier}

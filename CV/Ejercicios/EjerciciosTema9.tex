@@ -1,0 +1,139 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de From Calculus to Cohomology, Capítulo 10}
+\author{Javier Aguilar Martín}
+\maketitle
+
+\begin{ejercicio}{10.1}
+Sea $\pi:\R^2\to T^2$ como en el ejercicio 8.4 y sean
+\[
+U_1=\pi(\R\times (0,1)),\quad U_2=\pi(\R\times (-\frac{1}{2},\frac{1}{2})).
+\]
+Probar que $U_1$ y $U_2$ son difeomorfos a $S^1\times\R$, y que $U_1\cap U_2$ tiene 2 componentes conexas, ambas isomorfas a $S^1\times\R$. Nótese que $U_1\cup U_2=T^2$.
+
+Usar la sucesión exacta de Mayer-Vietoris y el corolario 10.14 para probar que
+\[
+H^0(T^2)\cong H^2(T^2)\cong\R\text{ y }H^1(T^2)\cong\R^2.
+\]
+\end{ejercicio}
+\begin{solucion}
+Definismo $\varphi: \R\times(-1/2,1/2)$ como $(x,y)\mapsto\varphi(x,y)=(\cos(2\pi x), \sin(2\pi x), \tan(\pi y))$. Es claro que $\varphi$ pasa al cociente porque es invariante por la acción de $\Z^2$. La aplicación además es claramente continua, por lo que la aplicación inducida en el cociente, $\tilde{\varphi}: U_2\to S^1\times\R$ es continua. Para ver que es diferenciable, dado $p=[(p_1,p_2)]\in U_2$, elegimos un representante y una carta lo suficientemente pequeña, con lo que el intercambio de cartas será localmente igual a $\varphi$, que es diferenciable. Claramente $\tilde{\varphi}$ es sobreyectiva. Es fácil comprobar que $\tilde{\varphi}$ es inyectiva. Tenemos que $\tilde{\varphi}$ es abierta, pues tanto $\varphi$ como $\pi$ son localmente homeomorfismo. 
+
+Una construcción análoga sirve para $U_1$. Vayamos ahora a $U_1\cap U_2$. 
+\[
+U_1\cap U_2=\pi(\R\times (0,1))\cap \pi(\R\times (-1/2,1/2))=\pi(\R\times (0,1/2)\sqcup \R(1/2,1))=\pi(U_1-\R\times
+ \{1/2\})\subseteq U_1\cong S^1\times\R
+\]
+Si llamamos $C_1,C_2$ a las componentes conexas de la intersección, entonces la restricción de $\varphi$ a cada uno de ellos nos da el resultado. 
+
+
+Como el toro es orientable conexo y compacto, el corolario 10.14 nos da $H^2(T^2)\cong\R$. Por otra parte, $H^p(S^1\times\R)\cong H^p(S^1)$ para todo $p$ por la invarianza homotópica de la cohomología. Por ser en particular conexo, $H^0(T^2)\cong\R$. En Mayer-Vietoris
+\[
+0\to\R\xrightarrow{I^*}\R\oplus\R\xrightarrow{J^*}\R\oplus\R\xrightarrow{\partial_*}H^1(T^2)\xrightarrow{I^*}\R\oplus\R\xrightarrow{J^*}\R\oplus\R\xrightarrow{\partial^*}\R\xrightarrow{} 0
+\]
+Reiterando el teorema del rango-nulidad llegamos a que $\Ima{\partial^*}=\ker{I^*}=\R=\Ima{I^*}$. Por el primer teorema de isomorfía, $H^1(T^2)=\R\oplus\R$. 
+
+
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{10.2}
+Con la notación del ejercicio anterior tenemos variedades diferenciables
+\[
+C_1=\pi(\R\times\{a\}),\quad C_2=\pi(\{b\}\times\R)\quad (a,b\in\R)
+\]
+de $T^2$ que son difeomorfas a $S^1$ y tienen la orientación inducida por $\R$. Probar que la aplicación
+\[
+\Omega^1(T^2)\to\R^2; w\mapsto (\int_{C_1}w, \int_{C_2}w)
+\]
+induce un isomorfismo $H^1(T^2)\to \R^2$. Probar que este isomorfismo es independiente de $a$ y $b$.
+\end{ejercicio}
+\begin{solucion}
+Primero probamos que la aplicación está bien definida. Si $\tau=w+d\rho$, entonces como $\partial C_i=\emptyset$, se sigue de la linealidad de la integral y el teorema de Stokes. Claramente la aplicación es $\R$-lineal. Si denotamos $P$ a la aplicación del enunciado, llamamos $\bar{P}([w])=P(w)$. Como $H^1(T^2)$ tiene dimensión 2, basta ver que $\bar{P}$ es inyectivo para probar que es isomorfismo. Si $w\in\Omega^1(T^2)$, entonces $\pi^*(w)=fdx+gdy\in\Omega^1(\R^2)$ con $f,g\in C^{\infty}(\R^2;\R)=\Omega^0(\R^2)$. Para todo $p=[(p_1,p_2)]\in T^2$, $D_{(p_1,p_2)}\pi:T_{(p_1,p_2)}\R^2\to T_p(T^2)$ es isomorfismo. Si $v\in T_p(\R^2)$, $\pi^*(w)_{(q_1,q_2)}(D^{-1}_{(q_1,q_2)}\pi(v))=w_p(v)=(\pi^*)_{(p_1,p_2)}(D^{-1}_{(p_1,p_2)}\pi(v))$ para $[q_1,q_2]=p$.   Además, si llamamos $A$ a la acción de $\Z$ en $\R^2$, $D_{(p_1,p_2)}A:T_{(p_1,p_2)}\R^2\to T_{(q_1,q_2)}\R^2$ es la identidad por que $A$ consiste en sumar enteros a cada coordenada. Así que como esta aplicación conmuta con las diferenciales anteriores, $D^{-1}_{(q_1,q_2)}\pi=D_{(p_1,p_2)}\pi$. Tomando $\hat{v}=e_1,e_2$ tenemos que $f$ y $g$ son periódicas de periodo 1. Así que $\Ima{\pi^*}=\{fdx+gdy\mid f,g\in\Omega^0(\R^2)$ periódicas de periodo 1$\}\subseteq\Omega^1(\R^2)$. 
+
+Si $w\in\Omega^1(T^2)$ cerrada, $d\pi^*(w)=\pi^*(dw)=0$, y por otro lado
+\[
+d(fdx+gdy)=df\land dx+dg\land dy=\left(\parcial{g}{x}-\parcial{f}{y}\right)dx\land dy\Rightarrow \parcial{g}{x}=\parcial{f}{y}.
+\] 
+Como $H^1(\R^2)=0$, y $d\pi^*(w)=0$, $[\pi^*(w)]\in H^1(\R^2)$, con lo que $\pi^*(w)=dF, F\in\Omega^0(\R^2)$. Así que $f=\parcial{F}{x}, g=\parcial{F}{y}$.
+
+Ahora orientamos $T^2$ con una forma de orientación $\sigma\in\Omega^2(T^2)$ tal que $\pi^*(\sigma)=dx\land dy$. Consideramos $i_a:C_a\hookrightarrow T^2$, que se puede ver como la restricción $p=\pi|$ del cociente a $\R$, que a su vez lo incluimos en $\R^2$ mediante $j_a$. Como $i_ap=\pi j_a$, $p^*i_a^*=j_a^*\pi^*$. Por otro lado $j_a(r)=(r,a)$, luego $D_rj_a=(1\ 0)'$ así que $j_a^*(dx)=dt$ y $j_a^*(dy)=0$. Ahora, $C_a$ está orientado como una subvariedad de $T^2$, por $\rho\in\Omega^1(C_a)$ tal que $p^*(\rho)=dt=j_a^*(dx)$. Si $w\in\Omega^1(T^2)$, entonces $i_a^*(w)\in\Omega^1(C_a)$, luego $p^*i_a^*(w)\in\Omega^1(\R)$ y esto es igual a $j_a^*\pi^*(w)=j_a^*(fdx+gdy)=f\circ j_a dt$, donde $f\circ j_a(t)=f(t,a)$ para todo $t\in\R$.
+
+Así, denotando $g=p|_{(0,1)})$,
+\[
+0=\int_{C_a}w=\int_{C_a}i_a^*(w)=\int_{C_a}\bar{f}\rho =\int_{C_a} \bar{f}d\mu_{\rho}=\int_{C_a-p(0)} \bar{f}d\mu_{\rho}=\int_{C_a-p(0)}\bar{f}\chi_{C_a-p(0)}\rho=\int_{C_a-p(0)}i_a^*(w)=
+\]
+\[
+\int_{(0,1)} g^*i_a^*(w)=\int_{(0,1)}j_a^*\pi^*(w)=\int_{(0,1)} f\circ j_a dt=\int_0^1\parcial{F}{x}(t,a)dt=F(1,a)-F(0,a)
+\]
+con lo que $F(1,a)=F(0,a)$. Y análogamente podemos demostrar $F(b,1)=F(b,0)$. Como esto se puede hacer en cualquier carta, llegamos a que $F$ es periódica de periodo 1 en ambas coordeandas. Con lo que $F$ pasa al cociente como $\hat{F}$ tal que $\pi^*(\hat{F})=\hat{F}\circ\pi=F\in\Omega^0(\R^2)$. Por loq ue $\pi^*(d\hat{F}=d\pi^*(\hat{F})=dF$, con lo que $w=d\hat{F}$ por ser $\pi^*$ homomorfismo inyectivo. Así que finalmente $[w]=0$.
+
+Veamos que $\bar{P}$ no depende del punto $(b,a)$. Definimos
+\[
+H(a)=\int_{C_a}w=\int_0^1 f\circ j_a dt,\quad K(b)=\int_{C_b}w=\int_0^1 j\circ j_b dt.
+\]
+Así, 
+\[
+\parcial{H}{y}(a)=\int_0^1\parcial{f\circ j_a}{y}dt=\int_0^1\parcial{f}{y}(t,a)dt=\int_0^1\parcial{g}{x}(t,a)dt=g(1,a)-g(0,a)=0
+\]
+Similarmente con $K$. Así que tanto $H$ como $K$ son constantes, por lo que no depende de $(a,b)$.
+
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{10.4}
+Probar que para toda $n$-variedad diferenciable conexa compacta y no orientable $M$ se tiene que $H^n(M)=0$. (Pista: usar ejercicio 9.18).
+\end{ejercicio}
+\begin{solucion}
+Por el ejercicio 9.18 tenemos un isomorfismo entre $H^n(M)\cong H^n(\widetilde{M})_+$, y por otro lado tenemos el isomorfismo entre $H^n(\widetilde{M})\cong\R$. Supongamos que $H^n(\widetilde{M})_+\cong \R$ y sea $[\sigma]$ un generador con $\sigma\in\Omega_+^n(\widetilde{M})$. Recordemos que
+\[
+\Omega^n(\widetilde{M})=\Omega_+^n(\widetilde{M})\oplus \Omega^n_-(\widetilde{M})
+\] 
+siendo el sumando positivo isomorfo a $\Omega^n(M)$ mediante $\pi^*$. Entonces existe $w\in\Omega^n(M)$ con $\pi^*(w)=\sigma$. Como los generadores de la cohomología son las formas de orientación, esto implica que $w$ es una forma de orientación, pero $M$ no es orientable, por lo que hemos llegado a una contradicción.
+
+%Consideremos $w\in\Omega^n(M)$ una $n$-forma cerrada y sea $\tilde{w}=\pi^*(w)$. Como $A$ revierte la orientación
+%\[
+%\int_{\widetilde{M}} A^*\tilde{w}=-\int_{\widetilde{M}} \tilde{w}
+%\]
+%Pero $A^*\tilde{w}=A^*\pi^*(w)=(\pi\circ A)^*(w)=\pi^*(w)=\tilde{w}$, por lo que $\int_{\widetilde{M}} \tilde{w}=0$. Esto quiere decir que existe $\rho\in\Omega^{n-1}(\widetilde{M})$ con $\tilde{w}=d\rho$. Consideramos ahora $\eta=\frac{1}{2}(\rho+A^*\rho)$. Es claro que $A^*\eta=\eta$ y además $d\eta=\frac{1}{2}(d\rho+A^*d\rho)=\tilde{w}$, así que podemos reemplazar $\rho$ por $\eta$. Como es invariante por $A^*$ AHORA FALTARÍA BAJARLA DE NUEVO PARA CONSEGUIR QUE TODAS SEAN EXACTAS, PERO NO LO VEO CLARO. $\pi^*$ es difeomorfismo local, así que alomejor podría bajarlo con $(\pi^{-1})^*$ pero no estoy seguro si con eso me valdría o tengo que hacer algún razonamiento extra por el hecho de que es local.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{10.5}
+Calcular la cohomología de deRham de la botella de Klein. (Pista: el oriented double covering se puede identificar con la aplicación $T^2\to K^2$ del ejercicio 8.5)
+\end{ejercicio}
+\begin{solucion}
+Por la pista y por el ejercicio anterior tenemos que $H^2(K^2)=0$ y por conexión $H^0(K^2)=\R$, así que solo falta calcular $H^1(K^2)$. Para ello, recordemos que $H^1(K)=H_+^1(T)$. Así que tenemos que buscar los generadores que queden invariantes por la acción de $A^*$, donde $A$ es la proyección al cociente de $\hat{A}:\R^2\to\R^2$ dada por $\hat{A}(x,y)=(x+\frac{1}{2},-y)$. Obsérvese que $\hat{A}(C_a)$ cambia de hoja la curva mientras que $\hat{A}(C_b)$ la deja en la misma hoja. Como dentro de una misma hoja el isomorfismo era independiente de la elección de $(a,b)$, hay un generador que es invariante mientras que el otro no. Así que $H^1(K^2)=\R$ generados por la preimagen de $w\mapsto \int_{C_b} w=1$. 
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{10.6}
+Sea $R$ un dominio compacto con borde diferenciable en una $n$-variedad diferenciable orientada $M$. Probar que para $w\in\Omega^{p-1}(M)$, $\tau\in\Omega^{n-p}(M)$ se tiene
+\[
+\int_R dw\land \tau=\int_{\partial R}w\land\tau+(-1)^p\int_R w\land d\tau
+\]
+\end{ejercicio}
+\begin{solucion}
+Recordemos que 
+\[
+d(w\land\tau)=dw\land \tau +(-1)^{p-1} w\land d\tau
+\]
+por lo que
+\[
+\int_R d(w\land\tau)=\int_R dw\land \tau +(-1)^{p-1}\int_R w\land d\tau.
+\]
+Usando Stokes en el miembro de la izquierda y despejando
+\[
+\int_R dw\land \tau=\int_{\partial R}w\land\tau+(-1)^p\int_R w\land d\tau.
+\]
+\end{solucion}
+
+
+\end{document}

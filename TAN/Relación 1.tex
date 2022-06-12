@@ -1,21 +1,22 @@
 \documentclass[twoside]{article}
 \usepackage{../estilo-ejercicios}
 
+\usepackage{enumerate}
 %--------------------------------------------------------
 \begin{document}
 
-\title{Algebra Conmutativa y Geometría Aplicada}
+\title{Teoría Analítica de Números}
 \author{Rafael González López, Diego Pedraza López}
 \maketitle
 
 \begin{ejercicio}{1}
 Encontrar todos los enteros positivos tales que $\varphi(n)$ no sea divisible por 4.
-\begin{sol}
+\begin{solucion}
 Sea $n\in \N$. Sabemos que $n=p_1^{a_1}\cdots p_k^{a_k}$. En tal caso, 
 \[
 \varphi(n) = (p_1-1)p_1^{a_1-1}\cdots(p_k-1)p_k^{a_k-1}
 \]
-Obsérvese que si $n$ tiene más de un divisor primo impar, claramente se tendría que $4\mid \varphi(n)$, pues $p_j -1$ y $p_k-1$ serían dos factores pares de $\varphi(n)$. Por otra parte, si $p_i=2$, debe cumplire que $0\leq a_i \leq 2$. 
+Obsérvese que si $n$ tiene más de un divisor primo impar, claramente se tendría que $4\mid \varphi(n)$, pues $p_j -1$ y $p_k-1$ serían dos factores pares de $\varphi(n)$. Por otra parte, si $p_i=2$, debe cumplir que $0\leq a_i \leq 2$. 
 
 Por lo que sabemos hasta ahora, $n = 2^a p^b$ donde $a\in\{0,1,2\}$, $p$ es un primo impar y $b\geq 0$. Distingamos casos en función de $a$ y $b$
 \begin{itemize}
@@ -26,7 +27,7 @@ Por lo que sabemos hasta ahora, $n = 2^a p^b$ donde $a\in\{0,1,2\}$, $p$ es un p
 \end{itemize}
 Tenemos entonces que las soluciones son:
 \[ \{1,2,4\} \cup \{p^k \mid p\text{ primo con } p \equiv 3 \pmod 4, k≥1\} \cup \{2p^k \mid p\text{ primo impar}, k ≥ 1\} \].
-\end{sol}
+\end{solucion}
 \end{ejercicio}
 
 \newpage
@@ -37,8 +38,19 @@ Probar que para todo $k\geq 0$
 \[
 \gcd \left\{\binom{2k}{k},\binom{2k+1}{k}\right\}=\binom{2k}{k}\frac{1}{k+1}, \quad \gcd \left\{\binom{2k+1}{k},\binom{2k+2}{k+1}\right\}=\binom{2k+1}{k+1}
 \]
-\begin{sol}
-\end{sol}
+\begin{solucion}
+Vamos a ver que si dividimos los elementos el candidato a máximo común divisor nos quedan elementos claramente coprimos.
+\begin{align*}
+\frac{\binom{2k}{k}}{\binom{2k}{k}\frac{1}{k+1}}&=k+1\\
+\dfrac{\binom{2k+1}{k}}{\binom{2k}{k}\frac{1}{k+1}}&=\frac{\frac{(2k+1)!}{k!(k+1)!}(k+1)}{\frac{(2k)!}{k!k!}} = \frac{(2k+1)!k!^2(k+1)}{k!(k+1)!(2k)!}=2k+1
+\end{align*}
+Claramente $k+1$ y $2k+1$ son coprimos, pues si $\exists s$ que divide a ambos, entonces se tiene que $s\mid (2k+1)-(k+1) = k$, por lo que $s \mid (k+1)-k =1$. Análogamente para el segundo caso
+\begin{align*}
+\frac{\binom{2k+1}{k}}{\binom{2k+1}{k+1}}&=\frac{\frac{(2k+1)!}{k!(k+1)!}}{\frac{(2k+1)!}{(k+1)!k!}}=1\\
+\dfrac{\binom{2k+2}{k+1}}{\binom{2k+1}{k+1}}&=\frac{\frac{(2k+2)!}{(k+1)!(k+1)!}}{\frac{(2k+1)!}{(k+1)!k!}} = \frac{(2k+2)!k!(k+1)!}{(k+1)!^2(2k+1)!}=\frac{2k+2}{k+1}=2
+\end{align*}
+Claramente coprimos.
+\end{solucion}
 \end{ejercicio}
 
 
@@ -50,17 +62,49 @@ Probar que para todo $n$
 \[
 \sum_{d\mid n} \sigma(d)\mu(n/d)=n 
 \]
-\begin{sol}
+\begin{solucion}
 Dado que las funciones $\sigma(n)$ y $\mu(n)$ son multiplicativas, su convolución también lo es. Por tanto, como $n\mapsto n$ también es multiplicativa, basta probar la igualdad para los números de la forma $p^a$ con $p$ primo y $a\geq 1$ (el caso $n=1$ es trivial). Sea pues $n=p^a$ con $p$ primo, entonces
 \begin{gather*}
 \sum_{d\mid n} \sigma(d)\mu(n/d) = \sum_{k=0}^a \sigma(p^k)\mu(p^{a-k}) = \sigma(p^{a-1})\mu(p) + \sigma(p^a)\mu(1) = \\
 =  -\frac{p^a - 1}{p-1} +\frac{p^{a+1}-1}{p-1} = \frac{p^{a+1}-p^a}{p-1} = p^a
 \end{gather*}
 Tal y como queríamos ver. Hemos usado que $\mu(p^a)=0$ $\forall a \geq 2$.
-\end{sol}
+\end{solucion}
 \end{ejercicio}
 \newpage
+\begin{ejercicio}{4}
+Definamos $$c(n)=\sum\limits_{k\perp n} e^{2k\pi i/n},$$ donde la suma se extiende a los restos de módulo $n$, es decir, la suma de las raíces primitivas $n-$ésimas de la unidad.
 
+\begin{enumerate}[a)]
+\item Probar que $c$ es una función aritmética multiplicativa.
+\item Probar que $c(n)=\mu (n)$.
+\end{enumerate}
+
+\begin{solucion}
+Vamos a hacer ambos apartados a la vez, ya que si $c(n)=\mu(n)$ resulta que $c(n)$ es multiplicativa.\\
+Usamos la misma función $\mu(n)$ para definir $c(n)$ ya que $\sum\limits_{d\mid n}\mu(d)=\left\lbrace\begin{array}{ll}
+1 & \text{Si } n=1\\
+0 & \text{Si } n>1
+\end{array}\right.$\\ Tenemos pues:$$c(n)=\sum\limits_{k\perp n} e^{2k\pi i/n}=\sum\limits_{k=1}^n e^{2k\pi i/n}\sum\limits_{d\mid gcd(k,n)}\mu(d)$$ Reordenando la suma $$\sum\limits_{k=1}^n e^{2k\pi i/n}\sum\limits_{d\mid gcd(k,n}\mu(d)=\sum\limits_{d\mid n} \mu(d)\sum\limits_{d\mid k,k\leq n}e^{2k\pi i/n}=\sum\limits_{d\mid n} \mu(d)\sum\limits_{k=1}^{n/d}e^{2kd\pi i/n}$$ Ahora bien, la segunda suma es geométrica y por tanto $$\sum\limits_{k=1}^{n/d}e^{2kd\pi i/n}=\frac{1-e^{(2d\pi i/n)(n/d+1)}}{1-e^{2d\pi i/n}}-1=\frac{1-e^{2d\pi i/n}}{1-e^{2d\pi i/n}}-1=0\text{ si }n/d>1$$ Es decir, si y sólo si $d=n$ la suma se hará 1, por tanto $$c(n)=\sum\limits_{d\mid n} \mu(d)\sum\limits_{k=1}^{n/d}e^{2kd\pi i/n}=\mu(n)\qed$$
+\end{solucion}
+\newpage
+\begin{solucion}
+Dado que ambas funciones son multiplicativas basta probar la igualdad para los números de la forma $p^a$ con $p$ primo y $a\geq 0$, aunque en caso de la igualdad es trivial.
+$$
+\mu(p^a) = \begin{cases}
+1 & a=0\\
+-1 & a=1\\
+0 & \text{otro caso}
+\end{cases}$$
+$$c(p^a) = \sum_{k\perp p^a} e^{2\pi ki/n} = \sum_{k=1}^{p^a} e^{2\pi k i/p^a}-\sum_{p\mid k, k=1}^{p^a} e^{2\pi i  k/ p^a} = 0-\sum_{k=1}^{p^a-1} e^{2\pi i  k/ {p^a-1}}  
+$$
+Tomando $g(n) = e^{2\pi i n}$ utilizamos la inversión de Mobius
+$$
+l
+$$
+\end{solucion}
+\end{ejercicio}
+\newpage
 
 \begin{ejercicio}{5}
 \begin{itemize}
@@ -79,10 +123,10 @@ $$
 \sum_{n=1}^\infty \frac{\mu(n)^2}{n^s}
 $$
 \end{itemize}
-\begin{sol}
+\begin{solucion}
 \begin{itemize}
 \item[]
-\item Primeramente, observamos que $\sum_{d\mid n} \mu(d)^2$ es la convolución de las funciones $f\equiv 1$ y $\mu^2$, ambas multiplicativas, por lo que también es multiplicativa. Por tanto, solo tenemos que probar el resultado para los números de la forma $n=p^a$, $p$ primo y $a\geq 1$.
+\item Primeramente, observamos que $\sum_{d\mid n} \mu(d)^2$ es la convolución de las funciones $f\equiv 1$ y $\mu^2$, ambas multiplicativas, por lo que también es multiplicativa. Además, $2^{\omega(n)}$ es claramente multiplicativa. Por tanto, solo tenemos que probar el resultado para los números de la forma $n=p^a$, $p$ primo y $a\geq 1$.
 \[
 \sum_{d\mid n} \mu(d)^2 = \sum_{n=0}^a \mu(p^n)^2 = \mu(1)^2 + \mu(p)^2 = 2^1 = 2^{\omega(n)}
 \]
@@ -94,12 +138,136 @@ $$
 Alternativamente:
 \[ \frac{ζ(s)}{ζ(2s)} = \prod_p \frac{1-1/p^{2s}}{1-1/p^s} = \prod_p \frac{(1-1/p^s)(1+1/p^s)}{1-1/p^s} = \prod_p (1+1/p^s) = \sum_{n=1}^{∞} \frac{μ(n)^2}{n^s} \]
 \end{itemize}
-\end{sol}
+\end{solucion}
 \end{ejercicio}
 \newpage
 
+\begin{ejercicio}{6}
+Una función aritmética $f$ se dice \textit{completamente multiplicativa} si $f(mn)=f(m)f(n)$.
+\begin{enumerate}[(a)]
+\item Probar que la función de Liouville
+	\[ λ(n) = (-1)^{Ω(n)} \]
+	es completamente multiplicativa. ($Ω(n) = a_1+a_2+\cdots+a_k$ si $n=p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$ es la factorzación canónica de $n$).
+\item Demostrar que
+	\[ \sum_{d|n} λ(d) = \begin{cases}
+		1 &\text{ si }n\text{ es un cuadrado}\\
+		0 &\text{ en otro caso}
+	\end{cases}\]
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Pasemos a la demostración.
+\begin{enumerate}[(a)]
+\item Sean $m,n\in \N$ entonces $mn = p_1^{a_1}\cdots p_k^{a_k}$. Entonces podemos escribir $m=p_{i_1}^{a_{i_1}}\cdots p_{i_s}^{a_{i_s}}$ y $n=p_{j_1}^{a_{j_1}}\cdots p_{j_t}^{a_{j_t}}$ de manera que si $i_q=j_l = t$ entonces $a_{i_q}+a_{j_l}=a_t$. Es claro, por tanto, que 
+$$ \Omega(mn) = \Omega(n)+\Omega(m) $$ $$ \lambda(mn) = (-1)^{\Omega(mn)}=(-1)^{ \Omega(n)+\Omega(m)} = (-1)^{\Omega(n)}(-1)^{\Omega(m)} = \lambda(n)\lambda(m)
+$$
+Por lo que $\lambda$ es completamente multiplicativa.
+\item  El miembro izquierdo de la igualdad es la convolución $\lambda(n)$ y $g(n)=1$, ambas multiplicativas, luego la convolución también lo será. Sea $h(n)$ la función descrita en el miembro derecho, entonces sean $n,m\in \N$ coprimos. Entonces $mn$ es un cuadrado si y solo si $m,n$ son cuadrados. Por tanto,
+ $$
+ h(nm)=\begin{cases}
+ 		1 &\text{ si }mn\text{ es un cuadrado}\\
+ 		0 &\text{ en otro caso}
+ 	\end{cases}
+ $$
+ $$h(n)h(m)=\begin{cases}
+ 		1 &\text{ si $m$ y $n$ son cuadrados}\\
+ 		0 &\text{ en otro caso}
+ 	\end{cases}
+ 	=\begin{cases}
+ 		1 &\text{ si $mn$ es un cuadrado}\\
+ 		0 &\text{ en otro caso}
+	\end{cases}
+ $$
+ \newpage
+ Como $h$ es multiplicativa, basta que probemos la igualdad para $n=p^a$ con $p$ primo y $a\geq 0$, aunque $a=0$ es trivial. 
+ $$h(p^a) = \begin{cases}
+ 		1 &\text{ si $a$ es par}\\
+ 		0 &\text{ en otro caso}
+ 	\end{cases}	$$
+ 	$$
+ 	\sum_{d\mid n}\lambda(d) = \sum_{n=0}^a \lambda(p^n) = \sum_{n=0}^a (-1)^n = a+1 \mod 2 = \begin{cases}
+ 		1 &\text{ si $a$ es par}\\
+ 		0 &\text{ en otro caso}
+ 	\end{cases}	$$
+ 	\end{enumerate}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7}
+Se sabe que una función aritmética $f(n)$ cumple $\sum_{d|n} f(d) = n^2$.
+\begin{enumerate}[(a)]
+\item Demostrar que $f$ es multiplicativa.
+\item Demostrar que
+\[ f(n) = n^2 \prod_{p|n} \left(1-\frac{1}{p^2}\right)\]
+\item Expresar $\sum_{n=1}^{∞} \frac{f(n)}{n^s}$ en términos de la función $ζ(s)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion} Pasemos a demostrar cada uno de los apartados.
+ \begin{enumerate}[(a)]
+ \item Vamos aplicar la primera fórmula de inversión de Möbius.
+ $$
+ f(n)=\sum_{d\mid n}\mu(n/d)d^2
+ $$
+ Por tanto, $f$ es la convolución de $h(n)=n^2$ y $\mu(n)$, ambas claramente multiplicativas, por lo que también lo será $f$.
+ \item Sea $t(n) = n^2 \prod_{p|n} \left(1-\frac{1}{p^2}\right)$ entonces si $m$ y $n$ son coprimos, un primo $p$ divide o bien a uno o bien a otro, luego es claro que
+ $$
+ t(nm) = (nm)^2\prod_{p|nm} \left(1-\frac{1}{p^2}\right) = n^2m^2\prod_{p|m} \left(1-\frac{1}{p^2}\right)\prod_{p|n} \left(1-\frac{1}{p^2}\right)=t(n)t(m)
+ $$
+ Por tanto, $t(n)$ es multiplicativa. Para ver la igualdad basta probarla para los elementos de la forma $p^a$ con $p$ primo y $a\geq 0$, aunque el caso $a=0$ es trivial.
+ \begin{align*}
+ f(p^a)&= \sum_{d\mid n}\mu(n/d)d^2 = \sum_{k=0}^a\mu(p^k)(p^{a-k})^2 = \mu(1)p^{2a} + \mu(p)p^{2(a-1)}\\
+ &=p^{2a}-p^{2a-2}\\
+ t(p^a)&= p^a \left(1-\frac{1}{p^2}\right) = p^a - p^{2a-2}
+ \end{align*}
+ \item Consideremos
+ $$
+ \sum_{n=1}^{∞} \frac{f(n)}{n^s} = \sum_{n=1}^{∞} \frac{1}{n^s} \sum_{d\mid n}\mu(n/d)d^2 = \left( \sum_{n=1}^{∞} \frac{n^2}{n^s} \right)\left( \sum_{n=1}^{∞} \frac{\mu(n)}{n^s} \right) = \zeta(s-2)\zeta(s)^{-1} = \frac{\zeta(s-2)}{\zeta(s)}
+ $$
+ \end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{8}
+Demostrar que para todo $x > 0$ se tiene
+\[ 2(e^x-1)e^{-2x} = \sum_{n=1}^{∞} \frac{μ(n)}{\senh nx} \]
+\end{ejercicio}
+\begin{solucion}
+Sea $f(x)=2(e^x-1)e^{-2x}= 2(e^{-x}-e^{-2x})$, entonces
+$$
+\sum_{n=1}^\infty f(nx) = 2\sum_{n=1}^\infty e^{-nx}-e^{-2x} = 2\left(\frac{1}{e^x-1}-\frac{1}{e^{2x}-1}\right) = \frac{2e^x}{e^{2x}-1} = \frac{1}{\sinh{x}}
+$$
+Se sigue entonces que
+$$
+\sum_{n=1}^\infty  \frac{μ(n)}{\senh nx} = \sum_{n=1}^\infty \mu(n) \sum_{m=1}^\infty f(nmx) =  \sum_{r=1}^\infty f(rx) \sum_{n\mid r} \mu(n) = f(x)
+$$
+\end{solucion}
+\begin{solucion} Hagamos la siguiente consideración
+\begin{align*}
+\sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} &= 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx} - e^{-nx}} = 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx}} \frac{1}{1-e^{-2nx}}\\
+&= 2 \sum_{n=1}^{∞} μ(n) e^{-nx}(1+e^{-2nx}+e^{-4nx}+\dots)\\
+& = 2 \sum_{n=1}^{∞} μ(n) \sum_{k=1}^{∞} e^{-(2k-1)nx}= 2 \sum_{n=1}^{∞} \sum_{k=1}^{∞} μ(n) e^{-(2k-1)nx}
+\end{align*}
+ya que estas series son absolutamente convergente (compruébalo):
+\[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2 \sum_{N=1}^{∞} e^{-Nx} \left(\sum_{n|N \text{ y }N/n\text{ es impar}} μ(n) \right)\]
+Tenemos que si $N$ es impar:
+\[ \sum_{\substack{n|N \\ N/n\text{ es impar}}} μ(n) = \begin{cases}
+	1, &\text{ si }N = 1\\
+	0, &\text{ si }N > 1
+\end{cases}\]
+Si $N$ es par y $N=2^am$:
+\[ \sum_{2^ak|2^am} μ(n) = \sum_{k|m} μ(2^a k) = \sum_{k|m} μ(2^a) μ(k) = \begin{cases}
+	0, &\text{ si }a ≥ 2\\
+	-1 &\text{ si }m=1\\
+	0 &\text{ c.c.}
+\end{cases}\]
+Luego:
+\[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2(e^{-x}-e^{-2x})\]
+\end{solucion}
+\newpage
+
 \begin{ejercicio}{9}
-Sea $f(n)$ el mayor número natural $m$ tal que $m^2\mid n$. definimos
+Sea $f(n)$ el mayor número natural $m$ tal que $m^2\mid n$. Definimos
 \[
 g(n) = \sum_{d\mid n} f(d)\mu(n/d)
 \]
@@ -108,7 +276,7 @@ g(n) = \sum_{d\mid n} f(d)\mu(n/d)
 \item Calcular $g(p)$, $g(p^2)$ y $g(p^3)$, siendo $p$ un número primo.
 \item ¿Para qué valores de $n\in\N$ se tiene que $g(n)=0$?
 \end{itemize}
-\begin{sol}
+\begin{solucion}
 \begin{itemize}
 \item[]
 \item Dado que $g(n) = (f\ast \mu)(n)$ y $\mu$ es una función multiplicativa, basta probar que $f$ también lo es para demostrar que $g$ lo es (propiedades de la convolución). Sean $n,m\in \N$ coprimos y $q=f(mn)$. Sabemos que podemos escribir $q=p_1^{a_1},\dotsc,p_k^{a_k}$. Sea $p_i$, como $(n,m)=1$, entonces o bien $p_i \mid n$, o bien $p_i \mid m$, pero no puede dividir a ambos. En tal caso, podemos hacer una partición entre los factores primos que dividen a $n$ y los que dividen a $m$, de forma que podemos escribir $q=p_np_m$, cumpliéndose $(n,p_m)=1$ y $(m,p_n)=1$. Resta ver que $f(n)=p_n$ y $f(m)=p_m$, como queríamos probar.
@@ -125,24 +293,66 @@ Es claro que para $n\geq 1$ se tiene
 g(p^n) = f(p^{n-1})\mu(p) + f(p^n)\mu(1) = f(p^n)-f(p^{n-1})\\
 g(p^n) = 
 \begin{cases}
-p^{n/2}(p-1) & \text{si $n$ es par}\\
-0 			& \text{si $n$ es impar}
+p^{n/2}-p^{(n-2)/2} & \text{si $n$ es par}\\
+p^{(n-1)/2}-p^{(n-1)/2}	& \text{si $n$ es impar}
+\end{cases} =
+\begin{cases}
+p^{-1+n/2}(p-1) & \text{si $n$ es par}\\
+0	& \text{si $n$ es impar}
 \end{cases}
 \end{gather*}
 \item A partir del apartado anterior tenemos prácticamente la respuesta. $g(n)=0$ si $\exists p$ primo tal que $\nu_p(n)$ es impar, es decir, si y solo si $n$ no es un cuadrado perfecto.
 \end{itemize}
-\end{sol}
+\end{solucion}
 \end{ejercicio}
 
 \newpage
 
+\begin{ejercicio}{10}
+Sea $f : [0,+∞) \to \C$ una función nula para $0 ≤ x < \varepsilon$, para cierto $\varepsilon > 0$.
+Sea
+\[ R(x) = f\left(\frac{x}{1}\right) - f\left(\frac{x}{3}\right) + f\left(\frac{x}{5}\right) - f\left(\frac{x}{7}\right) + f\left(\frac{x}{9}\right) - \cdots \]
+Demostrar que $R(x)$ está bien definida y que
+\[ f(x) = μ(1)R\left(\frac{x}{1}\right) - μ(3)R\left(\frac{x}{3}\right) + μ(5)R\left(\frac{x}{5}\right) - μ(7)R\left(\frac{x}{7}\right) + μ(9)R\left(\frac{x}{9}\right) - \cdots\]
+\end{ejercicio}
+\begin{solucion}
+Podemos escribir
+$$
+R(x)=\sum_{n=1}^\infty (-1)^{n+1} f\left(\frac{x}{2n-1}\right)
+$$
+Sabemos que $\forall x >0$ $\exists n>0$ tal que $\frac{x}{2n-1}<\varepsilon$. Por tanto, sabemos que $\forall x\in[0,+\infty)$, $R(x)$ se puede escribir como una suma finita, por lo que está bien definida.
 
+Definimos:
+\[ u(n) = \begin{cases}
+	1 &\text{ si }n \equiv 1 \mod 4\\
+	0 &\text{ si }n \equiv 0 \text{ ó }2 \mod 4\\
+	-1 &\text{ si }n \equiv 3 \mod 4
+\end{cases}\]
+Véase que $u$ es completamente multiplicativa, pues $u(n)u(m)=u(nm)$, \textit{pura casualidad}.
+Además, tenemos que:
+$$
+R(x)=\sum_{n=1}^\infty u(n) f\left(\frac{x}{n}\right)
+$$
+Además:
+\begin{align*}
+	\sum_{n=1}^{∞} μ(n) u(n) R\left(\frac{x}{n}\right) & = 
+	\sum_{n=1}^{∞} μ(n) u(n) \left(\sum_{m=1}^\infty u(m) f\left(\frac{x}{mn}\right)\right)\\
+	&= \sum_{n=1}^{∞} μ(n)  \left(\sum_{m=1}^\infty u(n)u(m) f\left(\frac{x}{mn}\right)\right) = \sum_{n=1}^{∞} μ(n)  \left(\sum_{m=1}^\infty u(nm) f\left(\frac{x}{mn}\right)\right)\\
+	&= \sum_{r=1}^{∞} \left(\sum_{n|r} μ(n)\right) u(r)f\left(\frac{x}{r}\right)
+\end{align*}
+Como $\sum_{n|r} μ(n)$ se anula excepto cuando $r=1$, tenemos que:
+$$
+\sum_{n=1}^{∞} μ(n) u(n) R\left(\frac{x}{n}\right) = u(1) f\left(\frac{x}{1}\right) = f(x)
+$$
+\end{solucion}
+
+\newpage
 \begin{ejercicio}{11}
 Probar la siguiente identidad	
 \[
 \sigma(n)^2 = \sum_{d\mid n} \frac{n}{d}\sigma(d^2) 
 \]
-\begin{sol}
+\begin{solucion}
 Dado que $\sigma(n)$ es una función multiplicativa, sean $m,n$ coprimos, tenemos que
 \[
 \sigma(nm)^2 = (\sigma(n)\sigma(m))^2 = \sigma(n)^2\sigma(m)^2
@@ -157,12 +367,33 @@ Por tanto, basta probar la identidad para los números de la forma $p^a$ con $p$
  = \frac{{p^{a+1}}^2-2p^{a+1}+1}{(p-1)^2} =  \left(\frac{p^{a+1}-1}{p-1}\right)^2
 \end{gather*}
 Como queríamos probar.
-\end{sol}
+\end{solucion}
 \end{ejercicio}
-
 
 \newpage
 
+\begin{ejercicio}{12}
+Demostrar que para $|x| < 1$ se tiene
+\[ \sum_{n=1}^{∞} \frac{φ(n) x^n}{1-x^n} = \frac{x}{(1-x)^2} \]
+\end{ejercicio}
+\begin{solucion}
+Si $|x|<1$ podemos escribir
+$$
+\sum_{n=1}^{∞} φ(n)\frac{ x^n}{1-x^n} = \sum_{n=1}^{∞} \left(φ(n)\sum_{k=1}^\infty x^{kn} \right) \overset{(1)}{=} \sum_{r=1}^\infty x^r\left(\sum_{n \mid r}\varphi(n)\right) = \sum_{m=1}^\infty m x^m \overset{(2)}{=}\frac{x}{(1-x)^2}
+$$
+Vamos a ver más claramente las ecuaciones señaladas.
+Para $(1)$, basta fijar el exponente de $x$ y tomar todos los $n$ tales que existe una $k$ tal que $nk=m$, es decir, que $n \mid m$.
+
+La igualdad $(2)$ sale a partir de la siguiente consideración. 
+\begin{align*}
+\frac{x}{1-x} = \sum_{m=1}^\infty x^m
+\end{align*}
+Como es una serie de potencias, podemos derivar término a término en $|x|<1$, obteniendo así:
+\[ \frac{1}{(1-x)^2} = \sum_{m=1}^\infty mx^{m-1} \]
+Multiplicando por $x$ en ambos lados obtenemos el resultado.
+\end{solucion}
+
+\newpage
 
 \begin{ejercicio}{13}
 Probar que	
@@ -173,7 +404,7 @@ Probar que
 -n & \text{si $n$ es impar}
 \end{cases}
 \]
-\begin{sol}
+\begin{solucion}
 Sea $n \in \N$ impar, entonces $\forall d$ tal que $d \mid n$, $\frac{n}{d}$ también es impar, lo cual se traduce en que
 \[
 \sum_{d\mid n} (-1)^{n/d}\varphi(d) = \sum_{d\mid n} (-1)\varphi(d) = -\sum_{d\mid n}\varphi(d) = -n
@@ -187,7 +418,36 @@ Por otro lado, todos los divisores $d$ de $n$ que no son divididos por $2^s$ son
 \[ \sum_{2^s\nmid d \mid n}φ(d) = \frac{n}{2} \]
 Por lo tanto:
 \[ \sum_{d|n} (-1)^{n/d}φ(d) = -\sum_{2^s\mid d\mid n}φ(d)+\sum_{2^s\nmid d\mid n}φ(d) = -\frac{n}{2}+\frac{n}{2}=0\]
-\end{sol}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{14}
+Definimos el radical de un número natural $R(n)$ como $R(1) = 1$ y para $n > 1$ sea $R(n) = \prod_{p|n} p$; es decir, el producto de los primos que dividen a $n$. Demostrar que
+\[ \sum_{d|n} μ(d) σ(d) = (-1)^{ω(n)} R(n) \]
+donde $ω(n)$ denota el número de factores primos distintos de $n$.
+\end{ejercicio}
+
+\begin{solucion}
+El miembro izquierdo de la igualdad es la convolución de las funciones $g(n)=\sigma(n)\mu(n)$ y la función $f(n)=1$, por lo que es multiplicativo. El miembro derecho es el producto de la función $(-1)^{\omega(n)}$ y $R(n)$ ambas claramente multiplicativas. Por tanto, basta probar la igualdad para los elementos de la forma $p^a$ con $p$ primo y $a\geq 0$, aunque $a=0$ es trivial. En otro caso:
+$$
+\sum_{d\mid p^a} g(d)f(p^a/d) = \sum_{n=0}^a \mu(p^n)\sigma(p^n) = \mu(1)\sigma(1)+\mu(p)\sigma(p) = 1 - (p+1) = -p 
+$$
+$$ (-1)^{\omega(p^a)}R(p^a) = (-1)^1p = -p$$
+\end{solucion}
+\begin{solucion}
+El resultado se da trivialmente para $n=1$. De aquí en adelante suponemos que $n>1$.
+Supongamos que $n=p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$. Tomamos $N=p_1p_2\cdots p_k$. Tenemos entonces que:
+\[ \sum_{d|n} μ(d) σ(d) = \sum_{d|N} μ(d) σ(d) \]
+y
+\[ (-1)^{ω(n)} R(n) = (-1)^k N \]
+pues $μ(d)=0$ para todo $d$ divisible por un cuadrado.
+Observamos además que:
+\[ \sum_{d|N} μ(d) σ(d) = (-1)^k\sum_{d|N} μ(N/d) σ(d) \]
+Como $μ$ y $σ$ son multiplicativas, la convolución $μ * σ$ es multiplicativa. Podemos quitar $(-1)^{k}$ de ambos lados de la ecuación a demostrar. Basta comprobar la igualdad para $N=p$ (pues ya tenemos que $N$ es libre de cuadrados).
+\[ \sum_{d|p} μ(p/d) σ(d) = -1+(1+p) = p \]
+Lo que demuestra la fórmula.
+\end{solucion}
 
 \newpage
 
@@ -196,29 +456,11 @@ Probar que
 \[ \prod_{d|n} d = n^{d(n)/2} \]
 \end{ejercicio}
 
-\begin{sol}
+\begin{solucion}
 Como $d$ es un divisor de $n$ si y sólo si $n/d$ es divisor de $n$:
 \[ \prod_{d|n} d = \prod_{d|n} n/d \]
 Luego:
 \[ \prod_{d|n} d = \sqrt{\left(\prod_{d|n} d\right)^2} = \sqrt{\prod_{d|n} d \cdot \prod_{d|n} n/d} = \sqrt{\prod_{d|n} n} = \sqrt{n^{d(n)}} = n^{d(n)/2} \]
-\end{sol}
+\end{solucion}
 \end{ejercicio}
-
-\[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx} - e^{-nx}} = 2 \sum_{n=1}^{∞} \frac{μ(n)}{e^{nx}} \frac{1}{1-e^{-2nx}} = 2 \sum_{n=1}^{∞} μ(n) e^{-nx}(1+e^{-2nx}+e^{-4nx}+\dots) \]
-\[ = 2 \sum_{n=1}^{∞} μ(n) \sum_{k=1}^{∞} e^{-(2k-1)nx} = 2 \sum_{n=1}^{∞} \sum_{k=1}^{∞} μ(n) e^{-(2k-1)nx}\]
-ya que estas series son absolutamente convergente (compruébalo):
-\[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2 \sum_{N=1}^{∞} e^{-Nx} \left(\sum_{n|N \text{ y }N/n\text{ es impar}} μ(n) \right)\]
-Tenemos que si $N$ es impar:
-\[ \sum_{\substack{n|N \\ N/n\text{ es impar}}} μ(n) = \begin{cases}
-	1, &\text{ si }N = 1\\
-	0, &\text{ si }N > 1
-\end{cases}\]
-Si $N$ es par y $N=2^am$:
-\[ \sum_{2^ak|2^am} μ(n) = \sum_{k|m} μ(2^a k) = \sum_{k|m} μ(2^a) μ(k) = \begin{cases}
-	0, &\text{ si }a ≥ 2\\
-	-1 &\text{ si }m=1\\
-	0 &\text{ c.c.}
-\end{cases}\]
-Luego:
-\[ \sum_{n=1}^{∞} \frac{μ(n)}{\sinh (nx)} = 2(e^{-x}-e^{-2x})\]
 \end{document}

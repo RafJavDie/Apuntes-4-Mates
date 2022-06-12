@@ -1,0 +1,321 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+
+\usepackage{enumerate}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Variable Compleja - Relación 5}
+\author{Rafael González López}
+\maketitle
+
+
+\begin{ejercicio}{1}
+Expresar $\cos(3\theta)$ en términos de $\cos\theta$ y $\sin\theta$.
+\end{ejercicio}
+\begin{solucion}
+Observemos que
+$$
+(\cos x + i \sin x)^n = e^{ixn} = \cos nx + i\sin nx
+$$
+Basta aplicar la fórmula para $n=3$ y tomar parte real.
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+\begin{enumerate}[(a)]
+\item[]
+\item ¿Es holomorfa la función definida para $x$ e $y$ reales por 
+\[f(x,y)=4+2x^3+6x y-6x y^2+ i(3y^2-2y^3+6x^2y-3x^2)\]
+\item Escribirla como función de $z$. 
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item Es una consecuencia de las ecuaciones de Cauchy. Comprobémoslas
+$$
+\frac{\partial u}{\partial x} = 6x^2+6y -6y^2 = \frac{\partial v}{\partial y} 
+$$
+$$
+\frac{\partial u}{\partial y} = 6x-12xy = -\frac{\partial v}{\partial x} 
+$$
+\item Tenemos que
+$$
+f'(z) = 2\frac{\partial u }{\partial z}(z) = (6x^2+6y -6y^2) -i(6x-12xy) = 3(x^2+y-y^2) + i(24xy-12x)
+$$
+Por lo que $f'(0)=0$.
+$$
+f''(z)=2\frac{\partial u' }{\partial z}(z) = 12x +12yi -6i = 12z-6i
+$$
+Integrando, obtenemos
+$$
+f(z) = D + Cz + -3iz^2+2z^3
+$$
+Sabemos que $f'(0)=0$, luego $C=0$. Sustituyendo en el origen, tenemos que $D=4$.
+$$
+f(z) = 4+ -3iz^2+2z^3
+$$
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+Probar lo siguiente:
+\begin{enumerate}[(a)]
+\item La serie de potencias $\sum nz^n$ no converge en ningún punto de la circunferencia unidad. 
+\item La serie de potencias $\sum z^n/n^2$ converge en cada punto de la circunferencia unidad.
+\item La serie de potencias $\sum z^n/n$ converge en cada punto de la circunferencia unidad excepto en $z=1$. [Ayuda: Sumar por partes.]
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item Es trivial, pues $|nz^n| =n \not\to 0 $ cuando $n\to \infty$.
+\item Basta aplicar el criterio M de Weierstrass tomando como serie numérica $1/n^2$.
+\item Es bien conocido que la serie diverge en $z=1$, luego vamos a probar que converge en el resto. Supongamos que $z\neq 1$. 
+$$
+\sum_{n=1}^m z^n/n = \frac{1}{m+1}\sum_{j=1}^m z^j + \sum_{k=1}^m  \left(\frac{1}{k}-\frac{1}{k+1}\right)  \sum_{j=1}^k z^j 
+$$
+Ahora bien, sabemos que
+$$
+\abs{\sum_{n=1}^m z^n } = \abs{\frac{1-z^{m+1}}{1-z}}\leq \frac{2}{\abs{1-z}} = M(z)
+$$
+Cantidad finita para cada $z$ fijo. Por tanto, el primer sumando tiende a $0$ cuando $m\to \infty$. Falta analizar el término general del segundo sumando
+\begin{align*}
+\abs{\left(\frac{1}{k}-\frac{1}{k+1}\right) \sum_{j=1}^k z^j } & \leq M(z) \left(\frac{1}{k}-\frac{1}{k+1}\right) = \frac{M(z)}{m(m+1)}=a_n
+\end{align*} 
+Como $\sum_n a_n$ es convergente podemos aplicar el criterio M de Weierstrass. Por tanto, la serie orignal también converge.
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{4}
+\begin{enumerate}[(a)]
+\item[]
+\item Dado $x\in \C$ encontrar el mayor abierto en el que la función
+$$
+z\mapsto \frac{ze^{xz}}{e^z-1}
+$$
+es analítica.
+\item Se define $B_n(x)$ como los coeficientes que aparecen en el desarrollo en serie de potencias
+$$
+\frac{ze^{xz}}{e^z-1}= \sum_{n=0}^\infty B_n(x)\frac{z^n}{n!}
+$$
+Demostrar que $B_n(x)$ es un polinomio de grado $n$. Calcular los tres primeros.
+\item Demostrar que 
+$$
+B_{k+1}(x+1)-B_{k+1}(x)=(k+1)x^k\qquad k\geq 0
+$$
+\item Deducir la fórmula de Bernoulli
+$$
+\sum_{n=0}^{N-1} n^{k-1} = \frac{B_k(N)-B_k(0)}{k}
+$$
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Está resuelto, pues es el Ejercicio 1.7.
+\end{solucion}
+
+\newpage
+
+
+\begin{ejercicio}{5}
+\begin{enumerate}[a)]
+\item[]
+\item Demostrar que la función $F(z)$ definida por la integral
+$\displaystyle{F(z):= \int_0^\infty e^{-t^2}\cos(2z t)\,dt}$
+es una función entera.
+\item Demostrar que $F'(z)=-2z F(z)$. 
+\item Probar que $e^{z^2}F(z)$ es constante. 
+\item Demostrar que  $F(z)=\frac{\sqrt{\pi}}{2}e^{-z^2}$. 
+\end{enumerate} 
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a)]
+\item[]
+\item Aplicamos el teorema de analiticidad de integrales paramétricas. Las dos primeras hipótesis son claras, así que pasamos directamente a probar la tercera. Podemos suponer que $|z|<M$. Entonces
+$$
+|f(z,t)| = |e^{-t^2}\cos(2zt)| = e^{-t^2}\abs{\frac{e^{2zti}+e^{-2zti}}{2}}\leq e^{-t^2}e^{2|z|t} \leq e^{-t^2 +2Mt}
+$$
+que es claramente integrable en $[0,\infty)$.
+\item Sabemos que podemos derivar bajo la integral, obteniendo
+\begin{align*}
+F'(z)&=\int_0^\infty -e^{-t^2} \sin(2zt) 2t dt \\
+&=-2 \int_0^\infty e^{-t^2}t \sin(2zt) dt\\
+&=-2 \left( \left[-\frac{e^{-t^2}}{2}\sin(2zt)\right]^\infty_0 - \int_0^\infty  -\frac{e^{-t^2}}{2} 2z \cos(2zt) \right)\\
+&= -2 z\int_0^\infty e^{-t^2}\cos(2zt)\\
+&= -2zF(z)
+\end{align*}
+\item Utilizando el apartado anterior
+$$
+(e^{z^2}F(z))' = 2ze^{z^2}F(z) + e^{z^2}F'(z) =  2ze^{z^2}F(z) -  2ze^{z^2}F(z)  = 0
+$$
+Por lo que $F(z)e^{z^2}$ es constante.
+\item Deducimos inmediatamente de lo anterior que $\exists c \in \C$ tal que $F(z)=ce^{-z^2}$. Evaluando la integral tenemos que $F(0)=\int_0^\infty e^{-t^2}dt = \sqrt{\pi}/2$, por lo que se tiene el resultado.
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{6}
+Demostrar que si $|a|>e$, entonces la ecuación $e^z-az^n=0$ con $n\in\N$ tiene $n$ raíces distintas en el disco unidad. 
+\end{ejercicio}
+\begin{solucion}
+Es una aplicación directa del Teorema de Rouché. Denotemos $C$ a la circunferencia unidad, $f(z)=e^z+az^n$ y $g(z)=az^n$. Entonces $\forall z \in C$
+$$
+|f(z)-g(z)| = |e^z| \leq e^{|z|}=e < a = a|z^n| = |g(z)| \leq |f(z)|+|g(z)|
+$$
+Luego $f$ y $g$ tienen el mismo número de raíces en el disco unidad. Como $az^n$ tiene $n$, se sigue el resultado.
+\end{solucion}
+\newpage
+\begin{ejercicio}{7}
+\begin{enumerate}[a)]
+\item[]
+\item Probar que la integral
+\[\int_0^\infty \frac{x^s\,dx}{1+x^8}\]
+define una función $L(s)$ analítica en la banda $-1<\Re(s)<7$.
+\item Demostrar que $L(6-s)=L(s)$ para cada $s$ en la banda.
+\item Calcular $L(s)$ por el método de los residuos.
+\item Demostrar que para $|s|<1$ 
+\[f(s)=\frac{\pi}{4}\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n!}\sqrt{A_n+\frac{B_n}{\sqrt{2}}}
+\Bigl(\frac{\pi s}{8}\Bigr)^n\]
+donde $A_n$ y $B_n$ son números naturales.
+\item ¿Qué son las sucesiones $A_n$ y $B_n$?
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a)]
+\item[]
+\item Consideremos $-1<a<b<7$ y la banda $a<\Re(s)<b$. Vamos a aplicar aquí el Teorema de analiticidad de integrales paramétricas. Las dos primeras condiciones son claras, estudiemos la tercera.
+$$
+\abs{\frac{x^s}{1+x^8}} \leq \frac{x^{\Re(s)}}{1+x^8}
+$$
+Cuando $x\to \infty$ $x^{\Re(s)}\leq x^b$, mientras que cuando $x\to 0$ $x^{\Re(s)}\leq x^a$. Como $b<7$ en el infinito $x^b/(1+x^8) \sim x^{b-8}$, pero $b-8<-1$, por lo que la integral converge. El otro caso es más sencillo. La integral en un entorno de $0$ de $x^a/(1+x^8)$ converge por comparación con $x^a$ y teniendo en cuenta que $a>-1$.
+\item Hacemos el cambio de variable $x = 1/w$, $dz = -dw x^2$. Nos queda
+$$
+L(s)=\int_0^\infty \frac{x^s\,dx}{1+x^8} = -\int_\infty^0 \frac{w^{-s}}{1+1/w^8}\frac{dw}{w^2}= \int_0^\infty \frac{w^{6-s}}{x^8+1}dw = L(6-s)
+$$
+
+\end{enumerate}
+\end{solucion}
+\newpage
+\begin{ejercicio}{8}
+\begin{enumerate}[a)]
+\item[]
+\item Transformar una integral de la forma $I=\int_0^{2\pi} f(\cos\theta,\sin\theta)\,d\theta$ 
+en una integral a lo largo de una circunferencia poniendo $z=e^{i\theta}$. 
+\item Aplicar el apartado (a) para calcular la integral
+\[\int_0^{2\pi}\frac{d\theta}{2+\cos\theta}.\]
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a)]
+\item[]
+\item Tengamos en cuenta que 
+$$\cos \theta = \frac{e^{i \theta}+1/e^{i\theta}}{2}
+\qquad \sin \theta = \frac{e^{i \theta}-1/e^{i\theta}}{2i}$$ 
+Luego podemos escribir $f$ como $f(e^{i\theta})$. Por tanto
+$$
+I = \int_0^{2\pi} f(\cos\theta,\sin\theta)\,d\theta = \int_0^{2\pi} f(e^{i\theta})\,d\theta = \int_0^{2\pi} f(e^{i\theta})\frac{e^{i\theta}i}{e^{i\theta}i} d\theta = \int_{|z|=1} \frac{f(z)}{zi}dz
+$$
+\item Apliquemos el resultado
+$$
+\int_0^{2\pi}\frac{d\theta}{2+\cos\theta} = \int_{|z|=1}\frac{2z}{z^2+4z+1}\frac{1}{zi} dz= -2i\int_{|z|=1}\frac{1}{z^2+4z+1} dz = \frac{2\pi}{\sqrt{3}}
+$$
+\end{enumerate}
+\end{solucion}
+\newpage
+\begin{ejercicio}{9}
+Prueba el recíproco del teorema de Runge: si $K$ es un compacto cuyo complementario no es conexo, entonces existe una función $f$ holomorfa en un entorno de $K$ que no puede ser aproximada uniformemente por un polinomio en $K$. (Pista: Toma un punto $z_0$ en una componente acotada de $K^c$, muestra que existe un polinomio $p$ tal que $|(z-z_0)p(z)-1|< 1$. Usa el principio del módulo máximo para mostrar que esta desiguladad sigue siendo cierta para todo $z$ en la componente de $K^c$ que contiene a $z_0$.)
+\end{ejercicio}
+\begin{solucion}
+Consideremos un compacto $K$ tal que su complementario no sea conexo y sea $z_0 \in K^c$ un elemento de alguna componente componente acotada que denominamos $G$. Por reducción al absurdo, supongamos que toda función puede ser aproximada por polinomios y consideremos $f(z)=(z-z_0)^{-1}$. Como $K$ es compacto y $f(z)$ es continua en $K$, si $|f(z)|$ está acotada por una constante $m$ en $K$. Por hipótesis, $\exists p(z)$ tal que $\forall z \in K$
+$$
+|f(z)|-|p(z)|\leq |p(z)-f(z)| < m \leq |f(z)|
+$$
+Si multiplcamos por $|z-z_0|$, nos queda finalmente $\forall z \in K$
+$$
+1-|p(z)(z-z_0)| < 1 \Leftrightarrow |p(z)(z-z_0)|>0
+$$
+Ahora bien, si $G$ es la componente de $K^c$ donde está $z_0$, la desigualdad anterior es válida para $ \partial G \subset K$. Pero $p(z)(z-z_0)$ son funciones enteras, luego por el principio del módulo máximo, como $G$ es acotada, si la cota vale en la frontera vale también en su interior. En particular, la cota debería ser válida para $z=z_0$, lo cuál no es posible.
+\end{solucion}
+\newpage
+\begin{ejercicio}{10}
+Estudiar la convergencia del producto infinito
+\[\prod_{n=1}^\infty \Bigl(1-\frac{z}{n^{1/2}}\Bigr)\exp\Bigl\{\frac{z}{n^{1/2}}+\frac{z^2}{2n}\Bigr\}.\]
+\end{ejercicio}
+\begin{solucion}
+Sabemos que estudiar el producto infinito es equivalente a estudiar la suma de los logaritmos.
+$$
+\sum_{n=1}^\infty \log\Bigl(1-\frac{z}{n^{1/2}}\Bigr) + \frac{z}{n^{1/2}}+\frac{z^2}{2n}
+$$
+Podemos suponer que $|z|<R$ y que $n^{1/2}>2R$. Luego
+$$
+\log\Bigl(1-\frac{z}{n^{1/2}}\Bigr) + \frac{z}{n^{1/2}}+\frac{z^2}{2n} = -\sum_{k=1}^\infty \frac{z^k}{n^{k/2}k} + \frac{z}{n^{1/2}}+\frac{z^2}{2n} = -\sum_{k=3}^\infty \frac{z^k}{n^{k/2}k}
+$$
+Por otra parte tenemos
+\begin{align*}
+\abs{\sum_{k=3}^\infty \frac{z^k}{n^{k/2}k}} &= \abs{\sum_{k=3}^\infty \frac{z^k}{n^{(k-3)/2}k}}\\
+& = \frac{|z|^3}{n^{3/2}}\abs{\sum_{k=3}^\infty \frac{|z|^{k-3}}{n^{k/2-3/2}}\frac{1}{k}}\\
+& \leq  \frac{R^{3}}{n^{3/2}}\sum_{k=3}^\infty \frac{1}{2^{k-3}k}\\
+& \leq  \frac{8R^{3}}{n^{3/2}}\sum_{k=1}^\infty \frac{1}{2^{k}k}\\
+&= \frac{M}{n^{3/2}}
+\end{align*}
+Sabemos que es el término general de una serie que converge, pues es dicha serie es la la diferencia de dos series convergentes. La segunda converge, por ejemplo, por comparación por paso al límite con la serie $\sum n^{5/4}$.
+\end{solucion}
+\newpage
+\begin{ejercicio}{11}
+Pongamos
+$$K(s)=\int_0^\infty e^{-(t+\frac{1}{t})}t^s\frac{dt}{t}$$
+cuando la integral converge. 
+\begin{enumerate}[a)]
+\item Demostrar que $K(s)$ es una función entera de $s$.
+\item Demostrar que $K(s)$ es función par.
+\item Demostrar que para $\sigma=\Re(s)>0$, tenemos
+$|K(s)|\le \Gamma(\sigma)$.
+\item Demostrar que $K(s)$ tiene orden $\rho\le1$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a)]
+\item[]
+\item Las dos primeras condiciones del teorema de analiticidad de integrales paramétricas son claras. Consideremos $a<\Re(s)<b$. Cuando $t\to \infty$ tenemos que
+$$
+\abs{f(t,s)} = e^{-t -1/t}|t^{s-1}| \leq e^{-t}t^{b-1}
+$$
+cuya integral en $(c,\infty)$ es claramente convergente para $c>0$. Cuando $t\to 0$ tenemos que
+$$
+\abs{f(t,s)} = e^{-t-1/t}|t^{s-1}| \leq e^{-1/t}t^{a-1}
+$$
+Esta integral también es trivialmente convergente en un entorno de 0, pero por si no fuese lo suficientemente claro ilustramos. Sea $d>0$ entonces
+$$
+\int_0^d e^{-1/t}t^{a-1} dt = -\int_{1/d}^\infty e^{-w}\frac{dw}{w^{a+1}}<\infty
+$$
+Como $a,b$ eran arbitrarios, tenemos el resultado.
+\item Realizamos el cambio de variables $w=1/t$ y comprobamos
+$$
+K(s) =\int_0^\infty e^{-(t+\frac{1}{t})}t^s\frac{dt}{t} = - \int_\infty^0 e^{-1/w-w}w^{-s}w \frac{dw}{w^2} = \int_0^\infty e^{-w-1/w}w^{-s}\frac{dw}{w} = K(-s)
+$$
+\item Directamente
+$$
+|K(s)| = \abs{\int_0^\infty e^{-(t+\frac{1}{t})}t^{s-1}dt}\leq \int_0^\infty e^{-t}\abs{t^{s-1}}dt = \int_0^\infty e^{-t}{t^{\sigma-1}}dt = \Gamma(\sigma)
+$$
+Hemos usado que $|t^{s}| = t^{\Re(s)} = t^\sigma$.
+\item Hagamos la siguiente consideración. Si $|s|= R$. Podemos suponer que $R>1$.
+$$
+|K(s)| = \abs{\int_0^\infty e^{-(t+\frac{1}{t})}t^{s-1}dt}\leq \int_0^\infty e^{-t-1/t}\abs{t^{s-1}}dt = \int_0^\infty e^{-t-1/t}{t^{\sigma-1}}dt = K(\sigma)
+$$
+Como $K(s)$ es par, basta considerar $0\leq \sigma \leq R$. Sabemos que $K(s)$ es entera, luego $|K(s)| \leq M$ si $0\leq \sigma \leq 1$. Tengamos en cuenta que si $\sigma \geq 1$ entonces $\Gamma(\sigma)$ es creciente. Si $1\leq \sigma \leq R$ entonces 
+$$|K(s)|\leq K(\sigma)\leq \Gamma(\sigma) \leq \Gamma(R)$$ Sea $n$ el menor natural tal que $n\leq R < 2n$, entonces $\Gamma(R) < (2n)! \leq (2n)^{2n} < (2R)^{2R}$. Multiplicando por una constante adecuada, esta cota es válida en $0\leq \sigma \leq 1$ y por tanto, en $|z|=R$. Se sigue que
+$$
+|K(s)| < A(2R)^{2R} = Ae^{2R\log(2R)} \leq Ae^{2C(\varepsilon)R^{1+\varepsilon}}= Ae^{2C(\varepsilon)|s|^{1+\varepsilon}}
+$$
+Como tenemos una cota válida para todo $\varepsilon>0$ tenemos que el orden es $\leq 1$.
+\end{enumerate}
+\end{solucion}
+\newpage
+\end{document}

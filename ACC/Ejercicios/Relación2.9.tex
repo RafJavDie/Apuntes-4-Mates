@@ -1,0 +1,64 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\lex}{<_{lex}}
+\newcommand{\grlex}{<_{grlex}}
+\newcommand{\grevlex}{<_{grevlex}}
+
+\newcommand{\PhantC}{\phantom{\colon}}%
+\newcommand{\CenterInCol}[1]{\multicolumn{1}{c}{#1}}%
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+
+\begin{ejercicio}{2.9.1}
+Let $f_1 = xz +1$, $f_2 = yz+ 1$, and $f_3 = xz +y−z +1$. For lex order with $x > y > z$, show
+that
+$$S( f_1, f_3) = 1\cdot f_1 + 0\cdot  f_2 + (−1)\cdot f_3.$$
+Also show that this is an lcm representation but not a standard representation.
+\end{ejercicio}
+\begin{solucion}
+Es claro que $S(f_1,f_3)=-y+z$. Basta hacer las cuentas para ver que se verifica la representación.
+
+Comprobamos ahora la segunda parte del problema. 
+$$\mathrm{multideg}(S( f_1, f_2))=(1,0,0)<\mathrm{multideg}(-f_1)=(1,0,1)$$
+por lo que no es una representación estándar. Sin embargo, $\lcm(LM(f_1),LM(f_2))=xyz$, mientras que $LT(-f_1)=-xz$ y $LT(f_3)=xz$, por lo que $$\lcm(LM(f_1),LM(f_2))>LT(-f_1),LT(f_3)$$ es decir, es una representación LCM. 
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.9.2}
+Consider the ideal $I = 
+\gene{x^2 + y + z − 1, x + y^2 + z − 1, x + y + z^2 − 1} ⊆ \Q[x, y, z]$.
+\begin{enumerate}[a.]
+\item Show that the generators of $I$ fail to be Gröbner basis for any lex order.
+\item Find a monomial order for which the leading terms of the generators are relatively
+prime.
+\item Explain why the generators automatically form a Gröbner basis for the monomial order
+you found in part (b).
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item La simetría de los polinomios hace que baste comprobarlo para un orden lex, digamos $x>y>z$. En este caso, si llamamos $G$ al conjunto de generadores de $I$, $LT(G)=\{x^2, x, x\}$, de modo que $\gene{LT(G)}=\gene{x}$. Sin embargo, $$LT((x + y^2 + z − 1)- (x + y + z^2 − 1))=y^2\notin \gene{x},$$ por lo que $G$ no es una base de Gröbner.
+\item Para grlex los términos líderes son $x^2$, $y^2$ y $z^2$, respectivamente, que son primos entre sí.
+\item La Proposición 4 asegura que los $S$-polinomios se reducen a 0 módulo $G$, y el Teorema 3 nos indica que $G$ es una base de Gröbner.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.9.3}
+The result of the previous exercise can be generalized as follows. Suppose that $I =
+\gene{ f_1,\dots , f_s}$ where $LM( f_i)$ and $LM( f_j)$ are relatively prime for all indices $i \not= j$. Prove
+that $\{f_1, \dots , f_s\}$ is a Gröbner basis of $I$.
+\end{ejercicio}
+\begin{solucion}
+El razonamiento es el mismo que para el del apartado (c) del ejercicio anterior.
+\end{solucion}
+
+
+\end{document}

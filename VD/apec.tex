@@ -15,7 +15,7 @@ Tensores Covariantes de Tipo $(0,r)$}.
 Obsérvese que $T^0_1(V)=V^*$. Además, se tiene que la familia $\{T^0_r(V)/r\in\N\}$ es numerable y está formada
 por espacios vectoriales reales, pues la suma y el producto por un escalar de aplicaciones $r$-- lineales es una
 aplicacion $r$--lineal. Así, se puede considerar su suma directa,
-$$\sum_{r=0}^\infty T^0_r(V),$$
+$$\bigoplus_{r=0}^\infty T^0_r(V),$$
 que se denomina {\bf Algebra de los Tensores Covariantes} de $V$. A con\-ti\-nua\-ción, se va a justificar que,
 efectivamente, es un álgebra. En efecto, en dicha suma infinita (recuérdese que sus elementos tienen solo un
 número finito de sumandos no nulos) está definida de modo natural una suma y un producto por números reales, que
@@ -30,11 +30,11 @@ $$(\omega_r\otimes\omega_s)(v_1,\dots ,v_r,v_{r+1},\dots ,v_{r+s})=
 \end{defiap}
 \par\bigskip
 En particular, $T_0^0(V)=\R$ y si $\a\in T^0_0(V)$, se tiene que $\a\otimes \omega_r=\a\cdot\omega_r$. Con esto,
-es posible definir el producto $\otimes$, llamado producto tensorial, en los elementos de $\sum T^0_r(V)$, como:
-$$(\sum_{r=0}^\infty\omega_r)\otimes(\sum_{s=0}^\infty\omega_s)=\sum_{r,s=0}^
+es posible definir el producto $\otimes$, llamado producto tensorial, en los elementos de $\bigoplus T^0_r(V)$, como:
+$$\left(\sum_{r=0}^\infty\omega_r\right)\otimes\left(\sum_{s=0}^\infty\omega_s\right)=\sum_{r,s=0}^
 \infty\omega_r\otimes\omega_s.$$
 \begin{propoap} Se verifica que
-$$\sum_{r=0}^\infty T^0_r(V)$$
+$$\bigoplus_{r=0}^\infty T^0_r(V)$$
 con las operaciones $(+,\cdot,\otimes)$ es un álgebra real, asociativa, no conmutativa y con elemento unidad.
 \end{propoap}
 {\sc Demostración:} Es una comprobación engorrosa, pero fácil.\hfill$\Box$
@@ -48,20 +48,20 @@ $$(\theta^{i_1}\otimes\cdots\otimes\theta^{i_r})(v_1,\dots,v_r)
 \begin{propoap}
 La familia
 $$\{\theta^{i_1}\otimes\cdots\otimes\theta^{i_r}/i_1,\dots ,i_r\in\{1,\dots,
-n\}\}$$ es una base de $T^0_r(V)$ y, por tanto, dim$T^0_r(V)=n^r$.
+n\}\}$$ es una base de $T^0_r(V)$ y, por tanto, $\dim T^0_r(V)=n^r$.
 \end{propoap}
 {\sc Demostración:} !`Ejercicio! \hfill$\Box$
 \par\bigskip
-Obsérvese, entonces, que $\sum_{r=0}^{\infty}T^0_r(V)$ es de dimensión infinita.
+Obsérvese, entonces, que $\bigoplus_{r=0}^{\infty}T^0_r(V)$ es de dimensión infinita.
 \begin{defiap}
 Sea $r\in\N$. Entonces, a los elementos de $T^r_0(V) = T^0_r(V^*)$ se le llaman {\bf Tensores Contravariantes de
 Tipo $(r,0)$} y al espacio
-$$\sum_{r=1}^\infty T^r_0(V)$$
+$$\bigoplus_{r=1}^\infty T^r_0(V)$$
 se denomina {\bf Algebra de los Tensores Contravariantes de $V$}.
 \end{defiap}
 \par\bigskip
 En virtud de esta definición, un número real es un tensor covariante y \underline{no} contravariante. Así,
-$$\sum_{r=1}^{\infty} T^r_0(V)$$
+$$\bigoplus_{r=1}^{\infty} T^r_0(V)$$
 es un álgebra asociativa, no conmutativa y \underline{sin} elemento unidad. Además, $T^1_0(V) =T^0_1(V^*) =V$. Por
 tanto, se puede considerar el producto tensorial de dos vectores de $V$.
 \par
@@ -80,7 +80,7 @@ general de tensores:
 Sean $r,s\in\N$. Entonces, los elementos de
 $$T^r_s(V)=\{f:V^s\times V^{*r}\fl\R /f\mbox{ }es\mbox{ }(s+r)\mbox{--}lineal
 \}$$ se llaman {\bf Tensores Mixtos de Tipo $(r,s)$}. Además, al conjunto
-$$T(V)=\sum_{r,s\in\N}T^r_s(V)$$
+$$T(V)=\bigoplus_{r,s\in\N}T^r_s(V)$$
 se le denomina {\bf Algebra Tensorial de $V$}.
 \end{defiap}
 \par\bigskip
@@ -90,7 +90,7 @@ $$(T\otimes S)(v_1,\dots, v_s,v_{s+1},\dots ,v_{s+s'},\omega^1,\dots\omega^r,
 \omega^{r+1},\dots ,\omega^{r+r'})=$$
 $$=T(v_1,\dots ,v_s,\omega^1,\dots ,\omega^r)S(v_{s+1},\dots, v_{s+s'},\omega^
 {r+1},\dots ,\omega^{r+r'})$$ y se extiende a $T(V)$ por linealidad:
-$$(\sum_{r,s}T_{(r,s)})\otimes(\sum_{r',s'}S_{(r',s')})=\sum_{r,s,r',s'}T_{(
+$$\left(\sum_{r,s}T_{(r,s)}\right)\otimes\left(\sum_{r',s'}S_{(r',s')}\right)=\sum_{r,s,r',s'}T_{(
 r,s)}\otimes S_{(r',s')}.$$
 
 \newpage
@@ -101,7 +101,7 @@ $T(V)$ es un álgebra asociativa, no conmutativa y con elemento unidad.
 {\sc Demostración:} Es una comprobación engorrosa pero fácil.\hfill$\Box$ \par\bigskip Una base de $T^r_s(V)$
 viene dada por el conjunto de los tensores
 $$\{e_{i_1}\otimes\cdots\otimes e_{i_r}\otimes\theta^{j_1}\otimes\cdots\otimes
-\theta^{j_s}/i_1,\dots ,i_r,j_1,\dots ,j_s\in\{1,\dots,n\}\}$$ y, por tanto, dim$T^r_s(V)=n^{r+s}$. La expresión
+\theta^{j_s}/i_1,\dots ,i_r,j_1,\dots ,j_s\in\{1,\dots,n\}\}$$ y, por tanto, $\dim T^r_s(V)=n^{r+s}$. La expresión
 de $T\in T^r_s(V)$ en esta base es:
 $$T=\sum_{i_1,\dots ,i_r,j_1,\dots ,j_s=1}^nT(e_{j_1},\dots ,e_{j_s},\theta^
 {i_1},\dots ,\theta^{i_r})e_{i_1}\otimes\cdots\otimes e_{i_r}\otimes\theta^
@@ -157,10 +157,10 @@ $$f^*_r(T)(v_1,\dots ,v_r)=T(f(v_1),\dots ,f(v_r)).$$
 \section*{C.2 álgebra Exterior de un Espacio Vectorial.}
 \addcontentsline{toc}{section}{C.2\hspace{0.5 em} álgebra Exterior de un Espacio Vectorial.} \hs Sean $r\in\N$ y
 ${\cal S}_r$ el grupo de las permutaciones del conjunto $\{1,2,\dots ,r\}$. Si $\sigma\in{\cal S}_r$,
-$\epsilon(\sigma)$ representará el signo de $\sigma$.
+$\varepsilon(\sigma)$ representará el signo de $\sigma$.
 \begin{defiap}
 Un tensor $f\in T^0_r(V)$, se dirá que es un {\bf Tensor Alternado} si se verifica
-$$f(v_1,\dots ,v_r)=\epsilon(\sigma)f(v_{\sigma (1)},\dots ,v_{\sigma (r)}),$$
+$$f(v_1,\dots ,v_r)=\varepsilon(\sigma)f(v_{\sigma (1)},\dots ,v_{\sigma (r)}),$$
 $\forall (v_1,\dots ,v_r)\in V^r$ y $\forall\sigma\in{\cal S}_r$.
 \end{defiap}
 \par\bigskip
@@ -169,7 +169,7 @@ Claramente, $\Lambda _0(V)=\R$. Utilizando la definición anterior, también es 
 _1(V)=T^0_1(V)=V^*$, es decir, todo tensor covariante de orden uno es necesariamente alternado (?`por qué?).
 \begin{defiap}
 Al espacio
-$$\Lambda (V)=\sum_{r=0}^\infty\Lambda_r(V)$$
+$$\Lambda (V)=\bigoplus_{r=0}^\infty\Lambda_r(V)$$
 se le llama {\bf Algebra Exterior de $V$}.
 \end{defiap}
 \par\bigskip
@@ -177,7 +177,7 @@ Evidentemente, $\Lambda (V)$ es un espacio vectorial. A continuación, se va a d
 a convertir en un álgebra. Para ello, será necesario un nuevo concepto que se pasa a definir.
 \begin{defiap}
 Para $r\in\N$, sea la aplicación $Alt_r:T^0_r(V)\fl\Lambda _r(V)$, que actúa de la siguiente manera:
-$$Alt_r(T)(v_1,\dots ,v_r)=\frac{1}{r!}\sum_{\sigma\in{\cal S}_r}\epsilon(
+$$Alt_r(T)(v_1,\dots ,v_r)=\frac{1}{r!}\sum_{\sigma\in{\cal S}_r}\varepsilon(
 \sigma)T(v_{\sigma(1)},\dots ,v_{\sigma(r)}).$$ \hs $Alt_r(T)$ se denomina {\bf Alternacion del Tensor $T$}.
 \end{defiap}
 \par\bigskip
@@ -204,11 +204,11 @@ elemento de $\Lambda_{r+s}(V)$, dado por:
 $$\omega\wedge\theta=\frac{(r+s)!}{r!s!}Alt(\omega\otimes\theta).$$
 \hs Utilizando la definición de alternación, se tiene que:
 $$(\omega\wedge\theta )(v_1,\dots ,v_{r+s})=\frac{1}{r!s!}\sum_{\sigma\in{\cal
-S}_{r+s}}\epsilon(\sigma)\omega(v_{\sigma (1)},\dots ,v_{\sigma (r)})\theta(v_ {\sigma (r+1)},\dots ,v_{\sigma
+S}_{r+s}}\varepsilon(\sigma)\omega(v_{\sigma (1)},\dots ,v_{\sigma (r)})\theta(v_ {\sigma (r+1)},\dots ,v_{\sigma
 (r+s)}).$$ \hs A continuación, el producto de dos elementos genéricos
 $$\sum_{r=0}^{\infty}\omega_r\mbox{ }\mbox{y}\mbox{ }\sum_{s=0}^{\infty}\theta_s$$
 de $\Lambda (V)$ se define a partir de lo anterior como:
-$$(\sum_{r=0}^{\infty}\omega_r)\wedge \sum_{s=0}^{\infty}\theta_s)=\sum_
+$$\left(\sum_{r=0}^{\infty}\omega_r\right)\wedge \sum_{s=0}^{\infty}\theta_s)=\sum_
 {r,s=0}^{\infty}\omega_r\wedge\theta _s.$$ \hs Es fácil probar (?`por qué?) que si $\omega\in\Lambda_r(V)$ y
 $\theta\in\Lambda _s(V)$, entonces $\omega\wedge\theta=(-1)^{rs}\theta\wedge\omega$. Obsérvese que si $r$ ó $s$ es
 par, entonces $\omega\wedge\theta=\theta\wedge\omega$. En cambio, si $r$ y $s$ son impares,
@@ -231,7 +231,7 @@ Otras propiedades del Algebra Exterior son las siguientes:
 \begin{enumerate}
 \item[(i)] Si $\omega ^1,\dots ,\omega^r\in\Lambda_1(V)$ y $\sigma\in{\cal S}
 _r$, entonces:
-$$\omega^1\wedge\cdots\wedge\omega^r=\epsilon(\sigma)\omega^{
+$$\omega^1\wedge\cdots\wedge\omega^r=\varepsilon(\sigma)\omega^{
 \sigma(1)}\wedge\cdots\wedge\omega^{\sigma(r)}.$$
 \item[(ii)] Si $v_1,\dots ,v_r\in V$ y $\omega^1,\dots\omega^r\in
 \Lambda_1(V)$, entonces:
@@ -247,9 +247,9 @@ $$\omega^1\wedge\cdots\wedge\omega^i\wedge\cdots\wedge\omega^j\wedge\cdots
 toda permutación es producto de transposiciones, se tiene (i). Para (ii), se observa que:
 $$(\omega^1\wedge\cdots\wedge\omega^r)(v_1,\dots ,v_r)=r!Alt(\omega^1\otimes
 \cdots\otimes\omega^r)(v_1,\dots ,v_r)=$$
-$$=r!\frac{1}{r!}\sum_{\sigma\in{\cal S}_r}\epsilon(\sigma)\omega^1\otimes
+$$=r!\frac{1}{r!}\sum_{\sigma\in{\cal S}_r}\varepsilon(\sigma)\omega^1\otimes
 \dots\otimes\omega^r(v_{\sigma (1)},\dots ,v_{\sigma(r)})=$$
-$$=\sum_{\sigma\in{\cal S}_r}\epsilon(\sigma)\omega^1(v_{\sigma (1)})\dots
+$$=\sum_{\sigma\in{\cal S}_r}\varepsilon(\sigma)\omega^1(v_{\sigma (1)})\dots
 \omega^r(v_{\sigma(r)})=det(\omega^i(v_j)).\eqno{\Box}$$
 \begin{propoap}
 Sea $\{e_1,\dots ,e_n\}$ una base de $V$ y $\{\theta^1,\dots ,\theta^n\}$ su base dual. Considérense $i_1,\dots
@@ -273,7 +273,7 @@ $$\theta^{i_1}\wedge\cdots\wedge\theta^{i_r}(e_{j_1},\dots,e_{j_r})=
 \left \{
 \begin{array}{ccc}
 0 & {\rm si} & \{i_1,\dots ,i_r\}\neq\{j_1,\dots ,j_r\},\\
-\epsilon(\sigma) & {\rm si} & \{i_1,\dots ,i_r\}=\{j_1,\dots ,j_r\},
+\varepsilon(\sigma) & {\rm si} & \{i_1,\dots ,i_r\}=\{j_1,\dots ,j_r\},
 \end{array}
 \right.$$ donde $\sigma$ es la permutación $i_k\mapsto j_k$, $k=1,\dots ,r$. Por tanto:
 $$\lambda_{j_1 \dots j_r}=0,\forall j_1,\dots ,j_r/ 1\leq j_1<\cdots<
@@ -285,7 +285,7 @@ j_r\leq n.\eqno{\Box}$$
 Sea $r\in\N$.
 \begin{enumerate}
 \item[(i)] Si $r>n$, entonces $\Lambda_r(V)=\{0\}$.
-\item[(ii)] Si $r\leq n$, entonces dim$(\Lambda_r(V))={n\choose r}$.
+\item[(ii)] Si $r\leq n$, entonces $\dim (\Lambda_r(V))={n\choose r}$.
 \end{enumerate}
 \end{coroap}
 {\sc Demostración:} Si $r>n$, todo elemento de la base es nulo, pues en todo producto de la forma
@@ -296,7 +296,7 @@ Como consecuencia del corolario anterior, tenemos que $\Lambda (V)$ es suma dire
 \underline{finito} de espacios vectoriales,
 $$\Lambda(V)=\R\oplus V^*\oplus\Lambda_2(V)\oplus\cdots\oplus\Lambda_n(V),$$
 lo que implica que:
-$${\rm dim}(\Lambda(V))={n\choose 0}+{n\choose 1}+\cdots+{n\choose n}=(1+1)^n
+$${\rm \dim}(\Lambda(V))={n\choose 0}+{n\choose 1}+\cdots+{n\choose n}=(1+1)^n
 =2^n.$$
 
 \end{document}

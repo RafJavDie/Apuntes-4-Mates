@@ -1,0 +1,248 @@
+\documentclass[CV.tex]{subfiles}
+
+\begin{document}
+
+
+%\hyphenation{equi-va-len-cia}\hyphenation{pro-pie-dad}\hyphenation{res-pec-ti-va-men-te}\hyphenation{sub-es-pa-cio}
+
+\chapter{Aplicaciones de la cohomología de deRham}
+
+\section{Puntos fijos y otras aplicaciones}
+Introducimos primero la notación estándar $D^n=\{x\in\R^n\mid ||x||\leq 1\}$, $S^{n-1}=\{x\in\R^n\mid ||x||=1\}$.
+\begin{defi}
+Un \textbf{punto fijo} de una aplicación $f:X\to X$ es un punto $x\in X$ con $f(x)=x$.
+\end{defi}
+
+\begin{lemma}\label{borde}
+No existe ninguna aplicación continua $g:D^n\to S^{n-1}$ que sea la identidad sobre $\partial D^n=S^{n-1}$.
+\end{lemma}
+\begin{proof}
+Para $n=1$ se tiene por conexión, así que sea $n\geq 2$. Por reducción al absurdo, supongamos que existe $g:D^n\to S^{n-1}$ con $g|_{S^{n-1}}=Id_{S^{n-1}}$. Sea $r:\R^n-\{0\}\to\R^n-\{0\}$ dada por $r(x)=x/||x||$. Se tiene que $r\simeq Id_{\R^n-\{0\}}$, pues para todo $x\in\R^n-\{0\}$, el segmento que une $x$ con $r(x)$ está contenido en $\R^n-\{0\}$. Así, podemos definir $H(x,t)=g(tr(x))$ para $x\in\R^n-\{0\}$ y $t\in[0,1]$, lo cual nos da una homotopía entre $H(x,0)=g(0)$ y $H(x,1)=g(r(x))=r(x)$, por lo que $r$ es homotópica a una constante. Eso significa que $\R^n-\{0\}$ es contráctil, lo cual entra en contradicción con el cálculo de su homología.
+\end{proof}
+
+\begin{teorema}[del punto fijo de Brouwer] Toda aplicación continua $f:D^n\to D^n$ tiene algún punto fijo.
+\end{teorema}
+\begin{dem}
+Supongamos por reducción al absurdo que $f(x)\neq x$ para todo $x\in D^n$. Para cada $x\in D^n$ definimos $g(x)$ como la intersección con $S^{n-1}$ de la semirrecta con inicio en $f(x)$ y que pasa por $x$. Obtenemos la expresión 
+\[
+g(x)=x+tu,\quad u=\frac{x-f(x)}{||x-f(x)||}, \quad t=-x\cdot u+\sqrt{1-||x||^2+(x\cdot u)^2}.
+\] 
+Aquí, $x\cdot u$ denota el producto escalar usual. Como $g$ es continua y es la identidad en $S^{n-1}$, llegamos a una contradicción con el lema \ref{borde}.
+\QED
+\end{dem}
+
+Recordamos que el espacio tangente a $S^n$ en un punto $x\in S^n$ es $T_xS^n=\{x\}^{\perp}$, el complemento ortogonal en $\R^{n+1}$ del vector de posición. Esto es, $v\in T_xS^n$ si y solo si $v\cdot x=0$. Un campo vectorial tangente en $S^n$ es por tanto una aplicación continua $v:S^n\to\R^{n+1}$ tal que $v(x)\in T_xS^n$ para todo $x\in S^n$. 
+
+\begin{teorema}[de la bola peluda]
+La esfera $S^n$ tiene un campo vectorial tangente $v$ con $v(x)\neq 0$ para todo $x\in S^n$ si y solo si $n$ es impar.
+\end{teorema}
+\begin{dem}
+Dado un campo vectorial tangente $v$ a $S^n$, podemos extenderlo a un campo vectorial tangente $w$ a $\R^{n+1}-\{0\}$ definiendo
+\[
+w(x)=v\left(\frac{x}{||x||}\right).
+\] 
+Tenemos que $w(x)\neq 0$ y $w(x)\cdot x=0$ para todo $x\in\R^{n+1}-\{0\}$. La expresión
+\[
+F(x,t)=(\cos\pi t)x+(\sin\pi t)w(x)
+\]
+define una homotopía entre $f_0=Id_{\R^{n+1}-\{0\}}$ y $f_1=-Id_{\R^{n+1}-\{0\}}$. Esto implica que $(-Id_{\R^{n+1}-\{0\}})^*$ es la identidad en $H^n(\R^{n+1}-\{0\})\cong\R$ (\ref{6.13}). Por otra parte, por el corolario \ref{multiplica}, esta aplicación es la multiplicación por $(-1)^{n+1}$, por lo que $n$ es impar. 
+
+Recíprocamente, si $n=2m-1$, podemos definir el campo vectorial tangente $v$ como
+\[
+v(x_1,\dots, x_{2m})=(-x_2, x_1,-x_4,x_3,\dots, -x_{2m},x_{2m-1}).
+\]
+\QED
+\end{dem}
+\begin{nota}
+Para una explicación de por qué es necesario que $w$ sea tangente para definir la homotopía $F$ en la demostración anterior consultar \url{https://math.stackexchange.com/questions/2720466/question-on-madsens-proof-of-the-hairy-ball-theorem}.
+\end{nota}
+
+
+\section{Separación e invarianza de dominio}
+
+
+\begin{lemma}[Urysohn-Tietze]\label{Urysohn} Si $A\subseteq \R^n$ es cerrado y $f:A\to\R^m$ es continua, entonces existe una aplicación continua $g:\R^n\to\R^m$ con $g|_A=f$.
+\end{lemma}
+
+Se puede consultar la demostración del lema de Urysohn-Tietze en el libro.
+
+\begin{prop}
+Seas $A\subseteq\R^n$ y $B\subseteq\R^m$ cerrados y sea $\phi:A\to B$ un homeomorfismo. Entonces existe un homeomorfismo $h$ de $\R^{n+m}$ en sí mismo tal que $h(x,0_m)=(0_n,\phi(x))$ para todo $x\in A$. 
+\end{prop}
+\begin{dem}
+Por el lema \ref{Urysohn} podemos extender $\phi$ de forma continua a una aplicación $f_1:\R^n\to\R^m$. Definimos un homeomorfismo $h_1:\R^n\times\R^m\to\R^n\times\R^m$ como
+\[
+h_1(x,y)=(x,y+f_1(x)).
+\]
+El inverso de $h_1$ se consigue restando $f_1(x)$. Análogamente, podemos extender $\phi^{-1}$ a una aplicación continua $f_2:\R^m\to\R^n$ y definir un homeomorfismo $h_2:\R^n\times\R^m\to\R^n\times\R^m$ como
+\[
+h_2(x,y)=(x+f_2(y),y).
+\]
+Si definimos $h=h_2\circ h_1$, entonces tenemos para $x\in A$ que
+\[
+h(x,0_m)=h_2^{-1}(x,f_1(x))=h_2^{-1}(x,\phi(x))=(x-f_2(\phi(x)),\phi(x))=(0_n,\phi(x)).
+\]
+\QED
+\end{dem}
+
+\begin{coro}\label{7.7}
+Si $\phi:A\to B$ es un homeomorfismo entre conjuntos cerrados de $\R^n$, entonces $\phi$ puede ser extendido a un homeomorfismo $\tilde{\phi}:\R^{2n}\to \R^{2n}$.
+\end{coro}
+\begin{dem}
+Por el teorema anterior, existe $\hat{\phi}:\R^{2n}\to\R^{2n}$ con $\hat{\phi}(A\times 0_m)=0_n\times B$. Basta intercambiar las coordenadas para obtener el homeomorfismo $\tilde{\phi}$. \QED
+\end{dem}
+
+\begin{teorema}
+Supongamos que $A\neq\R^n$ y $B\neq\R^n$ son subconjuntos cerrados de $\R^n$. Si $A$ y $B$ son homeomorfos, entonces $H^p(\R^n-A)\cong H^p(\R^n-B)$ para todo $p$.
+\end{teorema}
+\begin{dem}
+Por inducción en el teorema \ref{6.11} obtenemos isomorfismos 
+\begin{gather*}
+H^{p+m}(\R^{n+m}-A)\cong H^p(\R^n-A)\ (p>0)\\
+H^m(\R^{n+m}-A)\cong H^0(\R^n-A)
+\end{gather*}
+para todo $m\geq 1$. Análogamente para $B$. Por el corolario \ref{7.7} sabemos que $\R^{2n}-A$ y $\R^{2n}-B$ son homeomorfos. La invarianza topológica de la cohomología de deRham implica que tienen cohomologías isomorfas. Así,
+\[
+H^p(\R^n-A)\cong H^{p+n}(\R^{2n}-A)\cong H^{p+n}(\R^{2n}-B)\cong H^p(\R^n-B)
+\]
+para $p>0$ y 
+\[
+H^0(\R^n-A)/\R\cong H^{n}(\R^{2n}-A)\cong H^{n}(\R^{2n}-B)\cong H^0(\R^n-B)/\R,
+\]
+lo cual implica que $H^0(\R^n-A)\cong H^0(\R^n-B)$.% ESTO VALE PARA E.V. ¿PERO Y PARA R-MÓDULOS? (IMAGINO QUE PARA GRUPOS ABELIANOS TAMBIÉN ES CIERTO, AUNQUE ME GUSTARÍA UNA PRUEBA) ¿EN GENERAL?
+\QED
+\end{dem}
+
+\begin{coro}\label{7.9}
+Si $A$ y $B$ son subconjuntos cerrados homeomorfos de $\R^n$, entonces $\R^n-A$ y $\R^n-B$ tienen el mismo número de componentes conexas. 
+\end{coro}
+\begin{dem}
+Si $A\neq\R^n$ y $B\neq\R^n$ se sigue del teorema anterior. Si $A=B=\R^n$ es evidente. El caso $A=\R^n$, $B\neq\R^n$ no puede ocurrir, pues implicaría que $\R^{n+1}-A$ tendría dos componentes conexas, mientras que $\R^{n+1}-B$ sería conexo. Esto no es posible porque en $\R^{n+1}$ el teorema anterior es aplicable ya que ni $A$ ni $B$ son iguales a $\R^{n+1}$. \QED 
+\end{dem}
+
+\begin{teorema}[de separación de Jordan-Brouwer]\label{jordan}
+Si $\Sigma\subseteq\R^n$ $(n\geq 2)$ es homeomorfo a $S^{n-1}$ entonces
+\begin{enumerate}
+\item $\R^n-\Sigma$ tiene dos componentes conexas $U_1$ y $U_2$, donde $U_1$ es acotada y $U_2$ no.
+\item $\Sigma$ es el conjunto de puntos frontera entre $U_1$ y $U_2$.
+\end{enumerate}
+Decimos que $U_1$ es el dominio interior de $\Sigma$ y $U_2$ es el dominio exterior de $\Sigma$.
+\end{teorema}
+\begin{dem}\
+\begin{enumerate}
+\item Como $\Sigma$ es compacto, $\sigma$ es cerrado en $\R^n$. para probar (1) basta demostrar que se cumple para $S^{n-1}$ por el corolario \ref{7.9}, lo cual es cierto. Las componentes conexas de $\R^n-S^{n-1}$ son 
+\[
+\mathring{D}^n=\{x\in\R^n\mid ||x||<1\}\text{ y }W=\{x\in\R^n\mid ||x||>1\}.
+\]
+Eligiendo $r=\max_{x\in\Sigma}||x||$, el conjunto conexo 
+\[
+rW=\{x\in\R^n\mid ||x||>r\}
+\]
+estará contenida en una de las componentes conexas de $\R^n-\Sigma$. La otra componente estará por tanto acotada, con lo que tenemos (1). 
+
+\item Sea $p\in\Sigma$ y consideremos un entorno abierto $V$ de $p$ en $\R^n$. El conjunto $A=\Sigma-(\Sigma\cap V)$ es cerrado y homeomorfo a un correspondiente cerrado $B$ de $S^{n-1}$. Es claro que $\R^n-B$ es conexo, así que por el corolario \ref{7.9} también lo es $\R^n-A$. Para $p_1\in U_1$ y $p_2\in U_2$ podemos encontrar un camino $\gamma:[a,n]\to\R^n-A$ con $\gamma(a)=p_1$ y $\gamma(b)=p_2$. Por el apartado anterior, $\gamma$ no puede tener intersección vacía con $\Sigma$, es decir, $\gamma^{-1}(\Sigma)\neq\emptyset$. Además, $\gamma^{-1}\subseteq[a,b]$ es cerrado, por lo que tiene un primer elemento $c_1$ y un último elemento $c_2$, los cuales pertenecen a $(a,b)$. Por tanto, $\gamma(c_1),\gamma(c_2)\in\Sigma\cap V$ son puntos de contacto para $\gamma([a,c_1))\subseteq U_1$ y $\gamma((c_2,b])\subseteq U_2$ respectivamente. Por tanto, podemso encontrar $t_1\in [a,c_1)$ y $t_2\in (c_2,b]$ tales que $\gamma(t_1)\in U_1\cap V$ y $\gamma(t_2)\in U_2\cap V$. Esto demuestra que $p$ es un punto frontera tanto para $U_1$ como para $U_2$, lo cual prueba (2).\QED
+\end{enumerate}
+\end{dem}
+
+\begin{teorema}
+Si $A\subseteq\R^n$ es homeomorfo a $D^k$, con $k\leq n$, entonces $\R^n-A$ es conexo.
+\end{teorema}
+\begin{dem}
+Como $A$ es compacto, $A$ es cerrado. Por el corolario \ref{7.9} es suficiente probar la afirmación para $D^k\subseteq\R^k\subset\R^n$, lo cual es sencillo. \QED
+\end{dem}
+
+\begin{teorema}[de Brouwer] 
+Sea $U\subseteq\R^n$ abierto y $f:U\to\R^n$ una aplicación inyectiva y continua. Entonces $f(U)$ es abierta en $\R^n$ y $f$ es homeomorfismo sobre su imagen. 
+\end{teorema}
+\begin{dem}
+Basta comprobar que $f(U)$ es abierto, pues lo mismo será cierta para cualquier $W\subseteq U$ abierto, con lo que $f(W)$ será abierto, lo cual implicaría que $f$ es abierta en $U$, y por consiguiente homeomorfismo bajo las hipótesis del teorema. 
+
+Dado $x_0\in U$, sea $\delta>0$ tal que $D=\{x\in\R^n\mid |x-x_0|\leq\delta\}\subseteq U$. Sea $S=\partial D$ y $\mathring{D}=D-S$. Veamos que $f(\mathring{D})$ es abierto. Si $n=1$ se obtiene de forma sencilla por tratarse de funciones continuas de una sola variable, así que nos centramos en el caso $n\geq 2$. Tanto $S$ como $\Sigma=f(S)$ son homeomorfos a $S^{n-1}$ ($f$ es cerrada en $S$ puesto que imagen continua de un compacto es compacto, y un cerrado dentro de un comapcto es compato). Entonces $\R^n-\Sigma=U_1\cup U_2$, donde $U_1$ es la componente conexa acotada y $U_2$ la no acotada. Como $D$ es compacto, $\R^n-f(D)$ es no acotado, luego $\R^n-f(D)\subseteq U_2$. Esto implica que $\Sigma\cup U_1=\R^n-U_2\subseteq f(D)$, así que $U_1\subseteq f(\mathring{D})$ pues $f(D)=f(S)\sqcup f(\mathring{D})=\Sigma\sqcup f(\mathring{D})$. Como $\mathring{D}$ es conexo y $f(\mathring{D})\subseteq U_1\sqcup U_2$, que es conexo, $f(\mathring{D})\subseteq U_1$. En conclusión, $U_1=f(\mathring{D})$. \QED
+\end{dem}
+
+\begin{coro}[Invarianza de dominio]\label{7.13}
+Si $V\subseteq\R^n$ tiene la topología inducida por $\R^n$ y es homeomorfo a un abierto de $\R^n$, entonces $V$ es abierto en $\R^n$.
+\end{coro}
+
+
+\begin{coro}[Invarianza de dimensión]
+Sean $U\subseteq\R^n$ y $V\subseteq\R^m$ abiertos no vacíos. Si $U$ y $V$ son homeomorfos, entonces $n=m$.
+\end{coro}
+\begin{dem}
+Supongamos que $m<n$. El corolario \ref{7.13} aplicado a $V$, visto como subconjunto de $\R^n$ mediante la inclusión $\R^m\subseteq\R^n$, implica que que $V$ es abierto en $\R^m$. Esto contradice el hecho de que $V$ esté contenido en $\R^n$. \QED
+\end{dem}
+
+\begin{prop}\label{7.16}
+Sea $\Sigma\subseteq\R^n$ $(n\geq 2)$ homeomorfo a $S^{n-1}$ y sean $U_1$ y $U_2$ los dominios interior y exterior de $\Sigma$. Entonces
+\begin{align*}
+&H^p(U_1)\cong \begin{cases}
+\R & p=0\\
+0 & c.c.
+\end{cases} &\text{y}& & H^p(U_2)=\begin{cases}
+\R & p=0,n-1\\
+0 & c.c.
+\end{cases}
+\end{align*}
+\end{prop}
+\begin{dem}
+El caso $p=0$ se sigue del teorema \ref{jordan}. Sea $W=\R^n-D^n$. Para $p>0$ se tienen, por el corolario \ref{5.3} isomorfismos
+\[
+H^p(U_1)\oplus H^p(U_2)\cong H^p(\R^n-\Sigma)\cong H^p(\R^n-S^{n-1})\cong H^p(\mathring{D}^n)\oplus H^p(W)\cong H^p(W).
+\]
+%esto es para p>0
+La inclusión $i:W\to\R^n-\{0\}$ es una equivalencia de homotopía con inversa homotópica $g(x)=\dfrac{||x||+1}{||x||}x$. Tenemos entonces que $H^p(i)$ es un isomorfismo. El cálculo del teorema \ref{6.13} nos da
+\[
+H^p(W)=\begin{cases}
+\R & p=0,n-1\\
+0 & c.c.
+\end{cases}
+\]
+Tenemos entonces que $H^p(U_1)=H^p(U_2)=0$ para $p\neq 0, n-1$. Por otro lado, las dimensiones de $H^{n-1}(U_1)$ y $H^{n-1}(U_1)$ son 0 o 1, luego basta probar que $H^{n-1}(U_2)\neq 0$. 
+
+Sin pérdida de generalidad podemos asumir que $0\in U_1$ y que el conjunto acotado $U_1\cup\Sigma$ está contenido en $D^n$. Tenemos entonces un diagrama conmutativo de inclusiones
+\[
+\begin{tikzcd}
+& \R^n-\{0\}\\
+W\arrow[ur, "i"]\arrow[r] & U_2\arrow[u]
+\end{tikzcd}
+\]
+y aplicando $H^{n-1}$ obtenemos el diagrama conmutativo
+\[
+\begin{tikzcd}
+& H^{n-1}(\R^n-\{0\})\cong\R\arrow[dl, "H^{n-1}(i)"']\arrow[d]\\
+H^{n-1}(W)& H^{n-1}(U_2)\arrow[l] 
+\end{tikzcd}
+\]
+donde $H^{n-1}(i)$ es isomorfismo, por lo que $H^{n-1}(U_2)\neq 0$.
+\QED
+\end{dem}
+
+\begin{ej}
+Vamos a calcular la cohomología de $\R^n$ ``con $m$ agujeroes'', es decir, la cohomologíad e
+\[
+V=\R^n-\left(\bigcup_{j=1}^m K_j\right).
+\]
+Los ``agujeros'' $K_j$ en $\R^n$ son conjuntos compactos disjuntos con frontera $\Sigma_j$ homeomorfa a $S^{n-1}$. Por tanto, los interiores $\mathring{K}_j=K_j-\Sigma_j$ son justamente los dominios interiores de $\Sigma_j$. Se tiene
+\[
+H^p(V)\cong\begin{cases}
+\R & p=0\\
+\R^m & p=n-1\\
+0 & c.c.
+\end{cases}
+\]
+Para probarlo, usamos inducción en $m$. Para $m=1$ se probó en la proposición \ref{7.16}. Supongamos que la proposición es cierta para 
+\[
+V_1=\R^n-\left(\bigcup_{j=1}^{m-1}K_j\right).
+\]
+Sea $V_2=\R^n-K_m$. Entonces $V_1\cup V_2=\R^n$ y $V_1\cap V_2=V$. Para $p\geq 0$ tenemos la sucesión exacta de Mayer-Vietoris
+\[
+H^p(\R^n)\overset{I^*}{\to}H^p(V_1)\oplus H^p(V_2)\overset{J^*}{\to}H^p(V)\to 0 
+\]
+Si $p=0$ entonces $H^0(\R^n)\cong\R$ y $I^*$ es inyectiva. Por el caso base y la hipótesis de inducción tenemos $H^0(V_1)\cong\R\cong H^0(V_2)$. La exactitud nos da $H^0(V)\cong\R$. Si $p>0$ entonces $H^p(\R^n)=0$ y la sucesión exacta nos da isomorfismos 
+\[
+H^p(V_1)\oplus H^p(V_2)\cong H^p(V),
+\]
+de donde se sigue el resultado.
+\end{ej}
+
+\end{document}

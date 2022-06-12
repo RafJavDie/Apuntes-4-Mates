@@ -1,0 +1,333 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+\usepackage{colortbl}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Modelos de Investigación Operativa\\ Relación 6}
+\author{Rafael González López, Javier Aguilar Martín}
+\date{}
+\maketitle
+
+\begin{ejercicio}{1}
+Suponga que está interesado en elegir entre un conjunto de inversiones $I=\{1,\dots,7\}$ mediante variables binarias. Modele las siguientes restricciones:
+\begin{enumerate}
+\item No se puede invertir en todas.
+\item Existe la obligación de invertir al menos en una de ellas.
+\item La inversión 1 no puede ser escogida si la inversión 3 ha sido escogida.
+\item La inversión 4 puede ser escogida solamente en el caso de que la inversión 2 también lo sea.
+\item En cuanto a las inversiones 1 y 5, bien pueden ser escogidas conjuntamente o bien no se puede escoger ninguna de ellas.
+\item Se debería escoger al menos una de las inversiones 1,2,3 o al menos dos entre las inversiones 2,4,5,6.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item $\sum_{i=1}^7x_i\leq 6$. 
+\item $\sum_{i=1}^7x_i\geq 1$.
+\item $x_1+x_3\leq 1$.
+\item $x_2\geq x_4$. 
+\item $x_1-x_5=0$.
+\item Usamos una variable auxiliar $z\in\{0,1\}$. Entonces $x_1+x_2+x_3\geq z$ y $x_2+x_4+x_5+x_6\geq 2(1-z)$. 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Supongamos que se está en invitar al máximo número de amigos de entre $\{A,B,C,D\}$ a una fiesta. Modele las siguientes restricciones utilizando variables binarias:
+\begin{enumerate}
+\item El anfitrión no hace la fiesta si van menos de 2.
+\item A va si va D.
+\item Si va A a la fiesta, no van ni B ni C.
+\item Si van A y B, C no va.
+\item Si A y B van, C no va a menos que vaya D.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item $x_A+x_B+x_C+x_D\geq 2$. 
+\item $x_A\geq x_D$.
+\item $x_A+ x_B\leq 1$ y $x_A+ x_C\leq 1$.  
+\item $x_A+x_B+x_C\leq 2$. 
+\item $x_C\leq 2-x_A-x_B+x_D$.  
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+Modele las siguientes situaciones:
+\begin{enumerate}
+\item $z\leq\min\{x,y\}, x,y,z\in\{0,1\}$.
+\item $z\geq\max\{x,y\}, x,y,z\in\{0,1\}$.
+\item $z\geq\min\{x,y\}, x,y,z\in\{0,1\}$.
+\item $z\leq\max\{x,y\},x,y,z\in\{0,1\}$.
+\item $z=\max\{x,y\}, x,y,z\in\{0,1\}$.
+\item $z=\min\{x,y\}, x,y,z\in\{0,1\}$.
+\item $z=|x-y|, x,y,z\in\{0,1\}$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item $z\leq x,z\leq y$. 
+\item $z\geq x,z\geq y$.
+\item $z\geq x+y-1$.
+\item $z\leq x+y$
+\item Apartados 2 y 4.
+\item Apartados 1 y 3.
+\item $z=\max\{x-y,y-x\}$, por lo que se pueden usar los anteriores.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4}
+Dada una matriz $C_{n\times m}$ de número reales no negativos, queremos conocer la fila que tiene el mayor más pequeño.
+\end{ejercicio}
+\begin{solucion}
+$k\mid c_{kl}=\min_i\max_j\{c_{ij}\}$
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{5}
+Considere el siguiente problema de dos variables.
+\begin{align*}
+\min\ & 15x_1+10x_2\\
+s.a.\   & 3x_1+1x_2\geq 6\\
+       & x_1+x_2\geq 3\\
+       & x_1,x_2\in\Z^+
+\end{align*}
+Resolver el problema por ramificación y acotación.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{6}
+Considere el siguiente problema de dos variables
+\begin{align*}
+\min\ & 13x_1+8x_2\\
+s.a.\   & x_1+2x_2\leq 10\\
+       & 5x_1+2x_2\leq 20\\
+       & x_1,x_2\in\Z^+
+\end{align*}
+Resolver el problema por ramificación y acotación.
+\end{ejercicio}
+\begin{solucion}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7}
+Considere el siguiente árbol de ramificación para un problema de minimizar:
+
+DIBUJO DE GRAFO
+
+Determine las cotas globales del problema en esta situación y determine los nodos para los cuales la ramificación ha finalizado explicando los motivos.
+\end{ejercicio}
+\begin{solucion}\
+
+\begin{tabular}{l l}
+Cota inferior: & 25 (solución del problema relajado) \\
+Cota superior: & 31 (única solución entera encontrada) \\
+Nodos cerrados & 7 (solución entera), 8 (infactible) y 6 (la cota superior es menor)
+\end{tabular}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{8}
+Considere el siguiente problema de dos variables
+\begin{align*}
+\min\ & 9x_1+5x_2\\
+s.a.\   & 4x_1+9x_2\leq 35\\
+       & x_1\qquad\leq 6\\
+       & x_1-3x_2\geq 1\\
+       & 3x_1+2x_2\leq 19\\
+       & x_1,x_2\in\Z^+
+\end{align*}
+Resolver el problema por ramificación y acotación.
+\end{ejercicio}
+\begin{solucion}
+\begin{verbatim}
+model Ejercicio8
+uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+
+!sample declarations section
+declarations
+x:array(1..2) of mpvar
+end-declarations
+
+4*x(1)+9*x(2)<=35
+x(1)<=6
+x(1)-3*x(2)>=1
+3*x(1)+2*x(2)<=19
+!x(2)>=1 obj: 56, x(1)=5.6666, x(2)=1
+x(2)<=0 !obj: 54, x(1)=6, x(2)=0 *
+!x(1)>=6 infeasible*
+!x(1)<=5 !obj: 51.6 <54*
+!forall(i in 1..2) x(i) is_integer
+
+maximize(9*x(1)+5*x(2))
+
+end-model
+\end{verbatim}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{9}
+Algunos problemas de programación entera, aún siendo pequeños, no son sencillos de resolver por ramificación y acotación. Intente encontrar una solución factible del problema $\{x\in\Z^+: 12228x_1+36679x_2+36682x_3+48908x_4+61139x_5+73365x_6=89716837\}$.
+\end{ejercicio}
+\begin{solucion}
+\begin{verbatim}
+model Ejercicio9
+uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+
+
+!sample declarations section
+declarations
+x:array(1..6) of mpvar
+end-declarations
+
+1228*x(1)+36679*x(2)+48908*x(4)+61139*x(5)+73365*x(6)=89716837
+!forall(i in 1..6) x(i) is_integer
+!posible solución x(1)=36566, x(2)=x(3)=x(4)=0, x(5)=1,x(6)=610
+x(4)<=1834
+x(2)<=0
+x(5)<=0
+x(6)<=0
+!x(1)<=15 infeseable
+x(1)>=16 !x(1)=16, x(2)=x(3)=0, x(4)=1834, x(5)=x(6)=0
+maximize(1)
+
+end-model
+\end{verbatim}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{10}
+En el diagrama de la figura siguiente se consiera que la zona $A$ es visible a una cámara de la zona $B$ si se puede trazar un segmento desde \textbf{cualquier punto} de $A$ hasta \textbf{cualquier punto} de $B$ sin atravesar ninguna zona negra. Determinar el mínimo número de cámaras a instalar y zonas donde deben ser instaladas para que todas las zonas sean visibles a las cámaras.
+
+ %https://tex.stackexchange.com/questions/50349/color-only-a-cell-of-a-table
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+1 & \cellcolor{black} & 2 & 3\\
+\hline
+4 & 5 & \cellcolor{black} & 6\\
+\hline
+7 & 8 & 9 & 10\\
+\hline
+\cellcolor{black} & \cellcolor{black}& 11 & 12\\
+ \hline
+ \cellcolor{black}& 13 & 14 & \cellcolor{black} \\
+ \hline
+\end{tabular}
+\end{center}
+\end{ejercicio}
+\begin{solucion}
+Definimos las variables $x_i\in\{0,1\}, i=1,\dots, 14$, que representará si se instala cámara o no en la celda $i$.
+\begin{align*}
+\min\ & \sum_{i=1}^{14} x_i\\
+sa:\ & x_1+x_4+x_7\geq 1\\
+& x_1 + x_4 +x_5 +x_7\geq 1\\
+&\dots\\
+&x_i\in\{0,1\}
+\end{align*}
+Algunas posiblemente sean redundantes.
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{11}
+Una empresa necesita tener presentes en las oficinas, como mínimo, los siguientes empleados:
+\begin{center}
+\begin{tabular}{r r}
+\hline
+Hora & Trabajadores\\
+\hline
+\hline
+De 0:00 a 6:00 & 2\\
+De 6:00 a 10:00 & 8\\
+De 10:00 a 12:00 & 4\\
+De 12:00 a 16:00 & 3\\
+De 16:00 a 18:00 & 6\\
+De 18:00 a 20:00 & 5\\
+De 20:00 a 00:00 & 3\\
+\hline
+\end{tabular}
+\end{center}
+Cada trabajador trabaja 4 horas, tiene una hora de descanso y a continuación trabaja otras 4 horas. Y solamente hace un turno diario. Los turnos de trabajo pueden comenzar en cualquier hora (en punto) del día. Formule y resuelva el problema de encontrar el número mínimo de trabajadores que necesita la empresa.
+\end{ejercicio}
+\begin{solucion}
+Definimos variables $x_i\in\Z^+$ representando el número de trabajadores que empiezan su turno en la hora $i=0,\dots, 23$.
+\begin{align*}
+\min\ &\sum_{i=0}^{23} x_i\\
+sa:\ & x_{16}+x_{17}+\dots +x_{19}+x_{21}+\dots +x_{23}+x_0\geq 2\ (\text{Trabajan de 0:00 a 1:00})\\
+ & x_{17}+\dots +x_{20}+x_{22} +\dots +x_{1}\geq 0\ (\text{Trabajan de 0:00 a 1:00})\\
+ & \dots \\
+ x_i\in\Z^+
+\end{align*}
+\end{solucion}
+
+\newpage
+
+\newpage
+
+\begin{ejercicio}{12}
+La compaía $QED$ tiene que diseñar un programa de producción para las próximas $n$ semanas. Las tareas duran varias semanas y una vez comenzadas han de llevarse a cabo sin interrupciones. Durante cada semana se requiere un cierto número de trabajadores a tiempo completo en la tarea. Por tanto, la tarea $i$ se realiza en $p_i$ semanas y $l_{iu}$ trabajadores son requeridos para la semana $u$ ($u=1,\dots,p_i)$. El número total de trabajadores disponibles en la semana $t$ es $L_t$. Con objeto de clarificar la información, se muestran los datos para cinco tareas $(i,p_i,l_{i1},\dots,l_{ip_{i}})$.
+\begin{center}
+\begin{tabular}{c|c|cccc}
+\hline
+& & & \multicolumn{2}{c}{Trabajadores}  &\\
+Tarea & Duración & Semana 1 & Semana 2 & Semana 3 & Semana 4\\
+\hline
+\hline
+1 & 3 & 2 & 3 & 1 & -\\
+2 & 2 & 4 & 5 & - & -\\
+3 & 4 & 2 & 4& 1 & 5\\
+4 &4 & 3 & 4 & 2 & 2\\
+5 & 3& 9 & 2 & 3 & -\\
+\hline
+\end{tabular}
+\end{center}
+\begin{enumerate}
+\item Defina las restricciones que nos definen una solución factible.
+\item Formule el problema que minimiza el máximo número de trabajadores para cualquiera de las semanas.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+$n$ semanas. En la semana $t$, $L_t$ trabajadores disponibles. La tarea $i$ se realiza en $p_i$ semanas, y se requieren $l_{iu}$ trabajadores para la semana $u$, $u=1,\dots,p_i$.
+\begin{enumerate}
+\item Tenemos tomar las siguientes decisiones:
+\begin{itemize}
+\item El número de trabajadores en la semana $t$, por tanto definimos $x_t$ como el número de trabajadores necesarios en la semana $t$, $t=1,\dots, n$. 
+\item En qué semana empieza cada tarea. Definimos $y_i\in\{0,1\}$ para decidir si la tarea $i$ empieza en la semana $t$, con $t=1,\dots, n-p_i+1$. 
+\end{itemize}
+Ahora, vamos a las restricciones:
+\begin{itemize}
+\item Todas las tareas deben ser realizadas, por lo que $\sum_{t=1}^{n-p_i+1}=1\ \forall i$. 
+\item También añadiríamos la restricción $y_i\in\{0,1\}$.
+\item No se pueden usar más trabajadores de los que hay. Por ello $x_t\leq L_t, t=1,\dots, n$.
+\item Los trabajadores en la etapa $t$ deben ser suficientes para realizar las tareas que se están ejecutando. Por ejemplo, fijada la tarea $i$, en $t=j$, necesitamos $l_{i1}y_{i1}$, es decir, necesitaremos $l_{i1}$ trabajadores si hemos empezado la tarea en la primera semana. Para $t=2$, tendríamos $l_{i2}y_{i1}+l_{i1}+y_{i2}$, puesto que la tarea ha podido empezarse en la semana 1 o en la 2. En general
+$$ \underset{u\geq t+p_i-n}{\underset{u\leq t}{\sum_{j=1}^{p_i}}}l_{ij}y_{i,t-u+1}\leq x_t\ \forall i,t $$
+\item $x_t\in\Z^+\ \forall t$.
+\end{itemize}
+
+\item Buscamos minimizar el máximo de las $x_t$, por lo que el problema es
+\begin{align*}
+\min\ & s\\
+ & s\geq x_t\ \forall t\\
+ &\text{demás restricciones}
+\end{align*}
+\end{enumerate}
+\end{solucion}
+
+\end{document}

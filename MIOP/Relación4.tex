@@ -4,8 +4,9 @@
 %--------------------------------------------------------
 \begin{document}
 
-\title{Modelos de Investigación Operativa}
+\title{Modelos de Investigación Operativa\\ Relación 4}
 \author{Rafael González López, Javier Aguilar Martín}
+\date{}
 \maketitle
 
 \begin{ejercicio}{1}
@@ -24,21 +25,70 @@ Un consumidor tiene una función de satisfacción $f(x_1,x_2)=10-(x_1-1)^2-(x_2-
 $\nabla^2f(x_1,x_2)=\begin{pmatrix}
 -2 & 0\\
 0  & -2
-\end{pmatrix}$. El menor de orden 2 es positivo y el de orden 1 es negativo, por lo que el punto crítico es un mínimo. Como la matriz es definida negativa tenemos un máximo local. Además, la función es claramente decreciente en todas las direcciones pues es un paraboloide, por lo que el máximo es global. 
+\end{pmatrix}$. El menor de orden 2 es positivo y el de orden 1 es negativo, por lo que el punto crítico es un máximo. Como la matriz es definida negativa tenemos un máximo local. Además, la función es claramente decreciente en todas las direcciones pues es un paraboloide, por lo que el máximo es global. 
 \item Tendríamos que maximizar la función sujeta a la restricción $2x_1+x_2\leq 4$. Como el $(1,2)$ verifica la restricción, sigue siendo óptimo.
 \end{enumerate}
 \end{solucion}
 \end{ejercicio}
 
 \newpage 
-\begin{ejercicio}{2}
+\begin{ejercicio}{2}%\label{2}
 Resolver el siguiente sistema de ecuaciones
 \[
 2x_1-x_2+x_3=-1,\ x_1+2x_2=0,\ 3x_1+x_2+2x_3=3
 \]
 utilizando el método de gradiente partiendo del punto $x^0=(0,0,0)'$.
 \begin{solucion}
+Sea $g(x_1,x_2,x_3)=\begin{pmatrix}
+2x_1-x_2+x_3+1\\
+ x_1+2x_2\\
+ 3x_1+x_2+2x_3-3
+\end{pmatrix}$ y pensamos que es el gradiente de alguna función $F$. Aplicamos el método de la suma divergente para elegir la distanciad de paso. Entonces $\alpha^k=\frac{1}{k+1}$. Calculamos iteraciones hasta que damos con un punto que verifique el sistema.
+\begin{align*}
+x^1&=0-\nabla g(x^0)=\begin{pmatrix}
+-1\\
+0\\
+3
+\end{pmatrix}\\
+x^2&=x^1-\frac{1}{2}g(x^1)=\begin{pmatrix}
+-2\\
+\frac{1}{2}\\
+3
+\end{pmatrix}\\
+&\vdots
+\end{align*}
+La convergencia es muy lenta, así que es mejor resolverlo en Xpress.
+\begin{verbatim}
+model Ejercicio2Hoja4
+uses "mmxprs"; !gain access to the Xpress-Optimizer solver
 
+!optional parameters section
+parameters
+ n=3
+ K=100000
+end-parameters
+
+!sample declarations section
+declarations
+ x:array(1..K,1..3) of real
+ Fx:array(1..K-1,1..3) of real
+end-declarations
+(!
+x(1,1):=0
+x(1,2):=0
+x(1,3):=0
+!)
+forall(i in 1..n)x(1,i):=0
+
+forall(k in 1..K-1)do
+ Fx(k,1):=2*x(k,1)-x(k,2)+x(k,3)+1
+ Fx(k,2):=x(k,1)+2*x(k,2)
+ Fx(k,3):=3*x(k,1)+x(k,2)+2*x(k,3)-3
+ forall(i in 1..n)x(k+1,i):=x(k,i)-(1/k)*Fx(k,i)
+end-do
+
+end-model
+\end{verbatim}
 \end{solucion}
 
 \end{ejercicio}
@@ -57,20 +107,11 @@ Sea $f:\R^n\to\R$ una función diferenciable que verifica que $x^*$ es un mínim
 \item Que $x^*$ sea mínimo local a lo largo de cada línea que pasa por $x^*$ es equivalente a decir que las derivadas direccionales de $f$ se anulan en $x^*$ para toda dirección. En particular se anulan en las direcciones de la base canónica, por lo que $\nabla f(x^*)=0$. 
 \item Consideremos aparte las rectas $y=0$ y $z=0$. $f(0,z)=z^2$, $f(y,0)=pqy^4$ luego el resultado es trivial en ambos casos. Consideremos ahora la recta $z=my, m\in\R^*$. Entonces $f(y)=(my-py^2)(my-qy^2)= pqy^4-m(q+p)y^3 +m^2y^2$. $f'(y)=4pqy^3-3m(q+p)y^2+2m^2y$, claramente $y=0$ es un punto crítico. $f''(y)=12pqy^2-6m(q+p)y+2m^2$, por lo que $f''(0)>0$, así que $y=0$ es un mínimo. 
 
-Para ver que $(0,0)$ no es mínimo local de $f$ calcularemos la matriz hessiana. Ya sabemos por el apartado anterior que $\nabla f(0,0)=0$, por lo que no hace falta comprobarlo. $\nabla f(y,z)=\begin{pmatrix}
-4pqy^3-2(p+q)yz\\
--(p+q)y^2+2z
-\end{pmatrix}\Rightarrow\nabla^2 f(y,z)=\begin{pmatrix}
-12pqy^2-2(p+q)z & -2(p+q)y\\
--2(p+q)y & 2
-\end{pmatrix}$
-
-$$\nabla^2 f(0,0)=\begin{pmatrix}
-0 & 0\\
--2(p+q)y & 2
-\end{pmatrix}$$
-
-La matriz no es definida positiva por lo que $(0,0)$ no es mínimo local de $f$.
+Para ver que $(0,0)$ no es mínimo local veamos que no lo es en la dirección $y=x$, $z=x^2(p+q)/2$. Obviamente es una dirección válida que pasa por el $(0,0)$. Tenemos entonces 
+$$
+f(x) = -\frac{x^2(q-p)}{2}\frac{x^2(q-p)}{2} = -\frac{x^4(p-q)^2}{4}
+$$
+Obviamente en $x=0$ tenemos un máximo, luego no puede ser mínimo.
 \end{enumerate}
 \end{solucion}
 \end{ejercicio}
@@ -84,7 +125,7 @@ $$\min_{x\in\R^2}\sum_{i=1}^nw_i||x-a_i||$$
 donde $w_1,\dots,w_n$ son escalares positivos. Probar que existe un mínimo global para este problema. 
 \begin{solucion}\
 Sea $f(x)=\sum_{i=1}^nw_i||x-a_i||$ continua. Si encontramos un conjunto compacto que contenga a todos los puntos podremos asegurar que existe ese mínimo. Si existe $x^*$ mínimo, debería verificar que $\forall x\in\R^2, \exists i_x\mid ||x^*-a_{i_x}||\leq ||x-a_{i_x}||$, en particular $$||x^*-a_{i_x}||\leq ||a_{i_0}||$$
-Por tanto, como $||x^*||-||a_{i_0}||\leq ||x^*-a_{i_x}||\leq ||a_{i_0}||$, $||x^*||\leq 2||a_{i_0}||\leq 2\max_i{||a_i||}$. Así, basta minimizar en la bola de centro 0 y radio $2\max_i{||a_i||}$. Ya hemos dado con el compacto, ahora te vas a chuparla.
+Por tanto, como $||x^*||-||a_{i_0}||\leq ||x^*-a_{i_x}||\leq ||a_{i_0}||$, $||x^*||\leq 2||a_{i_0}||\leq 2\max_i{||a_i||}$. Así, basta minimizar en la bola de centro 0 y radio $2\max_i{||a_i||}$. Ya hemos dado con el compacto.
 \end{solucion}
 \end{ejercicio}
 
@@ -101,7 +142,7 @@ Iremos tratando el caso $\beta=0$ sobre la marcha. $\nabla f(x,y)=\begin{pmatrix
 \end{pmatrix}=0$. Para el caso $\beta=0$ tenemos la solución $x=-\frac{1}{2},y=-1$. En ese caso $\nabla^2 f(x,y)=\begin{pmatrix}
 2 & 0\\
 0 & 2
-\end{pmatrix}$, con lo que el punto es un mínimo local.  Además es mínimo global, que no sé si vosotros lo veis pero yo lo veo (es un paraboloide).
+\end{pmatrix}$, con lo que el punto es un mínimo local.  Además es mínimo global, pues es un paraboloide.
 
 Si $\beta=\pm 2$ entonces no hay puntos críticos puesto que el sistema no tiene solución. En otro caso, la solución es 
 $$x=-\frac{2(b-1)}{b^2-4}, y=\frac{4-b}{b^2-4}$$
@@ -128,7 +169,7 @@ Sea $f(x)=\frac{1}{x}+x$. $f'(x)=-\frac{1}{x^2}+1=0\Rightarrow x=1, f''(x)=\frac
 Buscar el paralepípedo de volumen unidad que tiene mínima superficie. 
 
 \begin{solucion}\
-$Vol(P)=1=xyz$. La superficie es $f(x,y,z)=2(xy+xz+yz)$. Despejamos $x=\frac{y}{z}$ y obtenemos $f(y,z)=2(\frac{1}{z}+\frac{1}{y}+zy)$. 
+$Vol(P)=1=xyz$. La superficie es $f(x,y,z)=2(xy+xz+yz)$. Despejamos $x=\frac{1}{yz}$ y obtenemos $f(y,z)=2(\frac{1}{z}+\frac{1}{y}+zy)$. 
 $$\nabla f(y,z)=2\begin{pmatrix}
 -\frac{1}{y^2}+z\\
 -\frac{1}{z^2}+y
@@ -163,7 +204,7 @@ $$\nabla f(x,y)=\begin{pmatrix}
 2y
 \end{pmatrix}=0\Rightarrow (0,0),(2,0),(-2,0).$$
 $$\nabla^2 f(x,y)=\begin{pmatrix}
-12x^2-8 & 0
+12x^2-8 & 0\\	
 0 & 2
 \end{pmatrix}$$
 Observamos al sustituir que $(0,0)$ es punto de silla y los otros dos punto son mínimos locales. En los mínimos la función vale 0, y por su definición es siempre no negativa, por lo que son mínimos globales.
@@ -173,23 +214,26 @@ $$\nabla f(x,y)=\begin{pmatrix}
 2(y-x^2)
 \end{pmatrix}=0\Rightarrow x=y=0, y=x^2.$$
 $$\nabla^2 f(x,y)=\begin{pmatrix}
-12x^2-4y & -4x\\
+12x^2-4y-2 & -4x\\
 -4x & 2
 \end{pmatrix}$$
 Es claro que $(0,0)$ no es ni mínimo ni máximo. 
 \item Calculamos el gradiente. $$\nabla f(x,y)=\begin{pmatrix}
 \frac{1}{2}+\cos{y}\\
 -x\sen{y}
-\end{pmatrix}=0\Rightarrow (0,\arccos{1/2})$$
+\end{pmatrix}=0\Rightarrow \begin{cases}
+(0,2(3\pi n -\pi)/3)\\
+(0,2(3\pi n +\pi)/3)
+\end{cases}\; \forall n\in\Z$$
 No hay más puntos estacionarios, así que veamos si este es mínimo local.
 $$\nabla^2 f(x,y)=\begin{pmatrix}
 0 & -\sen{y}\\
 -\sen{y} & -x\cos{y}
 \end{pmatrix}\Rightarrow \nabla^2f(0,0)=\begin{pmatrix}
-0 & -\sen{\arccos{1/2}}\\
--\sen{\arccos{1/2}} & 0
+0 & -\frac{\sqrt{3}}{2}\\
+-\frac{\sqrt{3}}{2}& 0
 \end{pmatrix}$$
-Así que no es mínimo local. Eso quiere decir que la función no tiene mínimos locales. 
+Como el determinante es negativo tenemos un punto de silla.
 \end{enumerate}
 \end{solucion}
 \end{ejercicio}
@@ -203,7 +247,26 @@ Resolver el siguiente sistema de ecuaciones
 \]
 utilizando el método de gradiente partiendo del punto $x^0=(0,0,0)'$.
 \begin{solucion}\
-
+Por no hacerlo igual que el \ref{ejer:2} aplicamos el método de Newton. Tenemos que
+$$(\nabla^2 F(x^k))^{-1}=\begin{pmatrix}
+4/5 & 3/5 & -2/5\\
+-2/5 & 1/5 & 1/5\\
+ -1 & -1 & 1
+\end{pmatrix}\qquad 
+\nabla F(x^k) = \begin{pmatrix}
+2x_1-x_2+x_3+1\\
+x_1+2x_2\\
+3x_1+x_2+2x_3-3
+\end{pmatrix}
+$$
+Iteramos hasta que obtengamos un $x^k$ que anule el gradiente.
+$$
+x^{k+1}=x^k - (\nabla^2 F(x^k))^{-1}\nabla F(x^k) \qquad x^1 = \begin{pmatrix}
+-2\\
+1\\
+4
+\end{pmatrix} \qquad \nabla F(x^1) = 0
+$$
 \end{solucion}
 \end{ejercicio}
 
@@ -212,7 +275,7 @@ utilizando el método de gradiente partiendo del punto $x^0=(0,0,0)'$.
 \begin{ejercicio}{10}
 Considérese la función $f(x,y)=y^3+axy+12y$, siendo $a\in\R$.
 \begin{enumerate}
-\item Demuestre que independientemente del calor de $a$, la función anterior no tiene ni máximos ni mínimos.
+\item Demuestre que independientemente del valor de $a$, la función anterior no tiene ni máximos ni mínimos.
 \item Sea $a=1$. Pruebe que $(x^*,y^*)=(1,1)$ es un máximo local de $f$ en $S=\{(x,y)\in\R^2:x+16y=17\}$. ¿Es máximo local en $S_1=\{(x,y)\in\R^2:x+16y\geq 17\}$?
 \end{enumerate}
 
@@ -224,7 +287,7 @@ Considérese la función $f(x,y)=y^3+axy+12y$, siendo $a\in\R$.
 \end{pmatrix}=\begin{pmatrix}
 0\\
 0
-\end{pmatrix}\Leftrightarrow 3y^2+12=0$, que no tiene solución real. Por tanto no hay puntos críticos.
+\end{pmatrix}$, que no tiene solución real. Por tanto no hay puntos críticos.
 Para $a\neq 0$ $\nabla f(x,y)=\begin{pmatrix}
 ay\\
 3y^2+ax+12
@@ -260,7 +323,7 @@ Hallar $(\overline{q}_1,\overline{q}_2)$.
 \begin{enumerate}
 
 
-\item La función de beneficios conjuntos es $b(q1,q_2)=(q_1+q_2)(200-(q_1+q_2))-q_1-q_2^2$, que desarrollándola obtenemos
+\item La función de beneficios conjuntos es $b(q_1,q_2)=(q_1+q_2)(200-(q_1+q_2))-q_1-q_2^2$, que desarrollándola obtenemos
 $$b(q_1,q_2)=-q_1^2-2q_2^2-2q_1q_2+199q_1+200q_2$$
 $$\nabla b(q_1,q_2)=\begin{pmatrix}
 -2q_1-2q_2+199\\
@@ -271,14 +334,14 @@ $$\nabla^2b(q_1,q_2)=\begin{pmatrix}
 -2 & -2\\
 -2 & -4
 \end{pmatrix}$$
-Sus menores principales son negativos, luego tenemos un máximo.
+El primer menor es negativo y el segundo positivo, luego tenemos un máximo.
 \item 
 \begin{gather*}
 b_1(q_1,q_2)=q_1(200-q_1-q_2)-q_1\\
 b_2(q_1,q_2)=q_2(200-q_1-q_2)-q_2
 \end{gather*}
-El punto $(\overline{q}_1,\overline{q}_2)$ es tal que $b_1(\overline{q}_1,\overline{q}_2\geq b_1(q_1,\overline{q}_2)\ \forall q_1$ y $b_2(\overline{q}_1,\overline{q}_2\geq b_1(\overline{q}_1,q_2)\ \forall q_2$. Tenemos que hacer entonces las derivadas parciales.
-$$\frac{\partial b_1(q_1,\overline{q}_2}{\partial q_1}=199-2q_1-\overline{q}_2=0\Rightarrow \overline{q}_1=\frac{199-\overline{q}_2}{2}$$
+El punto $(\overline{q}_1,\overline{q}_2)$ es tal que $b_1(\overline{q}_1,\overline{q}_2)\geq b_1(q_1,\overline{q}_2)\ \forall q_1$ y $b_2(\overline{q}_1,\overline{q}_2)\geq b_1(\overline{q}_1,q_2)\ \forall q_2$. Tenemos que hacer entonces las derivadas parciales.
+$$\frac{\partial b_1(q_1,\overline{q}_2)}{\partial q_1}=199-2q_1-\overline{q}_2=0\Rightarrow \overline{q}_1=\frac{199-\overline{q}_2}{2}$$
 Análogamente $\overline{q}_2=\frac{200-\overline{q}_1}{4}$. La solución al sistema de ecuaciones es $\overline{q}_1=\frac{596}{7},\overline{q}_2=\frac{201}{7}$.
 \end{enumerate}
 \end{solucion}

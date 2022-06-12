@@ -1,0 +1,356 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\lex}{<_{lex}}
+\newcommand{\grlex}{<_{grlex}}
+\newcommand{\grevlex}{<_{grevlex}}
+
+\newcommand{\PhantC}{\phantom{\colon}}%
+\newcommand{\CenterInCol}[1]{\multicolumn{1}{c}{#1}}%
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{2.7.1}
+Check that $\overline{S( f_i , f_j )}^F = 0$ for all pairs $1 ≤ i < j ≤ 5$ in Example 1.
+\end{ejercicio}
+
+\begin{solucion}
+Copio del libro:
+\begin{align*}
+f_1 & = x^3-2xy & f_2 & = x^2y-2y^2+x\\
+f_3 & = -x^2 & f_4 & = -2xy\\
+f_5 & = -2y^2+x & &
+\end{align*}
+Notemos que hay que realizar $(n-1)n/2$ comprobaciones (en este caso $n=5$). Obviamente no vamos a realizar 10 comprobaciones.
+
+\[ S(f_1, f_3) = \frac{x^3}{x^3}f_1 - \frac{x^3}{-x^2}f_3 = -2xy\]
+\[ -2xy = f_4
+\]
+
+
+\[ S(f_1, f_5) = \frac{x^3y^2}{x^3}f_1 - \frac{x^3y^2}{-2y^2}f_5 = y^2(x^3-2xy)+\frac{x^3}{2}(-2y^2+x) = -2xy^3+\frac{1}{2}x^4 = \frac{1}{2}x^4-2xy^3\]
+\[ \frac{1}{2}x^4-2xy^3 = \frac{x}{2}f_1+f_2 -y^2f_4-f_5 
+\]
+
+\[ S(f_2, f_4) = \frac{x^2y}{x^2y}f_2 - \frac{x^2y}{-2xy}f_4 = -2y^2+x\]
+\[ -2y^2+x = f_5
+\]
+
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.2}
+Use the algorithm given in Theorem 2 to find a Gröbner basis for each of the following
+ideals. You may wish to use a computer algebra system to compute the $S$-polynomials
+and remainders. Use the lex, then the grlex order in each case, and then compare your
+results.
+\begin{enumerate}[a.]
+\item $I = \gene{x^2 y − 1, xy^2 − x}$ .
+\item $I = \gene{x^2 + y, x^4 + 2x^2 y + y^2 + 3}$ . [What does your result indicate about the variety
+$\V(I)$?]
+\item $I = \gene{x − z^4 , y − z^5}$ .
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Distingamos según el orden que utilicemos. 
+\begin{itemize}
+\item Para el lex tenemos
+\[ S(f_1, f_2) = \frac{x^2y^2}{x^2y}f_1 - \frac{x^2y^2}{xy^2}f_2 = x^2y^2-y-x(xy^2-x) = x^2-y\]
+Como no es divisible por ninguno, añadimos $f_3=x^2-y$.
+Calculamos
+\[ S(f_1, f_3) = \frac{x^2y}{x^2y}f_1 - \frac{x^2y}{x^2}f_3 = -1+y^2\]
+Como no es divisible, consideramos $f_4=y^2-1$. 
+\[ S(f_2, f_3) = \frac{x^2y^2}{xy^2}f_2 - \frac{x^2y^2}{x^2}f_3 =-x^2+y^3 = -f_3 -yf_4\]
+Comprobamos el resto de casos en los que no añadiremos más
+$$
+S(f_1,f_4) =  \frac{x^2y^2}{x^2y}f_1 - \frac{x^2y^2}{y^2}f_4 = -x^2+y^3 = -f_3 + yf_4
+$$
+$$
+S(f_2,f_4) =  \frac{xy^2}{xy^2}f_2 + \frac{xy^2}{y^2}f_4 =-x+x = 0
+$$
+$$
+S(f_3,f_4) =  \frac{x^2y^2}{x^2}f_3 - \frac{x^2y^2}{y^2}f_4 = -y^3+x^2 = f_3-yf_4 
+$$
+Por tanto, $G=\{y^2-1,x^2-y,x^2y-1,xy^2-x\}$.
+\newpage
+\item Pasamos a resolver con grlex. 
+\[ S(f_1, f_2) = \frac{x^2y^2}{x^2y}f_1 - \frac{x^2y^2}{xy^2}f_2 = x^2y^2-y-x(xy^2-x) = x^2-y\]
+Como no es divisible por ninguno, añadimos $f_3=x^2-y$.
+\[ S(f_1, f_3) = \frac{x^2y}{x^2y}f_1 - \frac{x^2y}{x^2}f_3 = -1+y^2\]
+Como no es divisible, consideramos $f_4=y^2-1$. 
+\[ S(f_2, f_3) = \frac{x^2y^2}{xy^2}f_2 - \frac{x^2y^2}{x^2}f_3 =y^3-x^2 = yf_4 -f_3\\
+\]
+Análogamente comprobamos que el resto de la divisiones también son cero.
+\end{itemize}
+\item Distingamos los órdenes
+\begin{itemize}
+\item Para el orden lex, el resto de dividir $S(f_1,f_2)$ entre $\{f_1,f_2\}$ es $-3$, por lo que $I=k[x,y]$ y $\V(I)=\emptyset$.
+\item El hecho de que $I=k[x,y]$ no cambia por que utilicemos otro orden para dividir. 
+\end{itemize}
+\item Distingamos los órdenes
+\begin{itemize}
+\item Comencemos con el orden lex
+$$
+S(f_1,f_2) = xz^5-yz^4 = z^5f_1 -z^4f_2
+$$
+Por lo tanto $I$ es una base de Gröbner.
+\item He comprobado en SAGE este caso y es estúpidamente largo, así que no lo voy a hacer.
+\end{itemize}
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.7.3}
+Find reduced Gröbner bases for the ideals in Exercise \ref{ejer:2.7.2} with respect to lex and grlex.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item $G=\{y^2-1,x^2-y,x^2y-1,xy^2-x\}$. Si consideramos los términos líderes, tenemos $y^2,x^2,x^2y,xy^2$, luego es claro que podemos desechar los dos útimos y quedarnos con $\{y^2-1,x^2-y\}$. Claramente se cumplen las condiciones de base reducida tanto para lex como para grlex.
+\item[c.] Tenemos que $\{x-z^4,y-z^5\}$ es claramente una base de Grobner reducida. El caso para el orden grlex se deja como ejercicio para el lector.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.4}
+Use the result of Exercise 7 of §4 to give an alternate proof that Buchberger’s algorithm
+will always terminate after a finite number of steps.
+\end{ejercicio}
+\begin{solucion}
+En la prueba, una vez que sabemos que $LT(r)\notin \gene{LT(G')}$ pero $LT(r)\in\gene{LT(G)}$, en lugar de usar la cadena ascendente, podemos notar simplemente que por el lema de Dikcson, $LT(G)$ está finitamente generado, y como en cada paso nos mantenemos dentro de $LT(G)$ pero añadiendo polinomios que no están en el $LT(G')$ resultante, el algoritmo debe parar en un número finito de pasos.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.7.5}
+Let $G$ be a Gröbner basis of an ideal $I$ with the property that $LC (g) = 1$ for all $g ∈ G$.
+Prove that $G$ is a minimal Gröbner basis if and only if no proper subset of $G$ is a Gröbner
+basis of $I$.
+\end{ejercicio}
+\begin{solucion}
+La definición de base de Gröbner minimal es que $LC (g) = 1$ para todo $g ∈ G$  y no existe $p\in G$ tal que $LT(p)\in\gene{LT(G\setminus\{p\})}$, o equivalentemente, $LC (g) = 1$ para todo $g ∈ G$ y para todo $p\in G$, $LT(p)\notin \gene{LT(G\setminus\{p\})}$.
+
+$\boxed{\Rightarrow}$ Sea $G=\{g_1,\dots, g_t\}$ y supongamos que existe un subconjunto propio $G'\subsetneq G$ que es base de Gröbner de $I$. Podemos suponer sin pérdida de generalidad que $G'=\{g_2,\dots, g_t\}$. Por ser base de Gröbner, $\gene{LT(G')}=LT(I)=\gene{LT(G)}$. Pero entonces, $g_1\in G$ y $LT(g_1)\in \gene{LT(G')}=\gene{LT(G\setminus\{g_1\})}$, lo cual contradice la minimalidad.
+
+$\boxed{\Leftarrow}$ Supongamos que $G$ no es minimal. Entonces existe $p\in G$ con $LT(p)\in\gene{LT(G\setminus\{p\})}$. Si llamamos $G'=G\setminus\{p\}$, entonces $LT(I)=\gene{LT(G)}=\gene{LT(G')}$, lo cual contradice que ningún subconjunto propio de $G$ sea base de Gröbner.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.6}
+The minimal basis of a monomial ideal was introduced in Proposition 7 of §4. Show that
+a Gröbner basis $G$ of $I$ is minimal if and only if $LC (g) = 1$ for all $g ∈ G$ and $LT (G)$ is
+the minimal basis of the monomial ideal $LT (I)$.
+\end{ejercicio}
+\begin{solucion}
+$G$ es una base de Gröbner minimal si y solo si $LC (g) = 1$ para todo $g ∈ G$  y para todo $p\in G$, $LT(p)\notin \gene{LT(G\setminus\{p\})}$. Así que ya tenemos por definición $LC(g)=1$ para todo $g\in G$. La otra parte, por el Lemma 2 de §2, es equivalente a que para todo $p\in G$, $LT(p)$ no sea divisible por ningún $LT(g)$ con $g\in G$. Esta es precisamente la definición de ser base minimal de un ideal monomial, luego se tienen ambas implicaciones.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.7}
+Fix a monomial order, and let $G$ and $\tilde{G}$ be minimal Gröbner bases for the ideal $I$.
+\begin{enumerate}[a.]
+\item Prove that $LT (G) = LT (\tilde{G})$.
+\item Conclude that $G$ and $\tilde{G}$ have the same number of elements.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Por el ejercicio anterior (\ref{ejer:2.7.6}) sabemos que $LT(G)$ y $LT(\tilde{G})$ son bases minimales de $LT(I)$, pero por la Proposición 7 de §4, esta base minimal es única, así que necesariamente $LT (G) = LT (\tilde{G})$.
+\item El cardinal de $LT(G)$ es igual al de $G$, así que es trivial. 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.8}
+Develop an algorithm that produces a reduced Gröbner basis (see Definition 4) for an
+ideal $I$, given as input an arbitrary Gröbner basis for $I$. Prove that your algorithm works.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+\item[]
+\item Entrada: $G=\{g_1,\dotsc,g_t\}$ base de Gröbner.
+\item Dividimos por los términos líderes para que cada polinomio sea mónico. 
+\item Utilizando el Lema 3, comprobamos si $LT(g_i)\in \gene{LT(G\setminus\{g_i\}}$. Si está, removemos $g_i$ de la base, en caso contrario la dejamos.
+\item Procedemos como en la demostración de la Teorema 5, es decir, intercambiamos cada $g_i$ que permanezca en nuestro conjunto por $\overline{g_i}^{G\setminus \{g_i\}}$.
+\end{enumerate}
+La demostración de la Teorema 5 garantiza que el algoritmo funciona.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.9}
+Consider the ideal
+\[
+I = \gene{3x − 6y − 2z, 2x − 4y + 4w, x − 2y − z − w} ⊆ k[x, y, z, w]
+\]
+mentioned in the text. We will use lex order with $x > y > z > w$.
+\begin{enumerate}
+\item Show that the linear polynomials determined by the row echelon matrix (3) give a
+minimal Gröbner basis $I =  \gene{x − 2y − z − w, z + 3w}$ . Hint: Use Theorem 6 of §6.
+\item Show that the linear polynomials from the reduced row echelon matrix (4) give the
+reduced Gröbner basis $I = \gene{x − 2y + 2w, z + 3w}$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+\item[]
+\item Tenemos que una base $G=\{f_1,f_2\}=\{x-2y-z-w,z+3w\}$. ¿Es una base de Gröbner? Calculamos
+$$
+S(f_1,f_2) = -3xw-2yz-z^2-zw = -3wf_1 -(2y+z+w)f_2
+$$
+Por tanto $G$ es base de Grobner. Además, es minimal pues $x\notin \gene{z}$ y $z\notin \gene{x}$. Sin embargo, es claro que no es reducida, $z$ es un monomio de $f_1$ que está en $\gene{z}$. 
+\item Como los términos líderes coinciden con los de la base de Gröbner anteriormente calculada, tenemos que esta también es una base de Gröbner. Además, es claramente reducida pues $x,y,w\notin \gene{z}$ y $z,w\notin\gene{x}$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.10}
+Let $A = (a_{ij} )$ be an $n × m$ matrix with entries in $k$ and let $f_i = a_{i1} x_1 +\cdots + a_{im} x_m$ be the
+linear polynomials in $k[x_1 ,\dots, x_m ]$ determined by the rows of $A$. Then we get the ideal
+$I = \gene{f_1 ,\dots , f_n}$ . We will use lex order with $x_1 > \cdots > x_m$ . Now let $B = (b_{ij} )$ be the
+reduced row echelon matrix determined by $A$ and let $g_1 ,\dots , g_t$ be the linear polynomials
+coming from the nonzero rows of $B$ (so that $t ≤ n$). We want to prove that $g_1 ,\dots , g_t$
+form the reduced Gröbner basis of $I$.
+\begin{enumerate}[a.]
+\item Show that $I =\gene{ g_1 ,\dots , g_t}$ . Hint: Show that the result of applying a row operation to
+$A$ gives a matrix whose rows generate the same ideal.
+\item Use Theorem 6 of §6 to show that $g_1 , \dots, g_t$ form a Gröbner basis of $I$. Hint: If the
+leading 1 in the ith row of $B$ is in the $s$-th column, we can write $g_i = x_s + C$, where $C$
+is a linear polynomial involving none of the variables corresponding to leading 1’s.
+If $g_j = x_t + D$ is written similarly, then you need to divide $S(g_i , g_j ) = x_t C − x_s D$ by
+$g_1 ,\dots , g_t$. Note that you will use only $g_i$ and $g_j$ in the division.
+\item Explain why $g_1 ,\dots , g_t$ form the reduced Gröbner basis of $I$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Aplicar operaciones por filas no es más que hacer combinaciones lineales de los $f_i$, luego claramente $\gene{f_1,\dots, f_n}\supseteq \gene{ g_1 ,\dots , g_t}$. Para la inclusión contraria basta recordar que estas operaciones son reversibles, pues se corresponden con el producto por una matriz regular, así que el mismo razonamiento sirve para probar  $\gene{f_1,\dots, f_n}\subseteq \gene{ g_1 ,\dots , g_t}$.
+
+\item Usaremos que $G=\{g_1 , \dots, g_t\}$ forma una base de Gröbner si y solo si el resto de dividir $S(g_i,g_j)$ por $G$ es 0 para todo $i\neq j$. Al estar en forma row echelon podemos escribir $g_i=x_s+C$ donde $C$ es un polinomio en variables que no son las correspondientes a ninguno de los 1's pivotes de la matriz, y análogamente $g_j=x_r+D$. Entonces $\lcm(LM(g_i),LM(g_j))=x_sx_r$, de modo que 
+\[
+S(g_i,g_j)=\frac{x_sx_r}{x_s}(x_s+C)-\frac{x_sx_r}{x_r}(x_r+D)=x_rx_s +x_rC-x_sx_r-x_sD=x_rC-x_sD
+\]
+Al dividir $x_rC-x_sD$ por $G$ solo intervienen $g_i$ y $g_j$ por construcción. De hecho, $x_rC-x_sD=-Dg_i+Cg_j$, por lo que el resto será 0.
+
+\item En primer lugar, $LC(p)=1$ para todo $p\in G$. Por otra parte, dado $p=x_i+C$ como antes, como ni $x_i$ ni ninguna variable de $C$ coincide con ninguno de los términos líderes del resto de polinomios de $G$, no puede ocurrir que un monomio de $p$ esté en $\gene{LT(G\setminus\{p\})}$. 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.11}
+Show that the result of applying the Euclidean Algorithm in $k[x]$ to any pair of polynomials $f , g$ is a reduced Gröbner basis for $\gene{f , g}$ (after dividing by a constant to make the leading coefficient equal to 1). Explain how the steps of the Euclidean Algorithm can be seen as special cases of the operations used in Buchberger’s algorithm.
+\end{ejercicio}
+\begin{solucion}
+Sabemos que aplicando sucesivamente el algoritmo de división euclídea obtenemos el máximo común divisor $h$ de $f$ y $g$ que es precisamente una base de $\gene{f,g}$ como probamos en la Sección 1.5. Podemos suponer que $LC(h)=1$. Sea $p$ el grado de $h$. Es claro que una base unitaria es de Gröbner por el criterio de Buchberger. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.12}
+Fix $F = \{ f_1 , \dots , f_s \}$ and let $r = \overline{f}^F$. Since dividing $f$ by $F$ gives $r$ as remainder, adding
+$r$ to the polynomials we divide by should reduce the remainder to zero. In other words,
+we should have $\overline{f}^{F∪\{r\}}
+= 0$ when $r$ comes last. Prove this as follows.
+\begin{enumerate}[a.]
+\item When you divide $f$ by $F ∪\{r\}$, consider the first place in the division algorithm where
+the intermediate dividend $p$ is not divisible by any $LT ( f_i )$. Explain why $LT (p) =
+LT (r)$ and why the next intermediate dividend is $p − r$.
+\item From here on in the division algorithm, explain why the leading term of the inter-
+mediate dividend is always divisible by one of the $LT ( f_i )$. Hint: If this were false,
+consider the first time it fails. Remember that the terms of $r$ are not divisible by any
+$LT ( f_i )$.
+\item Conclude that the remainder is zero, as desired.
+\item (For readers who did Exercise 11 of §3.) Give an alternate proof of $\overline{f}^{F∪\{r\}}
+= 0$ using
+Exercise 11 of §3.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item En la construcción de $r$ por el algoritmo de división al dividir $f$ por $F$, en el momento en el que por primera vez el dividendo intermedio $p$ verifica que $LT(p)$ no es divisible por $LT(f_i)$, $r$ deja de ser $0$ para ser $LT(p)$.  Por tanto, dado que el algoritmo tiene en cuenta el orden del conjunto divisor, hasta que no llegamos a este mismo paso al dividir por $F\cup\{r\}$. Por tanto, en este momento el dividendo intermedio es el mismo que el anterior, luego $LT(p)=LT(r)$. Por tanto, siguiendo el procedimiento del algoritmo, construimos el siguiente dividendo intermedio como 
+$$
+p-\frac{LT(p)}{LT(r)}r=p-r
+$$
+\item Nos situamos en el apartado $(a)$. Nuestro dividendo intermedio $p-r = (p-LT(p))-(r-LT(r))$. Notemos que hemos fijado $p$. En la división por $F$  $LT(p)$ hubiese ido al resto, pero ahora se ha cancelado con $LT(r)$. Pueden ocurrir dos sucesos:
+\begin{itemize}
+\item Si la división acaba aquí no hay nada que probar.
+\item Si en la división por $F$, $LT(p-LT(p))$ no es divisible por ningún $LT(f_i)$ entonces $LT(p-LT(p))$ va al resto, luego  al dividir por $F\cup\{r\}$, este término se habría cancelado en $p-r$, luego la división continuaría como en la división por $F$.
+\item Si $LT(p-LT(p))$ es divisible por $LT(f_i)$ y denotemos por $p'$ al resto intermedio que sigue a $p-LT(p)$ en la división por $F$. En particular $LT(p-LT(p))>LT(r-LT(r))$, luego $LT(p-r)=LT(p-LT(p))$ y
+$$
+p - r - \frac{LT(p-r)}{LT(f_i)}f_i =p - r - \frac{LT(p-LT(p))}{LT(f_i)}f_i= p'-r
+$$
+La clave de esta idea radica en que si $LT(p-LT(p))$ es divisible por algún $LT(f_i)$ en la división $F$ no hemos añadido más términos a $r$ más que $LT(p)$. Como en cada paso $LT(p_i)>LT(p_{i+1})$ y $LT(r-LT(r))= LT(p_j)$, donde el subíndice marca el paso donde ocurre el resto intermedio, tenemos que el siguiente término del resto ocurre posterior a $LT(p-LT(p))$.
+\end{itemize}
+Por tanto, la división no se atasca. 
+\item Como en cada paso el divisor intermedio es dividible por algún $LT(f_i)$ (salvo el paso donde hay que dividir por $LT(r)$), el algoritmo no actualiza $r$ de manera no trivial, luego es $0$.
+\item Se tiene inmediatamente por la unicidad del apartado $(d)$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.13}
+In the discussion following the proof of Theorem 2, we commented that if $\overline{S( f , g)}^{G'} = 0$,
+then remainder stays zero when we enlarge $G'$. More generally, if $\overline{f}^F = 0$ and $F'$ is
+obtained from $F$ by adding elements at the end, then $\overline{f}^{F'} = 0$. Prove this.
+\end{ejercicio}
+\begin{solucion}
+Como $\overline{f}^F = 0$ no hay necesidad de añadir ningún término al resto al dividir, luego menos aún si añadimos algún polinomio.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7.14}
+Suppose we have $n$ points $V = \{(a_1 , b_1 ), \dots , (a_n , b_n )\} ⊆ k^2$ where $a_1 , \dots , a_n$ are
+distinct. This exercise will study the Lagrange interpolation polynomial defined by
+\[
+h(x) =\sum^n_{i=1}b_i\prod_{i\neq j}
+\frac{ x − a_j}{a_i − a_j}
+∈ k[x].
+\]
+
+
+We will also explain how $h(x)$ relates to the reduced Gröbner basis of $\I(V) ⊆ k[x, y]$.
+\begin{enumerate}[a.]
+\item Show that $h(a_i ) = b_i$ for $i = 1, \dots , n$ and explain why $h$ has degree $≤ n − 1$.
+\item Prove that $h(x)$ is the unique polynomial of degree $≤ n − 1$ satisfying $h(a_i ) = b_i$ for
+$i = 1,\dots , n$.
+\item Prove that $\I(V) = \gene{f (x), y − h(x)}$ , where $f (x) =\prod_{i=1}^n (x − a_i )$. Hint: Divide
+$g ∈ \I(V)$ by $f (x), y − h(x)$ using lex order with $y > x$.
+\item Prove that $\{ f (x), y − h(x)\}$ is the reduced Gröbner basis for $\I(V) ⊆ k[x, y]$ for lex
+order with $y > x$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Sea $a_k$ con $1\leq k\leq n$. Entonces el producto $\prod_{i\neq j}
+\frac{ x − a_j}{a_i − a_j}$ vale 1 cuando $k=i$ y 0 cuando $k\neq i$. Así que en la suma solo nos queda $b_i$, por lo que $h(a_i)=b_i$. Además $h$ tiene grado menor o igual que $n-1$ porque en cada producto hay $n-1$ factores y la suma de polinomios no aumenta el grado. 
+
+\item Si hubiera un polinomio $f$ de grado menor o igual que $n-1$ con la misma propiedad, $h-f$ sería un polinomio de grado a lo sumo $n-1$ que se anula en $n$ puntos $a_1,\dots, a_n$. Sabemos que sobre cualquier cuerpo $k$, un polinomio $k[x]$ de grado $n$ puede tener a lo sumo $n$ raíces, luego $h-f=0$. 
+\item Sea $g \in \I(V)$. Si dividimos por $\{f(x),y-h(x)\}$ obtendremos un resto $r$ que no va a depender de $y$ y cuyo término líder tendrá grado a lo sumo $n-1$. Se deduce por tanto que 
+$$
+g(x,y) = q_1f(x)+q_2(y-h(x)) + r(x)
+$$
+Sustituyendo los $n$ puntos de $V$ tendríamos que $r(x)$ se anula en $n$ puntos distintos, de donde deducimos que es $0$.
+\item En el apartado anterior hemos probado que es una base de Gröbner, pues todo $g \I(V)$ tiene resto $0$ al dividir por nuestra base. Ahora bien, $LT(y-h(x)) = y$ y el resto de términos son de la forma $x^{n-1}$. Por otra parte $LT(f(x))=x^n$ y el resto de términos son en $x$ con grado menor o igual que $n-1$. Por tanto, ningún monomio de ambos polinomios está en el ideal $\gene{y,x^n}$, lo que prueba el resultado.
+\end{enumerate}
+\end{solucion}
+
+
+\end{document}

@@ -1,0 +1,132 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de From Calculus to Cohomology, Capítulo 6}
+\author{Javier Aguilar Martín}
+\maketitle
+
+
+\begin{ejercicio}{6.1}
+ Probar que la equivalencia de homotopía es una relación de equivalencia en la clase de espacios topológicos.
+\end{ejercicio}
+\begin{solucion}
+En primer lugar, todo espacio topológico es topológicamente equivalente a sí mismo, basta tomar la aplicación identidad, que es su propia inversa homotópica. Si $X\simeq_f Y$ con inversa homotópica $g$, entonces basta intercambiar los papeles de $f$ y $g$, ya que la relación de equivalencia homotópica en las aplicaciones continuas es simétrica. Por último, si $f:X\to Y$,$g:Y\to Z$ son equivalencias homotópicas con inversas homotópicas $f'$ y $g'$ respectivamente, por la propiedad homotópica de la composición
+\[
+g f\circ f'g'\simeq g\circ Id_Y\circ g' =gg'\simeq Id_Z.
+\]
+Análogamente, $f'g'gf\simeq Id_X$. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{6.2}
+Probar que todas las aplicaciones continuas $f:U\to V$ que son homotópicas a una constante inducen la aplicación 0 $f^*:H^p(V)\to H^p(V)$ para $p>0$. 
+\end{ejercicio}
+\begin{solucion}
+Se tiene que si $f$ es homotópica a una aplicación constante $c$, entonces $f^*=c^*$. Por la definición de $c^*$, esta aplicación es trivial, así que también lo será $f^*$. 
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{6.3}
+Sean $k$ puntos diferentes $p_1,\dots, p_k$  en $\R^n$ para $n\geq 2$. Probar que
+\[
+H^d(\R^n-\{p_1,\dots, p_k\})\cong\begin{cases}
+\R^k & d=n-1,\\
+\R & d=0,\\
+0 & c.c.
+\end{cases}
+\]
+\end{ejercicio}
+\begin{solucion}
+%Salvo homotopía podemos considerar que los puntos están ordenados con la última coordenada estrictamente creciente. De esta forma, podemos tomar $k$ abiertos $U_1,\dots, U_k$ de modo que $p_i\in U_k$ para todo $1\leq i\leq k$, $U_i$ es homotópicamente equivalente a $\R^n-\{p_i\}$, $U_i\cap U_j$ son homotópicamente triviales y $U_1\cup\dots\cup U_k=\R^n-\{p_1,\dots, p_k\}$. Aplicando Mayer-Vietoris a esta situación para 
+
+Lo vamos a probar por inducción en el número de puntos. En primer lugar, consideramos $\R^n-\{p_1\}\simeq\R^n-\{0\}$. La proposición 6.11 del libro nos permite calcular la cohomología de este espacio teniendo en cuenta que conocemos la cohomología de $\R^2-\{0\}$, para el cual además sabemos que se verifica el resultado, así que nos centraremos en $n\geq 3$. 
+
+La proposición 6.11 nos da directamente $H^0(\R^n-\{0\})\cong\R$. De hecho, también para el caso general, $H^0(\R^n-\{p_1,\dots, p_k\}))\cong\R$ Luego, $H^1(\R^n-\{0\})=H^0(\R^{n-1}-\{0\})/\R\cong \R/\R=0$. Para $d>1$, la proposición nos da $H^d(\R^n-\{0\})\cong H^{d-1}(\R^{n-1}-\{0\})$. Si $d=n-1$ podemos continuar la cadena de isomorfismos hasta llegar $H^d(\R^n-\{0\})\cong  H^{1}(\R^{2}-\{0\})\cong\R$. Para cualquier valor de $d$ inferior a $n-1$ llegaríamos a $H^{1}(\R^{m}-\{0\})$ para $m\geq 3$, para lo cual ya hemos probado que esta cohomología es trivial. Para valores de $d$ mayores que $n-1$ llegaríamos a $H^{l}(\R^{2}-\{0\})$ con $l\geq 2$, para lo cual sabemos que esta cohomología es trivial. Con esto ya hemos probado el caso base. 
+
+Supongamos que el resultado es cierto para $k-1$. Salvo homotopía, podemos suponer que $p_k$ tiene su última coordenada estrictamente mayor que la última coordenada de todos los demás puntos. Asi, elegimos abiertos ``verticales'' $U_1$ y $U_k$ con $\{p_1,\dots, p_{k-1}\}\subset U_1$, $p_k\in U_k$, $U_1\cup U_k=\R^n-\{p_1,\dots, p_k\}$, $U_1\cap U_k$ homotópicamente trivial y $U_1$ homotópicamente equivalente a $\R^n-\{0\}$. A partir de esta construcción, vamos a la sucesión de Mayer-Vietoris para $p+1=d>1$:
+\[
+0\to H^{p+1}(\R^n-\{p_1,\dots, p_k\})\overset{I^*}{\to} H^{p+1}(U_1)\oplus H^{p+1}(U_k)\to 0.
+\]
+De aquí se deduce que $H^{p+1}(\R^n-\{p_1,\dots, p_k\})\cong H^{p+1}(U_1)\oplus H^{p+1}(U_k)$. Estudiemos esta suma directa según los valores de $p$ utilizando el caso base y la hipótesis de inducción. 
+\[
+ H^{p+1}(U_1)\oplus H^{p+1}(U_k)=\begin{cases}
+\R^{k-1}\oplus \R=\R^k & p+1=n-1\\
+0\oplus 0= 0 & c.c.
+ \end{cases}
+\]
+Luego el resultado se cumple para $d>1$. Veamos ahora lo que ocurre en Mayer-Vietoris para dimensiones de cohomología bajas:
+\[
+0\to H^0(\R^n-\{0\})\overset{I^0}{\to}H^0(U_1)\oplus H^0(U_k)\overset{J^0}{\to}H^0(U_1\cap U_2)\overset{\partial^*}{\to} H^{1}(\R^n-\{p_1,\dots, p_k\})\overset{I^1}{\to} H^{1}(U_1)\oplus H^{1}(U_k)\to 0.
+\]
+
+Sustituimos lo que sabemos hasta el momento. 
+\[
+0\to \R\overset{I^0}{\to}\R\oplus \R\overset{J^0}{\to}\R\overset{\partial^*}{\to} H^{1}(\R^n-\{p_1,\dots, p_k\})\overset{I^1}{\to} H^{1}(U_1) \to 0.
+\]
+Deducimos de aquí que $I^0$ es inyectiva, por lo que $\ker{J^0}=\Ima{I^0}\cong\R$. Por tanto, por la dimensión sabemos que $\Ima{J^0}=0$, con lo cual $\partial^*$ es inyectiva y su imagen es isomorfa a $\R$. Por otro lado, deducimos también que $I^1$ es sobreyectiva, luego, como $\ker{I^1}=\Ima{\partial^*}\cong\R$ deducimos que hay un isomorfismo
+\[
+  H^{1}(U_1) \cong  H^{1}(\R^n-\{p_1,\dots, p_k\})/\R\Rightarrow H^{1}(U_1)\oplus\R\cong  H^{1}(\R^n-\{p_1,\dots, p_k\})
+\]
+de donde se deduce el resultado.
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{6.4}
+Supongamos que $f,g:X\to S^n$ son dos aplicaciones continuas tales que $f(x)$ y $g(x)$ no son nunca antipodales. Probar que $f\simeq g$. 
+
+Probar que toda aplicación no sobreyectiva $f:X\to S^n$ es homotópica a una constante.
+\end{ejercicio}
+\begin{solucion}
+Sea la homotopía $H:X\times I\to S^n$ dada por
+\[
+H(x,t)=\frac{(1-t)f(x)+tg(x)}{||(1-t)f(x)+tg(x)||}.
+\]
+Como $f(x)$ nunca es antipodal a $g(x)$, el 0 no está en el segmento que los une, luego la fracción está bien definida y es continua. Además la aplicación está bien definida puesto que siempre tiene norma 1. 
+
+Si $f$ no es sobreyectiva, existe $p\in S^n$ que no está en la imagen de $f$. Por lo tanto. $f(X)\subseteq S^n-\{p\}$. Ahora, $S^n-\{p\}\cong R^n$, que es contráctil, luego $f$ es homotópica a una constante componiendo con el homeomorfismo. Por la propiedad homotópica de la composición, se tiene el resultado. Explícitamente, sea $h:S^n-\{p\}\cong R^n$. Entonces $fh\simeq c$ para una cierta constante $c\in\R^n$. Por tanto, $f\simeq h^{-1}(c)$, que es constante.
+
+Alternativamente, podemos aplicar el primer apartado, si $f\neq p$, entonces tomamos $q=-p$. Tenemos que $f\neq -c_q$, por lo que que $f\simeq c_q$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{6.5}
+Probar que $S^{n-1}$ es homotópicamente equivalente a $\R^n-\{0\}$. Probar que dos aplicaciones continuas
+\[
+f_0,f_1:\R^n-\{0\}\to\R^n-\{0\}
+\]
+son homotópicas si y solo si sus restricciones a $S^{n-1}$ son homotópicas.
+\end{ejercicio}
+\begin{solucion}
+Sea $i:S^{n-1}\hookrightarrow \R^n-\{0\}$ la inclusión y sea $p:\R^n-\{0\}\to S^{n-1}$ la aplicación definida como $p(x)=\dfrac{x}{||x||}$. Por un lado se tiene $p\circ i=Id_{S^{n-1}}$ y por otro $i\circ p\simeq Id_{\R^n-\{0\}}$ mediante la homotopía $H:(\R^n-\{0\})\times I\to \R^n-\{0\}$ definida como $H(x,t)=tx+(1-t)\dfrac{x}{||x||}$. 
+
+Para la segunda parte, la primera implicación es trivial, pues basta restringir la homotopía original a $S^{n-1}\times I$. Para la otra implicación vamos a seguir el siguiente proceso. Construiremos una homotopía entre $f_0$ y $f_1$ usando las equivalencias de homotopía encontradas anteriormente. En primer lugar, nuestra homotopía $G:(\R^n-\{0\})\times I\to \R^n-\{0\}$ debe cumplir $G(x,0)=f_0(x)$ y $G(x,1)=f_1(x)$. Una vez definida $G(x,0)=f_0(x)$, llevaremos de forma continua esta aplicación a $f_0(i\circ p(x))$.  Esto lo podemos a hacer gracias a que $i\circ p(x)\simeq Id_{\R^n-\{0\}}$, así que existe una homotopía para lograrlo. De hecho es la homotopía $H(x,1-t)$. Como aquí ya estaremos en un punto de $S^{n-1}$, podemos usar la homotopía de la hipótesis, a la que llamaremos $F$, para llegar a $f_1(i\circ p(x))$. Ahora, $i\circ p \simeq Id_{\R^n-\{0\}}$, con lo que podemos componer con la homotopía $H$ definida anteriormente para obtener $f_1(x)$. Siguiendo estos pasos, definidos $G$ explícitamente como sigue
+\[
+G(x,t)=\begin{cases}
+f_0(H(x,1-3t)) & 0\leq t\leq \frac{1}{3}\\
+F(i\circ p(x), 3t-1) & \frac{1}{3}\leq t\leq\frac{2}{3}\\
+f_1(H(x, 3t-2)) & \frac{2}{3}\leq t\leq 1
+\end{cases}
+\]
+Esta aplicación es continua por lo explicado previamente. De forma más inmediata, si $f_0 \simeq f_1$, $f_0\circ p\simeq f_1\circ p$. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{6.6}
+Probar que $S^{n-1}$ no es contráctil.
+\end{ejercicio}
+\begin{solucion}
+$S^{n-1}$ es no vacío para $n\geq 1$. Para $n=1$ está formada por dos puntos, por lo que no puede ser contráctil. Para $n\geq 2$, si $S^{n-1}$ fuera contráctil, por la invarianza homotópica de la cohomología tendría $H^{n-1}(S^{n-1})=0$. Sin embargo, hemos probado en el ejercicio \ref{ejer:6.5} que $S^{n-1}$ es homotópicamente equivalente a $\R^n-\{0\}$, lo cual implica, por \ref{ejer:6.3} que $H^{n-1}(S^{n-1})=\R$, por lo que no puede ser contráctil.
+
+Sin usar la cohomología de $S^{n-1}$, ya que no la hemos definido, si $S^{n-1}$ fuera contráctil, la identidad en $S^{n-1}$ sería homotópica a una constante $c\in S^{n-1}$. Por el ejercicio \ref{ejer:6.5} podemos extender esta homotopía a una homotopía entre la identidad  entre la identidad de $\R^n-\{0\}$ y la constante $c\in\R^n-\{0\}$, lo cual es una contradicción porque $\R^n-\{0\}$ no es contráctil.  
+\end{solucion}
+
+
+
+\end{document}

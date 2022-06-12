@@ -1,0 +1,339 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de From Calculus to Cohomology, Capítulo 3}
+\author{Javier Aguilar Martín}
+\maketitle
+
+
+\begin{ejercicio}{3.1}
+Probar para un abierto de $\R^2$ que el complejo de deRham
+\[
+0\to\Omega^0(U)\to\Omega^1(U)\to\Omega^2(U)\to 0
+\]
+es isomorfo al complejo
+\[
+0\to C^{\infty}(U;\R)\overset{grad}{\to}C^{\infty}(U;\R^2)\overset{rot}{\to}C^{\infty}(U;\R)\to 0.
+\]
+Análogamente, probar que para un abierto de $\R^3$ el complejo de deRham es isomorfo a
+\[
+0\to C^{\infty}(U;\R)\overset{grad}{\to}C^{\infty}(U;\R^3)\overset{rot}{\to}C^{\infty}(U;\R^3)\overset{div}{\to}C^{\infty}(U;\R)\to 0.
+\]
+\end{ejercicio}
+\begin{solucion}
+Será suficiente ver quién es la derivada exterior en cada caso. Sea $U\subseteq\R^2$, veamos en qué consiste $d:\Omega^0(U)\to\Omega^0(U)$. Si $f\in\Omega^0(U)$, $df=\parcial{f}{x}\varepsilon_1+\parcial{f}{y}\varepsilon_2$, que es isomorfo a $grad(f)$. Además, el conjunto imagen $grad(\Omega^0(U))\subseteq C^{\infty}(U;\R^2)$, por lo que es correcto elegir como siguiente conjunto como $C^{\infty}(U;\R^2)$, que es isomorfo como módulo a $\Omega^1(U)$. Sea ahora $w\in\Omega^1(U)$, por lo que $w=f_1\varepsilon_1+f_2\varepsilon_2$. 
+\[dw=d(f_1\varepsilon_1+f_2\varepsilon_2)=df_1\land\varepsilon_1+df_2\land\varepsilon_2=\left(\parcial{f_2}{x_1}-\parcial{f_1}{x_2}\right)\varepsilon_1\land\varepsilon_2\cong rot(f_1,f_2)
+\]
+Con la misma observación el conjunto imagen está bien definido. Y por el capítulo 1, la sucesión es exacta. Como bien dice el enunciado, el caso de $\R^3$ es análogo.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3.2}
+Sea $U\subseteq\R^n$ un abierto y $dx_1,\dots dx_n$ las 1-formas constantes usuales. Sea $vol=dx_1\land\dots\land dx_n\in\Omega^n(U)$. Usar la estrella de Hodge $*:Alt^p(\R^n)\to Alt^{n-p}(\R^n)$ para definir un operador lineal  $$*:\Omega^p(U)\to\Omega^{n-p}(U)$$
+y probar que $*(dx_1\land\dots\land dx_p)=dx_{p+1}\land\dots\land dx_n$ y $*\circ *=(-1)^{n(n-p)}$. Definir $d^*:\Omega^p(U)\to\Omega^{p-1}(U)$ mediante
+$$d^*(w)=(-1)^{np+n-1}*\circ d\circ *(w).$$
+Probar que $d^*\circ d^*=0$. 
+
+Verificar la fórmula 
+\[
+d^*(fdx_1\land\dots\land dx_p)=\sum_{j=1}^p(-1)^j\parcial{f}{x_j}dx_1\land\dots\land\hat{x}_j\land\dots\land dx_p
+\]
+y más generalmente para $1\leq i_1<\cdots <i_p\leq n$ que 
+\[
+d^*(fdx_{i_1}\land\dots\land dx_{i_p})=\sum_{j=1}^p(-1)^j\parcial{f}{x_{i_j}}dx_{i_1}\land\dots\land\hat{x}_{i_j}\land\dots\land dx_{i_p}.
+\]
+\end{ejercicio}
+\begin{solucion}
+Lo definimos mediante la ecuación $\langle *w,\tau\rangle vol =w\land\tau$, donde el producto escalar está definido como $\langle *w,\tau\rangle(x)=\langle *w(x), \tau(x)\rangle$, es decir, $*(w)_x=*(w_x)$. Usando el ejercicio 2.5 se tiene esta definición es consistente con definir $*(dx_1\land\dots\land dx_p)(x)=dx_{p+1}(x)\land\dots\land dx_n(x)$. A partir de lo cual, usando ese mismo ejercicio se tienen las dos primeras propiedades.
+
+Ver que $d^*$ está bien definida es una sencilla comprobación. Además es lineal por ser composición de lineales.
+\[
+d^*(d^*(w))=d^*((-1)^{np+n-1}*\circ d\circ *(w))=(-1)^{np+n-1}d^*(*\circ d\circ *(w))=
+\]
+\[
+(-1)^{np+n-1}((-1)^{n(p-1)+n-1}*\circ d\circ *(*\circ d\circ *(w)))=(-1)^{np+n-1}((-1)^{n(p-1)+n-1}(-1)^{n(n-p-1)}*\circ d\circ d\circ *(w)))=0
+\]
+pues $d\circ d=0$.
+
+Probamos el primer caso y el otro es análogo usando $p$-barajas.
+\begin{gather*}
+d^*(fdx_1\land\dots\land dx_p)=(-1)^{np+n-1}*\circ d\circ *(fdx_1\land\dots\land dx_p)=(-1)^{np+n-1}*\circ d( f dx_{p+1}\land\dots\land dx_n)=\\
+(-1)^{np+n-1}*(d f\land dx_{p+1}\land\dots\land dx_n)=(-1)^{np+n-1}*\left(\left(\sum_{j=1}^n\parcial{f}{x_j}dx_j\right)\land dx_{p+1}\land\dots\land dx_n\right)=\\
+(-1)^{np+n-1}*\left(\left(\sum_{j=1}^p\parcial{f}{x_j}dx_j\right)\land dx_{p+1}\land\dots\land dx_n\right)=\sum_{j=1}^p(-1)^j\parcial{f}{x_j}dx_1\land\dots\land\hat{x}_j\land\dots\land dx_p
+\end{gather*}
+
+Nótese lo siguiente:
+\[
+*(dx_j\land x_{p+1}\land\dots\land dx_p)_x=*(\varepsilon_j\land\varepsilon_{p+1}\land\dots\land\varepsilon_n)
+\]
+Recordemos que para $\sigma\in S(p,n-p)$ se tiene $*(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)})=sgn(\sigma)\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)})$. Entonces, consideremos la siguiente permutación para $i\in\{1,\dots, p\}$:
+\[
+\tau=\begin{pmatrix}
+1 & 2 & \dots &   n-p+1 & n-p+2& \dots & n-p+j+1 &n-p+i+2 & \dots & n\\
+i & p+1 & \dots & n      & 1   & \dots & j-1     & j+1    &\dots & p
+\end{pmatrix}
+\]
+Se tiene que $\tau\in S(n-p+1,p-1)$. $sgn(n)=(-1)^{n-j+1+np}$ pues $np+j-1+p(n-p)\equiv n-j-1+np\mod 2$.  Entonces,
+\[
+*(\varepsilon_j\land\varepsilon_{p+1}\land\dots\land\varepsilon_n)=*(\varepsilon_{\tau(1)}\land\dots\land\varepsilon_{\tau(n-p+1)})=sgn(\tau)\varepsilon_{\tau(n-p+2)}\land\dots\land\varepsilon_{\tau(n)}=sgn(\tau)\varepsilon_1\land\dots\land\hat{\varepsilon}_j\land\dots\varepsilon_p
+\]
+Como $(np+n-1)+(n-j+1+np)\equiv j\mod 2$, se tiene la última igualdad.
+
+Finalmente, si tenemos $d^*(fdx_{i_1}\land\dots\land dx_{i_p})$, entonces podemos considerar $\sigma\in S(p,n-p)$.
+\begin{gather*}
+d^*(fdx_{\sigma(1)}\land\dots\land dx_{\sigma(p)})=(-1)^{np+n-1}*d*(f dx_{\sigma(1)}\land\dots\land dx_{\sigma(p)})\\
+(-1)^{np+n-1}*d(fdx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)})=(-1)^{np+n-1}sgn(\sigma)*\left(\sum_{j=1}^n\parcial{f}{x_{\sigma(j)}}dx_{\sigma(j)}\land dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)}\right)=\\
+(-1)^{np+n-1}sgn(\sigma)*\left(\sum_{j=1}^p\parcial{f}{x_{\sigma(j)}}dx_{\sigma(j)}\land dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)}\right)=\\
+(-1)^{np+n-1}sgn(\sigma)\sum_{j=1}^p\parcial{f}{x_{\sigma(j)}}\left(dx_{\sigma(j)}\land dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)}\right)
+\end{gather*}
+
+Fijado $\sigma\in S(p,n-p)$ y $j\in\{1,\dots, p\}$, debe existir un único $0\leq k\leq n-p$ de modo que $\sigma(p+1)\leq\cdots\leq\sigma(p+k)\leq\sigma(j)\leq\sigma(p+k+1)\leq\cdots\leq\sigma(n)$, donde $k=0$ significará $\sigma(j)<\sigma(p+1)$. Tomamos la permutación $\beta$ que desde $k+2$ hasta $n$ es la identidad y desde 1 hasta $k+1$ es un ciclo en el que rota todos una posición a la derecha ($1\mapsto 2,\dots, k+1\mapsto 1$). Para el caso $k=0$, $\beta=Id$. Entonces $sgn(\beta)=(-1)^k$. Definimos también la permutación $\tau$ del apartado anterior. A partir de esto, definimos $\hat{\beta}=\sigma\tau
+\beta$. Veamos que $\hat{\beta}\in S(n-p+1,p-1)$. En el caso $k=0$ ya se había probado en el anterior apartado.
+\[
+\hat{\beta}(1)=\sigma(p+1),\dots, \hat{\beta}(k)=\sigma(p+k)
+\]
+\[
+\hat{\beta}(k+1)=\sigma(j),\hat{\beta}(k+2)=\sigma(p+k+1),\dots,\hat{\beta}(n-p+1)=\sigma(n) 
+\]
+de donde se deduce lo que queríamos probar. Ahora, 
+
+\begin{gather*}
+(-1)^k*(\varepsilon_{\sigma(j)}\land\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)})=*(\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(p+k)}\land\varepsilon_{\sigma(j)}\land\varepsilon_{\sigma(p+k+1)}\land\dots\land\varepsilon_{\sigma(n)})=  \\
+*(\varepsilon_{\hat{\beta}(1)}\land\dots\land\varepsilon_{\hat{\beta}(n-p+1)})=sgn(\hat{\beta})\varepsilon_{\hat{\beta}(n-p+2)}\land\dots\land\varepsilon_{\hat{\beta}(n)}=(-1)^k(-1)^{n+j-1+np}sgn(\sigma)\varepsilon_{\sigma(1)}\land\dots\land\hat{\varepsilon}_{\sigma(j)}\land\dots\land\varepsilon_{\sigma(p)}
+\end{gather*}
+Entre la priemra expresión y la última, eliminando el punto donde se evalúa, obtenemos
+\[
+*(dx_{\sigma(j)}\land dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)})=(-1)^{n+j-1+np}sgn(\sigma) dx_{\sigma(1)}\land\dots\land\hat{dx}_{\sigma(j)}\land\dots\land dx_{\sigma(p)}
+\]
+Volviendo a donde nos habíamos quedado calculando la estrella, obtenemos
+\begin{gather*}
+(-1)^{np+n-1}sgn(\sigma)\sum_{j=1}^p\parcial{f}{x_{\sigma(j)}}(-1)^{n+j-1+np}sgn(\sigma)\left(dx_{\sigma(1)}\land\dots\land \hat{dx}_{\sigma(j)}\land\dots\land dx_{\sigma(p)}\right)=\\
+\sum_{j=1}^p\parcial{f}{x_{\sigma(j)}}(-1)^{j}dx_{\sigma(1)}\land\dots\land \hat{dx}_{\sigma(j)}\land\dots\land dx_{\sigma(p)}
+\end{gather*}
+
+\begin{nota}
+El operador $d^*$ sirve para calcular la homología $H_*(U)$. 
+\end{nota}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{3.3}
+Con la notación del ejercicio \ref{ejer:3.2}, el Laplaciano $\Delta:\Omega^p(U)\to\Omega^p(U)$ está definido como
+\[
+\Delta=d\circ d^*+d^*\circ d.
+\]
+Sea $f\in\Omega^0(U)$. Probar que $\Delta(f dx_1\land\dots\land dx_p)=\Delta(f)dx_1\land\dots\land dx_p$ donde
+\[
+-\Delta(f)=\frac{\partial^2 f}{x_1^2}+\cdots+\frac{\partial^2 f}{x_n^2}.
+\]
+(Pista: Intentar el caso $p=1,n=2$ primero. ¿Qué podemos decir sobre $\Delta(f\cdot dx_I)$ donde $I=(i_1,\dots, i_p)$?)
+
+Una $p$-forma $w\in\Omega^p(U)$ se dice armónica si $\Delta(w)=0$. Probar que
+\[
+*:\Omega^p(U)\to \Omega^{n-p}(U)
+\]
+envía formas armónicas en formas armónicas.
+\end{ejercicio}
+\begin{solucion}
+Por el ejercicio anterior
+\[
+d^*(fx_1\land\dots\land dx_p)=\sum_{j=1}^n(-1)^j\parcial{f}{x_j}dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p,
+\]
+Así que
+\[
+dd^*(fx_1\land\dots\land dx_p)=\sum_{j=1}^n(-1)^j\left(\sum_{k=1}^n\frac{\partial^2 f}{\partial x_j\partial x_k}dx_k\right)\land dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p=
+\]
+\[
+\sum
+_{j=1}^p(-1)^j\left(\frac{\partial^2 f}{\partial x_j\partial x_k}dx_j\land dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p+\sum_{k=p+1}^n\frac{\partial^2 f}{\partial x_j\partial x_k}dx_k\land dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p\right)=
+\]
+\[
+\sum
+_{j=1}^p-\left(\frac{\partial^2 f}{\partial x_j\partial x_k}\land dx_1\land\dots\land dx_p\right)+\left(\sum_{j=1}^p(-1)^j\sum_{k=p+1}^n\frac{\partial^2 f}{\partial x_j\partial x_k}dx_k\land dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p\right)=
+\]
+\[
+-\sum_{j=1}^p\frac{\partial^2 f}{\partial x_j\partial x_k}\land dx_1\land\dots\land dx_p+\sum_{k=p+1}^ndx_k\land\left(\sum_{j=1}^p(-1)^j\frac{\partial^2 f}{\partial x_j\partial x_k}dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p\right)=
+\]
+\[
+-\sum_{j=1}^p\frac{\partial^2 f}{\partial x_j\partial x_k}\land dx_1\land\dots\land dx_p+\sum_{k=p+1}^ndx_k\land d^*\left(\parcial{f}{x_k}dx_1\land\dots\land dx_p\right)
+\]
+
+Por otro lado, $$d(f dx_1\land\dots\land dx_p)=\left(\sum_{k=1}^n\parcial{f}{x_j}dx_k\right)\land dx_1\land\dots\land dx_p=\sum_{k=p+1}^n\parcial{f}{x_j}dx_k\land dx_1\land\dots\land dx_p.$$
+De aquí
+\[
+d^*d(f dx_1\land\dots\land dx_p)=\sum_{k=p+1}^nd^*\left(\parcial{f}{x_j}dx_k\land dx_1\land\dots\land dx_p\right)=
+\]
+\[
+\sum_{k=p+1}^n\left(-\frac{\partial^2 f}{\partial x_k^2}dx_1\land\dots\land dx_p+\sum_{j=1}^p (-1)^{j-1}\frac{\partial^2 f}{\partial x_k\partial x_j}dx_k\land dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p\right)=
+\]
+\[
+-\sum_{k=p+1}^n\frac{\partial^2 f}{\partial x_k^2}dx_1\land\dots\land dx_p-\sum_{k=p+1}^n\sum_{j=1}^p(-1)^{j}\frac{\partial^2 f}{\partial x_k\partial x_j}dx_k\land dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p=
+\]
+\[
+-\sum_{k=p+1}^n\frac{\partial^2 f}{\partial x_k^2}dx_1\land\dots\land dx_p-\sum_{k=p+1}^n dx_k\land\left(\sum_{j=1}^p(-1)^{j}\frac{\partial^2 f}{\partial x_k\partial x_j} dx_1\land\dots\land\hat{dx}_j\land\dots\land dx_p\right)=\\
+\]
+\[
+-\sum_{k=p+1}^n\frac{\partial^2 f}{\partial x_k^2}dx_1\land\dots\land dx_p-\sum_{k=p+1}^ndx_k\land d^*\left(\parcial{f}{x_k} dx_1\land\dots\land dx_p\right)
+\]
+Sumando obtenemos finalmente el resultado.
+\begin{nota}
+Repitiendo lo mismo pero con $\sigma\in S(p,n-p)$, $\Delta(f dx_{\sigma(1)}\land\dots\land dx_{\sigma(p)})=\left(-\sum_{k=1}^n\frac{\partial^2 f}{\partial x_{\sigma(k)}^2}\right) dx_{\sigma(1)}\land\dots\land dx_{\sigma(p)}$
+\end{nota}
+
+Probemos ahora la segunda parte del ejercicio.  Sea $w=\sum_{\sigma} f_{\sigma}dx_{\sigma}$, entonces $\Delta(w)=\sum_{\sigma} \Delta(f_{\sigma}w_{\sigma})=-\sum_{\sigma}\Delta(f_{\sigma})w_{\sigma}$. Así que $\Delta(w)=0\Leftrightarrow \forall\sigma, \Delta(f_{\sigma}w_{\sigma})=0$ pues $\Delta$ es homomorfismo sobre $\Omega^p(U)$. Basta entonces probarlo para $w=fdx_{\sigma}$. Tenemos que $*w=*(fdx_{\sigma(1)}\land\dots\land dx_{\sigma(p)})=fdx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)}$. Así que
+\[
+\Delta(*w)=\left(-\sum_{k=1}^n\frac{\partial^2 f}{\partial x_k^2}\right)dx_{\sigma(p+1)}\land\dots\land dx_{\sigma(n)}=0\Leftrightarrow \Delta(f)=0
+\] 
+si y solo si
+\[
+\Delta(w)=-\left(\sum_{k=1}^n\frac{\partial^2 h}{\partial x_k^2}\right)dx_{\sigma(1)}\land\dots\land dx_{\sigma(p)}=0.
+\]
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{3.4}
+Sea $Alt^p(\R^n,\C)$ el $\C$-espacio vectorial de aplicaciones $\R$-multilineales alternadas 
+\[
+w:\underbrace{\R^n\times\dots\times\R^n}_{p}\to\C.
+\]
+Nótese que $w$ puede escribirse de manera única como
+\[
+w=\operatorname{Re}(w)+i\operatorname{Im}(w),
+\]
+donde $\operatorname{Re}(w),\operatorname{Im}(w)\in Alt^p(\R^n)$.
+
+Extender el producto exterior a una aplicación $\C$-bilineal 
+\[
+Alt^p(\R^n,\C)\times Alt^p(\R^n,\C)\to Alt^{p+q}(\R^n,\C)
+\]
+y probar que se obtiene una $\C$-álgebra graduada anti-conmutativa $Alt^*(\R^n,\C)$.
+\end{ejercicio}
+\begin{solucion}
+Definimos el producto exterior $\land: Alt^p(\R^n,\C)\times Alt^p(\R^n,\C)\to Alt^{p+q}(\R^n,\C)$ como 
+\[
+w_1\land w_2=(\Rea(w_1)+i\Ima(w_1))\land(\Rea(w_2)+i\Ima(w_2))=
+\]
+\[
+(\Rea(w_1)\land\Rea(w_2)-\Ima(w_1)\land\Ima(w_2))+i(\Ima(w_1)\land\Rea(w_2)+\Rea(w_1)\land\Ima(w_2)),
+\]
+donde los productos exteriores de la segunda línea son los propios de las aplicaciones multilineales reales. Las propiedades del álgebra del producto exterior habitual se trasladan a este álgebra fácilmente. Obsérvese además que $ Alt^p(\R^n,\C)=Alt^p(\R^n)\oplus  Alt^p(\R^n)$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3.5}
+Introducir las $p$-formas diferenciales $\C$-evaluadas en un conjunto abierto $U\subseteq\R^n$ definiendo
+\[
+\Omega^p(U,\C)=C^{\infty}(U,Alt^p(\R^n,\C)).
+\]
+Nótese que $w\in\Omega^p(U,\C)$ pueden ser escritas de forma única como
+\[
+w=\operatorname{Re}(w)+i\operatorname{Im}(w),
+\]
+donde $\operatorname{Re}(w),\operatorname{Im}(w)\in \Omega^p(U)$. Extender $d$ a un operador $\C$-lineal 
+\[
+d:\Omega^p(U,\C)\to\Omega^{p+1}(U,\C)
+\]
+y probar que el teorema 3.7 es válido para las formas diferenciales $\C$-evaluadas. Generalizar el teorema 3.12 al caso de formas diferenciales $\C$-evaluadas.
+\end{ejercicio}
+\begin{solucion}
+Una $p$-forma fiferencial $\C$-evaluada sobre $U$ será una aplicación diferenciable 
+\begin{gather*}
+w: U\to Alt^p(\R^n,\C)\\
+x\mapsto w_x
+\end{gather*}
+donde $w_x(v_1,\dots, v_p)=\Rea(w)_x(v_1,\dots,v_p)+i\Ima(w)_x(v_1,\dots, v_p)$. Extendemos $d$ como $dw=d\Rea(w)+id\Ima(w)$, que claramente es $\C$-lineal. Vamos a probar el teorema 3.7 del libro. 
+
+\begin{enumerate}
+\item Dada $f\in\Omega^0(U,\C)$, $f=\Rea(f)+i\Ima(f)$, luego 
+\[
+df=d\Rea(f)+id\Ima(f)=\sum_{i=1}^n\parcial{\Rea{f}_i}{x_i}\varepsilon_i+i\sum_{i=1}^n\parcial{\Ima{f}_i}{x_i}\varepsilon_i=\sum_{i=1}^n\parcial{(\Rea(f)+i\Ima(f))}{x_i}\varepsilon_i=\sum_{i=1}^n\parcial{f}{x_i}\varepsilon_i.
+\]
+\item Dada $w\in\Omega^p(U,\C)$, $d(dw)=d(d\Rea(w)+id\Ima(w))=d(d\Rea(w))+id(d\Ima(w))=0$.
+\item Dadas $w_1\in\Omega^p(U,\C),w_2\in\Omega^q(U,\C)$, 
+\begin{gather*}
+d(w_1\land w_2)=d(\Rea(w_1)\land\Rea(w_2)-\Ima(w_1)\land\Ima(w_2))+i(\Ima(w_1)\land\Rea(w_2)+\Rea(w_1)\land\Ima(w_2))=\\
+d(\Rea(w_1)\land\Rea(w_2)-\Ima(w_1)\land\Ima(w_2))+id(\Ima(w_1)\land\Rea(w_2)+\Rea(w_1)\land\Ima(w_2))=\\
+d(\Rea(w_1)\land\Rea(w_2))-d(\Ima(w_1)\land\Ima(w_2))+id(\Ima(w_1)\land\Rea(w_2))+id(\Rea(w_1)\land\Ima(w_2))=\\
+d\Rea(w_1)\land\Rea(w_2)+(-1)^p\Rea(w_1)\land d\Rea(w_2)-d\Ima(w_1)\land\Ima(w_2)-(-1)^p\Ima(w_1)\land\Ima(w_2)+\\
+i(d\Ima(w_1)\land\Rea(w_2)+(-1)^p\Ima(w_1)\land d\Rea(w_2))+i(d\Rea(w_1)\land\Ima(w_2)+(-1)^p\Rea(w_1)\land d\Ima(w_2))=\\
+(d\Rea(w_1)+id\Ima(w_1))\land(\Rea(w_2)+i\Ima(w_2))+(-1)^p(\Rea(w_1)+i\Ima(w_1))\land (d\Rea(w_2)+id\Ima(w_2))=\\
+dw_1\land w_2+(-1)^pw_1\land dw_2
+\end{gather*}
+\end{enumerate}
+Como cada componente es única, se tiene además la unicidad.
+
+Definimos también, para una aplicación diferenciable $\phi:U_1\subseteq\R^n\to U_2\subseteq\R^m$, la aplicación inducida $\phi^*:\Omega^p(U_2,\C)\to\Omega^p(U_1)$ como $\phi^*(w)=\phi^*(\Rea(w))+i\phi^*(\Ima(w))$ (usamos aquí la $\phi^*$ ordinaria). Se prueba entonces de manera análoga al caso real (teniendo en cuenta el producto exterior complejo y la diferencial exterior compleja) que se cumplen para $\tau\in\Omega^p(U,\C)$ y $\tau\in\Omega^q(U,\C)$
+\begin{enumerate}
+\item $\phi^*(w\land\tau)=\phi^*(w)\land\phi^*(\tau)$.
+\item $\phi^*(f)=f\circ\phi$ para $f\in\Omega^0(U,\C)$.
+\item $d\phi^*(w)=\phi^*(dw)$
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3.6}
+Con la notación del ejercicio anterior, sean $U=\C-\{0\}=\R^2-\{0\}$ y sea $z\in\Omega^0(U,\C)$ la inclusión $U\to\C$. Denotando $x=\Rea(z), y=\Ima(z)$, probar
+\[
+\Rea(z^{-1}dz)=d\log(r),
+\]
+donde $r:U\to\R$ está definida como $r(z)=|z|=\sqrt{x^2+y^2}$. Probar también que
+\[
+\Ima(z^{-1}dz)=\frac{-y}{x^2+y^2}dx+\frac{x}{x^2+y^2}dy.
+\]
+\end{ejercicio}
+\begin{solucion}
+Tenemos $z=x+iy$, luego $z^{-1}=\dfrac{1}{x+iy}=\dfrac{x-iy}{x^2+y^2}$. Por otra parte, usando el ejercicio anterior, $dz=dx+idy$. Así que 
+\[
+z^{-1}dz=\dfrac{x-iy}{x^2+y^2}(dx+idy)=\dfrac{x-iy}{x^2+y^2}dx+\dfrac{x-iy}{x^2+y^2}idy=
+\]
+\[
+\left(\dfrac{x}{x^2+y^2}dx+\dfrac{y}{x^2+y^2}dy\right)+i\left(\frac{-y}{x^2+y^2}dx+\frac{x}{x^2+y^2}dy\right).
+\]
+La parte imaginaria ya la tenemos. Comprobemos entonces la real. Como $r$ es una aplicación con imagen real, podemos utilizar la diferencial real sobre $\log(r)$. Así,
+\[
+d\log(r)=\parcial{\log(r)}{x}dx+\parcial{\log(r)}{y}dy=\parcial{\log(\sqrt{x^2+y^2})}{x}dx+\parcial{\log(\sqrt{x^2+y^2})}{y}dy=
+\]
+\[
+\dfrac{x}{x^2+y^2}dx+\dfrac{y}{x^2+y^2}dy,
+\]
+como queríamos demostrar.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3.7}
+Probar para la exponencial compleja $\exp :\C\to\C^*$ que
+\[
+d_z\exp =\exp(z)dz\text{ y } \exp^*(z^{-1}dz)=dz.
+\]
+\end{ejercicio}
+\begin{solucion}
+En primer lugar, $\exp :\C\to\C^*$ se puede ver como una 0-forma compleja $\exp\in\Omega^0(\R^2,\C)$ simplemente expresándola como $\exp(z)=\exp(x,y)=e^x(\cos(y)+i\sin(y))$ para $z=x+iy$. Así que $d_z\exp=d_{(x,y)}\Rea(\exp)+id_{(x,y)}\Ima(\exp)$. Como $\Rea(\exp(x,y))=e^x\cos(y), \Ima(\exp(x,y))=e^x\sin(y)$,
+\[
+d_{(x,y)}\Rea(\exp)+id_{(x,y)}\Ima(\exp)=(e^x\cos(y)dx-e^x\sin(y)dy)+i(e^x\sin(y)dx+e^x\cos(y)dy)=
+\]
+\[
+e^x(\cos(y)+i\sin(y))(dx+idy)=\exp(z)dz.
+\]
+Para la otra igualdad, usando el ejercicio \ref{ejer:3.5} y la igualdad anterior
+\[
+\exp^*(z^{-1}dz)=\exp^*(z^{-1}\land dz)=\exp^*(z^{-1})\land\exp^*(dz)=\frac{\cos(y)-i\sin(y)}{e^x}\land d\exp^*(z)=
+\]
+\[
+\frac{\cos(y)-i\sin(y)}{e^x}\land d\exp=\frac{\cos(y)-i\sin(y)}{e^x}\land \exp dz=\frac{\cos(y)-i\sin(y)}{e^x} \exp dz=
+\]
+\[
+\frac{\cos(y)-i\sin(y)}{e^x}e^x(\cos(y)+i\sin(y))dz=dz.
+\]
+
+
+
+\end{solucion}
+
+\end{document}

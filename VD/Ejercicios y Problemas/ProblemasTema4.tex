@@ -13,7 +13,25 @@ Sean $\R^3$, $X \in \mathcal{X}(\R^3)$ dado por $X = x\frac{\partial}{\partial x
 \R^3 \to \R^3 : (x, y, z) \mapsto (x + y, y, 7)$. ¿Está $X$ $f-$relacionado con $X$?
 \end{ejercicio}
 \begin{solucion}
-
+Sea $p=(x_0,y_0,z_0)\in\R^3$, entonces $f(p)=(x_0+y_0,y_0,7)$. Por tanto, $$X_{f(p)}=(x_0+y_0)\left(\frac{\partial}{\partial x}\right)_{f(p)} + e^7\left(\frac{\partial}{\partial y}\right)_{f(p)}.$$ %Como $f_{*p}$ es homomorfismo de espacios vectoriales, 
+%$$f_{*p}X_p=xf_{*p}\left(\frac{\partial}{\partial x}\right) + e^zf_{*p}\left(\frac{\partial}{\partial y}\right).$$
+Como la estructura diferencial de $\R^3$ es la usual, la matriz de $f_{*p}$ viene dada por la jacobiana de $f$, es decir, 
+\[f_{*p}X_p=\begin{pmatrix}
+1 & 1 & 0\\
+0 & 1 & 0\\
+0 & 0 & 0
+\end{pmatrix}\begin{pmatrix}
+x_0\\
+e^{z_0}\\
+0
+\end{pmatrix}=\begin{pmatrix}
+x_0+e^{z_0}\\
+e^{z_0}\\
+0
+\end{pmatrix}\]
+Reescribiendo este vector con la base de $T_p(\R^3)$, tenemos que 
+$$f_{*p}X_p=(x_0+e^{z_0})\left(\frac{\partial}{\partial x}\right)_p + e^{z_0}\left(\frac{\partial}{\partial y}\right)_p\neq X_{f(p)}\text{ en general},$$
+por lo que $X$ no está $f-$relacionado con $X$.
 \end{solucion}
 \newpage
 \begin{ejercicio}{7}
@@ -21,10 +39,34 @@ Sea $f\func{M}{N}$ una aplicación diferenciable. Probar:
 \begin{enumerate}
 \item Si $f$ es sobreyectiva, entonces, $\forall X \in \mathcal{X}(M)$ fijo, existe a lo más un campo de vectores $Y\in \mathcal{X}(N)$ tal que $X$ está $f$-relacionado con $Y$. 
 \item Si $f$ es una inmersión, entonces, $\forall Y \in \mathcal{X}(N)$, existe a lo más un campo de vectores $X\in \mathcal{X}(M)$ tal que $X$ está $f$-relacionado con $Y$. 
-\item Si $f$ es una inmersión, entonces, dado $\forall Y \in \mathcal{X}(N)$, existe $X\in \mathcal{X}(M)$, $f$-relacionado con $Y$ si y solo si $\forall p \in M$, $Y_{f(p)}\in f_{\ast p}(T_p(M))$.
+\item Si $f$ es una inmersión, entonces, dado $Y \in \mathcal{X}(N)$, existe $X\in \mathcal{X}(M)$, $f$-relacionado con $Y$ si y solo si $\forall p \in M$, $Y_{f(p)}\in f_{\ast p}(T_p(M))$.
 \end{enumerate}
 \end{ejercicio}
 \begin{solucion}
+\begin{enumerate}
+\item[]
+\item Tenemos que probar que, dada la existencia, debe haber unicidad. Sea $X\in\mathcal{X}(M)$ fijo y supongamos que existen dos campos de vectores $Y,Y'\in \mathcal{X}(N)$ tales que $X$ está $f$-relacionados con $Y$ e $Y'$, es decir
+$$f_{\ast p}X_p = Y_{f(p)} \quad \forall p\in M \qquad
+f_{\ast q}X_q = Y'_{f(q)} \quad \forall q\in M $$ 
+Sea $w\in N$, como $f$ es sobreyectiva, entonces $\exists p \in M$ tal que $w=f(p)$. Se sigue trivialmente que
+$$
+Y_w = f_{\ast p}X_p = Y'_w
+$$
+Como son iguales para todo $w\in N$, entonces $Y=Y'$.
+\item Análogamente al apartado anterior, sea $Y\in\mathcal{X}(N)$ fijo y supongamos que existen dos campos de vectores $X,X'\in \mathcal{X}(N)$ tales que $X,X'$ está $f$-relacionados con $Y$ e $Y'$, es decir
+$$f_{\ast p}X_p = Y_{f(p)} \quad \forall p\in M \qquad
+f_{\ast q}X'_q = Y_{f(q)} \quad \forall q\in M $$ 
+Por la propia definición de inmersión, es decir, que $f_{\ast}$ sea inyectiva en cada punto, tenemos que, como $f_{\ast p}X_p = Y_{f(p)} = f_{\ast p}X'_p$ $\forall p\in M$ entonces $ X_p = X'_p$ $\forall p\in M$, es decir, $X=X'$.
+\item Sea $f$ una inmersión y sea $Y \in \mathcal{X}(N)$.
+\begin{itemize}
+\item Supongamos que $\exists X \in \mathcal{X}(M)$ tal que $X$ está $f$-relacionado con $Y$. Por definición $\forall p\in M$ $Y_{f(p)}=f_{\ast p}X_p$. Como $X_p\in T_p(M)$ entonces ${Y_{f(p)}\in f_{\ast p}(T_p(M))}$.
+\item Recíprocamente, supongamos que $\forall p \in M$, $Y_{f(p)}\in f_{\ast p}(T_p(M))$. Como $f_{\ast p}$ es una inmersión, es inyectiva. En particular, es un isomorfismo sobre su imagen, luego $\forall p\in M$ podemos considerar $X_p = f_{\ast p}^{-1}(Y_{f(p)})\in T_p(M)$, lo cual está correctamente definido por la hipótesis. Obviamente $X$ es un campo de vectores y verifica que
+$$f_{\ast p} X_p = f_{\ast p} f_{\ast p}^{-1} Y_p = Y_p \quad \forall p \in M$$
+Por lo que $X$ está $f$-relacionado con $Y$. Resta probar que $X$ es un campo diferenciable. Sabemos que $p\in M$ $\exists (U,\phi=(x_1,\dotsc,x_n))$ carta local con $p\in U$ y $\exists (V,\psi=(y_1,\dotsc,y_n))$ adaptadas a la inmersión, es decir, que $x_i = y_i \circ f$. Entonces queremos ver que $Xx_i$ es difernciable. 
+$$Xx_i(p) = X_px_i= X_p(y_i \circ f) = (f_{\ast p}X_p) y_i = Y_{f(p)}y_i=Yy_i(f(p)) = (Y y_i \circ f)(p)$$
+Como $Y$ es campo de vectores diferenciables e $y_i$ una función diferenciable, $Yy_i$ es diferenciable. Al serlo también $f$, tenemos que $Xx_i$ lo es por composición.
+\end{itemize} 
+\end{enumerate}
 \end{solucion}
 
 \end{document}

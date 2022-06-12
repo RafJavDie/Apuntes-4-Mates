@@ -1,0 +1,144 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{1.1.1}\label{ejer:1.1.1}
+Let $\F_2 = \{0,1\}$, and define addition and multiplication by $0+0=1+1=0$, $0+1=1+0=1$, $0\cdot 0=0\cdot 1 = 1 \cdot 0 = 0$ and $1 \cdot 1 = 1$.
+Explain why $\F_2$ is a field.
+\end{ejercicio}
+\begin{solucion}
+Las propiedades asociativas y distributivas siguen de la definición de $+$ y $\cdot$.
+El $0$ se corresponde con la identidad aditiva y $1$ la identidad multiplicativa.
+Para todo $n \in \F_2$, $n+n=0$, luego todo elemento es invertible aditivamente.
+Además, obsérvese que en $\F_2 \setminus \{0\} = \{1\}$, el único elemento es invertible multiplicativamente.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.1.2}
+Let $\F_2$ be the field from Exercise \ref{ejer:1.1.1}.
+\begin{enumerate}[a.]
+\item Consider the polynomial $g(x,y)=x^2y+y^2x \in \F_2[x,y]$.
+Show that $g(x,y)=0$ for every $(x,y) \in \F_2^2$, and explain why this does not contradict Proposition 5.
+\item Find a nonzero polynomial in $\F_2[x,y,z]$ which vanishes at every point of $\F_2^3$.
+Try to find one involving all three variables.
+\item Find a nonzero polynomial in $\F_2[x_1,\dots,x_n]$ which vanishes at every point of $\F_2^n$.
+Can you find one in which all of $x_1,\dots,x_n$ appear?
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Tenemos que $g(0,0)=g(0,1)=g(1,0)=g(1,1)=0$.
+Como $\F_2$ no es un cuerpo infinito, no se da la Proposición 5.
+\item Consideramos $x^2yz+xyz^2$.
+\item Consideramos $x_1^2\cdots x_n + x_1\cdots x_n^2$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.1.3}
+Let $p$ be a prime number. The ring of integers modulo $p$ is a field with $p$ elements, which we will denote $\F_p$.
+\begin{enumerate}[a.]
+\item Explain why $\F_p\setminus \{0\}$ is a group under multiplication.
+\item Use Lagrange's Theorem to show that $a^{p-1} = 1$ for all $a \in \F_p\setminus \{0\}$.
+\item Prove that $a^p=a$ for all $a \in \F_p$.
+\item Find a nonzero polynomial in $\F_p[x]$ that vanishes at all points of $\F_p$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item 
+\begin{itemize}
+\item Veamos que la operación es interna.
+Sea $n \in \F_p\setminus\{0\}$. Si existe $m \in \F_p\setminus\{0\}$ tal que $n \cdot m \equiv 0 \pmod p$, entonces $p \mid n\cdot m$.
+Como $p$ es primo, entonces $p \mid n$ ó $p \mid m$.
+Si $p \mid n$, entonces $n \equiv 0 \pmod p$, luego llegamos a la contradicción $n \notin \F_p\setminus\{0\}$.
+Análogamente, $p \mid m$ lleva a una contradicción.
+\item  La asociatividad es clara, así como la existencia de elemento neutro $1$. 
+\item Finalmente, la existencia del elemento inverso es consecuencia de la identidad de Bézout. Dado $n \in \F_p\setminus\{0\}$, como $p$ es primo, $\exists a,b$ tales que $ap + bn = 1$. Tomando clases módulo $p$, como $[p]=0$ llegamos a que $[b][n]=1$, luego $[n]$ es unidad.
+\end{itemize}
+\item Tenemos que $\F_p\setminus\{0\}$ es un grupo multiplicativo de $p-1$ elementos.
+Para todo $a \in \F_p\setminus\{0\}$, el conjunto $\langle a \rangle := \{a^n \mid n \in \Z_{≥0}\}$ es un subgrupo.
+Sea $m$ el orden de $\langle a \rangle$, se tiene que $a^m=1$.
+Por el Teorema de Lagrange, $m$ divide al orden $\F_p\setminus\{0\}$, que es $p-1$, entonces $p-1=mk$ para algún $k$.
+Luego $a^{p-1}=a^{mk}=(a^m)^k=1^k=1$.
+\item Si $a=0$, evidentemente $a^p=a=0$.
+Si $a\neq 0$, multiplicamos por $a$ en lo demostrado anteriormente.
+\item Considérese el polinomio $x^p-x$.
+Como para todo $a \in \F_p$, $a^p=a$, se tiene que $a$ es raíz de $x^p-x$.
+\end{enumerate}
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{1.1.4}
+Let $F$ be a finite field with $q$ elements.
+Adapt the argument of Exercise \ref{ejer:1.1.3} to prove that $x^q-x$ is a nonzero polynomial in $F[x]$ which vanishes at every point of $F$.
+This shows that Proposition 5 fails for \emph{all} finite fields.
+\end{ejercicio}
+\begin{solucion}
+Sabemos que para que como $F$ es un cuerpo finito entonces $F\setminus\{0\}$ es un grupo multiplicativo de $q-1$ elementos.
+El argumento sigue como antes para deducir que $x^q-x$ es un polinomio no negativo que se anula en cada punto de $F$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.1.5}
+In the proof of Proposition 5, we took $f \in k[x_1,\dots,x_n]$ and wrote it as a polynomial in $x_n$ with coefficientes in $k[x_1,\dots,x_{n-1}]$.
+To see what this looks like in a specific case, consider the polynomial
+\[ f(x,y,z) = x^5y^2z-x^4y^3+y^5+x^2z-y^3z+xy+2x-5z+3 \]
+\begin{enumerate}[a.]
+\item Write $f$ as a polynomial in $x$ with coefficients in $k[y,z]$.
+\item Write $f$ as a polynomial in $y$ with coefficients in $k[x,z]$.
+\item Write $f$ as a polynomial in $z$ with coefficients in $k[x,y]$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item $f(x)=x^5(y^2z)-x^4(y^3)+x^2z+x(y+2)+(y^5-y^3z-5z+3)$.
+\item $f(y)=y^5+y^3(-z-x^4)+y^2(x^5z)+yx+(2x-5z+3)$.
+\item $f(z)=z(x^5y^2+x^2-y^3-5)+(-x^4y^3+y^5+xy+2x+3)$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.1.6}
+Inside of $\C^n$, we have the subset $\Z^n$, which consists of all points with integer coordinates.
+\begin{enumerate}[a.]
+\item Prove that if $f \in \C[x_1,\dots,x_n]$ vanishes at every point of $\Z^n$, then $f$ is the zero polynomial.
+\item Let $f \in \C[x_1,\dots,x_n]$, and let $M$ be the largest power of any variable that appears in $f$.
+Let $\Z_{M+1}^n$ be the set of points of $\Z^n$, all coordinates of which lie between $1$ and $M+1$, inclusive.
+Prove that if $f$ vanishes at all points of $\Z_{M+1}^n$, then $f$ is the zero polynomial.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Lo demostramos por inducción.
+Si $n=1$, es bien sabido que el hecho de que $f$ es anule en infinitos puntos implica que $f=0$.
+Supongamos que la proposición es cierta para $n-1$ y sea $f \in \C[x_1,\dots,x_n]$ que se anula en todos los puntos de $\Z^n$.
+Agrupando por potencias, tenemos que:
+\[ f = \sum_{i=1}^N g_i(x_1,\dots,x_{n-1})x_n^i \]
+donde $g_i \in \C[x_1,\dots,x_{n-1}]$.
+Basta demostrar que $g_i = 0$ para todo $i$.
+Fijamos una $n-1$ tupla $(a_1,\dots,a_{n-1}) \in \Z^{n-1}$ y consideramos el polinomio $f(a_1,\dots,a_{n-1},x_n) \in k[x_n]$.
+Como este polinomio se anula en todo $\Z$, por la hipótesis de inducción es el polinomio cero.
+Obsérvese que los coeficientes de $f(a_1,\dots,a_{n-1},x_n)$ son los $g_i(a_1,\dots,a_{n-1})$, luego $g_i(a_1,\dots,a_{n-1})=0$ para todo $(a_1,\dots,a_{n-1})\in\Z^{n-1}$. 
+Por la hipótesis de inducción, esto implica que $g_i = 0$, luego $f = 0$.
+
+\item Se demuestra de manera análoga al apartado anterior usando que si un polinomio $f$ en $\C[x]$ de grado $n$ se anula en todos los puntos de $\Z_{M+1}$, entonces $f$ debe ser el polinomio nulo, pues $n < M+1$.
+\end{enumerate}
+\end{solucion}
+\end{document}

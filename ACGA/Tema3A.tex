@@ -1,85 +1,6 @@
 \documentclass[ACGA.tex]{subfiles}
-%\usepackage[utf8x]{inputenc}
-%\usepackage[spanish]{babel}
-%\usepackage{amsmath, amssymb, amsthm, epsf, graphicx, amscd, amsfonts}
-%\usepackage[colorlinks]{hyperref}
-%\usepackage{xmpincl}
-%\usepackage{fancyhdr}
-%
-%
-%\pagestyle{fancy}
-%\lhead[\thepage]{\rightmark}
-%\rhead[\leftmark]{\thepage}
-%\cfoot[]{}
-%
-%\addto\captionsspanish{ \renewcommand{\chaptername}{Tema} }
-%
-%\newtheorem{thm}{Teorema}[chapter]
-%\newtheorem{cor}[thm]{Corolario}
-%\newtheorem{lem}[thm]{Lema}
-%\newtheorem{prop}[thm]{Proposición}
-%\newtheorem{defn}[thm]{Definición}
-%\newtheorem{rem}[thm]{Observaciones}
-%\newtheorem{eje}[thm]{Ejemplos}
-%
-%\newtheorem{ejercicio}{Ejercicio}[chapter]
-%
-%\newcommand{\RR}{\mathbb R}
-%\newcommand{\CC}{\mathbb C}
-%\newcommand{\AAA}{\mathbb A}
-%\newcommand{\PP}{\mathbb P}
-%\newcommand{\Ank}{\AAA^n_k}
-%\newcommand{\Pnk}{\PP^n_k}
-%\newcommand{\Pmk}{\PP^m_k}
-%\newcommand{\Amk}{\AAA^m_k}
-%\newcommand{\calA}{{\mathcal A}}
-%\newcommand{\II}{{\mathcal I}}
-%\newcommand{\VV}{{\mathcal V}}
-%\newcommand{\KK}{{\mathcal K}}
-%\newcommand{\OO}{{\mathcal O}}
-%\newcommand{\mm}{{\mathfrak m}}
-%
-%\title{Notas y ejercicios de Geometría Algebraica}
-%\author{Departamento de Álgebra \\ Universidad de Sevilla}
-%\date{Septiembre de 2017}
-
-
-
 
 \begin{document}
-
-%\setcounter{chapter}{2}
-%\maketitle
-%
-%\vspace*{\fill}
-%
-%\copyright{2011-17 Antonio Rojas León}
-%
-%\bigskip
-%
-%Este trabajo está publicado bajo licencia Creative Commons 3.0 España (Reconocimiento - No Comercial - Compartir bajo la misma licencia)
-%
-%\url{http://creativecommons.org/licenses/by-nc-sa/3.0/es/}
-%
-%\bigskip
-%
-%Usted es libre de:
-%\begin{itemize}
-% \item copiar, distribuir y comunicar públicamente la obra
-%\item hacer obras derivadas
-%\end{itemize}
-%
-%Bajo las condiciones siguientes:
-%\begin{itemize}
-% \item {\bf Reconocimiento:} Debe reconocer los créditos de la obra maestra especificada por el autor o el licenciador (pero no de una manera que sugiera que tiene su apoyo o apoyan el uso que hace de su obra).
-% \item {\bf No comercial:} No puede utilizar esta obra para fines comerciales.
-%\item {\bf Compartir bajo la misma licencia:} Si altera o transforma esta obra, o genera una obra derivada, sólo puede distribuir la obra generada bajo una licencia idéntica a ésta.
-%\end{itemize}
-%
-%
-%
-%
-%\newpage
 
 \chapter{Morfismos entre variedades afines}
 
@@ -163,13 +84,13 @@ Un morfismo $\phi:Y\to Z$ de variedades cuasi-afines induce por tanto un homomor
 \begin{ejs}\
 \begin{enumerate}
 \item $\varphi:\A-\{0\}\to\V(xy-1)\subset\A^2: t\mapsto (t,\frac{1}{t})$. Si tomamos por ejemplo, $f(x,y)=x^2y-2xy+3x^2$, entonces $\varphi^*(f)(t)=t-2+\frac{3}{t}$. Si $\varphi:X\to Y$ es un morfismo, entonces $\varphi^*:\OO(Y)\to\OO(X):f\mapsto f\circ\varphi$ es un homomorfismo de $k$-álgebras.
-\item No existe un isomorfismo $\varphi:\A^2-\{(0,0)\to\A^2: (x,y)\to (x,y)$. De existir, $\varphi^*:k[x,y]=\calA(\A^2)\to k[x,y]=\OO(\A^2-\{(0,0)\}$ quedaría definido como la aplicación $x\mapsto x, y\mapsto y$ por la defnición de $\varphi^*$. Pero esta aplicación es la identidad, que como el functor es fully faithfull significa que su preimagen era la identidad entre los conjuntos iniciales, la cual no es isomorfismo.
+\item No existe un isomorfismo $\varphi:\A^2-\{(0,0)\}\to\A^2: (x,y)\to (x,y)$. De existir, $\varphi^*:k[x,y]=\calA(\A^2)\to k[x,y]=\OO(\A^2-\{(0,0)\})$ quedaría definido como la aplicación $x\mapsto x, y\mapsto y$ por la defnición de $\varphi^*$. Pero esta aplicación es la identidad, que como el functor es fully faithfull significa que su preimagen era la identidad entre los conjuntos iniciales, la cual no es isomorfismo.
 
 \end{enumerate}
 \end{ejs}
 
 \begin{ejer}
- Sean $Y=\A^2_\C$ y $Z=Y-\{(0,0)\}$. Por el ejercicio \ref{a2menos0} $\OO_{Z}(Y)=\OO_{Z}(Z)=\C[x,y]$. Probar que no existe ningún morfismo $\phi:Y\to Z$ tal que $\phi^\star:\C[x,y]\to\C[x,y]$ sea la identidad.
+ Sean $Y=\A^2_\C$ y $Z=Y-\{(0,0)\}$. Por el ejercicio \ref{a2menos0} $\OO_{Y}(Y)=\OO_{Z}(Z)=\C[x,y]$. Probar que no existe ningún morfismo $\phi:Y\to Z$ tal que $\phi^\star:\C[x,y]\to\C[x,y]$ sea la identidad.
 \end{ejer}
 
 

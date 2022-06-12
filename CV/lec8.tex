@@ -1,0 +1,537 @@
+\documentclass[CV.tex]{subfiles}
+
+\begin{document}
+
+
+%\hyphenation{equi-va-len-cia}\hyphenation{pro-pie-dad}\hyphenation{res-pec-ti-va-men-te}\hyphenation{sub-es-pa-cio}
+
+\chapter{Formas diferenciables sobre variedades}
+
+En el capítulos anteriores habíamos definido las formas diferenciables como aplicaciones $w\in\Omega^p(U)$, $w:U\subseteq\R^n\to Alt^p(\R^n)$. En este capítulo veremos cómo construirlas sobre variedades diferenciables.
+
+\section{Construcción de las formas diferenciables}
+
+Fijado $p\in U\subseteq\R^n$ abierto, definimos el conjunto $\{\gamma:I\to U$ diferenciable con $I$ intervalo abierto conteniendo el 0 y $\gamma(0)=p\}=C_p(U)$. Definimos sobre él la relación de equivalencia $\gamma_1\sim\gamma_2$ si y solo si $D_0\gamma_1=\gamma_1'(0)=\gamma_2'(0)=D_0\gamma_2$. Entonces $C_p(U)/\sim\cong\R^n$. Si $F:U\to V$ es diferenciable con $p\in U\subseteq\R^n$ y $V\subseteq\R^m$ abiertos, entonces dada $\gamma:I\to U$ curva diferenciable con $\gamma(0)=p$, la aplicación $D_pF:\R^n\to \R^m$ se puede definir como $\gamma(0)'\mapsto D_pF(\gamma'(0))=D_0(F\circ\gamma)=(F\circ \gamma)'(0)$.  Así que definimos $D_pF:C_p(U)/\sim\to C_{F(p)}(V)/\sim$ como $[\gamma]\mapsto[F\circ\gamma]$.
+
+Dado $p\in M$ variedad $n$-dimensional, tomamos una carta $(U,h)$ en $M$ contieniendo a $p$ y consideramos $C_p(M)=\{\alpha:I\to M$ diferenciable con $I$ intervalo abierto conteniendo el 0 y $\gamma(0)=p\}$, donde definimos $\alpha_1\sim\alpha_2$ si y solo si $(h\circ\alpha_1)'(0)=(h\circ\alpha_2)'(0)$. Supongamos que tomáramos otra carta $(\widetilde{U},\tilde{h})$. Vamos a ver que la relación anterior no depende de la carta. Consideramos el intercambio de cartas $F=h\circ\tilde{h}^{-1}$, que es difeomorfismo en un entorno de $\tilde{h}(p)$. Esto implica que $D_{\tilde{h}(p)}F$ es isomorfismo. Así que $D_{\tilde{h}(p)}([\tilde{h}\circ\alpha_i])=[h\circ \alpha_i]$ para $i=1,2$, por lo que si las derivadas tomando $\tilde{h}$ son iguales, también lo son tomando $h$.
+
+\begin{defi}
+Definimos el \textbf{espacio tangente} $T_pM=C_p(M)/\sim$.
+\end{defi}
+
+\begin{nota}
+$T_pM$ es un $\R$-espacio vectorial de dimensión $n$. Dada una carta $(U,h)$ alrededor de $p\in M$, definimos
+\[
+\phi_h:T_pM\to \R^n=C_{h(p)}(h(U))/\sim 
+\]
+\[
+[\alpha]\mapsto \phi_h([\alpha])=(h\circ\alpha)'(0)=D_0(h\circ\alpha)
+\]
+$\phi_h$ es una biyección e induce una estructura de $\R$-espacio vectorial de dimensión $n$. Podemos considerar $\phi_h$ como un $\R$-isomorfismo de espacios vectoriales. Si $(\widetilde{U},\tilde{h})$ es otra carta para $p\in M$, entonces como $D_{h(p)}F:C_{h(p)}(h(U))/\sim\to C_{\tilde{h}(p)}(\tilde{h}(\widetilde{U}))/\sim$ es isomorfismo, tenemos que $\phi_h=D_{h(p)}F^{-1}\circ \phi_{\tilde{h}}$, ya que $\phi_h([\alpha])=[h\circ\alpha]$ y $\phi_{\tilde{h}}([\alpha])=[\tilde{h}\circ\alpha]=[\tilde{h} \circ h^{-1}\circ h\circ \alpha]=[F^{-1} \circ h \circ \alpha]$. En resumen, tenemos el diagrama conmutativo
+\[
+\begin{tikzcd}
+T_pM \arrow[r, "\phi_h"]\arrow[dr, "\phi_{\tilde{h}}"'] & \R^n\arrow[d, "D_{h(p)}F"]\\
+& \R^n
+\end{tikzcd}
+\]
+\end{nota}
+
+\begin{lemma}
+Sea $f:M\to N$ un diferenciable entre variedades de dimensión $m$ y $n$ respectivamente. Sea $p\in M$, entonces
+\begin{enumerate}
+\item Existe $D_pf:T_pM\to T_{f(p)}N$ $\R$-homomorfismo de espacios vectoriales dado por $D_pf[\alpha]=[f\circ\alpha]$.
+\item Si $(U,h)$ es una carta para $p\in M$ y $(V,g)$ alrededor de $f(p)\in N$, se tiene que conmuta el diagrama
+\[
+\begin{tikzcd}
+T_pM\arrow[r, "D_pf"]\arrow[d, "\phi_h"'] & T_{f(p)}N\arrow[d, "\phi_{\tilde{h}}"]\\
+\R^m\arrow[r, "D_{h(p)}(g\circ f\circ h^{-1})"'] & \R^n
+\end{tikzcd}
+\]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+ Tomando cartas $(U,h),(V,g)$ de un atlas maximal, tendremos que
+\[
+F=g\circ f\circ h^{-1}:h(U\cap f^{-1}(V))\to g(f(U\cap f^{-1}(V)))
+\]
+es diferenciable, luego induce $D_{h(p)}F:\R^m\to\R^n$  dada por $[\gamma]\mapsto[F\circ\gamma]$. Luego dado $[\alpha]\in T_pM$ se tiene que 
+\[
+D_{h(p)}F(\phi_h[\alpha])=[F\circ h\circ\alpha]=[g\circ f\circ \alpha]=\phi_g[f\circ\alpha]
+\]
+Basta definir $D_pf[\alpha]=[f\circ \alpha]$, por lo que el diagrama conmuta. Como $\phi_h,\phi_g$ son isomorfimos se tiene entonces por el diagrama que $D_pf$ es homomorfismo de $\R$-espacios vectoriales.
+\end{proof}
+
+\begin{nota}\
+\begin{enumerate}
+\item Dada una carta $(U,h)$ , $D_ph=\phi_h:T_pM\to\R^m$ es isomorfismo si $M$ es una $m$-variedad. De hecho $\R^m\cong C_{h(p)}(h(U))/\sim =T_{h(p)}\R^m$. Además $\phi^{-1}_h=D_{h(p)}h^{-1}=(D_{p}h)^{-1}$.
+\item Sea $i:M\hookrightarrow \R^n$ diferenciable y $p\in M$. $D_pi:T_pM\to T_{i(p)}\R^n\cong\R^n$ es una inyección y podemos identificar $T_pM=\Ima D_pi\subseteq\R^n$. 
+\item Si $M\overset{f}{\to}N\overset{\varphi}{\to}P$ son diferenciables, entonces $D_p(\varphi\circ f)=D_{f(p)}\varphi\circ D_pf$ (regla de la cadena).
+\item Dado $p\in M$, y una carta $(U,h)$ alrededor de $p$, entonces la base del $\R$-e.v $T_pM$ será $\{(\parcial{}{x_i})_p\}_{i=1
+}^m$ donde $(\parcial{}{x_i})_p=\phi^{-1}_h(e_i)=(D_{h(p)})^{-1}(e_i)$ siendo $\{e_1,\dots, e_m\}$ la base estándar.
+\item Un vector tangente $X_p\in T_pM$ se podrá escribir de forma única como
+\begin{equation}\label{coord}
+X_p=\sum_{i=1}^m a_i\left(\parcial{}{x_i}\right)_p
+\end{equation}
+con $a=(a_1,\dots, a_m)\in\R^m$. Si $X_p=[\alpha]$, donde $\alpha:I\to U$ con $\alpha(0)=0$ se tiene $a=(h\circ \alpha)'(0)=D_0(h\circ\alpha)$, pues $D_0(h\circ\alpha)$ es una aplicación lineal de $\R$ en $\R^m$, de modo que su matriz es el vector $a$, es decir, $a_i=\parcial{(h\circ\alpha)}{x_i}(0)$. Más explícitamente, $a=\sum_{i=1}^m \parcial{(h\circ\alpha)}{x_i}(0)e_i$, luego 
+\[
+X_p=\phi_h^{-1}\left(\sum_{i=1}^m \parcial{(h\circ\alpha)}{x_i}(0)e_i \right)=\sum_{i=1}^m \parcial{(h\circ\alpha)}{x_i}(0)\phi_h^{-1}(e_i)=\sum_{i=1}^m a_i\left(\parcial{}{x_i}\right)_p.
+\]
+
+\item Dada $f\in\CC^{\infty}(M;\R)$ tenemos la aplicación tangente
+\[
+D_pf:T_pM\to T_{f(p)}\R\cong\R.
+\]
+\[
+X_p\mapsto D_pf([\alpha])=[f\circ\alpha]=(f\circ\alpha)'(0)
+\]
+La \textbf{derivada direccional} $X_pf\in\R$ está definida como la imagen en $\R$ de $X_p$ mediante $D_pf$, es decir, $X_pf=(f\circ\alpha)'(0)$. En términos de $f\circ h^{-1}$ tenemos por la regla de la cadena, recordando que $a_i=\parcial{(h\circ\alpha)}{x_i}(0)$,
+\[
+X_pf=\frac{d}{dt}((f\circ h^{-1})\circ (h\circ \alpha(t)))|_{t=0}=D_{h(p)}(f\circ h^{-1})D_0(h\circ\alpha)=\sum_{i=1}^m\parcial{f\circ h^{-1}}{x_i}(h(p))a_i.
+\]
+En particular 
+\[
+\left(\parcial{}{x_i}\right)_pf=\parcial{f\circ h^{-1}}{x_i}(h(p)).
+\]
+\item Tenemos una base similar $(\parcial{}{y_j})_{f(p)}$ ($1\leq j\leq n$) para $T_{f(p)}N$ y la matriz de $D_pf$ con respecto a las bases de $T_pM$ y $T_{f(p)}N$ es la matriz jacobiana en $h(p)$ de $g\circ f\circ h^{-1}$. En particular, cuando $N=M$ y $f=Id_M$ se tiene que $\phi_g=D_{h(p)}(g\circ h^{-1})\phi_h$, luego $Id_{T_p(M)}=\phi_g^{-1}D_{h(p)}(g\circ h^{-1})\phi_h$. Así que
+\[
+\left(\parcial{}{x_i}\right)_p=\phi_g^{-1}D_{h(p)}(g\circ h^{-1})\phi_h\left(\left(\parcial{}{x_i}\right)_p\right)=\phi_g^{-1}(D_{h(p)}(g\circ h^{-1})e_i)=
+\]
+\[
+\phi_g^{-1}\left(\sum_{j=1}^m\parcial{\phi_j}{x_j}(h(p))e_j\right)=\sum_{j=1}^m\parcial{\phi_j}{x_j}(h(p))\left(\parcial{}{y_j}\right)_p
+\]
+que aplicado sobre $f$ nos da
+\begin{equation}\label{cambio}
+\left(\parcial{}{x_i}\right)_pf=\parcial{\varphi}{x_i}(h(p))\left(\parcial{}{y_j}\right)_p
+\end{equation}
+donde $\varphi=g\circ h^{-1}$, siendo $(U,h)$ y $(V,g)$ cartas alrededor de $p$. 
+\end{enumerate}
+\end{nota}
+
+Supongamos que $X$ es una función que a cada $p\in M$ le asigna un vector tangente $X_p\in T_pM$. Dada una carta $(U,h)$, la fórmula \ref{coord} se cumple para unas ciertas funciones $a_i:U\to\R$. Si estas funciones son diferenciables en un entorno de $p$, entonces se dice que $X$ es diferenciable en $p$. Además esta condición es independiente de las cartas por \ref{cambio}. Si $X$ es diferenciable en todo punto $p\in M$ se dice que $X$ es un \textbf{campo de vectores diferenciable} en $M$. Se suele denotar por $\mathcal{D}(M)$ al conjunto de campos de vectores diferenciables sobre $M$, que es un $\R$-e.v. y $C^{\infty}(M;\R)$-módulo. 
+
+\begin{defi}
+Consideramos $X:M\to \bigcup_{p\in M}T_pM \equiv TM$. Definimos este espacio $TM$ como \textbf{fibrado tangente} sobre $M$, que es una variedad diferenciable de dimensión $2n$ (siendo $n$ la dimensión de la variedad). Podemos ver los puntos de esta variedad como pares $(p,v)\in TM$ donde $p$ es el punto de la variedad y $v$ es el vector tangente, por lo que estará contenida en $M\times \R^n$, de donde heredará la estructura diferenciable. 
+\end{defi}
+
+Se tiene que la aplicación $\pi :TM\to M$ dada por $(p,v)\mapsto p$ es diferenciable y da lugar a una fibración. Claramente $\pi^{-1}(p)=T_pM\cong\R^n$ y además se puede encontrar una sección $s$, es decir, $\pi\circ s=Id_{TM}$, que dependiendo del fibrado podrá ser diferenciable o no.
+
+Consideremos familias $w=\{w_p\}_{p\in M}$ de $k$-formas alternadas en $T_pM$, donde $w_p\in Alt^k(T_pM)$, es decir, $w:M\to \bigcup_{p\in M}Alt^k(T_pM)$. Necesitamos la noción de deferenciabilidad en $p$ de $w$. Sea $g:W\to M$ una parametrización local (la inversa de una carta) donde $W\subseteq\R^m$ es abierto. Para $x\in W$,
+\[
+D_x g:\R^m\to T_{g(x)}M
+\]
+es un isomorfismo e induce un isomorfismo
+\[
+Alt^k(D_xg):Alt^k(T_{g(x)}M)\to Alt^k(\R^m).
+\]
+
+Definimos $g^*(w):W\to Alt^k(\R^m)$ como la función cuyo valor en $x$ es
+\[
+g^*(w)_x=Alt^k(D_xg)(w_{g(x)}).
+\]
+Recordemos que para $k=0$, $g^*(w)=w_{g(x)}$ por lo que $\Omega^0(M)=C^{\infty}(M;\R)$. Obsérvese que en cada carta esta difinición coincide con la definición análoga para abiertos euclídeos de la sección \ref{inducida}.
+
+
+\begin{defi}
+Una familia $w=\{w_p\}_{p\in M}$ de $k$-formas alternadas en $T_pM$ se dice \textbf{diferenciable} si $g^*(w)$ es una función diferenciable para toda parametrización local. El conjunto de tales familias diferenciables es un espacio vectorial denotado $\Omega^k(M)$. En particular, $\Omega^0(M)=\CC^{\infty}(M;\R)$. 
+\end{defi}
+
+\begin{lemma}
+Sea $g_i:W_i\to N$ una familia de parametrizaciones locales con $N=\bigcup g_i(W_i)$. Si $g_i^*(w)$ es diferenciable para todo $i$, entonces $w$ es diferenciable.
+\end{lemma}
+\begin{proof}
+Sea $g:W\to N$ una parametrización local cualquiera y $z\in W$. Probamos que $g^*(w)$ es diferenciable entorno a $z$. Elegimos $i$ con $g(z)\in g_i(W_i)$. En un entorno de $z$ podemos escribir $g=g_i\circ g_i^{-1}\circ g=g_i\circ h$, donde $h=g_i^{-1}\circ g:g^{-1}(g_i(W_i))\to W_i$ es una aplicación diferenciable entre abiertos euclídeos. Entonces
+\[
+g^*(w)=(g_i\circ h)^*(w)=h^*(g_i^*(w))
+\]
+en un entorno de $z$ y el lado derecho es diferenciable por hipótesis, ya que $ g_i^*(w)\in\Omega^k(W_i)$ y $h^*(g_i^*(w))\in\Omega^k(W)$. 
+\end{proof}
+
+La diferencial exterior
+\[
+d:\Omega^k(M)\to\Omega^{k+1}(M)
+\]
+se puede definir a través de las parametrizaciones locales $g:W\to M$ como sigue. Si $w=\{w_p\}_{p\in M}$ es una $k$-forma diferenciable en $M$ entonces
+\[
+d_pw=Alt^{k+1}((D_xg)^{-1})\circ d_x(g^*w),\quad p=g(x).
+\]
+Explicamos esta definición: tenemos $g:W\to M$, y $D_xg:T_xW\to T_pM$ con inversa $(D_xg)^{-1}:T_xW\to T_pM$, de modo que $Alt^{k+1}((D_xg)^{-1}):Alt^{k+1}(T_xW)\to Alt^{k+1}(T_pM)$. Como $d_xg^*(w)\in Alt^{k+1}(\R^n)$ por estar $g^*(w)\in Alt^{k}(\R^n)$, la composición tiene sentido. Además, podemos considerar localmente $g^*:\Omega^k(M)\to \Omega^k(W)$, que al componerla con la diferencial exterior de $\Omega^k(W)$ nos lleva a $\Omega^{k+1}(W)$. Al evaluarla sobre unos vectores $v_1,\dots, v_{k+1}$ obtenemos $d_{g^{-1}(x)}g^*(w)(D_xg^{-1}(v_1),\dots, D_xg^{-1}(v_{k+1}))$. 
+
+No es inmediato que $d_pw$ no dependa de la elección de $g$. Dada parametrización local $g$, entonces cualquier otra tiene localmente la forma $g\circ\phi$ con $\phi:U\to W$ difeomorfismo. Sean $z_1,\dots, z_{k+1}\in T_pM$. Elegimos $v_1,\dots, v_{k+1}\in\R^n=T_xU$ de modo que $D_x(g\circ \phi)(v_i)=z_i$ y $w_1,\dots, w_{k+1}\in T_yM$ tales que $D_x\phi(v_i)=w_i$. Debemos probar que
+\[
+d_yg^*(w)(w_1,\dots, w_{k+1})=d_x(g\circ\phi)^*(w)(v_1,\dots,v_{k+1})
+\]
+donde $\phi(x)=y$. Esto se sigue de las ecuaciones 
+\begin{gather*}
+(g\circ\phi)^*(w)=\phi^*(g^*(w))\\
+d\phi^*(\tau)=\phi^*d(\tau),
+\end{gather*}
+donde $\tau=g^*(w)$. %La última igualdad se puede reescribir puntualmente como $g^*(d\tau)_{\phi(x)}=d_xg^*(w)\in \Omega^{k+1}(W)$ para algún $x\in W$ (es decir, es la diferencial entre abiertos euclídeos). 
+Efectivamente,
+\[
+d_x(g\circ\phi)^*(w)(v_1,\dots,v_{k+1})=d_x\phi^*( g^*(w))(v_1,\dots,v_{k+1})=\phi^*d_{\phi(x)}(g^*(w))(v_1,\dots,v_{k+1})
+\] 
+\[
+=d_y(g^*(w))(w_1,\dots, w_{k+1})
+\]
+
+Es evidente que $d\circ d=0$, con lo que tenemos definido un complejo de cadenas. Tenemos que $\Omega^k(M)=0$ si $k>\dim(M)$ pues $Alt^k(T_pM)=0$ cuando $k>\dim(T_pM)$. Una aplicación diferenciable $\phi:M\to N$ induce un morfismo de complejo de cadenas $\phi^*:\Omega^*(N)\to\Omega^*(M)$
+\[
+\phi^*(\tau)_p=Alt^k(D_p\phi)(\tau_{\phi(p)}),\quad \tau\in \Omega^k(M),
+\]
+siendo $\phi^*(\tau)_p=\tau_{\phi(p)}$ para $k=0$. Es decir, $\phi^*(\tau)_p(v_1,\dots, v_k)=\tau_{\phi(p)}(D_p\phi(v_1),\dots, D_p\phi(v_k))$. Se define el producto exterior para $w\in\Omega^k(M)$ y $\tau\in\Omega^l(M)$, $w\land\tau$ como $(w\land\tau)_p=w_p\land\tau_p\in\Omega^{k+l}(M)$.
+
+Se prueba usando parametrizaciones locales que $\phi^*w$ y $w\land\tau$ son diferenciables. Es también fácil de ver que
+\[
+d(w\land\tau)=dw\land\tau+(-1)^kw\land d\tau,
+\]
+\[
+w\land\tau=(-1)^{kl}\tau\land w,
+\]
+\[
+\phi^*d=d\phi^*.
+\]
+
+\begin{defi}
+La $p$-ésima \textbf{cohomología de deRham} de una variedad $M$, denotada $H^p(M)$, es la $p$-ésima cohomología de $\Omega^*(M)$. 
+\end{defi}
+
+El producto exterior induce un producto $H^p(M)\times H^q(M)\to H^{p+q}(M)$ que convierte a $H^*(M)$ en un álgebra graduada. Nótese que $H^p(M)=0$ para $p>n=\dim(M)$ y para $p<0$. 
+
+El morfismo de complejos de cadenas $\phi^*$ inducido por una aplicación diferenciable $\phi:M\to N$ induce aplicaciones lineales
+\[
+\phi^*=H^p(\phi):H^p(N)\to H^p(M),
+\]
+lo cual convierte a la cohomología de deRham en un functor contravariante entre la categoría de variedades diferenciables y la categoría de $\R$-álgebras graduadas anticonmutativas.
+\newpage
+\section{Orientación de variedades}
+
+\begin{defi}\
+\begin{enumerate}
+\item Una variedad diferenciable $M$ de dimensión $n$ se dice \textbf{orientable} si existe $w\in\Omega^n(M)$ con $w_p\neq 0$ para todo $p\in M$. Una tal $w$ se denomina \textbf{forma de orientación} de $M$.
+\item Dos formas de orientación $w$ y $\tau$ de $M$ son equivalentes si $\tau=fw$ para alguna $f\in\Omega^0(M)$ con $f(p)>0$ para todo $p\in M$. Una \textbf{orientación} en $M$ es una clase de equivalencia de formas de orientación de $M$. 
+\end{enumerate}
+\end{defi}
+
+En el espacio euclídeo $\R^n$ tenemos la forma de orientación $dx_1\land\dots\land dx_n$, que representa la \textbf{orientación estándar} de $\R^n$. 
+
+Sea $M$ orientada con una forma de orientación $w$. Una base $b_1,\dots, b_n$ de $T_pM$ se dice \textbf{positivamente} o \textbf{negativamente  orientada} con respecto a $w$ dependiendo del signo de $w_p(b_1,\dots, b_n)\in\R$ (no puede ser 0 porque $w_p\neq 0$ y multilineal). El signo depende solo de la orientación determinada por $w$. Si $\tau$ es otra orientación, $\tau=fw$ para una unívocamente determinada $f\in\Omega^0(M)$ con $f(p)\neq 0$ para todo $p\in M$. Efectivamente, $g^*(w)_p$ y $g^*(\tau)_p$ verifican $g^*(\tau)_p=h(p)g^*(w)_p$, por lo que basta componer $h$ con $g^{-1}$. Decimos que $w$ y $\tau$ determinan la misma orientación en $p$ si $f(p)>0$. Equivalentemente, $w$ y $\tau$ inducen las mismas bases positivamente orientadas de $T_pM$. Si $M$ es conexa, entonces $f$ tiene signo constante en $M$, así que se tiene:
+
+\begin{lemma}
+En una variedad diferenciable orientable conexa hay exactamente dos orientaciones.
+\end{lemma}
+
+Si $U$ es un abierto de una variedad diferenciable $M$ (esto implica que $U$ es subvariedad), entonces una orientación de $U$ estará inducida por la restricción de la forma de orientación de $M$ a $U$. Es decir, para $p\in U$, $(w|_{U})_p=w_p$. Para $i:U\to M$ la inclusión se puede ver como $i^*(w)_p=(w|_{U})_p=w_p$. Recíprocamente se tiene:
+
+\begin{lemma}\label{vi}
+Sea $V=(V_i)_{i\in I}$ un recubrimiento por abiertos de la variedad diferenciable $M$. Supongamos que todos los $V_i$ tienen orientaciones y que en las intersecciones estas orientaciones coinciden. Entonces $M$ tiene una orientación cuya restricción a cada $V_i$ coincide con la orientación original de $V_i$. 
+\end{lemma}
+La prueba se encuentra en el libro.
+
+\begin{defi}
+Sea $\phi:M_1\to M_2$ un difeomorfismo entre variedades orientadas por formas de orientación $w_i\in\Omega^n(M_i)$. Diremos que $\phi$ \textbf{preserva la orientación} si $\phi^*(w_2)$ es equivalente a $w_1$. En caso contrario, decimos que $\phi$  \textbf{revierte la orientación}.
+\end{defi}
+
+\begin{nota}
+El hecho de que $\phi$ sea difeomorfismo nos garantiza que $\phi^*(w_2)$ es una forma de orientación, ya que $\phi^*(w_2)_x(v_1,\dots, v_n)=w_{2\phi(x)}(D_x\phi(v_1),\dots, D_x\phi(v_n))$. Como $D_x\phi$ es isomorfismo $D_x\phi(v_i)=0$ si y solo si $v_i=0$. 
+\end{nota}
+
+\begin{ej}
+Sean $U_1,U_2\subseteq\R^n$ abiertos orientados con la orientación estándar y $\phi:U_1\to U_2$ difeomorfismo. Vimos en \ref{deter} que $\phi^*(dx_I)=\det(D_x\phi)dx_I$, por lo que $\phi$ preserva la orientación si y solo si $\det(D_x\phi)>0$ para todo $x\in U_1$. 
+\end{ej}
+
+Dada cualquier variedad diferenciable orientada $M$ y $p\in M$, podemos siempre encontrar una carta $h:U\to U'$ alrededor de $p$ de tal forma que $h$ preserve la orientación: si no lo preserva, basta cambiar de signo una coordenada. Se dirá en tal caso que $(U,h)$ es una \textbf{carta orientada}. El intercambio de dos cartas orientadas tendrá jacobiano positivo. Un atlas en el que todos los intercambios de cartas con jacobiano positivo se dirá \textbf{atlas positivo}.
+
+\begin{prop}\label{9.14}
+Sea $\{h_i:U_i\to U_i'\}_{i\in I}$ es un atlas positivo sobre $M$, entonces $M$ posee una orientación tal que todas las $h_i$ son cartas orientadas.
+\end{prop}
+\begin{dem}
+Para cada $i$, podemos considerar $h_i:U_i\to U_i'$ como un difeomorfismo que preserva la orientación, dotando $U_i'$ de la orientación estándar. Es decir, dotamos a $U_i$ de la orientación dada por $h_i^*(dx_I)$. Como los jacobianos son positivos, la orientación coincide en las intersecciones. Entonces por el lema \ref{vi} existe una orientación sobre $M$ de modo que la inducida sobre cada $U_i$ es equivalente a la original, es decir, que las cartas $(U_i,h_i)$ son orientadas.
+\QED
+\end{dem}
+
+
+\begin{defi}
+Una \textbf{estructura Riemanniana} (o métrica Riemanniana) sobre una variedad diferenciable $M$ es una colección de productos escalares $\{\gene{,}_p\}_{p\in M}$ sobre $T_pM$
+\[
+\gene{,}_p:T_pM\times T_pM\to\R
+\] 
+tal que verifique para toda parametrización $f:W\to M$ que la aplicación
+\[
+W\to\R
+\]
+\[
+x\mapsto \gene{D_xf(v_1),D_xf(v_2)}_{f(x)}
+\]
+sea diferenciable para todo $v_1,v_2\in\R^n$.
+\end{defi}
+
+Como los productos escalares son bilineales, basta comprobar la diferenciabilidad sobre una base de $\R^n$.  Es decir, basta comprobar que son diferenciables las aplicaciones
+\[
+g_{ij}:W\to \R
+\]
+\[
+x\mapsto \gene{D_x f(e_i),D_xf(e_j)}_{f(x)}
+\]
+para $\{e_1,\dots, e_n\}$ base de $\R^n$. Dado $x\in W$, $\{g_{ij}(x)\}_{1\leq i,j\leq n}$ es una matriz $n\times n$ simétrica y definida positiva. Los coeficientes de esta matriz se denominan \textbf{coeficientes de la primera forma fundamental}. Por tanto, tenemos una aplicación diferenciable $M\to S\subseteq \mathcal{M}_{n\times n}$.  
+
+Una variedad $M$ con estructura Riemanniana se dirá que es una \textbf{variedad Riemanniana}. Toda variedad se puede todar de estructura Riemanniana, pues podemos sumergir $M$ en $\R^{n+k}$ como subvariedad usando el teorema de Whitney. Entonces, para todo $p\in M$, $T_p(M)\subseteq T_p(\R^{n+k})$, por lo que $M$ hereda la estructura Riemanniana de $\R^{n+k}$ consistente en el producto escalar estándar.
+
+
+\begin{prop}
+Si $M$ es una variedad Riemanniana y orientada de dimensión $n$, entonces posee una forma de orientación única $vol_M$ determinada por
+\[
+(vol_M)_p(b_1,\dots, b_n)=1
+\]
+para todo $p\in M$ y para toda base ortonormal $\{b_1,\dots, b_n\}$ de $T_pM$ con respecto a la estructura Riemanniana de $M$. A $vol_M$ la llamaremos \textbf{forma volumen} sobre $M$.
+\end{prop}
+
+\begin{dem}
+Sea $w\in \Omega^n(M)$ una forma de orientación representante de la orientación de $M$. Consideremos dos bases ortonormales orientadas positivamente $b_1,\dots,b_n$ y $b_1',\dots,b_n'$ en $T_pM$. Existe una matriz $n\times n$ ortogonal $C=(c_{ij})$ tal que
+\[
+b_i'=\sum_{j=1}^n c_{ij}b_j
+\]
+y $w_p\in Alt^n(T_pM)$ satisface
+\[
+w_p(b_1',\dots,b_n')=\det(C)w_p(b_1,\dots,b_n).
+\]
+Como están orientadas positivamente, $\det(C)>0$, por lo que $\det(C)=1$ por ser ortogonal. Por tanto, existe una función $\rho:M\to (0,+\infty)$ tal que $\rho(p)=w_p(b_1,\dots,b_n)$ para cualquier base ortonormal orientada positivamente de $T_pM$. Tenemos que probar que $\rho$ es diferenciable, con lo que $(vol_M)_p=\frac{1}{\rho(p)}w_p$ será la forma buscada. 
+
+Consideremos una parametrización local $f:W\to M$ que preserve la orientación y sea
+\[
+X_j(q)=\left(\parcial{}{x_j}\right)_q=D_qf(e_j)\in T_{f(q)}M, 1\leq j\leq n, q\in W.
+\]
+Estos vectores forman una base positivamente orientada de $T_{f(q)}M$.
+ El método de Gram-Schmidt nos da una matriz triangular superior $A(q)=(a_{ij}(q))$ de funciones diferenciables en $W$ con $a_{ij}(q)>0$ tales que
+\[
+b_i(q)=\sum_{j=1}^na_{ij}(q)X_j(q), i=1,\dots, n
+\]
+es una base positivamente orientada de $T_{f(q)}M$. Entonces
+\[
+\rho( f(q))=w_{f(q)}(b_1(q),\dots, b_n(q))=\det(A(q))w_{f(q)}(X_1(q),\dots, X_n(q))=
+\]
+\[
+\det(A(q))w_{f(q)}(D_qf(e_1), \dots, D_qf(e_n))=(\det(A(q)))(f^*w)_q(e_1,\dots, e_n)\in\Omega^n(W).
+\]
+Esto prueba que $\rho$ es diferenciable. 
+\QED
+\end{dem}
+
+Hemos visto que para $w=vol_M$, $\rho(f(q))=1=(\det(A(q)))(f^*vol_M)_q(e_1,\dots, e_n)$. Como no se anula y es diferenciable, es una forma de orientación en $\R^n$, y como además vale 1 tenemos que $(\det(A(q)))(f^*vol_M)_q(e_1,\dots, e_n)=(dx_1\land\dots\land dx_n)_q(e_1,\dots, e_n)$. Así que
+\[
+(f^*vol_M)=\frac{1}{\det(A(q))}(dx_1\land\dots\land dx_n)_q
+\] 
+Sobre $\{b_1(q), \dots, b_n(q)\}$ base ortonormal de $T_{f(q)}M$ tendremos que
+\[
+\delta_{ik}=\gene{b_i(q),b_k(q)}_{f(q)}=\sum_{j=1}^n\sum_{l=1}^n a_{ij}(q)g_{jl}(q)a_{kl}(q)
+\]
+y por otro lado, denotando $G=(g_{ij})$,
+\[
+\gene{b_i(q),b_k(q)}_{f(q)}=\gene{A(q)X_i(q),A(q)X_k(q)}_{f(q)}=(A(q)X_i(q))^t G (A(q)X_k(q))
+\]
+por lo que $I=A(q)^tGA(q)$, de modo que $1=|\det(A(q))|^2|\det(G)|$ y como $\det(A(q))>0$, $1/\det(A(q))=\sqrt{\det(G)}$, así que 
+\[
+(f^*vol_M)_q=\sqrt{\det(g_{ij})}(dx_1\land\dots\land dx_n)_q
+\]
+
+\begin{ej}\label{9.18}
+Sea $w_0\in\Omega^{n-1}(\R^n)$ definida como $(w_0)_x(w_1,\dots, w_{n-1})=\det(x,w_1,\dots, w_n)$, luego
+\[
+w_0=\sum_{i=1}^n (w_0)_x(e_1,\dots, \hat{e}_i, \dots, e_n) dx_1\land\dots\land \hat{dx}_i\land\dots\land dx_n=
+\]
+\[
+\sum_{i=1}^n(-1)^{i-1}x_i dx_1\land\dots\land \hat{dx}_i\land\dots\land dx_n
+\]
+Elijamos $x\in S^{n-1}\subseteq\R^n$ y una base $\{w_1,\dots, w_{n-1}\}\subseteq T_x S^{n-1}$.  Es claro que $\{x, w_1,\dots, w_{n-1}\}$ es base de $T_x\R^n$, por lo que $(w_0)_x(w_1,\dots, w_{n-1})=\det(x,w_1,\dots, w_{n-1})\neq 0$, así que $w_0|_{S^{n-1}}=i^*(w_0)$ es una forma de orientación sobre $S^{n-1}$. Además se verifica que $\{w_1,\dots, w_n\}$ está positivamente orientado respecto a $w_0|_{S^{n-1}}$ si y solo si $\{x,w_1,\dots, w_n\}$ está positivamente orientado respecto a la orientación estándar de $\R^n$, pues $\det(x,w_1,\dots, w_n)=(dx_1\land\dots\land dx_n)(x, w_1,\dots, w_n)$. 
+
+Por otra parte, si consideramos la estructura Riemanniana de $S^{n-1}$ que hereda de $\R^n$, si $\{w_1,\dots, w_n\}$ es una base ortonormal de $T_xS^{n-1}$ entonces $(w_0)_x(w_1,\dots, w_{n-1})=\det(x,w_1,\dots, w_{n-1})=1$, así que $i^*(w_0)=vol_{S^{n-1}}$.
+
+Vamos ahora a buscar $w\in\Omega^{n-1}(\R^n-\{0\})$ que sea cerrada y que $i^*(w)=vol_{S^{n-1}}$. La retracción $r:\R^n-\{0\}\to S^{n-1}$ es diferenciable, así que podemos considerar $r^*:\Omega^{n-1}(S^{n-1})\to \Omega^{n-1}(\R^n-\{0\})$, de modo que consideramos $w=r^*(vol_{S^{n-1}})$. Si $x\in\R^n-\{0\}$, entonces $w_x\in Alt^{n-1}(\R^n)$.
+\[
+w_x(w_1,\dots, w_{n-1})=r^*(vol_{S^{n-1}})_x(w_1,\dots, w_{n-1})=
+\]
+\[
+(w_0)_{r(x)}(D_x r(w_1),\dots, D_x r(w_{n-1}))=\det\left(\frac{x}{|x|}, D_x r(w_1),\dots, D_x r(w_{n-1})\right)
+\]
+Ahora, 
+\[
+D_xr(v)=\begin{cases}
+0 & v\in\R x\\
+\frac{v}{|x|} & v\in(\R x)^{\perp}
+\end{cases}
+\]
+El primer caso es porque al proyectar la curva $\alpha(t)=x+tv$ sobre $S^{n-1}$ mediante $r$, nos queda una curva constante igual a $x$, es decir $D_xr(v)=(r\circ \alpha)'(0)=0$. Para el otro caso tenemos que calcular la derivada con respecto a $t$ de 
+\[
+\frac{x+tv}{|x+tv|}.
+\]
+Donde $|x+tv|=\sqrt{(x+tv)(x+tv)'}=\sqrt{t^2|v|^2+|x|^2}$ por ser $v\perp x$. Por tanto al derivar obtenemos
+\[
+\frac{|x| v}{(|x| + t^2 |v|)^{3/2}}-\frac{|x|tv}{(t^2|v|+|x|)^{3/2}}
+\]
+que al sustituir en $t=0$ nos da el resultado.
+
+Entonces, dado un vector $w=\overline{w}\oplus\tilde{w}$ con $\overline{w}\in\R x$ y $\tilde{w}\in (\R x)^{\perp}$, $D_xr(w)=D_xr(\tilde{w})=\frac{\tilde{w}}{|x|}$. Entonces, la expresión anterior queda como
+\[
+\frac{1}{|x|^n}\det(x,\tilde{w}_1,\dots, \tilde{w}_{n-1})=\frac{1}{|x|^n}\det(x,w_1,\dots, w_{n-1})=\frac{1}{|x|^n}(w_0)_x(w_1,\dots, w_{n-1})
+\]
+Aquí hemos utilizado que $w_i=\tilde{w}_i+\overline{w}_i$, que $\overline{w}_i$ son paralelos a $x$ y la linealidad del determiante. Así,
+\[
+w_x=\frac{1}{|x|^n}\sum_{i=1}^n(-1)^{i-1} x_i dx_1\land\dots\land\hat{dx}
+_i\land\dots\land dx_n\in\Omega^{n-1}(\R^n-\{0\})\]
+
+Podemos comprobar que $w_x$ es cerrada, pues $d:\Omega^{n-1}(S^{n-1})\to \Omega^n(S^{n-1})$ es la aplicación nula por ser $n>\dim(S^{n-1})=n-1$. Así que el resultado se deduce de que $dw=d r^*(vol_{S^{n-1}})=r^*(d vol_{S^{n-1}})=0$.  
+\end{ej}
+
+\begin{ej}
+Sea $\R \PP^{n-1}=S^{n-1}/\sim$ la variedad inducida por la acción de $\Z_2$ mediante la antipodal $A:S^{n-1}\to S^{n-1}$ dada por $x\mapsto A(x)=-x$. Tenemos el diagrama conmutativo
+\[
+\begin{tikzcd}
+S^{n-1}\arrow[r,"A"]\arrow[d, "\pi"] & S^{n-1}\arrow[dl, "\pi"]\\
+\R\PP^{n-1} & 
+\end{tikzcd}
+\]
+Recordemos que $A^*(w)=(-1)^nw$. Es claro que, fijado $x\in S^{n-1}$, $D_xA: T_xS^{n-1}\to T_{-x}S^{n-1}$ es un isomorfismo por ser $A$ difeomorfismo y de hecho es isometría pues el producto escalar se conserva al cambiar todos los signos. Por el diagrama conmutativo anterior, $D_x\pi=D_{A(x)}\pi D_xA$ y además $D_x\pi: T_xS^{n-1}\to T_{\pi(x)}\R\PP^{n-1}$ es isomorfismo. Como $D_xA$ es isometría podemos dotar de estructura Riemanniana a $\R\PP^{n-1}$ de forma que sea compatible con $\pi$, ya que no importará si elegimos $x$ o $-x$.
+\[
+\gene{v,w}_{\pi(x)}=\gene{(D_x\pi)^{-1}(v),(D_x\pi)^{-1}(w)}_x
+\]
+Como $A^*(vol_{S^{n-1}})=(-1)^nvol_{S^{n-1}}$ y $A^*\pi^*=\pi^*:\Omega^{n-1}(\R\PP^{n-1})\to\Omega^{n-1}(S^{n-1})$, tenemos que si $n$ es par, podemos orientar $\R\PP^{n-1}$ con una forma de orientación $w$ tal que $\pi^*(w)=vol_{S^{n-1}}$. Dado $[x]\in\R\PP^{n-1}$, definimos
+\[
+w_{[x]}(v_1,\dots, v_n)=(vol_{S^{n-1}})_x((D_x\pi)^{-1}(v_1),\dots, (D_x\pi)^{-1}(v_n))=
+\] 
+\[
+(vol_{S^{n-1}})_{-x}((D_x\pi)^{-1}(v_1),\dots, (D_x\pi)^{-1}(v_n))=A^*(vol_{S^{n-1}})_x((D_x\pi)^{-1}(v_1),\dots, (D_x\pi)^{-1}(v_n))
+\]
+gracias a que $n$ es par y el signo no cambia. Así definido tenemos un volumen, por ser $D_x\pi$ isometría, es decir, al evaluarlo sobre una base ortonormal obtenemos 1. Así que $w=vol_{\R\PP^{n-1}}$ con $\pi^*(vol_{\R\PP^{n-1}})=vol_{S^{n-1}}$. En general $\pi^*(vol_{\R\PP^{n-1}})=\pm (vol_{S^{n-1}})$. Como $S^{n-1}$ es conexa, se tiene globalmente el mismo signo. Ahora,
+\[
+(-1)^n(\pm 1)vol_{S^{n-1}}=\pm A^*(vol_{S^{n-1}})=A^*(\pi^*(vol_{\R\PP^{n-1}}))=\pi^*(vol_{\R\PP^{n-1}})=\pm vol_{S^{n-1}}
+\]
+por lo que $\R\PP^{n-1}$ es orientable si y solo si $n$ es par.
+\end{ej}
+
+\begin{nota}
+Dadas dos variedades diferenciables $M$ y $N$ de dimensiones $m$ y $n$ respectivamente, el producto cartesiano $M\times N$ es una variedad diferenciable de dimensión $m+n$. Para un par de cartas $h:U\to U'$ y $k:V\to V'$ de $M$ y $N$ respectivamente, podemos usar $h\times k:U\times V\to U'\times V'$ como carta de $M\times N$. Este producto de cartas forma un atlas diferenciable sobre $M\times N$. Para $p\in M$ y $q\in N$ hay un isomorfismo natural
+\[
+T_{(p,q)}(M\times N)\cong T_pM\oplus T_qN.
+\]
+Si $M$ y $N$ están orientadas, se pueden usar cartas orientadas $(U,h)$ y $(V,k)$. Los difeomorfismos de transición entre cartas $(U\times V, h\times k)$ satisfacen la condición de la proposición \ref{9.14}, así que obtenemos una \textbf{orientación producto} en $M\times N$. Si las orientaciones están especificadas por formas de orientación $w\in\Omega^m(M)$ y $\tau\in\Omega^n(N)$, la orientación producto viene dada por la forma de orientación $pr^*_M(w)\land pr^*_N(\tau)$, siendo $pr_M$ y $pr_N$ las proyecciones de $M\times N$ en $M$ y $N$ respectivamente. 
+\end{nota}
+
+En adelante consideraremos una variedad diferenciable $M\subseteq\R^{n+k}$ de dimensión $n$. En cada punto $p\in M$ se tiene un espacio vectorial normal $T_pM^{\perp}$ de dimensión $k$. Un \textbf{campo vectorial normal diferenciable} $Y$ en un abierto $W\subseteq M$ es una aplicación diferenciable $Y:W\to\R^{n+k}$ con $Y(p)\in T_pM^{\perp}$ para todo $p\in W$. En el caso $k=1$, $Y$ se llama \textbf{aplicación de Gauss} cuando $Y(p)$ tiene longitud 1. Tal aplicación siempre existe localmente por lo siguiente:
+
+\begin{lemma}
+Para todo $p_0\in M\subseteq\R^{n+k}$ existe un entorno abierto $W$ de $p_0$ en $M$ y campos vectoriales normales diferenciables $Y_j$ ($1\leq j\leq k$) en $W$ tales que $Y_1(p),\dots, Y_k(p)$ forman una base ortonormal de $T_pM^{\perp}$ para todo $p\in W$.
+\end{lemma}
+\begin{proof}
+Entorno a $p_0\in M$ existen vectores tangentes diferenciables $X_1,\dots, X_n$ que en cada punto $p$ dan lugar a una base de $T_pM$. Elegimos una base $V_1,\dots, V_n\in T_{p_0}M^{\perp}$. Dado que el determinante $(n+k)\times(n+k)$
+\[
+\det(X_1(p),\dots, X_n(p),V_1,\dots, V_k)
+\]
+no se anula en $p_0$, tampoco se anula en un entorno $W$ de $p_0$ en $M$. Aplicando Gram-Schmidt obtenemos una base ortonormal de $\R^{n+k}$
+\[
+\widetilde{X}_1(p),\dots, \widetilde{X}_n, Y_1(p),\dots, Y_k(p)
+\]
+donde los primeros $n$ vectores generan $T_pM$. Además todos los vectores resultantes son diferenciables por lo que se tiene el resultado.
+\end{proof}
+
+
+\begin{prop}
+Sea $M\subseteq\R^{n+1}$ una variedad diferenciable de codimensión 1.
+\begin{enumerate}
+\item Hay una correspondencia biunívoca entre campos de vectores normales diferenciables $Y$ en $M$ y $n$-formas en $\Omega^n(M)$. Esta correspondencia asocia a $Y$ la $n$-forma $w=w_Y$ dada por
+\[
+w_p(W_1,\dots, W_n)=\det(Y(p), W_1,\dots, W_n)
+\]
+para $p\in M$, $W_i\in T_pM$.
+\item Esto induce una correspondencia biunívoca entre las aplicaciones de Gauss $Y:M\to S^n$ y las orientaciones de $M$:
+\end{enumerate}
+\end{prop}
+\begin{dem}
+Si $p\in M$ entonces $Y(p)=0$ si y solo si $w_p\equiv 0$. Como $w_Y$ depende linealmente de $Y$, la aplicación $Y\mapsto w_Y$ debe ser inyectiva. Si $Y$ es una aplicación de Gauss, entonces $w_Y$ es una forma de orientación (porque no se anula por lo anterior) que coincide justamente con la forma de volumen asociada a la orientación determinada por $w_Y$ y la estructura Riemanniana de $M$ inducida por $\R^{n+1}$. Si $M$ tiene una aplicación de Gauss, entonces 1 se verifica, ya que todo elemento de $\Omega^n(M)$ es de la forma $fw_Y=w_{fY}$ para alguna $f\in C^{\infty}(M,\R)$, así que es sobreyectiva. 
+
+Ahora, $M$ puede ser cubierta por abiertos para los que existe una aplicación de Gauss. Para cada uno de ellos se verifica 1, pero entonces también se verifica globalmente. Efectivamente, si $Y$ es campo diferenciable normal sobre $M$, $Y|_{W_i}$ lo es sobre $W_i$, lo cual es equivalente a que $(w_Y)|_{W-i}$ sea una $n$-forma diferenciable sobre $W_i$. Es decir, que $w_Y$ es diferenciable en cada $W_i$, lo cual por definición implica que es diferenciable en $M$. Recíprocamente, si $w\in\Omega^n(M)$, al restringirla a un abierto será diferenciable, por lo que sus restricciones son de la forma $w_{Y_i}$ donde $Y_i:W_i\to S^n$ es un campo de Gauss. Esto describe una aplicación diferenciable $Y:M\to S^n$. 
+
+Por último, una orientación de $M$ determina una forma de volumen $vol_M$, y de 1 se obtiene $Y$ con $w_Y=vol_M$. Este $Y$ es una aplicación de Gauss, por ser necesariamente $|Y(p)|=1$ para todo $p$.  
+\QED
+\end{dem}
+
+\section{Entornos tubulares}
+
+\begin{teorema}[Entornos tubulares]
+
+Sea $M\subseteq\R^{n+k}$ subvariedad diferenciable de dimensión $n$. Entonces existe un abierto $V\subseteq\R^{n+k}$ con $M\subseteq V$ y una retracción $r:V\to M$ diferenciable con $r|_M=Id_M$ verificando:
+\begin{enumerate}
+\item para todo $x\in V, y\in M$ se tiene $|x-r(x)|\leq|x-y|$, dándose la igualdad solo cuando $y=r(x)$. 
+\item para todo $p\in M$, $r^{-1}(p)$ es una bola abierta en el hiperplano $p+T_pM^{\perp}$ con centro $p$ y radio $\rho(p)$ definiendo una aplicación diferenciable $\rho:M\to (0,+\infty)$. 
+\item si $\varepsilon:M\to\R$ es diferenciable y $0<\varepsilon(p)<\rho(p)$ para todo $p\in M$, $S_{\varepsilon}=\{x\in V\mid |x-r(x)|=\varepsilon(r(x))\}=Fr(V_{\varepsilon})$ es una subvariedad diferenciable de $\R^{n+k}$ de codimensión 1.  A $V=V_\rho$ se le llama \textbf{entorno tubular}.
+\end{enumerate}
+\end{teorema}
+
+
+\begin{prop}
+Si $M$ es una variedad diferenciable compacta, entonces $H^p(M)$ es de dimensión finita.
+\end{prop}
+\begin{dem}
+Como $M$ es compacta, puede ser recubierta por abiertos $U_i$ de $\R^{n+k}$ centrados en $p_i\in M$, $M\subseteq U_1\cup\dots\cup U_r=U\subseteq V$ donde $V$ es un entorno tubular. Como $i^*\circ r^*=Id^*$, $i^*:H^p(U)\to H^p(M)$ es sobreyectiva, luego $H^p(M)$ es finitamente generado. 
+
+\QED
+\end{dem}
+
+\begin{prop}
+Sean $M_1,M_2$ subvariedades diferenciables de un espacio euclídeo:
+\begin{enumerate}
+\item Si $f_0,f_1:M_1\to M_2$ son aplicaciones diferenciables homotópicas, entonces $f_0^*=f_1^*:H^p(M_2)\to H^p(M_1)$ para todo $p\geq 0$.
+\item Toda aplicación continua $\phi:M_1\to M_2$ continua es homotópica a una aplicación diferenciable $g:M_1\to M_2$. Así, el functor cohomología se extiende a la categoría de variedades diferenciables con aplicaciones continuas.
+\end{enumerate}
+\end{prop}
+\begin{dem}
+Sean $V_j$ entornos tubulares de $M_j$ con aplicaciones $i_j:M_j\to V_j $ y $r_j:V_j\to M_j$.
+\begin{enumerate}
+\item $f_0\simeq f_1\Rightarrow i_2f_0r_1\simeq i_2f_1r_1\Rightarrow (i_2f_0r_1)^*=(i_2f_1r_1)^*\Rightarrow r_1^*f_0^*i_2^*=r_1^*f_1^*i_2^*$. Como $i_2^*$ es epimorfismo y $r_1^*$ es monomorfismo, se tiene la igualdad buscada.
+\item Tenemos que $i_2\phi r_1:V_1\to V_2$ es una aplicación continua, por lo que existe $g:V_1\to V_2$ diferenciable con $g\simeq i_2\phi r_1$. Consideramos entonces $r_2gi_1:M_1\to M_2$. Se tiene $r_2gi_1\simeq r_2(i_2\phi r_1)i_1=\phi$. 
+\end{enumerate}
+\QED
+\end{dem}
+
+\begin{coro}
+Si $M\subseteq\R^{n+k}$ es una subvariedad diferenciable de dimensión $n$ y $(V,i,r)$ un entorno tubular, entonces $i^*:H^p(V)\to H^p(M)$ es isomorfismo para todo $p\geq 0$.
+\end{coro}
+\begin{dem}
+Tenemos que $r\circ i=Id_M$ y $i\circ r\cong Id_V$, ya que $V$ con tiene el segmento entre $x$ y $r(x)$ para todo $x\in V$, así que $r$ e $i$ son inversas homotópicas, de donde se deduce el resultado. \QED
+\end{dem}
+
+\begin{ej}
+$H^p(S^n)\cong H^p(\R^{n+1}-\{0\})$. 
+\end{ej}
+
+\begin{nota}
+Si $M\subseteq\R^l$ es una subvariedad diferenciable de dimensión $n$ y $U_1$ y $U_2$ son abiertos de la variedad, entonces se tiene la sucesión de Mayer-Vietoris
+\[
+\cdots\to H^p(U_1\cup U_2)\xrightarrow{I_*}H^p(U_1)\oplus H^p(U_2)\xrightarrow{J_*}H^p(U_1\cap U_2)\xrightarrow{\partial_*}H^{p-1}(U_1\cup U_2)\to\cdots 
+\]
+\end{nota}
+
+\begin{ej}
+Vamos a calcular la cohomología de $\R\PP^{n-1}$. Recordemos que $D_xA:T_xS^{n-1}\to T_{A(x)}S^{n-1}$ es isometría, luego para todo $p$, $Alt^p(T_{A(x)}S^{n-1})\cong Alt^p(T_xS^{n-1})$. También es isometría $D_x\pi:T_x S^{n-1}\to T_{\pi(x)}\R\PP^{n-1}$.
+
+Tenemos por otra parte $\pi^*=\Omega^p(\pi):\Omega^p(\R\PP^{n-1})\to\Omega^p(S^{n-1})$ es inyectivo. Efectivamente, dada $w\in \Omega^p(\R\PP^{n-1})$; $\pi^*(w)_x(w_1,\dots, w_2)=w_{\pi(x)}(D_x\pi(w_1),\dots, D_x\pi(w_p))$. Si $\pi^*(w)=0$, entonces para todo $x\in S^{n-1}$ $\pi^*(w)_x=0$, si y solo si $\pi^*(w)_x(w_1,\dots, w_p)=w_{\pi(x)}(D_x\pi(w_1),\dots, D_x\pi(w_p))=0$ para todo $w_i\in T_x S^{n-1}$. Para todo $\pi(x)\in\R\PP^{n-1}$, cualquier $v_i\in T_x\R\PP^{n-1}$ se puede escribir como $D_x\pi(w_i)$ por ser $D_x\pi$ isomorfismo. Así que $w_{\pi(x)}(v_1,\dots, v_p)=w_{\pi(x)}(D_x\pi(w_1),\dots, D_x\pi(w_p))=\pi^*(w)_x(w_1,\dots, w_p)=0$, por lo que $w_{\pi(x)}$ es idénticamente nulo.
+
+Como $\pi\circ A=\pi$, tenemos que $\Ima\pi^*\cong \{w\in\Omega^p(S^{n-1})\mid w=A^*(w)\}\subseteq\Omega^p(S^{n-1})$. Como $(A^*)^2=Id$, podemos  descomponer $\Omega^p(S^{n-1})=\Omega^p_+(S^{n-1})\oplus \Omega^p_-(S^{n-1})$. Obsérvese que $\Omega^p_+(S^{n-1})=\Ima\pi^*\cong \Omega^p(\R\PP^{n-1})$ por ser $\pi^*$ inyectiva. 
+
+Tenemos que $\Omega^p_\pm(S^{n-1})=\Ima(\frac{1}{2}(Id\pm \Omega^p(A)))$. Esto es así porque a cada $w\in \Omega^p(S^{n-1})$ le podemos asignar $\varphi(w)=\frac{w+A^*(w)}{2}\oplus \frac{w-A^*(w)}{2}\in\Omega^p_+(S^{n-1})\oplus\Omega^p_-(S^{n-1})$, que al aplicarle $A^*$ nos da la identidad medios y menos la identidad medios. Además, por linealidad de la diferencial, $d(\varphi(w))=\frac{dw+dA^*(w)}{2}+\frac{dw-dA^*(w)}{2}=\varphi(dw)=\varphi_+(dw) +\varphi_-(dw)$, por lo que tenemos el complejo de cadenas descompuesto en parte positiva y negativa. Así que también podemos descomponer $H^p(S^{n-1})\cong H^p_+(S^{n-1})\oplus H^p_-(S^{n-1})$.  Como la parte positiva es la parte invariante por $A^*$, $H^p(\R\PP^{n-1})\cong H^p_+(S^{n-1})$.  Tenemos los isomorfismos
+\[
+\begin{tikzcd}
+H^{n-1}(\R^n-\{0\})\arrow[r,"t^*"]\arrow[d, "i^*"] & H^{n-1}(\R^n-\{0\})\arrow[d, "i^*"]\\
+H^{n-1}(S^{n-1})\arrow[r, "A^*"] & H^{n-1}(S^{n-1})
+\end{tikzcd}
+\]
+donde $t(x)=-x$. Sabemos que $\R\PP^{n-1}$ es conexo. Además, dado un generador $[z]\in H^{n-1}(S^{n-1})$, si $A^*([z])=-[z]$ entonces no está en la clase del proyectivo, por lo que solo lo estará si $n$ es par. En resumen,
+\[
+H^p(\R\PP^{n-1})\cong H^p(S^{n-1})_+=\begin{cases}
+\R & p=n-1, n\equiv 0\mod 2\\
+\R & p=0\\
+0 & c.c.
+\end{cases}
+\]
+\end{ej}
+
+\end{document}

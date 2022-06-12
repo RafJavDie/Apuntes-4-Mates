@@ -1,0 +1,364 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de From Calculus to Cohomology, Capítulo 2}
+\author{Javier Aguilar Martín}
+\maketitle
+
+
+\begin{ejercicio}{2.2}
+Econtrar $w\in Alt^2(\R^4)$ tal que $w\land w\neq 0$.
+\end{ejercicio}
+\begin{solucion}
+Sea $w=\varepsilon_1\land \varepsilon^2 +\varepsilon^3\land \varepsilon^4$. Entonces
+$$w\land w= \varepsilon^1\land \varepsilon^2\land \varepsilon^3\land \varepsilon^4 +\varepsilon^3\land \varepsilon^4\land \varepsilon^1\land \varepsilon^2=2\varepsilon^1\land \varepsilon^2\land \varepsilon^3\land \varepsilon^4 \neq 0.$$
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.3}
+Demostrar que existen isomorfismos
+\begin{align*}
+&\R^3\overset{i}{\to} Alt^1(\R^3), &\R^3\overset{j}{\to} Alt^2(\R^3)
+\end{align*}
+dados por
+\begin{align*}
+& i(v)(w)=v\cdot w, & j(v)(w_1,w_2)=\det(v,w_1,w_2).
+\end{align*}
+Demostrar que para $v_1,v_2\in\R^3$ se tiene
+$$i(v_1)\land i(v_2)=j(v_1\times v_2).$$
+\end{ejercicio}
+\begin{solucion}
+Por las propiedades del producto escalar y del determinante respectivamente, tanto $i$ como $j$ son homomorfismos de espacios vectoriales. Como $\dim(\R^3)=\dim(Alt^1(\R^3))=\dim(Alt^2(\R^3))=3$, basta probar que $i$ y $j$ son inyectivas o sobreyectivas para tener que son isomorfismos.
+
+\underline{$i$ es inyectiva}:
+Sean $v_1,v_2\in\R^3$ tales que $i(v_1)=i(v_2)$. Esto quiere decir que para cualquier $w\in\R^3$, $i(v_1)(w)=i(v_2)(w)$. En particular tomando $w_i=e_i$ tenemos que $v_1=v_2$. 
+
+
+\underline{$j$ es inyectiva}:
+Sean $v_1,v_2\in\R^3$ tales que $j(v_1)=j(v_2)$. Esto quiere decir que para cualesquiera $w_1,w_2\in\R^3$, $j(v_1)(w_1,w_2)=j(v_2)(w1,w_2)$. Tomando las parejas $(e_1,e_2)$, $(e_1,e_3)$ y $(e_2,e_3)$ se obtiene que $v_1=v_2$. 
+
+Por último, sean $w_1,w_2\in\R^3$. Veamos que se tiene la última igualdad.
+$$(i(v_1)\land i(v_2))(w_1,w_2)=\begin{vmatrix}
+i(v_1)(w_1) & i(v_1)(w_2)\\
+i(v_2)(w_1) & i(v_2)(w_2)
+\end{vmatrix}=\begin{vmatrix}
+v_1\cdot w_1 & v_1\cdot w_2\\
+v_2\cdot w_1 & v_2\cdot w_2
+\end{vmatrix}=(v_1\cdot w_1)(v_2\cdot w_2)-(v_1\cdot w_2)(v_2\cdot w_1).$$
+$$j(v_1\times v_2)(w_1,w_2)=\begin{vmatrix}
+v_1\times v_2\\
+w_1\\
+w_2
+\end{vmatrix}=(v_1\times v_2)\cdot (w_1\times w_2)=(v_1\cdot w_1)(v_2\cdot w_2)-(v_1\cdot w_2)(v_2\cdot w_1).$$
+Por lo que se tiene la igualdad. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.4}
+Sea $V$ un $\R$-espacio vectorial de dimensión finita con producto escalar y sea 
+$$i:V\to V^*=Alt^1(V)$$
+la aplicación $\R$-lineal dada por 
+$$i(v)(w)=v\cdot w.$$
+Probar que si $\{b_1,\dots, b_n\}$ es una base ortonormal de $V$, entonces
+$$i(b_k)=b_k^*,$$
+donde $\{b_1^*,\dots, b_n^*\}$ es la base dual. Concluir que $i$ es un isomorfismo.
+\end{ejercicio}
+\begin{solucion}
+Basta probar que $i(b_k)(b_j)=\delta_{kj}$. 
+\begin{gather*}
+i(b_k)(b_k)=b_kb_k=|b_k|^2=1\\
+i(b_k)(b_j)=b_kb_j=0, \forall j\neq k.
+\end{gather*}
+Como $i$ transforma bases en bases, es un isomorfismo.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.5}
+Con las mismas hipótesis que en el ejercicio anterior, probar la existencia de un producto escalar $\langle,\rangle$ en $Alt^p(V)$ tal que
+$$\langle w_1\land\dots\land w_p,\tau_1\land\dots\land\tau_p\rangle=\det(\langle w_i,\tau_j\rangle)$$
+para cualesquiera $w_i,\tau_j\in Alt^1(V)$, y 
+$$\langle w,\tau\rangle=i^{-1}(w)\cdot i^{-1}(\tau).$$
+Sea $\{b_1,\dots, b_n\}$ una base ortonormal de $V$ y sean $\beta_j=i(b_j)$. Probar que
+$$\{\beta_{\sigma(1)}\land\dots\land\beta_{\sigma(p)}\mid \sigma\in S(p,n-p)\}$$
+es una base ortonormal de $Alt^p(V)$.
+\end{ejercicio}
+\begin{solucion}
+Vamos a probar que la expresión del enunciado determina un producto escalar comprobando que verifica los axiomas. Tengamos en cuenta que por la definición de $i$ y del producto escalar del ejercicio anterior, $i^{-1}(w)\cdot i^{-1}(\tau)=i(i^{-1}(w))(i^{-1}(\tau))=w(i^{-1}(\tau))=\tau(i^{-1}(w))$ por simetría del producto escalar. Entonces, $\det(w_i(i^{-1}(\tau_j))=w_1\land\dots\land w_p(i^{-1}(\tau_1),\dots, i^{-1}(\tau_p))$ o también $\det(\tau_j(i^{-1}(w_i))=\tau_1\land\dots\land\tau_p(i^{-1}(w_1),\dots, i^{-1}(w_p))$. Así, $\langle w+w',v\rangle$ sería simplemente evaluar $w+w'$ sobre los $i^{-1}(v_i)$, por lo que claramente es multilineal. 
+
+Dado $w\in Alt^p(V)$, $w=\sum_{\sigma\in S(p,n-p)}w_{\sigma}\varepsilon_{\sigma}$. Veamos que la aplicación es semidefinida positiva. Usamos la notación $e_i$ y $\varepsilon_i$ para la base ortonormal y su dual respectivamente. Sean $\sigma,\sigma'\in S(p,n-p)$.
+\begin{gather*}
+\langle \varepsilon_{\sigma}, \varepsilon_{\sigma'}\rangle=\langle \varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)},\varepsilon_{\sigma'(1)}\land\dots\land\varepsilon_{\sigma'(p)}\rangle=\\
+\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)}(i^{-1}(\varepsilon_{\sigma'(1)}),\dots, i^{-1}(\varepsilon_{\sigma'(p)}))=\\
+\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)}(e_{\sigma'(1)}, \dots, e_{\sigma'(p)})
+\end{gather*}
+Esto vale 0 si $\sigma\neq\sigma'$ y 1 si $\sigma=\sigma'$, por lo que se tiene el resultado. 
+Además es simétrica porque el determinante de una matriz coincide con el de su traspuesta.
+
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6}
+Supongamos que $w\in Alt^p(V)$. Let $v_1,\dots, v_p$ vectores de $V$ y sea $A=(a_{ij})$ una matriz $p\times p$. Probar que para $w_i=\sum_{j=1}^pa_{ij}v_j$ ($1\leq i\leq p$) se tiene
+$$w(w_1,\dots, w_p)=\det(A)w(v_1,\dots, v_p).$$
+\end{ejercicio}
+\begin{solucion}
+Aplicar la multilinealidad junto con la definición de alternado, incluyendo que cambia el signo al trasponer.
+\[
+w=\sum_{\sigma\in S(p,n-p)} w_{\sigma}\varepsilon_{\sigma}\Rightarrow w(w_1,\dots, w_p)=\sum_{\sigma}w_{\sigma}\varepsilon_{\sigma}(w_1,\dots, w_p)=\det A\sum_{\sigma}(v_1,\dots, v_p). 
+\]
+Veámoslo.
+\[
+\varepsilon_{\sigma}(w_1,\dots, w_p)=\sum_{\tau\in S(p)}\prod_{k=1}^p a_{k,\tau(k)} \varepsilon_{\sigma}(v_{\tau(1)},\dots, v_{\tau(p}))=\sum_{\tau\in S(p)}sgn(\tau)\prod_{k=1}^p a_{k,\tau(k)} \varepsilon_{\sigma} w(v_{1},\dots, v_{p})=
+\]
+\[
+\det(A)\varepsilon_{\sigma}(v_1,\dots, v_p)
+\]
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.7}
+Probar para $f:V\to W$ que
+
+$$Alt^{p+q}(f)(w_1\land w_2)=Alt^p(f)(w_1)\land Alt^q(f)(w_2),$$
+donde $w_1\in Alt^p(W)$ y $w_2\in Alt^q(W)$.
+\end{ejercicio}
+\begin{solucion}
+Sean $v_1,\dots, v_{p+q}\in W$. 
+\begin{gather*}
+Alt^{p+q}(f)(w_1\land w_2)(v_1,\dots, v_{p+q})=w_1\land w_2(f(v_1),\dots, f(v_{p+q}))=\\
+\sum_{\sigma\in S(p,q)}sgn(\sigma)w_1(f(v_{\sigma(1)}),\dots, f(v_{\sigma(p)}))w_2(f(v_{\sigma(p+1)}),f(v_{\sigma(p+q}))=\\
+\sum_{\sigma\in S(p,q)}sgn(\sigma) Alt^p(f)(w_1)(v_{\sigma(1)},\dots, v_{\sigma(p)})Alt^q(f)(w_2)(v_{\sigma(p+1)},\dots, v_{\sigma(p+q)})=\\
+Alt^p(f)(w_1)\land Alt^q(f)(w_2)(v_1,\dots, v_{p+1})
+\end{gather*}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.9}
+Sea $V$ un espacio vectorial $n$-dimensional con producto escalar $\langle,\rangle$. Por el ejercicio \ref{ejer:2.5} obtenemos un producto escalar en $Alt^p(V)$ para todo $p$, en particular en $Alt^n(V)$. 
+
+Un \emph{elemento de volumen} de $V$ es un vector unitario $vol\in Alt^n(V)$. El operador \emph{estrella de Hodge}
+\[
+*: Alt^p(V)\to Alt^{n-p}(V)
+\]  
+está definido por la ecuación $\langle *w,\tau\rangle vol=w\land \tau$. Probar que $*$ está bien definido y es lineal.
+
+Sea $\{e_1,\dots, e_n\}$ una base ortonormal de $V$ con $vol(e_1,\dots, e_n)=1$ y $\{\varepsilon_1,\dots, \varepsilon_n\}$ la base ortonormal dual de $Alt^1(V)$. Probar que 
+\[
+*(\varepsilon_1\land\dots\land\varepsilon_p)=\varepsilon_{p+1}\land\dots\land\varepsilon_n
+\]
+y en general que
+\[
+*(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)})=\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)}
+\]
+con $\sigma\in S(p,n-p)$. Probar que $*\circ *=(-1)^{n(n-p)}$ en $Alt^p(V)$.
+\end{ejercicio}
+\begin{solucion}
+Consideramos una base ortonormal en $V$, $\{e_1,\dots, e_n\}$ cuya dual en $Alt^1(V)$ será $\{\varepsilon_1,\dots, \varepsilon_n\}$. Tenemos entonces que $vol=\lambda\varepsilon_1\land\dots\land\varepsilon_n$ tal que $\langle vol,vol\rangle=\lambda^2=1$. Luego tenemos dos posibilidades. Escogeremos $\lambda=1$. Con $\lambda=-1$ se obtendría todo igual cambiado de signo.
+
+La ecuación $\langle *w,\tau\rangle vol=w\land \tau$ se cumple si y solo si se cumple al evaluarla en la base de $V$. Vamos a suponer que la estrella está bien definida y veremos que solo puede ser de una forma, lo cual nos facilitará ver que efectivamente está bien definida.
+
+$*w=\sum_{\tau\in S(n-p,p)}*w(e_{\tau(1)},\dots, e_{\tau(p)})\varepsilon_{\tau}$. Los coeficientes son igual a $\langle *w,\varepsilon_{\tau}\rangle$. Por tanto, usando la fórmula, esto es gual a $w\land\varepsilon_{\tau}(e_1,\dots, e_n)$. Así que
+\[
+*w=\sum_{\tau\in S(n-p,p)}(w\land\varepsilon_{\tau}(e_1,\dots, e_2))\varepsilon_{\tau}:=\alpha.
+\]
+
+Hay que verificar entonces que $\langle\alpha,\beta\rangle=w\land\beta(e_1,\dots, e_n)$. Sea pues $\beta\in Alt^{n-p}(V)$, entonces $\beta=\sum_{\tau\in S(n-p,p)}\beta(e_{\tau(1)},\dots, e_{\tau(n-p)})\varepsilon_{\tau}$. Por lo que
+\[
+\langle \alpha,\beta\rangle=\langle \sum_{\tau} w\land \varepsilon_{\tau}(e_1,\dots, e_n), \sum_{\hat{\tau}}\beta(e_{\hat{\tau}(1)},\dots, e_{\hat{\tau}(n-p)})\varepsilon_{\hat{\tau}}\rangle=
+\]
+\[
+\sum_{\tau}\sum_{\hat{\tau}}w\land\varepsilon_{\tau}(e_1,\dots, e_n)\beta(e_{\hat{\tau}(1)},\dots, e_{\hat{\tau}(n-p)})\langle\varepsilon_{\tau},\varepsilon_{\hat{\tau}}\rangle=
+\]
+\[
+\sum_{\tau\in S(n-p,p)}(w\land\varepsilon_{\tau}(e_1,\dots, e_n)\beta(e_{\tau(1)},\dots, e_{\tau(n-p)})=\sum_{\tau}(w\land(\beta(e_{\sigma(1)},\dots, e_{\tau(n-p)})\varepsilon_{\tau})(e_1,\dots, e_n)=
+\]
+\[
+w\land(\sum_{\tau}\beta(e_{\tau(1)},\dots, e_{\tau(n-p)})\varepsilon_{\tau})(e_1,\dots, e_n)=w\land\beta(e_1,\dots, e_n)
+\]
+
+Ahora vamos a hacer lo que pide el ejercicio.
+
+\begin{gather*}
+*(\varepsilon_1\land\dots\land\varepsilon_p)=\sum_{\tau\in S(n-p,p)}*(\varepsilon_1\land\dots\land\varepsilon_p)(e_{\tau(1)},\dots, e_{\tau(n-p)})\varepsilon_{\tau}=\sum_{\tau\in S(n-p,p)}\langle *(\varepsilon_1\land\dots\land\varepsilon_p),\varepsilon_{\tau}\rangle\varepsilon_{\tau}
+\end{gather*}
+Por otro lado
+\begin{gather*}
+\langle *(\varepsilon_1\land\dots\land\varepsilon_p),\varepsilon_{\tau}\rangle=\varepsilon_1\land\dots\land\varepsilon_p\land\varepsilon_{\tau(1)}\land\dots\land\varepsilon_{\tau(n-p)}(e_1,\dots, e_n)=\\
+\begin{cases}
+0 & \{1,\dots, p\}\cap\{\tau(1),\dots,\tau(n-p)\}\neq\emptyset\\
+1 & \{1,\dots, p\}\cap\{\tau(1),\dots,\tau(n-p)\}=\emptyset\Rightarrow \tau(i)=p+i\forall 1\leq i\leq n-p
+\end{cases}
+\end{gather*}
+
+En general, 
+\begin{gather*}
+*(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)})=\sum_{\tau\in S(n-p,p)}\langle *(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)},\varepsilon_{\tau}\rangle\varepsilon_{\tau}.
+\end{gather*}
+Y de nuevo
+\begin{gather*}
+\langle *(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)}),\varepsilon_{\tau}\rangle=\\
+\begin{cases}
+0 & \{\sigma(1),\dots, \sigma(p)\}\cap\{\tau(1),\dots,\tau(n-p)\}\neq\emptyset\\
+\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)}\land\varepsilon_{\sigma(p+1)}\land\dots\varepsilon_{\sigma(n)}(e_1,\dots, e_n) & \{\sigma(1),\dots, \sigma(p)\}\cap\{\tau(1),\dots,\tau(n-p)\}=\emptyset
+\end{cases}
+\end{gather*}
+En el segundo caso $\tau(i)=\sigma(p+i)\forall 1\leq i\leq n-p$.
+
+Sea ahora $w\in Alt^p(v)$, utilizando lo anterior
+\begin{gather*}
+w=\sum_{\sigma\in S(p,n-p)}w(e_{\sigma(1)},\dots, e_{\sigma(p)})\varepsilon_{\sigma}\Rightarrow\\
+*w=\sum_{\sigma\in S(p,n-p)}w(e_{\sigma})*(e_{\sigma})=\sum_{\sigma\in S(p,n-p)}w(e_{\sigma})sgn(\sigma)(\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)})\Rightarrow\\
+*(*w)=\sum_{\sigma\in S(p,n-p)}w(e_{\sigma})sgn(\sigma)*(\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)})
+\end{gather*}
+Repitiendo el argumento de antes, tenemos
+\begin{gather*}
+*(\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)})=\sum_{\tau\in S(n-p,p)}\langle *(\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)}),\varepsilon_{\tau}\rangle\varepsilon_{\tau}
+\end{gather*}
+Y además
+\begin{gather*}
+\langle *(\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)}),\varepsilon_{\tau}\rangle=\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)}\land\varepsilon_{\tau(1)}\land\dots\land\varepsilon_{\tau(n-p)}(e_1,\dots, e_n)
+\end{gather*}
+que de nuevo tenemos que vale 0 si $\sigma\neq\tau$ y si $\sigma=\tau$ entonces obtendríamos la expresión
+\begin{gather*}
+\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)}\land\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(n-p)}(e_1,\dots, e_n)=(-1)^{p(n-p)}sgn(\sigma)
+\end{gather*}
+pues tenemos que llevar al principio ordenadamente el factor $\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(n-p)}$.
+
+Volviendo entonces a $*(*w)$ tendríamos
+\begin{gather*}
+*(*w)=\sum_{\sigma\in S(p,n-p)}w(e_{\sigma})sgn(\sigma)(-1)^{p(n-p)}sgn(n)\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)}=(-1)^{p(n-p)}w
+\end{gather*}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.10}
+Sea $V$ un espacio vectorial de dimensión 4 y $\{\varepsilon_1,\dots,\varepsilon_4\}$ una base de $Alt^1(V)$. Sea $A$ una matriz antisimétrica y definamos
+\[
+\alpha=\sum_{i<j}a_{ij}\varepsilon_i\land\varepsilon_j.
+\]
+Probar que $\alpha\land\alpha=0$ si y solo si $\det(A)=0$.  Digamos que $\alpha\land\alpha=\lambda\varepsilon_1\land\varepsilon_2\land\varepsilon_3\land\varepsilon_4$. ¿Cuál es la relación entre $\lambda$ y $\det(A)$?
+\end{ejercicio}
+\begin{solucion}
+\begin{gather*}
+\alpha\land\alpha=(\sum_{i<j}a_{ij}\varepsilon_i\land\varepsilon_j)\land (\sum_{i<j}a_{ij}\varepsilon_i\land\varepsilon_j)=\\
+(2a_{12}a_{34}-2a_{13}a_{24}+2a_{14}a_{23})(\varepsilon_1\land\varepsilon_2\land\varepsilon_3\land\varepsilon_4)
+\end{gather*}
+Esto es justamente $2Pf(A)(\varepsilon_1\land\varepsilon_2\land\varepsilon_3\land\varepsilon_4)$, donde $Pf(A)$ es el pfaffiano\footnote{https://en.wikipedia.org/wiki/Pfaffian} de $A$. Como $\det(A)=Pf(A)^2$ se tiene el resultado. Si el módulo de $\alpha\land\alpha$ fuera $\lambda$, entonces $\lambda=2Pf(A)=2\sqrt{\det(A)}$. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.11}
+Sea $V$ un espacio vectorial $n$-dimensional con producto escalar $\langle,\rangle$ y elemento de volumen $vol\in Alt^n(V)$, como en el ejercicio \ref{ejer:2.9}. Sea $v\in Alt^1(V)$ y
+\[
+F_v:Alt^p(V)\to Alt^{p+1}(V)
+\]
+la aplicación
+\[
+F_v(w)=v\land w.
+\]
+Probar que 
+\[
+F^*_v=(-1)^{np}*\circ F_v\circ *: Alt^{p+1}(V)\to Alt^p(V)
+\]
+es adjunto a $F_v$, es decir, $\langle F_vw,\tau\rangle=\langle w,F^*_v\tau\rangle$. Sea $\{e_1,\dots, e_n\}$ una base ortonormal de $V$ con $vol(e_1,\dots,e_n)=1$ y $\{\varepsilon_1,\dots,\varepsilon_n\}$ la base dual (ortonormal) de $Alt^1(V)$. Probar que
+\[
+F^*_v(\varepsilon_1\land\dots\land\varepsilon_{p+1})=\sum_{i=1}^{p+1}(-1)^{i+1}\langle v,\varepsilon_i\rangle\varepsilon_1\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_{p+1}.
+\]
+Probar que $F_vF^*_v+F^*_vF_v:Alt^p\to Alt^p(V)$ es la multiplicación por $||v||^2$. (Pista: suponer que $v=\lambda\varepsilon_1$ y probar que el caso general se sigue del caso particular).
+\end{ejercicio}
+\begin{solucion}
+Es evidente que tanto $F_v$ como $F^*_v$ son homomorfismos de espacios vectoriales. Sean $v\in Alt^1(V), w\in Alt^p(V), \tau\in Alt^{p+1}(V)$. 
+\begin{gather*}
+\langle F_v(w),\tau\rangle=\langle v\land w,\tau\rangle=\langle v\land w, (-1)^{(p+1)(n-p-1)}*(*\tau)\rangle=(-1)^{(p+1)(n-p-1)}*\tau\land v\land w(e_1,\dots, e_n)=\\
+(-1)^{(p+1)(n-p-1)}(-1)^{n-p-1}v\land *\tau\land w(e_1,\dots, e_n)=(-1)^{(p+1)(n-p-1)+(n-p-1)}\langle *(v\land *\tau), w\rangle=\\
+(-1)^{p(n-p-1)}\langle *(w\land *\tau),w\rangle=\langle F^*_v(\tau),w\rangle=\langle w,F^*_v(\tau)\rangle
+\end{gather*}
+
+Vamos a la segunda parte. Se comprueba que
+\[
+*(\varepsilon_i\land\varepsilon_{p+2}\land\dots\land\varepsilon_n)=(-1)^{p(n-p)+p-i+1}\varepsilon_1\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_{p+1}
+\]
+Consideremos la permutación
+\[
+\sigma=\begin{pmatrix}
+1 & \dots & i-1 & i  &\dots & p & p+1 & p+2 & \dots & n\\
+1 & \dots & i-1 & i+1  & \dots & p+1 & i & p+2 & \dots & n
+\end{pmatrix}
+\]
+Entonces
+\begin{gather*}
+*(\varepsilon_1\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_n)=*(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)})=sgn(\sigma)\varepsilon_{\sigma(p+1)}\land\dots\land\varepsilon_{\sigma(n)}=(-1)^{p-i+1}\varepsilon_i\land\varepsilon_{p+1}\land\dots\land\varepsilon_n\\
+\Rightarrow *(\varepsilon_i\land\varepsilon_{p+1}\land\dots\land\varepsilon_n)=(-1)^{p-i+1}**(\varepsilon_1\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_{p+1})=\\
+(-1)^{p-i+1}(-1)^{p(n-p)}\varepsilon_1\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_{p+1}
+\end{gather*}
+
+Ahora, $v=\sum_{i=1}^n\langle v,\varepsilon_i\rangle\varepsilon_i$, entonces
+\begin{gather*}
+F^*_v(\varepsilon_i\land\dots\varepsilon_p)=(-1)^{p(n-p-1)}*(v\land *(\varepsilon_1\land\dots\land\varepsilon_{p+1}))=(-1)^{p(n-p-1)}*(v\land\varepsilon_{p+2}\land\dots\land\varepsilon_n)=\\
+(-1)^{p(n-p-1)}*\left(\sum_{i=1}^n\langle v,\varepsilon_i\rangle\varepsilon_i\land\varepsilon_{p+2}\land\dots\land\varepsilon_n \right)=
+(-1)^{p(n-p-1)}\sum_{i=1}^n\langle v,\varepsilon_i\rangle\varepsilon_i *(\varepsilon_i\land\varepsilon_{p+1}\land\dots\land\varepsilon_n)=\\
+(-1)^{p(n-p-1)}\sum_{i=1}^n\langle v,\varepsilon_i\rangle(-1)^{p(n-p)+p-i+1}\varepsilon_1\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_{p+1}=\\
+\sum_{i=1}^{p+1}(-1)^{1-i}\langle v,\varepsilon_i\rangle\varepsilon_1\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_{p+1}=
+\sum_{i=1}^{p+1}(-1)^{i+1}\langle v,\varepsilon_i\rangle\varepsilon_1\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_{p+1}
+\end{gather*}
+
+Vamos ahora a probar la última parte. Observamos que $F_{v+\lambda w}=F_v+\lambda F_w$, y lo mismo con $F^*$. Por ello, basta tomar un $v=\lambda\varepsilon_1$ (sería para un $i=1,\dots, n$, pero es análogo). Además, como son lineales, es suficiente probar la ecuación para un $w=\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)}$ con $\sigma\in S(p,n-p)$.
+\begin{gather*}
+F_v(\varepsilon_{\sigma})=(\lambda\varepsilon_1)\land(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)}=\begin{cases}
+0 & \sigma(1)=1\\
+\lambda\varepsilon_1\land\varepsilon_{\sigma} & \sigma(1)\neq 1
+\end{cases}
+\end{gather*}
+Luego, por lo hecho en los anterores apartados, en el caso $\sigma(1)\neq 1$ tenemos
+\begin{gather*}
+F^*_vF_v(\varepsilon_{\sigma})=\lambda F^*_v(\varepsilon_1\land\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)})=\lambda\left(\sum_{j=1}^{p+1}(-1)^{j+1}\langle\lambda\varepsilon_1,\varepsilon_j\rangle\varepsilon_1\land\varepsilon_{\sigma(1)}\land\dots\land\hat{\varepsilon}_i\land\dots\land\varepsilon_{\sigma(p)}  \right)=\lambda^2
+\end{gather*}
+Por otro lado 
+\begin{gather*}
+F^*_v(\varepsilon_{\sigma})=F^*_v(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)})=\sum_{i=1}^p(-1)^{i+1}\langle\lambda\varepsilon_1,\varepsilon_{\sigma(i)}\rangle \varepsilon_{\sigma(1)}\land\dots\land\hat{\varepsilon}_{\sigma(i)}\land\dots\land \varepsilon_{\sigma(p)}=\\
+\begin{cases}
+\lambda
+\varepsilon_{\sigma(2)}\land\dots\land\varepsilon_{\sigma(p)} & \sigma(1)=1\\
+0 & \varepsilon(1)\neq 1
+\end{cases}\Rightarrow F_vF^*_v(\varepsilon_{\sigma})=\begin{cases}
+\lambda^2\varepsilon_1\land\varepsilon_{\sigma(2)}\land\dots\land\varepsilon_{\sigma(p)}=\lambda^2\varepsilon_{\sigma}\\
+0
+\end{cases}
+\end{gather*}
+Por lo que al sumar sale exactamente el producto por $\lambda^2$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.12}
+Sea $V$ un espacio vectorial $n$-dimensional. Probar que para una aplicación lineal $f:V\to V$ existe un número $d(f)$ tal que
+\[
+Alt^n(f)(w)=d(f)w
+\]
+para $w\in Alt^n(V)$. Verificar la regla del producto
+\[
+d(g\circ f)=d(g)d(f)
+\]
+para aplicaciones lineales $f,g:V\to V$ usando la funtorialidad de $Alt^n$. Probar que $d(f)=\det(f)$. (Pista: tomar una base $e_1,\dots, e_n$ de $V$ y su base dual $\varepsilon_1,\dots,\varepsilon_n$ de $Alt^n(V)$, y evaluar $Alt^n(f)(\varepsilon_1\land\dots\land\varepsilon_n)$ sobre $(e_1,\dots, e_n)$ en términos de la matriz de $f$ respecto de la base elegida.)
+\end{ejercicio}
+\begin{solucion}
+Vamos a probar que $d(f)=\det(f)$ cumple lo pedido. Obsérvese que si probamos el primer apartado, después como $Alt^n(g\circ f)=Alt^n(f)\circ Alt^n(g)=d(f)d(g)=d(g)d(f)$ se tendrá el segundo. Como $Alt^n(f)$ es lineal, basta probarlo para $\varepsilon_1\land\dots\land\varepsilon_n$. Así pues.
+\[
+Alt^n(f)(\varepsilon_1\land\dots\land\varepsilon_n)(e_1,\dots, e_n)=\varepsilon_1\land\dots\land\varepsilon_n(f(e_1),\dots, f(e_n)),
+\]
+que por definición es el determinante de la matriz de $f$ con respecto a la base $e_1,\dots, e_n$. 
+\end{solucion}
+
+\end{document}

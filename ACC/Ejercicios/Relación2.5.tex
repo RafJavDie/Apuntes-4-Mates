@@ -1,0 +1,331 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\lex}{<_{lex}}
+\newcommand{\grlex}{<_{grlex}}
+\newcommand{\grevlex}{<_{grevlex}}
+
+\newcommand{\PhantC}{\phantom{\colon}}%
+\newcommand{\CenterInCol}[1]{\multicolumn{1}{c}{#1}}%
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{2.5.1}
+Let $I =\langle 
+g_1, g_2, g_3\rangle ⊆ \R[x, y, z]$, where $g_1 = xy^2 − xz + y$, $g_2 = xy − z^2$ and
+$g_3 = x − yz^4$. Using the lex order, give an example of $g ∈ I$ such that $LT(g) \not∈
+\langle
+LT(g_1), LT(g_2), LT(g_3)\rangle$.
+\end{ejercicio}
+
+\begin{solucion}
+Tomamos
+\[ g = g_2 - yg_3 = xy - z^2 - xy + y^2z^4 = y^2z^4 - z^2 \in I\]
+pero $LT(g) = y^2z^4 \notin \gene{LT(g_1),LT(g_2),LT(g_3)}$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.5.2}
+For the ideals and generators given in Exercises 5, 6, and 7 of §3, show that $\gene{LT(I)}$ is
+strictly bigger than 
+$\gene{LT( f_1),\dots , LT( f_s)}$. Hint: This should follow directly from what
+you did in those exercises.
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[]
+\item Para el Ejercicio 5 tenemos $x-z\in \gene{x^2y-z,xy-1}$, pero $x\notin\gene{x^2y,xy}$.
+\item Para el Ejercicio 6 tenemos $3x^2-y^2-y\in\gene{2xy^2-x,3x^2y-y-1}$, pero $3x^2\notin\gene{2xy^2,3x^2y}$.
+\item Para el Ejercicio 7 tenemos $xz-x \in \gene{x^4y^2 − z, x^3y^3 − 1, x^2y^4 − 2z}$, pero $xz\notin\gene{x^4y^2,x^3y^3,x^2y^4}$.
+\end{itemize}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.5.3}
+To generalize the situation of Exercises 1 and 2, suppose that $I = \gene{f_1, \dots, f_s}$ is an ideal
+such that $\gene{LT(f_1), \dots, LT(f_s)}$ is strictly smaller than $\gene{LT(I)}$.
+
+\begin{enumerate}[a.]
+\item Prove that there is some $f ∈ I$ whose remainder on division by $f_1, \dots, f_s$ is nonzero.
+Hint: First show that $LT(f) \not∈ \gene{LT(f_1), \dots, LT(f_s)}$ for some $f ∈ I$
+Then use Lemma 2 of §4.
+\item What does part (a) say about the ideal membership problem?
+\item How does part (a) relate to the conjecture you were asked to make in Exercise 8 of
+§3?
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Sea $g \in \gene{LT(I)}$ tal que $g \notin \gene{LT(f_1),\dots , LT(f_s)}$.
+Por el Lema 3 de §4, como $\gene{LT(I)}$ es ideal monomial, todos los monomios de $g$ deben estar en $\gene{LT(I)}$. Al menos, uno de ellos, llamémoslo $x^{α}$ debe estar en $\gene{LT(I)}$ pero no en $\gene{LT(f_1), \dots, LT(f_s)}$. Por el Lema 2 de §4, existe un $f \in I$ tal que $LT(f)$ divide a $x^{α}$.
+
+Se tiene entonces que $LT(f) \notin \gene{LT(f_1),\dots , LT(f_s)}$, pues si perteneciese implicaría que $x^{α} \in \gene{LT(f_1), \dots, LT(f_s)}$.
+
+Entonces, al aplicar el algoritmo de la división de $f$ entre $f_1,\dots,f_s$, al no ser divisible $LT(f)$ por $LT(f_1),\dots,LT(f_s)$, se añade $LT(f)$ al resto.
+Luego el resto es distinto de cero.
+\item Esto nos dice que si $\gene{LT(f_1), \dots , LT(f_s)}$ está estrictamente contenido en $\gene{LT(I)}$, entonces que si el resto de la división de $f$ por $f_1,\dots,f_s$ no es cero, esto no quiere decir que $f$ no esté en $I$.
+\item Podemos precisar la conjetura que hicimos en el Ejercicio 2.3.8 con lo que hemos dicho en el apartado (b). 
+\end{enumerate}
+Notemos que en particular hemos probado el siguiente enunciado
+\begin{lemma}
+Si existe algún elemento de $I$ cuyo elemento lider no sea divisible por $LT(G)$, entonces $G$ no es una base de Grobner.
+\end{lemma}
+Cuyo contrarrecíproco es
+\begin{lemma}
+Si $G$ es una base de Gröbner entonces el elemento líder de todo elemento de $I$ es divisible por $LT(G)$.
+\end{lemma}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.5.4}
+If $I ⊆ k[x_1,\dots , x_n]$ is an ideal, prove that 
+$\gene{LT(g) \mid g ∈ I\setminus \{0\}} = \gene{LM(g) \mid g ∈ I\setminus \{0\}}$.
+\end{ejercicio}
+\begin{solucion}
+Es inmediato, pues $LT(g)$ y $LM(g)$ son el mismo monomio salvo producto por escalar y los ideales son cerrados para el producto por escalar.
+%Sea $f \in \gene{LT(g) \mid g ∈ I\setminus \{0\}}$.
+%Entonces
+%\[ f = \sum_{i=1}^s \left(\sum_{j=1}^t c_{ij} x^{α_i}\right) LT(g_i) = \sum_{i=1}^s \left(\sum_{j=1}^t LC(g_i) c_{ij} x^{α_i}\right) LM(g_i) \in \gene{LM(g) \mid g ∈ I\setminus \{0\}} \]
+%Análogamente, sea $f \in \gene{LM(g) \mid g ∈ I\setminus %\{0\}}$. Entonces:
+%\[ f = \sum_{i=1}^s \left(\sum_{j=1}^t c_{ij} x^{α_i}\right) LM(g_i) = \sum_{i=1}^s \left(\sum_{j=1}^t \frac{1}{LC(g_i)} c_{ij} x^{α_i}\right) LT(g_i) \in \gene{LT(g) \mid g ∈ I\setminus \{0\}} \]
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.5.5}
+Let $I$ be an ideal of $k[x_1, \dots, x_n]$. Show that $G = \{g_1, \dots, g_t\} ⊆ I$ is a Gröbner basis of
+$I$ if and only if the leading term of any element of $I$ is divisible by one of the $LT(g_i)$.
+\end{ejercicio}
+\begin{solucion}
+Supongamos que el término lider de cada elemento de $I$ es divisible por algún $LT(g_i)$. Se deduce del Lema 2, que $\forall g \in I$ $LT(g)\in \gene{LT(g_i)\mid i=1,\dotsc,t}$, luego $\gene{LT(I)}\subset\gene{LT(g_i)\mid i=1,\dotsc,t}$. Como siempre se tiene la inclusión recíproca, se da la igualdad. Esto es la definición de ser base de Gröbner.
+
+La implicación contraria puede verse demostrada en el apartado a. del Ejercicio \ref{ejer:2.5.3} por contrarrecíproco.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.5.6}
+Corollary 6 asserts that a Gröbner basis is a basis then $I =\gene{ 
+g_1,\dots , g_t}$. We gave one proof of this in the
+proof of Theorem 4. Complete the following sketch to give a second proof. If $f ∈ I$, then
+divide $f$ by $(g_1,\dots, g_t)$. At each step of the division algorithm, the leading term of the
+polynomial under the division will be in 
+$\gene{LT(I)}$ and, hence, will be divisible by one of
+the $LT(g_i)$. Hence, terms are never added to the remainder, so that $f =
+\sum_{i=1}^t a_i g_i$ when
+the algorithm terminates.
+\end{ejercicio}
+\begin{solucion}
+Lo cierto es que el esquema del enunciado es bastante explícito en cuanto a la resolución en sí del ejercicio. Además, el hecho por el cuál en cada paso $LT(p)$ debe estar en $\gene{LT(I)}$ es donde reside la clave de la prueba del Teorema 4.
+
+%Comento esto porque el ejercicio dice que des una prueba alternativa  a la que se da en el Teorema 4. La prueba que se da aquí abajo es precisamente la que se da en el Teorema 4.
+
+%Tomamos $g_1,\dots,g_t$ verificando el enunciado y sea $f \in I$.
+%Dividiendo $f$ entre $g_1,\dots,g_t$, tenemos que existen $q_1,\dots,q_t$ y $r$ en $k[x_1,\dots,x_n]$ tal que $f = q_1 g_q + \dots + q_s g_t + r$ donde ningún monomio de $r$ es divisible por $LT(g_1),\dots,LT(g_t)$.
+%Si $r \neq 0$, $r = f - \sum_{i=1}^s q_i g_i \in I$, sin embargo $LT(r) \notin \gene{LT(g_1),\dots,LT(g_t)} = \gene{LT(I)}$. Esto no es posible por definición de $\gene{LT(I)}$.
+%Entonces $r = 0$, luego $f = q_1 g_1 + \dots + q_s g_t$, es decir, $I = \gene{g_1,\dots,g_t}$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.5.7}
+If we use grlex order with $x > y > z$, is $\{x^4y^2 −z^5, x^3y^3 −1, x^2y^4 −2z\}$ a Gröbner basis
+for the ideal generated by these polynomials? Why or why not?
+\end{ejercicio}
+\begin{solucion}
+Sea $I = \gene{f_1,f_2,f_3} = \gene{x^4y^2 −z^5, x^3y^3 −1, x^2y^4 −2z}$
+Consideramos:
+\[ f  = -y^2(x^4y^2-z^5)+x^2(x^2y^4-2z) = y^2z^5-2x^2z \in I \]
+Tenemos que $LT(f) = y^2z^5$, que no es divisible por ningún elemnto lider de nuestro conjunto, luego $\{f_1,f_2,f_3\}$ no forman una base de Gröbner.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.5.8}
+Repeat Exercise \ref{ejer:2.5.7} for $I = \gene{x − z^2, y − z^3}$ using the lex order. 
+Hint: The difficult part of this exercise is to determine exactly which polynomials are in $\gene{LT(I)}$.
+\end{ejercicio}
+\begin{solucion}
+Sea $f_1 = x-z^2$ y $f_2 = y-z^3$. Dado que con el orden lex $LT(f_1)=x$ y $LT(f_2)=y$, al dividir por $\{f_1,f_2\}$ el resto de la división debe estar en $k[z]$. Como una parametrización de $\V(I)$ es  $\{(t^2,t^3,t) \colon t \in \R\}$, esto implica que el resto (llamémoslo $r(t)$) se anula en todo $z\in \R$, por lo que es 0. Por el Ejercicio \ref{ejer:2.5.5}, $\{f_1,f_2\}$ es una base de Gröbner.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.5.9}
+Let $A = (a_{ij})$ be an $m × n$ matrix with real entries in row echelon form and let $J ⊆
+\R[x_1,\dots , x_n]$ be an ideal generated by the linear polynomials
+$\sum^n_{j=1} a_{ij}x_j$ for $1 ≤ i ≤ m$.
+Show that the given generators form a Gröbner basis for $J$ with respect to a suitable
+lexicographic order. Hint: Order the variables corresponding to the leading 1’s before
+the other variables.
+\end{ejercicio}
+\begin{solucion}
+Ordenando las variables según se comenta el enunciado, es claro que cualquier término líder de un polinomio de $J$ es múltiplo de los términos líderes de alguno de los generadores, pues cada uno tiene grado distinto al estar la matriz en forma escalonada.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.5.10}
+Let $I ⊆ k[x_1, \dots , x_n]$ be a principal ideal (that is, $I$ is generated by a single $f ∈ I$—
+see §5 of Chapter 1). Show that any finite subset of $I$ containing a generator for $I$ is a
+Gröbner basis for $I$.
+\end{ejercicio}
+\begin{solucion}
+Sea $I=\langle f\rangle$. Entonces $\langle LT(f)\rangle=\gene{LT(I)}$ pues todos los polinomios son múltiplos de $f$ y por tanto los términos líderes son múltiplos de $LT(f)$. Así pues, cualquier conjunto finito de polinomios que contenga a $f$ será una base de Gröbner, pues añadir más polinomios del ideal a un generador no aporta nada.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.5.11}
+Let $f ∈ k[x_1,\dots , x_n]$. If $f \not∈ 
+\gene{x_1,\dots , x_n}$, then show 
+$$\gene{x_1,\dots , x_n, f }
+ = k[x_1,\dots, x_n]$$
+\end{ejercicio}
+\begin{solucion}
+Si  $f \not∈ 
+\gene{x_1,\dots , x_n}$ entonces es una constante, luego se tiene el resultado. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.5.12}
+Show that if we take as hypothesis that every ascending chain of ideals in $k[x_1,\dots , x_n]$
+stabilizes, then the conclusion of the Hilbert Basis Theorem is a consequence. Hint: Argue
+by contradiction, assuming that some ideal $I ⊆ k[x_1,\dots , x_n]$ has no finite generating
+set. The arguments you gave in Exercise 12 should not make any special use of properties
+of polynomials. Indeed, it is true that in any commutative ring $R$, the following two
+statements are equivalent:
+\begin{enumerate}[(i)]
+\item Every ideal $I ⊆ R$ is finitely generated.
+\item Every ascending chain of ideals of $R$ stabilizes.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\item[]
+$(i)\Rightarrow(ii)$ Análogo al Teorema 7 pero para un anillo cualquiera.
+
+$(ii)\Rightarrow (i)$ Sea $x_1\in I$, si $\gene{x_1}=I$ hemos acabado. Si no, tomamos $x_2\in I\setminus \gene{x_1}$ y consideramos $\gene{x_1,x_2}$. Consideramos la cadena ascendente
+\[
+\gene{x_1}\subseteq\gene{x_1,x_2}\subseteq\cdots.
+\]
+Como existe un $N$ para el que se estabiliza, $I=\gene{x_1,\dots,x_N}$. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.5.13}
+Let
+$$V_1 ⊇ V_2 ⊇ V_3 ⊇ \cdots$$
+be a descending chain of affine varieties. Show that there is some $N ≥ 1$ such that
+$V_N = V_{N+1} = V_{N+2} = \cdots$ . Hint: Use the ACC and Exercise 14 of Chapter 1, §4.
+\end{ejercicio}
+\begin{solucion}
+Consecuencia inmediata del Nullstellensatz y la ascending chain condition, pero como no se ha visto todavía, vamos a demostrarlo con lo que sabemos. Si $V_i$ es una variedad afín, entonces $\I(V_i)$ es un ideal. Además, si $V_i \subset V_{j}$ entonces $\I(V_j)\subset \I(V_i)$. Por tanto, cada cadena descendente de variedades afines induce una cadena ascendente de ideales. Si la cadena de variedades afín no se detiene, la cadena de ideales tampoco lo haría, lo cuál sabemos que no puede ser, pues $\V(\I(V_i)) = V_i$, como veremos en el Ejercicio \ref{ejer:2.5.16}.
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{2.5.14}
+Let $f_1, f_2,\dots ∈ k[x_1,\dots, x_n]$ be an infinite collection of polynomials. Prove that there is
+an integer $N$ such that $f_i ∈ 
+\gene{f_1,\dots, f_N}$ for all $i ≥ N + 1$. Hint: Use $f_1, f_2,\dots$ to create
+an ascending chain of ideals.
+\end{ejercicio}
+\begin{solucion}
+Análogo a la segunda implicación de \ref{ejer:2.5.12}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.5.15}
+Given polynomials $f_1, f_2,\dots ∈ k[x_1,\dots , x_n]$, let $\V( f_1, f_2,\dots) ⊆ k^n$ be the solutions of
+the infinite system of equations $f_1 = f_2 = \dots = 0$. Show that there is some $N$ such that
+$\V( f_1, f_2,\dots) = \V( f_1,\dots , f_N)$.
+\end{ejercicio}
+\begin{solucion}
+Consecuencia inmediata de \ref{ejer:2.5.13}.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.5.16}
+In Chapter 1, §4, we defined the ideal $\I(V)$ of a variety $V ⊆ k^n$. In this section, we
+defined the variety of any ideal (see Definition 8). In particular, this means that $\V(\I(V))$
+is a variety. Prove that $\V(\I(V)) = V$. Hint: See the proof of Lemma 7 of Chapter 1, §4.
+\end{ejercicio}
+\begin{solucion}
+Por definición de variedad afín, existe $I=\{g_1,\dotsc,g_t\}$ tal que $V=\V(I)$. Es claro que $I\subset \I(V)$, pues son polinomios que se anulan en $V$, luego $\V(\I(V))\subset \V(I) = V$. Recíprocamente, si $x\in V$, entonces $f(x)=0$ $\forall f \in \I(V)$ por definición de $\I(V)$, luego $x\in \V(I(V))$ y $V\subset \V(\I(V))$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.5.17}
+Consider the variety $V = \V(x^2 − y, y + x^2 − 4) ⊆ \C^2$. Note that $V = \V(I)$, where
+$I =\gene{ 
+x^2 − y, y + x^2 − 4}$.
+\begin{enumerate}[a.]
+\item Prove that $I =\gene{ 
+x^2 − y, x^2 − 2}$.
+\item Using the basis from part (a), prove that $\V(I) = \{(±
+√
+2, 2)\}$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[]
+\item Denotemos $S=\gene{x^2-y,x^2-4}$. Como $x^2-2 = 1/2(x^2-y)+1/2(y+x^2-4)$ se sigue inmediatamente que $S\subset I$. Recíprocamente, $2(x^2-2)-x^2-y = y+x^2-4$, de donde se deduce la inclusión contraria.
+\item Basta calcular los ceros comunes de $x^2-y,x^2-2$. de la segunda sustiyendo la segunda en la primera tenemos que $y=2$. Resolviendo la segunda tenemos que $x=\pm\sqrt{2}$.	
+\end{itemize}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.5.18}
+When an ideal has a basis where some of the elements can be factored, we can use the
+factorization to help understand the variety.
+\begin{enumerate}[a.]
+\item Show that if $g ∈ k[x_1,\dots , x_n]$ factors as $g = g_1g_2$, then for any $f$, we have $\V( f , g) =
+\V( f , g_1) ∪ \V( f , g_2)$.
+\item Show that in $\R^3$, $\V(y − x^2, xz − y^2) = \V(y − x^2, xz − x^4)$.
+\item Use part (a) to describe and/or sketch the variety from part (b).
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Sabemos que $\V(S_1)\cup\V(S_2)=\V(S_1S_2)$, por lo que 
+$$\V( f , g_1) ∪ \V( f , g_2) = \V(f^2,fg_1,fg_2,g_1g_2)$$
+Pero $f^2=0$ si y solo si $f=0$, pues estamos en un dominio. Tenemos entonces que $f\in \V(f^2,fg_1,fg_2,g_1g_2)$ y, en particular,
+$$
+\V(f^2,fg_1,fg_2,g_1g_2) = \V(f,fg_1,fg_2,g_1g_2)= \V(f,g_1g_2)
+$$
+\item Se tiene a partir del siguiente hecho 
+$$
+\begin{cases}
+y-x^2 = 0\\
+xz-y^2 =0
+\end{cases}
+\Longleftrightarrow\quad
+\begin{cases}
+y-x^2 = 0\\
+xz-x^4 =0
+\end{cases}
+$$
+\item Tenemos que 
+$$
+\V(y − x^2, xz − y^2) = \V(y − x^2, xz − x^4) = \V(y-x^2,x)\cup\V(y-x^2,z-x^3)$$
+$$
+=\V(x,y)\cup \V(y-x^2,z-x^3)$$
+Es decir, la unión del eje $z$ y la twisted cubic.
+\end{enumerate}
+\end{solucion}
+\end{document}

@@ -1,0 +1,338 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\lex}{<_{lex}}
+\newcommand{\grlex}{<_{grlex}}
+\newcommand{\grevlex}{<_{grevlex}}
+
+\newcommand{\PhantC}{\phantom{\colon}}%
+\newcommand{\CenterInCol}[1]{\multicolumn{1}{c}{#1}}%
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{2.8.1}
+Determine whether $f = xy^3 − z^2 + y^5 − z^3$ is in the ideal $I = 
+\gene{−x^3 + y, x^2y − z}$.
+\end{ejercicio}
+
+\begin{solucion}
+Calculamos una base de Gröbner de $I$ para el orden lex, con lo que obtenemos $G=\{x^3 - y, x^2y - z, xy^3 - z^2, xz - y^2, y^5 - z^3\}$. Al dividir $f$ por $G$ obtenemos resto 0, por lo que $f\in I$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.8.2}
+Repeat Exercise \ref{ejer:2.8.1} for $f = x^3z − 2y^2$ and $I = 
+\gene{xz − y, xy + 2z^2, y − z}$.
+\end{ejercicio}
+\begin{solucion}
+Calculamos la base Gröbner con el orden grlex y obtenemos
+$$G=\{xz - z, y - z, xy+2z^2,-2z^3 - z^2,2z^2 + z\}$$ 
+Si computamos ahora el resto de $f$ al dividir por esta base obtenemos
+$$
+x^3z − 2y^2 = (x^2+x+1)f_1 +(-2y+-2z)f_2 - f_5 +2z
+$$
+Por tanto, $f\notin I$.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.8.3}
+By the method of Examples 2 and 3, find the points in $\C^3$ on the variety
+$$\V(x^2 + y^2 + z^2 − 1, x^2 + y^2 + z^2 − 2x, 2x − 3y − z).$$
+\end{ejercicio}
+\begin{solucion}
+Tal como en dichos ejemplos calculamos una base de Gröbner para $$I=\gene{x^2 + y^2 + z^2 − 1, x^2 + y^2 + z^2 − 2x, 2x − 3y − z}$$ usando el orden lex. En este caso obtenemos la base formada por los siguiente polinomios
+\begin{align*}
+-2x + 1 & & 2x - 3y - z & & 3/2y + 1/2z - 1/2 \\
+ -10/9z^2 + 2/9z + 23/36 & & x^2 + y^2 + z^2 - 1
+\end{align*}
+Claramente podemos eliminar el segundo y el último polinomio, quedando finalmente la base
+$$
+-2x + 1 \qquad \frac{3}{2}y + \frac{1}{2}z - \frac{1}{2} \qquad -\frac{10}{9}z^2+\frac{2}{9}z+\frac{23}{26}
+$$ 
+Por tanto, $x=1/2$. Utilizamos la segunda ecuaación para obtener los valores de $z$ \[
+z = \frac{1}{10} + \frac{3 \sqrt{13/2}}{10},\quad z = \frac{1}{10} - \frac{3 \sqrt{13/2}}{10}
+\]
+Por último, sustituyendo los dos valores de $z$ en la ecuación del segundo polinomio obtenemos
+\[
+y=\frac{1}{20}(6-\sqrt{26}),\quad y=\frac{1}{20}(6+\sqrt{26}).
+\]
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.8.4}
+Repeat Exercise \ref{ejer:2.8.3} for $\V(x^2y − z^3, 2xy − 4z − 1, z − y^2, x^3 − 4zy)$.
+\end{ejercicio}
+\begin{solucion}
+La base de Gröbner es $\{1\}$ en este caso, luego $\V(I)=\V(1)=\emptyset$.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.8.5}
+Recall from calculus that a critical point of a differentiable function $f (x, y)$ is a point
+where the partial derivatives $\frac{∂f}
+{∂x}$ and $\frac{∂f}
+{∂y}$ vanish simultaneously. When $f ∈ \R[x, y]$, it
+follows that the critical points can be found by applying our techniques to the system of
+polynomial equations
+$$\frac{∂f}
+{∂x}
+=
+\frac{∂f}
+{∂y}
+= 0.$$
+To see how this works, consider the function
+
+$$f (x, y) = (x^2 + y^2 − 4)(x^2 + y^2 − 1) + (x − 3/2)^2 + (y − 3/2)^2.$$
+\begin{enumerate}[a.]
+\item Find all critical points of $f (x, y)$.
+\item Classify your critical points as local maxima, local minima, or saddle points. Hint:
+Use the second derivative test.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item Calculamos las derivadas parciales 
+\[
+\parcial{f}{x}=x (4 x^2 + 4 y^2 - 8) - 3,\quad \parcial{f}{y}=y (4 x^2 + 4 y^2 - 8) - 3.
+\]
+Para encontrar los puntos críticos calculamos una base de Gröbner del ideal generado $I=\gene{x (4 x^2 + 4 y^2 - 8) - 3, y (4 x^2 + 4 y^2 - 8) - 3}$. Obtenemos $G=\{x - y, y^3 - y - \frac{3}{8}\}$. Se comprueba que el segundo polinomio tiene como raíz $y=-\frac{1}{2}$. Luego uno de los puntos críticos es $(x_1,y_1)=(-\frac{1}{2},-\frac{1}{2})$. Dividiendo por $y+\frac{1}{2}$ podemos resolver y obtener las raíces
+\[
+y = \frac{1}{4} + \frac{\sqrt{13}}{4},\quad y = \frac{1}{4} - \frac{\sqrt{13}}{4}.
+\]
+resultando así en dos puntos críticos más
+\[
+(x_2,y_2)=\left(\frac{1}{4} + \frac{\sqrt{13}}{4},\frac{1}{4} + \frac{\sqrt{13}}{4}\right),\quad (x_3,y_3)=\left(\frac{1}{4} - \frac{\sqrt{13}}{4},\frac{1}{4} - \frac{\sqrt{13}}{4}\right)
+\]
+\item Calculamos la matriz Hessiana
+\[
+\begin{pmatrix}
+12x^2+4y^2-8 & 8xy\\
+8xy & 4(x^2+3y^2-2)
+\end{pmatrix}
+\]
+y me da pereza hacer lo que queda.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.8.6}
+Fill in the details of Example 5. In particular, compute the required Gröbner basis, and
+verify that this gives us (up to a constant multiple) the polynomial appearing on the
+left-hand side of equation (4).
+\end{ejercicio}
+\begin{solucion}
+Sage nos da 7 polinomios en lugar de 6, como dice el libro, que son
+\begin{align*}
+G=\{&t + u - x, u^2 - x^2 + y, ux^2 - uy - x^3 + 3/2xy - 1/2z, uxy - uz - x^2y - xz + 2y^2,\\
+&uxz - uy^2 + x^2z - 1/2xy^2 - 1/2yz,
+uy^3 - uz^2 - 2x^2yz + 1/2xy^3 - xz^2 + 5/2y^2z,\\
+&x^3z - 3/4x^2y^2 - 3/2xyz + y^3 + 1/4z^2\}
+\end{align*}
+El único que no tiene ni $t$ ni $u$ es $x^3z - 3/4x^2y^2 - 3/2xyz + y^3 + 1/4z^2$, que es exactamente el que aparece en el libro.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.8.7}
+Let the surface $S$ in $\R^3$ be formed by taking the union of the straight lines joining pairs
+of points on the lines 
+$$\left\lbrace
+\begin{array}{c}
+x = t\\
+y = 0\\
+z = 1
+\end{array}
+\right\rbrace,
+\left\lbrace
+\begin{array}{c}
+x = 0\\
+y = 1\\
+z = t\\
+\end{array}
+\right\rbrace$$
+with the same parameter value (i.e., the same $t$). (This is a special example of a class of
+surfaces called ruled surfaces.)
+\begin{enumerate}[a.]
+\item Show that the surface S can be given parametrically as
+\begin{align*}
+&x = ut,\\
+&y = 1 − u,\\
+&z = t + u(1 − t).
+\end{align*}
+\item Using the method of Examples 4 and 5, find an (implicit) equation of a variety $V$
+containing the surface $S$.
+\item Show $V = S$ (that is, show that every point of the variety V can be obtained by
+substituting some values for $t$, $u$ in the equations of part (a). Hint: Try to “solve” the
+implicit equation of $V$ for one variable as a function of the other two.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Es bastante evidente.
+\item Utilizando el método mencionado, obtenemos la ecuación implícita
+\[
+xy + y^2 + yz - 2y - z + 1=0
+\]
+\item Resolvemos la ecuación anterior para $z$, lo cual nos da
+\[
+z=\frac{xy+y^2-2y+1}{1-y}=\frac{xy}{1-y}+(1+y)
+\]
+Si ahora expresamos $x=ut, y=1-u$, al sustituir obtenemos
+\[
+z=t(1-u)+u=t-tu+u=t+u(1-t)
+\]
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.8.8}
+Some parametric curves and surfaces are algebraic varieties even when the given
+parametrizations involve transcendental functions such as sin and cos. In this problem,
+we will see that the parametric surface $T$,
+
+\begin{align*}
+&x = (2 + cos(t)) cos(u),\\
+&y = (2 + cos(t)) sin(u),\\
+&z = sin(t),
+\end{align*}
+lies on an affine variety in $\R^3$.
+\begin{enumerate}[a.]
+\item Draw a picture of $T$. Hint: Use cylindrical coordinates.
+\item Let $a = \cos(t)$, $b = \sin(t)$, $c = \cos(u)$, $d = \sin(u)$, and rewrite the above equations
+as polynomial equations in $a, b, c, d, x, y, z$.
+\item The pairs $a$, $b$ and $c$, $d$ in part (b) are not independent since there are additional polynomial
+identities
+$$a^2 + b^2 − 1 = 0, c^2 + d^2 − 1 = 0$$
+stemming from the basic trigonometric identity. Form a system of five equations by
+adjoining the above equations to those from part (b) and compute a Gröbner basis for
+the corresponding ideal. Use the lex monomial ordering and the variable order
+$$a > b > c > d > x > y > z.$$
+There should be exactly one polynomial in your basis that depends only on $x, y, z$.
+This is the equation of a variety containing $T$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item No necesitamos dibujos, es claramente la parametrización  de un toro.
+\item 
+\begin{align*}
+&x=ac+2c\\
+&y=ad+2d\\
+&z=b
+\end{align*}
+\item 
+\begin{align*}
+&x-ac-2c=0\\
+&y-ad-2d=0\\
+&z-b=0\\
+&a^2 + b^2 − 1 = 0\\
+& c^2 + d^2 − 1 = 0
+\end{align*}
+Obtenemos una base de 9 polinomios y el único que depende solo de $x,y,z$ es
+\[
+x^4 + 2x^2y^2 + 2x^2z^2 - 10x^2 + y^4 + 2y^2z^2 - 10y^2 + z^4 + 6z^2 + 9
+\]
+Se puede comprobar que esta es la ecuación usual del toro\footnote{\url{https://en.wikipedia.org/wiki/Torus}}
+\end{enumerate}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.8.9}
+Consider the parametric curve $K ⊆ \R^3$ given by
+\begin{align*}
+&x = (2 + cos(2s))cos(3s),\\
+&y = (2 + cos(2s))sin(3s),\\
+&z = sin(2s).
+\end{align*}
+\begin{enumerate}[a.]
+\item Express the equations of $K$ as polynomial equations in $x, y, z$, $a = \cos(s)$, $b = \sin(s)$.
+Hint: Trig identities.
+\item By computing a Gröbner basis for the ideal generated by the equations from part (a)
+and $a^2+b^2−1$ as in Exercise \ref{ejer:2.8.8}, show that $K$ is (a subset of) an affine algebraic curve.
+Find implicit equations for a curve containing $K$.
+\item Show that the equation of the surface from Exercise \ref{ejer:2.8.8} is contained in the ideal generated
+by the equations from part (b). What does this result mean geometrically? (You
+can actually reach the same conclusion by comparing the parametrizations of $T$ and
+$K$, without calculations.)
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item $\cos(2s)=\cos^2(s)-\sin^2(s)$, $\sin(2s)=2\sin(s)\cos(s)$, $\cos(3s)=\cos^3(s)-3\sin^2(s)\cos(s)$, $\sin(3s)=3\sin(s)\cos^2(s)-\sin^3(s)$. 
+\begin{align*}
+&x-(2+a^2-b^2)(a^3-3b^2a)=0\\
+&y-(2+a^2-b^2)(3ba^2-b^3)=0\\
+&z-2ba=0
+\end{align*}
+\item 
+\begin{align*}
+&x-(2+a^2-b^2)(a^3-3b^2a)=0\\
+&y-(2+a^2-b^2)(3ba^2-b^3)=0\\
+&z-2ba=0\\
+&a^2+b^2-1=0
+\end{align*}
+\begin{align*}
+&x^2 + y^2 - 9=0\\
+ &xy + 18z^3 - 27/2z=0\\
+& xz^3 - 3/4xz - 1/18y^3 + 1/2y=0\\
+& y^4 - 9y^2 + 324z^6 - 486z^4 + 729/4z^2=0
+\end{align*}
+Habría que sustituir e ir resolviendo.
+
+\item Esta curva se obtiene a partir de la superficie del ejercicio \ref{ejer:2.8.7} haciendo $t=2s$, $u=3s$, por lo que está contenida en la superficie del ejercicio anterior. 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.8.10}
+Use the method of Lagrange multipliers to find the point(s) on the surface defined by
+$x^4 + y^2 + z^2 − 1 = 0$ that are closest to the point $(1, 1, 1)$ in $\R^3$. Hint: Proceed as in
+Example 3. (You may need to “fall back” on a numerical method to solve the equations
+you get.)
+\end{ejercicio}
+\begin{solucion}
+Trivial.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.8.11}
+Suppose we have numbers a, b, c which satisfy the equations
+\begin{align*}
+a + b + c = 3,\\
+a^2 + b^2 + c^2 = 5,\\
+a^3 + b^3 + c^3 = 7.
+\end{align*}
+\begin{enumerate}[a.]
+\item Prove that $a^4 +b^4 +c^4 = 9$. Hint: Regard $a, b, c$ as variables and show carefully that
+$a^4 + b^4 + c^4 − 9 ∈ 
+\gene{a + b + c − 3, a^2 + b^2 + c^2 − 5, a^3 + b^3 + c^3 − 7}$.
+\item Show that $a^5 + b^5 + c^5 \neq 11$.
+\item What are $a^5 + b^5 + c^5$ and $a^6 + b^6 + c^6?$ Hint: Compute remainders.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Calculamos la base de Gröbner $$G=\{a + b + c - 3, b^2 + bc - 3b + c^2 - 3c + 2, c^3 - 3c^2 + 2c + 2/3\}$$ Dividimos $a^4 + b^4 + c^4 − 9$ por $G$ y obtenemos resto 0, por lo que se obtiene el resultado. 
+\item Operamos de forma similar, y obtenemos como resto $-2$, así que $a^5 + b^5 + c^5 -11$ no está en el ideal, por lo que no se tiene la igualdad.
+\item El resto de $a^5 + b^5 + c^5$ es $29/3$, por lo que $a^5 + b^5 + c^5-29/3$ es un elemento del ideal, así que el resultado es precisamente este resto. Análogamente, $a^6 + b^6 + c^6=19/3$.
+\end{enumerate}
+
+\end{solucion}
+
+
+\end{document}

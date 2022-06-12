@@ -1,0 +1,273 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\lex}{<_{lex}}
+\newcommand{\grlex}{<_{grlex}}
+\newcommand{\grevlex}{<_{grevlex}}
+
+\newcommand{\PhantC}{\phantom{\colon}}%
+\newcommand{\CenterInCol}[1]{\multicolumn{1}{c}{#1}}%
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{2.4.1}
+Let $I ⊆ k[x_1,\dots , x_n]$ be an ideal with the property that for every $f =\sum
+c_{α} x^{α} ∈ I$, every
+monomial $x^α$ appearing in $f$ is also in $I$. Show that $I$ is a monomial ideal.
+\end{ejercicio}
+\begin{solucion}
+$I=\langle x^\alpha\mid\alpha\in A\rangle$ donde $A$ es el conjunto de multigrados que aparecen en los monomios que forman los polinomios pertenecientes a $I$. 
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.4.2}
+Complete the proof of Lemma 3 begun in the text.
+\end{ejercicio}
+\begin{solucion}
+Tenemos que probar que si $f\in I$ monomial, entonces cada término de $f$ está en $I$. Pongamos que $I=\gene{x^{\alpha} \mid \alpha\in A\subseteq\Z^n_{\geq 0}}$. Entonces $f=\sum_{i=1}^s h_ix^{\alpha(i)}$ para $h_i\in k[x_1,\dots, x_n]$ y $\alpha(i)\in A$. Ahora expandimos los $h_i$ y nos queda
+\[
+f=\sum_{i=1}^s\left(\sum_j c_{i,j}x^{\beta(i,j)}\right)x^{\alpha(i)}=\sum_{i,j} c_{i,j}x^{\beta(i,j)}x^{\alpha(i)}.
+\]
+Agrupando los términos del mismo multigrado, llegamos a que estos pueden escribirse como suma de $x^{\alpha(i)}$ multiplicados por monomios de $k[x_1,\dotsc,x_n]$, luego cada término de $f$ está en $I$.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.4.3}
+Let $I = \langle
+x^6, x^2y^3, xy^7\rangle ⊆ k[x, y]$.
+\begin{enumerate}[a.]
+\item In the $(m, n)$-plane, plot the set of exponent vectors $(m, n)$ of monomials $x^my^n$ appearing
+in elements of $I$.
+\item If we apply the division algorithm to an element $f ∈ k[x, y]$, using the generators of $I$
+as divisors, what terms can appear in the remainder?
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item Con Geogebra hacemos este dibujito mono.
+
+\begin{center}
+\definecolor{cqcqcq}{rgb}{0.7529411764705882,0.7529411764705882,0.7529411764705882}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-0.8,-0.8) rectangle (9.8,7.8);
+\draw [color=cqcqcq,, xstep=1.0cm,ystep=1.0cm] (-6.06,-0.72) grid (16.94,10.42);
+\draw[->,color=black] (-6.06,0.) -- (16.94,0.);
+\foreach \x in {-6.,-5.,-4.,-3.,-2.,-1.,1.,2.,3.,4.,5.,6.,7.,8.,9.,10.,11.,12.,13.,14.,15.,16.}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[->,color=black] (0.,-0.72) -- (0.,10.42);
+\foreach \y in {,1.,2.,3.,4.,5.,6.,7.,8.,9.,10.}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-6.06,-0.72) rectangle (16.94,10.42);
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (1.,12.) -- (1.,7.) -- (2.,7.) -- (2.,3.) -- (6.,3.) -- (6.,0.) -- (18.,0.) -- (18.,11.) -- cycle;
+\draw [line width=2.pt,domain=6.0:16.940000000000005] plot(\x,{(-0.-0.*\x)/13.});
+\draw [line width=2.pt] (1.,7.) -- (1.,10.42);
+\draw [line width=2.pt] (1.,12.)-- (1.,7.);
+\draw [line width=2.pt] (1.,7.)-- (2.,7.);
+\draw [line width=2.pt] (2.,7.)-- (2.,3.);
+\draw [line width=2.pt] (2.,3.)-- (6.,3.);
+\draw [line width=2.pt] (6.,3.)-- (6.,0.);
+\draw [line width=2.pt] (6.,0.)-- (18.,0.);
+\draw [line width=2.pt] (18.,0.)-- (18.,11.);
+\draw [line width=2.pt] (18.,11.)-- (1.,12.);
+\begin{scriptsize}
+\draw [fill=black] (6.,0.) circle (2.5pt);
+\draw[color=black] (5.6,0.37) node {$(6,0)$};
+\draw [fill=black] (2.,3.) circle (2.5pt);
+\draw[color=black] (1.6,3.37) node {$(2,3)$};
+\draw [fill=black] (1.,7.) circle (2.5pt);
+\draw[color=black] (0.6,7.37) node {$(1,7)$};
+\end{scriptsize}
+\end{tikzpicture}
+\end{center}
+
+\item En el resto aparecerán los términos que quedan fuera de la región sombreada, pues son los que no son divisibles por ninguno de los monomios de la base.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.4.4}
+Let $I ⊆ k[x, y]$ be the monomial ideal spanned over $k$ by the monomials $x^{β}$ corresponding
+to $β$ in the shaded region shown at the top of the next page.
+\begin{enumerate}[a.]
+\item Use the method given in the proof of Theorem 5 to find an ideal basis for $I$.
+\item Find a minimal basis for I in the sense of Proposition 7.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Tenemos $I=\langle x^3y^6,x^5y^4, x^6\rangle$. Usando el método del Teorema 5, tenemos que la proyección de $I$ sería $\langle x^3\rangle$. Como $x^3y^6\in I$, $m=6$. Esto nos da los cortes $I_0=I_1=I_2=\gene{x^6}$ y $I_4=I_5=\gene{x^5}$. Usando el Teorema entonces tenemos $$I=\gene{ x^3y^6,x^5y^4,x^5y^5, x^6,x^6y, x^6y^2}$$
+\item En primer lugar podemos eliminar todos los monomios que contienen $x^6$ excepto él mismo, quedando $I=\gene{ x^3y^6,x^5y^4,x^5y^5, x^6}$. Ya solo podemos eliminar uno más, por lo que nos queda $I=\gene{ x^3y^6,x^5y^4, x^6}$, que es justo lo que tenía que salir.
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.4.5}
+Suppose that $I =\langle 
+x^{α} \mid α ∈ A\rangle$ is a monomial ideal, and let $S$ be the set of all exponents
+that occur as monomials of $I$. For any monomial order $>$, prove that the smallest element
+of $S$ with respect to $>$ must lie in $A$.
+\end{ejercicio}
+\begin{solucion}
+Sea $\alpha$ el menor elemento de $S$, que existe porque $>$ es un buen orden. Por definición $x^\alpha\in I$ que es divisible por algún $x^\beta$ con $\beta \in A$ (Lema 2 y Teorema 5). Por tanto $\exists \gamma \in \Z^n_{\geq 0}$ tal que $\beta  = \alpha + \gamma$. Si $\gamma>0$ entonces $\alpha$ tiene grado menor estricto que $\beta$, lo cuál es una contradicción con la hipótesis sobre $\alpha$. Por tanto $\alpha = \beta \in A$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.4.6}
+Let $I =\langle x^{α} \mid α ∈ A\rangle$ be a monomial ideal, and assume that we have a finite basis
+$I =\langle 
+x^{β(1)},\dots , x^{β(s)}\rangle$. In the proof of Dickson’s Lemma, we observed that each $x^{β(i)}$ is
+divisible by $x^{α(i)}$ for some $α(i) ∈ A$. Prove that $I =\langle 
+x^{α(1)},\dots , x^{α(s)}\rangle$.
+\end{ejercicio}
+\begin{solucion}
+Claramente $\langle x^{α(1)},\dots , x^{α(s)}\rangle\subseteq I$. Por otra parte, como $I=\langle 
+x^{β(1)},\dots , x^{β(s)}\rangle$ y cada $\beta(i)$ es divisible por un $\alpha(i)$, podemos generar los $\beta(i)$ a partir de los $\alpha(i)$, así que tenemos la otra contención.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.4.7}
+Prove that Dickson’s Lemma (Theorem 5) is equivalent to the following statement: given
+a nonempty subset $A ⊆ \Z^n_{≥0}$, there are finitely many elements $α(1),\dots , α(s) ∈ A$ such
+that for every $α ∈ A$, there exists some $i$ and some $γ ∈ \Z^n_{≥0}$ such that $α = α(i) + γ$.
+\end{ejercicio}
+\begin{solucion}
+$I=\gene{x^{\alpha}\mid \alpha\in A}$ está generado por $x^{\alpha(1)},\dots,x^{\alpha(s)}$ si y solo si (aplicación directa del Lema 2) para todo $\alpha\in A$ existe $γ ∈ \Z^n_{≥0}$ existe algún $i$ tal que $x^{\alpha}=x^{\alpha(i)}x^{\gamma}$ si y solo si $\alpha=\alpha(i)+\gamma$. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.4.8}
+If $I =\langle 
+x^{α(1)},\dotsc , x^{α(s)}\rangle$ is a monomial ideal, prove that a polynomial $f$ is in $I$ if and
+only if the remainder of $f$ on division by $x^{α(1)}, \dots, x^{α(s)}$ is zero. Hint: Use Lemmas 2
+and 3.
+\end{ejercicio}
+\begin{solucion}
+Si el resto es cero es trivial. Para el recíproco, si $f$ es un monomio, entonces se sigue del Lemma 2, pues debe ser divisible por alguno de los generadores. Si $f$ es una combinación lineal de monomios, por el Lemma 3, pertenece a $I$ si y solo si sus monomios pertenecen a $I$, de modo que todos sus monomios son divisibles por algún generador, así que se tiene el resultado.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.4.9}
+Suppose we have the polynomial ring $k[x_1,\dots, x_n, y_1,\dots, y_m]$. Let us define a monomial
+order $>_{mixed}$ on this ring that mixes lex order for $x_1,\dots, x_n$, with grlex order for
+$y_1,\dots , y_m$. If we write monomials in the $n + m$ variables as $x^{α} y^{β}$, where $α ∈ \Z^n_{≥0}$ and
+$β ∈ \Z^m_{≥0}$, then we define
+$$x^{α} y^{β} >_{mixed} x^{γ} y^{δ}\Leftrightarrow x^{α} >_{lex} x^{γ} \text{ or }x^{α} = x^{γ} \text{ and }y^{β} >_{grlex} y^{δ}.$$
+Use Corollary 6 to prove that $>_{mixed}$ is a monomial order. This is an example of what
+is called a product order. It is clear that many other monomial orders can be created by
+this method.
+\end{ejercicio}
+\begin{solucion}
+El orden es total pues tanto lex como grlex lo son. Si $(\alpha,\beta)>(\gamma,\delta)$ con $\alpha>_{lex}\beta$ entonces es claro que la suma conserva el orden por ser lex monomial. En el otro caso, la suma mantiene la primera igualdad y por tanto el orden también se conserva puesto que grlex es orden monomial. Por último, usando el Corollary 6, tenemos que es un buen orden pues $(0,0)\leq (\alpha,\beta)$ ya que los dos órdenes cumplen esta propiedad.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.4.10}
+In this exercise we will investigate a special case of a weight order. Let $u = (u_1,\dots , u_n)$
+be a vector in $\R^n$ such that $u_1,\dots , u_n$ are positive and linearly independent over $\Q$. We
+say that $u$ is an independent weight vector. Then, for $α, β ∈ \Z^n_{≥0}$, define
+$$α >_u β \Leftrightarrow u \cdot α > u \cdot β,$$
+where the centered dot is the usual dot product of vectors. We call $>_u$ the weight order
+determined by $u$.
+\begin{enumerate}[a.]
+\item Use Corollary 6 to prove that $>_u$ is a monomial order. Hint: Where does your argument
+use the linear independence of $u_1,\dots , u_n$?
+\item Show that $u = (1,
+√2)$ is an independent weight vector, so that $>_u$ is a weight order
+on $\Z^2_{≥0}$.
+\item Show that $u = (1,
+√
+2,
+√
+3)$ is an independent weight vector, so that $>_u$ is a weight
+order on $\Z^3
+_{≥0}$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Veamos las tres condiciones. Como no hay ambigüedad, voy a omitir la notación del $\cdot$ para el producto escalar.
+\begin{itemize}
+\item Primeramente, la irreflexividad, asimetría y transitividad se tienen trivialmente. Por tanto, es un orden estricto. Además, como $>$ es un orden total, necesariamente $>_u$ ha de serlo.
+\item Si $\alpha>_u \beta$ y $\gamma \in \Z^n_{\geq 0}$ entonces
+$$
+\alpha >_u \beta \Leftrightarrow u\alpha>u\beta\Leftrightarrow u\alpha+u\gamma >u\beta + u\gamma \Rightarrow u(\alpha+\gamma)>u(\beta+\gamma) \Leftrightarrow \alpha+\gamma >_u \beta + \gamma
+$$
+\item Finalmente, que $\alpha >_u 0$ se tiene por la independencia lineal de $u$ sobre $Q$. Como $u,\alpha \geq 0$, $\alpha u\geq 0$. Además, para que $u\alpha=0$, dado que $\alpha\in\Q^n$, necesariamente ha de tenerse que $\alpha=0$. 
+\end{itemize}
+\item Es claro que lo es, pues $1,\sqrt{2}>0$ y en caso de no ser linealmente independiente sobre $\Q^2$, tendríamos que existen $a,b\in \Q$ tales que
+$$
+a+b\sqrt{2}=0 \Rightarrow \sqrt{2} = -\frac{a}{b}
+$$
+Con lo que $\sqrt{2}$ sería racional.
+\item Tenemos que ver que $(1,\sqrt{2},\sqrt{3})$ es una tripleta independiente sobre $\Q^3$. Supongamos que $\exists a,b,c\in\Q$ tales que
+$$
+a+b\sqrt{2}+c\sqrt{3}=0 
+$$
+Podemos suponer que $bc\neq 0$, pues si alguno de los dos fuese, tendríamos trivialmente el resultado. Equivalentemente tenemos que
+$$
+b\sqrt{2}+c\sqrt{3}=-a
+$$
+Es decir, tenemos una combinación lineal con coeficientes en $\Q^2\setminus\{(0,0)\}$ igualada a un racional. ¿Esto es posible? Si lo fuese, el cuadrado de esta combinación también habria de ser racional.
+$$
+(b\sqrt{2}+c\sqrt{3})^2 =2b^2+3c^2+2cb\sqrt{6}
+$$
+En mi casa esto es poco racional.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.4.11}
+Another important weight order is constructed as follows. Let $u = (u_1,\dots, u_n)$ be in
+$\Z^n_{≥0}$, and fix a monomial order $>_σ$ (such as $>_{lex}$ or $>_{grevlex}$) on $\Z^n_{≥0}$. Then, for $α, β ∈
+\Z^n_{≥0}$, define $α >_{u,σ} β$ if and only if
+$$u \cdot α > u \cdot β \text{ or }u \cdot α = u \cdot β \text{ and }α >_σ β.$$
+We call $>_{u,σ}$ the weight order determined by $u$ and $>_σ$.
+\begin{enumerate}[a.]
+\item Use Corollary 6 to prove that $>_{u,σ}$ is a monomial order.
+\item Find $u ∈ \Z^n_{≥0}$ so that the weight order $>_{u,lex}$ is the grlex order $>_{grlex}$.
+\item In the definition of $>_{u,σ}$, the order $>_σ$ is used to break ties, and it turns out that ties
+will always occur when $n ≥ 2$. More precisely, prove that given $u ∈ \Z^n_{≥0}$, there are
+$α \neq β$ in $\Z^n_{≥0}$ such that $u \cdot α = u\cdot β$. Hint: Consider the linear equation $u_1a_1 +
+\cdots + u_na_n = 0$ over $\Q$. Show that there is a nonzero integer solution $(a_1,\dots, a_n)$,
+and then show that $(a_1,\dots , a_n) = α − β$ for some $α, β ∈ \Z^n_{≥0}$.
+\item A useful example of a weight order is the elimination order introduced by BAYER
+and STILLMAN (1987b). Fix an integer $1 ≤ l ≤ n$ and let $u = (1, \dots , 1, 0, \dots , 0)$,
+where there are $l$ $1$’s and $n − l$ 0’s. Then the l-th elimination order $>_l$ is the weight
+order $>_{u,grevlex}$. Prove that $>_l$ has the following property: if $x^{α}$ is a monomial in
+which one of $x_1, \dots , x_l$ appears, then $x^{α} >_l x^β$ for any monomial involving only
+$x_{l+1},\dots, x_n$. Elimination orders play an important role in elimination theory, which
+we will study in the next chapter.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Entendemos que $u$ no puede ser el vector nulo.  Como no hay ambigüedad, voy a omitir la notación del $\cdot$ para el producto. 
+\begin{enumerate}[a.]
+\item Veamos las tres condiciones. escalar.
+\begin{itemize}
+\item El orden es claramente total, pues o el producto escalar o $>_\sigma$ determina si son iguales o uno mayor que otro.
+\item Supongamos que $\alpha >_{u,\sigma} \beta$ y sea $\gamma \in \Z^n_{\geq 0}$. Si $u\alpha > u\beta$ claramente, dado que $u\in \Z^n_{\geq 0}$, $u( \alpha+\gamma) > u(\beta + \gamma)$, por ser $u\gamma \geq 0$ y ser $>$ un orden monomial en $\Z$. Si el producto escalar coincide, entonces se tendría por ser $>_{\sigma}$ un orden monomial en $\Z^n$.
+\item Veamos que $\alpha \geq 0$. Si $\alpha \neq 0$ entonces, si $u\alpha >0 = u0$, tendríamos el resultado. Si $u\alpha =0$, como $\alpha \geq_{\sigma} 0$ por ser orden monomial tenemos el resultado.
+\end{itemize}
+\item Se tiene claramente tomando $u$ como el vector de $1$'s de $\Z^n$, pues $u\alpha=|\alpha|$ y las definiciones coinciden.
+\item Vamos a dar ejemplos concretos. Tomamos $\alpha=0$ y distinguimos, si $n$ es par tomamos $\beta=(u_n,-u_{n-1},\dotsc,u_2,-u_1)$. Si $n$ es impar, tomamos $\beta=(u_{n-1},-u_{n-2},\dotsc,-u_1,0)$, siempre que $u$ no sea el vector $(0,\dotsc,0,1)$. En ese caso, obviamente podemos tomar $\beta=(1,0,\dotsc,0)$.
+\item Tenemos que ver que si $x^\alpha$ es un monomio en el que aparece alguna de las variables $x_1,\dotsc,x_l$ entonces es mayor que $x^\beta$, donde este es un monomio tal que $x_{l+1},\dotsc,x_n$, en el sentido del orden $>_l$. Se tiene directamente, pues por hipótesis $u \alpha >0$, pues $\alpha$ tiene algún elemento no nulo en las $l$ primeras coordenadas. Por otra parte, también es claro que $x^\beta$ no tiene ningún elemento no nulo en las $l$ priemras, por lo que $u\beta =0$. 
+\end{enumerate}
+\end{solucion}
+
+
+
+\end{document}

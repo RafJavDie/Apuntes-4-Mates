@@ -1,0 +1,95 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Parcial - 16/5/2017}
+\author{Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{1}
+Fijado un entero $1 < l < n$.
+Decimos que un orden monomial $>$ sobre $k[x_1,\dots,x_n]$ es de $l$-eliminación si cualquier monomio en el que aparezca $x_1,\dots,x_l$ es mayor que todos los monomios de $k[x_{l+1},\dots,x_n]$.
+\begin{enumerate}
+\item Si $I$ es un ideal de $k[x_1,\dots,x_n]$ y $G$ es una base de Gröbner de $I$ con respecto a un orden de $l$-eliminación, probar que $G \cap k[x_{l+1},\dots,x_n]$ es una base de Gröbner del $l$-ésimo ideal de eliminación $I \cap k[x_{l+1},\dots,x_n]$.
+\item Sea el orden monomial $>_l$ definido como sigue: si $α, β \in \Z_{≥0}^n$, entonces $α >_l β$ si
+\[ α_1 + \cdots + α_l > β_1 + \cdots β_l,\text{ o }α_1+ \cdots α_l = β_1 + \cdots β_l \text{ y } α >_{grevlex} β \]
+Probar que $>_l$ es un orden de $l$-eliminación.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\mbox{}
+\begin{enumerate}
+\item Llamando $G_l = G \cap k[x_{l+1},\dots,x_n]$ e $I_l = I \cap k[x_{l+1},\dots,x_n]$ tenemos que basta probar que:
+\[ \gene{LT(I_l)} = \gene{LT(G_l)} \]
+La inclusión $\supset$ es evidente.
+Para la otra inclusión, basta ver que para un $f \in I_l$, $LT(f)$ es divisible por $LT(g)$ para algún $g \in G_l$.
+
+Como $f \in I$, sabemos que $LT(f)$ es divisible por $LT(g)$ para algún $g \in G$.
+Entonces, si $g$ tuviera algún monomio con alguna variable $x_1,\dots,x_l$, entonces dicha variable estaría en $LT(g)$, por las propiedades del orden $>$.
+Pero éste no es el caso, pues al tener que $f \in I_l$, en $LT(g)$ sólo intervienen las variables $x_{l+1},\dots,x_n$
+
+\item Sea $x^α$ un monomio tal que $α_i > 0$ para algún $1 ≤ i ≤ l$.
+Sea $x^β$ un monomio cualquiera de $k[x_{l+1},\dots,x_n]$, es decir, $β_i = 0$ para todo $1 ≤ i ≤ l$.
+Entonces:
+\[ β_1 + \dots + β_l = 0 < α_i ≤ α_1 + \dots + α_l \]
+Luego $x^α > x^β$ para un $x^β$ cualquiera.
+Esto demuestra que $>_l$ es un orden de $l$-eliminación.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+En $\R^2$, consideremos las curvas definidas por las ecuaciones paramétricas
+\[ C_1: \begin{cases}x=t^3\\y=t^2+1\end{cases} \quad \text{y}\quad C_2: \begin{cases}x = t^3 + 1\\y = t^2\end{cases} \]
+Se pide:
+\begin{enumerate}
+\item Probar que $C_1 = \V(x^2-y^3+2y^2-3y+1)$.
+(Indicación: $G_1 = \{t^2-y+1, tx-y^2+2y-1, ty-t-x, x^2-y^3+3y^2-3y+1\}$ es una base de Gröbner de $I = \gene{x-t^3, y-t^2-1}$ para el orden lexicográfico con $t > x > y$).
+\item Probar que $C_2 = \V(x^2-2x-y^3+1)$.
+(Indicación: $G_2 = \{t^2-y, tx-t-y^2, ty-x+1, x^2-2x-y^3+1\}$ es una base de Gröbner de $J = \gene{x-t^3-1, y-t^2}$ para el orden lexicográfico con $t > x > y$).
+\item Encontrar los puntos racionales de $C_1 \cap C_2$.
+(Indicación: $G = \{2x+3y^2-3y, 9y^4-22y^3 + 21y^2 - 12y + 4\}$ es una base de Gröbner del ideal $K = \langle x^2-y^3+3y^2-3y+1, x^2-2x-y^3+1\rangle$ para el orden lexicografico con $x > y$).
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\mbox{}
+\begin{enumerate}
+\item Tenemos que por el teorema de implitación, la menor variedad algebraica que contiene a $C_1$ es $\V(I_1)$, donde $I$ es el ideal $\gene{-t^3 + x, -t^2+y-1}$ con orden lexicográfico $t > x > y$.
+La base de Gröbner de $I$ es $G_1 = \{t^2-y+1, tx-y^2+2y-1, ty-t-x, x^2-y^3+3y^2-3y+1\}$.
+En consecuencia, la base de Gröbner de $I_1$ es $G_{11} = \{x^2-y^3+3y^2-3y+1\}$.
+
+Luego $C_1 \subseteq \V(x^2-y^3+3y^2-3y+1)$.
+Veamos si $C_1$ rellena $\V(x^2-y^3+3y^2-3y+1)$.
+
+Para ello consideramos una solución parcial $(x,y) \in \V(x^2-y^3+3y^2-3y+1)$.
+Podemos extender esta solución a $(t,x,y) \in \V(I)$, pues el generador de $I$ contiene el polinomio $-t^3+x$, cuyo coeficiente en $t^3$ es constante no nulo.
+
+Luego:
+\[ C_1 = \V(x^2-y^3+3y^2-3y+1)\]
+
+\item Como antes, tomamos el ideal $J=\gene{-t^3 + x - 1, -t^2 + y}$ con orden lexicográfico $t > x > y$.
+Su base de Gröbner es $G_2 = \{t^2-y, tx-t-y^2, ty-x+1, x^2-2x-y^3+1\}$.
+El ideal $I_1$ es entonces $J_1 = \gene{x^2-2x-y^3+1}$.
+Toda solución parcial $(x,y) \in \V(J_1)$ es puede extender a $(t,x,y) \in \V(J)$, pues $t^3$ tiene un coeficiente constante no nulo en $-t^3+x-1$ del generador de $I$.
+
+Entonces:
+\[ C_2 = \V(x^2-2x-y^3+1) \]
+
+\item Tenemos que:
+\[ C_1 \cap C_2 = \V(x^2-y^3+3y^2-3y+1, x^2-2x-y^3+1) = \V(K) \]
+Además, sabemos que la base de Gröbner de $K$ es:
+\[ G = \{2x+3y^2-3y, 9y^4-22y^3 + 21y^2 - 12y + 4\} \]
+Observamos que $9y^4-22y^3+21y^2-12y+4$ tiene $1$ como raíz doble, luego:
+\[ 9y^4-22y^3+21y^2-12y+4 = (y-1)^2 (9y^2 - 4y + 4)\]
+Como $9y^2-4y+4$ tiene discriminante negativo, sabemos que no hay más soluciones reales.
+Es decir tenemos una única solución racional parcial $y=1$.
+Podemos extenderla a $(x,y) \in \Q^2$ ya que:
+\[ x = \frac{3y-3y^2}{2} = 0 \]
+Luego el único punto racional de $C_1 \cap C_2$ es $(0,1)$.
+
+\end{enumerate}
+\end{solucion}
+\end{document}

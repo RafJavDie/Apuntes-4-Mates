@@ -1,0 +1,117 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Cálculo en Variedades, Mayo de 2016}
+\author{Javier Aguilar Martín}
+\maketitle
+
+
+\begin{ejercicio}{1}
+Recordemos del Ejercicio 2.4 que para un $\R$-espacio vectorial $V$ existe un isomorfismo $i:V\to Alt^1(V)=V^*$ dado por $i(v)\in Alt^1(V)$ que verifica $i(v)(w)=\langle w, v\rangle$ (producto escalar sobre $\R$ en $V$). 
+
+Dados $\{v_1,\dots, v_{n-1},w\}\subset\R^n$, tenemos la existencia de $\varphi\in Alt^1(\R^n)$ definida por $\varphi(w)=\det\begin{pmatrix}
+v_1\\
+\vdots\\
+v_{n-1}\\
+w
+\end{pmatrix}$. Entonces, por el isomorfismo anterior, existe un único $z=i^{-1}(\varphi)\in\R^n$ y, por tanto, $\varphi(w)=\langle w,z\rangle$. El vector $z$ es el llamado producto $v_1\times\dots\times v_{n-1}$.
+\begin{enumerate}[a)]
+\item Si hacemos lo anterior para $n=2$, ¿qué vector de $\R^2$ es $i^{-1}(\varphi)$?
+\item Supongamos que $\{v_1,\dots, v_{n-1}\}\subset\R^n$ son linealmente independientes. Comprueba que $\{v_1,\dots, v_{n-1}, v_1\times\dots\times v_{n-1}\}$ describe la orientación estándar de $\R^n$, es decir, la base está positivamente orientada respecto a $\varepsilon_1\land\dots\land\varepsilon_n\in Alt^n(\R^n)$ interpretada como la forma estándar de orientación $dx_1\land\dots\land dx_n\in\Omega^n(\R^n)$ evaluada en $0\in\R^n$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a)]
+\item  Tenemos que, dado $v\in\R^2$,  $\varphi(w)=\det\begin{pmatrix}
+v\\
+w
+\end{pmatrix}=v_1w_1-v_2w_1$. Por otro lado, $z=i^{-1}(\varphi)\Leftrightarrow i(z)=\varphi$, así que $\varphi(w)=i(z)(w)=\langle w,z\rangle =w_1z_1+w_2z_2$. Esto implica que $z=(-v_2,v_1)$. 
+\item Sean $v_1,\dots, v_{n-1}, v_1\times\dots\times v_{n-1}=v_n$. Entonces
+\[
+dx_1\land\dots\land dx_n(v_1,\dots, v_{n-1},v_n)=\begin{vmatrix}
+v_{1,1} & \cdots & v_{n-1,1} & v_{n,1}\\
+\vdots &       &           & \vdots\\
+v_{1,n}&  \cdots & v_{n-1,n} & v_{n,n}
+\end{vmatrix}=\gene{v_n,v_n}\geq 0
+\]
+pues $v_{n,i}$ está definido como el menor correspondiente a $v_{n,i}$ en el anterior determinante. 
+\end{enumerate}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Demuestra que el homomorfismo $\land: Alt^1(\R^4)\times Alt^1(\R^4)\to Alt^2(\R^4)$ no es sobreyectivo. 
+
+Ayuda: encuentra $w\in Alt^2(\R^4)$ tal que $w\land w\neq 0$.
+\end{ejercicio}
+\begin{solucion}
+Sea $w=\varepsilon_1\land \varepsilon_2+\varepsilon_3\land\varepsilon_4$. Entonces $w\land w\neq 0$, tal como tengo en el Ejercicio 2.1. Si existieran $\alpha,\beta\in Alt^1(\R^4)$ con $w=\alpha\land\beta$, entonces 
+\[
+w\land w=(\alpha\land\beta)\land(\alpha\land\beta)=-(\alpha\land\alpha)\land(\beta\land\beta)=0,
+\]
+lo cual es una contradicción.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{3}
+Sea $M$ una $n$-variedad diferenciable orientable compacta y $w_0$ una forma de orientación $M$.
+\begin{enumerate}
+\item Dada $\rho\in\Omega^r(M)$, $0\leq r\leq n$, y $g:W\to M$ una parametrización local, comprueba que
+\[
+(\rho)_{g(x)}\left(\left(\parcial{}{x_{i_1}}\right)_{g(x)},\dots, \left(\parcial{}{x_{i_r}}\right)_{g(x)}\right)=(g^*\rho)_x(e_{i_1},\dots, e_{i_r}).
+\]
+\item Demuestra entonces que dada cualquier $w\in\Omega^n(M)$ existe $f\in C^{\infty}(M;\R)$ tal que $w=fw_0$.
+
+\textbf{Ayuda}: Toma una familia de parametrizaciones de $M$ que la cubran. Demuestra que el resultado se verifica localmente para cada parametrización. Luego demuestra que las aplicaciones encontradas localmente definen una aplicación $f\in C^{\infty}(M;\R)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item 
+\[
+(g^*\rho)_x(e_{i_1},\dots, e_{i_r})=\rho_{g(x)}(D_xg(e_{i_1}),\dots, D_xg(e_{i_r}))=(\rho)_{g(x)}\left(\left(\parcial{}{x_{i_1}}\right)_{g(x)},\dots, \left(\parcial{}{x_{i_r}}\right)_{g(x)}\right)
+\]
+\item Sea $(U,h)$ una carta de $M$. Sabemos que la restricción $w_U\in\Omega^n(U)$ es diferenciable para todo $U$. Consideramos la parametrización local $g=h^{-1}$, que es un difeomorfismo entre un abierto $W$ de $\R^n$ y $U$. Por tanto, $h^*:\Omega^n(W)\to\Omega^n(U)$ es un isomorfismo. Como sabemos que toda $\tau\in\Omega^n(W)$ se escribe como $\tau=f dx_I$ con $f\in C^{\infty}(W;\R)$, cualquier $w_U\in\Omega^n(U)$ se escribe $w_U=h^*(\tau)=h^*(f)h^*(dx_I)=h^*(f)w_{0U}$ (recordemos que la estrella salta sobre el wedge y que para 0-formas el wedge coincide con el producto). Como $h^*(f)=f\circ h\in C^{\infty}(U;\R)$ el resultado se tiene localmente. 
+
+Podemos definir $w_0\in\Omega^n(M)$ como la familia $\{w_{0U}\}$, que es claramente diferenciable. Tenemos que probar entonces que si definimos $F:M\to \R$ en cada punto $p\in M$ como $h_p^*(f)(p)$ donde $(U_p,h_p)$ es una carta entorno a $p$, entonces $F\in C^{\infty}(M;\R)$. Para ello, sea otra carta $(U_1,h_1)$ con $p\in U_1$, entonces
+\[
+h_p^*(f)\circ h_1^{-1}=f\circ h_p\circ h_1^{-1}.
+\]
+Como el cambio de cartas $h_p\circ h^{-1}_1$ es diferenciable y $f$ es diferenciable por hipótesis. Falta probar que dadas otra carta $(V,h)$, la forma $\sigma_0$ definida igual que $w_0$ pero con $g$ difiere de $w_0$ en una función diferenciable. Consideremos $U\cap V\neq\emptyset$. Aquí podemos definir $w_{U\cap V}=h^*(f)h^*(dx_I)$ o bien $w_{U\cap V}=g^*(f)g^*(dx_I)$, por lo que tenemos que probar que $\sigma_0=g^*(dx_I)$ difiere de $w_0=h^*(dx_I)$ en el producto por una función diferenciable. Para ello basta tomar considerar $(g^{-1})^*(\sigma_0)=dx_I$ y $(g^{-1})^*(w_0)=(hg^{-1})^*(dx_I)$, que sabemos que difieren en aplicaciones diferenciables entre abiertos euclídeos, digamos $\mu$. Entonces $g^*(\mu)$ es la aplicación buscada.
+\end{enumerate}
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{4}
+Sea $M$ una $n$-variedad diferenciable, compacta y orientable, $\theta\in \Omega^{n-1}(M)$. Demuestra que $d\theta$ debe anularse en algún punto de $M$.
+\end{ejercicio}
+\begin{solucion}
+Sea $\theta\in\Omega^{n-1}(M)$. El soporte es en general un cerrado, y como $M$ es compacta, el soporte es compacto. Como $M$ es orientable tenemos que $\int_M d\theta=0$, pero esto implica que necesariamente $d\theta=0$ en algún punto, con lo que se tiene el resultado. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{5}\
+\begin{enumerate}[a)]
+\item Sea $M$ una $n$-variedad diferenciable conexa, compacta y orientable y sea $w\in\Omega^n(M)$ una forma de orientación. Comprueba que $w$ no es exacta.
+\item Si $f:M\to N$ es una aplicación diferenciable entre $n$-variedades diferenciables conexas, compactas y orientables tal que $D_pf$ es isomorfismo para todo $p\in M$, comprueba que $f^*:H^n(N)\to H^n(M)$ no es un homomorfismo nulo.
+\end{enumerate}
+
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a)]
+\item Si fuera exacta, entonces $w=d\theta$ para alguna $\theta\in \Omega^{n-1}(M)$, pero entonces por el ejercicio \ref{ejer:4} $w$ se anularía en algún punto de $M$, contradiciendo el hecho de que sea una forma de orientación.
+\item Como $D_pf$ es isomorfismo, dada una forma de orientación $w$ de $N$, $f^*(w)$ es una forma de orientación $M$. En efecto, para $p\in M$ y $v_1,\dots, v_n\in T_pM$, $f^*(w)_p(v_1,\dots, v_n)=w_{f(p)}(D_pf(v_1), \dots, D_pf(v_n))$, que como cualquier $w_i\in T_{f(p)}N$ se puede escribir como $D_pf(v_i)$ por ser $D_pf$ isomorfismo, tenemos que $w_i=0$ si y solo si $v_i=0$.
+
+Ahora, si $[f^*(w)]=0$, entonces $f^*(w)=d\theta$ para alguna $\theta\in \Omega^{n-1}(M)$, pero análogamente al apartado anterior, esto contradice el hecho de que $f^*(w)$ sea una forma de orientación.
+\end{enumerate}
+\end{solucion}
+
+
+\end{document}

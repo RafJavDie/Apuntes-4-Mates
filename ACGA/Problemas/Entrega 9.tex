@@ -1,11 +1,11 @@
 \documentclass[twoside]{article}
 \usepackage{../../estilo-ejercicios}
-\DeclareMathOperator{\Ima}{Im}
+%\DeclareMathOperator{\Ima}{Im}
 
 %--------------------------------------------------------
 \begin{document}
 
-\title{Algebra Conmutativa y Geometría Aplicada}
+\title{Algebra Conmutativa y Geometría Algebraica}
 \author{Javier Aguilar Martín, Rafael González López}
 \maketitle
 
@@ -45,12 +45,16 @@ an(M+N) &= \{a \in A\mid as = 0 \; \forall s\in M+N\} \\
 &=an(M)\cap an(N)
 \end{align*}
 Si hubiera alguna duda en la penúltima igualdad, tengamos en cuenta que la contención hacia atrás es trivial, mientras que si $a(m+n)$, tomando $m=0$ con $n$ cualquiera y $n=0$ con $m$ cualquiera tenemos la conteción contraria.
-\item Recordemos las definiciones:
+\item Por definición:
 \begin{align*}
-(N:P) &= \{a\in A\mid am\in N \;\forall m \in P\}\\
-an((N+P)/N)&= \{a \in A\mid a[m] = 0 \; \forall [m]\in (N+P)/N\}
+(N:P) &= \{a\in A\mid am\in N \;\forall m \in P\}=\{a\in A\mid aP\subset N \}\\
+an((N+P)/N)&= \{a \in A\mid a(N+P)/N = 0 \} 
 \end{align*}
-
+Veámoslo por doble inclusión. $a\in (N:P)$, entonces $aP\subset N$. Sea $(n+p)+N \in (N+P)/N$ con $n\in N$, $p\in P$, entonces, como $ap\in N$
+$$a((n+p)+N) \overset{n\in N}{=} ap+N \overset{ap\in N}{=} 0+N
+$$
+Recíprocamente, sea $a\in an((N+P)/N)$, entonces 
+$$a((N+P)/N)= (aP+aN)/N = aP/N = N \Rightarrow aP \subset N$$
 \end{enumerate}
 
 \end{solucion}
@@ -109,7 +113,7 @@ Sea $S \subseteq A$ un subconjunto multiplicativo de un anillo y $M, N, P$ tres 
 \end{ejercicio}
 \begin{solucion}\mbox{}
 \begin{enumerate}
-	\item Sea $φ$ y $ψ$ tal que $0 \to M \xrightarrow{φ} N \xrightarrow{ψ} P \to 0$. Esto es equivalente a decir que $φ : M \to N$ es inyectiva y $ψ : N \to P$ es sobreyectiva con $\text{Im}(φ) = \ker(ψ)$. Sea $\tilde{φ}$ y $\tilde{ψ}$ sus respectivos homomorfismos inducidos en $0 \to M \xrightarrow{\tilde{φ}} N \xrightarrow{\tilde{ψ}} P \to 0$. Veamos que esta sucesión también es exacta.
+	\item Sea $φ$ y $ψ$ tal que $0 \to M \xrightarrow{φ} N \xrightarrow{ψ} P \to 0$. Esto es equivalente a decir que $φ : M \to N$ es inyectiva y $ψ : N \to P$ es sobreyectiva con $\text{Im}(φ) = \ker(ψ)$. Sea $\tilde{φ}$ y $\tilde{ψ}$ sus respectivos homomorfismos inducidos en $0 \to S^{-1} M \xrightarrow{\tilde{φ}} S^{-1}N \xrightarrow{\tilde{ψ}} S^{-1}P \to 0$. Veamos que esta sucesión también es exacta.
 	\begin{itemize}
 	\item $\tilde{φ}$ es inyectiva, pues:
 	\[ \tilde{φ}(x/s) = 0 \Leftrightarrow φ(x)/s = 0 \Leftrightarrow φ(x) = 0 \Leftrightarrow x = 0 \]

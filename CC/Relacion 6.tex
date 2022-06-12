@@ -1,0 +1,279 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+\usepackage{wasysym}
+\usetikzlibrary{automata,positioning}
+\usepackage{mathdots}
+\usepackage{listings}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ciencias de la Computación}
+
+\author{Javier Aguilar Martín}
+\maketitle
+
+\begin{ejercicio}{1}
+Decidir si los siguientes predicados son 1-extensionales o no:
+\begin{itemize}
+	\item $P_1(p) \equiv \forall x [[\![p]\!](x) = [[p]](x+25)]$.
+	\item $P_2(p) \equiv \text{El programa }p\text{ es de tipo lineal}$.
+	\item $P_3(p) \equiv \text{El programa }p\text{ calcula una función polinómca (en aridad 1)}$.
+	\item $P_4(p) \equiv$ La función $[[p]]^{(1)}$ es total, pero $[[p]]^{(2)}$ no lo es. ¿Es 2-extensional?
+	\item $P_5(p) \equiv$ La función $[[p]]^{(1)}$ es constante.
+	\item $P_6(p) \equiv$ La ejecución de $p$ siempre para en $100$ pasos.
+	\item $P_7(p) \equiv$ La función $[[p]]^{(1)}$ está acotada. ¿Es 2-extensional?
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+\begin{enumerate}
+	\item $P_1(p)  \forall x ( [[p]](x) = [[p]](x+25)$. Si $[[p]]=[[q]]$ y $P_1(p) = 1$, entonces $P_1(q) = 1$, luego $P_1$ es 1-extensional.
+	
+	\item Tomamos $p : Y \leftarrow Y+1$. $p$ es lineal. Sea $q$ el programa $$Y \leftarrow Y+1; IF\ X \neq 0\ GOTO\ E.$$ $q$ no es lineal y $[[p]]^{(1)} = [[q]]^{(1)}$. Por tanto el predicado $P_2$ no es 1-extensional.
+	
+	\item Por definición, si $[[p]]=[[q]]=f$, ambos programas calculan una función polinómica, luego es 1-extensional.
+	\item $P_4(p) = [[p]]^{(1)}$ es total pero $[[p]]^{(2)}$ no lo es. Supongammos que $P_4(p) = 1$ y $[[p]]^{(2)} = [[q]]^{(2)}$. Como:
+	\[ [[q]]^{(1)}(x) = [[q]]^{(2)}(x,0) = [[p]]^{(2)}(x,0) = [[p]]^{(1)}(x) \]
+	Por tanto, $[[q]]^{(1)} = [[p]]^{(1)}$ es total y $[[q]]^{(2)}$ no lo es, luego $P_4(q) = 1$ y $P_4$ es 2-extensional.
+	\item Si ambos programas calculan la misma función entonces ambos son constantes, así que el predicado es 1-extensional.
+	\item No es extensional, pues podemos añadir al final del programa instrucciones del tipo \texttt{SKIP} que no alteran el valor de la función y prolongan la ejecución. 
+	\item Claramente es 1-extensional. No es dos extensional podemos considerar la función $[[p]]^{(2)}(x,y)=0$ y por otro lado $[[q]]^{(2)}(x,y)=y$.
+\end{enumerate}
+
+\newpage
+
+\begin{ejercicio}{3}
+Usando el teorema de Rice, decidir la recursividad de los siguientes conjuntos:
+\begin{itemize}
+	\item $INF = \{e \in \N : W_e $ es infinito$\}$ y $FIN = \{e \in \N : W_e$ es finito$\}$.
+	\item $IMP = \{e \in \N :$ existe $p$ tal que $|p|$ es impar y $[[p]]=φ_e\}$.
+	\item $MON = \{e \in \N : φ_e$ es total y $(\forall x)[φ_e(x) ≤ φ_e(x+1)]\}$.
+	\item $D = \{e \in \N : φ_e$ es total y $\forall x[x \in \mathcal{K} \Leftrightarrow φ_e(x) = 0]\}$.
+	\item $PRED = \{e \in \N : φ_e$ es un predicado$\}$.
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{itemize}
+	\item $INF = \{\#(p) : p$ para sobre un conjunto infinito de datos$\} = \{e \in \N: dom(φ_e)$ es infinito$\}$ . $I_\mathcal{F}$, donde $\mathcal{F} = \{ f \in \mathcal{P}^{(1)} : dom(f)$ es infinito$\}$. Aplicamos el teorema de Rice. Primero vemos que $\mathcal{F}$ no es trivial.
+	\[ \mathcal{F} \neq \emptyset \Leftarrow Π_1^1 \in \mathcal{F} \]
+	\[ \mathcal{F} \neq \mathcal{P}^{(1)} \]
+	pues para $f \in \mathcal{P}^{(1)}$ calculada por el programa \texttt{[A] IF X $\neq$ 0 GOTO A}. Entonces $dom(f) = \{0\}$ es finito y por tanto $f \notin \mathcal{F}$. Por el teorema de Rice $INF = I_\mathcal{F}$ no es recursivo.
+	
+	Por otro lado, $FIN = \{e \in \N: dom(φ_e)$ es finito$\} = I_G$ donde $G = \{f \in \mathcal{P}^{(1)} : dom(f)$ es finito$\} = \mathcal{P}^{(1)} - \mathcal{F}$. Como $G \neq \emptyset$ y $G \neq \mathcal{P}^{(1)}$, por el teorema de Rice $I_G$ no es recursivo, luego $FIN$ no es recursivo.
+	
+	Nos preguntamos ahora si $FIN$ es recursivamente enumerable. Supongamos que lo es. Tomamos:
+	\[ f(e,x) = \begin{cases}
+	x, &\text{ si }e \in FIN\\
+	\uparrow & \text{ c.c.}
+	\end{cases}\]
+	Entonces $f(e,x) = y \Leftrightarrow e \in FIN \land x = y$. Como tanto $e \in FIN$ y $x = y$ son recursivamente enumerable, $f(e,x) = y$ es recursivo por el teorema del grafo. Por el teorema de recursión, existe $\hat{e} \in \N$ tal que $f(\hat{e},x) = φ_{\hat{e}}(x)$. Si $\hat{e} \in FIN$, entonces $dom(φ_{\hat{e}}) = dom(Id) = \N$, que es infinito. Si $\hat{e} \notin FIN$, $dom(φ_{\hat{e}}) = \emptyset$, que es finito. Llegamos en todo caso a un absurdo, luego $FIN$ no es recursivamente enumerable.
+	
+	Queda como ejercicio ver que $INF$ tampoco es recursivamente enumerable.
+	
+	\item Tenemos que $IMP = \N$, pues sabemos que existe $p$ tal que $[[p]]=φ_e$. Basta añadir una instrucción trivial al final del programa $p$ si es necesario para hacer $|p|$ impar. Luego $IMP$ es recursivamente enumerable.
+	
+	\item $MON$ no es recursivo. Para aplicar el teorema de Rice sea $\Gamma=\{f: f$ es total y $(\forall x)[f(x)\leq f(x+1)]\}$, claramente $MON=I_\Gamma$. Además $Id\in MON$ y $g(x)=x\dot{-}1\notin MON$. Tampoco es recursivamente enumerable. Podemos reducir este conjunto al conjunto de índices de funciones totales de forma que como este último no es recursivamente enumerable, entonces tampoco lo es el original. Para ello basta con convertir una función $f\in\mathcal{P}$ en otra función $\hat{f}\in\mathcal{P}$ de modo que la $f$ es total si y solo si $\hat{f}$ es total y creciente. Para ello basta usar la función recorrido de $f$. 
+	\item El conjunto es vacío porque $\N\setminus\mathcal{K}$ no es r.e., de modo que una función definida a trozos entre $\mathcal{K}$ y su complementario no puede ser recursiva. Es decir el conjunto es trivialmente recursivo.
+	\item Trivialmente no recursivo por el teorema de Rice. Tampoco es recursivamente enumerable porque el problema de decidir si un función es total se puede reducir a este problema. Podemos convertir una función $f\in\mathcal{P}$ en otra $\hat{f}(x)\in\mathcal{P}$ tal que $f$ es total si y solo si $\hat{f}$ es total y su rango es $\{0,1\}$. Esto lo hacemos con la función signo.
+\end{itemize}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4}
+Consideremos el predicado
+\[ P(x) \equiv W_x^{(1)} \neq \emptyset \]
+Probar que:
+\begin{enumerate}
+	\item El conjunto $A = \{x : W_x^{(1)} \neq \emptyset\}$ es recursivamente enumerable.
+	\item El predicado $P(x)$ es extensional.
+	\item El predicado $P(x)$ no es recursivo.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{enumerate}
+	\item \begin{align*}
+	x \in A \Leftrightarrow W_x \neq \emptyset \Leftrightarrow dom(φ_x) \neq \emptyset \Leftrightarrow \exists n (φ_x(n) \downarrow) \Leftrightarrow \exists n \exists t\ STEP(n,x,t)
+\end{align*}
+Luego $A$ es recursivamente enumerable.
+
+	\item Para $[[p]]^{(1)} = [[q]]^{(1)}$ con $P(p)=1$, $dom([[q]]) = dom([[p]]) \neq \emptyset$, luego $P(q)=1$.
+	
+	\item Sea $\mathcal{F} = \{f \in \mathcal{P}^{(1)} : dom(f) \neq \emptyset\}$. Tenemos que $\mathcal{F} \neq \emptyset$, pues $\mathcal{O} \in \mathcal{F}$. Además, $\mathcal{F} \neq \mathcal{P}^{(1)}$,
+	 ya que para $f$ dada por \texttt{X $\leftarrow$ X+1; [A] IF X $\neq$ 0 GOTO A}, $f \notin \mathcal{F}$. Por el teorema de Rice, $I_{\mathcal{F}} = A$ no es recursivo.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{5}
+Sea $P(x)$ el predicado $P(x) \equiv$ La función $\varphi^{(1)}_x$ es una función constante. Probar
+que:
+\begin{enumerate}
+\item El predicado $P(x)$ es extensional.
+\item El predicado $P(x)$ \textbf{no} es recursivo.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+\item Trivial
+\item Supongamos que es recursivo y sea $C$ una constante. Definimos entonces
+\[
+f(e,x)=\begin{cases}
+x & P(e)\\
+C & \neg P(e)
+\end{cases}
+\]
+Por hipótesis esta función sería recursiva, así que por el teorema de recursión existe $\hat{e}$ tal que $\varphi_{\hat{e}}(x)=f(\hat{e},x)$. Si $P(\hat{e})$ entonces $C=\varphi_{\hat{e}}(x)=x$, lo cual es una contradicción. Si $\neg P(\hat{e})$, entonces $x=\varphi_{\hat{e}}(x)=C$, que también es una contradicción.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{10}
+Consideremos el siguiente problema:
+
+
+`` Dados \texttt{p}, $\texttt{q} \in \texttt{GOTO}_{\texttt{P}}$, decidir si existe $x \in \N$ tal que $[\![p]\!](x) \downarrow$ y $[\![q]\!](x) \downarrow$''
+
+Con conjunto asociado $A = \{(x, y) : dom(\varphi^{(1)}_x ) \cap dom(\varphi_y^{(1)}) \neq\emptyset\}$. Se pide:
+\begin{enumerate}
+\item Probar que el predicado asociado es r.e.
+\item Probar que $\N^2\setminus A$ no es recursivo (Indicación: Prefijar \texttt{p} tal que $[\![p]\!]^{(1)}$ sea total).
+\item  Demostrar que el problema es indecidible.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item Por definición, $dom(\varphi^{(1)}_x )$ y $dom(\varphi_y^{(1)})$ son r.e., luego su intersección también lo es, es decir, existe $e\in\N$ tal que $dom(\varphi^{(1)}_x ) \cap dom(\varphi_y^{(1)})=W_e^{(1)}$. Por tanto, $A\leq B=\{z\in\N: W_z\neq\emptyset\}$ gracias a la función par. Por el ejercicio \ref{ejer:4} sabemos que $B$ es r.e., luego $A$ también lo es por reducibilidad.
+\item Utilizando el criterio de reducibilidad tendríamos que $C=\N^2\setminus A\leq \{z\in\N: W_z=\emptyset\}=\N\setminus B$, que no puede ser recursivo, porque entonces $B$ sería recursivo, y utilizando de nuevo el ejercicio \ref{ejer:4} sabemos que no lo es. 
+
+Haciendo uso de la indicación, si fijamos $x_0$ tal que $\varphi_{x_0}$ es total, entonces $(x_0,y)\in C\Leftrightarrow \varphi_y$ es vacía, predicado que no es recursivo (se puede probar fácilmente utilizando el teorema de Rice). 
+
+\item Como $A$ es r.e. no recursivo, $C$ no puede ser r.e., así que el problema es indecidible. 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{12}
+Dado $\texttt{p} \in \texttt{GOTO}_\texttt{P}$, denotaremos por $\texttt{p}^*$ el programa que resulta de eliminar de \texttt{p} todas
+las etiquetas de las instrucciones etiquetadas. Decidir razonadamente si los siguientes conjuntos
+son recursivos:
+\begin{enumerate}
+\item $A = \{\#(\texttt{p}) : [\![p]\!] = [\![p^*]\!]\}$
+\item  $B = \{\#(\texttt{p}) : [\![p]\!] \neq [\![p^*]\!]\}$
+\item $C = \{\#(\texttt{p}) : \texttt{p} = \texttt{p}^*\}$
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item Es el problema de la equivalencia, luego no es recursivo. 
+\item Obsérvese que los programas $p^*$ siempre paran puesto que no pueden entrar en un bucle. Además obtenerlo a partir de $p$ es p.r. puesto que basta transformar los códigos. Supongamos que $B$ es recursivo y definamos
+\[
+f(\#(p),x)=\begin{cases}
+[\![p^*]\!] & [\![p]\!] \neq [\![p^*]\!]\\
+\uparrow & c.c.
+\end{cases}
+\]
+Es recursiva por hipótesis (por ejemplo usando el teorema del grafo). Por el teorema de recursión sea $\varphi_{\#(p)}(x)$. Si se cumple el predicado, entonces $[\![p]\!](x)=\varphi_{\#(p)}(x)=[\![p^*]\!](x)$, lo cual es una contradicción. Y en caso contrario tendríamos que un programa de la forma $p^*$ no para, lo cual es también contradicción.
+\item Basta examinar si el programa tiene etiquetas, lo cual se puede hacer de forma primitiva recursiva a partir de la codificación.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{14}
+probar que los siguientes conjuntos son recursivamente enumerables:
+\begin{itemize}
+	\item Dado $q \in \texttt{GCOMP}$, el conjunto: $A = \{ x : q \text{ para en n número impar de pasos sobre }x\}$.
+	\item $B = \{\langle \#(p),x\rangle : [[p]](x)$ es par$\}$.
+	\item $C = \{\#(p) : $ El programa $p$ devuelve $0$ para algún dato de entrada$\}$.
+	\item $D = \{\langle\#(p),\#(q)\rangle : [[p]](0)\downarrow $ y $[[p]](0)=[[q]](0)\}$.
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{itemize}
+	\item $x\in A\Leftrightarrow \exists t (\texttt{STEP}(x, \#(q),t)\land \neg\texttt{STEP}(x, \#(q),t\dot{-}1)\land impar(t))$.
+	\item $z\in B\Leftrightarrow \exists t (\mathcal{T}(r(z),l(z),r(t))\land par(l(t)))$.
+	\item $e \in C \Leftrightarrow (\exists x) (φ_e(x) = 0) \Leftrightarrow (\exists x)(U_1(x,e) = 0)$.
+	\item Problema de la parada y de la equivalencia.
+\end{itemize}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{15}
+Sea $f : \N \to \N$ recursiva. Probar que
+\begin{enumerate}
+	\item El conjunto $\{e : \exists k (\forall n \in \N) [φ_e(n) = f(n)^k]\}$ no es recursivo.
+	\item Existe $e \in \N$ tal que para todo $n$, $φ_e(n) = f(n)^e$.
+	\item Probar que no es extensional el siguiente predicado $P(p) \equiv [[p]]^{(1)} = x^{\#(p)}$.
+	\item Aplicando diagonalización, probar que no es recursivo el conjunto
+	\[ A = \{e : (\forall n \in \N)[φ_e(n) = f(n)^e]\} \]
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{enumerate}
+	\item Sea $\mathcal{F} = \{g \in \mathcal{P}^{(1)} : \exists k (\forall n \in \N) [g(n) = f(n)^k]\}$ de manera que $I_\mathcal{F} = A$. $\mathcal{F} \neq 0$, pues $f \in \mathcal{F}$. $\mathcal{F} \neq \mathcal{P}^{(1)}$, pues cualquier función recursiva no total no está en $\mathcal{F}$. Luego por el teorema de Rice, $A = I_{\mathcal{F}}$ no es recursiva.
+	\item Sea $g(e,n) = f(n)^e$, entonces $g \in \mathcal{R}$. Por el teorema de recursión, existe $\hat{e} \in \N$ tal que $φ_{\hat{e}}(n) = g(\hat{e},n) = f(n)^{\hat{e}}$ para todo $n \in N$.
+	\item Sabemos que hay al menos un programa que cumple el predicado por el apartado anterior. Sea $p$ un programa tal que $(\forall x) [[p]]^{(1)}(x) = x^{\#(p)}$ y $q$ el programa \texttt{P; X $\leftarrow$ X}. Entonces $\#(q)\neq\#(p)$ y $P(q) = 0$, pero $[[p]]=[[q]]$, luego $P$ no es 1-extensional.
+	\item Supongamos que $A$ es recursivo. Definimos
+	\[ g(e,x) = \begin{cases}
+	f(x)^e+1 &\text{ si }x \in A\\
+	f(x)^e &\text{ si }x \notin A
+\end{cases}\]
+Como $f$ es total y $A$ es recursivo, $g$ es recursiva total. Por el teorema de recursión, existe $\hat{e}$ tal que $g(\hat{e},x) = φ_{\hat{e}}(x)$ para todo $x \in \N$. Si $\hat{e} \in A$, $f(x)^{\hat{e}}=φ_{\hat{e}}(x)=f(x)^{\hat{e}}+1$. Si $\hat{e} \notin A$, existe $n$ tal que $f(n)^{\hat{e}}=φ_{\hat{e}}(n) \neq f(n)^{\hat{e}}$. En todo caso llegamos a un absurdo, luego $A$ no es recursivo.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{18}
+Probar que existe $f \in \mathcal{R}^{(2)}$ tal que
+\[ f(x,y) = \begin{cases}
+	1 &\text{ si }x = 0 \lor y = 0\\
+	f(x-1, f(x\dot{-}y,y)) &\text{ c.c.}	
+\end{cases}\]
+\end{ejercicio}
+\begin{solucion}
+Sea $g : \N^3 \dashrightarrow \N$ definida como:
+\[ g(e,x,y) = \begin{cases}
+	1 &\text{ si }x = 0 \lor y = 0\\
+	φ_e(x-1,φ_e(x\dot{-}y,y)) & \text{ si }x \neq 0
+\end{cases}\]
+Entonces:
+\[ g(e,x,y) = \begin{cases}
+	1 &\text{ si }x = 0 \lor y = 0\\
+	\mathcal{U}_2(x-1,\mathcal{U}_2(x\dot{-}y,y,e),e) & \text{ si }x \neq 0
+\end{cases}\]
+Vemos entonces que $g$ es recursiva. Por el teorema de recursión, existe $\hat{e} \in \N$ tal que $φ_{\hat{e}} (x,y) = g(\hat{e},x,y)$. Tomando $f = φ_{\hat{e}}$, tenemos la función que buscabamos. Tenemos que ver además que $f$ es total. Sea $f_x(y) = f(x,y)$. Por inducción en $x$, es fácil ver que $f_x : \N \to \N$ es total.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{20}
+Probar que existen dos programas $p$ y $q$, con códigos consecutivos, tal que
+\[ \forall x \in \N [ [\![p]\!](x) \downarrow \Rightarrow [\![p]\!](x) = [\![q]\!](x)]\]
+\end{ejercicio}
+\begin{solucion}
+Esto es equivalente a ver que existe $e$ tal que para todo $x \in \N$:
+\[ φ_e(x) \downarrow \Rightarrow φ_e(x)=φ_{e+1}(x) \]
+Cogemos $f(x)=x+1$. Tenemos que $f \in \mathcal{R}^{(1)}$. Por el teorema del punto fijo de Kleene, existe $e$ tal que $φ_e = φ_{f(e)} = φ_{e+1}$.
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{(EXTRA)}
+Demostración alternativa del teorema de Rice.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+Supongamos que $Γ \neq \emptyset$ y $Γ \neq \mathcal{P}^{(1)}$. Entonces existe $f_0 \notin Γ$ y $f_1 \in Γ$. Supongamos que $I_Γ$ es recursivo. Definimos:
+\[ f(e,x) = \begin{cases}
+	f_0(x) &\text{ si }e \in I_Γ\\
+	f_1(x) &\text{ si }e \notin I_Γ
+\end{cases}\]
+Entonces:
+\[ f(e,x) = y \Leftrightarrow (e \in I_Γ \land f_0(x) = y) \lor (e \notin I_Γ \land f_1(x) = y) \]
+Como $I_Γ$ es recursivo, el grafo de $f$ es recursivamente enumerable, luego llegamos a que $f$ es recursivo por el teorema del grafo. Por el teorema de recursión, existe $\hat{e} \in \N$ tal que $f(\hat{e},x) = φ_{\hat{e}}(x)$ para todo $x \in \N$. Si $\hat{e} \in I_Γ$, entonces $φ_{\hat{e}} = f_0 \notin Γ$. Si $\hat{e} \notin I_Γ$, entonces $φ_{\hat{e}} = f_1 \in Γ$. Esto es una contradicción, luego $I_Γ$ no es recursivo.
+\end{document}

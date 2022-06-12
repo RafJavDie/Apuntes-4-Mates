@@ -1,0 +1,83 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Modelos de Investigación Operativa}
+\author{Rafael González López, Javier Aguilar Martín}
+\maketitle
+
+\begin{ejercicio}{de modelado 1}
+Hay un presupuesto $b$ disponible para invertir en proyectos durante el próximo año y $n$ proyectos a considerar, donde $a_j$ es el gasto del proyecto $j$, y $c_j$ es el retorno esperado del proyecto $j$. El objetivo es elegir un conjunto de proyectos de forma que no se exceda el presupuesto y el retorno esperado sea máximo.
+\end{ejercicio}
+\begin{solucion}
+Se definen las variables $x_j\in\{0,1\}$ para todo $j=1,\dots, n$, que representa si se decide invertir en el proyecto $j$. El problema es el siguiente
+\begin{align*}
+\max\ & \sum x_jc_j\\
+sa:\ & \sum_{j=1}^n x_j\leq n\\
+& x_j\in\{0,1\}
+\end{align*}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{de modelado 2}
+Hay $n$ personas para realizar $n$ trabajos. A cada persona se le asigna un trabajo. Algunos individuos están mejor preparados para un trabajo en particular que otros, por lo que hay un coste estimado $c_{ij}$ si la persona $i$ es asignada al trabajo $j$. El problema es encontrar la asignación de coste mínimo.
+\end{ejercicio}
+Se definen las variables $x_{ij}\in\{0,1\}$ que representarán si el trabajador $i$ es asignado al trabajo $j$. 
+\begin{align*}
+\min\ & \sum_{i,j}c_{ij}x_{ij}\\
+& \sum_i x_{ij}=1, \forall j\\
+& \sum_j x_{ij}=1, \forall i\\
+& x_{ij}\in\{0,1\}
+\end{align*}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{de modelado 3}
+Sea $G=(V,E)$ un grafo con matriz de adyacencia $(a_{ij})$ simétrica (el grafo no es dirigido) y con coeficientes binarios. Buscamos el máximo conjunto independiente, es decir, el conjunto de nodos de mayor cardinal tal que ninguno de ellos esté conectado a otro del conjunto.
+\end{ejercicio}
+\begin{solucion}
+Definimos variables $x_i\in\{0,1\}$ para decidir si el vértice $i$ se incluye en el conjunto.
+\begin{align*}
+\max& \ \sum_i x_i\\
+sa:\ &  x_ia_{ij}+x_ja_{ij}\leq 1\ \forall i,j\\
+& x_i\in\{0,1\} 
+\end{align*}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{de modelado 4}
+Similar al anterior, pero buscando el máximo subgrafo completo o \emph{cliqué}.
+\end{ejercicio}
+\begin{solucion}
+Definimos variables $x_i\in\{0,1\}$ para decidir si el vértice $i$ se incluye en el conjunto.
+\begin{align*}
+\max& \ \sum_i x_i\\
+sa:\ &(1-a_{ij})(x_i+x_j)\leq 1\ \forall i,j\\
+& x_i\in\{0,1\} 
+\end{align*}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{de modelado 5}
+La búsqueda del número cromático. 
+\end{ejercicio}
+\begin{solucion}
+Variable $x_{ik}\in\{0,1\}$ si asignamos el color $k$ al vértice $i$, con $1\leq i,k\leq n$.  Definimos también $y_k$ si se usa el color $k$. 
+\begin{align*}
+\min & \sum_k y_k\\
+sa:\ & a_{ij}(x_{ik}+x_{jk})\leq 1\ \forall j,k\\
+     & \sum_k x_{ik}=1\ \forall i\\
+    & y_k\geq x_{ij}\ \forall i, k\\
+    & y_k\in\{0,1\}\\
+    & x_{ik}\in\{0,1\}
+\end{align*}
+\end{solucion}
+Podemos hacerlo más compacta sustituyendo la primera y la tercera restricción por $a_{ij}(x_{ik}+x_{jk})\leq y_k$. 
+\end{document}

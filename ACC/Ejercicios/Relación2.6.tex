@@ -1,0 +1,266 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\lex}{<_{lex}}
+\newcommand{\grlex}{<_{grlex}}
+\newcommand{\grevlex}{<_{grevlex}}
+
+\newcommand{\PhantC}{\phantom{\colon}}%
+\newcommand{\CenterInCol}[1]{\multicolumn{1}{c}{#1}}%
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{2.6.1}
+Show that Proposition 1 can be strengthened slightly as follows. Fix a monomial ordering
+and let $I ⊆ k[x_1,\dots , x_n]$ be an ideal. Suppose that $f ∈ k[x_1,\dots , x_n]$.
+\begin{enumerate}
+\item[a.] Show that $f$ can be written in the form $f = g + r$, where $g ∈ I$ and no term of $r$ is
+divisible by any element of $LT(I)$.
+\item[b.] Given two expressions $f = g + r = g'
++ r'$ as in part (a), prove that $r = r'$ Thus, $r$
+and $g$ are uniquely determined.
+\end{enumerate}
+\end{ejercicio}
+
+\begin{solucion}
+\begin{enumerate}
+\item[]
+\item[a.] Sea $\{g_1,\dotsc,g_t\}$ una base de Gröbner. Por la Proposición 1 tenemos que $f$ puede escribirse como $f=g+r$ con $g\in I$ y $r$, resto de la división, no es divisible por ningún $LT(g_i)$. Sea $h\in \gene{LT(I)}=\gene{LT(g_1),\dotsc,LT(g_t)}$. Luego, por ser ideal monomial, $\exists i \in\{1,\dotsc,t\}$ tal que $LT(g_i)$ divide a $LT(h)$, por lo que si $h$ divide a $r$, también lo haría $g_i$, lo cuál es una contradicción con el hecho de que $r$ sea resto de la división. 
+
+\item[b.] Este apartado se prueba igual que en el libro, puesto que basta que ninguno de los términos de $r$ y $r'$ sea divisibles por ninguno de los términos líderes de los generadores.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.2}
+In §5, we showed that $G = \{x + z, y − z\}$ is a Gröbner basis for lex order. Let us use
+this basis to study the uniqueness of the division algorithm.
+\begin{enumerate}[a.]
+\item Divide $xy$ by $x + z$, $y − z$.
+\item Now interchange the two polynomials and divide $xy$ by $y − z$, $x + z$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Vamos a fijar el orden lex habitual
+\begin{enumerate}[a.]
+\item $xy=y(x+z)-z(y-z)-z^2.$
+\item $xy=x(y-z)+z(x+z)-z^2.$
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.6.3}
+In Corollary 2, we showed that if $I =\gene{ 
+g_1,\dots , g_t}$ and if $G = \{g_1,\dots , g_t\}$ is a Gröbner
+basis for $I$, then $\overline{f}^G = 0$ for all $f ∈ I$. Prove the converse of this statement. Namely, show
+that if $G$ is a basis for $I$ with the property that $\overline{f}^G = 0$ for all $f ∈ I$, then $G$ is a Gröbner
+basis for I.
+
+\end{ejercicio}
+\begin{solucion}
+Sea $G$ una base de $I$ tal que $\overline{f}^G=0$ para todo $f\in I$. Supongamos que no es una base de Gröbner, es decir, que existe $f\in I$ con $LT(f)\notin \gene{LT(G)}$. En particular, por el Ejercicio 2.5.5, $LT(f)$ no es divisible por $LT(g_i)$ para ningún $i$. Pero entonces $\overline{f}^G \neq 0$. Contradicción.
+
+Otra solución muy elegantemente escogida es la siguiente. El Teorema 6 (Criterio de Buchberger) nos dice que $G$ es base de Gröbner si y solo si $\overline{S(g_i,g_j)}^G=0$ para todo $i,j$ con $i\neq j$. Pero es claro que $S(g_i,g_j)\in I$, luego por hipótesis el resto de dividir por $G$ es $0$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.4}
+Let $G$ and $G'$ be Gröbner bases for an ideal $I$ with respect to the same monomial order
+in $k[x_1,\dots , x_n]$. Show that $\overline{f}^G = \overline{f}^{G'}$
+for all $f ∈ k[x_1,\dots , x_n]$. Hence, the remainder on
+division by a Gröbner basis is even independent of which Gröbner basis we use, as long
+as we use one particular monomial order. Hint: See Exercise \ref{ejer:2.6.1}.
+\end{ejercicio}
+\begin{solucion}
+Es consecuencia del Ejercicio \ref{ejer:2.6.1}, pues al dividir por $G$ tendríamos $f=g+r$ y al dividir por $G'$ tendríamos $f=g'+r'$, con $g,g',r,r'$ cumpliendo las condiciones de dicho ejercicio. Pero por el apartado b, $r=r'$, luego, usando la notación del enunciado, $\overline{f}^G = \overline{f}^{G'}$.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2.6.5}
+Compute $S( f , g)$ using the lex order.
+\begin{enumerate}[a.]
+\item $f = 4x^2z − 7y^2$, $g = xyz^2 + 3xz^4$.
+\item $f = x^4y − z^2$, $g = 3xz^2 − y$.
+\item $f = x^7y^2z + 2ixyz$, $g = 2x^7y^2z + 4$.
+\item $f = xy + z^3$, $g = z^2 − 3z$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{enumerate}[a.]
+\item \[ S(f,g) = \frac{x^2yz^2}{4x^2z}f - \frac{x^2yz^2}{xyz^2}g = \frac{1}{4}yz(4x^2z-7y^2)-x(xyz^2+3xz^4) =  -3x^2z^4 - \frac{7}{4}y^3z. \]
+\item \[ S(f,g) = \frac{x^4yz^2}{x^4y}f - \frac{x^4yz^2}{3xz^2}g = z^2f-\frac{1}{3}x^3yg = \frac{1}{3}x^3y^2-z^4 \]
+\item \[ S(f,g) = \frac{x^7y^2z}{x^7y^2z}f-\frac{x^7y^2z}{2x^7y^2z}g = f- \frac{1}{2}g = 2ixyz-2\]
+\item \[ S(f,g)=\frac{xyz^2}{xy}f-\frac{xyz^2}{z^2}g = z^2f-xyg = 3xyz+z^5 \]
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.6}
+Does $S( f , g)$ depend on which monomial order is used? Illustrate your assertion with
+examples.
+\end{ejercicio}
+\begin{solucion}
+Sí, depende. Sean $f=x+y$ y $g=x+y^2$, entonces con lex siendo $x>y$ obtenemos $S(f,g)=-y^2+y$, mientras que si $y>x$ nos da $S(f,g)=yx-x$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.7}
+Prove that $\mathrm{multideg}(S( f , g)) < γ$, where $x^γ = \lcm (LM( f ), LM(g))$. Explain why this
+inequality is a precise version of the claim that $S$-polynomials are designed to produce
+cancellation.
+\end{ejercicio}
+\begin{solucion}
+Por definición, $$S(f,g)=f\frac{x^{\gamma}}{LT(f)}-g\frac{x^{\gamma}}{LT(g)}$$ 
+Tenemos que $$LT\left(f\frac{x^{\gamma}}{LT(f)}\right)=LT(f)\frac{x^{\gamma}}{LT(f)}=x^{\gamma}=LT(g)\frac{x^{\gamma}}{LT(g)}=LT\left(g\frac{x^{\gamma}}{LT(g)}\right)$$
+Por tanto, el término de multigrado $\gamma$ se cancela en $S(f,g)$. Como los demás términos tienen grado estrictamente menor, se tiene el resultado.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.8}
+As in the proof of Theorem 6, suppose that $c_ix^{α(i)}g_i$ and $c_jx^{α(j)}g_j$ have multidegree $δ$.
+Prove that
+$$S(x^{α(i)}g_i, x^{α(j)}g_j) = x^{δ−γ_{ij}}S(g_i, g_j),$$
+where $x^{γ_{ij}} = \lcm (LM(g_i), LM(g_j))$.
+\end{ejercicio}
+\begin{solucion}
+En primer lugar, tenemos que $LT(x^{\alpha(i)}g_i)=x^{\alpha(i)}LT(g_i)$ e igualmente se tiene $LM(x^{\alpha(i)}g_i)=x^{\alpha(i)}LM(g_i)$. Sabemos que $x^{\delta}=\lcm (x^{α(i)}LM(g_i),x^{α(j)}LM(g_j))$, entonces 
+\begin{align*}S(x^{α(i)}g_i, x^{α(j)}g_j)&=\frac{x^{\delta}}{x^{\alpha(i)}LT(g_i)}x^{α(i)}g_i-\frac{x^{\delta}}{x^{\alpha(j)}LT(g_j)}x^{α(j)}g_j\\
+&=\frac{x^{\delta}}{LT(g_i)}g_i-\frac{x^{\delta}}{LT(g_j)}g_j\\
+&=x^{\delta-\gamma_{ij}}\left(\frac{x^{\gamma_{ij}}}{LT(g_i)}g_i-\frac{x^{\gamma_{ij}}}{LT(g_j)}g_j\right)\\
+&=x^{\delta-\gamma_{ij}} S(g_i,g_j)
+\end{align*}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.9}
+Show that $\{y − x^2, z − x^3\}$ is not a Gröbner basis for lex order with $x > y > z$.
+\end{ejercicio}
+\begin{solucion}
+Siguiendo la línea del capítulo, comprobamos el Teorema 6. Denotemos $f=y − x^2,g=z − x^3$. Tenemos que
+$$
+S(f,g)= -xy+z = 0\cdot f + 0\cdot g + (-xy+z)
+$$
+El resto de dividir $S(f,g)$ por $\{f,g\}$ no es $0$, por lo que no es una base de Gröbner.
+\end{solucion}
+\begin{solucion} Tenemos que  $\gene{LT(f),LT(g)}=\gene{-x^2,-x^3}=\gene{x^2}$. Sea $h=g-xf=z-y\in I$, pero $LT(h)=-y\notin\gene{LT(f),LT(g)}$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.10}
+Using Theorem 6, determine whether the following sets $G$ are Gröbner bases for the
+ideal they generate. You may want to use a computer algebra system to compute the
+$S$-polynomials and remainders.
+\begin{enumerate}[a.]
+\item $G = \{x^2 − y, x^3 − z\}$ for grlex order.
+\item $G = \{x^2 − y, x^3 − z\}$ for invlex order (see Exercise 6 of §2).
+\item $G = \{xy^2 − xz + y, xy − z^2, x − yz^4\}$ for lex order.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Denotando en cada caso $f_i$ al i-ésimo elemento de $G$.
+\begin{enumerate}[a.]
+\item Tenemos que $S(f_1,f_2)=yx$, que no es divisible por $LT(f_i)$. 
+\item Es trivial que sí lo es, pues invlex order equivale al lex order con $z>y>x$.
+\item Tenemos que $S(f_2,f_3)=-z^2+y^2z^4$, que no es divisible por $LT(f_i)$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.11}
+Let $f , g ∈ k[x_1,\dots , x_n]$ be polynomials such that $LM( f )$ and $LM(g)$ are relatively prime
+monomials and $LC( f) = LC(g) = 1$. Assume that $f$ or $g$ has at least two terms.
+\begin{enumerate}[a.]
+\item Show that $S( f , g) = −(g − LT(g))f + (f − LT( f ))g$.
+\item Deduce that $S( f , g) \neq 0$ and that the leading monomial of $S( f , g)$ is a multiple of
+either $LM( f )$ or $LM(g)$ in this case.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Sabemos que, por las hipótesis del enunciado, $x^\gamma=\lcm(f,g)=LT(f)LT(g)$. Por definición
+$$S(f,g)=f\frac{x^{\gamma}}{LT(f)}-g\frac{x^{\gamma}}{LT(g)} = LT(g)f-LT(f)g
+$$
+Si sumamos y restamos $fg$ en la expresión anterior, tenemos
+\begin{align*}
+S(f,g)&=-gf+LT(g)f +fg-LT(f)g\\
+&=(-g+LT(g))f+(f-LT(f))g \\
+&=-(g-LT(g))f+(f-LT(f))g
+\end{align*}
+\item Sabemos que $f$ o $g$ tiene al menos dos términos. Supongamos que uno de los dos tiene un único término. Podemos suponer que es $g$ sin pérdida de generalidad, entonces
+$$
+S=S(f,g)=-(g-LT(g))f+(f-LT(f))g = (f-LT(f))g 
+$$
+Dado que $g\neq 0$ se tiene que $S\neq 0$ y y $LT(S)$ es múltiplo de $LT(g)$. El otro caso es análogo. Supongamos ahora que ambos tienen dos términos al menos. Si $$multideg((g-LT(g))f)>multideg((f-LT(f))g)$$ entonces claramente $LT(S)$ es múltiplo de $LT(f)$ y en ningún caso $S=0$. La desigualdad contraria es análoga. Si se da la igualdad, $\exists a \in k$ tal que
+$$
+LT(g-LT(g))LT(f) = a LT(f-LT(f))LT(g)
+$$
+Tenemos por tanto que $LT(f)$ divide a $LT(f-LT(f))LT(g)$, pero $LM(f)$ y $LM(g)$ son coprimos, luego $LT(f)$ dividiría a $LT(f-LT(f))$, lo que es absurdo.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.12}
+Let $f , g ∈ k[x_1,\dots , x_n]$ be nonzero and $x^α, x^β$ be monomials. Verify that
+$$S(x^αf , x^βg) = x^γS( f , g)$$
+where
+$$x^γ =
+\frac{\lcm (x^αLM( f ), x^βLM(g))}{\lcm (LM( f ), LM(g))}
+.$$
+Be sure to prove that $x^{γ}$ is a monomial. Also explain how this relates to Exercise \ref{ejer:2.6.8}.
+\end{ejercicio}
+\begin{solucion}
+Es fácil probar que el multigrado  de $\lcm(x^αLM( f ), x^βLM(g))$ es mayor que el $LM(f)$ y $LM(g)$ (con cualquier orden monomial), de donde se puede deducir que es mayor que el $\lcm$ de ambos. Se tiene además que
+\begin{align*}
+x^\gamma S(f,g)&=\frac{\lcm (x^αLM( f ), x^βLM(g))}{\lcm (LM( f ), LM(g))}\left(\frac{\lcm (LM( f ), LM(g))}{LT(f)}f-\frac{\lcm (LM( f ), LM(g))}{LT(g)} g\right)\\
+&=\frac{\lcm (x^αLM( f ), x^βLM(g))}{LT(f)}f-\frac{\mathrm{lcm}(x^αLM( f ), x^βLM(g))}{LT(g)}g\\
+&=\frac{\lcm (x^αLM( f ), x^βLM(g))}{LT(f)x^\alpha}fx^\alpha-\frac{\mathrm{lcm}(x^αLM( f ), x^βLM(g))}{LT(g)x^\beta}g
+x^\beta\\
+&=\frac{\lcm (LM( x^αf ), LM(x^βg))}{LT(fx^\alpha)}fx^\alpha-\frac{\mathrm{lcm}(LM( x^αf ), LM(x^βg))}{LT(gx^\beta)}g
+x^\beta\\
+&=S(x^\alpha f, x^\beta g)
+\end{align*}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.6.13}
+Let $I ⊆ k[x_1,\dots , x_n]$ be an ideal, and let $G$ be a Gröbner basis of $I$.
+\begin{enumerate}[a.]
+\item Show that $\overline{f}^G = \overline{g}^G$ if and only if $f − g ∈ I$. Hint: See Exercise \ref{ejer:2.6.1}.
+\item Use Exercise \ref{ejer:2.6.1} to show that
+$$\overline{f + g}^G = \overline{f}^G + \overline{g}^G.$$
+\item Deduce that
+$$\overline{fg}^G = \overline{\overline{f}^G \cdot  \overline{g}^G}^G
+.$$
+We will return to an interesting consequence of these facts in Chapter 5.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Sean $f=h+r$ y $g=h'+r'$ las descomposiciones obtenidas según la Proposición 1. 
+\begin{itemize}
+\item Si los restos coinciden, entonces $f-g=h-h'$, pero $h,h'\in I$, luego $h-h'\in I$. 
+\item Si $f-g\in I$ entonces $f-g=f-g+0 = h-h' + r-r'$. Observemos que ambas descomposiciones están en las hipótesis de la Porposición 1, luego han de ser la misma. Por tanto $r-r'=0$.
+\end{itemize} 
+\item Es suficiente utilizar la Proposición 1. Consideremos las descomposiciones $f=h+r$ y $g=h+r'$. Naturalmente, $f+g=h+h'+r+r'$. Análogamente al apartado anterior, la unicidad de garantiza la Proposición 1, tenemos que $r+r'$ es el resto de dividir $f+g$ por $G$.
+\item Tenemos que $fg = hh'+hr'+h'r+rr'$. Sabemos que $hh'+hr'+h'r = p \in I$. Sin embargo, es posible que $rr'$ no cumpla primera condición de la Proposición 1, en ese caso escribimos $rr'=p'+r''$, según dicha proposición. Tomando $q=p+p'$ tenemos que $fg=q+r''$, ahora sí en las condiciones de la Proposición 1. Por la unicidad de $r''$ tenemos el resultado.
+\end{enumerate}
+\end{solucion}
+
+
+
+\end{document}

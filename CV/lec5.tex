@@ -1,0 +1,310 @@
+\documentclass[CV.tex]{subfiles}
+
+\begin{document}
+
+
+%\hyphenation{equi-va-len-cia}\hyphenation{pro-pie-dad}\hyphenation{res-pec-ti-va-men-te}\hyphenation{sub-es-pa-cio}
+
+\chapter{Homotopía}
+
+\section{Definiciones}
+
+\begin{defi}
+Dos aplicaciones $f_i:X\to Y$, $i=1,2$, continuas entre espacios topológicos se dicen \textbf{homotópicas} si existe $H:X\times [0,1]\to Y$ continua con $H(x,0)=f_1(x)$ y $H(x,1)=f_2(x)$ para todo $x\in X$. Escribiremos entonces $f_1\simeq f_2$ o $f_1\simeq_H f_2$.
+\end{defi}
+
+\begin{lemma}
+Ser homotópicas es una relación de equivalencia.
+\end{lemma}
+\begin{proof}
+En primer lugar, $f\simeq f$ mediante $H(x,t)=f(x)$. Si $f_0\simeq f_1$ mediante $H$, entonces $f_1\simeq f_0$ mediante $G(x,t)=H(x,1-t)$. Si $f_0\simeq f_1$ mediante $H$ y $f_1\simeq f_2$ mediante $G$, entonces $f_0\simeq f_2$ mediante
+\[
+F(x,t)=\begin{cases}
+H(x,2t) & 0\leq t\leq\frac{1}{2},\\
+G(x,2t-1) & \frac{1}{2}\leq t\leq 1.
+\end{cases}
+\]
+\end{proof}
+
+\begin{lemma}
+Si $X,Y$ y $Z$ son espacios topológicos y $f_1,f_2:X\to Y$ y $g_1,g_2:Y\to Z$ son continuas con $f_1\simeq f_2$ y $g_1\simeq g_2$, entonces $g_1\circ f_1\simeq g_2\circ f_1$. 
+\end{lemma}
+\begin{proof}
+Dada una homotopía $F$ de $f_1$ a $f_2$ y una homotopía $G$ de $g_1$ a $g_2$, definimos $H(x,t)=G(F(x,t),t)$, con la que se tiene el resultado.
+\end{proof}
+
+%lema 2: 
+%
+%$X\sim_H Y\sim_K Z$, entonces cogemos $g1 f1\sim g1f2$ con $g1H$ y $g1f2\sim g2f2$ con $K(f2 x I)$. Por transitividad $g1f1\simeq g2f2$.
+
+\begin{defi}
+Una aplicación continua $f:X\to Y$ se dice que es \textbf{equivalencia de homotopía} si existe una aplicación continua $g:Y\to X$ tal que $g\circ f\simeq Id_X$ y $f\circ g\simeq Id_Y$. En tal caso diremos que $g$ es \textbf{inversa homotópica} de $f$ y que $X$ e $Y$ son \textbf{homotópicamente equivalentes}.
+\end{defi}
+
+\begin{defi}
+Si $X$ es homotópicamente equivalente al espacio topológico $\{\star\}$ se dice que es \textbf{contráctil}. Esto es equivalente a que $Id_X$ es homotópica a una aplicación constante.
+\end{defi}
+
+\begin{ej}\label{segmento}
+Sean $Y⊂\R^m$ y $f,g:X→Y$ aplicaciones continuas tales que $∀x∈X$, el segmento $[f(x),g(x)]⊂Y$, entonces $f≃g$. Para probarlo, basta tomar la homotopía $H(x,t)=(1-t)f(x)+tg(x)$. En particular, si $Y$ es estrellado, entonces $Y$ es contráctil.
+\end{ej}
+
+\begin{lemma}
+Sean $U,V\subseteq\R^n$ abiertos euclídeos, entonces:
+\begin{enumerate}
+\item $\forall h:U\to V$ continua, existe una  aplicación $C^\infty$-diferenciable $f_h$ homotópica a $h$. Además $f_h$ se puede aproximar a $h$ tanto como queramos.
+\item Si $f,g:U\to V$ son aplicaciones diferenciables con $f\simeq g$, entonces existe $H:U\times\mathbb R\to V$ diferenciable tal que $H(x,0)=f(x)$, $H(x,1)=g(x)$ para todo $x\in U$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}\
+\begin{enumerate}
+\item Usamos el lema A9 del libro para aproximar $h$ mediante una función diferenciable $f:U\to V$. Podemos elegir $f$ de modo que $V$ contenga el segmento de $h(x)$ a $f(x)$ para todo $x\in U$. Entonces $h\simeq f$ por el ejemplo \ref{segmento}. 
+\item Sea $G$ una homotopía de $f$ a $g$. Usamos una función continua $\psi:\R\to [0,1]$ con $\psi(t)=0$ para $t\leq\frac{1}{3}$ y $\psi(t)=1$ para $t\geq\frac{2}{3}$ para construir 
+\[
+H:U\times \R\to V; H(x,t)=G(x,\psi(t)).
+\]
+Como $H(x,t)=f$ para $t\leq\frac{1}{3}$ y $H(x,t)=g$ para $t\geq\frac{2}{3}$, $H$ es diferenciable en $U\times (-\infty,\frac{1}{3})\cup U\times (\frac{2}{3},+\infty)$. El lema A9 nos permite aproximar $H$ mediante una función diferenciable $F:U\times\R\to V$ tal que $F$ y $H$ tienen la misma restricción en $U\times\{0,1\}$. Tenemos entonces que $F(x,0)=H(x,0)=f$ y $F(x,1)=H(x,1)=g$.
+\end{enumerate}
+\end{proof}
+
+\begin{teorema}
+Si $f,g:U→V$ son aplicaciones diferenciables entre abiertos euclídeos con $f≃g$, entonces
+$$f^*,g^*:Ω^*(V)→Ω^*(U)$$
+son homotópicas como complejos de cadenas.
+\end{teorema}
+\begin{dem}
+Recordemos de la demostración del teorema \ref{poincare} que toda $p$-forma $w$ en $U\times\R$ se puede escribir como 
+\[
+w=\sum_If_I(x,t)dx_I+\sum_Jg_J(x,t)dt\land x_J.
+\]
+Si $\phi:U\to U\times\R$ es la inclusión $\phi(x)=\phi_0(x)=(x,0)$, entonces
+\[
+\phi_0^*(w)=\sum_If_I(x,0)d\phi_I=\sum_I f_I(x,0)dx_I,
+\]
+pues $\phi^*(dt\land dx_J)=0$ al ser la última componte de $\phi$ (la correspondiente a $t$) constante. Análogamente, para $\phi_1(x)=(x,1)$ se tiene que
+\[
+\phi_1^*(w)=\sum_I f_I(x,1)dx_I.
+\]
+En la prueba del teorema \ref{poincare} construimos $\tilde{S}_p:\Omega^p(U\times\R)\to \Omega^{p-1}(U)$ tal que 
+\begin{equation}\label{eq1}
+(d\tilde{S}_{p}+\tilde{p+1}d)(w)=\phi_1^*(w)-\phi_0^*(w).
+\end{equation}
+Consideremos la composición $U\overset{\phi_{\nu}}{\to}U\times\R\overset{F}{\to}V$, donde $F$ es una homotopía diferenciable entre $f$ y $g$. Entonces tenemos que $F\circ\phi_0=f$ y $F\circ \phi_1=g$. Definimos $S_p:\Omega^p(V)\to \Omega^{p-1}(U)$ como $S_p=\tilde{S}_p\circ F^*$ y afirmamos que
+\[
+dS_p+S_{p+1}d=g^*-f^*.
+\]
+Esto se sigue de \ref{eq1} aplicado a $F^*(w)$, pues 
+\begin{align*}
+d\tilde{S}_{p}(F^*(w))+\tilde{p+1}d(F^*(w))&=\phi_1^*F^*(w)-\phi_0^*F^*(w)\\
+&=(F\circ\phi_1)^*(w)-(F\circ\phi_0)^*(w)=g^*(w)-f^*(w).
+\end{align*}
+Aquí hemos usado que $\tilde{S}_{p+1}dF^*=\tilde{S}_{p+1}F^*d=S_{p+1}d$ por ser $F^*$ un morfismo de complejos de cadenas.
+\QED
+\end{dem}
+
+Se sigue de lo anterior que
+$$f^*=g^*:H^p(V)→H^p(U)\ ∀p.$$
+Así, dada una aplicación continua $ϕ:U→V$ podemos encontrar $f≃ϕ:U→V$ con $f$ diferenciable induciendo
+$$ϕ^*=f^*:H^p(V)→H^p(U),$$
+que es independiente de la elección de $f$ y que denotaremos por $ϕ^*$ (i.e., $ϕ^*:=f^*$ donde $f≃ϕ$).
+
+\begin{teorema}\label{6.8}
+Sean $U$, $V$ y $W$ abiertos euclídeos.
+\begin{enumerate}
+\item Si $\phi_0,\phi_1:U\to V$ son continuas con $\phi_0\simeq \phi_1$, entonces $\phi_0^*=\phi_1^*:H^p(V)\to H^p(U)$.
+\item Si $U\overset{\phi}{\to}V\overset{\psi}{\to}W$ son continuas, entonces $(\psi\circ\phi)^*=\phi^*\circ\psi^*$.
+\item Si $U\overset{\phi}{\to}V$ es una equivalencia de homotopía, entonces $\phi^*:H^p(V)\to H^p(U)$ es isomorfismo $\forall p$.
+\end{enumerate}
+\end{teorema}
+\begin{dem}\
+\begin{enumerate}
+\item Sea $f:U\to V$ diferenciable con $f\simeq\phi_0$. Por transitividad, $f\simeq\phi_1$, de donde se sigue el apartado.
+\item La fórmula se cumple para aplicaciones diferenciables, así que elegimos $f:U\to V$ y $g:V\to W$, de modo que obtenemos 
+\[
+(\psi\circ\phi)^*=(g\circ f)^*=f^*\circ g^*=\phi^*\circ\psi^*.
+\]
+\item Si $\psi:V\to U$ es su inversa homotópica, entonces $\psi\circ\phi\simeq Id_U$ y $\phi\circ\psi\simeq Id_V$, de donde se sigue el resultado aplicando el apartado anterior.
+\end{enumerate}
+\QED
+\end{dem}
+
+Este resultado muestra la invarianza homotópica de la topología, en particular:
+
+\begin{coro}[Invarianza topológica de la cohomología]\label{6.9} 
+Si $h:U\to V$ es un homeomorfismo, entonces $h^*:H^p(V)\to H^p(U)$ es isomorfismo para todo $p$.
+\end{coro}
+
+\begin{coro}
+Si $U\subseteq\R^n$ es un abierto contráctil, entonces $H^p(U)=0$ para todo $p>0$ y $H^0(U)=\R$. 
+\end{coro}
+
+En la proposición siguiente, se identificará $\R^n$ con el subespacio $\R^n\times\{0\}\subseteq\R^{n+1}$ y $\R\cdot 1$ denota el espacio vectorial de dimensión 1 consistente en las funciones constantes.
+
+\begin{prop}\label{6.11}
+Si $A⊊\R^n$ es un cerrado se tiene que
+$$H^p(\R^{n+1}−A)=\begin{cases}
+H^{p−1}(\R^n−A) & p≥2,\\
+H^0(\R^n−A)/\R⋅1 & p=1,\\
+\R & p=0.
+\end{cases}$$
+\end{prop}
+\begin{dem}
+Definimos los abiertos de $\R^{n+1}=\R^n\times\R$
+\begin{align*}
+U_1=\R^n\times (0,\infty)\cup (\R^n-A)\cup (-1,\infty),\\
+U_1=\R^n\times (\infty,0)\cup (\R^n-A)\cup (\infty, 1).
+\end{align*}
+Se tiene que $U_1\cup U_2=\R^{n+1}-A$ y $U_1\cap U_2=(\R^n-A)\times(-1,1)$. Sea $\phi_1:U_1\to U_1$ dado por $\phi(x)=x+(0,1)$, es decir, colocar un 1 en la $(n+1)$-ésima coordenada (el primer $U_1$ está identificado con su proyección sobre $\R^n$). Para todo $x\in U_1$, $U_1$ contiene el segmento que une $x $ con $\phi(x)$ y el que une $\phi(x)$ con un punto fijo de $\R^n\times (0,\infty)$ (por ejemplo, $(0,1)$). Esto nos da homotopías de $Id_{U_1}$ a $\phi$ y de $\phi$ a una aplicación constante. Se sigue que $U_1$ es contráctil. Análogamente, añadiendo un -1 en lugar de un 1, se obtiene que $U_2$ es contráctil. 
+
+Sea la proyección $pr:U_1\cap U_2=(\R^n-A)\times(-1,1)\to\R^n-A$. Se define $i:\R^n-A\to U_1\cap U_2$ como $i(y)=(y,0)$. Se tiene $pr\circ i=Id_{\R^n-A}$ y $i\circ pr\simeq Id_{U_1\cap U_2}$. Del teorema \ref{6.8} concluimos que $$pr^*:H^p(\R^n-A)\to H^p(U_1\cap U_2)$$ es un isomorfismo para todo $p$. En la sucesión de Mayer-Vietoris para $p\geq 1$ obtenemos que que $$\partial^*:H^p(U_1\cap U_2)\to H^{p+1}(\R^{n+1}-A)$$ es isomorfismo. Componiendo con $pr^*$ se obtiene la primera parte del teorema.
+
+Consideremos ahora la sucesión exacta
+\[
+0\to H^0(\R^{n+1}-A)\overset{I^*}{\to}H^0(U_1)\oplus H^0(U_2)\overset{J^*}{\to}H^0(U_1\cap U_2)\overset{\partial^*}{\to}H^1(\R^{n+1}-A)\to 0.
+\]
+Un elemento de $H^0(U_1)\oplus H^0(U_2)$ viene dado por un par de funciones constantes en $U_1$ y $U_2$ con valores $a_1$ y $a_2$. Su imagen mediante $J^*$ es la función constante $a_1-a_2$ en $U_1\cap U_2$. Esto demuestra que $\ker{\partial^*}=\Ima{J^*}=\R\cdot 1$ y obtenemos isomoformismos
+\[
+H^1(R^{n+1}-A)\cong H^0(U_1\cap U_2)/\R\cdot 1=H^0(\R^n-A)/\R\cdot 1.
+\]
+Tenemos también $\dim(\Ima{I^*})=\dim(\ker{\partial^*})=1$, por lo que $H^0(R^{n+1}-A)\cong\R$. 
+\QED
+\end{dem}
+
+\begin{coro}\label{6.13}
+Para $n\geq 2$ tenemos los isomorfismos
+\[
+H^p(\R^n-\{0\})\cong \begin{cases}
+\R & p=0,n-1\\
+0 & c.c.
+\end{cases}
+\]
+\end{coro}
+Obsérvese que el caso $n=2$ ya lo habíamos tratado en el ejemplo \ref{menospunto}. El resto de casos se consiguer inducción en el teorema \ref{6.11}.
+
+\begin{prop}\label{addendum}
+En las condiciones del teorema \ref{6.11} se tiene el difeomorfismo $R:\R^{n+1}-A\to \R^{n+1}-A$ definido como $R(x_1,\dots, x_n,x_{n+1})=(x_1,\dots, x_n,-x_{n+1})$. El homomorfismo inducido $R^*:H^{p+1}(\R^{n+1}-A)\to H^{p+1}(\R^{n+1}-A)$. 
+\end{prop}
+\begin{dem}
+Con la notación de la prueba anterior, tenemos los siguientes diagramas conmutativos, donde los difeomorfismos horizontales son restricciones de $R$
+\[
+\begin{tikzcd}
+\R^{n+1}-A \arrow[r, "R"] & \R^{n+1}-A  &                               \R^{n+1}-A \arrow[r, "R"] & \R^{n+1}-A\\
+U_1\arrow[u, "i_1"]\arrow[r, "R_1"] & U_2\arrow[u, "i_2"] &              U_2\arrow[u, "i_2"]\arrow[r, "R_2"] & U_1\arrow[u, "i_1"]\\
+U_1\cap U_2\arrow[u, "j_1"]\arrow[r,"R_0"] & U_1\cap U_2\arrow[u, "j_2"]&U_1\cap U_2\arrow[u, "j_2"]\arrow[r,"R_0"] & U_1\cap U_2\arrow[u, "j_1"]
+\end{tikzcd}
+\]
+En  la prueba de la proposición \ref{6.11} vimos que $\partial^*:H^p(U_1\cap U_2)\to H^{p+1}(\R^{n+1}-A)$ es un isomorfismo, por lo tanto basta probar que $R^*\circ\partial^*([w])=-\partial^*([w])$ para una $p$-forma cerrada $w$ cualquiera en $U_1\cap U_2$. Usando el teorema \ref{5.1} podemos encontrar $w_{\nu}\in \Omega^p(U_{\nu})$, $\nu=1,2$, con $w=j_1^*(w_1)-j_2^*(w_2)$. Por la definición de $\partial^*$, $\partial^*([w])=[\tau]$, donde $\tau\in \Omega^{p+1}(\R^{n+1}-A)$ está determinada pro $i_{\nu}^*(\tau)=dw_{\nu}$ para $\nu=1,2$. Además tenemos, usando la conmutatividad de los diagramas anteriores
+\begin{gather*}
+-R_0^*w=R_0^*j_2(w_2)-R_0^*j_1(w_1)=j_1^*(R_1^*w2)-j_2^*(R_2^*w_1),\\
+i_1^*(R^*\tau)=R_1^*(i_2^*\tau)=R_1^*(dw_2)=d(R_1^*w_2),\\
+i_2^*(R^*\tau)=R_2^*(i_1^*\tau)=R_2^*(dw_1)=d(R_2^*w_1).
+\end{gather*}
+Estas ecuaciones y la definición de $\partial^*$ nos da $\partial^*(-[R_0^*w])=[R^*\tau]$. Por lo tanto
+\begin{equation}\label{conmuta}
+\partial^*\circ R^*_0([w])=-R^*\circ\partial^*([w]).
+\end{equation}
+Para la proyección $pr:U_1\cap U_2\to \R^n-A$ tenemos $pr\circ R_0=pr$, y por tanto la composición
+\[
+H^p(\R^n-A)\overset{pr^*}{\to} H^p(U_1\cap U_2)\overset{R_0^*}{\to}H^p(U_1\cap U_2)
+\]
+es igual a $pr^*$. Como $pr^*$ es un isomorfismo (en particular, inyectiva), necesariamente $R_0^*$ es la identidad en $H^p(U_1\cap U_2)$, con lo que el lado izquierdo de \ref{conmuta} se convierte en $\partial^*([w])$, lo cual prueba el resultado.
+\QED
+\end{dem}
+
+
+Una matriz $n\times n$ invertible $A$ define una aplicación lineal $\R^n\to\R^n$ y un difeomorfismo
+\[
+f_A:\R^n-\{0\}\to\R^n-\{0\}.
+\]
+
+\begin{coro}\label{multiplica}
+Para cada $n\geq 2$, la aplicación inducida $f_A^*:H^{n-1}(\R^n-\{0\})\to H^{n-1}(\R^n-\{0\})$ consiste en multiplicar por $\det(A)/|\det(A)|=\pm 1$.
+\end{coro}
+\begin{proof}
+Sea $B$ la matriz obtenida al sustituit la $r$-ésima fila de $A$ por la $r$-ésima fila sumada a $c$ veces la $s$-ésima fila, con $r\neq s$ y $c\in\R$,
+\[
+B=(I+cE_{r,s})A,
+\]
+donde $I$ es la matriz identidad y $E_{r,s}$ es la identidad con un 1 en la posición $(r,s)$. Una homotopía entre $f_A$ y $f_B$ se puede definir mediante las matrices
+\[
+(I+tcE_{r,s})A,\ 0\leq t\leq 1.
+\]
+Del teorema \ref{6.8} se sigue que $f_A^*=f_B^*$. Además $\det(A)=\det(B)$. Mediante una sucesión de operaciones elementales de este tipo, $A$ puede ser transformada en $\mathrm{diag}(1,\dots, 1,d)$, donde $d=\det(A)$. Por lo tanto, es suficiente probar la afirmación para matrices diagonales. Las matrices
+\[
+\mathrm{diag}(1,\dots, 1, \frac{|d|^td}{|d|}),\ 0\leq t\leq 1
+\]
+%también podría coger (1-t)d+td/|d| que no pasa por 0 porque es el segmento entre dos números con el mismo signo.
+dan lugar a una homotopía, lo cual reduce el problema a dos casos, $A=\mathrm{diag}(1,\dots, 1,\pm 1)$, así que $f_A$ es o bien la identidad o bien la aplicación $R$ de la proposición \ref{addendum}.
+\end{proof}
+
+De la invarianza topológica (\ref{6.9}) y del del corolario \ref{6.13}, junto con 
+\[
+H^p(\R^1-\{0\})\cong\begin{cases}
+\R\oplus\R & p=0\\
+0 & p\neq 0
+\end{cases}
+\]
+obtenemos
+
+\begin{prop}
+Si $n\neq m$, entonces $\R^n$ y $\R^m$ no son homeomorfos. 
+\end{prop}
+\begin{dem}
+Podemos asumir que un posible homeomorfismo enviaría el 0 al 0, por lo que induciría un homeomorfismo entre $\R^n-\{0\}$ y $\R^m-\{0\}$, por lo que
+\[
+H^p(\R^n-\{0\})\cong H^p(\R^m-\{0\})
+\]
+para todo $p$, lo cual entra en conflicto con los resultados anteriores.
+\QED
+\end{dem}
+
+\begin{nota}
+Ofrecemos la siguiente prueba más conceptual de la proposición \ref{addendum}. Sea
+\[
+\begin{tikzcd}
+0\arrow[r] & A^*\arrow[r, "f^*"]\arrow[d,"\alpha^*"] & B^*\arrow[r, "g^*"]\arrow[d,"\beta^*"]& C^*\arrow[d,"\gamma^*"]\arrow[r] & 0\\
+0\arrow[r] & A^*_1\arrow[r, "f^*_1"] & B^*_1\arrow[r, "g^*_1"] & C^*_1\arrow[r] & 0
+\end{tikzcd}
+\]
+un diagrama conmutativo de complejos de cadenas con filas exactas. Vamos a probar que el diagrama
+\[
+\begin{tikzcd}
+H^p(C^*)\arrow[r, "\partial^*"]\arrow[d, "\gamma^*"] & H^{p+1}(A^*)\arrow[d,"\alpha^*"]\\
+H^p(C^*_1)\arrow[r, "\partial^*_1"] & H^{p+1}(A^*_1)
+\end{tikzcd}
+\]
+es conmutativo. Sea $[c]\in H^p(C^*)$, y consideremos 
+\[
+\partial^*\gamma^*([c])=[(f_1^{p+1})^{-1}(d_{B_1}((g_1^p)^{-1}(\gamma^p(c))))]
+\]
+Como $g^p$ es sobreyectiva, podemos considerar $(g^p)^{-1}(c)\in B^p$. Por conmutatividad del diagrama, $g_1^p\beta^p((g^p)^{-1}(c))=\gamma^pg^p((g^p)^{-1}(c))=\gamma^p(c)$, por lo que podemos sustituir y obtenemos
+\[
+\partial^*\gamma^*([c])=[(f_1^{p+1})^{-1}(d_{B_1}(\beta^p((g^p)^{-1}(c))))]
+\]
+Como $\beta^*$ es un morfismo de complejos de cadenas, $d^p_{B_1}\beta^p=\beta^{p+1}d^p_B$, por lo que lo anterior queda como
+\[
+\partial^*\gamma^*([c])=[(f_1^{p+1})^{-1}(\beta^{p+1}(d_B^p((g^p)^{-1}(c))))]
+\]
+Ahora, de nuevo por conmutatividad, tenemos que $\beta^{p+1}f^{p+1}=f_1^{p+1}\alpha^{p+1}$, y como $f_1^{p+1}$ es inyectiva, podemos decir que $\alpha^{p+1}=(f_1^{p+1})^{-1}(\beta^{p+1}f^{p+1})$, así que
+%siempre va a haber preimagen porque beta f = f_1 (algo)
+\[
+\partial^*\gamma^*([c])=[(f_1^{p+1})^{-1}\beta^{p+1}(f^{p+1}(f^{p+1})^{-1})(d_B^p((g^p)^{-1}(c))))]=[\alpha^{p+1}(f^{p+1})^{-1}(d_B^p((g^p)^{-1}(c))))]
+\]
+%aquí lo mismo, porque f es morfismo de complejos de cadenas, entonces conmuta con d_B y eso hace que exista la preimagen
+Esto último es por definición $\alpha^*\partial^*([c])$. Obsérvese que la preimagen por $f^{p+1}$ de $d_B$ existe porque $f^*$ es morfismo de cadenas, y por tanto conmuta con el operador borde. 
+
+En la situación de la proposición \ref{addendum} consideramos el diagrama
+\[
+\begin{tikzcd}
+0\arrow[r] & \Omega^*(U)\arrow[r, "I^*"]\arrow[d,"R^*"] & \Omega^*(U_1)\oplus \Omega^*(U_2)\arrow[r, "J^*"]\arrow[d,"\overline{R}^*"]& \Omega^*(U_1\cap U_2)\arrow[d,"-R_0^*"]\arrow[r] & 0\\
+0\arrow[r] &  \Omega^*(U)\arrow[r, "I^*"] & \Omega^*(U_1)\oplus\Omega^*(U_2)\arrow[r, "J^*"] & \Omega^*(U_1\cap U_2)\arrow[r] & 0
+\end{tikzcd}
+\]
+con $\overline{R}^*(w_1,w_2)=(R_1^*w_2,R_2^*w_1)$. Esto nos da la ecuación \ref{conmuta} de la demostración de \ref{addendum}. 
+%esto conmuta porque los R_i también cambian el signo, no dejan de ser como el R pero en un sitio más pequeño
+\end{nota}
+
+
+
+\end{document}
+

@@ -1,0 +1,288 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Modelos de Investigación Operativa\\ Relación 5}
+\author{Rafael González López, Javier Aguilar Martín}
+\date{}
+\maketitle
+
+\begin{ejercicio}{1}Considerar el modelo $y=a+bx+c^2+\varepsilon$, donde $z$ es la variable independiente, $y$ es la variable dependiente, $a,b$ y $c$ con parámetros desconocidos y $\varepsilon$ es el error experimental. La tabla siguiente da los valores de $x,y$:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+$x$ & 0 &1 & 2 	& 3 	& 4 	& 5\\
+\hline
+$y$ & 2 &2 	& -12 	& -27 & -60 &-90\\
+\hline
+\end{tabular}
+\end{center}
+Hallar los mejores valores para $a,b$ y $c$ minimizando
+\begin{enumerate}
+\item La suma de los errores al cuadrado.
+\item La suma de los valores absolutos de los errores.
+\item El máximo valor absoluto de los errores.
+\end{enumerate}
+\begin{solucion}
+\begin{enumerate}
+\item[]
+\item Buscamos 
+$$
+\min \sum_{i=1}^6 \varepsilon_i^2 = \min \sum_{i=0}^5(y_i -a-bx_i-c x_i^2)^2 = \psi(a,b,c)
+$$
+Derivamos e igualamos a cero las parciales
+\begin{align*}
+\frac{\partial \psi}{\partial a} &= -2\left(\sum_i y_i - 6a - \sum_i b x_i - \sum_i cx_i^2\right) = 0\\
+\frac{\partial \psi}{\partial b} &= -2\sum_i x_i\left(\sum_i y_i - 6a - \sum_i b x_i - \sum_i cx_i^2\right) = 0\\
+\frac{\partial \psi}{\partial c} &= -2\sum_i x_i^2\left(\sum_i y_i - 6a - \sum_i b x_i - \sum_i cx_i^2\right) = 0
+\end{align*}
+Resolviendo el sistema obtenemos $a=2,928$, $b=1,292$ y $c=-4,035$.
+\item Buscamos
+$$
+\min \sum_{i=1}^6 |\varepsilon_i|= \min \sum_{i=0}^5|y_i -a-bx_i-c x_i^2| 
+$$
+Para resolverlo consideramos el siguiente problema de programación lineal
+\begin{gather*}
+\min \sum_i z_i\\
+z_i\geq y_i -a-bx_i-c x_i^2 \quad \forall i \\
+z_i\geq -y_i +a+bx_i+c x_i^2 \quad \forall i\\
+z_i \in \R \quad \forall i
+\end{gather*}
+\item Buscamos
+$$
+\min \max_i |\varepsilon_i| = \min \max_i |y_i -a-bx_i-c x_i^2|
+$$
+Definimos una nueva variable $z$ y resolvemos
+\begin{gather*}
+\min \sum z\\
+z\geq |y_i -a-bx_i-c x_i^2| \quad \forall i\\
+z_i \in \R \quad \forall i
+\end{gather*}
+\end{enumerate}
+\end{solucion}
+\end{ejercicio}
+
+\newpage 
+
+\begin{ejercicio}{2}
+Supongamos que $x^{k+1}$ y $x^k$ son dos puntos consecutivos generados por el método del descenso máximo con la regla de minimización. Probar que $\nabla f(x^{k})'\nabla f(x^{k+1})=0$.
+\end{ejercicio}
+\begin{solucion}
+$x^{k+1}=x^k-\alpha^k\nabla f(x^k)$ donde $\alpha^k$ tal que $g'(\alpha^k)=0$, pero $$g'(\alpha^k)=\nabla f(x^k-\alpha^k\nabla f(x^k))'(-\nabla f(x^k))=-\nabla f(x^{k+1})'\nabla f(x^{k})=0.$$
+$$ -\nabla f(x^{k+1})'\nabla f(x^{k})=0 \Leftrightarrow \nabla f(x^{k+1})'\nabla f(x^{k})=0 \Leftrightarrow \nabla f(x^{k})'\nabla f(x^{k+1})=0
+$$
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+Sea $f:\R^n\to\R$. Considerar el problema $\min_{\lambda\in\R}f(x+\lambda d)$. Probar que una condición necesaria para que $\overline{\lambda}$ sea un mínimo es que $\nabla f(y)'d=0$, donde $y=x+\overline{\lambda}d$. ¿Cuándo es esa condición suficiente?
+\begin{solucion}
+El problema consiste en minimizar la función $g\func{\R}{\R}$ dada por $g(\lambda) = f(x+\lambda d)$, para ciertos $x,d\in\R^n$ fijos. Sabemos que una condición necesaria de mínimo es que el gradiente se anula, es decir, que
+$$
+g'(\lambda) = f(x+\lambda d)' = \nabla f(x+\lambda d)'d = 0
+$$
+La condición es sufciente cuando la función $g$ es estrictamente convexa, ya que esta condición es equivalente a que la hessiana sea definida negativa.
+\end{solucion}
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{4}
+Considerar el problema:
+$$\min f(x,y)=100(y-x^2)^2+(1-x)^2.$$
+Aplique algún método de gradiente y el método de Newton con $x_0=(-1,1)$.
+\end{ejercicio}
+\begin{solucion}
+Utilizamos el algoritmo de descenso máximo con regla de minimización partiendo del punto $x_0=(-1,1)$. $x^1=x^0-\alpha^0\nabla f(x^k)$ con $\alpha^0$ minimizando $f(x^0-\alpha^0\nabla f(x^0))$. Calculamos el gradiente. 
+\[
+\nabla f(x,y)=\begin{pmatrix}
+-400(y-x^2)x-2(1-x)\\
+200(y-x^2)
+\end{pmatrix}\Rightarrow\nabla f(-1,1)=\begin{pmatrix}
+-4\\
+0
+\end{pmatrix}
+\]
+Entonces $x^0-\alpha^0\nabla f(x^0)=\begin{pmatrix}
+-1+4\alpha\\
+1
+\end{pmatrix}$, luego $g(\alpha)=100(-16\alpha^2+8\alpha)^2+(2-4\alpha)^2$. Analíticamente vemos que el mínimo se alcanza en $\alpha^0=\frac{1}{2}$. Resulta que $x^1 = \begin{pmatrix}
+1\\
+1
+\end{pmatrix}$ es estacionario, así que es un mínimo local, y por ser siempre positiva es mínimo global.
+
+
+Aplicamos ahora el método de Newton. La hessiana sale
+\[
+\nabla^2 f(x,y)=\begin{pmatrix}
+400(3x^2-y)+2 & -400x\\
+-400x & 200
+\end{pmatrix}\Rightarrow\nabla^2f(-1,1)=\begin{pmatrix}
+802 & 400\\
+400 & 200
+\end{pmatrix}$$
+$$(\nabla^2f(-1,1))^{-1}=\begin{pmatrix}
+\frac{1}{2} & -1\\
+-1 &\frac{401}{200}
+\end{pmatrix}
+\]
+Entonces $x^1=\begin{pmatrix}
+1\\
+-3
+\end{pmatrix}$, que no es estacionario porque el gradiente no se anula en él. Hacemos una iteración más y sale que el $(1,1)$ es mínimo.
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{5}
+Considere el problema irrestringido siguiente:
+$$\min f(x,y)=3x^2-2xy+y^2+3e^{-x}.$$
+¿Es esta función cóncava o convexa? Aplique el método de gradiente con $x^0=(0,0)$ y longitud inicial de paso $\alpha^0=2$. Calcule el mínimo aplicando el método de Newton. 
+\end{ejercicio}
+\begin{solucion}
+Calculamos la hessiana
+$$
+\nabla f(x,y)' = \begin{pmatrix}
+6x-2y -3e^{-x} & -2x+2y
+\end{pmatrix} 
+$$
+$$
+\nabla^2 f(x,y) = \begin{pmatrix}
+6 +3e^{-x} & -2\\
+-2 & 2
+\end{pmatrix} 
+$$
+Como $6+3e^{-x}>0$ $\forall x$ y $|\nabla^2f(x,y)|=6e^{-x}+8>0$ $\forall x$, la matriz hessiana es definida positiva, luego la función es convexa.
+\begin{itemize}
+\item Utilicemos el método del gradiente.
+\begin{enumerate}
+\item $x^1 = x^0 - 2\nabla f(x^0) = \begin{pmatrix}
+6 & 0
+\end{pmatrix}' $.
+\item $x^2=x^1-2\nabla f(x^1) =  
+\begin{pmatrix}
+-66 +3e^{-6} & 24
+\end{pmatrix}' $
+\item Tras algunas iteraciones en Matlab vemos que el método no converge.
+\end{enumerate}
+\item Calculamos la inversa de la hessiana, multiplicamos por el gradiente y utilizamos el método de Newton. En matlab
+\begin{verbatim}
+N= @(x,y) [6*x-2*y-3*exp(-x);-2*x+2*y];
+HH= @(x) [6+3*exp(-x), -2; -2,2];
+x0=[0;0];
+x=x0-inv(HH(x0(1)))*N(x0(1),x0(2));
+k=1;
+while x!=x0
+  x0=x;
+  x=x0-inv(HH(x0(1)))*N(x0(1),x0(2));
+  k=k+1;
+end
+
+disp('Solucion:')
+disp(x)
+disp('Iteraciones:')
+disp(int16(k))
+\end{verbatim}
+\begin{verbatim}
+Solucion:
+   0.46915
+   0.46915
+Iteraciones:
+5
+\end{verbatim}
+\end{itemize}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{6}
+Considerar el problema $\min f(x,y)=3x^2+y^4$.
+\begin{enumerate}
+\item Aplicar una iteración del método de descenso máximo con $x^0=(1,-2)$ y longitud de paso dada por la regla de Armijo con $s=1,\sigma=0.1$ y $\beta=0.5$. 
+\item Repetir con $s=1,\sigma=0.1$ y $\beta=0.1$. Comparar los resultados.
+\item Aplicar una iteración del método de Newton con el mismo punto de partida.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item $x^1=x^0-\alpha^0\nabla f(x^0)$. $\nabla f(x,y)=\begin{pmatrix}
+6x\\
+4y^3
+\end{pmatrix}\Rightarrow \nabla f(1,-2)=\begin{pmatrix}
+6\\
+-32
+\end{pmatrix}\Rightarrow x^1=\begin{pmatrix}
+1-6\alpha^0\\
+-2+32\alpha^0
+\end{pmatrix}$. Por la regla de Armijo, $\alpha^0=1\cdot 0.5^{m_0}$ donde $m_0$ es el menor entero tal que
+\begin{gather*}
+f(x^0)-f(x^{1})\geq -\sigma s\beta^{m_k}\nabla f(x^k)d^k =0.1\cdot 1 \cdot 0.5^{m_0}(36+32^2)=106\cdot0.5^{m_0}\\
+19 - 3(1-6\cdot 0.5^{m_0})^2-(-2+32\cdot 0.5^{m_0})^4 \geq  106\cdot0.5^{m_0}
+\end{gather*}
+Podemos encontrarlo por fuerza bruta y nos da 4. Así, $x^1=\begin{pmatrix}
+0.625\\
+0
+\end{pmatrix}$ y el gradiente en el punto no se anula así que hay que seguir.
+\item Tenemos el mismo $x^0$ y el mismo $x^1(\alpha^0)$ que en el apartado anterior. Entonces $\alpha^0=0.1^{m_0}$ donde $m_0$ es el menor entero tal que 
+\begin{gather*}
+f(x^0)-f(x^{1})\geq -\sigma s\beta^{m_0}\nabla f(x^0)d^k =0.1\cdot 0.1^{m_0}(36+32^2)=106\cdot 0.1^{m_0}\\
+19 - 3(1-6\cdot 0.1^{m_0})^2-(-2+32\cdot 0.1^{m_0})^4 \geq  106\cdot0.1^{m_0}
+\end{gather*}
+Esto nos da que $m_0=1$, por lo que $\alpha^0=0.1$. Con esto $x^1=\begin{pmatrix}
+0.4\\
+1.2
+\end{pmatrix}$, que no es un punto crítico, y de hecho está más lejos que con los anteriores parámetros.
+\item Tenemos que calcular la hessiana
+$$\nabla^2f(x,y)=\begin{pmatrix}
+6 & 0\\
+0 & 12y^2
+\end{pmatrix}$$
+Al hacer una iteración obtenemos el punto $x^1=\begin{pmatrix}
+0\\
+1.3
+\end{pmatrix}$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7}
+Considerar la función $f:\R^n\to\R$ dada por $f(x)=||x||^{3/2}$, y el método de descenso máximo con longitud de paso constante en cada iteración. Probar que la condicción $||\nabla f(x)-\nabla f(y)||\leq L||x-y||$ para todo $x,y$ no se verifica para ningún $L$. Además probar que este algoritmo converge a la solución óptima en un número finito de pasos o no converge a él, en este problema.
+\end{ejercicio}
+\begin{solucion}
+$$\nabla f(x)=\frac{3}{2}\frac{x}{||x||^{1/2}}=\frac{3}{2}\frac{x}{||x||^{1/2}}$$
+$$||\nabla f(x)-\nabla f(y)||=\frac{3}{2}||\frac{x}{||x||^{1/2}}-\frac{y}{||y||^{1/2}}||$$
+Consideramos $y=-x$ y vamos a ver que para este par de puntos no existe $L$ que valga para todos los puntos.
+$$3||\frac{x}{||x||^{1/2}}||=3||x||^{1/2}\leq 2L||x||$$
+Despejamos y $L\geq\frac{3}{2}||x||^{-1/2}\to +\infty$ cuando $x\to 0$.
+
+Para la segunda parte, $x^{k+1}=x^k-\alpha\nabla f(x^k)=x^k\left(1-\frac{3\alpha}{2||x^k||^{1/2}}\right)$. Como el mínimo se alcanza en 0, busquemos un $x^{k+1}=0$. Para ello, $1-\frac{3\alpha}{2||x^k||^{1/2}}=0\Rightarrow \alpha=\frac{2}{3}||x^k||^{-1/2}$. 
+Por otra parte, si converge en infinitos pasos, debe de existir $\overline{k}$ tal que $\forall k>\overline{k}$, $||x^{k+1}||<||x^k||$. En este caso, pueden pasar dos cosas, según si el paréntesis es positivo o negativo.
+\begin{enumerate}
+\item Si es positivo, entonces $||x^k||>(3\alpha/2)^2$, luego no converge. 
+\item Si es negativo, entonces se quedan dentro de la bola $||x^k||<(3\alpha/2)^2$, pero veremos que no los puntos no decrecen en norma, pues si 
+$$||x^k||||\left(1-\frac{3\alpha}{2||x^k||^{1/2}}\right)||<||x^k||\Rightarrow ||x^k||>(3\alpha/4)^2$$
+Con lo cual se quedan fuera de de esa nueva bola.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{8}
+Sea $f$ dos veces diferenciable con continuidad. Supongamos que $x^*$ es un mínimo local tal que para toda bola abierta $S$ centrada en $x^*$ se verifica para algún $m>0$,
+$$m||d||^2\leq d'\nabla^2f(x)d,\ \forall d\in\R^n.$$
+Probar que para todo $x\in S$:
+$$||x-x^*||\leq\frac{||\nabla f(x)||}{m},\quad f(x)-f(x^*)\leq\frac{||\nabla f(x)||^2}{m}.$$
+\end{ejercicio}
+\begin{solucion} En particular $d'\nabla^2f(x)d >0$ $\forall d\neq 0$, luego $f$ es convexa en $S$. En particular
+$$||\nabla f(x)||||x-x^*||\geq (\nabla f(x)-0)'(x-x^*)\geq m||x-x^*||^2$$
+Por lo que dividiendo por $||x-x^*||$ se tiene directamente el resultado. Por otro lado,
+$$f(x)-f(x^*)\leq \nabla f(x^*)'(x^*-x)+\frac{m}{2}||x^*-x||^2=\frac{m}{2}||x^*-x||^2\leq \frac{||\nabla f(x)||^2}{2m}.$$
+Con lo que se da el resultado.
+\end{solucion}
+
+
+
+
+\end{document}

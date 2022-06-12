@@ -1,0 +1,405 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{7.1.1}
+Prove that $f ∈ k[x, y, z]$ is symmetric if and only if $$f (x, y, z)= f (y, x, z) = f (y, z, x)$$
+\end{ejercicio}
+\begin{solucion}
+La implicación directa es trivial. Para la segunda basta probar que las permutaciones del enunciado generan $S_3$, pues podemos ver los polinomios que son iguales tras reordenar las variables como elementos de cada órbita por la acción de $S_3$ en las 3-uplas de variables, por tanto, como esta acción es transitiva, si son iguales los polinomios evaluados sobre la imagen mediante unos generadores, lo serán sobre todos los reordenamientos de variables.
+
+En este caso, las permutaciones dadas son $(1\ 2)$,  $(2\ 3)$ y $(1\ 3)$. Estas son todas las permutaciones de $S_3$, por lo tanto sabemos que generan todo el grupo, con lo que ya lo tenemos. 
+\end{solucion}
+
+\begin{solucion}
+Una implicación es trivial. Sean $\sigma,\mu$ dos permutaciones. Notemos por $f_\sigma(x,y,z) =  f(\sigma(x),\sigma(y),\sigma(z))$. Si $\sigma$ y $\mu$ son tales que
+$$f(x,y,z)=f(\sigma(x),\sigma(y),\sigma(z))=f(\mu(x),\mu(y),\mu(z))$$
+Entonces es claro que $f(x,y,z)=f_{\sigma \circ \mu}(x,y,z)=f_{ \mu\circ \sigma}(x,y,z)$. Es decir, el conjunto de permutaciones que mantienen la simetría de $f$ forman un grupo. En este caso, sabemos que $(1,2)$ y $(1,3)$. Sabemos que $\gene{(1,2),(1,3)}=S_3$, por lo que se verifica para toda permutación y $f$ es simétrica.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7.1.2}
+(Requires abstract algebra) Prove that $f ∈ k[x_1, \dots , x_n]$ is symmetric if and only if
+$f (x_1, x_2, x_3, \dots , x_n) = f (x_2, x_1, x_3, \dots , x_n) = f (x_2, x_3, \dots, x_n, x_1)$. Hint: Show that the
+cyclic permutations $(1\ 2)$ and $(1\ 2\ \dots \ n)$ generate the symmetric group $S_n$. See Exercise
+4 in Section 3.5 of DUMMIT and FOOTE (2004).
+\end{ejercicio}
+\begin{solucion}
+Sabemos que $S_n$ está generado por las trasposiciones de la forma $(i\ i+1)$, luego basta ver que podemos generar estas permutaciones a partir de $\tau=(1\ 2)$ y $\sigma=(1\ 2\ \dots \ n)$. Para ello, basta observar que $\sigma^{i-1}\tau\sigma^{-i+1}=(i\ i+1)$. Efectivamente
+\[
+\sigma^{i-1}\tau\sigma^{-i+1}(k)=\sigma^{i-1}\tau(k-i+1\mod n)=\begin{cases}
+\sigma^{i-1}(2) & k-i+1\equiv 1\mod n\\
+\sigma^{i-1}(1) & k-i+1\equiv 2\mod n\\
+\sigma^{i-1}(k-i+1\mod n) & c.c.
+\end{cases}
+\]
+Observamos que las congruencias de las condiciones son respectivamente equivalentes a $k\equiv i\mod n$ y $k\equiv 1\mod n$ respectivamente, luego obtenemos finalmente
+\[
+\sigma^{i-1}\tau\sigma^{-i+1}(k)=\begin{cases}
+1+i & k\equiv i\mod n\\
+i& k\equiv i+1\mod n\\
+k & c.c.
+\end{cases}
+\]
+como queríamos demostrar.
+\end{solucion}	
+
+\newpage
+
+\begin{ejercicio}{7.1.3}
+Let $σ^{(i)}_j$ denote the $j$-th elementary symmetric polynomial in $x_1,\dots, x_{i−1},$ $x_{i+1},\dots, x_n$
+for $j < n$. The superscript “$(i)$” tells us to omit the variable $x_i$. Also set $σ^{(i)}_n = 0$ and
+$σ_0 = 1$. Prove that $σ_j = σ^{(i)}_j + x_iσ^{(i)}_{j−1}$ for all $i, j$. This identity is useful in induction
+arguments involving elementary symmetric polynomials.
+\end{ejercicio}
+\begin{solucion}
+En realidad la simetría de los polinomios elementales nos permite colegir que si probamos el resultado para un $i$ fijo y para todo $j$ entonces está probado para todo $i$, pues el papel que cumple la variable $i$ es fácilmente intercambiable por simetría. Sea $i=1$ y $j$ fijo. Veamos que el resultado se tiene directamente. Podemos suponer que $n\geq 2$, pues otro caso es trivial.
+\begin{align*}
+\sigma_j &= \sum_{1\leq i_1<\cdots<i_j\leq n}x_{i_1}\cdots x_{i_j}\\
+&= \sum_{2\leq i_2<\cdots <i_j\leq n}x_{1}x_{i_2}\cdots x_{i_j} + \sum_{2\leq i_1<\cdots<i_j\leq n}x_{i_1}\cdots x_{i_j} \\
+& = x_1 \sigma_{j-1}^{(1)}+\sigma_j^{(1)}
+\end{align*}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7.1.4}
+As in (2), let $f (X) = (X − x_1)(X − x_2) \cdots (X − x_n)$. Prove that $f = X^n − σ_1X^{n−1} +
+σ_2X^{n−2} +\cdots+(−1)^{n−1}σ_{n−1}X +(−1)^nσ_n$. Hint: You can give an induction proof using
+the identities of Exercise \ref{ejer:7.1.3}.
+\end{ejercicio}
+\begin{solucion}
+Para $n=1$ tenemos el resultado de manera trivial. Por ilustrar, para $n=2$ tenemos
+$$
+(X-X_1)(X-x_2) = X^2-(x_1+x_2)X+x_1x_2
+$$
+Supongamos que el resultado es cierto para $n-1$ y probémoslo para $n$. Esto significa
+\begin{align*}
+f(X)&=(X − x_1)(X − x_2) \cdots (X − x_n)\\
+&= (X-x_1)[(X − x_2) \cdots (X − x_n)]\\
+&=(X-x_1)[X^{n-1} − σ_1^{(1)}X^{n−2} +\cdots+(−1)^{n−2}σ_{n−2}^{(1)}X +(−1)^{n-1}σ_{n-1}^{(1)}]\\
+&=X^n + (-\sigma_1^{(1)} + x_1\sigma_0^{(1)})X^{n-1}+ \cdots +(-1)^{n-1}(\sigma_{n-1}^{(1)}-x_1\sigma_{n-1}^{(1)})X+(-1)^nx_1\sigma_{n-1}^{(1)}\\
+&= X^n − σ_1X^{n−1} +σ_2X^{n−2} +\cdots+(−1)^{n−1}σ_{n−1}X +(−1)^nσ_n
+\end{align*}
+Como queríamos probar.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7.1.5}
+Consider the polynomial
+$f = (x^2 + y^2)(x^2 + z^2)(y^2 + z^2) ∈ k[x, y, z]$.
+\begin{enumerate}[a.]
+\item Use the method given in the proof of Theorem 3 to write f as a polynomial in the
+elementary symmetric polynomials $σ_1$, $σ_2$, $σ_3$.
+\item Use the method described in Proposition 4 to write $f$ in terms of $σ_1$, $σ_2$, $σ_3$.
+\end{enumerate}
+
+ You can use a computer algebra system for both parts of the exercise. Note that by
+stripping off the coefficients of powers of $X$ in the polynomial $(X − x)(X − y)(X − z)$,
+you can get the computer to generate the elementary symmetric polynomials.
+ 
+\end{ejercicio}
+\begin{solucion}
+Será útil tener $f$ desarrollado como $x^4y^2 + x^4z^2 + x^2y^4 + 2x^2y^2z^2 + x^2z^4 + y^4z^2 + y^2z^4$.
+\begin{enumerate}[a.]
+\item $LT(f)=x^4y^2=LT(\sigma_2^2\sigma_1^2)$
+\begin{align*}
+f_1=f-\sigma_2^2\sigma_1^2&=-2x^4yz - 2x^3y^3 - 8x^3y^2z - 8x^3yz^2 - 2x^3z^3 - 8x^2y^3z - 13x^2y^2z^2\\ &- 8x^2yz^3 - 2xy^4z - 8xy^3z^2 - 8xy^2z^3 - 2xyz^4 - 2y^3z^3
+\end{align*}
+$LT(f_1)=-2x^4yz=-2LT(\sigma_3\sigma_1^3)$
+\begin{align*}
+f_2=f_1+2\sigma_3\sigma_1^3&=-2x^3y^3 - 2x^3y^2z - 2x^3yz^2 - x^3z^3 - 2x^2y^3z - x^2y^2z^2\\
+& - 2x^2yz^3 - 2xy^3z^2 - 2xy^2z^3 - 2y^3z^3
+\end{align*}
+$LT(f_2)=-2x^3y^3=-2LT(\sigma_2^3)$
+\[
+f_3=f_2+2\sigma_2^3=4x^3y^2z + 4x^3yz^2 + 4x^2y^3z + 11x^2y^2z^2 + 4x^2yz^3 + 4xy^3z^2 + 4xy^2z^3
+\]
+$LT(f_3)=4x^3y^2z=4LT(\sigma_1\sigma_2\sigma_3)$
+\[
+f_4=f_3-4\sigma_1\sigma_2\sigma_3=-x^2y^2z^2=-\sigma_3^2
+\]
+Por tanto
+\[
+f=-\sigma_3^2+4\sigma_1\sigma_2\sigma_3-2\sigma_2^3-2\sigma_3\sigma_1^3.
+\]
+\item Consideramos el ideal $I=\gene{\sigma_1-t_1,\sigma_2-t_2,\sigma_3-t_3}\subset k[x,y,z,t_1,t_2,t_3]$, con base de Gröbner
+\[
+G=\{x + y + z - t_1, y^2 + yz - yt_1 + z^2 - zt_1 + t_2, z^3 - z^2t_1 + zt_2 - t_3\}
+\]
+Si denotamos $g\in k[t_1,t_2,t_3]$ al resto de dividir $f$ por $G$, sabemos que $g(\sigma_1,\sigma_2,\sigma_3)$. De hecho
+$$
+g(t_1,t_2,t_3)= -2t_1^3t_3 + t_1^2t_2^2 + 4t_1t_2t_3 - 2t_2^3 - t_3^2
+$$
+Notemos que hemos encontrado la misma expresión usando ambos métodos, como no podría ser de otra forma.
+\end{enumerate}
+
+
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7.1.6}
+If the variables are $x_1, \dots , x_n$, show that $\sum_{i\neq j} x^2_i
+x_j = σ_1σ_2 −3σ_3$. Hint: If you get stuck,
+see Exercise \ref{ejer:7.1.13}. Note that a computer algebra system cannot help here!
+\end{ejercicio}
+\begin{solucion}
+\begin{gather*}
+\sigma_1\sigma_2=\sum_{i=1}^nx_i\sum_{i_1<i_2}x_{i_1}x_{i_2}=\sum_{1\leq i\leq n, i_1<i_2}x_ix_{i_1}x_{i_2}=\\
+\sum_{i_2<i_2}x_{i_1}^2x_{i_2}+\sum_{i_2<i_2}x_{i_1}x_{i_2}^2+\sum_{i<i_1<i_2}x_ix_{i_1}x_{i_2}+\sum_{i_1<i<i_2}x_ix_{i_1}x_{i_2}+\sum_{i_1<i_2<i}x_ix_{i_1}x_{i_2}=\\
+\sum_{i\neq j} x_i^2x_j+3\sum_{j_1<j_2<j_3}x_{j_1}x_{j_2}x_{j_3}=\sum_{i\neq j} x_i^2x_j+3\sigma_3.
+\end{gather*}
+\end{solucion}
+\begin{solucion}
+\begin{align*}
+\sigma_1\sigma_2&=\sum_{i=1}^nx_i\sum_{i_1<i_2}x_{i_1}x_{i_2}\\
+&=\sum_{i\neq j}x_i^2x_j + \sum_{i\neq j \neq k \neq i} x_i x_j x_k\\
+&=\sum_{i\neq j}x_i^2x_j + 3\sum_{1\leq i<j<k\leq n} x_i x_j x_k\\
+&=\sum_{i\neq j} x_i^2x_j + 3\sigma_3
+\end{align*}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7.1.7}
+Let $f = x_n + a_1x_{n−1} + \cdots + a_n ∈ k[x]$ have roots $α_1,\dots, α_n$, which lie in some bigger
+field $K$ containing $k$.
+\begin{enumerate}[a.]
+\item Prove that any symmetric polynomial $g(α_1, \dots , α_n)$ in the roots of $f$ can be expressed
+as a polynomial in the coefficients $a_1, \dots , a_n$ of $f$.
+\item If the symmetric polynomial $g$ has coefficients in $k$, conclude that
+$g(α_1, \dots , α_n) ∈ k$.
+\end{enumerate}
+ 
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Por el Ejercicio \ref{ejer:7.1.4} sabemos que los coeficientes de $f$ son, salvo signo, los polinomios simétricos en las raíces de $f$. Es decir, cada $a_i$ es la forma $(-1)^{n-i}\sigma_i(\alpha_1,\dotsc,\alpha_n)$ o, equivalentemente, $\sigma_i = (-1)^{n-i}a_i$. Además, dado que $g(\alpha_1,\dotsc,\alpha_n)$ es un polinomio simétrico, por el Teorema Fundamental de los Polinomios simétricos con coeficientes en $(\alpha_1,\dotsc,\alpha_n)$, $g=h(\sigma_1,\dotsc,\sigma_n)$. Dado que las $\sigma_i$ se pueden escribir como funciones de $a_i$ tenemos el resultado.
+\item Supuesto que $g$ tiene coeficientes en $k$, la expresión de $g$ como polinomio en los coeficientes de $a_i$ también tiene coeficientes en $k$. Por tanto, $g$ es el resultado de sumas y productos de elementos de $k$ que, por ser cuerpo, es cerrado para ambas operaciones.
+\end{enumerate}
+
+\end{solucion}
+
+\newpage
+
+
+
+
+\begin{ejercicio}{7.1.8}
+As in Exercise 7, let $f = x_n +a_1x_{n−1} +\cdots + a_n ∈ k[x]$ have roots $α_1, \dotsc , α_n$, which lie
+in some bigger field K containing k. The discriminant of $f$ is defined to be
+$$
+D( f) = \prod_{i\neq j}(\alpha_i - \alpha_j)
+$$
+\begin{enumerate}[a.]
+\item Use Exercise 7 to show that $D( f )$ is a polynomial in $a_1, \dotsc, a_n$.
+\item When $n = 2$, express $D( f )$ in terms of $a_1$ and $a_2$. Does your result look familiar?
+\item  When $n = 3$, express $D( f )$ in terms of $a_1, a_2, a_3$.
+\item Explain why a cubic polynomial $x^3 +a_1x^2 +a_2x+a_3$ has a multiple root if and only if $−4a^3_1a_3 + a^2_1a^2_2+ 18a_1a_2a_3 - 4a^3_2 - 27a^2_3= 0.$
+\end{enumerate}
+\end{ejercicio}
+
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Claramente es un polinomio simétrico en las raíces de $f$, luego el primer apartado del ejercicio anterior deriva inmediatamente el resultado.
+\item Si $n=2$ tenemos una parábola y tan solo dos raíces dadas por $(a_1^2\pm\sqrt{a_1^2-4a_2})/2$. Por tanto
+$$
+D(f)=(\alpha_1 - \alpha_2)(\alpha_2 - \alpha_1) =-\sqrt{a_1^2-4a_2}\sqrt{a_1^2-4a_2} = 4a_2 - a_1^2
+$$
+\item Tenemos
+\begin{align*}
+-D(f)&=(\alpha_1-\alpha_2)^2(\alpha_1-\alpha_3)^2(\alpha_2-\alpha_3)^2\\
+&=-4\sigma_1^3\sigma_3 + \sigma_1^2\sigma_2^2 + 18\sigma_1\sigma_2\sigma_3 - 4\sigma_2^3 - 27\sigma_3^2
+\end{align*}
+Ahora basta tener en cuenta que en el caso cúbico $\sigma_1 = -a_1$, $\sigma_2 = a_2$ y $\sigma_3 = -a_3$.
+\item Irresoluble sin conocer resultantes.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{7.1.9}
+Given a cubic polynomial $f = x^3+a_1x^2+a_2x+a_3$, what condition must the coefficients
+of $f$ satisfy in order for one of its roots to be the average of the other two? Hint: If $α_1$ is
+the average of the other two, then $2α_1 − α_2 − α_3 = 0$. But it could happen that $α_2$ or
+$α_3$ is the average of the other two. Hence, you get a condition stating that the product of
+three expressions similar to $2α_1 − α_2 − α_3$ is equal to zero. Now use Exercise \ref{ejer:7.1.7}.
+\end{ejercicio}
+\begin{solucion}
+Tenemos como dice el enunciado la ecuación
+\begin{equation}\label{1}
+(2α_1 − α_2 − α_3)(-α_1 + 2α_2 − α_3)(-α_1 − α_2 + 2α_3)=0.
+\end{equation}
+Por otro lado tenemos
+\begin{align*}
+a_3=&-\alpha_1\alpha_2\alpha_3\\
+a_2= & \alpha_1\alpha_2+\alpha_1\alpha_3+\alpha_2\alpha_3\\
+a_1=&-\alpha_1-\alpha_2-\alpha_3
+\end{align*}
+Tenemos, a partir de última ecuación que \ref{1} se reescribe como
+\[
+(a_1+3\alpha_1)(a_1+3\alpha_2)(a_1+3\alpha_3)=0
+\]
+que desarrollando se convierte en
+\[
+a_1^3 + 3a_1^2\alpha_1 + 3a_1^2\alpha_2 + 3a_1^2\alpha_3 + 9a_1\alpha_1\alpha_2+ 9a_1\alpha_1\alpha_3 + 9a_1\alpha_2\alpha_3 + 27\alpha_1\alpha_2\alpha_3=
+\]
+\[
+a_1^3-3a_1^3+9a_1a_2-27a_3=-2a_1^3+9a_1a_2-27a_3=0
+\]
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7.1.10}
+As in Proposition 5, let $h_j(x_1 , \dots , x_n)$ be the sum of all monomials of total degree $j$ in $x_1 ,\dots , x_n$.
+Also, let $σ_0 = 1$ and $σ_i = 0$ if $i > n$.
+The goal of this exercise is to show that if $j > 0$, then
+\[ 0 = \sum_{i=0}^j (-1)^i h_{j-i}(x_1,\dots,x_n) \sigma_i(x_1,\dots,x_n) \]
+In Exercise \ref{ejer:7.1.11}, we will use this to prove the closely related identity (5) that appears in the text.
+To prove the above identity, we will compute the coefficients of the monomials $x^α$ that appear in $h_{j-i} σ_i$.
+Since every term in $h_{j-i} σ_i$ has total degree $j$, we can assume that $x^α$ has total degree $j$.
+We will let $a$ denote the number of variables that actually appear in $x^α$.
+\begin{enumerate}
+\item If $x^α$ appears in $h_{j-i} σ_i$, show that $i ≤ a$. Hint: How many variables appear in each term of $σ_i$?
+\item If $i ≤ a$, show that exactly $\binom{a}{i}$ terms of $σ_i$ involve only variables that appear in $x^α$.
+Note that all of these terms have total degree $i$.
+\item If $i ≤ a$, show that $x^α$ appears in $h_{j-i} σ_i$ with coefficient $\binom{a}{i}$.
+Hint: This follows from part (b) because $h_{j-i}$ is the sum of all monomials of total degree $j - i$, and each monomial has coefficient $1$.
+\item Conclude that the coefficient of $x^α$ in $\sum_{i=0}^j (-1)^i h_{j-i}σ_i$ is $\sum_{i=0}^a (-1)^i \binom{a}{i}$.
+Then use the binomial theorem to show that the coefficient of $x^α$ is zero.
+This will complete the proof of our identity.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\mbox{}
+\begin{enumerate}
+\item En cada término de $σ_i$ hay $i$ variables únicas.
+En consecuencia, cada término de $h_{j-i} σ_i$ tiene al menos $i$ variables únicas.
+Si $x^α$ es el monomio de uno de estos términos y tiene $a$ variables únicas, entonces necesariamente $i ≤ a$.
+\item Combinatoria básica. Estamos eligiendo grupos de $i$ elementos entre $a$ opciones sin repetición ni relevancia de orden.
+\item Sea $x^β$ uno de los $\binom{a}{i}$ monomios de $σ_i$ de los que hablamos en (b).
+Tenemos que $|β|=i$, que $β$ está formado por $0$ y $1$, y que $α_k ≥ β_k$ para todo $k$.
+Podemos tomar $γ = α-β$.
+Tenemos que $|γ| = j-i$, luego $x^γ$ aparece en $h_{j-i}$.
+Entonces $x^γ x^β = x^{γ+β} = x^α$ aparece en $h_{j-i} σ_i$.
+
+En resumen, por cada uno de los $\binom{a}{i}$ monomios de $σ_i$, hay un único monomio de $h_{j-i}$ que al multiplicar nos da $x^α$.
+Al sumarlos todos, el coeficiente de $x^α$ es $\binom{a}{i}$.
+\item Por un lado sabemos que $x^α$ no aparecerá en los términos donde $i > a$ (por (a)).
+Por otro lado, el coeficiente de $x^α$ en de cada término del sumatorio es $(-1)^i \binom{a}{i}$ (por (c)).
+Entonces el coeficiente en el sumatorio es $\sum_{i=0}^a (-1)^i \binom{a}{i}$.
+
+Sin embargo, por la fórmula del binomio
+\[
+\sum_{i=0}^a (-1)^i \binom{a}{i} = \sum_{i=0}^a \binom{a}{i} (-1)^i 1^{a-i} = (-1+1)^a = 0
+\]
+Luego el coeficiente de todo monomio $x^α$ es $0$, lo que demuestra la identidad.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{7.1.11}
+In this exercise, we will prove the identity
+\[ 0 = h_j(x_j, \dots, x_n) + \sum_{i=1}^j (-1)^i h_{k-i}(x_j,\dots,x_n) σ_i(x_1,\dots,x_n) \]
+used in the proof of Proposition 5.
+As in Exercise 10, let $σ_0 = 1$, so that the identity can be written more compactly as
+\[ 0 = \sum_{i=0}^k (-1)^i h_{j-i}(x_j,\dots,x_n) σ_i(x_1,\dots,x_n) \]
+The idea is to separate out the variables $x_1,\dots,x_{j-1}$.
+To this end, if $S \subset \{1,\dots,j-1\}$, let $x^S$ be the product of the coresponding variables and let $|S|$ denote the number of elements in $S$.
+\begin{enumerate}
+\item Prove that
+\[ σ_i(x_1,\dots,x_n) = \sum_{S \subset \{1,\dots,j-1\}} x^S σ_{i-|S|}(x_j,\dots,x_n), \]
+where we set $σ_m = 0$ if $m < 0$.
+\item Prove that
+\[ \sum_{i=0}^j (-1)^i h_{j-i}(x_j,\dots,x_n) σ_i(x_1,\dots,x_n) \]
+\begin{equation}\label{eq:7.1.11} = \sum_{S \subset \{1,\dots,j-1\}} x^S \left(\sum_{i=|S|}^j (-1)^i h_{j-i}(x_j,\dots,x_n) σ_{i-|S|}(x_j,\dots,x_n)\right) \end{equation}
+\item Use Exercise \ref{ejer:7.1.10} to conclude that the sum inside the parentheses is zero for every $S$.
+This proves the desired identity.
+Hint: Let $l = i-|S|$.
+\end{enumerate}
+\end{ejercicio}
+
+\begin{solucion}
+\mbox{}
+\begin{enumerate}
+\item Consideramos en cada término de $σ_i$ como el producto de dos monomios $x^S$ y $x^T$, con $S \subset \{x_1,\dots,x_{j-1}\}$ y $T \subset \{x_j,\dots,x_n\}$.
+Por un lado tenemos que $|T|=i-|S|$.
+Sacando factor común $x^S$, tenemos:
+\[ σ_i(x_1,\dots,x_n) = \sum_{S \subseteq \{1,\dots,j-1\}} x^S \left(\sum_{\substack{T \subseteq \{j,\dots,n\}\\|T|=1-|S|}} x^T\right) = \sum_{S \subset \{1,\dots,j-1\}} x^S σ_{i-|S|}(x_j,\dots,x_n) \]
+
+\item
+\begin{align*}
+\sum_{i=0}^j & (-1)^i h_{j-i}(x_j,\dots,x_n) σ_i(x_1,\dots,x_n)\\
+& = \sum_{i=0}^j (-1)^i h_{j-i}(x_j,\dots,x_n) \left(\sum_{S \subset \{1,\dots,j-1\}} x^S σ_{i-|S|}(x_j,\dots,x_n)\right)\\
+& = \sum_{i=0}^j \sum_{S \subset \{1,\dots,j-1\}} x^S (-1)^i h_{j-i}(x_j,\dots,x_n) σ_{i-|S|}(x_j,\dots,x_n)\\
+& = \sum_{S \subset \{1,\dots,j-1\}} x^S \left(\sum_{i=0}^j (-1)^i h_{j-i}(x_j,\dots,x_n) σ_{i-|S|}(x_j,\dots,x_n)\right)\\
+& =  \sum_{S \subset \{1,\dots,j-1\}} x^S \left(\sum_{\mathbf{i=|S|}}^j (-1)^i h_{j-i}(x_j,\dots,x_n) σ_{i-|S|}(x_j,\dots,x_n)\right)
+\end{align*}
+Podemos imponer que el segundo sumatorio empiece por $|S|$ porque $σ_{i-|S|} = 0$ para $i - |S| < 0$.
+\item Sea $l = i - |S|$ y $k = j - |S|$, entonces tenemos para los términos de \eqref{eq:7.1.11}:
+\begin{align*}
+\sum_{i=|S|}^j & (-1)^i h_{j-i}(x_j,\dots,x_n) σ_{i-|S|}(x_j,\dots,x_n)\\
+& = \sum_{l=0}^{j-|S|} (-1)^{l+|S|} h_{j-|S|-l}(x_j,\dots,x_n) σ_{l}(x_j,\dots,x_n)\\
+& = (-1)^{|S|}\sum_{l=0}^{k} (-1)^l h_{k-l}(x_j,\dots,x_n) σ_{l}(x_j,\dots,x_n)\\
+& = 0
+\end{align*}
+por lo demostrado en el ejercicio \ref{ejer:7.1.10}.
+
+Entonces cada sumando de \eqref{eq:7.1.11} es $0$, luego la suma es $0$.
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7.1.14}
+In this exercise, you will prove the Newton identities used in the proof of Theorem 8. Let the variables be $x_1,\dotsc,x_n$
+\begin{enumerate}[a.]
+\item Set $σ_0 = 1$ and $σ_i = 0$ whenever $i < 0$ or $i > n$. Then show that the Newton identities are equivalent to
+$$
+\sum_{k=0}^{j-1} (-1)^{k}\sigma_{k}s_{j-k} + (-1)^j j \sigma_j = 0, \quad j\geq 1 
+$$
+\item Prove the identity of part (a) by induction on $n$. Hint: Similar to Exercise 3, let $s^{(n)}_j$ be
+the $j$th power sum of $x_1,\dotsc,x_{n-1}$, i.e., all variables except $x_n$. Then use Exercise 3 and note that $s_j = s^{(n)}_j+x_n^j$.
+\end{enumerate} 
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Si $1\leq j \leq n$ es claro, pues coincide con la identidad de Newton habitual. Si $j>n$ entonces tenemos que comprobar que
+$$
+\sum_{k=0}^{j-1} (-1)^{k}\sigma_{k}s_{j-k} + (-1)^j j \sigma_j  = \sum_{k=0}^n \sigma_k s_{j-k}(-1)^k
+$$
+Como $\sigma_j=0$ para $j>n$, entonces en la igualdad de la izquierda podemos eliminar el primer sumando y dejar la suma hasta $n$, donde tenemos la coincidencia.  
+\item La igualdad $s_j = s_j^{(n)} + x^j_n$ es trivial, no resiste mayor análisis. Pasemos a probar $a.$ por inducción sobre $n$. Si $n = 1$ entonces $\forall j >1$ $\sigma_j =0$. La igualdad es clara para $j=$. Si $\forall j \geq 2$ todos los términos de la suma se anulan salvo los dos primeros (que se anulan), quedando
+$$
+\sum_{k=0}^{j-1} (-1)^{k}\sigma_{k}s_{j-k} = \sigma_0 s_j - \sigma_1 s_{j-1} = x^j - x x^{j-1} = 0
+$$
+Supongamos que para todo $n\leq s-1$ verifica la igualdad para todo $j$ y veamos qué ocurre para $n=s$. Si $j=1$ es trivial. Supongamos hipótesis de inducción para $j\leq m$.
+\begin{align*}
+\sum_{k=0}^{j-1} (-1)^{k}\sigma_{k}s_{j-k} + (-1)^j j \sigma_j   &= (-1)^{j-1}\sigma_{j-1}s_1 + (-1)^{j-1}(j-1)\sigma_{j-1}+(-1)^j j \sigma_j\\
+&=(-1)^{j-1}\sigma_{j-1}(s_1 + (j-1))+(-1)^j j \sigma_j
+\end{align*}
+Si $j\geq n+2$ entonces el resultado es trivial. Si $j=n+1$ entonces nos queda, dado que $\sigma_{n+1}=0$, $(-1)^n\sigma_n (s_1+n)$
+\end{enumerate}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{7.1.16}
+Consider the field $\F_2 = \{0, 1\}$ consisting of two elements. Show that it is impossible
+to express the symmetric polynomial $xy ∈ \F_2[x, y]$ as a polynomial in $s_1$ and $s_2$ with
+coefficients in $\F_2$. Hint: Show that $s_2 = s^2_1$!
+\end{ejercicio}
+\begin{solucion}
+Por definición $s_1=x+y$, $s_2=x^2+y^2$. Como estamos en $\F_2$, $s_1^2=x^2+y^2=s_2$. Supongamos que $xy$ se expresa como un polinomio de grado $n$ en $s_1$ y $s_2$. Utilizando la observación anterior tendríamos que
+\[
+xy=a_1(x+y)+\sum_{i=1}^nb_i(x^2+y^2)^i+(x+y)\sum_{j=1}^{n-1}(x^2+y^2)^j,\quad a_1, b_i,c_j\in \F_2
+\]
+Observamos que en los dos sumandos de la derecha, tanto $x$ como $y$ aparecen siempre con grando mayor o igual que 2, mientras que en $xy$ tienen ambos grado 1. Por tanto, $xy=a_1(x+y)$, lo cual no es posible.
+\end{solucion}
+\end{document}

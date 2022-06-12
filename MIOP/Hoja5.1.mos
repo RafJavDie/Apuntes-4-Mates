@@ -1,0 +1,62 @@
+model Hoja5
+uses "mmxprs", "mmxnlp"; !el segundo es para no lineal
+
+
+parameters
+n=6 !número de puntos
+end-parameters
+
+declarations
+x,y: array(1..n) of real
+a,b,c: mpvar !variable de decisión
+z: array(1..n) of mpvar
+t: mpvar
+f2: linctr !no hace falta, pero es para cuando es una función que depende de las variables de decisión
+end-declarations
+
+x::[0,1,2,3,4,5]
+y::[2,2,-12,-27,-60,-90]
+
+!APARTADO 1
+
+a is_free !antes de la minimización
+b is_free
+c is_free
+
+f1:=sum(i in 1..n)(y(i)-a-b*x(i)-c*x(i)^2)^2
+
+minimize(f1)
+
+!Restricciones del apartado 2
+(!forall(i in 1..n) do
+z(i)>=y(i)-a-b*x(i)-c*x(i)^2
+z(i)>=-y(i)+a+b*x(i)+c*x(i)^2
+end-do
+a is_free
+b is_free
+c is_free
+!función objetivo apartado 2
+f2:=sum(i in 1..n)z(i)
+
+minimize(f2)
+!)
+
+!Apartado 3
+
+(!forall(i in 1..n) do
+t>=y(i)-a-b*x(i)-c*x(i)^2
+t>=-y(i)+a+b*x(i)+c*x(i)^2
+end-do
+a is_free !antes de la minimización
+b is_free
+c is_free
+!función objetivo apartado 3
+
+minimize(t)!)
+
+
+writeln('a:',getsol(a))
+writeln('b:',getsol(b))
+writeln('c:',getsol(c))
+writeln('objetivo:',getobjval)
+end-model

@@ -1,0 +1,221 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de From Calculus to Cohomology, Capítulo 4}
+\author{Javier Aguilar Martín}
+\maketitle
+
+
+\begin{ejercicio}{4.1}
+Consideremos el diagrama conmutativo de espacios vectoriales y aplicaciones lineales en el que las filas son exactas
+\[
+\begin{tikzcd}
+A_1\arrow[d,"f_1"]\arrow[r, "\alpha_1"] & A_2\arrow[d,"f_2"]\arrow[r, "\alpha_2"] & A_3\arrow[d,"f_3"]\arrow[r, "\alpha_3"] & A_4\arrow[d,"f_4"]\arrow[r, "\alpha_4"] & A_5\arrow[d,"f_5"]\\
+B_1\arrow[r, "\beta_1"] & B_2\arrow[r, "\beta_2"] & B_3\arrow[r, "\beta_3"] & B_4\arrow[r, "\beta_4"] & B_5
+\end{tikzcd}
+\]
+Supongamos que $f_4$ es inyectiva, $f_1$ es sobreyectiva y $f_2$ es inyectiva. Probar que $f_3$ es inyectiva. Suponer que $f_2$ es sobreyectiva, $f_4$ es sobreyectiva y $f_5$ es inyectiva. Probar que $f_3$ es sobreyectiva. 
+\end{ejercicio}
+\begin{solucion}
+\underline{Inyectividad}
+
+Sea $a_3\in A_3$ tal que $f_3(a_3)=0\in B_3$. Por conmutatividad del diagrama, $f_4(\alpha_3(a_3))=\beta_3(f_3(a_3))=\beta_3(0)=0$. Por inyectividad de $f_4$ se sigue que $\alpha_3(a_3)=0$, es decir, $a_3\in\ker{\alpha_3}=\Ima{\alpha_2}$, luego existe $a_2\in A_2$ con $\alpha_2(a_2)=a_3$. Denotamos $b_2=f_2(a_2)$. Por conmutatividad, $\beta_2(b_2)=f_3(\alpha_2(a_2))=f_3(a_3)=0$. Por tanto, $b_2\in\ker{\beta_2}=\Ima{\beta_1}$, así que existe $b_1\in B_1$ con $\beta_1(b_1)=b_2$. Por la sobreyectividad de $f_1$, existe $a_1\in A_1$ tal que $f_1(a_1)=b_1$, luego aplicando conmutatividad, $f_2(\alpha_1(a_1))=\beta_1(f_1(a_1))=\beta_1(b_1)=b_2=f_2(a_2)$. Esto quiere decir que $\alpha_1(a_1)-a_2\in\ker{f_2}$, pero como $f_2$ es inyectiva llegamos a que $\alpha_1(a_1)=a_2$. Ahora, por exactitud, $0=\alpha_2(\alpha_1(a_1))=\alpha_2(a_2)=a_3$, con lo que se llega al resultado.
+
+\underline{Sobreyectividad}
+
+Sea $b_3\in B_3$. Denotamos $b_4=\beta_3(b_3)\in B_4$. Por sobreyectividad de $f_4$, existe $a_4\in A_4$ tal que $f_4(a_4)=b_4$. Aplicando la conmutatividad del diagrama, $f_5(\alpha_4(a_4))=\beta_4(b_4)=\beta_4(\beta_3(b_4))=0$ por exactitud. Así que de la inyectividad de $f_5$ deducimos que $\alpha_4(a_4)=0$, o lo que es lo mismo, $a_4\in\ker{\alpha_4}=\Ima{\alpha_3}$, de modo que existe $a_3\in A_3$ con $\alpha_3(a_3)=a_4$. Usando la conmutatividad del diagrama, $\beta_3(f_3(a_3))=f_4(\alpha_3(a_3))=f_4(a_4)=b_4=\beta_3(b_3)$. Por lo tanto, $f_3(a_3)-b_3\in\ker{\beta_3}=\Ima{\beta_2}$, luego existe $b_2\in B_2$ tal que $\beta_2(b_2)=f_3(a_3)-b_3$. Por sobreyectividad de $f_2$, se tiene que existe $a_2\in A_2$ con $f_2(a_2)=b_2$, de donde se sigue por conmutatividad que $f_3(\alpha_2(a_2))=\beta_2(f_2(a_2))=\beta_2(b_2)=f_3(a_3)-b_3$. Concluimos pues, que $b_3=f_3(\alpha_2(a_2)-a_3)$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4.2}
+Consideremos el siguiente diagrama conmutativo
+\[
+\begin{tikzcd}
+0\arrow[r] & A_1\arrow[d,"f_1"]\arrow[r, "\alpha_1"] & A_2\arrow[d,"f_2"]\arrow[r, "\alpha_2"] & A_3\arrow[d,"f_3"]\arrow[r] & 0\\
+0\arrow[r] & B_1\arrow[r, "\beta_1"] & B_2\arrow[r, "\beta_2"] & B_3\arrow[r] & 0
+\end{tikzcd}
+\]
+donde las filas son sucesiones exactas. Probar que existe una sucesión exacta
+\[
+0\to \ker{f_1}\to \ker{f_2}\to \ker{f_3}\to \coker{f_1}\to \coker{f_2}\to \coker{f_3}\to 0.
+\]
+(Pista: utilizar la sucesión exacta larga de cohomología).
+\end{ejercicio}
+\begin{solucion}
+Vamos a ver primero la exactitud de
+\[
+0\to \ker{f_1}\to \ker{f_2}\to \ker{f_3}.
+\]
+Denotamos $a_i=\alpha_i|_{\ker{f_i}}$. Estas aplicaciones están bien definidas, pues si $n\in\ker{f_i}$, entonces $f_{i+1}a_i(n)=\beta_if_i(n)=0$, así que $a_i(n)\in\ker{f_{i+1}}$. Claramente $a_1$ es inyectiva. Claramente, $\Ima{a_1}\subseteq\ker{a_2}$. Además, si $n\in\ker{f_2}$ con $a_2(n)=0$. En particular, $n\in\ker{\alpha_2}$, luego $n\in\Ima{\alpha_1}$. Así que $n=\alpha_1(m)$ para $m\in A_1$. Tenemos que probar que de hecho $m\in\ker{f_1}$. Usando la conmutatividad del diagrama, $\beta_1(f_1(m))=f_2(\alpha_1(m))=f_2(n)=0$. Como $\beta_1$ es inyectiva, $f_1(m)=0$, así que $m\in\ker{f_1}$.
+
+Probamos ahora la exactitud de
+\[
+\coker{f_1}\to \coker{f_2}\to \coker{f_3}\to 0.
+\]
+%\[
+%B_1/\Ima{f_1}\to B_2/\Ima{f_2}\to B_3/\Ima{f_3}\to 0
+%\]
+Definimos $b_i(n+\Ima{f_i})=\beta_i(n)+\Ima{f_{i+1}}$. Veamos que están bien definidas. Sean $n+\Ima{f_i}=n'+\Ima{f_i}$, entonces $n-n'\in\Ima{f_i}$, es decir, existe $a\in A_i$ con $f_i(a)=n-n'$. Por tanto, $\beta_i(n)-\beta(n')=\beta_if_i(a)=f_{i+1}\alpha_i(a)$, así que $\beta_i(n)-\beta(n')\in\Ima{f_{i+1}}$. Veamos que $b_2$ es sobreyectiva. Sea $m+\Ima{f_3}\in\coker{f_3}$. Como $\beta_2$ es sobreyectiva, existe $n\in B_2$ con $\beta_2(n)=m$. Entonces, $b_2(n+\Ima{f_2})=\beta_2(n)+\Ima{f_3}=m+\Ima{f_3}$. Por otro lado, claramente $b_2b_1=0$, por lo que $\Ima{b_1}\subseteq\ker{b_2}$. Recíprocamente, si $n+\Ima{f_2}\in\ker{b_2}$, es decir, $\beta_2(n)\in\Ima{f_3}$, por lo que sea $m\in A_3$ con $f_3(m)=\beta_2(n)$. Como $\alpha_2$ es sobreyectiva, sea $p\in A_2$ con $\alpha_2(p)=m$. Tenemos por conmutatividad, $\beta_2(n)=f_3\alpha_2(p)=\beta_2f_2(p)$, con lo que $n-f_2(p)\in\ker{\beta_2}=\Ima{\beta_1}$. Sea pues, $r\in B_1$ con $\beta_1(r)=n-f_2(p)$. Consideremos la clase $r+\Ima{f_1}$. Entonces, $$b_1(r+\Ima{f_1})=\beta_1(r)+\Ima{f_2}=n-f_2(p)+\Ima{f_2}=n+\Ima{f_2}.$$
+
+Por último, probamos la exactitud de 
+\[
+\ker{f_2}\to \ker{f_3}\to \coker{f_1}\to \coker{f_2}.
+\]
+Como ya tenemos $a_2$ y $b_1$ definidas, tenemos que definir $\delta:\ker{f_3}\to\coker{f_1}$. Dado $c\in\ker{f_3}$, como $\alpha_2$ es sobreyectiva, existe $a\in A_2$ con $\alpha_2(a)=c$. Por conmutatividad, $\beta_2(f_2(a_2))=f_3(c)=0$, luego $f_2(a)\in\ker{\beta_2}=\Ima{\beta_1}$. Así que sea $b\in B_1$ con $\beta_1(b)=f_2(a)$ ($b$ es único por inyectividad). Entonces, definimos $\delta(c)=b+\Ima{f_1}$, es decir, $$\delta(c)=\beta_1^{-1}(f_2(\alpha_2^{-1}(c)))+\Ima{f_1}.$$ Tenemos que ver que está bien definida. Sean $\alpha_2(a)=\alpha_2(a')=c$. Existe un único $b'\in B_1$ con $\beta_1(b')=f_2(a')$ de la misma forma que se calculó en la definición original. Tenemos que $a-a'\in\ker{\alpha_2}=\Ima{\alpha_1}$, así que $a-a'=\alpha_1(z)$ para algún $z\in A_1$. Así que $\beta_1(f_1(z))=f_2(\alpha_1(z))=f_2(a-a')=\beta_1(b-b')$. Por inyectividad de $\beta_1$, $f_1(z)=b-b'\in\Ima{f_1}.$
+
+Por la definición de $\delta$ es claro que $\Ima{a_2}\subseteq\ker{\delta}$. Recíprocamente, sea $p\in\ker{\delta}$ estando $p\in\ker{f_3}$. Tenemos que $p=\alpha_2(n)$ y $f_2(n)=\beta_1(m)$ con $m\in\Ima{f_1}$. Sea $m=f_1(x)$ con $x\in A_1$. Entonces $f_2\alpha_1(x)=\beta_1 f_1(x)=f_2(n)$.  Entonces, $n-\alpha_1(x)\in\ker{f_2}$. Además, $a_2(n-\alpha_1(x))=\alpha_2(n)-\alpha_2\alpha_1(x)=\alpha_2(n)=p$, así que $p\in\Ima{a_2}$.
+
+Por último, sea $p\in\ker{f_3}$, entonces $p=\alpha_2(b)$ y $f_2(a)=\beta_1(b)$, así que $\delta(p)=b+\Ima{f_1}$. Por tanto. $b_1(\delta(p))=\beta_1(b)+\Ima{f_2}=0$. Recíprocamente, supongamos que $b+\Ima{f_1}\in\ker{b_1}$. Entonces, $\beta_1(b)\in\Ima{f_2}$, digamos $\beta_1(b)=f_2(a)$ para $a\in A_2$. Sea $p=\alpha_2(a)$. Entonces, $f_3(\alpha_2(a))=\beta_2(f_2(a))=\beta_2(\beta_1(a))=0$. Por tanto, $p\in\ker{f_3}$, y $\delta(p)=b+\Ima{f_1}$.
+
+\vspace{0.5cm}
+
+{\bf\large ALTERNATIVA}
+
+Sean $C_1=\{0\to A_1\to B_1\to 0\}$, $C_2=\{0\to A_2\to B_2\to 0\}$ y $C_3=\{0\to A_3\to B_3\to 0\}$ complejos de cadenas inducidos por el diagrama. Entonces entonces podemos ver el diagrama como una sucesión exacta corta de complejos de cadenas
+\[
+0\to C_1\to C_2\to C_3\to 0,
+\]
+que tiene asociada
+\[
+0\to H^0(C_1)\to H^0(C_2)\to H^0(C_3)\overset{\partial^*}{\to} H^1(C_1)\to H^1(C_2)\to H^1(C_3)\to 0,
+\]
+que es igual a 
+\[
+0\to \ker{f_1} \to\ker{f_2} \to \ker{f_3}\to\coker{f_1}\to\coker{f_2}\to\coker{f_3}\to 0.
+\]
+
+
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{4.3}
+En el diagrama conmutativo
+\[
+\begin{tikzcd}
+& 0\arrow[d] & 0\arrow[d] & 0\arrow[d] & 0\arrow[d] \\
+0\arrow[r] & A^{0,0}\arrow[r]\arrow[d] & A^{1,0}\arrow[r]\arrow[d]& A^{2,0}\arrow[r]\arrow[d]  & A^{3,0}\arrow[r]\arrow[d] &\cdots\\
+0\arrow[r] & A^{0,1}\arrow[r]\arrow[d] & A^{1,1}\arrow[r]\arrow[d]& A^{2,1}\arrow[r]\arrow[d]  & A^{3,1}\arrow[r]\arrow[d] &\cdots\\
+0\arrow[r] & A^{0,2}\arrow[r]\arrow[d] & A^{1,2}\arrow[r]\arrow[d]& A^{2,2}\arrow[r]\arrow[d]  & A^{3,2}\arrow[r]\arrow[d] &\cdots\\
+0\arrow[r] & A^{0,3}\arrow[r]\arrow[d] & A^{1,3}\arrow[r]\arrow[d]& A^{2,3}\arrow[r]\arrow[d]  & A^{3,3}\arrow[r]\arrow[d] &\cdots\\
+& \vdots & \vdots & \vdots & \vdots
+\end{tikzcd}
+\]
+la horizontal $(A^{*,q})$ y la vertical $(A^{p,*})$ son complejos de cadenas donde $A^{p,q}=0$ si o bien $p<0$ o bien $q<0$. Supongamos que
+\begin{gather*}
+H^p(A^{*,q})=0\text{ para }q\neq 0\text{ y todo }p,\\
+H^q(A^{p,*})=0\text{ para }p\neq 0\text{ y todo }q.
+\end{gather*}
+Construir isomorfismos $H^p(A^{*,0})\to H^p(A^{0,*})$ para todo $p$.
+\end{ejercicio}
+\begin{solucion}
+De las hipótesis tenemos que para todo $p$ y para todo $q\neq 0$
+\[
+H^p(A^{*,q})=\frac{\ker(A^{p,q}\to A^{p+1,q})}{\Ima(A^{p-1}\to A^{p,q})}=0,
+\]
+de donde $\ker(A^{p,q}\to A^{p+1,q})=\Ima(A^{p-1,q}\to A^{p,q})$. Análogamente, para todo $q$ y para todo $p\neq 0$, $\ker(A^{p,q}\to A^{p,q+1})=\Ima(A^{p,q-1}\to A^{p,q})$. De esta forma, tenemos exactitud en todos los complejos salvo en $(A^{0,*})$ y $(A^{*,0})$. En particular, $A^{p,0}\to A^{p,1}$ y $A^{0,q}\to A^{0,q+1}$ son inyectivas para todo $p,q\neq 0$. Veamos que $H^0(A^{*,0})= H^0(A^{0,*})$. Por definición, 
+\begin{align*}
+& H^0(A^{*,0})=\frac{\ker(A^{0,0}\to A^{1,0})}{\Ima(0\to A^{0,0})}=\ker(A^{0,0}\to A^{1,0}),\\
+& H^0(A^{0,*})= \frac{\ker(A^{0,0}\to A^{0,1})}{\Ima(0\to A^{0,0})}=\ker(A^{0,0}\to A^{0,1}).
+\end{align*}
+Dado $c\in \ker(A^{0,0}\to A^{1,0})$, utilizando la conmutatividad del diagrama podemos llevarlo a $A^{1,1}$ por dos caminos, ambos llegando al 0. La inyectividad de $A^{0,1}\to A^{1,1}$ nos garantiza entonces que $c\in \ker(A^{0,0}\to A^{0,1})$ y análogamente se tiene la otra inclusión. 
+
+Vayamos ahora al $H^1$. Tenemos
+$$
+H^1(A^{*,0})=\frac{\ker(A^{1,0}\to A^{2,0})}{\Ima(A^{0,0}\to A^{1,0})}
+$$
+
+Sea entonces $[a_{1,0}]\in H^1(A^{*,0})$. Utilizando la conmutatividad del diagrama y la inyectividad de $A^{1,0}\to A^{1,1}$, tenemos una única imagen de $a_{1,0}$: $a_{1,1}\in \ker(A^{1,1}\to A^{2,1})=\Ima(A^{0,1}\to A^{1,1})$. Por inyectividad de esta última aplicación existe un único $a_{0,1}\in A^{0,1}$ que definiremos como la imagen de $a_{1,0}$ en $H^1(A^{0,*})$. En primer, lugar veamos que $a_{0,1}$ define un ciclo. Basta enviarlo a $A^{1,2}$ utilizando conmutatividad e inyectividad, pues la imagen de $a_{1,1}$ en $A^{1,2}$ es cero pues $a_{1,1}$ era un borde, así que efectivamente $a_{0,1}\in\ker(A^{1,1}\to A^{0,2})$. Tenemos que ver entonces que está bien definida. Vamos a añadir algo de notación para facilitarlo. Llamamos $g:A^{0,0}\to A^{1,0}$, $f:A^{1,0}\to A^{1,1}$, $g'=A^{0,0}\to A^{0,1}$, $f':A^{0,1}\to A^{1,1}$. Tenemos entonces que $a_{0,1}=(f')^{-1}(f(a_{1,0}))$. Sean entonces $a,a'$ tales que $a-a'\in \Ima(g)$, es decir, existe $\alpha$ con $g(\alpha)=a-a'$. Por conmutatividad, $f(a-a')=f(g(\alpha))=g'(g'(\alpha))$, luego $(f')^{-1}(f(a-a'))=g'(\alpha)$, de modo que  $(f')^{-1}(f(a-a'))=g'(\alpha)\in\Ima(g')$, así que las imágenes de $a$ y $a'$ definen la misma clase de cohomología. En la dirección opuesta se define análogamente, y se comprueba fácilmente que las definiciones son inversas la una de la otra, pues la expresión de la inversa será $f^{-1}f'$. En definitiva, hemos establecido $ H^1(A^{*,0})\cong  H^1(A^{0,*})$.
+
+Para el resto de casos es similar pero con más pasos intermedios usando que aplicar borde dos veces es trivial, así que se deja como ejercicio.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{4.4}
+Sea $0\to A^0\overset{d_0}{\to}A^1\overset{d_1}{\to}\cdots\overset{d_{n-1}}{\to}A^n\to 0$ un complejo de cadenas y supongamos que $\dim A^i<\infty$. La \emph{característica de Euler} está definida como
+\[
+\chi(A^*)=\sum_{i=0}^n (-1)^i\dim A^i.
+\]
+Probar que $\chi(A^*)=0$ si $A^*$ es exacta. Probar que la sucesión 
+\[
+0\to H^i(A^*)\to A^i/\Ima d^{i-1}\overset{d^i}{\to}\Ima d^i\to 0
+\]
+es exacta y concluir que
+\[
+\dim A^i-\dim\Ima d^{i-1}=\dim H^i(A^*)+\dim\Ima d^i.
+\]
+Probar que $\chi(A^*)=\sum_{i=0}^n\dim H^i(A^*)$.
+\end{ejercicio}
+\begin{solucion}
+Recordemos que si $A^*$ es exacta, a partir de $A^{i-1}\overset{d^{i-1}}{\to} A^i\overset{d^i}{\to} A^{i+1}$ podemos obtener para todo $i$ sucesiones exactas $\ker{d^i}=\Ima{d^{i-1}}\to A^i\to \Ima{d^i}$. Para $i=0$ tendríamos $A^0=\Ima{d^0}$ y para $i=n$ tenemos $A^n=\Ima{d^{n-1}}$. Como son sucesiones exactas de espacios vectoriales, escinden. Así que $A^i\cong \Ima{d^{i-1}}\oplus\Ima{d^i}$. Entonces, sustituyendo,
+\[
+\chi(A^*)=\dim(\Ima{d^0})-(\dim(\Ima{d^0}+\dim(\Ima{d^1}))+\cdots +(-1)^{n-1}(\dim(\Ima{d^{n-2}})+
+\]
+\[
++\dim(\Ima{d^{n-1}}))+(-1)^n\dim(\Ima{d^{n-1}})=0
+\]
+
+Observemos ahora el siguiente diagrama
+%\[
+%\begin{tikzcd}[remember picture] % see https://tex.stackexchange.com/a/256562/121799
+% & & & 0 &  \\
+% 0\arrow[r] & \ker{d^i}\arrow[d]\arrow[r] & A^i\arrow[d]\arrow[r] & \Ima{d^{i-1}}\arrow[r]\arrow[u] & 0\\
+%0 \arrow[r] &  H^i(A^*)\arrow[r] & A^i/ \Ima{d^{i-1}}\arrow[ur] & & 
+%\end{tikzcd}
+%\]
+
+
+\[
+\begin{tikzcd}[remember picture] % see https://tex.stackexchange.com/a/256562/121799
+ & & & 0 &  \\
+0\arrow[r] & \ker{d^i}\arrow[d]\arrow[r] &
+ A^i\arrow[d]\arrow[r] & \Ima {d^{i}}\arrow[r]\arrow[u] & 0\\
+0 \arrow[r] &  H^i(A^*)\arrow[r] & A^i/ \Ima {d^{i-1}}\arrow[ur] & & 
+\end{tikzcd}
+\]
+\tikz[remember picture,overlay]{
+\draw[-] (tikz@f@4-3-1.south west|-tikz@f@4-3-3.south east)
+--(tikz@f@4-3-1.north west|-tikz@f@4-3-3.north)
+--(tikz@f@4-3-3.north) --(tikz@f@4-2-4.west)
+--(tikz@f@4-2-4.west|-tikz@f@4-1-4.north west)
+--(tikz@f@4-2-4.south east|-tikz@f@4-1-4.north east)
+--(tikz@f@4-2-4.south east)
+--(tikz@f@4-3-3.south east)--cycle;
+}
+
+La fila completa sabemos que es exacta.  Además, $H^i(A^*)\to A^i/ \Ima{d^{i-1}}$ es inyectiva pues es la proyección al cociente de una aplicación inyectiva. También se puede ver porque si $[a]=[0]\in  A^i/ \Ima{d^{i-1}}$, entonces $a\in  \Ima{d^{i-1}}$, luego también representa la clase del 0 en la cohomología. Por otra parte, tanto $A^i\to \Ima{d^{i}}$ como $A^i\to A^i/ \Ima{d^{i-1}}$ son sobreyectivas, así que por conmutatividad del diagrama, necesariamente $ A^i/ \Ima{d^{i-1}}\to \Ima{d^{i}}$ es sobreyectiva. Además se tiene la igualdad entre núcleo e imagen trivialmente, con lo que tenemos la exactitud buscada. Entonces, como la sucesión escinde, tomando dimensión $\dim(A^i)-\dim(\Ima{d^{i-1}})=\dim(A^i/\Ima{d^{i-1}})=\dim(H^i(A^ *))+\dim(\Ima{d^i})$. Entonces, sustituyendo 
+\[
+\chi(A^*)=\sum_{i=0}^n(-1)^i\dim(A^i)=\sum_{i=0}^n(-1)^i(\dim(\Ima{d^{i-1}})+\dim(H^i(A^*))+\dim(\Ima{d^i}))=\sum_{i=0}^n\dim(H^i(A^*)).
+\]
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4.5}
+Asociar a dos aplicaciones lineales componibles 
+\[
+f:V_1\to V_2,\quad g:V_2\to V_3
+\]
+una sucesión exacta
+\[
+0\to \ker{f}\to\ker{g\circ f}\to\ker{g}\to\coker{f}\to\coker{g\circ f}\to\coker{g}\to 0.
+\]
+\end{ejercicio}
+\begin{solucion}
+Sea
+\[
+\begin{tikzcd}
+& 0\arrow[d] & 0 \arrow[d] & 0\arrow[d]&\\
+0\arrow[r] & V_1\arrow[d,"f"]\arrow[r,"1\oplus f"] & V_1\oplus V_2\arrow[r, "f-1"] \arrow[d, "(g\circ f)\oplus 1"]& V_2 \arrow[d,"g"]\arrow[r] & 0\\
+0\arrow[r] &V_2\arrow[d]\arrow[r, "g\oplus 1"]& V_3\oplus V_2\arrow[d] \arrow[r, "1-g"]& V_3\arrow[d]\arrow[r] & 0\\
+& 0 & 0 & 0 &
+\end{tikzcd}
+\]
+
+Se comprueba fácilmente que los cuadrados conmutan y que las filas son exactas (incluyendo la inyecticidad de la izquierda y la sobreyectividad de la derecha). De la sucesión exacta larga en cohomología se obtiene el resultado.
+\end{solucion}
+
+\end{document}

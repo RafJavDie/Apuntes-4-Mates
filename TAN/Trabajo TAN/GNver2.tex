@@ -20,11 +20,11 @@
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{coro}[thm]{Corolario}
 \newtheorem{lemma}[thm]{Lemma}
-\newtheorem{prop}[thm]{Proposition}
+\newtheorem{prop}[thm]{Proposición}
 \newtheorem{prob}[thm]{Problema}
 \newtheorem{defi}[thm]{Definición}
 \newtheorem{conj}[thm]{Conjectura}
-\newtheorem{nota}[thm]{Note}
+\newtheorem{nota}[thm]{Nota}
 \newtheorem{ejem}[thm]{Ejemplo}
 \providecommand{\gilb}[1]{\mathcal{G}_{#1}}
 \providecommand{\abs}[1]{\left|{#1}\right|}
@@ -68,7 +68,7 @@ Diego Pedraza López, María de los Remedio Boza Ruíz}
 \end{center}
 
 \begin{quotation}
-\noindent En este trabajo vamos a TAL TAL TAL
+\noindent En este trabajo presentamos la conjetura de Gilbreath sobre las diferencias en valor absoluto de primos consecutivo. Ofrecemos un algoritmo eficiente para comprobar la conjetura. Introducimos una generalización de la conjetura reemplazando la sucesión de primos por una sucesión cualquiera. Ofrecemos un estudio teórico y computacional de la generalización de la conjetura en estas sucesiones.
 \end{quotation}
 
 \vspace{0.1cm}
@@ -92,66 +92,92 @@ Si denotamos $d^k_n$ al $n$-ésimo elemento de la $k$-ésima fila, entonces tenemo
 d^1_n = p_{n+1}-p_n\\
 d^k_n = \abs{d_{n+1}^{k-1}-d_{n}^{k-1}}
 \end{gather*}
+Gilbreath observó que la primera columna de la tabla era siempre el número uno, o en otra palabras, $d^k_1 = 1$ $\forall k \geq 1$. Aunque nunca ha llegado a demostrarse, Andrew Odlyzko comprobó la conjetura hasta $k=10^{13}$ en 1993 \cite{odly}.
 \section{Preliminares}
 
 
 \section{Estudio computacional de la conjetura de Gilbreath}
-Utilizando una idea semejante a la que proporciona Odlyzko en \cite{odly}, programamos en C++ un algoritmo que nos permita comprobar experimentalmente la conjetura. El algoritmo es realmente eficiente, pues en un simple ordenador portatil permite comprobar la conjetura hasta $10^9$
+Utilizando una idea semejante a la que proporciona Odlyzko en \cite{odly}, programamos en C++ un algoritmo que nos permita comprobar experimentalmente la conjetura.
 
-\lstset{language=C++,
-                basicstyle=\ttfamily,
-                keywordstyle=\color{blue}\ttfamily,
-                stringstyle=\color{red}\ttfamily,
-                commentstyle=\color{green}\ttfamily,
-                morecomment=[l][\color{magenta}]{\#}
+La idea se basa en la siguiente observación.
+\begin{lemma}
+Para todo $k$ tal que $d^k_1=1$ y existe $m$ tal que $d^k_n \in \{0,2\}$ para todo $1<n \leq m$, entonces $d^{k+j}_1=1$ para todo $1<j \leq m$.
+\end{lemma}
+\begin{demo}
+Basta observar que $d^{k+1}_1=1$ y $d^{k+1}_n \in \{0,2\}$ para todo $1<n \leq m-1$, pues cada $d^{k+1}_n$ es el valor absoluto de la diferencia de números en $\{0,2\}$. Aplicando esto $m$ veces se demuestra el lema.
+\end{demo}
+
+Por lo tanto, podemos comprobar la conjetura eficientemente buscando filas que, tras el primer $1$, estén formadas por $0$ y $2$. Nuestra comprobación se basa en que la fila $645$ de la tabla tiene esta propiedad hasta una cantidad que aún no hemos encontrado. Este método tiene además la ventaja de que se puede implementar con uso de memoria constante, pues sólo necesitamos guardar en cada paso $645$ números y deshechar los $645$ números del paso anterior. Estos números se corresponden a la diagonal $d^{k+i}_{645-i}$ con $i=0,\dots,644$. Por simplifación, hemos computado previamente la primera diagonal que necesitamos.
+
+Para generar los números primos, hemos usado la librería primesieve \cite{primesieve}. El algoritmo es realmente eficiente, pues en un simple ordenador portátil permite comprobar la conjetura hasta $10^9$. Creemos que con un ordenador más potente podría superarse en poco tiempo la comprobación que Odlyzko hizo en $1993$, especialmente si tuviera una tarjeta gráfica de última generación y adaptando el código para CUDASieve \cite{cudasieve} en lugar de primesieve.
+
+Compilamos el siguiente programa usando `g++ gilbreath.cpp -lprimesieve -o gilbreath'.
+
+\lstset{
+	language=C++,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    commentstyle=\color{green}\ttfamily,
+    morecomment=[l][\color{magenta}]{\#}
+    numberstyle=\ttfamily\tiny\color[gray]{0.2},
+    numbers=left,
+    backgroundcolor=\color{gray!10},
+    frame=single,
+    tabsize=2,
+    rulecolor=\color{black!30},
+    title=\lstname,
+    escapeinside={\%*}{*)},
+    breaklines=true,
+    breakatwhitespace=true,
+    framextopmargin=2pt,
+    framexbottommargin=2pt
 }
 \begin{lstlisting}
 #include <primesieve.hpp>
 #include <iostream>
 #include <vector>
 
+// Número de pasos máximo
+static const long P = pow(10,9);
+
 // Comprueba la conjetura de Gilbreath hasta 10^9
 // usando ideas de Odlyzko
 int main () {
 	// Diagonal 645:
 	std::vector<uint64_t> nums 
-	{4703,12,0,6,4,2,0,2,0,0,2,2,0,4,2,0,0,2,2,
-	2,0,0,0,2,0,0,0,2,0,2,2,2,2,2,0,0,0,2,0,0,
-	0,2,0,2,2,2,2,0,0,2,2,0,0,0,0,0,0,2,2,2,2,
-	2,0,0,2,2,0,0,2,0,0,2,2,2,0,0,2,0,0,0,2,2,
-	2,2,0,0,2,0,2,0,0,0,0,2,0,0,2,0,0,0,2,2,2,
-	2,0,2,2,2,2,0,2,2,2,0,2,2,2,2,2,2,2,0,0,2,
-	2,2,2,0,0,2,2,2,2,2,2,2,0,0,0,2,2,0,2,0,2,
-	2,2,0,2,0,2,0,0,2,0,0,0,2,0,0,2,2,2,2,2,0,
-	0,0,0,2,2,0,0,2,0,2,0,2,2,2,2,0,2,0,2,0,0,
-	0,2,0,2,2,0,0,0,0,2,2,2,0,2,0,2,2,2,2,0,0,
-	2,0,2,0,0,2,0,0,0,0,0,0,2,0,2,2,2,2,2,2,2,
-	2,0,2,2,0,0,0,2,2,0,0,2,0,0,2,0,2,0,0,0,0,
-	2,0,2,2,0,0,2,0,2,2,0,0,2,2,2,0,2,0,2,2,0,
-	2,2,0,2,2,2,2,2,2,0,0,2,2,2,0,0,0,2,0,2,0,
-	0,2,2,2,2,0,0,2,2,2,0,0,2,2,0,0,0,2,2,2,0,
-	0,0,2,0,2,2,2,0,2,0,0,2,0,0,2,0,0,2,0,0,0,
-	2,0,0,2,0,2,0,0,2,0,0,0,2,0,0,0,2,2,2,2,0,
-	0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,2,0,2,2,2,2,
-	2,0,2,0,0,2,0,0,0,0,2,0,0,2,0,0,0,2,2,2,2,
-	2,2,0,2,0,0,0,0,0,2,2,0,2,2,0,2,2,0,2,0,0,
-	2,0,0,0,2,2,2,2,0,2,0,0,0,2,2,2,2,2,2,0,2,
-	2,2,2,2,2,0,2,2,0,2,2,0,0,0,2,2,0,0,2,0,2,
-	2,0,0,0,0,2,2,0,0,0,2,0,0,2,2,0,0,2,0,2,2,
-	0,2,0,0,0,0,0,2,0,2,0,0,0,2,0,2,0,2,0,2,0,
-	2,2,2,0,0,2,0,0,0,0,2,0,0,0,0,0,2,0,2,0,0,
-	0,0,0,2,2,2,0,2,0,0,2,2,0,2,0,0,0,0,0,0,0,
-	0,2,2,2,2,2,2,2,2,0,0,0,2,2,2,0,2,2,0,0,0,
-	2,0,2,2,0,2,2,0,2,2,0,2,0,0,2,2,2,2,0,0,0,
-	0,2,0,0,0,2,2,0,2,0,0,0,2,0,2,2,2,2,0,2,2,
-	0,2,0,0,0,0,0,0,0,2,2,2,2,0,0,0,2,2,0,2,2,
-	0,2,2,0,0,0,1};
+	{4703,12,0,6,4,2,0,2,0,0,2,2,0,4,2,0,0,2,2,2,0,0,
+	0,2,0,0,0,2,0,2,2,2,2,2,0,0,0,2,0,0,0,2,0,2,2,2,2,
+	0,0,2,2,0,0,0,0,0,0,2,2,2,2,2,0,0,2,2,0,0,2,0,0,2,
+	2,2,0,0,2,0,0,0,2,2,2,2,0,0,2,0,2,0,0,0,0,2,0,0,2,
+	0,0,0,2,2,2,2,0,2,2,2,2,0,2,2,2,0,2,2,2,2,2,2,2,0,
+	0,2,2,2,2,0,0,2,2,2,2,2,2,2,0,0,0,2,2,0,2,0,2,2,2,
+	0,2,0,2,0,0,2,0,0,0,2,0,0,2,2,2,2,2,0,0,0,0,2,2,0,
+	0,2,0,2,0,2,2,2,2,0,2,0,2,0,0,0,2,0,2,2,0,0,0,0,2,
+	2,2,0,2,0,2,2,2,2,0,0,2,0,2,0,0,2,0,0,0,0,0,0,2,0,
+	2,2,2,2,2,2,2,2,0,2,2,0,0,0,2,2,0,0,2,0,0,2,0,2,0,
+	0,0,0,2,0,2,2,0,0,2,0,2,2,0,0,2,2,2,0,2,0,2,2,0,2,
+	2,0,2,2,2,2,2,2,0,0,2,2,2,0,0,0,2,0,2,0,0,2,2,2,2,
+	0,0,2,2,2,0,0,2,2,0,0,0,2,2,2,0,0,0,2,0,2,2,2,0,2,
+	0,0,2,0,0,2,0,0,2,0,0,0,2,0,0,2,0,2,0,0,2,0,0,0,2,
+	0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,2,0,
+	2,2,2,2,2,0,2,0,0,2,0,0,0,0,2,0,0,2,0,0,0,2,2,2,2,
+	2,2,0,2,0,0,0,0,0,2,2,0,2,2,0,2,2,0,2,0,0,2,0,0,0,
+	2,2,2,2,0,2,0,0,0,2,2,2,2,2,2,0,2,2,2,2,2,2,0,2,2,
+	0,2,2,0,0,0,2,2,0,0,2,0,2,2,0,0,0,0,2,2,0,0,0,2,0,
+	0,2,2,0,0,2,0,2,2,0,2,0,0,0,0,0,2,0,2,0,0,0,2,0,2,
+	0,2,0,2,0,2,2,2,0,0,2,0,0,0,0,2,0,0,0,0,0,2,0,2,0,
+	0,0,0,0,2,2,2,0,2,0,0,2,2,0,2,0,0,0,0,0,0,0,0,2,2,
+	2,2,2,2,2,2,0,0,0,2,2,2,0,2,2,0,0,0,2,0,2,2,0,2,2,
+	0,2,2,0,2,0,0,2,2,2,2,0,0,0,0,2,0,0,0,2,2,0,2,0,0,
+	0,2,0,2,2,2,2,0,2,2,0,2,0,0,0,0,0,0,0,2,2,2,2,0,0,
+	0,2,2,0,2,2,0,2,2,0,0,0,1};
 
 uint64_t nexto;
 primesieve::iterator it;
 it.skipto(4704);
 uint64_t tempo;
-for (long p = 0; p < 2*pow(10,8); ++p) {
+for (long p = 0; p < P; ++p) {
 	nexto = it.next_prime();
 	
 	for (int i = 0; i < 635; ++i) {
@@ -166,18 +192,7 @@ for (long p = 0; p < 2*pow(10,8); ++p) {
 		tempo = abs(nexto-nums[i]);
 		nums[i] = nexto;
 		nexto = tempo;
-		tempo = abs(nexto-nums[++i]);
-		nums[i] = nexto;
-		nexto = tempo;
-		tempo = abs(nexto-nums[++i]);
-		nums[i] = nexto;
-		nexto = tempo;
-		tempo = abs(nexto-nums[++i]);
-		nums[i] = nexto;
-		nexto = tempo;
-		tempo = abs(nexto-nums[++i]);
-		nums[i] = nexto;
-		nexto = tempo;	}
+	}
 		
 	if (nums[634] != 0 && nums[634] != 2) {
 		std::cout << "Contraejemplo en Paso"
@@ -185,7 +200,7 @@ for (long p = 0; p < 2*pow(10,8); ++p) {
 		return 0;
 	}
 }
-std::cout<<"CIERTO"<<std::endl;
+std::cout << "Conjetura cierta hasta " << P << '.' << std::endl;
 }
 \end{lstlisting}
 
@@ -297,7 +312,6 @@ El conjunto de las sucesioens de Gilbreath con el orden anterior tiene un mínimo
 \item $\{M_n\}_{n\in \N}$ es la sucesión $M_n = 2^{n-1}+1$ $\forall  n\geq 1$.
 \end{itemize}
 \end{prop}
-\newpage
 \begin{demo}
 Como las sucesiones de Gilbreath están formadas por impares para $n\geq 2$ y son crecientes, si $\{m_n\}$ es una sucesión de Gilbreath, entonces ha de ser forzosamente la menor. Pero esto es evidente pues $d^1_1 = 1$ y $d_n^1 = 2$ $\forall n \geq 2$, por tanto $d^2_1 = 1$ y $d^2_n = 0$ $\forall n \geq 2$, de donde se tiene trivialmente que $d^k_1 = 1$ $\forall k \geq 1$.
 
@@ -314,17 +328,37 @@ d_{p-1}^1 &= 2^n+1+s-2^{n-1}-1 = 2^{n-1}(2-1) = 2^{n-1}+s
 \end{align*}
 Por inducción llegamos a que $d^k_{p-k} = 2^{p-k-1}+s$, por lo que $d^{p-1}_1 = 2^0 +s = 1+s >1$.
 \end{demo}
-\begin{prop}
+\begin{conj}
 Sea $S$ una sucesión finita de Gilbreath con índice hasta $m$. Entonces
 $$ s_m + 2 \in \mathcal{G}_S $$
-\end{prop}
-\begin{demo}
-Es evidente, pues $d^k_{m-k} = 0$.
-\end{demo}
+\end{conj}
 \begin{conj}
 Sea $S$ una sucesión finita de Gilbreath con 3 o más términos y sea $2n+1$ su último término. Entonces $\exists m \in \N$, $m\geq n+1$ tal que 
 $$\gilb{S} = \{2s+1\mid s \in \N,\; n+1\leq s \leq m\}$$
+Es decir, $\gilb{S}$ es un conjunto de impares consecutivos. 
 \end{conj}
+\begin{prop}
+Sean $\{m_n\}$ la menor sucesión de Gilbreath en el sentido de la Proposición $3.6$. Entonces si $n\geq 3$
+$$
+\gilb{m_n} = \{2n+1,2n+3\}$$
+\end{prop}
+\begin{demo}
+Solo podemos dar una demostración para el primer apartado. Por la construcción $m_n$, sabemos que ${2n+1}\in\gilb{m_n}$. Si tomamos como siguiente término $2n+3$ es fácil ver, a partir de las consideraciones hechas en la Demostración 3.7, que la última diagonal será de la forma $d_n^1=4$ y $d_{n-i+1}^i=2$ si $2\leq i \leq n-1$, por lo que $d_1^n = |1-2| = 1$.
+
+Análogamente, si el último término es $2n+3+2k$ con $k>0$ entonces $d_n^1 = 4+2k$, $d_{n-i+1}^i=2(k+1)$ si $2\leq i \leq n-1$, luego $d_n^1 = 1+2k>1$.
+\end{demo}
+\begin{conj}
+Sean $\{M_n\}$ la mayor sucesión de Gilbreath en el sentido de la Proposición $3.6$. Entonces si $n\geq 3$
+$$
+ \gilb{M_n} = \{2^{n-1}+1+2k \mid 1\leq k \leq 2^{n-2}\}
+$$
+\end{conj}
+\begin{nota}
+Si las Conjeturas 3.8 y 3.10 son ciertas, el resultado se tendría de manera trivial.
+\end{nota}
+\begin{nota}
+Equivalentemente, las Conjeturas 3.8 y 3.10 nos permiten determinar $\gilb{S}$ a partir de su cardinal. 
+\end{nota}
 \begin{defi}
 Sea $S_k=\{p_n\}_{n\in \N_k}$ la sucesión finita de los primeros $k$ primos. Definimos la sucesión $\{Q_n\}_{n\in\N}$ como $Q_1=2$, $Q_2=3$, y $Q_k=\max \gilb{S_k}$. 
 Los primero valores de la sucesión son 
@@ -349,13 +383,86 @@ Sea $p_n$ un primo tal que $p_{n-1}=p_n-2$. Entonces existen infinitos $n$ tales
 \begin{nota}
 Hemos comprobado computacionalmente el resultado hasta $n=100$ y solo no se verifica en con dos primos gemelos. Además, $Q_n$ también decrece en otros valores no relacionados con los primos gemelos.
 \end{nota}
+\begin{nota}
+Esta propiedad no parece ser algo intrínseco a los primos gemelos. En los casos estudiados, definiendo análogamente la sucesión $Q_n$ para una sucesión de Gilbreath cualquiera, parecen tener un comportamiento similar cuando $a_n = a_{n-1}+2$ suele decrecer igual que ocurre con los primos gemelos, en comparación a cuando no se escoge $a_{n-1}+2$.
+\end{nota}
 \subsection{Estudio probabilístico}
+En esta sección vamos a interesarnos por secuencias $a_n$ de longitud $N$ grande cuya distribución de saltos $a_{n+1}-a_n$ se asemeja a la distribución de saltos de $p_{n+1}-p_n$.
+Para ello, tomamos $a_1=2$ y $a_2=3$ y para cada $a_n$ con $n\geq 3$, elegimos un salto $s$ aleatorio entre primos de una lista de $N$ primos y asignamos $a_n=a_{n-1}+s$.
 
+\lstset{
+	language=C++,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    commentstyle=\color{green}\ttfamily,
+    morecomment=[l][\color{magenta}]{\#}
+    numberstyle=\ttfamily\tiny\color[gray]{0.2},
+    numbers=left,
+    backgroundcolor=\color{gray!10},
+    frame=single,
+    tabsize=2,
+    rulecolor=\color{black!30},
+    title=\lstname,
+    escapeinside={\%*}{*)},
+    breaklines=true,
+    breakatwhitespace=true,
+    framextopmargin=2pt,
+    framexbottommargin=2pt
+}
+\begin{lstlisting}
+#include <iostream>
+#include <random>
+#include <map>
+#include <primesieve.hpp>
 
+const int N = 1500-2; // tamaño de listas
+const int Nexperimentos = 10000;   // Número de experimentos
+bool es_gilbreath(std::vector<int> seq);
+
+int main() {
+	std::vector<int> primos;
+	primos.reserve(N);
+	primesieve::generate_n_primes(N, 0, &primos);
+	std::default_random_engine generator;
+	std::uniform_int_distribution<int> distribution(1,N-1);
+	int exitos = 0;
+	for (int k=0; k < Nexperimentos; ++k) {
+		std::vector<int> seq = {2,3};
+		seq.reserve(N+seq.size());
+		for (int i=0; i<N; ++i) {
+			int n = distribution(generator);
+			int salto = primos[n]-primos[n-1];
+			seq.push_back(seq.back()+salto);
+		}
+		if (es_gilbreath(seq))
+			++exitos;
+	}
+
+	std::cout<< exitos << '/' << Nexperimentos << std::endl;
+	return 0;
+}
+
+bool es_gilbreath(std::vector<int> seq) {
+	for (int i = 0; i < N; ++i) {
+		for (int j = 0; j < N-i-1; ++j)
+			seq[j] = abs(seq[j]-seq[j+1]);
+		if (seq[0] != 1)
+			return false;
+	}
+	return true;
+}
+\end{lstlisting}
+
+Ejecutando el anterior programa obtenemos que la probabilidad de obtener una sucesón de Gilbreath que sigue la misma distribución de saltos que la sucesión de primos es $0.23$\%. Si en lugar de partir de $\{2,3\}$ partimos de $\{2,3,5\}$ la probabilidad aumenta a $1.39$\%. Si tomamos los primeros $4$ primos, la probabilidad se vuelve $2.07$\%. Resulta destacable que los saltos de los primeros números primos son a la vez improbables en su distribución y necesarios para que la sucesión sea de Gilbreath. 
 \newpage
 
 
 \begin{thebibliography}{99}
+
+\bibitem{primesieve} Walisch, K. (2010-2018). Primesieve (Versión 6.4). Disponible en \url{http://primesieve.org/}
+
+\bibitem{cudasieve} Seizert, C. (2016). CUDASieve. Disponible en \url{https://github.com/curtisseizert/CUDASieve/}
 
 \bibitem{odly}  Odlyzko, A. (1993). Iterated Absolute Values of Differences of Consecutive Primes. Mathematics of Computation, 61(203), 373-380. doi:10.2307/2152962
 

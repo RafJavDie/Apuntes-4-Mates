@@ -1,0 +1,419 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{3.3.1}
+In diagram (3) in the text, prove carefully that $F = π_m \circ\,i$ and $i(k^m) = V$.
+\end{ejercicio}
+\begin{solucion}
+Dado $(t_1,\dots, t_m)\in k^m$
+\[
+\pi_m\circ i(t_1,\dots, t_m)=\pi_m(t_1,\dots, t_m, f_1(t_1,\dots, t_m),\dots, f_n(t_1,\dots, t_m))=
+\]
+\[
+(f_1(t_1,\dots, t_m),\dots, f_n(t_1,\dots, t_m))=F(t_1,\dots, t_m).
+\]
+En las ecuaciones anteriores tenemos $i(t_1,\dots, t_m)=(t_1,\dots, t_m, f_1(t_1,\dots, t_m),\dots, f_n(t_1,\dots, t_m))$, que son justamente los puntos de $V$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3.3.2}
+When $k = \C$, the conclusion of Theorem 1 can be strengthened. Namely, one can show
+that there is a variety $W \subsetneq \V(I_m)$ such that $\V(I_m) \setminus W ⊆ F(\C^m)$. Prove this using the
+Closure Theorem.
+\end{ejercicio}
+\begin{solucion}
+Como $F(\C^m)=\pi_m(V)$ por el Ejercicio \ref{ejer:3.3.1}, usando el teorema de la clausura (ii) tenemos el resultado. 
+
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.3}
+Give an example to show that Exercise \ref{ejer:3.3.2} is false over $\R$. Hint: $t^2$ is always positive.
+\end{ejercicio}
+\begin{solucion}
+ Consideremos $F:\R\to \R$ dada por $t\mapsto t^2$. $F(\R)=\R_+$. Si consideramos el ideal $I=\gene{x-t^2}\subset \R[t,x]$, lo tenemos expresado con una base de Gröbner. Entonces, $I_1=I\cap k[x]=\{0\}$, por lo que $\V(I_1)=\R$. Los conjuntos algebraicos de $\R$ son los conjuntos finitos y el total, por lo que no es posible encontrar $W\subsetneq\R$ de modo que $\R\setminus W\subseteq \R_+$. 
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.4}
+In the text, we proved that over $\C$, the tangent surface to the twisted cubic is defined by 	the equation
+\[g_7 = x^3z − (3/4)x^2y^2 − (3/2)xyz + y^3 + (1/4)z^2 = 0.\]
+We want to show that the same is true over $\R$. If $(x, y, z)$ is a real solution of the above
+equation, then we proved (using the Extension Theorem) that there are $t, u ∈ \C$ such that
+\begin{align*}
+&x = t + u,\\
+&y = t^2 + 2tu,\\
+&z = t^3 + 3t^2u.
+\end{align*}
+Use the Gröbner basis given in the text to show that $t$ and $u$ are real. This will prove that
+$(x, y, z)$ is on the tangent surface in $\R^3$. Hint: First show that $u$ is real.
+\end{ejercicio}
+\begin{solucion}\
+Utilizamos la base de Gröbner que se da en el texto. Sea una solución $(x,y,z)\in \R^3 \subset \C^3$, sabemos que existen $t,u\in \C$ tal que $(t,u,x,y,z) \in \V(I)$. Por tanto, esta tripleta anula la base de Gröbner y de $g_3$ deducimos
+$$
+0 = u(x^2-y) -x^3 +(3/2)xy -(1/2)z
+$$
+Si $x^2-y=0$, por $g_2$ tenemos que $u^2 = 0$, luego $u=0\in \R$. En otro caso,
+$$
+u = \frac{x^3 -(3/2)xy + (1/2)z}{x^2-y}
+$$
+Por lo que $u \in \R$. Por $g_1$, tenemos que $t=x-u$, por lo que $t\in \R$.
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.5}
+In the parametrization of the tangent surface of the twisted cubic, show that the parameters
+$t$ and $u$ are uniquely determined by $x$, $y$, and $z$. Hint: The argument is similar to what
+you did in Exercise \ref{ejer:3.3.4}.
+\end{ejercicio}
+\begin{solucion}
+Efectivamente, dados $(x,y,z)$ siguiente el argumento del ejercicio anterior obtenmos los $t,u$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3.3.6}
+Let $S$ be the parametric surface defined by
+\begin{align*}
+&x = uv,\\
+&y = u^2,\\
+&z = v^2.
+\end{align*}
+\begin{enumerate}[a.]
+\item Find the equation of the smallest variety $V$ that contains $S$.
+\item Over $\C$, use the Extension Theorem to prove that $S = V$. Hint: The argument is
+similar to what we did for the tangent surface of the twisted cubic.
+\item Over $\R$, show that $S$ only covers “half” of $V$. What parametrization would cover the
+other “half”?
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Con SAGE obtenemos la base de Gröbner $(u>v>x>y>z)$
+$$
+G=\{v^2 - z, uz - vx, u^2 - y, x^2 - yz, uv - x, ux - vy\}
+$$
+Luego la ecuación es $x^2-yz$.
+\item Tenemos que que $I_1 = \{v^2-z,x^2-yz\}$. Como el primer polinomio tiene coeficiente constante en la mayor potencia de $v$, tenemos que por el Teorema de Extensión cualquier solución $(x,y,z)\in \V(I_1)$ se extiende a una solución $(v,x,y,z)\in \V(I)$. Análogamente, tenemos que los coeficientes líderes de las mayores potencias de $u$ definen la variedad
+$$
+\V(0,z,1,0,v,y) = \emptyset
+$$
+de donde se deduce el resultado volviendo a aplicar el Teorema de Extensión.
+\item Sobre $\R$ no cubre valores negativos de $y$ ni de $z$, cosa que en $\C$ sí. Para la otra mitad simplemente deberíamos parametrizar
+\begin{align*}
+&x = uv,\\
+&y = -u^2,\\
+&z = -v^2.
+\end{align*}
+Esto es suficiente pues, al ser $x^2=yz$, necesitamos que el producto $yz>0$. 
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{3.3.7}
+Let $S$ be the parametric surface
+\[x = uv,\]
+\[y = uv^2,\]
+\[z = u^2.\]
+\begin{enumerate}[a.]
+\item Find the equation of the smallest variety $V$ that contains $S$.
+\item Over $\C$, show that $V$ contains points which are not on $S$. Determine exactly which
+points of $V$ are not on $S$. Hint: Use lexicographic order with $u > v > x > y > z$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Con el orden indicado en el enunciado encontramos la base de Gröbner
+\[
+\{u^2 - z, uv - x, ux - vz, uy - x^2, v^2z - x^2, vx - y, vyz - x^3, x^4 - y^2z\}
+\]
+así que la ecuación es $x^4-y^2z=0$. 
+\item Usamos el teorema de Extensión reiteradamente. Una solución $(x,y,z)\in\V(x^4-y^2z)=\V(I_2)$ se extiende a $(v,x,y,z)\in \V(I_1)$ siempre que $(x,y,z)\notin\V(z,x,yz)=\V(z,x)$, es decir, siempre que no se verifique $x=z=0$. Por último, una solución $(v,x,y,z)\in\V(I_1)$ se extiende a una solución $(u,v,x,y,z)\in\V(I)$ siempre pues $u^2$ tiene un coeficiente constante. 
+
+Veamos qué ocurre en los puntos de la forma $x=z=0$. En la parametrización si $z=0$ entonces $u^2=0$, luego $u=0$ y por tanto $x=y=z=0$. Sin embargo, en $x^4-y^2z = 0$, el eje Y está contenido dentro. Estos son los puntos que faltaban (salvo el origen que ya estaba).
+\end{enumerate}
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.8}
+The Enneper surface is defined parametrically by
+\[x = 3u + 3uv^2 − u^3,\]
+\[y = 3v + 3u^2v − v^3,\]
+\[z = 3u^2 − 3v^2.\]
+\begin{enumerate}[a.]
+\item Find the equation of the smallest variety $V$ containing the Enneper surface. It will be
+a very complicated equation!
+\item  Over $\C$, use the Extension Theorem to prove that the above equations parametrize
+the entire surface $V$. Hint: There are a lot of polynomials in the Gröbner basis. Keep
+looking—you will find what you need.
+\end{enumerate}
+
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Hay 15 polinomios muy largos en la base de Gröbner así que solo vamos a escribir el que nos da la ecuación
+\begin{gather*}
+x^6 + 3x^4y^2 - 1/9x^4z^3 + 3x^4z - 54x^4 + 3x^2y^4 - 2/9x^2y^2z^3 + 6x^2y^2z + 324x^2y^2\\
+ + 1/243x^2z^6 - 5/9x^2z^4 + 9x^2z^2 +729x^2 + y^6 - 1/9y^4z^3 + 3y^4z - 54y^4 + 1/243y^2z^6\\ 
+ - 5/9y^2z^4  + 9y^2z^2  + 729y^2 - 1/19683z^9 + 4/243z^7 - 2z^5 + 108z^3 - 2187z
+\end{gather*}
+\item Entre todos esos polinomios podemos encontrar coeficientes constantes en las máximas potencias de $u$ y de $v$ por lo que siempre podemos extender todas las soluciones, lo cual prueba que la parametrización cubre todo $V$ en $\C$. 
+\end{enumerate}
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.9}
+The Whitney umbrella surface is given parametrically by
+\[x = uv,\]
+\[y = v,\]
+\[z = u^2.\]
+\begin{enumerate}[a.]
+\item Find the equation of the smallest variety containing the Whitney umbrella.
+\item Show that the parametrization fills up the variety over $\C$ but not over $\R$. Over $\R$,
+exactly what points are omitted?
+\item Show that the parameters $u$ and $v$ are not always uniquely determined by $x$, $y$, and $z$.
+Find the points where uniqueness fails and explain how your answer relates to the
+picture.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a.]
+\item Tenemos la base de Gröbner 
+\[
+I =\gene{u^2 - z, ux - yz, uy - x, v - y, x^2 - y^2z}
+\]
+por lo que la ecuación es $x^2-y^2z$. 
+\item En $\C$, por el teorema de extensión primero podemos encontrar el parámetro $v$ por tener $v$ coeficiente constante y a continuación podemos encontrar $u$ por tener $u^2$ coeficiente constante. 
+
+En el caso de $\R$ hagamos la siguiente consideración. Sea $(x,y,z)\in \R^3$ tal que $x^2-y^2z=0$. Sabemos que existen $(u,v)\in\C^2$ tales que $(u,v,x,y,z)\in \V(I)$. Por la ecuación $v-y=0$ tenemos que si $y\in \R$ entonces $v\in \R$. Además, si $y\neq 0$ entonces $u=x/y\in \R$. Si $y=0$ pero $x\neq 0$ entonces $u=0$. Finalmente, si $y=v=x=0$, tenemos que todas las ecuaciones se verifican trivialmente, salvo $u^2=z$. Si $z<0$ entonces $u \notin \R$ pero es claro que todo punto $(0,0,z)$ con $z<0$ verifica $x^2-y^2z=0$.
+
+\item Tenemos $v$ siempre está determinado, pues tenemos que $v-y=0$. En general, $uy-x$ va a determinar también $u$ de manera unívoca, a menos que $y=0$. Ese caso tenemos las siguientes realciones sobre $u$:
+$$
+u^2 = z \qquad ux = 0
+$$
+Luego, si $x\neq 0$, $u$ también estará univocamente determinado. Por tanto, solo en el caso $x=y=0$ entonces tenemos 2 posibles valores para $u$.
+\end{enumerate}
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.10}
+Consider the curve in $\C^n$ parametrized by $x_i = f_i(t)$, where $f_1,\dots , f_n$ are polynomials in
+$\C[t]$. This gives the ideal
+\[I = 
+\gene{x_1 − f_1(t), \dots , x_n − f_n(t)} ⊆ \C[t, x_1, \dots , x_n].\]
+\begin{enumerate}[a.]
+\item Prove that the parametric equations fill up all of the variety $\V(I_1) ⊆ \C^n$.
+\item Show that the conclusion of part (a) may fail if we let $f_1,\dots  , f_n$ be rational functions.
+Hint: See §3 of Chapter 1.
+\item Even if all of the $f_i$’s are polynomials, show that the conclusion of part (a) may fail if
+we work over $\R$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Distingamos dos casos
+\begin{itemize}
+\item Si $f_i(t)=k_i$, $k_i$ constante, para todo $i=1,\dotsc,n$, entonces es trivial que ocurre, pues $\V(I)=\{(k_1,\dotsc,k_n)\}$.
+\item Si no se verifica lo anterior, $\exists f_i$ no constante. Por tanto, siguiendo la notación del Teorema de Extensión, $c_i$ sí es una constante no nula, por lo que $\V(c_1,\dotsc,c_n) = \emptyset$, de donde se sigue trivialmente el resultado.
+\end{itemize}
+\item Efectivamente puede fallar. Consideremos la parametrización para todo $t\in \C\setminus \{\pm i\}$
+\begin{align*}
+x&= \frac{1-t^2}{1+t^2}\\ 
+y&= \frac{2t}{1+t^2}
+\end{align*}
+Consideramos una base de Gröbner de esta parametrización y obtenemos una base de Gröbner
+$$
+G=\{tx + t - y, x^2 + y^2 - 1, s - 1/2x + 1/4y^2 - 1/2, ty + x - 1\}
+$$
+Luego $I_1 = \gene{x^2+y^2 -1}$. Obviamente, el punto $(-1,0)\in \V(I_1)$ pero si $x=-1$ entonces
+$$
+-1 = \frac{1-t^2}{1+t^2} \Leftrightarrow -1 -t^2 = 1 -t^2 \Leftrightarrow 1 = -1
+$$
+Es decir, no tiene solución.
+\item La parametrización $x=y=t^2$ induce la base de Gröbner $\{x-y,y-t^2\}$. Por tanto $\V(I_1) = \{(a,a)\mid a \in \R\}$. Sin embargo, es claro que la parametrización solo cubre la mitad.
+\end{enumerate}
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.11}
+This problem is concerned with the proof of Theorem 2.
+\begin{enumerate}[a.]
+\item Take $h ∈ k[x_1, \dots , x_n$] and let $f_i$, $g_i$ be as in the theorem with $g = g_1 \cdots g_n$. Show
+that if $N$ is sufficiently large, then there is $F ∈ k[t_1, \dots , t_m, x_1, \dots , x_n]$ such that
+$g^Nh = F(t_1, \dots , t_m, g_1x_1, \dots , g_nx_n)$.
+\item Divide $F$ from part (a) by $x_1 − f_1, \dots , x_n − f_n$. Then, in this division, replace $x_i$ with
+$g_ix_i$ to obtain (10).
+\item Let $k$ be an infinite field and let $f , g ∈ k[t_1, \dots , t_m]$. Assume that $g \neq 0$ and that $f$
+vanishes on $k^m \setminus \V(g)$. Prove that $f$ is the zero polynomial. Hint: Consider $fg$.
+\item Complete the proof of Theorem 2 using ideas from the proof of Theorem 1.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Basta tomar $N = |multideg(h)|$. Damos un ejemplo. Si $h=x^2z+y^3+z+1$ entonces 
+$$g^3h = g^3x^2z+g^3y^3+g^3z+g^3 = g_1g_2^3g_3^2(g_1x)^2(g_3z)+g_1^3g_3^3(g_2y)^3+g_1^3g_2^3g_3^2(g_3z)+g^3
+$$
+\item Si renombramos $y_i = g_ix_i$ y consideramos el orden lexicográfico dado por $$t_1 > \dotsc > t_m  > y_1 > \dotsc > y_n$$
+entonces es claro que podemos dividir por $\{y-f_i\}$ y obtener
+$$
+g^Nh = q_1(y_1 - f_1) + \dotsc q_n(y_n-f_n) + r
+$$
+Además, $r$ no es divisible por ningún $y_i$, luego solo depende de $(t_1,\dotsc,t_m)$. Deshaciendo el cambio tenemos el resultado.
+\item Si consideramos $fg$, es claro que $fg(t_1,\dotsc,t_m)=0$ para todo $(t_1,\dotsc,t_m)\in k^m$. Por tanto $fg$ es el polinomio $0$. Tenemos que $fg=0$ y $g\neq 0$. Como $k[t_1,\dotsc,t_m]$ es dominio, tenemos que $f$ es el polinomio cero.
+\item Sustituyendo en un $a=(a_1,\dotsc,a_m)\in k^m$ arbitrario comprobamos que $r(t_1,\dotsc,t_m)$ es el polinomio 0. Por tanto
+$$g^Nh= q_1(g_1x_1 - f_1) + \dotsc +  q_n(g_nx_n-f_n)  \in \gene{g_1x_1 -f_1,\dotsc,g_nx_n-x_n}
+$$
+Utilizamos que 
+\begin{align*}
+h &= g^Ny^N h - h(1-g^Ny^N)\\
+&= y^N(g^Nh)+h(1+gy+\dotsc+g^{N-1}y^{N-1})(1-gy)\\
+&=y^Nq_1(g_1x_1 - f_1) + \dotsc + y^Nq_n(g_nx_n-f_n) + hp(g,y)(1-gy)
+\end{align*}
+Tomando $p(g,y)=1+gy+\dotsc+g^{N-1}y^{N-1}$, es claro que $h$ pertenece al ideal generado $\gene{g_1x_1-f_1,\dotsc,g_nx_n-f_n,1-gy}$
+\end{enumerate}
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.12}
+Consider the parametrization (6) given in the text. For simplicity, let $k = \C$. Also let
+$I = 
+\gene{vx − u^2, uy − v^2, z − u}$ be the ideal obtained by “clearing denominators.”
+\begin{enumerate}[a.]
+\item Show that $I_2 = 
+\gene{z(x^2y − z^3)}$.
+\item Show that the smallest variety in $\C^5$ containing $i(\C^2 \setminus W)$ [see diagram (8)] is the
+variety $\V(vx − u^2, uy − v^2, z − u, x^2y − z^3, vz − xy)$. Hint: Show that $i(\C^2 \setminus W) = π_1(\V(J))$, and then use the Closure Theorem.
+\item Show that $\{(0, 0, x, y, 0) \mid  x, y ∈ \C\} ⊆ \V(I)$ and conclude that $\V(I)$ is not the
+smallest variety containing $i(\C^2 \setminus W)$.
+\item Determine exactly which portion of $x^2y = z^3$ is parametrized by (6).
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Con SAGE calculamos una base de Gröbner de $I$ y obtenemos
+$$
+G=\{v^2 - yz, x^2yz - z^4, u - z, vx - z^2, vz^2 - xyz \}
+$$
+de donde se deduce trivialmente el resultado con el Teorema de Eliminación.
+\item En este caso $W=\V(uv)$. Probemos la igualdad del enunciado. Es claro que $\forall (u,v)\in \C^2\setminus W$
+$$
+j(u,v)=\left(\frac{1}{uv},u,v,\frac{u^2}{v},\frac{v^2}{u},u\right) \in \V(J)
+$$
+Por tanto, aplicando $\pi_1$ tenemos que $\pi_1(j(u,v))=i(u,v)\in π_1(\V(J))$. Para la inclusión recíproca, supongamos que $(u,v,x,y,z)\in \pi_1(\V(J))$. Por definición $\exists h\in \C$ tales que $(h,u,v,x,y,z) \in \V(J)$ y verificando $huv=1$. Por tanto $uv\neq 0$ y $(u,v)\notin \V(uv)$. Por tanto, $(u,v,x,y,z)\in i(\C^2\setminus W)$.
+
+Sabemos que $\V(J_1)$ es la menor variedad de $\C^5$ que contiene a $\pi_1(\V(J))=i(\C^2\setminus W)$. Aclaremos que $J_1$ viene dado por
+$$
+J_1 = \{u - z, vz - xy, v^2 - yz, vx - z^2, x^2y - z^3\}
+$$
+Que es precisamente el ideal del enunciado.
+
+\item Sea $Q$ la variedad del enunciado, la contención es inmediata, pues basta sustituir $(u,v,x,y,z,)\to(0,0,x,y,0)$. El hecho por el cuál $\V(I)$ no es la menor variedad que contiene es debido a que $Q\cap \V(J_1) = \V(xy)$, es decir, es $\V(I)$ hay más puntos que en $\V(J_1)$, que también contiene a $W$.
+\item Están cubiertos los puntos donde $y\neq 0$ o $x\neq 0$, ya que $y=0$ implica $v=0$, con lo que $x=\frac{u^2}{v}$ no está definido, y similarmente si $x=0$ entonces $u=0$, haciendo imposible definir $y=\frac{v^2}{u}$. Sin embargo es claro que lo puntos de la forma $(x,0,0)$ y $(0,y,0)$ están en la variedad para todo $x,y\in\C$. Cualquier otro punto es posible despejarlo por lo que estos son todos los puntos que faltan.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3.3.13}
+Given a rational parametrization as in (7), there is one case where the naive ideal $I =
+\gene{g_1x_1 − f_1, \dots , g_nx_n − f_n}$ obtained by “clearing denominators” gives the right answer.
+Suppose that $x_i = f_i(t)/g_i(t)$ where there is only one parameter $t$.We can assume that for
+each $i$, $f_i(t)$ and $g_i(t)$ are relatively prime in $k[t]$ (so in particular, they have no common
+roots). If $I ⊆ k[t, x_1, \dots , x_n]$ is as above, then prove that $\V(I_1)$ is the smallest variety
+containing $F(k \setminus W)$, where as usual $g = g_1 \cdots g_n ∈ k[t]$ and $W = \V(g) ⊆ k$. Hint: In
+diagram (8), show that $i(k \setminus W) = \V(I)$, and adapt the proof of Theorem 2.
+\end{ejercicio}
+\begin{solucion}
+Comencemos probando que $i(k\setminus W)=\V(I)$. Para la inclusión no trivial consideremos $(t,x_1,\dotsc,x_n)\in \V(I)$. Tenemos que probar que $t\in k \setminus W$. Sabemos que se verifica $g_i(t)x_i = f_i(t)$. Si $g_i(t) = 0$ entonces $f_i(t)=0$ y tendrían raíces en común. Por tanto podemos despejar $x_i$ en $g_i(t)x_i = f_i(t)$.
+
+Sabemos que $F(k\setminus W)=\pi_1(i(k\setminus W))=\pi_1(\V(I))$. Por tanto, $\V(I_1)$ es una variedad que contiene a $F(k \setminus W)$. Comprobemos que es la menor. Sea $h\in k[x_1,\dotsc,x_n]$ que se anula $F(k/W)$, tenemos que probar que $h\in I_1$. De manera análoga a la prueba del Teorema 2 tenemos que $\exists N>0$ tal que
+$$
+g^N h(x_1,\dotsc,x_n) = q_1(g_1x_1-f_1)+\dotsc + q_n(g_nx_n-f_n) \in I
+$$
+
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.14}
+The folium of Descartes can be parametrized by
+\[x =
+\frac{3t}{1 + t^3} ,\]
+\[y =
+\frac{3t^2}{1 + t^3} .\]
+\begin{enumerate}[a.]
+\item Find the equation of the folium. Hint: Use Exercise \ref{ejer:3.3.13}.
+\item Over $\C$ or $\R$, show that the above parametrization covers the entire curve.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Como el numerador y el denominador son coprimos en cada parametrización, consideramos el siguiente ideal usando la simplificación del ejercicio \ref{ejer:3.3.13}.
+\[ I = \gene{(1+t^3)x-3t, (1+t^3)y-3t^2}\]
+con el orden lexicográfico $t < x < y$.
+
+Utilizamos SAGE para obtener una base de Gröbner y aplicar el Teorema 2. Obtenemos
+$$
+\{t^2y - 3t + x, tx - y, ty^2 + x^2 - 3y, x^3 - 3xy + y^3 \}
+$$
+Luego la menor variedad que contiene a la curva es $x^3-3xy+y^3$. 
+\item En $\C$ podemos aplicar el Teorema de Extensión. En este caso $c_1(x,y)=y$, $c_2(x,y)=x$, $c_3(x,y)=y^2$.
+Por tanto, como $\V(c_1,c_2,c_3) = \V(x,y) = \{(0,0)\}$, podemos extender por el teorema cuando $(x,y)\neq (0,0)$.
+El caso $(0,0)$ está trivialmente recogido en la parametrización por $t=0$.
+
+Para el caso real, tenemos que probar que si $(x,y)\in \R^2$ entonces tenemos un $t\in \R$ que extiende. Si $x\neq 0$ entonces $t=y/x \in \R$. Si $x=0$ e $y\neq 0$ entonces podemos obtener $t=3/y$. Si $x=y=0$, sabemos que tenemos $t=0$.
+\end{enumerate}
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{3.3.15}
+In Exercise 16 to §3 of Chapter 1, we studied the parametric equations over $\R$
+\[x =
+\frac{(1 − t)^2x_1 + 2t(1 − t)wx_2 + t^2x_3}{
+(1 − t)^2 + 2t(1 − t)w + t^2 } ,\]
+\[y =
+\frac{(1 − t)^2y_1 + 2t(1 − t)wy_2 + t^2y_3}{
+(1 − t)^2 + 2t(1 − t)w + t^2} ,\]
+where $w$, $x_1$, $y_1$, $x_2$, $y_2$, $x_3$, $y_3$ are constants and $w > 0$. By eliminating $t$, show that these
+equations describe a portion of a conic section. Recall that a conic section is described
+by an equation of the form
+\[ax^2 + bxy + cy^2 + dx + ey + f = 0.\]
+Hint: In most computer algebra systems, the Gröbner basis command allows polynomials
+to have coefficients involving symbolic constants like $w, x_1$, $y_1$, $x_2$, $y_2$, $x_3$, $y_3$.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\end{document}

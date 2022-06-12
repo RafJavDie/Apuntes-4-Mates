@@ -53,9 +53,9 @@ cualquier $p\in M$ se verifica que $(g\circ f)_{*p}=g_{*f(p)}\circ f_{*p}$.
 \item[]
 \item $\forall h \in \mathcal{F}(g(f(p))$ tenemos que 
 \begin{gather*}
-((g\circ f)_{\ast p}u)h = u(h\circ(g \circ f)) = u ((h\circ g) \circ f) = (f_{\ast p}u(h \circ g)) = (g_{\ast f(p)}(f_{\ast p} u))h
+((g\circ f)_{\ast p}u)h = u(h\circ(g \circ f)) = u ((h\circ g) \circ f) = (f_{\ast p}u)(h \circ g) = (g_{\ast f(p)}(f_{\ast p} u))h
 \end{gather*}
-\item $\forall u$ y $\forall h \in \mathcal{F}(p)$ $((id_M)_{\ast p}u)h = u(h \circ id_M) = u(h)=(Id_{T_p(M)}(u))h$
+\item $\forall u$ y $\forall h \in \mathcal{F}(p)$ $((Id_M)_{\ast p}u)h = u(h \circ Id_M) = u(h)=(Id_{T_p(M)}(u))h$
 \item[2$'$] $\forall u \in T_p(M)$ $\exists \alpha\in \mathcal{F}((a,b),M)$ tal que $\alpha(0)=p$ y $\alpha'(0)=u$. Entonces
 $$
 (id_M)_{\ast p}u = ((id_M)\circ \alpha)'(0) = \alpha'(0) = u = Id_{T_p(M)}(u)
@@ -76,12 +76,11 @@ Veámoslo directamente $\forall g\in \mathcal{F}(f(p))$
  f_{\ast p}(\lambda u+\mu v)g = (\lambda u+\mu v)(g\circ f)= \lambda u(g \circ f)+\mu v(g \circ f) = (\lambda f_{\ast p} u + \mu f_{\ast p}v)g
 \end{gather*}
 \end{dem}
-En consecuencia, cada diferencial tiene asociada una matriz. Para calcularla, sean $(U,\vp=(x_1,\dots ,x_m))$ un
-s.l.c. de $M$ entorno de $p$ y $(V,\psi=(y_1,\dots ,y_n))$ un s.l.c. de $N$ entorno de $f(p)$. Para estas cartas
+En consecuencia, cada diferencial tiene asociada una matriz. Para calcularla consideramos un s.l.c. $(U,\vp=(x_1,\dots ,x_m))$  de $M$ entorno de $p$ y $(V,\psi=(y_1,\dots ,y_n))$ un s.l.c. de $N$ entorno de $f(p)$. Para estas cartas
 locales, las bases de $T_p(M)$ y $T_{f(p)}(N)$ son
 $$\left\{\left(\dep{x_1}\right)_p,\dots ,\left(\dep{x_m}\right)_p\right\}\mbox{ }{\rm y}\mbox{
-}\left\{\left(\dep{y_1}\right)_{f(p)},\dots ,\left(\dep{y_n}\right)_{f(p)}\right\},$$ respectivamente. Entonces,
-como
+}\left\{\left(\dep{y_1}\right)_{f(p)},\dots ,\left(\dep{y_n}\right)_{f(p)}\right\},$$
+Entonces, como
 $$f_{*p}\left(\dep{x_i}\right)_p=\sum_{j=1}^n\left[f_{*p}\left(\dep{x_i}\right)_p(y_j)\right]\left(\dep{y_j}
 \right)_{f(p)}=$$ $$=\sum_{j=1}^n\left[\left(\ddep{(y_j\circ f)}{x_i}\right)_p\right]\left(\dep{y_j}
 \right)_{f(p)},$$ la matriz de $f_{*p}$ respecto de estas bases viene dada por
@@ -97,7 +96,7 @@ por $J_p(f)$.
 es constante.
 \end{prop}
 \begin{dem}
-Sean $p\in M$ y $q=f(p)\in N$. Entonces $A=f^{-1}(\{q\})\neq\emptyset$. Además, $A$ es cerrado por continuidad de $f$ en un espacio T1. Veamos que $A$ es abierto para probar que $A=M$. Sea $\overline{p}\in A$ arbitrario tal que $f(\overline{p})=q$. Sean $(U,\varphi=(x_1,\dots,x_n))$ carta en $M$ tal que $\overline{p}\in U$ y $(V,\psi=(y_1,\dots,y_n))$ en $N$ tal que $q\in V$. Podemos suponer que $U$ es conexo pues en caso contrario bastaría tomar una de sus componentes conextas, y $f(U)\subseteq V$. Así, $\forall \tilde{p}\in U,\ \forall i=1,\dots, m$ $f_*\left(\frac{\partial}{\partial x_i}\right)_{\tilde{p}}=0\in T_{f(\tilde{p})}(N)$. En particular, $f_*\left(\frac{\partial}{\partial x_i}\right)_{\tilde{p}}y_j=0\ \forall j=1,\dots, n$, es decir, 
+Sean $p\in M$ y $q=f(p)\in N$. Entonces $A=f^{-1}(\{q\})\neq\emptyset$. Como estamos en espacios $T_1$, $\{q\}$ es cerrado, luego $A$ también lo es por continuidad. Veamos que $A$ es abierto para probar que $A=M$. Sea $\overline{p}\in A$ arbitrario tal que $f(\overline{p})=q$. Sean $(U,\varphi=(x_1,\dots,x_n))$ carta en $M$ tal que $\overline{p}\in U$ y $(V,\psi=(y_1,\dots,y_n))$ en $N$ tal que $q\in V$. Podemos suponer que $U$ es conexo pues en caso contrario bastaría tomar una de sus componentes conextas, y $f(U)\subseteq V$. Así, $\forall \tilde{p}\in U,\ \forall i=1,\dots, m$ $f_*\left(\frac{\partial}{\partial x_i}\right)_{\tilde{p}}=0\in T_{f(\tilde{p})}(N)$. En particular, $f_*\left(\frac{\partial}{\partial x_i}\right)_{\tilde{p}}y_j=0\ \forall j=1,\dots, n$, es decir, 
 $$\left.\frac{\partial(y_j\circ f)}{\partial x_i}\right|_{\tilde{p}}=\left.\frac{\partial(u_j\circ\psi\circ f\circ\varphi^{-1})}{\partial u_i}\right|_{\varphi(\tilde{p})}$$
 Al ser $\varphi(U)$ conexo, exto implica que $\psi\circ f\varphi^{-1}$ es constante, luego en particular, $\forall \tilde{p}\in U$, 
 $$\psi(f(\tilde{p}))=\psi\circ f\varphi^{-1}(\varphi(\tilde{p}))=\psi\circ\varphi^{-1}(\varphi(\overline{p}))=\psi(f\overline{p}))=\psi(q)$$
@@ -228,7 +227,7 @@ subvariedad de $N$. Entonces, $(M,i)$ es subvariedad regular de $N$ si y sólo s
 de $N$.
 \end{prop}
 \begin{dem}
-$id$ es homomorfimo si y solo si $T_M = T_{N}|_M$.
+$Id$ es homeomorfimo si y solo si $T_M = T_{N}|_M$.
 \end{dem}
 \section{El Teorema de la Función Inversa.}
 \hs Dada una subvariedad $(M,f)$ de una variedad diferenciable
@@ -304,11 +303,11 @@ $p$.
 \begin{dem}
 Sea $V$ un entorno abierto en $M$ de $p$ tal que $f_i \in \mathcal{F}(V)$ para todo $i=1,\dots,m$. Sea $ψ : V \to \R^m$ dado por $ψ(q) = (f_1(q),\dots,f_m(q))$. Veamos que $ψ \in \mathcal{F}(V,\R^m)$ y $ψ_{*p}$ es isomorfismo.
 
-Por el problema 2.9, $ψ \in \mathcal{F}(V,\R^m)$ si y sólo si cada componente $f_i \in \mathcal{F}(V,\R)$, que se da por hipótesis. Por otro lado, $ψ_{*p}$ es isomorfismo si y sólo si $ψ_p^*$ es isomorfismo. Tomamos la base $\langle (du_i)_{ψ(p)}\rangle_{i=1,\dots,m}$ de $T_{ψ(p)}^*(\R^m)$. La imagen de esta base es:
+Por el Problema 2.9, $ψ \in \mathcal{F}(V,\R^m)$ si y sólo si cada componente $f_i \in \mathcal{F}(V,\R)$, que se da por hipótesis. Por otro lado, $ψ_{*p}$ es isomorfismo si y sólo si $ψ_p^*$ es isomorfismo. Tomamos la base $\langle (du_i)_{ψ(p)}\rangle_{i=1,\dots,m}$ de $T_{ψ(p)}^*(\R^m)$. La imagen de esta base es:
 \[ \langle ψ_p^*((du_i)_{ψ(p)})\rangle = \langle (d(u_i \circ ψ))_p \rangle = \langle (df_i)_p \rangle\]
 Como $(df_i)_p$ son $m$ elementos linealmente independientes, son una base. Luego $ψ_p^*$ es una aplicación lineal que transforma base en base, luego es isomorfismo.
 
-Una vez visto eso, aplicando el teorema de la unción invesa, existe $U$ entorno abierto en $M$ de $p$ tal que $ψ(U)$ es un abierto en $\R^m$ y $ψ|_U$ es difeomorfismo, luego $(U,φ=(f_1|_U,\dots,f_m|_U))$ es uuna carta admisible en $M$.
+Una vez visto eso, aplicando el teorema de la función inversa, existe $U$ entorno abierto en $M$ de $p$ tal que $ψ(U)$ es un abierto en $\R^m$ y $ψ|_U$ es difeomorfismo, luego $(U,φ=(f_1|_U,\dots,f_m|_U))$ es una carta admisible en $M$.
 \end{dem}
 
 \begin{coro}
@@ -426,10 +425,12 @@ $N$. Como $g$ es inyectiva, si $f$ {\it factoriza a través de}
 $g$, es decir si $f(M)\subseteq g(P)$, entonces se puede definir
 una única aplicación $f_0:M\fl P$ tal que $g\circ f_0=f$.
 No siempre esta aplicación es diferenciable.
-%$$\begin{diagram}
-%\node{M} \arrow{e,t}{f} \arrow{se,b,..}{f_0} \node{N} \\
-%\node[2]{P} \arrow{n,r}{g}
-%\end{diagram}$$
+\[
+\begin{tikzcd}
+M\arrow[r, rightarrow,  "f"]\arrow[dr, dashrightarrow, "f_0"'] & N\\
+ & P \arrow[u, rightarrow, "g"']
+\end{tikzcd}
+\]
 \begin{teorema}
 {\bf (Lema de Factorización).} Sea $f\in\mathcal{F}(M,N)$ una
 aplicación diferenciable entre dos variedades diferenciables y
@@ -444,7 +445,12 @@ continua.
 
 \begin{dem}\
 \begin{itemize}
-\item[a)] Supongamos que $f_0$ es continua. Fijemos $m,n,r$ las dimensiones de $M,N,P$ respectivamente. Sea $p\in M$ cualquiera, entonces $f(p)\in N, f_0(p)\in P$. Tomamos cartas adaptadas a la inmersión $g$, es decir, $(U,\varphi=(x_1,\dots,x_r))$ carta en $P$ tal que $f_0(p)\in U$, $(V,\psi=(y_1,\dots,y_n))$ carta en $N$ tal que $f(p)\in V$, cumpliendo que $x_i=y_i\circ g\ i=1,\dots, r$ y $g(U)\subseteq V$. Como $f_0(p)\in U\subseteq P$ y $f_0$ es continua, $p\in f_0^{-1}(U)\subset M$ abierto al que denotaremos por $G$. $\forall q\in G$, $$\varphi\circ f_0(q)=(x_1(f_0(q)),\dots,x_r(f_0(q)))= (y_1(g(f_0(q))),\dots,y_r(g(f_0(q))))=(y_1(f(q)),\dots,y_r(f(q)))=\pi\circ\psi\circ f(q)$$ donde $\pi:\R^n\to\R^r: (u_1,\dots, u_r)\mapsto (u_1,\dots,u_r)$. Luego en $G$, $\varphi\circ f_0=\pi\circ\psi\circ f$ es diferenciable, luego comoponiendo con $\varphi^{-1}$, $f_0$ es diferenciable.
+\item[a)] Supongamos que $f_0$ es continua. Fijemos $m,n,r$ las dimensiones de $M,N,P$ respectivamente. Sea $p\in M$ cualquiera, entonces $f(p)\in N, f_0(p)\in P$. Tomamos cartas adaptadas a la inmersión $g$, es decir, $(U,\varphi=(x_1,\dots,x_r))$ carta en $P$ tal que $f_0(p)\in U$, $(V,\psi=(y_1,\dots,y_n))$ carta en $N$ tal que $f(p)\in V$, cumpliendo que $x_i=y_i\circ g\ i=1,\dots, r$ y $g(U)\subseteq V$. Como $f_0(p)\in U\subseteq P$ y $f_0$ es continua, $p\in f_0^{-1}(U)\subset M$ abierto al que denotaremos por $G$. $\forall q\in G$, 
+\begin{align*}
+\varphi \circ f_0(q)&=(x_1(f_0(q)),\dots,x_r(f_0(q)))= (y_1(g(f_0(q))),\dots,y_r(g(f_0(q))))\\
+&=(y_1(f(q)),\dots,y_r(f(q)))=\pi\circ\psi\circ f(q)
+\end{align*}
+donde $\pi:\R^n\to\R^r: (u_1,\dots, u_n)\mapsto (u_1,\dots,u_r)$. Luego en $G$, $\varphi\circ f_0=\pi\circ\psi\circ f$ es diferenciable, luego comoponiendo con $\varphi^{-1}$, $f_0$ es diferenciable.
 \item[b)] Supongamos que $(P,g)$ es subvariedad regular, por lo que $g:P\to g(P)\subset N$ es homeomorfismo, donde la imagen tiene la topología relativa. Recordemos que $f_0$ es continua si y solo si $\forall p\in M,\forall G\subseteq P$ tal que $f_0(p)\in G,\exists U\subset M$ abierto con $p\in U$ tal que $f_0(U)\subseteq G$. Sean $p\in M$, $G\subseteq P$ abierto tal que $f_0(p)\in G$. Como $g$ es homeomorfismo, $g(G)$ es abierto en $g(P)$, por lo que $\exists V$ abierto en $N$, tal que $g(G)=V\cap g(P)$. Así, $U=f^{-1}(V)$ es abierto en $M$. Como $f_0(p)\in G$, entonces $g(f_0(p))\in g(G)$, luego en particular, $f(p)=g(f_0(p))\in V\Rightarrow p\in f^{-1}(V)=U$. Por último, $\forall q\in U, f(q)=g(f_0(q))\in V\cap g(P)=g(G)$. Por ser $g$ inyectiva, $f_0(q)\in G$, como queríamos demostrar.   $\QED$
 \end{itemize}
 
@@ -531,10 +537,10 @@ Supongamos que $(A,T|_A)$ tiene estructura de variedad diferenciable tal que $(A
 \[
 \begin{tikzcd}
 (A,\mathcal{T}) (\calA_2)\arrow[r,hookrightarrow, "i_2"]\arrow[dr,dashrightarrow, "Id"] & N\\
-& (A,T|_A) (\calA_1)
+& \arrow[u,hookrightarrow, "i_1"] (A,T|_A) (\calA_1)
 \end{tikzcd}
 \]
-Tenemos que $i_2\in\calF((A,\mathcal{T}), N)$. aDEMÁS, $((A,T|_A),i_1)$ es subvariedad regular (lema de factorización) de $N$, $i_2(A)=A=i_1(A)$. Por tanto, $Id:(A,\mathcal{T})\to(A,T|_A)$ es continua, así que por el lema de factorización $Id\in\calF((A,\mathcal{T}),(A,T|_A))$. 
+Tenemos que $i_2\in\calF((A,\mathcal{T}), N)$. Además, $((A,T|_A),i_1)$ es subvariedad regular (lema de factorización) de $N$, $i_2(A)=A=i_1(A)$. Por tanto, $Id:(A,\mathcal{T})\to(A,T|_A)$ es continua, así que por el lema de factorización $Id\in\calF((A,\mathcal{T}),(A,T|_A))$. 
 
 Como $i_2=i_1\circ Id\Rightarrow i_{2*}=(i_1\circ Id)_*=i_{1*}\circ Id_*$ en todo punto de $A$, po lo que $Id_*$ es inyectiva. Como $Id$ es biyectiva, por un corolario se tiene que $Id$ es difeomorfismo, lo cual quiere decir que los atlas son compatibles. Por ser difeomorfismo, en particular es homeomorfismo, por lo que también se tiene la igualdad de topologías. $\QED$
 \end{dem}
@@ -617,25 +623,6 @@ $$f_p^*((\dif g)_{f(p)})=(\dif (g\circ f))_p.$$
 diferenciable es subvariedad regular.
 
 \item Probar que $S^n$ es subvariedad regular de $\R^{n+1}$.
-
-\begin{dem}
-Sea $S \subseteq \R^3$ una superficie regular. Veamos que $(S,i)$ es subvariedad regular donde $i : S \to \R^3$ es la inclusión.
-
-$S$ una variedad diferenciables (ejemplo 2 del tema 1) con $dim(S)=2$.
-
-Por otro lado, veamos que $i : S \to \R^3$ es una inmersión inyectiva. La inyectividad es consecuencia de ser una inclusión. Para ver que $i$ es inmersión, comprobaremos que $i \in \mathcal{F}(S,\R^3)$ y $i_{*p}$ es inyectivo. $i$ es continuo, pues para todo abierto $G$ de $\R^3$, $i^{-1}(G) = G \cap S$, que es un abierto de la topología euclídea relativa a $S$.
-
-Sea $p \in S$ cualquiera y $(\X,U)$ tal que $p \in \X(U)$.
-%   S     to \R^3
-%  \X(U)      |
-%   |\X^{-1}  | id
-%   v         v
-%   U ------>\R^3
-%     id \circ i \circ (\X^{-1})^{-1}
-Se tiene que $id \circ i \circ (\X^{-1})^{-1} = \X$ es diferenciable, pues $\X : U \to \R^3$ es superficie simple, luego $i \in \mathcal{F}(S,\R^3)$.
-
-La matriz de $i_{*p}$ es la matriz jacobiana en $\X^{-1}(p)$ de $(id \circ i \circ \X)$, que es $(\X_1, \X_2)^t$. Es de rango $2$, pues los vectores $\X_1$ y $\X_2$ son independientes (por ser superficie simple). Como la matriz es $2\times 3$, es de rango máximo. Además, como $\dim(S) < \dim(\R^3)$, $i_{*p}$ es inyectiva. Por la proposición 4.2.2, como $S$ tiene la topología relativa de $\R^3$, $S$ es regular.
-\end{dem}
 
 \item Sea $M$ una variedad diferenciable y $p\in M$. Si
 $\{\om_1,\dots ,\om_m\}$ es una base de $T_p^*(M)$, probar que

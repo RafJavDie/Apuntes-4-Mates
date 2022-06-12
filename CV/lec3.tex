@@ -1,0 +1,224 @@
+\documentclass[CV.tex]{subfiles}
+
+\begin{document}
+
+
+%\hyphenation{equi-va-len-cia}\hyphenation{pro-pie-dad}\hyphenation{res-pec-ti-va-men-te}\hyphenation{sub-es-pa-cio}
+
+\chapter{Complejos de cadenas y su homología}
+\section{Sucesiones exactas}
+\begin{defi}
+Una sucesión de espacios vectoriales y aplicaciones lineales 
+\[
+A\overset{f}{\to}B\overset{g}{\to}C
+\]
+se dice \textbf{exacta} cuando $\Ima{f}=\ker{g}$.
+\end{defi}
+
+Nótese que $A\overset{f}{\to}B\to 0$ es exacta cuando $f$ es sobreyectiva y $0\to B\overset{g}{\to}C$ es exacta cuando $g$ es inyectiva.
+
+\begin{defi}
+Una sucesión $A^*=\{A^i, d^i\}$
+\[
+\cdots\to A^{i-1}\overset{d^{i-1}}{\to}A^i\overset{d^i}{\to}A^{i+1}\overset{d^{i+1}}{\to}A^{i+2}\to\cdots
+\]
+de espacios vectoriales y aplicaciones lineales se llama \textbf{complejo de cadenas} cuando $d^{i+1}\circ d^i=0$ para todo $i$. Es \textbf{exacta} si
+\[
+\Ima{d^i}=\ker{d^{i-1}}
+\]
+para todo $i$. Una sucesión exacta de la forma
+\[
+0\to A\overset{f}{\to}B\overset{g}{\to}C\to 0
+\]
+se llama \textbf{exacta corta}.
+\end{defi}
+
+El ser sucesión exacta corta es equivalente a requerir que $f$ sea inyectiva, $g$ sea sobreyectiva y $\Ima{f}=\ker{g}$.
+
+\begin{defi}
+El \textbf{cokernel} de una aplicación lineal $f:A\to B$ es
+\[
+\coker{f}=B/\Ima{f}.
+\]
+\end{defi}
+
+
+En una sucesión exacta corta, $g$ induce un isomorfismo
+\[
+\tilde{g}:\coker{f}\to C.
+\]
+Para comprobarlo basta tener en cuenta que $g$ es sobreyectiva y utilizar el primer teorema de isomorfía sabiendo que $\ker{g}=\Ima{f}$. Así mismo, si $f:A\to b$ es un homomorfismo de espacios vectoriales, se tiene el siguiente diagrama de sucesiones exactas
+\[
+\begin{tikzcd}
+\ker{f}\arrow[dr] & &  & & \coker{f}\\
+& A\arrow[rr,"f"]\arrow[dr] & & B\arrow[ur] & \\
+& & A/\ker{f}\arrow[ur] & &
+\end{tikzcd}
+\]
+De una sucesión exacta larga se obtienen sucesiones exactas cortas
+\[
+0\to \Ima{d^{i-1}}\to  A^i\to \Ima{d^i}\to 0
+\]
+e isomorfismos $A^{i-1}/\Ima{d^{i-2}}\cong A^{i-1}/\ker{d^{i-1}}\overset{d^{i-1}}{\cong}\Ima^{d-i}$ para todo $i$. 
+
+\begin{defi}
+La \textbf{suma directa} de espacios vectoriales $A$ y $B$ es el espacio vectorial $A\oplus B=\{(a,b)\mid a\in A,b\in B\}$ con las operaciones 
+\begin{enumerate}[a.]
+\item $\lambda(a,b)=(\lambda a,\lambda b)$ para $\lambda\in\R$,
+\item $(a_1,b_1)+(a_2,b_2)=(a_1+a_2,b_1+b_2)$.
+\end{enumerate}
+\end{defi}
+
+Si $\{a_i\}$ y $\{b_j\}$ son bases de $A$ y $B$ respectivamente, entonces $\{(a_i,0), (0,b_j)\}$ es una base de $A\oplus B$. En particular
+\[
+\dim(A\oplus B)=\dim(A)+\dim(B).
+\]
+\begin{lemma}\label{sum}
+Supongamos que $0\to A\overset{f}{\to}B\overset{g}{\to}C\to 0$ es una sucesión exacta corta de espacios vectoriales. Entonces $B$ es dedimensión finita si $A$ y $C$ lo son, y demás $B\cong A\oplus C$. En tal caso se dice que la sucesión \textbf{escinde}.
+\end{lemma}
+\begin{proof}
+Sea $\{a_i\}$ una base de $A$ y $\{c_j\}$ una base de $C$. Como $g$ es sobreyectiva, existen $b_j\in B$ con $g(b_j)=c_j$. Entonces $\{f(a_i),b_j\})$ es una base para $B$. En efecto, dado $b\in B$, tenemos que $g(b)=\sum\lambda_jc_j$. Por tanto, $b-\sum\lambda_jb_j\in\ker{g}$. Como $\ker{g}=\Ima{f}$, $b-\sum\lambda_jb_j=f(a)$, con $a\in A$, que podrá ser expresado como $\sum\mu_ia_i$. Así que
+\[
+b=f\left(\sum\mu_ia_i\right)+\sum\lambda_jb_j=\sum\mu_if(a_i)+\sum\lambda_jb_j.
+\]
+Por otro lado, supongamos que $\sum\mu_if(a_i)+\sum\lambda_jb_j=0$. Entonces, 
+\[
+0=g\left(\sum\mu_if(a_i)+\sum\lambda_jb_j\right)=\sum\mu_ig(f(a_i))+\sum\lambda_jg(b_j)=\sum\lambda_j c_j.
+\]
+Como $\{c_j\}$ es una base, se tiene que $\lambda_j=0$. Por tanto, $\sum\mu_if(a_i)=f\left(\sum\mu_ia_i\right)=0$. Por ser $f$ inyectiva, esto implica que $\sum\mu_ia_i=0$, pero como $\{a_i\}$ es una base, $\mu_i=0$.  
+\end{proof}
+
+Como se infiere de la demostración, este hecho es equivalente a que exista una \textbf{sección} inyectiva $s:C\to B$ con $gs=Id_C$, y a su vez es equivalente a que exista una \textbf{retracción} sobreyectiva $r:B\to A$ tal que $rf=Id_A$.
+
+\begin{defi}
+Dado un complejo de cadenas $A^*=\{A^i,d^i\}$, se define el $p$-ésimo e.v. de \textbf{cohomología}
+\[
+H^p(A^*)=\ker{d^p}/\Ima{d^{p-1}}.
+\]
+Los elementos de $\ker{d^p}$ se llaman $p$-\textbf{(co)ciclos} o \textbf{cerrados}, y los de $\Ima{d^{i-1}}$ se llaman $p$-\textbf{(co)bordes} o \textbf{exactos}. Los elementos de $H^p(A^*)$ se llaman \textbf{clases de homología}.
+\end{defi}
+
+\begin{defi}
+Una \textbf{aplicación de complejos de cadenas} $f^*:A^*\to B^*$ es una colección de homomorfismos $f^*=\{f^p:A^p\to A^p\}$ verificando para cada $p$ que $d_B^pf^p=f^{p+1}d_A^p$. 
+\end{defi}
+
+\begin{lemma}
+Una aplicación de complejos de cadenas $f^*:A^*\to B^*$ induce para cada $p$ una aplicación lineal 
+\[
+f^*=H(f^*):H^p(A)\to H^p(B).
+\]
+\end{lemma}
+\begin{proof}
+Sea $a\in A^p$ un ciclo ($d^pa=0$) y $[a]=a+\Ima{d^{p-1}}$ su clase de homología en $H^p(A^*)$. Definimos $f^*[a]=[f^p(a)]$. En primer lugar, $d^pf^p(a)=f^{p+1}d^p(a)=f^{p+1}(0)=0$, por lo que tiene sentido definir la clase de equivalencia, pues $f^p(a)$ es un ciclo. En segundo lugar, si $[a_1]=[a_2]$, entonces $a_1-a_2\in\Ima{d_A^{p-1}}$ y $f^p(a_1-a_2)=f^p(d_A^{p-1}(x))=d_B^{p-1}f^{p-1}(x)$. Por tanto $f^p(a_1)-f^p(a_2)\in\Ima{d_B^{p-1}}$, así que $f^p(a_1)$ y $f^p(a_2)$ definen la misma clase de cohomología.
+\end{proof}
+
+\begin{defi}
+Una \textbf{sucesión exacta corta} de complejos de cadenas
+\[
+0\to A^*\overset{f^*}{\to}B^*\overset{g^*}{\to}C^*\to 0
+\]
+consiste en aplicaciones de complejos de cadenas tales que para todo $p$ se tiene que $0\to A^p\overset{f^p}{\to}B^p\overset{g^p}{\to}C^p\to 0$ es exacta.
+\end{defi}
+
+\begin{lemma}\label{lema1}
+Para una sucesión exacta de complejos de cadenas, la sucesión
+\[
+H^p(A^*)\overset{f^*}{\to}H^p(B^*)\overset{g^*}{\to}H^p(C^*)
+\]
+es exacta.
+\end{lemma}
+\begin{proof}
+Como $g^p\circ f^p=0$ para todo $p$, tenemos
+\[
+g^*\circ f^*([a])=g^*([f^p(a)])=[g^p(f^p(a))]=0
+\]
+para cualquier clase de cohomología $[a]\in H^p(A^*)$. Recíprocamente, supongamos para $[b]\in H^p(B^*)$ que $g^*[b]=0$. Entonces, $g^p(b)=d_C^{p-1}(c)$. Como $g^{p-1}$ es sobreyectiva, existe $b_1\in B^{p-1}$ con $g^{p-1}(b_1)=c$. Se sigue que $g^p(b-d_B^{p-1}(b_1))=0$. Por tanto, existe $a\in A^p$ con $f^p(a)=b-d_B^{p-1}(b_1)$. Veamos que $a$ es un $p$-ciclo. Como $f^{p+1}$ es inyectiva, basta ver que $f^{p+1}(d_A^p(a))=0$. Pero
+\[
+f^{p+1}(d_A^p(a))=d_B^p(f^p(a))=d_B^p(b-d_B^{p-1}(b_1))=0
+\]
+por ser $b$ un $p$-ciclo y $d^p\circ d^{p-1}=0$. Entonces tenemos una clase de cohomología $[a]\in H^p(A^*)$ cumpliendo $f^*[a]=[b-d_B^{p-1}(b_1)]=[b]$.
+
+\end{proof}
+
+\begin{lemma}\label{lema2}
+Existe un morfismo de espacios vectoriales $\partial^*:H^p(C^*)\to H^{p+1}(A^*)$. 
+\end{lemma}
+\begin{proof}
+Vamos a definirlo como
+\[
+\partial^*([c])=[(f^{p+1})^{-1}(d^p_B((g^p)^{-1}(c)))].
+\]
+Una vez comprobado que está bien definido será evidente que es morfismo de espacios vectoriales. La definición expresa que para todo $b\in (g^{p})^{-1}(c)$ tenemos $d^p_B(b)\in \Ima(f^{p+1})$, y que el único $a\in A^{p+1}$ con $f^{p+1}(a)=d^p_B(b)$ es un $(p+1)$-ciclo. Finalmente, está implícito que $[a]\in H^{p+1}(A^*)$ es independiente de la elección de $b\in (g^p)^{-1}(c)$. Porbemos estas afirmaciones.
+\begin{enumerate}[i]
+\item Si $g^p(b)=c$ y $d_C^p(c)=0$, entonces, $g^{p+1}d_B^p(b)=d_C^p(c)=0$, luego $d_B^p(b)\in\ker(g^{p+1})=\Ima(f^{p+1})$.
+\item Si $f^{p+1}(a)=d^p_B(b)$, entonces $f^{p+2}d_A^p(a)=d_B^{p+1}f^{p+1}(a)=d_B^{p+1}d^p_B(b)=0$, que por inyectividad de $f^{p+2}$ esto implica que $d_A^p(a)=0$, esto es, $a$ es un $(p+1)$-ciclo.
+\item Si $g^p(b_1)=g^p(b_2)=c$ con $f^{p+1}(a_i)=d_B^p(b_i)$, entonces, $b_1-b_2\in\ker{g^p}=\Ima{f^p}$, por lo que existe $\alpha\in A^p$ con $f^p(\alpha)=b_1-b_2$, luego $d_B^p(b_1)-d_B^p(b_2)=d_B^pf^p(\alpha)=f^{p+1}d_A^p(\alpha)$, así que $(f^{p+1})^{-1}(d_B^p(b_1))=(f^{p+1})^{-1}(d_B^p(b_2))+d_A^p(\alpha)$, es decir, definen la misma clase de cohomología.
+\end{enumerate}
+\end{proof}
+
+\begin{lemma}\label{lema3}
+La sucesión $H^p(B^*)\overset{g^*}{\to}H^p(C^*)\overset{\partial^*}{\to} H^{p+1}(A^*)$ es exacta.
+\end{lemma}
+\begin{proof}
+Tenemos $\partial^*g^*([b])=\partial^*([g^p(b)])=[(f^{p+1})^{-1}(d_B^p(b))]=0$ puesto que $b$ es un $p$-ciclo. Recíprocamente, supongamos que $\partial^*[c]=0$. Eligmos $b\in B^p$ con $g^p(b)=c$. Si llamamos $a_{p+1}=(f^{p+1})^{-1}(d_B^p((g^p)^{-1}(c)))$, como $a_{p+1}$ representa la clase del 0, se tiene que $a_{p+1}\in\Ima(d_A^p)$, por lo que podemos escoger $a\in A^p$ cumpliendo
+\[
+d_B^p(b)=f^{p+1}(d_A^pa).
+\]
+Ahora tenemos, pasando todo a la izquierda y usando la definición de aplicación de complejos de cadenas, $d_B^p(b-f^p(a))=0$. Además, $g^p(b-f^p(a))=c$, pues $g^p\circ f^p=0$. Así que $g^*[ b-f^p(a)]=[c]$. 
+\end{proof}
+
+\begin{nota}
+Pudiera parecer que al tener $g^p(b)=c$ ya tendríamos una preimagen para $[c]$, pero no sabemos si $b$ es un ciclo.
+\end{nota}
+
+\begin{lemma}\label{lema4}
+La sucesión $H^p(C^*)\overset{\partial^*}{\to}H^{p+1}(A^*)\overset{f^*}{\to} H^{p+1}(B^*)$ es exacta.
+\end{lemma}
+\begin{proof}
+Se tiene $f^*\partial^*[a]=[d_B^p(b)]=0$. Recíprocamente, supongamos que $f^*[a]=0$, es decir, $f^{p+1}(a)=d_B^p(b)$. Entonces $d_C^p(g^p(b))=g^{p+1}d_B^p(b)=g^pf^{p+1}(a)=0$, y $\partial^*[g^p(b)]=[a]$ puesto que $(f^{p+1})^{-1}(d_B^p((g^p)^{-1}(g^p(b))))=(f^{p+1})^{-1}d_B^p(b)=a$.
+\end{proof}
+
+Combinando los lemas \ref{lema1}, \ref{lema2}, \ref{lema3} y \ref{lema4} tenemos el siguiente teorema como corolario.
+
+\begin{teorema}[sucesión exacta larga de cohomología]
+Sea $0\to A^*\overset{f^*}{\to}B^*\overset{g^*}{\to}C^*\to 0$ una sucesión exacta corta de complejos de cadenas. Entonces, la sucesión
+\[
+\cdots\to H^p(A^*)\overset{f^*}{\to}H^p(B^*)\overset{g^*}{\to}H^p(C^*)\overset{\partial^*}{\to}  H^{p+1}(A^*)\overset{f^*}{\to}H^{p+1}(B^*)\overset{g^*}{\to}H^{p+1}(C^*)\to\cdots
+\]
+es exacta.
+\end{teorema}
+
+\begin{defi}
+Dos morfismos entre complejos de cadenas $f,g:A^*\to B^*$ se dicen \textbf{homotópicos} si para todo $p$ existen homomorfismos de e.v. $s:A^p\to B^{p-1}$
+tales que
+\[
+d_Bs+sd_A=f-g:A^p\to B^p.
+\]
+La colección $H=\{s:A^p\to B^{p-1}\}$ se llama \textbf{homotopía de complejos de cadenas} entre $f$ y $g$. Escribiremos $f\simeq g$, o también $f\sim_H g$.
+\end{defi}
+
+\begin{lemma}
+Dados dos morfismos de complejos de cadenas homotópicos $f,g:A^*\to B^*$ se tiene que
+\[
+f^*=g^*:H^p(A^*)\to H^p(B^*).
+\]
+\end{lemma}
+\begin{proof}
+Si $[a]\in H^p(A^*)$, entonces
+\[
+(f^*-g^*)[a]=[f^p(a)-g^p(a)]=[d_B^{p-1}s(a)+sd_A^p(a)]=[d_B^{p-1}s(a)]=0.
+\]
+\end{proof}
+
+\begin{lemma}
+Si $A^*$ y $B^*$ son dos complejos de cadenas, entonces para todo $p$
+\[
+H^p(A^*\oplus B^*)=H^p(A^*)\oplus H^p(B^*).
+\]
+\end{lemma}
+\begin{proof}
+Es obvio que $\ker(d^p_{A\oplus B})=\ker(d^p_A)\oplus \ker(d^p_B)$ y $\Ima(d^{p-1}_{A\oplus B})=\Ima(d^{p-1}_A)\oplus \Ima(d^{p-1}_B)$. El cociente de sumas directas es la suma directa de los cocientes, pues la proyección natural de la suma directa en el cociente de sumas directas es claramente sobreyectiva y su kernel es justamente la suma directa de los kernels.
+\end{proof}
+
+\end{document}
+

@@ -1,0 +1,452 @@
+\documentclass[HS.tex]{subfiles}
+\begin{document}
+
+\chapter{Invariancia homotópica de la homología simplicial}
+
+
+Sea $X$ un espacio topológico y supongamos que existe un complejo simplicial $K$ y un homeomorfismo $h \colon X \to |K|$.
+Entonces podríamos definir $H_n(X) := H_n(K)$.
+El par $(K,h)$ se llama \emph{trianguación} de $X$.
+Esto estará bien definido si $H_n$ no depende de la triangulación.
+Esta cuestión será abordada por la \emph{invariancia homotópica de la homología}.
+
+\section{Nociones básicas de homotopía}
+
+\begin{defi}\label{homotopia}
+Dos aplicaciones continuas $f,g \colon X \to Y$ entre espacios topológicos se dicen homotópicas si existe una aplicación $H \colon X \times I \to Y$ continua (que llamamos \emph{homotopía}) cumpliendo:
+\[ H(x,0) = f(x) \quad \forall x \in X, \]
+\[ H(x,1) = g(x) \quad \forall x \in X. \]
+Dos aplicaciones $f,g$ \emph{homotópicas} por $H$ se denotan $f \simeq_H g$. 
+\end{defi}
+
+\begin{defi}
+Si en la definición anterior $f(x) = g(x)$ para todo $x \in A \subseteq X$ y además
+\[ H(x,t) = f(x) = g(x),\quad \forall x \in A \forall t \in I, \]
+entonces diremos que $f \simeq_H g$ \emph{relativa} a $A$.
+Esto es que $A$ es un conjunto de puntos que la homotopía ``no mueve''.
+\end{defi}
+
+\begin{prop}
+La relación ``ser homotópica (relativa) a'' entre aplicaciones continuas es una relación de equivalencia.
+\end{prop}
+\begin{dem}
+En primer lugar, $f\simeq_H f$ con $H(x,t)=f(x)$ para todo $x$. Si $f\simeq_G g$, entonces $g\simeq_G f$ con $G(x,t)=H(x,1-t)$. Si $f\simeq_F g$ y $g\simeq_G h$, entonces $f\simeq_H h$, donde $H(x,t)=F(x,2t)$ para  $x\in [0,1/2]$ y $H(x,t)=G(x,2t-1)$ para $x\in [1/2,1]$.\QED
+\end{dem}
+
+\begin{defi}
+Dos espacios topológicos $X$ e $Y$ son del mismo \emph{tipo de homotopía} (u \emph{homotópicamente equivalente}) si existe $f \colon X \to Y$, existe $g \colon Y \to X$ continua cumpliendo:
+\[ f \circ g \simeq Id_Y \quad g \circ f \simeq Id_X. \]
+En este caso diremos que tanto $f$ como $g$ son \emph{equivalencias de homotopía} e \emph{inversas homotópicas} una de la otra.
+\end{defi}
+
+\begin{defi}
+Si un espacio topológico $X$ es del mismo tipo de homotopía que un punto, entonces diremos que $X$ es \index{contráctil}\emph{contráctil}.
+\end{defi}
+\begin{ej}
+Todo subespacio convexo $C \subseteq \R^n$ es contráctil.
+\end{ej}
+\begin{prop}
+$X$ es contráctil si y sólo si $Id_X \simeq cte$.
+\end{prop}
+\begin{dem}
+Si $X$ es contráctil, entonces existen $f:X\to \{x_0\}$ y $g:\{x_0\}\to X$ tales que $g\circ f\simeq Id_X$. Necesitariamente $g$ es una aplicación constante, por lo que $g\circ f$ es constante, de donde se deduce el resultado.
+
+Si $Id_X \simeq cte$, entonces sea $x_0$ la constante a la que es homotópica. Sea entonces la inclusión $i:\{x_0\}\hookrightarrow X$. Se tiene claramente que la aplicación constante $x_0$ es inversa homotópica de la inclusión, pues $x_0\circ i=Id_{\{x_0\}}$ y $i\circ x_0\simeq Id_X$ por hipótesis. \QED
+\end{dem}
+
+\begin{defi}
+Dados $A \subseteq X$ e.t., una \emph{retracción} de $X$ en $A$ es una aplicación continua:
+\[ r \colon X \to A \]
+cumpliendo que $r(a) = a$ $\forall a \in A$.
+Si $i \colon A \to X$ denota la inclusión, entonces $r \circ i = Id_A$.
+Si además, se cumple que $i \circ r \simeq id_X$, diremos que $A$ es un \emph{retracto de deformación} de $X$.
+Si además, $i \circ r \simeq id_X$ relativa a $A$, entonces diremos que $A$ es un \emph{retracto de deformación fuerte} de $X$.
+\end{defi}
+
+\begin{nota}
+Si $A \subseteq X$ es retrato de deformación de $X$, entonces $A$ y $X$ son del mismo tipo de homotopía, pues tanto $r$ como $i$ son equivalentes de homotopía, y una es la inversa homotópica de la otra.
+\end{nota}
+\begin{ej}
+Damos un ejemplo de retracto que no es de deformación.
+Consideremos $X = S^1 \times I$ el cilindro. Consideramos $A = \{z\} \times I$, con $z \in S^1$.
+La retracción $r \colon X \to A$ definida por $r(s,t) = (z,t) \in A$ no es retracto de deformación. Si lo fuera, entonces el cilindro tendría el mismo tipo de homotopía que $A$, pero es fácil comprobar que $A$ es contráctil y que el cilindro retrae con deformacións sobre $S^1$, que es bien sabido que no es contráctil por tener grupo fundamental no trivial.
+\end{ej}
+
+\section{Invarianza topológica de la homología simplicial}
+
+Al principio del capítulo planteábamos la cuestión de si la homología simplicial dependía de la triangulación escogida. Vamos a empezar probando la invarianza por subdivisiones baricéntricas de una triangulación. Recordemos que dado un $n$-símplice $\sigma=(v_0,\dots, v_n)$, el baricentro de $\sigma$ se definía como $b(\sigma)=\sum_{i=0}^n\frac{1}{n+1}v_i\in\mathring{\sigma}$. Si tenemos en $K$ una sucesión estrictamente creciente de símplices $\sigma_0<\sigma_1<\dots <\sigma_k$, entonces un $k$ símplice de la subdivisión $sdK$ es de la forma $(b(\sigma_0),b(\sigma_1),\dots, b(\sigma_k))$. 
+
+Si $\sigma$ es un $n$-símplice orientado de $K$ y $\hat{\sigma}\subseteq\sigma$ es un $n$-símplice orientado de $sdK$, orientamos $\hat{\sigma}$ con la orientación inducida por $\sigma$, es decir, ordenamos sus vértices según el orden de aparición en la construcción de $\hat{\sigma
+}$. 
+
+Si $\sigma_0<\sigma_1<\dots<\sigma_n=\sigma$ son símplices de $K$ entonces $\hat{\sigma}=(b(\sigma_0),b(\sigma_1),\dots, b(\sigma_k))$. Necesariamente ha de ocurrir $\sigma_0=v_0, \sigma_1=(v_0,v_1), \dots, \sigma_n=\sigma$, por ser una cadena de longitud $n+1$. 
+
+
+Consideramos el complejo de cadenas simpliciales orientadas $\{C_n(K),\partial_n\}_{n\geq 0}$. Tenemos también el complejo de cadenas $\{C_n(sdK),\partial_n\}_{n\geq 0}$. Para cada $n\geq 0$ definimos el operador \emph{subdivisión} $sd_*:C_n(K)\to C_n(sdK)$ de la siguiente manera:
+\[
+sd_*(\sigma)=\sum_{\hat{\sigma}\subset\sigma}[\sigma:\hat{\sigma}]\hat{\sigma}
+\]
+siendo $\hat{\sigma}$ símplices de dimensión $n$ y donde $[\sigma:\hat{\sigma}]=1$ si el orden de los vértices de $\sigma$ en la definición de $\hat{\sigma}$ da la orientación de $\sigma$ y $-1$ en caso contrario. 
+
+\begin{ej}\
+\begin{enumerate}
+\item Sea $\sigma$ el 1-símplice $[v_0,v_1]$ (orientado tal como está escrito). Tenemos que $b(v_0)=v_0$ y $b(v_1)=v_1$, así que el único vértice nuevo es $b(\sigma)$. En cuanto a las aristas, surge de la cadena $v_0<\sigma$ la arista $\hat{\sigma}_1=[v_0,b(\sigma)]$ y de la cadena $v_1<\sigma$ la arista $\hat{\sigma}_2=[v_1,b(\sigma)]$. Vemos que claramente $[\sigma:\hat{\sigma}_1]=1$ porque primero aparece $v_0$ y después $b(\sigma)$ en la definición de $\hat{\sigma}$, que es la orientación inducida por $\sigma$. En cambio $[\sigma:\hat{\sigma}_2]=-1$, porque en la definición aparece primero $v_1$ y luego $b(\sigma)$, que es opuesto a la orientación inducida por $\sigma$. De este modo
+\[
+sd_*(\sigma)=[\sigma:\hat{\sigma}_1]\hat{\sigma}_1+[\sigma:\hat{\sigma}_2]\hat{\sigma}_2=\hat{\sigma}_1-\hat{\sigma}_2.
+\]
+Obsérvese que 
+\[
+\partial_1(sd_*(\sigma))=\partial_1(\hat{\sigma}_1)-\partial_1(\hat{\sigma}_2)=(b(\sigma)-v_0)-(b(\sigma)-v_1)=-v_0+v_1=(-1)[\sigma:\hat{\sigma}_1]b(v_0)+(-1)[\sigma:\hat{\sigma}_2]b(v_1)
+\]
+Denotamos $b(v_0)=\hat{\tau}_1$ y $b(v_1)=\hat{\tau}_2$, donde $\hat{\tau}_i$ denotará una cara de $\hat{\sigma}_i$ contenida en $\partial\sigma$.
+
+\item  Sea $\sigma$ el 2-símplice $[v_0,v_1,v_2]$. 
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=2.0cm,y=2.0cm]
+\clip(-2.091122685185183,-0.9811111111111114) rectangle (6.227743055555544,3.0915162037037107);
+\fill[line width=1.pt,fill=black,fill opacity=0.10000000149011612] (0.,0.) -- (3.,0.) -- (1.5,2.5980762113533165) -- cycle;
+\draw [line width=1.pt] (0.,0.)-- (3.,0.);
+\draw [line width=1.pt] (3.,0.)-- (1.5,2.5980762113533165);
+\draw [line width=1.pt] (1.5,2.5980762113533165)-- (0.,0.);
+\draw [line width=1.pt] (0.75,1.2990381056766582)-- (3.,0.);
+\draw [line width=1.pt] (1.5,2.5980762113533165)-- (1.5,0.);
+\draw [line width=1.pt] (2.25,1.2990381056766584)-- (0.,0.);
+\draw (-0.3,0.06778935185185353) node[anchor=north west] {$v_0$};
+\draw (1.410034722222219,2.8745023148148214) node[anchor=north west] {$v_1$};
+\draw (3.0014699074074014,0.08949074074074245) node[anchor=north west] {$v_2$};
+\draw (0.,1.5145486111111155) node[anchor=north west] {$b(v_0,v_1)$};
+\draw (2.2853240740740692,1.5217824074074118) node[anchor=north west] {$b(v_1,v_2)$};
+\draw (1.3955671296296264,0.031620370370371985) node[anchor=north west] {$b(v_0,v_2)$};
+\draw (1.489606481481478,1.2613657407407446) node[anchor=north west] {$b(\sigma)$};
+\draw (0.67,0.96) node[anchor=north west] {$\hat{\sigma}_1$};
+\draw (1.06,1.66) node[anchor=north west] {$\hat{\sigma}_2$};
+\draw (1.64,1.62) node[anchor=north west] {$\hat{\sigma}_3$};
+\draw (2.03,0.94) node[anchor=north west] {$\hat{\sigma}_4$};
+\draw (1.68,0.43) node[anchor=north west] {$\hat{\sigma}_5$};
+\draw (1,0.45) node[anchor=north west] {$\hat{\sigma}_6$};
+\draw [shift={(1.1977777777777765,1.5177777777777794)},line width=2.pt,dash pattern=on 3pt off 3pt]  plot[domain=0.3080527810237691:4.889097836454726,variable=\t]({1.*0.20521593565538068*cos(\t r)+0.*0.20521593565538068*sin(\t r)},{0.*0.20521593565538068*cos(\t r)+1.*0.20521593565538068*sin(\t r)});
+\draw [shift={(1.7666666666666653,1.473333333333335)},line width=2.pt,dash pattern=on 3pt off 3pt]  plot[domain=0.5743048301747012:5.719869045687619,variable=\t]({1.*0.21*cos(\t r)+0.*0.21*sin(\t r)},{0.*0.21*cos(\t r)+1.*0.21*sin(\t r)});
+\draw [shift={(0.7977777777777766,0.8155555555555576)},line width=2.pt,dash pattern=on 3pt off 3pt]  plot[domain=0.6350267353903059:5.695182703632019,variable=\t]({1.*0.20978531059921557*cos(\t r)+0.*0.20978531059921557*sin(\t r)},{0.*0.20978531059921557*cos(\t r)+1.*0.20978531059921557*sin(\t r)});
+\draw [shift={(1.1444444444444433,0.3088888888888912)},line width=2.pt,dash pattern=on 3pt off 3pt]  plot[domain=0.9561333748727239:5.796286075368317,variable=\t]({1.*0.1849657959705298*cos(\t r)+0.*0.1849657959705298*sin(\t r)},{0.*0.1849657959705298*cos(\t r)+1.*0.1849657959705298*sin(\t r)});
+\draw [shift={(1.82,0.2822222222222246)},line width=2.pt,dash pattern=on 3pt off 3pt]  plot[domain=1.0074800653029345:5.873057966638092,variable=\t]({1.*0.19975293381550335*cos(\t r)+0.*0.19975293381550335*sin(\t r)},{0.*0.19975293381550335*cos(\t r)+1.*0.19975293381550335*sin(\t r)});
+\draw [shift={(2.1577777777777762,0.7977777777777798)},line width=2.pt,dash pattern=on 3pt off 3pt]  plot[domain=1.2068173702852523:5.668522355257421,variable=\t]({1.*0.19975293381550416*cos(\t r)+0.*0.19975293381550416*sin(\t r)},{0.*0.19975293381550416*cos(\t r)+1.*0.19975293381550416*sin(\t r)});
+\draw [->,line width=0.5pt] (1.3719607729248502,1.6262852173775961) -- (1.4318518518518506,1.5355555555555573);
+\draw [->,line width=0.5pt] (1.95,1.5912118459481928) -- (2.,1.5177777777777797);
+\draw [->,line width=0.5pt] (2.1958262109075015,0.9938735485232857) -- (2.2970370370370357,0.9607407407407428);
+\draw [->,line width=0.5pt] (0.9446424761605307,0.9653575479059667) -- (1.01111111111111,0.8955555555555577);
+\draw [->,line width=0.5pt] (1.2225054816614502,0.4765755614291284) -- (1.3133333333333321,0.43333333333333557);
+\draw [->,line width=0.5pt] (1.9104980363277935,0.4602990033833694) -- (2.006666666666665,0.4155555555555578);
+\begin{scriptsize}
+\draw [fill=black] (0.,0.) circle (1.5pt);
+\draw [fill=black] (3.,0.) circle (1.5pt);
+\draw [fill=black] (1.5,2.5980762113533165) circle (1.5pt);
+\draw [fill=black] (0.75,1.2990381056766582) circle (1.5pt);
+\draw [fill=black] (1.5,0.) circle (1.5pt);
+\draw [fill=black] (2.25,1.2990381056766584) circle (1.5pt);
+\draw [fill=black] (1.5,0.8660254037844389) circle (1.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+
+Por definición
+\[
+sd_*(\sigma)=\sum_{i=1}^6[\sigma:\hat{\sigma}_i]\hat{\sigma_i}
+\]
+
+
+
+Vemos el primero y los demás son análogos. Tenemos la cadena $v_0<(v_0,v_1)<\sigma$. Esto nos da $\hat{\sigma}_1=[v_0, b(v_0,v_1),b(\sigma)]$. Este orden es el inducido por la orientación de $\sigma$, así que $[\sigma:\hat{\sigma}_1]=1$. Análogamente, si consideramos la cadena $v_1<(v_0,v_1)<\sigma$, obtenemos $\hat{\sigma}_2=[v_1,b(v_0,v_1),b(\sigma)]$, con $[\sigma:\hat{\sigma}_2]=-1$. Podemos ver esto observando que empezamos en la cadena con $v_1$ y luego necesariamente va $v_0$ porque la arista solo tiene $v_0$ y $v_1$. Después solo falta $v_2$. Por tanto tendríamos $[v_1,v_0,v_2]$, que es la orientación opuesta a la de $\sigma$. Continuando con este razonamiento, observando el dibujo se ve fácilmente que la suma es alternada.  
+
+Si ahora calculamos $\partial_2(sd_*(\sigma))$ vamos obteniendo
+\[
+\partial_2(\hat{\sigma}_1)=\partial_2[v_0, b(v_0,v_1), b(\sigma)]=[b(v_0,v_1)],b(\sigma)]-[v_0,b(\sigma)]+[v_0,b(v_0,v_1)]
+\]
+\[
+\partial_2(\hat{\sigma}_2)=\partial_2[v_1, b(v_0,v_1), b(\sigma)]=[b(v_0,v_1)],b(\sigma)]-[v_1,b(\sigma)]+[v_1,b(v_0,v_1)]
+\]
+y así sucesivamente. Pero como vemos, al sumar alternadamente, se cancelan las aristas que no contienen ni $v_0$ ni $v_1$, y así con todos los demás vértices. Acabarán también desapareciendo las de la forma $[v_i,b(\sigma)]$. Por tanto, solo permanecerán las aristas del borde de $\sigma$. De modo que
+\[
+\partial_2(sd_*(\sigma))=\hat{\tau}_1-\hat{\tau}_2+\cdots -\hat{\tau}_6=\sum_{i=1}^6(-1)^2[\sigma:\hat{\sigma}_i]\hat{\tau}_i
+\]
+En general, para un $n$-símplice, $\partial_n(sd_*(\sigma))=\sum_{\hat{\sigma}\in sdK,\hat{\sigma}\subseteq\sigma}(-1)^n[\sigma:\hat{\sigma}]\hat{\tau}$ con $\hat{\sigma}$ de dimensión $n-1$ y $\hat{\tau}$ la única cara de $\hat{\sigma}$ contenida en $\partial\sigma$. Vamos a probarlo. Tenemos
+\[
+\partial_n(sd_*(\sigma))=\sum[\sigma:\hat{\sigma}]\partial(\hat{\sigma})=\sum[\sigma:\hat{\sigma}]\sum_{j=0}^n (-1)^j\hat{\tau}_j
+\]
+donde $\hat{\tau}_j$ se obtiene eliminando de $\hat{\sigma}$ el vértice $j$-ésimo vértice, es decir, el de la forma $b(v_{i_1},\dots, v_{i_j})$. Basta observar que los $\hat{\tau}_j$ con $j\neq n$ se cancelan. Es claro que $\hat{\tau}_n$ solo es cara de $\hat{\sigma}$ puesto que es la única cara que tiene  en el borde (es la única que se obtiene eliminando $b(\sigma)$). 
+
+En el resto de casos, $\tau_j$ es cara de exactamente dos símplices. En efecto, si $j>0$ al eliminar $b(v_{i_1},\dots, v_{i_j})$, tenemos que permanecen $b(v_{i_1},\dots, v_{i_{j-1}})$ y $b(v_{i_1},\dots, v_{i_{j+1}})$, por lo que podemos completar la cadena con cualquiera de los vértices que los diferencian de modo que sigamos teniendo una cadena creciente de símplices. Para el caso $j=0$, podemos elegir cualquiera de los vértices del primer 1-símplice que aparezca en la cadena. Obsérvese que para el caso $j=n$ solo hay un $n$-símplice, por lo que efectivamente $\hat{\tau}_n$ es cara de un solo símplice. 
+
+Así pues, los $\hat{\tau}_j$ repetidos se cancelan pues cada una de las elecciones de vértice da lugar a una orientación inducida $\hat{\tau}_j$ distinta, de donde se deduce el resultado. 
+\end{enumerate}
+\end{ej}
+
+\begin{prop}
+La aplicación $sd_*:\CC(K)\to\CC(sdK)$ es un morfismo de complejos de cadenas.
+\end{prop}
+\begin{dem}
+Ya sabemos que en cada nivel tenemos homomorfismos, así que falta ver la conmutatividad de los diagramas
+\[
+\begin{tikzcd}
+C_n(K)\arrow[r,"sd_*"]\arrow[d, "\partial_n"] & C_n(sdK)\arrow[d, "\partial_n"]\\
+C_{n-1}(K)\arrow[r, "sd_*"] & C_{n-1}(sdK)
+\end{tikzcd}
+\]
+Del ejemplo anterior tenemos ya 
+\begin{equation}\label{primera}
+\partial_n(sd_*(\sigma))=\sum_{\hat{\sigma}\in sdK,\hat{\sigma}\subseteq\sigma}(-1)^n[\sigma:\hat{\sigma}]\hat{\tau}
+\end{equation}
+Por otra parte, 
+\[
+sd_*(\partial_n(\sigma))=sd_*\left(\sum_{j=0}^n(-1)^j[v_0,\dots, \hat{v}_j, \dots, v_n]\right)=\sum_{j=0}^n(-1)^jsd_*([v_0,\dots, \hat{v}_j, \dots, v_n])
+\]
+Denotamos $\sigma_j$ al símplice obtenido a partir de $\sigma$ eliminando el vértice $v_j$. Entonces la anterior fórmula queda como
+\begin{equation}\label{segunda}
+\sum_{j=0}^n(-1)^j\left(\sum_{\sigma_j\in sdK,\hat{\sigma}_j\subseteq\sigma_j}[\sigma_j:\hat{\sigma}_j]\hat{\sigma}_j\right)
+\end{equation}
+Observamos que $\hat{\sigma}_j\subseteq\sigma_j\subseteq\partial\sigma$ y además $\dim(\hat{\sigma}_j)=\dim(\sigma_j)=n-1$. Por tanto, la familia de los $\hat{\tau}$ de \ref{primera} coincide con la familia de los $\hat{\sigma}_j$ de \ref{segunda}. Veamos además que los coeficientes son los mismos. Supongamos que $\hat{\tau}=\hat{\sigma}_j=[b(v_{i_0}),b(v_{i_0}, v_{i_1}), \dots, b(v_{i_0},\dots, v_{i_{n-1}})]$ proveniente de una cadena $v_{i_0}<(v_{i_0}, v_{i_1})<\cdots<\sigma_j$. Entonces $(i_0,i_1,\dots, i_{n-1})$ es una permutación $P$ del conjunto $(0,\dots, \hat{j}, n-1)$. Por tanto $[\sigma_j:\hat{\sigma}_j]=(-1)^{par(P)}$, donde $par(P)$ denota la paridad de $P$. Como estamos suponiendo que $\hat{\tau}=\hat{\sigma}_j$, se tiene que $\hat{\tau}$ es cara de $\hat{\sigma}=[b(v_{i_0}),b(v_{i_0}, v_{i_1}), \dots, b(v_{i_0},\dots, v_{i_{n-1}}, v_j)]$, donde $\hat{\sigma}_j$ surgiría al eliminar el último vértice. Por tanto, pa permutación $P'$ de $(i_0,\dots, i_{n-1}, j)$ a $(0,1,\dots, n)$ tiene como parridad, $par(P)+n-j$. Con esto, $[\sigma:\hat{\sigma}]=(-1)^{par(P)}(-1)^{n-j}$. Por lo que al multiplicarse por $(-1)^n$ en \ref{primera} obtenemos precisamente el signo que buscábamos en \ref{segunda}. 
+\QED
+\end{dem}
+
+\begin{teorema}
+El morfismo inducido $sd_*:H_n(K)\to H_n(sdK)$ es un isomorfismo.
+\end{teorema}
+\begin{dem}
+Razonamos por inducción en el número $n$ de símplices. Si $n=1$ entonces $K$ tiene un solo vértice y el resultado es trivial. Supongámoslo cierto para complejos de $n-1$ símplices. Sea $K$ un complejo con $n$ símplices y $\sigma\in K$ un símplice de dimensión máxima en $K$. Toamos el complejo $L=K-\{\sigma\}$. Por hipótesis, como $\partial\sigma\subseteq L$ el resultado se cumple para $L$ y para $\partial\sigma=L\cap\sigma$. Además tenemos el siguiente diagrama conmutativo de sucesiones de Mayer-Vietoris
+\[
+\begin{tikzcd}
+\cdots\arrow[r] & H_q(\partial\sigma)\arrow[r]\arrow[d,"sd_*"] & H_1(\sigma)\oplus H_q(L)\arrow[r]\arrow[d, "sd_*"] & H_q(K)\arrow[d, "sd_*"]\arrow[r]&\cdots \\
+\cdots\arrow[r] & H_q(sd\partial\sigma)\arrow[r]& H_1(sd\sigma)\oplus H_q(sdL)\arrow[r] & H_q(sdK)\arrow[r]&\cdots 
+\end{tikzcd}
+\]
+Puesto que $sd\sigma$ es el cono $b(\sigma)\cdot sd\partial\sigma$ se tiene que $H_q(sd\sigma)=0$ si $q\neq 0$ y $H_0(sd\sigma)\cong\F$ con cualquier vértice como generador, por lo que es isomorfa a la homología de $\sigma$, es decir, $sd_*:H_q(\sigma)\to H_q(sd\sigma)$ es isomorfismo. El resultado se sigue ahora del lema de los cinco (\ref{cinco}). 
+\QED
+\end{dem}
+
+
+
+\begin{observacion} Podemos componer $sd_*$ consigo mismo tantas veces como queramos, lo cual nos lleva de la primera subdivisión baricéntrica a la $n$-ésima. Por el teorema anterior, todas las subdivisiones tienen homologías isomorfmas. Además, si $f:K\to L$ es una aplicación simplicial y $f:sdK\to sdL$ es la aplicación correspondiente a las subdivisiones, tenemos los diagramas conmutativos 
+\[
+\begin{tikzcd}
+C_n(K)\arrow[r,"sd_*"]\arrow[d,"f_*"] & C_n(sdK)\arrow[d,"f_*"]\\
+C_n(L)\arrow[r,"sd_*"] & C_n(sdL)
+\end{tikzcd}
+\]
+
+
+La aplicación $f:sdK\to sdL$ está definida como $f(b(\sigma))=b(f(\sigma))$ para todo $\sigma\in K$. Esto es equivalente a hacer la extensión lineal.
+
+
+\end{observacion}
+
+\begin{teorema}
+Existe una aplicación simplicial $\lambda: sdK\to K$ que es aproximación simplicial de $Id:|K|\to |K|$ tal que $\lambda:C_n(sdK)\to C_n(K)$ verifica que $\lambda_*\circ sd_*=Id_{H_n(K)}$.
+\end{teorema}
+\begin{dem}
+Ordenamos totalmente los vértices de $K$ como $v_0<v_1<\cdots<v_n<\cdots$. Definimos $\lambda:\{$vértices de $sdK\}\to\{$ vértices de $K\}$ de la siguiente forma: si $\sigma=(v_{i_0}, \dots, v_{i_n})\in K$ y consideramos $b(\sigma)$, definimos $\lambda(b(\sigma))=\max\{v_{i_0},\dots, v_{i_n}\}$. Claramente $\lambda$ lleva símpilces en símplices (aunque puede degenerar). 
+
+Para ver que $\lambda$ es aproximación simplicial de $Id:|K|\to|K|$ probaremos que para todo $x\in K$, $\lambda(x)$ está en el símplice soporte (el único en cuyo interior está) de $Id(x)=x$. Como $x\in |K|=|sdK|$, dado $\sigma\in K$ con $x\in\sigma$, $\exists!\hat{\tau}\in sdK\mid x\in\mathring{\hat{\tau}}$, luego existe $\tau<\sigma$ con $\mathring{\hat{\tau}}\subseteq\mathring{\tau}$. Como $\lambda(\hat{\tau})\subseteq\tau$, se tiene que $\lambda(x)\in\lambda(\mathring{\hat{\tau}})\subseteq\lambda(\hat{\tau})\subseteq\tau\subseteq\sigma$, lo que prueba que es aproximación simplicial.
+
+Por último, probamos $\lambda\circ sd_*=Id_{C_n(K)}$. Basta probar que $\lambda(sd_*(\sigma))=\sigma$ para todo $n$-símplice de $K$. 
+\[
+\lambda(sd_*(\sigma))=\lambda\left(\sum_{\hat{\sigma}\in sdK, \hat{\sigma}\subseteq\sigma}[\sigma:\hat{\sigma}]\hat{\sigma}\right)=\sum[\sigma:\hat{\sigma}]\lambda(\hat{\sigma})=[\sigma:\hat{\sigma}_0]\overline{\sigma}
+\]
+donde el orden de aparición de los vértices de $\sigma$ en $\hat{\sigma}$ coincide con el orden dado sobre los vértices de $K$ ($\hat{\sigma}: v_{i_0}<(v_{i_0},v_{i_1})<\cdots< (v_{i_0},\dots, v_{i_n})=\sigma$ no orientado). Si se modifica el orden habrá repetición de vértices, pues si $v_{i_1}<v_{i_0}$, $\lambda(b(v_{i_0})=\lambda(b(v_{i_0},v_{i_1}))$. Además, $\overline{\sigma}$ es $\sigma$ con la orientación $\overline{\sigma}=[v_{i_0},\dots, v_{i_n}]$. Por tanto, si $[\sigma:\hat{\sigma}_0]=1$, entonces $\overline{\sigma}=\sigma$ y si  $[\sigma:\hat{\sigma}_0]=-1$ entonces $\overline{\sigma}$ es la orientación opuesta a la de $\sigma$, en cualquier caso, el resultado de $[\sigma:\hat{\sigma}_0]\overline{\sigma}=\sigma$. Entonces $\lambda_*\circ sd_*=Id_{H_n(K)}$ por functorialidad. 
+
+\QED
+\end{dem}
+
+Sea ahora $f:|K|\to|L|$ continua. Vamos a definir $f_*:H_n(K)\to H_n(L)$ ($n\geq 0$) de la siguiente manera:
+\[
+f_*:=\varphi_*\circ sd_*
+\]
+Sabemos que existe $m\geq 0$ y $\varphi:sd^mK\to L$ aproximación simplicial de $f$. Por otra parte, tenemos el isomorfismo $sd_*^m:H_n(K)\to H_n(sd^mK)$. Comprobaremos que $f_*$ está bien definida. Si tomamos ahora $m'\geq 0$ y $\psi:sd^{m'}K\to L$ otra aproximación simplicial de $f$, tenemos que probar que $\varphi_*sd_*^M=\psi_*sd_*^{m'}$. Para ello necesitaremos algunos resultados previos.
+
+\begin{prop}
+Sean $K_1$ y $K_2$ complejos simpliciales y $f:|K_1|\to|K_2|$ continua tal que $f|_{|L|}$ es simplicial para un cierto subcomplejo $L\subseteq K$. Si $\varphi:|K_1|\to|K_2|$ es una aproximación simplicial de $f$ entonces $f$ es homotópica a $\varphi$ relativamente a $|L|$.  
+\end{prop}
+\begin{dem}
+Sea $F(x,t)=tf(x)+(1-t)\varphi(x)$. Esta es la homotopía buscada, pues dado $x\in|K_1|$ sabemos que algún simplice de $K_2$ contiene a $\varphi(x)$ y $f(x)$, luego por convexidad contiene al segmento que los une. Sabemos además que $\varphi|_{L}=f_{|L|}$, de donde se obtiene que la homotopía sea relativa.
+\QED
+\end{dem}
+
+\begin{defi}
+Dos aplicaciones simpliciales $\varphi,\psi:K\to L$ se dicen \emph{contiguas} si para cada símplice $\sigma\in K$ la unión $\varphi(\sigma)\cup\psi(\sigma)$ está en un símplice de $L$. Dos aplicaciones simpliciales $\varphi$ y $\psi$ se dicen que están en la misma \emph{clase de contigüidad} si existe una sucesión de aplicaciones símpliciales $\varphi_0,\dots, \varphi_n$ tales que $\varphi=\varphi_0$, $\psi=\varphi_n$ y $\varphi_i$ es contigua a $\varphi_{i+1}$ para todo $i$. 
+\end{defi}
+
+\begin{lemma}
+Dos aproximaciones simpliciales $\varphi,\psi:K\to L$ de una misma aplicación continua $f:|K|\to|L|$ son contiguas. Más aún, si $f\simeq_H g$, existen aproximaciones simpliciales de $f$ y $g$ en la misma clase de contiguidad.
+\end{lemma}
+\begin{proof}
+Sea $\sigma \in K$ y $x \in \mathring{\sigma}$.
+Por ser $\varphi$ y $\psi$ aproximaciones simpliciales, se tiene:
+\begin{itemize}
+	\item $\varphi(x)$ está en el símplice $\tau \in L$ soporte de $f(x)$, es decir, $f(x) \in \mathring{\tau}$.
+	Como además, $\varphi(\sigma) \in L$, tenemos que $\varphi(\sigma) < \tau$.
+	\item Análogamente, $\psi(\sigma) < \tau$.
+\end{itemize}
+Luego $\varphi(\sigma) \cup \psi(\sigma) \subseteq \tau$.
+
+El segundo resultado no se demuestra aquí.
+Hay una demostración en el libro de Ayala.
+\end{proof}
+
+\section{Homología simplicial ordenada}
+
+Llamemos $\overline{C}_n(K)$ al espacio vectorial generado por todas las secuencias ordenadas de $n+1$ vértices de un mismo símplice de $K$ (pudiendo repetir vértices).
+Por ejemplo, $(v_0,v_0,\dots,v_0) \in \overline{C}_n(K)$ donde $\exists \sigma \in K$ tal que $v_0 \in \sigma$.
+A los elementos de $\overline{C}_n(K)$ los llamamos \emph{cadenas de $n$-símplices ordenados} (no confundir con orientados).
+Definimos:
+\begin{align*}
+	\overline{\partial}_n \colon \overline{C}_n(K) & \to \overline{C}_{n-1}(K)\\
+	(v_0,\dots,v_n) & \mapsto \sum_{i=0}^n (-1)^i(v_0,\dots,\widehat{v_i},\dots,v_n)
+\end{align*}
+Con esto surge un complejo de cadenas $(\overline{C}_n(K), \overline{\partial}_n)_{n \geq 0}$ lamado \emph{complejo de cadenas simpliciales ordenadas} de $K$.
+De aquí surge un espacio vectorial de homología simplicial ordenada $H_n$
+
+Definimos $\mu_n \colon \overline{C}_n(K) \to C_n(K)$, donde $n \geq 0$ como:
+
+\[ \mu \colon (v_0,\dots,v_n) \mapsto \begin{cases}0 & \text{ si se repiten vértices}\\ [v_0,\dots,v_n] & \text{ contrario}\end{cases}\]
+
+\begin{propi}\mbox{}
+Se tiene el siguiente diagram conmutativo:
+\[\begin{tikzcd}{\overline{C}_n(K)} \arrow[r,"\mu_n"] \arrow[d,"\overline{\partial}_n" left] & {C_n(K)} \arrow[d,"\partial_n"]\\
+{\overline{C}_{n-1}(K)} \arrow[r,"\mu_{n-1}" below] & C_{n-1}(K)
+\end{tikzcd}\]
+
+Por tanto, tenemos el homomorfismo:
+\[ \mu_* \colon \overline{H}_n(K) \to H_n(K),\ n\geq 0\]
+
+Es más, $\mu_* \colon \overline{H}_n(K) \to H_n(K)$ es isomorfismo para todo $n \geq 0$.
+En el libro de Ayala se da el homomorfismo inverso.
+\end{propi}
+
+\begin{propi}
+Si $\varphi \colon K \to L$ es aplicación simplicial, entonces se tienen los diagramas conmutativos:
+\[\begin{tikzcd}{\overline{C}_n(K)} \arrow[r,"\mu_n"] \arrow[d,"\varphi_*" left] & {C_n(K)} \arrow[d,"\varphi_*"]\\
+{\overline{C}_n(L)} \arrow[r,"\mu_n" below] & C_n(L)
+\end{tikzcd} \quad \begin{tikzcd}{\overline{H}_n(K)} \arrow[r,"\mu_*","\cong" below] \arrow[d,"\varphi_*" left] & {H_n(K)} \arrow[d,"\varphi_*"]\\
+{\overline{H}_n(L)} \arrow[r,"\mu_n" below,"\cong" above] & H_n(L)
+\end{tikzcd}\]
+\end{propi}
+
+\begin{prop}
+Si $\varphi, \psi \colon K \to L$ son aplicaciones simpliciales en la misma clase de contigüidad, entonces los homomorfismos de complejos de cadenas:
+\[ \overline{\varphi}_*, \overline{\psi}_* \colon (\overline{C}_n(K), \overline{\partial}_n)_{n \geq 0} \to (\overline{C}_n(L), \overline{\partial}_n)_{n \geq 0}  \]
+son homotópicos.
+\end{prop}
+\begin{dem}
+Busquemos una homotopía $\{h_n\}_{n\geq 0}$, donde $h_n \colon \overline{C}_n(K) \to \overline{C}_{n+1}(L)$ y cumpliendo:
+\[\begin{tikzcd}
+& \dots \arrow[r] & {\overline{C}_n(K)} \arrow[r,"\overline{\partial}_n"] \arrow[dl,"h_n"] \arrow[d,shift right,"\overline{\varphi}_*" left] \arrow[d,shift left,"\overline{\psi}_*" right]& \overline{C}_{n-1}(K) \arrow[r] \arrow[dl,"h_{n-1}"] & \dots\\
+\dots \arrow[r] & {\overline{C}_{n+1}(L)} \arrow[r,"\overline{\partial}_{n+1}"] & {\overline{C}_n(L)} \arrow[r,"\overline{\partial}_n"] & {\overline{C}_{n-1}(L)} \arrow[r] & \dots
+\end{tikzcd}\]
+Basta tomar
+\[
+	h_n \colon (v_0,\dots,v_n) \mapsto \sum_{i=0}^n (-1)^i (\varphi(v_0),\varphi(v_1),\dots,\varphi(v_i),\psi(v_i),\psi(v_{i+1})\dots,\psi(v_n))
+\]
+Falta comprobar que:
+\[ \overline{\psi}_* - \overline{\varphi}_* = h_{n-1} \circ \overline{\partial}_n + \overline{\partial}_{n+1} \circ h_n \quad \forall n \geq 0 \]
+La notación para el caso general es complicada, así que haremos el caso $n=2$ del que se desprende claramente la idea general. Sea $(v_0,v_1,v_2)\in \overline{C}_2(K)$. Entonces $(\overline{\psi}_* - \overline{\varphi}_*)(v_0,v_1,v_2)=(\psi(v_0),\psi(v_1),\psi(v_2))-(\varphi(v_0),\varphi(v_1), \varphi(v_2))$. Por otro lado
+\[
+\partial_3h_2(v_0,v_1,v_2)=\partial_3(\varphi(v_0), \psi(v_0),\psi(v_1),\psi(v_2))-\partial_3(\varphi(v_0), \varphi(v_1),\psi(v_1),\psi(v_2))+\partial_3(\varphi(v_0), \varphi(v_1),\varphi(v_2),\psi(v_2))
+\]
+Tratamos cada sumando por separado:
+\[
+\partial_3(\varphi(v_0), \psi(v_0),\psi(v_1),\psi(v_2))=(\psi(v_0),\psi(v_1),\psi(v_2))-(\varphi(v_0),\psi(v_1),\psi(v_2))+(\varphi(v_0), \psi(v_0),\psi(v_2))-(\varphi(v_0), \psi(v_0),\psi(v_1))
+\]
+\[
+\partial_3(\varphi(v_0), \varphi(v_1),\psi(v_1),\psi(v_2))=(\varphi(v_1),\psi(v_1),\psi(v_2))-(\varphi(v_0),\psi(v_1),\psi(v_2))+(\varphi(v_0), \varphi(v_1),\psi(v_2))-(\varphi(v_0), \varphi(v_1),\psi(v_1))
+\]
+\[
+\partial_3(\varphi(v_0), \varphi(v_1),\varphi(v_2),\psi(v_2))=( \varphi(v_1),\varphi(v_2),\psi(v_2))-(\varphi(v_0), \varphi(v_2),\psi(v_2))+(\varphi(v_0), \varphi(v_1),\psi(v_2))-(\varphi(v_0), \varphi(v_1),\varphi(v_2))
+\]
+Al sumar hay algunos términos que se cancelan, por lo que nos queda
+\begin{gather*}
+\partial_3h_2(v_0,v_1,v_2)=(\psi(v_0),\psi(v_1),\psi(v_2))-(\varphi(v_0), \varphi(v_1),\varphi(v_2))+ [(\varphi(v_0), \psi(v_0),\psi(v_2))-(\varphi(v_0), \psi(v_0),\psi(v_1))-\\
+-(\varphi(v_1),\psi(v_1),\psi(v_2))+(\varphi(v_0), \varphi(v_1),\psi(v_1))+( \varphi(v_1),\varphi(v_2),\psi(v_2))-(\varphi(v_0), \varphi(v_2),\psi(v_2))]
+\end{gather*}
+Ahora,
+\[
+h_1\partial_2(v_0,v_1,v_2)=h_1(v_1,v_2)-h_1(v_0,v_2)+h_1(v_0,v_1)
+\]
+donde
+\[
+h_1(v_1,v_2)=(\varphi(v_1),\psi(v_1),\psi(v_2))-(\varphi(v_1),\varphi(v_2),\psi(v_2))
+\]
+\[
+h_1(v_0,v_2)=(\varphi(v_0),\psi(v_0),\psi(v_2))-(\varphi(v_0),\varphi(v_2),\psi(v_2))
+\]
+\[
+h_1(v_0,v_1)=(\varphi(v_0),\psi(v_0),\psi(v_1))-(\varphi(v_0),\varphi(v_1),\psi(v_1))
+\]
+Se comprueba entonces que todos estos términos se cancelan con la suma entre corchetes anterior y solo queda $\psi(v_0),\psi(v_1),\psi(v_2))-(\varphi(v_0), \varphi(v_1),\varphi(v_2))$ como queríamos demostrar. \QED
+\end{dem}
+
+\begin{coro}
+En las condiciones anteriores, $\overline{\varphi}_* \equiv \overline{\psi}_* \colon \overline{H}_n(K) \to \overline{H}_n(L)$ para todo $n \geq 0$.
+Entonces, del diagrama
+\[\begin{tikzcd}{\overline{H}_n(K)} \arrow[r,"\mu_*","\cong" below] \arrow[d,"\psi\equiv\varphi_*" left] & {H_n(K)} \arrow[d,shift right,"\varphi_*" left] \arrow[d,shift left,"\psi_*" right]\\
+{\overline{H}_n(L)} \arrow[r,"\mu_n" below,"\cong" above] & H_n(L)
+\end{tikzcd}\]
+
+En conclusión, si $\varphi, \psi \colon K \to L$ son aproximaciones simpliciales de $f \colon |K| \to |L|$, entonces:
+\[ \varphi_{*} \equiv \psi_* \colon H_n(K) \to H_n(L) \quad \forall n \geq 0\]
+\end{coro}
+
+Volvemos a nuestro problema de la buena definición de $f_*$.
+
+\begin{coro}
+Sea $f \colon |K| \to |L|$ continua, entonces $f_*$ está bien definido.
+\end{coro}
+\begin{dem}
+Supongamos $\varphi \colon sd^n K \to L$, $\psi \colon sd^m K \to L$ aproximaciones simpliciales de $f$ y supongamos $m \geq n$.
+Consideramos:
+\[ sd^m K \xrightarrow{\lambda} sd^{m-1} K \xrightarrow{\lambda} \cdots\xrightarrow{\lambda} sd^n K \xrightarrow{\varphi} L \]
+Cuidado con el abuso de notación aquí, cada $\lambda$ es una distinta aproximación simplicial de $Id \colon |K| \to |K|$.
+Entonces, como $\varphi$ es aproximación simplicial de $f$ y $(\lambda \circ \dots \circ \lambda)$ es aproximación simplicial de $Id$, entonces:
+\[ \varphi \circ (\lambda \circ \overset{(m-n)}{\dots} \circ \lambda) \colon sd^m K \to L\]
+es también aproximación simplicial e $f$.
+Como $\psi \colon sd^m K \to L$ es también aproximación simplicial de $f$, por el corolario anterior:
+\[ \psi_* \equiv (\varphi \circ (\lambda\circ\overset{(m-n)}{\dots} \circ \lambda))_* = \varphi_* \circ \lambda_* \circ \overset{(m-n)}{\dots}\circ \lambda_* = \varphi_* \circ \lambda_*^{m-n}\]
+
+Obsérvese que entonces:
+\[ \psi_* \circ sd_*^m = (\varphi_* \circ \lambda_*^{m-n}) \circ sd_*^m =  \varphi_* \circ sd_*^n \]
+Esto demuestra que $f_*$ está bien definido.
+\end{dem}
+
+Unas propiedades básicas:
+\begin{propi}\mbox{}
+\begin{enumerate}
+	\item Para $Id \colon |K| \to |K|$, se tiene $Id_* = Id_{H_n(K)}$
+	\item Para $|K| \xrightarrow{f} |L| \xrightarrow{g} |M|$, entonces $(g \circ f)_* = g_* \circ f_*$
+	\item Si $f \cong g\colon |K| \to |L|$, entonces $f_* \equiv g_* \colon H_n(K) \to H_n(L)$.
+\end{enumerate}
+\end{propi}
+La propiedad importante:
+\begin{coro}[Invarianza homotópica de la homología simplicial]
+Si $f \colon |K| \to |L|$ es equivalencia de homotopía, entonces:
+\[ f_* \colon H_n(K) \to H_n(L) \ \text{es isomorfismo}\]
+\end{coro}
+
+Una aplicación de esto:
+\begin{consec}
+Sea $K$ un complejo simplicial finito y $\alpha_q$ el número de $q$-símplices de $K$.
+Definimos la característica de Euler como $\chi(K) = \sum_{q \geq 0} (-1)^q \alpha_q$.
+
+Tenemos entonces que $\chi(K)$ es una invariante homotópica de $K$.
+\end{consec}
+\begin{dem}
+Tenemos la siguiente sucesión exacta corta:
+\[ 0 \to Z_q(K) \to C_q(K) \to B_{q-1}(K) \to 0\]
+Como son espacios vectoriales, por el primer teorema de isomorfía: $\dim C_q(K) = \dim Z_q(K) + \dim B_{q-1}(K)$.
+Por otro lado:
+\[ 0 \to B_q(K) \to Z_q(K) \to H_q(K) \to 0\]
+Luego $\dim Z_q(K) = \dim B_q(K) + \dim H_q(K)$.
+Como $\alpha_q = \dim C_q(K)$:
+\begin{align*}
+\chi(K) & = \sum_{q \geq 0} (-1)^q \dim C_q(K)\\
+ & = \sum_{q \geq 0} (-1)^q \left(\dim H_q(K) + \dim B_q(K) + \dim B_{q-1}(K)\right)\\
+ & = \sum_{q \geq 0} (-1)^q \dim H_q(K)
+\end{align*}
+que es invariante homotópica. \QED
+\end{dem}
+\end{document}

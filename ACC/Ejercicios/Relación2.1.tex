@@ -1,0 +1,175 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{2.1.1}
+Determine whether the given polynomial is in the given ideal $I \subseteq \R[x]$ using the method of Example 1.
+\begin{enumerate}[a.]
+\item $f(x) = x^2-3x+2$, $I = \gene{x-2}$.
+\item $f(x) = x^5-4x+1$, $I = \gene{x^3-x^2+x}$.
+\item $f(x) = x^2-4x+4$, $I = \gene{x^4-6x^2+12x-8,2x^3-10x^2+16x-8}$.
+\item $f(x) = x^3-1$, $I = \gene{x^9-1,x^5+x^3-x^2-1}$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item $x^2-3x+2 = (x-1)(x-2) \Rightarrow x^2-3x+2 \in \gene{x-2}$.
+\item $x^5-4x+1 = (x^2+x)(x^3-x^2+x)+(-x^2-4x+1) \Rightarrow x^5-4x+1 \notin \gene{x^3-x^2+x}$.
+\item Buscamos un generador principal de $I$.
+\[ x^4-6x^2+12x-8 = (x-\sqrt{5}+1)(x+\sqrt{5}+1)(x^2-2x+2) \]
+\[ 2x^3-10x^2+16x-8 = 2(x-1)(x-2)^2 \]
+Entonces $\gcd(x^4-6x^2+12x-8,2x^3-10x^2+16x-8)=1$, luego $I$ es el ideal total y $f \in I$.
+\item Buscamos un generador principal de $I$.
+\[ x^9-1 = (x-1)(x^2+x+1)(x^6+x^3+1) \]
+\[ x^5+x^3-x^2-1 = (x^2+1)(x-1)(x^2+x+1) \]
+Luego $\gcd(x^9-1,x^5+x^3-x^2-1) = (x-1)(x^2+x+1) = x^3-1$.
+Entonces $f \in I$ evidentemente.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.1.2}
+Find parametrization of the affine varieties defined by the following sets of equations.
+\begin{enumerate}[a.]
+\item In $\R^3$ or $\C^3$:
+\begin{align*}
+2x + 3y-z & = 9\\
+x-y & = 1\\
+3x + 7y - 2z & = 17
+\end{align*}
+\item In $\R^4$ or $\C^4$:
+\begin{align*}
+x_1 + x_2 - x_3 - x_4 & = 0\\
+x_1 - x_2 + x_3 & = 0
+\end{align*}
+\item In $\R^3$ or $\C^3$:
+\begin{align*}
+y - x^3 & = 0\\
+z - x^5 & = 0
+\end{align*}
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item Tenemos que:
+\[\begin{pmatrix}2 & 3 & -1 & -9\\1 & -1 & 0 & -1\\3 & 7 & -2 & -17\end{pmatrix} \to \begin{pmatrix}1 & -1 & 0 & -1\\0 & 5 & -1 & -7\\0 & 10 & -2 & -14\end{pmatrix} \to \begin{pmatrix}1 & -1 & 0 & -1\\0 & 5 & -1 & -7\\0 & 0 & 0 & 0\end{pmatrix} \to \begin{pmatrix}1 & 0 & -1/5 & -12/5\\0 & 1 & -1/5 & -7/5\\0 & 0 & 0 & 0\end{pmatrix}\]
+Luego tomando $x_3 = t$, $x_2 = \frac{1}{5}(t+7)$ y $x_1 = -\frac{1}{5}(t+12)$.
+\item Tenemos que:
+\[\begin{pmatrix}1 & 1 & -1 & -1\\1 & -1 & 1 & 0\end{pmatrix} \to \begin{pmatrix}1 & 1 & -1 & -1\\0 & -2 & 2 & 1\end{pmatrix} \to \begin{pmatrix}1 & 0 & 0 & -1/2\\0 & 1 & -1 & -1/2\end{pmatrix}\]
+Luego tomamos $x_3 = t$, $x_4 = u$, $x_1 = u/2$ y $x_2 = t+u/2$.
+\item Si $x=t$, entonces $y=t^3$ y $z=t^5$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.1.3}
+Find implicit equations for the affine varieties parametrized as follows.
+\begin{itemize}
+\item[a.] In $\R^3$ or $\C^3$:
+\begin{align*}
+&x_1 = t − 5,\\
+&x_2 = 2t + 1,\\
+&x_3 = −t + 6.
+\end{align*}
+\item[b.] In $\R^4$ or $\C^4$:
+\begin{align*}
+&x_1 = 2t − 5u,\\
+&x_2 = t + 2u,\\
+&x_3 = −t + u,\\
+&x_4 = t + 3u.
+\end{align*}
+\item[c.] In $\R^3$ or $\C^3$:
+\[
+x = t, y = t^4, z = t^7.
+\]
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[]
+\item[a.] En este caso podemos despejar $t$ directamente de la primera ecuación y obtenemos $t=5+x_1$. Sustituyendo en las otras 2
+\begin{align*}
+&x_2=2x_1+11\\
+&x_3=1-x_1
+\end{align*} 
+\item[b.] Sumando la segunda y la tercera ecuación tenemos $\frac{x_2+x_3}{3}=u$, y restándole a la segunda 2 veces la tercera $\frac{x_2-x_3}{3}=t$. Sustituyendo en las otras dos
+\begin{align*}
+&x_1=2\frac{x_2-x_3}{3}+5\frac{x_2+x_3}{3}\\
+&x_4=\frac{x_2-x_3}{3}+x_2+x_3
+\end{align*}
+Ya solo queda simplificar, que se deja como ejercicio al lector o para el hijo del lector. 
+\item[c.] Se tienen claramente las ecuaciones $y=x^4, z=x^7$. 
+\end{itemize}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2.1.4}
+Let $x_1, x_2, x_3,\dots$  be an infinite collection of independent variables indexed by the natural
+numbers. A polynomial with coefficients in a field $k$ in the $x_i$ is a finite linear combination
+of (finite) monomials $x^{e_1}_{i_1}\cdots x^{e_n}_{i_n}$. Let $R$ denote the set of all polynomials in the $x_i$. Note that
+we can add and multiply elements of $R$ in the usual way. Thus, $R$ is the polynomial ring
+$k[x_1, x_2,\dots]$ in infinitely many variables.
+\begin{enumerate}[a.] 
+\item[a.] Let $I = 
+\langle x_1, x_2, x_3,\dotsc\rangle$ be the set of polynomials of the form $x_{t_1} f_1+\cdots+x_{t_m} f_m$, where
+$f_j ∈ R$. Show that $I$ is an ideal in the ring $R$.
+\item[b.] Show, arguing by contradiction, that $I$ has no finite generating set. Hint: It is not enough
+only to consider subsets of $\{x_i \mid i ≥ 1\}$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item[a.] En el enunciado ya se comentaba que podemos sumar polinomios de forma usual, lo cual significa que $I$ es subgrupo abeliano de $R$. Para ver que es ideal, consideremos $g\in R$. Entonces, dado $f= x_{t_1} f_1+\cdots+x_{t_m} f_m\in I$, tenemos que $gf=x_{t_1}g f_1+\cdots+x_{t_m}g f_m\in I$, ya que $gf_j\in R$. 
+\item[b.] Si fuera finitamente generado, en particular podríamos eliminar algún $x_i$ del conjunto de generadores, pero entonces el monomio $x_i$ dejaría de pertenecer a $I$, puesto que las variables son algebraicamente independientes, así que tenemos contradicción. 
+\end{enumerate}
+\end{solucion}
+\newpage
+\begin{ejercicio}{2.1.5}
+In this problem you will show that all polynomial parametric curves in $k^2$ are contained in affine algebraic varieties.
+\begin{enumerate}[a.]
+\item Show that the number of distinct monomials $x^ay^b$ of total degree $≤ m$ in $k[x, y]$ is equal
+to $(m + 1)(m + 2)/2$.
+\item Show that if $f (t)$ and $g(t)$ are polynomials of degree $≤ n$ in $t$, then for $m$ large enough,
+the “monomials”
+$$
+[f(t)]^a[g(t)]^b
+$$
+with $a+b\leq m$ are linearly dependent.
+\item Deduce from part $(b)$ that if $C$ is a curve in $k^2$ given parametrically by $x = f (t)$, $y = g(t)$ for $f (t)$, $g(t) ∈ k[t]$, then $C$ is contained in $\V(F)$ for some nonzero $F ∈ k[x, y]$.
+\item Generalize parts $(a)$, $(b)$, and $(c)$ to show that any polynomial parametric surface
+$$
+x=f(t,u) \quad y = g(t,u) \quad z=h(t,u)
+$$
+is contained in an algebraic surface $\V(F)$, where $F ∈ k[x, y, z]$ is nonzero.
+\end{enumerate}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Calculemos el número de monomios de grado $m$. Para cada una de las dos variables $x$ e $y$ tenemos $m$ potencias que asignar. Es un ejercicio de combinatoria ver que es un ejemplo de stars and bars. Tenemos entonces 
+$$
+\binom{m+2-1}{m} = \binom{m+1}{m} = m+1
+$$
+Por tanto, el número de monomios distintos de grado menor o igual que $m$ será
+$$\sum_{k=1}^m (k+1)  = m + \sum_{k=1}^m k = m + \frac{m(m+1)}{2} = \frac{(m+1)(m+2)}{2} = \binom{m+2}{2}
+$$
+
+\item Sea $m=\deg(f)+\deg(g)$ y $h(t)=\sum_{a+b\leq m} c_{a,b}f^a(t)g^b(t)$ para algunos $c_{a,b}\in k$. Entonces $h$ es un polinomio en $t$ con grado $\deg(h)=m$ y con $\binom{m+2}{2}$ coeficientes. Como $\binom{m+2}{2}>m$ para $m\geq 1$, existen $c_{a,b}$ no todos nulos tales que $h(t)=0$ para todo $t\in k$.
+
+\item Cada $t\in k$ da lugar a un punto $(x,y)=(f(t),g(t))\in C$, luego basta tomar $F(x,y)=h(t)$ para que $C\subseteq\V(F)$.
+
+\item Considerando el conjunto de monomios de la forma $[f(t)]^a[g(t)]^b[h(t)]^c$ con $a+b+c\leq m$ obtenemos el resultado análogo definiendo $h(t)=\sum_{a+b\leq m} c_{a,b,c}f^a(t)g^b(t)h^c(t).$ Obsérveseque en este caso, el número de monomios es aún mayor, por lo que el razonamiento sobre el grado de $h$ sigue siendo válido.
+\end{enumerate}
+\end{solucion}
+\end{ejercicio}
+\end{document}

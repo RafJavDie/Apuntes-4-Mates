@@ -8,6 +8,96 @@
 \author{Rafael González López\\Diego Pedraza López}
 \maketitle
 
+\begin{ejercicio}{1}
+\begin{enumerate}
+	\item Demostrar que para $\Re s > 1$
+	\[ -\frac{ζ'(s)}{ζ(s)} = s \int_1^{+∞} \frac{ψ(x)}{x^{s+1}} dx \]
+	\item Probar que para $\Re s > 1$ se tiene
+	\[ -\frac{ζ'(s)}{ζ(s)} = \frac{s}{s-1} + s \int_1^{+∞} \frac{ψ(x)-x}{x^{s+1}}dx \]
+	\item Demostrar que si $ψ(x) = x + \mathcal{O}(x^a)$ con $a > 1/2$, entonces $ζ(s)$ no se anula en $\Re s > a$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+	\item Para $s=σ+it$ con $σ>1$, tenemos que:
+\[ - \frac{ζ'(s)}{ζ(s)} = \sum_{n=1}^{∞} \frac{Λ(n)}{n^s} \]
+Por la fórmula de Abel:
+\[ \sum_{n≤x} \frac{Λ(n)}{n^s} = \frac{ψ(x)}{x^s} + s \int_1^{x} \frac{ψ(u)}{u^{s+1}} du \]
+Tomando el límite cuando $x\to∞$ se da la fórmula que buscabamos si $\frac{ψ(x)}{x^s}$ tiende a $0$.
+\[ \lim_{x \to ∞} \left|\frac{ψ(x)}{x^s}\right| ≤ \lim_{x \to ∞} \frac{Ax}{x^σ} = 0\]
+	\item Sumando y restando $s\int_1^{+∞} \frac{x}{x^{s+1}}dx$ en el resultado anterior:
+	\[ -\frac{ζ'(s)}{ζ(s)} = s\int_1^{+∞} \frac{x}{x^{s+1}} + s \int_1^{+∞} \frac{ψ(x)-x}{x^{s+1}} dx = \frac{s}{1-s} + s \int_1^{+∞} \frac{ψ(x)-x}{x^{s+1}} dx \]
+	\item Sea $f(s) = \int_1^{+∞} \frac{ψ(x)-x}{x^{s+1}} dx$. Veamos que $f$ es analítica en $\Re s > a$ aplicando el teorema de convergencia dominada. Tenemos que usando que $ψ(x) = x+\mathcal{O}(x^a)$:
+	\[ \left|\frac{ψ(x)-x}{x^{s+1}}\right| ≤ \frac{cx^a}{x^{σ+1}} ≤ \frac{cx^a}{x^{a'+1}} = \frac{c}{x^{a'-a+1}} \]
+	con $σ > a' > a$. Como $a'-a+1 > 1$, esta fración es integrable en $[1,∞)$. Las otras condiciones del teorema de convergencia dominada son claras, luego $f(s)$ es analítica. En consecuencia, podemos extender $-\frac{-ζ'(s)}{ζ(s)} = \frac{s}{s-1}+f(s)$ a una función meromorfa en $\Re s > a$ con un polo simple en $1$.
+	Esto implica que $ζ(s)$ no se anularía para $\Re s > a$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{2}
+\begin{enumerate}[(a)]
+	\item Probar que para todo $x > 0$ y todo $s$ con $\Re s > 0$ se tiene
+	\[ ζ(s) - \frac{1}{s-1} = \sum_{n≤x} \frac{1}{n^s} + \frac{x^{1-s}-1}{s-1} + \frac{\{x\}-\frac{1}{2}}{x^s} - s \int_x^{+∞} \frac{\{u\}-\frac{1}{2}}{u^{s+1}} du \]
+	\item Demostrar que existe y calcular el límite
+	\[ \lim_{s \to 1} \left(\sum_{n≤x} \frac{1}{n^s} + \frac{x^{1-s}-1}{s-1} + \frac{\{x\}-\frac{1}{2}}{x^s} - s \int_x^{+∞} \frac{\{u\}-\frac{1}{2}}{u^{s+1}} du\right) \]
+	\item Demostrar que
+	\[ ζ(s) = \frac{1}{s-1} + γ + \sum_{n=1}^{∞} \frac{(-1)^n}{n!} γ_n (s-1)^n \]
+	donde la serie de potencias tiene radio infinito, y $γ$ es la constante de Euler.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item En este caso basta con usar el teorema 3.2.4 que nos dice que 
+$$\zeta(s)=\sum\limits_{n\leq x}\dfrac{1}{n^s}+\dfrac{x^{1-s}}{s-1}+\dfrac{\{x\}-\frac{1}{2}}{x^s}-s\int_x^{+\infty}\frac{\{u\}-\frac{1}{2}}{u^{s+1}}du$$
+Entonces añadiendo un término de $1-1$
+$$\zeta(s)=\sum\limits_{n\leq x}\dfrac{1}{n^s}+\dfrac{x^{1-s}+1-1}{s-1}+\dfrac{\{x\}-\frac{1}{2}}{x^s}-s\int_x^{+\infty}\frac{\{u\}-\frac{1}{2}}{u^{s+1}}du$$
+$$\displaystyle{\zeta(s)-\frac{1}{s-1}=\sum\limits_{n\leq x}\frac{1}{n^s}+\frac{x^{1-s}-1}{s-1}+\frac{\{x\}-\frac{1}{2}}{x^s}-s\int_x^{+\infty}\frac{\{u\}-\frac{1}{2}}{u^{s+1}}du}.$$
+	\item Veamos que ocurre en cada término:
+	\[ \lim_{s \to 1} \sum_{n≤x} \frac{1}{n^s} = \sum_{n≤x} \frac{1}{n} 
+	\qquad \lim_{s \to 1} \frac{x^{1-s}-1}{s-1} \stackrel{L'H}{=} \lim_{s \to 1} \frac{-x^{1-s}\log x}{1} = - \log x \]
+	\[ \lim_{s \to 1} \frac{\{x\}-\frac{1}{2}}{x^s} = \frac{\{x\}-\frac{1}{2}}{x} \qquad \lim_{s \to 1} s \int_x^{∞} \frac{\{u\}-\frac{1}{2}}{u^{s+1}} du = \int_x^{∞} \frac{\{u\}-\frac{1}{2}}{u^2} du \]
+	Por lo tanto el límite es:
+	\[ \sum_{n≤x}\frac{1}{n} - \log x + \frac{\{x\}-\frac{1}{2}}{x} - \int_x^{∞} \frac{\{u\}-\frac{1}{2}}{u^2} du \]
+	\item Se tiene que $ζ(s)-\frac{1}{s-1}$ es analítica en todo el plano complejo. Tomamos como su desarrollo en serie con centro en $1$. $a_n=\frac{(-1)^n}{n!} γ_n$ para $n ≥ 1$. El valor de $a_0$ será igual al resultado del anterior apartado. Como no depende de $x$, podemos límite cuando $x$ tiende a infinito y obtenemos:
+	\[ ζ(s) - \frac{1}{s-1} = γ + \sum_{n=1}^{∞} \frac{(-1)^n}{n!} γ_n (s-1)^n \]
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{3}
+\begin{enumerate}
+	\item Demostrar que para $x > 1$ $\sum_{n=1}^{∞} e^{-πn^2 x} ≤ \frac{21}{20} e^{-πx}$.
+	\item Demostrar que para $0 < σ < 1$ se tiene $π^{-\frac{σ}{2}}Γ(σ/2) ζ(ο) ≤ -1.9$.
+	\item Deducir que $ζ(σ) < 0$ para $0 < σ < 1$.
+	\item La función zeta no se anula en el segmento $[0,1]$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[(a)] Sea $x>1$. Observe que $e^{-\pi n^2x}\leq e^{-\pi nx}$, para todo $n\in\N$. Se deduce por tanto
+\[\sum_{n=1}^{\infty}e^{-\pi n^2x}\le\sum_{n=1}^{\infty}e^{-\pi nx}=\frac{1}{e^{\pi x}-1}.\]
+Verifiquemos que $\frac{1}{e^{\pi x}-1}\le\frac{21}{20}e^{-\pi x}$. Es fácil obtener que 
+\[\frac{1}{e^{\pi x}-1}\le\frac{21}{20}e^{-\pi x}\quad\Leftrightarrow\quad e^{\pi x}\ge 21.\]
+Dado que $e^{\pi}\approx 23.1406$ obtenemos el resultado.
+\item[(b)] Sea $\sigma\in(0,1)$. Por la \emph{Proposición 3.2.8} se verifica
+\[\pi^{-\frac{\sigma}{2}}\Gamma(\sigma/2)\zeta(\sigma)=\frac{1}{\sigma(\sigma-1)}+\int_{1}^{\infty}(x^{\frac{\sigma}{2}}+x^{\frac{1-\sigma}{2}})\frac{\theta(x)-1}{2x}dx.\]
+Acotemos los dos sumandos:
+\[\frac{1}{\sigma(\sigma-1)}\le\frac{1}{\frac{1}{2}(\frac{1}{2}-1)}=-4;\]
+\[\int_{1}^{\infty}(x^{\frac{\sigma}{2}}+x^{\frac{1-\sigma}{2}})\frac{\theta(x)-1}{2x}dx\le\int_{1}^{\infty}(\theta(x)-1)dx\]
+\[\int_{1}^{\infty}\theta(x)-1dx\le^{(a)}\frac{21}{10}\int_{1}^{\infty}e^{-\pi x}dx=\frac{21}{10\pi e^{\pi}}\approx 0.0288.\]
+Por tanto 
+\[\pi^{-\frac{\sigma}{2}}\Gamma(\sigma/2)\zeta(\sigma)<1.9.\]
+\item[(c)] Sea $\sigma\in(0,1)$. En el apartado anterior hemos probado 
+\[\pi^{-\frac{\sigma}{2}}\Gamma(\sigma/2)\zeta(\sigma)\le -1.9\textrm{.}\] 
+Dado que se verifica $\Gamma(\sigma/2)=\int_{0}^{\infty}t^{(\frac{\sigma}{2}-1)}e^{-t}dt>0$, obtenemos 
+\[\zeta(\sigma)\le \frac{-1.9}{\pi^{-\frac{\sigma}{2}}\Gamma(\sigma/2)}<0\textrm{.}\]
+\item[(d)] Acabamos de probar que $\zeta(\sigma)<0$, para todo $\sigma\in(0,1)$. Además se verifica que $\zeta(0)=\frac{-1}{2}$, y $\zeta(1)=\infty$. Concluimos por lo tanto que la función $\zeta$ no se anula en el segmento $[0,1]$.
+\end{itemize} 
+\end{solucion}
+\newpage
+
 \begin{ejercicio}{4}
 \begin{itemize}
 \item[]
@@ -24,13 +114,13 @@ $$
 \begin{sol}
 \begin{itemize}
 \item[]
-\item[a)] Sabemos por teoría que podemos expresar $\gamma$ es una función meromorfa definida en todo el plano complejo salvo los enteros no positivos, sin ceros y que verifica en este dominio la expresión:
+\item[a)] Sabemos por teoría que podemos extender $Γ$ a una función meromorfa definida en todo el plano complejo salvo los enteros no positivos, sin ceros y que verifica en este dominio la expresión:
 \[ \frac{1}{Γ(s)} = s e^{γs} \prod_{n=1}^{∞} \left(1 + \frac{s}{n}\right) e^{-s/n} \]
 Cambiando de parámetro $s=z+1$ y renombrando $z$ como $s$, por lo anterior podemos considerar la siguiente derivada logarítica en todo el plano complejo salvo los enteros negativos
 \begin{align*}
 \frac{d}{ds}\left(-\log \Gamma(s+1)\right) &=  \frac{d}{ds}\log\left((s+1) e^{γ(s+1)} \prod_{n=1}^{∞} \left(1 + \frac{(s+1)}{n}\right) e^{-(s+1)/n}\right)\\
 &= \frac{d}{ds}\left( \log(s+1)+\gamma(s+1)+\sum_{n=1}^\infty \log\left(1+\frac{s+1}{n}\right)-\frac{s+1}{n}\right)\\
-&= \frac{1}{s+1} +\gamma + \sum_{n=1}^\infty \left(\frac{1}{n+s+1}-\frac{1}{n}\right) = -\frac{\Gamma'(s+1)}{\Gamma(s+1)}
+&= \frac{1}{s+1} +\gamma + \sum_{n=1}^\infty \left(\frac{1}{n+s+1}-\frac{1}{n}\right)= -\frac{\Gamma'(s+1)}{\Gamma(s+1)}
 \end{align*}
 Pasamos a denotar $\psi(s) = \dfrac{\Gamma'(s)}{\Gamma(s)}$. Por tanto, hemos llegado a la expresiones
 \begin{align*}
@@ -54,37 +144,172 @@ $$
 $$
 Como queríamos demostrar.
 \newpage
-\item[b)] Sabemos por teoría que 
-$$\Gamma(s)\Gamma(1-s)=\frac{\pi}{\sin(\pi s)}
+\item[b)] Sabemos por teoría que si $s\notin \Z$
+$$\Gamma(1+s)=s\Gamma(s)  \qquad \frac{1}{s}\Gamma(1+s)\Gamma(1-s)= 	\Gamma(s)\Gamma(1-s)=\frac{\pi}{\sin(\pi s)} \qquad 
 $$
-Utilizando la derivada logarítmica vamos a deducir lo siguiente:
+Utilizando la derivada logarítmica aplicando a $s/\pi$ vamos a deducir lo siguiente:
 \begin{align*}
-(\log{\Gamma(s)\Gamma(1-s))}' & = \frac{\Gamma'(s)}{\Gamma(s)} - \frac{\Gamma'(1-s)}{\Gamma(1-s)} = \psi(s)-\psi(1-s) = \\
-&=\left(\log\frac{\pi}{\sin(\pi s)}\right)'  = -\pi\cot(\pi s)
+\left(\log\left(\frac{\pi}{s}\Gamma\left(1+\frac{s}{\pi}\right)\Gamma\left(1-\frac{s}{\pi}\right)\right)\right)' & = \frac{1}{\pi}\frac{\Gamma'\left(1+\frac{s}{\pi}\right)}{\Gamma\left(1+\frac{s}{\pi}\right)} - \frac{1}{\pi}\frac{\Gamma'(1-\frac{1}{\pi})}{\Gamma(1-\frac{1}{\pi})} - \frac{1}{s}\\
+ &= \frac{1}{\pi}\psi(1+s/\pi)-\frac{1}{\pi}\psi(1-s/\pi) - \frac{1}{s}\\
+&=\left(\log\frac{\pi}{\sin(s)}\right)'  = -\cot(s)
 \end{align*}
-$$
-\psi(1-s)-\psi(s) = \pi\cot(\pi s) \Longrightarrow s\psi(1-s)-s\psi(s) = s\pi\cot(\pi s)
-$$
-Vamos a analizar la función $q(s) = s\psi(1-s)-s\psi(s)$. Obviamente es una función meromorfa definida en el plano complejo salvo en los enteros. Además, por igualdad anterior, deducimos que $q(s)$ es impar, luego en sus series de Taylor tiene los coeficientes impares nulos.
+Si $0<|s|<1$ podemos utilizar la expresión obtenida en el apartado anterior
 \begin{align*}
-s\psi(1-s)-s\psi(s) & = \gamma + sh(-s) -\gamma - sh(s-1)\\
-&=s\sum_{n=1}^\infty(-1)^{n}\zeta(n+1) (-s)^n - s\sum_{n=1}^\infty(-1)^{n}\zeta(n+1) (s-1)^n
+\frac{1}{\pi}\left(\psi(1+s/\pi)-\psi(1-s/\pi)\right) &=  -\frac{1}{\pi}\left(\gamma+ \sum_{n=1}^\infty(-1)^{n}\zeta(n+1) \left(\frac{s}{\pi}\right)^n -  \gamma - \sum_{n=1}^\infty\zeta(n+1) \left(\frac{s}{\pi}\right)^n\right)\\
+&=2\sum_{n=1}^\infty \zeta(2n)\frac{s^{2n-1}}{\pi^{2n}}\\
+&=-\cot(s)+\frac{1}{s}
 \end{align*}
+Si ahora multiplicamos por $s$ a ambos lados
+\begin{gather*}
+2\sum_{n=1}^\infty \zeta(2n)\left(\frac{s}{\pi}\right)^{2n}=-s\cot(s)+1 
+\end{gather*}
+De donde basta una simple manipulación algebraica para obtener
+$$
+1-2\sum_{n=1}^\infty \zeta(2n)\left(\frac{s}{\pi}\right)^{2n}=s\cot(s)
+$$
+Una fórmula que puede extenderse a todo $|s|<1$, pues $s\cot(s)\to 1$ cuando $s\to 0$.
 \end{itemize}
 \end{sol}
 \newpage
 
-\begin{ejercicio}{7}
-\begin{itemize}
-\item[]
-\item[a)] Sea $0<\theta<1$. Demostrar que existe una constante $A$ tal que para $t>1$ u $\sigma>\theta$ se tiene
-$$
-|\zeta(\sigma +it)|\leq A\frac{t^{1-\theta}}{\theta(1-\theta)}
-$$
-\item[b)] Demostrar que existe una constante positiva $B$ tal que para $t>e$ se tiene
-$$
-|\zeta(1+it)|\leq B\log t
-$$
-\end{itemize}
+\begin{ejercicio}{5}
+Deducir los otro tres desarrollos en serie a partir del primero de ellos
+
+\begin{gather*}
+	x \cot x = 1-2 \sum_{n=1}^{∞} ζ(2n) \left(\frac{x}{2π}\right)^{2n}, \quad \frac{x}{e^x-1}-1+\frac{x}{2}=2\sum_{n=1}^{∞}(-1)^{n-1}ζ(2n)\left(\frac{x}{2π}\right)^{2n}\\
+\end{gather*}
 \end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{itemize}
+	\item Nos centramos en la serie:
+	\[ \sum_{n=1}^{∞} 4(2^{2n-1}-1)ζ(2n)\left(\frac{x}{2π}\right)^{2n} = 2 \sum_{n=1}^{∞} ζ(2n)\left(\frac{x}{π}\right)^{2n}-4\sum_{n=1}^{∞}ζ(2n)\left(\frac{x}{π}\right)^{2n} \]
+	Usando el primer desarrollo, esto es igual a:
+	\[ 1-x\cot x - 2\left(1-\frac{x}{2}\cot \frac{x}{2}\right) = -1+x\left(\frac{\cos x/2}{\sin x/2} - \frac{\cos x}{\sin x}\right)= -1+x\left(\frac{2\cos^2 x/2}{2(\sin x/2)(\cos x/2)} - \frac{\cos x}{\sin x}\right) \]
+	\[ = -1 + x \left(\frac{2\cos^2(x/2) - \cos x}{\sin x}\right) = -1 + \frac{x}{\sin x}\]
+	que demuestra el desarrollo.
+	
+	\item
+\end{itemize}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{6}
+\begin{enumerate}[(a)]
+	\item Se definen los números de Bernoulli mediante el desarrollo
+	\[ \frac{x}{e^x-1} = \sum_{n=0}^{∞} \frac{B_n}{n!}x^n \]
+	Demostrar que cada $B_n$ es un número racional.
+	\item Deducir que $B_0 = 1$, $B_1 = -1/2$, $B_{2k+1} = 0$ para cada $k=1,2,\dots,$ y que
+	\[ ζ(2n) = 1 + \frac{1}{2^{2n}} + \frac{1}{3^{2n}} + \dots = (-1)^{n-1} \frac{2^{2n-1}π^{2n}B_{2n}}{(2n)!} \]
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{enumerate}[(a)]
+	\item Por el ejercicio anterior, sabemos que la serie converge si $|x|<2π$. Vemos que:
+	\[ x = (e^x-1)\left(\frac{x}{e^x-1}\right) = \left(\sum_{n=1}^{∞} \frac{x^n}{n!}\right)\left(\sum_{n=0}^{∞} \frac{B_n}{n!}x^n\right)\]
+
+Luego desarrollando el producto de la serie en potencias de $x$ tenemos que:
+\[ 1 = \frac{B_0}{0!}\frac{1}{1!} \]
+\[ 0 = \sum_{k=0}^{n-1} \frac{B_k}{k!} \frac{1}{(n-k)!} \quad \forall n≥1\]
+De aquí, claramente $B_n$ es racional para todo $n$ por inducción.
+
+	\item Del desarrollo del ejercicio anterior:
+	\[ \frac{x}{e^x-1} = \sum_{n=0}^{∞} \frac{B_n}{n!} x^n = 1-\frac{x}{2} + 2 \sum_{n=1}^{∞} (-1)^{n-1} ζ(2n) \left(\frac{x}{2π}\right)^{2n}\]
+	Entonces:
+	\[ \frac{B_{2n}}{(2n)!} = 2(-1)^{n-1} \frac{ζ(2n)}{(2π)^{2n}} \]
+	Despejando $ζ(2n)$ obtenemos la fórmula anterior.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{7}\mbox{}
+\begin{enumerate}[(a)]
+\item Sea $0<θ<1$. Demostrar que existe una constante $A$ tal que para $t>1$ u $σ>θ$ se tiene
+$$
+|ζ(σ +it)|\leq A\frac{t^{1-\theta}}{\theta(1-\theta)}
+$$
+\item Demostrar que existe una constante positiva $B$ tal que para $t>e$ se tiene
+$$
+|ζ(1+it)|≤ B\log t
+$$
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Tenemos que:
+\[ ζ(s) = \sum_{n≤x} \frac{1}{n^s} + \frac{x^{1-s}}{s-1} + \frac{\{x\}-1/2}{x^s}+s \int_x^{∞} \frac{\{u\}}{u^{s+1}} du \]
+Tomamos $x=t$. Sabemos que $0<\theta<1<t$ y $\theta<\sigma$. Si $s=\sigma + it$ entonces $\abs{\sigma + it}> \sigma > \theta$, luego $n^{\abs{\sigma+it}}>n^{\theta}$.
+\begin{align*}
+ |ζ(σ+it)| &=\abs{ \sum_{n≤t} \frac{1}{n^s} + \frac{t^{1-s}}{s-1} + \frac{\{t\}-1/2}{t^s}+s \int_x^{∞} \frac{\{u\}}{u^{s+1}} du }\\
+ &\leq \sum_{n≤t} \frac{1}{\abs{n^s}} + \abs{\frac{t^{1-s}}{s-1}} + \abs{\frac{\{t\}-1/2}{t^s}}+\abs{s \int_t^{∞} \frac{\{u\}}{u^{s+1}} du }
+ \end{align*}
+Vamos analizar los términos
+
+\begin{gather*}
+ \sum_{n≤t} \frac{1}{\abs{n^s}} \leq  \sum_{n≤t} \frac{1}{n^{\abs{s}}} \leq  \sum_{n≤t} \frac{1}{n^\theta} \\
+ \abs{\frac{t^{1-s}}{s-1}} = \frac{\abs{t^{1-s}}}{\abs{\sigma-1 + it}}\leq  \frac{1}{t\abs{t^{s-1}}}= \frac{1}{\abs{t^s}} \leq \frac{1}{t^\theta}\\
+ \abs{\frac{\{t\}-1/2}{t^s}} \leq \abs{\frac{\{t\}}{t^s}}+\abs{\frac{1/2}{t^s}}\leq \frac{1}{t^\theta} + \frac{1}{2t^{\theta}} \leq \frac{3}{2t^{\theta}}\\
+ \abs{s \int_t^{∞} \frac{\{u\}}{u^{s+1}} du } \leq (\sigma+t){ \int_t^{∞} \frac{1}{u^{\theta+1}} du } = (\sigma+t)\frac{t^{-\theta}}{\theta}
+ \end{gather*}
+ Por tanto tenemos, usando que $t^{-\theta} \leq t^{1-\theta}$.
+ \begin{align*}
+ |ζ(σ+it)|&\leq \sum_{n≤t} \frac{1}{n^θ} +\frac{1}{t^\theta}\left(\frac{5}{2}+\frac{1}{\theta}\right)\leq   \sum_{n≤t} \frac{1}{n^θ} +\frac{1}{t^\theta}\frac{5\theta+2}{2\theta}\leq 1 + \int_1^t \frac{1}{u^\theta}du + \frac{7t^{1-\theta}}{2\theta}  \\
+& \leq 1+ \frac{t^{1-\theta}-1}{(1-\theta)}+ A\frac{t^{1-\theta}}{\theta} 1+ \frac{t^{1-\theta}}{(1-\theta)}+ A\frac{t^{1-\theta}}{\theta}\leq 1+ t^{1-\theta}\frac{\theta  + A(1-\theta)}{\theta(1-\theta)}\\
+&\leq 1+ t^{1-\theta}\frac{1  + A}{\theta(1-\theta)}\leq 1+\frac{A't^{1-\theta}}{\theta(1-\theta)} \leq \frac{A't^{1-\theta}+\theta(1-\theta)}{\theta(1-\theta)} \\
+&\leq  \frac{A't^{1-\theta+}+1/4}{\theta(1-\theta)} \leq  \frac{A't^{1-\theta}+t^{1-\theta}}{\theta(1-\theta)} \leq\frac{A''t^{1-\theta}}{\theta(1-\theta)}
+ \end{align*}
+Donde hemos usado que $1/4 < 1 < t$ y $1> 1-\theta >0$, luego $1/4 < (1/4)^{1-\theta}< t^{1-\theta}$.
+
+Para el siguiente apartado consideramos
+\[|\zeta(1+it)| \leq A\frac{t^{1-\theta}}{\theta(1-\theta)}\]
+Derivando con respecto a $\theta$ el miembro derecho obtenemos que el máximo se alcanza en $\theta=1-\frac{1}{\log t}$ (que no se anula pues $t>e$), de donde se tiene si $t>e^2$
+$$
+|\zeta(1+it)| \leq A \frac{t^{1/\log t}}{(1-\frac{1}{\log t})\frac{1}{\log t}}\leq 2A \frac{e}{1/\log t}
+$$
+Si estamos en $e\leq t\leq e^2$, estamos en un compacto y podemos acotar por una constante.
+\end{solucion}
+\newpage
+\begin{ejercicio}{8}
+Demostrar que $ζ(0) = -1/2$ y para todo $n≥1$ se tiene
+\[ ζ(-n) = (-1)^n \frac{B_{n+1}}{n+1} \]
+donde $B_n$ son los números de Bernoulli.
+\end{ejercicio}
+\begin{solucion}
+A partir de la ecuación funcional
+$$\pi^{-s/2}\Gamma(s/2)\zeta(s)=\pi^{-(1-s)/2}\Gamma((1-s)/2)\zeta(1-s)$$
+Sabemos que $\zeta(s)$ tiene un polo en $1$ tal que $(s-1)\zeta(s)\to 1$ cuando $s\to 1$. O de forma equivalente, $-s\zeta(1-s)\to1$ si $t\to0$. Multiplicamos por $s$ en la ecuación funcional y tenemos que 
+$$
+s\pi^{-s/2}\Gamma(s/2)\zeta(s) = 2 \pi^{-s/2}\Gamma(1+s/2)\zeta(s) = s\pi^{-(1-s)/2}\Gamma((1-s)/2)\zeta(1-s)
+$$
+Tomando límite cuando $s\to 0$ nos queda
+$$
+2\Gamma(1)\zeta(0)=\pi^{-1/2}\Gamma(1/2)(-1) \qquad \zeta(0) = -\frac{1}{2}
+$$
+Para el siguiente apartado, consideramos 
+$$
+\zeta(s)=\frac{\pi^{-(1-s)/2}\Gamma((1-s)/2)\zeta(1-s)}{\pi^{-s/2}\Gamma(s/2)} \quad 
+\zeta(-n) =\frac{\pi^{-(1+n)/2}\Gamma((1+n)/2)\zeta(1+n)}{\pi^{n/2}\Gamma(-n/2)}
+$$
+Como $\Gamma(-2n)=\infty$, $\zeta(-2n)=0$ con $n>0$, luego podemos considerar el caso de los impares negativos
+\begin{align*}
+\zeta(-1-2k) & =\frac{\pi^{-2k-3/2}\Gamma(k+1)\zeta(2k+2)}{\Gamma(-1/2-k)}\\
+&=\frac{\pi^{-2k-3/2}k!\zeta(2k+2)}{(-1)^{k+1}\pi}\\
+&=(-1)^{k+1}\pi^{-2k-5/2}k!\frac{(2k+2)!\sqrt{\pi}}{(k+1)!2^{2k+2}}(-1)^k\frac{2^{k+1}\pi^{2k+2}B_{2k+1}}{(2k+2)!}\\
+&=(-1)^{2k+1}\frac{B_{2k+2}}{2k+2}
+\end{align*}
+\end{solucion}
+\newpage
+\begin{ejercicio}{9}
+\begin{enumerate}[(a)]
+	\item Demostrar que existe una constante $A$ tal que para $n \to +∞$
+	\[ \log n! = \left(n+\frac{1}{2}\right)\log n - n + A + \mathcal{O}\left(\frac{1}{n}\right)\]
+	
+	\item Usando la fórmula de Gauss demostrar la fórmula de Wallis
+	\[ \sqrt{π} = Γ(1/2) = \lim_{n\to∞} \frac{2^{2n}(n!)^2}{(2n)!\sqrt{n}} \]
+	
+	\item Probar que $A = \log {2π}$.
+	\item Deducir la fórmua de Stirling
+	\[ n! = \sqrt{2πn} \left(\frac{n}{e}\right)^n (1 + \mathcal{O}(1/n)) \]
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
 \end{document}

@@ -1,0 +1,78 @@
+	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Cálculo en Variedades, Diciembre de 2015}
+\author{Javier Aguilar Martín}
+\maketitle
+
+
+\begin{ejercicio}{1}
+Demuestra que si $V$ es un $\R$-espacio vectorial con $\dim(v)=3$, entonces para todo $w\in Alt^q(V), q>0$ se verifica que $w\land w=0$.
+\end{ejercicio}
+\begin{solucion}
+Solo es necesario considerar el caso $q=1$, pues para $q\geq 2$, $w\land w\in Alt^{2q}(V)$ con $2q\geq 4>3$, por lo que se tiene trivialmente el resultado. En el caso $q=1$ usamos que $w\land w=(-1)^{q^2}w\land w=-w\land w$, por lo que $w\land w=0$.
+
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Sea $M$ una $n$-variedad diferenciable, compacta y orientable, $\theta\in\Omega^{n-1}(M)$. Demuestra que $d\theta$ debe anularse en algún punto de $M$.
+\end{ejercicio}
+\begin{solucion}
+Sea $\theta\in\Omega^{n-1}(M)$. El soporte es en general un cerrado, y como $M$ es compacta, el soporte es compacto. Como $M$ es orientable tenemos que $\int_M d\theta=0$, pero esto implica que necesariamente $d\theta=0$ en algún punto, con lo que se tiene el resultado. 
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{3}
+Sea $M$ una $n$-variedad diferenciable conexa y orientable. Considera la aplicación identidad sobre $M$:
+\[
+1_M:M\to -M
+\]
+entre las dos orientaciones posibles $M$ y $-M$. Demuestra que entonces $1_M$ invierta la orientación.
+\end{ejercicio}
+\begin{solucion}
+Sean $w\in\Omega^n(M)$ la forma de orientación que determina la orientación de $M$ (y por tanto $-w$ la de $-M$). Por funtorialidad de la estrella, $1_M^*=Id:\Omega^*(-M)\to\Omega^*(M)$, por lo que $1_M^*(-w)=-w$, así que $1_M$ revierte la orientación por definición.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{4}
+Sea $M$ una $n$-variedad diferenciable orientable y compacta. Considera el siguiente morfismo
+\[
+\begin{tikzcd}
+\mathcal{P}: & \Omega^k(M)\arrow[r]    & (\Omega^{n-k}(M))^*  &                  & \\
+             & \alpha\arrow[r, mapsto] & \mathcal{P}(\alpha): & \Omega^{n-k}(M)\arrow[r]  & \R\\
+             &		                   &					  &  \beta\arrow[r]  &\mathcal{P}(\alpha)(\beta)=\int_M \alpha\land\beta
+\end{tikzcd}
+\]
+\begin{enumerate}[a)]
+\item Demuestra que $\mathcal{P}$ está bien definido y que además describe un homomorfismo de $\R$-espacios vectoriales.
+\item Diremos que las $k$-formas $\delta\equiv\gamma$ son equivalentes si $\delta-\gamma=d\phi$ para alguna $(k-1)$-forma $\phi$. Demuestra que si $\alpha_1\equiv \alpha_2$, $\beta_1\equiv\beta_2$ y son formas cerradas, entonces $\mathcal{P}(\alpha_1)(\beta_1)=\mathcal{P}(\alpha_2)(\beta_2)$. 
+\item Utilizando b), demuestra que $\mathcal{P}$ induce un homomorfismo de $\R$-espacios vectoriales $\overline{P}:H^k(M)\to (H^{n-k}(M))^*$.
+\end{enumerate}
+\begin{nota}
+Recuerda que si $V$ es un $R$-espacio vectorial, también se denota por $(V)^*=Hom_\R(V,\R)=Alt^1(V)$ al conocido como espacio dual de $V$.
+\end{nota}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}[a)]
+\item Como $\alpha\in\Omega^k(M)$ y $\beta\in\Omega^{n-k}(M)$, $\alpha\land\beta\in\Omega^n(M)$ y la integral está bien definida. La linealidad del producto exterior y de la integral convierte a $\mathcal{P}$ en un homomorfismo de $\R$-espacios vectoriales.
+\item Supongamos que las formas son cerradas, es decir, que sus derivadas exteriores se anulan. Supongamos que $\alpha_1-\alpha_2=da$ y $\beta_1-\beta_2=db$, entonces, si consideramos $a\land β_1 + (-1)^{k-1} α_2\land b$,
+\begin{align*}
+d(a\land β_1 + (-1)^{k-1} α_2\land b)&=d(a\land β_1)+ (-1)^{k-1}d(α_2\land b)\\
+&=da\land\beta_1+(-1)^{k-1} a\land d\beta_1+(-1)^{k-1} (d\alpha_2\land b+(-1)^{k-1}\alpha_2\land db)\\
+&=(\alpha_1-\alpha_2)\land \beta_1+\alpha_2\land (\beta_1-\beta_2)=\alpha_1\land\beta_1-\alpha_2\land\beta_2.
+\end{align*}
+Ahora, por el corolario del teorema de Stokes, tenemos que la integral es 0 y se obtiene el resultado.
+\item Basta comprobar que está bien definido, lo cual es inmediato a partir de b), pues las formas cerradas son las que definen clases de cohomología y estar en la misma clase de cohomología es por definición estar relacionados mediante la relación de equivalencia de b).
+\end{enumerate}
+\end{solucion}
+
+
+
+
+\end{document}

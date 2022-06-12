@@ -22,7 +22,7 @@ en $V$.
 $i\in\{1,\dots ,r\}$, entonces $T(X_1,\dots ,X_r)(p)=T(Y_1,\dots ,Y_r)(p)$.
 \end{enumerate}
 \end{prop}
-\begin{nota}
+\begin{nota}\label{tensores}
 {\rm El nombre de campo de tensores $r$--covariantes proviene del
 hecho de que un tal objeto puede también interpretarse como
 una aplicación $T$ que a cada punto $p\in U$ le hace
@@ -45,6 +45,8 @@ diferenciables en $U$, tales que $\overline{X}_i=X_i$ en un cierto
 entorno de $p$ contenido en $V$, $i=1,\dots ,r$. Por otra parte,
 es inmediato observar que, dados $T,S\in T_r(U)$, $T=S$ si y
 sólo si $T_p=S_p$ para todo $p \in U$.}
+
+
 \end{nota}
 \begin{prop}Sea $M$ una variedad diferenciable y $U\subseteq M$ un abierto. Se verifican:
 \begin{enumerate}
@@ -84,6 +86,16 @@ que:
 $$T=\sum_{i_1,\dots ,i_r=1}^mT\left(\dep{x_{i_1}},\dots
 ,\dep{x_{i_r}}\right)\de{x_{i_1}}\otimes\cdots\otimes\de{x_{i_r}}.$$
 \end{prop}
+\begin{dem}
+Veamos que es sistema generador. Sean $X_1,\dots, X_r\in\mathcal{X}(U)$ cualesquiera. Tenemos $X_j=\sum_{i_j=1}^mX_jx_{i_j}\frac{\partial}{\partial x_{i_j}}\ \forall j=1,\dots,r$. Así
+$$T(X_1,\dots,X_r)=T(\sum_{i_1=1}^mX_jx_{i_1}\frac{\partial}{\partial x_{i_1}},\dots,\sum_{i_r=1}^mX_jx_{i_r}\frac{\partial}{\partial x_{i_r}})=$$
+$$\sum_{i_1,\dots i_r=1}^m(X_1x_{i_1})\dots(X_rx_{i_r})T(\frac{\partial}{\partial x_{i_1}},\dots,\frac{\partial}{\partial x_{i_r}})=\sum_{i_1,\dots i_r=1}^mdx_{i_1}(X_1)\dots dx_{i_r}(X_r)=T(\frac{\partial}{\partial x_{i_1}},\dots,\frac{\partial}{\partial x_{i_r}})=$$
+$$\sum_{i_1,\dots i_r=1}^mdx_{i_1}\otimes\dots\otimes dx_{i_r}T(\frac{\partial}{\partial x_{i_1}},\dots,\frac{\partial}{\partial x_{i_r}})(X_1,\dots,X_r)$$
+Ahora la independencia lineal. Sea $\sum_{i_1,\dots,i_r=0}^m f_{i_1,\dots, i_r}dx_{i_1}\otimes\dots\otimes dx_{i_r}=0$. Entonces 
+$$\sum_{i_1,\dots,i_r=0}^m f_{i_1,\dots, i_r}dx_{i_1}\otimes\dots\otimes dx_{i_r}(\frac{\partial}{\partial x_{j_1}},\dots,\frac{\partial}{\partial x_{j_r}})=0$$
+Pero $dx_{i_1}(\frac{\partial }{\partial x_{j_1}})=\delta_{i,j_1}$ y así. Entonces solo queda $f_{j_1,\dots,j_r}\neq 0$ para cada caso en el que todos valgan 1, por lo que todos los coeficientes son 0. $\QED$. 
+\end{dem}
+
 \begin{defi}
 Dada una variedad diferenciable $M$ y un abierto $U\subseteq M$, un {\bf Campo de Tensores $r$--Covariantes y
 1--Contravariantes Diferenciable} sobre $U$ es una aplicación $r$--lineal del $\esp{F}(U)$--módulo $\esp{X}(U)$ en
@@ -155,7 +167,9 @@ Se verifica que
 $$\Lambda(U)=\bigoplus_{r=0}^m\Lambda_r(U)$$
 con el producto exterior es un álgebra asociativa, no conmutativa y con elemento unidad.
 \end{prop}
-\section{Acción de Aplicaciones sobre los Campos de Tensores.}
+
+
+\section{Pull-Back de un Campo de Tensores.}
 \begin{defi}
 Sean $M$ y $N$ dos variedades diferenciables y
 $f\in\mathcal{F}(M,N)$. Dado $T\in T_r(N)$, se define $f^*T\in
@@ -184,6 +198,25 @@ $\om,\theta\in\Lambda(N)$. \item $f^*(\de{g})=\de{(f^*g)}$, para
 cualquier $g\in\mathcal{F}(N)$.
 \end{enumerate}
 \end{prop}
+
+\begin{nota}
+Si $w\in\Lambda_1(N)$ y $p\in M$, entonces $(f^*w)_p=f^*_p(w_{f(p)})$.
+\begin{proof}
+$\forall u\in T_p(M)$, por definición de pull-back y de $f^*_p$,
+$$(f^*w)_pu=w_{f(p)}(f_{*p}u)=(f^*_pw_{f(p)})u.$$
+\end{proof}
+\end{nota}
+
+\begin{ej}
+Sea $S$ una superficie regular en $\R^3$. Consideramos $g=dx\otimes dx + dy\otimes dy + dz\otimes dz\in T_2(\R^3)$ (métrica euclídea).
+Tenemos que la inclusión $i:S\hookrightarrow \R^3$ es diferenciable, luego podemos considerar $i^*g\in T_2(S)$. $\forall p\in S$, $(i^* g)_p(u_1,u_2)=g_{i(p)}(i_{*p}u_1,i_{*p}u_2)=(i_{*p}u_1)\cdot (i_{*p}u_2)$. En geometría local esto es precisamente la IFF de $u_1$ y $u_2$, luego $i^*g=I$. 
+\end{ej}
+
+\begin{nota}
+En $\R^4$, además de la métrica euclídea, podemos introducir la métrica $g=dx\otimes dx + dy\otimes dy + dz\otimes dz-dt\otimes dt \in T_2(\R^4)$, que es la métrica de Lorentz-Minkowsky. Si $m_p(v,v)>0$ se llama vector espacial, si es $<0$ temporal y si es $=0$ luminoso. Esta métrica es semi-Riemanniana.
+
+También podemos adaptarla a $\R^3$ cambiándo el signo de la $z$ a la euclídea. Si tomamos $\mathbb{H}^2=\{(x,y,z)\in\R^3\mid x^2+y^2-z^2=-1\}\subseteq (\R^3,m)$. Entonces $i:\mathbb{H}\hookrightarrow\R^3$ induce $h=i^*m$ que es una métrica Riemanniana asociada a la geometría hiperbólica. Con $S^2$ se induce $ \mathring{g}$, que se corresponde con la geometría esférica. 
+\end{nota}
 
 \newpage
 

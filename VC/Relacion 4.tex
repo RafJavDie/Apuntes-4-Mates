@@ -1,0 +1,360 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+
+\usepackage{enumerate}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Variable Compleja - Relación 4}
+\author{Rafael González López}
+\maketitle
+
+
+\begin{ejercicio}{1}
+Determinar el orden de las funciones:
+$$
+e^{az^4},\quad z^2e^{2z}-e^{3z},\quad e^z \cos z,\quad \cos\sqrt{z}, \quad e^5z-3e^{2z^2}, \quad e^{\cos z},\quad \int_0^1 e^{tz^2}dt
+$$
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[]
+\item Si $a=0$, entonces $\rho=0$. En otro caso
+$$
+|e^{az^4}|\leq e^{|a||z|^4} \quad \forall z \in \C
+$$
+Luego $\rho\leq 4$. Supongamos que $\rho <4$, entonces $\exists r,A,B>0$ con $\rho<r<4$ tales que
+$$
+|e^{az^4}|\leq Ae^{B|z|^r} \quad \forall z \in \C
+$$
+Consideremos $z\in \R_{>0}$. En ese caso $|e^{az^4}|=e^{az^4}$ y $ Ae^{B|z|^r} = Ae^{Bz^r}$. Es claro que cuando $z\to \infty$ la desigualdad deja de ser cierta.
+\item Naturalmente si $|z|>1$ entonces $|z^2e^{2z}|\geq |e^{2z}|$, por lo que $z^2e^{2z}$ tiene orden $\geq 1$. Además usando que $z^2$ tiene orden $\leq 1$
+$$
+|z^2e^{2z}|\leq |z|^2e^{2|z|}\leq Ae^{3|z|}
+$$
+Por tanto $z^2e^{2z}$ tiene orden $1$. Como $e^{3z}$ también y la diferencia es no nula, tenemos que es de orden $1$.
+\item Sabemos que $\cos z = (e^{iz}+e^{-iz})/2$, luego
+$$
+|e^z \cos z| \leq e^{|z|}e^{|z|} = e^{2|z|}
+$$
+Por tanto, tiene orden $\leq 1$. El orden debe ser necesariamente 1, pues si no lo fuese razonaríamos como en el segundo apartado.
+\item Sabemos que podemos definir $\cos \sqrt{z}$ como una función entera bien definida como
+$$
+\cos \sqrt{z} = \sum_{n=0}^\infty (-1)^n \frac{z^n}{(2n)!}
+$$
+Tenemos claramente la siguiente 
+$$
+\abs{ \sum_{n=0}^\infty (-1)^n \frac{z^n}{(2n)!}} \leq \sum_{n=0}^\infty \frac{\abs{z}^n}{(2n)!} \leq  \sum_{n=0}^\infty \frac{\abs{z}^{n/2}}{n!} = e^{|z|^{1/2}}
+$$
+Luego el orden es $\leq 1/2$. Supongamos que el orden fuera $<1/2$. Tomamos $r$ tal que $\rho < r <1/2$. Sabemos que los ceros de esta función son $((n+1/2)\pi)^2$ Entonces debería verificarse
+$$
+\sum_{n=-\infty}^\infty \frac{1}{((n+1/2)\pi)^{2s}} < \infty
+$$
+Como $2s < 1$, es claro que esto no puede ser.
+\item Es fácil probar que el orden de $e^5z-3e^{2z^2}$ es $2$.
+\item Para el caso $e^{\cos z}$, veamos que no tiene orden finito. Consideremos entonces los valores $ti$ con $t\in \R_{>0}$
+$$
+e^{\cos(it)}=e^{\cosh(t)}=e^{e^t/2}e^{e^{-t}/2} > e^{e^t/2}
+$$
+Si tiene orden finito $\rho$ entonces $\exists A, B$ tales que
+$$
+e^{e^t/2} \leq e^{\cos(it)} \leq Ae^{Bt^\rho} \quad \forall t\in \R$$
+Entonces $e^{t/2}\leq Bt^\rho+\log A$, lo cuál no es verdad para ningún $t$ lo suficientemente grande.
+\item Si $z\neq 0$ podemos integrar directamente
+$$
+\int_0^1 e^{tz^2}dt = \frac{e^{z^2}-1}{z^2}
+$$
+Notemos que podemos definir esta función como holomorfa en $0$ y coincide con el resultado de la integral tomando $z=0$. Es claro que el orden es $2$.
+\end{itemize}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Sea
+$$
+f(z)=\frac{\sqrt{2}e^{-\pi i/8}\cos\left(\frac{\pi z}{2}\right)-e^{-\frac{\pi i}{2}z^2}}{\cos(\pi z)}
+$$
+\begin{enumerate}[(a)]
+\item Demostrar que $f$ es una función entera, es decir sus singularidades aisladas son evitables.
+\item ¿Cuál es el orden de $f(z)$?
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item 
+\item 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+Sea $\rho>1$.
+\begin{enumerate}[(a)]
+\item Demostrar que el producto
+$$
+\prod_{n=0}^\infty \left(1-\frac{z}{\rho^n}\right) 
+$$
+define una función entera $f(z)$.
+\item ¿Cuál es el orden de la función $f$?
+\item La función $f(z)$ y $f(\rho z)$ están conectadas por una ecuación funcional. Encontrar y demostrar esta ecuación.
+\item Demostrar que $f(z)$ tiene orden $0$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item Es claro que para cada $r>0$, $|z|< r$, $F_n(z)=1-z/\rho^n$ verifica 
+$$
+|F_n(z)-1| = |z|/\rho^n < r/\rho^n \qquad \sum_{n=0}^\infty r/\rho^n = r \frac{\rho}{\rho-1}
+$$
+Por tanto, el producto define una función holomorfa en $|z|<r$. Como $r$ es arbitrario, tenemos que define una función $f(z)$ que es entera.
+\item Sabemos que tenemos la desigualdad
+$$
+\abs{\prod_{n=0}^\infty \left(1-\frac{z}{\rho^n}\right)}  = \prod_{n=0}^\infty \abs{1-\frac{z}{\rho^n}} = \exp\left(\sum_{n=0}^\infty \log \abs{1-\frac{z}{\rho^n}}\right) \leq  \exp\left(\sum_{n=0}^\infty \log \left({1+\frac{|z|}{\rho^n}}\right)\right)
+$$
+Supongamos que el orden de $f(z)$ es $\rho>0$ y consideremos $0<r<\rho$. Podemos considerar además $r<1$. No es difícil probar que $\forall \varepsilon < 1$ $\exists C >0$ de manera que $\log(x+1)\leq C x^\varepsilon$ $\forall x \geq 0$. Por tanto:
+$$
+\sum_{n=0}^\infty \log \left({1+\frac{|z|}{\rho^n}}\right) \leq C |z|^{r}\sum_{n=1}^\infty \frac{1}{(\rho^{r})^n}
+$$
+Si $\rho>1$ entonces $\rho^{r}>/2q21$ y la suma converge a un cierto número $B$. Si denotamos por $A = B\cdot C$ entonces es claro que se tiene de manera contradictoria
+$$
+\abs{\prod_{n=0}^\infty \left(1-\frac{z}{\rho^n}\right)} \leq e^{A|z|^{r}}
+$$
+\item Es claro que 
+$$
+f(z\rho) = \prod_{n=0}^\infty  \left(1-\frac{z}{\rho^{n-1}}\right)  = (1-z\rho)\prod_{n=1}^\infty  \left(1-\frac{z}{\rho^{n-1}}\right)  = (1-z\rho)f(z)
+$$
+\item Demostrado en (b).
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4}
+Probar que si $f$ es una función entera de orden finito que omite dos valores, entonces $f$ es constante. Esto es cierto también para cualquier función entera y se conoce como el teorema pequeño de Picard.
+\end{ejercicio}
+\begin{solucion}
+Supongamos que $f$ omite dos valores $a$ y $b$. Entonces $f(z)-a$ (resp. con $b$) es una función holomorfa que no se anula en $\C$. Como $f$ es de orden finito $\rho$, como aplicación directa del teorema de Hadamard tenemos que existe un polinomio $g(z)$ de grado menor o igual $k=\suelo{\rho}$ tal que $f(z)-a=e^{g(z)}$. Análogamente para $b$ tenemos el resultado para un polinomio $h(z)$. Por tanto, $f(z)=e^{g(z)}+a=e^{h(z)}+b$. Como estamos en $\C$ sabemos que si $h-g$ es no constante, existe algún $z_0\in \C$ tal que $h(z_0)=g(z_0)$, por lo que 
+$$
+f(z_0) = e^{g(z_0)}+a=e^{h(z_0)}+b \Rightarrow a = b
+$$
+Lo cuál no es posible por hipótesis, luego $h-g$ es constante. Por tanto $h(z)=g(z)+c$. Si $c=2\pi i k$ $(k\in \Z)$ se tiene trivialmente una contradicción análoga. Supongamos que $c$ no es de esa forma. Por tanto, tenemos
+$$
+e^{g(z)}=\frac{b-a}{1-e^c}
+$$
+Por tanto, $e^{g(z)}$ es constante y $f$ también. 
+
+\end{solucion}
+\begin{solucion}
+Si $f$ omite $a$ y $b$ entonces $f(z)-a$, al ser de orden finito, puede escribirse como $f(z)-a = e^{g(z)}$ donde $g(z)$ en polinomio. Por tanto, $f(z)=e^{g(z)}+a$. Si $g(z)$ es constante, hemos acabado. En caso contrario, $\exists z_1$ tal que $g(z_1) = \log (b-a)$ para algún logaritmo. Por tanto
+$$
+f(z_1) = e^{g(z_1)}+e^{\log(b-a)}+a = b
+$$
+Lo cual es una contradicción.
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{5}
+Supongamos que $f$ sea entera y no se anule y que ninguna de sus derivadas se anule. Probar que si $f$ es además de orden finito, entonces $f(z)=e^{az+b}$ para algunas constantes $a$ y $b$.
+\end{ejercicio}
+\begin{solucion}
+Aplicamos el Teorema de Hadamard. Como $f$ no se anula y tiene orden finito $r$, sabemos que existe un polinomio $p(z)$ de grado $\leq \suelo{r}$ tal que
+$$
+f(z)=e^{p(z)}
+$$
+Sabemos que $f'(z)=p'(z)e^{p(z)}$ se anula si y solo si $p'(z)$ se anula. Como por hipótesis no se anula, deducimos que $p'(z)$ es una constante no nula y $p(z)$ es de la forma $az+b$.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{6}
+Proba que la ecuación $e^{z}-z=0$ tiene infinitas soluciones en $\C$.
+\end{ejercicio}
+\begin{solucion}
+Por reducción al absurdo, supongamos que no es así, es decir, que existe una cantidad finita $s$ (en principio puede ser nula). Claramente $f(z)=e^z-z$ es una función entera de orden $1$. Como aplicación de teorema de Hadamard tenemos que
+$$
+f(z)=e^{az+b}\prod_{n=1}^s (1-z/a_n)e^z = e^{(a+s)z+b}\prod_{n=1}^s(1-z/a_n) = e^{(a+s)z+b}p(z)
+$$
+Igualando a $0$, tenemos que podemos tomar $b=0$ (o cualquier otro múltiplo entero de $2\pi i$). Podemos suponer que $a+s\neq 0$ pues otro caso es trivial. Claramente $f'(z)=e^z$ no se anula en $\C$. Sin embargo
+$$
+(e^{(a+s)z}p(z))' = ((a+s)p(z)+p'(z))e^{(a+s)z}
+$$
+se anula necesariamente en algún punto a menos que $p(z)$ sea un polinomio de grado $1$ ($s=1$) o una constante ($s=0$). Es fácil comprobar en ambos casos la igualdad sería absurda.
+\end{solucion}
+\newpage
+\begin{ejercicio}{7}
+Deducir del teorema de Hadamard que si $F$ es entera de orden de crecimiento $\rho$ no entero, entonces $F$ tiene infinitos ceros.
+\end{ejercicio}
+\begin{solucion}
+El resultado se derivará inmediatamente a partir de la siguiente proposición. 
+\begin{prop}
+Sean $f,g$ dos funciones enteras con orden $\leq k$ entonces el producto $fg$ tiene orden $\leq k$.
+\end{prop}
+\begin{dem}
+Sabemos que $\exists A,B,C,D>0$ tales que $\forall z\in \C$
+$$
+|f(z)|\leq Ae^{B|z|^k} \qquad |g(z)|\leq Ce^{D|z|^k}
+$$
+Por tanto, $\forall z \in \C$
+$$
+|f(z)g(z)| \leq ACe^{B|z|^k+D|z|^k} = ACe^{(B+D)|z|^k}
+$$
+\end{dem}
+Una consecuencia inmediata es que podemos sustituir el producto de dos funciones por cualquier producto finito de funciones. Pasemos a resolver el problema. Supongamos que $f$ tiene una cantidad finita de ceros $a_1,\dotsc,a_s$. Entonces, por el Teorema de Hadamard tenemos que
+$$
+f(z)=e^{P(z)}z^m\prod_{n=1}^s E_k(z/a_n)
+$$
+donde $k$ es el entero tal que $k<\rho<k+1$. Analicemos esta descomposición. 
+\begin{itemize}
+\item Por un lado tenemos que cualquier polinomio tiene orden $0$ pues para todo $\rho>0$
+$$
+\lim_{|z|\to\infty} \frac{|P(z)|}{e^{|z|^\rho}} = 0
+$$
+Luego, en particular, tiene orden $\leq k$.
+\item Por otro lado, si $P(z)$ es un polinomio de grado $k$ entonces para $|z|>1$ suficientemente grande
+$$
+|e^{P(z)}|\leq e^{|P(z)|}\leq e^{c|z|^k}
+$$
+Luego tiene orden $\leq k$. 
+\item Tenemos $E_k(z/a_n)$ es el producto de un polinomio y una exponencial elevada a un polinomio de grado $k$. Usando la proposición y las consideraciones anteriores tenemos que $E_k(z/a_n)$ tiene orden $\leq k$. 
+\end{itemize}
+Por tanto, podemos escribir $f(z)$ como un producto finito de funciones de orden $\leq k$, de lo que colegimos que tiene orden $\leq k$, lo cuál es claramente una contradicción.
+\end{solucion}
+\newpage
+\begin{ejercicio}{8}
+Encontrar la región en que se trasnforma $\{z\in\C\mid |z|<1,\,\Im(z)>0\}$ mediante la transformación $w=\frac{2z-i}{2+iz}$.
+\end{ejercicio}
+\begin{solucion}
+Como tenemos una transformación de Möbius basta encontrar la imagen de la frontera y un punto interior. Sabemos que $$A =w(0)=-i/2 \qquad B= w(1) = \frac{2-i}{2+i} \qquad C = w(-1) = \frac{2+i}{i-2} \qquad D=w(i) = i$$
+Por tanto, tanto la semirrecta como la semicircunferencia tienen imágenes contenidas en circunferencias. Como $w(i/2)=0$, la imagen está dentro de esta frontera
+$$
+\{z\in \C \mid |z|< 1,\; |z+5i/4|>0.75\}
+$$
+\begin{figure}[h]
+\includegraphics[scale=0.65]{ej8}
+\centering
+\end{figure}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{9}
+¿Cuál es la región trasnformada del ángulo $\{z\in \C\mid 0<\arg(z)<\pi/4\}$ mediante la transformación $w=z/(z-1)$.
+\end{ejercicio}
+\begin{solucion}
+Calculamos la imagen de la frontera del conjunto análogamente al ejercicio anterior y obtenemos
+$$
+A = w(0)= 0 \qquad B=w(\infty)=1 \qquad C= w(2)=2 \qquad D =w(1+i) = 1-i 
+$$
+La imagen de la semirecta $\arg(z)=0$ es $\R\setminus[0,1]$. La imagen de $\arg(z)=\pi/4$ es la circunferencia $|z-(1-i)/2|=\sqrt{2}/2$. Cogiendo un punto interior tenemos que
+$$
+\{z\in \C \mid |z-(1-i)/2|>\sqrt{2}/2, \;\Im(z)<0\}
+$$
+\begin{figure}[h]
+\includegraphics[scale=0.65]{ej9}
+\centering
+\end{figure}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{10}
+Encontrar los transformados de los discos $|z|=r$ y las semirrectas $\arg(z)=\alpha$ mediante la transformación $T(z)=\frac{1}{2}(z+1/z)$.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item Sea el disco $re^{it}$ con $t\in [0,2\pi)$, entonces
+$$
+T(re^{it}) =\frac{1}{2}\left(re^{it}+\frac{e^{-it}}{r}\right) = \frac{1}{2}\left(r+\frac{1}{r}\right)\cos t + \frac{i}{2}\left(r-\frac{1}{r}\right)\sin t
+$$
+Luego puede ser interpretado como la curva parametrizada por 
+\begin{align*}
+x &= \frac{1}{2}\left(r+\frac{1}{r}\right)\cos t = a\cos t\\
+y &= \frac{1}{2}\left(r-\frac{1}{r}\right)\sin t = b\sin t
+\end{align*}
+Por lo que tenemos dos casos. Si $r=1$, entonces el segmento $[-1,1]$. En otro caso, tenemos una elipse con semiejes $a$ y $b$.
+\item Sea la recta $re^{it}$ con $r\in(0,\infty)$ para cada $t \in [0,2\pi)$ fijo. Análogamente, llegamos a
+\begin{align*}
+x &= \frac{1}{2}\left(r+\frac{1}{r}\right)\cos t = a\cos t\\
+y &= \frac{1}{2}\left(r-\frac{1}{r}\right)\sin t = b\sin t
+\end{align*} 
+\begin{itemize}
+\item Si $t=0$ entonces tenemos el segmento real $(1,\infty)$. Los casos $t=\pi/2, \pi, 3\pi/2$ son análogos.
+\item En otro caso, tenemos una rama de una hipérbola.
+\end{itemize}
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{11}
+Sea $\Omega$ una región simplemente conexa del plano complejo, y sea $K$ un compacto incluido en $\Omega$. Probar que existe una curva cerrada $\gamma$ en $\Omega$ cuyo recorrido no corta a $K$ y tal que $n(\gamma,a)=1$, para todo $a\in K$.
+\end{ejercicio}
+\begin{solucion}
+Podemos suponer que $\Omega\neq \emptyset$. Si $\Omega = \C$, sabemos que $K\subset D(0,R)$ y podemos tomar $\gamma = C_R$. El resultado se sigue trivialmente.
+
+Si $\Omega \neq \C$ entonces, por el Teorema de Riemann podemos considerar la aplicación $f$ aplicación conforme entre el disco unidad y $\Omega$. Supongamos que $f\func{\mathbb{D}}{\Omega}$. Como $K$ es compacto $f^{-1}(K)$ es compacto y $\exists r$ con $0<r<1$ tal que $f^{-1}(K)\subset D(0,r)$. Consideremos $\gamma = C_r$ y $f \circ \gamma$. Por tanto, $\forall a \in K$
+$$
+n(f\circ \gamma,a)=\frac{1}{2\pi i} \int_{f \circ C_r} \frac{dz}{z-a} = \frac{1}{2\pi i}\int_{C_r} \frac{f'(z)}{f(z)-a} =  1
+$$
+En la segunda igualdad hemos hecho el cambio de variable $w = f^{-1}(z)$, con lo que $w= f^{-1}(f\circ \gamma) = \gamma$ al ser $f$ conforme. Para la última igualdad hemos usado el principio del argumento. Notemos que en $C_r$, $f(z) \neq a$, pues $a \in K$, luego $f^{-1}(a) \in f^{-1}(K) \subset |z|<r$. Además, $f$ no tiene polos (naturalmente) en $|z|<r$ y sí tiene un único $0$ por ser $f$ biyectiva.
+\end{solucion}
+\newpage
+
+
+
+\begin{ejercicio}{12}
+Sea $a>0$. Se considera la región $\Omega$ y la función $f_a$ definida por:
+$$
+\Omega=\{z\in \C \mid \Im(z)<0,\;|z|>1,\;|z+1|<2\} \qquad f_a(z)=\exp\left(\frac{ai}{z-1}\right)
+$$
+\begin{enumerate}[(a)]
+\item Probar que $f_a$ es inyectiva en $\Omega$ si y solo si $a\leq 8\pi$.
+\item Sea $g =f_{4\pi}$. Probar que $g$ representa conformemente $\Omega$ en un semidisco. Determinar la imagen mediante $g$ de cada uno de los tres arcos (dos de circunferencia, y uno de recta) que componen la frontera de $\Omega$.
+\item Dar una representación conforme de $\Omega$ en el primer cuadrante; de $\Omega$ en la banda abierta que forman los puntos  $z\in \C$ con $-2\pi<\Im(z) <-\pi$ y de $\Omega$ en la región $G=\{z\in\C\mid |z|>1,\;|z+1|<2\}$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item []
+\item
+Tengamos en cuenta que $f_a(z)$ es la exponencial de una transformación lineal $T_a(z)$. Tenemos dos arcos y una semirrecta. Como $T_a(1)=\infty$, los dos arcos se transforman en rectas. El arco menor va en la recta $t-ai/2$ con $t\geq 0$. El arco menor debe ir en una recta paralela, que de hecho es $t-ai/4$ con $t\geq 0$. La semirrecta va en $-tai/4$ con $t\in[1,2]$. Si $a\leq8\pi$ la banda tiene anchura menor que $2\pi$, por lo que la exponencial es inyectiva.
+\item Tenemos las exponenciales de la banda $-2\pi < \Im(z)< -\pi$ contenida en el tercer cuadrante. Que $e^{-\pi i} = -1$, $e^{-2\pi} = 1$. Los elementos intermedios forman la semicircunferencia inferior. Las rectas horizontales van en rectas verticales.
+\item Sabemos que $f_{4\pi}$ manda $\Omega$ a la semicircunferencia superior, luego basta construir una transformación de Möbius que mande este conjunto al primer cuadrante. En este caso tomamos
+$$
+f(z)=\frac{z+1}{1-z} \qquad f(0)=1 \qquad f(1)=\infty \qquad f(-1) = 0 \qquad f(i) = i
+$$
+Además, si $w$ está  en el primer cuadrante, podemos tomar como preimagen $z = \frac{w -1}{w +1}$.  
+
+Para la siguiente, utilizamos la composición anterior junto con el logaritmo, que lleva el primer cuadrante en una banda completa y ajustamos debidamente.
+
+
+\end{enumerate}
+\end{solucion}
+\newpage
+
+
+
+\begin{ejercicio}{13}
+Sean $a>0$, y $\Omega_1$ el semiplano derecho abierto al que se le quita el segmento $(0,a]$. Sean $b\in(-1,1)$, y $\Omega_2$ el disco unidad $\mathbb{D}$ al que se le quita el segmento $[b,1)$.
+\begin{enumerate}[(a)]
+\item Determinar la imagen de $\Omega_1$ mediante la transformación $w=z^2$, y representar $\Omega_1$ conformemente en el semiplano derecho.
+\item Representar conformemente $\Omega_2$ en el semiplano derecho y en el disco unidad $\mathbb{D}$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item La imagen por $z^2$ es $\C\setminus (-\infty,a]$. Si consideramos $z-a$, tenemos $\C\setminus (-\infty,0]$. Finalmente, sabemos que aquí podemos definir un logaritmo y considerar la raíz cuadrada. Por tanto, la representación conforme viene dada por $\sqrt{z^2-a}$.
+\item Consideremos la transformación
+$$
+S(z)= \frac{1-z}{1+z}
+$$
+Esta transformación verifica $S(1)=0$, $S(-1)=\infty$, $S(i)=-i$. Por tanto, la circunferencia unidad va en el eje imaginario. Como $S(0)=1$, el interior va al semiplano derecho. Además, el eje real va en el eje real, de manera que el segmento $(b,1]$ va en el segmento $(S(b),1]$. Usando el ejercicio anterior tomando $a=S(b)$, tenemos una representación conforme de $\Omega_2$ en el semiplano derecho. Finalmente, tengamos en cuenta que $S(0)=1$, $S(i)=-i$, $S(-i)=i$, luego el eje imaginario va la circunferencia. Además, $S(1)=0$, luego el semiplano derecho va al interior de la circunferencia.
+\end{enumerate}
+\end{solucion}
+\newpage
+\end{document}

@@ -1,0 +1,53 @@
+ 	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcounter{ejercicio}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Variedades Diferenciables - Tema 5}
+\author{Javi, Rafa, Diego}
+\maketitle
+
+\begin{ejercicio}{1}
+Dados una variedad diferenciable $M$, un punto $p\in M$ y un
+vector tangente $u\in T_p(M)$, probar que existe un campo
+$X\in\mathcal{X}(M)$ tal que $X_p=u$. 
+\end{ejercicio}
+\begin{solucion}
+Supongamos que $M$ tiene dimensión $m$ y sea $(U,\varphi=(x_1,\dots,x_m))$ una carta tal que $p\in U$. Como $u\in T_p(M)$, entonces 
+$$u=\sum_{i=1}\lambda_i\left(\parcial{}{x_i}\right)_p$$
+Por tanto, basta considerar el campo 
+$$\sum_{i=1}\lambda_i\parcial{}{x_i}$$
+que es un campo diferenciable porque $\mathcal{X}(U)$ es un $\calF(U)$-módulo y las $\parcial{}{x_i}$ son campos diferenciables.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Si $(U,\varphi=(x_1,\dots
+,x_m))$ es un s.l.c., probar que
+$\left[\parcial{}{x_i},\parcial{}{x_j}\right]=0$, para todos $i,j=1,\dots ,m$.
+\end{ejercicio}
+\begin{solucion}
+Sea $f\in\calF(U)$. Por definición 
+$$\left[\parcial{}{x_i},\parcial{}{x_j}\right]f=\parcial{}{x_i}\left(\parcial{f}{x_j}\right)-\parcial{}{x_j}\left(\parcial{f}{x_i}\right)=0$$
+por la igualdad de derivadas cruzadas. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+Dados $(U,\varphi=(x_1,\dots ,x_m))$ un s.l.c. y
+$X,Y\in\mathcal{X}(U)$ tales que
+$$X=\sum_{i=1}^mX^i\parcial{}{x_i},\mbox{ }Y=\sum_{j=1}^mY^j\parcial{}{x_j},$$
+calcular $[X,Y]$ en función de la base $\left\{\parcial{}{x_1},\dots ,\parcial{}{x_m}\right\}$.
+\end{ejercicio}
+\begin{solucion}
+\begin{gather*}
+[X,Y]=\left[\sum_{i=1}^mX^i\parcial{}{x_i},\sum_{j=1}^mY^j\parcial{}{x_j}\right]=\sum_{i=1}^m\left[X^i\parcial{}{x_i},\sum_{j=1}^mY^j\parcial{}{x_j}\right]=\sum_{j=1}^m\sum_{i=1}^m\left[X^i\parcial{}{x_i},Y^j\parcial{}{x_j}\right]=\\
+\sum_{i,j=1}^m\left[X^i\parcial{}{x_i},Y^j\parcial{}{x_j}\right]=\sum_{i,j=1}^m \left(X^iY^j\left[\parcial{}{x_i},\parcial{}{x_j}\right]+X^i\left(\parcial{Y^j}{x_i}\right)\parcial{}{x_j}-Y^j\left(\parcial{X^i}{x_j}\right)\parcial{}{x_i}\right)=\\
+\sum_{i,j=1}^m \left(X^i\left(\parcial{Y^j}{x_i}\right)\parcial{}{x_j}-Y^j\left(\parcial{X^i}{x_j}\right)\parcial{}{x_i}\right)
+\end{gather*}
+\end{solucion}
+
+\end{document}

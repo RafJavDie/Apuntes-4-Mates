@@ -1,0 +1,147 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+\providecommand{\bo}[1]{\mathcal{O}\left(#1\right)}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Teoría Analítica de Números\\Examen, 5 de septiembre de 2003}
+\author{Rafael González López\\Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{1}
+\begin{enumerate}[(a)]
+	\item Partiendo de $Γ(1/2)=\sqrt{π}$ demuestra la fórmula de $Γ(n+1/2)$.
+	\item ¿Qué se quiere decir cuando hablamos de que la probabilidad de que dos números naturales sean primos entre sí es $6/π^2$? ¿Podrían servir los primeros premios de la loteria para calcular una aproximación de $π$?
+	\item ¿Qué relación tiene el teorema de Chebyshev con la estimación $p_n = \mathcal{O}(n \log n)$?
+	\item ¿Qué relación puedes establecer entre la función de Möbius y la función $1/ζ(s)$?
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item Tenemos que $Γ(s)=sΓ(s-1)$, luego para todo $n \in \N$:
+	\[ Γ\left(\frac{1}{2}+n\right) = \left(\frac{1}{2}+n\right) Γ\left(\frac{1}{2}+n-1\right) = \dots = Γ\left(\frac{1}{2}\right)\prod_{i=0}^{n-1}\left(\frac{1}{2}+i\right) = \sqrt{π}\frac{1}{2^n}\prod_{i=0}^{n-1}\left(1+2i\right)\]
+	\[ = \frac{\sqrt{π}}{2^n}(1 \cdot 3 \cdot 5 \cdots 2n) = \frac{\sqrt{π}}{2^n}\frac{(2n)!}{2 \cdot 4 \cdot 6 \cdots \cdot 2n} = \frac{\sqrt{π}}{2^n}\frac{(2n)!}{2^n n!}  = \frac{(2n)!}{n!2^{2n}}\sqrt{π} \]
+	
+\item Tenemos que dados dos números enteros menor que $x$, la probabilidad de que sean coprimos es $6/π^2+\bo{\log x/x}$.
+	Para $x$ suficientemente grande, esto se aproxima a $6/π^2$.
+	
+Para aproximar $π$ por los primeros premios de la lotería, bastaría ir comprobando dos a dos si son coprimos.
+Si hemos comprobado todos los pares de $n$ números y $m$ de ellos son coprimos, tenemos que $m/\binom{n}{2} \approx 6/π^2$.
+Luego podemos aproximar $π$ usando que $π \approx \sqrt{6\binom{n}{2}/m}$.
+Por ejemplo, con los números ganadores de la lotería diaría de la ONCE en 2017 tendríamos que $π \approx 3.07$ ($\Rightarrow$ tongo).
+
+\item Recordemos que por el teorema de Chebyshev, para $x ≥ 3$:
+\[ \frac{1}{2} \frac{x}{\log x} ≤ π(x) ≤ (1 + \log 4)\frac{x}{\log x} \]
+Tomando $x = p_n$, de manera que $π(p_n)=n$:
+\[ \frac{1}{2} \frac{p_n}{\log p_n} ≤ n ≤ (1 + \log 4) \frac{p_n}{\log p_n}\]
+Tenemos que $p_n ≤ 2 n \log p_n$. Como existe $δ > 0$ tal que $\log x ≤ δ \sqrt{x}$ para $x≥1$, tenemos que $\log p_n ≤ δ\sqrt{p_n}$. Luego:
+\[ p_n ≤ 2 n \log p_n ≤ \frac{δ}{A}n\sqrt{p_n} \Rightarrow \sqrt{p_n} ≤ 2δn \]
+Sacando logaritmo a esta inecuación:
+\[ \frac{1}{2} \log p_n ≤ \log 2δ + \log n\]
+Luego:
+\[ p_n ≤ 2 n \log p_n ≤ 2n(\log 2δ + \log n) = \mathcal{O}(n\log n) \]
+
+\item Como:
+\[ \left(\sum_{n=1}^{∞} \frac{μ(n)}{n^s}\right) \left(\sum_{n=1}^{∞} \frac{1}{n^s}\right) = \sum_{n=1}^{∞} \left(\sum_{d\mid n} μ(d) \right)\frac{1}{n^s} = \frac{1}{1^s} = 1 \]
+Entonces $\sum μ(n)/n^s = 1/ζ(s)$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Sean $f$ y $g$ las funciones aritméticas tales que
+\[ f(n) = 2^{ν_2(n)} \quad g(n) = 3^{ν_3(n)} \]
+es decir $f(n)$ es la mayor potencia de $2$ que divide a $n$, y $g(n)$ la mayor potencia de $3$.
+\begin{enumerate}[(a)]
+\item Demostrar que $f$ y $g$ son multiplicativas.
+\item Sea
+\[ h(n) = \sum_{d \mid n} f(d) g(n/d) \]
+¿Cuánto vale $h(p^α)$ si $p$ es un número primo?
+\item Calcular $h(10!)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item Veamos que son completamente multiplicativas (que implica que son multiplicativas). Sean $n$ y $m$ naturales.
+Entonces por el teorema fundamental de la aritmética: $n = \prod_p p^{ν_p(n)}$ y $m = \prod_p p^{ν_p(m)}$. Luego:
+\[ nm = \prod_p p^{ν_p(n)+ν_p(m)}\]
+Entonces $f(nm)=2^{ν_2(n)+ν_2(m)}=2^{ν_2(n)}\cdot 2^{ν_2(m)} = f(n)\cdot f(m)$. La demostración para $g$ es equivalente.
+\item
+\[ h(p^α) = \sum_{d \mid p^α} f(d) g(n/d) = \sum_{d=0}^{α} f(p^d) g(p^{α-d}) \]
+Si $p=2$:
+\[ h(2^α) = \sum_{d=0}^α f(2^d)\cdot 1 = \sum_{d=0}^α 2^d = 2^{α+1}-1 \]
+Si $p=3$:
+\[ h(3^α) = \sum_{d=0}^α g(3^d)\cdot 1 = \sum_{d=0}^α 3^d = \frac{1}{2}(3^{α+1}-1)\]
+Para otro $p$:
+\[ h(p^α) = \sum_{d=0}^α 1\cdot 1 = α+1\]
+
+\item Como $h$ está definida como la convolución de dos funciones multiplicativas, $h$ es multiplicativa.
+Todos los factores primos de $10!$ son $2$, $3$, $5$ y $7$, luego:
+\[ h(10!) = h(2^{ν_2(10!)})\cdot h(3^{ν_3(10!)}) \cdot h(5^{ν_5(10!)}) \cdot h(7^{ν_7(10!)}) = \]
+\[ = (2^{ν_2(10!)+1}-1)\left(\frac{1}{2}\left(3^{ν_3(10!)+1}-1\right)\right)(ν_5(10!)+1)(ν_7(10!)+1) \]
+Por el teorema de Legendre:
+\[ ν_2(10!) = \left\lfloor \frac{10}{2}\right\rfloor + \left\lfloor \frac{10}{4}\right\rfloor + \left\lfloor \frac{10}{8}\right\rfloor = 4+2+1=7 \]
+\[ ν_3(10!) = \left\lfloor \frac{10}{3}\right\rfloor + \left\lfloor \frac{10}{9}\right\rfloor = 3+1 = 4 \]
+\[ ν_5(10!) = \left\lfloor \frac{10}{5}\right\rfloor = 2 \]
+\[ ν_7(10!) = \left\lfloor \frac{10}{7}\right\rfloor = 1 \]
+Luego:
+\[ h(10!) = (2^8-1)\cdot (3^5-1)\cdot 3 \cdot 2 \]
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}
+Demostrar la relación asintótica
+\[ \sum_{n≤x} \left(\log \frac{x}{n}\right)^2 = 2x + \bo{\log^2 x} \]
+válida para $x ≥ 2$.
+\end{ejercicio}
+\begin{solucion}
+\[ \sum_{n≤x} \left(\log \frac{x}{n}\right)^2 = \sum_{n≤x} \left(\log x - \log n\right)^2 = \sum_{n≤x} \left(\log^2 x + \log^2 n-2 \log x \log n\right)\]
+\[ = x \log^2 x + \sum_{n≤x} \log^2 n - 2 \log x \sum_{n≤x} \log n\]
+Por un lado: $\sum_{n≤x} \log n = x \log x - x + \mathcal{O}(\log x)$. Por otro lado, usando la fórmula de Abel con $a_n=1$ y $f(n)=\log^2 x$:
+\[ \sum_{n≤x} \log^2 n = [x]\log^2 x - \int_1^x [t] 2 \log t \frac{dt}{t} = [x] \log^2 x - 2 (x \log x - x) + 2\int_1^x \{t\}\log t \frac{dt}{t} = \]
+\[ = x \log^2 x -2x \log x +2x + \bo{\log^2 x} \]
+Hemos usado que $[x]=x-\{x\}$ y que $\{x\}=\bo{1}$. Finalmente:
+\begin{align*}
+	\sum_{n≤x} \left(\log \frac{x}{n}\right)^2 & = x \log^2 x + ( x \log^2 x -2x \log x +2x) - 2 \log x (x \log x - x) + \bo{\log^2 x} =\\
+	& = 2x + \bo{\log^2 x}
+\end{align*}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{4}
+\begin{enumerate}[(a)]
+\item Demostrar que $Ξ(t)$ es real para $t$ real.
+\item Sea
+\[ θ(t) = -\frac{t}{2} \log π + \text{Im} \log Γ\left(\frac{1}{4}+\frac{it}{2}\right)\]
+Demostrar que la función de Hardy, definida por
+\[ Z(t) = e^{iθ(t)} ζ(1/2+it) \]
+es real para $t$ real.
+\item Explicar como puede usarse este resultado para demostrar que existe un cero de $ζ(s)$ con parte real \textbf{exactamente} igual a $1/2$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item Por la ecuación funcional:
+\[ ξ(s) = \frac{1}{2}s(s-1)π^{-s/2}Γ(s/2)ζ(s) \]
+Observamos por un lado que para $s$ real, $ξ(s)$ es real por ser product de números reales. Entonces $\overline{ξ(\overline{s})}=ξ(s)$ es una igualdad de funciones analíticas en la recta real, luego la igualdad se da en todo $\C$. Por otro lado, tenemos que para $s=1/2+it$ con $t$ real: 
+\[ ξ(s)=ξ(1/2+it)=ξ(1-(1/2+it))=ξ(1/2-it) = ξ(\overline{s}) = \overline{ξ(s)} \]
+Como $Ξ(t)$ coincide con su conjugado, deducimos que $Ξ(t)$ es real para $t$ real.
+\item Obsérvese que:
+\begin{align*}
+ξ\left(\frac{1}{2}+it\right) & = \frac{1}{2}s(s-1)π^{-s/2}Γ(s/2)ζ(s) =
+\exp\left(\log Γ(s/2)\right) \frac{-t^2-1/4}{2}π^{-s/2}ζ(s)\\
+& = \exp\left(\text{Re}(\log Γ(s/2)\right))\exp\left(i\ \text{Im}(\log Γ(s/2))\right)\frac{-t^2-1/4}{2}π^{-1/4-it/2}ζ(s)\\
+& = \exp\left(\text{Re}(\log Γ(s/2)\right))\exp\left(i\ \left(\text{Im}(\log Γ(s/2))-\frac{t}{2}\log π\right)\right)\frac{-t^2-1/4}{2}π^{-1/4}ζ(s)\\
+& = \left[\exp(\text{Re}(\log Γ(s/2))) \frac{-t^2-1/4}{2} π^{-1/4}\right] Z(t)
+\end{align*}
+
+Como $ξ(1/2+it)$ y la expresión entre corchetes son reales, $Z(t)$ debe ser real.
+
+\item Como $e^{i θ(t)}$ no se anula, $Z(t)$ se anula si y sólo si $ζ(1/2+it)$ se anula. Pero tenemos que $Z(t)$ es real, luego basta encontrar un par de valores $α$ y $β$ tal que $Z(α)$ y $Z(β)$ tengan signo contrario, de donde se deduce que habría un cero para algún $t_0 \in [α,β]$.
+\end{enumerate}
+\end{solucion}
+\end{document}

@@ -3,6 +3,7 @@
 \usepackage{wasysym}
 \usetikzlibrary{automata,positioning}
 \usepackage{mathdots}
+\newcommand{\PR}{\mathcal{PR}}
 %--------------------------------------------------------
 \begin{document}
 
@@ -63,16 +64,16 @@ También podemos definir $f(x)=(\mu t)_{\leq x+1}(t>0\land 10^t> x)$
 Sea $f(0)=0$, $f(1)=1$, $f(2)=2^2$, $f(3)=3^{3^3}$, $f(n)= n^{n^{\iddots^n}}$. Probar que $f\in\mathcal{PR}$
 \end{ejercicio}
 \begin{solucion}
-La recurrencia será de la forma $F(x,k)=x^{x^{\iddots^x}}$ ($k$ veces) y $F(x,k+1)=x^F(x,k)$. Buscamos ver que $f(x)=F(x,x)$, probando previamente que $F$ es primitiva recursiva. Necesitamos que $F(x,0)=g(x)$ y $F(x,k+1)=h(x,k,F(x,k))$. 
+La recurrencia será de la forma $F(x,k)=x^{x^{\iddots^x}}$ ($k$ veces) y $F(x,k+1)=x^{F(x,k)}$. Buscamos ver que $f(x)=F(x,x)$, probando previamente que $F$ es primitiva recursiva. Necesitamos que $F(x,0)=g(x)$ y $F(x,k+1)=h(x,k,F(x,k))$. 
 \begin{align*}
 &f(0)=F(0,0)=g(0)=0\\
-&f(1)=F(1,1)=1^F(0,0)=1^g(1)=1\\
-&f(2)=F(2,2)=2^F(2,1)=2^{2^F(2,0)}=2^{2^g(2)}
+&f(1)=F(1,1)=1^{F(0,0)}=1^{g(1)}=1\\
+&f(2)=F(2,2)=2^{F(2,1)}=2^{2^{F(2,0)}}=2^{2^{g(2)}}
 \end{align*}
 Bata tomar $g(x)=sgn(x)=\begin{cases}
 0 & x=0\\
 1 & x\neq 0
-\end{cases}$. Tomamos como $h(x,y,z)=x^z=exp(x,z)=exp(\Pi^3_1(x,y,z),\Pi^3_3(x,y,z))$, por lo que $h=\mathcal{C}(exp; \Pi^3_1,\Pi^3_3)$. Faltaría probar por inducción que $\forall n\in\N\ f(n)=F(n,n)$, lo cual se deja como ejercicio.
+\end{cases}$. Tomamos como $h(x,y,z)=x^z=exp(x,z)=exp(\Pi^3_1(x,y,z),\Pi^3_3(x,y,z))$, por lo que $h=\mathcal{C}(exp; \Pi^3_1,\Pi^3_3)$. Faltaría probar por inducción que $\forall n\in\N\ f(n)=F(n,n)$. Ya hemos visto que para $n=0$ es cierto. Entonces $F(n,n)=n^{F(n,n-1)}=\cdots = f(n)$. 
 \end{solucion}
 
 \newpage
@@ -84,7 +85,7 @@ Probar que las siguientes funciones de $\N$ en $\N$ son primitivas recursivas:
 f(0)=0\\
 f(x) =\text{la suma de los divisores de } x & x\neq 0
 \end{cases}$
-\item $g(x)=$ el número de primeros menores o iguales que $x$.
+\item $g(x)=$ el número de primos menores o iguales que $x$.
 \item $h(x)=$ el único $n$ tal que $n\leq\sqrt{2}x<n+1$.
 \end{enumerate}
 \end{ejercicio}
@@ -150,10 +151,10 @@ g(n + 1) = 2 + f(n)
 \end{cases}
 \]
 Probar que las funciones $f$ y $g$ son primitivas recursivas. (Indicación: Considérese la función
-$h : \N \to \N$ definida por $h(n) = [f(n), g(n)]$.
+$h : \N \to \N$ definida por $h(n) = [f(n), g(n)]$).
 \end{ejercicio}
 \begin{solucion}
-El corchete es la codificación que se ha visto en clase. $h(0)=\langle 0,0\rangle =2^0(2\cdot 0+1)-1=1-1=0$. $h(n+1)=\langle f(n+1),g(n+1)\rangle=\langle 1+g(n),2+f(n)\rangle=\langle 1+r(h(n)),2+l(h(n))\rangle$. Entonces $h=\mathcal{R}(0,H)$, donde $h(0)=0, h(n+1)=H(n,h(n))$, siendo $H(n,z)=\langle 1+r(z),2+l(z)\rangle$. Como la función par (la del corchete) es PR, y cada lado es una proyección, $H$ es PR, con lo que $h\in\mathcal{PR}$.
+El corchete es la codificación que se ha visto en clase. $h(0)=\langle 0,0\rangle =2^0(2\cdot 0+1)-1=1-1=0$. $h(n+1)=\langle f(n+1),g(n+1)\rangle=\langle 1+g(n),2+f(n)\rangle=\langle 1+r(h(n)),2+l(h(n))\rangle$. Entonces $h=\mathcal{R}(0,H)$, donde $h(0)=0, h(n+1)=H(n,h(n))$, siendo $H(n,z)=\langle 1+r(z),2+l(z)\rangle$. Como la función par (la del corchete) es $\PR$, y cada lado es una proyección, $H$ es $\PR$, con lo que $h\in\mathcal{PR}$.
 \end{solucion}
 
 \newpage
@@ -207,9 +208,30 @@ f(x + 3) = f(x) + f(x + 1)^2 + f(x + 2)^3
 \newpage
 
 \begin{ejercicio}{22}
+Sea $f : \N^2 \to \N$ definida por: $f(u, 0) = 1$ y $f(u, x) = f(u, x\dot{-}
+(u+1))+5$ si $x > 0$.
+Se pide:
+\begin{enumerate}
+\item Probar que para todos $u, x$ se verifica que $f(u, x)\downarrow$. ¿Es inyectiva?
+\item Diseñar un programa \texttt{GOTO, p}, tal que $[\![\texttt{p}]\!] = f$.
+\item Probar que $f$ es primitiva recursiva.
+\end{enumerate}
 \end{ejercicio}
-\begin{solucion}
-Usar la función recorrido fijando el parámetro u.
+\begin{solucion}\
+\begin{enumerate}
+\item Tenemos que $f(u,0)\downarrow$ para todo $u$. Si, dado $x\in\N$, $f(u,z)\downarrow\ \forall z< x$ entonces por la definición, $f(u,x)\downarrow$. Claramente no es inyectiva porque $f(u,0)=1\ \forall u\in\N$. 
+\item 
+\begin{align*}
+& Y\leftarrow Y+1\\
+& Z\leftarrow X_2\\
+& IF\ Z\neq 0\ GOTO\ A\\
+& GOTO\ E\\
+[A]& Z\leftarrow Z-X_1-1\\
+& Y\leftarrow Y+5\\
+& IF\ Z\neq 0\ GOTO\ A\\
+\end{align*}
+\item Fijamos el parámetro $u$ y usamos la función recorrido $\hat{f}_u(x)=[f(u,0),\dots,f(u,x)]=\prod_{i=1}^{x+1}p_i^{f(u,i-1)}=\hat{f}_u(x-1)p_{x+1}^{f(u,x)}=\hat{f}_u(x-1)p_{x+1}^{f(u,x\dot{-}(u+1))}=\hat{f}_u(x-1)p_{x+1}^{(\hat{f}_u(x))_{x\dot{-}(u+1)+1}}$. Por lo que $\hat{f}_u\in\PR$ para cada $u$. Ahora, si $x\dot{-}(u+1)+1=0$, entonces $f(u,x)=f(v,x)\ \forall v\geq u$, luego $\hat{f}(r,x)=\hat{f}_r(x)$, donde $$r=(\mu u)_{\leq x}((\hat{f}_u(x))_{x\dot{-}(u+1)+1}=(\hat{f}_{u+1}(x))_{x\dot{-}(u+2)+1}).$$ Por lo que $\hat{f}(u,x)\in\PR$, y esto implica que $f\in\PR$. 
+\end{enumerate}
 \end{solucion}
 \newpage
 
@@ -237,13 +259,83 @@ Todas las funciones involucradas son recursivas, luego $f$ es recursiva.
 \end{solucion}
 
 \newpage
+
+\begin{ejercicio}{26}
+Sea $f : \N \to \N$, recursiva y estríctamente creciente (es decir, para todo $x \in \N,
+f(x) < f(x + 1))$. Probar que $rang(f)$ es un conjunto recursivo (Indicación: Probar que para todo
+$n$, $f(n) \geq n)$.
+\end{ejercicio}
+\begin{solucion}
+Tal como se nos indica, empezamos probando que para todo $n$, $f(n) \geq n$. Necesariamente $f(0)\geq 0$. Si $f(n-1)\geq n-1$, entonces por ser estrictamente creciente, $f(n)>f(n-1)$, luego $f(n)\geq n$. 
+
+Por definición, $y\in rang(f)\Leftrightarrow (\exists x)(f(x)=y)$. Por lo anterior, $y=f(x)\geq x$, luego podemos acotar el existencial como $(\exists x)_{\leq y}(f(x)=y)$. Por tanto $rang(f)$ es recursivo.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{27}
+Sea $\theta(x)$ un predicado recursivo de aridad 1. Pruébese que la siguiente función es
+recursiva:
+\[
+f(n) =\begin{cases}
+0 & \text{si } n=0\\
+n\text{-ésimo número }x \text{ tal que }\theta(x) & \text{si }n > 0
+\end{cases}
+\]
+\end{ejercicio}
+\begin{solucion}
+Basta con comprobar que la función del segundo caso es recursiva, pues la primera lo es claramente y los predicados de cada caso lo son (de hecho todo es primitivo recursivo). Entonces, $x$ es el enésimo número que verifica $\theta$ si y solo si $\sum_{y\leq x}\theta(y)=n$. Esta función es recursiva, por lo que se tiene el resultado.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{28}
+Sea $f : \N \to \N$ recursiva y biyectiva. Probar que $f^{-1}$ es recursiva.
+\end{ejercicio}
+\begin{solucion}
+Ya vimos un programa \texttt{GOTO} para calcular la inversa cuando $f$ es primitiva recursiva. Al ser $f$ total el mismo programa es válido, por lo que $f^{-1}$ es recursiva. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{29}
+Sea $\theta$ un predicado primitivo recursivo de aridad 1. Denimos $f : \N^2 \to \N$ como:
+$f(x, y) = z$, donde $z$ es el número de veces que $\theta$ se satisface en el intervalo $[0, x + y]$.
+\begin{enumerate}
+\item Probar que $f$ es recursiva diseñando un programa \texttt{GOTO} que la calcule.
+\item Probar que $f$ es primitiva recursiva.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item 
+\begin{align*}
+& Z\leftarrow X_1+X_2\\
+[C]& IF\ Z\neq 0\ GOTO\ A\\
+&IF\ \theta(Z)\ GOTO\ D\\
+& GOTO\ E\\
+[D] & Y\leftarrow Y+1\\
+& GOTO\ E\\
+[A] & IF\ \theta(Z)\ GOTO\ B\\
+& Z\leftarrow Z-1\\
+& GOTO\ C\\
+[B]& Y\leftarrow Y+1\\
+& Z\leftarrow Z-1\\
+& GOTO\ C
+\end{align*}
+\item $z$ es el número de veces que $\theta$ se satisface en el intervalo $[0, x + y]$ si y solo si $\sum_{n\leq x+y}\theta(n)=z$, por lo que es es primitivo recursivo. 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
 \begin{ejercicio}{30}
 Dadas $H : \N^{n+1} \to \N$, $g : \N^n \to \N$ y $h : \N^{n+2} \to \N$, diremos que $f$ se define por \textbf{recursión limitada} mediante $g$, $h$ y $H$, (se notará por $f = R_l(g,h;H)$) si
 \[ f = R(g,h) \text{ y } \forall \vec{x} \forall y [f(x,y) ≤ H(x,y)] \]
 
 Se define $\mathcal{E}^0$ como el menor conjunto de funciones tal que contiene a la función constante e igual a $0$, la función siguiente y las proyecciones, y es cerrado bajo composición y recursión limitada.
 
-Probar por inducción en la cllase $\mathcal{E}^0$ que para tod función $f : \N^n \to \N$, de dicha clase, existen $k$ y $j ≤ n$ tales que para toda $n$-upla $\vec{x}$:
+Probar por inducción en la clase $\mathcal{E}^0$ que para toda función $f : \N^n \to \N$, de dicha clase, existen $k$ y $j ≤ n$ tales que para toda $n$-upla $\vec{x}$:
 \[ f(\vec{x}) ≤ x_j + k \]
 \end{ejercicio}
 \begin{sol}
@@ -269,5 +361,4 @@ Entonces, puesto que $f = R_l(g,h;H)$, $\forall (\vec{x},y) \in \N^{n+1}$
 \[ f(\vec{x},x_{n+1}) ≤ H(\vec{x},x_{n+1}) ≤ x_l + k'' \]
 \end{sol}
 
-HACER 26, 27, 28, 29
 \end{document}

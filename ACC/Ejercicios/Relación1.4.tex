@@ -1,0 +1,397 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Ideals, Varieties, and Algorithms (4ª Edición)}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{1.4.1}
+Consider the equations
+\begin{align*}
+x^2 + y^2 -1 & = 0\\
+xy - 1 & = 0
+\end{align*}
+which describe the intersection of a circle and a hyperbola.
+\begin{enumerate}[a.]
+\item Use algebra to eliminate $y$ from the above equations.
+\item Show how the polynomial found in part (a) lies in $\gene{x^2+y^2-1, xy-1}$.
+\end{enumerate}
+\end{ejercicio}
+
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Multiplicando la segunda ecuación por $xy+1$ obtenemos $x^2y^2-1=0$, luego $y^2 = 1/x^2$.
+Desde aquí eliminamos $y$ de la primer ecuación: $x^2+1/x^2-1=0$, que es equivalente a $x^4-x^2+1=0$.
+\item De como hemos obtenido este polinomio, deducimos que: $$x^4-x^2+1 = (x^2)(x^2+y^2-1)-(xy+1)(xy-1) \in \gene{x^2+y^2-1, xy-1}$$.
+\end{enumerate}
+
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.2}
+Let $I \subseteq k[x_1,\dots,x_n]$ be an ideal, and let $f_1,\dots,f_s \in k[x_1,\dots,x_n]$. Prove that the following statements are equivalent:
+\begin{enumerate}[(i)]
+\item $f_1,\dots,f_s \in I$
+\item $\langle f_1,\dots,f_s\rangle \subset I$
+\end{enumerate}
+This fact is useful when you want to show that one ideal is contained in another.
+\end{ejercicio}
+
+\begin{solucion}
+La implicación $(ii)\Rightarrow(i)$ es evidente, pues $f_1,\dots,f_s \in \gene{f_1,\dots, f_s}$.
+
+Véamos la otra implicación.
+Sea $f \in \gene{f_1,\dots,f_s}$.
+Entonces existen $g_1,\dots,g_n \in k[x_1,\dots,x_n]$ tal que:
+\[ f = g_1 f_1 + g_2 f_2 + \dots + g_n f_n \]
+Por las propiedades de los ideales: como $f_i \in I$, $g_i f_i \in I$, luego $g_1 f_1 + g_2 f_2 + \dots + g_n f_n \in I$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.3}
+Use the previous exercise to prove the following equalities of ideals in $\Q[x,y]$:
+\begin{enumerate}[a.]
+\item $\gene{x+y,x-y} = \gene{x,y}$.
+\item $\gene{x+xy, y+xy, x^2, y^2} = \gene{x, y}$.
+\item $\gene{2x^2+3y^2-11, x^2-y^2-3} = \gene{x^2-4, y^2-1}$.
+\end{enumerate}
+This illustrates that the same ideal can have many different bases and that different bases may have different numbers of elements.
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{enumerate}[a.]
+\item $x+y \in \gene{x,y}$ y $x-y \in \gene{x,y}$, luego $\gene{x+y,x-y} \subseteq \gene{x,y}$.
+$x = \frac{1}{2} (x+y) + \frac{1}{2}  (x-y) \in \gene{x+y,x-y}$ e $y = \frac{1}{2} (x+y) - \frac{1}{2} (x-y) \in \gene{x+y, x-y}$, luego $\gene{x,y} \subseteq \gene{x+y,x-y}$.
+\item $\gene{x+xy, y+xy, x^2, y^2} \subseteq \gene{x, y}$ es evidente.
+\[ x = (1+x)(x + xy) - x(y+xy) - x^2 \in \gene{x+xy, y+xy, x^2, y^2} \]
+\[ y = (1+y)(y + xy) - y(x+xy) - y^2 \in \gene{x+xy, y+xy, x^2, y^2} \]
+Luego $\gene{x,y} \subseteq \gene{x+xy, y+xy, x^2, y^2}$.
+\item 
+\[ 2x^2+3y^2 - 11 = 2(x^2-4)+3(y^2-1) \in \gene{x^2-4, y^2-1} \]
+\[ x^2-y^2-3 = (x^2-4) - (y^2-1) \in \gene{x^2-4, y^2-1} \]
+Luego $\gene{2x^2+3y^2-11, x^2-y^2-3} \subseteq \gene{x^2-4, y^2-1}$.
+Podemos usar estas ecuaciones para despejar la otra base:
+\[ x^2-4 = \frac{1}{5} (2x^2+3y^2-11) - \frac{3}{5} (x^2-y^2-3) \]
+\[ y^2-1 = \frac{1}{5}(2x^2+3y^2-11) - \frac{2}{5}(x^2-y^2-3) \]
+Luego $\gene{2x^2+3y^2-11, x^2-y^2-3} \supseteq \gene{x^2-4, y^2-1}$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.4}
+Prove Proposition 4: If $f_1,\dots,f_s$ and $g_1,\dots,g_t$ are bases of the same ideal in $k[x_1,\dots,x_n]$, so that $\langle f_1,\dots,f_s\rangle = \langle g_1,\dots,g_t\rangle$, then we have $\V(f_1,\dots,f_s) = \V(g_1,\dots,g_t)$.
+\end{ejercicio}
+\begin{solucion}
+Evidente cuando recordamos que $\V(f_1,\dots,f_s) = \V(\gene{f_1,\dots,f_s})$. Sin embargo, este hecho se probará más adelante. Probemos una inclusión, pues la otra es análoga. Sea $I$ el ideal generado, claramente $f_i,g_j\in I$. Como los $f_i$ forman una base del ideal, podemos escribir
+$$
+g_j = a_{1j}f_1+\dotsc a_{sj}f_s
+$$
+Luego si $x\in \V(f_1,\dotsc,f_s)$ entonces $f_i(x)=0$ $\forall i$, por lo que $g_j(x)=0$ $\forall j$ y por tanto $x\in \V(g_1,\dotsc,g_t)$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.5}
+Show that $\V(x+xy,y+xy,x^2,y^2) = \V(x,y)$.
+\end{ejercicio}
+\begin{solucion}
+Hemos visto en el Ejercicio \ref{ejer:1.4.3} que $\gene{x+xy,y+xy,x^2,y^2} = \gene{x,y}$.
+Este hecho unido con el Ejercicio \ref{ejer:1.4.4} demuestra el resultado.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.6}
+The word ``basis'' is used in various ways in mathematicas.
+In this exercise, we will see that ``a basis of an ideal'', as defined in this section, is quite different from ``a basis of a subspace'', which is studied in linear algebra.
+\begin{enumerate}[a.]
+\item Firrst, consider the ideal $I = \gene{x} \subseteq k[x]$.
+As an ideal, $I$ has a basis consisting of the one element $x$.
+But $I$ can be regarded as a subspace of $k[x]$, which is a vector space of $k$.
+Prove that any vector space basis of $I$ over $k$ is infinite.
+\item In linear algebra, a basis must span and be linearly independent over $k$, whereas for an ideal, a basis is concerned only with spanning -- there is no mention of any sort of independence.
+The reason is that once we allow polynomial coefficients, no independence is possible.
+To see this, consider the ideal $\gene{x,y} \subseteq k[x,y]$.
+Show that zero can be be written as a linear combination of $y$ and $x$ with nonzero polynomial coefficients.
+\item More generally, suppose that $f_1,\dots,f_s$ is the basis of an ideal $I \subseteq k[x_1,\dots,x_n]$.
+If $s ≥ 2$ and $f_i \neq 0$ for all $i$, then show that for any $i$ and $j$, zero can be rewritten as a linear combination of $f_i$ and $f_j$ with nonzero polynomial coefficients.
+\item As a consequence of the lack of independence is that when we write an element $f \in \gene{f_1,\dots,f_s}$ as $f = \sum_{i=1}^s h_i f_i$, the coefficients $h_i$ are not unique.
+As an example, consider $f = x^2 + xy + y^2 \in \gene{x,y}$.
+Express $f$ as a linear combination of $x$ and $y$ in two different ways.
+\item A basis $f_1,\dots,f_s$ of an ideal $I$ is said to be \emph{minimal} if no proper subset of $f_1,\dots,f_s$ is a basis of $I$. For example, $\{x,x^2\}$ is a basis of an ideal, but not a minimal basis since $x$ generates the same ideal.
+Unfortunately, an ideal can have minimal bases consisting of different numbers of elements.
+To see this, show that $x$ and $x+x^2,x^2$ are minimal bases of the same ideal $k[x]$. Explain how this contrasts with the situation in linear algebra.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Como espacio vectorial una base de $I$ es $1,x,x^2,\dots$. Por el Teorema de la base para e.v. tenemos que cualquier otra base tiene el mismo cardinal (en este caso infinito).
+Es una base infinita, luego $I$ tiene dimensión infinita como espacio vectorial.
+\item $xy-yx = 0$.
+\item $f_i f_j - f_j f_i = 0$. Aquí usamos que $f_i \neq 0$ para todo $i$.
+\item $x^2+xy+y^2 = (x+y)x+yy = xx+(x+y)y$.
+\item Claramente $x$ es una base mínima.
+Como ni $x+x^2$ ni $x^2$ genera el mismo ideal que $x+x^2,x^2$, este es mínimo.
+Es fácil ver además que $\gene{x}=\gene{x+x^2,x^2}$.
+Tenemos aquí un ejemplo de que las bases de ideales no tienen necesariamente la misma cantidad de elementos.
+Esto lo diferencia con el caso de álgebra lineal.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.7}
+Show that $\I(\V(x^n,y^m))=\langle x,y \rangle$, for any positive integers $n$ and $m$.
+\end{ejercicio}
+\begin{solucion}
+Como $x^n$ e $y^m$ se anulan si y sólo si $x=y=0$, tenemos que $\V(x^n,y^m)= \{(0,0)\}$. Ya sabemos que $\I(\{(0,0)\}) = \gene{x,y}$, de donde se tiene el resultado.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.8}
+The ideal $\I(V)$ of a variety has a special property not shared by all ideals. Specifically, we define an ideal $I$ to be \emph{radical} if whenever a power $f^m$ of a polynomial $f$ is in $I$, then $f$ itself is in $I$. More succinctly, $I$ is radical when $f \in I$ if and only if $f^m \in I$ for some positive integer $m$.
+\begin{enumerate}[a.]
+\item Prove that $\I(V)$ is always a radical ideal.
+\item Prove that $\gene{x^2,y^2}$ is not a radical ideal.
+This implies that $\gene{x^2,y^2} \neq \I(V)$ for any variety $V \subseteq k^2$.
+\end{enumerate}
+Radicals ideals will play an important role in Chapter 4. In particular, the Nullstellensatz will imply that there is a one-to-one correspondence between varieties in $\C^n$ and radical ideals in $\C[x_1,\dots,x_n]$.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Sea $f^m \in \I(V)$ con $f \in k[1,\dots,x_n]$ y $m$ entero positivo.
+Supongamos que $V$ es no vacío.
+Sea $p \in V$, entonces $f^m(p)=0$.
+Como el ideal $\gene{0}$ es primo en $k$, tenemos que $f(p)=0$.
+Como $p$ era un punto arbitrario, $f$ se anula en todo $V$, luego $f \in \I(V)$.
+Esto demuestra que $\I(V)$ es radical.
+\item Claramente $x \notin \gene{x^2,y^2}$, pero $x^2 \in \gene{x^2,y^2}$, luego $\gene{x^2,y^2}$ no es ideal radical.
+\end{enumerate}
+\end{solucion}
+\newpage
+\begin{ejercicio}{1.4.9}
+Let $V = \V(y − x^2, z − x^3)$ be the twisted cubic. In the text, we showed that $\I(V) = \gene{y − x^2, z − x^3}$.
+\begin{enumerate}
+\item Use the parametrization of the twisted cubic to show that $y^2 − xz \in \I(V)$.
+\item Use the argument given in the text to express $y^2 − xz$ as a combination of $y − x^2$ and $z − x^3$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+\item[]
+\item Sustituyendo $x\to t$, $y\to t^2$ y $z\to t^3$ es claro que $y^2-xz = t^4-tt^3 = 0$, luego se anula en todos los puntos de la curva.
+\item $y^2-xz=-x(z-x^3) + (y+x^2)(y-x^2)$. 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{1.4.10}
+Use the argument given in the discussion of the twisted cubic to show that $\I(\V(x−y)) = \gene{x-y}$. Your argument should be valid for any infinite field k.
+\begin{solucion}
+Sabemos que $\V(x-y) = \{(t,t)\mid t\in k\}$. Sea $f\func{k[x,y]}{k[t]}$ de manera que $x\to t$, $y\to t$. Es claro que $\ker f = \gene{x-y}$. Como $k[t]$ es dominio de integridad, $\ker f$ es un ideal primo, luego en particular es una ideal radical. Finalmente, por el Teorema de los ceros de Hilbert tenemos que $\I(\V(S))=\sqrt{\gene{S}}$, de donde se deduce el resultado.
+\end{solucion}
+\end{ejercicio}
+
+\newpage
+\begin{ejercicio}{1.4.11}
+Let $V ⊆ \R^3$ be the curve parametrized by $(t, t^3, t^4)$.
+\begin{enumerate}[a.]
+\item Prove that V is an affine variety.
+\item Adapt the method used in the case of the twisted cubic to determine $\I(V)$.
+\end{enumerate}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Vamos a ver la curva es precisamente $S=\V(x^3-y,x^4-z)$. Obviamente $V\subset S$. Recíprocamente, sea $(x,y,z)\in S$. Escribiendo $x=t$ entonces $y=x^3=t^3$ y $z=t^4$. Por tanto, $V$ es una variedad afín.
+\item Con un procedimiento análogo al que se realiza en la página 33 del libro, podemos ver que todo polinomio $f \in \R[x,y,z]$ puede escribirse como
+$$
+f = h_1(x^3-y)+h_2(x^4-z)+r
+$$
+donde $r\in \R[x]$. Es claro que $\gene{x^3-y,x^4-z}\subset I(S)$. Recíprocamente, veamos que si $f\in \I(S)$, $r=0$. Como $f\in I(S)$ entonces $f(t,t^3,t^4)=0$, luego
+$$
+f(t,t^3,t^4)= h_1(t,t^3,t^4)(t^3-t^3)+h_2(t,t^3,t^4)(t^4-t^4)+r(t) = r(t) = 0$$
+Como $r(t)=0$ $\forall t \in \R$ entonces $r=0$. Lo que prueba la igualdad.
+\end{enumerate}
+\end{solucion}
+\end{ejercicio}
+
+\newpage
+\begin{ejercicio}{1.4.12}
+Let $V ⊆ \R^3$ be the curve parametrized by $(t^2, t^3, t^4)$.
+\begin{enumerate}[a.]
+\item Prove that $V$ is an affine variety.
+\item Determine $\I(V)$.
+\end{enumerate}
+This problem is quite a bit more challenging than the previous one—figuring out the proper analogue of equation (2) is not easy. Once we study the division algorithm in
+Chapter 2, this exercise will become much easier.
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Veamos que $V=\V(x^2-z,xz-y^2)$. Una inclusión es trivial, recíprocamente podemos suponer que $xyz\neq 0$, pues en otro caso se tendría $x=y=z=0$. Llamemos $t=y/x$. Entonces $t^2 = y^2/x^2 =xz/z = x$. Por tanto, $z=x^2=t^4$ e $y=tx=t^3$. Se tiene la igualdad.
+
+\item Claramente $\gene{y^2-xz,z-x^2}\subseteq\I(V)$. Dado cualquier $f\in\R[x,y,z]$ podemos expresarlo como $f=h_1(y^2-xz)+h_2(z-x^2)+r$ con $h_1,h_2\in\R[x,y,z]$ y $r\in\R[x,y]$ pero con el exponente de $y$ a los sumo 1. Entonces, si $f\in\I(V)$ vamos a ver que $r=0$. Evaluando en los puntos de la forma $(t^2,t^3,t^4)$ nos queda $r(t^2,t^3)=0$ $\forall t \in \R$. Por tanto, $r=0$.
+
+%\item Por el apartado anterior y por el Nullstellensatz $\I(V)=\sqrt{\gene{x^3-y^2, x^4-z^2, y^4-z^3}}$. Supongamos que $f\in \R[x,y,z]$ y $f(t^2,t^3,t^4)=0$ para todo $t\in\R$. Tenemos que $f(x,y,z)=\sum_{i,j,k}a_{i,j,k}x^iy^jz^k$. Entonces 
+%\[
+%f(t^2, t^3,t^4)=\sum_{i,j,k}a_{i,j,k}t^{2i}t^{3j}5t^{4k}=\sum_{i,j,k}a_{i,j,k}t^{2i+3j+4k}=0
+%\]
+%Entonces para cada entero $l\geq 0$ tenemos
+%\[
+%\underset{2i+3j+4k=l}{\sum_{i,j,k\geq 0}}a_{i,j,k}=0
+%\]
+%Esto fijo que no lleva a ninguna parte.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{1.4.13}
+In Exercise 1.1.2, we showed that $x^2y+y^2x$ vanishes at all points of $\F_2^2$. More gener ally, let $I ⊆ \F_2[x, y]$ be the ideal of all polynomials that vanish at all points of $\F_2^2$. The goal of this exercise is to show that $I = \gene{x^2-x,y^2-y}$
+\begin{enumerate}[a.]
+\item Show that $\gene{x^2-x,y^2-y}\subset I$.
+\item Show that every $f ∈ \F_2[x, y]$ can be written as $f = A(x^2 − x) + B(y^2 − y) + axy
++ bx + cy + d$, where $A, B ∈ \F_2[x, y]$ and $a, b, c, d ∈ \F_2$. Hint: Write f in the form $\sum_i p_i(x)y^i$ and use the division algorithm (Proposition 2 of §5) to divide each $p_i$ by $x^2 − x$. From this, you can write $f = A(x^2 − x) + q_1(y)x + q_2(y)$. Now divide $q_1$ and $q_2$ by $y^2 − y$. Again, this argument will become vastly simpler once we know the division algorithm from Chapter 2.
+\item Show that $axy + bx + cy + d ∈ I$ if and only if $a = b = c = d = 0$.
+\item Using parts (b) and (c), complete the proof that $I =\gene{x^2-x,y^2-y}$.
+\item Express $x^2y + y^2x$ as a combination of $x^2-x$ and $y^2-y$.
+\end{enumerate}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Es claro que si $f(x,y) = h_1(x^2-x)+h_2(y^2-y)$ entonces $f(0,0)=f(1,0)=f(0,1)=f(1,1)=0$. Por tanto $f\in I$, luego $\gene{x^2-x,y^2-y}\subset I$
+\item Sabemos que podemos escribir $f=\sum_u p_i(x)y^i$. Utilizando el algoritmo de división, podemos dividir $p_i(x)$ por $x^2-x$ obteniendo $p_i(x) = m_i(x)(x^2-x)+r_i(x)$ con $\deg(r_i)\leq 1$ o $r_i=0$. Sumando, y utilizando que $r_i = a_ix+b_i$, obtenemos
+$$
+f(x,y) = \sum_i (m_i(x)(x^2-x) +r_i(x))y^i = A(x,y)(x^2-x) + q_1(y)x+q_2(y)
+$$
+Donde $A(x,y)=\sum_i m_i(x)y^i$, $q_1(y)=\sum_i a_iy^i$ y $q_2(y)=\sum_i b_i y^i$. Dividiendo $q_i$ entre $y^2-y$ obtenemos $q_i(y) = h_i(y)(y^2-y)+c_iy+d_i$, por lo que
+$$
+f(x,y)= A(x,y)(x^2-x) + B(x,y)(y^2-y) + c_1xy + d_1x+c_2y+d_2
+$$
+donde $B(x,y) = h_1(y)x+h_2(y)$.
+\item Sea $f(x,y) = axy+bx+cy+d$. Si $f\in I$ entonces se anula en cada punto. Como $f(0,0)=d$, $d=0$. Dado que $f(1,0)=b$ y $f(0,1)=c$ entonces $b=c=0$. Finalmente, $f(1,1)=a$ por lo que $a=0$. El recíproco es trivial.
+\item Sea $f\in I$ cualquiera, entonces podemos escriber $f$ según la fórmula obtenida en el apartado $(b)$, pero utilizando $(c)$, tenemos que puede escribirse simplemente como $A(x^2-x)+B(y^2-y)$. Pues si alguno de las otras constantes no fueran nulas, como $g = A(x^2-x)+B(y^2-y)\in \gene{x^2-x,y^2-y} \subset I$, tendríamos que $f-g\in I$, pero por la forma de $f-g$, por el apartado $(c)$, $f-g=0$. Por tanto, $f\in \gene{x^2-x,y^2-y}$.
+\item $x^2y + y^2x=y(x^2-x)+x(y^2-y)$ (recordemos que el cuerpo es $\F_2$ y por tanto $1=-1$).
+\end{enumerate}
+\end{solucion} 
+\end{ejercicio}
+\newpage
+\begin{ejercicio}{1.4.14}
+This exercise is concerned with Proposition 8.
+\begin{enumerate}[a.]
+\item Prove that part (ii) of the proposition follows from part (i).
+\item Prove the following corollary of the proposition: if V and W are affine varieties in $k^n$, then $V \not\subseteq W$ if and only if $\I(V)\not\supseteq\I(W)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Es trivial, pues $V=W$ si y solo si $V\subset W$ y $W \subset V$. Ahora basta aplicar $(i)$.
+\item Veamos una implicación por reducción al absurdo. Supongamos que $V\not \subset W$ pero $\I(W)\subset I(V)$. Entonces, por la Proposicion 8, $V\subset W$, lo cual es una contradicción con la hipótesis. El recíproco es análogo.
+\end{enumerate}
+\end{solucion}
+\newpage
+\begin{ejercicio}{1.4.15}
+In the text, we defined $\I(V)$ for a variety $V ⊆ k^n$. We can generalize this as follows: if
+$S ⊆ k^n$ is any subset, then we set
+$$\I(S) = \{f ∈ k[x_1,\dots, x_n] \mid f (a_1,\dots, a_n) = 0\ \forall (a_1,\dots, a_n) ∈ S\}.$$
+\begin{enumerate}[a.]
+\item Prove that $\I(S)$ is an ideal.
+\item Let $X = \{(a, a) ∈ \R^2 \mid a \neq 1\}$. By Exercise 8 of §2, we know that $X$ is not an affine
+variety. Determine $\I(X)$. Hint: What you proved in Exercise 8 of §2 will be useful.
+See also Exercise 10 of this section.
+\item Let $\Z^n$ be the points of $\C^n$ with integer coordinates. Determine $\I(\Z^n)$. Hint: See Exercise
+6 of §1.
+\end{enumerate}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Análogo a cuando es una variedad.
+\item $\I(X)=\I((t,t))=\langle x-y\rangle$.
+\item $\I(\Z^n)=\I(\C^n)=\{0\}$. 
+\end{enumerate}
+\end{solucion}
+\end{ejercicio}
+
+\newpage
+
+\begin{ejercicio}{1.4.16}
+Here is more practice with ideals. Let $I$ be an ideal in $k[x_1,\dots , x_n]$.
+\begin{enumerate}[a.]
+\item[a.] Prove that $1 ∈ I$ if and only if $I = k[x_1,\dots , x_n]$.
+\item[b.] More generally, prove that $I$ contains a nonzero constant if and only if $I = k[x_1,\dots, x_n]$.
+\item[c.] Suppose $f , g ∈ k[x_1,\dots , x_n]$ satisfy $f^2, g^2 ∈ I$. Prove that $(f + g)^3 ∈ I$. Hint: Expand
+$(f + g)^3$ using the Binomial Theorem.
+\item[d.] Now suppose $f , g ∈ k[x_1,\dots , x_n]$ satisfy $f^r$ , $g^s ∈ I$. Prove that $(f + g)^{r+s−1} ∈ I$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Si $1\in I$, por ser ideal, $f\cdot 1\in I$ para todo $f\in k[x_1,\dots , x_n]$. Recíprocamente, si $I=k[x_1,\dotsc,x_n]$ es claro que $1\in I$.
+\item Como $k$ es cuerpo, dada una constante $a$, podemos generar $1=aa^{-1}$, por lo que podemos aplicar el apartado anterior.
+\item $(f+g)^3=f^3+3f^2g+3fg^2+g^3=ff^2+3f^2g+3fg^2+gg^2\in I$. 
+\item Basta hacer lo mismo que hemos hecho antes con el desarrollo general. 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.17}
+In the proof of Lemma 7, we showed that $x \not∈ 
+\langle x^2, y^2\rangle$ in $k[x, y]$.
+\begin{itemize}
+\item[a.] Prove that $xy \not∈ 
+\langle x^2, y^2\rangle$.
+\item[b.] Prove that 1, $x$, $y$, $xy$ are the only monomials not contained in 
+$\langle x^2, y^2\rangle$.
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[]
+\item[a.] Cualquier polinomio de $\langle x^2, y^2\rangle$ tendrá un término en $x^2$ o en $y^2$, cosa que $xy$ no tiene. 
+\item[b.] Por el mismo razonamiento, esos monomios no están contenidos. Además, cualquier otro de $k[x,y]$ tiene algún término en $x^2$ o en $y^2$, luego está en el ideal. 
+\end{itemize}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4.18}
+In the text, we showed $\I(\{(0,0)\}) = \gene{x,y}$ in $k[x,y]$. 
+\begin{enumerate}[a.]
+\item Generalize this by proving that the origin $0\in k^n$ has the property that $\I(\{0\}) = \gene{x_1,\dotsc,x_n}$ in $k[x_1,\dotsc,x_n]$.
+\item What does part (a) say about polynomials in $k[x_1,\dotsc,x_n]$ with zero constant term?
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[a.]
+\item[]
+\item Una contención es trivial, pues si $f= \sum g_i x_i$ entonces  $f(0)=0$, por lo que $f\in \I(\{0\})$. Como $I(S)$ es un ideal propio, basta probar que $\gene{x_1,\dotsc,x_n}$ es maximal, pero esto es claro pues $\gene{x_1,\dotsc,x_n} = k[x_1,\dotsc,x_n]\setminus k$. Luego si existiera otro ideal que lo contiene, este ha de tener necesariamente alguna unidad y por tanto sería el total.
+\item Que siempre se anulan en el 0, o equivalentemente, que conforman el ideal $\gene{x_1,\dotsc,x_n}$.
+
+\end{enumerate}
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{1.4.19}
+One of the key ideas of this section is that a system of equations $f_1 =\cdots = f_s = 0$ gives the ideal $I = \gene{ f_1,\dotsc, f_s}$ of polynomial consequences. Now suppose that the system has a consequence of the form $f = g$ and we take the $m$-th power of each side to obtain $f^m = g^m$. In terms of the ideal $I$, this means that $f − g ∈ I$ should imply $f^m − g^m ∈ I$. Prove this by factoring $f^m − g^m$.
+\end{ejercicio}
+\begin{solucion}
+Es trivial pues, si $f-g\in I$ entonces, dado que
+$$
+f^m-g^m = (f-g)\sum_{i=1}^{m-1}f^ig^{m-i}
+$$
+Luego $f^m-g^m \in I$.
+\end{solucion}
+\end{document}

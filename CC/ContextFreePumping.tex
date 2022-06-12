@@ -1,0 +1,357 @@
+\documentclass[twoside]{article}
+\usepackage{titlesec}
+%\usepackage{wasysym}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows}
+\usetikzlibrary{cd}
+\usetikzlibrary{automata,positioning}
+
+\setcounter{secnumdepth}{0}
+\titleformat{\section}[block]{\huge\bfseries\filcenter}{}{1em}{}
+\titleformat{\subsection}[hang]{\Large\bfseries}{}{1em}{}
+\usepackage{../estilo-apuntes}
+\AtBeginDocument{%
+  \renewcommand\tablename{Tabla}
+}
+\newcommand{\yields}{\overset{\Pi,I^*}{\rightarrow}}
+\newcommand{\derive}{\overset{*}{\Rightarrow}}
+\newcommand{\yieldsone}{\overset{\Pi,I}{\rightarrow}}
+\newcommand{\yieldsn}{\overset{\Pi,I^n}{\rightarrow}}
+%\rhead{Ciencias de la Computación (Grado en Matemáticas)}
+%\lhead{Curso 2017/2018}
+
+\begin{document}
+\begin{titlepage}
+	\centering
+	{\huge\bfseries Ciencias de la Computación \par}
+	\vspace{1cm}
+	{\Huge\bfseries Lema del Bombeo para Lenguajes Independientes del Contexto\par}
+	\vspace{1cm}
+	{\Large Javier Aguilar Martín\par}
+	\vspace{1cm}
+	{\large \today\par}
+	\vspace{1cm}
+
+\begin{abstract}
+\normalsize
+En este trabajo se trata de probar una versión del lema del bombeo para
+lenguajes independientes del contexto y utilizarlo para dar
+ejemplos de lenguajes que no son lenguajes independientes
+del contexto.
+\end{abstract}
+
+	\vfill
+	{\small Esta obra está licenciada bajo la Licencia Creative Commons Atribución 3.0 España. Para ver una copia de esta licencia, visite \url{http://creativecommons.org/licenses/by/3.0/es/} o envíe una carta a Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+\bigskip
+
+Usted es libre de:
+\begin{itemize}
+ \item copiar, distribuir y comunicar públicamente la obra
+\item hacer obras derivadas
+\end{itemize}
+
+Bajo las condiciones siguientes:
+\begin{itemize}
+ \item {\bf Reconocimiento:} Debe reconocer los créditos de la obra maestra especificada por el autor o el licenciador (pero no de una manera que sugiera que tiene su apoyo o apoyan el uso que hace de su obra).
+ \item {\bf No comercial:} No puede utilizar esta obra para fines comerciales.
+\item {\bf Compartir bajo la misma licencia:} Si altera o transforma esta obra, o genera una obra derivada, sólo puede distribuir la obra generada bajo una licencia idéntica a ésta.
+\end{itemize}}
+
+	
+\end{titlepage}
+
+\tableofcontents
+
+\newpage
+
+\section{Lenguajes Independientes del Contexto}
+
+En esta sección introduciremos los lenguajes independientes del contexto, una clase de lenguajes que tienen cierta estructura recursiva y que contiene estrictamente a los lenguajes regulares. Veremos una forma de obtenerlos, las gramáticas independientes del contexto, una técnica usada para definir la sintaxis de los lenguajes de programación. 
+
+\subsection{Gramáticas Independientes del Contexto}
+
+\begin{defi}
+Una \emph{gramática independiente del contexto} es una cuaterna $G=(V,\Sigma,R,S)$, donde
+\begin{enumerate}
+\item $V$ es un conjunto finito, cuyos elementos se llaman \emph{variables},
+\item $\Sigma$ es un conjunto finito, denominado \emph{alfabeto}, cuyos elementos se llaman \emph{terminales},
+\item $V\cap\Sigma=\emptyset$,
+\item $S$ es un elemento de $V$, llamado \emph{variable inicial},
+\item $R$ es un conjunto finito, cuyos elementos se llaman \emph{reglas} o \emph{producciones}. Cada regla es de la forma $A\to w$, donde $A\in V$ y $w\in(V\cup\Sigma)^*$. Esta propiedad es la que la convierte en ``independiente del contexto'', ya que la sustitución depende solo de la variable y no de los símbolos a su alrededor.
+\end{enumerate}
+\end{defi}
+
+\begin{defi}
+Sea $G=(V,\Sigma,R,S)$ una gramática independiente del contexto. Sea $A$ un elemento de $V$ y sean $u$, $v$ y $w$ palabras de $(V\cup\Sigma)^*$ tales que $A\to w$ es una regla de $R$. Decimos que la palabra $uwv$ puede ser \emph{derivada en un paso} a partir de $uAv$, y se escribe
+$$uAv\Rightarrow uwv.$$
+En otras palabras, aplicando la regla $A\to w$ a la cadena $uAv$, obtenemos la palabra $uwv$.
+\end{defi}
+
+\newpage
+
+\begin{defi}
+Sea $G=(V,\Sigma,R,S)$ una gramática independiente del contexto. Sean $u,v\in(V\cup\Sigma)^*$. Decimos que $v$ puede ser \emph{derivada a partir de u}, y se escribe $u\overset{*}{\Rightarrow} v$, si se cumple una de las siguientes condiciones:
+\begin{enumerate}
+\item $u=v$, o
+\item existe un entero $k\geq 2$ y una sucesión $u_1,u_2,\dots, u_k$ de palabras en $(V\cup\Sigma)^*$ tal que
+\begin{itemize}
+\item[(a)] $u=u_1$,
+\item[(b)] $v=u_k$, y
+\item[(c)] $u_1\Rightarrow u_2\Rightarrow\dots\Rightarrow u_k$.
+\end{itemize}
+\end{enumerate} 
+En otras palabras, empezando por $u$ y aplicando reglas cero o más veces obtenemos $v$. 
+\end{defi}
+
+\begin{defi}
+Sea $G=(V,\Sigma,R,S)$ una gramática independiente del contexto. El \emph{lenguaje} de $G$ se define como el conjunto de palabras de $\Sigma^*$ que pueden ser derivadas a partir de la variable $S$:
+$$L(G)=\{w\in\Sigma^*: S\overset{*}{\Rightarrow} w\},$$
+\end{defi}
+
+\begin{defi}
+Un lenguaje $L$ se denomina \emph{independiente del contexto} si existe una gramática independiente del contexto $G$ tal que $L(G)=L$. 
+\end{defi}
+
+\begin{defi}
+Sea $G=(V,\Sigma, R,S)$ una gramática independiente del contexto. Los \emph{árboles de derivación} para $G$ son aquellos árboles que cumplen las condiciones siguientes:
+\begin{enumerate}
+\item Cada nodo interior está etiquetado con una variable de $V$.
+\item Cada hoja está etiquetada bien con una variable, con un terminal o con $\varepsilon$. En caso de estar etiquetada con $\varepsilon$, debe ser el único hijo de su padre. %para dar cierta unicidad, ya que añadir la palabra vacía no hace nada 
+\item Si un nodo interior está etiquetado como $A$ y sus hijos están etiquetados como:
+$$X_1,\dots, X_k$$
+respectivamente, entonces $A\to X_1\cdots X_k$ es una producción de $R$. Obsérvese que el único caso en el que una de las $X$ puede sustituirse por $\varepsilon$ es cuando es la etiqueta del único hijo y $A\to\varepsilon$ está en $R$.
+\end{enumerate}
+Tendrán especial interés los árboles de derivación cuya raíz sea la variable inicial y sus hojas contengan solo terminales, pues serán árboles de derivación para las palabras $L(G)$. 
+
+Como los hijos de un nodo se ordenan de izquierda a derecha (y se dibujan así), si el nodo $N$ está a la
+izquierda del nodo $M$, entonces todos los descendientes de $N$ son los que están a la izquierda de todos los descendientes de $M$, por lo que la palabra derivada será la concatenación de los terminales almacenados en las hojas ordenados de izquierda a derecha.
+\end{defi}
+
+Veamos un ejemplo donde aparecen todas estas definiciones.
+
+\begin{ej}\label{arbol} Consideremos las siguientes reglas de reescritura: 
+\begin{align*}
+& A\to 0A1\\
+& A\to B\\
+& B\to\$
+\end{align*}
+Aquí, $V=\{A,B\}$ son las variables, siendo $S=A$ la variable inicial, mientras que $\Sigma=\{0,1,\$\}$ son los terminales y $R= \{A\to 0A1, A\to B, B\to\$\}$ son las reglas. Usamos estas reglas para construir palabras consistentes en terminales, es decir, elementos de $\{0,1,\$\}^*$, de la siguiente manera:
+\begin{enumerate}
+\item Inicializar la \emph{palabra o cadena actual} como la palabra consistente solamente en la variable inicial $A$.
+\item Seleccionar una variable en la palabra actual y una regla que tenga esta variable en el lado izquierdo. Entonces, en la palabra actual, reemplazar la variable por el lado derecho de la regla.
+\item Repetir 2 hasta que la palabra actual solo contenga terminales. %el algoritmo no tiene por qué parar, A->A lenguaje vacío
+\end{enumerate}
+
+Por ejemplo, la palabra $000\$111$ se puede derivar de la siguiente manera:
+\begin{align*}
+A &\Rightarrow 0A1\\
+  &\Rightarrow 00A11\\
+  &\Rightarrow 000A111\\
+  &\Rightarrow 000B111\\
+  &\Rightarrow 000\$111
+\end{align*}
+
+Por lo que $A\overset{*}{\Rightarrow}000\$111$. Esta derivación también puede ser representada usando un árbol de derivación, como en la figura siguiente: %lo que está en medio en el árbol siempre se queda en medio en la palabra
+
+\[
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
+   \node[] (A0)   {A}; 
+   \node[] (1a) [below right =of A0] {1};
+   \node[] (0a) [ below left=of A0] {0};
+   \node[] (A1)   [ below =of A0] {A};
+   \node[] (1b) [below right =of A1] {1};
+   \node[] (0b) [ below left=of A1] {0};
+   \node[] (A2)   [ below =of A1] {A};
+   \node[] (1c) [below right =of A2] {1};
+   \node[] (0c) [ below left=of A2] {0};
+   \node[] (B) [below=of A2] {B};
+   \node[] (dolar) [below=of B] {$\$$};
+    \path[-] 
+    (A0) edge  node {} (1a)
+          edge node {} (0a)
+          edge node {} (A1)
+          (A1) edge  node {} (1b)
+          edge node {} (0b)
+          edge node {} (A2)
+          (A2) edge  node {} (1c)
+          edge node {} (0c)
+          edge node {} (B)
+          (B) edge  node {} (dolar)
+   ;
+\end{tikzpicture}
+\]
+
+Las tres reglas de este ejemplo constituyen una gramática independiente del contexto. El lenguaje de esta gramática es el conjunto de palabras que pueden derivarse a partir de la variable inicial y que solo contienen terminales. Para este ejemplo, el lenguaje es
+$$\{0^n\$ 1^n: n\geq 0\},$$
+ya que toda palabra de la forma $0^n\$ 1^n$ para algún $n\geq 0$ puede ser derivada a partir de la variable inicial, mientras que ninguna otra palabra sobre el alfabeto $\{0,1,\$\}$ puede ser derivada a partir de la variable inicial. Por tanto, dicho lenguaje es independiente del contexto.
+\end{ej}
+
+Por nuestra definición de lenguaje regular, sabemos que todos los lenguajes regulares son independientes del contexto. En el siguiente ejemplo veremos un lenguaje no regular que sí es independiente del contexto. 
+
+
+\begin{ej}
+Sea $L=\{0^n1^n: n\geq 0\}$, que sabemos que no es regular. Vamos a probar que $L$ es independiente del contexto dando una gramática independiente del contexto $G$ tal que $L(G)=L$. Observemos que cualquier palabra de $L$ es o bien vacía o bien un 0 seguido de una palabra de $L$ seguida de un 1. Esto nos lleva a la gramática independiente del contexto $G=(V,\Sigma,R,S)$, donde $V=\{S\}$, $\Sigma=\{0,1\}$, y $R$ consiste en las reglas
+$$S\to\varepsilon|0S1,$$
+es decir, $R=\{S\to\varepsilon, S\to 0S1\}$. Para derivar la palabra $0^n1^n$, $n\geq 0$, a partir de $S$, hacemos lo siguiente:
+\begin{enumerate}
+\item Empezando por $S$, aplicamos la regla $S\to 0S1$ exactamente $n$ veces. Esto nos da la cadena $0^nS1^n$.
+\item Aplicamos la regla $S\to\varepsilon$. Esto nos da la palabra $0^n1^n$. 
+\end{enumerate}
+Además es fácil ver que estas son las únicas palabras que se pueden derivar a partir de $S$, por lo que $L=L(G)$.
+\end{ej}
+%w(0)=vacía, w(n)=0w(n-1)1
+\subsection{Forma Normal de Chomsky}
+Las reglas de una gramática independiente del contexto son de la forma $A\to w$ donde $A$ es una variable y $w$ es una palabra sobre el alfabeto $\Sigma\cup V$. Sin embargo, toda gramática independiente del contexto $G$ puede ser transformada en otra gramática independiente del contexto $G'$ tal que $L(G')=L(G)$ y las reglas de $G'$ tienen una forma más restringida, tal como se indica en la siguiente definición:
+
+\begin{defi}
+Una gramática independiente del contexto $G=(V,\Sigma,R,S)$ se dice que está en la \emph{forma normal de Chomsky} si toda regla de $R$ es de una de las siguientes formas:
+\begin{enumerate}
+\item $A\to BC$, donde $A,B,C\in V$ con $B\neq S$ y $C\neq S$. 
+\item $A\to a$, donde $A\in V$ y $a\in\Sigma$.
+\item $S\to\varepsilon$, sonde $S$ es la variable inicial. 
+\end{enumerate}
+\end{defi}
+
+\begin{teorema}\label{chomsky}
+Sea $\Sigma$ un alfabeto y sea $L\subseteq\Sigma^*$ un lenguaje independiente del contexto. Entonces existe una gramática independiente del contexto en la forma normal de Chomsky cuyo lenguaje es $L$. 
+\end{teorema}
+
+La prueba de este teorema, la cual no se incluirá en este trabajo, ofrece un algoritmo efectivo para obtener la forma normal de cualquier gramática independiente del contexto. La importancia del anterior teorema en este trabajo radica en que nos permitirá probar el lema del bombeo para lenguajes independientes del contexto.
+
+\section{Lema del Bombeo para Lenguajes Independientes del Contexto}
+En esta sección generalizamos el lema del bombeo a lenguajes independientes del contexto. La idea será considerar el árbol de derivación (ver ejemplo \ref{arbol}) que describe la derivación de una palabra lo suficientemente larga del lenguaje independiente del contexto $L$. Dado que el número de variables en la correspondiente gramática independiente del contexto $G$ es finito, hay al menos una variable, digamos $A_j$, que ocurre más de una vez en el camino raíz-hoja más largo del árbol de derivación. El subárbol comprendido entre las dos apariciones de $A_j$ en este camino puede ser copiado un número arbitrario de veces. Esto dará lugar a un árbol de derivación \emph{legal}, y por tanto, en una palabra bombeada dentro del lenguaje $L$. 
+
+\begin{teorema}[Lema del Bombeo para Lenguajes Independientes del Contexto]
+Sea $L$ un lenguaje independiente del contexto. Entonces existe un entero $p\geq 1$, llamado \emph{longitud de bombeo}, tal que se cumple lo siguiente: toda palabra $s\in L$, con $|s|\geq p$, puede se escrita como $s=uvxyz$, con $u,v,x,y,z\in\Sigma^*$ tales que
+\begin{enumerate}
+\item $|vy|\geq 1$, es decir, $v$ e $y$ no son simultáneamente vacías,
+\item $|vxy|\leq p$, y
+\item $uv^ixy^iz\in L\ \forall i\geq 0$.
+\end{enumerate}
+\end{teorema}
+
+
+La prueba del lema del bombeo requerirá el siguiente resultado sobre árboles de derivación.
+\begin{lemma}\label{camino}
+Sea $G$ una gramática independiente del contexto en forma normal de Chomsky, sea $s$ una palabra de $L(G)$, y sea $T$ un árbol de derivación para la derivación de $s$. Sea $l$ el número de aristas en un camino raíz-hoja de longitud máxima de $T$. Entonces
+$$|s|\leq 2^{l-1}.$$
+\end{lemma}
+\begin{dem}
+Fijémonos primero en los casos $l=1$, $l=2$ y $l=3$. En el primer caso, el árbol tiene solamente una arista, luego solo ocurre una producción de la forma $S\to a$ o $S\to\varepsilon$. En ambos casos $|s|\leq 1=2^0$. 
+
+\newpage
+
+Si $l=2$ entonces es necesario introducir una producción del primer tipo. Es decir, tenemos el árbol
+\[
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
+   \node[] (S)   {S}; 
+   \node[] (B) [below left =of S] {B};
+   \node[] (C) [ below right=of S] {C};
+   \node[] (a)   [ below =of B] {a};
+   \node[] (b) [below=of C] {b};
+    \path[-] 
+    (S) edge  node {} (B)
+          edge node {} (C)
+          (B) edge  node {} (a)
+          (C) edge  node {} (b)   ;
+\end{tikzpicture}
+\]
+donde $a,b\neq \varepsilon$, por lo que $|s|= 2=2^{l-1}$. Ahora, para $l=3$ no hay un único árbol. Depende de si se duplican una o las dos ramas. En cualquier caso se comprueba que $|s|\leq 2^2=4$. Observamos a partir de este último caso que, al estar en forma normal de Chomsky, el máximo número de variables que se pueden añadir en cada nivel son $2^{\text{nº de variables del nivel anterior}}$, aplicando reglas de la forma $A\to BC$ hasta que finalmente se aplican los otros dos tipos de reglas. Por tanto, en  el mayor de los casos, habrá dos nuevos nodos por cada nodo anterior. Así que si todos los caminos raíz-hoja tienen la misma longitud $l$, habrá $2^{l-1}$ nodos en el penúltimo nivel, que darán lugar a símbolos del alfabeto, por lo que $|s|= 2^{l-1}$. En cualquier otro caso, habrá algún nodo que habrá producido un terminal en un nivel anterior, luego siempre dará una longitud menor que si hubiera producido 2 variables, es decir, $|s|\leq 2^{l-1}$. 
+$\QED$
+\end{dem}
+
+\begin{dem}[del lema del bombeo]
+Sea $L$ un lenguaje independiente del contexto y sea $\Sigma$ el alfabeto de $L$. Por el teorema \ref{chomsky} existe una gramática independiente del contexto en forma normal de Chomsky $G=(V,\Sigma,R,S)$ tal que $L=L(G)$.
+
+Definimos $r$ como el número de variables de $G$ y $p=2^r$. Se va a probar que el valor de $p$ puede ser usado como longitud de bombeo. Consideremos una palabra arbitraria $s\in L$ tal que $|s|\geq p$ y sea $T$ el árbol de derivación para $s$. Sea $l$ el número de aristas de un camino raíz-hoja de longitud máxima en $T$. Entonces, por el lema \ref{camino} tenemos
+$$2^r=p\leq |s|\leq 2^{l-1},$$
+por lo que $r\leq l-1$, o lo que es lo mismo, $l-r-1\geq 0$. 
+
+Consideremos los nodos de un camino raíz-hoja de longitud máxima en $T$. Dado que este camino contiene $l$ aristas, estará formado por $l+1$ nodos. Los primeros $l$ nodos son de variables, las cuales denotaremos $A_0,A_1,\dots, A_{l-1}$ (donde $A_0=S$), y el último nodo, el cual es una hoja, es de un terminal, al que denotaremos por $a$. 
+
+Como  $l-r-1\geq 0$, la sucesión $$A_{l-r-1}, A_{l-r},\dots, A_{l-1}$$
+de variables está bien definida. Observemos que esta sucesión consiste en $r+1$ variables. Como el número de variables en $G$ es $r$, por el principio del palomar, hay alguna variable que aparece 2 veces en la sucesión. En otras palabras, hay índices $j$ y $k$, tales que $l-r-1\leq j<k\leq l-1$ y $A_j=A_k$. La siguiente figura ilustra la idea de la demostración.
+
+\begin{figure}[h!]
+\includegraphics[scale=0.83]{Prueba}
+\end{figure}
+
+Recordemos que $T$ es un árbol de derivación para $s$. Por lo tanto, los terminales almacenados en las hojas de $T$, ordenadas de izquierda a derecha, forman $s$. Tal como se indica en la figura anterior, los nodos que contienen las variables $A_j$ y $A_k$ particionan $s$ en 5 subpalabras $u$, $v$, $x$, $y$ y $z$, de tal modo que $s=uvxyz$.
+
+Falta por probar que se cumplen las propiedades enunciadas en el lema del bombeo. Empezamos con la tercera propiedad, es decir, 
+$$uv^ixy^iz\in L\ \forall i\geq 0.$$
+En la gramática $G$ tenemos 
+\begin{equation}\label{eq1}
+S\overset{*}{\Rightarrow}uA_jz.
+\end{equation}
+Puesto que $A_j\overset{*}{\Rightarrow} vA_ky$ y $A_k=A_j$, tenemos
+\begin{equation}\label{eq2}
+A_j\derive vA_jy.
+\end{equation}
+Finalmente, como $A_k\derive x$ and $A_k=A_j$, tenemos
+\begin{equation}\label{eq3}
+A_j\derive x.
+\end{equation}
+De \ref{eq1} y \ref{eq3} se sigue que 
+$$S\derive uA_jz\derive uxz,$$
+lo cual implica que $uxz\in L$, que es el caso $i=0$. Similarmente, de \ref{eq1}, \ref{eq2} aplicado reiteradamente y \ref{eq3} se obtiene para todo $i\geq 1$, que la palabra $uv^ixy^iz$ está en $L$ porque
+$$S\derive uA_jz\derive uv^iA_jy^iz\derive uv^ixy^iz.$$
+
+Con esto hemos probado la tercera parte del teorema. A continuación probaremos la segunda parte, esto es, que $|vxy|\leq p$. Consideremos el nodo enraizado en el nodo que contiene la variable $A_j$. El camino desde dicho nodo hasta la hoja que guarda el terminal $a$ es un camino de longitud máxima en este subárbol (si no lo fuera, el camino de longitud máxima que elegimos del árbol completo podría alargarse sustituyendo el tramo a partir de $A_j$, lo cual es una contradicción). Además, este camino está constituido por $l-j$ aristas. Como $A_j\derive vxy$, este subárbol es un árbol de derivación para la palabra $vxy$ (usando $A_j$ como variable inicial). Así que, por el lema \ref{camino}, concluimos que $|vxy|\leq 2^{l-j-1}$. Sabemos que $l-r-1\leq j$, lo cual es equivalente a que $l-j-1\leq r$, de lo cual se sigue que
+$$|vxy|\leq 2^{l-j-1}\leq 2^r=p.$$
+
+Finalmente, probamos la primera parte del teorema, es decir, que $|vy|\geq 1$. Recordemos que
+$$A_j\derive vA_ky.$$
+Sea $A_j\to BC$ la primera regla de esta derivación (la cual existe porque $A_j$ y $A_k$, aunque son iguales, están almacenadas en distintos nodos y la gramática está en forma normal de Chomsky). Entonces %la variable inicial no se repite
+$$A_j\Rightarrow BC\derive vA_ky.$$
+Observemos que la $BC$ tiene longitud 2. Además, aplicando reglas de una gramática en forma normal de Chomsky, las cadenas no se pueden volver más cortas (gracias a que la variable inicial no ocurre en el lado derecho de ninguna regla). Por lo tanto, tenemos que $|vA_ky|\geq 2$. Pero esto implica que $|vy|\geq 1$, lo cual finaliza la prueba.
+$\QED$
+\end{dem}
+
+\subsection{Aplicaciones del Lema del Bombeo}
+\subsubsection{Primer ejemplo}
+Consideremos el lenguaje $$A=\{a^nb^nc^n: n\geq 0\}.$$
+Probaremos por reducción al absurdo que $A$ no es un lenguaje independiente del contexto. Supongamos que sí lo es. Sea $p\geq 1$ la longitud de bombeo dada por el lema del bombeo. Consideremos la palabra $s=a^pb^pc^p\in A$. Observamos que $|s|=3p\geq p$. Entonces, por el lema del bombeo, $s$ puede ser escrita como $s=uvxyz$, donde $|vy|\geq 1$, $|vxy|\leq p$ y $uv^ixy^iz\in A\ \forall i\geq 0$. 
+
+Observamos que, como $|vxy|\leq p$, la palabra $vxy$ no puede contener los tres símbolos $a$, $b$ y $c$. De hecho, hay un símbolo $\alpha\in\{a,c\}$ que no ocurre en $v$ ni en $y$. Por tanto, el símbolo $\alpha$ ocurre exactamente $p$ veces en $uxz$. Como $|vy|\geq 1$, tenemos que $|uxz|<|uvxyz|=|s|=3p$. Por lo que, en la palabra $uxz$, el símbolo $\alpha$ aparece exactamente $p$ veces, mientras que el total de ocurrencias de los otros dos símbolos es estrictamente menor que $2p$. Esto implica que hay un símbolo que ocurre menos de $p$ veces en $uxz$. Esto significa que $uv^0xy^0z=uxz\notin A$, pero por el lema del bombeo sí está en $A$, lo cual es una contradicción. Por ello, $A$ no es un lenguaje independiente del contexto.
+
+
+
+\subsubsection{Segundo ejemplo}
+Consideremos el lenguaje %no es la concatenación porque solo concatenas palabras consigo mismas
+$$B=\{ww:w\in\{a,b\}^*\}.$$
+Vamos a probar por reducción al absurdo que no es un lenguaje independiente del contexto. Sea $p\geq 1$ la longitud de bombeo tal como la da el lema del bombeo. Elegimos $s=a^pb^pa^pb^p\in B$, con $|s|=4p\geq p$. Entonces, por el lema del bombeo $s=uvxyz$, con $|vy|\geq 1$, $|vxy|\leq p$ y $uv^ixy^iz\in B\ \forall i\geq 0$. Basándonos en la localización de $vxy$ en $s$ distinguimos 3 casos:
+\begin{itemize}
+\item[\textbf{Caso 1:}] La subpalabra $vxy$ contiene letras tanto de la mitad izquierda como de la mitad derecha de $s$. Como $|vxy|\leq p$, la subpalabra está contenida ``en el medio'' de $s$, es decir, está contenida en el bloque $b^pa^p$. Consideramos la palabra $uv^0xy^0z=uxz$. Como $|vy|\geq 1$, sabemos que alguna de las dos no es vacía. Veamos cada caso.
+\begin{itemize}
+\item Si $v\neq\varepsilon$, entonces $v$ contiene al menos una $b$ del bloque izquierdo de $b$'s, mientras que $y$ no contiene ninguna $b$ del bloque de la derecha (porque $|vxy|\leq p$). Por lo tanto, en la palabra $uxz$, el bloque derecho de $b$'s contiene menos $b$'s que el bloque izquierdo. Por tanto, $uxz\notin B$.
+\item Si $y\neq\varepsilon$, entonces $y$ contiene al menos una $a$ del bloque derecho de $a$'s de $s$, mientras que $v$ no contiene ninguna $a$ del bloque izquierdo. Por lo tanto, en la palabra $uxz$, el bloque izquierdo de $a$'s contiene más $a$'s que el bloque derecho, por lo que no está en $B$. 
+\end{itemize}
+En ambos casos tenemos contradicción con el lema del bombeo.
+
+\item[\textbf{Caso 2:}] La subpalabra $vxy$ está contenida en la mitad izquierda de $s$. En este caso, ninguna de las palabras $uxz$, $uv^2xy^2z$, $uv^3xy^3z$ etc. están en $B$, entrando en contradicción con el lema del bombeo.
+
+\item[\textbf{Caso 3:}] La subpalabra $vxy$ está contenida en la mitad derecha de $s$. Este caso es simétrico al anterior, por lo que llegamos a la misma contradicción. 
+\end{itemize}
+En conclusión, en todos los casos hay contradicción, por lo que $B$ no es independiente del contexto.
+
+
+
+\subsubsection{Tercer ejemplo}
+Sea $C$ el lenguaje definido como 
+$$\{a^mb^nc^{mn}:m\geq 0, n\geq 0\}.$$
+Probaremos por reducción al absurdo que no es un lenguaje independiente del contexto. Supongamos que $C$ es independiente del contexto. Sea $p\geq 1$ la longitud de bombeo del lema del bombeo. Consideremos la palabra $s=a^pb^pc^{p^2}$. Entonces $s\in C$ y $|s|=2p+p^2\geq p$. Así que, por el lema del bombeo. $s$ se puede escribir como $s=uvxyz$, donde $|vy|\geq 1$, $|vxy|\leq p$ y $uv^ixy^iz\in C\ \forall i\geq 0$. Hay 3 casos posibles dependiendo de la localización de $vxy$ en la palabra $s$.
+\begin{itemize}
+\item[\textbf{Caso 1:}] La subpalabra $vxy$ está completamente contenida en el bloque de $c$'s de $s$. Consideremos la palabra $uv^2xy^2z$. Como $|vy|\geq 1$, la palabra $uv^2xy^2z$ consta de $p$ letras $a$, $p$ letras $b$, pero más de $p^2$ letras $c$. Por lo tanto, la palabra no está en $C$, mientras que por el lema del bombeo sí lo está, con lo que tenemos una contradicción.
+
+\item[\textbf{Caso 2:}] La subpalabra $vxy$ no contiene ninguna $c$. Consideremos de nuevo la palabra $uv^2xy^2z$. Esta palabra contiene en $p^2$ letras $c$. Dado que $|vy|\geq 1$, en la palabra $uv^2xy^2z$, el número de $a$'s multiplicado por el número de $b$'s es estrictamente mayor que $p^2$. Por tanto,  $uv^2xy^2z$ no está en $C$, lo cual contradice el lema del bombeo, por el cual sí estaría.
+
+\item[\textbf{Caso 3:}] La subpalabra $vxy$ contiene al menos una $b$ y al menos una $c$, pero ninguna $a$. En este caso, podemos escribir $vy=b^jc^k$, donde $j,k\geq 0$ y $j+k\geq 1$. Consideremos la subpalabra $uxz$. Podemos escribir esta palabra como $uxz=a^pb^{p-j}c^{p^2-k}$. Como, por el lema del bombeo, esta palabra está contenida en $C$, $p(p-j)=p^2-k$, lo cual implica que $jp=k$. 
+
+Si $j=0$, entonces $k=0$, lo cual contradice que $j+k\geq 1$. Por lo tanto $j\geq 1$. De esto se sigue que $k=jp\geq p$ y 
+$$|vxy|\geq |vy|=j+k\geq 1+p.$$
+Pero, por el lema del bombeo, $|vxy|\leq p$. 
+\end{itemize}
+Obsérvese que como $|vxy|\leq p$, estos son todos los casos posibles. Como en los tres hemos llegado a contradicción, $C$ no es independiente del contexto. 
+\end{document}

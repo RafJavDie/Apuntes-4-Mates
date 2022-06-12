@@ -1,0 +1,318 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+
+\usepackage{enumerate}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Variable Compleja - Relación 3}
+\author{Rafael González López\\
+10d}
+\maketitle
+\begin{ejercicio}{1}
+Encontrar los polos y partes singulares de las siguientes funciones
+\begin{gather*}
+(a)\; \frac{1}{z^2+5z+6} \qquad (b)\; \frac{1}{(z^2-1)^2} \qquad (c)\; \frac{1}{\sin z} \qquad (d)\; \cot z\\
+(e)\; \frac{1}{\sin^2 z}\qquad (f)\; \frac{1}{z^m(1-z)^n} \qquad\text{($m$ y $n$ enteros postivos)}
+\end{gather*}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item Tenemos que $z^2+5z+6=(z+2)(z+3)$. Luego los polos son $-2,-3$, ambos simples. Si $w=$ entonces
+$$
+\frac{1}{z+2}=\frac{1}{1-(-(z+3))} = - \sum_{n=0}^\infty (-1)^n(z+3)^n
+$$
+Desarrollos válido en $|z+3|<1$ Por tanto
+$$
+\frac{1}{z^2+5z+6} = \frac{1}{z-3} + \sum_{n=0}^\infty (-1)^{n+1}(z+3)^n
+$$
+Para el otro polo, consideramos
+$$
+\frac{1}{z+3} = \frac{1}{1-(-(z+2))} = \sum_{n=0}^\infty (-1)^n(z-2)^n
+$$
+Desarrollo válido en $|z+3|<1$. Por tanto
+$$
+\frac{1}{z^2+5z+6} = \frac{1}{z+2} + \sum_{n=0}^\infty (-1)^{n+1}(z+2)^n
+$$
+\newpage
+\item Tenemos que $(z^2-1)^2 = (z+1)^2(z-1)^2$. Consideramos el desarollo
+$$
+\sum_{k=0}^\infty (k+1)z^k = \frac{1}{(z-1)^2}
+$$
+Por tanto, si $z-1 = z+1 -2 = {2((z+1)/2-1)}$
+$$\frac{1}{(z^2-1)^2}=  \frac{1}{(z+1)^2} \sum_{n=0}^\infty\frac{(n+1)}{2^{n+2}}(z+1)^n = \frac{1/4}{(z+1)^{2}}+\frac{2/8}{(z+1)} + \sum_{n=0}^\infty \frac{(n+3)}{2^{n+4}}(z+1)^{n} 
+$$
+Para la el otro polo procedemos análogamente, usando que $z+1=2+(z-1) = 2(1-(-(z-1)/2))$. Por tanto
+\begin{align*}
+\frac{1}{(z^2-1)^2}&=  \frac{1}{(z-1)^2} \sum_{n=0}^\infty\frac{(-1)^n(n+1)}{2^{n+2}}(z-1)^n\\
+&= \frac{1/4}{(z+1)^{2}}-\frac{2/8}{(z+1)} + \sum_{n=0}^\infty \frac{(-1)^{n+2}(n+3)}{2^{n+4}}(z+1)^{n}
+\end{align*}
+\item Sabemos que nuestra función tiene polos simples en $k\pi$ para $k\in \Z$ y además son los únicos.
+Por tanto, calculamos directamente el residuo
+$$
+\lim_{z\to k\pi} \frac{z-k\pi}{\sin z} = \lim_{z \to k\pi} \frac{1}{\cos(z)} = (-1)^{k}
+$$
+\item Tenemos polos simples en $k\pi$, luego lo más sencillo es calcular el residuo directamente
+$$
+\lim_{z\to k \pi}(z-k\pi)\frac{\cos z}{\sin z} = \lim_{z\to k \pi}\frac{\cos z-(z-k\pi)\sin z}{\cos z} = 1
+$$
+\item Análogamente a (c), tenemos polos de segundo orden en $k\pi$. Calculamos el residuo en cada polo y el coeficiente de $1/(z-k\pi)^2$.
+\begin{align*}
+\lim_{z\to k\pi} \frac{\partial }{\partial z}\frac{(z-k\pi)^2}{\sin^2 z} &= \lim_{z\to k\pi} \frac{2(z-k\pi)\sin z - 2(z-k\pi)^2\cos z}{\sin^3 z} \\
+&=2\lim_{z\to k\pi} \frac{\sin z - (z-k\pi)\cos z + (z-k\pi)^2\sin z}{3\sin^2 z \cos z}\\
+&=2\lim_{z\to k\pi} \frac{3(z-k\pi)\sin z+ (z-k\pi)^2\cos z}{6\sin z \cos^2 z - 3\sin^3z}\\
+&= 2\lim_{z\to k\pi} \frac{5(z-k\pi)\cos z - ((z-k\pi)^3 -3)\sin z}{6 \cos^3z - 21 \cos z \sin^2 z} \\ 
+&=0
+\end{align*}
+Para el otro coeficiente, directamente
+\begin{align*}
+\lim_{z\to k\pi}\frac{(z-k\pi)^2}{\sin^2 z} &= \lim_{z\to k\pi} \frac{2(z-k\pi)}{2\sin z \cos z} \\
+&=\lim_{z\to k\pi} \frac{1}{\cos^2 z - \sin^2 z}\\
+&=1
+\end{align*}
+Luego la parte singular es
+$$
+\frac{1}{(z-k\pi)^2}+ \frac{0}{z-k\pi}
+$$
+
+\item Es claro que tenemos un polo de orden $m$ en $z=0$ y un polo de orden $n$ en $z=1$. Veamos un desarrollo, el otro es análogo.
+$$
+\frac{1}{z}=\frac{1}{1+(z-1)}= \sum_{k=0}^\infty (-1)^k(z-1)^k
+$$
+Derivando $m$ veces tenemos que
+$$
+\frac{(-1)^mm!}{z^{m+1}}= \sum_{k=m}^\infty \frac{k!}{(k-m)!}(-1)^k(z-1)^{k-m}
+$$
+Como $m\geq 1$ entonces $(-1)^{2m-2} = 1$. Tenemos entonces
+
+\begin{align*}
+\frac{1}{z^m(z-1)^n} &= \frac{(-1)^{m-1}}{(m-1)!(z-1)^n}\sum_{k=m-1}^\infty \frac{k!}{(k-m+1)!}(-1)^k(z-1)^{k-m-1}\\
+& = {(-1)^{m-1}}\sum_{k=0}^\infty \binom{m-1+k}{k}(-1)^{k+m-1}(z-1)^{k-n}\\
+&=\sum_{k=0}^\infty \binom{m-1+k}{k}(-1)^{k}(z-1)^{k-n}
+\end{align*}
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{2}
+Dos cuestiones no relacionadas
+\begin{itemize}
+\item ¿Cuántos ceros tiene el polinomio $z^6-2z^5 +7z^4+z^3-z+1$ en el disco unidad?
+\item ¿Cuántos ceros tiene el polinomio $z^4-6z+3$ en la corona $1<|z|<2$.
+\end{itemize}
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[]
+\item Aplicamos el Teorema de Rouche. Tomamos $f(z)$ el polinomio del enunciado y $g(z)=7z^4$. Entonces en $|z|=1$
+$$
+|f(z)-g(z)| \leq  |z^6| + |-2z^5| + |z^3| + |-z| +1 = 6 < 7 = |g(z)| \leq |f(z)|+|g(z)|
+$$
+Por tanto, hay 4 raíces en el disco unidad.
+\item Tomamos $f(z)$ el polinomio del enunciado y $g(z)=z^4$. Entonces, en $|z|=2$
+$$
+|f(z)-g(z)| = |6z-3| \leq 6|z|+3 = 15 < 16 = |g(z)| \leq |f(z)|+ |g(z)|
+$$
+Por lo que tiene $4$ raíces en $|z|<2$. Consideremos ahora $g(z)=6z$. Entonces, en $|z|=1$
+$$
+|f(z)-g(z)| = |z^4+3|\leq |z|^4+3 = 4 < 6 = |g(z)| \leq |f(z)|+|g(z)|
+$$
+Por lo que tiene una raíz en $|z|<1$. Luego en $1<|z|<3$ tenemos $3$ raíces.
+\end{itemize}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{3}
+Probar que una singularidad aislada de $f(z)$ no puede ser un polo de $e^{f(z)}$ 
+\end{ejercicio}
+\begin{solucion}
+Sea $a\in \C$ tal que $f(z)$ tiene una singularidad aislada en $a$. Distingamos casos
+\begin{itemize}
+\item Si $f(z)$ tiene una singularidad evitable en $a$, entonces en un entorno de $a$, $|f(z)|<M$ para algún $M>0$. Por tanto $|e^{f(z)}| \leq e^{|f(z)|}\leq e^M$ en un entorno de $a$. Por el Teorema de Riemann, esta singularidad también es evitable.
+\item Si $f(z)$ tiene un polo en $a$, entonces $\frac{1}{f(z)}$ tiene un cero en $a$ y es analítica en un entorno de $a$. Por el Teorema de la función abierta, la imagen de un entorno de $a$ es un entorno de $0$. En particular, tomará los valores $i\delta$ para $0\leq \delta < \varepsilon$. Por tanto, $f(z)$ toma valores en $i\delta^{-1}$ con $0<\delta<\varepsilon$. Usando estos puntos (que se acumulan en $a$) tenemos que  $e^{f(z)}$ tiene módulo unidad, luego no puede tener límite infinito. 
+
+Este resultado puede mejorarse. Podemos probar que en $a$ $e^{f(z)}$ tiene, de hecho, una singularidad esencial. Como $1/f(z)$ toma los valores $\delta$ para $0\leq \delta \leq \varepsilon$ (para algún $\varepsilon$) deducimos que $e^{f(z)}$ tenderá a infinito por esos puntos, por lo que no puede ser una singularidad evitable.
+
+\item Si $f(z)$ tiene una singularidad esencial en $a$, la imagen en un entorno de $a$ es densa en $\C$. Sea $b\in \C$ consideremos $\log b$ (para algún logaritmo donde esté bien definido). Como la imagen es densa, $\exists z_n$ tal que $f(z_n) \to \log b$, por lo que $e^{f(z_n)}\to b$. Como $b$ era arbitrario, hemos probado que la imagen de $e^{f(z)}$ es densa en $\C$. Deducimos que $f(z)$ tiene una singularidad esencial en $a$.
+\end{itemize} 
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{4}
+Probar que si una función analítica $f(z)$ tiene un cero de orden $N$ en $z=a$, entonces $f(z)=g(z)^N$ para alguna función $g(z)$ analítica en un entorno de $a$ y que satisface $g'(a)\neq 0$.
+\end{ejercicio}
+\begin{solucion}
+Sin pérdida de generalidad podemos, por traslación, considerar $a=0$. Sabemos que el primer coeficiente no nulo de su desarrollo en serie en un entorno de $0$ es el $N$-ésimo, y que podemos escribir
+$$
+f(z) = z^Nh(z)
+$$
+con $h(z)$ holomorfa en un entorno de $0$ y $h(0º)\neq 0$. Por tanto, hay un disco de radio $\delta$ donde podemos considerar el desarollo válido y donde $h(z)$ no se anula. En ese disco podemos considerar un logaritmo de $h(z)$. Por tanto, $\exists u(z)$ tal que $h(z)=e^{u(z)}$ y la función analítica $g(z)=ze^{u(z)/N}$, de donde se tiene la primera parte del enunciado. Tenemos además que
+$$
+g'(z)=e^{u(z)/N}+ze^{u(z)/N}\frac{u'(z)}{N}
+$$
+Por tanto
+$$
+g'(0)^N = e^{u(0)} = h(0) \neq 0
+$$
+Luego $g'(0)\neq 0$.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{5}
+Demostrar que el polinomio $p(z)=2x^6-6z^5+4z^4-z^2+z-1$ tiene sus ceros en el disco cerrado de radio $3$.
+\begin{solucion}
+Vamos a aplicar el Teorema de Rouché tal y como se enuncia en el libro Complex Analysis (página 91), que establece lo siguiente.
+\begin{theorem}
+Sean $f$ y $g$ dos funciones holomorfas en un abierto que contiene a la circunferencia $C$ y su interior. Si 
+$$|g(z)|<|f(z)| \qquad \forall z \in C
+$$
+Entonces $f$ y $f+g$ tienen el mismo número de ceros en el  círculo $C$ y su interior. 
+\end{theorem}
+Consideremos $f(z)=2z^6-6z^5+4z^4$, $g(z)=p(z)-f(z)$ y $C$ la circunferencia de centro el origen y radio $R=3$. Dado que $f(z)=2z^4(z-1)(z-2)$, $f$ tiene sus 6 raíces en el interior de $C$. Tenemos además que $\forall z \in C$ 
+\begin{align*}
+|g(z)|&=|-z^2+z-1|\leq |z^2|+|z|+1 = 3^2+3+1=13\\
+|f(z)|&=|2z^6-6z^5+4z^4|=|2z^4||z^2-3z+2|=162|z-1||z-2|\\
+&\geq 162||z|-1|||z|-2| = 324 > 13 \geq |g(z)|
+\end{align*}
+Basta aplicar el teorema para tener el resultado.
+\end{solucion}
+\end{ejercicio}
+
+\newpage
+\begin{ejercicio}{6}
+Calcular las integrales
+$$
+\int_{|z|=2}\frac{dz}{z^3(z^{10}-2)} \qquad \int_{|z|=2}\frac{dz}{(z-3)(z^5-1)}
+$$
+\end{ejercicio}
+\begin{solucion}
+En ambos casos aplicaremos el Teorema de los residuos.
+\begin{enumerate}
+\item Si $w = 1/z$ entonces $1/w = z$, luego $-dw/w^2 = dz$. Por tanto 
+$$
+\int_{|z|=2}\frac{dz}{z^3(z^{10}-2)}= \int_{|w|=1/2} \frac{dw}{w^2 (1/w)^3((1/w)^{10}-2)} = \int_{|w|=1/2}\frac{w^{11}}{1+2w^{10}}
+$$
+Observemos que las raíces verifica que $2w^{10} = -1$, luego $|w| = \frac{1}{\sqrt[10]{2}} > \frac{1}{2}$. Todas las discontinuidades están en el exterior de $|w|=1/2$, por lo que la integral es $0$.
+\item Si $w = 1/z$ entonces $1/w = z$, luego $-dw/w^2 = dz$. Por tanto 
+$$
+\int_{|z|=2}\frac{dz}{(z-3)(z^5-1)}= \int_{|w|=1/2} \frac{dw}{w^2 (1/w-3)((1/w)^{5}-1)} = \int_{|w|=1/2}\frac{w^{4}}{(1-3w)(1-w^5)}
+$$
+Por tanto, solo tenemos un polo simple en $w=1/3$. Calculamos el residuo
+$$
+\lim_{w\to 1/3} (w-1/3)\frac{w^4}{(1-3w)(1-w^5)} = -\frac{1}{242}
+$$
+Por tanto, la integral vale
+$$-2\pi i \frac{1}{242} = -\frac{\pi i}{121}$$
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{7}
+\begin{enumerate}[(a)]
+\item Demostrar que todos los ceros de $z^4-8z+10$ están en el anillo $1<|z|<3$
+\item Calcular la integral $$\int_C \frac{z^3dz}{z^4-8z+10}$$
+siendo $C$ la circunferencia de centro $0$ y radio $3$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item Procedemos análogamente al segundo apartado del Ejercicio 2. Utilizamos el Teorema de Rouché. Tomamos $f(z)=z^4$, $g(z)=-8z+10$. Entonces, en $|z|=3$,
+$$
+|f(z)|=|z^4| = 81 > 34 = 24 + 10 = |-8z|+10 \geq |-8z+10| = |g(z)|
+$$
+Por tanto, nuestro polinomio tiene cuatro raíces en $|z|<3$. Si tomamos $f(z)=10$ y $g(z)=z^4-8z$ entonces, en $|z|=1$,
+$$
+|f(z)| = 10 > 9 = 1+8 = |z^4|+|-8z| \geq |z^4-8z| =|g(z)|
+$$
+Como $f(z)=10$ no se anula en el disco unidad, deducimos que nuestro polinomios no tiene raíces en $|z|\leq 1$. Por tanto, las cuatro raíces están en el anillo. 
+\item Con el cambio $z=1/w$
+$$
+\int_C \frac{z^3dz}{z^4-8z+10} = \int_{|w|=1/3} \frac{dw}{w(10w^4-8w^3+1)}
+$$
+Observemos que $dz = -dw/w^2$. ¿Dónde ha ido ese signo menos? Pues pensemos en la parametrización de $C$ $z=3e^{it}$, $t=[0,2\pi]$. Entonces $w=e^{-it}/3$. Por tanto, se recorrería en sentido contrario. Tengamos en cuenta que 
+$$
+|1-8w^3| \geq 1-|8w^3| = \frac{19}{27} > \frac{10}{81} = |10w^4|
+$$
+Dado que si $1-8w^3=0$ entonces $|w|=1/2$, $h(w)=10w^4-8w^3+1$ no tiene raíces en $|z|\leq 1/3$. En nuestra nueva integral solo tenemos un polo simple en $w=0$. Calculamos su residuo
+$$
+\lim_{w\to 0}wh(w) = 1
+$$
+Por tanto, la integral suma $2\pi i$.
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{8}
+Sea $\Omega=\C\setminus(-\infty,-1]$. 
+\begin{enumerate}[(a)]
+\item Demostrar que existe una función holomorfa $f\func{\Omega}{\C}$ tal que $e^{f(z)}=1+z$ y $f(0)=0$.
+\item Demostrar que la función definida en $(a)$ es única.
+\item Sea $\alpha\in\C$ fijo. Para $z\in \Omega$ definimos $(1+z)^\alpha = e^{\alpha f(z)}$. Demostrar que $(1+z)^\alpha$ es una función holomorfa en $\Omega$ y que $\dfrac{d}{dz}(1+z)^\alpha = \alpha(1+z)^{\alpha-1}$. 
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item Claramente la región $\Omega$ es simplemente conexa y $z+1$ no se anula, por lo que podemos definir su logaritmo, que verifica $e^{\log (z+1)} = z+1$. Además, $e^{f(0)} = 0 +1 =1$, luego $f(0)=2k\pi i$. Si $k\neq 0$ entonces tomamos $f(z)-f(0)$ que, naturalmente, sigue cumpliendo las mismas propiedades.
+\item Es única, pues si hubiera una $g(z)$ en las mismas condiciones entonces $e^{f(z)-g(z)} = 1$. Por tanto, $\forall z \in \Omega$ $\exists k$ tal que $f(z)-g(z)=2k\pi i$, pero al ser $f$ y $g$ continua y $\Omega$ una región, deducimos que el $k$ no depende de $z$. Como ambas valen $0$ en $z=0$, deducimos que $k=0$ y la igualdad.
+\item Análogamente a como se demostró en la prueba el Teorema 6.3.1 (según la nomenclatura del libro) tenemos que $f'(z) = \frac{1}{1+z}$ por lo que
+\begin{align*}
+\dfrac{d}{dz}(1+z)^\alpha &=\dfrac{d}{dz} e^{\alpha f(z)} = \alpha f'(z) e^{\alpha f(z)} = \alpha\frac{1}{1+z}e^{\alpha f(z)} = \alpha e^{-f(z)} e^{\alpha f(z)} = \alpha e^{(\alpha-1)f(z)}\\
+&= \alpha (1+z)^{\alpha-1}
+\end{align*}
+\end{enumerate}
+
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{9}
+Probar que si una función analítica $f(z)$ tiene un cero de orden $N$ en $z=a$, entonces $f(z)=g(z)^N$ para alguna función $g(z)$ analítica en un entorno de $a$ y que satisface $g'(a)\neq 0$.
+\end{ejercicio}
+\begin{solucion}
+Debe haber habido algún extraño problema por el cuál este enunciado se corresponde con el del Ejercicio 4.
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{10}
+ Sea $\Omega$ el plano complejo menos las dos semirrectas $[1,+\infty)$ y $(-\infty,-1]$.
+\begin{enumerate}[(a)]
+\item Construir una función $f(z)$ holomorfa en $\Omega$ y tal que $f(z)^2(1-z^2)=1$ para todo $z\in\Omega$, y tal que $f(0)=1$. En lo que resta del problema llamaremos $\frac{1}{\sqrt{1-z^2}}$ a esta función.
+\item Demostrar que existe una primitiva $F(z)$ de $\frac{1}{\sqrt{1-z^2}}$ y solo una en $\Omega$ tal que \mbox{$F(0)=0$.}
+\item Demostrar que para $x\in(-1,1)$ se tiene $F(x)=\arcsin{x}$, siendo $\arcsin{x}$ la función usual de variable real. En lo que sigue usaremos por esto la notación $\arcsin{z}$ en lugar de $F(z)$. 
+\item Demostrar que siendo $\log{w}$ la rama principal del logaritmo, tenemos 
+\[\arcsin{z}=i\log(\sqrt{1-z^2}-iz),\quad z\in\Omega.\]
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+
+\begin{enumerate}[(a)]
+\item[]
+\item Si $f:\Omega \to \C $ es una función holomorfa en $\Omega $, tal que $f(z)^2(1-z^2)=1$ para todo $z\in\Omega $, entonces $1/f$ es una rama holomorfa en $\Omega $ de la multifunción {$F:\C \setminus \{-1,1\}\to \mathcal{P} (\C )$,} definida como $F(z)=\sqrt{1-z^2}$. Ahora bien, solo existen dos ramas holomorfas en $\Omega $ de la multifunción $F$, a saber, 
+\[f_1(z)=e^{\frac{1}{2}\log(1-z^2)},\quad f_2(z)=-e^{\frac{1}{2}\log(1-z^2)},\]
+donde $\log:\C \setminus {(-\infty,0]}\to\C $ es la rama principal del logaritmo. Como $f(0)=1$, necesariamente $f=1/f_1$. 
+\item Observe que $\Omega $ es una región estrellada respecto del origen. Por lo tanto, la unicidad es inmediata (Prop 1.3.4). Ahora, considere $F:\Omega \to\C $, definida como 
+\[F(z)=\int_{\gamma_z} f(s)\,ds\,,\]
+donde $\gamma_z:[0,1]\to \C , \gamma_z(t)=tz$. En (Prop 2.2.5) se probó que $F$ es una primitiva de $f$. Además, se verifica que $F(0)=0$.
+\item Para cada $x\in(-1,1)$, se tiene
+\begin{align*}
+F(x) & = \int_0^{1}f(tx)x\;dt\\
+     & = \int_0^{1}\frac{x}{\sqrt{1-(tx)^2}}\,dt\\
+     & = \int_0^x\frac{1}{\sqrt{1-u^2}}\,du
+\end{align*}
+Como $(\arcsin)'(x)=\frac{1}{\sqrt{1-x^2}}$, para todo $x\in(-1,1)$, y $\arcsin(0)=0$, obtenemos el resultado. 
+\item Este apartado es consecuencia inmediata de $(b)$. En efecto, pues 
+\[f_1(z)(i\log(f_1(z)-iz))'(z)=1\quad\forall\;z\in\Omega ,\]
+o equivalentemente, 
+\[(i\log(f_1(z)-iz))'(z)=f(z)\quad\forall\;z\in\Omega .\]
+Además, $(i\log(f_1(z)-iz))(0)=0$.
+
+Observe $f_1(z)-iz\in\C \setminus {(-\infty,0]}$, $\forall\,z\in\Omega $.
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\end{document}

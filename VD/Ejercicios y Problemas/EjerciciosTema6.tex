@@ -1,0 +1,32 @@
+ 	\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcounter{ejercicio}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Variedades Diferenciables - Tema 6}
+\author{Javi, Rafa, Diego}
+\maketitle
+
+\begin{ejercicio}{1}
+Probar que la diferencial de cualquier función constante es nula.
+\end{ejercicio}
+\begin{solucion}
+Sea $df:\mathcal{X}(U)\to\calF(U)$ dada por $(df)X=Xf$, y sea $f=c\in\R$. Entonces, dado $p\in U$
+$$((df)X)(p)=(Xf)(p)=X_pf=u(f)$$
+para cualquier $u\in T_p(M)$ tal que $X_p=u$, y como $u(f)=0$ por ser $f$ constante, se tiene que $((df)X)(p)=0\ \forall p\in U$, de modo que $(df)X=0\ \forall X\in\mathcal{X}(U)$, es decir, que $df=0$ como campo de tensores. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Sea $(U, \varphi = (x_1, \dots, x_m))$ un s.l.c. y $f \in \calF(U)$. Probar que:
+$$df =
+\sum^m_{i=1}
+\parcial{f}{x_i}dx_i$$
+\end{ejercicio}
+\begin{solucion}
+De la propia definición del campo de tensores $df$ se obtiene que $df\left(\parcial{}{x_i}\right)=\parcial{f}{x_i}$, y como es un campo de tensores 1-covariante, aplicando el correspondiente ``lema 3'' se llega al resultado.
+\end{solucion}
+
+\end{document}

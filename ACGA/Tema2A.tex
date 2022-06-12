@@ -1,85 +1,6 @@
 \documentclass[ACGA.tex]{subfiles}
-%\usepackage[utf8x]{inputenc}
-%\usepackage[spanish]{babel}
-%\usepackage{amsmath, amssymb, amsthm, epsf, graphicx, amscd, amsfonts}
-%\usepackage[colorlinks]{hyperref}
-%\usepackage{xmpincl}
-%\usepackage{fancyhdr}
-%
-%
-%\pagestyle{fancy}
-%\lhead[\thepage]{\rightmark}
-%\rhead[\leftmark]{\thepage}
-%\cfoot[]{}
-%
-%\addto\captionsspanish{ \renewcommand{\chaptername}{Tema} }
-%
-%\newtheorem{thm}{Teorema}[chapter]
-%\newtheorem{cor}[thm]{Corolario}
-%\newtheorem{lem}[thm]{Lema}
-%\newtheorem{prop}[thm]{Proposición}
-%\newtheorem{defn}[thm]{Definición}
-%\newtheorem{rem}[thm]{Observaciones}
-%\newtheorem{eje}[thm]{Ejemplos}
-%
-%\newtheorem{ejercicio}{Ejercicio}[chapter]
-%
-%\newcommand{\RR}{\mathbb R}
-%\newcommand{\CC}{\mathbb C}
-%\newcommand{\AAA}{\mathbb A}
-%\newcommand{\PP}{\mathbb P}
-%\newcommand{\Ank}{\AAA^n_k}
-%\newcommand{\Pnk}{\PP^n_k}
-%\newcommand{\Pmk}{\PP^m_k}
-%\newcommand{\Amk}{\AAA^m_k}
-%\newcommand{\calA}{{\mathcal A}}
-%\newcommand{\II}{{\mathcal I}}
-%\newcommand{\VV}{{\mathcal V}}
-%\newcommand{\KK}{{\mathcal K}}
-%\newcommand{\OO}{{\mathcal O}}
-%\newcommand{\mm}{{\mathfrak m}}
-%
-%\title{Notas y ejercicios de Geometría Algebraica}
-%\author{Departamento de Álgebra \\ Universidad de Sevilla}
-%\date{Septiembre de 2017}
-
-
-
 
 \begin{document}
-
-%\setcounter{chapter}{1}
-%\maketitle
-%
-%\vspace*{\fill}
-%
-%\copyright{2011-17 Antonio Rojas León}
-%
-%\bigskip
-%
-%Este trabajo está publicado bajo licencia Creative Commons 3.0 España (Reconocimiento - No Comercial - Compartir bajo la misma licencia)
-%
-%\url{http://creativecommons.org/licenses/by-nc-sa/3.0/es/}
-%
-%\bigskip
-%
-%Usted es libre de:
-%\begin{itemize}
-% \item copiar, distribuir y comunicar públicamente la obra
-%\item hacer obras derivadas
-%\end{itemize}
-%
-%Bajo las condiciones siguientes:
-%\begin{itemize}
-% \item {\bf Reconocimiento:} Debe reconocer los créditos de la obra maestra especificada por el autor o el licenciador (pero no de una manera que sugiera que tiene su apoyo o apoyan el uso que hace de su obra).
-% \item {\bf No comercial:} No puede utilizar esta obra para fines comerciales.
-%\item {\bf Compartir bajo la misma licencia:} Si altera o transforma esta obra, o genera una obra derivada, sólo puede distribuir la obra generada bajo una licencia idéntica a ésta.
-%\end{itemize}
-%
-%
-%
-%
-%\newpage
 
 \chapter{Variedades en el espacio proyectivo}
 
@@ -103,7 +24,7 @@ Para todo subconjunto $S\subseteq k[x_0,x_1,\ldots,x_n]$ formado por polinomios 
 Si $S\subseteq k[x_0,\xn{n}]^h$, entonces $\V(S)=\V(\gene{S})$. 
 \end{prop}
 \begin{dem}
-Una inclusión es trivial. Para la otra tenemos que ver que si $f\in \gene{S}$ homogéneo, entonces $f=\sum g_i f_i$ con $f_i \in S$. Si $h_i$ es la componente homogénea de $g_i$ de grado $d-d_i$ entonces $\sum g_i f_i = \sum h_i f_i$. Si $x\in \V(S)$ entonces $f_i(x)=0$ $\forall i$, por lo que $\sum h_i (x) f_i (x) =0$. 
+Una inclusión es trivial. Para la otra tenemos que ver que si $f\in \gene{S}$ homogéneo de grado $d$, entonces $f=\sum g_i f_i$ con $f_i \in S$. Si $h_i$ es la componente homogénea de $g_i$ de grado $d-d_i$ ($d_i=\deg{f_i}$) entonces $\sum g_i f_i = \sum h_i f_i$. Si $x\in \V(S)$ entonces $f_i(x)=0$ $\forall i$, por lo que $\sum h_i (x) f_i (x) =0$. 
 \end{dem}
 
  \begin{ejs}\emph{\begin{enumerate}
@@ -229,7 +150,7 @@ El resultado siguiente, que no demostraremos, también es paralelo al correspond
 
 \item Dos polinomios de grado $d$ y $e$ en el plano proyectivo se cortan en $de$ puntos.
 
-\item Si tienes un ideal generado por $r$ polinomios en $\mathbb{P}^n$ entonces cualquier componente irreducible tiene como mínimo $n-r$.
+\item Si tienes un ideal generado por $r$ polinomios en $\mathbb{P}^n$ entonces cualquier componente irreducible tiene como mínimo dimensión $n-r$.
 \end{itemize}
 \end{nota}
 
@@ -241,7 +162,7 @@ Como se puede observar, es bastante complicado resolver este problema en general
  
 \end{ejer}
 
-Vamos a tener en cuenta que la definición de irreducibilidad es válida para cualquier espacio topológico, y que tomando complementarios se peude exprespar como que $X$ es irreducible si y solo si para cualquier par de abiertos $U,V\subseteq X$ no vacíos, entonces $U\cap V\neq\emptyset$.
+Vamos a tener en cuenta que la definición de irreducibilidad es válida para cualquier espacio topológico, y que tomando complementarios se puede exprespar como que $X$ es irreducible si y solo si para cualquier par de abiertos $U,V\subseteq X$ no vacíos, entonces $U\cap V\neq\emptyset$.
 
 \begin{defi}
 La \textbf{clausura proyectiva} $\overline{X}$ de un conjunto algebraico afín $X\subseteq\A^n$ es el menor conjunto algebraico de $\mathbb{P}^n$ tal que $X\subseteq\overline{X}$.
@@ -251,11 +172,11 @@ La \textbf{clausura proyectiva} $\overline{X}$ de un conjunto algebraico afín $
 Supongamos que $X=\bigcup U_i$ con $U_i$ abierto irreducible, y $U_i\cap U_j\neq\emptyset$, entonces $X$ es irreducible.
 \end{prop}
 \begin{dem}
-Sean $U,V\subseteq X$ abiertos no vacíos. Entonces $\exists i\mid U\cap U_i\neq\emptyset\ \exists j\mid V\cap U_j\neq\emptyset$. Por hipótesis $V\cap U_j\neq\emptyset$ y $U_i\cap U_j\neq\emptyset$ siendo las dos interesecciones abiertas. Por tanto $U_i\cap U_j\cap V\neq\emptyset$. Por otro lado, $U_i\cap U_j\cap U\neq\emptyset$. Como $U_i$ es irreucible, $U_i\cap U_j\cap U\cap V\neq\emptyset$, por lo que en particular $U\cap V\neq\emptyset$.  \QED
+Sean $U,V\subseteq X$ abiertos no vacíos. Entonces $\exists i\mid U\cap U_i\neq\emptyset\ \exists j\mid V\cap U_j\neq\emptyset$. Por tanto $U_i\cap U_j\cap V\neq\emptyset$. Por otro lado, $U_i\cap U_j\cap U\neq\emptyset$. Como $U_i$ es irreducible, $U_i\cap U_j\cap U\cap V\neq\emptyset$, por lo que en particular $U\cap V\neq\emptyset$.  \QED
 \end{dem}
 En $\Pnk$, $U_i:=\Pnk\setminus\{x_i=0\}$ es un abierto (de Zariski) en $\Pnk$ tal que $\Pnk=\bigcup_{i=0}^n U_i$. Tenemos que $U_i\cong\A^n$. Vamos a ver que la restricción de la topología de Zariski del proyectivo a $\A^n$ es la topología de Zariski en $\A^n$. 
 \begin{proof}
-Toamos $i=0$ y hacemos la identificación $U_0\cong A^n\hookrightarrow\mathbb{P}^n$ tal que $(a_1,\dots,a_n)\mapsto(1:a_1:\dots :a_n)$. Entonces $\mathbb{P}^n\setminus U_0=H_0$ hiperplano del infinito. 
+Tomamos $i=0$ y hacemos la identificación $U_0\cong \A^n\hookrightarrow\mathbb{P}^n$ tal que $(a_1,\dots,a_n)\mapsto(1:a_1:\dots :a_n)$. Entonces $\mathbb{P}^n\setminus U_0=H_0$ hiperplano del infinito. 
 
 Los cerrados de la topología inducida en $\A^n$ por la topología de Zariski de $\mathbb{P}^n$ son los conjuntos de la forma $Z\cap\A^n$ con $Z\subseteq\mathbb{P}^n$ algebraico. Veamos que esta topología es la de Zariski en $\A^n$.
 
@@ -296,7 +217,7 @@ Como $Y \cap U_0$ está parametrizado, es irreducible. Análogamente:
 \[ Y \cap U_1 = \V(x_0^2-x_2,x_0-x_2x_3,1-x_0x_3) = \{(t,t^2,1/t)\} \]
 \[ Y \cap U_2 = \{(t,t^2,t^3)\} \]
 \[ Y \cap U_3 = \V(x_0^2-x_1x_2, x_0x_1-x_2, x_1^2-x_0) = \{(t^2,t,t^3)\} \]
-son irreducibles. Como $Y$ es unión de irreducibles disjuntos 2 a 2, $Y$ es irreducible.
+son irreducibles. 
 \end{ej}
 
 \begin{nota}
@@ -316,7 +237,7 @@ En el caso de los conjuntos algebraicos proyectivos, no podemos definir las func
 \end{defi}
 
 \begin{nota}
-Si en $U$, $f=P/Q$ y en $V$, $g=R/S$. $(U,f)=(V,g)$ si  $PS=QR$ en $U \cap V$, es decir, si $PS-QR\in I(X)$.
+Si en $U$, $f=P/Q$ y en $V$, $g=R/S$. $(U,f)=(V,g)$ si  $PS=QR$ en $U \cap V$, es decir, si $PS-QR\in \I(X)$.
 \end{nota}
 
 \begin{ejer}
@@ -325,20 +246,20 @@ Si en $U$, $f=P/Q$ y en $V$, $g=R/S$. $(U,f)=(V,g)$ si  $PS=QR$ en $U \cap V$, e
 
 \begin{ej}
 En $X=\mathbb{P}^1$:
-\[ K(X) = \left\{\frac{P(x_0,x_1)}{Q(x_0,x_1)} \mid P,Q \in k[x_0,x_1] \text{ homógeneo de mismo grado y }Q(x_0,x_1)\neq 0\right\} / \sim \]
+\[ \KK(X) = \left\{\frac{P(x_0,x_1)}{Q(x_0,x_1)} \mid P,Q \in k[x_0,x_1] \text{ homógeneo de mismo grado y }Q(x_0,x_1)\neq 0\right\} / \sim \]
 
-Veamos que $K(X)$ es cuerpo. Sea $φ : K(X) \to k(t)$ definida como:
+Veamos que $\KK(X)$ es cuerpo. Sea $φ : \KK(X) \to k(t)$ definida como:
 \[ φ\left(\frac{P(x_0,x_1)}{Q(x_0,x_1)}\right)  = \frac{P(1,t)}{Q(1,t)} \]
 Se puede ver con facilidad que $φ$ está bien definida y es inyectiva. Para ver que es sobreyectiva basta observar que:
 \[ \frac{R(t)}{S(t)} = φ \left(\frac{R^h}{S^h} \cdot x_0^{\text{gr}(S)-\text{gr}(R)} \right)\]
-Luego $φ$ es isomorfismo y $K(X)$ es cuerpo.
+Luego $φ$ es isomorfismo y $\KK(X)$ es cuerpo.
 \end{ej}
 
 Si $Z\subseteq\Pnk$ es una variedad y $f:Z\dashrightarrow k$ una función racional, se dice que $f$ {\bf está definida en} el punto $x\in Z$ si existe un abierto $U\subseteq Z$ con $x\in U$ y polinomios $g,h\in k[x_0,x_1,\ldots,x_n]$ homogéneos del mismo grado con $h(y)\neq 0$ y $f(y)=g(y)/h(y)$ para todo $y\in U$. El conjunto de puntos donde $f$ está definida es un abierto, llamado el {\bf abierto de definición} de $f$. El conjunto de funciones racionales definidas en un punto $x\in Z$ es un subanillo local del cuerpo de funciones, que llamaremos el {\bf anillo local de $Z$ en $x$}, denotado $\OO_{Z,x}$.  Así mismo:
 \[ \OO_Z(U) = \bigcap_{x \in U} \OO_{Z,x} \]
 
 \begin{prop}
-Si $X$ es irreducible, $O_{X,a}$ y $O_X(U)$ son subanillos de $K(X)$. $O_{X,a}$ es un anillo local de ideal maximal $\{f \in O_{X,a} \mid f(a)=0\}$.
+Si $X$ es irreducible, $O_{X,a}$ y $O_X(U)$ son subanillos de $\KK(X)$. $O_{X,a}$ es un anillo local de ideal maximal $\{f \in O_{X,a} \mid f(a)=0\}$.
 \end{prop}
 
 \begin{defi}
@@ -407,11 +328,11 @@ Sea ahora $X\subseteq \Ank$ un conjunto algebraico. Su imagen por $\theta_0$ es 
 \end{defi}
 
 \begin{ejs}
- \emph{\begin{enumerate}
+ \begin{enumerate}
        \item  Si $X$ es la recta $x_1=0$ en $\A^2_k$, su clausura proyectiva es la recta $x_1=0$ en $\PP^2_k$, que contiene a $X$ y al ``punto en el infinito'' $(0:0:1)$.
 \item Si $X$ es la curva $x_1x_2=1$ en $\A^2_k$, su clausura proyectiva es la curva $x_1x_2=x_0^2$ en $\PP^2_k$, que contiene a $X$ y a los dos ``puntos en el infinito'' $(0:1:0)$ y $(0:0:1)$.
        \end{enumerate}
-}
+
 \end{ejs}
 
  
@@ -467,7 +388,7 @@ Recíprocamente, sea $\overline Z=\V(J)$, donde $J$ es un ideal homogéneo. Para
 En el resultado anterior no es posible reemplazar $I$ por un conjunto finito de generadores, como muestra el ejemplo siguiente:
 
 \begin{ejs}
- \emph{Sea $Z\subseteq\A^3_\C$ la variedad $\V(\{x_1^2-x_2,x_1^2-x_3\})$. Su clausura proyectiva $\overline Z$ {\it no es} el conjunto algebraico definido por los polinomios $x_1^2-x_2x_0$ y $x_1^2-x_3x_0$. Este conjunto algebraico tiene dos componentes irreducibles: la definida por $x_1^2-x_2x_0=x_2-x_3=0$ (la verdadera clausura proyectiva de $Z$) y la componente ``intrusa'' definida por $x_0=x_1=0$.}
+ Sea $Z\subseteq\A^3_\C$ la variedad $\V(\{x_1^2-x_2,x_1^2-x_3\})$. Su clausura proyectiva $\overline Z$ {\it no es} el conjunto algebraico definido por los polinomios $x_1^2-x_2x_0$ y $x_1^2-x_3x_0$. Este conjunto algebraico tiene dos componentes irreducibles: la definida por $x_1^2-x_2x_0=x_2-x_3=0$ (la verdadera clausura proyectiva de $Z$) y la componente ``intrusa'' definida por $x_0=x_1=0$.
 \end{ejs}
 
 En general, si $Z=\V(\{f_1,\ldots,f_r\})$ es una variedad afín, el conjunto algebraico proyectivo $\V(\{f_1^h,\ldots,f_r^h\})$ contiene a la clausura proyectiva de $Z$ como componente irreducible, posiblemente con otras componentes irreducibles contenidas en $H_\infty$.
@@ -487,9 +408,7 @@ En general, si $Z=\V(\{f_1,\ldots,f_r\})$ es una variedad afín, el conjunto alg
 \begin{defi} Una variedad cuasi proyectiva es un subconjunto abierto de una variedad proyectiva. Una variedad cuasi afín es un conjunto abierto de un variedad afín.
 \end{defi}
 
-\begin{ej}
-En $\mathbb{P}^1$, veamos qué necesitamos para que $P(x_0,x_1)/Q(x_0,x_1)$ esté definida en todo punto de $\mathbb{P}^1$. Para todo $(a_0:a_1)$, existe $R,S \in k[x_0,x_1]$ homogéneos de mismo grado tal que $S(a_0,a_1)\neq 0$ y $P/Q=R/S$. Supongamos que $Q(a_0,a_1)=0$, entonces $(a_0x_1-a_1x_0) | Q(x_0,x_1)$. Por otro lado: $P(a)S(a)=R(a)Q(a)$, luego $P(a)=0$ luego $(a_0x_1-a_1x_0) | P(x_0,x_1)$. Entonces podemos eliminar dicho factor de $P$ y $Q$ para obtener $P'$ y $Q'$ que no se anula en $(a_0:a_1)$ y de un grado menor. Como todo polinomio no constante se anula, sólo acabaremos cuando $P/Q=A/B$ donde $A,B \in k$. 
-\end{ej}
+\begin{comment}
 
 \begin{prop}Vamos a ver que las definiciones que hemos visto de funciones regulares no son conceptos distintos, sino que una es un caso particular de la otra.
 \end{prop}
@@ -517,6 +436,6 @@ La aplicación $\Phi \func{ O_{\PP^n}(U_0)}{\mathcal{A}(\A^n)}$ tal que $\Phi(f)
 
 Además $Z\subset \PP^n$ proyectivo, $Y=Z\cap U_0 \subset \A^n$ afín, entonces $\mathcal{A}(Y)\cong O_Z(Y)$.
 \end{dem}
-
+\end{comment}
 
 \end{document}

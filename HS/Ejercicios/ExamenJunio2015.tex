@@ -1,0 +1,130 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\colapso}{{\searrow\!\!\!\!\searrow}}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Examen de Homología Simplicial (Junio de 2016)}
+\author{Javier Aguilar Martín}
+\maketitle
+
+\begin{ejercicio}{1}
+Dado un complejo simplicial $K$ y $v\in K^0$, se define el borrado de $v$ en $K$ como :
+\[
+delt(v;K)=\{\sigma\in K\mid v\notin\sigma\}.
+\]
+Se pide:
+\begin{enumerate}
+\item Probar que $del(v;K)$ es un subcomplejo de $K$ tal que $lk(v;K)\subseteq del(v;K)$.
+\item Probar que $K=st(v;K)\cup del(v;K)$ y $lk(v;K)=st(v;K)\cap del(v;K)$.
+\item Probar que si existe $v\in K^0$ tal que $lk(v;K)$ es colapsable, entonces $K$ colapsa a $del(v;K)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item Si $v\notin\sigma$ se tiene también $x\notin\tau$ para cualquier $\tau\leq\sigma$. Si $v\notin\sigma$ y $v\notin\mu$ claramente $v\notin \sigma\cap\tau$. Con esto tenemos probado que $del(v;K)$ es un subcomplejo de $K$. Que $lk(v;K)\subseteq del(v;K)$ se tiene trivialmente de la definición del link, ya que son símplices que no contienen a $v$.
+
+\item La primera igualdad es evidente pues si $v\in \sigma$ entonces $\sigma\in st(v;K)$ y si $v\notin\sigma$ entonces $\sigma\in del(v;K)$. La otra igualdad es también sencilla pues si $\sigma\in st(v;K)\cap del(v;K)$, entonces $v\notin \sigma$ pero $\sigma\in st(v;K)$, y este tipo de símplices son los que forman $lk(v;K)$. 
+
+%\item Sketch of the proof:
+%\begin{itemize}
+%\item Probar que para que el link sea colapsable el vértice debe estar en el borde
+%\item Colapsar la estrella al link
+%\item Hecho porque el link está en el del
+%\end{itemize}
+\item Sin pérdida de generalidad, supongamos que $K=st(v;K)$ (los demás símplices resultarán irrelevantes). Sea $L=lk(v;K)$.
+Véase que $K=vL$ y que $del(v;K) = L$.
+Tenemos que probar que $K \searrow\!\!\searrow L$.
+Para ello usamos que existe una cadena de colapsos:
+\[ L = L_1 \searrow L_2 \searrow \dots \searrow L_m = \{\tilde{v}\} \]
+
+Si $τ$ es una cara libre del símplice principal $σ$ de $L$, tenemos que $vτ$ es una cara libre del símplice principal $vσ$ en $K$.
+Al colapsar $K=K_1 \searrow K_2$ sobre $vτ$ y $vσ$, eliminamos $σ$ y $τ$ de $lk(v;K_2)$, de manera que coincide con $L_2$.
+Repitiendo este proceso tenemos que:
+\[ K = K_1 \searrow K_2 \searrow \dots \searrow K_m \]
+con
+\[ lk(v;K_i) = L_i\quad \forall i=1,\dots,m \]
+
+Como $L_m = \{\tilde{v}\}$, entonces $K_m = L \cup \{v\} \cup \{(v,\tilde{v})\}$.
+Podemos hacer un colapso sobre $v<(v,\tilde{v})$ de $K_m$ obteniendo $K_m \searrow L$.
+Luego:
+\[ K \searrow\!\!\searrow del(v;K) \]
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+Sean $A=\{(x,y,z)\in\R^3\mid x^2+y^2+z^2=1\}$, $B=\{(x,y,z)\in\R^3\mid x^2+y^2+z^2\leq 4, z=0\}$ y $C=\{(x,y,z)\in\R^3\mid x=0,y=0, 0\leq z\leq 1\}$. Dar triangulaciones de $A$, $B$ y $C$ y calcular los $\F$-espacios vectoriales de homología reducida de $A\cup B$, $A\cup C$ y $A\cup B\cup C$ usando dichas triangulaciones e indicando explícitamente sus generadores.
+\end{ejercicio}
+\begin{solucion}
+Como hay que hacer el cálculo de homologías con las triangulaciones que demos, no serán tan naturales como si simplemente quisiéramos triangular los espacios por separado. Para la esfera $A$ usamos la triangulación como octaedro.  Para $C$ conservamos la triangulación usual de un segmento como complejo generado por un 1-símplice. En cuando a $B$, hacemos la siguiente triangulación:
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-4.62,-4.004) rectangle (13.78,5.004);
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (0.,0.) -- (3.,0.) -- (1.5,2.5980762113533165) -- cycle;
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (0.,0.) -- (1.5,2.5980762113533165) -- (-1.5,2.598076211353318) -- cycle;
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (3.,0.) -- (0.,0.) -- (1.5,-2.5980762113533165) -- cycle;
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (1.5,2.5980762113533165) -- (3.,0.) -- (4.5,2.5980762113533156) -- cycle;
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (-1.5,2.598076211353318) -- (4.5,2.5980762113533156) -- (1.52,4.) -- cycle;
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (-1.5,2.598076211353318) -- (-1.,-1.) -- (1.5,-2.5980762113533165) -- cycle;
+\fill[line width=2.pt,fill=black,fill opacity=0.10000000149011612] (1.5,-2.5980762113533165) -- (4.,-1.) -- (4.5,2.5980762113533156) -- cycle;
+\draw[line width=2.pt] (0.,0.) -- (4.5,2.6);
+\draw[line width=2.pt] (0.7,1.33) -- (-1.5,2.6);
+\draw[line width=2.pt] (1.5,0) -- (1.5,-2.6);
+\draw [line width=2.pt] (0.,0.)-- (3.,0.);
+\draw [line width=2.pt] (3.,0.)-- (1.5,2.5980762113533165);
+\draw [line width=2.pt] (1.5,2.5980762113533165)-- (0.,0.);
+\draw [line width=2.pt] (0.,0.)-- (1.5,2.5980762113533165);
+\draw [line width=2.pt] (1.5,2.5980762113533165)-- (-1.5,2.598076211353318);
+\draw [line width=2.pt] (-1.5,2.598076211353318)-- (0.,0.);
+\draw [line width=2.pt] (3.,0.)-- (0.,0.);
+\draw [line width=2.pt] (0.,0.)-- (1.5,-2.5980762113533165);
+\draw [line width=2.pt] (1.5,-2.5980762113533165)-- (3.,0.);
+\draw [line width=2.pt] (1.5,2.5980762113533165)-- (3.,0.);
+\draw [line width=2.pt] (3.,0.)-- (4.5,2.5980762113533156);
+\draw [line width=2.pt] (4.5,2.5980762113533156)-- (1.5,2.5980762113533165);
+\draw [line width=2.pt] (-1.5,2.598076211353318)-- (4.5,2.5980762113533156);
+\draw [line width=2.pt] (4.5,2.5980762113533156)-- (1.52,4.);
+\draw [line width=2.pt] (1.52,4.)-- (-1.5,2.598076211353318);
+\draw [line width=2.pt] (-1.5,2.598076211353318)-- (-1.,-1.);
+\draw [line width=2.pt] (-1.,-1.)-- (1.5,-2.5980762113533165);
+\draw [line width=2.pt] (1.5,-2.5980762113533165)-- (-1.5,2.598076211353318);
+\draw [line width=2.pt] (1.5,-2.5980762113533165)-- (4.,-1.);
+\draw [line width=2.pt] (4.,-1.)-- (4.5,2.5980762113533156);
+\draw [line width=2.pt] (4.5,2.5980762113533156)-- (1.5,-2.5980762113533165);
+\draw [line width=2.pt] (-1.,-1.)-- (0.,0.);
+\draw [line width=2.pt] (1.52,4.)-- (1.5,2.5980762113533165);
+\draw [line width=2.pt] (3.,0.)-- (4.,-1.);
+\draw [line width=2.pt] (1.5,2.5980762113533165)-- (1.5,0.);
+\draw [line width=2.pt] (0.,0.)-- (2.25,1.2990381056766584);
+\draw [line width=2.pt] (3.,0.)-- (0.75,1.2990381056766582);
+\end{tikzpicture}
+
+Pasamos a calcular las homologías:
+\begin{itemize}
+\item $A\cup B$ es colapsable a la esfera con una membrana en su interior, así que dividimos el espacio en la membrana $K_1$ y la esfera $K_2$, cuyas homologías son conocidas, y cuya intersección es una circunferencia, que también tiene homología conocida. La circunferencia es el borde de la membrana y el borde de cualquiera de las semiesferas, por lo que tenemos el mapeo nulo $H_1(K_1\cap K_2)\to H_1(K_1)\oplus H_1(K_2)=0$. Tenemos directamente $H_1(K_1)=0$ por estar entre ceros en Mayer-Vietoris y $\widetilde{H}_0(K)=0$ por ser conexo. En cuanto a $H_2(K)$, tenemos en Mayer-Vietoris
+\[
+0\to\F\xrightarrow{j_{*2}}H_2(K)\xrightarrow{\Delta_{*2}}\F\to 0
+\]
+Por escindibilidad, $H_2(K)=\F\oplus\F$, donde un generador es la memebrana con el hemisferio norte y el otro con el hemisferio sur.
+
+\item $A\cup C$ colapsa sobre $A$, cuya homología reducida es $\widetilde{H}_p(A)=0$ si $p\neq 2$, $\widetilde{H}_2(A)=\F$ generado por la suma de todos sus 2-símplices.
+
+\item Colapsamos $A\cup B\cup C$ de la misma forma que en $A\cup B$. Descomponemos este complejo $K$ en $K_1=A\cup C$ y $K_2=B$, donde estamos abusando de notación llamando $B$ a lo que queda tras colapsar. La intersección  sería justamente $D=S^1\sqcup\{v\}$, donde el punto es un extremo de $C$. Sabemos que $\widetilde{H}_0(D)=\F\gene{v-v_i}$ para cualquier $v_i$ fijo de la triangulación de $S^1$ y $H_p(D)=H_p(S^1)$ para todo $p\neq 0$. Es claro que $K_1$ colapsa sobre $A$, así que ya podemos sustituir en Mayer-Vietoris. Tenemos entonces
+\[
+0\to \F\to H_2(K)\to \F\to 0
+\]
+con lo que $H_2(K)=\F\oplus\F$ con los mismos generadores que tenía $A\cup B$. 
+%Para obtener $\widetilde{H}_0(K)$ usaremos la homología no reducida. Tenemos
+\[
+0\to H_1(K)\to\F\to\F\oplus\F\to 0
+\]
+Como la última no trivial es sobreyectiva, deducimos que $H_1(K)=\F$. Podemos tomar como generador un 1-ciclo que contenga a $C$. 
+\end{itemize}
+\end{solucion}
+
+
+
+
+\end{document}

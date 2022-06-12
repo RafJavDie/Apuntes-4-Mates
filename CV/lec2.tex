@@ -1,0 +1,532 @@
+\documentclass[CV.tex]{subfiles}
+
+\begin{document}
+
+
+%\hyphenation{equi-va-len-cia}\hyphenation{pro-pie-dad}\hyphenation{res-pec-ti-va-men-te}\hyphenation{sub-es-pa-cio}
+
+\chapter{Cohomología de deRham sobre abiertos euclídeos}
+\section{Definiciones}
+Sea $U\subseteq\R^n$ un abierto euclídeo y $\R^n$ con la base canónica $\{e_1,\dots, e_n\}$, que induce una base dual sobre $Alt^1(\R)$, $\{\varepsilon_1,\dots, \varepsilon_n\}$. Ocasionalmente se usará la notación $\varepsilon_I=\varepsilon_{i_1}\land\dots\land\varepsilon_{i_p}$, donde $I=\{1\leq i_1<\cdots<i_p\leq n\}$.
+
+\begin{defi}
+Una \textbf{$p$-forma diferenciable} sobre $U$ es 
+\[
+w:U\to Alt^p(\R^n)
+\]
+\[
+x\mapsto w_x
+\]
+que es aplicación diferenciable $w_x(v_1,\dots, v_p)$ o también denotado $w(x)(v_1,\dots, v_p)$. 
+\end{defi}
+
+\begin{observaciones}
+$w_x=\sum_{\sigma\in S(p,n-p)}(w_x)_{\sigma}\varepsilon_{\sigma}$. Por otro lado, tiene sentido hablar de diferenciabilidad pues $Alt^p(\R^n)\cong \R^{\binom{n}{p}}$, por lo que la diferenciabilidad se tendrá coordenada a coordenada. Es decir, cada $x\mapsto (w_x)_{\sigma}$ es diferenciable. 
+\end{observaciones}
+
+\begin{lemma}
+El conjunto de todas las $p$-formas diferenciables $\Omega^p(U)$ es un $\R$-e.v.
+\end{lemma}
+
+Como $w$ es diferenciable, podemos considerar su derivada, $Dw$, tal que para cada $x\in U$, $D_xw:\R^n\to Alt^p(\R^n)$ es una aplicación lineal. Tendríamos entonces para cada $i=1,\dots, n$
+\[
+D_xw(e_i)=\frac{d}{dt}(w(x+te_i))|_{t=0}=\frac{\partial w}{\partial x_i}(x)
+\]
+Obsérvese que es el resultado es un vector, pues es una matriz aplicada sobre un vector. Podemos decir que $w=\sum_{\sigma}w_{\sigma}\varepsilon_{\sigma}$, donde $w_{\sigma}$ son $C^{\infty}$ diferenciables como funciones $w_{\sigma}: U\to \R=Alt^0(\R^n)$, por lo que $w_{\sigma}\in\Omega^0(U)=C^{\infty}(U;\R)$. Entonces, para cada $i=1,\dots, n$,
+\[
+D_xw(e_i)=\sum_{\sigma}\frac{\partial w_{\sigma}}{\partial x_i}(x)\varepsilon_{\sigma}
+\]
+\newpage
+Así, pues
+\[
+Dw: U\longrightarrow \{\text{aplicaciones lineales } \R^n\to Alt^p(\R^n)\}\subseteq M_{n\times\binom{n}{p}}
+\]
+\[x\longmapsto D_xw:\R^n\to Alt^p(\R^n)
+\]
+Se tiene además que si $w\in\Omega^p(U)$ y $f\in\Omega^0(U)$, $fw\in\Omega^p(U)$, que es equivalente a decir que $(fw)_x\in Alt^p(\R^n)$, definida como $fw(x)(v_1,\dots, v_p)=f(x)w_x(v_1,\dots, v_p)$ (o sin los $v_i$). Por tanto, $\Omega^p(U)$ es un $C^{\infty}(U;\R)$-módulo. 
+
+\begin{defi}
+Definimos la \textbf{diferencial exterior}
+\[
+\Omega^p(U)\overset{d}{\longrightarrow} \Omega^{p+1}(U)
+\]
+como un homomorfismo de $\R$-e.v. $w\longmapsto dw:U\to Alt^{p+1}(\R^n)$, donde $x\mapsto d_xw:\R^n\underbrace{\times\dots \times}_{p+1}\R^n\to \R$ está definida como
+\[
+d_xw(v_1,\dots, v_{p+1})=\sum_{l=1}^{p+1}(-1)^{l-1}D_xw(v_l)(v_1,\dots, \hat{v}_l,\dots, v_{p+1})
+\]
+\end{defi}
+Es fácil comprobar que $d_xw$ está bien definida. Además es multilineal por ser combinación lineal de multilineales. Probemos que es alternado. Por el lema \ref{alternado} basta comprobar que $d_xw(v_1,\dots, v_{p+1})=0$ si $\exists i\mid v_i=v_{i+1}$. 
+\begin{gather*}
+d_xw(v_1,\dots, v_{p+1})=\sum_{l=1}^{p+1}(-1)^{l-1}D_xw(v_l)(v_1,\dots, \hat{v}_l,\dots, v_{p+1})=\\
+\sum_{l=1}^{i-1}(-1)^{l-1}D_xw(v_l)(v_1,\dots, \hat{v}_l,\dots, v_{p+1})+\\
+(-1)^{i-1}D_xw(v_i)(v_1,\dots, \hat{v}_i,\dots, v_{p+1})+(-1)^{i}D_xw(v_{i+1})(v_1,\dots, \hat{v}_{i+1},\dots, v_{p+1})+\\
+\sum_{l=i+2}^{p+1}(-1)^{l-1}D_xw(v_l)(v_1,\dots, \hat{v}_l,\dots, v_{p+1})
+\end{gather*}
+El primer y el último sumando contienen a $v_i$ y a $v_{i+1}$, luego se anulan por se alternados. Los otros dos se anulan, porque al eliminar uno de los dos sigue estando el otro, y con el cambio de signo se cancelan.
+
+\begin{ej}
+Sea la aplicación diferenciable $x_i:U\to\R$ que consiste en proyectar sobre la $i$-ésima coordenada. $x_i\in \Omega^0(U)=C^{\infty}(U;\R)$, luego $dx_i\in\Omega^1(U)$, donde $dx_i:U\to Alt^1(\R^n)$ está definida como $x\mapsto d_x x_i$. Entonces, $d_x x_i(v)=D_x(x_i)(v)$, con $v\in\R^n$. Tengamos en cuenta que $D_x(x_i):\R^n\to Alt^0(\R^n)=\R$ es la aplicación $v\mapsto D_x(x_i)(v)$. Así que
+\[
+D_x(x_i)(v)=\sum_{j=1}^n\frac{\partial x_i}{\partial x_j}(x)v_j=\sum_{j=1}^n\frac{\partial x_i}{\partial x_j}(x)\varepsilon_j(v)=\left(\sum_{j=1}^n\frac{\partial x_i}{\partial x_j}(x)\varepsilon_j\right)(v)= \varepsilon_i
+\]
+Así que $d_xx_i=\varepsilon_i$. También escribiremos $dx_i=\varepsilon_i$ entendido como la función constante $\varepsilon_i$, ya que no se obtendría el valor concreto hasta evaluar en $x$. En general, para $f\in\Omega^0(U)$ se tiene
+\[
+d_xf(v)=\sum_{j=1}^n\parcial{f}{x^j}(x)v_j=\sum_{j=1}^n\parcial{f}{x^j}(x)\varepsilon_j(v)=\sum_{j=1}^n\parcial{f}{x^j}(x)dx_j(v).
+\]
+En otras palabras, $d_xf=\sum_{j=1}^n\parcial{f}{x^j}(x)dx_j$, o también $df=\sum_{i=1}^j\parcial{f}{x_i}dx_i$. 
+\end{ej}
+
+\begin{nota}
+Haciendo el mismo desarrollo, usando la regla de Leibniz llegamos a que $d(fg)=dfg+fdg$.
+\end{nota}
+
+\begin{lemma}
+Sea $w\in\Omega^p(U)$ tal que $w(x)=f(x)\varepsilon_I$ (equivalentemente $f(x)\varepsilon_{\sigma}, \sigma\in S(p,n-p)$). Entonces $dw=df\land\varepsilon_I$. 
+\end{lemma}
+\begin{proof}
+Dado $x\in U$, $(v_1,\dots, v_{p+1})\in(\R^n)^{p+1}$. Tenemos que $D_xw(v)\in Alt^p(\R^n)$, con $v=\sum_{i=1}^nv^ie_i\in\R^n$. Entonces
+\[
+D_xw(v)=D_xw\left(\sum_{i=1}^nv^ie_i\right)=\sum_{i=1}^nv^iD_xw(e_i)=\sum_{i=1}^nv^i\left(\parcial{w_{\sigma}}{x_j}\right)(e_i)=\sum_{i=1}^nv^i\parcial{f}{x_i}(x)\varepsilon_{\sigma}=
+\]
+\[
+\sum_{i=1}^n\parcial{f}{x_i}(x)\varepsilon_i(v)\varepsilon_{\sigma}=\left(\sum_{i=1}^n\parcial{f}{x_i}\varepsilon_i\right)(v)\varepsilon_{\sigma}=d_xf(v)\varepsilon_{\sigma}
+\]
+Así pues, 
+\begin{gather*}
+d_xw(v_1,\dots, v_{p+1})=\sum_{l=1}^{p+1}(-1)^{l-1}D_xw(v_l)(v_1,\dots, \hat{v}_l,\dots, v_{p+1})=\\
+\sum_{l=1}^{p+1}(-1)^{l-1}(d_xf(v_l)\varepsilon_{\sigma})(v_1,\dots, \hat{v}_l,\dots, v_{p+1})=\sum_{l=1}^{p+1}(-1)^{l-1}d_xf(v_l)\varepsilon_{\sigma}(v_1,\dots, \hat{v}_l,\dots, v_{p+1})=\\
+d_xf\land\varepsilon_{\sigma}(v_1,\dots, v_{p+1}),
+\end{gather*}
+pues $d_xf(v_l)\in Alt^1(V)$. Por tanto $dw=df\land\varepsilon_{\sigma}$.
+\end{proof}
+
+\begin{lemma}
+Para todo $p\geq 0$, la composición
+\[
+\Omega^p(U)\overset{d}{\longrightarrow}\Omega^{p+1}(U)\overset{d}{\longrightarrow}\Omega^{p+2}(U)
+\]
+cumple que $d^2=d\circ d=0$.
+\end{lemma}
+\begin{proof}
+Como $d$ es homomorfismo, basta comprobarlo para $w=f\varepsilon_{\sigma}$. En ese caso, 
+\[dw=df\land\varepsilon_{\sigma}=\left(\sum_{i=1}^n\parcial{f}{x_i}\varepsilon_i\right)\land\varepsilon_{\sigma}=\sum_{i=1}^n\parcial{f}{x_i}\varepsilon_i\land\varepsilon_{\sigma}.
+\]
+\[d^2(w)=d(dw)=\sum_{i=1}^nd\left(\parcial{f}{x_i}(\varepsilon_i\land\varepsilon_{\sigma})\right)=\sum_{i=1}^nd\left(\parcial{f}{x_i}\right)\land(\varepsilon_i\land\varepsilon_{\sigma})=
+\]
+\[
+\sum_{i=1}^n\left(\sum_{j=1}^n\frac{\partial^2 f}{\partial x_j\partial x_i}\varepsilon_j\right)\land\varepsilon_i\land\varepsilon_{\sigma}=\sum_{1\leq i< j\leq n}\left(\frac{\partial^2 f}{\partial x_j\partial x_i}-\frac{\partial^2 f}{\partial x_i\partial x_j}\right)\varepsilon_j\land\varepsilon_i\land\varepsilon_{\sigma}=0.
+\]
+La penúltima igualdad se tiene porque $\varepsilon_i\land\varepsilon_j\land\varepsilon_{\sigma}=-\varepsilon_j\land\varepsilon_i\land\varepsilon_{\sigma}$.
+\end{proof}
+
+El producto exterior sobre $Alt^*(\R^n)$ induce un producto exterior sobre $\Omega^*(U)=\bigoplus_{p\geq 0}\Omega^p(U)$, donde si $w_1\in\Omega^p(U),w_2\in\Omega^q(U)$, entonces $w_1\land w_2\in \Omega^{p+q}(U)$. Basta definir $(w_1\land w_2)(x):=w_1(x)\land w_2(x)$.  Así tenemos que
+\[
+\land: \Omega^p(U)\times\Omega^q(U)\to \Omega^{p+q}(U)
+\]
+es una aplicación bilineal verificando
+\begin{enumerate}
+\item $(w_1+w_2)\land w_3=w_1\land w_3+w_2\land w_3$.
+\item $f\in\Omega^0(U)=C^{\infty}(U;\R)$, $w\in\Omega^p(U)$, entonces $f\land w=fw\in\Omega^p(U)$. 
+\item $(fw)\land \eta =w\land f\eta=f(w\land\eta)$. 
+\end{enumerate}
+
+\begin{lemma}
+Sean $w_1\in\Omega^p(U), w_2\in\Omega^q(U)$. Entonces se verifica la regla de Leibniz, es decir, 
+\[
+d(w_1\land w_2)=dw_1\land w_2+(-1)^pw_1\land dw_2.
+\]
+\end{lemma}
+\begin{proof}
+Por linealidad basta demostrarlo para $w_1=f\varepsilon_{\sigma}\in\Omega^p(U), w_2=g\varepsilon_{\tau}\in\Omega^q(U)$. 
+\begin{gather*}
+d(w_1\land w_2)=d(f\varepsilon_{\sigma}\land g\varepsilon_{\tau})=d(fg(\varepsilon_{\sigma}\land\varepsilon_{\tau}))=d(fg)\land (\varepsilon_{\sigma}\land\varepsilon_{\tau})=\\
+(dfg+fdg)\land \varepsilon_{\sigma}\land\varepsilon_{\tau}=dfg\land\varepsilon_{\sigma}\land\varepsilon_{\tau}+fdg\land\varepsilon_{\sigma}\land\varepsilon_{\tau}=\\
+df\land\varepsilon_{\sigma}\land g\land\varepsilon_{\tau}+(-1)^pf\varepsilon_{\sigma}\land \underbrace{dg\land\varepsilon_{\tau}}_{d(g\varepsilon_{\tau})}=dw_i\land w_2+(-1)^pw_1\land dw_2
+\end{gather*}
+\end{proof}
+
+Por tanto, $\Omega^*(U)=\bigoplus_{p\geq 0}\Omega^p(U)$ es un álgebra graduada anticonmutativa con diferencial (DGA). A este álgebra en particular la llamamos \textbf{complejo de cocadenas de deRham}.
+
+\begin{teorema}
+Para todo $p\geq 0$, $d:\Omega^p(U)\to\Omega^{p+1}(U)$ es el único verificando 
+\begin{enumerate}
+\item Si $f\in\Omega^0(U)$, entonces $df=\sum_{i=1}^n\parcial{f}{x_i}\varepsilon_i$. 
+\item $d^2=0$.
+\item La regla de Leibniz.
+\end{enumerate}
+\end{teorema}
+\begin{dem}
+Tenemos que probar la unicidad. Supongamos que existe $d'$ verificando 1,2 y 3. Entonces, sobre las 0-formas, $d=d'$ por 1. En particular, $dx_i=\varepsilon_i=d'x_i$. Ahora, como $(d')^2=0$, $0=d'd'x_i=d'\varepsilon_i$, luego $d'\varepsilon_{\sigma}=d'(\varepsilon_{\sigma(1)}\land\dots\land\varepsilon_{\sigma(p)})=0$ reiterando la regla de Leibniz.  
+
+Como $d$ y $d'$ son homomorfismos, basta comprobar que $d(f\varepsilon_{\sigma})=d'(f\varepsilon_{\sigma})$, de donde se deducirá que $dw=d'w$ para toda $w\in\Omega^p(U)$.  
+\[
+d'(f\varepsilon_{\sigma})=d'(f\land\varepsilon_{\sigma})=d'f\land\varepsilon_{\sigma}+(-1)^0f\land d'(\varepsilon_{\sigma})=d'f\land\varepsilon_{\sigma}=df\varepsilon_{\sigma}=d(f\land\varepsilon_{\sigma})=d(f\varepsilon_{\sigma})
+\]
+\QED
+\end{dem}
+
+\begin{ej}
+\begin{enumerate}
+\item Sea $U\subseteq\R^3$, veamos en qué consiste $d:\Omega^1(U)\to\Omega^2(U)$. Si $w\in\Omega^1(U)$, $w=f_1\varepsilon_1+f_2\varepsilon_2+f_3\varepsilon_3$, entonces 
+\[dw=d(f_1\varepsilon_1+f_2\varepsilon_2+f_3\varepsilon_3)=df_1\land\varepsilon_1+df_2\land\varepsilon_2+df_3\land\varepsilon_3=
+\]
+\[
+\left(\parcial{f_2}{x_1}-\parcial{f_1}{x_2}\right)\varepsilon_1\land\varepsilon_2+\left(\parcial{f_3}{x_2}-\parcial{f_2}{x_3}\right)\varepsilon_2\land\varepsilon_3+\left(\parcial{f_3}{x_1}-\parcial{f_1}{x_3}\right)\varepsilon_1\land\varepsilon_3.
+\]
+\item Sea $U\subseteq\R^3$, veamos en qué consiste $d:\Omega^2(U)\to\Omega^3(U)$. Si $w\in\Omega^2(U)$,
+$w=g_3\varepsilon_1\land\varepsilon_2+g_2\varepsilon_1\land\varepsilon_2+g_1\varepsilon_1\land\varepsilon_3$. Entonces, 
+\[
+dw=d(g_3\varepsilon_1\land\varepsilon_2+g_2\varepsilon_1\land\varepsilon_2+g_1\varepsilon_1\land\varepsilon_3)=dg_3\land\varepsilon_1\land\varepsilon_2+dg_2\land\varepsilon_1\land\varepsilon_2+dg_1\land\varepsilon_1\land\varepsilon_3=
+\]
+\[
+\left(\parcial{g_1}{x_1}+\parcial{g_2}{x_2}+\parcial{g_3}{x_3}\right)\varepsilon_1\land\varepsilon_2\land\varepsilon_3.
+\]
+\end{enumerate}
+\end{ej}
+
+\section{Cohomología y aplicaciones inducidas}\label{inducida}
+
+
+Como $d^2=0$, $\Ima(d:\Omega^{p-1}(U)\to\Omega^p(U))\subseteq\ker(d:\Omega^p(U)\to\Omega^{p+1})\subseteq\Omega^p(U)$. Podemos entonces hacer el cociente, al que denotamos $H^p(U)$, que es un $\R$-e.v. llamado \textbf{$p$-ésimo e.v. de cohomología de deRham}. A los elementos $w\in\Omega^p(U)$ tales que $dw=0$ se le llaman \textbf{formas cerradas}. Y a las formas $\rho\in\Omega^p(U)$ que son imagen $\tau\mapsto d(\tau)=\rho$ se llaman \textbf{formas exactas}. Así, podemos ver $H^p$ como el cociente de $p$-formas cerradas entre $p$-formas exactas. 
+
+Si $dw=0$ entonces define una clase de equivalencia $[w]\in H^p(U)$, también denotada $w+d(\Omega^{p-1}(U))$. Se tiene que $[w]=[w']\in H^p(U)$ si y solo si $w-w'\in d(\Omega^{p-1}(U))$. Como $w-w'=d(\tau)$, $w=w'+d(\tau)$. Veremos que habitualmente el cociente es un espacio vectorial de dimensión finita a pesar de que cada espacio es de dimensión finita. 
+
+\begin{ej}
+\begin{enumerate}
+\item $H^p(U)=0$ si $p<0$.
+\item $H^0(U)=\ker(d:\Omega^0(U)\to\Omega^1(U))=\{f\in\Omega^0=C^{\infty}(U;\R)\mid df=0\}$. Esto es
+\[
+df=\sum_{i=1}^n\parcial{f}{x_i}\varepsilon_i=0
+\]
+o sea, que para todo $x\in U$,
+\[
+d_xf=\sum_{i=1}^n\parcial{f}{x_i}(x)\varepsilon_i=0\in Alt^1(\R^n)
+\]
+Así que $f$ es tal que $\parcial{f}{x_i}=0$ para todo $x\in U$, luego $f$ es localmente constante.
+\end{enumerate}
+\end{ej}
+
+\begin{nota}
+Los abiertos de $\R^n$ tienen una cantidad numerable de componentes conexas. 
+\end{nota}
+
+
+\begin{lemma}
+$H^0(U)$ es el $\R$-e.v. de aplicaciones $U\to\R$ que son constantes en cada componente arco-conexa de $U$ (de hecho en cada componente conexa porque abierto conexo implica arco-conexo). 
+\end{lemma}
+\begin{proof}
+Sean $q_1,q_2\in U$ en la misma componente arco-conexa. Entonces existe $\varphi:[a,b]\to U$ continua con $\varphi(a)=q_1$ y $\varphi(b)=q_2$. Sea $f:U\to \R$ continua y localmente constante. Por reducción al absurdo, supongamos que $f\varphi(a)<f\varphi(b)$, entonces debe de haber algún punto en el que $f$ cambie de valor, luego no es localmente constante.
+\end{proof}
+
+Si $U=\bigsqcup U_i$, $[f]\in H^0(U)$, entonces $f=\sum c_i\chi_{U_i}$, $c_i\in\R$ y $\chi$ la función carácterística. Entonces $H^0(U)=\bigoplus \R(i)$ donde $\R(i)$ es el espacio vectorial isomorfo a $\R$ con base $\chi_{U_i}$. 
+
+El producto exterior definido sobre $\Omega^*(U)$ se extiende a $H^*(U)$:
+\[
+\land: H^p(U)\times H^q\to H^{p+q}(U)
+\]
+\[
+([w_1],[w_2])\longmapsto [w_1]\land [w_2]:=[w_1\land w_2]
+\]
+Está aplicación está bien definida, pues
+\begin{gather*}
+(w_1+d\eta_1)\land(w_2+d\eta_2)=w_1\land w_2+d\eta_1\land w_2+ w_1\land d\eta_2+d\eta_1\land d\eta_2=\\
+w_1\land w_2+d(\eta_1\land w_2+(-1)^pw_1\land \eta_2+\eta_1\land d\eta_2).
+\end{gather*}
+
+Además es bilineal, asociativa y anticonmutativa.  
+
+Sea $\phi:U_1\to U_2$ diferenciable, $U_1\subseteq\R^n, U_2\subseteq\R^m$. Dado $x\in U_1$, $D_x\phi:\R^n\to \R^m$ es lineal. Esta aplicación induce $Alt^p(D_x\phi): Alt^p(\R^m)\to Alt^p(\R^n)$ para todo $p\geq 0$. Podemos inducir entonces $\Omega^p(\phi):\Omega^p(U_2)\to\Omega^p(U_1)$ como $w\mapsto\Omega^p(\phi)(w):U_1\to Alt^p(\R^n)$, que es la aplicación $\Omega^p(\phi)(w)_x(v_1,\dots, v_p)=w_{\phi(x)}(D_x\phi(v_1),\dots, D_x\phi(v_p))=Alt^p(D_x\phi)(w)(v_1,\dots, v_p)$.
+
+En particular, para $p=0$, $\Omega^0(\phi)(x)=w_{\phi(x)}=w(\phi(x))=(w\circ\phi)(x)=(w\circ\phi)_x$, es decir, no es más que la composición. 
+
+Por otra parte, usando la regla de la cadena en $U_1\overset{\phi}{\to}U_2\overset{\psi}{\to}U_3$, tenemos $D_x(\psi\circ\phi)=D_{\phi(x)}\psi\circ D_x\phi$, luego
+\begin{enumerate}
+\item $\Omega^p(\psi\circ\phi)=\Omega^p(\phi)\circ\Omega^p(\psi)$
+\item $\Omega^p(Id)=Id_{\Omega^p(U)}$.
+\end{enumerate}
+Vamos a denotar $\Omega^p(\phi)(w)=\phi^*(w)$.
+\begin{nota}
+$i:U_1\hookrightarrow U_2\subseteq\R^n$. Dado $x\in U_1$, $D_x i:\R^n\to\R^n$ es la identidad. Esto induce $\phi^*(i)=\Omega^p(i):\Omega^p(U_2)\to \Omega^p(U_1)$. Al evaluarla $\phi^*(i)(w)(x)(v_1,\dots, v_p)=w_{i(x)}(v_1,\dots, v_p)=w_x(v_1,\dots, v_p)$, es decir, $\phi^*(i)(w)=w\circ i$.
+\end{nota}
+
+\begin{ej}
+Sean $\phi:U_1\to U_2$ diferenciable, $U_1\subseteq\R^n, U_2\subseteq\R^m$, $\phi^*:\Omega^1(U_2)\to \Omega^1(U_1)$. Esta última manda $\varepsilon_i=dx_i\mapsto \phi^*(\varepsilon_i)=\phi^*(dx_i)=d\phi_i=\sum_{j=1}^n\parcial{\phi_i}{x_j}dx_j$. Vamos a probarlo. Sea $x\in U_1$ y $\phi^*(\varepsilon_i)\in\Omega^1(U_1)$, entonces $\phi^*(\varepsilon_i)_x\in Alt^1(\R^n)$, luego $\phi^*(\varepsilon_i)_x(v)=\phi^*(dx_i)_x(v)=(\varepsilon_i)_{\phi(x)}(D_x\phi(v))=(dx_i)_{\phi(x)}D_x(\phi(v))=\varepsilon_i(D_x(\phi(v))$. Ahora
+\[
+D_x\phi(v)=\begin{pmatrix}
+\parcial{\phi_1}{x_1}(x) & \dots & \parcial{\phi_1}{x_n}(x)\\
+\vdots & & \vdots \\
+\parcial{\phi_m}{x_1} & \dots & \parcial{\phi_m}{x_n}(x)
+\end{pmatrix}\begin{pmatrix}
+v_1\\
+\vdots\\
+v_n
+\end{pmatrix}
+\]
+Por otro lado, dado $v\in\R^n$, $v=\sum_{i=1}^nv_ie_i$. Así pues, 
+\[
+\varepsilon_i(D_x\phi(v))=\varepsilon_i\left(\sum_{k=1}^m\left(\sum_{l=1}^n\parcial{\phi_k}{x_l}(x)v_l\right)e_k\right)=\sum_{l=1}^n\parcial{\phi_i}{x_l}(x)\varepsilon_l(v)=
+\]
+\[
+\sum_{l=1}^n\parcial{\phi_i}{x_l}(x)d(x_l)_x(v)=\left(\sum_{l=1}^n\parcial{\phi_i}{x_l}dx_l\right)_x(v)=(d\phi_i)_x(v)
+\]
+
+Luego se tiene el resultado. En particular, $d(\phi^*(dx_i))=d(d\phi_i)=0$. 
+\end{ej}
+
+\begin{nota}
+$\phi^*$ es homomorfismo de módulos sobre $C^{\infty}(U;\R)$. Si $f\in\Omega^0(U)$, $w\in\Omega^p(U)$, entonces 
+\[
+\phi^*(fw)=(fw)_{\phi(x)}=f(\phi(x))w_{\phi(x)}=\phi^*(f)\phi^*(w)
+\]
+Estamos considerando homomorfismo de módulos también cuando el anillo base sufre una transformación en la imagen (el caso clásico es cuando la transformación es la identidad).
+\end{nota}
+
+\begin{teorema}
+Sea $\phi:U_1\to U_2$ diferenciable.
+\begin{enumerate}
+\item $\phi^*(w\land\tau)=\phi^*(w)\land\phi^*(\tau)$.
+\item $\phi^*(f)=f\circ\phi$ para $f\in\Omega^0(U_2)$.
+\item $d\phi^*(w)=\phi^*(dw)$ con $w\in\Omega^p(U_2)$ y $\phi^*:\Omega^p(U_2)\to\Omega^p(U_1)$.
+\item Si $\hat{\phi}:\Omega^p(U_2)\to\Omega^p(U_1)$ es otro $\R$-homomorfismo de e.v. verificando las propiedades anteriores, entonces $\hat{\phi}=\phi^*$.
+\end{enumerate}
+\end{teorema}
+\begin{dem}
+\begin{enumerate}
+\item Si $pq=0$, es trivial. Si $p,q>0$, sea $x\in U_1$ y $v_1,\dots v_{p+q}\in\R^n$.
+\[
+\phi^*(w\land\tau)_x(v_1,\dots, v_{p+q})=(w\land\tau)_{\phi(x)}(D_x\phi(v_1),\dots, D_x\phi(v_{p+q}))=(w_{\phi(x)}\land\tau_{\phi(x)})(D_x\phi(v_1),\dots, D_x\phi(v_{p+q}))=
+\]
+\[
+\sum_{\sigma\in S(p,p+q)}sgn(\sigma)w_{\phi(x)}(D_x\phi(v_{\sigma(1)}),\dots, D_x\phi(v_{\sigma(p)}))\tau_{\phi(x)}(D_x\phi(v_{\sigma(p+1)}),\dots, D_x\phi(v_{\sigma(p+q)}))=
+\]
+\[
+\sum_{\sigma\in S(p,p+q)}sgn(\sigma)\phi^*(w)_x(v_{\sigma(1)},\dots, v_{\sigma(p)})\phi^*(\tau)_x(v_{\sigma(p+1)},\dots, v_{\sigma(p+q)})=
+\]
+\[
+\phi^*(w)_x\land \phi^*(\tau)_x(v_1,\dots, v_{p+q})=(\phi^*(w)\land \phi^*(\tau))_x(v_1,\dots, v_{p+q})
+\]
+
+\item Esto está ya probado.
+
+\item Veamos primero el caso en que $w=f\in\Omega^0(U_2)$. Entonces 
+\[
+dw=df=\sum_{k=1}^m\parcial{f}{x_k}\varepsilon_k=\sum_{k=1}^m\parcial{f}{x_k}dx_k=\sum_{k=1}^m\parcial{f}{x_k}\land dx_k
+\]
+Así pues,
+\begin{gather*}
+\phi^*(dw)=\phi^*\left(\sum_{k=1}^m\parcial{f}{x_k}\land dx_k\right)=\sum_{k=1}^m\phi^*\left(\parcial{f}{x_k}\right)\land\phi^*(dx_k)=\\
+\sum_{k=1}^m\left(\parcial{f}{x_k}\circ\phi \right)\land d\phi_k=\sum_{k=1}^m\left(\parcial{f}{x_k}\circ\phi\right)\land \left(\sum_{l=1}^n\parcial{\phi_k}{x_l}\varepsilon_l\right)=\\
+\sum_{l=1}^n\sum_{k=1}^m\left(\parcial{f}{x_k}\circ\phi\right)\left(\parcial{\phi_k}{x_l}\varepsilon_l\right)=\sum_{l=1}^n\left(\sum_{k=1}^m\left(\parcial{f}{x_k}\circ\phi\right)\parcial{\phi_k}{x_l}\right)\varepsilon_l=\sum_{l=1}^n\parcial{(f\circ\phi)}{x_l}\varepsilon_l=\\
+d(f\circ\phi)=d(\phi^*(f))=d(\phi^*(w)).
+\end{gather*}
+
+Ahora, vamos al caso de que $w=f\varepsilon_I=f\land\varepsilon_I\in\Omega^p(U_2)$ para $p>0$. 
+\begin{gather*}
+\phi^*(dw)=\phi^*(d(f\varepsilon_I))=\phi^*(df\land\varepsilon_I)=\phi^*(df)\land\phi^*(\varepsilon_I)=d(\phi^*(f)\land\phi^*(\varepsilon_I)).
+\end{gather*}
+La última igualdad se tiene de que
+\[
+d(\phi^*(f)\land\phi^*(\varepsilon_I))=d\phi^*(f)\land\phi^*(\varepsilon_I)+(-1)^0\phi^*(f)\land d\phi^*(\varepsilon_I).
+\]
+Pero $\phi^*(\varepsilon_I)=\phi^*(\varepsilon_{i_1}\land\dots\land\varepsilon_{i_p})=\phi^*(\varepsilon_{i_1})\land\dots\land\phi^*(\varepsilon_{i_p})$, luego
+\[
+d\phi^*(\varepsilon_I)=\sum_{k=1}^p(-1)^k\phi^*(\varepsilon_{i_1})\land\dots\land d\phi^*(\varepsilon_{i_k})\land\dots\land \phi^*(\varepsilon_{i_p})=0
+\]
+porque $d\phi^*(\varepsilon_{i_k})=d(d\phi_k))=0$.
+
+\item Supongamos que existe $\hat{\phi}$ verificando las propiedades. Entonces, para las 0-formas se tiene que $\hat{\phi}=\phi^*$ pues $\hat{\phi}(f)=\phi^*(f)=f\circ\phi$. Para el caso general basta comprobar que $\hat{\phi}(f dx_I)=\phi^*(fdx_I)$. Tenemos
+\[\hat{\phi}(fdx_I)=\hat{\phi}(f\land dx_I)=\hat{\phi}(f)\land \hat{\phi}(dx_I)=\phi^*(f)\land d\hat{\phi}(x_I)=\phi^*(f)\land d\phi_I=\phi^*(f)\land\phi^*(dx_I)=\phi^*(f dx_I)
+\]
+\end{enumerate}
+\QED
+\end{dem}
+
+Dado $\phi:U_1\to U_2$ diferenciable, $\{\phi^*:\Omega^p(U_2)\to\Omega^p(U_1)\}_{p\geq 0}$ describe un homomorfismo de co-complejos de deRham (al que denotaremos también $\phi^*$). Esto a su vez induce un homomorfismo entre las cohomologías
+\[
+H^p(\phi)=\phi^*:H^p(U_2)\to H^p(U_1)
+\]
+\[
+[z]\mapsto H^p(\phi)[z]:=[\phi^*(z)].
+\]
+
+Veamos que está bien definida. Sea $[z]\in H^p(U_2)$. Entonces $dz=0$. Así que $d\phi^*(z)=\phi^*d(z)=0$, por lo que $\phi^*(z)$ es cerrada y define una clase de cohomología. Ahora, si $[z']=[z]\in H^p(U_2)$, $z'-z=d\tau$ para $\tau\in\Omega^{p-1}(U_2)$, luego $z'=z+d\tau\Rightarrow \phi^*(z')=\phi^*(z+d\tau)=\phi^*(z)+\phi^*(d\tau)=\phi^*(z)+d\phi^*(\tau)$. Entonces $[\phi^*(z)]=[\phi^*(z')]$. Además, tenemos
+\[
+\phi^*([w]\land[\tau])=\phi^*([w\land\tau])=[\phi^*(w\land\tau)]=[\phi^*(w)\land\phi^*(\tau)]=[\phi^*(w)]\land[\phi^*(\tau)]=\phi^*([w])\land\phi^*([\tau])
+\]
+Así que $\phi^*:H^*(U_2)\to H^*(U_1)$ es un $\R$-homomorfismo de álgebras DGA. De esta forma hemos establecido un functor contravariante entre abiertos euclídeos con aplicaciones diferenciables y  DGA con homomorfismos.
+
+
+\begin{ej}
+Sea $\gamma:(a,b)\to U\subseteq\R^m$ una curva diferenciable. Entonces $\gamma^*:\Omega^*(U)\to\Omega^*((a,b))$. Sea $w=f_1dx_1+\cdots+f_m dx_m\in\Omega^1(U)$. Vamos a calcular $\gamma^*(w)\in\Omega^1((a,b))$.
+\[
+\gamma^*(f_1dx_1+\cdots+f_m dx_m)=\gamma^*(f_1\land dx_1+\cdots+f_m d\land x_m)=\gamma^*(f_1)\land\gamma^*(dx_1)+\cdots+\gamma^*(f_m)\land\gamma^*(dx_m)=
+\]
+\[
+f_1\circ\gamma\land d\gamma_1+\cdots+f_m\circ\gamma\land d\gamma_m=f_1\circ\gamma\land \gamma_1'dt+\cdots+f_m\circ\gamma\land d\gamma_m'dt=\langle (f_1\gamma,\dots,f_m\gamma),(\gamma_1',\dots,\gamma_m')\rangle dt=
+\]
+\[
+\langle (f\circ\gamma(t),\gamma'(t)\rangle dt
+\]
+En física, se suele definir el trabajo a lo largo de la curva $\gamma$ como $A_{\gamma}(X)=\int_a^b\gene{X\circ\gamma(t),\gamma'(t)}dt=\int_a^b\gamma^*(w)$, donde $X:U\to\R^m$. Si $X$ es el gradiente de alguna función $\phi$ (es decir, $X$ es exacta), entonces escribimos 
+\[
+A_{\gamma}(X)=\int_a^b\gamma^*(\nabla(\phi))=\int_a^b\gamma^*(d\phi)=\int_a^b d\gamma^*(\phi)=\gamma^*\phi(b)-\gamma^*\phi(a)=\phi\gamma(b)-\phi\gamma(a).
+\]
+\end{ej}
+\begin{ej}\label{deter}
+Sea $\phi:U_1\subseteq\R^m\to U_2\subseteq\R^m$. Entonces $\phi^*:\Omega^m(U_2)\to\Omega^m(U_1)$ viene dada por $dx_1\land\dots\land dx_m\mapsto \det(D\phi)dx_1\land\dots\land dx_m$. En efecto,
+\begin{gather*}
+\phi^*(dx_1\land\dots\land dx_m)(v_1,\dots, v_m)=\phi^*(dx_1)\land\dots\land\phi^*(dx_m)(v_1,\dots,v_m)=d\phi^*(x_1)\land\dots\land d\phi^*(x_m)(v_1,\dots, v_m)=\\
+d\phi_1\land\dots\land d\phi_m(v_1,\dots, v_m)=\det\begin{pmatrix}
+d\phi_1(v_1) & \dots & d\phi_1(v_m)\\
+\vdots & &\vdots\\
+d\phi_m(v_1) & \dots & d\phi_m(v_m)
+\end{pmatrix}=\det\left(\begin{pmatrix}
+\parcial{\phi_1}{x_1} &\dots & \parcial{\phi_1}{x_m}\\
+\vdots & & \vdots\\
+\parcial{\phi_m}{x_1} & \dots & \parcial{\phi_m}{x_m}
+\end{pmatrix}\begin{pmatrix}
+v_1^1 & \dots & v^m_1\\
+\vdots & & \vdots\\
+v_m^1 & \dots & v^m_m
+\end{pmatrix}\right)\\
+\det(D\phi)\begin{pmatrix}
+dx_1(v_1) & \dots & dx_1(v_m)\\
+\vdots & & \vdots\\
+dx_m(v_1) & \dots & dx_m(v_m)
+\end{pmatrix}=\det(D\phi)dx_1\land\dots\land dx_m(v_1,\dots, v_m)
+\end{gather*}
+\end{ej}
+
+\begin{ej}
+Consideremos $\phi:\R^n\times\R\to\R^n$ dada por $(x,t)\mapsto\phi(x)=\psi(t)x$ donde $\phi:\R\to\R$ es diferenciable. 
+\[
+\phi^*(dx_i)=d\phi_i=\sum_{j=1}^n\parcial{\phi_1}{x_j}dx_j+\parcial{\phi_i}{t}dt=\psi(t)dx_i+\psi'(t)x_idt.
+\]
+
+\end{ej}
+
+\begin{teorema}\label{poincare}
+Si $U$ es un abierto estrellado de $\R^n$, entonces $H^p(U)=0$ para $p>0$ y $H^0(U)=\R$. 
+\end{teorema}
+\begin{dem}
+Podemos suponer sin pérdida de generalidad que $U$ es estrellado con respecto a $0\in\R^n$. Supongamos que existe una colección $\{S_p:\Omega^p(U)\to \Omega^{p-1}(U)\}_{p\geq 0}$ de homomorfismos de espacios vectoriales tales que
+\begin{enumerate}
+\item si $p>0$, $dS_p+S_{p+1}d=1:\omega^p(U)\to\Omega^p(U)$, y
+\item si $p=0$, $S_1d=1-e:\Omega^0(U)\to\Omega^0(U)$, donde $e:\Omega^0(U)\to\Omega^0(U)$ es la evaluación en $0\in\R^n$, es decir, $e(w)_x=w(0)$ para $w\in\Omega^0(U)=C^{\infty}(U;\R)$.
+\end{enumerate}
+\[
+\begin{tikzcd}
+\Omega^{p+1}\arrow[dr, "S_{p+1}"]        & \Omega^{p+1}\\
+\Omega^p\arrow[u, "d"] \arrow[dr, "S_p"] & \Omega^p\arrow[u, "d"]\\
+\Omega^{p-1}\arrow[u,"d"]                & \Omega^{p-1}\arrow[u, "d"]\\
+\vdots \arrow[u]                                   & \vdots\arrow[u]\\
+        \Omega^1\arrow[dr, "S_1"]   \arrow[u]              & \Omega^1\arrow[u] \\
+\Omega^0\arrow[u, "d"]                        & \Omega^0\arrow[u, "d"] 
+\end{tikzcd}
+\]
+
+En tal caso, si $p>0$, $dS_p(w)+S_{p+1}d(w)=w$ para toda $w\in\Omega^p(U)$. Si $w$ es cerrada, es decir, $d(w)=0$, entonces $dS_p(w)=w$, por lo que $[w]=[dS_p(w)]=[0]\in H^p(U)$. Si $p=0$ y $w$ es cerrada tenemos que
+\[
+0=S_1d(w)=(1-e)(w)=w-e(w).
+\]
+Por tanto, $w_x=e(w)_x=w(0)$ para todo $x\in U$. Es decir, $w$ es la 0-forma constante $w(0)$, por lo que $H^0(U)=\R$. 
+
+Observemos ahora que dada $w\in\Omega^p(U\times\R)$, podemos escribirla como 
+\[
+w=\sum_If_I(x,t)dx_I+\sum_Jg_J(x,t)dt\land dx_J
+\]
+donde $I=\{1\leq i_1<\cdots<i_p\leq n\}$, $J=\{1\leq j_1<\cdots<j_{p-1}\leq n\}$, $dx_I=dx_{i_1}\land\dots\land dx_{i_p}$ y $dx_J=dx_{j_1}\land\dots\land dx_{j_{p-1}}$. Así,
+\[
+dw=\sum_Idf_I(x,t)\land dx_I+\sum_J dg_J(x,t)\land (dt\land dx_J).
+\]
+Como
+\begin{gather*}
+df_I(x,t)=\sum_{i=1}^n\parcial{f_I}{x_i}dx_i+\parcial{f_I}{t}dt,\\
+dg_I(x,t)=\sum_{i=1}^n\parcial{g_I}{x_i}dx_i+\parcial{g_I}{t}dt,
+\end{gather*}
+tenemos que 
+\begin{align*}
+dw&=\sum_I\left(\sum_{i=1}^n\parcial{f_I}{x_i}dx_i\land dx_I+\parcial{f_I}{t}dt\land dx_I\right)+ \sum_J\left(\sum_{i=1}^n\parcial{g_I}{x_i}dx_i\land (dt\land dx_J)+\parcial{g_I}{t}dt\land (dt\land dx_J)\right)\\
+&=\sum_I\left(\sum_{i=1}^n\parcial{f_I}{x_i}dx_i\land dx_I\right)+\left(\parcial{f_I}{t}dt\land dx_I-\sum_J\left(\sum_{i=1}^n\parcial{g_I}{x_i}dt\land dx_i\land dx_J\right)\right)
+\end{align*}
+Definimos $\tilde{S}_p:\Omega^p(U\times\R)\to\Omega^{p-1}(U)$ como
+\[
+w\mapsto \tilde{S}_p(w)=\sum_J\left(\int_0^1 g_J(x,t)dt\right)dx_J.
+\]
+Así, 
+\[
+\tilde{S}_{p+1}(dw)=\sum_I\left(\int_0^1\parcial{f_I}{t}dt\right)dx_I-\sum_J\left(\sum_{i=1}^n\left(\int_0^1\parcial{g_J}{x_i}dt\right)dx_i\land dx_J\right).
+\]
+Por otro lado, 
+\[
+d\tilde{S}_p(w)=\sum_J\left(\sum_{i=1}^n\left(\int_0^1\parcial{g_J(x,t)}{x_i}dt\right)dx_i\land dx_I\right).
+\]
+Sumando los cálculos anteriores obtenemos que
+\[
+d\tilde{S}_ p(w)+\tilde{S}_{p+1}(dw)=\sum_I\left(\int_0^1\parcial{f_I}{t}dt\right)dx_I=\sum_I(f_I(x,1)-f_I(x,0))dx_I.
+\]
+
+Vamos a aplicar esto a $\phi^*(w)\in\Omega^p(U\times\R)$ para 
+\[
+\phi:U\times\R\to U, \phi(x,t)=\psi(t)x
+\]
+donde $\psi:\R\to\R$ es una función diferenciable definida como
+\[
+\psi(t)=\begin{cases}
+0 & t\leq 0\\
+0\leq\psi(t)\leq 1 & t\in[0,1]\\
+1 & t\geq 1.
+\end{cases}
+\]
+y $w\in\Omega^p(U)$. Definimos finalmente 
+\[
+S_p(w)=\tilde{S}_p(\phi^*(w)).
+\]
+Si $w=\sum_Ih_I(x)dx_I$, entonces 
+\[
+\phi^*(w)=\sum_I\phi^*(h_I(x)dx_I)=\sum_I\phi^*(h_J(x))\land \phi^*(dx_I)=\sum_I(h_I(\phi(x,t))\land\phi^*(dx_I)).
+\]
+Por otra parte, 
+\[
+\phi^*(dx_I)=\phi^*(dx_{i_1})\land\dots\land\phi^*(dx_{i_p})
+\]
+con 
+\[
+\phi^*(dx_{i_k})=x_{i_k}\psi'(t)dt+\psi(t)dx_{i_k}.
+\]
+Así que
+\[
+\phi^*(dx_I)=(x_{i_1}\psi'(t)dt+\psi(t)dx_{i_1})\land\dots\land(x_{i_p}\psi'(t)dt+\psi(t)dx_{i_p}).
+\]
+De modo que
+\begin{gather*}
+\phi^*(w)=\sum_I(h_I(\phi(x,t))\land\phi^*(dx_I))=\\
+\sum_I(h_I(\phi(x,t))\land (x_{i_1}\psi'(t)dt+\psi(t)dx_{i_1})\land\dots\land(x_{i_p}\psi'(t)dt+\psi(t)dx_{i_p}))=\\
+\sum_Ih_I(\phi(x,t))(\psi(t))^p(dx_{i_1}\land\dots dx_{i_p})+\sum_Ih_I(\phi(x,t))(\cdots dt).
+\end{gather*}
+En el último término no nos interesa lo que hay concretamente, solamente que siempre aparece $dt$. Usando los cálculos anteriores, para $p>0$
+\begin{gather*}
+dS_p(w)+S_{p+1}(dw)=d\tilde{S}_p(\phi^*(w))+\tilde{S}_{p+1}(d\phi^*(w))=\\
+\sum_Ih_I(\phi(x,1))(\psi(1))^p(dx_{i_1}\land\dots\land dx_{i_p})-\sum_Ih_I(\phi(x,0))(\psi(0))^p(dx_{i_1}\land\dots\land dx_{i_p}).
+\end{gather*}
+Como $\phi(x,1)=x$, $\phi(x,0)=0$, $\psi(1)=0$ y $\psi(0)=0$, la expresión anterior es igual
+\[
+\sum_Ih_I(x)dx_I=w.
+\]
+Para $p=0$, 
+\[
+dS_0(w)+S_1(dw)=d\tilde{S}_0(\phi^*(w))+\tilde{S}_1(d\phi^*(w)).
+\]
+Ahora, $\tilde{S}_0:\Omega^0(U\times\R)\to\Omega^{-1}(U)=0$, luego $\tilde{S}_0=0$. Por otra parte, para $w=f\in\Omega^0(U)$, entonces $\phi^*(w)=w\circ\phi$. Así que
+\[
+d(\phi^*(w))=\sum_{i=1}^n\parcial{w\circ\phi}{x_i}dx_i+\parcial{w\circ\phi}{t}dt.
+\]
+Por tanto,
+\[
+\tilde{S}_1(d\phi^*(w))=\int_0^1\parcial{w\circ\phi}{t}dt=w\circ\phi(x,1)-w\circ\phi(x,0)=w(x)-w(0)=(1-e)(w).
+\]
+\QED
+\end{dem}
+
+\end{document}
+

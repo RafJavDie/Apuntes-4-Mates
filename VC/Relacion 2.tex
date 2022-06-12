@@ -1,0 +1,355 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+\usepackage{enumerate}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Variable Compleja - Relación 2}
+\author{Rafael González López\\
+7}
+\maketitle
+\begin{ejercicio}{1}
+Demostrar que serie 
+$$
+\frac{1}{z}+\frac{1}{z(z+1)}+\frac{1}{z(z+1)(z+2)}+\cdots + \frac{1}{z(z+1)(z+2)\cdots  (z+n)}+\cdots$$
+converge uniformemente en compactos de $\C\setminus\{0,-1,-2,-3,\dotsc\}$. Demostrar que la serie define una función meromorfa en el plano complejo con polos en los enteros negativos y el $0$.
+
+¿Son los polos simples? ¿Cuál es el residuo en $z=-n$?
+\begin{solucion}
+Probemos primeramente que la serie converge uniformemente en compactos. Sea $\Omega = \C\setminus\{0,-1,-2,\dotsc\}$ y $K\subset B(0,r)$ un compacto de $\Omega$. Podemos suponer que $r>1$. Para probarlo vamos a utilizar el criterio M de Weierstrass. Tomamos $g_n = \prod_{j=0}^n \left(z+j\right)^{-1}$. Podemos suponer que $n\geq 2r$.  Tenemos entonces la siguiente acotación sobre $|g_n|$.
+
+\begin{align*}
+\abs{\prod_{j=0}^n \left(z+j\right)^{-1}} &= \prod_{j=0}^n \left|z+j\right|^{-1} =  \prod_{j=0}^{2r-1}\left|z+j\right|^{-1}  \prod_{j=2r}^n \left|z+j\right|^{-1}\\
+&\leq  \prod_{j=0}^{2r-1}\left|z+j\right|^{-1}  \prod_{j=2r}^n (j-|z|)^{-1} \leq \prod_{j=0}^{2r-1}|z+j|\frac{1}{r^{n-2r}}\\
+& \leq \frac{M}{r^{n-2r}}
+\end{align*}
+Hemos utilizado que el índice en el segundo producto $j\geq 2r$ y $|z|<r$
+$$
+|z|<r \Leftrightarrow -|z|>-r \qquad j-|z|> 2r-r = r \Leftrightarrow \frac{1}{j-|z|}< \frac{1}{r}
+$$
+\newpage
+La última desigualdad se tiene dado que $h(z)=\prod_{j=0}^{2r-1}|z+j|^{-1}$ es una función continua en el compacto $K$. Como $r>1$, tomando índices adecuadamente, es claro que podemos aplicar el criterio M de Weierstrass. Por tanto, hemos probado que la serie converge uniformemente en cada compacto.\\
+
+Vamos a ver que la serie define una función meromorfa en el plano complejo. Primeramente, tomando 
+$$
+ f_n(z) = \sum_{i=0}^n g_i(z) = \sum_{i=0}^n \prod_{j=0}^i (z+j)^{-1}
+$$
+Utilizando el apartado anterior, es claro que estamos en las condiciones del Teorema 2.5.2 de los apuntes, que establece:
+
+\begin{theorem}
+Si $\{f_n\}_{n=1}^\infty$ es una sucesión de funciones holomorfas que converge uniformemente a una función $f$ en cada subconjunto compacto de $\Omega$, entonces $f$ es una función holomorfa en $\Omega$.
+\end{theorem}
+
+Por tanto, nuestra serie define una función holomorfa $f(z)$ en $\Omega$. Para probar que la función es meromorfa en el plano complejo, tenemos que ver que todas las discontinuidades son polos. Sea $a\in \N\cup\{0\}$. Vamos a demostrar que todas las discontinuidades son polos son simples a la vez que calculamos sus residuos, pues esto es equivalente a que 
+$$
+\lim_{z\to -a}(z+a)f(z) \in\C\setminus\{0\}
+$$
+Primeramente, es claro que utilizando un argumento análogo al anterior podemos probar que $h_n = (z+a)f_n$ define una función holomorfa en $\Omega \cup\{-a\}$, por lo que 
+$$
+\lim_{z\to -a}(z+a)f(z) \in\C
+$$
+y además la serie
+
+$$
+p_n(z) = \sum_{i=1}^n g_i(z) (z-a) = \sum_{i=0}^n \prod_{j=0}^i (z+j)^{-1}(z+a)
+$$
+converge uniformemente en cada compacto de $\Omega\cup\{-a\}$.  Tenemos que si $i\geq a$
+\begin{align*}
+\lim_{z\to -a}(z+a)\prod_{j=0}^i \left(z+j\right)^{-1}& =  \lim_{z\rightarrow-a}\left(\prod_{j=0}^{a-1}(z+j)^{-1}\right)\frac{(z+a)}{(z+a)}\left(\prod_{j=a+1}^{i}(z+j)^{-1}\right)\\
+&=\lim_{z\rightarrow-a}\left(\prod_{j=1}^{a}(z+a-j)^{-1}\right)\frac{(z+a)}{(z+a)}\left(\prod_{j=1}^{i-a}(z+a+j)^{-1}\right) \\
+&=\left(\prod_{j=1}^{a}(-1)j^{-1}\right)(1)\left(\prod_{j=1}^{i-a}j^{-1}\right)=\frac{(-1)^a}{a!(i-a)!}
+\end{align*}
+Por otra parte, si $i<a$ entonces
+$$
+\lim_{z\to -a}(z+a)\prod_{j=0}^i \left(z+j\right)^{-1} = 0
+$$
+Utilizando la convergencia uniforme en compactos puede intercambiarse límite y sumatorio, quedando finalmente
+$$
+\lim_{z\to -a}(z+a)f(z) = \sum_{n=a}^\infty \frac{(-1)^a}{a!(n-a)!} = \frac{(-1)^a}{a!}\sum_{n=0}^\infty \frac{1}{n!} = \frac{(-1)^a e}{a!} \in \C\setminus\{0\}
+$$
+\end{solucion}
+\end{ejercicio}
+\newpage
+
+\begin{ejercicio}{2}
+Demostrar que la función definida por la integral 
+$$
+F(z)=\int_0^\infty\frac{tdt}{(t^2+z^2)(e^{2\pi t}-1)}
+$$
+es analítica en $\Re(z) >0$.
+\end{ejercicio}
+\begin{solucion}
+Queremos ver que $F(s)$ es analítica utilizando el teorema de convergencia. Las dos primeras condiciones son claras. Consideramos $\Re(s)>\sigma >0$. Tengamos en cuenta que si $z=x+yi$, realizamos el siguiente razonamiento.
+\begin{enumerate}
+\item Si $|y|\leq x/2$, entonces es claro que $x^2-y^2 \geq x^2-x^2/4 \geq 3\sigma^2/4\geq 0$, $t\geq 0$ y usamos que $|z|\geq |\Re(z)|$. Por tanto,
+$$
+\abs{t^2+x^2-y^2+2xyi} \geq |t^2+x^2-y^2| = t^2 + x^2-y^2 \geq x^2-y^2 \geq \frac{3\sigma^2}{4}
+$$
+\item Si $|y|>x/2$ entonces $|2xyi|\geq 2x|y| \geq x^2$. Además, $|z|\geq |\Im(z)|$, luego
+$$
+\abs{t^2+x^2-y^2+2xyi} \geq |2xyi|\geq 2x|y| \geq x^2 \geq \sigma^2 \geq \frac{3\sigma^2}{4}
+$$
+\end{enumerate}
+Deducimos, por tanto, que en el dominio considerado
+$$
+\abs{t^2+z^2} = \abs{t^2+x^2-y^2+2xyi} \geq \frac{3\sigma^2}{4} 
+$$
+Por tanto, podemos acotar la función del integrando de la siguiente manera
+\begin{align*}
+\abs{\frac{1}{t^2+z^2}\frac{t}{e^{2\pi t}-1}} \leq \frac{4}{3\sigma^2}\frac{t}{e^{2\pi t}-1}= g(t)
+\end{align*}
+Claramente $g(t)$ es una función continua en $[0,+\infty)$ y estrictamente positiva. Podemos probar que la integral converge, por ejemplo, por paso al limite. Claramente $e^{-\pi t}$ es integrable en $[0,+\infty)$, luego
+$$
+\lim_{t\to \infty}\frac{\frac{t}{e^{2\pi t}-1}}{e^{-\pi t}} = \lim_{t\to \infty}\frac{t}{e^{\pi t}-e^{-\pi t}} = 0
+$$
+Por lo que $g(t)$ también es integrable en $[0,+\infty)$. Por tanto, tenemos el resultado.
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{3}
+Calcular la integral
+$$
+\int_0^\infty \frac{x^a}{(1+x^2)^2}dx \qquad -1<a<3
+$$
+\end{ejercicio}
+\begin{solucion}
+Consideramos $-1<a<3$ y tomamos un $\log x$ con $0<arg(x)<2\pi$.  Tomamos un keycontour $\Gamma_{\varepsilon,R}$ centrado en $z=0$ de formar que el corredor sea simétrico respecto del eje  real positivo. Calculamos los residuos de los polos en el interior del contorno, que son claramente dos polos de segundo orden.
+\begin{align*}
+\lim_{x\to i} \left(\frac{x^a}{(x+i)^2}\right)' &= \lim_{x\to i}\frac{e^{\log{x}(a-1)}(a(x+i)-2x)}{(x+i)^3} = \frac{e^{\pi (a-1)i/2}2i(a-1)}{8i^3}\\ 
+&=-\frac{(a-1)}{4}e^{\pi (a-1)i/2} =\frac{(a-1)}{4}ie^{\pi ai/2} \\
+\lim_{x\to -i} \left(\frac{x^a}{(x-i)^2}\right)' &= \lim_{x\to -i}\frac{e^{\log{x}(a-1)}(a(x-i)-2x)}{(x-i)^3} =\frac{e^{3\pi (a-1)i/2}2i(-a+1)}{-8i^3}\\ 
+&=-\frac{(a-1)}{4}i e^{3\pi i a /2}
+\end{align*}
+
+De manera que
+$$
+\int_{\Gamma_{\varepsilon,R}} \frac{e^{a \log x}}{(1+x^2)^2}dx = 2\pi i\left( \frac{a-1}{4}ie^{\pi i a/2}-\frac{(a-1)}{4}i e^{3\pi i a /2}\right)
+$$
+Veamos qué ocurre en las cuatro integrales que conforman la integral de nuestro contorno. Primeramente, en $C_\varepsilon$ (la circunferencia interior)
+$$
+\abs{\int_{C_\varepsilon}\frac{e^{a \log x}}{(1+x^2)^2} }=\int_0^{2\pi} \abs{\frac{\varepsilon^a e^{ait} e^{it} i \varepsilon}{(1+\varepsilon^2e^{it})^2}}dt\leq \int_0^{2\pi}\frac{\varepsilon^a\varepsilon}{(1-\varepsilon^2)^2}dt = \frac{\varepsilon^a}{(1-\varepsilon^2)^2}2\pi \varepsilon 
+$$ 
+Luego se anula cuando $\varepsilon \to 0$, ya que $a>-1$. Análogamente
+$$
+\abs{\int_{C_R} \frac{e^{a \log x}}{(1+x^2)^2} dx } \leq  \frac{R^a}{(R^2-1)^2}2\pi R
+$$
+Que se anula cuando $R\to\infty$, pues $a<3$. Por la elección del $arg(x)$ los laterales del corredor, cuando hacemos tender su separación a $0$, toman en un caso $arg(x)=0$ y en otro $arg(x)=2\pi$, de donde deducimos que tienden a la integral que deseamos calcular $I$ y a $-e^{2\pi i a}I$. Luego
+\begin{align*}
+I(1-e^{2\pi i a}) &= 2\pi i\left( \frac{a-1}{4}ie^{\pi i a/2}-\frac{a-1}{4}ie^{3\pi i a /2}\right) \\
+&= \pi  \frac{a-1}{4}\left(e^{3\pi i a/2}-e^{\pi i a /2}\right)
+\end{align*}
+\begin{align*}
+I& = \pi  \frac{a-1}{2}\frac{e^{3\pi i a/2}-e^{\pi i a /2}}{1-e^{2\pi i a}}\\
+& = \pi  \frac{a-1}{2}\frac{e^{\pi i a/2}-e^{-\pi i a /2}}{e^{-\pi i a}-e^{\pi i a}}\\
+& =\pi \frac{1-a}{2}\frac{\sin(\pi a /2)}{\sin(\pi a)}
+\end{align*}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{4}
+Calcular la integral
+$$
+\int_0^\infty \frac{\sin ax}{\sinh x}dx \qquad a \in \R
+$$
+\end{ejercicio}
+\begin{solucion}
+Tengamos en cuenta ambas función son impares, luego el cociente es par para cada $a\in \R$. Por tanto, podemos suponer que $a>0$ y
+$$
+\int_0^\infty \frac{\sin ax}{\sinh x}dx 
+ = \frac{1}{2} \int_{-\infty}^\infty \frac{\sin ax}{\sinh x}dx = \frac{1}{2}\Im\left( \int_{-\infty}^\infty \frac{e^{iax}}{\sinh x}dx\right)
+$$
+Consideramos ahora $\gamma_R$ el rectángulo apoyado en el segmento $[-R,R]$. Como tenemos una discontinuidad en el origen y en $2\pi i$, cambiamos este contorno por uno que hay $2$ semicircunferencias de radio $\varepsilon$ (la parte de abajo. De esta forma en $\gamma_R$ tenemos únicamente las singularidades en $x=0$ y $x=\pi i$. Además, necesitaremos el residuo en $z=2\pi i$ para el cálculo de la integral, aunque no esté en el interior de nuestro contorno.
+$$
+\lim_{x\to0}x\frac{e^{iax}}{\sinh x} = \lim_{z\to0}\frac{e^{iax}+iaxe^{iax}}{\cosh x} = 1
+$$
+$$
+\lim_{x\to \pi i}(x-\pi i)\frac{e^{iax}}{\sinh x} = -e^{ -\pi a}
+$$
+$$
+\lim_{x\to 2\pi i}(x-2\pi i)\frac{e^{iax}}{\sinh x} = \lim_{z\to 2\pi i}\frac{e^{iax}+ia(x-2\pi i)e^{iax}}{\cosh x} = e^{-2\pi a}
+$$
+Dividimos nuestra curva de manera natural en $8$, los $6$ segmentos y las $2$ semicircunferencias. Tengamos en cuenta que en los dos segmentos inferiores cuando $R\to \infty$ la integral converge a la que deseamos. En los dos segmentos inferiores también lo hace pero con signo opuesto y multiplicado por $e^{-2\pi a}$. Por tanto, veamos qué ocurre en los segmentos verticales y las semicircunferencias.
+\begin{itemize}
+\item En la semicircunferencia inferior $C^1_\varepsilon$ tenemos la parametrización $\varepsilon e^{ti}$, $t=[\pi,2\pi]$.
+\begin{align*}
+\int_{C^1_\varepsilon} \frac{e^{iax}}{\sinh x}dx &=   \pi i
+\end{align*}
+\item Expliquemos más detalladamente el proceso por el que hemos calculado la integral anterior en esta circunferencia.
+$$
+\int_{C^2_\varepsilon} \frac{e^{iax}}{\sinh x}dx =  \int_{C^2_\varepsilon} \frac{e^{-2\pi a}}{z-2\pi i} dz + \int_{C^2_\varepsilon} g(z)dz
+$$
+Con $g(z)$ holomorfa en la circunferencia cuando $\varepsilon$ es suficientemente pequeño. Por tanto, su integral está acotada y tiende a $0$ cuando $\varepsilon \to 0$. Tenemos la curva $e^{it}+2\pi$ con $t\in [\pi,2\pi]$ evaluada con signo negativo, luego obtenemos
+$$
+- \int_{\pi}^{2\pi} \frac{\varepsilon i e^{i t} e^{-2\pi a}}{\varepsilon e^{i t}} = - \pi i e^{-2\pi a}
+$$
+Por tanto, en la suma se anula con la anterior.
+\item Finalmente, veamos qué ocurre en los laterales. Si $z=R +ti$ con $t\in [0,2\pi]$
+\begin{align*}
+\abs{\int_0^{2\pi} \frac{e^{-at+Ri}}{\sinh(R+ti)}dt} \leq  e^{2\pi|a|}\int_0^{2\pi}\frac{dt}{\abs{\sinh(R+ti)}} \leq  e^{2\pi|a|}\frac{2\pi}{\sinh R}
+\end{align*}
+Claramente tiende a $0$ cuando $R\to \infty$.
+\item Para el caso $z=-R+ti$ para $t\in[2\pi,0]$.
+\end{itemize}
+\begin{align*}
+\abs{\int_{2\pi}^0 \frac{e^{-at+Ri}}{\sinh(R+ti)}dt} \leq  e^{2\pi|a|}\int_0^{2\pi}\frac{dt}{\abs{\sinh(-R+ti)}} \leq e^{2\pi|a|}\frac{2\pi}{\sinh R}
+\end{align*}
+Por tanto, llegamos a que
+$$
+I(1-e^{-2\pi a }) + \pi i (1 - e^{-2\pi a})=2\pi i (1-e^{-\pi a})
+$$
+Luego 
+\begin{align*}
+I &=  \frac{1 - 2e^{-\pi a}+e^{-2\pi a}}{1-e^{-2 \pi a}}\pi i= \frac{(1-e^{-\pi a})^2}{1-e^{-2\pi a}}\pi i \\
+&= \frac{(1-e^{-\pi a})^2}{((1-e^{-\pi a})(1+e^{-\pi a})}\pi i=  \frac{1-e^{-\pi a}}{1+e^{-\pi a}}\pi i \\
+&= \frac{e^{\pi a/2}-e^{-\pi a/2}}{e^{\pi a/2}+e^{-\pi a/2}}\pi i = \tanh(\pi a /2) \pi i
+\end{align*}
+Finalmente, tenemos que
+$$
+\int_0^\infty \frac{\sin ax}{\sinh x}dx  = \frac{\pi}{2}\tanh(\pi a /2)
+$$
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{5}
+Sea $f\func{\Omega}{\C}$ una función holomorfa en una región $\Omega$ que contiene el eje real $\R$. Demostrar que si existe una sucesión convergente de números reales $\{x_n\}$ tales que $f(x_n)\in \R$ entonces $f$ toma valores reales para todo $x\in \R$.
+\end{ejercicio}
+\begin{solucion}
+Tengamos en cuenta que $\{x_n\}$ no es una sucesión constante, pues en ese caso no sería cierto. Por ejemplo, para la sucesión constantemente el origen, la función $f(z)=zi$ verifica que $f(x_n)=0\in \R$ pero no toma más valores reales a lo largo de la recta real. Por tanto, supongamos que la sucesión es no constante. Sea $h(z)=\overline{z}$, definimos $\Omega^* = h(\Omega)$. Como $h$ es un isomorfismo continuo, luego es una aplicación abierta. Se desprende, por tanto, que $\Omega^*$ es una región que contiene al eje real. Definimos además
+$$
+G':=\Omega \cap \Omega^*
+$$
+Naturalmente $G'$ es abierto por ser intersección de abierto. Aunque $G'$ podría ser no conexo, lo que es claro es que $\R$ debe estar en alguna completamente contenido en alguna componente conexa que denominamos $G$. Definimos ahora \begin{equation*}\begin{split}
+	g : & \  G \rightarrow \C \\
+	& z \mapsto g(z) = f(z) - \overline{f(\overline{z})},
+	\end{split}
+	\end{equation*}
+	que está bien definida por nuestra elección de $G$. Además, como $f(z)$ y $ \overline{f(\overline{z})}$ son funciones holomorfas en $G$, se sigue que $g$ también lo es. \\
+	Además, tenemos que \begin{equation*}
+	g(x_n) = f(x_n) - \overline{f(\overline{x_n})} = f(x_n) - f(x_n) = 0 \  \forall n \in \N.
+	\end{equation*}
+	Así, como $(x_n)$ es una sucesión convergente en $G$ y no constante, se sigue que $g \equiv 0$ en $G$, lo que implica que \begin{equation*}
+	f(z) = \overline{f(\overline{z})} \quad \text{para todo} \ z \in G.
+	\end{equation*}
+	Como $G$ contiene a la recta real, se tiene que \begin{equation*}
+	f(x) = \overline{f(x)} \quad \text{para todo} \ x \in \R,
+	\end{equation*}
+	lo que prueba que $f$ toma valores reales en toda la recta real. 
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{6}
+Sea $f\func{\Omega}{\C}$ una función holomorfa en una región $\Omega$ tal que para cierto $\varepsilon>0$ el disco de centro $0$ y radio $\varepsilon$ esté contenido en $\Omega$. Demostrar que $f$ toma valores reales en el segmento $(-\varepsilon,\varepsilon)$ y en el segmento $(-i\varepsilon,i\varepsilon)$ si y solo si el desarrollo de $f$ en el entorno de $0$ es de la forma
+$$
+f(z)=\sum_{n=0}^\infty a_nz^{2n}
+$$
+con los coeficientes $a_n \in \R$.
+\end{ejercicio}
+\begin{solucion}
+Una de las implicaciones es clara. Si $f$ tiene dicho desarrollo es el origen, que sabemos es válido al menos en $|z|<\varepsilon$, si $z\in (-\varepsilon,\varepsilon)$ y $a_n\in \R$ entonces $a_nz^{2n} \in \R$. Por tanto, la suma (que suponemos convergente) también es real. Análogamente, para $z\in (-\varepsilon i,\varepsilon i)$, $z^{2n} \in (-\varepsilon^{2n},\varepsilon^{2n})$, luego $a_n z^{2n}\in \R$.
+
+Recíprocamente, supongamos que $f$ toma valores reales en dichos segmentos. 
+\begin{itemize}
+\item Consideramos el desarrollo en serie de la función
+$$\sum_{n=0}^\infty a_n z^n
+$$
+Para $z\in(-\varepsilon,\varepsilon)$, $z=\overline{z}$. Como toma valores reales $f(z)=f(\overline{z})=\overline{f(\overline{z})}$, luego
+$$
+\sum_{n=0}^\infty a_n z^n = \sum_{n=0}^\infty {a_n} \overline{z} = \sum_{n=0}^\infty \overline{a_n}z^n
+$$
+De donde deducimos que $a_n=\overline{a_n}$, por lo que son reales.
+\item Además, también para $z\in (-\varepsilon,\varepsilon)$ entonces tenemos que $f(iz) = \overline{f(iz)}$ (toma valores reales en $(-\varepsilon i, \varepsilon i)$) y teniendo en cuenta que $a_n \in \R$
+$$
+\sum_{n=0}^\infty a_n (iz)^n = \sum_{n=0}^\infty {\overline{a_n ({iz})^n}} = \sum_{n=0}^\infty {a_n ({-iz})^n}  
+$$
+Por lo que 
+$$
+a_{3+4n} (iz)^{3+4n} = a_{3+4n}(-i)z^{3+4n} = a_{3+4n}(-iz)^{3+4n} = -a_{3+4n}(-i)z^{3+4n}
+$$
+de donde $-a_{3+4n}=a_{3+4n}$, de donde se deduce que es nulo.
+$$
+a_{1+4n} (iz)^{1+4n} = a_{1+4n}iz^{1+4n} = a_{1+4n}(-iz)^{1+4n} -a_{1+4n}iz^{1+4n}
+$$
+de donde $a_{1+4n}=-a_{1+4n}$, de donde se deduce que es nulo.  Es decir, es nula para todos los impares, lo que demuestra el resultado.
+\end{itemize}
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{7}
+Considerar el compacto $K$ de la figura: Consistente en un disco de radio $2$ menos la unión de dos discos de radio $1$.
+$$
+K=\{z\in \C\mid |z|\geq 2, \; |z-1|\geq 1,\; |z+1|\geq 1\}
+$$
+¿Podemos aproximar una función holomorfa en un entorno de $K$, uniformemente en $K$ por funciones racionales con polos en $-1$ y $1$?
+\end{ejercicio}
+\begin{solucion}
+Por el Teorema de Runge, tenemos que podemos aproximar una función en un entorno de $K$ uniformemente por funciones racionales con polos en $\C\setminus K$. Si los polos de esta aproximación están en alguna de las dos circunferencias, podemos llevarlos hasta $\pm 1$. Si están fuera de la menor bola cerrada que contiene a $K$, entonces podemos alejarlos hasta que esas funciones racionales puedan aproximarse por polinomios, dejando así los únicos polos en $\pm 1$.
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{8}
+Sea $G$ el abierto interior del compacto $K$ definido en el problema anterior. ¿Es posible aproximar cualquier función holomorfa en $G$ uniformemente en cada compacto $L\subset G$ mediante polinomios? Demostrar que la respuesta es correcta.
+\end{ejercicio}
+\begin{solucion}
+Notemos que el compacto no tiene por qué ser conexo.
+$$
+V_n = \{z\in \C\mid |z|<2-\frac{1}{n},\; |z+1|>1+\frac{1}{n},<\; |z-1|>1+\frac{1}{n}\}
+$$
+Además, $\overline{V_n}\subset G$.
+Por definición $V_n \subset G$. Recíprocamente, si $z\in G$ podemos encontrar un $\varepsilon$, que podemos suponer de la forma $\varepsilon=1/n$ tal que
+$$
+|z|<2-\varepsilon \qquad |z+1|>\varepsilon \qquad |z-1|>1+\varepsilon 
+$$
+Por tanto
+$$
+G = \bigcup_{n=1}^\infty V_n
+$$
+Como $K$ es compacto, sabemos que existe existe una cantidad finita de $V_i$ que lo recubren. Podemos considerar el compacto
+$$
+S= \bigcup_{i=1}^s V_{n_i}
+$$
+cuyo complementario es claramente conexo y aplicar el Teorema de Rounge.
+\end{solucion}
+\newpage
+
+
+\begin{ejercicio}{9}
+Supongamos que $f$ es una función continua no nula en $\overline{\mathbb{D}}$ que es holomorfa en $\mathbb{D}$. Probar que si 
+$$
+|f(z)|=1 \text{ siempre que } |z|=1
+$$
+entonces $f$ es constante.
+\end{ejercicio}
+\begin{solucion}
+Primeramente, como $f$ es analítica y no se anula en el disco unidad, entonces tiene sentido considerar en $|z|>1$ la función $f(1/z)$, que será analítica en $|z|>1$. Sabemos que si $g(z)$ es analítica entonces $\overline{g(\overline{z})}$ es analítica.  Por tanto, como $f$ no se anula en el disco, tiene sentido considerar
+$$
+g(z)=
+\begin{cases}
+f(z) & |z|\leq 1\\
+1/\overline{f\left({1}/{\overline{z}}\right)} & |z|>1
+\end{cases}
+$$
+Es claro que $g$ es analítica en $|z|\neq 1$. Además es continua, pues si $z= e^{it}$ entonces
+$$
+\lim_{z\to e^{it},|z|\leq 1}g(z)=f(e^{it})
+$$
+$$
+\lim_{z\to e^{it},|z|>1}g(z)=1/\overline{f(1/\overline{e^{it}})} = 1/\overline{f(1/e^{-it})}=\overline{f(e^{it})} = f(e^{it})
+$$ Tengamos en cuenta lo siguiente. Dado que $|z|\leq 1$ es compacto, $f(z)$ alcanza máximo y mínimo $M$ y $m$. Luego $g(z)$ está acotada en $|z|\leq 1$. Ahora tengamos en cuenta que si $|z|>1$ entonces $\abs{1/\overline{z}}<1$, luego si $|z|>1$
+$$|g(z)| = 1/|\overline{f\left({1}/{\overline{z}}\right)}| = 1/\abs{f\left({1}/{\overline{z}}\right)}<\frac{1}{S}
+$$
+Además, sabemos que $|f(z)|=1$ en $|z|=1$. Por tanto, si probamos que $g$ es entera, entonces por el Teorema de Liouville tendremos que $g$, y por tanto $f$, es constante.
+
+Una posibilidad sería intentar aplicar el teorema de Morera, lo cuál es efectivo pero algo engorroso. En su lugar, utilizaremos transformaciones de Möbius 
+\begin{enumerate}
+\item Sea una transformación bilineal $T$ que transforme la circunferencia en el eje real. 
+\item Consideremos la función $f \circ T^{-1}$. Como $T^{-1}$ es holomorfa en $\C$ salvo quizás en un punto, la composición es holomorfa en $\C- \R$ salvo quizás en otro punto donde por hipótesis está acotada. Por el Teorema de Riemann, la función es holomorfa en $\C-\R$ y por el principio de Reflexión, tenemos que es entera. 
+\item Componiendo $f = f \circ T^{-1} \circ T$, tenemos que $f$ es holomorfa salvo quizá en un punto, con lo que al estar acotada aplicamos Riemann y tenemos que es entera y el resultado.
+\end{enumerate}
+\end{solucion}
+\newpage
+\end{document}

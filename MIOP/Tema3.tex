@@ -1,0 +1,291 @@
+\documentclass[MIOP.tex]{subfiles}
+
+%\usepackage{sagetex}
+\begin{document}
+
+\chapter{Programación entera.}
+
+\section{Desigualdades válidas.}
+
+Dado un poliedro $P=\{x\in\R^n:Ax\leq b,x\geq 0\}$. La desigualdad $\Pi'x\leq\Pi_0$ es válida para $P$ si $\forall x\in P$ se verifica la desigualdad. Por ejemplo, todas las desigualdades de $Ax\leq b$ son válidas para $P$. La definición se extiende a cualquier conjunto que no sea un poliedro. Por ejemplo a $P_E=P\cap\Z^n$. En ese caso $conv(P_E)=\{x\in\R^n:\overline{A}x\leq\overline{b},x\geq 0\}$ y se tiene
+\begin{enumerate}
+\item $Ax\leq b$ son desigualdades válidas para $P_E$.
+\item $\overline{A}x\leq\overline{b}$ son desigualdades válidas de $P_E$. 
+\end{enumerate} 
+\begin{ejs}\
+\begin{enumerate}
+\item $X=\{x\in\{0,1\}^5: 3x_1-4x_2+2x_3-3x_4+x_5\leq-2\}$. Si $x_2=x_4=0\Rightarrow 3x_1+2x_3+x_5\leq -2$, pero todas las variables son no negativas, luego no se puede conseguir la igualdad. Así que los puntos de la forma $(x_1,0,x_3,0,x_5)\notin X$, es decir, $x_2+x_4\geq 1$, que es una desigualdad válida.
+\item $X=\{(x,y):0\leq x\leq 5, x\leq 9999y,y\in\{0,1\}\}$. Entonces $x\leq\min\{5,9999y\}=\min\{5,9999\}\Rightarrow x\leq 5$ es una desigualdad válida. Como además $y\in\{0,1\}$ y $x\in[0,5]$, se tiene que $x\leq 5y$.
+\item $X:\{(x,y): x\leq 10y, 0\leq x\leq 14, y\in\Z^+\}$.
+La recta definida por $(10,1)$ y $(14,2)$ define una desigualdad válida para $X$, $x\leq 6+4y$. En general, si $X=\{(x,y):x\leq Cy, 0\leq x\leq b,y\in\Z^+\}$, si $C$ no divide a $b$ entonces estamos en la misma situación anterior. La desigualdad válida estará definida por $(C,1),(b,\lceil C/b\rceil)$. En la gráfica a continuación se puede ver el ejemplo.
+
+\definecolor{ffqqqq}{rgb}{1.,0.,0.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\draw[color=black] (-0.4,0.) -- (14.933333333333337,0.);
+\foreach \x in {,1.,2.,3.,4.,5.,6.,7.,8.,9.,10.,11.,12.,13.,14.}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[color=black] (0.,-1.0266666666666635) -- (0.,6.4);
+\foreach \y in {-1.,1.,2.,3.,4.,5.,6.}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-0.4,-1.0266666666666635) rectangle (14.933333333333337,6.4);
+\draw [line width=2.pt,domain=-0.4:14.933333333333337] plot(\x,{(-0.-1.*\x)/-10.});
+\draw [line width=2.pt,color=qqqqff] (0.,1.)-- (10.,1.);
+\draw [line width=2.pt,color=qqqqff] (0.,2.)-- (14.,2.);
+\draw [line width=2.pt,color=qqqqff] (0.,3.)-- (14.,3.);
+\draw [line width=2.pt,color=qqqqff] (0.,4.)-- (14.,4.);
+\draw [line width=2.pt,color=qqqqff] (0.,5.)-- (14.,5.);
+\draw [line width=2.pt,color=ffqqqq,domain=-0.4:14.933333333333337] plot(\x,{(-6.--1.*\x)/4.});
+\draw [line width=2.pt,color=qqqqff] (0.,6.)-- (14.,6.);
+\begin{scriptsize}
+\draw [fill=qqqqff] (0.,0.) circle (2.0pt);
+\draw [fill=ffqqqq] (10.,1.) circle (2.5pt);
+\draw [fill=ffqqqq] (14.,2.) circle (2.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+
+\item En el problema de emparejamiento, sea $G=(V,E)$. Si $i\in V$ se define $\delta(i)=\{e\in E:i\in e\}$. Un emparejamiento (\emph{matching}) es un conjunto de arista que no tiene vértices comunes. El politopo del matching viene descrito por $\sum_{e\in\delta(i)}x_e\leq 1\ \forall i\in V, x_e\in\{0,1\}$. $x_e=1$ si y solo si $e\in E$ está en el matching.  
+
+Sea $T$ un conjunto de vértices $T\subseteq V$ de cardinalidad impar mayor o igual que 3. Entonces en cualquier solución de emparejamiento el conjunto de las aristas que tiene ambos vértices en $T$, $E(T)$, debe verificar que $\sum_{e\in E(T)}x_e\leq\lfloor |T|/2\rfloor$, es decir solo se pueden elegir $\frac{|T|-1}{2}$ aristas en el emparejamiento.
+\item $X=P\cap\Z^4, P=\{x\in\R^4_+:13x_1+20x_2+11x_3+6x_4\geq 72\}$. Si dividimos la inecuación por 11 se sigue verificando. Y como buscamos enteros no negativos podemos tomar las partes enteras superiores de los coeficientes, dando lugar a 
+$$2x_1+2x_2+x_3+x_4\geq 7$$
+\end{enumerate}
+\end{ejs}
+
+\begin{prop}
+Sea $A\in\R^{n\times m}$. $\Pi'x\leq\Pi_0$ es una desigualdad válida para $P=\{x\in\R^n:Ax\leq b,x\geq 0\}$ si y solo si $\exists u\in\R^m_+,u'A\geq\Pi,u'b\leq\Pi_0$.
+\end{prop}
+\begin{dem}
+Consideremos el siguiente problema
+\begin{align*}
+z_p=& \max \Pi'x\\
+   &sa: Ax\leq b\\
+   &x\geq 0
+\end{align*}
+La desigualdad es válida si y solo si $z_p\leq\Pi_0$. Para probar el resultado escribimos el dual, que en caso de tener solución tiene el mismo valor
+\begin{align*}
+z_p=& \min u'b\\
+   &sa: u'A\geq \Pi\\
+   &u\geq 0
+\end{align*}
+Entonces la desigualdad es válida si y solo si $z_p\leq\Pi_0$, de donde se deduce el resultado. 
+$\QED$
+\end{dem}
+\begin{coro}
+El mismo resultado se tiene si y solo si $\exists v\geq 0, u\geq 0, u'A-v= \Pi, u'b\leq\Pi_0$. La $v$ no es más que una holgura.
+\end{coro}
+
+\subsection{Desigualdades válidas para conjuntos de puntos enteros.}
+\begin{prop}
+Sea $X=\{y\in\Z:y\leq b\}$, entonces $y\leq\lfloor b\rfloor$ es válida para $X$.
+\end{prop}
+\begin{dem}
+Trivialérrimo. $\QED$
+\end{dem}
+\begin{ej}
+Consideremos $P$ dado por las desigualdades
+\begin{align*}
+7x_1-2x_2\leq 14\\
+x_2\leq 3\\
+2x_1-2x_2\leq 3\\
+x\geq 0
+\end{align*}
+Hacemos una combinación lineal de las ecuaciones con coeficientes $(2/7,27/36, 0)$. Se obtiene $2x_1-\frac{1}{63}x_2\leq\frac{121}{21}$. Buscamos desigualdades válidas para $P_E$. Así que entonces también se verfica $2x_1\leq 5\Rightarrow x_1\leq 2$.
+\end{ej}
+
+\subsection{Procedimiento de Chvatal-Gomory}
+Es aplicable a problemas enteros de la forma $X=P\cap\Z^n$ con $P=\{x\in\R^n:Ax\leq b,x\geq 0\}$, siendo $A=[a_1,\dots,a_m]\in\R^{m\times n}$ y $u\in\R^m_+$. 
+\begin{enumerate}
+\item La desigualdad $\sum_{j=1}^nu'a_jx_j\leq u'b$ es válida para $P$.
+\item La desigualdad $\sum_{j=1}^n\lfloor u'a_j\rfloor x_j\leq \lfloor u'b\rfloor$ es válida para $X$.
+\end{enumerate}
+\begin{teorema}
+Toda desiguald válida para $X$ se puede obtener por el procedimiento de Chvatal-Gomory (C-G) siendo aplicado un número finito de veces.
+\end{teorema}
+\begin{ej}
+Volvamos al ejemplo del matching. Tenemos el poliedro $P=\{x\geq 0.\sum_{e\in\delta(i)}x_e\leq 1\ \forall i\in E\}$. Fijado $T$, tomamos coeficientes $u_i=1/2$ si $i\in T, u_i=0$ si $i\notin T$. 
+$$\sum_{i\in T}\frac{1}{2}(\sum_{e\in\delta(i)}x_e)\leq\frac{|T|}{2}$$
+Cada $x_e$ aparece 2 veces en $E(T)$ y 1 cuando la arista tiene un vértice en $T$ y otra en el complementario.
+$$\sum_{e\in E(T)}\frac{1}{2}(2x_e)+\sum_{e\in T\times V\setminus T}\frac{1}{2}x_e=\sum_{e\in E(T)}x_e+\frac{1}{2}\sum_{e\in T\times V\setminus T}x_e\geq \sum_{e\in E(T)}x_e.$$
+Luego tenemos que $\sum_{e\in E(T)}\leq\frac{|T|}{2}$, que redondeando se convierte en $\sum_{e\in E(T)}\leq\frac{|T|-1}{2}$ 
+
+\end{ej}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Desigualdades válidas para poliedros enteros}
+\begin{prop}
+ Sea $X^{\geq}=\{(x,y)\in\R_+\times \Z \mid x+y \geq b\}$ y $f= b-\suelo{b}>0$. Entonces la desigualdad $x\geq f(\ceil{b}-y)$ es válida.
+\end{prop}
+
+\begin{dem}\
+\begin{enumerate}
+\item Si $y\geq\lceil b\rceil$, como $0<f<1$ entonces $x\geq 0\geq \lceil b\rceil-y$ y $0\geq f(\lceil b\rceil-y)$, luego $x\geq f(\lceil b\rceil-y).$
+\item Si $y<\lceil b\rceil$, entonces $x\geq b-y=\lfloor b\rfloor+f-y\geq f+f(\lfloor b\rfloor-y)\Rightarrow \frac{x}{f}\geq 1+\lfloor b\rfloor-y=\ceil{b}-y.$
+\end{enumerate}
+$\QED$
+\end{dem}
+
+\begin{coro}
+Para el caso $X^\leq =\{(x,y)\in\R_+\times \Z \mid y\leq b+x\}$ con $f=b-\suelo{b}>0$ entonces $y\leq \suelo{b}+\frac{x}{1-f}$ es válida para $X^\leq$.
+\end{coro}
+\begin{dem}
+$x+b\geq y \equiv x-y\geq -b$. Denotamos $f'=-b-\suelo{-b}$. La desigualdad válida es 
+$$
+\frac{x}{f'}-y\geq \ceil{-b}=-\suelo{b} \equiv \frac{x}{1-f}-y \geq -\suelo{b}
+$$
+$\QED$
+\end{dem}
+\begin{propi}
+Sea $X^{MIR}=\{(x,y)\in\R_+\times \Z_+^2 \mid a_1y_2+a_2y_2\leq b+x\}$, $a_1,a_2,b\in\R$, $b\notin \Z$. Supongamos que $f=b-\suelo{b}$, $f_i = a_i -\suelo{a_i}$, $i=1,2$ y $f_1\leq f\leq f_2$. Entonces 
+$$
+\suelo{a_1}y_1+\left(\suelo{a_2}+\frac{f_2-f}{1-f}\right)y_2\leq \suelo{b}+\frac{x}{1-f}$$
+es válida para $X^{MIR}$.
+\end{propi}
+\begin{dem}
+Observamos que $\suelo{a_1}\leq a_1$ y $a_2=\ceil{a_2}-(1-f_2)=\suelo{a_2}+f_2$. Entonces
+$$
+\suelo{a_1}y_1+(\ceil{a_2}-(1-f_2))y_2 \leq a_1y_1 + a_2y_2\leq b+x
+$$
+$$\suelo{a_1}y_1+(\ceil{a_2}-(1-f_2))y_2 \leq b+x+(1-f_2)y_2$$
+Por el Corolario
+$$
+\suelo{a_1}y_1+\ceil{a_2}y_2 \leq \suelo{b}+\frac{x+(1-f_2)y_2}{1-f}
+$$
+$$
+\suelo{a_1}y_1+\left(\ceil{a_2}-\frac{1-f_2}{1-f}\right)y_2 \leq \suelo{b}+\frac{x}{1-f}
+$$
+$$
+\suelo{a_1}y_1+\left(\suelo{a_2}+\frac{1-f-1+f_2}{1-f}\right)y_2\leq \suelo{b}+\frac{x}{1-f}
+$$
+$\QED$
+\end{dem}
+\begin{prop}
+$X=X_1\cup X_2$ se denomina disyunción si sus elementos están en $X_1$ o $X_2$, $X_i\subset \R^n_+$. Supongamos que ${\Pi^i}'x\leq \Pi^i_0$ es válida para $X^i$, $i=1,2$. Entonces $\Pi' x\leq \Pi_0$ tal que $\Pi_j=\min\{\Pi^1_j,\Pi^2_j\}$, $\Pi_0 =\max\{\Pi^1_0,\Pi^2_0\}$ es válida para $X$.
+\end{prop}
+\begin{dem}
+Sea $x\in X$. Evaluamos
+$$
+\Pi' x = \sum_{j=1}^n \Pi_j x_j = \sum_{j=1}^n \min\{\Pi_j^1,\Pi_j^2\}x_j
+$$
+Si $x\in X_i$ entonces $\Pi'x \leq {\Pi^i}' x \leq \Pi_0^i \leq \Pi_0$. 
+$\QED$
+\end{dem}
+\begin{prop}
+Si $P^i = \{x\in\R^n_+\mid A^i x \leq b^i\}$, $i=1,2$ son poliedros no vacíos entonces $\Pi x\leq \Pi_0$ es una desigualdad válida para $Co(P^1\cup P^2)$ sii $\exists u^1,u^2$ tales que $u^1A^1\geq \Pi$, $u^2A^2 \geq \Pi$, $u^1 b^1 \leq \Pi_0$, $u^2b^2\leq \Pi_0$
+\end{prop}
+\begin{dem}
+Supongamos que $\Pi x \leq \Pi_0$ es válida para $ Co(P^1\cup P^2)$. Sea $x \in Co(P^1\cup P^2)$ entonces $\Pi x \leq \Pi_0$. En particular si $x\in P^1 \subset Co(P^1\cup P^2)$ también es válida para $P^1$ sii $\exists u^1\mid u^1 A^1 \geq \Pi$, $u^1 b^1 \leq \Pi_0$. Análogo para $x\in P^2$.
+
+Recíprocamente supongamos que existen los $u^i$ del enunciado. Sea $x\in Co(P^1\cup P^2)$, $x=\lambda x^1 +(1-\lambda)x^2$, $\lambda \in [0,1]$, $x^i\in P^i$. Entonces 
+$$
+\Pi' x = \Pi'(\lambda x^1 +(1-\lambda)x^2) = \lambda \Pi' x^1 +(1-\lambda)\Pi' x^2
+$$
+Como se cumple $u^i A^i \geq \Pi$, $u^i b^i \leq \Pi_0$, utilizando el dual tenemos que $\Pi'x^i\leq\Pi_0$, de donde se deduce el resultado aplicando la desigualdad sobre lo anterior. $\QED$
+\end{dem}
+
+\begin{ej}
+$P^1=\{x\in\R^2_+:-x_1+x_1\leq 1, x_1+x_2\leq 5\}; P^2=\{x\in\R^2_+:x_2\leq 4,-2x_1+x_2\leq -6, -3x_2\leq -2\}; u^1=(2,1);u^2=(5/2,1/2,0)$. Aplicamos la  proposición. 
+$$
+u^1\begin{pmatrix}
+-1 & 1\\
+1 & 1
+\end{pmatrix}=(-1,3)
+$$
+$$u^1b^1=(2,1)(1,5)'=7$$
+$$u^2A^2=(5/2,1/2,0)\begin{pmatrix}
+0 & 1\\
+-2 & 1\\
+0 & -3
+\end{pmatrix}=(-1,3)$$
+$$
+u^2b^2=(5/2, 1/2,0)(4, -6,-2)'=7$$
+Tomamos $\Pi=(-1,3), \Pi_0=7$, entonces, $\Pi x\leq\Pi_0\equiv -x_1+3x_2\leq 7$ es válida.
+\end{ej}
+Consideremos el poliedro $P=\{x\in\R^n \mid Ax\leq b, 0\leq x \leq 1\}$. Si suponemos que $x_j\in\{0,1\}$ entonces podemos considerar los poliedros 
+$$P^0=\{x\in\R^n \mid x_j =0\}\cap P \qquad P^1 =\{x\in\R^n \mid x_j=1\}\cap P
+$$
+\begin{prop}
+La desigualdad $\Pi x\leq \Pi_0$ es válida para $Co(P^0 \cup P^1)$ si existen $u^i \in \R^m_+$, $v^i \in \R^n_+$, $w^i\in\R_+$ para $i=1,2$ tales que 
+\begin{align*}
+\Pi\leq u^0A + v^0 + w^0e_j && \Pi \leq u^1 A + v^1-w^1 e_j\\
+\Pi_0 \geq u^0b+1^tv^0 && \Pi_0\geq u^1 b +1^t v^1 -w^1
+\end{align*}
+\end{prop}
+\begin{dem}
+Observamos que
+$$
+P^0=\{x\in\R^n_+\mid Ax \leq b, x\leq 1, x_j \leq 0\} \quad P^1=\{x\in\R^n_+\mid Ax \leq b, x\leq 1, -x_j \leq -1\}
+$$
+$E_j$ es la matriz 0 pero poniéndole un 1 en la diagonal.
+$$
+\begin{pmatrix}
+u_0\\
+v_0\\
+w_0
+\end{pmatrix}:=\begin{pmatrix}
+A\\
+I\\
+E_j
+\end{pmatrix}x \leq 
+\begin{pmatrix}
+b\\
+1\\
+0
+\end{pmatrix}
+\qquad
+\begin{pmatrix}
+u^1\\
+v^1\\
+w^1
+\end{pmatrix} :=
+\begin{pmatrix}
+A\\
+I\\
+-E_j
+\end{pmatrix}x \leq 
+\begin{pmatrix}
+b\\
+1\\
+-e_j
+\end{pmatrix}
+$$
+$\QED$
+\end{dem}
+
+\begin{ej}
+\begin{align*}
+\max\ & 12x_1+14x_2+7x_3+12x_4\\
+sa\ & 4x_1+5x_2+3x_3+6x_4\leq 8\\
+& x_i\in\{0,1\}
+\end{align*}
+La solución de la relajación lineal (i.e. $x_i\in[0,1]$) es $x^*=(1, 0.8, 0, 0)$. Elegimos $x_2$: $\Pi x\leq \Pi_0$, $\Pi x^*-\Pi_0>0$. 
+\begin{align*}
+\max\ & \Pi_1x^*_1+\Pi_2x^*_2+\Pi_3x^*_3+\Pi_4x^*_4-\Pi_0\\
+sa\ & \Pi_1\leq 4u^0+v_1^0+w^0\cdot 0\\
+& \Pi_2\leq 5u^0+v_2^0+w^0\cdot 1\ (\text{porque estamos ramificando en }x_2)\\
+& \Pi_3\leq 3u^0+v_3^0+w^0\cdot 0\\
+&\Pi_4\leq 6u^0+v_4^0+w^0\cdot 0\\
+\\
+& \Pi_1\leq 4u^1+v_1^1-w^1\cdot 0\\
+& \Pi_2\leq 5u^1+v_2^1-w^1\cdot 1\\
+& \Pi_3\leq 3u^1+v_3^1-w^1\cdot 0\\
+&\Pi_4\leq 6u^1+v_4^1-w^1\cdot 0\\
+\\
+&\Pi_0\geq 8u^0+v_1^0+v_2^0+v_3^0+v_4^0\\
+\\
+&\Pi_0\geq 8u^1+v_1^1+v_2^1+v_3^1+v_4^1-w^1
+\end{align*}
+\end{ej}
+\end{document}

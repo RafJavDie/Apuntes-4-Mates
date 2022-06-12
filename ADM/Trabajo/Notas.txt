@@ -1,0 +1,183 @@
+﻿
+#############
+Introducción
+#############
+
+Vamos a presentar el método tree-based. Puede utilizarse para problemas de regresión y clasificación.
+El método consiste en "estratificar" o "segmentar" o "dividir" el espacio de predicciones en un cierto
+número de regiones. Dado que el conjunto de las reglas de división que usamos para segmentar el espacio de 
+predicciones pueden resumirse en un árbol, estas aproximaciones se conocen como métodos de árbol de decisión.
+
+# Foto estratificación
+
+Este método se considera es útil porque se interpreta con facilidad, pero a la hora de predicir
+se encuentra ampliamente superado por otros métodos como el aprendizaje supervisado.
+
+Las regiones en las que finalmente quedan divido el espacio de predicciones se denominan "hojas" o "nodos finales".
+Típicamente el árbol (figura) se dibuja con las hojas en la parte inferior. Los puntos del árbol donde se divide 
+el espacio de predicciones se denominan "nodos internos" mientras que los segmentos que conectan los nodos
+se denominan "ramas".
+
+##########
+Regresión
+##########
+
+Para realizar una predicción usando este método, particionamos el espacio de predicción (el espacio donde 
+toman valores las variables) en ciertos conjuntos, de manera que rellenen dicho espacio y no se solapen.
+Toda observación que cae en R_j, se le asocia la misma predicción, que es el valor medio de los valores de 
+las observaciones de los valores de entrenamiento que se encuentra en R_j.
+
+############################
+Recursive binary splitting 
+############################
+
+En teoría las regiones en las que dividimos el espacio pueden tener cualquier forma, pero elegir unas particiones
+en las que las regiones pueden  tomar cualquier aspecto es inabarcable desde el punto de vista computacional. Por
+tanto, realizamos una partición en rectángulos n-dimensionales. Para ellos seguimos el algoritmo denominado
+"separación binaria recursiva" del espacio, de manera que nuestro obetivo será minimizar el RSS:
+
+# Ecuación
+
+donde ŷ_{R_j} es la y media de las observaciones de entrenamiento en la caja R_j. 
+
+El algoritmo básicamente consiste en elegir un X_j y un punto de corte s y crear dos regiones R_1 y R_2, donde 
+X_j < s y X_j ≥ s respectivamente. De manera que buscamos s,j tales que se minimiza
+
+\[ \sum_{i\colon x_i \in R_1(j,s)} (y_i - \widehat{y}_{R_1})^2 + \sum_{i: x_i \in R_2(j,s)} (y_i - ŷ_{R_2})^2 \]
+
+Una vez que hemos hecho la primera división, continuamos dividiendo de la misma forma cada región que hemos generado
+anteriormente y repetimos el proceso recursivamente hasta que hemos creado suficientes cajas. Un criterio para detener 
+el algoritmo puede ser que en cada caja haya un determinado número de elementos.
+
+#########
+Prunning
+#########
+
+El proceso que hemos explicado, a pesar de que realiza buenas predicciones, tiene el problema de sobreenternarse con
+cierta facilidad. Un árbol más pequeño (con menos regiones) puede tener una menor varianza y ser más fácilmente interpretable
+a pesar de tener algo más de sesgo. Una manera de hacer eso puede ser utilizar el algoritmo anterior imponiendo que solo
+pueda realizarse un determinado número de divisiones, pero esto en general no es muy efectivo porque una división que disminuya
+poco el RSS puede preceder a una que lo disminuya mucho. En su lugar vamos a generar un árbol "grande" T0 y "podarlo" 
+para obtener otro árbol menor. Dado que puede haber una gran cantidad de subárboles, minimzar el error por validación cruzada 
+puede no ser la mejor opción. Presentamos el siguiente algoritmo para resolver el problema
+
+# Algoritmo (comentarios a lo que viene en la presentación)
+
+1. Generamos un árbol T0 usando RBS. 
+2. Encontramos el árbol T que minimiza la siguiente función.
+3. Dividimos los datos de entrenamiento en K folds y repetimos los pasos anteriores usando todos los datos
+   salvo el k-ésimo fold. Evaluamos el error cuadrático medio de la predicción como función de alfa. 
+   Tomamos como "error" para cada alfa como la media de los errores calculados para el k-ésimo fold.
+4. Volvemos al árbol T0 original y tomamos un subárbol que corresponda al valor obtenido de alfa.
+
+#############
+Clasificacón
+#############
+
+La idea detrás de los árboles de clasificación es similar a la idea que hay tras los árboles de predicción, pero
+en este caso buscamos una respuesta más "cualitativa" que "cuantitativa". Recuerdo que para la predicción en los 
+árboles de regresión utilizamos la media de las observaciones que pertenecen a la misma hoja. Para los árboles de
+clasificación tomaremos como predicción la moda de las observaciones que pertenecen a la misma hoja.
+
+Naturalmente para variables cualitativas el RSS puede no tener mucho sentido como medida del error que cometemos.
+La alternativa natural es el ratio del error de clasificiación (classification error rate). Esto es, la fracción
+de observaciones que en cada región no pertenecen a la clase más común
+
+\[ E = 1 - \max(\hat{p}_{mk}) \]
+
+donde \hat{p}_{mk} es la proporción de observaciones de la m-ésiam región (hoja) de la clase k.
+Esta medida de error no es lo suficientemente sensible cuando los árboles crecen y en la práctica, con el fin de
+evaluar la calidad de una división del árbol, se suelen utilizar otras dos medidas
+
+- Índice de Gini: Es una medida de la varianza total sobre las K clases. 
+\[ G = \sum_{k=1}^K \hat{p}_{mk}(1-\hat{p}_{mk})  \]
+
+
+- Entropía cruzada: Es una alternativa al índice de Gini. En ambos casos también se acerca a 0 cuando el nodo es puro.
+\[ D = -\sum_{k=1}^K \hat{p}_{mk} \log \hat{p}_{mk} \]
+
+Las tres medidas pueden utilizarse para la poda del árbol, pero la priemera es preferible si nuestro objetivo es 
+precisión al a hora de predecir. Naturalmente, tanto la construcción como la poda del árbol se realiza análogamente
+a las que hemos mostrado anteriormente.
+
+
+###########################
+Árboles vs Modelos lineales
+###########################
+
+A continuación oferecemos una comparativa entre lLos modelos lineales (que han sido / serán presentados por otros
+compañeros). ¿Qué modelo es mejor? Pues depende de cómo sea el problema. Si los datos, por sus características,
+se adecuan bien al modelo lineal, entonces las aproximiaciones y regresiones lineales funcionarán mejor, generalmente,
+que los árboles de regresión. Si, en cambio, los datos tienen una estructura no lineal y compleja, entonces el modelo
+de árboles se adaptarán mejor que los método clásicos.
+
+# Algo como la figura 8.7 me parece un ejemplo magnífico de lo que se ha explicado arriba. 
+
+
+#######################
+Ventajas y desventajas
+#######################
+
+Ventajas:
+- Son fáciles de explicar incluso si no saben nada de regresión lineal.
+- Mucha gente piensa que son más parecidos a cómo funciona el sistema de decisión de los 
+  seres humanos, a diferencia de otros modelos.
+- Pueden ser presentados gráficamente y fácilmente interpretrados.
+- Pueden incluir variables cualitativas sin problemas y sin necesida de crear nuevas variables.
+
+Desventajas:
+- No tienen tanta capacidad para predecir, en general, como otros modelos de regresión y clasificación.
+
+
+#################################
+Bagging, Random Forest, Boosting
+#################################
+
+A continuación preentamos tres modelos que usan a su vez árboles como "bloques" para construir modelos de predicción
+más potentes.
+
+########
+Bagging
+########
+
+Comencemos por una primera observación. Sabemos que si tenemos n observaciones independientes Xi con varianza sigma^2, 
+entonces la media muestral tiene varianza sigma^2/n. En otras palabras, hacer la media de las observaciones reduce la 
+varianza. Por tanto, una manera natural de aumentar la precisión de nuestras prediccioens será tomar varios conjuntos
+de entrenamiento de una población, construir modelos de predicción de manera separada con cada uno de ellos y, finalmente,
+hacer la media de los resultados predichos. 
+
+Este método puede no ser muy práctica pues en la vida real muchas veces no se tiene acceso a múltiples conjuntos de
+entrenamiento. En lugar de eso, podemos toamr muestras aleatorias de un solo conjunto de entramiento y repetir el proceso.
+A este último método es al que se le conoce como bagging. En la práctica, construimos B árboles de decisión usando B conjuntos
+de entrenamiento obtenidos como acabamos de explicar y calculamos la media de las predicciones. Estos árboles son profundos
+y no han sido podados, luego tienen poco sesgo pero una gran varianza. Haciendo la media, mantenemos el caracter del sesgo 
+y además reducimos la varianza. Esta técnica ha demostrado ser muy efectiva en cuanto a precisión.
+
+En el caso en el que tengamos variables cualitativas, la aproximación más simple consiste en "guardar" la clase predicha
+por cada árbol y tomar el "voto de la mayoría", es decir, dar como respuesta la clase que más veces guardado.
+
+##############
+Random Forests
+##############
+
+Al igual que en Bagging, la mejora Random Forest considera
+una colección de árboles, pero tratamos de que sean más incorrelados.
+Para hacemos que cada árbol se forme sin usar todos los predictores.
+
+Las predicciones se hacen de la misma forma que en Bagging.
+Este método mejora la sensibilidad de las predicciones,
+especialmente cuando hay un predictor más fuerte que el resto.
+
+########
+Boosting
+########
+
+Boosting es también similar a Bagging, pero en lugar de crear
+los árboles independientemente, formamos los árboles usando
+información de los árboles anteriores.
+En concreto, empezamos con un árbol normal y luego construimos
+árboles que modelicen los residuos del árbol anterior.
+El árbol final será una suma de los árboles con un factor de encojimiento
+
+Este factor λ provoca un ralentizamiento en el aprendizaje, a cambio
+de un mejor resultado. 

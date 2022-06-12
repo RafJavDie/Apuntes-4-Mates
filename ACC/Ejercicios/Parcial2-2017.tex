@@ -1,0 +1,58 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{2º Parcial - 16/5/2017}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{1}
+Supongamos que $f, g \in \C[x]$ son polinomios de grado positivo.
+El propósito de este ejercicio es construir un polinomio cuyas raíces sean la suma de una raíz de $f$ más una raíz de $g$.
+\begin{enumerate}
+\item Probar que un número complejo $γ \in \C$ se puede escribir $γ = α + b$, con $f(α) = g(β) = 0$, si y sólo si el sistema de ecuaciones $f(x) = g(y-x) = 0$ tiene solución con $y = γ$.
+\item Demostrar que $γ$ es raíz de $Res(f(x), g(y-x), x)$ si y sólo si $γ = α + β$, con $f(α) = g(β) = 0$.
+\item Usar lo anterior para construir un polinomio con coeficientes en $\Q$ que tenga a $\sqrt{2} + \sqrt{3}$ como raíz.
+\item Modificar la construcción anterior para crear un polinomio cuyas raíces sean todas las diferencias de una raíz de $f$ menos un raíz de $g$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\textbf{NO ENTRA}.
+
+%\begin{enumerate}
+%\item Lo demostramos por doble implicación.
+%Supongamos primero que $γ = α + β$ con $f(α) = g(β) = 0$.
+%Entonces, claramente $β = γ - α$.
+%Luego $f(x) = g(y-x) = 0$ tiene solución cuando $x = α$ e $y = γ$.
+
+%Por otro lado, si $f(x) = g(γ-x) = 0$ tiene solución con $x = α$, entonces tomando $β = γ-x$ tenemos $f(α) = g(β) = 0$.
+%\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{2}
+El objetivo de este ejercicio es demostrar la identidad
+\[ 0 = h_k(x_k, \dots, x_n) + \sum_{i=1}^k (-1)^i h_{k-i}(x_k,\dots,x_n) σ_i(x_1,\dots,x_n) \]
+Poniendo $σ_0 = 1$, la identidad se escribe más compacta
+\[ 0 = \sum_{i=0}^k (-1)^i h_{k-i}(x_k,\dots,x_n) σ_i(x_1,\dots,x_n) \]
+Si $S \subset \{1,\dots,k-1\}$, notaremos por $x^S$ al producto de las variables correspondientes y por $|S|$ al número de elementos de $S$.
+\begin{enumerate}
+\item Probar que
+\[ σ_i(x_1,\dots,x_n) = \sum_{S \subset \{1,\dots,k-1\}} x^S σ_{i-|S|}(x_k,\dots,x_n), \]
+tomando $σ_j = 0$ si $j < 0$.
+\item Probar que
+\begin{align*}
+\sum_{i=0}^k (-1)^i h_{k-i}(x_k,\dots,x_n) σ_i(x_1,\dots,x_n)\\
+= \sum_{S \subset \{1,\dots,k-1\}} x^S \left(\sum_{i=|S|} (-1)^i h_{k-i}(x_k,\dots,x_n) σ_{i-|S|}(x_k,\dots,x_n)\right)
+\end{align*}
+\item Usar la identidad $0 = \sum_{i=0}^k (-1)^i h_{k-i}(x_1,\dots,x_n) σ_i(x_1,\dots,x_n)$ para concluir que la suma dentro de los paréntesis es cero para todo $S$.
+Esto termina la prueba de la identidad deseada.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Ver solución en Relación 7.3, ejercicio 11.
+\end{solucion}
+\end{document}

@@ -1,116 +1,273 @@
 \documentclass[TAN.tex]{subfiles}
 \begin{document}
-\chapter{Distribución de los números primos\\Métodos elemntales}
+\chapter{Distribución de los números primos\\Métodos elementales}
 
 \section{Funciones de Chebyshev}
 \begin{nota}
 \[ π(x)=\sum_{p≤x} 1, \quad θ(x) = \sum_{p≤x} \log p, \quad ψ(x)=\sum_{p^k≤x} \log p \]
 \end{nota}
-Observar que $ψ(x)$ es el logaritmo del mínimo común múltiplo de los $n$ primeros números naturales.
+Observar que $ψ(x)$ es el logaritmo del mínimo común múltiplo de los $n$ primeros naturales.
 
 \begin{prop} Se tienen las relaciones
+$$
+\theta(x)=\log \prod_{p\leq x} p \qquad\psi(x)=\sum_{n=1}^\infty \theta(x^{1/n})$$
 \end{prop}
-
+\begin{dem}
+La primera igualdad es trivial. Para la segunda, tengamos en cuenta que si $p^k \leq x$ entonces $p\leq x^{1/k}$ y recíprocamente. Por tanto, para cada $k$ fijo
+$$
+\sum_{p^k≤x} \log p = \sum_{p≤x^{1/k}} \log p = \theta(x^{1/n}) \qquad 
+ $$
+\end{dem}
+\begin{defi}
+Definimos la función de von Mangoldt como
+$$
+\Lambda(n)=
+\begin{cases}
+\log p & \text{si $n=p^k$ para algún primo $p>1$}\\
+0 & \text{c.c.}
+\end{cases}
+$$
+\end{defi}
+\begin{prop}
+La función de von Mangoldt verifica las siguientes propiedades
+\begin{itemize}
+\item No es multiplicativa ni aditiva.
+\item Se tienen las igualdades
+\begin{gather*}
+\log(n) = \sum_{d\mid n} \Lambda(d) = (\Lambda \ast 1)(n) \qquad \Lambda(n) = \sum_{d\mid n} \mu(n/d)\log d \\
+\zeta(s)' = - \sum_{n=1}^\infty \frac{\log n}{n^s} = -\left(\sum_{n=1}^\infty \frac{1}{n^s} \right)\left(\sum_{n=1}^\infty \frac{\Lambda(n)}{n^s} \right) = - \zeta(s)\sum_{n=1}^\infty \frac{\Lambda(n)}{n^s} \\
+\frac{\zeta(s)'}{\zeta(s)}= -\sum_{n=1}^\infty \frac{\Lambda(n)}{n^s}
+\end{gather*}
+\end{itemize}
+\end{prop}
 \section{Teoremas de Chebyshev}
 \begin{teorema}
 Para $x ≥ 1$ se tiene:
 \[ \prod_{p≤x} p ≤ 4^{x-1} \]
 \end{teorema}
 \begin{dem}
-\url{https://amakelov.github.io/2015/12/23/A-neat-bound-on-the-primorial-due-to-Erdos.html}
-Podemos considerar que $x$ es natural. Vamos a distinguir los casos $x$ par e impar. Supongamos primero el caso impar $x=2n+1$. Lo demostraremos por inducción. Después de comprobar unos casos base, supongamos que tengamos que la hipótesis para $2n-1$. Como $n+1≤2n$:
-\[ \prod_{p≤2n+1} p = \prod_{p≤n+1} p \prod_{n+1<p≤2n+1} p ≤ 4^n \prod_{n+1<p≤2n+1} p ≤ 4^n \cdot \binom{2n+1}{n+1}≤ 4^n\cdot 2^{2n}=4^{2n}=4^x \]
-Como $\prod_{n+1<p≤2n+1} p $
+Si estuviera probado para los naturales, entonces tomando $n=\suelo{x}\leq x < n+1$ tendríamos
+$$
+ \prod_{p≤x} p =  \prod_{p≤n} p \leq 4^{n-1}\leq 4^{x-1}
+ $$
+Vamos a probarlo por inducción el resultado para $\N$. Los casos $n=1,2,3,4$ son fácilmente comprobables. Vamos a distinguir los casos $x$ par e impar. Supongamos primero el caso impar $x=2n+1$. Supongamos que tengamos que la hipótesis para $2n$. Como $n+1≤2n$:
+\[ \prod_{p≤2n+1} p = \prod_{p≤n+1} p \prod_{n+1<p≤2n+1} p ≤ 4^n \prod_{n+1<p≤2n+1} p \overset{(1)}{≤} 4^n \binom{2n+1}{n+1}\overset{(2)}{≤} 4^n 2^{2n}=4^{2n}=4^{x-1} \]
+La desigualdad $(1)$ viene dada puesto que todo primo $n+1<p\leq 2n+1$ está en el numerador de la binomial, pero no en el denominador, por lo que el producto de todos divide al valor de la binomial. Para ver $(2)$ 
+$$
+2^{2n+1} = \sum_{k=0}^{2n+1}\binom{2n+1}{k} \geq \binom{2n+1}{n}+\binom{2n+1}{n+1} = 2\binom{2n+1}{n+1} 
+$$
 
 Para $x=2n$:
-\[ \prod_{p≤2n} p = \prod_{p≤n} p \prod {n<p≤2n}p ≤ 4^{n-1}\]
+\[ \prod_{p≤2n} p = \prod_{p≤n} p \prod_{n<p≤2n}p ≤ 4^{n-1}\binom{2n}{n} \leq 4^{n-1}4^n = 4^{2n-1}= 4^{x-1} \]
 \end{dem}
 
 \begin{teorema}[Legendre]
 Si $n$ es un número natural y $p$ un primo, el exponente $ν_p(n!)$ de $p$ en $n!$ es igual a
-\[ ν_p(n!) = \lfloor \frac{n}{p}\rfloor + \lfloor \frac{n}{p^2}\rfloor + \lfloor \frac{n}{p^3}\rfloor + \dots \]
+\[ ν_p(n!) = \suelo{ \frac{n}{p}} + \suelo{ \frac{n}{p^2}} + \suelo{ \frac{n}{p^3}} + \dots \]
 \end{teorema}
-
+\begin{dem}
+En primer lugar, notemos que la suma es finita, pues $\exists k$ tal que $p^k>n$, luego $\forall s \geq k$ $\suelo{n/p^s}=0$. El número de múltiplos de $p^k$ en $\{1,2,\dotsc,n\}$ es $\suelo{n/p^k}$ y cada uno de ellos aporta un factor $p$ a $n!$.
+\end{dem}
 \begin{coro}
-Hay $\min(v_2(n!),v_5(5!))$ ceros al final de la representación decimal de $n!$.
+Hay $\min(\nu_2(n!),\nu_5(n!))$ ceros al final de la representación decimal de $n!$.
 \end{coro}
 
 \begin{lemma}
 Sea $p$ un primo. Si $p^a$ es la mayor potencia de $p$ que divide a $\binom{n}{k}$, entonces $p^a ≤ n$.
 \end{lemma}
 \begin{dem}
-Podemos extender $v_p(a/b) = v_p(a)-v_p(b)$. Entonces:
-\[ v_p\binom{n}{k} = v_p(n!) - v_p(k!) - v_p((n-k)!) = \sum_{a=1} \left(\lfloor \frac{n}{p^a} \rfloor - \lfloor \frac{k}{p^a}\rfloor - \lfloor \frac{n-k}{p^a} \rfloor\right) \]
-Como se tiene que: $\lfloor x+y \rfloor -\lfloor x\rfloor - \lfloor y \rfloor ≤ 1$. Entonces $ν_p\binom{n}{k}$ es un entero no negativo. Además, de que $n ≥ k$, luego los términos son ceros una vez que $p^a>n$. Sea $b$ el entero que cumple que $p^b ≤ n < p^{b+1}$, entonces:
-\[ a ≤ v_p\binom{n}{k} ≤ b \]
-Entonces $p^a≤p^b≤n$.
+Podemos extender $\nu_p(a/b) = \nu_p(a)-\nu_p(b)$. Entonces:
+\[ \nu_p\binom{n}{k} = \nu_p(n!) - \nu_p(k!) - \nu_p((n-k)!) = \sum_{a=1} \left(\suelo{ \frac{n}{p^a} } - \suelo{ \frac{k}{p^a}} - \suelo{ \frac{n-k}{p^a} }\right) \]
+Como se tiene que: $0\leq \suelo{ x+y } -\suelo{ x} - \suelo{ y } ≤ 1$. Entonces $ν_p\binom{n}{k}$ es un entero no negativo. Sea $b$ el entero que verifica que $\nu_p\binom{n}{k}\leq b$, $p^b\leq n <p^{b+1}$. Entonces, como $a = \nu_p\binom{n}{k}\leq b$, $a\leq b$, $p^a \leq p^b \leq n$.
 \end{dem}
 
 \begin{coro}
 Cada coeficiente binomial $\binom{n}{k} ≤ n^{π(n)}$.
 \end{coro}
 \begin{dem}
-\[ \binom{n}{k} = \prod_{p≤n} p^{v_p\binom{n}{k}} ≤ \prod_{p≤n} n = n^{π(n)} \]
+\[ \binom{n}{k} = \prod_{p≤n} p^{\nu_p\binom{n}{k}} ≤ \prod_{p≤n} n = n^{π(n)} \]
 \end{dem}
-
-No sé a cuento de qué pero voy a copiar lo que viene en la pizarra.
-
-Si $x\geq 1$ entonces $\sum_{p\leq x} \log p \leq (x-1) \log 4$. Si definimos $a_n$ como la indicatriz de los primos, entonces 
+\begin{teorema}\label{th:1.2.6}[Chebyshev] Para $x\geq 3$ se tiene
+$$
+\frac{1}{2}\frac{x}{\log x}\leq \pi(x)\leq (1+\log 4)\frac{x}{\log x}
+$$
+\end{teorema}
+\begin{dem}
+Si $x\geq 1$ entonces 
+$$\prod_{p\leq x}p\leq 4^{x-1} \Rightarrow \sum_{p\leq x} \log p \leq (x-1) \log 4$$
+Si definimos $a_n=I_{\mathbb{P}}(n)$ la función indicatriz de los primos, entonces aplicando la Fórmula de Sumación de Abel
 $$\sum_{p\leq x} \log p = \sum_{n\leq x}a_n \log n = \pi(x)\log(x)-\int_1^x \pi(t)\frac{dt}{t}$$
 $$\pi(x)\log(x) \leq \int_1^x \pi(t)\frac{dt}{t} + (x-1)\log 4
 \leq \int_1^x t\frac{dt}{t} + (x-1)\log4 = (x-1)(\log4 +1)$$
 $$ \pi(x)\leq (\log 4 +1) \frac{x-1}{\log x}\leq (1+\log 4)\frac{x}{\log x}$$
-Si $x\geq 3$, $n=\lfloor x \rfloor$, $n\leq x < n+1$. Entonces
-\begin{gather*}
-2^x < 2^{n+1} = \sum_{k=0}^{n+1}\binom{n+1}{k} = 2+ \sum_{k=1}^n \binom{n+1}{k} \leq 2 + \sum_{k=1}^n 2n^{\pi(n)} \leq\\
-\leq 2+2n^{\pi(n)+1} \leq 4n^{\pi(n)+1}\leq 4x^{\pi(x)+1}
-\end{gather*}
-\begin{gather*}
-x \log 2 \leq 2\log 2 + (\pi(x)+1)\log x\\
- \pi(x) \geq \log 2 \frac{x}{\log x} -1 -\frac{\log 4}{\log x} = \frac{1}{2}\frac{x}{\log x} +  (\log 2 - \frac{1}{2})\frac{x}{\log x} -1 - \frac{\log4}{\log x} \geq \frac{x}{2\log{x}}
-	\end{gather*}
-	
-Esto ya es otro resultado. Vamos a ver que $p_n \sim n \log n$. Si aplicamos la desigualdad anterior $x=p_n$ entonces:
+Si $x\geq 3$, $n=\suelo{ x }$, $n\leq x < n+1$. Entonces
+\begin{align*}
+2^x &< 2^{n+1} = \sum_{k=0}^{n+1}\binom{n+1}{k} = \binom{n+1}{0}+\binom{n+1}{n+1} + \sum_{k=1}^n \binom{n+1}{k}\\
+&= 2 +  \sum_{k=1}^n \left(\binom{n}{k-1}+\binom{n}{k}\right) \leq 2 + \sum_{k=1}^n 2n^{\pi(n)} = 2+2n^{\pi(n)+1} \\
+&\leq 4n^{\pi(n)+1}\leq 4x^{\pi(x)+1}
+\end{align*}
+Deducimos por tanto que $x \log 2\leq \log 4 + (\pi(x)+1)\log x$. Despejando	
+\begin{align*}
+ \pi(x) \geq \log 2 \frac{x}{\log x} -\frac{\log 4}{\log x}-1 = \frac{1}{2}\frac{x}{\log x} +  \left(\log 2 - \frac{1}{2}\right)\frac{x}{\log x} - \frac{\log4}{\log x}-1 \geq \frac{x}{2\log{x}}
+\end{align*}
+Para la última desiguadad, comprobamos los casos $3\leq n \leq 8$ (pues $\pi$ es una función aritmética y $\dfrac{x}{2\log{x}}$ es creciente en ese intervalo) y utilizamos que si $x\geq 8$ entonces
 $$
-A\frac{p_n}{\log p_n} \leq \pi(p_n) = n \Rightarrow p_n \leq \frac{1}{A}n\log p_n 
+ \left(\log 2 - \frac{1}{2}\right)\frac{x}{\log x} - \frac{\log4}{\log x}-1 > 0
 $$
-Tomando logaritmos es fácil ver que para algún $\delta >0$
+\end{dem}
+\begin{coro}
+Existen constantes $0<c<C<+∞$ tal que
+\[{c}\,{n} \log n < p_n < C n \log n \]
+\end{coro}
+\begin{dem}
+Vamos a ver que $p_n \sim n \log n$. Si aplicamos la desigualdad anterior $x=p_n$ entonces:
 $$
-\log n \geq \log p_n - \log \log p_n - \log A \geq (1-\delta) \log p_n$$ 
+A\frac{p_n}{\log p_n} \leq \pi(p_n) = n \qquad  p_n \leq \frac{1}{A}n\log p_n \qquad \log n \geq \log p_n - \log \log p_n - \log A
 $$
-p_n \leq \frac{1}{A}\frac{1}{1-\delta}n \log n$$
-Por otra parte, $n = \pi(p_n) \leq B \dfrac{p_n}{\log p_n}$.
-$$p_n \geq \frac{1}{B}n\log p_n \geq \frac{1}{B}n \log n$$
-
-\begin{dem}[Teorema de Martens]
-Sabemos que $n! = \prod_{p\leq n} p^{\nu_p(n!)}$. Si $x\geq 1$ y $\lfloor x \rfloor = n$
-\begin{gather*}
-\log n! = \sum_{k\leq x} \log k = \sum_{k \leq x} 1 \cdot \log k = \lfloor x \rfloor\log x - \int_1^x \lfloor t \rfloor \frac{dt}{t} = \\ =
-x\log x + O(\log x) - (x-1) + \int_1^x\frac{\{t\}}{t}dt =  x\log x - x  + O(\log x)
-\end{gather*}
-Ya que 
+Dado que
 $$
- \int_1^x\frac{\{t\}}{t}dt  \leq  \int_1^x\frac{1}{t} = \log xdt 
+\lim_{x\to\infty}\frac{\log x-\log\log x-\log A}{\log x}= 1
 $$
+Podemos tomar $\delta >0$ tal que
+$$
+(1-\delta)\log p_n \leq \log n \qquad p_n \leq \frac{1}{A}n\log p_n\leq \frac{1}{A}\frac{1}{1-\delta}n \log n\equiv C n \log n$$
+Por otra parte, aplicando la otra desigualdad a $x=p_n$, entonces
+$$n=\pi(p_n) \leq B \dfrac{p_n}{\log p_n} \qquad p_n \geq \frac{1}{B}n\log p_n \geq \frac{1}{B}n \log n\equiv c\,n\log n$$
 \end{dem}
 
 \section{Teoremas de Mertens}
+\begin{teorema} Para todo $x\geq 1$ tenemos que
+\[ \sum_{k≤x} {\log k} = x\log x -x+ \mathcal{O}(\log x) \]
+\end{teorema}
+
+\begin{dem}
+Si $x\geq 1$ y $\suelo{ x } = n$, aplicando la Fórmula de Sumación de Abel
+\begin{align*}
+\sum_{k\leq x} \log k &= \sum_{k \leq x} 1 \cdot \log k = \suelo{ x }\log x - \int_1^x \suelo{ t } \frac{dt}{t} = (x-\deci{x})\log x - \int_1^x (t-\deci{t})\frac{dt}{t}\\
+& =
+x\log x + O(\log x) - (x-1) + \int_1^x\frac{\{t\}}{t}dt =  x\log x - x  + O(\log x)
+\end{align*}
+Ya que 
+$$
+ \int_1^x\frac{\{t\}}{t}dt  \leq  \int_1^x\frac{dt}{t} = \log x 
+$$
+
+\end{dem}
+\begin{lemma}
+Sea $x\in\R$ y $n\in\N$, entonces
+$$
+\suelo{\frac{x}{n}} = \suelo{\frac{\suelo{x}}{n}}
+$$
+\end{lemma}
+\begin{dem}
+Sea $a=\suelo{x}\leq x < a+1$. Si $a=x$ no hay nada que probar. Tenemos que $\dfrac{a}{n}<\dfrac{x}{n}<\dfrac{a+1}{n}$. Por reducción al absurdo, si la tesis es falsa, $\dfrac{a}{n}<\suelo{\dfrac{x}{n}}\leq \dfrac{x}{n}$. Entonces $a<n\suelo{\dfrac{x}{n}}\leq x$. Pero $a=\suelo{x}$, por lo que no puede haber un entero que cumpla esas desigualdades.
+\end{dem}
 \begin{teorema}[Primer teorema de Mertens]
 \[ \sum_{p≤x} \frac{\log p}{p} = \log x + \mathcal{O}(1) \]
 \end{teorema}
-Demostración en Tenenbaum p.14.
-
+\begin{dem}
+Sea $n=\suelo{x}$. Tenemos
+$$
+\sum_{k\leq x} \log k = \sum_{p\leq n}\nu_p(n!)\log p = \sum_{p\leq n}\left(\sum_{k=1}\suelo{\frac{n}{p^k}}\right)\log p$$
+Separamos la suma para $k=1$ y $k=2$, pero antes veamos que este último está acotado
+\begin{align*}
+\sum_{p\leq x}\left(\sum_{k=2}\suelo{\frac{x}{p^k}}\right)\log p &\leq \sum_{p\leq x}\left(\sum_{k=2}\frac{x}{p^k}\right)\log p = x\sum_{p\leq n}\log p\left(\sum_{k=2}\frac{1}{p^k}\right)\\
+&= x\sum_{p\leq x} \frac{\log p }{p(p-1)} \leq x\sum_{n=2} \frac{\log n}{n(n-1)}\leq x \sum_{n=2}\frac{1}{n^{3/2}}<\infty
+\end{align*}
+Por tanto,
+$$
+\sum_{p\leq x}\left(\sum_{k=1}\suelo{\frac{x}{p^k}}\right)\log p = \sum_{p\leq x}\suelo{\frac{x}{p}}\log p+O(x)
+$$
+Analicemos el término que resta.
+$$
+\sum_{p\leq x}\deci{\frac{x}{p}}\log p \leq \sum_{p\leq x}\log x = \pi(x)\log x = O(x)
+$$
+\begin{align*}
+\sum_{p\leq x}\suelo{\frac{x}{p}}\log p = \sum_{p\leq x}\left(\frac{x}{p}-\deci{\frac{x}{p}}\right)\log p = \sum_{p\leq x}{\frac{x}{p}}\log p + O(x) 
+\end{align*}
+$$
+\sum_{p\leq x}\left(\sum_{k=1}\suelo{\frac{x}{p^k}}\right)\log p = x\sum_{p\leq x}\frac{1}{p}\log p+O(x)
+$$
+\begin{gather*}
+\sum_{k\leq x}\log k = x\log x -x+ \mathcal{O}(\log x)  = x\sum_{p\leq x}\frac{1}{p}\log p+O(x)\\
+ \log x -1+ \orden{\frac{\log x}{x}}  = \sum_{p\leq x}\frac{1}{p}\log p+O(1)\\
+ \sum_{p\leq x}\frac{\log p}{p} = \log x + \orden{1}
+\end{gather*}
+\end{dem}
 \begin{teorema}[Mertens]
 Existe una constante $C$ tal que
 \[ \sum_{p≤x} \frac{1}{p} = \log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right) \]
 \end{teorema}
-Demostración en Tenenbaum p.152.
-
+\begin{dem}
+Tenemos
+$$
+\sum_{p≤x} \frac{1}{p} = \sum_{p≤x} \frac{\log p}{p}\frac{1}{\log p} = \sum_{n≤x} a_n f(n)
+$$
+Con $f(n)=\log^{-1}(n)$ y $a_n = I_{\mathbb{P}}(n)\dfrac{\log n}{n}$. Notemos que $f(1)a_1$ está bien definido. Aplicando la Fórmula de Sumación de Abel teniendo en cuenta que $S(x)=\sum_{n\leq x}a_n = \sum_{p\leq x}\dfrac{\log p}{p}$ y que, por tanto $\int_1^2S(t)f'(t)dt = 0$.
+\begin{align*}
+\sum_{p\leq x}\frac{1}{p}&= \sum_{p\leq x}\dfrac{\log}{p}f(x)-\int_2^x S(t)f'(t)dt = \frac{S(x)}{\log x} +\int_2^x \frac{S(t)}{t\log^2t}dt \\
+&=\frac{\log x + \mathcal{O}(1)}{\log x} +\int_2^x \frac{\log t + \mathcal{O}(1)}{t\log^2t}dt = 1 + \orden{\frac{1}{\log x}}+\int_2^x\frac{dt}{t\log t}+\int_2^x\frac{O(1)}{t\log^2 t}dt\\
+&=\log\log x - \log\log 2 +1 + \int_2^x\frac{U(t)}{t\log^2 t}dt+ \orden{\frac{1}{\log x}}
+\end{align*}
+Estudiemos 
+\begin{align*}
+\abs{\int_2^x\frac{U(t)}{t\log^2 t}dt}&\leq \int_2^x\frac{\abs{U(t)}}{t\log^2 t}dt \leq \int_2^x\frac{K}{t\log^2 t}dt = K\left(\frac{1}{\log 2}-\frac{1}{\log x} \right)\\
+\abs{\int_x^\infty \frac{U(t)}{t\log^2 t}dt}&\leq K\int_x^{\infty}\frac{dt}{t\log^2t} = K\frac{1}{\log x}
+\end{align*}
+Por tanto, nos queda
+\begin{align*}
+\sum_{p\leq x}\frac{1}{p} &=  \log\log x - \log\log 2 +1 + \int_2^x\frac{U(t)}{t\log^2 t}dt+ \orden{\frac{1}{\log x}}\\
+&=\log\log x - \log\log 2 +1 + \int_2^\infty\frac{U(t)}{t\log^2 t}dt- \int_x^\infty\frac{U(t)}{t\log^2 t}dt+\orden{\frac{1}{\log x}}\\
+&=\log\log x - \log\log 2 +1 + K' + \orden{\frac{1}{\log x}}\\
+&=\log\log x +C+ \orden{\frac{1}{\log x}}
+\end{align*}
+\end{dem}
 \begin{teorema}[Segundo teorema de Mertens]
 \[ \prod_{p≤x} \left(1-\frac{1}{p}\right)^{-1} = e^γ\log x + \mathcal{O}(1) \]
 donde $γ$ denota la constante de Euler.
 \end{teorema}
-Ver Tenenbaum p.17 y Mendes France p.21.
+\begin{dem}
+Si $|x|<1$ entonces
+$$
+\log(1-x)^{-1}=\sum_{k=1}^\infty \frac{x^k}{k}
+$$
+Tomando $x=1/p$ tenemos
+\begin{align*}
+\log \prod_{p≤x} \left(1-\frac{1}{p}\right)^{-1} &= \sum_{p\leq x}\log \left(1-\frac{1}{p}\right)^{-1} = \sum_{p\leq x}\sum_{k=1}^\infty \frac{1}{kp^k}\\
+&=\sum_{p\leq x}\frac{1}{p}+\sum_{p\leq x}\sum_{k=2}^\infty \frac{1}{kp^k} \\
+&=\sum_{p\leq x}\frac{1}{p}+\sum_{p}\sum_{k=2}^\infty \frac{1}{kp^k}-\sum_{p\geq x}\sum_{k=2}^\infty \frac{1}{kp^k} 
+\end{align*}
+Analicemos los términos
+\begin{align*}
+\abs{\sum_{p}\sum_{k=2}^\infty \frac{1}{kp^k}}\leq \sum_{p}\sum_{k=2}^\infty \frac{1}{p^k} = \sum_{p}\frac{1}{p(p-1)}\leq \sum_{n=1}^\infty \frac{1}{n(n-1)} = 1
+\end{align*}
+\begin{align*}
+\abs{\sum_{p>x}\sum_{k=2}^\infty \frac{1}{kp^k}}\leq \sum_{p>x}\sum_{k=2}^\infty \frac{1}{p^k} = \sum_{p>x}\frac{1}{p(p-1)} \leq \sum_{n>x}^\infty \frac{1}{n(n-1)} \leq \frac{2}{x}
+\end{align*}
+Por tanto la primera serie converge a una constante $C'$ y la segunda tiene es $\orden{x^{-1}}$. Como $\sum_{p≤x} \frac{1}{p} = \log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right)$ tenemos entonces
+$$
+\log \prod_{p≤x} \left(1-\frac{1}{p}\right)^{-1} = \log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right) + C' + \orden{\frac{1}{x}} = \log \log{x} + E + \mathcal{O}\left(\frac{1}{\log x}\right) 
+$$
+Por tanto, exponenciando
+$$
+\prod_{p≤x} \left(1-\frac{1}{p}\right)^{-1} = \log{x} e^E e^{\mathcal{O}\left(\frac{1}{\log x}\right) }
+$$
+Estudiemos el error. Sea $U(t)$ la función del error, $|U(t)|\leq \dfrac{C}{\log x}$ $\forall x\geq x_0$. Tenemos que $\forall |x|<1/2$
+\begin{align*}
+e^x = \sum_{k=0}^\infty \frac{x^k}{k!} \qquad |e^x-1| = \abs{\sum_{k=1}^\infty \frac{x^k}{k!}} \leq |x|\sum_{k=1}^\infty \frac{|x|^{k-1}}{k!} \leq C'x
+\end{align*}
+Además $|U(t)|\leq\dfrac{C}{\log 2}$ $\forall x \geq x_1$. Sea $x_2 = \max{x_0,x_1}$, si $x\geq x_2$ 
+$$
+V(x)=|e^{U(x)}-1|\leq C'|U(x)|\leq \frac{CC'}{\log x} \Rightarrow V(x) = \orden{\frac{1}{\log x}}
+$$
+Luego
+\begin{align*}
+\prod_{p≤x} \left(1-\frac{1}{p}\right)^{-1} &= \log{x} e^E e^{\mathcal{O}\left(\frac{1}{\log x}\right) } = \log x e^E \left(1+V(x)\right)\\
+ &= \log x e^E + e^E \log x V(x) = \log x e^E + e^E O(1)\\
+ &= \log x e^E + O(1)
+\end{align*}
+
+\end{dem}
 
 Los teoremas anteriores tienen forma más precisa:
 \[ \sum_{p≤x} \frac{\log p}{p} = \log x + E + \mathcal{O}(e^{-a\sqrt{\log x}}) \]
@@ -130,42 +287,122 @@ El siguiente teorema permite simplifcar la prueba del teorema de los números pr
 
 \begin{teorema}[Chebyshev]
 Existen constantes $A$ y $B$ tales que para todo $α \in (0,1)$
-\[ αAx ≤ απ(x)\log x ≤ θ(x) ≤ ψ(x) ≤ π(x)\log x ≤ Bx \]
+\[ αAx \overset{(1)}{\leq} απ(x)\log x \overset{(2)}{\leq}  θ(x) \overset{(3)}{\leq}  ψ(x) \overset{(4)}{\leq}  π(x)\log x \overset{(5)}{\leq}  Bx \]
 para todo $x ≥ x_0(α)$.
 \end{teorema}
-
+\begin{dem}
+La primera y la quinta desigualdad están probadas en el Teorema \ref{th:1.2.6}. La desigualdad central es trivial, pues
+$$
+\theta(x) = \sum_{p\leq x}\log p \leq \sum_{p^k\leq x} \log p = \psi(x)
+$$
+Probemos la cuarta desigualdad
+$$
+\psi(x)=\sum_{p^k\leq x} \log p = \sum_{p\leq x} \log p \suelo{\frac{\log x}{\log p}} \leq \sum_{p\leq x} \log x = \pi(x)\log x
+$$
+Finalmente, probemos la segunda desigualdad.
+\begin{align*}
+\theta(x)&=\sum_{p\leq x}\log p \geq \sum_{x^{\alpha'}<p\leq x}\log p \geq \alpha'\sum_{x^{\alpha'}<p\leq x}\log x \\
+&= \alpha'\log x (\pi(x)-\pi(x^{\alpha'}))\geq \alpha'\pi(x)\log x \left[1-\frac{\pi(x^{\alpha'})}{\pi(x)}\right]
+\end{align*}
+$$
+\abs{\frac{\pi(x^{\alpha'})}{\pi(x)}}\leq \frac{B\frac{x^{\alpha'}}{\log x^{\alpha'}}}{A\frac{x}{\log x}} = \frac{B}{A\alpha'}\frac{1}{x^{1-\alpha'}}<\varepsilon \qquad \forall x\geq x_0(\varepsilon) 
+$$
+Por tanto
+$$
+\alpha'\pi(x)\log x \left[1-\frac{\pi(x^{\alpha'})}{\pi(x)}\right] \geq \alpha\pi(x)\log x \qquad 0<\alpha<\alpha'<1
+$$
+\end{dem}
 \begin{teorema}[Chebyshev]
 \[ \liminf_{x\to∞} \frac{θ(x)}{x} = \liminf_{x\to∞} \frac{ψ(x)}{x} = \liminf_{x\to∞} \frac{π(x)\log x}{x} ≥ \log 2 \]
 y
 \[ \limsup_{x\to∞} \frac{θ(x)}{x} = \limsup_{x\to∞} \frac{ψ(x)}{x} = \limsup_{x\to∞} \frac{π(x)\log x}{x} ≤ \log 4 \]
 \end{teorema}
-Demostración en Nathanson p.271.
-
+\begin{dem}
+Primero tenemos que
+$$
+\prod_{p\leq x}p\leq 4^{x-1} \qquad \sum_{p\leq x}\log p\leq (x-1)\log 4 <  x \log 4 \qquad \frac{\theta(x)}{x} \leq \log 4 \qquad \limsup_{x\to\infty} \frac{\theta(x)}{x} \leq \log 4
+$$
+Consideremos 
+$$
+\binom{2n}{n} =  \frac{(2n)!}{n!^2} = \prod_{p\leq 2n} p^{\nu_p(2n!)-\nu_p(n!^2)} = \prod_{p\leq 2n} p^{\nu_p(2n!)-2\nu_p(n!)}
+$$
+Ahora bien, $\forall x,y \in \R$ $\suelo{x+y}-\suelo{x}-\suelo{y}=0,1$. Si $x=y=t$ entonces $\suelo{2t}-2\suelo{t}=1,0$. Luego tenemos que $\exists b$ tal que
+$$
+\nu_p(2n!)-2\nu_p(n!) = \sum_{k=1}^\infty \suelo{\frac{2n}{p^k}}-2\suelo{\frac{n}{p^k}}  \leq b
+$$
+Ahora bien 
+$$
+2^{2n}=\sum_{k=0}^{2n} \binom{2n}{k} = 2 + \sum_{k=1}^{2n-1} \binom{2n}{k} \leq \sum_{k=1}^{2n-1} \binom{2n}{n} = (2n-1)\binom{2n}{n} \leq 2n\binom{2n}{n} 
+$$
+$$
+ \frac{2^{2n}}{2n} \leq \binom{2n}{n} =  \prod_{p\leq 2n} p^{\nu_p(2n!)-2\nu_p(n!)} \leq \prod_{p\leq 2n} p^b $$
+ $$
+  2n\log 2 -\log 2n \leq \sum_{p\leq 2n}\log p^b \leq \sum_{p^k\leq 2n}\log p= \psi(2n)
+$$
+Tomando $n=\suelo{x/2}\geq 2$. Entonces $2n\leq x < 2n+2$.
+\begin{align*}
+\psi(x)&\geq \psi(2n) \geq 2n\log 2-\log 2n \geq (x-2)\log 2-\log (x-2)\\
+&\geq (x-2)\log 2 - \log x
+\end{align*}
+Por tanto
+$$
+\liminf_{x\to\infty} \frac{\psi(x)}{x}\geq \log 2
+$$
+Sea ahora $0<\delta < 1$. Tenemos
+\begin{align*}
+\theta(x)&=\sum_{p\leq x}\log p\geq\sum_{x^{1-\delta}\leq p\leq x} \log p \geq \sum_{x^{1-\delta}\leq p\leq x}\log x^{1-\delta}  = (1-\delta)\log x(\pi(x)-\pi(x^{1-\delta}))\\
+&=(1-\delta)\log x\pi(x)-(1-\delta)\log x \pi(x^{1-\delta}) \geq (1-\delta)\log x \pi(x)- x^{1-\delta}\log x
+\end{align*}
+De donde deducimos que
+$$
+\frac{\theta(x)}{x} \geq \frac{(1-\delta)\log x \pi(x)}{x}-\frac{\log x}{x^{\delta}}
+$$
+Tomando $\liminf_{x\to\infty}$ y después $\lim_{\delta \to 0}$ obtenemos
+$$
+\liminf_{x\to\infty}\frac{\theta(x)}{x}\geq \liminf_{x\to\infty}\frac{\pi(x)\log x}{x}
+$$
+Análogamente podríamos ver que
+$$
+\limsup_{x\to\infty}\frac{\theta(x)}{x}\geq \limsup_{x\to\infty}\frac{\pi(x)\log x}{x}
+$$
+A partir de la desigualdad
+$$
+\theta(x)\leq \psi(x) \leq \pi(x)\log x 
+$$
+Obtenemos las siguientes cadenas desigualdades de donde se deduce el resultado utilizando los razonamiento anteriores.
+\begin{gather*}
+\liminf_{x\to\infty} \frac{\theta(x)}{x} \leq \liminf_{x\to\infty} \frac{\psi(x)}{x} \leq \liminf_{x\to\infty}\frac{\pi(x)\log x}{x}\\
+\limsup_{x\to\infty} \frac{\theta(x)}{x} \leq \limsup_{x\to\infty} \frac{\psi(x)}{x} \leq \limsup_{x\to\infty}\frac{\pi(x)\log x}{x}
+\end{gather*}
+\end{dem}
+\newpage
 \section{Método de la criba}
 El origen del método es la criba de Eratóstenes. La criba de Eratóstenes conduce a la siguiente fórmula.
 
 \begin{teorema}[Fórmula de Legendre]
 Para todo $x > 1$ se tiene
-\[ π(x) - π(\sqrt{x}) + 1 = \sum_{n|P_x}μ(n)\lfloor\frac{x}{n}\rfloor \]
+\[ π(x) - π(\sqrt{x}) + 1 = \sum_{n\leq P_x}μ(n)\suelo{\frac{x}{n}} \]
 donde $P_x$ denota el producto de los números primos menores o iguales a $x$.
 \end{teorema}
 
 \begin{dem}
-Sea $X=\{n≤x\}$. Para $p≤\sqrt{x}$ primo, definimos $A_p=\{n \in X, p|n\}$.
-Tenemos que:
-Para un $n \in X$ compuesto, como $n≤x$ entonce consideramos el menor de los primos $p$ tal que $p|n$. Debe existir $m$ con $p\cdot m = n$. Como los primos que hay en $m$ son mayores o iguales que $p$: $p^2 ≤ p\cdot m = n ≤ x$, luego $p≤\sqrt{x}$. Entonces:
+Sean los conjuntos $X=\{n≤x\}$ y $A_p=\{n \in X, p\mid n\}$. 
+Para un $n \in X$ compuesto, como $n≤x$ entonce consideramos el menor de los primos $p$ tal que $p\leq n$. Debe existir $m$ con $p\cdot m = n$. Como los primos que hay en $m$ son mayores o iguales que $p$: $p^2 ≤ p\cdot m = n ≤ x$, luego $p≤\sqrt{x}$. Entonces:
+$$
+\bigcup_{p\leq x} A_p = \{n\leq x\mid \exists p \leq\sqrt{x} \text{ tal que }p \mid n\}
+$$
 \[ X \setminus \bigcup_{p≤\sqrt{x}} = \{1 \} \cup \{p : \sqrt{x} < p ≤ x\} \]
 Luego
 \[ \text{card}\left(X \setminus \bigcup_{p≤\sqrt{x}} A_p\right) = π(x) - π(\sqrt{x}) + 1 \]
-Aplicamos el método de inclusión-exclusion y observando que:
-\[ \text{card}\left(\bigcap_{j=1}^r A_{p_j}\right) =\text{card}(\{N≤x : n|N\}) = \lfloor \frac{x}{n} \rfloor\]
+Aplicamos el método de inclusión-exclusión, donde $J\subset \{p \leq \sqrt{x}\}$. :
+\[ \text{card}\left(\bigcap_{j=1}^r A_{p_j}\right) =\text{card}(\{N≤x : n\leq N\}) = \suelo{ \frac{x}{n} }\]
 donde $n = p_{j_1}\cdots p_{j_r}$, la demostración sigue sin dificultad.
 \qed
 \end{dem}
 
 Esta fórmula parece poco útil a primera vista. El gran mérito de Brun es dar con técnicas que permiten hacerla útil
 
-El problema con esta fórmula es que la diferencia $π(x)-π(\sqrt{x})$ se da en términos de una suma con demasiados sumandos, aun cuando estos sumandos se obtengan con error pequeñ al multiplicar por el número de términos se obtienen errores randes. El mérito de Brun es haber ideado un método de salvar esta dificultad.
+El problema con esta fórmula es que la diferencia $π(x)-π(\sqrt{x})$ se da en términos de una suma con demasiados sumandos, aun cuando estos sumandos se obtengan con error pequeño al multiplicar por el número de términos se obtienen errores grandes. El mérito de Brun es haber ideado un método de salvar esta dificultad.
 
 Veremos como funciona la idea de Brun, estudiando su aplicación a la cuenta de los primos gemelos. En primer lugar introducimos la función de cuenta de estos números
 \[ π_2(x) = \text{card}\{p : p \text{ y }p+2\text{ son primos y }p≤x\} \]
@@ -196,28 +433,73 @@ Para $x ≥ 2$
 \end{teorema}
 \begin{dem}
 \begin{align*}
-	\sum_{n≤x} ω(n) & = \sum_{n≤x}\sum_{p|n≤x} 1 = \sum_{p≤x} \lfloor\frac{x}{p}\rfloor = \sum_{p≤x} \frac{x}{p}- \sum_{p≤x} \left\{\frac{x}{p}\right\} \\
-	& = x \left(\log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right)\right) + \mathcal{O}\left(\frac{x}{\log x}\right)
+	\sum_{n≤x} ω(n) & = \sum_{n≤x}\sum_{p\mid n} 1 =\sum_{p≤x}\sum_{p\mid n≤x} 1 = \sum_{p≤x} \suelo{\frac{x}{p}}\\
+	& = \sum_{p≤x} \frac{x}{p}- \sum_{p≤x} \left\{\frac{x}{p}\right\} \\
+	& = x \left(\log \log x + C + \mathcal{O}\left(\frac{1}{\log x}\right)\right) + \orden{\frac{x}{\log x}}
 \end{align*} 
+Usando que 
+$$
+\sum_{p\leq x}\deci{\frac{x}{p}} \leq \sum_{p\leq x} 1 = \pi(x) = \orden{\frac{x}{\log x}}
+$$
 \end{dem}
+\newpage
 \begin{teorema}
 Para $x ≥ 2$
 \[ \sum_{n≤x} ω(n)^2 = x(\log \log x)^2 + \mathcal{O}(x \log \log x) \]
 \end{teorema}
 \begin{dem}
-Sea $f_p(n) = 1$ si $p|n$ y $f_p(n)=0$ en caso contrario. Entonces:
+Sea $f_p(n) = 1$ si $p\mid n$ y $f_p(n)=0$ en caso contrario. Entonces:
 \begin{align*}
-	\sum_{n≤x} ω(n)^2 & = \sum_{n≤x}\left(\sum_{p|n≤x} 1\right)^2 = \sum_{n≤x}\left(\sum_{p≤x} f_p(n)\right)^2 = \sum_{n≤x} \left(\sum_{p≤x} f_p(n)^2\right) + 2 \sum_{n≤x} \sum_{p<q≤x} f_p(n)f_q(n)\\
-	& = \sum_{n≤x} ω(n) + 2 \sum_{p<q≤x} \sum_{n≤x} f_p(n)f_q(n)
-\end{align*} 
-Aquí dejó la demostración. Al día siguiente de clase, se continuó la demostración de una forma totalmente distinta:
+	\sum_{n≤x} ω(n)^2 & = \sum_{n≤x}\left(\sum_{p\mid n} 1\right)^2
+	 \sum_{n≤x}\left(\sum_{p≤x} f_p(n)\right)^2 = \sum_{n≤x} \left(\sum_{p≤x} f_p(n)^2\right) + 2 \sum_{n≤x} \sum_{p<q≤x} f_p(n)f_q(n)\\
+	 &= \sum_{n≤x} \left(\sum_{p≤x} f_p(n)\right) + 2 \sum_{n≤x} \sum_{p<q≤x} f_p(n)f_q(n) = \sum_{n≤x} ω(n) + 2 \sum_{p<q≤x} \sum_{n≤x} f_p(n)f_q(n)
+\end{align*}
+Analicemos los términos
+\begin{gather*}
+ 2 \sum_{p<q≤x} \sum_{n≤x} f_p(n)f_q(n)= 2 \sum_{p<q≤x}  \suelo{\frac{x}{pq}}\\
+ =2x \sum_{\underset{pq\leq x}{p<q\leq x}} \frac{1}{pq} -  2 \sum_{\underset{pq\leq x}{p<q\leq x}} \deci{\frac{x}{pq}} =2x \sum_{\underset{pq\leq x}{p<q\leq x}} \frac{1}{pq}+ O(x)
+\end{gather*}
+Además, si $T=2x \sum_{\underset{pq\leq x}{p<q\leq x}} \frac{1}{pq}$.  Entonces
+\begin{gather*}
+O(x)+x\left(\sum_{p\leq\sqrt{x}}\frac{1}{p}\right)^2 \leq T \leq x \left(\sum_{p\leq x}\frac{1}{p}\right)^2\\
+O(x)+x(\log\log\sqrt{x}+O(1))^2\leq T \leq x(\log\log x + O(1))^2
+\end{gather*}
+\begin{align*}
+O(x)+x(\log\log\sqrt{x}+O(1))^2 &=  O(x)+x(\log\log{x}+O(1))^2\\
+&=x(\log\log x)^2 + O(2x\log \log x) + O(x) + O(x)\\
+&=x(\log\log x)^2 + O(x\log \log x)
+\end{align*}
+Se tiene entonces
+\begin{gather*}
+x(\log\log x)^2 + O(x\log \log x)\leq T \leq x(\log\log x)^2 + O(x\log \log x)\\
+\abs{T-x(\log\log x)^2} = O(x\log \log x)\\
+T=x(\log\log x)^2 + O(x\log \log x)
+\end{gather*}
+Finalmente
+\begin{gather*}
+\sum_{n≤x} ω(n)^2 = x(\log\log x)^2 + O(x\log \log x) + O(x) + x\log \log x + Cx + \mathcal{O}\left(\frac{x}{\log x}\right)\\
+= x(\log\log x)^2 + O(x\log \log x)
+\end{gather*}
+\end{dem}
+\begin{prop}
+Para $x>1$ se tiene que 
+$$
+\sum_{n\leq x}(\omega(n)-\log\log x)^2 = O(x\log \log x)
+$$
+\end{prop}
+\begin{dem}
 \begin{align*}
 	\sum_{n≤x} (ω(n)-\log\log x)^2 & = \sum_{n≤x} ω(n)^2 - 2\log\log x \sum_{n≤x}ω(n) + (\log\log x)^2 \sum_{n≤x} 1\\
 	& = x(\log \log x)^2+ \mathcal{O}(x\log \log x) - 2\log\log x(x\log \log x + Cx + \mathcal{O}(x/\log x))\\
-	& + \lfloor x \rfloor (\log \log x)^2 + (x-\{x\})(\log \log x)^2 =\\
-	& = \mathcal{O}(x\log \log x) - 2Cx \log \log x + \mathcal{O}(x\frac{\log \log x}{\log x}) + \mathcal{O}((\log \log x)^2)
-	= \mathcal{O}(x\log \log x)
+	& + \suelo{ x } (\log \log x)^2 \\
+	& = -x(\log \log x)^2 -2Cx\log \log x + \suelo{x}(\log\log x)^2+\orden{x\log\log x}\\&+\orden{\frac{x\log\log x}{\log x}}
+	\\
+	&=((\suelo{x}-x)\log \log x -2Cx)\log\log x + \mathcal{O}(x\log \log x)\\
+	&= (O(1)\log\log x - 2Cx)\log\log x + \mathcal{O}(x\log \log x)\\
+	&= \mathcal{O}((\log \log x)^2) - 2Cx\log\log x+  \mathcal{O}(x\log \log x)\\
+	&= \mathcal{O}(x\log \log x)
 \end{align*}
+
 \qed
 \end{dem}
 \begin{coro}
@@ -226,17 +508,46 @@ Consideramos el conjunto $A(x)=\{n ≤ x : |ω(n)-\log \log x| > f(x)\sqrt{\log 
 \begin{dem}
 Se tiene que:
 \[ \text{card}(A(x))f(x)\log \log  ≤ \sum_{n≤x} (ω(n) - \log \log x)^2 ≤ Cx \log \log x \]
-Entoncs:
+Entonces:
 \[ \frac{\text{card}(A(x))}{x} ≤ C \frac{x \log \log x}{f(x) \log \log x} = C \frac{x}{f(x)} \to 0\]
 \qed
 \end{dem}
 El orden normal de $ω(n)$ es $\log \log n$ como se establece en el siguiente teorema.
+\newpage
 \begin{teorema}[Hardy-Ramanujan]
 Para cada $δ > 0$, el numero de enteros $n < x$ tales que
 \[ |ω(n) - \log \log n| ≥ (\log \log x)^{1/2+δ} \]
-es $ο(x)$.
+es $O(x)$.
 \end{teorema}
-La prueba puede verse en Nathanson p.238-287. También es buena la exposición de M. Kac p.71-74.
+\begin{dem}
+Sea $S=\{n\in \N\mid n\leq x\}$ y sea $T>0$. Entonces si
+$$
+T\leq \abs{ω(n) - \log \log x}  \Rightarrow 1 \leq \frac{(ω(n) - \log \log n)^2}{T^2}
+$$
+Además, sea $S_T = \{n\in S\mid \abs{ω(n) - \log \log x}\geq T\}$.
+\begin{align*}
+\card{S_T} &= \sum_{n\in S_T}1 \leq \sum_{n\in S_T} \frac{(ω(n) - \log \log n)^2}{T^2} \leq \frac{1}{T^2}\sum_{n\in S}(ω(n) - \log \log n)^2 \\
+&\leq \frac{1}{T^2}\sum_{n\leq x} (ω(n) - \log \log n)^2 =\frac{1}{T^2} O(x\log\log x)
+\end{align*}
+Sea $\delta>0$ y $T=(\log\log x)^{\delta + 1/2}-1$, entonces
+\begin{align*}
+T^2 = ((\log\log x)^{\delta + 1/2}-1)^2  > (\log\log x)^{2\delta + 1}-2(\log\log x)^{\delta + 1/2}\geq (\log \log x)^{1+\delta}
+\end{align*}
+La última desigualdad es cierta para $x$ suficientemente grande.
+
+\begin{align*}
+|S_T| < \frac{O(x\log \log x)}{T^2} < C\frac{x\log\log x}{(\log\log x)^{1+\delta}} = O(x)
+\end{align*}
+Sea $x>e^e$, si $x^{1/e}\leq n\leq x$ entonces
+$$
+0<\log\log x -1\leq \log\log n \leq \log \log x
+$$
+Si $\abs{\omega(n)-\log\log n} \geq (\log \log x)^{\delta + 1/2}$ entonces $\abs{\omega(n)-\log\log n} \geq T$, luego 
+$$
+U = \{n\in S\mid \abs{\omega(n)-\log\log n} \geq  (\log \log x)^{\delta + 1/2} \} \subset S_T
+$$
+Por tanto, $\card{U} = O(x)$.
+\end{dem}
 
 La misma afirmación vale si sustituimos $ω(n)$ por $Ω(n)$. El orden normal de $\log d(n)$ como consecuencia es $\log 2 \log \log n$.
 

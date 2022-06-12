@@ -1,85 +1,6 @@
-\documentclass[a4paper,10pt]{book}
-\usepackage[utf8x]{inputenc}
-\usepackage[spanish]{babel}
-\usepackage{amsmath, amssymb, amsthm, epsf, graphicx, amscd, amsfonts}
-\usepackage[colorlinks]{hyperref}
-\usepackage{xmpincl}
-\usepackage{fancyhdr}
-
-
-\pagestyle{fancy}
-\lhead[\thepage]{\rightmark}
-\rhead[\leftmark]{\thepage}
-\cfoot[]{}
-
-\addto\captionsspanish{ \renewcommand{\chaptername}{Tema} }
-
-\newtheorem{thm}{Teorema}[chapter]
-\newtheorem{cor}[thm]{Corolario}
-\newtheorem{lem}[thm]{Lema}
-\newtheorem{prop}[thm]{Proposición}
-\newtheorem{defn}[thm]{Definición}
-\newtheorem{rem}[thm]{Observaciones}
-\newtheorem{eje}[thm]{Ejemplos}
-
-\newtheorem{ejercicio}{Ejercicio}[chapter]
-
-\newcommand{\RR}{\mathbb R}
-\newcommand{\CC}{\mathbb C}
-\newcommand{\AAA}{\mathbb A}
-\newcommand{\PP}{\mathbb P}
-\newcommand{\Ank}{\AAA^n_k}
-\newcommand{\Pnk}{\PP^n_k}
-\newcommand{\Pmk}{\PP^m_k}
-\newcommand{\Amk}{\AAA^m_k}
-\newcommand{\calA}{{\mathcal A}}
-\newcommand{\II}{{\mathcal I}}
-\newcommand{\VV}{{\mathcal V}}
-\newcommand{\KK}{{\mathcal K}}
-\newcommand{\OO}{{\mathcal O}}
-\newcommand{\mm}{{\mathfrak m}}
-
-\title{Notas y ejercicios de Geometría Algebraica}
-\author{Departamento de Álgebra \\ Universidad de Sevilla}
-\date{Septiembre de 2017}
-
-
-
+\documentclass[ACGA.tex]{subfiles}
 
 \begin{document}
-
-\setcounter{chapter}{3}
-\maketitle
-
-\vspace*{\fill}
-
-\copyright{2011-17 Antonio Rojas León}
-
-\bigskip
-
-Este trabajo está publicado bajo licencia Creative Commons 3.0 España (Reconocimiento - No Comercial - Compartir bajo la misma licencia)
-
-\url{http://creativecommons.org/licenses/by-nc-sa/3.0/es/}
-
-\bigskip
-
-Usted es libre de:
-\begin{itemize}
- \item copiar, distribuir y comunicar públicamente la obra
-\item hacer obras derivadas
-\end{itemize}
-
-Bajo las condiciones siguientes:
-\begin{itemize}
- \item {\bf Reconocimiento:} Debe reconocer los créditos de la obra maestra especificada por el autor o el licenciador (pero no de una manera que sugiera que tiene su apoyo o apoyan el uso que hace de su obra).
- \item {\bf No comercial:} No puede utilizar esta obra para fines comerciales.
-\item {\bf Compartir bajo la misma licencia:} Si altera o transforma esta obra, o genera una obra derivada, sólo puede distribuir la obra generada bajo una licencia idéntica a ésta.
-\end{itemize}
-
-
-
-
-\newpage
 
 \chapter{Propiedades de los morfismos}
 
@@ -87,14 +8,14 @@ Bajo las condiciones siguientes:
 
 El producto de dos variedades afines tiene una estructura natural de variedad afín (ejercicio \ref{productoafin}). Queremos generalizarlo al producto de dos variedades cuasi-proyectivas. Es decir, identificar el producto cartesiano $X\times Y$ con una variedad cuasi-proyectiva de manera natural, de forma que localmente la construcción corresponda al producto natural de variedades afines.
 
-\begin{defn} La {\bf inmersión de Segre} es la aplicación $\varphi:\Pnk\times\Pmk\to\PP^{nm+n+m}_k$ dada por
+\begin{defi} La {\bf inmersión de Segre} es la aplicación $\varphi:\Pnk\times\Pmk\to\PP^{nm+n+m}_k$ dada por
  $$
 \varphi((a_0:\ldots:a_n),(b_0:\ldots:b_m))=
 $$
 $$
 =(a_0b_0:\ldots:a_0b_m:a_1b_0:\ldots:a_1b_m:\ldots:a_nb_0:\ldots:a_nb_m).
 $$
-\end{defn}
+\end{defi}
 
 La inmersión de Segre está bien definida, ya que si multiplicamos cada $a_i$ por una constante $\lambda\neq 0$ y cada $b_j$ por una constante $\mu\neq 0$, cada coordenada de la imagen quedará multiplicada por $\lambda\mu\neq 0$, y por tanto representa el mismo punto proyectivo.
 
@@ -110,34 +31,34 @@ Además, es inyectiva: si $\varphi((a_0:\ldots:a_n),(b_0:\ldots:b_m))=\phi((a'_0
 Veamos que, recíprocamente, todo punto de $Z$ está en la imagen de $\varphi$. Dado un punto $x=(x_{ij})\in Z$, existen al menos un $i_0$ y un $j_0$ tales que $x_{i_0j_0}\neq 0$. Pongamos $a_i=x_{ij_0}$ para todo $0\leq i\leq n$ y $b_j=x_{i_0j}/x_{i_0j_0}$ para todo $0\leq j\leq m$. Entonces $a_ib_j=x_{ij_0}x_{i_0j}/x_{i_0j_0}=x_{ij}x_{i_0j_0}/x_{i_0j_0}=x_{ij}$, y por tanto $x=\varphi((a_0:\ldots:a_n),(b_0:\ldots:b_m))\in\varphi(\Pnk\times\Pmk)$.
 \end{proof}
 
-\begin{eje}
+\begin{ej}
  El producto $\PP^1_k\times\PP^1_k$ es la variedad definida en $\PP^3_k$ por la ecuación $x_0x_3-x_1x_2=0$.
-\end{eje}
+\end{ej}
 
-\begin{defn} Sean $X\subseteq\Pnk$ e $Y\subseteq\Pmk$ dos subconjuntos. El {\bf producto} de $X$ e $Y$ es la imagen de $X\times Y$ en $\PP^{nm+n+m}_k$ por la inmersión de Segre.
- \end{defn}
+\begin{defi} Sean $X\subseteq\Pnk$ e $Y\subseteq\Pmk$ dos subconjuntos. El {\bf producto} de $X$ e $Y$ es la imagen de $X\times Y$ en $\PP^{nm+n+m}_k$ por la inmersión de Segre.
+ \end{defi}
 
-\begin{ejercicio}\label{productoporpunto}
+\begin{ejer}\label{productoporpunto}
  Si $X$ es un conjunto algebraico e $Y=\{y\}\subseteq\Pmk$ contiene un solo punto, probar que el producto $X\times Y$ es un conjunto algebraico isomorfo a $X$.
-\end{ejercicio}
-{\large\bf COSAS QUE NO SÉ DONDE VAN}
+\end{ejer}
+
 \begin{prop}
-Si $g_l(\underline{x},\underline{y})$ son polinomios homogéneos en $\underline{x}$ e $\underline{y}$ pro separado, entonces $\VV(\{g_l\})$ es un conjunto algebraico en $\mathbb{P}^n\times\mathbb{P}^m$. 
+Si $g_l(\underline{x},\underline{y})$ son polinomios homogéneos en $\underline{x}$ e $\underline{y}$ por separado, entonces $\V(\{g_l\})$ es un conjunto algebraico en $\mathbb{P}^n\times\mathbb{P}^m$. 
 \end{prop}
 \begin{proof}
-Hay que probar que si $g$ es homogéneo en $x$ e $y$ por separado, $V(g)=V(g_1,\dots,g_s)$ con $g_l$ e la forma $h_l(x_iy_j)$. Si $\deg_x(g)=\deg_y(g)$, entonces $g(x,y)=h(\phi(x,y))=h(x_iy_j)$ ($h_l(x_iy_j)$ coge el polinomio en $z$ de la imagen del producto mediante $\phi$ y lo evalúa en $x_iy_j$). Si $\deg_x(g)<\deg_y(x)$, entonces $V(g)=V(x_0^dg_1,\dots, x_n^dg), d=\deg_y(x)-\deg_x(g)$
+Hay que probar que si $g$ es homogéneo en $x$ e $y$ por separado, $V(g)=V(g_1,\dots,g_s)$ con $g_l$ de la forma $h_l(x_iy_j)$. Si $\deg_x(g)=\deg_y(g)$, entonces $g_l(x,y)=h_l(\phi(x,y))=h_l(x_iy_j)$ ($h_l(x_iy_j)$ coge el polinomio en $z$ de la imagen del producto mediante $\phi$ y lo evalúa en $x_iy_j$). Si $\deg_x(g)<\deg_y(x)$, entonces $V(g)=V(x_0^dg_1,\dots, x_n^dg), d=\deg_y(g)-\deg_x(g)$
 \end{proof}
 
-Los conjuntos algebraicos en $\mathbb{P}^n\times\mathbb{A}^m$ son de la forma $\VV(h_1,\dots,h_r)$ con $h_l(x,y)\in k[x_0,\dots, x_n,y_1,\dots, y_m]$ homogéneos en las $x$. 
+Los conjuntos algebraicos en $\mathbb{P}^n\times\mathbb{A}^m$ son de la forma $\V(h_1,\dots,h_r)$ con $h_l(x,y)\in k[x_0,\dots, x_n,y_1,\dots, y_m]$ homogéneos en las $x$. 
 
-{\large\bf HASTA AQUÍ}
+
 
 \begin{prop}\label{productoirreducible}
  Sean $X\subseteq\Pnk$ e $Y\subseteq\Pmk$ conjuntos algebraicos (respectivamente variedades cuasi-proyectivas). El producto $X\times Y$ es un conjunto algebraico (resp. una variedad cuasi-proyectiva) en $\PP^{nm+n+m}_k$.
 \end{prop}
 
 \begin{proof}
- Basta probarlo para conjuntos algebraicos y variedades proyectivas, ya que si $X=X_0-X_1$ e $Y=Y_0-Y_1$ con $X_i$ e $Y_j$ proyectivas, se tiene que $\varphi(X\times Y)=\varphi(X_0\times Y_0)-\varphi(X_0\times Y_1)-\varphi(X_1\times Y_0)$. Supongamos entonces que $X=\VV(f_1,\ldots,f_r)$ e $Y=\VV(g_1,\ldots,g_s)$ son conjuntos algebraicos proyectivos.
+ Basta probarlo para conjuntos algebraicos y variedades proyectivas, ya que si $X=X_0-X_1$ e $Y=Y_0-Y_1$ con $X_i$ e $Y_j$ proyectivas, se tiene que $\varphi(X\times Y)=\varphi(X_0\times Y_0)-\varphi(X_0\times Y_1)-\varphi(X_1\times Y_0)$. Supongamos entonces que $X=\V(f_1,\ldots,f_r)$ e $Y=\V(g_1,\ldots,g_s)$ son conjuntos algebraicos proyectivos.
 
 Para todo $j_0=1,\ldots,m$ sea $f_{kj_0}(x_{ij})=f_k(x_{0j_0},\ldots,x_{nj_0})$, y para todo $i_0=1,\ldots,n$ sea $g_{i_0l}(x_{ij})=g_l(x_{i_01},\ldots,x_{i_0m})$. Veamos que $X\times Y$ es el conjunto algebraico definido por todos los $f_{kj_0}$ y todos los $g_{i_0l}$. 
 
@@ -150,15 +71,15 @@ Finalmente, veamos que si $X$ e $Y$ son variedades también lo es $X\times Y$. S
 
 Si $(a_0:\ldots:a_n)$ está en el abierto afín $U_{i_0}\subseteq\Pnk$ (es decir, $a_{i_0}\neq 0$) y $(b_0:\ldots:b_m)$ está en el abierto afín $V_{j_0}\subseteq\Pmk$, entonces $(a_ib_j)\in\Pnk\times\Pmk$ está en el abierto afín $W_{i_0j_0}\subseteq\PP^{nm+n+m}_k$ (es decir, el conjunto de los $(x_{ij})\in\PP^{nm+n+m}_k$ tales que $x_{i_0j_0}\neq 0$). Además, la restricción $\varphi:U_{i_0}\times V_{j_0}\to W_{i_0j_0}\cap(\Pnk\times\Pmk)$ es un isomorfismo. Por tanto, localmente la construcción del producto coincide con el producto natural de espacios afines.
 
-\begin{ejercicio}
+\begin{ejer}
  Probar las afirmaciones del párrafo anterior.
-\end{ejercicio}
+\end{ejer}
 
 Como $\phi$ es biyectiva sobre su imagen, las proyecciones canónicas $\pi_1:\Pnk\times\Pmk\to \Pnk$ y $\pi_2:\Pnk\times\Pmk\to\Pmk$ inducen morfismos $\pi_1:X\times Y\to X$ y $\pi_2:X\times Y\to Y$, que también llamaremos proyecciones. 
  
-\begin{ejercicio}
+\begin{ejer}
  Describir explícitamente las proyecciones $\pi_1$ y $\pi_2:Z\to\PP^1_k$, donde $Z=\varphi(\PP^1_k\times\PP^1_k)\subseteq\PP^3_k$ es el producto de $\PP^1_k$ por sí mismo, definido por la ecuación $x_0x_3-x_1x_2=0$. 
-\end{ejercicio}
+\end{ejer}
 
 
 \begin{prop}
@@ -181,44 +102,44 @@ $$
 \end{prop}
 
 \begin{proof}
-Si $X$ es un cerrado, existen polinomios homogéneos $g_1,\ldots,g_r\in k[x_{ij}]$ tales que $X=\VV(g_1,\ldots,g_r)\cap \varphi(\Pnk\times\Pmk)$. Es decir, un punto $((a_0:\ldots:a_n),(b_1:\ldots:b_m))$ está en $X$ si y sólo si $g_k(a_ib_j)=0$ para todo $k=1,\ldots,r$. Equivalentemente, si definimos $f_k(x_0,\ldots,x_n,y_0,\ldots,y_m)=g_k(x_iy_j)$, si y sólo si $f_k(a_0,\ldots,a_n,b_0,\ldots,b_m)=0$ para todo $k$. Además, los $f_k$ son homogéneos en las $x$ y en las $y$ (del mismo grado).
+Si $X$ es un cerrado, existen polinomios homogéneos $g_1,\ldots,g_r\in k[x_{ij}]$ tales que $X=\V(g_1,\ldots,g_r)\cap \varphi(\Pnk\times\Pmk)$. Es decir, un punto $((a_0:\ldots:a_n),(b_1:\ldots:b_m))$ está en $X$ si y sólo si $g_k(a_ib_j)=0$ para todo $k=1,\ldots,r$. Equivalentemente, si definimos $f_k(x_0,\ldots,x_n,y_0,\ldots,y_m)=g_k(x_iy_j)$, si y sólo si $f_k(a_0,\ldots,a_n,b_0,\ldots,b_m)=0$ para todo $k$. Además, los $f_k$ son homogéneos en las $x$ y en las $y$ (del mismo grado).
 
-Recíprocamente, supongamos que existen tales $f_1,\ldots,f_r$. Si cada $f_k$ es homogéneo en las $x$ y en las $y$ del mismo grado, es fácil ver que se pueden escribir como $g_k(x_iy_j)$, con $g_k$ homogéneo. Por tanto $X=\VV(g_1,\ldots,g_r)\cap \varphi(\Pnk\times\Pmk)$ sería un cerrado.
+Recíprocamente, supongamos que existen tales $f_1,\ldots,f_r$. Si cada $f_k$ es homogéneo en las $x$ y en las $y$ del mismo grado, es fácil ver que se pueden escribir como $g_k(x_iy_j)$, con $g_k$ homogéneo. Por tanto $X=\V(g_1,\ldots,g_r)\cap \varphi(\Pnk\times\Pmk)$ sería un cerrado.
 
 Veamos ahora qué pasa si el grado de $f_k$ en las $x$ y en las $y$ es distinto. Sea $d$ el grado en las $x$, y $e$ el grado en las $y$, y supongamos que $d>e$. Entonces $y_0^{d-e}f_k,\ldots,y_m^{d-e}f_k$ son todos homogéneos en las $x$ y en las $y$ del mismo grado, y se anulan simultáneamante si y sólo si $f_k$ se anula (ya que algún $y_j$ es siempre no nulo). Por tanto $X$ se puede expresar como el conjunto de ceros de polinomios homogéneos en las $x$ y en las $y$ \emph{del mismo grado}, y por el caso anterior concluimos entonces que es cerrado. 
 \end{proof}
 
 \section{Inmersiones. Morfismos proyectivos}
 
-\begin{defn}
+\begin{defi}
  Un morfismo $\phi:X\to Y$ entre variedades cuasi-proyectivas se denomina una {\bf inmersión abierta} (respectivamente {\bf cerrada}) si su imagen es un abierto (resp. un cerrado) de $Y$ y $\phi:X\to\phi(X)$ es un isomorfismo. Un morfismo $\phi:X\to Y$ se denomina una {\bf inmersión} si es composición de una inmersión abierta seguida de una inmersión cerrada.
-\end{defn}
+\end{defi}
 
-\begin{eje}
+\begin{ejs}
  \begin{enumerate}
   \item Si $X$ e $Y$ son variedades afines y $\psi:X\to Y$ es un morfismo, la aplicación grafo $X\to X\times Y$ dada por $x\mapsto (x,\psi(x))$ es una inmersión cerrada por el ejercicio \ref{grafo}.
-  \item Si $X=\VV(xy-1)\subseteq\AAA^2_k$, el morfismo $X\to\AAA^2_k$ dado por $(x,y)\mapsto (x,0)$ es una inmersión que no es abierta ni cerrada. 
-  \item $\varphi:\mathbb{A}^1\to\mathbb{A}^2:t\mapsto(t^2,t^3)$ es un morfismo inyectivo con imagen abierta que no es inmersión abierta. $\varphi(\mathbb{A}^1)=\VV(y^2-x^3)=X$. 
+  \item Si $X=\V(xy-1)\subseteq\A^2_k$, el morfismo $X\to\A^2_k$ dado por $(x,y)\mapsto (x,0)$ es una inmersión que no es abierta ni cerrada. 
+  \item $\varphi:\mathbb{A}^1\to\mathbb{A}^2:t\mapsto(t^2,t^3)$ es un morfismo inyectivo con imagen cerrada que no es inmersión cerrada. $\varphi(\mathbb{A}^1)=\V(y^2-x^3)=X$. 
   \item Si $X\subseteq\mathbb{A}^1$ es algebraico entonces la inclusión es cerrada. Si es abierto, la inclusión es abierta.
-  \item $\varphi:\VV(xy-z)\to\mathbb{A}^1:(x,y)\mapsto y$ es inmersión abierta.
+  \item $\varphi:\V(xy-z)\to\mathbb{A}^1:(x,y)\mapsto y$ es inmersión abierta.
  \end{enumerate}
-\end{eje}
+\end{ejs}
 
 
-\begin{ejercicio}
+\begin{ejer}
  Probar que la composición de dos inmersiones abiertas (respectivamente cerradas) es una inmersión abierta (resp. cerrada).
-\end{ejercicio}
+\end{ejer}
 
-\begin{defn}
+\begin{defi}
  Un morfismo $\psi:X\to Y$ entre variedades cuasi-proyectivas se dice {\bf proyectivo} si $\psi=\pi\circ\iota$, donde $\iota:X\to \Pnk\times Y$ es una inmersión cerrada y $\pi:\Pnk\times Y\to Y$ es la proyección.
-\end{defn}
+\end{defi}
 
 \begin{prop}
  Si $X$ es una variedad proyectiva, cualquier morfismo $\psi:X\to Y$ es proyectivo.
 \end{prop}
 
 \begin{proof}
- Sea $j:X\hookrightarrow\Pnk$ la inclusión. Como $X$ es proyectiva, $j$ es una inmersión cerrada. La aplicación $\iota:X\to \Pnk\times Y$ dada por $\iota(x)=(x,\psi(x))$ es entonces también una inmersión cerrada (es  la composición del grafo de $\psi$ $X\to X\times Y$, que ya hemos visto que es una inmersión cerrada, con la inmersión $X\times Y\to\Pnk\times Y$). Como $\psi=\pi\circ\iota$, concluimos que $\psi$ es proyectivo. 
+ Sea $j:X\hookrightarrow\Pnk$ la inclusión. Como $X$ es proyectiva, $j$ es una inmersión cerrada. La aplicación $\iota:X\to \Pnk\times Y$ dada por $\iota(x)=(x,\psi(x))$ es entonces también una inmersión cerrada (es  la composición del grafo de $\psi$, $X\to X\times Y$, que ya hemos visto que es una inmersión cerrada, con la inmersión $X\times Y\to\Pnk\times Y$). Como $\psi=\pi\circ\iota$, concluimos que $\psi$ es proyectivo. 
 \end{proof}
 
 La propiedad fundamental de los morfismos proyectivos es la siguiente:
@@ -234,65 +155,65 @@ Usando el recubrimiento afín de $\Pmk$, podemos escribir $Y=\bigcup_{i=0}^m Y_i
 \end{proof}
 
 
-\begin{thm} \label{eliminacion} {\bf (Teorema fundamental de eliminación)}. Sean $f_1,\ldots,f_r\in k[x_0,\ldots,x_n,y_1,\ldots,y_m]$ polinomios homogéneos en las $x$. Entonces existen polinomios $g_1,\ldots,g_s\in k[y_1,\ldots,y_m]$ tales que: dados $b_1,\ldots,b_m\in k$, los polinomios en $k[x_0,\ldots,x_n]$ obtenidos al sustituir los $y_j$ por los $b_j$ en $f_1,\ldots,f_r$ tienen una solución común en $\Pnk$ si y sólo si $g_1,\ldots,g_s$ se anulan en $(b_1,\ldots,b_m)$.
- \end{thm}
+\begin{teorema} \label{eliminacion} {\bf (Teorema fundamental de eliminación)}. Sean $f_1,\ldots,f_r\in k[x_0,\ldots,x_n,y_1,\ldots,y_m]$ polinomios homogéneos en las $x$. Entonces existen polinomios $g_1,\ldots,g_s\in k[y_1,\ldots,y_m]$ tales que: dados $b_1,\ldots,b_m\in k$, los polinomios en $k[x_0,\ldots,x_n]$ obtenidos al sustituir los $y_j$ por los $b_j$ en $f_1,\ldots,f_r$ tienen una solución común en $\Pnk$ si y sólo si $g_1,\ldots,g_s$ se anulan en $(b_1,\ldots,b_m)$.
+ \end{teorema}
 
 No daremos aquí la prueba, que puede encontrarse en \cite[I.5.2]{sha}.
 
-\begin{cor}
+\begin{coro}
  Si $X$ es una variedad proyectiva, toda función regular $f:X\to k$ es constante.
-\end{cor}
+\end{coro}
 
 \begin{proof}
- Una función regular $f$ es simplemente un morfismo $f:X\to\AAA^1_k$. Podemos ver $f$ como un morfismo $f:X\to\PP^1_k$, mediante la inclusión $\AAA^1_k\subseteq\PP^1_k$. Como $X$ es proyectiva, $f(X)$ es un cerrado. No es el total, ya que no contiene al punto del infinito. Por tanto, $f(X)$ tiene que ser un conjunto finito. Como $X$ es irreducible, y por tanto conexo, y $f$ es continua, $f(X)$ también debe ser conexo. Así que tiene que ser un solo punto.
+ Una función regular $f$ es simplemente un morfismo $f:X\to\A^1_k$. Podemos ver $f$ como un morfismo $f:X\to\PP^1_k$, mediante la inclusión $\A^1_k\subseteq\PP^1_k$. Como $X$ es proyectiva, $f(X)$ es un cerrado. No es el total, ya que no contiene al punto del infinito. Por tanto, $f(X)$ tiene que ser un conjunto finito. Como $X$ es irreducible, y por tanto conexo, y $f$ es continua, $f(X)$ también debe ser conexo. Así que tiene que ser un solo punto.
 \end{proof}
 
-\begin{cor}
+\begin{coro}
  Si $X$ es una variedad proyectiva e $Y$ una variedad afín, todo morfismo $\phi:X\to Y$ es constante.
-\end{cor}
+\end{coro}
 
 \begin{proof}
  Cada coordenada de $\phi$ es una función regular, y por tanto es constante por el corolario anterior.
 \end{proof}
 
-\begin{cor}\label{proyectivanoafin}
+\begin{coro}\label{proyectivanoafin}
  Una variedad proyectiva de dimensión $>0$ no puede ser isomorfa a ninguna variedad afín.
-\end{cor}
+\end{coro}
 
 \section{Morfismos finitos}
 
-\begin{defn}
+\begin{defi}
  Sea $\phi:X\to Y$ un morfismo de variedades afines, y $\phi^\star:\calA(Y)\to\calA(X)$ el homomorfismo de $k$-álgebras correspondiente. El morfismo $\phi$ se dice {\bf finito} si $\calA(X)$ es un $\phi^\star(\calA(Y))$-módulo finitamente generado.
-\end{defn}
+\end{defi}
 
-Por \cite[Proposición 5.1]{am}, esto es equivalente a decir que todo elemento de $\calA(X)$ es entero sobre $\phi^\star(\calA(Y))$, es decir, satisface un polinomio mónico con coeficientes en $\calA(Y)$.
+Por \cite[Proposición 5.1]{am}, esto es equivalente a decir que todo elemento de $\calA(X)$ es entero sobre $\phi^\star(\calA(Y))$, es decir, satisface un polinomio mónico con coeficientes en $\phi^\star(\calA(Y))$.
 
-\begin{eje}\emph{
+\begin{ejs}\emph{
  \begin{enumerate}
-  \item El morfismo $\AAA^1_k\to\AAA^2_k$ dado por $x\mapsto (x,0)$ es finito: El homomorfismo de $k$-álgebras correspondiente está dado por $\phi^\star(f(x,y))=f(x,0)\in k[x]$, y de esta forma $k[x]$ está generado por $1$ como $\phi^\star(k[x,y])$-módulo. En general, cualquier inmersión cerrada es un morfismo finito, ya que en ese caso $\phi^\star$ es un homomorfismo sobreyectivo.
-\item La inmersión abierta $\AAA^1_k-\{0\}\hookrightarrow\AAA^1_k$ no es un morfismo finito: el homomorfismo de $k$-álgebras correspondiente es la inmersión $k[x]\hookrightarrow k[x,1/x]$, y $1/x$ no es entero sobre $k[x]$.
-\item El morfismo $\phi:\AAA^1_k\to\AAA^1_k$ dado por $\phi(x)=x^2$ es finito: el homomorfismo de $k$-álgebras correspondiente es $f(x)\mapsto f(x^2)$, y $k[x]$ es un $k[x^2]$ módulo finitamente generado (ya que todo polinomio en $k[x]$ puede escribirse en la forma $g(x^2)+x\cdot h(x^2)$).
+  \item El morfismo $\A^1_k\to\A^2_k$ dado por $x\mapsto (x,0)$ es finito: El homomorfismo de $k$-álgebras correspondiente está dado por $\phi^\star(f(x,y))=f(x,0)\in k[x]$, y de esta forma $k[x]$ está generado por $1$ como $\phi^\star(k[x,y])$-módulo. En general, cualquier inmersión cerrada es un morfismo finito, ya que en ese caso $\phi^\star$ es un homomorfismo sobreyectivo.
+\item La inmersión abierta $\A^1_k-\{0\}\hookrightarrow\A^1_k$ no es un morfismo finito: el homomorfismo de $k$-álgebras correspondiente es la inmersión $k[x]\hookrightarrow k[x,1/x]$, y $1/x$ no es entero sobre $k[x]$.
+\item El morfismo $\phi:\A^1_k\to\A^1_k$ dado por $\phi(x)=x^2$ es finito: el homomorfismo de $k$-álgebras correspondiente es $f(x)\mapsto f(x^2)$, y $k[x]$ es un $k[x^2]$ módulo finitamente generado (ya que todo polinomio en $k[x]$ puede escribirse en la forma $g(x^2)+x\cdot h(x^2)$).
  \end{enumerate}}
 
 
 
-\end{eje}
+\end{ejs}
 
 \begin{prop}
 Si $Y$ es cuasi-proyectiva, entonces $Y=\bigcup Y_i$ unión de abiertos afines abiertos. 
 \end{prop}
 \begin{proof}
-Si $Z$ es cuasi-afin, entonces $Z=\overline{Z}\setminus Z_0$, siendo todos estos conjuntos afines y $Z_0$ cerrado. Por tanto $Z=\overline{Z}\cap \bigcup_{i=1}^r(\overline{Z}\cap U(f_i))$. En particular, $U_0=\mathbb{A}^n\setminus Z_0=\bigcup_{i=1}^rU(f_i)=\mathbb{A}^n\setminus \VV(f_i)$. 
+Si $Z$ es cuasi-afin, entonces $Z=\overline{Z}\setminus Z_0$, siendo todos estos conjuntos afines y $Z_0$ cerrado. Por tanto $Z=\overline{Z}\cap \bigcup_{i=1}^r(\overline{Z}\cap U(f_i))$. En particular, $U_0=\mathbb{A}^n\setminus Z_0=\bigcup_{i=1}^rU(f_i)=\mathbb{A}^n\setminus \V(f_i)$. 
 
-Recordemos que $U(f_i)\cong \VV(yf(x_1,\dots x_n)-1)\subseteq\mathcal{A}^{n+1}$, lo lo que $\overline{Z}\cap U(f_i)$ es cerrado en $\mathbb{A}^{n+1}$. 
+Recordemos que $U(f_i)\cong \V(yf(x_1,\dots x_n)-1)\subseteq\mathbb{A}^{n+1}$, lo lo que $\overline{Z}\cap U(f_i)$ es cerrado en $\mathbb{A}^{n+1}$. 
 \end{proof}
 
-\begin{defn}
+\begin{defi}
 $\varphi:X\to Y$ es finito si para $Y=\bigcup Y_i$ unión de abiertos afines, $\varphi^{-1}(Y_i)$ es afín y $\varphi_i\varphi^{-1}(Y_i)\to Y_i$ es finito
-\end{defn}
+\end{defi}
 
 \begin{prop}
-Sea $A\subseteq B$ una extensión. Si $B$ es una $A$-álgebra finitamente engenerada, entonces $B$ es entera sobre $A$ si y solo si $B$ es $A$-módulo finitamente generado. La implicación inversa es cierta en general.
+Sea $A\subseteq B$ una extensión. Si $B$ es una $A$-álgebra finitamente generada, entonces $B$ es entera sobre $A$ si y solo si $B$ es $A$-módulo finitamente generado. La implicación inversa es cierta en general.
 \end{prop}
 
 \begin{prop}
@@ -305,16 +226,16 @@ Sea $A\subseteq B$ una extensión. Si $B$ es una $A$-álgebra finitamente engene
 
 El recíproco no es cierto, como muestra el segundo ejemplo anterior.
 
-\begin{eje}
+\begin{ejs}
 \begin{enumerate}
 \item $\varphi:\mathbb{A}^2\to\mathbb{A}^2:(x,y)\mapsto(x,xy)$ no es finito porque $\varphi^{-1}(0,0)=\{x=0\}$.
 \item $\varphi:\mathbb{A}\to\mathbb{A}:t\mapsto t^2$ es finito. $\varphi^*:k[t]\to k[t^2]:f(t)\mapsto f(t^2)$. $k[t]$ es entero sobre $k[t^2]$ si y solo si $t$ es entero sobre $k[t^2]$, lo cual es cierto porque podemos tomar el polinomio mónico $x^2-t^2$ que tiene coeficientes en $k[t^2]$. En general, podemos sustituir $t^2$ por cualquier polinomio no constante. En ese caso el polinomio sería $\frac{g(x)-g(t)}{c}$, donde $c$ es el coeficiente líder de $g$. 
 \item Si $\varphi:X\to Y$ es una inmersión cerrada, entonces es finita. Tenemos la descomposición $X\overset{\cong}{\to}\varphi(X)\hookrightarrow Y$, que se traduce en $\mathcal{A}(Y)\to\mathcal{A}(\varphi(X))\overset{\cong}{\to}\mathcal{A}(X)$. Llamamos $Z=\varphi(X)$, entonces $Z\subseteq Y\subseteq\mathbb{A}^n$ cerrado. Basta ver que $\mathcal{A}(Y)\to\mathcal{A}(Z)$ es entero (que el segundo sobre el primero es entero como módulo), que es lo mismo que $k[x]/\mathcal{I}(Y)\to k[x]/\mathcal{I}(Z)$. Como $\mathcal{I}(Y)\subseteq\mathcal{I}(Z)$, $Im =\mathcal{A}(Z)$, por lo que claramente es entera sobre sí mismo.
-\item Inmersión abierta $\varphi:U\hookrightarrow Y$, con $U=Y\setminus\VV(f)$, $\varphi^*:\mathcal{A}(X)\to\mathcal{A}(U)=\mathcal{A}(Y)_f=\mathcal{A}(Y)[f^{-1}]$. $f^{-1}$ es entero sobre $A=\mathcal{A}(Y)$ si existe $(f^{-1})^d +a_{d-1}(f^{-1})^{d-1}+\dots+a_1f^{d-2} + a_0f^{d-1}=0$. Multiplicando por $f^{d-1}$ obtenemos $(f^{-1})+(a_{d-1}+a_{d-2}f^{d-2}+a_0f^{d-1})=0$, pero los dos términos están en $A$. Las inmersiones abiertas no son finitas.
+\item Inmersión abierta $\varphi:U\hookrightarrow Y$, con $U=Y\setminus\V(f)$, $\varphi^*:\mathcal{A}(X)\to\mathcal{A}(U)=\mathcal{A}(Y)_f=\mathcal{A}(Y)[f^{-1}]$. $f^{-1}$ es entero sobre $A=\mathcal{A}(Y)$ si existe $(f^{-1})^d +a_{d-1}(f^{-1})^{d-1}+\dots+a_1f^{d-2} + a_0f^{d-1}=0$. Multiplicando por $f^{d-1}$ obtenemos $(f^{-1})+(a_{d-1}+a_{d-2}f^{d-2}+a_0f^{d-1})=0$, pero los dos términos están en $A$. Las inmersiones abiertas no son finitas.
 
 Utilizando la proposición posterior se puede probar simplemente viendo que son dominantes pero no sobreyectivas.
 \end{enumerate}
-\end{eje}
+\end{ejs}
 \begin{prop}
  Todo morfismo finito y dominante entre variedades afines es sobreyectivo.
 \end{prop}
@@ -323,38 +244,58 @@ Utilizando la proposición posterior se puede probar simplemente viendo que son 
 
  Por la proposición \ref{dominanteinyectivo}, que $\phi$ sea dominante es equivalente a que $\phi^\star$ sea inyectivo. Por tanto podemos identificar $\calA(Y)$ con su imagen por $\phi^\star$, que es una sub-$k$-álgebra de $\calA(X)$. 
 
- Por la prueba de la proposición \ref{funtor}, tenemos que probar que para todo ideal maximal de $\calA(Y)$ (necesariamente de la forma $\bar\mm_y$ para algún $y\in Y$), existe un ideal maximal de $\calA(X)$ (necesariamente de la forma $\bar\mm_x$ para algún $x\in X$) tal que $\bar\mm_x\cap \calA(Y)=\bar\mm_y$. Pero esto es una consecuencia inmediata de los teoremas 5.8 y 5.10 de \cite{am} por ser $\calA(X)$ una extensión entera de $\calA(Y)$. 
+ Por la prueba de la proposición \ref{funtor}, tenemos que probar que para todo ideal maximal de $\calA(Y)$ (necesariamente de la forma $\bar\m_y$ para algún $y\in Y$), existe un ideal maximal de $\calA(X)$ (necesariamente de la forma $\bar\m_x$ para algún $x\in X$) tal que $\bar\m_x\cap \calA(Y)=\bar\m_y$. Pero esto es una consecuencia inmediata de los teoremas 5.8 y 5.10 de \cite{am} por ser $\calA(X)$ una extensión entera de $\calA(Y)$. 
 \end{proof}
 
-\begin{lem}[de normalización de Noether] Toda $k$-álgebra finitamente generada reducida es extensión entera de $k[x_1,\dots,x_d]$. 
-\end{lem}
+\begin{lemma}[de normalización de Noether] Toda $k$-álgebra finitamente generada reducida es extensión entera de $k[x_1,\dots,x_d]$. 
+\end{lemma}
 
 Este lema es la versión para anillos de el teorema de extensión de cuerpos que dice que si $k\subseteq K$ es una extensión finitamente generada, entonces $k\subseteq k(x_1,\dots,x_n)\subseteq K$, donde la primera es trascendente pura y la segunda es finita.
 El lema de normalización de Noether admite la siguiente interpretación geométrica:
 
 \begin{prop}
- Toda variedad afín $X\subseteq\Ank$ de dimensión $d$ admite un morfismo finito $\phi:X\to\AAA^d_k$.
+ Toda variedad afín $X\subseteq\Ank$ de dimensión $d$ admite un morfismo finito $\phi:X\to\A^d_k$.
 \end{prop}
 
 \begin{proof}
- Por el lema de normalización de Noether \cite[4.6]{reid} existen $x_1,\ldots,x_d\in\calA(X)$ algebraicamente independientes tales que $k[x_1,\ldots,x_d]\subseteq\calA(X)$ y $\calA(X)$ es una extensión entera de $k[x_1,\ldots,x_d]$. El morfismo $X\to\AAA^d_k$ correspondiente a dicha inclusión de $k$-álgebras es el morfismo finito buscado.
+ Por el lema de normalización de Noether \cite[4.6]{reid} existen $x_1,\ldots,x_d\in\calA(X)$ algebraicamente independientes tales que $k[x_1,\ldots,x_d]\subseteq\calA(X)$ y $\calA(X)$ es una extensión entera de $k[x_1,\ldots,x_d]$. El morfismo $X\to\A^d_k$ correspondiente a dicha inclusión de $k$-álgebras es el morfismo finito buscado.
 \end{proof}
 
 
 Para variedades cuasi-proyectivas en general, definimos los morfismos finitos localmente:
 
-\begin{defn}
+\begin{defi}
  Sea $\phi:X\to Y$ un morfismo entre variedades cuasi-proyectivas. Se dice que $\phi$ es {\bf finito} si para todo abierto afín $U\subseteq Y$, la imagen inversa $\phi^{-1}(U)$ es afín y la restricción $\phi:\phi^{-1}(U)\to U$ es un morfismo finito entre variedades afines. 
-\end{defn}
+\end{defi}
 
-Como la propiedad de ser finito es local, basta probarlo para los abiertos de un recubrimiento finito afín de $Y$, que siempre existe (primero tomando el recubrimiento cuasi-afín estándar de una variedad proyectiva, y después expresando cada trozo cuasi-afín como unión de abiertos básicos del tipo $\Ank-\VV(f)$, que son isomorfos a una variedad afín). 
+Como la propiedad de ser finito es local, basta probarlo para los abiertos de un recubrimiento finito afín de $Y$, que siempre existe (primero tomando el recubrimiento cuasi-afín estándar de una variedad proyectiva, y después expresando cada trozo cuasi-afín como unión de abiertos básicos del tipo $\Ank-\V(f)$, que son isomorfos a una variedad afín). 
 
+\begin{defi}
+$A$ es integramente cerrado en $B$ si dado $b \in B$ entero sobre $A$, entonces $b \in A$.
+\end{defi}
+
+\begin{defi}
+La \textbf{clausura íntgra} de $A$ en $B$ es el subanillo $\overline{A} \subseteq B$ formado por los elementos enteros sobre $A$.
+
+Si $\overline{A} = A$, decimos que $A$ es \textbf{íntegramente cerrado} en $B$.
+\end{defi}
+\begin{defi}
+Un D.I. $A$ es íntegramente cerrado si es int.cerrado en $Frac(A)$.
+\end{defi}
+
+\begin{ejs}\mbox{}
+\begin{enumerate}
+	\item $\mathbb{Z}$ es íntegramente cerrado.
+	\item Cualquier DFU es íntegramente cerrado, ya que si $a/b \in Frac(A)$ es entero sobre $A$, existe $f(x) = x^d+a{d-1}x^{d-1}+\dots +a_1x+a_0 \in A[x]$ con $f(a/b) = 0$. Entonces $a^d+a_{d-1}a^{d-1}b+\dots+a_1ab^{d-1}+a_0b^d = 0$, luego $b | a^d$, luego $b=1$.
+	\item $\mathbb{Z}[\sqrt{5}] $ no es íntegramente cerrado, ya que su cuerpo de fracciones es $\mathbb{Q}(\sqrt{5})$, el elemento $\varphi = (1+\sqrt{5})/2$ es raíz del polinomio mónico $x^2-x-1$, pero no está en $\mathbb{Z}[\sqrt{5}]$.
+\end{enumerate}
+\end{ejs}
  
 \section{Normalización}
 
-\begin{defn}
+\begin{defi}
  Sea $Z\subseteq\Pnk$ una variedad cuasi-proyectiva. Un punto $x\in Z$ se dice {\bf normal} si el anillo local ${\mathcal O}_{Z,x}$ es íntegramente cerrado \cite[Capítulo 5]{am}. La variedad $Z$ se dice {\bf normal} si todos sus puntos son normales.
-\end{defn}
+\end{defi}
 
 Como la normalidad es una propiedad local, para comprobar si una variedad es normal basta comprobarlo para cada uno de los abiertos de un recubrimiento afín. Y en el caso de las variedades afines, tenemos la siguiente caracterización:
 
@@ -363,17 +304,18 @@ Como la normalidad es una propiedad local, para comprobar si una variedad es nor
 \end{prop}
 
 \begin{proof}
- $Z$ es normal si y sólo si es normal en cada punto, es decir, si y sólo si el anillo local ${\mathcal O}_{Z,x}$ es íntegramente cerrado para todo $x\in Z$. Por la proposición \ref{anillolocal}, ${\mathcal O}_{Z,x}$ es el localizado $\calA(Z)_{\bar\mm_x}$ de $\calA(Z)$ en el ideal maximal correspondiente a $x$. Por la proposición \ref{maximal}, todo ideal maximal de $\calA(Z)$ es de la forma $\bar\mm_x$ para algún $x\in Z$. Por tanto, $Z$ es normal si y sólo si el localizado de $\calA(Z)$ en cualquier ideal maximal es íntegramente cerrado. Por \cite[proposición 5.13]{am}, esto es equivalente a que $\calA(Z)$ sea íntegramente cerrado.
+ $Z$ es normal si y sólo si es normal en cada punto, es decir, si y sólo si el anillo local ${\mathcal O}_{Z,x}$ es íntegramente cerrado para todo $x\in Z$. Por la proposición \ref{anillolocal}, ${\mathcal O}_{Z,x}$ es el localizado $\calA(Z)_{\bar\m_x}$ de $\calA(Z)$ en el ideal maximal correspondiente a $x$. Por la proposición \ref{maximal}, todo ideal maximal de $\calA(Z)$ es de la forma $\bar\m_x$ para algún $x\in Z$. Por tanto, $Z$ es normal si y sólo si el localizado de $\calA(Z)$ en cualquier ideal maximal es íntegramente cerrado. Por \cite[proposición 5.13]{am}, esto es equivalente a que $\calA(Z)$ sea íntegramente cerrado.
 \end{proof}
 
 
-\begin{eje}
+\begin{ejs}
 \emph{ \begin{enumerate}
   \item Un dominio de factorización única es íntegramente cerrado. En particular, $\Ank$ es normal, ya que $k[x_1,\ldots,x_n]$ es un DFU. 
   \item El espacio proyectivo $\Pnk$ es normal, ya que está recubierto por abiertos afines isomorfos al espacio afín $\Ank$, que es normal por el ejemplo anterior. 
-  \item La curva $Z=\VV(y^2-x^3)\subseteq\AAA^2_\CC$ no es normal: su anillo de coordenadas es $\calA(Z)=k[x,y]/\langle y^2-x^3\rangle$, el elemento $\xi=y/x\in{\mathcal K}(Z)$ es entero sobre $\calA(Z)$, ya que es raíz de la ecuación mónica $\xi^2-x=0$, pero no está en $\calA(Z)$: si estuviera, $y/x$ sería regular en $Z$, es decir, existiría $f\in k[x,y]$ tal que $y/x=f(x,y)$ para todo $(x,y)\in Z$. Entonces $y-xf(x,y)$ estaría en el ideal $\langle y^2-x^3\rangle$, lo cual es imposible (un múltiplo de $y^2-x^3$ no puede tener términos de grado $1$).
+   \item La curva $Z=\V(y^2-x^3-x^2)\subseteq\A^2_\C$ no es normal en el punto $a = (0,0)$. Tenemos que $\mathcal{O}_{X,a} = A_{\langle x,y \rangle} = \{f/g \in Frac(A) : g(a) \neq 0\}$. Sea $\alpha = y/x \in Frac(O_{X,a})$. $\alpha$ es raíz del polinomio mónico $x^2-x-1$. Si $\alpha \in \mathcal{O}_{X,a}$, existiría $p$ y $q \neq 0$ en $A$ con $\alpha = p/q$, entonces $xp-yq = 0$ en $X$, pero $xp-yq \notin \langle y^2-x^3-x^2 \rangle$.
+  \item La curva $Z=\V(y^2-x^3)\subseteq\A^2_\C$ no es normal: su anillo de coordenadas es $\calA(Z)=k[x,y]/\langle y^2-x^3\rangle$, el elemento $\xi=y/x\in{\mathcal K}(Z)$ es entero sobre $\calA(Z)$, ya que es raíz de la ecuación mónica $\xi^2-x=0$, pero no está en $\calA(Z)$: si estuviera, $y/x$ sería regular en $Z$, es decir, existiría $f\in k[x,y]$ tal que $y/x=f(x,y)$ para todo $(x,y)\in Z$. Entonces $y-xf(x,y)$ estaría en el ideal $\langle y^2-x^3\rangle$, lo cual es imposible (un múltiplo de $y^2-x^3$ no puede tener términos de grado $1$).
  \end{enumerate} }
-\end{eje}
+\end{ejs}
 
 Veamos ahora la característica más importante de los puntos normales:
 
@@ -384,12 +326,20 @@ Veamos ahora la característica más importante de los puntos normales:
 \begin{proof}
  La unicidad es una consecuencia directa del ejercicio \ref{extensionfuncion}. Veamos la existencia. Como el problema es local, podemos suponer que $Z\subseteq\Ank$ es una variedad afín.
 
- Sea $J\subseteq k[x_1,\ldots,x_n]$ el ideal formado por los polinomios $h$ tales que la función regular $hf$ en $Z\backslash\{x\}$ se extiende a $Z$. Obviamente $\II(Z)\subseteq J$, así que $\VV(J)\subseteq Z$. Veamos que $J=k[x_1,\ldots,x_n]$, y por tanto $f=1\cdot f$ se extiende a $Z$. Para todo $y\in Z$ distinto de $x$, $f$ está definida en $y$, así que existen $g_y,h_y\in k[x_1,\ldots,x_n]$ con $h_y(y)\neq 0$ tales que $f=g_y/h_y$, es decir, existe $h_y\in J$ tal que $h_y(y)\neq 0$. Por tanto $\VV(J)$ no puede contener ningún punto de $Z$ distinto de $x$ o, equivalentemente, $\VV(J)\subseteq\{x\}$. Por el Nullstellensatz, deducimos que $\mm_x\subseteq\sqrt{J}$, es decir, existe un $a\geq 0$ tal que $\mm_x^a\subseteq J$ (ya que $\mm_x$ es finitamente generado).
+ Sea $J\subseteq k[x_1,\ldots,x_n]$ el ideal formado por los polinomios $h$ tales que la función regular $hf$ en $Z\backslash\{x\}$ se extiende a $Z$. Obviamente $\I(Z)\subseteq J$, así que $\V(J)\subseteq Z$. Veamos que $J=k[x_1,\ldots,x_n]$, y por tanto $f=1\cdot f$ se extiende a $Z$. Para todo $y\in Z$ distinto de $x$, $f$ está definida en $y$, así que existen $g_y,h_y\in k[x_1,\ldots,x_n]$ con $h_y(y)\neq 0$ tales que $f=g_y/h_y$, es decir, existe $h_y\in J$ tal que $h_y(y)\neq 0$. Por tanto $\V(J)$ no puede contener ningún punto de $Z$ distinto de $x$ o, equivalentemente, $\V(J)\subseteq\{x\}$. Por el Nullstellensatz, deducimos que $\m_x\subseteq\sqrt{J}$, es decir, existe un $a\geq 0$ tal que $\m_x^a\subseteq J$ (ya que $\m_x$ es finitamente generado).
 
-Si $a>0$, sea $h\in\mm_x^{a-1}$. Entonces $h\mm_x\subseteq\mm_x^a\subseteq J$, es decir, $fhu$ se extiende a $Z$ para todo $u\in\mm_x$. Dicho de otra forma, $fh\mm_x\subseteq\calA(Z)$. Pasando al localizado en $x$, tenemos que $fh\mm_x{\mathcal O}_{Z,x}\subseteq{\mathcal O}_{Z,x}$. Como $\mm_x{\mathcal O}_{Z,x}$ es el único ideal maximal de ${\mathcal O}_{Z,x}$, o bien $fh\mm_x{\mathcal O}_{Z,x}={\mathcal O}_{Z,x}$ o bien $fh\mm_x{\mathcal O}_{Z,x}\subseteq\mm_x{\mathcal O}_{Z,x}$. En el primer caso, tendríamos $fhu=1$ para algún $u\in\mm_x{\mathcal O}_{Z,x}$. Sea $U\subseteq Z$ un abierto que contenga a $x$ donde $u$ esté definida. Como $fhu=1$ y $f$ es regular en $U\backslash\{x\}$, $\VV(u)\cap U$ sólo puede contener a $x$. Pero esto es imposible, ya que toda componente de $\VV(u)\cap U$ debe tener dimensión $\geq\dim(Z)-1\geq 1$ (ejercicio \ref{dimensionhipersuperficie}). En el segundo caso, $fh$ es entero sobre ${\mathcal O}_{Z,x}$ (ver \cite[Proposición 2.4]{am}), y por tanto estaría en ${\mathcal O}_{Z,x}$ por ser íntegramente cerrado. Por tanto $h\in J$. Es decir, $\mm_x^{a-1}\subseteq J$. Repitiendo el proceso, concluimos que $\mm_x^0=k[x_1,\ldots,x_n]\subseteq J$.
+Si $a>0$, sea $h\in\m_x^{a-1}$. Entonces $h\m_x\subseteq\m_x^a\subseteq J$, es decir, $fhu$ se extiende a $Z$ para todo $u\in\m_x$. Dicho de otra forma, $fh\m_x\subseteq\calA(Z)$. Pasando al localizado en $x$, tenemos que $fh\m_x{\mathcal O}_{Z,x}\subseteq{\mathcal O}_{Z,x}$. Como $\m_x{\mathcal O}_{Z,x}$ es el único ideal maximal de ${\mathcal O}_{Z,x}$, o bien $fh\m_x{\mathcal O}_{Z,x}={\mathcal O}_{Z,x}$ o bien $fh\m_x{\mathcal O}_{Z,x}\subseteq\m_x{\mathcal O}_{Z,x}$. En el primer caso, tendríamos $fhu=1$ para algún $u\in\m_x{\mathcal O}_{Z,x}$. Sea $U\subseteq Z$ un abierto que contenga a $x$ donde $u$ esté definida. Como $fhu=1$ y $f$ es regular en $U\backslash\{x\}$, $\V(u)\cap U$ sólo puede contener a $x$. Pero esto es imposible, ya que toda componente de $\V(u)\cap U$ debe tener dimensión $\geq\dim(Z)-1\geq 1$ (ejercicio \ref{dimensionhipersuperficie}). En el segundo caso, $fh$ es entero sobre ${\mathcal O}_{Z,x}$ (ver \cite[Proposición 2.4]{am}), y por tanto estaría en ${\mathcal O}_{Z,x}$ por ser íntegramente cerrado. Por tanto $h\in J$. Es decir, $\m_x^{a-1}\subseteq J$. Repitiendo el proceso, concluimos que $\m_x^0=k[x_1,\ldots,x_n]\subseteq J$.
 \end{proof}
 
-La hipótesis de que $Z$ tenga dimensión $\geq 2$ es fundamental, como muestra el ejemplo $Z=\AAA^1_k$, $x=0$, $f(t)=1/t$.
+La hipótesis de que $Z$ tenga dimensión $\geq 2$ es fundamental, como muestra el ejemplo $Z=\A^1_k$, $x=0$, $f(t)=1/t$.
+
+\begin{teorema}
+Si $A$ es una $k$-álgebra finitamente generada y $B$ la clausura íntegra de $A$, entonces
+\begin{enumerate}
+\item $B$ es una $k$-álgebra finitamente generada.
+\item $B$ es un $A$-módulo finitamente generado.
+\end{enumerate}
+\end{teorema}
 
 \begin{prop}
  Sea $X\subseteq\Ank$ una variedad afín. Existe una única (salvo isomorfismo) variedad normal afín $\tilde X$ y un morfismo finito $\phi:\tilde X\to X$ con la siguiente propiedad universal: Dada una variedad normal afín $Y$ y un morfismo dominante $\psi:Y\to X$, existe un único morfismo $\tilde\psi:Y\to\tilde X$ tal que $\psi=\phi\circ\tilde\psi$. La variedad $\tilde X$ se denomina {\bf normalización} de $X$.
@@ -402,7 +352,34 @@ La hipótesis de que $Z$ tenga dimensión $\geq 2$ es fundamental, como muestra 
 En primer lugar, $\tilde A$ es un dominio de integridad por estar contenido en un cuerpo, y es íntegramente cerrado por transitividad \cite[Corolario 5.4]{am}. Es una $k$-álgebra finitamente generada y un $A$-módulo finitamente generado por \cite[Theorem 3.9A]{h}. Finalmente, sea $\psi':A\to B$ un homomorfismo inyectivo, donde $B$ es un dominio de integridad finitamente generado sobre $k$ e íntegramente cerrado. $\psi'$ se extiende de manera única a homomorfismo de cuerpos $\psi':K(A)\to K(B)$, en particular se extiende a $\tilde A\subseteq K(A)$. Dado $a\in\tilde A$, $a$ es entero sobre $A$, y por tanto $\psi'(a)$ es entero sobre $\psi'(A)\subseteq B$. Como $B$ es íntegramente cerrado, $\psi'(a)$ tiene que estar en $B$. Por tanto $\psi'$ se extiende a $\psi':\tilde A\to B$ de manera única.  
 \end{proof}
 
+\begin{ejs}
+Vimos que $X\equiv y^2=x^3+x^2$ no era normal, pues teníamos un elemento $t=y/x\in A=k[x,y]/\langle y^2-x^3-x^2\rangle$ tal que $t^2=x+1$, y $t$ era entero sobre $A$, pero $t\notin A$. Sin embargo teníamos un isomorfismo entre $X$ y $\mathbb{A}$ $(x,y)\mapsto y/x$ y $t\mapsto (t^2-1,t(t^2-1))$. Entonces tenemos un isomorfismo $k(y/x)=K=Frac(A)\cong k(t)$.  Veamos que $k[t]$ es la clasurua íntegra de $A$ en $K$. $k[t]$ es DFU, luego es íntegramente cerrado. Como $A\subseteq k[t]\subseteq K$, y $y/x\in k[t]$, la clausura íntegra tiene que contener a $k[t]$, pero ya es íntegramente cerrado, así que listo.
+
+Así que $Y=\mathbb{A}$. $\varphi: Y\to X: t\mapsto (t^2-1,t(t^2-1))$ se corresponde a $A\hookrightarrow k[t]: x\mapsto t^2-1, y\mapsto t(t^2-1)$. 
+
+Obsérvese que $\mathbb{A}\setminus\{1,-1\}\cong X\setminus\{0\}$, luego la normalización separa el punto singular en los dos del afín. 
+
+Se puede hacer de forma análoga para $y^2=x^3$ aunque en esta ocasión el punto singular no es doble.
+\end{ejs}
+
 Es posible extender esta construcción a variedades cuasi-proyectivas mediante pegamiento, pero nos restringiremos en estas notas al caso afín.
 
+\begin{prop}
+Sea $X$ una variedad cuasi-proyectiva. Si $x\in Z$ es no singular, entonces es normal. En curvas el recíproco es cierto.
+\end{prop}
+
+El recíproco no es cierto en general, como podemos ver en el siguiente ejemplo.
+
+\begin{ejs}
+$X\equiv z^2=x^2+y^2$ es un cono, por lo que tiene un punto singular en $(0,0,0)$, pero sin embargo es normal (por lo tanto todo el cono es normal). Sea $A=\mathcal{A}(X)=k[x,y,z]/\langle z^2-x^2-y^2\rangle$. Por la forma que tiene la ecuación, observamos que $A$ es un $k[x,y]-$módulo finitamente generado por $\overline{1},\overline{z}$ (de hecho es un módulo libre porque estos generadores son una base). Entonces el cuerpo de fracciones $K(X)=k(x,y)[z]/\langle z^2-x^2-y^2\rangle$, que es una extensión finita de $k(x,y)$ de grado 2.  
+
+Tomamos un elemento de $K(X)$, $P(x,y,z)=f(x,y)+zg(x,y)$ con $f,g\in k(x,y)$. Si $g=0$ entonces $P(x,y,z)\in k(x,y)$, que por ser $k[x,y]$ DFU, si $P$ es entero, entonces $P\in k[x,y]$.  En general, cualquier elemento entero sobre $A$, entonces lo es sobre $k[x,y]$ por ser $A$ entero sobre $k[x,y]$ al ser un módulo finitamente generado. Por tanto $P$ es entero sobre $k[x,y]$ y por ser integramente cerrado, $P\in k[x,y]$, luego $P\in A$. Por tanto suponemos que $g\neq 0$, por lo que $P\notin k(x,y)$. Por lo tanto $g$ tiene grado 2 sobre $k(x,y)$. El único automorfismo no trivial $K(X)$ es el conjugado ($z\mapsto -z$), por lo que el polinomio mínimo de $P$ sobre $k(x,y)$ es
+$$(T-f(x,y)-zg(x,y))(T-f(x,y)+zg(x,y))=T^2-2f(x,y)T+(f(x,y)^2-(x^2+y^2)g(x,y)^2).$$
+Observemos que este polinomio es mónico. Si $a\in A$ es entero, entonces existe $f$ mónico con coeficientes en $A$ tal que $f(a)=0$. Como $P$ es entero sobre $k[x,y]$, existe $R\in k[x,y][T]$ mónico tal que $R(P)=0$. En particular, $R$ tiene que ser múltiplo del anterior, y como es mónico y con coeficientes en $k[x,y]$, entonces también los del polinomio anterior.
+
+Es decir, si $a$ es entero sobre $A$ íntegramente cerrado y $f\in K[x]$ con $K=Frac(A)$ mónico tal que $f(a)=0$, entonces $f\in A[x]$. 
+
+Así, $2f(x,y)\in k[x,y]\Rightarrow f(x,y)\in k[x,y]$, $f(x,y)^2-(x^2+y^2)g(x,y)^2\in k[x,y]\Rightarrow (x^2+y^2)g(x,y)^2=(x+y)(x-y)g(x,y)^2\in k[x,y]$, luego $g(x,y)^2\in k[x,y]$ porque si no los denominadores estarían al cuadrado y no se podrían cancelar (porque estamos en DFU), así que $g(x,y)\in k[x,y]$. Por tanto el polinomio original $P(x,y,z)\in A$. 
+\end{ejs}
 
 \end{document}

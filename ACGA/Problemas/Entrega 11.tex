@@ -1,0 +1,210 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+%\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\Char}{char}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Algebra Conmutativa y Geometría Algebraica}
+\author{Rafael González López,Javier Aguilar Martín,  Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{1}
+Si $f \in k[x_1,\dots,x_n]$ es un polinomio, definimos su \textit{forma inicial} $f^{in}$ como su componente homogénea de menor grado. Sea $X \subseteq \A_k^n$ un conjunto algebraico que contenga al origen. Se define el \textit{cono tangente} $C_O(X)$ de $X$ en el origen como el conjunto algebraico definido por
+\[ \V(\{f^{in} \mid f \in \mathcal{I}(X)\}) \]
+\begin{enumerate}
+	\item Si $\mathcal{I}(X) = \langle f_1,\dots,f_r \rangle$, probar que $C_O(X) = \mathcal{V}(\{f_1^{in},\dots,f_r^{in}\})$, o dar un contraejemplo. ¿Qué ocurre si $\mathcal{I}(X) = \langle f \rangle$?
+	\item Probar que $C_O(X)$ está contenido en la variedad lineal afín $O + T_{X,O}$, y que si el origen es un punto regular de $X$ se tiene la igualdad.
+	\item Calcular el cono tangente y el espacio tangente en el origen de los conjuntos $\V(x^2-x^4-y^4) \subset \A^2$, $\V(xy-x^6-y^6) \subset \A^2$, $\V(z^2-x^2-y^2) \subset \A^3$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\mbox{}
+\begin{enumerate}
+	\item Consideramos el contraejemplo $\mathcal{I}(X) = \langle x^2+x,y^2-x\rangle$. Tenemos que $x^2+y^2=(x^2+x)+(y^2-x)\in\mathcal{I}(X)$. Como es homogéneo, se tiene entonces que $C_O(X) \subseteq \V(\{x^2+y^2\})$. Sin embargo, tomando las formas iniciales de los generadores de $\mathcal{I}(X)$, obtenemos el conjunto algebraico $\V(\{x,-x\})=\V(\{x\})$, la recta $x=0$. Como $\V(\{x\}) \not\subseteq \V(\{x^2+y^2\})$, deducimos que $\V(\{x\}) \neq C_O(X)$.
+
+	Supongamos ahora que $\I(X)=\langle f \rangle$. Podemos expandir $f$ por sus componentes homogéneas $f=f_r+f_{r+1}+\dots+f_n$, donde $f_i$ es un componente homogénea de grado $i$ y $f^{in}=f_r$. Cualquier polinomio en $\I(X)$ será de la forma $p\cdot f$, con $p \in k[x_1,\dots,x_n]$. Descomponiendo $p=p_s+p_{s+1}+\dots+p_m$ en sus componentes homogéneas. Entonces:
+	\[ p\cdot f = \sum_{i=r,j=s}^{n,m} p_j \cdot f_i \]
+	Cada término de la suma será homogéneo y de grado $i+j$. Por lo tanto, $(p \cdot f)^{in} = p_s \cdot f_r \in \langle f^{in} \rangle$. Luego $C_O(X) \subseteq \V(\{f^{in}\})$. La otra contención es trivial, pues $f \in I(X)$. Por lo tanto, $C_O(X) = \V(\{f^{in}\})$.
+
+	\item Sea $\mathcal{I}(X)=\langle f_1,\dots,f_r \rangle$. Supongamos primero que $C_O(X)$ es vacío. Esto se da si y sólo si algún $f^{in} \in k \setminus \{0\}$, es decir, si hay $f \in \mathcal{I}(X)$ con término independiente no nulo. Pero en este caso $f(O) \neq 0$, luego $T_{X,O} = \emptyset = C_O(X)$.
+
+	Supongams ahora que $C_O(X)$ es no vacío. Tenemos entonces que $f^{in}$ es no constante para todo $f \in \mathcal{I}(X)$. En particular, los generadores $f_1,\dots,f_n$ no tienen término independiente. Sea $(a_1,\dots,a_n) \in C_O(X)$. Para ver que $(a_1,\dots,a_n) \in O + T_{X,O}$ basta ver que $f_i(a_1t,\dots,a_nt)$ tiene multiplicidad $≥2$ en $t=0$. Ya hemos visto que es de multiplicidad $≥1$. Obsérvse que:
+	\[ f_i^{in}(a_1t,\dots,a_nt) = f_i^{in}(a_1t,\dots,a_nt) = t^{d_i} f_i^{in}(a_1,\dots,a_n) = 0 \]
+
+	donde $d_i$ es el grado del polinomio $f_i^{in}$, que es necesariamente mayor que $0$ porque $f_i^{in}$ es no constante. Entonces $f_i(a_1t,\dots,a_nt)$ es un polinomio con monomios de al menos grado $d_i + 1$. Al derivar, nos queda un polinomio con monomios de la menos grado $d_i > 0$, que por lo tanto se anulan en $t=0$, lo que implica la multiplicidad $≥2$. Aplicando esto a cada $i=1,\dots,r$, llegamos a que $(a_1,\dots,a_n) \in T_{X,O}$.
+
+	Nos preguntamos en qué condiciones es el origen un punto regular de $X$. Una condición necesaria es que todas las filas de la matriz jacobiana tengan al menos un elemento no nulo. Esto se traduce a que cada función del sistema generador reducido debe tener una componente lineal, es decir, su forma inicial sea lineal. 
+
+	Sea $a=(a_1,\dots,a_n)$ tal que $a \notin C_O(X)$ y $a$ como vector fuera tangente a $X$ en $O$. Si $a \notin C_O(X)$, entonces existe un $f \in \mathcal{I}(X)$ tal que $f^{in}(a) \neq 0$. Podemos suponer sin pérdida de generalidad que $f$ está en el sistema generador. Supongamos que $X$ fuera regular en el origen. Demostraremos por reducción al absurdo que esto no es posible. Por lo que hemos dicho antes, $f^{in}$ debe ser lineal. Como $a$ es tangente a $X$ en $O$, $f(ta)$ tiene multiplicidad $t ≥ 2$ en $t=0$. Sin embargo, $f^{in}$ es lineal, por lo que $f^{in}(ta)=tf^{in}(a)$. Al derivar, obtenemos una componente $f^{in}(a)$. Las demás componentes homogéneas están siendo multiplicadas por alguna potencia de $t$, luego se anulan cuando $t=0$ y queda que $\left.\frac{d}{dt}f(ta)\right|_{t=0}=f^{in}(a)$. Como $f^{in}(a) \neq 0$, llegamos a que $a$ no es tangente a $X$ en $O$. Hemos llegado a un absurdo.
+
+	\item Sea $X_1=\V(x^2-x^4-y^4)$, $X_2=\V(xy-x^6-y^6)$ y $X_3=\V(z^2-x^2-y^2)$. Tenemos que estos 3 polinomios son irreducibles y, en consecuencia, los ideales que generan son radicales. Entonces $\I(X_i)$ es principal y coincide con los polinomios anteriores para cada $i=1,\dots,3$. Por lo tanto, como ya hemos visto en el primer apartado, basta tomar el conjunto algebraico generado por la forma inicial de sus respectos polinomios generadores:
+	\[ C_O(X_1) = \V(x^2) = \V(x), \text{ la recta }x=0. \]
+	\[ C_O(X_2) = \V(xy), \text{ las rectas }x=0\text{ e }y=0. \]
+	\[ C_O(X_3) = \V(z^2-x^2-y^2), \text{ el propio cono}.\]
+\end{enumerate}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{4}\
+ 
+\begin{enumerate}
+\item Sea $X = \V(f)\subset \PP^n_k$ una hipersuperficie proyectiva, donde $f\in k[x_0,\dotsc,x_n]$ es un polinomio homogéneo irreducible. Probar que en el punto $a\in X$ es singular si y solo si $\partial_i f(a) = 0$ para todo $i=0,\dotsc,n$. 
+\item Sea $V\subset \PP^n_k$ una variedad proyectiva irreducible, y sea $I(V )= \gene{F_1,\dotsc,F_k}$ con $F_1,\dotsc,F_k \in k[x_0,\dotsc,x_n]$ homogéneos. Probar que los puntos singulares de $V$ son aquellos en los que el rango de la matriz 
+$$
+\left(
+\frac{\partial F_i}{\partial_j}\right)_{1\leq i \leq k, 0\leq j \leq r}
+$$
+es menor $n-\dim(V)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Notemos que si $f$ es homogéneo de grado $d$ entonces es claro que $\partial_i f$ sigue siendo un polinomio homogéneo, o bien de grado $d-1$, o bien de grado $0$. Por tanto, si $\partial_i f$ se anula en $a\in \A^n_k$ entonces también se anula en cualquier representante de $[a]\in \PP^n_k$. 
+\begin{enumerate}
+\item Supongamos que $\partial_i f(a)=0$ para todo $i=0,\dotsc,n$. Si $a=(a_0:\dotsc:a_n)$, sabemos que existe $a_i \neq 0$. Por simplicidad consideramos $i=0$. Si tomamos la carta afín $U_0$ podemos considerar $U_0 \cap X$ abierto de afín de $X$ y calcular ahí el espacio tangente, considerando el representante de $a=(1,a_1/a_0 \dotsc, a_n/a_0)$ (al aplicarlo sobre $f$ tendríamos $f$ deshomogeneizado). Por teoría, sabemos que un punto es singular si 
+$$
+rg
+\begin{pmatrix}
+\partial_1 f(a) & \dotsc & \partial_n f(a)
+\end{pmatrix} < n-\dim(X) \Leftrightarrow 
+rg
+\begin{pmatrix}
+\partial_1 f(a) & \dotsc & \partial_n f(a)
+\end{pmatrix} = 0
+$$
+Esto es si y solo si $\partial_i f(a) = 0$ para todo $i=1,\dotsc,n$, lo cual se tiene por hipótesis.
+
+Supongamos que $a=(a_0:\dotsc:a_n)$ es un punto singular de $X$. Sabemos que algún $a_i\neq 0$, supondremos por comodidad que es $a_0$ y análogamente a lo anterior obtenemos que $\partial_i f(a) = 0$ para todo $i=1,\dotsc,n$. Tenemos que ver que $\partial_0 f(a)=0$, para lo cuál usaremos que para todo polinomio homogéneo de grado $d$ se tiene que
+$$
+\sum_{i=0}^n x_i \frac{\partial f}{\partial x_i}=df
+$$
+Aplicando en $a$, como $f(a)=0$, entonces
+$$
+\sum_{i=0}^n a_i \frac{\partial f}{\partial x_i}(a) = a_0 \frac{\partial f}{\partial x_0}(a) = d F(a) = 0
+$$
+Como $a_0\neq 0$, tenemos el resultado.
+\item Sea $a=(a_0:\dotsc:a_n)\in X$ y supongamos sin pérdida de generalidad que $a_0\neq 0$. Procediendo como en el apartado anterior sabemos que $a$ es singular en $X$ si y solo si 
+$$
+rg
+\begin{pmatrix}
+\frac{\partial F_1^{dh}}{\partial_1}(a) & \cdots & \frac{\partial F_1^{dh}}{\partial_n}(a)\\
+\vdots & \ddots& \vdots\\
+\frac{\partial F_k^{dh}}{\partial_1}(a) & \cdots & \frac{\partial F_1^{dh}}{\partial_n}(a)
+\end{pmatrix} =  rg
+\begin{pmatrix}
+\frac{\partial F_1}{\partial_1}(a) & \cdots & \frac{\partial F_1}{\partial_n}(a)\\
+\vdots & \ddots& \vdots\\
+\frac{\partial F_k}{\partial_1}(a) & \cdots & \frac{\partial F_1}{\partial_n}(a)
+\end{pmatrix} < n-\dim(V)
+$$
+Tomando en la segunda matriz el representante $(1,a_1/a_0,\dotsc,a_n/a_0)$. Como el rango de una matriz no varía tras multiplicarla por un escalar no nulo, deducimos que en realidad es independiente del representante de $a$. 
+
+Para tener el resultado vamos a probar que la columna que falta es linealmente dependiente del resto de las columnas. De la fórmula anterior para polinomios homogéneos (supongamos de grado $d$) tenemos que, usando que $a_0\neq0$,
+$$
+\sum_{j=0}^n a_j \frac{\partial F_i}{\partial x_j}=dF(a) = 0 \quad \Longrightarrow \quad \frac{\partial F_i}{\partial x_0} = -\sum_{j=1}^n \frac{a_j}{a_0} \frac{\partial F_i}{\partial x_j}
+$$
+Por lo que
+$$
+\begin{pmatrix}
+ \frac{\partial F_1}{\partial x_0}\\
+ \vdots\\
+  \frac{\partial F_k}{\partial x_0}
+\end{pmatrix} = -\sum_{i=1}^n  \frac{a_j}{a_0} \begin{pmatrix}
+ \frac{\partial F_1}{\partial x_j}\\
+ \vdots\\
+  \frac{\partial F_k}{\partial x_j}
+\end{pmatrix}
+$$
+Por tanto el rango de la matriz no varía al ampliar con dicha columna.
+\end{enumerate}
+Vamos a probar la fórmula que hemos usado para polinomios homogéneos. Como los dos lados de la igualdad son $k$-lineales basta probarlo para los elementos de una base de los polinomios homogéneos de grado $d$, es decir, los elementos de la forma $f=x_0^{i_0}\cdots x_n^{i_n}$ con $\sum_i i_i = d$. Entonces es claro que
+$$
+x_i \frac{\partial f}{\partial x_i} = i_i f \Rightarrow \sum_{i=0}^n x_i \frac{\partial f}{\partial x_i} = \sum_{i=0}^n i_i f = f \sum_{i=0}^n i_i  = df
+$$
+\end{solucion}
+
+
+\newpage
+\begin{ejercicio}{6}\
+ 
+\begin{enumerate}
+\item\label{1} Sea $X \subseteq \PP^2_k$ una cónica (es decir, $\I(X$) está generado por
+un polinomio de grado 2). Probar que, si $X$ tiene algún punto singular,
+es la unión de dos rectas.
+
+\item\label{2} Sea $X \subseteq \PP^2_k$ una cúbica (es decir, $\I(X)$ está generado por un polinomio
+de grado 3). Probar que, si $X$ tiene dos puntos singulares distintos, es la
+unión de una recta y una cónica (Ayuda: Reducir al caso en el que la recta
+que une los dos puntos singulares es $x_0 = 0$).
+
+\end{enumerate}
+\end{ejercicio}
+
+\begin{solucion}\
+\begin{enumerate}
+\item Sea $\langle c_{0,0}x_0^2+c_{1,1}x_1^2+c_{2,2}x_2^2+c_{0,1}x_0x_1+c_{0,2}x_0x_2+c_{1,2}x_1x_2\rangle=\I(X)$ y supongamos que $\Char(k)\neq 2$. A este polinomio le podemos asociar la matriz  
+$$C=\begin{pmatrix}
+c_{0,0} & \frac{c_{0,1}}{2} &\frac{c_{0,2}}{2}\\
+\frac{c_{0,1}}{2}       & c_{1,1} & \frac{c_{1,2}}{2} \\
+\frac{c_{0,2}}{2}        &  \frac{c_{1,2}}{2}       & c_{2,2}
+\end{pmatrix}.$$
+
+Por la asignatura \emph{Álgebra Lineal y Geometría II}, $X$ es unión de dos rectas distintas si y solo si $rg(C)=2$. Por tanto, vamos a probar que si tiene algún punto singular, entonces $rg(C)= 2$. Si $X$ tiene algún punto singular, entonces $\exists a=(a_0:a_1:a_2)\in X$ tal que la matriz de sus derivadas parciales
+$$\begin{pmatrix}
+2c_{0,0}a_0 +c_{0,1}a_1+c_{0,2}a_2 & 2c_{1,1}a_1 +c_{0,1}a_0+c_{1,2}a_2 & 2c_{0,0}a_2+c_{0,2}a_0+c_{1,2}a_1
+\end{pmatrix}=(0\ 0\ 0).$$
+Esto equivale a 
+$$rg\begin{pmatrix}
+2c_{0,0} & c_{0,1} &c_{0,2}\\
+c_{0,1}       & 2c_{1,1} & c_{1,2} \\
+c_{0,2}        &  c_{1,2}       & 2c_{2,2}
+\end{pmatrix}\leq 2\Leftrightarrow rg\begin{pmatrix}
+c_{0,0} & \frac{c_{0,1}}{2} &\frac{c_{0,2}}{2}\\
+\frac{c_{0,1}}{2}       & c_{1,1} & \frac{c_{1,2}}{2} \\
+\frac{c_{0,2}}{2}        &  \frac{c_{1,2}}{2}       & c_{2,2}
+\end{pmatrix}\leq 2.$$
+
+Además, el rango no puede ser 1, pues por la misma asignatura, tendríamos que la cónica es una recta doble. Pero $\I(X)$ no puede estar generado por un polinomio de grado 1 elevado al cuadrado, ya que entonces no sería radical. Por lo tanto es exactamente igual a 2, como queríamos probar.
+
+En el caso $\Char(k)=2$ tendremos al derivar que 
+$$\begin{pmatrix}
+c_{0,1}a_1+c_{0,2}a_2 & c_{0,1}a_0+c_{1,2}a_2 & c_{0,2}a_0+c_{1,2}a_1
+\end{pmatrix}=(0\ 0\ 0),$$
+o lo que es lo mismo 
+$$rg\begin{pmatrix}
+0 & c_{0,1} &c_{0,2}\\
+c_{0,1}       & 0 & c_{1,2} \\
+c_{0,2}        &  c_{1,2}       & 0
+\end{pmatrix}\leq 2.$$
+Pero en $\Char(k)=2$, esto ocurre siempre puesto que su determinante es $2c_{0,1}c_{1,2}c_{0,2}=0$, por lo que todo punto es singular. Esto implica que $X$ no es variedad, por lo que se descompone como unión de variedades. Como el polinomio que lo genera es de grado 2, esto quiere decir que es reducible en 2 polinomios de grado 1, por lo que $X$ es unión de dos rectas.
+
+\item Aplicando un cambio proyectivo de coordenadas podemos suponer que los puntos singulares son $P=(0:1:0)$ y $Q=(0:0:1)$. Vamos a probar que la recta que los une, $x_0=0$, está contenida en la cúbica, y por tanto es reducible a una recta y una cónica (ya que el polinomio factoriza al menos en un término de grado 1 y otro de grado 2).
+
+Sea $\langle f\rangle= \I(X)$ de modo que $f(x_0,x_1,x_2)$ es el siguiente polinomio 
+\begin{gather*}
+c_{0,0,0}x_0^3+c_{1,1,1}x_1^3+c_{2,2,2}x_2^3+c_{0,0,1}x_0^2x_1+c_{0,0,2}x_0^2x_2+c_{1,1,2}x_1^2x_2+c_{0,1,1}x_1^2x_0\\
++c_{0,2,2}x_2^2x_0+c_{1,2,2}x_2^2x_1+c_{0,1,2}x_0x_1x_2
+\end{gather*}
+En primer lugar, como los puntos pertenecen a la cúbica, podemos sustituir en el polinomio y obtenemos $c_{1,1,1}=c_{2,2,2}=0$. Por lo tanto nos queda que
+$$f(x_0,x_1,x_2)=c_{0,0,0}x_0^3+c_{0,0,1}x_0^2x_1+c_{0,0,2}x_0^2x_2+c_{1,1,2}x_1^2x_2+c_{0,1,1}x_1^2x_0
++c_{0,2,2}x_2^2x_0+c_{1,2,2}x_2^2x_1+c_{0,1,2}x_0x_1x_2$$
+Calculamos sus derivadas evaluadas en los puntos singulares y deducimos
+$$\begin{pmatrix}
+c_{0,1,1} & 0 & c_{1,1,2}
+\end{pmatrix}=\begin{pmatrix}
+0 & 0 & 0
+\end{pmatrix}$$
+$$\begin{pmatrix}
+c_{0,2,2} & c_{1,2,2} & 0
+\end{pmatrix}=\begin{pmatrix}
+0 & 0 & 0
+\end{pmatrix}$$
+Por lo que
+$$f(x_0,x_1,x_2)=c_{0,0,0}x_0^3+c_{0,0,2}x_0^2x_2+c_{0,1,1}x_1^2x_0
++c_{0,1,2}x_0x_1x_2=x_0(c_{0,0,0}x_0^2+c_{0,0,2}x_0x_2+c_{0,1,1}x_1^2
++c_{0,1,2}x_1x_2)$$
+Así que hemos descompuesto la cúbica como una recta ($x_0=0$) y una cónica ($c_{0,0,0}x_0^2+c_{0,0,2}x_0x_2+c_{0,1,1}x_1^2
++c_{0,1,2}x_1x_2=0$).
+\end{enumerate}
+\end{solucion}
+
+\end{document}

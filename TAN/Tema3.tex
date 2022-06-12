@@ -8,29 +8,95 @@ La integral
 \[ Γ(s) = \int_0^{+∞} t^{s-1}e^{-t} dt, \quad \text{Re}(s)>0 \]
 define una función analítica en el semiplano $\text{Re}(s)>0$. A la que se llama función Gamma.
 \end{defi}
+\begin{dem}
+Veamos que efectivamente $Γ$ es analítica. Tenemos que:
+\begin{enumerate}
+\item $t\mapsto t^{s-1}e^{-t}$ es medible por ser continua en $t$.
+\item $s\mapsto t^{s-1}e^{-t}$ es analítica porque $t^{s-1}$ es analítica y $e^{-t}$ es constante en $s$.
+\item 
+\[ |t^{s-1}e^{-t}| = |e^{(σ+iu-1)\log t}e^{-t}| = e^{(σ-1)\log t}e^{-t} = t^{σ-1}e^{-t} ≤ \begin{cases}
+	t^{b-1}e^{-t} &\text{ si }t>1\\
+	t^{a-1}e^{-t} &\text{ si }0<t<1
+\end{cases}\] 
+para $s \in K := \{s : 0 < a < \text{Re}(s) < b\}$. Como $t^{b-1}e^{-t/2} ≤ M$ para cierta $M$:
+\[ \int_1^{∞}t^{b-1}e^{-t}dt = \int_1^{∞}(t^{b-1}e^{-t/2)}e^{-t/2}dt ≤ M \int_1^{∞} e^{-t/2}dt < ∞ \]
+\[ \int_0^1 t^{a-1}e^{-t} dt < ∞ \]
+\end{enumerate}
+Luego, $Γ(s)$ es analítica en todo abierto $K=\{s : 0 < a < \text{Re}(s) < b\}$ por el teorema de analiticidad de integral paramétrica.
+Entonces es analítica en $\text{Re}(s) > 0$.
+\qed
+\end{dem}
 
 \begin{prop}
 La función gamma se prolonga a una función meromorfa en todo el plano. Que tiene un polo simple en cada entero $n ≤ 0$. Estos son sus únicos polos. Esta función verifica la ecuación funcional
 \[ Γ(s+1) = sΓ(s) \]
 \end{prop}
+
+\begin{dem}
+\[
+Γ(s+1) = \int_0^{∞} t^s e^{-t} dt = \left.-e^{-t}t^s\right|_0^{∞} + s\int_0^{∞}e^{-t}t^{s-1}dt = s\int_0^{∞}t^{s-1}e^{-t}dt = s Γ(s)
+\]
+
+En cuanto a la extensión, como $Γ(s)=Γ(s+1)/s$ y $Γ(s+1)/s$ es meromorfa en $\text{Re}(s)>-1$. Por inducción, $Γ(s)$ es meromorfa en todo el plano de manera que:
+\[ Γ(s) = \frac{Γ(s+n+1)}{s(s+1)\dots(s+n)}\]
+luego $Γ$ tiene polos en cada entero $≤0$.
+\qed
+\end{dem}
+
 \begin{coro}
 Para valores enteros positivos $Γ(n+1)=n!$ y $Γ(1)=0!=1$.
 \end{coro}
+\begin{dem}
+\[ Γ(1) = \int_0^{∞} e^{-t} dt = 1 = 0!\]
+Supongamos que $Γ(n)=(n-1)!$. Entonces:
+\[ Γ(n+1) = nΓ(n)=n(n-1)!=n! \]
+Luego, por inducción: $Γ(n+1)=n!$ para todo $n$ natural.
+\qed
+\end{dem}
+
 \begin{prop}
 \[ Γ(1/2)=\sqrt{π}, \quad Γ\left(n+\frac{1}{2}\right) = \frac{(2n)!\sqrt{π}}{n!2^{2n}} \]
 \end{prop}
+\begin{dem}Haciendo el cambio de variable $t=u^2$ y $t=v^2$ en las dos integrales:
+\begin{align*}
+	Γ(1/2)^2 & = \left(\int_0^{∞}t^{-1/2}e^{-t}dt\right)^2 = 4 \int_0^{∞}\int_0^{∞} e^{-(u^2+v^2)} dudv\\
+	& = 4 \int_0^{π/2}\int_0^{∞} e^{-r^2}r dr dφ = 4 \frac{1}{2} \frac{π}{2} \int_0^{∞} e^{-x} dx = π
+\end{align*}
+Luego $Γ(1/2)=\sqrt{π}$. La otra igualdad la veremos por inducción. El caso $n=0$ es el que acabamos de tratar. La hipótesis de inducción es
+\[ Γ(n+1/2) = \frac{(2n)!\sqrt{π}}{n!2^{2n}}\]
+Por tanto
+\begin{align*}
+	Γ(n+1+1/2) & = (n+1/2)Γ(n+1/2) = (n+1/2) \frac{(2n)!\sqrt{π}}{n!2^{2n}}\\
+	& = \frac{(2n+1)(2n)!\sqrt{π}}{n!2^{2n+1}} \cdot \frac{2n+2}{2(n+1)}= \frac{(2(n+1))!\sqrt{π}}{(n+1)!2^{2(n+1)}} 
+\end{align*}
+\qed
+\end{dem}
+
 \begin{prop}
-\[ \int_0^1 t^{α-1}(1-t)^{β-1} dt = \frac{Γ(α)Γ(β)}{Γ(α+β)}, \quad \text{Re}(α)>0, \text{Re}(β)>0 \]
-Calculamos $Γ(α)Γ(β)$ usando el mismo truco que para calcular $Γ(1/2)$.
+\[ Β(α,β):=\int_0^1 t^{α-1}(1-t)^{β-1} dt = \frac{Γ(α)Γ(β)}{Γ(α+β)}, \quad \text{Re}(α)>0, \text{Re}(β)>0 \]
 \end{prop}
+\begin{dem}
+Calculamos $Γ(α)Γ(β)$ usando el mismo truco que para calcular $Γ(1/2)$.
+\begin{align*}
+	Γ(α)Γ(β) & = \int_0^∞ u^{α-1}e^{-u}du \int_0^{∞}v^{β-1}e^{-v} dv = 4 \int_0^{∞}\int_0^{∞} x^{2α-1}y^{2β-1}e^{-(x^2+y^2)}dxdy\\
+	& =4 \int_0^{π/2} \int_0^{∞} (r \sen(φ))^{2α-1} (r\cos(φ))^{2β-1}e^{-r^2}rdrdφ \\
+	& = 4 \int_0^{∞} r^{2α+2β-1}e^{-r^2}dr \int_0^{π/2} (\sin φ)^{2α-1}(\cos φ)^{2β-1} dφ \\
+	& = 4 \frac{1}{2}Γ(α+β) \int_0^{π/2} (\sin φ)^{2α-1}(\cos φ)^{2β-1} dφ \\
+	& = 2 Γ(α+β) \int_0^1 t^{α-1/2}(1-t)^{β-1/2} \frac{dt}{2\sqrt{t}\sqrt{1-t}} = 2 Γ(α+β) \frac{Β(α,β)}{2} = Γ(α+β) Β(α,β)
+\end{align*}
+\qed
+\end{dem}
+
 \begin{prop}[Fórmula de los complementos]
 \[ Γ(s)Γ(1-s) = \frac{π}{\sin (π s)}, \quad s \notin \Z \]
 Caso particular de la proposición anterior. También es conocido como fórmula de reflexión de Euler.
 \end{prop}
 \begin{dem}Supongamos que $0<s<1$.
-$$
-\frac{\Gamma(s)\Gamma(1-s)}{\Gamma(1)} = \beta(1-s,1) = \int_0^1 t^{s-1}(1-t)^{-s}dt = \int_0^1\left(\frac{t}{1-t}\right)^s \frac{dt}{t} \overset{t=x-xt}{=} \int_0^\infty x^s \frac{dx}{x(1+x)} = \frac{\pi}{\sen\pi s} 
-$$
+\begin{align*}
+\frac{\Gamma(s)\Gamma(1-s)}{\Gamma(1)} &= \beta(1-s,1) = \int_0^1 t^{s-1}(1-t)^{-s}dt  = \int_0^1\left(\frac{t}{1-t}\right)^s \frac{dt}{t}\\
+& \overset{t=x-xt}{=} \int_0^\infty  \frac{x^s}{x(1+x)}dx = \frac{\pi}{\sen\pi s} 
+\end{align*}
+\qed
 \end{dem}
 \begin{prop}[Fórmula de duplicación de Legendre]
 \[ Γ(s)Γ(s+1/2) = 2^{1-2s} \sqrt{π} Γ(2s) \]
@@ -43,6 +109,7 @@ Hacemos el cambio de variable $x=4t(1-t)$, equivalente a $t = \frac{1-\sqrt{1-x}
 
 Simplificando:
 \[ \frac{Γ(s)^2}{Γ(2s)} = 2^{1-2s} \frac{Γ(s)Γ(1/2)}{Γ(s+1/2)} \Rightarrow Γ(s)Γ(s+1/2) = 2^{1-2s} \sqrt{π} Γ(2s) \]
+\qed
 \end{dem}
 
 \begin{prop}[Expresión de Gauss] Uniformemente en cada compacto $K$ que no contenga polos de $Γ(s)$ se cumple
@@ -51,12 +118,12 @@ En consecuncia la función $Γ(s)$ no toma nunca el valor 0.
 \end{prop}
 \begin{dem}
 Por las propiedades de las funciones uniforme en compactos, basta ver que la $\frac{s(s+1)\cdots(s+n)}{n!n^s}$ converge uniformemente.
-\[ \frac{s(s+1)\cdots(s+n)}{n!n^s} = e^{-s \log n} s \left(s + \frac{s}{1}\right)\left(s + \frac{s}{2}\right)\cdots \left(s + \frac{s}{n}\right)\]
-\[ = e^{s(1+\frac{1}{2}+\cdots+\frac{1}{n}-\log n)}s\prod_{k=1}^n\left(1+\frac{s}{1}\right)e^{-s/k}\]
+\[ \frac{s(s+1)\cdots(s+n)}{n!n^s} = e^{-s \log n} s \left(1 + \frac{s}{1}\right)\left(1 + \frac{s}{2}\right)\cdots \left(1 + \frac{s}{n}\right)\]
+\[ = e^{s(1+\frac{1}{2}+\cdots+\frac{1}{n}-\log n)}s\prod_{k=1}^n\left(1+\frac{s}{k}\right)e^{-s/k}\]
 Por un lado:
 \[ e^{s(1+\frac{1}{2}+\cdots+\frac{1}{n}-\log n)}s \xrightarrow{n\to∞} se^{γs} \quad \text{uniformemente} \]
 Tomando $R$ tal que $|s|≤R$ para todo $s \in K$:
-\[\prod_{k=1}^n\left(1+\frac{s}{1}\right)e^{-s/k} = \prod_{k≤2R} \left(1+\frac{s}{k}\right)e^{-s/k} \cdot \prod_{k=2R+1}^n \left(1+s/k\right)e^{-s/k} \]
+\[\prod_{k=1}^n\left(1+\frac{s}{k}\right)e^{-s/k} = \prod_{k≤2R} \left(1+\frac{s}{k}\right)e^{-s/k} \cdot \prod_{k=2R+1}^n \left(1+\frac{s}{k}\right)e^{-s/k} \]
 Su convergencia viene dada por la convergencia de tomar logaritmo del segundo término. Se puede ver fácilmente que $|\log(1+x)-x ≤ |x|^2(1-|x|)$ (toma la serie de Taylor centrada en $0$ de $\log(1+x)$).
 \[ \sum_{k=2R+1}^n \left|\left(\log(1+\frac{s}{k})-\frac{s}{k}\right)\right| ≤ \sum_{k=2R+1} \left|\frac{s}{k}\right|^2\left(1-\left|\frac{s}{k}\right|\right) \]
 Para $R$ suficientemente grande, $s/k ≤ R/2R ≤ 1/2$:
@@ -68,6 +135,7 @@ Observemos que:
 Usando el Teorema de Convergencia Dominada se puede demostrar que podemos sacar la integral fuera:
 \[ \int_0^n t^{x-1}\left(1-\frac{t}{n}\right)^n dt = \int_0^n (un)^{x-1}(1-u)^n ndu = n^x B(x,n+1) \]
 El resto consiste en escribir $B$ en función de $Γ$ y usar que $Γ(n+1)=n!$.
+\qed
 \end{dem}
 
 \begin{prop}
@@ -76,6 +144,11 @@ El resto consiste en escribir $B$ en función de $Γ$ y usar que $Γ(n+1)=n!$.
 \begin{prop}
 \[ Γ'(1) = \int_0^{∞} (\log t) e^{-t} dt = -γ \]
 \end{prop}
+\begin{dem}
+El teorema de extensión analítica nos da un resultado acerca de la derivación paramétrica bajo signo integral.
+\[ Γ'(1) = \int_0^{∞} \left.\frac{\partial}{\partial s} (t^{s-1}e^{-t})\right|_{s=1} dt = \int_0^{∞}\log t\ e^{-t} dt = -γ \]
+\qed
+\end{dem}
 Aunque no veremos la prueba quiero incluir aquí el conocido desarrollo de Stirling. Puede versa la demostración en el libro de Edwards.
 \begin{prop}
 Dado $s$ número complejo no negativo, designemos por $θ$ el argumento de $s$ tal que $|θ| < π$, se tiene entonces
@@ -113,12 +186,14 @@ Entonces:
 \[ \sum_{n≤x} \frac{1}{n^s} = \frac{x}{x^s}-\frac{\{x\}}{x^s} + \frac{s}{1-s}(x^{1-s}-1)- s\int_1^x \{u\} \frac{du}{u^{s+1}} = \frac{x^{1-s}}{1-s}  \frac{\{x\}}{x^s} - s \int_1^x \frac{\{u\}}{u^{s+1}}du - \frac{s}{1-s} \]
 
 Obsérvese que:
-\[ \sum_{n≤y}\frac{1}{n^s} - \sum_{n≤x} \frac{1}{n^s} = \frac{y^{1-s}}{1-s} -\frac{x^{1-s}}{1-s}- \frac{\{y\}}{y^s} + \frac{\{x\}}{x^s} -s\int_x^y \frac{\{u\}}{u^{s+1}} du \xrightarrow{y \to ∞}ζ(s)-\int_{n≤x} \frac{1}{n^s} = \]
+\[ \sum_{n≤y}\frac{1}{n^s} - \sum_{n≤x} \frac{1}{n^s} = \frac{y^{1-s}}{1-s} -\frac{x^{1-s}}{1-s}- \frac{\{y\}}{y^s} + \frac{\{x\}}{x^s} -s\int_x^y \frac{\{u\}}{u^{s+1}} du \xrightarrow{y \to ∞}ζ(s)-\sum_{n≤x} \frac{1}{n^s} = \]
 \[ = \frac{x^{1-s}}{s-1}+ \frac{\{x\}}{x^s} -s\int_x^{∞} \frac{\{u\}}{u^{s+1}}du \]
 Sabemos que la integral converge porque $Re(s)>0$. Ahora bien,
 \[ -s\int_x^∞ \frac{\{u\}}{u^{s+1}} du = -s\int_x^{∞} \frac{\{u\}-1/2}{u^{s+1}} du - s\int_x^{∞} \frac{1/2}{u^{s+1}} du \]
 Integrando por partes y sustituyendo en la expresión, nos da la forma final.
+\qed
 \end{dem}
+
 \begin{coro}
 La función $ζ(s)$ es analítica en el semiplano $\Re(s) > 0$ salvo en el punto $s = 1$. En el punto $s = 1$ la función $ζ(s)$ posee un polo simple de residuo igual a $1$.
 \end{coro}
@@ -130,8 +205,9 @@ Las dos primeras condiciones son triviales. Como
 	\frac{1}{2}u^{-σ_1-1} &\text{ si }0<u<1
 \end{cases}\]
 donde $σ_0<σ<σ_1$.
+\qed
 \end{dem}
-Pasamos ahora a probar la ecuación funcional de la función $ζ(s)$. Riemann dio tres demostraciones y posteriormente se han visto numerosas más. La más instructiva es la segunda d Riemann. Esta prueba depende de una propiedad de la función $θ$ definida por
+Pasamos ahora a probar la ecuación funcional de la función $ζ(s)$. Riemann dio tres demostraciones y posteriormente se han visto numerosas más. La más instructiva es la segunda d Riemann. Esta prueba depende de una propiedad de la función $θ$\footnote{Esta $θ$ no tiene nada que ver con la función $θ$ definida en temas anteriores} definida por
 \[ θ(x) = \sum_{n \in \Z} e^{-πn^2x}, \quad x > 0 \]
 \begin{teorema}[Fórmula de Poisson]
 \[ θ\left(\frac{1}{x}\right) = \sqrt{x} θ(x), \quad x > 0 \]
@@ -149,7 +225,7 @@ Aplicamos la transformada de Fourier:
 Como $e^{2πin}=1$, esta integral es igual a:
 \[ \sum_{n\in\Z} \int_n^{n+1} e^{-πx^2a-2πikx}dx = \frac{1}{\sqrt{a}}\int_{-∞}^{∞} e^{-πy^2-2πiky/\sqrt{a}}dy = \frac{1}{\sqrt{a}} e^{-πk^2/a}\]
 Por lo tanto, evaluando en $0$ la serie de Fourier de $f(t)$:
-\[ θ(a) = f(0) = \frac{1}{\sqrt{a}}\sum_k e^{-πk^2/a} = \frac{1}{\sqrt{α}}θ\left(\frac{1}{a}\right) \]
+\[ θ(a) = f(0) = \frac{1}{\sqrt{a}}\sum_k e^{-πk^2/a} = \frac{1}{\sqrt{a}}θ\left(\frac{1}{a}\right) \]
 \qed
 \end{dem}
 
@@ -157,15 +233,41 @@ Un primer paso intermedio es relacionar la función $ζ(s)$ y la función $θ(x)
 \begin{prop}
 \[ π^{-s/2} Γ\left(\frac{s}{2}\right) ζ(s) = \int_0^{+∞} x^{s/2} \frac{θ(x)-1}{2} \frac{dx}{x}, \quad \Re(s) > 1 \]
 \end{prop}
+\begin{dem}
+Tenemos que
+\[ Γ(s/2) = \int_0^{∞} t^{s/2}e^{-t} \frac{dt}{t} = \int_0^{∞}(πn^2x)^{s/2}e^{πn^2x} \frac{dx}{x}\]
+Luego para $σ>0$:
+\[ π^{-s/2}Γ(s/2)\frac{1}{n^s} = \int_0^{∞}x^{s/2}e^{πn^2x}\frac{dx}{x}\]
+Sumaremos sobre $n$. Para intercambiar suma por integral basta ver que la serie converge absolutamente a una función integrable. Entonces:
+\[ π^{-s/2}Γ(s/2)ζ(s) = \int_0^{∞}x^{s/2}\frac{θ(x)-1}{2} \frac{dx}{x}\]
+\qed
+\end{dem}
 \begin{prop}
 La función $ζ(s)$ se extiende a una función meromorfa en todo el plano.
 Además para $s \notin \{0,1\}$, se tiene
 \[ π^{-s/2} Γ\left(\frac{s}{2}\right) ζ(s) = \frac{1}{s(s-1)} + \int_1^{+∞} (x^{s/2}+x^{(1-s)/2})\frac{θ(x)-1}{2} \frac{dx}{x} \]
 \end{prop}
+\begin{dem}
+Usando que $θ(1/y)=\sqrt{y}θ(y)$:
+\begin{align*}
+	π^{-s/2}Γ(s/2)ζ(s) & = \int_0^1 x^{s/2}\frac{θ(x)-1}{2} \frac{dx}{x} +  \int_1^{∞} x^{s/2}\frac{θ(x)-1}{2} \frac{dx}{x}\\
+	& = \int_1^{∞} y^{-s/2}\frac{θ(y)\sqrt{y}-1}{2} \frac{dy}{y} +  \int_1^{∞} x^{s/2}\frac{θ(x)-1}{2} \frac{dx}{x}\\
+	& = \int_1^{∞} y^{-s/2}\left[\frac{θ(y)-1}{2}\sqrt{y}+\frac{\sqrt{y}}{2}-\frac{1}{2}\right] \frac{dy}{y} +  \int_1^{∞} x^{s/2}\frac{θ(x)-1}{2} \frac{dx}{x}\\
+	& = \int_1^{∞} (x^{(1-s)/2}+x^{s/2})\frac{θ(x)-1}{2} \frac{dx}{x} + \int_1^{∞} \frac{x^{(1-s)/2}-x^{-s/2}}{2} \frac{dx}{x}\\
+	& = \int_1^{∞} (x^{(1-s)/2}+x^{s/2})\frac{θ(x)-1}{2} \frac{dx}{x} + \frac{1}{s(s-1)}
+\end{align*}
 
-\begin{teorema}[Ecuación funcional] La función $π^{-s/2} Γ(s/2) ζ(s)$ queda invariante al cambiar $s$ po $1-s$, es decir
+\qed
+\end{dem}
+
+\begin{teorema}[Ecuación funcional] La función $π^{-s/2} Γ(s/2) ζ(s)$ queda invariante al cambiar $s$ por $1-s$, es decir
 \[ π^{-s/2} Γ(s/2) ζ(s) = π^{(s-1)/2} Γ\left(\frac{1-s}{2}\right) ζ(1-s) \]
 \end{teorema}
+\begin{dem}
+Basta ver que la parte derecha de la ecuación anterior es invariante al cambiar $s$ por $1-s$.
+\qed
+\end{dem}
+
 \begin{coro}
 La función $ζ(s)$ es meromorfa en todo el plano, tiene un único polo en $s = 1$, no se anula en $\Re(s) > 1$. Tiene ceros simples en los puntos $-2, -4, \dots, -2n, \dots$ y estos son sus únicos ceros en $\Re(s) < 0$. Son los llamados ceros triviales. Los únicos ceros no triviales posibles se encuentra en la banda crítica $0 ≤ \Re(s) ≤ 1$.
 \end{coro}
@@ -187,7 +289,7 @@ Dado que no todos los alumnos han visto la demostración de estos teoremas, dare
 \begin{prop}[Principio del argumento]
 Sea $f : Ω \to \C$ una función analítica. $P \subset Ω$ un polígono cerrado y convexo, $\partial P$ la frontera orientada en el sentido contrario a las agujas del reloj. Si $f$ no se anula en la frontera de $P$ tendremos
 \[ \frac{1}{2 π i} \int_{\partial P} \frac{f'(z)}{f(z)} dz = N(P) \]
-donde $N(P)$ es el número de ceros de $f$ en $P$ contados cada uno según su multiplicidad
+donde $N(P)$ es el número de ceros de $f$ en $P$ contados cada uno según su multiplicidad.
 \end{prop}
 
 \begin{teorema}
@@ -204,7 +306,7 @@ Luego:
 \[ \gabs{\frac{s(s-1)}{2}} ≤ \frac{1}{8}+\frac{1}{2}R^2 ≤ R^2 \]
 Por otro lado:
 \[ \gabs{x^{s/2}} = \gabs{e^{2/s\log x}} ≤ e^{\gabs{s}/2\log x} ≤ x^{1/4+|t|/2}≤x^{1/4+R/2} \]
-\[ \frac{θ(x)-1}{2} = \sum_{n=1}^{∞} e^{-πn^2x} ≤ \sum_{n=1}^{∞} e^{-πnx} = \frac{e^{-πx}}{1-e^{-πx}} ≤ 2e^{-πx} \]
+\[ \frac{θ(x)-1}{2} = \sum_{n=1}^{∞} e^{-πn^2x} ≤ \sum_{n=1}^{∞} e^{-πnx} = \frac{e^{-πx}}{1-e^{-πx}} ≤ 2e^{-πx} \text{ con }x>1\]
 
 Por lo tanto:
 \begin{align*}
@@ -222,10 +324,10 @@ Sea $f$ analítica y acotada en el disco de centro $0$ y radio $R$. Sea $M$ la c
 \[ \left|\Re\left(\frac{1}{2πi} \int_0^a \frac{f'(z)}{f(z)} dz\right)\right| ≤ \frac{1}{2} + \frac{1}{2}\left(\log \frac{M}{|f(0)|}\right)\left(\log \frac{R}{|a|}\right)^{-1} \]
 \end{prop}
 \begin{dem}
-Podemos definir una rama continua del logaritmo en $(0,b)$ de manera que $\int_0^b f'(z)/f(z) = \log f(b) - \log f(0)$. Entonces suponiendo que $\arg f(b) ≥ \arg f(0)$:
-\[ \gabs{\Re\left(\frac{1}{2πi} \int_0^a \frac{f'(z)}{f(z)} dz\right)} = \frac{\arg f(b) - \arg f(0)}{2π}\]
+Podemos definir una rama continua del logaritmo en $(0,b)$ de manera que $\int_0^a f'(z)/f(z) = \log f(b) - \log f(0)$. Entonces suponiendo que $\arg f(a) ≥ \arg f(0)$:
+\[ \gabs{\Re\left(\frac{1}{2πi} \int_0^a \frac{f'(z)}{f(z)} dz\right)} = \frac{\arg f(a) - \arg f(0)}{2π}\]
 Definimos la función analítica $g(z)=\frac{f(z)+\overline{f(\overline{z})}}{2}$. Se tiene que $g(0)=f(0)$ y que para los valores reales $0<x<1$, $g(x)=\Re(f(x))$. En particular, los ceros de $g$ en $(0,1)$ se corresponden con puntos donde $\Re(f(z))=0$. Siendo $0<x_1<\cdots<x_n<b$ los ceros con $g$, tenemos entonces:
-\[ \frac{\arg f(b) - \arg f(0)}{2π} ≤ \frac{(n+1)π}{2π} = \frac{n+1}{2} \]
+\[ \frac{\arg f(a) - \arg f(0)}{2π} ≤ \frac{(n+1)π}{2π} = \frac{n+1}{2} \]
 El resto de la demostración consiste en acotar $n$ con un argumento muy confuso (parece relacionado con las fórmulas de Jensen). 
 \end{dem}
 
@@ -247,11 +349,12 @@ Sin pérdida de generalidad, suponemos que $f$ no se anula en el borde del disco
 \qed
 \end{dem}
 
-Indicaremos por $α$ una variable que recorre los ceros de $Ξ(t)=0$ cada uno con su multiplicidad. Pero dado qu si $Ξ(α)=0$ entonces $Ξ(-α)=0$, vamos a tomar siempre aquellos ceros con $\Re α > 0$. (No hay ningún cero con $\Re α = 0$).
+Indicaremos por $α$ una variable que recorre los ceros de $Ξ(t)=0$ cada uno con su multiplicidad. Pero dado que si $Ξ(α)=0$ entonces $Ξ(-α)=0$, vamos a tomar siempre aquellos ceros con $\Re α > 0$. (No hay ningún cero con $\Re (α) = 0$).
 
 \begin{prop}
 \[ \sum_{\Re α > x} \frac{1}{|α|^2} = \mathcal{O}\left(\frac{\log x}{x} \right) \]
-donde la suma se extiende a ls ceros $α$ de $Ξ(z)$ con $\Re α > x$, contado cada uno tantas veces como indique su multiplicidad. En particular, la serie $\sum_α |α|^{-2}$ es convergente.
+donde la suma se extiende a los ceros $α$ de $Ξ(z)$ con $\Re(α)3
+ > x$, contado cada uno tantas veces como indique su multiplicidad. En particular, la serie $\sum_α |α|^{-2}$ es convergente.
 \end{prop}
 
 Más adelante veremos que la suma anterior tiene infinitos términos, es decir, que $Ξ(z)$ tiene infinitos ceros, pero en el teorema anterior no se presupone esto.
@@ -363,7 +466,7 @@ La prueba se basa fuertemente en el hecho de que
 Suponiendo que $β+iγ$ es un cero de $ζ(s)$ se obtienen las cotas $-\dfrac{ζ'(s)}{ζ(s)} < \dfrac{1}{σ-1}+B_1$,
 \[ -\Re\frac{ζ'(σ+iγ)}{ζ(σ+iγ)} < 2 \log |γ| - \frac{1}{σ-β}+B_2, \quad -\Re\frac{ζ'(σ+2iγ)}{ζ(σ+2iγ)} < 2 \log |γ| + B_3 \]
 
-\begin{teorema}
+\begin{teorema}\label{teorema-zeta1}
 Existe una consante $α > 0$ tal que en la región
 \[ B_α = \left\{ σ+it \in \C : 1 - \frac{α}{\log(t+2)} ≤ σ ≤ 2 \right\} \]
 nose anula la función $ζ(s)$ y además para $s = σ+it$
@@ -403,6 +506,19 @@ El tema está bien desarrollado en el libro de Karatsuba y el de Davenport.
 Existe una constante absoluta $c > 0$, tal que
 \[ ψ(x) = \sum_{n≤x} Λ(n) = x + \mathcal{O}\left(xe^{-c\sqrt{\log x}}\right) \]
 \end{teorema}
+\begin{dem}
+Aplicamos el anterior teorema a $-\frac{ζ'(s)}{ζ(s)}$:
+\[ ψ(x) = \sum_{n≤x} Λ(n) = \frac{1}{2πi} \int_{b-iT}^{b+iT}\left(-\frac{ζ'(s)}{ζ(s)}\right)\frac{x^s}{s} ds + \mathcal{O}\left(\frac{x^b}{T(b-1)}\right) + \mathcal{O}\left(\frac{xA(2x)\log x}{T}\right) \]
+Truco: tomamos $b = 1+\frac{1}{\log x}$, entonces $x^b = ex$ (compruébalo). Tomamos $A(x)=\log x$. Suponiendo que $x ≥ 2$: $A(2x)=\log 2 + \log x ≤ 2\log x$. Entonces:
+\[ ψ(x) = \sum_{n≤x} Λ(n) = \frac{1}{2πi} \int_{b-iT}^{b+iT}\left(-\frac{ζ'(s)}{ζ(s)}\right)\frac{x^s}{s} ds + \mathcal{O}\left(\frac{x}{\log^2x}\right) \]
+Por \ref{teorema-zeta1}, tenemos que:
+\[ \left|\frac{ζ'(s)}{ζ(s)}\right| ≤ C \log^2 t\]
+para $s=ο+it$ con $|t|>e$.
+
+Tenemos un único polo en el integrando en $s=1$, un polo simple de $ζ'(s)/ζ(s)$. Entonces:
+\[ Res_{s=1} \left(-\frac{ζ'(s)}{ζ(s)}\right)\frac{x^s}{s} = \lim_{s\to1} (1-s)\frac{ζ'(s)}{ζ(s)} \frac{x^s}{s} = x\]
+Luego, con un 
+\end{dem}
 
 \begin{teorema}
 \[ π(x) = \sum_{p≤x} 1 = \int_2^x \frac{du}{\log u} + \mathcal{O}\left(xe^{-\frac{c}{2} \sqrt{\log x}}\right) \]
@@ -412,6 +528,15 @@ Existe una constante absoluta $c > 0$, tal que
 Para todo $n \in \N$, para $x \to +∞$ se tiene
 \[ \int_2^x \frac{dt}{\log t} = \frac{x}{\log x} + \frac{x}{\log^2 x} + \frac{2!x}{\log^3 x} + \cdots + \frac{(n-1)!x}{\log^n x} + \mathcal{O}\left(\frac{x}{\log^{n+1}x}\right) \]
 \end{prop}
+\begin{dem}
+Basta aplicar inducción integrando reiteradamente, observando que la $n$-ésima integral $\int_2^y \frac{dt}{\log^{n+1} t}$ tiene el siguiente orden
+\begin{align*}
+\int_2^x \frac{dt}{\log^{n+1} t} & = \int_2^{\sqrt{x}} \frac{dt}{\log^{n+1} t} + \int_{\sqrt{x}}^x \frac{dt}{\log^{n+1} t} ≤ \frac{1}{\log^{n+1}2}(\sqrt{x}-2)+\frac{1}{\log^{n+1}\sqrt{x}}(x-\sqrt{x})\\
+ & ≤ \frac{\sqrt{x}}{\log^{n+1}2}+\frac{2^{n+1}x}{\log^{n+1}x} ≤ c \frac{x}{\log^{n+1}x}
+\end{align*}
+para $x$ suficientemente grande.
+\qed
+\end{dem}
 
 \begin{coro}
 \[ π(x) - \frac{x}{\log x} \sim \frac{x}{\log^2 x} \]

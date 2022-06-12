@@ -1,0 +1,179 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+%\DeclareMathOperator{\Ima}{Im}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Algebra Conmutativa y Geometría Algebraica}
+\author{Javier Aguilar Martín, Rafael González López, Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{2}
+Sea $K = \Q(\sqrt{d})$, donde $d \in \Z\setminus\{0,1\}$ es un entero libre de cuadrados. Sea $A$ la clausura íntegra de $\Z$ en $K$.
+\begin{enumerate}
+	\item Si $d \equiv 2$ ó $3 \pmod 4$, probar que
+	\[ A = \Z[\sqrt{d}] = \{a + b \sqrt{d} \mid a,b \in \Z\} \]
+	
+	\item Si $d \equiv 1 \pmod 4$, probar que
+	\[ A = \Z \left[\frac{1+\sqrt{d}}{2}\right] = \left[\frac{a+b\sqrt{d}}{2} \mid a,b \in \Z; a \equiv b \pmod 2\right]\]
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Como $\sqrt{d}$ es raíz del polinomio mónico $x^2-d$, $\sqrt{d} \in A$. Luego $\Z[\sqrt{d}] \subseteq A$. Como $\sqrt{d}$ es algebraico en $\Q$, tenemos que $\Q(\sqrt{d})=\Q[\sqrt{d}]$. $A$ será un subanillo de $\Q[\sqrt{d}]$. Sea $α=a+b\sqrt{d} \in A$, con $a$ y $b$ en $\Q$. Tenemos que su polinomio mínimo será $p(x)=(x-α)(x-\overline{α})=x^2-2ax+a^2-db^2$. Tenemos que, como $α$ es entero sobre $\Z$ y $p$ es un polinomio mónico, $p \in \Z[x]$. Por lo tanto $2a \in \Z$ y $a^2-db^2 \in \Z$.
+
+De $2a \in \Z$, deducimos que $a \in \Z$ ó $a = n/2$ para algún $n \in \Z$. Por otro lado:
+\begin{equation} a^2-db^2 \in \Z \Rightarrow 4a^2-4db^2=(2a)^2-d(2b)^2 \in 4\Z \end{equation}
+Como $(2a)^2 \in \Z$, tenemos que $d(2b)^2 \in \Z$. Sea $2b=\frac{m}{n}$ en fracción reducida. Entonces $d(2b)^2=d\frac{m^2}{n^2} \in \Z$. Como $n^2 \nmid m^2$, tenemos que $n^2 \mid d$, pero $d$ es libre de cuadrados, luego $n=1$ y deducimos que $2b \in \Z$. Sea $r=2a$ y $s=2b$. Entonces de (1) tenemos:
+\[ r^2 \equiv d s^2 \mod 4 \]
+Véase también que $r^2$ y $s^2$ sólo pueden tener los valores $0$ y $1$ módulo 4.
+\begin{enumerate}
+	\item Si $d \equiv 2$ ó $3 \pmod 4$, necesariamente $s^2 \equiv r^2 \equiv 0 \pmod 4$, luego $4\mid s^2$ y $4\mid r^2$, lo que implica que $2\mid s$ y $2\mid r$. Entonces $a=r/2 \in \Z$ y $b=r/2 \in \Z$. Luego $A = \Z[\sqrt{d}]$.
+	
+	\item Si $d \equiv 1 \pmod 4$, entonces $r^2 \equiv s^2 \pmod 4$, que implica que $r \equiv s \pmod 2$ y $α = \dfrac{r+s\sqrt{d}}{2}$. Como $2 \mid (r-s)$:
+	\[ \frac{r+s\sqrt{d}}{2} = \frac{r-s}{2}+s\frac{1+\sqrt{d}}{2} \in \Z\left[\frac{1+\sqrt{d}}{2}\right] \]
+	Luego $A \subseteq \Z\left[\frac{1+\sqrt{d}}{2}\right]$. Como además $\Z\left[\frac{1+\sqrt{d}}{2}\right] \subseteq A$ para el caso $r=s=1$, tenemos que $\Z\left[\frac{1+\sqrt{d}}{2}\right] = A$.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{3}\
+Sea $A \subseteq B$ una extensión entera de dominios de integridad.
+ 
+\begin{enumerate}
+\item\label{1} Si
+$$\mathfrak{p}_0 \subsetneq \mathfrak{p}_1 \subsetneq \dots \subsetneq \mathfrak{p}_r$$
+es una cadena creciente de ideales primos en $A$, probar que existe una
+cadena creciente
+$$\mathfrak{q}_0 \subsetneq \mathfrak{q}_1 \subsetneq \dots \subsetneq \mathfrak{q}_r$$
+de ideales primos en $B$ tales que $\mathfrak{p}_i = A \cap \mathfrak{q}_i$.
+\item\label{2} Si $\mathfrak{p} \subseteq A$ es un ideal primo y $\mathfrak{q}_1 \subseteq \mathfrak{q}_2 \subseteq B$ dos ideales primos de $B$ tales
+que $\mathfrak{q}_1 \cap A = \mathfrak{q}_2 \cap A = \mathfrak{p}$, probar que $\mathfrak{q}_1 = \mathfrak{q}_2$.
+\item Deducir de los apartados anteriores que si $f : X \to Y$ es un morfismo
+finito y dominante entre variedades afines, entonces $\dim(Y ) = \dim(X)$.
+
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Empezamos con algunos resultados que serán útiles en la prueba del ejercicio.
+\begin{lemma}\label{lema}
+Sean $A\subseteq B$ anillos, con $B$ entero sobre $A$. Si $\mathfrak{b}$ es un ideal maximal de $B$ y $\mathfrak{a}=\mathfrak{b}\cap A$, entonces $B/\mathfrak{b}$ es entero sobre $A/\mathfrak{a}$.
+\end{lemma}
+\begin{proof}
+Si $x\in B$, entonces existe un polinomio mónico $x^n+a_{n-1}x^{n-1}+\dots+a_0=0$ con $a_i\in A,\ i=0,\dots,n-1$. Basta reducir esta ecuación módulo $\mathfrak{b}$, pues la clase de $x$ está en $B/\mathfrak{b}$. Además, los coeficientes pasarían al cociente como elementos del subanillo $(A+\mathfrak{b})/\mathfrak{b}\subseteq B/\mathfrak{b}$. Pero usando el segundo teorema de isomorfía para anillos tenemos que, como $\mathfrak{a}=\mathfrak{b}\cap A$, entonces $(A+\mathfrak{b})/\mathfrak{b}\cong A/\mathfrak{a}$, luego podemos ver los coeficientes en dicho anillo.
+\end{proof}
+
+\newpage
+
+\begin{coro}\label{coro}
+Sean $A\subseteq B$ anillos, $B$ entero sobre $A$. Sea $\qq$ un ideal primo de $B$ y sea $\pp=A\cap \qq$. Entonces $\qq$ es maximal si y solo si $\pp$ es maximal.
+\end{coro}
+\begin{proof}
+Por el lema \ref{lema}, $B/\qq$ es entero sobre $A/\pp$, y ambos son dominios de integridad. Ahora, como $B/\qq$ es cuerpo si y solo si $A/\pp$ es cuerpo, se tiene el resultado.
+%asegurarme de que hemos dado la equivalencia de ser cuerpo
+\end{proof}
+
+Pasamos a probar los apartados del ejercicio.
+
+\begin{enumerate}
+\item Veamos que para todo ideal primo $\pp\subseteq A$ se tiene que existe un ideal primo $\qq\subseteq B$ tal que $\qq=\pp\cap A$. Esto será suficiente pues la cadena resultante es claramente creciente. 
+
+Por el apartado 3 del ejercicio 1 de esta misma relación, $B_\pp$ es entero sobre $A_\pp$ y el diagrama
+\[
+\begin{tikzcd}
+A\arrow[r, hookrightarrow]\arrow[d,"\alpha"']& B\arrow[d,"\beta"]\\
+A_\pp\arrow[r, hookrightarrow]& B_\pp
+\end{tikzcd}
+\]
+donde $\alpha$ y $\beta$ son los homomorfismos inducidos, es conmutativo. Sea $\mathfrak{n}$ el ideal maximal de $B_\pp$, entonces $\mm=\mathfrak{n}\cap A_\pp$ es el ideal maximal de $A_\pp$ por el corolario \ref{coro}. Si tomamos $\qq=\beta^{-1}(\mathfrak{n})$, entonces $\qq$ es primo por ser preimagen de un primo, y tenemos que $\qq\cap A=\alpha^{-1}(\mm)=\pp$ por la correspondecia entre ideales de $A$ que no cortan a $A\setminus\pp$ y los de $A_\pp$.
+
+\item  Usando el apartado 3 del ejercicio 1 de esta relación, $B_\pp$ es entero sobre $A_\pp$. Sea $\mm$ el ideal extendido de $\pp$ en $A_\pp$ y sean $\mathfrak{n},\mathfrak{n}'$ los ideales extendidos de $\qq_1$ y $\qq_2$ en $B_\pp$. Entonces $\mm$ es el ideal maximal de $A_\pp$ por la correspondecia entre ideales. Por otro lado, $\mathfrak{n}\subseteq\mathfrak{n}'$ y por hipótesis $\mathfrak{n}\cap A_\pp=\mathfrak{n}'\cap A_\pp=\mm$. Por el corolario \ref{coro} se sigue que $\mathfrak{n},\mathfrak{n}'$ son maximales, por lo que $\mathfrak{n}=\mathfrak{n}'$, ya que solo hay un ideal maximal. De aquí se deduce que $\qq_1=\qq_2$, ya que al estar trabajando en dominios de integridad, el homomorfismo inducido hacia el anillo localizado es inyectivo.
+
+
+\item Por ser $f$ finito tenemos que $\calA(X)$ es entero sobre $f^*(\calA(Y))$, que son ambos dominios de integridad al ser $\calA(X)$ isomorfo a un cociente por un ideal primo y porque $f^*(\calA(Y))\subseteq\calA(X)$. También tenemos que por ser $f$ dominante, $f^*$ es inyectiva. Sea 
+$$\mathfrak{p}_0 \subsetneq \mathfrak{p}_1 \subsetneq \dots \subsetneq \mathfrak{p}_r$$ 
+una cadena creciente de ideales primos de $f^*(\calA(Y))$ de longitud igual a la dimensión de dicho anillo. Entonces, por el apartado \ref{1} existe una cadena creciente
+$$\mathfrak{q}_0 \subsetneq \mathfrak{q}_1 \subsetneq \dots \subsetneq \mathfrak{q}_r$$ 
+de ideales primos en $\calA(X)$ tales que $\mathfrak{p}_i = f^*(\calA(Y)) \cap \mathfrak{q}_i$. Además, esta es la dimensión de Krull de $\calA(X)$, pues si tuviéramos una cadena $\qq'_0\subseteq\dots\subseteq \qq'_d$ con $d>r$, entonces 
+$$\qq'_0\cap f^*(\calA(Y))\subseteq \qq'_1\cap f^*(\calA(Y))\subseteq\dots\subseteq \qq'_d\cap f^*(\calA(Y))$$ 
+es una cadena creciente de ideales primos en $f^*(\calA(Y))$, luego por ser $r$ su dimensión, deben existir algunos $\qq'_i\cap f^*(\calA(Y))=\qq'_{i+1}\cap f^*(\calA(Y))$, lo cual implica por el apartado \ref{2} que $\qq'_i=\qq'_{i+1}$, luego la cadena solo podrá tener como mucho longitud $r$ para ser estrictamente creciente. 
+
+Falta probar que también $\dim(Y)=r$. Tomando la misma cadena que antes en $f^*(\calA(Y))$, obtenemos por la inyectividad de $f^*$ la siguiente cadena creciente de ideales primos
+$$(f^*)^{-1}(\pp_0)\subsetneq (f^*)^{-1}(\pp_1)\subsetneq\dots\subsetneq (f^*)^{-1}(\pp_r),$$
+por lo que $\dim(Y)=\dim_{Krull}(\calA(Y))\geq\dim_{Krull}(f^*(\calA(Y))=r$. Recíprocamente, si tenemos una cadena creciente de ideales en $\calA(Y)$
+$$\mathfrak{p}'_0 \subsetneq \mathfrak{p}'_1 \subsetneq \dots \subsetneq \mathfrak{p}'_d.$$
+Entonces, como $f^*$ es isomorfismo sobre su imagen, tenemos en $f^*(\calA(Y))$ la cadena creciente de ideales primos
+$$f^*(\mathfrak{p}'_0) \subsetneq f^*(\mathfrak{p}'_1) \subsetneq \dots \subsetneq f^*(\mathfrak{p}'_d).$$
+Como $\dim_{Krull}(f^*(\calA(Y)))=r$, esto implica que $d\leq r$, por lo que $\dim_{Krull}(\calA(Y))\leq r$, con lo que finalmente tenemos la igualdad, como queríamos demostrar.
+
+\end{enumerate}
+\end{solucion}
+
+\newpage
+\begin{ejercicio}{6}
+Sea $A=k[x_1,\dotsc,x_n]$ siendo $k$ un cuerpo arbitrario, y $B$ el subconjunto formado por los polinomios simétricos (es decir, los polinomios $f(x_1,\dotsc,x_n)$ tales que $f(x_1,\dotsc,x_n)=f(x_{\sigma(1)},\dotsc,x_{\sigma(n)})$ para toda permutación $\sigma \in S_n$). Probar que $B$ es un subanillo de $A$, y que $A$ es una extensión entera de $B$. 
+\end{ejercicio}
+\begin{solucion}
+\begin{itemize}
+\item[]
+\item Veámoslo a través de la caracterización de subanillo.
+\begin{itemize}
+\item Obviamente $1\in B$.
+\item Sean $f,g\in B$, sea $h=f-g$. Entonces:
+\begin{align*}
+h(x_{\sigma(1)},\dotsc,x_{\sigma(n)})&=f(x_{\sigma(1)},\dotsc,x_{\sigma(n)})-g(x_{\sigma(1)},\dotsc,x_{\sigma(n)})\\
+ &= f(x_1,\dotsc,x_n) - g(x_1,\dotsc,x_n)\\
+ &= h(x_1,\dotsc,x_n)
+\end{align*}
+Por lo que $f-g\in B$.
+\item Sean $f,g\in B$, sea $h=fg$. Entonces:
+\begin{align*}
+h(x_{\sigma(1)},\dotsc,x_{\sigma(n)})&= f(x_{\sigma(1)},\dotsc,x_{\sigma(n)})g(x_{\sigma(1)},\dotsc,x_{\sigma(n)})\\
+ &= f(x_1,\dotsc,x_n)g(x_1,\dotsc,x_n)\\
+ &= h(x_1,\dotsc,x_n)
+\end{align*}
+Por lo que $fg\in B$.
+\end{itemize}
+Por tanto, $B$ es subanillo de $A$.
+\item Tenemos que ver que todo polinomio de $f\in A$ anula una expresión
+$$
+f^n + g_{n-1}f^{n-1}+\dotsc+g_1f+g_0 = 0 \qquad g_i \in B
+$$
+Como los los elementos enteros de $A$ sobre $B$ (denotémoslos por $C$) forman un subanillo de $A$, basta ver que los monomios $x_i$ son enteros, pues al ser las constantes trivialmente enteras, tendríamos que $\gene{1,x_1,\dotsc,x_n}\subset C$, por lo que $A=C$. 
+\newpage
+Para ver qué polinomio anula $x_i$ vamos a definir los polinomios simétricos elementales en $x_1,\dotsc,x_n$
+
+\begin{align*}
+s_1 &= \sum_{i}^n x_i & s_2 &=  \sum_{i<j}^n x_i x_j\\
+s_3 &= \sum_{i<j<k}^n x_ix_jx_k & s_4 &=  \sum_{i<j<k<l}^n x_i x_jx_kx_l\\
+s_t &= \sum_{i_1<\dotsc<i_t}x_{i_1}\dotsc x_{i_t}  &  s_n &= x_1\dotsc x_n
+\end{align*}
+Definimos además $s_0 =1$. Notemos además que si hacemos $0$ alguna de las variables en $s_i$ obtenemos exactamente el polinomio simétrico elemental en $n-1$ variables, salvo $s_n(x_1,\dotsc,x_{n-1},0)=0$. Obviamente $s_i \in B$. Vamos a ver que $x_i$ es raíz del polinomio
+$$
+p_n(f) = f^n - s_1 f^{n-1} + s_2 f^{n-2} - \dotsc + (-1)^ns_n = \sum_{i=0}^n (-1)^{n-i}s_{n-i}f^i
+$$
+Por la consideración anterior tenemos que si $f=x_i$ y hacemos $0$ en la posición $j$ con $i\neq j$
+\begin{gather*}
+p_n(x_i)(y_1,\dotsc,0,\dotsc,y_{n}) = p_{n-1}(x_i)(y_1,\dotsc,y_{j-1},y_{j+1},\dotsc,y_{n})
+\end{gather*}
+Comprobamos por inducción sobre el número de variables directamente para $x_1$ (el resto es análogo). El caso $n=1$ es trivial. Por ilustrar, el caso $n=2$
+\begin{align*}
+p_2(x_1) &= \sum_{i=0}^2 (-1)^{2-i}s_{2-i}x_1^i \\
+&= x_1^2 -x^1(x_1+x_2) + x_1x_2 \\
+&= x_1^2 -x_1^2 -x_1x_2+x_1x_2 = 0
+\end{align*}
+Nuestra hipótesis de inducción es que $p_{n-1}(x_1) = 0$. Por tanto, sabemos que
+\begin{gather*}
+p_n(x_1)(y_1,0,\dotsc,y_{n}) = p_{n-1}(x_1)(y_1,y_3,\dotsc,y_{n})=0 \qquad \forall (y_1,y_3,\dotsc,y_{n})\in \A_k^{n-1}\\
+\dotsc\\
+p_n(x_1)(y_1,\dotsc,y_{n-1},0) = p_{n-1}(x_1)(y_1,\dotsc,y_{n-1}) = 0 \qquad \forall (y_1,\dotsc,y_{n-1})\in \A_k^{n-1}
+\end{gather*}
+Por tanto, sabemos $x_k \mid p_n(x_1)$ $\forall k =2,\dotsc,n$. Pero sabemos también que, por construcción, $p_n(x_1)$ es homogéneo (pues $\deg(s_{n-i}f^i)= n$) tal que $x_1 \mid p_n(x_1)$. Tenemos un polinomio homogéneo de grado $n$ (o $0$) tal que $x_1\cdots x_n \mid p_n(x_1)$, lo cual implica que $p_n(x_1) = ax_1\dotsc x_n$ con $a\in k$. Tenemos que ver que $a=0$. Supongamos que $a\neq 0$, entonces según la expresión obtenida anteriormente $p_n(x_1)(1,\dotsc,1) = a\neq 0$. Sin embargo, $s_k(1,\dotsc,1) = \binom{n}{k}$, y según la expresión inicial y resultados obtenidos en la asignatura de Matemática Discreta sabemos que 
+$$
+p_n(x_1)(1,\dotsc,1) = \sum_{i=0}^n (-1)^{n-i}\binom{n}{n-i}(1)^i = \sum_{i=0}^n \binom{n}{i}(-1)^{n-i} = 0
+$$
+Lo cuál es una contradicción con el hecho de que $a\neq 0$. Por tanto, hemos llegado a que $p_n(x_1)=0$.
+\end{itemize} 
+\end{solucion}
+\end{document}

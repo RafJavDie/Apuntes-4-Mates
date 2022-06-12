@@ -1,0 +1,196 @@
+\documentclass[twoside]{article}
+\usepackage{../estilo-ejercicios}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ciencias de la Computación}
+
+\author{Javier Aguilar Martín}
+\maketitle
+
+\begin{ejercicio}{3}
+Diseñar un programa \texttt{GOTO} que calcule la función $f(x) = \max\{n : n^2 \leq x\}$.
+\end{ejercicio}
+\begin{solucion}
+\begin{align*}
+& Z_1\leftarrow X\\
+&IF\ X\neq 0\ GOTO\ A\\
+&GOTO\ E\\
+[A] & Z_2\leftarrow Z_2+1\\
+& IF\ Z_2\cdot Z_2 \leq Z_1\ GOTO\ A\\
+& Z_2\leftarrow Z_2-1\\
+& Y\leftarrow Z_2
+\end{align*}
+Desarrollo del producto, que se guardará en la variable auxiliar $Z_5$. Cuando se escriba $GOTO\ L$ entiéndase que se va a la etiqueta correspondiente del programa global.
+
+\begin{align*}
+&Z_3\leftarrow Z_2\\
+&Z_4\leftarrow Z_2\\
+[B_1] & IF\ Z_4\neq 0\ GOTO\ A_1\\
+& Z_5\leftarrow Z_5\\
+& GOTO\ L\\
+[A_1] & IF\ Z_3\neq 0\ GOTO\ C_1\\
+& Z_5\leftarrow Z_5\\
+& GOTO\ L\\
+[C_1] & Z_4\leftarrow Z_4-1\\
+& Z_3\leftarrow Z_3+Z_3\\
+&Z_5\leftarrow Z_3\\
+& GOTO\ B_1
+\end{align*}
+Desarrollo del predicado $Z_5\leq Z_1$, cuyo valor se guardará en la variable auxiliar $Z_6$. Sobre $GOTO\ L$ lo mismo que antes.
+\begin{align*}
+[C_2]& IF\ Z_5\neq 0\ GOTO\ A_2\\
+& Z_6\leftarrow Z_6+1\\
+[A_2] & IF\ Z_1\neq 0\ GOTO\ B_2\\
+& Z_6\leftarrow Z_6\\
+&GOTO\ L\\
+[B_2] & Z_5\leftarrow Z_5- 1\\
+& Z_1\leftarrow Z_1-1\\
+&GOTO\ C_2
+\end{align*}
+Así, en el programa con macros, la instrucción $IF\ Z_2\cdot Z_2 \leq Z_1\ GOTO\ A$ se convertiría en $IF\ Z_6\neq 0\ GOTO\ A$
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{6}
+Sean $f$ y $g$ computables (de aridad $1$). Probar que la función $h(x) = f(g(x))$ es
+computable.
+\end{ejercicio}
+\begin{solucion}
+Sean $f,g:\N-\to\N$ GOTO-computables. Por ser $f$ y $g$ GOTO-computables existen expansiones de las macros $W\leftarrow f(V)$ y $W\leftarrow g(V)$. Sea $P$ el programa
+\[
+\begin{cases}
+Z\leftarrow g(X)\\
+Y\leftarrow f(Z)
+\end{cases}
+\]  
+Entonces $[[P]]^{(1)}=f\circ g$. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{10}
+Sea $g : \N \to \N$ biyectiva y GOTO-computable. Demostrar que $g^{-1}$ es GOTO-computable.
+\end{ejercicio}
+\begin{solucion}
+La idea será, para cada $X$, buscar por fuerza bruta el $Z$ tal que $X=g(Z)$. Como la función es total, el programa siempre termina.
+\[
+P=\begin{cases}
+[B] &Z_2\leftarrow g(Z_1)\\
+&IF\ X=Z_1 \ GOTO\ A\\
+&Z_1\leftarrow Z_1+1\\
+&GOTO\ B\\
+[A] & Y\leftarrow Z_1
+\end{cases}
+\]
+También podríamos haber ido calculando directamente $g(Y)$. En cualquier caso, $[[P]]^{(1)}=g^{-1}$. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{14}
+Sea $f : \N \dashrightarrow \N$ definida por $f(0) = 0$, $f(1) = 1$ y $f(n) = f(n - 1) + f(n - 2)$ si
+$n \geq 2$. Demostrar que $f$ es computable, diseñando un programa GOTO que la calcule.
+\end{ejercicio}
+\begin{solucion}
+\begin{align*}
+ & IF\ X\neq 0\ GOTO\ A\\
+ & GOTO\ E\\
+[A] & Z_1\leftarrow X\\
+    & Z_1\leftarrow Z_1-1\\
+    & IF\ Z_1\neq 0\ GOTO\ B\\
+    & Y\leftarrow Y+1\\
+    & GOTO\ E\\
+[B] & Z_2\leftarrow Y\\
+    & Z_3\leftarrow Y+1\\
+    & Y\leftarrow Z_2+Z_3\\
+    & Z_4\leftarrow Z_1\\
+    & Z_4\leftarrow Z_4-1\\
+    & IF\ Z_4\neq 0\ GOTO\ C\\
+    & GOTO\ E\\
+[C] & Z_2\leftarrow Z_3\\
+    & Z_3\leftarrow Y\\   
+    & Y\leftarrow Z_2+Z_3\\
+    &Z_4\leftarrow Z_4-1\\
+    & IF\ Z_4\neq 0\ GOTO\ C\\
+    & GOTO E
+\end{align*}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{15}
+En este ejercicio analizaremos los programas lineales. Los programas lineales son
+los diseñados utilizando el lenguaje $\textsc{GOTO}_l$, obtenido a partir de $\textsc{GOTO}$ eliminando la instrucción
+condicional.
+\begin{enumerate}
+\item Sea $k\in \N$. Demostrar que la función constante $C_k(x) = k$ es $\textsc{GOTO}_l$-computable.
+\item Demostrar que si $p$ es un $\textsc{GOTO}_l$-programa de longitud $k$, entonces $[[p]]^{(1)}(x) \leq k$.
+\item Probar que si $p$ es un programa que calcula $C_k$, entonces la longitud de $p$ es mayor o igual
+que $k$.
+\item Probar que la función $f(x) = x + 1$ no es $\text{GOTO}_l$-computable (luego $\textsc{GOTO}$ y $\textsc{GOTO}_l$ no son
+equivalentes).
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item Basta repetir $k$ veces la instrucción $Y\leftarrow Y+1$.
+\item La única forma de alcanzar un valor superior a $k$ es haciendo más de $k$ incrementos, pero entonces tendríamos una longitud de programa mayor que $k$. 
+\item El algoritmo del primer apartado es el más corto posible para calcular $C_k$ ya que solo involucra la variable de salida y el incremento. Por tanto, cualquier otro programa que la calcule debe ser al menos tan largo como este, que tiene longitud $k$. 
+\item Supongamos que sí lo es. Entonces habría un programa de longitud $k$ que calcula $f(x)=x+1\ \forall x\in\N$. En particular, calcula $f(k)=k+1$, pero eso contradice el apartado 2.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{16}
+Sea $\textsc{GOTO}_f$ el lenguaje que se obtiene a partir de $\textsc{GOTO}$ restringiendo el uso de la
+instrucción
+
+$I\equiv IF\ V\neq 0\ GOTO\ L$
+
+a etiquetas L para instrucciones que aparecen en el programa después de I (o son de salida).
+
+\begin{enumerate}
+\item Probar que si $f : \N- \to \N$ es $\textsc{GOTO}_f$-computable, entonces existe una partición finita
+$\{A_1,\dots,A_l\}$ de $\N$ tal que en cada $A_i$, la función es constante.
+\item Probar que $\textsc{GOTO}_f$ y $\textsc{GOTO}_l$ no son equivalentes.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}\
+\begin{enumerate}
+\item
+\item 
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{}
+Dar un programa GOTO que calcule las siguientes funciones.
+\begin{enumerate}
+\item $f(x)=2^x$. Pensar que $f_1(0)=1, f_!(x+1)=2f_1(x)$
+\end{enumerate}
+\end{ejercicio}
+
+\begin{solucion}
+\begin{enumerate}
+
+\item La primera línea será el caso base y cada vez que se actualice el valor de $Y$ tendremos la $h$. 
+\begin{align*}
+&Y\leftarrow Y+1\\
+[A]&IF\ X=Z(\text{macro})\ GOTO\ E\\
+&Y\leftarrow Z\cdot Y (\text{macro})\\
+&Z\leftarrow Z+1\\
+&GOTO\ A
+\end{align*}
+Alternativamente, podríamos prescindir de $Z$ e ir multiplicando por 2 usando otra macro, mientras hacemos decrecer $X$. Pero en general es preferible el anterior para mantener el valor de $X$. 
+
+\item $f_2(x)=x!$
+\end{enumerate}
+\end{solucion}
+
+
+\end{document}

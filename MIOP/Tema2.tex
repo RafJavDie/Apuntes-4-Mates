@@ -1,5 +1,5 @@
 \documentclass[MIOP.tex]{subfiles}
-\usepackage{mathtools}
+
 %\usepackage{sagetex}
 \begin{document}
 
@@ -27,7 +27,7 @@ Esto significa que la matriz $\nabla^2 f(x^*)$ es semidefinida positiva.
 Vamos a probar rigurosamente estos resultados en el siguiente teorema.
 
 \begin{teorema}
-Sea $x^*$ mínimo local de $f$ continuamente diferenciable en un entorno abierto $S$ de $x^*$. Entonces $\nabla f(x^*)=0$. Si además $f$ es de clase $\mathcal{C}^2(S)$, entonces $\nabla^2 f(x^*)$ es semidefinida positiva.
+Sea $x^*$ mínimo local de $f\in\mathcal{C}(S)^1$ siendo $S$ entorno abierto de $x^*$. Entonces $\nabla f(x^*)=0$. Si además $f$ es de clase $\mathcal{C}^2(S)$, entonces $\nabla^2 f(x^*)$ es semidefinida positiva.
 \end{teorema}
 \begin{dem}
  Consideremos $d \in \R^n$ arbitraria con $||d||=1$. Definimos:
@@ -39,7 +39,7 @@ Como $x^*$ es un mínimo local, si $α > 0$ es suficiente pequeño: $0 ≤ f(x^*
 \[ 0 ≤ \frac{f(x^*+αd)-f(x^*)}{α} \Rightarrow 0 ≤ \lim_{α \to 0} \frac{f(x^*+αd)-f(x^*)}{α} = g'(0) \]
 Entonces $0 ≤ g'(0) = d'\nabla f (x^*+αd) |_{α = 0} = d'\nabla f(x^*)$. 
 Como $||e_i|| = ||-e_i|| = 1$, $\nabla f(x^*)'e_i ≥ 0$ y $\nabla f(x^*)'(-e_i) ≥ 0$, luego $\nabla f(x^*) = 0$. Ahora, si $f \in \mathcal{C}^2$. Entonces:
-\begin{align*} 0 ≤ f(x^* + α d)-f(x^*) & = \nabla f(x^*)(αd) + \frac{1}{2} (αd)' \nabla^2 f(x^*)(αd) + O(||αd||^2) \\
+\begin{align*} 0 ≤ f(x^* + α d)-f(x^*) & = (αd)'\nabla f(x^*) + \frac{1}{2} (αd)' \nabla^2 f(x^*)(αd) + O(||αd||^2) \\
  & = \frac{α^2}{2}d'\nabla^2f(x^*)d + O(α^2)
 \end{align*}
 Dividiendo por $α^2$ y pasando al límite:
@@ -60,12 +60,12 @@ f(x)\geq f(x^*)+\frac{\gamma}{2}||x-x^*||^2 \qquad \forall x\in S,\; ||x-x^*||<\
 \begin{dem}
 Por las propiedades de las matrices definidas positivas, sabemos que $\exists \lambda>0$ -el menor autovalor de la matriz- tal que $\forall d\in \R^n$, $d'\nabla^2 f(x^*) d\geq \lambda ||d||^2$. Sea $d\in \R^n$ tal que $x^*+d \in S$, entonces:
 \begin{gather*}
-f(x^*+d)=f(x^*)+\nabla f(x^*)'d +\frac{1}{2}d'\nabla^2 f(x^*)d+O(||d||^2) \\
-f(x^*+d)-f(x^*) =  \frac{1}{2}d'\nabla^2 f(x^*)d+O(||d||^2) \geq  \frac{\lambda}{2}||d||^2 + O(||d||^2) = \frac{||d^2||}{2}\left(\lambda+\frac{O(||d||^2)}{||d||^2}\right)
+f(x^*+d)=f(x^*)+d'\nabla f(x^*) +\frac{1}{2}d'\nabla^2 f(x^*)d+O(||d||^2) \\
+f(x^*+d)-f(x^*) =  \frac{1}{2}d'\nabla^2 f(x^*)d+O(||d||^2) \geq  \frac{\lambda}{2}||d||^2 + O(||d||^2) = \frac{||d||^2}{2}\left(\lambda+\frac{O(||d||^2)}{||d||^2}\right)
 \end{gather*}
-Sabemos que $\forall \varepsilon>0$ ($\varepsilon < \lambda$) $\exists \delta >0$ tal que si $||d||<\delta$ entonces $\left|\dfrac{O(||d||^2)}{||d||^2}\right|<\varepsilon$, por tanto, si $||d||<\delta$ entonces
+Sabemos que $\forall \varepsilon>0$ $\exists \delta >0$ tal que si $||d||<\delta$ entonces $\left|\dfrac{O(||d||^2)}{||d||^2}\right|<\varepsilon$, por tanto, si $||d||<\delta$ entonces
 \[
-f(x^*+d)-f(x^*)\geq  \frac{||d||^2}{2}\left(\lambda+\frac{O(||d||^2)}{||d||^2}\right) \geq  \frac{||d||^2}{2}\left(\lambda-\varepsilon\right) =  \frac{\gamma}{2}||d||^2 \]
+f(x^*+d)-f(x^*)\geq  \frac{||d||^2}{2}\left(\lambda+\frac{O(||d||^2)}{||d||^2}\right) \geq  \frac{||d||^2}{2}\left(\lambda+\varepsilon\right) =  \frac{\gamma}{2}||d||^2 \]
 
 Basta tomar $d=x-x^*$ $\QED$ 
 \end{dem}
@@ -79,10 +79,10 @@ Sea $d^k \in\R^n$ la dirección desplazamiento y $a^k \in \R$ la longitud de pas
 \[
 \begin{cases}
 \text{Dado $x^0\in \R^n$}\\
-x^{k+1} = x^k - \alpha^k d^k
+x^{k+1} = x^k + \alpha^k d^k
 \end{cases}
 \]
-con $d^k\mid {d^k}'\nabla f(x^k)<0, \alpha^k>0\ \forall k$. En particular, si $d^k=-\nabla f(x)$ es la dirección de máximo decrecimiento local de $f$ en $x$ obtenemos el llamado \textbf{Método de máximo descenso}:
+con $d^k\mid {d^k}'\nabla f(x^k)<0$, $\alpha^k>0$ $\forall k$. En particular, si $d^k = -\nabla f(x)$ es la dirección de máximo decrecimiento local de $f$ en $x$ obtenemos el llamado \textbf{Método de máximo descenso}:
 \[
 \begin{cases}
 \text{Dado $x^0\in \R^n$}\\
@@ -105,12 +105,11 @@ Con esto conseguimos que $f(x^{k+1})\leq f(x^k)$ (podemos conseguirlo con cualqu
 \item $d^k = -D^k \nabla f(x^k)$ con $D^k$ definida positiva. Esto permite hacer una cantidad infinita de iteraciones sin que el método se atasque.
 \begin{itemize}
 \item Tomar, si es definida positiva, $D^k = (\nabla^2 f(x^k))^{-1}$. En este caso obtenemos el método de Newton.
-\item Para $D^k=I$ tenemos el método de máximo ascenso.
 \end{itemize}
 \end{itemize}
 \item La longitud de paso $\alpha^k$.
 \begin{itemize}
-\item Elementos de una serie divergente $\sum \alpha_k$ tal que $\alpha_k \rightarrow 0$. A este método se lo conoce como \textbf{método de la serie divergente} Tiene sentido pues:
+\item \textbf{Método de la serie divergente}: tomamos elementos de una serie divergente $\sum \alpha_k$ tal que $\alpha_k \rightarrow 0$. Tiene sentido pues:
 \begin{gather*}
 x^{m+1} = x^m - \alpha^m \nabla f(x^{m})\\
  x^{m+2} = x^{m+1} - \alpha^{m+1} \nabla f(x^{m+1}) =  x^m - \alpha^m \nabla f(x^{m}) -\alpha^{m+1} \nabla f(x^{m+1})
@@ -122,7 +121,7 @@ x^* \simeq x^* - \sum^{n-1}_{k=m} \alpha^k \nabla f(x^*) \Rightarrow 0 \simeq \n
 Como la serie diverge, concluimos que $\nabla f(x^*)=0$.
 \item \textbf{Método o regla de minimización}: tomar una dirección $d^k$ y $\alpha^k$ tal que $\alpha^k$ minimiza $f(x^k+\alpha d^k)$ para $\alpha>0$ (función de una variable real).
 \item \textbf{Regla de Armijo}: elegimos $s,\beta,\sigma\in (0,1)$. Entonces definimos $\alpha^k=s\beta^{m_k}$, siendo $m_k$ el menor entero que verifica
-$$f(x^k)-f(x^{k+1})=-\sigma s\beta^{m_k}\nabla f(x^k)d^k.$$
+$$f(x^k)-f(x^{k+1})\geq -\sigma s\beta^{m_k}\nabla f(x^k)d^k.$$
 \end{itemize}
 \end{enumerate}
 
@@ -145,7 +144,7 @@ que se obtiene en $\alpha=\frac{1}{2}$, por lo que $x^1=\begin{pmatrix}
 \end{ej}
 
 \begin{defi}
-La sucesión $\{d^k\}$ se denomina de \textbf{tipo gradiente} si verifica que cualquier subsucesión que converge a un punto estacionario cumple: 
+La sucesión $\{d^k\}$ se denomina de \textbf{tipo gradiente} si verifica que cualquier subsucesión cuyo método que converge a un punto estacionario cumple: 
 \begin{enumerate}
 \item La subsucesión está acotada, i.e., $\exists M>0\mid ||d^k||<M\ \forall k$. 
 \item $\lim\sup_{k\in K}\nabla f(x^k)'d^k<0$. \label{gradiente}
@@ -163,23 +162,21 @@ Por elección de los $\alpha^k$ según Armijo,
 f(x^k)-f(x^k+s\beta^{m_k}d^k)\geq -\sigma\alpha^k\nabla f(x^k)'d^k.
 \end{equation}
  Como $m_k$ es el menor entero para el que se verifica esa desigualdad, entonces 
-$$f(x^k)-f(x^k+\underbrace{s\beta^{m_k-1}}_{\frac{\alpha^k}{\beta}}d^k)<\sigma\frac{\alpha^k}{\beta}\nabla f(x^k)'d^k.$$ 
-Denotamos $\rho^k=\frac{d^k}{||d^k||},\overline{\alpha}^k=\frac{\alpha^k||d||^k}{\beta}$, de modo que la desigualdad se convierte en 
+$$f(x^k)-f(x^k+{s\beta^{m_k-1}}d^k)=f(x^k)-f(x^k+\frac{\alpha^k}{\beta}d^k)<-\sigma\frac{\alpha^k}{\beta}\nabla f(x^k)'d^k.$$ 
+Denotamos $\rho^k=\frac{d^k}{||d^k||},\overline{\alpha}^k=\frac{\alpha^k||d^k||}{\beta}$, de modo que la desigualdad se convierte en 
 $$ f(x^k)-f(x^k+\overline{\alpha}^k\rho^k)< -\sigma\overline{\alpha}^k\nabla f(x^k)'\rho^k.$$
-Utilizando ahora el teorema del valor medio, es decir, $f(y)=f(x)+\nabla f(x)(y-x)$ para $z\in[x,y]$, deducimos
-$$-\nabla f(x^k+\tilde{\alpha}^k\rho^k)\overline{\alpha}^k\rho^k <-\sigma\overline{\alpha}^k\nabla f(x^k)'\rho^k\quad \tilde{\alpha}^k\in[0,\overline{\alpha}^k]$$
+Utilizando ahora el teorema del valor medio, es decir, $f(y)=f(x)+\nabla f(z)'(y-x)$ para $z\in[x,y]$, deducimos
+$$\nabla f(x^k+\tilde{\alpha}^k\rho^k)'(-\overline{\alpha}^k\rho^k) <-\sigma\overline{\alpha}^k\nabla f(x^k)'\rho^k\quad \tilde{\alpha}^k\in[0,\overline{\alpha}^k]$$
 Podemos simplificar eliminando los $\overline{\alpha}^k$
 \begin{equation}\label{simply}
-\nabla f(x^k+\tilde{\alpha}^k\rho^k)\rho^k <-\sigma\nabla f(x^k)'\rho^k\quad \tilde{\alpha}^k\in[0,\overline{\alpha}^k]
+-\nabla f(x^k+\tilde{\alpha}^k\rho^k)'\rho^k <-\sigma\nabla f(x^k)'\rho^k\quad \tilde{\alpha}^k\in[0,\overline{\alpha}^k]
 \end{equation}
 Observemos que $\alpha^k\to 0$. Según \ref{armijo}
-$f(x^k)-f(\underbrace{x^k+\alpha^kd^k}_{x^{k+1}})\geq -\sigma\alpha^k\nabla f(x^k)'d^k\ \forall k$. Como la diferencia de la izquierda tiende a 0 cuando $k$ tiende a infinito y $-\sigma\nabla f(x^k)'d^k>0$, necesariamene $\alpha^k$ tiende a 0. Como $||d^k||$ está acotada, tenemos que también $\overline{\alpha}^k\to 0$. La sucesión $\{\rho^k\}$ está contenida en un compacto (la bola unidad), así que tiene un a subsucesión convergente que denominaremos de la misma forma, así que denotamos $\rho^k\to\overline{\rho}$. 
+$f(x^k)-f(\underbrace{x^k+\alpha^kd^k}_{x^{k+1}})\geq -\sigma\alpha^k\nabla f(x^k)'d^k\ \forall k$. Como la diferencia de la izquierda tiende a 0 cuando $k$ tiende a infinito y $-\sigma\nabla f(x^k)'d^k>0$, necesariamene $\alpha^k$ tiende a 0. Como $||d^k||$ está acotada, tenemos que también $\overline{\alpha}^k\to 0$, por lo que $\tilde{\alpha}^k\to 0$. La sucesión $\{\rho^k\}$ está contenida en un compacto (la bola unidad), así que tiene un a subsucesión convergente que denominaremos de la misma forma, así que denotamos $\rho^k\to\overline{\rho}$. 
 
 Volvemos a \ref{simply} y tomamos límite. Entonces
-$$-\nabla f(\overline{x}+0\overline{\rho})'\overline{\rho}<\sigma\nabla f(\overline{x})'\overline{\rho}$$
-que podemos reescribirlo como
-$$(1-\sigma)\nabla f(\overline{x})'\overline{rho}>0$$
-por lo que $\nabla f(\overline{x})'\overline{\rho}>0$. Sin embargo, esto contradice punto \ref{gradiente} de la definición anterior. 
+$$-\nabla f(\overline{x}+0\overline{\rho})'\overline{\rho}\leq-\sigma\nabla f(\overline{x})'\overline{\rho} \Longleftrightarrow \nabla f(\overline{x})'\overline{\rho}\geq\sigma\nabla f(\overline{x})'\overline{\rho} \Longleftrightarrow (1-\sigma)\nabla f(\overline{x})'\overline{\rho}\geq 0$$
+Por lo que $\nabla f(\overline{x})'\overline{\rho}\geq 0$. Sin embargo, esto contradice punto \ref{gradiente} de la definición anterior. 
 $\QED$
 \end{dem}
 
@@ -188,28 +185,29 @@ Si en lugar de la regla de Armijo se usa la de minimización, el resultado sigue
 \end{nota}
 
 \begin{teorema}[de captura]
-Sea $f\in\mathcal{C}^1$ y $\{x^k\}$ tal que $x^{k+1}=x^k+\alpha^k d^k$ verificando que $f(x^k)>f(x^{k+1})\ \forall k$ y tal que todo punto de acumulación es estacionario. Supongamos que existen $s>0,c>0$ de forma que
-$$\alpha^k\leq s, ||d^k||\leq c||\nabla f(x^k)||\ \forall k.$$
-Sea $x^*$ mínimo local de $f$ que es el único punto estacionario en un entorno de $x^*$. Entonces existe $S\ni x^*$ tal que si $x^{\overline{k}}\in S$ para algún $\overline{k}$, $x^k\in S\ \forall k>\overline{k}$ y $x^k\to x^*$. Además, dado $\varepsilon>0$, $S$ se puede elegir para que $||x-x^*||<\varepsilon \ \forall x\in S$.
+Sea $f\in\mathcal{C}^1$ y $\{x^k\}$ tal que $x^{k+1}=x^k+\alpha^k d^k$ verificando que $f(x^k)>f(x^{k+1})\ \forall k$ y tal que todo punto de acumulación es estacionario. Supongamos que $\exists s,c>0$ de forma que $\alpha^k\leq s$ y $||d^k||\leq c||\nabla f(x^k)||$ $\forall k.$
+
+Sea $x^*$ mínimo local de $f$ que es el único punto estacionario en un entorno suyo. Entonces $\exists S$ entorno de $x^*$ tal que, si $\exists \overline{k}$ con $x^{\overline{k}}\in S$, entonces $x^k\in S\ \forall k>\overline{k}$ y $x^k\to x^*$. Además, dado $\varepsilon>0$, $S$ se puede elegir para que $||x-x^*||<\varepsilon \ \forall x\in S$.
 \end{teorema}
 \begin{dem}
-Elegimos $\rho>0$ tal que $\forall x\neq x^*\mid ||x-x^*||<\rho$, entonces $f(x)>f(x^*)$. Definismo $\phi
-(t)=\min_{0\leq t\leq ||x-x^*||} (f(x)-f(x^*))$. $\phi$ es no decreciente, porque cuando $t$ disminuye, la corona circular se hace más gruesa hacia dentro, por lo que hay más puntos donde encontrar el mínimo, y si $t$ aumenta, la corona se hace más fina por lo que hay menos puntos donde encontrar el mínimo.
+Como $x^*$ es mínimo local y el único punto estacionario en un entorno suyo, podemos tomar $\rho>0$ tal que $\forall x \mid 0<||x-x^*||\leq\rho$, entonces $f(x)>f(x^*)$. Definimos la función $$\phi
+(t)=\min_{0\leq t\leq ||x-x^*||\leq\rho} f(x)-f(x^*)$$
+ $\phi$ es no decreciente, porque cuando $t$ disminuye, la corona circular se hace más gruesa hacia dentro, por lo que hay más puntos donde encontrar el mínimo, y si $t$ aumenta, la corona se hace más fina por lo que hay menos puntos donde encontrar el mínimo.
 
 Utilizamos la continuidad de de la norma y $\nabla f$ para decir que $\forall \varepsilon>0\ \exists r>0\mid ||x-x^*||<r\Rightarrow |g(x)-g(x^*)|<\varepsilon$, donde $g(x)=||x-x^*||+sc||\nabla f(x)||$. Se tiene que $g(x^*)=0$. Luego
-\begin{equation}\label{estrella}
+\begin{equation}\label{estrellita}
 ||x-x^*||+sc||\nabla f(x)||<\varepsilon 
 \end{equation}
-Entonces definimos $S:=\{x\mid ||x-x^*||<\varepsilon, f(x)< f(x^*)+\phi(r)\}$. Supongamos que $x^k\in S$, entonces para $t=||x^*-x^k||$, $\phi(t)\leq f(x^k)-f(x^*)<\phi(r)$. Como $\phi$ es monótona, $||x^k-x^*||<r$, por lo que podemos aplicarle \ref{estrella} a $x^k$. Veamos que $x^{k+1}\in S$. Tenemos que probar dos desigualdades.
+Entonces definimos $S:=\{x\mid ||x-x^*||<\varepsilon, f(x)< f(x^*)+\phi(r)\}$. Supongamos que $x^k\in S$, entonces para $t=||x^*-x^k||$, $\phi(t)\leq f(x^k)-f(x^*)<\phi(r)$. Como $\phi$ es monótona, $||x^k-x^*||<r$, por lo que podemos aplicarle \ref{estrellita} a $x^k$. Veamos que $x^{k+1}\in S$. Tenemos que probar dos desigualdades.
 \begin{itemize}
-\item $||x^{k+1}-x^k||=||x^k+\alpha^kd^k-x^*||=||x^k-x^*+\alpha^kd^k||\leq ||x^k-x^*||+\alpha^k||d^k||\leq\\ ||x^k-x^*||+sc||\nabla f(x^k)||<\varepsilon$
-\item $f(x^{k+1})<f(x^k)<f(x^*)$
+\item $||x^{k+1}-x^*||=||x^k+\alpha^kd^k-x^*||=||x^k-x^*+\alpha^kd^k||\leq ||x^k-x^*||+\alpha^k||d^k||\leq\\ ||x^k-x^*||+sc||\nabla f(x^k)||<\varepsilon$
+\item $f(x^{k+1})<f(x^k)<f(x^*)+\phi(r)$
 \end{itemize}
 Por lo que $x^{k+1}\in S$. Además $S$ está contenido en un compacto (una bola cerrada de radio $\varepsilon$), por lo que toda sucesión contiene una subsucesión convergente, esto es, $\{x^l\}_{l>k}$ contiene una subsucesión convergente. Y como $x^*$ es el único punto estacionario, la sucesión debe converger hacia dicho punto $x^*$. $\QED$
 \end{dem}
-
+\newpage
 \subsection{Tasa de convergencia del método de descenso máximo para funciones cuadráticas}
-Supongamos que $Q\in\R^{n\times n}$ simétrica definida positica. Sean $m,M$ los autovalores mínimo y máximo de $Q$, entonces $\forall y\neq 0, y\in\R^n$ se tiene la \emph{desigualdad de Kantorovich}
+Supongamos que $Q\in\R^{n\times n}$ simétrica definida positiva. Sean $m,M$ los autovalores mínimo y máximo de $Q$, entonces $\forall y\neq 0, y\in\R^n$ se tiene la \emph{desigualdad de Kantorovich}
 $$\frac{(y'y)^2}{(y'Qy)(y'Q^{-1}y)}\geq\frac{4Mm}{(M+m)^2}$$
 
 \begin{teorema}
@@ -219,23 +217,23 @@ $$f(x^{k+1})\leq \left(\frac{M-m}{M+m}\right)^2f(x^k).$$
 \begin{dem}
 Por la definición de $f$, $\nabla f(x)=Qx$. En la iteración $k$, $f(x^k)=\frac{1}{2}x^{k'}Qx^k$, luego $\nabla f(x^k)=Qx^k:=g^k$. Podemos escribir $f(x^k)=\frac{1}{2}x^{k'}QQ^{-1}Qx^k=\frac{1}{2}g^{k'}Q^{-1}g^k$. 
 
-$\alpha^k$ mediante minimización, $g(\alpha)=f(x^k-\alpha\nabla f(x^k)), \min_{\alpha>0}g(\alpha)$. 
-\begin{gather*}
-g'(\alpha)=\frac{dg(\alpha)}{d\alpha}=-\nabla f(x^k)'\nabla f(x^k-\nabla f(x^k))=0\\
-=-g^{k'}Q[x^k-\alpha g^k]=g^{k'}Qx^k-\alpha g^{k'}Qg^k=0\\
-\alpha=\frac{g^{k'}g^k}{g^{k'}Qg^k}\Rightarrow \alpha^k=\frac{g^{k'}g^k}{g^{k'}Qg^k}
-\end{gather*}
-\begin{gather*}
-f(x^{k+1})=\frac{1}{2}[x^k-\frac{g^{k'}g^k}{g^{k'}Qg^k}g^k]'Q[x^k-\frac{g^{k'}g^k}{g^{k'}Qg^k}g^k]=\frac{1}{2}[x^{k'}Qx^k-\frac{(g^{k'}g^k)^2}{g^{k'}Qg^k}]=\\
-\frac{1}{2}x^{k'}Qx^k-\frac{1}{2}\frac{(g^{k'}g^k)^2}{g^{k'}Qg^k}=\frac{1}{2}g^{k'}Q^{-1}g^k-\frac{1}{2}\frac{(g^{k'}g^k)^2}{g^{k'}Qg^k}=\\
-\frac{1}{2}g^{k'}Q^{-1}g^k[1-\frac{1}{2}\frac{(g^{k'}g^k)^2}{(g^{k'}Qg^k)(g^{k'}Q^{-1}g^k)}\leq\frac{1}{2}g^{k'}Q^{-1}g^k[1-\frac{4Mm}{(M+m)^2}]=\\
-\frac{1}{2}g^{k'}Q^{-1}g^k\left(\frac{M-m}{M+m}\right)^2=f(x^k)\left(\frac{M-m}{M+m}\right)^2
-\end{gather*}
+Calculamos $\alpha^k$ mediante minimización, $g(\alpha)=f(x^k-\alpha\nabla f(x^k))$, buscamos $\min_{\alpha>0}g(\alpha)$. 
+\begin{align*}
+g'(\alpha)&=\frac{dg(\alpha)}{d\alpha}=-\nabla f(x^k)'\nabla f(x^k-\alpha\nabla f(x^k))\\
+&=-g^{k'}Q[x^k-\alpha g^k]=g^{k'}Qx^k-\alpha g^{k'}Qg^k=0\\
+\alpha&=\frac{g^{k'}g^k}{g^{k'}Qg^k}\Rightarrow \alpha^k=\frac{g^{k'}g^k}{g^{k'}Qg^k}
+\\ \\
+f(x^{k+1})&=\frac{1}{2}\left[x^k-\frac{g^{k'}g^k}{g^{k'}Qg^k}g^k\right]'Q\left[x^k-\frac{g^{k'}g^k}{g^{k'}Qg^k}g^k\right]=\frac{1}{2}\left[x^{k'}Qx^k-\frac{(g^{k'}g^k)^2}{g^{k'}Qg^k}\right]\\
+&=\frac{1}{2}x^{k'}Qx^k-\frac{1}{2}\frac{(g^{k'}g^k)^2}{g^{k'}Qg^k}=\frac{1}{2}g^{k'}Q^{-1}g^k-\frac{1}{2}\frac{(g^{k'}g^k)^2}{g^{k'}Qg^k}\\ 
+&=\frac{1}{2}g^{k'}Q^{-1}g^k\left[1-\frac{(g^{k'}g^k)^2}{(g^{k'}Qg^k)(g^{k'}Q^{-1}g^k)}\right]\\
+&\leq\frac{1}{2}g^{k'}Q^{-1}g^k\left[1-\frac{4Mm}{(M+m)^2}\right]\\
+&=\frac{1}{2}g^{k'}Q^{-1}g^k\left(\frac{M-m}{M+m}\right)^2=f(x^k)\left(\frac{M-m}{M+m}\right)^2
+\end{align*}
 $\QED$
 \end{dem}
 
 \subsection{Método de Newton generalizado}
-Si tenemos $g:\R^{n}\times\R^{ n}\to \R^n$, $g=(g_1,\dotsc,g_n)$ con $g_i : \R^n \to \R$. Tratamos de resolver $g(x)=0$. Si $\exists F\mid \nabla F = g$ entonces buscamos $\nabla F =0$, es decir, buscamos:
+Si tenemos $g:\R^{n}\to \R^n$, $g=(g_1,\dotsc,g_n)$ con $g_i : \R^n \to \R$. Tratamos de resolver $g(x)=0$. Si $\exists F\mid \nabla F = g$ entonces buscamos $\nabla F =0$, es decir, buscamos:
 \[
 x^{k+1} =x^k - \alpha^k (\nabla^2 F(x^k))^{-1}\nabla F(x^k)
 \]
@@ -248,52 +246,198 @@ Se tomará $\alpha^k =1$ $\forall k$ (si $\nabla g(x^k)$ es definida positiva), 
 \begin{teorema}
 Sea $g:\R^n\to\R^n$ y $x^*$ tal que $g(x^*)=0$. Sea $S_\delta=\{x\in\R^n:||x-x^*||\leq\delta\}$. Supongamos que $g\in\mathcal{C}^1(S_\delta)$ y $\nabla g(x^*)$ es invertible. Entonces
 \begin{itemize}
-\item[a)] Existe $\delta>0$ tal que si $x^0\in\S_\delta$, la sucesión $x^k$ está bien definida y converge a $x^*$. Además, la convergencia es súper lineal, es decir,
+\item[a)] Existe $\delta>0$ tal que si $x^0\in S_\delta$, la sucesión $x^k$ está bien definida y converge a $x^*$. Además, la convergencia es súper lineal, es decir,
 $$\lim_{k\to\infty}\frac{||x^{k+1}-x^*||}{||x^k-x^*||}=0.$$
-\item[b)] Si para algún $L>0,M>0$, $x,y\in S_\delta\Rightarrow ||\nabla g(x)-\nabla g(y)||\leq L||x-y||$ (si $\nabla g$ es lipschitziana), entonces si $x^0\in S_\delta$ se verifica $||x^{k+1}-x^*||\leq LM/2||x^k-x^*||^2\forall k$ (tiene convergencia cuadrática).
+\item[b)] Si para algún $L>0$, $\forall x,y\in S_\delta\Rightarrow ||\nabla g(x)-\nabla g(y)||\leq L||x-y||$ (si $\nabla g$ es lipschitziana), entonces si $x^0\in S_\delta$ se verifica $\exists M>0:||x^{k+1}-x^*||\leq LM/2||x^k-x^*||^2$ $\forall k$ (tiene convergencia cuadrática).
 \end{itemize}
 \end{teorema}
 \begin{dem}
-$\nabla g(x^*)$ es invertible si y solo si $\det(\nabla g(x^*))\neq 0\Rightarrow\det(\nabla g(x))\neq 0$ en $S_\delta$ para algún $\delta>0$. Por tanto $\exists M>0$ tal que $||\nabla g(x)^{-1}||<M\ \forall x\in S_\delta$. 
+$\nabla g(x^*)$ es invertible si y solo si $\det(\nabla g(x^*))\neq 0$. Como $g \in \mathcal{C}^1$, $\det(\nabla g(x))\neq 0$ en $S_\delta$ para algún $\delta>0$. Por tanto $\exists M>0$ tal que $||\nabla g(x)^{-1}||<M\ \forall x\in S_\delta$. 
 \begin{itemize}
 \item[a)] Supongamos que $x^k\in S_\delta$ y consideremos $x^{k+1}$. Entonces
-$$||x^{k+1}-x^k||=||x^k-(\nabla g(x^k)')^{-1}g(x^k)-x^*||=||(\nabla g(x^k)')^{-1}[-g(x^k)+\nabla g(x^k)'(x^k-x^*)||.$$
+$$||x^{k+1}-x^*||=||x^k-(\nabla g(x^k)')^{-1}g(x^k)-x^*||=||(\nabla g(x^k)')^{-1}[-g(x^k)+\nabla g(x^k)'(x^k-x^*)]||.$$
 Usamos la fórmula del valor intermedio del cálculo integral
 $$g(x^k)=g(x^*)+\int_0^1\nabla g(x^*+t(x^k-x^*))'dt\cdot(x^k-x^*)$$
 que aplicada a la ecuación anterior, como $g(x^*)=0$  da lugar a
-\begin{gather*}
-||(\nabla g(x^k)')^{-1}[-g(x^*)-\int_0^1\nabla g(x^*+t(x^k-x^*))'dt\cdot(x^k-x^*)+\nabla g(x^k)'(x^k-x^*)]||=\\
-||(\nabla g(x^k)')^{-1}\int_0^1(\nabla g(x^*)'-\nabla g(x^*+t(x^k-x^*))')dt\cdot(x^k-x^*)]||\leq\\
-\end{gather*}
+\begin{align*}
+||x^{k+1}-x^*||&=||(\nabla g(x^k)')^{-1}\left[-\int_0^1\nabla g(x^*+t(x^k-x^*))'dt\cdot(x^k-x^*)+\nabla g(x^k)'(x^k-x^*)\right]||\\
+&=||(\nabla g(x^k)')^{-1}\left[\int_0^1(\nabla g(x^k)'-\nabla g(x^*+t(x^k-x^*))')dt\cdot(x^k-x^*)\right]||
+\end{align*}
 Aplicando desigualdades de produtos e integrales matriciales
 \begin{equation}\label{estrella}
-\leq||(\nabla g(x^k)')^{-1}||\int_0^1||(\nabla g(x^*)'-\nabla g(x^*+t(x^k-x^*))')||dt||x^k-x^*||
+||x^{k+1}-x^*||\leq||(\nabla g(x^k)')^{-1}||\int_0^1||(\nabla g(x^k)'-\nabla g(x^*+t(x^k-x^*))')||dt||x^k-x^*||
 \end{equation}
-Por continuidad de $\nabla g, \forall\varepsilon/M>0\ \exists\delta'\leq\delta$ tal que si $||x^k-x^*||<\delta'\Rightarrow ||\nabla g(x^*)-\nabla g(x^*+t(x^k-x^*))')||<\varepsilon/M$. Por tanto, el término anterior queda mayorado por
-$$M\int_0^1\varepsilon/M dt ||x^k-x^*||=\varepsilon ||x^k-x^*||.$$
-En definitiva, $\forall\varepsilon>0, ||x^{k+1}-x^*||\leq\varepsilon||x^k-x^*||$, lo que significa que $$\lim_{k\to\infty}\frac{||x^{k+1}-x^*||}{||x^k-x^*||}=0.$$
+Por continuidad de $\nabla g$, $\forall\varepsilon/M>0$ $\exists\delta'\leq\delta$ tal que si $||x^k-x^*||<\delta'$ entonces se tiene $ ||\nabla g(x^k)-\nabla g(x^*+t(x^k-x^*))')||<\varepsilon/M$. Por tanto, el término anterior queda mayorado por
+$$||x^{k+1}-x^*|| \leq M\int_0^1\frac{\varepsilon}{M} dt ||x^k-x^*||=\varepsilon ||x^k-x^*||.$$
+En definitiva, $\forall\varepsilon>0$ $\exists \delta>0$ tal que si $||x^k-x^*||<\delta$ entonces $ ||x^{k+1}-x^*||\leq\varepsilon||x^k-x^*||$, lo que significa que $$\lim_{k\to\infty}\frac{||x^{k+1}-x^*||}{||x^k-x^*||}=0.$$
 \item[b)] En \ref{estrella} aplicamos que $\nabla g$ es lipschitziana, entonces ese término está acotado por
-$$||(\nabla g(x^k)')^{-1}||\int_0^1||x^*-x^*-t(x^l-x^*)||dt||x^k-x^*||\leq ML\int_0^1 t||x^k-x^*||^2=ML/2||x^k-x^*||^2$$
-lo que prueba que $ ||x^{k+1}-x^*||=ML/2||x^k-x^*||^2$. $\QED$
+\begin{gather*}
+||(\nabla g(x^k)')^{-1}||\int_0^1||\nabla g(x^k)-\nabla g(x^*-t(x^k-x^*))||dt||x^k-x^*||\leq\\
+ ML\int_0^1 (1-t)||x^k-x^*||^2dt=ML/2||x^k-x^*||^2
+\end{gather*}
+lo que prueba que $ ||x^{k+1}-x^*||\leq ML/2||x^k-x^*||^2$. $\QED$
 \end{itemize}
 \end{dem}
 \subsection{Método Quasi-Newton}
-En Newton, $d^k=-(\nabla^2 f(x^k))^{-1})\nabla f(x^k)$, que es equivalente a encontrar la solución del sistema $\nabla^2 f(x^k))d^k=-\nabla g(x^k)$.  Podríamos tener que $\nabla^2 f(x)$ no sea definido positivo o que no sea invertible. Entonces consideramos el sistema $(\nabla^2 f(x^k)-\Delta^k)d^k=-\nabla g(x^k)$, con $\Delta^k$ diagonal con entradas positivas de modo que al sumar cada una con el autovalor correspondiente de $\nabla^2 f(x^k)$ salga positivo. Entonces la matriz resultante sí es definida positiva, por lo que admite una descomposición de Cholesky con una matriz $L^k$ triangular
+En Newton, $d^k=-(\nabla^2 f(x^k))^{-1}\nabla f(x^k)$, que es equivalente a encontrar la solución del sistema $(\nabla^2 f(x^k))d^k=-\nabla f(x^k)$.  Podríamos tener que $\nabla^2 f(x)$ no sea definido positivo o que no sea invertible. Entonces consideramos el sistema $(\nabla^2 f(x^k)+\Delta^k)d^k=-\nabla f(x^k)$, con $\Delta^k$ diagonal con entradas positivas de modo que al sumar cada una con el autovalor correspondiente de $\nabla^2 f(x^k)$ salga positivo. Entonces la matriz resultante sí es definida positiva, por lo que admite una descomposición de Cholesky con una matriz $L^k$ triangular
 $$\nabla^2 f(x^k)+\Delta^k=L^{k'}L^k\Rightarrow L^{k'}\underbrace{L^kd^k}_{y^k}=-\nabla f(x^k)\equiv L^{k'}y^k=-\nabla f(x^k).$$
 Por lo que $y^k=-(L^{k'})^{-1}\nabla f(x^k)$, de donde $d^k=(L^k)^{-1}y^k$.
-
 \section{Optimización con restricciones convexas}
-Supongamos que existe $S\subset\R^n$ convexo cerrado y $f:\R^n\to\R, f\in\mathcal{C}^1(S)$. Se considera el problema $(P)\min_{x\in S} f(x)$. En el interior de $S$ sigue siendo condición necesaria que $\nabla f(x)=0$, pero en la frontera no podemos hacer esto, porque no podemos considerar las direcciones opuestas. Sí que podemos pedir que $\nabla f(x^*)(x-x^*)\geq 0\ \forall x\in S$. 
+Supongamos que existe $S\subset\R^n$ convexo cerrado y $f:\R^n\to\R$, $f\in\mathcal{C}^1(S)$. Se considera el problema $(P)$ $\min_{x\in S} f(x)$. En el interior de $S$ sigue siendo condición necesaria que $\nabla f(x)=0$, pero en la frontera no podemos hacer esto, porque no podemos considerar las direcciones opuestas. Sí que podemos pedir que $\nabla f(x^*)(x-x^*)\geq 0\ \forall x\in S$. 
 \begin{teorema}
-Si $x^*$ mínimo local de $(P)$, entonces  $\nabla f(x^*)(x-x^*)\geq 0\ \forall x\in S$.
+Si $x^*$ mínimo local de $(P)$, entonces  $\nabla f(x^*)'(x-x^*)\geq 0\ \forall x\in S$.
 \end{teorema}
 \begin{dem}
 Sea $1>\varepsilon>0$ suficientemente pequeño. Por el teorema del valor medio podemos expresar para algún $s\in[0,1]$
 $$f(x^*+\varepsilon(x-x^*))=f(x^*)+\nabla f(x^*+s\varepsilon (x-x^*))'[x^*+\varepsilon(x-x^*)-x^*]=f(x^*)+\nabla f(x^*+s\varepsilon (x-x^*))'\varepsilon(x-x^*)$$
-Supongamos que la condición del teorema no es cierta. Entonces $\exists x'\mid \nabla f(x^*)(x-x^*)<0$. Por continuidad se tendrá la desigualdad en un entorno de $x'$. Para ese $x'$ utilizamos el desarrollo anterior. 
-$$f(x^*+\varepsilon(x'-x^*))=f(x^*)+\nabla \varepsilon \underbrace{f(x^*+s\varepsilon (x'-x^*))'(x'-x^*)}_{<0}$$
+Supongamos que la condición del teorema no es cierta. Entonces $\exists x'\mid \nabla f(x^*)(x'-x^*)<0$. Por continuidad se tendrá la desigualdad en un entorno de $x'$. Para ese $x'$ utilizamos el desarrollo anterior. 
+$$f(x^*+\varepsilon(x'-x^*))=f(x^*)+\varepsilon\underbrace{\nabla  f(x^*+s\varepsilon (x'-x^*))'(x'-x^*)}_{<0}$$
 Entonces $f(x^*+\varepsilon(x'-x^*))< f(x^*)$, lo cual contradice que $x^*$ sea mínimo local. $\QED$
 \end{dem}
 
+\subsection{Métodos de direcciones factibles}
+
+Parten de $x^0\in X$ y generan $x^{k+1}=x^k+\alpha d^k,\ \alpha^k>0$, siendo $d^k$ una dirección factible en $x^k$. Esto quiere decir que $\exists\mu >0$ tal que $x^{k}+\mu d^k\in X$. Toda dirección factible $d$ en $\overline{x}\in X$ se puede expresar como $d=\overline{x}-x$ con $x\in X$. Por tanto, podemos reescribir el método de direcciones factibles como $x^{k+1}=x^k+\alpha^k(\overline{x}^k-x^k),\ \alpha^k>0,\ \overline{x}^k\in X$. Si $x^k\in X$ y $\alpha^k\leq 1$, entonces $x^{k+1}\in X$. En efecto, $x^{k+1}=\alpha^k\overline{x}^k+(1-\alpha^k)x^k\in X$ por ser $X$ convexo. 
+
+\subsection{Elección del punto inicial $x^0$}
+Se puede hacer uso de un problema auxiliar. Tomemos $C>>0$ suficientemente grande y consideramos el problema $P:\min f(x)$ sujeto a $x\in X$. Supongamos que $X=\{x\in\R^n: g_j(x)\leq 0, j\in J\}$. 
+\begin{align*}
+P_C:&\min\ f(x)+Cy\\
+ & sa:g_j(x)-y\leq 0\\
+ & x\in\R^n, y\geq 0
+\end{align*}
+En este problema es más fácil encontrar soluciones factibles, pues para cada $\hat{x}\in\R^n$, si $g_j(\hat{x})\leq 0\ \forall j\Rightarrow (\hat{x},0)$ es factible en $P_C$ y $\hat{x}\in X$, por lo que se puede tomar como $x^0$. Si $\exists j'\in J \mid g_{j'}(\hat{x})>0\Rightarrow \hat{y}=\max_{j\in J} g_j(\hat{x})$ hace que $(\hat{x},\hat{y})$ sea factible en $P_C$. Podemos aplicar el método de direcciones factibles en este punto hasta encontrar una solución de $P_C$, digamos $(\overline{x},\overline{y})$. Si $\overline{y}=0$ (bastaría que fuera 0 en alguna iteración) entonces $\overline{x}$ es factible en $P$. Si $\overline{y}\neq 0\Rightarrow\nexists x\in X$, pues $f(\overline{x})+C\overline{y}>f(x)$, dado que $C$ es muy grande.
+
+\subsection{Elección de la dirección}
+En cada punto $x^k$ queremos elegir una dirección de descenso. Esto es, que verifique $\nabla f(x^k)'(\overline{x}^k-x^k)<0$. Observemos que si $x^k$ no es estacionario entonces existe tal $x\in X$. La forma de buscarlos es a través del siguiente problema. 
+\begin{align*}
+P_A: &\min\ \nabla f(x^k)'(x-x^k) \equiv & \min \nabla f(x^k)'x\\
+ & x\in X								& x\in X
+\end{align*}
+Pongamos que sabemos resolver $P_A$ y obtenemos $\overline{x}^k$. Entonces si $$0\leq\nabla f(x^k)(\overline{x}^k-x^k)\leq \nabla  f(x^k)(x^k-x^k),$$ se deduce que $x^k$ es estacionario. En caso contrario $d^k=\overline{x}^k-x^k$ es una dirección factible y de descenso. A estas direcciones se las denomina de \textbf{gradiente condicionado}.
+
+\begin{ej}
+$X=\{x\in\R^n:\sum_{j=1}^n=r, x_i\geq 0\}$ donde $r>0$. Entonces  el problema que tenemos que resolver es
+\begin{align*}
+&\min\  \sum_{j=1}^n\frac{\partial f(x^k)}{\partial x_i}(x_i-x^k_i)\\
+&\sum_{j=1}^nx_i=r, x_i\geq 0\ \forall i								
+\end{align*}
+Supongamos que $\frac{\partial f(x^k)}{\partial x_j}\leq\frac{\partial f(x^k)}{\partial x_i}$ $\forall i$, entonces $x^* = r\cdot e_j$ es una solución válida, con lo que $d=x^*-x^k$ será una dirección factible.
+\end{ej}
+
+\begin{teorema}\label{teorema}
+Los métodos de direcciones factibles con gradiente condicionado y longitud de paso dada por Armijo o minimización restringida $(0<\alpha^k\leq 1)$ sobre compactos tienen la propiedad de que todo punto de acumulación es estacionario. 
+\end{teorema}
+
+Para probarlo nos basaremos en el siguiente teorema. 
+
+\begin{teorema}[base]\label{base}
+Sea $\{x^k\}$ una sucesión generada por el método de direcciones factibles con longitud de paso mediante Armijo o minimización restringida ($0<\alpha^k\leq 1$) y tales que las direcciones $d^k=\overline{x}^k-x^k$ verifican:
+\begin{enumerate}
+\item\label{1} $\limsup||\overline{x}^k-x^k||<+\infty$.
+\item\label{2} $\limsup \nabla f(x^k)(\overline{x}^k-x^k)<0$.
+\end{enumerate}
+Entonces todo punto de acumulación es estacionario.
+\end{teorema}
+\begin{dem}[del teorema \ref{teorema}] 
+Supongamos que $\overline{x}$ es un punto de acumulación no estacionario. En primer lugar, dado que $\overline{x}^k\in X\ \forall k$ y $x^k\in X\ \forall k$ se tiene
+$$||\overline{x}^k-x^k||\leq ||\overline{x}^k||+||x^k||<M\ \forall k$$
+por compacidad de $X$, con lo que se verifica \ref{1}. En segundo lugar, dado que $d^k$ es de gradiente condicionado entonces
+\begin{gather*}
+\nabla f(x^k)'(\overline{x}^k-x^k)\leq \nabla f(x^k)'(x-x^k)\quad \forall x\in X\\
+\limsup \nabla f(x^k)'(\overline{x}^k-x^k)\leq \limsup\nabla f(x^k)'(x-x^k) \quad \forall x\in X\\
+\limsup \nabla f(x^k)'(\overline{x}^k-x^k)\leq\nabla f(\overline{x})'(x-\overline{x}) \quad \forall x\in X
+\end{gather*}
+Como $\overline{x}$ no es estacionario, debe existir $\hat{x}\mid \nabla f(\overline{x})'(\hat{x}-\overline{x})<0$. Por tanto $\limsup \nabla f(x^k)'(\overline{x}^k-x^k)<0$, con lo que tenemos \ref{2}. Por el teorema \ref{base}, esto contradice que $\overline{x}$ no sea estacionario. $\QED$
+\end{dem}
+
+\begin{ej}
+\begin{align*}
+&\min\ f(x_1,x_2)=x_1^2+x_2^2-4x_1-4x_2+8\\
+& x_1+2x_2-4\leq 0\\
+& x_i\geq 0
+\end{align*}
+
+$x^0=\begin{pmatrix}
+0\\
+0
+\end{pmatrix}, \nabla f(x)=\begin{pmatrix}
+2x_1-4\\
+2x_2-4
+\end{pmatrix}\Rightarrow \nabla f(x^0)=\begin{pmatrix}
+-4\\
+-4
+\end{pmatrix}\Rightarrow x^1=x^0-\alpha\nabla f(x^0)$. Elegimos $\alpha$ mediante minimización:
+\[x^1(\alpha)=\begin{pmatrix}
+4\alpha\\
+4\alpha
+\end{pmatrix}
+\]
+$g(\alpha)=f(x^1(\alpha))=(4\alpha)^2+(4\alpha)^2-4(4\alpha)-4(4\alpha)+8$. Al calcular el mínimo sin restricciones obtenemos $\alpha=\frac{1}{2}$, lo cual nos saca del conjunto factible. Por tanto, tenemos que buscar el punto de intersección de la recta en la dirección que estábamos tomando y la frontera del conjunto factible. Obtendríamos $x^1=\begin{pmatrix}
+\frac{4}{3}\\
+\frac{4}{3}
+\end{pmatrix}$. Ahora calculamos $x^2=x^1+\alpha d^1$ utilizando el método de gradiente condicionado. $\nabla f(x^1)=\begin{pmatrix}
+-\frac{4}{3}\\
+-\frac{4}{3}
+\end{pmatrix}$, luego minimizamos $(-\frac{4}{3},-\frac{4}{3})\begin{pmatrix}
+x_1-\frac{4}{3}\\
+x_2-\frac{4}{3}
+\end{pmatrix}$ con las restricciones de que $x_1+2x_2-4\leq 0$ y $x_i\geq 0$. Como tiene que ser uno de los puntos extremos del poliedro, evaluamos y resulta que $x^*=\begin{pmatrix}
+4\\
+0
+\end{pmatrix}=\overline{x}^1 $. Este es el punto extremo de la dirección que tenemos que tomar. Entonces $d^1=\overline{x}^1-x^1=\begin{pmatrix}
+\frac{8}{3}\\
+-\frac{4}{3}
+\end{pmatrix}$ y $x^2(\alpha)=x^1+\alpha d^1=\begin{pmatrix}
+\frac{4}{3}+\frac{8}{3}\alpha\\
+\frac{4}{3}-\frac{4}{3}\alpha
+\end{pmatrix}$. $\min g(\alpha)=\min f(x^2(\alpha))\Rightarrow x^2=\begin{pmatrix}
+\frac{8}{5}\\
+\frac{6}{5}
+\end{pmatrix}$.
+\end{ej}
+
+\subsection{Métodos de gradiente proyectado}
+Son métodos de direcciones factibles en los que las iteraciones son de la forma $x^{k+1}=x^k+\alpha^k(\overline{x}^k-x^k)$ y $\overline{x}^k=proy_X(x^k-s\nabla f(x^k)):=[x^k-s\nabla f(x^k)], s>0$. 
+
+Supongamos que $\overline{x}$ es estacionario. Multiplicando la condición de ser estacionario por $-s$ obtenemos $-s\nabla f(\overline{x})'(x-\overline{x})\leq 0\ \forall x\in X$. Sumamos y restamos $\overline{x}$, $(\overline{x}-s\nabla f(\overline{x})-\overline{x})'(x-\overline{x})\leq 0\ \forall x\in X$. Esto es equivalente a que $\overline{x}-s\nabla f(\overline{x})$ verifica la condición del teorema de la proyección, si y solo si $\overline{x}=[\overline{x}-s\nabla f(\overline{x})]$. 
+
+\begin{teorema}
+Sea $\{x^k\}$ una sucesión generada mediante el método de gradiente proyectado con $\alpha^k$ elegido mediante Armijo o minimización restringida sobre un compacto. Entonces todo punto de acumulación es estacionario.
+\end{teorema}
+\begin{dem}
+Supongamos que $\overline{x}$ es de acumulación no estacionario. Comprobamos \ref{1} y \ref{2} para llegar a contradicción.
+\begin{enumerate}
+\item Igual que antes, pues $\overline{x}^k, x^k\in X$ y $X$ es compacto.
+\item Como $\overline{x}^k$ es proyección está caracterizada por 
+$$(x^k-s\nabla f(x^k)-\overline{x}^k)'(x-\overline{x}^k)\leq 0, \forall x\in X.$$
+En particular esto se verifica para $x=x^k$, de donde obtenemos haciendo el producto
+$$||x^k-\overline{x}^k||^2-s\nabla f(x^k)'(x^k-\overline{x}^k)\leq 0$$
+Despejando
+$$\nabla f(x^k)'(\overline{x}^k-x^k)\leq -\frac{1}{s}||x^k-\overline{x}^k||^2$$
+Ahora podemos tomar límite superior
+$$\limsup \nabla f(x^k)'(\overline{x}^k-x^k)\leq \limsup-\frac{1}{s}||x^k-\overline{x}^k||^2=\limsup-\frac{1}{s}||x^k-[x^k-s\nabla f(x^k)]||^2$$
+La proyección ortogonal y todas las demás funciones que aparecen son continuas, por lo que podemos intercambiar el límite con ellas
+$$\limsup \nabla f(x^k)'(\overline{x}^k-x^k)\leq -\frac{1}{s}||\overline{x}-[\overline{x}-s\nabla f(\overline{x})]||^2$$
+Pero por no ser estacionario, $\overline{x}-[\overline{x}-s\nabla f(\overline{x})]\neq 0$. Por tanto $\limsup \nabla f(x^k)'(\overline{x}^k-x^k)<0$, lo que prueba el resultado. $\QED$
+\end{enumerate}
+\end{dem}
+
+\begin{ej}
+\begin{align*}
+&\min\ f(x_1,x_2)=x_1^2+x_2^2-4x_1-4x_2+8\\
+& x_1^2+x_2^2-1\leq 0\\
+\end{align*} 
+Queremos usar el método del gradiente proyectado partiendo de $x^0=(1,0)', s=\frac{1}{2}, \alpha^k =1\ \forall k$. $x^1=x^0+(\overline{x}^0-x^0)$, donde $\overline{x}^0=[x^0-\frac{1}{2}\nabla f(x^0)]=\begin{bmatrix}
+\begin{pmatrix}
+2\\
+2
+\end{pmatrix}
+\end{bmatrix}$
+Podemos hacerlo geométricamente y da $\overline{x}^0=\begin{pmatrix}
+\frac{\sqrt{2}}{2}\\
+\frac{\sqrt{2}}{2}
+\end{pmatrix}=x^1$. Cuando calculamos $\overline{x}^1$ obtenemos el mismo punto $x^1$, por lo que es estacionario. 
+\end{ej}
 
 \end{document}

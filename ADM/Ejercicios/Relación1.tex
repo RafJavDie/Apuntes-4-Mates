@@ -1,0 +1,204 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\media}[1]{{\overline{#1}}}
+\newcommand{\muestra}[1]{{\underline{#1}}}
+\newcommand{\m}[1]{{\muestra{#1}}}
+\newcommand{\mX}{{\muestra{X}}}
+
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Análisis de Datos Multivariantes}
+\author{Diego Pedraza López, Javier Aguilar Martín, Rafael González López}
+\maketitle
+
+\begin{ejercicio}{1.1}
+Sea $\mX_1, \mX_2, \dots, \mX_n$ una muestra aleatoria simple de una vector $p$-dimensional $\mX \sim (\m{µ},Σ)$.
+Sea $\media{\m{X}} = \frac{1}{n}\sum_{i=1}^n \m{X}_i$ y $S$ la matriz $S = [S_{jk}]$ con
+\[ S_{jk} = \sum_{i=1}^n (X_{ij} - \media{X}_j)(X_{ik}-\media{X}_k), \quad j,k=1,\dots,p\]
+\begin{enumerate}[(a)]
+\item Demuestra que $S = \sum_{i=1}^n (\mX_i-\media{\m{X}})(\mX_i-\media{\m{X}})^t$.
+\item Sea $A_{m\times p}$ y sea $\m{Y}_1,\dots,\m{Y}_n$ con $\m{Y}_i = A \m{X}_i$.
+
+Demuestra que $\media{\m{Y}}=A \media{\mX}$ y que $S_Y = A S_X A^t$.
+\item Sea $\mathbb{X}$ la matriz de datos. Demuestra que $S = \mathbb{X}^t H \mathbb{X}$, siendo $H$ simétrica e idempotente.
+\item Demuestra que $E(\media{\mX}) = \m{μ}$ y $Cov(\media{\mX}) = \frac{1}{n} Σ$.
+\item Sea $\hat{Σ} = \frac{1}{n-1}S$, demuestra que $E 	(\hat{Σ}) = Σ$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item
+\[ \left(\sum_{i=1}^n (\mX_i-\media{\m{X}})(\mX_i-\media{\m{X}})^t\right)_{jk} = \sum_{i=1}^n (\mX_i-\media{\m{X}})_j(\mX_i-\media{\m{X}})_k = S_{jk} \]
+\item
+\[ \media{\m{Y}} = \frac{1}{n} \sum_{i=1}^n \m{Y}_i = \frac{1}{n} \sum_{i=1}^n A\m{X}_i = A \media{\mX} \]
+\[ S_Y = \sum_{i=1}^n (\m{Y}_i-\media{\m{Y}})(\m{Y}_i-\media{\m{Y}})^t = \sum_{i=1}^n (A\mX_i-A\media{\mX})(A\mX_i-A\media{\mX})^t = A S_X A^t\]
+\item Recordemos que $H = I_n - \frac{1}{n}E_n^t$, donde $E_n$ es una matriz $n \times n$ de unos. 
+Por simetría e idempotencia: $H^t H = H^2 = H$. Entonces:
+\[ S = \tilde{\mathbb{X}}^t\tilde{\mathbb{X}} = (H \mathbb{X})^t (H \mathbb{X}) = \mathbb{X}^t H^t H \mathbb{X} = \mathbb{X}^t H \mathbb{X} \]
+\item
+\[ E(\media{\mX}) = \frac{1}{n}\sum_{i=1}^n E(\mX) = \frac{1}{n} (n \m{µ}) = \m{µ} \]
+Como $\media{\mX}= \sum_{i=1}^n \muestra{X_i}/n$, y cada muestra es independiente, deducimos 
+\begin{gather*}
+ Cov(\media{\mX}) = \Sigma_{\media{\mX}}=\sum_{i=1}^n\Sigma_{\muestra{X_i}/n} = \sum_{i=1}^n\frac{1}{n} \Sigma_{\muestra{X_i}} \frac{1}{n} = \frac{1}{n^2}\sum_{i=1}^n \Sigma_{\muestra{X}}= \frac{1}{n}\Sigma
+\end{gather*}
+\item Por teoría y el apartado anterior sabemos que
+$$
+\frac{1}{n}\Sigma_\muestra{X}= \Sigma_{\media{\mX}}= E[\media{\mX}\media{\mX}']-\mu\mu'
+$$
+Tenemos entonces
+\begin{align*}
+E[S]&=\sum_{i=1}^nE[(\muestra{X}_i-\media{\mX})(\muestra{X}_i-\media{\mX})']\\
+&= \sum_{i=1}^n E[\muestra{X}_i\muestra{X}_i'] - E[\muestra{X}_i\media{\mX}']- E[\media{\mX}\muestra{X}_i']+E[\media{\mX}\media{\mX}']\\
+&=nE[\muestra{X}\muestra{X}'] -nE[\media{\mX}\media{\mX}']\\
+&=nE[\muestra{X}\muestra{X}'] - \Sigma_\muestra{X} - n\mu\mu' \\&=
+n\Sigma_\muestra{X}-\Sigma_\muestra{X} = (n-1)\Sigma_\muestra{X}
+\end{align*}
+\end{enumerate}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.2}
+Distribución normal $p$-variante, $\mX \sim N_p(\m{μ},Σ)$.
+\begin{enumerate}[(a)]
+\item Definición.
+\item Sea $\m{Y} = Σ^{-1/2}(\mX - \m{μ})$.
+\begin{enumerate}[i.]
+  \item Determinar la función de densidad de $\m{Y}$.
+  \item Demuestra que las componentes del vector aleatorio $\m{Y}$ son independientes e idénticamente distribuidas según una $N(0,1)$.
+  \item Demuestra que $\m{Y} \sim N_p(\m{0},I_p)$.
+\end{enumerate}
+\item Demuestra que $E(\mX) = \m{μ}$ y $cov(\m{X}) = Σ$.
+\item La función generatriz de momentos de $\m{X}$ viene dada por
+\[ M(\m{t}) = E\left(e^{\m{t}'\mX}\right) = E\left(e^{\sum_{i=1}^p t_i X_i}\right) = \exp\left(\m{t}'\m{μ} + \frac{1}{2}\m{t}'Σ\m{t}\right)\]
+Demuestra que
+\begin{enumerate}[i.]
+\item $B \mX + \m{c} \sim N(B \m{μ} + \m{c}, B Σ B^t)$.
+\item Si $\mX \sim N_p(\m{μ}_1,Σ_1)$, $\m{Y} \sim N_p(\m{μ}_2,Σ_2)$ e independientes, entonces $\mX+\m{Y} \sim N_p(\m{μ}_1+\m{μ}_2, Σ_1+Σ_2)$.
+\end{enumerate}
+\item Sea $\mX_1,\dots,\mX_n$ una muestra aleatoria de una distribución $N_p(\m{μ},Σ)$, demuestra que $\media{\m{X}} \sim N_p(\m{μ}, \frac{1}{n}Σ)$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item La distribución normal $p$-variante es la generalización a dimensión $p$ de la distribución normal. Una posible definición es que un vector aleatorio sigue una distribución normal $p$-variante si toda combinación lineal de sus componentes sigue una distribución normal. Como estamos suponiendo que $\Sigma$ es no singular, también es equivalente a que el vector tenga la función de densidad
+$$
+f(\muestra{x})=\frac{1}{(2\pi)^{p/2}\abs{\Sigma}^{1/2}}\exp\{-1/2(\muestra{x}-\muestra{\mu})'\Sigma^{-1}(\muestra{x}-\muestra{\mu})\}
+$$
+\item Imagino que al menos para el primer apartado podemos partir de lo que viene en los apuntes
+\begin{enumerate}[i.]
+\item Sabemos que la densidad de $X$ es
+$$
+f_\muestra{X}(\muestra{x})=\frac{1}{(2\pi)^{p/2}\abs{\Sigma}^{1/2}}\exp\{-1/2(\muestra{x}-\muestra{\mu})'\Sigma^{-1}(\muestra{x}-\muestra{\mu})\}
+$$
+Aplicamos la fórmula del cambio de variable. Tomamos $v(\muestra{x})=\Sigma^{1/2}x+\mu$, entonces
+$$f_\muestra{Y}(\muestra{x})=f_\muestra{X}(v(\muestra{x}))|v'(\muestra{x})| = \frac{1}{(2\pi)^{p/2}}\exp\{-x'x/2\}
+$$
+\item Es claro que si tomamos $f_{\muestra{Y}_i}({x}_i)= \frac{1}{\sqrt{2\pi}}e^{-x_i^2/2}$, entonces se sigue trivialmente
+$$
+f_\muestra{Y}(\muestra{x})=\prod_{i=1}^p f_{\muestra{Y}_i}({x}_i)
+$$
+Es claro que $f_{\muestra{Y}_i}(\muestra{x}_i)$ es la i-ésima componente, pues al integrar sobre el resto de variables ésta es constante y el resto integran 1 por ser densidades. La independencia se tiene por definición.
+\item Se tendría por definición.
+\end{enumerate}
+\item Sabemos que para $\muestra{Y}$, $E[\muestra{Y}]=0$ y $\Sigma_{\muestra{Y}}=I_p$. En Teoría hemos visto cómo se comportan la esperanza y la matriz de covarianzas al transformar linealmente las variables, es decir
+$$
+E[\muestra{X}]=E[\Sigma^{1/2}\muestra{Y}+\muestra{\mu}] = \Sigma^{1/2}E[\muestra{Y}]+\muestra{\mu}=\m{\mu}
+$$
+$$
+Cov[\muestra{X}]=Cov[\Sigma^{1/2}\muestra{Y}+\muestra{\mu}] ={\Sigma^{1/2}}Cov[\m{Y}]\Sigma^{1/2}= {\Sigma^{1/2}}\Sigma^{1/2} =\Sigma
+$$
+\item 
+\begin{enumerate}[i.]
+\item Se deduce inmediatamente a partir de la siguiente cadena de igualdades
+\[ E\left(e^{\m{t}'(B\mX+\muestra{c})}\right) = e^{t'\muestra{c}}E\left(e^{t'B\mX}\right) = e^{t'\muestra{c}}M_\muestra{X}(B't) = \exp\left(t'(B\muestra{\mu}+\muestra{c})+\frac{1}{2}t'B\Sigma B't\right)\]
+\item Si dos vectores aleatorios son independientes entonces la esperanza del producto es el producto de las esperanzas. Deducimos por tanto que la función generatriz de la suma es el producto de las funciones generatrices, de donde se deduce trivialmente el resultado.
+\end{enumerate}
+\newpage
+\item Los parámetros de una normal $p$-variante son el vector de medias y la matriz de covarianzas. Sabemos, por el apartado anterior, que 
+$$
+n\media{\mX}\sim N_p(n\muestra{\mu},n\Sigma)
+$$
+Es trivial comprobar utilizando también el apartado anterior que para la normal $p$-variante también se verifica que $a N_p(\muestra{\mu},\Sigma)= N_p(a\muestra{\mu},a^2\Sigma)$, de donde se deduce el resultado.
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{1.3}
+Distribución de Wishart, $W \sim W_p(n,Σ)$.
+\begin{enumerate}[(a)]
+\item Definición.
+\item Demuestra que $E(W) = nΣ$.
+\item Sean $W_1 \sim W_p(n_1,Σ)$ y $W_2 \sim W_p(n_2,Σ)$, e independientes. Demuestra que $W_1 + W_2 \sim W_p(n_1+n_2,Σ)$.
+\item Sea $W \sim W_p(n,Σ)$, y sea $C \in \mathcal{M}_{q\times p}$ de rango $q$. Demuestra que
+\[ C W C' \sim W_q(n, CΣC') \]
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item Supongamos que $X$ es una matriz $n\times p$ de manera que las filas de $X$ fomran una muestra aleatoria de una $N_p(0,\Sigma)$. Decimos entonces que $W=X'X$ sigue una distribución de Wishart no singular $p$-dimensional con $n$ grados de libertad y matriz de escala $\Sigma$.
+\item Sabemos que existe $X=[\muestra{X_1},\dotsc,\muestra{X_n}]'$ con $\muestra{X_i}\sim N_p(0,\Sigma)$ independientes entre sí tal que $W=X'X$.
+$$
+E(W)= E\left(\sum_{i=1}^n \muestra{X_i}\muestra{X_i}'\right) = \sum_{i=1}^n E[\muestra{X_i}\muestra{X_i}'] = \sum_{i=1}^n \Sigma-\mu\mu' \overset{\mu=0}{=} n\Sigma
+$$
+\item Para $W_i$ tenemos que existen $ X^i=[\muestra{X_1^i},\dotsc,\muestra{X_{n_i}^i}]'$  con $\muestra{X_i}\sim N_p(0,\Sigma)$ independientes entre sí tal que $W_i={X^i}' X^i$. Como la muestras son independientes entre sí, podemos considerar que tenemos una única muestra de tamaño $n_1+n_2$, de donde se deduce trivialmente el resultado.
+\item Tenemos que 
+$$
+CWC' = C\sum_{i=1}^n \muestra{X_i X_i'}C' = \sum_{i=1}^n (C\muestra{X_i}) (C\muestra{X_i})'
+$$
+Como $CX_i \sim N_p(0,C\Sigma C')$ tenemos el resultado.
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{1.4}
+Distribución $T^2$ de Hotelling, $T^2 \sim T^2_{p,n}$.
+\begin{enumerate}[(a)]
+\item Definición.
+\item Sea $\mX \sim N_p(\m{μ},Σ)$ y $W \sim W_p(n,Σ)$ independientes. Demuestra que:
+\[ n(\mX-\m{μ})' W^{-1} (\mX-\m{μ}) \sim T^2_{p,n} \]
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item Sean $\muestra{d}\sim N_p(0,I_p)$ y $W\sim W_p(n,I_p)$ independientes. Se denomina $T^2$ de Hotelling a la distribución del estadístico 
+$$
+T^2= n\muestra{d}'W^{-1}\muestra{d}
+$$
+\item Se tiene de manera trivial que
+$$
+n(\mX-\m{μ})' W^{-1} (\mX-\m{μ}) =n(\Sigma^{-1/2}(\mX-\m{μ}))'(\Sigma^{-1/2} W \Sigma^{-1/2})^{-1}(\Sigma^{-1/2} (\mX-\m{μ}))
+$$
+Por los ejercicios anteriores sabemos que $(\Sigma^{-1/2}(\mX-\m{μ}))' \sim N(0,I_p)$ y además, usando que $\Sigma^{1/2}$ es simétrica, $\Sigma^{-1/2} W \Sigma^{-1/2} \sim W_p(n,I_p)$.
+\end{enumerate}
+\end{solucion}
+\newpage
+
+\begin{ejercicio}{1.5}
+Sea $\mX_1,\dots,\mX_n$ una muestra aleatoria de una distribución $N_p(\m{μ},Σ)$.
+\begin{enumerate}[(a)]
+\item Sabiendo que $\media{\mX}$ y $S$ son independientes y que $S \sim W_p(n-1,Σ)$, demuestra que
+\[ n(n-1)(\media{\mX}-\m{μ})' S^{-1} (\media{\mX}-\m{μ}) \sim T^2_{p,n-1}\]
+\item Sea $A$ una matriz $m\times p$ ($m≤p$), de rang $m$ y $\m{d}$ un vector $m$-dimensional.
+El estadístico del test de razón de verosimilitudes para el contraste:
+\[ H_0 \colon A\m{μ} = \m{d} \quad vs \quad H_1 \colon A\m{μ} \neq \m{d} \]
+viene dado por:
+\[ T^2 = (n-1)n (A\media{\mX}-\muestra{d})^t (ASA^t)^{-1} (A \media{\mX}-\m{d}) \]
+Demuestra que, bajo $H_0$:
+\[ T^2 \sim T^2_{m,n-1} \]
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item[]
+\item Vamos a aplicar el apartado b) del ejercicio anterior. Sabemos que $\media{\mX}-\media{\mu}\sim N_p(0,  \frac{1}{n}\Sigma)$. Por tanto $n^{1/2}(\media{\mX}-\media{\mu})\sim N_p(0, \Sigma)$ y estamos en las condiciones para aplicar el apartado.
+\item Bajo la hipótesis $H_0$, tenemos que $n^{1/2}(A\media{\mX}-\muestra{d})\sim N_p(0,A\Sigma A')$ y, usando el Ejerciocio 1.3,  $ASA'\sim W_p(n-1,A\Sigma A')$. Basta aplicar un razonamiento análogo al del apartado anterior.
+\end{enumerate}
+\end{solucion}
+\end{document}

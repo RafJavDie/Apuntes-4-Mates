@@ -17,10 +17,13 @@ Sean $M$ una variedad diferenciable, $p \in M$ y $(U, \varphi = (x_1, \dots , x_
 \end{ejercicio}
 \begin{solucion}
 No, basta tomar $M=U=V=\R^2$ y $φ(u,v)=(u,u+v)$, $ψ(u,v)=(u,v)$.
-Por la fórmula del cambio de base:
-\begin{gather*} \left(\frac{\partial}{\partial y_1}\right)_p = \left(\frac{\partial x_1}{\partial y_1}\right)_p \left(\frac{\partial}{\partial x_1}\right)_p +  \left(\frac{\partial x_2}{\partial y_1}\right)_p  \left(\frac{\partial}{\partial x_2}\right)_p =
+Por la fórmula del cambio de base, teniendo en cuenta que $\psi^{-1}=\psi$
+\begin{align*} \left(\frac{\partial}{\partial y_1}\right)_p &= \left(\frac{\partial x_1}{\partial y_1}\right)_p \left(\frac{\partial}{\partial x_1}\right)_p +  \left(\frac{\partial x_2}{\partial y_1}\right)_p  \left(\frac{\partial}{\partial x_2}\right)_p \\
+&=\left(\frac{\partial (x_1\circ \psi)}{\partial u}\right)_{\psi(p)} \left(\frac{\partial}{\partial x_1}\right)_p +  \left(\frac{\partial (x_2 \circ \psi)}{\partial u}\right)_{\psi(p)}  \left(\frac{\partial}{\partial x_2}\right)_p\\
+&=\left(\frac{\partial u}{\partial u}\right)_{\psi(p)} \left(\frac{\partial}{\partial x_1}\right)_p +  \left(\frac{\partial (u+v)}{\partial u}\right)_{\psi(p)}  \left(\frac{\partial}{\partial x_2}\right)_p\\
+&=
  \left(\frac{\partial}{\partial x_1}\right)_p + \left(\frac{\partial}{\partial x_2}\right)_p
-\end{gather*}
+\end{align*}
 \end{solucion}
 \newpage
 

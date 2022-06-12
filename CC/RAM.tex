@@ -1,0 +1,530 @@
+\documentclass[twoside]{article}
+\usepackage{titlesec}
+
+\setcounter{secnumdepth}{0}
+\titleformat{\section}[block]{\huge\bfseries\filcenter}{}{1em}{}
+\titleformat{\subsection}[hang]{\Large\bfseries}{}{1em}{}
+\usepackage{../estilo-apuntes}
+\AtBeginDocument{%
+  \renewcommand\tablename{Tabla}
+}
+\newcommand{\yields}{\overset{\Pi,I^*}{\rightarrow}}
+\newcommand{\yieldsone}{\overset{\Pi,I}{\rightarrow}}
+\newcommand{\yieldsn}{\overset{\Pi,I^n}{\rightarrow}}
+%\rhead{Ciencias de la Computación (Grado en Matemáticas)}
+%\lhead{Curso 2017/2018}
+
+\begin{document}
+\begin{titlepage}
+	\centering
+	{\huge\bfseries Ciencias de la Computación \par}
+	\vspace{1cm}
+	{\Huge\bfseries Máquinas RAM \par}
+	\vspace{1cm}
+	{\Large Javier Aguilar Martín\par}
+	\vspace{1cm}
+	{\large \today\par}
+	\vspace{1cm}
+
+\begin{abstract}
+\normalsize
+ Las Máquinas de Acceso Aleatorio (RAM) proporcionan un
+modelo de computación más próximo que las máquina de
+Turing a los ordenadores actuales. En este trabajo se
+describirá con detalle este modelo de computación y se
+probará que es equivalente a GOTO.
+\end{abstract}
+
+	\vfill
+	{\small Esta obra está licenciada bajo la Licencia Creative Commons Atribución 3.0 España. Para ver una copia de esta licencia, visite \url{http://creativecommons.org/licenses/by/3.0/es/} o envíe una carta a Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+\bigskip
+
+Usted es libre de:
+\begin{itemize}
+ \item copiar, distribuir y comunicar públicamente la obra
+\item hacer obras derivadas
+\end{itemize}
+
+Bajo las condiciones siguientes:
+\begin{itemize}
+ \item {\bf Reconocimiento:} Debe reconocer los créditos de la obra maestra especificada por el autor o el licenciador (pero no de una manera que sugiera que tiene su apoyo o apoyan el uso que hace de su obra).
+ \item {\bf No comercial:} No puede utilizar esta obra para fines comerciales.
+\item {\bf Compartir bajo la misma licencia:} Si altera o transforma esta obra, o genera una obra derivada, sólo puede distribuir la obra generada bajo una licencia idéntica a ésta.
+\end{itemize}}
+
+	
+\end{titlepage}
+
+\tableofcontents
+
+\newpage
+
+\section{Descripción de las Máquinas RAM}
+
+En esta sección definiremos las máquinas RAM y describiremos su semántica formal. También se mostrará un ejemplo del funcionamiento básico de este tipo de máquina.
+
+\begin{defi}
+Una \emph{máquina de acceso aleatorio (RAM)} es un dispositivo de computación consistente en un programa que actúa sobre una estructura de datos. Una estructura de datos de RAM es un array de \emph{registros}, cada uno capaz de almacenar un entero arbitrariamente grande, posiblemente negativo.
+\end{defi}
+
+El adjetivo \emph{aleatorio} proviene del hecho de que se puede acceder a cualquier registro en cualquier momento, por lo que no está determinado el siguiente registro al que se puede acceder, como sí lo estaba en otras máquinas anteriores a estas. Pasamos ahora a definir los programas RAM, en los cuales se basa el modelo de computación proporcionado por este tipo de máquina.
+
+\begin{defi}
+Un \emph{programa RAM} es una sucesión finita de instrucciones $\Pi=(\pi_1,\dots,\pi_m)$, donde cada instrucción $\pi_i$ es una de las que se muestran en la tabla a continuación. En cada punto de una computación RAM, $\texttt{Registro }i$, donde $i\geq 0$, contiene un entero, posiblemente negativo, denotado $r_i$, y la instrucción $\pi_\kappa$ es ejecutada.
+
+\begin{table}[h!]
+\begin{tabular}{l l l}
+\textbf{Instrucción} & \textbf{Argumento} & \textbf{Semántica}\\
+\texttt{READ}        & $j$               & $r_0:=i_j$\\
+\texttt{READ}        & $\uparrow j$      & $r_0:=i_{r_j}$\\
+\texttt{STORE}       & $j$               & $r_j:=r_0$\\
+\texttt{STORE}       & $\uparrow j$      & $r_{r_j}:=r_0$\\
+\texttt{LOAD}        & $x$               & $r_0:=x$\\
+\texttt{ADD}         & $x$               & $r_0:=r_0+x$\\
+\texttt{SUB}         & $x$               & $r_0:=r_0-x$\\
+\texttt{HALF}        &                   & $r_0:=\lfloor\frac{r_0}{2}\rfloor$\\
+\texttt{JUMP}        & $j$               & $\kappa:=j$\\
+\texttt{JPOS}        & $j$               & $\texttt{if }r_0>0\texttt{ then }\kappa:=j$\\
+\texttt{JZERO}       & $j$               & $\texttt{if }r_0=0\texttt{ then }\kappa:=j$\\
+\texttt{JNEG}        & $j$               & $\texttt{if }r_0<0\texttt{ then }\kappa:=j$\\
+\texttt{HALT}        &                   & $\kappa:=0$\\
+\end{tabular}
+\caption{Instrucciones RAM y sus semánticas.}\label{instrucciones}
+\end{table}
+Aquí, $j$ es un entero, $r_j$ es el contenido actual de $\texttt{Registro }j$, $i_j$ es el $j$-ésimo input, y $x$ representa un argumento de la forma ``$j$'', ``$\uparrow j$'' o ``$=j$''. Las instrucciones \texttt{READ} y \texttt{STORE} no aceptan argumentos de la forma ``$=j$''. El valor del argumento $j$ es $r_j$, el de $\uparrow j$ es $r_{r_j}$ y el de $=j$ es $j$. El número no negativo $\kappa$ es el contador del programa, que se inicia en el valor 1. Todas las instrucciones cambian de $\kappa$ a $\kappa+1$ salvo que se especifique lo contrario.
+\end{defi}
+
+
+Nótese el rol particular de $\texttt{Registro }0$: es el \emph{acumulador}, donde toda la computación aritmética y lógica tiene lugar. Así mismo, nótesen los tres \emph{modos de direccionamiento}, esto es, las formas de identificar un argumento: si el argumento $x$ es un entero $j$, entonces $x$ identifica el contenido de $\texttt{Registro }j$; si $x$ es ``$\uparrow j$'', entonces hace referencia al contenido del registro cuyo índice está en $\texttt{Registro }j$; y si $x$ es ``$=j$'', es simplemente el entero $j$. El número identificado es por tanto el que se usa en la ejecución de la instrucción.
+
+Observamos que las únicas instrucciones de la tabla \ref{instrucciones} que cambian $\kappa$ de una forma distinta en general a $\kappa+1$ son las 5 últimas. Las 4 primeras de ellas son del tipo \texttt{JUMP}. Si en una de estas instrucciones se alude a un valor de $\kappa$ para el que no existe $\pi_\kappa$ entonces se entenderá que envía el programa a un \texttt{HALT}, la cual detiene la computación. Podemos pensar que cualquier instrucción semánticamente incorrecta como alguna que dirija a $\texttt{Registro }-14$ es una instrucción \texttt{HALT}.  También podemos observar que no todas las instrucciones son imprescindibles. Por ejemplo, de \texttt{JPOS}, \texttt{JNEG} y \texttt{JZERO} bastan 2, ya que la otra sería el caso restante y se puede simular haciendo un \texttt{JUMP} cuando no se cumpla ninguna de las 2 que mantengamos. También \texttt{HALF} se podría simular mediante un programa más complejo.
+
+\begin{defi}
+El \emph{input} de un programa RAM es una sucesión finita de enteros, contenida en un array finito de \emph{registros input} $I=(i_1,\dots,i_n)$. Cualquier entero del input puede ser transferido al acumulador mediante la instrucción \texttt{READ}. Convendremos que $\texttt{READ }j$ con $j>n$ produce $r_0:=0$. Tras la parada, el \emph{output} (resultado) de la computación está almacenado en el acumulador. 
+\end{defi}
+
+
+Inicialmente, todos los registros se inicializan a 0. La RAM ejecuta la primera instrucción $\pi_1$ e implementa los cambios dictados por ella, después ejecuta la instrucción $\pi_\kappa$, donde $\kappa$ es el nuevo valor del contador del programa, y así sucesivamente hasta detenerse (hasta que $\kappa=0$). Las computaciones RAM pueden ser formalizadas definiendo sus configuraciones.
+%si \kappa nunca es 0, o bien hay un bucle o bien podemos pensar que el programa "se bloquea"
+%Podríamos definir la idea de instrucción inicial, sucesora, terminal
+\begin{defi}
+Una \emph{configuración} de una RAM es un par $C=(\kappa,R)$, donde $\kappa$ es la instrucción que se va a ejecutar y $R=\{(j_1,r_{j_1}),\dots,(j_k,r_{j_k})\}$ es un conjunto finito de \emph{pares de valores de registro}, que intuitivamente muestran los valores actuales de todos los registros que han sido modificados hasta entonces en la computación (recordemos que todos los demás son 0). La \emph{configuración inicial} es $(1,\emptyset)$. La configuración \emph{final}, si existe, es una de la forma $(0,R)$. 
+\end{defi}
+
+\newpage
+
+\begin{defi}
+Sea $\Pi$ un programa RAM y sea $I=(i_1,\dots,i_n)$ un input. Supongamos que $(\kappa,R)$ y $(\kappa',R')$ son configuraciones de $\Pi$. Decimos que $(\kappa,R)$ \emph{genera en un paso} $(\kappa',R')$, denotado por $(\kappa,R)\overset{\Pi,I}{\rightarrow}(\kappa',R')$, si se cumple que $\kappa'$ es el nuevo valor de $\kappa$ tras la ejecución de $\pi_\kappa$ y $R'$ el conjunto correspondiente a los cambios introducidos por $\pi_\kappa$ a partir de $R$. 
+\end{defi}
+
+Si $\pi_\kappa$ es una de las últimas 5 instrucciones de la tabla \ref{instrucciones}, entonces $R'=R$, y el valor de $\kappa$ se modifica como se indique. En cualquier otro caso, algún $\texttt{Registro }j$ tiene un nuevo valor $x'$, calculado tal como se indica en la tabla \ref{instrucciones}. Para obtener $R'$ entonces borramos si existe el par $(j,x)$ y añadimos $(j,x')$. Por otro lado, $\kappa'=\kappa+1$ en esos casos. 
+
+La relación definida se puede extender a  $(\kappa,R)\overset{\Pi,I^n}{\rightarrow}(\kappa',R')$ si existe una sucesión  $$(\kappa_0=\kappa,R_0=R)\overset{\Pi,I}{\rightarrow} (\kappa_1,R_1)\dots\overset{\Pi,I}{\rightarrow}(\kappa_n=\kappa',R_n=R')$$ de longitud $n$ (\emph{genera en }$n$\emph{ pasos}). Así mismo, se define la relación $\overset{\Pi,I^*}{\rightarrow}$ si existe algún $n$ para el cual se tiene la relación $\overset{\Pi,I^n}{\rightarrow}$, y se dice simplemente que una configuración \emph{genera} a la otra.
+
+\begin{defi}
+Sea $\Pi$ un programa RAM. Sea $D$ un conjunto finito de sucesiones de enteros y sea $\phi:D\to\Z$ una función. Decimos que $\Pi$ \emph{calcula} $\phi$ si $\forall I\in D, (1,\emptyset)\yields(0,R)$, donde $(0,\phi(I))\in R$. 
+\end{defi}
+
+Nótese que al pedir que se genere el estado $(0,R)$ implícitamente exigiendo que el programa RAM para, y como $(0,\phi(I))\in R$, el acumulador tiene el valor de $\phi(I)$. Por tanto, si el programa para, escribimos $\phi(I)=r_0$ y si no, $\phi(I)=\infty$.
+
+\newpage
+
+\begin{ej}
+El siguiente programa RAM calcula el producto de dos números enteros no negativos siguiendo el algoritmo estándar de producto de números binarios.
+\begin{table}[h!]
+\begin{tabular}{l l l}
+1. & \texttt{READ 1} &\\
+2. & \texttt{STORE 1} & \texttt{Registro 1} contiene $i_1$; durante la $k$-ésima iteración,\\
+3. & \texttt{STORE 5} & \ \texttt{Registro 5} contiene $i_12^k$. Actualmente, $k=0$.\\
+4. & \texttt{READ 2} & \\
+5. & \texttt{STORE 2} & \texttt{Registro 2} contiene $i_2$. \\
+6. & \texttt{HALF} & Empieza la $k$-ésima iteración. Se construye la representación binaria de $i_2$.\\
+7. & \texttt{STORE 3} & \texttt{Registro 3} contiene $\lfloor i_2/2^k\rfloor$.\\
+8. & \texttt{ADD 3}  & \\
+9. & \texttt{SUB 2}  & \\
+10. & \texttt{JZERO 14} & \\
+11. & \texttt{LOAD 4} &  \\
+12. & \texttt{ADD 5} & Suma \texttt{Registro 5} a \texttt{Registro 4} solo si el $k$-ésimo menor bit significativo de $i_2$ es 0.\\
+13. & \texttt{STORE 4} & \texttt{Registro 4} contiene $i_1\cdot (i_2\mod 2^k)$.\\
+14. & \texttt{LOAD 5} & \\
+15. & \texttt{ADD 5} & \\
+16. & \texttt{STORE 5} & Leer el comentario de 3.\\
+17. & \texttt{LOAD 3} & \\
+18. & \texttt{JZERO 20} & Si $\lfloor i_2/2^k\rfloor=0$ hemos acabado,\\
+19. & \texttt{JUMP 5} & si no, repetimos.\\
+20. & \texttt{LOAD 4} & Resultado.\\
+21. & \texttt{HALT} &
+\end{tabular}
+\caption{Programa RAM para la multiplicación}\label{mply}
+\end{table}
+
+El programa repite $\lceil \log_2 i_2\rceil$ veces la iteración que va desde la instrucción 5 a la 19. Al principio de la $k$-ésima iteración (empezando por $k=0$), \texttt{Registro 3} contiene $\lfloor i_2/2^k\rfloor$, \texttt{Registro 5} contiene $i_12^k$, y \texttt{Registro 4} contiene $i_1\cdot (i_2\mod 2^k)$. Al final de cada iteración, comprobamos si \texttt{Registro 3} contiene el 0. Si es así, hemos terminado y podemos cargar el contenido de \texttt{Registro 4}. Si no, pasamos a la siguiente iteración.
+
+Sean $i_1=2,i_2=3$ y veamos cuál es la sucesión de configuraciones.
+
+\begin{align*}
+1\quad &(1, \emptyset)\\
+2\quad &(2,\{(0,2)\})\\
+3\quad&(3, \{(0,2),(1,2)\})\\
+4\quad&(4,\{(0,2),(1,2),(5,2)\})\\
+5\quad&(5,\{(0,3),(1,2),(5,2)\})\\
+6\quad&(6,\{(0,3),(1,2),(2,3),(5,2)\})\\
+7\quad&(7,\{(0,1),(1,2),(2,3),(5,2)\})\\
+8\quad&(8,\{(0,1),(1,2),(2,3),(3,1),(5,2)\})\\
+9\quad&(9,\{(0,2),(1,2),(2,3),(3,1),(5,2)\})\\
+10\quad&(10,\{(0,-1),(1,2),(2,3),(3,1),(5,2)\})\\
+11\quad&(11,\{(0,-1),(1,2),(2,3),(3,1),(5,2)\})\\
+12\quad&(12,\{(0,0),(1,2),(2,3),(3,1),(5,2)\})\\
+13\quad&(13,\{(0,2),(1,2),(2,3),(3,1),(5,2)\})\\
+14\quad&(14,\{(0,2),(1,2),(2,3),(3,1),(4,2),(5,2)\})\\
+15\quad&(15,\{(0,2),(1,2),(2,3),(3,1),(4,2),(5,2)\})\\
+16\quad&(16,\{(0,4),(1,2),(2,3),(3,1),(4,2),(5,2)\})\\
+17\quad&(17,\{(0,4),(1,2),(2,3),(3,1),(4,2),(5,4)\})\\
+18\quad&(18,\{(0,1),(1,2),(2,3),(3,1),(4,2),(5,4)\})\\
+19\quad&(19,\{(0,1),(1,2),(2,3),(3,1),(4,2),(5,4)\})\\
+20\quad&(5,\{(0,1),(1,2),(2,3),(3,1),(4,2),(5,4)\})\\
+21\quad&(6,\{(0,1),(1,2),(2,1),(3,1),(4,2),(5,4)\})\\
+22\quad&(7,\{(0,0),(1,2),(2,1),(3,1),(4,2),(5,4)\})\\
+23\quad&(8,\{(0,0),(1,2),(2,1),(3,0),(4,2),(5,4)\})\\
+24\quad&(9,\{(0,0),(1,2),(2,1),(3,0),(4,2),(5,4)\})\\
+25\quad&(10,\{(0,-1),(1,2),(2,1),(3,0),(4,2),(5,4)\})\\
+26\quad&(11,\{(0,-1),(1,2),(2,1),(3,0),(4,2),(5,4)\})\\
+27\quad&(12,\{(0,2),(1,2),(2,1),(3,0),(4,2),(5,4)\})\\
+28\quad&(13,\{(0,6),(1,2),(2,1),(3,0),(4,2),(5,4)\})\\
+29\quad&(14,\{(0,6),(1,2),(2,1),(3,0),(4,6),(5,4)\})\\
+\end{align*}
+
+\begin{align*}
+29\quad&(15,\{(0,4),(1,2),(2,1),(3,0),(4,6),(5,4)\})\\
+30\quad&(16,\{(0,8),(1,2),(2,1),(3,0),(4,6),(5,4)\})\\
+31\quad&(17,\{(0,8),(1,2),(2,1),(3,0),(4,6),(5,8)\})\\
+32\quad&(18,\{(0,0),(1,2),(2,1),(3,0),(4,6),(5,8)\})\\
+33\quad&(20,\{(0,0),(1,2),(2,1),(3,0),(4,6),(5,8)\})\\
+34\quad&(21,\{(0,6),(1,2),(2,1),(3,0),(4,6),(5,8)\})\\
+35\quad&(0,\{(0,6),(1,2),(2,1),(3,0),(4,6),(5,8)\})\\
+\end{align*}
+Si a la última configuración la denotamos $(0,R)$, observamos que efectivamente $(1,\emptyset)\yields (0,R)$ y $(0,6)\in R$. 
+\end{ej}
+
+\begin{nota}
+Una vez que hemos construido este programa, podemos usar en cualquier otro programa la instrucción \texttt{MPLY }$x$ ($r_0:=r_0\cdot x$), donde $x$ es cualquier argumento ($j$, $\uparrow j$, $=j$). Esta instrucción puede ser simulada ejecutando el programa de la tabla \ref{mply}, aunque posiblemente con un conjunto distinto de registros. Con algunas instrucciones más se pueden tener en cuenta los casos en los que alguno de los elementos del input sea negativo. 
+\end{nota}
+
+\newpage
+
+\section{Equivalencia entre RAM y GOTO}
+
+En esta sección se probará que los modelos de computación RAM y GOTO son equivalentes, es decir, se mostrará cómo simular un programa GOTO mediante una máquina RAM  y cómo simular una máquina RAM mediante un programa GOTO. 
+
+\subsection{Simulación de GOTO en RAM}
+Recordemos la numeración de las variables de GOTO. Teníamos $\#(Y)=1,\#(X_k)=2k,\#(Z_k)=2k+1\ \forall k\geq 1$, por lo que vamos a reservar un registro para cada una, es decir, la variable de índice $j$ estará asociada al $\texttt{Registro } j$. Se usará \texttt{Registro 0} para realizar las operaciones necesarias.
+
+Una entrada $X_1=a_1,\dots, X_n=a_n$ será interpretada como un input $I=(0,a_1,0,\dots,0, a_n)$ (se añaden los ceros para facilitar el acceso posterior a los datos). Tenemos que simular entonces las instrucciones básicas de GOTO en una descripción instantánea cualquiera $s=(j,\sigma)$. 
+
+Obsérvese que estos estados se pueden hacer corresponder inmediatamente con las configuraciones de una RAM, donde $j$ señalaría un conjunto de índices $\{j_\kappa\}$ de las instrucciones que se van a ejecutar, $\pi_{j_\kappa}$ (cada línea de programa GOTO puede necesitar ser reemplazada por varias líneas de programa RAM), y además podemos escribir $\sigma=\{V_1=v_1,\dots,V_m=v_m\}$ como $R=\{((0,0),(\#(V_1),v_1),\dots,(\#(V_m),v_m)\}$ siempre que la variable $V_l$ haya aparecido en el programa. Después de ejecutarse $\pi_{j_1}$, $R$ no tiene por que ser igual a $\sigma$, pero una vez que se hayan ejecutado todas las instrucciones correspondientes al índice $i$, el conjunto $R'$ al que se llega debe corresponderse al estado $\sigma'$ sucesor de $\sigma$. 
+
+Para que podamos hacer la correspondencia mencionada con los estados tenemos que empezar leyendo todos los inputs correspondientes a las variables $X_i, 1\leq i\leq n$. Por lo que al comienzo de la simulación se deberá ejecutar el bloque
+
+\begin{tabular}{l l}
+1 & \texttt{READ }$\#(X_1)$\\
+2 & \texttt{STORE }$\#(X_2)$\\
+\vdots & \\
+$2n-1$ & \texttt{READ }$\#(X_n)$\\
+$2n$ & \texttt{STORE }$\#(X_n)$\\
+$2n+1$ & \texttt{LOAD }$=0$ (para hacer las operaciones en \texttt{Registro 0})
+\end{tabular}
+
+\vspace{0.5cm}
+
+Así, la correspondencia de índices comienza asociando el índice 1 con un conjunto donde el menor elemento es $2n+2$. El resto de variables empiezan en cero, así que no es necesario cargarlas.
+
+\newpage
+
+Dado que el valor de la computación de un programa RAM se almacena en \texttt{Registro }0 y el contador el programa debe estar a 0 cuando pare, al final de la simulación será necesario ejecutar el bloque
+\begin{align*}
+N+1\ &\texttt{LOAD 1}\\
+N+2\ &\texttt{HALT}
+\end{align*}
+Donde $N=\max\{j_\kappa\}$. A partir de esto, vamos pues a simular cada una de las instrucciones básicas de GOTO con instrucciones RAM. Sea $\texttt{p}=I_1,\dots,I_n$ el programa GOTO donde están las instrucciones que vamos a simular y supongamos que la instrucción que vamos a simular es $I_j$, que puede ser de cualquiera de los tipos siguientes. 
+
+
+\subsubsection{Incremento: \texttt{V}$\leftarrow\texttt{V}+1$}
+%\textbf{Incremento:} \texttt{V}$\leftarrow\texttt{V}+1$.
+
+\begin{tabular}{l l l}
+$j_1$ & \texttt{LOAD }$\#(\texttt{V})$ & $r_0:=r_{\#(\texttt{V})}$\\
+$j_2$ & \texttt{ADD }$=1$              & $r_0:=r_0+1=r_{\#(\texttt{V})}+1$\\
+$j_3$ & \texttt{STORE }$\#(\texttt{V})$ & $r_{\#(\texttt{V})}:=r_0=r_{\#(\texttt{V})}+1$\\
+$j_4$ & \texttt{LOAD }$=0$               & $r_0:=0$
+\end{tabular}
+
+\vspace{0.5cm}
+
+Con la última instrucción nos aseguramos de que el acumulador esté vacío para la siguiente instrucción.
+
+
+\subsubsection{Decremento: \texttt{V}$\leftarrow\texttt{V}-1$}
+ 
+
+\begin{tabular}{l l l}
+$j_1$ & \texttt{LOAD }$\#(\texttt{V})$ & $r_0:=r_{\#(\texttt{V})}$\\
+$j_2$ & \texttt{SUB }$=1$              & $r_0:=r_0+1=r_{\#(\texttt{V})}-1$\\
+$j_3$ & \texttt{JNEG }$i_7$ & Si $\texttt{V}=0$ tenemos su valor debe mantenerse.\\
+$j_4$ & \texttt{STORE }$\#(\texttt{V})$ & $r_{\#(\texttt{V})}:=r_0=r_{\#(\texttt{V})}-1$\\
+$j_5$ & \texttt{LOAD }$=0$               & $r_0:=0$\\
+$j_6$ & \texttt{JUMP }$j_8+1$ & Si $\texttt{V}$ no era 0 hay que saltarse las instrucciones siguientes.\\
+$j_7$ & \texttt{LOAD }$=0$ & $r_0:=0$\\
+$j_8$ & \texttt{STORE }$\#(\texttt{V})$ & $r_{\#(\texttt{V})}:=r_0=0$
+\end{tabular}
+
+
+\subsubsection{Condicional: \texttt{IF V}$\neq 0$ \texttt{GOTO L}}
+
+\begin{tabular}{l l l}
+$j_1$ & \texttt{LOAD }$\#(\texttt{V})$ &\\
+$j_2$ & \texttt{JPOS } $j_{5}$ &\\
+$j_3$ & \texttt{LOAD }$=0$ &\\
+$j_4$ & \texttt{JUMP }$j_{6}+1$& \\
+$j_5$ & \texttt{LOAD }$=0$\\
+$j_6$ & \texttt{JUMP }$l_1$ & donde $l$ es el menor índice $k$ tal que $I_k$ está etiquetado con L,\\
+ &                       &      si existe tal $k$. Si no existiese, $l_1=N+1$. 
+\end{tabular}
+
+\vspace{0.5cm}
+
+Nótese que la variable no puede ser negativa porque estamos simulando un programa GOTO. Podemos además pensar que primero se hace la expansión del código y luego comprobamos quién es $l_1$.
+
+
+\subsubsection{SKIP: \texttt{V}$\leftarrow\texttt{V}$}
+
+\begin{tabular}{l l}
+$j_1$ &  \texttt{STORE 0}
+\end{tabular}
+
+\vspace{0.5cm}
+
+En este caso podríamos no haber hecho nada, pero de esta forma mantenemos la correspondencia de índices.
+
+
+Pasamos por último a la simulación inversa.
+
+\subsection{Simulación de RAM en GOTO}
+
+En este caso habrá una corresponencia análoga entre el contador $\kappa$ y los índices de las instrucciones GOTO, $\{j_\kappa\}$, que simulan la ejecución de $\pi_\kappa$. No la habrá en este caso entre el conjunto $R$ y $\sigma$, ya que en $R$ no aparecen los registros que no se modifican, mientras que en $\sigma$ aparecen todas las variables de entrada desde el principio. Pero esto no será un problema para poder simular la ejecución, puesto que podemos simular la generación de configuraciones guardando inicialmente $Z_1=[]$ (empieza vacía igual que en RAM). Ahí se irá guardando cada $r_i, i\geq 0$, de tal modo que $(Z_1)_j=r_{j-1}\ \forall j\geq 1$. Dicho valor no se guardará directamente, puesto que en RAM se puede trabajar con números negativos mientras que en GOTO no. Así que guardaremos una codificación con la función par $\langle |r_j|,s\rangle$, donde $s=0$ si $r_j\geq 0$ y $s=1$ si $r_j< 0$. Lo mismo se hará con los inputs, es decir, si $I=(i_1,\dots, i_n)$, en el programa GOTO se darán los argumentos $\texttt{X}_1=\langle |i_1|,s(i_1)\rangle,\dots,\texttt{X}_n=\langle |i_n|,s(i_n)\rangle$ en la variable $Z_2=[\langle |i_1|,s(i_1)\rangle,\dots,\langle |i_n|,s(i_n)\rangle]$. También tendremos que dar de esta forma el resultado de la función que calcule el programa RAM. Como las funciones $l$ y $r$ son primitivas recursivas, se podrá recuperar la información cuando se desee. Como el valor de la función calculada por un programa GOTO aparece en la variable $Y$, la última instrucción será siempre $[\texttt{L}_{n+1}]\texttt{Y}\leftarrow\texttt{Z}_1$, donde $n$ es tal que $\pi_n$ es la última instrucción del programa RAM.
+
+\
+
+En la simulación que vamos a describir aparecerán numerosas macros de GOTO para simplificar la escritura. Por supuesto todas ellas serán funciones GOTO-computables. 
+
+Para evitar confusiones, no se repetirá ninguna etiqueta en el programa. Aquí, se escribirá \texttt{L}, $\texttt{L}'$, ... que hará referencia a la(s) etiqueta(s) que se haya(n) elegido para la instrucción correspondiente dentro del bloque. También se usarán las etiquetas $\texttt{L}_\kappa$ para la primera instrucción de cada bloque, ya que es donde empieza la simulación de la instrucción RAM $\pi_\kappa$, y la mencionada etiqueta $[\texttt{L}_{n+1}]$. A partir de esto podemos simular cada una de las instrucciones RAM como sigue. 
+
+\subsubsection{READ}
+\begin{itemize}
+\item $\texttt{READ }j$:
+\begin{itemize}
+\item Si $j> 0$:
+$[\texttt{L}_\kappa]\ (\texttt{Z}_1)_1\leftarrow(\texttt{Z}_2)_j$
+\item Si $j\leq 0$:
+$[\texttt{L}_\kappa]$ \texttt{GOTO }$\texttt{L}_{n+1}$
+
+
+En la mayoría de las instrucciones RAM no es semánticamente correcto que $j<0$, así que en adelante se omitirá este caso, pues se sobreentiende que $j\geq 0$. Así que, salvo que se especifique lo contrario, en caso de $j<0$ se haría lo mismo que se ha hecho aquí
+\end{itemize}
+\item $\texttt{READ }\uparrow j$:
+
+\begin{tabular}{l l l}
+$[\texttt{L}_\kappa]$&\texttt{IF }$r((\texttt{Z}_{1})_{j+1})\neq 0$\texttt{ GOTO }$\texttt{L}_{n+1}$ & No existen inputs con índice no positivo, es un error semántico.\\
+& \texttt{IF }$l((\texttt{Z}_{1})_{j+1})= 0$\texttt{ GOTO }$\texttt{L}_{n+1}$ &\\
+&$(\texttt{Z}_1)_1\leftarrow(\texttt{Z}_2)_{l((\texttt{Z}_{1})_{j+1})}$ &
+\end{tabular}
+\end{itemize}
+
+\subsubsection{STORE}
+\begin{itemize}
+\item $\texttt{STORE }j$:
+$[\texttt{L}_\kappa]\ (\texttt{Z}_1)_{j+1}\leftarrow(\texttt{Z}_1)_1$
+\item $\texttt{STORE }\uparrow j$:
+
+\begin{tabular}{l l l}
+$[\texttt{L}_\kappa]$&\texttt{IF }$r((\texttt{Z}_1)_{j+1})\neq 0$\texttt{ GOTO }$\texttt{L}_{n+1}$ & Solo hay registros con índices no negativos.\\
+& $(\texttt{Z}_1)_{l((\texttt{Z}_1)_{j+1})+1}\leftarrow(\texttt{Z}_1)_1$ &
+\end{tabular}
+\end{itemize}
+
+\newpage
+
+\subsubsection{LOAD}
+\begin{itemize}
+\item $\texttt{LOAD }j$: 
+$[\texttt{L}_\kappa]\ (\texttt{Z}_1)_{1}\leftarrow(\texttt{Z}_1)_{j+1}$
+
+\item $\texttt{LOAD }\uparrow j$:
+
+\begin{tabular}{l l l}
+$[\texttt{L}_\kappa]$&\texttt{IF }$r((\texttt{Z}_1)_{j+1})\neq 0$\texttt{ GOTO }$\texttt{L}_{n+1}$&\\
+& $\texttt{Z}_{1}\leftarrow(\texttt{Z}_1)_{l((\texttt{Z}_1)_{j+1})+1}$ 
+\end{tabular}
+\item $\texttt{LOAD }=j$:
+\begin{itemize}
+\item Si $j< 0$:
+$[\texttt{L}_\kappa]\ (\texttt{Z}_1)_{1}\leftarrow \langle -j,1\rangle$
+\item Si $j\geq 0$:
+$[\texttt{L}_\kappa]\ (\texttt{Z}_1)_{1}\leftarrow \langle j,0\rangle$
+\end{itemize}
+\end{itemize}
+
+
+\subsubsection{ADD}
+\begin{itemize}
+
+\item $\texttt{ADD }j$:
+
+\begin{tabular}{l l l}
+$[\texttt{L}_\kappa]$&\texttt{IF }$r((\texttt{Z}_1)_{j+1})\neq 0\land r((\texttt{Z}_1)_{1})\neq 0$\texttt{ GOTO L}&\\
+&\texttt{IF }$r((\texttt{Z}_1)_{j+1})= 0\land r((\texttt{Z}_1)_1)= 0$\texttt{ GOTO }$\texttt{L}'$&\\
+&\texttt{IF }$l((\texttt{Z}_1)_1)\leq l((\texttt{Z}_1)_{j+1})$\texttt{ GOTO }$\texttt{L}''$&\\
+& $(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_1)_1)-l((\texttt{Z}_1)_{j+1}),r((\texttt{Z}_{1})_1)\rangle$&\\
+& \texttt{GOTO }$\texttt{L}_{\kappa+1}$& Pasamos a simular la siguiente instrucción.\\
+$[\texttt{L}'']$& $(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_1)_{j+1})-l((\texttt{Z}_1)_1),r((\texttt{Z}_1)_{j+1})\rangle$&\\
+& \texttt{GOTO }$\texttt{L}_{\kappa+1}$& \\
+$[\texttt{L}]$& $(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_{1})_1)+l((\texttt{Z}_1)_{j+1}),1\rangle$&\\
+& \texttt{GOTO }$\texttt{L}_{\kappa+1}$& \\
+$[\texttt{L}']$& $(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_{1})_1)+l((\texttt{Z}_1)_{j+1}),0\rangle$&
+\end{tabular}
+
+\newpage
+
+\item $\texttt{ADD }\uparrow j$:
+
+\begin{tabular}{l l l}
+$[\texttt{L}_\kappa]$&\texttt{IF }$r((\texttt{Z}_1)_{j+1})\neq 0\texttt{ GOTO }\texttt{L}_{n+1}$&\\
+&\texttt{IF }$r((\texttt{Z}_1)_{l((\texttt{Z}_1)_{j+1})+1})\neq 0\land r((\texttt{Z}_1)_{1})\neq 0$\texttt{ GOTO L}&\\
+&\texttt{IF }$r((\texttt{Z}_1)_{l((\texttt{Z}_1)_{j+1})+1})= 0\land r((\texttt{Z}_1)_1)= 0$\texttt{ GOTO }$\texttt{L}'$&\\
+&\texttt{IF }$l((\texttt{Z}_1)_1)\leq l((\texttt{Z}_1)_{l((\texttt{Z}_1)_{j+1})+1})$\texttt{ GOTO }$\texttt{L}''$&\\
+& $(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_1)_1)-l((\texttt{Z}_1)_{l((\texttt{Z}_1)_{j+1})+1}),r((\texttt{Z}_{1})_1)\rangle$&\\
+& \texttt{GOTO }$\texttt{L}_{\kappa+1}$& \\
+$[\texttt{L}'']$& $(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_1)_{l((\texttt{Z}_1)_{j+1})+1})-l((\texttt{Z}_1)_1,r((\texttt{Z}_1)_{l((\texttt{Z}_1)_{j+1})+1})\rangle$&\\
+& \texttt{GOTO }$\texttt{L}_{\kappa+1}$& \\
+$[\texttt{L}]$& $(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_1)_{1})+l((\texttt{Z}_1)_{l((\texttt{Z}_1)_{j+1})+1}),1\rangle$&\\
+& \texttt{GOTO }$\texttt{L}_{\kappa+1}$& \\
+$[\texttt{L}']$& $(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_1)_{1})+l((\texttt{Z}_1)_{l((\texttt{Z}_1)_{j+1})+1}),0\rangle$&
+\end{tabular}
+
+
+
+\item $\texttt{ADD }=j$:
+\begin{itemize}
+\item Si $j<0$ simulamos $\texttt{SUB }=-j$ tal como aparece después.
+
+\item Si $j\geq 0$:
+
+\begin{tabular}{l l l}
+$[\texttt{L}_\kappa]$&\texttt{IF }$r((\texttt{Z}_1)_1)\neq 0$\texttt{ GOTO L}\\
+&$(\texttt{Z}_1)_1\leftarrow \langle  l((\texttt{Z}_1)_1)+j,0\rangle$\\
+&\texttt{GOTO }$\texttt{L}_{\kappa+1}$& \\
+$[\texttt{L}]$&\texttt{IF }$l((\texttt{Z}_1)_1)\leq j$\texttt{ GOTO }$\texttt{L}'$&\\
+&$(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_1)_1)-j,1\rangle$\\
+&\texttt{GOTO }$\texttt{L}_{\kappa+1}$& \\
+$[\texttt{L}']$&$(\texttt{Z}_1)_1\leftarrow \langle j-l((\texttt{Z}_1)_1),0\rangle$
+\end{tabular}
+\end{itemize}
+\end{itemize}
+
+\subsubsection{SUB}
+\begin{itemize}
+\item $\texttt{SUB }j$:
+
+\begin{tabular}{l l l}
+$[\texttt{L}_\kappa]$&\texttt{IF }$r((\texttt{Z}_1)_{j+1})= 0\land r((\texttt{Z}_1)_{1})\neq 0$\texttt{ GOTO L}&\\
+&\texttt{IF }$r((\texttt{Z}_1)_{j+1})\neq 0\land r((\texttt{Z}_1)_1)= 0$\texttt{ GOTO }$\texttt{L}$&\\
+&\texttt{IF }$l((\texttt{Z}_1)_1)\geq l((\texttt{Z}_1)_{j+1})$\texttt{ GOTO }$\texttt{L}'$&\\
+& $(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_1)_{j+1})-l((\texttt{Z}_1)_1),1-r((\texttt{Z}_{1})_1)\rangle$&\\
+& \texttt{GOTO }$\texttt{L}_{\kappa+1}$&\\
+$[\texttt{L}']$& $(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_1)_1)-l((\texttt{Z}_1)_{j+1}),r((\texttt{Z}_{1})_1)\rangle$&\\
+& \texttt{GOTO }$\texttt{L}_{\kappa+1}$& \\
+$[\texttt{L}]$& $(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_{1})_1)+l((\texttt{Z}_1)_{j+1}),r((\texttt{Z}_{1})_1)\rangle$&\\
+
+\end{tabular}
+
+\item $\texttt{SUB }\uparrow j$:
+
+\begin{tabular}{l l l}
+$[\texttt{L}_\kappa]$&\texttt{IF }$r((\texttt{Z}_1)_{j+1})\neq 0\texttt{ GOTO }\texttt{L}_{n+1}$&\\
+&\texttt{IF }$r((\texttt{Z}_1)_{l((\texttt{Z}_1)_{j+1})+1})= 0\land r((\texttt{Z}_{1})_1)\neq 0$\texttt{ GOTO L}&\\
+&\texttt{IF }$r((\texttt{Z}_1)_{l((\texttt{Z}_1)_{j+1})+1})\neq 0\land r((\texttt{Z}_1)_1)= 0$\texttt{ GOTO }$\texttt{L}$&\\
+&\texttt{IF }$l((\texttt{Z}_1)_1)\geq l((\texttt{Z}_1)_{l((\texttt{Z}_1)_{j+1})+1})$\texttt{ GOTO }$\texttt{L}'$&\\
+& $(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_1)_{l((\texttt{Z}_1)_{j+1})+1})-l((\texttt{Z}_1)_1),1-r((\texttt{Z}_{1})_1)\rangle$&\\
+& \texttt{GOTO }$\texttt{L}_{\kappa+1}$&\\
+$[\texttt{L}']$& $(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_1)_1)-l((\texttt{Z}_1)_{l((\texttt{Z}_1)_{j+1})+1}),r((\texttt{Z}_1)_{1})\rangle$&\\
+& \texttt{GOTO }$\texttt{L}_{\kappa+1}$& \\
+$[\texttt{L}]$& $(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_{1})_1)+l((\texttt{Z}_1)_{l((\texttt{Z}_1)_{j+1})+1}),r((\texttt{Z}_1)_{1})\rangle$&\\
+\end{tabular}
+
+\item $\texttt{SUB }=j$:
+
+\begin{itemize}
+\item Si $j<0$ simulamos $\texttt{ADD }=-j$ tal como apareció antes.
+
+\item Si $j\geq 0$:
+
+\begin{tabular}{l l l}
+$[\texttt{L}_\kappa]$&\texttt{IF }$r((\texttt{Z}_1)_1)\neq 0$\texttt{ GOTO L}\\
+&\texttt{IF }$l((\texttt{Z}_1)_1)\leq j$\texttt{ GOTO }$\texttt{L}'$&\\
+&$(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_1)_1)-j,0\rangle$\\
+&\texttt{GOTO }$\texttt{L}_{\kappa+1}$& \\
+$[\texttt{L}']$&$(\texttt{Z}_1)_1\leftarrow \langle j-l((\texttt{Z}_1)_1),1\rangle$\\
+&\texttt{GOTO }$\texttt{L}_{\kappa+1}$& \\
+$[\texttt{L}]$&$(\texttt{Z}_1)_1\leftarrow \langle l((\texttt{Z}_1)_1)+j,1\rangle$
+\end{tabular}
+\end{itemize}
+
+
+\end{itemize}
+
+\subsubsection{HALF}
+\begin{tabular}{l l l}
+$[\texttt{L}_\kappa]$ & \texttt{IF }$r((\texttt{Z}_1)_1)\neq 0$\texttt{ GOTO L}\\
+&$(\texttt{Z}_1)_1\leftarrow\langle\lfloor l((\texttt{Z}_1)_1)/2\rfloor, 0\rangle$ &\\
+&\texttt{GOTO }$\texttt{L}_{\kappa+1}$ & Pasamos a simular la siguiente instrucción.\\
+$[\texttt{L}]$ & $(\texttt{Z}_1)_1\leftarrow\langle\lfloor l((\texttt{Z}_1)_1)/2\rfloor+1, 1\rangle$ & 
+\end{tabular}
+
+\newpage
+
+\subsubsection{JUMP}
+\begin{itemize}
+\item \texttt{JUMP }$j$, si $j\leq 0\lor j\geq n+1$:
+$[\texttt{L}_\kappa]\texttt{ GOTO }\texttt{L}_{n+1}$
+\item \texttt{JUMP }$j$, si $0\leq j\leq n+1$:
+$[\texttt{L}_\kappa]\texttt{ GOTO }\texttt{L}_{j}$
+\end{itemize}
+\subsubsection{JPOS}
+\begin{itemize}
+\item \texttt{JPOS }$j$, si $j\leq 0\lor j\geq n+1$:
+$[\texttt{L}_\kappa]\texttt{ IF }r((\texttt{Z}_1)_1)= 0\land l((\texttt{Z}_1)_1)\neq 0\texttt{ GOTO }\texttt{L}_{n+1}$
+
+\item \texttt{JPOS }$j$, si $1\leq j\leq n+1$:
+$[\texttt{L}_\kappa]\texttt{ IF }r((\texttt{Z}_1)_1)= 0\land l((\texttt{Z}_1)_1)\neq 0\texttt{ GOTO }\texttt{L}_{j}$
+\end{itemize}
+\subsubsection{JZER}
+\begin{itemize}
+\item \texttt{JZER }$j$, si $j\leq 0\lor j\geq n+1$:
+$[\texttt{L}_\kappa]\texttt{ IF } l((\texttt{Z}_1)_1)= 0\texttt{ GOTO }\texttt{L}_{n+1}$
+
+\item \texttt{JZER }$j$, si $1\leq j\leq n+1$:
+$[\texttt{L}_\kappa]\texttt{ IF } l((\texttt{Z}_1)_1)= 0\texttt{ GOTO }\texttt{L}_{j}$
+\end{itemize}
+
+\subsubsection{JNEG}
+\begin{itemize}
+\item \texttt{JNEG }$j$, si $j\leq 0\lor j\geq n+1$:
+$[\texttt{L}_\kappa]\texttt{ IF } r((\texttt{Z}_1)_1)\neq 0\texttt{ GOTO }\texttt{L}_{n+1}$
+
+\item \texttt{JNEG }$j$, si $1\leq j\leq n$:
+$[\texttt{L}_\kappa]\texttt{ IF } r((\texttt{Z}_1)_1)\neq 0\texttt{ GOTO }\texttt{L}_{j}$
+\end{itemize}
+
+\subsubsection{HALT}
+$[\texttt{L}_\kappa]\texttt{ GOTO }\texttt{L}_{n+1}$. 
+\end{document}

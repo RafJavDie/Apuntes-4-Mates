@@ -12,10 +12,10 @@
 Demostrar que
 \[ \sum_{n≤x} \frac{1}{\sqrt{n}} =  2 \sqrt{x} + A + \mathcal{O}(x^{-1/2}) \]
 \end{ejercicio}
-\begin{sol}
+\begin{solucion}
 Basta de aplicar la fórmula:
 \[ \sum_{n≤x} \frac{1}{\sqrt{n}} = \int_1^x \frac{1}{\sqrt{t}}dt + A + \mathcal{O}\left(\frac{1}{\sqrt{n}}\right) = 2 \sqrt{x}-2+A + \mathcal{O}(x^{-1/2}) \]
-\end{sol}
+\end{solucion}
 
 \newpage
 
@@ -27,7 +27,7 @@ Basta de aplicar la fórmula:
 	\[ \sum_{n≤x} \frac{\log n}{n} = \frac{(\log x)^2}{2} + A + \mathcal{O}\left(\frac{\log x}{x}\right) \]
 \end{enumerate}
 \end{ejercicio}
-\begin{sol}
+\begin{solucion}
 Aplicando la Fórmula de Abel con $a_n=1/n$ y usando que $\sum_{n≤x} a_n = \log x + γ + \mathcal{O}(1/x)$:
 \begin{align*}
 	\sum_{n≤x} \frac{\log n}{n} & = \log x (\log x + γ + \mathcal{O}(1/x)) - \int_1^x \frac{1}{t}(\log t + γ + \mathcal{O}(1/t))\\
@@ -36,7 +36,7 @@ Aplicando la Fórmula de Abel con $a_n=1/n$ y usando que $\sum_{n≤x} a_n = \lo
 \end{align*}
 donde $A$ se corresponde con el término $-\int \mathcal{O}(1/t^2)$ en $t=1$. De esta forma demostramos (b). Para demostrar (a) basta con tomar una forma más debil de la expresión:
 \[ \sum_{n≤x} \frac{\log n}{n} = \frac{(\log x)^2}{x} + A + \mathcal{O}(1) = \frac{(\log x)^2}{x} + \mathcal{O}(1) \]
-\end{sol}
+\end{solucion}
 
 \newpage
 
@@ -44,28 +44,31 @@ donde $A$ se corresponde con el término $-\int \mathcal{O}(1/t^2)$ en $t=1$. De
 Demostrar que para $x ≥ 2$
 \[ \sum_{n≤x} (\log n)^2 = x(\log x)^2 - 2x \log x + 2x + \mathcal{O}((\log x)^2) \]
 \end{ejercicio}
-\begin{sol}
+\begin{solucion}
 Tomando $f(n)=\log^2 n$ y $a_n=1$ tenemos que 
 \begin{align*}
-	\sum_{n≤x} (\log n)^2 = x\log^2 x - \int_1^x \frac{2\log t}{t}tdt = x\log^2 x - 2x\log x +2x -2
+	\sum_{n≤x} (\log n)^2 &= \suelo{x}\log^2 x - \int_1^x \frac{2\log t}{t}\suelo{t}dt \\
+	&= x(\log x)^2 + \deci{x}(\log x)^2 - 2\left(\int_1^x{\log t}+ \frac{\log t \deci{t}}{t}dt \right)\\
+	&=x(\log x)^2 + O((\log x)^2) - 2\left( x\log x - x +1 + \int_1^x \orden{\frac{\log t}{t}}\right) \\
+	&= x(\log x)^2 -2x\log x + 2x - 2 + \orden{(\log x)^2}
 \end{align*}
-\end{sol}
+\end{solucion}
 
 \newpage
 
 \begin{ejercicio}{4}
 Demostrar que
 \[ \sum_{n≤x} \left\{ \frac{x}{n} \right\} = (1-γ)x + \mathcal{O}(x^{1/2}) \]
-donde $\{x\}=x-\lfloor x \rfloor$ denota la parte fraccionaria de $x$.
+donde $\{x\}=x-\suelo{ x }$ denota la parte fraccionaria de $x$.
 \end{ejercicio}
-\begin{sol}
-Recordemos que $\sum_{n≤x} \lfloor x/n \rfloor = \sum_{n≤x} d(n)$ donde $d(n)$ es el número de divisores de $n$\footnote{\url{https://math.stackexchange.com/questions/338432/how-to-prove-the-relation-between-the-floor-function-and-the-number-of-divisors}}.
+\begin{solucion}
+Recordemos que $\sum_{n≤x} \suelo{ x/n } = \sum_{n≤x} d(n)$ donde $d(n)$ es el número de divisores de $n$\footnote{\url{https://math.stackexchange.com/questions/338432/how-to-prove-the-relation-between-the-floor-function-and-the-number-of-divisors}}.
 \begin{align*}
-	\sum_{n≤x} \left\{ \frac{x}{n} \right\} & = x\sum_{n≤x} \frac{1}{n} - \sum_{n≤x} \lfloor \frac{x}{n}\rfloor = x(\log x + γ + \mathcal{O}(1/x))- \sum_{n≤x} d(n)\\
-	& = x(\log x + γ + \mathcal{O}(1/x))- (x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})\\
+	\sum_{n≤x} \left\{ \frac{x}{n} \right\} & =  x\sum_{n≤x} \frac{1}{n} - \sum_{n≤x} \suelo{ \frac{x}{n}} = x(\log x + γ + \mathcal{O}(1/x))- \sum_{n≤x} d(n)\\
+	& = x(\log x + γ + \mathcal{O}(1/x))- (x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x}))%\\
 	& = (1-γ)x + \mathcal{O}(\sqrt{x})
 \end{align*}
-\end{sol}
+\end{solucion}
 
 \newpage
 
@@ -73,14 +76,14 @@ Recordemos que $\sum_{n≤x} \lfloor x/n \rfloor = \sum_{n≤x} d(n)$ donde $d(n
 Demostrar que
 \[ \sum_{n≤x} \frac{d(n)}{n} = \frac{1}{2} (\log x)^2 + 2γ\log x + B + \mathcal{O}(x^{-1/2}) \]
 \end{ejercicio}
-\begin{sol}
+\begin{solucion}
 Aplicando la fórmula de Abel con $a_n=d(n)$ aplicando el teorema 1.8.1:
 \begin{align*}
-	\sum_{n≤x} \frac{d(n)}{n} & = \frac{x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})}{x} + \int_1^t \frac{x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})}{x^2}\\
+	\sum_{n≤x} \frac{d(n)}{n} & = \frac{x \log x + (2γ-1)x + \mathcal{O}(\sqrt{x})}{x} + \int_1^x \frac{t \log t + (2γ-1)t + \mathcal{O}(\sqrt{t})}{t^2}dt\\
 	& = \log x + (2γ-1) + \mathcal{O}(x^{-1/2}) + \frac{(\log x)^2}{2} + (2γ-1)\log x - \mathcal{O}(x^{-1/2}) + A\\
 	& = \frac{(\log x)^2}{2} + 2γ\log x + (2γ-1 + A) + \mathcal{O}(x^{-1/2})
 \end{align*}
-\end{sol}
+\end{solucion}
 
 \newpage
 
@@ -88,30 +91,30 @@ Aplicando la fórmula de Abel con $a_n=d(n)$ aplicando el teorema 1.8.1:
 \begin{itemize}
 \item[]
 \item Demostrar que para todo $x ≥ 1$ se tiene
-\[ \sum_{n≤x} μ(n) \left\lfloor \frac{x}{n} \right\rfloor = 1 \]
+\[ \sum_{n≤x} μ(n) \suelo{ \frac{x}{n} } = 1 \]
 \item Probar que para todo $x ≥ 1$ se tiene
 \[ \left|\sum_{n≤x} \frac{μ(n)}{n}\right| ≤ 1 \]
 
 \end{itemize}
 
 \end{ejercicio}
-\begin{sol}
+\begin{solucion}
 \begin{itemize}
 \item Por el mismo argumento del ejercicio 4:
-\[ \sum_{n≤x} \sum_{d|n} μ(d) = \sum_{n≤x} μ(n) \left\lfloor \frac{x}{n} \right\rfloor \]
+\[ \sum_{n≤x} \sum_{d|n} μ(d) = \sum_{n≤x} \mu(n)\sum_{n\mid m\leq x}1= \sum_{n≤x} \mu(n)\suelo{ \frac{x}{n} }	\]
 Como $\sum_{d|n} μ(d) = 0$ si $n > 1$ y $\sum_{d|n} μ(d) = 1$ si $n = 1$:
-\[ \sum_{n≤x} μ(n) \left\lfloor \frac{x}{n} \right\rfloor = 1 \]
+\[ \sum_{n≤x} μ(n) \suelo{ \frac{x}{n} } = 1 \]
 
-\item Por el ejecicio anterior:
-\[ 1 = \sum_{n≤x} μ(n) \left\lfloor \frac{x}{n} \right\rfloor = x\sum_{n≤x} μ(n) \frac{1}{n} - \sum_{n≤x} μ(n) \left\{ \frac{x}{n} \right\}  \]
+\item Por el ejercicio anterior:
+\[ 1 = \sum_{n≤x} μ(n) \suelo{ \frac{x}{n} } = x\sum_{n≤x} μ(n) \frac{1}{n} - \sum_{n≤x} μ(n) \left\{ \frac{x}{n} \right\}  \]
 Luego:
 \[ \gabs{\sum_{n≤x} \frac{μ(n)}{n}} = \gabs{\frac{1}{x} \left(1+\sum_{n≤x}μ(n)\left\{\frac{x}{n}\right\}\right)}
 ≤ \frac{1}{x} \left(1+\sum_{n≤x}\gabs{μ(n)\left\{\frac{x}{n}\right\}}\right) \]
 Como para $n=x$, $\{x/n\}=0$, podemos prescindir del último término:
 \[ \left|\sum_{n≤x} \frac{μ(n)}{n}\right| ≤ \frac{1}{x} \left(1+\sum_{n≤x-1}\gabs{μ(n)\left\{\frac{x}{n}\right\}}\right) ≤ \frac{1}{x} \left(1+\sum_{n≤x-1}1\right) ≤ \]
-\[\leq \frac{1}{x} \left(1+\lfloor x \rfloor-1\right) = \frac{\lfloor x \rfloor}{x} ≤ 1\]
+\[\leq \frac{1}{x} \left(1+\suelo{ x }-1\right) = \frac{\suelo{ x }}{x} ≤ 1\]
 \end{itemize}
-\end{sol}
+\end{solucion}
 
 \newpage
 
@@ -119,30 +122,28 @@ Como para $n=x$, $\{x/n\}=0$, podemos prescindir del último término:
 Probar que para $n ≥ 2$ se tiene
 \[ \sum_{n≤x} Λ(n) \log n = ψ(x) \log x + \mathcal{O}(x) \]
 \end{ejercicio}
-\begin{sol}
+\begin{solucion}
 Aplicamos la fórmula de Abel con $a_n=Λ(n)$ recordando que, por definición, $ψ(x) = \sum_{n≤x} Λ(n)$:
 \[ \sum_{n≤x} Λ(n) \log n = ψ(x)\log x + \int_1^x \frac{ψ(t)}{t}dt \]
-Por el teorema de la Valleé Poussin, existe una constante absoluta $c > 0$ tal que:
-\[ ψ(x) = x + \mathcal{O}(xe^{-c\sqrt{\log x}}) \]
-Tomando la expresión más débil $x + \mathcal{O}(x)$:
-\[ \int_1^x \frac{ψ(t)}{t}dt = \int_1^x (1 + \mathcal{O}(1)) dt = x + A + \mathcal{O}(x) = \mathcal{O}(x) \]
+Por el Teorema de Chebyshev, existe $B$ tal que $ψ(x) ≤ B x$, entonces:
+\[ \left|\int_1^x \frac{ψ(t)}{t}dt\right| ≤ B\int_1^x dt = Bx \Rightarrow \int_1^x \frac{ψ(t)}{t}dt = \mathcal{O}(x)\]
 Luego:
 \[ \sum_{n≤x} Λ(n) \log n = ψ(x)\log x + \mathcal{O}(x) \]
 
-\end{sol}
+\end{solucion}
 \newpage
 
 \begin{ejercicio}{8}
 Demostrar que
 \[ \sum_{n≤x} \frac{σ(n)}{n} = \frac{π^2}{6} x + \mathcal{O}(\log^2 x) \]
 \end{ejercicio}
-\begin{sol}
+\begin{solucion}
 Aplicando la fórmula de Abel con $a_n = σ(n)$:
 \begin{align*}
 	\sum_{n≤x} \frac{σ(n)}{n} & = \frac{1}{x}\left(\frac{1}{12}π^2x^2 + \mathcal{O}(x \log x)\right) + \int_1^x \frac{1}{t^2}\left(\frac{1}{12}π^2t^2 + \mathcal{O}(t \log t)\right)dt\\
 	& = \frac{1}{12}π^2x + \mathcal{O}(\log x) + \frac{1}{12}π^2x + \mathcal{O}(\log^2 x) = \frac{π^2}{6}x + \mathcal{O}(\log^2 x)
 \end{align*}
-\end{sol}
+\end{solucion}
 
 \newpage
 
@@ -150,8 +151,18 @@ Aplicando la fórmula de Abel con $a_n = σ(n)$:
 Demostrar que existen constantes positivas $A$ y $B$ tales que para todo $x$ suficientemente grande
 \[ A\sqrt{x} ≤ \sum_{p≤x} \frac{\log p}{\sqrt{p}} ≤ B \sqrt{x}\]
 \end{ejercicio}
-\begin{sol}
-\end{sol}
+\begin{solucion}
+Sea:
+\[ a_n = \begin{cases}
+	\log p &\text{ si }n = p\\
+	0 & \text{ c.c.}
+\end{cases}\]
+Entonces, como $θ(x) = \sum_{p≤x} \log p$:
+\[ \sum_{p≤x} \frac{\log p}{\sqrt{p}}  = \sum_{n≤x} a_n f(n) = θ(x) \frac{1}{\sqrt{x}} + \frac{1}{2} \int_1^x θ(t) t^{-3/2} dt \]
+Por el teorema de Chebyshev, existe $A$ y $B$ con $Ax ≤ θ(x) ≤ Bx$. Entonces:
+\[ θ(x) \frac{1}{\sqrt{x}} + \frac{1}{2} \int_1^x θ(t) t^{-3/2} dt ≥ θ(x) \frac{1}{\sqrt{x}} ≥ \frac{Ax}{\sqrt{x}} = A\sqrt{x}\]
+\[ θ(x) \frac{1}{\sqrt{x}} + \frac{1}{2} \int_1^x θ(t) t^{-3/2} dt ≤ B\sqrt{x} + \frac{1}{2} \int_1^x Bt^{-1/2} ≤ B\sqrt{x}+B(\sqrt{x}-1) ≤ 2B \sqrt{x} \]
+\end{solucion}
 
 \newpage
 
@@ -159,15 +170,30 @@ Demostrar que existen constantes positivas $A$ y $B$ tales que para todo $x$ suf
 Demostrar que
 \[ \sum_{n≤x} r(n) = πx + \mathcal{O}(\sqrt{x}) \]
 \end{ejercicio}
+\begin{solucion}
+Sea $Q_{(u,v)}=[u-1/2,u+1/2)\times[v-1/2,v+1/2)$ un cuadrado de radio $1$ centrado en $(u,v)$. Se tiene que:
+\[ \sum_{n≤x} r(n) = area \bigcup_{u^2+v^2≤x} Q_{(u,v)} := area \mathcal{Q} \]
+Por otro lado, obsérvese que
+\[ \mathcal{Q} \subset D(0,\sqrt{x}+\sqrt{2}) \]
+Entonces $\sum_{n≤x} r(n) ≤ π(\sqrt{x}+\sqrt{2})^2 = π(x+2+2π\sqrt{2x}) = πx + \mathcal{O}(\sqrt{x})$
+\end{solucion}
 
 \newpage
 
 \begin{ejercicio}{11}
 Demostar que para todo número natural $k$ y todo $x > 0$ se tiene
 \[ \frac{π(x)}{x} ≤ \frac{φ(k)}{k} + \frac{2k}{x} \]
-Deducir de lo anterior y del teorema de Chebyshe que existe una constante $C > 0$ tal que
+Deducir de lo anterior y del teorema de Chebyshev que existe una constante $C > 0$ tal que
 \[ φ(k) ≥ \frac{Ck}{\log k} \quad \forall k≥2 \]
 \end{ejercicio}
+\begin{solucion}
+Dividimos los números de $1$ a $x$ en grupos de $k$ elementos. Como puede que $k$ no divida a $x$, el último grupo puede tener menos de $k$ elementos. Tendremos entonces $\suelo{ x/k }$ grupos de $k$ elementos. Obsérvese que entre $nk+1$ y $(n+1)k$ hay $φ(k)$ primos siempre y cuando $n ≥ 1$. Acotamos la cantidad de primos entre $1$ y $k$ y en el último grupo por $2k$ (como si todos fueran primos). Entonces:
+\[ π(x) ≤ φ(k) \suelo{ \frac{x}{k} }+2k ≤ φ(k) \frac{x}{k} + 2k \]
+
+Usando que $π(x) ≥ A \frac{x}{\log x}$.
+$$φ(x) \geq  \frac{k}{x} π(x) - \frac{2k^2}{x} ≥ \frac{Ak}{\log x}-\frac{2k^2}{x} \geq \frac{A k}{2\log k} -2  ≥ \frac{A k}{2\log k} - \frac{A k}{4 \log k} = \frac{C k}{\log k}$$
+
+\end{solucion}
 
 \newpage
 
@@ -180,7 +206,7 @@ Admitiendo este resultado probar que si es cierta la hipótesis de Riemann, ento
 $$
 \sum_{p\leq x}\frac{\log p}{p} = \log x + A + \mathcal{O}(x^{-1/2}\log^2 x)
 $$
-\begin{sol}
+\begin{solucion}
 Sea $a_n = I_{\mathbb{P}}(n)\log n$, donde $I_{\mathbb{P}}(n)$ es la funcion indicatriz de los números primos. Entonces, suponiendo cierta la hipótesis de Riemann y el resultado anterior, además de aplicar la fórmula de sumación de Abel, obtenemos
 \begin{align*}
 \sum_{p\leq x}\frac{\log p}{p} &= \sum_{n\leq x}\frac{a_n}{n} = \frac{\theta(x)}{x} - \int_1^x \frac{-\theta(t)}{t^2}dt =\\
@@ -205,7 +231,7 @@ S(x)= \int_x^\infty \frac{U(t)}{t^2}dt = \int_x^\infty \frac{\mathcal{O}(t^{1/2}
 =\bo{\left[-\frac{2(\log^2 t+4\log t + 8}{t^{1/2}}\right]_x^\infty }= \bo{\frac{2(\log^2 x+4\log x + 8)}{x^{1/2}}} = \mathcal{O}(t^{-1/2}\log^2 t)
 \end{gather*}
 Como queríamos probar.
-\end{sol}
+\end{solucion}
 \end{ejercicio}
 
 \newpage
@@ -214,10 +240,32 @@ Como queríamos probar.
 Suponiendo la hipótesis de Riemann puede probarse que $θ(x) = x + \mathcal{O}(\sqrt{x} \log^2x)$. Admitiendo la hipótesis de Riemann, probar que:
 \[ \sum_{p≤x} \sqrt{p}\log p = \frac{2}{3} x^{3/2} + \mathcal{O}(x\log^2 x) \]
 \end{ejercicio}
+\begin{solucion}
+Sea $a_n = \log p$ si $n=p$ para un $p$ primo, $a_n = 0$ en caso contrario. Entonces:
+\[ \sum_{p≤x} \sqrt{p}\log p = \sum_{n≤x} \sqrt{n}a_n = θ(x)\sqrt{x} - \int_1^x θ(t)\frac{1}{2\sqrt{t}}dt = θ(x)\sqrt{x} -\int_2^x θ(t)\frac{1}{2\sqrt{t}}dt \]
+Usando la ayuda del enunciado, sustituimos $\theta(x)=x+O(\sqrt{x}\log^2 x)$.
+\begin{align*}
+\sum_{p≤x} \sqrt{p}\log p &=(x+O(\sqrt{x}\log^2 x)\sqrt{x} -\int_2^x \frac{t+O(\sqrt{t}\log^2 t)}{2\sqrt{t}}dt\\
+&= x^{3/2}+O(x\log^2 x) - \frac{1}{2}\int_2^x \sqrt{t}+O(\log^2 t)dt\\
+&= x^{3/2}+O(x\log^2 x) - \frac{1}{2}\left(x^{3/2}\frac{2}{3}+\orden{\int_2^x\log^2 tdt}\right)\\
+&=\frac{2}{3}x^{3/2}+\orden{x\log^2 x}
+\end{align*}
+\end{solucion}
 
 \newpage
 
 \begin{ejercicio}{14}
 ¿Para qué valores de $α$ y $β$ $\in \R$ es convergente la serie $\sum\limits_p \dfrac{1}{p^α(\log p)^β}$?
 \end{ejercicio}
+\begin{solucion}
+Veamos que para $α > 1$ es convergente. Tenemos que $p_n ≥ A n \log n \Rightarrow p_n^{α} ≥ A^{α}n^{α}\log^{α} n$, luego:
+\[ \frac{1}{p_n^{α} (\log p_n)^β} ≤ \frac{1}{A^{α}n^{α}\log^{α}} \]
+que es convergente.
+Para $0 ≤ α < 1$, veamos que es divergente. Como $p_n ≤ B n \log n$, se tiene que $\log p_n ≤ \log B + \log n + \log \log n ≤ C \log n$. Entonces:
+\[ \frac{1}{p_n^α(\log p_n)^β} ≥ \frac{1}{B^αn^α(\log n)^α C^β(\log n)^β}\]
+que es divergente.
+Para $α=1$, tenemos que:
+\[ \frac{1}{p_n(\log p_n)^β} \sim \frac{1}{n \log n (\log n)^β} = \frac{1}{n (\log n)^{β+1}} \]
+que converge si y sólo si $β+1 > 1$, es decir, cuando $β > 0$.
+\end{solucion}
 \end{document}

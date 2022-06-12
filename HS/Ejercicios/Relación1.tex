@@ -1,0 +1,518 @@
+\documentclass[twoside]{article}
+\usepackage{../../estilo-ejercicios}
+\newcommand{\colapso}{{\searrow\!\!\!\!\searrow}}
+%--------------------------------------------------------
+\begin{document}
+
+\title{Ejercicios de Homología Simplicial}
+\author{Javier Aguilar Martín, Diego Pedraza López}
+\maketitle
+
+\begin{ejercicio}{1.1}
+Sea $K$ un complejo simplicial y $L \subseteq K$ un subcomplejo.
+Se dice que $L$ es un \emph{subcomplejo lleno} de $K$ si para todo símplice $σ \in K$ la intersección $σ \cap |L|$ es una cara de $σ$ (posiblemente vacía).
+Demostrar que son equivalentes:
+\begin{enumerate}
+\item $L$ es un subcomplejo lleno de $K$.
+\item Ningún símplice de $K-L$ corta a $L$ en todo su borde.
+\item Si los vértices de $σ$ están en $L$, $σ \in L$.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+$(1\Rightarrow 2)$ Supongamos que algún símplice $\sigma\in K-L$ cortase a $L$ en todo su borde, es decir, $σ \cap |L| = \partial σ$. Pero $\partial σ$ no puede ser una (única) cara, lo que contradice la definición de subcomplejo lleno.
+
+$(2\Rightarrow 3)$ Demostraremos que $(\neg 3 \Rightarrow \neg 2)$ por inducción. Sea $n$ la dimensión del símplice $σ$. Si $n=1$, entonces $σ = (v_0,v_1)$ tal que $v_0,v_1 \in L$, pero $σ \notin L$, entonces $σ \in K \setminus L$ pero $σ \cap |L| = \{(v_0),(v_1)\} = \partial σ$, que prueba $\neg (2)$.
+
+Supongamos que si es cierto para $n$, entonces es cierto para $n+1$. Su hubiera un $n+1$-símplice $σ = (v_0,\dots,v_{n+1})$ con $v_i \in L$ para todo $i$ pero $σ \notin L$. Por hipótesis de inducción, cualquier cara propia de $σ$ está en $L$. Como la unión de todas las caras propias de $σ$ es el borde $σ$, tenemos que $σ \cap |L| = \partial σ$, luego $\neg (2)$.
+
+$(3\Rightarrow 1)$ Sea $\sigma=(v_0\dots v_n)$.Si $\sigma\in L$ es trivial. Si $\sigma\notin L$, entonces hay algún vértice $v<\sigma$ con $v\notin L$. Por lo tanto $\sigma\cap|L|\subseteq (v_0\dots \hat{v}\dots v_n)$. Si se da la igualdad ya hemos terminado, si no, como la intersección debe ser un símplice, entonces podemos eliminar otro vértice y repetir. Así hasta que paremos en una cara de $\sigma$ (posiblemente vacía).
+
+$(3\Rightarrow 1)$ Hay 3 posibilidades:
+\begin{enumerate}
+\item $σ \cap L = \emptyset ≤ σ$.
+\item $σ \in L \Rightarrow σ \in L = σ ≤ σ$.
+\item $σ \notin L$ pero $σ \cap L \neq \emptyset$. Entonces hay vértices de $σ$ que no están en $L$. Nos olvidamos de ellos y sólo consideramos vértices de $σ$ que están en $L$. Estos son una cara de $σ$ que por $(3)$ está en $L$, luego $σ \cap L < σ$.
+\end{enumerate}
+
+$(1\Rightarrow 3)$ Supongamos que todos los vértices de $\sigma$ están en $L$. Entonces $\sigma\cap |L|$ debe ser una cara de $\sigma$ que contenga todos su vértices. La única que cumple esto es $\sigma$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.2}
+Sean $σ = (v_0,\dots,v_p)$ y $τ = (w_0,\dots,w_q)$ símplices en $\R^n$.
+Se dirá que $σ$ y $τ$ son \emph{unibles} si los $p+q+2$ puntos $v_0,\dots,v_p,w_0,\dots,w_q$ son afínmente independientes.
+En ese caso, se donta por $στ$ el $(p+q+1)$-símplice generado por dichos puntos.
+Dos complejos simpliciales $K$ y $L$ en $\R^n$ se llaman \emph{unibles} si:
+\begin{itemize}
+\item Para cada $σ \in K$ y $τ \in L$, $σ$ y $τ$ son unibles.
+\item $στ$ y $σ'τ'$ se cortan en una cara común
+\end{itemize}
+Se pide:
+\begin{enumerate}
+\item Probar que si $K$ y $L$ son dos complejos unibles, entonces la familia de símplices dada por:
+\[ KL = K \bigcup L \bigcup \{στ; σ \in K \text{ y }τ \in L\} \]
+es un complejo simplicial en $\R^n$ llamado la \emph{unión simplicial} de $K$ y $L$.
+\item Si $K = \{c\}$, entonces $KL$ es llamado \emph{complejo cono sobre} $L$ y es denotado por $cL$.
+Si $K = \{c_1,c_2\}$ la unión simplicial $KL$ es llamada el \emph{complejo suspensión de} $L$ y denotada $ΣL$.
+Más aún, si $L$ es finito $|cL|$ es homeomorfo al cono topológico $c|L|$ y $|ΣL|$ lo es a la suspenión topológica $Σ|L|$.
+\item Si $K, L \neq \emptyset$, el poliedro $|KL|$ es siempre conexo por caminos.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}
+\item[]
+\item Basta probar que las condiciones de la definición de complejo simplicial se cumplen para los símplices de $\{στ; σ \in K \text{ y }τ \in L\}$. Sea entonces $$\sigma=(v_0,\dots,v_i,\dots, v_r, w_0,\dots,w_j,\dots, w_s)=vw$$ y $\tau\leq\sigma$ de modo que $\tau=(v_i,\dots, v_r,w_0,\dots w_j)$ (en otro caso basta reordenarlos). Entonces $\tau=(v_i\dots, v_r)(w_0,\dots w_j)$, como cada uno de los símplices unidos es una cara de $v$ y $w$ respectivamente, $\tau$ está en $KL$. Por otra parte, dados $\sigma,\sigma'\in KL$, si $\sigma\cap\sigma'\neq\emptyset$, entonces la intersección consiste en una upla formada por una serie de vértices de $K$ y $L$ (posiblemente de uno de los dos solamente), luego reordenándolos tenemos un símplice de $KL$.
+
+\item Como los complejos simpliciales son compactos y Hausdorf, el cono topológico es homeomorfo al cono geométrico, consistente en los segmentos que unen $c$ con los puntos de $|K|$, pero esto es precisamente el complejo cono. Análogamente se tiene para la suspensión, ya que $\Sigma |X|\cong c|X|\sqcup_{|X|} c|X|$.
+
+\item Recordemos que la conexión por caminos es transitiva, luego si probamos que todo punto de uno de los complejos simpliciales se puede conectar por camino a todo punto del otro complejo, tendríamos que la unión simplicial sería conexa por caminos.
+Es más, basta comprobar que se puede conectar cualquier punto de $K$ (análogamente de $L$) con algún símplice de $\{στ; σ \in K \text{ y }τ \in L\}$, pues todos los símplices de $K$ se encuentran con los de $L$ en dicho conjunto.
+Sea pues $x\in K$, entonces $x\in\sigma$ para algún $\sigma\in K$ (por ejemplo, el soporte de $x$).
+Entonces, existe $\tau\in L$ tal que $\sigma\tau\in\{στ; σ \in K \text{ y }τ \in L\}$.
+Como los símplices son conexos por caminos, ya está.
+
+\end{enumerate}
+
+
+\end{solucion}
+
+\begin{solucion}\mbox{}
+\begin{enumerate}
+\item Sea $ρ$ un símplice de $KL$. Si $ρ \in K$ ó $ρ \in L$, claramente $ρ \in KL$.
+Si no, $ρ = στ$de algún $σ \in K$ y $τ \in L$.
+Entonces una cara de $σ$ es de la forma $σ'τ'$ con $σ' ≤ σ$ y $τ' ≤ τ$.
+Como $K$ y $L$ son complex simpliciales, $σ'τ' \in KL$.
+
+Dados dos símplices $ρ_1$ y $ρ_2$ de $KL$ cuya intersección es no vacía.
+\begin{itemize}
+\item Si ambos están $K$ ó ambos están en $L$, claramente la intersección está en $K$ ó $L$ respectivamente, luego $ρ_1 \cap ρ_2 \in KL$.
+\item Si unos está en $K$ y el otro en $L$, entonces su intersección es vacía.
+\item Si uno está en $K$ ó $L$ y el otro es del tipo $στ$ con $σ \in K$ y $τ \in L$, entonces la intersección está en $K$ ó $L$, luego está en $KL$.
+\item Si $ρ_1 = σ_1τ_1$ y $ρ_2 = σ_2τ_2$ con $σ_i \in K$ y $τ_i \in L$, entonces no es difícil ver:
+\[ (σ_1τ_1) \cap (σ_2τ_2) = (σ_1 \cap σ_2)(τ_1 \cap τ_2) \in KL \]
+\end{itemize}
+\end{enumerate}
+\item .
+\item Sean $x,y \in |KL|$, vamos a construir un camino de $x$ a $y$.
+Sean $σ$ y $τ$ los símplices soporte de $x$ e $y$ en $K$ respectivamente.
+Digamos que $x$ está en el interior de $(v_0,\dots,v_p,w_0,\dots,w_q)$ e $y$ está en el interior de $(v_0',\dots,v_p',w_0,\dots,w_q)$.
+\end{solucion}
+
+
+\newpage
+
+\begin{ejercicio}{1.3}
+Sea $K$ complejo simplicial.
+Para cada símplice $σ \in K$ probar la igualdad $st(σ;K) = σlk(σ;K)$ donde el término de la derecha indica la corespondiente unión simplicial.
+\end{ejercicio}
+\begin{solucion}
+$\boxed{\subseteq}$ Sea $\tau\in st(σ;K)$, entonces o bien $\tau\in lk(σ;K)$ (en cuyo caso ya habríamos terminado) o bien $\sigma\leq\tau$. En este último caso, podemos extender $\sigma$ añadiendo vértices hasta llegar a $\tau$. Los vértices añadidos son una cara de $\tau$ que no tiene a $\sigma$ como cara, luego está en el link. Así pues, $\tau\in σlk(σ;K)$. 
+
+$\boxed{\supseteq}$ Sea $\tau\in σlk(σ;K)$. Si $\tau=\sigma$ ó $\tau\in lk(σ;K)$ ya habríamos terminado. Supongamos entonces que $\tau=\sigma\eta$. Entonces $\tau$ contiene a $\sigma$ como cara, luego $\tau\in st(σ;K)$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.4}
+Se dice que dos aplicaciones simpliciales $φ$, $ψ : K \to L$ son contiguas si para todo $σ \in K$ se verifica que $φ(σ) \cup ψ(σ) \in L$.
+Probar que dos aproximaciones simpliciales $φ$, $ψ : K \to L$ de una misma aplicación continua $f : |K| \to |L|$ son contiguas.
+\end{ejercicio}
+\begin{solucion}
+Sea $\sigma=(v_0,\dots, v_n)$ y consideremos $f(v_i)$ para cada $0\leq i\leq n$. Tenemos que $\varphi(v_i)$ y $\psi(v_i)$ son vértices del soporte de $f(v_i)$ por ser aproximaciones simpliciales. Por tanto, $\varphi(v_i)$ y $\psi(v_i)$ están en un símplice cómún para todo $0\leq i\leq n$. A su vez, $\varphi(v_i)$ está en un símplice común con $\varphi(v_j)$ para todo $0\leq i,j\leq n$ (el símplice que generan por ser aplicación simplicial) y análogamente para $\psi(v_i)$. Por tanto, todo $\varphi(v_j)$ está en un mismo símplice que $\varphi(v_i)$, que está en el mismo símplice que $\psi(v_i)$, que a su vez está en un mismo símplice que todo el resto de $\psi(v_j)$. Por tanto, todos están un símplice común, es decir,  $φ(σ) \cup ψ(σ) \in L$.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.5}
+Probar que si $|K|$ es conexo, entonces es conexo por caminos.
+Más aún, se tiene que son equivalentes
+\begin{enumerate}
+\item $|K|$ es conexo.
+\item El $1$-esqueleto de $K$ es conexo.
+\item Dos vértices cualesquiera pueden unirse por un camino formado por aristas.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+En primer lugar, es claro que cualquier símplice es conexo por caminos por ser convexo. Como $|K|$ es unión de símplices (supongamos más de uno), esto implica cualquiera de sus símplices tiene intersección no vacía con algún otro símplice distinto. Por tanto, usando las intersecciones y la conexión por caminos de cada símplice es fácil construir un camino entre dos puntos cualesquiera de dos símplices distintos.
+
+Probamos ahora las equivalencias.
+\begin{enumerate}
+\item[$(1\Rightarrow 2)$] Supongamos que el 1-esqueleto tiene 2 componentes conexas (por caminos). Entonces, cualquier símplice de dimensión mayor que se pueda generar usando vértices de una y otra componente contendrá una arista entre ellos, por lo que si algún símplice de ese tipo estuviera en $K$, el 1-esqueleto sería conexo. Así pues, $K$ solo puede tener símplices generados por vértices de cada una de las componentes conexas por separado. De este modo, cualquier complejo simplicial  generado tendrá dos componentes conexas, luego $|K|$ no sería conexo.
+\item[$(2\Rightarrow 3)$] Si el 1-esqueleto es conexo, entonces es conexo por caminos, luego los vértices se pueden conectar entre sí dentro del 1-esqueleto mediante caminos, que de hecho están formados por aristas.
+\item[$(3\Rightarrow 1)$] Como $K$ es unión de símplices y los símplices son conexos por caminos, al poder unir todos los puntos por un camino formado por aristas, en particular podemos unir todos los vértices por caminos, luego podemos llegar a cualquier otro punto yendo hasta un vértice por un tal camino y luego usar el segmento correspondiente al símplice. Luego $|K|$ es conexo por caminos, en particular, conexo.
+\end{enumerate}
+
+SOLUCIÓN DE CLASE
+
+Supongamos que $|K|$ es conexo. Dado $x_0\in|K|$, sea $U_{x_0}=\{y\in|K|\mid\exists$ camino de $x_0$ a $y\}$. Veamos que
+\begin{enumerate}
+\item $U_{x_0}\neq\emptyset$ para todo $x_0\in|K|$, ya que existe el camino constante en $x_0$, así que $x_0\in U_{x_0}$.
+\item $U_{x_0}$ es abierto, es decir, vamos a ver que dado $y\in U_{x_0}$ existe un abierto entre $y$ y $U_{x_0}$. Como $y\in U_{x_0}$, existe un camino $\alpha:[0,1]\to |K|$ tal que $\alpha(0)=x_0$ y $\alpha(1)=y$. Consideremos la estrella abierta de $y$ en $|K|$, dado que un símplice es conexo, cualquier punto de la estrella abierta de $y$ está conextado mediante un segmento con $y$, luego añadiendo $\alpha$, cualquier punto de la estrella abierta de $y$ está conectado con $x_0$, luego $y\in\mathring{st}(y,|K|)\subseteq U_{x_0}$. 
+\item $U_{x_0}$ es cerrado, si y solo si $|K|\setminus U_{x_0}$ si y solo si $|K|\mid U_{x_0}$ es entorno de todos sus puntos. Dado $y\in |K|\mid U_{x_0}$, basta considerar $\mathring{st}(y,|K|)\subseteq|K|\setminus U_{x_0}$, ya que de lo contrario, por ser la estrella abierta conexa por caminos, existiría un camino entre $x_0$ e $y$.
+
+Veamos que entonces el 1-esqueleto es conexo. Dados $x,y\in |K^1|$ sabemos que existe un camino $\alpha:[0,1]\to |K|$ de $x$ a $y$. Por el teorema de aproximación simplicial, existe una subdivisión $sd^n[0,1]$ y $\varphi:sd^n[0,1]\to |K|$ que es aproximación de $\alpha$. Como $sd^n[0,1]$ está formado solo por vértices y aristas, la imagen también debe estar formada por vértices y aristas, luego su imagen es un camino en $K^1$. Es posible que $\varphi(0)\neq x$ y $\varphi(1)\neq y$ si están en el interior de una arista, pero en cualquier caso, se podrá hacer un camino entre $\varphi(0)$ y $x$, y entre $\varphi(1)$ e $y$ dentro de la arista en la que se encuentran. 
+\end{enumerate}
+
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.6}
+Sea $K$ un complejo simplicial.
+Un \emph{símplice principal} de $K$ es un símplice que no es cara propia de ningún símplice de $K$.
+Si $τ < σ$ es una cara propia que no es cara propia de otro símplice, se dice que $τ$ es \emph{cara libre} de $σ$.
+Obsérvese que necesariamente $\dim τ = \dim σ - 1$.
+
+Supongamos que $K$ tiene un símplice principal $σ$ con cara libre $τ$.
+Entonces, el subcomplejo $K_1 = K - \{σ,τ\}$ se llama \emph{colapso elemental} de $K$ através de $τ$, y se escribirá
+\[ K \searrow K_1 \]
+Una sucesión $K \searrow K_1 \searrow K_2 \searrow \dots \searrow K_n$ de colapsos elementales se llamará \emph{colapso} de $K$ a $K_n$, y se indicará mediante la notación $K \colapso K_n$.
+Si $K_n$ es un punto, se dice que $K$ es \emph{colapsable}, y se usa la notación $K \colapso 0$.
+\begin{enumerate}
+\item Probar que el cono $cK$ sobre un complejo $K$ es colapsable.
+\item Si $L$ es el complejo formado por un símplice y sus caras, entonces $L$ es colapsable.
+Probar además, que en este caso, para todo complejo $K$ el complejo $LK$ es colapsable.
+\item Dar un ejemplo de un subcomplejo $L$ de un complejo $K$ que sea colapsable, pero tal que $L$ no sea colapsable.
+\item Probar que si $K$ es colapsable, entonces $|K|$ es contráctil.
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+Obsérvese que todo complejo simplicial tiene algún símplice maximal. En efecto, dado un símplice $\sigma=(v_0,\dots, v_l)$ solo podemos añadirle vértices sin salirnos del complejo una cantidad finita de veces pues la uplas son finitas. Una vez alcanzado este límite, habremos dado con un símplice principal.
+\begin{enumerate}
+\item Consideramos los símplices principales $K$, los cuales inducen símplices principales en $cK$ al añadirles el nuevo vértice. Entonces, si $\sigma$ es uno de los símplices principales de $K$, podemos hacer el colapso $cK-\{c\sigma,\sigma\}$, ya que al ser $\sigma$ principal en $K$, no puede ser cara propia de ningún otro símplice en $cK$.
+Una vez que hemos hecho esto con todos los símplices principales, nos quedará un complejo $K_1$.
+
+Ahora se tiene que en $K_1$ hay caras libres, las dadas por las caras propias de los símplices principales de $K$, ya que al eliminar los símplices de $K$ para obtener $K_1$ aparecen nuevos símplices principales (de hecho $K_1 = vL$, con $L$ las caras propias maximales de los símplices principales de $K$).
+Podemos repeter el colapso $K \colapso K_1 \colapso K_2 \colapso \dots v$, luego $K \colapso v$.
+%En este complejo podemos encontrar de nuevo símplices principales, que tendrán dimensión estrictamente menor que los anteriores, y podemos repetir el proceso. Como la dimensión es finita, obtendremos un colapso $K\searrow K_1\searrow\cdots\searrow K_n\searrow c$, luego $K\colapso 0$.
+
+\item Sea $\sigma=(v_0,\dots, v_n)$ el símplice de $L$. Entonces $\sigma$ es el único símplice principal. Entonces, colapsamos $\sigma$ junto con la cara $n-1$ dimensional $(v_1,\dots, v_n)$. Ahora, todas las caras $n-1$ dimensionales restantes son símplices principales. Así que en cada uno podemos realizar este mismo proceso. Podemos reiterar bajando de dimensión hasta colapsar sobre $v_0$ todo el símplice pues en cada paso colapsamos las caras que no lo contienen y además hay un número finito de caras, luego el proceso termina. Una alternativa es observar que un símplice es un cono sobre cualquiera de sus caras propias de dimensión máxima.
+
+Para la segunda parte, denotemos $L=\sigma$. Consideremos un símplice principal $\sigma'$ de $K$, entonces la unión simplicial $\sigma\sigma'$ es un símplice principal de $\sigma K$ (no existe ningún símplice de $\sigma K$ que contenga a $\sigma\sigma'$). Luego, dada una cara libre $\tau$ de $\sigma'$ en $K$, entonces $\sigma\tau$ resulta ser cara libre de $\sigma K$ ($\sigma\sigma'$ es el único símplice de $\sigma K$ que contiene a $\sigma\tau$). Colapsamos $\sigma K\searrow \sigma K-\{\sigma\tau,\sigma\sigma'\}$. Repetimos a continuación el proceso con todos los símplices principales de $K$ y continuamos el proceso con los símplices del borde de dichos símplices principales. Tras un número finito de pasos llegamos a un vértice.
+
+\item Un triángulo relleno con todas sus caras es claramente colapsable (empezando por el 2-símplice y una arista, y luego las aristas que quedan con sus vértices), pero el triángulo sin el relleno no es colapsable pues no tiene caras libres.
+
+\item Teniendo en cuenta que los símplices son contráctiles, podemos expresar el colapso de un símplice sobre un vértice como una contracción del símplice sobre dicho vértice. Así, el colapso de un complejo simplicial no será más que una sucesión finita de contracciones, que se pueden convertir en una sola contracción concatenando las homotopías particionando adecuadamente el intervalo $[0,1]$.
+
+El recríproco no es cierto, como muestra el Dunce Hat\footnote{\url{https://en.wikipedia.org/wiki/Dunce_hat_(topology)}}
+
+\begin{nota}
+La noción topológica equivalente al colapso es la \emph{homotopía simple}. La noción inversa es la de \emph{expansión}, es decir, un complejo simplicial $Y$ es expansión de $X$ si $Y$ se puede colapsar sobre $X$. Se dice que dos complejos simpliciales tienen el mismo tipo de homotopía simple si uno se puede transformar en el otro mediante una sucesión finita de colapsos y expansiones. 
+\end{nota}
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.7}
+Un complejo simplicial de dimensión $1$ es llamado un \emph{grafo}.
+Dado un grafo $G$, se dice que un subgrafo $T \subseteq G$ es un \emph{árbol} si $T$ es conexo y no contiene ninguna poligonal simple cerrada (que serán llamadas \emph{lazos}).
+Probar que todo árbol colapsa a un punto.
+Probar que $T \subseteq G$ es un árbol maximal si y sólo si $T$ contiene todos los vértices de $G$.
+Probar que todo grafo conexo contiene un árbol maximal con respecto a la inclusión.
+\end{ejercicio}
+\begin{solucion}
+Si el árbol está formado solo por un punto, es trivial. Si está formado por una arista, claramente podemos colapsarlo sobre uno de sus vértices. Para el caso general consideremos una raíz (un vértice sobre el que incidan al menos 2 aristas). Partimos entonces de las hojas (vértices sobre los que solo incide una arista). Las hojas son caras libres de las aristas que indicen en ella. Por tanto, en el primer paso podemos ir colapsando una a una todas estas aristas. A continuación, los padres de las hojas se habrán convertido en hojas, pues hemos eliminado a todos sus hijos, así que podemos repetir el proceso. Este proceso termina en tiempo finito porque hay una cantidad finita de vértices y además, por construcción termina en la raíz (el único padre que no es hijo de nadie), así que el grafo es colapsable a la raíz.
+
+El segundo resultado será cierto suponiendo que $G$ es conexo, puesto que si tiene algún vértice en otra componente conexa, ningún árbol (conexo por definicíon) podrá contenerlo. En este caso, si un árbol no contuviera algún vértice de $G$, por ser $G$ conexo y el ejercicio \ref{ejer:1.5}, se puede añadir una arista conectando dicho vértice al ábrol sin que se formen ciclos, por lo tanto, hemos probado la implicación directa. Recíprocamente, si un árbol contiene todos los vértices de $G$, nos preguntamos si podemos añadir alguna arista más. De nuevo por el ejercicio \ref{ejer:1.5} tenemos que todos los vértices del árbol están conectados por un camino de aristas (necesariamente aristas de $G$). Además solo puede ser un camino, pues de haber dos esto significaría que habría un ciclo. Luego añadir otra arista no existente añadiría un ciclo.
+
+Consideremos un subgrafo que contenga todas los vértices. Entonces por la implicación anterior, es suficiente que sea un árbol para ser máxima. Como hemos comentado antes, podemos conectar todos los vértices entre sí mediante aristas de $G$. Si $G$ es un árbol, ya habríamos terminado. Si no, entonces contiene algún ciclo, luego podemos eliminar alguna arista de modo que ningún vértice se desconecte del grafo. Como a lo sumo hay una cantidad finita de ciclos, este algoritmo termina y por construcción da un árbol. 
+
+También podríamos utilizar los algoritmos clásicos de construcción de árbol maximal (en anchura o en profundidad), consistentes en empezar con un vértice y añadir en cada paso un vértice nuevo con la arista que lo una a uno de los vértices anteriores. Otra alternativa es comenzar también con un vértice y calcularle su estrella, y a cada nuevo vértice se le va calculando la estrella sin añadir aquellas aristas que formen ciclos.
+
+\begin{nota}
+Todo grafo retrae con deformación al wedge de circunferencias. Construyendo el árbol maximal y contando el número de aristas que no están incluidas en el árbol (cada una representa un ciclo) se puede saber sobre cuántas circunferencias retrae, y por tanto, se puede conocer su grupo fundamental y su homología.
+\end{nota}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.8}
+Dado un complejo simplicial $K$, probar que la relación binaria ``ser cara de'' induce un orden parcial entre los símplices de $K$.
+El grafo que representa dicho orden se denomina \emph{diagrama de Hasse} de $K$ y se denota por $\mathcal{H}(K)$.
+Probar que ambas estructuras son equivalentes, y caracterizar los colapsos en el diagrama de Hasse.
+\end{ejercicio}
+\begin{solucion}
+La relación $\tau\leq\sigma$ es reflexiva pues todo símplice es cara de sí mismo tomando todo el conjunto de vértices que generan el símplice. Es antisimétrica puesto que si $\sigma\leq\tau$ y $\tau\leq\sigma$ entonces ninguno puede ser una cara propia del otro, puesto que el número de vértices que generen a $\tau$ y $\sigma$ debe ser el mismo, luego son iguales. Por último es transitiva, lo cual se deduce de que el orden por inclusión de los conjuntos de vértices que generan las caras es transitivo.
+
+Es claro que las estructuras son equivalentes, pues dado un diagrama podemos construir un complejo simplicial y dado un complejo simplicial podemos construir el complejo y además esta correspondencia es biyectiva.
+
+
+Que $\tau$ sea cara libre de $\sigma$ es lo mismo pero dicho con otras palabras que $\tau<\sigma$ y no existe $\eta$ con $\tau\eta$. Por tanto, en el diagrama de Hasse habrá una sola arista que salga de $\tau$ hacia arriba, la cual se dirigirá a $\sigma$. Por tanto, en este diagrama, el colapso elemental se representa mediante un colapso (en el sentido de teoría de grafos) de dicha arista. Para que los colapsos de aristas caractericen los colapsos elementales (y por tanto los colapsos) tenemos que exigir que solo se pueda colapsar una arista tal que el vértice inferior no esté conectado a ningún otro vértice. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.9}
+Dado un  espacio topológico $(X,\mathcal{T})$, consideremos un recubrimiento por abiertos de $X$ dado por $\mathcal{U} = \{\mathcal{U}_i\}_{i \in I}$.
+Se define el \emph{nervio} de $\mathcal{U}$ como la familia de subconjuntos de índices $\{i_0,\dots,i_q\}$ tales que la intersección $\mathcal{U}_{i_0} \cap \dots \cap \mathcal{U}_{i_q}$ es no vacía.
+Probar que el nervio de un recubrimiento es un complejo simplicial.
+Estudiar qué propiedad interesante tienen los nervios en espacios topológicos compactos.
+Decidir si todos los nervios sobre un mismo espacio son del mismo tipo de homotopía
+(Considerar $X = S^1$ con la topología euclídea inducida).
+\end{ejercicio}
+\begin{solucion}
+Dada una familia de conjuntos asociada a un elemento del nervio, una subfamilia también cumple que es finita y que la intersección es no vacía, por lo que también pertenece al nervio. Si la intersección de dos familias no es vacía, entonce queda una subfamilia de una cantidad finita de conjuntos cuya intersección no puede ser vacía, porque de lo contrario lo serían las intersecciones de las familias originales. Así que el nervio es un complejo simplical.
+
+Como de todo recubrimiento por abiertos de un compacto se puede obtener un subrecubrimiento finito, podemos estudiar el nervio de los recubrimientos finitos. Por ser finito, solo se puede extraer una cantidad finita de familias de índices, luego obtenemos una cantidad finita de símplices, lo que nos da una realización compacta. Así pues, los nervios de conjuntos compactos son compactos. Con recubrimientos aun ``mejores'' se puede conseguir que incluso tengan el mismo tipo de homotopía del espacio topológico. Esto es lo que se conoce como el \emph{teorema del nervio}\footnote{\url{https://ncatlab.org/nlab/show/nerve+theorem}}.
+
+No todos los nervios tienen el mismo tipo de homotopía. En $S^1$ consideremos el recubrimiento trivial $\mathcal{U}_1=\{S^1\}$ y otro recubrimiento $\mathcal{U}_2$ formado por tres arcos abiertos de circunferencia con intersección no vacía dos a dos. En el primer caso, el nervio consiste en tan solo un conjunto de índices que es unitario, luego su realización es un vértice, que es contráctil. En cambio, en el segundo caso, la realización sería homeomorfa a $S^1$, luego tiene grupo fundamental no trivial. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.10}
+Dado un grafo $G$, se define el complejo \emph{clique} de $G$ como el complejo simplicial $K(G)$ tal que:
+\begin{itemize}
+\item $K(G)^1 = G$.
+\item $σ = (v_0,\dots,v_n)$ es un $n$-símplice de $K(G)$ si y sólo si el grafo completo de vertices $v_0,\dots,v_n$ es un subgrafo de $G$.
+\end{itemize}
+Probar que $K(G)$ es efectivamente un complejo simplicial.
+Comparar los tipos de homotopía de $G$ y $K(G)$.
+Estudiar qué efecto tiene en $K(G)$ subdividir baricéntricamente $G$.
+\end{ejercicio}
+\begin{solucion}
+Como a partir de cualquier subconjunto de vértices de un grafo completo se puede obtener un subgrafo completo, es claro que $K(G)$ es un complejo simplicial. 
+
+El tipo de homotopía de $K(G)$ es más ``pequeño'' en el sentido de que el rango de $\pi_1(K(G))$ es menor que el de $\pi_1(G)$, pues los ciclos de $G$ se pueden ``rellenar'', sustituyendo partes no contráctiles por partes contráctiles. 
+
+Es claro que subdividir $G$ modifica el 1-esqueleto de $K(G)$ para que $K(G)^1=G$. En dimensiones mayores deja de haber símplices en $K(G)$. En efecto, cualquier subgrafo completo de $G$ con al menos 3 vértices contiene algún ciclo de 3 vértices. Al subdividir baricéntricamente este ciclo deja de haber aristas entre los vértices originales, por lo que el ciclo desaparece. Esto imposibilita la existencia de subgrafos completos para $n\geq 2$, de modo que $K(sdG)=sdG$. 
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.11}
+Sea $K$ una triangulación de una superficie.
+Estudiar topológicamente los poliedros $|st(x;K)|$ para todo $x \in |K|$.
+\end{ejercicio}
+\begin{solucion}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.12}
+Sean $I = [0,1]$ y $K$ un complejo simplicial, dotar de estructura simplicial al cilindro de $|K|$, denotado por $|K \times I|$, de modo que $|K \times I| = |K| \times I$.
+\end{ejercicio}
+\begin{solucion}
+Podemos expresar $|K\times I|$ como $|KK|$, es decir, la realización de la unión simplicial de $K$ consigo mismo. Para que $|KK|$ sea exactamente igual a $|K|\times I$ como conjunto habrá que colocar las dos compias de $K$ en paralelo y a distancia 1. En efecto, el cilindro $|K|\times I$ consiste en la unión mediante segmentos de longitud 1 y en paralelo cada punto de $|K|\times\{0\}$ con los de $|K|\times\{1\}$, pero esto es precisamente lo que se hace al construir la unión simplicial, pues cada punto de dichos segmentos es una combinación convexa de vértices de $|K|\times\{0\}$ y $|K|\times\{1\}$ de la siguiente forma: dado un punto $x$ de uno de estos segmentos, el punto inicial será $x_1\in |K|\times\{0\}$ y el punto final $x_2\in |K|\times\{1\}$. Basta tomar ahora los soportes $\sigma_1\ni x_1,\sigma_2\ni x_2$, pues $x_1$ y $x_2$ son combinaciones convexas de los vértices de $\sigma_1$ y $\sigma_2$ respectivamente. Ahora, como combinación convexa sobre combinación convexa es convexa, $x$ es combinación convexa de los vértices de $\sigma_1$ y $\sigma_2$. Recíprocamente, dado $x\in |KK|$, entonces $x\in \sigma=(v_{i_1},\dots, v_{i_r},v_{j_1},\dots,v_{j_s})$. Consideramos ese conjunto de vértices en una de las dos copias de $K$, por ejemplo $K\times\{0\}$, el cual generará un subcomplejo  $L\subseteq K$, así que claramente $x\in |L|\times I\subseteq |K|\times I$.
+
+Posible mejor solución \url{https://math.stackexchange.com/questions/717322/product-of-simplicial-complexes}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.13}
+Indicar si alguna de las siguientes aplicaciones entre los complejos indicados más abajo es simplicial:
+\begin{enumerate}[(a)]
+\item
+\[
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(0.068,-1.) rectangle (12.334666666666664,3);
+\draw [line width=1.pt] (3.,0.)-- (6.,0.);
+\draw [line width=1.pt] (6.,0.)-- (4.5,2.5980762113533165);
+\draw [line width=1.pt] (4.5,2.5980762113533165)-- (3.,0.);
+\draw [line width=1.pt] (7.,0.)-- (10.,0.);
+\draw [line width=1.pt] (10.,0.)-- (8.5,2.5980762113533165);
+\draw [line width=1.pt] (8.5,2.5980762113533165)-- (7.,0.);
+\draw [line width=1.pt] (5.25,1.2990381056766587)-- (3.75,1.2990381056766582);
+\draw [line width=1.pt] (3.75,1.2990381056766582)-- (4.5,0.);
+\draw [line width=1.pt] (4.5,0.)-- (5.25,1.2990381056766587);
+\draw (4.3,0.06) node[anchor=north west] {$v_1$};
+\draw (2.8,0.06) node[anchor=north west] {$v_0$};
+\draw (5.8,0.06) node[anchor=north west] {$v_2$};
+\draw (3.1,1.506666666666661) node[anchor=north west] {$v_4$};
+\draw (5.3,1.5173333333333276) node[anchor=north west] {$v_3$};
+\draw (4.3,2.9573333333333234) node[anchor=north west] {$v_5$};
+\draw (6.8,0.06) node[anchor=north west] {$w_0$};
+\draw (9.6,0.06) node[anchor=north west] {$w_1$};
+\draw (8.2,2.96) node[anchor=north west] {$w_2$};
+\draw (1,3.0) node[anchor=north west] {$v_0\to w_0$};
+\draw (1.,2.6) node[anchor=north west] {$v_1\to w_1$};
+\draw (1.,2.2) node[anchor=north west] {$v_2\to w_1$};
+\draw (1.,1.8) node[anchor=north west] {$v_3\to w_1$};
+\draw (1.,1.4) node[anchor=north west] {$v_4\to w_2$};
+\draw (1.,1.) node[anchor=north west] {$v_5\to w_1$};
+\end{tikzpicture}
+\]
+\item
+\[
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(0.068,-1.) rectangle (12.334666666666664,3);
+\draw [line width=1.pt] (3.,0.)-- (6.,0.);
+\draw [line width=1.pt] (6.,0.)-- (4.5,2.5980762113533165);
+\draw [line width=1.pt] (4.5,2.5980762113533165)-- (3.,0.);
+\draw [line width=1.pt] (7.,0.)-- (10.,0.);
+\draw [line width=1.pt] (10.,0.)-- (8.5,2.5980762113533165);
+\draw [line width=1.pt] (8.5,2.5980762113533165)-- (7.,0.);
+\draw [line width=1.pt] (9.25,1.2990381056766587)-- (7.75,1.2990381056766582);
+\draw [line width=1.pt] (7.75,1.2990381056766582)-- (8.5,0.);
+\draw [line width=1.pt] (8.5,0.)-- (9.25,1.2990381056766587);
+\draw [line width=1.pt] (4.5,0.)-- (4.5,2.6);
+\draw (4.3,0.06) node[anchor=north west] {$v_2$};
+\draw (2.8,0.06) node[anchor=north west] {$v_0$};
+\draw (5.8,0.06) node[anchor=north west] {$v_3$};
+\draw (4.3,2.9573333333333234) node[anchor=north west] {$v_1$};
+\draw (6.8,0.06) node[anchor=north west] {$w_0$};
+\draw (8.3,0.06) node[anchor=north west] {$w_5$};
+\draw (9.6,0.06) node[anchor=north west] {$w_4$};
+\draw (8.2,2.96) node[anchor=north west] {$w_2$};
+\draw (7.1,1.506666666666661) node[anchor=north west] {$w_1$};
+\draw (9.3,1.5173333333333276) node[anchor=north west] {$w_3$};
+\draw (1,3.0) node[anchor=north west] {$v_0\to w_0$};
+\draw (1.,2.6) node[anchor=north west] {$v_1\to w_4$};
+\draw (1.,2.2) node[anchor=north west] {$v_2\to w_2$};
+\draw (1.,1.8) node[anchor=north west] {$v_3\to w_1$};
+\end{tikzpicture}
+\]
+
+\end{enumerate}
+\end{ejercicio}
+\begin{solucion}
+\begin{enumerate}[(a)]
+\item Claramente sí lo es, porque cualquier conjunto de vértices va a un símplice del complejo imagen. Así que da igual cuál sea el conjunto origen siempre que los vértices se transformen en vértices.
+\item No lo es puesto que el conjunto de vértices $\{v_0, v_2\}$, que forman la arista $(v_0v_2)$, se mapea en $\{w_0,w_2\}$, pero la arista $(w_0w_2)$ no forma parte del complejo simplicial.
+\end{enumerate}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.14}
+Sea $f : Δ^2 \to Δ^2$ la aplicacion simplicial defina por
+
+\[
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(0.068,-1.) rectangle (12.334666666666664,3);
+\draw [line width=1.pt] (3.,0.)-- (6.,0.);
+\draw [line width=1.pt] (6.,0.)-- (4.5,2.5980762113533165);
+\draw [line width=1.pt] (4.5,2.5980762113533165)-- (3.,0.);
+\draw [line width=1.pt] (7.,0.)-- (10.,0.);
+\draw [line width=1.pt] (10.,0.)-- (8.5,2.5980762113533165);
+\draw [line width=1.pt] (8.5,2.5980762113533165)-- (7.,0.);
+
+
+\draw (2.8,0.0) node[anchor=north west] {$2$};
+\draw (5.8,0.0) node[anchor=north west] {$3$};
+
+\draw (4.3,3) node[anchor=north west] {$1$};
+\draw (6.8,0.06) node[anchor=north west] {$c$};
+\draw (9.8,0.06) node[anchor=north west] {$b$};
+\draw (8.3,2.96) node[anchor=north west] {$a$};
+
+\draw (1.,2.2) node[anchor=north west] {$1\to b$};
+\draw (1.,1.8) node[anchor=north west] {$2\to c$};
+\draw (1.,1.4) node[anchor=north west] {$3\to a$};
+
+\end{tikzpicture}
+\]
+
+
+Extenderla a una aplicación simplicial entre los complejos indicados en la siguiente figura 
+
+\[
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(0.068,-1.) rectangle (12.334666666666664,3);
+\draw [line width=1.pt] (3.,0.)-- (6.,0.);
+\draw [line width=1.pt] (6.,0.)-- (4.5,2.5980762113533165);
+\draw [line width=1.pt] (4.5,2.5980762113533165)-- (3.,0.);
+\draw [line width=1.pt] (5.25,1.2990381056766587)-- (3.75,1.2990381056766582);
+\draw [line width=1.pt] (3.75,1.2990381056766582)-- (4.5,0.);
+\draw [line width=1.pt] (4.5,0.)-- (5.25,1.2990381056766587);
+\draw [line width=1.pt] (7.,1.)-- (8.,0.);
+\draw [line width=1.pt] (8.,0.)-- (10.,1.);
+\draw [line width=1.pt] (10.,1.)-- (10.446666666666665,2.008);
+\draw [line width=1.pt] (10.446666666666665,2.008)-- (8.004,2.6266666666666576);
+\draw [line width=1.pt] (8.004,2.6266666666666576)-- (7.,1.);
+\draw [line width=1.pt] (7.,1.)-- (10.446666666666665,2.008);
+\draw [line width=1.pt] (10.446666666666665,2.008)-- (10.,1.);
+\draw [line width=1.pt] (10.,1.)-- (7.,1.);
+\draw (3.2,1.5706666666666609) node[anchor=north west] {$2$};
+\draw (4.3,0.0) node[anchor=north west] {$1$};
+\draw (5.38,1.5493333333333275) node[anchor=north west] {$3$};
+\draw (6.6,1.1653333333333287) node[anchor=north west] {$c$};
+\draw (10.030666666666665,1.2) node[anchor=north west] {$b$};
+\draw (10.4,2.2) node[anchor=north west] {$a$};
+\end{tikzpicture}
+\]
+\end{ejercicio}
+\begin{solucion}
+Vamos primero a etiquetar los vértices añadidos
+
+\[
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(0.068,-1.) rectangle (12.334666666666664,3.2);
+\draw [line width=1.pt] (3.,0.)-- (6.,0.);
+\draw [line width=1.pt] (6.,0.)-- (4.5,2.5980762113533165);
+\draw [line width=1.pt] (4.5,2.5980762113533165)-- (3.,0.);
+\draw [line width=1.pt] (5.25,1.2990381056766587)-- (3.75,1.2990381056766582);
+\draw [line width=1.pt] (3.75,1.2990381056766582)-- (4.5,0.);
+\draw [line width=1.pt] (4.5,0.)-- (5.25,1.2990381056766587);
+\draw [line width=1.pt] (7.,1.)-- (8.,0.);
+\draw [line width=1.pt] (8.,0.)-- (10.,1.);
+\draw [line width=1.pt] (10.,1.)-- (10.446666666666665,2.008);
+\draw [line width=1.pt] (10.446666666666665,2.008)-- (8.004,2.6266666666666576);
+\draw [line width=1.pt] (8.004,2.6266666666666576)-- (7.,1.);
+\draw [line width=1.pt] (7.,1.)-- (10.446666666666665,2.008);
+\draw [line width=1.pt] (10.446666666666665,2.008)-- (10.,1.);
+\draw [line width=1.pt] (10.,1.)-- (7.,1.);
+\draw (3.2,1.5706666666666609) node[anchor=north west] {$2$};
+\draw (4.3,0.0) node[anchor=north west] {$1$};
+\draw (4.3,3) node[anchor=north west] {$4$};
+\draw (6.,0) node[anchor=north west] {$5$};
+\draw (2.6,0.0) node[anchor=north west] {$6$};
+\draw (5.38,1.5493333333333275) node[anchor=north west] {$3$};
+\draw (6.6,1.1653333333333287) node[anchor=north west] {$c$};
+\draw (10.030666666666665,1.2) node[anchor=north west] {$b$};
+\draw (10.4,2.2) node[anchor=north west] {$a$};
+\draw (7.8,3.1) node[anchor=north west] {$d$};
+\draw (7.8,0) node[anchor=north west] {$e$};
+\end{tikzpicture}
+\]
+
+A partir de esto definimos la aplicación simplicial no trivial (podríamos enviar todos los nuevos vértices a los que ya tenían preimagen, pero eso no es interesante)
+\begin{align*}
+&1\to b & 4\to d\\
+&2\to c & 5\to b\\
+&3\to a & 6\to e
+\end{align*}
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.15}
+Probar que la imagen de un subcomplejo por una aplicación simplicial es un subcomplejo y que la imagen inversa de un subcomplejo es subcomplejo.
+\end{ejercicio}
+\begin{solucion}
+Sea $\varphi:K_1\to K_2$ una aplicación simplicial y sean $L_1\subseteq K_1$ y $L_2\subseteq K_2$ subcomplejos. En primer lugar es claro $f(L_1)\subseteq K_2$. Sean $\sigma\in f(L_1)$ y consideremos $\tau\leq\sigma$. Supongamos sin pérdida de generalidad que $\sigma=(w_1,\dots, w_s, \dots, w_n)$ y que $\tau=(w_1,\dots, w_s)$. Como $\sigma\in f(L_1)$, existen $v_1,\dots, v_s,\dots, v_n$ tales que $f(v_i)=w_i$. Basta entonces tomar $v_1,\dots, v_s$. Sean $\sigma,\tau\in f(L_1)$ con $\sigma=(w_1,\dots, w_n)$ y $\tau=(w_1',\dots, w_s')$. Entonces existen existen $v_1,\dots, v_n$ y $v_1',\dots, v_s'$ con $f(v_i)=w_i$ y $f(v_j')=w_j'$. Por tanto, basta tomar las preimagenes de los vértices que forman la intersección.
+
+Con $f^{-1}(L_2)\subseteq K_1$ se hace de forma análoga.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.16}
+Probar que una aplicación simplicial puede cubrir todos los vértices y no ser sobreyectiva.
+\end{ejercicio}
+\begin{solucion}
+Basta tomar la inclusión de un triángulo hueco en el triángulo relleno.
+\end{solucion}
+
+\newpage
+
+\begin{ejercicio}{1.17}
+Sean $|K| = |L| = [0,1]$, teniendo $K$ vértices en $0$, $1/3$ y $1$ y $L$ en $0$, $2/3$ y $1$.
+Sea $f(x) = x^2$. Probar que $f$ de $K$ en $L$ no admite aproximación simplicial.
+
+Análogamente, probar que no existe aproximación simplicial de $f$ de $sd K$ en $L$, y encontrar una aproximación simplicial de $f$ de $sd^2 K$ en $L$.
+\end{ejercicio}
+\begin{solucion}
+ Voy a hacer el primero por la definición para que se vea lo duro que es y lo demás lo hacemos usando resultados de teoría. Una aproximación simplicial $\varphi:K\to L$ de $f$ debe cumplir por definición $\varphi(0)=0$ y $\varphi(1)=1$. Además $\varphi(1/3)\in\{0,2/3,1\}$. Como $f(1/3)=1/9\in (0,2/3)$, para que $\varphi(1/3)$ esté en el símplice soporte de $f(1/3)$, debe ser $0$ o $2/3$. Si $\varphi(1/3)=0$, consideramos el punto $0.9\in |K|$. $f(0.9)=0.81\in (2/3,1)$. Expresando 0.9 como suma convexa de los vértices de su soporte en $L$ tenemos que $\lambda=0.6$, de modo que $\varphi(0.9)=\lambda \varphi(1/3)+(1-\lambda)\varphi(1)=0.4\in (0,2/3)$, por lo que $\varphi(0.9)$ no está en el soporte de $f(0.9)$. Si $\varphi(1/3)=2/3$, entonces $f(2/3)$ está en el interior de $(0,2/3)$, mientras que $\varphi(2/3)=0.5\varphi(1/3)+0.5\varphi(1)=0.83$ está en el interior de $(2/3,1)$.
+
+En $sdK$ tenemos los vértices $0,1/6,1/3, 2/3,1$. Se tiene que $f$ admite una aproximación simplicial $\varphi:sdK\to L$ si y solo si para cada $v\in sdK$ existe $w\in L$ de modo que $\mathring{st}(v,sdK)\subseteq f^{-1}(\mathring{st}(w,L))$. Tenemos que $\mathring{st}(1,sdK)=(2/3,1)$, pero $f^{-1}(2/3)>2/3$, luego se da la contención inversa de forma estricta, luego $f$ no admite una aproximación simplicial. 
+
+En el caso de $sd^2K$ se comprueba por inspección que se da el resultado. 
+
+%Nuevamente, $\varphi(0)=0$ y $\varphi(1)=1$. Como $f(\mathring{st}(2/3,sdK))\subseteq \mathring{st}(\varphi(2/3), L)$, $\varphi(2/3)=2/3$. Usando el mismo resultado, como $f(\mathring{st}(1/3,sdK))\subsetneq (0,2/3)$, $\varphi(1/3)\in\{0,2/3\}$. 
+\end{solucion}
+
+\end{document}
